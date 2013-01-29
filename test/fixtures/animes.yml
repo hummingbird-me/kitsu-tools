@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  age_rating: MyString
+  episode_count: 1
+  episode_length: 1
+  status: MyString
+  synopsis: MyText
+  mal_id: 1
+
+two:
+  age_rating: MyString
+  episode_count: 1
+  episode_length: 1
+  status: MyString
+  synopsis: MyText
+  mal_id: 1
