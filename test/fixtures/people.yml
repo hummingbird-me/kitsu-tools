@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+kirito:
+  name: Matsuoka, Yoshitsugu
+suguha:
+  name: Taketatsu, Ayana
+asuna:
+  name: Tomasu, Haruka
+yui:
+  name: Itou, Kanae
