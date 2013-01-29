@@ -2,7 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-h1 {
-	font-size: 40px;
-	
+.anime-grid {
+	img {
+		width: 220px;
+		height: 300px;
+	}
+	.panel {
+		background: white;
+	}
+}
+ul.accordion > li.active {
+border-top: 3px solid orange;
+}
+a {
+	color: #4d4d4d;
+	font-weight: bold;
+	&:hover {
+		color: darkorange;
+	}
 }

@@ -1,2 +1,83 @@
-%h1 Get Ready!
-%p Hummingbird is coming!
+= render 'shared/header'
+
+.row
+
+  / Side Bar
+  .three.mobile-twelve.columns
+    %ul.accordion
+      %li.active
+        .title
+          %h3 Personalize
+        .personalize-filter.content
+          %p.active= link_to 'All Anime', '#'
+          %p= link_to 'My Recommendations', '#'
+          %p= link_to "Anime I Haven't Seen", '#'
+          %p= link_to "Anime I Haven't Finished", '#'
+
+    %ul.accordion
+      %li.active    
+        .title
+          %h3 Filter
+        .content
+          %form.custom
+            .row
+              .twelve.columns
+                %label{:for => "checkbox1"}
+                  %input#checkbox1{:style => "display: none;", :type => "checkbox"}
+                    %span.custom.checkbox
+                    Action
+
+                %label{:for => "checkbox2"}
+                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox"}
+                    %span.custom.checkbox.checked
+                    Comedy
+
+                %label{:for => "checkbox2"}
+                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox"}
+                    %span.custom.checkbox.checked
+                    Demons
+
+                %label{:for => "checkbox2"}
+                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox"}
+                    %span.custom.checkbox.checked
+                    Drama
+
+                %label{:for => "checkbox2"}
+                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox"}
+                    %span.custom.checkbox.checked
+                    Ecchi
+
+
+
+  / End Side Bar
+
+  / Thumbnails
+  .anime-grid.nine.columns
+    .row
+      .four.mobile-two.columns
+        %img{:src => "http://vikhyat.net/AnimeGraph/thumbs/9969.jpg"}
+          .panel
+            %h5 Gintama
+      .four.mobile-two.columns
+        %img{:src => "http://img1.ak.crunchyroll.com/i/spire3/60d1de8d5ea8caeff26791ade64b83591350422947_full.jpg"}
+          .panel
+            %h5 Naruto Shippuden
+      .four.mobile-two.columns
+        %img{:src => "http://img1.ak.crunchyroll.com/i/spire4/5fe886f3daa6485efecf1ea6dc5207931343265548_full.jpg"}
+          .panel
+            %h5 Sword Art Online
+      .four.mobile-two.columns
+        %img{:src => "http://img1.ak.crunchyroll.com/i/spire4/5e5a8d0f46487186e64687b046e0eb691357673527_full.jpg"}
+          .panel
+            %h5 Problem Children Are Coming From Another World, Aren't They?
+      .four.mobile-two.columns
+        %img{:src => "http://img1.ak.crunchyroll.com/i/spire2/9e8550dd5fe4dfbbe7accdb24de70a5b1302295729_full.jpg"}
+          .panel
+            %h5 Blue Exorcist
+      .four.mobile-two.columns
+        %img{:src => "http://img1.ak.crunchyroll.com/i/spire1/147343502675febc265eb48873d70f1f1357163351_full.jpg"}
+          .panel
+            %h5 Cuticle Detective Inaba
+      / End Thumbnails
+      
+= render 'shared/footer'
