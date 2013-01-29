@@ -1,11 +1,23 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  description: MyText
-  voice_actor_id: 1
+kirito:
+  name: Kirigaya, Kazuto
+  voice_actor: kirito
 
-two:
-  name: MyString
-  description: MyText
-  voice_actor_id: 1
+suguha:
+  name: Kirigaya, Suguha
+  voice_actor: suguha
+
+asuna:
+  name: Yuuki, Asuna
+  voice_actor: asuna
+
+yui:
+  name: Yui
+  voice_actor: yui
+
+lizbeth:
+  name: Lizbeth
+
+sachi:
+  name: Sachi
