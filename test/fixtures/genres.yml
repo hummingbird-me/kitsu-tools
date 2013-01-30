@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+action:
+  name: Action
+  animes: sword_art_online
+
+adventure:
+  name: Adventure
+  animes: sword_art_online
+
+fantasy:
+  name: Fantasy
+  animes: sword_art_online
+
+Romance:
+  name: Romance
+  animes: sword_art_online
