@@ -1,10 +1,14 @@
 !!!
 %html
-	%head
-		%title Hummingbird
-		= stylesheet_link_tag    "application", :media => "all"
-		= javascript_include_tag "application"
-		= csrf_meta_tags
-		%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-	%body
-		= yield
+  %head
+    %title
+      - if yield(:title).length > 0
+        #{yield(:title)} | Hummingbird
+      - else
+        Hummingbird
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+  %body
+    = yield
