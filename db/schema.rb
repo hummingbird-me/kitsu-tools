@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130129200416) do
+ActiveRecord::Schema.define(:version => 20130130114735) do
 
   create_table "animes", :force => true do |t|
     t.string   "age_rating"
@@ -23,7 +23,10 @@ ActiveRecord::Schema.define(:version => 20130129200416) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "title"
+    t.string   "slug"
   end
+
+  add_index "animes", ["slug"], :name => "index_animes_on_slug", :unique => true
 
   create_table "characters", :force => true do |t|
     t.string   "name"

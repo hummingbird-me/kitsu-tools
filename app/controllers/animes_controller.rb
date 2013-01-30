@@ -1,9 +1,9 @@
 class AnimesController < ApplicationController
   def show
+    @anime = Anime.find(params[:id])
+
     respond_to do |format|
-      format.json do
-        render :text => Anime.find(params[:id].to_i).to_json
-      end
+      format.json { render :text => @anime.to_json }
     end
   end
 end
