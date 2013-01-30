@@ -1,0 +1,32 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+kirito:
+  anime: sword_art_online
+  character: kirito
+  voice_actor: kirito
+
+suguha:
+  anime: sword_art_online
+  character: suguha
+  voice_actor: suguha
+
+asuna:
+  anime: sword_art_online
+  character: asuna
+  voice_actor: asuna
+
+yui:
+  anime: sword_art_online
+  character: yui
+  voice_actor: yui
+
+lizbeth:
+  anime: sword_art_online
+  character: lizbeth
+  voice_actor: lizbeth
+
+sachi:
+  anime: sword_art_online
+  character: kirito
+  voice_actor: sachi
+

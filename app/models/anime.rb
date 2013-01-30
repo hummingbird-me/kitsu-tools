@@ -3,7 +3,9 @@ class Anime < ActiveRecord::Base
   friendly_id :title, :use => [:slugged]
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :status, :synopsis
+
   has_many :quotes
+  has_many :castings
 
   validates :title, :slug, :presence => true
 
