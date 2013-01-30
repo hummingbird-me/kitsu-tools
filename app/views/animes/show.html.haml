@@ -5,3 +5,11 @@
 %p Episode length: #{@anime.episode_length}
 %p Status: #{@anime.status}
 %p Synopsis: #{@anime.synopsis}
+
+%h3 Quotes
+
+- @anime.quotes.each do |quote|
+  %blockquote
+    = quote.content
+    —
+    = quote.character.name
