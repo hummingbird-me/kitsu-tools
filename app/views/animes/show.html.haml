@@ -13,7 +13,7 @@
 
 %h3 Quotes
 
-- @anime.quotes.each do |quote|
+- @anime.quotes.limit(4).each do |quote|
   %blockquote
     = quote.content
     —
