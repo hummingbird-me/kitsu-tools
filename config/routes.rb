@@ -5,6 +5,8 @@ Hummingbird::Application.routes.draw do
     resources :quotes
   end
 
+  resources :genres
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

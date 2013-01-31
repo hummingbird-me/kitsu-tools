@@ -9,7 +9,10 @@
 %p Episode length: #{@anime.episode_length}
 %p Status: #{@anime.status}
 %p Synopsis: #{@anime.synopsis}
-%p Genres: #{@anime.genres.map(&:name) * ', '}.
+%p 
+  Genres: 
+  - @anime.genres.each do |genre|
+    = link_to genre.name, genre
 
 %h3 Quotes
 
