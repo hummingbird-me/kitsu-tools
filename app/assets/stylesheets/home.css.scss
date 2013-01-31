@@ -5,6 +5,53 @@
 
 /* Sidebar Filter */
 /* ============== */
+
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
 ul.accordion > li.active {
 border-top: 3px solid orange;
 }
@@ -18,25 +65,45 @@ a {
 
 /* This is the anime grid found on the index page */
 /* ============================================== */
-.anime-grid {
 
+figure { 
+	img {
+		width: 220px;
+		height: 300px;
+		float: left;
+		@include border-top-radius(3px);	
+	}
+}
 
-	figure { 
-		img {
-			width: 220px;
-			height: 300px;
-			float: left;
-			@include border-radius(3px);	
+.panel {
+	position: relative;
+	background: white;
+	padding: 0px;
+	@include border-radius(3px);
+
+	figcaption {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		display: inline-block;
+	}
+	.progress {
+		width: 100%;
+		border: none;
+		height: 3px;
+		margin-bottom: 0px;
+		padding: 0px;
+		.meter {
+			background: orange;
 		}
 	}
-
-	.panel {
-		background: white;
-		padding: 10px;
-		@include border-radius(3px);
-
-		figcaption {
-			margin-top: 10px;
-		}
+	.watchlist {
+		width: 100%;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 10px;
+		padding: 7px 0px;
+		border-top: 1px solid #eee;
+		border-bottom: 1px solid #eee;
 	}
 }

@@ -23,27 +23,27 @@
             .row
               .twelve.columns
                 %label{:for => "checkbox1"}
-                  %input#checkbox1{:style => "display: none;", :type => "checkbox"}
+                  %input#checkbox1{:style => "display: none;", :type => "checkbox", :value => ".action"}
                     %span.custom.checkbox
                     Action
 
                 %label{:for => "checkbox2"}
-                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox"}
+                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".comedy"}
                     %span.custom.checkbox.checked
                     Comedy
 
                 %label{:for => "checkbox2"}
-                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox"}
+                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".demons"}
                     %span.custom.checkbox.checked
                     Demons
 
                 %label{:for => "checkbox2"}
-                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox"}
+                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".drama"}
                     %span.custom.checkbox.checked
                     Drama
 
                 %label{:for => "checkbox2"}
-                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox"}
+                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".ecchi"}
                     %span.custom.checkbox.checked
                     Ecchi
 
@@ -54,38 +54,56 @@
   / Thumbnails
   .anime-grid.nine.columns
     .row
-      .four.columns
+      .four.columns.anime-card.action.drama.ecchi
         .panel
           %figure
             %img{:src => "http://vikhyat.net/AnimeGraph/thumbs/9969.jpg"}
           %figcaption Gintama
+          .progress.six
+            %span.meter{:style => "width: 100%;"}
+          %p.watchlist= link_to "- Remove from Watchlist", "#"
 
       .four.columns
         .panel
           %figure
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire3/60d1de8d5ea8caeff26791ade64b83591350422947_full.jpg"}
           %figcaption Naruto Shippuden
+          .progress.six
+            %span.meter{:style => "width: 20%;"}
+          %p.watchlist= link_to "- Remove from Watchlist", "#"
 
       .four.columns
         .panel
           %figure
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire4/5fe886f3daa6485efecf1ea6dc5207931343265548_full.jpg"}
           %figcaption Sword Art Online
+          .progress.six
+            %span.meter{:style => "width: 60%;"}
+          %p.watchlist= link_to "- Remove from Watchlist", "#"
       .four.columns
         .panel
           %figure
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire4/5e5a8d0f46487186e64687b046e0eb691357673527_full.jpg"}
           %figcaption #{truncate("Problem Children are Coming from Another world, Aren't They?", :length => 25, :omission => '...')}
+          .progress.six
+            %span.meter{:style => "width: 09%;"}
+          %p.watchlist= link_to "- Remove from Watchlist", "#"
       .four.columns
         .panel
           %figure
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire2/9e8550dd5fe4dfbbe7accdb24de70a5b1302295729_full.jpg"}
           %figcaption Blue Exorcist
+          .progress.six
+            %span.meter{:style => "width: 13%;"}
+          %p.watchlist= link_to "- Remove from Watchlist", "#"
       .four.columns
         .panel
           %figure
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire1/147343502675febc265eb48873d70f1f1357163351_full.jpg"}
           %figcaption Cuticle Detective Inaba
+          .progress.six
+            %span.meter{:style => "width: 65%;"}
+          %p.watchlist= link_to "- Remove from Watchlist", "#"
       / End Thumbnails
       
 = render 'shared/footer'
