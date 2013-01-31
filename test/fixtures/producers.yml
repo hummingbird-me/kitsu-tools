@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+aniplex:
+  name: Aniplex
+  animes: sword_art_online
+  slug: aniplex
+
+a1pics:
+  name: A-1 Pictures
+  animes: sword_art_online
+  slug: a-1-pictures
+
+genco:
+  name: Genco
+  animes: sword_art_online
+  slug: genco
+
+dax:
+  name: DAX Production
+  animes: sword_art_online
+  slug: dax-production
+
+aniplex_america:
+  name: Aniplex of America
+  animes: sword_art_online
+  slug: aniplex-of-america
+
+asciimediaworks:
+  name: ASCII Media Works
+  animes: sword_art_online
+  slug: ascii-media-works

@@ -6,6 +6,7 @@ Hummingbird::Application.routes.draw do
   end
 
   resources :genres
+  resources :producers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

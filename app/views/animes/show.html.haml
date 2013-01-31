@@ -13,6 +13,10 @@
   Genres: 
   - @anime.genres.each do |genre|
     = link_to genre.name, genre
+%p 
+  Producers: 
+  - @anime.producers.each do |producer|
+    = link_to producer.name, producer
 
 %h3 Quotes
 
