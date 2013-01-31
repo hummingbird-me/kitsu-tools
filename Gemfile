@@ -29,6 +29,8 @@ group :development do
   gem "bullet"
 end
 
+gem "tarantula", :require => "tarantula-rails3"
+
 gem 'jquery-rails'
 gem 'haml-rails'
 
