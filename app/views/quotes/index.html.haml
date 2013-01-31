@@ -1,0 +1,9 @@
+- title "#{@anime.title} Quotes"
+
+%h1= yield(:title)
+
+- @quotes.each do |quote|
+  %blockquote
+    = quote.content
+    —
+    = quote.character.name

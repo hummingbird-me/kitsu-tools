@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
   def index
-    render :text => "test"
+    @anime = Anime.find(params[:anime_id])
+    @quotes = @anime.quotes
   end
 end
