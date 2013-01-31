@@ -76,7 +76,7 @@
         .panel
           %figure
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire4/5fe886f3daa6485efecf1ea6dc5207931343265548_full.jpg"}
-          %figcaption Sword Art Online
+          %figcaption= link_to "Sword Art Online", Anime.find('sword-art-online')
           .progress.six
             %span.meter{:style => "width: 60%;"}
           %p.watchlist= link_to "- Remove from Watchlist", "#"
