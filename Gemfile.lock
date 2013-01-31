@@ -35,6 +35,8 @@ GEM
       erubis (>= 2.7.0)
     binding_of_caller (0.6.8)
     builder (3.0.4)
+    bullet (4.3.0)
+      uniform_notifier
     chunky_png (1.2.5)
     coderay (1.0.8)
     coffee-rails (3.2.2)
@@ -132,6 +134,7 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    uniform_notifier (1.1.1)
     warden (1.2.1)
       rack (>= 1.0)
     zurb-foundation (3.2.5)
@@ -146,6 +149,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  bullet
   coffee-rails (~> 3.2.1)
   compass-rails
   devise
