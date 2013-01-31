@@ -1,16 +1,10 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3";
 
-.anime-grid {
-	img {
-		width: 220px;
-		height: 300px;
-	}
-	.panel {
-		background: white;
-	}
-}
+/* Sidebar Filter */
+/* ============== */
 ul.accordion > li.active {
 border-top: 3px solid orange;
 }
@@ -19,5 +13,30 @@ a {
 	font-weight: bold;
 	&:hover {
 		color: darkorange;
+	}
+}
+
+/* This is the anime grid found on the index page */
+/* ============================================== */
+.anime-grid {
+
+
+	figure { 
+		img {
+			width: 220px;
+			height: 300px;
+			float: left;
+			@include border-radius(3px);	
+		}
+	}
+
+	.panel {
+		background: white;
+		padding: 10px;
+		@include border-radius(3px);
+
+		figcaption {
+			margin-top: 10px;
+		}
 	}
 }
