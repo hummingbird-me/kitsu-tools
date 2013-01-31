@@ -11,16 +11,16 @@
 %p Synopsis: #{@anime.synopsis}
 %p 
   Genres: 
-  - @anime.genres.each do |genre|
+  - @genres.each do |genre|
     = link_to genre.name, genre
 %p 
   Producers: 
-  - @anime.producers.each do |producer|
+  - @producers.each do |producer|
     = link_to producer.name, producer
 
 %h3 Quotes
 
-- @anime.quotes.limit(4).each do |quote|
+- @quotes.each do |quote|
   %blockquote
     = quote.content
     —
@@ -34,7 +34,7 @@
 
 %h3 Casting
 
-- @anime.castings.each do |casting|
+- @castings.each do |casting|
   %p
     = casting.character.name
     \....
