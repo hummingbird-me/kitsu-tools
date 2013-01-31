@@ -19,6 +19,8 @@
     —
     = quote.character.name
 
+%p= link_to "[Show all]", anime_quotes_url(@anime)
+
 %h3 Youtube Video
 
 %iframe{:width => 560, :height => 315, :frameborder => 0, :allowfullscreen => true, :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}"}

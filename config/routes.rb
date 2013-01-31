@@ -1,7 +1,9 @@
 Hummingbird::Application.routes.draw do
   root :to => "home#index"
 
-  resources :animes
+  resources :animes do
+    resources :quotes
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
