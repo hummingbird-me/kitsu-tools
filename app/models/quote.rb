@@ -3,5 +3,5 @@ class Quote < ActiveRecord::Base
   belongs_to :anime
   belongs_to :creator, :class_name => "User"
 
-  validates :content, :anime, :presence => true
+  validates :content, :anime, :creator, :presence => true
 end
