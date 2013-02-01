@@ -2,172 +2,213 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
+.home {
+  /* Sidebar Filter */
+  /* ============== */
 
-/* Sidebar Filter */
-/* ============== */
+  // border override //
+  p {
+    margin: 0;
+  }
 
-// border override //
-ul.accordion {
-  border: none;
-  margin: 0;
-  h3 {
-    font-size: 20px;
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
-  }
-  a {
-    padding-left: 5px;
-  }
-  p.active {
-    background: orange;
-    border-radius: 3px;
-    padding: 3px;
+  ul.accordion {
+    border: none;
+    margin: 0;
+
+    h3 {
+      font-size: 20px;
+      border-bottom: 1px solid black;
+      padding-bottom: 10px;
+    }
+
     a {
-      color: white;
+      padding-left: 5px;
+    }
+
+    p {
+      margin-bottom: 17px;
+    }
+
+    p.active {
+      background: orange;
+      border-radius: 3px;
+      padding: 3px;
+
+      a {
+        color: white;
+      }
+    }
+
+    label {
+      padding-left: 5px;
+      margin-bottom: 5px;
+      font-size: 15px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    form.custom span.custom {
+      margin-right: 5px;
     }
   }
-  label {
-    padding-left: 5px;
-    margin-bottom: 5px;
-    font-size: 15px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #f2f2f2;
-  }
-  form.custom span.custom {
-    margin-right: 5px;
-  }
-}
 
-ul.accordion > li > div.title {
-  border: none;
-  background: white;
-  padding: 5px;
-}
-
-ul.accordion > li.active {
-  border-top: none;
-  border-bottom: none;
-
-  .content {
+  ul.accordion > li > div.title {
     border: none;
+    background: white;
     padding: 5px;
   }
-}
-// override end // 
 
-a {
-	color: #4d4d4d;
-	font-weight: bold;
-	&:hover {
-		color: darkorange;
-	}
-}
+  ul.accordion > li.active {
+    border-top: none;
+    border-bottom: none;
 
-/* This is the anime grid found on the index page */
-/* ============================================== */
-.columns {
-  padding: 0 10px;
-}
-
-.row {
-  .three {
-    background: white;
-    width: 23.5%;
-    @include border-radius(3px);
-    @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px); 
+    .content {
+      border: none;
+      padding: 5px;
+    }
   }
-}
+  // override end // 
 
-.panel {
-	position: relative;
-	background: white;
-	padding: 0px;
-  display: block;
-  background: #fff;
-  overflow: hidden;
-  color: #111;
-  font-size: 13px;
-  border: none;
-	@include border-radius(3px);
-  @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px);
+  a {
+  	color: #4d4d4d;
+  	font-weight: bold;
 
-  figure {
-    position: relative;
+  	&:hover {
+  		color: darkorange;
+  	}
+  }
+
+  /* This is the anime grid found on the index page */
+  /* ============================================== */
+  .columns {
+    padding: 0 10px;
+  }
+
+  .row {
+
+    .three {
+      background: white;
+      width: 23.5%;
+      @include border-radius(3px);
+      @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px); 
+    }
+  }
+
+  .panel {
+  	position: relative;
+  	background: white;
+  	padding: 0px;
+    display: block;
+    background: #fff;
     overflow: hidden;
+    color: #111;
+    font-size: 13px;
+    border: none;
+  	@include border-radius(3px);
+    @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px);
 
-    .overlay {
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      text-align: center;
-      color: #fff;
-      cursor: pointer;
-      @include opacity(0.90);
-      @include border-top-radius(3px);
-      @include background-image(linear-gradient(left top, #393939, #000));
-      display: none;
+    figure {
+      position: relative;
+      overflow: hidden;
 
-      .title {
-        color: white;
-        padding-left: 10px;
-        padding-right: 10px;
-        a {
+      .overlay {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        @include opacity(0.90);
+        @include border-top-radius(3px);
+        @include background-image(linear-gradient(left top, #393939, #000));
+        display: none;
+
+        .title {
           color: white;
+          padding-left: 10px;
+          padding-right: 10px;
+
+          a {
+            color: white;
+          }
+        }
+
+        .summary {
+          width: 90%;
+          margin: 0 auto;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-top: 1px solid white;
+          border-bottom: 1px solid white;
         }
       }
 
-      .summary {
-        width: 90%;
-        margin: 0 auto;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        border-top: 1px solid white;
-        border-bottom: 1px solid white;
+      img {
+        width: 100%;
+        height: auto;
+        float: left;
+        @include border-top-radius(3px); 
+        @media screen and (min-width: 480px) {
+          min-height: 350px;
+        } 
+      }
+
+      &:hover {
+
+        .overlay {
+          display: block;
+        }
       }
     }
 
-    img {
-      width: 100%;
-      height: 347px;
-      float: left;
-      @include border-top-radius(3px);  
-    }
+  	figcaption {
+  		margin-top: 10px;
+  		margin-bottom: 10px;
+  		margin-left: 10px;
+  		display: inline-block;
+  	}
 
-    &:hover {
-      .overlay {
+  	.progress {
+  		width: 100%;
+  		border: none;
+  		height: 3px;
+  		margin-bottom: 0px;
+  		padding: 0px;
+
+  		.meter {
+  			background: orange;
+  		}
+  	}
+
+  	.watchlist {
+  		width: 100%;
+  		text-align: center;
+  		text-transform: uppercase;
+  		font-size: 10px;
+  		padding: 7px 0px;
+  		border-top: 1px solid #eee;
+  		border-bottom: 1px solid #eee;
+  	}
+    .vote-blocks {
+
+      .like {
+        width: 50%;
+        height: 60px;
         display: block;
+        text-align: center;
+        float: left;
+        border-right: 1px solid #f2f2f2;
+      }
+
+      .dislike {
+        width: 50%;
+        height: 60px;
+        display: block;
+        text-align: center;
+        float: left;
       }
     }
   }
-
-	figcaption {
-		margin-top: 10px;
-		margin-bottom: 10px;
-		margin-left: 10px;
-		display: inline-block;
-	}
-
-	.progress {
-		width: 100%;
-		border: none;
-		height: 3px;
-		margin-bottom: 0px;
-		padding: 0px;
-
-		.meter {
-			background: orange;
-		}
-	}
-
-	.watchlist {
-		width: 100%;
-		text-align: center;
-		text-transform: uppercase;
-		font-size: 10px;
-		padding: 7px 0px;
-		border-top: 1px solid #eee;
-		border-bottom: 1px solid #eee;
-	}
 }
