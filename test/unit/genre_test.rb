@@ -12,4 +12,12 @@ class GenreTest < ActiveSupport::TestCase
     g.name = "Fantasy"
     assert !g.save
   end
+
+  test "slugs work" do
+    g = Genre.new
+    g.name = "Environmental"
+    assert g.save
+    assert_equal g.slug, "environmental"
+    assert_equal g, Genre.find("environmental")
+  end
 end
