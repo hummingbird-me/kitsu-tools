@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201115714) do
+ActiveRecord::Schema.define(:version => 20130201130558) do
 
   create_table "animes", :force => true do |t|
-    t.string   "title"
     t.string   "age_rating"
     t.integer  "episode_count"
     t.integer  "episode_length"
@@ -23,6 +22,7 @@ ActiveRecord::Schema.define(:version => 20130201115714) do
     t.integer  "mal_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "title"
     t.string   "slug"
     t.string   "youtube_video_id"
   end
@@ -82,8 +82,19 @@ ActiveRecord::Schema.define(:version => 20130201115714) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "reviews", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "anime_id"
+    t.boolean  "positive"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "reviews", ["anime_id"], :name => "index_reviews_on_anime_id"
+  add_index "reviews", ["user_id"], :name => "index_reviews_on_user_id"
+
   create_table "users", :force => true do |t|
-    t.string   "name"
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
@@ -96,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20130201115714) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

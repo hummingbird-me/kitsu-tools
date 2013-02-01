@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  anime: 
+  positive: false
+  content: MyText
+
+two:
+  user: 
+  anime: 
+  positive: false
+  content: MyText
