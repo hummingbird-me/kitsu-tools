@@ -1,7 +1,7 @@
 action:
   name: Action
   animes: sword_art_online
-  slug: anime
+  slug: action
 
 adventure:
   name: Adventure

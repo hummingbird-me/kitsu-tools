@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201211530) do
+ActiveRecord::Schema.define(:version => 20130201213910) do
 
-  create_table "animes", :force => true do |t|
+  create_table "anime", :force => true do |t|
     t.string   "age_rating"
     t.integer  "episode_count"
     t.integer  "episode_length"
@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(:version => 20130201211530) do
     t.string   "youtube_video_id"
   end
 
-  add_index "animes", ["slug"], :name => "index_animes_on_slug", :unique => true
+  add_index "anime", ["slug"], :name => "index_animes_on_slug", :unique => true
 
-  create_table "animes_genres", :id => false, :force => true do |t|
+  create_table "anime_genres", :id => false, :force => true do |t|
     t.integer "anime_id", :null => false
     t.integer "genre_id", :null => false
   end
 
-  create_table "animes_producers", :id => false, :force => true do |t|
+  create_table "anime_producers", :id => false, :force => true do |t|
     t.integer "anime_id",    :null => false
     t.integer "producer_id", :null => false
   end

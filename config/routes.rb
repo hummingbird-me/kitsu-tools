@@ -3,7 +3,7 @@ Hummingbird::Application.routes.draw do
 
   root :to => "home#index"
 
-  resources :animes do
+  resources :anime do
     resources :quotes
   end
 
