@@ -10,6 +10,9 @@ Hummingbird::Application.routes.draw do
   resources :genres
   resources :producers
 
+  # Admin Panel
+  match '/topsecretpath' => 'admin#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
