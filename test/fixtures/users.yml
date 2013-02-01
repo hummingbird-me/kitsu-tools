@@ -1,5 +1,20 @@
-one:
+vikhyat:
   name: Vikhyat Korrapati
   email: c@vikhyat.net
   # password: password
   encrypted_password: "$2a$10$wUVBUWchB6xXGROLUC4xeu2tIiXuxPg3Rpnr1omXYV3ExFk0AMMre"
+
+lpfmaniak:
+  name: lpfManiac
+  email: lpfmaniak@example.org
+  encrypted_password: "$2a$10$NH.bPkRdoYRX6oo0frN4JOeJCm1xKb/fTLQHUFW8KExTdK0zeHMc."
+
+rika:
+  name: _Rika
+  email: rika@example.org
+  encrypted_password: "$2a$10$56b601YJwvXqrzQAvEGCt.D8dQEYKEhBpbfcdheSlzo/aAf.biUde"
+
+x10afreedom:
+  name: X10A_Freedom
+  email: x10freedom@example.org
+  encrypted_password: "$2a$10$icOecCtRwqUuLWnTtI6yQeS/3ak1Ub5Yei.srAwdsmrCEdYlVNEsK"

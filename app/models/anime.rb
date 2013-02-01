@@ -6,6 +6,7 @@ class Anime < ActiveRecord::Base
 
   has_many :quotes
   has_many :castings
+  has_many :reviews
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
 
