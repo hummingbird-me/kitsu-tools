@@ -47,63 +47,100 @@
                     %span.custom.checkbox.checked
                     Ecchi
 
-
-
-  / End Side Bar
-
   / Thumbnails
   .anime-grid.nine.columns
     .row
+
+      /* Gintama */
+      /* ======= */
       .four.columns.anime-card.action.drama.ecchi
         .panel
           %figure
+            .overlay
+              %h5.title Gintama
+              %p.summary #{truncate("Gintama is a story of a handyman named Gintoki, a samurai with no respect for rules set by the invaders, who's ready to take any job to survive.", :length => 250, :omission => '...')}
             %img{:src => "http://vikhyat.net/AnimeGraph/thumbs/9969.jpg"}
           %figcaption Gintama
           .progress.six
             %span.meter{:style => "width: 100%;"}
           %p.watchlist= link_to "- Remove from Watchlist", "#"
 
+      /* Naruto Shippuden */
+      /* ================ */
       .four.columns
         .panel
           %figure
+            .overlay
+              %h5.title Naruto Shippuden
+              %p.summary #{truncate("Naruto Uzumaki wants to be the best ninja in the land. He's done well so far, but with the looming danger posed by the mysterious Akatsuki organization, Naruto knows he must train harder than ever and leaves his village for intense exercises that will push him to his limits.", :length => 250, :omission => '...')}
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire3/60d1de8d5ea8caeff26791ade64b83591350422947_full.jpg"}
           %figcaption Naruto Shippuden
           .progress.six
             %span.meter{:style => "width: 20%;"}
           %p.watchlist= link_to "- Remove from Watchlist", "#"
 
+      /* Sword Art Online */
+      /* ================ */
       .four.columns
         .panel
           %figure
+            .overlay
+              %h5.title= link_to "Sword Art Online", Anime.find('sword-art-online')
+              %p.summary #{truncate("In the near future, a Virtual Reality Massive Multiplayer Online Role-Playing Game (VRMMORPG) called Sword Art Online has been released where players control their avatars with their bodies using a piece of technology called: Nerve Gear. One day, players discover they cannot log out, as the game creator is holding them captive unless they reach the 100th floor of the game's tower and defeat the final boss. However, if they die in the game, they die in real life. Their struggle for survival starts now...", :length => 250, :omission => '...')}
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire4/5fe886f3daa6485efecf1ea6dc5207931343265548_full.jpg"}
           %figcaption= link_to "Sword Art Online", Anime.find('sword-art-online')
           .progress.six
             %span.meter{:style => "width: 60%;"}
           %p.watchlist= link_to "- Remove from Watchlist", "#"
+
+      /* Problem Children */
+      /* ================ */
       .four.columns
         .panel
           %figure
+            .overlay
+              %h5.title #{truncate("Problem Children are Coming from Another World, Aren't They?", :length => 30, :omission => '...')}
+              %p.summary #{truncate("Three problem children - Sakamaki Izayoi, Kudou Asuka, and Kasukabe You - suddenly receive an invitation to another world known as 'Little Garden' from a girl called Black Rabbit. Battles, laughter, sex appeal... anything goes in this new tale of adventure!", :length => 250, :omission => '...')}
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire4/5e5a8d0f46487186e64687b046e0eb691357673527_full.jpg"}
           %figcaption #{truncate("Problem Children are Coming from Another world, Aren't They?", :length => 25, :omission => '...')}
           .progress.six
             %span.meter{:style => "width: 09%;"}
           %p.watchlist= link_to "- Remove from Watchlist", "#"
+
+      /* Blue Exorcist */
+      /* ============= */
       .four.columns
         .panel
           %figure
+            .overlay
+              %h5.title Blue Exorcist
+              %p.summary #{truncate("Assiah, the realm of humans, and Gehenna, the realm of demons. Normally, these two dimensions would never intersect, but the demons are now intruding on the material world.", :length => 250, :omission => '...')}
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire2/9e8550dd5fe4dfbbe7accdb24de70a5b1302295729_full.jpg"}
           %figcaption Blue Exorcist
           .progress.six
             %span.meter{:style => "width: 13%;"}
           %p.watchlist= link_to "- Remove from Watchlist", "#"
+
+      /* Cuticle Detective Inaba */
+      /* ======================= */
       .four.columns
         .panel
           %figure
+            .overlay
+              %h5.title Cuticle Detective Inaba
+              %p.summary #{truncate("Inaba Hiroshi, the protagonist and head of the Inaba Detective Agency, is approached one day by Inspector Ogino, his former partner from his days as a police dog, asking for his assistance with a certain investigation. The ringleader behind the case is the Italian mafia boss Don Valentino. The red-haired wolf-boy detective with the hair fetish and his lively companions stand up against the ambition of Don Valentino (who is quite clearly a goat) in this new style gag detective anime!", :length => 250, :omission => '...')}
             %img{:src => "http://img1.ak.crunchyroll.com/i/spire1/147343502675febc265eb48873d70f1f1357163351_full.jpg"}
           %figcaption Cuticle Detective Inaba
           .progress.six
             %span.meter{:style => "width: 65%;"}
           %p.watchlist= link_to "- Remove from Watchlist", "#"
-      / End Thumbnails
+
+/* Make entire anime grid card overlay a clickable link */
+/* ==================================================== */
+:javascript
+  $(".overlay").click(function(){
+       window.location=$(this).find("a").attr("href"); 
+       return false;
+  });
       
 = render 'shared/footer'

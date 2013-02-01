@@ -6,52 +6,6 @@
 /* Sidebar Filter */
 /* ============== */
 
-/* Start: Recommended Isotope styles */
-
-/**** Isotope Filtering ****/
-
-.isotope-item {
-  z-index: 2;
-}
-
-.isotope-hidden.isotope-item {
-  pointer-events: none;
-  z-index: 1;
-}
-
-/**** Isotope CSS3 transitions ****/
-
-.isotope,
-.isotope .isotope-item {
-  -webkit-transition-duration: 0.8s;
-     -moz-transition-duration: 0.8s;
-          transition-duration: 0.8s;
-}
-
-.isotope {
-  -webkit-transition-property: height, width;
-     -moz-transition-property: height, width;
-          transition-property: height, width;
-}
-
-.isotope .isotope-item {
-  -webkit-transition-property: -webkit-transform, opacity;
-     -moz-transition-property:    -moz-transform, opacity;
-          transition-property:         transform, opacity;
-}
-
-/**** disabling Isotope CSS3 transitions ****/
-
-.isotope.no-transition,
-.isotope.no-transition .isotope-item,
-.isotope .isotope-item.no-transition {
-  -webkit-transition-duration: 0s;
-     -moz-transition-duration: 0s;
-          transition-duration: 0s;
-}
-
-/* End: Recommended Isotope styles */
-
 ul.accordion > li.active {
 border-top: 3px solid orange;
 }
@@ -65,21 +19,72 @@ a {
 
 /* This is the anime grid found on the index page */
 /* ============================================== */
-
-figure { 
-	img {
-		width: 220px;
-		height: 300px;
-		float: left;
-		@include border-top-radius(3px);	
-	}
+.columns {
+  padding: 0 10px;
 }
+
+
 
 .panel {
 	position: relative;
 	background: white;
 	padding: 0px;
+  display: block;
+  background: #fff;
+  overflow: hidden;
+  color: #111;
+  font-size: 13px;
 	@include border-radius(3px);
+
+  figure {
+    position: relative;
+    overflow: hidden;
+
+    .overlay {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+      @include opacity(0.90);
+      @include border-top-radius(3px);
+      @include background-image(linear-gradient(left top, #393939, #000));
+      display: none;
+
+      .title {
+        color: white;
+        padding-left: 10px;
+        padding-right: 10px;
+        a {
+          color: white;
+        }
+      }
+      .summary {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 347px;
+      float: left;
+      @include border-top-radius(3px);  
+    }
+
+    &:hover {
+      .overlay {
+        display: block;
+      }
+    }
+  }
 
 	figcaption {
 		margin-top: 10px;
@@ -87,16 +92,19 @@ figure {
 		margin-left: 10px;
 		display: inline-block;
 	}
+
 	.progress {
 		width: 100%;
 		border: none;
 		height: 3px;
 		margin-bottom: 0px;
 		padding: 0px;
+
 		.meter {
 			background: orange;
 		}
 	}
+
 	.watchlist {
 		width: 100%;
 		text-align: center;

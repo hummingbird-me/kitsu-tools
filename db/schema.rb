@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20130131211433) do
     t.string   "title"
     t.string   "slug"
     t.string   "youtube_video_id"
-    t.string   "cover_image_url"
   end
 
   add_index "animes", ["slug"], :name => "index_animes_on_slug", :unique => true
