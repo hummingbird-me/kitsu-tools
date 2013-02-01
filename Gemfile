@@ -33,6 +33,7 @@ gem "tarantula", :require => "tarantula-rails3"
 
 gem 'jquery-rails'
 gem 'haml-rails'
+gem 'simple_form'
 
 gem 'friendly_id', '~> 4.0.9'
 gem 'devise'

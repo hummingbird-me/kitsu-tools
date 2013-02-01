@@ -11,7 +11,7 @@ class ReviewTest < ActiveSupport::TestCase
 
   test "cannot create a review without an anime" do
     r = Review.new
-    r.user = users(:one)
+    r.user = users(:x10afreedom)
     r.content = "test"
     r.positive = false
     assert !r.save
@@ -19,7 +19,7 @@ class ReviewTest < ActiveSupport::TestCase
 
   test "cannot create a review without content" do
     r = Review.new
-    r.user = users(:one)
+    r.user = users(:rika)
     r.anime = animes(:sword_art_online)
     r.positive = true
     assert !r.save
@@ -27,7 +27,7 @@ class ReviewTest < ActiveSupport::TestCase
 
   test "cannot create a review without specifying positiveness" do
     r = Review.new
-    r.user = users(:one)
+    r.user = users(:lpfmaniak)
     r.anime = animes(:sword_art_online)
     r.content = "test"
     assert !r.save

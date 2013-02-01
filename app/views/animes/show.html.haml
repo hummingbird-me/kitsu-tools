@@ -24,9 +24,11 @@
   %blockquote
     = quote.content
     —
-    = quote.character.name
+    = quote.character_name
 
-%p= link_to "[Show all]", anime_quotes_url(@anime)
+%p
+  = link_to "[Show all]", anime_quotes_url(@anime)
+  = link_to "[Submit quote]", new_anime_quote_url(@anime)
 
 %h3 Youtube Video
 

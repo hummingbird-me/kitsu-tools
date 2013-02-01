@@ -2,30 +2,30 @@
 
 one:
   content: "If we make it back to the real world. I'll find you again. And fall in love with you again."
-  character: asuna
+  character_name: Asuna Yuuki
   anime: sword_art_online
 
 two:
   content: "I too, was looking for something. Something real in this world. For me, it was the warmth of your hand."
-  character: lizbeth
+  character_name: Lizbeth
   anime: sword_art_online
 
 three:
   content: "Even if I die, you keep living okay? Live to see the end of this world, and to see why it was born. Live to see why a weak girl like me ended up here... And the reason you and I met."
-  character: sachi
+  character_name: Sachi
   anime: sword_art_online
 
 four:
   content: "Levels are just numbers. In this world, strength is just an illusion. There are more important things."
-  character: kirito
+  character_name: Kirito
   anime: sword_art_online
 
 five:
   content: "The main reason I got stronger was so I'd be able to survive."
-  character: kirito
+  character_name: kirito
   anime: sword_art_online
 
 six:
   content: "I'd rather trust and regret than doubt and regret."
-  character: kirito
+  character_name: Kirito
   anime: sword_art_online

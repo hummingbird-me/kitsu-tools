@@ -5,7 +5,7 @@ class QuoteTest < ActiveSupport::TestCase
     q = Quote.new
     q.content = ""
     q.anime = animes(:sword_art_online)
-    q.character = characters(:kirito)
+    q.character_name = "kirito"
     assert !q.save
   end
 
@@ -19,7 +19,7 @@ class QuoteTest < ActiveSupport::TestCase
   test "cannot create a quote without an anime" do
     q = Quote.new
     q.content = "test"
-    q.character = characters(:kirito)
+    q.character_name = "kirito"
     assert !q.save
   end
 end

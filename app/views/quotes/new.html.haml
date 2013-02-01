@@ -1,0 +1,6 @@
+%h1= title "Submit quote for #{@anime.title}"
+
+= simple_form_for @quote, :url => anime_quotes_path(@anime) do |f|
+  = f.input :content
+  = f.input :character_name
+  = f.button :submit
