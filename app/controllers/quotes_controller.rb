@@ -1,7 +1,7 @@
 class QuotesController < ApplicationController
   def index
     @anime = Anime.find(params[:anime_id])
-    @quotes = @anime.quotes
+    @quotes = @anime.quotes.includes(:creator)
   end
 
   def new
@@ -18,6 +18,7 @@ class QuotesController < ApplicationController
     @quote.content = params["quote"]["content"]
     @quote.character_name = params["quote"]["character_name"]
     @quote.anime = @anime
+    @quote.creator = current_user
     @quote.save
     redirect_to anime_quotes_path(@anime)
   end

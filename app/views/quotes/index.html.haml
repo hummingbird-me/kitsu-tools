@@ -7,3 +7,7 @@
     = quote.content
     —
     = quote.character_name
+    - if quote.creator
+      (Submitted by #{quote.creator.name})
+
+%p= link_to "[Submit quote]", new_anime_quote_url(@anime)
