@@ -35,7 +35,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 
 gem 'friendly_id', '~> 4.0.9'
-gem 'devise'
+gem 'devise', '~> 2.2.3'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
