@@ -42,3 +42,9 @@
       = casting.voice_actor.name
     - else
       (unknown)
+
+%h3 Reviews
+
+- @reviews.each do |review|
+  %h5 #{review.user.name} <small>#{review.positive ? ':)' : ':('}</small>
+  %p(style="white-space: pre-wrap")= review.content

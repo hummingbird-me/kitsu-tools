@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  user: x10freedom
+  user: x10afreedom
   anime: sword_art_online
   positive: true
   content: |
