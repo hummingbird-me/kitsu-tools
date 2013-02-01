@@ -9,7 +9,7 @@ class Anime < ActiveRecord::Base
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
 
-  validates :title, :slug, :presence => true
+  validates :title, :slug, :presence => true, :uniqueness => true
 
   # Return the URL to the anime cover image.
   # At a later stage it might be useful to make this a column in the database.
