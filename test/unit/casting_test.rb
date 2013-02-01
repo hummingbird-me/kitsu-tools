@@ -10,14 +10,14 @@ class CastingTest < ActiveSupport::TestCase
 
   test "cannot create casting without character" do
     c = Casting.new
-    c.anime = animes(:sword_art_online)
+    c.anime = anime(:sword_art_online)
     c.voice_actor = people(:asuna)
     assert !c.save
   end
 
   test "can create casting without voice actor" do
     c = Casting.new
-    c.anime = animes(:sword_art_online)
+    c.anime = anime(:sword_art_online)
     c.character = characters(:kirito)
     c.voice_actor = people(:asuna)
     assert c.save

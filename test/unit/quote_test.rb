@@ -4,7 +4,7 @@ class QuoteTest < ActiveSupport::TestCase
   test "cannot create a quote without content" do
     q = Quote.new
     q.content = ""
-    q.anime = animes(:sword_art_online)
+    q.anime = anime(:sword_art_online)
     q.character_name = "kirito"
     q.creator = users(:vikhyat)
     assert !q.save
@@ -13,7 +13,7 @@ class QuoteTest < ActiveSupport::TestCase
   test "can create a quote without a character" do
     q = Quote.new
     q.content = "test"
-    q.anime = animes(:sword_art_online)
+    q.anime = anime(:sword_art_online)
     q.creator = users(:vikhyat)
     assert q.save
   end
@@ -29,7 +29,7 @@ class QuoteTest < ActiveSupport::TestCase
   test "cannot create a quote without a creator" do
     q = Quote.new
     q.content = "test"
-    q.anime = animes(:sword_art_online)
+    q.anime = anime(:sword_art_online)
     assert !q.save
   end
 end
