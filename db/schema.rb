@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201213910) do
+ActiveRecord::Schema.define(:version => 20130202124409) do
 
   create_table "anime", :force => true do |t|
     t.string   "age_rating"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20130201213910) do
     t.datetime "updated_at",     :null => false
     t.string   "character_name"
     t.integer  "creator_id"
+    t.boolean  "visible"
   end
 
   create_table "reviews", :force => true do |t|

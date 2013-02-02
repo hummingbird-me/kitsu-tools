@@ -32,4 +32,13 @@ class QuoteTest < ActiveSupport::TestCase
     q.anime = anime(:sword_art_online)
     assert !q.save
   end
+
+  test "quotes are not marked as visible initially" do
+    q = Quote.new
+    q.content = "test"
+    q.anime = anime(:sword_art_online)
+    q.creator = users(:vikhyat)
+    assert q.save
+    assert !q.visible?
+  end
 end

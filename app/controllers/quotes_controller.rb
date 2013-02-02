@@ -1,7 +1,7 @@
 class QuotesController < ApplicationController
   def index
     @anime = Anime.find(params[:anime_id])
-    @quotes = @anime.quotes.includes(:creator)
+    @quotes = @anime.quotes.where(:visible => true).includes(:creator)
   end
 
   def new
