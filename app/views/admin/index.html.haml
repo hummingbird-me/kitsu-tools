@@ -1,3 +1,14 @@
-%h4 Quotes Pending Moderation
+%h1= title "Admin Panel"
+%h4 Quotes Pending Moderation (#{@quotes_pending_moderation.count})
+
 - @quotes_pending_moderation.each do |quote|
-  %pre= quote.to_yaml
+  .panel
+    %p From <strong>#{link_to quote.anime.title, quote.anime}</strong>.
+    %p= quote.content
+    %p — <em>#{quote.character_name || "(empty)"}</em>
+    %p Submitted by #{quote.creator.name}
+    
+    %p
+      = link_to "Approve", approve_quote_path(quote), :class => 'button'
+      = link_to "Delete",  delete_quote_path(quote),  :class => 'alert button', :confirm => 'Are you sure you want to delete the quote?'
+
