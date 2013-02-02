@@ -5,35 +5,30 @@ one:
   character_name: Asuna Yuuki
   anime: sword_art_online
   creator: vikhyat
-  visible: true
 
 two:
   content: "I too, was looking for something. Something real in this world. For me, it was the warmth of your hand."
   character_name: Lizbeth
   anime: sword_art_online
   creator: x10afreedom
-  visible: true
 
 three:
   content: "Even if I die, you keep living okay? Live to see the end of this world, and to see why it was born. Live to see why a weak girl like me ended up here... And the reason you and I met."
   character_name: Sachi
   anime: sword_art_online
   creator: rika
-  visible: true
 
 four:
   content: "Levels are just numbers. In this world, strength is just an illusion. There are more important things."
   character_name: Kirito
   anime: sword_art_online
   creator: lpfmaniak
-  visible: true
 
 five:
   content: "The main reason I got stronger was so I'd be able to survive."
   character_name: kirito
   anime: sword_art_online
   creator: x10afreedom
-  visible: true
 
 six:
   content: "I'd rather trust and regret than doubt and regret."

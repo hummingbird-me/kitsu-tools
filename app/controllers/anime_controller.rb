@@ -3,7 +3,7 @@ class AnimeController < ApplicationController
     @anime = Anime.find(params[:id])
     @genres = @anime.genres
     @producers = @anime.producers
-    @quotes = @anime.quotes.where(:visible => true).limit(4)
+    @quotes = @anime.quotes.limit(4)
     @castings = @anime.castings.includes(:character, :voice_actor)
     @reviews = @anime.reviews.includes(:user)
 

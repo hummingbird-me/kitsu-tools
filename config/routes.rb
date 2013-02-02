@@ -12,8 +12,6 @@ Hummingbird::Application.routes.draw do
 
   # Admin Panel
   match '/kotodama' => 'admin#index', :as => :admin_panel
-  match '/kotodama/quote/:id/approve' => 'admin#approve_quote', :as => :approve_quote
-  match '/kotodata/quote/:id/disapprove' => 'admin#delete_quote', :as => :delete_quote
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
