@@ -21,6 +21,12 @@
             %form.custom
               .row
                 .twelve.columns
+                  - @genres.each do |genre|
+                    %label{:for => genre.name}
+                      %input{:name => genre.name, :style => "display: none", :type => "checkbox", :value => ".#{genre.name}"}
+                      %span.custom.checkbox.checked
+                      = genre.name
+
                   %label{:for => "checkbox1"}
                     %input#checkbox1{:style => "display: none;", :type => "checkbox", :value => ".action"}
                       %span.custom.checkbox

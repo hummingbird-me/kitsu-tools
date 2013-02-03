@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
     @anime = Anime.page(params[:page]).per(18)
+    @genres = Genre.all
 
     if not user_signed_in?
       @watchlist = [false] * @anime.length
