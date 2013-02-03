@@ -172,9 +172,16 @@
   /* Make entire anime grid card overlay a clickable link */
   /* ==================================================== */
   :javascript
-    $(".overlay").click(function(){
-         window.location=$(this).find("a").attr("href"); 
-         return false;
+    $(".overlay").click(function (e) {
+      if (!e.ctrlKey && !e.metaKey) {
+        // Handle click without Ctrl/Cmd.
+        window.location = $(this).find("a").attr("href");
+      }
+      else {
+        // Click with Ctrl/Cmd.
+        window.open( $(this).find("a").attr("href"), "_blank");
+      }
+      return false;
     });
 
 = render 'shared/footer'
