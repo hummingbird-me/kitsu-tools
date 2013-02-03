@@ -8,7 +8,7 @@ Hummingbird::Application.routes.draw do
   end
 
   # Personalize Filters
-  match '/anime/filter/:filter(/:page)' => 'anime#filtered_listing', :as => :filtered_listing
+  match '/anime/filter/:filter(/:page)' => 'anime#index', :as => :filtered_listing
 
   resources :genres
   resources :producers

@@ -12,8 +12,8 @@ class AnimeController < ApplicationController
     end
   end
 
-  def filtered_listing
-    @filter = params[:filter]
+  def index
+    @filter = params[:filter] || "all"
     if @filter == "all"
       @anime = Anime.page(params[:page]).per(18)
     else
