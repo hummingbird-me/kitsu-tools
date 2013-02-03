@@ -8,10 +8,14 @@
           .title
             %h3 Personalize
           .personalize-filter.content
-            %p.active= link_to 'All Anime', filtered_listing_path(:all)
-            %p= link_to 'My Recommendations', '#'
-            %p= link_to "Anime I Haven't Seen", '#'
-            %p= link_to "Anime I Haven't Finished", '#'
+            %p{:class => (@filter == "all" ? "active" : "")}
+              = link_to 'All Anime', filtered_listing_path(:all)
+            %p
+              = link_to 'My Recommendations', '#'
+            %p{:class => (@filter == "unseen" ? "active" : "")}
+              = link_to "Anime I Haven't Seen", filtered_listing_path(:unseen)
+            %p
+              = link_to "Anime I Haven't Finished", '#'
 
       %ul.accordion
         %li.active    
