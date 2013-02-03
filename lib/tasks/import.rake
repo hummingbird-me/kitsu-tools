@@ -10,6 +10,7 @@ namespace :import do
       a.synopsis = meta["synopsis"]
       a.age_rating = meta["rating"]
       a.cover_image_url = meta["cover_image_url"]
+      a.episode_count = meta["episode_count"]
 
       # Genres
       meta["genres"].each {|g| Genre.find_or_create_by_name(g).save }
