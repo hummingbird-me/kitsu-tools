@@ -14,8 +14,8 @@
               = link_to 'My Recommendations', '#'
             %p{:class => (@filter == "unseen" ? "active" : "")}
               = link_to "Anime I Haven't Seen", filtered_listing_path(:unseen)
-            %p
-              = link_to "Anime I Haven't Finished", '#'
+            %p{:class => (@filter == "unfinished" ? "active" : "")}
+              = link_to "Anime I Haven't Finished", filtered_listing_path(:unfinished)
 
       %ul.accordion
         %li.active    

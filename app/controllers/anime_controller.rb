@@ -39,8 +39,13 @@ class AnimeController < ApplicationController
       @anime = @anime.page(params[:page]).per(18)
       @watchlist = [false] * @anime.length
 
-    else
-      raise ""
+    elsif @filter == "unfinished"
+      
+      authenticate_user!
+      @watchlist = Watchlist.where(:user_id => current_user).includes(:anime)
+      @unfinished = @watchlist.select {|w| true }.map(&:anime)
+      @anime = Kaminari.paginate_array(@unfinished).page(params[:page]).per(18)
+
     end
 
     @genres = Genre.all
