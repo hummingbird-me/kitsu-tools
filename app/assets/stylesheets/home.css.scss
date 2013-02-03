@@ -147,12 +147,19 @@
 
       img {
         width: 100%;
-        height: auto;
+        height: 330px;
         float: left;
         @include border-top-radius(3px); 
-        @media screen and (min-width: 480px) {
-          min-height: 350px;
-        } 
+        @media screen and (max-width: 480px) {
+          height: 267px;
+        }
+        @media screen and (min-width: 481px) {
+          height: 480px;
+        }
+
+        @media screen and (min-width: 765px) {
+          height: 351px;
+        }
       }
 
       &:hover {
