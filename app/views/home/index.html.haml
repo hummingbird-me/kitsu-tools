@@ -152,7 +152,7 @@
               %span.like :)
               %span.dislike :(
 
-        - @anime.each do |anime|
+        - @anime.each_with_index do |anime, i|
           .four.mobile-two.columns
             .panel
               %figure
@@ -163,7 +163,11 @@
               %figcaption= link_to anime.title, anime
               .progress.six
                 %span.meter{:style => "width: #{(rand * 100).to_i}%;"}
-              %p.watchlist= link_to "- Remove from Watchlist", "#"
+              %p.watchlist
+                - if @watchlist[i]
+                  = link_to "- Remove from Watchlist", "#"
+                - else
+                  = link_to "+ Add to Watchlist", "#"
               .vote-blocks
                 %span.like :)
                 %span.dislike :(
@@ -185,3 +189,5 @@
     });
 
 = render 'shared/footer'
+
+%pre= @watchlist
