@@ -120,6 +120,7 @@
         text-align: center;
         color: #fff;
         cursor: pointer;
+        z-index: 9999;
         @include opacity(0.90);
         @include border-top-radius(3px);
         @include background-image(linear-gradient(left top, #393939, #000));
