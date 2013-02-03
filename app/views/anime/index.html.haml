@@ -1,0 +1,104 @@
+= render 'shared/header'
+.home
+  .row.content-body
+    / Side Bar
+    .three.mobile-twelve.columns
+      %ul.accordion
+        %li.active
+          .title
+            %h3 Personalize
+          .personalize-filter.content
+            %p.active= link_to 'All Anime', filtered_listing_path(:all)
+            %p= link_to 'My Recommendations', '#'
+            %p= link_to "Anime I Haven't Seen", '#'
+            %p= link_to "Anime I Haven't Finished", '#'
+
+      %ul.accordion
+        %li.active    
+          .title
+            %h3 Filter
+          .content
+            %form.custom
+              .row
+                .twelve.columns
+                  - @genres.each do |genre|
+                    %label{:for => genre.name}
+                      %input{:checked => true, :name => genre.name, :style => "display: none", :type => "checkbox", :value => ".#{genre.name}"}
+                      %span.custom.checkbox.checked
+                      = genre.name
+
+                  / %label{:for => "checkbox1"}
+                  /   %input#checkbox1{:style => "display: none;", :type => "checkbox", :value => ".action"}
+                  /     %span.custom.checkbox
+                  /     Action
+
+                  / %label{:for => "checkbox2"}
+                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".comedy"}
+                  /     %span.custom.checkbox.checked
+                  /     Comedy
+
+                  / %label{:for => "checkbox2"}
+                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".demons"}
+                  /     %span.custom.checkbox.checked
+                  /     Demons
+
+                  / %label{:for => "checkbox2"}
+                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".drama"}
+                  /     %span.custom.checkbox.checked
+                  /     Drama
+
+                  / %label{:for => "checkbox2"}
+                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".ecchi"}
+                  /     %span.custom.checkbox.checked
+                  /     Ecchi
+
+    / Thumbnails
+    .anime-grid.nine.columns
+      .row
+        - @anime.each_with_index do |anime, i|
+          .four.mobile-two.columns
+            .panel
+              %figure
+                .overlay
+                  %h5.title= link_to anime.title, anime
+                  %p.summary #{truncate(anime.synopsis, :length => 300, :omission => '...')}
+                %figcaption= link_to anime.title, anime
+                %img{:src => anime.cover_image_url}
+              .progress.six
+                %span.meter{:style => "width: #{(rand * 100).to_i}%;"}
+              %p.watchlist
+                - if @watchlist[i]
+                  = link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
+                - else
+                  = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
+              .vote-blocks
+                %span.like
+                  - if @watchlist[i] and @watchlist[i].positive?
+                    %strong= link_to "[:)]", update_rating_path(anime, :neutral)
+                  - else
+                    = link_to ":)", update_rating_path(anime, :positive)
+                %span.dislike
+                  - if @watchlist[i] and @watchlist[i].negative?
+                    %strong= link_to "[:(]", update_rating_path(anime, :neutral)
+                  - else
+                    = link_to ":(", update_rating_path(anime, :negative)
+
+
+  = paginate(@anime)
+
+  /* Make entire anime grid card overlay a clickable link */
+  /* ==================================================== */
+  :javascript
+    $(".overlay").click(function (e) {
+      if (!e.ctrlKey && !e.metaKey) {
+        // Handle click without Ctrl/Cmd.
+        window.location = $(this).find("a").attr("href");
+      }
+      else {
+        // Click with Ctrl/Cmd.
+        window.open( $(this).find("a").attr("href"), "_blank");
+      }
+      return false;
+    });
+
+= render 'shared/footer'

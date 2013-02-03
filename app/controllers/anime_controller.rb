@@ -11,4 +11,27 @@ class AnimeController < ApplicationController
       format.html { render :show }
     end
   end
+
+  def filtered_listing
+    @filter = params[:filter]
+    if @filter == "all"
+      @anime = Anime.page(params[:page]).per(18)
+    else
+      raise ""
+    end
+
+    @genres = Genre.all
+
+    if not user_signed_in?
+      @watchlist = [false] * @anime.length
+    else
+      @watchlist = @anime.to_a.map do |x|
+        Watchlist.where(:anime_id => x, :user_id => current_user).first
+      end
+    end
+
+    respond_to do |format|
+      format.html { render :index }
+    end
+  end
 end
