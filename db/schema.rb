@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202184202) do
+ActiveRecord::Schema.define(:version => 20130203043003) do
 
   create_table "anime", :force => true do |t|
     t.string   "age_rating"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130202184202) do
     t.string   "title"
     t.string   "slug"
     t.string   "youtube_video_id"
+    t.string   "alt_title"
   end
 
   add_index "anime", ["slug"], :name => "index_animes_on_slug", :unique => true
