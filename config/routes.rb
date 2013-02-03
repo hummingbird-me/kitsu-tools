@@ -13,6 +13,7 @@ Hummingbird::Application.routes.draw do
   # Watchlist
   match '/watchlist/add/:anime_id' => 'watchlist#add_to_watchlist', :as => :add_to_watchlist
   match '/watchlist/remove/:anime_id' => 'watchlist#remove_from_watchlist', :as => :remove_from_watchlist
+  match '/watchlist/rate/:anime_id/:rating' => 'watchlist#update_rating', :as => :update_rating
 
   # Admin Panel
   match '/kotodama' => 'admin#index', :as => :admin_panel

@@ -15,4 +15,18 @@ class WatchlistController < ApplicationController
     @watch.delete
     redirect_to :back
   end
+
+  def update_rating
+    @anime = Anime.find(params[:anime_id])
+    @watch = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
+    if params[:rating] == "positive"
+      @watch.positive = true
+    elsif params[:rating] == "negative"
+      @watch.positive = false
+    else
+      @watch.positive = nil
+    end
+    @watch.save
+    redirect_to :back
+  end
 end

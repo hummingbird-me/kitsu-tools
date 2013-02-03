@@ -15,4 +15,12 @@ class Watchlist < ActiveRecord::Base
       return s
     end
   end
+
+  def positive?
+    (not positive.nil?) and positive
+  end
+
+  def negative?
+    (not positive.nil?) and (not positive)
+  end
 end

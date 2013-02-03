@@ -72,8 +72,16 @@
                 - else
                   = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
               .vote-blocks
-                %span.like :)
-                %span.dislike :(
+                %span.like
+                  - if @watchlist[i] and @watchlist[i].positive?
+                    %strong= link_to "[:)]", update_rating_path(anime, :neutral)
+                  - else
+                    = link_to ":)", update_rating_path(anime, :positive)
+                %span.dislike
+                  - if @watchlist[i] and @watchlist[i].negative?
+                    %strong= link_to "[:(]", update_rating_path(anime, :neutral)
+                  - else
+                    = link_to ":(", update_rating_path(anime, :negative)
 
 
   = paginate(@anime)
