@@ -11,10 +11,4 @@ class Anime < ActiveRecord::Base
   has_and_belongs_to_many :producers
 
   validates :title, :slug, :presence => true, :uniqueness => true
-
-  # Return the URL to the anime cover image.
-  # At a later stage it might be useful to make this a column in the database.
-  def cover_image_url
-    "http://vikhyat.net/AnimeGraph/thumbs/#{mal_id}.jpg"
-  end
 end
