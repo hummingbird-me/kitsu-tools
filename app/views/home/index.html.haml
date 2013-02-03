@@ -152,6 +152,23 @@
               %span.like :)
               %span.dislike :(
 
+        - @anime.each do |anime|
+          .four.mobile-two.columns
+            .panel
+              %figure
+                .overlay
+                  %h5.title= link_to anime.title, anime
+                  %p.summary #{truncate(anime.synopsis, :length => 300, :omission => '...')}
+                %img{:src => anime.cover_image_url}
+              %figcaption= link_to anime.title, anime
+              .progress.six
+                %span.meter{:style => "width: #{(rand * 100).to_i}%;"}
+              %p.watchlist= link_to "- Remove from Watchlist", "#"
+              .vote-blocks
+                %span.like :)
+                %span.dislike :(
+
+
   /* Make entire anime grid card overlay a clickable link */
   /* ==================================================== */
   :javascript
@@ -159,5 +176,5 @@
          window.location=$(this).find("a").attr("href"); 
          return false;
     });
-      
+
 = render 'shared/footer'
