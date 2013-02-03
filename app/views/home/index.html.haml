@@ -23,34 +23,34 @@
                 .twelve.columns
                   - @genres.each do |genre|
                     %label{:for => genre.name}
-                      %input{:name => genre.name, :style => "display: none", :type => "checkbox", :value => ".#{genre.name}"}
+                      %input{:checked => true, :name => genre.name, :style => "display: none", :type => "checkbox", :value => ".#{genre.name}"}
                       %span.custom.checkbox.checked
                       = genre.name
 
-                  %label{:for => "checkbox1"}
-                    %input#checkbox1{:style => "display: none;", :type => "checkbox", :value => ".action"}
-                      %span.custom.checkbox
-                      Action
+                  / %label{:for => "checkbox1"}
+                  /   %input#checkbox1{:style => "display: none;", :type => "checkbox", :value => ".action"}
+                  /     %span.custom.checkbox
+                  /     Action
 
-                  %label{:for => "checkbox2"}
-                    %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".comedy"}
-                      %span.custom.checkbox.checked
-                      Comedy
+                  / %label{:for => "checkbox2"}
+                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".comedy"}
+                  /     %span.custom.checkbox.checked
+                  /     Comedy
 
-                  %label{:for => "checkbox2"}
-                    %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".demons"}
-                      %span.custom.checkbox.checked
-                      Demons
+                  / %label{:for => "checkbox2"}
+                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".demons"}
+                  /     %span.custom.checkbox.checked
+                  /     Demons
 
-                  %label{:for => "checkbox2"}
-                    %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".drama"}
-                      %span.custom.checkbox.checked
-                      Drama
+                  / %label{:for => "checkbox2"}
+                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".drama"}
+                  /     %span.custom.checkbox.checked
+                  /     Drama
 
-                  %label{:for => "checkbox2"}
-                    %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".ecchi"}
-                      %span.custom.checkbox.checked
-                      Ecchi
+                  / %label{:for => "checkbox2"}
+                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".ecchi"}
+                  /     %span.custom.checkbox.checked
+                  /     Ecchi
 
     / Thumbnails
     .anime-grid.nine.columns
