@@ -10,6 +10,10 @@ Hummingbird::Application.routes.draw do
   resources :genres
   resources :producers
 
+  # Watchlist
+  match '/watchlist/add/:anime_id' => 'watchlist#add_to_watchlist', :as => :add_to_watchlist
+  match '/watchlist/remove/:anime_id' => 'watchlist#add_to_watchlist', :as => :remove_from_watchlist
+
   # Admin Panel
   match '/kotodama' => 'admin#index', :as => :admin_panel
 

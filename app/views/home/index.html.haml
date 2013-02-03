@@ -165,9 +165,9 @@
                 %span.meter{:style => "width: #{(rand * 100).to_i}%;"}
               %p.watchlist
                 - if @watchlist[i]
-                  = link_to "- Remove from Watchlist", "#"
+                  = link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
                 - else
-                  = link_to "+ Add to Watchlist", "#"
+                  = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
               .vote-blocks
                 %span.like :)
                 %span.dislike :(
