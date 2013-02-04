@@ -27,4 +27,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Avatar
+  # TODO Need to support uploaded avatars as well.
+  def avatar_url
+    # Gravatar
+    default_url = "http://placekitten.com/100/100"
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=100&d=#{CGI.escape(default_url)}"
+  end
+
 end
