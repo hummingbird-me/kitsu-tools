@@ -25,9 +25,13 @@
             %form.custom
               .row
                 .twelve.columns
+                  %input.button.tiny(type="submit" value="Apply")
+                  %a.button.tiny.disable_all Deselect All
+                  %a.button.tiny.enable_all Select All
+
                   - @all_genres.each do |genre|
                     %label{:for => genre.slug, "data-width" => "300", :title => genre.description, :class => ("has-tip tip-top" if genre.description && genre.description.length > 0)}
-                      %input{:checked => @genre_filter.include?(genre), :name => genre.slug, :id => genre.slug, :style => "display: none", :type => "checkbox", :value => ".#{genre.slug}"}
+                      %input{:checked => @genre_filter.include?(genre), :name => genre.slug, :id => genre.slug, :style => "display: none", :type => "checkbox"}
                         %span.custom.checkbox{:class => ("checked" if @genre_filter.include? genre)}
                       = genre.name
 
@@ -40,9 +44,8 @@
       .row
         = paginate(@anime)
 
-  /* Make entire anime grid card overlay a clickable link */
-  /* ==================================================== */
   :javascript
+    // Make entire anime grid card overlay a clickable link.
     $(".overlay").click(function (e) {
       if (!e.ctrlKey && !e.metaKey) {
         // Handle click without Ctrl/Cmd.
@@ -54,5 +57,17 @@
       }
       return false;
     });
+
+    // Filter functionality.
+    // TODO make disableAllGenres and enableAllGenres faster.
+    function disableAllGenres() {
+      $("span.custom.checkbox.checked").click();
+    }
+    function enableAllGenres() {
+      disableAllGenres();
+      $("span.custom.checkbox").click();
+    }
+    $(".disable_all").click(disableAllGenres);
+    $(".enable_all").click(enableAllGenres);
 
 = render 'shared/footer'
