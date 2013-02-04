@@ -1,1 +1,43 @@
+@import "compass/css3";
 
+.hummingbird-header {
+  .top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active, .top-bar ul > li:not(.name):focus {
+    background: none;
+  }
+  .top-bar ul > li a:not(.button) {
+    height: 36px;
+  }
+  .top-bar {
+    background: white;
+    border-top: 4px solid orange;
+    @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px);
+    a {
+      color: #000 !important;
+      &:hover {
+        color: orange !important;
+      }
+    }
+  }
+
+  .columns {
+    padding: 13px 5px 10px 5px;
+    background: white;
+    a {
+      color: #000;
+    }
+  }
+
+  .name {
+    width: 214px;
+    a {
+      text-indent: -9999px;
+      display: block;
+      background: url(asset-path('logo.png', image));
+      @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+        background-image: url(asset-path('logo@2x.png', image));
+        background-size: 214px 36px;
+      }
+    }
+  }
+
+}

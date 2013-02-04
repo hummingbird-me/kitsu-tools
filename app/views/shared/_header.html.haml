@@ -1,1 +1,41 @@
-Header goes here.
+.hummingbird-header
+  .top-bar
+    .row
+      .twelve.columns
+        / Navigation
+        .row
+          .twelve.columns
+            %ul.top-bar
+              %ul
+                %li.name
+                  %h1
+                    %a{:href => "#"} Hummingbird
+                %li.toggle-topbar
+                  %a{:href => "#"}
+              %section
+                %ul.left
+                  %li
+                    %a{:href => "#"} Discover
+                  %li
+                    %a{:href => "#"} Dashboard
+                  %li
+                    %a{:href => "#"} Community
+
+                %ul.right
+                  - if user_signed_in?
+                    %li.has-dropdown
+                      %a{:href => "#"} Link
+                      %ul.dropdown
+                        %li
+                          = link_to "Edit profile", edit_user_registration_path
+                        %li
+                          = link_to "Sign out", destroy_user_session_path, :method => :delete
+                  - else
+                    %li
+                      = link_to "Sign in", new_user_session_path
+                    %li
+                      = link_to "Sign up", new_user_registration_path
+
+
+
+
