@@ -32,6 +32,24 @@
                           = link_to "Sign out", destroy_user_session_path, :method => :delete
                   - else
                     %li
-                      = link_to "Sign in", new_user_session_path
+                      %a{"data-reveal-id" => "myModal", :href => "#"} Signup
                     %li
                       = link_to "Sign up", new_user_registration_path
+
+                  #myModal.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
+                    <h2>Sign up</h2>
+
+                    <div><%= f.label :name %><br />
+                    <%= f.text_field :name, :autofocus => true %></div>
+
+                    <div><%= f.label :email %><br />
+                    <%= f.email_field :email %></div>
+
+                    <div><%= f.label :password %><br />
+                    <%= f.password_field :password %></div>
+
+                    <div><%= f.label :password_confirmation %><br />
+                    <%= f.password_field :password_confirmation %></div>
+
+                    <div><%= f.submit "Sign up" %></div>
+
