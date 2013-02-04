@@ -13,42 +13,50 @@ class AnimeController < ApplicationController
   end
 
   def index
-    # Fetch the watchlist
-    @filter = params[:filter] || "all"
-    if @filter == "all"
+    # Establish a base scope.
+    @anime = Anime.page(params[:page]).per(18)
 
-      @anime = Anime.page(params[:page]).per(18)
-      if not user_signed_in?
-        @watchlist = [false] * @anime.length
-      else
-        @watchlist = @anime.to_a.map do |x|
-          Watchlist.where(:anime_id => x, :user_id => current_user).first
-        end
+    # Get a list of all genres.
+    @all_genres = Genre.order(:name)
+
+    # Filter by genre if needed.
+    if params[:genres] and params[:genres].length > 0
+      @genre_slugs  = params[:genres].split.uniq 
+      if @all_genres.count > @genre_slugs.length
+        @genre_filter = Genre.where("slug IN (?)", @genre_slugs)
+        @anime = @anime.joins(:genres)
+                       .where("genres.id IN (?)", @genre_filter.map(&:id))
       end
+    end
+
+    # What regular filter are we applying?
+    @filter = params[:filter] || "all"
+
+    if @filter == "all"
+      
+      # Nothing to do here!
 
     elsif @filter == "unseen"
 
+      # The user needs to be signed in for this one.
       authenticate_user!
-      @watchlist = Watchlist.where(:user_id => current_user).includes(:anime)
-      @watched = @watchlist.map(&:anime)
-      if @watched.length == 0
-        @anime = Anime
-      else
-        @anime = Anime.where('id NOT IN (?)', @watched.map(&:id))
-      end
-      @anime = @anime.page(params[:page]).per(18)
-      @watchlist = [false] * @anime.length
 
-    elsif @filter == "unfinished"
-      
-      authenticate_user!
-      @watchlist = Watchlist.where(:user_id => current_user).includes(:anime)
-      @unfinished = @watchlist.select {|w| true }.map(&:anime)
-      @anime = Kaminari.paginate_array(@unfinished).page(params[:page]).per(18)
+      # Get anime which the user doesn't have on their watchlist.
+      # TODO
+      @anime = @anime
 
+    else
+      raise ""
     end
 
-    @genres = Genre.order(:name)
+    # Get the watchlist.
+    @watchlist = Hash.new(false)
+    if user_signed_in?
+      @anime.each do |anime|
+        @watchlist[ anime.id ] = Watchlist.where(:anime_id => anime,
+                                                 :user_id => current_user).first
+      end
+    end
 
     respond_to do |format|
       format.html { render :index }

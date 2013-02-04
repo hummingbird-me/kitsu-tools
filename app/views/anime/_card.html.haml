@@ -1,0 +1,26 @@
+.four.mobile-two.columns
+  .panel
+    %figure
+      .overlay
+        %h5.title= link_to anime.title, anime
+        %p.summary #{truncate(anime.synopsis, length: 300, omission: '...')}
+      %figcaption= link_to anime.title, anime
+      %img{:src => anime.cover_image_url}
+    .progress.six
+      %span.meter{:style => "width: #{(rand * 100).to_i}%"}
+    %p.watchlist
+      - if watchlist
+        = link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
+      - else
+        = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
+    .vote-blocks
+      %span.like
+        - if watchlist and watchlist.positive?
+          %strong.active= link_to "[:)]", update_rating_path(anime, :neutral)
+        - else
+          %strong= link_to ":)", update_rating_path(anime, :positive)
+      %span.dislike
+        - if watchlist and watchlist.negative?
+          %strong.active= link_to "[:(]", update_rating_path(anime, :neutral)
+        - else
+          %strong= link_to ":(", update_rating_path(anime, :negative)
