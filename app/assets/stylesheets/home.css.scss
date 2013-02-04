@@ -10,7 +10,15 @@
   p {
     margin: 0;
   }
-
+  .has-tip {
+    cursor: pointer;
+    &:hover{
+      color: orange;
+    }
+  }
+  .nub {
+    top: 5px !important;
+  }
   ul.accordion {
     border: none;
     margin: 0;
@@ -295,9 +303,6 @@
               background-image: url(asset-path('icons/vote-sprite@2x.png', image));
               background-size: 70px 99px;
             }
-            &:hover {
-            background-position: right bottom;
-            }
           }
         }
         .active {
@@ -306,6 +311,9 @@
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-image: url(asset-path('icons/vote-sprite@2x.png', image));
             background-size: 70px 99px;
+          }
+          &:hover {
+            background-position: right bottom;
           }
         }
       }
