@@ -13,7 +13,7 @@ class AnimeController < ApplicationController
   end
 
   def index
-    # Establish a base scope.
+    # Establish a base scope, with pagination enabled.
     @anime = Anime.page(params[:page]).per(18)
 
     # Get a list of all genres.
@@ -45,7 +45,12 @@ class AnimeController < ApplicationController
       # The user needs to be signed in for this one.
       authenticate_user!
 
+      # Get anime which the user doesn't have on their watchlist.
       @anime = @anime.where('id NOT IN (?)', @watchlist.keys)
+      
+    elsif @filter == "unfinished"
+
+      @anime = @anime.where('id IN (?)', @watchlist.keys)
 
     else
       # The filter is either all or something invalid; either way we don't have
