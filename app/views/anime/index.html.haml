@@ -9,13 +9,13 @@
             %h3 Personalize
           .personalize-filter.content
             %p{:class => (@filter == "all" ? "active" : "")}
-              = link_to 'All Anime', filtered_listing_path(:all)
+              = link_to 'All Anime', filtered_listing_path(:all, :genres => params[:genres])
             %p
               = link_to 'My Recommendations', '#'
             %p{:class => (@filter == "unseen" ? "active" : "")}
-              = link_to "Anime I Haven't Seen", filtered_listing_path(:unseen)
+              = link_to "Anime I Haven't Seen", filtered_listing_path(:unseen, :genres => params[:genres])
             %p{:class => (@filter == "unfinished" ? "active" : "")}
-              = link_to "Anime I Haven't Finished", filtered_listing_path(:unfinished)
+              = link_to "Anime I Haven't Finished", filtered_listing_path(:unfinished, :genres => params[:genres])
 
       %ul.accordion
         %li.active    
