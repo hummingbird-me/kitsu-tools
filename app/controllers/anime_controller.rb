@@ -29,33 +29,27 @@ class AnimeController < ApplicationController
       end
     end
 
+    # Fetch the user's watchlist.
+    @watchlist = Hash.new(false)
+    if user_signed_in?
+      Watchlist.where(:user_id => current_user).each do |watch|
+        @watchlist[ watch.anime_id ] = watch
+      end
+    end
+
     # What regular filter are we applying?
     @filter = params[:filter] || "all"
 
-    if @filter == "all"
-      
-      # Nothing to do here!
-
-    elsif @filter == "unseen"
+    if @filter == "unseen"
 
       # The user needs to be signed in for this one.
       authenticate_user!
 
-      # Get anime which the user doesn't have on their watchlist.
-      # TODO
-      @anime = @anime
+      @anime = @anime.where('id NOT IN (?)', @watchlist.keys)
 
     else
-      raise ""
-    end
-
-    # Get the watchlist.
-    @watchlist = Hash.new(false)
-    if user_signed_in?
-      @anime.each do |anime|
-        @watchlist[ anime.id ] = Watchlist.where(:anime_id => anime,
-                                                 :user_id => current_user).first
-      end
+      # The filter is either all or something invalid; either way we don't have
+      # to do anything.
     end
 
     respond_to do |format|
