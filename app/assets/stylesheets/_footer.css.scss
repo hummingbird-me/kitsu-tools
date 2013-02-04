@@ -1,0 +1,32 @@
+.hummingbird-footer {
+  .bottom-bar {
+    background: #484848;
+    color: white;
+    a {
+      color: white;
+    }
+    .footer {
+      padding-top: 30px;
+      padding-bottom: 30px;
+      .footer-logo {
+        text-indent: -9999px;
+        width: 96px;
+        height: 63px;
+        display: block;
+        background: url(asset-path('footer-logo.png', image));
+      }
+
+      .link-list {
+        margin-bottom: 5px;
+        margin-top: 10px;
+      }
+
+      .bottom-list {
+        margin-top: 5px;
+        a {
+          color: #a6a6a6;
+        }
+      }
+    }
+  }
+}
