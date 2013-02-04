@@ -13,38 +13,51 @@ class AnimeController < ApplicationController
   end
 
   def index
-    # Fetch the watchlist
-    @filter = params[:filter] || "all"
-    if @filter == "all"
+    # Establish a base scope, with pagination enabled.
+    @anime = Anime.page(params[:page]).per(18)
 
-      @anime = Anime.page(params[:page]).per(18)
-      if not user_signed_in?
-        @watchlist = [false] * @anime.length
-      else
-        @watchlist = @anime.to_a.map do |x|
-          Watchlist.where(:anime_id => x, :user_id => current_user).first
-        end
+    # Get a list of all genres.
+    @all_genres = Genre.order(:name)
+
+    # Filter by genre if needed.
+    if params[:genres] and params[:genres].length > 0
+      @genre_slugs  = params[:genres].split.uniq 
+      if @all_genres.count > @genre_slugs.length
+        @genre_filter = Genre.where("slug IN (?)", @genre_slugs)
+        @anime = @anime.joins(:genres)
+                       .where("genres.id IN (?)", @genre_filter.map(&:id))
       end
-
-    elsif @filter == "unseen"
-
-      authenticate_user!
-      @watchlist = Watchlist.where(:user_id => current_user).includes(:anime)
-      @watched = @watchlist.map(&:anime)
-      if @watched.length == 0
-        @anime = Anime
-      else
-        @anime = Anime.where('id NOT IN (?)', @watched.map(&:id))
-      end
-      @anime = @anime.page(params[:page]).per(18)
-      @watchlist = [false] * @anime.length
-
     else
-      raise ""
+      @genre_filter = @all_genres
     end
 
-    @genres = Genre.all
+    # Fetch the user's watchlist.
+    @watchlist = Hash.new(false)
+    if user_signed_in?
+      Watchlist.where(:user_id => current_user).each do |watch|
+        @watchlist[ watch.anime_id ] = watch
+      end
+    end
 
+    # What regular filter are we applying?
+    @filter = params[:filter] || "all"
+
+    if @filter == "unseen"
+
+      # The user needs to be signed in for this one.
+      authenticate_user!
+
+      # Get anime which the user doesn't have on their watchlist.
+      @anime = @anime.where('id NOT IN (?)', @watchlist.keys)
+      
+    elsif @filter == "unfinished"
+
+      @anime = @anime.where('id IN (?)', @watchlist.keys)
+
+    else
+      # The filter is either all or something invalid; either way we don't have
+      # to do anything.
+    end
 
     respond_to do |format|
       format.html { render :index }

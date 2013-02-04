@@ -11,22 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130203123847) do
+ActiveRecord::Schema.define(:version => 20130204104825) do
 
   create_table "anime", :force => true do |t|
+    t.string   "title"
+    t.string   "alt_title"
+    t.string   "slug"
     t.string   "age_rating"
     t.integer  "episode_count"
     t.integer  "episode_length"
     t.string   "status"
     t.text     "synopsis"
+    t.string   "youtube_video_id"
+    t.string   "cover_image_url"
     t.integer  "mal_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.string   "title"
-    t.string   "slug"
-    t.string   "youtube_video_id"
-    t.string   "alt_title"
-    t.string   "cover_image_url"
   end
 
   add_index "anime", ["slug"], :name => "index_animes_on_slug", :unique => true
@@ -58,9 +58,10 @@ ActiveRecord::Schema.define(:version => 20130203123847) do
 
   create_table "genres", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
     t.string   "slug"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
   end
 
   create_table "people", :force => true do |t|
@@ -71,18 +72,18 @@ ActiveRecord::Schema.define(:version => 20130203123847) do
 
   create_table "producers", :force => true do |t|
     t.string   "name"
+    t.string   "slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "slug"
   end
 
   create_table "quotes", :force => true do |t|
-    t.text     "content"
     t.integer  "anime_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.text     "content"
     t.string   "character_name"
     t.integer  "creator_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "reviews", :force => true do |t|
@@ -99,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20130203123847) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
+    t.string   "name"
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -110,7 +112,6 @@ ActiveRecord::Schema.define(:version => 20130203123847) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "name"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -9,13 +9,13 @@
             %h3 Personalize
           .personalize-filter.content
             %p{:class => (@filter == "all" ? "active" : "")}
-              = link_to 'All Anime', filtered_listing_path(:all)
+              = link_to 'All Anime', filtered_listing_path(:all, :genres => params[:genres])
             %p
               = link_to 'My Recommendations', '#'
             %p{:class => (@filter == "unseen" ? "active" : "")}
-              = link_to "Anime I Haven't Seen", filtered_listing_path(:unseen)
-            %p
-              = link_to "Anime I Haven't Finished", '#'
+              = link_to "Anime I Haven't Seen", filtered_listing_path(:unseen, :genres => params[:genres])
+            %p{:class => (@filter == "unfinished" ? "active" : "")}
+              = link_to "Anime I Haven't Finished", filtered_listing_path(:unfinished, :genres => params[:genres])
 
       %ul.accordion
         %li.active    
@@ -25,70 +25,20 @@
             %form.custom
               .row
                 .twelve.columns
-                  - @genres.each do |genre|
-                    %label.has-tip.tip-top{:for => genre.name, "data-width" => "300", :title => "A genre that often parallels teen melodrama in addition to using slice-of-life narrative techniques."}
-                      %input{:checked => true, :name => genre.name, :id => genre.name, :style => "display: none", :type => "checkbox", :value => ".#{genre.name}"}
-                      %span.custom.checkbox.checked
+                  - @all_genres.each do |genre|
+                    %label{:for => genre.slug, "data-width" => "300", :title => genre.description, :class => ("has-tip tip-top" if genre.description && genre.description.length > 0)}
+                      %input{:checked => @genre_filter.include?(genre), :name => genre.slug, :id => genre.slug, :style => "display: none", :type => "checkbox", :value => ".#{genre.slug}"}
+                        %span.custom.checkbox{:class => ("checked" if @genre_filter.include? genre)}
                       = genre.name
-
-                  / %label{:for => "checkbox1"}
-                  /   %input#checkbox1{:style => "display: none;", :type => "checkbox", :value => ".action"}
-                  /     %span.custom.checkbox
-                  /     Action
-
-                  / %label{:for => "checkbox2"}
-                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".comedy"}
-                  /     %span.custom.checkbox.checked
-                  /     Comedy
-
-                  / %label{:for => "checkbox2"}
-                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".demons"}
-                  /     %span.custom.checkbox.checked
-                  /     Demons
-
-                  / %label{:for => "checkbox2"}
-                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".drama"}
-                  /     %span.custom.checkbox.checked
-                  /     Drama
-
-                  / %label{:for => "checkbox2"}
-                  /   %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox", :value => ".ecchi"}
-                  /     %span.custom.checkbox.checked
-                  /     Ecchi
 
     / Thumbnails
     .anime-grid.nine.columns
       .row
-        - @anime.each_with_index do |anime, i|
-          .four.mobile-two.columns
-            .panel
-              %figure
-                .overlay
-                  %h5.title= link_to anime.title, anime
-                  %p.summary #{truncate(anime.synopsis, :length => 300, :omission => '...')}
-                %figcaption= link_to anime.title, anime
-                %img{:src => anime.cover_image_url}
-              .progress.six
-                %span.meter{:style => "width: #{(rand * 100).to_i}%;"}
-              %p.watchlist
-                - if @watchlist[i]
-                  = link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
-                - else
-                  = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
-              .vote-blocks
-                %span.like
-                  - if @watchlist[i] and @watchlist[i].positive?
-                    %strong.active= link_to "[:)]", update_rating_path(anime, :neutral)
-                  - else
-                    %strong= link_to ":)", update_rating_path(anime, :positive)
-                %span.dislike
-                  - if @watchlist[i] and @watchlist[i].negative?
-                    %strong.active= link_to "[:(]", update_rating_path(anime, :neutral)
-                  - else
-                    %strong= link_to ":(", update_rating_path(anime, :negative)
+        - @anime.each do |anime|
+          = render partial: "card", locals: {anime: anime, watchlist: @watchlist[anime.id]}
 
-
-  = paginate(@anime)
+      .row
+        = paginate(@anime)
 
   /* Make entire anime grid card overlay a clickable link */
   /* ==================================================== */
