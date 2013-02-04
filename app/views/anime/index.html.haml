@@ -41,7 +41,7 @@
         - @anime.each do |anime|
           = render partial: "card", locals: {anime: anime, watchlist: @watchlist[anime.id]}
 
-      .row
+      .row.pagination-centered
         = paginate(@anime)
 
   :javascript
