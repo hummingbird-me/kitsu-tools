@@ -78,14 +78,14 @@
               .vote-blocks
                 %span.like
                   - if @watchlist[i] and @watchlist[i].positive?
-                    %strong= link_to "[:)]", update_rating_path(anime, :neutral)
+                    %strong.active= link_to "[:)]", update_rating_path(anime, :neutral)
                   - else
-                    = link_to ":)", update_rating_path(anime, :positive)
+                    %strong= link_to ":)", update_rating_path(anime, :positive)
                 %span.dislike
                   - if @watchlist[i] and @watchlist[i].negative?
-                    %strong= link_to "[:(]", update_rating_path(anime, :neutral)
+                    %strong.active= link_to "[:(]", update_rating_path(anime, :neutral)
                   - else
-                    = link_to ":(", update_rating_path(anime, :negative)
+                    %strong= link_to ":(", update_rating_path(anime, :negative)
 
 
   = paginate(@anime)

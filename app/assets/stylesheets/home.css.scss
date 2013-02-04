@@ -206,19 +206,108 @@
 
       .like {
         width: 50%;
-        height: 60px;
-        display: block;
-        text-align: center;
         float: left;
         border-right: 1px solid #f2f2f2;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        strong {
+          text-indent: -9999px;
+          display: block;
+          width: 34px;
+          height: 33px;
+          margin: 0 auto;
+          cursor: pointer;
+          background-position: left top;
+          background-image: url(asset-path('icons/vote-sprite.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+            background-size: 70px 99px;
+          }
+          a {
+            display: block;
+            height: 100%;
+          }
+          &:hover {
+            background-position: left center;
+            background-image: url(asset-path('icons/vote-sprite.png', image));
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+              background-size: 70px 99px;
+            }
+          }
+          &:active {
+            background-position: left bottom;
+            background-image: url(asset-path('icons/vote-sprite.png', image));
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+              background-size: 70px 99px;
+            }
+          }
+        }
+        .active {
+          background-position: left bottom;
+          background-image: url(asset-path('icons/vote-sprite.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+            background-size: 70px 99px;
+          }
+          &:hover {
+            background-position: left bottom;
+          }
+        }
       }
 
       .dislike {
         width: 50%;
-        height: 60px;
         display: block;
-        text-align: center;
         float: left;
+        cursor: pointer;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        strong {
+          text-indent: -9999px;
+          display: block;
+          width: 34px;
+          height: 33px;
+          margin: 0 auto;
+          background-position: right top;
+          background-image: url(asset-path('icons/vote-sprite.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+            background-size: 70px 99px;
+          }
+          a {
+            display: block;
+            height: 100%;
+          }
+          &:hover {
+            background-position: right center;
+            background-image: url(asset-path('icons/vote-sprite.png', image));
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+              background-size: 70px 99px;
+            }
+          }
+          &:active {
+            background-position: right bottom;
+            background-image: url(asset-path('icons/vote-sprite.png', image));
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+              background-size: 70px 99px;
+            }
+            &:hover {
+            background-position: right bottom;
+            }
+          }
+        }
+        .active {
+          background-position: right bottom;
+          background-image: url(asset-path('icons/vote-sprite.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+            background-size: 70px 99px;
+          }
+        }
       }
     }
   }
