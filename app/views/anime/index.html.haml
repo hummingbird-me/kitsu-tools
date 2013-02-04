@@ -26,9 +26,9 @@
               .row
                 .twelve.columns
                   - @all_genres.each do |genre|
-                    %label{:for => genre.name, "data-width" => "300", :title => genre.description, :class => (genre.description && genre.description.length > 0) ? "has-tip tip-top" : ""}
-                      %input{:checked => true, :name => genre.name, :id => genre.name, :style => "display: none", :type => "checkbox", :value => ".#{genre.name}"}
-                      %span.custom.checkbox.checked
+                    %label{:for => genre.slug, "data-width" => "300", :title => genre.description, :class => ("has-tip tip-top" if genre.description && genre.description.length > 0)}
+                      %input{:checked => @genre_filter.include?(genre), :name => genre.slug, :id => genre.slug, :style => "display: none", :type => "checkbox", :value => ".#{genre.slug}"}
+                        %span.custom.checkbox{:class => ("checked" if @genre_filter.include? genre)}
                       = genre.name
 
     / Thumbnails

@@ -27,6 +27,8 @@ class AnimeController < ApplicationController
         @anime = @anime.joins(:genres)
                        .where("genres.id IN (?)", @genre_filter.map(&:id))
       end
+    else
+      @genre_filter = @all_genres
     end
 
     # Fetch the user's watchlist.
