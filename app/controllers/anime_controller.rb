@@ -48,8 +48,7 @@ class AnimeController < ApplicationController
 
     end
 
-    @genres = Genre.all
-
+    @genres = Genre.order(:name)
 
     respond_to do |format|
       format.html { render :index }

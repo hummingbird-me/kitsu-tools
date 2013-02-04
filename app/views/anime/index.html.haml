@@ -26,7 +26,7 @@
               .row
                 .twelve.columns
                   - @genres.each do |genre|
-                    %label.has-tip.tip-top{:for => genre.name, "data-width" => "300", :title => "A genre that often parallels teen melodrama in addition to using slice-of-life narrative techniques."}
+                    %label{:for => genre.name, "data-width" => "300", :title => genre.description, :class => (genre.description && genre.description.length > 0) ? "has-tip tip-top" : ""}
                       %input{:checked => true, :name => genre.name, :id => genre.name, :style => "display: none", :type => "checkbox", :value => ".#{genre.name}"}
                       %span.custom.checkbox.checked
                       = genre.name

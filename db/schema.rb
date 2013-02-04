@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130203123847) do
+ActiveRecord::Schema.define(:version => 20130204104825) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -59,8 +59,9 @@ ActiveRecord::Schema.define(:version => 20130203123847) do
   create_table "genres", :force => true do |t|
     t.string   "name"
     t.string   "slug"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
   end
 
   create_table "people", :force => true do |t|
