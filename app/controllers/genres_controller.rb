@@ -1,6 +1,5 @@
 class GenresController < ApplicationController
   def show
-    @genre = Genre.find(params[:id])
-    @animes = @genre.animes
+    redirect_to anime_index_path(:genres => params[:id])
   end
 end
