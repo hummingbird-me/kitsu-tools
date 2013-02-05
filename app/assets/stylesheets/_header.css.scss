@@ -11,12 +11,45 @@
     background: white;
     border-top: 4px solid orange;
     @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px);
+
     a {
       color: #000 !important;
       &:hover {
         color: orange !important;
       }
     }
+
+    .right {
+      border-left: 1px solid #eee;
+    }
+    .avatar {
+      a {
+        margin-bottom: 29px;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        margin-top: -5px;
+        @include border-radius(100px);
+      } 
+    }
+
+    ul > li.has-dropdown .dropdown {
+      height: 115%;
+      background: white;
+      @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px); 
+      li {
+        background: white;
+        a {
+          &:hover {
+            background: white;
+          }
+        }
+      }
+    }
+  }
+  .top-bar ul > li.has-dropdown a:after {
+    border-color: black transparent transparent transparent;
   }
 
   .columns {
