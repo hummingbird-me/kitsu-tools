@@ -37,6 +37,9 @@ GEM
     builder (3.0.4)
     bullet (4.3.0)
       uniform_notifier
+    celluloid (0.12.4)
+      facter (>= 1.6.12)
+      timers (>= 1.0.0)
     chunky_png (1.2.7)
     coderay (1.0.8)
     coffee-rails (3.2.2)
@@ -52,6 +55,7 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    connection_pool (1.0.0)
     daemons (1.1.9)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
@@ -62,6 +66,7 @@ GEM
     eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    facter (1.6.17)
     friendly_id (4.0.9)
     fssm (0.2.10)
     haml (3.1.7)
@@ -119,6 +124,9 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
+    redis (3.0.2)
+    redis-namespace (1.2.1)
+      redis (~> 3.0.0)
     sass (3.2.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -126,6 +134,12 @@ GEM
       tilt (~> 1.3)
     sassy-math (1.5)
       compass (~> 0.11)
+    sidekiq (2.7.0)
+      celluloid (~> 0.12.0)
+      connection_pool (~> 1.0)
+      multi_json (~> 1)
+      redis (~> 3)
+      redis-namespace
     simple_form (2.0.4)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
@@ -144,6 +158,7 @@ GEM
       rack (>= 1.0.0)
     thor (0.17.0)
     tilt (1.3.3)
+    timers (1.1.0)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -176,6 +191,7 @@ DEPENDENCIES
   kaminari
   rails (= 3.2.11)
   sass-rails (~> 3.2.3)
+  sidekiq
   simple_form
   sqlite3
   tarantula

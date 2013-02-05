@@ -7,13 +7,13 @@
           .title
             %h3 Personalize
           .personalize-filter.content
-            %p{:class => (@filter == "all" ? "active" : "")}
-              = link_to 'All Anime', filtered_listing_path(:all, :genres => params[:genres])
-            %p
-              = link_to 'My Recommendations', '#'
-            %p{:class => (@filter == "unseen" ? "active" : "")}
+            %p{:class => ("active" if @filter == "all")}
+              = link_to 'All Anime', anime_index_path(:genres => params[:genres])
+            %p{:class => ("active" if @filter == "recommended")}
+              = link_to 'My Recommendations', filtered_listing_path(:recommended, :genres => params[:genres])
+            %p{:class => ("active" if @filter == "unseen")}
               = link_to "Anime I Haven't Seen", filtered_listing_path(:unseen, :genres => params[:genres])
-            %p{:class => (@filter == "unfinished" ? "active" : "")}
+            %p{:class => ("active" if @filter == "unfinished")}
               = link_to "Anime I Haven't Finished", filtered_listing_path(:unfinished, :genres => params[:genres])
 
       %ul.accordion

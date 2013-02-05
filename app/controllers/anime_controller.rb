@@ -53,9 +53,18 @@ class AnimeController < ApplicationController
 
       @anime = @anime.where('anime.id IN (?)', @watchlist.keys)
 
+    elsif @filter == "recommended"
+
+      # The user needs to be signed in.
+      authenticate_user!
+
+      RecommendingWorker.perform_async(current_user.id)
+
+      @recommendations = Recommendation.where(:user_id => current_user)
+      @anime = @anime.where('anime.id IN (?)', @recommendations.map(&:anime_id))
+
     else
-      # The filter is either all or something invalid; either way we don't have
-      # to do anything.
+      # We don't have to do any filtering.
     end
 
     respond_to do |format|
