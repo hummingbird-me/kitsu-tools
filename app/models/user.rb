@@ -36,4 +36,11 @@ class User < ActiveRecord::Base
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=100"
   end
 
+  # Is the user an admin? For now only allow users whose email address is either
+  # "c@vikhyat.net" or "josh@hummingbird.ly". In production, it might be a better
+  # idea to check the user's numeric ID.
+  def admin?
+    email == "c@vikhyat.net" or email = "josh@hummingbird.ly"
+  end
+
 end

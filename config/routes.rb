@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Hummingbird::Application.routes.draw do
   devise_for :users
 
@@ -19,7 +21,11 @@ Hummingbird::Application.routes.draw do
   match '/watchlist/rate/:anime_id/:rating' => 'watchlist#update_rating', :as => :update_rating
 
   # Admin Panel
-  match '/kotodama' => 'admin#index', :as => :admin_panel
+  constraint = lambda {|request| request.env["warden"].authenticate? and request.env['warden'].user.admin? }
+  constraints constraint do
+    match '/kotodama' => 'admin#index', :as => :admin_panel
+    mount Sidekiq::Web => '/kotodama/sidekiq'
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

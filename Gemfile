@@ -43,6 +43,8 @@ gem 'kaminari'
 
 # Background jobs
 gem 'sidekiq'
+gem 'slim'
+gem 'sinatra', :require => nil
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
