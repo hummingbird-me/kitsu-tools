@@ -35,7 +35,10 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'simple_form'
 
+# Better URLs.
 gem 'friendly_id', '~> 4.0.9'
+
+# Authentication.
 gem 'devise'
 
 # For pagination.
@@ -46,14 +49,15 @@ gem 'sidekiq'
 gem 'slim'
 gem 'sinatra', :require => nil
 
+gem "rails_admin"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+# Use thin as the app server
 gem 'thin'
 
 # Deploy with Capistrano
