@@ -36,6 +36,8 @@
 
     / Thumbnails
     .anime-grid.nine.columns
+      - if @filter == "recommended" and !current_user.recommendations_up_to_date
+        %div.alert-box We're updating your recommendations. Check back in a minute!
       .row
         - @anime.each do |anime|
           = render partial: "card", locals: {anime: anime, watchlist: @watchlist[anime.id]}

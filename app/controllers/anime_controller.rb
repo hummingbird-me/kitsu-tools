@@ -58,7 +58,15 @@ class AnimeController < ApplicationController
       # The user needs to be signed in.
       authenticate_user!
 
-      RecommendingWorker.perform_async(current_user.id)
+      # Check whether we need to update the user's recommendations.
+      new_watchlist_hash = Watchlist.watchlist_hash( @watchlist.values.map(&:id) )
+      if current_user.watchlist_hash != new_watchlist_hash
+        current_user.update_attributes(
+          watchlist_hash: new_watchlist_hash,
+          recommendations_up_to_date: false
+        )
+        RecommendingWorker.perform_async(current_user.id)
+      end
 
       @recommendations = Recommendation.where(:user_id => current_user)
       @anime = @anime.where('anime.id IN (?)', @recommendations.map(&:anime_id))
