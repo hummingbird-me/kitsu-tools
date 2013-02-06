@@ -1,5 +1,15 @@
 %h1= title "#{@anime.title} Reviews"
 
 - @reviews.each do |review|
-  %h5 #{review.user.name} <small>#{review.positive? ? ':)' : ':('}</small>
-  %p(style="whitespace: pre-wrap")= truncate(review.content, length: 300, omission: "...")
+  .panel
+    %h5 #{review.user.name} <small>#{review.positive? ? ':)' : ':('}</small>
+    %p(style="whitespace: pre-wrap")= truncate(review.content, length: 600, omission: "...")
+    %p 
+      #{(review.votes * 100).to_i}% of users found this review useful.
+      |
+      Did you find this review useful? 
+      = link_to "Yes", vote_anime_review_path(@anime, review, type: "up"), method: :post
+      or 
+      = link_to "No", vote_anime_review_path(@anime, review, type: "down"), method: :post
+      |
+      = link_to "Report this review.", "#"

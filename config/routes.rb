@@ -11,7 +11,7 @@ Hummingbird::Application.routes.draw do
     end
 
     resources :reviews do
-      
+      member { post :vote }
     end
   end
 
