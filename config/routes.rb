@@ -27,7 +27,7 @@ Hummingbird::Application.routes.draw do
   constraints constraint do
     match '/kotodama' => 'admin#index', :as => :admin_panel
     mount Sidekiq::Web => '/kotodama/sidekiq'
-    mount RailsAdmin::Engine => '/kotodata/rails_admin', :as => 'rails_admin'
+    mount RailsAdmin::Engine => '/kotodama/rails_admin', :as => 'rails_admin'
   end
 
   # The priority is based upon order of creation:
