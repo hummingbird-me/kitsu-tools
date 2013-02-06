@@ -5,7 +5,7 @@
         %h5.title= link_to anime.title, anime
         %p.summary #{truncate(anime.synopsis, length: 300, omission: '...')}
       %figcaption= link_to anime.title, anime
-      %img{:src => anime.cover_image_url}
+      %img{:src => anime.cover_image.url}
     .progress.six
       %span.meter{:style => "width: #{(rand * 100).to_i}%"}
     %p.watchlist

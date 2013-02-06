@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205203649) do
+ActiveRecord::Schema.define(:version => 20130206033532) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -23,10 +23,13 @@ ActiveRecord::Schema.define(:version => 20130205203649) do
     t.string   "status"
     t.text     "synopsis"
     t.string   "youtube_video_id"
-    t.string   "cover_image_url"
     t.integer  "mal_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.string   "cover_image_file_name"
+    t.string   "cover_image_content_type"
+    t.integer  "cover_image_file_size"
+    t.datetime "cover_image_updated_at"
   end
 
   add_index "anime", ["slug"], :name => "index_animes_on_slug", :unique => true

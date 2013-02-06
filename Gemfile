@@ -35,6 +35,9 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'simple_form'
 
+# Attachments
+gem "paperclip", "~> 3.0"
+
 # Better URLs.
 gem 'friendly_id', '~> 4.0.9'
 

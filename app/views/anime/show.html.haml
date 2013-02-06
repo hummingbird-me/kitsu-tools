@@ -2,7 +2,7 @@
 
 %h1= @anime.title
 
-%img{:src => @anime.cover_image_url}
+%img{:src => @anime.cover_image.url}
 
 %p Age rating: #{@anime.age_rating}
 %p Episode count: #{@anime.episode_count}

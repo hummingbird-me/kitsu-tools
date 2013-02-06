@@ -9,7 +9,7 @@ namespace :import do
       a.status = meta["status"]
       a.synopsis = meta["synopsis"]
       a.age_rating = meta["rating"]
-      a.cover_image_url = meta["cover_image_url"]
+      a.cover_image = URI.parse meta["cover_image_url"]
       a.episode_count = meta["episode_count"]
       a.episode_length = meta["episode_length"]
 
@@ -22,6 +22,7 @@ namespace :import do
       a.producers = meta["producers"].map {|g| Producer.find_by_name(g) }
 
       a.save
+      puts "Finished importing #{a.title}."
     end
   end
 end
