@@ -47,6 +47,9 @@
 
 %h3 Reviews
 
-- @reviews.each do |review|
+- @reviews[0..1].each do |review|
   %h5 #{review.user.name} <small>#{review.positive ? ':)' : ':('}</small>
-  %p(style="white-space: pre-wrap")= review.content
+  %p(style="white-space: pre-wrap")= truncate(review.content, length: 300, omission: '...')
+
+%p
+  = link_to "[Show all]", anime_reviews_url(@anime)

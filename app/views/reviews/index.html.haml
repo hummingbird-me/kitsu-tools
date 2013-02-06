@@ -1,0 +1,5 @@
+%h1= title "#{@anime.title} Reviews"
+
+- @reviews.each do |review|
+  %h5 #{review.user.name} <small>#{review.positive? ? ':)' : ':('}</small>
+  %p(style="whitespace: pre-wrap")= truncate(review.content, length: 300, omission: "...")

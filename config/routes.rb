@@ -9,6 +9,10 @@ Hummingbird::Application.routes.draw do
     resources :quotes do
       member { post :vote }
     end
+
+    resources :reviews do
+      
+    end
   end
 
   # Personalize Filters
