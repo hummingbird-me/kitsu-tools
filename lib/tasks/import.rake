@@ -9,7 +9,7 @@ namespace :import do
       a.status = meta["status"]
       a.synopsis = meta["synopsis"]
       a.age_rating = meta["rating"]
-      a.cover_image = URI.parse meta["cover_image_url"]
+      a.cover_image = URI.parse meta["cover_image_url"] unless a.cover_image.exists?
       a.episode_count = meta["episode_count"]
       a.episode_length = meta["episode_length"]
 
