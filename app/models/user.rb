@@ -15,16 +15,6 @@ class User < ActiveRecord::Base
 
   # 
   has_many :evaluations, class_name: "ReputationSystem::Evaluation", as: :source
-  # Has the user voted for this particular item? 
-  def voted_for?(item)
-    evaluations.exists?(target_type: item.class, target_id: item.id)
-  end
-  # What vote did the user cast? Returns nil if there was no vote.
-  def vote_value(item)
-    ev = evaluations.where(target_type: item.class, target_id: item.id).first
-    ev.present? ? ev.value : nil
-  end
-  
 
   # Validations
   validates :name, :email,

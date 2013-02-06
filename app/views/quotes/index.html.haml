@@ -12,7 +12,7 @@
     %p
       = pluralize quote.votes.to_i, "vote"
       |
-      - if current_user && current_user.vote_value(quote) == 1
+      - if current_user && quote.has_evaluation?(:votes, current_user)
         = link_to "(^) remove vote", vote_anime_quote_path(@anime, quote, type: "down"), method: :post
       - else
         = link_to "^ vote", vote_anime_quote_path(@anime, quote, type: "up"), method: :post

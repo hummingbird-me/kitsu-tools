@@ -25,9 +25,12 @@ class QuotesController < ApplicationController
 
   def vote
     authenticate_user!
-    value = params[:type] == "up" ? 1 : 0
     @quote = Quote.find(params[:id])
-    @quote.add_or_update_evaluation(:votes, value, current_user)
+    if params[:type] == "up"
+      @quote.add_or_update_evaluation(:votes, 1, current_user)
+    else
+      @quote.delete_evaluation(:votes, current_user)
+    end
     redirect_to :back
   end
 end
