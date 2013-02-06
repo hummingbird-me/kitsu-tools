@@ -6,7 +6,9 @@ Hummingbird::Application.routes.draw do
   root :to => "home#index"
 
   resources :anime do
-    resources :quotes
+    resources :quotes do
+      member { post :vote }
+    end
   end
 
   # Personalize Filters

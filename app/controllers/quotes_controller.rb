@@ -1,7 +1,7 @@
 class QuotesController < ApplicationController
   def index
     @anime = Anime.find(params[:anime_id])
-    @quotes = @anime.quotes.includes(:creator)
+    @quotes = Quote.includes(:creator).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => "votes DESC"})
   end
 
   def new
@@ -21,5 +21,13 @@ class QuotesController < ApplicationController
     @quote.creator = current_user
     @quote.save
     redirect_to anime_quotes_path(@anime)
+  end
+
+  def vote
+    authenticate_user!
+    value = params[:type] == "up" ? 1 : 0
+    @quote = Quote.find(params[:id])
+    @quote.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back
   end
 end

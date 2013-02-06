@@ -3,11 +3,20 @@
 %h1= yield(:title)
 
 - @quotes.each do |quote|
-  %blockquote
+  %blockquote.panel
     = quote.content
     —
     = quote.character_name
     - if quote.creator
       (Submitted by #{quote.creator.name})
+    %p
+      = pluralize quote.votes.to_i, "vote"
+      |
+      - if current_user && current_user.vote_value(quote) == 1
+        = link_to "(^) remove vote", vote_anime_quote_path(@anime, quote, type: "down"), method: :post
+      - else
+        = link_to "^ vote", vote_anime_quote_path(@anime, quote, type: "up"), method: :post
+      |
+      = link_to "report", "#"    
 
 %p= link_to "[Submit quote]", new_anime_quote_url(@anime)

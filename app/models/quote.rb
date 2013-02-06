@@ -4,4 +4,6 @@ class Quote < ActiveRecord::Base
   belongs_to :creator, :class_name => "User"
 
   validates :content, :anime, :creator, :presence => true
+
+  has_reputation :votes, source: :user, aggregated_by: :sum
 end
