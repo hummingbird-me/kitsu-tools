@@ -13,9 +13,6 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => {:thumb => "100x100"},
     :default_url => "http://placekitten.com/g/100/100"
 
-  # 
-  has_many :evaluations, class_name: "ReputationSystem::Evaluation", as: :source
-
   # Validations
   validates :name, :email,
     :presence   => true,
