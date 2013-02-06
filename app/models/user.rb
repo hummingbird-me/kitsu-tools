@@ -8,7 +8,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me,
-    :watchlist_hash, :recommendations_up_to_date
+    :watchlist_hash, :recommendations_up_to_date, :avatar
+
+  has_attached_file :avatar, :styles => {:thumb => "100x100"},
+    :default_url => "http://placekitten.com/g/100/100"
 
   # Validations
   validates :name, :email,
@@ -29,11 +32,11 @@ class User < ActiveRecord::Base
   end
 
   # Avatar
-  # TODO Need to support uploaded avatars as well.
   def avatar_url
     # Gravatar
-    gravatar_id = Digest::MD5.hexdigest(email.downcase)
-    "http://gravatar.com/avatar/#{gravatar_id}.png?s=100"
+    # gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    # "http://gravatar.com/avatar/#{gravatar_id}.png?s=100"
+    avatar.url(:thumb)
   end
 
   # Is the user an admin? For now only allow users whose email address is either
