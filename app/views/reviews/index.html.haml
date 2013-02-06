@@ -7,9 +7,14 @@
     %p 
       #{(review.votes * 100).to_i}% of users found this review useful.
       |
-      Did you find this review useful? 
-      = link_to "Yes", vote_anime_review_path(@anime, review, type: "up"), method: :post
-      or 
-      = link_to "No", vote_anime_review_path(@anime, review, type: "down"), method: :post
+      - if @user_evaluations[review.id] && @user_evaluations[review.id].value == 1.0
+        %strong Useful
+      - else
+        = link_to "Useful", vote_anime_review_path(@anime, review, type: "up"), method: :post
+      \/
+      - if @user_evaluations[review.id] && @user_evaluations[review.id].value != 1.0
+        %strong Not Useful
+      - else
+        = link_to "Not Useful", vote_anime_review_path(@anime, review, type: "down"), method: :post
       |
       = link_to "Report this review.", "#"
