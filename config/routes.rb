@@ -3,6 +3,8 @@ require 'sidekiq/web'
 Hummingbird::Application.routes.draw do
   devise_for :users
 
+  mount Forem::Engine, :at => '/community'
+
   root :to => "home#index"
 
   resources :anime do

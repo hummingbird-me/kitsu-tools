@@ -19,7 +19,7 @@
                   %li
                     %a{:href => "#"} Dashboard
                   %li
-                    %a{:href => "#"} Community
+                    = link_to "Community", main_app.forem_path
 
                 %ul.right
                   - if user_signed_in?
@@ -27,14 +27,14 @@
                       %span.avatar= link_to image_tag(current_user.avatar_url)
                       %ul.dropdown
                         %li
-                          = link_to "Edit profile", edit_user_registration_path
+                          = link_to "Edit profile", main_app.edit_user_registration_path
                         - if current_user.admin?
                           %li 
                             = link_to "Admin panel", "/kotodama"
                         %li
-                          = link_to "Sign out", destroy_user_session_path, :method => :delete
+                          = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
                   - else
-                    %li= link_to "Login", new_user_session_path
+                    %li= link_to "Login", main_app.new_user_session_path
                     %li
                       %a{"data-reveal-id" => "register", :href => "#"} Register
 

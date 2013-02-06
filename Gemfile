@@ -52,6 +52,9 @@ gem 'sidekiq'
 gem 'slim'
 gem 'sinatra', :require => nil
 
+# Forum
+gem 'forem', :git => "git://github.com/vikhyat/forem.git"
+
 gem "rails_admin"
 
 # For voting on stuff.

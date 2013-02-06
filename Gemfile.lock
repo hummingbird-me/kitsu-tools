@@ -1,3 +1,17 @@
+GIT
+  remote: git://github.com/vikhyat/forem.git
+  revision: d144ee8362c99031df225ce72918577de338f1fc
+  specs:
+    forem (1.0.0.beta1)
+      cancan (= 1.6.8)
+      decorators (~> 1.0.2)
+      forem-redcarpet (= 1.0.0)
+      friendly_id (~> 4.0, >= 4.0.9)
+      gemoji (= 1.1.2)
+      rails (>= 3.1.10, < 3.3, != 3.2.9, != 3.2.8, != 3.2.7, != 3.2.6, != 3.2.5, != 3.2.4, != 3.2.3, != 3.2.2, != 3.2.10, != 3.2.1, != 3.2.0)
+      simple_form
+      workflow (= 0.8.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -35,11 +49,13 @@ GEM
       coderay (>= 1.0.0)
       erubis (>= 2.7.0)
     binding_of_caller (0.6.8)
+    blankslate (3.1.2)
     bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
     builder (3.0.4)
     bullet (4.3.0)
       uniform_notifier
+    cancan (1.6.8)
     celluloid (0.12.4)
       facter (>= 1.6.12)
       timers (>= 1.0.0)
@@ -61,6 +77,8 @@ GEM
       compass (>= 0.12.2, < 0.14)
     connection_pool (1.0.0)
     daemons (1.1.9)
+    decorators (1.0.2)
+      railties (>= 3.0.19, != 3.2.9, != 3.2.8, != 3.2.7, != 3.2.6, != 3.2.5, != 3.2.4, != 3.2.3, != 3.2.2, != 3.2.10, != 3.2.1, != 3.2.0, != 3.1.9, != 3.1.8, != 3.1.7, != 3.1.6, != 3.1.5, != 3.1.4, != 3.1.3, != 3.1.2, != 3.1.1, != 3.1.0)
     devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -71,11 +89,16 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     facter (1.6.17)
+    ffi (1.0.11)
     font-awesome-sass-rails (3.0.0.1)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
+    forem-redcarpet (1.0.0)
+      pygments.rb (= 0.2.4)
+      redcarpet (= 2.0.1)
     friendly_id (4.0.9)
     fssm (0.2.10)
+    gemoji (1.1.2)
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
@@ -117,6 +140,8 @@ GEM
       cocaine (~> 0.4.0)
       mime-types
     polyglot (0.3.3)
+    pygments.rb (0.2.4)
+      rubypython (~> 0.5.3)
     rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -161,10 +186,14 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
+    redcarpet (2.0.1)
     redis (3.0.2)
     redis-namespace (1.2.1)
       redis (~> 3.0.0)
     remotipart (1.0.2)
+    rubypython (0.5.3)
+      blankslate (>= 2.1.2.3)
+      ffi (~> 1.0.7)
     sass (3.2.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -215,6 +244,7 @@ GEM
     uniform_notifier (1.1.1)
     warden (1.2.1)
       rack (>= 1.0)
+    workflow (0.8.0)
     zurb-foundation (3.2.5)
       compass (>= 0.12.2)
       modular-scale (= 1.0.6)
@@ -232,6 +262,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails
   devise
+  forem!
   friendly_id (~> 4.0.9)
   haml-rails
   jquery-rails
