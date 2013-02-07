@@ -14,18 +14,18 @@
 ActiveRecord::Schema.define(:version => 20130206190961) do
 
   create_table "anime", :force => true do |t|
-    t.string   "title"
-    t.string   "alt_title"
-    t.string   "slug"
     t.string   "age_rating"
     t.integer  "episode_count"
     t.integer  "episode_length"
     t.string   "status"
     t.text     "synopsis"
-    t.string   "youtube_video_id"
     t.integer  "mal_id"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+    t.string   "title"
+    t.string   "slug"
+    t.string   "youtube_video_id"
+    t.string   "alt_title"
     t.string   "cover_image_file_name"
     t.string   "cover_image_content_type"
     t.integer  "cover_image_file_size"
@@ -156,9 +156,9 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
 
   create_table "genres", :force => true do |t|
     t.string   "name"
-    t.string   "slug"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "slug"
     t.text     "description"
   end
 
@@ -170,18 +170,18 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
 
   create_table "producers", :force => true do |t|
     t.string   "name"
-    t.string   "slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "slug"
   end
 
   create_table "quotes", :force => true do |t|
-    t.integer  "anime_id"
     t.text     "content"
-    t.string   "character_name"
-    t.integer  "creator_id"
+    t.integer  "anime_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "character_name"
+    t.integer  "creator_id"
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -266,7 +266,6 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
 
   create_table "users", :force => true do |t|
     t.string   "email",                      :default => "",               :null => false
-    t.string   "name"
     t.string   "encrypted_password",         :default => "",               :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -278,6 +277,7 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
+    t.string   "name"
     t.string   "watchlist_hash"
     t.boolean  "recommendations_up_to_date"
     t.string   "avatar_file_name"

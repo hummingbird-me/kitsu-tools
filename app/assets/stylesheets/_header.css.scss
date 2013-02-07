@@ -1,6 +1,7 @@
 @import "compass/css3";
 
 .hummingbird-header {
+  position: relative;
   .top-bar ul > li:not(.name):hover, .top-bar ul > li:not(.name).active, .top-bar ul > li:not(.name):focus {
     background: none;
   }

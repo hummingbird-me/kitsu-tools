@@ -1,0 +1,45 @@
+@import "compass/css3";
+.dashboard {
+  .profile-bar {
+    background: white;
+
+    .user-block {
+      width: 140px;
+      border-right: 1px solid #eee;
+      padding-left: 10px;
+      padding-right: 30px;
+      display: inline-block;
+      .user-avatar {
+        display: inline-block;
+        img {
+          width: 100px;
+          height: 100px;
+          @include border-radius(100px);
+        } 
+      }
+
+      .karma {
+        text-align: center;
+        color: #bcbcbc;
+        font-size: 25px;
+        margin-top: 5px;
+      }
+
+      .karma-title {
+        text-align: center;
+        font-size: 15px;
+        color: #bcbcbc;
+      }
+    }
+  }
+
+  .profile-bar-subnav {
+    background: #f4f4f4;
+    height: 50px;
+    width: 100%;
+    border-left: solid 1px #e6e6e6;
+    border-right: solid 1px #e6e6e6;
+    border-bottom: solid 1px #e6e6e6;
+    margin-top: -23px;
+  }
+}
