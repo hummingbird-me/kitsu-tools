@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :authentication_keys => [:login]
+         :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me,
@@ -14,23 +13,10 @@ class User < ActiveRecord::Base
     :default_url => "http://placekitten.com/g/100/100"
 
   # Validations
-  validates :name, :email,
+  validates :name,
     :presence   => true,
     :uniqueness => {:case_sensitive => false}
   
-  # To allow users to log in with both email and password.
-  attr_accessor   :login
-  attr_accessible :login
-
-  def self.find_first_by_auth_conditions(warden_conditions)
-    conditions = warden_conditions.dup
-    if login = conditions.delete(:login)
-      where(conditions).where(["lower(name) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-    else
-      where(conditions).first
-    end
-  end
-
   # Avatar
   def avatar_url
     # Gravatar
