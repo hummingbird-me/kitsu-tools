@@ -1,25 +1,10 @@
 require 'test_helper'
 
 class CastingTest < ActiveSupport::TestCase
-  test "cannot create casting without anime" do
-    c = Casting.new
-    c.character = characters(:kirito)
-    c.voice_actor = people(:asuna)
-    assert !c.save
-  end
-
-  test "cannot create casting without character" do
-    c = Casting.new
-    c.anime = anime(:sword_art_online)
-    c.voice_actor = people(:asuna)
-    assert !c.save
-  end
-
-  test "can create casting without voice actor" do
-    c = Casting.new
-    c.anime = anime(:sword_art_online)
-    c.character = characters(:kirito)
-    c.voice_actor = people(:asuna)
-    assert c.save
-  end
+  should belong_to(:anime)
+  should belong_to(:character)
+  should belong_to(:voice_actor)
+  should validate_presence_of(:anime)
+  should validate_presence_of(:character)
+  should_not validate_presence_of(:voice_actor)
 end

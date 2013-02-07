@@ -1,19 +1,12 @@
 require 'test_helper'
 
 class GenreTest < ActiveSupport::TestCase
-  test "cannot create genre without name" do
-    g = Genre.new
-    g.name = ""
-    assert !g.save
-  end
+  should have_and_belong_to_many(:animes)
+  should validate_presence_of(:name)
+  should validate_uniqueness_of(:name)
+  should validate_presence_of(:slug)
 
-  test "name must be unique" do
-    g = Genre.new
-    g.name = "Fantasy"
-    assert !g.save
-  end
-
-  test "slugs work" do
+  test "slugs are generated automatically and can be used to find genres" do
     g = Genre.new
     g.name = "Environmental"
     assert g.save

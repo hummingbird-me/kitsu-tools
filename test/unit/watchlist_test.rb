@@ -1,14 +1,9 @@
 require 'test_helper'
 
 class WatchlistTest < ActiveSupport::TestCase
-  test "cannot create duplicates" do
-    w = Watchlist.new
-    w.user = users(:vikhyat)
-    w.anime = anime(:sword_art_online)
-    assert w.save
-    w = Watchlist.new
-    w.user = users(:vikhyat)
-    w.anime = anime(:sword_art_online)
-    assert !w.save
-  end
+  should belong_to(:user)
+  should belong_to(:anime)
+
+  should validate_uniqueness_of(:user_id).scoped_to(:anime_id)
+  
 end

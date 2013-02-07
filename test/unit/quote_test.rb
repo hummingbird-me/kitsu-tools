@@ -1,35 +1,10 @@
 require 'test_helper'
 
 class QuoteTest < ActiveSupport::TestCase
-  test "cannot create a quote without content" do
-    q = Quote.new
-    q.content = ""
-    q.anime = anime(:sword_art_online)
-    q.character_name = "kirito"
-    q.creator = users(:vikhyat)
-    assert !q.save
-  end
-
-  test "can create a quote without a character" do
-    q = Quote.new
-    q.content = "test"
-    q.anime = anime(:sword_art_online)
-    q.creator = users(:vikhyat)
-    assert q.save
-  end
-
-  test "cannot create a quote without an anime" do
-    q = Quote.new
-    q.content = "test"
-    q.character_name = "kirito"
-    q.creator = users(:vikhyat)
-    assert !q.save
-  end
-
-  test "cannot create a quote without a creator" do
-    q = Quote.new
-    q.content = "test"
-    q.anime = anime(:sword_art_online)
-    assert !q.save
-  end
+  should belong_to(:anime)
+  should belong_to(:creator)
+  should validate_presence_of(:content)
+  should validate_presence_of(:anime)
+  should validate_presence_of(:creator)
+  should_not validate_presence_of(:character_name)
 end

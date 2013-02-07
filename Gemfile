@@ -29,6 +29,9 @@ group :development do
   gem "bullet"
 end
 
+# Testing
+gem "spork-testunit"
+gem 'shoulda'
 gem "tarantula", :require => "tarantula-rails3"
 
 gem 'jquery-rails'

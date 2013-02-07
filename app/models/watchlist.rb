@@ -28,8 +28,6 @@ class Watchlist < ActiveRecord::Base
   # string hash. This is used to check whether a user's recommendations are up to
   # date.
   def self.watchlist_hash(watchlist_ids)
-    puts
-    p watchlist_ids
-    p Digest::MD5.hexdigest( watchlist_ids.sort * ' ' )
+    Digest::MD5.hexdigest( watchlist_ids.sort * ' ' )
   end
 end

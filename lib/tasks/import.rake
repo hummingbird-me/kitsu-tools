@@ -12,6 +12,7 @@ namespace :import do
       begin
         a.cover_image = URI.parse meta["cover_image_url"] unless a.cover_image.exists?
       rescue
+        puts "Could not import cover image: #{meta["cover_image_url"]}"
       end
       a.episode_count = meta["episode_count"]
       a.episode_length = meta["episode_length"]

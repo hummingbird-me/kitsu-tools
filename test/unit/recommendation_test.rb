@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class RecommendationTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should belong_to(:user)
+  should belong_to(:anime)
+  
+  should validate_presence_of(:user)
+  should validate_presence_of(:anime)
+  should validate_presence_of(:score)
 end
