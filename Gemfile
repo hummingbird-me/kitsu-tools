@@ -47,6 +47,8 @@ gem 'friendly_id', '~> 4.0.9'
 
 # Authentication.
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # For pagination.
 gem 'kaminari'
