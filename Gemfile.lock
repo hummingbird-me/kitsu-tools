@@ -144,6 +144,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.4.0)
       mime-types
+    pg (0.14.1)
     polyglot (0.3.3)
     pygments.rb (0.2.4)
       rubypython (~> 0.5.3)
@@ -283,6 +284,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   paperclip (~> 3.0)
+  pg
   rails (= 3.2.11)
   rails_admin
   sass-rails (~> 3.2.3)

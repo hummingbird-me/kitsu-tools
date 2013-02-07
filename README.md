@@ -22,3 +22,26 @@ Background tasks are processed using Sidekiq, so Redis needs to be installed.
     redis-server /usr/local/etc/redis.conf
     # Start a sidekiq worker process
     bundle exec sidekiq
+
+Switching the development database from SQLite to Postgres:
+
+    # Step 1: Install Postgres.app from http://postgresapp.com/, and start it.
+
+    # Step 2: Install the taps gem:
+    gem install taps
+
+    # Step 3: Create the database in Postgres by running the following:
+    rake db:create:all
+    rake db:schema:load
+
+    # Step 4: Now we need to migrate the data from SQLite to Postgres, using the
+    #         taps gem.
+    #
+    # Open a new terminal window, cd to hummingbird and run:
+    taps server sqlite://db/development.sqlite3 asdf fdsaasdf
+    # Next, in another terminal window, run:
+    taps pull -s -e schema_migrations postgres://localhost/hummingbird_development http://asdf:fdsaasdf@localhost:5000
+    # This will take some time to run, but once it is done close both terminal
+    # windows.
+
+    

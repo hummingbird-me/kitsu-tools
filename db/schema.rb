@@ -11,28 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130206190961) do
+ActiveRecord::Schema.define(:version => 20130207120507) do
 
   create_table "anime", :force => true do |t|
+    t.text     "title"
+    t.text     "alt_title"
+    t.text     "slug"
     t.string   "age_rating"
     t.integer  "episode_count"
     t.integer  "episode_length"
     t.string   "status"
     t.text     "synopsis"
+    t.string   "youtube_video_id"
     t.integer  "mal_id"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
-    t.string   "title"
-    t.string   "slug"
-    t.string   "youtube_video_id"
-    t.string   "alt_title"
-    t.string   "cover_image_file_name"
+    t.text     "cover_image_file_name"
     t.string   "cover_image_content_type"
     t.integer  "cover_image_file_size"
     t.datetime "cover_image_updated_at"
   end
-
-  add_index "anime", ["slug"], :name => "index_animes_on_slug", :unique => true
 
   create_table "anime_genres", :id => false, :force => true do |t|
     t.integer "anime_id", :null => false
@@ -66,8 +64,6 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.string   "slug"
   end
 
-  add_index "forem_categories", ["slug"], :name => "index_forem_categories_on_slug", :unique => true
-
   create_table "forem_forums", :force => true do |t|
     t.string  "name"
     t.text    "description"
@@ -76,27 +72,19 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.string  "slug"
   end
 
-  add_index "forem_forums", ["slug"], :name => "index_forem_forums_on_slug", :unique => true
-
   create_table "forem_groups", :force => true do |t|
     t.string "name"
   end
-
-  add_index "forem_groups", ["name"], :name => "index_forem_groups_on_name"
 
   create_table "forem_memberships", :force => true do |t|
     t.integer "group_id"
     t.integer "member_id"
   end
 
-  add_index "forem_memberships", ["group_id"], :name => "index_forem_memberships_on_group_id"
-
   create_table "forem_moderator_groups", :force => true do |t|
     t.integer "forum_id"
     t.integer "group_id"
   end
-
-  add_index "forem_moderator_groups", ["forum_id"], :name => "index_forem_moderator_groups_on_forum_id"
 
   create_table "forem_posts", :force => true do |t|
     t.integer  "topic_id"
@@ -109,11 +97,6 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.boolean  "notified",    :default => false
   end
 
-  add_index "forem_posts", ["reply_to_id"], :name => "index_forem_posts_on_reply_to_id"
-  add_index "forem_posts", ["state"], :name => "index_forem_posts_on_state"
-  add_index "forem_posts", ["topic_id"], :name => "index_forem_posts_on_topic_id"
-  add_index "forem_posts", ["user_id"], :name => "index_forem_posts_on_user_id"
-
   create_table "forem_subscriptions", :force => true do |t|
     t.integer "subscriber_id"
     t.integer "topic_id"
@@ -122,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
   create_table "forem_topics", :force => true do |t|
     t.integer  "forum_id"
     t.integer  "user_id"
-    t.string   "subject"
+    t.text     "subject"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.boolean  "locked",       :default => false,            :null => false
@@ -133,11 +116,6 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.integer  "views_count",  :default => 0
     t.string   "slug"
   end
-
-  add_index "forem_topics", ["forum_id"], :name => "index_forem_topics_on_forum_id"
-  add_index "forem_topics", ["slug"], :name => "index_forem_topics_on_slug", :unique => true
-  add_index "forem_topics", ["state"], :name => "index_forem_topics_on_state"
-  add_index "forem_topics", ["user_id"], :name => "index_forem_topics_on_user_id"
 
   create_table "forem_views", :force => true do |t|
     t.integer  "user_id"
@@ -150,15 +128,11 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.datetime "past_viewed_at"
   end
 
-  add_index "forem_views", ["updated_at"], :name => "index_forem_views_on_updated_at"
-  add_index "forem_views", ["user_id"], :name => "index_forem_views_on_user_id"
-  add_index "forem_views", ["viewable_id"], :name => "index_forem_views_on_topic_id"
-
   create_table "genres", :force => true do |t|
     t.string   "name"
+    t.string   "slug"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "slug"
     t.text     "description"
   end
 
@@ -170,18 +144,18 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
 
   create_table "producers", :force => true do |t|
     t.string   "name"
+    t.string   "slug"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "slug"
   end
 
   create_table "quotes", :force => true do |t|
-    t.text     "content"
     t.integer  "anime_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.text     "content"
     t.string   "character_name"
     t.integer  "creator_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "rails_admin_histories", :force => true do |t|
@@ -189,13 +163,11 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.string   "username"
     t.integer  "item"
     t.string   "table"
-    t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 5
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.integer  "month"
+    t.integer  "year"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
 
   create_table "recommendations", :force => true do |t|
     t.integer  "user_id"
@@ -205,9 +177,6 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.datetime "updated_at", :null => false
   end
 
-  add_index "recommendations", ["anime_id"], :name => "index_recommendations_on_anime_id"
-  add_index "recommendations", ["user_id"], :name => "index_recommendations_on_user_id"
-
   create_table "reviews", :force => true do |t|
     t.integer  "user_id"
     t.integer  "anime_id"
@@ -216,9 +185,6 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "reviews", ["anime_id"], :name => "index_reviews_on_anime_id"
-  add_index "reviews", ["user_id"], :name => "index_reviews_on_user_id"
 
   create_table "rs_evaluations", :force => true do |t|
     t.string   "reputation_name"
@@ -231,11 +197,6 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.datetime "updated_at",                       :null => false
   end
 
-  add_index "rs_evaluations", ["reputation_name", "source_id", "source_type", "target_id", "target_type"], :name => "index_rs_evaluations_on_reputation_name_and_source_and_target", :unique => true
-  add_index "rs_evaluations", ["reputation_name"], :name => "index_rs_evaluations_on_reputation_name"
-  add_index "rs_evaluations", ["source_id", "source_type"], :name => "index_rs_evaluations_on_source_id_and_source_type"
-  add_index "rs_evaluations", ["target_id", "target_type"], :name => "index_rs_evaluations_on_target_id_and_target_type"
-
   create_table "rs_reputation_messages", :force => true do |t|
     t.integer  "sender_id"
     t.string   "sender_type"
@@ -244,10 +205,6 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
   end
-
-  add_index "rs_reputation_messages", ["receiver_id", "sender_id", "sender_type"], :name => "index_rs_reputation_messages_on_receiver_id_and_sender", :unique => true
-  add_index "rs_reputation_messages", ["receiver_id"], :name => "index_rs_reputation_messages_on_receiver_id"
-  add_index "rs_reputation_messages", ["sender_id", "sender_type"], :name => "index_rs_reputation_messages_on_sender_id_and_sender_type"
 
   create_table "rs_reputations", :force => true do |t|
     t.string   "reputation_name"
@@ -260,12 +217,9 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.datetime "updated_at",                        :null => false
   end
 
-  add_index "rs_reputations", ["reputation_name", "target_id", "target_type"], :name => "index_rs_reputations_on_reputation_name_and_target", :unique => true
-  add_index "rs_reputations", ["reputation_name"], :name => "index_rs_reputations_on_reputation_name"
-  add_index "rs_reputations", ["target_id", "target_type"], :name => "index_rs_reputations_on_target_id_and_target_type"
-
   create_table "users", :force => true do |t|
     t.string   "email",                      :default => "",               :null => false
+    t.string   "name"
     t.string   "encrypted_password",         :default => "",               :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -277,7 +231,6 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                                               :null => false
     t.datetime "updated_at",                                               :null => false
-    t.string   "name"
     t.string   "watchlist_hash"
     t.boolean  "recommendations_up_to_date"
     t.string   "avatar_file_name"
@@ -289,9 +242,6 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.boolean  "forem_auto_subscribe",       :default => false
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
-  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-
   create_table "watchlists", :force => true do |t|
     t.integer  "user_id"
     t.integer  "anime_id"
@@ -300,8 +250,5 @@ ActiveRecord::Schema.define(:version => 20130206190961) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  add_index "watchlists", ["anime_id"], :name => "index_watchlists_on_anime_id"
-  add_index "watchlists", ["user_id"], :name => "index_watchlists_on_user_id"
 
 end
