@@ -14,7 +14,7 @@ class AnimeController < ApplicationController
 
   def index
     # Establish a base scope, with pagination enabled.
-    @anime = Anime.page(params[:page]).per(18).uniq
+    @anime = Anime.page(params[:page]).per(18)
 
     # Get a list of all genres.
     @all_genres = Genre.order(:name)
