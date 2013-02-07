@@ -1,4 +1,4 @@
-= form_for(User.new, :as => :user, :url => registration_path(:user)) do |f|
+= form_for(resource, :as => resource_name, :url => registration_path(:user)) do |f|
   = f.label :name
   = f.text_field :name, :autofocus => true
 
@@ -12,3 +12,5 @@
   = f.password_field :password_confirmation
 
   = f.submit "Sign up"
+
+= render "devise/shared/links"
