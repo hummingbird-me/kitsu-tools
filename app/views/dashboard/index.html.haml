@@ -7,7 +7,11 @@
           %figcaption.karma 10,042
           %figcaption.karma-title karma
         .user-information 
-          %h4.username JoshFabian
-          %p.bio Hi, I’m Josh and I’m the co-founder of Hummingbird. I like to watch anime, design and build shit that people use. If you have any suggestions for the site, let me know! :)
+          %h4.username= current_user.name
+          %p.bio 
+            - if not current_user.bio.nil?
+              = current_user.bio
+            - else
+              (Edit profile link goes here)
       .profile-bar-subnav 
 

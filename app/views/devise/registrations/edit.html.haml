@@ -13,7 +13,11 @@
     %p Currently waiting confirmation for: #{resource.unconfirmed_email}
 
   = f.label :avatar
+  = image_tag current_user.avatar_url
   = f.file_field :avatar
+
+  = f.label :bio
+  = f.text_area :bio
 
   = f.label :password
   %i (leave blank if you don't want to change it)

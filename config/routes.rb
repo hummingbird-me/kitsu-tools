@@ -1,8 +1,6 @@
 require 'sidekiq/web'
 
 Hummingbird::Application.routes.draw do
-  get "dashboard/index"
-
   devise_for :users, controllers: { 
     omniauth_callbacks: "users/omniauth_callbacks" 
   }
@@ -10,6 +8,9 @@ Hummingbird::Application.routes.draw do
   mount Forem::Engine, :at => '/community'
 
   root :to => "home#index"
+
+  # Dashboard
+  match '/dashboard' => 'dashboard#index'
 
   resources :anime do
     resources :quotes do

@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me,
-    :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id
+    :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio
 
-  has_attached_file :avatar, :styles => {:thumb => "100x100"},
-    :default_url => "http://placekitten.com/g/100/100"
+  has_attached_file :avatar, :styles => {:thumb => "200x200"},
+    :default_url => "http://placekitten.com/g/200/200"
 
   # Validations
   validates :name,
