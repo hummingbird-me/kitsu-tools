@@ -84,13 +84,4 @@ class User < ActiveRecord::Base
   def connect_to_facebook(uid)
     update_attributes(facebook_id: uid)
   end
-  
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session['devise.facebook_data'] && data['extra']['raw_info']
-        user.name  = data['extra']['raw_info']['name'] if user.name.blank?
-        user.email = data["email"] if user.email.blank?
-      end
-    end
-  end
 end
