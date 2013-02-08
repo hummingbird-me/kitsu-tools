@@ -67,8 +67,7 @@ class AnimeController < ApplicationController
         RecommendingWorker.perform_async(current_user.id)
       end
 
-      @recommendations = Recommendation.where(:user_id => current_user)
-      @anime = @anime.where('anime.id IN (?)', @recommendations.map(&:anime_id))
+      @anime = @anime.joins(:recommendations).where(:recommendations => {:user_id => current_user.id})
 
     else
       # We don't have to do any filtering.

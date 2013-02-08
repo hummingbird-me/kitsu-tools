@@ -3,6 +3,7 @@ require 'test_helper'
 class AnimeTest < ActiveSupport::TestCase
   should have_many(:quotes)
   should have_many(:reviews)
+  should have_many(:recommendations)
   should validate_presence_of(:title)
   should validate_uniqueness_of(:title)
   should validate_presence_of(:slug)
