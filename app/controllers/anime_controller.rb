@@ -31,11 +31,10 @@ class AnimeController < ApplicationController
     @genre_filter ||= @all_genres
 
     # Fetch the user's watchlist.
-    @watchlist = Hash.new(false)
     if user_signed_in?
-      Watchlist.where(:user_id => current_user).each do |watch|
-        @watchlist[ watch.anime_id ] = watch
-      end
+      @watchlist = current_user.watchlist_table
+    else
+      @watchlist = Hash.new(false)
     end
 
     # What regular filter are we applying?

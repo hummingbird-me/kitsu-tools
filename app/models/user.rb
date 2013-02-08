@@ -78,10 +78,21 @@ class User < ActiveRecord::Base
     return user
   end
   
-  # Private: Set this user's facebook_id to the passed in `uid`.
+  # Set this user's facebook_id to the passed in `uid`.
   #
   # Returns nothing.
   def connect_to_facebook(uid)
     update_attributes(facebook_id: uid)
+  end
+
+  # Public: Return a hash table which returns false for all of the shows the user
+  #         doesn't have on their watchlist, and the watchlist object for shows
+  #         which they do have on.
+  def watchlist_table
+    watchlist = Hash.new(false)
+    Watchlist.where(:user_id => id).each do |watch|
+      watchlist[ watch.anime_id ] = watch
+    end
+    watchlist
   end
 end
