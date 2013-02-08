@@ -20,6 +20,13 @@
                     = link_to "Dashboard", "/dashboard"
                   %li
                     = link_to "Community", main_app.forem_path
+                  %li
+                    %form
+                      .row.collapse
+                        .nine.mobile-three.columns
+                          %input(type="text")
+                        .three.mobile-one.columns
+                          %input.button.expand.postfix(type="submit" value="Search")
 
                 %ul.right
                   - if user_signed_in?
