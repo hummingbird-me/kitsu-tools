@@ -1,4 +1,9 @@
-%h1= title "Admin Panel"
+%h1(style="text-align: center")= title "Admin Panel"
 
-%p= link_to "Sidekiq Dashboard", "/kotodama/sidekiq"
-%p= link_to "Rails Admin", "/kotodama/rails_admin"
+.row
+  .three.columns
+    %ul.nav-bar.vertical
+      %li= link_to "Rails Admin", "/kotodama/rails_admin"
+      %li= link_to "Sidekiq Dashboard", "/kotodama/sidekiq"
+  .panel.nine.columns
+    %p Probably going to put that real-time map here.
