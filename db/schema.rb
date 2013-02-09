@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209021809) do
+ActiveRecord::Schema.define(:version => 20130209060246) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -90,10 +90,10 @@ ActiveRecord::Schema.define(:version => 20130209021809) do
     t.integer  "topic_id"
     t.text     "text"
     t.integer  "user_id"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.integer  "reply_to_id"
-    t.string   "state",       :default => "pending_review"
+    t.string   "state",       :default => "approved"
     t.boolean  "notified",    :default => false
   end
 
@@ -106,13 +106,13 @@ ActiveRecord::Schema.define(:version => 20130209021809) do
     t.integer  "forum_id"
     t.integer  "user_id"
     t.string   "subject"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.boolean  "locked",       :default => false,            :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.boolean  "locked",       :default => false,      :null => false
     t.boolean  "pinned",       :default => false
     t.boolean  "hidden",       :default => false
     t.datetime "last_post_at"
-    t.string   "state",        :default => "pending_review"
+    t.string   "state",        :default => "approved"
     t.integer  "views_count",  :default => 0
     t.string   "slug"
   end
@@ -218,9 +218,9 @@ ActiveRecord::Schema.define(:version => 20130209021809) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                      :default => "",               :null => false
+    t.string   "email",                      :default => "",         :null => false
     t.string   "name"
-    t.string   "encrypted_password",         :default => "",               :null => false
+    t.string   "encrypted_password",         :default => "",         :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -229,8 +229,8 @@ ActiveRecord::Schema.define(:version => 20130209021809) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                               :null => false
-    t.datetime "updated_at",                                               :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.string   "watchlist_hash"
     t.boolean  "recommendations_up_to_date"
     t.string   "avatar_file_name"
@@ -238,7 +238,7 @@ ActiveRecord::Schema.define(:version => 20130209021809) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.boolean  "forem_admin",                :default => false
-    t.string   "forem_state",                :default => "pending_review"
+    t.string   "forem_state",                :default => "approved"
     t.boolean  "forem_auto_subscribe",       :default => false
     t.string   "facebook_id"
     t.text     "bio"
