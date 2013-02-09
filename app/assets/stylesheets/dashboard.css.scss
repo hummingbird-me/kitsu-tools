@@ -8,9 +8,11 @@
 
     .user-block {
       width: 140px;
+      height: 155px;
       border-right: 1px solid #eee;
       padding-left: 10px;
       padding-right: 30px;
+      margin-top: 10px;
       float: left;
       display: inline-block;
       @include clearfix();
@@ -40,15 +42,27 @@
 
     .user-information {
       width: 50%;
-      height: 145px;
+      height: 155px;
       float: left;
-      padding-left: 30px;
+      margin-top: 10px;
+      padding-left: 20px;
       padding-right: 20px;
       border-right: 1px solid #eeeeee;
       @include clearfix;
+      p {
+        margin-bottom: 0;
+        line-height: 1.5;
+      }
 
+
+      .anime-life {
+        border-top: 1px solid #eee;
+        padding-top: 10px;
+        margin-top: 10px;
+      }
       .username {
         margin-bottom: 5px;
+        margin-top: 0px;
       }
     }
   }
@@ -56,29 +70,33 @@
   .genre-graph {
     margin-top: 10px;
     display: block;
+    height: 155px;
     float: left;
+    width: 34%;
+
+    .genres {
+      margin: 0 auto;
+      @include clearfix();
+    }
+
     .title {
       display: block;
       text-align: center;
       margin-bottom: 15px;
-      width: 113%;
+      width: 100%;
     }
-    .chart {
-      float: left;
 
-      &.first, &.second {
-        margin-right: 10px;
-      }
+    .graphs {
+      text-align: center;
+      .chart {
+        display: inline-block;
 
-      &.first {
-        margin-left: 35px;
-      }
-
-      .label {
-        background: none;
-        display: block;
-        margin-top: 10px;
-        color: #000;
+        .label {
+          background: none;
+          display: block;
+          margin-top: 10px;
+          color: #000;
+        }
       }
     }
   }
