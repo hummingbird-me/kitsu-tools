@@ -19,19 +19,11 @@
         .genre-graph
           %span.title Most Watched Genres
           %ul.graphs
-            %li.chart
-              .percentage{"data-percent" => "55"}
-                %span 55%
-              .label= link_to "Action", "#"
-            %li.chart
-              .percentage{"data-percent" => "46"}
-                %span 46%
-              .label= link_to "Slice of Life", "#"
-            %li.chart
-              .percentage{"data-percent" => "92"}
-                %span 92%
-              .label= link_to "Horror", "#"
-
+            - @top_genres.each do |genre, freq|
+              %li.chart
+                .percentage{"data-percent" => (freq * 100).to_i}
+                  %span #{(freq*100).to_i}%
+                .label= link_to genre.name, genre
 
       .profile-bar-subnav
 
