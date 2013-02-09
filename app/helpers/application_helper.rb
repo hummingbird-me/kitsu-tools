@@ -17,4 +17,7 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+  def omniauth_authorize_path(resource_name, provider)
+    "/users/auth/#{provider.to_s}"
+  end
 end
