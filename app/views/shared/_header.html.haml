@@ -25,7 +25,7 @@
                     %form(action="/search")
                       .row.collapse
                         .nine.mobile-three.columns
-                          %input(type="text" name="query")
+                          %input(type="text" name="query"){:value => params[:query]}
                         .three.mobile-one.columns
                           %input.button.expand.postfix(type="submit" value="Search")
 
