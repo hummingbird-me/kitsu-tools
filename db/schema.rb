@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130207204819) do
+ActiveRecord::Schema.define(:version => 20130209021809) do
 
   create_table "anime", :force => true do |t|
-    t.text     "title"
-    t.text     "alt_title"
-    t.text     "slug"
+    t.string   "title"
+    t.string   "alt_title"
+    t.string   "slug"
     t.string   "age_rating"
     t.integer  "episode_count"
     t.integer  "episode_length"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20130207204819) do
     t.integer  "mal_id"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
-    t.text     "cover_image_file_name"
+    t.string   "cover_image_file_name"
     t.string   "cover_image_content_type"
     t.integer  "cover_image_file_size"
     t.datetime "cover_image_updated_at"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(:version => 20130207204819) do
   create_table "forem_topics", :force => true do |t|
     t.integer  "forum_id"
     t.integer  "user_id"
-    t.text     "subject"
+    t.string   "subject"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.boolean  "locked",       :default => false,            :null => false
