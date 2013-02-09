@@ -266,6 +266,8 @@ GEM
       hpricot (~> 0.8.4)
       htmlentities (~> 4.3.0)
     temple (0.5.5)
+    texticle (2.1.1)
+      activerecord (~> 3.0)
     thin (1.5.0)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -321,6 +323,7 @@ DEPENDENCIES
   spork-testunit
   sqlite3
   tarantula
+  texticle (~> 2.0)
   thin
   uglifier (>= 1.0.3)
   zurb-foundation

@@ -64,6 +64,9 @@ gem 'sinatra', :require => nil
 # Forum
 gem 'forem', :git => "git://github.com/vikhyat/forem.git"
 
+# Fuzzy Search with Postgres.
+gem 'texticle', '~> 2.0', require: 'texticle/rails'
+
 gem "rails_admin"
 
 # For voting on stuff.

@@ -21,6 +21,8 @@ class SearchController < ApplicationController
     else
       @watchlist = Hash.new(false)
     end
+    
+    @anime = @anime.search(title: params[:query])
 
     render "anime/index"
   end
