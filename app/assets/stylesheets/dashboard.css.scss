@@ -110,4 +110,16 @@
     border-bottom: solid 1px #e6e6e6;
     margin-top: -23px;
   }
+
+  .account-settings {
+    h3 {
+      margin-top: 30px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid #dadada;
+      padding-bottom: 20px;
+    }
+    img {
+      @include border-radius(100px);
+    }
+  }
 }

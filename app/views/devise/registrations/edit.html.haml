@@ -1,29 +1,63 @@
-%h2= title "Edit Profile"
+.dashboard
+  .row.content-body
+    .twelve.columns
+      .panel.profile-bar
+        .user-block.mobile-twelve
+          %figure.user-avatar= image_tag(current_user.avatar_url)
+          %figcaption.karma 10,042
+          %figcaption.karma-title karma
+        .user-information 
+          %h4.username= current_user.name
+          %p.bio 
+            - if not current_user.bio.nil?
+              = current_user.bio
+            - else
+              (Edit profile link goes here)
+          .anime-life
+            %p Life Spent on Anime:
+            %p 1 month, 4 days, 21 hours and 7 minutes
+        .genre-graph
+          %span.title Most Watched Genres
+          %ul.graphs
 
-= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f|
-  = devise_error_messages!
 
-  = f.label :name
-  = f.text_field :name
+      .profile-bar-subnav
+      
+      .account-settings
+        %h3= title "Edit Account Settings"
 
-  = f.label :email
-  = f.email_field :email
+        = form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f|
+          = devise_error_messages!
 
-  - if devise_mapping.confirmable? and resource.pending_reconfirmation?
-    %p Currently waiting confirmation for: #{resource.unconfirmed_email}
+          .nine.columns.push-three
+            %p 
+              = f.label :name
+              = f.text_field :name
+            %p
+              = f.label :email
+              = f.email_field :email
 
-  = f.label :avatar
-  = image_tag current_user.avatar_url
-  = f.file_field :avatar
+              - if devise_mapping.confirmable? and resource.pending_reconfirmation?
+                %p Currently waiting confirmation for: #{resource.unconfirmed_email}
+            %p
+              = f.label :bio
+              = f.text_field :bio
+            %p 
+              = f.label :password, "New Password"
+              %i (leave blank if you don't want to change it)
+              = f.password_field :password, :autocomplete => "off"
 
-  = f.label :bio
-  = f.text_area :bio
+              = f.label :password_confirmation
+              = f.password_field :password_confirmation
+              = f.submit "Update"
 
-  = f.label :password, "New Password"
-  %i (leave blank if you don't want to change it)
-  = f.password_field :password, :autocomplete => "off"
+          / Sidebar
+          .three.columns.pull-nine
+            %ul.side-nav
+              %li
+                = f.label :avatar
+                %span.user-avatar= image_tag current_user.avatar_url
+                = f.file_field :avatar
+              %li
+              
 
-  = f.label :password_confirmation
-  = f.password_field :password_confirmation
-
-  = f.submit "Update"
