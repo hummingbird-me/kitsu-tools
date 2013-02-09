@@ -22,7 +22,7 @@ class SearchController < ApplicationController
       @watchlist = Hash.new(false)
     end
     
-    @anime = @anime.fuzzy_search(params[:query])
+    @anime = @anime.search_by_title(params[:query])
 
     render "anime/index"
   end
