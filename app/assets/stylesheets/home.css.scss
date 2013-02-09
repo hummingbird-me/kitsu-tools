@@ -156,19 +156,9 @@
 
       img {
         width: 100%;
-        height: 330px;
+        height: auto;
         float: left;
         @include border-top-radius(3px); 
-        @media screen and (max-width: 480px) {
-          height: 267px;
-        }
-        @media screen and (min-width: 481px) {
-          height: 480px;
-        }
-
-        @media screen and (min-width: 765px) {
-          height: 351px;
-        }
       }
 
       &:hover {
