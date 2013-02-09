@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
     :uniqueness => {:case_sensitive => false}
   
   validates :facebook_id, uniqueness: true
+
+  def to_s
+    name
+  end
   
   # Avatar
   def avatar_url
