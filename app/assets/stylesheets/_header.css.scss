@@ -11,6 +11,8 @@
   .top-bar {
     background: white;
     border-top: 4px solid orange;
+    margin-bottom: 0;
+    z-index: 1;
     @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px);
 
     a {
@@ -74,4 +76,54 @@
     }
   }
 
+
+
+
+  figure {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: -100px;
+    height: 250px;
+    border-bottom: 1px solid white;
+
+
+    .overlay {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      text-align: center;
+      color: #fff;
+      @include opacity(0.90);
+      @include border-top-radius(3px);
+      @include background-image(linear-gradient(left top, #393939, #000));
+
+      .title {
+        color: white;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        a {
+          color: white;
+        }
+      }
+
+      .summary {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      float: left;
+      @include border-top-radius(3px); 
+    }
+  }
 }
