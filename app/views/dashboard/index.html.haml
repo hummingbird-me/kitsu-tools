@@ -13,5 +13,31 @@
               = current_user.bio
             - else
               (Edit profile link goes here)
-      .profile-bar-subnav 
+        .genre-graph
+          .title Most Watched Genres
+          .chart.first
+            .percentage{"data-percent" => "55"}
+              %span 55
+            .label= link_to "Action", "#"
+          .chart.second
+            .percentage{"data-percent" => "46"}
+              %span 46
+            .label= link_to "Slice of Life", "#"
+          .chart.third
+            .percentage{"data-percent" => "92"}
+              %span 92
+            .label= link_to "Horror", "#"
+
+
+      .profile-bar-subnav
+
+:javascript
+  $(function() {
+      $('.percentage').easyPieChart({
+          animate: 1000,
+          barColor: '#f3a43d',
+          size: 83,
+      });
+  });
+
 
