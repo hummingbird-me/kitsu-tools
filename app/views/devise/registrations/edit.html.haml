@@ -47,8 +47,10 @@
               %i (leave blank if you don't want to change it)
               = f.password_field :password, :autocomplete => "off"
 
-              = f.label :password_confirmation
-              = f.password_field :password_confirmation
+              .password-confirmation-box
+                = f.label :password_confirmation
+                = f.password_field :password_confirmation
+              
               = f.submit "Update"
 
           / Sidebar
@@ -61,3 +63,13 @@
               %li
               
 
+:javascript
+  $(".password-confirmation-box").slideUp();
+  $("div.dashboard input#user_password").focus(function() {
+    $(".password-confirmation-box").slideDown();
+  });
+  $("div.dashboard input#user_password").blur(function() {
+    if ($("div.dashboard input#user_password").val().length > 0) {
+      $(".password-confirmation-box").slideUp();
+    }
+  });
