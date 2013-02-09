@@ -1,6 +1,40 @@
+@import "compass/css3";
+
 .hummingbird-footer {
-  .bottom-bar {
+
+  .history-bar {
+    background: white;
+    padding-bottom: 20px;
     margin-top: 30px;
+
+    .recently-viewed {
+      h1 {
+        font-size: 20px;
+      }
+      ul {
+        list-style: none;
+        .two {
+          width: 14.28%
+        }
+        .columns {
+          padding: 0 5px;
+        }
+        [class*="column"] + [class*="column"]:last-child {
+          float: left;
+        }
+        li {
+          img {
+            @include border-radius(3px);
+            &:hover {
+              margin-top: -5px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .bottom-bar {
     background: #484848;
     color: white;
     a {
