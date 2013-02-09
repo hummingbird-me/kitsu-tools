@@ -39,7 +39,7 @@
     }
 
     .user-information {
-      width: 60%;
+      width: 50%;
       height: 145px;
       float: left;
       padding-left: 30px;
@@ -49,6 +49,36 @@
 
       .username {
         margin-bottom: 5px;
+      }
+    }
+  }
+
+  .genre-graph {
+    margin-top: 10px;
+    display: block;
+    float: left;
+    .title {
+      display: block;
+      text-align: center;
+      margin-bottom: 15px;
+      width: 113%;
+    }
+    .chart {
+      float: left;
+
+      &.first, &.second {
+        margin-right: 10px;
+      }
+
+      &.first {
+        margin-left: 35px;
+      }
+
+      .label {
+        background: none;
+        display: block;
+        margin-top: 10px;
+        color: #000;
       }
     }
   }

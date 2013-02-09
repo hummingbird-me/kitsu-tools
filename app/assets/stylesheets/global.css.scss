@@ -9,4 +9,13 @@ body {
       }
     }
   }
+  .easyPieChart {
+    position: relative;
+    text-align: center;
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
 }
