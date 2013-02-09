@@ -13,6 +13,9 @@ Hummingbird::Application.routes.draw do
   # Dashboard
   match '/dashboard' => 'dashboard#index'
 
+  # Search
+  match '/search' => 'search#basic'
+
   resources :anime do
     resources :quotes do
       member { post :vote }
