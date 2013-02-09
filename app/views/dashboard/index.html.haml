@@ -15,7 +15,7 @@
               (Edit profile link goes here)
           .anime-life
             %p Life Spent Watching Anime:
-            %p 1 month, 4 days, 21 hours and 7 minutes
+            %p= format_minutes current_user.life_spent_on_anime
         .genre-graph
           %span.title Most Watched Genres
           %ul.graphs

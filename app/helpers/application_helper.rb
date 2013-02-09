@@ -4,6 +4,28 @@ module ApplicationHelper
     page_title.to_s
   end
 
+  # Convert minutes into a string like "1 month, 4 days, 21 hours and 7 minutes"
+  def format_minutes(minutes)
+    years, months, days, hours = 0, 0, 0, 0
+    hours, minutes = minutes/60, minutes%60 
+    days, hours    = hours/24, hours%24
+    months, days   = days/30, days%30
+    years, months  = months/12, months%12
+   
+    narray = [years, months, days, hours, minutes]
+    warray = %w(year month day hour minute)
+    oarray = narray.zip(warray).select {|x| x[0] > 0 }
+                   .map {|x| pluralize(x[0], x[1]) }
+                   
+    if oarray.length == 0
+      return nil
+    elsif oarray.length == 1
+      return oarray[0]
+    else
+      return (oarray[0..-2] * ', ') + " and #{oarray[-1]}"
+    end
+  end
+
   # For Devise
   def resource_name
     :user

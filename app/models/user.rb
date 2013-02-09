@@ -129,7 +129,7 @@ class User < ActiveRecord::Base
   def life_spent_on_anime
     # TODO Episodes need to be implemented first.
     # FIXME Just return 1 month, 4 days, 21 hours and 7 minutes for now.
-    50827
+    50227
   end
 
   # Forem permissions
