@@ -1,23 +1,15 @@
 .hummingbird-footer
-  .history-bar
-    %footer.row
-      .twelve.columns
-        .recently-viewed
-          %h1 Recently Viewed
-          %ul
-            %li.two.columns.has-tip.tip-top{"data-width" => "210", :title => "Cowboy Bebop: Knockin' on Heaven's Door"}= image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg"
+  - if session[:recently_viewed] and session[:recently_viewed].length > 0
+    .history-bar
+      %footer.row
+        .twelve.columns
+          .recently-viewed
+            %h1 Recently Viewed
+            %ul
+              - animes = Anime.where('slug IN (?)', session[:recently_viewed])
+              - animes.each do |anime|
+                %li.two.columns.has-tip.tip-top{"data-width" => "210", :title => anime.title}= image_tag anime.cover_image.url(:thumb)
 
-            %li.two.columns.has-tip.tip-top{"data-width" => "210", :title => "Cowboy Bebop: Knockin' on Heaven's Door"}= image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg"
-            
-            %li.two.columns.has-tip.tip-top{"data-width" => "210", :title => "Cowboy Bebop: Knockin' on Heaven's Door"}= image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg"
-
-            %li.two.columns.has-tip.tip-top{"data-width" => "210", :title => "Cowboy Bebop: Knockin' on Heaven's Door"}= image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg"
-
-            %li.two.columns.has-tip.tip-top{"data-width" => "210", :title => "Cowboy Bebop: Knockin' on Heaven's Door"}= image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg"
-
-            %li.two.columns.has-tip.tip-top{"data-width" => "210", :title => "Cowboy Bebop: Knockin' on Heaven's Door"}= image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg"
-
-            %li.two.columns.has-tip.tip-top{"data-width" => "210", :title => "Cowboy Bebop: Knockin' on Heaven's Door"}= image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg"
   .bottom-bar
     %footer.row
       .twelve.columns
@@ -29,9 +21,9 @@
               %li
                 %a{:href => "#"} Discover
               %li
-                %a{:href => "#"} Dashboard
+                = link_to "Dashboard", "/dashboard"
               %li
-                %a{:href => "#"} Community
+                = link_to "Community", main_app.forem_path
             %ul.link-list.right.bottom-list
               %li
                 %a{:href => "#"} About Hummingbird
@@ -43,5 +35,3 @@
                 %a{:href => "#"} Privacy Policy
               %li
                 %a{:href => "#"} Contact Us
-
-%span "tip-bottom"

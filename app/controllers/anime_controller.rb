@@ -7,6 +7,12 @@ class AnimeController < ApplicationController
     @castings = @anime.castings.includes(:character, :voice_actor)
     @reviews = @anime.reviews.includes(:user)
 
+    # Add to recently viewed.
+    session[:recently_viewed] ||= []
+    session[:recently_viewed].delete( params[:id] )
+    session[:recently_viewed].unshift( params[:id] )
+    session[:recently_viewed].pop if session[:recently_viewed].length > 7
+
     respond_to do |format|
       format.html { render :show }
     end
