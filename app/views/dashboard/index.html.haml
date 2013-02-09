@@ -2,7 +2,7 @@
   .row.content-body
     .twelve.columns
       .panel.profile-bar
-        .user-block
+        .user-block.mobile-twelve
           %figure.user-avatar= image_tag(current_user.avatar_url)
           %figcaption.karma 10,042
           %figcaption.karma-title karma
@@ -13,20 +13,24 @@
               = current_user.bio
             - else
               (Edit profile link goes here)
+          .anime-life
+            %p Life Spent on Anime:
+            %p 1 month, 4 days, 21 hours and 7 minutes
         .genre-graph
-          .title Most Watched Genres
-          .chart.first
-            .percentage{"data-percent" => "55"}
-              %span 55%
-            .label= link_to "Action", "#"
-          .chart.second
-            .percentage{"data-percent" => "46"}
-              %span 46%
-            .label= link_to "Slice of Life", "#"
-          .chart.third
-            .percentage{"data-percent" => "92"}
-              %span 92%
-            .label= link_to "Horror", "#"
+          %span.title Most Watched Genres
+          %ul.graphs
+            %li.chart
+              .percentage{"data-percent" => "55"}
+                %span 55%
+              .label= link_to "Action", "#"
+            %li.chart
+              .percentage{"data-percent" => "46"}
+                %span 46%
+              .label= link_to "Slice of Life", "#"
+            %li.chart
+              .percentage{"data-percent" => "92"}
+                %span 92%
+              .label= link_to "Horror", "#"
 
 
       .profile-bar-subnav
