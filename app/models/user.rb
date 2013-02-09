@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   def to_s
     name
   end
-  
+
   # Avatar
   def avatar_url
     # Gravatar
