@@ -2,6 +2,7 @@
 @import "compass/utilities";
 
 .dashboard {
+
   .profile-bar {
     background: white;
     @include clearfix();
@@ -60,6 +61,7 @@
         padding-top: 10px;
         margin-top: 10px;
       }
+
       .username {
         margin-bottom: 5px;
         margin-top: 0px;
@@ -109,6 +111,43 @@
     border-right: solid 1px #e6e6e6;
     border-bottom: solid 1px #e6e6e6;
     margin-top: -23px;
+    padding-right: 20px;
+
+    .sub-nav {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+
+      dd {
+        width: 15%;
+        height: 100%;
+        text-align: center;
+        border-right: 1px solid #dadada;
+        margin: 0;
+        padding: 0;
+
+        &.active, &:hover {
+          border-bottom: 4px solid orange;
+          a {
+            padding-top: 11px;
+            font-weight: normal;
+            background: none;
+          }
+        }
+
+        a {
+          color: #000;
+          height: 100%;
+          width: 100%;
+          display: block;
+          padding-top: 15px;
+
+          &:hover {
+            padding-top: 11px;
+          }
+        }
+      }
+    }
   }
 
   .account-settings {
