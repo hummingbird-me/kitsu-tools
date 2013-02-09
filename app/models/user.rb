@@ -102,6 +102,8 @@ class User < ActiveRecord::Base
     watchlist
   end
 
+  # Return the top 3 genres the user has watched, along with a percentage of
+  # anime watched that contain each of those genres.
   def top_genres
     genres        = Arel::Table.new(:genres)
     anime_genres  = Arel::Table.new(:anime_genres)
@@ -121,6 +123,13 @@ class User < ActiveRecord::Base
     end
     
     result
+  end
+  
+  # How many minutes the user has spent watching anime.
+  def life_spent_on_anime
+    # TODO Episodes need to be implemented first.
+    # FIXME Just return 1 month, 4 days, 21 hours and 7 minutes for now.
+    50827
   end
 
   # Forem permissions
