@@ -7,7 +7,7 @@ class Anime < ActiveRecord::Base
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :status, :synopsis, :cover_image
 
-  has_attached_file :cover_image, :styles => { :thumb => "450x670" }
+  has_attached_file :cover_image, :styles => { :thumb => "450x670!" }
 
   has_many :quotes
   has_many :castings
