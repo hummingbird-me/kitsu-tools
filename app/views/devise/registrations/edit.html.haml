@@ -19,15 +19,11 @@
   = f.label :bio
   = f.text_area :bio
 
-  = f.label :password
+  = f.label :password, "New Password"
   %i (leave blank if you don't want to change it)
   = f.password_field :password, :autocomplete => "off"
 
   = f.label :password_confirmation
   = f.password_field :password_confirmation
-
-  = f.label :current_password
-  %i (we need your current password to confirm your changes)
-  = f.password_field :current_password
 
   = f.submit "Update"
