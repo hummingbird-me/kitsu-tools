@@ -73,7 +73,7 @@ class AnimeController < ApplicationController
         RecommendingWorker.perform_async(current_user.id)
       end
 
-      @anime = @anime.joins(:recommendations).where(:recommendations => {:user_id => current_user.id})
+      @anime = @anime.joins(:recommendations).where(:recommendations => {:user_id => current_user.id}).order('score DESC')
 
     else
       # We don't have to do any filtering.
