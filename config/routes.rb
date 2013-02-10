@@ -12,6 +12,7 @@ Hummingbird::Application.routes.draw do
 
   # Dashboard
   match '/dashboard' => 'dashboard#index'
+  resources :users
 
   # Search
   match '/search' => 'search#basic'

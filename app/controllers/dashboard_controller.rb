@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   def index
     authenticate_user!
-    @top_genres = current_user.top_genres
+    redirect_to user_path(current_user)
   end
 end

@@ -1,28 +1,9 @@
+- @active_tab = :account_settings
+= render "users/dash"
+
 .dashboard
   .row.content-body
     .twelve.columns
-      .panel.profile-bar
-        .user-block.mobile-twelve
-          %figure.user-avatar= image_tag(current_user.avatar_url)
-          %figcaption.karma 10,042
-          %figcaption.karma-title karma
-        .user-information 
-          %h4.username= current_user.name
-          %p.bio 
-            - if not current_user.bio.nil?
-              = current_user.bio
-            - else
-              (Edit profile link goes here)
-          .anime-life
-            %p Life Spent on Anime:
-            %p 1 month, 4 days, 21 hours and 7 minutes
-        .genre-graph
-          %span.title Most Watched Genres
-          %ul.graphs
-
-
-      .profile-bar-subnav
-      
       .account-settings
         %h3= title "Edit Account Settings"
 
@@ -61,7 +42,6 @@
                 %span.user-avatar= image_tag current_user.avatar_url
                 = f.file_field :avatar
               %li
-              
 
 :javascript
   $(".password-confirmation-box").slideUp();
