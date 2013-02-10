@@ -11,7 +11,7 @@
             %span.meter{:style => "width: #{(rand * 100).to_i}%"}
 
           %p.watchlist
-            = link_to "- Remove from Watchlist", "#", :method => :post, :confirm => "Are you sure you want to remove anime.title from your Watchlist?"
+            = link_to "- Remove from Watchlist", "#", :method => :post, :confirm => "Are you sure you want to remove #{@anime.title} from your Watchlist?"
 
           .vote-blocks
             %span.like
@@ -46,7 +46,33 @@
             %p #{@anime.synopsis}
 
       .panel.community-rating
-        %p Community Rating
+        .upper.twelve.columns
+          .decoration.three.columns
+            %p.left <i></i>
+          .six.columns 
+            %h6 Community Rating
+            %p.percentage-positive <i></i> 72%
+            %p.based-on Based on 6,124 Ratings
+          .decoration.three.columns
+            %p.right <i></i>
+        .lower.twelve.columns
+          .positive-review.six.columns
+            %h6 Top Rated <span>Positive</span> Review
+            %p Sword Art Online is a pioneer of its genre in that, the source material dates from all the way back in 2002 (.hack// being of the same vintage). This is important to note as with all pioneering feats, there is an initial sense of wonder and hype, followed by disappointment as the same concept is refined and... <a href="#">read more</a>
+
+            %span.user
+              = image_tag "http://placekitten.com/g/200/200"
+              = link_to "Kanye West", "#"
+
+          .negative-review.six.columns
+            %h6 Top Rated <span>Negative</span> Review
+            %p I might as well skip the plot synopsis of Sword Art Online, because odds are you already know it. Sword Art Online has utterly exploded. It is all over the place. It is that one show the EVERYONE is watching, whether it be through genuine interest or sheer bile fascination. And amidst this, it has... <a href="#">read more</a>
+            %span.user
+              = image_tag "http://placekitten.com/g/200/200"
+              = link_to "Felicia Day", "#"
+
+        .footer.twelve.columns
+          = link_to "view all reviews", "#"
 
     / Nav Sidebar
     .four.columns
@@ -71,7 +97,7 @@
         %p= link_to "view full gallery", "#"
 
       .quotes
-        %h3 Quotes
+        %h5 #{@anime.title} Quotes
 
         - @quotes.each do |quote|
           %blockquote
