@@ -17,9 +17,11 @@
       color: orange;
     }
   }
+
   .nub {
     top: 5px !important;
   }
+
   ul.accordion {
     border: none;
     margin: 0;
@@ -334,12 +336,15 @@
     }
     .synopsis {
       margin-top: 20px;
+      p {
+        margin-bottom: 20px;
+      }
     }
   }
 
   .screenshots {
     text-align: center;
-    
+
     .columns {
       padding: 0px;
       margin-bottom: 6px;
@@ -353,6 +358,106 @@
       &.columns {
         padding-left: 3px;
       }
+    }
+  }
+
+  .community-rating {
+    text-align: center;
+    padding: 1px;
+    h6 {
+      font-size: 18px;
+    }
+    .decoration {
+      background: none;
+      box-shadow: none;
+      .left {
+        float: right;
+      } 
+      .right {
+        float: left;
+      }
+      p {
+        margin-top: 65%;
+        i {
+          height: 30px;
+          width: 88px;
+          display: inline-block;
+
+          background-image: url(asset-path('community-decoration.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('community-decoration@2x.png', image));
+            background-size: 88px 30px;
+          }
+        }
+      }
+    }
+    .upper {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ececec;
+      background-image: url(asset-path('community-rating.jpg', image));
+      background-size: 676px 154px;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      .percentage-positive {
+        color: #2aa730;
+        font-size: 64px;
+        i {
+          height: 55px;
+          width: 54px;
+          display: inline-block;
+
+          background-image: url(asset-path('icons/positive-votes.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/positive-votes@2x.png', image));
+            background-size: 54px 55px;
+          }
+        }
+      }
+      .percentage-negative {
+        color: #c63838;
+        font-size: 64px;
+      }
+      .based-on {
+        color: #a2a2a2;
+      }
+    }
+    .lower {
+      border-bottom: 1px solid #ececec;
+
+      .user {
+        display: inline-block;
+        margin-top: 20px;
+        
+        img {
+          width: 40px;
+          float: left;
+          @include border-radius(100px);
+        }
+        a {
+          margin-left: 10px;
+          display: inline-block;
+          float: left;
+          padding-top: 14px;
+        }
+      }
+
+      .positive-review {
+        padding: 15px;
+        border-right: 1px solid #ececec;
+        span {
+          color: #2aa730;
+        }
+      }
+      .negative-review {
+        padding: 15px;
+        span {
+          color: #c63838;
+        }
+      }
+    }
+    .footer {
+      padding-top: 20px;
+      padding-bottom: 20px;
     }
   }
 }
