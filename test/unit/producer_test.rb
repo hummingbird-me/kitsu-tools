@@ -7,6 +7,7 @@ class ProducerTest < ActiveSupport::TestCase
   should validate_presence_of(:slug)
 
   test "can find producer using a slug" do
-    assert_equal Producer.find("aniplex"), producers(:aniplex)
+    producer = FactoryGirl.create(:producer)
+    assert_equal Producer.find(producer.slug), producer
   end
 end

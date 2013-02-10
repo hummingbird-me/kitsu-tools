@@ -11,6 +11,7 @@ class AnimeTest < ActiveSupport::TestCase
   should have_and_belong_to_many(:producers)
   
   test "should find anime using slug" do
-    assert_not_nil Anime.find("sword-art-online")
+    anime = FactoryGirl.create(:anime)
+    assert_equal Anime.find(anime.slug), anime
   end
 end

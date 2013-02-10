@@ -33,6 +33,7 @@ end
 gem "spork-testunit"
 gem 'shoulda'
 gem "tarantula", :require => "tarantula-rails3"
+gem 'factory_girl_rails'
 
 gem 'jquery-rails'
 gem 'haml-rails'

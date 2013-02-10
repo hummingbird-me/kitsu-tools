@@ -8,7 +8,7 @@ class EpisodeTest < ActiveSupport::TestCase
   should_not validate_presence_of(:title)
 
   test "show the episode number when title is not known" do
-    e = Episode.create(anime_id: anime(:sword_art_online).id, number: 22)
-    assert_equal e.title, "Episode 22"
+    episode = FactoryGirl.create(:episode, number: 22, title: nil)
+    assert_equal episode.title, "Episode 22"
   end
 end

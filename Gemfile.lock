@@ -89,6 +89,11 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     facter (1.6.17)
+    factory_girl (4.2.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.2.1)
+      factory_girl (~> 4.2.0)
+      railties (>= 3.0.0)
     faraday (0.8.5)
       multipart-post (~> 1.1)
     ffi (1.0.11)
@@ -300,6 +305,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails
   devise
+  factory_girl_rails
   forem!
   friendly_id (~> 4.0.9)
   haml-rails
