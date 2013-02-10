@@ -19,4 +19,28 @@ class UserTest < ActiveSupport::TestCase
     assert_operator u.top_genres[g1], :>, u.top_genres[g2]
     assert_equal u.top_genres.keys[0], g1
   end
+  
+  test "episodes_viewed" do
+    a1 = FactoryGirl.create(:anime)
+    a2 = FactoryGirl.create(:anime, title: "adsf 2")
+    u  = FactoryGirl.create(:user)
+    e1 = FactoryGirl.create(:episode, anime: a1)
+    e2 = FactoryGirl.create(:episode, anime: a1, number: 2)
+    e3 = FactoryGirl.create(:episode, anime: a2)
+    
+    assert_equal u.episodes_viewed(a1).count, 0
+    assert_equal u.episodes_viewed(a2).count, 0
+    
+    EpisodeView.create(user: u, anime: a1, episode: e1)
+    assert_equal u.episodes_viewed(a1).count, 1
+    assert_equal u.episodes_viewed(a2).count, 0
+
+    EpisodeView.create(user: u, anime: a1, episode: e2)
+    assert_equal u.episodes_viewed(a1).count, 2
+    assert_equal u.episodes_viewed(a2).count, 0
+
+    EpisodeView.create(user: u, anime: a2, episode: e3)
+    assert_equal u.episodes_viewed(a1).count, 2
+    assert_equal u.episodes_viewed(a2).count, 1
+  end
 end
