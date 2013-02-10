@@ -26,4 +26,9 @@ class Anime < ActiveRecord::Base
       where("age_rating <> 'Rx'")
     end
   end
+
+  # Check whether the current anime is SFW.
+  def sfw?
+    age_rating != "Rx"
+  end
 end

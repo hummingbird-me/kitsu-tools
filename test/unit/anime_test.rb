@@ -14,4 +14,11 @@ class AnimeTest < ActiveSupport::TestCase
     anime = FactoryGirl.create(:anime)
     assert_equal Anime.find(anime.slug), anime
   end
+
+  test "should detect sfw status correctly" do
+    sfw = FactoryGirl.create(:anime)
+    nsfw = FactoryGirl.create(:anime, title: "asdf 2", age_rating: "Rx")
+    assert sfw.sfw?
+    assert !nsfw.sfw?
+  end
 end
