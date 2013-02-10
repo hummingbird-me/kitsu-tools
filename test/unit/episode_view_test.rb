@@ -12,7 +12,6 @@ class EpisodeViewTest < ActiveSupport::TestCase
     e  = FactoryGirl.create(:episode, anime: a1)
     ev = EpisodeView.new
     ev.user = u; ev.anime = a2; ev.episode = e
-    p ev
     assert !ev.save
     assert ev.errors[:anime].any? {|x| x.include? "identifier does not match episode" }
   end
