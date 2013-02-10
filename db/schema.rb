@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130210060436) do
+ActiveRecord::Schema.define(:version => 20130210174247) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -253,6 +253,7 @@ ActiveRecord::Schema.define(:version => 20130210060436) do
     t.boolean  "forem_auto_subscribe",       :default => false
     t.string   "facebook_id"
     t.text     "bio"
+    t.boolean  "sfw_filter",                 :default => true
   end
 
   create_table "watchlists", :force => true do |t|

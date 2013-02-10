@@ -19,5 +19,11 @@ class Anime < ActiveRecord::Base
   validates :title, :slug, :presence => true, :uniqueness => true
 
   # Filter out hentai if `filterp` is true or nil.
-  scope :sfw, lambda {|filterp| where("age_rating <> 'Rx'") if filterp.nil? or filterp }
+  def self.sfw_filter(current_user)
+    if current_user && !current_user.sfw_filter
+      self
+    else
+      where("age_rating <> 'Rx'")
+    end
+  end
 end

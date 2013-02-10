@@ -28,10 +28,15 @@
               %i (leave blank if you don't want to change it)
               = f.password_field :password, :autocomplete => "off"
 
-              .password-confirmation-box
-                = f.label :password_confirmation
-                = f.password_field :password_confirmation
+            %p.password-confirmation-box
+              = f.label :password_confirmation
+              = f.password_field :password_confirmation
+            
+            %p
+              = f.label :sfw_filter
+              = f.check_box :sfw_filter
               
+            %p
               = f.submit "Update"
 
           / Sidebar

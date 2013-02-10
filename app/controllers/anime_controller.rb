@@ -20,7 +20,7 @@ class AnimeController < ApplicationController
 
   def index
     # Establish a base scope, with pagination enabled.
-    @anime = Anime.sfw(user_signed_in? ? true : true).page(params[:page]).per(18)
+    @anime = Anime.sfw_filter(current_user).page(params[:page]).per(18)
 
     # Get a list of all genres.
     @all_genres = Genre.order(:name)
