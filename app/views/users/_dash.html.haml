@@ -29,8 +29,8 @@
         %dl.sub-nav
           %dd{:class => ("active" if @active_tab == :profile)}
             = link_to "Profile", user_path(@user)
-          %dd
-            %a{:href => "#"} Watchlist
+          %dd{:class => ("active" if @active_tab == :watchlist)}
+            = link_to "Watchlist", user_watchlist_path(@user)
           %dd
             %a{:href => "#"} Reviews
           - if user_signed_in? and @user == current_user

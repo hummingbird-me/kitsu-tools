@@ -3,4 +3,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @active_tab = :profile
   end
+
+  def watchlist
+    @user = User.find(params[:user_id])
+    @active_tab = :watchlist
+  end
 end

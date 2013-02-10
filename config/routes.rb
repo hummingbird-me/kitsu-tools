@@ -12,7 +12,9 @@ Hummingbird::Application.routes.draw do
 
   # Dashboard
   match '/dashboard' => 'home#dashboard'
-  resources :users
+  resources :users do
+    get "/watchlist" => 'users#watchlist', as: :watchlist
+  end
 
   # Search
   match '/search' => 'search#basic'
