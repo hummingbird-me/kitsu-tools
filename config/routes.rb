@@ -11,7 +11,7 @@ Hummingbird::Application.routes.draw do
   root :to => "home#index"
 
   # Dashboard
-  match '/dashboard' => 'dashboard#index'
+  match '/dashboard' => 'home#dashboard'
   resources :users
 
   # Search
