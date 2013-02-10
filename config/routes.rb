@@ -14,6 +14,7 @@ Hummingbird::Application.routes.draw do
   match '/dashboard' => 'home#dashboard'
   resources :users do
     get "/watchlist" => 'users#watchlist', as: :watchlist
+    get "/reviews" => 'users#reviews', as: :reviews
   end
 
   # Search

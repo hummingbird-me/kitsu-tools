@@ -31,8 +31,8 @@
             = link_to "Profile", user_path(@user)
           %dd{:class => ("active" if @active_tab == :watchlist)}
             = link_to "Watchlist", user_watchlist_path(@user)
-          %dd
-            %a{:href => "#"} Reviews
+          %dd{:class => ("active" if @active_tab == :reviews)}
+            = link_to "Reviews", user_reviews_path(@user)
           - if user_signed_in? and @user == current_user
             %dd{:class => ("active" if @active_tab == :account_settings)}
               = link_to "Account Settings", edit_user_registration_path

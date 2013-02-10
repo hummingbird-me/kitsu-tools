@@ -8,4 +8,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     @active_tab = :watchlist
   end
+  
+  def reviews
+    @user = User.find(params[:user_id])
+    @active_tab = :reviews
+  end
 end
