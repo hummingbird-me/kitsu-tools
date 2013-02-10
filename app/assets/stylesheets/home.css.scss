@@ -2,8 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
+@import "compass/utilities";
 
 .home {
+
   /* Sidebar Filter */
   /* ============== */
 
@@ -313,8 +315,10 @@
     }
   }
 
-  // Anime Show Page
+    /* Anime Show Page */
+  /* ================= */
 
+  // First block, displays anime thumbnail and description
   .anime-details {
     .details-left {
         padding-top: 10px;
@@ -342,6 +346,7 @@
     }
   }
 
+  // Screenshots found in the sidebar
   .screenshots {
     text-align: center;
 
@@ -361,6 +366,7 @@
     }
   }
 
+  // Percentile rating averaged from the community
   .community-rating {
     text-align: center;
     padding: 1px;
@@ -427,7 +433,7 @@
       .user {
         display: inline-block;
         margin-top: 20px;
-        
+
         img {
           width: 40px;
           float: left;
@@ -455,9 +461,98 @@
         }
       }
     }
+
     .footer {
       padding-top: 20px;
       padding-bottom: 20px;
+    }
+  }
+
+  // Episode block
+  .episode-tracker {
+    header {
+      padding-top: 20px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #ececec;
+    }
+    .episode-list {
+      .episode {
+        display: block;
+        overflow: hidden;
+        border-bottom: 1px solid #ececec;
+
+        .episode-number {
+          font-size: 17px;
+          padding-top: 15px;
+          text-transform: uppercase;
+          color: #d4d4d4;
+        }
+
+        .episode-title {
+          font-size: 20px;
+          line-height: 20px;
+          padding-bottom: 15px;
+        }
+
+        .title {
+          border-right: 1px solid #eee;
+        }
+
+        .view-button {
+          text-indent: -9999px;
+          display: block;
+          width: 30px;
+          height: 17px;
+          margin-right: 40px;
+          margin-top: 30px;
+          cursor: pointer;
+          background-position: bottom;
+          background-image: url(asset-path('icons/watch-sprite.png', image));
+          background-repeat: no-repeat;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/watch-sprite@2x.png', image));
+            background-size: 30px 51px;
+          }
+          &:hover {
+            background-position: center;
+            background-image: url(asset-path('icons/watch-sprite.png', image));
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-image: url(asset-path('icons/watch-sprite@2x.png', image));
+              background-size: 30px 51px;
+            }
+          }
+          &:active {
+            background-position: top;
+            background-image: url(asset-path('icons/watch-sprite.png', image));
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-image: url(asset-path('icons/watch-sprite@2x.png', image));
+              background-size: 30px 51px;
+            }
+          }
+        }
+
+        &.active {
+          color: #d4d4d4;
+          .view-button {
+            background-position: top;
+            background-image: url(asset-path('icons/watch-sprite.png', image));
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-image: url(asset-path('icons/watch-sprite@2x.png', image));
+              background-size: 30px 50px;
+          }
+        }
+
+        &:hover {
+            background-position: bottom;
+          }
+        }
+      }
+
+      footer {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        text-align: center;
+      }
     }
   }
 }
