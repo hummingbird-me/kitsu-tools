@@ -40,7 +40,7 @@
         %div.alert-box We're updating your recommendations. Check back in a minute!
       .row
         - @anime.each do |anime|
-          = render partial: "anime/card", locals: {anime: anime, watchlist: @watchlist[anime.id]}
+          = render partial: "anime/card", locals: {anime: anime, watchlist: @watchlist[anime.id], last: anime == @anime.last}
 
       .row.pagination-centered
         = paginate(@anime)
