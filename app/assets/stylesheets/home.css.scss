@@ -409,6 +409,17 @@
       .percentage-negative {
         color: #c63838;
         font-size: 64px;
+        i {
+          height: 55px;
+          width: 54px;
+          display: inline-block;
+
+          background-image: url(asset-path('icons/negative-votes.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/negative-votes@2x.png', image));
+            background-size: 54px 55px;
+          }
+        }
       }
       .based-on {
         color: #a2a2a2;
