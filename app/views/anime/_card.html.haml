@@ -1,7 +1,7 @@
 .four.mobile-two.columns
   .panel
     %figure
-      %a{:href => "#{anime}"}
+      %a{:href => anime_path(anime)}
         .overlay
           %h5.title #{anime.title}
           %p.summary #{truncate(anime.synopsis, length: 300, omission: '...')}
