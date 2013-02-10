@@ -34,9 +34,10 @@ class User < ActiveRecord::Base
     avatar.url(:thumb)
   end
 
-  # Is the user an admin? For now only allow users whose email address is either
-  # "c@vikhyat.net" or "josh@hummingbird.ly". In production, it might be a better
-  # idea to check the user's numeric ID.
+  # Public: Is this user an administrator?
+  #
+  # For now, this will just check email addresses. In production, this should
+  # check the user's ID as well.
   def admin?
     email == "c@vikhyat.net" or email = "josh@hummingbird.ly"
   end
@@ -124,6 +125,13 @@ class User < ActiveRecord::Base
     
     result
   end
+
+  # Episodes watched by this user belonging to a given anime.
+  #
+  # Returns 'EpisodeView's and not 'Anime's.
+  def episodes_viewed(anime)
+    EpisodeView.where(user: id, anime: anime.id).map {|x| x.anime }
+  end
   
   # How many minutes the user has spent watching anime.
   def life_spent_on_anime
@@ -139,6 +147,6 @@ class User < ActiveRecord::Base
   def can_read_forem_topic?(topic);       true;       end
   def can_create_forem_topic?(topic);     persisted?; end
   def can_reply_to_forem_topic?(topic);   persisted?; end
-  def can_edit_forem_posts?(forum);       persisted?; end
+  def can_edit_forem_posts?(forum);       admin?;     end
 
 end

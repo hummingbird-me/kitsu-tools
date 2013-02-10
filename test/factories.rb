@@ -19,4 +19,21 @@ FactoryGirl.define do
     number "1"
     title  "World of Swords"
   end
+
+  factory :genre do
+    name "Action"
+  end
+  
+  factory :user do
+    name "Vikhyat Korrapati"
+    email "c@vikhyat.net"
+    password "password"
+    password_confirmation "password"
+  end
+
+  factory :episode_view do
+    user
+    anime
+    episode
+  end
 end

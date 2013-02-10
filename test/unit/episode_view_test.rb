@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class EpisodeViewTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  should belong_to(:user)
+  should belong_to(:anime)
+  should belong_to(:episode)
 end

@@ -1,7 +1,7 @@
 class Watchlist < ActiveRecord::Base
   belongs_to :user
   belongs_to :anime
-  attr_accessible :positive, :status
+  attr_accessible :user, :anime, :positive, :status
 
   validates_uniqueness_of :user_id, :scope => :anime_id
 
