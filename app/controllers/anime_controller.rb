@@ -8,10 +8,12 @@ class AnimeController < ApplicationController
     @reviews = @anime.reviews.includes(:user)
 
     # Add to recently viewed.
-    session[:recently_viewed] ||= []
-    session[:recently_viewed].delete( params[:id] )
-    session[:recently_viewed].unshift( params[:id] )
-    session[:recently_viewed].pop if session[:recently_viewed].length > 7
+    if @anime.sfw?
+      session[:recently_viewed] ||= []
+      session[:recently_viewed].delete( params[:id] )
+      session[:recently_viewed].unshift( params[:id] )
+      session[:recently_viewed].pop if session[:recently_viewed].length > 7
+    end
 
     respond_to do |format|
       format.html { render :show }
