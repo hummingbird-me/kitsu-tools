@@ -232,26 +232,20 @@
           }
           &:hover {
             background-position: left center;
-            background-image: url(asset-path('icons/vote-sprite.png', image));
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
               background-size: 70px 99px;
             }
           }
           &:active {
             background-position: left bottom;
-            background-image: url(asset-path('icons/vote-sprite.png', image));
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
               background-size: 70px 99px;
             }
           }
         }
         .active {
           background-position: left bottom;
-          background-image: url(asset-path('icons/vote-sprite.png', image));
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
             background-size: 70px 99px;
           }
           &:hover {
@@ -285,26 +279,19 @@
           }
           &:hover {
             background-position: right center;
-            background-image: url(asset-path('icons/vote-sprite.png', image));
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
               background-size: 70px 99px;
             }
           }
           &:active {
-            background-position: right bottom;
-            background-image: url(asset-path('icons/vote-sprite.png', image));
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
               background-size: 70px 99px;
             }
           }
         }
         .active {
           background-position: right bottom;
-          background-image: url(asset-path('icons/vote-sprite.png', image));
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
             background-size: 70px 99px;
           }
           &:hover {
@@ -515,17 +502,13 @@
           }
           &:hover {
             background-position: center;
-            background-image: url(asset-path('icons/watch-sprite.png', image));
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-image: url(asset-path('icons/watch-sprite@2x.png', image));
               background-size: 30px 51px;
             }
           }
           &:active {
             background-position: top;
-            background-image: url(asset-path('icons/watch-sprite.png', image));
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-image: url(asset-path('icons/watch-sprite@2x.png', image));
               background-size: 30px 51px;
             }
           }
@@ -535,9 +518,7 @@
           color: #d4d4d4;
           .view-button {
             background-position: top;
-            background-image: url(asset-path('icons/watch-sprite.png', image));
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-image: url(asset-path('icons/watch-sprite@2x.png', image));
               background-size: 30px 50px;
           }
         }
