@@ -44,6 +44,10 @@ Switching the development database from SQLite to Postgres:
     # This will take some time to run, but once it is done close both terminal
     # windows.
 
-To create the episodes, run:
+Miscellaneous Rake Tasks:
 
+    # Create episodes in the database.
     rake import:create_episodes
+
+    # Post-processing age ratings.
+    rake import:split_ratings

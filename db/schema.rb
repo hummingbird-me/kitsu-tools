@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130210015622) do
+ActiveRecord::Schema.define(:version => 20130210060436) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20130210015622) do
     t.string   "cover_image_content_type"
     t.integer  "cover_image_file_size"
     t.datetime "cover_image_updated_at"
+    t.string   "age_rating_tooltip"
   end
 
   create_table "anime_genres", :id => false, :force => true do |t|

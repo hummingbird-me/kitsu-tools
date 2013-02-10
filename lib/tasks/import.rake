@@ -1,4 +1,33 @@
 namespace :import do
+  desc "Split ratings into ratings and tooltips"
+  task :split_ratings => :environment do |t|
+    Anime.all.each do |anime|
+      anime.age_rating = anime.age_rating.strip
+      if anime.age_rating == "None"
+        anime.age_rating = nil
+      elsif anime.age_rating == "R - 17+ (violence & profanity)"
+        anime.age_rating = "R-17+"
+        anime.age_rating_tooltip = "Violence & Profanity"
+      elsif anime.age_rating == "G - All Ages"
+        anime.age_rating = "G"
+        anime.age_rating_tooltip = "All Ages"
+      elsif anime.age_rating == "Rx - Hentai"
+        anime.age_rating = "Rx"
+        anime.age_rating_tooltip = "Hentai"
+      elsif anime.age_rating == "PG-13 - Teens 13 or older"
+        anime.age_rating = "PG-13"
+        anime.age_rating_tooltip = "Teens 13 or older"
+      elsif anime.age_rating == "R+ - Mild Nudity"
+        anime.age_rating = "R+"
+        anime.age_rating_tooltip = "Mild Nudity"
+      elsif anime.age_rating == "PG - Children"
+        anime.age_rating = "PG"
+        anime.age_rating_tooltip = "Children"
+      end
+      anime.save
+    end
+  end
+
   desc "Create episode instances for all anime"
   task :create_episodes => :environment do |t|
     Anime.all.select {|x| x.episode_count && x.episode_count > 0 }.each do |a|
