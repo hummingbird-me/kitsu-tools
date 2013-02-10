@@ -44,4 +44,6 @@ Switching the development database from SQLite to Postgres:
     # This will take some time to run, but once it is done close both terminal
     # windows.
 
-    
+To create the episodes, run:
+
+    rake import:create_episodes

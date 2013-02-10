@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209060246) do
+ActiveRecord::Schema.define(:version => 20130210015622) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -56,6 +56,16 @@ ActiveRecord::Schema.define(:version => 20130209060246) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "episodes", :force => true do |t|
+    t.integer  "anime_id"
+    t.integer  "number"
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "episodes", ["anime_id"], :name => "index_episodes_on_anime_id"
 
   create_table "forem_categories", :force => true do |t|
     t.string   "name",       :null => false

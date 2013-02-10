@@ -1,4 +1,16 @@
 namespace :import do
+  desc "Create episode instances for all anime"
+  task :create_episodes => :environment do |t|
+    Anime.all.select {|x| x.episode_count && x.episode_count > 0 }.each do |a|
+      a.episode_count.times do |i|
+        e = Episode.create(
+          anime_id: a.id,
+          number: i+1
+        )
+      end
+    end
+  end
+
   desc "Import pseudo-JSON formatted anime metadata from MAL"
   task :anime_metadata, [:filename] => :environment do |t, args|
     File.open(args[:filename]).readlines.map {|x| JSON.load x }.each do |meta|
