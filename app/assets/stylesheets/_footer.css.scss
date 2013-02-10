@@ -6,6 +6,11 @@
     background: white;
     padding-bottom: 20px;
     margin-top: 30px;
+    
+    .has-tip {
+      cursor: pointer;
+      border-bottom: none;
+    }
 
     .recently-viewed {
       h1 {

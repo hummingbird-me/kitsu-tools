@@ -45,8 +45,10 @@
             %strong Status: #{@anime.status}
             %p #{@anime.synopsis}
 
+      .panel.community-rating
+        %p Community Rating
+
     / Nav Sidebar
-    / This is source ordered to be pulled to the left on larger screens
     .four.columns
       .trailer
         .flex-video
@@ -65,8 +67,9 @@
           = image_tag "http://media.animevice.com/uploads/1/18405/586212-sword_art_online___17___large_28.jpg"
         .right-small.six.columns
           = image_tag "http://media.animevice.com/uploads/1/18405/580363-sword_art_online___13___large_37.jpg"
-          
+
         %p= link_to "view full gallery", "#"
+
       .quotes
         %h3 Quotes
 

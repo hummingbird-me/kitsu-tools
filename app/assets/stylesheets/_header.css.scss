@@ -23,7 +23,17 @@
     }
 
     .right {
-      border-left: 1px solid #eee;
+      .search {
+        border-right: 1px solid #eee;
+        height: 50px;
+      }
+      form {
+        padding-top: 10px;
+        padding-right: 15px;
+        input[type=text] {
+          height: 30px;
+        }
+      }
     }
     .avatar {
       a {
