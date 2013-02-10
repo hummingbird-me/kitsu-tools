@@ -31,7 +31,7 @@
                   - @all_genres.each do |genre|
                     %label{:for => genre.slug, "data-width" => "300", :title => genre.description, :class => ("has-tip tip-top" if genre.description && genre.description.length > 0)}
                       %input{:checked => @genre_filter.include?(genre), :name => "g_" + genre.slug, :id => "g_" + genre.slug, :style => "display: none", :type => "checkbox", :value => ".g_#{genre.slug}"}
-                        %span.custom.checkbox{:class => ("checked" if @genre_filter.include? genre)}
+                      %span.custom.checkbox{:class => ("checked" if @genre_filter.include? genre)}
                       = genre.name
 
     / Thumbnails
@@ -46,7 +46,6 @@
         = paginate(@anime)
 
   :javascript
-
     // Filter functionality.
     // TODO make disableAllGenres and enableAllGenres faster.
     function disableAllGenres() {
