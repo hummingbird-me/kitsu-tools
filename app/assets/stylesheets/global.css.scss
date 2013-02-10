@@ -1,17 +1,25 @@
 body {
 	background: #eee;
 
+  a {
+    color: orange;
+  }
+
   ul.pagination {
+    
     li.current a {
       background: orange;
+
       &:hover {
         background: darken(orange, 5);
       }
     }
   }
+
   .easyPieChart {
     position: relative;
     text-align: center;
+
     canvas {
       position: absolute;
       top: 0;

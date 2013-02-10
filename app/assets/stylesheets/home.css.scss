@@ -310,4 +310,49 @@
       }
     }
   }
+
+  // Anime Show Page
+
+  .anime-details {
+    .details-left {
+        padding-top: 10px;
+    }
+    .small-summary {
+      color: #b4b4b4;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #dfdfdf;
+    }
+    .producers {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #dfdfdf;
+    }
+    .genres {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #dfdfdf;
+    }
+    .synopsis {
+      margin-top: 20px;
+    }
+  }
+
+  .screenshots {
+    text-align: center;
+    
+    .columns {
+      padding: 0px;
+      margin-bottom: 6px;
+    }
+    .left-small {
+      &.columns {
+        padding-right: 3px;
+      }
+    }
+    .right-small {
+      &.columns {
+        padding-left: 3px;
+      }
+    }
+  }
 }

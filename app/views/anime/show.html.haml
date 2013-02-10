@@ -1,55 +1,102 @@
-- title @anime.title
+.home
+  .row
+    / Main Content Section
+    / This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens
+    .eight.columns
+      .panel.anime-details
+        .details-left.four.columns
+          %img{:src => @anime.cover_image.url(:thumb)}
 
-%h1= @anime.title
+          .progress.six
+            %span.meter{:style => "width: #{(rand * 100).to_i}%"}
 
-%img{:src => @anime.cover_image.url(:thumb)}
+          %p.watchlist
+            = link_to "- Remove from Watchlist", "#", :method => :post, :confirm => "Are you sure you want to remove anime.title from your Watchlist?"
 
-%p Age rating: #{@anime.age_rating}
-%p Episode count: #{@anime.episode_count}
-%p Episode length: #{@anime.episode_length}
-%p Status: #{@anime.status}
-%p Synopsis: #{@anime.synopsis}
-%p 
-  Genres: 
-  - @genres.each do |genre|
-    = link_to genre.name, genre
-%p 
-  Producers: 
-  - @producers.each do |producer|
-    = link_to producer.name, producer
+          .vote-blocks
+            %span.like
+              %strong.active= link_to "[:)]", "#"
+            %span.dislike
+              %strong= link_to ":(", "#"
 
-%h3 Quotes
+        .details-right.eight.columns
+          - title @anime.title
+          %h3= @anime.title
 
-- @quotes.each do |quote|
-  %blockquote
-    = quote.content
-    —
-    = quote.character_name
+          .small-summary 
+            %span #{@anime.episode_count} episodes / #{@anime.episode_length} min. each  ||
+            %span #{@anime.age_rating}
 
-%p
-  = link_to "[Show all]", anime_quotes_url(@anime)
-  = link_to "[Submit quote]", new_anime_quote_url(@anime)
+          .producers
+            %p 
+            Producers: 
+            - @producers.each do |producer|
+              = link_to producer.name, producer
+              ,
 
-%h3 Youtube Video
+          .genres
+            %p 
+            Genres:
+            - @genres.each do |genre|
+              = link_to genre.name, genre
+              ,
 
-%iframe{:width => 560, :height => 315, :frameborder => 0, :allowfullscreen => true, :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}"}
+          .synopsis
+            %strong Status: #{@anime.status}
+            %p #{@anime.synopsis}
 
-%h3 Casting
+    / Nav Sidebar
+    / This is source ordered to be pulled to the left on larger screens
+    .four.columns
+      .trailer
+        .flex-video
+          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}", :width => "420"}
 
-- @castings.each do |casting|
+      .screenshots
+        .twelve.columns
+          = image_tag "http://media.animevice.com/uploads/1/18405/598799-sword_art_online___24___large_03.jpg"
+        .left-small.six.columns
+          = image_tag "http://media.animevice.com/uploads/1/18405/586212-sword_art_online___17___large_28.jpg"
+        .right-small.six.columns
+          = image_tag "http://media.animevice.com/uploads/1/18405/580363-sword_art_online___13___large_37.jpg"
+        .twelve.columns
+          = image_tag "http://media.animevice.com/uploads/1/18405/600869-sword_art_online___25___large_06.jpg"
+        .left-small.six.columns
+          = image_tag "http://media.animevice.com/uploads/1/18405/586212-sword_art_online___17___large_28.jpg"
+        .right-small.six.columns
+          = image_tag "http://media.animevice.com/uploads/1/18405/580363-sword_art_online___13___large_37.jpg"
+          
+        %p= link_to "view full gallery", "#"
+      .quotes
+        %h3 Quotes
+
+        - @quotes.each do |quote|
+          %blockquote
+            = quote.content
+            —
+            = quote.character_name
+        %p
+          = link_to "[Show all]", anime_quotes_url(@anime)
+          = link_to "[Submit quote]", new_anime_quote_url(@anime)
+
+
+
+  %h3 Casting
+
+  - @castings.each do |casting|
+    %p
+      = casting.character.name
+      \....
+      - if casting.voice_actor
+        = casting.voice_actor.name
+      - else
+        (unknown)
+
+  %h3 Reviews
+
+  - @reviews[0..1].each do |review|
+    %h5 #{review.user.name} <small>#{review.positive ? ':)' : ':('}</small>
+    %p(style="white-space: pre-wrap")= truncate(review.content, length: 300, omission: '...')
+
   %p
-    = casting.character.name
-    \....
-    - if casting.voice_actor
-      = casting.voice_actor.name
-    - else
-      (unknown)
-
-%h3 Reviews
-
-- @reviews[0..1].each do |review|
-  %h5 #{review.user.name} <small>#{review.positive ? ':)' : ':('}</small>
-  %p(style="white-space: pre-wrap")= truncate(review.content, length: 300, omission: '...')
-
-%p
-  = link_to "[Show all]", anime_reviews_url(@anime)
+    = link_to "[Show all]", anime_reviews_url(@anime)
