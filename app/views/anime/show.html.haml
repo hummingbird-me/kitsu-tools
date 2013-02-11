@@ -11,14 +11,23 @@
             %span.meter{:style => "width: #{(rand * 100).to_i}%"}
 
           %p.watchlist
-            = link_to "- Remove from Watchlist", "#", :method => :post, :confirm => "Are you sure you want to remove #{@anime.title} from your Watchlist?"
-
+            - if @watchlist
+              = link_to "- Remove from Watchlist", remove_from_watchlist_path(@anime), :method => :post, :confirm => "Are you sure you want to remove #{@anime.title} from your Watchlist?"
+            - else
+              = link_to "+ Add to Watchlist", add_to_watchlist_path(@anime), :method => :post
+                  
           .vote-blocks
             %span.like
-              %strong.active= link_to "[:)]", "#"
+              - if @watchlist and @watchlist.positive?
+                %strong.active= link_to "[:)]", update_rating_path(@anime, :neutral)
+              - else
+                %strong= link_to ":)", update_rating_path(@anime, :positive)
             %span.dislike
-              %strong= link_to ":(", "#"
-
+              - if @watchlist and @watchlist.negative?
+                %strong.active= link_to "[:(]", update_rating_path(@anime, :neutral)
+              - else
+                %strong= link_to ":(", update_rating_path(@anime, :negative)
+            
         .details-right.eight.columns
           - title @anime.title
           %h3= @anime.title
@@ -82,6 +91,16 @@
             = link_to "edit", "#"
         .episode-list
           %ul
+            - @episodes.each do |episode|
+              %li.episode{:class => ("active" if @episodes_watched[episode.id])}
+                .title.ten.columns
+                  .episode-number e#{"%02d" % episode.number}
+                  .episode-title= episode.title
+                .view-button.two.columns
+                  - if @episodes_watched[episode.id]
+                    = link_to "", watch_anime_episode_path(@anime, episode, watched: false), method: :post
+                  - else
+                    = link_to "", watch_anime_episode_path(@anime, episode, watched: true), method: :post
             %li.episode.active
               .title.ten.columns
                 .episode-number s01e05
@@ -107,7 +126,7 @@
               .view-button.two.columns
                 %strong= link_to "", "#"
             %footer.twelve.columns
-              %p= link_to "view full episode list", "#"
+              %p= link_to "view full episode list", anime_episodes_path(@anime)
 
       .panel.voice-actors
         %header 

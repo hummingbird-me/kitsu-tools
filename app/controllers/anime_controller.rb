@@ -7,6 +7,27 @@ class AnimeController < ApplicationController
     @castings = @anime.castings.includes(:character, :voice_actor)
     @reviews = @anime.reviews.includes(:user)
 
+    if user_signed_in?
+      @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
+    else
+      @watchlist = false
+    end
+
+    # Get the list of episodes.
+    @episodes = @anime.episodes.order(:number)
+    @episodes_watched = Hash.new(false)
+    if user_signed_in?
+      current_user.episodes_viewed(@anime).includes(:episodes).each do |episodev|
+        @episodes_watched[ episodev.episode.id ] = true
+      end
+    end
+    # Figure out the range of 4 episodes to show.
+    if @episodes_watched.values.length == 0
+      @episodes = @episodes[0..3]
+    else
+      # TODO
+    end
+
     # Add to recently viewed.
     if @anime.sfw?
       session[:recently_viewed] ||= []
