@@ -9,11 +9,16 @@
         %img{:src => anime.cover_image.url(:thumb)}
     .progress.six
       %span.meter{:style => "width: #{(rand * 100).to_i}%"}
-    %p.watchlist
-      - if watchlist
-        = link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
-      - else
-        = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
+
+    %ul#nav
+      %li
+        %a{:href => "#"} Add to Watchlist
+        %ul
+          %li
+            %a{:href => "#"} Remove from Watchlist
+
+      
+      
     .vote-blocks
       %span.like
         - if watchlist and watchlist.positive?
