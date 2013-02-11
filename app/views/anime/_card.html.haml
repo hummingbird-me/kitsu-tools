@@ -1,4 +1,4 @@
-.four.mobile-two.columns{:class => ("end" if last)}
+.four.mobile-two.columns{:class => ("end" if last), :id => "card-#{anime.slug}"}
   .panel
     %figure
       %a{:href => anime_path(anime)}
@@ -7,6 +7,7 @@
           %p.summary #{truncate(anime.synopsis, length: 300, omission: '...')}
         %figcaption= link_to anime.title, anime
         %img{:src => anime.cover_image.url(:thumb)}
+
     .progress.six
       %span.meter{:style => "width: #{percentage_completed(anime, watchlist)}%"}
     .drop
@@ -21,17 +22,14 @@
         - else
           = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
 
-
-  
-
     .vote-blocks
       %span.like
         - if watchlist and watchlist.positive?
-          %strong.active= link_to "[:)]", update_rating_path(anime, :neutral)
+          %strong.active= link_to "[:)]", update_rating_path(anime, :neutral), remote: true
         - else
-          %strong= link_to ":)", update_rating_path(anime, :positive)
+          %strong= link_to ":)", update_rating_path(anime, :positive), remote: true
       %span.dislike
         - if watchlist and watchlist.negative?
-          %strong.active= link_to "[:(]", update_rating_path(anime, :neutral)
+          %strong.active= link_to "[:(]", update_rating_path(anime, :neutral), remote: true
         - else
-          %strong= link_to ":(", update_rating_path(anime, :negative)
+          %strong= link_to ":(", update_rating_path(anime, :negative), remote: true

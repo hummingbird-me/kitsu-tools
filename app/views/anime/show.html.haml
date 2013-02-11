@@ -4,30 +4,8 @@
     / This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens
     .eight.columns
       .panel.anime-details
-        .details-left.four.columns
-          %img{:src => @anime.cover_image.url(:thumb)}
-
-          .progress.six
-            %span.meter{:style => "width: #{percentage_completed(@anime, @watchlist)}%"}
-
-          %p.watchlist
-            - if @watchlist
-              = link_to "- Remove from Watchlist", remove_from_watchlist_path(@anime), :method => :post, :confirm => "Are you sure you want to remove #{@anime.title} from your Watchlist?"
-            - else
-              = link_to "+ Add to Watchlist", add_to_watchlist_path(@anime), :method => :post
-                  
-          .vote-blocks
-            %span.like
-              - if @watchlist and @watchlist.positive?
-                %strong.active= link_to "[:)]", update_rating_path(@anime, :neutral)
-              - else
-                %strong= link_to ":)", update_rating_path(@anime, :positive)
-            %span.dislike
-              - if @watchlist and @watchlist.negative?
-                %strong.active= link_to "[:(]", update_rating_path(@anime, :neutral)
-              - else
-                %strong= link_to ":(", update_rating_path(@anime, :negative)
-            
+        .details-left
+          = render partial: "card", locals: {anime: @anime, watchlist: @watchlist, last: false} 
         .details-right.eight.columns
           - title @anime.title
           %h3= @anime.title
