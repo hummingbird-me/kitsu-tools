@@ -16,6 +16,12 @@ body {
     }
   }
 
+  .tabs {
+    .active {
+      border-top: 3px solid orange;
+    }
+  } 
+
   .easyPieChart {
     position: relative;
     text-align: center;

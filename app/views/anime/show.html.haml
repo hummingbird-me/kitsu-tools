@@ -109,6 +109,122 @@
             %footer.twelve.columns
               %p= link_to "view full episode list", "#"
 
+      .panel.voice-actors
+        %header 
+          .eleven.columns
+            #{@anime.title} Voice Actors
+          .one.columns
+            = link_to "edit", "#"
+
+        %dl.tabs
+          %dd.active
+            %a{:href => "#japanese"} Japanese
+          %dd
+            %a{:href => "#english"} English
+
+        %ul.tabs-content
+          %li#japaneseTab.active 
+            %ul
+              %li.actor-row.twelve.columns
+                .character.five.columns
+                  .headshot.two.columns
+                    = image_tag "http://cdn.myanimelist.net/images/characters/13/159377.jpg"
+                  .name.ten.columns
+                    %p= link_to "Kirigaya, Kazuto", "#"
+
+                .divider.two.columns
+                  %hr
+                .actor.five.columns
+                  .name.ten.columns
+                    %p= link_to "Matsuoka, Yoshitsugu", "#"
+                  .headshot.two.columns
+                    = image_tag "http://cdn.myanimelist.net/images/voiceactors/2/11844.jpg"
+
+              %li.actor-row.twelve.columns
+                .character.five.columns
+                  .headshot.two.columns
+                    = image_tag "http://cdn.myanimelist.net/images/characters/9/192515.jpg"
+                  .name.ten.columns
+                    %p= link_to "Kirigaya, Suguha", "#"
+
+                .divider.two.columns
+                  %hr
+                .actor.five.columns
+                  .name.ten.columns
+                    %p= link_to "Taketatsu, Ayana", "#"
+                  .headshot.two.columns
+                    = image_tag "http://cdn.myanimelist.net/images/voiceactors/3/15393.jpg"
+
+              %li.actor-row.twelve.columns
+                .character.five.columns
+                  .headshot.two.columns
+                    = image_tag "http://cdn.myanimelist.net/images/characters/2/159375.jpg"
+                  .name.ten.columns
+                    %p= link_to "Yuuki, Asuna", "#"
+
+                .divider.two.columns
+                  %hr
+                .actor.five.columns
+                  .name.ten.columns
+                    %p= link_to "Tomatsu, Haruka", "#"
+                  .headshot.two.columns
+                    = image_tag "http://cdn.myanimelist.net/images/voiceactors/1/19521.jpg"
+
+              %li.actor-row.twelve.columns
+                .character.five.columns
+                  .headshot.two.columns
+                    = image_tag "http://cdn.myanimelist.net/images/characters/5/175997.jpg"
+                  .name.ten.columns
+                    %p= link_to "Yui", "#"
+
+                .divider.two.columns
+                  %hr
+                .actor.five.columns
+                  .name.ten.columns
+                    %p= link_to "Itou, Kanae", "#"
+                  .headshot.two.columns
+                    = image_tag "http://cdn.myanimelist.net/images/voiceactors/2/22798.jpg"
+
+
+
+          %li#englishTab
+            .episode-list
+              %ul
+                %li.actor-row.twelve.columns
+                  .character.five.columns
+                    .headshot.two.columns
+                      = image_tag "http://cdn.myanimelist.net/images/characters/5/175997.jpg"
+                    .name.ten.columns
+                      %p= link_to "Yui", "#"
+
+                  .divider.two.columns
+                    %hr
+                  .actor.five.columns
+                    .name.ten.columns
+                      %p= link_to "Itou, Kanae", "#"
+                    .headshot.two.columns
+                      = image_tag "http://cdn.myanimelist.net/images/voiceactors/2/22798.jpg"
+
+
+        %ul.tabs-content
+          %li#japanese.active
+            
+                
+
+          %li#english
+            .episode-list
+              %ul
+                %li.episode.active
+                  .title.ten.columns
+                    .episode-number s01e05
+                    .episode-title A Crime Within the Walls
+                  .view-button.two.columns
+                    = link_to "", "#"
+                
+
+        %footer.twelve.columns
+          %p= link_to "view complete cast", "#"
+
     / Nav Sidebar
     .four.columns
       .trailer

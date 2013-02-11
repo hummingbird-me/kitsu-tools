@@ -465,7 +465,9 @@
       padding-bottom: 20px;
     }
   }
-
+  li:nth-child(even) {
+    background: #f9f9f9;
+  }
   // Episode block
   .episode-tracker {
     header {
@@ -545,6 +547,55 @@
         padding-bottom: 20px;
         text-align: center;
       }
+    }
+  }
+
+
+  // Voice Actor Block
+
+  .voice-actors {
+
+    ul { 
+      margin-left: 0px;
+    }
+
+    header {
+      padding-top: 20px;
+      padding-bottom: 35px;
+      border-bottom: 1px solid #ececec;
+    }
+    
+
+    .actor-row {
+      display: block;
+      overflow: hidden;
+      border-bottom: 1px solid #ececec;
+      padding-top: 7px;
+
+      p {
+        margin-top: 20px;
+      }
+      hr {
+        margin-top: 32px;
+      }
+
+      .headshot {
+        padding: 0;
+      } 
+
+      .divider {
+        text-align: center;
+      }
+    
+      .actor {
+        text-align: right;
+      }
+    }
+
+    footer {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: center;
     }
   }
 }
