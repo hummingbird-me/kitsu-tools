@@ -39,12 +39,12 @@
           .producers
             %p 
             Producers: 
-            = @producers.map {|x| link_to(x) }.join(", ").html_safe
+            = @producers.map {|x| link_to(x.name, x) }.join(", ").html_safe
 
           .genres
             %p 
             Genres:
-            = @genres.map {|x| link_to(x) }.join(", ").html_safe
+            = @genres.map {|x| link_to(x.name, x) }.join(", ").html_safe
 
           .synopsis
             %strong Status: #{@anime.status}
