@@ -8,7 +8,7 @@
           %img{:src => @anime.cover_image.url(:thumb)}
 
           .progress.six
-            %span.meter{:style => "width: #{(rand * 100).to_i}%"}
+            %span.meter{:style => "width: #{percentage_completed(@anime, @watchlist)}%"}
 
           %p.watchlist
             - if @watchlist

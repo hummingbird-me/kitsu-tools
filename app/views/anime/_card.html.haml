@@ -8,7 +8,7 @@
         %figcaption= link_to anime.title, anime
         %img{:src => anime.cover_image.url(:thumb)}
     .progress.six
-      %span.meter{:style => "width: #{(rand * 100).to_i}%"}
+      %span.meter{:style => "width: #{percentage_completed(anime, watchlist)}%"}
     %p.watchlist
       - if watchlist
         = link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
