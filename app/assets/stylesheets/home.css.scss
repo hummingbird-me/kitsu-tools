@@ -506,6 +506,7 @@
           margin-right: 40px;
           margin-top: 30px;
           cursor: pointer;
+          position: relative;
           background-position: bottom;
           background-image: url(asset-path('icons/watch-sprite.png', image));
           background-repeat: no-repeat;
@@ -523,6 +524,16 @@
             background-position: top;
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
               background-size: 30px 51px;
+            }
+          }
+
+          strong {
+            a {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
             }
           }
         }
