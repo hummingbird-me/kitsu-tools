@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def percentage_completed(anime, watchlist)
     if watchlist
-      2 + (watchlist.episodes_watched * 98.0 / anime.episode_count).to_i
+      2 + ((watchlist.episodes_watched+1) * 98.0 / (anime.episode_count+1)).to_i
     else
       0
     end
