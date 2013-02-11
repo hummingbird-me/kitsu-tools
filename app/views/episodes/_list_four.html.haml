@@ -1,0 +1,15 @@
+.episode-list
+  %ul
+    - episodes.each do |episode, watched|
+      %li.episode{:class => ("active" if watched)}
+        .title.ten.columns
+          .episode-number e#{"%02d" % episode.number}
+          .episode-title= episode.title
+        .view-button.two.columns
+          - if watched
+            %strong= link_to "", watch_anime_episode_path(anime, episode, watched: false), method: :post, remote: true
+          - else
+            %strong= link_to "", watch_anime_episode_path(anime, episode, watched: true), method: :post, remote: true
+    %footer.twelve.columns
+      %p= link_to "view full episode list", anime_episodes_path(anime)
+

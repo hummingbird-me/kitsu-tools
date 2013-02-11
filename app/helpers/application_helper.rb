@@ -6,11 +6,12 @@ module ApplicationHelper
 
   def percentage_completed(anime, watchlist)
     if watchlist
-      2 + ((watchlist.episodes_watched+1) * 98.0 / (anime.episode_count+1)).to_i
+      ((watchlist.episodes_watched+1) * 100.0 / (anime.episode_count+1)).to_i
     else
       0
     end
   end
+  
 
   # Convert minutes into a string like "1 month, 4 days, 21 hours and 7 minutes"
   def format_minutes(minutes)

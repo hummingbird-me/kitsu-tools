@@ -85,20 +85,8 @@
             #{@anime.title} Episodes
           .one.columns
             = link_to "edit", "#"
-        .episode-list
-          %ul
-            - @episodes.each do |episode|
-              %li.episode{:class => ("active" if @episodes_watched[episode.id])}
-                .title.ten.columns
-                  .episode-number e#{"%02d" % episode.number}
-                  .episode-title= episode.title
-                .view-button.two.columns
-                  - if @episodes_watched[episode.id]
-                    %strong= link_to "", watch_anime_episode_path(@anime, episode, watched: false), method: :post
-                  - else
-                    %strong= link_to "", watch_anime_episode_path(@anime, episode, watched: true), method: :post
-            %footer.twelve.columns
-              %p= link_to "view full episode list", anime_episodes_path(@anime)
+
+        = render partial: "episodes/list_four", locals: {episodes: @episodes, anime: @anime}
 
       .panel.voice-actors
         %header 

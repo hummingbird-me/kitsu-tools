@@ -1,0 +1,4 @@
+$(".episode-list").fadeOut(function () {
+  $(".episode-list").replaceWith('<%= j render(partial: "list_four", locals: {anime: @anime, episodes: @episodes}) %>');
+  $(".episode-list").fadeIn();
+});

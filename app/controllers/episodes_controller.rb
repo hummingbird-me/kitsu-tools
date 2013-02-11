@@ -1,4 +1,6 @@
 class EpisodesController < ApplicationController
+  include EpisodesHelper
+  
   def index
     @anime = Anime.find(params[:anime_id])
     @episodes = @anime.episodes
@@ -22,6 +24,14 @@ class EpisodesController < ApplicationController
       @watchlist.episodes_watched -= 1; @watchlist.save
     end
 
-    redirect_to :back
+    respond_to do |format|
+      if request.xhr?
+        format.js do 
+          @episodes = select_four_episodes(@anime, current_user)
+          render "episodes/replace_episodes"
+        end
+      end
+      format.html { redirect_to :back }
+    end
   end
 end
