@@ -29,7 +29,9 @@ Hummingbird::Application.routes.draw do
       member { post :vote }
     end
 
-    resources :episodes
+    resources :episodes do
+      member { post :watch }
+    end
   end
 
   # Personalize Filters
