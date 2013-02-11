@@ -46,9 +46,7 @@
           .genres
             %p 
             Genres:
-            - @genres.each do |genre|
-              = link_to genre.name, genre
-              ,
+            = @genres.map {|x| link_to(x) }.join(", ").html_safe
 
           .synopsis
             %strong Status: #{@anime.status}
