@@ -9,27 +9,20 @@
         %img{:src => anime.cover_image.url(:thumb)}
     .progress.six
       %span.meter{:style => "width: #{percentage_completed(anime, watchlist)}%"}
-
-    - if watchlist
-      %ul#nav
-        %li
-          %a(href="#") Currently Watching
-          %ul
+    .drop
+      .watchlist
+        .content
+          - if watchlist
             %li
               = link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
-    - else
-      %p.watchlist
-        = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
-    
-    %form.custom
-      .custom.dropdown
-        %a.current{:href => "#"}
-          Select Watchlist Status
-        %a.selector{:href => "#"}
-        %ul
-          %li Currently Watching
-          %li Want to Watch
-          %li Dropped
+
+        - if watchlist
+          .drop-button Currently Watching
+        - else
+          = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
+
+
+  
 
     .vote-blocks
       %span.like
