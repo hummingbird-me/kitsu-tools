@@ -1,0 +1,4 @@
+<h2><%= link_to t('forem.forum.forums'), forem.forums_path %> &raquo; <%= link_to forem_emojify(topic.forum.title), [forem, topic.forum] %> &raquo; <%= forem_emojify(topic.subject) %></h2>
+<% if forem_admin? %>
+  <%= link_to t('forem.topic.links.edit'), forem.edit_admin_topic_path(topic) %>
+<% end %>

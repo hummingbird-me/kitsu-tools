@@ -1,0 +1,17 @@
+<div id='forum'>
+  <h2><%= link_to t('forem.forum.forums'), forem.root_path %> &raquo; <%= link_to forem_emojify(forum.category), [forem, forum.category] %> &raquo; <%= link_to forem_emojify(forum.title), [forem, forum] %></h2>
+  <span id='description'><%= forem_format(forum.description) %></span>
+  <menu id='forum_topic_links'>
+    <% unless @topic.try(:new_record?) %>
+      <% if can? :create_topic, @forum %>
+        <%= link_to t('forem.topic.links.new'), forem.new_forum_topic_path(forum) %>
+      <% end %>
+    <% end %>
+    <% if @topic %>
+      <%= link_to t('forem.topic.links.back_to_topics'), forem.forum_path(forum) %>
+    <% end %>
+    <% if can? :moderate, @forum %>
+      <%= link_to t('forem.forum.moderator_tools'), forem.forum_moderator_tools_path(forum) %>
+    <% end %>
+  </menu>
+</div>

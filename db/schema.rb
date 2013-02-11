@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130210194104) do
+ActiveRecord::Schema.define(:version => 20130211143138) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -273,8 +273,9 @@ ActiveRecord::Schema.define(:version => 20130210194104) do
     t.integer  "anime_id"
     t.boolean  "positive"
     t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "episodes_watched", :default => 0
   end
 
 end
