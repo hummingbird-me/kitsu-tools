@@ -11,14 +11,23 @@
             %span.meter{:style => "width: #{(rand * 100).to_i}%"}
 
           %p.watchlist
-            = link_to "- Remove from Watchlist", "#", :method => :post, :confirm => "Are you sure you want to remove #{@anime.title} from your Watchlist?"
-
+            - if @watchlist
+              = link_to "- Remove from Watchlist", remove_from_watchlist_path(@anime), :method => :post, :confirm => "Are you sure you want to remove #{@anime.title} from your Watchlist?"
+            - else
+              = link_to "+ Add to Watchlist", add_to_watchlist_path(@anime), :method => :post
+                  
           .vote-blocks
             %span.like
-              %strong.active= link_to "[:)]", "#"
+              - if @watchlist and @watchlist.positive?
+                %strong.active= link_to "[:)]", update_rating_path(@anime, :neutral)
+              - else
+                %strong= link_to ":)", update_rating_path(@anime, :positive)
             %span.dislike
-              %strong= link_to ":(", "#"
-
+              - if @watchlist and @watchlist.negative?
+                %strong.active= link_to "[:(]", update_rating_path(@anime, :neutral)
+              - else
+                %strong= link_to ":(", update_rating_path(@anime, :negative)
+            
         .details-right.eight.columns
           - title @anime.title
           %h3= @anime.title

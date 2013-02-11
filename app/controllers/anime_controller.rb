@@ -6,6 +6,11 @@ class AnimeController < ApplicationController
     @quotes = @anime.quotes.limit(4)
     @castings = @anime.castings.includes(:character, :voice_actor)
     @reviews = @anime.reviews.includes(:user)
+    if user_signed_in?
+      @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
+    else
+      @watchlist = false
+    end
 
     # Add to recently viewed.
     if @anime.sfw?
