@@ -258,25 +258,50 @@
         %p
           = link_to "[Show all]", anime_quotes_url(@anime)
           = link_to "[Submit quote]", new_anime_quote_url(@anime)
+    .similar-anime.twelve.columns
+      %header
+        .four.columns
+          %hr
+        .four.columns
+          %h3 Similar Anime
+        .four.columns
+          %hr
+        .row
+          .recommended.six.columns
+            .panel.twelve.columns
+              .four.columns
+                = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
+              .eight.columns.end
+                %p.title Accel World
+                %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual... <a href="#">read more</a>
+
+                .rating.negative.four.columns
+                  54%
+                .people.eight.columns
+                  = link_to "32 people recommend this", "#"
+
+          .recommended.six.columns
+            .panel.twelve.columns
+              .four.columns
+                = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
+              .eight.columns.end
+                %p.title Accel World
+                %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual... <a href="#">read more</a>
+
+                .rating.positive.four.columns
+                  72%
+                .people.eight.columns
+                  = link_to "32 people recommend this", "#"
+          .twelve.columns
+            %p= link_to "View More Community Recommendedations", "#"
+              
 
 
+  / %h3 Reviews
 
-  %h3 Casting
+  / - @reviews[0..1].each do |review|
+  /   %h5 #{review.user.name} <small>#{review.positive ? ':)' : ':('}</small>
+  /   %p(style="white-space: pre-wrap")= truncate(review.content, length: 300, omission: '...')
 
-  - @castings.each do |casting|
-    %p
-      = casting.character.name
-      \....
-      - if casting.voice_actor
-        = casting.voice_actor.name
-      - else
-        (unknown)
-
-  %h3 Reviews
-
-  - @reviews[0..1].each do |review|
-    %h5 #{review.user.name} <small>#{review.positive ? ':)' : ':('}</small>
-    %p(style="white-space: pre-wrap")= truncate(review.content, length: 300, omission: '...')
-
-  %p
-    = link_to "[Show all]", anime_reviews_url(@anime)
+  / %p
+  /   = link_to "[Show all]", anime_reviews_url(@anime)

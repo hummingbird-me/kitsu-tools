@@ -598,4 +598,39 @@
       text-align: center;
     }
   }
+
+  .similar-anime {
+    header {
+      text-align: center;
+    }
+    hr {
+      margin-top: 30px;
+    }
+    .recommended {
+      img {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      p {
+        text-align: left;
+      }
+      .title {
+        padding-top: 10px;
+      }
+      .rating {
+        font-size: 40px;
+        margin-top: 10px;
+        &.positive {
+          color: #2aa730;
+        }
+        &.negative {
+          color: #c63838;
+        }
+      }
+      .people {
+        margin-top: 20px;
+        font-size: 13px;
+      }
+    }
+  }
 }
