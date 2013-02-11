@@ -1,4 +1,4 @@
-.four.mobile-two.columns{:class => ("end" if last), :id => "card-#{anime.slug}"}
+.four.mobile-two.columns{:class => ("end" if last)}
   .panel
     %figure
       %a{:href => anime_path(anime)}
@@ -20,15 +20,25 @@
     - else
       %p.watchlist
         = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
+    
+    %form.custom
+      .custom.dropdown
+        %a.current{:href => "#"}
+          Select Watchlist Status
+        %a.selector{:href => "#"}
+        %ul
+          %li Currently Watching
+          %li Want to Watch
+          %li Dropped
 
     .vote-blocks
       %span.like
         - if watchlist and watchlist.positive?
-          %strong.active= link_to "[:)]", update_rating_path(anime, :neutral), remote: true
+          %strong.active= link_to "[:)]", update_rating_path(anime, :neutral)
         - else
-          %strong= link_to ":)", update_rating_path(anime, :positive), remote: true
+          %strong= link_to ":)", update_rating_path(anime, :positive)
       %span.dislike
         - if watchlist and watchlist.negative?
-          %strong.active= link_to "[:(]", update_rating_path(anime, :neutral), remote: true
+          %strong.active= link_to "[:(]", update_rating_path(anime, :neutral)
         - else
-          %strong= link_to ":(", update_rating_path(anime, :negative), remote: true
+          %strong= link_to ":(", update_rating_path(anime, :negative)
