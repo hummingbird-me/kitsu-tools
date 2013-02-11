@@ -1,4 +1,4 @@
-.four.mobile-two.columns{:class => ("end" if last)}
+.four.mobile-two.columns{:class => ("end" if last), :id => "card-#{anime.slug}"}
   .panel
     %figure
       %a{:href => anime_path(anime)}
@@ -17,11 +17,11 @@
     .vote-blocks
       %span.like
         - if watchlist and watchlist.positive?
-          %strong.active= link_to "[:)]", update_rating_path(anime, :neutral)
+          %strong.active= link_to "[:)]", update_rating_path(anime, :neutral), remote: true
         - else
-          %strong= link_to ":)", update_rating_path(anime, :positive)
+          %strong= link_to ":)", update_rating_path(anime, :positive), remote: true
       %span.dislike
         - if watchlist and watchlist.negative?
-          %strong.active= link_to "[:(]", update_rating_path(anime, :neutral)
+          %strong.active= link_to "[:(]", update_rating_path(anime, :neutral), remote: true
         - else
-          %strong= link_to ":(", update_rating_path(anime, :negative)
+          %strong= link_to ":(", update_rating_path(anime, :negative), remote: true
