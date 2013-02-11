@@ -27,6 +27,12 @@ class WatchlistController < ApplicationController
       @watch.positive = nil
     end
     @watch.save
-    redirect_to :back
+
+    respond_to do |format|
+      if request.xhr?
+        format.js { render "replace_card" }
+      end
+      format.html { redirect_to :back }
+    end
   end
 end
