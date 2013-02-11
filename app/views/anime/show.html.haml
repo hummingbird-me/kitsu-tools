@@ -39,9 +39,7 @@
           .producers
             %p 
             Producers: 
-            - @producers.each do |producer|
-              = link_to producer.name, producer
-              ,
+            = @producers.map {|x| link_to(x) }.join(", ").html_safe
 
           .genres
             %p 
