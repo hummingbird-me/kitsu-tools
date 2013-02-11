@@ -1,4 +1,6 @@
 class AnimeController < ApplicationController
+  include EpisodesHelper
+  
   def show
     @anime = Anime.find(params[:id])
     @genres = @anime.genres
@@ -14,25 +16,10 @@ class AnimeController < ApplicationController
     end
 
     # Get the list of episodes.
-    @episodes = @anime.episodes.order(:number)
-    @episodes_watched = Hash.new(false)
-    @episodes_viewed = []
     if user_signed_in?
-      @episodes_viewed = current_user.episodes_viewed(@anime)
-    end
-    current_user.episodes_viewed(@anime).includes(:episode).each do |episodev|
-      @episodes_watched[ episodev.episode.id ] = true
-    end
-    # Figure out the range of 4 episodes to show.
-    if @episodes_viewed.length == 0
-      @episodes = @episodes[0..3]
+      @episodes = select_four_episodes(@anime, current_user)
     else
-      latest_watched = @episodes_viewed.map {|x| x.episode.number }.max
-      if latest_watched+2 > @episodes.length-1
-        @episodes = @episodes[-4..-1]
-      else
-        @episodes = @episodes[(latest_watched-1)..(latest_watched+2)]
-      end
+      @episodes = select_four_episodes(@anime, nil)
     end
 
     # Add to recently viewed.
