@@ -6,7 +6,6 @@ class AnimeController < ApplicationController
     @genres = @anime.genres
     @producers = @anime.producers
     @quotes = @anime.quotes.limit(4)
-    @castings = @anime.castings.includes(:character, :voice_actor)
     @reviews = @anime.reviews.includes(:user)
 
     if user_signed_in?
