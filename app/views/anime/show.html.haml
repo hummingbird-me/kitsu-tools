@@ -3,7 +3,7 @@
     / Main Content Section
     / This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens
     .eight.columns
-      .panel.anime-details
+      .panel.anime-details.cards.cf
         .details-left
           = render partial: "card", locals: {anime: @anime, watchlist: @watchlist, last: false} 
         .details-right.eight.columns

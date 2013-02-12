@@ -110,15 +110,18 @@
   .panel {
   	position: relative;
   	background: white;
+    overflow: hidden;
   	padding: 0px;
     display: block;
     background: #fff;
-    overflow: hidden;
     color: #111;
     font-size: 13px;
     border: none;
   	@include border-radius(3px);
     @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px);
+    &.cards {
+      overflow: visible;
+    }
 
     figure {
       position: relative;
@@ -198,8 +201,41 @@
 
     // Dropdown
     .drop {
+
+      .drop-button {
+        font-size: 12px;
+
+        .selector {
+          position: absolute;
+          width: 27px;
+          height: 28px;
+          display: block;
+          right: 0;
+          top: 0;
+          border-left: solid 1px #f2f2f2;
+          &:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border: solid 5px;
+            border-color: #b5b5b5 transparent transparent transparent;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -2px;
+            margin-left: -5px;
+          }
+        }
+      }
       .content {
         display: none;
+        width: 100%;
+        z-index: 99;
+        a {
+          font-size: 12px;
+        }
+
       }
 
       .watchlist:active .content {
@@ -212,6 +248,7 @@
       .watchlist {
         position: relative;
         cursor: pointer;
+        font-size: 10px;
       }
 
       .button {
@@ -225,9 +262,10 @@
       }
 
       .content li {
-        border-bottom: 1px solid;
+        border-bottom: 1px solid #f2f2f2;
         padding-top: 10px;
         padding-bottom: 10px;
+        list-style: none;
         background: white;
       }
     }
@@ -239,7 +277,7 @@
   		text-align: center;
   		text-transform: uppercase;
   		font-size: 10px;
-  		padding: 7px 0px;
+  		padding: 8px 0px;
   		border-top: 1px solid #eee;
   		border-bottom: 1px solid #eee;
   	}

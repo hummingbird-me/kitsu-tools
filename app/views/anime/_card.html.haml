@@ -1,5 +1,5 @@
 .four.mobile-two.columns{:class => ("end" if last), :id => "card-#{anime.slug}"}
-  .panel
+  .panel.cards.cf
     %figure
       %a{:href => anime_path(anime)}
         .overlay
@@ -15,12 +15,32 @@
         .content
           - if watchlist
             %li
+              = link_to "Plan to Watch", "#"
+            %li 
+              = link_to "Completed", "#"
+            %li 
+              = link_to "On Hold", "#"
+            %li
+              = link_to "Dropped", "#"
+            %li
               = link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
+          - else
+            %li
+              = link_to "Currently Watching", add_to_watchlist_path(anime), :method => :post
+            %li
+              = link_to "Plan to Watch", "#"
+            %li 
+              = link_to "Completed", "#"
+            %li 
+              = link_to "On Hold", "#"
+            %li
+              = link_to "Dropped", "#"
 
         - if watchlist
-          .drop-button Currently Watching
+          .drop-button Currently Watching <a href="#" class="selector"></a>
+
         - else
-          = link_to "+ Add to Watchlist", add_to_watchlist_path(anime), :method => :post
+          .drop-button Select Watching Status <a href="#" class="selector"></a>
 
     .vote-blocks
       %span.like
