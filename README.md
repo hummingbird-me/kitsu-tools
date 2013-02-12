@@ -14,6 +14,10 @@ Loading data:
     rake "import:anime_metadata[import/full_db.json]"
 
     # Load casting data.
+    # Note: this import becomes much faster if you create these indexes:
+    #   create unique index character_mal_id on characters (mal_id);
+    #   create unique index person_mal_id on people (mal_id);
+    # Be sure to get rid of them afterwards if in production.
     rake "import:casting[import/casting.json]"
     
 
