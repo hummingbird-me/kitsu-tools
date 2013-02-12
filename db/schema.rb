@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211143138) do
+ActiveRecord::Schema.define(:version => 20130211201937) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -151,6 +151,19 @@ ActiveRecord::Schema.define(:version => 20130211143138) do
     t.datetime "past_viewed_at"
   end
 
+  create_table "gallery_images", :force => true do |t|
+    t.integer  "anime_id"
+    t.text     "description"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "gallery_images", ["anime_id"], :name => "index_gallery_images_on_anime_id"
+
   create_table "genres", :force => true do |t|
     t.string   "name"
     t.string   "slug"
@@ -239,6 +252,15 @@ ActiveRecord::Schema.define(:version => 20130211143138) do
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
   end
+
+  create_table "staged_imports", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "staged_imports", ["user_id"], :name => "index_staged_imports_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                      :default => "",         :null => false
