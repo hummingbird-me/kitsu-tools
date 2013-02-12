@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130211201937) do
+ActiveRecord::Schema.define(:version => 20130212195307) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -45,17 +45,24 @@ ActiveRecord::Schema.define(:version => 20130211201937) do
 
   create_table "castings", :force => true do |t|
     t.integer  "anime_id"
+    t.integer  "person_id"
     t.integer  "character_id"
-    t.integer  "voice_actor_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.string   "type"
+    t.string   "role"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
+
+  add_index "castings", ["anime_id"], :name => "index_castings_on_anime_id"
+  add_index "castings", ["character_id"], :name => "index_castings_on_character_id"
+  add_index "castings", ["person_id"], :name => "index_castings_on_person_id"
 
   create_table "characters", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "mal_id"
   end
 
   create_table "episode_views", :force => true do |t|
@@ -176,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20130211201937) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "mal_id"
   end
 
   create_table "producers", :force => true do |t|
