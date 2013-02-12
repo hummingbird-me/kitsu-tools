@@ -12,6 +12,9 @@ Loading data:
 
     # Load all of the data.
     rake "import:anime_metadata[import/full_db.json]"
+
+    # Load casting data.
+    rake "import:casting[import/casting.json]"
     
 
 Background tasks are processed using Sidekiq, so Redis needs to be installed.

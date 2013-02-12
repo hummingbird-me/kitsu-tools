@@ -70,4 +70,43 @@ namespace :import do
       puts "Finished importing #{a.title}."
     end
   end
+
+  desc "Import the cast/character/staff information"
+  task :casting, [:filename] => :environment do |t, args|
+    File.open(args[:filename]).readlines.each do |x|
+      casting = JSON.load(x)
+      anime = Anime.find_by_mal_id(casting["mal_id"])
+      if anime
+        casting["staff"].each do |va|
+          person = Person.find_or_create_by_mal_id(va["mal_id"])
+          person.name = va["name"]
+          person.save
+          cast = Casting.new
+          cast.anime = anime
+          cast.person = person
+          cast.voice_actor = false
+          cast.role = va["role"]
+          cast.save
+        end
+        casting["characters"].each do |chard|
+          char = Character.find_or_create_by_mal_id(chard["mal_id"])
+          char.name = chard["name"]
+          char.save
+          chard["voice_actors"].each do |va|
+            person = Person.find_or_create_by_mal_id(va["mal_id"])
+            person.name = va["name"]
+            person.save
+            cast = Casting.new
+            cast.anime = anime
+            cast.character = char
+            cast.person = person
+            cast.voice_actor = true
+            cast.role = va["lang"]
+            cast.save
+          end
+        end
+        puts "Finished importing #{anime.title}."
+      end
+    end
+  end
 end

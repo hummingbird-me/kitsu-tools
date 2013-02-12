@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212195307) do
+ActiveRecord::Schema.define(:version => 20130212201303) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(:version => 20130212195307) do
     t.integer  "anime_id"
     t.integer  "person_id"
     t.integer  "character_id"
-    t.string   "type"
     t.string   "role"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.boolean  "voice_actor"
   end
 
   add_index "castings", ["anime_id"], :name => "index_castings_on_anime_id"
