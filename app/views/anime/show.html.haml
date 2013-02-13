@@ -82,20 +82,21 @@
         %ul.tabs-content
           %li#japaneseTab.active 
             %ul
-              %li.actor-row.twelve.columns
-                .character.five.columns
-                  .headshot.two.columns
-                    = image_tag "http://cdn.myanimelist.net/images/characters/13/159377.jpg"
-                  .name.ten.columns
-                    %p= link_to "Kirigaya, Kazuto", "#"
+              - @castings.each do |casting|
+                %li.actor-row.twelve.columns
+                  .character.five.columns
+                    .headshot.two.columns
+                      = image_tag "http://cdn.myanimelist.net/images/characters/13/159377.jpg"
+                    .name.ten.columns
+                      %p= link_to casting.character.name, "#"
 
-                .divider.two.columns
-                  %hr
-                .actor.five.columns
-                  .name.ten.columns
-                    %p= link_to "Matsuoka, Yoshitsugu", "#"
-                  .headshot.two.columns
-                    = image_tag "http://cdn.myanimelist.net/images/voiceactors/2/11844.jpg"
+                  .divider.two.columns
+                    %hr
+                  .actor.five.columns
+                    .name.ten.columns
+                      %p= link_to casting.person.name, "#"
+                    .headshot.two.columns
+                      = image_tag "http://cdn.myanimelist.net/images/voiceactors/2/11844.jpg"
 
               %li.actor-row.twelve.columns
                 .character.five.columns
