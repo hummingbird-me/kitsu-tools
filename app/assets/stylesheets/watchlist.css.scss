@@ -1,3 +1,146 @@
 // Place all the styles related to the watchlist controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3";
+.user-watchlist {
+  .recent {
+    figure {
+      height: 200px;
+      @include border-top-radius(3px);
+
+      .overlay {
+        display: block;
+
+        h4 {
+          color: white;
+          margin-bottom: 0px;
+        }
+
+        .seen-count {
+          border-bottom: 1px solid white;
+          border-bottom: 1px solid rgba(255,255,255,.2);
+          padding-bottom: 10px;
+          span {
+            font-weight: 700px;
+          }
+        }
+
+        .poster {
+          img {
+            width: 85%;
+            margin-top: 11px;
+            float: left;
+            @include border-radius(3px);
+          }
+        }
+
+        .title-info {
+          margin-top: 20px;
+          p {
+            margin-bottom: 0px;
+          }
+          .vote-blocks {
+
+            .like {
+              border-right: 1px solid white;
+              border-right: 1px solid rgba(255,255,255,.2);
+            }
+          }
+        }
+      }
+
+      .background {
+        width: 100%;
+        height: auto;
+        float: left;
+        margin-top: -30%;
+        @include border-top-radius(3px); 
+      }
+    }
+  }
+
+  .episode-list {
+    .episode {
+      display: block;
+      overflow: hidden;
+      border-bottom: 1px solid #ececec;
+
+      .episode-number {
+        font-size: 17px;
+        padding-top: 15px;
+        text-transform: uppercase;
+        color: #d4d4d4;
+      }
+
+      .episode-title {
+        font-size: 20px;
+        line-height: 20px;
+        padding-bottom: 15px;
+      }
+
+      .title {
+        border-right: 1px solid #eee;
+      }
+
+      .view-button {
+        text-indent: -9999px;
+        display: block;
+        width: 30px;
+        height: 17px;
+        margin-right: 25px;
+        margin-top: 30px;
+        cursor: pointer;
+        position: relative;
+        background-position: bottom;
+        background-image: url(asset-path('icons/watch-sprite.png', image));
+        background-repeat: no-repeat;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/watch-sprite@2x.png', image));
+          background-size: 30px 51px;
+        }
+        &:hover {
+          background-position: center;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 30px 51px;
+          }
+        }
+        &:active {
+          background-position: top;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 30px 51px;
+          }
+        }
+
+        strong {
+          a {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+          }
+        }
+      }
+
+      &.active {
+        color: #d4d4d4;
+        .view-button {
+          background-position: top;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 30px 50px;
+        }
+      }
+
+      &:hover {
+          background-position: bottom;
+        }
+      }
+    }
+
+    footer {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+  }
+}

@@ -97,16 +97,6 @@
     padding: 0 10px;
   }
 
-  .row {
-
-    .three {
-      background: white;
-      width: 23.5%;
-      @include border-radius(3px);
-      @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px); 
-    }
-  }
-
   .panel {
   	position: relative;
   	background: white;
