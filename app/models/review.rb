@@ -5,7 +5,9 @@ class Review < ActiveRecord::Base
 
   validates :user, :anime, :content, :positive, :presence => true
 
-  has_reputation :votes, source: :user, aggregated_by: :average
+  has_reputation :votes, source: :user, aggregated_by: :average, source_of: [
+    {reputation: :karma, of: :user}
+  ]
 
   def negative?
     not positive?

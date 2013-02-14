@@ -5,5 +5,7 @@ class Quote < ActiveRecord::Base
 
   validates :content, :anime, :creator, :presence => true
 
-  has_reputation :votes, source: :user, aggregated_by: :sum
+  has_reputation :votes, source: :user, source_of: [
+    {reputation: :karma, of: :creator}
+  ]
 end

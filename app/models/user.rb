@@ -14,6 +14,13 @@ class User < ActiveRecord::Base
     :default_url => "http://placekitten.com/g/200/200"
   
   has_many :watchlists
+  has_many :reviews
+  has_many :quotes, foreign_key: 'creator_id'
+
+  has_reputation :karma, :source => [
+    {reputation: :vodes, of: :reviews},
+    {reputation: :votes, of: :quotes}
+  ]
 
   # Validations
   validates :name,

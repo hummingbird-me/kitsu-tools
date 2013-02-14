@@ -7,6 +7,8 @@ class UserTest < ActiveSupport::TestCase
   should validate_uniqueness_of(:email)
   should validate_uniqueness_of(:facebook_id)
   should have_many(:watchlists)
+  should have_many(:reviews)
+  should have_many(:quotes)
   
   test "top_genres" do
     g1 = FactoryGirl.create(:genre)

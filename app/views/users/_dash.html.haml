@@ -4,7 +4,7 @@
       .panel.profile-bar
         .user-block.mobile-twelve
           %figure.user-avatar= image_tag(@user.avatar_url)
-          %figcaption.karma 10,042
+          %figcaption.karma= number_with_delimiter @user.reputation_for(:karma).to_i
           %figcaption.karma-title karma
         .user-information 
           %h4.username= @user.name
