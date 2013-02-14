@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214054215) do
+ActiveRecord::Schema.define(:version => 20130214055141) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20130214054215) do
   end
 
   add_index "anime", ["mal_id"], :name => "index_anime_on_mal_id", :unique => true
+  add_index "anime", ["wilson_ci"], :name => "index_anime_on_wilson_ci", :order => {"wilson_ci"=>:desc}
 
   create_table "anime_genres", :id => false, :force => true do |t|
     t.integer "anime_id", :null => false
