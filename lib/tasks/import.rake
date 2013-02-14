@@ -82,11 +82,8 @@ namespace :import do
           person.name = va["name"]
           person.save
           cast = Casting.new
-          cast.anime = anime
-          cast.person = person
-          cast.voice_actor = false
-          cast.role = va["role"]
-          cast.save
+          cast.anime = anime; cast.person = person; cast.voice_actor = false
+          cast.role = va["role"]; cast.save
         end
         casting["characters"].each do |chard|
           char = Character.find_or_create_by_mal_id(chard["mal_id"])
@@ -94,19 +91,27 @@ namespace :import do
           char.save
           chard["voice_actors"].each do |va|
             person = Person.find_or_create_by_mal_id(va["mal_id"])
-            person.name = va["name"]
-            person.save
+            person.name = va["name"]; person.save
             cast = Casting.new
-            cast.anime = anime
-            cast.character = char
-            cast.person = person
-            cast.voice_actor = true
-            cast.role = va["lang"]
-            cast.save
+            cast.anime = anime; cast.character = char; cast.person = person
+            cast.voice_actor = true; cast.role = va["lang"]; cast.save
           end
         end
         puts "Finished importing #{anime.title}."
       end
+    end
+  end
+  
+  desc "Indicate which castings should be featured"
+  task :featured_casting, [:filename] => :environment do |t, args|
+    File.open(args[:filename]).each do |x|
+      fc = JSON.load(x)
+      Casting.joins(:anime).where("anime.mal_id = ?", fc["anime_mal_id"]).readonly(false).each do |c|
+        if c.character && fc["featured_character_mal_ids"].map(&:to_i).include?(c.character.mal_id)
+          c.featured = true; c.save
+        end
+      end
+      puts "Done #{fc["anime_mal_id"]}"
     end
   end
 end

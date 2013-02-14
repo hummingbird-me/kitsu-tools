@@ -19,6 +19,7 @@ Loading data:
     #   create unique index person_mal_id on people (mal_id);
     # Be sure to get rid of them afterwards if in production.
     rake "import:casting[import/casting.json]"
+    rake "import:featured_casting[import/featured_castings.json]"
     
 
 Background tasks are processed using Sidekiq, so Redis needs to be installed.
