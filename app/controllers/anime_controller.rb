@@ -97,6 +97,11 @@ class AnimeController < ApplicationController
       # We don't have to do any filtering.
     end
 
+    # Order by Wilson CI lower bound, except for the recommendations page.
+    unless @filter == "recommended"
+      @anime = @anime.order('anime.wilson_ci DESC')
+    end
+
     respond_to do |format|
       format.html { render :index }
     end
