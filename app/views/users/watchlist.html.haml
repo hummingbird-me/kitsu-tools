@@ -1,4 +1,11 @@
 = render "dash"
+
+= link_to "Currently Watching", user_watchlist_path(@user, list: "currently_watching")
+= link_to "Plan To Watch", user_watchlist_path(@user, list: "plan_to_watch")
+= link_to "Completed", user_watchlist_path(@user, list: "completed")
+= link_to "On Hold", user_watchlist_path(@user, list: "on_hold")
+= link_to "Dropped", user_watchlist_path(@user, list: "dropped")
+
 .home.user-watchlist
   .row
     .recent.six.columns
