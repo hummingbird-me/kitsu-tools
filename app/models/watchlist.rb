@@ -13,11 +13,11 @@ class Watchlist < ActiveRecord::Base
   validates :status, inclusion: { in: Watchlist.valid_statuses }
 
   def positive?
-    (not positive.nil?) and positive
+    rating && rating > 0
   end
 
   def negative?
-    (not positive.nil?) and (not positive)
+    rating && rating < 0
   end
 
   # This method will take an array of "watchlist" object IDs and return a unique
