@@ -74,95 +74,30 @@
             = link_to "edit", "#"
 
         %dl.tabs
-          %dd.active
-            %a{:href => "#japanese"} Japanese
-          %dd
-            %a{:href => "#english"} English
+          - @languages.each_with_index do |language, i|
+            %dd{:class => ("active" if i==0)}
+              %a{:href => "##{language}"}= language
 
         %ul.tabs-content
-          %li#japaneseTab.active 
-            %ul
-              - @castings.each do |casting|
-                %li.actor-row.twelve.columns
-                  .character.five.columns
-                    .headshot.two.columns
-                      = image_tag "http://cdn.myanimelist.net/images/characters/13/159377.jpg"
-                    .name.ten.columns
-                      %p= link_to casting.character.name, "#"
-
-                  .divider.two.columns
-                    %hr
-                  .actor.five.columns
-                    .name.ten.columns
-                      %p= link_to casting.person.name, "#"
-                    .headshot.two.columns
-                      = image_tag "http://cdn.myanimelist.net/images/voiceactors/2/11844.jpg"
-
-              %li.actor-row.twelve.columns
-                .character.five.columns
-                  .headshot.two.columns
-                    = image_tag "http://cdn.myanimelist.net/images/characters/9/192515.jpg"
-                  .name.ten.columns
-                    %p= link_to "Kirigaya, Suguha", "#"
-
-                .divider.two.columns
-                  %hr
-                .actor.five.columns
-                  .name.ten.columns
-                    %p= link_to "Taketatsu, Ayana", "#"
-                  .headshot.two.columns
-                    = image_tag "http://cdn.myanimelist.net/images/voiceactors/3/15393.jpg"
-
-              %li.actor-row.twelve.columns
-                .character.five.columns
-                  .headshot.two.columns
-                    = image_tag "http://cdn.myanimelist.net/images/characters/2/159375.jpg"
-                  .name.ten.columns
-                    %p= link_to "Yuuki, Asuna", "#"
-
-                .divider.two.columns
-                  %hr
-                .actor.five.columns
-                  .name.ten.columns
-                    %p= link_to "Tomatsu, Haruka", "#"
-                  .headshot.two.columns
-                    = image_tag "http://cdn.myanimelist.net/images/voiceactors/1/19521.jpg"
-
-              %li.actor-row.twelve.columns
-                .character.five.columns
-                  .headshot.two.columns
-                    = image_tag "http://cdn.myanimelist.net/images/characters/5/175997.jpg"
-                  .name.ten.columns
-                    %p= link_to "Yui", "#"
-
-                .divider.two.columns
-                  %hr
-                .actor.five.columns
-                  .name.ten.columns
-                    %p= link_to "Itou, Kanae", "#"
-                  .headshot.two.columns
-                    = image_tag "http://cdn.myanimelist.net/images/voiceactors/2/22798.jpg"
-
-
-
-          %li#englishTab
-            .episode-list
+          - @languages.each_with_index do |language, i|
+            %li{:id => "#{language}Tab", :class => ("active" if i==0)}
               %ul
-                %li.actor-row.twelve.columns
-                  .character.five.columns
-                    .headshot.two.columns
-                      = image_tag "http://cdn.myanimelist.net/images/characters/5/175997.jpg"
-                    .name.ten.columns
-                      %p= link_to "Yui", "#"
+                - @castings.select {|x| x.role == language }.each do |casting|
+                  %li.actor-row.twelve.columns
+                    .character.five.columns
+                      .headshot.two.columns
+                        = image_tag "http://cdn.myanimelist.net/images/characters/13/159377.jpg"
+                      .name.ten.columns
+                        %p= link_to casting.character.name, "#"
 
-                  .divider.two.columns
-                    %hr
-                  .actor.five.columns
-                    .name.ten.columns
-                      %p= link_to "Itou, Kanae", "#"
-                    .headshot.two.columns
-                      = image_tag "http://cdn.myanimelist.net/images/voiceactors/2/22798.jpg"
-                
+                    .divider.two.columns
+                      %hr
+                    .actor.five.columns
+                      .name.ten.columns
+                        %p= link_to casting.person.name, "#"
+                      .headshot.two.columns
+                        = image_tag "http://cdn.myanimelist.net/images/voiceactors/2/11844.jpg"
+                  
 
         %footer.twelve.columns
           %p= link_to "view complete cast", "#"

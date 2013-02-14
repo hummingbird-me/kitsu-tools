@@ -7,8 +7,8 @@ class AnimeController < ApplicationController
     @producers = @anime.producers
     @quotes = @anime.quotes.limit(4)
     @reviews = @anime.reviews.includes(:user)
-    @castings = Casting.where(anime_id: @anime.id, voice_actor: true, featured: true)
-    @castings += Casting.where(anime_id: @anime.id, voice_actor: true).limit(4-@castings.length)
+    @castings = Casting.where(anime_id: @anime.id, featured: true)
+    @languages = @castings.map {|x| x.role }.uniq
 
     if user_signed_in?
       @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
