@@ -15,9 +15,9 @@
         .content
           - Watchlist.valid_statuses.each do |status|
             - if !watchlist or (watchlist && watchlist.status != status)
-              %li= link_to status, add_to_watchlist_path(anime, status: status), method: :post
+              %li= link_to status, add_to_watchlist_path(anime, status: status), method: :post, remote: true
           - if watchlist
-            %li= link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
+            %li= link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), method: :post, confirm: "Are you sure you want to remove #{anime.title} from your Watchlist?", remote: true
 
         - if watchlist
           .drop-button #{watchlist.status} <a href="#" class="selector"></a>

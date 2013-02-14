@@ -6,14 +6,26 @@ class WatchlistController < ApplicationController
     @watch = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
     @watch.status = params[:status]
     @watch.save
-    redirect_to :back
+
+    respond_to do |format|
+      if request.xhr?
+        format.js { render "replace_card" }
+      end
+      format.html { redirect_to :back }
+    end
   end
 
   def remove_from_watchlist
     @anime = Anime.find(params[:anime_id])
     @watch = Watchlist.find_by_anime_id_and_user_id(@anime.id, current_user.id)
     @watch.delete
-    redirect_to :back
+
+    respond_to do |format|
+      if request.xhr?
+        format.js { render "replace_card" }
+      end
+      format.html { redirect_to :back }
+    end
   end
 
   def update_rating
