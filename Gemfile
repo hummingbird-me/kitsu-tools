@@ -36,6 +36,7 @@ gem "tarantula", :require => "tarantula-rails3"
 gem 'factory_girl_rails'
 
 gem 'jquery-rails'
+gem 'haml', '~> 4.0'
 gem 'haml-rails'
 gem 'simple_form'
 
