@@ -45,11 +45,11 @@ class AnimeController < ApplicationController
 
     # Filter by genre if needed.
     if params[:genres] and params[:genres].length > 0
-      @genre_slugs  = params[:genres].split.uniq 
-      if @all_genres.count > @genre_slugs.length
-        @genre_filter = Genre.where("slug IN (?)", @genre_slugs)
-        @anime = @anime.joins(:genres)
-                       .where("genres.id IN (?)", @genre_filter.map(&:id))
+      @all_genre_slugs = @all_genres.map {|x| x.slug }
+      @slugs_to_filter = params[:genres].split.uniq
+      if @slugs_to_filter.length > 0
+        @genre_filter = Genre.where("slug IN (?)", @slugs_to_filter)
+        @anime = @anime.exclude_genres(@all_genres - @genre_filter)
       end
     end
     @genre_filter ||= @all_genres

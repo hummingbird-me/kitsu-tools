@@ -6,7 +6,7 @@ FactoryGirl.define do
     episode_length 23
     status         "Finished Airing"
     synopsis       "Description description description description"
-    mal_id         11757
+    mal_id         { rand 11757 }
     youtube_video_id "Wv8u5bY8Now"
   end
   

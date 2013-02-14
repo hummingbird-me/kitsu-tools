@@ -11,7 +11,6 @@ module ApplicationHelper
       0
     end
   end
-  
 
   # Convert minutes into a string like "1 month, 4 days, 21 hours and 7 minutes"
   def format_minutes(minutes)

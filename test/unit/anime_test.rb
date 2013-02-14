@@ -21,4 +21,15 @@ class AnimeTest < ActiveSupport::TestCase
     assert sfw.sfw?
     assert !nsfw.sfw?
   end
+
+  test "should filter genres correctly" do
+    genre1 = FactoryGirl.create(:genre, name: "fas")
+    genre2 = FactoryGirl.create(:genre, name: "asf")
+    anime1 = FactoryGirl.create(:anime, genres: [genre1])
+    anime2 = FactoryGirl.create(:anime, title: "asdf 2", genres: [genre2])
+    
+    assert Anime.exclude_genres([genre1, genre2]).length == 0
+    assert Anime.exclude_genres([genre2]).include? anime1
+    assert Anime.exclude_genres([genre1]).include? anime2
+  end
 end

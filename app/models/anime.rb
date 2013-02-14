@@ -32,4 +32,10 @@ class Anime < ActiveRecord::Base
   def sfw?
     age_rating != "Rx"
   end
+
+  # Return a scope that filters out anime which belong to any of the genres
+  # passed in.
+  def self.exclude_genres(genres)
+    where('NOT EXISTS (SELECT 1 FROM anime_genres WHERE anime_genres.anime_id = anime.id AND anime_genres.genre_id IN (?))', genres.map(&:id))
+  end
 end
