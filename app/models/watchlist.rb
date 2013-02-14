@@ -5,16 +5,12 @@ class Watchlist < ActiveRecord::Base
 
   validates_uniqueness_of :user_id, :scope => :anime_id
 
-  def status
-    s = read_attribute(:status)
-    if s.nil?
-      # TODO later, check the number of episodes watched and return
-      #       "Finished Watching" instead if appropriate.
-      return "Currently Watching"
-    else
-      return s
-    end
-  end
+  # Return an array of possible valid statuses.
+  def self.valid_statuses
+    ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
+  end  
+  
+  validates :status, inclusion: { in: Watchlist.valid_statuses }
 
   def positive?
     (not positive.nil?) and positive

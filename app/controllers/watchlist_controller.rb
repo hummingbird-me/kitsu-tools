@@ -4,7 +4,7 @@ class WatchlistController < ApplicationController
   def add_to_watchlist
     @anime = Anime.find(params[:anime_id])
     @watch = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
-    @watch.status = nil
+    @watch.status = params[:status]
     @watch.save
     redirect_to :back
   end

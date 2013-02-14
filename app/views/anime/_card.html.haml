@@ -13,31 +13,14 @@
     .drop
       .watchlist
         .content
+          - Watchlist.valid_statuses.each do |status|
+            - if !watchlist or (watchlist && watchlist.status != status)
+              %li= link_to status, add_to_watchlist_path(anime, status: status), method: :post
           - if watchlist
-            %li
-              = link_to "Plan to Watch", "#"
-            %li 
-              = link_to "Completed", "#"
-            %li 
-              = link_to "On Hold", "#"
-            %li
-              = link_to "Dropped", "#"
-            %li
-              = link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
-          - else
-            %li
-              = link_to "Currently Watching", add_to_watchlist_path(anime), :method => :post
-            %li
-              = link_to "Plan to Watch", "#"
-            %li 
-              = link_to "Completed", "#"
-            %li 
-              = link_to "On Hold", "#"
-            %li
-              = link_to "Dropped", "#"
+            %li= link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), :method => :post, :confirm => "Are you sure you want to remove #{anime.title} from your Watchlist?"
 
         - if watchlist
-          .drop-button Currently Watching <a href="#" class="selector"></a>
+          .drop-button #{watchlist.status} <a href="#" class="selector"></a>
 
         - else
           .drop-button Select Watching Status <a href="#" class="selector"></a>
