@@ -34,8 +34,10 @@
             %p.left <i></i>
           .six.columns 
             %h6 Community Rating
-            %p.percentage-negative <i></i> 72%
-            %p.based-on Based on 6,124 Ratings
+            %p{:class => @anime.wilson_ci >= 0.5 ? "percentage-positive" : "percentage-negative"}
+              %i
+              #{(@anime.wilson_ci*100).to_i}%
+            %p.based-on Based on #{number_with_delimiter @anime.user_count} Ratings
           .decoration.three.columns
             %p.right <i></i>
         .lower.twelve.columns
