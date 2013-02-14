@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212210145) do
+ActiveRecord::Schema.define(:version => 20130214054215) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(:version => 20130212210145) do
     t.integer  "cover_image_file_size"
     t.datetime "cover_image_updated_at"
     t.string   "age_rating_tooltip"
+    t.float    "wilson_ci"
+    t.integer  "user_count"
   end
 
   add_index "anime", ["mal_id"], :name => "index_anime_on_mal_id", :unique => true

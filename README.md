@@ -59,3 +59,6 @@ Miscellaneous Rake Tasks:
 
     # Post-processing age ratings.
     rake import:split_ratings
+
+    # Compute anime ratings
+    rake compute:wilson_ci
