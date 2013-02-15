@@ -19,6 +19,7 @@ class WatchlistController < ApplicationController
     @anime = Anime.find(params[:anime_id])
     @watch = Watchlist.find_by_anime_id_and_user_id(@anime.id, current_user.id)
     @watch.delete
+    @watch = false
 
     respond_to do |format|
       if request.xhr?
