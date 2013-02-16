@@ -8,9 +8,9 @@ module EpisodesHelper
     @episodes_watched = Hash.new(false)
     @episodes_viewed = []
     if user_signed_in?
-      @episodes_viewed = current_user.episodes_viewed(anime)
+      @episodes_viewed = current_user.episodes_viewed(anime).includes(:episode)
     end
-    current_user.episodes_viewed(anime).includes(:episode).each do |episodev|
+    @episodes_viewed.each do |episodev|
       @episodes_watched[ episodev.episode.id ] = true
     end
     # Figure out the range of 4 episodes to show.
