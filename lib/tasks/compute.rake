@@ -13,7 +13,7 @@ namespace :compute do
   desc "Compute the lower bound of the Wilson score CI for each anime"
   task :wilson_ci => :environment do |t|
     pre = YAML.load File.read("import/like_dislike.yaml")
-    Anime.each do |anime|
+    Anime.where({}).each do |anime|
       # TODO consider user ratings as well, not just the pre bias.
       pos = (pre[anime.mal_id] || [0, 0])[0]
       neg = (pre[anime.mal_id] || [0, 0])[1]
