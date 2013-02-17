@@ -111,19 +111,20 @@
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}", :width => "420"}
 
       .screenshots
-        .twelve.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/598799-sword_art_online___24___large_03.jpg"
-        .left-small.six.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/586212-sword_art_online___17___large_28.jpg"
-        .right-small.six.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/580363-sword_art_online___13___large_37.jpg"
-        .twelve.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/600869-sword_art_online___25___large_06.jpg"
-        .left-small.six.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/586212-sword_art_online___17___large_28.jpg"
-        .right-small.six.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/580363-sword_art_online___13___large_37.jpg"
-
+        - if @gallery.length >= 1
+          .twelve.columns= image_tag @gallery[0].image.url(:thumb)
+          - if @gallery.length >= 3
+            .left-small.six.columns= image_tag @gallery[1].image.url(:thumb)
+            .right-small.six.columns= image_tag @gallery[2].image.url(:thumb)
+            - if @gallery.length >= 4
+              .twelve.columns= image_tag @gallery[3].image.url(:thumb)
+              - if @gallery.length >= 6
+                .left-small.six.columns= image_tag @gallery[4].image.url(:thumb)
+                .right-small.six.columns= image_tag @gallery[5].image.url(:thumb)
+        - else
+          / TODO: replace this with an image indicating that no screenshots
+          / have been added.
+          .twelve.columns= image_tag "http://placekitten.com/380/214/"
         %p= link_to "view full gallery", "#"
 
       .quotes

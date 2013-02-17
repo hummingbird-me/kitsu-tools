@@ -9,6 +9,7 @@ class AnimeController < ApplicationController
     @reviews = @anime.reviews.includes(:user)
     @castings = Casting.where(anime_id: @anime.id, featured: true)
     @languages = @castings.map {|x| x.role }.uniq
+    @gallery = GalleryImage.where(anime_id: @anime.id).limit(6)
 
     if user_signed_in?
       @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
