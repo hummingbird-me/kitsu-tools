@@ -4,7 +4,7 @@ class GenresController < ApplicationController
                     .map {|x| x.gsub(/^g_/, "") }
 
     url = URI.parse request.env["HTTP_REFERER"]
-    if @genres.length == Genre.count
+    if @genres == Genre.default_filterable(current_user).map {|x| x.slug }
       url.query = ""
     else
       url.query = "genres=#{@genres*'+'}"
