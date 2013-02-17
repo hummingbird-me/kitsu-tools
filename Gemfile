@@ -83,7 +83,7 @@ gem "activerecord-reputation-system", require: 'reputation_system'
 gem 'thin'
 
 # Needed for MAL import.
-gem 'nokogiri'
+gem 'nokogiri', require: false
 
 # Deploy with Capistrano
 # gem 'capistrano'

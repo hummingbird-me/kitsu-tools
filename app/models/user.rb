@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :quotes, foreign_key: 'creator_id'
 
+  has_one :staged_import
+
   has_reputation :karma, :source => [
     {reputation: :vodes, of: :reviews},
     {reputation: :votes, of: :quotes}

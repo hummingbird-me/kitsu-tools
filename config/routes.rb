@@ -22,7 +22,7 @@ Hummingbird::Application.routes.draw do
   
   # Imports
   match '/imports/myanimelist/new' => 'imports#myanimelist'
-  match '/imports/:id/review'      => 'imports#review'
+  match '/imports/:id/review'      => 'imports#review', as: :review_import
 
   resources :anime do
     resources :quotes do
