@@ -52,6 +52,21 @@
                 = f.file_field :avatar
               %li
 
+  .row.content-body
+    .twelve.columns
+      %h3 Import
+      %form
+        %fieldset
+          %legend Import from MyAnimeList
+          .row
+            .five.columns
+              .six.columns
+                %label.right MyAnimeList Username:
+              .six.columns
+                %input
+          .row
+            %input(type="submit" class="small button" value="Import")
+
 :javascript
   $(".password-confirmation-box").slideUp();
   $("div.dashboard input#user_password").focus(function() {

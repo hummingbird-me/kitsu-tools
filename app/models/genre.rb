@@ -10,4 +10,8 @@ class Genre < ActiveRecord::Base
   def to_s
     name
   end
+
+  def self.default_filterable
+    Genre.where('slug IN (?)', %w())
+  end
 end
