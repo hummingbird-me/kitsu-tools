@@ -19,6 +19,9 @@ Hummingbird::Application.routes.draw do
 
   # Search
   match '/search' => 'search#basic'
+  
+  # Imports
+  match '/imports/myanimelist/new' => 'imports#myanimelist'
 
   resources :anime do
     resources :quotes do

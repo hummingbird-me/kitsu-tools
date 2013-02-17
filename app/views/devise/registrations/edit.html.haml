@@ -55,7 +55,7 @@
   .row.content-body
     .twelve.columns
       %h3 Import
-      %form
+      = form_tag(controller: 'imports', action: 'myanimelist') do
         %fieldset
           %legend Import from MyAnimeList
           .row
