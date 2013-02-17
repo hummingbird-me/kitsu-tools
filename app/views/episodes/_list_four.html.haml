@@ -7,9 +7,9 @@
           .episode-title= episode.title
         .view-button.two.columns
           - if watched
-            %strong= link_to "", watch_anime_episode_path(anime, episode, watched: false), method: :post, remote: true
+            %strong= link_to "", watch_anime_episode_path(anime, episode, watched: false), method: :post, remote: user_signed_in?
           - else
-            %strong= link_to "", watch_anime_episode_path(anime, episode, watched: true), method: :post, remote: true
+            %strong= link_to "", watch_anime_episode_path(anime, episode, watched: true), method: :post, remote: user_signed_in?
     %footer.twelve.columns
       %p= link_to "view full episode list", anime_episodes_path(anime)
 
