@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214232033) do
+ActiveRecord::Schema.define(:version => 20130214232840) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -312,7 +312,6 @@ ActiveRecord::Schema.define(:version => 20130214232033) do
   create_table "watchlists", :force => true do |t|
     t.integer  "user_id"
     t.integer  "anime_id"
-    t.boolean  "positive"
     t.string   "status"
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
