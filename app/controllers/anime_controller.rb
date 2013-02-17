@@ -42,7 +42,7 @@ class AnimeController < ApplicationController
     @anime = Anime.sfw_filter(current_user).page(params[:page]).per(18)
 
     # Get a list of all genres.
-    @all_genres = Genre.order(:name)
+    @all_genres = Genre.default_filterable(current_user)
 
     # Filter by genre if needed.
     if params[:genres] and params[:genres].length > 0

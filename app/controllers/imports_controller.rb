@@ -15,7 +15,7 @@ class ImportsController < ApplicationController
   def review
     @staged_import = current_user.staged_import
     if @staged_import.nil? or !@staged_import.data[:complete]
-      redirect_to "/users/edit"
+      redirect_to "/users/edit#import"
     end
   end
 end

@@ -54,6 +54,7 @@
 
   .row.content-body
     .twelve.columns
+      %a(name="import")
       %h3 Import
       - if @user.staged_import
         - if @user.staged_import.data[:complete]
