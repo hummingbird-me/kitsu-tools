@@ -52,6 +52,28 @@
                 = f.file_field :avatar
               %li
 
+  .row.content-body
+    .twelve.columns
+      %a(name="import")
+      %h3 Import
+      - if @user.staged_import
+        - if @user.staged_import.data[:complete]
+          %p Import is done, #{link_to "review it", review_import_path(@user.staged_import)}!
+        - else
+          %p Import is in progress.
+      - else
+        = form_tag(controller: 'imports', action: 'myanimelist') do
+          %fieldset
+            %legend Import from MyAnimeList
+            .row
+              .five.columns
+                .six.columns
+                  %label.right MyAnimeList Username:
+                .six.columns
+                  %input(name="mal_username")
+            .row
+              %input(type="submit" class="small button" value="Import")
+
 :javascript
   $(".password-confirmation-box").slideUp();
   $("div.dashboard input#user_password").focus(function() {

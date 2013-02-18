@@ -33,9 +33,13 @@ class Anime < ActiveRecord::Base
     age_rating != "Rx"
   end
 
-  # Return a scope that filters out anime which belong to any of the genres
-  # passed in.
+  # Filter out all anime belonging to the genres passed in.
   def self.exclude_genres(genres)
     where('NOT EXISTS (SELECT 1 FROM anime_genres WHERE anime_genres.anime_id = anime.id AND anime_genres.genre_id IN (?))', genres.map(&:id))
+  end
+
+  # Find anime containing the genres passed in.
+  def self.include_genres(genres)
+    where('EXISTS (SELECT 1 FROM anime_genres WHERE anime_genres.anime_id = anime.id AND anime_genres.genre_id IN (?))', genres.map(&:id))
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130214232840) do
+ActiveRecord::Schema.define(:version => 20130217152544) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -307,6 +307,7 @@ ActiveRecord::Schema.define(:version => 20130214232840) do
     t.text     "bio"
     t.boolean  "sfw_filter",                 :default => true
     t.boolean  "star_rating"
+    t.string   "mal_username"
   end
 
   create_table "watchlists", :force => true do |t|

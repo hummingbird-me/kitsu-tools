@@ -9,6 +9,7 @@ class AnimeController < ApplicationController
     @reviews = @anime.reviews.includes(:user)
     @castings = Casting.where(anime_id: @anime.id, featured: true)
     @languages = @castings.map {|x| x.role }.uniq
+    @gallery = GalleryImage.where(anime_id: @anime.id).limit(6)
 
     if user_signed_in?
       @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
@@ -41,7 +42,7 @@ class AnimeController < ApplicationController
     @anime = Anime.sfw_filter(current_user).page(params[:page]).per(18)
 
     # Get a list of all genres.
-    @all_genres = Genre.order(:name)
+    @all_genres = Genre.default_filterable(current_user)
 
     # Filter by genre if needed.
     if params[:genres] and params[:genres].length > 0
@@ -49,7 +50,15 @@ class AnimeController < ApplicationController
       @slugs_to_filter = params[:genres].split.uniq
       if @slugs_to_filter.length > 0
         @genre_filter = Genre.where("slug IN (?)", @slugs_to_filter)
-        @anime = @anime.exclude_genres(@all_genres - @genre_filter)
+        if @genre_filter.length > 10
+          # There are more than 10 genres selected -- block the genres that
+          # haven't been selected.
+          @anime = @anime.exclude_genres(@all_genres - @genre_filter)
+        else
+          # 10 or fewer genres are enabled, search for all anime containing those
+          # genres instead.
+          @anime = @anime.include_genres(@genre_filter)
+        end
       end
     end
     @genre_filter ||= @all_genres

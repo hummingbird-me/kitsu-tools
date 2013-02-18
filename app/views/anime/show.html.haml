@@ -112,21 +112,8 @@
         .flex-video
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}", :width => "420"}
 
-      .screenshots
-        .twelve.columns.mobile-two.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/598799-sword_art_online___24___large_03.jpg"
-        .left-small.six.columns.mobile-two.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/586212-sword_art_online___17___large_28.jpg"
-        .right-small.six.columns.mobile-two.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/580363-sword_art_online___13___large_37.jpg"
-        .twelve.columns.mobile-two.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/600869-sword_art_online___25___large_06.jpg"
-        .left-small.six.columns.mobile-two.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/586212-sword_art_online___17___large_28.jpg"
-        .right-small.six.columns.mobile-two.columns
-          = image_tag "http://media.animevice.com/uploads/1/18405/580363-sword_art_online___13___large_37.jpg"
 
-        %p= link_to "view full gallery", "#"
+      = render "mini_gallery"
 
       .quotes
         %h5 #{@anime.title} Quotes
