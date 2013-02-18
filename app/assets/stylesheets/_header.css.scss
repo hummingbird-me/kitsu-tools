@@ -108,7 +108,7 @@
       }
 
       .site-links {
-        width: 380px;
+        width: 400px;
         padding-right: 20px;
         display: block;
         overflow: hidden;
@@ -123,8 +123,8 @@
           padding-top: 6px;
           text-align: left;
           padding-left: 0px;
-          border-right: 1px solid #eee;
-          padding-right: 18px;
+          border-right: none;
+          padding-right: 0px;
           li {
             display: inline-block;
             padding: 0px;
