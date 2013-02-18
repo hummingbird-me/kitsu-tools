@@ -10,7 +10,8 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    
   = render 'shared/header'
-  %body
+  %body#page.off-canvas.slide-nav
     = yield
   = render 'shared/footer'

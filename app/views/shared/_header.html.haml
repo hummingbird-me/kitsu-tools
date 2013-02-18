@@ -1,56 +1,64 @@
 .hummingbird-header
-  .top-bar
-    .row
-      .twelve.columns
-        / Navigation
-        .row
-          .twelve.columns
-            %ul.top-bar
-              %ul
-                %li.name
-                  %h1
-                    %a{:href => "/"} Hummingbird
-                %li.toggle-topbar
-                  %a{:href => "#"}
-              %section
-                %ul.left
-                  %li
-                    %a{:href => "#"} Discover
-                  %li
-                    = link_to "Dashboard", "/dashboard"
-                  %li
-                    = link_to "Community", main_app.forem_path
+  %nav.sticky_nav
+    %ul.nav-bar.main
+      %li.nav-logo
+        %a.logo{:href => "/"} Hummingbird
+      / Dropdown Lists for Navbar
+      %li.site-links
+        %ul
+          %li
+            %a{:href => "/anime"} Discover
+          %li
+            = link_to "Dashboard", "/dashboard"
+          %li
+            = link_to "Community", main_app.forem_path
+      %li.search
+        %span.search_btn.ss-icon
+        .top
+          %form#live_search_form{:action => "/search"}
+            %input#nav_search_input(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query]}
+            %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
 
-                %ul.right
-                  / Search form
-                  %li.search
-                    %form(action="/search")
-                      .row.collapse
-                        .nine.mobile-three.columns
-                          %input(type="text" name="query"){:value => params[:query]}
-                        .three.mobile-one.columns
-                          %input.button.expand.postfix(type="submit" value="Search")
+      %li.nav_user.has-flyout
+        :javascript
+          (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=452427161479702";
+            fjs.parentNode.insertBefore(js, fjs);
+          }(document, 'script', 'facebook-jssdk'));
+        
+        - if user_signed_in?
+          %span.avatar= link_to image_tag(current_user.avatar_url)
 
-                  - if user_signed_in?
-                    %li.has-dropdown
-                      %span.avatar= link_to image_tag(current_user.avatar_url)
-                      %ul.dropdown
-                        %li
-                          = link_to "Edit profile", main_app.edit_user_registration_path
-                        - if current_user.admin?
-                          %li 
-                            = link_to "Admin panel", "/kotodama"
-                        %li
-                          = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
-                  - else
-                    %li= link_to "Login", main_app.new_user_session_path
-                    %li
-                      %a{"data-reveal-id" => "register", :href => "#"} Register
+          %a.flyout-toggle{:href => "#"}
+            %span
+          %ul.flyout
+            %li
+              = link_to "Edit profile", main_app.edit_user_registration_path
+            - if current_user.admin?
+              %li 
+                = link_to "Admin panel", "/kotodama"
+            %li
+              = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
+        - else
+          %span.avatar= link_to image_tag "http://thetvdb.com/banners/fanart/original/71361-4.jpg"
 
-                  #register.reveal-modal{:class => "medium"}
-                    %h2 Sign up
+          %a.flyout-toggle{:href => "#"}
+            %span
+          %ul.flyout.guest
+            %li.login
+              %label Login
+              %input{:type => "text"}
+              %input.six{:type => "password"}
+              %input.button{:type => "submit", :value => "Login"}
+              %hr
+            %li.connect
+              %label <a href="#{main_app.new_user_registration_path}">Register</a> or login with:
+              %a.btn-auth.btn-facebook.large{:href => "#"} <i></i>Facebook Connect
 
-                    = render "devise/registrations/form"
   %figure
     .overlay
       %h5.title If the demon is truly big, then we are no match for it. It's irrational. It's impossible. It's against my religion.

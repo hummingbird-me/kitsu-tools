@@ -21,18 +21,27 @@
       color: #b4b4b4;
       padding-bottom: 10px;
       border-bottom: 1px solid #dfdfdf;
+      @media (max-width: 768px) {
+        width: 50%;
+      }
     }
 
     .producers {
       padding-top: 10px;
       padding-bottom: 10px;
       border-bottom: 1px solid #dfdfdf;
+      @media (max-width: 768px) {
+        width: 50%;
+      }
     }
 
     .genres {
       padding-top: 10px;
       padding-bottom: 10px;
       border-bottom: 1px solid #dfdfdf;
+      @media (max-width: 768px) {
+        width: 50%;
+      }
     }
 
     .synopsis {
@@ -51,15 +60,26 @@
     .columns {
       padding: 0px;
       margin-bottom: 6px;
+      @media (max-width: 768px) {
+        padding: 3px;
+        margin-bottom: -3px;
+      }
+      img {
+        max-height: 195px;
+      }
     }
     .left-small {
       &.columns {
-        padding-right: 3px;
+        @media (min-width: 768px) {
+          padding-right: 3px;
+        }
       }
     }
     .right-small {
       &.columns {
-        padding-left: 3px;
+        @media (min-width: 768px) {
+          padding-left: 3px;
+        }
       }
     }
   }

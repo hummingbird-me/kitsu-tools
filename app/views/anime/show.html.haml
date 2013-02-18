@@ -30,15 +30,17 @@
 
       .panel.community-rating
         .upper.twelve.columns
-          .decoration.three.columns
+          .decoration.three.columns.hide-for-small
             %p.left <i></i>
+
           .six.columns 
             %h6 Community Rating
             %p{:class => @anime.wilson_ci >= 0.5 ? "percentage-positive" : "percentage-negative"}
               %i
               #{(@anime.wilson_ci*100).to_i}%
             %p.based-on Based on #{number_with_delimiter @anime.user_count} Ratings
-          .decoration.three.columns
+
+          .decoration.three.columns.hide-for-small
             %p.right <i></i>
         .lower.twelve.columns
           .positive-review.six.columns
@@ -111,17 +113,17 @@
           %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}", :width => "420"}
 
       .screenshots
-        .twelve.columns
+        .twelve.columns.mobile-two.columns
           = image_tag "http://media.animevice.com/uploads/1/18405/598799-sword_art_online___24___large_03.jpg"
-        .left-small.six.columns
+        .left-small.six.columns.mobile-two.columns
           = image_tag "http://media.animevice.com/uploads/1/18405/586212-sword_art_online___17___large_28.jpg"
-        .right-small.six.columns
+        .right-small.six.columns.mobile-two.columns
           = image_tag "http://media.animevice.com/uploads/1/18405/580363-sword_art_online___13___large_37.jpg"
-        .twelve.columns
+        .twelve.columns.mobile-two.columns
           = image_tag "http://media.animevice.com/uploads/1/18405/600869-sword_art_online___25___large_06.jpg"
-        .left-small.six.columns
+        .left-small.six.columns.mobile-two.columns
           = image_tag "http://media.animevice.com/uploads/1/18405/586212-sword_art_online___17___large_28.jpg"
-        .right-small.six.columns
+        .right-small.six.columns.mobile-two.columns
           = image_tag "http://media.animevice.com/uploads/1/18405/580363-sword_art_online___13___large_37.jpg"
 
         %p= link_to "view full gallery", "#"
@@ -137,7 +139,7 @@
         %p
           = link_to "[Show all]", anime_quotes_url(@anime)
           = link_to "[Submit quote]", new_anime_quote_url(@anime)
-    .similar-anime.twelve.columns
+    .similar-anime.twelve.columns.hide-for-small
       %header
         .four.columns
           %hr

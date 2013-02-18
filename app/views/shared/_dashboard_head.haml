@@ -7,6 +7,16 @@
             %figure.user-avatar= image_tag(current_user.avatar_url)
             %figcaption.karma 10,042
             %figcaption.karma-title karma
+
+          .genre-graph
+            %span.title Most Watched Genres
+            %ul.graphs
+              - @top_genres.each do |genre, freq|
+                %li.chart
+                  .percentage{"data-percent" => (freq * 100).to_i}
+                    %span #{(freq*100).to_i}%
+                  .label= link_to genre.name, genre
+                  
           .user-information 
             %h4.username= current_user.name
             %p.bio 
@@ -17,14 +27,7 @@
             .anime-life
               %p Life Spent Watching Anime:
               %p 1 month, 4 days, 21 hours and 7 minutes
-          .genre-graph
-            %span.title Most Watched Genres
-            %ul.graphs
-              - @top_genres.each do |genre, freq|
-                %li.chart
-                  .percentage{"data-percent" => (freq * 100).to_i}
-                    %span #{(freq*100).to_i}%
-                  .label= link_to genre.name, genre
+          
 
       .profile-bar-subnav
         %dl.sub-nav

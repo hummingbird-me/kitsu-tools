@@ -94,6 +94,12 @@
         background-position: bottom;
         background-image: url(asset-path('icons/watch-sprite.png', image));
         background-repeat: no-repeat;
+        @media (max-width: 768px) {
+          width: 30px !important;
+          float: right;
+          position: relative;
+          top: -50px;
+        }
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
           background-image: url(asset-path('icons/watch-sprite@2x.png', image));
           background-size: 30px 51px;

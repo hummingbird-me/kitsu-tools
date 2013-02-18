@@ -6,6 +6,7 @@
           %figure.user-avatar= image_tag(@user.avatar_url)
           %figcaption.karma= number_with_delimiter @user.reputation_for(:karma).to_i
           %figcaption.karma-title karma
+          
         .user-information 
           %h4.username= @user.name
           %p.bio 
@@ -16,6 +17,7 @@
           .anime-life
             %p Life Spent Watching Anime:
             %p= format_minutes @user.life_spent_on_anime
+
         .genre-graph
           %span.title Most Watched Genres
           %ul.graphs

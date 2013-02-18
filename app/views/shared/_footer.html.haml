@@ -1,6 +1,6 @@
 .hummingbird-footer
   - if session[:recently_viewed] and session[:recently_viewed].length > 0
-    .history-bar
+    .history-bar.hide-for-small
       %footer.row
         .twelve.columns
           .recently-viewed

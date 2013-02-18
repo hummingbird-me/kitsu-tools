@@ -95,8 +95,18 @@
   /* ============================================== */
   .columns {
     padding: 0 10px;
+    @media (max-width: 480px) {
+      padding: 0 3px;
+      margin-bottom: -15px;
+    }
   }
-
+  .anime-grid {
+    .overlay {
+      @media (max-width: 1000px) {
+        display: none !important;
+      }
+    }
+  }
   .panel {
   	position: relative;
   	background: white;
@@ -131,6 +141,7 @@
         @include border-top-radius(3px);
         @include background-image(linear-gradient(left top, #393939, #000));
         display: none;
+        
 
         .title {
           color: white;

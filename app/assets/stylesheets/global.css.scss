@@ -27,9 +27,20 @@
 
 body {
 	background: #eee;
-
+  [role="complementary"] {
+    width: 25%;
+    .three, .row .three {
+      width: 100%;
+    }
+  }
   a {
     color: orange;
+  }
+  input:focus,
+  select:focus,
+  textarea:focus,
+  button:focus {
+      outline: none;
   }
 
   ul.pagination {
