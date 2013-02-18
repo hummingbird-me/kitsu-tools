@@ -1,14 +1,14 @@
 .screenshots
   - if @gallery.length >= 1
-    .twelve.columns= image_tag @gallery[0].image.url(:thumb)
+    .twelve.columns.mobile-two.columns= image_tag @gallery[0].image.url(:thumb)
     - if @gallery.length >= 3
-      .left-small.six.columns= image_tag @gallery[1].image.url(:thumb)
-      .right-small.six.columns= image_tag @gallery[2].image.url(:thumb)
+      .left-small.six.columns.mobile-two.columns= image_tag @gallery[1].image.url(:thumb)
+      .right-small.six.columns.mobile-two.columns= image_tag @gallery[2].image.url(:thumb)
       - if @gallery.length >= 4
         .twelve.columns= image_tag @gallery[3].image.url(:thumb)
         - if @gallery.length >= 6
-          .left-small.six.columns= image_tag @gallery[4].image.url(:thumb)
-          .right-small.six.columns= image_tag @gallery[5].image.url(:thumb)
+          .left-small.six.columns.mobile-two.columns= image_tag @gallery[4].image.url(:thumb)
+          .right-small.six.columns.mobile-two.columns= image_tag @gallery[5].image.url(:thumb)
   - else
     / TODO: replace this with an image indicating that no screenshots
     / have been added.

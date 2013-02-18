@@ -2,7 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
+
+.watchlist-subnav {
+  .sub-nav {
+    background: #f4f4f4;
+    border-bottom: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    margin-left: 0;
+    dd {
+      line-height: 45px;
+      margin-bottom: 0;
+      border-right: 1px solid #e6e6e6;
+      width: 16%;
+      text-align: center;
+      &.active {
+        a {
+          font-weight: normal;
+          background: none;
+          color: #000;
+        }
+      }
+    }
+  }
+}
 .user-watchlist {
+
+  h3 {
+    border-bottom: 1px solid #dddddd;
+    padding: 0px 0px 10px 10px;
+  }
+
+  .anime-grid {
+    padding-top: 0px;
+  }
+
   .recent {
     figure {
       height: 200px;
@@ -58,6 +92,7 @@
       }
     }
   }
+  
 
   .episode-list {
     .episode {

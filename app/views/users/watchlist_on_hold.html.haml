@@ -1,0 +1,308 @@
+= render "dash"
+
+.row.content-body
+  .watchlist-subnav.twelve.columns
+    %dl.sub-nav
+      %dd= link_to "Currently Watching", user_watchlist_path(@user, list: "currently_watching")
+      %dd= link_to "Plan To Watch", user_watchlist_path(@user, list: "plan_to_watch")
+      %dd= link_to "Completed", user_watchlist_path(@user, list: "completed")
+      %dd.active= link_to "On Hold", user_watchlist_path(@user, list: "on_hold")
+      %dd= link_to "Dropped", user_watchlist_path(@user, list: "dropped")
+
+.home.user-watchlist 
+  .row.content-body
+    .anime-grid.twelve.columns
+      %h3 Anime on Hold
+      .row          
+        .three.mobile-two.columns
+          .panel.cards.cf
+            %figure
+              %a{:href => "#"}
+                .overlay
+                  %h5.title Cowboy Bebop
+                  %p.summary This is a summary
+                %figcaption Cowboy Bebop
+                %img{:src => "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"}
+
+            .progress.six
+              %span.meter{:style => "width: 40%"}
+            .drop
+              .watchlist
+                .content
+                  %li
+                    = link_to "Plan to Watch", "#"
+                  %li 
+                    = link_to "Completed", "#"
+                  %li 
+                    = link_to "On Hold", "#"
+                  %li
+                    = link_to "Dropped", "#"
+                  %li
+                    = link_to "- Remove from Watchlist", "#"
+              
+                .drop-button Currently Watching <a href="#" class="selector"></a>
+
+            .vote-blocks
+              %span.like
+                %strong= link_to ":)", "#"
+              %span.dislike
+                %strong= link_to ":(", "#"
+
+        .three.mobile-two.columns
+          .panel.cards.cf
+            %figure
+              %a{:href => "#"}
+                .overlay
+                  %h5.title Cowboy Bebop
+                  %p.summary This is a summary
+                %figcaption Cowboy Bebop
+                %img{:src => "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"}
+
+            .progress.six
+              %span.meter{:style => "width: 40%"}
+            .drop
+              .watchlist
+                .content
+                  %li
+                    = link_to "Plan to Watch", "#"
+                  %li 
+                    = link_to "Completed", "#"
+                  %li 
+                    = link_to "On Hold", "#"
+                  %li
+                    = link_to "Dropped", "#"
+                  %li
+                    = link_to "- Remove from Watchlist", "#"
+              
+                .drop-button Currently Watching <a href="#" class="selector"></a>
+
+            .vote-blocks
+              %span.like
+                %strong= link_to ":)", "#"
+              %span.dislike
+                %strong= link_to ":(", "#"
+
+        .three.mobile-two.columns
+          .panel.cards.cf
+            %figure
+              %a{:href => "#"}
+                .overlay
+                  %h5.title Cowboy Bebop
+                  %p.summary This is a summary
+                %figcaption Cowboy Bebop
+                %img{:src => "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"}
+
+            .progress.six
+              %span.meter{:style => "width: 40%"}
+            .drop
+              .watchlist
+                .content
+                  %li
+                    = link_to "Plan to Watch", "#"
+                  %li 
+                    = link_to "Completed", "#"
+                  %li 
+                    = link_to "On Hold", "#"
+                  %li
+                    = link_to "Dropped", "#"
+                  %li
+                    = link_to "- Remove from Watchlist", "#"
+              
+                .drop-button Currently Watching <a href="#" class="selector"></a>
+
+            .vote-blocks
+              %span.like
+                %strong= link_to ":)", "#"
+              %span.dislike
+                %strong= link_to ":(", "#"
+
+        .three.mobile-two.columns
+          .panel.cards.cf
+            %figure
+              %a{:href => "#"}
+                .overlay
+                  %h5.title Cowboy Bebop
+                  %p.summary This is a summary
+                %figcaption Cowboy Bebop
+                %img{:src => "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"}
+
+            .progress.six
+              %span.meter{:style => "width: 40%"}
+            .drop
+              .watchlist
+                .content
+                  %li
+                    = link_to "Plan to Watch", "#"
+                  %li 
+                    = link_to "Completed", "#"
+                  %li 
+                    = link_to "On Hold", "#"
+                  %li
+                    = link_to "Dropped", "#"
+                  %li
+                    = link_to "- Remove from Watchlist", "#"
+              
+                .drop-button Currently Watching <a href="#" class="selector"></a>
+
+            .vote-blocks
+              %span.like
+                %strong= link_to ":)", "#"
+              %span.dislike
+                %strong= link_to ":(", "#"
+
+        .three.mobile-two.columns
+          .panel.cards.cf
+            %figure
+              %a{:href => "#"}
+                .overlay
+                  %h5.title Cowboy Bebop
+                  %p.summary This is a summary
+                %figcaption Cowboy Bebop
+                %img{:src => "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"}
+
+            .progress.six
+              %span.meter{:style => "width: 40%"}
+            .drop
+              .watchlist
+                .content
+                  %li
+                    = link_to "Plan to Watch", "#"
+                  %li 
+                    = link_to "Completed", "#"
+                  %li 
+                    = link_to "On Hold", "#"
+                  %li
+                    = link_to "Dropped", "#"
+                  %li
+                    = link_to "- Remove from Watchlist", "#"
+              
+                .drop-button Currently Watching <a href="#" class="selector"></a>
+
+            .vote-blocks
+              %span.like
+                %strong= link_to ":)", "#"
+              %span.dislike
+                %strong= link_to ":(", "#"
+
+        .three.mobile-two.columns
+          .panel.cards.cf
+            %figure
+              %a{:href => "#"}
+                .overlay
+                  %h5.title Cowboy Bebop
+                  %p.summary This is a summary
+                %figcaption Cowboy Bebop
+                %img{:src => "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"}
+
+            .progress.six
+              %span.meter{:style => "width: 40%"}
+            .drop
+              .watchlist
+                .content
+                  %li
+                    = link_to "Plan to Watch", "#"
+                  %li 
+                    = link_to "Completed", "#"
+                  %li 
+                    = link_to "On Hold", "#"
+                  %li
+                    = link_to "Dropped", "#"
+                  %li
+                    = link_to "- Remove from Watchlist", "#"
+              
+                .drop-button Currently Watching <a href="#" class="selector"></a>
+
+            .vote-blocks
+              %span.like
+                %strong= link_to ":)", "#"
+              %span.dislike
+                %strong= link_to ":(", "#"
+
+        .three.mobile-two.columns
+          .panel.cards.cf
+            %figure
+              %a{:href => "#"}
+                .overlay
+                  %h5.title Cowboy Bebop
+                  %p.summary This is a summary
+                %figcaption Cowboy Bebop
+                %img{:src => "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"}
+
+            .progress.six
+              %span.meter{:style => "width: 40%"}
+            .drop
+              .watchlist
+                .content
+                  %li
+                    = link_to "Plan to Watch", "#"
+                  %li 
+                    = link_to "Completed", "#"
+                  %li 
+                    = link_to "On Hold", "#"
+                  %li
+                    = link_to "Dropped", "#"
+                  %li
+                    = link_to "- Remove from Watchlist", "#"
+              
+                .drop-button Currently Watching <a href="#" class="selector"></a>
+
+            .vote-blocks
+              %span.like
+                %strong= link_to ":)", "#"
+              %span.dislike
+                %strong= link_to ":(", "#"
+                
+        .three.mobile-two.columns
+          .panel.cards.cf
+            %figure
+              %a{:href => "#"}
+                .overlay
+                  %h5.title Cowboy Bebop
+                  %p.summary This is a summary
+                %figcaption Cowboy Bebop
+                %img{:src => "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"}
+
+            .progress.six
+              %span.meter{:style => "width: 40%"}
+            .drop
+              .watchlist
+                .content
+                  %li
+                    = link_to "Plan to Watch", "#"
+                  %li 
+                    = link_to "Completed", "#"
+                  %li 
+                    = link_to "On Hold", "#"
+                  %li
+                    = link_to "Dropped", "#"
+                  %li
+                    = link_to "- Remove from Watchlist", "#"
+              
+                .drop-button Currently Watching <a href="#" class="selector"></a>
+
+            .vote-blocks
+              %span.like
+                %strong= link_to ":)", "#"
+              %span.dislike
+                %strong= link_to ":(", "#"
+
+      .twelve.columns.pagination-centered
+        %ul.pagination
+          %li.arrow.unavailable
+            %a{:href => ""} &laquo;
+          %li.current
+            %a{:href => ""} 1
+          %li
+            %a{:href => ""} 2
+          %li
+            %a{:href => ""} 3
+          %li
+            %a{:href => ""} 4
+          %li.unavailable
+            %a{:href => ""} &hellip;
+          %li
+            %a{:href => ""} 12
+          %li
+            %a{:href => ""} 13
+          %li.arrow
+            %a{:href => ""} &raquo;
