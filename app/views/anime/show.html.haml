@@ -11,7 +11,7 @@
           %h3= @anime.title
 
           .small-summary 
-            %span #{@anime.episode_count} episodes / #{@anime.episode_length} min. each  ||
+            %span #{pluralize @anime.episode_count, 'episode'} / #{@anime.episode_length} min. each  ||
             %span #{@anime.age_rating}
 
           .producers
