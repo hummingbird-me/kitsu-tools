@@ -1,4 +1,5 @@
 require 'rvm/capistrano'
+require 'sidekiq/capistrano'
 require 'bundler/capistrano'
 
 set :application, "hummingbird"
@@ -47,10 +48,8 @@ namespace :deploy do
   desc "restart the app"
   task :restart, roles: :web do
     # Stop sidekiq, reload unicorn, run migrations and start sidekiq.
-    run "#{sudo} monit stop sidekiq"
     run "kill -USR2 `cat /u/apps/hummingbird/shared/pids/unicorn.pid`"
     run "cd #{current_release} && RAILS_ENV=production bundle exec rake db:migrate"
-    run "#{sudo} monit start sidekiq"
   end
   
   namespace :assets do

@@ -1,0 +1,4 @@
+---
+production:
+  :concurrency: 25
+  :pidfile: /u/apps/hummingbird/shared/pids/sidekiq.pid
