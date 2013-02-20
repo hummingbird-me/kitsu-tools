@@ -23,6 +23,7 @@ class SearchController < ApplicationController
     end
     
     @anime = @anime.search_by_title(params[:query])
+    @collection = @anime.map {|x| [x, @watchlist[x.id]] }
 
     render "anime/index"
   end

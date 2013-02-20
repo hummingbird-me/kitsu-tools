@@ -70,6 +70,8 @@ class AnimeController < ApplicationController
       @watchlist = Hash.new(false)
     end
 
+    @collection = @anime.map {|x| [x, @watchlist[x.id]] }
+
     # What regular filter are we applying?
     @filter = params[:filter] || "all"
 
