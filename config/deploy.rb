@@ -27,6 +27,37 @@ namespace :deploy do
   task :nginx_reload, roles: :web do
     run "#{sudo} service nginx reload"
   end
+
+  desc "symlink monit configuration"
+  task :monit_symlink, roles: :web do
+    run "#{sudo} ln -nfs #{release_path}/config/monit.conf /etc/monit/conf.d/hummingbird.conf"
+  end
+  
+  desc "reload monit configuration"
+  task :monit_reload do
+    run "#{sudo} monit reload"
+  end
+  
+  desc "start the app"
+  task :start, roles: :web do
+    run "#{sudo} monit start hummingbird"
+  end
+  
+  desc "stop the app"
+  task :stop, roles: :web do
+    run "#{sudo} monit stop hummingbird"
+  end
+  
+  desc "restart the app"
+  task :restart, roles: :web do
+    if update_db?
+      run "#{sudo} monit stop hummingbird"
+      run "cd #{current_release} && bundle exec rake db:migrate"
+      run "#{sudo} monit start hummingbird"
+    else
+      run "#{sudo} monit restart hummingbird"
+    end
+  end
   
   namespace :assets do
     task :precompile, roles: :web, except: {no_release: true} do
@@ -45,10 +76,10 @@ namespace :deploy do
 end
 
 after "deploy:finalize_update",
-  "deploy:nginx_symlink"
+  "deploy:nginx_symlink", "deploy:monit_symlink"
 
 after "deploy:restart",
-  "deploy:nginx_reload"
+  "deploy:nginx_reload", "deploy:monit_reload"
 
 # To keep only the last 5 releases:
 # (Default is `set :keep_releases, 5`)
