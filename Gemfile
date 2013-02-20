@@ -77,14 +77,14 @@ gem "activerecord-reputation-system", require: 'reputation_system'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-# Use thin as the app server
-gem 'thin'
+# Use Unicorn as the app server
+gem 'unicorn'
 
 # Needed for MAL import.
 gem 'nokogiri', require: false
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
