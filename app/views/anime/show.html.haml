@@ -33,12 +33,13 @@
           .decoration.three.columns.hide-for-small
             %p.left <i></i>
 
-          .six.columns 
-            %h6 Community Rating
-            %p{:class => @anime.wilson_ci >= 0.5 ? "percentage-positive" : "percentage-negative"}
-              %i
-              #{(@anime.wilson_ci*100).to_i}%
-            %p.based-on Based on #{number_with_delimiter @anime.user_count} Ratings
+          - if @anime.wilson_ci
+            .six.columns 
+              %h6 Community Rating
+              %p{:class => @anime.wilson_ci >= 0.5 ? "percentage-positive" : "percentage-negative"}
+                %i
+                #{(@anime.wilson_ci*100).to_i}%
+              %p.based-on Based on #{number_with_delimiter @anime.user_count} Ratings
 
           .decoration.three.columns.hide-for-small
             %p.right <i></i>
