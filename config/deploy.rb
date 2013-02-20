@@ -36,4 +36,5 @@ after "deploy:restart",
   "deploy:nginx_reload"
 
 # To keep only the last 5 releases:
-# after "deploy:restart", "deploy:cleanup"
+# (Default is `set :keep_releases, 5`)
+after "deploy:restart", "deploy:cleanup"
