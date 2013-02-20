@@ -50,9 +50,11 @@ namespace :deploy do
   
   desc "restart the app"
   task :restart, roles: :web do
-    run "#{sudo} monit -g hummingbird stop"
+    # Stop sidekiq, reload unicorn, run migrations and start sidekiq.
+    run "#{sudo} monit stop sidekiq"
+    run "kill -USR2 `cat /u/apps/hummingbird/shared/pids/unicorn.pid`"
     run "cd #{current_release} && RAILS_ENV=production bundle exec rake db:migrate"
-    run "#{sudo} monit -g hummingbird start"
+    run "#{sudo} monit start sidekiq"
   end
   
   namespace :assets do
