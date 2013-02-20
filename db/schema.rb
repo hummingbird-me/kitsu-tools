@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130217152544) do
+ActiveRecord::Schema.define(:version => 20130220183447) do
 
   create_table "anime", :force => true do |t|
     t.string   "title"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20130217152544) do
   end
 
   add_index "characters", ["mal_id"], :name => "character_mal_id", :unique => true
+  add_index "characters", ["mal_id"], :name => "index_characters_on_mal_id", :unique => true
 
   create_table "episode_views", :force => true do |t|
     t.integer  "user_id"
@@ -194,6 +195,7 @@ ActiveRecord::Schema.define(:version => 20130217152544) do
     t.integer  "mal_id"
   end
 
+  add_index "people", ["mal_id"], :name => "index_people_on_mal_id", :unique => true
   add_index "people", ["mal_id"], :name => "person_mal_id", :unique => true
 
   create_table "producers", :force => true do |t|
