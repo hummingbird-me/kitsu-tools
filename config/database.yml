@@ -8,3 +8,10 @@ test:
   database: hummingbird_test
   host: localhost
 
+production:
+  adapter: postgresql
+  database: hummingbird_production
+  username: hummingbird
+  password: TheBoilingPointOfCarbonDioxide
+  host: localhost
+  pool: 25
