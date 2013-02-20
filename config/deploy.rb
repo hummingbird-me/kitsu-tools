@@ -40,23 +40,19 @@ namespace :deploy do
   
   desc "start the app"
   task :start, roles: :web do
-    run "#{sudo} monit start hummingbird"
+    run "#{sudo} monit -g hummingbird start"
   end
   
   desc "stop the app"
   task :stop, roles: :web do
-    run "#{sudo} monit stop hummingbird"
+    run "#{sudo} monit -g hummingbird stop"
   end
   
   desc "restart the app"
   task :restart, roles: :web do
-    if update_db?
-      run "#{sudo} monit stop hummingbird"
-      run "cd #{current_release} && bundle exec rake db:migrate"
-      run "#{sudo} monit start hummingbird"
-    else
-      run "#{sudo} monit restart hummingbird"
-    end
+    run "#{sudo} monit -g hummingbird stop"
+    run "cd #{current_release} && bundle exec rake db:migrate"
+    run "#{sudo} monit -g hummingbird start"
   end
   
   namespace :assets do
