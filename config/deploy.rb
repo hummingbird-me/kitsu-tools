@@ -6,6 +6,7 @@ set :repository,  "git@github.com:vikhyat/hummingbird.git"
 
 set :scm, :git
 set :deploy_via, :remote_cache
+set :rvm_type, :user
 
 default_run_options[:pty] = true
 

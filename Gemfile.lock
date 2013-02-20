@@ -48,10 +48,10 @@ GEM
     better_errors (0.6.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    binding_of_caller (0.6.9)
+    binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
     blankslate (3.1.2)
-    bootstrap-sass (2.2.2.0)
+    bootstrap-sass (2.3.0.0)
       sass (~> 3.2)
     bourne (1.1.2)
       mocha (= 0.10.5)
@@ -99,7 +99,7 @@ GEM
     faraday (0.8.5)
       multipart-post (~> 1.1)
     ffi (1.0.11)
-    font-awesome-sass-rails (3.0.2.0)
+    font-awesome-sass-rails (3.0.2.1)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
     forem-redcarpet (1.0.0)
@@ -146,7 +146,7 @@ GEM
       compass (>= 0.12.1)
       sass (>= 3.2.0)
       sassy-math (>= 1.5)
-    multi_json (1.6.0)
+    multi_json (1.6.1)
     multipart-post (1.1.5)
     nested_form (0.3.1)
     nokogiri (1.5.6)
@@ -231,7 +231,7 @@ GEM
     rubypython (0.5.3)
       blankslate (>= 2.1.2.3)
       ffi (~> 1.0.7)
-    safe_yaml (0.7.1)
+    safe_yaml (0.8.2)
     sass (3.2.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -270,7 +270,6 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.7)
     tarantula (0.4.3)
       hpricot (~> 0.8.4)
       htmlentities (~> 4.3.0)
@@ -330,7 +329,6 @@ DEPENDENCIES
   sinatra
   slim
   spork-testunit
-  sqlite3
   tarantula
   thin
   uglifier (>= 1.0.3)
