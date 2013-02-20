@@ -245,6 +245,8 @@ GEM
     rubypython (0.5.3)
       blankslate (>= 2.1.2.3)
       ffi (~> 1.0.7)
+    rvm-capistrano (1.2.7)
+      capistrano (>= 2.0.0)
     safe_yaml (0.8.2)
     sass (3.2.5)
     sass-rails (3.2.6)
@@ -337,6 +339,7 @@ DEPENDENCIES
   pg_search
   rails (= 3.2.12)
   rails_admin
+  rvm-capistrano
   sass-rails (~> 3.2.3)
   shoulda
   sidekiq
