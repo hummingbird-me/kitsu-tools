@@ -46,8 +46,7 @@
       - if @filter == "recommended" and !current_user.recommendations_up_to_date
         %div.alert-box We're updating your recommendations. Check back in a minute!
       .row
-        - @anime.each do |anime|
-          = render partial: "anime/card", locals: {anime: anime, watchlist: @watchlist[anime.id], last: anime == @anime.last}
+        = render partial: "anime/card", collection: @anime.map {|x| [x, @watchlist[x.id]] }, as: :data
 
       .row.pagination-centered
         = paginate(@anime)

@@ -5,7 +5,7 @@
     .eight.columns
       .panel.anime-details.cards.cf
         .details-left
-          = render partial: "card", locals: {anime: @anime, watchlist: @watchlist, last: false} 
+          = render partial: "card", locals: {data: [@anime, @watchlist]} 
         .details-right.eight.columns
           - title @anime.title
           %h3= @anime.title

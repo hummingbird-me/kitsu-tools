@@ -1,4 +1,5 @@
-.four.mobile-two.columns{:class => ("end" if last), :id => "card-#{anime.slug}"}
+- anime, watchlist = data[0], data[1]
+.four.mobile-two.columns{:id => "card-#{anime.slug}"}
   .panel.cards.cf
     %figure
       %a{:href => anime_path(anime)}
@@ -21,7 +22,6 @@
 
         - if watchlist
           .drop-button #{watchlist.status} <a href="#" class="selector"></a>
-
         - else
           .drop-button Select Watching Status <a href="#" class="selector"></a>
 
