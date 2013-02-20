@@ -27,6 +27,21 @@ namespace :deploy do
   task :nginx_reload, roles: :web do
     run "#{sudo} service nginx reload"
   end
+  
+  namespace :assets do
+    task :precompile, roles: :web, except: {no_release: true} do
+      from = source.next_revision(current_revision)
+      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+        run <<-CMD.compact
+          cd -- #{latest_release} &&
+          #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile &&
+          cp -- #{shared_path.shellescape}/assets/manifest.yml #{current_release.shellescape}/assets_manifest.yml
+        CMD
+      else
+        logger.info "Skipping asset pre-compilation because there were no asset changes"
+      end
+    end
+  end
 end
 
 after "deploy:finalize_update",
