@@ -9,7 +9,7 @@ class RecommendingWorker
     
     positive = watchlist.select {|w| w.positive? }.map {|x| x.anime }
     negative = watchlist.select {|w| w.negative? }.map {|x| x.anime }
-    neutral = (watchlist - positive) - negative
+    neutral  = ((watchlist - positive) - negative).map {|x| x.anime }
 
     recommendations = Hash.new(0)
     
