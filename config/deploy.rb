@@ -51,7 +51,7 @@ namespace :deploy do
   desc "restart the app"
   task :restart, roles: :web do
     run "#{sudo} monit -g hummingbird stop"
-    run "RAILS_ENV=production cd #{current_release} && bundle exec rake db:migrate"
+    run "cd #{current_release} && RAILS_ENV=production bundle exec rake db:migrate"
     run "#{sudo} monit -g hummingbird start"
   end
   
