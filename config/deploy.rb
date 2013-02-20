@@ -10,22 +10,30 @@ set :rvm_type, :user
 
 default_run_options[:pty] = true
 
-role :web, "hakanai" # Your HTTP server, Apache/etc
-role :app, "hakanai" # This may be the same as your `Web` server
-role :db,  "hakanai", :primary => true # This is where Rails migrations will run
+server "hakanai", :app, :web, :db, primary: true
 #role :db,  "your slave db-server here"
 
-# if you want to clean up old releases on each deploy uncomment this:
+#
+# CUSTOM TASKS
+#
+
+namespace :deploy do
+  desc "symlink nginx configuration"
+  task :nginx_symlink, roles: :web do
+    run "#{sudo} ln -nfs #{release_path}/config/nginx.conf /etc/nginx/sites-enabled/hummingbird"
+  end
+  
+  desc "reload nginx configuration"
+  task :nginx_reload, roles: :web do
+    run "#{sudo} service nginx reload"
+  end
+end
+
+after "deploy:finalize_update",
+  "deploy:nginx_symlink"
+
+after "deploy:restart",
+  "deploy:nginx_reload"
+
+# To keep only the last 5 releases:
 # after "deploy:restart", "deploy:cleanup"
-
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
-
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
