@@ -32,6 +32,12 @@ stdout_path "/u/apps/hummingbird/shared/log/unicorn.stdout.log"
 # fast LAN.
 check_client_connection false
 
+# Force the bundler gemfile environment variable to reference the Capistrano
+# "current" symlink.
+before_exec do |server|
+  ENV["BUNDLE_GEMFILE"] = File.join(server.config[:working_directory], 'Gemfile')
+end
+
 before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
