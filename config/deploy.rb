@@ -19,23 +19,19 @@ server "hakanai", :app, :web, :db, primary: true
 
 namespace :deploy do
   desc "symlink nginx configuration"
-  task :nginx_symlink, roles: :web do
-    run "#{sudo} ln -nfs #{release_path}/config/nginx.conf /etc/nginx/sites-enabled/hummingbird"
+  task :nginx_symlink_reload, roles: :web do
+    if capture("diff #{release_path}/config/nginx.conf /etc/nginx/sites-enabled/hummingbird | wc -l").to_i > 0
+      run "#{sudo} ln -nfs #{release_path}/config/nginx.conf /etc/nginx/sites-enabled/hummingbird"
+      run "#{sudo} service nginx reload"
+    end
   end
   
-  desc "reload nginx configuration"
-  task :nginx_reload, roles: :web do
-    run "#{sudo} service nginx reload"
-  end
-
   desc "symlink monit configuration"
-  task :monit_symlink, roles: :web do
-    run "#{sudo} ln -nfs #{release_path}/config/monit.conf /etc/monit/conf.d/hummingbird.conf"
-  end
-  
-  desc "reload monit configuration"
-  task :monit_reload do
-    run "#{sudo} monit reload"
+  task :monit_symlink_reload, roles: :web do
+    if capture("diff #{release_path}/config/monit.conf /etc/monit/conf.d/hummingbird.conf | wc -l").to_i > 0
+      run "#{sudo} ln -nfs #{release_path}/config/monit.conf /etc/monit/conf.d/hummingbird.conf"
+      run "#{sudo} monit reload"
+    end
   end
   
   desc "start the app"
@@ -73,11 +69,8 @@ namespace :deploy do
   end
 end
 
-after "deploy:finalize_update",
-  "deploy:nginx_symlink", "deploy:monit_symlink"
-
 after "deploy:restart",
-  "deploy:nginx_reload", "deploy:monit_reload"
+  "deploy:nginx_symlink_reload", "deploy:monit_symlink_reload"
 
 # To keep only the last 5 releases:
 # (Default is `set :keep_releases, 5`)
