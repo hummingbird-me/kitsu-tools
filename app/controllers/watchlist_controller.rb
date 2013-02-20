@@ -35,6 +35,7 @@ class WatchlistController < ApplicationController
     
     rating = params[:rating].to_i
     if rating <= 2 and rating >= -2
+      @watch.status ||= "Currently Watching"
       @watch.rating = rating
       @watch.save
     end

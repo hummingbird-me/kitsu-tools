@@ -70,7 +70,6 @@ class AnimeController < ApplicationController
       @watchlist = Hash.new(false)
     end
 
-    @collection = @anime.map {|x| [x, @watchlist[x.id]] }
 
     # What regular filter are we applying?
     @filter = params[:filter] || "all"
@@ -112,6 +111,8 @@ class AnimeController < ApplicationController
     unless @filter == "recommended"
       @anime = @anime.order('anime.wilson_ci DESC')
     end
+    
+    @collection = @anime.map {|x| [x, @watchlist[x.id]] }
 
     respond_to do |format|
       format.html { render :index }
