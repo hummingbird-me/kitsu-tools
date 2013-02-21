@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
     :presence   => true,
     :uniqueness => {:case_sensitive => false}
   
-  validates :facebook_id, uniqueness: true
+  validates :facebook_id, allow_blank: true, uniqueness: true
 
   def to_s
     name
