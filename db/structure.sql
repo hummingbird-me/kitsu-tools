@@ -1468,6 +1468,13 @@ ALTER TABLE ONLY watchlists
 
 
 --
+-- Name: anime_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX anime_search_index ON anime USING gin ((((COALESCE((title)::text, ''::text) || ' '::text) || COALESCE((alt_title)::text, ''::text))) gin_trgm_ops);
+
+
+--
 -- Name: character_mal_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1786,3 +1793,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130214232840');
 INSERT INTO schema_migrations (version) VALUES ('20130217152544');
 
 INSERT INTO schema_migrations (version) VALUES ('20130220183447');
+
+INSERT INTO schema_migrations (version) VALUES ('20130221172813');
