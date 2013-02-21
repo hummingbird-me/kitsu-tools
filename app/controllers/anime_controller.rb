@@ -29,7 +29,7 @@ class AnimeController < ApplicationController
       session[:recently_viewed] ||= []
       session[:recently_viewed].delete( params[:id] )
       session[:recently_viewed].unshift( params[:id] )
-      session[:recently_viewed].pop if session[:recently_viewed].length > 7
+      session[:recently_viewed].pop while session[:recently_viewed].length > 7
     end
 
     respond_to do |format|
