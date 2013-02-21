@@ -26,10 +26,11 @@ class AnimeController < ApplicationController
 
     # Add to recently viewed.
     if @anime.sfw?
-      session[:recently_viewed] ||= []
-      session[:recently_viewed].delete( params[:id] )
-      session[:recently_viewed].unshift( params[:id] )
-      session[:recently_viewed].pop if session[:recently_viewed].length > 7
+      rv = (session[:recently_viewed] || []).to_a
+      rv.delete( params[:id] )
+      rv.unshift( params[:id] )
+      rv.pop if rv.length > 7
+      session[:recently_viewed] = rv
     end
 
     respond_to do |format|

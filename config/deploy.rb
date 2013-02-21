@@ -49,11 +49,9 @@ namespace :deploy do
     run "#{sudo} monit -g hummingbird stop"
   end
   
-  desc "restart the app"
-  task :restart, roles: :web do
-    # Stop sidekiq, reload unicorn, run migrations and start sidekiq.
+  desc "reload unicorn"
+  task :reload_unicorn, roles: :web do
     run "kill -USR2 `cat /u/apps/hummingbird/shared/pids/unicorn.pid`"
-    run "cd #{current_release} && RAILS_ENV=production bundle exec rake db:migrate"
   end
   
   namespace :assets do
@@ -76,6 +74,7 @@ after "deploy:finalize_update",
   "deploy:nginx_symlink", "deploy:monit_symlink"
 
 after "deploy:restart",
+  "deploy:reload_unicorn",
   "deploy:nginx_reload", "deploy:monit_reload"
 
 # To keep only the last 5 releases:

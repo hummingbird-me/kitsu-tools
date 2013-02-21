@@ -35,7 +35,7 @@ check_client_connection false
 # Force the bundler gemfile environment variable to reference the Capistrano
 # "current" symlink.
 before_exec do |server|
-  ENV["BUNDLE_GEMFILE"] = File.join(server.config[:working_directory], 'Gemfile')
+  ENV["BUNDLE_GEMFILE"] ="/u/apps/hummingbird/current/Gemfile"
 end
 
 before_fork do |server, worker|
