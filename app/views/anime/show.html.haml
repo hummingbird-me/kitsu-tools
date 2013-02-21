@@ -126,7 +126,8 @@
             = quote.character_name
         %p
           = link_to "[Show all]", anime_quotes_url(@anime)
-          = link_to "[Submit quote]", new_anime_quote_url(@anime)
+          %a{"data-reveal-id" => "quoteModal", :href => "#"} [Submit quote]
+
     .similar-anime.twelve.columns.hide-for-small
       %header
         .four.columns
@@ -163,7 +164,10 @@
                   = link_to "32 people recommend this", "#"
           .twelve.columns
             %p= link_to "View More Community Recommendedations", "#"
-              
+
+// Quote Modal
+#quoteModal.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
+  %p quote form
 
 
   / %h3 Reviews
