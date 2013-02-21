@@ -1,3 +1,32 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-reviews {
+  margin-top: 30px;
+  .title {
+    h3 {
+      border-bottom: 1px solid #dddddd;
+      padding: 0px 0px 10px 10px;
+    }
+  }
+  .panel {
+    img {
+      padding-bottom: 8px;
+      padding-top: 9px;
+    }
+    .vote-blocks {
+      padding-right: 0;
+      padding-left: 0;
+
+      .like, .dislike {
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+        border-right: 1px solid #eee;
+        cursor: auto;
+      }
+
+    }
+  }
+}
