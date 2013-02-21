@@ -23,8 +23,15 @@ class SearchController < ApplicationController
     end
     
     @anime = @anime.search_by_title(params[:query])
-    @collection = @anime.map {|x| [x, @watchlist[x.id]] }
 
-    render "anime/index"
+    respond_to do |format|
+      format.html {
+        @collection = @anime.map {|x| [x, @watchlist[x.id]] }
+        render "anime/index"
+      }
+      format.json {
+        render :json => @anime.map {|x| [x.title, x.alt_title] }.flatten.compact
+      }
+    end
   end
 end
