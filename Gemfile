@@ -14,10 +14,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
   gem 'zurb-foundation'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-
+  gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -28,15 +25,16 @@ group :development do
 end
 
 group :production do
-  gem 'therubyracer'
   gem 'newrelic_rpm'
 end
 
 # Testing
-gem "spork-testunit"
-gem 'shoulda'
-gem "tarantula", :require => "tarantula-rails3"
-gem 'factory_girl_rails'
+group :test do
+  gem "spork-testunit"
+  gem 'shoulda'
+  gem "tarantula", :require => "tarantula-rails3"
+  gem 'factory_girl_rails'
+end
 
 gem 'jquery-rails'
 gem 'haml', '~> 4.0'
@@ -71,6 +69,7 @@ gem 'forem', :git => "git://github.com/vikhyat/forem.git"
 # Fuzzy Search with Postgres.
 gem 'pg_search'
 
+# Admin panel
 gem "rails_admin"
 
 # For voting on stuff.
