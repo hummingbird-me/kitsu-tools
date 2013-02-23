@@ -1,5 +1,5 @@
-- anime, watchlist = data[0], data[1]
-.four.mobile-two.columns{:id => "card-#{anime.slug}"}
+- anime, watchlist, width = data[0], data[1], data[2] || "four"
+.mobile-two.columns{:class => width, :id => "card-#{anime.slug}"}
   .panel.cards.cf
     %figure
       %a{:href => anime_path(anime)}
