@@ -1,3 +1,46 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Search Suggestions
+@import "compass/css3";
+
+.twitter-typeahead {
+  position: relative;
+  width: 200px;
+  display: block;
+
+  .tt-suggestions {
+    position: absolute;
+    top: 55px;
+    left: -51px;
+    width: 121%;
+    border-top: 3px solid orange;
+    background: white;
+    @include border-bottom-radius(3px);
+    @media (max-width: 1000px) {
+      left: -30px;
+      width: 110%;
+    }
+
+    .tt-suggestion {
+      float: none;
+      border-bottom: 1px solid #eee !important;
+      width: 100%;
+      height: auto !important;
+
+      p {
+        padding-top: 15px;
+      }
+    }
+
+    li:last-child {
+      border-bottom: none !important;
+    }
+
+    .tt-is-under-cursor {
+      color: orange;
+      cursor: pointer;
+    }
+  }
+}

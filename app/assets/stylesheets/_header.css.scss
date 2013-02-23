@@ -148,7 +148,6 @@
         form {
           margin: 0;
         }
-
         .search_btn {
           display: none;
           padding: 0 10px 0 10px;
@@ -178,6 +177,7 @@
             border: 0;
             width: 200px;
             height: 55px;
+            position: absolute;
             font-size: 12px;
             padding: 0;
             vertical-align: center;
