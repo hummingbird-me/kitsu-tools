@@ -21,8 +21,8 @@
               - if devise_mapping.confirmable? and resource.pending_reconfirmation?
                 %p Currently waiting confirmation for: #{resource.unconfirmed_email}
             %p
-              = f.label :bio
-              = f.text_field :bio
+              = f.label :short_bio
+              = f.text_area :bio
             %p 
               = f.label :password, "New Password"
               %i (leave blank if you don't want to change it)
