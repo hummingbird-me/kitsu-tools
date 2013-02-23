@@ -13,4 +13,9 @@ class Episode < ActiveRecord::Base
       return t
     end
   end
+
+  # How long the episode is, in minutes.
+  def length
+    anime.episode_length
+  end
 end

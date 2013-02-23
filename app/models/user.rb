@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :watchlists
   has_many :reviews
   has_many :quotes, foreign_key: 'creator_id'
+  has_many :episode_views
 
   has_one :staged_import
 
@@ -144,9 +145,7 @@ class User < ActiveRecord::Base
   
   # How many minutes the user has spent watching anime.
   def life_spent_on_anime
-    # TODO Episodes need to be implemented first.
-    # FIXME Just return 1 month, 4 days, 21 hours and 7 minutes for now.
-    50227
+    episode_views.includes(:episode).map {|x| x.episode.length }.sum
   end
 
   # Forem permissions

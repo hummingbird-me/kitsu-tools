@@ -22,7 +22,8 @@
                 %p Currently waiting confirmation for: #{resource.unconfirmed_email}
             %p
               = f.label :short_bio
-              = f.text_area :bio
+              = f.text_area :bio, rows: 3
+              
             %p 
               = f.label :password, "New Password"
               %i (leave blank if you don't want to change it)
