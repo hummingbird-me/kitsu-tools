@@ -1,0 +1,24 @@
+.recent.six.columns
+  .panel.cards.cf
+    %figure
+      .overlay
+        .poster.four.columns.hide-for-small
+          = image_tag wl.anime.cover_image.url(:thumb)
+        .title-info.eight.columns
+          %h4= wl.anime.title
+          %p.seen-count 
+            Seen
+            %span{:class => "fat-card-episodes-watched-#{wl.anime.slug}"}= wl.episodes_watched
+            of
+            %span= wl.anime.episode_count
+            episodes.
+          / TODO: Make these actually functional.
+          .vote-blocks
+            %span.like
+              %strong.active= link_to "[:)]", "#"
+            %span.dislike
+              %strong= link_to ":(", "#"
+      = image_tag wl.anime.cover_image.url(:thumb), class: "background"
+      .progress.six
+        %span.meter{:style => "width: 60%"}
+    = render partial: "episodes/list_four", locals: {episodes: select_four_episodes(wl.anime, current_user), anime: wl.anime}

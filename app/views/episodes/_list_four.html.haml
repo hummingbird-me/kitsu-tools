@@ -1,4 +1,4 @@
-.episode-list
+.episode-list{:class => "episode-list-#{anime.slug}"}
   %ul
     - episodes.each do |episode, watched|
       %li.episode{:class => ("active" if watched)}

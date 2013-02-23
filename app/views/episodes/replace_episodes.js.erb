@@ -1,6 +1,7 @@
-$(".episode-list").fadeOut(function () {
-  $(".episode-list").replaceWith('<%= j render(partial: "list_four", locals: {anime: @anime, episodes: @episodes}) %>');
-  $(".episode-list").fadeIn();
+$(".episode-list-<%= @anime.slug %>").fadeOut(function () {
+  $(".episode-list-<%= @anime.slug %>").replaceWith('<%= j render(partial: "list_four", locals: {anime: @anime, episodes: @episodes}) %>');
+  $(".episode-list-<%= @anime.slug %>").fadeIn();
 });
 
 $("#card-<%= @anime.slug %>").replaceWith('<%= j render(partial: "anime/card", locals: {data: [@anime, @watchlist]}) %>');
+$(".fat-card-episodes-watched-<%= @anime.slug %>").html('<%= @watchlist.episodes_watched %>');
