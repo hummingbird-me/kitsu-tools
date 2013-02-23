@@ -84,6 +84,7 @@ class AnimeController < ApplicationController
       
     elsif @filter == "unfinished"
 
+      # FIXME: Filter out anime where the watchlist status is "Completed".
       @anime = @anime.where('anime.id IN (?)', @watchlist.keys)
 
     elsif @filter == "recommended"
