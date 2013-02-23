@@ -26,4 +26,20 @@ class Watchlist < ActiveRecord::Base
   def self.watchlist_hash(watchlist_ids)
     Digest::MD5.hexdigest( watchlist_ids.sort * ' ' )
   end
+
+  # Handle state transitions intelligently. There are a lot of subtleties
+  # here, be careful while adding additional transition handling logic here, and
+  # definitely consider how different UI flows are affected. 
+  #
+  # If `episodes_watched` is equal to the total number of episodes, automatically
+  # mark the anime as "Completed".
+  #
+  # TODO: If the user updates an episode as viewed, the state _must_ be either
+  #       "Currently Watching" or "Completed". The "Completed" case is handled
+  #       here, but we also need to handle the "Currently Watching" case.
+  before_save do
+    if episodes_watched == anime.episode_count
+      self.status = "Completed"
+    end
+  end
 end
