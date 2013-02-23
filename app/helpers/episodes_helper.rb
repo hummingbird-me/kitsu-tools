@@ -14,7 +14,7 @@ module EpisodesHelper
       @episodes_watched[ episodev.episode.id ] = true
     end
     # Figure out the range of 4 episodes to show.
-    if @episodes_viewed.length == 0
+    if @episodes_viewed.length == 0 or @episodes.length <= 4
       @episodes = @episodes[0..3]
     else
       latest_watched = @episodes_viewed.map {|x| x.episode.number }.max
