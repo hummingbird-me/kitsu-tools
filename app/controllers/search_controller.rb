@@ -22,9 +22,9 @@ class SearchController < ApplicationController
       @watchlist = Hash.new(false)
     end
     
-    @anime_list = @anime.fuzzy_search_by_title(params[:query])
+    @anime_list = @anime.simple_search_by_title(params[:query])
     if @anime_list.length == 0
-      @anime_list = @anime.simple_search_by_title(params[:query])
+      @anime_list = @anime.fuzzy_search_by_title(params[:query])
     end
     @anime = @anime_list
 
