@@ -7,12 +7,13 @@
         .details-left
           = render partial: "card", locals: {data: [@anime, @watchlist]} 
         .details-right.eight.columns
-          - title @anime.title
-          %h3= @anime.title
+          %h3= title(@anime.title)
 
           .small-summary 
             %span #{pluralize @anime.episode_count, 'episode'} / #{@anime.episode_length} min. each  ||
             %span #{@anime.age_rating}
+            - if @anime.alt_title
+              %span (Also known as <strong>#{@anime.alt_title}</strong>)
 
           .producers
             %p 
