@@ -4,9 +4,12 @@
   .watchlist-subnav.twelve.columns
     %dl.sub-nav
       - %w(currently_watching plan_to_watch completed on_hold dropped).each do |l|
-        %dd{:class => ("active" if @sub_tab == l)}= link_to l, user_watchlist_path(@user, list: l)
+        %dd{:class => ("active" if @sub_tab == l)}= link_to l.titleize, user_watchlist_path(@user, list: l)
 
 - if @sub_tab == "currently_watching" and @watchlist.length >= 2
   = render "watchlist_currently_watching"
 - else
-  %pre= @watchlist.to_yaml
+  - if @watchlist && @watchlist.length > 0
+    = render "watchlist_generic"
+  - else
+    %p EMPTY STATE

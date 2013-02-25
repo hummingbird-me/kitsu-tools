@@ -11,22 +11,17 @@ class UsersController < ApplicationController
     
     if @sub_tab == "currently_watching"
       @watchlist = @user.watchlists.where(:status => "Currently Watching").order('updated_at DESC')
+    elsif @sub_tab == "plan_to_watch"
+      @watchlist = @user.watchlists.where(:status => "Plan to Watch").page(params[:page]).per(20)
+    elsif @sub_tab == "completed"
+      @watchlist = @user.watchlists.where(:status => "Completed").page(params[:page]).per(20)
+    elsif @sub_tab == "on_hold"
+      @watchlist = @user.watchlists.where(:status => "On Hold").page(params[:page]).per(20)
+    elsif @sub_tab == "dropped"
+      @watchlist = @user.watchlists.where(:status => "Dropped").page(params[:page]).per(20)
     end
 
-#    if params[:list]
-#      if params[:list] == "plan_to_watch"
-#        render "watchlist_plan_to_watch"
-#      elsif params[:list] == "completed"
-#        render "watchlist_completed"
-#      elsif params[:list] == "on_hold"
-#        render "watchlist_on_hold"
-#      elsif params[:list] == "dropped"
-#        render "dropped"
-#      else
-        # Currently watchlist
-        render "watchlist"
-#      end
-#    end
+    render "watchlist"
   end
   
   def reviews
