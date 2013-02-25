@@ -101,6 +101,9 @@
     }
   }
   .anime-grid {
+    [class*="column"] + [class*="column"]:last-child {
+      float: left;
+    }
     .overlay {
       @media (max-width: 1000px) {
         display: none !important;

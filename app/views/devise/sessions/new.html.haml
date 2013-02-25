@@ -1,0 +1,46 @@
+.login-register-card
+  .row
+    .eight.columns.centered
+      .panel.login-box
+        %span.login-title Welcome back, we missed you!
+        .input-wrap
+          .login-input-wrap
+            = image_tag "icons/input-arrow.png", :style => "width: 4px; height: 7px;"
+            %input.login-input{:name => "login", :type => "text"}/
+            %span.login-input-ghost E-Mail Address
+          .input-hor-divider
+          .login-input-wrap
+            = image_tag "icons/input-arrow.png", :style => "width: 4px; height: 7px;"
+            %input.login-input{:name => "password", :type => "password"}/
+            %span.login-input-ghost Password
+        %button#login.login-button= link_to "LOGIN", "#"
+        .password-reset
+          %a{:href => "../password/reset/index.html"} Forgot your password?
+
+        %span.login-title-small OR, SIGN IN WITH
+        .social-buttons
+          %a{:href => "#"}
+          #fb-signin.fb-button
+            = image_tag "icons/fb-logo.png"
+            %span FACEBOOK
+        .no-account.twelve.columns
+          %p Don't have an account? <a href="#">Create one now</a>
+
+/ Old Login Form
+/ ==============
+/
+/   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+/   %div
+/     = f.label :email
+/     %br/
+/     = f.email_field :email, :autofocus => true
+/   %div
+/     = f.label :password
+/     %br/
+/     = f.password_field :password
+/   - if devise_mapping.rememberable?
+/     %div
+/       = f.check_box :remember_me
+/       = f.label :remember_me
+/   %div= f.submit "Sign in"
+/ = render "devise/shared/links"

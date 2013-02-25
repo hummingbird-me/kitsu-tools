@@ -33,9 +33,7 @@ body {
       width: 100%;
     }
   }
-  a {
-    color: orange;
-  }
+  
   input:focus,
   select:focus,
   textarea:focus,
@@ -46,17 +44,17 @@ body {
   ul.pagination {
     
     li.current a {
-      background: orange;
+      background: #fd864b;
 
       &:hover {
-        background: darken(orange, 5);
+        background: darken(#fd864b, 5);
       }
     }
   }
 
   .tabs {
     .active {
-      border-top: 3px solid orange;
+      border-top: 3px solid #fd864b;
     }
   } 
 

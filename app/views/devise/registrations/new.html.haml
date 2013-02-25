@@ -1,4 +1,39 @@
-%h2= title "Sign up"
+.login-register-card
+  .row
+    .eight.columns.centered
+      .panel.login-box.signup
+        %form#landing-form{:method => "POST"}
+          .social-buttons
+            %a{:href => "#"}
+            #fb-signin.fb-button
+              = image_tag "icons/fb-logo.png"
+              %span FACEBOOK
+          %span.login-title-small OR, SIGN UP WITH
+          .input-wrap.signup
+            .login-input-wrap
+              %input.login-input{:name => "first_name", :type => "text"}/
+              %span.login-input-ghost Username
+          .input-wrap.signup
+            .login-input-wrap.left
+              %input.login-input{:name => "password1", :type => "password"}/
+              %span.login-input-ghost Password
+            .input-ver-divider
+            .login-input-wrap.right
+              %input.login-input{:name => "password2", :type => "password"}/
+              %span.login-input-ghost Verify Password
+          .input-wrap.signup
+            .login-input-wrap
+              %input.login-input{:name => "email", :type => "text"}/
+              %span.login-input-ghost E-Mail Address
 
-= devise_error_messages!
-= render "form"
+          .signup-step-buttons
+            %button#login.login-button= link_to "Register Account", "#"
+        .no-account.twelve.columns
+          %p Already Registered? <a href="#">Login now</a>
+
+/ Old Signup Form
+/ ===============
+/ %h2= title "Sign up"
+
+/ = devise_error_messages!
+/ = render "form"
