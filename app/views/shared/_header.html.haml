@@ -15,8 +15,8 @@
       %li.search
         %span.search_btn.ss-icon
         .top
-          %form#live_search_form{:action => "/search"}
-            %input#nav_search_input(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query]}
+          %form#live_search_form{:action => "/search", :autocomplete => "off"}
+            %input#nav_search_input(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
             %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
 
       %li.nav_user.has-flyout
