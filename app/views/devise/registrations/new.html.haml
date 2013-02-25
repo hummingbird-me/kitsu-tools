@@ -3,11 +3,12 @@
     .eight.columns.centered
       .panel.login-box.signup
         %form#landing-form{:method => "POST"}
-          .social-buttons
-            %a{:href => "#"}
-            #fb-signin.fb-button
-              = image_tag "icons/fb-logo.png"
-              %span FACEBOOK
+        = form_for(resource, as: resource_name, url: registration_path(:user)) do |f|
+          = link_to omniauth_authorize_path(resource_name, :facebook) do
+            .social-buttons
+              #fb-signin.fb-button
+                = image_tag "icons/fb-logo.png"
+                %span FACEBOOK
           %span.login-title-small OR, SIGN UP WITH
           .input-wrap.signup
             .login-input-wrap
