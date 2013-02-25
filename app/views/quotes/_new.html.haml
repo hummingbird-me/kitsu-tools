@@ -1,0 +1,11 @@
+%h3= title "New \"#{@anime.title}\" quote"
+
+= form_for Quote.new, :url => anime_quotes_path(@anime) do |f|
+  = f.label :content
+  = f.text_area :content, rows: 5
+
+  = f.label :character
+  = f.text_field :character_name
+
+  = f.submit class: "button"
+
