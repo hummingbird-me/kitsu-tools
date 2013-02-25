@@ -1,7 +1,9 @@
 class Anime < ActiveRecord::Base
   include PgSearch
-  pg_search_scope :search_by_title, against: [:title, :alt_title], 
+  pg_search_scope :fuzzy_search_by_title, against: [:title, :alt_title], 
     using: [:trigram], ranked_by: ":trigram"
+  pg_search_scope :simple_search_by_title, against: [:title, :alt_title], 
+    using: [:tsearch], ranked_by: ":tsearch"
 
   extend FriendlyId
   friendly_id :title, :use => [:slugged]

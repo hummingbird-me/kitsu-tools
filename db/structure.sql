@@ -1475,6 +1475,13 @@ CREATE INDEX anime_search_index ON anime USING gin ((((COALESCE((title)::text, '
 
 
 --
+-- Name: anime_simple_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX anime_simple_search_index ON anime USING gin (((to_tsvector('simple'::regconfig, COALESCE((title)::text, ''::text)) || to_tsvector('simple'::regconfig, COALESCE((alt_title)::text, ''::text)))));
+
+
+--
 -- Name: character_mal_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1795,3 +1802,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130217152544');
 INSERT INTO schema_migrations (version) VALUES ('20130220183447');
 
 INSERT INTO schema_migrations (version) VALUES ('20130221172813');
+
+INSERT INTO schema_migrations (version) VALUES ('20130225171241');
