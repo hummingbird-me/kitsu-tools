@@ -1,1 +1,17 @@
-%pre= @staged_import.to_yaml
+.home.panel.twelve.columns
+  %h1= title "Review Import"
+
+  %h3 Watchlist
+  .anime-grid.twelve.columns
+    .row
+      = render partial: "anime/card", collection: @watchlist, as: :data
+
+  %h3 Reviews
+
+  - if @staged_import["data"][:reviews].length > 0
+    %pre= @staged_import["data"][:reviews]
+  - else
+    %p No reviews.
+  
+  %pre= @staged_import.to_yaml
+
