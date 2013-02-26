@@ -1,4 +1,4 @@
-%h3= title "New \"#{@anime.title}\" quote"
+%h3 New "#{@anime.title}" quote
 
 = form_for Quote.new, :url => anime_quotes_path(@anime) do |f|
   = f.label :content
