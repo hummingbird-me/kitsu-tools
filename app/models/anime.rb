@@ -11,7 +11,7 @@ class Anime < ActiveRecord::Base
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :status, :synopsis, :cover_image
 
   has_attached_file :cover_image, 
-    :styles => { :thumb => "300x447!", :"thumb@2x" => "450x670!" },
+    :styles => { :thumb => "225x335!", :"thumb@2x" => "450x670!" },
     :url => "/system/:hash_:style.:extension",
     :hash_secret => "Tsukiakari no Michishirube"
 
