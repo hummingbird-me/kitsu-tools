@@ -1,0 +1,11 @@
+.home.user-watchlist 
+  .row.content-body
+    .anime-grid.twelve.columns
+      %h3= @sub_tab.titleize
+
+      .row
+        - @watchlist.each do |wl|
+          = render partial: "anime/card", locals: {data: [wl.anime, wl, 'three']}
+
+      .twelve.columns.pagination-centered
+        = paginate @watchlist
