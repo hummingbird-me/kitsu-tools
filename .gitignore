@@ -15,6 +15,7 @@
 /tmp
 
 .DS_Store
+coverage
 
 # Don't check attachements into version control.
 public/system

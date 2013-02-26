@@ -30,10 +30,10 @@ end
 
 # Testing
 group :test do
-  gem "spork-testunit"
   gem 'shoulda'
   gem "tarantula", :require => "tarantula-rails3"
   gem 'factory_girl_rails'
+  gem 'simplecov'
 end
 
 gem 'jquery-rails'

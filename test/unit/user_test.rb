@@ -16,8 +16,8 @@ class UserTest < ActiveSupport::TestCase
     a1 = FactoryGirl.create(:anime, genres: [g1, g2])
     a2 = FactoryGirl.create(:anime, title: "adsf 2", genres: [g1])
     u = FactoryGirl.create(:user)
-    Watchlist.create(anime: a1, user: u)
-    Watchlist.create(anime: a2, user: u)
+    Watchlist.create(anime: a1, user: u, status: "Currently Watching")
+    Watchlist.create(anime: a2, user: u, status: "Currently Watching")
     assert_operator u.top_genres[g1], :>, u.top_genres[g2]
     assert_equal u.top_genres.keys[0], g1
   end

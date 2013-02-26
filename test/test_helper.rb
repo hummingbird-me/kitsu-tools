@@ -1,14 +1,11 @@
 require 'rubygems'
-require 'spork'
+require 'simplecov'
 
-Spork.prefork do
-  ENV["RAILS_ENV"] = "test"
-  require File.expand_path('../../config/environment', __FILE__)
-  require 'rails/test_help'
-  class ActiveSupport::TestCase
-    fixtures :all
-  end
-end
+SimpleCov.start 'rails'
 
-Spork.each_run do
+ENV["RAILS_ENV"] = "test"
+require File.expand_path('../../config/environment', __FILE__)
+require 'rails/test_help'
+class ActiveSupport::TestCase
+  fixtures :all
 end
