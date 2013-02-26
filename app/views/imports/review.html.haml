@@ -1,6 +1,9 @@
 .home.panel.twelve.columns
   %h1= title "Review Import"
 
+  = link_to "Apply", review_apply_path, class: 'button'
+  = link_to "Cancel", review_cancel_path, class: 'button'
+
   %h3 Watchlist
   .anime-grid.twelve.columns
     .row

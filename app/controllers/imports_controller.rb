@@ -18,22 +18,33 @@ class ImportsController < ApplicationController
       redirect_to "/users/edit#import"
     else
       @watchlist = []
+
+      @animes = {}
+      Anime.where(:mal_id => @staged_import["data"][:watchlist].map {|x| x[:mal_id] }).each {|a| @animes[a.mal_id] = a }
       
       @staged_import["data"][:watchlist].each do |w|
-        anime = Anime.find_by_mal_id(w[:mal_id])
-        watchlist = Watchlist.where(user_id: current_user, anime_id: anime).first || false
-        if !watchlist or watchlist.updated_at < w[:last_updated]
-          watchlist = Watchlist.new(status: w[:status], episodes_watched: w[:episodes_watched], updated_at: w[:last_updated])
-          if w[:rating] != '0'
-            mal_rating = w[:rating].to_i rescue 5
-            mal_rating = ((((mal_rating - 1) / 9.0) - 0.5) * 2 * 2).round
-            mal_rating = [-2, [2, mal_rating].min].max # Fit it inside -2,2 if it
-                                                       # is out of bounds.
-            watchlist.rating = mal_rating
+        anime = @animes[ w[:mal_id].to_i ]
+        if anime
+          watchlist = Watchlist.where(user_id: current_user, anime_id: anime).first || false
+          if !watchlist or watchlist.updated_at < w[:last_updated]
+            watchlist = Watchlist.new(status: w[:status], episodes_watched: w[:episodes_watched], updated_at: w[:last_updated])
+            if w[:rating] != '0'
+              mal_rating = w[:rating].to_i rescue 5
+              mal_rating = ((((mal_rating - 1) / 9.0) - 0.5) * 2 * 2).round
+              mal_rating = [-2, [2, mal_rating].min].max # Fit it inside -2,2 if
+                                                         # it is out of bounds.
+              watchlist.rating = mal_rating
+            end
           end
+          @watchlist.push( [anime, watchlist, 'three'] )
         end
-        @watchlist.push( [anime, watchlist, 'three'] )
       end
     end
+  end
+
+  def cancel
+    import = current_user.staged_import
+    import.delete
+    redirect_to :back
   end
 end
