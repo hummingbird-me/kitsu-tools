@@ -75,12 +75,6 @@ gem "rails_admin"
 # For voting on stuff.
 gem "activerecord-reputation-system", require: 'reputation_system'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
 # Use Unicorn as the app server
 gem 'unicorn'
 
@@ -91,5 +85,5 @@ gem 'nokogiri', require: false
 gem 'capistrano'
 gem 'rvm-capistrano'
 
-# To use debugger
-# gem 'debugger'
+# Image optimization
+gem 'image_optim', require: false
