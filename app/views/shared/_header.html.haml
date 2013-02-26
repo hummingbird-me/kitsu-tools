@@ -44,21 +44,10 @@
             %li
               = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
         - else
-          %span.avatar= link_to image_tag "http://thetvdb.com/banners/fanart/original/71361-4.jpg"
+          %span= link_to "login", "#"
+          %span or
+          %span= link_to "register", "#"
 
-          %a.flyout-toggle{:href => "#"}
-            %span
-          %ul.flyout.guest
-            %li.login
-              = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-                = f.label :login
-                = f.email_field :email, autofocus: true, placeholder: "Email address"
-                = f.password_field :password, placeholder: "Password"
-                = f.submit "Login", class: "button"
-              %hr
-            %li.connect
-              %label <a href="#{main_app.new_user_registration_path}">Register</a> or login with:
-              %a.btn-auth.btn-facebook.large{:href => "#"} <i></i>Facebook Connect
 
   %figure
     .overlay

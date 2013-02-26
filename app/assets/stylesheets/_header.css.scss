@@ -213,9 +213,12 @@
       .nav_user {
         position: absolute;
         right: 0;
-        width: 70px;
+        width: 168px;
+        text-transform: none;
+        text-align: center;
 
         .avatar {
+          float: right;
           a {
             margin-bottom: 29px;
           }
