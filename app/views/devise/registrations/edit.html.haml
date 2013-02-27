@@ -81,7 +81,7 @@
     $(".password-confirmation-box").slideDown();
   });
   $("div.dashboard input#user_password").blur(function() {
-    if ($("div.dashboard input#user_password").val().length > 0) {
+    if ($("div.dashboard input#user_password").val().length == 0) {
       $(".password-confirmation-box").slideUp();
     }
   });
