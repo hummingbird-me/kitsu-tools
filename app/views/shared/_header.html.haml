@@ -44,9 +44,9 @@
             %li
               = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
         - else
-          %span= link_to "login", "#"
+          %span= link_to "login", main_app.new_user_session_path
           %span or
-          %span= link_to "register", "#"
+          %span= link_to "register", main_app.new_user_registration_path
 
 
   %figure
