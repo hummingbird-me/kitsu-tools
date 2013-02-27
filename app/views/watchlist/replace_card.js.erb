@@ -1,1 +1,1 @@
-$("#card-<%= @anime.slug %>").replaceWith('<%= j render(partial: "anime/card", locals: {data: [@anime, @watch]}) %>');
+$("#card-<%= @anime.slug %>").replaceWith('<%= j render(partial: "anime/card", locals: {data: [@anime, @watch, params[:width]]}) %>');
