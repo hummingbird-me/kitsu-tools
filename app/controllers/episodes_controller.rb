@@ -26,7 +26,7 @@ class EpisodesController < ApplicationController
         @watchlist.save
       end
     elsif params[:watched] == "false"
-      EpisodeView.where(anime_id: @anime.id, user_id: current_user.id, episode_id: @episode.id).delete_all
+      EpisodeView.where(anime_id: @anime.id, user_id: current_user.id, episode_id: @episode.id).first.destroy
       @watchlist.episodes_watched -= 1
       # If the user removes an episode from a completed show, move it into the
       # "Currently Watching" list.

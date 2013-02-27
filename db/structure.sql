@@ -990,7 +990,8 @@ CREATE TABLE users (
     bio text,
     sfw_filter boolean DEFAULT true,
     star_rating boolean,
-    mal_username character varying(255)
+    mal_username character varying(255),
+    life_spent_on_anime integer
 );
 
 
@@ -1810,3 +1811,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130225171241');
 INSERT INTO schema_migrations (version) VALUES ('20130227044350');
 
 INSERT INTO schema_migrations (version) VALUES ('20130227142433');
+
+INSERT INTO schema_migrations (version) VALUES ('20130227185901');

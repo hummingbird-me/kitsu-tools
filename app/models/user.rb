@@ -144,8 +144,18 @@ class User < ActiveRecord::Base
   end
   
   # How many minutes the user has spent watching anime.
-  def life_spent_on_anime
-    episode_views.includes(:episode).map {|x| x.episode.length }.sum
+  def recompute_life_spent_on_anime
+    self.life_spent_on_anime = episode_views.includes(:episode).map {|x| x.episode.length }.sum
+    self.save
+  end
+  
+  def update_life_spent_on_anime(delta)
+    if life_spent_on_anime.nil?
+      self.recompute_life_spent_on_anime
+    else
+      self.life_spent_on_anime += delta
+      self.save
+    end
   end
 
   # Forem permissions
