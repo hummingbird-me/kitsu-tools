@@ -11,7 +11,8 @@ class EpisodesController < ApplicationController
     
     @anime = Anime.find(params[:anime_id])
     @episode = Episode.find(params[:id])
-    @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
+
+    @watchlist = Watchlist.where(anime_id: @anime, user_id: current_user).first || Watchlist.create(anime: @anime, user: current_user, status: "Currently Watching")
 
     if params[:watched] == "true"
       ev = EpisodeView.where(anime_id: @anime.id, user_id: current_user.id, episode_id: @episode.id).first

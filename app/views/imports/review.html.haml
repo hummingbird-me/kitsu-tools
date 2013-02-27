@@ -9,12 +9,9 @@
     .row
       = render partial: "anime/card", collection: @watchlist, as: :data
 
-  %h3 Reviews
-
-  - if @staged_import["data"][:reviews].length > 0
-    %pre= @staged_import["data"][:reviews]
-  - else
-    %p No reviews.
-  
-  %pre= @staged_import.to_yaml
-
+  - if @reviews.length > 0
+    .home.user-reviews
+      .row.content-body
+        .title.twelve-columns
+          %h3 Reviews
+          = render partial: "reviews/review_summary", collection: @reviews, as: :review

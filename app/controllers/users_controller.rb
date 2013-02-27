@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @sub_tab = params[:list] || "currently_watching"
     
     if @sub_tab == "currently_watching"
-      @watchlist = @user.watchlists.where(:status => "Currently Watching").order('updated_at DESC')
+      @watchlist = @user.watchlists.where(:status => "Currently Watching").order('last_watched DESC')
     elsif @sub_tab == "plan_to_watch"
       @watchlist = @user.watchlists.where(:status => "Plan to Watch").page(params[:page]).per(20)
     elsif @sub_tab == "completed"
@@ -27,5 +27,6 @@ class UsersController < ApplicationController
   def reviews
     @user = User.find(params[:user_id])
     @active_tab = :reviews
+    @reviews = @user.reviews.order("created_at DESC").page(params[:page]).per(15)
   end
 end

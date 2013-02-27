@@ -16,9 +16,9 @@
         .content
           - Watchlist.valid_statuses.each do |status|
             - if !watchlist or (watchlist && watchlist.status != status)
-              %li= link_to status, add_to_watchlist_path(anime, status: status), method: :post, remote: user_signed_in?
+              %li= link_to status, add_to_watchlist_path(anime, status: status, width: width), method: :post, remote: user_signed_in?
           - if watchlist
-            %li= link_to "- Remove from Watchlist", remove_from_watchlist_path(anime), method: :post, confirm: "Are you sure you want to remove #{anime.title} from your Watchlist?", remote: user_signed_in?
+            %li= link_to "- Remove from Watchlist", remove_from_watchlist_path(anime, width: width), method: :post, confirm: "Are you sure you want to remove #{anime.title} from your Watchlist?", remote: user_signed_in?
 
         - if watchlist
           .drop-button #{watchlist.status} <a href="#" class="selector"></a>
@@ -27,17 +27,16 @@
 
     .vote-blocks
       - if user_signed_in? and current_user.star_rating
-        .star-rating
-          - (-2).upto(2) do |i|
-            %span= link_to ((watchlist and watchlist.rating and watchlist.rating >= i) ? "★" : "☆"), update_rating_path(anime, i), remote: user_signed_in?
+        - (-2).upto(2) do |i|
+          = link_to ((watchlist and watchlist.rating and watchlist.rating >= i) ? "★" : "☆"), update_rating_path(anime, i, width: width), remote: user_signed_in?
       - else
         %span.like
           - if watchlist and watchlist.positive?
-            %strong.active= link_to "[:)]", update_rating_path(anime, 0), remote: user_signed_in?
+            %strong.active= link_to "[:)]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
           - else
-            %strong= link_to ":)", update_rating_path(anime, 2), remote: user_signed_in?
+            %strong= link_to ":)", update_rating_path(anime, 2, width: width), remote: user_signed_in?
         %span.dislike
           - if watchlist and watchlist.negative?
-            %strong.active= link_to "[:(]", update_rating_path(anime, 0), remote: user_signed_in?
+            %strong.active= link_to "[:(]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
           - else
-            %strong= link_to ":(", update_rating_path(anime, -2), remote: user_signed_in?
+            %strong= link_to ":(", update_rating_path(anime, -2, width: width), remote: user_signed_in?

@@ -2,7 +2,7 @@ class Watchlist < ActiveRecord::Base
   belongs_to :user
   belongs_to :anime
   attr_accessible :user, :anime, :status, :episodes_watched, 
-    :updated_at
+    :updated_at, :last_watched
 
   validates_uniqueness_of :user_id, :scope => :anime_id
 
@@ -26,5 +26,12 @@ class Watchlist < ActiveRecord::Base
   # date.
   def self.watchlist_hash(watchlist_ids)
     Digest::MD5.hexdigest( watchlist_ids.sort * ' ' )
+  end
+
+  # If the "last_watched" time is not set, set it to updated_at time.
+  before_save do
+    if self.last_watched.nil?
+      self.last_watched = self.updated_at
+    end
   end
 end

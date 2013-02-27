@@ -1,0 +1,19 @@
+.six.columns
+  .panel
+    .three.columns
+      = image_tag review.anime.cover_image.url(:thumb)
+      .vote-blocks.twelve.columns
+        - if review.positive?
+          %span.like.twelve.columns
+            %strong.active :)
+        - else
+          %span.dislike.twelve.columns
+            %strong.active :(
+    .nine.columns
+      %h3= review.anime.title
+      %p
+        = truncate(review.content, length: 300, omission: '...')
+        %br
+        = link_to "Read more", "#"
+
+
