@@ -3,12 +3,16 @@
     .three.columns
       = image_tag review.anime.cover_image.url(:thumb)
       .vote-blocks.twelve.columns
-        - if review.positive?
-          %span.like.twelve.columns
-            %strong.active :)
+        - if review.rating
+          - (-2).upto(2) do |i|
+            = review.rating >= i ? "★" : "☆"
         - else
-          %span.dislike.twelve.columns
-            %strong.active :(
+          - if review.positive?
+            %span.like.twelve.columns
+              %strong.active :)
+          - else
+            %span.dislike.twelve.columns
+              %strong.active :(
     .nine.columns
       %h3= review.anime.title
       %p

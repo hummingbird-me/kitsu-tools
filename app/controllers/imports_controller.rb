@@ -42,7 +42,15 @@ class ImportsController < ApplicationController
   def get_reviews(staged_import)
     reviews = []
     staged_import["data"][:reviews].each do |rev|
-      reviews.push Review.new(user: current_user, anime: Anime.find_by_mal_id(rev[:mal_id]), content: rev[:content])
+      review = Review.new(user: current_user, anime: Anime.find_by_mal_id(rev[:mal_id]), content: rev[:content])
+      
+      mal_rating = rev[:rating].to_i rescue 5
+      mal_rating = ((((mal_rating - 1) / 9.0) - 0.5) * 2 * 2).round
+      mal_rating = [-2, [2, mal_rating].min].max # Fit it inside -2,2 if
+                                                 # it is out of bounds.
+      review.rating = mal_rating
+      
+      reviews.push review
     end
     reviews
   end
