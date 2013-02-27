@@ -8,10 +8,10 @@
   .anime-grid.twelve.columns
     .row
       = render partial: "anime/card", collection: @watchlist, as: :data
-
-  - if @reviews.length > 0
-    .home.user-reviews
-      .row.content-body
-        .title.twelve-columns
-          %h3 Reviews
-          = render partial: "reviews/review_summary", collection: @reviews, as: :review
+    .row
+      - if @reviews.length > 0
+        .home.user-reviews
+          .row.content-body
+            .title.twelve-columns
+              %h3 Reviews
+              = render partial: "reviews/review_summary", collection: @reviews, as: :review
