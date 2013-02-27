@@ -11,4 +11,11 @@ class EpisodeView < ActiveRecord::Base
       errors.add(:anime, "identifier does not match episode. Please report this errror.")
     end
   end
+  
+  # TODO: Validate presence of watchlist.
+
+  # After saving, update the "last_watched" time of the corresponding Watchlist.
+  after_save do
+    Watchlist.where(user_id: self.user, anime_id: self.anime).first.update_attributes(last_watched: self.created_at)
+  end
 end

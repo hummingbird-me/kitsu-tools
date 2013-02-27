@@ -1024,7 +1024,8 @@ CREATE TABLE watchlists (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     episodes_watched integer DEFAULT 0,
-    rating integer
+    rating integer,
+    last_watched timestamp without time zone
 );
 
 
@@ -1804,3 +1805,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130220183447');
 INSERT INTO schema_migrations (version) VALUES ('20130221172813');
 
 INSERT INTO schema_migrations (version) VALUES ('20130225171241');
+
+INSERT INTO schema_migrations (version) VALUES ('20130227044350');
