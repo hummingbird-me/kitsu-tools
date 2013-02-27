@@ -286,7 +286,11 @@
   		border-bottom: 1px solid #eee;
   	}
     .vote-blocks {
-
+      .star-rating {
+        text-align: center;
+        font-size: 30px;
+        padding: 20px 0;
+      }
       .like {
         width: 50%;
         float: left;

@@ -27,8 +27,9 @@
 
     .vote-blocks
       - if user_signed_in? and current_user.star_rating
-        - (-2).upto(2) do |i|
-          = link_to ((watchlist and watchlist.rating and watchlist.rating >= i) ? "★" : "☆"), update_rating_path(anime, i), remote: user_signed_in?
+        .star-rating
+          - (-2).upto(2) do |i|
+            %span= link_to ((watchlist and watchlist.rating and watchlist.rating >= i) ? "★" : "☆"), update_rating_path(anime, i), remote: user_signed_in?
       - else
         %span.like
           - if watchlist and watchlist.positive?
