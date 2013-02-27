@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_one :staged_import
 
   has_reputation :karma, :source => [
-    {reputation: :vodes, of: :reviews},
+    {reputation: :votes, of: :reviews},
     {reputation: :votes, of: :quotes}
   ]
 
