@@ -140,7 +140,7 @@ class User < ActiveRecord::Base
   #
   # Returns 'EpisodeView's and not 'Anime's.
   def episodes_viewed(anime)
-    EpisodeView.where(user_id: id, anime_id: anime.id)
+    EpisodeView.joins(:watchlist).where("watchlists.user_id = ? AND watchlists.anime_id = ?", id, anime.id)
   end
   
   # How many minutes the user has spent watching anime.

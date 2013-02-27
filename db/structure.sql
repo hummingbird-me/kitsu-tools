@@ -184,11 +184,10 @@ ALTER SEQUENCE characters_id_seq OWNED BY characters.id;
 
 CREATE TABLE episode_views (
     id integer NOT NULL,
-    user_id integer,
-    anime_id integer,
     episode_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    watchlist_id integer
 );
 
 
@@ -1534,24 +1533,10 @@ CREATE UNIQUE INDEX index_characters_on_mal_id ON characters USING btree (mal_id
 
 
 --
--- Name: index_episode_views_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_episode_views_on_anime_id ON episode_views USING btree (anime_id);
-
-
---
 -- Name: index_episode_views_on_episode_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_episode_views_on_episode_id ON episode_views USING btree (episode_id);
-
-
---
--- Name: index_episode_views_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_episode_views_on_user_id ON episode_views USING btree (user_id);
 
 
 --
@@ -1813,3 +1798,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130227044350');
 INSERT INTO schema_migrations (version) VALUES ('20130227142433');
 
 INSERT INTO schema_migrations (version) VALUES ('20130227185901');
+
+INSERT INTO schema_migrations (version) VALUES ('20130227192935');
+
+INSERT INTO schema_migrations (version) VALUES ('20130227194841');
+
+INSERT INTO schema_migrations (version) VALUES ('20130227195132');

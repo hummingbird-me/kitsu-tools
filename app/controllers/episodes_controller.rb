@@ -15,18 +15,18 @@ class EpisodesController < ApplicationController
     @watchlist = Watchlist.where(anime_id: @anime, user_id: current_user).first || Watchlist.create(anime: @anime, user: current_user, status: "Currently Watching")
 
     if params[:watched] == "true"
-      ev = EpisodeView.where(anime_id: @anime.id, user_id: current_user.id, episode_id: @episode.id).first
+      ev = EpisodeView.where(watchlist_id: @watchlist.id, episode_id: @episode.id).first
       if ev.nil?
-        EpisodeView.create(anime: @anime, user: current_user, episode: @episode)
+        EpisodeView.create(watchlist: @watchlist, episode: @episode)
         @watchlist.episodes_watched += 1
         # If this is the last episode, set the status to completed.
-        if @anime.episode_count == @watchlist.episodes_watched
+        if @watchlist.anime.episode_count == @watchlist.episodes_watched
           @watchlist.status = "Completed"
         end
         @watchlist.save
       end
     elsif params[:watched] == "false"
-      EpisodeView.where(anime_id: @anime.id, user_id: current_user.id, episode_id: @episode.id).first.destroy
+      EpisodeView.where(watchlist_id: @watchlist.id, episode_id: @episode.id).first.destroy
       @watchlist.episodes_watched -= 1
       # If the user removes an episode from a completed show, move it into the
       # "Currently Watching" list.
