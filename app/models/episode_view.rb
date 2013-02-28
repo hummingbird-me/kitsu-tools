@@ -8,15 +8,18 @@ class EpisodeView < ActiveRecord::Base
   
   validates :watchlist, presence: true
 
-  # After saving, update the "last_watched" time of the corresponding Watchlist.
+  # Before saving, update the "last_watched" time of the corresponding Watchlist.
   # Also update the amount of time the user has spent watching anime.
-  after_save do
+  before_save do
     user.update_life_spent_on_anime(episode.length)
-    watchlist.update_attributes(last_watched: self.created_at)
+    watchlist.last_watched = self.created_at
+    watchlist.episodes_watched += 1
+    watchlist.save
   end
   
-  # After deleting, update the amount of time the user has spent watching anime.
-  after_destroy do
+  # Before deleting, update the amount of time the user has spent watching anime.
+  before_destroy do
+    watchlist.episodes_watched -= 1; watchlist.save
     user.update_life_spent_on_anime(-episode.length)
   end
 end

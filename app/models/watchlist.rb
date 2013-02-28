@@ -34,4 +34,16 @@ class Watchlist < ActiveRecord::Base
       self.last_watched = self.updated_at
     end
   end
+
+  # Before saving, if the status is set to "Completed", create EpisodeViews for
+  # all episodes that the user has not seen.
+  before_save do
+    if self.status == "Completed"
+      watched = EpisodeView.where(watchlist_id: self).includes(:episode).map {|x| x.episode }
+      pending = self.anime.episodes - watched
+      pending.each do |episode|
+        EpisodeView.create(watchlist: self, episode: episode)
+      end
+    end
+  end
 end
