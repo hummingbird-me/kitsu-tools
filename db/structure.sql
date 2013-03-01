@@ -244,6 +244,16 @@ ALTER SEQUENCE episodes_id_seq OWNED BY episodes.id;
 
 
 --
+-- Name: episodes_watchlists; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE episodes_watchlists (
+    episode_id integer NOT NULL,
+    watchlist_id integer NOT NULL
+);
+
+
+--
 -- Name: forem_categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1547,6 +1557,13 @@ CREATE INDEX index_episodes_on_anime_id ON episodes USING btree (anime_id);
 
 
 --
+-- Name: index_episodes_watchlists_on_episode_id_and_watchlist_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_episodes_watchlists_on_episode_id_and_watchlist_id ON episodes_watchlists USING btree (episode_id, watchlist_id);
+
+
+--
 -- Name: index_gallery_images_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1804,3 +1821,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130227192935');
 INSERT INTO schema_migrations (version) VALUES ('20130227194841');
 
 INSERT INTO schema_migrations (version) VALUES ('20130227195132');
+
+INSERT INTO schema_migrations (version) VALUES ('20130301170219');

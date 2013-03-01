@@ -19,9 +19,9 @@ class AnimeController < ApplicationController
 
     # Get the list of episodes.
     if user_signed_in?
-      @episodes = select_four_episodes(@anime, current_user)
+      @episodes = select_four_episodes(@watchlist)
     else
-      @episodes = select_four_episodes(@anime, nil)
+      @episodes = select_four_episodes(@watchlist)
     end
 
     # Add to recently viewed.

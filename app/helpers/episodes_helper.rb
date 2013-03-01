@@ -3,18 +3,17 @@ module EpisodesHelper
   # best to ensure that the first has been watched by the user.
   #
   # Returns [[episode, watched?]].
-  def select_four_episodes(anime, current_user)
-    @episodes = anime.episodes.order(:number)
+  def select_four_episodes(watchlist)
+    @episodes = watchlist.anime.episodes.order(:number)
     @episodes_watched = Hash.new(false)
-    @episodes_viewed = []
-    if user_signed_in?
-      @episodes_viewed = current_user.episodes_viewed(anime).includes(:episode)
+    if watchlist
+      watchlist.episodes.each do |episode|
+        @episodes_watched[ episode.id ] = true
+      end
     end
-    @episodes_viewed.each do |episodev|
-      @episodes_watched[ episodev.episode.id ] = true
-    end
+    
     # Figure out the range of 4 episodes to show.
-    if @episodes_viewed.length == 0 or @episodes.length <= 4
+    if @episodes_watched.keys.length == 0 or @episodes.length <= 4
       @episodes = @episodes[0..3]
     else
       latest_watched = @episodes_viewed.map {|x| x.episode.number }.max
