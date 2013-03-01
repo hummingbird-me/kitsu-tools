@@ -3,9 +3,15 @@ module EpisodesHelper
   # best to ensure that the first has been watched by the user.
   #
   # Returns [[episode, watched?]].
-  def select_four_episodes(watchlist)
-    @episodes = watchlist.anime.episodes.order(:number)
+  def select_four_episodes(watchlist, anime=nil)
+    if watchlist
+      @episodes = watchlist.anime.episodes.order(:number)
+    else
+      @episodes = anime.episodes.order(:number)
+    end
+    
     @episodes_watched = Hash.new(false)
+
     if watchlist
       watchlist.episodes.each do |episode|
         @episodes_watched[ episode.id ] = true
