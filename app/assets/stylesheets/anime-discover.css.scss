@@ -1,0 +1,388 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3";
+@import "compass/utilities";
+
+.anime-discover {
+
+  /* Sidebar Filter */
+  /* ============== */
+
+  // border override //
+  p {
+    margin: 0;
+  }
+  .has-tip {
+    cursor: pointer;
+    &:hover{
+      color: orange;
+    }
+  }
+
+  .nub {
+    top: 5px !important;
+  }
+
+  ul.accordion {
+    border: none;
+    margin: 0;
+
+    h3 {
+      font-size: 20px;
+      border-bottom: 1px solid black;
+      padding-bottom: 10px;
+    }
+
+    a {
+      padding-left: 5px;
+    }
+
+    p {
+      margin-bottom: 17px;
+    }
+
+    p.active {
+      background: orange;
+      border-radius: 3px;
+      padding: 3px;
+
+      a {
+        color: white;
+      }
+    }
+
+    label {
+      padding-left: 5px;
+      margin-bottom: 5px;
+      font-size: 15px;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    form.custom span.custom {
+      margin-right: 5px;
+    }
+  }
+
+  ul.accordion > li > div.title {
+    border: none;
+    background: white;
+    padding: 5px;
+  }
+
+  ul.accordion > li.active {
+    border-top: none;
+    border-bottom: none;
+
+    .content {
+      border: none;
+      padding: 5px;
+    }
+  }
+  // override end // 
+
+  a {
+  	color: #4d4d4d;
+  	font-weight: bold;
+
+  	&:hover {
+  		color: darkorange;
+  	}
+  }
+
+  /* This is the anime grid found on the index page */
+  /* ============================================== */
+  .columns {
+    padding: 0 10px;
+    @media (max-width: 480px) {
+      padding: 0 3px;
+      margin-bottom: -15px;
+    }
+  }
+  .anime-grid {
+    [class*="column"] + [class*="column"]:last-child {
+      float: left;
+    }
+    .overlay {
+      @media (max-width: 1000px) {
+        display: none !important;
+      }
+    }
+  }
+  .panel {
+  	position: relative;
+  	background: white;
+    overflow: hidden;
+  	padding: 0px;
+    display: block;
+    background: #fff;
+    color: #111;
+    font-size: 13px;
+    border: none;
+  	@include border-radius(3px);
+    @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px);
+    &.cards {
+      overflow: visible;
+    }
+
+    figure {
+      position: relative;
+      overflow: hidden;
+
+      .overlay {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        text-align: center;
+        color: #fff;
+        cursor: pointer;
+        z-index: 9999;
+        @include opacity(0.90);
+        @include border-top-radius(3px);
+        @include background-image(linear-gradient(left top, #393939, #000));
+        display: none;
+        
+
+        .title {
+          color: white;
+          padding-left: 10px;
+          padding-right: 10px;
+
+          a {
+            color: white;
+          }
+        }
+
+        .summary {
+          width: 90%;
+          margin: 0 auto;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          border-top: 1px solid white;
+          border-bottom: 1px solid white;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        float: left;
+        @include border-top-radius(3px); 
+      }
+
+      &:hover {
+
+        .overlay {
+          display: block;
+        }
+      }
+    }
+
+  	figcaption {
+  		display: block;
+      position: absolute;
+      bottom: 0;
+      padding: 10px;
+      width: 100%;
+      margin: 0 auto;
+      background: white;
+  	}
+
+  	.progress {
+  		width: 100%;
+  		border: none;
+  		height: 3px;
+  		margin-bottom: 0px;
+  		padding: 0px;
+
+  		.meter {
+  			background: orange;
+  		}
+  	}
+
+    // Dropdown
+    .drop {
+
+      .drop-button {
+        font-size: 12px;
+
+        .selector {
+          position: absolute;
+          width: 27px;
+          height: 28px;
+          display: block;
+          right: 0;
+          top: 0;
+          border-left: solid 1px #f2f2f2;
+          &:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border: solid 5px;
+            border-color: #b5b5b5 transparent transparent transparent;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -2px;
+            margin-left: -5px;
+          }
+        }
+      }
+      .content {
+        display: none;
+        width: 100%;
+        z-index: 99;
+        a {
+          font-size: 12px;
+        }
+
+      }
+
+      .watchlist:active .content {
+        display: block;
+      }
+
+      .content:hover {
+        display: block;
+      }
+      .watchlist {
+        position: relative;
+        cursor: pointer;
+        font-size: 10px;
+      }
+
+      .button {
+        height: 20px;
+        width: 150px;
+      }
+
+      .content {
+        position: absolute;
+        padding-top: 20px;
+      }
+
+      .content li {
+        border-bottom: 1px solid #f2f2f2;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        list-style: none;
+        background: white;
+      }
+    }
+
+
+
+  	.watchlist {
+  		width: 100%;
+  		text-align: center;
+  		text-transform: uppercase;
+  		font-size: 10px;
+  		padding: 8px 0px;
+  		border-top: 1px solid #eee;
+  		border-bottom: 1px solid #eee;
+  	}
+    .vote-blocks {
+      .star-rating {
+        text-align: center;
+        font-size: 30px;
+        padding: 20px 0;
+      }
+      .like {
+        width: 50%;
+        float: left;
+        border-right: 1px solid #f2f2f2;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        strong {
+          text-indent: -9999px;
+          display: block;
+          width: 34px;
+          height: 33px;
+          margin: 0 auto;
+          cursor: pointer;
+          background-position: left top;
+          background-image: url(asset-path('icons/vote-sprite.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+            background-size: 70px 99px;
+          }
+          a {
+            display: block;
+            height: 100%;
+          }
+          &:hover {
+            background-position: left center;
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-size: 70px 99px;
+            }
+          }
+          &:active {
+            background-position: left bottom;
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-size: 70px 99px;
+            }
+          }
+        }
+        .active {
+          background-position: left bottom;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 70px 99px;
+          }
+          &:hover {
+            background-position: left bottom;
+          }
+        }
+      }
+
+      .dislike {
+        width: 50%;
+        display: block;
+        float: left;
+        cursor: pointer;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        strong {
+          text-indent: -9999px;
+          display: block;
+          width: 34px;
+          height: 33px;
+          margin: 0 auto;
+          background-position: right top;
+          background-image: url(asset-path('icons/vote-sprite.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+            background-size: 70px 99px;
+          }
+          a {
+            display: block;
+            height: 100%;
+          }
+          &:hover {
+            background-position: right center;
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-size: 70px 99px;
+            }
+          }
+          &:active {
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-size: 70px 99px;
+            }
+          }
+        }
+        .active {
+          background-position: right bottom;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 70px 99px;
+          }
+          &:hover {
+            background-position: right bottom;
+          }
+        }
+      }
+    }
+  }
+}

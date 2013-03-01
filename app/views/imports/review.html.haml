@@ -1,4 +1,4 @@
-.home.panel.twelve.columns
+.anime-discover.panel.twelve.columns
   %h1= title "Review Import"
 
   = link_to "Apply", review_apply_path, class: 'button'
@@ -10,7 +10,7 @@
       = render partial: "anime/card", collection: @watchlist, as: :data
     .row
       - if @reviews.length > 0
-        .home.user-reviews
+        .anime-discover.user-reviews
           .row.content-body
             .title.twelve-columns
               %h3 Reviews
