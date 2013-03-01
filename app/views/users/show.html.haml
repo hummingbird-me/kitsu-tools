@@ -84,40 +84,18 @@
             .ten.columns
               %h3 Cowboy Bebop
               %p People who know me know that I'm not a fan of episodic anime series unless they're either one season (12-14 episodes) long or a slice of life series. Why? They have a tendency to get boring, or repetitive. But all rules and preferences have exceptions. You know what? Cowboy Bebop is that exception... <a href="#">Read More</a>
+    
     .row
       .five.columns
-        .title.twelve-columns
-          %h3 Recently Watched
-        .anime-preview.twelve.columns
-          .four.columns
-            %img{:src => "http://cdn.myanimelist.net/images/anime/12/43369.jpg"}
-          .four.columns
-            %img{:src => "http://cdn.myanimelist.net/images/anime/12/42533.jpg"}
-          .four.columns
-            %img{:src => "http://cdn.myanimelist.net/images/anime/6/41865.jpg"}
-            
-
-        .title.twelve-columns
-          %h3 Recently Completed
-        .anime-preview.twelve.columns
-          .four.columns
-            %img{:src => "http://cdn.myanimelist.net/images/anime/13/17405.jpg"}
-          .four.columns
-            %img{:src => "http://cdn.myanimelist.net/images/anime/3/19935.jpg"}
-          .four.columns
-            %img{:src => "http://cdn.myanimelist.net/images/anime/3/22386.jpg"}
-
-
-        .title.twelve-columns
-          %h3 Plan to Watch
-        .anime-preview.twelve.columns
-          .four.columns
-            %img{:src => "http://cdn.myanimelist.net/images/anime/12/43369.jpg"}
-          .four.columns
-            %img{:src => "http://cdn.myanimelist.net/images/anime/12/42533.jpg"}
-          .four.columns
-            %img{:src => "http://cdn.myanimelist.net/images/anime/6/41865.jpg"}
-          
+        - @anime_history.each do |category, animes|
+          .title.twelve-columns
+            %h3= category.to_s.titleize
+          .anime-preview.twelve.columns
+            - animes.each do |anime|
+              .four.columns
+                = link_to image_tag(anime.cover_image.url(:thumb)), anime
+            - if animes.length == 0
+              %p Nothing here.
             
       .side-content.seven.columns
         .title.twelve-columns
