@@ -18,11 +18,7 @@ class AnimeController < ApplicationController
     end
 
     # Get the list of episodes.
-    if user_signed_in?
-      @episodes = select_four_episodes(@watchlist)
-    else
-      @episodes = select_four_episodes(@watchlist)
-    end
+    @episodes = select_four_episodes(@watchlist, @anime)
 
     # Add to recently viewed.
     if @anime.sfw?

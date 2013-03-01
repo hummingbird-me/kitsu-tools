@@ -33,18 +33,20 @@ class Watchlist < ActiveRecord::Base
   # If the "last_watched" time is not set, set it to updated_at time.
   #
   # Update the number of episodes watched.
-  #
-  # If the status is set to "Completed", then before saving mark all episodes as
-  # viewed.
   before_save do
     if self.last_watched.nil?
       self.last_watched = self.updated_at
     end
     
     self.episodes_watched = self.episodes.length
-
+  end
+  
+  # If the status is set to "Completed", then before saving mark all episodes as
+  # viewed.
+  after_save do
     if self.status == "Completed"
       self.episodes = self.anime.episodes
+      self.save
     end
   end
 end

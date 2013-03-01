@@ -37,7 +37,7 @@ class EpisodesController < ApplicationController
     respond_to do |format|
       if request.xhr?
         format.js do 
-          @episodes = select_four_episodes(@watchlist)
+          @episodes = select_four_episodes(@watchlist, @anime)
           render "episodes/replace_episodes"
         end
       end
