@@ -55,6 +55,18 @@
 
   .row.content-body
     .twelve.columns
+      %a(name="facebook_connect")
+      %h3 Facebook Connect
+      - if @user.facebook_id
+        %p 
+          Your account is already connected to Facebook.
+          = image_tag "http://graph.facebook.com/#{@user.facebook_id}/picture"
+          = link_to "Disconnect", user_disconnect_facebook_path(current_user), method: :post
+      - else
+        %p= link_to "Connect to Facebook", omniauth_authorize_path(resource_name, :facebook)
+
+  .row.content-body
+    .twelve.columns
       %a(name="import")
       %h3 Import
       - if @user.staged_import
