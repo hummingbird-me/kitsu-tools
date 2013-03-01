@@ -1,4 +1,5 @@
 - anime, watchlist, width = data[0], data[1], data[2] || "four"
+- readonly = data[3] && data[3] == :readonly
 .mobile-two.columns{:class => width, :id => "card-#{anime.slug}"}
   .panel.cards.cf
     %figure
@@ -14,14 +15,18 @@
     .drop
       .watchlist
         .content
-          - Watchlist.valid_statuses.each do |status|
-            - if !watchlist or (watchlist && watchlist.status != status)
-              %li= link_to status, add_to_watchlist_path(anime, status: status, width: width), method: :post, remote: user_signed_in?
-          - if watchlist
-            %li= link_to "- Remove from Watchlist", remove_from_watchlist_path(anime, width: width), method: :post, confirm: "Are you sure you want to remove #{anime.title} from your Watchlist?", remote: user_signed_in?
+          - if !readonly
+            - Watchlist.valid_statuses.each do |status|
+              - if !watchlist or (watchlist && watchlist.status != status)
+                %li= link_to status, add_to_watchlist_path(anime, status: status, width: width), method: :post, remote: user_signed_in?
+            - if watchlist
+              %li= link_to "- Remove from Watchlist", remove_from_watchlist_path(anime, width: width), method: :post, confirm: "Are you sure you want to remove #{anime.title} from your Watchlist?", remote: user_signed_in?
 
         - if watchlist
-          .drop-button #{watchlist.status} <a href="#" class="selector"></a>
+          .drop-button 
+            = watchlist.status
+            - if !readonly
+              %a.selector(href="#")
         - else
           .drop-button Select Watching Status <a href="#" class="selector"></a>
 
@@ -29,15 +34,30 @@
       - if user_signed_in? and current_user.star_rating
         .star-rating
           - (-2).upto(2) do |i|
-            = link_to ((watchlist and watchlist.rating and watchlist.rating >= i) ? "★" : "☆"), update_rating_path(anime, i, width: width), remote: user_signed_in?
+            - if readonly
+              = (watchlist and watchlist.rating and watchlist.rating >= i) ? "★" : "☆"
+            - else
+              = link_to ((watchlist and watchlist.rating and watchlist.rating >= i) ? "★" : "☆"), update_rating_path(anime, i, width: width), remote: user_signed_in?
       - else
-        %span.like
-          - if watchlist and watchlist.positive?
-            %strong.active= link_to "[:)]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
-          - else
-            %strong= link_to ":)", update_rating_path(anime, 2, width: width), remote: user_signed_in?
-        %span.dislike
-          - if watchlist and watchlist.negative?
-            %strong.active= link_to "[:(]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
-          - else
-            %strong= link_to ":(", update_rating_path(anime, -2, width: width), remote: user_signed_in?
+        - if readonly
+          %span.like
+            - if watchlist and watchlist.positive?
+              %strong.active [:)]
+            - else
+              %strong :)
+          %span.dislike
+            - if watchlist and watchlist.negative?
+              %strong.active [:(]
+            - else
+              %strong :)
+        - else
+          %span.like
+            - if watchlist and watchlist.positive?
+              %strong.active= link_to "[:)]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
+            - else
+              %strong= link_to ":)", update_rating_path(anime, 2, width: width), remote: user_signed_in?
+          %span.dislike
+            - if watchlist and watchlist.negative?
+              %strong.active= link_to "[:(]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
+            - else
+              %strong= link_to ":(", update_rating_path(anime, -2, width: width), remote: user_signed_in?
