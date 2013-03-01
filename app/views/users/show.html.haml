@@ -63,27 +63,9 @@
       .twelve.columns
         .title.twelve-columns
           %h3 Last Reviewed
-        .six.columns
-          .panel
-            .two.columns
-              = image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"
-              .vote-blocks.twelve.columns
-                %span.dislike.twelve.columns
-                  %strong.active :(
-            .ten.columns
-              %h3 Cowboy Bebop
-              %p People who know me know that I'm not a fan of episodic anime series unless they're either one season (12-14 episodes) long or a slice of life series. Why? They have a tendency to get boring, or repetitive. But all rules and preferences have exceptions. You know what? Cowboy Bebop is that exception... <a href="#">Read More</a>
-
-        .six.columns
-          .panel
-            .two.columns
-              = image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"
-              .vote-blocks.twelve.columns
-                %span.dislike.twelve.columns
-                  %strong.active :(
-            .ten.columns
-              %h3 Cowboy Bebop
-              %p People who know me know that I'm not a fan of episodic anime series unless they're either one season (12-14 episodes) long or a slice of life series. Why? They have a tendency to get boring, or repetitive. But all rules and preferences have exceptions. You know what? Cowboy Bebop is that exception... <a href="#">Read More</a>
+        = render partial: "reviews/review_summary", collection: @latest_reviews, as: :review
+        - if @latest_reviews.length == 0
+          %p Nothing here.
     
     .row
       .five.columns

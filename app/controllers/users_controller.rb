@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @active_tab = :profile
+    
+    @latest_reviews = @user.reviews.order('created_at DESC').limit(2)
 
     @anime_history = {
       recently_watched: @user.watchlists.order('last_watched DESC').limit(3).map(&:anime),
