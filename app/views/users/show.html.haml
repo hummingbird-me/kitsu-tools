@@ -1,19 +1,161 @@
 = render "dash"
 
-.home.user-reviews 
+.profile.home.user-reviews
   .row.content-body
-    .main-content.eight.columns
-      .title.twelve-columns
-        %h3 About JoshFabian
+    .twelve.columns
+      .six.columns
+        .title.twelve-columns
+          %h3 About Me
+        .twelve.columns
+          %p 
+            Anime, what do you expect? I love watching it. Ever since I
+            was little, I watched a lot of oldies, like DBZ, Bt'X and Yu Yu Hakusho. 
+            I also watched some sentais like Fiveman, and Jetman. 
+          %p
+            The local TV showed different anime dubbed and I watched them before studying.
+            The anime that I really liked before was Gundam Wing. It was very different from
+            the superrobots like Voltes V. GMA7 and ABS-CBN showed a lot and I was hooked.
+
+      .six.columns
+        .title.twelve-columns
+          %h3 Favorite Anime
+        .favorite-anime.twelve.columns
+          .three.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/2/24096.jpg"}
+          .three.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/9/9453.jpg"}
+          .three.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/4/14244.jpg"}
+          .three.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/6/7333.jpg"}
+    .row
       .twelve.columns
-        %p 
-          Anime, what do you expect? I love watching it. Ever since I
-          was little, I watched a lot of oldies, like DBZ, Bt'X and Yu Yu Hakusho. 
-          I also watched some sentais like Fiveman, and Jetman. 
-        %p
-          The local TV showed different anime dubbed and I watched them before studying.
-          The anime that I really liked before was Gundam Wing. It was very different from
-          the superrobots like Voltes V. GMA7 and ABS-CBN showed a lot and I was hooked.
+        .title.twelve-columns
+          %h3 Favorite Characters
+        .anime-grid.twelve.columns
+          .two.columns
+            // Ed
+            %img{:src => "http://cdn.myanimelist.net/images/characters/9/72533.jpg"}
+          .two.columns
+            // Spike
+            %img{:src => "http://cdn.myanimelist.net/images/characters/4/50197.jpg"}
+          .two.columns
+            // Light
+            %img{:src => "http://cdn.myanimelist.net/images/characters/6/63870.jpg"}
+          .two.columns
+            // Mugen
+            %img{:src => "http://cdn.myanimelist.net/images/characters/5/51569.jpg"}
+          .two.columns
+            // Izayoi
+            %img{:src => "http://cdn.myanimelist.net/images/characters/10/192915.jpg"}
+          .two.columns
+            // Alucard
+            %img{:src => "http://cdn.myanimelist.net/images/characters/16/74606.jpg"}
+    .row
+      .twelve.columns
+        .title.twelve.columns
+          %h3 Genre Cloud
+        .genre-cloud.twelve.columns
+          // http://vallandingham.me/building_a_bubble_cloud.html
+          = image_tag "http://f.cl.ly/items/3W1T1C3w18243O2k0C0D/bubblecloud.png"   
+    .row
+      .twelve.columns
+        .title.twelve-columns
+          %h3 Last Reviewed
+        .six.columns
+          .panel
+            .two.columns
+              = image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"
+              .vote-blocks.twelve.columns
+                %span.dislike.twelve.columns
+                  %strong.active :(
+            .ten.columns
+              %h3 Cowboy Bebop
+              %p People who know me know that I'm not a fan of episodic anime series unless they're either one season (12-14 episodes) long or a slice of life series. Why? They have a tendency to get boring, or repetitive. But all rules and preferences have exceptions. You know what? Cowboy Bebop is that exception... <a href="#">Read More</a>
+
+        .six.columns
+          .panel
+            .two.columns
+              = image_tag "http://localhost:3000/system/anime/cover_images/000/000/002/thumb/14331.jpg?1360397873"
+              .vote-blocks.twelve.columns
+                %span.dislike.twelve.columns
+                  %strong.active :(
+            .ten.columns
+              %h3 Cowboy Bebop
+              %p People who know me know that I'm not a fan of episodic anime series unless they're either one season (12-14 episodes) long or a slice of life series. Why? They have a tendency to get boring, or repetitive. But all rules and preferences have exceptions. You know what? Cowboy Bebop is that exception... <a href="#">Read More</a>
+    .row
+      .five.columns
+        .title.twelve-columns
+          %h3 Recently Watched
+        .anime-preview.twelve.columns
+          .four.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/12/43369.jpg"}
+          .four.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/12/42533.jpg"}
+          .four.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/6/41865.jpg"}
+            
+
+        .title.twelve-columns
+          %h3 Recently Completed
+        .anime-preview.twelve.columns
+          .four.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/13/17405.jpg"}
+          .four.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/3/19935.jpg"}
+          .four.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/3/22386.jpg"}
+
+
+        .title.twelve-columns
+          %h3 Plan to Watch
+        .anime-preview.twelve.columns
+          .four.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/12/43369.jpg"}
+          .four.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/12/42533.jpg"}
+          .four.columns
+            %img{:src => "http://cdn.myanimelist.net/images/anime/6/41865.jpg"}
           
-    .side-content.four.columns
-      sidebar
+            
+      .side-content.seven.columns
+        .title.twelve-columns
+          %h3 Comments
+        .comment.twelve.columns
+          .comment-avatar.two.columns
+            = image_tag "http://placekitten.com/g/300/300"
+          .comment-text.ten.columns
+            %p <strong>Ikusagami</strong> 
+            %p Hey, I really loved your latest review!
+            %p 1 Hour Ago
+
+        .comment.twelve.columns
+          .comment-avatar.two.columns
+            = image_tag "http://placekitten.com/g/300/300"
+          .comment-text.ten.columns
+            %p <strong>Gadrarth</strong> 
+            %p Sorry, I forgot you replied again to my profile. Moving aside from Gintama, why did you give Evangelion such a low score even though it revolutionized anime back then and is considered to be one of the deepest shows, seeing as you liked shows like Full metal alchemist brotherhood and serial experiments lain which feature similar themes.
+            %p 3 Hours Ago
+
+        .comment.twelve.columns
+          .comment-avatar.two.columns
+            = image_tag "http://placekitten.com/g/300/300"
+          .comment-text.ten.columns
+            %p <strong>Nikorin</strong>
+            %p 
+              is Aria the only anime that you gave 10 score? 
+              I'm giving it to every anime that I could put in "favourites" box :P Maybe I'm too soft...and my scores have 5 years already... must redo them X...X
+            %p 9 Hours Ago
+
+        .comment.twelve.columns
+          .comment-avatar.two.columns
+            = image_tag "http://placekitten.com/g/300/300"
+          .comment-text.ten.columns
+            %p <strong>Potsuu</strong>
+            %p Reading your reviews is an adventure. Every sentence, a whole new meaning. And if i may say so, you are one of the best reviewers out there.
+            %p 1 day Ago
+        .comment-links.inline-list
+          %span= link_to "Add Comment"
+          %span= link_to "View All"
+
+     
