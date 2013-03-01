@@ -16,7 +16,6 @@ class User < ActiveRecord::Base
   has_many :watchlists
   has_many :reviews
   has_many :quotes, foreign_key: 'creator_id'
-  has_many :episode_views
 
   has_one :staged_import
 
@@ -138,7 +137,7 @@ class User < ActiveRecord::Base
 
   # How many minutes the user has spent watching anime.
   def recompute_life_spent_on_anime
-    self.life_spent_on_anime = episode_views.includes(:episode).map {|x| x.episode.length }.sum
+    self.life_spent_on_anime = self.watchlists.map {|x| x.episodes.map(&:length).sum }.sum
     self.save
   end
   

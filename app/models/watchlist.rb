@@ -42,6 +42,7 @@ class Watchlist < ActiveRecord::Base
     end
     
     if self.status == "Completed"
+      self.user.update_life_spent_on_anime((self.anime.episodes - self.episodes).map {|x| x.length }.sum)
       self.episodes = self.anime.episodes
     end
 
