@@ -16,7 +16,7 @@ module EpisodesHelper
     if @episodes_watched.keys.length == 0 or @episodes.length <= 4
       @episodes = @episodes[0..3]
     else
-      latest_watched = @episodes_viewed.map {|x| x.episode.number }.max
+      latest_watched = watchlist.episodes.map(&:number).max
       if latest_watched+2 > @episodes.length-1
         @episodes = @episodes[-4..-1]
       else

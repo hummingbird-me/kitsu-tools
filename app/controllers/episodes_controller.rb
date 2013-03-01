@@ -20,7 +20,7 @@ class EpisodesController < ApplicationController
         if @watchlist.episodes == @watchlist.anime.episodes
           @watchlist.status = "Completed"
         end
-        current_user.update_life_spend_on_anime(@episode.length)
+        current_user.update_life_spent_on_anime(@episode.length)
       end
     elsif params[:watched] == "false"
       @watchlist.episodes.delete @episode
