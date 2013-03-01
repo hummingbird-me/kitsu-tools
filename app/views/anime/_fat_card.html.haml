@@ -3,9 +3,9 @@
     %figure
       .overlay
         .poster.four.columns.hide-for-small
-          = image_tag wl.anime.cover_image.url(:"thumb@2x")
+          = link_to image_tag(wl.anime.cover_image.url(:"thumb@2x")), wl.anime
         .title-info.eight.columns
-          %h4= wl.anime.title
+          %h4= link_to wl.anime.title, wl.anime
           %p.seen-count 
             Seen
             %span{:class => "fat-card-episodes-watched-#{wl.anime.slug}"}= wl.episodes_watched
