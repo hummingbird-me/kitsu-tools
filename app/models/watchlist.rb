@@ -6,6 +6,8 @@ class Watchlist < ActiveRecord::Base
 
   validates_uniqueness_of :user_id, :scope => :anime_id
 
+  has_and_belongs_to_many :episodes, :uniq => true
+
   # Return an array of possible valid statuses.
   def self.valid_statuses
     ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
@@ -29,21 +31,20 @@ class Watchlist < ActiveRecord::Base
   end
 
   # If the "last_watched" time is not set, set it to updated_at time.
+  #
+  # Update the number of episodes watched.
+  #
+  # If the status is set to "Completed", then before saving mark all episodes as
+  # viewed.
   before_save do
     if self.last_watched.nil?
       self.last_watched = self.updated_at
     end
-  end
+    
+    self.episodes_watched = self.episodes.length
 
-  # Before saving, if the status is set to "Completed", create EpisodeViews for
-  # all episodes that the user has not seen.
-  before_save do
     if self.status == "Completed"
-      watched = EpisodeView.where(watchlist_id: self).includes(:episode).map {|x| x.episode }
-      pending = self.anime.episodes - watched
-      pending.each do |episode|
-        EpisodeView.create(watchlist: self, episode: episode)
-      end
+      self.episodes = self.anime.episodes
     end
   end
 end

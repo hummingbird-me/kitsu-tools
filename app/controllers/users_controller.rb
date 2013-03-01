@@ -29,4 +29,10 @@ class UsersController < ApplicationController
     @active_tab = :reviews
     @reviews = @user.reviews.order("created_at DESC").page(params[:page]).per(15)
   end
+
+  def disconnect_facebook
+    authenticate_user!
+    current_user.update_attributes(facebook_id: nil)
+    redirect_to :back
+  end
 end

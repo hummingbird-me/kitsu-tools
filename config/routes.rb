@@ -15,6 +15,8 @@ Hummingbird::Application.routes.draw do
   resources :users do
     get "/watchlist" => 'users#watchlist', as: :watchlist
     get "/reviews"   => 'users#reviews', as: :reviews
+    post "/disconnect/facebook" => 'users#disconnect_facebook', 
+      as: :disconnect_facebook
   end
 
   # Search
