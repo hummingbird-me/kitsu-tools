@@ -179,38 +179,6 @@ ALTER SEQUENCE characters_id_seq OWNED BY characters.id;
 
 
 --
--- Name: episode_views; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE episode_views (
-    id integer NOT NULL,
-    episode_id integer,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    watchlist_id integer
-);
-
-
---
--- Name: episode_views_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE episode_views_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: episode_views_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE episode_views_id_seq OWNED BY episode_views.id;
-
-
---
 -- Name: episodes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1084,13 +1052,6 @@ ALTER TABLE ONLY characters ALTER COLUMN id SET DEFAULT nextval('characters_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY episode_views ALTER COLUMN id SET DEFAULT nextval('episode_views_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY episodes ALTER COLUMN id SET DEFAULT nextval('episodes_id_seq'::regclass);
 
 
@@ -1277,14 +1238,6 @@ ALTER TABLE ONLY castings
 
 ALTER TABLE ONLY characters
     ADD CONSTRAINT characters_pkey PRIMARY KEY (id);
-
-
---
--- Name: episode_views_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY episode_views
-    ADD CONSTRAINT episode_views_pkey PRIMARY KEY (id);
 
 
 --
@@ -1540,13 +1493,6 @@ CREATE INDEX index_castings_on_person_id ON castings USING btree (person_id);
 --
 
 CREATE UNIQUE INDEX index_characters_on_mal_id ON characters USING btree (mal_id);
-
-
---
--- Name: index_episode_views_on_episode_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_episode_views_on_episode_id ON episode_views USING btree (episode_id);
 
 
 --
@@ -1823,3 +1769,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130227194841');
 INSERT INTO schema_migrations (version) VALUES ('20130227195132');
 
 INSERT INTO schema_migrations (version) VALUES ('20130301170219');
+
+INSERT INTO schema_migrations (version) VALUES ('20130301182309');

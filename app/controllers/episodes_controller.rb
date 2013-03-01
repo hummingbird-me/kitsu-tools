@@ -20,8 +20,7 @@ class EpisodesController < ApplicationController
         if @watchlist.episodes == @watchlist.anime.episodes
           @watchlist.status = "Completed"
         end
-        @watchlist.save
-        # TODO: update life spent watching anime.
+        current_user.update_life_spend_on_anime(@episode.length)
       end
     elsif params[:watched] == "false"
       @watchlist.episodes.delete @episode
@@ -30,9 +29,10 @@ class EpisodesController < ApplicationController
       if @watchlist.status == "Completed"
         @watchlist.status = "Currently Watching"
       end
-      # TODO: update life spent watching anime.
-      @watchlist.save
+      current_user.update_life_spent_on_anime(-@episode.length)
     end
+    @watchlist.last_watched = Time.now
+    @watchlist.save
 
     respond_to do |format|
       if request.xhr?
