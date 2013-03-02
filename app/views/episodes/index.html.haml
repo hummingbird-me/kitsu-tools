@@ -1,1 +1,23 @@
-%pre= @episodes.to_yaml
+.anime-discover.anime-show.anime-show-full
+  .row
+    .three.columns
+      = render partial: 'anime/card', locals: {data: [@anime, @watchlist, 'twelve']}
+
+    .nine.columns
+      .panel.top-bar
+        %h4= title "#{@anime.title} Episodes"
+      .panel.user-watchlist
+        .episode-list{:class => "episode-list-#{@anime.slug}"}
+          %ul
+            - @episodes.each do |episode, watched|
+              %li.episode{:class => ("active" if watched)}
+                .title.ten.columns
+                  .episode-number e#{"%02d" % episode.number}
+                  .episode-title= episode.title
+                .view-button.two.columns
+                  - if watched
+                    %strong
+                      = link_to "", watch_anime_episode_path(@anime, episode, watched: false), method: :post
+                  - else
+                    %strong
+                      = link_to "", watch_anime_episode_path(@anime, episode, watched: true), method: :post

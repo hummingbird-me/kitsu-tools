@@ -3,7 +3,17 @@ class EpisodesController < ApplicationController
   
   def index
     @anime = Anime.find(params[:anime_id])
-    @episodes = @anime.episodes
+    @episodes_watched = Hash.new(false)
+
+    if user_signed_in?
+      @watchlist = current_user.watchlists.where(anime_id: @anime).first
+      if @watchlist
+        @watchlist.episodes.each do |episode|
+          @episodes_watched[ episode.id ] = true
+        end
+      end
+    end
+    @episodes = @anime.episodes.order(:number).map {|e| [e, @episodes_watched[e.id]] }
   end
      
   def watch
