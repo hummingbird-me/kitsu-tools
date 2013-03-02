@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   
   has_many :watchlists
   has_many :reviews
-  has_many :quotes, foreign_key: 'creator_id'
+  has_many :quotes
 
   has_one :staged_import
 

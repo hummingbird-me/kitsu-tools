@@ -659,7 +659,7 @@ CREATE TABLE quotes (
     anime_id integer,
     content text,
     character_name character varying(255),
-    creator_id integer,
+    user_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1774,3 +1774,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130301170219');
 INSERT INTO schema_migrations (version) VALUES ('20130301182309');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302062704');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302080631');

@@ -1,11 +1,16 @@
 class Quote < ActiveRecord::Base
   attr_accessible :anime_id, :character_name, :content
+  
   belongs_to :anime
-  belongs_to :creator, :class_name => "User"
+  belongs_to :user
+  
+  def creator
+    user
+  end
 
-  validates :content, :anime, :creator, :presence => true
+  validates :content, :anime, :user, :presence => true
 
   has_reputation :votes, source: :user, source_of: [
-    {reputation: :karma, of: :creator}
+    {reputation: :karma, of: :user}
   ]
 end
