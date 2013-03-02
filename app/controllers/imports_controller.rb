@@ -23,7 +23,7 @@ class ImportsController < ApplicationController
       if anime
         watchlist = Watchlist.where(user_id: current_user, anime_id: anime).first || false
         if !watchlist or watchlist.updated_at < w[:last_updated]
-          watchlist = Watchlist.new(status: w[:status], episodes_watched: w[:episodes_watched], updated_at: w[:last_updated])
+          watchlist = Watchlist.new(status: w[:status], episodes_watched: w[:episodes_watched], updated_at: w[:last_updated], user: current_user, anime: anime)
           if w[:rating] != '0'
             mal_rating = w[:rating].to_i rescue 5
             mal_rating = ((((mal_rating - 1) / 9.0) - 0.5) * 2 * 2).round
@@ -42,7 +42,7 @@ class ImportsController < ApplicationController
   def get_reviews(staged_import)
     reviews = []
     staged_import["data"][:reviews].each do |rev|
-      review = Review.new(user: current_user, anime: Anime.find_by_mal_id(rev[:mal_id]), content: rev[:content])
+      review = Review.new(user: current_user, anime: Anime.find_by_mal_id(rev[:mal_id]), content: rev[:content], source: "mal_import")
       
       mal_rating = rev[:rating].to_i rescue 5
       mal_rating = ((((mal_rating - 1) / 9.0) - 0.5) * 2 * 2).round
@@ -63,6 +63,22 @@ class ImportsController < ApplicationController
       @watchlist = get_watchlist(@staged_import)
       @reviews = get_reviews(@staged_import)
     end
+  end
+
+  def apply
+    review # Set up all the instance variables.
+    @reviews.each {|x| x.save }
+    @watchlist.each do |x|
+      wl = x[1]
+      if wl.status != "Completed" and wl.episodes_watched > 0 and wl.anime.episodes.length > wl.episodes_watched
+        wl.episodes = wl.anime.episodes.order(:number).limit(wl.episodes_watched)
+        wl.save
+      end
+    end
+    @user = current_user
+    @user.staged_import = nil
+    @user.save
+    redirect_to "/users/edit#import"
   end
 
   def cancel

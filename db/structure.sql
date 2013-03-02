@@ -469,7 +469,8 @@ CREATE TABLE reviews (
     content text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    rating integer
+    rating integer,
+    source character varying(255)
 );
 
 
@@ -1346,3 +1347,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130302080631');
 INSERT INTO schema_migrations (version) VALUES ('20130302100724');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302101826');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302112208');

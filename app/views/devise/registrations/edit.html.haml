@@ -87,7 +87,7 @@
                 .six.columns
                   %label.right MyAnimeList Username:
                 .six.columns
-                  %input(name="mal_username")
+                  %input(name="mal_username"){:value => @user.mal_username}
             .row
               %input(type="submit" class="small button" value="Import")
 
