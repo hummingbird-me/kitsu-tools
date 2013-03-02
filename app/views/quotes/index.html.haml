@@ -1,22 +1,32 @@
-- title "#{@anime.title} Quotes"
+.anime-discover.anime-show.anime-show-full
+  .row
+    .three.columns
+      = render partial: 'anime/card', locals: {data: [@anime, @watchlist, 'twelve']}
 
-%h1= yield(:title)
+    .nine.columns
+      .panel
+        %h4= title "#{@anime.title} Quotes"
+        %a{"data-reveal-id" => "submit-quote", :href => "#"}
+          %span= "Submit a quote for #{@anime.title}"
+          
+      - @quotes.each do |quote|
+        .panel
+          %p= quote.content
+          - if quote.character_name
+            .character — #{quote.character_name}
+          %p
+            - if quote.creator
+              (Submitted by #{link_to quote.creator}) 
+              |
+            = pluralize quote.votes.to_i, "vote"
+            |
+            - if current_user && quote.has_evaluation?(:votes, current_user)
+              = link_to "(^) remove vote", vote_anime_quote_path(@anime, quote, type: "down"), method: :post
+            - else
+              = link_to "^ vote", vote_anime_quote_path(@anime, quote, type: "up"), method: :post
+            |
+            = link_to "report", "#"
 
-- @quotes.each do |quote|
-  %blockquote.panel
-    = quote.content
-    —
-    = quote.character_name
-    - if quote.creator
-      (Submitted by #{quote.creator.name})
-    %p
-      = pluralize quote.votes.to_i, "vote"
-      |
-      - if current_user && quote.has_evaluation?(:votes, current_user)
-        = link_to "(^) remove vote", vote_anime_quote_path(@anime, quote, type: "down"), method: :post
-      - else
-        = link_to "^ vote", vote_anime_quote_path(@anime, quote, type: "up"), method: :post
-      |
-      = link_to "report", "#"    
+#submit-quote.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
+  = render 'quotes/new'
 
-%p= link_to "[Submit quote]", new_anime_quote_url(@anime)
