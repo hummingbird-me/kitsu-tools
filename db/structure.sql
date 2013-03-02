@@ -968,7 +968,8 @@ CREATE TABLE users (
     sfw_filter boolean DEFAULT true,
     star_rating boolean,
     mal_username character varying(255),
-    life_spent_on_anime integer
+    life_spent_on_anime integer,
+    about text
 );
 
 
@@ -1771,3 +1772,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130227195132');
 INSERT INTO schema_migrations (version) VALUES ('20130301170219');
 
 INSERT INTO schema_migrations (version) VALUES ('20130301182309');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302062704');

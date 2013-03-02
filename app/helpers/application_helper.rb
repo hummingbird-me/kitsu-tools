@@ -4,6 +4,10 @@ module ApplicationHelper
     page_title.to_s
   end
 
+  def markdown(text)
+    RDiscount.new(text).to_html.html_safe
+  end
+
   def percentage_completed(anime, watchlist)
     return 0 if !watchlist
     
