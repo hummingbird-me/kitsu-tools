@@ -102,7 +102,11 @@ class User < ActiveRecord::Base
   #
   # Returns nothing.
   def connect_to_facebook(uid)
-    update_attributes(facebook_id: uid)
+    if not self.avatar.exists?
+      self.avatar = URI.parse("http://graph.facebook.com/#{uid}/picture?width=200&height=200")
+    end
+    self.facebook_id = uid
+    self.save
   end
 
   # Public: Return a hash table which returns false for all of the shows the user
