@@ -11,6 +11,6 @@ class Quote < ActiveRecord::Base
   validates :content, :anime, :user, :presence => true
 
   has_reputation :votes, source: :user, source_of: [
-    {reputation: :karma, of: :user}
+    {reputation: :quote_votes, of: :user}
   ]
 end

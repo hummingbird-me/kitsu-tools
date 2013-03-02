@@ -5,7 +5,7 @@ class Review < ActiveRecord::Base
 
   validates :user, :anime, :content, :positive, :presence => true
 
-  has_reputation :votes, source: :user, aggregated_by: :average, source_of: [
-    {reputation: :karma, of: :user}
+  has_reputation :votes, source: :user, source_of: [
+    {reputation: :review_votes, of: :user}
   ]
 end

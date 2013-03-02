@@ -20,9 +20,12 @@ class User < ActiveRecord::Base
   has_one :staged_import
 
   has_reputation :karma, :source => [
-    {reputation: :votes, of: :reviews},
-    {reputation: :votes, of: :quotes}
+    {reputation: :review_votes},
+    {reputation: :quote_votes}
   ]
+
+  has_reputation :review_votes, source: {reputation: :votes, of: :reviews}
+  has_reputation :quote_votes,  source: {reputation: :votes, of: :quotes}
 
   # Validations
   validates :name,
