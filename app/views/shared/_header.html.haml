@@ -49,7 +49,7 @@
           %span= link_to "register", main_app.new_user_registration_path
 
 
-  %figure
+  %figure{:style => ("display: none" if @hide_cover_image)}
     .overlay
       %h5.title If the demon is truly big, then we are no match for it. It's irrational. It's impossible. It's against my religion.
       %p Miroku (Inuyasha)

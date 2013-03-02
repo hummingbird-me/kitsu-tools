@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
+    @hide_cover_image = true
   end
   
   def dashboard
