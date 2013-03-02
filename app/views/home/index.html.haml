@@ -60,14 +60,9 @@
         .title
           %h3 Popular Anime
         .twelve.columns
-          .three.columns
-            = image_tag "http://localhost:3000/system/e057d898037fd1f866999ff3f2d5d7e34ecdf852_thumb.jpg?1361799239"
-          .three.columns
-            = image_tag "http://localhost:3000/system/e057d898037fd1f866999ff3f2d5d7e34ecdf852_thumb.jpg?1361799239"
-          .three.columns
-            = image_tag "http://localhost:3000/system/e057d898037fd1f866999ff3f2d5d7e34ecdf852_thumb.jpg?1361799239"
-          .three.columns
-            = image_tag "http://localhost:3000/system/e057d898037fd1f866999ff3f2d5d7e34ecdf852_thumb.jpg?1361799239"
+          - @popular_anime.each do |anime|
+            .three.columns
+              = link_to image_tag(anime.cover_image.url(:thumb)), anime
         .twelve.columns
           = link_to "View More", "#"
 
@@ -111,43 +106,8 @@
               = link_to "Death Note", "#"
               <span>49%</span>
 
-      .twelve.columns
-        .title
-          %h3 Latest Reviews
-        .six.columns
-          .panel
-            .three.columns
-              %img{:alt => "708591c8f151c74e754690af85cf20798f0bca27_thumb", :src => "http://hakanai.vikhyat.net/system/708591c8f151c74e754690af85cf20798f0bca27_thumb.jpg?1361873879"}/
-              .vote-blocks.twelve.columns
-                ★
-                ★
-                ★
-                ★
-                ☆
-            .nine.columns
-              %h3 Kino's Journey
-              %p
-                *Minor spoilers. Proceed at your own risk!*
-                An oddly structured and paced anime series that hides unexpected violence and emotional and philosophical depths behind its cute, simplistic art style. The story concerns itself with Kino, a young traveler in a strange world where every town is its own...
-                %br/
-                %a{:href => "#"} Read more
-
-        .six.columns
-          .panel
-            .three.columns
-              %img{:alt => "708591c8f151c74e754690af85cf20798f0bca27_thumb", :src => "http://hakanai.vikhyat.net/system/708591c8f151c74e754690af85cf20798f0bca27_thumb.jpg?1361873879"}/
-              .vote-blocks.twelve.columns
-                ★
-                ★
-                ★
-                ★
-                ☆
-            .nine.columns
-              %h3 Kino's Journey
-              %p
-                *Minor spoilers. Proceed at your own risk!*
-                An oddly structured and paced anime series that hides unexpected violence and emotional and philosophical depths behind its cute, simplistic art style. The story concerns itself with Kino, a young traveler in a strange world where every town is its own...
-                %br/
-                %a{:href => "#"} Read more
-
-           
+      - if @latest_reviews.length == 2
+        .twelve.columns
+          .title
+            %h3 Latest Reviews
+          = render partial: 'reviews/review_summary', collection: @latest_reviews, as: :review
