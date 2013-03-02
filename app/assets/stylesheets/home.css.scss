@@ -2,28 +2,90 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
+.large-banner {
+  figure {
+    height: 650px;
+    margin-top: -15px;
+    overflow: hidden;
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      text-align: center;
+      color: #fff;
+      @include opacity(0.90);
+      @include border-top-radius(3px);
+      @include background-image(linear-gradient(left top, #393939, #000));
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
 
 .home {
-  .container {
-    margin: 0 auto;
-    .panel {
-      .avatar {
+  .header-content {
+    position: relative;
+    bottom: 615px;
+    margin-bottom: -500px;
+    input {
+      height: 50px;
+      background: #000;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #ccc;
+    }
+    .login-button {
+      text-align: center;
+      margin-top: 40px;
+      line-height: 60px;
+    }
+    p {
+      text-align: center;
+      margin-top: 5px;
+      a {
+        color: white;
+        font-weight: normal;
+      }
+    }
+    .featured-anime {
+      padding: 0px;
+      img {
+        @include border-radius(3px);
+      }
+      .anime-poster {
         position: relative;
-        bottom: 30px;
-        margin-bottom: -30px;
-        padding: 10px;
-        float: left;
-        img {
-          width: 70px;
-          height: 70px;
-          border: 2px solid #fff;
-          @include border-radius(100px); 
+        span {
+          img {
+            position: absolute;
+            @include border-radius(100px);
+            width: 50px;
+            height: 50px;
+            left: 20px;
+            bottom: 35px;
+          }
         }
       }
-      .username {
-        float: left;
-        line-height: 40px;
-      }
+    }
+  }
+
+  .trending-anime {
+    .top-anime {
+      margin-bottom: 10px;
+    }
+    li {
+      padding: 5px 0px;
+    }
+  }
+
+  .new-users {
+    margin-bottom: 40px;
+    img {
+      @include border-radius(100px);
     }
   }
 }
