@@ -40,6 +40,7 @@ gem 'jquery-rails'
 gem 'haml', '~> 4.0'
 gem 'haml-rails'
 gem 'simple_form'
+gem 'rdiscount'
 
 # Attachments
 gem "paperclip", "~> 3.0"
