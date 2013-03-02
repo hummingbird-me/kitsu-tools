@@ -78,6 +78,7 @@ class ImportsController < ApplicationController
     @user = current_user
     @user.staged_import = nil
     @user.save
+    @user.recompute_life_spent_on_anime
     redirect_to "/users/edit#import"
   end
 
