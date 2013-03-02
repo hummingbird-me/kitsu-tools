@@ -50,12 +50,12 @@ class MALImportWorker
       reviews
     end
 
-    reviewpage = Nokogiri::HTML(open("http://myanimelist.net/profile/#{username}/reviews"))
+    reviewpage = Nokogiri::HTML(open("http://myanimelist.net/profile/#{username}/reviews"), nil, 'utf-8')
     reviews += get_reviews(reviewpage)
     page = 0
     while reviewpage.css('a').any? {|t| t.text == "More Reviews" }
       page += 1
-      reviewpage = Nokogiri::HTML(open("http://myanimelist.net/profile/#{username}/reviews&p=#{page}"))
+      reviewpage = Nokogiri::HTML(open("http://myanimelist.net/profile/#{username}/reviews&p=#{page}"), nil, 'utf-8')
       reviews += get_reviews(reviewpage)
     end
 
