@@ -1,20 +1,67 @@
-%h1= title "#{@anime.title} Reviews"
+// Please turn this into a partial
+.anime-discover.anime-show.anime-show-full
+  .row
+    .three.columns
 
-- @reviews.each do |review|
-  .panel
-    %h5 #{review.user.name} <small>#{review.positive? ? ':)' : ':('}</small>
-    %p(style="whitespace: pre-wrap")= truncate(review.content, length: 600, omission: "...")
-    %p 
-      #{(review.votes * 100).to_i}% of users found this review useful.
-      |
-      - if @user_evaluations[review.id] && @user_evaluations[review.id].value == 1.0
-        %strong Useful
-      - else
-        = link_to "Useful", vote_anime_review_path(@anime, review, type: "up"), method: :post
-      \/
-      - if @user_evaluations[review.id] && @user_evaluations[review.id].value != 1.0
-        %strong Not Useful
-      - else
-        = link_to "Not Useful", vote_anime_review_path(@anime, review, type: "down"), method: :post
-      |
-      = link_to "Report this review.", "#"
+      // = render partial: "card", locals: {data: [@anime, @watchlist]} 
+      #card-full-metal-panic-the-second-raid.columns.twelve.mobile-two
+        .panel.cards.cf
+          %figure
+            %figcaption
+              %a{:href => "/anime/full-metal-panic-the-second-raid"}
+              %a{:href => "/anime/full-metal-panic-the-second-raid"} Full Metal Panic! The Second Raid
+            %img{:src => "/system/e057d898037fd1f866999ff3f2d5d7e34ecdf852_thumb.jpg?1361799239"}/
+          .progress.six
+            %span.meter{:style => "width: 2.0%"}
+          .drop
+            .watchlist
+              .content
+                %li
+                  %a{"data-method" => "post", "data-remote" => "true", :href => "/watchlist/add/full-metal-panic-the-second-raid?status=Plan+to+Watch&amp;width=four", :rel => "nofollow"} Plan to Watch
+                %li
+                  %a{"data-method" => "post", "data-remote" => "true", :href => "/watchlist/add/full-metal-panic-the-second-raid?status=Completed&amp;width=four", :rel => "nofollow"} Completed
+                %li
+                  %a{"data-method" => "post", "data-remote" => "true", :href => "/watchlist/add/full-metal-panic-the-second-raid?status=On+Hold&amp;width=four", :rel => "nofollow"} On Hold
+                %li
+                  %a{"data-method" => "post", "data-remote" => "true", :href => "/watchlist/add/full-metal-panic-the-second-raid?status=Dropped&amp;width=four", :rel => "nofollow"} Dropped
+                %li
+                  %a{"data-confirm" => "Are you sure you want to remove Full Metal Panic! The Second Raid from your Watchlist?", "data-method" => "post", "data-remote" => "true", :href => "/watchlist/remove/full-metal-panic-the-second-raid?width=four", :rel => "nofollow"} - Remove from Watchlist
+              .drop-button
+                Currently Watching
+                %a.selector{:href => "#"}
+          .vote-blocks
+            .star-rating
+              %a{"data-remote" => "true", :href => "/watchlist/rate/full-metal-panic-the-second-raid/-2?width=four"} ★
+              %a{"data-remote" => "true", :href => "/watchlist/rate/full-metal-panic-the-second-raid/-1?width=four"} ★
+              %a{"data-remote" => "true", :href => "/watchlist/rate/full-metal-panic-the-second-raid/0?width=four"} ★
+              %a{"data-remote" => "true", :href => "/watchlist/rate/full-metal-panic-the-second-raid/1?width=four"} ★
+              %a{"data-remote" => "true", :href => "/watchlist/rate/full-metal-panic-the-second-raid/2?width=four"} ★
+
+    // End Requested partial
+    .nine.columns
+      .panel 
+        %h4= title "#{@anime.title} Reviews"
+        %a{"data-reveal-id" => "submit-review", :href => "#"}
+          %span= "Write a review for #{@anime.title}"
+
+      - @reviews.each do |review|
+        .panel
+          %h5 #{review.user.name} <small>#{review.positive? ? ':)' : ':('}</small>
+          %p(style="whitespace: pre-wrap")= truncate(review.content, length: 600, omission: "...")
+          %p 
+            #{(review.votes * 100).to_i}% of users found this review useful.
+            |
+            - if @user_evaluations[review.id] && @user_evaluations[review.id].value == 1.0
+              %strong Useful
+            - else
+              = link_to "Useful", vote_anime_review_path(@anime, review, type: "up"), method: :post
+            \/
+            - if @user_evaluations[review.id] && @user_evaluations[review.id].value != 1.0
+              %strong Not Useful
+            - else
+              = link_to "Not Useful", vote_anime_review_path(@anime, review, type: "down"), method: :post
+            |
+            = link_to "Report this review.", "#"
+
+#submit-review.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
+  Review Editor Goes Here
