@@ -152,14 +152,4 @@ class User < ActiveRecord::Base
       self.save
     end
   end
-
-  # Forem permissions
-  def can_read_forem_category?(category); true;       end
-  def can_read_forem_forums?;             true;       end
-  def can_read_forem_forum?(forum);       true;       end
-  def can_read_forem_topic?(topic);       true;       end
-  def can_create_forem_topic?(topic);     persisted?; end
-  def can_reply_to_forem_topic?(topic);   persisted?; end
-  def can_edit_forem_posts?(forum);       admin?;     end
-
 end

@@ -6,8 +6,6 @@ Hummingbird::Application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks" 
   }
 
-  mount Forem::Engine, :at => '/community'
-
   root :to => "home#index"
 
   # Dashboard

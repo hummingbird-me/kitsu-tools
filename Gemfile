@@ -64,9 +64,6 @@ gem 'sidekiq'
 gem 'slim'
 gem 'sinatra', :require => nil
 
-# Forum
-gem 'forem', :git => "git://github.com/vikhyat/forem.git"
-
 # Fuzzy Search with Postgres.
 gem 'pg_search'
 

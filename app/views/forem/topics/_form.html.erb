@@ -1,9 +1,0 @@
-<%= simple_form_for [forem, @forum, @topic] do |f| %>
-  <%= f.input :subject %>
-
-  <%= f.simple_fields_for :posts do |post| %>
-    <%= render :partial => "forem/posts/form", :locals => { :f => post }%>
-  <% end %>
-  
-  <%= f.submit %>
-<% end %>
