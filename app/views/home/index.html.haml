@@ -9,31 +9,13 @@
       %form{:action => "/search", :autocomplete => "off"}
         %input.typeahead_home(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
     .featured-anime.eleven.columns.centered
-      .anime-poster.three.columns
-        %figure
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire4/5e5a8d0f46487186e64687b046e0eb691357673527_full.jpg"
-          %figcaption
-            %span 
-              = image_tag "http://www.placekitten.com/200/200"
-        %p= link_to "Problem Children Are Coming...", "#"
-      .anime-poster.three.columns
-        %figure
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire1/147343502675febc265eb48873d70f1f1357163351_full.jpg"
-          %span 
-            = image_tag "http://www.placekitten.com/200/200"
-        %p= link_to "Cuticle Detective Inaba", "#"
-      .anime-poster.three.columns
-        %figure
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire2/9e8550dd5fe4dfbbe7accdb24de70a5b1302295729_full.jpg"
-          %span 
-            = image_tag "http://www.placekitten.com/200/200"
-        %p= link_to "Blue Exorcist", "#"
-      .anime-poster.three.columns
-        %figure
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire1/7c64a48edf3812a52219287c777bee521301957316_full.jpg"
-          %span 
-            = image_tag "http://www.placekitten.com/200/200"
-        %p= link_to "The World Only God Knows", "#"
+      - @featured_anime.each do |anime|
+        .anime-poster.three.columns
+          %figure
+            = link_to image_tag(anime.cover_image.url(:"thumb@2x")), anime
+            /%figcaption
+            /  %span= image_tag "http://www.placekitten.com/200/200"
+          %p= link_to anime.title, anime
 
     .twelve.columns
       %span.login-button Discover More Anime

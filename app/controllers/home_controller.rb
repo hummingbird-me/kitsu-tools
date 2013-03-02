@@ -3,6 +3,12 @@ class HomeController < ApplicationController
     @hide_cover_image = true
     @latest_reviews = Review.order('created_at DESC').limit(2)
     @popular_anime = Anime.order('wilson_ci DESC').limit(4)
+    @featured_anime = Anime.where('slug IN (?)', %w[
+      sword-art-online
+      cuticle-detective-inaba
+      blue-exorcist
+      the-girl-who-leapt-through-time
+    ])
     # Select one of these 12 background images.
     @background_image = %w[
       http://hakanai.vikhyat.net/system/gallery_images/images/000/000/076/original/blood.jpg?1361895445
