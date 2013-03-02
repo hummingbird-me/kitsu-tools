@@ -16,7 +16,7 @@
     .nine.columns
       %h3= review.anime.title
       %p
-        = truncate(review.content, length: 300, omission: '...')
+        = truncate(review.content, length: 250, omission: '...')
         %br
         = link_to "Read more", anime_review_path(review.anime, review)
 

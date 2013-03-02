@@ -671,7 +671,11 @@ CREATE TABLE users (
     star_rating boolean,
     mal_username character varying(255),
     life_spent_on_anime integer,
-    about text
+    about text,
+    confirmation_token character varying(255),
+    confirmed_at timestamp without time zone,
+    confirmation_sent_at timestamp without time zone,
+    unconfirmed_email character varying(255)
 );
 
 
@@ -1099,6 +1103,13 @@ CREATE INDEX index_staged_imports_on_user_id ON staged_imports USING btree (user
 
 
 --
+-- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (confirmation_token);
+
+
+--
 -- Name: person_mal_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1349,3 +1360,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130302100724');
 INSERT INTO schema_migrations (version) VALUES ('20130302101826');
 
 INSERT INTO schema_migrations (version) VALUES ('20130302112208');
+
+INSERT INTO schema_migrations (version) VALUES ('20130302185243');

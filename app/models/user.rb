@@ -1,10 +1,8 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable
+  # Include devise modules. Others available are:
+  # :token_authenticatable, :lockable, :timeoutable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable,
+         :trackable, :validatable, :omniauthable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me,
@@ -88,12 +86,15 @@ class User < ActiveRecord::Base
     end
     
     # Just create a new account. >_>
-    user = User.create(
+    user = User.new(
       name: auth.extra.raw_info.name,
       facebook_id: auth.uid,
       email: auth.info.email,
+      avatar: URI.parse("http://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
       password: Devise.friendly_token[0, 20]
     )
+    user.skip_confirmation!
+    user.save
     return user
   end
   
@@ -101,7 +102,11 @@ class User < ActiveRecord::Base
   #
   # Returns nothing.
   def connect_to_facebook(uid)
-    update_attributes(facebook_id: uid)
+    if not self.avatar.exists?
+      self.avatar = URI.parse("http://graph.facebook.com/#{uid}/picture?width=200&height=200")
+    end
+    self.facebook_id = uid
+    self.save
   end
 
   # Public: Return a hash table which returns false for all of the shows the user
