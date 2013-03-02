@@ -6,8 +6,9 @@
 .home.anime-discover.anime-show.login-register-card
   .header-content.row
     .eleven.columns.centered
-      %form{:action => "/search", :autocomplete => "off"}
-        %input.typeahead_home(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
+      .search
+        %form{:action => "/search", :autocomplete => "off"}
+          %input.typeahead_home(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
     .featured-anime.eleven.columns.centered
       - @featured_anime.each do |anime|
         .anime-poster.three.columns
