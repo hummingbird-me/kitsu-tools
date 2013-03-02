@@ -86,12 +86,15 @@ class User < ActiveRecord::Base
     end
     
     # Just create a new account. >_>
-    user = User.create(
+    user = User.new(
       name: auth.extra.raw_info.name,
       facebook_id: auth.uid,
       email: auth.info.email,
+      avatar: URI.parse("http://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
       password: Devise.friendly_token[0, 20]
     )
+    user.skip_confirmation!
+    user.save
     return user
   end
   
