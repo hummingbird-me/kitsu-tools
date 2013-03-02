@@ -16,7 +16,7 @@
             .character — #{quote.character_name}
           %p
             - if quote.creator
-              (Submitted by #{link_to quote.creator}) 
+              (Submitted by #{link_to quote.creator.name, quote.creator}) 
               |
             = pluralize quote.votes.to_i, "vote"
             |

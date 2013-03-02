@@ -14,7 +14,10 @@
           %h5 #{review.user.name} <small>#{review.positive? ? ':)' : ':('}</small>
           %p(style="whitespace: pre-wrap")= truncate(review.content, length: 600, omission: "...")
           %p 
-            #{(review.votes * 100).to_i}% of users found this review useful.
+            = pluralize review.votes.to_i, "user"
+            of
+            = pluralize review.evaluations.length, "user"
+            found this review useful.
             |
             - if @user_evaluations[review.id] && @user_evaluations[review.id].value == 1.0
               %strong Useful
