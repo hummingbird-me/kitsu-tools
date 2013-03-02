@@ -18,7 +18,8 @@
           %p= link_to anime.title, anime
 
     .twelve.columns
-      %span.login-button Discover More Anime
+      = link_to new_user_session_path do
+        %span.login-button Discover More Anime
 
   .row
     .twelve.columns
