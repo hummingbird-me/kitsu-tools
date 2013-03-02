@@ -5,6 +5,8 @@
     .eight.columns.centered
       .panel.login-box.signup
         = form_for(resource, as: resource_name, url: registration_path(:user)) do |f|
+          - unless resource.errors.empty?
+            .alert-box.alert= devise_error_messages!
           = link_to omniauth_authorize_path(resource_name, :facebook) do
             .social-buttons
               #fb-signin.fb-button
