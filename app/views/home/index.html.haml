@@ -7,7 +7,7 @@
   .header-content.row
     .eleven.columns.centered
       %form{:action => "/search", :autocomplete => "off"}
-        %input(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
+        %input.typeahead_home(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
     .featured-anime.eleven.columns.centered
       .anime-poster.three.columns
         %figure

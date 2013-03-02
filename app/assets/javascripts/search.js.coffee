@@ -3,7 +3,11 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $("input#nav_search_input").typeahead({
+  $("input.typeahead").typeahead({
+    name: 'anime',
+    remote: "/search.json?query=%QUERY"
+  });
+  $("input.typeahead_home").typeahead({
     name: 'anime',
     remote: "/search.json?query=%QUERY"
   });
