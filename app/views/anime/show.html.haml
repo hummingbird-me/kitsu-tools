@@ -110,10 +110,10 @@
 
     / Nav Sidebar
     .four.columns
-      .trailer
-        .flex-video
-          %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}", :width => "420"}
-
+      - if @anime.youtube_video_id
+        .trailer
+          .flex-video
+            %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}", :width => "420"}
 
       = render "mini_gallery"
 
