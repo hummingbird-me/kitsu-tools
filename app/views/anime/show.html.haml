@@ -47,19 +47,30 @@
         .lower.twelve.columns
           .positive-review.six.columns
             %h6 Top Rated <span>Positive</span> Review
-            %p Sword Art Online is a pioneer of its genre in that, the source material dates from all the way back in 2002 (.hack// being of the same vintage). This is important to note as with all pioneering feats, there is an initial sense of wonder and hype, followed by disappointment as the same concept is refined and... <a href="#">read more</a>
 
-            %span.user
-              = image_tag "http://placekitten.com/g/200/200"
-              = link_to "Kanye West", "#"
+            - if @top_reviews[:positive]
+              %p
+                = truncate(@top_reviews[:positive].content, length: 300, omission: '...')
+                = link_to "read more", "#"
+              %span.user
+                = image_tag @top_reviews[:positive].user.avatar.url(:thumb)
+                = link_to @top_reviews[:positive].user.name, @top_reviews[:positive].user
+            - else
+              %p EMPTY STATE
 
           .negative-review.six.columns
             %h6 Top Rated <span>Negative</span> Review
-            %p I might as well skip the plot synopsis of Sword Art Online, because odds are you already know it. Sword Art Online has utterly exploded. It is all over the place. It is that one show the EVERYONE is watching, whether it be through genuine interest or sheer bile fascination. And amidst this, it has... <a href="#">read more</a>
-            %span.user
-              = image_tag "http://placekitten.com/g/200/200"
-              = link_to "Felicia Day", "#"
 
+            - if @top_reviews[:negative]
+              %p
+                = truncate(@top_reviews[:negative].content, length: 300, omission: '...')
+                = link_to "read more", "#"
+              %span.user
+                = image_tag @top_reviews[:negative].user.avatar.url(:thumb)
+                = link_to @top_reviews[:negative].user.name, @top_reviews[:positive].user
+            - else
+              %p EMPTY STATE
+            
         .footer.twelve.columns
           = link_to "view all reviews", anime_reviews_path(@anime)
 

@@ -5,7 +5,7 @@
 
       .row
         - @watchlist.each do |wl|
-          = render partial: "anime/card", locals: {data: [wl.anime, wl, 'three']}
+          = render partial: "anime/card", locals: {data: [wl.anime, wl, 'three', (@user == current_user ? :readwrite : :readonly)]}
 
       .twelve.columns.pagination-centered
         = paginate @watchlist

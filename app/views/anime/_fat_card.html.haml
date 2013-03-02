@@ -21,4 +21,4 @@
       = image_tag wl.anime.cover_image.url(:thumb), class: "background"
       .progress.six
         %span.meter{:style => "width: 60%"}
-    = render partial: "episodes/list_four", locals: {episodes: select_four_episodes(wl, wl.anime), anime: wl.anime}
+    = render partial: "episodes/list_four", locals: {episodes: select_four_episodes(wl, wl.anime), anime: wl.anime, write: write}

@@ -6,10 +6,14 @@ class AnimeController < ApplicationController
     @genres = @anime.genres
     @producers = @anime.producers
     @quotes = @anime.quotes.limit(4)
-    @reviews = @anime.reviews.includes(:user)
     @castings = Casting.where(anime_id: @anime.id, featured: true)
     @languages = @castings.map {|x| x.role }.uniq
     @gallery = GalleryImage.where(anime_id: @anime.id).limit(6)
+
+    @top_reviews = {
+      positive: @anime.reviews.where('rating > 0 OR positive').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first,
+      negative: @anime.reviews.where('rating <= 0 OR NOT positive').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first
+    }
 
     if user_signed_in?
       @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
