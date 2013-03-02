@@ -34,8 +34,8 @@ class AnimeController < ApplicationController
   end
 
   def index
-    # Establish a base scope, with pagination enabled.
-    @anime = Anime.sfw_filter(current_user).page(params[:page]).per(18)
+    # Establish a base scope.
+    @anime = Anime.sfw_filter(current_user)
 
     # Get a list of all genres.
     @all_genres = Genre.default_filterable(current_user)
@@ -69,6 +69,15 @@ class AnimeController < ApplicationController
 
     # What regular filter are we applying?
     @filter = params[:filter] || "all"
+    
+    # Order by Wilson CI lower bound, except for the recommendations page.
+    unless @filter == "recommended"
+      @anime = @anime.order('anime.wilson_ci DESC')
+    end
+
+    unless @filter == "unfinished"
+      @anime = @anime.page(params[:page]).per(18)
+    end
 
     if @filter == "unseen"
 
@@ -80,8 +89,10 @@ class AnimeController < ApplicationController
       
     elsif @filter == "unfinished"
 
-      # FIXME: Filter out anime where the watchlist status is "Completed".
       @anime = @anime.where('anime.id IN (?)', @watchlist.keys)
+        .reject {|x| ["Completed", "Dropped"].include? @watchlist[x.id].status }
+        
+      @anime = Kaminari.paginate_array(@anime).page(params[:page]).per(18)
 
     elsif @filter == "recommended"
 
@@ -102,11 +113,6 @@ class AnimeController < ApplicationController
 
     else
       # We don't have to do any filtering.
-    end
-
-    # Order by Wilson CI lower bound, except for the recommendations page.
-    unless @filter == "recommended"
-      @anime = @anime.order('anime.wilson_ci DESC')
     end
     
     @collection = @anime.map {|x| [x, @watchlist[x.id]] }
