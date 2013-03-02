@@ -54,3 +54,6 @@
       %h5.title If the demon is truly big, then we are no match for it. It's irrational. It's impossible. It's against my religion.
       %p Miroku (Inuyasha)
     %img{:src => "http://thetvdb.com/banners/fanart/original/71361-4.jpg"}
+
+- flash.each do |style, message|
+  .alert-box{:class => style.to_s}= message

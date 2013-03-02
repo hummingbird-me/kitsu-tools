@@ -4,8 +4,6 @@
   .row
     .eight.columns.centered
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-        - if flash[:alert]
-          .alert-box.alert= flash[:alert]
         .panel.login-box
           %span.login-title Welcome back, we missed you!
           .input-wrap
