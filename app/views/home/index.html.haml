@@ -18,7 +18,7 @@
           %p= link_to anime.title, anime
 
     .twelve.columns
-      = link_to new_user_session_path do
+      = link_to (user_signed_in? ? "/anime" : new_user_registration_path) do
         %span.login-button Discover More Anime
 
   .row
