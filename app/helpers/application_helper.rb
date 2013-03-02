@@ -5,6 +5,7 @@ module ApplicationHelper
   end
 
   def markdown(text)
+    return "" if text.nil?
     RDiscount.new(text).to_html.html_safe
   end
 
