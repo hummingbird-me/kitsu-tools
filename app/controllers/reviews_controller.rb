@@ -12,6 +12,10 @@ class ReviewsController < ApplicationController
       end
     end
   end
+
+  def show
+    @review = Review.find(params[:id])
+  end
   
   def vote
     authenticate_user!

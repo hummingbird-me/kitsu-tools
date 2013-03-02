@@ -18,6 +18,6 @@
       %p
         = truncate(review.content, length: 300, omission: '...')
         %br
-        = link_to "Read more", "#"
+        = link_to "Read more", anime_review_path(review.anime, review)
 
 
