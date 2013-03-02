@@ -4,17 +4,18 @@
       = render partial: 'anime/card', locals: {data: [@anime, @watchlist, 'twelve']}
 
     .nine.columns
-      .panel
+      .panel.top-bar
         %h4= title "#{@anime.title} Quotes"
         %a{"data-reveal-id" => "submit-quote", :href => "#"}
           %span= "Submit a quote for #{@anime.title}"
           
       - @quotes.each do |quote|
-        .panel
-          %p= quote.content
-          - if quote.character_name
-            .character — #{quote.character_name}
-          %p
+        %fieldset
+          %blockquote
+            = quote.content
+            - if quote.character_name
+              %cite — #{quote.character_name}
+          %p.option-bar
             - if quote.creator
               (Submitted by #{link_to quote.creator.name, quote.creator}) 
               |
