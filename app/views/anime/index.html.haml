@@ -44,7 +44,23 @@
     / Thumbnails
     .anime-grid.nine.columns
       - if @filter == "recommended" and !current_user.recommendations_up_to_date
-        %div.alert-box We're updating your recommendations. Check back in a minute!
+        %div.alert-box
+          %span.updating_recommendations We're updating your recommendations. 
+          %span.check_back Check back in a minute!
+        :javascript
+          function checkForCompletion() {
+            $.getJSON("/users.json", function(data) { 
+              if (!data["recommendations_up_to_date"]) {
+                $("span.check_back").html("Hang on!");
+                setTimeout("checkForCompletion()", 5000);
+              }
+              else {
+                $("span.updating_recommendations").html("We're done updating your recommendations.");
+                $("span.check_back").html("<a href='/anime/filter/recommended'>Click here to check them out!</a>");
+              }
+            });
+          }
+          checkForCompletion();
       .row
         = render partial: "anime/card", collection: @collection, as: :data
 

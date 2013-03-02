@@ -1,4 +1,18 @@
 class UsersController < ApplicationController
+  def index
+    authenticate_user!
+
+    @status = {
+      recommendations_up_to_date: current_user.recommendations_up_to_date
+    }
+    
+    respond_to do |format|
+      format.json {
+        render :json => @status
+      }
+    end
+  end
+  
   def show
     @user = User.find(params[:id])
     @active_tab = :profile
