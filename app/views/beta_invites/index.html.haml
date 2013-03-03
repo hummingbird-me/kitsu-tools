@@ -1,0 +1,21 @@
+.login-register-card
+  .row
+    .eight.columns.centered
+      .panel.login-box.signup
+        - if @beta_invite.invited?
+          .login-title
+            You have already been invited to the beta.
+          .no-account.twelve.columns
+            %p We have sent an email to #{@beta_invite.email} with registration instructions. 
+            %p= link_to "Resend Registration Instructions", "#", class: 'button'
+              
+          
+        - else
+          .login-title 
+            You are currently in the waiting list.
+          .login-title
+            %strong= pluralize @people_before_you, "person"
+            = @people_before_you == 1 ? "is" : "are"
+            ahead of you.
+          .no-account.twelve.columns
+            %p= @beta_invite.email

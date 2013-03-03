@@ -1,0 +1,21 @@
+.login-register-card
+  .row
+    .eight.columns.centered
+      .panel.login-box.signup
+        .login-title 
+          We aren't quite ready to be open to the public just yet.
+          %br
+          But you can still sign up for the beta!
+        = form_for BetaInvite.new, url: beta_invites_path do |f|
+          .input-wrap.signup
+            .login-input-wrap
+              = f.email_field :email, class: 'login-input'
+              %span.login-input-ghost Email Address
+          .signup-step-buttons
+            = f.submit "Request Invite", id: 'login', class: 'login-button'
+        .no-account.twelve.columns
+          %p 
+            If you have already signed up, you can enter your email address
+            %br
+            again to see how many people are ahead of you.
+      

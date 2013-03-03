@@ -5,6 +5,7 @@ Hummingbird::Application.routes.draw do
     registrations: "registrations",
     omniauth_callbacks: "users/omniauth_callbacks" 
   }
+  resources :beta_invites
 
   root :to => "home#index"
 
