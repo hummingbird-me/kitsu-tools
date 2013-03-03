@@ -7,6 +7,10 @@ class UsersController < ApplicationController
     }
     
     respond_to do |format|
+      format.html {
+        flash.keep
+        redirect_to '/'
+      }
       format.json {
         render :json => @status
       }

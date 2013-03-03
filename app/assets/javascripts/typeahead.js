@@ -654,7 +654,7 @@
             },
             _handleSelection: function($e) {
                 this.trigger("select", formatDataForSuggestion($($e.currentTarget)));
-                $("form#live_search_form").submit();
+                $("li.tt-dataset-anime").parent().parent().parent().submit();
             },
             _moveCursor: function(increment) {
                 var $suggestions, $cur, nextIndex, $underCursor;
@@ -845,7 +845,7 @@
             },
             _handleSelection: function(e) {
                 var byClick = e.type === "select", suggestionData = byClick ? e.data : this.dropdownView.getSuggestionUnderCursor();
-                console.log(suggestionData);
+                //console.log(suggestionData);
                 if (suggestionData) {
                     this.inputView.setInputValue(suggestionData.value);
                     byClick ? this.inputView.focus() : e.data.preventDefault();

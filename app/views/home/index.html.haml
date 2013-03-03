@@ -9,6 +9,8 @@
       .search
         %form{:action => "/search", :autocomplete => "off"}
           %input.typeahead_home(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
+          %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
+            
     .featured-anime.eleven.columns.centered
       - @featured_anime.each do |anime|
         .anime-poster.three.columns
