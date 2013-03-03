@@ -27,17 +27,4 @@
                 = image_tag "icons/fb-logo.png"
                 %span FACEBOOK
           .no-account.twelve.columns
-            %p 
-              Don't have an account? 
-              = link_to "Create one now", new_registration_path(resource_name)
-
-/     = f.label :email
-/     = f.email_field :email, :autofocus => true
-/     = f.label :password
-/     = f.password_field :password
-/   - if devise_mapping.rememberable?
-/     %div
-/       = f.check_box :remember_me
-/       = f.label :remember_me
-/   %div= f.submit "Sign in"
-/ = render "devise/shared/links"
+            = render "devise/shared/links"

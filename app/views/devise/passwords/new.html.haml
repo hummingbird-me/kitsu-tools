@@ -1,0 +1,15 @@
+.login-register-card
+  .row
+    .eight.columns.centered
+      .panel.login-box
+        %span.login-title= title "Forgot your password?"
+        = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+          = devise_error_messages!
+
+          .input-wrap.signup
+            .login-input-wrap
+              = f.email_field :email, class: 'login-input'
+              %span.login-input-ghost Email Address
+          .signup-step-buttons
+            = f.submit "Send me reset password instructions", id: 'login', class: 'login-button'
+        .no-account.twelve.columns= render "devise/shared/links"

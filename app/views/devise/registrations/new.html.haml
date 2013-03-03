@@ -33,6 +33,4 @@
           .signup-step-buttons
             = f.submit "Register Account", id: 'login', class: 'login-button'
         .no-account.twelve.columns
-          %p 
-            Already Registered?
-            = link_to "Login now", new_session_path(resource_name)
+          = render "devise/shared/links"
