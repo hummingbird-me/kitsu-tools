@@ -6,7 +6,7 @@
       - %w(currently_watching plan_to_watch completed on_hold dropped).each do |l|
         %dd{:class => ("active" if @sub_tab == l)}= link_to l.titleize, user_watchlist_path(@user, list: l)
 
-- if @sub_tab == "currently_watching" and @watchlist.length >= 2
+- if @sub_tab == "currently_watching"
   = render "watchlist_currently_watching"
 - else
   - if @watchlist && @watchlist.length > 0
