@@ -14,8 +14,9 @@ class BetaInvitesController < ApplicationController
   def create
     # Check whether there already is a beta invite by this name.
     email = params["beta_invite"]["email"]
-    if BetaInvite.find_by_email(email).nil?
-      BetaInvite.create(email: email)
+    if (beta_invite = BetaInvite.find_by_email(email)).nil?
+      beta_invite = BetaInvite.create(email: email)
+      BetaMailer.delay.beta_sign_up(beta_invite) if BetaInvite.find_by_email(email)
     end
     beta_invite = BetaInvite.find_by_email(email)
     redirect_to beta_invites_path(email: email)
