@@ -16,7 +16,7 @@
   .has-tip {
     cursor: pointer;
     &:hover{
-      color: orange;
+      color: #fd7532;
     }
   }
 
@@ -43,7 +43,7 @@
     }
 
     p.active {
-      background: orange;
+      background: #fd7532;
       border-radius: 3px;
       padding: 3px;
 
@@ -83,11 +83,10 @@
   // override end // 
 
   a {
-  	color: #4d4d4d;
-  	font-weight: bold;
+  	color: #fd7532;
 
   	&:hover {
-  		color: darkorange;
+  		color: #3f5765;
   	}
   }
 
@@ -199,7 +198,7 @@
   		padding: 0px;
 
   		.meter {
-  			background: orange;
+  			background: #fd7532;
   		}
   	}
 

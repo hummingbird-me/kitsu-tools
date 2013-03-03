@@ -56,7 +56,9 @@
                 = image_tag @top_reviews[:positive].user.avatar.url(:thumb)
                 = link_to @top_reviews[:positive].user.name, @top_reviews[:positive].user
             - else
-              %p EMPTY STATE
+              .nine.columns.centered
+                = image_tag "http://cl.ly/image/3u2X0t1B0E11/no-positive-reviews@2x.jpg"
+                %p No positive reviews. <br><a href="#">Write the first</a>!
 
           .negative-review.six.columns
             %h6 Top Rated <span>Negative</span> Review
@@ -69,7 +71,9 @@
                 = image_tag @top_reviews[:negative].user.avatar.url(:thumb)
                 = link_to @top_reviews[:negative].user.name, @top_reviews[:positive].user
             - else
-              %p EMPTY STATE
+              .nine.columns.centered
+                = image_tag "http://cl.ly/image/0T2u2t2J0Z35/no-negative-reviews@2x.jpg"
+                %p No negative reviews. <br><a href="#">Write the first</a>!
             
         .footer.twelve.columns
           = link_to "view all reviews", anime_reviews_path(@anime)
@@ -78,8 +82,8 @@
         %header 
           .eleven.columns
             #{@anime.title} Episodes
-          .one.columns
-            = link_to "edit", "#"
+          / .one.columns
+          /   = link_to "edit", "#"
 
         = render partial: "episodes/list_four", locals: {episodes: @episodes, anime: @anime}
 
@@ -87,8 +91,8 @@
         %header 
           .eleven.columns
             #{@anime.title} Voice Actors
-          .one.columns
-            = link_to "edit", "#"
+          / .one.columns
+          /   = link_to "edit", "#"
 
         %dl.tabs
           - @languages.each_with_index do |language, i|
