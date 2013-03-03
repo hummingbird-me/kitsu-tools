@@ -21,4 +21,18 @@ class BetaInvitesController < ApplicationController
     beta_invite = BetaInvite.find_by_email(email)
     redirect_to beta_invites_path(email: email)
   end
+  
+  def resend_invite
+    email = params["email"]
+    beta_invite = BetaInvite.find_by_email(email)
+    if beta_invite.nil?
+      redirect_to new_beta_invite_path
+    else
+      if beta_invite.invited?
+        BetaMailer.delay.beta_invite(beta_invite)
+        flash[:notice] = "The email has been resent."
+      end
+      redirect_to :back
+    end
+  end
 end
