@@ -144,7 +144,7 @@
           = link_to "[Show all]", anime_quotes_url(@anime)
           %a{"data-reveal-id" => "quoteModal", :href => "#"} [Submit quote]
 
-    .similar-anime.twelve.columns.hide-for-small
+    .similar-anime.twelve.columns.hide-for-small{:style => 'display: none!important'}
       %header
         .four.columns
           %hr
@@ -179,12 +179,3 @@
 #quoteModal.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
   = render "quotes/new"
 
-
-  / %h3 Reviews
-
-  / - @reviews[0..1].each do |review|
-  /   %h5 #{review.user.name} <small>#{review.positive ? ':)' : ':('}</small>
-  /   %p(style="white-space: pre-wrap")= truncate(review.content, length: 300, omission: '...')
-
-  / %p
-  /   = link_to "[Show all]", anime_reviews_url(@anime)
