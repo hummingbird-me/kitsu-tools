@@ -32,6 +32,14 @@ class User < ActiveRecord::Base
   
   validates :facebook_id, allow_blank: true, uniqueness: true
 
+  validate :ensure_invited_to_beta, before: :create
+  def ensure_invited_to_beta
+    beta_invite = BetaInvite.find_by_email(self.email)
+    unless beta_invite && beta_invite.invited?
+      errors.add(:email, 'has not been invited to the beta yet.')
+    end
+  end
+
   def to_s
     name
   end
@@ -85,9 +93,6 @@ class User < ActiveRecord::Base
       return user
     end
 
-    # Comment the next line to allow creating an account via Facebook.
-    return nil
-    
     # Just create a new account. >_>
     user = User.new(
       name: auth.extra.raw_info.name,
