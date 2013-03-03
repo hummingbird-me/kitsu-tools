@@ -101,7 +101,6 @@ class User < ActiveRecord::Base
       avatar: URI.parse("http://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
       password: Devise.friendly_token[0, 20]
     )
-    user.skip_confirmation!
     user.save
     return user
   end
