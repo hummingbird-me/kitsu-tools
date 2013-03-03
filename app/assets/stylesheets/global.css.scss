@@ -33,6 +33,14 @@ body {
       width: 100%;
     }
   }
+
+  .positive {
+    color: #2aa730;
+  }
+
+  .negative {
+    color: #c63838;
+  }
   
   input:focus,
   select:focus,
@@ -44,17 +52,17 @@ body {
   ul.pagination {
     
     li.current a {
-      background: #fd864b;
+      background: #fd7532;
 
       &:hover {
-        background: darken(#fd864b, 5);
+        background: #3f5765;
       }
     }
   }
 
   .tabs {
     .active {
-      border-top: 3px solid #fd864b;
+      border-top: 3px solid #fd7532;
     }
   } 
 

@@ -15,7 +15,7 @@
     top: 55px;
     left: -51px;
     width: 121%;
-    border-top: 3px solid orange;
+    border-top: 3px solid #fd7532;
     background: white;
     @include border-bottom-radius(3px);
     @media (max-width: 1000px) {
@@ -39,7 +39,7 @@
     }
 
     .tt-is-under-cursor {
-      color: orange;
+      color: #fd7532;
       cursor: pointer;
     }
   }
