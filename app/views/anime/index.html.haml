@@ -65,7 +65,12 @@
         - if @collection.length > 0
           = render partial: "anime/card", collection: @collection, as: :data
         - else
-          %p EMPTY STATE
+          .not-found.panel
+            .title.twelve-columns
+              %h3 We couldn't find what you were looking for!
+              %p To make up for that, here's some random anime, have fun!
+              
+          //= render random anime here. Amount is up to you.
 
       .row.pagination-centered
         = paginate(@anime)
