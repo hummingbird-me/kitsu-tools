@@ -1,6 +1,6 @@
 - title "Register"
 
-- if params[:token] and BetaInvite.valid_token?(token)
+- if params[:token] and BetaInvite.valid_token?(params[:token])
   .login-register-card
     .row
       .eight.columns.centered
