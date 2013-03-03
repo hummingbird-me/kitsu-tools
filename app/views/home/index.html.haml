@@ -55,82 +55,20 @@
 
   .row
     .twelve.columns
-      .eight.columns
-        .title
-          %h3 
-            Recent Activity
-            /There are <i>78</i> people watching anime right now!
-        .watching-now.twelve.columns
-          - @recent_anime.each do |watchlist|
-            .four.columns
-              .panel
-                = link_to image_tag(watchlist.anime.cover_image.url(:thumb)), watchlist.anime
-                .twelve.columns
-                  .user-circle.seven.columns.centered
-                    %span.avatar= image_tag watchlist.user.avatar.url(:thumb)
-                .twelve.columns
-                  %p.name= link_to watchlist.user.name, watchlist.user
-
-      .trending-anime.four.columns
-        .title
-          %h3 Trending Anime
-        .five.columns
-          = image_tag "http://localhost:3000/system/0f7a347f58b56ea08cfccb8016044b26a5cf0ec3_thumb.jpg?1361799255"
-        .top-anime.seven.columns
-          %p Rank 1
-          %p= link_to "Spirited Away", "#"
-          %h4.positive 99%
-
-        .twelve.columns
-          %ol{:start => "2"}
-            %li
-              = link_to "Fullmetal Alchemist: Bro...", "#"
-              %span.positive 98%
-            %li
-              = link_to "Gintama': Enchousen", "#"
-              %span.positive 94%
-            %li
-              = link_to "Steins;Gate", "#"
-              %span.positive 82%
-            %li
-              = link_to "Clannad: After Story", "#"
-              %span.positive 80%
-            %li
-              = link_to "Gintama", "#"
-              %span.positive 74%
-            %li
-              = link_to "Legend of the Galactic Heroes", "#"
-              %span.positive 74%
-            %li
-              = link_to "Hajime no Ippo", "#"
-              %span.negative 65%
-            %li
-              = link_to "Fate/Zero 2nd Season", "#"
-              %span.negative 56%
-            %li
-              = link_to "Death Note", "#"
-              %span.negative 49%
-
-      .four.columns
-        .title
-          %h3 New Users
-        .new-users.twelve.columns
+      .title
+        %h3 
+          Recent Activity
+          /There are <i>78</i> people watching anime right now!
+      .watching-now.twelve.columns
+        - @recent_anime.each do |watchlist|
           .three.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .three.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .three.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .three.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .three.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .three.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .three.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .three.columns
-            = image_tag "http://www.placekitten.com/400/400"
+            .panel
+              = link_to image_tag(watchlist.anime.cover_image.url(:thumb)), watchlist.anime
+              .twelve.columns
+                .user-circle.seven.columns.centered
+                  %span.avatar= image_tag watchlist.user.avatar.url(:thumb)
+              .twelve.columns
+                %p.name= link_to watchlist.user.name, watchlist.user      
 
       - if @latest_reviews.length == 2
         .twelve.columns
