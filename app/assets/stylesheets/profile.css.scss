@@ -2,18 +2,18 @@
 .profile {
   .favorite-anime {
     img {
-      @include border-radius(3px);
-      width: 93px;
-      height: 135px;
+      // @include border-radius(3px);
+      // width: 93px;
+      // height: 135px;
     }
   }
   .anime-preview {
     margin-bottom: 30px;
     img {
       // Static size until source images have fixed dimensions
-      width: 105px;
-      height: 150px;
-      @include border-radius(3px);
+      // width: 105px;
+      // height: 150px;
+      // @include border-radius(3px);
     }
   }
 
