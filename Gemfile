@@ -86,3 +86,6 @@ gem 'rvm-capistrano'
 
 # Image optimization
 gem 'image_optim', require: false
+
+# Metrics
+gem 'mixpanel'

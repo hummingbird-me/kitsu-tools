@@ -14,8 +14,7 @@ class BetaInvite < ActiveRecord::Base
   end
   
   def valid_token?
-    # FIXME return false if the user has already signed up.
-    true
+    User.find_by_email(email).nil?
   end
 
   def before_count

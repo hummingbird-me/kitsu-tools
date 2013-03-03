@@ -11,5 +11,7 @@ class AdminController < ApplicationController
   end
   
   def index
+    @total_beta = BetaInvite.count
+    @recent_beta = BetaInvite.order('created_at DESC').limit(10)
   end
 end
