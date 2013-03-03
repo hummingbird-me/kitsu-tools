@@ -5,7 +5,7 @@
     = f.label :content
     = f.text_area :content, rows: 7
     .user-reviews
-      - if current_user.star_rating?
+      - if current_user.star_rating? or true
         .advanced-rating
           .rating.six.columns
             %input#star5{:name => "rating", :type => "radio", :value => "2"}
@@ -35,6 +35,8 @@
     $('.simple-rating input:radio').addClass('input_hidden');
     $('.simple-rating label').click(function(){
         $(this).addClass('active').siblings().removeClass('active');
+        $(this).find('input').attr("checked", true);
+        $(this).siblings().find('input').removeAttr("checked");
     });
 - else
   %p You need to be signed in to write reviews.
