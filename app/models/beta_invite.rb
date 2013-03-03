@@ -17,6 +17,14 @@ class BetaInvite < ActiveRecord::Base
     # FIXME return false if the user has already signed up.
     true
   end
+
+  def before_count
+    BetaInvite.where("NOT invited AND id < ?", self.id).count
+  end
+  
+  def after_count
+    BetaInvite.where("id > ?", self.id).count
+  end
   
   def invite!
     self.invited = true

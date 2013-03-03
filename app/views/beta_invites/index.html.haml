@@ -12,8 +12,10 @@
           .login-title 
             You are currently in the waiting list.
           .login-title
-            %strong= pluralize @people_before_you, "person"
-            = @people_before_you == 1 ? "is" : "are"
-            ahead of you.
+            There are
+            %strong= pluralize @beta_invite.before_count, "person"
+            ahead of you and
+            %strong= pluralize @beta_invite.after_count, "person"
+            after you.
           .no-account.twelve.columns
             %p= @beta_invite.email

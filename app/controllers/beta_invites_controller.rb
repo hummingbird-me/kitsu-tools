@@ -4,7 +4,6 @@ class BetaInvitesController < ApplicationController
       redirect_to new_beta_invite_path
     else
       @beta_invite = BetaInvite.find_by_email(params[:email])
-      @people_before_you = @beta_invite.id
     end
   end
   
