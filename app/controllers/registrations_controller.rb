@@ -9,7 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
     @user.sfw_filter    = params[:user][:sfw_filter]
     @user.star_rating   = params[:user][:star_rating]
     @user.about         = params[:user][:about]
-    @user.avatar        = params[:user][:avatar]
+    @user.avatar        = params[:user][:avatar] unless params[:user][:avatar].blank?
 
     if not params[:user][:password].blank?
       @user.password              = params[:user][:password]
