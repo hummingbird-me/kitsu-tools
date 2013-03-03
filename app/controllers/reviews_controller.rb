@@ -24,4 +24,23 @@ class ReviewsController < ApplicationController
     @review.add_or_update_evaluation(:votes, value, current_user)
     redirect_to :back
   end
+
+  def create
+    authenticate_user!
+    @anime = Anime.find(params[:anime_id])
+    review = Review.new(user: current_user, anime: @anime, content: params["review"]["content"], source: "hummingbird")
+    
+    if params["rating"]
+      review.rating = params["rating"] 
+      review.rating = -2 if review.rating < -2
+      review.rating = 2 if review.rating > 2
+    end
+
+    if review.save
+      redirect_to anime_review_path(@anime, review)
+    else
+      flash[:error] = "Couldn't save your review, something went wrong."
+      redirect_to :back
+    end
+  end
 end
