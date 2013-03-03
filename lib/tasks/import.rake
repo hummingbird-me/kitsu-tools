@@ -40,6 +40,20 @@ namespace :import do
     end
   end
 
+  desc "Load BetaInvites from a Launchrock CSV"
+  task :load_beta_invites, [:filename] => :environment do |t, args|
+    require 'csv'
+    emails = CSV.parse(File.open(args[:filename]).read)[1..-1].map {|x| x[1] }.reverse
+    emails.each do |email|
+      if BetaInvite.find_by_email(email)
+        puts "Already have #{email}."
+      else
+        BetaInvite.create(email: email)
+        puts "Created #{email}."
+      end
+    end
+  end
+
   desc "Import pseudo-JSON formatted anime metadata from MAL"
   task :anime_metadata, [:filename] => :environment do |t, args|
     File.open(args[:filename]).readlines.map {|x| JSON.load x }.each do |meta|
