@@ -654,7 +654,7 @@
             },
             _handleSelection: function($e) {
                 this.trigger("select", formatDataForSuggestion($($e.currentTarget)));
-                $("form#live_search_form").submit();
+                $("li.tt-dataset-anime").parent().parent().parent().submit();
             },
             _moveCursor: function(increment) {
                 var $suggestions, $cur, nextIndex, $underCursor;
