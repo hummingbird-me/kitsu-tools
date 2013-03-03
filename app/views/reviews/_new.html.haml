@@ -3,7 +3,23 @@
 = form_for Review.new, url: anime_reviews_path(@anime) do |f|
   = f.label :content
   = f.text_area :content, rows: 7
+  .user-reviews
+    .simple-rating
+      .four.columns
+        %label{:for => "radio4"}
+          %input#radio4{:name => "radio2", :type => "radio"}/
+          %span.like 
+            %strong :)
 
-  %p Rating elements, one of positive/negative or stars depending on what the user selects.
+        %label{:for => "radio5"}
+          %input#radio5{:checked => "", :name => "radio2", :type => "radio"}/
+          %span.dislike
+            %strong :(
 
   = f.submit class: "button"
+
+:javascript
+  $('.simple-rating input:radio').addClass('input_hidden');
+  $('.simple-rating label').click(function(){
+      $(this).addClass('active').siblings().removeClass('active');
+  });
