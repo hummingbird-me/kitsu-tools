@@ -50,6 +50,7 @@ gem 'friendly_id', '~> 4.0.9'
 
 # Authentication.
 gem 'devise'
+gem 'devise-async' # Async email for Devise
 gem 'omniauth'
 gem 'omniauth-facebook', '= 1.4.0'  # Using version 1.4.0 instead of the latest
                                     # because of an issue where the first time
