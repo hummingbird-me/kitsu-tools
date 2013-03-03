@@ -10,16 +10,47 @@
         %form{:action => "/search", :autocomplete => "off"}
           %input.typeahead_home(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
           %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
-            
-    .featured-anime.eleven.columns.centered
-      - @featured_anime.each do |anime|
-        .anime-poster.three.columns
-          %figure
-            = link_to image_tag(anime.cover_image.url(:"thumb@2x")), anime
-          %p= link_to anime.title, anime
 
     .twelve.columns
-      = link_to (user_signed_in? ? "/anime" : new_user_registration_path) do
+      .features
+        %h2 Discover New Anime. Track What You're Watching.
+        .row
+          .three.columns
+            %span.icon
+              = image_tag "icons/import.png", :class => "import", :width => "63px;"
+            %h3
+              Global Import
+            %p
+              Already have a MAL account? Not a problem, we'll import everything to
+              Hummingbird, quick and easy. Just the way we like it.
+
+          .three.columns
+            %span.icon
+              = image_tag "icons/review.png", :class => "review", :width => "56px;"
+            %h3
+              Equal Reviews
+            %p
+              We show the top rated positive AND negative reviews side-by-side so you
+              can easily decide if the anime you're considering is worth your time.
+
+          .three.columns
+            %span.icon
+              = image_tag "icons/rate.png", :class => "rate", :width => "54px;"
+            %h3
+              Simple Rating
+            %p
+              Tedious star rating systems are a thing of the past. We make rating anime
+              a breeze so you can spend more time doing what you love.
+
+          .three.columns
+            %span.icon
+              = image_tag "icons/watchlist.png", :class => "watchlist", :width => "59px;"
+            %h3
+              Personal Watchlist
+            %p
+              Track your episode progress, save an anime to watch in the future, stay
+              organized. We've got you covered, pinky promise.
+
         %span.login-button Discover More Anime
 
   .row

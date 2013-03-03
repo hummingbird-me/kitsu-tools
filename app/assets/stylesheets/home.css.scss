@@ -4,7 +4,7 @@
 @import "compass/css3";
 .large-banner {
   figure {
-    height: 580px;
+    height: 650px;
     margin-top: -15px;
     overflow: hidden;
     position: relative;
@@ -30,8 +30,8 @@
 .home {
   .header-content {
     position: relative;
-    bottom: 575px;
-    margin-bottom: -500px;
+    bottom: 635px;
+    margin-bottom: -580px;
 
     input {
       height: 50px;
@@ -138,7 +138,7 @@
 
     .login-button {
       text-align: center;
-      margin-top: 10px;
+      margin-top: 40px;
       line-height: 60px;
     }
     p {
@@ -172,6 +172,47 @@
     }
   }
 
+  .features {
+    text-align: center;
+    color: #bbb;
+    margin-top: 80px;
+    h3, h2 {
+      color: #bbb;
+    }
+    h2 {
+      margin-bottom: 40px;
+    }
+    .icon {
+      font-size: 42px;
+      line-height: 176px;
+      margin-bottom: 15%;
+      display: block;
+      text-align: center;
+      color: #bbb;
+      border: 1px solid #ddd;
+      @include border-radius(100px);
+      margin: 0 auto 8%;
+      height: 160px;
+      width: 160px;
+      position: relative;
+      .import {
+        left: 48px;
+        top: 55px;
+      }
+      .review {
+        left: 54px;
+        top: 54px;
+      }
+      .rate {
+        left: 53px;
+        top: 54px;
+      }
+      .watchlist {
+        left: 52px;
+        top: 54px;
+      }
+    }
+  }
   .watching-now {
     .panel {
       text-align: center;
