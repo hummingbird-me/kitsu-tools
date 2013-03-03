@@ -82,7 +82,7 @@
                       / ================= DATE SECTION Here ===============
                     
                       %td.date{:align => "center", :bgcolor => "#f8f8f8", :height => "15", :style => "border-collapse: collapse;color: #999999;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: bold;padding: 0;margin: 0;text-align: center;letter-spacing: 0;", :valign => "middle", :width => "240"}
-                        %a.iphoneAvoidAutoLinkHackDate2{:href => "#", :style => "color: #999999;text-decoration: none;pointer-events: none;"} Sunday, March 3rd, 2013
+                        %a.iphoneAvoidAutoLinkHackDate2{:href => "#", :style => "color: #999999;text-decoration: none;pointer-events: none;"}= Time.now.strftime("%A, %B %e, %Y")
                       / ================ end of date section ===============
                       / === Mailchimp FORWARD AND SUBSCRIBE LINKS =
                       %td.mailingOptions2{:align => "right", :bgcolor => "#f8f8f8", :height => "15", :style => "border-collapse: collapse;color: #cccccc;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: right;letter-spacing: 0;", :valign => "middle", :width => "180"}
@@ -187,7 +187,7 @@
                           %tr
                             / == (You may use a "<br/>" tag to be able to cut current line from anywhere you wish ) ==
                             %td.sectionRegularInfoTextTD{:align => "center", :bgcolor => "#f8f8f8", :height => "10", :style => "border-collapse: collapse;color: #777777;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;", :valign => "middle"}
-                              The day has finally come! We've launched the Hummingbird beta and you're next in line! We're still building (and breaking) things on a daily basis, so expect some turbulence. As a beta user, your feedback is extremely important. If and when you find a bug or have a feature suggestion, head over to <a href="http://hummingbird.uservoice.com" style="color: #ef7814; text-decoration: none;">Community</a> section and let us know. I hope you're as excited as we are, see you on the site!  
+                              The day has finally come! We've launched the Hummingbird beta and you're next in line! We're still building (and breaking) things on a daily basis, so expect some turbulence. As a beta user, your feedback is extremely important. If and when you find a bug or have a feature suggestion, head over to the <a href="http://hummingbird.uservoice.com" style="color: #ef7814; text-decoration: none;">Community</a> section and let us know. I hope you're as excited as we are, see you on the site!  
 
                         / ================== End of the section ================
                         / =============== LINKS (BUTTONS) SECTION ============
@@ -199,7 +199,7 @@
                                   %td{:align => "center", :bgcolor => "#f8f8f8", :height => "22", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top", :width => "165"} &nbsp;
                                 %tr
                                   %td.pictureAlternativeTextTD{:align => "center", :bgcolor => "#f8f8f8", :height => "42", :style => "border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;", :valign => "bottom", :width => "165"}
-                                    %a.buttonsAndImagesLink{:href => "#{@registration_url}", :style => "color: #bbbbbb;text-decoration: none;outline: none;font-weight: lighter;", :target => "_blank"}
+                                    %a.buttonsAndImagesLink{:href => "http://www.hummingbird.ly#{@registration_url}", :style => "color: #bbbbbb;text-decoration: none;outline: none;font-weight: lighter;", :target => "_blank"}
                                       %img{:align => "top", :alt => "IMG", :border => "0", :height => "42", :hspace => "0", :src => "http://cl.ly/image/0I2F2u0a1b2l/beta-button.jpg", :style => "display:block;", :vspace => "0", :width => "165"}/
                                 %tr
                                   %td{:align => "center", :bgcolor => "#f8f8f8", :height => "30", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top", :width => "165"} &nbsp;
