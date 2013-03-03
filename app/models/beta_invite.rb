@@ -1,5 +1,7 @@
 class BetaInvite < ActiveRecord::Base
   attr_accessible :email, :invited, :token
+  
+  validates :email, uniqueness: true
 
   before_save do
     self.token ||= SecureRandom.hex
