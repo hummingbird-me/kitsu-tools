@@ -2,3 +2,6 @@
 production:
   :concurrency: 25
   :pidfile: /u/apps/hummingbird/shared/pids/sidekiq.pid
+  :queues:
+    - [default, 1]
+    - [mailer, 1]
