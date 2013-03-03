@@ -8,11 +8,16 @@
       - if current_user.star_rating? or true
         .advanced-rating
           .rating.six.columns
-            = radio_button "review", "rating", 2
-            = radio_button "review", "rating", 1
-            = radio_button "review", "rating", 0
-            = radio_button "review", "rating", -1
-            = radio_button "review", "rating", -2
+            = radio_button "review", "rating", 2, :id => 'star5'
+            %label{:for => "star5"}
+            = radio_button "review", "rating", 1, :id => 'star4'
+            %label{:for => "star4"}
+            = radio_button "review", "rating", 0, :id => 'star3'
+            %label{:for => "star3"}
+            = radio_button "review", "rating", -1, :id => 'star2'
+            %label{:for => "star2"}
+            = radio_button "review", "rating", -2, :id => 'star1'
+            %label{:for => "star1"}
       - else
         .simple-rating
           .four.columns
