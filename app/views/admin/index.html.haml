@@ -9,4 +9,11 @@
     %table
       %tr
         %td Number of sign-ups
-        %td= BetaInvite.count
+        %td= @total_beta
+    
+    %h5 Recent Invite Requests
+    %table
+      - @recent_beta.each do |bi|
+        %tr
+          %td= bi.email
+          %td= distance_of_time_in_words_to_now(bi.created_at, true)
