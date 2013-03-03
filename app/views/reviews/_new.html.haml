@@ -1,0 +1,9 @@
+%h3 New "#{@anime.title}" review
+
+= form_for Review.new, url: anime_reviews_path(@anime) do |f|
+  = f.label :content
+  = f.text_area :content, rows: 7
+
+  %p Rating elements, one of positive/negative or stars depending on what the user selects.
+
+  = f.submit class: "button"
