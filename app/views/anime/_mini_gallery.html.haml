@@ -10,8 +10,9 @@
           .left-small.six.columns.mobile-two.columns= image_tag @gallery[4].image.url(:thumb)
           .right-small.six.columns.mobile-two.columns= image_tag @gallery[5].image.url(:thumb)
   - else
-    / TODO: replace this with an image indicating that no screenshots
-    / have been added.
-    .twelve.columns= image_tag "http://placekitten.com/380/214/"
-  %p= link_to "view full gallery", "#"
+
+    .no-images.twelve.columns
+      = image_tag "http://cl.ly/image/1O0Q3j0y1K3w/no-images@2x.png"
+      %p No screenshots found for this anime :(
+  // %p= link_to "view full gallery", "#"
 
