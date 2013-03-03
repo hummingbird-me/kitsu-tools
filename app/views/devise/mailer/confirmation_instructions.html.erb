@@ -1,5 +1,6 @@
 <p>Welcome <%= @email %>!</p>
 
 <p>You can confirm your account email through the link below:</p>
+<p>If you have an account on MyAnimeList and would like to import it, please do so from your settings page</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
