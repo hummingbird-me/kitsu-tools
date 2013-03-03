@@ -4,7 +4,7 @@
 @import "compass/css3";
 .large-banner {
   figure {
-    height: 650px;
+    height: 580px;
     margin-top: -15px;
     overflow: hidden;
     position: relative;
@@ -30,7 +30,7 @@
 .home {
   .header-content {
     position: relative;
-    bottom: 615px;
+    bottom: 575px;
     margin-bottom: -500px;
 
     input {
@@ -41,15 +41,20 @@
       color: #ccc;
     }
 
-    .twitter-typeahead .tt-suggestions {
-      margin-left: 0px;
-      left: 0;
-      background: rgba(0,0,0,0.9);
-      width: 100%;
-      li {
-        border-bottom: none !important;
-        &:nth-child(even) {
-          background: rgba(255,255,255,0.1);
+    .twitter-typeahead {
+      ol {
+        list-style: none;
+      }
+     .tt-suggestions {
+        margin-left: 0px;
+        left: 0;
+        background: rgba(0,0,0,0.9);
+        width: 100%;
+        li {
+          border-bottom: none !important;
+          &:nth-child(even) {
+            background: rgba(255,255,255,0.1);
+          }
         }
       }
     }
@@ -58,20 +63,18 @@
       padding-top: 10px;
       padding-bottom: 13px;
       color: #fff;
+      &:hover {
+        color: orange;
+      }
     }
 
     .search {
       border-width: 0 1px 0 1px;
       position: relative;
-      padding-left: 10px;
       border: 1px solid #eee;
       border-width: 0 1px 0 0;
       z-index: 10;
-      @media (max-width: 768px) {
-        position: absolute;
-        right: 70px;
-        border: none;
-      }
+
       .twitter-typeahead {
         width: 100%;
       }
@@ -84,9 +87,7 @@
         position: absolute;
         right: 90px;
         top: 0;
-        @media (max-width: 768px) {
-          right: 70px;
-        }
+
         &:before {
           background-image: url(http://cdn1.sbnation.com/images/polygon/sprites/icons@2x.vcd374f5.png);
           background-size: 108px 1043px;
@@ -110,14 +111,13 @@
         vertical-align: center;
         color: #aaa;
         font-style: italic;
+        text-indent: 10px;
         box-shadow: none;
-        @media (max-width: 768px) {
-          display: none;
-        }
-
+        background: #000;
+        background: rgba(0,0,0,0.2);
+        border: 1px solid rgba(255,255,255,0.2);
         &:focus {
-          background: none;
-          color: orange;
+          
         }
       }
 
@@ -138,7 +138,7 @@
 
     .login-button {
       text-align: center;
-      margin-top: 40px;
+      margin-top: 10px;
       line-height: 60px;
     }
     p {
@@ -168,6 +168,29 @@
             bottom: 35px;
           }
         }
+      }
+    }
+  }
+
+  .watching-now {
+    .panel {
+      text-align: center;
+      .user-circle {
+        .avatar {
+          img {
+            z-index: 999;
+            width: 50px;
+            border: 2px solid #fff;
+            bottom: 25px;
+            margin-bottom: -25px;
+            @include border-radius(100px);
+            position: relative;
+          }
+        }
+      }
+
+      .name {
+        margin-bottom: 10px; 
       }
     }
   }

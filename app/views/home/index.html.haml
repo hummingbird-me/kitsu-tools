@@ -26,27 +26,18 @@
     .twelve.columns
       .eight.columns
         .title
-          %h3 New Users
-        .new-users.twelve.columns
-          .two.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .two.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .two.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .two.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .two.columns
-            = image_tag "http://www.placekitten.com/400/400"
-          .two.columns
-            = image_tag "http://www.placekitten.com/400/400"
-
-        .title
-          %h3 Popular Anime
-        .twelve.columns
+          %h3 There are <span>78</span> people watching anime right now!
+        .watching-now.twelve.columns
           - @popular_anime.each do |anime|
-            .three.columns
-              = link_to image_tag(anime.cover_image.url(:thumb)), anime
+            .four.columns
+              .panel
+                = link_to image_tag(anime.cover_image.url(:thumb)), anime
+                .twelve.columns
+                  .user-circle.seven.columns.centered
+                    %span.avatar= image_tag "http://www.placekitten.com/g/400/400"
+                .twelve.columns
+                  %p.name= link_to "JoshFabian", "#"
+
         .twelve.columns
           = link_to "View More", "#"
 
@@ -89,6 +80,27 @@
             %li
               = link_to "Death Note", "#"
               <span>49%</span>
+
+      .four.columns
+        .title
+          %h3 New Users
+        .new-users.twelve.columns
+          .three.columns
+            = image_tag "http://www.placekitten.com/400/400"
+          .three.columns
+            = image_tag "http://www.placekitten.com/400/400"
+          .three.columns
+            = image_tag "http://www.placekitten.com/400/400"
+          .three.columns
+            = image_tag "http://www.placekitten.com/400/400"
+          .three.columns
+            = image_tag "http://www.placekitten.com/400/400"
+          .three.columns
+            = image_tag "http://www.placekitten.com/400/400"
+          .three.columns
+            = image_tag "http://www.placekitten.com/400/400"
+          .three.columns
+            = image_tag "http://www.placekitten.com/400/400"
 
       - if @latest_reviews.length == 2
         .twelve.columns
