@@ -1,23 +1,18 @@
 %h3 New "#{@anime.title}" review
 
 - if user_signed_in?
-  = form_for Review.new, url: anime_reviews_path(@anime) do |f|
+  = form_for (@review = Review.new), url: anime_reviews_path(@anime) do |f|
     = f.label :content
     = f.text_area :content, rows: 7
     .user-reviews
       - if current_user.star_rating? or true
         .advanced-rating
           .rating.six.columns
-            %input#star5{:name => "rating", :type => "radio", :value => "2"}
-            %label{:for => "star5", :title => "Masterpiece"} 5 stars
-            %input#star4{:name => "rating", :type => "radio", :value => "1"}
-            %label{:for => "star4", :title => "Great"} 4 stars
-            %input#star3{:name => "rating", :type => "radio", :value => "0"}
-            %label{:for => "star3", :title => "Average"} 3 stars
-            %input#star2{:name => "rating", :type => "Bad", :value => "-1"}
-            %label{:for => "star2", :title => "Very Bad"} 2 stars
-            %input#star1{:name => "rating", :type => "Horrible", :value => "-2"}
-            %label{:for => "star1", :title => "Appaling"} 1 star
+            = radio_button "review", "rating", 2
+            = radio_button "review", "rating", 1
+            = radio_button "review", "rating", 0
+            = radio_button "review", "rating", -1
+            = radio_button "review", "rating", -2
       - else
         .simple-rating
           .four.columns

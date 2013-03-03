@@ -30,8 +30,8 @@ class ReviewsController < ApplicationController
     @anime = Anime.find(params[:anime_id])
     review = Review.new(user: current_user, anime: @anime, content: params["review"]["content"], source: "hummingbird")
     
-    if params["rating"]
-      review.rating = params["rating"] 
+    if params["review"]["rating"]
+      review.rating = params["review"]["rating"] 
       review.rating = -2 if review.rating < -2
       review.rating = 2 if review.rating > 2
     end
