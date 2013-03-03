@@ -19,6 +19,11 @@ server "hakanai", :app, :web, :db, primary: true
 #
 
 namespace :deploy do
+  desc "stub task to get cap to prompt for the root password"
+  task :sudo_prompt, roles: :web do
+    run "#{sudo} ls"
+  end
+
   desc "symlink nginx configuration"
   task :nginx_symlink, roles: :web do
     run "#{sudo} ln -nfs #{release_path}/config/nginx.conf /etc/nginx/sites-enabled/hummingbird"
@@ -69,6 +74,8 @@ namespace :deploy do
     end
   end
 end
+
+before "deploy", "deploy:sudo_prompt"
 
 after "deploy:finalize_update",
   "deploy:nginx_symlink", "deploy:monit_symlink"

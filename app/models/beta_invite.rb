@@ -21,6 +21,6 @@ class BetaInvite < ActiveRecord::Base
   def invite!
     self.invited = true
     self.save
-    # TODO send email with instructions.
+    BetaMailer.delay.beta_invite(self)
   end
 end

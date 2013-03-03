@@ -4,4 +4,9 @@ class BetaMailer < ActionMailer::Base
   def beta_sign_up(beta_invite)
     mail(to: beta_invite.email, subject: "Ready for your new, favorite anime?")
   end
+
+  def beta_invite(beta_invite)
+    @registration_url = new_user_registration_path(token: beta_invite.token)
+    mail(to: beta_invite.email, subject: "CHANGE THE SUBJECT")
+  end
 end
