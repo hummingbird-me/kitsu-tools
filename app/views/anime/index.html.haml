@@ -62,7 +62,10 @@
           }
           checkForCompletion();
       .row
-        = render partial: "anime/card", collection: @collection, as: :data
+        - if @collection.length > 0
+          = render partial: "anime/card", collection: @collection, as: :data
+        - else
+          %p EMPTY STATE
 
       .row.pagination-centered
         = paginate(@anime)
