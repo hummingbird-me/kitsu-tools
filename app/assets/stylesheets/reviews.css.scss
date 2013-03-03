@@ -31,6 +31,9 @@
   }
 
   .simple-rating {
+    .four {
+      float: right;
+    }
     .input_hidden {
       position: absolute;
       left: -9999px;
@@ -40,8 +43,7 @@
       width: 50%;
       float: left;
       border-right: 1px solid #f2f2f2;
-      padding-top: 20px;
-      padding-bottom: 20px;
+      
       strong {
         text-indent: -9999px;
         display: block;
@@ -88,8 +90,7 @@
       display: block;
       float: left;
       cursor: pointer;
-      padding-top: 20px;
-      padding-bottom: 20px;
+
       strong {
         text-indent: -9999px;
         display: block;
@@ -152,6 +153,64 @@
           }
           &:hover {
             background-position: right bottom;
+          }
+        }
+      }
+    }
+  }
+
+  .advanced-rating {
+    .rating {
+      float: right;
+      &:not(:checked) {
+        > {
+          input {
+            position: absolute;
+            top: -9999px;
+            clip: rect(0, 0, 0, 0);
+          }
+          label {
+            float: right;
+            width: 1em;
+            padding: 0 .1em;
+            overflow: hidden;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 200%;
+            line-height: 1.2;
+            color: #ddd;
+            &:before {
+              content: '★ ';
+            }
+          }
+        }
+        > label:hover {
+          color: gold;
+          ~ label {
+            color: gold;
+          }
+        }
+      }
+      > input:checked ~ label {
+        color: #f70;
+      }
+      > {
+        input:checked {
+          + label:hover, ~ label:hover {
+            color: #ea0;
+            ~ label {
+              color: #ea0;
+            }
+          }
+        }
+        label {
+          &:hover ~ input:checked ~ label {
+            color: #ea0;
+          }
+          &:active {
+            position: relative;
+            top: 2px;
+            left: 2px;
           }
         }
       }

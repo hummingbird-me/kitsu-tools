@@ -3,18 +3,33 @@
 = form_for Review.new, url: anime_reviews_path(@anime) do |f|
   = f.label :content
   = f.text_area :content, rows: 7
-  .user-reviews
-    .simple-rating
-      .four.columns
-        %label{:for => "radio4"}
-          %input#radio4{:name => "radio2", :type => "radio"}/
-          %span.like 
-            %strong :)
 
-        %label{:for => "radio5"}
-          %input#radio5{:checked => "", :name => "radio2", :type => "radio"}/
-          %span.dislike
-            %strong :(
+  .user-reviews
+    / .simple-rating
+    /   .four.columns
+    /     %label{:for => "like"}
+    /       %input{:name => "like", :type => "radio"}/
+    /       %span.like 
+    /         %strong :)
+
+    /     %label{:for => "dislike"}
+    /       %input{:checked => "", :name => "dislike", :type => "radio"}/
+    /       %span.dislike
+    /         %strong :(
+
+    .advanced-rating
+      .rating.six.columns
+        %input#star5{:name => "rating", :type => "radio", :value => "5"}
+        %label{:for => "star5", :title => "Masterpiece"} 5 stars
+        %input#star4{:name => "rating", :type => "radio", :value => "4"}
+        %label{:for => "star4", :title => "Great"} 4 stars
+        %input#star3{:name => "rating", :type => "radio", :value => "3"}
+        %label{:for => "star3", :title => "Average"} 3 stars
+        %input#star2{:name => "rating", :type => "Bad", :value => "2"}
+        %label{:for => "star2", :title => "Very Bad"} 2 stars
+        %input#star1{:name => "rating", :type => "Horrible", :value => "1"}
+        %label{:for => "star1", :title => "Appaling"} 1 star
+
 
   = f.submit class: "button"
 
