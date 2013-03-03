@@ -84,6 +84,9 @@ class User < ActiveRecord::Base
       user.connect_to_facebook(auth.uid)
       return user
     end
+
+    # Comment the next line to allow creating an account via Facebook.
+    return nil
     
     # Just create a new account. >_>
     user = User.new(
