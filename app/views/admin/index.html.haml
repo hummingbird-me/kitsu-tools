@@ -6,4 +6,7 @@
       %li= link_to "Rails Admin", "/kotodama/rails_admin"
       %li= link_to "Sidekiq Dashboard", "/kotodama/sidekiq"
   .panel.nine.columns
-    %p Probably going to put that real-time map here.
+    %table
+      %tr
+        %td Number of sign-ups
+        %td= BetaInvite.count
