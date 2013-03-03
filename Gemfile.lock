@@ -79,6 +79,7 @@ GEM
     devise-async (0.6.0)
       devise (>= 2.2)
     erubis (2.7.0)
+    escape (0.0.4)
     execjs (1.4.0)
       multi_json (~> 1.0)
     facter (1.6.17)
@@ -137,6 +138,10 @@ GEM
       treetop (~> 1.4.8)
     metaclass (0.0.1)
     mime-types (1.21)
+    mixpanel (3.5.2)
+      escape
+      json
+      rack
     mocha (0.10.5)
       metaclass (~> 0.0.1)
     modular-scale (1.0.6)
@@ -324,6 +329,7 @@ DEPENDENCIES
   image_optim
   jquery-rails
   kaminari
+  mixpanel
   newrelic_rpm
   nokogiri
   omniauth

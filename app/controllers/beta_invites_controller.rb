@@ -16,6 +16,7 @@ class BetaInvitesController < ApplicationController
     if (beta_invite = BetaInvite.find_by_email(email)).nil?
       beta_invite = BetaInvite.create(email: email)
       BetaMailer.delay.beta_sign_up(beta_invite) if BetaInvite.find_by_email(email)
+      mixpanel.track "Requested Invite", {email: email}
     end
     beta_invite = BetaInvite.find_by_email(email)
     redirect_to beta_invites_path(email: email)
