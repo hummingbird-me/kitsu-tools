@@ -76,9 +76,26 @@
         %h3{:style => "margin-top: -4px"} Import from MyAnimeList
       - if @user.staged_import
         - if @user.staged_import.data[:complete]
-          %p Import is done, #{link_to "review it", review_import_path}!
+          %p Your import is ready! #{link_to "Check it out.", review_import_path}
         - else
-          %p Import is in progress.
+          %p 
+            %span.in_progress Your import is currently in progress. 
+            %span.check_back Please check back shortly!
+          :javascript
+            function checkForCompletion() {
+              $.getJSON("/users.json", function(data) { 
+                if (!data["import_staging_completed"]) {
+                  $("span.check_back").html("Hang on, this won't take too long!");
+                  setTimeout("checkForCompletion()", 5000);
+                }
+                else {
+                  $("span.in_progress").html("Your import is ready!");
+                  $("span.check_back").html("<a href='#{review_import_path}'>Check it out.</a>");
+                }
+              });
+            }
+            checkForCompletion();
+          
       - else
         = form_tag(controller: 'imports', action: 'myanimelist') do
           %label MyAnimeList Username:
