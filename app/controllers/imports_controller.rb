@@ -32,7 +32,7 @@ class ImportsController < ApplicationController
             watchlist.rating = mal_rating
           end
         end
-        @watchlist.push( [anime, watchlist, 'three', :readonly] )
+        @watchlist.push( [anime, watchlist] )
       end
     end
 

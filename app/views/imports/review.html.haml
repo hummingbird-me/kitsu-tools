@@ -5,13 +5,39 @@
   = link_to "Cancel", review_cancel_path, class: 'button'
 
   %h3 Watchlist
-  .anime-grid.twelve.columns
-    .row
-      = render partial: "anime/card", collection: @watchlist, as: :data
-    .row
-      - if @reviews.length > 0
-        .anime-discover.user-reviews
-          .row.content-body
-            .title.twelve-columns
-              %h3 Reviews
-              = render partial: "reviews/review_summary", collection: @reviews, as: :review
+  %table
+    %thead
+      %tr
+        %th Anime
+        %th Status
+        %th Rating
+        %th Episodes Watched
+    %tbody
+      - @watchlist.each do |wld|
+        %tr
+          %td= wld[0].title
+          %td= wld[1].status
+          %td
+            - if wld[1].rating
+              = 3 + wld[1].rating
+              stars
+              [#{wld[1].rating >= 0 ? ":)" : ":("}]
+            - else
+              (not rated)
+          %td #{wld[1].episodes_watched}/#{wld[0].episode_count}
+
+  %h3 Reviews
+  %table
+    %thead
+      %tr
+        %th Anime
+        %th Rating
+        %th Content
+    %tbody
+      - @reviews.each do |review|
+        %tr
+          %td= review.anime.title
+          %td
+            = 3 + review.rating
+            stars
+          %td= truncate(review.content, length: 200, omission: '...')
