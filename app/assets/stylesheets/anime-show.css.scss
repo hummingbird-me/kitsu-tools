@@ -56,7 +56,8 @@
   // Screenshots found in the sidebar
   .screenshots {
     text-align: center;
-
+    float: left;
+    padding: 0px;
     .columns {
       padding: 0px;
       margin-bottom: 6px;
@@ -66,6 +67,7 @@
       }
       img {
         max-height: 195px;
+        max-width: 100%;
       }
     }
 
