@@ -24,7 +24,7 @@ class ImportsController < ApplicationController
       if anime
         watchlist = Watchlist.where(user_id: current_user, anime_id: anime).first || false
         if !watchlist or watchlist.updated_at < w[:last_updated]
-          watchlist = Watchlist.new(status: w[:status], episodes_watched: w[:episodes_watched], updated_at: w[:last_updated], user: current_user, anime: anime)
+          watchlist = Watchlist.new(status: w[:status], episodes_watched: w[:episodes_watched], updated_at: w[:last_updated], user: current_user, anime: anime, imported: true)
           if w[:rating] != '0'
             mal_rating = w[:rating].to_i rescue 5
             mal_rating = ((((mal_rating - 1) / 9.0) - 0.5) * 2 * 2).round
