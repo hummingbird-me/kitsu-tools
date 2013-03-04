@@ -58,7 +58,11 @@
             - else
               .nine.columns.centered
                 = image_tag "http://cl.ly/image/3u2X0t1B0E11/no-positive-reviews@2x.jpg"
-                %p No positive reviews. <br><a href="#">Write the first</a>!
+                %p 
+                  No positive reviews.
+                  %br
+                  %a{"data-reveal-id" => "submit-review", :href => "#"}
+                    %span Write the first!
 
           .negative-review.six.columns
             %h6 Top Rated <span>Negative</span> Review
@@ -73,7 +77,12 @@
             - else
               .nine.columns.centered
                 = image_tag "http://cl.ly/image/0T2u2t2J0Z35/no-negative-reviews@2x.jpg"
-                %p No negative reviews. <br><a href="#">Write the first</a>!
+                %p 
+                  No negative reviews.
+                  %br
+                  %a{"data-reveal-id" => "submit-review", :href => "#"}
+                    %span Write the first!
+                
             
         .footer.twelve.columns
           = link_to "view all reviews", anime_reviews_path(@anime)
@@ -179,3 +188,5 @@
 #quoteModal.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
   = render "quotes/new"
 
+#submit-review.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
+  = render "reviews/new"
