@@ -89,3 +89,6 @@ gem 'image_optim', require: false
 
 # Metrics
 gem 'mixpanel'
+
+# A/B Testing
+gem 'split'
