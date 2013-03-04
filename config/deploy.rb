@@ -58,6 +58,16 @@ namespace :deploy do
   task :reload_unicorn, roles: :web do
     run "kill -USR2 `cat /u/apps/hummingbird/shared/pids/unicorn.pid`"
   end
+
+  desc "kill extra sidekiq processes"
+  task :kill_extra_sidekiqs, roles: :web do
+    pids = capture("ps aux | grep sidekiq | grep hummingbird | grep busy | grep -v grep").split("\n").map {|x| x.split[1].strip }
+    current_pid = [capture("cat /u/apps/hummingbird/shared/pids/sidekiq.pid").strip]
+    pids -= current_pid
+    pids.each do |pid|
+      run "kill -SIGTERM #{pid}"
+    end
+  end
   
   namespace :assets do
     task :precompile, roles: :web, except: {no_release: true} do
@@ -82,7 +92,8 @@ after "deploy:finalize_update",
 
 after "deploy:restart",
   "deploy:reload_unicorn",
-  "deploy:nginx_reload", "deploy:monit_reload"
+  "deploy:nginx_reload", "deploy:monit_reload",
+  "deploy:kill_extra_sidekiqs"
 
 # To keep only the last 5 releases:
 # (Default is `set :keep_releases, 5`)

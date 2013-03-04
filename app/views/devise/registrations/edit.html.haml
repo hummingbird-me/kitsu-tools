@@ -58,16 +58,17 @@
               %li
 
   .row.content-body
-    .twelve.columns
+    .twelve.columns.panel
       %a(name="facebook_connect")
-      %h3 Facebook Connect
+        %h3{:style => "margin-top: -4px"} Facebook Connect
       - if @user.facebook_id
-        %p 
-          Your account is already connected to Facebook.
+        %div.left{:style => "margin-right: 20px"}
           = image_tag "http://graph.facebook.com/#{@user.facebook_id}/picture"
-          = link_to "Disconnect", user_disconnect_facebook_path(current_user), method: :post
+        %p 
+          %div Your account is already connected to Facebook.
+          %div{:style => "margin-top: 8px"}= link_to "Disconnect", user_disconnect_facebook_path(current_user), method: :post, class: 'button tiny'
       - else
-        %p= link_to "Connect to Facebook", omniauth_authorize_path(resource_name, :facebook)
+        %p= link_to "Connect to Facebook", omniauth_authorize_path(resource_name, :facebook), class: 'button small'
 
   .row.content-body
     .twelve.columns
