@@ -31,7 +31,7 @@ class MALImportWorker
         status: status_map[indv["my_status"]],
         last_updated: Time.at(indv["my_last_updated"].to_i)
       }
-      watchlist.push parsd
+      watchlist.push(parsd) unless Anime.find_by_mal_id(parsd[:mal_id]).nil?
     end
 
     # Reviews.
@@ -44,7 +44,7 @@ class MALImportWorker
           anime_id = rev.css('div.spaceit.borderLight a.hoverinfo_trigger')[0].attribute("href").value.scan(/^http:\/\/myanimelist\.net\/anime\/(\d+)\//).flatten[0]
           review = rev.css('div.spaceit.textReadability')[0].children[4..-3].text
           rating = rev.css('div.spaceit.borderLight div.spaceit div').select {|x| x.text.include? "Overall Rating" }[0].text.split[-1].to_i
-          reviews.push({mal_id: anime_id, rating: rating, content: review})
+          reviews.push({mal_id: anime_id, rating: rating, content: review}) unless Anime.find_by_mal_id(parsd[:mal_id]).nil?
         end
       end
       reviews
