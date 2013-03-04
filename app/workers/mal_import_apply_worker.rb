@@ -66,7 +66,7 @@ class MALImportApplyWorker
                                                  # it is out of bounds.
       review.rating = mal_rating
       
-      reviews.push review
+      reviews.push(review) unless review.anime.nil?
     end
     reviews
   end
