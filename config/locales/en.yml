@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  admin:
+    actions:
+      invite:
+        bulk_link: "Invite selected users"

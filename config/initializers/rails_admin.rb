@@ -1,18 +1,33 @@
 # RailsAdmin config file. Generated on February 06, 2013 02:06
 # See github.com/sferik/rails_admin for more informations
 
+require Rails.root.join('lib', 'rails_admin_invite.rb')
+
 RailsAdmin.config do |config|
-
-
   ################  Global configuration  ################
 
-  # Set the admin name here (optional second array element will appear in red). For example:
+  # Set the app name.
   config.main_app_name = ['Hummingbird', 'Admin']
-  # or for a more dynamic name:
-  # config.main_app_name = Proc.new { |controller| [Rails.application.engine_name.titleize, controller.params['action'].titleize] }
 
-  # RailsAdmin may need a way to know who the current user is]
-  config.current_user_method { current_user } # auto-generated
+  # Who is the current user.
+  config.current_user_method { current_user }
+  
+  config.actions do
+    dashboard
+    index
+    new
+    export
+    history_index
+    bulk_delete
+    show
+    edit
+    delete
+    history_show
+    show_in_app
+    invite do
+      visible { bindings[:abstract_mode].model.to_s == "BetaInvite" }
+    end
+  end
 
   # If you want to track changes on your models:
   # config.audit_with :history, 'User'

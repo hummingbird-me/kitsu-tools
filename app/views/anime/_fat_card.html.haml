@@ -3,7 +3,7 @@
     %figure
       .overlay
         .poster.four.columns.hide-for-small
-          = link_to image_tag(wl.anime.cover_image.url(:"thumb@2x")), wl.anime
+          = link_to image_tag(wl.anime.cover_image.url(:thumb)), wl.anime
         .title-info.eight.columns
           %h4= link_to wl.anime.title, wl.anime
           %p.seen-count 
@@ -18,7 +18,7 @@
               %strong.active= link_to "[:)]", "#"
             %span.dislike
               %strong= link_to ":(", "#"
-      = image_tag wl.anime.cover_image.url(:thumb), class: "background"
+      = image_tag wl.anime.cover_image.url(:"thumb@2x"), class: "background"
       .progress.six
         %span.meter{:style => "width: 60%"}
     = render partial: "episodes/list_four", locals: {episodes: select_four_episodes(wl, wl.anime), anime: wl.anime, write: write}
