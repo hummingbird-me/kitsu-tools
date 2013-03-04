@@ -75,7 +75,9 @@
       %a(name="import")
         %h3{:style => "margin-top: -4px"} Import from MyAnimeList
       - if @user.staged_import
-        - if @user.staged_import.data[:complete]
+        - if @user.staged_import.data[:applying]
+          %p Your import is currently being applied. This can take some time to finish, especially if you have a large watchlist.
+        - elsif @user.staged_import.data[:complete]
           %p Your import is ready! #{link_to "Check it out.", review_import_path}
         - else
           %p 

@@ -12,6 +12,7 @@ class ImportsController < ApplicationController
     redirect_to :back
   end
 
+  # NOTE This code is duplicated in the Sidekiq worker.
   def get_watchlist(staged_import)
     @watchlist = []
 
@@ -39,6 +40,7 @@ class ImportsController < ApplicationController
     return @watchlist
   end
   
+  # NOTE This code is duplicated in the Sidekiq worker.
   def get_reviews(staged_import)
     reviews = []
     staged_import["data"][:reviews].each do |rev|
@@ -66,23 +68,14 @@ class ImportsController < ApplicationController
   end
 
   def apply
-    review # Set up all the instance variables.
-
-    @user = current_user
-    @user.transaction do
-      @reviews.each {|x| x.save }
-      @watchlist.each do |x|
-        wl = x[1]
-        if wl.status != "Completed" and wl.episodes_watched > 0 and wl.anime.episodes.length > wl.episodes_watched
-          wl.episodes = wl.anime.episodes.order(:number).limit(wl.episodes_watched)
-        end
-        wl.save
-      end
-      @user.staged_import = nil
-      @user.save
-      @user.recompute_life_spent_on_anime
+    @staged_import = current_user.staged_import
+    
+    unless @staged_import.nil? or !@staged_import.data[:complete]
+      @staged_import.data[:applying] = true
+      @staged_import.save
+      MALImportApplyWorker.perform_async(current_user.id)
     end
-
+    
     redirect_to "/users/edit#import"
   end
 
