@@ -8,7 +8,9 @@
 
   /* Sidebar Filter */
   /* ============== */
-
+  .sidebar {
+    margin-bottom: 30px;
+  }
   // border override //
   p {
     margin: 0;
@@ -28,6 +30,7 @@
     border: none;
     margin: 0;
 
+
     h3 {
       font-size: 20px;
       border-bottom: 1px solid black;
@@ -43,7 +46,7 @@
     }
 
     p.active {
-      background: #fd7532;
+      background: #3f5765;
       border-radius: 3px;
       padding: 3px;
 
@@ -58,6 +61,14 @@
       font-size: 15px;
       padding-bottom: 5px;
       border-bottom: 1px solid #f2f2f2;
+      color: #999;
+      &.checked {
+        color: #4d4d4d !important;
+      }
+    }
+
+    form.custom span.custom.checkbox:before {
+      top: 2px;
     }
 
     form.custom span.custom {
@@ -99,6 +110,18 @@
       margin-bottom: -15px;
     }
   }
+
+  .disable_all, .enable_all {
+    cursor: pointer;
+    text-align: center;
+    display: block;
+  }
+
+  .apply-button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
   .anime-grid {
     [class*="column"] + [class*="column"]:last-child {
       float: left;

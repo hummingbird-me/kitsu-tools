@@ -1,10 +1,8 @@
 .anime-discover
   .row.content-body
     / Side Bar
-    %p.show-for-small
-      %a#sidebarButton.sidebar-button.button{:href => "#sidebar"} Show Anime Filters
 
-    %section#sidebar{:role => "complementary"}
+    %section#sidebar
       .three.mobile-twelve.columns
         %ul.accordion
           %li.active
@@ -28,12 +26,15 @@
               %form.custom{:action => genres_path, :method => :get}
                 .row
                   .twelve.columns
-                    %input.button.tiny(type="submit" value="Apply")
-                    %a.button.tiny.disable_all Deselect All
-                    %a.button.tiny.enable_all Select All
+                    .six.mobile-two.columns
+                      %a.disable_all Deselect All
+                    .six.mobile-two.columns
+                      %a.enable_all Select All
+                    .twelve.columns
+                      %input.apply-button.button(type="submit" value="Apply")
 
                     - @all_genres.each do |genre|
-                      %label{:for => genre.slug, "data-width" => "300", :title => genre.description, :class => ("has-tip tip-top" if genre.description && genre.description.length > 0)}
+                      %label{:for => "g_" + genre.slug, "data-width" => "300", :title => genre.description, :class => ("checked" if @genre_filter.include? genre)}
                         %input{:checked => @genre_filter.include?(genre), :name => "g_" + genre.slug, :id => "g_" + genre.slug, :style => "display: none", :type => "checkbox", :value => ".g_#{genre.slug}"}
                         %span.custom.checkbox{:class => ("checked" if @genre_filter.include? genre)}
                         = genre.name
