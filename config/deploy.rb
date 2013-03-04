@@ -92,8 +92,7 @@ after "deploy:finalize_update",
 
 after "deploy:restart",
   "deploy:reload_unicorn",
-  "deploy:nginx_reload", "deploy:monit_reload",
-  "deploy:kill_extra_sidekiqs"
+  "deploy:nginx_reload", "deploy:monit_reload"
 
 # To keep only the last 5 releases:
 # (Default is `set :keep_releases, 5`)

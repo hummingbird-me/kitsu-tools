@@ -71,9 +71,9 @@
         %p= link_to "Connect to Facebook", omniauth_authorize_path(resource_name, :facebook), class: 'button small'
 
   .row.content-body
-    .twelve.columns
+    .twelve.columns.panel
       %a(name="import")
-      %h3 Import
+        %h3{:style => "margin-top: -4px"} Import from MyAnimeList
       - if @user.staged_import
         - if @user.staged_import.data[:complete]
           %p Import is done, #{link_to "review it", review_import_path}!
@@ -81,16 +81,13 @@
           %p Import is in progress.
       - else
         = form_tag(controller: 'imports', action: 'myanimelist') do
-          %fieldset
-            %legend Import from MyAnimeList
-            .row
-              .five.columns
-                .six.columns
-                  %label.right MyAnimeList Username:
-                .six.columns
-                  %input(name="mal_username"){:value => @user.mal_username}
-            .row
-              %input(type="submit" class="small button" value="Import")
+          %label MyAnimeList Username:
+          .row.collapse
+            .five.columns
+              .eight.columns
+                = text_field_tag :mal_username, @user.mal_username
+              .four.columns
+                %input(type="submit" class="button expand postfix" value="Import")
 
 :javascript
   $(".password-confirmation-box").slideUp();
