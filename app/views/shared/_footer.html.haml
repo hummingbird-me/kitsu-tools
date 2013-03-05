@@ -38,9 +38,3 @@
             /     %a{:href => "#"} Privacy Policy
             /   %li
             /     %a{:href => "http://www.hummingbird.u"} Contact Us
-- if user_signed_in?
-  :javascript
-    analytics.identify(#{current_user.name.inspect}, {
-      email: '#{current_user.email}',
-      username: '#{current_user.name}'
-    });
