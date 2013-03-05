@@ -71,7 +71,9 @@ class EpisodesController < ApplicationController
       @watchlist = get_watchlist(@anime, current_user)
       @anime.episodes.order(:number).limit(episode_count).each do |episode|
         @watchlist.episodes << episode unless @watchlist.episodes.exists?(id: episode.id)
+        current_user.update_life_spent_on_anime(episode.length)
       end
+      @watchlist.save
     end
     redirect_to :back
   end
