@@ -3,7 +3,7 @@ class BetaInvitesController < ApplicationController
     if params[:email].nil?
       redirect_to new_beta_invite_path
     else
-      @beta_invite = BetaInvite.find_by_email(params[:email])
+      @beta_invite = BetaInvite.find_by_email(params[:email].downcase)
     end
   end
   
@@ -12,7 +12,7 @@ class BetaInvitesController < ApplicationController
   
   def create
     # Check whether there already is a beta invite by this name.
-    email = params["beta_invite"]["email"]
+    email = params["beta_invite"]["email"].downcase
     if (beta_invite = BetaInvite.find_by_email(email)).nil?
       beta_invite = BetaInvite.create(email: email)
       BetaMailer.delay.beta_sign_up(beta_invite) if BetaInvite.find_by_email(email)
@@ -23,7 +23,7 @@ class BetaInvitesController < ApplicationController
   end
   
   def resend_invite
-    email = params["email"]
+    email = params["email"].downcase
     beta_invite = BetaInvite.find_by_email(email)
     if beta_invite.nil?
       redirect_to new_beta_invite_path
