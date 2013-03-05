@@ -6,6 +6,17 @@
     .nine.columns
       .panel.top-bar
         %h4= title "#{@anime.title} Episode List"
+      
+      - if user_signed_in?
+        .panel
+          %h5 Bulk Update
+          %p 
+            = form_tag(bulk_update_anime_episode_path(@anime, 1)) do
+              Mark the first
+              = text_field_tag :episode_count, "", size: 4, style: 'width: 50px; display: inline; margin-left: 4px; margin-right: 4px', class: 'inline'
+              episodes as viewed.
+              = submit_tag "Go >", class: 'button tiny'
+
       .panel.user-watchlist
         .episode-list{:class => "episode-list-#{@anime.slug}"}
           %ul

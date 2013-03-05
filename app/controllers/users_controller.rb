@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     @latest_reviews = @user.reviews.order('created_at DESC').limit(2)
 
     @anime_history = {
-      recently_watched: @user.watchlists.order('last_watched DESC').limit(3).map(&:anime),
+      recently_watched: @user.watchlists.order('last_watched DESC').where("status <> 'Dropped' AND status <> 'Plan to Watch'").limit(3).map(&:anime),
       recently_completed: @user.watchlists.where(status: "Completed").order('last_watched DESC').limit(3).map(&:anime),
       plan_to_watch: @user.watchlists.where(status: "Plan to Watch").order('updated_at DESC').limit(3).map(&:anime)
     }
