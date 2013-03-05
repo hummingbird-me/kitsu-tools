@@ -68,6 +68,16 @@ namespace :deploy do
       run "kill -SIGTERM #{pid}"
     end
   end
+
+  desc "stop monit from monitoring sidekiq"
+  task :stop_monit_sidekiq, roles: :web do
+    run "#{sudo} monit unmonitor sidekiq"
+  end
+  
+  desc "resume monit sidekiq monitoring "
+  task :start_monit_sidekiq, roles: :web do
+    run "#{sudo} monit monitor sidekiq"
+  end
   
   namespace :assets do
     task :precompile, roles: :web, except: {no_release: true} do
@@ -93,6 +103,9 @@ after "deploy:finalize_update",
 after "deploy:restart",
   "deploy:reload_unicorn",
   "deploy:nginx_reload", "deploy:monit_reload"
+
+before "sidekiq:restart", "deploy:stop_monit_sidekiq"
+after "sidekiq:restart", "deploy:start_monit_sidekiq"
 
 # To keep only the last 5 releases:
 # (Default is `set :keep_releases, 5`)
