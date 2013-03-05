@@ -1,6 +1,19 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3";
+.full-reviews {
+  .review-info {
+    .avatar {
+      img {
+        height: 80px;
+        width: 80px;
+        border: 4px solid #fff;
+        @include border-radius(100px);
+      }
+    }
+  }
+}
 
 .user-reviews {
   margin-top: 30px;
