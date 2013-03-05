@@ -37,7 +37,10 @@ Hummingbird::Application.routes.draw do
       member { post :vote }
     end
     resources :episodes do
-      member { post :watch }
+      member { 
+        post :watch 
+        post :bulk_update
+      }
     end
   end
 
