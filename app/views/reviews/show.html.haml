@@ -6,14 +6,15 @@
     .row
       .review-info.twelve.columns
         .two.columns
-          %span.avatar= image_tag "http://localhost:3000/system/2907de69275fbdf37105b0c1de09dc15b63b20cc_thumb.jpg?1362250113"
-          %p.username= link_to "JoshFabian", "#"
+          %span.avatar= image_tag @review.user.avatar.url(:thumb)
+          %p.username= link_to @review.user.name, @review.user 
         .ten.columns
-          %span.anime-title <a href="#">Fullmetal Alchemist</a> Review
-        
+          %span.anime-title
+            = link_to @review.anime.title, @review.anime
+            Review
     .row
       .sharing-sidebar.two.columns
-        .float-wrap
+        .float-wrap.scrollToFixed
           %p Share this review:
           %span.facebook
             .fb-like{"data-layout" => "box_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
@@ -42,26 +43,11 @@
                   %i.icon-thumbs-down.icon-2x
 
       .main-content.seven.columns
-
-        // ==========================
-        // User written content start
-        // ==========================
-        %h1 Alchemy for Everyone
-        %p 
-          When watching the show for the first time you'll find that this isn't your average series about magic and monsters. This series involves the scientific marvel known as alchemy. Unlike magic, which can make something out of nothing, alchemy follows the law of even trade, making something out of something. Of course, watching a guy turn water into salt wouldn't make for a very entertaining series, so FA takes things to a much more imaginative level. By using certain circular symbols called “transmutation circles” (some also call these “arrays“), a house can be made out of rubble, or a sword from a chunk of metal. However, as with everything, there are some rules that should never be broken.
-
-        %p
-          This is where our aspiring protagonists come into play. The young brothers Edward and Alphonse Elric have lost their mother to a rare illness and are unable to contact their father who's been away. To fill this void in their lives, the boys turn to a study of alchemy. It isn't long after their informal training that they attempt the most forbidden of alchemic crafts: Human Transmutation. They fail.
-
-        %p
-          = image_tag "http://ginnodangan.files.wordpress.com/2009/12/fma37-06.jpg"
-          %i Despite the darker tone this series often takes, it still has it's humor.
-
-        %p
-          Equally as impressive is the music. So far we've had opening and ending themes by such popular artists as Porno Graffitti, L'Arc en Ciel, YeLLOW Generation, and Crystal Kay to name a few. As of this writing there are still two more top names being added to the soundtrack, bringing the total to eight for this series' fifty-episode run. Thanks not only to the variety of artists, but also the different styles that each one brings to the table, the music is never boring and worth taking the couple of minutes to listen to every time. Anyone who's familiar with the quality of music that Square Enix includes in their games should know what to expect from Fullmetal Alchemist. Much of the background music is fully orchestrated, often relying on the use of woodwinds and percussions that are pleasing to the ear and in no way distract from any talking taking place.
-        // ========================
-        // User written content End
-        // ========================
+        %div(style="margin-top: 14px")
+          - if @review.source == "mal_import"
+            %div= simple_format_review(@review.content)
+          - else
+            Todo.
 
       .extra-sidebar.three.columns
         .screenshots.twelve.columns
@@ -111,7 +97,7 @@
                 %p Overall
 
 
-    .row
+    .row.stopScrollToFixed
       .new-reviews.twelve.columns
         %h3 Latest Reviews
         #yourCarouselId.touchcarousel.minimal-light
@@ -229,5 +215,14 @@
 // https://github.com/bigspotteddog/ScrollToFixed
 :javascript
   $(document).ready(function() {
-    $('.rate-review').scrollToFixed();
+    $('.scrollToFixed').scrollToFixed({
+      marginTop: 70, 
+      limit: $(".stopScrollToFixed").offset().top - $('.scrollToFixed').outerHeight() - 200, 
+      unfixed: function() {
+        $('.scrollToFixed').css('left', 10)
+          .css('top', parseInt($('.scrollToFixed').css('top')) - $('.scrollToFixed').outerHeight() - 8);
+      }
+    });
+
+    //, limit: $('.stopScrollToFixed').offset().top-$('.scrollToFixed').outerHeight()});
   });
