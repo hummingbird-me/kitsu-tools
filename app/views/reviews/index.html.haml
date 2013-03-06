@@ -11,10 +11,10 @@
 
       - @reviews.each do |review|
         .panel
-          %h5 #{review.user.name} <small>#{review.positive? ? ':)' : ':('}</small>
-          %p(style="whitespace: pre-wrap")= truncate(review.content, length: 600, omission: "...")
+          %h5 #{review.user.name}
+          %p= truncate(review.content, length: 600, omission: "...")
           %p 
-            = pluralize review.votes.to_i, "user"
+            = review.votes.to_i
             of
             = pluralize review.evaluations.length, "user"
             found this review useful.

@@ -14,7 +14,11 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @anime = Anime.find(params[:anime_id])
     @review = Review.find(params[:id])
+    if user_signed_in?
+      @evaluation = @review.evaluations.where(source_id: current_user.id).first
+    end
   end
   
   def vote

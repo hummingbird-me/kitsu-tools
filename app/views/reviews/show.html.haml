@@ -1,4 +1,3 @@
-//%pre= @review.to_yaml
 :css
   .hummingbird-header figure {border-bottom: 3px solid #fd7532;}
 .anime-discover.full-reviews
@@ -36,10 +35,10 @@
             %p Rate Review
             .rating-thumbs.twelve.columns
               .positive-vote.six.columns
-                %a{:href => "#"}
+                = link_to vote_anime_review_path(@anime, @review, type: "up"), method: :post, class: ('active' if @evaluation && @evaluation.value == 1.0) do
                   %i.icon-thumbs-up.icon.icon-2x
               .negative-vote.six.columns
-                %a{:href => "#"}
+                = link_to vote_anime_review_path(@anime, @review, type: "down"), method: :post, class: ('active' if @evaluation && @evaluation.value != 1.0) do
                   %i.icon-thumbs-down.icon-2x
 
       .main-content.seven.columns

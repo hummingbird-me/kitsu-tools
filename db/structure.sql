@@ -498,7 +498,6 @@ CREATE TABLE reviews (
     id integer NOT NULL,
     user_id integer,
     anime_id integer,
-    positive boolean,
     content text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
@@ -1415,3 +1414,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130302185243');
 INSERT INTO schema_migrations (version) VALUES ('20130303072149');
 
 INSERT INTO schema_migrations (version) VALUES ('20130304223624');
+
+INSERT INTO schema_migrations (version) VALUES ('20130306184127');
