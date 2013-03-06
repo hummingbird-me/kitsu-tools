@@ -70,17 +70,18 @@
       }
     }
     .meta {
-      min-width: 194px;
       margin: 0 auto;
       top: 20px;
-      padding: 10px 13px;
       z-index: 5;
       position: absolute;
-      width: auto;
+      width: 100%;
       color: #fff;
       text-align: center;
       h1, h3 {
         color: #fff;
+      }
+      h3 {
+        font-size: 20px;
       }
     }
   }
