@@ -73,7 +73,7 @@
                 = link_to "read more", "#"
               %span.user
                 = image_tag @top_reviews[:negative].user.avatar.url(:thumb)
-                = link_to @top_reviews[:negative].user.name, @top_reviews[:positive].user
+                = link_to @top_reviews[:negative].user.name, @top_reviews[:negative].user
             - else
               .nine.columns.centered
                 = image_tag "http://cl.ly/image/0T2u2t2J0Z35/no-negative-reviews@2x.jpg"
