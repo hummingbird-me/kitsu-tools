@@ -10,10 +10,7 @@
         .user-information 
           %h4.username= @user.name
           %p.bio 
-            - if not @user.bio.nil?
-              = @user.bio
-            - else
-              (Edit profile link goes here)
+            = @user.bio
           .anime-life
             %p Life Spent Watching Anime:
             %p= format_minutes @user.life_spent_on_anime
