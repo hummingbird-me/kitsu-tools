@@ -51,15 +51,10 @@
 
       .extra-sidebar.three.columns
         .screenshots.twelve.columns
-          .twelve.columns.mobile-two.columns
-            %img{:alt => "Fmab1", :src => "http://www.hummingbird.ly/system/gallery_images/images/000/000/010/thumb/fmab1.jpg?1361481525"}/
-          .twelve.mobile-two.columns
-            %img{:alt => "Fmab2", :src => "http://www.hummingbird.ly/system/gallery_images/images/000/000/011/thumb/fmab2.jpg?1361481544"}/
-          .twelve.mobile-two.columns
-            %img{:alt => "Fmab3", :src => "http://www.hummingbird.ly/system/gallery_images/images/000/000/012/thumb/fmab3.jpg?1361481562"}/
-          .twelve.columns.mobile-two.columns
-            %img{:alt => "Fmab4", :src => "http://www.hummingbird.ly/system/gallery_images/images/000/000/013/thumb/fmab4.jpg?1361481581"}/
-          / / %p= link_to "view full gallery", "#"
+          - @review.anime.gallery_images.each do |image|
+            .twelve.columns.mobile-two.columns
+              = image_tag image.url(:thumb)
+          /%p= link_to "view full gallery", "#"
 
 
     .row
@@ -223,6 +218,4 @@
           .css('top', parseInt($('.scrollToFixed').css('top')) - $('.scrollToFixed').outerHeight() - 8);
       }
     });
-
-    //, limit: $('.stopScrollToFixed').offset().top-$('.scrollToFixed').outerHeight()});
   });

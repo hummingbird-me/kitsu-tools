@@ -8,7 +8,7 @@ class AnimeController < ApplicationController
     @quotes = @anime.quotes.limit(4)
     @castings = Casting.where(anime_id: @anime.id, featured: true)
     @languages = @castings.map {|x| x.role }.uniq
-    @gallery = GalleryImage.where(anime_id: @anime.id).limit(6)
+    @gallery = @anime.gallery_images.limit(6)
 
     @top_reviews = {
       positive: @anime.reviews.where('rating > 0 OR positive').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first,
