@@ -11,4 +11,8 @@ module ReviewsHelper
     text.insert 0, start_tag
     text.html_safe.safe_concat("</p>")
   end
+
+  def sanitize_review(html)
+    sanitize html
+  end
 end

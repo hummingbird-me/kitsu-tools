@@ -46,7 +46,7 @@
           - if @review.source == "mal_import"
             %div= simple_format_review(@review.content)
           - else
-            Todo.
+            %div= sanitize_review @review.content
 
       .extra-sidebar.three.columns
         .screenshots.twelve.columns
