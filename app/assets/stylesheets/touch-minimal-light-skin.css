@@ -1,0 +1,83 @@
+/******************************************************\
+*
+*  Minimal Light Skin
+*
+*    1. Arrows(direction) navigation
+*    2. Paging navigation
+*
+\******************************************************/
+
+
+
+/******************************************************\
+*
+*  1. Arrows (direction) navigation
+*
+\******************************************************/
+.touchcarousel.minimal-light .arrow-icon {
+	width: 23px;
+	height: 28px;	
+	margin-top: -14px;
+}
+.touchcarousel.minimal-light .arrow-icon.left{
+	left: 5px;
+	background: url('sprite.png') no-repeat -6px -7px;
+}
+.touchcarousel.minimal-light .arrow-icon.right{
+	right: 5px;
+	background: url('sprite.png') no-repeat -173px -7px;
+}
+.touchcarousel.minimal-light .arrow-holder.disabled {
+	-moz-opacity: 1;	
+	-webkit-opacity: 1;	
+	opacity: 1;
+}
+.touchcarousel.minimal-light .arrow-holder.disabled .arrow-icon.left{
+	background: url('sprite.png') no-repeat -40px -7px;
+}
+.touchcarousel.minimal-light .arrow-holder.disabled .arrow-icon.right{
+	background: url('sprite.png') no-repeat -139px -7px;
+}
+.touchcarousel.minimal-light .arrow-holder {
+	width: 35px;
+	-moz-opacity: 0.8;	
+	-webkit-opacity: 0.8;	
+	opacity: 0.8;	
+}
+.touchcarousel.minimal-light .arrow-holder:hover {
+	-moz-opacity: 1;	
+	-webkit-opacity: 1;	
+	opacity: 1;	
+}
+
+/******************************************************\
+*
+*  2. Paging navigation
+*
+\******************************************************/
+.touchcarousel.minimal-light .tc-paging-container {	
+	margin-top: -22px;
+}
+.touchcarousel.minimal-light .tc-paging-item {
+	background: url('sprite.png') no-repeat -95px -4px;
+	
+	width: 16px;
+	height: 16px;	
+	
+	-moz-opacity: 0.8;	
+	-webkit-opacity: 0.8;	
+	opacity: 0.8;	
+}
+.touchcarousel.minimal-light .tc-paging-item.current {	
+	background: url('sprite.png') no-repeat -95px -22px;
+}
+.touchcarousel.minimal-light .tc-paging-item:hover {		
+	-moz-opacity: 1;	
+	-webkit-opacity: 1;	
+	opacity: 1;		
+}
+
+
+
+
+

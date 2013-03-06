@@ -1,13 +1,156 @@
 //%pre= @review.to_yaml
+:css
+  .hummingbird-header figure {border-bottom: 3px solid #fd7532;}
 .anime-discover.full-reviews
   .row.content-body
-    .review-info.three.columns
-      %span.anime-title <a href="#">Eden of The East</a> Review
-      %span.avatar= image_tag "http://localhost:3000/system/2907de69275fbdf37105b0c1de09dc15b63b20cc_thumb.jpg?1362250113"
+    .row
+      .review-info.twelve.columns
+        .two.columns
+          %span.avatar= image_tag "http://localhost:3000/system/2907de69275fbdf37105b0c1de09dc15b63b20cc_thumb.jpg?1362250113"
+          %p.username= link_to "JoshFabian", "#"
+        .ten.columns
+          %span.anime-title <a href="#">Fullmetal Alchemist</a> Review
+        
+    .row
+      .sharing-sidebar.two.columns
+        .float-wrap
+          %p Share this review:
+          %span.facebook
+            .fb-like{"data-layout" => "box_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
 
-    .main-content.six.columns
-      .title.twelve-columns
-        %h1 Welcome to the Jungle
-    .extra-sidebar.three.columns
-      %span ads and shit here
+          %span.twitter 
+            %a.twitter-share-button{"data-count" => "vertical", "data-lang" => "en", "data-via" => "twitterapi", :href => "https://twitter.com/share"} Tweet
+            :javascript
+              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
 
+          %span.google-plus
+            .g-plus{"data-action" => "share", "data-annotation" => "vertical-bubble", "data-height" => "60"}
+            :javascript
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/plusone.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+          %span.rate-review
+            %p Rate Review
+            .rating-thumbs.twelve.columns
+              .positive-vote.six.columns
+                %a{:href => "#"}
+                  %i.icon-thumbs-up.icon.icon-2x
+              .negative-vote.six.columns
+                %a{:href => "#"}
+                  %i.icon-thumbs-down.icon-2x
+
+
+
+
+
+      .main-content.seven.columns
+
+        // ==========================
+        // User written content start
+        // ==========================
+        %h1 Alchemy for Everyone
+        %p 
+          When watching the show for the first time you'll find that this isn't your average series about magic and monsters. This series involves the scientific marvel known as alchemy. Unlike magic, which can make something out of nothing, alchemy follows the law of even trade, making something out of something. Of course, watching a guy turn water into salt wouldn't make for a very entertaining series, so FA takes things to a much more imaginative level. By using certain circular symbols called “transmutation circles” (some also call these “arrays“), a house can be made out of rubble, or a sword from a chunk of metal. However, as with everything, there are some rules that should never be broken.
+
+        %p
+          This is where our aspiring protagonists come into play. The young brothers Edward and Alphonse Elric have lost their mother to a rare illness and are unable to contact their father who's been away. To fill this void in their lives, the boys turn to a study of alchemy. It isn't long after their informal training that they attempt the most forbidden of alchemic crafts: Human Transmutation. They fail.
+
+        %p
+          = image_tag "http://ginnodangan.files.wordpress.com/2009/12/fma37-06.jpg"
+          %i Despite the darker tone this series often takes, it still has it's humor.
+
+        %p
+          Equally as impressive is the music. So far we've had opening and ending themes by such popular artists as Porno Graffitti, L'Arc en Ciel, YeLLOW Generation, and Crystal Kay to name a few. As of this writing there are still two more top names being added to the soundtrack, bringing the total to eight for this series' fifty-episode run. Thanks not only to the variety of artists, but also the different styles that each one brings to the table, the music is never boring and worth taking the couple of minutes to listen to every time. Anyone who's familiar with the quality of music that Square Enix includes in their games should know what to expect from Fullmetal Alchemist. Much of the background music is fully orchestrated, often relying on the use of woodwinds and percussions that are pleasing to the ear and in no way distract from any talking taking place.
+        // ========================
+        // User written content End
+        // ========================
+      .extra-sidebar.three.columns
+        .screenshots.twelve.columns
+          .twelve.columns.mobile-two.columns
+            %img{:alt => "Fmab1", :src => "http://www.hummingbird.ly/system/gallery_images/images/000/000/010/thumb/fmab1.jpg?1361481525"}/
+          .twelve.mobile-two.columns
+            %img{:alt => "Fmab2", :src => "http://www.hummingbird.ly/system/gallery_images/images/000/000/011/thumb/fmab2.jpg?1361481544"}/
+          .twelve.mobile-two.columns
+            %img{:alt => "Fmab3", :src => "http://www.hummingbird.ly/system/gallery_images/images/000/000/012/thumb/fmab3.jpg?1361481562"}/
+          .twelve.columns.mobile-two.columns
+            %img{:alt => "Fmab4", :src => "http://www.hummingbird.ly/system/gallery_images/images/000/000/013/thumb/fmab4.jpg?1361481581"}/
+          / / %p= link_to "view full gallery", "#"
+
+
+    .row
+      .review-score.seven.columns.offset-by-two
+        .four.columns
+          .rating-diamond.score-75
+        .eight.columns
+          %h1 GOOD
+          %p Full Metal Alchemist is a fresh new concept that is well worth the praise that it has received over the past 3-4 months. Highly recommended.
+
+          .sub-ratings.twelve.columns
+            %ul
+              %li.two.columns
+                %h4 8
+                %p Story
+
+              %li.two.columns
+                %h4 9
+                %p Animation
+
+              %li.two.columns
+                %h4 9
+                %p Sound
+
+              %li.two.columns
+                %h4 7
+                %p Character
+
+              %li.two.columns
+                %h4 9
+                %p Enjoyment
+
+              %li.two.columns.end
+                %h4 9
+                %p Overall
+
+
+    .row
+      .new-reviews.twelve.columns
+        %h3 Latest Reviews
+        #yourCarouselId.touchcarousel.minimal-light
+          %ul.touchcarousel-container
+            / TouchCarousel items, place any HTML content inside them (img tag is inserted as an example)
+            %li.touchcarousel-item
+              = image_tag "http://localhost:3000/system/eabda55dc625121afaa9edf89dc8a383baa28e5a_thumb.jpg?1362250113"
+            %li.touchcarousel-item
+              = image_tag "http://localhost:3000/system/f1f81717ac6c3de38b9536903e9b7e552b9cc89d_thumb.jpg?1362250112"
+            %li.touchcarousel-item
+              = image_tag "http://localhost:3000/system/d17d18816a2e3cfc14ffcbe5979b4ace39c24cd1_thumb.jpg?1361799262"
+            %li.touchcarousel-item
+              = image_tag "http://localhost:3000/system/0f7a347f58b56ea08cfccb8016044b26a5cf0ec3_thumb.jpg?1361799255"
+            %li.touchcarousel-item
+              = image_tag "http://localhost:3000/system/2810c8dec871a7c50037a76fd4a614fc8ff63363_thumb.jpg?1361799251"
+            %li.touchcarousel-item
+              = image_tag "http://localhost:3000/system/01d88b28135d5b7329e95a00dc178e41c9a2aad6_thumb.jpg?1361799259"
+            %li.touchcarousel-item
+              = image_tag "http://localhost:3000/system/4cca5d024a6cec17fb601e5bcbaa735e5a0ed862_thumb.jpg?1361799257"
+            %li.touchcarousel-item
+              = image_tag "http://localhost:3000/system/d3f1caad4e74cd6db861402190db4f3833c1c271_thumb.jpg?1361799239"
+            %li.touchcarousel-item
+              = image_tag "http://localhost:3000/system/cb6ef53097aa5e4c0e872ee115eab4e655be61c5_thumb.jpg?1361799255"
+            %li.touchcarousel-item
+              = image_tag "http://localhost:3000/system/3665167f986e665633dd1d94eaf8aa948a179800_thumb.jpg?1361799232"
+:javascript
+  jQuery(function($) {
+      $("#yourCarouselId").touchCarousel({
+        loopItems: true,
+        itemsPerMove: 1, 
+        scrollbar: false,  
+        autoplay:true,    
+      });
+  });
+
+:javascript
+  $(document).ready(function() {
+    $('.rate-review').scrollToFixed();
+  });
