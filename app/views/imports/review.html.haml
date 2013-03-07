@@ -30,7 +30,7 @@
   %table
     %thead
       %tr
-        %th Anime
+        %th(style="width: 30%") Anime
         %th Rating
         %th Content
     %tbody
@@ -38,6 +38,23 @@
         %tr
           %td= review.anime.title
           %td
-            = 3 + review.rating
-            stars
-          %td= truncate(review.content, length: 200, omission: '...')
+            %table
+              %tr
+                %td Story
+                %td= review.rating_story
+              %tr
+                %td Animation
+                %td= review.rating_animation
+              %tr
+                %td Sound
+                %td= review.rating_sound
+              %tr
+                %td Character
+                %td= review.rating_character
+              %tr
+                %td Enjoyment
+                %td= review.rating_enjoyment
+              %tr
+                %td Overall
+                %td= review.rating
+          %td= truncate(review.content, length: 500, omission: '...')
