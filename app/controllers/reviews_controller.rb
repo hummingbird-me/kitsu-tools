@@ -16,6 +16,7 @@ class ReviewsController < ApplicationController
   def show
     @anime = Anime.find(params[:anime_id])
     @review = Review.find(params[:id])
+    @recent_reviews = Review.order('created_at DESC').limit(10).select {|x| x.anime.sfw? }
     if user_signed_in?
       @evaluation = @review.evaluations.where(source_id: current_user.id).first
     end

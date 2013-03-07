@@ -67,27 +67,27 @@
           .sub-ratings.twelve.columns
             %ul
               %li.two.columns
-                %h4 8
+                %h4= @review.rating_story
                 %p Story
 
               %li.two.columns
-                %h4 9
+                %h4= @review.rating_animation
                 %p Animation
 
               %li.two.columns
-                %h4 9
+                %h4= @review.rating_sound
                 %p Sound
 
               %li.two.columns
-                %h4 7
+                %h4= @review.rating_sound
                 %p Character
 
               %li.two.columns
-                %h4 9
+                %h4= @review.rating_enjoyment
                 %p Enjoyment
 
               %li.two.columns.end
-                %h4 9
+                %h4= @review.rating
                 %p Overall
 
 
@@ -97,6 +97,18 @@
         #yourCarouselId.touchcarousel.minimal-light
           %ul.touchcarousel-container
             / TouchCarousel items, place any HTML content inside them (img tag is inserted as an example)
+            - @recent_reviews.each do |review|
+              %li.touchcarousel-item
+                = link_to "#" do
+                  .carousel_img{:style => "background-image: url(#{review.anime.cover_image.url(:thumb)});"}
+                .meta
+                  %h3= review.anime.title
+                  %h1= review.rating
+                  %p.cite written by
+                  %p= review.user.name
+
+
+
             %li.touchcarousel-item
               %a{:href => "#"}
                 .carousel_img{:style => "background-image: url(http://localhost:3000/system/01d88b28135d5b7329e95a00dc178e41c9a2aad6_thumb.jpg?1361799259);"}
