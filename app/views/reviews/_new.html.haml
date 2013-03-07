@@ -1,6 +1,6 @@
-%h3 New "#{@anime.title}" review
+/%h3 New "#{@anime.title}" review
 
-- if user_signed_in?
+- if user_signed_in? and false
   = form_for (@review = Review.new), url: anime_reviews_path(@anime) do |f|
     = f.text_area :content, rows: 7, :id => "redactor_content"
     .user-reviews
@@ -38,5 +38,7 @@
         $(this).siblings().find('input').removeAttr("checked");
     });
 - else
-  %p You need to be signed in to write reviews.
-  %p= link_to "Login", new_user_session_path, class: 'button'
+  /%p You need to be signed in to write reviews.
+  /%p= link_to "Login", new_user_session_path, class: 'button'
+
+%p Review functionality will be coming up in a day or two, hang in there!
