@@ -29,6 +29,10 @@ class ReviewsController < ApplicationController
     @review.add_or_update_evaluation(:votes, value, current_user)
     redirect_to :back
   end
+  
+  def new
+    authenticate_user!
+  end
 
   def create
     authenticate_user!
