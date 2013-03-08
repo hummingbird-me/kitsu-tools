@@ -203,12 +203,18 @@
       .positive-review {
         padding: 15px;
         border-right: 1px solid #ececec;
+        p {
+          word-wrap: break-word;
+        }
         span {
           color: #2aa730;
         }
       }
       .negative-review {
         padding: 15px;
+        p {
+          word-wrap: break-word;
+        }
         span {
           color: #c63838;
         }
