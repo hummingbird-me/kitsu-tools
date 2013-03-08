@@ -1,14 +1,14 @@
 .six.columns
-  .panel
-    .three.columns
-      = image_tag review.anime.cover_image.url(:thumb)
-      .vote-blocks.twelve.columns
-        - (-2).upto(2) do |i|
-          = review.rating >= i ? "★" : "☆"
-    .nine.columns
-      %h3= review.anime.title
+  .panel.review-block
+    .twelve.columns
+      .three.columns.review-thumbnail
+        = image_tag review.anime.cover_image.url(:thumb)
+        / .vote-blocks.twelve.columns
+        /   - (-2).upto(2) do |i|
+        /     = review.rating >= i ? "★" : "☆"
+      %h3= truncate(review.anime.title, length: 25, omission: '...')
       %p
-        = truncate(review.content, length: 250, omission: '...')
+        = truncate(review.content, length: 500, omission: '...')
         %br
         = link_to "Read more", anime_review_path(review.anime, review)
 
