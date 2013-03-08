@@ -48,6 +48,8 @@ class UsersController < ApplicationController
       @watchlist = @user.watchlists.where(:status => "Dropped").page(params[:page]).per(20)
     end
 
+    @watchlist = @watchlist.order('created_at DESC') if @sub_tab != "currently_watching"
+
     render "watchlist"
   end
   
