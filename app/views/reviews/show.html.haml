@@ -56,39 +56,40 @@
           /%p= link_to "view full gallery", "#"
 
 
-    / .row
-    /   .review-score.seven.columns.offset-by-two
-    /     .four.columns
-    /       .rating-diamond.score-75
-    /     .eight.columns
-    /       %h1 GOOD
-    /       %p Full Metal Alchemist is a fresh new concept that is well worth the praise that it has received over the past 3-4 months. Highly recommended.
+    .row
+      .review-score.seven.columns.offset-by-two
+        .four.columns
+          .rating-diamond{:class => "score-#{@review.rating}"}
 
-    /       .sub-ratings.twelve.columns
-    /         %ul
-    /           %li.two.columns
-    /             %h4= @review.rating_story
-    /             %p Story
+        .eight.columns
+          %h1= nil # GOOD
+          %p= @review.summary || truncate(@review.content, length: 300, omission: '...')
 
-    /           %li.two.columns
-    /             %h4= @review.rating_animation
-    /             %p Animation
+          .sub-ratings.twelve.columns
+            %ul
+              %li.two.columns
+                %h4= @review.rating_story
+                %p Story
 
-    /           %li.two.columns
-    /             %h4= @review.rating_sound
-    /             %p Sound
+              %li.two.columns
+                %h4= @review.rating_animation
+                %p Animation
 
-    /           %li.two.columns
-    /             %h4= @review.rating_sound
-    /             %p Character
+              %li.two.columns
+                %h4= @review.rating_sound
+                %p Sound
 
-    /           %li.two.columns
-    /             %h4= @review.rating_enjoyment
-    /             %p Enjoyment
+              %li.two.columns
+                %h4= @review.rating_sound
+                %p Character
 
-    /           %li.two.columns.end
-    /             %h4= @review.rating
-    /             %p Overall
+              %li.two.columns
+                %h4= @review.rating_enjoyment
+                %p Enjoyment
+
+              %li.two.columns.end
+                %h4= @review.rating
+                %p Overall
 
 
     .row.stopScrollToFixed
