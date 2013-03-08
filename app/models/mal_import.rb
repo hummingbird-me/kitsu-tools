@@ -39,11 +39,11 @@ class MalImport
 
         ratings = rev.css('div.spaceit.textReadability table.borderClass tr').map {|x| x.text.split }
         rating = ratings.select {|x| x[0] == "Overall" }[0][1].to_i
-        rating_story = ratings.select {|x| x[0] == "Story" }[0][1].to_i
-        rating_animation = ratings.select {|x| x[0] == "Animation" }[0][1].to_i
-        rating_sound = ratings.select {|x| x[0] == "Sound" }[0][1].to_i
-        rating_character = ratings.select {|x| x[0] == "Character" }[0][1].to_i
-        rating_enjoyment = ratings.select {|x| x[0] == "Enjoyment" }[0][1].to_i
+        rating_story = ratings.select {|x| x[0] == "Story" }[0][1].to_i rescue nil
+        rating_animation = ratings.select {|x| x[0] == "Animation" }[0][1].to_i rescue nil
+        rating_sound = ratings.select {|x| x[0] == "Sound" }[0][1].to_i rescue nil
+        rating_character = ratings.select {|x| x[0] == "Character" }[0][1].to_i rescue nil
+        rating_enjoyment = ratings.select {|x| x[0] == "Enjoyment" }[0][1].to_i rescue nil
 
         reviews.push({
           mal_id: anime_id, 
