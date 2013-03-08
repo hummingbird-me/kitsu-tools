@@ -50,9 +50,9 @@
 
       .extra-sidebar.three.columns
         .screenshots.twelve.columns
-          - @review.anime.gallery_images.each do |image|
+          - @review.anime.gallery_images.each do |gimage|
             .twelve.columns.mobile-two.columns
-              = image_tag image.url(:thumb)
+              = image_tag gimage.image.url(:thumb)
           /%p= link_to "view full gallery", "#"
 
 
