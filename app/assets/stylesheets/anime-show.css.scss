@@ -67,11 +67,15 @@
       }
       img {
         max-height: 195px;
-        max-width: 100%;
+        width: 100%;
       }
     }
 
     .left-small {
+      img {
+        max-height: 115px;
+        min-height: 115px;
+      }
       &.columns {
         @media (min-width: 768px) {
           padding-right: 3px;
@@ -80,6 +84,10 @@
     }
 
     .right-small {
+      img {
+        max-height: 115px;
+        min-height: 115px;
+      }
       &.columns {
         @media (min-width: 768px) {
           padding-left: 3px;
@@ -195,12 +203,18 @@
       .positive-review {
         padding: 15px;
         border-right: 1px solid #ececec;
+        p {
+          word-wrap: break-word;
+        }
         span {
           color: #2aa730;
         }
       }
       .negative-review {
         padding: 15px;
+        p {
+          word-wrap: break-word;
+        }
         span {
           color: #c63838;
         }
