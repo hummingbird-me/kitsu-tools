@@ -51,7 +51,7 @@
             - if @top_reviews[:positive]
               %p
                 = truncate(@top_reviews[:positive].content, length: 300, omission: '...')
-                = link_to "read more", "#"
+                = link_to "read more", anime_review_path(@anime, @top_reviews[:positive])
               %span.user
                 = image_tag @top_reviews[:positive].user.avatar.url(:thumb)
                 = link_to @top_reviews[:positive].user.name, @top_reviews[:positive].user
@@ -70,7 +70,7 @@
             - if @top_reviews[:negative]
               %p
                 = truncate(@top_reviews[:negative].content, length: 300, omission: '...')
-                = link_to "read more", "#"
+                = link_to "read more", anime_review_path(@anime, @top_reviews[:negative])
               %span.user
                 = image_tag @top_reviews[:negative].user.avatar.url(:thumb)
                 = link_to @top_reviews[:negative].user.name, @top_reviews[:negative].user
