@@ -100,7 +100,7 @@
             / TouchCarousel items, place any HTML content inside them (img tag is inserted as an example)
             - @recent_reviews.each do |review|
               %li.touchcarousel-item
-                = link_to "#" do
+                = link_to anime_review_path(review.anime, review) do
                   .carousel_img{:style => "background-image: url(#{review.anime.cover_image.url(:thumb)});"}
                 .meta
                   %h3= review.anime.title
