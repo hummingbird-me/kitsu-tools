@@ -1,0 +1,44 @@
+<div id='topic' class='<%= 'un' unless @topic.locked? %>locked'>
+  <%= render :partial => 'forem/topics/head', :locals => { :topic => @topic } %>
+
+  <menu>
+    <% if @topic.can_be_replied_to? && can?(:reply, @topic) %>
+      <%= link_to t(".reply"), forem.new_topic_post_path(@topic) %>
+    <% end %>
+    <% if @topic.user == forem_user || forem_admin? %>
+      <%= link_to t(".delete"), forem.forum_topic_path(@forum, @topic), :method => :delete, :confirm => t("are_you_sure") %>
+    <% end %>
+    <% if forem_user %>
+      <% if !@topic.subscriber?(forem_user.id) %>
+        <%= link_to t(".subscribe"), forem.subscribe_forum_topic_path(@forum, @topic) %>
+      <% else %>
+        <%= link_to t(".unsubscribe"), forem.unsubscribe_forum_topic_path(@forum, @topic) %>
+      <% end %>
+    <% end %>
+  </menu>
+
+  <% if forem_admin? %>
+    <%= link_to t(".hide.#{@topic.hidden}"), forem.toggle_hide_admin_topic_path(@topic), :method => :put %> | 
+    <%= link_to t(".lock.#{@topic.locked}"), forem.toggle_lock_admin_topic_path(@topic), :method => :put %> |
+    <%= link_to t(".pin.#{@topic.pinned}"), forem.toggle_pin_admin_topic_path(@topic), :method => :put %>
+  <% end %>
+
+  <% if @topic.pending_review? %>
+    <div class="moderation" id='topic_moderation'>
+      <%= t(".pending_review") %>
+      <% if forem_admin_or_moderator?(@topic.forum) %>
+        <%= form_for @topic, :url => forem.moderate_forum_topic_path(@topic.forum, @topic), :method => :put do |f| %>
+          <%= render "forem/moderation/options", :f => f %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= forem_pages_widget(@posts) %>
+
+  <div id='posts'>
+    <%= render :partial => "forem/posts/post", :collection => @posts %>
+  </div>
+
+  <%= forem_pages_widget(@posts) %>
+</div>
