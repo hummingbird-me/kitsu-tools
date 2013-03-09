@@ -22,7 +22,7 @@
                 %p Currently waiting confirmation for: #{resource.unconfirmed_email}
             %p
               = f.label :short_bio
-              = f.text_area :bio, rows: 3
+              = f.text_area :bio, rows: 3, maxlength: 180
 
             %p
               = f.label :about_me
