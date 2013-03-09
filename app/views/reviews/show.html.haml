@@ -68,23 +68,23 @@
           .sub-ratings.twelve.columns
             %ul
               %li.two.columns
-                %h4= @review.rating_story
+                %h4= @review.rating_story || @review.rating
                 %p Story
 
               %li.two.columns
-                %h4= @review.rating_animation
+                %h4= @review.rating_animation || @review.rating
                 %p Animation
 
               %li.two.columns
-                %h4= @review.rating_sound
+                %h4= @review.rating_sound || @review.rating
                 %p Sound
 
               %li.two.columns
-                %h4= @review.rating_sound
+                %h4= @review.rating_sound || @review.rating
                 %p Character
 
               %li.two.columns
-                %h4= @review.rating_enjoyment
+                %h4= @review.rating_enjoyment || @review.rating
                 %p Enjoyment
 
               %li.two.columns.end
