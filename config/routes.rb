@@ -6,6 +6,8 @@ Hummingbird::Application.routes.draw do
     omniauth_callbacks: "users/omniauth_callbacks" 
   }
 
+  mount Forem::Engine => "/community"
+
   resources :beta_invites
   match "/beta_invites/resend_invite" => "beta_invites#resend_invite", as: :resend_beta_invite
 
