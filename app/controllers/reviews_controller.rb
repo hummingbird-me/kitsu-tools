@@ -32,6 +32,7 @@ class ReviewsController < ApplicationController
   
   def new
     authenticate_user!
+    @anime = Anime.find(params[:anime_id])
   end
 
   def create
@@ -41,8 +42,8 @@ class ReviewsController < ApplicationController
     
     if params["review"]["rating"]
       review.rating = params["review"]["rating"] 
-      review.rating = -2 if review.rating < -2
-      review.rating = 2 if review.rating > 2
+      review.rating = 1 if review.rating < 1
+      review.rating = 10 if review.rating > 10
     end
 
     if review.save
