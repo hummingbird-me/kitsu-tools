@@ -1,3 +1,4 @@
+@import "compass/css3";
 /**
  * For modern browsers
  * 1. The space content is one way to avoid an Opera bug when the
@@ -31,6 +32,27 @@ body {
     width: 25%;
     .three, .row .three {
       width: 100%;
+    }
+  }
+
+  .button {
+    background: #fd864b;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 auto 9px auto;
+    display: block;
+    border: none;
+    box-shadow: none;
+    @include border-radius(2px);
+    &:hover {
+      background: #3f5765;
+    }
+
+    a {
+      color: white;
+      display: block;
+      height: 100%;
+      line-height: 65px;
     }
   }
 

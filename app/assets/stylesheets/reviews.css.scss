@@ -5,6 +5,62 @@
 
 .full-reviews {
 
+  // Review Editor
+  .redactor_editor {
+    min-height: 585px;
+  }
+
+  .help-text {
+    font-size: 15px !important;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .summary {
+    position: relative;
+    .counter {
+      position: absolute;
+      z-index: 999;
+      bottom: 0;
+      right: 10px;
+      opacity: 0.2;
+    }
+  }
+  .button {
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .review-subrating {
+    .subrating {
+      padding: 5px;
+      span {
+        background: darken(#eee, 5);
+        display: block;
+        padding: 5px;
+        text-align: center;
+        a {
+          color: #222;
+          display: block;
+        }
+
+        &:hover {
+          background: #3f5765;
+          a {
+            color: #fff;
+          }
+        }
+
+        &.active {
+          background: #fd7532;
+          a {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
   // Top of Review Page
   .review-info {
     margin-top: 48px;
@@ -17,7 +73,7 @@
       img {
         height: 60px;
         width: 60px;
-        border: 2px solid #fd7532;
+        border: 3px solid #fd7532;
         @include border-radius(100px);
       }
     }
@@ -109,8 +165,6 @@
     }
     p {
       font-size: 18px;
-      padding-bottom: 30px;
-      line-height: 27px;
       img {
         width: 100%;
       }

@@ -1,19 +1,190 @@
-%h3 New "#{@anime.title}" review
+:css
+  .hummingbird-header figure {border-bottom: 3px solid #fd7532;}
+:javascript
+  $(document).ready(function(){ 
+    $("#charcount").charCount({
+      allowed: 120,    
+      warning: 20,
+      counterText: ''  
+    });
+  });
+.anime-discover.full-reviews
+  .row.content-body
+    .row
+      .review-info.twelve.columns
+        .two.columns
+          %span.avatar= image_tag "http://www.placekitten.com/300/300"
+          %p.username= link_to "JoshFabian", "#" 
+        .ten.columns
+          %span.anime-title
+            = link_to "Anime title"
+            Review
+    .row
+      .main-content.seven.columns.offset-by-two
+        = form_for (@review = Review.new), url: anime_reviews_path(@anime) do |f|
+          = f.text_area :content, rows: 7, :id => "redactor_content"
+          %p.help-text 
+            (optional) Summarize your review in one sentence. <br/>
+            This will be used when your review is being shared across social networks.
+            .summary
+              = f.text_area :content, rows: 3, :id => "charcount", :name => "charcount", :maxlength => "120", :lengthcut => "true", :placeholder => "e.g. 'A great modernization of an under-appreciated genre. [Anime title] is fast, furious, and endlessly deep.'"
 
-= form_for (@review = Review.new), url: anime_reviews_path(@anime) do |f|
-  = f.text_area :content, rows: 7, :id => "redactor_content"
-  .user-reviews
-    - if current_user.star_rating? or true
-      .advanced-rating
-        .rating.six.columns
-          = radio_button "review", "rating", 2, :id => 'star5'
-          %label{:for => "star5"}
-          = radio_button "review", "rating", 1, :id => 'star4'
-          %label{:for => "star4"}
-          = radio_button "review", "rating", 0, :id => 'star3'
-          %label{:for => "star3"}
-          = radio_button "review", "rating", -1, :id => 'star2'
-          %label{:for => "star2"}
-          = radio_button "review", "rating", -2, :id => 'star1'
-          %label{:for => "star1"}
-  = f.submit class: "button"
+          = f.submit class: "button"
+
+      .extra-sidebar.three.columns
+        .review-subrating
+          .story
+            .row
+              .twelve.columns
+                %h3 Story
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Pathetic"}= link_to "1", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Dreadful"}= link_to "2", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Poor"}= link_to "3", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Decent"}= link_to "4", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Mediocre"}= link_to "5", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Fair"}= link_to "6", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Good"}= link_to "7", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Great"}= link_to "8", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Amazing"}= link_to "9", "#"
+                .two.columns.subrating.end
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Flawless"}= link_to "10", "#"
+
+          .Art
+            .row
+              .twelve.columns
+                %h3 Art
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Pathetic"}= link_to "1", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Dreadful"}= link_to "2", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Poor"}= link_to "3", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Decent"}= link_to "4", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Mediocre"}= link_to "5", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Fair"}= link_to "6", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Good"}= link_to "7", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Great"}= link_to "8", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Amazing"}= link_to "9", "#"
+                .two.columns.subrating.end
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Flawless"}= link_to "10", "#"
+
+          .sound
+            .row
+              .twelve.columns
+                %h3 Sound
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Pathetic"}= link_to "1", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Dreadful"}= link_to "2", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Poor"}= link_to "3", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Decent"}= link_to "4", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Mediocre"}= link_to "5", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Fair"}= link_to "6", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Good"}= link_to "7", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Great"}= link_to "8", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Amazing"}= link_to "9", "#"
+                .two.columns.subrating.end
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Flawless"}= link_to "10", "#"
+
+          .character
+            .row
+              .twelve.columns
+                %h3 Character
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Pathetic"}= link_to "1", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Dreadful"}= link_to "2", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Poor"}= link_to "3", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Decent"}= link_to "4", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Mediocre"}= link_to "5", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Fair"}= link_to "6", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Good"}= link_to "7", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Great"}= link_to "8", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Amazing"}= link_to "9", "#"
+                .two.columns.subrating.end
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Flawless"}= link_to "10", "#"
+
+          .enjoyment
+            .row
+              .twelve.columns
+                %h3 Enjoyment
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Pathetic"}= link_to "1", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Dreadful"}= link_to "2", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Poor"}= link_to "3", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Decent"}= link_to "4", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Mediocre"}= link_to "5", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Fair"}= link_to "6", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Good"}= link_to "7", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Great"}= link_to "8", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Amazing"}= link_to "9", "#"
+                .two.columns.subrating.end
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Flawless"}= link_to "10", "#"
+
+          .overall
+            .row
+              .twelve.columns
+                %h3 Overall
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Pathetic"}= link_to "1", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Dreadful"}= link_to "2", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Poor"}= link_to "3", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Decent"}= link_to "4", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Mediocre"}= link_to "5", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Fair"}= link_to "6", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Good"}= link_to "7", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Great"}= link_to "8", "#"
+                .two.columns.subrating
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Amazing"}= link_to "9", "#"
+                .two.columns.subrating.end
+                  %span.has-tip.tip-top{"data-width" => "210", :title => "Flawless"}= link_to "10", "#"
+
+#help-example.reveal-modal{:class => "medium"}
+  %h2 Summary Example
+  %p *note* Anime title should be found within summary.
+  %h3 "A good modernization of an under-appreciated genre, [Anime title] is fast, furious, and endlessly deep."
+  %a.close-reveal-modal ×

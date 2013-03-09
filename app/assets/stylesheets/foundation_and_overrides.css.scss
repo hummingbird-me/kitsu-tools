@@ -127,10 +127,10 @@ $bodyFontFamily: "proxima-nova", sans-serif;
 
 // Tooltip Settings
 
-// $hasTipBorderBottom: dotted 1px #ccc;
+$hasTipBorderBottom: none;
 // $hasTipFontWeight: bold;
 // $hasTipFontColor: #333;
-// $hasTipBorderBottomHover: dotted 1px darken($mainColor, 20%);
+$hasTipBorderBottomHover: none;
 // $hasTipFontColorHover: $mainColor;
 // $tooltipBackgroundColor: #000;
 // $tooltipBackgroundOpacity: 0.85;
