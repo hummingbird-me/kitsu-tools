@@ -1,0 +1,50 @@
+<h2><%= t("forem.admin.forum.index") %></h2>
+
+<%= link_to t("forem.admin.forum.new_link"), forem.new_admin_forum_path %>
+
+<% @forums.group_by(&:category).each do |category, forums| %>
+  <h2><%= category.try(:name) || t('.no_category') %></h2>
+
+  <table id='forums' class='forums subdued' cellspacing='0'>
+    <thead>
+      <tr>
+        <th><%= t('edit', :scope => 'forem.admin.forums') %></th>
+        <th><%= t('delete', :scope => 'forem.admin.forums') %></th>
+        <th><%= t('forum', :scope => 'forem.general') %></th>
+        <th><%= t('topics', :scope => 'forem.general') %></th>
+        <th><%= t('posts', :scope => 'forem.general') %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% forums.each do |forum| %>
+        <tr class="forum <%= cycle("odd", "even") %>">
+          <td><%= link_to t('edit', :scope => 'forem.admin.forums'), forem.edit_admin_forum_path(forum) %></td>
+          <td><%= link_to t('delete', :scope => 'forem.admin.forums'), forem.admin_forum_path(forum), :method => :delete, :confirm => t("delete_confirm", :scope => "forem.admin.forums") %></td>
+          <td>
+            <%= link_to forem_emojify(forum.title), forem.forum_path(forum) %>
+            <div class='description'><%= forem_format(forum.description) %></div>
+            <%= t('.last_post') %>
+            <% if last_post = forum.posts.last %>
+<%= link_to(forem_emojify(last_post.topic.subject), forem.forum_topic_path(forum, last_post.topic)) -%> <%= t('by') %> <%= last_post.user %> <%= time_ago_in_words(last_post.created_at) -%>
+            <% else %>
+              <%= t('.none') %>
+            <% end %>
+            <br>
+            <span class='moderators'>
+              <strong><%= t('.moderators') %>:</strong>
+              <% if forum.moderators.exists? %>
+                <% forum.moderators.map do |moderator| %>
+                  <%= link_to moderator, [forem, :admin, moderator] %>
+                <% end.to_sentence %>
+              <% else %>
+                None
+              <% end %>
+            </span>
+          </td>
+          <td><%= forum.topics.count %></td>
+          <td><%= forum.posts.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
