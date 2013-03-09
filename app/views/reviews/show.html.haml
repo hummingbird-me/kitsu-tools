@@ -63,7 +63,7 @@
 
         .eight.columns
           %h1= nil # GOOD
-          %p= @review.summary || truncate(@review.content, length: 300, omission: '...')
+          %p= @review.summary || truncate(@review.content, length: 140, omission: '...')
 
           .sub-ratings.twelve.columns
             %ul
