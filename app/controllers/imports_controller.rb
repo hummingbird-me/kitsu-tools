@@ -2,14 +2,19 @@ class ImportsController < ApplicationController
   before_filter :authenticate_user!
   
   def myanimelist
-    @user = current_user
-    @user.mal_username = params["mal_username"]
-    @user.save
-    @staged_import = StagedImport.find_or_create_by_user_id(@user.id)
-    @staged_import.data = {version: 1, complete: false}
-    @staged_import.save
-    MALImportWorker.perform_async(params["mal_username"], @staged_import.id)
-    redirect_to :back
+    if params["mal_username"] && params["mal_username"].strip.length > 0
+      @user = current_user
+      @user.mal_username = params["mal_username"].strip
+      @user.save
+      @staged_import = StagedImport.find_or_create_by_user_id(@user.id)
+      @staged_import.data = {version: 1, complete: false}
+      @staged_import.save
+      MALImportWorker.perform_async(@user.mal_import, @staged_import.id)
+      redirect_to :back
+    else
+      flash[:alert] = "MyAnimeList username was blank."
+      redirect_to :back
+    end
   end
   
   def review
