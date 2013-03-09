@@ -11,8 +11,8 @@ class AnimeController < ApplicationController
     @gallery = @anime.gallery_images.limit(6)
 
     @top_reviews = {
-      positive: @anime.reviews.where('rating > 0').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first,
-      negative: @anime.reviews.where('rating <= 0').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first
+      positive: @anime.reviews.where('rating > 5').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first,
+      negative: @anime.reviews.where('rating <= 5').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first
     }
 
     if user_signed_in?
