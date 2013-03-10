@@ -13,7 +13,7 @@
         .row
           %header.cf
             .nine.columns
-              %h3.forum-title Hummingbird Discussion
+              %h3.forum-title= link_to "Hummingbird Discussion", "#"
             .three.columns 
               %span.button= link_to "Create Topic", "#"
         .row
@@ -38,11 +38,11 @@
 
             %p Insert infinite scroll
 
-      / #forums_container
-      /   %h1#forums_title= t('.title')
-      /   = render @categories
+      #forums_container
+        %h1#forums_title= t('.title')
+        = render @categories
 
-      / %br
-      / %footer#admin_link
-      /   - if forem_admin?
-      /     = link_to t("area", :scope => "forem.admin"), forem.admin_root_path
+      %br
+      %footer#admin_link
+        - if forem_admin?
+          = link_to t("area", :scope => "forem.admin"), forem.admin_root_path
