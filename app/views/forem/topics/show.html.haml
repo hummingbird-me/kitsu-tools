@@ -4,8 +4,7 @@
       .forum-sidebar.three.columns
         %ul
           %li
-            %span.active
-              = link_to "Hummingbird Discussion", "#"
+            %span= link_to "Hummingbird Discussion", "#"
           %li
             %span= link_to "Bug Discussion", "#"
           %li
@@ -19,9 +18,105 @@
         .row
           %header.cf
             .nine.columns
-              %h4.forum-title <i class="icon-chevron-left"></i> <a href="#">Forum Home</a>
-            .three.columns 
-              %span.button.active= link_to "Unsubscribe", "#"
+              %h3.forum-title <i class="icon-chevron-left"></i> <a href="#">Anime Discussion</a>
+            .three.columns
+              - if !@topic.subscriber?(forem_user.id)
+                %span.button= link_to "Subscribe", forem.subscribe_forum_topic_path(@forum, @topic)
+              - else
+                %span.button.active= link_to "Unsubscribe", forem.unsubscribe_forum_topic_path(@forum, @topic)
+        .row
+          .discussions.twelve.columns
+            - if @topic.pending_review?
+              .row.moderation-message
+                #topic_moderation.moderation
+                  = t(".pending_review")
+                  - if forem_admin_or_moderator?(@topic.forum)
+                    = form_for @topic, :url => forem.moderate_forum_topic_path(@topic.forum, @topic), :method => :put do |f|
+                      = render "forem/moderation/options", :f => f
+            .topic-view
+              .one.columns.avatar
+                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/085/thumb/picture?1362864710"
+              .eleven.columns.topic-info
+                .topic-title= link_to "What do you think is the most depressing/haunting anime scene ever?"
+                %p.sub-text about 30 minutes ago by <a href="#">Lakros</a> to <a href="#">Anime Discussion</a>
+                %p.topic-body Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat.
+              .row
+                .toolbar
+                  %ul
+                    %li.reply-button 
+                      <i class="icon-reply"></i> <a href="#{forem.new_topic_post_path(@topic)}">Reply</a>
+                    %li.quote-button 
+                      <i class="icon-quote-left"></i> <a href="#">Quote</a>
+                    %li.edit-button 
+                      <i class="icon-pencil"></i> <a href="#">Edit</a>
+                    %li.delete-button 
+                      <i class="icon-trash"></i> <a href="#">Delete</a>
+        .reply-header.twelve.columns
+          %h3 36 Replies
+      .forum-container.replies.nine.columns
+        .topic-reply.row
+          .discussions.twelve.columns
+            .topic-view
+              .one.columns.avatar
+                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/085/thumb/picture?1362864710"
+              .eleven.columns.topic-info
+                .username= link_to "Username"
+                %p.sub-text about 30 minutes ago
+                %p.topic-body Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+              .row
+                .toolbar
+                  %ul
+                    %li.reply-button 
+                      <i class="icon-reply"></i> <a href="#{forem.new_topic_post_path(@topic)}">Reply</a>
+                    %li.quote-button 
+                      <i class="icon-quote-left"></i> <a href="#">Quote</a>
+                    %li.edit-button 
+                      <i class="icon-pencil"></i> <a href="#">Edit</a>
+                    %li.delete-button 
+                      <i class="icon-trash"></i> <a href="#">Delete</a>
+        .topic-reply.row
+          .discussions.twelve.columns
+            .topic-view
+              .one.columns.avatar
+                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/085/thumb/picture?1362864710"
+              .eleven.columns.topic-info
+                .username= link_to "Username"
+                %p.sub-text about 30 minutes ago
+                %p.topic-body Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+              .row
+                .toolbar
+                  %ul
+                    %li.reply-button 
+                      <i class="icon-reply"></i> <a href="#{forem.new_topic_post_path(@topic)}">Reply</a>
+                    %li.quote-button 
+                      <i class="icon-quote-left"></i> <a href="#">Quote</a>
+                    %li.edit-button 
+                      <i class="icon-pencil"></i> <a href="#">Edit</a>
+                    %li.delete-button 
+                      <i class="icon-trash"></i> <a href="#">Delete</a>
+
+        .topic-reply.row
+          .discussions.twelve.columns
+            .topic-view
+              .one.columns.avatar
+                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/085/thumb/picture?1362864710"
+              .eleven.columns.topic-info
+                .username= link_to "Username"
+                %p.sub-text about 30 minutes ago
+                %p.topic-body Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+              .row
+                .toolbar
+                  %ul
+                    %li.reply-button 
+                      <i class="icon-reply"></i> <a href="#{forem.new_topic_post_path(@topic)}">Reply</a>
+                    %li.quote-button 
+                      <i class="icon-quote-left"></i> <a href="#">Quote</a>
+                    %li.edit-button 
+                      <i class="icon-pencil"></i> <a href="#">Edit</a>
+                    %li.delete-button 
+                      <i class="icon-trash"></i> <a href="#">Delete</a>
+
+
 
 / <div id='topic' class='#{'un' unless @topic.locked?}locked'>
 / #{render :partial => 'forem/topics/head', :locals => { :topic => @topic }}
