@@ -128,14 +128,14 @@ $bodyFontFamily: "proxima-nova", sans-serif;
 // Tooltip Settings
 
 $hasTipBorderBottom: none;
-// $hasTipFontWeight: bold;
+$hasTipFontWeight: normal;
 // $hasTipFontColor: #333;
 $hasTipBorderBottomHover: none;
 // $hasTipFontColorHover: $mainColor;
 // $tooltipBackgroundColor: #000;
 // $tooltipBackgroundOpacity: 0.85;
 // $tooltipFontSize: 12px;
-// $tooltipFontWeight: bold;
+$tooltipFontWeight: normal;
 // $tooltipFontColor: #fff;
 // $tapToCloseFontSize: 10;
 // $tapToCloseFontWeight: normal;
