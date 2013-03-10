@@ -1,0 +1,78 @@
+.community
+  .row
+    .twelve.columns
+      .forum-sidebar.three.columns
+        %ul
+          %li= link_to "Hummingbird Discussion"
+          %li= link_to "Bug Discussion"
+          %li= link_to "Anime Discussion"
+          %li= link_to "Manga Discussion"
+      .forum-container.nine.columns
+        .row
+          %header.cf
+            .ten.columns
+              %h2.forum-title Hummingbird Discussion
+            .two.columns 
+              %span.button= link_to "Create Topic", "#"
+        .row
+          .discussions.twelve.columns
+            .topic
+              .one.columns.avatar
+                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/085/thumb/picture?1362864710"
+              .ten.columns.topic-info
+                .topic-title= link_to "What do you think is the most depressing/haunting anime scene ever?"
+                %p.sub-text about 30 minutes ago by <a href="#">Lakros</a> to <a href="#">Anime Discussion</a>
+
+              .one.columns.comment-count
+                %p <i class="icon-comments"></i> 23
+
+            .topic
+              .one.columns.avatar
+                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/082/thumb/1252512025393.png?1362877122"
+              .ten.columns.topic-info
+                .topic-title= link_to "My MAL import failed...?"
+                %p.sub-text about 45 hours ago by <a href="#">Ema-Kun</a> to <a href="#">Bug Discussion</a>
+
+              .one.columns.comment-count
+                %p <i class="icon-comments"></i> 9
+
+            .topic
+              .one.columns.avatar
+                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/073/thumb/profile.jpg?1362809822"
+              .ten.columns.topic-info
+                .topic-title= link_to "What do you think is the most depressing/haunting anime scene ever?"
+                %p.sub-text about 1 hour ago by <a href="#">Fanu</a> to <a href="#">Anime Discussion</a>
+
+              .one.columns.comment-count
+                %p <i class="icon-comments"></i> 4
+
+            .topic
+              .one.columns.avatar
+                = image_tag "http://www.hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675"
+              .ten.columns.topic-info
+                .topic-title= link_to "What do you think is the most depressing/haunting anime scene ever?"
+                %p.sub-text about 2 hours ago by <a href="#">Vikyhat</a> to <a href="#">Anime Discussion</a>
+
+              .one.columns.comment-count
+                %p <i class="icon-comments"></i> 18
+
+            .topic
+              .one.columns.avatar
+                = image_tag "http://www.hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1362317029"
+              .ten.columns.topic-info
+                .topic-title= link_to "What do you think is the most depressing/haunting anime scene ever?"
+                %p.sub-text about 2 hours ago by <a href="#">JoshFabian</a> to <a href="#">Anime Discussion</a>
+
+              .one.columns.comment-count
+                %p <i class="icon-comments"></i> 12
+
+
+
+      / #forums_container
+      /   %h1#forums_title= t('.title')
+      /   = render @categories
+
+      / %br
+      / %footer#admin_link
+      /   - if forem_admin?
+      /     = link_to t("area", :scope => "forem.admin"), forem.admin_root_path
