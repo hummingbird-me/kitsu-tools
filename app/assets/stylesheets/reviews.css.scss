@@ -25,38 +25,38 @@
       opacity: 0.2;
     }
   }
+
   .button {
     float: right;
     margin-top: 20px;
     margin-bottom: 30px;
   }
 
+  // subrating buttons
   .review-subrating {
     .subrating {
-      padding: 5px;
-      span {
+      padding: 0px 2px !important;
+
+      input[type="radio"] {
+        margin-left: -99999px;
+        position: absolute;
+      }
+
+      label {
         background: darken(#eee, 5);
         display: block;
         padding: 5px;
         text-align: center;
-        a {
-          color: #222;
-          display: block;
-        }
 
         &:hover {
           background: #3f5765;
-          a {
-            color: #fff;
-          }
+          color: #fff;
         }
+      }
 
-        &.active {
-          background: #fd7532;
-          a {
-            color: #fff;
-          }
-        }
+      input[type=radio]:checked + label {
+        background: #fd7532;
+        color: #fff;
       }
     }
   }

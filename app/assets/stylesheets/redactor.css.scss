@@ -30,8 +30,6 @@ body {
 */
 
 .redactor_box textarea {
-  font-family: Menlo, Monaco, monospace, sans-serif;
-  font-size: 13px;
   overflow: auto;
   resize: none;
   margin: 0;
@@ -45,18 +43,8 @@ body {
 }
 
 .redactor_editor {
-  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif !important;
-  &:focus, div, p, ul, ol, table, dl, blockquote, pre, h1, h2, h3, h4, h5 {
-    font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif !important;
-  }
   code, pre {
     font-family: Menlo, Monaco, monospace, sans-serif !important;
-  }
-  font-size: 15px !important;
-  line-height: 1.45em !important;
-  &:focus, div, p, ul, ol, table, dl, blockquote, pre {
-    font-size: 15px !important;
-    line-height: 1.45em !important;
   }
   position: relative;
   outline: none;
@@ -78,10 +66,7 @@ body {
     overflow: auto;
     white-space: normal;
   }
-  a {
-    color: #15c !important;
-    text-decoration: underline !important;
-  }
+
   object, embed, video, img {
     width: auto;
     max-width: 100%;
@@ -151,36 +136,13 @@ body {
     border-top: 1px solid #ccc;
   }
   h1, h2, h3, h4, h5 {
-    color: #000;
+    color: #222;
     background: none;
     margin: 0 !important;
     padding: 0 !important;
-    font-weight: bold;
+    font-weight: normal;
   }
-  h1 {
-    font-size: 36px !important;
-    line-height: 40px !important;
-    margin-bottom: 10px !important;
-  }
-  h2 {
-    font-size: 30px !important;
-    line-height: 38px !important;
-    margin-bottom: 15px !important;
-  }
-  h3 {
-    font-size: 24px !important;
-    line-height: 30px !important;
-    margin-bottom: 10px !important;
-  }
-  h4 {
-    font-size: 18px !important;
-    line-height: 24px !important;
-    margin-bottom: 10px !important;
-  }
-  h5 {
-    font-size: 1em !important;
-    margin-bottom: 10px !important;
-  }
+
   &.redactor_editor_wym {
     background: #f6f6f6 !important;
     padding: 5px 15px !important;
@@ -204,7 +166,6 @@ body {
 */
 
 .redactor_toolbar {
-  font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif !important;
   position: relative;
   left: 0;
   top: 0;
@@ -418,7 +379,6 @@ body .redactor_toolbar li a {
 */
 
 .redactor_dropdown {
-  font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
   top: 28px;
   left: 0;
   z-index: 2004;
@@ -616,7 +576,6 @@ body .redactor_toolbar li a {
     &[type="text"], &[type="password"], &[type="email"] {
       position: relative;
       z-index: 2;
-      font-family: Helvetica, Arial, Tahoma, sans-serif;
       height: 23px;
       border: 1px solid #ccc;
       margin: 0;
@@ -637,7 +596,6 @@ body .redactor_toolbar li a {
   textarea {
     position: relative;
     z-index: 2;
-    font-family: Helvetica, Arial, Tahoma, sans-serif;
     height: 23px;
     border: 1px solid #ccc;
     margin: 0;
@@ -670,7 +628,6 @@ body .redactor_toolbar li a {
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
   line-height: 1;
   font-size: 12px;
   font-weight: normal;
