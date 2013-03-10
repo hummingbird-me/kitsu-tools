@@ -4,13 +4,11 @@
       .forum-sidebar.three.columns
         %ul
           %li
-            %span.active= link_to "Hummingbird Discussion"
-          %li
-            %span= link_to "Bug Discussion"
-          %li
-            %span= link_to "Anime Discussion"
-          %li
-            %span= link_to "Manga Discussion"
+            %span.active= link_to "Hummingbird Discussion", forem.root_path
+          - @categories.each do |category|
+            - category.forums.each do |forum|
+              %li
+                %span= link_to forum.title, forem.forum_path(forum)
 
       .forum-container.nine.columns
         .row
