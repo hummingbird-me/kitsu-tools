@@ -3,8 +3,8 @@ class HomeController < ApplicationController
     @hide_cover_image = true
     @latest_reviews = Review.order('created_at DESC').limit(2)
     # @recent_anime = Watchlist.joins(:anime).where("(watchlists.status = 'Currently Watching' OR watchlists.status = 'Completed') AND anime.age_rating <> 'Rx'").order('watchlists.last_watched DESC').limit(8)
-    @recent_anime_watchlists = Watchlist.select("DISTINCT  ON (user_id) id").where("(status = 'Currently Watching' OR status = 'Completed') AND EXISTS (SELECT 1 FROM users WHERE users.id = user_id) AND EXISTS (SELECT 1 FROM anime WHERE anime.id = anime_id AND anime.age_rating <> 'Rx')")
-    @recent_anime = Watchlist.where(:id => @recent_anime_watchlists).order('updated_at DESC').limit(8)
+    @recent_anime_users = Watchlist.select("DISTINCT  ON (user_id) user_id").where("(status = 'Currently Watching' OR status = 'Completed') AND EXISTS (SELECT 1 FROM users WHERE users.id = user_id) AND EXISTS (SELECT 1 FROM anime WHERE anime.id = anime_id AND anime.age_rating <> 'Rx')").limit(8)
+    @recent_anime = @recent_anime_users.map {|x| User.find(x.user_id).watchlists.where(:status => ['Currently Watching', 'Completed']).order('last_watched DESC, updated_at DESC').limit(1).first }
     @featured_anime = Anime.where('slug IN (?)', %w[
       sword-art-online
       cuticle-detective-inaba
