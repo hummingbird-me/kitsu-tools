@@ -5,10 +5,9 @@
         %ul
           %li
             %span.active= link_to "Hummingbird Discussion", forem.root_path
-          - @categories.each do |category|
-            - category.forums.each do |forum|
-              %li
-                %span= link_to forum.title, forem.forum_path(forum)
+          - @forums.each do |forum|
+            %li
+              %span= link_to forum.title, forem.forum_path(forum)
 
       .forum-container.nine.columns
         .row
@@ -19,59 +18,23 @@
               %span.button= link_to "Create Topic", "#"
         .row
           .discussions.twelve.columns
-            .topic
-              .one.columns.avatar
-                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/085/thumb/picture?1362864710"
-              .ten.columns.topic-info
-                .topic-title= link_to "What do you think is the most depressing/haunting anime scene ever?"
-                %p.sub-text about 30 minutes ago by <a href="#">Lakros</a> to <a href="#">Anime Discussion</a>
-
-              .one.columns.comment-count
-                %p <i class="icon-comments"></i> 23
-
-            .topic
-              .one.columns.avatar
-                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/082/thumb/1252512025393.png?1362877122"
-              .ten.columns.topic-info
-                .topic-title= link_to "My MAL import failed...?"
-                %p.sub-text about 45 hours ago by <a href="#">Ema-Kun</a> to <a href="#">Bug Discussion</a>
-
-              .one.columns.comment-count
-                %p <i class="icon-comments"></i> 9
-
-            .topic
-              .one.columns.avatar
-                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/073/thumb/profile.jpg?1362809822"
-              .ten.columns.topic-info
-                .topic-title= link_to "Looking for a specific type of anime for my first."
-                .topic-title= link_to "What do you think is the most depressing/haunting anime scene ever?"
-                %p.sub-text about 1 hour ago by <a href="#">Fanu</a> to <a href="#">Anime Discussion</a>
-
-              .one.columns.comment-count
-                %p <i class="icon-comments"></i> 4
-
-            .topic
-              .one.columns.avatar
-                = image_tag "http://www.hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675"
-              .ten.columns.topic-info
-                .topic-title= link_to "A Soul Eater drawing I did"
-                .topic-title= link_to "What do you think is the most depressing/haunting anime scene ever?"
-                %p.sub-text about 2 hours ago by <a href="#">Vikyhat</a> to <a href="#">Anime Discussion</a>
-
-              .one.columns.comment-count
-                %p <i class="icon-comments"></i> 18
-
-            .topic
-              .one.columns.avatar
-                = image_tag "http://www.hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1362317029"
-              .ten.columns.topic-info
-                .topic-title= link_to "Post your current/last anime themed desktop wallpaper (I'll start)"
-                .topic-title= link_to "What do you think is the most depressing/haunting anime scene ever?"
-                %p.sub-text about 2 hours ago by <a href="#">JoshFabian</a> to <a href="#">Anime Discussion</a>
-
-              .one.columns.comment-count
-                %p <i class="icon-comments"></i> 12
-
+            - @topics.each do |topic|
+              - last_post = topic.posts.last
+              .topic
+                .one.columns.avatar
+                  = image_tag last_post.user.avatar.url(:thumb)
+                .ten.columns.topic-info
+                  .topic-title= link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
+                  %p.sub-text 
+                    = distance_of_time_in_words_to_now(topic.last_post_at)
+                    ago by
+                    = link_to last_post.user.name, main_app.user_path(last_post.user)
+                    to
+                    = link_to topic.forum.title, forem.forum_path(topic.forum)
+                .one.columns.comment-count
+                  %p
+                    %i.icon-comments
+                    = relevant_posts(topic).count
 
             %p Insert infinite scroll
 
