@@ -1,6 +1,50 @@
 @import "compass/css3";
 
 .community {
+  a {
+    color: #3f5765;
+  }
+  
+  // Side Navigation
+  .forum-sidebar {
+    position: relative;
+    top: 100px;
+    ul {
+      list-style: none;
+      li {
+        margin-bottom: 10px;
+        span {
+          background: #e1e1e1;
+          padding: 5px;
+          width: 100%;
+          display: block;
+          a {
+            color: #222;
+            display: block;
+          }
+          -moz-transition: background-color .2s;
+          -webkit-transition: background-color .2s;
+          -o-transition: background-color .2s;
+          transition: background-color .2s;
+          &:hover {
+            width: 110%;
+            background: #3f5765;
+            a {
+              color: #fff;
+            }
+          }
+          &.active {
+            width: 110%;
+            background: #fd7532;
+            a {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .forum-container {
     background: #fff;
     @include border-radius(4px);
@@ -11,6 +55,16 @@
       padding: 0px 10px;
       margin-bottom: 30px;
       display: block;
+      .forum-title {
+        margin-top: 22px;
+      }
+      .button {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        a {
+          line-height: normal;
+        }
+      }
     }
 
     // forum threads
@@ -48,6 +102,5 @@
         }
       }
     }
-
   }
 }
