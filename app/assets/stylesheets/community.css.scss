@@ -38,6 +38,7 @@
             background: #fd7532;
             a {
               color: #fff;
+              font-weight: 700;
             }
           }
         }
@@ -65,6 +66,13 @@
         a {
           line-height: normal;
         }
+        &.active {
+          background: #3f5765;
+        }
+      }
+      .icon-chevron-left {
+        font-size: 14px;
+        padding-right: 10px;
       }
     }
 

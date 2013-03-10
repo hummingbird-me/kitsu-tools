@@ -1,0 +1,52 @@
+.community
+  .row
+    .twelve.columns
+      .forum-sidebar.three.columns
+        %ul
+          %li
+            %span.active
+              = link_to "Hummingbird Discussion", "#"
+          %li
+            %span= link_to "Bug Discussion", "#"
+          %li
+            %span= link_to "General Discussion", "#"
+          %li
+            %span= link_to "Anime Discussion", "#"
+          %li
+            %span= link_to "Manga Discussion", "#"
+
+      .forum-container.nine.columns
+        .row
+          %header.cf
+            .nine.columns
+              %h4.forum-title <i class="icon-chevron-left"></i> <a href="#">Forum Home</a>
+            .three.columns 
+              %span.button.active= link_to "Unsubscribe", "#"
+
+/ <div id='topic' class='#{'un' unless @topic.locked?}locked'>
+/ #{render :partial => 'forem/topics/head', :locals => { :topic => @topic }}
+/ %menu
+/   - if @topic.can_be_replied_to? && can?(:reply, @topic)
+/     = link_to t(".reply"), forem.new_topic_post_path(@topic)
+/   - if @topic.user == forem_user || forem_admin?
+/     = link_to t(".delete"), forem.forum_topic_path(@forum, @topic), :method => :delete, :confirm => t("are_you_sure")
+/   - if forem_user
+/     - if !@topic.subscriber?(forem_user.id)
+/       = link_to t(".subscribe"), forem.subscribe_forum_topic_path(@forum, @topic)
+/     - else
+/       = link_to t(".unsubscribe"), forem.unsubscribe_forum_topic_path(@forum, @topic)
+/ - if forem_admin?
+/   = link_to t(".hide.#{@topic.hidden}"), forem.toggle_hide_admin_topic_path(@topic), :method => :put
+/   |
+/   \#{link_to t(".lock.#{@topic.locked}"), forem.toggle_lock_admin_topic_path(@topic), :method => :put} |
+/   \#{link_to t(".pin.#{@topic.pinned}"), forem.toggle_pin_admin_topic_path(@topic), :method => :put}
+/ - if @topic.pending_review?
+/   #topic_moderation.moderation
+/     = t(".pending_review")
+/     - if forem_admin_or_moderator?(@topic.forum)
+/       = form_for @topic, :url => forem.moderate_forum_topic_path(@topic.forum, @topic), :method => :put do |f|
+/         = render "forem/moderation/options", :f => f
+/ = forem_pages_widget(@posts)
+/ #posts
+/   = render :partial => "forem/posts/post", :collection => @posts
+/ = forem_pages_widget(@posts)
