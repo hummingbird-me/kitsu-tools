@@ -9,7 +9,7 @@ class ImportsController < ApplicationController
       @staged_import = StagedImport.find_or_create_by_user_id(@user.id)
       @staged_import.data = {version: 1, complete: false}
       @staged_import.save
-      MALImportWorker.perform_async(@user.mal_import, @staged_import.id)
+      MALImportWorker.perform_async(@user.mal_username, @staged_import.id)
       redirect_to :back
     else
       flash[:alert] = "MyAnimeList username was blank."
