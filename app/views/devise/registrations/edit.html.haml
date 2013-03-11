@@ -83,6 +83,7 @@
           %p 
             %span.in_progress Your import is currently in progress. 
             %span.check_back Please check back shortly!
+            = link_to "Cancel", review_cancel_path, class: 'button'
           :javascript
             function checkForCompletion() {
               $.getJSON("/users.json", function(data) { 
