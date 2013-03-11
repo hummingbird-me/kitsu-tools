@@ -33,7 +33,7 @@ class ReviewsController < ApplicationController
   def new
     authenticate_user!
     @anime = Anime.find(params[:anime_id])
-    @review = Review.new
+    @review = Review.new(user: current_user)
   end
 
   def create

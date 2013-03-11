@@ -29,4 +29,4 @@
             - else
               = link_to "Not Useful", vote_anime_review_path(@anime, review, type: "down"), method: :post
             |
-            = link_to "Report this review.", "#"
+            = link_to "See full review", anime_review_path(@anime, review)

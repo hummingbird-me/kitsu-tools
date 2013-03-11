@@ -61,7 +61,7 @@
                 %p 
                   No positive reviews.
                   %br
-                  = link_to new_anime_review_path(@anime)
+                  = link_to new_anime_review_path(@anime) do
                     %span Write the first!
 
           .negative-review.six.columns
@@ -80,7 +80,7 @@
                 %p 
                   No negative reviews.
                   %br
-                  = link_to new_anime_review_path(@anime)
+                  = link_to new_anime_review_path(@anime) do
                     %span Write the first!
                 
         .footer.twelve.columns
