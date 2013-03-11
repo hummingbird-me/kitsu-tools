@@ -8,7 +8,7 @@
         /     = review.rating >= i ? "★" : "☆"
       %h3= link_to truncate(review.anime.title, length: 25, omission: '...'), anime_review_path(review.anime, review)
       %p
-        = truncate(review.content, length: 500, omission: '...')
+        = review.summary || truncate(strip_tags(review.content), length: 500, omission: '...')
         %br
         = link_to "Read more", anime_review_path(review.anime, review)
 
