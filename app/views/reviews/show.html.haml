@@ -19,18 +19,11 @@
             .fb-like{"data-layout" => "box_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
 
           %span.twitter 
-            %a.twitter-share-button{"data-count" => "vertical", "data-lang" => "en", "data-via" => "twitterapi", :href => "https://twitter.com/share"} Tweet
-            :javascript
-              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+            %a.twitter-share-button{"data-count" => "vertical", "data-text" => "#{@review.summary}", "data-via" => "Hummingbird_ly", :href => "https://twitter.com/share"} Tweet
 
           %span.google-plus
             .g-plus{"data-action" => "share", "data-annotation" => "vertical-bubble", "data-height" => "60"}
-            :javascript
-              (function() {
-                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                po.src = 'https://apis.google.com/js/plusone.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-              })();
+
           %span.rate-review
             %p Rate Review
             .rating-thumbs.twelve.columns
