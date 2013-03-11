@@ -1,24 +1,15 @@
 .community
   .row
     .twelve.columns
-      .forum-sidebar.three.columns
-        %ul
-          %li
-            %span= link_to "Hummingbird Discussion", "#"
-          %li
-            %span= link_to "Bug Discussion", "#"
-          %li
-            %span= link_to "General Discussion", "#"
-          %li
-            %span= link_to "Anime Discussion", "#"
-          %li
-            %span= link_to "Manga Discussion", "#"
+      = render partial: "shared/forem_sidebar", locals: {active_forum: @forum}
 
       .forum-container.nine.columns
         .row
           %header.cf
             .nine.columns
-              %h3.forum-title <i class="icon-chevron-left"></i> <a href="#">Anime Discussion</a>
+              %h3.forum-title
+                %i.icon-chevron-left
+                = link_to @forum.name, forem.forum_path(@forum)
             .three.columns
               - if !@topic.subscriber?(forem_user.id)
                 %span.button= link_to "Subscribe", forem.subscribe_forum_topic_path(@forum, @topic)
@@ -35,75 +26,95 @@
                       = render "forem/moderation/options", :f => f
             .topic-view
               .one.columns.avatar
-                = image_tag "http://hummingbird.ly/system/users/avatars/000/000/085/thumb/picture?1362864710"
+                = image_tag @topic.user.avatar.url(:thumb)
               .eleven.columns.topic-info
-                .topic-title= link_to "What do you think is the most depressing/haunting anime scene ever?"
-                %p.sub-text about 30 minutes ago by <a href="#">Lakros</a> to <a href="#">Anime Discussion</a>
-                %p.topic-body This is the topic copy.
+                .topic-title= link_to @topic.subject, forem.forum_topic_path(@topic.forum, @topic)
+                %p.sub-text 
+                  about
+                  = distance_of_time_in_words_to_now(@topic.last_post_at)
+                  ago by
+                  = link_to @topic.user, main_app.user_path(@topic.user)
+                  to <a href="#">Anime Discussion</a>
+                %p.topic-body= forem_format @posts[0].text
 
               .row
                 .toolbar
                   %ul
-                    %li.reply-button 
-                      <i class="icon-reply"></i> <a href="#">Reply</a>
-                    %li.quote-button 
-                      <i class="icon-quote-left"></i> <a href="#">Quote</a>
-                    %li.edit-button 
-                      <i class="icon-pencil"></i> <a href="#">Edit</a>
-                    %li.delete-button 
-                      <i class="icon-trash"></i> <a href="#">Delete</a>
-
-        .reply-header.twelve.columns
-          %h3 
-            %span #{@posts.count} Replies
-
-      .forum-container.replies.nine.columns
-        - @posts.each do |post|              
-          .topic-reply.row
-            .discussions.twelve.columns
-              .topic-view
-                - if post.pending_review?
-                  .moderation
-                    = t(".pending_review")
-                    - if forem_admin_or_moderator?(post.topic.forum)
-                      - if local_assigns[:mass_moderation]
-                        = render "forem/posts/moderation_tools", :post => post
-                      - else
-                        = form_tag forem.forum_moderate_posts_path(post.topic.forum), :method => :put do
-                          = render "forem/posts/moderation_tools", :post => post
-
-                .one.columns.avatar
-                  = forem_avatar(post.user, :size => 60)
-
-                .eleven.columns.topic-info
-                  .username= link_to_if Forem.user_profile_links, post.user, [main_app, post.user]
-                  %p.sub-text{:datetime => post.created_at.to_s(:db)}= "#{time_ago_in_words(post.created_at)} #{t("ago")}"
-                  .topic-body 
-                    = forem_format(post.text)
-
-                .row
-                  .toolbar
-                    %ul
-                      - if forem_user
-                        - if can?(:reply, post.topic)
-                          - if post.topic.can_be_replied_to?
-                            %li.reply-button 
-                              <i class="icon-reply"></i> 
-                              = link_to t('Reply', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id)
-
+                    - post = @posts[0]
+                    - if forem_user
+                      - if can?(:reply, post.topic)
                         - if post.topic.can_be_replied_to?
-                          %li.quote-button 
-                            <i class="icon-quote-left"></i> 
-                            = link_to t('Quote', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id, :quote => true)
+                          %li.reply-button 
+                            <i class="icon-reply"></i> 
+                            = link_to t('Reply', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id)
 
-                        - if post.owner_or_admin?(forem_user)
-                          - if can?(:edit_post, post.topic.forum)
-                            %li.edit-button 
-                              <i class="icon-pencil"></i>
-                              = link_to t('Edit', :scope => 'forem.post'), forem.edit_topic_post_path(post.topic, post)
-                          %li.delete-button 
-                            <i class="icon-trash"></i> 
-                            = link_to t('Delete', :scope => 'forem.topic'), forem.topic_post_path(post.topic, post), :method => :delete, :confirm => t("are_you_sure")
+                      - if post.topic.can_be_replied_to?
+                        %li.quote-button 
+                          <i class="icon-quote-left"></i> 
+                          = link_to t('Quote', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id, :quote => true)
+
+                      - if post.owner_or_admin?(forem_user)
+                        - if can?(:edit_post, post.topic.forum)
+                          %li.edit-button 
+                            <i class="icon-pencil"></i>
+                            = link_to t('Edit', :scope => 'forem.post'), forem.edit_topic_post_path(post.topic, post)
+                        %li.delete-button 
+                          <i class="icon-trash"></i> 
+                          = link_to t('Delete', :scope => 'forem.topic'), forem.topic_post_path(post.topic, post), :method => :delete, :confirm => t("are_you_sure")
+
+        - if @posts.length > 1
+          .reply-header.twelve.columns
+            %h3 
+              %span= pluralize @posts.count-1, "Reply"
+      
+      - if @posts.length > 1
+        .forum-container.replies.nine.columns
+          - @posts[1..-1].each do |post|              
+            .topic-reply.row
+              .discussions.twelve.columns
+                .topic-view
+                  - if post.pending_review?
+                    .moderation
+                      = t(".pending_review")
+                      - if forem_admin_or_moderator?(post.topic.forum)
+                        - if local_assigns[:mass_moderation]
+                          = render "forem/posts/moderation_tools", :post => post
+                        - else
+                          = form_tag forem.forum_moderate_posts_path(post.topic.forum), :method => :put do
+                            = render "forem/posts/moderation_tools", :post => post
+
+                  .one.columns.avatar
+                    = forem_avatar(post.user, :size => 60)
+
+                  .eleven.columns.topic-info
+                    .username= link_to_if Forem.user_profile_links, post.user, [main_app, post.user]
+                    %p.sub-text{:datetime => post.created_at.to_s(:db)}= "#{time_ago_in_words(post.created_at)} #{t("ago")}"
+                    .topic-body 
+                      = forem_format(post.text)
+
+                  .row
+                    .toolbar
+                      %ul
+                        - if forem_user
+                          - if can?(:reply, post.topic)
+                            - if post.topic.can_be_replied_to?
+                              %li.reply-button 
+                                <i class="icon-reply"></i> 
+                                = link_to t('Reply', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id)
+
+                          - if post.topic.can_be_replied_to?
+                            %li.quote-button 
+                              <i class="icon-quote-left"></i> 
+                              = link_to t('Quote', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id, :quote => true)
+
+                          - if post.owner_or_admin?(forem_user)
+                            - if can?(:edit_post, post.topic.forum)
+                              %li.edit-button 
+                                <i class="icon-pencil"></i>
+                                = link_to t('Edit', :scope => 'forem.post'), forem.edit_topic_post_path(post.topic, post)
+                            %li.delete-button 
+                              <i class="icon-trash"></i> 
+                              = link_to t('Delete', :scope => 'forem.topic'), forem.topic_post_path(post.topic, post), :method => :delete, :confirm => t("are_you_sure")
 
 
 / <div id='topic' class='#{'un' unless @topic.locked?}locked'>
