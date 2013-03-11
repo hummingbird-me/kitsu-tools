@@ -37,8 +37,16 @@
 
       .main-content.seven.columns
         %div(style="margin-top: 14px")
+          - if current_user == @review.user
+
+            %a{:href => "#{edit_anime_review_path(@anime, @review)}"}
+              %i.icon-pencil
+              Edit Review
+
+
           - if @review.source == "mal_import"
             %div= simple_format_review(@review.content)
+
           - else
             %div= sanitize_review @review.content
 
@@ -87,8 +95,6 @@
 
 
     .row.stopScrollToFixed
-      - if current_user == @review.user
-        = link_to "Edit this review", edit_anime_review_path(@anime, @review)
       .new-reviews.twelve.columns
         %h3 Latest Reviews
         #yourCarouselId.touchcarousel.minimal-light
