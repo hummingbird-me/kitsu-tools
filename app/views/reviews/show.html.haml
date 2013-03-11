@@ -101,14 +101,14 @@
           %ul.touchcarousel-container
             / TouchCarousel items, place any HTML content inside them (img tag is inserted as an example)
             - @recent_reviews.each do |review|
-              %li.touchcarousel-item
-                = link_to anime_review_path(review.anime, review) do
+              = link_to anime_review_path(review.anime, review) do
+                %li.touchcarousel-item 
                   .carousel_img{:style => "background-image: url(#{review.anime.cover_image.url(:thumb)});"}
-                .meta
-                  %h3= review.anime.title
-                  %h1= review.rating
-                  %p.cite written by
-                  %p= review.user.name
+                  .meta
+                    %h3= review.anime.title
+                    %h1= review.rating
+                    %p.cite written by
+                    %p= review.user.name
 
 :javascript
   jQuery(function($) {
