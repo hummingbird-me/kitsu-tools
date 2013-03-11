@@ -33,21 +33,30 @@ class ReviewsController < ApplicationController
   def new
     authenticate_user!
     @anime = Anime.find(params[:anime_id])
+    @review = Review.new
   end
 
   def create
     authenticate_user!
-    @anime = Anime.find(params[:anime_id])
-    review = Review.new(user: current_user, anime: @anime, content: params["review"]["content"], source: "hummingbird")
-    
-    if params["review"]["rating"]
-      review.rating = params["review"]["rating"] 
-      review.rating = 1 if review.rating < 1
-      review.rating = 10 if review.rating > 10
-    end
 
-    if review.save
-      redirect_to anime_review_path(@anime, review)
+    @anime = Anime.find(params[:anime_id])
+    @review = Review.new(
+      user: current_user,
+      anime: @anime,
+      content: params["review"]["content"],
+      summary: params["charcount"],
+      source: "hummingbird"
+    )
+
+    @review.rating = [[1, params["review"]["rating"].to_i].max, 10].min rescue nil
+    @review.rating_story      = [[1, params["review"]["rating_story"].to_i].max, 10].min rescue nil
+    @review.rating_animation  = [[1, params["review"]["rating_animation"].to_i].max, 10].min rescue nil
+    @review.rating_sound      = [[1, params["review"]["rating_sound"].to_i].max, 10].min rescue nil
+    @review.rating_character  = [[1, params["review"]["rating_chracter"].to_i].max, 10].min rescue nil
+    @review.rating_enjoyment  = [[1, params["review"]["rating_enjoyment"].to_i].max, 10].min rescue nil
+    
+    if @review.save
+      redirect_to anime_review_path(@anime, @review)
     else
       flash[:error] = "Couldn't save your review, something went wrong."
       redirect_to :back

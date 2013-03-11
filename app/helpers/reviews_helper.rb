@@ -15,4 +15,17 @@ module ReviewsHelper
   def sanitize_review(html)
     sanitize html
   end
+
+  def rating_description(r)
+    return "Pathetic" if r == 1
+    return "Dreadful" if r == 2
+    return "Poor"     if r == 3
+    return "Mediocre" if r == 4
+    return "Fair"     if r == 5
+    return "Decent"   if r == 6
+    return "Good"     if r == 7
+    return "Great"    if r == 8
+    return "Amazing"  if r == 9
+    return "Flawless" if r == 10
+  end
 end

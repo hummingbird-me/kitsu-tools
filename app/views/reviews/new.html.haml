@@ -14,13 +14,13 @@
     .row
       .review-info.twelve.columns
         .two.columns
-          %span.avatar= image_tag "http://www.placekitten.com/300/300"
-          %p.username= link_to "JoshFabian", "#" 
+          %span.avatar= image_tag current_user.avatar.url(:thumb)
+          %p.username= link_to current_user.name, current_user
         .ten.columns
           %span.anime-title
-            = link_to "Anime title"
+            = link_to @anime.title, @anime
             Review
-    = form_for (@review = Review.new), url: anime_reviews_path(@anime) do |f|
+    = form_for @review, url: anime_reviews_path(@anime) do |f|
       .row
         .main-content.seven.columns.offset-by-two
           = f.text_area :content, rows: 7, :id => "redactor_content"
@@ -34,212 +34,15 @@
 
         .extra-sidebar.three.columns
           .review-subrating
-            .story
-              .row
-                .twelve.columns
-                  %h4 Story
-                  .two.columns.subrating
-                    %input#story-1{:type => "radio", :name => "story"}/
-                    %label.has-tip.tip-top{:for => "story-1", "data-width" => "210", :title => "Pathetic"} 1
-                  .two.columns.subrating
-                    %input#story-2{:type => "radio", :name => "story"}/
-                    %label.has-tip.tip-top{:for => "story-2", "data-width" => "210", :title => "Dreadful"} 2
-                  .two.columns.subrating
-                    %input#story-3{:type => "radio", :name => "story"}/
-                    %label.has-tip.tip-top{:for => "story-3", "data-width" => "210", :title => "Mediocre"} 3
-                  .two.columns.subrating
-                    %input#story-4{:type => "radio", :name => "story"}/
-                    %label.has-tip.tip-top{:for => "story-4", "data-width" => "210", :title => "Poor"} 4
-                  .two.columns.subrating
-                    %input#story-5{:type => "radio", :name => "story"}/
-                    %label.has-tip.tip-top{:for => "story-5", "data-width" => "210", :title => "Decent"} 5
-                  .two.columns.subrating
-                    %input#story-6{:type => "radio", :name => "story"}/
-                    %label.has-tip.tip-top{:for => "story-6", "data-width" => "210", :title => "Fair"} 6
-                  .two.columns.subrating
-                    %input#story-7{:type => "radio", :name => "story"}/
-                    %label.has-tip.tip-top{:for => "story-7", "data-width" => "210", :title => "Good"} 7
-                  .two.columns.subrating
-                    %input#story-8{:type => "radio", :name => "story"}/
-                    %label.has-tip.tip-top{:for => "story-8", "data-width" => "210", :title => "Great"} 8
-                  .two.columns.subrating
-                    %input#story-9{:type => "radio", :name => "story"}/
-                    %label.has-tip.tip-top{:for => "story-9", "data-width" => "210", :title => "Amazing"} 9
-                  .two.columns.subrating.end
-                    %input#story-10{:type => "radio", :name => "story"}/
-                    %label.has-tip.tip-top{:for => "story-10", "data-width" => "210", :title => "Flawless"} 10
-
-            .Art
-              .row
-                .twelve.columns
-                  %h4 Art
-                  .two.columns.subrating
-                    %input#art-1{:type => "radio", :name => "art"}/
-                    %label.has-tip.tip-top{:for => "art-1", "data-width" => "210", :title => "Pathetic"} 1
-                  .two.columns.subrating
-                    %input#art-2{:type => "radio", :name => "art"}/
-                    %label.has-tip.tip-top{:for => "art-2", "data-width" => "210", :title => "Dreadful"} 2
-                  .two.columns.subrating
-                    %input#art-3{:type => "radio", :name => "art"}/
-                    %label.has-tip.tip-top{:for => "art-3", "data-width" => "210", :title => "Mediocre"} 3
-                  .two.columns.subrating
-                    %input#art-4{:type => "radio", :name => "art"}/
-                    %label.has-tip.tip-top{:for => "art-4", "data-width" => "210", :title => "Poor"} 4
-                  .two.columns.subrating
-                    %input#art-5{:type => "radio", :name => "art"}/
-                    %label.has-tip.tip-top{:for => "art-5", "data-width" => "210", :title => "Decent"} 5
-                  .two.columns.subrating
-                    %input#art-6{:type => "radio", :name => "art"}/
-                    %label.has-tip.tip-top{:for => "art-6", "data-width" => "210", :title => "Fair"} 6
-                  .two.columns.subrating
-                    %input#art-7{:type => "radio", :name => "art"}/
-                    %label.has-tip.tip-top{:for => "art-7", "data-width" => "210", :title => "Good"} 7
-                  .two.columns.subrating
-                    %input#art-8{:type => "radio", :name => "art"}/
-                    %label.has-tip.tip-top{:for => "art-8", "data-width" => "210", :title => "Great"} 8
-                  .two.columns.subrating
-                    %input#art-9{:type => "radio", :name => "art"}/
-                    %label.has-tip.tip-top{:for => "art-9", "data-width" => "210", :title => "Amazing"} 9
-                  .two.columns.subrating.end
-                    %input#art-10{:type => "radio", :name => "art"}/
-                    %label.has-tip.tip-top{:for => "art-10", "data-width" => "210", :title => "Flawless"} 10
-
-            .sound
-              .row
-                .twelve.columns
-                  %h4 Sound
-                  .two.columns.subrating
-                    %input#sound-1{:type => "radio", :name => "sound"}/
-                    %label.has-tip.tip-top{:for => "sound-1", "data-width" => "210", :title => "Pathetic"} 1
-                  .two.columns.subrating
-                    %input#sound-2{:type => "radio", :name => "sound"}/
-                    %label.has-tip.tip-top{:for => "sound-2", "data-width" => "210", :title => "Dreadful"} 2
-                  .two.columns.subrating
-                    %input#sound-3{:type => "radio", :name => "sound"}/
-                    %label.has-tip.tip-top{:for => "sound-3", "data-width" => "210", :title => "Mediocre"} 3
-                  .two.columns.subrating
-                    %input#sound-4{:type => "radio", :name => "sound"}/
-                    %label.has-tip.tip-top{:for => "sound-4", "data-width" => "210", :title => "Poor"} 4
-                  .two.columns.subrating
-                    %input#sound-5{:type => "radio", :name => "sound"}/
-                    %label.has-tip.tip-top{:for => "sound-5", "data-width" => "210", :title => "Decent"} 5
-                  .two.columns.subrating
-                    %input#sound-6{:type => "radio", :name => "sound"}/
-                    %label.has-tip.tip-top{:for => "sound-6", "data-width" => "210", :title => "Fair"} 6
-                  .two.columns.subrating
-                    %input#sound-7{:type => "radio", :name => "sound"}/
-                    %label.has-tip.tip-top{:for => "sound-7", "data-width" => "210", :title => "Good"} 7
-                  .two.columns.subrating
-                    %input#sound-8{:type => "radio", :name => "sound"}/
-                    %label.has-tip.tip-top{:for => "sound-8", "data-width" => "210", :title => "Great"} 8
-                  .two.columns.subrating
-                    %input#sound-9{:type => "radio", :name => "sound"}/
-                    %label.has-tip.tip-top{:for => "sound-9", "data-width" => "210", :title => "Amazing"} 9
-                  .two.columns.subrating.end
-                    %input#sound-10{:type => "radio", :name => "sound"}/
-                    %label.has-tip.tip-top{:for => "sound-10", "data-width" => "210", :title => "Flawless"} 10
-
-            .character
-              .row
-                .twelve.columns
-                  %h4 Character
-                  .two.columns.subrating
-                    %input#character-1{:type => "radio", :name => "character-"}/
-                    %label.has-tip.tip-top{:for => "character-1", "data-width" => "210", :title => "Pathetic"} 1
-                  .two.columns.subrating
-                    %input#character-2{:type => "radio", :name => "character"}/
-                    %label.has-tip.tip-top{:for => "character-2", "data-width" => "210", :title => "Dreadful"} 2
-                  .two.columns.subrating
-                    %input#character-3{:type => "radio", :name => "character"}/
-                    %label.has-tip.tip-top{:for => "character-3", "data-width" => "210", :title => "Mediocre"} 3
-                  .two.columns.subrating
-                    %input#character-4{:type => "radio", :name => "character"}/
-                    %label.has-tip.tip-top{:for => "character-4", "data-width" => "210", :title => "Poor"} 4
-                  .two.columns.subrating
-                    %input#character-5{:type => "radio", :name => "character"}/
-                    %label.has-tip.tip-top{:for => "character-5", "data-width" => "210", :title => "Decent"} 5
-                  .two.columns.subrating
-                    %input#character-6{:type => "radio", :name => "character"}/
-                    %label.has-tip.tip-top{:for => "character-6", "data-width" => "210", :title => "Fair"} 6
-                  .two.columns.subrating
-                    %input#character-7{:type => "radio", :name => "character"}/
-                    %label.has-tip.tip-top{:for => "character-7", "data-width" => "210", :title => "Good"} 7
-                  .two.columns.subrating
-                    %input#character-8{:type => "radio", :name => "character"}/
-                    %label.has-tip.tip-top{:for => "character-8", "data-width" => "210", :title => "Great"} 8
-                  .two.columns.subrating
-                    %input#character-9{:type => "radio", :name => "character"}/
-                    %label.has-tip.tip-top{:for => "character-9", "data-width" => "210", :title => "Amazing"} 9
-                  .two.columns.subrating.end
-                    %input#character-10{:type => "radio", :name => "character"}/
-                    %label.has-tip.tip-top{:for => "character-10", "data-width" => "210", :title => "Flawless"} 10
-
-            .enjoyment
-              .row
-                .twelve.columns
-                  %h4 Enjoyment
-                  .two.columns.subrating
-                    %input#enjoyment-1{:type => "radio", :name => "enjoyment"}/
-                    %label.has-tip.tip-top{:for => "enjoyment-1", "data-width" => "210", :title => "Pathetic"} 1
-                  .two.columns.subrating
-                    %input#enjoyment-2{:type => "radio", :name => "enjoyment"}/
-                    %label.has-tip.tip-top{:for => "enjoyment-2", "data-width" => "210", :title => "Dreadful"} 2
-                  .two.columns.subrating
-                    %input#enjoyment-3{:type => "radio", :name => "enjoyment"}/
-                    %label.has-tip.tip-top{:for => "enjoyment-3", "data-width" => "210", :title => "Mediocre"} 3
-                  .two.columns.subrating
-                    %input#enjoyment-4{:type => "radio", :name => "enjoyment"}/
-                    %label.has-tip.tip-top{:for => "enjoyment-4", "data-width" => "210", :title => "Poor"} 4
-                  .two.columns.subrating
-                    %input#enjoyment-5{:type => "radio", :name => "enjoyment"}/
-                    %label.has-tip.tip-top{:for => "enjoyment-5", "data-width" => "210", :title => "Decent"} 5
-                  .two.columns.subrating
-                    %input#enjoyment-6{:type => "radio", :name => "enjoyment"}/
-                    %label.has-tip.tip-top{:for => "enjoyment-6", "data-width" => "210", :title => "Fair"} 6
-                  .two.columns.subrating
-                    %input#enjoyment-7{:type => "radio", :name => "enjoyment"}/
-                    %label.has-tip.tip-top{:for => "enjoyment-7", "data-width" => "210", :title => "Good"} 7
-                  .two.columns.subrating
-                    %input#enjoyment-8{:type => "radio", :name => "enjoyment"}/
-                    %label.has-tip.tip-top{:for => "enjoyment-8", "data-width" => "210", :title => "Great"} 8
-                  .two.columns.subrating
-                    %input#enjoyment-9{:type => "radio", :name => "enjoyment"}/
-                    %label.has-tip.tip-top{:for => "enjoyment-9", "data-width" => "210", :title => "Amazing"} 9
-                  .two.columns.subrating.end
-                    %input#enjoyment-10{:type => "radio", :name => "enjoyment"}/
-                    %label.has-tip.tip-top{:for => "enjoyment-10", "data-width" => "210", :title => "Flawless"} 10
-
-            .overall
-              .row
-                .twelve.columns
-                  %h4 Overall
-                  .two.columns.subrating
-                    %input#overall-1{:type => "radio", :name => "overall"}/
-                    %label.has-tip.tip-top{:for => "overall-1", "data-width" => "210", :title => "Pathetic"} 1
-                  .two.columns.subrating
-                    %input#overall-2{:type => "radio", :name => "overall"}/
-                    %label.has-tip.tip-top{:for => "overall-2", "data-width" => "210", :title => "Dreadful"} 2
-                  .two.columns.subrating
-                    %input#overall-3{:type => "radio", :name => "overall"}/
-                    %label.has-tip.tip-top{:for => "overall-3", "data-width" => "210", :title => "Mediocre"} 3
-                  .two.columns.subrating
-                    %input#overall-4{:type => "radio", :name => "overall"}/
-                    %label.has-tip.tip-top{:for => "overall-4", "data-width" => "210", :title => "Poor"} 4
-                  .two.columns.subrating
-                    %input#overall-5{:type => "radio", :name => "overall"}/
-                    %label.has-tip.tip-top{:for => "overall-5", "data-width" => "210", :title => "Decent"} 5
-                  .two.columns.subrating
-                    %input#overall-6{:type => "radio", :name => "overall"}/
-                    %label.has-tip.tip-top{:for => "overall-6", "data-width" => "210", :title => "Fair"} 6
-                  .two.columns.subrating
-                    %input#overall-7{:type => "radio", :name => "overall"}/
-                    %label.has-tip.tip-top{:for => "overall-7", "data-width" => "210", :title => "Good"} 7
-                  .two.columns.subrating
-                    %input#overall-8{:type => "radio", :name => "overall"}/
-                    %label.has-tip.tip-top{:for => "overall-8", "data-width" => "210", :title => "Great"} 8
-                  .two.columns.subrating
-                    %input#overall-9{:type => "radio", :name => "overall"}/
-                    %label.has-tip.tip-top{:for => "overall-9", "data-width" => "210", :title => "Amazing"} 9
-                  .two.columns.subrating.end
-                    %input#overall-10{:type => "radio", :name => "overall"}/
-                    %label.has-tip.tip-top{:for => "overall-10", "data-width" => "210", :title => "Flawless"} 10
+            - ["Story", "Animation", "Sound", "Character", "Enjoyment", "Overall"].each do |cat|
+              %div{:class => cat.downcase}
+                .row
+                  .twelve.columns
+                    %h4= cat
+                    - 1.upto(10) do |rating|
+                      .two.columns.subrating{:class => ("end" if rating == 10)}
+                        - if cat == "Overall"
+                          = f.radio_button "rating", rating, :id => "#{cat.downcase}-#{rating}"
+                        - else
+                          = f.radio_button "rating_#{cat.downcase}", rating, :id => "#{cat.downcase}-#{rating}"
+                        %label.has-tip.tip-top{:for => "#{cat.downcase}-#{rating}", "data-width" => "210", :title => rating_description(rating)}= rating
