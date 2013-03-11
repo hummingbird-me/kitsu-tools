@@ -61,7 +61,7 @@
                 %p 
                   No positive reviews.
                   %br
-                  %a{"data-reveal-id" => "submit-review", :href => "#"}
+                  = link_to new_anime_review_path(@anime)
                     %span Write the first!
 
           .negative-review.six.columns
@@ -80,7 +80,7 @@
                 %p 
                   No negative reviews.
                   %br
-                  %a{"data-reveal-id" => "submit-review", :href => "#"}
+                  = link_to new_anime_review_path(@anime)
                     %span Write the first!
                 
         .footer.twelve.columns
@@ -186,6 +186,3 @@
 // Quote Modal
 #quoteModal.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
   = render "quotes/new"
-
-#submit-review.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
-  = render "reviews/new"
