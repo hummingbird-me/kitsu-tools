@@ -420,7 +420,7 @@ CREATE TABLE forem_posts (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     reply_to_id integer,
-    state character varying(255) DEFAULT 'pending_review'::character varying,
+    state character varying(255) DEFAULT 'approved'::character varying,
     notified boolean DEFAULT false
 );
 
@@ -489,7 +489,7 @@ CREATE TABLE forem_topics (
     pinned boolean DEFAULT false,
     hidden boolean DEFAULT false,
     last_post_at timestamp without time zone,
-    state character varying(255) DEFAULT 'pending_review'::character varying,
+    state character varying(255) DEFAULT 'approved'::character varying,
     views_count integer DEFAULT 0,
     slug character varying(255)
 );
@@ -1011,7 +1011,7 @@ CREATE TABLE users (
     confirmation_sent_at timestamp without time zone,
     unconfirmed_email character varying(255),
     forem_admin boolean DEFAULT false,
-    forem_state character varying(255) DEFAULT 'pending_review'::character varying,
+    forem_state character varying(255) DEFAULT 'approved'::character varying,
     forem_auto_subscribe boolean DEFAULT false
 );
 
@@ -2032,3 +2032,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130309181243');
 INSERT INTO schema_migrations (version) VALUES ('20130309181244');
 
 INSERT INTO schema_migrations (version) VALUES ('20130309181245');
+
+INSERT INTO schema_migrations (version) VALUES ('20130311194800');
