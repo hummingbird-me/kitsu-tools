@@ -20,7 +20,7 @@
           %span.anime-title
             = link_to @anime.title, @anime
             Review
-    = form_for @review, url: anime_reviews_path(@anime) do |f|
+    = form_for [@anime, @review] do |f|
       .row
         .main-content.seven.columns.offset-by-two
           = f.text_area :content, rows: 7, :id => "redactor_content"
@@ -28,7 +28,7 @@
             (optional) Summarize your review in one sentence. <br/>
             This will be used when your review is being shared across social networks.
             .summary
-              = f.text_area :content, rows: 3, :id => "charcount", :name => "charcount", :maxlength => "120", :lengthcut => "true", :placeholder => "e.g. 'A great modernization of an under-appreciated genre. [Anime title] is fast, furious, and endlessly deep.'"
+              = f.text_area :summary, rows: 3, :id => "charcount", :maxlength => "120", :lengthcut => "true", :placeholder => "e.g. 'A great modernization of an under-appreciated genre. [Anime title] is fast, furious, and endlessly deep.'"
 
             = f.submit class: "button"
 

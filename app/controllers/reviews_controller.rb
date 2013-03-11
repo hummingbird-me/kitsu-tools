@@ -33,20 +33,26 @@ class ReviewsController < ApplicationController
   def new
     authenticate_user!
     @anime = Anime.find(params[:anime_id])
-    @review = Review.new(user: current_user)
+    if Review.exists?(user_id: current_user, anime_id: @anime)
+      @review = Review.find_by_user_id_and_anime_id(current_user.id, @anime.id)
+      redirect_to edit_anime_review_path(@anime, @review)
+    else
+      @review = Review.new(user: current_user)
+    end
   end
 
   def create
     authenticate_user!
-
+    
     @anime = Anime.find(params[:anime_id])
-    @review = Review.new(
-      user: current_user,
-      anime: @anime,
-      content: params["review"]["content"],
-      summary: params["charcount"],
-      source: "hummingbird"
-    )
+    @review = Review.find_by_user_id_and_anime_id(current_user.id, @anime.id)
+    if @review.nil?
+      @review = Review.new(user: current_user, anime: @anime)
+    end
+    
+    @review.content = params["review"]["content"]
+    @review.summary = params["review"]["summary"]
+    @review.source  = "hummingbird"
 
     @review.rating = [[1, params["review"]["rating"].to_i].max, 10].min rescue nil
     @review.rating_story      = [[1, params["review"]["rating_story"].to_i].max, 10].min rescue nil
@@ -61,5 +67,21 @@ class ReviewsController < ApplicationController
       flash[:error] = "Couldn't save your review, something went wrong."
       redirect_to :back
     end
+  end
+
+  def edit
+    authenticate_user!
+    @anime  = Anime.find(params[:anime_id])
+    @review = Review.find(params[:id])
+    if @review.user != current_user
+      flash[:error] = "You are not authorized to edit this review."
+      redirect_to :back
+    else
+      # Logic
+    end
+  end
+  
+  def update
+    create
   end
 end

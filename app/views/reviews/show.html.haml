@@ -93,6 +93,8 @@
 
 
     .row.stopScrollToFixed
+      - if current_user == @review.user
+        = link_to "Edit this review", edit_anime_review_path(@anime, @review)
       .new-reviews.twelve.columns
         %h3 Latest Reviews
         #yourCarouselId.touchcarousel.minimal-light
