@@ -77,13 +77,15 @@
             %h3 
               %span Share Your Thoughts
           .reply-form.twelve.columns
-            %p.helper-text Hummingbird comments are Markdown enabled. <a href="#">View Example</a>
+            %p.helper-text
+              Hummingbird comments are Markdown enabled. 
+              /<a href="#">View Example</a>
             .one.columns.avatar
               = link_to image_tag(@topic.user.avatar.url(:thumb)), main_app.user_path(@topic.user)
             .eleven.columns.input-area
-              %form
-                %textarea{:placeholder => "Message"}
-
+              = simple_form_for [forem, @topic, @topic.posts.build] do |f|
+                = f.input :text, placeholder: 'Message', label: false
+                = f.submit "Quick Reply", class: 'button'
 
           %p.pagination-centered= paginate @posts
 
