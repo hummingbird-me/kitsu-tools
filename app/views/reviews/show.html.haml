@@ -65,7 +65,7 @@
 
         .eight.columns
           %h1.summary-title= rating_description(@review.rating).upcase
-          %p.summary-title= @review.summary || truncate(@review.content, length: 140, omission: '...')
+          %p.summary-title= strip_tags(@review.summary || truncate(@review.content, length: 140, omission: '...'))
 
           .sub-ratings.twelve.columns
             %ul
