@@ -5,7 +5,7 @@ class HomeController < ApplicationController
 
     @recent_anime_user_ids = Watchlist.select("DISTINCT  ON (user_id) user_id").where("(status = 'Currently Watching' OR status = 'Completed') AND EXISTS (SELECT 1 FROM users WHERE users.id = user_id) AND EXISTS (SELECT 1 FROM anime WHERE anime.id = anime_id AND anime.age_rating <> 'Rx')").limit(8)
     @recent_anime_users = User.where(:id => @recent_anime_user_ids)
-    @recent_anime = @recent_anime_users.map {|x| x.watchlists.where("EXISTS (SELECT 1 FROM anime WHERE anime.id = anime_id AND age_rating <> 'Rx')").order('updated_at DESC').limit(1).first }
+    @recent_anime = @recent_anime_users.map {|x| x.watchlists.where("EXISTS (SELECT 1 FROM anime WHERE anime.id = anime_id AND age_rating <> 'Rx')").order('updated_at DESC').limit(1).first }.sort_by {|x| x.last_watched || x.updated_at }.reverse
     
     @featured_anime = Anime.where('slug IN (?)', %w[
       sword-art-online
