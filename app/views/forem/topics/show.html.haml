@@ -11,10 +11,11 @@
                 %i.icon-chevron-left
                 = link_to @forum.name, forem.forum_path(@forum)
             .three.columns
-              - if !@topic.subscriber?(forem_user.id)
-                %span.button= link_to "Subscribe", forem.subscribe_forum_topic_path(@forum, @topic)
-              - else
-                %span.button.active= link_to "Unsubscribe", forem.unsubscribe_forum_topic_path(@forum, @topic)
+              - if user_signed_in?
+                - if !@topic.subscriber?(forem_user.id)
+                  %span.button= link_to "Subscribe", forem.subscribe_forum_topic_path(@forum, @topic)
+                - else
+                  %span.button.active= link_to "Unsubscribe", forem.unsubscribe_forum_topic_path(@forum, @topic)
         .row
           .discussions.twelve.columns
             - if @topic.pending_review?
@@ -84,7 +85,7 @@
                             = render "forem/posts/moderation_tools", :post => post
 
                   .one.columns.avatar
-                    = forem_avatar(post.user, :size => 60)
+                    = image_tag post.user.avatar.url(:thumb)
 
                   .eleven.columns.topic-info
                     .username= link_to_if Forem.user_profile_links, post.user, [main_app, post.user]

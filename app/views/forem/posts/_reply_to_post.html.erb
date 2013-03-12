@@ -5,7 +5,7 @@
     <div class='username'>
       <%= link_to_if Forem.user_profile_links, post.user, [main_app, post.user] %>
     </div>
-    <div class='icon'><%= forem_avatar(post.user, :size => 60) %></div>
+    <div class='icon'><%= image_tag post.user.avatar.url(:thumb) %></div>
   </div>
 
   <div class='contents'>

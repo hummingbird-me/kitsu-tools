@@ -12,7 +12,7 @@
       /           = render "forem/posts/moderation_tools", :post => post
 
       .one.columns.avatar
-        = forem_avatar(post.user, :size => 60)
+        = image_tag post.user.avatar.url(:thumb)
 
       .eleven.columns.topic-info
         - if post.reply_to

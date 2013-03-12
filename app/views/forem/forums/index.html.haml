@@ -13,7 +13,7 @@
         .row
           .discussions.twelve.columns
             = render @topics
-            %p Insert infinite scroll
+            %p= paginate @topics
 
       %br
       %footer#admin_link

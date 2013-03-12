@@ -13,6 +13,7 @@
         .row
           .discussions.twelve.columns
             = render @topics
+            %p= paginate @topics
 
 /if can? :moderate, @forum
 /%span.button= link_to "Moderator Tools", forem.forum_moderator_tools_path(@forum)
