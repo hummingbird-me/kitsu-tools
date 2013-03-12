@@ -112,6 +112,11 @@ GEM
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
+    forem-kramdown (0.1.0)
+      activesupport (>= 3.1.0)
+      coderay (~> 1.0.8)
+      kramdown (~> 0.14.1)
+      nokogiri (~> 1.5.6)
     forem-redcarpet (1.0.0)
       pygments.rb (= 0.2.4)
       redcarpet (= 2.0.1)
@@ -154,6 +159,7 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.0)
+    kramdown (0.14.2)
     libv8 (3.11.8.13)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -360,6 +366,7 @@ DEPENDENCIES
   devise-async
   factory_girl_rails
   forem!
+  forem-kramdown
   friendly_id (~> 4.0.9)
   haml (~> 4.0)
   haml-rails
