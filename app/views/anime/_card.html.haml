@@ -8,7 +8,7 @@
           %h5.title #{anime.title}
           %p.summary #{truncate(anime.synopsis, length: 300, omission: '...')}
         %figcaption= link_to anime.title, anime
-        %img{:src => anime.cover_image.url(:thumb)}
+        = image_tag anime.cover_image.url(:thumb), alt: anime.title
 
     .progress.six
       %span.meter{:style => "width: #{percentage_completed(anime, watchlist)}%"}
