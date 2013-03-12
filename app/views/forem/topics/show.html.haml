@@ -27,7 +27,7 @@
                       = render "forem/moderation/options", :f => f
             .topic-view
               .one.columns.avatar
-                = image_tag @topic.user.avatar.url(:thumb)
+                = link_to image_tag(@topic.user.avatar.url(:thumb)), main_app.user_path(@topic.user)
               .eleven.columns.topic-info
                 .topic-title= link_to @topic.subject, forem.forum_topic_path(@topic.forum, @topic)
                 %p.sub-text 
