@@ -1,23 +1,20 @@
 .topic-reply.row
   .discussions.twelve.columns
     .topic-view
-      / - if post.pending_review?
-      /   .moderation
-      /     = t(".pending_review")
-      /     - if forem_admin_or_moderator?(post.topic.forum)
-      /       - if local_assigns[:mass_moderation]
-      /         = render "forem/posts/moderation_tools", :post => post
-      /       - else
-      /         = form_tag forem.forum_moderate_posts_path(post.topic.forum), :method => :put do
-      /           = render "forem/posts/moderation_tools", :post => post
+      - if post.pending_review?
+        .moderation
+          = t(".pending_review")
+          - if forem_admin_or_moderator?(post.topic.forum)
+            - if local_assigns[:mass_moderation]
+              = render "forem/posts/moderation_tools", :post => post
+            - else
+              = form_tag forem.forum_moderate_posts_path(post.topic.forum), :method => :put do
+                = render "forem/posts/moderation_tools", :post => post
 
       .one.columns.avatar
         = image_tag post.user.avatar.url(:thumb)
 
       .eleven.columns.topic-info
-        - if post.reply_to
-          %span.in_reply_to
-            = link_to "#{t("forem.post.in_reply_to")} #{post.reply_to.user}", "#post-#{post.reply_to.id}"
         .username= link_to_if Forem.user_profile_links, post.user, [main_app, post.user]
         %p.sub-text{:datetime => post.created_at.to_s(:db)}= "#{time_ago_in_words(post.created_at)} #{t("ago")}"
         .topic-body 
@@ -46,10 +43,6 @@
                 %li.delete-button 
                   <i class="icon-trash"></i> 
                   = link_to t('Delete', :scope => 'forem.topic'), forem.topic_post_path(post.topic, post), :method => :delete, :confirm => t("are_you_sure")
-
-
-
-
 
 / %a{:name => "post-#{post.id}"}
 / <div id='post_#{post_counter + 1}' class='post #{cycle('odd', 'even')}'>
