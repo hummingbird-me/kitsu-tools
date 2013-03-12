@@ -77,11 +77,15 @@
             %h3 
               %span Share Your Thoughts
           .reply-form.twelve.columns
-            .two.columns
-              %p :)
-            .ten.columns
+            %p.helper-text Hummingbird comments are Markdown enabled. <a href="#">View Example</a>
+            .one.columns.avatar
+              = link_to image_tag(@topic.user.avatar.url(:thumb)), main_app.user_path(@topic.user)
+            .eleven.columns.input-area
+              %form
+                %textarea{:placeholder => "Message"}
 
-          %p= paginate @posts
+
+          %p.pagination-centered= paginate @posts
 
 
 / <div id='topic' class='#{'un' unless @topic.locked?}locked'>
