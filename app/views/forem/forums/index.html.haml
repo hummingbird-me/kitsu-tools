@@ -12,24 +12,7 @@
               %span.button= link_to "Create Topic", "#"
         .row
           .discussions.twelve.columns
-            - @topics.each do |topic|
-              - last_post = topic.posts.last
-              .topic
-                .one.columns.avatar
-                  = image_tag last_post.user.avatar.url(:thumb)
-                .ten.columns.topic-info
-                  .topic-title= link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
-                  %p.sub-text 
-                    = distance_of_time_in_words_to_now(topic.last_post_at)
-                    ago by
-                    = link_to last_post.user.name, main_app.user_path(last_post.user)
-                    to
-                    = link_to topic.forum.title, forem.forum_path(topic.forum)
-                .one.columns.comment-count
-                  %p
-                    %i.icon-comments
-                    = relevant_posts(topic).count
-
+            = render @topics
             %p Insert infinite scroll
 
       %br

@@ -1,0 +1,41 @@
+.community
+  .row
+    .twelve.columns
+      = render partial: "shared/forem_sidebar", locals: {active_forum: @forum}
+      
+      .forum-container.nine.columns
+        .row
+          %header.cf
+            .nine.columns
+              %h3.forum-title= link_to @forum.title, forem.forum_path(@forum)
+            .three.columns
+              %span.button= link_to "Create Topic", forem.new_forum_topic_path(@forum)
+        .row
+          .discussions.twelve.columns
+            = render @topics
+
+/if can? :moderate, @forum
+/%span.button= link_to "Moderator Tools", forem.forum_moderator_tools_path(@forum)
+
+/<%= forem_pages_widget(@topics) %>
+/
+/<table class='topics subdued' cellspacing='0'>
+/  <thead>
+/    <tr>
+/      <th class="icon"></th>
+/      <th class="byline"><%= t('forem.topic.headings.topic') -%></th>
+/      <th class="latest-post"><%= t('forem.topic.headings.latest') -%></th>
+/      <th class="posts-count"><%= t('forem.topic.headings.posts') -%></th>
+/      <th class="views-count"><%= t('forem.topic.headings.views') -%></th>
+/    </tr>
+/  </thead>
+/  <tbody>
+/    <% if @topics.empty? %>
+/      <tr><td colspan='5' align='center'><%= t('forem.topic.none') %></td></tr>
+/    <% end %>
+/    <%= render @topics %>
+/  </tbody>
+/</table>
+/
+/<%= forem_pages_widget(@topics) %>
+
