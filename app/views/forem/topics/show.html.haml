@@ -58,6 +58,7 @@
                           %li.edit-button 
                             <i class="icon-pencil"></i>
                             = link_to t('Edit', :scope => 'forem.post'), forem.edit_topic_post_path(post.topic, post)
+                      - if @posts.length == 1
                         %li.delete-button 
                           <i class="icon-trash"></i> 
                           = link_to t('Delete', :scope => 'forem.topic'), forem.topic_post_path(post.topic, post), :method => :delete, :confirm => t("are_you_sure")
