@@ -76,19 +76,20 @@
           - else
             = render @posts
           %p.pagination-centered= paginate @posts
-        .reply-header.twelve.columns
-          %h3 
-            %span Share Your Thoughts
-        .reply-form.twelve.columns
-          %p.helper-text
-            Hummingbird comments are Markdown enabled. 
-            /<a href="#">View Example</a>
-          .one.columns.avatar
-            = link_to image_tag(current_user.avatar.url(:thumb)), main_app.user_path(@topic.user)
-          .eleven.columns.input-area
-            = simple_form_for [forem, @topic, @topic.posts.build] do |f|
-              = f.input :text, placeholder: 'Message', label: false
-              = f.submit "Quick Reply", class: 'button'
+        - if user_signed_in?
+          .reply-header.twelve.columns
+            %h3 
+              %span Share Your Thoughts
+          .reply-form.twelve.columns
+            %p.helper-text
+              Hummingbird comments are Markdown enabled. 
+              /<a href="#">View Example</a>
+            .one.columns.avatar
+              = link_to image_tag(current_user.avatar.url(:thumb)), main_app.user_path(@topic.user)
+            .eleven.columns.input-area
+              = simple_form_for [forem, @topic, @topic.posts.build] do |f|
+                = f.input :text, placeholder: 'Message', label: false
+                = f.submit "Quick Reply", class: 'button'
 
           
 
