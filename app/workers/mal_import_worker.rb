@@ -8,8 +8,8 @@ class MALImportWorker
     staged_import = StagedImport.find(staged_import_id)
     username = mal_username
 
-    watchlist = MalImport.fetch_watchlist_from_remote(mal_username)
-    reviews = MalImport.fetch_reviews_from_remote(mal_username)
+    watchlist = MalImport.fetch_watchlist_from_remote(mal_username) rescue []
+    reviews = MalImport.fetch_reviews_from_remote(mal_username) rescue []
 
     staged_import.data = {
       version: 1, 
