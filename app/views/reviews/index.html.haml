@@ -6,13 +6,13 @@
     .nine.columns
       .panel 
         %h4= title "#{@anime.title} Reviews"
-        %a{"data-reveal-id" => "submit-review", :href => "#"}
+        = link_to new_anime_review_path(@anime) do
           %span= "Write a review for #{@anime.title}"
 
       - @reviews.each do |review|
         .panel
           %h5 #{review.user.name}
-          %p= truncate(review.content, length: 600, omission: "...")
+          %p= truncate(strip_tags(review.content), length: 600, omission: "...")
           %p 
             = review.votes.to_i
             of
@@ -29,7 +29,4 @@
             - else
               = link_to "Not Useful", vote_anime_review_path(@anime, review, type: "down"), method: :post
             |
-            = link_to "Report this review.", "#"
-
-#submit-review.reveal-modal{:class => "xlarge"}
-  = render "reviews/new"
+            = link_to "See full review", anime_review_path(@anime, review)

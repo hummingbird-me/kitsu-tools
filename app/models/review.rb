@@ -2,7 +2,7 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :anime
   attr_accessible :content, :user, :anime, :source, :rating, :rating_animation, 
-    :rating_sound, :rating_character, :rating_enjoyment, :rating_story
+    :rating_sound, :rating_character, :rating_enjoyment, :rating_story, :summary
 
   validates :user, :anime, :content, :presence => true
   

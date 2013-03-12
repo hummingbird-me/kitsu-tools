@@ -25,6 +25,14 @@
             Genres:
             = @genres.map {|x| link_to(x.name, x) }.join(", ").html_safe
 
+          .social-links
+            %ul.inline-list
+              %li
+                .fb-like{"data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "50"}
+              %li 
+                %a.twitter-share-button{"data-via" => "Hummingbird_ly", :href => "https://twitter.com/share"} Tweet
+
+
           .synopsis
             %strong Status: #{@anime.status}
             %p #{@anime.synopsis}
@@ -50,38 +58,38 @@
 
             - if @top_reviews[:positive]
               %p
-                = truncate(@top_reviews[:positive].content, length: 300, omission: '...')
+                = @top_reviews[:positive].summary || truncate(strip_tags(@top_reviews[:positive].content), length: 300, omission: '...')
                 = link_to "read more", anime_review_path(@anime, @top_reviews[:positive])
               %span.user
                 = image_tag @top_reviews[:positive].user.avatar.url(:thumb)
                 = link_to @top_reviews[:positive].user.name, @top_reviews[:positive].user
             - else
-              .nine.columns.centered
+              .no-reviews.nine.columns.centered
                 = image_tag "http://cl.ly/image/3u2X0t1B0E11/no-positive-reviews@2x.jpg"
                 %p 
                   No positive reviews.
                   %br
-                  %a{"data-reveal-id" => "submit-review", :href => "#"}
-                    %span Write the first!
+                  = link_to new_anime_review_path(@anime) do
+                    Write the first!
 
           .negative-review.six.columns
             %h6 Top Rated <span>Negative</span> Review
 
             - if @top_reviews[:negative]
               %p
-                = truncate(@top_reviews[:negative].content, length: 300, omission: '...')
+                = @top_reviews[:negative].summary || truncate(strip_tags(@top_reviews[:negative].content), length: 300, omission: '...')
                 = link_to "read more", anime_review_path(@anime, @top_reviews[:negative])
               %span.user
                 = image_tag @top_reviews[:negative].user.avatar.url(:thumb)
                 = link_to @top_reviews[:negative].user.name, @top_reviews[:negative].user
             - else
-              .nine.columns.centered
+              .no-reviews.nine.columns.centered
                 = image_tag "http://cl.ly/image/0T2u2t2J0Z35/no-negative-reviews@2x.jpg"
                 %p 
                   No negative reviews.
                   %br
-                  %a{"data-reveal-id" => "submit-review", :href => "#"}
-                    %span Write the first!
+                  = link_to new_anime_review_path(@anime) do
+                    Write the first!
                 
         .footer.twelve.columns
           = link_to "view all reviews", anime_reviews_path(@anime)
@@ -186,6 +194,3 @@
 // Quote Modal
 #quoteModal.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
   = render "quotes/new"
-
-#submit-review.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
-  = render "reviews/new"

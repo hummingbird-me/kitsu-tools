@@ -1,5 +1,6 @@
 :css
   .hummingbird-header figure {border-bottom: 3px solid #fd7532;}
+%meta{:content => "@review.summary", :property => "og:description"}
 .anime-discover.full-reviews
   .row.content-body
     .row
@@ -19,18 +20,11 @@
             .fb-like{"data-layout" => "box_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
 
           %span.twitter 
-            %a.twitter-share-button{"data-count" => "vertical", "data-lang" => "en", "data-via" => "twitterapi", :href => "https://twitter.com/share"} Tweet
-            :javascript
-              !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+            %a.twitter-share-button{"data-count" => "vertical", "data-text" => "#{@review.summary}", "data-via" => "Hummingbird_ly", :href => "https://twitter.com/share"} Tweet
 
           %span.google-plus
             .g-plus{"data-action" => "share", "data-annotation" => "vertical-bubble", "data-height" => "60"}
-            :javascript
-              (function() {
-                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                po.src = 'https://apis.google.com/js/plusone.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-              })();
+
           %span.rate-review
             %p Rate Review
             .rating-thumbs.twelve.columns
@@ -43,8 +37,16 @@
 
       .main-content.seven.columns
         %div(style="margin-top: 14px")
+          - if current_user == @review.user
+
+            %a{:href => "#{edit_anime_review_path(@anime, @review)}"}
+              %i.icon-pencil
+              Edit Review
+
+
           - if @review.source == "mal_import"
             %div= simple_format_review(@review.content)
+
           - else
             %div= sanitize_review @review.content
 
@@ -62,8 +64,8 @@
           .rating-diamond{:class => "score-#{@review.rating}"}
 
         .eight.columns
-          %h1= nil # GOOD
-          %p= @review.summary || truncate(@review.content, length: 140, omission: '...')
+          %h1.summary-title= rating_description(@review.rating).upcase
+          %p.summary-title= @review.summary || truncate(@review.content, length: 140, omission: '...')
 
           .sub-ratings.twelve.columns
             %ul
@@ -99,14 +101,14 @@
           %ul.touchcarousel-container
             / TouchCarousel items, place any HTML content inside them (img tag is inserted as an example)
             - @recent_reviews.each do |review|
-              %li.touchcarousel-item
-                = link_to anime_review_path(review.anime, review) do
+              = link_to anime_review_path(review.anime, review) do
+                %li.touchcarousel-item 
                   .carousel_img{:style => "background-image: url(#{review.anime.cover_image.url(:thumb)});"}
-                .meta
-                  %h3= review.anime.title
-                  %h1= review.rating
-                  %p.cite written by
-                  %p= review.user.name
+                  .meta
+                    %h3= review.anime.title
+                    %h1= review.rating
+                    %p.cite written by
+                    %p= review.user.name
 
 :javascript
   jQuery(function($) {

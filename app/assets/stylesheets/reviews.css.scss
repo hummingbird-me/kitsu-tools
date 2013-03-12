@@ -162,6 +162,7 @@
     div {
       font-size: 18px;
       line-height: 27px;
+      margin-bottom: 30px;
     }
     p {
       font-size: 18px;
@@ -180,6 +181,9 @@
     padding: 0px;
     .eight.columns {
       margin-top: -20px;
+      .summary-title {
+        padding-left: 20px;
+      }
     }
     .sub-ratings {
       padding: 0px;

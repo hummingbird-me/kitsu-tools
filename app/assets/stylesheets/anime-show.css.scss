@@ -17,6 +17,18 @@
         }
     }
 
+    .social-links {
+      .inline-list {
+        margin-top: 20px;
+        margin-left: 0px;
+        li {
+          margin-left: 0px;
+          display: inline-block;
+          margin-right: 10px;
+        }
+      }
+    }
+
     .small-summary {
       color: #b4b4b4;
       padding-bottom: 10px;
@@ -100,6 +112,7 @@
       @include border-radius(3px);
       img {
         margin-top: 10px;
+        width: 235px;
       }
       p {
         text-align: center;
@@ -197,6 +210,14 @@
           display: inline-block;
           float: left;
           padding-top: 14px;
+        }
+      }
+
+      .no-reviews {
+        img {
+          width: 60%;
+          margin-bottom: 45px;
+          margin-top: 35px;
         }
       }
 
