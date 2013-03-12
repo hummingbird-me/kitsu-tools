@@ -1,0 +1,17 @@
+.community
+  .row
+    .twelve.columns
+      = render partial: "shared/forem_sidebar", locals: {active_forum: @forum}
+
+      .forum-container.nine.columns
+        .row
+          %header.cf
+            .twelve.columns
+              %h3.forum-title
+                %i.icon-chevron-left
+                = link_to @forum.name, forem.forum_path(@forum)
+            .twelve.columns
+              %h2 Create Topic
+              = render "form"
+                  
+          

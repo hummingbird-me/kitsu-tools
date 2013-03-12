@@ -232,12 +232,16 @@
     .reply-form {
       padding: 0px;
       margin-top: 30px;
+      margin-bottom: 10px;
       .helper-text {
         text-align: right;
         margin-bottom: 0px;
       }
       .input-area {
         padding-right: 0px;
+        .button {
+          float: right;
+        }
         textarea {
           height: 120px;
         }

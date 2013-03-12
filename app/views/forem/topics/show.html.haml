@@ -73,6 +73,7 @@
             = render @posts[1..-1]
           - else
             = render @posts
+          %p.pagination-centered= paginate @posts
           .reply-header.twelve.columns
             %h3 
               %span Share Your Thoughts
@@ -87,7 +88,7 @@
                 = f.input :text, placeholder: 'Message', label: false
                 = f.submit "Quick Reply", class: 'button'
 
-          %p.pagination-centered= paginate @posts
+          
 
 
 / <div id='topic' class='#{'un' unless @topic.locked?}locked'>
