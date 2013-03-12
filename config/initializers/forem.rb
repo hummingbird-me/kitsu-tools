@@ -3,7 +3,7 @@ Forem.email_from_address = "vikhyat@hummingbird.ly"
 # If you do not want to use gravatar for avatars then specify the method to use here:
 # Forem.avatar_user_method = :custom_avatar_url
 Forem.per_page = 20
-Forem.sign_in_path = main_app.user_sign_in_path
+#Forem.sign_in_path = main_app.user_sign_in_path
 
 # Rails.application.config.to_prepare do
 #   If you want to change the layout that Forem uses, uncomment and customize the next line:
