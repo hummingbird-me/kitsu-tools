@@ -52,6 +52,7 @@ class ReviewsController < ApplicationController
     
     @review.content = params["review"]["content"]
     @review.summary = params["review"]["summary"]
+    @review.summary = nil if @review.summary.strip.length == 0
     @review.source  = "hummingbird"
 
     @review.rating = [[1, params["review"]["rating"].to_i].max, 10].min rescue nil
