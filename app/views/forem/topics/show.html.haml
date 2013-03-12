@@ -1,0 +1,121 @@
+.community
+  .row
+    .twelve.columns
+      = render partial: "shared/forem_sidebar", locals: {active_forum: @forum}
+
+      .forum-container.nine.columns
+        .row
+          %header.cf
+            .nine.columns
+              %h3.forum-title
+                %i.icon-chevron-left
+                = link_to @forum.name, forem.forum_path(@forum)
+            .three.columns
+              - if user_signed_in?
+                - if !@topic.subscriber?(forem_user.id)
+                  %span.button= link_to "Subscribe", forem.subscribe_forum_topic_path(@forum, @topic)
+                - else
+                  %span.button.active= link_to "Unsubscribe", forem.unsubscribe_forum_topic_path(@forum, @topic)
+        .row
+          .discussions.twelve.columns
+            - if @topic.pending_review?
+              .row.moderation-message
+                #topic_moderation.moderation
+                  = t(".pending_review")
+                  - if forem_admin_or_moderator?(@topic.forum)
+                    = form_for @topic, :url => forem.moderate_forum_topic_path(@topic.forum, @topic), :method => :put do |f|
+                      = render "forem/moderation/options", :f => f
+            .topic-view
+              .one.columns.avatar
+                = link_to image_tag(@topic.user.avatar.url(:thumb)), main_app.user_path(@topic.user)
+              .eleven.columns.topic-info
+                .topic-title= link_to @topic.subject, forem.forum_topic_path(@topic.forum, @topic)
+                %p.sub-text 
+                  = distance_of_time_in_words_to_now(@topic.last_post_at)
+                  ago by
+                  = link_to @topic.user, main_app.user_path(@topic.user)
+                  to <a href="#">Anime Discussion</a>
+                %p.topic-body= forem_format @first_post.text
+
+              .row
+                .toolbar
+                  %ul
+                    - post = @first_post
+                    - if forem_user
+                      - if can?(:reply, post.topic)
+                        - if post.topic.can_be_replied_to?
+                          %li.reply-button 
+                            <i class="icon-reply"></i> 
+                            = link_to t('Reply', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id)
+
+                      - if post.topic.can_be_replied_to?
+                        %li.quote-button 
+                          <i class="icon-quote-left"></i> 
+                          = link_to t('Quote', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id, :quote => true)
+
+                      - if post.owner_or_admin?(forem_user)
+                        - if can?(:edit_post, post.topic.forum)
+                          %li.edit-button 
+                            <i class="icon-pencil"></i>
+                            = link_to t('Edit', :scope => 'forem.post'), forem.edit_topic_post_path(post.topic, post)
+                      - if @posts.length == 1
+                        %li.delete-button 
+                          <i class="icon-trash"></i> 
+                          = link_to t('Delete', :scope => 'forem.topic'), forem.topic_post_path(post.topic, post), :method => :delete, :confirm => t("are_you_sure")
+
+        - if @posts.length > 1
+          .reply-header.twelve.columns
+            %h3 
+              %span= pluralize @posts_count, "Reply"
+
+      - if @posts.length > 1
+        .forum-container.replies.nine.columns
+          - if params[:page].nil? or params[:page].to_i == 1
+            = render @posts[1..-1]
+          - else
+            = render @posts
+          %p.pagination-centered= paginate @posts
+          .reply-header.twelve.columns
+            %h3 
+              %span Share Your Thoughts
+          .reply-form.twelve.columns
+            %p.helper-text
+              Hummingbird comments are Markdown enabled. 
+              /<a href="#">View Example</a>
+            .one.columns.avatar
+              = link_to image_tag(@topic.user.avatar.url(:thumb)), main_app.user_path(@topic.user)
+            .eleven.columns.input-area
+              = simple_form_for [forem, @topic, @topic.posts.build] do |f|
+                = f.input :text, placeholder: 'Message', label: false
+                = f.submit "Quick Reply", class: 'button'
+
+          
+
+
+/ <div id='topic' class='#{'un' unless @topic.locked?}locked'>
+/ #{render :partial => 'forem/topics/head', :locals => { :topic => @topic }}
+/ %menu
+/   - if @topic.can_be_replied_to? && can?(:reply, @topic)
+/     = link_to t(".reply"), forem.new_topic_post_path(@topic)
+/   - if @topic.user == forem_user || forem_admin?
+/     = link_to t(".delete"), forem.forum_topic_path(@forum, @topic), :method => :delete, :confirm => t("are_you_sure")
+/   - if forem_user
+/     - if !@topic.subscriber?(forem_user.id)
+/       = link_to t(".subscribe"), forem.subscribe_forum_topic_path(@forum, @topic)
+/     - else
+/       = link_to t(".unsubscribe"), forem.unsubscribe_forum_topic_path(@forum, @topic)
+/ - if forem_admin?
+/   = link_to t(".hide.#{@topic.hidden}"), forem.toggle_hide_admin_topic_path(@topic), :method => :put
+/   |
+/   \#{link_to t(".lock.#{@topic.locked}"), forem.toggle_lock_admin_topic_path(@topic), :method => :put} |
+/   \#{link_to t(".pin.#{@topic.pinned}"), forem.toggle_pin_admin_topic_path(@topic), :method => :put}
+/ - if @topic.pending_review?
+/   #topic_moderation.moderation
+/     = t(".pending_review")
+/     - if forem_admin_or_moderator?(@topic.forum)
+/       = form_for @topic, :url => forem.moderate_forum_topic_path(@topic.forum, @topic), :method => :put do |f|
+/         = render "forem/moderation/options", :f => f
+/ = forem_pages_widget(@posts)
+/ #posts
+/   = render :partial => "forem/posts/post", :collection => @posts
+/ = forem_pages_widget(@posts)

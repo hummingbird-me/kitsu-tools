@@ -1,0 +1,21 @@
+.community
+  .row
+    .twelve.columns
+      = render partial: "shared/forem_sidebar", locals: {active_forum: nil}
+
+      .forum-container.nine.columns
+        .row
+          %header.cf
+            .nine.columns
+              %h3.forum-title= link_to "Hummingbird Discussion", "#"
+            .three.columns 
+              /%span.button= link_to "Create Topic", "#"
+        .row
+          .discussions.twelve.columns
+            = render @topics
+        %p= paginate @topics
+
+      %br
+      %footer#admin_link
+        - if forem_admin?
+          = link_to t("area", :scope => "forem.admin"), forem.admin_root_path

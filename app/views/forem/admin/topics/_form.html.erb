@@ -1,0 +1,13 @@
+<%= simple_form_for [forem, :admin, @topic] do |f| %>
+  <%= f.input :subject %>
+  <%= f.association :forum , :label => "Forum" %>
+  <%= f.label :locked %>
+  <%= f.check_box :locked %>
+  <%= f.label :pinned %>
+  <%= f.check_box :pinned %>
+  <%= f.label :hidden %>
+  <%= f.check_box :hidden %>
+
+  <br />
+  <%= f.submit %>
+<% end %>

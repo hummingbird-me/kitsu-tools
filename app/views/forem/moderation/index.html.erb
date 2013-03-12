@@ -1,0 +1,13 @@
+<h2><%= t('.title', :forum => forum) %></h2>
+
+<h3><%= t('posts_count', :count => @posts.count, :scope => 'forem.general') %></h3>
+
+<%= form_tag forem.forum_moderate_posts_url(forum), :method => :put do %>
+  <div id='posts'>
+    <% @posts.limit(25).group_by(&:topic).each do |topic, posts| %>
+      <h4><%= forem_emojify(topic.forum.title) %> &raquo; <%= forem_emojify(topic.subject) %></h4>
+      <%= render posts, :mass_moderation => true %>
+    <% end %>
+  </div>
+  <%= submit_tag "Moderate" %>
+<% end %>
