@@ -66,13 +66,21 @@
           .reply-header.twelve.columns
             %h3 
               %span= pluralize @posts_count, "Reply"
-      
+
       - if @posts.length > 1
         .forum-container.replies.nine.columns
           - if params[:page].nil? or params[:page].to_i == 1
             = render @posts[1..-1]
           - else
             = render @posts
+          .reply-header.twelve.columns
+            %h3 
+              %span Share Your Thoughts
+          .reply-form.twelve.columns
+            .two.columns
+              %p :)
+            .ten.columns
+
           %p= paginate @posts
 
 
