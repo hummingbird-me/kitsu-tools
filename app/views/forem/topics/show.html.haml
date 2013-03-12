@@ -84,7 +84,7 @@
             Hummingbird comments are Markdown enabled. 
             /<a href="#">View Example</a>
           .one.columns.avatar
-            = link_to image_tag(@topic.user.avatar.url(:thumb)), main_app.user_path(@topic.user)
+            = link_to image_tag(current_user.avatar.url(:thumb)), main_app.user_path(@topic.user)
           .eleven.columns.input-area
             = simple_form_for [forem, @topic, @topic.posts.build] do |f|
               = f.input :text, placeholder: 'Message', label: false
