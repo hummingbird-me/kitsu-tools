@@ -55,7 +55,7 @@
       %h5.title= @overlay_quote.content
       %p
         = @overlay_quote.character_name
-        (#{link_to @overlay_quote.anime.title, @overlay_quote.anime})
+        (#{link_to @overlay_quote.anime.title, main_app.anime_path(@overlay_quote.anime)})
     = image_tag @overlay_quote.anime.gallery_images.order('RANDOM()').first.image.url, style: 'width: 100%'
 
 - flash.each do |style, message|
