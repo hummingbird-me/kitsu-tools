@@ -56,7 +56,9 @@
       %p
         = @overlay_quote.character_name
         (#{link_to @overlay_quote.anime.title, main_app.anime_path(@overlay_quote.anime)})
-    = image_tag @overlay_quote.anime.gallery_images.order('RANDOM()').first.image.url, style: 'width: 100%'
+    - @overlay_image = @overlay_quote.anime.gallery_images.order('RANDOM()').first
+    - if @overlay_image
+      = image_tag @overlay_image.image.url, style: 'width: 100%'
 
 - flash.each do |style, message|
   .alert-box{:class => style.to_s}= message
