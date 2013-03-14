@@ -7,7 +7,13 @@ class AnimeController < ApplicationController
     @producers = @anime.producers
     @quotes = @anime.quotes.limit(4)
     @castings = Casting.where(anime_id: @anime.id, featured: true)
-    @languages = @castings.map {|x| x.role }.uniq
+    
+    @languages = @castings.map {|x| x.role }.sort
+    ["English", "Japanese"].reverse.each do |l|
+      @languages.unshift l if @languages.include? l
+    end
+    @languages = @languages.uniq
+
     @gallery = @anime.gallery_images.limit(6)
 
     @overlay_quote = @anime.quotes.order('RANDOM()').first
