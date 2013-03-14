@@ -2,7 +2,7 @@ class Genre < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => [:slugged]
 
-  attr_accessible :name
+  attr_accessible :name, :description
   has_and_belongs_to_many :animes
 
   validates :name, :slug, :presence => true, :uniqueness => true

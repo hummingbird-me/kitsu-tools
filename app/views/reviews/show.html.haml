@@ -1,3 +1,5 @@
+- title "#{@anime.title} Review by #{@review.user.name}"
+
 :css
   .hummingbird-header figure {border-bottom: 3px solid #fd7532;}
 %meta{:content => "@review.summary", :property => "og:description"}
@@ -64,8 +66,8 @@
           .rating-diamond{:class => "score-#{@review.rating}"}
 
         .eight.columns
-          %h1.summary-title= rating_description(@review.rating).upcase
-          %p.summary-title= @review.summary || truncate(@review.content, length: 140, omission: '...')
+          %h1.summary-title= (rating_description(@review.rating) || "").upcase
+          %p.summary-title= strip_tags(@review.summary || truncate(@review.content, length: 140, omission: '...'))
 
           .sub-ratings.twelve.columns
             %ul

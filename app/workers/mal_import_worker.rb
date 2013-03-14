@@ -6,10 +6,12 @@ class MALImportWorker
 
   def perform(mal_username, staged_import_id)
     staged_import = StagedImport.find(staged_import_id)
+    return if staged_import.nil?
+    
     username = mal_username
 
-    watchlist = MalImport.fetch_watchlist_from_remote(mal_username)
-    reviews = MalImport.fetch_reviews_from_remote(mal_username)
+    watchlist = MalImport.fetch_watchlist_from_remote(mal_username) rescue []
+    reviews = MalImport.fetch_reviews_from_remote(mal_username) rescue []
 
     staged_import.data = {
       version: 1, 

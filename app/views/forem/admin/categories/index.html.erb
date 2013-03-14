@@ -1,0 +1,28 @@
+<h2><%= t("forem.admin.category.index") %></h2>
+
+<%= link_to t("forem.admin.category.new_link"), forem.new_admin_category_path %>
+
+<table id='forums' class='forums subdued' cellspacing='0'>
+  <thead>
+    <tr>
+      <th><%= t('edit', :scope => 'forem.admin.categories') %></th>
+      <th><%= t('delete', :scope => 'forem.admin.categories') %></th>
+      <th><%= t('category', :scope => 'forem.admin.categories') %></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <% @category.each do |category| %>
+      <tr class="forum <%= cycle("odd", "even") %>">
+        <td><%= link_to t('edit', :scope => 'forem.admin.categories'), forem.edit_admin_category_path(category) %></td>
+        <td><%= link_to t('delete', :scope => 'forem.admin.categories'), forem.admin_category_path(category), :method => :delete, :confirm => t("delete_confirm", :scope => "forem.admin.categories") %></td>
+        <td>
+          <%= forem_emojify(category.name) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('forem.admin.forum.index'), forem.admin_forums_path %>
+

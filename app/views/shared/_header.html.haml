@@ -11,7 +11,7 @@
           %li
             = link_to "Dashboard", "/dashboard"
           %li
-            = link_to "Community", "http://hummingbird.uservoice.com" 
+            = link_to "Community", forem.root_path 
       %li.search
         %span.search_btn.ss-icon
         .top
@@ -51,9 +51,14 @@
 
   %figure{:style => ("display: none" if @hide_cover_image)}
     .overlay
-      %h5.title If the demon is truly big, then we are no match for it. It's irrational. It's impossible. It's against my religion.
-      %p Miroku (Inuyasha)
-    %img{:src => "http://thetvdb.com/banners/fanart/original/71361-4.jpg"}
+      - @overlay_quote ||= Quote.order('RANDOM()').first
+      %h5.title= @overlay_quote.content
+      %p
+        = @overlay_quote.character_name
+        (#{link_to @overlay_quote.anime.title, main_app.anime_path(@overlay_quote.anime)})
+    - @overlay_image = @overlay_quote.anime.gallery_images.order('RANDOM()').first
+    - if @overlay_image
+      = image_tag @overlay_image.image.url, style: 'width: 100%'
 
 - flash.each do |style, message|
   .alert-box{:class => style.to_s}= message

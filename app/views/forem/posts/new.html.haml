@@ -1,0 +1,19 @@
+.community
+  .row
+    .twelve.columns
+      = render partial: "shared/forem_sidebar", locals: {active_forum: @forum}
+
+      .forum-container.nine.columns
+        .row
+          %header.cf
+            .twelve.columns
+              %h2= t("forem.post.new")
+              - if @reply_to_post
+                #posts
+                  = render 'reply_to_post', :post => @reply_to_post
+              - else
+                %h3.topic_subject
+                  = @topic.subject
+              = simple_form_for [forem, @topic, @post] do |f|
+                = render :partial => "form", :locals => { :f => f }
+                = f.submit t("forem.post.buttons.reply")
