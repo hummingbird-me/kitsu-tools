@@ -88,20 +88,22 @@ class MalImport
       if anime
         watchlist = Watchlist.where(user_id: staged_import.user, anime_id: anime).first || false
         if !watchlist or watchlist.updated_at < w[:last_updated]
-          rating = nil
-          if w[:rating] != '0'
-            rating = w[:rating].to_i rescue 5
-            rating = ((((rating - 1) / 9.0) - 0.5) * 2 * 2).round
-          end
           watchlist = Watchlist.new(
             status: w[:status],
             episodes_watched: w[:episodes_watched],
             updated_at: w[:last_updated],
             user: staged_import.user,
             anime: anime,
-            imported: true,
-            rating: rating,
+            imported: true
           )
+        end
+        if watchlist.rating.nil?
+          rating = nil
+          if w[:rating] != '0'
+            rating = w[:rating].to_i rescue 5
+            rating = ((((rating - 1) / 9.0) - 0.5) * 2 * 2).round
+          end
+          watchlist.rating = rating
         end
         watchlists.push( [anime, watchlist] )
       end
