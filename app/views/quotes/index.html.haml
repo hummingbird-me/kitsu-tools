@@ -14,7 +14,7 @@
           %blockquote
             = quote.content
             - if quote.character_name
-              %cite — #{quote.character_name}
+              %cite #{quote.character_name}
           %p.option-bar
             - if quote.creator
               (Submitted by #{link_to quote.creator.name, quote.creator}) 
