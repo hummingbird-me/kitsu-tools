@@ -18,12 +18,13 @@
                 %a.twitter-share-button{"data-text" => "Hummingbird is a new and easy way to find anime titles you'll love. #anime", "data-url" => "http://www.hummingbird.ly", "data-via" => "Hummingbird_ly", :href => "https://twitter.com/share"} Tweet
 
 
-            .LR-sign-up-container{:style => ""}
-              %span.LR-sign-up-label{:style => "display: none;"} Request an invite
-              #fieldbase.LR-sign-up-container-inner
-                %input#input.signup-email{:autofocus => "", :placeholder => "Enter your email...", :type => "email"}
-                %input#button.LR-sign-up-submit{:name => "submit", :onclick => "setTimeout(setIframe,2000);", :title => "GO", :type => "submit", :value => "Request Invite"}
-            %p We will never share your email address with anyone, period.
+            = form_for BetaInvite.new, url: beta_invites_path do |f|
+              .LR-sign-up-container{:style => ""}
+                %span.LR-sign-up-label{:style => "display: none;"} Request an invite
+                #fieldbase.LR-sign-up-container-inner
+                  = f.email_field :email, class: 'signup-email', placeholder: "Enter your email...", id: 'input'
+                  = f.submit "Request Invite", class: 'LR-sign-up-submit', id: 'button'
+              %p We will never share your email address with anyone, period.
 
         / - if user_signed_in?
         /   %span.login-button= link_to "Discover Anime", anime_index_path
