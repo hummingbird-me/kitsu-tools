@@ -173,5 +173,5 @@ class User < ActiveRecord::Base
   def can_read_forem_topic?(topic);       true;       end
   def can_create_forem_topic?(topic);     persisted?; end
   def can_reply_to_forem_topic?(topic);   persisted?; end
-  def can_edit_forem_posts?(forum);       admin?;     end
+  def can_edit_forem_posts?(forum);       true;       end
 end
