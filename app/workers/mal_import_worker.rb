@@ -6,6 +6,8 @@ class MALImportWorker
 
   def perform(mal_username, staged_import_id)
     staged_import = StagedImport.find(staged_import_id)
+    return if staged_import.nil?
+    
     username = mal_username
 
     watchlist = MalImport.fetch_watchlist_from_remote(mal_username) rescue []
