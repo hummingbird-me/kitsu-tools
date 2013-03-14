@@ -51,9 +51,9 @@
       width: 1000px;
       margin: 0 auto;
       zoom: 1;
-      @media (max-width: 1000px) {
-        width: 100%;
-      }
+      // @media (max-width: 1000px) {
+      //   width: 100%;
+      // }
 
       li {
         float: left;
@@ -67,9 +67,9 @@
         border-left: none;
         width: 210px;
         border-right: 1px solid #eee;
-        @media (max-width: 1000px) {
-          width: 240px;
-        }
+        // @media (max-width: 1000px) {
+        //   width: 240px;
+        // }
 
         .logo {
           top: 0px;
@@ -83,21 +83,21 @@
           background-position: top;
           background: transparent url(asset-path('logo@2x.png', image)) no-repeat 0 0;
           background-size: 178px 52px;
-          @media (max-width: 1000px) {
-            width: 240px;
+          // @media (max-width: 1000px) {
+          //   width: 240px;
 
-            &:before {
-              border-bottom: 7px double #000;
-              border-top: 2px solid #000;
-              padding-bottom: 3px;
-              content: "";
-              height: 3px;
-              position: absolute;
-              left: 190px;
-              top: 9px;
-              width: 20px;
-            }
-          }
+          //   &:before {
+          //     border-bottom: 7px double #000;
+          //     border-top: 2px solid #000;
+          //     padding-bottom: 3px;
+          //     content: "";
+          //     height: 3px;
+          //     position: absolute;
+          //     left: 190px;
+          //     top: 9px;
+          //     width: 20px;
+          //   }
+          // }
         }
 
         &:hover {
@@ -113,9 +113,9 @@
         display: block;
         overflow: hidden;
         white-space: nowrap;
-        @media (max-width: 1000px) {
-          display: none;
-        }
+        // @media (max-width: 1000px) {
+        //   display: none;
+        // }
 
         ul {
           float: left;
@@ -140,11 +140,12 @@
         border: 1px solid #eee;
         border-width: 0 1px 0 0;
         z-index: 10;
-        @media (max-width: 768px) {
-          position: absolute;
-          right: 70px;
-          border: none;
-        }
+        // @media (max-width: 768px) {
+        //   position: absolute;
+        //   right: 70px;
+        //   border: none;
+        // }
+
         form {
           margin: 0;
         }
@@ -154,9 +155,10 @@
           position: absolute;
           right: 90px;
           top: 0;
-          @media (max-width: 768px) {
-            right: 70px;
-          }
+          // @media (max-width: 768px) {
+          //   right: 70px;
+          // }
+          
           &:before {
             background-image: url(http://cdn1.sbnation.com/images/polygon/sprites/icons@2x.vcd374f5.png);
             background-size: 108px 1043px;
@@ -184,9 +186,9 @@
             color: #aaa;
             font-style: italic;
             box-shadow: none;
-            @media (max-width: 768px) {
-              display: none;
-            }
+            // @media (max-width: 768px) {
+            //   display: none;
+            // }
 
             &:focus {
               background: none;

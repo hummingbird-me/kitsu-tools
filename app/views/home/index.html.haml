@@ -5,19 +5,25 @@
 
 .home.anime-discover.anime-show.login-register-card
   .header-content.row
-    .eight.columns.centered
-      .LR-sign-up-container{:style => ""}
-        %span.LR-sign-up-label{:style => "display: none;"} Request an invite
-        #fieldbase.LR-sign-up-container-inner.LR-clearfix
-          %input#input.signup-email{:autofocus => "", :placeholder => "Enter your email...", :type => "email"}/
-          %input.LR-sign-up-input.first-name.half{:placeholder => "first name", :style => "display: none;", :type => "text"}/
-          %input.LR-sign-up-input.last-name.half{:placeholder => "last name", :style => "display: none;", :type => "text"}/
-          %input.LR-sign-up-input.company{:placeholder => "company", :style => "display: none;", :type => "text"}/
-          %input.LR-sign-up-input.phone-number.half{:placeholder => "phone number", :style => "display: none;", :type => "tel"}/
-          %input.LR-sign-up-input.zipcode.half{:placeholder => "zipcode", :style => "display: none;", :type => "text"}/
-          %input.LR-sign-up-input.birthdate.half{:placeholder => "birthdate mm/dd/yy", :style => "display: none;", :type => "text"}/
-          %input#button.LR-sign-up-submit{:name => "submit", :onclick => "setTimeout(setIframe,2000);", :title => "GO", :type => "submit", :value => "Request Invite"}/
-          #hmb{:style => "display:none;"}
+    .twelve.columns
+      .features
+        %h1.salsbury Discover New Anime.
+        %h2 Hummingbird is a new and easy way to find <br/>anime titles you'll love.
+        .row
+          .eight.columns.centered
+            %ul.inline-list{:style => "display: inline-block; margin: 0 auto;"}
+              %li 
+                .fb-like{"data-href" => "http://www.facebook.com/pages/Hummingbird/460188747373182?ref=hl", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
+              %li{:style => "background: none;"}
+                %a.twitter-share-button{"data-text" => "Hummingbird is a new and easy way to find anime titles you'll love. #anime", "data-url" => "http://www.hummingbird.ly", "data-via" => "Hummingbird_ly", :href => "https://twitter.com/share"} Tweet
+
+
+            .LR-sign-up-container{:style => ""}
+              %span.LR-sign-up-label{:style => "display: none;"} Request an invite
+              #fieldbase.LR-sign-up-container-inner
+                %input#input.signup-email{:autofocus => "", :placeholder => "Enter your email...", :type => "email"}
+                %input#button.LR-sign-up-submit{:name => "submit", :onclick => "setTimeout(setIframe,2000);", :title => "GO", :type => "submit", :value => "Request Invite"}
+            %p We will never share your email address with anyone, period.
 
         / - if user_signed_in?
         /   %span.login-button= link_to "Discover Anime", anime_index_path

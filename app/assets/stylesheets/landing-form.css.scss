@@ -1,6 +1,19 @@
+.salsbury {
+  font-family: "salsbury",sans-serif;
+  color: #fff;
+  font-size: 65px;
+  -webkit-transition-delay: 5s;
+  -webkit-animation-name: bounceInDown;
+  -webkit-animation-duration: 1.2s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-out;
+  -webkit-transition: .1s ease-out;
+  -o-transition: .1s ease-out;
+  -moz-transition: .1s ease-out;
+}
 .LR-sign-up-container {
   position: relative;
-  margin: 60px auto 0;
+  margin: 38px auto 30px auto;
   width: 100%;
 }
 .LR-sign-up-label {
