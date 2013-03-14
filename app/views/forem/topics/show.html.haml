@@ -31,7 +31,7 @@
               .eleven.columns.topic-info
                 .topic-title= link_to @topic.subject, forem.forum_topic_path(@topic.forum, @topic)
                 %p.sub-text 
-                  = distance_of_time_in_words_to_now(@topic.last_post_at)
+                  = distance_of_time_in_words_to_now(@topic.created_at)
                   ago by
                   = link_to @topic.user, main_app.user_path(@topic.user)
                   to <a href="#">Anime Discussion</a>
