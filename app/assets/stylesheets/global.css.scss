@@ -42,6 +42,7 @@ body {
     margin: 0 auto 9px auto;
     display: block;
     border: none;
+    color: #fff;
     box-shadow: none;
     @include border-radius(2px);
     &:hover {
@@ -49,10 +50,21 @@ body {
     }
 
     a {
-      color: white;
+      color: #fff;
       display: block;
       height: 100%;
       line-height: 65px;
+      &:hover {
+        color: #fff;
+      }
+    }
+
+    &.secondary {
+      background: #bbb;
+      border: none;
+      &:hover {
+        color: #fff;
+      }
     }
   }
 

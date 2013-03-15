@@ -19,7 +19,7 @@
 
 
             - if user_signed_in?
-              .eleven.columns.centered{:style => "margin-top: 40px; height: 60px; margin-bottom: 40px;"}
+              .eleven.columns.centered{:style => "margin-top: 40px; height: 60px; margin-bottom: 40px; overflow: visible;"}
                 .search
                   %form{:action => "/search", :autocomplete => "off"}
                     %input.typeahead_home(type="text" name="query" placeholder = "Search Anime by Title" autocomplete="off")
