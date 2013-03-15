@@ -1012,7 +1012,8 @@ CREATE TABLE users (
     unconfirmed_email character varying(255),
     forem_admin boolean DEFAULT false,
     forem_state character varying(255) DEFAULT 'approved'::character varying,
-    forem_auto_subscribe boolean DEFAULT false
+    forem_auto_subscribe boolean DEFAULT false,
+    slug character varying(255)
 );
 
 
@@ -1710,6 +1711,13 @@ CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (conf
 
 
 --
+-- Name: index_users_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_slug ON users USING btree (slug);
+
+
+--
 -- Name: person_mal_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2034,3 +2042,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130309181244');
 INSERT INTO schema_migrations (version) VALUES ('20130309181245');
 
 INSERT INTO schema_migrations (version) VALUES ('20130311194800');
+
+INSERT INTO schema_migrations (version) VALUES ('20130315120127');

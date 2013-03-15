@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+  
   # Include devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
@@ -7,7 +10,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me,
     :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio,
-    :forem_admin
+    :forem_admin, :slug
 
   has_attached_file :avatar, :styles => {:thumb => "200x200"},
     :default_url => "http://placekitten.com/g/200/200"
