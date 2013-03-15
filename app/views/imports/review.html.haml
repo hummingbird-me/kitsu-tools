@@ -1,8 +1,14 @@
 .anime-discover.panel.twelve.columns
   %h1= title "Review Import"
 
-  = link_to "Apply", review_apply_path, class: 'button'
-  = link_to "Cancel", review_cancel_path, class: 'button'
+  .row
+    .eight.columns.centered
+      .six.columns
+        = link_to review_apply_path do
+          %span.button Apply
+      .six.columns
+        = link_to review_cancel_path do
+          %span.button Cancel
 
   %h3 Watchlist
   %table
