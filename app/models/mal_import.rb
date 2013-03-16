@@ -76,14 +76,24 @@ class MalImport
     reviews
   end
   
-  def self.get_watchlist_from_staged_import(staged_import)
+  def self.get_watchlist_from_staged_import(staged_import, options={})
     watchlists = []
     animes = {}
     
     Anime.where(mal_id: staged_import["data"][:watchlist].map {|x| x[:mal_id] })
          .each {|a| animes[a.mal_id] = a }
+         
+    consider = staged_import["data"][:watchlist].sort_by {|x| -x[:last_updated].to_i }
     
-    staged_import["data"][:watchlist].each do |w|
+    if options[:per]
+      page = options[:page].to_i rescue 1
+      page = 1 if page < 1
+      per  = options[:per].to_i  rescue 100
+      total = consider.length
+      consider = consider[((page-1)*per)...(page*per)]
+    end
+    
+    consider.each do |w|
       anime = animes[ w[:mal_id].to_i ]
       if anime
         watchlist = Watchlist.where(user_id: staged_import.user, anime_id: anime).first || false
@@ -107,6 +117,10 @@ class MalImport
         end
         watchlists.push( [anime, watchlist] )
       end
+    end
+    
+    if options[:per]
+      watchlists = ([nil] * (per*(page-1))) + watchlists + ([nil] * (total-watchlists.length))
     end
 
     watchlists
