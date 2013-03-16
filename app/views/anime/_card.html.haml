@@ -35,9 +35,16 @@
         .star-rating
           - (-2).upto(2) do |i|
             - if readonly
-              = (watchlist and watchlist.rating and watchlist.rating >= i) ? "★" : "☆"
+              - if watchlist and watchlist.rating and watchlist.rating >= i
+                %i.icon-star
+              - else
+                %i.icon-star-empty
             - else
-              = link_to ((watchlist and watchlist.rating and watchlist.rating >= i) ? "★" : "☆"), update_rating_path(anime, i, width: width), remote: user_signed_in?
+              = link_to update_rating_path(anime, i, width: width), remote: user_signed_in? do
+                - if watchlist and watchlist.rating and watchlist.rating >= i
+                  %i.icon-star
+                - else
+                  %i.icon-star-empty
       - else
         - if readonly
           %span.like
