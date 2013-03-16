@@ -16,6 +16,7 @@
         %a{:href => "#simple2"} Reviews
     %ul.tabs-content
       %li#simple1Tab.active
+        = paginate @watchlist
         %h3 Watchlist
         %table
           %thead
@@ -37,6 +38,7 @@
                   - else
                     (not rated)
                 %td #{wld[1].episodes_watched}/#{wld[0].episode_count}
+        = paginate @watchlist
 
       %li#simple2Tab
         %h3 Reviews
