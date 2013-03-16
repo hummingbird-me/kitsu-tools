@@ -74,13 +74,13 @@
 
       .forum-container.replies.nine.columns
 
-        - if @posts.length > 1
-          - if params[:page].nil? or params[:page].to_i == 1
-            %p.pagination-centered= paginate @posts
-            = render @posts[1..-1]
-          - else
-            = render @posts
+        - if params[:page].nil? or params[:page].to_i == 1 and @posts.length > 1
           %p.pagination-centered= paginate @posts
+          = render @posts[1..-1]
+        - else
+          = render @posts
+        %p.pagination-centered= paginate @posts
+        
         - if user_signed_in?
           .reply-header.twelve.columns
             %h3 
