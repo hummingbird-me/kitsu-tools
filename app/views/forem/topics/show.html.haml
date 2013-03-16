@@ -74,7 +74,7 @@
 
       .forum-container.replies.nine.columns
 
-        - if params[:page].nil? or params[:page].to_i == 1 and @posts.length > 1
+        - if params[:page].nil? or params[:page].to_i == 1 and @posts.length > 0
           %p.pagination-centered= paginate @posts
           = render @posts[1..-1]
         - else
