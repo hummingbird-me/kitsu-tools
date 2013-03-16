@@ -95,3 +95,6 @@ gem 'mixpanel'
 
 # A/B Testing
 gem 'split'
+
+# SEO
+gem 'sitemap_generator'
