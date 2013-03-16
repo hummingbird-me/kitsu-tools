@@ -59,6 +59,11 @@ class UsersController < ApplicationController
     @reviews = @user.reviews.order("created_at DESC").page(params[:page]).per(15)
   end
 
+  def forum_posts
+    @user = User.find(params[:user_id])
+    @posts = Forem::Post.where(user_id: @user).order('created_at DESC').page(params[:page]).per(Forem.per_page)
+  end
+
   def disconnect_facebook
     authenticate_user!
     current_user.update_attributes(facebook_id: nil)

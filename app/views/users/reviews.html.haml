@@ -7,5 +7,6 @@
     
     = render partial: "reviews/review_summary", collection: @reviews, as: :review
 
-  .twelve.columns.pagination-centered
-    = paginate(@reviews)
+  .row
+    .twelve.columns.pagination-centered
+      = paginate(@reviews)
