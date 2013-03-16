@@ -91,7 +91,7 @@
               /<a href="#">View Example</a>
             - if user_signed_in?
               .one.columns.avatar
-                = link_to image_tag(current_user.avatar.url(:thumb)), main_app.user_path(@topic.user)
+                = link_to image_tag(current_user.avatar.url(:thumb)), main_app.user_path(current_user)
               .eleven.columns.input-area
                 = simple_form_for [forem, @topic, @topic.posts.build] do |f|
                   = f.input :text, placeholder: 'Message', label: false
