@@ -22,7 +22,7 @@ class ImportsController < ApplicationController
     if @staged_import.nil? or !@staged_import.data[:complete]
       redirect_to "/users/edit#import"
     else
-      @watchlist = MalImport.get_watchlist_from_staged_import(@staged_import)
+      @watchlist = MalImport.get_watchlist_from_staged_import(@staged_import).sort_by {|x| [-x[1].updated_at.to_i, x[0].title] }
       @reviews = MalImport.get_reviews_from_staged_import(@staged_import)
     end
   end
