@@ -1,4 +1,12 @@
 GIT
+  remote: git@github.com:vikhyat/forem-html_formatter.git
+  revision: f7c86eff481898bf39fd4a0d14a11b2143b97f8d
+  specs:
+    forem-html_formatter (0.1.0)
+      forem
+      sanitize
+
+GIT
   remote: git@github.com:vikhyat/forem.git
   revision: 80f44dc62d77a7e1f1db1ff4cf295450aceacd05
   specs:
@@ -112,11 +120,6 @@ GEM
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
-    forem-kramdown (0.1.0)
-      activesupport (>= 3.1.0)
-      coderay (~> 1.0.8)
-      kramdown (~> 0.14.1)
-      nokogiri (~> 1.5.6)
     forem-redcarpet (1.0.0)
       pygments.rb (= 0.2.4)
       redcarpet (= 2.0.1)
@@ -159,7 +162,6 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.0)
-    kramdown (0.14.2)
     libv8 (3.11.8.13)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -277,6 +279,8 @@ GEM
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
     safe_yaml (0.8.4)
+    sanitize (2.0.3)
+      nokogiri (>= 1.4.4, < 1.6)
     sass (3.2.6)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -368,7 +372,7 @@ DEPENDENCIES
   devise-async
   factory_girl_rails
   forem!
-  forem-kramdown
+  forem-html_formatter!
   friendly_id (~> 4.0.9)
   haml (~> 4.0)
   haml-rails
