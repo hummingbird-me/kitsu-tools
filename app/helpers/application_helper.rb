@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def markdown(text)
     return "" if text.nil?
-    RDiscount.new(Haml::Helpers.html_escape(text)).to_html.html_safe
+    sanitize(RDiscount.new(Haml::Helpers.html_escape(text)).to_html).html_safe
   end
 
   def percentage_completed(anime, watchlist)
