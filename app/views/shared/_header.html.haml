@@ -55,7 +55,7 @@
       %h5.title= @overlay_quote.content
       %p
         = @overlay_quote.character_name
-        (#{link_to @overlay_quote.anime.title, main_app.anime_path(@overlay_quote.anime)})
+        (#{link_to @overlay_quote.anime.title, main_app.anime_quotes_path(@overlay_quote.anime)})
     - @overlay_image = @overlay_quote.anime.gallery_images.order('RANDOM()').first
     - if @overlay_image
       = image_tag @overlay_image.image.url, style: 'width: 100%'
