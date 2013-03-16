@@ -42,6 +42,6 @@ class ImportsController < ApplicationController
   def cancel
     import = current_user.staged_import
     import.delete
-    redirect_to :back
+    redirect_to "/users/edit#import"
   end
 end
