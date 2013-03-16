@@ -93,7 +93,17 @@ namespace :deploy do
       end
     end
   end
+  
+  task :copy_old_sitemap do
+    run "if [ -e #{previous_release}/public/sitemap_index.xml.gz ]; then cp #{previous_release}/public/sitemap* #{current_release}/public/; fi"
+  end
+
+  task :refresh_sitemaps do
+    run "cd #{latest_release} && RAILS_ENV=#{rails_env} rake sitemap:refresh"
+  end
 end
+
+after "deploy:update_code", "deploy:copy_old_sitemap"
 
 before "deploy", "deploy:sudo_prompt"
 
