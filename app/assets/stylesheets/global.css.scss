@@ -44,9 +44,13 @@ body {
     border: none;
     color: #fff;
     box-shadow: none;
+    padding: 0px;
     @include border-radius(2px);
     &:hover {
       background: #3f5765;
+    }
+    &.padded {
+      padding: 10px;
     }
 
     a {
@@ -54,6 +58,7 @@ body {
       display: block;
       height: 100%;
       line-height: 65px;
+      padding: 10px;
       &:hover {
         color: #fff;
       }
