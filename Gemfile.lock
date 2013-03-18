@@ -1,6 +1,6 @@
 GIT
   remote: git@github.com:vikhyat/forem-html_formatter.git
-  revision: f7c86eff481898bf39fd4a0d14a11b2143b97f8d
+  revision: 769f39cb73e8ea4699e33dda8dab6d8d25eccfbe
   specs:
     forem-html_formatter (0.1.0)
       forem
@@ -179,7 +179,7 @@ GEM
       compass (>= 0.12.1)
       sass (>= 3.2.0)
       sassy-math (>= 1.5)
-    multi_json (1.6.1)
+    multi_json (1.7.0)
     multipart-post (1.2.0)
     nested_form (0.3.1)
     net-scp (1.1.0)
@@ -336,12 +336,12 @@ GEM
       libv8 (~> 3.11.8.12)
       ref
     thor (0.17.0)
-    tilt (1.3.4)
+    tilt (1.3.6)
     timers (1.1.0)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.35)
+    tzinfo (0.3.37)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
