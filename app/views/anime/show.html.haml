@@ -29,10 +29,11 @@
             %ul.inline-list
               %li
                 .fb-like{"data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "50"}
-              %li 
+              %li{:style => "background: none; width: 78px;"}
                 %a.twitter-share-button{"data-via" => "Hummingbird_ly", :href => "https://twitter.com/share"} Tweet
-
-
+              %li
+                .g-plusone{"data-size" => "medium"}
+            
           .synopsis
             %strong Status: #{@anime.status}
             %p #{@anime.synopsis}
