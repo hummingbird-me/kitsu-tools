@@ -10,12 +10,15 @@
     border-left: 1px solid #e6e6e6;
     border-right: 1px solid #e6e6e6;
     margin-left: 0;
+    margin-top: 0px;
+
     dd {
       line-height: 45px;
       margin-bottom: 0;
       border-right: 1px solid #e6e6e6;
       width: 16%;
       text-align: center;
+
       &.active {
         a {
           font-weight: normal;
@@ -26,8 +29,8 @@
     }
   }
 }
-.user-watchlist {
 
+.user-watchlist {
   h3 {
     border-bottom: 1px solid #dddddd;
     padding: 0px 0px 10px 10px;
@@ -135,16 +138,19 @@
           position: relative;
           top: -50px;
         }
+
         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
           background-image: url(asset-path('icons/watch-sprite@2x.png', image));
           background-size: 30px 51px;
         }
+
         &:hover {
           background-position: center;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-size: 30px 51px;
           }
         }
+
         &:active {
           background-position: top;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
