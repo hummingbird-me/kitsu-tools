@@ -1,6 +1,12 @@
 class HomeController < ApplicationController
-  def index
+  def hide_cover_image
     @hide_cover_image = true
+  end
+
+  before_filter :hide_cover_image
+  caches_action :index, layout: false, :if => lambda { not user_signed_in? }
+
+  def index
     @latest_reviews = Review.order('created_at DESC').limit(2)
 
 #    @recent_anime_users = User.joins(:watchlists).order('MAX(watchlists.last_watched) DESC').group('users.id').limit(8)

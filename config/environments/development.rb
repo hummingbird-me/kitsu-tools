@@ -47,5 +47,10 @@ Hummingbird::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = false
+
+  # Caching
+  # Temporarily enable caching in development (COMMENT OUT WHEN DONE!)
+  #config.action_controller.perform_caching = true
+  #config.cache_store = :redis_store  
 end
 
