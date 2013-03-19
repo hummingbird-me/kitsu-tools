@@ -1,6 +1,5 @@
-GIT
+PATH
   remote: vendor/forem
-  revision: 80f44dc62d77a7e1f1db1ff4cf295450aceacd05
   specs:
     forem (1.0.0.beta1)
       cancan (= 1.6.8)
@@ -12,9 +11,8 @@ GIT
       simple_form
       workflow (= 0.8.0)
 
-GIT
+PATH
   remote: vendor/forem-html_formatter
-  revision: 769f39cb73e8ea4699e33dda8dab6d8d25eccfbe
   specs:
     forem-html_formatter (0.1.0)
       forem
