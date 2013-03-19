@@ -50,6 +50,7 @@
 
 
   %figure{:style => ("display: none" if @hide_cover_image)}
+    - overlay_quote_from_anime(@anime) if not @anime.nil?
     .overlay
       - @overlay_quote ||= Quote.order('RANDOM()').first
       %h5.title= @overlay_quote.content
