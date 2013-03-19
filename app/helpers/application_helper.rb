@@ -48,7 +48,11 @@ module ApplicationHelper
   end
 
   def overlay_quote_from_anime(anime)
-    @overlay_quote = anime.quotes.order('RANDOM()').first    
+    begin
+      anime.quotes.order('RANDOM()').first || Quote.order('RANDOM()').first
+    rescue
+      Quote.order('RANDOM()').first
+    end
   end
 
   # For Devise
