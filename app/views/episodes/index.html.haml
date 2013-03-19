@@ -32,3 +32,9 @@
                   - else
                     %strong
                       = link_to "", watch_anime_episode_path(@anime, episode, watched: true), method: :post
+      
+      - if @anime.thetvdb_series_id
+        .panel
+          %p 
+            The episode information for #{@anime.title} has been provided by
+            #{link_to "TheTVDB.com", "http://www.thetvdb.com/?tab=series&id=#{@anime.thetvdb_series_id}"}.
