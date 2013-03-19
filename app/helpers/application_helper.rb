@@ -49,7 +49,7 @@ module ApplicationHelper
 
   def overlay_quote_from_anime(anime)
     begin
-      anime.quotes.order('RANDOM()').first    
+      anime.quotes.order('RANDOM()').first || Quote.order('RANDOM()').first
     rescue
       Quote.order('RANDOM()').first
     end
