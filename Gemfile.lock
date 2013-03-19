@@ -269,6 +269,8 @@ GEM
     redis (3.0.3)
     redis-namespace (1.2.1)
       redis (~> 3.0.0)
+    redis-store (1.1.3)
+      redis (>= 2.2.0)
     ref (1.0.2)
     remotipart (1.0.5)
     rubypython (0.5.3)
@@ -388,6 +390,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   rails_admin
   rdiscount
+  redis-store
   rvm-capistrano
   sass-rails (~> 3.2.3)
   shoulda
