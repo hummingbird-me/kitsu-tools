@@ -6,6 +6,7 @@ set :application, "hummingbird"
 set :repository,  "git@github.com:vikhyat/hummingbird.git"
 
 set :scm, :git
+set :git_enable_submodules, 1
 set :deploy_via, :remote_cache
 set :rvm_type, :user
 
