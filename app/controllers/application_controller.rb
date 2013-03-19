@@ -15,8 +15,4 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     request.referrer
   end
-
-  def overlay_quote_from_anime(anime)
-    @overlay_quote = anime.quotes.order('RANDOM()').first    
-  end
 end

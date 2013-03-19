@@ -16,8 +16,6 @@ class AnimeController < ApplicationController
 
     @gallery = @anime.gallery_images.limit(6)
 
-    overlay_quote_from_anime(@anime)
-
     @top_reviews = {
       positive: @anime.reviews.where('rating > 5').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first,
       negative: @anime.reviews.where('rating <= 5').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first
