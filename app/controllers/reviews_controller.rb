@@ -1,4 +1,8 @@
 class ReviewsController < ApplicationController
+  def full_index
+    # TODO
+  end
+
   def index
     @anime = Anime.find(params[:anime_id])
     if user_signed_in?

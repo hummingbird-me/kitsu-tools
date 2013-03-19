@@ -48,6 +48,7 @@ Hummingbird::Application.routes.draw do
       }
     end
   end
+  match '/reviews' => 'reviews#full_index'
 
   # Personalize Filters
   match '/anime/filter/:filter(/:page)' => 'anime#index', :as => :filtered_listing
