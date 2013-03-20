@@ -267,8 +267,24 @@ GEM
       json (~> 1.4)
     redcarpet (2.0.1)
     redis (3.0.3)
+    redis-actionpack (3.2.3)
+      actionpack (~> 3.2.3)
+      redis-rack (~> 1.4.0)
+      redis-store (~> 1.1.0)
+    redis-activesupport (3.2.3)
+      activesupport (~> 3.2.3)
+      redis-store (~> 1.1.0)
     redis-namespace (1.2.1)
       redis (~> 3.0.0)
+    redis-rack (1.4.2)
+      rack (~> 1.4.1)
+      redis-store (~> 1.1.0)
+    redis-rails (3.2.3)
+      redis-actionpack (~> 3.2.3)
+      redis-activesupport (~> 3.2.3)
+      redis-store (~> 1.1.0)
+    redis-store (1.1.3)
+      redis (>= 2.2.0)
     ref (1.0.2)
     remotipart (1.0.5)
     rubypython (0.5.3)
@@ -388,6 +404,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   rails_admin
   rdiscount
+  redis-rails
   rvm-capistrano
   sass-rails (~> 3.2.3)
   shoulda

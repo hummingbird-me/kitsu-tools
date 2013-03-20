@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 gem 'pg'
 
+gem 'redis-rails'
+
 gem 'forem', :path => 'vendor/forem'
 gem 'forem-html_formatter', :path => 'vendor/forem-html_formatter'
 

@@ -51,16 +51,17 @@
           %span= link_to "register", main_app.new_user_registration_path
 
 
-  %figure{:style => ("display: none" if @hide_cover_image)}
-    - @overlay_quote = overlay_quote_from_anime(@anime)
-    .overlay
-      %h5.title= @overlay_quote.content
-      %p
-        = @overlay_quote.character_name
-        (#{link_to @overlay_quote.anime.title, main_app.anime_quotes_path(@overlay_quote.anime)})
-    - @overlay_image = @overlay_quote.anime.gallery_images.order('RANDOM()').first
-    - if @overlay_image
-      = image_tag @overlay_image.image.url, style: 'width: 100%'
+  - unless @hide_cover_image
+    %figure
+      - @overlay_quote = overlay_quote_from_anime(@anime)
+      .overlay
+        %h5.title= @overlay_quote.content
+        %p
+          = @overlay_quote.character_name
+          (#{link_to @overlay_quote.anime.title, main_app.anime_quotes_path(@overlay_quote.anime)})
+      - @overlay_image = @overlay_quote.anime.gallery_images.order('RANDOM()').first
+      - if @overlay_image
+        = image_tag @overlay_image.image.url, style: 'width: 100%'
 
 - flash.each do |style, message|
   .alert-box{:class => style.to_s}= message
