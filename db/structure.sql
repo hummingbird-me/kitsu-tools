@@ -223,7 +223,8 @@ CREATE TABLE episodes (
     number integer,
     title character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    season_number integer
 );
 
 
@@ -2048,3 +2049,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130311194800');
 INSERT INTO schema_migrations (version) VALUES ('20130315120127');
 
 INSERT INTO schema_migrations (version) VALUES ('20130319090055');
+
+INSERT INTO schema_migrations (version) VALUES ('20130320183734');

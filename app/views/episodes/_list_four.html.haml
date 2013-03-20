@@ -4,7 +4,7 @@
     - episodes.each do |episode, watched|
       %li.episode{:class => ("active" if watched)}
         .title.ten.columns
-          .episode-number e#{"%02d" % episode.number}
+          .episode-number= episode.format_season_episode
           .episode-title= episode.title
         .view-button.two.columns
           - if watched

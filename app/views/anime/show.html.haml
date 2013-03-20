@@ -12,7 +12,7 @@
           .small-summary 
             %span #{pluralize @anime.episode_count, 'episode'} / #{@anime.episode_length} min. each  ||
             %span #{@anime.age_rating}
-            - if @anime.alt_title
+            - if @anime.alt_title and @anime.alt_title.length > 0
               %span (Also known as <strong>#{@anime.alt_title}</strong>)
 
           .producers

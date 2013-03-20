@@ -13,7 +13,7 @@ class EpisodesController < ApplicationController
         end
       end
     end
-    @episodes = @anime.episodes.order(:number).map {|e| [e, @episodes_watched[e.id]] }
+    @episodes = @anime.episodes.order(:season_number, :number).map {|e| [e, @episodes_watched[e.id]] }
   end
   
   # Private: Return a watchlist for the given anime,user pair. If there is no such

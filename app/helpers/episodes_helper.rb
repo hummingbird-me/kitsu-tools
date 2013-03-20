@@ -5,9 +5,9 @@ module EpisodesHelper
   # Returns [[episode, watched?]].
   def select_four_episodes(watchlist, anime=nil)
     if watchlist
-      @episodes = watchlist.anime.episodes.order(:number)
+      @episodes = watchlist.anime.episodes.order(:season_number, :number)
     else
-      @episodes = anime.episodes.order(:number)
+      @episodes = anime.episodes.order(:season_number, :number)
     end
     
     @episodes_watched = Hash.new(false)
