@@ -6,6 +6,27 @@
 
 .anime-discover {
   margin-top: 100px;
+  .reveal-modal {
+    padding: 15px;
+    fieldset {
+      margin: 0px;
+    }
+    label {
+      margin-bottom: 10px;
+    }
+    .twelve {
+      margin-bottom: 20px;
+      &.line-break {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+      }
+    }
+    .three {
+      input {
+        margin: 0px;
+      }
+    }
+  }
   .filter-toolbar {
     .row {
       overflow: visible;
@@ -214,11 +235,76 @@
       overflow: visible;
     }
 
+    .add-watchlist {
+      z-index: 999;
+      position: absolute;
+      bottom: 20px;
+      a {
+        color: #fff;
+        padding: 15px 0px;
+      }
+      &:hover {
+        a {
+          color: #fd7532;
+        }
+      }
+    }
     .community-rating {
       position: absolute;
-      z-index: 9999;
+      z-index: 9;
       width: 100%;
       background: white;
+      padding-top: 11px;
+      padding-bottom: 0px;
+      @include border-bottom-radius(3px);
+      .positive {
+        color: #2aa730;
+        text-align: center;
+        font-size: 30px;
+        i {
+          height: 33px;
+          width: 33px;
+          display: inline-block;
+
+          background-image: url(asset-path('icons/positive-votes.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/positive-votes@2x.png', image));
+            background-size: 33px 33px;
+          }
+        }
+        h5 {
+          position: relative;
+          bottom: 5px;
+          display: inline-block;
+          color: #2aa730;
+          text-align: center;
+          font-size: 30px;
+        }
+      }
+      .negative {
+        color: #c63838;
+        text-align: center;
+        font-size: 30px;
+        i {
+          height: 33px;
+          width: 33px;
+          display: inline-block;
+
+          background-image: url(asset-path('icons/negative-votes.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/negative-votes@2x.png', image));
+            background-size: 33px 33px;
+          }
+        }
+        h5 {
+          position: relative;
+          bottom: 5px;
+          color: #c63838;
+          display: inline-block;
+          text-align: center;
+          font-size: 30px;
+        }
+      }
     }
 
     figure {
@@ -234,12 +320,15 @@
         text-align: center;
         color: #fff;
         cursor: pointer;
-        z-index: 9999;
+        z-index: 9;
         @include opacity(0.90);
         @include border-top-radius(3px);
         @include background-image(linear-gradient(left top, #393939, #000));
         display: none;
         
+        .link-block {
+          height: 100%;
+        }
 
         .title {
           color: white;
@@ -376,8 +465,6 @@
       }
     }
 
-
-
   	.watchlist {
   		width: 100%;
   		text-align: center;
@@ -386,12 +473,12 @@
   		border-top: 1px solid #eee;
   		border-bottom: 1px solid #eee;
   	}
-
-    .vote-blocks {
+  }
+  .vote-blocks {
       .star-rating {
         text-align: center;
         font-size: 23px;
-        padding: 20px 0;
+        padding: 24px 0;
       }
 
       .like {
@@ -534,5 +621,4 @@
         }
       }
     }
-  }
 }

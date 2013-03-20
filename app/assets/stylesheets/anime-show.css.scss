@@ -4,17 +4,21 @@
   .anime-details {
 
     .details-left {
-        padding-top: 10px;
+      padding-top: 10px;
 
-        .panel {
-          box-shadow: none;
-          figcaption {
-            display: none;
-          }
+      .two {
+        width: 25%;
+      }
+
+      .panel {
+        box-shadow: none;
+        figcaption {
+          display: none;
         }
-        .overlay {
-          display: none !important;
-        }
+      }
+      .overlay {
+        display: none !important;
+      }
     }
 
     .social-links {
