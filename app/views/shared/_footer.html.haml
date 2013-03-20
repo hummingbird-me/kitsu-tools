@@ -7,7 +7,7 @@
             %h1 Recently Viewed
             %ul
               - animes = {}
-              - Anime.where(:slug => session[:recently_viewed]).each {|a| animes[a.slug] = a if a.title }
+              - Anime.where(:slug => session[:recently_viewed]).each {|a| animes[a.slug] = a }
               - session[:recently_viewed].each do |slug|
                 %li.two.columns.has-tip.tip-top{"data-width" => "210", :title => animes[slug].title}= link_to image_tag(animes[slug].cover_image.url(:thumb)), main_app.anime_path(animes[slug])
 
