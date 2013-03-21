@@ -79,10 +79,10 @@
             - else
               %strong= link_to ":)", update_rating_path(anime, 2, width: width), remote: user_signed_in?
           %span.four.columns.meh
-            - if watchlist and watchlist.positive?
+            - if watchlist and not (watchlist.positive? or watchlist.negative?)
               %strong.active= link_to "[:|]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
             - else
-              %strong= link_to ":|", update_rating_path(anime, 2, width: width), remote: user_signed_in?
+              %strong= link_to ":|", update_rating_path(anime, 0, width: width), remote: user_signed_in?
           %span.four.columns.dislike
             - if watchlist and watchlist.negative?
               %strong.active= link_to "[:(]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
