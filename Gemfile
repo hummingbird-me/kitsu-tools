@@ -12,6 +12,8 @@ gem 'redis-rails'
 gem 'forem', :path => 'vendor/forem'
 gem 'forem-html_formatter', :path => 'vendor/forem-html_formatter'
 
+gem 'sanitize'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

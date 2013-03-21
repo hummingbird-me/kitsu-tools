@@ -13,7 +13,7 @@ module ReviewsHelper
   end
 
   def sanitize_review(html)
-    sanitize html
+    Forem::Formatters::HTML.sanitize(html).html_safe
   end
 
   def rating_description(r)

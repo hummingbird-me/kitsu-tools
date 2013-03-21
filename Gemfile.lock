@@ -406,6 +406,7 @@ DEPENDENCIES
   rdiscount
   redis-rails
   rvm-capistrano
+  sanitize
   sass-rails (~> 3.2.3)
   shoulda
   sidekiq
