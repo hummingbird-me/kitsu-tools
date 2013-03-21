@@ -63,7 +63,7 @@ class ReviewsController < ApplicationController
     @review.rating_story      = [[1, params["review"]["rating_story"].to_i].max, 10].min rescue nil
     @review.rating_animation  = [[1, params["review"]["rating_animation"].to_i].max, 10].min rescue nil
     @review.rating_sound      = [[1, params["review"]["rating_sound"].to_i].max, 10].min rescue nil
-    @review.rating_character  = [[1, params["review"]["rating_chracter"].to_i].max, 10].min rescue nil
+    @review.rating_character  = [[1, params["review"]["rating_character"].to_i].max, 10].min rescue nil
     @review.rating_enjoyment  = [[1, params["review"]["rating_enjoyment"].to_i].max, 10].min rescue nil
     
     if @review.save
