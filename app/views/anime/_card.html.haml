@@ -35,9 +35,9 @@
     /     - else
     /       .drop-button Select Watching Status <a href="#" class="selector"></a>
     .community-rating
-      .twelve.columns.negative
+      .twelve.columns{:class => (anime.wilson_ci > 0.5 ? "positive" : "negative")}
         %i
-        %h5 79%
+        %h5= "#{(anime.wilson_ci*100).to_i}%"
 
     .vote-blocks
       - if user_signed_in? and current_user.star_rating
