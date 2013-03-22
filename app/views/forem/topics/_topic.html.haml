@@ -7,12 +7,12 @@
       = link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
       
       - if user_signed_in? and view = topic.view_for(current_user)
-        - if topic.posts.exists?(["created_at > ?", view.updated_at])
+        - if (newest_unread = topic.posts.where(["created_at > ?", view.updated_at]).first)
           - seen_count = topic.posts.where(["created_at <= ?", view.updated_at]).count
           - page_number = 1 + seen_count / Forem.per_page
-          = link_to forem.forum_topic_path(topic.forum, topic, page: page_number) do
+          = link_to forem.forum_topic_path(topic.forum, topic, page: page_number, anchor: "post#{newest_unread.id}") do
             %span.label new
-      - elsif user_signed_in? and (view.nil? or topic.created_at > view.updated_at)
+      - elsif user_signed_in? and view.nil?
         = link_to forem.forum_topic_path(topic.forum, topic) do
           %span.label new
 

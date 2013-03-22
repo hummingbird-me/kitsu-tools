@@ -1,4 +1,5 @@
 .topic-reply.row
+  %a{:name => "post#{post.id}"}
   .discussions.twelve.columns
     .topic-view
       - if post.pending_review?
