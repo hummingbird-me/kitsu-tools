@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :trackable, :validatable, :omniauthable, :confirmable, :async
 
+  # Remember users by default.
+  def remember_me; true; end
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me,
     :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio,
