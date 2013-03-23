@@ -7,9 +7,10 @@
         .overlay
           .link-block.twelve.columns
             %h5.title #{anime.title}
-          .twelve.columns.add-watchlist
-            %i.icon-list-alt
-            %a{"data-reveal-id" => "watchlist_#{anime.slug}", :href => "#"} Add to Watchlist
+          - if !readonly
+            .twelve.columns.add-watchlist
+              %i.icon-list-alt
+              %a{"data-reveal-id" => "watchlist_#{anime.slug}", :href => "#"} Add to Watchlist
 
           / %p.summary #{truncate(anime.synopsis, length: 300, omission: '...')}
         / %figcaption= link_to anime.title, anime
@@ -99,12 +100,9 @@
 
         .twelve.columns.line-break
           %label Watchlist Status
-          %select
-            %option Currently Watching
-            %option Plan to Watch
-            %option On Hold
-            %option Completed
-            %option Dropped
+          %select{:name => "status"}
+            - Watchlist.valid_statuses.each do |status|
+              %option{:value => status, :selected => ("selected" if watchlist && watchlist.status == status)}= status
 
         .twelve.columns.line-break
           %label Episodes Watched
