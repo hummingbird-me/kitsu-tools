@@ -21,9 +21,9 @@
 
           %ul.inline-list
             %li.three.columns
-              %select{:multiple => "multiple", :class => "multiple-select", :name => "multiple-select"}
+              %select{:multiple => "multiple", :class => "multiple-select", :name => "genres[]"}
                 - @all_genres.each do |genre|
-                  %option{:value => "#{genre.name}"}
+                  %option{:value => "#{genre.name.downcase}", :selected => ("selected" if @genre_filter.include? genre)}
                     %i.icon-film
                     = genre.name
 
@@ -53,24 +53,6 @@
                   Viz
 
   .row.content-body
-    / Side Bar
-
-    / %section#sidebar
-    /   .three.mobile-twelve.columns
-    /     %ul.accordion
-    /       %li.active
-    /         .title
-    /           %h3 Personalize
-    /         .personalize-filter.content
-    /           %p{:class => ("active" if @filter == "all")}
-    /             = link_to 'All Anime', anime_index_path(:genres => params[:genres])
-    /           %p{:class => ("active" if @filter == "recommended")}
-    /             = link_to 'My Recommendations', filtered_listing_path(:recommended, :genres => params[:genres])
-    /           %p{:class => ("active" if @filter == "unseen")}
-    /             = link_to "Anime I Haven't Seen", filtered_listing_path(:unseen, :genres => params[:genres])
-    /           %p{:class => ("active" if @filter == "unfinished")}
-    /             = link_to "Anime I Haven't Finished", filtered_listing_path(:unfinished, :genres => params[:genres])
-
     /     %ul.accordion
     /       %li.active    
     /         .title
