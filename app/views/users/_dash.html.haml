@@ -1,42 +1,54 @@
+.user-banner
+  %figure
+    .overlay
+    .img-background
+
 .dashboard
   .row.content-body
-    .twelve.columns
-      .panel.profile-bar
-        .user-block.mobile-twelve
+    .profile-bar.twelve.mobile-four.columns
+      .six.mobile-four.columns.centered
+        .user-block
           %figure.user-avatar= image_tag(@user.avatar_url)
-          %figcaption.karma= number_with_delimiter @user.reputation_for(:karma).to_i
-          %figcaption.karma-title karma
-          
-        .user-information 
-          %h4.username= @user.name
-          %p.bio 
-            = @user.bio
-          .anime-life
-            %p Life Spent Watching Anime:
-            %p= format_minutes @user.life_spent_on_anime
+          .karma-circle
+            %figcaption.karma= number_with_delimiter @user.reputation_for(:karma).to_i
+            %figcaption.karma-title karma
 
-        .genre-graph
-          %span.title Most Watched Genres
-          %ul.graphs
-            - @user.top_genres.each do |genre, freq|
-              %li.chart
-                .percentage{"data-percent" => (freq * 100).to_i}
-                  %span #{(freq*100).to_i}%
-                .label= link_to genre.name, genre
 
-      .profile-bar-subnav
-        %dl.sub-nav
-          %dd{:class => ("active" if @active_tab == :profile)}
-            = link_to "Profile", user_path(@user)
-          %dd{:class => ("active" if @active_tab == :watchlist)}
-            = link_to "Watchlist", user_watchlist_path(@user)
-          %dd{:class => ("active" if @active_tab == :reviews)}
-            = link_to "Reviews", user_reviews_path(@user)
-          %dd{:class => ("active" if @active_tab == :forum_posts)}
-            = link_to "Forum Posts", user_forum_posts_path(@user)
-          - if user_signed_in? and @user == current_user
-            %dd{:class => ("active" if @active_tab == :account_settings)}
-              = link_to "Account Settings", edit_user_registration_path
+    .panel
+      .mobile-twelve
+        
+        
+        
+      .user-information 
+        %h4.username= @user.name
+        %p.bio 
+          = @user.bio
+        .anime-life
+          %p Life Spent Watching Anime:
+          %p= format_minutes @user.life_spent_on_anime
+
+      .genre-graph
+        %span.title Most Watched Genres
+        %ul.graphs
+          - @user.top_genres.each do |genre, freq|
+            %li.chart
+              .percentage{"data-percent" => (freq * 100).to_i}
+                %span #{(freq*100).to_i}%
+              .label= link_to genre.name, genre
+
+    .profile-bar-subnav
+      %dl.sub-nav
+        %dd{:class => ("active" if @active_tab == :profile)}
+          = link_to "Profile", user_path(@user)
+        %dd{:class => ("active" if @active_tab == :watchlist)}
+          = link_to "Watchlist", user_watchlist_path(@user)
+        %dd{:class => ("active" if @active_tab == :reviews)}
+          = link_to "Reviews", user_reviews_path(@user)
+        %dd{:class => ("active" if @active_tab == :forum_posts)}
+          = link_to "Forum Posts", user_forum_posts_path(@user)
+        - if user_signed_in? and @user == current_user
+          %dd{:class => ("active" if @active_tab == :account_settings)}
+            = link_to "Account Settings", edit_user_registration_path
 
 
 

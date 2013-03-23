@@ -3,6 +3,33 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
 
+.user-banner {
+  figure {
+    height: 350px;
+    margin-top: -15px;
+    overflow: hidden;
+    position: relative;
+
+    .overlay {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      text-align: center;
+      color: #fff;
+      @include opacity(0.80);
+      @include border-top-radius(3px);
+      @include background-image(linear-gradient(left top, #000, #000));
+    }
+    .img-background {
+      background: url("http://f.cl.ly/items/210V0x213m2S3T1Z2W0g/bg.jpg") no-repeat center center;
+      background-size: cover;
+      height: 350px;
+    }
+  }
+}
+
 .watchlist-subnav {
   .sub-nav {
     background: #f4f4f4;

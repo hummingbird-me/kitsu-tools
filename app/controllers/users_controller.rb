@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  def hide_cover_image
+    @hide_cover_image = true
+  end
+
+  before_filter :hide_cover_image
+
   def index
     authenticate_user!
 
