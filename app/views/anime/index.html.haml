@@ -2,80 +2,55 @@
   .filter-toolbar{:style => "background: white; position: relative; height: 50px; margin-bottom: 50px;"}
     .row
       .twelve.columns
-        %form.custom
+        %form
           %ul.inline-list
             %li.three.columns
-              .custom.dropdown 
-                %a.current{:href => "#", :style => "border-right: none;"}
+              %select{:class => "single-select", :name => "single-select"}
+                %option 
                   %i.icon-globe
                   All Anime
-                %a.selector{:href => "#"}
-                %ul
-                  %li 
-                    %i.icon-globe
-                    All Anime
-                  %li 
-                    %i.icon-heart
-                    Recommendations
-                  %li
-                    %i.icon-eye-close
-                    Haven't Seen
-                  %li
-                    %i.icon-tasks
-                    Haven't finished
+                %option
+                  %i.icon-heart
+                  Recommendations
+                %option
+                  %i.icon-eye-close
+                  Haven't Seen
+                %option
+                  %i.icon-tasks
+                  Haven't finished
 
           %ul.inline-list
             %li.three.columns
-              .custom.dropdown 
-                %a.current{:href => "#", :style => "border-right: none;"}
-                  %i.icon-film
-                  All Genres
-                %a.selector{:href => "#"}
-                %ul
-                  - @all_genres.each do |genre|
-                    %li
-                      %i.icon-film
-                      = genre.name
+              %select{:multiple => "multiple", :class => "multiple-select", :name => "multiple-select"}
+                - @all_genres.each do |genre|
+                  %option{:value => "#{genre.name}"}
+                    %i.icon-film
+                    = genre.name
 
           %ul.inline-list
             %li.three.columns
-              .custom.dropdown 
-                %a.current{:href => "#", :style => "border-right: none;"}
-                  %i.icon-star-empty
+              %select{:multiple => "multiple", :class => "multiple-nofilter", :name => "multiple-nofilter"}
+                %option
                   Series
-                %a.selector{:href => "#"}
-                %ul
-                  %li
-                    %i.icon-star-empty
-                    Series
-                  %li
-                    %i.icon-star
-                    OVA / SPECIAL
+                %option
+                  OVA / SPECIAL
 
 
           %ul.inline-list
             %li.three.columns
-              .custom.dropdown 
-                %a.current{:href => "#"}
-                  %i.icon-eye-open
+              %select{:multiple => "multiple", :class => "multiple-nofilter", :name => "multiple-nofilter"}
+                %option{:selected => "selected"}
                   Watch Anywhere
-                %a.selector{:href => "#"}
-                %ul
-                  %li
-                    %i.icon-eye-open
-                    Watch Anywhere
-                  %li
-                    %i.icon-eye-open
-                    Netflix
-                  %li
-                    %i.icon-eye-open
-                    Hulu
-                  %li
-                    %i.icon-eye-open
-                    Crunchyroll
-                  %li
-                    %i.icon-eye-open
-                    Funimation
+                %option{:disabled => "disabled"}
+                  Netflix
+                %option{:disabled => "disabled"}
+                  Hulu
+                %option{:disabled => "disabled"}
+                  Crunchyroll
+                %option{:disabled => "disabled"}
+                  Funimation
+                %option{:disabled => "disabled"}
+                  Viz
 
   .row.content-body
     / Side Bar
@@ -158,14 +133,26 @@
 
 
   :javascript
-    // Filter functionality.
-    // TODO make disableAllGenres and enableAllGenres faster.
-    function disableAllGenres() {
-      $("span.custom.checkbox.checked").click();
-    }
-    function enableAllGenres() {
-      disableAllGenres();
-      $("span.custom.checkbox").click();
-    }
-    $(".disable_all").click(disableAllGenres);
-    $(".enable_all").click(enableAllGenres);
+    $(".multiple-select").multiselect().multiselectfilter();
+
+  :javascript
+    $(".multiple-nofilter").multiselect();
+
+  :javascript
+    $(".single-select").multiselect({
+     multiple: false,
+     header: "Select an option",
+     noneSelectedText: "Select an Option",
+     selectedList: 1
+    });
+    // // Filter functionality.
+    // // TODO make disableAllGenres and enableAllGenres faster.
+    // function disableAllGenres() {
+    //   $("span.custom.checkbox.checked").click();
+    // }
+    // function enableAllGenres() {
+    //   disableAllGenres();
+    //   $("span.custom.checkbox").click();
+    // }
+    // $(".disable_all").click(disableAllGenres);
+    // $(".enable_all").click(enableAllGenres);
