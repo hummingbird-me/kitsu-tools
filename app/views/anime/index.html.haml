@@ -2,20 +2,20 @@
   .filter-toolbar{:style => "background: white; position: relative; height: 50px; margin-bottom: 50px;"}
     .row
       .twelve.columns
-        %form
+        %form.autosubmit
           %ul.inline-list
             %li.three.columns
-              %select{:class => "single-select", :name => "single-select"}
-                %option 
+              %select{:class => "single-select", :name => "filter"}
+                %option{:value => "all", :selected => ("selected" if @filter == "all")}
                   %i.icon-globe
                   All Anime
-                %option
+                %option{:value => "recommended", :selected => ("selected" if @filter == "recommended")}
                   %i.icon-heart
                   Recommendations
-                %option
+                %option{:value => "unseen", :selected => ("selected" if @filter == "unseen")}
                   %i.icon-eye-close
                   Haven't Seen
-                %option
+                %option{:value => "unfinished", :selected => ("selected" if @filter == "unfinished")}
                   %i.icon-tasks
                   Haven't finished
 
