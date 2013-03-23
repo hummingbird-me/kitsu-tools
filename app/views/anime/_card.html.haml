@@ -9,7 +9,7 @@
             %h5.title #{anime.title}
           .twelve.columns.add-watchlist
             %i.icon-list-alt
-            %a{"data-reveal-id" => "watchlist", :href => "#"} Add to Watchlist
+            %a{"data-reveal-id" => "watchlist_#{anime.slug}", :href => "#"} Add to Watchlist
 
           / %p.summary #{truncate(anime.synopsis, length: 300, omission: '...')}
         / %figcaption= link_to anime.title, anime
@@ -89,13 +89,13 @@
             - else
               %strong= link_to ":(", update_rating_path(anime, -2, width: width), remote: user_signed_in?
 
-#watchlist.reveal-modal{:class => "medium"}
+.reveal-modal{:class => "medium", :id => "watchlist_#{anime.slug}"}
   %form
     %fieldset
       %legend Update Your Watchlist
       .row
         .twelve.columns
-          %h3 Cowboy Bebop
+          %h3= anime.title
 
         .twelve.columns.line-break
           %label Watchlist Status
@@ -112,7 +112,7 @@
             .three.mobile-three.columns
               %input{:placeholder => "", :type => "text"}/
             .three.mobile-one.columns
-              %span.postfix Out of 25
+              %span.postfix Out of #{anime.episode_count}
 
         .twelve.columns.line-break
           %label Rating (optional)
