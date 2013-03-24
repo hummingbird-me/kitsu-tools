@@ -27,79 +27,37 @@
                 .twelve.columns
                   .star-rating
                     - (-2).upto(2) do |i|
-                      = f.radio_button "rating", i
+                      = f.radio_button "rating", i, class: "starr"
                       = f.label :"rating_#{i}" do
                         - if watchlist.rating and watchlist.rating >= i
                           %i.icon-star
                         - else
                           %i.icon-star-empty
+                :javascript
+                  $("#watchlist_#{watchlist.anime.slug} form .starr").change(function () {
+                    var selected = parseInt($("#watchlist_#{watchlist.anime.slug} form .starr:checked")[0].value);
+                    $("#watchlist_#{watchlist.anime.slug} form .starr").each(function (i, x) {
+                      if (parseInt(x.value) <= selected) {
+                        $("#watchlist_#{watchlist.anime.slug} form label[for=watchlist_rating_" + x.value + "]").html("<i class='icon-star'></i>");
+                      }
+                      else {
+                        $("#watchlist_#{watchlist.anime.slug} form label[for=watchlist_rating_" + x.value + "]").html("<i class='icon-star-empty'></i>");
+                      }
+                    });
+                  });
 
               - else
                 .four.columns.like
-                  %input#radio4{:name => "radio2", :type => "radio"}
-                  %label{:for => "radio4"} :)
+                  = f.radio_button "rating", 2
+                  = f.label :"rating_2"
 
                 .four.columns.meh
-                  %input#radio5{:checked => "", :name => "radio2", :type => "radio"}
-                  %label{:for => "radio5"} :|
+                  = f.radio_button "rating", 0
+                  = f.label :"rating_0"
 
                 .four.columns.dislike
-                  %input#radio6{:name => "radio2", :type => "radio"}
-                  %label{:for => "radio6"} :)
-
-
-
-
-
-              /.vote-blocks
-              /  - if user_signed_in? and current_user.star_rating
-              /    .star-rating
-              /      - (-2).upto(2) do |i|
-              /        - if readonly
-              /          - if watchlist and watchlist.rating and watchlist.rating >= i
-              /            %i.icon-star
-              /          - else
-              /            %i.icon-star-empty
-              /        - else
-              /          = link_to update_rating_path(anime, i, width: width), remote: user_signed_in? do
-              /            - if watchlist and watchlist.rating and watchlist.rating >= i
-              /              %i.icon-star
-              /            - else
-              /              %i.icon-star-empty
-              /  - else
-              /    - if readonly
-              /      %span.four.columns.like
-              /        - if watchlist and watchlist.positive?
-              /          %strong.active [:)]
-              /        - else
-              /          %strong :)
-              /      %span.four.columns.meh
-              /        - if watchlist and watchlist.positive?
-              /          %strong.active [:|]
-              /        - else
-              /          %strong :|
-              /      %span.four.columns.dislike
-              /        - if watchlist and watchlist.negative?
-              /          %strong.active [:(]
-              /        - else
-              /          %strong :)
-              /
-              /    - else
-              /      %span.four.columns.like
-              /        - if watchlist and watchlist.positive?
-              /          %strong.active= link_to "[:)]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
-              /        - else
-              /          %strong= link_to ":)", update_rating_path(anime, 2, width: width), remote: user_signed_in?
-              /      %span.four.columns.meh
-              /        - if watchlist and watchlist.positive?
-              /          %strong.active= link_to "[:|]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
-              /        - else
-              /          %strong= link_to ":|", update_rating_path(anime, 2, width: width), remote: user_signed_in?
-              /      %span.four.columns.dislike
-              /        - if watchlist and watchlist.negative?
-              /          %strong.active= link_to "[:(]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
-              /        - else
-              /          %strong= link_to ":(", update_rating_path(anime, -2, width: width), remote: user_signed_in?
+                  = f.radio_button "rating", -2
+                  = f.label :"rating_-2"
 
             .twelve.columns{:style => "margin-bottom: 0px;"}
               %input.button.padded{:type => "submit", :value => "Update Watchlist"}
