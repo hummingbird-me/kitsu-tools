@@ -30,34 +30,83 @@
   }
 }
 
-.watchlist-subnav {
+.user-watchlist {
+
   .sub-nav {
     background: #f4f4f4;
-    border-bottom: 1px solid #e6e6e6;
     border-left: 1px solid #e6e6e6;
-    border-right: 1px solid #e6e6e6;
     margin-left: 0;
-    margin-top: 0px;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    display: inline-block;
 
-    dd {
+    li {
       line-height: 45px;
-      margin-bottom: 0;
+      margin: 0;
       border-right: 1px solid #e6e6e6;
-      width: 16%;
       text-align: center;
+
+      a {
+        padding-left: 20px;
+        padding-right: 20px;
+        border-bottom: 1px solid #e6e6e6;
+      }
 
       &.active {
         a {
           font-weight: normal;
-          background: none;
+          background: #eee;
           color: #000;
+          border-bottom: 1px solid #eee;
         }
       }
     }
   }
-}
 
-.user-watchlist {
+  .view {
+    margin-left: 0;
+    margin-top: 30px;
+    margin-bottom: 0px;
+    display: inline-block;
+    float: right;
+
+    li {
+      line-height: 45px;
+      margin: 0;
+      text-align: center;
+      border-right: 1px solid #e6e6e6;
+
+      &:last-child {
+        border-right: none;
+      }
+
+      a {
+        color: #000;
+        opacity: 0.4;
+        padding-left: 10px;
+        padding-right: 10px;
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+
+      &.active {
+        a {
+          font-weight: normal;
+          background: #eee;
+          color: #000;
+          opacity: 1;
+          cursor: default;
+        }
+      }
+    }
+  }
+
+  .table-head {
+    height: 30px; 
+    padding-top: 10px;
+  }
   h3 {
     border-bottom: 1px solid #dddddd;
     padding: 0px 0px 10px 10px;

@@ -2,6 +2,7 @@
 @import "compass/utilities";
 
 .dashboard {
+  margin-top: 23px;
   .profile-bar {
     position: absolute;
     top: 0px;
@@ -10,29 +11,58 @@
     @include clearfix();
 
     .user-block {
-      margin-top: 40px;
-
+      margin-top: 25px;
+      color: #fff;
       .user-avatar {
         display: inline-block;
+        position: relative;
+
         img {
           width: 100px;
           height: 100px;
-          border: 4px solid rgba(255,255,255,0.3);
+          border: 4px solid rgba(255,255,255,0.2);
           @include border-radius(100px);
         } 
+
+        .karma-circle {
+          position: absolute;
+          top: -10px;
+          right: -60px;
+          padding: 5px;
+          height: 60px;
+          width: 60px;
+          border: 1px solid rgba(255,255,255,0.2);
+          @include border-radius(100px);
+
+
+          .karma {
+            text-align: center;
+            color: #fff;
+            margin-top: 10px;
+          }
+
+          .karma-title {
+            text-align: center;
+            color: #fff;
+          }
+        }
       }
 
-      .karma {
-        text-align: center;
-        color: #bcbcbc;
-        font-size: 25px;
-        margin-top: 5px;
+      .username {
+        padding-bottom: 10px;
+        padding-top: 5px;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        border-top: 1px solid rgba(255,255,255,0.2);
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        color: #fff;
       }
 
-      .karma-title {
-        text-align: center;
-        font-size: 15px;
-        color: #bcbcbc;
+      hr {
+        width: 50%;
+        margin: 0 auto;
+        opacity: 0.2;
+        margin-bottom: 15px;
       }
     }
 
@@ -57,10 +87,7 @@
         margin-top: 10px;
       }
 
-      .username {
-        margin-bottom: 5px;
-        margin-top: 0px;
-      }
+
     }
   }
 
@@ -115,32 +142,32 @@
       border-right: none;
       height: 100%;
     }
+    .wrapper {
+      text-align: center;
+    }
 
     .sub-nav {
+      display: inline-block;
       margin: 0;
       padding: 0;
       height: 100%;
 
-      dd {
-        width: 15%;
+      li {
+        width: 200px;
         height: 100%;
         text-align: center;
-        border-right: 1px solid #dadada;
+        border-right: solid 1px #e6e6e6;
         margin: 0;
         padding: 0;
-        @media (max-width: 768px) {
-          width: 25%;
-        }
-        @media (max-width: 480px) {
-          width: 100%;
-          height: 50px;
-          border-bottom: 1px solid #dadada;
+
+        &:first-child {
+          border-left: solid 1px #e6e6e6;
         }
 
-        &.active, &:hover {
-          border-bottom: 4px solid #fd7532;
+        &.active {
+          border-bottom: 1px solid #eee;
+          background: #eee;
           a {
-            padding-top: 11px;
             font-weight: normal;
             background: none;
           }
@@ -152,10 +179,7 @@
           width: 100%;
           display: block;
           padding-top: 15px;
-
-          &:hover {
-            padding-top: 11px;
-          }
+          padding-bottom: 10px;
         }
       }
     }

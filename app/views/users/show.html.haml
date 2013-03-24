@@ -15,9 +15,13 @@
         .six.columns
           .title.twelve-columns
             %h3 Favorite Anime
-          .favorite-anime.twelve.columns
-            .twelve.columns
-              %img{:src => "http://cl.ly/image/0l102w3q3Q2Y/favorites.jpg"}
+          .genre-graph
+            %ul.inline-list.graphs
+              - @user.top_genres.each do |genre, freq|
+                %li.chart
+                  .percentage{"data-percent" => (freq * 100).to_i}
+                    %span #{(freq*100).to_i}%
+                  = link_to genre.name, genre
     .row
       .twelve.columns
         .title.twelve-columns
