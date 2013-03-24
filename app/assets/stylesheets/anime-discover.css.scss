@@ -5,6 +5,68 @@
 @import "compass/utilities";
 
 .anime-discover {
+  margin-top: 100px;
+  .reveal-modal {
+    padding: 15px;
+    fieldset {
+      margin: 0px;
+    }
+    label {
+      margin-bottom: 10px;
+    }
+    .twelve {
+      margin-bottom: 20px;
+      &.line-break {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 20px;
+      }
+    }
+    .three {
+      input {
+        margin: 0px;
+      }
+    }
+  }
+  .filter-toolbar {
+    .row {
+      overflow: visible;
+      .twelve.columns {
+        padding: 0px;
+        .inline-list {
+          overflow: visible;
+          margin: 0px;
+          .three.columns {
+            padding: 0px;
+            margin: 0px;
+            .dropdown {
+              height: 50px;
+              margin: 0px;
+              .current {
+                height: 50px;
+                font-size: 20px;
+                line-height: 50px;
+                text-align: center;
+                color: #999;
+                padding: 0px;
+                border-top: none;
+                border-bottom: none;
+              }
+              .selector {
+                border: none;
+                height: 50px;
+              }
+              ul {
+                top: 50px;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
   .review-block {
     background: -webkit-linear-gradient(top,#fff 0,#eee 75%) !important;
     height: 190px;
@@ -158,19 +220,91 @@
     }
   }
   .panel {
-  	position: relative;
-  	background: white;
+    position: relative;
+    background: white;
     overflow: hidden;
-  	padding: 0px;
+    padding: 0px;
     display: block;
     background: #fff;
     color: #111;
     font-size: 13px;
     border: none;
-  	@include border-radius(3px);
+    @include border-radius(3px);
     @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px);
     &.cards {
       overflow: visible;
+    }
+
+    .add-watchlist {
+      z-index: 999;
+      position: absolute;
+      bottom: 20px;
+      a {
+        color: #fff;
+        padding: 15px 0px;
+      }
+      &:hover {
+        a {
+          color: #fd7532;
+        }
+      }
+    }
+    .community-rating {
+      position: absolute;
+      z-index: 9;
+      width: 100%;
+      background: white;
+      padding-top: 11px;
+      padding-bottom: 0px;
+      @include border-bottom-radius(3px);
+      .positive {
+        color: #2aa730;
+        text-align: center;
+        font-size: 30px;
+        i {
+          height: 33px;
+          width: 33px;
+          display: inline-block;
+
+          background-image: url(asset-path('icons/positive-votes.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/positive-votes@2x.png', image));
+            background-size: 33px 33px;
+          }
+        }
+        h5 {
+          position: relative;
+          bottom: 5px;
+          display: inline-block;
+          color: #2aa730;
+          text-align: center;
+          font-size: 30px;
+        }
+      }
+      .negative {
+        color: #c63838;
+        text-align: center;
+        font-size: 30px;
+        i {
+          height: 33px;
+          width: 33px;
+          display: inline-block;
+
+          background-image: url(asset-path('icons/negative-votes.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/negative-votes@2x.png', image));
+            background-size: 33px 33px;
+          }
+        }
+        h5 {
+          position: relative;
+          bottom: 5px;
+          color: #c63838;
+          display: inline-block;
+          text-align: center;
+          font-size: 30px;
+        }
+      }
     }
 
     figure {
@@ -186,12 +320,15 @@
         text-align: center;
         color: #fff;
         cursor: pointer;
-        z-index: 9999;
+        z-index: 9;
         @include opacity(0.90);
         @include border-top-radius(3px);
         @include background-image(linear-gradient(left top, #393939, #000));
         display: none;
         
+        .link-block {
+          height: 100%;
+        }
 
         .title {
           color: white;
@@ -222,33 +359,39 @@
 
       &:hover {
 
-        .overlay {
-          display: block;
-        }
       }
     }
 
-  	figcaption {
-  		display: block;
+    &:hover {
+      .community-rating {
+        display: none;
+      }
+      .overlay {
+        display: block;
+      }
+    }
+
+    figcaption {
+      display: block;
       position: absolute;
       bottom: 0;
       padding: 10px;
       width: 100%;
       margin: 0 auto;
       background: white;
-  	}
+    }
 
-  	.progress {
-  		width: 100%;
-  		border: none;
-  		height: 3px;
-  		margin-bottom: 0px;
-  		padding: 0px;
+    .progress {
+      width: 100%;
+      border: none;
+      height: 3px;
+      margin-bottom: 0px;
+      padding: 0px;
 
-  		.meter {
-  			background: #fd7532;
-  		}
-  	}
+      .meter {
+        background: #fd7532;
+      }
+    }
 
     // Dropdown
     .drop {
@@ -322,32 +465,32 @@
       }
     }
 
-
-
-  	.watchlist {
-  		width: 100%;
-  		text-align: center;
-  		text-transform: uppercase;
-  		font-size: 10px;
-  		border-top: 1px solid #eee;
-  		border-bottom: 1px solid #eee;
-  	}
-    .vote-blocks {
+    .watchlist {
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 10px;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+  }
+  .vote-blocks {
       .star-rating {
         text-align: center;
-        font-size: 30px;
-        padding: 20px 0;
+        font-size: 23px;
+        padding: 24px 0;
       }
+
       .like {
-        width: 50%;
         float: left;
         border-right: 1px solid #f2f2f2;
+        padding: 0px;
         padding-top: 20px;
         padding-bottom: 20px;
         strong {
           text-indent: -9999px;
           display: block;
-          width: 34px;
+          width: 33px;
           height: 33px;
           margin: 0 auto;
           cursor: pointer;
@@ -355,7 +498,7 @@
           background-image: url(asset-path('icons/vote-sprite.png', image));
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-image: url(asset-path('icons/vote-sprite@2x.png', image));
-            background-size: 70px 99px;
+            background-size: 99px 99px;
           }
           a {
             display: block;
@@ -364,20 +507,20 @@
           &:hover {
             background-position: left center;
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 70px 99px;
+              background-size: 99px 99px;
             }
           }
           &:active {
             background-position: left bottom;
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 70px 99px;
+              background-size: 99px 99px;
             }
           }
         }
         .active {
           background-position: left bottom;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-size: 70px 99px;
+            background-size: 99px 99px;
           }
           &:hover {
             background-position: left bottom;
@@ -385,24 +528,71 @@
         }
       }
 
-      .dislike {
-        width: 50%;
-        display: block;
+      .meh {
         float: left;
-        cursor: pointer;
+        border-right: 1px solid #f2f2f2;
+        padding: 0px;
         padding-top: 20px;
         padding-bottom: 20px;
         strong {
           text-indent: -9999px;
           display: block;
-          width: 34px;
+          width: 33px;
+          height: 33px;
+          margin: 0 auto;
+          cursor: pointer;
+          background-position: center top;
+          background-image: url(asset-path('icons/vote-sprite.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+            background-size: 99px 99px;
+          }
+          a {
+            display: block;
+            height: 100%;
+          }
+          &:hover {
+            background-position: center center;
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-size: 99px 99px;
+            }
+          }
+          &:active {
+            background-position: center bottom;
+            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+              background-size: 99px 99px;
+            }
+          }
+        }
+        .active {
+          background-position: center bottom;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+          &:hover {
+            background-position: center bottom;
+          }
+        }
+      }
+
+      .dislike {
+        display: block;
+        float: left;
+        cursor: pointer;
+        padding: 0px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        strong {
+          text-indent: -9999px;
+          display: block;
+          width: 33px;
           height: 33px;
           margin: 0 auto;
           background-position: right top;
           background-image: url(asset-path('icons/vote-sprite.png', image));
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-image: url(asset-path('icons/vote-sprite@2x.png', image));
-            background-size: 70px 99px;
+            background-size: 99px 99px;
           }
           a {
             display: block;
@@ -411,19 +601,19 @@
           &:hover {
             background-position: right center;
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 70px 99px;
+              background-size: 99px 99px;
             }
           }
           &:active {
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 70px 99px;
+              background-size: 99px 99px;
             }
           }
         }
         .active {
           background-position: right bottom;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-size: 70px 99px;
+            background-size: 99px 99px;
           }
           &:hover {
             background-position: right bottom;
@@ -431,5 +621,4 @@
         }
       }
     }
-  }
 }
