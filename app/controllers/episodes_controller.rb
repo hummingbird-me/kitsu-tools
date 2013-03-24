@@ -67,7 +67,7 @@ class EpisodesController < ApplicationController
     if episode_count
       @anime = Anime.find(params[:anime_id])
       @watchlist = get_watchlist(@anime, current_user)
-      @anime.episodes.order(:number).limit(episode_count).each do |episode|
+      @anime.episodes.order(:season_number, :number).limit(episode_count).each do |episode|
         @watchlist.episodes << episode unless @watchlist.episodes.exists?(id: episode.id)
         @watchlist.last_watched = Time.now
         current_user.update_life_spent_on_anime(episode.length)
