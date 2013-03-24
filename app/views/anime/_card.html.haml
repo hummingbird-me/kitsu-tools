@@ -10,7 +10,10 @@
           - if !readonly
             .twelve.columns.add-watchlist
               %i.icon-list-alt
-              %a{"data-reveal-id" => "watchlist_#{anime.slug}", :href => "#"} Add to Watchlist
+              - if user_signed_in?
+                %a{"data-reveal-id" => "watchlist_#{anime.slug}", :href => "#"} Add to Watchlist
+              - else
+                = link_to "Add to Watchlist", new_user_session_path
 
           / %p.summary #{truncate(anime.synopsis, length: 300, omission: '...')}
         / %figcaption= link_to anime.title, anime
