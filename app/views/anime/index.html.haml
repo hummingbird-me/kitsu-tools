@@ -112,32 +112,16 @@
       .row.pagination-centered
         = paginate(@anime)
 
-- if user_signed_in?
-  = render partial: "watchlists/form_modal", collection: @collection.map {|x| x[1] || Watchlist.new(user: current_user, anime: x[0]) }, as: :watchlist
-
-
-  
 :javascript
   $(".multiple-select").multiselect().multiselectfilter();
-
-:javascript
   $(".multiple-nofilter").multiselect();
-
-:javascript
   $(".single-select").multiselect({
-   multiple: false,
-   header: "Select an option",
-   noneSelectedText: "Select an Option",
-   selectedList: 1
+    multiple: false,
+    header: "Select an option",
+    noneSelectedText: "Select an Option",
+    selectedList: 1
+  });
 
-    // // Filter functionality.
-    // // TODO make disableAllGenres and enableAllGenres faster.
-    // function disableAllGenres() {
-    //   $("span.custom.checkbox.checked").click();
-    // }
-    // function enableAllGenres() {
-    //   disableAllGenres();
-    //   $("span.custom.checkbox").click();
-    // }
-    // $(".disable_all").click(disableAllGenres);
-    // $(".enable_all").click(enableAllGenres);
+- if user_signed_in?
+  = render partial: "watchlists/form_modal", collection: @collection.map {|x| x[1] || Watchlist.new(user: current_user, anime: x[0]) }, as: :watchlist
+  
