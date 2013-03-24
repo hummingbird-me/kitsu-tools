@@ -86,7 +86,11 @@
         = paginate(@anime)
 
 :javascript
-  $(".multiple-select").multiselect().multiselectfilter();
+  $(".multiple-select").multiselect({
+    close: function() {
+      $("form.autosubmit").submit();
+    }
+  }).multiselectfilter();
   $(".multiple-nofilter").multiselect();
   $(".single-select").multiselect({
     multiple: false,
