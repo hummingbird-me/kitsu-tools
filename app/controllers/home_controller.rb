@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   end
 
   before_filter :hide_cover_image
-  caches_action :index, layout: false, :if => lambda { not user_signed_in? }
+  #caches_action :index, layout: false, :if => lambda { not user_signed_in? }
 
   def index
     @latest_reviews = Review.order('created_at DESC').limit(2)
