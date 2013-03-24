@@ -5,17 +5,17 @@
         %form.autosubmit
           %ul.inline-list
             %li.three.columns
-              %select{:class => "single-select", :name => "filter"}
-                %option{:value => "all", :selected => ("selected" if @filter == "all")}
+              %select{:class => "single-select", :name => "single-select"}
+                %option 
                   %i.icon-globe
                   All Anime
-                %option{:value => "recommended", :selected => ("selected" if @filter == "recommended")}
+                %option
                   %i.icon-heart
                   Recommendations
-                %option{:value => "unseen", :selected => ("selected" if @filter == "unseen")}
+                %option
                   %i.icon-eye-close
                   Haven't Seen
-                %option{:value => "unfinished", :selected => ("selected" if @filter == "unfinished")}
+                %option
                   %i.icon-tasks
                   Haven't finished
 
@@ -116,8 +116,19 @@
   = render partial: "watchlist/form_modal", collection: @collection.map {|x| x[1] || Watchlist.new(user: current_user, anime: x[0]) }, as: :watchlist
 
 
+  
   :javascript
-    $(".multiple-select").chosen();
+    $(".multiple-select").multiselect().multiselectfilter();
+
+  :javascript
+    $(".multiple-nofilter").multiselect();
+
+  :javascript
+    $(".single-select").multiselect({
+     multiple: false,
+     header: "Select an option",
+     noneSelectedText: "Select an Option",
+     selectedList: 1
 
     // // Filter functionality.
     // // TODO make disableAllGenres and enableAllGenres faster.
