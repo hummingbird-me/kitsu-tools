@@ -4,8 +4,18 @@ class WatchlistsController < ApplicationController
   def update
     @anime = Anime.find(params["watchlist"]["anime_id"])
     @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
+
+    # Update status.
     @watchlist.status = params["watchlist"]["status"]
-    raise ""
+    
+    # Update rating.
+    @watchlist.rating = params["watchlist"]["rating"]
+    @watchlist.rating = [[@watchlist.rating, -2].max, 2].min
+    
+    # Update episodes watched.
+    # TODO
+    
+
     @watchlist.save
     redirect_to :back
   end
