@@ -1,6 +1,15 @@
 class WatchlistsController < ApplicationController
   before_filter :authenticate_user!
 
+  def update
+    @anime = Anime.find(params["watchlist"]["anime_id"])
+    @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
+    @watchlist.status = params["watchlist"]["status"]
+    @watchlist.save
+    redirect_to :back
+  end
+  def new; update; end
+
   def add_to_watchlist
     @anime = Anime.find(params[:anime_id])
     @watch = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
