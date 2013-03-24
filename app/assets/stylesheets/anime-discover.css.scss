@@ -4,29 +4,180 @@
 @import "compass/css3";
 @import "compass/utilities";
 
-.anime-discover {
-  margin-top: 100px;
-  .reveal-modal {
-    padding: 15px;
-    fieldset {
+.reveal-modal {
+  padding: 15px;
+  fieldset {
+    margin: 0px;
+  }
+  label {
+    margin-bottom: 10px;
+  }
+  .twelve {
+    
+    &.line-break {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 20px !important;
+    }
+  }
+  .three {
+    float: left;
+    input {
       margin: 0px;
     }
-    label {
-      margin-bottom: 10px;
+  }
+  .modal-rating {
+    input[type="radio"] {
+      margin-left: -99999px;
+      position: absolute;
     }
-    .twelve {
-      margin-bottom: 20px;
-      &.line-break {
-        border-bottom: 1px solid #eee;
-        padding-bottom: 20px;
+    .like {
+      float: left;
+      border-right: 1px solid #f2f2f2;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      label {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        cursor: pointer;
+        background-position: left top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
+          display: block;
+          height: 100%;
+        }
+        &:hover {
+          background-position: left center;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+        &:active {
+          background-position: left bottom;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+      }
+
+      input:checked ~ label {
+        background-position: left bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: left bottom;
+        }
       }
     }
-    .three {
-      input {
-        margin: 0px;
+
+    .meh {
+      float: left;
+      border-right: 1px solid #f2f2f2;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      label {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        cursor: pointer;
+        background-position: center top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
+          display: block;
+          height: 100%;
+        }
+        &:hover {
+          background-position: center center;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+        &:active {
+          background-position: center bottom;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+      }
+      input:checked ~ label {
+        background-position: center bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: center bottom;
+        }
+      }
+    }
+
+    .dislike {
+      display: block;
+      float: left;
+      cursor: pointer;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      label {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        background-position: right top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
+          display: block;
+          height: 100%;
+        }
+        &:hover {
+          background-position: right center;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+        &:active {
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+      }
+
+      input:checked ~ label {
+        background-position: right bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: right bottom;
+        }
       }
     }
   }
+}
+
+.anime-discover {
+  margin-top: 100px;
+  
   .filter-toolbar {
     .row {
       overflow: visible;
@@ -475,150 +626,150 @@
   	}
   }
   .vote-blocks {
-      .star-rating {
-        text-align: center;
-        font-size: 23px;
-        padding: 24px 0;
-      }
+    .star-rating {
+      text-align: center;
+      font-size: 23px;
+      padding: 24px 0;
+    }
 
-      .like {
-        float: left;
-        border-right: 1px solid #f2f2f2;
-        padding: 0px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        strong {
-          text-indent: -9999px;
+    .like {
+      float: left;
+      border-right: 1px solid #f2f2f2;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      strong {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        cursor: pointer;
+        background-position: left top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
           display: block;
-          width: 33px;
-          height: 33px;
-          margin: 0 auto;
-          cursor: pointer;
-          background-position: left top;
-          background-image: url(asset-path('icons/vote-sprite.png', image));
+          height: 100%;
+        }
+        &:hover {
+          background-position: left center;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
             background-size: 99px 99px;
           }
-          a {
-            display: block;
-            height: 100%;
-          }
-          &:hover {
-            background-position: left center;
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 99px 99px;
-            }
-          }
-          &:active {
-            background-position: left bottom;
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 99px 99px;
-            }
-          }
         }
-        .active {
+        &:active {
           background-position: left bottom;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-size: 99px 99px;
           }
-          &:hover {
-            background-position: left bottom;
-          }
         }
       }
+      .active {
+        background-position: left bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: left bottom;
+        }
+      }
+    }
 
-      .meh {
-        float: left;
-        border-right: 1px solid #f2f2f2;
-        padding: 0px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        strong {
-          text-indent: -9999px;
+    .meh {
+      float: left;
+      border-right: 1px solid #f2f2f2;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      strong {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        cursor: pointer;
+        background-position: center top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
           display: block;
-          width: 33px;
-          height: 33px;
-          margin: 0 auto;
-          cursor: pointer;
-          background-position: center top;
-          background-image: url(asset-path('icons/vote-sprite.png', image));
+          height: 100%;
+        }
+        &:hover {
+          background-position: center center;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
             background-size: 99px 99px;
           }
-          a {
-            display: block;
-            height: 100%;
-          }
-          &:hover {
-            background-position: center center;
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 99px 99px;
-            }
-          }
-          &:active {
-            background-position: center bottom;
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 99px 99px;
-            }
-          }
         }
-        .active {
+        &:active {
           background-position: center bottom;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-size: 99px 99px;
           }
-          &:hover {
-            background-position: center bottom;
-          }
         }
       }
-
-      .dislike {
-        display: block;
-        float: left;
-        cursor: pointer;
-        padding: 0px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        strong {
-          text-indent: -9999px;
-          display: block;
-          width: 33px;
-          height: 33px;
-          margin: 0 auto;
-          background-position: right top;
-          background-image: url(asset-path('icons/vote-sprite.png', image));
-          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
-            background-size: 99px 99px;
-          }
-          a {
-            display: block;
-            height: 100%;
-          }
-          &:hover {
-            background-position: right center;
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 99px 99px;
-            }
-          }
-          &:active {
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 99px 99px;
-            }
-          }
+      .active {
+        background-position: center bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
         }
-        .active {
-          background-position: right bottom;
-          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-size: 99px 99px;
-          }
-          &:hover {
-            background-position: right bottom;
-          }
+        &:hover {
+          background-position: center bottom;
         }
       }
     }
+
+    .dislike {
+      display: block;
+      float: left;
+      cursor: pointer;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      strong {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        background-position: right top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
+          display: block;
+          height: 100%;
+        }
+        &:hover {
+          background-position: right center;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+        &:active {
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+      }
+      .active {
+        background-position: right bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: right bottom;
+        }
+      }
+    }
+  }
 }
