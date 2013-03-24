@@ -105,18 +105,21 @@
       }
 
       .summary {
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
 
       .thumbnail {
         padding: 0px;
       }
-
-      .rating-diamond {
-        height: 115px;
-        width: 93px;
-        float: right;
-        margin-top: 30px;
+      .diamond-wrapper {
+        border-left: 1px solid #e6e6e6;
+        padding-left: 120px;
+        .rating-diamond {
+          height: 115px;
+          width: 93px;
+          float: right;
+          margin-top: 0px;
+        }
       }
     }
   }
