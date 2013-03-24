@@ -106,7 +106,17 @@
   .table-head {
     height: 30px; 
     padding-top: 10px;
+    text-align: center;
   }
+  .score, .type, .progress, .review, .update {
+    text-align: center;
+  }
+  .score {
+    i {
+      margin-right: 5px;
+    }
+  }
+
   h3 {
     border-bottom: 1px solid #dddddd;
     padding: 0px 0px 10px 10px;
