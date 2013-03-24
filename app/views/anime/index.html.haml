@@ -112,6 +112,8 @@
       .row.pagination-centered
         = paginate(@anime)
 
+- if user_signed_in?
+  = render partial: "watchlist/form_modal", collection: @collection.map {|x| x[1] || Watchlist.new(user: current_user, anime: x[0]) }, as: :watchlist
 
 
   :javascript

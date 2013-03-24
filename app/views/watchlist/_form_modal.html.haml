@@ -1,0 +1,79 @@
+.reveal-modal{:class => "medium", :id => "watchlist_#{watchlist.anime.slug}"}
+  .row
+    .twelve.columns
+      %form
+        %fieldset
+          %legend Update Your Watchlist
+          .row
+            .twelve.columns
+              %h3= watchlist.anime.title
+
+            .twelve.columns.line-break
+              %label Watchlist Status
+              %select{:name => "status"}
+                - Watchlist.valid_statuses.each do |status|
+                  %option{:value => status, :selected => ("selected" if watchlist && watchlist.status == status)}= status
+
+            .twelve.columns.line-break
+              %label Episodes Watched
+              .row.collapse
+                .three.mobile-three.columns
+                  %input{:placeholder => "", :type => "text"}/
+                .three.mobile-one.columns
+                  %span.postfix Out of #{watchlist.anime.episode_count}
+
+            .twelve.columns.line-break
+              %label Rating (optional)
+              /.vote-blocks
+              /  - if user_signed_in? and current_user.star_rating
+              /    .star-rating
+              /      - (-2).upto(2) do |i|
+              /        - if readonly
+              /          - if watchlist and watchlist.rating and watchlist.rating >= i
+              /            %i.icon-star
+              /          - else
+              /            %i.icon-star-empty
+              /        - else
+              /          = link_to update_rating_path(anime, i, width: width), remote: user_signed_in? do
+              /            - if watchlist and watchlist.rating and watchlist.rating >= i
+              /              %i.icon-star
+              /            - else
+              /              %i.icon-star-empty
+              /  - else
+              /    - if readonly
+              /      %span.four.columns.like
+              /        - if watchlist and watchlist.positive?
+              /          %strong.active [:)]
+              /        - else
+              /          %strong :)
+              /      %span.four.columns.meh
+              /        - if watchlist and watchlist.positive?
+              /          %strong.active [:|]
+              /        - else
+              /          %strong :|
+              /      %span.four.columns.dislike
+              /        - if watchlist and watchlist.negative?
+              /          %strong.active [:(]
+              /        - else
+              /          %strong :)
+              /
+              /    - else
+              /      %span.four.columns.like
+              /        - if watchlist and watchlist.positive?
+              /          %strong.active= link_to "[:)]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
+              /        - else
+              /          %strong= link_to ":)", update_rating_path(anime, 2, width: width), remote: user_signed_in?
+              /      %span.four.columns.meh
+              /        - if watchlist and watchlist.positive?
+              /          %strong.active= link_to "[:|]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
+              /        - else
+              /          %strong= link_to ":|", update_rating_path(anime, 2, width: width), remote: user_signed_in?
+              /      %span.four.columns.dislike
+              /        - if watchlist and watchlist.negative?
+              /          %strong.active= link_to "[:(]", update_rating_path(anime, 0, width: width), remote: user_signed_in?
+              /        - else
+              /          %strong= link_to ":(", update_rating_path(anime, -2, width: width), remote: user_signed_in?
+
+            .twelve.columns{:style => "margin-bottom: 0px;"}
+              %input.button.padded{:type => "submit", :value => "Update Watchlist"}
+
