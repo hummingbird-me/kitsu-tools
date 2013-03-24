@@ -1,4 +1,4 @@
-class WatchlistController < ApplicationController
+class WatchlistsController < ApplicationController
   before_filter :authenticate_user!
 
   def add_to_watchlist
