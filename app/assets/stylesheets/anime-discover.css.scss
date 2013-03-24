@@ -31,6 +31,30 @@
       margin-left: -99999px;
       position: absolute;
     }
+    .star-rating {
+      padding: 0px;
+      padding-top: 10px;
+      padding-bottom: 0px;
+      text-align: center;
+
+      label {
+        display: inline-block;
+        margin: 0 auto;
+        cursor: pointer;
+        font-size: 30px;
+        margin-right: 5px;
+
+        a {
+          display: block;
+          height: 100%;
+        }
+
+        &:hover {
+          color: #fc6419;
+        }
+      }
+    }
+
     .like {
       float: left;
       border-right: 1px solid #f2f2f2;

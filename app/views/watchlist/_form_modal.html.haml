@@ -24,17 +24,41 @@
 
             .twelve.columns.modal-rating.line-break
               %label Rating (optional)
-              .four.columns.like
-                %input#radio4{:name => "radio2", :type => "radio"}
-                %label{:for => "radio4"} :)
+              - if user_signed_in? and current_user.star_rating
+                .twelve.columns
+                  .star-rating
+                    %input#radio4{:name => "radio2", :type => "radio"}
+                    %label{:for => "radio4"} <i class="icon-star-empty"></i>
 
-              .four.columns.meh
-                %input#radio5{:checked => "", :name => "radio2", :type => "radio"}
-                %label{:for => "radio5"} :|
 
-              .four.columns.dislike
-                %input#radio6{:name => "radio2", :type => "radio"}
-                %label{:for => "radio6"} :)
+                    %input#radio5{:checked => "", :name => "radio2", :type => "radio"}
+                    %label{:for => "radio5"} <i class="icon-star-empty"></i>
+
+
+                    %input#radio6{:name => "radio2", :type => "radio"}
+                    %label{:for => "radio6"} <i class="icon-star-empty"></i>
+
+                    %input#radio6{:name => "radio2", :type => "radio"}
+                    %label{:for => "radio6"} <i class="icon-star-empty"></i>
+
+                    %input#radio6{:name => "radio2", :type => "radio"}
+                    %label{:for => "radio6"} <i class="icon-star-empty"></i>
+
+                    %input#radio6{:name => "radio2", :type => "radio"}
+                    %label{:for => "radio6"} <i class="icon-star-empty"></i>
+
+              - else
+                .four.columns.like
+                  %input#radio4{:name => "radio2", :type => "radio"}
+                  %label{:for => "radio4"} :)
+
+                .four.columns.meh
+                  %input#radio5{:checked => "", :name => "radio2", :type => "radio"}
+                  %label{:for => "radio5"} :|
+
+                .four.columns.dislike
+                  %input#radio6{:name => "radio2", :type => "radio"}
+                  %label{:for => "radio6"} :)
 
 
 
