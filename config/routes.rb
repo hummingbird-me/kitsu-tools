@@ -25,6 +25,8 @@ Hummingbird::Application.routes.draw do
       as: :disconnect_facebook
   end
 
+  resources :watchlists
+
   # Search
   match '/search' => 'search#basic'
   

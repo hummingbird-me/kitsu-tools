@@ -1,24 +1,22 @@
 .reveal-modal{:class => "small", :id => "watchlist_#{watchlist.anime.slug}"}
   .row
     .twelve.columns
-      %form
+      = form_for watchlist do |f|
         %fieldset
           %legend Update Your Watchlist
           .row
             .twelve.columns
               %h3= watchlist.anime.title
-
+              
             .twelve.columns.line-break
               %label Watchlist Status
-              %select{:name => "status"}
-                - Watchlist.valid_statuses.each do |status|
-                  %option{:value => status, :selected => ("selected" if watchlist && watchlist.status == status)}= status
-
+              = f.select :status, options_for_select(Watchlist.valid_statuses, watchlist.status)
+          
             .twelve.columns.line-break
               %label Episodes Watched
               .row.collapse
                 .three.mobile-three.columns
-                  %input{:placeholder => "", :type => "text"}/
+                  = f.number_field :episodes_watched
                 .three.mobile-one.columns.end
                   %span.postfix Out of #{watchlist.anime.episode_count}
 
@@ -27,25 +25,13 @@
               - if user_signed_in? and current_user.star_rating
                 .twelve.columns
                   .star-rating
-                    %input#radio4{:name => "radio2", :type => "radio"}
-                    %label{:for => "radio4"} <i class="icon-star-empty"></i>
-
-
-                    %input#radio5{:checked => "", :name => "radio2", :type => "radio"}
-                    %label{:for => "radio5"} <i class="icon-star-empty"></i>
-
-
-                    %input#radio6{:name => "radio2", :type => "radio"}
-                    %label{:for => "radio6"} <i class="icon-star-empty"></i>
-
-                    %input#radio6{:name => "radio2", :type => "radio"}
-                    %label{:for => "radio6"} <i class="icon-star-empty"></i>
-
-                    %input#radio6{:name => "radio2", :type => "radio"}
-                    %label{:for => "radio6"} <i class="icon-star-empty"></i>
-
-                    %input#radio6{:name => "radio2", :type => "radio"}
-                    %label{:for => "radio6"} <i class="icon-star-empty"></i>
+                    - (-2).upto(2) do |i|
+                      = f.radio_button "rating", i
+                      = f.label :"rating_#{i}" do
+                        - if watchlist.rating and watchlist.rating >= i
+                          %i.icon-star
+                        - else
+                          %i.icon-star-empty
 
               - else
                 .four.columns.like
