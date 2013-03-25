@@ -13,7 +13,7 @@ class WatchlistsController < ApplicationController
     @watchlist.rating = [[@watchlist.rating, -2].max, 2].min
     
     # Update episodes watched.
-    episode_count = params["watchlist"]["episodes_watched"].to_i
+    episode_count = [0, params["watchlist"]["episodes_watched"].to_i].max
     if episode_count
       @anime.episodes.order(:season_number, :number).limit(episode_count).each do |episode|
         @watchlist.episodes << episode unless @watchlist.episodes.exists?(id: episode.id)
