@@ -5,14 +5,9 @@
       %ul.inline-list.sub-nav
         %li.active
           %a{:href => "#"} All
-        %li
-          %a{:href => "#"} Currently Watching
-        %li
-          %a{:href => "#"} On Hold
-        %li
-          %a{:href => "#"} Dropped
-        %li
-          %a{:href => "#"} Completed
+        - Watchlist.valid_statuses.each do |status|
+          %li
+            %a{:href => "##{status}"}= status
 
       %ul.inline-list.view
         %li.active
@@ -20,6 +15,17 @@
         %li
           %a{:href => "#"} <i class="icon-th"></i>
 
+    - Watchlist.valid_statuses.each do |status|
+      %a{:name => status}
+      %h3= status
+      %table.tableSorter.twelve.columns.responsive
+        %tr.table-head
+          %th Anime Title
+          %th Score
+          %th Type
+          %th Progress
+          %th Review
+          %th Update
 
     %h3 Currently Watching
     %table.tableSorter.twelve.columns.responsive
