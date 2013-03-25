@@ -83,29 +83,38 @@
       .row.pagination-centered
         = paginate(@anime)
 :javascript
-  close: function() {
-    $("form.autosubmit").submit();
+  function capitalize(s) {
+    return s[0].toUpperCase() + s.substring(1);
   }
-  
-:javascript
   $(".multiple-select").multiselect({
+    close: function() {
+      $("form.autosubmit").submit();
+    },
     noneSelectedText: "All Genres",
-    selectedList: 3 // 0-based index
+    selectedList: 2,
+    selectedText: function (c, t, a) {
+      if (c == t) {
+        return "All Genres";
+      }
+      else if (c == 2) {
+        return capitalize(a[0].value) + ", " + capitalize(a[1].value);
+      }
+      else if (c == 1) {
+        return capitalize(a[0].value);
+      }
+      else {
+        return c + " genres selected";
+      }
+    }
   }).multiselectfilter();
-
-:javascript
   $(".multiple-nofiltera").multiselect({
     noneSelectedText: "Any Type",
     selectedList: 3 // 0-based index
   });
-
-:javascript
   $(".multiple-nofilterb").multiselect({
     noneSelectedText: "Watch Anywhere",
     selectedList: 3 // 0-based index
   });
-
-:javascript
   $(".single-select").multiselect({
     multiple: false,
     header: "Select an option",
