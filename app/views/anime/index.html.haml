@@ -29,23 +29,21 @@
 
           %ul.inline-list
             %li.three.columns
-              %select{:multiple => "multiple", :class => "multiple-nofilter", :name => "multiple-nofilter"}
+              %select{:multiple => "multiple", :class => "multiple-nofiltera", :name => "multiple-nofiltera"}
                 %option
                   Series
                 %option
                   OVA / SPECIAL
 
 
-          %ul.inline-list
+          %ul.inline-list.where-to-watch
             %li.three.columns
-              %select{:multiple => "multiple", :class => "multiple-nofilter", :name => "multiple-nofilter"}
-                %option{:selected => "selected"}
-                  Watch Anywhere
-                %option{:disabled => "disabled"}
+              %select{:multiple => "multiple", :class => "multiple-nofilterb", :name => "multiple-nofilterb"}
+                %option
                   Netflix
-                %option{:disabled => "disabled"}
+                %option
                   Hulu
-                %option{:disabled => "disabled"}
+                %option
                   Crunchyroll
                 %option{:disabled => "disabled"}
                   Funimation
@@ -113,8 +111,24 @@
         = paginate(@anime)
 
 :javascript
-  $(".multiple-select").multiselect().multiselectfilter();
-  $(".multiple-nofilter").multiselect();
+  $(".multiple-select").multiselect({
+    noneSelectedText: "All Genres",
+    selectedList: 3 // 0-based index
+  }).multiselectfilter();
+
+:javascript
+  $(".multiple-nofiltera").multiselect({
+    noneSelectedText: "Any Type",
+    selectedList: 3 // 0-based index
+  });
+
+:javascript
+  $(".multiple-nofilterb").multiselect({
+    noneSelectedText: "Watch Anywhere",
+    selectedList: 3 // 0-based index
+  });
+
+:javascript
   $(".single-select").multiselect({
     multiple: false,
     header: "Select an option",

@@ -442,6 +442,7 @@
           display: inline-block;
 
           background-image: url(asset-path('icons/positive-votes.png', image));
+          background-size: 33px 33px;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-image: url(asset-path('icons/positive-votes@2x.png', image));
             background-size: 33px 33px;
