@@ -4,7 +4,244 @@
 @import "compass/css3";
 @import "compass/utilities";
 
+.reveal-modal {
+  padding: 15px;
+  fieldset {
+    margin: 0px;
+  }
+  label {
+    margin-bottom: 10px;
+  }
+  .twelve {
+    
+    &.line-break {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 20px !important;
+    }
+  }
+  .three {
+    float: left;
+    input {
+      margin: 0px;
+    }
+  }
+  .modal-rating {
+    input[type="radio"] {
+      margin-left: -99999px;
+      position: absolute;
+    }
+    .star-rating {
+      padding: 0px;
+      padding-top: 10px;
+      padding-bottom: 0px;
+      text-align: center;
+
+      label {
+        display: inline-block;
+        margin: 0 auto;
+        cursor: pointer;
+        font-size: 30px;
+        margin-right: 5px;
+
+        a {
+          display: block;
+          height: 100%;
+        }
+
+        &:hover {
+          color: #fc6419;
+        }
+      }
+    }
+
+    .like {
+      float: left;
+      border-right: 1px solid #f2f2f2;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      label {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        cursor: pointer;
+        background-position: left top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
+          display: block;
+          height: 100%;
+        }
+        &:hover {
+          background-position: left center;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+        &:active {
+          background-position: left bottom;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+      }
+
+      input:checked ~ label {
+        background-position: left bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: left bottom;
+        }
+      }
+    }
+
+    .meh {
+      float: left;
+      border-right: 1px solid #f2f2f2;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      label {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        cursor: pointer;
+        background-position: center top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
+          display: block;
+          height: 100%;
+        }
+        &:hover {
+          background-position: center center;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+        &:active {
+          background-position: center bottom;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+      }
+      input:checked ~ label {
+        background-position: center bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: center bottom;
+        }
+      }
+    }
+
+    .dislike {
+      display: block;
+      float: left;
+      cursor: pointer;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      label {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        background-position: right top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
+          display: block;
+          height: 100%;
+        }
+        &:hover {
+          background-position: right center;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+        &:active {
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+      }
+
+      input:checked ~ label {
+        background-position: right bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: right bottom;
+        }
+      }
+    }
+  }
+}
+
 .anime-discover {
+  margin-top: 100px;
+  
+  .filter-toolbar {
+    .row {
+      overflow: visible;
+      .twelve.columns {
+        padding: 0px;
+        .inline-list {
+          overflow: visible;
+          margin: 0px;
+          .three.columns {
+            padding: 0px;
+            margin: 0px;
+            .dropdown {
+              height: 50px;
+              margin: 0px;
+              .current {
+                height: 50px;
+                font-size: 20px;
+                line-height: 50px;
+                text-align: center;
+                color: #999;
+                padding: 0px;
+                border-top: none;
+                border-bottom: none;
+              }
+              .selector {
+                border: none;
+                height: 50px;
+              }
+              ul {
+                top: 50px;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
   .review-block {
     background: -webkit-linear-gradient(top,#fff 0,#eee 75%) !important;
     height: 190px;
@@ -173,6 +410,79 @@
       overflow: visible;
     }
 
+    .add-watchlist {
+      z-index: 999;
+      position: absolute;
+      bottom: 20px;
+      a {
+        color: #fff;
+        padding: 15px 0px;
+      }
+      &:hover {
+        a {
+          color: #fd7532;
+        }
+      }
+    }
+    .community-rating {
+      position: absolute;
+      z-index: 9;
+      width: 100%;
+      background: white;
+      padding-top: 11px;
+      padding-bottom: 0px;
+      @include border-bottom-radius(3px);
+      .positive {
+        color: #2aa730;
+        text-align: center;
+        font-size: 30px;
+        i {
+          height: 33px;
+          width: 33px;
+          display: inline-block;
+
+          background-image: url(asset-path('icons/positive-votes.png', image));
+          background-size: 33px 33px;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/positive-votes@2x.png', image));
+            background-size: 33px 33px;
+          }
+        }
+        h5 {
+          position: relative;
+          bottom: 5px;
+          display: inline-block;
+          color: #2aa730;
+          text-align: center;
+          font-size: 30px;
+        }
+      }
+      .negative {
+        color: #c63838;
+        text-align: center;
+        font-size: 30px;
+        i {
+          height: 33px;
+          width: 33px;
+          display: inline-block;
+
+          background-image: url(asset-path('icons/negative-votes.png', image));
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-image: url(asset-path('icons/negative-votes@2x.png', image));
+            background-size: 33px 33px;
+          }
+        }
+        h5 {
+          position: relative;
+          bottom: 5px;
+          color: #c63838;
+          display: inline-block;
+          text-align: center;
+          font-size: 30px;
+        }
+      }
+    }
+
     figure {
       position: relative;
       overflow: hidden;
@@ -186,12 +496,15 @@
         text-align: center;
         color: #fff;
         cursor: pointer;
-        z-index: 9999;
+        z-index: 9;
         @include opacity(0.90);
         @include border-top-radius(3px);
         @include background-image(linear-gradient(left top, #393939, #000));
         display: none;
         
+        .link-block {
+          height: 100%;
+        }
 
         .title {
           color: white;
@@ -322,8 +635,6 @@
       }
     }
 
-
-
   	.watchlist {
   		width: 100%;
   		text-align: center;
@@ -332,102 +643,150 @@
   		border-top: 1px solid #eee;
   		border-bottom: 1px solid #eee;
   	}
-    .vote-blocks {
-      .star-rating {
-        text-align: center;
-        font-size: 30px;
-        padding: 20px 0;
-      }
-      .like {
-        width: 50%;
-        float: left;
-        border-right: 1px solid #f2f2f2;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        strong {
-          text-indent: -9999px;
+  }
+  .vote-blocks {
+    .star-rating {
+      text-align: center;
+      font-size: 23px;
+      padding: 24px 0;
+    }
+
+    .like {
+      float: left;
+      border-right: 1px solid #f2f2f2;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      strong {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        cursor: pointer;
+        background-position: left top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
           display: block;
-          width: 34px;
-          height: 33px;
-          margin: 0 auto;
-          cursor: pointer;
-          background-position: left top;
-          background-image: url(asset-path('icons/vote-sprite.png', image));
+          height: 100%;
+        }
+        &:hover {
+          background-position: left center;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
-            background-size: 70px 99px;
-          }
-          a {
-            display: block;
-            height: 100%;
-          }
-          &:hover {
-            background-position: left center;
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 70px 99px;
-            }
-          }
-          &:active {
-            background-position: left bottom;
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 70px 99px;
-            }
+            background-size: 99px 99px;
           }
         }
-        .active {
+        &:active {
           background-position: left bottom;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-size: 70px 99px;
           }
-          &:hover {
-            background-position: left bottom;
+        }
+      }
+      .active {
+        background-position: left bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: left bottom;
+        }
+      }
+    }
+
+    .meh {
+      float: left;
+      border-right: 1px solid #f2f2f2;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      strong {
+        text-indent: -9999px;
+        display: block;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        cursor: pointer;
+        background-position: center top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
+          display: block;
+          height: 100%;
+        }
+        &:hover {
+          background-position: center center;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
+          }
+        }
+        &:active {
+          background-position: center bottom;
+          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+            background-size: 99px 99px;
           }
         }
       }
+      .active {
+        background-position: center bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: center bottom;
+        }
+      }
+    }
 
-      .dislike {
-        width: 50%;
+    .dislike {
+      display: block;
+      float: left;
+      cursor: pointer;
+      padding: 0px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      strong {
+        text-indent: -9999px;
         display: block;
-        float: left;
-        cursor: pointer;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        strong {
-          text-indent: -9999px;
+        width: 33px;
+        height: 33px;
+        margin: 0 auto;
+        background-position: right top;
+        background-image: url(asset-path('icons/vote-sprite.png', image));
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-image: url(asset-path('icons/vote-sprite@2x.png', image));
+          background-size: 99px 99px;
+        }
+        a {
           display: block;
-          width: 34px;
-          height: 33px;
-          margin: 0 auto;
-          background-position: right top;
-          background-image: url(asset-path('icons/vote-sprite.png', image));
+          height: 100%;
+        }
+        &:hover {
+          background-position: right center;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-image: url(asset-path('icons/vote-sprite@2x.png', image));
-            background-size: 70px 99px;
-          }
-          a {
-            display: block;
-            height: 100%;
-          }
-          &:hover {
-            background-position: right center;
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 70px 99px;
-            }
-          }
-          &:active {
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-size: 70px 99px;
-            }
+            background-size: 99px 99px;
           }
         }
-        .active {
-          background-position: right bottom;
+        &:active {
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-size: 70px 99px;
           }
-          &:hover {
-            background-position: right bottom;
-          }
+        }
+      }
+      .active {
+        background-position: right bottom;
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+          background-size: 99px 99px;
+        }
+        &:hover {
+          background-position: right bottom;
         }
       }
     }

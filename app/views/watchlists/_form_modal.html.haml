@@ -1,0 +1,64 @@
+.reveal-modal{:class => "small", :id => "watchlist_#{watchlist.anime.slug}"}
+  .row
+    .twelve.columns
+      = form_for watchlist do |f|
+        = f.hidden_field :anime_id
+        %fieldset
+          %legend Update Your Watchlist
+          .row
+            .twelve.columns
+              %h3= watchlist.anime.title
+              
+            .twelve.columns.line-break
+              %label Watchlist Status
+              = f.select :status, options_for_select(Watchlist.valid_statuses, watchlist.status)
+          
+            .twelve.columns.line-break
+              %label Episodes Watched
+              .row.collapse
+                .three.mobile-three.columns
+                  = f.number_field :episodes_watched
+                .three.mobile-one.columns.end
+                  %span.postfix Out of #{watchlist.anime.episode_count}
+
+            .twelve.columns.modal-rating.line-break
+              %label Rating (optional)
+              - if user_signed_in? and current_user.star_rating
+                .twelve.columns
+                  .star-rating
+                    - (-2).upto(2) do |i|
+                      = f.radio_button "rating", i, class: "starr"
+                      = f.label :"rating_#{i}" do
+                        - if watchlist.rating and watchlist.rating >= i
+                          %i.icon-star
+                        - else
+                          %i.icon-star-empty
+                :javascript
+                  $("#watchlist_#{watchlist.anime.slug} form .starr").change(function () {
+                    var selected = parseInt($("#watchlist_#{watchlist.anime.slug} form .starr:checked")[0].value);
+                    $("#watchlist_#{watchlist.anime.slug} form .starr").each(function (i, x) {
+                      if (parseInt(x.value) <= selected) {
+                        $("#watchlist_#{watchlist.anime.slug} form label[for=watchlist_rating_" + x.value + "]").html("<i class='icon-star'></i>");
+                      }
+                      else {
+                        $("#watchlist_#{watchlist.anime.slug} form label[for=watchlist_rating_" + x.value + "]").html("<i class='icon-star-empty'></i>");
+                      }
+                    });
+                  });
+
+              - else
+                .four.columns.like
+                  = f.radio_button "rating", 2
+                  = f.label :"rating_2"
+
+                .four.columns.meh
+                  = f.radio_button "rating", 0
+                  = f.label :"rating_0"
+
+                .four.columns.dislike
+                  = f.radio_button "rating", -2
+                  = f.label :"rating_-2"
+
+            .twelve.columns{:style => "margin-bottom: 0px;"}
+              %input.button.padded{:type => "submit", :value => "Update Watchlist"}
+
