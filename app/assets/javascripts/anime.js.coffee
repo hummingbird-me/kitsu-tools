@@ -1,3 +1,3 @@
 $ ->
-  $("form.autosubmit select").change ->
+  $("form.autosubmit select.autosubmit").change ->
     $("form.autosubmit").submit();

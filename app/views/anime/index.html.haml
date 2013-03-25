@@ -5,7 +5,7 @@
         %form.autosubmit
           %ul.inline-list
             %li.three.columns
-              %select{:class => "single-select", :name => "single-select"}
+              %select.autosubmit{:class => "single-select", :name => "single-select"}
                 %option 
                   %i.icon-globe
                   All Anime
@@ -35,7 +35,6 @@
                 %option
                   OVA / SPECIAL
 
-
           %ul.inline-list.where-to-watch
             %li.three.columns
               %select{:multiple => "multiple", :class => "multiple-nofilterb", :name => "multiple-nofilterb"}
@@ -43,7 +42,7 @@
                   Netflix
                 %option
                   Hulu
-                %option
+                %option{:disabled => "disabled"}
                   Crunchyroll
                 %option{:disabled => "disabled"}
                   Funimation
@@ -51,32 +50,6 @@
                   Viz
 
   .row.content-body
-    /     %ul.accordion
-    /       %li.active    
-    /         .title
-    /           %h3 Filter
-    /         .content
-    /           %form.custom{:action => genres_path, :method => :get}
-    /             .row
-    /               .twelve.columns
-    /                 .six.mobile-two.columns
-    /                   %a.disable_all Deselect All
-    /                 .six.mobile-two.columns
-    /                   %a.enable_all Select All
-    /                 .twelve.columns
-    /                   %input.apply-button.button(type="submit" value="Apply")
-
-    /                 - @all_genres.each do |genre|
-    /                   %label{:for => "g_" + genre.slug, "data-width" => "300", :title => genre.description, :class => ("checked" if @genre_filter.include? genre)}
-    /                     %input{:checked => @genre_filter.include?(genre), :name => "g_" + genre.slug, :id => "g_" + genre.slug, :style => "display: none", :type => "checkbox", :value => ".g_#{genre.slug}"}
-    /                     %span.custom.checkbox{:class => ("checked" if @genre_filter.include? genre)}
-    /                     = genre.name
-
-      
-
-
-    / Thumbnails
-
     .anime-grid.twelve.columns
       - if @filter == "recommended" and !current_user.recommendations_up_to_date
         %div.alert-box
@@ -109,7 +82,11 @@
 
       .row.pagination-centered
         = paginate(@anime)
-
+:javascript
+  close: function() {
+    $("form.autosubmit").submit();
+  }
+  
 :javascript
   $(".multiple-select").multiselect({
     noneSelectedText: "All Genres",
