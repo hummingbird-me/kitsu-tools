@@ -535,9 +535,15 @@
 
       &:hover {
 
-        .overlay {
-          display: block;
-        }
+      }
+    }
+
+    &:hover {
+      .community-rating {
+        display: none;
+      }
+      .overlay {
+        display: block;
       }
     }
 
@@ -683,7 +689,7 @@
         &:active {
           background-position: left bottom;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-size: 70px 99px;
+            background-size: 99px 99px;
           }
         }
       }
@@ -776,7 +782,7 @@
         }
         &:active {
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-size: 70px 99px;
+            background-size: 99px 99px;
           }
         }
       }
