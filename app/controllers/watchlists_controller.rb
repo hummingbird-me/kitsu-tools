@@ -10,7 +10,7 @@ class WatchlistsController < ApplicationController
     
     # Update rating.
     @watchlist.rating = params["watchlist"]["rating"]
-    @watchlist.rating = [[@watchlist.rating, -2].max, 2].min
+    @watchlist.rating = [[@watchlist.rating, -2].max, 2].min if @watchlist.rating
     
     # Update episodes watched.
     episode_count = [0, params["watchlist"]["episodes_watched"].to_i].max
