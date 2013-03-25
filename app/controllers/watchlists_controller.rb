@@ -26,7 +26,7 @@ class WatchlistsController < ApplicationController
     @watchlist.save
     redirect_to :back
   end
-  def new; update; end
+  def create; update; end
 
   def add_to_watchlist
     @anime = Anime.find(params[:anime_id])
