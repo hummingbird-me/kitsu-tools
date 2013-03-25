@@ -1574,6 +1574,13 @@ CREATE UNIQUE INDEX index_episodes_watchlists_on_episode_id_and_watchlist_id ON 
 
 
 --
+-- Name: index_episodes_watchlists_on_watchlist_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_episodes_watchlists_on_watchlist_id ON episodes_watchlists USING btree (watchlist_id);
+
+
+--
 -- Name: index_forem_categories_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2051,3 +2058,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130315120127');
 INSERT INTO schema_migrations (version) VALUES ('20130319090055');
 
 INSERT INTO schema_migrations (version) VALUES ('20130320183734');
+
+INSERT INTO schema_migrations (version) VALUES ('20130325092239');
