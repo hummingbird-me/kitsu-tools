@@ -3,6 +3,128 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
 
+.rating-diamond {
+  background-size: auto 100%;
+  height: 216px;
+  width: 175px;
+  &.score-1 {
+    background-image: url(asset-path('icons/rating/rating-1.png', image));
+  }
+  &.score-15 {
+    background-image: url(asset-path('icons/rating/rating-15.png', image));
+  }
+  &.score-2 {
+    background-image: url(asset-path('icons/rating/rating-2.png', image));
+  }
+  &.score-25 {
+    background-image: url(asset-path('icons/rating/rating-25.png', image));
+  }
+  &.score-3 {
+    background-image: url(asset-path('icons/rating/rating-3.png', image));
+  }
+  &.score-35 {
+    background-image: url(asset-path('icons/rating/rating-35.png', image));
+  }
+  &.score-4 {
+    background-image: url(asset-path('icons/rating/rating-4.png', image));
+  }
+  &.score-5 {
+    background-image: url(asset-path('icons/rating/rating-5.png', image));
+  }
+  &.score-55 {
+    background-image: url(asset-path('icons/rating/rating-55.png', image));
+  }
+  &.score-6 {
+    background-image: url(asset-path('icons/rating/rating-6.png', image));
+  }
+  &.score-65 {
+    background-image: url(asset-path('icons/rating/rating-65.png', image));
+  }
+  &.score-7 {
+    background-image: url(asset-path('icons/rating/rating-7.png', image));
+  }
+  &.score-75 {
+    background-image: url(asset-path('icons/rating/rating-75.png', image));
+  }
+  &.score-8 {
+    background-image: url(asset-path('icons/rating/rating-8.png', image));
+  }
+  &.score-85 {
+    background-image: url(asset-path('icons/rating/rating-85.png', image));
+  }
+  &.score-9 {
+    background-image: url(asset-path('icons/rating/rating-9.png', image));
+  }
+  &.score-95 {
+    background-image: url(asset-path('icons/rating/rating-95.png', image));
+  }
+  &.score-10 {
+    background-image: url(asset-path('icons/rating/rating-10.png', image));
+  }
+}
+
+.review-index {
+  .filters {
+    ul {
+      list-style: none;
+      li {
+        padding-bottom: 5px;
+        a {
+          display: block;
+          background: #e1e1e1;
+          padding: 5px;
+          color: #222;
+        }
+      }
+    }
+  }
+  .review-list {
+    background: #eee;
+    display: block;
+    width: 100%;
+    padding: 0px;
+    @include border-top-radius(3px); 
+    .sort {
+      float: right;
+      margin-top: 30px;
+    }
+    .review {
+      border-bottom: 1px solid #d4d4d4;
+      padding-bottom: 10px;
+      margin-bottom: 17px;
+      .anime-title {
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      .username {
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        display: inline-block;
+      }
+
+      .summary {
+        margin-bottom: 10px;
+      }
+
+      .thumbnail {
+        padding: 0px;
+      }
+      .diamond-wrapper {
+        border-left: 1px solid #e6e6e6;
+        padding-left: 120px;
+        .rating-diamond {
+          height: 115px;
+          width: 93px;
+          float: right;
+          margin-top: 0px;
+        }
+      }
+    }
+  }
+}
+
 .full-reviews {
 
   // Review Editor
