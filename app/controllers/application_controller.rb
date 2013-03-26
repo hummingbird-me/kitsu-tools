@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery
+
   def forem_user; current_user; end
   helper_method :forem_user
 
-  protect_from_forgery
+  def hide_cover_image
+    @hide_cover_image = true
+  end
 
   def mixpanel
     @mixpanel ||= Mixpanel::Tracker.new '92b66301c752642b40ca39e718517d94', { :async => true, :env => request.env }
