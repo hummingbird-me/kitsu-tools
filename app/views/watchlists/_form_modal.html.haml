@@ -29,7 +29,22 @@
                     = f.select "rating", [["1 star", -2], ["2 stars", -1], ["3 stars", 0], ["4 stars", 1], ["5 stars", 2]]
 
               - else
-                = f.select "rating", [["Positive", 2], ["Neutral", 0], ["Negative", -2]]
+
+                .four.columns.like
+                  // This code works for selecting but attempting to submit it errors.
+                  = radio_button_tag(:"watchlist_#{watchlist.anime.slug}", 2)
+                  = f.label :"#{watchlist.anime.slug}_2"
+
+                .four.columns.meh
+                  // This code works for selecting but attempting to submit it errors.
+                  = radio_button_tag(:"watchlist_#{watchlist.anime.slug}", 0)
+                  = f.label :"#{watchlist.anime.slug}_0"
+
+                .four.columns.dislike
+                  // This code works for selecting but attempting to submit it errors.
+                  = radio_button_tag(:"watchlist_#{watchlist.anime.slug}", -2)
+                  = f.label :"#{watchlist.anime.slug}_-2"
+
                 /.four.columns.like
                 /  = f.radio_button "rating", 2
                 /  = f.label :"rating_2"
@@ -42,4 +57,3 @@
 
             .twelve.columns{:style => "margin-bottom: 0px;"}
               %input.button.padded{:type => "submit", :value => "Update Watchlist"}
-
