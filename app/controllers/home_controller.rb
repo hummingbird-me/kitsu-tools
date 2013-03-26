@@ -1,8 +1,4 @@
 class HomeController < ApplicationController
-  def hide_cover_image
-    @hide_cover_image = true
-  end
-
   before_filter :hide_cover_image
   #caches_action :index, layout: false, :if => lambda { not user_signed_in? }
 
