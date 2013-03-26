@@ -35,24 +35,12 @@
                   = f.label :"rating_#{watchlist.anime.slug}_2"
 
                 .four.columns.meh
-                  // This code works for selecting but attempting to submit it errors.
                   = radio_button_tag(:"watchlist_rating_#{watchlist.anime.slug}", 0, watchlist.meh?)
                   = f.label :"rating_#{watchlist.anime.slug}_0"
 
                 .four.columns.dislike
-                  // This code works for selecting but attempting to submit it errors.
                   = radio_button_tag(:"watchlist_rating_#{watchlist.anime.slug}", -2, watchlist.negative?)
                   = f.label :"rating_#{watchlist.anime.slug}_-2"
-
-                /.four.columns.like
-                /  = f.radio_button "rating", 2
-                /  = f.label :"rating_2"
-                /.four.columns.meh
-                /  = f.radio_button "rating", 0
-                /  = f.label :"rating_0"
-                /.four.columns.dislike
-                /  = f.radio_button "rating", -2
-                /  = f.label :"rating_-2"
 
             .twelve.columns{:style => "margin-bottom: 0px;"}
               %input.button.padded{:type => "submit", :value => "Update Watchlist"}
@@ -61,54 +49,27 @@
   .twelve.columns.center{:style => "text-align: center; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 10px;"}
     .six.columns{:style => "border-right: 1px solid #eee;"}
       %a{:href => "#"}
+      = link_to watchlist.anime do
         %i.icon-signin
         View Full Details
 
     .six.columns
-      %a{:href => "#"}
+      %a{"data-reveal-id" => "watchlist_#{watchlist.anime.slug}", :href => "#"}
         %i.icon-list-alt
         Add to Watchlist
   .anime-details.cards.cf
     .details-left.four.columns{:style => "padding: 0px;"}
-      .twelve.columns
-        = image_tag "http://hummingbird.ly/system/gallery_images/images/000/000/252/thumb/270200-chaikibismirk.png?1362394414"
-      .twelve.columns
-        = image_tag "http://hummingbird.ly/system/gallery_images/images/000/000/253/thumb/186332-the_girl_who_leapt_through_time26.jpg?1362394448"
-      .twelve.columns
-        = image_tag "http://hummingbird.ly/system/gallery_images/images/000/000/254/thumb/186325-the_girl_who_leapt_through_time02.jpg?1362394485"
-      .twelve.columns
-        = image_tag "http://hummingbird.ly/system/gallery_images/images/000/000/256/thumb/186329-the_girl_who_leapt_through_time54.jpg?1362394505"
+      - watchlist.anime.gallery_images.limit(4).each do |image|
+        .twelve.columns
+          = image_tag image.image.url(:thumb)
       
     .details-right.eight.columns
-      %h3{:style => "margin-top: 0px;"} The Girl Who Leapt Through Time
+      %h3{:style => "margin-top: 0px;"}= watchlist.anime.title
       .genres
-        %p
-        Genres: &nbsp;
-        %a{:href => "/genres/adventure"}> Adventure
-        ,
-        = succeed "," do
-          %a{:href => "/genres/drama"} Drama
-        = succeed "," do
-          %a{:href => "/genres/romance"} Romance
-        %a{:href => "/genres/sci-fi"} Sci-Fi
-      .social-links
-        %ul.inline-list
-          %li
-            .fb-like.fb_edge_widget_with_comment.fb_iframe_widget{"data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "50", "fb-xfbml-state" => "rendered"}
-              %span{:style => "height: 20px; width: 75px;"}
-                %iframe#f32137928.fb_ltr{:name => "f75ecf1a", :scrolling => "no", :src => "http://www.facebook.com/plugins/like.php?api_key=452427161479702&amp;locale=en_US&amp;sdk=joey&amp;channel_url=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D19%23cb%3Df2636b4ec8%26origin%3Dhttp%253A%252F%252Flocalhost%253A3000%252Ff46a1932c%26domain%3Dlocalhost%26relation%3Dparent.parent&amp;href=http%3A%2F%2Flocalhost%3A3000%2Fanime%2Fthe-girl-who-leapt-through-time&amp;node_type=link&amp;width=90&amp;layout=button_count&amp;colorscheme=light&amp;show_faces=false&amp;send=false&amp;extended_social_context=false", :style => "border: none; overflow: hidden; height: 20px; width: 75px;", :title => "Like this content on Facebook."}
-
-          %li{:style => "background: none; width: 78px;"}
-            %iframe.twitter-share-button.twitter-count-horizontal{:allowtransparency => "true", "data-twttr-rendered" => "true", :frameborder => "0", :scrolling => "no", :src => "http://platform.twitter.com/widgets/tweet_button.1363148939.html#_=1364328121141&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Flocalhost%3A3000%2Fanime%2Fthe-girl-who-leapt-through-time&amp;size=m&amp;text=The%20Girl%20Who%20Leapt%20Through%20Time%20%7C%20Hummingbird&amp;url=http%3A%2F%2Flocalhost%3A3000%2Fanime%2Fthe-girl-who-leapt-through-time&amp;via=Hummingbird_ly", :style => "width: 107px; height: 20px;", :title => "Twitter Tweet Button"}
-
-          %li
-            #___plusone_0{:style => "text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; width: 90px; height: 20px; display: inline-block; background-position: initial initial; background-repeat: initial initial;"}
-              %iframe#I0_1364328121106{:allowtransparency => "true", "data-gapiattached" => "true", :frameborder => "0", :hspace => "0", :marginheight => "0", :marginwidth => "0", :name => "I0_1364328121106", :scrolling => "no", :src => "https://plusone.google.com/_/+1/fastbutton?bsv&amp;size=medium&amp;hl=en-US&amp;origin=http%3A%2F%2Flocalhost%3A3000&amp;url=http%3A%2F%2Flocalhost%3A3000%2Fanime%2Fthe-girl-who-leapt-through-time&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.YDQMhaColJs.O%2Fm%3D__features__%2Fam%3DQQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAItRSTPHqN8Rn1m0mgyELyYN0nZ2R_C5XQ#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Conload&amp;id=I0_1364328121106&amp;parent=http%3A%2F%2Flocalhost%3A3000&amp;rpctoken=39853863", :style => "position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; height: 20px; visibility: visible;", :tabindex => "0", :title => "+1", :vspace => "0", :width => "100%"}
-
+        %p 
+        Genres:
+        = watchlist.anime.genres.map {|x| link_to(x.name, x) }.join(", ").html_safe
       .synopsis
-        %strong Status: Finished Airing
-        %p
-          The power to travel through time... It can be used for the good of humanity, or just selfishly abused. While many may fantasize about obtaining such a power, it has become nothing less than reality for otherwise-normal schoolgirl Konno Makoto.
-          After a fated event, her life takes a turn for the extraordinary. Though she initially uses her power to literally "leap" into the past and change little things in order to make her life easier, she soon has to face the fact that changing the past can have drastic consequences.
-          [Written by MAL Rewrite]
+        %strong Status: #{watchlist.anime.status}
+        %p= watchlist.anime.synopsis
 

@@ -8,9 +8,9 @@
           .link-block.twelve.columns
             %h5.title #{anime.title}
 
-          / .twelve.columns.preview
-          /   %i.icon-external-link
-          /   %a{"data-reveal-id" => "preview_#{anime.slug}", :href => "#"} Quick View
+          .twelve.columns.preview
+            %i.icon-external-link
+            %a{"data-reveal-id" => "preview_#{anime.slug}", :href => "#"} Quick View
 
           - if !readonly
             .twelve.columns.add-watchlist
