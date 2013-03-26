@@ -1,0 +1,9 @@
+%span{:class => "quote_#{quote.id}_votes"}
+  = pluralize quote.votes.to_i, "vote"
+  - if current_user && quote.has_evaluation?(:votes, current_user)
+    = link_to vote_anime_quote_path(@anime, quote, type: "down"), method: :post do
+      %i.icon-star
+  - else
+    = link_to vote_anime_quote_path(@anime, quote, type: "up"), method: :post do
+      %i.icon-star-empty
+
