@@ -23,6 +23,10 @@ class Watchlist < ActiveRecord::Base
     rating && rating < 0
   end
 
+  def meh?
+    rating && (!(positive? or negative?))
+  end
+
   # This method will take an array of "watchlist" object IDs and return a unique
   # string hash. This is used to check whether a user's recommendations are up to
   # date.

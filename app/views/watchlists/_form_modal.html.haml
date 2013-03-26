@@ -31,19 +31,18 @@
               - else
 
                 .four.columns.like
-                  // This code works for selecting but attempting to submit it errors.
-                  = radio_button_tag(:"watchlist_#{watchlist.anime.slug}", 2)
-                  = f.label :"#{watchlist.anime.slug}_2"
+                  = radio_button_tag(:"watchlist_rating_#{watchlist.anime.slug}", 2, watchlist.positive?)
+                  = f.label :"rating_#{watchlist.anime.slug}_2"
 
                 .four.columns.meh
                   // This code works for selecting but attempting to submit it errors.
-                  = radio_button_tag(:"watchlist_#{watchlist.anime.slug}", 0)
-                  = f.label :"#{watchlist.anime.slug}_0"
+                  = radio_button_tag(:"watchlist_rating_#{watchlist.anime.slug}", 0, watchlist.meh?)
+                  = f.label :"rating_#{watchlist.anime.slug}_0"
 
                 .four.columns.dislike
                   // This code works for selecting but attempting to submit it errors.
-                  = radio_button_tag(:"watchlist_#{watchlist.anime.slug}", -2)
-                  = f.label :"#{watchlist.anime.slug}_-2"
+                  = radio_button_tag(:"watchlist_rating_#{watchlist.anime.slug}", -2, watchlist.negative?)
+                  = f.label :"rating_#{watchlist.anime.slug}_-2"
 
                 /.four.columns.like
                 /  = f.radio_button "rating", 2
