@@ -17,7 +17,14 @@
         }
       }
       .overlay {
-        display: none !important;
+        top: 155px;
+        @include border-top-radius(0px);
+        .title {
+          display: none !important;
+        }
+        .preview {
+          display: none !important;
+        }
       }
     }
 
