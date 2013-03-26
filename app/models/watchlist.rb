@@ -48,8 +48,11 @@ class Watchlist < ActiveRecord::Base
     self.episodes_watched = self.episodes.length
     
     if self.status == "Completed"
-      self.user.update_life_spent_on_anime((self.anime.episodes - self.episodes).map {|x| x.length }.sum)
-      self.episodes = self.anime.episodes
+      if self.episodes_watched != self.anime.episodes.length and self.anime.episodes.length > 0
+        self.user.update_life_spent_on_anime((self.anime.episodes - self.episodes).map {|x| x.length }.sum)
+        self.episodes = self.anime.episodes
+        self.last_watched = Time.now
+      end
     elsif self.episodes_watched == self.anime.episodes.length and self.episodes_watched > 0
       self.status = "Completed"
     end
