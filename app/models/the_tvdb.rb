@@ -12,7 +12,7 @@ class TheTvdb
     data = Hash.from_xml(
       open("http://thetvdb.com/api/#{API_KEY}/series/#{series_id}/all").read
     )
-    data["Data"]["Episode"].select {|x| season_id ? (x["seasonid"].to_i == season_id.to_i) : true }
+    data["Data"]["Episode"].select {|x| x["SeasonNumber"] ? (x["SeasonNumber"].to_i > 0) : true }.select {|x| season_id ? (x["seasonid"].to_i == season_id.to_i) : true }
   end
   
   def self.save_episode_data(anime)

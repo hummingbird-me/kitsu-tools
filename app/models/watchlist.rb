@@ -4,7 +4,7 @@ class Watchlist < ActiveRecord::Base
   attr_accessible :user, :anime, :status, :episodes_watched, 
     :updated_at, :last_watched, :imported, :rating
 
-  validates_uniqueness_of :user_id, :scope => :anime_id
+  validates :user_id, :uniqueness => {:scope => :anime_id}
 
   has_and_belongs_to_many :episodes, :uniq => true
 
@@ -21,6 +21,10 @@ class Watchlist < ActiveRecord::Base
 
   def negative?
     rating && rating < 0
+  end
+
+  def meh?
+    rating && (!(positive? or negative?))
   end
 
   # This method will take an array of "watchlist" object IDs and return a unique
@@ -44,8 +48,11 @@ class Watchlist < ActiveRecord::Base
     self.episodes_watched = self.episodes.length
     
     if self.status == "Completed"
-      self.user.update_life_spent_on_anime((self.anime.episodes - self.episodes).map {|x| x.length }.sum)
-      self.episodes = self.anime.episodes
+      if self.episodes_watched != self.anime.episodes.length and self.anime.episodes.length > 0
+        self.user.update_life_spent_on_anime((self.anime.episodes - self.episodes).map {|x| x.length }.sum)
+        self.episodes = self.anime.episodes
+        self.last_watched = Time.now
+      end
     elsif self.episodes_watched == self.anime.episodes.length and self.episodes_watched > 0
       self.status = "Completed"
     end

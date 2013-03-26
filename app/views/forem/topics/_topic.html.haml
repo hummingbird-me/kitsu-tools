@@ -26,7 +26,7 @@
   .one.columns.comment-count
     %p
       %i.icon-comments
-      = relevant_posts(topic).count
+      = relevant_posts(topic).count - 1
 
 /<tr class="topic <%= cycle('odd', 'even') %> <%= topic.locked? ? 'locked' : 'unlocked' %>">
 /  <td class='icon'>
