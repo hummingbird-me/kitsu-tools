@@ -9,7 +9,7 @@ class WatchlistsController < ApplicationController
     @watchlist.status = params["watchlist"]["status"]
     
     # Update rating.
-    @watchlist.rating = params["watchlist_rating_#{@anime.slug}"]
+    @watchlist.rating = params["watchlist"]["rating"] || params["watchlist_rating_#{@anime.slug}"]
     @watchlist.rating = [[@watchlist.rating, -2].max, 2].min if @watchlist.rating
     
     # Update episodes watched.
