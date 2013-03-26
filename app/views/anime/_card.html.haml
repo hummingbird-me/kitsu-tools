@@ -1,12 +1,17 @@
 - anime, watchlist, width = data[0], data[1], data[2] || "two"
 - readonly = data[3] && data[3] == :readonly
-.mobile-two.columns{:class => width, :id => "card-#{anime.slug}"}
+.mobile-one.columns{:class => width, :id => "card-#{anime.slug}"}
   .panel.cards.cf
     %figure
       %a{:href => anime_path(anime)}
         .overlay
           .link-block.twelve.columns
             %h5.title #{anime.title}
+
+          .twelve.columns.preview
+            %i.icon-external-link
+            %a{"data-reveal-id" => "preview_#{anime.slug}", :href => "#"} Quick View
+
           - if !readonly
             .twelve.columns.add-watchlist
               %i.icon-list-alt
