@@ -28,12 +28,23 @@ class QuotesController < ApplicationController
 
   def vote
     authenticate_user!
-    @quote = Quote.find(params[:id])
+    @quote = Quote.find_with_reputation(:votes, :all, 
+                {:conditions => ["quotes.id = ?", params[:id]]}).first
     if params[:type] == "up"
       @quote.add_or_update_evaluation(:votes, 1, current_user)
     else
       @quote.delete_evaluation(:votes, current_user)
     end
-    redirect_to :back
+
+    respond_to do |format|
+      if request.xhr?
+        format.js do
+          @quote = Quote.find_with_reputation(:votes, :all, 
+                      {:conditions => ["quotes.id = ?", params[:id]]}).first
+          render "replace_votes"
+        end
+      end
+      format.html { redirect_to :back }
+    end
   end
 end
