@@ -53,12 +53,16 @@
     %figure
       - @overlay_quote = overlay_quote_from_anime(@anime)
       .overlay
-        %h5.title= @overlay_quote.content
-        %p
-          = @overlay_quote.character_name
-          (#{link_to @overlay_quote.anime.title, main_app.anime_quotes_path(@overlay_quote.anime)})
-      - @overlay_image = @overlay_quote.anime.gallery_images.order('RANDOM()').first
-      - if @overlay_image
+        .row
+          .ten.columns.offset-by-one
+            %h5.title= @overlay_quote.content
+            %p
+              = @overlay_quote.character_name
+              (#{link_to @overlay_quote.anime.title, main_app.anime_quotes_path(@overlay_quote.anime)})
+          .one.column
+            .title
+              = render partial: "quotes/votes", locals: {quote: @overlay_quote}
+      - if (@overlay_image = @overlay_quote.anime.gallery_images.order('RANDOM()').first)
         = image_tag @overlay_image.image.url, style: 'width: 100%'
 
 - flash.each do |style, message|
