@@ -26,27 +26,10 @@
               - if user_signed_in? and current_user.star_rating
                 .twelve.columns
                   .star-rating
-                    - (-2).upto(2) do |i|
-                      = f.radio_button "rating", i, class: "starr"
-                      = f.label :"rating_#{i}" do
-                        - if watchlist.rating and watchlist.rating >= i
-                          %i.icon-star
-                        - else
-                          %i.icon-star-empty
-                :javascript
-                  $("#watchlist_#{watchlist.anime.slug} form .starr").change(function () {
-                    var selected = parseInt($("#watchlist_#{watchlist.anime.slug} form .starr:checked")[0].value);
-                    $("#watchlist_#{watchlist.anime.slug} form .starr").each(function (i, x) {
-                      if (parseInt(x.value) <= selected) {
-                        $("#watchlist_#{watchlist.anime.slug} form label[for=watchlist_rating_" + x.value + "]").html("<i class='icon-star'></i>");
-                      }
-                      else {
-                        $("#watchlist_#{watchlist.anime.slug} form label[for=watchlist_rating_" + x.value + "]").html("<i class='icon-star-empty'></i>");
-                      }
-                    });
-                  });
+                    = f.select "rating", [["1 star", -2], ["2 stars", -1], ["3 stars", 0], ["4 stars", 1], ["5 stars", 2]]
 
               - else
+
                 .four.columns.like
                   // This code works for selecting but attempting to submit it errors.
                   = radio_button_tag(:"watchlist_#{watchlist.anime.slug}", 2)
@@ -61,6 +44,16 @@
                   // This code works for selecting but attempting to submit it errors.
                   = radio_button_tag(:"watchlist_#{watchlist.anime.slug}", -2)
                   = f.label :"#{watchlist.anime.slug}_-2"
+
+                /.four.columns.like
+                /  = f.radio_button "rating", 2
+                /  = f.label :"rating_2"
+                /.four.columns.meh
+                /  = f.radio_button "rating", 0
+                /  = f.label :"rating_0"
+                /.four.columns.dislike
+                /  = f.radio_button "rating", -2
+                /  = f.label :"rating_-2"
 
             .twelve.columns{:style => "margin-bottom: 0px;"}
               %input.button.padded{:type => "submit", :value => "Update Watchlist"}

@@ -5,17 +5,17 @@
         %form.autosubmit
           %ul.inline-list
             %li.three.columns
-              %select.autosubmit{:class => "single-select", :name => "single-select"}
-                %option 
+              %select.autosubmit{:class => "single-select", :name => "filter"}
+                %option{:value => "all", :selected => ("selected" if @filter == "all")}
                   %i.icon-globe
                   All Anime
-                %option
+                %option{:value => "recommended", :selected => ("selected" if @filter == "recommended")}
                   %i.icon-heart
                   Recommendations
-                %option
+                %option{:value => "unseen", :selected => ("selected" if @filter == "unseen")}
                   %i.icon-eye-close
                   Haven't Seen
-                %option
+                %option{:value => "unfinished", :selected => ("selected" if @filter == "unfinished")}
                   %i.icon-tasks
                   Haven't finished
 
@@ -23,13 +23,13 @@
             %li.three.columns
               %select{:multiple => "multiple", :class => "multiple-select", :name => "genres[]"}
                 - @all_genres.each do |genre|
-                  %option{:value => "#{genre.name.downcase}", :selected => ("selected" if @genre_filter.include? genre)}
+                  %option{:value => "#{genre.slug}", :selected => ("selected" if @genre_filter.include? genre)}
                     %i.icon-film
                     = genre.name
 
           %ul.inline-list
             %li.three.columns
-              %select{:multiple => "multiple", :class => "multiple-nofiltera", :name => "multiple-nofiltera"}
+              %select{:multiple => "multiple", :class => "multiple-nofiltera", :name => "types[]"}
                 %option
                   Series
                 %option
@@ -37,7 +37,7 @@
 
           %ul.inline-list.where-to-watch
             %li.three.columns
-              %select{:multiple => "multiple", :class => "multiple-nofilterb", :name => "multiple-nofilterb"}
+              %select{:multiple => "multiple", :class => "multiple-nofilterb", :name => "watch[]"}
                 %option
                   Netflix
                 %option
@@ -64,7 +64,7 @@
               }
               else {
                 $("span.updating_recommendations").html("We're done updating your recommendations.");
-                $("span.check_back").html("<a href='/anime/filter/recommended'>Click here to check them out!</a>");
+                $("span.check_back").html("<a href='/anime?filter=recommended'>Check them out!</a>");
               }
             });
           }

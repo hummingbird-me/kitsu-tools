@@ -10,7 +10,7 @@ class WatchlistsController < ApplicationController
     
     # Update rating.
     @watchlist.rating = params["watchlist"]["rating"]
-    @watchlist.rating = [[@watchlist.rating, -2].max, 2].min
+    @watchlist.rating = [[@watchlist.rating, -2].max, 2].min if @watchlist.rating
     
     # Update episodes watched.
     episode_count = [0, params["watchlist"]["episodes_watched"].to_i].max
@@ -26,7 +26,7 @@ class WatchlistsController < ApplicationController
     @watchlist.save
     redirect_to :back
   end
-  def new; update; end
+  def create; update; end
 
   def add_to_watchlist
     @anime = Anime.find(params[:anime_id])
@@ -59,15 +59,20 @@ class WatchlistsController < ApplicationController
   def update_rating
     @anime = Anime.find(params[:anime_id])
     @watch = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
-    
-    rating = params[:rating].to_i
-    if rating <= 2 and rating >= -2
-      @watch.rating = rating
-      if rating == -2 and !current_user.star_rating
-        @watch.status ||= "Dropped"
-      end
-      @watch.status ||= "Currently Watching"
+
+    if params[:rating] == "nil"
+      @watch.rating = nil
       @watch.save
+    else
+      rating = params[:rating].to_i
+      if rating <= 2 and rating >= -2
+        @watch.rating = rating
+        if rating == -2 and !current_user.star_rating
+          @watch.status ||= "Dropped"
+        end
+        @watch.status ||= "Currently Watching"
+        @watch.save
+      end
     end
 
     respond_to do |format|
