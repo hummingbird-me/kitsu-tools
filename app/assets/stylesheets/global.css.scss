@@ -26,6 +26,11 @@
     *zoom: 1;
 }
 
+.reveal-modal.small {
+  padding: 0px;
+  padding-top: 10px;
+}
+
 body {
 	background: #eee;
   [role="complementary"] {
@@ -34,7 +39,9 @@ body {
       width: 100%;
     }
   }
-  
+  .center {
+    text-align: center;
+  }
   a.anchor {
     position: relative; 
     text-indent: -99999px; 

@@ -1,4 +1,4 @@
-.reveal-modal{:class => "small", :id => "watchlist_#{watchlist.anime.slug}"}
+.reveal-modal.anime-discover.anime-show.anime-show-full{:class => "small", :id => "watchlist_#{watchlist.anime.slug}"}
   .row
     .twelve.columns
       = form_for watchlist do |f|
@@ -12,14 +12,44 @@
             .twelve.columns.line-break
               %label Watchlist Status
               = f.select :status, options_for_select(Watchlist.valid_statuses, watchlist.status)
-          
-            .twelve.columns.line-break
+            
+            // Styles need fixed
+            .twelve.columns.line-break{:style => "padding: 0px;"} 
               %label Episodes Watched
               .row.collapse
                 .three.mobile-three.columns
                   = f.number_field :episodes_watched
                 .three.mobile-one.columns.end
                   %span.postfix Out of #{watchlist.anime.episode_count}
+
+              // Styles need fixed
+              .twelve.columns.user-watchlist{:style => "padding: 0px;"}
+                .episode-list
+                  %ul
+                    %li.episode
+                      .title.ten.columns
+                        .episode-number S01E01
+                        .episode-title First Episode
+                      .view-button.two.columns
+                        %strong
+                          = link_to "", "#"
+                    %li.episode
+                      .title.ten.columns
+                        .episode-number S01E02
+                        .episode-title Second Episode
+                      .view-button.two.columns
+                        %strong
+                          = link_to "", "#"
+                    %li.episode
+                      .title.ten.columns
+                        .episode-number S01E03
+                        .episode-title Third Episode
+                      .view-button.two.columns
+                        %strong
+                          = link_to "", "#"
+                  .twelve.columns.center
+                    = link_to "Show More", "#"
+
 
             .twelve.columns.modal-rating.line-break
               %label Rating (optional)
