@@ -432,6 +432,26 @@
         }
       }
 
+      .quote-vote {
+        color: white;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 120px;
+        opacity: 0;
+        transition: opacity 0.8s;
+        a {
+          padding-top: 8px;
+          font-size: 1.8em;
+          display: block;
+        }
+      }
+      
+      &:hover {
+        .quote-vote {
+          opacity: 1;
+        }
+      }
+
       .summary {
         width: 90%;
         margin: 0 auto;

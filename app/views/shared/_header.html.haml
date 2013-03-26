@@ -54,13 +54,13 @@
       - @overlay_quote = overlay_quote_from_anime(@anime)
       .overlay
         .row
-          .ten.columns.offset-by-one
+          .eight.columns.offset-by-two
             %h5.title= @overlay_quote.content
             %p
               = @overlay_quote.character_name
-              (#{link_to @overlay_quote.anime.title, main_app.anime_quotes_path(@overlay_quote.anime)})
-          .one.column
-            .title
+              (#{link_to @overlay_quote.anime.title, main_app.anime_path(@overlay_quote.anime)})
+          .two.columns
+            .quote-vote
               = render partial: "quotes/votes", locals: {quote: @overlay_quote}
       - if (@overlay_image = @overlay_quote.anime.gallery_images.order('RANDOM()').first)
         = image_tag @overlay_image.image.url, style: 'width: 100%'
