@@ -17,7 +17,7 @@
               %label Episodes Watched
               .row.collapse
                 .three.mobile-three.columns
-                  = f.number_field :episodes_watched, :min => 0
+                  = f.number_field :episodes_watched, :min => 0, :max => watchlist.anime.episode_count
                 .three.mobile-one.columns.end
                   %span.postfix Out of #{watchlist.anime.episode_count}
 
