@@ -1,7 +1,7 @@
 .user-banner
   %figure
     .overlay
-    .img-background
+    .img-background{:style => "background: url(\"#{@user.cover_image.url}\") no-repeat center center;"}
 
 .dashboard
   .profile-bar-subnav
@@ -33,10 +33,6 @@
             = @user.bio
           %hr.hide-for-small
           %p.hide-for-small I've watched <strong>#{format_minutes @user.life_spent_on_anime}</strong> of anime.      
-
-    
-
-
 
 :javascript
   $(function() {

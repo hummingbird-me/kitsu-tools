@@ -1016,7 +1016,11 @@ CREATE TABLE users (
     forem_admin boolean DEFAULT false,
     forem_state character varying(255) DEFAULT 'approved'::character varying,
     forem_auto_subscribe boolean DEFAULT false,
-    slug character varying(255)
+    slug character varying(255),
+    cover_image_file_name character varying(255),
+    cover_image_content_type character varying(255),
+    cover_image_file_size integer,
+    cover_image_updated_at timestamp without time zone
 );
 
 
@@ -2060,3 +2064,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130319090055');
 INSERT INTO schema_migrations (version) VALUES ('20130320183734');
 
 INSERT INTO schema_migrations (version) VALUES ('20130325092239');
+
+INSERT INTO schema_migrations (version) VALUES ('20130327183519');

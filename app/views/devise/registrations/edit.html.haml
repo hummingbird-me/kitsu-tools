@@ -36,6 +36,10 @@
             %p.password-confirmation-box
               = f.label :password_confirmation
               = f.password_field :password_confirmation
+
+            %p
+              = f.label :cover_image
+              = f.file_field :cover_image
             
             %p
               = f.label :sfw_filter
