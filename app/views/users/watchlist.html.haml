@@ -3,11 +3,9 @@
   .twelve.columns
     .row
       %ul.inline-list.sub-nav
-        %li.active
-          %a{:href => "#"} All
-        - Watchlist.valid_statuses.each do |status|
-          %li
-            %a{:href => "##{status}"}= status
+        - %w(currently_watching plan_to_watch completed on_hold dropped).each do |l|
+          %li{:class => ("active" if @sub_tab == l)}
+            = link_to l.titleize, user_watchlist_path(@user, list: l)
 
       %ul.inline-list.view
         %li.active
@@ -15,203 +13,57 @@
         %li
           %a{:href => "#"} <i class="icon-th"></i>
 
-    - Watchlist.valid_statuses.each do |status|
-      %a{:name => status}
-      %h3= status
+      %h3= @sub_tab.titleize
       %table.tableSorter.twelve.columns.responsive
         %tr.table-head
           %th Anime Title
           %th Score
-          %th Type
+          /%th Type
           %th Progress
           %th Review
-          %th Update
+          - if user_signed_in? and @user == current_user
+            %th Update
+        - @watchlist.each do |w|
+          %tr
+            %td= link_to w.anime.title, w.anime
+            %td
+              - if w.rating
+                - if @user.star_rating?
+                  %i.icon-star
+                  = w.rating + 3
+                - else
+                  - if w.positive?
+                    \:)
+                  - elsif w.meh?
+                    \:|
+                  - elsif w.negative?
+                    \:(
+              - else
+                \-
+            %td
+              - if w.anime.episode_count and w.anime.episode_count > 0
+                #{((w.episodes_watched.to_f * 100) / w.anime.episode_count).round}%
+                (
+                = w.episodes_watched
+                \/
+                = w.anime.episode_count
+                )
+            %td
+              - if review = @user.reviews.where(anime_id: w.anime).first
+                = link_to "Read Review", anime_review_path(w.anime, review)
+              - elsif user_signed_in? and @user == current_user
+                = link_to "Write One!", new_anime_review_path(w.anime)
+              - else
+                \-
+            %td
+              - if user_signed_in? and @user == current_user
+                %a{"data-reveal-id" => "watchlist_#{w.anime.slug}", :href => "#"} Update
 
-    %h3 Currently Watching
-    %table.tableSorter.twelve.columns.responsive
-      %tr.table-head
-        %th Anime Title
-        %th Score
-        %th Type
-        %th Progress
-        %th Review
-        %th Update
-
-      %tr
-        %td= link_to "Boku wa Tomodachi ga Sukunai NEXT", "#"
-        %td.score <i class="icon-star"></i>5
-        %td.type TV
-        %td.progress 50% ( 50 / 100 )
-        %td.review= link_to "Write One!", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "Ginga Eiyuu Densetsu", "#"
-        %td.score <i class="icon-star"></i>8
-        %td.type OVA
-        %td.progress 100% ( 1 / 1 )
-        %td.review= link_to "Read Review", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "JoJo's Bizarre Adventure (2012)", "#"
-        %td.score <i class="icon-star"></i>6
-        %td.type Movie
-        %td.progress 100% ( 1 / 1 )
-        %td.review= link_to "Read Review", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "Accel World",  "#"
-        %td.score <i class="icon-star"></i>3
-        %td.type TV
-        %td.progress 92% ( 91 / 100 )
-        %td.review= link_to "Write One!", "#"
-        %td.update= link_to "Update", "#"
-
-    %h3 On Hold
-    %table.tableSorter.twelve.columns.responsive
-      %tr.table-head
-        %th Anime Title
-        %th Score
-        %th Type
-        %th Progress
-        %th Review
-        %th Update
-
-      %tr
-        %td= link_to "Boku wa Tomodachi ga Sukunai NEXT", "#"
-        %td.score <i class="icon-star"></i>5
-        %td.type TV
-        %td.progress 50% ( 50 / 100 )
-        %td.review= link_to "Write One!", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "Ginga Eiyuu Densetsu", "#"
-        %td.score <i class="icon-star"></i>8
-        %td.type OVA
-        %td.progress 100% ( 1 / 1 )
-        %td.review= link_to "Read Review", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "JoJo's Bizarre Adventure (2012)", "#"
-        %td.score <i class="icon-star"></i>6
-        %td.type Movie
-        %td.progress 100% ( 1 / 1 )
-        %td.review= link_to "Read Review", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "Accel World",  "#"
-        %td.score <i class="icon-star"></i>3
-        %td.type TV
-        %td.progress 92% ( 91 / 100 )
-        %td.review= link_to "Write One!", "#"
-        %td.update= link_to "Update", "#"
-
-    %h3 Dropped
-
-    %table.tableSorter.twelve.columns.responsive
-      %tr.table-head
-        %th Anime Title
-        %th Score
-        %th Type
-        %th Progress
-        %th Review
-        %th Update
-
-      %tr
-        %td= link_to "Boku wa Tomodachi ga Sukunai NEXT", "#"
-        %td.score <i class="icon-star"></i>5
-        %td.type TV
-        %td.progress 50% ( 50 / 100 )
-        %td.review= link_to "Write One!", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "Ginga Eiyuu Densetsu", "#"
-        %td.score <i class="icon-star"></i>8
-        %td.type OVA
-        %td.progress 100% ( 1 / 1 )
-        %td.review= link_to "Read Review", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "JoJo's Bizarre Adventure (2012)", "#"
-        %td.score <i class="icon-star"></i>6
-        %td.type Movie
-        %td.progress 100% ( 1 / 1 )
-        %td.review= link_to "Read Review", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "Accel World",  "#"
-        %td.score <i class="icon-star"></i>3
-        %td.type TV
-        %td.progress 92% ( 91 / 100 )
-        %td.review= link_to "Write One!", "#"
-        %td.update= link_to "Update", "#"
-
-    %h3 Completed
-    %table.tableSorter.twelve.columns.responsive
-      %tr.table-head
-        %th Anime Title
-        %th Score
-        %th Type
-        %th Progress
-        %th Review
-        %th Update
-
-      %tr
-        %td= link_to "Boku wa Tomodachi ga Sukunai NEXT", "#"
-        %td.score <i class="icon-star"></i>5
-        %td.type TV
-        %td.progress 50% ( 50 / 100 )
-        %td.review= link_to "Write One!", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "Ginga Eiyuu Densetsu", "#"
-        %td.score <i class="icon-star"></i>8
-        %td.type OVA
-        %td.progress 100% ( 1 / 1 )
-        %td.review= link_to "Read Review", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "JoJo's Bizarre Adventure (2012)", "#"
-        %td.score <i class="icon-star"></i>6
-        %td.type Movie
-        %td.progress 100% ( 1 / 1 )
-        %td.review= link_to "Read Review", "#"
-        %td.update= link_to "Update", "#"
-
-      %tr
-        %td= link_to "Accel World",  "#"
-        %td.score <i class="icon-star"></i>3
-        %td.type TV
-        %td.progress 92% ( 91 / 100 )
-        %td.review= link_to "Write One!", "#"
-        %td.update= link_to "Update", "#"
+- if user_signed_in? and @user == current_user
+  = render partial: "watchlists/form_modal", collection: @watchlist, as: :watchlist
 
 :javascript
-  $(document).ready(function() {
+  $(function() {
     $('table.tableSorter').tableSort();
   });
 
-
-/ .row.content-body
-/   .watchlist-subnav.twelve.columns
-/     %dl.sub-nav
-/       - %w(currently_watching plan_to_watch completed on_hold dropped).each do |l|
-/         %dd{:class => ("active" if @sub_tab == l)}= link_to l.titleize, user_watchlist_path(@user, list: l)
-/ - if @sub_tab == "currently_watching"
-/   = render "watchlist_currently_watching"
-/ - else
-/   - if @watchlist && @watchlist.length > 0
-/     = render "watchlist_generic"
-/   - else
-/     .twelve.columns
-/       %p Uh-oh! Looks like you haven't added anything to your watchlist yet! 
