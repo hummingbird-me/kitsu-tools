@@ -1,6 +1,6 @@
 - anime, watchlist, width = data[0], data[1], data[2] || "two"
 - readonly = data[3] && data[3] == :readonly
-.mobile-one.columns{:class => width, :id => "card-#{anime.slug}"}
+.mobile-card.columns{:class => width, :id => "card-#{anime.slug}"}
   .panel.cards.cf
     %figure
       %a{:href => anime_path(anime)}
