@@ -9,10 +9,6 @@
     width: 25% !important;
     float: left;
   }
-  @media (max-width: 768px) {
-    width: 33.3333% !important;
-    float: left;
-  }
   @media (max-width: 468px) {
     width: 50% !important;
     float: left;
@@ -219,6 +215,13 @@
   margin-top: 100px;
   
   .filter-toolbar {
+    background: white; 
+    position: relative; 
+    height: 50px; 
+    margin-bottom: 50px;
+    @media (max-width: 480px) {
+      margin-bottom: 150px;
+    }
     .row {
       overflow: visible;
       .twelve.columns {
@@ -229,6 +232,11 @@
           .three.columns {
             padding: 0px;
             margin: 0px;
+            button {
+              @media (max-width: 480px) {
+                border-bottom: 1px solid #eee;
+              }
+            }
             .dropdown {
               height: 50px;
               margin: 0px;
@@ -378,7 +386,7 @@
   /* ============================================== */
   .columns {
     padding: 0 10px;
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
       padding: 0 3px;
       margin-bottom: -15px;
     }
@@ -396,13 +404,18 @@
   }
 
   .anime-grid {
+    @media (max-width: 768px) {
+      padding: 20px;
+    }
+    @media (max-width: 480px) {
+      padding: 20px;
+    }
     [class*="column"] + [class*="column"]:last-child {
       float: left;
     }
+
     .overlay {
-      @media (max-width: 1000px) {
-        display: none !important;
-      }
+
     }
 
     .not-found {
@@ -698,6 +711,12 @@
       padding: 0px;
       padding-top: 20px;
       padding-bottom: 20px;
+      @media (max-width: 480px) {
+        padding-top: 13px;
+        padding-bottom: 26px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
       strong {
         text-indent: -9999px;
         display: block;
@@ -745,6 +764,12 @@
       padding: 0px;
       padding-top: 20px;
       padding-bottom: 20px;
+      @media (max-width: 480px) {
+        padding-top: 13px;
+        padding-bottom: 26px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
       strong {
         text-indent: -9999px;
         display: block;
@@ -793,6 +818,12 @@
       padding: 0px;
       padding-top: 20px;
       padding-bottom: 20px;
+      @media (max-width: 480px) {
+        padding-top: 13px;
+        padding-bottom: 26px;
+        padding-left: 5px;
+        padding-right: 5px;
+      }
       strong {
         text-indent: -9999px;
         display: block;
