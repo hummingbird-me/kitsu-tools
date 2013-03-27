@@ -24,32 +24,7 @@
 
               // Styles need fixed
               .twelve.columns.user-watchlist{:style => "padding: 0px;"}
-                .episode-list
-                  %ul
-                    %li.episode
-                      .title.ten.columns
-                        .episode-number S01E01
-                        .episode-title First Episode
-                      .view-button.two.columns
-                        %strong
-                          = link_to "", "#"
-                    %li.episode
-                      .title.ten.columns
-                        .episode-number S01E02
-                        .episode-title Second Episode
-                      .view-button.two.columns
-                        %strong
-                          = link_to "", "#"
-                    %li.episode
-                      .title.ten.columns
-                        .episode-number S01E03
-                        .episode-title Third Episode
-                      .view-button.two.columns
-                        %strong
-                          = link_to "", "#"
-                  .twelve.columns.center
-                    = link_to "Show More", "#"
-
+                = render partial: "episodes/list_four", locals: {episodes: select_four_episodes(watchlist, watchlist.anime), anime: watchlist.anime, write: true}
 
             .twelve.columns.modal-rating.line-break
               %label Rating (optional)
