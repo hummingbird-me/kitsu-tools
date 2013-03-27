@@ -100,7 +100,7 @@
             checkForCompletion();
           
       - else
-        = form_tag(controller: 'imports', action: 'myanimelist') do
+        = form_tag("/imports/myanimelist/new") do
           %label MyAnimeList Username:
           .row.collapse
             .five.columns
