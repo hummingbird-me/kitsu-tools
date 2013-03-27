@@ -195,3 +195,6 @@
 // Quote Modal
 #quoteModal.reveal-modal{:class => "[expand, xlarge, large, medium, small]"}
   = render "quotes/new"
+
+- if user_signed_in?
+  = render partial: "watchlists/form_modal", locals: {watchlist: @watchlist || Watchlist.new(user: current_user, anime: @anime)}
