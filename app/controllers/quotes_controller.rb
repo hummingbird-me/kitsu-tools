@@ -34,6 +34,12 @@ class QuotesController < ApplicationController
     else
       @quote.delete_evaluation(:votes, current_user)
     end
-    redirect_to :back
+
+    respond_to do |format|
+      if request.xhr?
+        format.js { render "replace_votes" }
+      end
+      format.html { redirect_to :back }
+    end
   end
 end

@@ -48,7 +48,17 @@ class Anime < ActiveRecord::Base
   end
 
   # Find anime containing the genres passed in.
+  # This complicated bit of SQL basically does relational division.
   def self.include_genres(genres)
-    where('EXISTS (SELECT 1 FROM anime_genres WHERE anime_genres.anime_id = anime.id AND anime_genres.genre_id IN (?))', genres.map(&:id))
+    where('NOT EXISTS (
+            SELECT * FROM genres AS g
+            WHERE g.id IN (?)
+            AND NOT EXISTS (
+              SELECT *
+              FROM anime_genres AS ag
+              WHERE ag.anime_id = anime.id
+              AND   ag.genre_id = g.id
+            )
+          )', genres.map(&:id))
   end
 end

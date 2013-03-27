@@ -1,5 +1,5 @@
 .anime-discover
-  .filter-toolbar{:style => "background: white; position: relative; height: 50px; margin-bottom: 50px;"}
+  .filter-toolbar
     .row
       .twelve.columns
         %form.autosubmit
@@ -30,17 +30,17 @@
           %ul.inline-list
             %li.three.columns
               %select{:multiple => "multiple", :class => "multiple-nofiltera", :name => "types[]"}
-                %option
+                %option{:disabled => "disabled"}
                   Series
-                %option
+                %option{:disabled => "disabled"}
                   OVA / SPECIAL
 
           %ul.inline-list.where-to-watch
             %li.three.columns
               %select{:multiple => "multiple", :class => "multiple-nofilterb", :name => "watch[]"}
-                %option
+                %option{:disabled => "disabled"}
                   Netflix
-                %option
+                %option{:disabled => "disabled"}
                   Hulu
                 %option{:disabled => "disabled"}
                   Crunchyroll
@@ -110,10 +110,12 @@
   }).multiselectfilter();
   $(".multiple-nofiltera").multiselect({
     noneSelectedText: "Any Type",
+    header: "coming soon!",
     selectedList: 3 // 0-based index
   });
   $(".multiple-nofilterb").multiselect({
     noneSelectedText: "Watch Anywhere",
+    header: "coming soon!",
     selectedList: 3 // 0-based index
   });
   $(".single-select").multiselect({

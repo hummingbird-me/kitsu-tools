@@ -18,7 +18,7 @@
               %label Episodes Watched
               .row.collapse
                 .three.mobile-three.columns
-                  = f.number_field :episodes_watched
+                  = f.number_field :episodes_watched, :min => 0, :max => watchlist.anime.episode_count
                 .three.mobile-one.columns.end
                   %span.postfix Out of #{watchlist.anime.episode_count}
 
@@ -65,24 +65,41 @@
                   = f.label :"rating_#{watchlist.anime.slug}_2"
 
                 .four.columns.meh
-                  // This code works for selecting but attempting to submit it errors.
                   = radio_button_tag(:"watchlist_rating_#{watchlist.anime.slug}", 0, watchlist.meh?)
                   = f.label :"rating_#{watchlist.anime.slug}_0"
 
                 .four.columns.dislike
-                  // This code works for selecting but attempting to submit it errors.
                   = radio_button_tag(:"watchlist_rating_#{watchlist.anime.slug}", -2, watchlist.negative?)
                   = f.label :"rating_#{watchlist.anime.slug}_-2"
 
-                /.four.columns.like
-                /  = f.radio_button "rating", 2
-                /  = f.label :"rating_2"
-                /.four.columns.meh
-                /  = f.radio_button "rating", 0
-                /  = f.label :"rating_0"
-                /.four.columns.dislike
-                /  = f.radio_button "rating", -2
-                /  = f.label :"rating_-2"
-
             .twelve.columns{:style => "margin-bottom: 0px;"}
               %input.button.padded{:type => "submit", :value => "Update Watchlist"}
+
+.reveal-modal.anime-discover.anime-show{:class => "medium", :id => "preview_#{watchlist.anime.slug}"}
+  .twelve.columns.center{:style => "text-align: center; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 10px;"}
+    .six.columns{:style => "border-right: 1px solid #eee;"}
+      %a{:href => "#"}
+      = link_to watchlist.anime do
+        %i.icon-signin
+        View Full Details
+
+    .six.columns
+      %a{"data-reveal-id" => "watchlist_#{watchlist.anime.slug}", :href => "#"}
+        %i.icon-list-alt
+        Add to Watchlist
+  .anime-details.cards.cf
+    .details-left.four.columns{:style => "padding: 0px;"}
+      - watchlist.anime.gallery_images.limit(4).each do |image|
+        .twelve.columns
+          = image_tag image.image.url(:thumb)
+      
+    .details-right.eight.columns
+      %h3{:style => "margin-top: 0px;"}= watchlist.anime.title
+      .genres
+        %p 
+        Genres:
+        = watchlist.anime.genres.map {|x| link_to(x.name, x) }.join(", ").html_safe
+      .synopsis
+        %strong Status: #{watchlist.anime.status}
+        %p= watchlist.anime.synopsis
+
