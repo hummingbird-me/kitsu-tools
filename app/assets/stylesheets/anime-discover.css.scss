@@ -4,6 +4,21 @@
 @import "compass/css3";
 @import "compass/utilities";
 
+.mobile-card {
+  @media (max-width: 840px) {
+    width: 25% !important;
+    float: left;
+  }
+  @media (max-width: 768px) {
+    width: 33.3333% !important;
+    float: left;
+  }
+  @media (max-width: 468px) {
+    width: 50% !important;
+    float: left;
+  }
+}
+
 .reveal-modal {
   padding: 15px;
   fieldset {
@@ -20,6 +35,7 @@
       padding-bottom: 20px !important;
     }
   }
+
   .three {
     float: left;
     input {
