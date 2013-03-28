@@ -33,9 +33,6 @@ class EpisodesController < ApplicationController
     if params[:watched] == "true"
       if !@watchlist.episodes.include? @episode
         @watchlist.episodes << @episode
-        if @watchlist.episodes == @watchlist.anime.episodes
-          @watchlist.status = "Completed"
-        end
         current_user.update_life_spent_on_anime(@episode.length)
       end
     elsif params[:watched] == "false"
