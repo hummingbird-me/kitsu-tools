@@ -31,9 +31,9 @@
           }(document, 'script', 'facebook-jssdk'));
         
         - if user_signed_in?
-          %span.avatar= link_to image_tag(current_user.avatar_url), main_app.edit_user_registration_path 
+          %span.avatar= link_to image_tag(current_user.avatar_url), main_app.user_path(current_user) 
 
-          %a.flyout-toggle{:href => "#{main_app.edit_user_registration_path}"}
+          %a.flyout-toggle{:href => "#{main_app.user_path(current_user)}"}
             %span
           %ul.flyout
             %li
