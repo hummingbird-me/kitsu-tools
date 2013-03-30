@@ -12,13 +12,27 @@ end
 namespace :compute do
   desc "Compute the lower bound of the Wilson score CI for each anime"
   task :wilson_ci => :environment do |t|
-    pre = YAML.load File.read("import/like_dislike.yaml")
+    # NOTE This doesn't actually compute the Wilson CI, rather it computes a
+    #      Bayesian average.
+    #
+    #      See: http://masanjin.net/blog/how-to-rank-products-based-on-user-input
+    #prior = (-2..2).map {|x| Watchlist.where(rating: x).count }
+    prior = [2, 2, 2, 2, 2]
     Anime.where({}).each do |anime|
-      # TODO consider user ratings as well, not just the pre bias.
-      pos = (pre[anime.mal_id] || [0, 0])[0]
-      neg = (pre[anime.mal_id] || [0, 0])[1]
-      anime.wilson_ci = ci_lower_bound(pos, pos+neg)
-      anime.user_count = pos+neg
+      votes = (-2..2).map {|x| anime.watchlists.where(rating: x).count }
+      posterior = votes.zip(prior).map {|a, b| a + b }
+      sum = posterior.sum
+      score = posterior.map.with_index {|v, i| (i + 1) * v }.inject {|a, b| a + b }.to_f / sum
+      anime.wilson_ci = (score - 1.0) / 4
+      anime.user_count = anime.watchlists.count
+      anime.save
+    end
+    # After computing the ratings, normalize them so that they span the range
+    # [0.1, 1].
+    min = Anime.all.map {|x| x.wilson_ci }.min
+    max = Anime.all.map {|x| x.wilson_ci }.max
+    Anime.where({}).each do |anime|
+      anime.wilson_ci = 0.1 + 0.9 * (anime.wilson_ci - min) / (max - min)
       anime.save
     end
   end
