@@ -190,7 +190,11 @@ CREATE TABLE characters (
     description text,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    mal_id integer
+    mal_id integer,
+    image_file_name character varying(255),
+    image_content_type character varying(255),
+    image_file_size integer,
+    image_updated_at timestamp without time zone
 );
 
 
@@ -1763,8 +1767,6 @@ INSERT INTO schema_migrations (version) VALUES ('20130130114735');
 
 INSERT INTO schema_migrations (version) VALUES ('20130130124651');
 
-INSERT INTO schema_migrations (version) VALUES ('20130130211028');
-
 INSERT INTO schema_migrations (version) VALUES ('20130130211236');
 
 INSERT INTO schema_migrations (version) VALUES ('20130130221825');
@@ -2066,3 +2068,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130320183734');
 INSERT INTO schema_migrations (version) VALUES ('20130325092239');
 
 INSERT INTO schema_migrations (version) VALUES ('20130327183519');
+
+INSERT INTO schema_migrations (version) VALUES ('20130330104711');
