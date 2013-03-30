@@ -31,7 +31,7 @@
               - if user_signed_in? and current_user.star_rating
                 .twelve.columns
                   .star-rating
-                    = f.select "rating", [["1 star", -2], ["2 stars", -1], ["3 stars", 0], ["4 stars", 1], ["5 stars", 2]]
+                    = f.select "rating", [["", nil], ["1 star", -2], ["2 stars", -1], ["3 stars", 0], ["4 stars", 1], ["5 stars", 2]], selected: watchlist.rating
 
               - else
 
