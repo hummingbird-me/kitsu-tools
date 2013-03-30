@@ -14,7 +14,7 @@ class Genre < ActiveRecord::Base
   def self.default_filterable(user=nil)
     genres = Genre.all
     if user && user.sfw_filter 
-      genres -= Genre.where('slug IN (?)', %w(hentai yaoi yuri)) 
+      genres -= Genre.where('slug IN (?)', %w(hentai yaoi yuri shounen-ai shoujo-ai)) 
     end
     genres
   end
