@@ -1024,7 +1024,6 @@ CREATE TABLE users (
     forem_admin boolean DEFAULT false,
     forem_state character varying(255) DEFAULT 'approved'::character varying,
     forem_auto_subscribe boolean DEFAULT false,
-    slug character varying(255),
     cover_image_file_name character varying(255),
     cover_image_content_type character varying(255),
     cover_image_file_size integer,
@@ -1733,13 +1732,6 @@ CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (conf
 
 
 --
--- Name: index_users_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_users_on_slug ON users USING btree (slug);
-
-
---
 -- Name: index_watchlists_on_anime_id_and_rating; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2085,3 +2077,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130330104711');
 INSERT INTO schema_migrations (version) VALUES ('20130330111624');
 
 INSERT INTO schema_migrations (version) VALUES ('20130330120433');
+
+INSERT INTO schema_migrations (version) VALUES ('20130330150339');

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :name, use: :slugged
+  def to_param
+    "#{id} #{name}".parameterize
+  end
   
   # Include devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable
