@@ -1,6 +1,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_filter :hide_cover_image
+
   def edit
-    hide_cover_image
     render :edit
   end
 
