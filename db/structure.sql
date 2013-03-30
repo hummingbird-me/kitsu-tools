@@ -635,7 +635,11 @@ CREATE TABLE people (
     name character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    mal_id integer
+    mal_id integer,
+    image_file_name character varying(255),
+    image_content_type character varying(255),
+    image_file_size integer,
+    image_updated_at timestamp without time zone
 );
 
 
@@ -2070,3 +2074,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130325092239');
 INSERT INTO schema_migrations (version) VALUES ('20130327183519');
 
 INSERT INTO schema_migrations (version) VALUES ('20130330104711');
+
+INSERT INTO schema_migrations (version) VALUES ('20130330111624');

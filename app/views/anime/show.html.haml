@@ -134,7 +134,7 @@
                       .name.ten.columns
                         %p= link_to casting.person.name, "#"
                       .headshot.two.columns
-                        = image_tag "http://placekitten.com/g/226/350"
+                        = image_tag casting.person.image.url(:thumb)
                   
 
         %footer.twelve.columns
