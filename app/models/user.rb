@@ -39,8 +39,8 @@ class User < ActiveRecord::Base
   validates :name,
     :presence   => true,
     :uniqueness => {:case_sensitive => false},
-    :format => {:with => /\A[_A-Za-z0-9]+\z/, 
-      :message => "can only contain alphabets, numbers and underscores."}
+    :format => {:with => /\A[-_A-Za-z0-9]+\z/, 
+      :message => "can only contain alphabets, numbers, dashes and underscores."}
   
   validates :facebook_id, allow_blank: true, uniqueness: true
 
