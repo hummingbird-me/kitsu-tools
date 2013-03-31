@@ -118,6 +118,8 @@ after "deploy:restart",
 before "sidekiq:restart", "deploy:stop_monit_sidekiq"
 after "sidekiq:restart", "deploy:start_monit_sidekiq"
 
+after "deploy:migrate", "deploy:reload_unicorn"
+
 # To keep only the last 5 releases:
 # (Default is `set :keep_releases, 5`)
 after "deploy:restart", "deploy:cleanup"
