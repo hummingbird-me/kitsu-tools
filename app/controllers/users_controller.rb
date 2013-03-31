@@ -21,7 +21,17 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue
+      # TEMPORARY
+      # Support the slug URLs as well. Remove this once it becomes a performance
+      # issue.
+      @user = User.all.select {|x| x.name.parameterize == params[:id] }.first
+      raise ActionController::RoutingError.new('Not Found') if @user.nil?
+      redirect_to @user, :status => :moved_permanently
+    end
+
     @active_tab = :profile
     
     @latest_reviews = @user.reviews.order('created_at DESC').limit(2)
