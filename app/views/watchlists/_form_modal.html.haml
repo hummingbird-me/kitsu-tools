@@ -22,9 +22,9 @@
                 .three.mobile-one.columns.end
                   %span.postfix Out of #{watchlist.anime.episode_count}
 
-              // Styles need fixed
-              .twelve.columns.user-watchlist{:style => "padding: 0px;"}
-                = render partial: "episodes/list_four", locals: {episodes: select_four_episodes(watchlist, watchlist.anime), anime: watchlist.anime, write: true}
+              / // Styles need fixed
+              / .twelve.columns.user-watchlist{:style => "padding: 0px;"}
+              /   = render partial: "episodes/list_four", locals: {episodes: select_four_episodes(watchlist, watchlist.anime), anime: watchlist.anime, write: true}
 
             .twelve.columns.modal-rating.line-break
               %label Rating (optional)
