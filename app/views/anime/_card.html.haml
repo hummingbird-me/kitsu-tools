@@ -16,7 +16,11 @@
             .twelve.columns.add-watchlist
               %i.icon-list-alt
               - if user_signed_in?
-                %a{"data-reveal-id" => "watchlist_#{anime.slug}", :href => "#"} Add to Watchlist
+                %a{"data-reveal-id" => "watchlist_#{anime.slug}", :href => "#"}
+                  - if watchlist
+                    Edit Watchlist
+                  - else
+                    Add to Watchlist
               - else
                 = link_to "Add to Watchlist", new_user_session_path
 
