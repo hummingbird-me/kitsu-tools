@@ -123,7 +123,7 @@ class MalImport
       watchlists = ([nil] * (per*(page-1))) + watchlists + ([nil] * (total-watchlists.length))
     end
 
-    watchlists
+    watchlists.compact
   end
   
   def self.get_reviews_from_staged_import(staged_import)
