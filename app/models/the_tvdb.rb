@@ -14,7 +14,7 @@ class TheTvdb
     )
     data["Data"]["Episode"].select {|x| x["SeasonNumber"] ? (x["SeasonNumber"].to_i > 0) : true }.select {|x| season_id ? (x["seasonid"].to_i == season_id.to_i) : true }
   end
-  
+
   def self.save_episode_data(anime)
     if anime.thetvdb_series_id
       if anime.thetvdb_season_id and anime.thetvdb_season_id.to_s.length > 0
