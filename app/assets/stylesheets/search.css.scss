@@ -11,10 +11,14 @@
   display: block;
 
   .tt-suggestions {
-    position: absolute;
-    top: 55px;
-    left: -51px;
-    width: 121%;
+    //position: absolute;
+    //top: 55px;
+    //left: -51px;
+    margin-left: -38px;
+    margin-top: -10px;
+    width: 124%;
+    padding-left: 6px;
+    padding-right: 6px;
     border-top: 3px solid #fd7532;
     background: white;
     @include border-bottom-radius(3px);

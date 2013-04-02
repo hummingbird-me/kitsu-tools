@@ -11,3 +11,9 @@ $ ->
     name: 'anime',
     remote: "/search.json?query=%QUERY"
   });
+
+  $("input.typeahead").on "typeahead:selected", (event) ->
+    $("input.typeahead").parent().parent().submit();
+  $("input.typeahead_home").on "typeahead:selected", (event) ->
+    $("input.typeahead_home").parent().parent().submit();
+
