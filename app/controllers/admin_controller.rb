@@ -16,4 +16,10 @@ class AdminController < ApplicationController
     @invited_beta = BetaInvite.where({invited: true}).count
     @user_count = User.count
   end
+
+  def login_as_user
+    user = User.find(params[:user_id])
+    sign_in(:user, user)
+    redirect_to "/"
+  end
 end

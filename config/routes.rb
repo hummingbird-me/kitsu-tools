@@ -71,6 +71,7 @@ Hummingbird::Application.routes.draw do
   end
   constraints constraint do
     match '/kotodama' => 'admin#index', as: :admin_panel
+    match '/kotodama/login_as' => 'admin#login_as_user'
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
   end
