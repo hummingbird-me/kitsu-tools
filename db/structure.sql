@@ -1027,7 +1027,8 @@ CREATE TABLE users (
     cover_image_file_name character varying(255),
     cover_image_content_type character varying(255),
     cover_image_file_size integer,
-    cover_image_updated_at timestamp without time zone
+    cover_image_updated_at timestamp without time zone,
+    english_anime_titles boolean DEFAULT true
 );
 
 
@@ -2079,3 +2080,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130330111624');
 INSERT INTO schema_migrations (version) VALUES ('20130330120433');
 
 INSERT INTO schema_migrations (version) VALUES ('20130330150339');
+
+INSERT INTO schema_migrations (version) VALUES ('20130403150926');
