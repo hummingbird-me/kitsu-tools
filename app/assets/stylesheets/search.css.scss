@@ -9,14 +9,19 @@
   position: relative;
   width: 200px;
   display: block;
-
+  .tt-dropdown-menu {
+    position: absolute;
+    z-index: 100;
+    left: -34px !important;
+    width: 122% !important;
+    top: 53px !important;
+    display: block;
+    right: auto;
+  }
   .tt-suggestions {
     //position: absolute;
     //top: 55px;
     //left: -51px;
-    margin-left: -38px;
-    margin-top: -10px;
-    width: 124%;
     padding-left: 6px;
     padding-right: 6px;
     border-top: 3px solid #fd7532;
