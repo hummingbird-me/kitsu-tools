@@ -48,7 +48,11 @@
                   = f.label :"rating_#{watchlist.anime.slug}_-2"
 
             .twelve.columns{:style => "margin-bottom: 0px;"}
-              %input.button.padded{:type => "submit", :value => "Update Watchlist"}
+              .six.columns{:style => "margin-top: 10px;"}
+                = link_to "Remove from Watchlist", "#"
+              .six.columns
+                %input.button.padded{:type => "submit", :value => "Update Watchlist"}
+
 
 .reveal-modal.anime-discover.anime-show{:class => "medium", :id => "preview_#{watchlist.anime.slug}"}
   .twelve.columns.center{:style => "text-align: center; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 10px;"}
