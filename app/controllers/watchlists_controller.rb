@@ -29,7 +29,7 @@ class WatchlistsController < ApplicationController
   def create; update; end
 
   def remove_from_watchlist
-    @anime = Anime.find(params["watchlist"]["anime_id"])
+    @anime = Anime.find(params["anime_id"])
     @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
     @watchlist.destroy
     redirect_to :back

@@ -49,7 +49,7 @@
 
             .twelve.columns{:style => "margin-bottom: 0px;"}
               .six.columns{:style => "margin-top: 10px;"}
-                = link_to "Remove from Watchlist", "#"
+                = link_to "Remove from Watchlist", remove_from_watchlist_path(watchlist.anime)
               .six.columns
                 %input.button.padded{:type => "submit", :value => "Update Watchlist"}
 
