@@ -40,12 +40,22 @@
       border: 1px solid rgba(255,255,255,0.2);
       color: #ccc;
     }
-
+    .search {
+      border: none !important;
+      input[type="submit"] {
+        right: 10px !important;
+      }
+    }
     .twitter-typeahead {
       ol {
         list-style: none;
       }
-     .tt-suggestions {
+      .tt-dropdown-menu {
+        left: 0px !important;
+        width: 100% !important;
+        top: 53px !important;
+      }
+      .tt-suggestions {
         margin-left: 0px;
         left: 0;
         background: rgba(0,0,0,0.9);
