@@ -5,9 +5,9 @@
 
     .nine.columns
       .panel 
-        %h4= title "#{@anime.title} Reviews"
+        %h4= title "#{@anime.canonical_title(current_user)} Reviews"
         = link_to new_anime_review_path(@anime) do
-          %span= "Write a review for #{@anime.title}"
+          %span= "Write a review for #{@anime.canonical_title(current_user)}"
 
       - @reviews.each do |review|
         .panel

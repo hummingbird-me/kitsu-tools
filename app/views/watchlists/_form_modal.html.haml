@@ -7,7 +7,7 @@
           %legend Update Your Watchlist
           .row
             .twelve.columns
-              %h3= watchlist.anime.title
+              %h3= watchlist.anime.canonical_title(current_user)
               
             .twelve.columns.line-break
               %label Watchlist Status
@@ -74,7 +74,7 @@
           = image_tag image.image.url(:thumb)
       
     .details-right.eight.columns
-      %h3{:style => "margin-top: 0px;"}= watchlist.anime.title
+      %h3{:style => "margin-top: 0px;"}= watchlist.anime.canonical_title(current_user)
       .genres
         %p 
         Genres:

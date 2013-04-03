@@ -5,9 +5,9 @@
 
     .nine.columns
       .panel.top-bar
-        %h4= title "#{@anime.title} Quotes"
+        %h4= title "#{@anime.canonical_title(current_user)} Quotes"
         %a{"data-reveal-id" => "submit-quote", :href => "#"}
-          %span= "Submit a quote for #{@anime.title}"
+          %span= "Submit a quote for #{@anime.canonical_title(current_user)}"
           
       - @quotes.each do |quote|
         %fieldset

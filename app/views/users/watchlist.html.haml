@@ -25,7 +25,7 @@
             %th Update
         - @watchlist.each do |w|
           %tr
-            %td= link_to w.anime.title, w.anime
+            %td= link_to w.anime.canonical_title(current_user), w.anime
             %td
               - if w.rating
                 - if @user.star_rating?

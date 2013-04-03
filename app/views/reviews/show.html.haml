@@ -1,4 +1,4 @@
-- title "#{@anime.title} Review by #{@review.user.name}"
+- title "#{@anime.canonical_title(current_user)} Review by #{@review.user.name}"
 
 :css
   .hummingbird-header figure {border-bottom: 3px solid #fd7532;}
@@ -12,7 +12,7 @@
           %p.username= link_to @review.user.name, @review.user 
         .ten.columns
           %span.anime-title
-            = link_to @review.anime.title, @review.anime
+            = link_to @review.anime.canonical_title(current_user), @review.anime
             Review
     .row
       .sharing-sidebar.two.columns
@@ -107,7 +107,7 @@
                 %li.touchcarousel-item 
                   .carousel_img{:style => "background-image: url(#{review.anime.cover_image.url(:thumb)});"}
                   .meta
-                    %h3= review.anime.title
+                    %h3= review.anime.canonical_title(current_user)
                     %h1= review.rating
                     %p.cite written by
                     %p= review.user.name

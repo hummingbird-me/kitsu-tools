@@ -28,7 +28,7 @@
           %tbody
             - @watchlist.each do |wld|
               %tr
-                %td= wld[0].title
+                %td= wld[0].canonical_title(current_user)
                 %td= wld[1].status
                 %td
                   - if wld[1].rating
@@ -51,7 +51,7 @@
           %tbody
             - @reviews.each do |review|
               %tr
-                %td= review.anime.title
+                %td= review.anime.canonical_title(current_user)
                 %td
                   %table
                     %tr

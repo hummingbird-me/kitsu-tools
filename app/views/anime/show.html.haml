@@ -7,12 +7,12 @@
         .details-left
           = render partial: "card", locals: {data: [@anime, @watchlist]} 
         .details-right.eight.columns
-          %h3= title(@anime.title)
+          %h3= title(@anime.canonical_title(current_user))
 
           .small-summary 
             %span #{pluralize @anime.episode_count, 'episode'} / #{@anime.episode_length} min. each  ||
             %span #{@anime.age_rating}
-            - if @anime.alt_title and @anime.alt_title.length > 0
+            - if @anime.alternate_title(current_user) and @anime.alternate_title(current_user).length > 0
               %span (Also known as <strong>#{@anime.alt_title}</strong>)
 
           .producers
@@ -98,7 +98,7 @@
       .panel.episode-tracker
         %header 
           .eleven.columns
-            #{@anime.title} Episodes
+            #{@anime.canonical_title(current_user)} Episodes
           / .one.columns
           /   = link_to "edit", "#"
 
@@ -107,7 +107,7 @@
       .panel.voice-actors
         %header 
           .eleven.columns
-            #{@anime.title} Voice Actors
+            #{@anime.canonical_title(current_user)} Voice Actors
           / .one.columns
           /   = link_to "edit", "#"
 
@@ -150,7 +150,7 @@
       = render "mini_gallery"
 
       .quotes.twelve.columns
-        %h5 #{@anime.title} Quotes
+        %h5 #{@anime.canonical_title(current_user)} Quotes
 
         - @quotes.each do |quote|
           %blockquote

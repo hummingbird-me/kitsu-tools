@@ -44,6 +44,16 @@ class Anime < ActiveRecord::Base
     age_rating != "Rx"
   end
 
+  # Use this function to get the title instead of directly accessing the title.
+  def canonical_title(current_user=nil)
+    title
+  end
+  # Use this function to get the alt title instead of directly accessing the 
+  # alt_title.
+  def alternate_title(current_user=nil)
+    alt_title
+  end
+
   # Filter out all anime belonging to the genres passed in.
   def self.exclude_genres(genres)
     where('NOT EXISTS (SELECT 1 FROM anime_genres WHERE anime_genres.anime_id = anime.id AND anime_genres.genre_id IN (?))', genres.map(&:id))

@@ -5,7 +5,7 @@
 
     .nine.columns
       .panel.top-bar
-        %h4= title "#{@anime.title} Episode List"
+        %h4= title "#{@anime.canonical_title(current_user)} Episode List"
       
       - if user_signed_in?
         .panel
@@ -36,5 +36,5 @@
       - if @anime.thetvdb_series_id
         .panel
           %p 
-            The episode information for #{@anime.title} has been provided by
+            The episode information for #{@anime.canonical_title(current_user)} has been provided by
             #{link_to "TheTVDB.com", "http://www.thetvdb.com/?tab=series&id=#{@anime.thetvdb_series_id}"}.

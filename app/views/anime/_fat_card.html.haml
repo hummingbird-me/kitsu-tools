@@ -5,7 +5,7 @@
         .poster.four.columns.hide-for-small
           = link_to image_tag(wl.anime.cover_image.url(:thumb)), wl.anime
         .title-info.eight.columns
-          %h4= link_to wl.anime.title, wl.anime
+          %h4= link_to wl.anime.canonical_title(current_user), wl.anime
           %p.seen-count 
             Seen
             %span{:class => "fat-card-episodes-watched-#{wl.anime.slug}"}= wl.episodes_watched

@@ -6,7 +6,7 @@
       %a{:href => anime_path(anime)}
         .overlay
           .link-block.twelve.columns
-            %h5.title #{anime.title}
+            %h5.title #{anime.canonical_title(current_user)}
 
           .twelve.columns.preview
             %i.icon-external-link
@@ -26,7 +26,7 @@
 
           / %p.summary #{truncate(anime.synopsis, length: 300, omission: '...')}
         / %figcaption= link_to anime.title, anime
-        = image_tag anime.cover_image.url(:thumb), alt: anime.title
+        = image_tag anime.cover_image.url(:thumb), alt: anime.canonical_title(current_user)
 
     .progress.six
       %span.meter{:style => "width: #{percentage_completed(anime, watchlist)}%"}

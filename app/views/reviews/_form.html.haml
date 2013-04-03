@@ -18,7 +18,7 @@
           %p.username= link_to @review.user.name, @review.user
         .ten.columns
           %span.anime-title
-            = link_to @anime.title, @anime
+            = link_to @anime.canonical_title(current_user), @anime
             Review
     = form_for [@anime, @review] do |f|
       .row
