@@ -17,7 +17,7 @@
     - if yield(:title).length > 0
       %meta(property="og:title"){:content => yield(:title)}
     - if @anime and @anime.respond_to? :cover_image
-      %meta(property="og:image"){:content => @anime.cover_image.url(:thumb)}
+      %meta(property="og:image"){:content => "http://hummingbird.ly" + @anime.cover_image.url(:thumb)}
 
     // Typekit Code
     %script{:src => "//use.typekit.net/nlt2ped.js", :type => "text/javascript"}
