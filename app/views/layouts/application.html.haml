@@ -10,14 +10,14 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     //%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-
     %meta(property="fb:app_id" content="325314560922421")
-    - if yield(:fb_description).length > 0
-      %meta(property="og:description"){:content => yield(:fb_description)}
+
     - if yield(:title).length > 0
       %meta(property="og:title"){:content => yield(:title)}
     - if @anime and @anime.respond_to? :cover_image
       %meta(property="og:image"){:content => "http://hummingbird.ly" + @anime.cover_image.url(:thumb)}
+
+    = yield(:extra_meta_content)
 
     // Typekit Code
     %script{:src => "//use.typekit.net/nlt2ped.js", :type => "text/javascript"}

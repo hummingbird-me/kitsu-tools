@@ -4,16 +4,6 @@ module ApplicationHelper
     page_title.to_s
   end
 
-  def description(desc, options={})
-    if options[:type]
-      if options[:type] == :facebook
-        content_for(:fb_description, desc.to_s)
-      end
-    else
-      content_for(:description, desc.to_s)
-    end
-  end
-
   def markdown(text)
     return "" if text.nil?
     sanitize(RDiscount.new(Haml::Helpers.html_escape(text)).to_html).html_safe

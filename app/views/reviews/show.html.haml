@@ -1,5 +1,12 @@
 - title "#{@anime.canonical_title(current_user)} Review by #{@review.user.name}"
-- description @review.summary, type: :facebook
+
+- content_for(:extra_meta_content) do
+  %meta(property="og:type" content="article")
+  %meta(property="og:description"){:content => @review.summary}
+  %meta(property="article:published_time"){:content => @review.created_at.iso8601}
+  %meta(property="article:modified_time"){:content => @review.updated_at.iso8601}
+  %meta(property="article:author"){:content => user_url(@review.user)}
+
 
 :css
   .hummingbird-header figure {border-bottom: 3px solid #fd7532;}
