@@ -16,7 +16,7 @@
       %meta(property="og:description"){:content => yield(:fb_description)}
     - if yield(:title).length > 0
       %meta(property="og:title"){:content => yield(:title)}
-    - unless @anime.nil?
+    - if @anime and @anime.respond_to? :cover_image
       %meta(property="og:image"){:content => @anime.cover_image.url(:thumb)}
 
     // Typekit Code
