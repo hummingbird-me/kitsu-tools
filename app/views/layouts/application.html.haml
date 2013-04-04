@@ -16,16 +16,6 @@
     :javascript
       try{Typekit.load();}catch(e){}
 
-    // Facebook Code
-    #fb-root
-    :javascript
-      (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=452427161479702";
-      fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
 
     - if Rails.env.production?
       :javascript
@@ -33,14 +23,27 @@
         analytics.load("c6svkipfq3");
 
 
-  = render 'shared/header'
-  %body#page.off-canvas.slide-nav
-    = yield
-  = render 'shared/footer'
-  - if Rails.env.production? and user_signed_in?
+  %body
+    // Facebook Code
+    #fb-root
     :javascript
-      analytics.identify('#{j current_user.name}', {
-        email: '#{j current_user.email}',
-        username: '#{j current_user.name}'
-      });
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=452427161479702";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+      
+    = render 'shared/header'
+    
+    #page.off-canvas.slide-nav
+      = yield
+    = render 'shared/footer'
+    - if Rails.env.production? and user_signed_in?
+      :javascript
+        analytics.identify('#{j current_user.name}', {
+          email: '#{j current_user.email}',
+          username: '#{j current_user.name}'
+        });
 
