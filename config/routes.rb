@@ -8,6 +8,7 @@ Hummingbird::Application.routes.draw do
   }
 
   mount Forem::Engine => "/community"
+  match '/privacy' => 'home#privacy'
 
   resources :beta_invites
   match "/beta_invites/resend_invite" => "beta_invites#resend_invite", as: :resend_beta_invite
