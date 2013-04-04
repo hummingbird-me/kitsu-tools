@@ -4,6 +4,10 @@ module ApplicationHelper
     page_title.to_s
   end
 
+  def description(desc)
+    content_for(:description, desc.to_s)
+  end
+
   def markdown(text)
     return "" if text.nil?
     sanitize(RDiscount.new(Haml::Helpers.html_escape(text)).to_html).html_safe

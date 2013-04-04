@@ -11,7 +11,11 @@
     = csrf_meta_tags
     //%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
-    <meta property="fb:app_id" content="325314560922421" />
+    %meta(property="fb:app_id" content="325314560922421")
+    - if yield(:description).length > 0
+      %meta(property="og:description"){:content => yield(:description)}
+      
+
 
     // Typekit Code
     %script{:src => "//use.typekit.net/nlt2ped.js", :type => "text/javascript"}
