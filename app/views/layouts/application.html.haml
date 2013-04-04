@@ -12,10 +12,12 @@
     //%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
     %meta(property="fb:app_id" content="325314560922421")
-    - if yield(:description).length > 0
-      %meta(property="og:description"){:content => yield(:description)}
-      
-
+    - if yield(:fb_description).length > 0
+      %meta(property="og:description"){:content => yield(:fb_description)}
+    - if yield(:title).length > 0
+      %meta(property="og:title"){:content => yield(:title)}
+    - unless @anime.nil?
+      %meta(property="og:image"){:content => @anime.cover_image.url(:thumb)}
 
     // Typekit Code
     %script{:src => "//use.typekit.net/nlt2ped.js", :type => "text/javascript"}
