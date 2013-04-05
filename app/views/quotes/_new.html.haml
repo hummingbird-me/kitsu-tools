@@ -5,6 +5,13 @@
   = f.text_area :content, rows: 5
 
   = f.label :character
-  = f.text_field :character_name
+  = f.text_field :character_name, class: "#{@anime.slug}_character_name"
 
   = f.submit class: "button"
+
+:javascript
+  $("input.#{@anime.slug}_character_name").typeahead({
+    name: '#{@anime.slug}_character_name',
+    prefetch: '#{anime_casts_url(@anime, type: 'character_names', format: :json)}',
+    local: #{@anime.castings.where(featured: true).includes(:character).select {|x| x.character_id }.map {|x| x.character.name }.map {|x| x.strip }.uniq.to_json}
+  });
