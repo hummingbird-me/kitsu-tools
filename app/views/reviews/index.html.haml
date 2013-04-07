@@ -12,7 +12,7 @@
       - @reviews.each do |review|
         .panel
           %h5 #{review.user.name}
-          %p= truncate(strip_tags(review.content), length: 600, omission: "...")
+          %p= (review.summary || truncate(strip_tags(review.content), length: 500, omission: '...')).gsub("&nbsp;", " ")
           %p 
             = review.votes.to_i
             of
