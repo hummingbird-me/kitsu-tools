@@ -65,7 +65,7 @@ class AnimeController < ApplicationController
   def get_metadata_from_mal
     @anime = Anime.find(params[:anime_id])
     authorize! :update, @anime
-    meta = MALImport.series_metadata(@anime.mal_id)
+    meta = MalImport.series_metadata(@anime.mal_id)
     @anime.episode_count = meta[:episode_count]
     @anime.episode_length = meta[:episode_length]
     @anime.status = meta[:status]
