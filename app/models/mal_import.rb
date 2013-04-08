@@ -1,6 +1,32 @@
 require 'open-uri'
 
 class MalImport
+  def self.series_metadata(id)
+    noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}").read
+    meta = {}
+    
+    sidebar = noko.css('table tr td.borderClass')[0]
+    
+    # Episode count
+    meta[:episode_count] = sidebar.css('div').select {|x| x.text.include? "Episodes:" }[0].children[1].text.strip rescue nil
+    
+    # Episode length
+    episode_length = sidebar.css("div").select {|x| x.text.include? "Duration:" }[0].children[1].text.strip rescue nil
+    if not episode_length.nil?
+      hours = episode_length.scan(/(\d+) hr\./).flatten[0] || 0
+      hours = hours.to_i
+      mins = episode_length.scan(/(\d+) min\./).flatten[0] || 0
+      mins = mins.to_i
+      episode_length = 60 * hours + mins
+    end
+    meta[:episode_length] = episode_length
+    
+    # Status
+    meta[:status] = sidebar.css("div").select {|x| x.text.include? "Status:" }[0].children[1].text.strip rescue nil
+    
+    return meta
+  end
+
   def self.fetch_watchlist_from_remote(username)
     watchlist = []
     animelist = Hash.from_xml(open("http://myanimelist.net/malappinfo.php?status=all&type=anime&u=#{username}").read)
