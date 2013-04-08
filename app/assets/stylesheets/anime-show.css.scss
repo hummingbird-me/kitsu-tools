@@ -363,7 +363,11 @@
     }
 
     .moderation-form {
-      padding: 40px;
+      padding: 20px;
+
+      a.button {
+        padding: 6px;
+      }
     }
   }
 

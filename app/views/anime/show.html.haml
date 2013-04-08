@@ -47,12 +47,25 @@
           .moderation-form
             = form_for @anime do |f|
               .row
+                / Episode Count
                 .three.columns
                   = f.label :episode_count, class: 'inline'
                 .nine.columns
                   = f.number_field :episode_count
+                / TheTVDB Series and Season IDs
+                .three.columns
+                  = f.label :thetvdb_series_id, "TheTVDB Series ID", class: 'inline'
+                .nine.columns
+                  = f.number_field :thetvdb_series_id
+                .three.columns
+                  = f.label :thetvdb_season_id, "TheTVDB Season ID", class: 'inline'
+                .nine.columns
+                  = f.number_field :thetvdb_season_id
+
                 .twelve.columns
                   = f.submit class: 'button'
+            
+            = link_to "Get Episodes from TheTVDB", anime_get_episodes_from_thetvdb_path(@anime), class: 'button', method: :post
 
 
       .panel.community-rating

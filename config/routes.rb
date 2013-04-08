@@ -36,6 +36,7 @@ Hummingbird::Application.routes.draw do
   match '/imports/cancel'          => 'imports#cancel', as: :review_cancel
 
   resources :anime do
+    post :get_episodes_from_thetvdb
     resources :casts
     resources :quotes do
       member { post :vote }
