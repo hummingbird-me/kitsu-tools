@@ -43,6 +43,14 @@ class AnimeController < ApplicationController
     end
   end
 
+  def update
+    @anime = Anime.find(params[:id])
+    authorize! :update, @anime
+    @anime.episode_count = params[:anime][:episode_count]
+    @anime.save
+    redirect_to @anime
+  end
+
   def index
     # Establish a base scope.
     @anime = Anime.sfw_filter(current_user)

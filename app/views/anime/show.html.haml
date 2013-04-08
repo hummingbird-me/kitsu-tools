@@ -44,9 +44,15 @@
             .eleven.columns
               Moderation Tools
 
-          %div
-            = form_for @anime do
-              %p hi
+          .moderation-form
+            = form_for @anime do |f|
+              .row
+                .three.columns
+                  = f.label :episode_count, class: 'inline'
+                .nine.columns
+                  = f.number_field :episode_count
+                .twelve.columns
+                  = f.submit class: 'button'
 
 
       .panel.community-rating
