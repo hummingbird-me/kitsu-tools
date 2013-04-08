@@ -60,6 +60,8 @@ gem 'omniauth-facebook', '= 1.4.0'  # Using version 1.4.0 instead of the latest
                                     # because of an issue where the first time
                                     # (when the user authorizes the application),
                                     # the user is not logged in for some reason.
+# Authorization.
+gem 'cancan'
 
 # For pagination.
 gem 'kaminari'
