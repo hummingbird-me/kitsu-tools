@@ -38,6 +38,17 @@
             %strong Status: #{@anime.status}
             %p #{@anime.synopsis}
 
+      - if can? :update, @anime
+        .panel.moderation-tools
+          %header 
+            .eleven.columns
+              Moderation Tools
+
+          %div
+            = form_for @anime do
+              %p hi
+
+
       .panel.community-rating
         .upper.twelve.columns
           .decoration.three.columns.hide-for-small
