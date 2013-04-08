@@ -1,3 +1,12 @@
+GIT
+  remote: git@github.com:Casecommons/pg_search.git
+  revision: 3039ba615cee79fb022a8275490487e8c30d9847
+  specs:
+    pg_search (0.6.0)
+      activerecord (>= 3.1)
+      activesupport (>= 3.1)
+      arel
+
 PATH
   remote: vendor/forem
   specs:
@@ -211,9 +220,6 @@ GEM
       cocaine (~> 0.5.0)
       mime-types
     pg (0.15.0)
-    pg_search (0.6.0)
-      activerecord (>= 3.1)
-      activesupport (>= 3.1)
     polyglot (0.3.3)
     progress (2.4.0)
     pygments.rb (0.2.4)
@@ -401,7 +407,7 @@ DEPENDENCIES
   omniauth-facebook (= 1.4.0)
   paperclip (~> 3.0)
   pg
-  pg_search
+  pg_search!
   rails (= 3.2.13)
   rails_admin
   rdiscount

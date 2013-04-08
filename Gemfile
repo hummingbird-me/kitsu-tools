@@ -72,7 +72,7 @@ gem 'slim'
 gem 'sinatra', :require => nil
 
 # Fuzzy Search with Postgres.
-gem 'pg_search'
+gem 'pg_search', git: "git@github.com:Casecommons/pg_search.git"
 
 # Admin panel
 gem "rails_admin"
