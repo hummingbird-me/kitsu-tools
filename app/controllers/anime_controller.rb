@@ -47,8 +47,10 @@ class AnimeController < ApplicationController
     @anime = Anime.find(params[:id])
     authorize! :update, @anime
     @anime.episode_count = params[:anime][:episode_count]
+    @anime.episode_length = params[:anime][:episode_length]
     @anime.thetvdb_series_id = params[:anime][:thetvdb_series_id]
     @anime.thetvdb_season_id = params[:anime][:thetvdb_season_id]
+    @anime.mal_id = params[:anime][:mal_id]
     @anime.save
     redirect_to @anime
   end
@@ -57,6 +59,12 @@ class AnimeController < ApplicationController
     @anime = Anime.find(params[:anime_id])
     authorize! :update, @anime
     TheTvdb.save_episode_data(@anime)
+    redirect_to @anime
+  end
+  
+  def get_metadata_from_mal
+    @anime = Anime.find(params[:anime_id])
+    authorize! :update, @anime
     redirect_to @anime
   end
 

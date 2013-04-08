@@ -37,6 +37,7 @@ Hummingbird::Application.routes.draw do
 
   resources :anime do
     post :get_episodes_from_thetvdb
+    post :get_metadata_from_mal
     resources :casts
     resources :quotes do
       member { post :vote }

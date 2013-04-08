@@ -47,11 +47,15 @@
           .moderation-form
             = form_for @anime do |f|
               .row
-                / Episode Count
+                / Episode Count and Length
                 .three.columns
                   = f.label :episode_count, class: 'inline'
                 .nine.columns
                   = f.number_field :episode_count
+                .three.columns
+                  = f.label :episode_length, class: 'inline'
+                .nine.columns
+                  = f.number_field :episode_length
                 / TheTVDB Series and Season IDs
                 .three.columns
                   = f.label :thetvdb_series_id, "TheTVDB Series ID", class: 'inline'
@@ -61,11 +65,17 @@
                   = f.label :thetvdb_season_id, "TheTVDB Season ID", class: 'inline'
                 .nine.columns
                   = f.number_field :thetvdb_season_id
+                / MAL ID
+                .three.columns
+                  = f.label :mal_id, "MAL ID", class: 'inline'
+                .nine.columns
+                  = f.number_field :mal_id
 
                 .twelve.columns
                   = f.submit class: 'button'
             
             = link_to "Get Episodes from TheTVDB", anime_get_episodes_from_thetvdb_path(@anime), class: 'button', method: :post
+            = link_to "Get Metadata from MAL", anime_get_metadata_from_mal_path(@anime), class: 'button', method: :post
 
 
       .panel.community-rating
