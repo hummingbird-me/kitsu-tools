@@ -1,11 +1,11 @@
 .anime-discover.user-watchlist 
   .row.content-body
-    .anime-grid.twelve.columns
+    .anime-grid.large-12.columns
       %h3= @sub_tab.titleize
 
       .row
         - @watchlist.each do |wl|
           = render partial: "anime/card", locals: {data: [wl.anime, wl, 'three', (@user == current_user ? :readwrite : :readonly)]}
 
-      .twelve.columns.pagination-centered
+      .large-12.columns.pagination-centered
         = paginate @watchlist

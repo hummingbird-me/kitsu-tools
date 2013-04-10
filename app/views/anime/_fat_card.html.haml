@@ -1,10 +1,10 @@
-.recent.six.columns
+.recent.large-6.columns
   .panel.cards.cf
     %figure
       .overlay
-        .poster.four.columns.hide-for-small
+        .poster.large-4.columns.hide-for-small
           = link_to image_tag(wl.anime.cover_image.url(:thumb)), wl.anime
-        .title-info.eight.columns
+        .title-info.large-8.columns
           %h4= link_to wl.anime.canonical_title(current_user), wl.anime
           %p.seen-count 
             Seen

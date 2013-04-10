@@ -3,14 +3,14 @@
 
 .dashboard
   .row.content-body
-    .twelve.columns
+    .large-12.columns
       .account-settings
         %h3= title "Edit Account Settings"
 
         = form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f|
           = devise_error_messages!
 
-          .nine.columns.push-three
+          .large-9.columns.push-three
             %p 
               = f.label :name
               = f.text_field :name
@@ -53,7 +53,7 @@
               = f.submit "Update"
 
           / Sidebar
-          .three.columns.pull-nine
+          .large-3.columns.pull-nine
             %ul.side-nav
               %li
                 = f.label :avatar
@@ -62,7 +62,7 @@
               %li
 
   .row.content-body
-    .twelve.columns.panel
+    .large-12.columns.panel
       %a(name="facebook_connect")
         %h3{:style => "margin-top: -4px"} Facebook Connect
       - if @user.facebook_id
@@ -75,7 +75,7 @@
         %p= link_to "Connect to Facebook", omniauth_authorize_path(resource_name, :facebook), class: 'button small'
 
   .row.content-body
-    .twelve.columns.panel
+    .large-12.columns.panel
       %a(name="import")
         %h3{:style => "margin-top: -4px"} Import from MyAnimeList
       - if @user.staged_import
@@ -107,10 +107,10 @@
         = form_tag("/imports/myanimelist/new") do
           %label MyAnimeList Username:
           .row.collapse
-            .five.columns
-              .eight.columns
+            .large-5.columns
+              .large-8.columns
                 = text_field_tag :mal_username, @user.mal_username
-              .four.columns
+              .large-4.columns
                 %input(type="submit" class="button expand postfix" value="Import")
 
 :javascript

@@ -1,12 +1,12 @@
 .community
   .row
-    .twelve.columns
+    .large-12.columns
       = render partial: "shared/forem_sidebar", locals: {active_forum: @forum}
 
-      .forum-container.nine.columns
+      .forum-container.large-9.columns
         .row
           %header.cf
-            .twelve.columns
+            .large-12.columns
               %h2= t("forem.post.new")
               - if @reply_to_post
                 #posts

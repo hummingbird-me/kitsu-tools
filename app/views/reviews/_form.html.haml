@@ -12,17 +12,17 @@
 .anime-discover.full-reviews
   .row.content-body
     .row
-      .review-info.twelve.columns
-        .two.columns
+      .review-info.large-12.columns
+        .large-2.columns
           %span.avatar= image_tag @review.user.avatar.url(:thumb)
           %p.username= link_to @review.user.name, @review.user
-        .ten.columns
+        .large-10.columns
           %span.anime-title
             = link_to @anime.canonical_title(current_user), @anime
             Review
     = form_for [@anime, @review] do |f|
       .row
-        .main-content.seven.columns.offset-by-two
+        .main-content.large-7.columns.offset-by-two
           = f.text_area :content, rows: 7, :id => "redactor_content"
           %p.help-text 
             (optional) Summarize your review in one sentence. <br/>
@@ -32,15 +32,15 @@
 
             = f.submit class: "button padded"
 
-        .extra-sidebar.three.columns
+        .extra-sidebar.large-3.columns
           .review-subrating
             - ["Story", "Animation", "Sound", "Character", "Enjoyment", "Overall"].each do |cat|
               %div{:class => cat.downcase}
                 .row
-                  .twelve.columns
+                  .large-12.columns
                     %h4= cat
                     - 1.upto(10) do |rating|
-                      .two.columns.subrating{:class => ("end" if rating == 10)}
+                      .large-2.columns.subrating{:class => ("end" if rating == 10)}
                         - if cat == "Overall"
                           = f.radio_button "rating", rating, :id => "#{cat.downcase}-#{rating}"
                         - else

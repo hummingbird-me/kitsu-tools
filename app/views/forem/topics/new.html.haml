@@ -1,16 +1,16 @@
 .community
   .row
-    .twelve.columns
+    .large-12.columns
       = render partial: "shared/forem_sidebar", locals: {active_forum: @forum}
 
-      .forum-container.nine.columns
+      .forum-container.large-9.columns
         .row
           %header.cf
-            .twelve.columns
+            .large-12.columns
               %h3.forum-title
                 %i.icon-chevron-left
                 = link_to @forum.name, forem.forum_path(@forum)
-            .twelve.columns
+            .large-12.columns
               %h2 Create Topic
               = render "form"
                   

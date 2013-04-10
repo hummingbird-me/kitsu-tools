@@ -2,24 +2,24 @@
 
 .community
   .row
-    .twelve.columns
+    .large-12.columns
       = render partial: "shared/forem_sidebar", locals: {active_forum: @forum}
 
-      .forum-container.nine.columns
+      .forum-container.large-9.columns
         .row
           %header.cf
-            .nine.columns
+            .large-9.columns
               %h3.forum-title
                 %i.icon-chevron-left
                 = link_to @forum.name, forem.forum_path(@forum)
-            .three.columns
+            .large-3.columns
               - if user_signed_in?
                 - if !@topic.subscriber?(forem_user.id)
                   %span.button= link_to "Subscribe", forem.subscribe_forum_topic_path(@forum, @topic)
                 - else
                   %span.button.active= link_to "Unsubscribe", forem.unsubscribe_forum_topic_path(@forum, @topic)
         .row
-          .discussions.twelve.columns
+          .discussions.large-12.columns
             - if @topic.pending_review?
               .row.moderation-message
                 #topic_moderation.moderation
@@ -28,9 +28,9 @@
                     = form_for @topic, :url => forem.moderate_forum_topic_path(@topic.forum, @topic), :method => :put do |f|
                       = render "forem/moderation/options", :f => f
             .topic-view
-              .one.columns.avatar
+              .large-1.columns.avatar
                 = link_to image_tag(@topic.user.avatar.url(:thumb)), main_app.user_path(@topic.user)
-              .eleven.columns.topic-info
+              .large-11.columns.topic-info
                 .topic-title= link_to @topic.subject, forem.forum_topic_path(@topic.forum, @topic)
                 %p.sub-text 
                   = distance_of_time_in_words_to_now(@topic.created_at)
@@ -67,12 +67,12 @@
                           = link_to t('Delete', :scope => 'forem.topic'), forem.topic_post_path(post.topic, post), :method => :delete, :confirm => t("are_you_sure")
 
         - if @posts.length > 1
-          .reply-header.twelve.columns
+          .reply-header.large-12.columns
             %h3 
               %span= pluralize @posts_count, "Reply"
 
 
-      .forum-container.replies.nine.columns
+      .forum-container.replies.large-9.columns
 
         - if params[:page].nil? or params[:page].to_i == 1 and @posts.length > 0
           %p.pagination-centered= paginate @posts
@@ -82,14 +82,14 @@
         %p.pagination-centered= paginate @posts
         
         - if user_signed_in?
-          .reply-header.twelve.columns
+          .reply-header.large-12.columns
             %h3 
               %span Share Your Thoughts
-          .reply-form.twelve.columns
+          .reply-form.large-12.columns
             - if user_signed_in?
-              .one.columns.avatar
+              .large-1.columns.avatar
                 = image_tag(current_user.avatar.url(:thumb))
-              .eleven.columns.input-area
+              .large-11.columns.input-area
                 = simple_form_for [forem, @topic, @topic.posts.build] do |f|
                   .redactorable
                     = f.input :text, placeholder: 'Message', label: false

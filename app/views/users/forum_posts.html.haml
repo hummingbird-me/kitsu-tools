@@ -2,12 +2,12 @@
 
 .anime-discover
   .row.content-body
-    .title.twelve-columns
+    .title.large-12-columns
       %h3 #{@user.name}'s Recent Forum Posts
 
     .panel{:style => "padding: 20px"}
       %h4 Coming soon!
   
   .row
-    .twelve.columns.pagination-centered
+    .large-12.columns.pagination-centered
       = paginate @posts

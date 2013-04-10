@@ -6,7 +6,7 @@
 .dashboard
   .profile-bar-subnav
     .row.content-body
-      .wrapper.twelve.columns
+      .wrapper.large-12.columns
         %ul.inline-list.sub-nav
           %li{:class => ("active" if @active_tab == :profile)}
             = link_to "Profile", user_path(@user)
@@ -19,8 +19,8 @@
               = link_to "Account Settings", edit_user_registration_path
 
   .row.content-body
-    .profile-bar.twelve.mobile-four.columns
-      .five.mobile-four.columns.centered
+    .profile-bar.large-12.mobile-four.columns
+      .large-5.mobile-four.columns.large-centered
         .user-block
           %figure.user-avatar
             = image_tag(@user.avatar_url)

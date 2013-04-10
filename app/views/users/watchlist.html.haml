@@ -1,6 +1,6 @@
 = render "dash"
 .row.user-watchlist
-  .twelve.columns
+  .large-12.columns
     .row
       %ul.inline-list.sub-nav
         - %w(currently_watching plan_to_watch completed on_hold dropped).each do |l|
@@ -14,7 +14,7 @@
           %a{:href => "#"} <i class="icon-th"></i>
 
       %h3= @sub_tab.titleize
-      %table.tableSorter.twelve.columns.responsive
+      %table.tableSorter.large-12.columns.responsive
         %tr.table-head
           %th Anime Title
           %th Score

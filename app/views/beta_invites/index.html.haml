@@ -1,11 +1,11 @@
 .login-register-card
   .row
-    .eight.columns.centered
+    .large-8.columns.large-centered
       .panel.login-box.signup
         - if @beta_invite.invited?
           .login-title
             You have already been invited to the beta.
-          .no-account.twelve.columns
+          .no-account.large-12.columns
             %p We have sent an email to #{@beta_invite.email} with registration instructions. 
             %p= link_to "Resend Registration Instructions", resend_beta_invite_path(email: @beta_invite.email), method: :post, class: 'button'
         - else
@@ -17,5 +17,5 @@
             ahead of you and
             %strong= pluralize @beta_invite.after_count, "person"
             after you.
-          .no-account.twelve.columns
+          .no-account.large-12.columns
             %p= @beta_invite.email

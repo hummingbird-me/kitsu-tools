@@ -2,11 +2,11 @@
 
 .anime-discover.user-reviews
   .row.content-body
-    .title.twelve-columns
+    .title.large-12-columns
       %h3 Recent Reviews
     
     = render partial: "reviews/review_summary", collection: @reviews, as: :review
 
   .row
-    .twelve.columns.pagination-centered
+    .large-12.columns.pagination-centered
       = paginate(@reviews)

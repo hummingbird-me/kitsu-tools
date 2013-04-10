@@ -1,6 +1,6 @@
 .topic-reply.row
   %a.anchor{:name => "post#{post.id}"}
-  .discussions.twelve.columns
+  .discussions.large-12.columns
     .topic-view
       - if post.pending_review?
         .moderation
@@ -12,10 +12,10 @@
               = form_tag forem.forum_moderate_posts_path(post.topic.forum), :method => :put do
                 = render "forem/posts/moderation_tools", :post => post
 
-      .one.columns.avatar
+      .large-1.columns.avatar
         = link_to image_tag(post.user.avatar.url(:thumb)), main_app.user_path(post.user)
 
-      .eleven.columns.topic-info
+      .large-11.columns.topic-info
         .username= link_to post.user, main_app.user_path(post.user)
         %p.sub-text{:datetime => post.created_at.to_s(:db)}= "#{time_ago_in_words(post.created_at)} #{t("ago")}"
         .topic-body 

@@ -1,9 +1,9 @@
 .anime-discover.anime-show.anime-show-full
   .row
-    .three.columns
-      = render partial: 'anime/card', locals: {data: [@anime, @watchlist, 'twelve']}
+    .large-3.columns
+      = render partial: 'anime/card', locals: {data: [@anime, @watchlist, 'large-12']}
 
-    .nine.columns
+    .large-9.columns
       .panel.top-bar
         %h4= title "#{@anime.canonical_title(current_user)} Quotes"
         %a{"data-reveal-id" => "submit-quote", :href => "#"}

@@ -2,7 +2,7 @@
   - if session[:recently_viewed] and session[:recently_viewed].length > 0
     .history-bar.hide-for-small
       %footer.row
-        .twelve.columns
+        .large-12.columns
           .recently-viewed
             %h1 Recently Viewed
             %ul
@@ -10,15 +10,15 @@
               - Anime.where(:slug => session[:recently_viewed]).each {|a| animes[a.slug] = a }
               - session[:recently_viewed].each do |slug|
                 - if animes[slug]
-                  %li.two.columns.has-tip.tip-top{"data-width" => "210", :title => animes[slug].canonical_title(current_user)}= link_to image_tag(animes[slug].cover_image.url(:thumb)), main_app.anime_path(animes[slug])
+                  %li.large-2.columns.has-tip.tip-top{"data-width" => "210", :title => animes[slug].canonical_title(current_user)}= link_to image_tag(animes[slug].cover_image.url(:thumb)), main_app.anime_path(animes[slug])
 
   .bottom-bar
     %footer.row
-      .twelve.columns
+      .large-12.columns
         .row.footer
-          .three.columns
+          .large-3.columns
             %span.footer-logo Hummingbird
-          .nine.columns
+          .large-9.columns
             %ul.link-list.right
               %li
                 %a{:href => "/anime"} Discover

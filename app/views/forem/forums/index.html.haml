@@ -2,18 +2,18 @@
 
 .community
   .row
-    .twelve.columns
+    .large-12.columns
       = render partial: "shared/forem_sidebar", locals: {active_forum: nil}
 
-      .forum-container.nine.columns
+      .forum-container.large-9.columns
         .row
           %header.cf
-            .nine.columns
+            .large-9.columns
               %h3.forum-title= link_to "Hummingbird Discussion", "#"
-            .three.columns 
+            .large-3.columns 
               /%span.button= link_to "Create Topic", "#"
         .row
-          .discussions.twelve.columns
+          .discussions.large-12.columns
             = render @topics
         %p= paginate @topics
 

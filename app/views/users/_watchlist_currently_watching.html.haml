@@ -1,13 +1,13 @@
 .anime-discover.user-watchlist 
   .row.content-body
-    .twelve.columns  
+    .large-12.columns  
       %h3 Last Watched
 
       - @watchlist[0..1].each do |wl|
         = render partial: "anime/fat_card", locals: {wl: wl, write: (@user == current_user)}
         
       - if @watchlist.length > 2
-        .anime-grid.twelve.columns
+        .anime-grid.large-12.columns
           %h3 Recently Watched
           .row
             - @watchlist[2..-1].each do |wl|

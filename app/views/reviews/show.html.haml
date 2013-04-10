@@ -13,16 +13,16 @@
 .anime-discover.full-reviews
   .row.content-body
     .row
-      .review-info.twelve.columns
-        .two.columns
+      .review-info.large-12.columns
+        .large-2.columns
           %span.avatar= image_tag @review.user.avatar.url(:thumb)
           %p.username= link_to @review.user.name, @review.user 
-        .ten.columns
+        .large-10.columns
           %span.anime-title
             = link_to @review.anime.canonical_title(current_user), @review.anime
             Review
     .row
-      .sharing-sidebar.two.columns
+      .sharing-sidebar.large-2.columns
         .float-wrap.scrollToFixed
           %p Share this review:
           %span.facebook
@@ -36,15 +36,15 @@
 
           %span.rate-review
             %p Rate Review
-            .rating-thumbs.twelve.columns
-              .positive-vote.six.columns
+            .rating-thumbs.large-12.columns
+              .positive-vote.large-6.columns
                 = link_to vote_anime_review_path(@anime, @review, type: "up"), method: :post, class: ('active' if @evaluation && @evaluation.value == 1.0) do
                   %i.icon-thumbs-up.icon.icon-2x
-              .negative-vote.six.columns
+              .negative-vote.large-6.columns
                 = link_to vote_anime_review_path(@anime, @review, type: "down"), method: :post, class: ('active' if @evaluation && @evaluation.value != 1.0) do
                   %i.icon-thumbs-down.icon-2x
 
-      .main-content.seven.columns
+      .main-content.large-7.columns
         %div(style="margin-top: 14px")
           - if current_user == @review.user
 
@@ -59,52 +59,52 @@
           - else
             %div= sanitize_review @review.content
 
-      .extra-sidebar.three.columns
-        .screenshots.twelve.columns
+      .extra-sidebar.large-3.columns
+        .screenshots.large-12.columns
           - @review.anime.gallery_images.each do |gimage|
-            .twelve.columns.mobile-two.columns
+            .large-12.columns.mobile-two.columns
               = image_tag gimage.image.url(:thumb)
           /%p= link_to "view full gallery", "#"
 
 
     .row
-      .review-score.seven.columns.offset-by-two
-        .four.columns
+      .review-score.large-7.columns.large-offset-2
+        .large-4.columns
           .rating-diamond{:class => "score-#{@review.rating}"}
 
-        .eight.columns
+        .large-8.columns
           %h1.summary-title= (rating_description(@review.rating) || "").upcase
           %p.summary-title= strip_tags(@review.summary || truncate(@review.content, length: 140, omission: '...'))
 
-          .sub-ratings.twelve.columns
+          .sub-ratings.large-12.columns
             %ul
-              %li.two.columns
+              %li.large-2.columns
                 %h4= @review.rating_story || @review.rating
                 %p Story
 
-              %li.two.columns
+              %li.large-2.columns
                 %h4= @review.rating_animation || @review.rating
                 %p Animation
 
-              %li.two.columns
+              %li.large-2.columns
                 %h4= @review.rating_sound || @review.rating
                 %p Sound
 
-              %li.two.columns
+              %li.large-2.columns
                 %h4= @review.rating_character || @review.rating
                 %p Character
 
-              %li.two.columns
+              %li.large-2.columns
                 %h4= @review.rating_enjoyment || @review.rating
                 %p Enjoyment
 
-              %li.two.columns.end
+              %li.large-2.columns.end
                 %h4= @review.rating
                 %p Overall
 
 
     .row.stopScrollToFixed
-      .new-reviews.twelve.columns
+      .new-reviews.large-12.columns
         %h3 Latest Reviews
         #yourCarouselId.touchcarousel.minimal-light
           %ul.touchcarousel-container

@@ -2,7 +2,7 @@
 
 .login-register-card
   .row
-    .eight.columns.centered
+    .large-8.columns.large-centered
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         .panel.login-box
           %span.login-title Welcome back, we missed you!
@@ -26,5 +26,5 @@
               #fb-signin.fb-button
                 = image_tag "icons/fb-logo.png"
                 %span FACEBOOK
-          .no-account.twelve.columns
+          .no-account.large-12.columns
             = render "devise/shared/links"

@@ -5,7 +5,7 @@
 - if session[:token] and BetaInvite.valid_token?(session[:token])
   .login-register-card
     .row
-      .eight.columns.centered
+      .large-8.columns.large-centered
         .panel.login-box.signup
           = form_for(resource, as: resource_name, url: registration_path(:user)) do |f|
             - unless resource.errors.empty?
@@ -36,7 +36,7 @@
 
             .signup-step-buttons
               = f.submit "Register Account", id: 'login', class: 'login-button'
-          .no-account.twelve.columns
+          .no-account.large-12.columns
             = render "devise/shared/links"
 - else
   = render partial: "beta_invites/new"

@@ -1,19 +1,19 @@
-- anime, watchlist, width = data[0], data[1], data[2] || "two"
+- anime, watchlist, width = data[0], data[1], data[2] || "large-2"
 - readonly = data[3] && data[3] == :readonly
 .mobile-card.columns{:class => width, :id => "card-#{anime.slug}"}
   .panel.cards.cf
     %figure
       %a{:href => anime_path(anime)}
         .overlay
-          .link-block.twelve.columns
+          .link-block.large-12.columns
             %h5.title #{anime.canonical_title(current_user)}
 
-          .twelve.columns.preview
+          .large-12.columns.preview
             %i.icon-external-link
             %a{"data-reveal-id" => "preview_#{anime.slug}", :href => "#"} Quick View
 
           - if !readonly
-            .twelve.columns.add-watchlist
+            .large-12.columns.add-watchlist
               %i.icon-list-alt
               - if user_signed_in?
                 %a{"data-reveal-id" => "watchlist_#{anime.slug}", :href => "#"}
@@ -48,7 +48,7 @@
     /     - else
     /       .drop-button Select Watching Status <a href="#" class="selector"></a>
     .community-rating
-      .twelve.columns{:class => (anime.wilson_ci > 0.5 ? "positive" : "negative")}
+      .large-12.columns{:class => (anime.wilson_ci > 0.5 ? "positive" : "negative")}
         %i
         %h5= "#{(anime.wilson_ci*100).to_i}%"
 
@@ -69,34 +69,34 @@
                   %i.icon-star-empty
       - else
         - if readonly
-          %span.four.columns.like
+          %span.large-4.columns.like
             - if watchlist and watchlist.positive?
               %strong.active [:)]
             - else
               %strong :)
-          %span.four.columns.meh
+          %span.large-4.columns.meh
             - if watchlist and not (watchlist.positive? or watchlist.negative?)
               %strong.active [:|]
             - else
               %strong :|
-          %span.four.columns.dislike
+          %span.large-4.columns.dislike
             - if watchlist and watchlist.negative?
               %strong.active [:(]
             - else
               %strong :)
 
         - else
-          %span.four.columns.like
+          %span.large-4.columns.like
             - if watchlist and watchlist.positive?
               %strong.active= link_to "[:)]", update_rating_path(anime, "nil", width: width), remote: user_signed_in?
             - else
               %strong= link_to ":)", update_rating_path(anime, 2, width: width), remote: user_signed_in?
-          %span.four.columns.meh
+          %span.large-4.columns.meh
             - if watchlist and not (watchlist.positive? or watchlist.negative?) and not watchlist.rating.nil?
               %strong.active= link_to "[:|]", update_rating_path(anime, "nil", width: width), remote: user_signed_in?
             - else
               %strong= link_to ":|", update_rating_path(anime, 0, width: width), remote: user_signed_in?
-          %span.four.columns.dislike
+          %span.large-4.columns.dislike
             - if watchlist and watchlist.negative?
               %strong.active= link_to "[:(]", update_rating_path(anime, "nil", width: width), remote: user_signed_in?
             - else

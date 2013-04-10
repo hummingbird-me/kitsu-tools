@@ -1,10 +1,10 @@
 .anime-discover
   .filter-toolbar
     .row
-      .twelve.columns
+      .large-12.columns
         %form.autosubmit
           %ul.inline-list
-            %li.three.columns
+            %li.large-3.columns
               %select.autosubmit{:class => "single-select", :name => "filter"}
                 %option{:value => "all", :selected => ("selected" if @filter == "all")}
                   %i.icon-globe
@@ -20,7 +20,7 @@
                   Haven't finished
 
           %ul.inline-list
-            %li.three.columns
+            %li.large-3.columns
               %select{:multiple => "multiple", :class => "multiple-select", :name => "genres[]"}
                 - @all_genres.each do |genre|
                   %option{:value => "#{genre.slug}", :selected => ("selected" if @genre_filter.include? genre)}
@@ -28,7 +28,7 @@
                     = genre.name
 
           %ul.inline-list
-            %li.three.columns
+            %li.large-3.columns
               %select{:multiple => "multiple", :class => "multiple-nofiltera", :name => "types[]"}
                 %option{:disabled => "disabled"}
                   Series
@@ -36,7 +36,7 @@
                   OVA / SPECIAL
 
           %ul.inline-list.where-to-watch
-            %li.three.columns
+            %li.large-3.columns
               %select{:multiple => "multiple", :class => "multiple-nofilterb", :name => "watch[]"}
                 %option{:disabled => "disabled"}
                   Netflix
@@ -50,7 +50,7 @@
                   Viz
 
   .row.content-body
-    .anime-grid.twelve.columns
+    .anime-grid.large-12.columns
       - if @filter == "recommended" and !current_user.recommendations_up_to_date
         %div.alert-box
           %span.updating_recommendations We're updating your recommendations. 
@@ -74,7 +74,7 @@
           = render partial: "anime/card", collection: @collection, as: :data
         - else
           .not-found.panel
-            .title.twelve-columns
+            .title.large-12-columns
               %h3 We couldn't find what you were looking for!
               %p To make up for that, here's some random anime... have fun!
 

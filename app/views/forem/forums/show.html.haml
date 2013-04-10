@@ -2,18 +2,18 @@
 
 .community
   .row
-    .twelve.columns
+    .large-12.columns
       = render partial: "shared/forem_sidebar", locals: {active_forum: @forum}
       
-      .forum-container.nine.columns
+      .forum-container.large-9.columns
         .row
           %header.cf
-            .nine.columns
+            .large-9.columns
               %h3.forum-title= link_to @forum.title, forem.forum_path(@forum)
-            .three.columns
+            .large-3.columns
               %span.button= link_to "Create Topic", forem.new_forum_topic_path(@forum)
         .row
-          .discussions.twelve.columns
+          .discussions.large-12.columns
             = render @topics
         %p= paginate @topics
 

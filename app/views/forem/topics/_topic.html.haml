@@ -1,8 +1,8 @@
 - last_post = topic.posts.last
 .topic
-  .one.columns.avatar
+  .large-1.columns.avatar
     = image_tag last_post.user.avatar.url(:thumb)
-  .ten.columns.topic-info
+  .large-10.columns.topic-info
     .topic-title
       = link_to topic.subject, forem.forum_topic_path(topic.forum, topic)
       
@@ -23,7 +23,7 @@
       to
       = link_to topic.forum.title, forem.forum_path(topic.forum)
       
-  .one.columns.comment-count
+  .large-1.columns.comment-count
     %p
       %i.icon-comments
       = relevant_posts(topic).count - 1
