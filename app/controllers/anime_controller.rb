@@ -3,6 +3,13 @@ class AnimeController < ApplicationController
   
   def show
     @anime = Anime.find(params[:id])
+    # If an old id or a numeric id was used to find the record, then
+    # the request path will not match the post_path, and we should do
+    # a 301 redirect that uses the current friendly id.
+    if request.path != anime_path(@anime)
+      return redirect_to @anime, :status => :moved_permanently
+    end
+    
     @genres = @anime.genres
     @producers = @anime.producers
     @quotes = @anime.quotes.limit(4)
