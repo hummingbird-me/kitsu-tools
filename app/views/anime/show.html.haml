@@ -48,28 +48,33 @@
             = form_for @anime do |f|
               .row
                 / Episode Count and Length
-                .three.columns
+                .four.columns
                   = f.label :episode_count, class: 'inline'
-                .nine.columns
+                .eight.columns
                   = f.number_field :episode_count
-                .three.columns
+                .four.columns
                   = f.label :episode_length, class: 'inline'
-                .nine.columns
+                .eight.columns
                   = f.number_field :episode_length
                 / TheTVDB Series and Season IDs
-                .three.columns
+                .four.columns
                   = f.label :thetvdb_series_id, "TheTVDB Series ID", class: 'inline'
-                .nine.columns
+                .eight.columns
                   = f.number_field :thetvdb_series_id
-                .three.columns
+                .four.columns
                   = f.label :thetvdb_season_id, "TheTVDB Season ID", class: 'inline'
-                .nine.columns
+                .eight.columns
                   = f.number_field :thetvdb_season_id
                 / MAL ID
-                .three.columns
+                .four.columns
                   = f.label :mal_id, "MAL ID", class: 'inline'
-                .nine.columns
+                .eight.columns
                   = f.number_field :mal_id
+                / English canonical
+                .four.columns
+                  = f.label :english_canonical, "English Title Canonical?", class: 'inline'
+                .eight.columns
+                  = f.check_box :english_canonical
 
                 .twelve.columns
                   = f.submit class: 'button'

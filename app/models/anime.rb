@@ -46,12 +46,20 @@ class Anime < ActiveRecord::Base
 
   # Use this function to get the title instead of directly accessing the title.
   def canonical_title(current_user=nil)
-    title
+    if alt_title and english_canonical
+      return alt_title
+    else
+      return title
+    end
   end
   # Use this function to get the alt title instead of directly accessing the 
   # alt_title.
   def alternate_title(current_user=nil)
-    alt_title
+    if english_canonical
+      return title
+    else
+      return alt_title
+    end
   end
 
   # Filter out all anime belonging to the genres passed in.

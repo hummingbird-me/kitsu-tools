@@ -68,7 +68,8 @@ CREATE TABLE anime (
     wilson_ci double precision DEFAULT 0,
     user_count integer,
     thetvdb_series_id character varying(255),
-    thetvdb_season_id character varying(255)
+    thetvdb_season_id character varying(255),
+    english_canonical boolean DEFAULT false
 );
 
 
@@ -2154,3 +2155,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130403150926');
 INSERT INTO schema_migrations (version) VALUES ('20130411073012');
 
 INSERT INTO schema_migrations (version) VALUES ('20130411073819');
+
+INSERT INTO schema_migrations (version) VALUES ('20130411181020');

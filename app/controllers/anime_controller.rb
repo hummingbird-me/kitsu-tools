@@ -58,6 +58,7 @@ class AnimeController < ApplicationController
     @anime.thetvdb_series_id = params[:anime][:thetvdb_series_id]
     @anime.thetvdb_season_id = params[:anime][:thetvdb_season_id]
     @anime.mal_id = params[:anime][:mal_id]
+    @anime.english_canonical = params[:anime][:english_canonical]
     @anime.save
     redirect_to @anime
   end
