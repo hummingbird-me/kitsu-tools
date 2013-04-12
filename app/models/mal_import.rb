@@ -122,17 +122,13 @@ class MalImport
     consider.each do |w|
       anime = animes[ w[:mal_id].to_i ]
       if anime
-        watchlist = Watchlist.where(user_id: staged_import.user, anime_id: anime).first || false
-        if !watchlist or watchlist.updated_at < w[:last_updated]
-          watchlist = Watchlist.new(
-            status: w[:status],
-            episodes_watched: w[:episodes_watched],
-            updated_at: w[:last_updated],
-            user: staged_import.user,
-            anime: anime,
-            imported: true
-          )
-        end
+        watchlist = Watchlist.where(user_id: staged_import.user, anime_id: anime).first || Watchlist.new(user: staged_import.user, anime: anime)
+        
+        watchlist.status = w[:status]
+        watchlist.episodes_watched = w[:episodes_watched]
+        watchlist.updated_at = w[:last_updated]
+        watchlist.imported = true
+
         if watchlist.rating.nil?
           rating = nil
           if w[:rating] != '0'
@@ -141,6 +137,7 @@ class MalImport
           end
           watchlist.rating = rating
         end
+        
         watchlists.push( [anime, watchlist] )
       end
     end
