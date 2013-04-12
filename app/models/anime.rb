@@ -6,7 +6,7 @@ class Anime < ActiveRecord::Base
     using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
 
   extend FriendlyId
-  friendly_id :title, :use => [:slugged, :history]
+  friendly_id :canonical_title, :use => [:slugged, :history]
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, 
     :status, :synopsis, :cover_image, :youtube_video_id, :alt_title,
