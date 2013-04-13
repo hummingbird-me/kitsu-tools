@@ -81,6 +81,19 @@ class Anime < ActiveRecord::Base
             )
           )', genres.map(&:id))
   end
+
+  # Return [age rating, guide]
+  def self.convert_age_rating(rating)
+    {
+      ""                                => [nil,    nil],
+      "None"                            => [nil,    nil],
+      "PG-13 - Teens 13 or older"       => ["PG13", "Teens 13 or older"],
+      "R - 17+ (violence & profanity)"  => ["R17+", "Violence, Profanity"],
+      "R+ - Mild Nudity"                => ["R17+", "Mild Nudity"],
+      "PG - Children"                   => ["PG",   "Children"],
+      "Rx - Hentai"                     => ["R18+", "Hentai"]
+    }[rating] || [rating, nil]
+  end
   
   def get_metadata_from_mal
     meta = MalImport.series_metadata(self.mal_id)
@@ -90,7 +103,8 @@ class Anime < ActiveRecord::Base
     self.cover_image = URI(meta[:cover_image_url]) if self.cover_image_file_name.nil?
     self.genres = (self.genres + meta[:genres]).uniq
     self.producers = (self.producers + meta[:producers]).uniq
-    self.age_rating = meta[:age_rating]
+    self.mal_age_rating = meta[:age_rating]
+    self.age_rating, self.age_rating_guide = Anime.convert_age_rating(self.mal_age_rating)
     self.episode_count = meta[:episode_count]
     self.episode_length = meta[:episode_length]
     self.status = meta[:status]
