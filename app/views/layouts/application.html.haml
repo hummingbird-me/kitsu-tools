@@ -8,9 +8,12 @@
         Hummingbird
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
+    = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
-    //%meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+
     %meta(property="fb:app_id" content="325314560922421")
+
 
     - if yield(:title).length > 0
       %meta(property="og:title"){:content => yield(:title)}
@@ -54,4 +57,3 @@
           email: '#{j current_user.email}',
           username: '#{j current_user.name}'
         });
-
