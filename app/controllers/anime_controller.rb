@@ -80,6 +80,7 @@ class AnimeController < ApplicationController
     @anime.cover_image = URI(meta[:cover_image_url]) if @anime.cover_image_file_name.nil?
     @anime.genres = (@anime.genres + meta[:genres]).uniq
     @anime.producers = (@anime.producers + meta[:producers]).uniq
+    @anime.age_rating = meta[:age_rating]
     @anime.episode_count = meta[:episode_count]
     @anime.episode_length = meta[:episode_length]
     @anime.status = meta[:status]

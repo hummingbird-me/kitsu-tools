@@ -25,6 +25,9 @@ class MalImport
     # Producers
     meta[:producers] = (sidebar.css("div").select {|x| x.text.include? "Producers:" }[0].css("a").map(&:text) rescue []).map {|x| Producer.find_by_name(x) }.compact
     
+    # Age rating
+    meta[:age_rating] = sidebar.css("div").select {|x| x.text.include? "Rating:" }[0].children[1].text.strip.split(' - ')[0].strip rescue nil
+    
     # Episode count
     meta[:episode_count] = sidebar.css('div').select {|x| x.text.include? "Episodes:" }[0].children[1].text.strip rescue nil
     
