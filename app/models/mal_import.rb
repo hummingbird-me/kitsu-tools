@@ -4,6 +4,12 @@ class MalImport
   def self.series_metadata(id)
     noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}").read
     meta = {}
+
+    # Get title and alternate title.
+    title = noko.css("h1").children[1].text
+    aka   = noko.css(".spaceit_pad").select {|x| x.text.include? "English:" }[0].text.gsub("English: ", "") rescue nil
+    meta[:title]           = title
+    meta[:english_title]   = (title != aka) ? aka : nil
     
     sidebar = noko.css('table tr td.borderClass')[0]
     
