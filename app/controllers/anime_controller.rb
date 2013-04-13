@@ -76,6 +76,10 @@ class AnimeController < ApplicationController
     meta = MalImport.series_metadata(@anime.mal_id)
     @anime.title = meta[:title]
     @anime.alt_title = meta[:english_title]
+    @anime.synopsis = meta[:synopsis]
+    @anime.cover_image = URI(meta[:cover_image_url]) if @anime.cover_image_file_name.nil?
+    @anime.genres = (@anime.genres + meta[:genres]).uniq
+    @anime.producers = (@anime.producers + meta[:producers]).uniq
     @anime.episode_count = meta[:episode_count]
     @anime.episode_length = meta[:episode_length]
     @anime.status = meta[:status]

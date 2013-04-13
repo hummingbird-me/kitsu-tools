@@ -84,7 +84,7 @@ class Anime < ActiveRecord::Base
 
   before_save do
     # If episode_count has increased, create new episodes.
-    if self.episodes.length < self.episode_count and (self.episodes.length == 0 or self.thetvdb_series_id.nil? or self.thetvdb_series_id.length == 0) 
+    if self.episode_count and self.episodes.length < self.episode_count and (self.episodes.length == 0 or self.thetvdb_series_id.nil? or self.thetvdb_series_id.length == 0) 
       (self.episodes.length+1).upto(self.episode_count) do |n|
         Episode.create(anime_id: self.id, number: n)
       end
