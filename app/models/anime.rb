@@ -81,6 +81,21 @@ class Anime < ActiveRecord::Base
             )
           )', genres.map(&:id))
   end
+  
+  def get_metadata_from_mal
+    meta = MalImport.series_metadata(self.mal_id)
+    self.title = meta[:title]
+    self.alt_title = meta[:english_title]
+    self.synopsis = meta[:synopsis]
+    self.cover_image = URI(meta[:cover_image_url]) if self.cover_image_file_name.nil?
+    self.genres = (self.genres + meta[:genres]).uniq
+    self.producers = (self.producers + meta[:producers]).uniq
+    self.age_rating = meta[:age_rating]
+    self.episode_count = meta[:episode_count]
+    self.episode_length = meta[:episode_length]
+    self.status = meta[:status]
+    self.save
+  end
 
   before_save do
     # If episode_count has increased, create new episodes.

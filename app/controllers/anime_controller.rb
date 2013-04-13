@@ -73,18 +73,7 @@ class AnimeController < ApplicationController
   def get_metadata_from_mal
     @anime = Anime.find(params[:anime_id])
     authorize! :update, @anime
-    meta = MalImport.series_metadata(@anime.mal_id)
-    @anime.title = meta[:title]
-    @anime.alt_title = meta[:english_title]
-    @anime.synopsis = meta[:synopsis]
-    @anime.cover_image = URI(meta[:cover_image_url]) if @anime.cover_image_file_name.nil?
-    @anime.genres = (@anime.genres + meta[:genres]).uniq
-    @anime.producers = (@anime.producers + meta[:producers]).uniq
-    @anime.age_rating = meta[:age_rating]
-    @anime.episode_count = meta[:episode_count]
-    @anime.episode_length = meta[:episode_length]
-    @anime.status = meta[:status]
-    @anime.save
+    @anime.get_metadata_from_mal
     redirect_to @anime
   end
 
