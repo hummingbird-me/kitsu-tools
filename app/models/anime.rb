@@ -35,13 +35,13 @@ class Anime < ActiveRecord::Base
     if current_user && !current_user.sfw_filter
       self
     else
-      where("age_rating <> 'Rx'")
+      where("age_rating <> 'R18+'")
     end
   end
 
   # Check whether the current anime is SFW.
   def sfw?
-    age_rating != "Rx"
+    age_rating != "R18+"
   end
 
   # Use this function to get the title instead of directly accessing the title.
