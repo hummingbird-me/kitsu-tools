@@ -11,7 +11,8 @@
 
           .small-summary 
             %span #{pluralize @anime.episode_count, 'episode'} / #{@anime.episode_length} min. each  ||
-            %span #{@anime.age_rating}
+            %span.has-tip{:"data-width" => 200, :title => @anime.age_rating_guide}
+              = @anime.age_rating
             - if @anime.alternate_title(current_user) and @anime.alternate_title(current_user).length > 0
               %span (Also known as <strong>#{@anime.alternate_title(current_user)}</strong>)
 
