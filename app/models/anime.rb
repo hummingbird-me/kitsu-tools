@@ -85,6 +85,7 @@ class Anime < ActiveRecord::Base
   # Return [age rating, guide]
   def self.convert_age_rating(rating)
     {
+      nil                               => [nil,    nil],
       ""                                => [nil,    nil],
       "None"                            => [nil,    nil],
       "PG-13 - Teens 13 or older"       => ["PG13", "Teens 13 or older"],

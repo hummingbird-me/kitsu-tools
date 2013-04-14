@@ -70,15 +70,14 @@
           }
           checkForCompletion();
       .row
-        - if @collection.length > 0
-          = render partial: "anime/card", collection: @collection, as: :data
-        - else
+        - if @collection.length == 0
           .not-found.panel
             .title.twelve-columns
               %h3 We couldn't find what you were looking for!
               %p To make up for that, here's some random anime... have fun!
-
-          //= render random anime here. Amount is up to you.
+          - @collection = Anime.accessible_by(current_ability).order("RANDOM()").limit(6).map {|x| [x, @watchlist[x.id]] }
+          
+        = render partial: "anime/card", collection: @collection, as: :data
 
       .row.pagination-centered
         = paginate(@anime)
