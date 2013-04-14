@@ -79,7 +79,7 @@ class AnimeController < ApplicationController
 
   def index
     # Establish a base scope.
-    @anime = Anime.sfw_filter(current_user)
+    @anime = Anime.accessible_by(current_ability)
 
     # Get a list of all genres.
     @all_genres = Genre.default_filterable(current_user)
