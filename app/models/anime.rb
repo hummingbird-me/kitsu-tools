@@ -92,7 +92,13 @@ class Anime < ActiveRecord::Base
       "R - 17+ (violence & profanity)"  => ["R17+", "Violence, Profanity"],
       "R+ - Mild Nudity"                => ["R17+", "Mild Nudity"],
       "PG - Children"                   => ["PG",   "Children"],
-      "Rx - Hentai"                     => ["R18+", "Hentai"]
+      "Rx - Hentai"                     => ["R18+", "Hentai"],
+      "G - All Ages"                    => ["G",    "All Ages"],
+      "PG-13"                           => ["PG13", "Teens 13 or older"],
+      "R+"                              => ["R17+", "Mild Nudity"],
+      "PG13"                            => ["PG13", "Teens 13 or older"],
+      "G"                               => ["G",    "All Ages"],
+      "PG"                              => ["PG",   "Children"]
     }[rating] || [rating, nil]
   end
   
