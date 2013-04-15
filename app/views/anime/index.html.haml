@@ -19,7 +19,6 @@
                   %i.icon-tasks
                   Haven't finished
 
-          %ul.inline-list
             %li.large-3.columns
               %select{:multiple => "multiple", :class => "multiple-select", :name => "genres[]"}
                 - @all_genres.each do |genre|
@@ -27,7 +26,6 @@
                     %i.icon-film
                     = genre.name
 
-          %ul.inline-list
             %li.large-3.columns
               %select{:multiple => "multiple", :class => "multiple-nofiltera", :name => "types[]"}
                 %option{:disabled => "disabled"}
@@ -35,7 +33,6 @@
                 %option{:disabled => "disabled"}
                   OVA / SPECIAL
 
-          %ul.inline-list.where-to-watch
             %li.large-3.columns
               %select{:multiple => "multiple", :class => "multiple-nofilterb", :name => "watch[]"}
                 %option{:disabled => "disabled"}
