@@ -67,18 +67,25 @@
           }
           checkForCompletion();
       .row
-        - if @collection.length > 0
-          = render partial: "anime/card", collection: @collection, as: :data
-        - else
+        - if @collection.length == 0
           .not-found.panel
             .title.large-12-columns
               %h3 We couldn't find what you were looking for!
               %p To make up for that, here's some random anime... have fun!
-
-          //= render random anime here. Amount is up to you.
+            .row
+          - @collection = Anime.accessible_by(current_ability).order("RANDOM()").limit(6).map {|x| [x, @watchlist[x.id]] }
+          
+        = render partial: "anime/card", collection: @collection, as: :data
 
       .row.pagination-centered
         = paginate(@anime)
+
+      .row
+        .panel(style="text-align: center; padding: 8px; margin-top: 26px; opacity: 0.7")
+          %h5(style="display: inline")
+            Couldn't find what you were looking for?
+          %p(style="display: inline")
+            %a(href="mailto:vikhyat@hummingbird.ly") Send us an email!
 
 :javascript
   function capitalize(s) {

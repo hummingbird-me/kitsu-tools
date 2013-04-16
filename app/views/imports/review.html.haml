@@ -2,12 +2,19 @@
   .row
     .large-12.columns
       %h1= title "Review Import"
+  
+  - if current_user.watchlists.length > 0
+    .row
+      .alert-box.alert
+        %strong Warning: Applying the import will overwrite changes (if any) made to your watchlist. 
+        
   .row
     .large-6.columns
       .large-6.columns
         = link_to "Cancel Import", review_cancel_path, class: 'button secondary padded'
       .large-6.columns
         = link_to "Apply Import", review_apply_path, class: 'button padded'
+  
   .row
     %dl.tabs{:style => "margin-top: 10px;"}
       %dd.active

@@ -4,8 +4,29 @@ class MalImport
   def self.series_metadata(id)
     noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}").read
     meta = {}
+
+    # Get title and alternate title.
+    title = noko.css("h1").children[1].text
+    aka   = noko.css(".spaceit_pad").select {|x| x.text.include? "English:" }[0].text.gsub("English: ", "") rescue nil
+    meta[:title]           = title
+    meta[:english_title]   = (title != aka) ? aka : nil
+    
+    # Synopsis
+    meta[:synopsis] = noko.css("td").select {|x| x.css("h2").text == "Synopsis" }[0].text.gsub("Synopsis", '') rescue nil
     
     sidebar = noko.css('table tr td.borderClass')[0]
+    
+    # Cover image URL
+    meta[:cover_image_url] = sidebar.css("img")[0].attribute('src').value
+    
+    # Genres
+    meta[:genres] = (sidebar.css("div").select {|x| x.text.include? "Genres:" }[0].css("a").map(&:text) rescue []).map {|x| Genre.find_by_name(x) }.compact
+    
+    # Producers
+    meta[:producers] = (sidebar.css("div").select {|x| x.text.include? "Producers:" }[0].css("a").map(&:text) rescue []).map {|x| Producer.find_by_name(x) }.compact
+    
+    # Age rating
+    meta[:age_rating] = sidebar.css("div").select {|x| x.text.include? "Rating:" }[0].children[1].text.strip rescue nil
     
     # Episode count
     meta[:episode_count] = sidebar.css('div').select {|x| x.text.include? "Episodes:" }[0].children[1].text.strip rescue nil
@@ -122,17 +143,13 @@ class MalImport
     consider.each do |w|
       anime = animes[ w[:mal_id].to_i ]
       if anime
-        watchlist = Watchlist.where(user_id: staged_import.user, anime_id: anime).first || false
-        if !watchlist or watchlist.updated_at < w[:last_updated]
-          watchlist = Watchlist.new(
-            status: w[:status],
-            episodes_watched: w[:episodes_watched],
-            updated_at: w[:last_updated],
-            user: staged_import.user,
-            anime: anime,
-            imported: true
-          )
-        end
+        watchlist = Watchlist.where(user_id: staged_import.user, anime_id: anime).first || Watchlist.new(user: staged_import.user, anime: anime)
+        
+        watchlist.status = w[:status]
+        watchlist.episodes_watched = w[:episodes_watched]
+        watchlist.updated_at = w[:last_updated]
+        watchlist.imported = true
+
         if watchlist.rating.nil?
           rating = nil
           if w[:rating] != '0'
@@ -141,6 +158,7 @@ class MalImport
           end
           watchlist.rating = rating
         end
+        
         watchlists.push( [anime, watchlist] )
       end
     end

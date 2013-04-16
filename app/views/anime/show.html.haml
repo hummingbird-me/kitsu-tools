@@ -11,9 +11,10 @@
 
           .small-summary 
             %span #{pluralize @anime.episode_count, 'episode'} / #{@anime.episode_length} min. each  ||
-            %span #{@anime.age_rating}
+            %span.has-tip{:"data-width" => 200, :title => @anime.age_rating_guide}
+              = @anime.age_rating
             - if @anime.alternate_title(current_user) and @anime.alternate_title(current_user).length > 0
-              %span (Also known as <strong>#{@anime.alt_title}</strong>)
+              %span (Also known as <strong>#{@anime.alternate_title(current_user)}</strong>)
 
           .producers
             %p 
@@ -70,6 +71,11 @@
                   = f.label :mal_id, "MAL ID", class: 'inline'
                 .large-9.columns
                   = f.number_field :mal_id
+                / English canonical
+                .large-3.columns
+                  = f.label :english_canonical, "English Title Canonical?", class: 'inline'
+                .large-9.columns
+                  = f.check_box :english_canonical
 
                 .large-12.columns
                   = f.submit class: 'button'
