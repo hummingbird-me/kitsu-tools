@@ -1,0 +1,15 @@
+%figure
+  - @overlay_quote = overlay_quote_from_anime(@anime)
+  .overlay
+    .row
+      .large-8.columns.large-offset-2
+        %h5.title= @overlay_quote.content
+        %p
+          = @overlay_quote.character_name
+          (#{link_to @overlay_quote.anime.canonical_title(current_user), main_app.anime_path(@overlay_quote.anime)})
+      .large-2.columns
+        .quote-vote
+          = render partial: "quotes/votes", locals: {quote: @overlay_quote}
+  - if (@overlay_image = @overlay_quote.anime.gallery_images.order('RANDOM()').first)
+    = image_tag @overlay_image.image.url, style: 'width: 100%'
+
