@@ -156,24 +156,20 @@
             #{@anime.canonical_title(current_user)} Voice Actors
           / .large-1.columns
           /   = link_to "edit", "#"
-
-        %dl.tabs
+        
+        .section-container.auto(data-section)
           - @languages.each_with_index do |language, i|
-            %dd{:class => ("active" if i==0)}
-              %a{:href => "##{language}"}= language
-
-        %ul.tabs-content
-          - @languages.each_with_index do |language, i|
-            %li{:id => "#{language}Tab", :class => ("active" if i==0)}
-              %ul
+            %section
+              %p.title(data-section-title)
+                %a{:href => "##{language}"}= language
+              .content
                 - @castings.select {|x| x.role == language }.each do |casting|
-                  %li.actor-row.large-12.columns
+                  .actor-row.large-12.columns(data-section-content)
                     .character.large-5.columns
                       .headshot.large-2.columns
                         = image_tag casting.character.image.url(:thumb)
                       .name.large-10.columns
                         %p= link_to casting.character.name, "#"
-
                     .divider.large-2.columns
                       %hr
                     .actor.large-5.columns
@@ -181,7 +177,6 @@
                         %p= link_to casting.person.name, "#"
                       .headshot.large-2.columns
                         = image_tag casting.person.image.url(:thumb)
-                  
 
         %footer.large-12.columns
           %p= link_to "view complete cast", "#"
