@@ -65,7 +65,7 @@ $secondary-color: #3498db;
 // Grid Variables
 //
 
-// $row-width: 62.5em;
+$row-width: 71.250em;
 // $column-gutter: 1.875em;
 // $total-columns: 12;
 
@@ -982,15 +982,15 @@ $topbar-height: 80px;
 // $topbar-title-font-size: emCalc(17px);
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: #222;
-// $topbar-link-weight: bold;
+$topbar-link-color: #8c8c8c;
+$topbar-link-weight: normal;
 // $topbar-link-font-size: emCalc(13px);
 
 // Style the top bar dropdown elements
 $topbar-dropdown-bg: #fff;
 $topbar-dropdown-link-color: #222;
 // $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: #fff;
+$topbar-dropdown-toggle-color: #222;
 // $topbar-dropdown-toggle-alpha: 0.5;
 // $dropdown-label-color: #555;
 
@@ -998,8 +998,8 @@ $topbar-dropdown-link-color: #222;
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: emCalc(13px);
 // $topbar-menu-link-weight: bold;
-// $topbar-menu-link-color: #fff;
-// $topbar-menu-icon-color: #fff;
+$topbar-menu-link-color: #222;
+$topbar-menu-icon-color: #222;
 // $topbar-menu-link-color-toggled: #888;
 // $topbar-menu-icon-color-toggled: #888;
 

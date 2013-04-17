@@ -151,6 +151,18 @@
           / .large-1.columns
           /   = link_to "edit", "#"
 
+        / .section-container.tabs{"data-section" => ""}
+        /   %section
+        /     %p.title{"data-section-title" => ""}
+        /       %a{:href => "#panel1"} Section 1
+        /     .content{"data-section-content" => ""}
+        /       %p Content of section 1.
+        /   %section
+        /     %p.title{"data-section-title" => ""}
+        /       %a{:href => "#panel2"} Section 2
+        /     .content{"data-section-content" => ""}
+        /       %p Content of section 2.
+
         %dl.tabs
           - @languages.each_with_index do |language, i|
             %dd{:class => ("active" if i==0)}

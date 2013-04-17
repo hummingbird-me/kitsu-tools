@@ -9,67 +9,67 @@
       .large-6.columns
         = link_to "Apply Import", review_apply_path, class: 'button padded'
   .row
-    %dl.tabs{:style => "margin-top: 10px;"}
-      %dd.active
-        %a{:href => "#simple1"} Watchlist
-      %dd
-        %a{:href => "#simple2"} Reviews
-    %ul.tabs-content
-      %li#simple1Tab.active
-        = paginate @watchlist
-        %h3 Watchlist
-        %table
-          %thead
-            %tr
-              %th Anime
-              %th Status
-              %th Rating
-              %th Episodes Watched
-          %tbody
-            - @watchlist.each do |wld|
+    .section-container.tabs{"data-section" => ""}
+      %section
+        %p.title{"data-section-title" => ""}
+          %a{:href => "#panel1"} Watchlist
+        .content{"data-section-content" => ""}
+          = paginate @watchlist
+          %h3 Watchlist
+          %table
+            %thead
               %tr
-                %td= wld[0].canonical_title(current_user)
-                %td= wld[1].status
-                %td
-                  - if wld[1].rating
-                    = 3 + wld[1].rating
-                    stars
-                    [#{wld[1].rating >= 0 ? ":)" : ":("}]
-                  - else
-                    (not rated)
-                %td #{wld[1].episodes_watched}/#{wld[0].episode_count}
-        = paginate @watchlist
-
-      %li#simple2Tab
-        %h3 Reviews
-        %table
-          %thead
-            %tr
-              %th(style="width: 30%") Anime
-              %th Rating
-              %th Content
-          %tbody
-            - @reviews.each do |review|
+                %th Anime
+                %th Status
+                %th Rating
+                %th Episodes Watched
+            %tbody
+              - @watchlist.each do |wld|
+                %tr
+                  %td= wld[0].canonical_title(current_user)
+                  %td= wld[1].status
+                  %td
+                    - if wld[1].rating
+                      = 3 + wld[1].rating
+                      stars
+                      [#{wld[1].rating >= 0 ? ":)" : ":("}]
+                    - else
+                      (not rated)
+                  %td #{wld[1].episodes_watched}/#{wld[0].episode_count}
+          = paginate @watchlist
+      %section
+        %p.title{"data-section-title" => ""}
+          %a{:href => "#panel2"} Reviews
+        .content{"data-section-content" => ""}
+          %h3 Reviews
+          %table
+            %thead
               %tr
-                %td= review.anime.canonical_title(current_user)
-                %td
-                  %table
-                    %tr
-                      %td Story
-                      %td= review.rating_story
-                    %tr
-                      %td Animation
-                      %td= review.rating_animation
-                    %tr
-                      %td Sound
-                      %td= review.rating_sound
-                    %tr
-                      %td Character
-                      %td= review.rating_character
-                    %tr
-                      %td Enjoyment
-                      %td= review.rating_enjoyment
-                    %tr
-                      %td Overall
-                      %td= review.rating
-                %td= truncate(review.content, length: 500, omission: '...')
+                %th(style="width: 30%") Anime
+                %th Rating
+                %th Content
+            %tbody
+              - @reviews.each do |review|
+                %tr
+                  %td= review.anime.canonical_title(current_user)
+                  %td
+                    %table
+                      %tr
+                        %td Story
+                        %td= review.rating_story
+                      %tr
+                        %td Animation
+                        %td= review.rating_animation
+                      %tr
+                        %td Sound
+                        %td= review.rating_sound
+                      %tr
+                        %td Character
+                        %td= review.rating_character
+                      %tr
+                        %td Enjoyment
+                        %td= review.rating_enjoyment
+                      %tr
+                        %td Overall
+                        %td= review.rating
+                  %td= truncate(review.content, length: 500, omission: '...')

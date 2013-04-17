@@ -225,12 +225,13 @@
     }
     .row {
       overflow: visible;
-      .twelve.columns {
+      .large-12.columns {
         padding: 0px;
         .inline-list {
           overflow: visible;
-          margin: 0px;
-          .three.columns {
+          margin: 0px !important;
+
+          .large-3.columns {
             padding: 0px;
             margin: 0px;
             button {

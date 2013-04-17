@@ -22,7 +22,7 @@
             Review
     = form_for [@anime, @review] do |f|
       .row
-        .main-content.large-7.columns.offset-by-two
+        .main-content.large-7.columns.large-offset-2
           = f.text_area :content, rows: 7, :id => "redactor_content"
           %p.help-text 
             (optional) Summarize your review in one sentence. <br/>

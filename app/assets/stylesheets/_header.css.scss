@@ -3,15 +3,108 @@
 .hummingbird-header-1 {
   // set logo position and size in header
   .name {
-    margin-top: 20px;
     padding-left: 10px;
+    img {
+      position: relative;
+      top: 17px;
+    }
   }
+
   .user-block {
+    border-left: 1px solid #e5e5e5;
     .avatar-link-selector {
       .avatar {
-        width: 50px;
+        width: 40px;
+        position: relative;
+        top: 15px;
         @include border-radius(100px); 
       }
+    }
+  }
+
+  .top-bar {
+    margin-bottom: 0px !important;
+    z-index: 99999;
+    a {
+      margin-right: 10px;
+    }
+    .top-bar-section li a:not(.button):hover {
+      background: white;
+      color: #1abc9c;
+    }
+    .top-bar-section ul li.active a {
+      background: white;
+    }
+  }
+
+  figure {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: -180px;
+    height: 300px;
+    width: 100%;
+    margin-left: 0px;
+    border-bottom: 1px solid white;
+    margin-top: 0px;
+
+
+    .overlay {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      text-align: center;
+      color: #fff;
+      @include opacity(0.90);
+      @include border-top-radius(3px);
+      @include background-image(linear-gradient(left top, #393939, #000));
+
+      .title {
+        color: white;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 100px;
+
+        a {
+          color: white;
+        }
+      }
+
+      .quote-vote {
+        color: white;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 120px;
+        opacity: 0;
+        transition: opacity 0.8s;
+        a {
+          padding-top: 8px;
+          font-size: 1.8em;
+          display: block;
+        }
+      }
+      
+      &:hover {
+        .quote-vote {
+          opacity: 1;
+        }
+      }
+
+      .summary {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      float: left; 
     }
   }
 }
