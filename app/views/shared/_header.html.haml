@@ -13,12 +13,12 @@
           %li.active
             = link_to "My Library", "/dashboard"
           %li
-            = link_to "Recommendations", anime_index_path(filter: 'recommended')
+            = link_to "Recommendations", main_app.anime_index_path(filter: 'recommended')
           %li.has-dropdown
             %a{:href => "/anime"} Explore
             %ul.dropdown
               %li.has-dropdown
-                %a{:href => "#"} Anime
+                = link_to "Anime", main_app.anime_index_path
                 %ul.dropdown
                   %li
                     %label Explore Anime
@@ -41,7 +41,7 @@
             = link_to "Community", forem.root_path
             %ul.dropdown
               %li
-                %a{:href => "#"} Forums
+                = link_to "Forums", forem.root_path
               %li
                 %a{:href => "#"} Chat
 
