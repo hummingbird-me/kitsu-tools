@@ -3,7 +3,7 @@
     %nav.top-bar.cf
       %ul.title-area
         %li.name
-          = image_tag "logo.jpg", :height => "44px", :width => "70px"
+          = link_to image_tag("logo.jpg", :height => "44px", :width => "70px"), "/"
         %li.toggle-topbar.menu-icon
           %a{:href => "#"}
             %span Menu
@@ -13,7 +13,7 @@
           %li.active
             = link_to "My Library", "/dashboard"
           %li
-            %a{:href => "#"} Recommendations
+            = link_to "Recommendations", anime_index_path(filter: 'recommended')
           %li.has-dropdown
             %a{:href => "/anime"} Explore
             %ul.dropdown
