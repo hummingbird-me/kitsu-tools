@@ -6,7 +6,7 @@ class Anime < ActiveRecord::Base
     using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
 
   extend FriendlyId
-  friendly_id :title, :use => [:slugged]
+  friendly_id :canonical_title, :use => [:slugged, :history]
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, 
     :status, :synopsis, :cover_image, :youtube_video_id, :alt_title,
@@ -35,23 +35,31 @@ class Anime < ActiveRecord::Base
     if current_user && !current_user.sfw_filter
       self
     else
-      where("age_rating <> 'Rx'")
+      where("age_rating <> 'R18+'")
     end
   end
 
   # Check whether the current anime is SFW.
   def sfw?
-    age_rating != "Rx"
+    age_rating != "R18+"
   end
 
   # Use this function to get the title instead of directly accessing the title.
   def canonical_title(current_user=nil)
-    title
+    if alt_title and english_canonical
+      return alt_title
+    else
+      return title
+    end
   end
   # Use this function to get the alt title instead of directly accessing the 
   # alt_title.
   def alternate_title(current_user=nil)
-    alt_title
+    if english_canonical
+      return title
+    else
+      return alt_title
+    end
   end
 
   # Filter out all anime belonging to the genres passed in.
@@ -74,9 +82,45 @@ class Anime < ActiveRecord::Base
           )', genres.map(&:id))
   end
 
+  # Return [age rating, guide]
+  def self.convert_age_rating(rating)
+    {
+      nil                               => [nil,    nil],
+      ""                                => [nil,    nil],
+      "None"                            => [nil,    nil],
+      "PG-13 - Teens 13 or older"       => ["PG13", "Teens 13 or older"],
+      "R - 17+ (violence & profanity)"  => ["R17+", "Violence, Profanity"],
+      "R+ - Mild Nudity"                => ["R17+", "Mild Nudity"],
+      "PG - Children"                   => ["PG",   "Children"],
+      "Rx - Hentai"                     => ["R18+", "Hentai"],
+      "G - All Ages"                    => ["G",    "All Ages"],
+      "PG-13"                           => ["PG13", "Teens 13 or older"],
+      "R+"                              => ["R17+", "Mild Nudity"],
+      "PG13"                            => ["PG13", "Teens 13 or older"],
+      "G"                               => ["G",    "All Ages"],
+      "PG"                              => ["PG",   "Children"]
+    }[rating] || [rating, nil]
+  end
+  
+  def get_metadata_from_mal
+    meta = MalImport.series_metadata(self.mal_id)
+    self.title = meta[:title]
+    self.alt_title = meta[:english_title]
+    self.synopsis = meta[:synopsis]
+    self.cover_image = URI(meta[:cover_image_url]) if self.cover_image_file_name.nil?
+    self.genres = (self.genres + meta[:genres]).uniq
+    self.producers = (self.producers + meta[:producers]).uniq
+    self.mal_age_rating = meta[:age_rating]
+    self.age_rating, self.age_rating_guide = Anime.convert_age_rating(self.mal_age_rating)
+    self.episode_count = meta[:episode_count]
+    self.episode_length = meta[:episode_length]
+    self.status = meta[:status]
+    self.save
+  end
+
   before_save do
     # If episode_count has increased, create new episodes.
-    if self.episodes.length < self.episode_count and (self.episodes.length == 0 or self.thetvdb_series_id.nil? or self.thetvdb_series_id.length == 0) 
+    if self.episode_count and self.episodes.length < self.episode_count and (self.episodes.length == 0 or self.thetvdb_series_id.nil? or self.thetvdb_series_id.length == 0) 
       (self.episodes.length+1).upto(self.episode_count) do |n|
         Episode.create(anime_id: self.id, number: n)
       end

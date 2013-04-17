@@ -3,6 +3,13 @@ class AnimeController < ApplicationController
   
   def show
     @anime = Anime.find(params[:id])
+    # If an old id or a numeric id was used to find the record, then
+    # the request path will not match the post_path, and we should do
+    # a 301 redirect that uses the current friendly id.
+    if request.path != anime_path(@anime)
+      return redirect_to @anime, :status => :moved_permanently
+    end
+    
     @genres = @anime.genres
     @producers = @anime.producers
     @quotes = @anime.quotes.limit(4)
@@ -51,6 +58,7 @@ class AnimeController < ApplicationController
     @anime.thetvdb_series_id = params[:anime][:thetvdb_series_id]
     @anime.thetvdb_season_id = params[:anime][:thetvdb_season_id]
     @anime.mal_id = params[:anime][:mal_id]
+    @anime.english_canonical = params[:anime][:english_canonical]
     @anime.save
     redirect_to @anime
   end
@@ -65,17 +73,13 @@ class AnimeController < ApplicationController
   def get_metadata_from_mal
     @anime = Anime.find(params[:anime_id])
     authorize! :update, @anime
-    meta = MalImport.series_metadata(@anime.mal_id)
-    @anime.episode_count = meta[:episode_count]
-    @anime.episode_length = meta[:episode_length]
-    @anime.status = meta[:status]
-    @anime.save
+    @anime.get_metadata_from_mal
     redirect_to @anime
   end
 
   def index
     # Establish a base scope.
-    @anime = Anime.sfw_filter(current_user)
+    @anime = Anime.accessible_by(current_ability)
 
     # Get a list of all genres.
     @all_genres = Genre.default_filterable(current_user)

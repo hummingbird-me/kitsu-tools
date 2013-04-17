@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def basic
-    @anime = Anime.sfw_filter(current_user).page(params[:page]).per(18)
+    @anime = Anime.accessible_by(current_ability).page(params[:page]).per(18)
 
     @all_genres = Genre.order(:name)
 
