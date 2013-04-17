@@ -1,4 +1,4 @@
-%figure
+%figure.header-quote
   - @overlay_quote = overlay_quote_from_anime(@anime)
   .overlay
     .row
@@ -11,5 +11,8 @@
         .quote-vote
           = render partial: "quotes/votes", locals: {quote: @overlay_quote}
   - if (@overlay_image = @overlay_quote.anime.gallery_images.order('RANDOM()').first)
-    = image_tag @overlay_image.image.url, style: 'width: 100%'
-
+    %img(style="width: 100%")
+    :javascript
+      $(function() {
+        $(".header-quote img").attr("src", "#{@overlay_image.image.url}");
+      });
