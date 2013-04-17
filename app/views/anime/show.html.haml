@@ -157,20 +157,8 @@
           / .large-1.columns
           /   = link_to "edit", "#"
 
-        / .section-container.tabs{"data-section" => ""}
-        /   %section
-        /     %p.title{"data-section-title" => ""}
-        /       %a{:href => "#panel1"} Section 1
-        /     .content{"data-section-content" => ""}
-        /       %p Content of section 1.
-        /   %section
-        /     %p.title{"data-section-title" => ""}
-        /       %a{:href => "#panel2"} Section 2
-        /     .content{"data-section-content" => ""}
-        /       %p Content of section 2.
-
-        %dl.tabs
-          - @languages.each_with_index do |language, i|
+        .section-container.auto(data-section)
+          - @languages.each do |language|
             %section
               %p.title(data-section-title)
                 %a{:href => "##{language}"}= language
@@ -189,7 +177,7 @@
                         %p= link_to casting.person.name, "#"
                       .headshot.large-2.columns
                         = image_tag casting.person.image.url(:thumb)
-
+                    
         %footer.large-12.columns
           %p= link_to "view complete cast", "#"
 
