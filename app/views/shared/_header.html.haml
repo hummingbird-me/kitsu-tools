@@ -54,7 +54,7 @@
                   %form#live_search_form{:action => "/search", :autocomplete => "off"}
                     %input.typeahead#nav_search_input(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
                   %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
-                  
+
           %li.divider.show-for-small
           - if user_signed_in?
             %li.user-block.has-dropdown
@@ -67,6 +67,10 @@
                     = link_to "Admin panel", "/kotodama"
                 %li
                   = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
+          - else
+            %span= link_to "login", main_app.new_user_session_path
+            %span or
+            %span= link_to "register", main_app.new_user_registration_path
 
   - unless @hide_cover_image
     = render partial: "shared/header_quote"
