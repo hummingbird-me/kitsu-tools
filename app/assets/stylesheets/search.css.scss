@@ -7,16 +7,28 @@
 
 .twitter-typeahead {
   position: relative;
-  width: 200px;
+  width: 100%;
+  min-width: 300px;
   display: block;
+  @media (max-width: 1130px) {
+    min-width: 250px;
+  }
+  @media (max-width: 1085px) {
+    min-width: 180px;
+  }
   .tt-dropdown-menu {
     position: absolute;
     z-index: 100;
-    left: -34px !important;
-    width: 122% !important;
-    top: 53px !important;
+    left: 0px !important;
+    width: 100% !important;
+    top: 66px !important;
     display: block;
     right: auto;
+  }
+  .tt-hint {
+    top: 8px !important;
+    line-height: 14px !important;
+    color: #dcdcdc !important;
   }
   .tt-suggestions {
     //position: absolute;
@@ -24,7 +36,6 @@
     //left: -51px;
     padding-left: 6px;
     padding-right: 6px;
-    border-top: 3px solid #fd7532;
     background: white;
     @include border-bottom-radius(3px);
     @media (max-width: 1000px) {
