@@ -1,3 +1,10 @@
+:css
+  .twitter-typeahead .tt-dropdown-menu {
+    left: 0px !important;
+    width: 100% !important;
+    top: 32px !important;
+  }
+
 %h3 New "#{@anime.canonical_title(current_user)}" quote
 
 = form_for Quote.new, :url => anime_quotes_path(@anime) do |f|
@@ -7,7 +14,7 @@
   = f.label :character
   = f.text_field :character_name, class: "#{@anime.slug}_character_name"
 
-  = f.submit class: "button"
+  = f.submit class: "button padded"
 
 :javascript
   $("input.#{@anime.slug}_character_name").typeahead({
