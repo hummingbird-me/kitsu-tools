@@ -111,10 +111,15 @@
       float: left; 
     }
   }
-  .search {
+  .header-search {
     position: relative;
     top: 14px;
     overflow: visible;
+    .tt-hint {
+      top: 8px !important;
+      line-height: 14px !important;
+      color: #dcdcdc !important;
+    }
     input {
       @include border-radius(3px);
       box-shadow: none;

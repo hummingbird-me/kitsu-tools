@@ -25,7 +25,7 @@
         %ul.right
           %li.has-form
             %form
-              .row.collapse.search
+              .row.collapse.header-search
                 .small-12.columns
                   %form#live_search_form{:action => "/search", :autocomplete => "off"}
                     %input.typeahead#nav_search_input(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
