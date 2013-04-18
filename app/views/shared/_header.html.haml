@@ -16,34 +16,10 @@
             = link_to "Recommendations", main_app.anime_index_path(filter: 'recommended')
           %li
             %a{:href => "/anime"} Explore
-            %ul.dropdown
-              %li.has-dropdown
-                = link_to "Anime", main_app.anime_index_path
-                %ul.dropdown
-                  %li
-                    %label Explore Anime
-                  %li
-                    %a{:href => "#"} Top 100
-                  %li
-                    %a{:href => "#"} Browse Genres
-                  %li
-                    %a{:href => "#"} Anime Calendar
-              %li.has-dropdown
-                %a{:href => "#"} Manga
-                %ul.dropdown
-                  %li
-                    %label Explore Anime
-                  %li
-                    %a{:href => "#"} Top 100
-                  %li
-                    %a{:href => "#"} Browse Genres
+
           %li.has-dropdown
             = link_to "Community", forem.root_path
-            %ul.dropdown
-              %li
-                = link_to "Forums", forem.root_path
-              %li
-                %a{:href => "#"} Chat
+
 
         / Right Nav Section
         %ul.right
