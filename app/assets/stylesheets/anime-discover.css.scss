@@ -238,6 +238,9 @@
               @media (max-width: 480px) {
                 border-bottom: 1px solid #eee;
               }
+              &:hover {
+                background: white;
+              }
             }
             .dropdown {
               height: 50px;
