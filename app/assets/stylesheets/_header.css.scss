@@ -114,6 +114,7 @@
   .search {
     position: relative;
     top: 14px;
+    overflow: visible;
     input {
       @include border-radius(3px);
       box-shadow: none;
@@ -121,18 +122,24 @@
       border: 1px solid #dcdcdc;
     }
     #nav_search_submit {
-      background-image: url(http://cdn1.sbnation.com/images/polygon/sprites/icons@2x.vcd374f5.png);
-      background-size: 108px 1043px;
       position: absolute;
       top: 8px;
       cursor: pointer;
       right: 0;
       border: 0;
-      background: transparent url(http://cdn2.sbnation.com/images/polygon/sprites/icons.ve03c444.png) no-repeat 0 -72px;
+      background: transparent url(http://cdn1.sbnation.com/images/polygon/sprites/icons@2x.vcd374f5.png) no-repeat 0 -72px;
+      background-size: 108px 1043px;
       text-indent: -3000px;
       display: inline-block;
       height: 36px;
       width: 36px;
+    }
+  }
+  .guest-block {
+    height: 80px;
+    a {
+      margin: 0px;
+      padding: 0px !important;
     }
   }
 }
