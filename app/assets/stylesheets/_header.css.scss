@@ -3,7 +3,6 @@
 .hummingbird-header-1 {
   // set logo position and size in header
   .name {
-    padding-left: 10px;
     img {
       position: relative;
       top: 17px;
@@ -33,7 +32,7 @@
     }
     .top-bar-section li a:not(.button):hover {
       background: white;
-      color: #1abc9c;
+      color: #fd864b;
     }
     .top-bar-section ul li.active a {
       background: white;
