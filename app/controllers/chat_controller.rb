@@ -1,5 +1,5 @@
 class ChatController < ApplicationController
   def index
-    render :text => "hi"
+    @hide_cover_image = true
   end
 end
