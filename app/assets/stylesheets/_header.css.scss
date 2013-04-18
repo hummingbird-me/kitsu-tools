@@ -3,9 +3,11 @@
 .hummingbird-header-1 {
   // set logo position and size in header
   .name {
+    padding-left: 10px;
     img {
       position: relative;
-      top: 17px;
+      top: 21px;
+      width: 60px !important;
     }
   }
 
