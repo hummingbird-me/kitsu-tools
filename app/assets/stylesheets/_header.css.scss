@@ -16,6 +16,7 @@
     .avatar-link-selector {
       .avatar {
         width: 40px;
+        height: 40px;
         position: relative;
         top: 15px;
         @include border-radius(100px); 
