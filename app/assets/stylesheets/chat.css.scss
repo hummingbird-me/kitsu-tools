@@ -1,3 +1,29 @@
 // Place all the styles related to the chat controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.chat {
+  margin-top: 50px;
+  .main-chat {
+    height: 400px;
+    overflow-y: scroll;
+    .chats {
+      .chat-display {
+
+        overflow-x: hidden;
+        .chat-text {
+          .message-block {
+            display: block;
+            width: 100%;
+            float: left;
+            .name {
+            }
+            .message {
+            }
+            .time-stamp {              
+            }
+          }
+        }
+      }
+    }
+  }
+}
