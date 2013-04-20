@@ -89,24 +89,23 @@
                   %p 1 hour ago
               
     .large-2.columns.onlineUsers
-      %p Hi.
+      %h4 Online Users
+      %p Loading...
   .row
     .large-12.columns
       %p Hi.
 
-:javascript
-  var onlineUsersTemplate = Hogan.compile("\
-    <ul>\
-      {{#user}}\
-        <li><a href='{{url}}'>{{name}}</a></li>\
-      {{/user}}\
-    </ul>\
-  ");
-
-  // Ping the server every 8 seconds.
-  function ping() {
-    $.getJSON("/chat/ping", function(d) {
-      $(".onlineUsers").html(onlineUsersTemplate.render({user: d}));
-    });
-  }
-  setInterval(ping, 8000); ping();
+:coffee
+  onlineUsersTemplate = Hogan.compile "
+    <h4>Online Users</h4>
+    <ul>
+      {{#user}}
+        <li><a href='{{url}}'>{{name}}</a></li>
+      {{/user}}
+    </ul>"
+  ping = ->
+    $.getJSON "/chat/ping", (d) ->
+      $(".onlineUsers").html onlineUsersTemplate.render {user: d}
+  ping()
+  setInterval ping, 8000
+ 
