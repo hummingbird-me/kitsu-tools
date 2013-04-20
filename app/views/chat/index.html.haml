@@ -88,12 +88,20 @@
                 .large-1.columns.time-stamp
                   %p 1 hour ago
               
+              
     .large-2.columns.onlineUsers
       %h4 Online Users
       %p Loading...
+  
   .row
-    .large-12.columns
-      %p Hi.
+    .large-10.columns
+      %form.sendMessage
+        .row.collapse
+          .small-12.columns
+            .small-10.columns
+              %input.message(type="text")
+            .small-2.columns
+              %input.button.prefix(type="submit" value="send")
 
 :coffee
   onlineUsersTemplate = Hogan.compile "
@@ -108,4 +116,8 @@
       $(".onlineUsers").html onlineUsersTemplate.render {user: d}
   ping()
   setInterval ping, 8000
+
+  $("form.sendMessage").submit ->
+    console.log $("input.message").val()
+    return false
  
