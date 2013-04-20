@@ -4,6 +4,15 @@
 @import "compass/css3";
 .chat {
   margin-top: 0px;
+  .onlineUsers {
+    ul {
+      list-style: none;
+      li {
+        border-bottom: 1px solid #e2e2e2;
+        padding-bottom: 5px;
+      }
+    }
+  }
   .main-chat {
     height: 600px;
     padding: 0px;
