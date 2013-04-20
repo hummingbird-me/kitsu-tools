@@ -410,6 +410,7 @@ DEPENDENCIES
   rails (= 3.2.13)
   rails_admin
   rdiscount
+  redis
   redis-rails
   rvm-capistrano
   sanitize

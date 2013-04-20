@@ -1,94 +1,88 @@
 - title "Chat"
+
 .chat
   .row
-    .large-10.columns.main-chat
+    .large-10.columns.main-chat#mainChatScroll
       .chats 
         .chat-display
           .chat-text
-            %ul
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p You around?
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1362317029", :class => "avatar-image"
-                .large-11.columns.message.current-user
-                  %span.name= link_to "JoshFabian", "#"
-                  %p Yep, stuck here for the next 4 hours.
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p What kind of structure would I need to get something similar to the Hipchat web chat interface
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1362317029", :class => "avatar-image"
-                .large-11.columns.message.current-user
-                  %span.name= link_to "JoshFabian", "#"
-                  %p Sorry, not sure what you mean by structure?
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p I can't figure out the HTML/CSS.
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p You around?
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1362317029", :class => "avatar-image"
-                .large-11.columns.message.current-user
-                  %span.name= link_to "JoshFabian", "#"
-                  %p Yep, stuck here for the next 4 hours.
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p What kind of structure would I need to get something similar to the Hipchat web chat interface
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1362317029", :class => "avatar-image"
-                .large-11.columns.message.current-user
-                  %span.name= link_to "JoshFabian", "#"
-                  %p Sorry, not sure what you mean by structure?
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p I can't figure out the HTML/CSS.
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
+            %p Loading...
               
-    .large-2.columns
-      %p Hi.
+    .large-2.columns.onlineUsers
+      %h4 Online Users
+      %p Loading...
+  
   .row
-    .large-12.columns
-      %p Hi.
+    .large-10.columns
+      %form.sendMessage
+        .row.collapse
+          .small-12.columns
+            .small-10.columns
+              %input.message(type="text")
+            .small-2.columns
+              %input.button.prefix(type="submit" value="send")
+
+:coffee
+  onlineUsersTemplate = Hogan.compile "
+    <h4>Online Users</h4>
+    <ul>
+      {{#user}}
+        <li><a href='{{url}}'>{{name}}</a></li>
+      {{/user}}
+    </ul>"
+  messagesTemplate = Hogan.compile "
+    <ul>
+      {{#message}}
+        <li class='message-block'>
+          <div class='large-1 columns avatar'>
+            <img src='{{user.avatar}}' class='avatar-image' />
+          </div>
+          <div class='large-10 columns message'>
+            <span class='name'><a href='{{user.url}}'>{{user.name}}</a></span>
+            <p>{{message}}</p>
+          </div>
+          <div class='large-2 columns time-stamp'>
+            <p>{{timeAgo}}</p>
+          </div>
+        </li>
+      {{/message}}
+    </ul>
+  "
+  ping = ->
+    $.getJSON "/chat/ping", (d) ->
+      $(".onlineUsers").html onlineUsersTemplate.render {user: d}
+  ping()
+  setInterval ping, 8000
+
+  $("form.sendMessage").submit ->
+    postMessageToServer()
+    return false
+
+  updateChatScroll = ->
+    c = document.getElementById("mainChatScroll");
+    c.scrollTop = c.scrollHeight;
+  updateChatScroll()
+
+  messages = []
+
+  updateMessages = (d) ->
+    messages = d
+    renderMessages()
+
+  getMessages = ->
+    $.getJSON "/chat/messages", (d) ->
+      updateMessages d
+
+  renderMessages = ->
+    m = messages.map (x) ->
+      x["timeAgo"] = moment(x["created_at"]).fromNow()
+    $(".chat-text").html messagesTemplate.render {message: messages.reverse()}
+    updateChatScroll()
+
+  postMessageToServer = ->
+    $.post '/chat/messages', 
+      {message: $("input.message").val()}, 
+      (r) -> updateMessages r; $("input.message").val(''),
+      'json'
+  
+  getMessages()
