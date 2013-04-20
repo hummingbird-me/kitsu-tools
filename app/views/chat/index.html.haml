@@ -136,6 +136,8 @@
   getMessagesFromRemote = ->
     $.getJSON "/chat/messages", (d) ->
       updateMessages d
+      ChatMessages.remove ChatMessages.select (x) -> 
+        return x.isNew()
 
   getMessagesFromRemote()
 
@@ -161,5 +163,5 @@
 
     $.post '/chat/messages', 
       {message: c.get('message')}, 
-      (r) -> ChatMessages.remove c; getMessagesFromRemote(); $("input.message").val(''),
+      (r) -> getMessagesFromRemote(); $("input.message").val(''),
       'json'
