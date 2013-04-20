@@ -2,7 +2,7 @@
 
 .chat
   .row
-    .large-10.columns.main-chat
+    .large-10.columns.main-chat#mainChatScroll
       .chats 
         .chat-display
           .chat-text
@@ -120,4 +120,8 @@
   $("form.sendMessage").submit ->
     console.log $("input.message").val()
     return false
- 
+  
+  updateChatScroll = ->
+    c = document.getElementById("mainChatScroll");
+    c.scrollTop = c.scrollHeight;
+  updateChatScroll()
