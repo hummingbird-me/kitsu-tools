@@ -28,6 +28,9 @@
             border-bottom: 1px solid #eae9ee;
             padding-top: 10px;
             padding-bottom: 10px;
+            @media (max-width: 480px) {
+              padding-left: 10px;
+            }
             .avatar {
               .avatar-image {
                 width: 40px;
@@ -37,7 +40,7 @@
             }
 
             .message {
-              width: 85%;
+              width: 80%;
               padding: 0px;
               .name {
                 font-weight: 700;
@@ -55,7 +58,10 @@
               right: 0px;   
               text-align: right;
               font-size: 13px;
-              opacity: 0.5;      
+              opacity: 0.5; 
+              @media (max-width: 480px) {
+                right: 10px;
+              }     
             }
           }
         }
