@@ -59,6 +59,10 @@
               text-align: right;
               font-size: 13px;
               opacity: 0.5; 
+              .status-icon {
+                position: relative;
+                bottom: 10px;
+              }
               @media (max-width: 480px) {
                 right: 10px;
               }     
