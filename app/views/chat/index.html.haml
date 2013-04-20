@@ -73,6 +73,8 @@
     "),
     render: ->
       this.$el.html (this.template.render this.model.toJSON())
+      $p = this.$el.find("p")
+      $p.html $p.text().autoLink()
       return this
   }
 
@@ -168,7 +170,9 @@
 
     ChatMessages.add c
 
+    $("input.message").val('')
+
     $.post '/chat/messages', 
       {message: c.get('message')}, 
-      (r) -> getMessagesFromRemote(); $("input.message").val(''),
+      (r) -> getMessagesFromRemote(),
       'json'
