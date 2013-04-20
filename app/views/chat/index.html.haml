@@ -2,18 +2,18 @@
 
 .chat
   .row
+    .large-2.columns.onlineUsers
+      %h4 Online Users
+      %p Loading...
+
     .large-10.columns.main-chat#mainChatScroll
       .chats 
         .chat-display
           .chat-text
-            %p Loading...
-              
-    .large-2.columns.onlineUsers
-      %h4 Online Users
-      %p Loading...
+            %p Loading...      
   
   .row
-    .large-10.columns.input-area
+    .large-10.columns.input-area.right
       %form.sendMessage
         .row.collapse
           .small-12.columns
