@@ -6,88 +6,7 @@
       .chats 
         .chat-display
           .chat-text
-            %ul
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p You around?
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1362317029", :class => "avatar-image"
-                .large-11.columns.message.current-user
-                  %span.name= link_to "JoshFabian", "#"
-                  %p Yep, stuck here for the next 4 hours.
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p What kind of structure would I need to get something similar to the Hipchat web chat interface
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1362317029", :class => "avatar-image"
-                .large-11.columns.message.current-user
-                  %span.name= link_to "JoshFabian", "#"
-                  %p Sorry, not sure what you mean by structure?
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p I can't figure out the HTML/CSS.
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p You around?
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1362317029", :class => "avatar-image"
-                .large-11.columns.message.current-user
-                  %span.name= link_to "JoshFabian", "#"
-                  %p Yep, stuck here for the next 4 hours.
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p What kind of structure would I need to get something similar to the Hipchat web chat interface
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1362317029", :class => "avatar-image"
-                .large-11.columns.message.current-user
-                  %span.name= link_to "JoshFabian", "#"
-                  %p Sorry, not sure what you mean by structure?
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              %li.message-block
-                .large-1.columns.avatar
-                  = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1362343675", :class => "avatar-image"
-                .large-11.columns.message
-                  %span.name= link_to "Vikhyat", "#" 
-                  %p I can't figure out the HTML/CSS.
-                .large-1.columns.time-stamp
-                  %p 1 hour ago
-              
+            %p Loading...
               
     .large-2.columns.onlineUsers
       %h4 Online Users
@@ -111,6 +30,24 @@
         <li><a href='{{url}}'>{{name}}</a></li>
       {{/user}}
     </ul>"
+  messagesTemplate = Hogan.compile "
+    <ul>
+      {{#message}}
+        <li class='message-block'>
+          <div class='large-1 columns avatar'>
+            <img src='{{user.avatar}}' class='avatar-image' />
+          </div>
+          <div class='large-10 columns message'>
+            <span class='name'><a href='{{user.url}}'>{{user.name}}</a></span>
+            <p>{{message}}</p>
+          </div>
+          <div class='large-2 columns time-stamp'>
+            <p>{{timeAgo}}</p>
+          </div>
+        </li>
+      {{/message}}
+    </ul>
+  "
   ping = ->
     $.getJSON "/chat/ping", (d) ->
       $(".onlineUsers").html onlineUsersTemplate.render {user: d}
@@ -120,8 +57,22 @@
   $("form.sendMessage").submit ->
     console.log $("input.message").val()
     return false
-  
+
   updateChatScroll = ->
     c = document.getElementById("mainChatScroll");
     c.scrollTop = c.scrollHeight;
   updateChatScroll()
+
+  messages = []
+
+  getMessages = ->
+    $.getJSON "/chat/messages", (d) ->
+      messages = d
+      renderMessages()
+
+  renderMessages = ->
+    m = messages.map (x) ->
+      x["timeAgo"] = moment(x["created_at"]).fromNow()
+    $(".chat-text").html messagesTemplate.render {message: messages}
+  
+  getMessages()
