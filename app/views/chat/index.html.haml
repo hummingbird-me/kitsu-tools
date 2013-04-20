@@ -133,8 +133,14 @@
     messages = _.sortBy(messages, ChatMessages.comparator)
     ChatMessages.set messages, {remove: false}
 
+  getMessagesURL = ->
+    if ChatMessages.length > 0
+      return "/chat/messages?since=" + encodeURIComponent(ChatMessages.at(ChatMessages.length-1).get("created_at"))
+    else
+      return "/chat/messages"
+
   getMessagesFromRemote = ->
-    $.getJSON "/chat/messages", (d) ->
+    $.getJSON getMessagesURL(), (d) ->
       updateMessages d
       ChatMessages.remove ChatMessages.select (x) -> 
         return x.isNew()
