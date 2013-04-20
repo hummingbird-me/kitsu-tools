@@ -5,6 +5,8 @@
 .chat {
   margin-top: 0px;
   .onlineUsers {
+    height: 600px;
+    overflow-y: scroll;
     ul {
       list-style: none;
       li {
