@@ -17,8 +17,13 @@
           %li
             %a{:href => "/anime"} Explore
 
-          %li
+          %li.has-dropdown
             = link_to "Community", forem.root_path
+            %ul.dropdown
+              %li
+                = link_to "Forums", forem.root_path
+              %li
+                = link_to "Chat", "/chat"
 
 
         / Right Nav Section
