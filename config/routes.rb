@@ -12,6 +12,7 @@ Hummingbird::Application.routes.draw do
 
   # Chat
   match '/chat' => 'chat#index'
+  match '/chat/ping' => 'chat#ping'
 
   resources :beta_invites
   match "/beta_invites/resend_invite" => "beta_invites#resend_invite", as: :resend_beta_invite

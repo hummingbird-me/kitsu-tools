@@ -1,4 +1,5 @@
 - title "Chat"
+
 .chat
   .row
     .large-10.columns.main-chat
@@ -87,8 +88,25 @@
                 .large-1.columns.time-stamp
                   %p 1 hour ago
               
-    .large-2.columns
+    .large-2.columns.onlineUsers
       %p Hi.
   .row
     .large-12.columns
       %p Hi.
+
+:javascript
+  var onlineUsersTemplate = Hogan.compile("\
+    <ul>\
+      {{#user}}\
+        <li><a href='{{url}}'>{{name}}</a></li>\
+      {{/user}}\
+    </ul>\
+  ");
+
+  // Ping the server every 8 seconds.
+  function ping() {
+    $.getJSON("/chat/ping", function(d) {
+      $(".onlineUsers").html(onlineUsersTemplate.render({user: d}));
+    });
+  }
+  setInterval(ping, 8000); ping();
