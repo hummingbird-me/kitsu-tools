@@ -84,9 +84,9 @@
           youtube_video = match[1]
       
       if youtube_video
-        iframe = $("<iframe width='350' height='240' frameborder='0' 
+        iframe = $("<br><iframe width='350' height='240' frameborder='0' 
           allowfullscreen src='http://youtube.com/embed/" + youtube_video + "' />");
-        $p.after(iframe)
+        $p.append(iframe)
         
         
 
