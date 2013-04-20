@@ -28,8 +28,8 @@ class ChatController < ApplicationController
       
       users = {}
       messages.each do |x|
-        users[x] ||= User.find(x[:user_id])
-        x[:user] = {name: users[x].name, url: user_url(users[x]), avatar: users[x].avatar.url(:thumb)}
+        users[x[:user_id]] ||= User.find(x[:user_id])
+        x[:user] = {name: users[x[:user_id]].name, url: user_url(users[x[:user_id]]), avatar: users[x[:user_id]].avatar.url(:thumb)}
       end
       messages = messages.sort_by {|x| x[:created_at] }
       render :json => messages
