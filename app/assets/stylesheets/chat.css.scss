@@ -1,11 +1,14 @@
 // Place all the styles related to the chat controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3";
 .chat {
-  margin-top: 50px;
+  margin-top: 0px;
   .main-chat {
-    height: 400px;
+    height: 600px;
+    padding: 0px;
     overflow-y: scroll;
+    background: #fff;
     .chats {
       .chat-display {
         .chat-text {
@@ -13,7 +16,7 @@
             display: block;
             width: 100%;
             float: left;
-            border-bottom: 1px solid #222;
+            border-bottom: 1px solid #eae9ee;
             padding-top: 10px;
             padding-bottom: 10px;
             .avatar {
@@ -23,19 +26,56 @@
                 border-radius: 100px;
               }
             }
+
             .message {
               width: 85%;
               padding: 0px;
+              .name {
+                font-weight: 700;
+                a {
+                  color: #6a6f7e;
+                }
+              }
               p {
-                line-height: .8;
+                margin-bottom: 0px;
               }
             }
+
             .time-stamp {  
               position: absolute;  
               right: 0px;   
-              font-size: 11px;       
+              text-align: right;
+              font-size: 13px;
+              opacity: 0.5;      
             }
           }
+        }
+      }
+    }
+  }
+  .input-area {
+    background: #fff;
+    @include border-bottom-radius(5px);
+    .input-wrapper {
+      position: relative;
+      .message {
+        height: 45px;
+        margin-bottom: 0px;
+        margin-top: 17px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        box-shadow: none;
+        border: 1px solid #eae9ee;
+        @include border-radius(5px);
+      }
+      .icon-share-alt {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        cursor: pointer;
+        opacity: .6;
+        &:hover {
+          opacity: 1;
         }
       }
     }

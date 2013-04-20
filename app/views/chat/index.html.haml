@@ -13,14 +13,14 @@
       %p Loading...
   
   .row
-    .large-10.columns
+    .large-10.columns.input-area
       %form.sendMessage
         .row.collapse
           .small-12.columns
-            .small-10.columns
+            .input-wrapper
               %input.message(type="text")
-            .small-2.columns
-              %input.button.prefix(type="submit" value="send")
+              %i.icon-share-alt{:onclick => "document.sendMessage.submit()"}
+
 
 
 :coffee
