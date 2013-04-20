@@ -77,16 +77,27 @@
       $p.html $p.text().autoLink {target: "_blank"}
 
       youtube_video = null
+      gif_url = null
       $p.find("a").each ->
         match = this.href.match /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g
         if match
           match = match[0].match /watch\?v=([a-zA-Z0-9\-_]+)/
           youtube_video = match[1]
+        else
+          # Try GIFs
+          match = this.href.match /\.gif$/
+          if match
+            gif_url = this.href
+            
       
       if youtube_video
         iframe = $("<br><iframe width='350' height='240' frameborder='0' 
           allowfullscreen src='http://youtube.com/embed/" + youtube_video + "' />");
         $p.append(iframe)
+      else
+        if gif_url
+          image = $("<br><img src='"+gif_url+"' style='height: 240px; width: auto; max-width: 600'>");
+          $p.append(image)
         
       return this
   }
