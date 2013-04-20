@@ -19,7 +19,7 @@
           .small-12.columns
             .input-wrapper
               %input.message(type="text" placeholder="Write Something...")
-              %i.icon-share-alt{:onclick => "document.sendMessage.submit()"}
+              %i.icon-share-alt{:onclick => "$('form.sendMessage').submit()"}
 
 
 
@@ -63,6 +63,12 @@
       </div>
       <div class='large-2 columns time-stamp' data-created-at='{{created_at}}'>
         <p></p>
+        {{#id}}
+          <span><i class='icon icon-ok'></i></span>
+        {{/id}}
+        {{^id}}
+          <span><i class='icon icon-spin icon-spinner'></i></span>
+        {{/id}}
       </div>
     "),
     render: ->
@@ -84,10 +90,19 @@
   ChatMessagesViewClass = Backbone.View.extend {
     tagName: "ul",
     initialize: ->
-      _(this).bindAll 'add'
+      _(this).bindAll 'add', 'remove'
       this._views = []
       this.collection.each this.add
-      this.collection.bind 'add', this.add,
+      this.collection.bind 'add', this.add
+      this.collection.bind 'remove', this.remove,
+    remove: (c) ->
+      console.log c
+      viewToRemove = _(this._views).select (cv) -> 
+        return cv.model == c
+      viewToRemove = viewToRemove[0]
+      this._views = _(this._views).without(viewToRemove)
+      if this._rendered
+        viewToRemove.$el.remove()
     add: (c) ->
       cv = new ChatMessageView {model: c}
       this._views.push cv
@@ -124,13 +139,27 @@
 
   getMessagesFromRemote()
 
-
   $("form.sendMessage").submit ->
     postMessageToServer()
     return false
 
   postMessageToServer = ->
+    h = {
+      user_id: #{current_user.id},
+      user: {
+        name: #{current_user.name.inspect},
+        url: #{user_url(current_user).inspect},
+        avatar: #{current_user.avatar.url(:thumb).inspect}
+      },
+      message: $("input.message").val(),
+      created_at: moment().format()
+    }
+    c = new ChatMessage
+    c.set h
+
+    ChatMessages.add c
+
     $.post '/chat/messages', 
-      {message: $("input.message").val()}, 
-      (r) -> updateMessages r; $("input.message").val(''),
+      {message: c.get('message')}, 
+      (r) -> ChatMessages.remove c; getMessagesFromRemote(); $("input.message").val(''),
       'json'

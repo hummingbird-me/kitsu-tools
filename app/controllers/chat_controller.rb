@@ -15,22 +15,25 @@ class ChatController < ApplicationController
   
   def messages
     # If a message was posted, save it.
-    if params[:message]
+    if params[:message] and params[:message].strip.length > 0
       ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message])
-    end
+      render :json => true
+    else
     
-    messages = []
-    
-    if params[:since] == nil
-      messages = ChatMessage.desc(:created_at).limit(100).map {|x| {id: x[:"_id"], user: x[:user_id], type: x[:message_type], message: x[:message], created_at: x[:created_at]} }
+      messages = []
+      
+      if params[:since] == nil
+        messages = ChatMessage.desc(:created_at).limit(100).map {|x| {id: x[:"_id"], user_id: x[:user_id], type: x[:message_type], message: x[:message], created_at: x[:created_at]} }
+      end
+      
+      users = {}
+      messages.each do |x|
+        users[x] ||= User.find(x[:user_id])
+        x[:user] = {name: users[x].name, url: user_url(users[x]), avatar: users[x].avatar.url(:thumb)}
+      end
+      messages = messages.sort_by {|x| x[:created_at] }
+      render :json => messages
+      
     end
-    
-    users = {}
-    messages.each do |x|
-      users[x] ||= User.find(x[:user])
-      x[:user] = {name: users[x].name, url: user_url(users[x]), avatar: users[x].avatar.url(:thumb)}
-    end
-    messages = messages.sort_by {|x| x[:created_at] }
-    render :json => messages
   end
 end
