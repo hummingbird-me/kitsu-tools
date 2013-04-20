@@ -140,6 +140,7 @@
         return x.isNew()
 
   getMessagesFromRemote()
+  setInterval getMessagesFromRemote, 2000
 
   $("form.sendMessage").submit ->
     postMessageToServer()
