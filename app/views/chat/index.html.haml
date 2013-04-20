@@ -74,12 +74,18 @@
     render: ->
       this.$el.html (this.template.render this.model.toJSON())
       $p = this.$el.find("p")
-      $p.html $p.text().autoLink()
+      $p.html $p.text().autoLink {target: "_blank"}
+
+      youtube_video = null
+      $p.find("a").each ->
+        match = this.href.match /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g
+        if match
+          match = match[0].match /watch\?v=([a-zA-Z0-9\-_]+)/
+          youtube_video = match[1]
       
-      youtube_matches = $p.text().match(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g)
-      if !!youtube_matches
-        iframe = $("<iframe width='420' height='345' frameborder='0' 
-          allowfullscreen />");
+      if youtube_video
+        iframe = $("<iframe width='350' height='240' frameborder='0' 
+          allowfullscreen src='http://youtube.com/embed/" + youtube_video + "' />");
         $p.after(iframe)
         
         
