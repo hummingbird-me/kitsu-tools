@@ -159,9 +159,9 @@
 
   getMessagesFromRemote = ->
     $.getJSON getMessagesURL(), (d) ->
-      updateMessages d
       ChatMessages.remove ChatMessages.select (x) -> 
         return x.isNew()
+      updateMessages d
 
   getMessagesFromRemote()
   setInterval getMessagesFromRemote, 2000
