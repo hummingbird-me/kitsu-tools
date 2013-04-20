@@ -14,7 +14,13 @@ class ChatController < ApplicationController
   end
   
   def messages
+    # If a message was posted, save it.
+    if params[:message]
+      ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message])
+    end
+    
     messages = []
+    
     if params[:since] == nil
       messages = ChatMessage.desc(:created_at).limit(100).map {|x| {user: x[:user_id], type: x[:message_type], message: x[:message], created_at: x[:created_at]} }
     end

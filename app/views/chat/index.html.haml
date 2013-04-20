@@ -55,7 +55,7 @@
   setInterval ping, 8000
 
   $("form.sendMessage").submit ->
-    console.log $("input.message").val()
+    postMessageToServer()
     return false
 
   updateChatScroll = ->
@@ -65,14 +65,24 @@
 
   messages = []
 
+  updateMessages = (d) ->
+    messages = d
+    renderMessages()
+
   getMessages = ->
     $.getJSON "/chat/messages", (d) ->
-      messages = d
-      renderMessages()
+      updateMessages d
 
   renderMessages = ->
     m = messages.map (x) ->
       x["timeAgo"] = moment(x["created_at"]).fromNow()
-    $(".chat-text").html messagesTemplate.render {message: messages}
+    $(".chat-text").html messagesTemplate.render {message: messages.reverse()}
+    updateChatScroll()
+
+  postMessageToServer = ->
+    $.post '/chat/messages', 
+      {message: $("input.message").val()}, 
+      (r) -> updateMessages r; $("input.message").val(''),
+      'json'
   
   getMessages()
