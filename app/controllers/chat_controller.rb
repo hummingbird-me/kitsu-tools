@@ -22,7 +22,7 @@ class ChatController < ApplicationController
     messages = []
     
     if params[:since] == nil
-      messages = ChatMessage.desc(:created_at).limit(100).map {|x| {user: x[:user_id], type: x[:message_type], message: x[:message], created_at: x[:created_at]} }
+      messages = ChatMessage.desc(:created_at).limit(100).map {|x| {id: x[:"_id"], user: x[:user_id], type: x[:message_type], message: x[:message], created_at: x[:created_at]} }
     end
     
     users = {}
@@ -30,7 +30,7 @@ class ChatController < ApplicationController
       users[x] ||= User.find(x[:user])
       x[:user] = {name: users[x].name, url: user_url(users[x]), avatar: users[x].avatar.url(:thumb)}
     end
-    messages = messages.sort_by {|x| x[:created_at] }.reverse
+    messages = messages.sort_by {|x| x[:created_at] }
     render :json => messages
   end
 end
