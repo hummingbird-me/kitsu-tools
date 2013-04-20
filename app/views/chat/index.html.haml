@@ -22,6 +22,7 @@
             .small-2.columns
               %input.button.prefix(type="submit" value="send")
 
+
 :coffee
   onlineUsersTemplate = Hogan.compile "
     <h4>Online Users</h4>
@@ -34,55 +35,102 @@
     <ul>
       {{#message}}
         <li class='message-block'>
-          <div class='large-1 columns avatar'>
-            <img src='{{user.avatar}}' class='avatar-image' />
-          </div>
-          <div class='large-10 columns message'>
-            <span class='name'><a href='{{user.url}}'>{{user.name}}</a></span>
-            <p>{{message}}</p>
-          </div>
-          <div class='large-2 columns time-stamp'>
-            <p>{{timeAgo}}</p>
-          </div>
         </li>
       {{/message}}
     </ul>
   "
+
   ping = ->
     $.getJSON "/chat/ping", (d) ->
       $(".onlineUsers").html onlineUsersTemplate.render {user: d}
   ping()
   setInterval ping, 8000
 
-  $("form.sendMessage").submit ->
-    postMessageToServer()
-    return false
-
   updateChatScroll = ->
     c = document.getElementById("mainChatScroll");
     c.scrollTop = c.scrollHeight;
-  updateChatScroll()
 
-  messages = []
+  ChatMessageView = Backbone.View.extend {
+    tagName: "li",
+    className: "message-block",
+    template: Hogan.compile("
+      <div class='large-1 columns avatar'>
+        <img src='{{user.avatar}}' class='avatar-image' />
+      </div>
+      <div class='large-10 columns message'>
+        <span class='name'><a href='{{user.url}}'>{{user.name}}</a></span>
+        <p>{{message}}</p>
+      </div>
+      <div class='large-2 columns time-stamp' data-created-at='{{created_at}}'>
+        <p></p>
+      </div>
+    "),
+    render: ->
+      this.$el.html (this.template.render this.model.toJSON())
+      return this
+  }
+
+  renderAllTimes = ->
+    $(".time-stamp").each ->
+      $t = $(this)
+      $t.find("p").html moment($t.attr('data-created-at')).fromNow()
+  setInterval renderAllTimes, 10000
+
+  ChatMessage = Backbone.Model.extend {}
+  ChatMessages = new Backbone.Collection
+  ChatMessages.comparator = (message) ->
+    return moment(message.get("created_at")).unix()
+
+  ChatMessagesViewClass = Backbone.View.extend {
+    tagName: "ul",
+    initialize: ->
+      _(this).bindAll 'add'
+      this._views = []
+      this.collection.each this.add
+      this.collection.bind 'add', this.add,
+    add: (c) ->
+      cv = new ChatMessageView {model: c}
+      this._views.push cv
+      if this._rendered
+        this.$el.append cv.render().el
+        updateChatScroll()
+        renderAllTimes()
+    render: ->
+      that = this
+      this._rendered = true
+      this.$el.empty()
+      _(this._views).each (cv) ->
+        that.$el.append cv.render().el
+      $(".chat-text").html ''
+      $(".chat-text").append this.el
+      updateChatScroll()
+      renderAllTimes()
+  }
+
+  ChatMessagesView = new ChatMessagesViewClass {
+    collection: ChatMessages
+  }
+  ChatMessagesView.render()
 
   updateMessages = (d) ->
-    messages = d
-    renderMessages()
+    messages = _.map d, (x) ->
+      return (new ChatMessage x)
+    messages = _.sortBy(messages, ChatMessages.comparator)
+    ChatMessages.set messages, {remove: false}
 
-  getMessages = ->
+  getMessagesFromRemote = ->
     $.getJSON "/chat/messages", (d) ->
       updateMessages d
 
-  renderMessages = ->
-    m = messages.map (x) ->
-      x["timeAgo"] = moment(x["created_at"]).fromNow()
-    $(".chat-text").html messagesTemplate.render {message: messages.reverse()}
-    updateChatScroll()
+  getMessagesFromRemote()
+
+
+  $("form.sendMessage").submit ->
+    postMessageToServer()
+    return false
 
   postMessageToServer = ->
     $.post '/chat/messages', 
       {message: $("input.message").val()}, 
       (r) -> updateMessages r; $("input.message").val(''),
       'json'
-  
-  getMessages()
