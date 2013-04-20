@@ -75,6 +75,16 @@
       this.$el.html (this.template.render this.model.toJSON())
       $p = this.$el.find("p")
       $p.html $p.text().autoLink()
+      
+      youtube_matches = $p.text().match(/(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g)
+      if !!youtube_matches
+        iframe = $("<iframe width='420' height='345' frameborder='0' 
+          allowfullscreen />");
+        $p.after(iframe)
+        
+        
+
+        
       return this
   }
 
