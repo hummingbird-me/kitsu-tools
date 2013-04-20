@@ -5,7 +5,7 @@
 .chat {
   margin-top: 0px;
   .onlineUsers {
-    height: 600px;
+    max-height: 600px;
     overflow-y: scroll;
     ul {
       list-style: none;
@@ -83,6 +83,7 @@
         height: 45px;
         margin-bottom: 0px;
         margin-top: 17px;
+        font-size: 16px;
         padding-bottom: 0px;
         padding-top: 0px;
         box-shadow: none;
