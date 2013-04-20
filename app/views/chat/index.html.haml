@@ -88,9 +88,6 @@
           allowfullscreen src='http://youtube.com/embed/" + youtube_video + "' />");
         $p.append(iframe)
         
-        
-
-        
       return this
   }
 
@@ -188,7 +185,4 @@
 
     $("input.message").val('')
 
-    $.post '/chat/messages', 
-      {message: c.get('message')}, 
-      (r) -> getMessagesFromRemote(),
-      'json'
+    $.post '/chat/messages', {message: c.get('message')}, 
