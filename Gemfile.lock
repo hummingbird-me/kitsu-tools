@@ -296,6 +296,7 @@ GEM
       redis (>= 2.2.0)
     ref (1.0.4)
     remotipart (1.0.5)
+    rinku (1.7.2)
     rubypython (0.5.3)
       blankslate (>= 2.1.2.3)
       ffi (~> 1.0.7)
@@ -412,6 +413,7 @@ DEPENDENCIES
   rdiscount
   redis
   redis-rails
+  rinku
   rvm-capistrano
   sanitize
   sass-rails (~> 3.2.3)

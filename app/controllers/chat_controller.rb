@@ -30,7 +30,7 @@ class ChatController < ApplicationController
       end
       
       # Convert Mongo model into hash.
-      messages = messages.map {|x| {id: x[:"_id"], user_id: x[:user_id], type: x[:message_type], message: x[:message], created_at: x[:created_at]} }
+      messages = messages.map {|x| {id: x[:"_id"], user_id: x[:user_id], type: x[:message_type], message: Rinku.auto_link(ERB::Util.html_escape(x[:message]), :all, 'target="_blank"'), created_at: x[:created_at]} }
 
       # Fetch user data for each message.
       users = {}
