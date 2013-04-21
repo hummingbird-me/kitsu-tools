@@ -38,6 +38,14 @@
     </ul>
   "
 
+  loadHistory = ->
+    c = document.getElementById "mainChatScroll"
+    loader = document.getElementById "chatLoading"
+    if loader and c.scrollTop - loader.scrollHeight < 200
+      console.log "Need to get more messages."
+    setTimeout(loadHistory, 1000);
+  loadHistory()
+
   ping = ->
     $.getJSON "/chat/ping", (d) ->
       $(".onlineUsers").html onlineUsersTemplate.render {user: d}
@@ -47,7 +55,6 @@
   updateChatScroll = (options...) ->
     option = options[0]
     c = document.getElementById("mainChatScroll");
-    console.log c.scrollHeight - c.scrollTop
     if (option and option['force']) or c.scrollHeight - c.scrollTop < 600 + 500
       c.scrollTop = c.scrollHeight;
 
@@ -140,7 +147,7 @@
       that = this
       this._rendered = true
       this.$el.empty()
-      this.$el.append $("<div class='panel' style='text-align: center'>Loading... <i class='icon icon-spin icon-spinner' style='margin-left: 10px'></i></div>")
+      this.$el.append $("<div class='panel' id='chatLoading' style='text-align: center'>Loading... <i class='icon icon-spin icon-spinner' style='margin-left: 10px'></i></div>")
       this.collection.each (c) ->
         that.$el.append that._views[c].render().el
       $(".chat-text").html ''
