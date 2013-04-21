@@ -219,7 +219,7 @@
         return x.isNew()
       ChatMessages.remove _.select localMessages, (local) ->
         _.any d, (remote) ->
-          local.get("user_id") == remote["user_id"] and local.get("message").trim() == remote["message"].trim()
+          local.get("user_id") == remote["user_id"] and local.get("message").trim().replace(/[^A-Za-z0-9]/g, '') == remote["message"].trim().replace(/[^A-Za-z0-9]/g, '')
       updateMessages d
       setTimeout getMessagesFromRemote, 2000
   getMessagesFromRemote()
