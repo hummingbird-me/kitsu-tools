@@ -33,6 +33,7 @@
 
 body {
 	background: #eee;
+  overflow-x: hidden;  // disable horizontal scrolling on mobile.
   [role="complementary"] {
     width: 25%;
     .three, .row .three {
