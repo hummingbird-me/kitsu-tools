@@ -16,7 +16,7 @@
               %li
                 = link_to "Profile", "/dashboard"
               %li
-                = link_to "Watchlist", "/dashboard"
+                = link_to "Watchlist", user_signed_in? ? main_app.user_watchlist_path(current_user) : "/dashboard"
               %li
                 = link_to "Recommendations", main_app.anime_index_path(filter: 'recommended')
           %li
