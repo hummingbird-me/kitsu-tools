@@ -135,9 +135,9 @@
       if c.get("_rendered")
         return
         
-      this.$el.prepend c.get("_view").render().el
+      this.$el.append c.get("_view").render().el
       
-      if this.collection.indexOf c > 0
+      if false and this.collection.indexOf c > 0
         index = this.collection.indexOf c
         beforeElement = null
         if index < this.collection.length - 1 and this.collection.at(index+1).get("_rendered")
