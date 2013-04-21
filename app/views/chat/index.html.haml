@@ -21,8 +21,6 @@
               %input.message(type="text" placeholder="Write Something...")
               %i.icon-share-alt{:onclick => "$('form.sendMessage').submit()"}
 
-
-
 :coffee
   onlineUsersTemplate = Hogan.compile "
     <h4>Online Users</h4>
@@ -43,8 +41,8 @@
   ping = ->
     $.getJSON "/chat/ping", (d) ->
       $(".onlineUsers").html onlineUsersTemplate.render {user: d}
+      setTimeout ping, 8000
   ping()
-  setInterval ping, 8000
 
   updateChatScroll = ->
     c = document.getElementById("mainChatScroll");
@@ -170,9 +168,8 @@
       ChatMessages.remove ChatMessages.select (x) -> 
         return x.isNew()
       updateMessages d
-
+      setTimeout getMessagesFromRemote, 2000
   getMessagesFromRemote()
-  setInterval getMessagesFromRemote, 2000
 
   $("form.sendMessage").submit ->
     postMessageToServer()
