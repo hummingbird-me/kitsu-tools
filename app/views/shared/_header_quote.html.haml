@@ -6,7 +6,8 @@
         %h5.title= @overlay_quote.content
         %p
           = @overlay_quote.character_name
-          (#{link_to @overlay_quote.anime.canonical_title(current_user), main_app.anime_path(@overlay_quote.anime)})
+          %span
+            (#{link_to @overlay_quote.anime.canonical_title(current_user), main_app.anime_path(@overlay_quote.anime)})
       .large-2.columns
         .quote-vote
           = render partial: "quotes/votes", locals: {quote: @overlay_quote}
