@@ -10,13 +10,17 @@
       %section.top-bar-section
         / Left Nav Section
         %ul.left
-          %li.active
+          %li.has-dropdown
             = link_to "My Library", "/dashboard"
-          %li
-            = link_to "Recommendations", main_app.anime_index_path(filter: 'recommended')
+            %ul.dropdown
+              %li
+                = link_to "Profile", "/dashboard"
+              %li
+                = link_to "Watchlist", "/dashboard"
+              %li
+                = link_to "Recommendations", main_app.anime_index_path(filter: 'recommended')
           %li
             %a{:href => "/anime"} Explore
-
           %li.has-dropdown
             = link_to "Community", forem.root_path
             %ul.dropdown
