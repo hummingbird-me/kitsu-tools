@@ -21,10 +21,12 @@ class ChatController < ApplicationController
     
       messages = []
       
-      if params[:since] == nil
-        messages = ChatMessage.desc(:created_at).limit(30)
-      else
+      if params[:since]
         messages = ChatMessage.desc(:created_at).where(:created_at.gte => DateTime.parse(params[:since])).limit(100)
+      elsif params[:until]
+        messages = ChatMessage.desc(:created_at).where(:created_at.lte => DateTime.parse(params[:until])).limit(40)
+      else
+        messages = ChatMessage.desc(:created_at).limit(40)
       end
       
       # Convert Mongo model into hash.
