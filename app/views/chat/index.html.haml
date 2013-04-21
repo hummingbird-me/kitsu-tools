@@ -158,8 +158,10 @@
     ChatMessages.set messages, {remove: false}
 
   getMessagesURL = ->
-    if ChatMessages.length > 0
-      return "/chat/messages?since=" + encodeURIComponent(ChatMessages.at(ChatMessages.length-1).get("created_at"))
+    serverChatMessages = ChatMessages.select (x) ->
+      return !x.isNew()
+    if serverChatMessages.length > 0
+      return "/chat/messages?since=" + encodeURIComponent(serverChatMessages[serverChatMessages.length-1].get("created_at"))
     else
       return "/chat/messages"
 
