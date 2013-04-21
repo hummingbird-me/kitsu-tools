@@ -65,7 +65,7 @@ $secondary-color: #3498db;
 // Grid Variables
 //
 
-$row-width: 71.250em;
+$row-width: emCalc(1140px);
 // $column-gutter: 1.875em;
 // $total-columns: 12;
 
@@ -1005,7 +1005,7 @@ $topbar-menu-icon-color: #222;
 
 // Transitions and breakpoint styles
 // $topbar-transition-speed: 300ms;
-$topbar-breakpoint: emCalc(1010px); // Change to 9999px for always mobile layout
+// $topbar-breakpoint: emCalc(100px); // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width "#{$topbar-breakpoint}")";
 
 

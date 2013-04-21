@@ -28,7 +28,7 @@
                     = form_for @topic, :url => forem.moderate_forum_topic_path(@topic.forum, @topic), :method => :put do |f|
                       = render "forem/moderation/options", :f => f
             .topic-view
-              .large-1.columns.avatar
+              .large-1.columns.avatar.hide-for-small
                 = link_to image_tag(@topic.user.avatar.url(:thumb)), main_app.user_path(@topic.user)
               .large-11.columns.topic-info
                 .topic-title= link_to @topic.subject, forem.forum_topic_path(@topic.forum, @topic)
@@ -87,7 +87,7 @@
               %span Share Your Thoughts
           .reply-form.large-12.columns
             - if user_signed_in?
-              .large-1.columns.avatar
+              .large-1.columns.avatar.hide-for-small
                 = image_tag(current_user.avatar.url(:thumb))
               .large-11.columns.input-area
                 = simple_form_for [forem, @topic, @topic.posts.build] do |f|
