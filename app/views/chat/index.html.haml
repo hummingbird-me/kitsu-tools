@@ -44,9 +44,12 @@
       setTimeout ping, 8000
   ping()
 
-  updateChatScroll = ->
+  updateChatScroll = (options...) ->
+    option = options[0]
     c = document.getElementById("mainChatScroll");
-    c.scrollTop = c.scrollHeight;
+    console.log c.scrollHeight - c.scrollTop
+    if (option and option['force']) or c.scrollHeight - c.scrollTop < 600 + 500
+      c.scrollTop = c.scrollHeight;
 
   ChatMessageView = Backbone.View.extend {
     tagName: "li",
@@ -137,6 +140,7 @@
       that = this
       this._rendered = true
       this.$el.empty()
+      this.$el.append $("<div class='panel' style='text-align: center'>Loading... <i class='icon icon-spin icon-spinner' style='margin-left: 10px'></i></div>")
       this.collection.each (c) ->
         that.$el.append that._views[c].render().el
       $(".chat-text").html ''
@@ -151,10 +155,13 @@
   ChatMessagesView.render()
 
   updateMessages = (d) ->
+    scrollFlag = ChatMessages.length == 0
     messages = _.map d, (x) ->
       return (new ChatMessage x)
     messages = _.sortBy(messages, ChatMessages.comparator)
     ChatMessages.set messages, {remove: false}
+    if scrollFlag
+      updateChatScroll({force: true})
 
   getMessagesURL = ->
     serverChatMessages = ChatMessages.select (x) ->
