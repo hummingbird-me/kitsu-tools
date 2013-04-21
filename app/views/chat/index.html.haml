@@ -75,7 +75,6 @@
     render: ->
       this.$el.html (this.template.render this.model.toJSON())
       $p = this.$el.find("p")
-      $p.html $p.text().autoLink {target: "_blank"}
 
       youtube_video = null
       gif_url = null
