@@ -121,9 +121,11 @@
       this.collection.each this.add
       this.collection.bind 'add', this.add
       this.collection.bind 'remove', this.remove,
+      
     remove: (c) ->
       if this._rendered
         c.get("_view").$el.remove()
+
     add: (c) ->
       cv = new ChatMessageView {model: c}
       c.set("_view", cv)
@@ -131,28 +133,31 @@
         this.renderChild c
         updateChatScroll()
         renderAllTimes()
+        
     renderChild: (c) ->
       if c.get("_rendered")
         return
         
-      this.$el.append c.get("_view").render().el
-      
-      if false and this.collection.indexOf c > 0
-        index = this.collection.indexOf c
-        beforeElement = null
-        if index < this.collection.length - 1 and this.collection.at(index+1).get("_rendered")
-          console.log "saved time!"
-          beforeElement = this.collection.at(index+1)
-        else
-          beforeElements = this.collection.select (e) ->
-            moment(e.get("created_at")).unix() < moment(c.get("created_at")).unix() and e.get("_rendered")
+      if this.collection.first() == c
+        this.$el.append c.get("_view").render().el
+      else
+        this.$el.prepend c.get("_view").render().el
+
+        if this.collection.last() != c and (index = this.collection.indexOf c) > 0
+          if index < this.collection.length - 1 and this.collection.at(index+1).get("_rendered")
+            this.collection.at(index+1).get("_view").$el.after c.get("_view").$el
+          else if this.collection.at(index-1).get("_rendered")
+            this.collection.at(index-1).get("_view").$el.before c.get("_view").$el
+          else
+            beforeElements = this.collection.select (e) ->
+              moment(e.get("created_at")).unix() < moment(c.get("created_at")).unix() and e.get("_rendered")
+              
+            if beforeElements.length > 0
+              beforeElement = _.max beforeElements, (e) ->
+                moment(e.get("created_at")).unix()
             
-          if beforeElements.length > 0
-            beforeElement = _.max beforeElements, (e) ->
-              moment(e.get("created_at")).unix()
-          
-        if beforeElement
-          beforeElement.get("_view").$el.after c.get("_view").$el
+            if beforeElement
+              beforeElement.get("_view").$el.after c.get("_view").$el
       
       c.set("_rendered", true)
     render: ->
@@ -172,7 +177,7 @@
   ChatMessagesView.render()
 
   updateMessages = (d) ->
-    scrollFlag = ChatMessages.length == 0
+    scrollFlag = ChatMessages.isEmpty()
     messages = _.map d, (x) ->
       return (new ChatMessage x)
     ChatMessages.set messages, {remove: false}
