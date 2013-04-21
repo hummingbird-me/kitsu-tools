@@ -82,7 +82,8 @@
         match = this.href.match /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g
         if match
           match = match[0].match /watch\?v=([a-zA-Z0-9\-_]+)/
-          youtube_video = match[1]
+          if match
+            youtube_video = match[1]
         else
           # Try GIFs
           match = this.href.match /\.(gif|jpg|png)$/
