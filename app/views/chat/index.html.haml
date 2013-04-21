@@ -10,8 +10,9 @@
       .chats 
         .chat-display
           .chat-text
-            %p Loading...      
-  
+            .panel#chatLoading(style='text-align: center')
+              Loading...
+              %i.icon.icon-spin.icon-spinner(style="margine-left: 10px")
   .row
     .small-12.large-10.columns.input-area.right
       %form.sendMessage
@@ -125,32 +126,39 @@
     tagName: "ul",
     initialize: ->
       _(this).bindAll 'add', 'remove'
-      this._views = {}
       this.collection.each this.add
       this.collection.bind 'add', this.add
       this.collection.bind 'remove', this.remove,
     remove: (c) ->
-      viewToRemove = _(this._views).select (cv) -> 
-        return cv.model == c
-      viewToRemove = viewToRemove[0]
-      delete this._views[c]
       if this._rendered
-        viewToRemove.$el.remove()
+        c.get("_view").$el.remove()
     add: (c) ->
       cv = new ChatMessageView {model: c}
-      this._views[c] = cv
+      c.set("_view", cv)
       if this._rendered
-        this.$el.append cv.render().el
+        this.renderChild c
         updateChatScroll()
         renderAllTimes()
+    renderChild: (c) ->
+      beforeElements = this.collection.select (e) ->
+        moment(e.get("created_at")).unix() < moment(c.get("created_at")).unix() and e.get("_rendered")
+        
+      if beforeElements.length > 0
+        beforeElement = _.max beforeElements, (e) ->
+          moment(e.get("created_at")).unix()
+        
+      this.$el.prepend c.get("_view").render().el
+      
+      if beforeElement
+        beforeElement.get("_view").$el.after c.get("_view").$el
+      
+      c.set("_rendered", true)
     render: ->
       that = this
       this._rendered = true
       this.$el.empty()
-      this.$el.append $("<div class='panel' id='chatLoading' style='text-align: center'>Loading... <i class='icon icon-spin icon-spinner' style='margin-left: 10px'></i></div>")
       this.collection.each (c) ->
-        that.$el.append that._views[c].render().el
-      $(".chat-text").html ''
+        that.renderChild c
       $(".chat-text").append this.el
       updateChatScroll()
       renderAllTimes()
