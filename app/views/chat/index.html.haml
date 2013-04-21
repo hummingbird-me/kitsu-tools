@@ -112,7 +112,7 @@
   ChatMessage = Backbone.Model.extend {}
   ChatMessages = new Backbone.Collection
   ChatMessages.comparator = (message) ->
-    return moment(message.get("created_at")).unix()
+    return -moment(message.get("created_at")).unix()
 
   ChatMessagesViewClass = Backbone.View.extend {
     tagName: "ul",
@@ -132,17 +132,27 @@
         updateChatScroll()
         renderAllTimes()
     renderChild: (c) ->
-      beforeElements = this.collection.select (e) ->
-        moment(e.get("created_at")).unix() < moment(c.get("created_at")).unix() and e.get("_rendered")
-        
-      if beforeElements.length > 0
-        beforeElement = _.max beforeElements, (e) ->
-          moment(e.get("created_at")).unix()
+      if c.get("_rendered")
+        return
         
       this.$el.prepend c.get("_view").render().el
       
-      if beforeElement
-        beforeElement.get("_view").$el.after c.get("_view").$el
+      if this.collection.indexOf c > 0
+        index = this.collection.indexOf c
+        beforeElement = null
+        if index < this.collection.length - 1 and this.collection.at(index+1).get("_rendered")
+          console.log "saved time!"
+          beforeElement = this.collection.at(index+1)
+        else
+          beforeElements = this.collection.select (e) ->
+            moment(e.get("created_at")).unix() < moment(c.get("created_at")).unix() and e.get("_rendered")
+            
+          if beforeElements.length > 0
+            beforeElement = _.max beforeElements, (e) ->
+              moment(e.get("created_at")).unix()
+          
+        if beforeElement
+          beforeElement.get("_view").$el.after c.get("_view").$el
       
       c.set("_rendered", true)
     render: ->
@@ -165,7 +175,6 @@
     scrollFlag = ChatMessages.length == 0
     messages = _.map d, (x) ->
       return (new ChatMessage x)
-    messages = _.sortBy(messages, ChatMessages.comparator)
     ChatMessages.set messages, {remove: false}
     if scrollFlag
       updateChatScroll({force: true})
@@ -174,7 +183,7 @@
     c = document.getElementById "mainChatScroll"
     loader = document.getElementById "chatLoading"
     if ChatMessages.length > 0 and loader and c.scrollTop - loader.scrollHeight < 200
-      time = ChatMessages.first().get("created_at")
+      time = ChatMessages.last().get("created_at")
       $.getJSON "/chat/messages?until=" + encodeURIComponent(time), (r) ->
         updateMessages r
         c = document.getElementById("mainChatScroll");
