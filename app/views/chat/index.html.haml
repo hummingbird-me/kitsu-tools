@@ -164,10 +164,17 @@
     else
       return "/chat/messages"
 
+  if typeof String.prototype.trim == "undefined"
+    String.prototype.trim = ->
+      return String(this).replace /^\s+|\s+/g, ''
+
   getMessagesFromRemote = ->
     $.getJSON getMessagesURL(), (d) ->
-      ChatMessages.remove ChatMessages.select (x) -> 
+      localMessages = ChatMessages.select (x) -> 
         return x.isNew()
+      ChatMessages.remove _.select localMessages, (local) ->
+        _.any d, (remote) ->
+          local.get("user_id") == remote["user_id"] and local.get("message").trim() == remote["message"].trim()
       updateMessages d
       setTimeout getMessagesFromRemote, 2000
   getMessagesFromRemote()
