@@ -115,21 +115,20 @@
     tagName: "ul",
     initialize: ->
       _(this).bindAll 'add', 'remove'
-      this._views = []
+      this._views = {}
       this.collection.each this.add
       this.collection.bind 'add', this.add
       this.collection.bind 'remove', this.remove,
     remove: (c) ->
-      console.log c
       viewToRemove = _(this._views).select (cv) -> 
         return cv.model == c
       viewToRemove = viewToRemove[0]
-      this._views = _(this._views).without(viewToRemove)
+      delete this._views[c]
       if this._rendered
         viewToRemove.$el.remove()
     add: (c) ->
       cv = new ChatMessageView {model: c}
-      this._views.push cv
+      this._views[c] = cv
       if this._rendered
         this.$el.append cv.render().el
         updateChatScroll()
@@ -138,8 +137,8 @@
       that = this
       this._rendered = true
       this.$el.empty()
-      _(this._views).each (cv) ->
-        that.$el.append cv.render().el
+      this.collection.each (c) ->
+        that.$el.append that._views[c].render().el
       $(".chat-text").html ''
       $(".chat-text").append this.el
       updateChatScroll()
