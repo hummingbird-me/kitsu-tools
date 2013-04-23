@@ -42,8 +42,6 @@
     
 
 :coffee
-  lastUpdateTime = moment()
-
   notificationsEnabled = false
   if window.webkitNotifications
     $(".settings").show()
@@ -91,10 +89,16 @@
     else
       return true
 
+  lastUpdateTime = moment()
+
   checkConnectivity = ->
-    if moment().unix() - lastUpdateTime.unix() > 20
-      $("#notificationMessage p").html "Unable to fetch new messages from the server. <a href='/chat'>Please refresh this page.</a>"
+    if moment().unix() - lastUpdateTime.unix() > 30
+      $("#notificationMessage p").html "<i class='icon icon-refresh icon-spin'></i> Unable to fetch new messages from the server. <a href='/chat'>Please refresh this page.</a>"
+      if moment().unix() % 5 == 0
+        getMessagesFromRemote()
       $("#notificationMessage").addClass("red").show()
+    else
+      $("#notificationMessage").hide()
   setInterval(checkConnectivity, 1000)
   
 
