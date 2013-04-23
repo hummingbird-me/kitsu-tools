@@ -1,1 +1,363 @@
-%p Test.
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0", :name => "viewport"}/
+    %meta{:content => "telephone=no", :name => "format-detection"}/
+    %title Here's a sneak peek of our redesign!
+    :css
+      .ReadMsgBody{width: 100%; }
+      .ExternalClass{width: 100%; }
+      body{
+        -webkit-text-size-adjust:100%;  -ms-text-size-adjust:100%;  -webkit-font-smoothing:antialiased; margin:0 !important;padding:0 !important;   width:100% !important; 
+      }
+      
+
+      @media only screen and (max-width: 599px) {
+        body{width:auto !important;} 
+           
+        table[class=eraseForMobile]     {width:0; display:none !important;}
+        table[class=table600]       {width:420px !important;}
+        table[class=table200]     {width:420px !important;}
+        table[class=table200B]      {width:420px !important; padding:20px 0 0 0 !important;}
+        table[class=youreceive]     {width:160px !important;}
+        table[class=contactJpg]       {width:230px !important;}
+        
+        td[class=companySloganTD]     {font-size:19px !important;}
+        td[class=sectionsHeaderTD]    {font-size:22px !important;}
+        td[class=subHeaderTD]       {font-size:17px !important;}
+        td[class=sectionRegularInfoTextTD]  {font-size:14px !important;}
+        
+        img[class=image600]       {width:420px !important; height:203px !important;}
+        img[class=image280]       {width:260px !important; height:260px !important;}
+      }
+        
+
+
+      @media only screen and (max-width: 479px) {
+        body{width:auto !important;}
+        
+        table[class=eraseForMobile]     {width:0; display:none !important;}
+        table[class=table600]       {width:280px !important;}
+        table[class=table200]     {width:280px !important;}
+        table[class=table200B]      {width:280px !important; padding:20px 0 0 0 !important;}
+        table[class=youreceive]     {width:280px !important; padding:20px 0 0 0 !important;}
+        table[class=contactJpg]       {width:250px !important;}
+        
+        td[class=companySloganTD]     {font-size:16px !important;}
+        td[class=sectionsHeaderTD]    {font-size:20px !important;}
+        td[class=subHeaderTD]       {font-size:16px !important;}
+        td[class=sectionRegularInfoTextTD]  {font-size:14px !important;}
+        td[class=footerInfoTDSupport] {text-align:center !important;}
+        td[class=footerInfoTDSupport2]  {text-align:center !important;}
+        
+        img[class=removeImage]    {display:none !important;}
+        img[class=image600]       {width:280px !important; height:135px !important;}
+        img[class=image280]       {width:280px !important; height:280px !important;}
+      }
+
+  %body{:leftmargin => "0", :marginheight => "0", :marginwidth => "0", :offset => "0", :style => "background-color: #f8f8f8;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;margin: 0;padding: 0;width: 100%;", :topmargin => "0"}
+    %center
+      %table{:align => "center", :bgcolor => "#ffffff", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+        %tr
+          %td{:align => "center", :style => "border-collapse: collapse;", :valign => "top"}
+            / ================= 3PX THICK DIVIDER LINE ============
+            %table{:align => "center", :bgcolor => "#eeeeee", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+              %tr
+                %td{:align => "center", :bgcolor => "#f3730b", :height => "3", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+            / ==================== End of the section ==============
+            / =========================================================== DATE, AND MAILING OPTIONS SECTION ====
+            %table.eraseForMobile{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+              %tr
+                %td{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;", :valign => "top"}
+                  %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+                    %tr
+                      %td{:align => "center", :bgcolor => "#f8f8f8", :height => "10", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+                  %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+                    %tr
+                      / ======= Mailchimp View online =====
+                      %td.mailingOptions{:align => "left", :bgcolor => "#f8f8f8", :height => "15", :style => "border-collapse: collapse;color: #cccccc;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;letter-spacing: 0;", :valign => "middle", :width => "180"}
+                        %a.mailingOptionsLink{:href => "*|ARCHIVE|*", :style => "color: #999999;text-decoration: none;outline: none;font-weight: lighter;", :target => "_blank"} 
+                      / ================ end of view online section ============
+                      / ================= DATE SECTION Here ===============
+                    
+                      %td.date{:align => "center", :bgcolor => "#f8f8f8", :height => "15", :style => "border-collapse: collapse;color: #999999;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: bold;padding: 0;margin: 0;text-align: center;letter-spacing: 0;", :valign => "middle", :width => "240"}
+                        %a.iphoneAvoidAutoLinkHackDate2{:href => "#", :style => "color: #999999;text-decoration: none;pointer-events: none;"}= Time.now.strftime("%A, %B %e, %Y")
+                      / ================ end of date section ===============
+                      / === Mailchimp FORWARD AND SUBSCRIBE LINKS =
+                      %td.mailingOptions2{:align => "right", :bgcolor => "#f8f8f8", :height => "15", :style => "border-collapse: collapse;color: #cccccc;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: right;letter-spacing: 0;", :valign => "middle", :width => "180"}
+                        %a.mailingOptionsLink{:href => "*|UNSUB|*", :style => "color: #999999;text-decoration: none;outline: none;font-weight: lighter;", :target => "_blank"}
+                      / ============= end of forward subscribe section ==========
+                  %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+                    %tr
+                      %td{:align => "center", :bgcolor => "#f8f8f8", :height => "10", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+            / ========================================================================== End of the section ====
+            / ========= LINE UNDER THE MAILING OPTIONS AND DATE ======
+            %table{:align => "center", :bgcolor => "#eeeeee", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+              %tr
+                %td{:align => "center", :bgcolor => "#ffffff", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+              %tr
+                %td{:align => "center", :bgcolor => "#eeeeee", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+            / =================== End of the section ===============
+            / ================================================================== LOGO SECTION =====
+            %table.table600{:align => "center", :bgcolor => "#ffffff", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                %td{:align => "center", :bgcolor => "#ffffff", :style => "border-collapse: collapse;", :valign => "top"}
+                  %table{:align => "center", :bgcolor => "#ffffff", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "250"}
+                    %tr
+                      %td.pictureAlternativeTextTD{:align => "center", :bgcolor => "#ffffff", :style => "border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;", :valign => "top", :width => "250"}
+                        %a.buttonsAndImagesLink{:href => "http://www.hummingbird.ly", :style => "color: #bbbbbb;text-decoration: none;outline: none;font-weight: lighter;", :target => "_blank"}
+                          %img{:align => "top", :alt => "", :border => "0", :height => "100", :hspace => "0", :src => "http://gallery.mailchimp.com/14592d1effa224168c1609dbc/images/logo.jpg", :style => "display:block;", :vspace => "0", :width => "250"}/
+            / ======================================================================= End of the section =====
+            %table.eraseForMobile{:align => "center", :bgcolor => "#ffffff", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                %td{:align => "center", :bgcolor => "#ffffff", :style => "border-collapse: collapse;", :valign => "top"}
+                  / ======================  LINE =====================
+                  %table{:align => "center", :bgcolor => "#eeeeee", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+                    %tr
+                      %td{:align => "center", :bgcolor => "#eeeeee", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+            / ======================== LINE ===================
+            / ==================== End of the section ==============
+            / ================================================================ Email Flavor Text ====
+            %table.table600{:align => "center", :bgcolor => "#ffffff", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                %td{:align => "center", :bgcolor => "#ffffff", :height => "21", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "middle"} &nbsp;
+              %tr
+                / === THIS IS YOUR COMPANY SLOGAN OR NEWS SECTION ====
+                %td.companySloganTD{:align => "center", :bgcolor => "#ffffff", :height => "15", :style => "border-collapse: collapse;color: #f3730b;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 23px;font-weight: bold;padding: 0;margin: 0;text-align: center;line-height: 150%;letter-spacing: 0;", :valign => "middle"} Stronger, Faster, Smarter!!
+                / ================ End of the section ================
+              %tr
+                %td{:align => "center", :bgcolor => "#ffffff", :height => "21", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "middle"} &nbsp;
+            / ======================================================================= End of the section ====
+            %table{:align => "center", :bgcolor => "#eeeeee", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+              %tr
+                %td{:align => "center", :bgcolor => "#eeeeee", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+            %table{:align => "center", :bgcolor => "#ffffff", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+              %tr
+                %td{:align => "center", :bgcolor => "#ffffff", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+      %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+        %tr
+          %td{:align => "center", :style => "border-collapse: collapse;", :valign => "top"}
+            / ============================================================================================================ END OF THE HEADER SECTION ==
+            / ================== INFO SECTION ==================
+            %table.table600{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                / ===== BULLETPROOF PADDING SECTION WITH GIVEN BG COLOR ========
+            %table.table600{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                %td{:align => "center", :bgcolor => "#f8f8f8", :height => "30", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+            / ================== End of the section ================
+            %table.table600{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                %td{:bgcolor => "#f8f8f8", :style => "border-collapse: collapse;", :valign => "top"}
+                  / ==================================================================================== IMAGE SECTION =====
+                  %table.table200{:align => "left", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+                    %tr
+                      %td{:align => "center", :bgcolor => "#f8f8f8", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"}
+                        %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+                          %tr
+                            / === featured image ===
+                            %td.pictureAlternativeTextTD{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;", :valign => "top"}
+                              %img{:align => "top", :alt => "Beta Invite", :border => "0", :hspace => "0", :src => "http://cl.ly/image/371y3v3K2X2D/something-big.jpg", :style => "display:block;", :vspace => "0"}
+                  / =========================================================================== END OF THE IMAGE SECTION =====
+                  %table.table200B{:align => "left", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "382"}
+                    %tr
+                      %td{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;", :valign => "top"}
+                        %table.eraseForMobile{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "30"}
+                          %tr
+                            %td{:align => "center", :bgcolor => "#f8f8f8", :height => "200", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+                      %td{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;", :valign => "top"}
+                        / ============================================================================ TEXT SECTION =====
+                        / =================== HEADER SECTION ===============
+                        %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+                          %tr
+                            %td.sectionsHeaderTD{:align => "center", :bgcolor => "#f8f8f8", :height => "10", :style => "border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 28px;font-weight: lighter;padding: 0;margin: 0;text-align: center;line-height: 145%;letter-spacing: 0;", :valign => "middle"} Big Things are Coming!
+                          / ================== End of the section ================
+                          / === BULLETPROOF PADDING SECTION WITH GIVEN BG COLOR ====
+                          %tr
+                            %td{:align => "center", :bgcolor => "#f8f8f8", :height => "15", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+                          %tr
+                            %td{:align => "center", :bgcolor => "#e8e8e8", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+                          %tr
+                            %td{:align => "center", :bgcolor => "#ffffff", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+                          %tr
+                            %td{:align => "center", :bgcolor => "#f8f8f8", :height => "15", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+                          / ================== End of the section ================
+                          / ==================== INFO SECTION ================
+                          %tr
+                            / == (You may use a "<br/>" tag to be able to cut current line from anywhere you wish ) ==
+                            %td.sectionRegularInfoTextTD{:align => "center", :bgcolor => "#f8f8f8", :height => "10", :style => "border-collapse: collapse;color: #777777;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;", :valign => "middle"}
+                              We went back to the drawing board and we'd like to hear what you think! Have a look at our post on the <a href="http://blog.hummingbird.ly/post/48672477917/redesign-sneak-peek" style="color: #ef7814; text-decoration: none;">Hummingbird Dev Blog</a> and give us your feedback. Careful! We just might blow your socks off!  
+
+                        / ================== End of the section ================
+                        / =============== LINKS (BUTTONS) SECTION ============
+                        %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+                          %tr
+                            %td{:align => "center", :bgcolor => "#f8f8f8", :height => "42", :style => "border-collapse: collapse;", :valign => "top"}
+                              %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "165"}
+                                %tr
+                                  %td{:align => "center", :bgcolor => "#f8f8f8", :height => "22", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top", :width => "165"} &nbsp;
+                                %tr
+                                  %td.pictureAlternativeTextTD{:align => "center", :bgcolor => "#f8f8f8", :height => "42", :style => "border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;", :valign => "bottom", :width => "165"}
+                                    %a.buttonsAndImagesLink{:href => "http://blog.hummingbird.ly/post/48672477917/redesign-sneak-peek", :style => "color: #bbbbbb;text-decoration: none;outline: none;font-weight: lighter;", :target => "_blank"}
+                                      %img{:align => "top", :alt => "View Redesign", :border => "0", :height => "42", :hspace => "0", :src => "http://cl.ly/image/0o1a2D1e1i36/redesign-button.jpg", :style => "display:block;", :vspace => "0", :width => "165"}/
+                                %tr
+                                  %td{:align => "center", :bgcolor => "#f8f8f8", :height => "30", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top", :width => "165"} &nbsp;
+                        / ================== End of the section ================
+                        / ===================================================================== END OF THE TEXT SECTION =====
+            / ================= DIVIDER LINE SECTION ===============
+            %table{:align => "center", :bgcolor => "#f0f0f0", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+              %tr
+                %td{:align => "center", :bgcolor => "#e8e8e8", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top", :width => "100%"} &nbsp;
+              %tr
+                %td{:align => "center", :bgcolor => "#ffffff", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top", :width => "100%"} &nbsp;
+            / ==================== End of the section =================
+            / ==================================================================================================================== END OF MODULE
+            / =============================================================================================================== FOOTER SECTION ====
+      %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+        %tr
+          %td{:align => "center", :style => "border-collapse: collapse;", :valign => "top"}
+            / ================================================================ COMPANY SLOGAN SECTION ====
+            %table.table600{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                %td{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;", :valign => "top"}
+                  %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+                    %tr
+                      %td{:align => "center", :bgcolor => "#f8f8f8", :height => "20", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+                    %tr
+                      / === ANIME QUOTE SECTION  ====
+                      %td.companySloganTD{:align => "center", :bgcolor => "#f8f8f8", :height => "15", :style => "border-collapse: collapse;color: #f3730b;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 23px;font-weight: bold;padding: 0;margin: 0;text-align: center;line-height: 150%;letter-spacing: 0;", :valign => "middle"}
+                        "I'm getting fired up!"
+                    %tr
+                      %td{:style => "text-align: center;"} - Natsu Dragneel (Fairy Tail)
+                    / ================= End of the section ===============
+              %tr
+                %td{:align => "center", :bgcolor => "#f8f8f8", :height => "20", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+      / ======================================================================= End of the section ====
+      / ================= DIVIDER LINE SECTION ===============
+      %table.table600{:align => "center", :bgcolor => "#f0f0f0", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+        %tr
+          %td{:align => "center", :bgcolor => "#e8e8e8", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+        %tr
+          %td{:align => "center", :bgcolor => "#ffffff", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+      / ==================== End of the section =================
+      / ===== BULLETPROOF PADDING SECTION WITH GIVEN BG COLOR ========
+      %table.table600{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+        %tr
+          %td{:align => "center", :bgcolor => "#f8f8f8", :height => "20", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+      / ================== End of the section ================
+      / ============ ADRESS - PHONE - EMAIL SECTION ==========
+      %table.table600{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+        %tr
+          %td{:bgcolor => "#f8f8f8", :height => "15", :style => "border-collapse: collapse;", :valign => "top"}
+            %table{:align => "left", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "260"}
+              %tr
+                %td{:align => "center", :bgcolor => "#f8f8f8", :height => "15", :style => "border-collapse: collapse;", :valign => "top"}
+                  / ============================================== HOME SECTION WITH HOME ICON AND WEB ADRESS =====
+                  %table.contactJpg{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "260"}
+                    %tr
+                      / ============= HOME ICON HERE ===========
+                      %td.pictureAlternativeTextTD{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;", :valign => "top"}
+                        %img.removeImage{:align => "top", :alt => "", :border => "0", :height => "30", :hspace => "0", :src => "http://gallery.mailchimp.com/14592d1effa224168c1609dbc/images/iconHome.jpg", :style => "display:block;", :vspace => "0", :width => "30"}/
+                      / ============= HOME LINK HERE ============
+                      %td.footerInfoTDSupport2{:align => "left", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;", :valign => "top", :width => "230"}
+                        %a.footerInfoTDLink{:href => "http://www.hummingbird.ly", :style => "color: #888888;text-decoration: none;outline: none;border-bottom: 1px dotted #f3730b;font-weight: bold;", :target => "_blank"} www.hummingbird.ly
+
+                  / ============================================================ END OF THE HOME SECTION  ========
+                  / ========================================= SUPPORT SECTION WITH EMAIL ICON AND SUPPORT EMAIL =====
+                  %table.contactJpg{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "260"}
+                    %tr
+                      / ============= EMAIL ICON HERE ===========
+                      %td.pictureAlternativeTextTD{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;", :valign => "top"}
+                        %img.removeImage{:align => "top", :alt => "", :border => "0", :height => "30", :hspace => "0", :src => "http://gallery.mailchimp.com/14592d1effa224168c1609dbc/images/iconEmail.jpg", :style => "display:block;", :vspace => "0", :width => "30"}/
+                      / ============= EMAIL LINK HERE ============
+                      %td.footerInfoTDSupport2{:align => "left", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;", :valign => "top", :width => "230"}
+                        %a.footerInfoTDLink{:href => "mailto:josh@hummingbird.ly", :style => "color: #888888;text-decoration: none;outline: none;border-bottom: 1px dotted #f3730b;font-weight: bold;", :target => "_blank"} josh@hummingbird.ly
+
+                  / ============================================================ END OF THE HOME SECTION  ========
+                  / ========================================= SUPPORT SECTION WITH EMAIL ICON AND SUPPORT EMAIL =====
+                  %table.contactJpg{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "260"}
+                    %tr
+                      / ============= EMAIL ICON HERE ===========
+                      %td.pictureAlternativeTextTD{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;", :valign => "top"}
+                        %img.removeImage{:align => "top", :alt => "", :border => "0", :height => "30", :hspace => "0", :src => "http://gallery.mailchimp.com/14592d1effa224168c1609dbc/images/iconEmail.jpg", :style => "display:block;", :vspace => "0", :width => "30"}/
+                      / ============= EMAIL LINK HERE ============
+                      %td.footerInfoTDSupport2{:align => "left", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;", :valign => "top", :width => "230"}
+                        %a.footerInfoTDLink{:href => "mailto:vikhyat@hummingbird.ly", :style => "color: #888888;text-decoration: none;outline: none;border-bottom: 1px dotted #f3730b;font-weight: bold;", :target => "_blank"} vikhyat@hummingbird.ly
+                  / ============================================================= END OF THE SUPPORT SECTION =====
+            %table.youreceive{:align => "left", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "322"}
+              %tr
+                %td{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;", :valign => "top"}
+                  %table.eraseForMobile{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "5"}
+                    %tr
+                      %td{:align => "center", :bgcolor => "#f8f8f8", :height => "20", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+                %td{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;", :valign => "top"}
+                  %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0"}
+                    %tr
+                      / ==================================== YOU'RE RECEIVING THIS AND subscribe - Unsubscribe section ====
+                      %td.footerInfoTDSupport{:align => "center", :bgcolor => "#f8f8f8", :height => "20", :style => "border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;", :valign => "top"}
+                        You've received this email because you've signed up for our beta. If you did not register for the Hummingbird Beta, please disregard this email.
+                        
+                      / ====================================================== End of the section ================
+      / ================== End of the section ================
+      / ===== BULLETPROOF PADDING SECTION WITH GIVEN BG COLOR ========
+      %table.table600{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+        %tr
+          %td{:align => "center", :bgcolor => "#f8f8f8", :height => "20", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+      / ================== End of the section ================
+      / ===================== LINES SECTION ===============
+      %table.table600{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+        %tr
+          %td{:align => "center", :bgcolor => "#f8f8f8", :style => "border-collapse: collapse;", :valign => "top"}
+            %table.table600{:align => "center", :bgcolor => "#e8e8e8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                %td{:align => "center", :bgcolor => "#e8e8e8", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+              %tr
+                %td{:align => "center", :bgcolor => "#ffffff", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+              %tr
+                %td{:align => "center", :bgcolor => "#f8f8f8", :height => "15", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+            / ==== SOCIAL ICONS SECTION, YOU CAN DELETE ANY "TD" SECTION IF YOU WISH ======
+            %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "50"}
+              %tr
+                / =============== FACEBOOK SECTION, ==========
+                %td{:align => "center", :bgcolor => "#f8f8f8", :height => "15", :style => "border-collapse: collapse;", :valign => "top"}
+                  %a.buttonsAndImagesLink{:href => "http://www.facebook.com/pages/Hummingbird/460188747373182", :style => "color: #bbbbbb;text-decoration: none;outline: none;font-weight: lighter;", :target => "_blank"}
+                    %img{:align => "top", :alt => "", :border => "0", :height => "50", :hspace => "0", :src => "http://gallery.mailchimp.com/14592d1effa224168c1609dbc/images/facebookSocial.jpg", :style => "display:block;", :vspace => "0", :width => "45"}/
+                / =============== End of facebook section ========
+                / =============== TWITTER SECTION ==========
+                %td{:align => "center", :bgcolor => "#f8f8f8", :height => "15", :style => "border-collapse: collapse;", :valign => "top"}
+                  %a.buttonsAndImagesLink{:href => "http://www.twitter.com/hummingbird_ly", :style => "color: #bbbbbb;text-decoration: none;outline: none;font-weight: lighter;", :target => "_blank"}
+                    %img{:align => "top", :alt => "", :border => "0", :height => "50", :hspace => "0", :src => "http://gallery.mailchimp.com/14592d1effa224168c1609dbc/images/twitterSocial.jpg", :style => "display:block;", :vspace => "0", :width => "45"}/
+                / =============== End of twitter section ========
+            / ========================== End of the section ========================
+      / ===== BULLETPROOF PADDING SECTION WITH GIVEN BG COLOR ========
+      %table.table600{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+        %tr
+          %td{:align => "center", :bgcolor => "#f8f8f8", :height => "15", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+      / ================== End of the section ================
+      %table{:align => "center", :bgcolor => "#f8f8f8", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+        %tr
+          %td{:align => "center", :bgcolor => "#e8e8e8", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top", :width => "100%"} &nbsp;
+        %tr
+          %td{:align => "center", :bgcolor => "#ffffff", :height => "1", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top", :width => "100%"} &nbsp;
+      %table{:align => "center", :bgcolor => "#f3730b", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "100%"}
+        %tr
+          %td{:align => "center", :bgcolor => "#f3730b", :height => "15", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+        / ======================================================================================== COPYRIGHT SECTION ====
+        %tr
+          %td{:align => "center", :bgcolor => "#f3730b", :height => "15", :style => "border-collapse: collapse;", :valign => "top"}
+            %table.table600{:align => "center", :bgcolor => "#f3730b", :border => "0", :cellpadding => "0", :cellspacing => "0", :width => "600"}
+              %tr
+                / =============== ADDRESS SECTION ================
+                %td.adressOrAnyOtherTD{:align => "center", :bgcolor => "#f3730b", :height => "10", :style => "border-collapse: collapse;color: #ffffff;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: center;line-height: 165%;letter-spacing: 0;", :valign => "middle"} 3633 N. Ashland Ave, Hummingbird, Chicago IL, 60613
+                / =============== End of the section ================
+              %tr
+                %td{:align => "center", :bgcolor => "#f3730b", :height => "5", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "middle"} &nbsp;
+              %tr
+                / =============== COPYRIGHT SECTION ================
+                %td.copyrightTD{:align => "center", :bgcolor => "#f3730b", :height => "10", :style => "border-collapse: collapse;color: #ffffff;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: bold;padding: 0;margin: 0;text-align: center;line-height: 165%;letter-spacing: 0;", :valign => "middle"} &copy; Copyright Hummingbird 2013
+                / ================== End of the section ================
+        %tr
+          %td{:align => "center", :bgcolor => "#f3730b", :height => "15", :style => "font-size: 0;line-height: 0;border-collapse: collapse;", :valign => "top"} &nbsp;
+      / ============================================================================================= End of the section =====
+      / ================================================================================================================ END OF THE FOOTER SECTION ====
