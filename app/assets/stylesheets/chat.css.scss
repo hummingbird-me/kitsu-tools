@@ -9,10 +9,16 @@
     border: 1px solid #27AE60;
     margin-top: 10px;
     margin-bottom: -5px;
-    color: #e74c3c;
+    color: #27AE60;
+    a {
+        color: darken(#27AE60, 10)
+      }
     &.red {
-      border: 1px solid red;
+      border: 1px solid #e74c3c;
       color: #e74c3c;
+      a {
+        color: darken(#e74c3c, 10)
+      }
     }
     .update-text {
       margin-bottom: 5px;
