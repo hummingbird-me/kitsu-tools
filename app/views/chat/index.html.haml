@@ -3,6 +3,10 @@
 .chat
   .row
     .small-12.large-2.columns
+      .onlineUsers
+        %h4 Online Users
+        %p Loading...
+        
       .settings
         %h4 Chat Settings
         %ul
@@ -16,9 +20,6 @@
                 %input#x1{:name => "switch-x", :type => "radio"}/
                 %label{:for => "x1", :onclick => ""} On
                 %span
-      .onlineUsers
-        %h4 Online Users
-        %p Loading...
 
     .small-12.large-10.columns.main-chat#mainChatScroll
       .chats 
