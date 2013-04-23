@@ -11,6 +11,6 @@ class BetaMailer < ActionMailer::Base
   end
 
   def redesign_newsletter(beta_invite)
-    mail(to: beta_invite.email, subject: "INSERT SUBJECT HERE")
+    mail(to: beta_invite.email, subject: "What do you think of our redesign?")
   end
 end
