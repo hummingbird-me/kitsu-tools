@@ -9,4 +9,8 @@ class BetaMailer < ActionMailer::Base
     @registration_url = new_user_registration_path(token: beta_invite.token)
     mail(to: beta_invite.email, subject: "Welcome to the Hummingbird beta")
   end
+
+  def redesign_newsletter(beta_invite)
+    mail(to: beta_invite.email, subject: "INSERT SUBJECT HERE")
+  end
 end
