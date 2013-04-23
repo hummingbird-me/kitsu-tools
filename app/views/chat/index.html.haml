@@ -39,10 +39,23 @@
     </ul>
   "
 
+  pageVisible = ->
+    if typeof document.hidden == "undefined"
+      return !document.hidden
+    else if typeof document.mozHidden != "undefined"
+      return !document.mozHidden
+    else if typeof document.msHidden != "undefined"
+      return !document.msHidden
+    else if typeof document.webkitHidden != "undefined"
+      console.log "webkitHidden"
+      return !document.webkitHidden
+    else
+      return true
+
   ping = ->
     $.getJSON "/chat/ping", (d) ->
       $(".onlineUsers").html onlineUsersTemplate.render {user: d}
-      setTimeout ping, 8000
+      setTimeout ping, (if pageVisible() then 8000 else 15000)
   ping()
 
   updateChatScroll = (options...) ->
@@ -195,11 +208,11 @@
         newChatMessages = ChatMessages.select (x) -> moment(x.get("created_at")).unix() < moment(time).unix()
         c.scrollTop = _.reduce newChatMessages, ((x, y) -> x + y.get("_view").el.scrollHeight), 0
         if r.length > 0
-          setTimeout(loadHistory, 1000)
+          setTimeout loadHistory, 1000
         else
           $("#chatLoading").hide()
     else
-      setTimeout(loadHistory, 1000);
+      setTimeout loadHistory, 1000
   loadHistory()
 
   getMessagesURL = ->
@@ -222,7 +235,7 @@
         _.any d, (remote) ->
           local.get("user_id") == remote["user_id"] and local.get("message").trim() == remote["raw_message"].trim()
       updateMessages d
-      setTimeout getMessagesFromRemote, 2000
+      setTimeout getMessagesFromRemote, (if pageVisible() then 2000 else 10000)
   getMessagesFromRemote()
 
   $("form.sendMessage").submit ->
