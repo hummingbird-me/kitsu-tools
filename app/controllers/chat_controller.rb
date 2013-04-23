@@ -8,8 +8,13 @@ class ChatController < ApplicationController
   # online users.
   def ping
     $redis.zadd("chat_last_seen", Time.now.to_i, current_user.id)
-    user_ids = $redis.zrangebyscore("chat_last_seen", Time.now.to_i - 30, Time.now.to_i + 5)
-    render :json => User.where(id: user_ids).map {|x| {name: x.name, url: user_url(x)} }
+    
+    @online_users = Rails.cache.fetch(:chat_online_users, :expires_in => 4.seconds) do
+      user_ids = $redis.zrangebyscore("chat_last_seen", Time.now.to_i - 30, Time.now.to_i + 5)
+      User.where(id: user_ids).map {|x| {name: x.name, url: user_url(x)} }
+    end
+
+    render :json => @online_users
   end
   
   def messages
