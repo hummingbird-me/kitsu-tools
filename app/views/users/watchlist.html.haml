@@ -1,69 +1,92 @@
-= render "dash"
 .row.user-watchlist
-  .large-12.columns
-    .row
-      %ul.inline-list.sub-nav
-        - %w(currently_watching plan_to_watch completed on_hold dropped).each do |l|
-          %li{:class => ("active" if @sub_tab == l)}
-            = link_to l.titleize, user_watchlist_path(@user, list: l)
+  .large-2.columns.sidebar
+    .large-12.columns.avatar
+      = image_tag "http://localhost:3000/system/users/avatars/000/000/002/thumb/avatar.png?1366701543", :class => "avatar-image"
+    .large-12.columns.user-block
+      %h4.username Graphik
+      %span.waifu 
+        Waifu - 
+        = link_to "Haruhi Suzumiya", "#"
+    .large-12.columns.user-links
+      %ul
+        %li= link_to "Activity Feed", "#"
+        %li= link_to "About", "#"
+        %li= link_to "Library", "#"
+        %li= link_to "Reviews", "#"
+        %li= link_to "Forum Posts", "#"
+        %li= link_to "Following", "#"
+        %li= link_to "Followers", "#"
 
-      %ul.inline-list.view
-        %li.active
-          %a{:href => "#"} <i class="icon-list"></i>
-        %li
-          %a{:href => "#"} <i class="icon-th"></i>
+  .large-8.columns
+    %p main content
+  .large-2.columns
+    %p advert
+/ = render "dash"
+/ .row.user-watchlist
+/   .large-12.columns
+/     .row
+/       %ul.inline-list.sub-nav
+/         - %w(currently_watching plan_to_watch completed on_hold dropped).each do |l|
+/           %li{:class => ("active" if @sub_tab == l)}
+/             = link_to l.titleize, user_watchlist_path(@user, list: l)
 
-      %h3= @sub_tab.titleize
-      %table.tableSorter.large-12.columns.responsive
-        %tr.table-head
-          %th Anime Title
-          %th Score
-          /%th Type
-          %th Progress
-          %th Review
-          - if user_signed_in? and @user == current_user
-            %th Update
-        - @watchlist.each do |w|
-          %tr
-            %td= link_to w.anime.canonical_title(current_user), w.anime
-            %td
-              - if w.rating
-                - if @user.star_rating?
-                  %i.icon-star
-                  = w.rating + 3
-                - else
-                  - if w.positive?
-                    \:)
-                  - elsif w.meh?
-                    \:|
-                  - elsif w.negative?
-                    \:(
-              - else
-                \-
-            %td
-              - if w.anime.episode_count and w.anime.episode_count > 0
-                #{((w.episodes_watched.to_f * 100) / w.anime.episode_count).round}%
-                (
-                = w.episodes_watched
-                \/
-                = w.anime.episode_count
-                )
-            %td
-              - if review = @user.reviews.where(anime_id: w.anime).first
-                = link_to "Read Review", anime_review_path(w.anime, review)
-              - elsif user_signed_in? and @user == current_user
-                = link_to "Write One!", new_anime_review_path(w.anime)
-              - else
-                \-
-            %td
-              - if user_signed_in? and @user == current_user
-                %a{"data-reveal-id" => "watchlist_#{w.anime.slug}", :href => "#"} Update
+/       %ul.inline-list.view
+/         %li.active
+/           %a{:href => "#"} <i class="icon-list"></i>
+/         %li
+/           %a{:href => "#"} <i class="icon-th"></i>
 
-- if user_signed_in? and @user == current_user
-  = render partial: "watchlists/form_modal", collection: @watchlist, as: :watchlist
+/       %h3= @sub_tab.titleize
+/       %table.tableSorter.large-12.columns.responsive
+/         %tr.table-head
+/           %th Anime Title
+/           %th Score
+/           /%th Type
+/           %th Progress
+/           %th Review
+/           - if user_signed_in? and @user == current_user
+/             %th Update
+/         - @watchlist.each do |w|
+/           %tr
+/             %td= link_to w.anime.canonical_title(current_user), w.anime
+/             %td
+/               - if w.rating
+/                 - if @user.star_rating?
+/                   %i.icon-star
+/                   = w.rating + 3
+/                 - else
+/                   - if w.positive?
+/                     \:)
+/                   - elsif w.meh?
+/                     \:|
+/                   - elsif w.negative?
+/                     \:(
+/               - else
+/                 \-
+/             %td
+/               - if w.anime.episode_count and w.anime.episode_count > 0
+/                 #{((w.episodes_watched.to_f * 100) / w.anime.episode_count).round}%
+/                 (
+/                 = w.episodes_watched
+/                 \/
+/                 = w.anime.episode_count
+/                 )
+/             %td
+/               - if review = @user.reviews.where(anime_id: w.anime).first
+/                 = link_to "Read Review", anime_review_path(w.anime, review)
+/               - elsif user_signed_in? and @user == current_user
+/                 = link_to "Write One!", new_anime_review_path(w.anime)
+/               - else
+/                 \-
+/             %td
+/               - if user_signed_in? and @user == current_user
+/                 %a{"data-reveal-id" => "watchlist_#{w.anime.slug}", :href => "#"} Update
 
-:javascript
-  $(function() {
-    $('table.tableSorter').tableSort();
-  });
+/ - if user_signed_in? and @user == current_user
+/   = render partial: "watchlists/form_modal", collection: @watchlist, as: :watchlist
+
+/ :javascript
+/   $(function() {
+/     $('table.tableSorter').tableSort();
+/   });
 

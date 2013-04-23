@@ -2,281 +2,327 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
-
-.user-banner {
-  margin-top: 15px;
-  figure {
-    height: 350px;
-    margin-top: -15px;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    margin-left: 0px;
-
-    .overlay {
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      text-align: center;
-      color: #fff;
-      @include opacity(0.80);
-      @include border-top-radius(3px);
-      @include background-image(linear-gradient(left top, #000, #000));
-    }
-    .img-background {
-      // background: url("http://f.cl.ly/items/210V0x213m2S3T1Z2W0g/bg.jpg") no-repeat center center;
-      background-size: cover;
-      height: 350px;
-    }
-  }
-}
-
 .user-watchlist {
-  
-  .sub-nav {
-    background: #f4f4f4;
-    border-left: 1px solid #e6e6e6;
-    margin-left: 0;
-    margin-top: 30px;
-    margin-bottom: 0px;
-    display: inline-block;
-
-    li {
-      line-height: 45px;
-      margin: 0;
-      border-right: 1px solid #e6e6e6;
-      text-align: center;
-
-      a {
-        padding-left: 20px;
-        padding-right: 20px;
-        border-bottom: 1px solid #e6e6e6;
-      }
-
-      &.active {
-        a {
-          font-weight: normal;
-          background: #eee;
-          color: #000;
-          border-bottom: 1px solid #eee;
-        }
+  .sidebar {
+    padding: 0px;
+    background: #383735;
+    .avatar {
+      padding: 0px;
+      .avatar-image {
+        padding: 0px;
+        width: 100%;
+        border-bottom: 6px solid #fd864b;
       }
     }
-  }
-
-  .view {
-    margin-left: 0;
-    margin-top: 30px;
-    margin-bottom: 0px;
-    display: inline-block;
-    float: right;
-
-    li {
-      line-height: 45px;
-      margin: 0;
-      text-align: center;
-      border-right: 1px solid #e6e6e6;
-
-      &:last-child {
-        border-right: none;
+    .user-block {
+      background: #292929;
+      padding: 10px;
+      padding-top: 0px;
+      .username {
+        margin: 0px;
+        color: #fff;
       }
-
-      a {
-        color: #000;
-        opacity: 0.4;
-        padding-left: 10px;
-        padding-right: 10px;
-        &:hover {
-          opacity: 1;
-        }
-      }
-
-
-      &.active {
-        a {
-          font-weight: normal;
-          background: #eee;
-          color: #000;
-          opacity: 1;
-          cursor: default;
-        }
+      .waifu {
+        font-size: 14px;
+        color: #9e9e9e;
       }
     }
-  }
-
-  .table-head {
-    height: 30px; 
-    padding-top: 10px;
-    text-align: center;
-  }
-  .score, .type, .progress, .review, .update {
-    text-align: center;
-  }
-  .score {
-    i {
-      margin-right: 5px;
-    }
-  }
-
-  h3 {
-    border-bottom: 1px solid #dddddd;
-    padding: 0px 0px 10px 10px;
-  }
-
-  .anime-grid {
-    padding-top: 0px;
-  }
-
-  .recent {
-    figure {
-      height: 200px;
-      @include border-top-radius(3px);
-
-      .overlay {
-        display: block;
-
-        h4 {
-          color: white;
-          margin-bottom: 0px;
-        }
-
-        .seen-count {
-          border-bottom: 1px solid white;
-          border-bottom: 1px solid rgba(255,255,255,.2);
-          padding-bottom: 10px;
-          span {
-            font-weight: 700px;
-          }
-        }
-
-        .poster {
-          img {
-            width: 85%;
-            margin-top: 11px;
-            float: left;
-            @include border-radius(3px);
-          }
-        }
-
-        .title-info {
-          margin-top: 20px;
-          p {
-            margin-bottom: 0px;
-          }
-          .vote-blocks {
-
-            .like {
-              border-right: 1px solid white;
-              border-right: 1px solid rgba(255,255,255,.2);
+    .user-links {
+      padding: 0px;
+      ul {
+        list-style: none;
+        li {
+          border-top: 1px solid #474541;
+          a {
+            color: #aeaeae;
+            padding: 10px;
+            display: block;
+            &:hover {
+              color: #fd864b;
             }
           }
-        }
-      }
-
-      .background {
-        width: 100%;
-        height: auto;
-        float: left;
-        margin-top: -30%;
-        @include border-top-radius(3px); 
-      }
-    }
-  }
-  
-
-  .episode-list {
-    .episode {
-      display: block;
-      overflow: hidden;
-      border-bottom: 1px solid #ececec;
-
-      .episode-number {
-        font-size: 17px;
-        padding-top: 15px;
-        text-transform: uppercase;
-        color: #d4d4d4;
-      }
-
-      .episode-title {
-        font-size: 20px;
-        line-height: 20px;
-        padding-bottom: 15px;
-      }
-
-      .title {
-        border-right: 1px solid #eee;
-      }
-
-      .view-button {
-        text-indent: -9999px;
-        display: block;
-        width: 30px;
-        height: 17px;
-        margin-right: 15px;
-        margin-top: 30px;
-        cursor: pointer;
-        position: relative;
-        background-position: bottom;
-        background-image: url(asset-path('icons/watch-sprite.png', image));
-        background-repeat: no-repeat;
-        @media (max-width: 768px) {
-          width: 30px !important;
-          float: right;
-          position: relative;
-          top: -50px;
-        }
-
-        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-          background-image: url(asset-path('icons/watch-sprite@2x.png', image));
-          background-size: 30px 51px;
-        }
-
-        &:hover {
-          background-position: center;
-          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-size: 30px 51px;
-          }
-        }
-
-        &:active {
-          background-position: top;
-          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-size: 30px 51px;
-          }
-        }
-
-        strong {
-          a {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
+          &:last-child {
+            border-bottom: 1px solid #474541;
           }
         }
       }
-
-      &.active {
-        color: #d4d4d4;
-        .view-button {
-          background-position: top;
-          @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-size: 30px 50px;
-        }
-      }
-
-      &:hover {
-          background-position: bottom;
-        }
-      }
-    }
-
-    footer {
-      padding-top: 20px;
-      padding-bottom: 20px;
-      text-align: center;
     }
   }
 }
+// .user-banner {
+//   margin-top: 15px;
+//   figure {
+//     height: 350px;
+//     margin-top: -15px;
+//     overflow: hidden;
+//     position: relative;
+//     width: 100%;
+//     margin-left: 0px;
+
+//     .overlay {
+//       position: absolute;
+//       top: 0px;
+//       right: 0px;
+//       bottom: 0px;
+//       left: 0px;
+//       text-align: center;
+//       color: #fff;
+//       @include opacity(0.80);
+//       @include border-top-radius(3px);
+//       @include background-image(linear-gradient(left top, #000, #000));
+//     }
+//     .img-background {
+//       // background: url("http://f.cl.ly/items/210V0x213m2S3T1Z2W0g/bg.jpg") no-repeat center center;
+//       background-size: cover;
+//       height: 350px;
+//     }
+//   }
+// }
+
+// .user-watchlist {
+  
+//   .sub-nav {
+//     background: #f4f4f4;
+//     border-left: 1px solid #e6e6e6;
+//     margin-left: 0;
+//     margin-top: 30px;
+//     margin-bottom: 0px;
+//     display: inline-block;
+
+//     li {
+//       line-height: 45px;
+//       margin: 0;
+//       border-right: 1px solid #e6e6e6;
+//       text-align: center;
+
+//       a {
+//         padding-left: 20px;
+//         padding-right: 20px;
+//         border-bottom: 1px solid #e6e6e6;
+//       }
+
+//       &.active {
+//         a {
+//           font-weight: normal;
+//           background: #eee;
+//           color: #000;
+//           border-bottom: 1px solid #eee;
+//         }
+//       }
+//     }
+//   }
+
+//   .view {
+//     margin-left: 0;
+//     margin-top: 30px;
+//     margin-bottom: 0px;
+//     display: inline-block;
+//     float: right;
+
+//     li {
+//       line-height: 45px;
+//       margin: 0;
+//       text-align: center;
+//       border-right: 1px solid #e6e6e6;
+
+//       &:last-child {
+//         border-right: none;
+//       }
+
+//       a {
+//         color: #000;
+//         opacity: 0.4;
+//         padding-left: 10px;
+//         padding-right: 10px;
+//         &:hover {
+//           opacity: 1;
+//         }
+//       }
+
+
+//       &.active {
+//         a {
+//           font-weight: normal;
+//           background: #eee;
+//           color: #000;
+//           opacity: 1;
+//           cursor: default;
+//         }
+//       }
+//     }
+//   }
+
+//   .table-head {
+//     height: 30px; 
+//     padding-top: 10px;
+//     text-align: center;
+//   }
+//   .score, .type, .progress, .review, .update {
+//     text-align: center;
+//   }
+//   .score {
+//     i {
+//       margin-right: 5px;
+//     }
+//   }
+
+//   h3 {
+//     border-bottom: 1px solid #dddddd;
+//     padding: 0px 0px 10px 10px;
+//   }
+
+//   .anime-grid {
+//     padding-top: 0px;
+//   }
+
+//   .recent {
+//     figure {
+//       height: 200px;
+//       @include border-top-radius(3px);
+
+//       .overlay {
+//         display: block;
+
+//         h4 {
+//           color: white;
+//           margin-bottom: 0px;
+//         }
+
+//         .seen-count {
+//           border-bottom: 1px solid white;
+//           border-bottom: 1px solid rgba(255,255,255,.2);
+//           padding-bottom: 10px;
+//           span {
+//             font-weight: 700px;
+//           }
+//         }
+
+//         .poster {
+//           img {
+//             width: 85%;
+//             margin-top: 11px;
+//             float: left;
+//             @include border-radius(3px);
+//           }
+//         }
+
+//         .title-info {
+//           margin-top: 20px;
+//           p {
+//             margin-bottom: 0px;
+//           }
+//           .vote-blocks {
+
+//             .like {
+//               border-right: 1px solid white;
+//               border-right: 1px solid rgba(255,255,255,.2);
+//             }
+//           }
+//         }
+//       }
+
+//       .background {
+//         width: 100%;
+//         height: auto;
+//         float: left;
+//         margin-top: -30%;
+//         @include border-top-radius(3px); 
+//       }
+//     }
+//   }
+  
+
+//   .episode-list {
+//     .episode {
+//       display: block;
+//       overflow: hidden;
+//       border-bottom: 1px solid #ececec;
+
+//       .episode-number {
+//         font-size: 17px;
+//         padding-top: 15px;
+//         text-transform: uppercase;
+//         color: #d4d4d4;
+//       }
+
+//       .episode-title {
+//         font-size: 20px;
+//         line-height: 20px;
+//         padding-bottom: 15px;
+//       }
+
+//       .title {
+//         border-right: 1px solid #eee;
+//       }
+
+//       .view-button {
+//         text-indent: -9999px;
+//         display: block;
+//         width: 30px;
+//         height: 17px;
+//         margin-right: 15px;
+//         margin-top: 30px;
+//         cursor: pointer;
+//         position: relative;
+//         background-position: bottom;
+//         background-image: url(asset-path('icons/watch-sprite.png', image));
+//         background-repeat: no-repeat;
+//         @media (max-width: 768px) {
+//           width: 30px !important;
+//           float: right;
+//           position: relative;
+//           top: -50px;
+//         }
+
+//         @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+//           background-image: url(asset-path('icons/watch-sprite@2x.png', image));
+//           background-size: 30px 51px;
+//         }
+
+//         &:hover {
+//           background-position: center;
+//           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+//             background-size: 30px 51px;
+//           }
+//         }
+
+//         &:active {
+//           background-position: top;
+//           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+//             background-size: 30px 51px;
+//           }
+//         }
+
+//         strong {
+//           a {
+//             position: absolute;
+//             top: 0;
+//             bottom: 0;
+//             left: 0;
+//             right: 0;
+//           }
+//         }
+//       }
+
+//       &.active {
+//         color: #d4d4d4;
+//         .view-button {
+//           background-position: top;
+//           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
+//             background-size: 30px 50px;
+//         }
+//       }
+
+//       &:hover {
+//           background-position: bottom;
+//         }
+//       }
+//     }
+
+//     footer {
+//       padding-top: 20px;
+//       padding-bottom: 20px;
+//       text-align: center;
+//     }
+//   }
+// }
