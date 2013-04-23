@@ -43,6 +43,8 @@
     
 
 :coffee
+  lastUpdateTime = moment()
+
   onlineUsersTemplate = Hogan.compile "
     <h4>Online Users</h4>
     <ul>
@@ -67,16 +69,23 @@
     else if typeof document.msHidden != "undefined"
       return !document.msHidden
     else if typeof document.webkitHidden != "undefined"
-      console.log "webkitHidden"
       return !document.webkitHidden
     else
       return true
 
+  checkConnectivity = ->
+    if moment().unix() - lastUpdateTime.unix() > 20
+      $("#notificationMessage p").html "Unable to fetch new messages from the server. <a href='/chat'>Please refresh this page.</a>"
+      $("#notificationMessage").addClass("red").show()
+  setInterval(checkConnectivity, 1000)
+  
+
   ping = ->
     $.getJSON "/chat/ping", (d) ->
       $(".onlineUsers").html onlineUsersTemplate.render {user: d["online_users"]}
+      # Check if the chat client needs to be refreshed.
       if #{@chat_version} != d["chat_version"]
-        $("#notificationMessage p").html "A new update for the chat client is available. <a href='/chat'>Please refresh your browser.</a>"
+        $("#notificationMessage p").html "A new update for the chat client is available. <a href='/chat'>Please refresh this page.</a>"
         $("#notificationMessage").removeClass("red").show()
       setTimeout ping, (if pageVisible() then 8000 else 15000)
   ping()
@@ -258,6 +267,7 @@
         _.any d, (remote) ->
           local.get("user_id") == remote["user_id"] and local.get("message").trim() == remote["raw_message"].trim()
       updateMessages d
+      lastUpdateTime = moment()
       setTimeout getMessagesFromRemote, (if pageVisible() then 2000 else 10000)
   getMessagesFromRemote()
 
