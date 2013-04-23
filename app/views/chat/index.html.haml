@@ -15,9 +15,9 @@
               %span Desktop Notifications
             .large-12.columns.setting-button
               .switch
-                %input#x{:checked => "", :name => "switch-x", :type => "radio"}/
+                %input#off{:checked => "", :name => "switch-x", :type => "radio"}/
                 %label{:for => "x", :onclick => ""} Off
-                %input#x1{:name => "switch-x", :type => "radio"}/
+                %input#on{:name => "switch-x", :type => "radio"}/
                 %label{:for => "x1", :onclick => ""} On
                 %span
 
@@ -37,13 +37,31 @@
         .row.collapse
           .small-12.columns
             .input-wrapper
-
               %input.message(type="text" placeholder="Write Something...")
               %i.icon-share-alt{:onclick => "$('form.sendMessage').submit()"}
     
 
 :coffee
   lastUpdateTime = moment()
+
+  notificationsEnabled = false
+  if window.webkitNotifications
+    $(".settings").show()
+  $(".switch").click ->
+    if window.webkitNotifications.checkPermission() != 0
+      window.webkitNotifications.requestPermission()
+    if notificationsEnabled
+      notificationsEnabled = false
+    else
+      notificationsEnabled = true
+    # Button doesn't seem to work without this line.
+    console.log notificationsEnabled
+
+  notifyUser = (image, title, content) ->
+    if notificationsEnabled and not pageVisible()
+      notification = window.webkitNotifications.createNotification image, title, content
+      notification.show()
+      setTimeout (-> notification.close()), 5000
 
   onlineUsersTemplate = Hogan.compile "
     <h4>Online Users</h4>
@@ -62,7 +80,7 @@
   "
 
   pageVisible = ->
-    if typeof document.hidden == "undefined"
+    if typeof document.hidden != "undefined"
       return !document.hidden
     else if typeof document.mozHidden != "undefined"
       return !document.mozHidden
@@ -142,7 +160,7 @@
         $p.append(iframe)
       else
         if gif_url
-          image = $("<br><img src='"+gif_url+"' style='max-height: 240px; width: auto; max-width: 600'>");
+          image = $("<br><img src='"+gif_url+"' style='max-height: 200px; width: auto; max-width: 600'>");
           $p.append(image)
         
       return this
@@ -185,6 +203,8 @@
         
       if this.collection.first() == c
         this.$el.append c.get("_view").render().el
+        user = c.get("user")
+        notifyUser user["avatar"], user["name"], c.get("message")
       else
         this.$el.prepend c.get("_view").render().el
 
@@ -268,7 +288,7 @@
           local.get("user_id") == remote["user_id"] and local.get("message").trim() == remote["raw_message"].trim()
       updateMessages d
       lastUpdateTime = moment()
-      setTimeout getMessagesFromRemote, (if pageVisible() then 2000 else 10000)
+      setTimeout getMessagesFromRemote, (if pageVisible() then 2000 else 5000)
   getMessagesFromRemote()
 
   $("form.sendMessage").submit ->
