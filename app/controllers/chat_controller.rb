@@ -2,6 +2,7 @@ class ChatController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    
   end
   
   # Update the current user's last seen time in Redis, and return a list of

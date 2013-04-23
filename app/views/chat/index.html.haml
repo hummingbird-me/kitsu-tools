@@ -2,9 +2,25 @@
 
 .chat
   .row
-    .small-12.large-2.columns.onlineUsers
-      %h4 Online Users
-      %p Loading...
+    .large-12.columns.update-banner
+      %p.update-text A new update for the chat client is available. Please refresh your browser.
+    .small-12.large-2.columns
+      .settings
+        %h4 Chat Settings
+        %ul
+          %li
+            .large-12.columns.setting-title
+              %span Desktop Notifications
+            .large-12.columns.setting-button
+              .switch
+                %input#x{:checked => "", :name => "switch-x", :type => "radio"}/
+                %label{:for => "x", :onclick => ""} Off
+                %input#x1{:name => "switch-x", :type => "radio"}/
+                %label{:for => "x1", :onclick => ""} On
+                %span
+      .onlineUsers
+        %h4 Online Users
+        %p Loading...
 
     .small-12.large-10.columns.main-chat#mainChatScroll
       .chats 
