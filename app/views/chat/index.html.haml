@@ -153,7 +153,7 @@
             youtube_video = match[1]
         else
           # Try GIFs
-          match = this.href.match /\.(gif|jpg|png)$/
+          match = this.href.match /\.(gif|jpe?g|png)$/i
           if match
             gif_url = this.href
             
