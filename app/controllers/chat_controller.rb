@@ -1,8 +1,10 @@
 class ChatController < ApplicationController
   before_filter :authenticate_user!
+  CHAT_VERSION = 1
 
   def index
     hide_cover_image
+    @chat_version = CHAT_VERSION
   end
   
   # Update the current user's last seen time in Redis, and return a list of
@@ -15,7 +17,7 @@ class ChatController < ApplicationController
       User.where(id: user_ids).map {|x| {name: x.name, url: user_url(x)} }
     end
 
-    render :json => @online_users
+    render :json => {online_users: @online_users, chat_version: CHAT_VERSION}
   end
   
   def messages

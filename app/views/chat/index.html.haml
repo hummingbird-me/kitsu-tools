@@ -7,7 +7,7 @@
         %h4 Online Users
         %p Loading...
 
-      .settings
+      .settings.hide
         %h4 Chat Settings
         %ul
           %li
@@ -30,8 +30,9 @@
               %i.icon.icon-spin.icon-spinner(style="margin-left: 10px")
   .row
     .small-12.large-10.columns.input-area.right
-      .large-12.columns.update-banner
-        %p.update-text A new update for the chat client is available. Please refresh your browser.
+      #notificationMessage.large-12.columns.update-banner.hide
+        /.red
+        %p.update-text 
       %form.sendMessage
         .row.collapse
           .small-12.columns
@@ -73,7 +74,10 @@
 
   ping = ->
     $.getJSON "/chat/ping", (d) ->
-      $(".onlineUsers").html onlineUsersTemplate.render {user: d}
+      $(".onlineUsers").html onlineUsersTemplate.render {user: d["online_users"]}
+      if #{@chat_version} != d["chat_version"]
+        $("#notificationMessage p").html "A new update for the chat client is available. <a href='/chat'>Please refresh your browser.</a>"
+        $("#notificationMessage").removeClass("red").show()
       setTimeout ping, (if pageVisible() then 8000 else 15000)
   ping()
 
