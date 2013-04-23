@@ -29,14 +29,16 @@
               %i.icon.icon-spin.icon-spinner(style="margin-left: 10px")
   .row
     .small-12.large-10.columns.input-area.right
+      .large-12.columns.update-banner
+        %p.update-text A new update for the chat client is available. Please refresh your browser.
       %form.sendMessage
         .row.collapse
           .small-12.columns
             .input-wrapper
+
               %input.message(type="text" placeholder="Write Something...")
               %i.icon-share-alt{:onclick => "$('form.sendMessage').submit()"}
-    .small-12.large-10.columns.update-banner
-      %p.update-text A new update for the chat client is available. Please refresh your browser.
+    
 
 :coffee
   onlineUsersTemplate = Hogan.compile "
