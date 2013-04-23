@@ -30,11 +30,16 @@
     .setting-button {
       padding: 0px;
     }
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
   .onlineUsers {
     max-height: 600px;
     overflow-y: scroll;
     float: left;
+    display: block;
+    width: 120%;
     ul {
       list-style: none;
       li {
