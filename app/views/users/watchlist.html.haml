@@ -102,8 +102,8 @@
               %p Last Library Update: 04-03-13
             .large-2.columns.thumbnail
               = image_tag "http://hummingbird.ly/system/2fc4434fe83de4b00ac707d201b741f44474f385_thumb.jpg?1361874445"
-            .large-10.columns.title
-              %h6= link_to "Boku no Pico", "#"
+            .large-10.columns.library-item-info
+              = link_to "Boku no Pico", "#", :class => "title"
               .rating
                 <i class="icon-star"></i>
                 <i class="icon-star-empty"></i>
@@ -111,7 +111,8 @@
                 <i class="icon-star-empty"></i>
                 <i class="icon-star-empty"></i>
               %span.description
-                During summer vacation, Tamotsu is on break from work happens to visit a particular café. It is at this café that Tamotsu meets Pico, who works there for his grandfather. Tamotsu instantly falls for Pico, believing that...
+                #{truncate("During summer vacation, Tamotsu is on break from work happens to visit a particular café. It is at this café that Tamotsu meets Pico, who works there for his grandfather. Tamotsu instantly falls for Pico, believing that Pico is a girl because of his feminine appearance. However, to his disbelief, Pico claims he actually is a guy. Undeterred, Tamotsu pursues a sexual relationship with Pico, to an extent where he even persuades Pico into wearing girl clothes. When Pico asks what is he to Tamotsu, he finds himself unable to answer...", :length => 280, :separator => ' ')}
+              %span.description-link= link_to "[Read More]", "#"
 
 
 

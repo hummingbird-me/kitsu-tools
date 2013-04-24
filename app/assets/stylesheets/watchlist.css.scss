@@ -182,6 +182,24 @@
         .thumbnail {
           padding: 0px;
         }
+        .library-item-info {
+          .title {
+            margin: 0px;
+            font-family: "omnes-pro",sans-serif;
+            font-size: 20px;
+            line-height: 0;
+          }
+          .rating {
+            margin-top: 5px;
+            margin-bottom: 5px;
+          }
+          .description {
+            font-size: 14px;
+          }
+          .description-link {
+            font-size: 12px;
+          }
+        }
       }
     }
   }
