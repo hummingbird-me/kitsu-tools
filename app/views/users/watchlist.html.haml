@@ -1,9 +1,13 @@
 .row.user-watchlist
   .large-2.columns.sidebar
     .large-12.columns.avatar
-      = image_tag "http://localhost:3000/system/users/avatars/000/000/002/thumb/avatar.png?1366701543", :class => "avatar-image"
+      = image_tag @user.avatar_url, :class => "avatar-image"
+      %span.karma
+        = number_with_delimiter @user.reputation_for(:karma).to_i 
+        Karma
+      %p.last-seen Last Seen - <span class="time-ago">1 hour ago</span>
     .large-12.columns.user-block
-      %h4.username Graphik
+      %h4.username= @user.name
       %span.waifu 
         Waifu - 
         = link_to "Haruhi Suzumiya", "#"
@@ -17,10 +21,228 @@
         %li= link_to "Following", "#"
         %li= link_to "Followers", "#"
 
-  .large-8.columns
-    %p main content
-  .large-2.columns
-    %p advert
+  .large-8.columns.main-content
+    .large-12.columns.watchlist-option-bar
+      .large-3.columns
+        %p.option-title Anime Library
+      .large-8.columns
+        %ul.status-tabs.inline-list
+          %li= link_to "All", "#"
+          %li= link_to "Currently Watching", "#"
+          %li= link_to "Want to Watch", "#"
+          %li= link_to "Completed", "#"
+          %li= link_to "Dropped", "#"
+          %li +
+    .large-12.columns.library-status-header
+      %h5.status Currently Watching
+    .row
+      .large-12.columns.library-table
+        %table.large-12.columns.fake-table-row
+          %thead
+            %tr
+              %th{:width => "505"}= link_to "Title", "#", :class => "active"
+              %th{:width => "95"}= link_to "Progress", "#"
+              %th{:width => "68"}= link_to "Rating", "#"
+              %th{:width => "65"}= link_to "Type", "#"
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Attack on Titan", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Devil Survivor 2 The Animation", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Fullmetal Alchemist: Brotherhood", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Kore wa Zombie Desu ka?", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        // The class .private makes the private indicator appear
+        %table.large-12.columns.fake-table-row.library-item.private
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Boku No Pico", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        #divToShow.large-12.columns.library-dropdown{:style => "display:block;"}
+          .large-8.columns.meta-content
+            .large-12.columns.last-update
+              %p Last Library Update: 04-03-13
+            .large-2.columns.thumbnail
+              = image_tag "http://hummingbird.ly/system/2fc4434fe83de4b00ac707d201b741f44474f385_thumb.jpg?1361874445"
+            .large-10.columns.title
+              %h6= link_to "Boku no Pico", "#"
+              .rating
+                <i class="icon-star"></i>
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i>
+                <i class="icon-star-empty"></i>
+              %span.description
+                During summer vacation, Tamotsu is on break from work happens to visit a particular café. It is at this café that Tamotsu meets Pico, who works there for his grandfather. Tamotsu instantly falls for Pico, believing that...
+
+
+
+          .large-4.columns.action-area
+            %p content
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Natsume Yuujinchou Shi", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Natsume’s Book of Friends Three", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Spice and Wolf", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Children Who Chase Lost Voices", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Magi: The Labyrinth of Magic", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+
+
+    .large-12.columns.library-status-header
+      %h5.status Want to Watch
+    .row
+      .large-12.columns.library-table
+        %table.large-12.columns.fake-table-row
+          %thead
+            %tr
+              %th{:width => "505"}= link_to "Title", "#", :class => "active"
+              %th{:width => "95"}= link_to "Progress", "#"
+              %th{:width => "68"}= link_to "Rating", "#"
+              %th{:width => "65"}= link_to "Type", "#"
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Colorful", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Monster", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Paprika", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Shigofumi", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        %table.large-12.columns.fake-table-row.library-item
+          %tr
+            %td.library-item-title{:width => "505"}
+              = link_to "Magi: The Labyrinth of Magic", "#"
+              %span.private-indicator [PRIVATE]
+              %i.icon-reorder
+            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "65"} TV
+
+        
+
+
+  .large-2.columns.adzone
+    = image_tag "http://cl.ly/image/1V3s463b0N31/advert.png", :class => "advert"
+:javascript
+  $(function() {
+    $("table").click(function(event) {
+      var control = $('#divToShow').toggle();                  
+    });
+  });
 / = render "dash"
 / .row.user-watchlist
 /   .large-12.columns
