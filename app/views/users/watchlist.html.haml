@@ -12,27 +12,28 @@
         Waifu - 
         = link_to "Haruhi Suzumiya", "#"
     .large-12.columns.user-links
-      %ul
-        %li= link_to "Activity Feed", "#"
-        %li= link_to "About", "#"
-        %li= link_to "Library", "#"
-        %li= link_to "Reviews", "#"
-        %li= link_to "Forum Posts", "#"
-        %li= link_to "Following", "#"
-        %li= link_to "Followers", "#"
+      .link-wrapper
+        %ul
+          %li= link_to "Activity Feed", "#"
+          %li= link_to "About", "#"
+          %li= link_to "Library", "#"
+          %li= link_to "Reviews", "#"
+          %li= link_to "Forum Posts", "#"
+          %li= link_to "Following", "#"
+          %li= link_to "Followers", "#"
 
-  .large-8.columns.main-content
+  .large-8.columns.large-offset-2.main-content
     .large-12.columns.watchlist-option-bar
       .large-3.columns
         %p.option-title Anime Library
-      .large-8.columns
+      .large-8.columns.options
         %ul.status-tabs.inline-list
-          %li= link_to "All", "#"
+          %li.active= link_to "All", "#"
           %li= link_to "Currently Watching", "#"
           %li= link_to "Want to Watch", "#"
           %li= link_to "Completed", "#"
           %li= link_to "Dropped", "#"
-          %li +
+ 
     .large-12.columns.library-status-header
       %h5.status Currently Watching
     .row

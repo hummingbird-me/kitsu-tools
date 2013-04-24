@@ -3,14 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
 .user-watchlist {
+  position: relative;
+  margin-bottom: 30px;
   .sidebar {
     padding: 0px;
+    position: absolute;
     background: #383735;
+    top: 0;
+    bottom: 0;
+    @include border-bottom-left-radius(3px);
+    
     .avatar {
       padding: 0px;
       font-size: 12px;
       color: #fff;
       .karma, .last-seen {
+        background: #000;
         background: rgba(0,0,0,.5);
         padding: 5px;
       }
@@ -69,28 +77,39 @@
   }
   .main-content {
     padding: 0px;
+    @include border-bottom-right-radius(3px);
     .watchlist-option-bar {
       font-size: 12px;
       background: #f7f6f6;
       border-bottom: 1px solid #e4e4e4;
+      padding-right: 0px;
       .option-title {
         margin-top: 10px;
         margin-bottom: 0px;
       }
-      ul {
-        text-align: center;
-        margin-bottom: 0px;
-        li {
-          border-left: 1px solid #e4e4e4;
-          margin-left: 0px;
-          a {
-            display: block;
-            color: #919191;
-            padding: 10px;
-            padding-left: 15px;
-            padding-right: 15px;
-            &:hover {
-              color: #fd864b;
+      .options {
+        padding: 0px;
+
+        ul {
+          text-align: center;
+          margin-bottom: 0px;
+          display: inline-block;
+          float: right;
+          li {
+            border-left: 1px solid #e4e4e4;
+            margin-left: 0px;
+            &.active {
+              border-bottom: 2px solid #fd864b;
+            }
+            a {
+              display: block;
+              color: #919191;
+              padding: 10px;
+              padding-left: 15px;
+              padding-right: 15px;
+              &:hover {
+                color: #fd864b;
+              }
             }
           }
         }
