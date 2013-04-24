@@ -102,6 +102,8 @@
               %p Last Library Update: 04-03-13
             .large-2.columns.thumbnail
               = image_tag "http://hummingbird.ly/system/2fc4434fe83de4b00ac707d201b741f44474f385_thumb.jpg?1361874445"
+            
+            // Left side of dropdown with thumbnail and description
             .large-10.columns.library-item-info
               = link_to "Boku no Pico", "#", :class => "title"
               .rating
@@ -114,10 +116,30 @@
                 #{truncate("During summer vacation, Tamotsu is on break from work happens to visit a particular café. It is at this café that Tamotsu meets Pico, who works there for his grandfather. Tamotsu instantly falls for Pico, believing that Pico is a girl because of his feminine appearance. However, to his disbelief, Pico claims he actually is a guy. Undeterred, Tamotsu pursues a sexual relationship with Pico, to an extent where he even persuades Pico into wearing girl clothes. When Pico asks what is he to Tamotsu, he finds himself unable to answer...", :length => 280, :separator => ' ')}
               %span.description-link= link_to "[Read More]", "#"
 
-
-
+          // Right side of dropdown with update content
           .large-4.columns.action-area
-            %p content
+            .large-12.columns.library-status
+              .large-3.columns.option-label
+                %span Status:
+              .large-9.columns.status-dropdown
+                %form.custom
+                  %select.medium
+                    %option Currently Watching
+                    %option Want to Watch
+                    %option Completed
+                    %option Dropped
+
+            .large-12.columns.privacy-setting
+              .large-3.columns.option-label
+                %span Privacy:
+              .large-9.columns.privacy-dropdown
+                %form.custom
+                  %select.medium
+                    %option Public
+                    %option Private
+
+            .large-12.columns.remove-from-library.text-center
+              = link_to "Remove From Library", "#"
 
         %table.large-12.columns.fake-table-row.library-item
           %tr
