@@ -43,6 +43,7 @@ class UsersController < ApplicationController
     }
   end
 
+  include ActionView::Helpers::TextHelper
   def watchlist
     @user = User.find(params[:user_id])
     
@@ -70,6 +71,7 @@ class UsersController < ApplicationController
               title: item.anime.canonical_title(current_user),
               cover_image: item.anime.cover_image.url(:thumb),
               episode_count: item.anime.episode_count,
+              short_synopsis: truncate(item.anime.synopsis, length: 280, separator: ' '),
               show_type: item.anime.show_type
             },
             episodes_watched: item.episodes_watched,
