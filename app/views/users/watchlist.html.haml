@@ -90,28 +90,33 @@
 
       // Right side of dropdown with update content
       .large-4.columns.action-area
-        .large-12.columns.library-status
-          .large-3.columns.option-label
-            %span Status:
-          .large-9.columns.status-dropdown
-            %form.custom
-              %select.medium
-                - Watchlist.valid_statuses.each do |status|
-                  %option{:value => status.parameterize}= status
 
-        .large-12.columns.privacy-setting
-          .large-3.columns.option-label
-            %span Privacy:
-          .large-9.columns.privacy-dropdown
-            %form.custom
-              %select.medium
-                %option(value="public") Public
-                %option(value="private") Private
+        // '.updating' class on '.opacity-wrapper' will fade out action panel
+        .opacity-wrapper.updating
+          .large-12.columns.library-status
+            .large-3.columns.option-label
+              %span Status:
+            .large-9.columns.status-dropdown
+              %form.custom
+                %select.medium
+                  - Watchlist.valid_statuses.each do |status|
+                    %option{:value => status.parameterize}= status
 
-        .large-12.columns.remove-from-library.text-center
-          %span
-            %i.icon-remove
-            %a.remove-from-library Remove From Library
+          .large-12.columns.privacy-setting
+            .large-3.columns.option-label
+              %span Privacy:
+            .large-9.columns.privacy-dropdown
+              %form.custom
+                %select.medium
+                  %option(value="public") Public
+                  %option(value="private") Private
+
+          .large-12.columns.remove-from-library.text-center
+            %span
+              %i.icon-remove
+              %a.remove-from-library Remove From Library
+        // Spinner
+        %i.icon-spinner.icon-spin
             
             
 :coffee

@@ -7,6 +7,7 @@
           = number_with_delimiter @user.reputation_for(:karma).to_i 
           Karma
         %p.last-seen.hide Last Seen - <span class="time-ago">1 hour ago</span>
+        %span.image-update-button= link_to "Change Avatar", "#"
       .large-12.columns.user-block
         %h4.username= @user.name
         %span.waifu.hide
@@ -31,6 +32,7 @@
           .small-4.columns.cover-buttons.hide
             %span.line-button.compare= link_to "Compare"
             %span.line-button= link_to "Suggest Anime"
+        %span.image-update-button= link_to "Change Cover Photo", "#"
 
       = yield
 
