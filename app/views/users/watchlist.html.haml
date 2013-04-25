@@ -117,7 +117,6 @@
             
 :coffee
   starRatings = #{@user.star_rating.inspect}
-  console.log starRatings
 
   setActiveTab = (section) ->
     $(".watchlist-option-bar .options li").removeClass "active"
@@ -198,7 +197,10 @@
         that = this
         # Activate "Remove from Library" button.
         dropdown.find("a.remove-from-library").click ->
-          alert "remove triggered!"
+          $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
+            if d
+              WatchlistSectionCollections[that.model.get("status_parameterized")].remove that.model
+              WatchlistSectionViews[that.model.get("status_parameterized")].renderContents()
     
   WatchlistSectionViewClass = Backbone.View.extend
     tagName: "div"
