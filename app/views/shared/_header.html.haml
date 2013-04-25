@@ -54,6 +54,10 @@
           - else
             %li.guest-block
               %span <a href="#{main_app.new_user_session_path}">Login</a> or <a href="#{main_app.new_user_registration_path}">Register</a>
+.guest-banner
+  .large-12.columns
+    = link_to "Hummingbird is the easiest way to track, share and discover new anime. Request your invite now - Free."
+    %span.guest-button= link_to "Request Invite", "#"
 
   - unless @hide_cover_image
     = render partial: "shared/header_quote"

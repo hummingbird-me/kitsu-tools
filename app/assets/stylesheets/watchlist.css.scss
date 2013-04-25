@@ -179,6 +179,9 @@
       border-collapse: collapse;
       a {
         color: #5c5c5c;
+        &:hover {
+          color: #fd864b;
+        }
       }
       th {
         background: #fff;
