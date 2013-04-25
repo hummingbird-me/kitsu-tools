@@ -229,7 +229,6 @@
       }
       &.library-item {
         .episode-count {
-          position: relative;
           .click-add {
             position: absolute;
             bottom: 5px;
@@ -266,7 +265,6 @@
         }
         .library-item-title {
           cursor: pointer;
-          position: relative;
           .icon-reorder {
             position: absolute;
             right: 5px;
