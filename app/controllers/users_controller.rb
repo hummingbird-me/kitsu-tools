@@ -79,6 +79,7 @@ class UsersController < ApplicationController
           }
         end
         
+        sleep 1
         render :json => watchlists
       end
     end

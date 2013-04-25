@@ -110,18 +110,22 @@
     WatchlistSectionViews[s].render()
 
   lastRender = moment()
+  perPage = 50
   fetchWatchlistSection = (s...) ->
     section = s[0]
     page = if s[1] then s[1] else 1
     watchlist_path = #{user_watchlist_path(@user, format: :json).inspect}
-    $.getJSON watchlist_path + "?list=" + section + "&page=" + page, (d) ->
+    $.getJSON(watchlist_path + "?list=" + section + "&page=" + page, (d) ->
       WatchlistSectionCollections[section].set d, {remove: false}
       if d.length > 0
-        $("#table-" + section + " .loading-indicator span span").text(50 * page)
+        $("#table-" + section + " .loading-indicator span span").text(page * perPage)
         fetchWatchlistSection section, page+1
       else
         WatchlistSectionViews[section].renderContents()
-        $("#table-" + section + " .loading-indicator").hide()
+        $("#table-" + section + " .loading-indicator").hide())
+      .error ->
+        fetchWatchlistSection(section, page)
+       
 
   _.each WatchlistSections, (s) ->
     fetchWatchlistSection(s)
