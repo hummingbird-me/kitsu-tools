@@ -23,7 +23,7 @@ Hummingbird::Application.routes.draw do
   # Dashboard
   match '/dashboard' => 'home#dashboard'
   resources :users do
-    get "/watchlist" => 'users#watchlist',      as: :watchlist
+    get "/watchlist"          => 'users#watchlist', as: :watchlist
     get "/reviews"   => 'users#reviews',        as: :reviews
     get "/forum_posts" => 'users#forum_posts',  as: :forum_posts
     
@@ -69,7 +69,7 @@ Hummingbird::Application.routes.draw do
   resources :watchlists
   match '/watchlist/add/:anime_id' => 'watchlists#add_to_watchlist', 
     as: :add_to_watchlist
-  match '/watchlist/remove/:anime_id' => 'watchlists#remove_from_watchlist', 
+  match '/watchlist/remove' => 'watchlists#remove_from_watchlist', 
     as: :remove_from_watchlist
   match '/watchlist/rate/:anime_id/:rating' => 'watchlists#update_rating', 
     as: :update_rating

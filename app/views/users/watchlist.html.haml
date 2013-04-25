@@ -177,7 +177,11 @@
               else
                 dropdown_ratings.append $("<i class='icon-star-empty'></i>")
         else
-          m = {positive: ":)", neutral: ":|", negative: ":("}
+          m = {
+            positive: ":)", 
+            neutral: ":|", 
+            negative: ":("
+          }
           for t in ['positive', 'neutral', 'negative']
             if rating[t]
               dropdown_ratings.append "<strong>" + m[t] + "</strong>"

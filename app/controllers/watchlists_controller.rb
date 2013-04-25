@@ -34,7 +34,10 @@ class WatchlistsController < ApplicationController
     @anime = Anime.find(params["anime_id"])
     @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
     @watchlist.destroy
-    redirect_to :back
+    respond_to do |format|
+      format.json { render :json => true }
+      format.html { redirect_to :back }
+    end
   end
 
   def update_rating
