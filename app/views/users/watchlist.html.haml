@@ -32,6 +32,16 @@
   %td{:width => "68"} <span class="select"><i class="icon-star"></i> 5</span>
   %td{:width => "65"} TV
   
+%script(type="text/template" id="WatchlistSectionViewTemplate")
+  %table.large-12.columns.fake-table-row
+    %thead
+      %tr
+        %th{:width => "505"}= link_to "Title", "#", :class => "active"
+        %th{:width => "95"}= link_to "Progress", "#"
+        %th{:width => "68"}= link_to "Rating", "#"
+        %th{:width => "65"}= link_to "Type", "#"
+
+    %tbody.fake-table-row.library-item
 
 :coffee
   setActiveTab = (section) ->
@@ -63,8 +73,9 @@
   WatchlistItemView = Backbone.View.extend
     tagName: "tr"
     template: Hogan.compile $("#WatchlistItemViewTemplate").html()
-
-  console.log $("#WatchlistItemViewTemplate").html()
+  WatchlistSectionViewClass = Backbone.view.extend
+    tagName: "table"
+    className: "large-12 columns fake-table-row"
 
 .large-12.columns.library-status-header
   %h5.status Currently Watching
@@ -78,18 +89,18 @@
           %th{:width => "68"}= link_to "Rating", "#"
           %th{:width => "65"}= link_to "Type", "#"
 
-    %table.large-12.columns.fake-table-row.library-item
-      %tr
-        %td.library-item-title{:width => "505"}
-          = link_to "Attack on Titan", "#"
-          %span.private-indicator [PRIVATE]
-          %i.icon-reorder
-        %td.episode-count{:width => "95"} 
-          <a href="#" class="click-add"><i class="icon-caret-up"></i></a>
-          <a href="#" class="click-remove"><i class="icon-caret-down"></i></a>
-          <span class="edit">03</span> <strong>/ 25</strong>
-        %td{:width => "68"} <span class="select"><i class="icon-star"></i> 5</span>
-        %td{:width => "65"} TV
+      %tbody.fake-table-row.library-item
+        %tr
+          %td.library-item-title{:width => "505"}
+            = link_to "Attack on Titan", "#"
+            %span.private-indicator [PRIVATE]
+            %i.icon-reorder
+          %td.episode-count{:width => "95"} 
+            <a href="#" class="click-add"><i class="icon-caret-up"></i></a>
+            <a href="#" class="click-remove"><i class="icon-caret-down"></i></a>
+            <span class="edit">03</span> <strong>/ 25</strong>
+          %td{:width => "68"} <span class="select"><i class="icon-star"></i> 5</span>
+          %td{:width => "65"} TV
 
     %table.large-12.columns.fake-table-row.library-item
       %tr

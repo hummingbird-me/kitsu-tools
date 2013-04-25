@@ -53,7 +53,7 @@ class UsersController < ApplicationController
         watchlists = []
         
         if status
-          watchlists = @user.watchlists.where(status: status).includes(:anime)
+          watchlists = @user.watchlists.where(status: status).includes(:anime).page(params[:page]).per(50)
           # TODO simplify this sorting bit.
           if status == "Currently Watching"
             watchlists = watchlists.order('last_watched DESC')
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
               url: anime_path(item.anime),
               title: item.anime.canonical_title(current_user),
               cover_image: item.anime.cover_image.url(:thumb),
-              episode_count: item.episode_count
+              episode_count: item.anime.episode_count
             },
             episodes_watched: item.episodes_watched,
             last_watched: item.last_watched,
