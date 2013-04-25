@@ -33,9 +33,9 @@ class WatchlistsController < ApplicationController
   def remove_from_watchlist
     @anime = Anime.find(params["anime_id"])
     @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
-    #@watchlist.destroy
+    @watchlist.destroy
     respond_to do |format|
-      format.json { sleep 1; render :json => true }
+      format.json { render :json => true }
       format.html { redirect_to :back }
     end
   end
