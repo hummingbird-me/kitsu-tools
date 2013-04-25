@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
     @watchlist = @watchlist.order('created_at DESC') if @sub_tab != "currently_watching"
 
-    render "watchlist"
+    render "watchlist", layout: "profile"
   end
   
   def reviews

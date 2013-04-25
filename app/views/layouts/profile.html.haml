@@ -1,0 +1,40 @@
+- content_for :content do
+  .row.user-watchlist
+    .large-2.columns.sidebar
+      .large-12.columns.avatar
+        = image_tag @user.avatar_url, :class => "avatar-image"
+        %span.karma
+          = number_with_delimiter @user.reputation_for(:karma).to_i 
+          Karma
+        %p.last-seen Last Seen - <span class="time-ago">1 hour ago</span>
+      .large-12.columns.user-block
+        %h4.username= @user.name
+        %span.waifu 
+          Waifu - 
+          = link_to "Haruhi Suzumiya", "#"
+      .large-12.columns.user-links
+        .link-wrapper
+          %ul
+            %li= link_to "Activity Feed", "#"
+            %li= link_to "About", "#"
+            %li= link_to "Library", "#"
+            %li= link_to "Reviews", "#"
+            %li= link_to "Forum Posts", "#"
+            %li= link_to "Following", "#"
+            %li= link_to "Followers", "#"
+
+    .large-8.columns.large-offset-2.main-content
+      .large-12.columns.cover-photo{:style => "background: url('http://cl.ly/image/063j2t0F3h1l/1.png')"}
+        .cover-photo-shadow
+          .small-8.columns.anime-time
+            %p.anime-time-info I've watched #{format_minutes @user.life_spent_on_anime} of anime.
+          .small-4.columns.cover-buttons
+            %span.line-button.compare= link_to "Compare"
+            %span.line-button= link_to "Suggest Anime"
+
+      = yield
+
+    .large-2.columns.adzone
+      = image_tag "http://cl.ly/image/1V3s463b0N31/advert.png", :class => "advert"
+
+= render :template => 'layouts/application'
