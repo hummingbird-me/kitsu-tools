@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { render "watchlist", layout: "profile" }
       format.json do
-        status = Watchlist.snake_case_to_status(params[:list])
+        status = Watchlist.status_parameter_to_status(params[:list])
         watchlists = []
         
         if status

@@ -13,12 +13,12 @@ class Watchlist < ActiveRecord::Base
     ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   end  
 
-  def self.snake_case_to_status(snake)
+  def self.status_parameter_to_status(snake)
     t = {
-      "currently_watching" => "Currently Watching",
-      "plan_to_watch"      => "Plan to Watch",
+      "currently-watching" => "Currently Watching",
+      "plan-to-watch"      => "Plan to Watch",
       "completed"          => "Completed",
-      "on_hold"            => "On Hold",
+      "on-hold"            => "On Hold",
       "dropped"            => "Dropped"
     }
     t[snake]

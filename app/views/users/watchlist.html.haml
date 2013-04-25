@@ -34,7 +34,7 @@
   %table.large-12.columns.fake-table-row
     %thead
       %tr
-        %th{:width => "505"}= link_to "Title", "#", :class => "active"
+        %th{:width => "505"}= link_to "Title", "#"#, :class => "active"
         %th{:width => "95"}= link_to "Progress", "#"
         %th{:width => "68"}= link_to "Rating", "#"
         %th{:width => "65"}= link_to "Type", "#"
@@ -76,14 +76,28 @@
   WatchlistItemView = Backbone.View.extend
     tagName: "tr"
     template: Hogan.compile $("#WatchlistItemViewTemplate").html()
+    render: ->
+      this.$el.html this.template.render this.model.toJSON()
+      return this
     
   WatchlistSectionViewClass = Backbone.View.extend
     tagName: "div"
     template: Hogan.compile $("#WatchlistSectionViewTemplate").html()
+    initialize: ->
+      _(this).bindAll 'add'
+      this.collection.bind 'add', this.add
+    add: (i) ->
+      iv = new WatchlistItemView {model: i}
+      i.set "_view", iv
     render: ->
       this.$el.html this.template.render()
       $("#table-" + this.options.section + " .library-table").append this.el
       return this
+    renderContents: ->
+      tbody = $("<tbody class='fake-table-row library-item'></tbody>")
+      this.collection.each (i) ->
+        tbody.append i.get("_view").render().el
+      $("#table-" + this.options.section + " .library-item").replaceWith tbody
 
   # Bind each WatchlistSectionCollection to corresponding view.
   WatchlistSectionViews = {}
@@ -92,6 +106,20 @@
       collection: WatchlistSectionCollections[s]
       section: s
     WatchlistSectionViews[s].render()
+
+  fetchWatchlistSection = (s...) ->
+    section = s[0]
+    page = if s[1] then s[1] else 1
+    watchlist_path = #{user_watchlist_path(@user, format: :json).inspect}
+    $.getJSON watchlist_path + "?list=" + section + "&page=" + page, (d) ->
+      WatchlistSectionCollections[section].set d, {remove: false}
+      if d.length > 0
+        fetchWatchlistSection section, page+1
+      else
+        $("#table-" + section + " .loading-indicator").hide()
+        WatchlistSectionViews[section].renderContents()
+
+  fetchWatchlistSection('currently-watching')
       
 
 .large-12.columns.library-status-header
