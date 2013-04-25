@@ -200,7 +200,8 @@
 
         that = this
         # Activate "Remove from Library" button.
-        dropdown.find("a.remove-from-library").click ->
+        dropdown.find(".remove-from-library").click ->
+          dropdown.find(".remove-from-library i").removeClass("icon-remove").addClass("icon-spin icon-spinner")
           $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
             if d
               WatchlistSectionCollections[that.model.get("status_parameterized")].remove that.model
