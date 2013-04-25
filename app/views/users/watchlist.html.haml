@@ -90,9 +90,7 @@
 
       // Right side of dropdown with update content
       .large-4.columns.action-area
-
-        // '.updating' class on '.opacity-wrapper' will fade out action panel
-        .opacity-wrapper.updating
+        .opacity-wrapper
           .large-12.columns.library-status
             .large-3.columns.option-label
               %span Status:
@@ -116,7 +114,8 @@
               %i.icon-remove
               %a.remove-from-library Remove From Library
         // Spinner
-        %i.icon-spinner.icon-spin
+        %span.updating-icon.hide
+          %i.icon-spinner.icon-spin.updating-icon
             
             
 :coffee
@@ -201,6 +200,9 @@
         that = this
         # Activate "Remove from Library" button.
         dropdown.find(".remove-from-library").click ->
+          $(".opacity-wrapper").addClass("updating")
+          $(".updating-icon").removeClass("hide")
+
           $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
             if d
               WatchlistSectionCollections[that.model.get("status_parameterized")].remove that.model
