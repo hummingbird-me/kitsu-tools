@@ -49,7 +49,32 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { render "watchlist", layout: "profile" }
       format.json do
-        # TODO
+        status = Watchlist.snake_case_to_status(params[:list])
+        watchlists = []
+        
+        if status
+          watchlists = @user.watchlists.where(status: status).includes(:anime)
+          # TODO simplify this sorting bit.
+          if status == "Currently Watching"
+            watchlists = watchlists.order('last_watched DESC')
+          else
+            watchlists = watchlists.order('created_at DESC')
+          end
+        end
+
+        watchlists = watchlists.map do |item|
+          {
+            anime: {
+              slug: item.anime.slug,
+              title: item.anime.canonical_title(current_user),
+              cover_image: item.anime.cover_image.url(:thumb)
+            },
+            episodes_watched: item.episodes_watched,
+            last_watched: item.last_watched
+          }
+        end
+        
+        render :json => watchlists
       end
     end
     

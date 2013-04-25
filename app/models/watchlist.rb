@@ -12,6 +12,17 @@ class Watchlist < ActiveRecord::Base
   def self.valid_statuses
     ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   end  
+
+  def self.snake_case_to_status(snake)
+    t = {
+      "currently_watching" => "Currently Watching",
+      "plan_to_watch"      => "Plan to Watch",
+      "completed"          => "Completed",
+      "on_hold"            => "On Hold",
+      "dropped"            => "Dropped"
+    }
+    t[snake]
+  end
   
   validates :status, inclusion: { in: Watchlist.valid_statuses }
 
