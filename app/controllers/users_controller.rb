@@ -80,20 +80,6 @@ class UsersController < ApplicationController
         render :json => watchlists
       end
     end
-    
-    #if @sub_tab == "currently_watching"
-    #  @watchlist = @user.watchlists.where(:status => "Currently Watching").order('last_watched DESC')
-    #elsif @sub_tab == "plan_to_watch"
-    #  @watchlist = @user.watchlists.where(:status => "Plan to Watch")
-    #elsif @sub_tab == "completed"
-    #  @watchlist = @user.watchlists.where(:status => "Completed")
-    #elsif @sub_tab == "on_hold"
-    #  @watchlist = @user.watchlists.where(:status => "On Hold")
-    #elsif @sub_tab == "dropped"
-    #  @watchlist = @user.watchlists.where(:status => "Dropped")
-    #end
-    #
-    #@watchlist = @watchlist.order('created_at DESC') if @sub_tab != "currently_watching"
   end
   
   def reviews
