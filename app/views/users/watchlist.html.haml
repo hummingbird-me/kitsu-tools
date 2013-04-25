@@ -45,6 +45,8 @@
       %tr
         %td.center(colspan=4 style="color: #333")
           %i.icon.icon-spin.icon-spinner.icon-2x
+          %span.right(style="color: #aaa; padding-top: 10px")
+            (Finished loading <span>0</span> entries.)
             
 :coffee
   setActiveTab = (section) ->
@@ -115,6 +117,7 @@
     $.getJSON watchlist_path + "?list=" + section + "&page=" + page, (d) ->
       WatchlistSectionCollections[section].set d, {remove: false}
       if d.length > 0
+        $("#table-" + section + " .loading-indicator span span").text(50 * page)
         fetchWatchlistSection section, page+1
       else
         WatchlistSectionViews[section].renderContents()
