@@ -1,13 +1,11 @@
 .large-12.columns.watchlist-option-bar
-  .large-3.columns
+  .large-2.columns
     %p.option-title Anime Library
-  .large-8.columns.options
+  .large-9.columns.options
     %ul.status-tabs.inline-list
       %li.active= link_to "All", "#"
-      %li= link_to "Currently Watching", "#"
-      %li= link_to "Want to Watch", "#"
-      %li= link_to "Completed", "#"
-      %li= link_to "Dropped", "#"
+      - Watchlist.valid_statuses.each do |status|
+        %li= link_to status, "#"
 
 .large-12.columns.library-status-header
   %h5.status Currently Watching
