@@ -142,6 +142,14 @@
         this.model.set "_dropdownOpen", false
       else
         this.$el.after this.dropdownTemplate.render this.model.toJSON()
+        # Write rating to the dropdown.
+        dropdown_ratings = this.$el.next().find ".rating"
+        dropdown_ratings.empty()
+        for i in [-2..2]
+          if this.model.get("rating") >= i + 3
+            dropdown_ratings.append $("<i class='icon-star'></i>")
+          else
+            dropdown_ratings.append $("<i class='icon-star-empty'></i>")
         this.model.set "_dropdownOpen", true
     
   WatchlistSectionViewClass = Backbone.View.extend
