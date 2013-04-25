@@ -6,22 +6,22 @@
         %span.karma
           = number_with_delimiter @user.reputation_for(:karma).to_i 
           Karma
-        %p.last-seen Last Seen - <span class="time-ago">1 hour ago</span>
+        %p.last-seen.hide Last Seen - <span class="time-ago">1 hour ago</span>
       .large-12.columns.user-block
         %h4.username= @user.name
-        %span.waifu 
+        %span.waifu.hide
           Waifu - 
           = link_to "Haruhi Suzumiya", "#"
       .large-12.columns.user-links
         .link-wrapper
           %ul
-            %li= link_to "Activity Feed", "#"
-            %li= link_to "About", "#"
-            %li= link_to "Library", "#"
-            %li= link_to "Reviews", "#"
-            %li= link_to "Forum Posts", "#"
-            %li= link_to "Following", "#"
-            %li= link_to "Followers", "#"
+            %li.hide= link_to "Activity Feed", "#"
+            %li= link_to "About", user_path(@user)
+            %li= link_to "Library", user_watchlist_path(@user)
+            %li= link_to "Reviews", user_reviews_path(@user)
+            %li= link_to "Forum Posts", user_forum_posts_path(@user)
+            %li.hide= link_to "Following", "#"
+            %li.hide= link_to "Followers", "#"
 
     .large-8.columns.large-offset-2.main-content
       .large-12.columns.cover-photo{:style => "background: url('#{@user.cover_image.url(:thumb)}')"}
