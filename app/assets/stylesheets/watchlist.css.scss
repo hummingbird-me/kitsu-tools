@@ -175,8 +175,8 @@
       border-left: none;
       border-right: none;
       border-top: none;
-      border-bottom: 1px solid #f1f1f1;
       padding: 0px;
+      border-collapse: collapse;
       a {
         color: #5c5c5c;
       }
@@ -198,6 +198,7 @@
 
       tr td {
         background-color: #fff;
+        border-bottom: 1px solid #f1f1f1;
       }
 
       .private-indicator {
