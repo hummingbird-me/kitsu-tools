@@ -203,6 +203,9 @@
       // Force firefox to play nicely with relative positioning.
       .relative-wrapper {
         position: relative;
+        .click-add, .click-remove {
+          opacity: .3;
+        }
       }
 
       // Change background color of entire row as we hover
@@ -254,6 +257,11 @@
             margin-left: 15px;
             &:hover {
               color: #fd864b;
+            }
+          }
+          &:hover {
+            .click-add, .click-remove {
+              opacity: 1;
             }
           }
         }
