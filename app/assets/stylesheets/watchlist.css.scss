@@ -196,6 +196,8 @@
         }
       }
 
+      // Change background color of entire row as we hover
+      tr:hover td {background: darken(#fff, 1);}
       tr td {
         background-color: #fff;
         border-bottom: 1px solid #f1f1f1;
@@ -262,9 +264,6 @@
               display: inline-block;
             }
           }
-        }
-        &:hover {
-          background: darken(#fff, 1);
         }
       }  
     }
