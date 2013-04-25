@@ -2,7 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :hide_cover_image
 
   def edit
-    render :edit
+    render :edit, layout: "layouts/profile"
   end
 
   def update
