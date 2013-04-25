@@ -172,7 +172,7 @@
 
   lastRender = moment()
   perPage = 50
-  fetchWatchlistSection = (s...) ->
+  @fetchWatchlistSection = (s...) ->
     section = s[0]
     page = if s[1] then s[1] else 1
     watchlist_path = #{user_watchlist_path(@user, format: :json).inspect}
@@ -185,8 +185,7 @@
         WatchlistSectionViews[section].renderContents()
         $("#table-" + section + " .loading-indicator").hide())
       .error ->
-        fetchWatchlistSection(section, page)
-       
+        setTimeout('fetchWatchlistSection("' + section + '", ' + page + ')', 2000)
 
   _.each WatchlistSections, (s) ->
     fetchWatchlistSection(s)
