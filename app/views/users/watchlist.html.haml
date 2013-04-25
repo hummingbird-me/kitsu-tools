@@ -168,14 +168,22 @@
         # Write rating to the dropdown.
         dropdown_ratings = this.$el.next().find ".rating"
         dropdown_ratings.empty()
-        for i in [-2..2]
-          if starRatings
-            if this.model.get("rating").value >= i + 3
-              dropdown_ratings.append $("<i class='icon-star'></i>")
+        rating = this.model.get("rating")
+        if starRatings
+          for i in [-2..2]
+            if starRatings
+              if rating.value >= i + 3
+                dropdown_ratings.append $("<i class='icon-star'></i>")
+              else
+                dropdown_ratings.append $("<i class='icon-star-empty'></i>")
+        else
+          m = {positive: ":)", neutral: ":|", negative: ":("}
+          for t in ['positive', 'neutral', 'negative']
+            if rating[t]
+              dropdown_ratings.append "<strong>" + m[t] + "</strong>"
             else
-              dropdown_ratings.append $("<i class='icon-star-empty'></i>")
-          else
-            dropdown_ratings.append ":)"
+              dropdown_ratings.append m[t]
+
         # Set status and privacy.
         this.$el.next().find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
         this.$el.next().find("option[value=" + (if this.model.get("privacy") then "private" else "public") + "]").attr("selected", "selected")
