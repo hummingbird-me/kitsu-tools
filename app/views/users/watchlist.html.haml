@@ -80,10 +80,8 @@
           .large-9.columns.status-dropdown
             %form.custom
               %select.medium
-                %option Currently Watching
-                %option Want to Watch
-                %option Completed
-                %option Dropped
+                - Watchlist.valid_statuses.each do |status|
+                  %option{:value => status.parameterize}= status
 
         .large-12.columns.privacy-setting
           .large-3.columns.option-label
@@ -155,6 +153,8 @@
             dropdown_ratings.append $("<i class='icon-star'></i>")
           else
             dropdown_ratings.append $("<i class='icon-star-empty'></i>")
+        # Set status.
+        this.$el.next().find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
         this.model.set "_dropdownOpen", true
     
   WatchlistSectionViewClass = Backbone.View.extend
