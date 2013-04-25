@@ -166,8 +166,11 @@
           if m.get("_dropdownOpen")
             m.get("_view").toggleDropdown()
         this.$el.after this.dropdownTemplate.render this.model.toJSON()
+        this.model.set "_dropdownOpen", true
+
+        dropdown = this.$el.next()
         # Write rating to the dropdown.
-        dropdown_ratings = this.$el.next().find ".rating"
+        dropdown_ratings = dropdown.find ".rating"
         dropdown_ratings.empty()
         rating = this.model.get("rating")
         if starRatings
@@ -190,9 +193,13 @@
               dropdown_ratings.append m[t]
 
         # Set status and privacy.
-        this.$el.next().find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
-        this.$el.next().find("option[value=" + (if this.model.get("privacy") then "private" else "public") + "]").attr("selected", "selected")
-        this.model.set "_dropdownOpen", true
+        dropdown.find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
+        dropdown.find("option[value=" + (if this.model.get("privacy") then "private" else "public") + "]").attr("selected", "selected")
+
+        # Activate "Remove from Library" button.
+        
+
+        
     
   WatchlistSectionViewClass = Backbone.View.extend
     tagName: "div"
