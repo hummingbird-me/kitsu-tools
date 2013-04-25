@@ -36,15 +36,17 @@
 
 %script(type="text/template" id="WatchlistItemViewTemplate")
   %td.library-item-title{:width => "505"}
-    %a{:href => "{{anime.url}}"} {{anime.title}}
-    {{#anime.private}}
-    %span.private-indicator [PRIVATE]
-    {{/anime.private}}
-    %i.icon-reorder
-  %td.episode-count{:width => "95"} 
-    <a href="#" class="click-add"><i class="icon-caret-up"></i></a>
-    <a href="#" class="click-remove"><i class="icon-caret-down"></i></a>
-    <span class="edit">{{episodes_watched}}</span> <strong>/ {{anime.episode_count}}</strong>
+    .relative-wrapper
+      %a{:href => "{{anime.url}}"} {{anime.title}}
+      {{#anime.private}}
+      %span.private-indicator [PRIVATE]
+      {{/anime.private}}
+      %i.icon-reorder
+  %td.episode-count{:width => "95"}
+    .relative-wrapper 
+      <a href="#" class="click-add"><i class="icon-caret-up"></i></a>
+      <a href="#" class="click-remove"><i class="icon-caret-down"></i></a>
+      <span class="edit">{{episodes_watched}}</span> <strong>/ {{anime.episode_count}}</strong>
   %td{:width => "68"} <span class="select"><i class="icon-star"></i> {{rating}}</span>
   %td{:width => "65"} {{anime.show_type}}
   

@@ -199,6 +199,11 @@
           }
         }
       }
+      
+      // Force firefox to play nicely with relative positioning.
+      .relative-wrapper {
+        position: relative;
+      }
 
       // Change background color of entire row as we hover
       tr:hover td { 
