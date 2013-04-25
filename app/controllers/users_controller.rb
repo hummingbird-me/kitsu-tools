@@ -70,7 +70,10 @@ class UsersController < ApplicationController
               cover_image: item.anime.cover_image.url(:thumb)
             },
             episodes_watched: item.episodes_watched,
-            last_watched: item.last_watched
+            last_watched: item.last_watched,
+            status: item.status,
+            status_parameterized: item.status.parameterize,
+            id: Digest::MD5.hexdigest("^_^" + item.id.to_s)
           }
         end
         
