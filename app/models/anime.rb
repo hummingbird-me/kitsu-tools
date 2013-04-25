@@ -118,6 +118,16 @@ class Anime < ActiveRecord::Base
     self.save
   end
 
+  def show_type
+    if title.include? "OVA" or (alt_title && alt_title.include?("OVA"))
+      "OVA"
+    elsif episode_count == 1
+      "Movie"
+    else
+      "TV"
+    end
+  end
+
   before_save do
     # If episode_count has increased, create new episodes.
     if self.episode_count and self.episodes.length < self.episode_count and (self.episodes.length == 0 or self.thetvdb_series_id.nil? or self.thetvdb_series_id.length == 0) 
