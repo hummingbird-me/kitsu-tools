@@ -107,6 +107,7 @@
       section: s
     WatchlistSectionViews[s].render()
 
+  lastRender = moment()
   fetchWatchlistSection = (s...) ->
     section = s[0]
     page = if s[1] then s[1] else 1
@@ -116,8 +117,8 @@
       if d.length > 0
         fetchWatchlistSection section, page+1
       else
-        $("#table-" + section + " .loading-indicator").hide()
         WatchlistSectionViews[section].renderContents()
+        $("#table-" + section + " .loading-indicator").hide()
 
   _.each WatchlistSections, (s) ->
     fetchWatchlistSection(s)
