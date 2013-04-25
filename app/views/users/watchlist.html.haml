@@ -113,11 +113,11 @@
     watchlist_path = #{user_watchlist_path(@user, format: :json).inspect}
     $.getJSON watchlist_path + "?list=" + section + "&page=" + page, (d) ->
       WatchlistSectionCollections[section].set d, {remove: false}
+      WatchlistSectionViews[section].renderContents()
       if d.length > 0
         fetchWatchlistSection section, page+1
       else
         $("#table-" + section + " .loading-indicator").hide()
-        WatchlistSectionViews[section].renderContents()
 
   _.each WatchlistSections, (s) ->
     fetchWatchlistSection(s)
