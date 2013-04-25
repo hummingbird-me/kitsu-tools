@@ -54,8 +54,7 @@
           - else
             %li.guest-block
               %span <a href="#{main_app.new_user_session_path}">Login</a> or <a href="#{main_app.new_user_registration_path}">Register</a>
-  - if user_signed_in?
-  - else
+  - if not user_signed_in?
     .guest-banner
       .large-12.columns
         = link_to "Hummingbird is the easiest way to track, share and discover new anime. Request your invite now - Free.", main_app.new_user_registration_path
@@ -63,9 +62,6 @@
   - unless @hide_cover_image
     = render partial: "shared/header_quote"
     
-
-
-
 - flash.each do |style, message|
   .alert-box{:class => style.to_s}= message
 
