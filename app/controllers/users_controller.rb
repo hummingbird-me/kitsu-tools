@@ -75,6 +75,7 @@ class UsersController < ApplicationController
             episodes_watched: item.episodes_watched,
             last_watched: item.last_watched,
             status: item.status,
+            rating: item.rating ? item.rating+3 : "-",
             status_parameterized: item.status.parameterize,
             id: Digest::MD5.hexdigest("^_^" + item.id.to_s)
           }
