@@ -54,16 +54,16 @@
         {{rating.value}}
       - else
         {{#rating.positive}}
-        \:)
+        %span.positive-smiley \:)
         {{/rating.positive}}
         {{#rating.neutral}}
-        \:|
+        %span.neutral-smiley \:|
         {{/rating.neutral}}
         {{#rating.negative}}
-        \:(
+        %span.negative-smiley \:(
         {{/rating.negative}}
         {{#rating.unknown}}
-        \?
+        %span.unknown-smiley \?
         {{/rating.unknown}}
   %td{:width => "65"} {{anime.show_type}}
   
@@ -178,9 +178,9 @@
                 dropdown_ratings.append $("<i class='icon-star-empty'></i>")
         else
           m = {
-            positive: ":)", 
-            neutral: ":|", 
-            negative: ":("
+            positive: "<span class='positive-smiley'>:)</span>", 
+            neutral: "<span class='neutral-smiley'>:|</span>", 
+            negative: "<span class='negative-smiley'>:(</span>"
           }
           for t in ['positive', 'neutral', 'negative']
             if rating[t]
