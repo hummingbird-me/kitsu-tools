@@ -179,6 +179,7 @@
       border-collapse: collapse;
       a {
         color: #5c5c5c;
+        cursor: pointer;
         &:hover {
           color: #fd864b;
         }
@@ -322,9 +323,12 @@
           }
           .description {
             font-size: 14px;
+            line-height: 18px;
+            color: #5c5c5c;
           }
           .description-link {
             font-size: 12px;
+            margin-left: 5px;
           }
         }
       }
