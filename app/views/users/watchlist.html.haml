@@ -23,6 +23,14 @@
           %li= link_to "Followers", "#"
 
   .large-8.columns.large-offset-2.main-content
+    .large-12.columns.cover-photo
+      .cover-photo-shadow
+        .small-8.columns.anime-time
+          %p.anime-time-info I've watched #{format_minutes @user.life_spent_on_anime} of anime.
+        .small-4.columns.cover-buttons
+          %span.line-button.compare= link_to "Compare"
+          %span.line-button= link_to "Suggest Anime"
+
     .large-12.columns.watchlist-option-bar
       .large-3.columns
         %p.option-title Anime Library
@@ -52,7 +60,7 @@
               = link_to "Attack on Titan", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -62,7 +70,7 @@
               = link_to "Devil Survivor 2 The Animation", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -72,7 +80,7 @@
               = link_to "Fullmetal Alchemist: Brotherhood", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -82,7 +90,7 @@
               = link_to "Kore wa Zombie Desu ka?", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -93,7 +101,7 @@
               = link_to "Boku No Pico", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -140,7 +148,9 @@
                     %option Private
 
             .large-12.columns.remove-from-library.text-center
-              = link_to "Remove From Library", "#"
+              %span 
+                %i.icon-remove
+                = link_to "Remove From Library", "#"
 
         %table.large-12.columns.fake-table-row.library-item
           %tr
@@ -148,8 +158,8 @@
               = link_to "Natsume Yuujinchou Shi", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
-            %td{:width => "68"} <i class="icon-star"></i> 5
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
+            %td{:width => "68"} <span class="select"><i class="icon-star"></i> 5</span>
             %td{:width => "65"} TV
 
         %table.large-12.columns.fake-table-row.library-item
@@ -158,7 +168,7 @@
               = link_to "Natsume’s Book of Friends Three", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -168,7 +178,7 @@
               = link_to "Spice and Wolf", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -178,7 +188,7 @@
               = link_to "Children Who Chase Lost Voices", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -188,7 +198,7 @@
               = link_to "Magi: The Labyrinth of Magic", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -212,7 +222,7 @@
               = link_to "Colorful", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -222,7 +232,7 @@
               = link_to "Monster", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -232,7 +242,7 @@
               = link_to "Paprika", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -242,7 +252,7 @@
               = link_to "Shigofumi", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -252,7 +262,7 @@
               = link_to "Magi: The Labyrinth of Magic", "#"
               %span.private-indicator [PRIVATE]
               %i.icon-reorder
-            %td{:width => "95"} 03 <span class="bold-count">/ 25</span>
+            %td{:width => "95"} <span class="edit">03</span> <strong>/ 25</strong>
             %td{:width => "68"} <i class="icon-star"></i> 5
             %td{:width => "65"} TV
 
@@ -266,6 +276,16 @@
     $("table").click(function(event) {
       var control = $('#divToShow').toggle();                  
     });
+  });
+  $(document).ready(function() {
+    $('.edit').editable('http://www.example.com/save.php', {
+        indicator : 'Saving...',
+        tooltip   : 'Click to edit...'
+    });
+  });
+  $('.select').editable('http://www.example.com/save.php', { 
+    data   : " {'1':'1 Star','2':'2 Stars','3':'3 Stars', '4':'4 Stars', '5':'5 Stars'}",
+    type   : 'select'
   });
 / = render "dash"
 / .row.user-watchlist

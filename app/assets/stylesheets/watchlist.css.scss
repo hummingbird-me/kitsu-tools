@@ -9,6 +9,7 @@
     padding: 0px;
     position: absolute;
     background: #383735;
+    border-right: 1px solid #383735;
     top: 0;
     bottom: 0;
     @include border-bottom-left-radius(3px);
@@ -78,6 +79,51 @@
   .main-content {
     padding: 0px;
     @include border-bottom-right-radius(3px);
+    .cover-photo {
+      padding: 0px;
+      background: url("http://cl.ly/image/1a0A180P3k1E/cover-image.png");
+      height: 250px;
+      background-size: cover;
+      .cover-photo-shadow {
+        background: url(asset-path('cover-shadow.png', image)) bottom left repeat-x;
+        height: 250px;
+        position: relative;
+        .anime-time {
+          position: absolute;
+          bottom: 7px;
+          left: 11px;
+          padding: 0px;
+          .anime-time-info {
+            color: #fff;
+            font-size: 16px;
+            font-family: "omnes-pro",sans-serif;
+            margin: 0px;
+          }
+        }
+        .cover-buttons {
+          position: absolute;
+          bottom: 13px;
+          right: 6px;
+          padding: 0px;
+          text-align: right;
+          .line-button {
+            &.compare {
+              margin-right: 3px;
+            } 
+            a {
+              font-size: 12px;
+              color: white;
+              border: 1px solid;
+              border-radius: 3px;
+              padding: 5px 15px;
+              &:hover {
+                color: #fd864b;
+              }
+            }
+          }
+        }
+      }
+    }
     .watchlist-option-bar {
       font-size: 12px;
       background: #f7f6f6;
@@ -162,6 +208,18 @@
         }
       }
       &.library-item {
+        .edit {
+          cursor: pointer;
+          &:hover {
+            color: #fd864b;
+          }
+        }
+        form {
+          display: inline;
+          input {
+            width: 25px !important;
+          }
+        }
         .library-item-title {
           cursor: pointer;
           position: relative;
@@ -251,6 +309,19 @@
               font-family: "omnes-pro",sans-serif;
               font-size: 12px;
               color: #fff;
+            }
+          }
+        }
+        .remove-from-library {
+          border-bottom: none;
+          .icon-remove {
+            color: #e54242;
+          }
+          a {
+            color: #e54242;
+            font-size: 13px;
+            &:hover {
+              color: darken(#e54242, 10);
             }
           }
         }
