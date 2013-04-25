@@ -18,15 +18,31 @@
         .loading.center{:style => "background-color: #fff; padding: 16px; border-bottom: 1px solid #f1f1f1"}
           %i.icon.icon-spin.icon-spinner.icon-2x
 
+%script(type="text/template" id="WatchlistItemViewTemplate")
+  %td.library-item-title{:width => "505"}
+    %a{:href => "{{anime.url}}"} {{anime.title}}
+    {{#anime.private}}
+    %span.private-indicator [PRIVATE]
+    {{/anime.private}}
+    %i.icon-reorder
+  %td.episode-count{:width => "95"} 
+    <a href="#" class="click-add"><i class="icon-caret-up"></i></a>
+    <a href="#" class="click-remove"><i class="icon-caret-down"></i></a>
+    <span class="edit">{{item.episodes_watched}}</span> <strong>/ {{anime.episode_count}}</strong>
+  %td{:width => "68"} <span class="select"><i class="icon-star"></i> 5</span>
+  %td{:width => "65"} TV
+  
+
 :coffee
   setActiveTab = (section) ->
     $(".watchlist-option-bar .options li").removeClass "active"
     $(".watchlist-option-bar .options #tab-" + section).addClass "active"
+
+  WatchlistSections = #{Watchlist.valid_statuses.map {|x| x.parameterize }.inspect}
     
   @showRelevantSections = (x...) ->
     section = if x[0] then x[0] else window.location.hash.substring(1)
-    valids = #{Watchlist.valid_statuses.map {|x| x.parameterize }.inspect}
-    if _.contains valids, section
+    if _.contains WatchlistSections, section
       setActiveTab section
       $(".watchlist-row").hide()
       $("#table-" + section).show()
@@ -36,6 +52,19 @@
       
   showRelevantSections()
 
+  # Models and Collections
+  WatchlistItem = Backbone.Model.extend {}
+
+  WatchlistSectionCollections = {}
+  _.each WatchlistSections, (s) ->
+    WatchlistSectionCollections[s] = new Backbone.Collection
+
+  # Views
+  WatchlistItemView = Backbone.View.extend
+    tagName: "tr"
+    template: Hogan.compile $("#WatchlistItemViewTemplate").html()
+
+  console.log $("#WatchlistItemViewTemplate").html()
 
 .large-12.columns.library-status-header
   %h5.status Currently Watching
@@ -325,12 +354,6 @@
     type   : 'select'
   });
   
-/       %ul.inline-list.view
-/         %li.active
-/           %a{:href => "#"} <i class="icon-list"></i>
-/         %li
-/           %a{:href => "#"} <i class="icon-th"></i>
-
 /       %h3= @sub_tab.titleize
 /       %table.tableSorter.large-12.columns.responsive
 /         %tr.table-head

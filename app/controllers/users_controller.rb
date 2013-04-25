@@ -66,8 +66,10 @@ class UsersController < ApplicationController
           {
             anime: {
               slug: item.anime.slug,
+              url: anime_path(item.anime),
               title: item.anime.canonical_title(current_user),
-              cover_image: item.anime.cover_image.url(:thumb)
+              cover_image: item.anime.cover_image.url(:thumb),
+              episode_count: item.episode_count
             },
             episodes_watched: item.episodes_watched,
             last_watched: item.last_watched,
