@@ -47,7 +47,24 @@
       <a href="#" class="click-add"><i class="icon-caret-up"></i></a>
       <a href="#" class="click-remove"><i class="icon-caret-down"></i></a>
       <span class="edit">{{episodes_watched}}</span> / {{anime.episode_count}}
-  %td{:width => "68"} <span class="select"><i class="icon-star"></i> {{rating}}</span>
+  %td{:width => "68"} 
+    %span.select
+      - if @user.star_rating
+        %i.icon-star
+        {{rating.value}}
+      - else
+        {{#rating.positive}}
+        \:)
+        {{/rating.positive}}
+        {{#rating.neutral}}
+        \:|
+        {{/rating.neutral}}
+        {{#rating.negative}}
+        \:(
+        {{/rating.negative}}
+        {{#rating.unknown}}
+        \?
+        {{/rating.unknown}}
   %td{:width => "65"} {{anime.show_type}}
   
 %script(type="text/template" id="WatchlistDropdownTemplate")
@@ -99,6 +116,9 @@
             
             
 :coffee
+  starRatings = #{@user.star_rating.inspect}
+  console.log starRatings
+
   setActiveTab = (section) ->
     $(".watchlist-option-bar .options li").removeClass "active"
     $(".watchlist-option-bar .options #tab-" + section).addClass "active"
@@ -149,10 +169,13 @@
         dropdown_ratings = this.$el.next().find ".rating"
         dropdown_ratings.empty()
         for i in [-2..2]
-          if this.model.get("rating") >= i + 3
-            dropdown_ratings.append $("<i class='icon-star'></i>")
+          if starRatings
+            if this.model.get("rating").value >= i + 3
+              dropdown_ratings.append $("<i class='icon-star'></i>")
+            else
+              dropdown_ratings.append $("<i class='icon-star-empty'></i>")
           else
-            dropdown_ratings.append $("<i class='icon-star-empty'></i>")
+            dropdown_ratings.append ":)"
         # Set status and privacy.
         this.$el.next().find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
         this.$el.next().find("option[value=" + (if this.model.get("privacy") then "private" else "public") + "]").attr("selected", "selected")
