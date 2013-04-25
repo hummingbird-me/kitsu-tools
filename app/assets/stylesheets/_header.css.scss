@@ -171,6 +171,9 @@
       bottom: auto;
       background: #fd864b;
       @include border-radius(2px);
+      &:hover {
+        background: darken(#fd864b, 10);
+      }
     }
   }
 }
