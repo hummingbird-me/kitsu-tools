@@ -111,9 +111,9 @@
                 %option(value="private") Private
 
         .large-12.columns.remove-from-library.text-center
-          %span 
+          %span
             %i.icon-remove
-            = link_to "Remove From Library", "#"
+            %a.remove-from-library Remove From Library
             
             
 :coffee
@@ -196,10 +196,10 @@
         dropdown.find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
         dropdown.find("option[value=" + (if this.model.get("privacy") then "private" else "public") + "]").attr("selected", "selected")
 
+        that = this
         # Activate "Remove from Library" button.
-        
-
-        
+        dropdown.find("a.remove-from-library").click ->
+          alert "remove triggered!"
     
   WatchlistSectionViewClass = Backbone.View.extend
     tagName: "div"
