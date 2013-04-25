@@ -24,11 +24,11 @@
             %li= link_to "Followers", "#"
 
     .large-8.columns.large-offset-2.main-content
-      .large-12.columns.cover-photo{:style => "background: url('http://cl.ly/image/063j2t0F3h1l/1.png')"}
+      .large-12.columns.cover-photo{:style => "background: url('#{@user.cover_image.url(:thumb)}')"}
         .cover-photo-shadow
           .small-8.columns.anime-time
             %p.anime-time-info I've watched #{format_minutes @user.life_spent_on_anime} of anime.
-          .small-4.columns.cover-buttons
+          .small-4.columns.cover-buttons.hide
             %span.line-button.compare= link_to "Compare"
             %span.line-button= link_to "Suggest Anime"
 
