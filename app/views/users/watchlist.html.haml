@@ -15,8 +15,6 @@
       %h5.status= status
     .row
       .large-12.columns.library-table
-        .loading.center{:style => "background-color: #fff; padding: 16px; border-bottom: 1px solid #f1f1f1"}
-          %i.icon.icon-spin.icon-spinner.icon-2x
 
 %script(type="text/template" id="WatchlistItemViewTemplate")
   %td.library-item-title{:width => "505"}
@@ -43,6 +41,11 @@
 
     %tbody.fake-table-row.library-item
 
+    %tbody.loading-indicator
+      %tr
+        %td.center(colspan=4 style="color: #333")
+          %i.icon.icon-spin.icon-spinner.icon-2x
+            
 :coffee
   setActiveTab = (section) ->
     $(".watchlist-option-bar .options li").removeClass "active"
@@ -67,15 +70,29 @@
 
   WatchlistSectionCollections = {}
   _.each WatchlistSections, (s) ->
-    WatchlistSectionCollections[s] = new Backbone.Collection
+    WatchlistSectionCollections[s] = new Backbone.Collection []
 
   # Views
   WatchlistItemView = Backbone.View.extend
     tagName: "tr"
     template: Hogan.compile $("#WatchlistItemViewTemplate").html()
-  WatchlistSectionViewClass = Backbone.view.extend
-    tagName: "table"
-    className: "large-12 columns fake-table-row"
+    
+  WatchlistSectionViewClass = Backbone.View.extend
+    tagName: "div"
+    template: Hogan.compile $("#WatchlistSectionViewTemplate").html()
+    render: ->
+      this.$el.html this.template.render()
+      $("#table-" + this.options.section + " .library-table").append this.el
+      return this
+
+  # Bind each WatchlistSectionCollection to corresponding view.
+  WatchlistSectionViews = {}
+  _.each WatchlistSections, (s) ->
+    WatchlistSectionViews[s] = new WatchlistSectionViewClass
+      collection: WatchlistSectionCollections[s]
+      section: s
+    WatchlistSectionViews[s].render()
+      
 
 .large-12.columns.library-status-header
   %h5.status Currently Watching
@@ -364,58 +381,3 @@
     data   : " {'1':'1 Star','2':'2 Stars','3':'3 Stars', '4':'4 Stars', '5':'5 Stars'}",
     type   : 'select'
   });
-  
-/       %h3= @sub_tab.titleize
-/       %table.tableSorter.large-12.columns.responsive
-/         %tr.table-head
-/           %th Anime Title
-/           %th Score
-/           /%th Type
-/           %th Progress
-/           %th Review
-/           - if user_signed_in? and @user == current_user
-/             %th Update
-/         - @watchlist.each do |w|
-/           %tr
-/             %td= link_to w.anime.canonical_title(current_user), w.anime
-/             %td
-/               - if w.rating
-/                 - if @user.star_rating?
-/                   %i.icon-star
-/                   = w.rating + 3
-/                 - else
-/                   - if w.positive?
-/                     \:)
-/                   - elsif w.meh?
-/                     \:|
-/                   - elsif w.negative?
-/                     \:(
-/               - else
-/                 \-
-/             %td
-/               - if w.anime.episode_count and w.anime.episode_count > 0
-/                 #{((w.episodes_watched.to_f * 100) / w.anime.episode_count).round}%
-/                 (
-/                 = w.episodes_watched
-/                 \/
-/                 = w.anime.episode_count
-/                 )
-/             %td
-/               - if review = @user.reviews.where(anime_id: w.anime).first
-/                 = link_to "Read Review", anime_review_path(w.anime, review)
-/               - elsif user_signed_in? and @user == current_user
-/                 = link_to "Write One!", new_anime_review_path(w.anime)
-/               - else
-/                 \-
-/             %td
-/               - if user_signed_in? and @user == current_user
-/                 %a{"data-reveal-id" => "watchlist_#{w.anime.slug}", :href => "#"} Update
-
-/ - if user_signed_in? and @user == current_user
-/   = render partial: "watchlists/form_modal", collection: @watchlist, as: :watchlist
-
-/ :javascript
-/   $(function() {
-/     $('table.tableSorter').tableSort();
-/   });
-
