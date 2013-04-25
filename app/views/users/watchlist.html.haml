@@ -143,7 +143,9 @@
         this.$el.next().slideUp().remove()
         this.model.set "_dropdownOpen", false
       else
-        $(".library-dropdown").remove()
+        WatchlistSectionCollections[this.model.get("status_parameterized")].find (m) ->
+          if m.get("_dropdownOpen")
+            m.get("_view").toggleDropdown()
         this.$el.after this.dropdownTemplate.render this.model.toJSON()
         # Write rating to the dropdown.
         dropdown_ratings = this.$el.next().find ".rating"
