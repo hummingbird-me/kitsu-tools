@@ -75,7 +75,7 @@ class UsersController < ApplicationController
               show_type: item.anime.show_type
             },
             episodes_watched: item.episodes_watched,
-            last_watched: item.last_watched,
+            last_watched: item.last_watched || item.updated_at,
             status: item.status,
             rating: {
               value: item.rating ? item.rating+3 : "-",
