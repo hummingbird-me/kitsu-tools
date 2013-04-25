@@ -27,7 +27,7 @@
     <a href="#" class="click-add"><i class="icon-caret-up"></i></a>
     <a href="#" class="click-remove"><i class="icon-caret-down"></i></a>
     <span class="edit">{{episodes_watched}}</span> <strong>/ {{anime.episode_count}}</strong>
-  %td{:width => "68"} <span class="select"><i class="icon-star"></i> 5</span>
+  %td{:width => "68"} <span class="select"><i class="icon-star"></i> ?</span>
   %td{:width => "65"} TV
   
 %script(type="text/template" id="WatchlistSectionViewTemplate")
@@ -119,7 +119,8 @@
         $("#table-" + section + " .loading-indicator").hide()
         WatchlistSectionViews[section].renderContents()
 
-  fetchWatchlistSection('currently-watching')
+  _.each WatchlistSections, (s) ->
+    fetchWatchlistSection(s)
       
 
 .large-12.columns.library-status-header
