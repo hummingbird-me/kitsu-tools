@@ -89,8 +89,8 @@
           .large-9.columns.privacy-dropdown
             %form.custom
               %select.medium
-                %option Public
-                %option Private
+                %option(value="public") Public
+                %option(value="private") Private
 
         .large-12.columns.remove-from-library.text-center
           %span 
@@ -153,8 +153,9 @@
             dropdown_ratings.append $("<i class='icon-star'></i>")
           else
             dropdown_ratings.append $("<i class='icon-star-empty'></i>")
-        # Set status.
+        # Set status and privacy.
         this.$el.next().find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
+        this.$el.next().find("option[value=" + (if this.model.get("privacy") then "private" else "public") + "]").attr("selected", "selected")
         this.model.set "_dropdownOpen", true
     
   WatchlistSectionViewClass = Backbone.View.extend
