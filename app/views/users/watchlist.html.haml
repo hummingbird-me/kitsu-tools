@@ -149,6 +149,7 @@
     tagName: "tr"
     template: Hogan.compile $("#WatchlistItemViewTemplate").html()
     dropdownTemplate: Hogan.compile $("#WatchlistDropdownTemplate").html()
+    
     render: ->
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
       this.$el.html this.template.render this.model.toJSON()
@@ -156,11 +157,8 @@
       this.$el.click ->
         that.toggleDropdown()
       return this
-    toggleDropdown: ->
-      if this.model.get("_dropdownOpen")
-        this.$el.next().slideUp().remove()
-        this.model.set "_dropdownOpen", false
-      else
+      
+    showDropdown: ->
         WatchlistSectionCollections[this.model.get("status_parameterized")].find (m) ->
           if m.get("_dropdownOpen")
             m.get("_view").toggleDropdown()
@@ -202,8 +200,9 @@
 
           $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
             if d
-              WatchlistSectionCollections[that.model.get("status_parameterized")].remove that.model
-              WatchlistSectionViews[that.model.get("status_parameterized")].renderContents()
+              status = that.model.get("status_parameterized")
+              WatchlistSectionCollections[status].remove that.model
+              WatchlistSectionViews[status].renderContents()
 
         # Submit updates when needed.
         dropdown.find("form.custom").change ->
@@ -216,12 +215,24 @@
             newSection = d.status_parameterized
 
             WatchlistSectionCollections[oldSection].remove d
-            WatchlistSectionCollections[newSection].add d
-
             WatchlistSectionViews[oldSection].renderContents()
+              
+            WatchlistSectionCollections[newSection].add d
             WatchlistSectionViews[newSection].renderContents()
-            
-            dropdownNotLoading()
+
+            newModel = WatchlistSectionCollections[newSection].get d.id
+            newModel.get("_view").showDropdown()
+    
+      
+    hideDropdown: ->
+        this.$el.next().slideUp().remove()
+        this.model.set "_dropdownOpen", false
+
+    toggleDropdown: ->
+      if this.model.get("_dropdownOpen")
+        this.hideDropdown()
+      else
+        this.showDropdown()
     
   dropdownLoading = ->
     $(".opacity-wrapper").addClass("updating")
