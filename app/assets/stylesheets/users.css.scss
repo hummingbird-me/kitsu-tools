@@ -4,6 +4,11 @@
 .dashboard {
   background: #fff;
   .account-settings {
+    .user-avatar {
+      img {
+        max-width: 190px;
+      }
+    }
     input, textarea {
       padding: 18px 7px;
       box-shadow: none;

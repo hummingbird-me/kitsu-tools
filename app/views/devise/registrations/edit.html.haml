@@ -83,7 +83,7 @@
               .large-12.columns{:style => "margin-top: 5px;"}
                 .large-8.columns.large-centered   
                   = f.submit "Update", :class => "button expand"
-                  
+
       .large-12.columns.library-status-header{:style => "border-top: 1px solid #f1f1f1; margin-top: 20px;"}
         %h5.status Connection Settings
 
@@ -107,7 +107,7 @@
           .large-12.columns.mal-import
             .large-6.columns
               %a(name="import")
-                %h3{:style => "margin-top: -4px"} Import from MyAnimeList
+                %h3{:style => "margin-top: -4px"} MyAnimeList Import
             .large-6.columns
               - if @user.staged_import
                 - if @user.staged_import.data[:applying]
