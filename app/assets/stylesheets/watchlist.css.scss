@@ -192,6 +192,8 @@
         -webkit-transition: all .6s ease; /* Fade to color for Chrome and Safari */
         -webkit-backface-visibility: hidden; /* Fix for transition flickering */
         position: absolute;
+        width: 100%;
+        min-height: 250px;
       }
       .cover-photo-shadow {
         background: url(asset-path('cover-shadow.png', image)) bottom left repeat-x;
