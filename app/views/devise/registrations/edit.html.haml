@@ -41,6 +41,10 @@
                   = f.label :password, "New Password"
                   = f.password_field :password, :autocomplete => "off"
 
+                %p.password-confirmation-box
+                  = f.label :password_confirmation
+                  = f.password_field :password_confirmation
+
                 .safe-for-work
                   .large-6.columns
                     %h5.switch-label Adult Content
@@ -63,11 +67,6 @@
                       %input#x1{:name => "rating", :type => "radio"}/
                       %label{:for => "x1", :onclick => ""} Advanced
                       %span
-                  
-
-                %p.password-confirmation-box
-                  = f.label :password_confirmation
-                  = f.password_field :password_confirmation
 
               .large-5.columns
                 %ul.side-nav
@@ -81,8 +80,10 @@
                     = image_tag @user.cover_image.url(:thumb), :class => "cover-image"
                     = f.file_field :cover_image
 
-              .large-8.columns.large-centered   
-                = f.submit "Update", :class => "button expand"
+              .large-12.columns{:style => "margin-top: 5px;"}
+                .large-8.columns.large-centered   
+                  = f.submit "Update", :class => "button expand"
+                  
       .large-12.columns.library-status-header{:style => "border-top: 1px solid #f1f1f1; margin-top: 20px;"}
         %h5.status Connection Settings
 
