@@ -149,6 +149,14 @@
     tagName: "tr"
     template: Hogan.compile $("#WatchlistItemViewTemplate").html()
     dropdownTemplate: Hogan.compile $("#WatchlistDropdownTemplate").html()
+
+    initialize: ->
+      _(this).bindAll 'remove'
+      this.model.bind 'remove', this.remove
+
+    remove: ->
+      this.hideDropdown()
+      this.$el.remove()
     
     render: ->
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
@@ -215,7 +223,6 @@
             newSection = d.status_parameterized
 
             WatchlistSectionCollections[oldSection].remove d
-            WatchlistSectionViews[oldSection].renderContents()
               
             WatchlistSectionCollections[newSection].add d
             WatchlistSectionViews[newSection].renderContents()
