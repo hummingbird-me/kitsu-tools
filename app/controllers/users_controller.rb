@@ -53,7 +53,7 @@ class UsersController < ApplicationController
         watchlists = []
         
         if status
-          watchlists = @user.watchlists.where(status: status).includes(:anime).page(params[:page]).per(50)
+          watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).includes(:anime).page(params[:page]).per(50)
           # TODO simplify this sorting bit.
           if status == "Currently Watching"
             watchlists = watchlists.order('last_watched DESC')

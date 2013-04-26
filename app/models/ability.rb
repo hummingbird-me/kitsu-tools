@@ -2,6 +2,9 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    # Global permissions
+    can :read, Watchlist, :private => false
+    
     if user.nil?
       ### Guest permissions
       # Can view non-hentai anime.
@@ -11,6 +14,7 @@ class Ability
       can :manage, :all
     else
       ### Regular user permissions
+      can :read, Watchlist, :private => true, :user_id => user.id
       if user.sfw_filter
         can :read, Anime, "age_rating <> 'R18+'"
       else
