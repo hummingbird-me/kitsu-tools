@@ -154,7 +154,7 @@
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
       this.$el.html this.template.render this.model.toJSON()
       that = this
-      this.$el.click ->
+      this.$el.find("td:first").click ->
         that.toggleDropdown()
       return this
       
