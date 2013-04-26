@@ -78,11 +78,6 @@
         // Left side of dropdown with thumbnail and description
         .large-10.columns.library-item-info
           .rating
-            <i class="icon-star"></i>
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
-            <i class="icon-star-empty"></i>
           %span.description {{anime.short_synopsis}}
           %span.description-link
             %a{:style => "color: #fd864b;"}(href="{{anime.url}}") [Read More]
@@ -138,7 +133,14 @@
   showRelevantSections()
 
   # Models and Collections
-  WatchlistItem = Backbone.Model.extend {}
+  WatchlistItem = Backbone.Model.extend
+    update: (d) ->
+      oldSection = this.get("status_parameterized")
+      newSection = d.status_parameterized
+      WatchlistSectionCollections[oldSection].remove d
+      WatchlistSectionCollections[newSection].add d
+      WatchlistSectionViews[newSection].renderContents()
+      return WatchlistSectionCollections[newSection].get d.id
 
   WatchlistSectionCollections = {}
   _.each WatchlistSections, (s) ->
@@ -219,15 +221,8 @@
           _.each dropdown.find("form.custom").serializeArray(), (x) ->
             data[x.name] = x.value
           $.post "/watchlist/update", data, (d) ->
-            oldSection = that.model.get("status_parameterized")
-            newSection = d.status_parameterized
-
-            WatchlistSectionCollections[oldSection].remove d
-              
-            WatchlistSectionCollections[newSection].add d
-            WatchlistSectionViews[newSection].renderContents()
-
-            newModel = WatchlistSectionCollections[newSection].get d.id
+            console.log that.model
+            newModel = that.model.update d
             newModel.get("_view").showDropdown()
     
       
@@ -283,7 +278,9 @@
     page = if s[1] then s[1] else 1
     watchlist_path = #{user_watchlist_path(@user, format: :json).inspect}
     $.getJSON(watchlist_path + "?list=" + section + "&page=" + page, (d) ->
-      WatchlistSectionCollections[section].set d, {remove: false}
+      models = _.map d, (x) ->
+        new WatchlistItem x
+      WatchlistSectionCollections[section].set models, {remove: false}
       if d.length > 0
         $("#table-" + section + " .loading-indicator span span").text(page * perPage)
         fetchWatchlistSection section, page+1
