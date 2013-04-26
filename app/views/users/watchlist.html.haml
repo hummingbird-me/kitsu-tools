@@ -44,7 +44,8 @@
       %i.icon-reorder
   %td.episode-count{:width => "95"}
     .relative-wrapper 
-      <a href="#" class="click-add"><i class="icon-angle-up"></i></a>
+      %a.click-add
+        %i.icon-angle-up
       <span class="edit">{{episodes_watched}}</span> / {{anime.episode_count}}
   %td{:width => "68"} 
     %span.select
@@ -81,7 +82,7 @@
           .rating
           %span.description {{anime.short_synopsis}}
           %span.description-link
-            %a{:style => "color: #fd864b;"}(href="{{anime.url}}") [Read More]
+            %a(style="color: #fd864b" href="{{anime.url}}") [Read More]
 
       // Right side of dropdown with update content
       .large-4.columns.action-area
