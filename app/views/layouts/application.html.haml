@@ -49,7 +49,7 @@
     = render 'shared/header'
     
     #page.off-canvas.slide-nav
-      = yield
+      = content_for?(:content) ? yield(:content) : yield
     = render 'shared/footer'
     - if Rails.env.production? and user_signed_in?
       :javascript

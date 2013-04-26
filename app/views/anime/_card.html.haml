@@ -30,23 +30,6 @@
 
     .progress.six
       %span.meter{:style => "width: #{percentage_completed(anime, watchlist)}%"}
-    / .drop
-    /   .watchlist
-    /     .content
-    /       - if !readonly
-    /         - Watchlist.valid_statuses.each do |status|
-    /           - if !watchlist or (watchlist && watchlist.status != status)
-    /             %li= link_to status, add_to_watchlist_path(anime, status: status, width: width), method: :post, remote: user_signed_in?
-    /         - if watchlist
-    /           %li= link_to "- Remove from Watchlist", remove_from_watchlist_path(anime, width: width), method: :post, confirm: "Are you sure you want to remove #{anime.title} from your Watchlist?", remote: user_signed_in?
-
-    /     - if watchlist
-    /       .drop-button 
-    /         = watchlist.status
-    /         - if !readonly
-    /           %a.selector(href="#")
-    /     - else
-    /       .drop-button Select Watching Status <a href="#" class="selector"></a>
     .community-rating
       .large-12.columns{:class => (anime.wilson_ci > 0.5 ? "positive" : "negative")}
         %i

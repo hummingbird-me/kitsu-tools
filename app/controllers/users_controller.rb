@@ -32,6 +32,9 @@ class UsersController < ApplicationController
       redirect_to @user, :status => :moved_permanently
     end
 
+    redirect_to user_watchlist_path(@user)
+    return
+
     @active_tab = :profile
     
     @latest_reviews = @user.reviews.order('created_at DESC').limit(2)
@@ -45,24 +48,28 @@ class UsersController < ApplicationController
 
   def watchlist
     @user = User.find(params[:user_id])
-    @active_tab = :watchlist
-    @sub_tab = params[:list] || "currently_watching"
     
-    if @sub_tab == "currently_watching"
-      @watchlist = @user.watchlists.where(:status => "Currently Watching").order('last_watched DESC')
-    elsif @sub_tab == "plan_to_watch"
-      @watchlist = @user.watchlists.where(:status => "Plan to Watch")
-    elsif @sub_tab == "completed"
-      @watchlist = @user.watchlists.where(:status => "Completed")
-    elsif @sub_tab == "on_hold"
-      @watchlist = @user.watchlists.where(:status => "On Hold")
-    elsif @sub_tab == "dropped"
-      @watchlist = @user.watchlists.where(:status => "Dropped")
+    respond_to do |format|
+      format.html { render "watchlist", layout: "profile" }
+      format.json do
+        status = Watchlist.status_parameter_to_status(params[:list])
+        watchlists = []
+        
+        if status
+          watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).includes(:anime).page(params[:page]).per(50)
+          # TODO simplify this sorting bit.
+          if status == "Currently Watching"
+            watchlists = watchlists.order('last_watched DESC')
+          else
+            watchlists = watchlists.order('created_at DESC')
+          end
+        end
+
+        watchlists = watchlists.map {|x| x.to_hash current_user }
+        
+        render :json => watchlists
+      end
     end
-
-    @watchlist = @watchlist.order('created_at DESC') if @sub_tab != "currently_watching"
-
-    render "watchlist"
   end
   
   def reviews

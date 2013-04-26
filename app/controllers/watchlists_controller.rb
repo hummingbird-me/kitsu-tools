@@ -1,6 +1,44 @@
 class WatchlistsController < ApplicationController
   before_filter :authenticate_user!
 
+  def update_watchlist
+    @anime = Anime.find(params["anime_id"])
+    @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
+
+    # Update status.
+    if params[:status]
+      status = Watchlist.status_parameter_to_status(params[:status])
+      @watchlist.status = status if Watchlist.valid_statuses.include? status
+    end
+    
+    # Update privacy.
+    if params[:privacy]
+      if params[:privacy] == "private"
+        @watchlist.private = true
+      elsif params[:privacy] == "public"
+        @watchlist.private = false
+      end
+    end
+
+    # Update rating.
+    if params[:rating]
+      @watchlist.rating = [ [-2, params[:rating].to_i].max, 2 ].min
+    end
+    
+    # Update episode count.
+    if params[:episodes_watched]
+      @watchlist.update_episode_count params[:episodes_watched]
+    end
+
+    if params[:increment_episodes]
+      @watchlist.update_episode_count @watchlist.episodes_watched+1
+    end
+    
+    @watchlist.save
+    
+    render :json => @watchlist.to_hash(current_user)
+  end
+
   def update
     @anime = Anime.find(params["watchlist"]["anime_id"])
     @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
@@ -13,28 +51,22 @@ class WatchlistsController < ApplicationController
     @watchlist.rating = [[@watchlist.rating, -2].max, 2].min if @watchlist.rating
     
     # Update episodes watched.
-    episode_count = [0, params["watchlist"]["episodes_watched"].to_i].max
-    if episode_count != @watchlist.episodes_watched
-      @anime.episodes.order(:season_number, :number).limit(episode_count).each do |episode|
-        unless @watchlist.episodes.exists?(id: episode.id)
-          @watchlist.episodes << episode
-          @watchlist.last_watched = Time.now
-          current_user.update_life_spent_on_anime(episode.length)
-        end
-      end
-      @watchlist.save
-    end
+    @watchlist.update_episode_count params["watchlist"]["episodes_watched"]
 
     @watchlist.save
     redirect_to :back
   end
+  
   def create; update; end
 
   def remove_from_watchlist
     @anime = Anime.find(params["anime_id"])
     @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
     @watchlist.destroy
-    redirect_to :back
+    respond_to do |format|
+      format.json { render :json => true }
+      format.html { redirect_to :back }
+    end
   end
 
   def update_rating

@@ -50,7 +50,7 @@
             .large-12.columns{:style => "margin-bottom: 0px;"}
               .large-6.columns{:style => "margin-top: 10px;"}
                 - if watchlist.id
-                  = link_to "Remove from Watchlist", remove_from_watchlist_path(watchlist.anime), method: :post
+                  = link_to "Remove from Watchlist", remove_from_watchlist_path(anime_id: watchlist.anime.id), method: :post
               .large-6.columns
                 %input.button.padded{:type => "submit", :value => "Update Watchlist"}
 

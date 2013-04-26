@@ -1100,7 +1100,8 @@ CREATE TABLE watchlists (
     episodes_watched integer DEFAULT 0,
     rating integer,
     last_watched timestamp without time zone,
-    imported boolean
+    imported boolean,
+    private boolean DEFAULT false
 );
 
 
@@ -2163,3 +2164,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130411181020');
 INSERT INTO schema_migrations (version) VALUES ('20130413124632');
 
 INSERT INTO schema_migrations (version) VALUES ('20130413140014');
+
+INSERT INTO schema_migrations (version) VALUES ('20130425121754');

@@ -12,6 +12,17 @@ class Watchlist < ActiveRecord::Base
   def self.valid_statuses
     ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   end  
+
+  def self.status_parameter_to_status(snake)
+    t = {
+      "currently-watching" => "Currently Watching",
+      "plan-to-watch"      => "Plan to Watch",
+      "completed"          => "Completed",
+      "on-hold"            => "On Hold",
+      "dropped"            => "Dropped"
+    }
+    t[snake]
+  end
   
   validates :status, inclusion: { in: Watchlist.valid_statuses }
 
@@ -52,5 +63,47 @@ class Watchlist < ActiveRecord::Base
     end
 
     self.episodes_watched = self.episodes.length
+  end
+  
+  def update_episode_count(new_count)
+    count = [0, new_count.to_i].max
+    if count != self.episodes_watched
+      self.anime.episodes.order(:season_number, :number).limit(count).each do |ep|
+        unless self.episodes.exists?(id: ep.id)
+          self.episodes << ep
+          self.last_watched = Time.now
+          self.user.update_life_spent_on_anime ep.length
+        end
+      end
+      self.save
+    end
+  end
+
+  include ActionView::Helpers::TextHelper
+  def to_hash(current_user=nil)
+    {
+      anime: {
+        slug: self.anime.slug,
+        url: Rails.application.routes.url_helpers.anime_path(self.anime),
+        title: self.anime.canonical_title(current_user),
+        cover_image: self.anime.cover_image.url(:thumb),
+        episode_count: self.anime.episode_count,
+        short_synopsis: truncate(self.anime.synopsis, length: 280, separator: ' '),
+        show_type: self.anime.show_type
+      },
+      episodes_watched: self.episodes_watched,
+      last_watched: self.last_watched || self.updated_at,
+      status: self.status,
+      rating: {
+        value: self.rating ? self.rating+3 : "-",
+        positive: self.positive?,
+        negative: self.negative?,
+        neutral: self.meh?,
+        unknown: self.rating.nil?
+      },
+      status_parameterized: self.status.parameterize,
+      id: Digest::MD5.hexdigest("^_^" + self.id.to_s),
+      private: self.private
+    }
   end
 end
