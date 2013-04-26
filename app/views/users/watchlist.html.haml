@@ -223,11 +223,16 @@
           neutral: "<span class='neutral-smiley'>:|</span>", 
           negative: "<span class='negative-smiley'>:(</span>"
         }
+        v = {positive: 2, neutral: 0, negative: -2}
         for t in ['positive', 'neutral', 'negative']
+          q = $("<a data-rating='" + v[t] + "'>" + m[t] + "</a>")
+          q.click ->
+            dropdown_ratings.append $("<i class='icon icon-spin icon-spinner'></i>")
+            that.model.update {rating: $(this).attr("data-rating")}
           if rating[t]
-            dropdown_ratings.append "<strong>" + m[t] + "</strong>"
+            dropdown_ratings.append $("<strong></strong>").append q
           else
-            dropdown_ratings.append m[t]
+            dropdown_ratings.append q
 
       # Set status and privacy.
       this.$dropdown.find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
