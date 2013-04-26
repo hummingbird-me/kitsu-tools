@@ -36,9 +36,9 @@
               = f.label :password_confirmation
               = f.password_field :password_confirmation
 
-            %p
-              = f.label :cover_image
-              = f.file_field :cover_image
+            / %p
+            /   = f.label :cover_image
+            /   = f.file_field :cover_image
             
             %p
               = f.label :sfw_filter
@@ -52,13 +52,13 @@
               = f.submit "Update"
 
           / Sidebar
-          .large-3.columns.pull-nine
-            %ul.side-nav
-              %li
-                = f.label :avatar
-                %span.user-avatar= image_tag current_user.avatar_url
-                = f.file_field :avatar
-              %li
+          / .large-3.columns.pull-nine
+          /   %ul.side-nav
+          /     %li
+          /       = f.label :avatar
+          /       %span.user-avatar= image_tag current_user.avatar_url
+          /       = f.file_field :avatar
+          /     %li
 
   .row.content-body
     .large-12.columns.panel
