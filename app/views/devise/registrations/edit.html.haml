@@ -4,113 +4,124 @@
   .row.content-body
     .large-12.columns
       .account-settings
-        %h3= title "Edit Account Settings"
+        .large-12.columns.option-bar
+          .large-2.columns
+            %p.option-title Edit Account
+          .large-9.columns.options
+            %ul.status-tabs.inline-list
+              %li.active#tab-general= link_to "General", "#general", onclick: "showRelevantSections('general')"
+              %li#tab-notifications
+                %a{:href => "#notifications", :onclick => "showRelevantSections(&quot;notifications&quot;)"} Notifications
+              %li#tab-connections
+                %a{:href => "#connections", :onclick => "showRelevantSections(&quot;connections&quot;)"} Connections
 
-        = form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f|
-          = devise_error_messages!
+        .large-12.columns.library-status-header
+          %h5.status General Settings
+        .row
+          .large-12.columns#general
+            = form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f|
+              = devise_error_messages!
 
-          .large-9.columns.push-three
+              .large-7.columns
+                %p 
+                  = f.label :name
+                  = f.text_field :name
+                %p
+                  = f.label :email
+                  = f.email_field :email
+
+                  - if devise_mapping.confirmable? and resource.pending_reconfirmation?
+                    %p Currently waiting confirmation for: #{resource.unconfirmed_email}
+                / %p
+                /   = f.label :short_bio
+                /   = f.text_area :bio, rows: 3, maxlength: 180
+
+                %p
+                  = f.label :about_me
+                  = f.text_area :about, rows: 5
+                  
+                %p 
+                  = f.label :password, "New Password"
+                  = f.password_field :password, :autocomplete => "off"
+
+                %p.password-confirmation-box
+                  = f.label :password_confirmation
+                  = f.password_field :password_confirmation
+
+                %p
+                  = f.label :cover_image
+                  = f.file_field :cover_image
+                
+                %p
+                  = f.label :sfw_filter
+                  = f.check_box :sfw_filter
+
+                %p
+                  = f.label :star_rating
+                  = f.check_box :star_rating
+                  
+                %p
+                  = f.submit "Update"
+
+              .large-5.columns
+                %ul.side-nav
+                  %li
+                    = f.label :avatar
+                    %span.user-avatar= image_tag current_user.avatar_url
+                    = f.file_field :avatar
+                  %li
+
+      .row.content-body
+        .large-12.columns.panel
+          %a(name="facebook_connect")
+            %h3{:style => "margin-top: -4px"} Facebook Connect
+          - if @user.facebook_id
+            %div.left{:style => "margin-right: 20px"}
+              = image_tag "http://graph.facebook.com/#{@user.facebook_id}/picture"
             %p 
-              = f.label :name
-              = f.text_field :name
-            %p
-              = f.label :email
-              = f.email_field :email
+              %div Your account is already connected to Facebook.
+              %div{:style => "margin-top: 8px"}= link_to "Disconnect", user_disconnect_facebook_path(current_user), method: :post, class: 'button tiny'
+          - else
+            %p= link_to "Connect to Facebook", omniauth_authorize_path(resource_name, :facebook), class: 'button small'
 
-              - if devise_mapping.confirmable? and resource.pending_reconfirmation?
-                %p Currently waiting confirmation for: #{resource.unconfirmed_email}
-            %p
-              = f.label :short_bio
-              = f.text_area :bio, rows: 3, maxlength: 180
-
-            %p
-              = f.label :about_me
-              = f.text_area :about, rows: 5
-              
-            %p 
-              = f.label :password, "New Password"
-              %i (leave blank if you don't want to change it)
-              = f.password_field :password, :autocomplete => "off"
-
-            %p.password-confirmation-box
-              = f.label :password_confirmation
-              = f.password_field :password_confirmation
-
-            / %p
-            /   = f.label :cover_image
-            /   = f.file_field :cover_image
-            
-            %p
-              = f.label :sfw_filter
-              = f.check_box :sfw_filter
-
-            %p
-              = f.label :star_rating
-              = f.check_box :star_rating
-              
-            %p
-              = f.submit "Update"
-
-          / Sidebar
-          / .large-3.columns.pull-nine
-          /   %ul.side-nav
-          /     %li
-          /       = f.label :avatar
-          /       %span.user-avatar= image_tag current_user.avatar_url
-          /       = f.file_field :avatar
-          /     %li
-
-  .row.content-body
-    .large-12.columns.panel
-      %a(name="facebook_connect")
-        %h3{:style => "margin-top: -4px"} Facebook Connect
-      - if @user.facebook_id
-        %div.left{:style => "margin-right: 20px"}
-          = image_tag "http://graph.facebook.com/#{@user.facebook_id}/picture"
-        %p 
-          %div Your account is already connected to Facebook.
-          %div{:style => "margin-top: 8px"}= link_to "Disconnect", user_disconnect_facebook_path(current_user), method: :post, class: 'button tiny'
-      - else
-        %p= link_to "Connect to Facebook", omniauth_authorize_path(resource_name, :facebook), class: 'button small'
-
-  .row.content-body
-    .large-12.columns.panel
-      %a(name="import")
-        %h3{:style => "margin-top: -4px"} Import from MyAnimeList
-      - if @user.staged_import
-        - if @user.staged_import.data[:applying]
-          %p Your import is currently being applied. This can take some time to finish, especially if you have a large watchlist.
-        - elsif @user.staged_import.data[:complete]
-          %p Your import is ready! #{link_to "Check it out.", review_import_path}
-        - else
-          %p 
-            %span.in_progress Your import is currently in progress. 
-            %span.check_back Please check back shortly!
-            = link_to "Cancel", review_cancel_path, class: 'button'
-          :javascript
-            function checkForCompletion() {
-              $.getJSON("/users.json", function(data) { 
-                if (!data["import_staging_completed"]) {
-                  $("span.check_back").html("Hang on, this won't take too long!");
-                  setTimeout("checkForCompletion()", 5000);
+      .row.content-body
+        .large-12.columns.panel
+          %a(name="import")
+            %h3{:style => "margin-top: -4px"} Import from MyAnimeList
+          - if @user.staged_import
+            - if @user.staged_import.data[:applying]
+              %p Your import is currently being applied. This can take some time to finish, especially if you have a large watchlist.
+            - elsif @user.staged_import.data[:complete]
+              %p Your import is ready! #{link_to "Check it out.", review_import_path}
+            - else
+              %p 
+                %span.in_progress Your import is currently in progress. 
+                %span.check_back Please check back shortly!
+                = link_to "Cancel", review_cancel_path, class: 'button'
+              :javascript
+                function checkForCompletion() {
+                  $.getJSON("/users.json", function(data) { 
+                    if (!data["import_staging_completed"]) {
+                      $("span.check_back").html("Hang on, this won't take too long!");
+                      setTimeout("checkForCompletion()", 5000);
+                    }
+                    else {
+                      $("span.in_progress").html("Your import is ready!");
+                      $("span.check_back").html("<a href='#{review_import_path}'>Check it out.</a>");
+                    }
+                  });
                 }
-                else {
-                  $("span.in_progress").html("Your import is ready!");
-                  $("span.check_back").html("<a href='#{review_import_path}'>Check it out.</a>");
-                }
-              });
-            }
-            checkForCompletion();
-          
-      - else
-        = form_tag("/imports/myanimelist/new") do
-          %label MyAnimeList Username:
-          .row.collapse
-            .large-5.columns
-              .large-8.columns
-                = text_field_tag :mal_username, @user.mal_username
-              .large-4.columns
-                %input(type="submit" class="button expand postfix" value="Import")
+                checkForCompletion();
+              
+          - else
+            = form_tag("/imports/myanimelist/new") do
+              %label MyAnimeList Username:
+              .row.collapse
+                .large-5.columns
+                  .large-8.columns
+                    = text_field_tag :mal_username, @user.mal_username
+                  .large-4.columns
+                    %input(type="submit" class="button expand postfix" value="Import")
 
 :javascript
   $(".password-confirmation-box").slideUp();
