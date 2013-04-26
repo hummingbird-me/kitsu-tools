@@ -64,6 +64,20 @@ class Watchlist < ActiveRecord::Base
 
     self.episodes_watched = self.episodes.length
   end
+  
+  def update_episode_count(new_count)
+    count = [0, new_count.to_i].max
+    if count != self.episodes_watched
+      self.anime.episodes.order(:season_number, :number).limit(count).each do |ep|
+        unless self.episodes.exists?(id: ep.id)
+          self.episodes << ep
+          self.last_watched = Time.now
+          self.user.update_life_spent_on_anime ep.length
+        end
+      end
+      self.save
+    end
+  end
 
   include ActionView::Helpers::TextHelper
   def to_hash(current_user=nil)
