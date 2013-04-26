@@ -4,6 +4,19 @@ class WatchlistsController < ApplicationController
   def update_watchlist
     @anime = Anime.find(params["anime_id"])
     @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
+
+    status = Watchlist.status_parameter_to_status(params["status"])
+    @watchlist.status = status if Watchlist.valid_statuses.include? status
+    
+    if params["privacy"] == "private"
+      @watchlist.private = true
+    else
+      @watchlist.private = false
+    end
+    
+    @watchlist.save
+    
+    render :json => @watchlist.to_hash(current_user)
   end
 
   def update

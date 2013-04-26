@@ -38,9 +38,9 @@
   %td.library-item-title{:width => "505"}
     .relative-wrapper
       %a{:href => "{{anime.url}}"} {{anime.title}}
-      {{#anime.private}}
+      {{#private}}
       %span.private-indicator [PRIVATE]
-      {{/anime.private}}
+      {{/private}}
       %i.icon-reorder
   %td.episode-count{:width => "95"}
     .relative-wrapper 
@@ -90,21 +90,20 @@
       // Right side of dropdown with update content
       .large-4.columns.action-area
         .opacity-wrapper
-          .large-12.columns.library-status
-            .large-3.columns.option-label
-              %span Status:
-            .large-9.columns.status-dropdown
-              %form.custom
-                %select.medium
+          %form.custom
+            .large-12.columns.library-status
+              .large-3.columns.option-label
+                %span Status:
+              .large-9.columns.status-dropdown
+                %select.medium(name="status")
                   - Watchlist.valid_statuses.each do |status|
                     %option{:value => status.parameterize}= status
 
-          .large-12.columns.privacy-setting
-            .large-3.columns.option-label
-              %span Privacy:
-            .large-9.columns.privacy-dropdown
-              %form.custom
-                %select.medium
+            .large-12.columns.privacy-setting
+              .large-3.columns.option-label
+                %span Privacy:
+              .large-9.columns.privacy-dropdown
+                %select.medium(name="privacy")
                   %option(value="public") Public
                   %option(value="private") Private
 
@@ -194,19 +193,44 @@
 
         # Set status and privacy.
         dropdown.find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
-        dropdown.find("option[value=" + (if this.model.get("privacy") then "private" else "public") + "]").attr("selected", "selected")
+        dropdown.find("option[value=" + (if this.model.get("private") then "private" else "public") + "]").attr("selected", "selected")
 
         that = this
         # Activate "Remove from Library" button.
         dropdown.find(".remove-from-library").click ->
-          $(".opacity-wrapper").addClass("updating")
-          $(".updating-icon").removeClass("hide")
+          dropdownLoading()
 
           $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
             if d
               WatchlistSectionCollections[that.model.get("status_parameterized")].remove that.model
               WatchlistSectionViews[that.model.get("status_parameterized")].renderContents()
+
+        # Submit updates when needed.
+        dropdown.find("form.custom").change ->
+          dropdownLoading()
+          data = {anime_id: that.model.get("anime").slug}
+          _.each dropdown.find("form.custom").serializeArray(), (x) ->
+            data[x.name] = x.value
+          $.post "/watchlist/update", data, (d) ->
+            oldSection = that.model.get("status_parameterized")
+            newSection = d.status_parameterized
+
+            WatchlistSectionCollections[oldSection].remove d
+            WatchlistSectionCollections[newSection].add d
+
+            WatchlistSectionViews[oldSection].renderContents()
+            WatchlistSectionViews[newSection].renderContents()
+            
+            dropdownNotLoading()
     
+  dropdownLoading = ->
+    $(".opacity-wrapper").addClass("updating")
+    $(".updating-icon").removeClass("hide")
+    
+  dropdownNotLoading = ->
+    $(".opacity-wrapper").removeClass("updating")
+    $(".updating-icon").addClass("hide")
+
   WatchlistSectionViewClass = Backbone.View.extend
     tagName: "div"
     template: Hogan.compile $("#WatchlistSectionViewTemplate").html()
