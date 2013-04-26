@@ -73,6 +73,7 @@ Hummingbird::Application.routes.draw do
     as: :remove_from_watchlist
   match '/watchlist/rate/:anime_id/:rating' => 'watchlists#update_rating', 
     as: :update_rating
+  match '/watchlist/update' => 'watchlists#update_watchlist'
 
   # Admin Panel
   constraint = lambda do |request| 
