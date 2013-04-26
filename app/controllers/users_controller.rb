@@ -32,6 +32,9 @@ class UsersController < ApplicationController
       redirect_to @user, :status => :moved_permanently
     end
 
+    redirect_to user_watchlist_path(@user)
+    return
+
     @active_tab = :profile
     
     @latest_reviews = @user.reviews.order('created_at DESC').limit(2)
