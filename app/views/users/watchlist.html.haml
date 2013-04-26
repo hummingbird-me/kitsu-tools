@@ -205,7 +205,7 @@
         that = this
         # Activate "Remove from Library" button.
         dropdown.find(".remove-from-library").click ->
-          dropdownLoading()
+          this.dropdownLoading()
 
           $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
             if d
@@ -215,32 +215,27 @@
 
         # Submit updates when needed.
         dropdown.find("form.custom").change ->
-          dropdownLoading()
+          this.dropdownLoading()
           data = {anime_id: that.model.get("anime").slug}
           _.each dropdown.find("form.custom").serializeArray(), (x) ->
             data[x.name] = x.value
           $.post "/watchlist/update", data, (d) ->
             newModel = that.model.update d
             newModel.get("_view").showDropdown()
-    
-      
+
+    dropdownLoading: ->
+      $(".opacity-wrapper").addClass("updating")
+      $(".updating-icon").removeClass("hide")
+
     hideDropdown: ->
-        this.$el.next().slideUp().remove()
-        this.model.set "_dropdownOpen", false
+      this.$el.next().slideUp().remove()
+      this.model.set "_dropdownOpen", false
 
     toggleDropdown: ->
       if this.model.get("_dropdownOpen")
         this.hideDropdown()
       else
         this.showDropdown()
-    
-  dropdownLoading = ->
-    $(".opacity-wrapper").addClass("updating")
-    $(".updating-icon").removeClass("hide")
-    
-  dropdownNotLoading = ->
-    $(".opacity-wrapper").removeClass("updating")
-    $(".updating-icon").addClass("hide")
 
   WatchlistSectionViewClass = Backbone.View.extend
     tagName: "div"
