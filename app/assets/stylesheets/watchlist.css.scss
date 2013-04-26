@@ -356,6 +356,7 @@
           left: -5px;
           background-position: left top;
           background-image: url(asset-path('icons/vote-sprite.png', image));
+          background-size: 60px 60px;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-image: url(asset-path('icons/vote-sprite@2x.png', image));
             background-size: 60px 60px;
@@ -377,6 +378,7 @@
           left: -5px;
           background-position: center top;
           background-image: url(asset-path('icons/vote-sprite.png', image));
+          background-size: 60px 60px;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-image: url(asset-path('icons/vote-sprite@2x.png', image));
             background-size: 60px 60px;
@@ -397,6 +399,7 @@
           left: -5px;
           background-position: right top;
           background-image: url(asset-path('icons/vote-sprite.png', image));
+          background-size: 60px 60px;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-image: url(asset-path('icons/vote-sprite@2x.png', image));
             background-size: 60px 60px;
@@ -418,12 +421,14 @@
             
             &:hover {
               background-position: left center;
+              background-size: 60px 60px;
               @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 background-size: 60px 60px;
               }
             }
             &:active {
               background-position: left bottom;
+              background-size: 60px 60px;
               @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 background-size: 60px 60px;
               }
@@ -432,6 +437,7 @@
 
           strong .positive-smiley {
             background-position: left bottom;
+            background-size: 60px 60px;
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
               background-size: 60px 60px;
             }
@@ -447,12 +453,14 @@
             cursor: pointer;
             &:hover {
               background-position: center center;
+              background-size: 60px 60px;
               @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 background-size: 60px 60px;
               }
             }
             &:active {
               background-position: center bottom;
+              background-size: 60px 60px;
               @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 background-size: 60px 60px;
               }
@@ -460,6 +468,7 @@
           }
           strong .positive-smiley {
             background-position: center bottom;
+            background-size: 60px 60px;
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
               background-size: 60px 60px;
             }
@@ -474,11 +483,13 @@
             cursor: pointer;
             &:hover {
               background-position: right center;
+              background-size: 60px 60px;
               @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 background-size: 60px 60px;
               }
             }
             &:active {
+              background-size: 60px 60px;
               @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
                 background-size: 60px 60px;
               }
@@ -488,11 +499,13 @@
 
         strong .negative-smiley {
           background-position: right bottom;
+          background-size: 60px 60px;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
             background-size: 60px 60px;
           }
           &:hover {
             background-position: right bottom;
+            background-size: 60px 60px;
           }
         }
 
