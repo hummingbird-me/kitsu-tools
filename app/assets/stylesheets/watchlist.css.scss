@@ -545,12 +545,7 @@
             }
           }
         }
-        form {
-          display: inline;
-          input {
-            width: 25px !important;
-          }
-        }
+
         .library-item-title {
           cursor: pointer;
           .icon-reorder {
@@ -588,6 +583,7 @@
           padding: 0px;
         }
         .library-item-info {
+          margin-top: 5px;
           .title {
             margin: 0px;
             font-family: "omnes-pro",sans-serif;
@@ -595,8 +591,8 @@
             line-height: 0;
           }
           .rating {
-            margin-top: 5px;
-            margin-bottom: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
           }
           .description {
             font-size: 14px;
@@ -611,6 +607,7 @@
       }
       .action-area {
         background: #f5f5f5;
+        margin-top: 10px;
         padding-left: 10px;
         padding-right: 10px;
         position: relative;
@@ -619,7 +616,7 @@
           &.updating {
             opacity: .2;
           }
-          .library-status, .privacy-setting, .review-option, .remove-from-library {
+          .library-status, .privacy-setting, .episodes-watched, .remove-from-library {
             padding-left: 0px;
             padding-right: 0px;
             padding-top: 10px;
@@ -636,6 +633,17 @@
               .custom {
                 margin-bottom: 0px;
               }
+            }
+          }
+          .episodes-watched {
+            .episode-input {
+              padding-right: 0px;
+              input {
+                margin-bottom: 0px;
+              }
+            }
+            .episode-count {
+              padding-left: 0px;
             }
           }
           .remove-from-library {

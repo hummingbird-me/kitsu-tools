@@ -10,10 +10,10 @@
           .large-9.columns.options
             %ul.status-tabs.inline-list
               %li.active#tab-general= link_to "General", "#general", onclick: "showRelevantSections('general')"
-              %li#tab-notifications
-                %a{:href => "#notifications", :onclick => "showRelevantSections(&quot;notifications&quot;)"} Notifications
-              %li#tab-connections
-                %a{:href => "#connections", :onclick => "showRelevantSections(&quot;connections&quot;)"} Connections
+              / %li#tab-notifications
+              /   %a{:href => "#notifications", :onclick => "showRelevantSections(&quot;notifications&quot;)"} Notifications
+              / %li#tab-connections
+              /   %a{:href => "#connections", :onclick => "showRelevantSections(&quot;connections&quot;)"} Connections
 
         .large-12.columns.library-status-header
           %h5.status General Settings
@@ -39,19 +39,29 @@
                 %p
                   = f.label :about_me
                   = f.text_area :about, rows: 5
-                  
+
                 %p 
                   = f.label :password, "New Password"
                   = f.password_field :password, :autocomplete => "off"
+
+                %p
+                  = image_tag @user.cover_image.url(:thumb), :class => "cover-image"
+                  = f.label :cover_image
+                  = f.file_field :cover_image
+                  
 
                 %p.password-confirmation-box
                   = f.label :password_confirmation
                   = f.password_field :password_confirmation
 
-                %p
-                  = f.label :cover_image
-                  = f.file_field :cover_image
-                
+              .large-5.columns
+                %ul.side-nav
+                  %li
+                    = f.label :avatar
+                    %span.user-avatar= image_tag current_user.avatar_url
+                    = f.file_field :avatar
+                  %li
+              .large-12.columns
                 %p
                   = f.label :sfw_filter
                   = f.check_box :sfw_filter
@@ -62,14 +72,6 @@
                   
                 %p
                   = f.submit "Update"
-
-              .large-5.columns
-                %ul.side-nav
-                  %li
-                    = f.label :avatar
-                    %span.user-avatar= image_tag current_user.avatar_url
-                    = f.file_field :avatar
-                  %li
 
       .row.content-body
         .large-12.columns.panel
