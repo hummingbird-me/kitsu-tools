@@ -19,6 +19,10 @@ class WatchlistsController < ApplicationController
         @watchlist.private = false
       end
     end
+
+    # Update rating.
+    if params[:rating]
+    end
     
     @watchlist.save
     

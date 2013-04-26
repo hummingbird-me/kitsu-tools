@@ -233,6 +233,7 @@
             WatchlistSectionViews[status].renderContents()
 
       # Submit updates when needed.
+      dropdown.find("form.custom").submit -> return false
       dropdown.find("form.custom").change ->
         that.dropdownLoading()
         data = {anime_id: that.model.get("anime").slug}
