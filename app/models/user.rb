@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar, :styles => {:thumb => "200x200"},
     :default_url => "http://placekitten.com/g/200/200"
 
-  has_attached_file :cover_image, :styles => {:thumb => "760x250"},
+  has_attached_file :cover_image, :styles => {:thumb => "760x250#"},
     :default_url => "http://placekitten.com/760/250"
   
   has_many :watchlists
