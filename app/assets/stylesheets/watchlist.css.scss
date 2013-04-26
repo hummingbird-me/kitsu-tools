@@ -158,6 +158,41 @@
       padding: 0px;
       height: 250px;
       background-size: cover;
+      .cover-upload-button {
+        background: #fff;
+        background: rgba(255,255,255,.5);
+        display: inline-block;
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        font-size: 12px;
+        z-index: 99999;
+        -moz-transition: all .9s ease;
+        -webkit-transition: all .9s ease;
+        -o-transition: all .9s ease;
+        transition: all .9s ease;
+        @include border-radius(2px);
+        a {
+          color: #222;
+          padding: 6px 10px;
+          display: block;
+        }
+        &:hover {
+          background: #fff;
+        }
+        &:hover + .cover-image {
+          filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+ */
+          filter: gray; /* IE6-9 */
+          -webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+        }
+      }
+      .cover-image {
+        filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+        -webkit-filter: grayscale(0%);
+        -webkit-transition: all .6s ease; /* Fade to color for Chrome and Safari */
+        -webkit-backface-visibility: hidden; /* Fix for transition flickering */
+        position: absolute;
+      }
       .cover-photo-shadow {
         background: url(asset-path('cover-shadow.png', image)) bottom left repeat-x;
         height: 250px;

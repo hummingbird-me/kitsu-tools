@@ -41,13 +41,29 @@
             %li.hide= link_to "Followers", "#"
 
     .large-8.columns.large-offset-2.main-content
-      .large-12.columns.cover-photo{:style => "background: url('#{@user.cover_image.url(:thumb)}')"}
+      .large-12.columns.cover-photo
+        
+        .cover-upload-button
+          %a{"data-dropdown" => "cover-upload", :href => "#"} 
+            %i.icon-picture
+            %span Edit Cover Photo
+          %ul#cover-upload.f-dropdown.content{"data-dropdown-content" => ""}
+            %li.help
+              %span Cover Size 760x250
+            %li.upload
+              .file-upload
+                %i.icon-upload-alt 
+                %input#user_avatar{:name => "user[avatar]", :type => "file"}
+                Upload from Computer
+        = image_tag @user.cover_image.url(:thumb), :class => "cover-image"
+
         .cover-photo-shadow
           .small-8.columns.anime-time
             %p.anime-time-info I've watched #{format_minutes @user.life_spent_on_anime} of anime.
           .small-4.columns.cover-buttons.hide
             %span.line-button.compare= link_to "Compare"
             %span.line-button= link_to "Suggest Anime"
+
 
       = yield
 
