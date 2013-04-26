@@ -153,12 +153,19 @@
     dropdownTemplate: Hogan.compile $("#WatchlistDropdownTemplate").html()
 
     initialize: ->
-      _(this).bindAll 'remove'
+      _(this).bindAll 'remove', 'change'
       this.model.bind 'remove', this.remove
+      this.model.bind 'change', this.change
 
     remove: ->
       this.hideDropdown()
       this.$el.remove()
+
+    change: ->
+      if this.model.get("_dropdownOpen")
+        this.showDropdown()
+      else
+        this.hideDropdown()
     
     render: ->
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
@@ -169,59 +176,58 @@
       return this
       
     showDropdown: ->
-        WatchlistSectionCollections[this.model.get("status_parameterized")].find (m) ->
-          if m.get("_dropdownOpen")
-            m.get("_view").toggleDropdown()
-        this.$el.after this.dropdownTemplate.render this.model.toJSON()
-        this.model.set "_dropdownOpen", true
+      that = this
+      WatchlistSectionCollections[this.model.get("status_parameterized")].find (m) ->
+        if m.get("_dropdownOpen") and m.get("_id") != that.model.get("_id")
+          m.set "_dropdownOpen", false
+      this.$el.after this.dropdownTemplate.render this.model.toJSON()
 
-        dropdown = this.$el.next()
-        # Write rating to the dropdown.
-        dropdown_ratings = dropdown.find ".rating"
-        dropdown_ratings.empty()
-        rating = this.model.get("rating")
-        if starRatings
-          for i in [-2..2]
-            if rating.value >= i + 3
-              dropdown_ratings.append $("<i class='icon-star'></i>")
-            else
-              dropdown_ratings.append $("<i class='icon-star-empty'></i>")
-        else
-          m = {
-            positive: "<span class='positive-smiley'>:)</span>", 
-            neutral: "<span class='neutral-smiley'>:|</span>", 
-            negative: "<span class='negative-smiley'>:(</span>"
-          }
-          for t in ['positive', 'neutral', 'negative']
-            if rating[t]
-              dropdown_ratings.append "<strong>" + m[t] + "</strong>"
-            else
-              dropdown_ratings.append m[t]
+      dropdown = this.$el.next()
+      # Write rating to the dropdown.
+      dropdown_ratings = dropdown.find ".rating"
+      dropdown_ratings.empty()
+      rating = this.model.get("rating")
+      if starRatings
+        for i in [-2..2]
+          if rating.value >= i + 3
+            dropdown_ratings.append $("<i class='icon-star'></i>")
+          else
+            dropdown_ratings.append $("<i class='icon-star-empty'></i>")
+      else
+        m = {
+          positive: "<span class='positive-smiley'>:)</span>", 
+          neutral: "<span class='neutral-smiley'>:|</span>", 
+          negative: "<span class='negative-smiley'>:(</span>"
+        }
+        for t in ['positive', 'neutral', 'negative']
+          if rating[t]
+            dropdown_ratings.append "<strong>" + m[t] + "</strong>"
+          else
+            dropdown_ratings.append m[t]
 
-        # Set status and privacy.
-        dropdown.find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
-        dropdown.find("option[value=" + (if this.model.get("private") then "private" else "public") + "]").attr("selected", "selected")
+      # Set status and privacy.
+      dropdown.find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
+      dropdown.find("option[value=" + (if this.model.get("private") then "private" else "public") + "]").attr("selected", "selected")
 
-        that = this
-        # Activate "Remove from Library" button.
-        dropdown.find(".remove-from-library").click ->
-          this.dropdownLoading()
+      that = this
+      # Activate "Remove from Library" button.
+      dropdown.find(".remove-from-library").click ->
+        that.dropdownLoading()
 
-          $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
-            if d
-              status = that.model.get("status_parameterized")
-              WatchlistSectionCollections[status].remove that.model
-              WatchlistSectionViews[status].renderContents()
+        $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
+          if d
+            status = that.model.get("status_parameterized")
+            WatchlistSectionCollections[status].remove that.model
+            WatchlistSectionViews[status].renderContents()
 
-        # Submit updates when needed.
-        dropdown.find("form.custom").change ->
-          this.dropdownLoading()
-          data = {anime_id: that.model.get("anime").slug}
-          _.each dropdown.find("form.custom").serializeArray(), (x) ->
-            data[x.name] = x.value
-          $.post "/watchlist/update", data, (d) ->
-            newModel = that.model.update d
-            newModel.get("_view").showDropdown()
+      # Submit updates when needed.
+      dropdown.find("form.custom").change ->
+        that.dropdownLoading()
+        data = {anime_id: that.model.get("anime").slug}
+        _.each dropdown.find("form.custom").serializeArray(), (x) ->
+          data[x.name] = x.value
+        $.post "/watchlist/update", data, (d) ->
+          that.model.update(d).set "_dropdownOpen", true
 
     dropdownLoading: ->
       $(".opacity-wrapper").addClass("updating")
@@ -229,13 +235,12 @@
 
     hideDropdown: ->
       this.$el.next().slideUp().remove()
-      this.model.set "_dropdownOpen", false
 
     toggleDropdown: ->
       if this.model.get("_dropdownOpen")
-        this.hideDropdown()
+        this.model.set "_dropdownOpen", false
       else
-        this.showDropdown()
+        this.model.set "_dropdownOpen", true
 
   WatchlistSectionViewClass = Backbone.View.extend
     tagName: "div"
