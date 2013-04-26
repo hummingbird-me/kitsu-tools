@@ -9,6 +9,19 @@
         max-width: 190px;
       }
     }
+    .side-nav {
+      li {
+        &:first-child {
+          border-bottom: 1px solid #e4e4e4;
+          padding-bottom: 20px;
+          margin-bottom: 20px;
+        }
+      }
+      input {
+        margin: 0px;
+        padding: 0px;
+      }
+    }
     input, textarea {
       padding: 18px 7px;
       box-shadow: none;
