@@ -64,4 +64,32 @@ class Watchlist < ActiveRecord::Base
 
     self.episodes_watched = self.episodes.length
   end
+
+  include ActionView::Helpers::TextHelper
+  def to_hash(current_user=nil)
+    {
+      anime: {
+        slug: self.anime.slug,
+        url: Rails.application.routes.url_helpers.anime_path(self.anime),
+        title: self.anime.canonical_title(current_user),
+        cover_image: self.anime.cover_image.url(:thumb),
+        episode_count: self.anime.episode_count,
+        short_synopsis: truncate(self.anime.synopsis, length: 280, separator: ' '),
+        show_type: self.anime.show_type
+      },
+      episodes_watched: self.episodes_watched,
+      last_watched: self.last_watched || self.updated_at,
+      status: self.status,
+      rating: {
+        value: self.rating ? self.rating+3 : "-",
+        positive: self.positive?,
+        negative: self.negative?,
+        neutral: self.meh?,
+        unknown: self.rating.nil?
+      },
+      status_parameterized: self.status.parameterize,
+      id: Digest::MD5.hexdigest("^_^" + self.id.to_s),
+      private: self.private
+    }
+  end
 end

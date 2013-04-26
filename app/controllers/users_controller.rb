@@ -43,7 +43,6 @@ class UsersController < ApplicationController
     }
   end
 
-  include ActionView::Helpers::TextHelper
   def watchlist
     @user = User.find(params[:user_id])
     
@@ -63,32 +62,7 @@ class UsersController < ApplicationController
           end
         end
 
-        watchlists = watchlists.map do |item|
-          {
-            anime: {
-              slug: item.anime.slug,
-              url: anime_path(item.anime),
-              title: item.anime.canonical_title(current_user),
-              cover_image: item.anime.cover_image.url(:thumb),
-              episode_count: item.anime.episode_count,
-              short_synopsis: truncate(item.anime.synopsis, length: 280, separator: ' '),
-              show_type: item.anime.show_type
-            },
-            episodes_watched: item.episodes_watched,
-            last_watched: item.last_watched || item.updated_at,
-            status: item.status,
-            rating: {
-              value: item.rating ? item.rating+3 : "-",
-              positive: item.positive?,
-              negative: item.negative?,
-              neutral: item.meh?,
-              unknown: item.rating.nil?
-            },
-            status_parameterized: item.status.parameterize,
-            id: Digest::MD5.hexdigest("^_^" + item.id.to_s),
-            private: item.private
-          }
-        end
+        watchlists = watchlists.map {|x| x.to_hash current_user }
         
         render :json => watchlists
       end
