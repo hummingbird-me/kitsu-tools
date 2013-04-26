@@ -242,7 +242,6 @@
           width: 20px;
           height: 20px;
           margin: 0 auto;
-          cursor: pointer;
           position: relative;
           left: -5px;
           background-position: left top;
@@ -264,7 +263,6 @@
           width: 20px;
           height: 20px;
           margin: 0 auto;
-          cursor: pointer;
           position: relative;
           left: -5px;
           background-position: center top;
@@ -304,24 +302,10 @@
 
           // smiley icon
           .positive-smiley {
-            text-indent: -9999px;
-            display: block;
-            width: 20px;
-            height: 20px;
-            margin: 0 auto;
+            display: inline-block;
+            margin-left: 5px;
             cursor: pointer;
-            position: relative;
-            left: -5px;
-            background-position: left top;
-            background-image: url(asset-path('icons/vote-sprite.png', image));
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
-              background-size: 60px 60px;
-            }
-            a {
-              display: block;
-              height: 100%;
-            }
+            
             &:hover {
               background-position: left center;
               @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
@@ -336,7 +320,7 @@
             }
           }
 
-          input:checked ~ label {
+          strong .positive-smiley {
             background-position: left bottom;
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
               background-size: 60px 60px;
@@ -348,24 +332,9 @@
 
           // neutral smiley
           .neutral-smiley {
-            text-indent: -9999px;
-            display: block;
-            width: 20px;
-            height: 20px;
-            margin: 0 auto;
+            display: inline-block;
+            margin-left: 10px;
             cursor: pointer;
-            position: relative;
-            left: -5px;
-            background-position: center top;
-            background-image: url(asset-path('icons/vote-sprite.png', image));
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
-              background-size: 60px 60px;
-            }
-            a {
-              display: block;
-              height: 100%;
-            }
             &:hover {
               background-position: center center;
               @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
@@ -379,7 +348,7 @@
               }
             }
           }
-          input:checked ~ label {
+          strong .positive-smiley {
             background-position: center bottom;
             @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
               background-size: 60px 60px;
@@ -390,23 +359,9 @@
           }
 
           .negative-smiley {
-            text-indent: -9999px;
-            display: block;
-            width: 20px;
-            height: 20px;
-            margin: 0 auto;
-            position: relative;
-            left: -5px;
-            background-position: right top;
-            background-image: url(asset-path('icons/vote-sprite.png', image));
-            @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-              background-image: url(asset-path('icons/vote-sprite@2x.png', image));
-              background-size: 60px 60px;
-            }
-            a {
-              display: block;
-              height: 100%;
-            }
+            display: inline-block;
+            margin-left: 10px;
+            cursor: pointer;
             &:hover {
               background-position: right center;
               @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
@@ -421,10 +376,10 @@
           }
         }
 
-        input:checked ~ label {
+        strong .negative-smiley {
           background-position: right bottom;
           @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) { 
-            background-size: 99px 99px;
+            background-size: 60px 60px;
           }
           &:hover {
             background-position: right bottom;
