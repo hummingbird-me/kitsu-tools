@@ -6,6 +6,7 @@
   .account-settings {
     input, textarea {
       padding: 18px 7px;
+      box-shadow: none;
       @include border-radius(3px); 
     }
     .option-bar {
@@ -45,6 +46,64 @@
         }
       }
     }
-
+    .switch-label {
+      display: inline-block;
+      float: left;
+    }
+    .safe-for-work {
+      display: block;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      @include clearfix();
+      .switch {
+        margin-bottom: 0px;
+      }
+    }
+    .rating-system {
+      display: block;
+      border-bottom: 1px solid #eee;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      @include clearfix();
+      .switch {
+        margin-bottom: 0px;
+      }
+    }
+  }
+  .facebook-connect {
+    display: block;
+    margin-top: 20px;
+    border-bottom: 1px solid #eee;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    .big-facebook-button {
+      color: white;
+      border-color: #3b5998;
+      background-color: #3b5998;
+      font-weight: 300;
+      padding: 9px 18px 10px;
+      line-height: 1;
+      position: relative;
+      @include border-radius(3px); 
+      a {
+        color: #fff;
+        font-weight: normal;
+        margin-left: 10px;
+      }
+      &.off {
+        background: #ddd;
+        color: #222;
+        a {
+          color: #222;
+        }
+      }
+    }
+  }
+  .mal-import {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
