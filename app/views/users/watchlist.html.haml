@@ -100,8 +100,7 @@
                 %span Watched:
               .large-9.columns.status-dropdown
                 .large-6.columns.episode-input
-                  %input#watchlist_episodes_watched{:max => "1", :min => "0", :name => "watchlist[episodes_watched]", :type => "number", :value => "1"}/
-                  / = f.number_field :episodes_watched, :min => 0, :max => watchlist.anime.episode_count
+                  %input(name="episodes_watched" type="number" value="{{episodes_watched}}" min="0" max="{{anime.episode_count}}")
                 .large-6.columns.end.episode-count
                   %span.postfix Out of 25
                 
@@ -150,7 +149,7 @@
       oldSection = this.get("status_parameterized")
       newSection = d.status_parameterized
       WatchlistSectionCollections[oldSection].remove d
-      WatchlistSectionCollections[newSection].add d
+      WatchlistSectionCollections[newSection].add new WatchlistItem d
       WatchlistSectionViews[newSection].renderContents()
       return WatchlistSectionCollections[newSection].get d.id
 
@@ -193,10 +192,10 @@
         if m.get("_dropdownOpen") and m.get("_id") != that.model.get("_id")
           m.set "_dropdownOpen", false
       this.$el.after this.dropdownTemplate.render this.model.toJSON()
+      this.$dropdown = this.$el.next()
 
-      dropdown = this.$el.next()
       # Write rating to the dropdown.
-      dropdown_ratings = dropdown.find ".rating"
+      dropdown_ratings = this.$dropdown.find ".rating"
       dropdown_ratings.empty()
       rating = this.model.get("rating")
       if starRatings
@@ -218,12 +217,12 @@
             dropdown_ratings.append m[t]
 
       # Set status and privacy.
-      dropdown.find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
-      dropdown.find("option[value=" + (if this.model.get("private") then "private" else "public") + "]").attr("selected", "selected")
+      this.$dropdown.find("option[value=" + this.model.get("status_parameterized") + "]").attr("selected", "selected")
+      this.$dropdown.find("option[value=" + (if this.model.get("private") then "private" else "public") + "]").attr("selected", "selected")
 
       that = this
       # Activate "Remove from Library" button.
-      dropdown.find(".remove-from-library").click ->
+      this.$dropdown.find(".remove-from-library").click ->
         that.dropdownLoading()
 
         $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
@@ -233,18 +232,22 @@
             WatchlistSectionViews[status].renderContents()
 
       # Submit updates when needed.
-      dropdown.find("form.custom").submit -> return false
-      dropdown.find("form.custom").change ->
-        that.dropdownLoading()
-        data = {anime_id: that.model.get("anime").slug}
-        _.each dropdown.find("form.custom").serializeArray(), (x) ->
-          data[x.name] = x.value
-        $.post "/watchlist/update", data, (d) ->
-          that.model.update(d).set "_dropdownOpen", true
-
+      this.$dropdown.find("form.custom").submit -> that.submitDropdownForm()
+      this.$dropdown.find("form.custom").change -> that.submitDropdownForm()
+    
     dropdownLoading: ->
       $(".opacity-wrapper").addClass("updating")
       $(".updating-icon").removeClass("hide")
+        
+    submitDropdownForm: ->
+      this.dropdownLoading()
+      data = {anime_id: this.model.get("anime").slug}
+      _.each this.$dropdown.find("form.custom").serializeArray(), (x) ->
+        data[x.name] = x.value
+      that = this
+      $.post "/watchlist/update", data, (d) ->
+        that.model.update(d).set "_dropdownOpen", true
+      return false
 
     hideDropdown: ->
       this.$el.next().slideUp().remove()
@@ -254,6 +257,9 @@
         this.model.set "_dropdownOpen", false
       else
         this.model.set "_dropdownOpen", true
+
+  dropdownLoading = ->
+    
 
   WatchlistSectionViewClass = Backbone.View.extend
     tagName: "div"
