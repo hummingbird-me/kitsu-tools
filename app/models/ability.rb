@@ -15,6 +15,7 @@ class Ability
     else
       ### Regular user permissions
       can :read, Watchlist, :private => true, :user_id => user.id
+      
       if user.sfw_filter
         can :read, Anime, "age_rating <> 'R18+'"
       else

@@ -41,11 +41,13 @@
       {{#private}}
       %span.private-indicator [PRIVATE]
       {{/private}}
-      %i.icon-reorder
+      - if @user == current_user
+        %i.icon-reorder
   %td.episode-count{:width => "95"}
     .relative-wrapper 
-      %a.click-add
-        %i.icon-angle-up
+      - if @user == current_user
+        %a.click-add
+          %i.icon-angle-up
       <span class="edit">{{episodes_watched}}</span> / {{anime.episode_count}}
   %td{:width => "68"} 
     %span.select
@@ -104,7 +106,6 @@
                   %input(name="episodes_watched" type="number" value="{{episodes_watched}}" min="0" max="{{anime.episode_count}}")
                 .large-6.columns.end.episode-count
                   %span.postfix Out of {{anime.episode_count}}
-                
 
             .large-12.columns.privacy-setting
               .large-3.columns.option-label
@@ -125,6 +126,7 @@
             
 :coffee
   starRatings = #{@user.star_rating.inspect}
+  currentUsersProfile = #{@user == current_user}
 
   setActiveTab = (section) ->
     $(".watchlist-option-bar .options li").removeClass "active"
@@ -147,12 +149,13 @@
   # Models and Collections
   WatchlistItem = Backbone.Model.extend
     update: (data) ->
-      data.anime_id = this.get("anime").slug
-      that = this
-      $.post "/watchlist/update", data, (d) ->
-        newModel = that.updateSelf(d)
-        if that.get("_dropdownOpen")
-          newModel.set "_dropdownOpen", true
+      if currentUsersProfile
+        data.anime_id = this.get("anime").slug
+        that = this
+        $.post "/watchlist/update", data, (d) ->
+          newModel = that.updateSelf(d)
+          if that.get("_dropdownOpen")
+            newModel.set "_dropdownOpen", true
       
     updateSelf: (d) ->
       oldSection = this.get("status_parameterized")
@@ -182,10 +185,11 @@
       this.$el.remove()
 
     change: ->
-      if this.model.get("_dropdownOpen")
-        this.showDropdown()
-      else
-        this.hideDropdown()
+      if currentUsersProfile
+        if this.model.get("_dropdownOpen")
+          this.showDropdown()
+        else
+          this.hideDropdown()
     
     render: ->
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
