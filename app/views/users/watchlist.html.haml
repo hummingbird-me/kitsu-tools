@@ -182,11 +182,10 @@
         rating = this.model.get("rating")
         if starRatings
           for i in [-2..2]
-            if starRatings
-              if rating.value >= i + 3
-                dropdown_ratings.append $("<i class='icon-star'></i>")
-              else
-                dropdown_ratings.append $("<i class='icon-star-empty'></i>")
+            if rating.value >= i + 3
+              dropdown_ratings.append $("<i class='icon-star'></i>")
+            else
+              dropdown_ratings.append $("<i class='icon-star-empty'></i>")
         else
           m = {
             positive: "<span class='positive-smiley'>:)</span>", 
@@ -221,7 +220,6 @@
           _.each dropdown.find("form.custom").serializeArray(), (x) ->
             data[x.name] = x.value
           $.post "/watchlist/update", data, (d) ->
-            console.log that.model
             newModel = that.model.update d
             newModel.get("_view").showDropdown()
     
