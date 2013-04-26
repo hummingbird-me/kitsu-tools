@@ -29,6 +29,10 @@ class WatchlistsController < ApplicationController
     if params[:episodes_watched]
       @watchlist.update_episode_count params[:episodes_watched]
     end
+
+    if params[:increment_episodes]
+      @watchlist.update_episode_count @watchlist.episodes_watched+1
+    end
     
     @watchlist.save
     
