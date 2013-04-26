@@ -50,10 +50,10 @@
                     %h5.switch-label Adult Content
                   .large-6.columns
                     .switch
-                      %input#x{:checked => "", :name => "sfw", :type => "radio"}/
-                      %label{:for => "x", :onclick => ""} Off
-                      %input#x1{:name => "sfw", :type => "radio"}/
-                      %label{:for => "x1", :onclick => ""} On
+                      = f.radio_button :sfw_filter, true
+                      = f.label :sfw_filter_true, "Off"
+                      = f.radio_button :sfw_filter, false
+                      = f.label :sfw_filter_true, "On"
                       %span
 
 
@@ -62,10 +62,10 @@
                     %h5.switch-label Rating System
                   .large-6.columns
                     .switch
-                      %input#x{:checked => "", :name => "rating", :type => "radio"}/
-                      %label{:for => "x", :onclick => ""} Simple
-                      %input#x1{:name => "rating", :type => "radio"}/
-                      %label{:for => "x1", :onclick => ""} Advanced
+                      = f.radio_button :star_rating, false
+                      = f.label :star_rating_true, "Simple"
+                      = f.radio_button :star_rating, true
+                      = f.label :star_rating_false, "Advanced"
                       %span
 
               .large-5.columns
