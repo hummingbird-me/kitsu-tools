@@ -102,7 +102,7 @@
                 .large-6.columns.episode-input
                   %input(name="episodes_watched" type="number" value="{{episodes_watched}}" min="0" max="{{anime.episode_count}}")
                 .large-6.columns.end.episode-count
-                  %span.postfix Out of 25
+                  %span.postfix Out of {{anime.episode_count}}
                 
 
             .large-12.columns.privacy-setting
@@ -200,10 +200,13 @@
       rating = this.model.get("rating")
       if starRatings
         for i in [-2..2]
+          star = null
           if rating.value >= i + 3
-            dropdown_ratings.append $("<i class='icon-star'></i>")
+            star = $("<a class='star'><i class='icon-star'></i></a>")
           else
-            dropdown_ratings.append $("<i class='icon-star-empty'></i>")
+            star = $("<a class='star'><i class='icon-star-empty'></i></a>")
+          star.click -> return false
+          dropdown_ratings.append star
       else
         m = {
           positive: "<span class='positive-smiley'>:)</span>", 
