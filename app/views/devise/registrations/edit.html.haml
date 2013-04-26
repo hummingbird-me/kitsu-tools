@@ -71,12 +71,12 @@
               .large-5.columns
                 %ul.side-nav
                   %li
-                    = f.label :avatar
+                    %label Avatar (190x190)
                     %span.user-avatar= image_tag current_user.avatar_url
                     = f.file_field :avatar
 
                   %li 
-                    = f.label :cover_image
+                    %label Cover (760x250)
                     = image_tag @user.cover_image.url(:thumb), :class => "cover-image"
                     = f.file_field :cover_image
 
@@ -107,28 +107,29 @@
           .large-12.columns.mal-import
             .large-6.columns
               %a(name="import")
-                %h3{:style => "margin-top: -4px"} MyAnimeList Import
+                %h3{:style => "margin-top: -4px; margin-bottom: 5px;"} MyAnimeList Import
+              %p Import all watchlist anime entries and reviews submitted to your MAL account.  
             .large-6.columns
               - if @user.staged_import
                 - if @user.staged_import.data[:applying]
-                  %p Your import is currently being applied. This can take some time to finish, especially if you have a large watchlist.
+                  %p.text-center Your import is nearly complete.
                 - elsif @user.staged_import.data[:complete]
-                  %p Your import is ready! #{link_to "Check it out.", review_import_path}
+                  %p.text-center{:style => "margin-bottom: 10px; margin-top: 10px;"} Great news! Your import is ready! 
+                  = link_to "Review Import", review_import_path, :class => "button padded"
                 - else
-                  %p 
-                    %span.in_progress Your import is currently in progress. 
-                    %span.check_back Please check back shortly!
-                    = link_to "Cancel", review_cancel_path, class: 'button'
+                  %p.in_progress.text-center Your import is currently in progress. 
+                  %span.check_back Please check back shortly!
+                  = link_to "Cancel", review_cancel_path, class: 'button secondary padded'
                   :javascript
                     function checkForCompletion() {
                       $.getJSON("/users.json", function(data) { 
                         if (!data["import_staging_completed"]) {
-                          $("span.check_back").html("Hang on, this won't take too long!");
+                          $("span.check_back").html("");
                           setTimeout("checkForCompletion()", 5000);
                         }
                         else {
-                          $("span.in_progress").html("Your import is ready!");
-                          $("span.check_back").html("<a href='#{review_import_path}'>Check it out.</a>");
+                          $("p.in_progress.text-center").html("Your import is ready!");
+                          $("span.check_back").html("<a class='button padded' href='#{review_import_path}'>Check it out.</a>");
                         }
                       });
                     }
@@ -137,11 +138,19 @@
               - else
                 = form_tag("/imports/myanimelist/new") do
                   .row.collapse
-                    .large-5.columns
-                      .large-8.columns
-                        = text_field_tag :mal_username, @user.mal_username
-                      .large-4.columns
-                        %input(type="submit" class="button expand postfix" value="Import")
+                    .small-3.large-4.columns
+                      %span.prefix MAL Username
+                    .small-6.large-8.columns
+                      = text_field_tag :mal_username, @user.mal_username, :placeholder => "Enter your MAL Username"
+
+                    .small-12.large-12.columns
+                      %input(type="submit" class="button padded expand" value="Import")
+
+                    / .large-5.columns
+                    /   .large-8.columns
+                    /     = text_field_tag :mal_username, @user.mal_username
+                    /   .large-4.columns
+                    /     %input(type="submit" class="button expand postfix" value="Import")
 
 :javascript
   $(".password-confirmation-box").slideUp();
