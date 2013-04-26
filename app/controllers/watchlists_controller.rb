@@ -6,14 +6,18 @@ class WatchlistsController < ApplicationController
     @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
 
     # Update status.
-    status = Watchlist.status_parameter_to_status(params["status"])
-    @watchlist.status = status if Watchlist.valid_statuses.include? status
+    if params[:status]
+      status = Watchlist.status_parameter_to_status(params[:status])
+      @watchlist.status = status if Watchlist.valid_statuses.include? status
+    end
     
     # Update privacy.
-    if params["privacy"] == "private"
-      @watchlist.private = true
-    elsif params["privacy"] == "public"
-      @watchlist.private = false
+    if params[:privacy]
+      if params[:privacy] == "private"
+        @watchlist.private = true
+      elsif params[:privacy] == "public"
+        @watchlist.private = false
+      end
     end
     
     @watchlist.save
