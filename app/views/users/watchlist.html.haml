@@ -145,7 +145,15 @@
 
   # Models and Collections
   WatchlistItem = Backbone.Model.extend
-    update: (d) ->
+    update: (data) ->
+      data.anime_id = this.get("anime").slug
+      that = this
+      $.post "/watchlist/update", data, (d) ->
+        newModel = that.updateSelf(d)
+        if that.get("_dropdownOpen")
+          newModel.set "_dropdownOpen", true
+      
+    updateSelf: (d) ->
       oldSection = this.get("status_parameterized")
       newSection = d.status_parameterized
       WatchlistSectionCollections[oldSection].remove d
@@ -200,12 +208,14 @@
       rating = this.model.get("rating")
       if starRatings
         for i in [-2..2]
-          star = null
+          star = $("<a class='star' data-rating='" + i + "'></a>")
           if rating.value >= i + 3
-            star = $("<a class='star'><i class='icon-star'></i></a>")
+            star.append $("<i class='icon-star'></i>")
           else
-            star = $("<a class='star'><i class='icon-star-empty'></i></a>")
-          star.click -> return false
+            star.append $("<i class='icon-star-empty'></i>")
+          star.click -> 
+            dropdown_ratings.append $("<i class='icon icon-spin icon-spinner'></i>")
+            that.model.update {rating: $(this).attr("data-rating")}
           dropdown_ratings.append star
       else
         m = {
@@ -244,12 +254,10 @@
         
     submitDropdownForm: ->
       this.dropdownLoading()
-      data = {anime_id: this.model.get("anime").slug}
+      data = {}
       _.each this.$dropdown.find("form.custom").serializeArray(), (x) ->
         data[x.name] = x.value
-      that = this
-      $.post "/watchlist/update", data, (d) ->
-        that.model.update(d).set "_dropdownOpen", true
+      this.model.update data
       return false
 
     hideDropdown: ->
