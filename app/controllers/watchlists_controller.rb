@@ -24,6 +24,11 @@ class WatchlistsController < ApplicationController
     if params[:rating]
     end
     
+    # Update episode count.
+    if params[:episodes_watched]
+      @watchlist.update_episode_count params[:episodes_watched]
+    end
+    
     @watchlist.save
     
     render :json => @watchlist.to_hash(current_user)
