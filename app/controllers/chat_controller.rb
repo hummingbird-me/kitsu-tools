@@ -23,6 +23,7 @@ class ChatController < ApplicationController
   def messages
     # If a message was posted, save it.
     if params[:message] and params[:message].strip.length > 0
+      sleep 10 if current_user.id == 951
       ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message])
       render :json => true
     else
