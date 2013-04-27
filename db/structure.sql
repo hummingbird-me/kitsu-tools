@@ -1048,7 +1048,7 @@ CREATE TABLE users (
     facebook_id character varying(255),
     bio text,
     sfw_filter boolean DEFAULT true,
-    star_rating boolean,
+    star_rating boolean DEFAULT false,
     mal_username character varying(255),
     life_spent_on_anime integer,
     about text,
@@ -2166,3 +2166,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130413124632');
 INSERT INTO schema_migrations (version) VALUES ('20130413140014');
 
 INSERT INTO schema_migrations (version) VALUES ('20130425121754');
+
+INSERT INTO schema_migrations (version) VALUES ('20130427160851');
