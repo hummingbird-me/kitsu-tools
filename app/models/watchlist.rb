@@ -67,7 +67,7 @@ class Watchlist < ActiveRecord::Base
   
   def update_episode_count(new_count)
     count = [0, new_count.to_i].max
-    if count != self.episodes_watched
+    if count > self.episodes_watched
       self.anime.episodes.order(:season_number, :number).limit(count).each do |ep|
         unless self.episodes.exists?(id: ep.id)
           self.episodes << ep
@@ -75,6 +75,9 @@ class Watchlist < ActiveRecord::Base
           self.user.update_life_spent_on_anime ep.length
         end
       end
+    elsif count < self.episodes_watched
+      to_remove = self.episodes.order('season_number DESC, number DESC').limit(self.episodes_watched - count)
+      self.episodes.delete(*to_remove)
     end
   end
 

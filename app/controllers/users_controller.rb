@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       @user = User.all.select {|x| x.name.parameterize == params[:id] }.first
       raise ActionController::RoutingError.new('Not Found') if @user.nil?
       redirect_to @user, :status => :moved_permanently
+      return
     end
 
     redirect_to user_watchlist_path(@user)
