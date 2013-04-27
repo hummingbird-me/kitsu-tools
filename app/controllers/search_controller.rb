@@ -30,8 +30,12 @@ class SearchController < ApplicationController
 
     respond_to do |format|
       format.html {
-        @collection = @anime.map {|x| [x, @watchlist[x.id]] }
-        render "anime/index"
+        if user_signed_in? and current_user.email == "c@vikhyat.net" or current_user.email == "josh@hummingbird.ly"
+          render "anime", layout: "layouts/search"
+        else
+          @collection = @anime.map {|x| [x, @watchlist[x.id]] }
+          render "anime/index", layout: "layouts/application"
+        end
       }
       format.json {
         render :json => @anime.map {|x| [x.title, x.alt_title] }.flatten.compact

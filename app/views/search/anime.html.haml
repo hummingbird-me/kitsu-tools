@@ -1,0 +1,6 @@
+%table
+  - @anime.each do |anime|
+    %tr
+      %td= image_tag anime.cover_image.url(:thumb)
+
+%pre= @anime.to_yaml

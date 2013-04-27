@@ -1,0 +1,11 @@
+- content_for(:content) do
+  .row.user-watchlist
+    .large-2.columns.sidebar
+      .user-links
+        .link-wrapper
+          %ul
+            %li= link_to "Anime", "#"
+    .large-10.columns.main-content
+      = yield
+
+= render :template => 'layouts/application'
