@@ -30,7 +30,7 @@ class SearchController < ApplicationController
 
     respond_to do |format|
       format.html {
-        if user_signed_in? and current_user.email == "c@vikhyat.net" or current_user.email == "josh@hummingbird.ly"
+        if user_signed_in? and (current_user.email == "c@vikhyat.net" or current_user.email == "josh@hummingbird.ly")
           render "anime", layout: "layouts/search"
         else
           @collection = @anime.map {|x| [x, @watchlist[x.id]] }
