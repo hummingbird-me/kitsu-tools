@@ -32,7 +32,7 @@ Hummingbird::Application.routes.draw do
   end
 
   # Search
-  match '/search' => 'search#basic'
+  match '/search' => 'search#basic', as: :search
   
   # Imports
   match '/imports/myanimelist/new' => 'imports#myanimelist'
