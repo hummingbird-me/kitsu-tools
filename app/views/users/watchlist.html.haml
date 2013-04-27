@@ -160,8 +160,11 @@
     updateSelf: (d) ->
       oldSection = this.get("status_parameterized")
       newSection = d.status_parameterized
-      WatchlistSectionCollections[oldSection].remove d
-      WatchlistSectionCollections[newSection].add new WatchlistItem d
+      oldModel = this
+      newModel = new WatchlistItem d
+      options = {}
+      WatchlistSectionCollections[oldSection].remove oldModel
+      WatchlistSectionCollections[newSection].add newModel, options
       WatchlistSectionViews[newSection].renderContents()
       return WatchlistSectionCollections[newSection].get d.id
 
@@ -181,7 +184,8 @@
       this.model.bind 'change', this.change
 
     remove: ->
-      this.hideDropdown()
+      if this.model.get("_dropdownOpen")
+        this.hideDropdown()
       this.$el.remove()
 
     change: ->
