@@ -163,6 +163,8 @@
       oldModel = this
       newModel = new WatchlistItem d
       options = {}
+      if newSection == oldSection
+        options.at = WatchlistSectionCollections[oldSection].indexOf oldModel
       WatchlistSectionCollections[oldSection].remove oldModel
       WatchlistSectionCollections[newSection].add newModel, options
       WatchlistSectionViews[newSection].renderContents()
