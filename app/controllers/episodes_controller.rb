@@ -62,6 +62,7 @@ class EpisodesController < ApplicationController
     authenticate_user!
     @watchlist = get_watchlist(@anime, current_user)
     @watchlist.update_episode_count params[:episode_count]
+    @watchlist.save
     redirect_to :back
   end
 end

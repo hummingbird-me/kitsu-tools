@@ -75,7 +75,6 @@ class Watchlist < ActiveRecord::Base
           self.user.update_life_spent_on_anime ep.length
         end
       end
-      self.save
     end
   end
 
