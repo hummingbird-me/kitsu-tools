@@ -101,29 +101,10 @@
       return !document.webkitHidden
     else
       return true
-
+  
   lastUpdateTime = moment()
 
-  checkConnectivity = ->
-    if moment().unix() - lastUpdateTime.unix() > 30
-      $("#notificationMessage p").html "<i class='icon icon-refresh icon-spin'></i> Unable to fetch new messages from the server. <a href='/chat'>Please refresh this page.</a>"
-      if moment().unix() % 5 == 0
-        getMessagesFromRemote()
-      $("#notificationMessage").addClass("red").show()
-    else
-      $("#notificationMessage").hide()
-  setInterval(checkConnectivity, 1000)
-  
 
-  ping = ->
-    $.getJSON "/chat/ping", (d) ->
-      $(".onlineUsers").html onlineUsersTemplate.render {user: d["online_users"]}
-      # Check if the chat client needs to be refreshed.
-      if #{@chat_version} != d["chat_version"]
-        $("#notificationMessage p").html "A new update for the chat client is available. <a href='/chat'>Please refresh this page.</a>"
-        $("#notificationMessage").removeClass("red").show()
-      setTimeout ping, (if pageVisible() then 8000 else 15000)
-  ping()
 
   updateChatScroll = (options...) ->
     option = options[0]
@@ -267,23 +248,6 @@
     if scrollFlag
       updateChatScroll({force: true})
 
-  loadHistory = ->
-    c = document.getElementById "mainChatScroll"
-    loader = document.getElementById "chatLoading"
-    if ChatMessages.length > 0 and loader and c.scrollTop - loader.scrollHeight < 200
-      time = ChatMessages.last().get("created_at")
-      $.getJSON "/chat/messages?until=" + encodeURIComponent(time), (r) ->
-        updateMessages r
-        c = document.getElementById("mainChatScroll");
-        newChatMessages = ChatMessages.select (x) -> moment(x.get("created_at")).unix() < moment(time).unix()
-        c.scrollTop = _.reduce newChatMessages, ((x, y) -> x + y.get("_view").el.scrollHeight), 0
-        if r.length > 0
-          setTimeout loadHistory, 1000
-        else
-          $("#chatLoading").hide()
-    else
-      setTimeout loadHistory, 1000
-  loadHistory()
 
   getMessagesURL = ->
     serverChatMessages = ChatMessages.select (x) ->
@@ -332,6 +296,53 @@
     $("input.message").val('')
 
     $.post '/chat/messages', {message: c.get('message')}, 
+  
+  checkConnectivity = ->
+    if moment().unix() - lastUpdateTime.unix() > 30
+      $("#notificationMessage p").html "<i class='icon icon-refresh icon-spin'></i> Trying to reconnect... <a href='/chat'>Please refresh if this takes too long.</a>"
+      if moment().unix() % 5 == 0
+        getMessagesFromRemote()
+      $("#notificationMessage").addClass("red").show()
+    else
+      $("#notificationMessage").hide()
+
+  ping = ->
+    $.getJSON "/chat/ping", (d) ->
+      $(".onlineUsers").html onlineUsersTemplate.render {user: d["online_users"]}
+      # Check if the chat client needs to be refreshed.
+      if #{@chat_version} != d["chat_version"]
+        $("#notificationMessage p").html "A new update for the chat client is available. <a href='/chat'>Please refresh this page.</a>"
+        $("#notificationMessage").removeClass("red").show()
+  ping()
+
+  loadHistory = ->
+    c = document.getElementById "mainChatScroll"
+    loader = document.getElementById "chatLoading"
+    if ChatMessages.length > 0 and loader and c.scrollTop - loader.scrollHeight < 200
+      time = ChatMessages.last().get("created_at")
+      $.getJSON "/chat/messages?until=" + encodeURIComponent(time), (r) ->
+        updateMessages r
+        c = document.getElementById("mainChatScroll");
+        newChatMessages = ChatMessages.select (x) -> moment(x.get("created_at")).unix() < moment(time).unix()
+        c.scrollTop = _.reduce newChatMessages, ((x, y) -> x + y.get("_view").el.scrollHeight), 0
+        if r.length > 0
+          setTimeout loadHistory, 1000
+        else
+          $("#chatLoading").hide()
+    else
+      setTimeout loadHistory, 1000
+  loadHistory()
+        
+  # "Tick" once every second, and perform any actions that need to be performed.
+  tick = ->
+    checkConnectivity()
+
+    # Ping the server (get online users and indicate that we are online)
+    pingFrequency = if pageVisible() then 7 else 15
+    if moment().unix() % pingFrequency == 0
+      ping()
+      
+  setInterval tick, 1000
 
 :css
   .hummingbird-footer { display: none; }
