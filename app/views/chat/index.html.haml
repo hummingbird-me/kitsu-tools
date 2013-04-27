@@ -7,18 +7,28 @@
         %h4 Online Users
         %p Loading...
 
-      .settings.hide
+      .settings
         %h4 Chat Settings
         %ul
-          %li
+          %li.desktop-notifications.hide
             .large-12.columns.setting-title
               %span Desktop Notifications
             .large-12.columns.setting-button
               .switch
-                %input#off{:checked => "", :name => "switch-x", :type => "radio"}/
-                %label{:for => "x", :onclick => ""} Off
-                %input#on{:name => "switch-x", :type => "radio"}/
-                %label{:for => "x1", :onclick => ""} On
+                %input#off(checked="" name="desktop-notifications" type="radio")
+                %label(onclick="") Off
+                %input#on(name="desktop-notifications" type="radio")
+                %label(onclick="") On
+                %span
+          %li.auto-embedding
+            .large-12.columns.settings-title
+              %span Auto-embedding
+            .large-12.columns.setting-button
+              .switch
+                %input#off(name="auto-embedding" type="radio")
+                %label(onclick="") Off
+                %input#on(checked="" name="auto-embedding" type="radio")
+                %label(onclick="") On
                 %span
 
     .small-12.large-10.columns.main-chat#mainChatScroll
@@ -44,8 +54,8 @@
 :coffee
   notificationsEnabled = false
   if window.webkitNotifications
-    $(".settings").show()
-  $(".switch").click ->
+    $(".desktop-notifications").show()
+  $(".desktop-notifications .switch").click ->
     if window.webkitNotifications.checkPermission() != 0
       window.webkitNotifications.requestPermission()
     if notificationsEnabled
@@ -60,6 +70,9 @@
       notification = window.webkitNotifications.createNotification image, title, content
       notification.show()
       setTimeout (-> notification.close()), 5000
+
+  autoembeddingEnabled = ->
+    return $(".settings .auto-embedding input#on")[0].checked
 
   onlineUsersTemplate = Hogan.compile "
     <h4>Online Users</h4>
@@ -143,29 +156,30 @@
       this.$el.html (this.template.render this.model.toJSON())
       $p = this.$el.find("p")
 
-      youtube_video = null
-      gif_url = null
-      $p.find("a").each ->
-        match = this.href.match /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g
-        if match
-          match = match[0].match /watch\?v=([a-zA-Z0-9\-_]+)/
+      if autoembeddingEnabled()
+        youtube_video = null
+        gif_url = null
+        $p.find("a").each ->
+          match = this.href.match /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g
           if match
-            youtube_video = match[1]
+            match = match[0].match /watch\?v=([a-zA-Z0-9\-_]+)/
+            if match
+              youtube_video = match[1]
+          else
+            # Try GIFs
+            match = this.href.match /\.(gif|jpe?g|png)$/i
+            if match
+              gif_url = this.href
+              
+        
+        if youtube_video
+          iframe = $("<br><iframe width='350' height='240' frameborder='0' 
+            allowfullscreen src='http://youtube.com/embed/" + youtube_video + "' />");
+          $p.append(iframe)
         else
-          # Try GIFs
-          match = this.href.match /\.(gif|jpe?g|png)$/i
-          if match
-            gif_url = this.href
-            
-      
-      if youtube_video
-        iframe = $("<br><iframe width='350' height='240' frameborder='0' 
-          allowfullscreen src='http://youtube.com/embed/" + youtube_video + "' />");
-        $p.append(iframe)
-      else
-        if gif_url
-          image = $("<br><img src='"+gif_url+"' style='max-height: 200px; width: auto; max-width: 600'>");
-          $p.append(image)
+          if gif_url
+            image = $("<br><img src='"+gif_url+"' style='max-height: 200px; width: auto; max-width: 600'>");
+            $p.append(image)
         
       return this
   }
