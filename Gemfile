@@ -25,8 +25,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'sunspot_rails'
+
 # Gems to help with development.
 group :development do
+  gem 'sunspot_solr'
   gem "better_errors"
   gem "binding_of_caller"
 end

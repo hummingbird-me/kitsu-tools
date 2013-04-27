@@ -6,6 +6,7 @@ class SearchController < ApplicationController
       @search_type = params[:type] || "anime"
       
       if @search_type == "anime"
+
         @anime = Anime.accessible_by(current_ability).page(params[:page]).per(20)
         @anime_list = @anime.simple_search_by_title(params[:query])
         if @anime_list.length == 0
@@ -17,8 +18,12 @@ class SearchController < ApplicationController
           format.html { render "anime" }
           format.json { render :json => @anime.map {|x| [x.title, x.alt_title] }.flatten.compact }
         end
+
+      elsif @search_type == "forum-posts"
+        
+        render "forum_posts"
+        
       end
-      
       
     else
       

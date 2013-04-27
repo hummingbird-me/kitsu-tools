@@ -12,6 +12,7 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+/log/*.log.lck
 /tmp
 
 .DS_Store
@@ -19,3 +20,5 @@ coverage
 
 # Don't check attachements into version control.
 public/system
+
+solr/
