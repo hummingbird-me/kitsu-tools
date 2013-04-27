@@ -2,5 +2,8 @@
   - @anime.each do |anime|
     %tr
       %td= image_tag anime.cover_image.url(:thumb)
+      %td
+        = link_to anime.canonical_title(current_user), anime
+        %hr
+        = anime.synopsis
 
-%pre= @anime.to_yaml
