@@ -23,6 +23,10 @@ class SearchController < ApplicationController
         
         render "forum_posts"
         
+      elsif @search_type == "users"
+
+        render "users"
+        
       end
       
     else

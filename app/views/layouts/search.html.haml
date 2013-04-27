@@ -4,7 +4,7 @@
       .user-links
         .link-wrapper
           %ul
-            - %w[ anime forum-posts ].each do |t|
+            - %w[ anime forum-posts users ].each do |t|
               %li{:class => ("active" if @search_type == t)}
                 = link_to t.titleize, search_path(type: t, query: params[:query])
 
