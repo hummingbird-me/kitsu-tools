@@ -25,8 +25,11 @@
       
   .large-1.columns.comment-count
     %p
-      %i.icon-comments
-      = relevant_posts(topic).count - 1
+      - if topic.locked?
+        %i.icon.icon-lock
+      - else
+        %i.icon-comments
+        = relevant_posts(topic).count - 1
 
 /<tr class="topic <%= cycle('odd', 'even') %> <%= topic.locked? ? 'locked' : 'unlocked' %>">
 /  <td class='icon'>

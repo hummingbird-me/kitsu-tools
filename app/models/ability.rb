@@ -12,6 +12,7 @@ class Ability
     elsif user.admin?
       ### Admin permissions
       can :manage, :all
+      can :moderate, :forum
     else
       ### Regular user permissions
       can :read, Watchlist, :private => true, :user_id => user.id

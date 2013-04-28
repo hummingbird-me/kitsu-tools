@@ -18,6 +18,11 @@
                   %span.button= link_to "Subscribe", forem.subscribe_forum_topic_path(@forum, @topic)
                 - else
                   %span.button.active= link_to "Unsubscribe", forem.unsubscribe_forum_topic_path(@forum, @topic)
+        - if forem_admin?
+          .row
+            .panel(style="margin-bottom: 0")
+              %p 
+                = link_to t(".lock.#{@topic.locked}"), forem.toggle_lock_admin_topic_path(@topic), :method => :put
         .row
           .discussions.large-12.columns
             - if @topic.pending_review?
@@ -38,6 +43,9 @@
                   = link_to @topic.user, main_app.user_path(@topic.user)
                   to
                   = link_to @topic.forum.title, forem.forum_path(@topic.forum)
+                - if @topic.locked?
+                  .right
+                    %i.icon.icon-lock.icon-2x
                 %p.topic-body= forem_format @first_post.text
 
               .row
@@ -81,7 +89,7 @@
           = render @posts
         %p.pagination-centered= paginate @posts
         
-        - if user_signed_in?
+        - if user_signed_in? and not @topic.locked?
           .reply-header.large-12.columns
             %h3 
               %span Share Your Thoughts
