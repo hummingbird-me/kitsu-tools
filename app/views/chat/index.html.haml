@@ -135,6 +135,13 @@
     "),
     render: ->
       this.$el.html (this.template.render this.model.toJSON())
+
+      # /me support.
+      if this.model.get("message").indexOf("/me") == 0 and this.model.get("message").length > 4
+        this.$el.find("div.message p").html this.model.get("message")[3..-1]
+        this.$el.find("div.message p").css("display", "inline")
+        this.$el.find("div.message").css("padding-top", "8px")
+
       $p = this.$el.find("p")
 
       if autoembeddingEnabled()
@@ -304,7 +311,8 @@
         getMessagesFromRemote()
       $("#notificationMessage").addClass("red").show()
     else
-      $("#notificationMessage").hide()
+      if $("#notificationMessage").hasClass("red")
+        $("#notificationMessage").hide()
 
   ping = ->
     $.getJSON "/chat/ping", (d) ->

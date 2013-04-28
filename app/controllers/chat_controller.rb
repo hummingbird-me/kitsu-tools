@@ -1,6 +1,6 @@
 class ChatController < ApplicationController
   before_filter :authenticate_user!
-  CHAT_VERSION = 5
+  CHAT_VERSION = 6
 
   def index
     hide_cover_image
