@@ -187,7 +187,7 @@ class User < ActiveRecord::Base
   def can_reply_to_forem_topic?(topic);   persisted?; end
   def can_edit_forem_posts?(forum);       true;       end
 
-  searchable do
-    text :name
-  end
+  #searchable do
+  #  string :name
+  #end
 end
