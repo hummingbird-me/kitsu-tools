@@ -25,6 +25,11 @@ class SearchController < ApplicationController
         
       elsif @search_type == "users"
 
+        @results = User.search do
+          fulltext params[:query]
+          paginate :page => (params[:page] || 1)
+        end.results
+        
         render "users"
         
       end

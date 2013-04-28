@@ -1,14 +1,12 @@
 - content_for(:content) do
-  .row.user-watchlist
+  .row
     .large-2.columns.sidebar
-      .user-links
-        .link-wrapper
-          %ul
-            - %w[ anime forum-posts users ].each do |t|
-              %li{:class => ("active" if @search_type == t)}
-                = link_to t.titleize, search_path(type: t, query: params[:query])
+      %ul
+        - %w[ anime forum-posts users ].each do |t|
+          %li{:class => ("active" if @search_type == t)}
+            = link_to t.titleize, search_path(type: t, query: params[:query])
 
-    .large-10.columns.main-content
+    .large-10.columns
       = yield
 
 = render :template => 'layouts/application'
