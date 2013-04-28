@@ -1,0 +1,19 @@
+production:
+  solr:
+    hostname: localhost
+    port: 8080
+    log_level: WARNING
+    # read_timeout: 2
+    # open_timeout: 0.5
+
+development:
+  solr:
+    hostname: localhost
+    port: 8982
+    log_level: INFO
+
+test:
+  solr:
+    hostname: localhost
+    port: 8981
+    log_level: WARNING
