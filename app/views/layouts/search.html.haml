@@ -2,7 +2,7 @@
   .row
     .large-9.columns.search-body.no-padding
       .large-9.columns.search-head
-        %h2 Found 19 results for <i>naruto</i>
+        %h2 Found 19 results for <i>#{params[:query]}</i>
         .row
           .small-9.columns
             %input.big-form{:placeholder => "Search Anime, People and Forum Posts", :type => "text"}
@@ -12,9 +12,10 @@
         .small-6.large-2.columns
           %p.option-title Search Results
           
-        .large-9.columns.options.hide-for-medium-down
+        .large-9.columns.options 
+          /.hide-for-medium-down
           %ul.status-tabs.inline-list
-            - %w[ anime(10) forum-posts(0) users(0) ].each do |t|
+            - %w[ anime forum-posts users ].each do |t|
               %li{:class => ("active" if @search_type == t)}
                 = link_to t.titleize, search_path(type: t, query: params[:query])
       = yield

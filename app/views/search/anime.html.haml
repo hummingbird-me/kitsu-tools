@@ -6,11 +6,13 @@
       .small-12.large-11.columns
         .large-12.columns.title
           = link_to anime.canonical_title(current_user), anime
-          %span (2002)
+          %span.hide (2002)
         .large-9.columns.synopsis
-          %p 
-            Makunouchi Ippo has been bullied his entire life. Constantly running errands and being beaten up by his classmates, Ippo has always dreamed of changing himself, but never has the passion...
-            %span= link_to "[read more]", "#"
+          %p
+            = truncate(anime.synopsis, length: 280, separator: ' ')
+            - if anime.synopsis.length > 280
+              %span
+                %a{:onclick => "$(this).parent().parent().html('#{j anime.synopsis}')"} [read more]
           // Truncate this to around the length of the above, if possible
           //= anime.synopsis
         .large-3.columns
