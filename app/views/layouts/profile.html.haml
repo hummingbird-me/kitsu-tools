@@ -11,7 +11,7 @@
               %li.help
                 %span Avatar Size 190x190
               %li.upload
-                = form_for(@user, url: user_avatar_path(@user), html: {method: :put, multipart: true, style: 'display: inline', onChange: 'this.submit()'}) do |f|
+                = form_for(@user, url: user_avatar_path(@user), html: {method: :put, multipart: true, style: 'display: inline'}) do |f|
                   .file-upload
                     %i.icon-upload-alt 
                     = f.file_field :avatar, id: 'user_avatar'
@@ -53,7 +53,7 @@
               %li.help
                 %span Cover Size 760x250
               %li.upload
-                = form_for(@user, url: user_cover_image_path(@user), html: {method: :put, multipart: true, style: 'display: inline', onChange: 'this.submit()'}) do |f|
+                = form_for(@user, url: user_cover_image_path(@user), html: {method: :put, multipart: true, style: 'display: inline'}) do |f|
                   .file-upload
                     %i.icon-upload-alt 
                     = f.file_field :cover_image, id: 'user_avatar'
@@ -73,6 +73,10 @@
     .large-2.columns.adzone
       / BuySellAds Zone Code
       #bsap_1285892.bsarocks.bsap_950293d851bcefaeefee4413e822bb8c
+        
+  :coffee
+    $(".file-upload input").change ->
+      $(this).closest("form").submit()
 
 = render :template => 'layouts/application'
 
