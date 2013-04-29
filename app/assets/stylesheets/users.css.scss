@@ -88,6 +88,13 @@
         margin-bottom: 0px;
       }
     }
+    .title-language {
+      display: block;
+      border-bottom: 1px solid #eee;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      @include clearfix();
+    }
   }
   .facebook-connect {
     display: block;
