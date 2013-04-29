@@ -46,19 +46,23 @@ class Anime < ActiveRecord::Base
 
   # Use this function to get the title instead of directly accessing the title.
   def canonical_title(current_user=nil)
-    if alt_title and english_canonical
-      return alt_title
-    else
+    if current_user and current_user.title_language_preference == "romanized"
       return title
+    elsif current_user and current_user.title_language_preference == "english"
+      return alt_title ? alt_title : title
+    else
+      return (alt_title and english_canonical) ? alt_title : title
     end
   end
   # Use this function to get the alt title instead of directly accessing the 
   # alt_title.
   def alternate_title(current_user=nil)
-    if english_canonical
+    if current_user and current_user.title_language_preference == "romanized"
+      return alt_title ? alt_title : title
+    elsif current_user and current_user.title_language_preference == "english"
       return title
     else
-      return alt_title
+      return english_canonical ? title : alt_title
     end
   end
 

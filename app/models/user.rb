@@ -45,6 +45,8 @@ class User < ActiveRecord::Base
   
   validates :facebook_id, allow_blank: true, uniqueness: true
 
+  validates :title_language_preference, inclusion: {in: %w[canonical english romanized]}
+
   validate :ensure_invited_to_beta, on: :create
   def ensure_invited_to_beta
     beta_invite = BetaInvite.find_by_email(self.email)

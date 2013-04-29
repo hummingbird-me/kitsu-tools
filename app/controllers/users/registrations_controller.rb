@@ -18,6 +18,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.avatar        = params[:user][:avatar] unless params[:user][:avatar].blank?
     @user.cover_image   = params[:user][:cover_image] unless params[:user][:cover_image].blank?
 
+    @user.title_language_preference = params[:user][:title_language_preference]
+
     if not params[:user][:password].blank?
       @user.password              = params[:user][:password]
       @user.password_confirmation = params[:user][:password_confirmation]
