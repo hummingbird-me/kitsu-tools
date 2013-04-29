@@ -93,7 +93,12 @@
       border-bottom: 1px solid #eee;
       padding-top: 10px;
       padding-bottom: 10px;
-      @include clearfix();
+      overflow: visible;
+      float: left;
+      width: 100%;
+      .dropdown {
+        margin-bottom: 0px;
+      }
     }
   }
   .facebook-connect {
