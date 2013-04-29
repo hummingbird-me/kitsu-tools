@@ -72,13 +72,7 @@
                   .large-6.columns
                     %h5.switch-label Title Language
                   .large-6.columns
-                    %form.custom
-                      %select#customDropdown
-                        %option Romanized
-                        %option English
-                        %option Canonical
-
-
+                    = f.select :title_language_preference, %w[canonical romanized english].map {|x| [x.titleize, x] }
 
               .large-5.columns
                 %ul.side-nav
