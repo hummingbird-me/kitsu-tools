@@ -2,7 +2,7 @@
   .row.user-watchlist
     .large-2.columns.sidebar
       .large-12.columns.avatar
-        - if false
+        - if can? :update, @user
           .avatar-upload-button
             %a{"data-dropdown" => "avatar-upload", :href => "#"} 
               %i.icon-picture
@@ -10,11 +10,12 @@
             %ul#avatar-upload.f-dropdown.content{"data-dropdown-content" => ""}
               %li.help
                 %span Avatar Size 190x190
-              %li.upload
-                .file-upload
-                  %i.icon-upload-alt 
-                  %input#user_avatar{:name => "user[avatar]", :type => "file"}
-                  Upload from Computer
+              = form_for(@user, url: user_avatar_path(@user), html: {method: :put, multipart: true, style: 'display: inline', onChange: 'this.submit()'}) do |f|
+                %li.upload
+                  .file-upload
+                    %i.icon-upload-alt 
+                    = f.file_field :avatar, id: 'user_avatar'
+                    Upload from Computer
 
         = image_tag @user.avatar_url, :class => "avatar-image"
         %span.karma

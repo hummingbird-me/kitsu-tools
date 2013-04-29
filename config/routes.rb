@@ -28,6 +28,7 @@ Hummingbird::Application.routes.draw do
     get "/forum_posts" => 'users#forum_posts',  as: :forum_posts
 
     put "/cover_image" => 'users#update_cover_image', as: :cover_image
+    put "/avatar" => 'users#update_avatar', as: :avatar
     
     post "/disconnect/facebook" => 'users#disconnect_facebook', 
       as: :disconnect_facebook

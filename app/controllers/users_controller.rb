@@ -94,6 +94,16 @@ class UsersController < ApplicationController
     redirect_to :back
   end
 
+  def update_avatar
+    @user = User.find(params[:user_id])
+    authorize! :update, @user
+    if params[:user][:avatar]
+      @user.avatar = params[:user][:avatar]
+      flash[:success] = "Avatar updated successfully." if @user.save
+    end
+    redirect_to :back
+  end
+
   def disconnect_facebook
     authenticate_user!
     current_user.update_attributes(facebook_id: nil)
