@@ -84,6 +84,16 @@ class UsersController < ApplicationController
     @posts = Forem::Post.where(user_id: @user).order('created_at DESC').page(params[:page]).per(Forem.per_page)
   end
 
+  def update_cover_image
+    @user = User.find(params[:user_id])
+    authorize! :update, @user
+    if params[:user][:cover_image]
+      @user.cover_image = params[:user][:cover_image]
+      flash[:success] = "Cover image updated successfully." if @user.save
+    end
+    redirect_to :back
+  end
+
   def disconnect_facebook
     authenticate_user!
     current_user.update_attributes(facebook_id: nil)

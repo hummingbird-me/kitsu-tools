@@ -1063,7 +1063,8 @@ CREATE TABLE users (
     cover_image_content_type character varying(255),
     cover_image_file_size integer,
     cover_image_updated_at timestamp without time zone,
-    english_anime_titles boolean DEFAULT true
+    english_anime_titles boolean DEFAULT true,
+    title_language_preference character varying(255) DEFAULT 'canonical'::character varying
 );
 
 
@@ -2168,3 +2169,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130413140014');
 INSERT INTO schema_migrations (version) VALUES ('20130425121754');
 
 INSERT INTO schema_migrations (version) VALUES ('20130427160851');
+
+INSERT INTO schema_migrations (version) VALUES ('20130429132859');

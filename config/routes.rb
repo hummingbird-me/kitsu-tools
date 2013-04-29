@@ -26,6 +26,8 @@ Hummingbird::Application.routes.draw do
     get "/watchlist"          => 'users#watchlist', as: :watchlist
     get "/reviews"   => 'users#reviews',        as: :reviews
     get "/forum_posts" => 'users#forum_posts',  as: :forum_posts
+
+    put "/cover_image" => 'users#update_cover_image', as: :cover_image
     
     post "/disconnect/facebook" => 'users#disconnect_facebook', 
       as: :disconnect_facebook
