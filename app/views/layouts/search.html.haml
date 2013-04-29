@@ -1,12 +1,26 @@
 - content_for(:content) do
   .row
-    .large-2.columns.sidebar
-      %ul
-        - %w[ anime forum-posts users ].each do |t|
-          %li{:class => ("active" if @search_type == t)}
-            = link_to t.titleize, search_path(type: t, query: params[:query])
-
-    .large-10.columns
+    .large-9.columns.search-body.no-padding
+      .large-9.columns.search-head
+        %h2 Found 19 results for <i>naruto</i>
+        .row
+          .small-9.columns
+            %input.big-form{:placeholder => "Search Anime, People and Forum Posts", :type => "text"}
+          .small-3.columns.no-padding-left
+            %a.large.button.padded{:href => "#"} Search
+      .large-12.columns.option-bar
+        .small-6.large-2.columns
+          %p.option-title Search Results
+          
+        .large-9.columns.options.hide-for-medium-down
+          %ul.status-tabs.inline-list
+            - %w[ anime(10) forum-posts(0) users(0) ].each do |t|
+              %li{:class => ("active" if @search_type == t)}
+                = link_to t.titleize, search_path(type: t, query: params[:query])
       = yield
+    .large-3.columns{:style => "margin-top: 15px;"}
+      / BuySellAds Zone Code
+      #bsap_1285920.bsarocks.bsap_950293d851bcefaeefee4413e822bb8c
+
 
 = render :template => 'layouts/application'

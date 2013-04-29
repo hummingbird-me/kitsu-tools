@@ -4,7 +4,51 @@
 
 // Search Suggestions
 @import "compass/css3";
-
+.search-body {
+  background: #fff;
+  @include border-bottom-radius(3px);
+  .search-head {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    h2 {
+      i {
+        color: gray;
+      }
+    }
+  }
+  li.search-result {
+    float: left;
+    border-top: 1px solid #eee;
+    padding-top: 17px;
+    &:first-child {
+      border-top: none;
+    }
+  }
+  .big-form {
+    padding: 19px;
+    box-shadow: none;
+    border-radius: 3px;
+  }
+  .anime-list {
+    list-style: none;
+    .thumbnail {
+      margin-top: 10px; 
+    }
+    .synopsis, .title {
+      padding-left: 0px;
+    }
+    .search-rating {
+      font-size: 20px;
+    }
+  }
+}
+.bsarocks {
+  margin-top: 15px;
+  a {
+    width: 100%;
+    height: auto;
+  }
+}
 .twitter-typeahead {
   position: relative;
   width: 100%;

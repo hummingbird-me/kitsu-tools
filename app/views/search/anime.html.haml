@@ -1,9 +1,41 @@
-%table
+%ul.anime-list
   - @anime.each do |anime|
-    %tr
-      %td= image_tag anime.cover_image.url(:thumb)
-      %td
-        = link_to anime.canonical_title(current_user), anime
-        %hr
-        = anime.synopsis
+    %li.search-result.cf
+      .large-1.columns.hide-for-small.thumbnail.no-padding-right
+        = image_tag anime.cover_image.url(:thumb)
+      .small-12.large-11.columns
+        .large-12.columns.title
+          = link_to anime.canonical_title(current_user), anime
+          %span (2002)
+        .large-9.columns.synopsis
+          %p 
+            Makunouchi Ippo has been bullied his entire life. Constantly running errands and being beaten up by his classmates, Ippo has always dreamed of changing himself, but never has the passion...
+            %span= link_to "[read more]", "#"
+          // Truncate this to around the length of the above, if possible
+          //= anime.synopsis
+        .large-3.columns
+          .large-12.columns.no-padding
+            %a.small.button.split.padded{"data-dropdown" => "drop1", :href => "#"}
+              Want to Watch
+              %span{"data-dropdown" => "drop1"}
+            %ul#drop1.f-dropdown.watchlist-button{"data-dropdown-content" => ""}
+              %li
+                %a{:href => "#"} Currently Watching
+              %li
+                %a{:href => "#"} Completed
+              %li
+                %a{:href => "#"} On Hold
+              %li
+                %a{:href => "#"} Dropped
+              %li
+                %a{:href => "#"} Remove 
+          .large-12.columns.no-padding.text-center.search-rating
+            %p
+              %i.icon-star-empty
+              %i.icon-star-empty
+              %i.icon-star-empty
+              %i.icon-star-empty
+              %i.icon-star-empty
+
+
 
