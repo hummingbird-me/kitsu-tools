@@ -23,6 +23,26 @@
     &:first-child {
       border-top: none;
     }
+    .avatar {
+      img {
+        border-radius: 100px;
+        height: 50px;
+        width: 50px;
+        margin-top: 10px;
+      }
+    }
+    .forum-title {
+      a {
+        font-size: 20px;
+      }
+    }
+    .forum-info {
+      color: gray;
+      font-size: 12px;
+      p {
+        margin-bottom: 0px;
+      }
+    }
   }
   .big-form {
     padding: 19px;

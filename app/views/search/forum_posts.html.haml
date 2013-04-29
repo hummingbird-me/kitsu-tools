@@ -1,0 +1,45 @@
+%ul.anime-list
+  %li.search-result.cf
+    .large-1.columns.hide-for-small.avatar.no-padding-right
+      = image_tag "http://hummingbird.ly/system/users/avatars/000/000/439/thumb/1354388760501_copy.png?1367103087"
+    .small-12.large-11.columns
+      .large-12.columns.forum-title.no-padding
+        = link_to "Problem with the new layout", "#"
+      .large-12.columns.forum-info.no-padding
+        %p 1 day ago by <a href="#">elmergantry</a> to <a href="#">Site Suggestions</a>
+      .large-12.columns.synopsis
+        %p
+          = truncate("In the drop-down menu for My Library, both Profile and Watchlist link to the watchlist. While the profile page doesn't serve to much importance now, in the future, when we have favorites sections and possibly blog-like posts, there's nowhere to have it. I think it's just a broken link though. I'm using Google Chrome for this if that matters.", length: 280, separator: ' ')
+          / - if anime.synopsis.length > 280
+          %span
+            %a [read more]
+
+  %li.search-result.cf
+    .large-1.columns.hide-for-small.avatar.no-padding-right
+      = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1367013865"
+    .small-12.large-11.columns
+      .large-12.columns.forum-title.no-padding
+        = link_to "English Series Titles", "#"
+      .large-12.columns.forum-info.no-padding
+        %p about 7 hours ago by <a href="#">Vikhyat</a> to <a href="#">Site Suggestions</a>
+      .large-12.columns.synopsis
+        %p
+          = truncate("I'll be adding an option to allow selecting what type of titles you will see globally across the site (English/Romanized/Canonical) later today. Everything else is in place actually, I just need to add the setting to the account settings page. ", length: 280, separator: ' ')
+          / - if anime.synopsis.length > 280
+ 
+
+  %li.search-result.cf
+    .large-1.columns.hide-for-small.avatar.no-padding-right
+      = image_tag "http://hummingbird.ly/system/users/avatars/000/000/371/thumb/1318631047554.png?1367047037"
+    .small-12.large-11.columns
+      .large-12.columns.forum-title.no-padding
+        = link_to "[SPOILERS!!] Attack on Titan EP. 4 Discussion", "#"
+      .large-12.columns.forum-info.no-padding
+        %p about 7 hours ago by <a href="#">RainbowDash</a> to <a href="#">Anime Discussion</a>
+      .large-12.columns.synopsis
+        %p
+          = truncate("I never read manga, but I had to make an exception after this episode. Them Eotens, man.", length: 280, separator: ' ')
+          / - if anime.synopsis.length > 280
+
+
+
