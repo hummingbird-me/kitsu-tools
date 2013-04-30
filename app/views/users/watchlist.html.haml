@@ -1,10 +1,11 @@
 - title "#{@user.name}'s Anime Library"
 
-.large-12.columns.option-bar
+.large-12.columns.option-bar.hide-for-medium-down
   .small-6.large-2.columns
     %p.option-title Anime Library
-    
-  .large-9.columns.options.hide-for-medium-down
+
+
+  .small-12.large-9.columns.options
     %ul.status-tabs.inline-list
       %li.active#tab-all= link_to "All", "#all", onclick: "showRelevantSections('all')"
       - Watchlist.valid_statuses.each do |status|

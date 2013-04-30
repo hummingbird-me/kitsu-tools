@@ -1,7 +1,58 @@
-%table
-  - @results.each do |user|
-    %tr
-      %td= image_tag user.avatar.url(:thumb)
-      %td= link_to user.name, user
+%ul.anime-list
+  %li.large-12.columns.search-result.no-padding-left.no-padding-right
+    .large-1.columns.hide-for-small.user-avatar.no-padding-right
+      = image_tag "http://hummingbird.ly/system/users/avatars/000/000/433/thumb/ryattgif1.gif?1367204461"
+    .small-12.large-11.columns
+      .large-12.columns.title
+        = link_to "Ryatt", "#"
 
-= paginate @results
+      .large-9.columns.synopsis
+        %p
+          Hi. I'm Ryatt.
+        // Truncate this to around the length of the above, if possible
+        //= anime.synopsis
+
+      .large-3.columns
+        .large-12.columns.no-padding
+          %a.small.button
+            Follow
+
+  %li.large-12.columns.search-result.no-padding-left.no-padding-right
+    .large-1.columns.hide-for-small.user-avatar.no-padding-right
+      = image_tag "http://hummingbird.ly/system/users/avatars/000/000/002/thumb/avatar.jpg?1367253781"
+    .small-12.large-11.columns
+      .large-12.columns.title
+        = link_to "JoshFabian", "#"
+      .large-9.columns.synopsis
+        %p
+          I've watched 3 months, 3 days, 23 hours and 30 minutes of anime.
+        // Truncate this to around the length of the above, if possible
+        //= anime.synopsis
+      .large-3.columns
+        .large-12.columns.no-padding
+          %a.small.button
+            Follow
+
+  %li.large-12.columns.search-result.no-padding-left.no-padding-right
+    .large-1.columns.hide-for-small.user-avatar.no-padding-right
+      = image_tag "http://hummingbird.ly/system/users/avatars/000/000/001/thumb/av.jpg?1367013865"
+    .small-12.large-11.columns
+      .large-12.columns.title
+        = link_to "Vikhyat", "#"
+      .large-9.columns.synopsis
+        %p
+          Hey, I’m Vik and this is my mini-bio. It’s a useful way of getting an idea of who a user is, without forcing anyone to read a paragraph 140
+        // Truncate this to around the length of the above, if possible
+        //= anime.synopsis
+      .large-3.columns
+        .large-12.columns.no-padding
+          %a.small.button
+            Follow
+
+/ %table
+/   - @results.each do |user|
+/     %tr
+/       %td= image_tag user.avatar.url(:thumb)
+/       %td= link_to user.name, user
+
+/ = paginate @results

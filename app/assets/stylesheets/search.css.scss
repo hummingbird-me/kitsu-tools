@@ -19,13 +19,18 @@
   li.search-result {
     float: left;
     border-top: 1px solid #eee;
-    padding-top: 17px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+
     &:first-child {
       border-top: none;
     }
+    p {
+      margin-bottom: 0px;
+    }
     .avatar {
       img {
-        border-radius: 100px;
+        @include border-radius(100px);
         height: 50px;
         width: 50px;
         margin-top: 10px;
@@ -41,6 +46,12 @@
       font-size: 12px;
       p {
         margin-bottom: 0px;
+      }
+    }
+    .user-avatar {
+      img {
+        margin-top: 8px;
+        @include border-radius(3px);
       }
     }
   }
