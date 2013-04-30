@@ -12,11 +12,11 @@ class SearchController < ApplicationController
         if @anime_list.length == 0
           @anime_list = @anime.fuzzy_search_by_title(params[:query])
         end
-        @anime = @anime_list
+        @results = @anime_list
         
         respond_to do |format|
           format.html { render "anime" }
-          format.json { render :json => @anime.map {|x| [x.title, x.alt_title] }.flatten.compact }
+          format.json { render :json => @results.map {|x| [x.title, x.alt_title] }.flatten.compact }
         end
 
       elsif @search_type == "forum-posts"

@@ -2,7 +2,7 @@
   .row
     .large-9.columns.search-body.no-padding
       .large-9.columns.search-head
-        %h2 Found 19 results for <i>#{params[:query]}</i>
+        %h2 Found #{@results.total_count} results for <i>#{params[:query]}</i>
         .row
           .small-9.columns
             %input.big-form{:placeholder => "Search Anime, People and Forum Posts", :type => "text"}

@@ -1,5 +1,5 @@
 %ul.anime-list
-  - @anime.each do |anime|
+  - @results.each do |anime|
     %li.search-result.cf
       .large-1.columns.hide-for-small.thumbnail.no-padding-right
         = image_tag anime.cover_image.url(:thumb)
@@ -39,5 +39,4 @@
               %i.icon-star-empty
               %i.icon-star-empty
 
-
-
+= paginate @results
