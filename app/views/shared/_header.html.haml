@@ -35,7 +35,7 @@
             %form#live_search_form{:action => "/search", :autocomplete => "off"}
               .row.collapse.header-search
                 .small-12.columns
-                  %input.typeahead#nav_search_input(type="text" name="query"){:placeholder => "Search Anime by Title", :value => params[:query], :autocomplete => "off"}
+                  %input.typeahead#nav_search_input(type="text" name="query"){:placeholder => "Search Anime, People, Forum Posts", :value => params[:query], :autocomplete => "off"}
                   %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
 
           %li.divider.show-for-small
