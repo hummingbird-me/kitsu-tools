@@ -52,6 +52,8 @@
     
 
 :coffee
+  myUsername = #{current_user.name.inspect}
+  
   notificationsEnabled = false
   if window.webkitNotifications
     $(".desktop-notifications").show()
@@ -143,6 +145,10 @@
         this.$el.find("div.message p").html this.model.get("message")[3..-1]
         this.$el.find("div.message p").css("display", "inline")
         this.$el.find("div.message").css("padding-top", "8px")
+
+      # Highlight if username is mentioned.
+      if this.$el.find("div.message p a[data-user-name='" + myUsername + "']").length > 0
+        this.$el.addClass "highlighted"
 
       $p = this.$el.find("p")
 

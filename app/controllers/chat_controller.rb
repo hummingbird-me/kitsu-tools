@@ -1,6 +1,6 @@
 class ChatController < ApplicationController
   before_filter :authenticate_user!
-  CHAT_VERSION = 8
+  CHAT_VERSION = 9
 
   def index
     hide_cover_image
@@ -26,7 +26,7 @@ class ChatController < ApplicationController
     username_linked = autolinked.gsub(/@[-_A-Za-z0-9]+/) do |x|
       u = User.find_by_name(x[1..-1])
       if u
-        "<span class='name'>@<a href='#{user_url(x)}' target='_blank' data-user-name>#{u.name}</a></span>"
+        "<span class='name'>@<a href='#{user_url(x)}' target='_blank' data-user-name='#{u.name}'>#{u.name}</a></span>"
       else
         x
       end

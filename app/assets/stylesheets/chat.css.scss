@@ -62,6 +62,9 @@
     .chats {
       .chat-display {
         .chat-text {
+          .message-block.highlighted {
+            background-color: #f8f6f4;
+          }
           .message-block {
             display: block;
             width: 100%;
