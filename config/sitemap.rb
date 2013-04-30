@@ -12,6 +12,7 @@ SitemapGenerator::Sitemap.create do
   Anime.find_each do |anime|
     add anime_path(anime), lastmod: anime.updated_at
     add anime_quotes_path(anime), lastmod: anime.quotes.map {|x| x.updated_at }.max
+    add anime_episodes_path(anime), lastmod: anime.episodes.map {|x| x.updated_at }.max
     
     # Reviews
     anime.reviews.each do |review|
