@@ -156,8 +156,11 @@
     @include border-bottom-right-radius(3px);
     .cover-photo {
       padding: 0px;
-      height: 150px;
+      height: 250px;
       background-size: cover;
+      @media (max-width: 480px) {
+        height: 150px;
+      }
       .mobile-header {
         position: absolute;
         z-index: 999;
