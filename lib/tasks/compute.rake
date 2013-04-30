@@ -28,11 +28,11 @@ namespace :compute do
       anime.save
     end
     # After computing the ratings, normalize them so that they span the range
-    # [0.1, 1].
+    # [0.2, 1].
     min = Anime.all.map {|x| x.wilson_ci }.min
     max = Anime.all.map {|x| x.wilson_ci }.max
     Anime.where({}).each do |anime|
-      anime.wilson_ci = 0.1 + 0.9 * (anime.wilson_ci - min) / (max - min)
+      anime.wilson_ci = 0.2 + 0.8 * (anime.wilson_ci - min) / (max - min)
       anime.save
     end
   end
