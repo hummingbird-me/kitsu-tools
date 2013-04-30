@@ -104,20 +104,22 @@
   
   lastUpdateTime = moment()
 
-
-
   updateChatScroll = (options...) ->
     option = options[0]
     c = document.getElementById("mainChatScroll");
     if (option and option['force']) or c.scrollHeight - c.scrollTop < 600 + 500
       c.scrollTop = c.scrollHeight;
 
+  @appendUserNameToTextBox = (name) ->
+    q = $("input.message").val()
+    $("input.message").val(q + " @" + name)
+
   ChatMessageView = Backbone.View.extend {
     tagName: "li",
     className: "message-block",
     template: Hogan.compile("
       <div class='large-1 columns avatar hide-for-small'>
-        <img src='{{user.avatar}}' class='avatar-image' />
+        <img src='{{user.avatar}}' class='avatar-image' onClick='appendUserNameToTextBox(\"{{user.name}}\")' />
       </div>
       <div class='large-10 columns message'>
         <span class='name'><a href='{{user.url}}' target='_blank'>{{user.name}}</a></span>

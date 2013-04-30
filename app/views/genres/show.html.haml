@@ -1,4 +1,3 @@
 %h1= title "#{@genre.name} Anime"
 
-- @animes.each do |anime|
-  %p= link_to anime.canonical_title(current_user), anime
+= render "anime/index"
