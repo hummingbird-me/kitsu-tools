@@ -537,7 +537,11 @@
           display: block;
           color: #cecece;
         }
-
+        .hide-small {
+          @media (max-width: 480px) {
+            display: none;
+          }
+        }
         .episode-count {
           .click-add {
             position: absolute;
