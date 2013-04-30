@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def basic
-    if user_signed_in? and (current_user.email == "c@vikhyat.net" or current_user.email == "josh@hummingbird.ly")
+    if true # user_signed_in? and (current_user.email == "c@vikhyat.net" or current_user.email == "josh@hummingbird.ly")
 
       # What are we searching for?
       @search_type = params[:type] || "anime"
