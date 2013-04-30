@@ -61,11 +61,11 @@
         .small-12.columns.small-centered.mobile-header.show-for-small
           = image_tag @user.avatar_url, :class => "mobile-avatar"
           %h3 Josh Fabian
-          .small-12.columns.cover-buttons
+          .small-12.columns.cover-buttons.hide
             %span.line-button.compare= link_to "Compare"
             %span.line-button= link_to "Suggest Anime"
           .row
-            .small-10.columns.small-centered.mobile-navigation
+            .small-10.columns.small-centered.mobile-navigation.hide
               %a.button.small.padded.dropdown{"data-dropdown" => "drop1", :href => "#"} Profile Navigation
               %br
               %ul#drop1.f-dropdown

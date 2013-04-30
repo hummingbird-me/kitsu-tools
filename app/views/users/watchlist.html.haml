@@ -51,7 +51,7 @@
       - if @user == current_user
         %a.click-add
           %i.icon-angle-up
-      <span class="edit">{{episodes_watched}}</span> / {{anime.episode_count}}
+      <span class="edit">{{episodes_watched}}</span> <span class="hide-for-small">/ {{anime.episode_count}}</span>
   %td{:width => "68"} 
     %span.select
       - if @user.star_rating

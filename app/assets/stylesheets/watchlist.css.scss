@@ -156,7 +156,7 @@
     @include border-bottom-right-radius(3px);
     .cover-photo {
       padding: 0px;
-      height: 250px;
+      height: 150px;
       background-size: cover;
       .mobile-header {
         position: absolute;
@@ -544,6 +544,9 @@
             padding-bottom: 10px;
             padding-top: 10px;
             padding-right: 5px;
+            @media (max-width: 480px) {
+              left: 10px;
+            }
             &:hover {
               color: #fd864b;
             }
@@ -561,6 +564,9 @@
           .edit {
             cursor: pointer;
             margin-left: 15px;
+            @media (max-width: 480px) {
+              margin-left: 30px;
+            }
             &:hover {
               color: #fd864b;
             }
