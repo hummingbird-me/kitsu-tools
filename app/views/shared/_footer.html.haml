@@ -16,18 +16,31 @@
     %footer.row
       .large-12.columns
         .row.footer
-          .large-3.columns
-            %span.footer-logo.hide-for-small Hummingbird
-          .large-9.columns
-            %ul.inline-list{:style => "float: right;"}
-              %li
-                %a{:href => "/anime"} Discover
-              %li
-                = link_to "Dashboard", "/dashboard"
-              %li
-                = link_to "Community", forem.root_path
-              %li
-                = link_to "Contact Us", "mailto:josh@hummingbird.ly?cc=vikhyat@hummingbird.ly"
+          .large-6.columns
+            .large-12.columns
+              %ul.inline-list{:style => "margin-bottom: 0px;"}
+                %li= link_to "About", "#"
+                %li= link_to "Explore", "/anime"
+                %li= link_to "Blog", "http://blog.hummingbird.ly"
+                %li= link_to "Dashboard", "/dashboard"
+                %li= link_to "Community", forem.root_path
+
+            .large-12.columns
+              %ul.inline-list{:style => "opacity: .5; font-size: 12px;"}
+                %li © 2013 Hummingbird.ly
+                %li= link_to "Terms", "#"
+                %li= link_to "Privacy", "#"
+                %li= link_to "Contact", "mailto:josh@hummingbird.ly?cc=vikhyat@hummingbird.ly"
+
+          .large-6.columns
+
+            .large-12.columns
+              %ul.inline-list.right
+                %li 
+                  .fb-like{"data-href" => "http://www.facebook.com/pages/Hummingbird/460188747373182?ref=hl", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
+                %li{:style => "background: none; width: 87px;"}
+                  %a.twitter-share-button{"data-text" => "Hummingbird is a new and easy way to find anime titles you'll love. #anime", "data-url" => "http://www.hummingbird.ly", "data-via" => "Hummingbird_ly", :href => "https://twitter.com/share"} Tweet
+
             / %ul.link-list.right.bottom-list
             /   %li
             /     %a{:href => "#"} About Hummingbird
