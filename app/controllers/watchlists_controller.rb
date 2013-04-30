@@ -22,7 +22,11 @@ class WatchlistsController < ApplicationController
 
     # Update rating.
     if params[:rating]
-      @watchlist.rating = [ [-2, params[:rating].to_i].max, 2 ].min
+      if @watchlist.rating == params[:rating].to_i
+        @watchlist.rating = nil
+      else
+        @watchlist.rating = [ [-2, params[:rating].to_i].max, 2 ].min
+      end
     end
     
     # Update episode count.
