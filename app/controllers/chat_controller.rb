@@ -1,6 +1,6 @@
 class ChatController < ApplicationController
   before_filter :authenticate_user!
-  CHAT_VERSION = 7
+  CHAT_VERSION = 8
 
   def index
     hide_cover_image
@@ -18,6 +18,20 @@ class ChatController < ApplicationController
     end
 
     render :json => {online_users: @online_users, chat_version: CHAT_VERSION}
+  end
+
+  # Helper method. Takes raw message -> outputs HTML.
+  def format_message(message)
+    autolinked = Rinku.auto_link(ERB::Util.html_escape(message), :all, 'target="_blank"')
+    username_linked = autolinked.gsub(/@[-_A-Za-z0-9]+/) do |x|
+      u = User.find_by_name(x[1..-1])
+      if u
+        "@<a href='#{user_url(x)}' target='_blank' class='message-user-name'>#{u.name}</a>"
+      else
+        x
+      end
+    end
+    username_linked
   end
   
   def messages
@@ -39,7 +53,7 @@ class ChatController < ApplicationController
       end
       
       # Convert Mongo model into hash.
-      messages = messages.map {|x| {id: x[:"_id"], user_id: x[:user_id], type: x[:message_type], message: Rinku.auto_link(ERB::Util.html_escape(x[:message]), :all, 'target="_blank"'), raw_message: x[:message], created_at: x[:created_at]} }
+      messages = messages.map {|x| {id: x[:"_id"], user_id: x[:user_id], type: x[:message_type], message: format_message(x[:message]), raw_message: x[:message], created_at: x[:created_at]} }
 
       # Fetch user data for each message.
       users = {}
