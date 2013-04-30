@@ -20,6 +20,11 @@ class SearchController < ApplicationController
         end
 
       elsif @search_type == "forum-posts"
+
+        @results = Forem::Post.search(:include => [:user, :topic]) do
+          fulltext params[:query]
+          paginate :page => (params[:page] || 1)
+        end.results
         
         render "forum_posts"
         
