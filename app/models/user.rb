@@ -190,7 +190,7 @@ class User < ActiveRecord::Base
   def can_edit_forem_posts?(forum);       true;       end
 
   searchable do
-    string :name
-    string :email
+    text :name
+    text :email
   end
 end
