@@ -60,7 +60,7 @@
                     Upload from Computer
         .small-12.columns.small-centered.mobile-header.show-for-small
           = image_tag @user.avatar_url, :class => "mobile-avatar"
-          %h3 Josh Fabian
+          %h3= @user.name
           .small-12.columns.cover-buttons.hide
             %span.line-button.compare= link_to "Compare"
             %span.line-button= link_to "Suggest Anime"
