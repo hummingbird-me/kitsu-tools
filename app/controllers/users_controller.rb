@@ -72,6 +72,11 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def feed
+    @user = User.find(params[:user_id])
+    render "feed", layout: "layouts/profile"
+  end
   
   def reviews
     @user = User.find(params[:user_id])
