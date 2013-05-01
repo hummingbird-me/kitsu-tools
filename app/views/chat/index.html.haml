@@ -218,7 +218,7 @@
       if this.collection.first() == c
         this.$el.append c.get("_view").render().el
         user = c.get("user")
-        notifyUser user["avatar"], user["name"], c.get("message")
+        notifyUser user["avatar"], user["name"], c.get("raw_message")
       else
         this.$el.prepend c.get("_view").render().el
 
