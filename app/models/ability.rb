@@ -4,17 +4,19 @@ class Ability
   def initialize(user)
     # Global permissions
     can :read, Watchlist, :private => false
-
-    # Admin permissions.
-    can :manage, :all if user and user.admin?
     
     if user.nil?
       ### Guest permissions
       # Can view non-hentai anime.
       can :read, Anime, "age_rating <> 'R18+'"
+    elsif user.admin?
+      ### Admin permissions
+      can :manage, :all
+      can :moderate, :forum
     else
       ### Regular user permissions
       can :read, Watchlist, :private => true, :user_id => user.id
+
       can :update, User, :id => user.id
       
       if user.sfw_filter
@@ -25,3 +27,4 @@ class Ability
     end
   end
 end
+
