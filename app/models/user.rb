@@ -1,4 +1,9 @@
 class User < ActiveRecord::Base
+  # Following stuff.
+  has_many :follows
+  has_many :followers, through: :follows, source: :followed, class_name: 'User'
+  has_many :following, through: :follows, source: :user, class_name: 'User'
+
   def to_param
     "#{id} #{name}".parameterize
   end

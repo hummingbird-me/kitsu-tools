@@ -265,6 +265,38 @@ CREATE TABLE episodes_watchlists (
 
 
 --
+-- Name: follows; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE follows (
+    id integer NOT NULL,
+    user_id integer,
+    followed_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: follows_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE follows_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: follows_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE follows_id_seq OWNED BY follows.id;
+
+
+--
 -- Name: forem_categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1064,7 +1096,9 @@ CREATE TABLE users (
     cover_image_file_size integer,
     cover_image_updated_at timestamp without time zone,
     english_anime_titles boolean DEFAULT true,
-    title_language_preference character varying(255) DEFAULT 'canonical'::character varying
+    title_language_preference character varying(255) DEFAULT 'canonical'::character varying,
+    followers_count integer DEFAULT 0,
+    following_count integer DEFAULT 0
 );
 
 
@@ -1158,6 +1192,13 @@ ALTER TABLE ONLY characters ALTER COLUMN id SET DEFAULT nextval('characters_id_s
 --
 
 ALTER TABLE ONLY episodes ALTER COLUMN id SET DEFAULT nextval('episodes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY follows ALTER COLUMN id SET DEFAULT nextval('follows_id_seq'::regclass);
 
 
 --
@@ -1366,6 +1407,14 @@ ALTER TABLE ONLY characters
 
 ALTER TABLE ONLY episodes
     ADD CONSTRAINT episodes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: follows_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY follows
+    ADD CONSTRAINT follows_pkey PRIMARY KEY (id);
 
 
 --
@@ -1642,6 +1691,20 @@ CREATE UNIQUE INDEX index_episodes_watchlists_on_episode_id_and_watchlist_id ON 
 --
 
 CREATE INDEX index_episodes_watchlists_on_watchlist_id ON episodes_watchlists USING btree (watchlist_id);
+
+
+--
+-- Name: index_follows_on_followed_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_follows_on_followed_id ON follows USING btree (followed_id);
+
+
+--
+-- Name: index_follows_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_follows_on_user_id ON follows USING btree (user_id);
 
 
 --
@@ -2171,3 +2234,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130425121754');
 INSERT INTO schema_migrations (version) VALUES ('20130427160851');
 
 INSERT INTO schema_migrations (version) VALUES ('20130429132859');
+
+INSERT INTO schema_migrations (version) VALUES ('20130501154747');
+
+INSERT INTO schema_migrations (version) VALUES ('20130501161436');
