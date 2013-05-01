@@ -34,6 +34,10 @@
                     %p Currently waiting confirmation for: #{resource.unconfirmed_email}
 
                 %p
+                  = f.label :mini_bio
+                  = f.text_area :bio, rows: 5
+
+                %p
                   = f.label :about_me
                   = f.text_area :about, rows: 5
 
