@@ -30,8 +30,9 @@
           Waifu - 
           = link_to "Haruhi Suzumiya", "#"
 
-        .large-6.columns.no-padding
-          .button= link_to "Follow", "#", :class => "follow-button"
+        - if user_signed_in? and current_user.admin?
+          .large-6.columns.no-padding
+            .button= link_to "Follow", "#", :class => "follow-button"
       .large-12.columns.user-links
         .link-wrapper
           %ul
