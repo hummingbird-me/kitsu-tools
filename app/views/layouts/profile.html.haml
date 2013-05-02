@@ -35,7 +35,8 @@
       .large-12.columns.user-links
         .link-wrapper
           %ul
-            %li= link_to "Activity Feed", user_feed_path(@user)
+            - if user.admin?
+              %li= link_to "Activity Feed", user_feed_path(@user)
             %li.hide= link_to "About", user_path(@user)
             %li= link_to "Library", user_watchlist_path(@user)
             %li.hide= link_to "Reviews", user_reviews_path(@user)
