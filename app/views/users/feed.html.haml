@@ -1,1 +1,103 @@
-%p This is the activity feed.
+- title "#{@user.name}'s Activity Feed"
+
+.large-12.columns.option-bar.hide-for-small
+  .small-6.large-2.columns
+    %p.option-title Activity Feed
+
+
+  .small-12.large-9.columns.options
+    %ul.status-tabs.inline-list
+      %li.active#tab-all= link_to "All", "#all", onclick: "showRelevantSections('all')"
+      %li= link_to "Comments", "#comments", onclick: "showRelevantSections('comments')"
+      %li= link_to "Library", "#library", onclick: "showRelevantSections('library')"
+      %li= link_to "Events", "#events", onclick: "showRelevantSections('events')"
+
+.large-12.columns.feed.no-padding
+  %ul.feed-list
+    %li.feed-item.cf
+      .large-1.columns.no-padding-right.hide-for-small
+        = link_to image_tag(current_user.avatar_url, :class => "avatar"), main_app.user_path(current_user)
+      .large-11.columns
+        %p.update-text <a href="#">Graphik</a> watched episode 2 of <a href="#">Attack on Titan</a>
+        .large-12.columns
+          %p.episode-summary
+            = image_tag "http://thetvdb.com/banners/_cache/episodes/267440/4520243.jpg", :class => "episode-image"
+            Hannes apologizes to Eren for not saving his mother as he was afraid of the Titan and both he and Mikasa are still weak children. The people of Shiganshina escape to Wall Maria, the city's outer wall while the soldiers try to hold off the Titans. Fearing the Titans might breach into Wall Maria, the soldiers order the gate to Wall Maria close despite Hannes protest that there are still people outside...
+
+        %ul.inline-list.like-comment-area
+          %li.like= link_to "Like", "#", :class => "link"
+          %li.comment= link_to "Comment", "#", :class => "link"
+
+
+    %li.feed-item.cf
+      .large-1.columns.no-padding-right.hide-for-small
+        = link_to image_tag(current_user.avatar_url, :class => "avatar"), main_app.user_path(current_user)
+      .large-11.columns
+        %p.update-text <a href="#">Graphik</a> liked a <a href="#">Cowboy Bebop Quote</a>
+        .large-12.columns
+          %p.episode-summary
+            %i "I felt like I was watching a dream I’d never wake up from… Before I knew it, the dream was all over. — Spike Spiegel"
+        %ul.inline-list.like-comment-area
+          %li.like= link_to "Like", "#", :class => "link"
+          %li.comment= link_to "Comment", "#", :class => "link"
+      
+
+    %li.feed-item.cf
+      .large-1.columns.no-padding-right.hide-for-small
+        = link_to image_tag(current_user.avatar_url, :class => "avatar"), main_app.user_path(current_user)
+      .large-11.columns
+        %p.update-text <a href="#">Graphik</a> started following <a href="#">Garan</a>
+        %ul.inline-list.like-comment-area
+          %li.like= link_to "Like", "#", :class => "link"
+          %li.comment= link_to "Comment", "#", :class => "link"
+
+    %li.feed-item.cf
+      .large-1.columns.no-padding-right.hide-for-small
+        = link_to image_tag(current_user.avatar_url, :class => "avatar"), main_app.user_path(current_user)
+      .large-11.columns
+        %p.update-text <a href="#">Graphik</a> started watching <a href="#">Gargantia on the Verdurous Planet</a>
+        / .large-12.columns
+        /   .large-1.columns.hide-for-small.thumbnail.no-padding
+        /     = image_tag "http://hummingbird.ly/system/a8e845e8aeecc8a25206b6cbfb4c58419a24aa05_thumb.jpg?1361877893"
+        /   .small-12.large-11.columns
+        /     .large-8.columns.synopsis
+        /       %p
+        /         = truncate("The story begins in the distant future in the far reaches of the galaxy. The Human Galactic Alliance has been constantly fighting for its survival against a grotesque race of beings called 'Hidiaazu.' During an intense battle, the young lieutenant Redo and his humanoid mobile weapon Chamber are swallowed up into a distortion of time and space. Waking from his artificially induced hibernation, Redo realizes that he has arrived on Earth, the planet on the lost frontier. On this planet that was completely flooded by the seas, people live in fleets of giant ships, salvaging relics from the seas' depths in order to survive. Redo arrives on one of the fleets called Gargantia. With no knowledge of the planet's history or culture, he is forced to live alongside Amy, a 15-year-old girl who serves as a messenger aboard the Gargantia fleet. To Redo, who has lived a life where he knows nothing but fighting, these days of peace continue to surprise him. (Source: ANN)", length: 200, separator: ' ')
+        /       // Truncate this to around the length of the above, if possible
+        /       //= anime.synopsis
+
+        /     .large-4.columns
+        /       .large-12.columns.no-padding
+        /         %a.small.button.split.padded{:href => "#"}
+        /           Want to Watch
+        /           %span{"data-dropdown" => "drop1"}
+        /         %ul#drop1.f-dropdown.watchlist-button{"data-dropdown-content" => ""}
+        /           %li
+        /             %a{:href => "#"} Currently Watching
+        /           %li
+        /             %a{:href => "#"} Completed
+        /           %li
+        /             %a{:href => "#"} On Hold
+        /           %li
+        /             %a{:href => "#"} Dropped
+        /           %li
+        /             %a{:href => "#"} Remove 
+        /       .large-12.columns.no-padding.text-center.search-rating
+        /         %p
+        /           %i.icon-star-empty
+        /           %i.icon-star-empty
+        /           %i.icon-star-empty
+        /           %i.icon-star-empty
+        /           %i.icon-star-empty
+      
+
+        %ul.inline-list.like-comment-area
+          %li.like= link_to "Like", "#", :class => "link"
+          %li.comment= link_to "Comment", "#", :class => "link"
+
+
+
+
+
+
+      

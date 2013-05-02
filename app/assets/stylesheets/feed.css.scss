@@ -1,0 +1,70 @@
+@import "compass/css3";
+
+.feed {
+  background: #fff;
+  min-height: 400px;
+  .feed-list {
+    list-style: none;
+    li.feed-item {
+      border-top: 1px solid #f1f1f1;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      .avatar {
+        width: 100%;
+        height: 100%;
+        @include border-radius(100px);
+      }
+      .update-text {
+        margin-bottom: 0px;
+      }
+      .like-comment-area {
+        margin-top: 5px;
+        margin-bottom: 0px;
+        .like {
+          .link {
+            font-size: 13px;
+            font-weight: 500;
+            padding-right: 10px;
+            border-right: 1px solid #eee;
+            color: #222;
+            font-family: "omnes";
+            &:hover {
+              color: #fd864b
+            }
+          }
+        }
+        .comment {
+          margin-left: 10px;
+          .link {
+            font-size: 13px;
+            font-weight: 500;
+            color: #222;
+            font-family: "omnes";
+            &:hover {
+              color: #fd864b
+            }
+          }
+        }
+      }
+      .timestamp {
+        font-size: 12px;
+        margin-bottom: 0px;
+        margin-top: 5px;
+      }
+      .episode-summary {
+        color: #a9a9a9;
+        margin-top: 10px;
+      }
+      .episode-image {
+        float: left;
+        padding: 10px;
+        width: 160px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+      }
+      &:first-child {
+        border-top: none;
+      }
+    }
+  }
+}

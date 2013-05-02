@@ -2,6 +2,12 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
+.follow-button {
+  line-height: 30px !important; 
+  padding: 0px !important; 
+  margin-top: 10px; 
+  font-size: 12px;
+}
 .user-watchlist {
   position: relative;
   margin-bottom: 30px;
