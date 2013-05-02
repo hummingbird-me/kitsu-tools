@@ -114,7 +114,7 @@
 
   @appendUserNameToTextBox = (name) ->
     q = $("input.message").val()
-    $("input.message").focus().val(q + " @" + name)
+    $("input.message").focus().val(q + " @" + name + " ")
 
   ChatMessageView = Backbone.View.extend {
     tagName: "li",
