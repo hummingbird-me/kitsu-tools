@@ -73,6 +73,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow
+    authenticate_user!
+    @user = User.find(params[:user_id])
+    
+    if @user != current_user
+      if @user.followers.include? current_user
+        @user.followers.delete current_user
+      else
+        @user.followers.push current_user
+      end
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to :back }
+    end
+  end
+
   def feed
     @user = User.find(params[:user_id])
     render "feed", layout: "layouts/profile"

@@ -30,6 +30,8 @@ Hummingbird::Application.routes.draw do
 
     put "/cover_image"  => 'users#update_cover_image',  as: :cover_image
     put "/avatar"       => 'users#update_avatar',       as: :avatar
+
+    post :follow
     
     post "/disconnect/facebook" => 'users#disconnect_facebook', 
       as: :disconnect_facebook
