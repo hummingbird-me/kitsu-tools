@@ -57,21 +57,19 @@
 
   myUsername = #{current_user.name.inspect}
   
-  notificationsEnabled = false
   if window.webkitNotifications
     $(".desktop-notifications").show()
   $(".desktop-notifications .switch").click ->
     if window.webkitNotifications.checkPermission() != 0
       window.webkitNotifications.requestPermission()
-    if notificationsEnabled
-      notificationsEnabled = false
-    else
-      notificationsEnabled = true
-    # Button doesn't seem to work without this line.
-    console.log notificationsEnabled
+
+  desktopNotificationsEnabled = ->
+    return $(".settings .desktop-notifications input#on")[0].checked
 
   notifyUser = (image, title, content) ->
-    if notificationsEnabled and not pageVisible()
+    console.log content
+    console.log desktopNotificationsEnabled() and not pageVisible()
+    if desktopNotificationsEnabled() and not pageVisible()
       notification = window.webkitNotifications.createNotification image, title, content
       notification.show()
       setTimeout (-> notification.close()), 5000
