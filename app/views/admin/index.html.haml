@@ -24,3 +24,9 @@
         %tr
           %td= bi.email
           %td= distance_of_time_in_words_to_now(bi.created_at, true)
+
+    %hr
+    %h3 Find or Create by MAL ID
+    %form(method="get" action="/kotodama/find_or_create_by_mal")
+      %input(type="number" name="mal_id")
+      %input(type="submit")

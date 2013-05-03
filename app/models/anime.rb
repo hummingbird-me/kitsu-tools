@@ -54,6 +54,7 @@ class Anime < ActiveRecord::Base
       return (alt_title and english_canonical) ? alt_title : title
     end
   end
+
   # Use this function to get the alt title instead of directly accessing the 
   # alt_title.
   def alternate_title(current_user=nil)

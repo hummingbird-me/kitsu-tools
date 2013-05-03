@@ -9,6 +9,15 @@ class AdminController < ApplicationController
       raise ActionController::RoutingError.new('Not Found')
     end
   end
+
+  def find_or_create_by_mal
+    @anime = Anime.find_by_mal_id params[:mal_id]
+    if @anime.nil?
+      @anime = Anime.create title: params[:mal_id], mal_id: params[:mal_id]
+      @anime.get_metadata_from_mal
+    end
+    redirect_to @anime
+  end
   
   def index
     @total_beta = BetaInvite.count
