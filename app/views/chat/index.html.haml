@@ -9,27 +9,28 @@
 
       .settings
         %h4 Chat Settings
-        %ul
-          %li.desktop-notifications.hide
-            .large-12.columns.setting-title
-              %span Desktop Notifications
-            .large-12.columns.setting-button
-              .switch
-                %input#off(checked="" name="desktop-notifications" type="radio")
-                %label(onclick="") Off
-                %input#on(name="desktop-notifications" type="radio")
-                %label(onclick="") On
-                %span
-          %li.auto-embedding
-            .large-12.columns.settings-title
-              %span Auto-embedding
-            .large-12.columns.setting-button
-              .switch
-                %input#off(name="auto-embedding" type="radio")
-                %label(onclick="") Off
-                %input#on(checked="" name="auto-embedding" type="radio")
-                %label(onclick="") On
-                %span
+        %form(data-persist="garlic")
+          %ul
+            %li.desktop-notifications.hide
+              .large-12.columns.setting-title
+                %span Desktop Notifications
+              .large-12.columns.setting-button
+                .switch
+                  %input#off(checked="" name="desktop-notifications" type="radio")
+                  %label(onclick="") Off
+                  %input#on(name="desktop-notifications" type="radio")
+                  %label(onclick="") On
+                  %span
+            %li.auto-embedding
+              .large-12.columns.settings-title
+                %span Auto-embedding
+              .large-12.columns.setting-button
+                .switch
+                  %input#off(name="auto-embedding" type="radio")
+                  %label(onclick="") Off
+                  %input#on(checked="" name="auto-embedding" type="radio")
+                  %label(onclick="") On
+                  %span
 
     .small-12.large-10.columns.main-chat#mainChatScroll
       .chats 
@@ -52,6 +53,8 @@
     
 
 :coffee
+  $(".settings form").submit -> return false
+
   myUsername = #{current_user.name.inspect}
   
   notificationsEnabled = false
