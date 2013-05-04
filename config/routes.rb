@@ -1,15 +1,5 @@
 require 'sidekiq/web'
 
-class AppProxy < Rack::Proxy
-  def rewrite_env(env)
-    request = Rack::Request.new(env)
-    if request.path =~ %r{^/kotodama/riemann}
-      env["HTTP_HOST"] = "localhost:4567"
-    end
-    env
-  end
-end
-
 Hummingbird::Application.routes.draw do
   devise_for :users, controllers: { 
     omniauth_callbacks: "users/omniauth_callbacks",
