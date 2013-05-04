@@ -37,7 +37,7 @@ namespace :deploy do
   end
   
   desc "restart riemann"
-  task :riemann_restart, roles: :riemann do
+  task :riemann_restart, roles: :web do
     run "#{sudo} monit restart riemann"
   end
   
