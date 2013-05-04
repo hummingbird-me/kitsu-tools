@@ -5,6 +5,8 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'mongoid', '~> 3.0.0'
 
+gem 'rack-proxy'
+
 gem 'redis'
 gem 'redis-rails'
 
