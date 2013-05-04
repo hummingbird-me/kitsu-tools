@@ -30,6 +30,11 @@ namespace :deploy do
   task :nginx_symlink, roles: :web do
     run "#{sudo} ln -nfs #{release_path}/config/nginx.conf /etc/nginx/sites-enabled/hummingbird"
   end
+
+  desc "symlink riemann configuration"
+  task :nginx_symlink, roles: :web do
+    run "#{sudo} ln -nfs #{release_path}/config/riemann.config /home/vikhyat/Riemann/etc/riemann.config"
+  end
   
   desc "reload nginx configuration"
   task :nginx_reload, roles: :web do
