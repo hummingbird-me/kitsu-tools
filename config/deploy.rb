@@ -32,7 +32,7 @@ namespace :deploy do
   end
 
   desc "symlink riemann configuration"
-  task :nginx_symlink, roles: :web do
+  task :riemann_symlink, roles: :web do
     run "#{sudo} ln -nfs #{release_path}/config/riemann.config /home/vikhyat/Riemann/etc/riemann.config"
   end
   
