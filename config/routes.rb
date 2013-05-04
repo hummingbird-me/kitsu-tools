@@ -70,6 +70,7 @@ Hummingbird::Application.routes.draw do
 
   resources :genres
   resources :producers
+  resources :characters
 
   # Watchlist
   resources :watchlists
