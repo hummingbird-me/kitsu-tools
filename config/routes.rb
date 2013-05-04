@@ -3,7 +3,7 @@ require 'sidekiq/web'
 class AppProxy < Rack::Proxy
   def rewrite_env(env)
     request = Rack::Request.new(env)
-    if request.path =~ %r{^/kotodama/proxy/riemann}
+    if request.path =~ %r{^/kotodama/riemann}
       env["HTTP_HOST"] = "localhost:4567"
     end
     env
@@ -101,6 +101,7 @@ Hummingbird::Application.routes.draw do
     match '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
-    mount AppProxy.new => '/kotodama/proxy'
+    
+    mount AppProxy.new => '/kotodama/riemann'
   end
 end
