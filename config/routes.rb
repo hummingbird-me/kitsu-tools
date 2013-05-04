@@ -101,7 +101,5 @@ Hummingbird::Application.routes.draw do
     match '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
-    
-    mount AppProxy.new => '/kotodama/riemann'
   end
 end
