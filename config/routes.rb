@@ -102,6 +102,6 @@ Hummingbird::Application.routes.draw do
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
     
-    mount AppProxy.new => '/kotodama/riemann'
+    match '/kotodama/riemann' => AppProxy.new
   end
 end
