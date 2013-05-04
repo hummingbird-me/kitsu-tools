@@ -36,6 +36,11 @@ namespace :deploy do
     run "#{sudo} ln -nfs #{release_path}/config/riemann.config /home/vikhyat/Riemann/etc/riemann.config"
   end
   
+  desc "restart riemann"
+  task :riemann_restart, roles: :riemann do
+    run "#{sudo} monit restart riemann"
+  end
+  
   desc "reload nginx configuration"
   task :nginx_reload, roles: :web do
     run "#{sudo} service nginx reload"
@@ -115,11 +120,11 @@ after "deploy:update_code", "deploy:copy_old_sitemap"
 before "deploy", "deploy:sudo_prompt"
 
 after "deploy:finalize_update",
-  "deploy:nginx_symlink", "deploy:monit_symlink"
+  "deploy:nginx_symlink", "deploy:monit_symlink", "deploy:riemann_symlink"
 
 after "deploy:restart",
   "deploy:reload_unicorn",
-  "deploy:nginx_reload", "deploy:monit_reload"
+  "deploy:nginx_reload", "deploy:monit_reload", "deploy:riemann_restart"
 
 before "sidekiq:restart", "deploy:stop_monit_sidekiq"
 after "sidekiq:restart", "deploy:start_monit_sidekiq"
