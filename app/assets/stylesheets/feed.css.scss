@@ -14,13 +14,22 @@
         height: 100%;
         @include border-radius(100px);
       }
+      .comment-avatar {
+        width: 40px;
+        height: 40px;
+      }
       .update-text {
         margin-bottom: 0px;
+      }
+      .update-time {
+        margin-bottom: 0px;
+        font-size: 12px;
       }
       .like-comment-area {
         margin-top: 5px;
         margin-bottom: 0px;
         .like {
+          padding-left: 10px;
           .link {
             font-size: 13px;
             font-weight: 500;
@@ -44,6 +53,37 @@
               color: #fd864b
             }
           }
+        }
+      }
+      .comment-area {
+        background: #f7f6f6;
+        margin-bottom: -15px;
+        padding: 10px;
+        padding-top: 10px;
+        .avatar-wrapper {
+          position: absolute;
+          .input-avatar {
+            height: 30px;
+            width: 30px;
+            border-left: 1px solid #cccccc;
+            border-top: 1px solid #cccccc;
+            border-bottom: 1px solid #cccccc;
+            @include border-left-radius(2px); 
+          }
+        }
+        .input-wrapper {
+          padding-left: 29px;
+          input {
+            height: 30px;
+            margin-bottom: 0px;
+            box-shadow: none;
+            @include border-right-radius(2px); 
+          }
+        }
+        div.comment {
+          border-bottom: 1px solid #eee;
+          padding-bottom: 5px !important;
+          margin-bottom: 10px;
         }
       }
       .timestamp {
