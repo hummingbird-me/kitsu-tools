@@ -4,7 +4,7 @@
 
 // Search Suggestions
 @import "compass/css3";
-.search-body, .user-watchlist {
+.search-body, .follow-following {
   background: #fff;
   @include border-bottom-radius(3px);
   .search-head {
@@ -62,6 +62,15 @@
   }
   .anime-list {
     list-style: none;
+    li {
+      float: left;
+      padding-top: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .user-avatar {
+      margin-top: 7px;
+    }
+    
     .thumbnail {
       margin-top: 10px; 
     }

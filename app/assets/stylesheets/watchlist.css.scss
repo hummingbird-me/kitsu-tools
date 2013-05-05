@@ -177,6 +177,8 @@
   }
   .main-content {
     padding: 0px;
+    background: #fff;
+    min-height: 620px;
     @include border-bottom-right-radius(3px);
     .cover-photo {
       padding: 0px;
