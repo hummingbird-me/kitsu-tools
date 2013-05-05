@@ -70,9 +70,17 @@
     .user-avatar {
       margin-top: 7px;
     }
-    
+
     .thumbnail {
       margin-top: 10px; 
+    }
+    .synopsis {
+      p {
+        min-width: 400px;
+        @media (max-width: 800px) {
+          min-width: 330px;
+        }
+      }
     }
     .synopsis, .title {
       padding-left: 0px;
