@@ -168,6 +168,11 @@
               color: #fd864b;
             }
           }
+          &.active {
+            a {
+              color: #fd864b;
+            }
+          }
           &:last-child {
             border-bottom: 1px solid #474541;
           }
