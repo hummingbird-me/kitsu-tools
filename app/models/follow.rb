@@ -2,11 +2,11 @@ class Follow < ActiveRecord::Base
   belongs_to :followed, class_name: 'User'
   belongs_to :follower, class_name: 'User'
 
-  validates :user_id, uniqueness: {scope: :followed_id}
+  validates :follower_id, uniqueness: {scope: :followed_id}
 
   validate :cant_follow_self
   def cant_follow_self
-    if user_id == followed_id
+    if follower_id == followed_id
       errors.add(:base, 'You cannot follow yourself')
     end
   end

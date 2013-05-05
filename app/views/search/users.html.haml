@@ -14,10 +14,13 @@
             - else
               I've watched #{format_minutes user.life_spent_on_anime} of anime.
 
-        .large-3.columns.hide
+        .large-3.columns
           .large-12.columns.no-padding
-            %a.small.button
-              Follow
+            - if user_signed_in? and user != current_user
+              - if user.followers.include? current_user
+                = link_to "Unfollow", user_follow_path(user), class: "small button", method: :post
+              - else
+                = link_to "Follow", user_follow_path(user), class: "small button", method: :post
       
 = paginate @results
 
