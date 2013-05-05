@@ -62,6 +62,7 @@ class UsersController < ApplicationController
   end
 
   def watchlist
+    @active_tab = :library
     @user = User.find(params[:user_id])
     
     respond_to do |format|
@@ -105,6 +106,7 @@ class UsersController < ApplicationController
   end
 
   def feed
+    @active_tab = :feed
     @user = User.find(params[:user_id])
     render "feed", layout: "layouts/profile"
   end

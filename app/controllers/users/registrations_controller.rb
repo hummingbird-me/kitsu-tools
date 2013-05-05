@@ -2,6 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :hide_cover_image
 
   def edit
+    @active_tab = :account_settings
     render :edit, layout: "layouts/profile"
   end
 
