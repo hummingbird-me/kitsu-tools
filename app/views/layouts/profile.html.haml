@@ -57,7 +57,7 @@
               %li{:class => ("active" if @active_tab == :account_settings)}= link_to "Account Settings", main_app.edit_user_registration_path
 
     .large-8.columns.large-offset-2.main-content
-      .large-12.columns.cover-photo
+      .large-12.columns.cover-photo{:class => ("own-profile" if user_signed_in? and @user == current_user)}
         - if can? :update, @user
           .cover-upload-button.hide-for-small
             %a{"data-dropdown" => "cover-upload", :href => "#"} 
@@ -75,6 +75,8 @@
         .small-12.columns.small-centered.mobile-header.show-for-small
           = image_tag @user.avatar_url, :class => "mobile-avatar"
           %h3= @user.name
+          .small-12.columns
+            = render partial: "users/follow_button", locals: {user: @user}
           .small-12.columns.cover-buttons.hide
             %span.line-button.compare= link_to "Compare"
             %span.line-button= link_to "Suggest Anime"

@@ -190,7 +190,12 @@
       height: 250px;
       background-size: cover;
       @media (max-width: 480px) {
-        height: 150px;
+        height: 200px;
+      }
+      &.own-profile {
+        @media (max-width: 480px) {
+          height: 150px;
+        }
       }
       .mobile-header {
         position: absolute;

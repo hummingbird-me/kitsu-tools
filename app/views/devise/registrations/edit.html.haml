@@ -22,7 +22,7 @@
             = form_for(resource, as: resource_name, url: registration_path(resource_name), :html => { method: :put, multipart: true, class: 'custom' }) do |f|
               = devise_error_messages!
 
-              .large-7.columns
+              .large-7.columns{:style => "background: #fff;"}
                 %p 
                   = f.label :name
                   = f.text_field :name
