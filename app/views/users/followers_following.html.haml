@@ -1,8 +1,10 @@
 .large-12.columns.library-status-header
   %h5.status
     - if @active_tab == :followers
+      - title "#{@user.name}'s Followers"
       %span Followers
     - else
+      - title "Followed by #{@user.name}"
       %span Following
 
 
