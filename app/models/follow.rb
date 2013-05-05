@@ -13,7 +13,7 @@ class Follow < ActiveRecord::Base
   
   after_create do
     User.increment_counter 'following_count', follower_id
-    User.increment_counter 'followers_count', followed_id
+    #User.increment_counter 'followers_count', followed_id
   end
   
   after_destroy do
