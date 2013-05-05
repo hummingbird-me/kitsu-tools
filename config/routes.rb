@@ -23,10 +23,12 @@ Hummingbird::Application.routes.draw do
   # Dashboard
   match '/dashboard' => 'home#dashboard'
   resources :users do
-    get "/watchlist"    => 'users#watchlist',   as: :watchlist
-    get "/reviews"      => 'users#reviews',     as: :reviews
-    get "/forum_posts"  => 'users#forum_posts', as: :forum_posts
-    get "/feed"         => 'users#feed',        as: :feed
+    get :watchlist
+    get :reviews
+    get :forum_posts
+    get :feed
+    get :followers
+    get :following
 
     put "/cover_image"  => 'users#update_cover_image',  as: :cover_image
     put "/avatar"       => 'users#update_avatar',       as: :avatar

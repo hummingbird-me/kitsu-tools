@@ -4,7 +4,7 @@
 
 // Search Suggestions
 @import "compass/css3";
-.search-body {
+.search-body, .user-watchlist {
   background: #fff;
   @include border-bottom-radius(3px);
   .search-head {

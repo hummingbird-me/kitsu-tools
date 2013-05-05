@@ -1,6 +1,6 @@
 class Follow < ActiveRecord::Base
-  belongs_to :user
   belongs_to :followed, class_name: 'User'
+  belongs_to :follower, class_name: 'User'
 
   validates :user_id, uniqueness: {scope: :followed_id}
 
@@ -12,12 +12,12 @@ class Follow < ActiveRecord::Base
   end
   
   after_create do
-    User.increment_counter 'following_count', user_id
+    User.increment_counter 'following_count', follower_id
     User.increment_counter 'followers_count', followed_id
   end
   
   after_destroy do
-    User.decrement_counter 'following_count', user_id
+    User.decrement_counter 'following_count', follower_id
     User.decrement_counter 'followers_count', followed_id
   end
 end

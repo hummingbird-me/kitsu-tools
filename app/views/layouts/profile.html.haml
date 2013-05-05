@@ -30,7 +30,7 @@
           Waifu - 
           = link_to "Haruhi Suzumiya", "#"
 
-        - if user_signed_in? and current_user.admin? and @user != current_user
+        - if user_signed_in? and @user != current_user
           .large-6.columns.no-padding
             - if @user.followers.include? current_user
               .button= link_to "Unfollow", user_follow_path(@user), class: "follow-button", method: :post
@@ -45,8 +45,8 @@
             %li= link_to "Library", user_watchlist_path(@user)
             %li.hide= link_to "Reviews", user_reviews_path(@user)
             %li.hide= link_to "Forum Posts", user_forum_posts_path(@user)
-            %li.hide= link_to "Following", "#"
-            %li.hide= link_to "Followers", "#"
+            %li= link_to "Following", user_following_path(@user)
+            %li= link_to "Followers", user_followers_path(@user)
             - if @user == current_user
               %li= link_to "Account Settings", main_app.edit_user_registration_path
 

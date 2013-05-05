@@ -270,8 +270,8 @@ CREATE TABLE episodes_watchlists (
 
 CREATE TABLE follows (
     id integer NOT NULL,
-    user_id integer,
     followed_id integer,
+    follower_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -1697,14 +1697,14 @@ CREATE INDEX index_episodes_watchlists_on_watchlist_id ON episodes_watchlists US
 -- Name: index_follows_on_followed_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_follows_on_followed_id ON follows USING btree (followed_id);
+CREATE INDEX index_follows_on_followed_id ON follows USING btree (follower_id);
 
 
 --
 -- Name: index_follows_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_follows_on_user_id ON follows USING btree (user_id);
+CREATE INDEX index_follows_on_user_id ON follows USING btree (followed_id);
 
 
 --
@@ -2238,3 +2238,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130429132859');
 INSERT INTO schema_migrations (version) VALUES ('20130501154747');
 
 INSERT INTO schema_migrations (version) VALUES ('20130501161436');
+
+INSERT INTO schema_migrations (version) VALUES ('20130505144517');
