@@ -48,12 +48,14 @@ class UsersController < ApplicationController
   end
 
   def followers
+    @active_tab = :followers
     @user = User.find(params[:user_id])
     @results = @user.followers.page(params[:page]).per(20)
     render "followers_following", layout: "layouts/profile"
   end
   
   def following
+    @active_tab = :following
     @user = User.find(params[:user_id])
     @results = @user.following.page(params[:page]).per(20)
     render "followers_following", layout: "layouts/profile"
