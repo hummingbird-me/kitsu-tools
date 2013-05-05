@@ -6,15 +6,14 @@
   line-height: 30px !important; 
   padding: 0px !important; 
   margin-top: 10px; 
-  margin-right: 10px;
+  margin-left: 0px;
+  margin-right: 0px;
   font-size: 12px;
 }
 .user-watchlist {
   position: relative;
   margin-bottom: 30px;
-  .follow-button {
-    margin-left: 10px;
-  }
+
   .f-dropdown {
     border-radius: 3px;
     width: 200px;
