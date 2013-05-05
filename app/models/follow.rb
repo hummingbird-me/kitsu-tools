@@ -11,12 +11,10 @@ class Follow < ActiveRecord::Base
     end
   end
   
-  # Rails automatically does the increment, so we don't need to do anything.
-  #
-  # after_create do
-  #   User.increment_counter 'following_count', follower_id
-  #   User.increment_counter 'followers_count', followed_id
-  # end
+  after_create do
+    User.increment_counter 'following_count', follower_id
+    User.increment_counter 'followers_count', followed_id
+  end
   
   after_destroy do
     User.decrement_counter 'following_count', follower_id
