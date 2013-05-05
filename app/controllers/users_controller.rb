@@ -50,13 +50,13 @@ class UsersController < ApplicationController
   def followers
     @user = User.find(params[:user_id])
     @results = @user.followers.page(params[:page]).per(20)
-    render "follow", layout: "layouts/profile"
+    render "followers_following", layout: "layouts/profile"
   end
   
   def following
     @user = User.find(params[:user_id])
     @results = @user.following.page(params[:page]).per(20)
-    render "follow", layout: "layouts/profile"
+    render "followers_following", layout: "layouts/profile"
   end
 
   def watchlist
