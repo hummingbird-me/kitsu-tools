@@ -1,11 +1,9 @@
 .large-12.columns.library-status-header
   %h5.status
     - if @active_tab == :followers
-      %span Following
-      = @user.name
+      %span Followers
     - else
-      = @user.name
-      %span Follows
+      %span Following
 
 
 
