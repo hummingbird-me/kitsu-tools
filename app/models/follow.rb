@@ -1,6 +1,6 @@
 class Follow < ActiveRecord::Base
   belongs_to :followed, class_name: 'User'
-  belongs_to :follower, class_name: 'User'
+  belongs_to :follower, class_name: 'User', counter_cache: 'following_count'
 
   validates :follower_id, uniqueness: {scope: :followed_id}
 
@@ -11,13 +11,13 @@ class Follow < ActiveRecord::Base
     end
   end
   
-  after_create do
-    User.increment_counter 'following_count', follower_id
-    #User.increment_counter 'followers_count', followed_id
-  end
-  
-  after_destroy do
-    User.decrement_counter 'following_count', follower_id
-    User.decrement_counter 'followers_count', followed_id
-  end
+  #after_create do
+  #  User.increment_counter 'following_count', self.follower_id
+  #  #User.increment_counter 'followers_count', followed_id
+  #end
+ # 
+ # before_destroy do
+ #   User.decrement_counter 'following_count', self.follower_id
+ #   User.decrement_counter 'followers_count', self.followed_id
+ # end
 end
