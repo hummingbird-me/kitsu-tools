@@ -1,12 +1,10 @@
 .hummingbird-footer
-  .large-12.columns.footer-ad
+  .large-12.columns.footer-ad   
     :javascript
-      google_ad_client = "ca-pub-3410319844519574";
-      /* Footer Ad */
-      google_ad_slot = "4888559644";
-      google_ad_width = 728;
-      google_ad_height = 90;
-    %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
+      cpxcenter_width = 728;
+      cpxcenter_height = 90;
+    %script{:language => "JavaScript", :src => "http://ads.cpxcenter.com/cpxcenter/showAd.php?nid=4&amp;zone=9705&amp;type=banner&amp;sid=9125&amp;pid=10169&amp;subid=", :type => "text/javascript"}
+
 
   - if session[:recently_viewed] and session[:recently_viewed].length > 0
     .history-bar.hide-for-small
@@ -40,6 +38,7 @@
                 %li= link_to "Terms", "#"
                 %li= link_to "Privacy", "/privacy"
                 %li= link_to "Contact", "mailto:josh@hummingbird.ly?cc=vikhyat@hummingbird.ly"
+                %li= link_to "Anichart.net", "http://www.anichart.net"
 
           .large-6.columns
 
