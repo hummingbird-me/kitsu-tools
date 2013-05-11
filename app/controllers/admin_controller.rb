@@ -14,8 +14,8 @@ class AdminController < ApplicationController
     @anime = Anime.find_by_mal_id params[:mal_id]
     if @anime.nil?
       @anime = Anime.create title: params[:mal_id], mal_id: params[:mal_id]
-      @anime.get_metadata_from_mal
     end
+    @anime.get_metadata_from_mal
     redirect_to @anime
   end
   
