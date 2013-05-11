@@ -120,6 +120,11 @@ class Anime < ActiveRecord::Base
     self.episode_count = meta[:episode_count]
     self.episode_length = meta[:episode_length]
     self.status = meta[:status]
+
+    self.castings.select {|x| x.character and meta[:featured_character_mal_ids].include? x.character.mal_id }.each do |c|
+      c.featured = true; c.save
+    end
+
     self.save
   end
 

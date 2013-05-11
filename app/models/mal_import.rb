@@ -1,7 +1,104 @@
 require 'open-uri'
 
 class MalImport
+  def self.create_series_castings(id)
+    anime = Anime.find_by_mal_id id
+
+    noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}/a/characters").read
+    cont = noko.css('h2').select {|x| x.text.include? "Characters & Voice Actors" }[0].parent
+
+    charactersc = []
+    staffc = cont.children[-1]
+    cont.children.each do |x|
+      break if x.name == "br"
+      charactersc.push x if x.name == "table"
+    end
+
+    staff = []
+    staffc.css('tr td:nth-child(2)').each do |sm|
+      mal_id = sm.css('a').attribute('href').value.scan(/people\/(\d+)\//).flatten[0]
+      name = sm.css('a').text
+      role = sm.css('small').text
+      staff.push({mal_id: mal_id, name: name, role: role})
+    end
+
+    characters = []
+    charactersc.each do |chara|
+      mal_id = chara.css('tr td:nth-child(2) a').attribute('href').value.scan(/character\/(\d+)\//).flatten[0]
+      name = chara.css('tr td:nth-child(2) a').text
+      role = chara.css('tr td:nth-child(2) small').text
+      vas = []
+      chara.css('tr td:nth-child(3) table tr td:nth-child(1)').each do |va|
+        if va.text.strip.length > 0
+          va_mal_id = va.css('a').attribute('href').value.scan(/people\/(\d+)\//).flatten[0]
+          va_name = va.css('a').text
+          va_lang = va.css('small').text
+          vas.push( {mal_id: va_mal_id, name: va_name, lang: va_lang} )
+        end
+      end
+
+      characters.push( {mal_id: mal_id, role: role, name: name, voice_actors: vas} )
+    end
+    
+    # Find or create all characters and the corresponding voice actors.
+    # Also create the relevant castings if they don't exist.
+    charmap = {}
+    vamap = {}
+    characters.each do |char|
+      charmap[char[:mal_id]] = Character.find_by_mal_id(char[:mal_id]) || Character.create(name: char[:name].strip.split(', ').reverse.join(' '), mal_id: char[:mal_id])
+      if charmap[char[:mal_id]].image_file_name.nil?
+        begin
+          charmap[char[:mal_id]].image = URI(Nokogiri::HTML(open("http://myanimelist.net/character/#{char[:mal_id]}")).css("img")[0].attributes["src"].value)
+          charmap[char[:mal_id]].image = nil if charmap[char[:mal_id]].image_file_name =~ /na\.gif/
+          charmap[char[:mal_id]].save
+        rescue
+        end
+      end
+      
+      char[:voice_actors].each do |va|
+        vamap[va[:mal_id]] = Person.find_by_mal_id(va[:mal_id]) || Person.create(name: va[:name].strip.split(', ').reverse.join(' '), mal_id: va[:mal_id])
+        
+        # Now onto the casting creation.
+        unless Casting.exists?(anime_id: anime.id, character_id: charmap[char[:mal_id]].id, person_id: vamap[va[:mal_id]].id)
+          c = Casting.new
+          c.anime_id = anime.id
+          c.character = charmap[char[:mal_id]]
+          c.person = vamap[va[:mal_id]]
+          c.role = va[:lang]
+          c.voice_actor = true
+          c.save
+        end
+      end
+    end
+    
+    # Now onto the staff castings.
+    staff.each do |mem|
+      person = Person.find_by_mal_id(mem[:mal_id]) || Person.create(mal_id: mem[:mal_id], name: mem[:name].strip.split(', ').reverse.join(' '))
+      unless Casting.exists?(anime_id: anime.id, person_id: person.id, voice_actor: false)
+        c = Casting.new
+        c.anime_id = anime.id
+        c.person = person
+        c.role = mem[:role]
+        c.voice_actor = false
+        c.save
+      end
+    end
+    
+    #anime.castings.map {|x| x.person }.uniq.each do |person|
+    #  if person.image_file_name.nil?
+    #    begin
+    #      person.image = URI(Nokogiri::HTML(open("http://myanimelist.net/people/#{person.mal_id}")).css("img")[0].attributes["src"].value)
+    #      person.image = nil if person.image_file_name =~ /na\.gif/
+    #      person.save
+    #    rescue
+    #    end
+    #  end
+    #end
+  end
+  
   def self.series_metadata(id)
+    MalImport.create_series_castings(id)
+    
     noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}").read
     meta = {}
 
@@ -44,6 +141,8 @@ class MalImport
     
     # Status
     meta[:status] = sidebar.css("div").select {|x| x.text.include? "Status:" }[0].children[1].text.strip rescue nil
+    
+    meta[:featured_character_mal_ids] = noko.css('table div.picSurround a').map {|x| x.attributes["href"].to_s }.select {|x| x =~ /character\// }.map {|x| x.scan(/character\/(\d+)/) }.flatten.map {|x| x.to_i }
     
     return meta
   end
