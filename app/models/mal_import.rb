@@ -84,16 +84,16 @@ class MalImport
       end
     end
     
-    #anime.castings.map {|x| x.person }.uniq.each do |person|
-    #  if person.image_file_name.nil?
-    #    begin
-    #      person.image = URI(Nokogiri::HTML(open("http://myanimelist.net/people/#{person.mal_id}")).css("img")[0].attributes["src"].value)
-    #      person.image = nil if person.image_file_name =~ /na\.gif/
-    #      person.save
-    #    rescue
-    #    end
-    #  end
-    #end
+    anime.castings.map {|x| x.person }.uniq.each do |person|
+      if person.image_file_name.nil?
+        begin
+          person.image = URI(Nokogiri::HTML(open("http://myanimelist.net/people/#{person.mal_id}")).css("img")[0].attributes["src"].value)
+          person.image = nil if person.image_file_name =~ /na\.gif/
+          person.save
+        rescue
+        end
+      end
+    end
   end
   
   def self.series_metadata(id)
