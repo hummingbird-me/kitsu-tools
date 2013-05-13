@@ -22,8 +22,14 @@
                 = link_to t.titleize, search_path(type: t, query: params[:query])
       = yield
     .large-3.columns.hide-for-small{:style => "margin-top: 15px;"}
-      / BuySellAds Zone Code
-      #bsap_1285920.bsarocks.bsap_950293d851bcefaeefee4413e822bb8c
+      :javascript
+        google_ad_client = "ca-pub-3410319844519574";
+        /* Search Sidebar */
+        google_ad_slot = "3057926049";
+        google_ad_width = 300;
+        google_ad_height = 250;
+      %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
+
 
 
 = render :template => 'layouts/application'

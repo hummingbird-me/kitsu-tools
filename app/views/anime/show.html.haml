@@ -187,6 +187,15 @@
         .trailer
           .flex-video
             %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}", :width => "420"}
+      .large-12.columns.sidebar-ad
+        :javascript
+          google_ad_client = "ca-pub-3410319844519574";
+          /* Anime Page Sidebar */
+          google_ad_slot = "9999756849";
+          google_ad_width = 300;
+          google_ad_height = 250;
+          
+        %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
 
       = render "mini_gallery"
 
@@ -202,15 +211,6 @@
           = link_to "[Show all]", anime_quotes_url(@anime)
           %a{"data-reveal-id" => "quoteModal", :href => "#"} [Submit quote]
 
-      .large-12.columns.sidebar-ad
-        :javascript
-          google_ad_client = "ca-pub-3410319844519574";
-          /* Anime Page Sidebar */
-          google_ad_slot = "9999756849";
-          google_ad_width = 300;
-          google_ad_height = 250;
-          
-        %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
 
 
     .similar-anime.large-12.columns.hide-for-small{:style => 'display: none!important'}
