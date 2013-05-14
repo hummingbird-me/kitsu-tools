@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://hummingbird.ly"
+SitemapGenerator::Sitemap.default_host = "http://hummingbird.me"
 
 SitemapGenerator::Sitemap.create do
   # Users
