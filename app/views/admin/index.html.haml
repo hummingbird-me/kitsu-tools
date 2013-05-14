@@ -7,26 +7,38 @@
       %li= link_to "Sidekiq Dashboard", "/kotodama/sidekiq"
       %li= link_to "Forem Admin", forem.admin_root_url
   .panel.large-9.columns
-    %table
-      %tr
-        %td Number of sign-ups
-        %td= @total_beta
-      %tr 
-        %td Number of invites sent
-        %td= @invited_beta
-      %tr
-        %td Number of users registered
-        %td= @user_count
-    
-    %h5 Recent Invite Requests
-    %table
-      - @recent_beta.each do |bi|
-        %tr
-          %td= bi.email
-          %td= distance_of_time_in_words_to_now(bi.created_at, true)
+    .row
+      .large-5.columns
+        %table
+          %tr
+            %td Number of sign-ups
+            %td= @total_beta
+          %tr 
+            %td Number of invites sent
+            %td= @invited_beta
+          %tr
+            %td Number of users registered
+            %td= @user_count
+        
+        %h5 Recent Invite Requests
+        %table
+          - @recent_beta.each do |bi|
+            %tr
+              %td= bi.email
+              %td= distance_of_time_in_words_to_now(bi.created_at, true)
 
-    %hr
-    %h3 Find or Create by MAL ID
-    %form(method="get" action="/kotodama/find_or_create_by_mal")
-      %input(type="number" name="mal_id")
-      %input(type="submit")
+      .large-7.columns
+        .panel
+          .section-container.accordion(data-section)
+            .section
+              %p.title(data-section-title) Create/Update Anime
+              .content(data-section-content)
+                %form(method="get" action="/kotodama/find_or_create_by_mal")
+                  %input(type="number" name="mal_id" placeholder="MAL ID")
+                  %input(type="submit")
+            .section
+              %p.title(data-section-title) Invite to Beta
+              .content(data-section-content)
+                %form(method="get" action="/kotodama/invite_to_beta")
+                  %input(type="email" name="email" placeholder="Email ID")
+                  %input(type="submit")

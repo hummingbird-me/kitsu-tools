@@ -18,11 +18,18 @@ class AdminController < ApplicationController
     @anime.get_metadata_from_mal
     redirect_to @anime
   end
+
+  def invite_to_beta
+    email = params[:email]
+    inv = BetaInvite.find_or_create_by_email(email)
+    inv.invite!
+    redirect_to :back
+  end
   
   def index
     @total_beta   = BetaInvite.count
-    @recent_beta  = BetaInvite.order('created_at DESC').limit(10)
-    @invited_beta = BetaInvite.where({invited: true}).count
+    @recent_beta  = BetaInvite.order('created_at DESC').limit(5)
+    @invited_beta = BetaInvite.where(invited: true).count
     @user_count   = User.count
   end
 
