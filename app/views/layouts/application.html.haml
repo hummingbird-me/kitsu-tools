@@ -20,8 +20,6 @@
     - if @anime and @anime.respond_to? :cover_image
       %meta(property="og:image"){:content => "http://hummingbird.ly" + @anime.cover_image.url(:thumb)}
 
-    %meta(name="google-site-verification" content="XetjKFa2rDVbKgdrSHEv8jaDM0qOBKQdCGyg5iO1bFc")
-
     = yield(:extra_meta_content)
 
     // Typekit Code
