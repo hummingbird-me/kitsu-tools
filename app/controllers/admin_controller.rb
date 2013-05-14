@@ -34,7 +34,7 @@ class AdminController < ApplicationController
   end
 
   def login_as_user
-    user = User.find(params[:user_id])
+    user = User.find(params[:user_id].strip.downcase)
     sign_in(:user, user)
     redirect_to "/"
   end
