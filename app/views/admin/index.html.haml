@@ -34,11 +34,17 @@
               %p.title(data-section-title) Create/Update Anime
               .content(data-section-content)
                 %form(method="get" action="/kotodama/find_or_create_by_mal")
-                  %input(type="number" name="mal_id" placeholder="MAL ID")
-                  %input(type="submit")
+                  .row.collapse
+                    .large-8.columns
+                      %input(type="number" name="mal_id" placeholder="MAL ID")
+                    .large-4.columns
+                      %input.button.small.prefix(type="submit" value="Submit")
             .section
               %p.title(data-section-title) Invite to Beta
               .content(data-section-content)
                 %form(method="get" action="/kotodama/invite_to_beta")
-                  %input(type="email" name="email" placeholder="Email ID")
-                  %input(type="submit")
+                  .row.collapse
+                    .large-8.columns
+                      %input(type="email" name="email" placeholder="Email ID")
+                    .large-4.columns
+                      %input.button.small.prefix(type="submit" value="Submit")
