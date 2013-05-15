@@ -23,6 +23,7 @@ class AdminController < ApplicationController
     email = params[:email]
     inv = BetaInvite.find_or_create_by_email(email)
     inv.invite!
+    flash[:success] = "Invited #{email}."
     redirect_to :back
   end
   
