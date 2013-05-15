@@ -49,9 +49,9 @@ class Anime < ActiveRecord::Base
     if current_user and current_user.title_language_preference == "romanized"
       return title
     elsif current_user and current_user.title_language_preference == "english"
-      return alt_title ? alt_title : title
+      return (alt_title and alt_title.length > 0) ? alt_title : title
     else
-      return (alt_title and english_canonical) ? alt_title : title
+      return (alt_title and alt_title.length > 0 and english_canonical) ? alt_title : title
     end
   end
 
@@ -59,9 +59,9 @@ class Anime < ActiveRecord::Base
   # alt_title.
   def alternate_title(current_user=nil)
     if current_user and current_user.title_language_preference == "romanized"
-      return alt_title ? alt_title : title
+      return alt_title
     elsif current_user and current_user.title_language_preference == "english"
-      return title
+      return (alt_title and alt_title.length > 0) ? title : nil
     else
       return english_canonical ? title : alt_title
     end
