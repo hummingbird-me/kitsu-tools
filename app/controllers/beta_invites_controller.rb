@@ -19,6 +19,7 @@ class BetaInvitesController < ApplicationController
       beta_invite = BetaInvite.find_by_email(email)
       beta_invite.invite!
       flash[:success] = "You have been invited to the beta!"
+      mixpanel.track "Used Invite Code", {email: email, code: code} if Rails.env.production?
     else
       flash[:error] = "Sorry, #{code} is not a valid invite code."
     end
