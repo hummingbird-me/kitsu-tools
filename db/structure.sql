@@ -1097,7 +1097,7 @@ CREATE TABLE users (
     cover_image_updated_at timestamp without time zone,
     english_anime_titles boolean DEFAULT true,
     title_language_preference character varying(255) DEFAULT 'canonical'::character varying,
-    followers_count integer DEFAULT 0,
+    followers_count_hack integer DEFAULT 0,
     following_count integer DEFAULT 0
 );
 
@@ -2240,3 +2240,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130501154747');
 INSERT INTO schema_migrations (version) VALUES ('20130501161436');
 
 INSERT INTO schema_migrations (version) VALUES ('20130505144517');
+
+INSERT INTO schema_migrations (version) VALUES ('20130516154732');

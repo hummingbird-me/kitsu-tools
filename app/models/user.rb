@@ -200,4 +200,8 @@ class User < ActiveRecord::Base
     text :name
     text :email
   end
+
+  def followers_count
+    followers_count_hack
+  end
 end

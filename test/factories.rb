@@ -25,10 +25,17 @@ FactoryGirl.define do
   end
   
   factory :user do
-    name "VikhyatKorrapati"
-    email "c@vikhyat.net"
-    password "password"
+    sequence(:name)       {|n| "user#{n}" }
+    email                 { "#{name}@vikhyat.net" }
+    password              "password"
     password_confirmation "password"
+    
+    before(:create) do |user|
+      # Invite to the beta.
+      b = BetaInvite.find_or_create_by_email(user.email)
+      b.invited = true
+      b.save
+    end
   end
 
   factory :episode_view do

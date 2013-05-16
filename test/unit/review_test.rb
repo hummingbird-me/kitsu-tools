@@ -7,5 +7,4 @@ class ReviewTest < ActiveSupport::TestCase
   should validate_presence_of(:user)
   should validate_presence_of(:anime)
   should validate_presence_of(:content)
-  should validate_presence_of(:positive)
 end
