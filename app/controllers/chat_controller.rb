@@ -42,8 +42,12 @@ class ChatController < ApplicationController
       
       # Embed images.
       if link =~ /\.(gif|jpe?g|png)$/i
-        # TODO check filesize.
-        formatted += "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600'>"
+        begin
+          if open(link).size <= 1024*1024
+            formatted += "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600'>"
+          end
+        rescue
+        end
       end
       
       # Embed YouTube videos.
