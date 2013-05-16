@@ -151,25 +151,8 @@
       if this.$el.find("div.message p a[data-user-name='" + myUsername + "']").length > 0
         this.$el.addClass "highlighted"
 
-      $p = this.$el.find("p")
-
-      youtube_video = null
-      $p.find("a").each ->
-        match = this.href.match /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g
-        if match
-          match = match[0].match /watch\?v=([a-zA-Z0-9\-_]+)/
-          if match
-            youtube_video = match[1]
-            
-      
-      if youtube_video
-        iframe = $("<br><iframe width='350' height='240' frameborder='0' 
-          class='autoembed' allowfullscreen
-          src='http://youtube.com/embed/" + youtube_video + "' />");
-        $p.append(iframe)
-        
       if autoembeddingEnabled()
-        $p.find('.autoembed').show()
+        this.$el.find("p .autoembed").show()
         
       return this
   }

@@ -39,9 +39,17 @@ class ChatController < ApplicationController
     if links.length == 1
       # Embed stuff if there's only one link.
       link = links[0]
+      
+      # Embed images.
       if link =~ /\.(gif|jpe?g|png)$/i
         # TODO check filesize.
-        formatted = formatted + "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600'>"
+        formatted += "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600'>"
+      end
+      
+      # Embed YouTube videos.
+      if link =~ /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/
+        code = link.scan(/v=([A-Za-z0-9\-_]+)/)[0][0]
+        formatted += "<br><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='http://youtube.com/embed/#{code}' />"
       end
     end
     
