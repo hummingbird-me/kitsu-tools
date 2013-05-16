@@ -23,3 +23,5 @@ public/system
 
 solr/data
 solr/pids
+
+.zeus.sock
