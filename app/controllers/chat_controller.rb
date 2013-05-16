@@ -38,7 +38,7 @@ class ChatController < ApplicationController
     # If a message was posted, save it.
     if params[:message] and params[:message].strip.length > 0
       sleep 30 if current_user.id == 951
-      ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message])
+      ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message], formatted_message: format_message(params[:message]))
       render :json => true
     else
     
@@ -52,8 +52,16 @@ class ChatController < ApplicationController
         messages = ChatMessage.desc(:created_at).limit(40)
       end
       
+      # Format any unformatted messages.
+      messages.each do |x|
+        if x.formatted_message.nil?
+          x.formatted_message = format_message x[:message]
+          x.save
+        end
+      end
+      
       # Convert Mongo model into hash.
-      messages = messages.map {|x| {id: x[:"_id"], user_id: x[:user_id], type: x[:message_type], message: format_message(x[:message]), raw_message: x[:message], created_at: x[:created_at]} }
+      messages = messages.map {|x| {id: x[:"_id"], user_id: x[:user_id], type: x[:message_type], message: x.formatted_message, raw_message: x[:message], created_at: x[:created_at]} }
 
       # Fetch user data for each message.
       users = {}
