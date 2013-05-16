@@ -153,30 +153,23 @@
 
       $p = this.$el.find("p")
 
-      if autoembeddingEnabled()
-        youtube_video = null
-        gif_url = null
-        $p.find("a").each ->
-          match = this.href.match /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g
+      youtube_video = null
+      $p.find("a").each ->
+        match = this.href.match /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g
+        if match
+          match = match[0].match /watch\?v=([a-zA-Z0-9\-_]+)/
           if match
-            match = match[0].match /watch\?v=([a-zA-Z0-9\-_]+)/
-            if match
-              youtube_video = match[1]
-          else
-            # Try GIFs
-            match = this.href.match /\.(gif|jpe?g|png)$/i
-            if match
-              gif_url = this.href
-              
+            youtube_video = match[1]
+            
+      
+      if youtube_video
+        iframe = $("<br><iframe width='350' height='240' frameborder='0' 
+          class='autoembed' allowfullscreen
+          src='http://youtube.com/embed/" + youtube_video + "' />");
+        $p.append(iframe)
         
-        if youtube_video
-          iframe = $("<br><iframe width='350' height='240' frameborder='0' 
-            allowfullscreen src='http://youtube.com/embed/" + youtube_video + "' />");
-          $p.append(iframe)
-        else
-          if gif_url
-            image = $("<br><img src='"+gif_url+"' style='max-height: 200px; width: auto; max-width: 600'>");
-            $p.append(image)
+      if autoembeddingEnabled()
+        $p.find('.autoembed').show()
         
       return this
   }

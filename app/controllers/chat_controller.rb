@@ -22,8 +22,10 @@ class ChatController < ApplicationController
 
   # Helper method. Takes raw message -> outputs HTML.
   def format_message(message)
-    autolinked = Rinku.auto_link(ERB::Util.html_escape(message), :all, 'target="_blank"')
-    username_linked = autolinked.gsub(/@[-_A-Za-z0-9]+/) do |x|
+    formatted = Rinku.auto_link(ERB::Util.html_escape(message), :all, 'target="_blank"')
+    
+    # Link @usernames.
+    formatted = formatted.gsub(/@[-_A-Za-z0-9]+/) do |x|
       u = User.find_by_name(x[1..-1])
       if u
         "<span class='name'>@<a href='#{user_url(u)}' target='_blank' data-user-name='#{u.name}'>#{u.name}</a></span>"
@@ -31,7 +33,19 @@ class ChatController < ApplicationController
         x
       end
     end
-    username_linked
+    
+    noko = Nokogiri::HTML.parse formatted
+    links = noko.css('a').map {|link| link['href'] }
+    if links.length == 1
+      # Embed stuff if there's only one link.
+      link = links[0]
+      if link =~ /\.(gif|jpe?g|png)$/i
+        # TODO check filesize.
+        formatted = formatted + "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600'>"
+      end
+    end
+    
+    formatted
   end
   
   def messages
