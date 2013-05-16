@@ -94,7 +94,7 @@ class UsersController < ApplicationController
     
     if @user != current_user
       if @user.followers.include? current_user
-        @user.followers.delete current_user
+        @user.followers.destroy current_user
       else
         @user.followers.push current_user
       end

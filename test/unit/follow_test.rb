@@ -22,13 +22,13 @@ class FollowTest < ActiveSupport::TestCase
     assert_equal 1, u1.following_count
     assert_equal 1, u2.followers_count
     
-    u1.followers.delete u2; u1.reload; u2.reload
+    u1.followers.destroy u2; u1.reload; u2.reload
     assert_equal 0, u1.followers_count
     assert_equal 0, u2.following_count
     assert_equal 1, u1.following_count
     assert_equal 1, u2.followers_count
     
-    u1.following.delete u1; u1.reload; u2.reload
+    u2.followers.destroy u1; u1.reload; u2.reload
     assert_equal 0, u1.followers_count
     assert_equal 0, u2.following_count
     assert_equal 0, u1.following_count
