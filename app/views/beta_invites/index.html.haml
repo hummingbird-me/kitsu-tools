@@ -19,3 +19,14 @@
             after you.
           .no-account.large-12.columns
             %p= @beta_invite.email
+            %p 
+              :javascript
+                function showInviteCodeForm() {
+                  $(".invite-code").show();
+                }
+              %a(href="javascript: showInviteCodeForm();") Have an invite code?
+              .invite-code.hide
+                %form(method="get" action="/beta_invites/invite_code")
+                  %input(name="invite_code" placeholder="Invite Code")
+                  %input(name="email" type="hidden"){:value => @beta_invite.email}
+                  %input(type="submit")

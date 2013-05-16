@@ -9,6 +9,22 @@ class BetaInvitesController < ApplicationController
   
   def new
   end
+
+  def invite_code
+    valid_codes = %w[ACEN2013]
+    email = params[:email].strip.downcase
+    code = params[:invite_code].strip.upcase
+    
+    if valid_codes.include? code
+      beta_invite = BetaInvite.find_by_email(email)
+      beta_invite.invite!
+      flash[:success] = "You have been invited to the beta!"
+    else
+      flash[:error] = "Sorry, #{code} is not a valid invite code."
+    end
+
+    redirect_to beta_invites_path(email: email)
+  end
   
   def create
     # Check whether there already is a beta invite by this name.
