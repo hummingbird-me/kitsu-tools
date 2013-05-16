@@ -4,6 +4,7 @@ class Watchlist < ActiveRecord::Base
   attr_accessible :user, :anime, :status, :episodes_watched, 
     :updated_at, :last_watched, :imported, :rating
 
+  validates :anime, :user, presence: true
   validates :user_id, :uniqueness => {:scope => :anime_id}
 
   has_and_belongs_to_many :episodes, :uniq => true
