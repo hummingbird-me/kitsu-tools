@@ -25,7 +25,7 @@ FactoryGirl.define do
   end
   
   factory :user do
-    name "Vikhyat Korrapati"
+    name "VikhyatKorrapati"
     email "c@vikhyat.net"
     password "password"
     password_confirmation "password"
