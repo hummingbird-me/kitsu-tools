@@ -36,9 +36,8 @@ class ChatController < ApplicationController
     
     noko = Nokogiri::HTML.parse formatted
     links = noko.css('a').map {|link| link['href'] }
-    if links.length == 1
-      # Embed stuff if there's only one link.
-      link = links[0]
+    if links.length > 0
+      link = links[-1]
       
       # Embed images.
       if link =~ /\.(gif|jpe?g|png)$/i
