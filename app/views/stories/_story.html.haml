@@ -20,7 +20,7 @@
 
         = link_to story.user.name, story.user
         liked a
-        = link_to "#{story.quote.anime.title} Quote", anime_quotes_path(story.quote.anime)
+        = link_to "#{story.quote.anime.canonical_title(current_user)} Quote", anime_quotes_path(story.quote.anime)
         .large-12.columns
           %p.episode-summary
             %i "#{story.quote.content}" &mdash; #{story.quote.character_name}
