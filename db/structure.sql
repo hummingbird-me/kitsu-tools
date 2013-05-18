@@ -57,6 +57,39 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: actions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE actions (
+    id integer NOT NULL,
+    user_id integer,
+    action_type character varying(255),
+    data hstore,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: actions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE actions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: actions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE actions_id_seq OWNED BY actions.id;
+
+
+--
 -- Name: anime; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1177,6 +1210,13 @@ ALTER SEQUENCE watchlists_id_seq OWNED BY watchlists.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY actions ALTER COLUMN id SET DEFAULT nextval('actions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY anime ALTER COLUMN id SET DEFAULT nextval('anime_id_seq'::regclass);
 
 
@@ -1381,6 +1421,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 --
 
 ALTER TABLE ONLY watchlists ALTER COLUMN id SET DEFAULT nextval('watchlists_id_seq'::regclass);
+
+
+--
+-- Name: actions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY actions
+    ADD CONSTRAINT actions_pkey PRIMARY KEY (id);
 
 
 --
@@ -1642,6 +1690,13 @@ CREATE INDEX anime_simple_search_index ON anime USING gin (((to_tsvector('simple
 --
 
 CREATE UNIQUE INDEX character_mal_id ON characters USING btree (mal_id);
+
+
+--
+-- Name: index_actions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_actions_on_user_id ON actions USING btree (user_id);
 
 
 --
@@ -2258,3 +2313,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130505144517');
 INSERT INTO schema_migrations (version) VALUES ('20130516154732');
 
 INSERT INTO schema_migrations (version) VALUES ('20130518054711');
+
+INSERT INTO schema_migrations (version) VALUES ('20130518104042');
