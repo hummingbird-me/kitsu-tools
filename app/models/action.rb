@@ -28,11 +28,28 @@ class Action
     elsif data[:action_type] == "liked_quote"
 
       # No aggregation.
-      story = Story.create user: user, story_type: "liked_quote", data: {
-        quote_id: data[:quote_id],
-      }
-      story.updated_at = data[:time]
-      story.save
+      # Only if the user doesn't already have a "story" for this quote.
+      quote = Quote.find(data[:quote_id])
+      if user.stories.where("data ? 'quote_id'").where("data -> 'quote_id' = :id", id: quote.id).count == 0
+        story = Story.create user: user, story_type: "liked_quote", data: {
+          quote_id: data[:quote_id],
+        }
+        story.updated_at = data[:time]
+        story.save
+      end
+      
+    elsif data[:action_type] == "submitted_quote"
+
+      # No aggregation.
+      # Only if the user doesn't already have a "story" for this quote.
+      quote = Quote.find(data[:quote_id])
+      if user.stories.where("data ? 'quote_id'").where("data -> 'quote_id' = :id", id: quote.id.to_s).count == 0
+        story = Story.create user: user, story_type: "submitted_quote", data: {
+          quote_id: data[:quote_id]
+        }
+        story.updated_at = data[:time]
+        story.save
+      end
       
     elsif data[:action_type] == "unliked_quote"
       

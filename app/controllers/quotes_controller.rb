@@ -23,6 +23,14 @@ class QuotesController < ApplicationController
     @quote.anime = @anime
     @quote.user = current_user
     @quote.save
+
+    Action.create({
+      user_id: current_user,
+      action_type: "submitted_quote",
+      quote_id: @quote.id,
+      time: Time.now
+    })
+
     redirect_to anime_quotes_path(@anime)
   end
 

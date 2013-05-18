@@ -13,7 +13,7 @@ class Story < ActiveRecord::Base
   end
 
   def quote
-    if story_type == "liked_quote"
+    if %w[liked_quote submitted_quote].include? story_type
       return Quote.find data["quote_id"]
     end
   end
