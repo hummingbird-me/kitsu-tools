@@ -51,6 +51,10 @@ GEM
       activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-postgres-hstore (0.7.6)
+      activerecord (>= 3.1)
+      pg-hstore (>= 1.1.5)
+      rake
     activerecord-reputation-system (2.0.2)
     activeresource (3.2.13)
       activemodel (= 3.2.13)
@@ -223,6 +227,7 @@ GEM
       cocaine (~> 0.5.0)
       mime-types
     pg (0.15.1)
+    pg-hstore (1.1.7)
     polyglot (0.3.3)
     pr_geohash (1.0.0)
     progress (2.4.0)
@@ -391,6 +396,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-postgres-hstore
   activerecord-reputation-system
   better_errors
   binding_of_caller

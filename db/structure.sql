@@ -23,6 +23,20 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 --
+-- Name: hstore; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
+
+
+--
 -- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
 --
 
@@ -2242,3 +2256,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130501161436');
 INSERT INTO schema_migrations (version) VALUES ('20130505144517');
 
 INSERT INTO schema_migrations (version) VALUES ('20130516154732');
+
+INSERT INTO schema_migrations (version) VALUES ('20130518054711');
