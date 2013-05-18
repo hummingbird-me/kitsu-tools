@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   has_many :following_relations, dependent: :destroy, foreign_key: :follower_id, class_name: 'Follow'
   has_many :following, through: :following_relations, source: :followed, class_name: 'User'
+
+  has_many :stories
   
   def to_param
     "#{id} #{name}".parameterize

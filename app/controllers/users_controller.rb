@@ -97,6 +97,12 @@ class UsersController < ApplicationController
         @user.followers.destroy current_user
       else
         @user.followers.push current_user
+        
+        Action.create({
+          user_id: current_user.id,
+          action_type: "followed",
+          followed_id: @user.id
+        })
       end
     end
     
@@ -108,6 +114,7 @@ class UsersController < ApplicationController
   def feed
     @active_tab = :feed
     @user = User.find(params[:user_id])
+    @stories = Story.where(user_id: @user).page(params[:page]).per(20)
     render "feed", layout: "layouts/profile"
   end
   

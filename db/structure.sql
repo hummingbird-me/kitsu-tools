@@ -62,8 +62,6 @@ SET default_with_oids = false;
 
 CREATE TABLE actions (
     id integer NOT NULL,
-    user_id integer,
-    action_type character varying(255),
     data hstore,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -1100,6 +1098,39 @@ ALTER SEQUENCE staged_imports_id_seq OWNED BY staged_imports.id;
 
 
 --
+-- Name: stories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE stories (
+    id integer NOT NULL,
+    user_id integer,
+    data hstore,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    story_type character varying(255)
+);
+
+
+--
+-- Name: stories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE stories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: stories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE stories_id_seq OWNED BY stories.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1413,6 +1444,13 @@ ALTER TABLE ONLY staged_imports ALTER COLUMN id SET DEFAULT nextval('staged_impo
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY stories ALTER COLUMN id SET DEFAULT nextval('stories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -1656,6 +1694,14 @@ ALTER TABLE ONLY staged_imports
 
 
 --
+-- Name: stories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY stories
+    ADD CONSTRAINT stories_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1690,13 +1736,6 @@ CREATE INDEX anime_simple_search_index ON anime USING gin (((to_tsvector('simple
 --
 
 CREATE UNIQUE INDEX character_mal_id ON characters USING btree (mal_id);
-
-
---
--- Name: index_actions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_actions_on_user_id ON actions USING btree (user_id);
 
 
 --
@@ -1928,6 +1967,13 @@ CREATE UNIQUE INDEX index_people_on_mal_id ON people USING btree (mal_id);
 --
 
 CREATE INDEX index_staged_imports_on_user_id ON staged_imports USING btree (user_id);
+
+
+--
+-- Name: index_stories_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_stories_on_user_id ON stories USING btree (user_id);
 
 
 --
@@ -2315,3 +2361,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130516154732');
 INSERT INTO schema_migrations (version) VALUES ('20130518054711');
 
 INSERT INTO schema_migrations (version) VALUES ('20130518104042');
+
+INSERT INTO schema_migrations (version) VALUES ('20130518111321');
+
+INSERT INTO schema_migrations (version) VALUES ('20130518112539');
+
+INSERT INTO schema_migrations (version) VALUES ('20130518112733');
