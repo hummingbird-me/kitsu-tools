@@ -13,7 +13,7 @@ class Action
       # If the user has a followed story in the last 6 hours, merge with it.
       # Otherwise create a new one.
       rs = user.stories.where(story_type: 'followed').order("updated_at DESC").limit(1)
-      if rs.length == 1 and rs[0].updated_at >= 6.hours.ago
+      if rs.length == 1 and rs[0].created_at >= 6.hours.ago
         story = rs[0]
         unless story.followed_users.include? followed_user
           story.data["followed_users"] = followed_user.id.to_s + "," + story.data["followed_users"]
