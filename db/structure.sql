@@ -57,37 +57,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: actions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE actions (
-    id integer NOT NULL,
-    data hstore,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: actions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE actions_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: actions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE actions_id_seq OWNED BY actions.id;
-
-
---
 -- Name: anime; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1241,13 +1210,6 @@ ALTER SEQUENCE watchlists_id_seq OWNED BY watchlists.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY actions ALTER COLUMN id SET DEFAULT nextval('actions_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY anime ALTER COLUMN id SET DEFAULT nextval('anime_id_seq'::regclass);
 
 
@@ -1459,14 +1421,6 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 --
 
 ALTER TABLE ONLY watchlists ALTER COLUMN id SET DEFAULT nextval('watchlists_id_seq'::regclass);
-
-
---
--- Name: actions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY actions
-    ADD CONSTRAINT actions_pkey PRIMARY KEY (id);
 
 
 --
@@ -2367,3 +2321,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130518111321');
 INSERT INTO schema_migrations (version) VALUES ('20130518112539');
 
 INSERT INTO schema_migrations (version) VALUES ('20130518112733');
+
+INSERT INTO schema_migrations (version) VALUES ('20130518133636');

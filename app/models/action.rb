@@ -2,7 +2,7 @@ class Action
   # TODO extract this code into a separate component (irisviel) if it becomes a
   # bottleneck. The problem is that the way things are now it is getting executed
   # in the HTTP request-response cycle.
-  # TODO thread-safety is still an issue. Just extract it out. :(
+  # FIXME thread-safety is still an issue. Just extract it out. :(
   def self.create(data)
     user = User.find data[:user_id]
     if data[:action_type] == "followed"
