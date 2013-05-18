@@ -17,7 +17,7 @@
                     = f.file_field :avatar, id: 'user_avatar'
                     Upload from Computer
 
-        = image_tag @user.avatar_url, :class => "avatar-image"
+        = image_tag @user.avatar_url, class: "avatar-image", height: 190, width: 190
         %span.karma
           = number_with_delimiter @user.reputation_for(:karma).to_i 
           Karma
