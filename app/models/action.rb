@@ -28,9 +28,11 @@ class Action
     elsif data[:action_type] == "liked_quote"
 
       # No aggregation.
-      Story.create user: user, story_type: "liked_quote", data: {
-        quote_id: data[:quote_id]
+      story = Story.create user: user, story_type: "liked_quote", data: {
+        quote_id: data[:quote_id],
       }
+      story.updated_at = data[:time]
+      story.save
       
     elsif data[:action_type] == "unliked_quote"
       

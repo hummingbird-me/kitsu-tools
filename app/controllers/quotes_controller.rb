@@ -34,14 +34,16 @@ class QuotesController < ApplicationController
       Action.create({
         user_id: current_user.id,
         action_type: "liked_quote",
-        quote_id: @quote.id
+        quote_id: @quote.id,
+        time: Time.now
       })
     else
       @quote.delete_evaluation(:votes, current_user)
       Action.create({
         user_id: current_user.id,
         action_type: "unliked_quote",
-        quote_id: @quote.id
+        quote_id: @quote.id,
+        time: Time.now
       })
     end
 
