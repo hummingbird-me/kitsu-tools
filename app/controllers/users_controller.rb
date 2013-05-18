@@ -114,7 +114,7 @@ class UsersController < ApplicationController
   def feed
     @active_tab = :feed
     @user = User.find(params[:user_id])
-    @stories = Story.where(user_id: @user).page(params[:page]).per(20)
+    @stories = Story.where(user_id: @user).order('updated_at DESC').page(params[:page]).per(20)
     render "feed", layout: "layouts/profile"
   end
   

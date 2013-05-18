@@ -11,4 +11,10 @@ class Story < ActiveRecord::Base
       return ids.map {|x| User.find(x) }
     end
   end
+
+  def quote
+    if story_type == "liked_quote"
+      return Quote.find data["quote_id"]
+    end
+  end
 end

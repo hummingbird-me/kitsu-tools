@@ -4,6 +4,7 @@
   .large-11.columns.no-padding-right
     %p.update-text
       - if story.story_type == "followed"
+        
         = link_to story.user.name, story.user
         started following
         
@@ -14,8 +15,20 @@
           #{link_to followed[0]} and #{link_to followed[1]}.
         - else
           #{link_to followed[0]}.
+
+      - elsif story.story_type == "liked_quote"
+
+        = link_to story.user.name, story.user
+        liked a
+        = link_to "#{story.quote.anime.title} Quote", anime_quotes_path(story.quote.anime)
+        .large-12.columns
+          %p.episode-summary
+            %i "#{story.quote.content}" &mdash; #{story.quote.character_name}
+
       - else
+
         %pre= story.to_yaml
+
     %p.update-time
       = distance_of_time_in_words_to_now story.updated_at
       ago
