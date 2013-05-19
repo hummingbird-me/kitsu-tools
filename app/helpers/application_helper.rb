@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def percentage_completed(anime, watchlist)
-    return 0 if !watchlist
+    return 0 if !watchlist or !anime.episode_count
     
     if anime.episode_count == 0
       if watchlist.status == "Finished"

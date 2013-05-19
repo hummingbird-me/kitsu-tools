@@ -2,6 +2,15 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  stories:
+    watchlist_status_updates:
+      plan_to_watch_html: "%{user} is planning to watch %{anime}."
+      currently_watching_html: "%{user} is currently watching %{anime}."
+      completed_html: "%{user} has completed %{anime}."
+      on_hold_html: "%{user} has placed %{anime} on hold."
+      dropped_html: "%{user} dropped %{anime}."
+
+        
   hello: "Hello world"
   admin:
     actions:

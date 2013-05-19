@@ -8,6 +8,17 @@ class WatchlistsController < ApplicationController
     # Update status.
     if params[:status]
       status = Watchlist.status_parameter_to_status(params[:status])
+      if @watchlist.status != status
+        # Create an action if the status was changed.
+        Action.create({
+          user_id: current_user.id,
+          action_type: "watchlist_status_update",
+          anime_id: @anime.slug,
+          old_status: @watchlist.status,
+          new_status: status,
+          time: Time.now
+        })
+      end
       @watchlist.status = status if Watchlist.valid_statuses.include? status
     end
     
@@ -48,6 +59,16 @@ class WatchlistsController < ApplicationController
     @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
 
     # Update status.
+    if @watchlist.status != params["watchlist"]["status"]
+      Action.create({
+        user_id: current_user.id,
+        action_type: "watchlist_status_update",
+        anime_id: @anime.slug,
+        old_status: @watchlist.status,
+        new_status: params["watchlist"]["status"],
+        time: Time.now
+      })
+    end
     @watchlist.status = params["watchlist"]["status"]
     
     # Update rating.

@@ -17,4 +17,10 @@ class Story < ActiveRecord::Base
       return Quote.find data["quote_id"]
     end
   end
+
+  def anime
+    if %w[watchlist_status_update].include? story_type
+      return Anime.find data["anime_id"]
+    end
+  end
 end

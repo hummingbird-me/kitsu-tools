@@ -5,7 +5,7 @@
     %p.update-text
       - if story.story_type == "followed"
         
-        = link_to story.user.name, story.user
+        = link_to story.user
         started following
         
         - followed = story.followed_users
@@ -18,7 +18,7 @@
 
       - elsif story.story_type == "liked_quote"
 
-        = link_to story.user.name, story.user
+        = link_to story.user
         liked a
         = link_to "#{story.quote.anime.canonical_title(current_user)} Quote", anime_quotes_path(story.quote.anime)
         .large-12.columns
@@ -27,12 +27,16 @@
 
       - elsif story.story_type == "submitted_quote"
 
-        = link_to story.user.name, story.user
+        = link_to story.user
         submitted a
         = link_to "#{story.quote.anime.canonical_title(current_user)} Quote", anime_quotes_path(story.quote.anime)
         .large-12.columns
           %p.episode-summary
             %i "#{story.quote.content}" &mdash; #{story.quote.character_name}
+
+      - elsif story.story_type == "watchlist_status_update"
+
+        = t (story.data["new_status"] + " html").parameterize.underscore.to_sym, scope: 'stories.watchlist_status_updates', user: link_to(story.user), anime: link_to(story.anime.canonical_title(current_user), story.anime)
 
       - else
 

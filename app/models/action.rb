@@ -12,7 +12,7 @@ class Action
       # Check whether there is a recent followed story for this user.
       # If the user has a followed story in the last 6 hours, merge with it.
       # Otherwise create a new one.
-      rs = user.stories.where(story_type: 'followed').order("updated_at DESC").limit(1)
+      rs = user.stories.where(story_type: 'followed').order("created_at DESC").limit(1)
       if rs.length == 1 and rs[0].created_at >= 6.hours.ago
         story = rs[0]
         unless story.followed_users.include? followed_user
@@ -55,6 +55,28 @@ class Action
       
       # Delete the story for liking this quote.
       user.stories.where(story_type: 'liked_quote').where("data -> 'quote_id' = :id", id: data[:quote_id].to_s).each {|x| x.destroy }
+
+    elsif data[:action_type] == "watchlist_status_update"
+
+      # If the user has a watchlist_status_update story for this anime that was
+      # updated in the last 2 hours, update that one. Otherwise create a new
+      # story.
+      rs = user.stories.where(story_type: 'watchlist_status_update').where("data -> 'anime_id' = :id", id: data[:anime_id].to_s).order('updated_at DESC').limit(1)
+      if rs.length == 1 and rs[0].updated_at >= 2.hours.ago
+        story = rs[0]
+        story.data["old_status"] = data[:old_status]
+        story.data["new_status"] = data[:new_status]
+        story.updated_at = data[:time]
+        story.save
+      else
+        story = Story.create user: user, story_type: "watchlist_status_update", data: {
+          anime_id: data[:anime_id],
+          old_status: data[:old_status],
+          new_status: data[:new_status]
+        }
+        story.updated_at = data[:time]
+        story.save
+      end
 
     end
   end
