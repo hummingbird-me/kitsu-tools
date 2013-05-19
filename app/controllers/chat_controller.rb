@@ -43,7 +43,7 @@ class ChatController < ApplicationController
       if link =~ /\.(gif|jpe?g|png)$/i
         begin
           if open(link).size <= 1024*1024
-            formatted += "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600'>"
+            formatted += "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600' />"
           end
         rescue
         end
