@@ -50,7 +50,7 @@
             (Finished loading <span>0</span> entries.)
 
 %script(type="text/template" id="WatchlistItemViewTemplate")
-  %td.library-item-title{:width => "505"}
+  %td.library-item-title{:width => "495"}
     .relative-wrapper
       %a{:href => "{{anime.url}}"} {{anime.title}}
       {{#private}}
@@ -64,7 +64,7 @@
         %a.click-add
           %i.icon-angle-up
       <span class="edit">{{episodes_watched}}</span> <span class="hide-small">/ {{anime.episode_count}}</span>
-  %td{:width => "68"} 
+  %td{:width => "76"} 
     %span.select
       - if @user.star_rating
         %i.icon-star
