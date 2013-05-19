@@ -22,8 +22,9 @@
 %script(type="text/template" id="WatchlistSectionViewTemplate")
   %table.large-12.columns.fake-table-row
     %thead
-      %tr
-        %th{:width => "505"}= link_to "Title", "#"#, :class => "active"
+      %tr.sortOptions
+        %th{:width => "505"}
+          %a(data-sortparam="title") Title
         %th{:width => "95"}= link_to "Progress", "#"
         %th{:width => "68"}= link_to "Rating", "#"
         %th{:width => "65"}= link_to "Type", "#"
@@ -173,9 +174,26 @@
       WatchlistSectionViews[newSection].renderContents()
       return WatchlistSectionCollections[newSection].get d.id
 
+  negateString = (str) ->
+    str = _.map str.toLowerCase().split(""), (l) ->
+      return String.fromCharCode(-(l.charCodeAt(0)));
+    return str
+
   WatchlistSectionCollections = {}
+  WatchlistSectionCollectionClass = Backbone.Collection.extend
+    sortByParameter: "lastWatchedDesc"
+    comparator: (c) ->
+      if this.sortByParameter == "lastWatchedDesc"
+        if c.get("last_watched")
+          return -moment(c.get("last_watched")).unix()
+        else
+          return -moment(c.get("updated_at")).unix()
+      else if this.sortByParameter == "title"
+        return c.get("anime").title
+      else if this.sortByParameter == "titleDesc"
+        return negateString c.get("anime").title
   _.each WatchlistSections, (s) ->
-    WatchlistSectionCollections[s] = new Backbone.Collection []
+    WatchlistSectionCollections[s] = new WatchlistSectionCollectionClass []
 
   # Views
   WatchlistItemView = Backbone.View.extend
@@ -302,6 +320,21 @@
       i.set "_view", iv
     render: ->
       this.$el.html this.template.render()
+      that = this
+      section = WatchlistSectionCollections[that.options.section]
+      this.$el.find(".sortOptions a").click ->
+        param = $(this).attr("data-sortparam")
+        if $(this).hasClass("active")
+          if param == section.sortByParameter
+            param = param + "Desc"
+          else
+            param = "lastWatchedDesc"
+            $(this).removeClass("active")
+        else
+          $(this).addClass("active")
+        section.sortByParameter = param
+        section.sort()
+        that.renderContents()
       $("#table-" + this.options.section + " .library-table").append this.el
       return this
     renderContents: ->
