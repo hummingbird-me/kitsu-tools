@@ -72,9 +72,9 @@ class ChatController < ApplicationController
       if params[:since]
         messages = ChatMessage.desc(:created_at).where(:created_at.gte => DateTime.parse(params[:since])).limit(100)
       elsif params[:until]
-        messages = ChatMessage.desc(:created_at).where(:created_at.lte => DateTime.parse(params[:until])).limit(40)
+        messages = ChatMessage.desc(:created_at).where(:created_at.lte => DateTime.parse(params[:until])).limit(100)
       else
-        messages = ChatMessage.desc(:created_at).limit(40)
+        messages = ChatMessage.desc(:created_at).limit(100)
       end
       
       # Format any unformatted messages.
