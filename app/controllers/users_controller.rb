@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       return
     end
 
-    redirect_to user_watchlist_path(@user)
+    redirect_to user_feed_path(@user)
     return
 
     @active_tab = :profile

@@ -35,8 +35,7 @@
       .large-12.columns.user-links
         .link-wrapper
           %ul
-            - if user_signed_in? and current_user.admin?
-              %li{:class => ("active" if @active_tab == :feed)}= link_to "Activity Feed", user_feed_path(@user)
+            %li{:class => ("active" if @active_tab == :feed)}= link_to "Activity Feed", user_feed_path(@user)
             %li.hide= link_to "About", user_path(@user)
             %li{:class => ("active" if @active_tab == :library)}
               = link_to "Library", user_watchlist_path(@user)
