@@ -2,7 +2,7 @@
   .row
     .large-12.columns
       = form_for watchlist do |f|
-        = f.hidden_field :anime_id
+        = f.hidden_field :anime_id, value: watchlist.anime.slug
         %fieldset
           %legend Update Your Watchlist
           .row
