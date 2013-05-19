@@ -31,8 +31,14 @@
           %a(data-sortparam="progress") 
             Progress
             %i.icon.icon-sort
-        %th{:width => "68"}= link_to "Rating", "#"
-        %th{:width => "65"}= link_to "Type", "#"
+        %th{:width => "68"}
+          %a(data-sortparam="rating") 
+            Rating
+            %i.icon.icon-sort
+        %th{:width => "65"}
+          %a(data-sortparam="type") 
+            Type
+            %i.icon.icon-sort
 
     %tbody.fake-table-row.library-item
 
@@ -201,6 +207,10 @@
         return c.get("episodes_watched")
       else if this.sortByParameter == "progressDesc"
         return -c.get("episodes_watched")
+      else if this.sortByParameter == "type"
+        return c.get("anime").show_type
+      else if this.sortByParameter == "typeDesc"
+        return negateString c.get("anime").show_type
   _.each WatchlistSections, (s) ->
     WatchlistSectionCollections[s] = new WatchlistSectionCollectionClass []
 
