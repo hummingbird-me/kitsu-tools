@@ -93,6 +93,7 @@ $header-font-weight: normal;
 // $header-top-margin: .2em;
 // $header-bottom-margin: .5em;
 // $header-text-rendering: optimizeLegibility;
+$header-text-rendering: auto;
 
 // We use these to control header font sizes
 // $h1-font-size: emCalc(44px);
@@ -122,6 +123,7 @@ $header-font-weight: normal;
 // $paragraph-aside-font-size: emCalc(14px);
 // $paragraph-aside-line-height: 1.35;
 // $paragraph-aside-font-style: italic;
+$paragraph-text-rendering: auto;
 
 // We use these to style <code> tags
 // $code-color: darken($alert-color, 15%);
