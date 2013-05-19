@@ -353,6 +353,9 @@
       section = WatchlistSectionCollections[that.options.section]
       this.$el.find(".sortOptions a").click ->
         param = $(this).attr("data-sortparam")
+        others = that.$el.find(".sortOptions a[data-sortparam!='" + param + "']")
+        others.removeClass("active")
+        others.find("i.icon").removeClass("icon-sort-down").removeClass("icon-sort-up").addClass("icon-sort")
         if $(this).hasClass("active")
           if param == section.sortByParameter
             $(this).find("i.icon").removeClass("icon-sort").removeClass("icon-sort-up").addClass("icon-sort-down")
