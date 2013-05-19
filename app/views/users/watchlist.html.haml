@@ -24,8 +24,13 @@
     %thead
       %tr.sortOptions
         %th{:width => "505"}
-          %a(data-sortparam="title") Title
-        %th{:width => "95"}= link_to "Progress", "#"
+          %a(data-sortparam="title") 
+            Title
+            %i.icon.icon-sort
+        %th{:width => "95"}
+          %a(data-sortparam="progress") 
+            Progress
+            %i.icon.icon-sort
         %th{:width => "68"}= link_to "Rating", "#"
         %th{:width => "65"}= link_to "Type", "#"
 
@@ -192,6 +197,10 @@
         return c.get("anime").title
       else if this.sortByParameter == "titleDesc"
         return negateString c.get("anime").title
+      else if this.sortByParameter == "progress"
+        return c.get("episodes_watched")
+      else if this.sortByParameter == "progressDesc"
+        return -c.get("episodes_watched")
   _.each WatchlistSections, (s) ->
     WatchlistSectionCollections[s] = new WatchlistSectionCollectionClass []
 
@@ -326,11 +335,14 @@
         param = $(this).attr("data-sortparam")
         if $(this).hasClass("active")
           if param == section.sortByParameter
+            $(this).find("i.icon").removeClass("icon-sort").removeClass("icon-sort-up").addClass("icon-sort-down")
             param = param + "Desc"
           else
+            $(this).find("i.icon").removeClass("icon-sort-down").removeClass("icon-sort-up").addClass("icon-sort")
             param = "lastWatchedDesc"
             $(this).removeClass("active")
         else
+          $(this).find("i.icon").removeClass("icon-sort").removeClass("icon-sort-down").addClass("icon-sort-up")
           $(this).addClass("active")
         section.sortByParameter = param
         section.sort()
