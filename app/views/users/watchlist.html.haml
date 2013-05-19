@@ -23,7 +23,7 @@
   %table.large-12.columns.fake-table-row
     %thead
       %tr.sortOptions
-        %th{:width => "505"}
+        %th{:width => "500"}
           %a(data-sortparam="title") 
             Title
             %i.icon.icon-sort
@@ -31,7 +31,7 @@
           %a(data-sortparam="progress") 
             Progress
             %i.icon.icon-sort
-        %th{:width => "68"}
+        %th{:width => "71"}
           %a(data-sortparam="rating") 
             Rating
             %i.icon.icon-sort
@@ -207,6 +207,16 @@
         return c.get("episodes_watched")
       else if this.sortByParameter == "progressDesc"
         return -c.get("episodes_watched")
+      else if this.sortByParameter == "rating"
+        if c.get("rating").value == "-"
+          return 0
+        else
+          return c.get("rating").value
+      else if this.sortByParameter == "ratingDesc"
+        if c.get("rating").value == "-"
+          return 0
+        else
+          return -c.get("rating").value
       else if this.sortByParameter == "type"
         return c.get("anime").show_type
       else if this.sortByParameter == "typeDesc"
