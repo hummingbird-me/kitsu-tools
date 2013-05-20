@@ -1,70 +1,204 @@
-.large-banner
-  %figure
-    .overlay
-    = image_tag "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/074/original/another3.jpg?1361895288", style: "height: 720px; width: 100%", class: 'background-image'
-    :javascript
-      var images = [
-        "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/076/original/blood.jpg?1361895445",
-        "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/074/original/another3.jpg?1361895288",
-        "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/072/original/another.jpg?1361895189",
-        "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/059/original/darker4.jpg?1361823103",
-        "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/058/original/darker3.jpg?1361823078",
-        "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/057/original/darker2.jpg?1361823056",
-        "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/056/original/darker.jpg?1361823028",
-        "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/136/original/melancholy.jpg?1362175820",
-        "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/137/original/melancholy3.jpg?1362175882",
-      ];
-      var randomImage = images[Math.floor(Math.random() * images.length)];
-      $('.background-image').attr('src', randomImage);
+- if user_signed_in?
+  .large-banner
+    %figure
+      .overlay
+      = image_tag "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/074/original/another3.jpg?1361895288", style: "height: 720px; width: 100%", class: 'background-image'
+      :javascript
+        var images = [
+          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/076/original/blood.jpg?1361895445",
+          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/074/original/another3.jpg?1361895288",
+          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/072/original/another.jpg?1361895189",
+          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/059/original/darker4.jpg?1361823103",
+          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/058/original/darker3.jpg?1361823078",
+          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/057/original/darker2.jpg?1361823056",
+          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/056/original/darker.jpg?1361823028",
+          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/136/original/melancholy.jpg?1362175820",
+          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/137/original/melancholy3.jpg?1362175882",
+        ];
+        var randomImage = images[Math.floor(Math.random() * images.length)];
+        $('.background-image').attr('src', randomImage);
 
-.home.anime-discover.anime-show.login-register-card
-  .header-content.row
-    .large-12.columns
-      .features
-        %h1.salsbury Discover New Anime.
-        %h2 Hummingbird is a new and easy way to find <br/>anime titles you'll love.
+  .home.anime-discover.anime-show.login-register-card
+    .header-content.row
+      .large-12.columns
+        .features
+          %h1.salsbury Discover New Anime.
+          %h2 Hummingbird is a new and easy way to find <br/>anime titles you'll love.
+          .row
+            .large-8.columns.large-centered{:style => "margin-bottom: 40px;"}
+              %ul.inline-list{:style => "display: inline-block; margin: 0 auto;"}
+                %li 
+                  .fb-like{"data-href" => "http://www.facebook.com/pages/Hummingbird/460188747373182?ref=hl", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
+                %li{:style => "background: none; margin-top: 2px;"}
+                  %a.twitter-share-button{"data-text" => "Hummingbird is a new and easy way to find anime titles you'll love. #anime", "data-url" => "http://www.hummingbird.ly", "data-via" => "Hummingbird_ly", :href => "https://twitter.com/share"} Tweet
+
+
+              - if user_signed_in?
+                .large-11.columns.large-centered{:style => "margin-top: 40px; height: 60px; margin-bottom: 100px; overflow: visible;"}
+                  .search
+                    %form{:action => "/search", :autocomplete => "off"}
+                      %input.typeahead_home(type="text" name="query" placeholder = "Search Anime by Title" autocomplete="off")
+                      %input#nav_search_submit.submit.ss-icon{:type => 'submit', :value => 'search'}
+              - else
+                = form_for BetaInvite.new, url: beta_invites_path do |f|
+                  .LR-sign-up-container{:style => ""}
+                    %span.LR-sign-up-label{:style => "display: none;"} Request an invite
+                    #fieldbase.LR-sign-up-container-inner
+                      = f.email_field :email, class: 'signup-email', placeholder: "Enter your email...", id: 'input'
+                      = f.submit "Request Invite", class: 'LR-sign-up-submit', id: 'button'
+                  %p We will never share your email address with anyone, period.
+
+    .row
+      .large-12.columns
+        .title
+          %h3 
+            Recent Activity
+        .watching-now.large-12.columns
+          - @recent_anime.each do |watchlist|
+            .large-3.columns
+              .panel
+                = link_to image_tag(watchlist.anime.cover_image.url(:thumb)), watchlist.anime
+                .large-12.columns
+                  .user-circle.large-7.columns.large-centered
+                    %span.avatar= image_tag watchlist.user.avatar.url(:thumb)
+                .large-12.columns
+                  %p.name= link_to watchlist.user.name, watchlist.user      
+
+        - if @latest_reviews.length == 2
+          .large-12.columns
+            .title
+              %h3 Latest Reviews
+            = render partial: 'reviews/review_summary', collection: @latest_reviews, as: :review
+- else
+  :css
+    .hummingbird-header-1 {
+      display: none;
+    }
+    .footer-ad {
+      display: none;
+    }
+  .guest-home
+
+    // Nav Bar
+    .row
+      .large-12.columns
+        .small-6.columns
+          %p.left Hummingbird
+        .small-6.columns
+          %p.right Already a Member? <a href="#">Login, we missed you</a>
+
+    // Tagline Area
+    .row 
+      .large-12.columns
+        %h1.center Track, Share and Discover New Anime
+        .large-7.columns.large-centered
+          %p.center
+            %i Hummingbird is an anime discovery platform that gives you personalised recommendations based on the anime you love.
+
+    // Top CTA
+    .row
+      .large-6.columns.large-centered
+        %form
+          .large-8.columns
+            %input{:placeholder => "Enter Email Address...", :type => "text"}
+          .large-4.columns
+            %a.button.padded{:href => "#"} Request Invite
+
+    // Screenshot Banner
+    .row
+      .large-12.columns
+        %p.center Screenshot banner
+
+    // Main features
+    .row
+      .large-12.columns
+        .large-4.columns
+          %h3 
+            %i.icon-book
+            Curate your library
+          %hr
+          %p Easily track your Library of anime you’ve watched, plan to watch and are currently watching. Watch anime via Hulu, Crunchyroll and Netflix and more.
+        .large-4.columns
+          %h3 
+            %i.icon-th-list 
+            Create & share lists
+          %hr
+          %p Compile and Share lists of anime such as ‘Series that makes me cry’, ‘Shows to watch with friends’, etc. Share your list for suggestions from friends to perfect it!
+        .large-4.columns
+          %h3 
+            %i.icon-group
+            Follow your friends
+          %hr
+          %p Find and follow your friends to see what they’re watching, enjoying and discussing and give personal recommendations on what to watch next.
+      %hr
+
+    // Recommendation Examples
+    .row 
+      .large-12.columns
+        %p.center Find Anime based on your unique taste
+        %p.center With Hummingbird you’ll get a refreshingly simple way to discover new anime. 
+        .large-6.columns.large-centered
+          %form
+            .large-12.columns
+              %input{:placeholder => "Try us with your favorite anime...", :type => "text"}
+          %h3.center If you liked <a href="#">Naruto</a>, you may also like...
+
+    // Recommendation Grid
+    .row
+      .large-12.columns.no-padding
+        .large-3.columns.no-padding
+          = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
+          .large-12.columns
+            %h4 Attack on Titan
+            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
+            <a href="#"><i class="icon-refresh"></i> More Like This</a>
+        .large-3.columns.no-padding
+          = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
+          .large-12.columns
+            %h4 Attack on Titan
+            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
+            <a href="#"><i class="icon-refresh"></i> More Like This</a>
+        .large-3.columns.no-padding
+          = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
+          .large-12.columns
+            %h4 Attack on Titan
+            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
+            <a href="#"><i class="icon-refresh"></i> More Like This</a>
+        .large-3.columns.no-padding
+          = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
+          .large-12.columns
+            %h4 Attack on Titan
+            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
+            <a href="#"><i class="icon-refresh"></i> More Like This</a>
+
+    // Tagline Area
+    .row 
+      .large-12.columns
+        %p.center The easiest way to track, share and discover new anime. <strong>Request your invite now - Free.</strong>
+
+    // Top CTA
+    .row
+      .large-6.columns.large-centered
+        %form
+          .large-8.columns
+            %input{:placeholder => "Enter Email Address...", :type => "text"}
+          .large-4.columns
+            %a.button.padded{:href => "#"} Request Invite
+
+    // Popular Anime This Week
+    .row
+      .large-12.columns
+        %p Popular Anime <strong>This Week</strong>
         .row
-          .large-8.columns.large-centered{:style => "margin-bottom: 40px;"}
-            %ul.inline-list{:style => "display: inline-block; margin: 0 auto;"}
-              %li 
-                .fb-like{"data-href" => "http://www.facebook.com/pages/Hummingbird/460188747373182?ref=hl", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
-              %li{:style => "background: none; margin-top: 2px;"}
-                %a.twitter-share-button{"data-text" => "Hummingbird is a new and easy way to find anime titles you'll love. #anime", "data-url" => "http://www.hummingbird.ly", "data-via" => "Hummingbird_ly", :href => "https://twitter.com/share"} Tweet
-
-
-            - if user_signed_in?
-              .large-11.columns.large-centered{:style => "margin-top: 40px; height: 60px; margin-bottom: 100px; overflow: visible;"}
-                .search
-                  %form{:action => "/search", :autocomplete => "off"}
-                    %input.typeahead_home(type="text" name="query" placeholder = "Search Anime by Title" autocomplete="off")
-                    %input#nav_search_submit.submit.ss-icon{:type => 'submit', :value => 'search'}
-            - else
-              = form_for BetaInvite.new, url: beta_invites_path do |f|
-                .LR-sign-up-container{:style => ""}
-                  %span.LR-sign-up-label{:style => "display: none;"} Request an invite
-                  #fieldbase.LR-sign-up-container-inner
-                    = f.email_field :email, class: 'signup-email', placeholder: "Enter your email...", id: 'input'
-                    = f.submit "Request Invite", class: 'LR-sign-up-submit', id: 'button'
-                %p We will never share your email address with anyone, period.
-
-  .row
-    .large-12.columns
-      .title
-        %h3 
-          Recent Activity
-      .watching-now.large-12.columns
-        - @recent_anime.each do |watchlist|
-          .large-3.columns
-            .panel
-              = link_to image_tag(watchlist.anime.cover_image.url(:thumb)), watchlist.anime
-              .large-12.columns
-                .user-circle.large-7.columns.large-centered
-                  %span.avatar= image_tag watchlist.user.avatar.url(:thumb)
-              .large-12.columns
-                %p.name= link_to watchlist.user.name, watchlist.user      
-
-      - if @latest_reviews.length == 2
-        .large-12.columns
-          .title
-            %h3 Latest Reviews
-          = render partial: 'reviews/review_summary', collection: @latest_reviews, as: :review
+          .small-6.large-2.columns
+            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
+          .small-6.large-2.columns
+            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
+          .small-6.large-2.columns
+            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
+          .small-6.large-2.columns
+            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
+          .small-6.large-2.columns
+            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
+          .small-6.large-2.columns
+            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
