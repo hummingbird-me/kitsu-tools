@@ -96,6 +96,7 @@ class Watchlist < ActiveRecord::Base
       },
       episodes_watched: self.episodes_watched,
       last_watched: self.last_watched || self.updated_at,
+      rewatched_times: self.rewatched_times,
       status: self.status,
       rating: {
         value: self.rating ? self.rating+3 : "-",

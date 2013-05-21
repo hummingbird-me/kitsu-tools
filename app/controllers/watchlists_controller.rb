@@ -39,6 +39,11 @@ class WatchlistsController < ApplicationController
         @watchlist.rating = [ [-2, params[:rating].to_i].max, 2 ].min
       end
     end
+
+    # Update rewatched_times.
+    if params[:rewatched_times]
+      @watchlist.rewatched_times = params[:rewatched_times]
+    end
     
     # Update episode count.
     if params[:episodes_watched]
