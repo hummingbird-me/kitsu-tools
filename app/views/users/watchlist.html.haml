@@ -58,9 +58,11 @@
         &#8901;
         %i.icon-eye-close 
       {{/private}}
+      {{#notes_present}}
       %span.item-indicator
         &#8901;
         %i.icon-book
+      {{/notes_present}}
       - if @user == current_user
         %i.icon-reorder
   %td.episode-count{:width => "95"}
