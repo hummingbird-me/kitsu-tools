@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
+.error {
+  border-color: #1ABC9C !important;
+  background: #1ABC9C !important;
+}
 .follow-button {
   line-height: 30px !important; 
   padding: 0px !important; 

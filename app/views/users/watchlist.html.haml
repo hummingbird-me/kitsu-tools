@@ -98,18 +98,16 @@
       .large-8.columns.meta-content
         .large-12.columns.last-update
           %p Last Library Update: {{formattedLastUpdateTime}}
-        .large-3.columns.thumbnail.hide-for-small
+        .large-4.columns.thumbnail.hide-for-small
           %img(src="{{anime.cover_image}}")
         
         // Left side of dropdown with thumbnail and description
-        .large-9.columns.library-item-info
+        .large-8.columns.library-item-info
           %span.title {{anime.title}}
           .rating
           %span.description {{anime.short_synopsis}}
           %span.description-link
             %a(style="color: #fd864b" href="{{anime.url}}") [Read More]
-        .large-12.columns.no-padding.hide-for-small
-          %p.note-title Personal Notes:
 
       // Right side of dropdown with update content
       .large-4.columns.action-area
