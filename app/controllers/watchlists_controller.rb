@@ -46,7 +46,7 @@ class WatchlistsController < ApplicationController
     end
 
     # Update notes.
-    if params[:notes] and params[:notes].strip.length > 0
+    if params[:notes]
       @watchlist.notes = params[:notes]
     end
     
