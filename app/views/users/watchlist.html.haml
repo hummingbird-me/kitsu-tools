@@ -162,7 +162,9 @@
           .row
             .small-12
               %textarea{:placeholder => "Personal Notes about {{anime.title}}", :class => "personal-notes", :name => "notes"} {{notes}}
-            
+              %small.error.saving-indicator(style="display:none")
+                %i.icon.icon-spin.icon-spinner
+                Saving...
 :coffee
   starRatings = #{@user.star_rating.inspect}
   currentUsersProfile = #{@user == current_user}
@@ -343,6 +345,7 @@
 
       # Submit notes form.
       this.$dropdown.find("form.notes-form").change ->
+        that.$dropdown.find("form.notes-form .saving-indicator").show()
         notes = that.$dropdown.find("form.notes-form textarea").val()
         that.model.update {"notes": notes}
     
