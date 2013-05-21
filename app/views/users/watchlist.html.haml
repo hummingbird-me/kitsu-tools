@@ -380,28 +380,50 @@
     render: ->
       this.$el.html this.template.render()
       that = this
-      section = WatchlistSectionCollections[that.options.section]
       this.$el.find(".sortOptions a").click ->
         param = $(this).attr("data-sortparam")
-        others = that.$el.find(".sortOptions a[data-sortparam!='" + param + "']")
-        others.removeClass("active")
-        others.find("i.icon").removeClass("icon-sort-down").removeClass("icon-sort-up").addClass("icon-sort")
-        if $(this).hasClass("active")
-          if param == section.sortByParameter
-            $(this).find("i.icon").removeClass("icon-sort").removeClass("icon-sort-up").addClass("icon-sort-down")
-            param = param + "Desc"
-          else
-            $(this).find("i.icon").removeClass("icon-sort-down").removeClass("icon-sort-up").addClass("icon-sort")
-            param = "lastWatchedDesc"
-            $(this).removeClass("active")
-        else
-          $(this).find("i.icon").removeClass("icon-sort").removeClass("icon-sort-down").addClass("icon-sort-up")
-          $(this).addClass("active")
-        section.sortByParameter = param
-        section.sort()
-        that.renderContents()
+        that.setSortOrderToNext(param)
+        
       $("#table-" + this.options.section + " .library-table").append this.el
       return this
+
+    setSortOrder: (sortOrder) ->
+      # Activate the relevant title and show the relevant icon.
+
+      this.$el.find(".sortOptions a").removeClass("active")
+      this.$el.find(".sortOptions a i.icon").removeClass("icon-sort-down").removeClass("icon-sort-up").addClass("icon-sort")
+
+      if sortOrder.substr(-4) == "Desc"
+        param = sortOrder.substr(0, sortOrder.length-4)
+      else
+        param = sortOrder
+        
+      anchor = this.$el.find(".sortOptions a[data-sortparam='" + param + "']")
+
+      if sortOrder.substr(-4) == "Desc"
+        anchor.find("i.icon").removeClass("icon-sort").addClass("icon-sort-down")
+      else
+        anchor.find("i.icon").removeClass("icon-sort").addClass("icon-sort-up")
+
+      anchor.addClass("active")
+
+      section = WatchlistSectionCollections[this.options.section]
+      $.jStorage.set "sortOrder_"+this.options.section, sortOrder
+      section.sortByParameter = sortOrder
+      section.sort()
+      this.renderContents()
+      
+    
+    setSortOrderToNext: (param) ->
+      section = WatchlistSectionCollections[this.options.section]
+
+      if param == section.sortByParameter
+        param = param + "Desc"
+      else if param == section.sortByParameter.substr(0, section.sortByParameter.length - 4)
+        param = "lastWatchedDesc"
+        
+      this.setSortOrder param
+      
     renderContents: ->
       tbody = $("<tbody class='fake-table-row library-item'></tbody>")
       this.collection.each (i) ->
@@ -415,6 +437,8 @@
       collection: WatchlistSectionCollections[s]
       section: s
     WatchlistSectionViews[s].render()
+    if $.jStorage.get("sortOrder_" + s)
+      WatchlistSectionViews[s].setSortOrder $.jStorage.get("sortOrder_" + s)
 
   lastRender = moment()
   perPage = 50
