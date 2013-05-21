@@ -91,7 +91,7 @@ class Watchlist < ActiveRecord::Base
         title: self.anime.canonical_title(current_user),
         cover_image: self.anime.cover_image.url(:thumb),
         episode_count: self.anime.episode_count,
-        short_synopsis: truncate(self.anime.synopsis, length: 280, separator: ' '),
+        short_synopsis: truncate(self.anime.synopsis, length: 380, separator: ' '),
         show_type: self.anime.show_type
       },
       episodes_watched: self.episodes_watched,
