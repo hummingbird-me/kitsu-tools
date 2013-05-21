@@ -71,21 +71,20 @@
             = render partial: 'reviews/review_summary', collection: @latest_reviews, as: :review
 - else
   :css
-    .hummingbird-header-1 {
+    .hummingbird-header-1, .footer-ad {
       display: none;
     }
-    .footer-ad {
-      display: none;
-    }
+  
   .guest-home
-
     // Nav Bar
     .row
       .large-12.columns
         .small-6.columns
           %p.left Hummingbird
         .small-6.columns
-          %p.right Already a Member? <a href="#">Login, we missed you</a>
+          %p.right 
+            Already a Member? 
+            = link_to "Login, we missed you!", main_app.new_user_session_path
 
     // Tagline Area
     .row 
