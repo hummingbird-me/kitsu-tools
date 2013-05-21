@@ -275,8 +275,28 @@
 // Guest View
 .guest-home {
   background: #fff;
-  .tagline {
-    margin-bottom: 0px;
+  .guest-nav {
+    padding-top: 30px;
+    .h-logo {
+      width: 100%;
+      height: auto;
+      max-width: 210px;
+      max-height: 42px;
+    }
+    .login-link {
+      margin-bottom: 0px;
+      padding-top: 10px;
+    }
+  }
+  .tagline-area {
+    margin-top: 20px;
+    .tagline {
+      margin-bottom: 0px;
+    }
+    .flavor-text {
+      font-size: 20px;
+      margin-bottom: 0px;
+    }
   }
   input {
     height: 36px;
@@ -290,6 +310,35 @@
   }
   .main-features {
     margin-top: 20px;
+  }
+  .find-anime {
+    font-size: 30px;
+    margin-bottom: 0px;
+    color: #222;
+    @media (max-width: 480px) {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  }
+  .find-anime-description {
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
+  .recommendation-area {
+    position: relative;
+    .recommendation-input {
+      height: 45px;
+      margin-bottom: 30px;
+      font-size: 20px;
+      @media (max-width: 480px) {
+        font-size: 15px;
+      }
+    }
+    .search-button {
+      position: absolute;
+      right: 30px;
+      top: 14px;
+    }
   }
   .screenshot-banner {
     background: url("guest-banner.jpg");
@@ -349,6 +398,24 @@
           }
         }
       }
+    }
+  }
+  .secondary-cta-tagline {
+    font-size: 25px;
+    margin-bottom: 0px;
+    margin-top: 30px;
+  }
+  .mobile-cta-tagline {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  .bottom-cta {
+    padding-bottom: 30px;
+  }
+  .cta-button {
+    @media (max-width: 480px) {
+      padding-left: 0px;
     }
   }
 }

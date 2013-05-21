@@ -80,20 +80,22 @@
   .guest-home
 
     // Nav Bar
-    .row
+    .row.guest-nav
       .large-12.columns
         .small-6.columns
-          %p.left Hummingbird
+          = image_tag "h-logo.jpg", :class => "h-logo"
         .small-6.columns
-          %p.right Already a Member? <a href="#">Login, we missed you</a>
+          %p.right.hide-for-small.login-link Already a Member? <a href="#">Login, we missed you</a>
+          %p.right.show-for-small.login-link <a href="#">Login</a>
 
     // Tagline Area
-    .row 
+    .row.tagline-area
       .large-12.columns
-        %h1.center.tagline Track, Share and Discover New Anime
-        .large-7.columns.large-centered
-          %p.center
-            %i Hummingbird is an anime discovery platform that gives you personalised recommendations based on the anime you love.
+        %h1.center.tagline.hide-for-small Track, Share and Discover New Anime
+        %h3.center.small-tagline.show-for-small Track, Share and Discover New Anime
+        .large-8.columns.large-centered
+          %p.center.flavor-text
+            %i.hide-for-small Hummingbird is an anime discovery platform that gives you personalised recommendations based on the anime you love.
 
     // Top CTA
     .row.top-cta
@@ -101,7 +103,7 @@
         %form
           .large-8.columns.no-padding
             %input{:placeholder => "Enter Email Address...", :type => "text"}
-          .large-4.columns.no-padding-right
+          .large-4.columns.no-padding-right.cta-button
             %a.button.padded{:href => "#"} Request Invite
 
     // Screenshot Banner
@@ -135,13 +137,15 @@
     // Recommendation Examples
     .row 
       .large-12.columns
-        %p.center Find Anime based on your unique taste
-        %p.center With Hummingbird you’ll get a refreshingly simple way to discover new anime. 
-        .large-6.columns.large-centered
+        %p.center.find-anime <strong>Find Anime</strong> based on your unique taste
+        %p.center.find-anime-description.hide-for-small With Hummingbird you’ll get a refreshingly simple way to discover new anime. 
+        .small-12.large-8.columns.large-centered
           %form
-            .large-12.columns
-              %input{:placeholder => "Try us with your favorite anime...", :type => "text"}
-          %h3.center If you liked <a href="#">Naruto</a>, you may also like...
+            .large-12.columns.recommendation-area
+              %input{:placeholder => "Try us with your favorite anime...", :type => "text", :class => "recommendation-input"}
+              %i.icon-search.search-button
+          %h3.center.hide-for-small If you liked <a href="#">Naruto</a>, you may also like...
+          %h4.center.show-for-small If you liked <a href="#">Naruto</a>, you may also like...
 
     // Recommendation Grid
     .row
@@ -178,31 +182,14 @@
     // Tagline Area
     .row 
       .large-12.columns
-        %p.center <span class="hide-for-small">The easiest way to track, share and discover new anime.</span> <strong>Request your invite now - Free.</strong>
+        %p.center.secondary-cta-tagline.hide-for-small The easiest way to track, share and discover new anime. <strong>Request your invite now - Free.</strong>
+        %p.center.mobile-cta-tagline.show-for-small <strong>Request your invite now - Free.</strong>
 
-    // Top CTA
-    .row
+    // Bottom CTA
+    .row.bottom-cta
       .large-6.columns.large-centered
         %form
           .large-8.columns.no-padding
             %input{:placeholder => "Enter Email Address...", :type => "text"}
-          .large-4.columns.no-padding-right
+          .large-4.columns.no-padding-right.cta-button
             %a.button.padded{:href => "#"} Request Invite
-
-    // Popular Anime This Week
-    .row
-      .large-12.columns
-        %p Popular Anime <strong>This Week</strong>
-        .row
-          .small-6.large-2.columns
-            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
-          .small-6.large-2.columns
-            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
-          .small-6.large-2.columns
-            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
-          .small-6.large-2.columns
-            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
-          .small-6.large-2.columns
-            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
-          .small-6.large-2.columns
-            = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg"
