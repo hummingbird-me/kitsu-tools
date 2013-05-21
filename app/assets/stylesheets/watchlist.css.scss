@@ -386,9 +386,9 @@
         padding-top: 10px;
       }
 
-      .private-indicator {
+      .item-indicator {
         display: inline-block;
-        color: #bdbcbc;
+        color: #5c5c5c;
       }
 
       &.private {
@@ -646,7 +646,7 @@
         .last-update {
           padding: 0px;
           font-size: 14px;
-          color: #bebebe;
+          color: #222;
           margin-bottom: 5px;
           margin-top: -5px;
           p {
@@ -744,6 +744,19 @@
         }
       }
     }
+  }
+  .note-title {
+    margin-bottom: 0px;
+    position: relative;
+    top: 15px;
+    color: #222;
+  }
+  .personal-notes {
+    margin-top: 10px;
+    box-shadow: none;
+    margin-bottom: 0px;
+    font-size: 16px;
+    border-radius: 3px;
   }
   .adzone {
     margin-top: 15px;

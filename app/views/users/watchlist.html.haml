@@ -54,8 +54,13 @@
     .relative-wrapper
       %a{:href => "{{anime.url}}"} {{anime.title}}
       {{#private}}
-      %span.private-indicator [PRIVATE]
+      %span.item-indicator
+        &#8901;
+        %i.icon-eye-close 
       {{/private}}
+      %span.item-indicator
+        &#8901;
+        %i.icon-book
       - if @user == current_user
         %i.icon-reorder
   %td.episode-count{:width => "95"}
@@ -64,6 +69,7 @@
         %a.click-add
           %i.icon-angle-up
       <span class="edit">{{episodes_watched}}</span> <span class="hide-small">/ {{anime.episode_count}}</span>
+
   %td{:width => "76"} 
     %span.select
       - if @user.star_rating
@@ -90,7 +96,7 @@
       .large-8.columns.meta-content
         .large-12.columns.last-update
           %p Last Library Update: {{formattedLastUpdateTime}}
-        .large-3.columns.thumbnail
+        .large-3.columns.thumbnail.hide-for-small
           %img(src="{{anime.cover_image}}")
         
         // Left side of dropdown with thumbnail and description
@@ -100,6 +106,8 @@
           %span.description {{anime.short_synopsis}}
           %span.description-link
             %a(style="color: #fd864b" href="{{anime.url}}") [Read More]
+        .large-12.columns.no-padding.hide-for-small
+          %p.note-title Personal Notes:
 
       // Right side of dropdown with update content
       .large-4.columns.action-area
@@ -117,10 +125,19 @@
               .large-3.columns.option-label
                 %span Watched:
               .large-9.columns.status-dropdown
-                .large-6.columns.episode-input
+                .small-6.large-6.columns.episode-input
                   %input(name="episodes_watched" type="number" value="{{episodes_watched}}" min="0" max="{{anime.episode_count}}")
-                .large-6.columns.end.episode-count
+                .small-6.large-6.columns.end.episode-count
                   %span.postfix Out of {{anime.episode_count}}
+
+            .large-12.columns.episodes-watched
+              .large-3.columns.option-label
+                %span Completed:
+              .large-7.columns.status-dropdown
+                .small-6.large-6.columns.episode-input
+                  %input(name="episodes_watched" type="number" value="{{episodes_watched}}" min="0" max="{{anime.episode_count}}")
+                .small-6.large-6.columns.end.episode-count
+                  %span.postfix Times
 
             .large-12.columns.privacy-setting
               .large-3.columns.option-label
@@ -137,7 +154,14 @@
         // Spinner
         %span.updating-icon.hide
           %i.icon-spinner.icon-spin.updating-icon
-            
+      
+      .large-12.columns
+        %form
+          .row
+            .small-12
+              %textarea{:placeholder => "Personal Notes about anime.title", :class => "personal-notes"}
+
+   
             
 :coffee
   starRatings = #{@user.star_rating.inspect}
