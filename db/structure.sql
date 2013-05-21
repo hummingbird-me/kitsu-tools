@@ -1183,7 +1183,9 @@ CREATE TABLE watchlists (
     rating integer,
     last_watched timestamp without time zone,
     imported boolean,
-    private boolean DEFAULT false
+    private boolean DEFAULT false,
+    notes text,
+    rewatched_times integer DEFAULT 0
 );
 
 
@@ -1976,8 +1978,6 @@ INSERT INTO schema_migrations (version) VALUES ('20130130114735');
 
 INSERT INTO schema_migrations (version) VALUES ('20130130124651');
 
-INSERT INTO schema_migrations (version) VALUES ('20130130211028');
-
 INSERT INTO schema_migrations (version) VALUES ('20130130211236');
 
 INSERT INTO schema_migrations (version) VALUES ('20130130221825');
@@ -2325,3 +2325,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130518112539');
 INSERT INTO schema_migrations (version) VALUES ('20130518112733');
 
 INSERT INTO schema_migrations (version) VALUES ('20130518133636');
+
+INSERT INTO schema_migrations (version) VALUES ('20130521181445');
