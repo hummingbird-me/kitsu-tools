@@ -104,7 +104,7 @@
         = form_for BetaInvite.new, url: beta_invites_path do |f|
           .large-8.columns.no-padding
             = f.email_field :email, placeholder: "Enter Email Address..."
-          .large-4.columns.no-padding-right
+          .large-4.columns.no-padding-right.cta-button
             = f.submit "Request Invite", class: 'button expand'
 
     // Screenshot Banner
