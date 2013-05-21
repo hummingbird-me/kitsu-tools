@@ -158,11 +158,10 @@
           %i.icon-spinner.icon-spin.updating-icon
       
       .large-12.columns
-        %form
+        %form.notes-form
           .row
             .small-12
-              %textarea{:placeholder => "Personal Notes about {{anime.title}}", :class => "personal-notes", :value => "{{anime.notes}}"}
-
+              %textarea{:placeholder => "Personal Notes about {{anime.title}}", :class => "personal-notes", :name => "notes"} {{notes}}
    
             
 :coffee
@@ -342,6 +341,11 @@
       # Submit updates when needed.
       this.$dropdown.find("form.custom").submit -> that.submitDropdownForm()
       this.$dropdown.find("form.custom").change -> that.submitDropdownForm()
+
+      # Submit notes form.
+      this.$dropdown.find("form.notes-form").change ->
+        notes = that.$dropdown.find("form.notes-form textarea").val()
+        that.model.update {"notes": notes}
     
     dropdownLoading: ->
       $(".opacity-wrapper").addClass("updating")

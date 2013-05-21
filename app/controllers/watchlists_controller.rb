@@ -44,6 +44,11 @@ class WatchlistsController < ApplicationController
     if params[:rewatched_times]
       @watchlist.rewatched_times = params[:rewatched_times]
     end
+
+    # Update notes.
+    if params[:notes] and params[:notes].strip.length > 0
+      @watchlist.notes = params[:notes]
+    end
     
     # Update episode count.
     if params[:episodes_watched]
