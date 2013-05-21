@@ -154,4 +154,10 @@ class UsersController < ApplicationController
     current_user.update_attributes(facebook_id: nil)
     redirect_to :back
   end
+
+  def redirect_short_url
+    @user = User.find_by_name params[:username]
+    raise ActionController::RoutingError.new('Not Found') if @user.nil?
+    redirect_to @user
+  end
 end

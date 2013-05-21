@@ -85,6 +85,8 @@ Hummingbird::Application.routes.draw do
     as: :update_rating
   match '/watchlist/update' => 'watchlists#update_watchlist'
 
+  match '/u/:username' => 'users#redirect_short_url'
+
   # Admin Panel
   constraint = lambda do |request| 
     request.env["warden"].authenticate? and request.env['warden'].user.admin?
