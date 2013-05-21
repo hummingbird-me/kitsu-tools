@@ -90,27 +90,27 @@
     // Tagline Area
     .row 
       .large-12.columns
-        %h1.center Track, Share and Discover New Anime
+        %h1.center.tagline Track, Share and Discover New Anime
         .large-7.columns.large-centered
           %p.center
             %i Hummingbird is an anime discovery platform that gives you personalised recommendations based on the anime you love.
 
     // Top CTA
-    .row
+    .row.top-cta
       .large-6.columns.large-centered
         %form
-          .large-8.columns
+          .large-8.columns.no-padding
             %input{:placeholder => "Enter Email Address...", :type => "text"}
-          .large-4.columns
+          .large-4.columns.no-padding-right
             %a.button.padded{:href => "#"} Request Invite
 
     // Screenshot Banner
-    .row
-      .large-12.columns
-        %p.center Screenshot banner
+    .row.screenshot-banner.hide-for-small
+      .large-12.columns.mac-pro
+        = image_tag "mac-pro.png"
 
     // Main features
-    .row
+    .row.main-features
       .large-12.columns
         .large-4.columns
           %h3 
@@ -145,44 +145,48 @@
 
     // Recommendation Grid
     .row
-      .large-12.columns.no-padding
-        .large-3.columns.no-padding
+      .large-12.columns.no-padding.recommendations
+        .small-6.large-3.columns.no-padding.recommendation
+          = image_tag "http://img1.ak.crunchyroll.com/i/spire1/d7a8b3541d44709a1df5197947debacc1367432151_full.jpg", :class => "no-padding"
+          .large-12.columns.meta-wrapper
+            .meta-data
+              %h4.anime-title Naruto Shippuden
+              %p <a href="#">Action</a> · <a href="#">Comedy</a> · <a href="#">Shounen</a>
+              <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
+        .small-6.large-3.columns.no-padding.recommendation
           = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
-          .large-12.columns
-            %h4 Attack on Titan
-            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
-            <a href="#"><i class="icon-refresh"></i> More Like This</a>
-        .large-3.columns.no-padding
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
-          .large-12.columns
-            %h4 Attack on Titan
-            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
-            <a href="#"><i class="icon-refresh"></i> More Like This</a>
-        .large-3.columns.no-padding
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
-          .large-12.columns
-            %h4 Attack on Titan
-            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
-            <a href="#"><i class="icon-refresh"></i> More Like This</a>
-        .large-3.columns.no-padding
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
-          .large-12.columns
-            %h4 Attack on Titan
-            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
-            <a href="#"><i class="icon-refresh"></i> More Like This</a>
+          .large-12.columns.meta-wrapper
+            .meta-data
+              %h4.anime-title Attack on Titan
+              %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
+              <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
+        .small-6.large-3.columns.no-padding.recommendation
+          = image_tag "http://img1.ak.crunchyroll.com/i/spire4/bc6a6632d9a1cbf1f8b0d233c26f14901365195220_full.jpg", :class => "no-padding"
+          .large-12.columns.meta-wrapper
+            .meta-data
+              %h4.anime-title #{truncate("Gargantia on the Verdurous Planet", :length => 25)}
+              %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
+              <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
+        .small-6.large-3.columns.no-padding.recommendation
+          = image_tag "http://img1.ak.crunchyroll.com/i/spire4/5fe886f3daa6485efecf1ea6dc5207931343265548_full.jpg", :class => "no-padding"
+          .large-12.columns.meta-wrapper
+            .meta-data
+              %h4.anime-title Sword Art Online
+              %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
+              <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
 
     // Tagline Area
     .row 
       .large-12.columns
-        %p.center The easiest way to track, share and discover new anime. <strong>Request your invite now - Free.</strong>
+        %p.center <span class="hide-for-small">The easiest way to track, share and discover new anime.</span> <strong>Request your invite now - Free.</strong>
 
     // Top CTA
     .row
       .large-6.columns.large-centered
         %form
-          .large-8.columns
+          .large-8.columns.no-padding
             %input{:placeholder => "Enter Email Address...", :type => "text"}
-          .large-4.columns
+          .large-4.columns.no-padding-right
             %a.button.padded{:href => "#"} Request Invite
 
     // Popular Anime This Week
