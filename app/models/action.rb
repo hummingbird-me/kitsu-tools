@@ -30,7 +30,7 @@ class Action
       # No aggregation.
       # Only if the user doesn't already have a "story" for this quote.
       quote = Quote.find(data[:quote_id])
-      if user.stories.where("data ? 'quote_id'").where("data -> 'quote_id' = :id", id: quote.id).count == 0
+      if user.stories.where("data ? 'quote_id'").where("data -> 'quote_id' = :id", id: quote.id.to_s).count == 0
         story = Story.create user: user, story_type: "liked_quote", data: {
           quote_id: data[:quote_id],
         }

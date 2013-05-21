@@ -71,22 +71,23 @@
             = render partial: 'reviews/review_summary', collection: @latest_reviews, as: :review
 - else
   :css
-    .hummingbird-header-1 {
+    .hummingbird-header-1, .footer-ad {
       display: none;
     }
-    .footer-ad {
-      display: none;
-    }
+  
   .guest-home
-
     // Nav Bar
     .row.guest-nav
       .large-12.columns
         .small-6.columns
           = image_tag "h-logo.jpg", :class => "h-logo"
         .small-6.columns
-          %p.right.hide-for-small.login-link Already a Member? <a href="#">Login, we missed you</a>
-          %p.right.show-for-small.login-link <a href="#">Login</a>
+
+          %p.right.hide-for-small.login-link 
+            Already a Member?
+            = link_to "Login, we missed you!", main_app.new_user_session_path
+          %p.right.show-for-small.login-link
+            = link_to "Login, we missed you!", main_app.new_user_session_path
 
     // Tagline Area
     .row.tagline-area
@@ -100,6 +101,12 @@
     // Top CTA
     .row.top-cta
       .large-6.columns.large-centered
+        = form_for BetaInvite.new, url: beta_invites_path do |f|
+          .large-8.columns.no-padding
+            = f.email_field :email, placeholder: "Enter Email Address..."
+          .large-4.columns.no-padding-right
+            = f.submit "Request Invite", class: 'button padded'
+        
         %form
           .large-8.columns.no-padding
             %input{:placeholder => "Enter Email Address...", :type => "text"}
