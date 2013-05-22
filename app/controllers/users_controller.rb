@@ -142,7 +142,7 @@ class UsersController < ApplicationController
   def update_avatar
     @user = User.find(params[:user_id])
     authorize! :update, @user
-    if params[:user][:avatar]
+    if params[:user] and params[:user][:avatar]
       @user.avatar = params[:user][:avatar]
       flash[:success] = "Avatar updated successfully." if @user.save
     end
