@@ -67,8 +67,6 @@
     return $(".settings .desktop-notifications input#on")[0].checked
 
   notifyUser = (image, title, content) ->
-    console.log content
-    console.log desktopNotificationsEnabled() and not pageVisible()
     if desktopNotificationsEnabled() and not pageVisible()
       notification = window.webkitNotifications.createNotification image, title, content
       notification.show()
