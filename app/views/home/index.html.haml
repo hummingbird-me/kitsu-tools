@@ -165,8 +165,8 @@
             %input{:placeholder => "Try us with your favorite anime...", :type => "text", :class => "recommendation-input"}
             %i.icon-search.search-button
               
-        %h3.center.hide-for-small If you liked <a href="#">{{title}}</a>, you may also like...
-        %h4.center.show-for-small If you liked <a href="#">{{title}}</a>, you may also like...
+        %h3.center.hide-for-small If you liked <a href="{{url}}">{{title}}</a>, you may also like...
+        %h4.center.show-for-small If you liked <a href="{{url}}">{{title}}</a>, you may also like...
 
   // Recommendation Grid
   .row
@@ -208,9 +208,9 @@
       $.getJSON "/api/v1/anime/" + slug + "/similar?limit=4", (similar) ->
         console.log anime
         console.log similar
-    $("#recommendationExample").html recommendationExampleTemplate.render
-      title: "Naruto"
-      url: "/anime/naruto"
+        $("#recommendationExample").html recommendationExampleTemplate.render
+          title: anime.title
+          url: "/anime/naruto"
 
-  #updateRecommendationExample "attack-on-titan"
+  updateRecommendationExample "clannad"
 
