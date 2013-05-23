@@ -136,50 +136,7 @@
       %hr
 
     // Recommendation Examples
-    .row 
-      .large-12.columns
-        %p.center.find-anime <strong>Find Anime</strong> based on your unique taste
-        %p.center.find-anime-description.hide-for-small With Hummingbird you’ll get a refreshingly simple way to discover new anime. 
-        .small-12.large-8.columns.large-centered
-          %form.hide
-            .large-12.columns.recommendation-area
-              %input{:placeholder => "Try us with your favorite anime...", :type => "text", :class => "recommendation-input"}
-              %i.icon-search.search-button
-                
-          %h3.center.hide-for-small If you liked <a href="#">Naruto</a>, you may also like...
-          %h4.center.show-for-small If you liked <a href="#">Naruto</a>, you may also like...
-
-    // Recommendation Grid
-    .row
-      .large-12.columns.no-padding.recommendations
-        .small-6.large-3.columns.no-padding.recommendation
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire1/d7a8b3541d44709a1df5197947debacc1367432151_full.jpg", :class => "no-padding"
-          .large-12.columns.meta-wrapper
-            .meta-data
-              %h4.anime-title Naruto Shippuden
-              %p <a href="#">Action</a> · <a href="#">Comedy</a> · <a href="#">Shounen</a>
-              <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
-        .small-6.large-3.columns.no-padding.recommendation
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
-          .large-12.columns.meta-wrapper
-            .meta-data
-              %h4.anime-title Attack on Titan
-              %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
-              <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
-        .small-6.large-3.columns.no-padding.recommendation
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire4/bc6a6632d9a1cbf1f8b0d233c26f14901365195220_full.jpg", :class => "no-padding"
-          .large-12.columns.meta-wrapper
-            .meta-data
-              %h4.anime-title #{truncate("Gargantia on the Verdurous Planet", :length => 25)}
-              %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
-              <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
-        .small-6.large-3.columns.no-padding.recommendation
-          = image_tag "http://img1.ak.crunchyroll.com/i/spire4/5fe886f3daa6485efecf1ea6dc5207931343265548_full.jpg", :class => "no-padding"
-          .large-12.columns.meta-wrapper
-            .meta-data
-              %h4.anime-title Sword Art Online
-              %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
-              <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
+    #recommendationExample
 
     // Tagline Area
     .row 
@@ -190,8 +147,68 @@
     // Bottom CTA
     .row.bottom-cta
       .large-6.columns.large-centered
-        %form
+        = form_for BetaInvite.new, url: beta_invites_path do |f|
           .large-8.columns.no-padding
-            %input{:placeholder => "Enter Email Address...", :type => "text"}
+            = f.email_field :email, placeholder: "Enter Email Address..."
           .large-4.columns.no-padding-right.cta-button
-            %a.button.padded{:href => "#"} Request Invite
+            = f.submit "Request Invite", class: 'button expand'
+
+
+%script(type="text/template" id="RecommendationExampleTemplate")
+  .row 
+    .large-12.columns
+      %p.center.find-anime <strong>Find Anime</strong> based on your unique taste
+      %p.center.find-anime-description.hide-for-small With Hummingbird you’ll get a refreshingly simple way to discover new anime. 
+      .small-12.large-8.columns.large-centered
+        %form.hide
+          .large-12.columns.recommendation-area
+            %input{:placeholder => "Try us with your favorite anime...", :type => "text", :class => "recommendation-input"}
+            %i.icon-search.search-button
+              
+        %h3.center.hide-for-small If you liked <a href="#">{{title}}</a>, you may also like...
+        %h4.center.show-for-small If you liked <a href="#">{{title}}</a>, you may also like...
+
+  // Recommendation Grid
+  .row
+    .large-12.columns.no-padding.recommendations
+      .small-6.large-3.columns.no-padding.recommendation
+        = image_tag "http://img1.ak.crunchyroll.com/i/spire1/d7a8b3541d44709a1df5197947debacc1367432151_full.jpg", :class => "no-padding"
+        .large-12.columns.meta-wrapper
+          .meta-data
+            %h4.anime-title Naruto Shippuden
+            %p <a href="#">Action</a> · <a href="#">Comedy</a> · <a href="#">Shounen</a>
+            <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
+      .small-6.large-3.columns.no-padding.recommendation
+        = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
+        .large-12.columns.meta-wrapper
+          .meta-data
+            %h4.anime-title Attack on Titan
+            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
+            <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
+      .small-6.large-3.columns.no-padding.recommendation
+        = image_tag "http://img1.ak.crunchyroll.com/i/spire4/bc6a6632d9a1cbf1f8b0d233c26f14901365195220_full.jpg", :class => "no-padding"
+        .large-12.columns.meta-wrapper
+          .meta-data
+            %h4.anime-title #{truncate("Gargantia on the Verdurous Planet", :length => 25)}
+            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
+            <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
+      .small-6.large-3.columns.no-padding.recommendation
+        = image_tag "http://img1.ak.crunchyroll.com/i/spire4/5fe886f3daa6485efecf1ea6dc5207931343265548_full.jpg", :class => "no-padding"
+        .large-12.columns.meta-wrapper
+          .meta-data
+            %h4.anime-title Sword Art Online
+            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
+            <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
+
+:coffee
+  recommendationExampleTemplate = Hogan.compile $("#RecommendationExampleTemplate").html()
+  
+  @updateRecommendationExample = (slug) ->
+    $.getJSON "/api/v1/anime/" + slug + "/similar", (similar) ->
+      console.log similar
+    $("#recommendationExample").html recommendationExampleTemplate.render
+      title: "Naruto"
+      url: "/anime/naruto"
+
+  #updateRecommendationExample "attack-on-titan"
+
