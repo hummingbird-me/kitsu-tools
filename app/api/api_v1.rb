@@ -9,7 +9,7 @@ class API_v1 < Grape::API
     @end_time = Time.now
     $riemann << {
       service: "api req",
-      metric: @end_time - @start_time,
+      metric: (@end_time - @start_time).to_f,
       state: "ok"
     }
   end
