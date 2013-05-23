@@ -17,6 +17,7 @@ class API_v1 < Grape::API
   resource :system do
     desc "Returns pong."
     get :ping do
+      sleep 1
       {ping: 'pong'}
     end
   end
