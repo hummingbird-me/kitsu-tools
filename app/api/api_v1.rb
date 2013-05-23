@@ -20,11 +20,9 @@ class API_v1 < Grape::API
     params do
       requires :id, type: String, desc: "anime ID"
     end
-    route_param :id do
-      get do
-        anime = Anime.find(params[:id])
-        {title: anime.canonical_title, alternate_title: anime.alternate_title}
-      end
+    get ':id' do
+      anime = Anime.find(params[:id])
+      {title: anime.canonical_title, alternate_title: anime.alternate_title}
     end
     
     desc "Returns similar anime."
