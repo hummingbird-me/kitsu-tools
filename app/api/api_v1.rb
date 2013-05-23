@@ -16,9 +16,20 @@ class API_v1 < Grape::API
   end
   
   resource :anime do
+    desc "Return an anime"
+    params do
+      requires :id, type: String, desc: "anime ID"
+    end
+    route_param :id do
+      get do
+        anime = Anime.find(params[:id])
+        {title: anime.canonical_title, alternate_title: anime.alternate_title}
+      end
+    end
+    
     desc "Returns similar anime."
     params do
-      requires :id, type: String, desc: "anime slug"
+      requires :id, type: String, desc: "anime ID"
       optional :limit, type: Integer, desc: "number of results (max/default 20)"
     end
     get ':id/similar' do

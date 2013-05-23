@@ -204,8 +204,10 @@
   recommendationExampleTemplate = Hogan.compile $("#RecommendationExampleTemplate").html()
   
   @updateRecommendationExample = (slug) ->
-    $.getJSON "/api/v1/anime/" + slug + "/similar", (similar) ->
-      console.log similar
+    $.getJSON "/api/v1/anime/" + slug, (anime) ->
+      $.getJSON "/api/v1/anime/" + slug + "/similar", (similar) ->
+        console.log anime
+        console.log similar
     $("#recommendationExample").html recommendationExampleTemplate.render
       title: "Naruto"
       url: "/anime/naruto"
