@@ -170,44 +170,18 @@
 
   // Recommendation Grid
   .row
-    {{#similar}}
     .large-12.columns.no-padding.recommendations
+      {{#similar}}
       .small-6.large-3.columns.no-padding.recommendation
         %img(class="no-padding" src="{{cover_image}}")
         .large-12.columns.meta-wrapper
           .meta-data
-            %h4.anime-title {{title}}
-    {{/similar}}
+            %h4.anime-title <a href="{{url}}">{{title}}</a>
+            %p {{#genres}} {{name}} ·{{/genres}}
+            <a href="#" class="more-like-this hide"><i class="icon-refresh"></i> More Like This</a>
+            
+      {{/similar}}
     
-    .large-12.columns.no-padding.recommendations
-      .small-6.large-3.columns.no-padding.recommendation
-        = image_tag "http://img1.ak.crunchyroll.com/i/spire1/d7a8b3541d44709a1df5197947debacc1367432151_full.jpg", :class => "no-padding"
-        .large-12.columns.meta-wrapper
-          .meta-data
-            %h4.anime-title Naruto Shippuden
-            %p <a href="#">Action</a> · <a href="#">Comedy</a> · <a href="#">Shounen</a>
-            <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
-      .small-6.large-3.columns.no-padding.recommendation
-        = image_tag "http://img1.ak.crunchyroll.com/i/spire2/654681f8eefdc13ad8dee196ff2a74f71366329524_full.jpg", :class => "no-padding"
-        .large-12.columns.meta-wrapper
-          .meta-data
-            %h4.anime-title Attack on Titan
-            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
-            <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
-      .small-6.large-3.columns.no-padding.recommendation
-        = image_tag "http://img1.ak.crunchyroll.com/i/spire4/bc6a6632d9a1cbf1f8b0d233c26f14901365195220_full.jpg", :class => "no-padding"
-        .large-12.columns.meta-wrapper
-          .meta-data
-            %h4.anime-title #{truncate("Gargantia on the Verdurous Planet", :length => 25)}
-            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
-            <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
-      .small-6.large-3.columns.no-padding.recommendation
-        = image_tag "http://img1.ak.crunchyroll.com/i/spire4/5fe886f3daa6485efecf1ea6dc5207931343265548_full.jpg", :class => "no-padding"
-        .large-12.columns.meta-wrapper
-          .meta-data
-            %h4.anime-title Sword Art Online
-            %p <a href="#">Action</a> · <a href="#">Drama</a> · <a href="#">Fantasy</a>
-            <a href="#" class="more-like-this"><i class="icon-refresh"></i> More Like This</a>
 
 :coffee
   recommendationExampleTemplate = Hogan.compile $("#RecommendationExampleTemplate").html()
@@ -220,5 +194,5 @@
           url: anime.url
           similar: similar
 
-  updateRecommendationExample "clannad"
+  updateRecommendationExample "steins-gate"
 
