@@ -4,7 +4,7 @@
   background: #fff;
   min-height: 400px;
   .feed-form {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e6e6e6;
     margin-bottom: 10px;
     margin-top: 5px;
     input {
@@ -16,104 +16,61 @@
   .feed-list {
     list-style: none;
     li.feed-item {
-      border-top: 1px solid #f1f1f1;
-      padding-top: 15px;
-      padding-bottom: 15px;
-      .avatar {
-        width: 100%;
-        height: 100%;
-        @include border-radius(100px);
-      }
-      .comment-avatar {
-        width: 40px;
-        height: 40px;
-      }
-      .update-text {
-        margin-bottom: 0px;
-      }
-      .update-time {
-        margin-bottom: 0px;
-        font-size: 12px;
-      }
-      .like-comment-area {
+      border-bottom: 1px solid #e6e6e6;
+      padding-top: 10px;
+      padding-bottom: 5px;
+      .feed-wrapper {
         margin-top: 5px;
-        margin-bottom: 0px;
-        .like {
-          padding-left: 10px;
-          .link {
-            font-size: 13px;
-            font-weight: 500;
-            padding-right: 10px;
-            border-right: 1px solid #eee;
-            color: #222;
-            font-family: "omnes";
+        margin-bottom: 5px;
+        .anime-feed-title {
+          margin: 0px;
+        }
+        .anime-feed-genres {
+          margin: 0px !important;
+          a {
+            color: #717171;
             &:hover {
-              color: #fd864b
+              color: #fd854a;
             }
           }
         }
-        .comment {
-          margin-left: 10px;
-          .link {
-            font-size: 13px;
-            font-weight: 500;
-            color: #222;
-            font-family: "omnes";
-            &:hover {
-              color: #fd864b
-            }
-          }
-        }
-      }
-      .comment-area {
-        background: #f7f6f6;
-        margin-bottom: -15px;
-        padding: 10px;
-        padding-top: 10px;
-        .avatar-wrapper {
-          position: absolute;
-          .input-avatar {
-            height: 30px;
-            width: 30px;
-            border-left: 1px solid #cccccc;
-            border-top: 1px solid #cccccc;
-            border-bottom: 1px solid #cccccc;
-            @include border-left-radius(2px); 
-          }
-        }
-        .input-wrapper {
-          padding-left: 29px;
-          input {
-            height: 30px;
-            margin-bottom: 0px;
-            box-shadow: none;
-            @include border-right-radius(2px); 
-          }
-        }
-        div.comment {
-          border-bottom: 1px solid #e4e4e4;
-          padding-bottom: 5px !important;
+        .quote-preview {
+          color: #a9a9a9;
           margin-bottom: 10px;
         }
-      }
-      .timestamp {
-        font-size: 12px;
-        margin-bottom: 0px;
-        margin-top: 5px;
-      }
-      .episode-summary {
-        color: #a9a9a9;
-        margin-top: 10px;
-      }
-      .episode-image {
-        float: left;
-        padding: 10px;
-        width: 160px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-      }
-      &:first-child {
-        border-top: none;
+        .wall-post-copy {
+          margin-bottom: 0px;
+          font-size: 18px;
+        }
+        .feed-divider {
+          margin-top: 5px;
+          margin-bottom: 10px;
+          border-color: #ededed;
+        }
+        .time {
+          margin-bottom: 0px;
+          .time-ago {
+            color: #a0a0a0;
+            font-size: 12px;
+            a {
+              color: #6b6b6b;
+              &:hover {
+                color: #fd854a;
+              }
+            }
+          }
+        }
+        .show-more {
+          position: absolute;
+          background: white;
+          padding: 0px 10px;
+          font-size: 12px;
+          bottom: -20px;
+          color: #6b6b6b;
+          &:hover {
+            color: #fd854a;
+          }
+        }
       }
     }
   }

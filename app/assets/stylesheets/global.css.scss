@@ -25,6 +25,10 @@
   }
 }
 
+a {
+  @include transition(color, 0.2s);
+}
+
 .no-padding {
   padding: 0px !important;
 }
