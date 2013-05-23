@@ -1,47 +1,37 @@
-%li.feed-item.cf
-  .large-1.columns.no-padding-right.hide-for-small
-    = link_to image_tag(story.user.avatar.url(:thumb), class: 'avatar'), main_app.user_path(story.user)
-  .large-11.columns.no-padding-right
-    %p.update-text
-      - if story.story_type == "followed"
-        
-        = link_to story.user
-        started following
-        
-        - followed = story.followed_users
-        - if followed.length > 3
-          #{link_to followed[0]}, #{link_to followed[1]} and #{followed.length-2} others.
-        - elsif followed.length == 2
-          #{link_to followed[0]} and #{link_to followed[1]}.
+- if story.story_type == "followed"
+  = render partial: 'stories/followed_story', locals: {story: story}
+- else
+  %li.feed-item.cf
+    .large-1.columns.no-padding-right.hide-for-small
+      = link_to image_tag(story.user.avatar.url(:thumb), class: 'avatar'), main_app.user_path(story.user)
+    .large-11.columns.no-padding-right
+      %p.update-text
+        - if story.story_type == "liked_quote"
+
+          = link_to story.user
+          liked a
+          = link_to "#{story.quote.anime.canonical_title(current_user)} Quote", anime_quotes_path(story.quote.anime)
+          .large-12.columns
+            %p.episode-summary
+              %i "#{story.quote.content}" &mdash; #{story.quote.character_name}
+
+        - elsif story.story_type == "submitted_quote"
+
+          = link_to story.user
+          submitted a
+          = link_to "#{story.quote.anime.canonical_title(current_user)} Quote", anime_quotes_path(story.quote.anime)
+          .large-12.columns
+            %p.episode-summary
+              %i "#{story.quote.content}" &mdash; #{story.quote.character_name}
+
+        - elsif story.story_type == "watchlist_status_update"
+
+          = t (story.data["new_status"] + " html").parameterize.underscore.to_sym, scope: 'stories.watchlist_status_updates', user: link_to(story.user), anime: link_to(story.anime.canonical_title(current_user), story.anime)
+
         - else
-          #{link_to followed[0]}.
 
-      - elsif story.story_type == "liked_quote"
+          %pre= story.to_yaml
 
-        = link_to story.user
-        liked a
-        = link_to "#{story.quote.anime.canonical_title(current_user)} Quote", anime_quotes_path(story.quote.anime)
-        .large-12.columns
-          %p.episode-summary
-            %i "#{story.quote.content}" &mdash; #{story.quote.character_name}
-
-      - elsif story.story_type == "submitted_quote"
-
-        = link_to story.user
-        submitted a
-        = link_to "#{story.quote.anime.canonical_title(current_user)} Quote", anime_quotes_path(story.quote.anime)
-        .large-12.columns
-          %p.episode-summary
-            %i "#{story.quote.content}" &mdash; #{story.quote.character_name}
-
-      - elsif story.story_type == "watchlist_status_update"
-
-        = t (story.data["new_status"] + " html").parameterize.underscore.to_sym, scope: 'stories.watchlist_status_updates', user: link_to(story.user), anime: link_to(story.anime.canonical_title(current_user), story.anime)
-
-      - else
-
-        %pre= story.to_yaml
-
-    %p.update-time
-      = distance_of_time_in_words_to_now story.updated_at
-      ago
+      %p.update-time
+        = distance_of_time_in_words_to_now story.updated_at
+        ago
