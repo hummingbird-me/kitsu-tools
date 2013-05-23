@@ -22,7 +22,7 @@
               = link_to followed_user.name, followed_user
               %p.time
                 %span.time-ago #{distance_of_time_in_words_to_now user.following_relations.where(followed_id: followed_user)[0].created_at} ago
-                .hide
+                %span.hide
                   · <a href="#">Like</a> · <a href="#">Comment</a>
 
     - if followed.length > 2
