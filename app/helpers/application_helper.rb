@@ -55,6 +55,10 @@ module ApplicationHelper
     end
   end
 
+  def avatar_link(user, style=:thumb)
+    link_to image_tag(user.avatar.url(style)), user, alt: "#{user.name}'s avatar"
+  end
+
   # For Devise
   def resource_name
     :user
