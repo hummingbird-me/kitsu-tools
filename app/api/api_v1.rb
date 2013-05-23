@@ -22,7 +22,7 @@ class API_v1 < Grape::API
     end
     get ':id' do
       anime = Anime.find(params[:id])
-      {title: anime.canonical_title, alternate_title: anime.alternate_title}
+      {title: anime.canonical_title, alternate_title: anime.alternate_title, url: anime_url(anime)}
     end
     
     desc "Returns similar anime."
@@ -33,12 +33,13 @@ class API_v1 < Grape::API
     get ':id/similar' do
       anime = Anime.find(params[:id])
       similar_anime = []
-      JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{anime.mal_id}")).each do |similar|
-        if similar.length < (params[:limit] || 20)
-          similar_anime.push Anime.find_by_mal_id(similar["id"])
-        end
+      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{anime.mal_id}"))
+      similar_json = similar_json[0..(params[:limit]-1)] if similar_json.length > params[:limit]
+      similar_json.each do |similar|
+        sim = Anime.find_by_mal_id(similar["id"])
+        similar_anime.push(sim) if sim
       end
-      similar_anime.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title, genres: x.genres} }
+      similar_anime.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title, genres: x.genres.map {|x| x.name }, cover_image_url: x.cover_image.url} }
     end
   end
 end

@@ -170,6 +170,15 @@
 
   // Recommendation Grid
   .row
+    {{#similar}}
+    .large-12.columns.no-padding.recommendations
+      .small-6.large-3.columns.no-padding.recommendation
+        %img(class="no-padding" src="{{cover_image}}")
+        .large-12.columns.meta-wrapper
+          .meta-data
+            %h4.anime-title {{title}}
+    {{/similar}}
+    
     .large-12.columns.no-padding.recommendations
       .small-6.large-3.columns.no-padding.recommendation
         = image_tag "http://img1.ak.crunchyroll.com/i/spire1/d7a8b3541d44709a1df5197947debacc1367432151_full.jpg", :class => "no-padding"
@@ -206,11 +215,10 @@
   @updateRecommendationExample = (slug) ->
     $.getJSON "/api/v1/anime/" + slug, (anime) ->
       $.getJSON "/api/v1/anime/" + slug + "/similar?limit=4", (similar) ->
-        console.log anime
-        console.log similar
         $("#recommendationExample").html recommendationExampleTemplate.render
           title: anime.title
-          url: "/anime/naruto"
+          url: anime.url
+          similar: similar
 
   updateRecommendationExample "clannad"
 

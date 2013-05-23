@@ -1,4 +1,5 @@
 Hummingbird::Application.configure do
+  routes.default_url_options = {host: 'localhost', port: 3000}
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
