@@ -4,6 +4,8 @@ gem 'rails', '3.2.13'
 
 gem 'grape'
 
+gem 'riemann-client'
+
 gem 'pg'
 gem 'activerecord-postgres-hstore'
 

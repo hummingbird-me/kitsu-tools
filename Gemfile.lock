@@ -65,6 +65,7 @@ GEM
     arel (3.0.2)
     backports (2.6.7)
     bcrypt-ruby (3.0.1)
+    beefcake (0.3.7)
     better_errors (0.8.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -204,6 +205,7 @@ GEM
       origin (~> 1.0)
       tzinfo (~> 0.3.22)
     moped (1.4.5)
+    mtrc (0.0.4)
     multi_json (1.7.2)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
@@ -319,6 +321,10 @@ GEM
       redis (>= 2.2.0)
     ref (1.0.4)
     remotipart (1.0.5)
+    riemann-client (0.2.1)
+      beefcake (>= 0.3.5)
+      mtrc (>= 0.0.4)
+      trollop (>= 1.16.2)
     rinku (1.7.2)
     rsolr (1.0.9)
       builder (>= 2.1.2)
@@ -395,6 +401,7 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    trollop (2.0)
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -450,6 +457,7 @@ DEPENDENCIES
   rdiscount
   redis
   redis-rails
+  riemann-client
   rinku
   rvm-capistrano
   sanitize

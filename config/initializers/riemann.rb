@@ -1,0 +1,1 @@
+$riemann = Riemann::Client.new
