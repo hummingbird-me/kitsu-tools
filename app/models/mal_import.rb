@@ -168,7 +168,8 @@ class MalImport
         rating: indv["my_score"],
         episodes_watched: indv["my_watched_episodes"],
         status: status_map[indv["my_status"]],
-        last_updated: Time.at(indv["my_last_updated"].to_i)
+        last_updated: Time.at(indv["my_last_updated"].to_i),
+        notes: indv["my_tags"]
       }
       watchlist.push(parsd) unless Anime.find_by_mal_id(parsd[:mal_id]).nil?
     end
@@ -248,6 +249,7 @@ class MalImport
         watchlist.episodes_watched = w[:episodes_watched]
         watchlist.episodes = watchlist.anime.episodes.order(:season_number, :number).take(watchlist.episodes_watched)
         watchlist.updated_at = w[:last_updated]
+        watchlist.notes = w[:notes]
         watchlist.imported = true
 
         if watchlist.rating.nil?
