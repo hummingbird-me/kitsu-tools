@@ -29,7 +29,7 @@ class API_v1 < Grape::API
           similar_anime.push Anime.find_by_mal_id(similar["id"])
         end
       end
-      similar_anime.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title} }
+      similar_anime.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title, genres: x.genres} }
     end
   end
 end
