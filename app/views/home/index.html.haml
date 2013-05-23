@@ -205,7 +205,7 @@
   
   @updateRecommendationExample = (slug) ->
     $.getJSON "/api/v1/anime/" + slug, (anime) ->
-      $.getJSON "/api/v1/anime/" + slug + "/similar", (similar) ->
+      $.getJSON "/api/v1/anime/" + slug + "/similar?limit=4", (similar) ->
         console.log anime
         console.log similar
     $("#recommendationExample").html recommendationExampleTemplate.render
