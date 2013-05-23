@@ -15,11 +15,21 @@ class API_v1 < Grape::API
     }
   end
   
-  resource :system do
-    desc "Returns pong."
-    get :ping do
-      sleep 5*rand
-      {ping: 'pong'}
+  resource :anime do
+    desc "Returns similar anime."
+    params do
+      requires :id, type: String, desc: "anime slug"
+      optional :limit, type: Integer, desc: "number of results (max/default 20)"
+    end
+    get ':id/similar' do
+      anime = Anime.find(params[:id])
+      similar = []
+      JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{anime.mal_id}")).each do |similar|
+        if similar.length < (params[:limit] || 20)
+          similar.push Anime.find_by_mal_id(similar["id"])
+        end
+      end
+      similar.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title} }
     end
   end
 end
