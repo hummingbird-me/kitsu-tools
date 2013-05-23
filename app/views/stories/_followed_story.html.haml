@@ -13,17 +13,18 @@
 
       - followedDisplay = (followed.length > 2) ? followed[0..1] : followed
       - followedDisplay.each do |followed_user|
-        %hr.feed-divider
-        .row
-          .large-12.columns
-            .small-1.large-1.columns.no-padding.hide-for-small
-              = avatar_link followed_user
-            .large-11.columns
-              = link_to followed_user.name, followed_user
-              %p.time
-                %span.time-ago #{distance_of_time_in_words_to_now user.following_relations.where(followed_id: followed_user)[0].created_at} ago
-                %span.hide
-                  · <a href="#">Like</a> · <a href="#">Comment</a>
+        - if user.following.include? followed_user
+          %hr.feed-divider
+          .row
+            .large-12.columns
+              .small-1.large-1.columns.no-padding.hide-for-small
+                = avatar_link followed_user
+              .large-11.columns
+                = link_to followed_user.name, followed_user
+                %p.time
+                  %span.time-ago #{distance_of_time_in_words_to_now user.following_relations.where(followed_id: followed_user)[0].created_at} ago
+                  %span.hide
+                    · <a href="#">Like</a> · <a href="#">Comment</a>
 
     - if followed.length > 2
       .large-12.columns.center
