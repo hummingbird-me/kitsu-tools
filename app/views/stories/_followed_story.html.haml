@@ -11,7 +11,7 @@
         started following
         = pluralize followed.length, "person"
 
-      - followedDisplay = followed[0..1] if followed.length > 2
+      - followedDisplay = (followed.length > 2) ? followed[0..1] : followed
       - followedDisplay.each do |followed_user|
         %hr.feed-divider
         .row
