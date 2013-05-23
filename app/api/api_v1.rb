@@ -7,9 +7,10 @@ class API_v1 < Grape::API
   
   after do
     @end_time = Time.now
+    lat = (@end_time - @start_time).to_f
     $riemann << {
       service: "api req",
-      metric: (@end_time - @start_time).to_f,
+      metric: lat,
       state: "ok"
     }
   end
@@ -17,7 +18,7 @@ class API_v1 < Grape::API
   resource :system do
     desc "Returns pong."
     get :ping do
-      sleep 1
+      sleep 5*rand
       {ping: 'pong'}
     end
   end
