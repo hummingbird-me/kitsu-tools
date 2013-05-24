@@ -178,7 +178,9 @@
           .meta-data
             %h4.anime-title <a href="{{url}}">{{title}}</a>
             %p {{#genres}} {{name}} ·{{/genres}}
-            <a href="#" class="more-like-this hide"><i class="icon-refresh"></i> More Like This</a>
+            %a(href="javascript: void(0)" class="more-like-this" onClick="$(this).find('i.icon.icon-refresh').addClass('icon-spin'); updateRecommendationExample('{{id}}')")
+              %i.icon.icon-refresh
+              More Like This
             
       {{/similar}}
     
@@ -193,6 +195,7 @@
           title: anime.title
           url: anime.url
           similar: similar
+    return false
 
   updateRecommendationExample "steins-gate"
 
