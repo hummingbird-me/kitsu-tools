@@ -154,48 +154,48 @@
             = f.submit "Request Invite", class: 'button expand'
 
 
-%script(type="text/template" id="RecommendationExampleTemplate")
-  .row 
-    .large-12.columns
-      %p.center.find-anime <strong>Find Anime</strong> based on your unique taste
-      %p.center.find-anime-description.hide-for-small With Hummingbird you’ll get a refreshingly simple way to discover new anime. 
-      .small-12.large-8.columns.large-centered
-        %form.hide
-          .large-12.columns.recommendation-area
-            %input{:placeholder => "Try us with your favorite anime...", :type => "text", :class => "recommendation-input"}
-            %i.icon-search.search-button
+  %script(type="text/template" id="RecommendationExampleTemplate")
+    .row 
+      .large-12.columns
+        %p.center.find-anime <strong>Find Anime</strong> based on your unique taste
+        %p.center.find-anime-description.hide-for-small With Hummingbird you’ll get a refreshingly simple way to discover new anime. 
+        .small-12.large-8.columns.large-centered
+          %form.hide
+            .large-12.columns.recommendation-area
+              %input{:placeholder => "Try us with your favorite anime...", :type => "text", :class => "recommendation-input"}
+              %i.icon-search.search-button
+                
+          %h3.center.hide-for-small If you liked <a href="{{url}}">{{title}}</a>, you may also like...
+          %h4.center.show-for-small If you liked <a href="{{url}}">{{title}}</a>, you may also like...
+
+    // Recommendation Grid
+    .row
+      .large-12.columns.no-padding.recommendations
+        {{#similar}}
+        .small-6.large-3.columns.no-padding.recommendation
+          %img(class="no-padding" src="{{cover_image}}")
+          .large-12.columns.meta-wrapper
+            .meta-data
+              %h4.anime-title <a href="{{url}}">{{title}}</a>
+              %p {{#genres}} {{name}} ·{{/genres}}
+              %a(href="javascript: void(0)" class="more-like-this" onClick="$(this).find('i.icon.icon-refresh').addClass('icon-spin'); updateRecommendationExample('{{id}}')")
+                %i.icon.icon-refresh
+                More Like This
               
-        %h3.center.hide-for-small If you liked <a href="{{url}}">{{title}}</a>, you may also like...
-        %h4.center.show-for-small If you liked <a href="{{url}}">{{title}}</a>, you may also like...
+        {{/similar}}
+      
 
-  // Recommendation Grid
-  .row
-    .large-12.columns.no-padding.recommendations
-      {{#similar}}
-      .small-6.large-3.columns.no-padding.recommendation
-        %img(class="no-padding" src="{{cover_image}}")
-        .large-12.columns.meta-wrapper
-          .meta-data
-            %h4.anime-title <a href="{{url}}">{{title}}</a>
-            %p {{#genres}} {{name}} ·{{/genres}}
-            %a(href="javascript: void(0)" class="more-like-this" onClick="$(this).find('i.icon.icon-refresh').addClass('icon-spin'); updateRecommendationExample('{{id}}')")
-              %i.icon.icon-refresh
-              More Like This
-            
-      {{/similar}}
+  :coffee
+    recommendationExampleTemplate = Hogan.compile $("#RecommendationExampleTemplate").html()
     
+    @updateRecommendationExample = (slug) ->
+      $.getJSON "/api/v1/anime/" + slug, (anime) ->
+        $.getJSON "/api/v1/anime/" + slug + "/similar?limit=4", (similar) ->
+          $("#recommendationExample").html recommendationExampleTemplate.render
+            title: anime.title
+            url: anime.url
+            similar: similar
+      return false
 
-:coffee
-  recommendationExampleTemplate = Hogan.compile $("#RecommendationExampleTemplate").html()
-  
-  @updateRecommendationExample = (slug) ->
-    $.getJSON "/api/v1/anime/" + slug, (anime) ->
-      $.getJSON "/api/v1/anime/" + slug + "/similar?limit=4", (similar) ->
-        $("#recommendationExample").html recommendationExampleTemplate.render
-          title: anime.title
-          url: anime.url
-          similar: similar
-    return false
-
-  updateRecommendationExample "steins-gate"
+    updateRecommendationExample "steins-gate"
 
