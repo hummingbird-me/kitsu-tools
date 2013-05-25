@@ -6,6 +6,11 @@ class Substory < ActiveRecord::Base
 
   validates :user, :target, :substory_type, presence: true
   
+  after_create do
+    self.story.updated_at = self.created_at
+    self.story.save
+  end
+  
   after_destroy do
     if self.story.reload.substories.length == 0
       self.story.destroy
