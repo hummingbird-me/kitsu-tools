@@ -170,14 +170,15 @@
 
     // Recommendation Grid
     .row
-      .large-12.columns.no-padding.recommendations
+      .large-12.columns.no-padding.recommendations.large-centered
         {{#similar}}
-        .small-6.large-3.columns.no-padding.recommendation
+        .small-6.large-2.columns.no-padding.recommendation
           %img(class="no-padding" src="{{cover_image}}")
           .large-12.columns.meta-wrapper
             .meta-data
-              %h4.anime-title <a href="{{url}}">{{title}}</a>
-              %p {{#genres}} {{name}} ·{{/genres}}
+              %p 
+                %h5.anime-title <a href="{{url}}">{{title}}</a>
+              //%p {{#genres}} {{name}} ·{{/genres}}
               %a(href="javascript: void(0)" class="more-like-this" onClick="$(this).find('i.icon.icon-refresh').addClass('icon-spin'); updateRecommendationExample('{{id}}')")
                 %i.icon.icon-refresh
                 More Like This
@@ -190,7 +191,7 @@
     
     @updateRecommendationExample = (slug) ->
       $.getJSON "/api/v1/anime/" + slug, (anime) ->
-        $.getJSON "/api/v1/anime/" + slug + "/similar?limit=4", (similar) ->
+        $.getJSON "/api/v1/anime/" + slug + "/similar?limit=6", (similar) ->
           $("#recommendationExample").html recommendationExampleTemplate.render
             title: anime.title
             url: anime.url
