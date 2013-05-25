@@ -58,7 +58,7 @@ class Substory < ActiveRecord::Base
       end
       
       # Otherwise, find the relevant story and add a substory to it.
-      story = story.for_user_and_anime(story, quote.anime, "media_story")
+      story = Story.for_user_and_anime(story, quote.anime, "media_story")
 
       substory = Substory.create({
         user: user, 
