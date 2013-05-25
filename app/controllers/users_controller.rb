@@ -98,7 +98,7 @@ class UsersController < ApplicationController
       else
         @user.followers.push current_user
         
-        Action.create({
+        Substory.from_action({
           user_id: current_user.id,
           action_type: "followed",
           followed_id: @user.id

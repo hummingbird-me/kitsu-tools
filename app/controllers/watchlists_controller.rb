@@ -10,7 +10,7 @@ class WatchlistsController < ApplicationController
       status = Watchlist.status_parameter_to_status(params[:status])
       if @watchlist.status != status
         # Create an action if the status was changed.
-        Action.create({
+        Substory.from_action({
           user_id: current_user.id,
           action_type: "watchlist_status_update",
           anime_id: @anime.slug,
@@ -70,7 +70,7 @@ class WatchlistsController < ApplicationController
 
     # Update status.
     if @watchlist.status != params["watchlist"]["status"]
-      Action.create({
+      Substory.from_action({
         user_id: current_user.id,
         action_type: "watchlist_status_update",
         anime_id: @anime.slug,

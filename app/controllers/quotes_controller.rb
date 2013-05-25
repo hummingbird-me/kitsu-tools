@@ -24,7 +24,7 @@ class QuotesController < ApplicationController
     @quote.user = current_user
     @quote.save
 
-    Action.create({
+    Substory.from_action({
       user_id: current_user,
       action_type: "submitted_quote",
       quote_id: @quote.id,
@@ -39,7 +39,7 @@ class QuotesController < ApplicationController
     @quote = Quote.find(params[:id])
     if params[:type] == "up"
       @quote.add_or_update_evaluation(:votes, 1, current_user)
-      Action.create({
+      Substory.from_action({
         user_id: current_user.id,
         action_type: "liked_quote",
         quote_id: @quote.id,
@@ -47,7 +47,7 @@ class QuotesController < ApplicationController
       })
     else
       @quote.delete_evaluation(:votes, current_user)
-      Action.create({
+      Substory.from_action({
         user_id: current_user.id,
         action_type: "unliked_quote",
         quote_id: @quote.id,

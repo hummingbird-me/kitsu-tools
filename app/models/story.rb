@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   belongs_to :user
   attr_accessible :data, :story_type, :user
+
   serialize :data, ActiveRecord::Coders::Hstore
   
   validates :user, :story_type, presence: true
