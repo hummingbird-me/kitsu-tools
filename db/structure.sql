@@ -1113,7 +1113,8 @@ CREATE TABLE substories (
     target_id integer,
     target_type character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    data hstore
 );
 
 
@@ -2397,3 +2398,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130521181445');
 INSERT INTO schema_migrations (version) VALUES ('20130525092741');
 
 INSERT INTO schema_migrations (version) VALUES ('20130525135123');
+
+INSERT INTO schema_migrations (version) VALUES ('20130525183625');
+
+INSERT INTO schema_migrations (version) VALUES ('20130525190345');

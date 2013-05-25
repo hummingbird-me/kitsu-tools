@@ -6,12 +6,17 @@ class Substory < ActiveRecord::Base
 
   validates :user, :target, :substory_type, presence: true
   
+  after_create do
+    self.story.updated_at = self.created_at
+    self.story.save
+  end
+  
   after_destroy do
     if self.story.reload.substories.length == 0
       self.story.destroy
     end
   end
-  
+
   def self.from_action(data)
     user = User.find data[:user_id]
 
@@ -53,12 +58,7 @@ class Substory < ActiveRecord::Base
       end
       
       # Otherwise, find the relevant story and add a substory to it.
-      story = user.stories.where(story_type: "media_story", target_id: quote.anime.id, target_type: "Anime")
-      if story.length > 0
-        story = story[0]
-      else
-        story = Story.create user: user, story_type: "media_story", target: quote.anime
-      end
+      story = Story.for_user_and_anime(story, quote.anime, "media_story")
 
       substory = Substory.create({
         user: user, 
@@ -72,24 +72,24 @@ class Substory < ActiveRecord::Base
       quote = Quote.find(data[:quote_id])
       Substory.where(user_id: user.id, substory_type: "liked_quote", target_id: quote.id, target_type: "Quote").each {|x| x.destroy }
 
+    elsif data[:action_type] == "submitted_quote"
+
+      quote = Quote.find(data[:quote_id])
+
+      story = Story.for_user_and_anime(user, quote.anime, "media_story")
+
+      substory = Substory.create({
+        user: user, 
+        substory_type: "submitted_quote", 
+        target: quote, 
+        story: story
+      })
+
     end
 
     return
     user = User.find data[:user_id]
-    if data[:action_type] == "submitted_quote"
-
-      # No aggregation.
-      # Only if the user doesn't already have a "story" for this quote.
-      quote = Quote.find(data[:quote_id])
-      if user.stories.where("data ? 'quote_id'").where("data -> 'quote_id' = :id", id: quote.id.to_s).count == 0
-        story = Story.create user: user, story_type: "submitted_quote", data: {
-          quote_id: data[:quote_id]
-        }
-        story.updated_at = data[:time]
-        story.save
-      end
-      
-    elsif data[:action_type] == "watchlist_status_update"
+    if data[:action_type] == "watchlist_status_update"
 
       # If the user has a watchlist_status_update story for this anime that was
       # updated in the last 2 hours, update that one. Otherwise create a new
