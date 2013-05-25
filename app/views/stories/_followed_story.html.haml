@@ -1,5 +1,5 @@
 - user = story.user
-%li.feed-item.cf
+%li.feed-item.cf{:class => "story-#{story.id}"}
   .large-12.columns.feed-wrapper
     .small-3.large-2.columns.no-padding-right
       = avatar_link user

@@ -7,13 +7,6 @@ class Story < ActiveRecord::Base
   
   validates :user, :story_type, presence: true
   
-  def followed_users
-    if story_type == "followed"
-      ids = data["followed_users"].split(',').map &:to_i
-      return ids.map {|x| User.find(x) }
-    end
-  end
-
   def quote
     if %w[liked_quote submitted_quote].include? story_type
       return Quote.find data["quote_id"]
