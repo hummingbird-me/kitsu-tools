@@ -95,15 +95,17 @@ class UsersController < ApplicationController
     if @user != current_user
       if @user.followers.include? current_user
         @user.followers.destroy current_user
+        action_type = "unfollowed"
       else
         @user.followers.push current_user
-        
-        Substory.from_action({
-          user_id: current_user.id,
-          action_type: "followed",
-          followed_id: @user.id
-        })
+        action_type = "followed"
       end
+        
+      Substory.from_action({
+        user_id: current_user.id,
+        action_type: action_type,
+        followed_id: @user.id
+      })
     end
     
     respond_to do |format|

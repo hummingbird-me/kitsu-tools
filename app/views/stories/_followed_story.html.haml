@@ -1,34 +1,17 @@
-- followed = story.followed_users
 - user = story.user
-
 %li.feed-item.cf
   .large-12.columns.feed-wrapper
     .small-3.large-2.columns.no-padding-right
       = avatar_link user
     .small-9.large-10.columns
-      %h4.anime-feed-title 
+      %h4.anime-feed-title
         = link_to (user == current_user) ? "You" : user.name, user
         started following
-        = pluralize followed.length, "person"
-
-      - followedDisplay = (followed.length > 2) ? followed[0..1] : followed
-      - followedDisplay.each do |followed_user|
-        - if user.following.include? followed_user
-          %hr.feed-divider
-          .row
-            .large-12.columns
-              .small-1.large-1.columns.no-padding.hide-for-small
-                = avatar_link followed_user
-              .large-11.columns
-                = link_to followed_user.name, followed_user
-                %p.time
-                  %span.time-ago #{distance_of_time_in_words_to_now user.following_relations.where(followed_id: followed_user)[0].created_at} ago
-                  %span.hide
-                    · <a href="#">Like</a> · <a href="#">Comment</a>
-
-    - if followed.length > 2
+        = pluralize story.substories.count, "person"
+      = render story.substories.order('created_at DESC').limit(2)
+        
+    - if story.substories.length > 2
       .large-12.columns.center
         %a.show-more{:onclick => "alert('Coming soon!')"} 
           <i class="icon-angle-down"></i> 
           Show More
-

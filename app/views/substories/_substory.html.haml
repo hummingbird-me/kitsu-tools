@@ -1,0 +1,15 @@
+- if substory.substory_type == "followed"
+  - followed_user = substory.target
+  %hr.feed-divider
+  .row
+    .large-12.columns
+      .small-1.large-1.columns.no-padding.hide-for-small
+        = avatar_link followed_user
+      .large-11.columns
+        = user_link followed_user
+        %p.time
+          %span.time-ago
+            = distance_of_time_in_words_to_now substory.created_at
+            ago
+            / · <a href="#">Like</a> · <a href="#">Comment</a>
+
