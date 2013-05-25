@@ -8,10 +8,18 @@ class Story < ActiveRecord::Base
   
   validates :user, :story_type, presence: true
   
-  def quote
-    if %w[liked_quote submitted_quote].include? story_type
-      return Quote.find data["quote_id"]
+  def self.for_user_and_anime(user, anime, story_type="media_story")
+    story = user.stories.where(story_type: story_type, target_id: anime.id, target_type: "Anime")
+    if story.length > 0
+      story = story[0]
+    else
+      story = Story.create user: user, story_type: story_type, target: anime
     end
+    story
+  end
+  
+  def quote
+    return Quote.find data["quote_id"]
   end
 
   def anime
