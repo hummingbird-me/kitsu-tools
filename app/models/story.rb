@@ -1,7 +1,8 @@
 class Story < ActiveRecord::Base
   belongs_to :user
+  belongs_to :target, polymorphic: true
   has_many :substories, dependent: :destroy
-  attr_accessible :data, :story_type, :user
+  attr_accessible :data, :story_type, :user, :target
 
   serialize :data, ActiveRecord::Coders::Hstore
   

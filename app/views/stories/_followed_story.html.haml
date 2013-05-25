@@ -2,12 +2,24 @@
 %li.feed-item.cf{:class => "story-#{story.id}"}
   .large-12.columns.feed-wrapper
     .small-3.large-2.columns.no-padding-right
-      = avatar_link user
+      - if story.story_type == "followed"
+        = avatar_link user
+      - elsif story.story_type == "media_story"
+        = link_to image_tag(story.target.cover_image.url(:thumb)), story.target
     .small-9.large-10.columns
-      %h4.anime-feed-title
-        = link_to (user == current_user) ? "You" : user.name, user
-        started following
-        = pluralize story.substories.count, "person"
+      - if story.story_type == "followed"
+        %h4.anime-feed-title
+          = link_to (user == current_user) ? "You" : user.name, user
+          started following
+          = pluralize story.substories.count, "person"
+      - elsif story.story_type == "media_story"
+        %h4.anime-feed-title
+          = anime_link story.target
+        .anime-feed-genres
+          - story.target.genres.each_with_index do |genre, i|
+            = link_to genre
+            = "·" if i != story.target.genres.length - 1
+              
       = render story.substories.order('created_at DESC').limit(2)
         
     - if story.substories.length > 2

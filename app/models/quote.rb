@@ -3,6 +3,8 @@ class Quote < ActiveRecord::Base
   
   belongs_to :anime
   belongs_to :user
+
+  has_many :substories, as: :target, dependent: :destroy
   
   def creator
     user

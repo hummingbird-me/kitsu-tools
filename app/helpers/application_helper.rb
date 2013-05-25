@@ -59,8 +59,11 @@ module ApplicationHelper
   def avatar_link(user, style=:thumb)
     link_to image_tag(user.avatar.url(style)), user, alt: "#{user.name}'s avatar"
   end
-  def user_link(user)
-    link_to user.name, user
+  def user_link(user, options={})
+    link_to (user == current_user and options[:you]) ? "You" : user.name, user
+  end
+  def anime_link(anime)
+    link_to anime.canonical_title(current_user), anime
   end
 
   # For Devise

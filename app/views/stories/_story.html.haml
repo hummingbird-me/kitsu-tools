@@ -1,4 +1,4 @@
-- if story.story_type == "followed"
+- if story.story_type == "followed" or story.story_type == "media_story"
   = render partial: 'stories/followed_story', locals: {story: story}
 - else
   %li.feed-item.cf

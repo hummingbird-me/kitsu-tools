@@ -1,8 +1,8 @@
-- if substory.substory_type == "followed"
-  - followed_user = substory.target
-  %hr.feed-divider
-  .row
-    .large-12.columns
+%hr.feed-divider
+.row
+  .large-12.columns
+    - if substory.substory_type == "followed"
+      - followed_user = substory.target
       .small-1.large-1.columns.no-padding.hide-for-small
         = avatar_link followed_user
       .large-11.columns
@@ -12,4 +12,19 @@
             = distance_of_time_in_words_to_now substory.created_at
             ago
             / · <a href="#">Like</a> · <a href="#">Comment</a>
-
+    - elsif substory.substory_type == "liked_quote"
+      .small-1.large-1.columns.no-padding.hide-for-small
+        = avatar_link substory.user
+      .large-11.columns
+        = user_link substory.user, you: true
+        liked a quote.
+        %p.quote-preview
+          %i
+            "#{substory.target.content}" &mdash; #{substory.target.character_name}
+        %p.time
+          %span.time-ago
+            = distance_of_time_in_words_to_now substory.created_at
+            ago
+            / · <a href="#">Like</a> · <a href="#">Comment</a>
+    - else
+      %pre= substory.to_yaml

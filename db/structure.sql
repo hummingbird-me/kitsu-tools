@@ -1076,7 +1076,9 @@ CREATE TABLE stories (
     data hstore,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    story_type character varying(255)
+    story_type character varying(255),
+    target_id integer,
+    target_type character varying(255)
 );
 
 
@@ -2393,3 +2395,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130518133636');
 INSERT INTO schema_migrations (version) VALUES ('20130521181445');
 
 INSERT INTO schema_migrations (version) VALUES ('20130525092741');
+
+INSERT INTO schema_migrations (version) VALUES ('20130525135123');

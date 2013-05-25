@@ -6,6 +6,12 @@ class Substory < ActiveRecord::Base
 
   validates :user, :target, :substory_type, presence: true
   
+  after_destroy do
+    if self.story.reload.substories.length == 0
+      self.story.destroy
+    end
+  end
+  
   def self.from_action(data)
     user = User.find data[:user_id]
 
@@ -34,36 +40,37 @@ class Substory < ActiveRecord::Base
 
       followed_user = User.find data[:followed_id]
       
-      # Find the substory and delete it. If the parent story then ends up with 
-      # zero substories, delete the parent story as well.
-      substory = Substory.where(user_id: user.id, substory_type: "followed", target_id: followed_user.id, target_type: "User")
-      if substory.length > 0
-        substory = substory[0]
-        if substory.story.substories.length == 1
-          substory.story.destroy
-        else
-          substory.destroy
-        end
-      end
+      Substory.where(user_id: user.id, substory_type: "followed", target_id: followed_user.id, target_type: "User").each {|x| x.destroy }
+
+    elsif data[:action_type] == "liked_quote"
       
+      quote = Quote.find(data[:quote_id])
+      story = user.stories.where(story_type: "media_story", target_id: quote.anime.id, target_type: "Anime")
+      if story.length > 0
+        story = story[0]
+      else
+        story = Story.create user: user, story_type: "media_story", target: quote.anime
+      end
+
+      substory = Substory.create({
+        user: user, 
+        substory_type: "liked_quote", 
+        target: quote, 
+        story: story
+      })
+      substory.created_at = substory.updated_at = data[:time] || Time.now
+      substory.save
+      
+    elsif data[:action_type] == "unliked_quote"
+
+      quote = Quote.find(data[:quote_id])
+      Substory.where(user_id: user.id, substory_type: "liked_quote", target_id: quote.id, target_type: "Quote").each {|x| x.destroy }
+
     end
 
     return
     user = User.find data[:user_id]
-    if data[:action_type] == "liked_quote"
-
-      # No aggregation.
-      # Only if the user doesn't already have a "story" for this quote.
-      quote = Quote.find(data[:quote_id])
-      if user.stories.where("data ? 'quote_id'").where("data -> 'quote_id' = :id", id: quote.id.to_s).count == 0
-        story = Story.create user: user, story_type: "liked_quote", data: {
-          quote_id: data[:quote_id],
-        }
-        story.updated_at = data[:time]
-        story.save
-      end
-      
-    elsif data[:action_type] == "submitted_quote"
+    if data[:action_type] == "submitted_quote"
 
       # No aggregation.
       # Only if the user doesn't already have a "story" for this quote.
