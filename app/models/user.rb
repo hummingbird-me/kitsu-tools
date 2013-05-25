@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :following, through: :following_relations, source: :followed, class_name: 'User'
 
   has_many :stories
+  has_many :substories
   
   def to_param
     "#{id} #{name}".parameterize

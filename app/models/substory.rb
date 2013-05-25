@@ -45,6 +45,14 @@ class Substory < ActiveRecord::Base
     elsif data[:action_type] == "liked_quote"
       
       quote = Quote.find(data[:quote_id])
+      
+      # First, check to see if a substory for this quote already exists for this 
+      # user. If so, don't do anything.
+      if user.substories.where(substory_type: "liked_quote", target_id: quote, target_type: "Quote").length > 0
+        return
+      end
+      
+      # Otherwise, find the relevant story and add a substory to it.
       story = user.stories.where(story_type: "media_story", target_id: quote.anime.id, target_type: "Anime")
       if story.length > 0
         story = story[0]
@@ -58,8 +66,6 @@ class Substory < ActiveRecord::Base
         target: quote, 
         story: story
       })
-      substory.created_at = substory.updated_at = data[:time] || Time.now
-      substory.save
       
     elsif data[:action_type] == "unliked_quote"
 
@@ -83,11 +89,6 @@ class Substory < ActiveRecord::Base
         story.save
       end
       
-    elsif data[:action_type] == "unliked_quote"
-      
-      # Delete the story for liking this quote.
-      user.stories.where(story_type: 'liked_quote').where("data -> 'quote_id' = :id", id: data[:quote_id].to_s).each {|x| x.destroy }
-
     elsif data[:action_type] == "watchlist_status_update"
 
       # If the user has a watchlist_status_update story for this anime that was
