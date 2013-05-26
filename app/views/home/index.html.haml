@@ -1,74 +1,344 @@
 - if user_signed_in?
-  .large-banner
-    %figure
-      .overlay
-      = image_tag "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/074/original/another3.jpg?1361895288", style: "height: 720px; width: 100%", class: 'background-image'
-      :javascript
-        var images = [
-          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/076/original/blood.jpg?1361895445",
-          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/074/original/another3.jpg?1361895288",
-          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/072/original/another.jpg?1361895189",
-          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/059/original/darker4.jpg?1361823103",
-          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/058/original/darker3.jpg?1361823078",
-          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/057/original/darker2.jpg?1361823056",
-          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/056/original/darker.jpg?1361823028",
-          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/136/original/melancholy.jpg?1362175820",
-          "http://hakanai.vikhyat.net/system/gallery_images/images/000/000/137/original/melancholy3.jpg?1362175882",
-        ];
-        var randomImage = images[Math.floor(Math.random() * images.length)];
-        $('.background-image').attr('src', randomImage);
-
-  .home.anime-discover.anime-show.login-register-card
-    .header-content.row
-      .large-12.columns
-        .features
-          %h1.salsbury Discover New Anime.
-          %h2 Hummingbird is a new and easy way to find <br/>anime titles you'll love.
-          .row
-            .large-8.columns.large-centered{:style => "margin-bottom: 40px;"}
-              %ul.inline-list{:style => "display: inline-block; margin: 0 auto;"}
-                %li 
-                  .fb-like{"data-href" => "http://www.facebook.com/pages/Hummingbird/460188747373182?ref=hl", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
-                %li{:style => "background: none; margin-top: 2px;"}
-                  %a.twitter-share-button{"data-text" => "Hummingbird is a new and easy way to find anime titles you'll love. #anime", "data-url" => "http://www.hummingbird.ly", "data-via" => "Hummingbird_ly", :href => "https://twitter.com/share"} Tweet
+  .row
+    .large-12.columns.home-content
+      .large-8.columns.left-home-column.no-padding
+        .large-12.columns.no-padding.recent-watched
+          .recommendations
+            .large-3.columns.no-padding.recommendation
+              = image_tag "http://hummingbird.me/system/f7e34ca9700bc93ce85e43ca2e43656beaf5f69c_thumb.jpg?1361875391"
+              .large-12.columns.meta-wrapper
+                .meta-data.large-12.columns.no-padding-left
+                  %p 
+                    %h5.anime-title <a href="#">Soul Eater</a>
+                  .rating
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                  %hr
+                  .large-6.columns.no-padding
+                    Progress:
+                  .large-6.columns.no-padding.progress-number
+                    %a.count-add{:href => "#"}
+                      %i.icon-angle-up
+                      18 <span class="total-episodes">/ 51</span>
 
 
-              - if user_signed_in?
-                .large-11.columns.large-centered{:style => "margin-top: 40px; height: 60px; margin-bottom: 100px; overflow: visible;"}
-                  .search
-                    %form{:action => "/search", :autocomplete => "off"}
-                      %input.typeahead_home(type="text" name="query" placeholder = "Search Anime by Title" autocomplete="off")
-                      %input#nav_search_submit.submit.ss-icon{:type => 'submit', :value => 'search'}
-              - else
-                = form_for BetaInvite.new, url: beta_invites_path do |f|
-                  .LR-sign-up-container{:style => ""}
-                    %span.LR-sign-up-label{:style => "display: none;"} Request an invite
-                    #fieldbase.LR-sign-up-container-inner
-                      = f.email_field :email, class: 'signup-email', placeholder: "Enter your email...", id: 'input'
-                      = f.submit "Request Invite", class: 'LR-sign-up-submit', id: 'button'
-                  %p We will never share your email address with anyone, period.
+            .large-3.columns.no-padding.recommendation
+              = image_tag "http://localhost:3000/system/850418cfe0b2e2a27be17bfbf91eb6d37fdf11fb_thumb.jpg?1361877196"
+              .large-12.columns.meta-wrapper
+                .meta-data.large-12.columns.no-padding-left
+                  %p 
+                    %h5.anime-title <a href="#">Mirai Nikki (TV)</a>
+                  .rating
+                    %i.icon-star
+                    %i.icon-star
+                    %i.icon-star
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                  %hr
+                  .large-6.columns.no-padding
+                    Progress:
+                  .large-6.columns.no-padding.progress-number
+                    %a.count-add{:href => "#"}
+                      %i.icon-angle-up
+                      03 <span class="total-episodes">/ 26</span>
 
-    .row
-      .large-12.columns
-        .title
-          %h3 
-            Recent Activity
-        .watching-now.large-12.columns
-          - @recent_anime.each do |watchlist|
-            .large-3.columns
-              .panel
-                = link_to image_tag(watchlist.anime.cover_image.url(:thumb)), watchlist.anime
-                .large-12.columns
-                  .user-circle.large-7.columns.large-centered
-                    %span.avatar= image_tag watchlist.user.avatar.url(:thumb)
-                .large-12.columns
-                  %p.name= link_to watchlist.user.name, watchlist.user      
+            .large-3.columns.no-padding.recommendation
+              = image_tag "http://hummingbird.me/system/d85ed62ca413ab215b4ce85c3c3fefb29760ef9c_thumb.jpg?1361873647"
+              .large-12.columns.meta-wrapper
+                .meta-data.large-12.columns.no-padding-left
+                  %p 
+                    %h5.anime-title <a href="#">Texhnolyze</a>
+                  .rating
+                    %i.icon-star
+                    %i.icon-star
+                    %i.icon-star
+                    %i.icon-star
+                    %i.icon-star-empty
+                  %hr
+                  .large-6.columns.no-padding
+                    Progress:
+                  .large-6.columns.no-padding.progress-number
+                    %a.count-add{:href => "#"}
+                      %i.icon-angle-up
+                      67 <span class="total-episodes">/ 251</span>
 
-        - if @latest_reviews.length == 2
-          .large-12.columns
-            .title
-              %h3 Latest Reviews
-            = render partial: 'reviews/review_summary', collection: @latest_reviews, as: :review
+            .large-3.columns.no-padding.recommendation
+              = image_tag "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"
+              .large-12.columns.meta-wrapper
+                .meta-data.large-12.columns.no-padding-left
+                  %p 
+                    %h5.anime-title <a href="#">Attack on Titan</a>
+                  .rating
+                    %i.icon-star
+                    %i.icon-star
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                  %hr
+                  .large-6.columns.no-padding
+                    Progress:
+                  .large-6.columns.no-padding.progress-number
+                    %a.count-add{:href => "#"}
+                      %i.icon-angle-up
+                      07 <span class="total-episodes">/ 51</span>
+
+
+        .large-12.columns.hide-for-small.no-padding.center.home-banner
+          :javascript
+            google_ad_client = "ca-pub-3410319844519574";
+            /* Homepage Banner */
+            google_ad_slot = "9909234847";
+            google_ad_width = 728;
+            google_ad_height = 90;
+
+          %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
+
+        .large-12.columns.option-bar.hide-for-small
+          .small-6.large-2.columns
+            %p.option-title Activity Feed
+          .small-12.large-9.columns.options
+            %ul.status-tabs.inline-list
+              %li#tab-all.active
+                %a{:href => "#all", :onclick => "showRelevantSections('all')"} All
+              %li
+                %a{:href => "#comments", :onclick => "showRelevantSections('comments')"} Comments
+              %li
+                %a{:href => "#library", :onclick => "showRelevantSections('library')"} Library
+              %li
+                %a{:href => "#events", :onclick => "showRelevantSections('events')"} Events
+        .large-12.columns.feed.no-padding
+          .large-12.columns.feed-form
+            %form
+              %input{:placeholder => "What are you up to?", :type => "text"}/
+          %ul.feed-list
+            %li.feed-item.cf
+              .large-12.columns.feed-wrapper
+                .small-3.large-2.columns.no-padding-right
+                  %a{:href => "#"}
+                    %img{:alt => "F7e34ca9700bc93ce85e43ca2e43656beaf5f69c_thumb", :src => "http://hummingbird.me/system/f7e34ca9700bc93ce85e43ca2e43656beaf5f69c_thumb.jpg?1361875391"}/
+                .small-9.large-10.columns
+                  %h4.anime-feed-title Soul Eater
+                  .anime-feed-genres
+                    %a{:href => "#"} Action
+                    ·
+                    %a{:href => "#"} Adventure
+                    ·
+                    %a{:href => "#"} Comedy
+                  %hr.feed-divider/
+                  .row
+                    .large-12.columns
+                      .small-1.large-1.columns.no-padding.hide-for-small
+                        %a{:href => "#"}
+                          %img{:alt => "Avatar", :src => "http://localhost:3000/system/users/avatars/000/000/002/thumb/avatar.png?1366949440"}/
+                      .large-11.columns
+                        %a{:href => "#"} You
+                        plan to watch
+                        %p.time
+                          %span.time-ago
+                            24 minutes ago ·
+                            %a{:href => "#"} Like
+                            ·
+                            %a{:href => "#"} Comment
+            %li.feed-item.cf
+              .large-12.columns.feed-wrapper
+                .small-3.large-2.columns.no-padding-right
+                  %a{:href => "#"}
+                    %img{:alt => "2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb", :src => "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"}/
+                .small-9.large-10.columns
+                  %h4.anime-feed-title Attack on Titan
+                  .anime-feed-genres
+                    %a{:href => "#"} Action
+                    ·
+                    %a{:href => "#"} Drama
+                    ·
+                    %a{:href => "#"} Fantasy
+                  %hr.feed-divider/
+                  .row
+                    .large-12.columns
+                      .small-1.large-1.columns.no-padding.hide-for-small
+                        %a{:href => "#"}
+                          %img{:alt => "Avatar", :src => "http://localhost:3000/system/users/avatars/000/000/002/thumb/avatar.png?1366949440"}/
+                      .large-11.columns
+                        %a{:href => "#"} You
+                        watched episode 04
+                        %p.time
+                          %span.time-ago
+                            24 minutes ago ·
+                            %a{:href => "#"} Like
+                            ·
+                            %a{:href => "#"} Comment
+            %li.feed-item.cf
+              .large-12.columns.feed-wrapper
+                .small-3.large-2.columns.no-padding-right
+                  %a{:href => "#"}
+                    %img{:alt => "D85ed62ca413ab215b4ce85c3c3fefb29760ef9c_thumb", :src => "http://hummingbird.me/system/d85ed62ca413ab215b4ce85c3c3fefb29760ef9c_thumb.jpg?1361873647"}/
+                .small-9.large-10.columns
+                  %h4.anime-feed-title Texhnolyze
+                  .anime-feed-genres
+                    %a{:href => "#"} Action
+                    ·
+                    %a{:href => "#"} Drama
+                    ·
+                    %a{:href => "#"} Sci-Fi
+                  %hr.feed-divider/
+                  .row
+                    .large-12.columns
+                      .small-1.large-1.columns.no-padding.hide-for-small
+                        %a{:href => "#"}
+                          %img{:alt => "Avatar", :src => "http://localhost:3000/system/users/avatars/000/000/002/thumb/avatar.png?1366949440"}/
+                      .large-11.columns
+                        %a{:href => "#"} You
+                        liked a quote
+                        %p.quote-preview
+                          %i "It's quiet now. But I wonder how long it will last." — Onishi
+                      %p.time
+                        %span.time-ago
+                          24 minutes ago ·
+                          %a{:href => "#"} Like
+                          ·
+                          %a{:href => "#"} Comment
+            %li.feed-item.cf
+              .large-12.columns.feed-wrapper
+                .small-3.large-2.columns.no-padding-right
+                  %a{:href => "#"}
+                    %img{:alt => "Oie_8122923exq0pdvn", :src => "http://hummingbird.me/system/users/avatars/000/002/176/thumb/oie_8122923EXQ0pdVN.gif?1368009670"}/
+                .small-9.large-10.columns
+                  %h4.anime-feed-title
+                    %a{:href => "#"} Canxopener
+                    posted on your wall
+                  %hr.feed-divider/
+                  .row
+                    .large-12.columns
+                      %p.wall-post-copy My body is ready!
+                      %p.time
+                        %span.time-ago
+                          24 minutes ago ·
+                          %a{:href => "#"} Like
+                          ·
+                          %a{:href => "#"} Comment
+      .large-4.columns
+        .large-12.columns.no-padding.forum-block
+          .large-6.columns.block-title
+            %h4 Forum
+          .large-6.columns.block-link
+            = link_to "view forums", "#", :class => "right"
+          %hr
+          %ul
+            %li.large-12.columns.topic-row
+              .large-10.columns.no-padding.forum-title
+                = link_to "Name the worst anime or drama you..."
+              .large-2.columns.no-padding.forum-time
+                %i 12 min ago
+
+            %li.large-12.columns.topic-row
+              .large-10.columns.no-padding.forum-title
+                = link_to "What can't you put in the trash th..."
+              .large-2.columns.no-padding.forum-time
+                %i 12 min ago
+
+            %li.large-12.columns.topic-row
+              .large-10.columns.no-padding.forum-title
+                = link_to "Staying friends with your ex"
+              .large-2.columns.no-padding.forum-time
+                %i 12 min ago
+
+            %li.large-12.columns.topic-row
+              .large-10.columns.no-padding.forum-title
+                = link_to "Who are you? Express who you a..."
+              .large-2.columns.no-padding.forum-time
+                %i 12 min ago
+
+            %li.large-12.columns.topic-row
+              .large-10.columns.no-padding.forum-title
+                = link_to "How do men feel about women s..."
+              .large-2.columns.no-padding.forum-time
+                %i 12 min ago
+
+            %li.large-12.columns.topic-row
+              .large-10.columns.no-padding.forum-title
+                = link_to "Do you find it hard to make frien..."
+              .large-2.columns.no-padding.forum-time
+                %i 12 min ago
+
+            %li.large-12.columns.topic-row
+              .large-10.columns.no-padding.forum-title
+                = link_to "Who drinks green tea?"
+              .large-2.columns.no-padding.forum-time
+                %i 12 min ago
+
+            %li.large-12.columns.topic-row
+              .large-10.columns.no-padding.forum-title
+                = link_to "Doomsday Prepping"
+              .large-2.columns.no-padding.forum-time
+                %i 12 min ago
+
+            %li.large-12.columns.topic-row
+              .large-10.columns.no-padding.forum-title
+                = link_to "Daily Rant Thread"
+              .large-2.columns.no-padding.forum-time
+                %i 12 min ago
+
+            %li.large-12.columns.topic-row
+              .large-10.columns.no-padding.forum-title
+                = link_to "[Spoilers] Attack on Titan E08"
+              .large-2.columns.no-padding.forum-time
+                %i 12 min ago
+
+        .large-12.columns.no-padding.trending-block
+          .large-12.columns.block-title
+            %h4 Trending Today
+          %hr
+          %ul
+            %li.large-12.columns.topic-row
+              .large-1.columns.no-padding
+                %p.count.center 1
+              .large-11.columns.no-padding-right.forum-title
+                .large-12.columns.no-padding
+                  = link_to "Attack on Titan", "#", :class => "trending-title"
+                  %i 203 Viewers
+            %li.large-12.columns.topic-row
+              .large-1.columns.no-padding
+                %p.count.center 2
+              .large-11.columns.no-padding-right.forum-title
+                .large-12.columns.no-padding
+                  = link_to "Naruto Shippuden", "#", :class => "trending-title"
+                  %i 189 Viewers
+            %li.large-12.columns.topic-row
+              .large-1.columns.no-padding
+                %p.count.center 3
+              .large-11.columns.no-padding-right.forum-title
+                .large-12.columns.no-padding
+                  = link_to "Gargantia on the Verdurous...", "#", :class => "trending-title"
+                  %i 160 Viewers
+            %li.large-12.columns.topic-row
+              .large-1.columns.no-padding
+                %p.count.center 4
+              .large-11.columns.no-padding-right.forum-title
+                .large-12.columns.no-padding
+                  = link_to "Sword Art Online", "#", :class => "trending-title"
+                  %i 138 Viewers
+            %li.large-12.columns.topic-row
+              .large-1.columns.no-padding
+                %p.count.center 5
+              .large-11.columns.no-padding-right.forum-title
+                .large-12.columns.no-padding
+                  = link_to "Oreimo Season 2", "#", :class => "trending-title"
+                  %i 113 Viewers
+
+        .large-12.columns.no-padding-left.no-padding-right.side-advert
+          :javascript
+            google_ad_client = "ca-pub-3410319844519574";
+            /* Homepage Sidebar */
+            google_ad_slot = "8094424442";
+            google_ad_width = 300;
+            google_ad_height = 250;
+
+          %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
+
+
 - else
   :css
     .hummingbird-header-1, .footer-ad {

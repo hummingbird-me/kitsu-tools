@@ -2,29 +2,175 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
-.large-banner {
-  figure {
-    height: 470px;
-    margin-top: 0px;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-    margin-left: 0px;
 
-    .overlay {
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px;
-      text-align: center;
-      color: #fff;
-      @include opacity(0.90);
-      @include border-top-radius(3px);
-      @include background-image(linear-gradient(left top, #393939, #000));
+.home-content {
+  margin-top: 30px;
+  .recent-watched {
+    .recommendations {
+      border-top: 1px solid #000;
+      border-bottom: 1px solid #000;
+      border-left: 1px solid #000;
+      float: left;
+      margin-bottom: 17px;
+
+      .recommendation {
+        position: relative;
+        border-right: 1px solid #000;
+
+        .meta-wrapper {
+          position: absolute;
+          bottom: 0px;
+          top: 0px;
+          padding: 10px;
+          background: url("rec-bg.png") bottom left repeat-x;
+          color: #fff;
+          p {
+            margin-bottom: 5px;
+          }
+          .icon-star, .icon-star-empty {
+            font-size: 20px;
+          }
+          a {
+            color: #fff;
+          }
+          .meta-data {
+            position: absolute;
+            bottom: 10px;
+            padding-right: 20px;
+            hr {
+              margin-top: 10px;
+              margin-bottom: 10px;
+              opacity: .4;
+            }
+            .progress-number {
+              text-align: right;
+              .count-add {
+                .total-episodes {
+                  color: #fff !important;
+                  opacity: .8;
+                }
+                &:hover {
+                  color: #fd7532;
+                }
+              }
+            }
+
+            .anime-title {
+              color: #fff;
+              margin-bottom: 0px;
+            }
+            .more-like-this {
+              font-size: 12px;
+              padding: 5px 10px;
+              background: #fff;
+              background: rgba(255,255,255,.7);
+              color: #000;
+              @include border-radius(3px);
+              @include transition(background, 0.5s);
+              &:hover {
+                background: #fff;
+              }
+            }
+          }
+        }
+      }
     }
-    img {
-      width: 100%;
+  }
+  .home-banner {
+    margin-bottom: 13px;
+  }
+  .side-advert {
+    background: #fff;
+    text-align: center;
+    margin-top: 17px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+  }
+  .forum-block {
+    background: #fff;
+    .block-title {
+      h4 {
+        margin-bottom: 5px;
+      }
+    }
+
+    .block-link {
+      padding-top: 17px;
+    }
+
+    hr {
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    ul {
+      list-style: none;
+      .topic-row {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        .forum-title {
+          font-size: 15px;
+          a {
+            color: #717171;
+            &:hover {
+              color: #fd7532;
+            }
+          }
+        }
+        .forum-time {
+          font-size: 11px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+
+  .trending-block {
+    background: #fff;
+    margin-top: 17px;
+    .block-title {
+      h4 {
+        margin-bottom: 5px;
+      }
+    }
+    
+    .block-link {
+      padding-top: 17px;
+    }
+
+    hr {
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    ul {
+      list-style: none;
+      .topic-row {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        .count {
+          font-size: 50px;
+          line-height: 50px;
+          font-weight: bold;
+          margin-bottom: 0px;
+          color: #ccc;
+        }
+        .trending-title {
+          font-size: 18px;
+          padding-bottom: 0px;
+          margin-bottom: 0px;
+          display: block;
+          margin-top: 7px;
+          line-height: 15px;
+        }
+        .forum-title {
+          font-size: 15px;
+        }
+        .forum-time {
+          font-size: 11px;
+          line-height: 24px;
+        }
+      }
     }
   }
 }
