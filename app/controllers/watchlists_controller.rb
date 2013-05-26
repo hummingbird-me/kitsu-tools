@@ -61,7 +61,7 @@ class WatchlistsController < ApplicationController
         user_id: current_user.id,
         action_type: "watched_episode",
         anime_id: @anime.slug,
-        episode_number: @watchlist.episodes_watched
+        episode_number: @watchlist.episodes_watched+1
       })
     end
     
