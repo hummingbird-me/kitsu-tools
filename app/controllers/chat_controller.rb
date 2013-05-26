@@ -1,6 +1,6 @@
 class ChatController < ApplicationController
   before_filter :authenticate_user!
-  CHAT_VERSION = 13
+  CHAT_VERSION = 14
 
   def index
     hide_cover_image
@@ -58,12 +58,20 @@ class ChatController < ApplicationController
     
     formatted
   end
+
+  def new_message
+    if params[:message] and params[:message].strip.length > 0
+      ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message], formatted_message: format_message(params[:message]))
+      render :json => true
+    else
+      render :json => false
+    end
+  end
   
   def messages
     # If a message was posted, save it.
     if params[:message] and params[:message].strip.length > 0
       sleep 30 if current_user.id == 951
-      ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message], formatted_message: format_message(params[:message]))
       render :json => true
     else
     

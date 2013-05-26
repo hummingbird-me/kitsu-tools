@@ -285,7 +285,7 @@
 
     $("input.message").val('')
 
-    $.post '/chat/messages', {message: c.get('message')}, 
+    $.post '/chat/new_message', {message: c.get('message')}, 
   
   checkConnectivity = ->
     if moment().unix() - lastUpdateTime.unix() > 30
