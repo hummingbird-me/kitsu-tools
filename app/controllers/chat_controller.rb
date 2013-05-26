@@ -79,14 +79,6 @@ class ChatController < ApplicationController
       messages = ChatMessage.desc(:created_at).limit(100)
     end
     
-    # Format any unformatted messages.
-    messages.each do |x|
-      if x.formatted_message.nil?
-        x.formatted_message = format_message x[:message]
-        x.save
-      end
-    end
-    
     # Convert Mongo model into hash.
     messages = messages.map {|x| {id: x[:"_id"], user_id: x[:user_id], type: x[:message_type], message: x.formatted_message, raw_message: x[:message], created_at: x[:created_at]} }
 
