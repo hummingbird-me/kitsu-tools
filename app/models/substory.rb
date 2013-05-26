@@ -2,9 +2,9 @@ class Substory < ActiveRecord::Base
   belongs_to :user
   belongs_to :target, polymorphic: true
   belongs_to :story
-  attr_accessible :user, :target, :story, :substory_type
-
-  validates :user, :target, :substory_type, presence: true
+  attr_accessible :user, :target, :story, :substory_type, :data
+  serialize :data, ActiveRecord::Coders::Hstore
+  validates :user, :substory_type, presence: true
   
   after_create do
     self.story.updated_at = self.created_at
@@ -83,6 +83,21 @@ class Substory < ActiveRecord::Base
         substory_type: "submitted_quote", 
         target: quote, 
         story: story
+      })
+
+    elsif data[:action_type] == "watchlist_status_update"
+
+      anime = Anime.find data[:anime_id]
+      story = Story.for_user_and_anime(user, anime)
+
+      Substory.create({
+        user: user,
+        substory_type: "watchlist_status_update",
+        story: story,
+        data: {
+          old_status: data[:old_status],
+          new_status: data[:new_status]
+        }
       })
 
     end
