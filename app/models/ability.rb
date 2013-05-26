@@ -15,7 +15,7 @@ class Ability
       can :read, Anime, "age_rating <> 'R18+'"
     elsif user.admin?
       ### Admin permissions
-      can :manage, :all
+      can :manage, :anime
       can :moderate, :forum
     else
       ### Regular user permissions
