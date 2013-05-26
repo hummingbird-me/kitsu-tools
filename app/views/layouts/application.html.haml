@@ -18,7 +18,7 @@
     - if yield(:title).length > 0
       %meta(property="og:title"){:content => yield(:title)}
     - if @anime and @anime.respond_to? :cover_image
-      %meta(property="og:image"){:content => "http://hummingbird.ly" + @anime.cover_image.url(:thumb)}
+      %meta(property="og:image"){:content => "http://hummingbird.me" + @anime.cover_image.url(:thumb)}
 
     = yield(:extra_meta_content)
 
@@ -26,13 +26,6 @@
     %script{:src => "//use.typekit.net/nlt2ped.js", :type => "text/javascript"}
     :javascript
       try{Typekit.load();}catch(e){}
-
-
-    - if Rails.env.production?
-      :javascript
-        var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias","ready"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
-        analytics.load("c6svkipfq3");
-
 
   %body
     // Facebook Code
@@ -52,19 +45,13 @@
       = content_for?(:content) ? yield(:content) : yield
     = render 'shared/footer'
 
-    / BuySellAds Ad Code
-    :javascript
-      (function(){
-        var bsa = document.createElement('script');
-           bsa.type = 'text/javascript';
-           bsa.async = true;
-           bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
-        (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
-      })();
-
-    - if Rails.env.production? and user_signed_in?
+    - if Rails.env.production?
       :javascript
-        analytics.identify('#{j current_user.name}', {
-          email: '#{j current_user.email}',
-          username: '#{j current_user.name}'
-        });
+        var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias","ready"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+        analytics.load("c6svkipfq3");
+      - if user_signed_in?
+        :javascript
+          analytics.identify('#{j current_user.name}', {
+            email: '#{j current_user.email}',
+            username: '#{j current_user.name}'
+          });
