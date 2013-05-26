@@ -9,10 +9,6 @@ class Ability
       ### Guest permissions
       # Can view non-hentai anime.
       can :read, Anime, "age_rating <> 'R18+'"
-    elsif user.admin?
-      ### Admin permissions
-      can :manage, :all
-      can :moderate, :forum
     else
       ### Regular user permissions
       can :read, Watchlist, :private => true, :user_id => user.id
@@ -24,6 +20,12 @@ class Ability
       else
         can :read, Anime
       end
+    end
+
+    if user.admin?
+      ### Admin permissions
+      can :manage, :all
+      can :moderate, :forum
     end
   end
 end
