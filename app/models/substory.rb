@@ -100,32 +100,19 @@ class Substory < ActiveRecord::Base
         }
       })
 
-    end
+    elsif data[:action_type] == "watched_episode"
 
-    return
-    user = User.find data[:user_id]
-    if data[:action_type] == "watchlist_status_update"
+      anime = Anime.find data[:anime_id]
+      story = Story.for_user_and_anime(user, anime)
 
-      # If the user has a watchlist_status_update story for this anime that was
-      # updated in the last 2 hours, update that one. Otherwise create a new
-      # story.
-      rs = user.stories.where(story_type: 'watchlist_status_update').where("data -> 'anime_id' = :id", id: data[:anime_id].to_s).order('updated_at DESC').limit(1)
-      if rs.length == 1 and rs[0].updated_at >= 2.hours.ago
-        story = rs[0]
-        story.data["old_status"] = data[:old_status]
-        story.data["new_status"] = data[:new_status]
-        story.updated_at = data[:time]
-        story.save
-      else
-        story = Story.create user: user, story_type: "watchlist_status_update", data: {
-          anime_id: data[:anime_id],
-          old_status: data[:old_status],
-          new_status: data[:new_status]
+      Substory.create({
+        user: user,
+        substory_type: "watched_episode",
+        story: story,
+        data: {
+          episode_number: data[:episode_number]
         }
-        story.updated_at = data[:time]
-        story.save
-      end
-
+      })
     end
   end
 end
