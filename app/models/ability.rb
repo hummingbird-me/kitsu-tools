@@ -24,13 +24,14 @@ class Ability
       else
         can :read, Anime
       end
+
+      if user.admin?
+        ### Admin permissions
+        can :update, :anime
+        can :moderate, :forum
+      end
     end
 
-    if user.admin?
-      ### Admin permissions
-      can :update, :anime
-      can :moderate, :forum
-    end
   end
 end
 
