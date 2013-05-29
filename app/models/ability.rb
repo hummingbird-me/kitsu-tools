@@ -27,7 +27,7 @@ class Ability
 
       if user.admin?
         ### Admin permissions
-        can :update, :anime
+        can :update, Anime
         can :moderate, :forum
       end
     end
