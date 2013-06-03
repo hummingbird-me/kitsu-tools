@@ -3,7 +3,9 @@ class ApplicationController < ActionController::Base
 
   before_filter :fuck_off_lisa
   def fuck_off_lisa
-    sleep 24 if user_signed_in? and current_user.id == 951
+    if user_signed_in? and current_user.id == 951
+      response.headers["X-Accel-Limit-Rate"] = "300"
+    end
   end
 
   def forem_user; current_user; end
