@@ -34,7 +34,7 @@
                       = render "forem/moderation/options", :f => f
             .topic-view
               .large-1.columns.avatar.hide-for-small
-                = link_to image_tag(@topic.user.avatar.url(:thumb)), main_app.user_path(@topic.user)
+                = avatar_link @topic.user, :thumb_small
               .large-11.columns.topic-info
                 .topic-title= link_to @topic.subject, forem.forum_topic_path(@topic.forum, @topic)
                 %p.sub-text 
@@ -96,7 +96,7 @@
           .reply-form.large-12.columns
             - if user_signed_in?
               .large-1.columns.avatar.hide-for-small
-                = image_tag(current_user.avatar.url(:thumb))
+                = image_tag(current_user.avatar.url(:thumb_small))
               .large-11.columns.input-area
                 = simple_form_for [forem, @topic, @topic.posts.build] do |f|
                   .redactorable
