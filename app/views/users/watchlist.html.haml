@@ -445,8 +445,8 @@
   @fetchWatchlistSection = (s...) ->
     section = s[0]
     page = if s[1] then s[1] else 1
-    watchlist_path = #{user_watchlist_path(@user, format: :json).inspect}
-    $.getJSON(watchlist_path + "?list=" + section + "&page=" + page, (d) ->
+    watchlist_path = "/api/v1/users/#{@user.to_param}/library"
+    $.getJSON(watchlist_path + "?status=" + section + "&page=" + page, (d) ->
       models = _.map d, (x) ->
         new WatchlistItem x
       WatchlistSectionCollections[section].set models, {remove: false}

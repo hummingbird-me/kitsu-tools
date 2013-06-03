@@ -22,6 +22,10 @@ class API_v1 < Grape::API
   # `current_ability` for CanCan.
   #
   helpers do
+    def warden; env['warden']; end
+    def current_user
+      warden.user
+    end
     def current_ability
       @current_ability ||= Ability.new(current_user)
     end
@@ -33,6 +37,7 @@ class API_v1 < Grape::API
     params do
       requires :user_id, type: String
       requires :status, type: String
+      optional :page, type: Integer
     end
     get ':user_id/library' do
       @user = User.find(params[:user_id])
