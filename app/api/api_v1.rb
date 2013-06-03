@@ -1,6 +1,9 @@
 class API_v1 < Grape::API
   version 'v1', using: :path, format: :json, vendor: 'hummingbird'
 
+  #
+  # Log response time to Riemann.
+  #
   before do
     @start_time = Time.now
   end
@@ -13,6 +16,38 @@ class API_v1 < Grape::API
       metric: lat,
       state: "ok"
     }
+  end
+  
+  #
+  # `current_ability` for CanCan.
+  #
+  helpers do
+    def current_ability
+      @current_ability ||= Ability.new(current_user)
+    end
+  end
+
+  
+  resource :users do
+    desc "Return the entries in a user's library under a specific status."
+    params do
+      requires :user_id, type: String
+      requires :status, type: String
+    end
+    get ':user_id/library' do
+      @user = User.find(params[:user_id])
+      status = Watchlist.status_parameter_to_status(params[:status])
+
+      watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).includes(:anime).page(params[:page]).per(50)
+      
+      if status == "Currently Watching"
+        watchlists = watchlists.order('last_watched DESC')
+      else
+        watchlists = watchlists.order('created_at DESC')
+      end
+
+      watchlists.map {|x| x.to_hash current_user }
+    end
   end
   
   resource :anime do
