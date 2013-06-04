@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :fuck_off_lisa
   def fuck_off_lisa
     if user_signed_in? and current_user.id == 951
-      response.headers["X-Accel-Limit-Rate"] = "150"
+      response.headers["X-Accel-Limit-Rate"] = "300"
     end
   end
 
