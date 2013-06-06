@@ -223,68 +223,16 @@
         .large-6.columns.block-title
           %h4 Forum
         .large-6.columns.block-link
-          = link_to "view forums", "#", :class => "right"
+          = link_to "view forums", forem.root_path, class: 'right'
         %hr
         %ul
-          %li.large-12.columns.topic-row
-            .large-10.columns.no-padding.forum-title
-              = link_to "Name the worst anime or drama you..."
-            .large-2.columns.no-padding.forum-time
-              %i 12 min ago
-
-          %li.large-12.columns.topic-row
-            .large-10.columns.no-padding.forum-title
-              = link_to "What can't you put in the trash th..."
-            .large-2.columns.no-padding.forum-time
-              %i 12 min ago
-
-          %li.large-12.columns.topic-row
-            .large-10.columns.no-padding.forum-title
-              = link_to "Staying friends with your ex"
-            .large-2.columns.no-padding.forum-time
-              %i 12 min ago
-
-          %li.large-12.columns.topic-row
-            .large-10.columns.no-padding.forum-title
-              = link_to "Who are you? Express who you a..."
-            .large-2.columns.no-padding.forum-time
-              %i 12 min ago
-
-          %li.large-12.columns.topic-row
-            .large-10.columns.no-padding.forum-title
-              = link_to "How do men feel about women s..."
-            .large-2.columns.no-padding.forum-time
-              %i 12 min ago
-
-          %li.large-12.columns.topic-row
-            .large-10.columns.no-padding.forum-title
-              = link_to "Do you find it hard to make frien..."
-            .large-2.columns.no-padding.forum-time
-              %i 12 min ago
-
-          %li.large-12.columns.topic-row
-            .large-10.columns.no-padding.forum-title
-              = link_to "Who drinks green tea?"
-            .large-2.columns.no-padding.forum-time
-              %i 12 min ago
-
-          %li.large-12.columns.topic-row
-            .large-10.columns.no-padding.forum-title
-              = link_to "Doomsday Prepping"
-            .large-2.columns.no-padding.forum-time
-              %i 12 min ago
-
-          %li.large-12.columns.topic-row
-            .large-10.columns.no-padding.forum-title
-              = link_to "Daily Rant Thread"
-            .large-2.columns.no-padding.forum-time
-              %i 12 min ago
-
-          %li.large-12.columns.topic-row
-            .large-10.columns.no-padding.forum-title
-              = link_to "[Spoilers] Attack on Titan E08"
-            .large-2.columns.no-padding.forum-time
-              %i 12 min ago
+          - @forum_topics.each do |topic|
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  = link_to truncate(topic.subject, length: 35, separator: ' '), forem.forum_topic_path(topic.forum, topic)
+                .forum-time.pull-right
+                  %i #{distance_of_time_in_words_to_now(topic.last_post_at)} ago
 
       .large-12.columns.no-padding.trending-block
         .large-12.columns.block-title
