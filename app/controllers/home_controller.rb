@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   #caches_action :index, layout: false, :if => lambda { not user_signed_in? }
 
   def index
-    if user_signed_in? and current_user.id == 1
+    if user_signed_in? and (current_user.id == 1 or current_user.id == 4075)
 
       @forum_topics = Forem::Topic.by_most_recent_post.limit(10)
       @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
