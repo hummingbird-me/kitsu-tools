@@ -4,7 +4,7 @@
 
   if type == "starRatings"
     for i in [1..5]
-      star = $("<a class='star' data-rating='" + i + "'></a>")
+      star = $("<a class='star' data-rating='" + i + "' href='javascript: void(0)'></a>")
       if rating >= i
         star.append $("<i class='icon icon-star'></i>")
       else
@@ -19,5 +19,6 @@
             initializeRatingInterface element, anime_slug, type
 
       element.append star
+      element.append $("<span> </span>")
   
   element.append $("<div class='spinner pull-right'></div>")
