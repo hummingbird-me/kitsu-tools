@@ -7,6 +7,7 @@ class HomeController < ApplicationController
 
       @forum_topics = Forem::Topic.by_most_recent_post.limit(10)
       @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
+      @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).limit(10)
       
     elsif user_signed_in?
 
