@@ -18,9 +18,6 @@ class API_v1 < Grape::API
     }
   end
   
-  #
-  # `current_ability` for CanCan.
-  #
   helpers do
     def warden; env['warden']; end
     def current_user
