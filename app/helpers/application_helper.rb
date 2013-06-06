@@ -57,7 +57,7 @@ module ApplicationHelper
 
   # Linking helpers
   def avatar_link(user, style=:thumb)
-    link_to image_tag(user.avatar.url(style)), user, alt: "#{user.name}'s avatar"
+    link_to image_tag(user.avatar.url(style)), main_app.user_path(user), alt: "#{user.name}'s avatar"
   end
   def user_link(user, options={})
     link_to (user == current_user and options[:you]) ? "You" : user.name, user

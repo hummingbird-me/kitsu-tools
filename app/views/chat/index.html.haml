@@ -238,12 +238,13 @@
     if scrollFlag
       updateChatScroll({force: true})
 
+  latestChatMessageId = "[[unknown]]"
 
   getMessagesURL = ->
     serverChatMessages = ChatMessages.select (x) ->
       return !x.isNew()
     if serverChatMessages.length > 0
-      return "/chat/messages?since=" + encodeURIComponent(serverChatMessages[serverChatMessages.length-1].get("created_at"))
+      return "/chat/messages?latest_chat_message_id=" + latestChatMessageId + "&since=" + encodeURIComponent(serverChatMessages[serverChatMessages.length-1].get("created_at"))
     else
       return "/chat/messages"
 
@@ -258,6 +259,8 @@
       ChatMessages.remove _.select localMessages, (local) ->
         _.any d, (remote) ->
           local.get("user_id") == remote["user_id"] and local.get("message").trim() == remote["raw_message"].trim()
+      if d.length > 0
+        latestChatMessageId = d[d.length - 1].id
       updateMessages d
       lastUpdateTime = moment()
       setTimeout getMessagesFromRemote, (if pageVisible() then 2000 else 5000)

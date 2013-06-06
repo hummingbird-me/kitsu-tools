@@ -3,10 +3,14 @@ class HomeController < ApplicationController
   #caches_action :index, layout: false, :if => lambda { not user_signed_in? }
 
   def index
-    @latest_reviews = Review.order('created_at DESC').limit(2)
+    if user_signed_in?
+      @latest_reviews = Review.order('created_at DESC').limit(2)
 
-    @recent_anime_users = User.joins(:watchlists).where('watchlists.episodes_watched > 0').order('MAX(watchlists.last_watched) DESC').group('users.id').limit(8)
-    @recent_anime = @recent_anime_users.map {|x| x.watchlists.where("EXISTS (SELECT 1 FROM anime WHERE anime.id = anime_id AND age_rating <> 'R18+')").order('updated_at DESC').limit(1).first }.sort_by {|x| x.last_watched || x.updated_at }.reverse
+      @recent_anime_users = User.joins(:watchlists).where('watchlists.episodes_watched > 0').order('MAX(watchlists.last_watched) DESC').group('users.id').limit(8)
+      @recent_anime = @recent_anime_users.map {|x| x.watchlists.where("EXISTS (SELECT 1 FROM anime WHERE anime.id = anime_id AND age_rating <> 'R18+')").order('updated_at DESC').limit(1).first }.sort_by {|x| x.last_watched || x.updated_at }.reverse
+    else
+      render :guest_index
+    end
   end
   
   def dashboard

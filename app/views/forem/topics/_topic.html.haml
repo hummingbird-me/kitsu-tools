@@ -1,7 +1,7 @@
 - last_post = topic.posts.last
 .topic
   .large-1.columns.avatar.hide-for-small
-    = image_tag last_post.user.avatar.url(:thumb)
+    = avatar_link last_post.user, :thumb_small
   .large-10.columns.topic-info
     .topic-title
       = link_to topic.subject, forem.forum_topic_path(topic.forum, topic)

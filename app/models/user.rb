@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
     :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio,
     :forem_admin, :about, :cover_image, :sfw_filter, :star_rating
 
-  has_attached_file :avatar, :styles => {:thumb => "190x190#"},
+  has_attached_file :avatar, :styles => {:thumb => "190x190#", :thumb_small => "50x50#"},
     :default_url => "http://placekitten.com/g/190/190"
 
   has_attached_file :cover_image, :styles => {:thumb => "760x250#"},
@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
   # For now, this will just check email addresses. In production, this should
   # check the user's ID as well.
   def admin?
-    (email == "c@vikhyat.net") or (email == "josh@hummingbird.ly") or (email == "harlequinmarie@gmail.com")
+    (email == "c@vikhyat.net") or (email == "josh@hummingbird.ly") or (email == "harlequinmarie@gmail.com") or (email == "ryatt.tesla@gmail.com") or (email == "dev.colinl@gmail.com")
   end
 
   # Public: Find a user corresponding to a Facebook account.

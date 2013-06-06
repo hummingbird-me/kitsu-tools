@@ -1078,7 +1078,8 @@ CREATE TABLE stories (
     updated_at timestamp without time zone NOT NULL,
     story_type character varying(255),
     target_id integer,
-    target_type character varying(255)
+    target_type character varying(255),
+    watchlist_id integer
 );
 
 
@@ -2404,3 +2405,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130525183625');
 INSERT INTO schema_migrations (version) VALUES ('20130525190345');
 
 INSERT INTO schema_migrations (version) VALUES ('20130526070928');
+
+INSERT INTO schema_migrations (version) VALUES ('20130526171102');

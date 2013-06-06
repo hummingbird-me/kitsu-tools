@@ -4,6 +4,10 @@ class Ability
   def initialize(user)
     # Global permissions
     can :read, Watchlist, :private => false
+
+    can :read, Story, Story.joins("LEFT OUTER JOIN watchlists ON watchlists.id = stories.watchlist_id").where("watchlists.id IS NULL OR watchlists.private = 'f'") do |story|
+      story.watchlist.nil? or !story.watchlist.private
+    end
     
     if user.nil?
       ### Guest permissions
@@ -20,12 +24,12 @@ class Ability
       else
         can :read, Anime
       end
-    end
 
-    if user.admin?
-      ### Admin permissions
-      can :manage, :all
-      can :moderate, :forum
+      if user.admin?
+        ### Admin permissions
+        can :update, Anime
+        can :moderate, :forum
+      end
     end
   end
 end
