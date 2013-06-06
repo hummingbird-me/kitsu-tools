@@ -3,87 +3,29 @@
     .large-8.columns.left-home-column.no-padding
       .large-12.columns.no-padding.recent-watched
         .recommendations
-          .large-3.columns.no-padding.recommendation
-            = image_tag "http://hummingbird.me/system/f7e34ca9700bc93ce85e43ca2e43656beaf5f69c_thumb.jpg?1361875391"
-            .large-12.columns.meta-wrapper
-              .meta-data.large-12.columns.no-padding-left
-                %p 
-                  %h5.anime-title <a href="#">Soul Eater</a>
-                .rating
-                  %i.icon-star-empty
-                  %i.icon-star-empty
-                  %i.icon-star-empty
-                  %i.icon-star-empty
-                  %i.icon-star-empty
-                %hr
-                .large-6.columns.no-padding
-                  Progress:
-                .large-6.columns.no-padding.progress-number
-                  %a.count-add{:href => "#"}
-                    %i.icon-angle-up
-                    18 <span class="total-episodes">/ 51</span>
-
-
-          .large-3.columns.no-padding.recommendation
-            = image_tag "http://localhost:3000/system/850418cfe0b2e2a27be17bfbf91eb6d37fdf11fb_thumb.jpg?1361877196"
-            .large-12.columns.meta-wrapper
-              .meta-data.large-12.columns.no-padding-left
-                %p 
-                  %h5.anime-title <a href="#">Mirai Nikki (TV)</a>
-                .rating
-                  %i.icon-star
-                  %i.icon-star
-                  %i.icon-star
-                  %i.icon-star-empty
-                  %i.icon-star-empty
-                %hr
-                .large-6.columns.no-padding
-                  Progress:
-                .large-6.columns.no-padding.progress-number
-                  %a.count-add{:href => "#"}
-                    %i.icon-angle-up
-                    03 <span class="total-episodes">/ 26</span>
-
-          .large-3.columns.no-padding.recommendation
-            = image_tag "http://hummingbird.me/system/d85ed62ca413ab215b4ce85c3c3fefb29760ef9c_thumb.jpg?1361873647"
-            .large-12.columns.meta-wrapper
-              .meta-data.large-12.columns.no-padding-left
-                %p 
-                  %h5.anime-title <a href="#">Texhnolyze</a>
-                .rating
-                  %i.icon-star
-                  %i.icon-star
-                  %i.icon-star
-                  %i.icon-star
-                  %i.icon-star-empty
-                %hr
-                .large-6.columns.no-padding
-                  Progress:
-                .large-6.columns.no-padding.progress-number
-                  %a.count-add{:href => "#"}
-                    %i.icon-angle-up
-                    67 <span class="total-episodes">/ 251</span>
-
-          .large-3.columns.no-padding.recommendation
-            = image_tag "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"
-            .large-12.columns.meta-wrapper
-              .meta-data.large-12.columns.no-padding-left
-                %p 
-                  %h5.anime-title <a href="#">Attack on Titan</a>
-                .rating
-                  %i.icon-star
-                  %i.icon-star
-                  %i.icon-star-empty
-                  %i.icon-star-empty
-                  %i.icon-star-empty
-                %hr
-                .large-6.columns.no-padding
-                  Progress:
-                .large-6.columns.no-padding.progress-number
-                  %a.count-add{:href => "#"}
-                    %i.icon-angle-up
-                    07 <span class="total-episodes">/ 51</span>
-
+          - @recent_anime.each do |watchlist|
+            .large-3.columns.no-padding.recommendation
+              = image_tag "http://hummingbird.me/system/f7e34ca9700bc93ce85e43ca2e43656beaf5f69c_thumb.jpg?1361875391"
+              .large-12.columns.meta-wrapper
+                .meta-data.large-12.columns.no-padding-left
+                  %p 
+                    %h5.anime-title= anime_link watchlist.anime
+                  .rating
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                    %i.icon-star-empty
+                  %hr
+                  .large-6.columns.no-padding
+                    Progress:
+                  .large-6.columns.no-padding.progress-number
+                    %a.count-add{:href => "#"}
+                      %i.icon-angle-up
+                      18 <span class="total-episodes">/ 51</span>
+          - (4-@recent_anime.length).times do
+            .large-3.columns.no-padding.recommendation
+              = image_tag "http://placekitten.com/184/274"
 
       .large-12.columns.hide-for-small.no-padding.center.home-banner
         :javascript

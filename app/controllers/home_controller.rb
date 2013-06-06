@@ -6,6 +6,7 @@ class HomeController < ApplicationController
     if user_signed_in? and current_user.id == 1
 
       @forum_topics = Forem::Topic.by_most_recent_post.limit(10)
+      @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
       
     elsif user_signed_in?
 
