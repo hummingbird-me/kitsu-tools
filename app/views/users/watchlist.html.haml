@@ -191,7 +191,7 @@
       if currentUsersProfile
         data.anime_id = this.get("anime").slug
         that = this
-        $.post "/watchlist/update", data, (d) ->
+        $.post "/api/v1/libraries/" + data.anime_id, data, (d) ->
           newModel = that.updateSelf(d)
           if that.get("_dropdownOpen")
             newModel.set "_dropdownOpen", true
