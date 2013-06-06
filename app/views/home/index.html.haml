@@ -5,17 +5,14 @@
         .recommendations
           - @recent_anime.each do |watchlist|
             .large-3.columns.no-padding.recommendation
-              = image_tag "http://hummingbird.me/system/f7e34ca9700bc93ce85e43ca2e43656beaf5f69c_thumb.jpg?1361875391"
+              = image_tag watchlist.anime.cover_image.url(:thumb)
               .large-12.columns.meta-wrapper
                 .meta-data.large-12.columns.no-padding-left
                   %p 
                     %h5.anime-title= anime_link watchlist.anime
-                  .rating
-                    %i.icon-star-empty
-                    %i.icon-star-empty
-                    %i.icon-star-empty
-                    %i.icon-star-empty
-                    %i.icon-star-empty
+                  .rating{:id => watchlist.anime.slug, :"data-rating" => (watchlist.rating || -3) + 3}
+                  :javascript
+                    initializeRatingInterface($(".rating##{watchlist.anime.slug}"), "#{watchlist.anime.slug}", "starRatings");
                   %hr
                   .large-6.columns.no-padding
                     Progress:

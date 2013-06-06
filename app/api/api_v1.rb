@@ -55,6 +55,85 @@ class API_v1 < Grape::API
     end
   end
   
+  resource :libraries do
+    desc "Update a specific anime's details in a user's library."
+    params do
+      requires :anime_slug, type: String
+    end
+    post ':anime_slug' do
+      return false unless user_signed_in?
+
+      @anime = Anime.find(params["anime_slug"])
+      @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
+        
+      # Update status.
+      if params[:status]
+        status = Watchlist.status_parameter_to_status(params[:status])
+        if @watchlist.status != status
+          # Create an action if the status was changed.
+          Substory.from_action({
+            user_id: current_user.id,
+            action_type: "watchlist_status_update",
+            anime_id: @anime.slug,
+            old_status: @watchlist.status,
+            new_status: status,
+            time: Time.now
+          })
+        end
+        @watchlist.status = status if Watchlist.valid_statuses.include? status
+      end
+      
+      # Update privacy.
+      if params[:privacy]
+        if params[:privacy] == "private"
+          @watchlist.private = true
+        elsif params[:privacy] == "public"
+          @watchlist.private = false
+        end
+      end
+
+      # Update rating.
+      if params[:rating]
+        if @watchlist.rating == params[:rating].to_i
+          @watchlist.rating = nil
+        else
+          @watchlist.rating = [ [-2, params[:rating].to_i].max, 2 ].min
+        end
+      end
+
+      # Update rewatched_times.
+      if params[:rewatched_times]
+        @watchlist.rewatched_times = params[:rewatched_times]
+      end
+
+      # Update notes.
+      if params[:notes]
+        @watchlist.notes = params[:notes]
+      end
+      
+      # Update episode count.
+      if params[:episodes_watched]
+        @watchlist.update_episode_count params[:episodes_watched]
+      end
+
+      if params[:increment_episodes]
+        @watchlist.update_episode_count @watchlist.episodes_watched+1
+        Substory.from_action({
+          user_id: current_user.id,
+          action_type: "watched_episode",
+          anime_id: @anime.slug,
+          episode_number: @watchlist.episodes_watched+1
+        })
+      end
+      
+      if @watchlist.save
+        @watchlist.to_hash(current_user)
+      else
+        return false
+      end
+    end
+  end
+  
   resource :anime do
     desc "Return an anime"
     params do
