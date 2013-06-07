@@ -3,6 +3,34 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import "compass/css3";
 
+.large-banner {
+  figure {
+    height: 470px;
+    margin-top: 0px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    margin-left: 0px;
+
+    .overlay {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      text-align: center;
+      color: #fff;
+      @include opacity(0.90);
+      @include border-top-radius(3px);
+      @include background-image(linear-gradient(left top, #393939, #000));
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
+
+
 .home-content {
   margin-top: 30px;
   .recent-watched {
