@@ -15,7 +15,9 @@
 - Watchlist.valid_statuses.each do |status|
   .watchlist-row{:id => "table-" + status.parameterize}
     .large-12.columns.library-status-header
-      %h5.status= status
+      %h5.status
+        = status
+        %span.item-count.pull-right
     .row
       .large-12.columns.library-table
 
@@ -372,11 +374,17 @@
     tagName: "div"
     template: Hogan.compile $("#WatchlistSectionViewTemplate").html()
     initialize: ->
-      _(this).bindAll 'add'
+      _(this).bindAll 'add', 'remove'
       this.collection.bind 'add', this.add
+      this.collection.bind 'remove', this.remove
     add: (i) ->
       iv = new WatchlistItemView {model: i}
       i.set "_view", iv
+      this.renderItemCount()
+    remove: ->
+      this.renderItemCount()
+    renderItemCount: ->
+      $("#table-" + this.options.section + " .item-count").text "(" + this.collection.length + ")"
     render: ->
       this.$el.html this.template.render()
       that = this
