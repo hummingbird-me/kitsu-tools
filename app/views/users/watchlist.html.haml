@@ -65,14 +65,14 @@
         &#8901;
         %i.icon-book
       {{/notes_present}}
-      - if @user == current_user
-        %i.icon-reorder
+      %i.icon-reorder
   %td.episode-count{:width => "95"}
     .relative-wrapper 
       - if @user == current_user
         %a.click-add
           %i.icon-angle-up
-      <span class="edit">{{episodes_watched}}</span> <span class="hide-small">/ {{anime.episode_count}}</span>
+      %span.edit {{episodes_watched}}
+      %span.hide-small / {{anime.episode_count}}
 
   %td{:width => "76"} 
     %span.select
@@ -112,59 +112,62 @@
             %a(style="color: #fd864b" href="{{anime.url}}") [Read More]
 
       // Right side of dropdown with update content
-      .large-4.columns.action-area
-        .opacity-wrapper
-          %form.custom
-            .large-12.columns.library-status
-              .large-3.columns.option-label
-                %span Status:
-              .large-9.columns.status-dropdown
-                %select.medium(name="status")
-                  - Watchlist.valid_statuses.each do |status|
-                    %option{:value => status.parameterize}= status
+      - if @user == current_user
+        .large-4.columns.action-area
+          .opacity-wrapper
+            %form.custom
+              .large-12.columns.library-status
+                .large-3.columns.option-label
+                  %span Status:
+                .large-9.columns.status-dropdown
+                  %select.medium(name="status")
+                    - Watchlist.valid_statuses.each do |status|
+                      %option{:value => status.parameterize}= status
 
-            .large-12.columns.episodes-watched
-              .large-3.columns.option-label
-                %span Watched:
-              .large-9.columns.status-dropdown
-                .small-6.large-6.columns.episode-input
-                  %input(name="episodes_watched" type="number" value="{{episodes_watched}}" min="0" max="{{anime.episode_count}}")
-                .small-6.large-6.columns.end.episode-count
-                  %span.postfix Out of {{anime.episode_count}}
+              .large-12.columns.episodes-watched
+                .large-3.columns.option-label
+                  %span Watched:
+                .large-9.columns.status-dropdown
+                  .small-6.large-6.columns.episode-input
+                    %input(name="episodes_watched" type="number" value="{{episodes_watched}}" min="0" max="{{anime.episode_count}}")
+                  .small-6.large-6.columns.end.episode-count
+                    %span.postfix Out of {{anime.episode_count}}
 
-            .large-12.columns.episodes-watched
-              .large-3.columns.option-label
-                %span Rewatched:
-              .large-7.columns.status-dropdown
-                .small-6.large-6.columns.episode-input
-                  %input(name="rewatched_times" type="number" value="{{rewatched_times}}" min="0")
-                .small-6.large-6.columns.end.episode-count
-                  %span.postfix Times
+              .large-12.columns.episodes-watched
+                .large-3.columns.option-label
+                  %span Rewatched:
+                .large-7.columns.status-dropdown
+                  .small-6.large-6.columns.episode-input
+                    %input(name="rewatched_times" type="number" value="{{rewatched_times}}" min="0")
+                  .small-6.large-6.columns.end.episode-count
+                    %span.postfix Times
 
-            .large-12.columns.privacy-setting
-              .large-3.columns.option-label
-                %span Privacy:
-              .large-9.columns.privacy-dropdown
-                %select.medium(name="privacy")
-                  %option(value="public") Public
-                  %option(value="private") Private
+              .large-12.columns.privacy-setting
+                .large-3.columns.option-label
+                  %span Privacy:
+                .large-9.columns.privacy-dropdown
+                  %select.medium(name="privacy")
+                    %option(value="public") Public
+                    %option(value="private") Private
 
-          .large-12.columns.remove-from-library.text-center
-            %span
-              %i.icon-remove
-              %a.remove-from-library Remove From Library
+            .large-12.columns.remove-from-library.text-center
+              %span
+                %i.icon-remove
+                %a.remove-from-library Remove From Library
         // Spinner
         %span.updating-icon.hide
           %i.icon-spinner.icon-spin.updating-icon
       
       .large-12.columns
-        %form.notes-form
-          .row
-            .small-12
-              %textarea{:placeholder => "Personal Notes about {{anime.title}}", :class => "personal-notes", :name => "notes"} {{notes}}
-              %small.error.saving-indicator(style="display:none")
-                %i.icon.icon-spin.icon-spinner
-                Saving...
+        - if @user == current_user
+          %form.notes-form
+            .row
+              .small-12
+                %textarea{:placeholder => "Personal Notes about {{anime.title}}", :class => "personal-notes", :name => "notes"} {{notes}}
+                %small.error.saving-indicator(style="display:none")
+                  %i.icon.icon-spin.icon-spinner
+                  Saving...
+
 :coffee
   starRatings = #{@user.star_rating.inspect}
   currentUsersProfile = #{@user == current_user}
@@ -267,11 +270,10 @@
       this.$el.remove()
 
     change: ->
-      if currentUsersProfile
-        if this.model.get("_dropdownOpen")
-          this.showDropdown()
-        else
-          this.hideDropdown()
+      if this.model.get("_dropdownOpen")
+        this.showDropdown()
+      else
+        this.hideDropdown()
     
     render: ->
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
