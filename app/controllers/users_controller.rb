@@ -64,28 +64,9 @@ class UsersController < ApplicationController
   def watchlist
     @active_tab = :library
     @user = User.find(params[:user_id])
+    @per_page = 50
     
-    respond_to do |format|
-      format.html { render "watchlist", layout: "profile" }
-      format.json do
-        status = Watchlist.status_parameter_to_status(params[:list])
-        watchlists = []
-        
-        if status
-          watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).includes(:anime).page(params[:page]).per(50)
-          # TODO simplify this sorting bit.
-          if status == "Currently Watching"
-            watchlists = watchlists.order('last_watched DESC')
-          else
-            watchlists = watchlists.order('created_at DESC')
-          end
-        end
-
-        watchlists = watchlists.map {|x| x.to_hash current_user }
-        
-        render :json => watchlists
-      end
-    end
+    render "watchlist", layout: "profile"
   end
 
   def follow

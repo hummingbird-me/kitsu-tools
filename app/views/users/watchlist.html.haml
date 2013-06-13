@@ -455,7 +455,7 @@
       WatchlistSectionViews[s].setSortOrder $.jStorage.get("sortOrder_" + s)
 
   lastRender = moment()
-  perPage = 50
+  perPage = #{@per_page}
   @fetchWatchlistSection = (s...) ->
     section = s[0]
     page = if s[1] then s[1] else 1
