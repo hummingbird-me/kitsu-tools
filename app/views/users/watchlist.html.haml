@@ -170,8 +170,8 @@
   currentUsersProfile = #{@user == current_user}
 
   setActiveTab = (section) ->
-    $(".watchlist-option-bar .options li").removeClass "active"
-    $(".watchlist-option-bar .options #tab-" + section).addClass "active"
+    $(".option-bar .options li").removeClass "active"
+    $(".option-bar .options #tab-" + section).addClass "active"
 
   WatchlistSections = #{Watchlist.valid_statuses.map {|x| x.parameterize }.inspect}
     
