@@ -63,7 +63,8 @@
       {{#notes_present}}
       %span.item-indicator
         &#8901;
-        %i.icon-book
+        %span.has-tip(data-tooltip){:title => "{{notes}}"}
+          %i.icon-book
       {{/notes_present}}
       %i.icon-reorder
   %td.episode-count{:width => "95"}
