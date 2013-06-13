@@ -1,6 +1,7 @@
 require 'rvm/capistrano'
 require 'sidekiq/capistrano'
 require 'bundler/capistrano'
+require 'new_relic/recipes'
 
 set :application, "hummingbird"
 set :repository,  "git@github.com:vikhyat/hummingbird.git"
@@ -130,6 +131,8 @@ before "sidekiq:restart", "deploy:stop_monit_sidekiq"
 after "sidekiq:restart", "deploy:start_monit_sidekiq"
 
 after "deploy:migrate", "deploy:reload_unicorn"
+
+after "deploy:update", "newrelic:notice_deployment"
 
 # To keep only the last 5 releases:
 # (Default is `set :keep_releases, 5`)
