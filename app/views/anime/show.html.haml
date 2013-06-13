@@ -213,36 +213,37 @@
 
 
 
-    .similar-anime.large-12.columns.hide-for-small{:style => 'display: none!important'}
-      %header
-        .large-4.columns
-          %hr
-        .large-4.columns
-          %h3 Similar Anime
-        .large-4.columns
-          %hr
-        .row
-          .recommended.large-6.columns
-            .panel.large-12.columns
-              .large-4.columns
-                = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
-              .large-8.columns.end
-                %p.title Accel World
-                %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual...
+    - if current_user.admin?
+      .similar-anime.large-12.columns.hide-for-small
+        %header
+          .large-4.columns
+            %hr
+          .large-4.columns
+            %h3 Similar Anime
+          .large-4.columns
+            %hr
+          .row
+            .recommended.large-6.columns
+              .panel.large-12.columns
+                .large-4.columns
+                  = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
+                .large-8.columns.end
+                  %p.title Accel World
+                  %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual...
 
-                .rating.negative.large-4.columns
-                  54%
+                  .rating.negative.large-4.columns
+                    54%
 
-          .recommended.large-6.columns
-            .panel.large-12.columns
-              .large-4.columns
-                = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
-              .large-8.columns.end
-                %p.title Accel World
-                %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual...
+            .recommended.large-6.columns
+              .panel.large-12.columns
+                .large-4.columns
+                  = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
+                .large-8.columns.end
+                  %p.title Accel World
+                  %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual...
 
-                .rating.positive.large-4.columns
-                  72%
+                  .rating.positive.large-4.columns
+                    72%
 
 // Quote Modal
 #quoteModal.reveal-modal{:class => "medium"}
