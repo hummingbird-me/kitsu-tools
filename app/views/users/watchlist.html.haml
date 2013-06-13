@@ -455,7 +455,7 @@
       WatchlistSectionViews[s].setSortOrder $.jStorage.get("sortOrder_" + s)
 
   lastRender = moment()
-  perPage = #{@per_page}
+  perPage = 50
   @fetchWatchlistSection = (s...) ->
     section = s[0]
     page = if s[1] then s[1] else 1
@@ -464,7 +464,7 @@
       models = _.map d, (x) ->
         new WatchlistItem x
       WatchlistSectionCollections[section].set models, {remove: false}
-      if d.length > 0
+      if d.length == perPage
         $("#table-" + section + " .loading-indicator span span").text(page * perPage)
         fetchWatchlistSection section, page+1
       else
