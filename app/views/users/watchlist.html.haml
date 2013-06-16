@@ -137,7 +137,7 @@
       this.$el.find("td:first").click ->
         that.toggleDropdown()
       this.$el.find("a.click-add").click ->
-        that.$el.find("a.click-add").replaceWith $("<i class='icon icon-spin icon-spinner'></i>")
+        that.$el.find("a.click-add").removeAttr("href").html $("<i class='icon icon-spin icon-spinner'></i>")
         that.model.update {increment_episodes: true}
       return this
       
