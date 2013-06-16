@@ -213,7 +213,7 @@
 
 
 
-    - if current_user.admin?
+    - if user_signed_in? and current_user.admin?
       .similar-anime.large-12.columns.hide-for-small
         %header
           .large-4.columns
