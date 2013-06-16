@@ -8,7 +8,9 @@ Hummingbird::Application.routes.draw do
   }
 
   mount Forem::Engine => "/community"
+
   match '/privacy' => 'home#privacy'
+  match '/developers/api' => 'home#api'
 
   # Chat
   match '/chat' => 'chat#index'
