@@ -43,7 +43,7 @@ class API_v1 < Grape::API
       @user = User.find(params[:user_id])
       status = Watchlist.status_parameter_to_status(params[:status])
 
-      watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).includes(:anime).page(params[:page]).per(50)
+      watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).includes(:anime).page(params[:page]).per(100)
       
       if status == "Currently Watching"
         watchlists = watchlists.order('last_watched DESC')
