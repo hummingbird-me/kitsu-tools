@@ -158,6 +158,10 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
+    handlebars_assets (0.13.0)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt
     hashie (2.0.3)
     highline (1.6.18)
     hike (1.2.2)
@@ -440,6 +444,7 @@ DEPENDENCIES
   grape
   haml (~> 4.0)
   haml-rails
+  handlebars_assets
   image_optim
   jquery-rails
   kaminari

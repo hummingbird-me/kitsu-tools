@@ -29,6 +29,7 @@ group :assets do
   gem 'zurb-foundation', '~> 4.0.0'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
+  gem 'handlebars_assets'
 end
 
 gem 'sunspot_rails'

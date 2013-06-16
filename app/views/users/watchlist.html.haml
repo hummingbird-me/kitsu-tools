@@ -21,36 +21,6 @@
     .row
       .large-12.columns.library-table
 
-%script(type="text/template" id="WatchlistSectionViewTemplate")
-  %table.large-12.columns.fake-table-row
-    %thead
-      %tr.sortOptions
-        %th{:width => "495"}
-          %a(data-sortparam="title") 
-            Title
-            %i.icon.icon-sort
-        %th{:width => "95"}
-          %a(data-sortparam="progress") 
-            Progress
-            %i.icon.icon-sort
-        %th{:width => "76"}
-          %a(data-sortparam="rating") 
-            Rating
-            %i.icon.icon-sort
-        %th{:width => "65"}
-          %a(data-sortparam="type") 
-            Type
-            %i.icon.icon-sort
-
-    %tbody.fake-table-row.library-item
-
-    %tbody.loading-indicator
-      %tr
-        %td.center(colspan=4 style="color: #333")
-          %i.icon.icon-spin.icon-spinner.icon-2x
-          %span.right(style="color: #aaa; padding-top: 10px")
-            (Finished loading <span>0</span> entries.)
-
 %script(type="text/template" id="WatchlistItemViewTemplate")
   %td.library-item-title{:width => "495"}
     .relative-wrapper
@@ -378,7 +348,7 @@
 
   WatchlistSectionViewClass = Backbone.View.extend
     tagName: "div"
-    template: Handlebars.compile $("#WatchlistSectionViewTemplate").html()
+    template: HandlebarsTemplates["watchlists/section_view_template"]
     initialize: ->
       _(this).bindAll 'add', 'remove'
       this.collection.bind 'add', this.add
