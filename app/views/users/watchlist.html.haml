@@ -260,8 +260,8 @@
   # Views
   WatchlistItemView = Backbone.View.extend
     tagName: "tr"
-    template: Hogan.compile $("#WatchlistItemViewTemplate").html()
-    dropdownTemplate: Hogan.compile $("#WatchlistDropdownTemplate").html()
+    template: Handlebars.compile $("#WatchlistItemViewTemplate").html()
+    dropdownTemplate: Handlebars.compile $("#WatchlistDropdownTemplate").html()
 
     initialize: ->
       _(this).bindAll 'remove', 'change'
@@ -281,7 +281,7 @@
     
     render: ->
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
-      this.$el.html this.template.render this.model.toJSON()
+      this.$el.html this.template this.model.toJSON()
       that = this
       this.$el.find("td:first").click ->
         that.toggleDropdown()
@@ -295,7 +295,7 @@
       WatchlistSectionCollections[this.model.get("status_parameterized")].find (m) ->
         if m.get("_dropdownOpen") and m.get("_id") != that.model.get("_id")
           m.set "_dropdownOpen", false
-      this.$el.after this.dropdownTemplate.render this.model.toJSON()
+      this.$el.after this.dropdownTemplate this.model.toJSON()
       this.$dropdown = this.$el.next()
 
       # Write rating to the dropdown.
@@ -378,7 +378,7 @@
 
   WatchlistSectionViewClass = Backbone.View.extend
     tagName: "div"
-    template: Hogan.compile $("#WatchlistSectionViewTemplate").html()
+    template: Handlebars.compile $("#WatchlistSectionViewTemplate").html()
     initialize: ->
       _(this).bindAll 'add', 'remove'
       this.collection.bind 'add', this.add
@@ -392,7 +392,7 @@
     renderItemCount: ->
       $("#table-" + this.options.section + " .item-count").text "(" + this.collection.length + ")"
     render: ->
-      this.$el.html this.template.render()
+      this.$el.html this.template()
       that = this
       this.$el.find(".sortOptions a").click ->
         param = $(this).attr("data-sortparam")
