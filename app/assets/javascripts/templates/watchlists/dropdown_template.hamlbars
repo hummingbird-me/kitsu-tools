@@ -1,0 +1,79 @@
+%tr.library-dropdown
+  %td{:style => "background: #fafafa;"}(colspan=4)
+    .large-8.columns.meta-content
+      .large-12.columns.last-update
+        %p Last Library Update: {{formattedLastUpdateTime}}
+      .large-4.columns.thumbnail.hide-for-small
+        %img(src="{{anime.cover_image}}")
+      
+      // Left side of dropdown with thumbnail and description
+      .large-8.columns.library-item-info
+        %span.title {{anime.title}}
+        .rating
+        %span.description {{anime.short_synopsis}}
+        %span.description-link
+          %a(style="color: #fd864b" href="{{anime.url}}") [Read More]
+
+    // Right side of dropdown with update content
+    {{#currentUsersProfile}}
+    .large-4.columns.action-area
+      .opacity-wrapper
+        %form.custom
+          .large-12.columns.library-status
+            .large-3.columns.option-label
+              %span Status:
+            .large-9.columns.status-dropdown
+              %select.medium(name="status")
+                - Watchlist.valid_statuses.each do |status|
+                  %option{:value => status.parameterize}= status
+
+          .large-12.columns.episodes-watched
+            .large-3.columns.option-label
+              %span Watched:
+            .large-9.columns.status-dropdown
+              .small-6.large-6.columns.episode-input
+                %input(name="episodes_watched" type="number" value="{{episodes_watched}}" min="0" max="{{anime.episode_count}}")
+              .small-6.large-6.columns.end.episode-count
+                %span.postfix Out of {{anime.episode_count}}
+
+          .large-12.columns.episodes-watched
+            .large-3.columns.option-label
+              %span Rewatched:
+            .large-7.columns.status-dropdown
+              .small-6.large-6.columns.episode-input
+                %input(name="rewatched_times" type="number" value="{{rewatched_times}}" min="0")
+              .small-6.large-6.columns.end.episode-count
+                %span.postfix Times
+
+          .large-12.columns.privacy-setting
+            .large-3.columns.option-label
+              %span Privacy:
+            .large-9.columns.privacy-dropdown
+              %select.medium(name="privacy")
+                %option(value="public") Public
+                %option(value="private") Private
+
+        .large-12.columns.remove-from-library.text-center
+          %span
+            %i.icon-remove
+            %a.remove-from-library Remove From Library
+    // Spinner
+    %span.updating-icon.hide
+      %i.icon-spinner.icon-spin.updating-icon
+    {{/currentUsersProfile}}
+
+    {{^currentUsersProfile}}
+    / TODO
+    {{/currentUsersProfile}}
+    
+    .large-12.columns
+      {{#currentUsersProfile}}
+      %form.notes-form
+        .row
+          .small-12
+            %textarea{:placeholder => "Personal Notes about {{anime.title}}", :class => "personal-notes", :name => "notes"} {{notes}}
+            %small.error.saving-indicator(style="display:none")
+              %i.icon.icon-spin.icon-spinner
+              Saving...
+      {{/currentUsersProfile}}
+
