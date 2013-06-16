@@ -122,6 +122,8 @@
 
   # Models and Collections
   WatchlistItem = Backbone.Model.extend
+    defaults:
+      currentUsersProfile: currentUsersProfile
     update: (data) ->
       if currentUsersProfile
         data.anime_id = this.get("anime").slug
@@ -207,7 +209,6 @@
     
     render: ->
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
-      this.model.set "currentUsersProfile", currentUsersProfile
       this.$el.html this.template this.model.toJSON()
       that = this
       this.$el.find("td:first").click ->
