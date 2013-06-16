@@ -1,0 +1,52 @@
+%td.library-item-title{:width => "495"}
+  .relative-wrapper
+    %a{:href => "{{anime.url}}"} {{anime.title}}
+    {{#private}}
+    %span.item-indicator
+      &#8901;
+      %i.icon-eye-close 
+    {{/private}}
+    {{#notes_present}}
+    %span.item-indicator
+      &#8901;
+      %span.has-tip(data-tooltip){:title => "{{notes}}"}
+        %i.icon-book
+    {{/notes_present}}
+    %i.icon-reorder
+%td.episode-count{:width => "95"}
+  .relative-wrapper 
+    {{#currentUsersProfile}}
+    %a.click-add
+      %i.icon-angle-up
+    {{/currentUsersProfile}}
+    %span.edit {{episodes_watched}}
+    %span.hide-small / {{anime.episode_count}}
+
+%td{:width => "76"} 
+  %span.select
+    {{#rating.type.star_rating}}
+
+    %i.icon-star
+    {{rating.value}}
+  
+    {{/rating.type.star_rating}}
+
+    {{#rating.type.simple}}
+
+    {{#rating.positive}}
+    %span.positive-smiley :)
+    {{/rating.positive}}
+    {{#rating.neutral}}
+    %span.neutral-smiley :|
+    {{/rating.neutral}}
+    {{#rating.negative}}
+    %span.negative-smiley :(
+    {{/rating.negative}}
+    {{#rating.unknown}}
+    %span.unknown-smiley --
+    {{/rating.unknown}}
+    
+    {{/rating.type.simple}}
+
+%td{:width => "65"} {{anime.show_type}}
+

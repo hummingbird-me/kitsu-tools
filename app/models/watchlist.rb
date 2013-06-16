@@ -103,6 +103,10 @@ class Watchlist < ActiveRecord::Base
       notes_present: (self.notes and self.notes.strip.length > 0),
       status: self.status,
       rating: {
+        type: {
+          star_rating: self.user.star_rating,
+          simple: !self.user.star_rating
+        },
         value: self.rating ? self.rating+3 : "-",
         positive: self.positive?,
         negative: self.negative?,

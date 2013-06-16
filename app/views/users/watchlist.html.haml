@@ -21,50 +21,6 @@
     .row
       .large-12.columns.library-table
 
-%script(type="text/template" id="WatchlistItemViewTemplate")
-  %td.library-item-title{:width => "495"}
-    .relative-wrapper
-      %a{:href => "{{anime.url}}"} {{anime.title}}
-      {{#private}}
-      %span.item-indicator
-        &#8901;
-        %i.icon-eye-close 
-      {{/private}}
-      {{#notes_present}}
-      %span.item-indicator
-        &#8901;
-        %span.has-tip(data-tooltip){:title => "{{notes}}"}
-          %i.icon-book
-      {{/notes_present}}
-      %i.icon-reorder
-  %td.episode-count{:width => "95"}
-    .relative-wrapper 
-      - if @user == current_user
-        %a.click-add
-          %i.icon-angle-up
-      %span.edit {{episodes_watched}}
-      %span.hide-small / {{anime.episode_count}}
-
-  %td{:width => "76"} 
-    %span.select
-      - if @user.star_rating
-        %i.icon-star
-        {{rating.value}}
-      - else
-        {{#rating.positive}}
-        %span.positive-smiley :)
-        {{/rating.positive}}
-        {{#rating.neutral}}
-        %span.neutral-smiley :|
-        {{/rating.neutral}}
-        {{#rating.negative}}
-        %span.negative-smiley :(
-        {{/rating.negative}}
-        {{#rating.unknown}}
-        %span.unknown-smiley --
-        {{/rating.unknown}}
-  %td{:width => "65"} {{anime.show_type}}
-  
 %script(type="text/template" id="WatchlistDropdownTemplate")
   %tr.library-dropdown
     %td{:style => "background: #fafafa;"}(colspan=4)
@@ -144,7 +100,7 @@
 
 :coffee
   starRatings = #{@user.star_rating.inspect}
-  currentUsersProfile = #{@user == current_user}
+  @currentUsersProfile = #{@user == current_user}
 
   setActiveTab = (section) ->
     $(".option-bar .options li").removeClass "active"
@@ -230,7 +186,7 @@
   # Views
   WatchlistItemView = Backbone.View.extend
     tagName: "tr"
-    template: Handlebars.compile $("#WatchlistItemViewTemplate").html()
+    template: HandlebarsTemplates["watchlists/item_view_template"]
     dropdownTemplate: Handlebars.compile $("#WatchlistDropdownTemplate").html()
 
     initialize: ->
@@ -251,6 +207,7 @@
     
     render: ->
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
+      this.model.set "currentUsersProfile", currentUsersProfile
       this.$el.html this.template this.model.toJSON()
       that = this
       this.$el.find("td:first").click ->
