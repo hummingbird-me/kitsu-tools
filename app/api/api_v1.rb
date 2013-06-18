@@ -40,6 +40,7 @@ class API_v1 < Grape::API
       requires :user_id, type: String
       requires :status, type: String
       optional :page, type: Integer
+      optional :title_language_preference, type: String
     end
     get ':user_id/library' do
       @user = User.find(params[:user_id])
@@ -52,8 +53,14 @@ class API_v1 < Grape::API
       else
         watchlists = watchlists.order('created_at DESC')
       end
-
-      present watchlists, with: Entities::Watchlist
+      
+      title_language_preference = params[:title_language_preference]
+      if title_language_preference.nil? and current_user
+        title_language_preference = current_user.title_language_preference
+      end
+      title_language_preference ||= "canonical"
+      
+      present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference
     end
   end
   
@@ -128,8 +135,14 @@ class API_v1 < Grape::API
         })
       end
       
+      title_language_preference = params[:title_language_preference]
+      if title_language_preference.nil? and current_user
+        title_language_preference = current_user.title_language_preference
+      end
+      title_language_preference ||= "canonical"
+      
       if @watchlist.save
-        @watchlist.to_hash(current_user)
+        present @watchlist, with: Entities::Watchlist, title_language_preference: title_language_preference
       else
         return false
       end

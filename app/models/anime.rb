@@ -45,10 +45,14 @@ class Anime < ActiveRecord::Base
   end
 
   # Use this function to get the title instead of directly accessing the title.
-  def canonical_title(current_user=nil)
-    if current_user and current_user.title_language_preference == "romanized"
+  def canonical_title(title_language_preference=nil)
+    if title_language_preference and title_language_preference.class == User
+      title_language_preference = title_language_preference.title_language_preference
+    end
+    
+    if title_language_preference and title_language_preference == "romanized"
       return title
-    elsif current_user and current_user.title_language_preference == "english"
+    elsif title_language_preference and title_language_preference == "english"
       return (alt_title and alt_title.length > 0) ? alt_title : title
     else
       return (alt_title and alt_title.length > 0 and english_canonical) ? alt_title : title
@@ -57,10 +61,14 @@ class Anime < ActiveRecord::Base
 
   # Use this function to get the alt title instead of directly accessing the 
   # alt_title.
-  def alternate_title(current_user=nil)
-    if current_user and current_user.title_language_preference == "romanized"
+  def alternate_title(title_language_preference=nil)
+    if title_language_preference and title_language_preference.class == User
+      title_language_preference = title_language_preference.title_language_preference
+    end
+    
+    if title_language_preference and title_language_preference == "romanized"
       return alt_title
-    elsif current_user and current_user.title_language_preference == "english"
+    elsif title_language_preference and title_language_preference == "english"
       return (alt_title and alt_title.length > 0) ? title : nil
     else
       return english_canonical ? title : alt_title

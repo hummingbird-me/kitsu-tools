@@ -2,7 +2,7 @@ module Entities
   class Anime < Grape::Entity
     expose :slug
     expose(:url) {|anime, options| anime_path(anime) }
-    expose(:title) {|anime, options| anime.canonical_title(nil) }
+    expose(:title) {|anime, options| anime.canonical_title(options[:title_language_preference]) }
     expose :episode_count
     expose(:cover_image) {|anime, options| anime.cover_image.url(:thumb) }
     expose(:short_synopsis) {|anime, options| anime.synopsis.truncate(380, separator: ' ') }
