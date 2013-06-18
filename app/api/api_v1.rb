@@ -33,7 +33,9 @@ class API_v1 < Grape::API
 
   
   resource :users do
-    desc "Return the entries in a user's library under a specific status."
+    desc "Return the entries in a user's library under a specific status.", {
+      object_fields: Entities::Watchlist.documentation
+    }
     params do
       requires :user_id, type: String
       requires :status, type: String
@@ -51,7 +53,7 @@ class API_v1 < Grape::API
         watchlists = watchlists.order('created_at DESC')
       end
 
-      watchlists.map {|x| x.to_hash current_user }
+      present watchlists, with: Entities::Watchlist
     end
   end
   
