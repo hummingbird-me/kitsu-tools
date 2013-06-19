@@ -1,10 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :fuck_off_lisa
+  before_filter :fuck_off_lisa, :user_last_seen
+  
   def fuck_off_lisa
     if user_signed_in? and current_user.id == 951
       response.headers["X-Accel-Limit-Rate"] = "300"
+    end
+  end
+  
+  def user_last_seen
+    if user_signed_in?
+      $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
     end
   end
 

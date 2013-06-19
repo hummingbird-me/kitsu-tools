@@ -23,8 +23,13 @@
           Karma
 
         - if @user.last_seen
-          %p.last-seen Last Seen - <span class="time-ago">1 hour ago</span>
-
+          %p.last-seen 
+            Last Seen - 
+            %span.time-ago{:"data-time" => @user.last_seen}
+          :coffee
+            $ ->
+              el = $("span.time-ago")
+              el.html moment(el.attr("data-time")).fromNow()
 
       .large-12.columns.user-block
         %h4.username= @user.name

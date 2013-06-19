@@ -210,6 +210,11 @@ class User < ActiveRecord::Base
   end
 
   def last_seen
-    nil
+    reply = $redis.hget("user_last_seen", id.to_s)
+    if reply
+      Time.at reply.to_i
+    else
+      nil
+    end
   end
 end
