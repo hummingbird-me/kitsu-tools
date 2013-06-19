@@ -51,115 +51,15 @@
         .large-12.columns.feed-form.hide
           %form
             %input{:placeholder => "What are you up to?", :type => "text"}/
-        %ul.feed-list
-          = render @stories
+
+        %ul.feed-list.activity-feed
           
-          - if false
-            %li.feed-item.cf
-              .large-12.columns.feed-wrapper
-                .small-3.large-2.columns.no-padding-right
-                  %a{:href => "#"}
-                    %img{:alt => "F7e34ca9700bc93ce85e43ca2e43656beaf5f69c_thumb", :src => "http://hummingbird.me/system/f7e34ca9700bc93ce85e43ca2e43656beaf5f69c_thumb.jpg?1361875391"}/
-                .small-9.large-10.columns
-                  %h4.anime-feed-title Soul Eater
-                  .anime-feed-genres
-                    %a{:href => "#"} Action
-                    ·
-                    %a{:href => "#"} Adventure
-                    ·
-                    %a{:href => "#"} Comedy
-                  %hr.feed-divider/
-                  .row
-                    .large-12.columns
-                      .small-1.large-1.columns.no-padding.hide-for-small
-                        %a{:href => "#"}
-                          %img{:alt => "Avatar", :src => "http://localhost:3000/system/users/avatars/000/000/002/thumb/avatar.png?1366949440"}/
-                      .large-11.columns
-                        %a{:href => "#"} You
-                        plan to watch
-                        %p.time
-                          %span.time-ago
-                            24 minutes ago ·
-                            %a{:href => "#"} Like
-                            ·
-                            %a{:href => "#"} Comment
-            %li.feed-item.cf
-              .large-12.columns.feed-wrapper
-                .small-3.large-2.columns.no-padding-right
-                  %a{:href => "#"}
-                    %img{:alt => "2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb", :src => "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"}/
-                .small-9.large-10.columns
-                  %h4.anime-feed-title Attack on Titan
-                  .anime-feed-genres
-                    %a{:href => "#"} Action
-                    ·
-                    %a{:href => "#"} Drama
-                    ·
-                    %a{:href => "#"} Fantasy
-                  %hr.feed-divider/
-                  .row
-                    .large-12.columns
-                      .small-1.large-1.columns.no-padding.hide-for-small
-                        %a{:href => "#"}
-                          %img{:alt => "Avatar", :src => "http://localhost:3000/system/users/avatars/000/000/002/thumb/avatar.png?1366949440"}/
-                      .large-11.columns
-                        %a{:href => "#"} You
-                        watched episode 04
-                        %p.time
-                          %span.time-ago
-                            24 minutes ago ·
-                            %a{:href => "#"} Like
-                            ·
-                            %a{:href => "#"} Comment
-            %li.feed-item.cf
-              .large-12.columns.feed-wrapper
-                .small-3.large-2.columns.no-padding-right
-                  %a{:href => "#"}
-                    %img{:alt => "D85ed62ca413ab215b4ce85c3c3fefb29760ef9c_thumb", :src => "http://hummingbird.me/system/d85ed62ca413ab215b4ce85c3c3fefb29760ef9c_thumb.jpg?1361873647"}/
-                .small-9.large-10.columns
-                  %h4.anime-feed-title Texhnolyze
-                  .anime-feed-genres
-                    %a{:href => "#"} Action
-                    ·
-                    %a{:href => "#"} Drama
-                    ·
-                    %a{:href => "#"} Sci-Fi
-                  %hr.feed-divider/
-                  .row
-                    .large-12.columns
-                      .small-1.large-1.columns.no-padding.hide-for-small
-                        %a{:href => "#"}
-                          %img{:alt => "Avatar", :src => "http://localhost:3000/system/users/avatars/000/000/002/thumb/avatar.png?1366949440"}/
-                      .large-11.columns
-                        %a{:href => "#"} You
-                        liked a quote
-                        %p.quote-preview
-                          %i "It's quiet now. But I wonder how long it will last." — Onishi
-                      %p.time
-                        %span.time-ago
-                          24 minutes ago ·
-                          %a{:href => "#"} Like
-                          ·
-                          %a{:href => "#"} Comment
-            %li.feed-item.cf
-              .large-12.columns.feed-wrapper
-                .small-3.large-2.columns.no-padding-right
-                  %a{:href => "#"}
-                    %img{:alt => "Oie_8122923exq0pdvn", :src => "http://hummingbird.me/system/users/avatars/000/002/176/thumb/oie_8122923EXQ0pdVN.gif?1368009670"}/
-                .small-9.large-10.columns
-                  %h4.anime-feed-title
-                    %a{:href => "#"} Canxopener
-                    posted on your wall
-                  %hr.feed-divider/
-                  .row
-                    .large-12.columns
-                      %p.wall-post-copy My body is ready!
-                      %p.time
-                        %span.time-ago
-                          24 minutes ago ·
-                          %a{:href => "#"} Like
-                          ·
-                          %a{:href => "#"} Comment
+        .center.activity-feed-spinner
+          %i.icon.icon-spin.icon-spinner.icon-4x
+
+        :coffee
+          @StoryCollectionView.fetchMore "/feed.json?"
+          
     .large-4.columns
       .large-12.columns.no-padding.forum-block
         .large-6.columns.block-title

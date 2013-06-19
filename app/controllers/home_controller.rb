@@ -5,9 +5,16 @@ class HomeController < ApplicationController
   def index
     if user_signed_in? and (current_user.id == 1 or current_user.id == 4075)
 
-      @forum_topics = Forem::Topic.by_most_recent_post.limit(10)
-      @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
-      @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).limit(30)
+      respond_to do |format|
+        format.html do
+          @forum_topics = Forem::Topic.by_most_recent_post.limit(10)
+          @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
+        end
+        format.json do
+          @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).limit(30)
+          render :json => Entities::Story.represent(@stories)
+        end
+      end
       
     elsif user_signed_in?
 
