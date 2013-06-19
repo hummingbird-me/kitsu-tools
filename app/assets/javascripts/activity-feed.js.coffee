@@ -22,7 +22,7 @@ SubstoryCollectionClass = Backbone.Collection.extend
   comparator: (substory) ->
     return -moment(substory.get("created_at")).unix()
 
-@StoryCollection = new Backbone.Collection
+StoryCollection = new Backbone.Collection
 StoryCollection.model = StoryModel
 StoryCollection.comparator = (story) ->
   return -moment(story.get("updated_at")).unix()
@@ -66,6 +66,8 @@ StoryCollectionViewClass = Backbone.View.extend
     this.views = {}
     this.collection.bind 'add', this.add
     this.collection.bind 'remove', this.remove
+    this.loadedAll = false
+    this.fetchInProgress = false
   add: (story) ->
     this.views[story.cid] = new StoryView
       model: story
@@ -79,12 +81,24 @@ StoryCollectionViewClass = Backbone.View.extend
       view.render()
       that.$el.append view.$el
     $(".activity-feed").append this.$el
+  fetchMore: (baseURL) ->
+    unless this.loadedAll or this.fetchInProgress
+      page = 1 + Math.floor(this.collection.length / 20)
+      this.fetchInProgress = true
+      that = this
+      $.ajax baseURL + "page=" + page,
+        dataType: "json"
+        error: -> that.fetchInProgress = false
+        success: (feedItems) ->
+          that.fetchInProgress = false
+          if feedItems.length < 20
+            that.loadedAll = true
+            $(".activity-feed-spinner").hide()
+          that.collection.add feedItems
+          that.render()
 
 @StoryCollectionView = new StoryCollectionViewClass
   collection: StoryCollection
   
-@getUserFeedItems = (user, page) ->
-  $.getJSON "/api/v1/users/" + user + "/feed?page=" + page, (feedItems) ->
-    StoryCollection.add feedItems
-    StoryCollectionView.render()
-  
+@getUserFeedItems = (user) ->
+  StoryCollectionView.fetchMore "/api/v1/users/" + user + "/feed?"

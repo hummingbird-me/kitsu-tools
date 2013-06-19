@@ -4,7 +4,6 @@
   .small-6.large-2.columns
     %p.option-title Activity Feed
 
-
   .small-12.large-9.columns.options
     %ul.status-tabs.inline-list
       %li.active#tab-all= link_to "All", "#all", onclick: "showRelevantSections('all')"
@@ -12,24 +11,20 @@
       %li= link_to "Library", "#library", onclick: "showRelevantSections('library')"
       %li= link_to "Events", "#events", onclick: "showRelevantSections('events')"
 
-- if user_signed_in? and current_user.admin?
-  .large-12.columns.feed.no-padding
-    %ul.feed-list.activity-feed
-    
-    %ul.feed-list
-      %li.feed-item.cf
-        .large-12.columns.feed-wrapper
-          .center
-            %i.icon.icon-spin.icon-spinner.icon-4x
-
-  :coffee
-    @getUserFeedItems("#{@user.to_param}", 1)
-
 .large-12.columns.feed.no-padding
-  %ul.feed-list
-    = render @stories
-  %p
-    = paginate @stories
+  %ul.feed-list.activity-feed
+  
+  .center.activity-feed-spinner
+    %i.icon.icon-spin.icon-spinner.icon-4x
+
+:coffee
+  @getUserFeedItems("#{@user.to_param}")
+  
+  infiniteScrollLoader = ->
+    if $(window).scrollTop() > $(".activity-feed-spinner").offset().top
+      @getUserFeedItems("#{@user.to_param}")
+
+  setInterval infiniteScrollLoader, 500
 
 - if user_signed_in? and current_user.admin?
   .large-12.columns.feed.no-padding
