@@ -95,7 +95,6 @@ class UsersController < ApplicationController
   def feed
     @active_tab = :feed
     @user = User.find(params[:user_id])
-    @stories = @user.stories.accessible_by(current_ability).order('updated_at DESC').page(params[:page]).per(20)
     render "feed", layout: "layouts/profile"
   end
   

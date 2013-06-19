@@ -21,7 +21,7 @@
   @getUserFeedItems("#{@user.to_param}")
   
   infiniteScrollLoader = ->
-    if $(window).scrollTop() > $(".activity-feed-spinner").offset().top
+    if $(window).scrollTop() + 2000 > $(".activity-feed-spinner").offset().top
       @getUserFeedItems("#{@user.to_param}")
 
   setInterval infiniteScrollLoader, 500
