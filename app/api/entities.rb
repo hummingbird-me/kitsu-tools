@@ -76,6 +76,12 @@ module Entities
     ) do |substory, options|
       substory.data["new_status"].parameterize.underscore
     end
+    
+    expose(:episode_number,
+      id: lambda {|substory, options| substory.substory_type == "watched_episode" }
+    ) do |substory, options|
+      substory.data["episode_number"]
+    end
   end
   
   class Story < Grape::Entity

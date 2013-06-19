@@ -34,8 +34,12 @@
       {{/type.liked_quote}}
 
       {{#type.watchlist_status_update}}
-      {{{watchlistStatusChange user new_status}}}
+      {{{watchlistStatusChangeStory user new_status}}}
       {{/type.watchlist_status_update}}
+
+      {{#type.watched_episode}}
+      {{{watchedEpisodeStory user episode_number}}}
+      {{/type.watched_episode}}
 
       %p.time
         %span.time-ago
