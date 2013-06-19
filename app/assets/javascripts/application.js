@@ -7,13 +7,13 @@
 //
 // Part 1 -- include libraries.
 //
-//= require underscore-1.4.4.js
-//= require backbone-1.0.0.js
-//= require moment.js
 //= require jquery
 //= require jquery_ujs
 //= require foundation
 //= require jquery-ui-custom-1.10.3.js
+//= require underscore-1.4.4.js
+//= require backbone-1.0.0.js
+//= require moment.js
 //= require handlebars-1.0.0.js
 //= require json2.js
 //= require jstorage.js
