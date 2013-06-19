@@ -78,15 +78,21 @@
                   %p 
                     %h5.anime-title= anime_link watchlist.anime
                   .rating{:id => watchlist.anime.slug, :"data-rating" => (watchlist.rating || -3) + 3, :"data-anime-slug" => watchlist.anime.slug}
-                  :javascript
-                    initializeRatingInterface($(".rating##{watchlist.anime.slug}"), "starRatings");
                   %hr
                   .large-6.columns.no-padding
                     Progress:
                   .large-6.columns.no-padding.progress-number
-                    %a.count-add{:href => "#"}
-                      %i.icon-angle-up
-                      18 <span class="total-episodes">/ 51</span>
+                    %span.progress-updater{:id => watchlist.anime.slug, :"data-anime-slug" => watchlist.anime.slug, :"data-progress" => watchlist.episodes_watched, :"data-total-episodes" => watchlist.anime.episode_count}
+                      %a.count-add{:href => "javascript:void(0)"}
+                        %i.icon-angle-up
+                      18
+                      \/
+                      %span(class="total-episodes")
+                        = watchlist.anime.episode_count
+                  
+                  :javascript
+                    initializeRatingInterface($(".rating##{watchlist.anime.slug}"), "#{current_user.star_rating ? "starRatings" : "smileyRatings"}");
+                    initializeProgressIncrement($(".progress-updater##{watchlist.anime.slug}"))
           - (4-@recent_anime.length).times do
             .large-3.columns.no-padding.recommendation
               = image_tag "http://placekitten.com/184/274"
