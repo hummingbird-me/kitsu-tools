@@ -199,6 +199,12 @@
         }
         .topic-body {
           margin-bottom: 20px;
+          a {
+            color: #fc6419;
+            &:hover {
+              color: #3f5765;
+            }
+          }
         }
       }
     }
