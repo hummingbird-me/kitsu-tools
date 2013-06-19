@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   #caches_action :index, layout: false, :if => lambda { not user_signed_in? }
 
   def index
-    if user_signed_in? and current_user.id < 2000
+    if user_signed_in?
 
       respond_to do |format|
         format.html do
