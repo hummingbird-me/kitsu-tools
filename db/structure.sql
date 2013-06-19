@@ -1079,7 +1079,8 @@ CREATE TABLE stories (
     story_type character varying(255),
     target_id integer,
     target_type character varying(255),
-    watchlist_id integer
+    watchlist_id integer,
+    adult boolean DEFAULT false
 );
 
 
@@ -2407,3 +2408,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130525190345');
 INSERT INTO schema_migrations (version) VALUES ('20130526070928');
 
 INSERT INTO schema_migrations (version) VALUES ('20130526171102');
+
+INSERT INTO schema_migrations (version) VALUES ('20130619223318');
