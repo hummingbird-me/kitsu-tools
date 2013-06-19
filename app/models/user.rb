@@ -208,4 +208,8 @@ class User < ActiveRecord::Base
   def followers_count
     followers_count_hack
   end
+
+  def last_seen
+    nil
+  end
 end

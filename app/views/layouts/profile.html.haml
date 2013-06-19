@@ -2,7 +2,7 @@
   .row.user-watchlist
     .large-2.columns.sidebar.hide-for-small
       .large-12.columns.avatar
-        - if can? :update, @user
+        - if false and can? :update, @user
           .avatar-upload-button
             %a{"data-dropdown" => "avatar-upload", :href => "#"} 
               %i.icon-picture
@@ -21,7 +21,9 @@
         %span.karma
           = number_with_delimiter @user.reputation_for(:karma).to_i 
           Karma
-        %p.last-seen.hide Last Seen - <span class="time-ago">1 hour ago</span>
+
+        - if @user.last_seen
+          %p.last-seen Last Seen - <span class="time-ago">1 hour ago</span>
 
 
       .large-12.columns.user-block
