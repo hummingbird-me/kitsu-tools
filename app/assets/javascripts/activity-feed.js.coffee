@@ -7,28 +7,84 @@ SubstoryModel = Backbone.Model.extend
 
 StoryModel = Backbone.Model.extend
   initialize: ->
-    this.set "substories", _.map(this.get("substories"), (x) -> new SubstoryModel(x))
+    substories = this.get("substories")
+
+    substoriesCollection = new SubstoryCollectionClass
+    this.set "substories", substoriesCollection
+
     that = this
-    _.each this.get("substories"), (x) ->
-      x.set("user", that.get("user"))
+    _.each substories, (x) -> x.user = that.get("user")
+    
+    substoriesCollection.add substories
 
-  decoratedJSON: ->
-    json = this.toJSON()
+SubstoryCollectionClass = Backbone.Collection.extend
+  model: SubstoryModel
+  comparator: (substory) ->
+    return -moment(substory.get("created_at")).unix()
+
+@StoryCollection = new Backbone.Collection
+StoryCollection.model = StoryModel
+StoryCollection.comparator = (story) ->
+  return -moment(story.get("updated_at")).unix()
+
+StoryView = Backbone.View.extend
+  initialize: -> this.expanded = false
+  template: HandlebarsTemplates["stories/story"]
+  
+  render: ->
+    json = this.model.toJSON()
     json["type"] = {}
-    json["type"][this.get("story_type")] = true
-    json["substories"] = _.map this.get("substories"), (x) -> x.decoratedJSON()
-    return json
+    json["type"][this.model.get("story_type")] = true
+    
+    json["morethantwo"] = json["substories"].length > 2
+    json["additional"] = json["substories"].length - 2
+      
+    json["substories"] = json["substories"].map (s) ->
+      q = s.toJSON()
+      q["type"] = {}
+      q["type"][s.get("substory_type")] = true
+      return q
+    
+    unless this.expanded
+      json["substories"] = json["substories"].slice(0, 2)
+    
+    json["expanded"] = this.expanded
+    
+    this.$el.html this.template(json)
+    
+    that = this
+    this.$el.find("a.show-more").click ->
+      that.toggleExpand()
+      
+  toggleExpand: ->
+    this.expanded = !this.expanded
+    this.render()
+    
+StoryCollectionViewClass = Backbone.View.extend
+  initialize: ->
+    _(this).bindAll 'add', 'remove'
+    this.views = {}
+    this.collection.bind 'add', this.add
+    this.collection.bind 'remove', this.remove
+  add: (story) ->
+    this.views[story.cid] = new StoryView
+      model: story
+  remove: (story) ->
+    delete this.views[story.cid]
+  render: ->
+    this.$el.empty()
+    that = this
+    this.collection.each (model) ->
+      view = that.views[model.cid]
+      view.render()
+      that.$el.append view.$el
+    $(".activity-feed").append this.$el
 
-StoryCollection = Backbone.Collection.extend {}
-
-StoryView = Backbone.View.extend {}
-
+@StoryCollectionView = new StoryCollectionViewClass
+  collection: StoryCollection
+  
 @getUserFeedItems = (user, page) ->
   $.getJSON "/api/v1/users/" + user + "/feed?page=" + page, (feedItems) ->
-    subFeed = $("<div/>")
-    template = HandlebarsTemplates["stories/story"]
-    _.each feedItems, (item) ->
-      model = new StoryModel(item)
-      subFeed.append template(model.decoratedJSON())
-    $(".activity-feed").append subFeed
+    StoryCollection.add feedItems
+    StoryCollectionView.render()
   

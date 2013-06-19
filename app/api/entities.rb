@@ -88,6 +88,7 @@ module Entities
     expose :story_type
     expose :user, using: Entities::MiniUser
     expose :substories, using: Entities::Substory
+    expose :updated_at
 
     expose :target, 
       as: :media, 

@@ -1,3 +1,5 @@
+require_relative 'entities.rb'
+
 class API_v1 < Grape::API
   version 'v1', using: :path, format: :json, vendor: 'hummingbird'
 
