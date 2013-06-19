@@ -106,6 +106,12 @@
   }
   .home-banner {
     margin-bottom: 13px;
+    overflow: hidden;
+  }
+  .left-column-content {
+    @media (max-width: 768px) {
+      padding: 0px;
+    }
   }
   .side-advert {
     background: #fff;
@@ -156,6 +162,9 @@
   .trending-block {
     background: #fff;
     margin-top: 17px;
+    @media (max-width: 768px) {
+      margin-bottom: 20px;
+    }
     .block-title {
       h4 {
         margin-bottom: 5px;

@@ -1,8 +1,75 @@
 .row
   .large-12.columns.home-content
-    .large-8.columns.left-home-column.no-padding
+
+    .large-4.columns.push-8.left-column-content
+      .large-12.columns.no-padding.forum-block
+        .large-6.columns.block-title
+          %h4 Forum
+        .large-6.columns.block-link
+          = link_to "view forums", forem.root_path, class: 'right'
+        %hr
+        %ul
+          - @forum_topics.each do |topic|
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  = link_to truncate(topic.subject, length: 35, separator: ' '), forem.forum_topic_path(topic.forum, topic)
+                .forum-time.pull-right
+                  %i #{distance_of_time_in_words_to_now(topic.last_post_at)} ago
+
+      .large-12.columns.no-padding.trending-block
+        .large-12.columns.block-title
+          %h4 Trending Today
+        %hr
+        %ul
+          %li.large-12.columns.topic-row
+            .small-1.columns.no-padding
+              %p.count.center 1
+            .small-11.columns.no-padding-right.forum-title
+              .large-12.columns.no-padding
+                = link_to "Attack on Titan", "/anime/attack-on-titan", class: "trending-title"
+                %i 1165 Viewers
+          %li.large-12.columns.topic-row
+            .small-1.columns.no-padding
+              %p.count.center 2
+            .small-11.columns.no-padding-right.forum-title
+              .large-12.columns.no-padding
+                = link_to "Gargantia on the Verdurous...", "/anime/gargantia-on-the-verdurous-planet", class: "trending-title"
+                %i 785 Viewers
+          %li.large-12.columns.topic-row
+            .small-1.columns.no-padding
+              %p.count.center 3
+            .small-11.columns.no-padding-right.forum-title
+              .large-12.columns.no-padding
+                = link_to "OreImo Season 2", "/anime/oreimo-season-2", class: "trending-title"
+                %i 655 Viewers
+          %li.large-12.columns.topic-row
+            .small-1.columns.no-padding
+              %p.count.center 4
+            .small-11.columns.no-padding-right.forum-title
+              .large-12.columns.no-padding
+                = link_to "Naruto Shippuuden", "/anime/naruto-shippuuden", class: "trending-title"
+                %i 296 Viewers
+          %li.large-12.columns.topic-row
+            .small-1.columns.no-padding
+              %p.count.center 5
+            .small-11.columns.no-padding-right.forum-title
+              .large-12.columns.no-padding
+                = link_to "Sword Art Online", "/anime/sword-art-online", class: "trending-title"
+                %i 98 Viewers
+      .large-12.columns.no-padding-left.no-padding-right.side-advert.hide-for-small
+        :javascript
+          google_ad_client = "ca-pub-3410319844519574";
+          /* Homepage Sidebar */
+          google_ad_slot = "8094424442";
+          google_ad_width = 300;
+          google_ad_height = 250;
+
+        %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
+
+    .large-8.columns.pull-4.left-home-column.no-padding
       .large-12.columns.no-padding.recent-watched
-        .recommendations
+        .recommendations.hide-for-small
           - @recent_anime.each do |watchlist|
             .large-3.columns.no-padding.recommendation
               = image_tag watchlist.anime.cover_image.url(:thumb)
@@ -34,10 +101,10 @@
 
         %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
 
-      .large-12.columns.option-bar.hide-for-small
-        .small-6.large-2.columns
+      .large-12.columns.option-bar
+        .small-2.large-4.columns
           %p.option-title Activity Feed
-        .small-12.large-9.columns.options
+        .small-10.large-8.columns.options
           %ul.status-tabs.inline-list
             %li#tab-all.active
               %a{:href => "#all", :onclick => "showRelevantSections('all')"} All
@@ -55,75 +122,8 @@
         %ul.feed-list.activity-feed
           
         .center.activity-feed-spinner
-          %i.icon.icon-spin.icon-spinner.icon-4x
+          %i.icon.icon-spin.icon-spinner.icon-2x
 
         :coffee
           @StoryCollectionView.fetchMore "/feed.json?"
-          
-    .large-4.columns
-      .large-12.columns.no-padding.forum-block
-        .large-6.columns.block-title
-          %h4 Forum
-        .large-6.columns.block-link
-          = link_to "view forums", forem.root_path, class: 'right'
-        %hr
-        %ul
-          - @forum_topics.each do |topic|
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  = link_to truncate(topic.subject, length: 35, separator: ' '), forem.forum_topic_path(topic.forum, topic)
-                .forum-time.pull-right
-                  %i #{distance_of_time_in_words_to_now(topic.last_post_at)} ago
-
-      .large-12.columns.no-padding.trending-block
-        .large-12.columns.block-title
-          %h4 Trending Today
-        %hr
-        %ul
-          %li.large-12.columns.topic-row
-            .large-1.columns.no-padding
-              %p.count.center 1
-            .large-11.columns.no-padding-right.forum-title
-              .large-12.columns.no-padding
-                = link_to "Attack on Titan", "/anime/attack-on-titan", class: "trending-title"
-                %i 1165 Viewers
-          %li.large-12.columns.topic-row
-            .large-1.columns.no-padding
-              %p.count.center 2
-            .large-11.columns.no-padding-right.forum-title
-              .large-12.columns.no-padding
-                = link_to "Gargantia on the Verdurous...", "/anime/gargantia-on-the-verdurous-planet", class: "trending-title"
-                %i 785 Viewers
-          %li.large-12.columns.topic-row
-            .large-1.columns.no-padding
-              %p.count.center 3
-            .large-11.columns.no-padding-right.forum-title
-              .large-12.columns.no-padding
-                = link_to "OreImo Season 2", "/anime/oreimo-season-2", class: "trending-title"
-                %i 655 Viewers
-          %li.large-12.columns.topic-row
-            .large-1.columns.no-padding
-              %p.count.center 4
-            .large-11.columns.no-padding-right.forum-title
-              .large-12.columns.no-padding
-                = link_to "Naruto Shippuuden", "/anime/naruto-shippuuden", class: "trending-title"
-                %i 296 Viewers
-          %li.large-12.columns.topic-row
-            .large-1.columns.no-padding
-              %p.count.center 5
-            .large-11.columns.no-padding-right.forum-title
-              .large-12.columns.no-padding
-                = link_to "Sword Art Online", "/anime/sword-art-online", class: "trending-title"
-                %i 98 Viewers
-
-      .large-12.columns.no-padding-left.no-padding-right.side-advert
-        :javascript
-          google_ad_client = "ca-pub-3410319844519574";
-          /* Homepage Sidebar */
-          google_ad_slot = "8094424442";
-          google_ad_width = 300;
-          google_ad_height = 250;
-
-        %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
 
