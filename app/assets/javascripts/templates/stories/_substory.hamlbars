@@ -9,5 +9,5 @@
       %a(href="{{followed_user.url}}") {{followed_user.name}}
       %p.time
         %span.time-ago
-          ahoge ago
+          {{timeAgo created_at}}
     {{/type.followed}}

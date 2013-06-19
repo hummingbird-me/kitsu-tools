@@ -52,6 +52,8 @@ module Entities
     end
     
     expose(:followed_user, if: lambda {|substory, options| substory.substory_type == "followed"}) {|substory, options| Entities::MiniUser.represent substory.target }
+                             
+    expose :created_at
   end
   
   class Story < Grape::Entity

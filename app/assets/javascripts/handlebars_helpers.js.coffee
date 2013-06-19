@@ -9,3 +9,6 @@ Handlebars.registerHelper 'pluralize', (number, singular, plural) ->
 
 Handlebars.registerHelper 'pluralCount', (number, singular, plural) ->
   return number + ' ' + Handlebars.helpers.pluralize.apply(this, arguments)
+
+Handlebars.registerHelper 'timeAgo', (t) ->
+  return moment(t).fromNow()
