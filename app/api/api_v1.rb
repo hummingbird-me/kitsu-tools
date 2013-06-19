@@ -62,6 +62,18 @@ class API_v1 < Grape::API
       
       present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference
     end
+    
+    desc "Returns the user's feed."
+    params do
+      requires :user_id, type: String
+      optional :page, type: Integer
+    end
+    get ":user_id/feed" do
+      @user = User.find(params[:user_id])
+      @stories = @user.stories.accessible_by(current_ability).order('updated_at DESC').page(params[:page]).per(20)
+
+      present @stories, with: Entities::Story
+    end
   end
   
   resource :libraries do

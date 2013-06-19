@@ -1,0 +1,13 @@
+%hr.feed-divider
+.row
+  .large-12.columns
+    {{#type.followed}}
+    .small-1.large-1.columns.no-padding.hide-for-small
+      %a(href="{{followed_user.url}}")
+        %img(src="{{followed_user.avatar_small}}" alt="{{followed_user.name}}")
+    .large-11.columns
+      %a(href="{{followed_user.url}}") {{followed_user.name}}
+      %p.time
+        %span.time-ago
+          ahoge ago
+    {{/type.followed}}

@@ -1,0 +1,16 @@
+%li.feed-item.cf
+  .large-12.columns.feed-wrapper
+    .small-3.large-2.columns.no-padding-right
+      {{#type.followed}}
+      %a(href="{{user.url}}")
+        %img(src="{{user.avatar}}" alt="{{user.name}}")
+      {{/type.followed}}
+    .small-9.large-10.columns
+      %h4.anime-feed-title
+        {{#type.followed}}
+        %a(href="{{user.url}}") {{user.name}}
+        started following {{pluralCount substories_count 'person' 'people'}}.
+        {{/type.followed}}
+      {{#substories}}
+      {{> stories/_substory}}
+      {{/substories}}

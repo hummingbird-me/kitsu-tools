@@ -1,19 +1,48 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
+// Manifest file that is compiled into application.js. Includes all of the files
 // listed below.
 //
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY 
+// BLANK LINE SHOULD GO AFTER THE REQUIRES BELOW.
 //
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
 //
-// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
-// GO AFTER THE REQUIRES BELOW.
+// Part 1 -- include libraries.
 //
+//= require underscore-1.4.4.js
+//= require backbone-1.0.0.js
+//= require moment.js
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require_tree .
+//= require jquery-ui-custom-1.10.3.js
+//= require handlebars-1.0.0.js
+//= require json2.js
+//= require jstorage.js
+//= require garlic.js
+//= require redactor.js
+//= require charcount.js
+//= require jscroll.js
+//= require multiselect-filter.js
+//= require multiselect.js
+//= require typeahead.js
+//= require offcanvas.js
+//
+//= require googleplus.js
+//= require twitter.js
+//
+//= require hogan-2.0.0.js
+//
+// Part 2 -- Library initialization.
+//
+//= require handlebars_helpers.js.coffee
+//
+// Part 3 -- Application initialization.
+//
+//= require anime.js.coffee
+//= require library_update.js.coffee
+//= require login-signup.js
+//= require search.js.coffee
+//= require redactor.js.coffee
+//
 //= require_tree ./templates
 
 $(function() {

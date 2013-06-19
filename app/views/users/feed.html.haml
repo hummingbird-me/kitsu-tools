@@ -12,6 +12,29 @@
       %li= link_to "Library", "#library", onclick: "showRelevantSections('library')"
       %li= link_to "Events", "#events", onclick: "showRelevantSections('events')"
 
+- if user_signed_in? and current_user.admin?
+  .large-12.columns.feed.no-padding
+    %ul.feed-list.activity-feed
+    
+    %ul.feed-list
+      %li.feed-item.cf
+        .large-12.columns.feed-wrapper
+          .center
+            %i.icon.icon-spin.icon-spinner.icon-4x
+
+  :coffee
+    @page = 1
+    getFeedItems = ->
+      $.getJSON "/api/v1/users/#{@user.to_param}/feed?page=" + @page, (feedItems) ->
+        @page += 1
+        subFeed = $("<div/>")
+        template = HandlebarsTemplates["stories/story"]
+        _.each feedItems, (item) ->
+          subFeed.append template(item)
+        $(".activity-feed").append subFeed
+
+    getFeedItems()
+
 .large-12.columns.feed.no-padding
   %ul.feed-list
     = render @stories

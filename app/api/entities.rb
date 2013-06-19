@@ -9,6 +9,13 @@ module Entities
     expose :show_type
   end
   
+  class MiniUser < Grape::Entity
+    expose :name
+    expose(:url) {|user, options| user_path(user) }
+    expose(:avatar) {|user, options| user.avatar.url(:thumb) }
+    expose(:avatar_small) {|user, options| user.avatar.url(:thumb_small) }
+  end
+  
   class Watchlist < Grape::Entity
     expose :episodes_watched
     expose(:last_watched) {|watchlist, options| watchlist.last_watched || watchlist.updated_at }
@@ -35,5 +42,29 @@ module Entities
         unknown: watchlist.rating.nil?
       }
     end
+  end
+  
+  class Substory < Grape::Entity
+    expose(:type) do |substory, options|
+      {
+        followed: substory.substory_type == "followed"
+      }
+    end
+    
+    expose(:followed_user, if: lambda {|substory, options| substory.substory_type == "followed"}) {|substory, options| Entities::MiniUser.represent substory.target }
+  end
+  
+  class Story < Grape::Entity
+    expose(:type) do |story, options|
+      {
+        media_story: story.story_type == "media_story",
+        followed: story.story_type == "followed"
+      }
+    end
+    
+    expose :user, using: Entities::MiniUser
+    expose :substories, using: Entities::Substory
+
+    expose(:substories_count) {|story, options| story.substories.count }
   end
 end
