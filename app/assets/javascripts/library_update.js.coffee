@@ -21,6 +21,11 @@
 
       element.append star
       element.append $("<span> </span>")
+      
+  else if type == "smileyRatings"
+    
+    console.log "to be implemented"
+    
   
   element.append $("<div class='spinner pull-right'></div>")
   
