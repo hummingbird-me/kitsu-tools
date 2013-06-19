@@ -7,6 +7,13 @@ GIT
       activesupport (>= 3.1)
       arel
 
+GIT
+  remote: https://github.com/fnando/i18n-js.git
+  revision: eeec14066b50f72876aa789c9b1f226172452798
+  specs:
+    i18n-js (2.1.2)
+      i18n
+
 PATH
   remote: vendor/forem
   specs:
@@ -449,6 +456,7 @@ DEPENDENCIES
   haml (~> 4.0)
   haml-rails
   handlebars_assets
+  i18n-js!
   image_optim
   jquery-rails
   kaminari

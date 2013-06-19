@@ -12,3 +12,8 @@ Handlebars.registerHelper 'pluralCount', (number, singular, plural) ->
 
 Handlebars.registerHelper 'timeAgo', (t) ->
   return moment(t).fromNow()
+
+
+Handlebars.registerHelper 'watchlistStatusChange', (user, new_status) ->
+  return I18n.t("stories.watchlist_status_updates.third_person." + new_status + "_html", {user: "<a href='" + user.url + "'>" + user.name + "</a>"})
+  

@@ -21,6 +21,11 @@ module Entities
     expose(:avatar_small) {|user, options| user.avatar.url(:thumb_small) }
   end
   
+  class Quote < Grape::Entity
+    expose :content
+    expose :character_name
+  end
+  
   class Watchlist < Grape::Entity
     expose :episodes_watched
     expose(:last_watched) {|watchlist, options| watchlist.last_watched || watchlist.updated_at }
@@ -58,6 +63,18 @@ module Entities
       if: lambda {|substory, options| substory.substory_type == "followed" }
     ) do |substory, options|
       Entities::MiniUser.represent substory.target
+    end
+    
+    expose(:quote,
+      if: lambda {|substory, options| %w[liked_quote submitted_quote].include? substory.substory_type }
+    ) do |substory, options|
+      Entities::Quote.represent substory.target
+    end
+    
+    expose(:new_status,
+      if: lambda {|substory, options| substory.substory_type == "watchlist_status_update" }
+    ) do |substory, options|
+      substory.data["new_status"].parameterize.underscore
     end
   end
   

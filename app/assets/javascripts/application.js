@@ -29,6 +29,9 @@
 //= require googleplus.js
 //= require twitter.js
 //
+//= require i18n
+//= require i18n/translations
+//
 //= require hogan-2.0.0.js
 //
 // Part 2 -- Library initialization.

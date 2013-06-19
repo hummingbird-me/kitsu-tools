@@ -8,6 +8,10 @@ SubstoryModel = Backbone.Model.extend
 StoryModel = Backbone.Model.extend
   initialize: ->
     this.set "substories", _.map(this.get("substories"), (x) -> new SubstoryModel(x))
+    that = this
+    _.each this.get("substories"), (x) ->
+      x.set("user", that.get("user"))
+
   decoratedJSON: ->
     json = this.toJSON()
     json["type"] = {}
