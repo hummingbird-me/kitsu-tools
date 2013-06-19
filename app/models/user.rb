@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
     :default_url => "http://placekitten.com/g/190/190"
 
   has_attached_file :cover_image, :styles => {:thumb => "760x250#"},
-    :default_url => "http://placekitten.com/760/250"
+    :default_url => "http://hummingbird.me/default_cover.png"
   
   has_many :watchlists
   has_many :reviews
