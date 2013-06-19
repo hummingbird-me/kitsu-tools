@@ -91,7 +91,7 @@
                         = watchlist.anime.episode_count
                   
                   :javascript
-                    initializeRatingInterface($(".rating##{watchlist.anime.slug}"), "starRatings");
+                    initializeRatingInterface($(".rating##{watchlist.anime.slug}"), "#{current_user.star_rating ? "starRatings" : "smileyRatings"}");
                     initializeProgressIncrement($(".progress-updater##{watchlist.anime.slug}"))
           - (4-@recent_anime.length).times do
             .large-3.columns.no-padding.recommendation
