@@ -42,6 +42,7 @@
 //= require login-signup.js
 //= require search.js.coffee
 //= require redactor.js.coffee
+//= require activity-feed.js.coffee
 //
 //= require_tree ./templates
 
