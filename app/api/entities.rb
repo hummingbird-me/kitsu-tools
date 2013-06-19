@@ -1,4 +1,8 @@
 module Entities
+  class Genre < Grape::Entity
+    expose :name
+  end
+
   class Anime < Grape::Entity
     expose :slug
     expose(:url) {|anime, options| anime_path(anime) }
@@ -7,6 +11,7 @@ module Entities
     expose(:cover_image) {|anime, options| anime.cover_image.url(:thumb) }
     expose(:short_synopsis) {|anime, options| anime.synopsis.truncate(380, separator: ' ') }
     expose :show_type
+    expose :genres, using: Entities::Genre
   end
   
   class MiniUser < Grape::Entity
@@ -45,27 +50,26 @@ module Entities
   end
   
   class Substory < Grape::Entity
-    expose(:type) do |substory, options|
-      {
-        followed: substory.substory_type == "followed"
-      }
-    end
-    
-    expose(:followed_user, if: lambda {|substory, options| substory.substory_type == "followed"}) {|substory, options| Entities::MiniUser.represent substory.target }
-                             
+    expose :substory_type
     expose :created_at
+    
+    expose(
+      :followed_user,
+      if: lambda {|substory, options| substory.substory_type == "followed" }
+    ) do |substory, options|
+      Entities::MiniUser.represent substory.target
+    end
   end
   
   class Story < Grape::Entity
-    expose(:type) do |story, options|
-      {
-        media_story: story.story_type == "media_story",
-        followed: story.story_type == "followed"
-      }
-    end
-    
+    expose :story_type
     expose :user, using: Entities::MiniUser
     expose :substories, using: Entities::Substory
+
+    expose :target, 
+      as: :media, 
+      if: lambda {|story, options| story.story_type == "media_story" }, 
+      using: Entities::Anime
 
     expose(:substories_count) {|story, options| story.substories.count }
   end

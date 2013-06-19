@@ -5,12 +5,27 @@
       %a(href="{{user.url}}")
         %img(src="{{user.avatar}}" alt="{{user.name}}")
       {{/type.followed}}
+      {{#type.media_story}}
+      %a(href="{{media.url}}")
+        %img(src="{{media.cover_image}}" alt="{{media.title}}")
+      {{/type.media_story}}
     .small-9.large-10.columns
+      {{#type.followed}}
       %h4.anime-feed-title
-        {{#type.followed}}
         %a(href="{{user.url}}") {{user.name}}
         started following {{pluralCount substories_count 'person' 'people'}}.
-        {{/type.followed}}
+      {{/type.followed}}
+      {{#type.media_story}}
+      %h4.anime-feed-title
+        %a(href="{{media.url}}") {{media.title}}
+      .anime-feed-genres
+        %ul
+          {{#media.genres}}
+          %li 
+            %a {{name}}
+          {{/media.genres}}
+      {{/type.media_story}}
+      
       {{#substories}}
       {{> stories/_substory}}
       {{/substories}}

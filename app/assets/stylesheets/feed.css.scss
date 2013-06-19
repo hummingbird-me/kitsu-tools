@@ -33,6 +33,14 @@
               color: #fd854a;
             }
           }
+          ul {
+            margin-left: 0;
+            list-style-type: none;
+            li {
+              display: inline;
+            }
+            li+li:before { content: " · "; }
+          }
         }
         .quote-preview {
           color: #a9a9a9;

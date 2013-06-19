@@ -16,9 +16,9 @@
         %h4.anime-feed-title
           = anime_link story.target
         .anime-feed-genres
-          - story.target.genres.each_with_index do |genre, i|
-            = link_to genre
-            = "·" if i != story.target.genres.length - 1
+          %ul
+            - story.target.genres.each_with_index do |genre, i|
+              %li= link_to genre
               
       = render story.substories.order('created_at DESC').limit(2)
         
