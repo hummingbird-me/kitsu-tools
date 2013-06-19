@@ -72,6 +72,9 @@
             }
             .progress-number {
               text-align: right;
+              .progress-updater {
+                font-size: 15px;
+              }
               .count-add {
                 .total-episodes {
                   color: #fff !important;
