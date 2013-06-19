@@ -23,3 +23,22 @@
       element.append $("<span> </span>")
   
   element.append $("<div class='spinner pull-right'></div>")
+  
+renderProgress = (element) ->
+
+@initializeProgressIncrement = (element) ->
+  anime_slug      = element.attr("data-anime-slug")
+  progress        = element.attr("data-progress")
+  total_episodes  = element.attr("data-total-episodes")
+  
+  icon = $("<a href='javascript:void(0)'><i class='icon icon-angle-up'></i></a>")
+  icon.click ->
+    icon.find("i").removeClass("icon-angle-up").addClass("icon-spin").addClass("icon-spinner")
+    $.post "/api/v1/libraries/" + anime_slug, {increment_episodes: true}, (d) ->
+      element.attr "data-progress", d.episodes_watched 
+      initializeProgressIncrement element
+  
+  element.empty()
+  element.append icon
+  element.append $("<span> </span>")
+  element.append progress + " / " + total_episodes
