@@ -12,7 +12,7 @@
       %li= link_to "Events", "#events", onclick: "showRelevantSections('events')"
 
 .large-12.columns.feed.no-padding
-  - if user_signed_in? and current_user.id == 1
+  - if user_signed_in?
     .large-12.columns.feed-form
       = form_tag(user_comment_path(@user), method: "post") do
         %input.comment(placeholder="Write something..." type="text" name="comment" autocomplete="off")
@@ -31,20 +31,3 @@
 
   setInterval infiniteScrollLoader, 500
 
-- if user_signed_in? and current_user.admin?
-  .large-12.columns.feed.no-padding
-    %ul.feed-list
-      // Feed Item
-      %li.feed-item.cf
-        .large-12.columns.feed-wrapper
-          .small-3.large-2.columns.no-padding-right
-            = link_to image_tag("http://hummingbird.me/system/users/avatars/000/002/176/thumb/oie_8122923EXQ0pdVN.gif?1368009670"), "#"
-          .small-9.large-10.columns
-            %h4.anime-feed-title <a href="#">Canxopener</a> posted on your wall
-
-            // Users part of activity
-            %hr.feed-divider
-            .row
-              .large-12.columns
-                %p.wall-post-copy My body is ready!
-                %p.time <span class="time-ago">24 minutes ago</a> · <a href="#">Like</a> · <a href="#">Comment</a>
