@@ -1,3 +1,5 @@
+require 'message_formatter'
+
 module Entities
   class Genre < Grape::Entity
     expose :name
@@ -86,7 +88,7 @@ module Entities
     expose(:comment,
       if: lambda {|substory, options| substory.substory_type == "comment" }
     ) do |substory, options|
-      substory.data["comment"]
+      MessageFormatter.format_message substory.data["comment"]
     end
   end
   

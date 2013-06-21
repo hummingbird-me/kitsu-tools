@@ -47,7 +47,7 @@
           {{timeAgo created_at}}
     {{/type.comment}}
     {{#type.comment}}
-    %p.wall-post-copy {{comment}}
+    %p.wall-post-copy {{{comment}}}
     %p.time
       %span.time-ago
         {{timeAgo created_at}}

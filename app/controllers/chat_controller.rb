@@ -1,3 +1,5 @@
+require 'message_formatter'
+
 class ChatController < ApplicationController
   before_filter :authenticate_user!
   CHAT_VERSION = 15
@@ -20,48 +22,9 @@ class ChatController < ApplicationController
     render :json => {online_users: @online_users, chat_version: CHAT_VERSION}
   end
 
-  # Helper method. Takes raw message -> outputs HTML.
-  def format_message(message)
-    formatted = Rinku.auto_link(ERB::Util.html_escape(message), :all, 'target="_blank"')
-    
-    # Link @usernames.
-    formatted = formatted.gsub(/@[-_A-Za-z0-9]+/) do |x|
-      u = User.find_by_name(x[1..-1])
-      if u
-        "<span class='name'>@<a href='#{user_url(u)}' target='_blank' data-user-name='#{u.name}'>#{u.name}</a></span>"
-      else
-        x
-      end
-    end
-    
-    noko = Nokogiri::HTML.parse formatted
-    links = noko.css('a').map {|link| link['href'] }
-    if links.length > 0
-      link = links[-1]
-      
-      # Embed images.
-      if link =~ /\.(gif|jpe?g|png)$/i
-        begin
-          if open(link).size <= 1024*1024
-            formatted += "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600' />"
-          end
-        rescue
-        end
-      end
-      
-      # Embed YouTube videos.
-      if link =~ /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/
-        code = link.scan(/v=([A-Za-z0-9\-_]+)/)[0][0]
-        formatted += "<br><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='http://youtube.com/embed/#{code}' />"
-      end
-    end
-    
-    formatted
-  end
-
   def new_message
     if params[:message] and params[:message].strip.length > 0
-      c = ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message], formatted_message: format_message(params[:message]))
+      c = ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message], formatted_message: MessageFormatter.format_message(params[:message]))
       $redis.set("chat_latest_message_id", c[:"_id"])
       render :json => true
     else
