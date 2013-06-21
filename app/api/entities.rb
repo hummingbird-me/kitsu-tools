@@ -78,9 +78,15 @@ module Entities
     end
     
     expose(:episode_number,
-      id: lambda {|substory, options| substory.substory_type == "watched_episode" }
+      if: lambda {|substory, options| substory.substory_type == "watched_episode" }
     ) do |substory, options|
       substory.data["episode_number"]
+    end
+
+    expose(:comment,
+      if: lambda {|substory, options| substory.substory_type == "comment" }
+    ) do |substory, options|
+      substory.data["comment"]
     end
   end
   
@@ -94,6 +100,13 @@ module Entities
       as: :media, 
       if: lambda {|story, options| story.story_type == "media_story" }, 
       using: Entities::Anime
+
+    expose :target,
+      as: :poster,
+      if: lambda {|story, options| story.story_type == "comment" },
+      using: Entities::MiniUser
+    
+    expose(:self_post, if: lambda {|story, options| story.story_type == "comment" }) {|story, options| story.target == story.user }
 
     expose(:substories_count) {|story, options| story.substories.count }
   end

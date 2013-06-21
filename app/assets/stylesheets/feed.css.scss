@@ -12,6 +12,12 @@
       margin-top: 10px;
       box-shadow: none;
     }
+    .hidden-submit {
+      display: none;
+      a {
+        padding: 6px;
+      }
+    }
   }
   .feed-list {
     list-style: none;

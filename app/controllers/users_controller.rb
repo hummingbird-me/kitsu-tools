@@ -140,4 +140,21 @@ class UsersController < ApplicationController
     raise ActionController::RoutingError.new('Not Found') if @user.nil?
     redirect_to @user
   end
+  
+  def comment
+    authenticate_user!
+    @user = User.find(params[:user_id])
+    story = Story.create(
+      story_type: "comment",
+      user: @user,
+      target: current_user
+    )
+    substory = Substory.create(
+      user: current_user,
+      substory_type: "comment",
+      story: story,
+      data: {comment: params[:comment]}
+    )
+    redirect_to :back
+  end
 end

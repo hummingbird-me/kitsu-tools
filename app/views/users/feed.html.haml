@@ -12,6 +12,11 @@
       %li= link_to "Events", "#events", onclick: "showRelevantSections('events')"
 
 .large-12.columns.feed.no-padding
+  - if user_signed_in? and current_user.id == 1
+    .large-12.columns.feed-form
+      = form_tag(user_comment_path(@user), method: "post") do
+        %input.comment(placeholder="Write something..." type="text" name="comment" autocomplete="off")
+
   %ul.feed-list.activity-feed
   
   .center.activity-feed-spinner
@@ -28,13 +33,7 @@
 
 - if user_signed_in? and current_user.admin?
   .large-12.columns.feed.no-padding
-    .large-12.columns.feed-form
-      %form
-        %input{:placeholder => "What are you up to?", :type => "text"}/
-
     %ul.feed-list
-
-
       // Feed Item
       %li.feed-item.cf
         .large-12.columns.feed-wrapper

@@ -113,6 +113,7 @@ class Substory < ActiveRecord::Base
           episode_number: data[:episode_number]
         }
       })
+
     end
   end
 end

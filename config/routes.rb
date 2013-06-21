@@ -39,6 +39,7 @@ Hummingbird::Application.routes.draw do
     put "/avatar"       => 'users#update_avatar',       as: :avatar
 
     post :follow
+    post :comment
     
     post "/disconnect/facebook" => 'users#disconnect_facebook', 
       as: :disconnect_facebook

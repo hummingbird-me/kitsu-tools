@@ -1,6 +1,10 @@
 %li.feed-item.cf
   .large-12.columns.feed-wrapper
     .small-3.large-2.columns.no-padding-right
+      {{#type.comment}}
+      %a(href="{{poster.url}}")
+        %img(src="{{poster.avatar}}" alt="{{poster.name}}")
+      {{/type.comment}}
       {{#type.followed}}
       %a(href="{{user.url}}")
         %img(src="{{user.avatar}}" alt="{{user.name}}")
@@ -10,6 +14,14 @@
         %img(src="{{media.cover_image}}" alt="{{media.title}}")
       {{/type.media_story}}
     .small-9.large-10.columns
+      {{#type.comment}}
+      %h4.anime-feed-title
+        %a(href="{{poster.url}}") {{poster.name}}
+        {{^self_post}}
+        to
+        %a(href="{{user.url}}") {{user.name}}
+        {{/self_post}}
+      {{/type.comment}}
       {{#type.followed}}
       %h4.anime-feed-title
         %a(href="{{user.url}}") {{user.name}}

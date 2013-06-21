@@ -1,6 +1,7 @@
 %hr.feed-divider
 .row
   .large-12.columns
+    {{^type.comment}}
     .small-1.large-1.columns.no-padding.hide-for-small
       {{^type.followed}}
       %a(href="{{user.url}}")
@@ -44,4 +45,10 @@
       %p.time
         %span.time-ago
           {{timeAgo created_at}}
-
+    {{/type.comment}}
+    {{#type.comment}}
+    %p.wall-post-copy {{comment}}
+    %p.time
+      %span.time-ago
+        {{timeAgo created_at}}
+    {{/type.comment}}
