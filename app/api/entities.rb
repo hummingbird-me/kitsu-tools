@@ -96,16 +96,9 @@ module Entities
     expose :substories, using: Entities::Substory
     expose :updated_at
 
-    expose :target, 
-      as: :media, 
-      if: lambda {|story, options| story.story_type == "media_story" }, 
-      using: Entities::Anime
+    expose(:media, if: lambda {|story, options| story.story_type == "media_story" }) {|story, options| Entities::Anime.represent story.target }
+    expose(:poster, if: lambda {|story, options| story.story_type == "comment" }) {|story, options| Entities::MiniUser.represent story.target }
 
-    expose :target,
-      as: :poster,
-      if: lambda {|story, options| story.story_type == "comment" },
-      using: Entities::MiniUser
-    
     expose(:self_post, if: lambda {|story, options| story.story_type == "comment" }) {|story, options| story.target == story.user }
 
     expose(:substories_count) {|story, options| story.substories.count }
