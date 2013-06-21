@@ -6,7 +6,7 @@ class MessageFormatter
     formatted = formatted.gsub(/@[-_A-Za-z0-9]+/) do |x|
       u = User.find_by_name(x[1..-1])
       if u
-        "<span class='name'>@<a href='#{user_url(u)}' target='_blank' data-user-name='#{u.name}'>#{u.name}</a></span>"
+        "<span class='name'>@<a href='#{Rails.application.routes.url_helpers.user_path(u)}' target='_blank' data-user-name='#{u.name}'>#{u.name}</a></span>"
       else
         x
       end
