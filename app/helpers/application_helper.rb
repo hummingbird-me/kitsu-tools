@@ -82,4 +82,34 @@ module ApplicationHelper
   def omniauth_authorize_path(resource_name, provider)
     "/users/auth/#{provider.to_s}"
   end
+
+  def short_time_ago(time)
+    difference_in_seconds = Time.now.to_i - time.to_i
+    if difference_in_seconds < 60
+      return pluralize(difference_in_seconds, "second")
+    end
+    
+    difference_in_minutes = difference_in_seconds / 60
+    if difference_in_minutes < 60
+      return pluralize(difference_in_minutes, "minute")
+    end
+    
+    difference_in_hours = difference_in_minutes / 60
+    if difference_in_hours < 24
+      return pluralize(difference_in_hours, "hour")
+    end
+
+    difference_in_days = difference_in_hours / 24
+    if difference_in_days < 30
+      return pluralize(difference_in_days, "day")
+    end
+    
+    difference_in_months = difference_in_days / 30
+    if difference_in_months < 12
+      return pluralize(difference_in_months, "month")
+    end
+    
+    difference_in_years = difference_in_days / 365
+    return pluralize(difference_in_years, "year")
+  end
 end

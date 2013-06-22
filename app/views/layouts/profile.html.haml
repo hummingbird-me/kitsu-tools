@@ -25,11 +25,9 @@
         - if @user.last_seen
           %p.last-seen 
             Last Seen - 
-            %span.time-ago{:"data-time" => @user.last_seen}
-          :coffee
-            $ ->
-              el = $("span.time-ago")
-              el.html moment(el.attr("data-time")).fromNow()
+            %span.time-ago
+              = short_time_ago @user.last_seen
+              ago
 
       .large-12.columns.user-block
         %h4.username= @user.name
