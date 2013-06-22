@@ -16,14 +16,6 @@ class HomeController < ApplicationController
         end
       end
       
-    elsif user_signed_in?
-
-      @recent_anime_users = Rails.cache.fetch(:recent_anime_users_home, :expires_in => 10.seconds) { User.joins(:watchlists).where('watchlists.episodes_watched > 0').order('MAX(watchlists.last_watched) DESC').group('users.id').limit(8) }
-      @recent_anime = Rails.cache.fetch(:recent_anime_home, :expires_in => 10.seconds) { @recent_anime_users.map {|x| x.watchlists.where("EXISTS (SELECT 1 FROM anime WHERE anime.id = anime_id AND age_rating <> 'R18+')").order('updated_at DESC').limit(1).first }.sort_by {|x| x.last_watched || x.updated_at }.reverse }
-      @latest_reviews = Review.order('created_at DESC').limit(2)
-
-      render :old_index
-
     else
       @hide_footer_ad = ab_test("footer_ad_on_guest_homepage", "show", "hide") == "hide"
       render :guest_index
