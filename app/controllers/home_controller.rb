@@ -11,7 +11,7 @@ class HomeController < ApplicationController
           @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
         end
         format.json do
-          @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).limit(30)
+          @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).page(params[:page]).per(20)
           render :json => Entities::Story.represent(@stories)
         end
       end

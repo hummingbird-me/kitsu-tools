@@ -128,8 +128,14 @@
         %ul.feed-list.activity-feed
           
         .center.activity-feed-spinner
-          %i.icon.icon-spin.icon-spinner.icon-2x
+          %i.icon.icon-spin.icon-spinner.icon-4x
 
         :coffee
           @StoryCollectionView.fetchMore "/feed.json?"
+          infiniteScrollLoader = ->
+            if $(window).scrollTop() + 2000 > $(".activity-feed-spinner").offset().top
+              @StoryCollectionView.fetchMore "/feed.json?"
+
+          setInterval infiniteScrollLoader, 500
+          
 
