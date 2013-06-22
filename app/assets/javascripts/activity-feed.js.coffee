@@ -91,7 +91,7 @@ StoryCollectionViewClass = Backbone.View.extend
         error: -> that.fetchInProgress = false
         success: (feedItems) ->
           that.fetchInProgress = false
-          if feedItems.length == 0
+          if feedItems.length < 20
             that.loadedAll = true
             $(".activity-feed-spinner").hide()
           that.collection.add feedItems
