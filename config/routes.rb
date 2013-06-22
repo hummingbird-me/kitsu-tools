@@ -103,6 +103,7 @@ Hummingbird::Application.routes.draw do
     match '/kotodama/invite_to_beta' => 'admin#invite_to_beta'
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
+    mount Split::Dashboard => '/kotodama/split'
   end
 
   mount API => '/'

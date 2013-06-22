@@ -113,7 +113,7 @@ gem 'image_optim', require: false
 gem 'mixpanel'
 
 # A/B Testing
-gem 'split'
+gem 'split', require: 'split/dashboard'
 
 # SEO
 gem 'sitemap_generator'

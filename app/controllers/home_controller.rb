@@ -25,6 +25,7 @@ class HomeController < ApplicationController
       render :old_index
 
     else
+      @hide_footer_ad = ab_test("footer_ad_on_guest_homepage", "show", "hide") == "hide"
       render :guest_index
     end
   end
