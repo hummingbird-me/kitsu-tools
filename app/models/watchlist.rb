@@ -9,12 +9,16 @@ class Watchlist < ActiveRecord::Base
   validates :anime, :user, presence: true
   validates :user_id, :uniqueness => {:scope => :anime_id}
 
-  has_and_belongs_to_many :episodes, :uniq => true
+  # has_and_belongs_to_many :episodes, :uniq => true
 
   # Return an array of possible valid statuses.
   def self.valid_statuses
     ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
-  end  
+  end
+
+  def episodes
+    self.anime.episodes[0..self.episodes_watched]
+  end
 
   def self.status_parameter_to_status(snake)
     t = {
@@ -59,29 +63,15 @@ class Watchlist < ActiveRecord::Base
       self.last_watched = self.updated_at
     end
 
-    self.episodes_watched = self.episodes.length
-    
     if self.anime and self.episodes_watched == self.anime.episodes.length and self.episodes_watched > 0 and self.status == "Currently Watching"
       self.status = "Completed"
     end
-
-    self.episodes_watched = self.episodes.length
   end
   
+  # TODO Fix time spent watching anime around here.
   def update_episode_count(new_count)
-    count = [0, new_count.to_i].max
-    if count > self.episodes_watched
-      self.anime.episodes.order(:season_number, :number).limit(count).each do |ep|
-        unless self.episodes.exists?(id: ep.id)
-          self.episodes << ep
-          self.last_watched = Time.now
-          self.user.update_life_spent_on_anime ep.length
-        end
-      end
-    elsif count < self.episodes_watched
-      to_remove = self.episodes.order('season_number DESC, number DESC').limit(self.episodes_watched - count)
-      self.episodes.delete(*to_remove)
-    end
+    self.episodes_watched = new_count
+    self.save
   end
 
   include ActionView::Helpers::TextHelper
