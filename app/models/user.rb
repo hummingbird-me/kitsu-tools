@@ -178,7 +178,12 @@ class User < ActiveRecord::Base
 
   # How many minutes the user has spent watching anime.
   def recompute_life_spent_on_anime
-    self.life_spent_on_anime = self.watchlists.map {|w| w.anime.episode_length * w.episodes_watched }.sum
+    t = 0
+    self.watchlists.each do |w|
+      t += (w.anime.episode_length || 0) * (w.episodes_watched || 0)
+      t += (w.anime.episode_count || 0) * (w.anime.episode_length || 0) * w.rewatched_times
+    end
+    self.life_spent_on_anime = t
     self.save
   end
   
