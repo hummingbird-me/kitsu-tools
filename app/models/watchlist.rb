@@ -71,7 +71,9 @@ class Watchlist < ActiveRecord::Base
   def update_episode_count(new_count)
     old_count = self.episodes_watched
     self.episodes_watched = new_count
+    self.last_watched = Time.now
     self.save
+
     self.user.update_life_spent_on_anime( (self.episodes_watched - old_count) * self.anime.episode_length )
     self
   end
