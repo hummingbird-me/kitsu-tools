@@ -84,9 +84,9 @@
         else
           return -moment(c.get("updated_at")).unix()
       else if this.sortByParameter == "title"
-        return c.get("anime").title
+        return c.get("anime").title.toLowerCase()
       else if this.sortByParameter == "titleDesc"
-        return negateString c.get("anime").title
+        return negateString c.get("anime").title.toLowerCase()
       else if this.sortByParameter == "progress"
         return c.get("episodes_watched")
       else if this.sortByParameter == "progressDesc"

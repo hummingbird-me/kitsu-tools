@@ -3,7 +3,7 @@ class Story < ActiveRecord::Base
   belongs_to :user
   belongs_to :target, polymorphic: true
   has_many :substories, dependent: :destroy
-  attr_accessible :data, :story_type, :user, :target, :watchlist
+  attr_accessible :data, :story_type, :user, :target, :watchlist, :adult
 
   serialize :data, ActiveRecord::Coders::Hstore
   
