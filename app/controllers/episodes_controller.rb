@@ -22,6 +22,9 @@ class EpisodesController < ApplicationController
     Watchlist.where(anime_id: anime, user_id: user).first || Watchlist.create(anime: anime, user: user, status: "Currently Watching")
   end
      
+  ##
+  ## DEPRECATED!
+  ##
   def watch
     authenticate_user!
     
@@ -29,23 +32,6 @@ class EpisodesController < ApplicationController
     @episode = Episode.find(params[:id])
 
     @watchlist = get_watchlist(@anime, current_user)
-
-    if params[:watched] == "true"
-      if !@watchlist.episodes.include? @episode
-        @watchlist.episodes << @episode
-        current_user.update_life_spent_on_anime(@episode.length)
-      end
-    elsif params[:watched] == "false"
-      @watchlist.episodes.delete @episode
-      # If the user removes an episode from a completed show, move it into the
-      # "Currently Watching" list.
-      if @watchlist.status == "Completed"
-        @watchlist.status = "Currently Watching"
-      end
-      current_user.update_life_spent_on_anime(-@episode.length)
-    end
-    @watchlist.last_watched = Time.now
-    @watchlist.save
 
     respond_to do |format|
       if request.xhr?
@@ -56,13 +42,5 @@ class EpisodesController < ApplicationController
       end
       format.html { redirect_to :back }
     end
-  end
-
-  def bulk_update
-    authenticate_user!
-    @watchlist = get_watchlist(@anime, current_user)
-    @watchlist.update_episode_count params[:episode_count]
-    @watchlist.save
-    redirect_to :back
   end
 end
