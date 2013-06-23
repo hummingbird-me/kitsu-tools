@@ -56,6 +56,10 @@
           %p.head-action= link_to "edit", "#"
         %hr.block-divider
 
+
+.tooltip-contents.hide
+  = image_tag "http://anigifs.files.wordpress.com/2011/05/nchij_e2_p2.gif"
+
 :coffee
   $(".rec-image").tooltip
     placement: 'right'
@@ -63,4 +67,4 @@
     delay:
       show: 500
       hide: 100
-    title: "Tooltips are <i>awesome</i>!"
+    title: $(".tooltip-contents").html()
