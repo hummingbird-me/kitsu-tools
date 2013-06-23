@@ -34,6 +34,8 @@
 //
 //= require hogan-2.0.0.js
 //
+//= require bootstrap-tooltip.js
+//
 // Part 2 -- Library initialization.
 //
 //= require handlebars_helpers.js.coffee

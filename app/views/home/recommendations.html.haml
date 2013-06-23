@@ -55,3 +55,12 @@
           %p.head-title By Library
           %p.head-action= link_to "edit", "#"
         %hr.block-divider
+
+:coffee
+  $(".rec-image").tooltip
+    placement: 'right'
+    html: true
+    delay:
+      show: 500
+      hide: 100
+    title: "Tooltips are <i>awesome</i>!"
