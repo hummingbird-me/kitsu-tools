@@ -12,7 +12,7 @@ class Substory < ActiveRecord::Base
   end
   
   after_destroy do
-    if self.story.reload.substories.length == 0
+    if self.story and self.story.reload.substories.length == 0
       self.story.destroy
     end
   end

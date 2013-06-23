@@ -42,7 +42,7 @@ class WatchlistsController < ApplicationController
 
     # Update rewatched_times.
     if params[:rewatched_times]
-      @watchlist.rewatched_times = params[:rewatched_times]
+      @watchlist.update_rewatched_times params[:rewatched_times]
     end
 
     # Update notes.

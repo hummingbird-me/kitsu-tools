@@ -126,7 +126,7 @@ class API_v1 < Grape::API
 
       # Update rewatched_times.
       if params[:rewatched_times]
-        @watchlist.rewatched_times = params[:rewatched_times]
+        @watchlist.update_rewatched_times params[:rewatched_times]
       end
 
       # Update notes.
@@ -145,7 +145,7 @@ class API_v1 < Grape::API
           user_id: current_user.id,
           action_type: "watched_episode",
           anime_id: @anime.slug,
-          episode_number: @watchlist.episodes_watched+1
+          episode_number: @watchlist.episodes_watched
         })
       end
       
