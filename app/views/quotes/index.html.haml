@@ -3,21 +3,22 @@
     .large-2.columns.no-padding
       .quote-thumb
         = image_tag @anime.cover_image.url(:thumb), alt: @anime.canonical_title(current_user.title_language_preference)
-        .large-12.columns.no-padding
-          %a.small.button.split.padded{:href => "#"}
-            Want to Watch
-            %span{"data-dropdown" => "drop1"}
-          %ul#drop1.f-dropdown.watchlist-button{"data-dropdown-content" => ""}
-            %li
-              %a{:href => "#"} Currently Watching
-            %li
-              %a{:href => "#"} Completed
-            %li
-              %a{:href => "#"} On Hold
-            %li
-              %a{:href => "#"} Dropped
-            %li
-              %a{:href => "#"} Remove 
+        - if false
+          .large-12.columns.no-padding
+            %a.small.button.split.padded{:href => "#"}
+              Want to Watch
+              %span{"data-dropdown" => "drop1"}
+            %ul#drop1.f-dropdown.watchlist-button{"data-dropdown-content" => ""}
+              %li
+                %a{:href => "#"} Currently Watching
+              %li
+                %a{:href => "#"} Completed
+              %li
+                %a{:href => "#"} On Hold
+              %li
+                %a{:href => "#"} Dropped
+              %li
+                %a{:href => "#"} Remove 
 
         .large-12.columns.no-padding.face-grid
           %h5 CURRENT VIEWERS
