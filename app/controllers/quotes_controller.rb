@@ -1,9 +1,11 @@
 class QuotesController < ApplicationController
   def index
     @anime = Anime.find(params[:anime_id])
-    if user_signed_in?
-      @watchlist = current_user.watchlists.where(anime_id: @anime).first
-    end
+    @watchlist = current_user.watchlists.where(anime_id: @anime).first if user_signed_in?
+    
+    # This query is potentially slow, investigate later.
+    @users = @anime.watchlists.where(status: "Currently Watching").order("last_watched DESC").joins(:user).where('users.avatar_file_name IS NOT NULL').includes(:user).limit(9).map {|x| x.user }
+
     @quotes = Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => "votes DESC"})
   end
 

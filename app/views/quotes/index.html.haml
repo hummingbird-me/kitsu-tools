@@ -2,7 +2,7 @@
   .row
     .large-2.columns.no-padding
       .quote-thumb
-        = image_tag "http://hummingbird.me/system/69eea0b536f37295c14e7447ee8899c5a72ed059_thumb.jpg?1361875894"
+        = image_tag @anime.cover_image.url(:thumb), alt: @anime.canonical_title(current_user.title_language_preference)
         .large-12.columns.no-padding
           %a.small.button.split.padded{:href => "#"}
             Want to Watch
@@ -21,25 +21,9 @@
 
         .large-12.columns.no-padding.face-grid
           %h5 CURRENT VIEWERS
-          .large-4.columns.face-grid-user
-            = image_tag "http://hummingbird.me/system/users/avatars/000/000/737/thumb_small/Rozen_GIF2.gif?1371767896"
-          .large-4.columns.face-grid-user
-            = image_tag "http://hummingbird.me/system/users/avatars/000/001/537/thumb_small/gold_saw_avatar.jpg?1370299350"
-          .large-4.columns.face-grid-user
-            = image_tag "http://hummingbird.me/system/users/avatars/000/001/955/thumb_small/avatar_ponkan.png?1370832190"
-          .large-4.columns.face-grid-user
-            = image_tag "http://hummingbird.me/system/users/avatars/000/005/404/thumb_small/312220_519542794776587_1110699229_n.jpg?1372050439"
-          .large-4.columns.face-grid-user
-            = image_tag "http://hummingbird.me/system/users/avatars/000/005/097/thumb/Papermanhb8.gif?1372027593"
-          .large-4.columns.face-grid-user
-            = image_tag "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"
-          .large-4.columns.face-grid-user
-            = image_tag "http://hummingbird.me/system/users/avatars/000/000/433/thumb/yamato.png?1370298295"
-          .large-4.columns.face-grid-user
-            = image_tag "http://hummingbird.me/system/users/avatars/000/000/979/thumb_small/tumblr_mobkrk693C1ql2sjoo2_500.gif?1372056556"
-          .large-4.columns.face-grid-user
-            = image_tag "http://hummingbird.me/system/users/avatars/000/005/655/thumb/Baku.(Nico.Nico.Singer).full.1005805.jpg?1372028446"
-
+          - @users.each do |user|
+            .large-4.columns.face-grid-user.tip-right(data-tooltip data-options="disable-for-touch:true"){:title => user.name}
+              = avatar_link user
 
     .large-7.columns.center-column
       .panel.center
