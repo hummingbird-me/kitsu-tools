@@ -42,10 +42,16 @@
 
 
     .large-7.columns.center-column
-      .panel
-        %h4= title "#{@anime.canonical_title(current_user)} Quotes"
+      .panel.center
+        %h4.center= title "#{@anime.canonical_title(current_user)} Quotes"
+        %hr
+        %a{:href => "#"}
+          %span Back to Anime Page
+        or
         %a{"data-reveal-id" => "submit-quote", :href => "#"}
-          %span= "Submit a quote for #{@anime.canonical_title(current_user)}"
+          %span= "Submit New Quote"
+
+
           
       - @quotes.each do |quote|
         .large-12.columns.panel.no-padding.rounded-panel
