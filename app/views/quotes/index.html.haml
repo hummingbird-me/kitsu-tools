@@ -29,8 +29,7 @@
       .panel.center
         %h4.center= title "#{@anime.canonical_title(current_user)} Quotes"
         %hr
-        %a{:href => "#"}
-          %span Back to Anime Page
+        = link_to "Back to Anime Page", anime_path(@anime)
         or
         %a{"data-reveal-id" => "submit-quote", :href => "#"}
           %span= "Submit New Quote"
