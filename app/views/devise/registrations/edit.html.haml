@@ -108,8 +108,39 @@
                 %h4 Neon Alley
                 %p Receive personalized recommendations and sync Activity Feed.
             .large-2.columns
-              %a.button.padded{:href => "#"} CONNECT
+              - if current_user.neon_alley_integration?
+                %a.button.padded.na-disconnect Disconnect
+              - else
+                %a.button.padded.na-connect Connect
 
+            :coffee
+              path = #{user_toggle_connection_path(current_user).inspect}
+
+              addButtonLoader = (selector) ->
+                selector.html $("<i class='icon-spin icon-spinner'></i>")
+              
+              connect_na = ->
+                addButtonLoader $("a.na-connect")
+                $.ajax path,
+                  method: 'post'
+                  data:
+                    connection: 'neonalley'
+                    enable: true
+                  success: ->
+                    $("a.na-connect").removeClass("na-connect").addClass("na-disconnect").html("Disconnect").click disconnect_na
+              
+              disconnect_na = ->
+                addButtonLoader $("a.na-disconnect")
+                $.ajax path,
+                  method: 'post'
+                  data:
+                    connection: 'neonalley'
+                    disable: true
+                  success: ->
+                    $("a.na-disconnect").removeClass("na-disconnect").addClass("na-connect").html("Connect").click connect_na
+
+              $("a.na-disconnect").click disconnect_na
+              $("a.na-connect").click connect_na
 
           .large-12.columns.facebook-connect
             .large-8.columns
