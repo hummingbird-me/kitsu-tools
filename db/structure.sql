@@ -1175,7 +1175,8 @@ CREATE TABLE users (
     english_anime_titles boolean DEFAULT true,
     title_language_preference character varying(255) DEFAULT 'canonical'::character varying,
     followers_count_hack integer DEFAULT 0,
-    following_count integer DEFAULT 0
+    following_count integer DEFAULT 0,
+    neon_alley_integration boolean
 );
 
 
@@ -2388,3 +2389,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130526171102');
 INSERT INTO schema_migrations (version) VALUES ('20130619223318');
 
 INSERT INTO schema_migrations (version) VALUES ('20130623190935');
+
+INSERT INTO schema_migrations (version) VALUES ('20130624180612');
