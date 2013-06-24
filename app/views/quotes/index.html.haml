@@ -55,12 +55,8 @@
 
     .large-3.columns
       %h5 SCREENCAPS
-      = image_tag "http://hummingbird.me/system/gallery_images/images/000/000/013/thumb/fmab4.jpg?1361481581"
-      = image_tag "http://hummingbird.me/system/gallery_images/images/000/000/010/thumb/fmab1.jpg?1361481525"
-      = image_tag "http://hummingbird.me/system/gallery_images/images/000/000/011/thumb/fmab2.jpg?1361481544"
-      = image_tag "http://hummingbird.me/system/gallery_images/images/000/000/012/thumb/fmab3.jpg?1361481562"
-
-
+      - @gallery.each do |gallery|
+        = image_tag gallery.image.url(:thumb)
 
 #submit-quote.reveal-modal{:class => "small"}
   = render 'quotes/new'
