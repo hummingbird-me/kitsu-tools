@@ -61,7 +61,7 @@ class Watchlist < ActiveRecord::Base
       self.last_watched = self.updated_at
     end
 
-    if self.anime and self.episodes_watched == self.anime.episodes.length and self.episodes_watched > 0 and self.status == "Currently Watching"
+    if self.anime and self.episodes_watched == self.anime.episode_count and self.episodes_watched > 0 and self.status == "Currently Watching"
       self.status = "Completed"
     end
   end
