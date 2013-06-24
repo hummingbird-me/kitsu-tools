@@ -13,9 +13,7 @@ class MALImportApplyWorker
 
         @watchlist.each do |x|
           wl = x[1]
-          if wl.status != "Completed" and wl.episodes_watched > 0 and wl.anime.episodes.length > wl.episodes_watched
-            wl.update_episode_count wl.episodes_watched
-          end
+          wl.update_episode_count wl.episodes_watched
           wl.save
         end
         

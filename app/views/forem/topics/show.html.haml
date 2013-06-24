@@ -100,7 +100,7 @@
               .large-11.columns.input-area
                 = simple_form_for [forem, @topic, @topic.posts.build] do |f|
                   .redactorable
-                    = f.input :text, label: false
+                    = f.input :text, label: false, as: :text
                   = f.submit "Quick Reply", class: 'button padded'
 
           

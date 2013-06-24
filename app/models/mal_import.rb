@@ -247,7 +247,6 @@ class MalImport
         
         watchlist.status = w[:status]
         watchlist.episodes_watched = w[:episodes_watched]
-        watchlist.episodes = watchlist.anime.episodes.order(:season_number, :number).take(watchlist.episodes_watched)
         watchlist.updated_at = w[:last_updated]
         watchlist.notes = w[:notes]
         watchlist.imported = true
