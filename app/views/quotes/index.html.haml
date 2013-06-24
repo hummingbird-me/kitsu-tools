@@ -1,27 +1,77 @@
-.anime-discover.anime-show.anime-show-full
+.anime-discover.anime-show.anime-show-full.quote-page
   .row
-    .large-3.columns
-      = render partial: 'anime/card', locals: {data: [@anime, @watchlist, 'large-12']}
+    .large-2.columns.no-padding
+      .quote-thumb
+        = image_tag "http://hummingbird.me/system/69eea0b536f37295c14e7447ee8899c5a72ed059_thumb.jpg?1361875894"
+        .large-12.columns.no-padding
+          %a.small.button.split.padded{:href => "#"}
+            Want to Watch
+            %span{"data-dropdown" => "drop1"}
+          %ul#drop1.f-dropdown.watchlist-button{"data-dropdown-content" => ""}
+            %li
+              %a{:href => "#"} Currently Watching
+            %li
+              %a{:href => "#"} Completed
+            %li
+              %a{:href => "#"} On Hold
+            %li
+              %a{:href => "#"} Dropped
+            %li
+              %a{:href => "#"} Remove 
 
-    .large-9.columns
-      .panel.top-bar
+        .large-12.columns.no-padding.face-grid
+          %h5 CURRENT VIEWERS
+          .large-4.columns.face-grid-user
+            = image_tag "http://hummingbird.me/system/users/avatars/000/000/737/thumb_small/Rozen_GIF2.gif?1371767896"
+          .large-4.columns.face-grid-user
+            = image_tag "http://hummingbird.me/system/users/avatars/000/001/537/thumb_small/gold_saw_avatar.jpg?1370299350"
+          .large-4.columns.face-grid-user
+            = image_tag "http://hummingbird.me/system/users/avatars/000/001/955/thumb_small/avatar_ponkan.png?1370832190"
+          .large-4.columns.face-grid-user
+            = image_tag "http://hummingbird.me/system/users/avatars/000/005/404/thumb_small/312220_519542794776587_1110699229_n.jpg?1372050439"
+          .large-4.columns.face-grid-user
+            = image_tag "http://hummingbird.me/system/users/avatars/000/005/097/thumb/Papermanhb8.gif?1372027593"
+          .large-4.columns.face-grid-user
+            = image_tag "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"
+          .large-4.columns.face-grid-user
+            = image_tag "http://hummingbird.me/system/users/avatars/000/000/433/thumb/yamato.png?1370298295"
+          .large-4.columns.face-grid-user
+            = image_tag "http://hummingbird.me/system/users/avatars/000/000/979/thumb_small/tumblr_mobkrk693C1ql2sjoo2_500.gif?1372056556"
+          .large-4.columns.face-grid-user
+            = image_tag "http://hummingbird.me/system/users/avatars/000/005/655/thumb/Baku.(Nico.Nico.Singer).full.1005805.jpg?1372028446"
+
+
+    .large-7.columns.center-column
+      .panel
         %h4= title "#{@anime.canonical_title(current_user)} Quotes"
         %a{"data-reveal-id" => "submit-quote", :href => "#"}
           %span= "Submit a quote for #{@anime.canonical_title(current_user)}"
           
       - @quotes.each do |quote|
-        %fieldset
-          %blockquote
-            = quote.content
-            - if quote.character_name
-              %cite #{quote.character_name}
-          %p.option-bar
-            - if quote.creator
-              (Submitted by #{link_to quote.creator.name, quote.creator}) 
-              |
-            = render partial: "quotes/votes", locals: {quote: quote}
-            |
-            = link_to "report", "#"
+        .large-12.columns.panel.no-padding.rounded-panel
+          .large-12.columns.panel-head
+            %p.head-title
+              - if quote.creator
+                Submitted by #{link_to quote.creator.name, quote.creator}
+                |
+              = link_to "report", "#"
+            %p.head-action
+              = render partial: "quotes/votes", locals: {quote: quote}
+          %hr.block-divider
+          .large-12.columns
+            %p.quote-content
+              = quote.content
+              - if quote.character_name
+                %cite -- #{quote.character_name}
+
+    .large-3.columns
+      %h5 SCREENCAPS
+      = image_tag "http://hummingbird.me/system/gallery_images/images/000/000/013/thumb/fmab4.jpg?1361481581"
+      = image_tag "http://hummingbird.me/system/gallery_images/images/000/000/010/thumb/fmab1.jpg?1361481525"
+      = image_tag "http://hummingbird.me/system/gallery_images/images/000/000/011/thumb/fmab2.jpg?1361481544"
+      = image_tag "http://hummingbird.me/system/gallery_images/images/000/000/012/thumb/fmab3.jpg?1361481562"
+
+
 
 #submit-quote.reveal-modal{:class => "small"}
   = render 'quotes/new'

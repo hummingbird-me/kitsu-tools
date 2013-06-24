@@ -41,6 +41,30 @@ a {
   padding-right: 0px !important;
 }
 
+.rounded-panel {
+  background: #fff;
+  border: none;
+  @include border-radius(3px);
+  @include box-shadow(rgba(0,0,0,.1) 1px 1px 3px);
+  .panel-head {
+    .head-title {
+      margin-bottom: 10px;
+      margin-top: 10px;
+      display: inline-block;
+    }
+    .head-action {
+      margin-bottom: 10px;
+      margin-top: 10px;
+      display: inline-block;
+      float: right;
+    }
+  }
+  .block-divider {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}
+
 .option-bar {
   font-size: 12px;
   background: #f7f6f6;
