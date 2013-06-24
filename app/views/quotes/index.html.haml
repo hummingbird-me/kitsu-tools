@@ -43,7 +43,7 @@
               - if quote.creator
                 Submitted by #{link_to quote.creator.name, quote.creator}
                 |
-              = link_to "report", "#"
+              %a.tip-top(href="javascript:void(0)" data-tooltip title="Coming soon!") report
             %p.head-action
               = render partial: "quotes/votes", locals: {quote: quote}
           %hr.block-divider
