@@ -1,28 +1,64 @@
-.anime-discover.anime-show.anime-show-full
+.anime-discover.anime-show.anime-show-full.quote-page
   .row
-    .large-3.columns
-      = render partial: 'anime/card', locals: {data: [@anime, @watchlist, 'large-12']}
+    .large-2.columns.no-padding
+      .quote-thumb
+        = image_tag @anime.cover_image.url(:thumb), alt: @anime.canonical_title(current_user.title_language_preference)
+        - if false
+          .large-12.columns.no-padding
+            %a.small.button.split.padded{:href => "#"}
+              Want to Watch
+              %span{"data-dropdown" => "drop1"}
+            %ul#drop1.f-dropdown.watchlist-button{"data-dropdown-content" => ""}
+              %li
+                %a{:href => "#"} Currently Watching
+              %li
+                %a{:href => "#"} Completed
+              %li
+                %a{:href => "#"} On Hold
+              %li
+                %a{:href => "#"} Dropped
+              %li
+                %a{:href => "#"} Remove 
 
-    .large-9.columns
-      .panel.top-bar
-        %h4= title "#{@anime.canonical_title(current_user)} Quotes"
+        .large-12.columns.no-padding.face-grid
+          %h5 CURRENT VIEWERS
+          - @users.each do |user|
+            .large-4.columns.face-grid-user.tip-right(data-tooltip data-options="disable-for-touch:true"){:title => user.name}
+              = avatar_link user
+
+    .large-7.columns.center-column
+      .panel.center
+        %h4.center= title "#{@anime.canonical_title(current_user)} Quotes"
+        %hr
+        = link_to "Back to Anime Page", anime_path(@anime)
+        or
         %a{"data-reveal-id" => "submit-quote", :href => "#"}
-          %span= "Submit a quote for #{@anime.canonical_title(current_user)}"
+          %span= "Submit New Quote"
+
+
           
       - @quotes.each do |quote|
-        %fieldset
-          %blockquote
-            = quote.content
-            - if quote.character_name
-              %cite #{quote.character_name}
-          %p.option-bar
-            - if quote.creator
-              (Submitted by #{link_to quote.creator.name, quote.creator}) 
-              |
-            = render partial: "quotes/votes", locals: {quote: quote}
-            |
-            = link_to "report", "#"
+        .large-12.columns.panel.no-padding.rounded-panel
+          .large-12.columns.panel-head
+            %p.head-title
+              - if quote.creator
+                Submitted by #{link_to quote.creator.name, quote.creator}
+                |
+              %a.tip-top(href="javascript:void(0)" data-tooltip title="Coming soon!") report
+            %p.head-action
+              = render partial: "quotes/votes", locals: {quote: quote}
+          %hr.block-divider
+          .large-12.columns
+            %p.quote-content
+              = quote.content
+              - if quote.character_name
+                %cite &mdash; #{quote.character_name}
 
-#submit-quote.reveal-modal{:class => "small"}
+    .large-3.columns
+      %h5 SCREENCAPS
+      - @gallery.each do |gallery|
+        = image_tag gallery.image.url(:thumb)
+
+#submit-quote.reveal-modal{:class => "medium"}
   = render 'quotes/new'
 

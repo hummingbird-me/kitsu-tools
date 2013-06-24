@@ -1,6 +1,6 @@
 %span{:class => "quote_#{quote.id}_votes"}
   - votes = (quote.votes rescue quote.reputation_for(:votes))
-  = pluralize votes.to_i, "vote"
+  = pluralize votes.to_i, "likes"
   - if current_user && quote.has_evaluation?(:votes, current_user)
     = link_to main_app.vote_anime_quote_path(quote.anime, quote, type: "down"), method: :post, remote: true do
       %i.icon-star
