@@ -33,6 +33,10 @@
 	@include box-shadow(rgba(0,0,0,.1) 1px 1px 3px);
 }
 .recs-left-side {
+	.title {
+		margin-top: 28px;
+		margin-bottom: 0px;
+	}
 	.title-divider {
 		margin-top: 10px;
 		margin-bottom: 15px;
