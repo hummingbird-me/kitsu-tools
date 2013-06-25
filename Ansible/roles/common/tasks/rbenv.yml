@@ -57,3 +57,6 @@
 - name: rbenv | rehash
   shell: RBENV_ROOT=${rbenv_root} rbenv rehash
   when_failed: $ruby_installed
+
+- name: rbenv | install bundler
+  shell: RBENV_ROOT=$rbenv_root $rbenv_root/shims/gem install bundle --no-ri --no-rdoc && RBENV_ROOT=$rbenv_root $rbenv_root/bin/rbenv rehash

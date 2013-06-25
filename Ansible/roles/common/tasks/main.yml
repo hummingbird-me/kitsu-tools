@@ -1,3 +1,9 @@
+- name: Copy SSH stuff
+  action: copy dest=/home/vikhyat/.ssh/$item src=$item
+  with_items:
+  - id_rsa
+  - id_rsa.pub
+
 - name: Install python-software-properties.
   action: apt pkg=python-software-properties state=present
 
@@ -8,3 +14,6 @@
   action: copy src=monitrc dest=/etc/monit/monitrc
 
 - include: rbenv.yml
+
+- name: Create Capistrano directory structure
+  file: path=/u/apps/hummingbird state=directory recurse=true owner=vikhyat mode=0755

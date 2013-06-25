@@ -1,0 +1,6 @@
+- name: Install prerequisite packages
+  apt: pkg=$item state=present
+  with_items:
+  - openjdk-7-jdk
+  - jetty
+  - libjetty-extra

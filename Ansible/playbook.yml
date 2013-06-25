@@ -8,7 +8,11 @@
     password: $1$vvlauihd$Y8y4qAiPWLW6GDnbpPtL3.
   tasks:
   - name: Create vikhyat user account
-    action: user name=vikhyat password={{password}} groups=sudo append=yes
+    action: user name=vikhyat password={{password}} groups=sudo append=yes shell=/bin/bash
+  - name: Install important packages
+    apt: pkg=$item state=present
+    with_items:
+    - vim
 
 - hosts: all
   vars:
