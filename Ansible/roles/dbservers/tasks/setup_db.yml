@@ -1,0 +1,8 @@
+- name: Create hummingbird_production database
+  postgresql_db: db=hummingbird_production
+
+- name: Create hummingbird user
+  postgresql_user: db=hummingbird_production user=hummingbird password=TheBoilingPointOfCarbonDioxide priv=ALL
+
+- name: Create Postgres Trigrams extension
+  action: command psql -d hummingbird_production -c "create extension if not exists pg_trgm;"

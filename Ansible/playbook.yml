@@ -27,3 +27,16 @@
   sudo: True
   roles:
   - redis
+
+- hosts: dbservers
+  sudo: True
+  vars:
+    postgres_password: $1$vvlauihd$Y8y4qAiPWLW6GDnbpPtL3.
+  roles:
+  - dbservers
+    
+- hosts: dbservers
+  sudo: True
+  sudo_user: postgres
+  tasks:
+  - include: roles/dbservers/tasks/setup_db.yml
