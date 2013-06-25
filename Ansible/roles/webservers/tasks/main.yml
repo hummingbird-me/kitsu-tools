@@ -1,0 +1,15 @@
+- name: Add nginx repository
+  action: apt_repository repo=ppa:nginx/stable state=present
+    
+- name: Update package cache
+  action: apt update_cache=yes
+
+- name: Install nginx
+  action: apt pkg=nginx state=latest
+    
+- name: Start nginx
+  service: name=nginx state=started
+    
+- name: Install imagemagick for paperclip
+  action: apt pkg=imagemagick state=present
+

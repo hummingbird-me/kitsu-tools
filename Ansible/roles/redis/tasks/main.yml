@@ -1,0 +1,6 @@
+- name: Install Redis
+  action: apt pkg=redis-server state=present
+    
+- name: Don't start Redis on boot
+  action: service name=redis-server state=stopped enabled=no
+

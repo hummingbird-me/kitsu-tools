@@ -1,0 +1,6 @@
+- name: Install python-software-properties.
+  action: apt pkg=python-software-properties state=present
+
+- name: Install monit
+  action: apt pkg=monit state=present
+
