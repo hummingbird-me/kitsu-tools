@@ -1,5 +1,19 @@
 ---
+# Set up user accounts.
+# Create the `vikhyat` user.
 - hosts: all
+  sudo: True
+  vars:
+    # Generated using `openssl passwd -salt vvlauihd -1 <password>`
+    password: $1$vvlauihd$Y8y4qAiPWLW6GDnbpPtL3.
+  tasks:
+  - name: Create vikhyat user account
+    action: user name=vikhyat password={{password}} groups=sudo append=yes
+
+- hosts: all
+  vars:
+  - rbenv_root: /usr/local/rbenv
+  - ruby_version: 1.9.3-p429
   sudo: True
   roles:
   - common
