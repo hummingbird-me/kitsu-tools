@@ -1,0 +1,18 @@
+---
+- hosts: webservers
+  sudo: True
+  tasks:
+  - name: Update package cache.
+    action: apt update_cache=yes
+
+  - name: Install python-software-properties.
+    action: apt pkg=python-software-properties state=present
+      
+  - name: Add nginx repository.
+    action: apt_repository repo=ppa:nginx/stable state=present
+      
+  - name: Install nginx
+    action: apt pkg=nginx state=latest update_cache=yes
+      
+  - name: Start nginx
+    service: name=nginx state=started
