@@ -20,7 +20,7 @@ if ENV['RAILS_ENV'] == "development"
 elsif ENV['RAILS_ENV'] == "staging"
   server "192.241.199.146", :app, :web, :db, primary: true
 else
-  server "hakanai", :app, :web, :db, primary: true
+  server "sheska", :app, :web, :db, primary: true
 end
 
 #role :db,  "your slave db-server here"
