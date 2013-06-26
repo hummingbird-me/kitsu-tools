@@ -9,10 +9,15 @@
   tasks:
   - name: Create vikhyat user account
     action: user name=vikhyat password={{password}} groups=sudo append=yes shell=/bin/bash
+      
   - name: Install important packages
     apt: pkg=$item state=present
     with_items:
     - vim
+    - ntp
+  
+  - name: Create .ssh directory
+    file: path=/home/vikhyat/.ssh state=directory owner=vikhyat
 
 - hosts: all
   vars:
