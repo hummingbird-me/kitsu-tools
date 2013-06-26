@@ -29,8 +29,11 @@ class MessageFormatter
       
       # Embed YouTube videos.
       if link =~ /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/
-        code = link.scan(/v=([A-Za-z0-9\-_]+)/)[0][0]
-        formatted += "<br><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='http://youtube.com/embed/#{code}' />"
+        begin
+          code = link.scan(/v=([A-Za-z0-9\-_]+)/)[0][0]
+          formatted += "<br><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='http://youtube.com/embed/#{code}' />"
+        rescue
+        end
       end
     end
     
