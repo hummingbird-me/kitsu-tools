@@ -44,3 +44,8 @@
   sudo_user: postgres
   tasks:
   - include: roles/dbservers/tasks/setup_db.yml
+
+- hosts: solr
+  sudo: True
+  roles:
+  - solr
