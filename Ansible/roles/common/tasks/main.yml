@@ -32,6 +32,7 @@
   action: copy src=monitrc dest=/etc/monit/monitrc
 
 - include: rbenv.yml
+- include: newrelic.yml
 
 - name: Create Capistrano directory structure
   file: path=/u/apps/hummingbird state=directory recurse=true owner=vikhyat mode=0755
