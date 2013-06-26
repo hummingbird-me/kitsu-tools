@@ -12,6 +12,8 @@ Hummingbird::Application.routes.draw do
   match '/privacy' => 'home#privacy'
   match '/developers/api' => 'home#api'
 
+  match '/recommendations' => 'home#recommendations'
+
   # Chat
   match '/chat' => 'chat#index'
   match '/chat/ping' => 'chat#ping'
