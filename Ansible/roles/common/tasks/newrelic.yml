@@ -3,10 +3,15 @@
   register: new_relic_repo
 
 - name: Add New Relic key
-  apt_key: url=hkp://subkeys.pgp.net id=548C16BF
+  shell: apt-key adv --keyserver hkp://subkeys.pgp.net --recv-keys 548C16BF
+  only_if: ${new_relic_repo.changed}
+
+- name: Update apt cache
+  apt: update_cache=yes
+  only_if: ${new_relic_repo.changed}
 
 - name: Install server monitor daemon
-  apt: pkg=newrelic-sysmond update_cache=${new_relic_repo.changed}
+  apt: pkg=newrelic-sysmond
 
 - name: Add license key
   shell: nrsysmond-config --set license_key=0ab6c9cdc861c58b99294cbbf5022df2eef631d3
