@@ -37,6 +37,7 @@
 - name: Reload Jetty
   service: name=jetty state=reloaded
   only_if: ${solr_schema.changed}
+  ignore_errors: yes
   
 - name: Start Jetty if needed
   service: name=jetty state=started
