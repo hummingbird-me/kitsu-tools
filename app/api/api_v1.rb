@@ -74,7 +74,7 @@ class API_v1 < Grape::API
       @user = User.find(params[:user_id])
       @stories = @user.stories.accessible_by(current_ability).order('updated_at DESC').page(params[:page]).per(20)
 
-      present @stories, with: Entities::Story
+      present @stories, with: Entities::Story, title_language_preference: user_signed_in? ? current_user.title_language_preference : "canonical"
     end
   end
   

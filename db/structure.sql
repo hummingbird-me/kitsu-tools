@@ -845,7 +845,8 @@ CREATE TABLE recommendations (
     anime_id integer,
     score double precision,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    category character varying(255)
 );
 
 
@@ -2391,3 +2392,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130619223318');
 INSERT INTO schema_migrations (version) VALUES ('20130623190935');
 
 INSERT INTO schema_migrations (version) VALUES ('20130624180612');
+
+INSERT INTO schema_migrations (version) VALUES ('20130626224649');

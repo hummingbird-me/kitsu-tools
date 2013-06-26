@@ -1,7 +1,7 @@
-require 'rvm/capistrano'
+#require 'rvm/capistrano'
 require 'sidekiq/capistrano'
 require 'bundler/capistrano'
-require 'new_relic/recipes'
+#require 'new_relic/recipes'
 
 set :application, "hummingbird"
 set :repository,  "git@github.com:vikhyat/hummingbird.git"
@@ -10,11 +10,19 @@ set :scm, :git
 set :user, "vikhyat"
 set :git_enable_submodules, 1
 set :deploy_via, :remote_cache
-set :rvm_type, :user
+#set :rvm_type, :user
 
 default_run_options[:pty] = true
+default_run_options[:shell] = '/bin/bash --login'
 
-server "hakanai", :app, :web, :db, primary: true
+if ENV['RAILS_ENV'] == "development"
+  server "192.168.33.10", :app, :web, :db, primary: true
+elsif ENV['RAILS_ENV'] == "staging"
+  server "192.241.199.146", :app, :web, :db, primary: true
+else
+  server "sheska", :app, :web, :db, primary: true
+end
+
 #role :db,  "your slave db-server here"
 
 #
@@ -72,16 +80,6 @@ namespace :deploy do
     run "kill -USR2 `cat /u/apps/hummingbird/shared/pids/unicorn.pid`"
   end
 
-  desc "kill extra sidekiq processes"
-  task :kill_extra_sidekiqs, roles: :web do
-    pids = capture("ps aux | grep sidekiq | grep hummingbird | grep busy | grep -v grep").split("\n").map {|x| x.split[1].strip }
-    current_pid = [capture("cat /u/apps/hummingbird/shared/pids/sidekiq.pid").strip]
-    pids -= current_pid
-    pids.each do |pid|
-      run "kill -SIGTERM #{pid}"
-    end
-  end
-
   desc "stop monit from monitoring sidekiq"
   task :stop_monit_sidekiq, roles: :web do
     run "#{sudo} monit unmonitor sidekiq"
@@ -92,20 +90,20 @@ namespace :deploy do
     run "#{sudo} monit monitor sidekiq"
   end
   
-  namespace :assets do
-    task :precompile, roles: :web, except: {no_release: true} do
-      from = source.next_revision(current_revision)
-      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
-        run <<-CMD.compact
-          cd -- #{latest_release} &&
-          #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile &&
-          cp -- #{shared_path.shellescape}/assets/manifest.yml #{current_release.shellescape}/assets_manifest.yml
-        CMD
-      else
-        logger.info "Skipping asset pre-compilation because there were no asset changes"
-      end
-    end
-  end
+  #namespace :assets do
+  #  task :precompile, roles: :web, except: {no_release: true} do
+  #    from = source.next_revision(current_revision)
+  #    if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i > 0
+  #      run <<-CMD.compact
+  #        cd -- #{latest_release} &&
+  #        #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile &&
+  #        cp -- #{shared_path.shellescape}/assets/manifest.yml #{current_release.shellescape}/assets_manifest.yml
+  #      CMD
+  #    else
+  #      logger.info "Skipping asset pre-compilation because there were no asset changes"
+  #    end
+  #  end
+  #end
   
   task :copy_old_sitemap do
     run "if [ -e #{previous_release}/public/sitemap_index.xml.gz ]; then cp #{previous_release}/public/sitemap* #{current_release}/public/; fi"
@@ -120,19 +118,19 @@ after "deploy:update_code", "deploy:copy_old_sitemap"
 
 before "deploy", "deploy:sudo_prompt"
 
-after "deploy:finalize_update",
-  "deploy:nginx_symlink", "deploy:monit_symlink", "deploy:riemann_symlink"
+#after "deploy:finalize_update",
+#  "deploy:nginx_symlink", "deploy:monit_symlink", "deploy:riemann_symlink"
 
 after "deploy:restart",
-  "deploy:reload_unicorn",
-  "deploy:nginx_reload", "deploy:monit_reload", "deploy:riemann_restart"
+  "deploy:reload_unicorn"
+#  "deploy:nginx_reload", "deploy:monit_reload", "deploy:riemann_restart"
 
 before "sidekiq:restart", "deploy:stop_monit_sidekiq"
 after "sidekiq:restart", "deploy:start_monit_sidekiq"
 
 after "deploy:migrate", "deploy:reload_unicorn"
 
-after "deploy:update", "newrelic:notice_deployment"
+#after "deploy:update", "newrelic:notice_deployment"
 
 # To keep only the last 5 releases:
 # (Default is `set :keep_releases, 5`)

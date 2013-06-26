@@ -51,9 +51,10 @@ production:
     default:
       database: hummingbird_chat
       hosts:
-        - localhost:27017
-      #username: hummingbird
-      #password: MongoToad05!
+        - dharma.mongohq.com:10008
+      username: hummingbird
+      password: MongoToad05!
       options:
         safe: true
         consistency: :eventual
+

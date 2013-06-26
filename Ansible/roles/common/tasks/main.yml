@@ -1,0 +1,38 @@
+- name: Install important packages
+  apt: pkg=$item state=present
+  with_items:
+  - vim
+  - ntp
+
+- name: Create .ssh directory
+  file: path=/home/vikhyat/.ssh state=directory owner=vikhyat
+
+- name: Set timezone to UTC
+  lineinfile: dest=/etc/timezone state=present insertbefore=BOF
+              regexp="^Etc/UTC" line="Etc/UTC"
+  register: timezone
+
+- name: Reconfigure tzdata
+  shell: dpkg-reconfigure -f noninteractive tzdata
+  only_if: ${timezone.changed}
+
+- name: Copy SSH stuff
+  action: copy dest=/home/vikhyat/.ssh/$item src=$item
+  with_items:
+  - id_rsa
+  - id_rsa.pub
+
+- name: Install python-software-properties.
+  action: apt pkg=python-software-properties state=present
+
+- name: Install monit
+  action: apt pkg=monit state=present
+    
+- name: Copy monit config
+  action: copy src=monitrc dest=/etc/monit/monitrc
+
+- include: rbenv.yml
+- include: newrelic.yml
+
+- name: Create Capistrano directory structure
+  file: path=/u/apps/hummingbird state=directory recurse=true owner=vikhyat mode=0755

@@ -1,0 +1,43 @@
+- name: Install prerequisite packages
+  apt: pkg=$item state=present
+  with_items:
+  - openjdk-7-jdk
+  - jetty
+  - libjetty-extra
+  - unzip
+    
+- name: Download and extract Solr
+  script: install.sh
+
+- name: Add Solr to Jetty
+  file: src=/usr/share/solr dest=/usr/share/jetty/webapps/solr state=link
+
+- name: Configure Jetty
+  template: src=jetty.default.j2 dest=/etc/default/jetty
+
+- name: Add cores to Solr configuration
+  copy: src=solr_cores.xml dest=/usr/share/solr/solr.xml
+
+- name: Create folders for the core just added
+  file: path=$item state=directory
+  with_items:
+  - /var/lib/solr/hummingbird/data
+  - /usr/share/solr/hummingbird
+
+- name: Set folder owners to jetty
+  file: path=$item recurse=yes owner=jetty group=jetty state=directory
+  with_items:
+  - /var/lib/solr
+  - /usr/share/solr
+    
+- name: Copy schema.xml
+  copy: src=schema.xml dest=/usr/share/solr/hummingbird/conf/schema.xml
+  register: solr_schema
+
+- name: Reload Jetty
+  service: name=jetty state=reloaded
+  only_if: ${solr_schema.changed}
+  ignore_errors: yes
+  
+- name: Start Jetty if needed
+  service: name=jetty state=started

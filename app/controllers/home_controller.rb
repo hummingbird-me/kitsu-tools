@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   before_filter :hide_cover_image
-  #caches_action :index, layout: false, :if => lambda { not user_signed_in? }
 
   def index
     if user_signed_in?
@@ -12,7 +11,7 @@ class HomeController < ApplicationController
         end
         format.json do
           @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).page(params[:page]).per(20)
-          render :json => Entities::Story.represent(@stories)
+          render :json => Entities::Story.represent(@stories, title_language_preference: user_signed_in? ? current_user.title_language_preference : "canonical")
         end
       end
       
