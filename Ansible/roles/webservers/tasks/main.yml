@@ -25,8 +25,11 @@
 
 - name: Start Unicorn with Monit
   action: monit name=unicorn state=started
+
+- name: Copy main nginx config
+  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
     
-- name: Copy nginx config file
+- name: Copy nginx config files
   action: copy src=frontend.nginx.conf dest=/etc/nginx/sites-enabled/hummingbird
   register: frontend_nginx_conf
     

@@ -1,3 +1,21 @@
+- name: Install important packages
+  apt: pkg=$item state=present
+  with_items:
+  - vim
+  - ntp
+
+- name: Create .ssh directory
+  file: path=/home/vikhyat/.ssh state=directory owner=vikhyat
+
+- name: Set timezone to UTC
+  lineinfile: dest=/etc/timezone state=present insertbefore=BOF
+              regexp="^Etc/UTC" line="Etc/UTC"
+  register: timezone
+
+- name: Reconfigure tzdata
+  shell: dpkg-reconfigure -f noninteractive tzdata
+  only_if: ${timezone.changed}
+
 - name: Copy SSH stuff
   action: copy dest=/home/vikhyat/.ssh/$item src=$item
   with_items:

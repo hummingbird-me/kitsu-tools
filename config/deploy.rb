@@ -17,7 +17,8 @@ default_run_options[:shell] = '/bin/bash --login'
 
 if ENV['RAILS_ENV'] == "development"
   server "192.168.33.10", :app, :web, :db, primary: true
-#  set :ssh_options, {:forward_agent => true, keys: ['~/.vagrant.d/insecure_private_key']}
+elsif ENV['RAILS_ENV'] == "staging"
+  server "192.241.199.146", :app, :web, :db, primary: true
 else
   server "hakanai", :app, :web, :db, primary: true
 end
