@@ -16,7 +16,7 @@ class RecommendationsController < ApplicationController
     # RecommendingWorker.new.perform(current_user.id)
     
     # Load recommended anime.
-    r = current_user.recommendation
+    r = current_user.recommendation || Recommendation.new
     @status_categories = ["currently_watching", "plan_to_watch", "completed"]
     @recommendations = {}
     @status_categories.each do |cat|
