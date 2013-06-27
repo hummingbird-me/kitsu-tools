@@ -16,11 +16,11 @@ class RecommendationsController < ApplicationController
     # RecommendingWorker.new.perform(current_user.id)
     
     # Load recommended anime.
-    r = current_user.recommendation || Recommendation.new
+    r = current_user.recommendation
     @status_categories = ["currently_watching", "plan_to_watch", "completed"]
     @recommendations = {}
     @status_categories.each do |cat|
-      @recommendations[cat] = JSON.parse(r.recommendations["by_status"])[cat].map {|x| Anime.find(x) }
+      @recommendations[cat] = r ? JSON.parse(r.recommendations["by_status"])[cat].map {|x| Anime.find(x) } : []
     end
     
     # View convenience variables. Move to translations later.
