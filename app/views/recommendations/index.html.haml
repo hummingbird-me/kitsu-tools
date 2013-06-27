@@ -40,11 +40,13 @@
                 %li.single-rec
                   .rec-thumbnail
                     %p.wanna-watch
-                      %a.small.button want to watch
+                      %a.small.button{:"data-slug" => anime.slug}
+                        %i.icon-plus
+                        Plan to Watch
                     = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
                   %p.title= anime.canonical_title(current_user.title_language_preference)
                   .hide= link_to "Not Interested", "#", :class => "not-interested"
-
+                
       / By status recommendations
       - @status_categories.each do |category|
         .large-12.columns.panel.no-padding.rounded-panel
@@ -64,7 +66,7 @@
                 %li.single-rec
                   .rec-thumbnail
                     %p.wanna-watch
-                      %a.small.button 
+                      %a.small.button{:"data-slug" => anime.slug}
                         %i.icon-plus
                         Plan to Watch
                     = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
@@ -111,7 +113,14 @@
               %li
                 = link_to "Ecchi", "#"
 
-
+:coffee
+  $("p.wanna-watch a").click ->
+    slug = $(this).attr("data-slug")
+    $(this).find("i").removeClass("icon-plus").addClass("icon-spin").addClass("icon-spinner")
+    that = this
+    $.post "/api/v1/libraries/" + slug, {status: "plan-to-watch"}, (d) ->
+      $(that).find("i").removeClass("icon-spin").removeClass("icon-spinner").addClass("icon-ok")
+      console.log d
 
 / .tooltip-contents.hide
 /   .large-12.columns
