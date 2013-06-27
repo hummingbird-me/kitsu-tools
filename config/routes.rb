@@ -12,6 +12,8 @@ Hummingbird::Application.routes.draw do
   match '/privacy' => 'home#privacy'
   match '/developers/api' => 'home#api'
 
+  resources :recommendations
+
   # Chat
   match '/chat' => 'chat#index'
   match '/chat/ping' => 'chat#ping'
@@ -40,6 +42,7 @@ Hummingbird::Application.routes.draw do
 
     post :follow
     post :comment
+    post :toggle_connection
     
     post "/disconnect/facebook" => 'users#disconnect_facebook', 
       as: :disconnect_facebook
