@@ -33,7 +33,7 @@
               %p.head-action= link_to "view more", "#"
           %hr.block-divider
           - if @neon_alley.length == 0
-            %h5.default-state.center Uh oh, we don't have any recommendations for you yet!  <a href="#">Rate more anime</a>
+            %h5.default-state.center Uh oh, we don't have any recommendations for you yet!
           - else
             %ul.small-block-grid-2.large-block-grid-5.single-recs
               - @neon_alley.each do |anime|
@@ -56,15 +56,18 @@
             - if false
               %p.head-action= link_to "view more", "#"
           %hr.block-divider
-          %ul.small-block-grid-2.large-block-grid-5.single-recs
-            - @recommendations[category][0..4].each do |anime|
-              %li.single-rec
-                .rec-thumbnail
-                  %p.wanna-watch
-                    %a.small.button want to watch
-                  = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
-                %p.title= anime.canonical_title(current_user.title_language_preference)
-                .hide= link_to "Not Interested", "#", :class => "not-interested"
+          - if @recommendations[category].length == 0
+            %h5.default-state.center Uh oh, we don't have any recommendations for you yet!
+          - else
+            %ul.small-block-grid-2.large-block-grid-5.single-recs
+              - @recommendations[category][0..4].each do |anime|
+                %li.single-rec
+                  .rec-thumbnail
+                    %p.wanna-watch
+                      %a.small.button want to watch
+                    = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
+                  %p.title= anime.canonical_title(current_user.title_language_preference)
+                  .hide= link_to "Not Interested", "#", :class => "not-interested"
 
     .large-3.columns.recs-right-side
       / filter panel
