@@ -74,6 +74,6 @@ class RecommendingWorker
     
     recommendation.save
     
-    #user.update_column :recommendations_up_to_date, true
+    user.update_column :recommendations_up_to_date, true
   end
 end
