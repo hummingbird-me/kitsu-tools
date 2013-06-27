@@ -21,7 +21,6 @@ class Anime < ActiveRecord::Base
   has_many :castings
   has_many :reviews
   has_many :episodes
-  has_many :recommendations
   has_many :gallery_images
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
