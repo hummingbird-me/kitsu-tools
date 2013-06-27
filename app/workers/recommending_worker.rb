@@ -72,7 +72,7 @@ class RecommendingWorker
     recommendation.recommendations["by_status"] = {
       currently_watching: top_recommendations(recommendations[:by_status][:currently_watching], exclude: user_watchlists_anime_ids),
       plan_to_watch: top_recommendations(recommendations[:by_status][:plan_to_watch], exclude: user_watchlists_anime_ids),
-      completed: top_recommendations(recommendations[:by_status][:completed], exlude: user_watchlists_anime_ids)
+      completed: top_recommendations(recommendations[:by_status][:completed], exclude: user_watchlists_anime_ids)
     }.to_json
     
     recommendation.save
