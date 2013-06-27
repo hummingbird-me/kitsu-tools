@@ -44,7 +44,7 @@
                         Plan to Watch
                     = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
                   %p.title= anime.canonical_title(current_user.title_language_preference)
-                  .hide= link_to "Not Interested", "#", :class => "not-interested"
+                  %a.not-interested(href="javascript:void(0)"){:"data-slug" => anime.slug} Not Interested
                 
       / By status recommendations
       - @status_categories.each do |category|
