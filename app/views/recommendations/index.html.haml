@@ -41,7 +41,6 @@
                   .rec-thumbnail
                     %p.wanna-watch
                       %a.small.button{:"data-slug" => anime.slug}
-                        %i.icon-plus
                         Plan to Watch
                     = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
                   %p.title= anime.canonical_title(current_user.title_language_preference)
@@ -67,7 +66,6 @@
                   .rec-thumbnail
                     %p.wanna-watch
                       %a.small.button{:"data-slug" => anime.slug}
-                        %i.icon-plus
                         Plan to Watch
                     = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
                   %p.title= anime.canonical_title(current_user.title_language_preference)
@@ -116,7 +114,7 @@
 :coffee
   $("p.wanna-watch a").click ->
     slug = $(this).attr("data-slug")
-    $(this).find("i").removeClass("icon-plus").addClass("icon-spin").addClass("icon-spinner")
+    $(this).html $("<i></i>").addClass("icon-spin").addClass("icon-spinner")
     that = this
     $.post "/api/v1/libraries/" + slug, {status: "plan-to-watch"}, (d) ->
       $(that).find("i").removeClass("icon-spin").removeClass("icon-spinner").addClass("icon-ok")
