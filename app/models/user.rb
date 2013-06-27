@@ -222,4 +222,9 @@ class User < ActiveRecord::Base
       nil
     end
   end
+
+  def watchlist_hash
+    watchlists = self.watchlists.order(:id).map {|x| [x.id, x.status, x.rating] }
+    Digest::MD5.hexdigest( watchlists.inspect )
+  end
 end

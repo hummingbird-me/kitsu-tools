@@ -140,20 +140,8 @@ class AnimeController < ApplicationController
 
     elsif @filter == "recommended"
 
-      # The user needs to be signed in.
-      authenticate_user!
-
-      # Check whether we need to update the user's recommendations.
-      new_watchlist_hash = Watchlist.watchlist_hash( @watchlist.values.map(&:id) )
-      if current_user.watchlist_hash != new_watchlist_hash
-        current_user.update_attributes(
-          watchlist_hash: new_watchlist_hash,
-          recommendations_up_to_date: false
-        )
-        RecommendingWorker.perform_async(current_user.id)
-      end
-
-      @anime = @anime.joins(:recommendations).where(:recommendations => {:user_id => current_user.id}).order('score DESC')
+      redirect_to recommendations_path
+      return
 
     else
       # We don't have to do any filtering.
