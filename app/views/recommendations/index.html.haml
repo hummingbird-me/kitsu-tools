@@ -120,12 +120,14 @@
     that = this
     $.post "/api/v1/libraries/" + slug, {status: "plan-to-watch"}, (d) ->
       $(that).find("i").removeClass("icon-spin").removeClass("icon-spinner").addClass("icon-ok")
+      $.get("/recommendations")
 
   $("a.not-interested").click ->
     slug = $(this).attr("data-slug")
     that = this
     $.post "/api/v1/libraries/" + slug, {status: "dropped"}, (d) ->
       $(that).closest("li").fadeTo(500, 0.2)
+      $.get("/recommendations")
   
 
 / .tooltip-contents.hide
