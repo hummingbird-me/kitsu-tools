@@ -842,10 +842,9 @@ ALTER SEQUENCE rails_admin_histories_id_seq OWNED BY rails_admin_histories.id;
 CREATE TABLE recommendations (
     id integer NOT NULL,
     user_id integer,
-    anime_id integer,
-    score double precision,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    recommendations hstore
 );
 
 
@@ -1175,7 +1174,8 @@ CREATE TABLE users (
     english_anime_titles boolean DEFAULT true,
     title_language_preference character varying(255) DEFAULT 'canonical'::character varying,
     followers_count_hack integer DEFAULT 0,
-    following_count integer DEFAULT 0
+    following_count integer DEFAULT 0,
+    neon_alley_integration boolean DEFAULT false
 );
 
 
@@ -2388,3 +2388,17 @@ INSERT INTO schema_migrations (version) VALUES ('20130526171102');
 INSERT INTO schema_migrations (version) VALUES ('20130619223318');
 
 INSERT INTO schema_migrations (version) VALUES ('20130623190935');
+
+INSERT INTO schema_migrations (version) VALUES ('20130624180612');
+
+INSERT INTO schema_migrations (version) VALUES ('20130626224649');
+
+INSERT INTO schema_migrations (version) VALUES ('20130627011053');
+
+INSERT INTO schema_migrations (version) VALUES ('20130627012417');
+
+INSERT INTO schema_migrations (version) VALUES ('20130627013814');
+
+INSERT INTO schema_migrations (version) VALUES ('20130627021950');
+
+INSERT INTO schema_migrations (version) VALUES ('20130627022031');

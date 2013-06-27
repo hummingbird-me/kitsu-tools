@@ -45,13 +45,6 @@ class Watchlist < ActiveRecord::Base
     rating && (!(positive? or negative?))
   end
 
-  # This method will take an array of "watchlist" object IDs and return a unique
-  # string hash. This is used to check whether a user's recommendations are up to
-  # date.
-  def self.watchlist_hash(watchlist_ids)
-    Digest::MD5.hexdigest( watchlist_ids.sort * ' ' )
-  end
-
   # If the "last_watched" time is not set, set it to updated_at time.
   #
   # If the status is set to "Completed", then before saving mark all episodes as
