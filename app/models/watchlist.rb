@@ -9,8 +9,6 @@ class Watchlist < ActiveRecord::Base
   validates :anime, :user, presence: true
   validates :user_id, :uniqueness => {:scope => :anime_id}
 
-  # has_and_belongs_to_many :episodes, :uniq => true
-
   # Return an array of possible valid statuses.
   def self.valid_statuses
     ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
@@ -56,7 +54,7 @@ class Watchlist < ActiveRecord::Base
       self.last_watched = self.updated_at
     end
 
-    if self.anime and self.episodes_watched == self.anime.episodes.length and self.episodes_watched > 0 and self.status == "Currently Watching"
+    if self.anime and self.episodes_watched == self.anime.episode_count and self.episodes_watched > 0 and self.status == "Currently Watching"
       self.status = "Completed"
     end
   end
@@ -68,7 +66,6 @@ class Watchlist < ActiveRecord::Base
     self.save
 
     self.user.update_life_spent_on_anime( (self.episodes_watched - old_count) * self.anime.episode_length )
-    self
   end
   
   def update_rewatched_times(new_times)
