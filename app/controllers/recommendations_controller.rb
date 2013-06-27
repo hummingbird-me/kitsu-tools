@@ -3,17 +3,17 @@ class RecommendationsController < ApplicationController
     authenticate_user!
     @hide_cover_image = true
     
-    new_watchlist_hash = current_user.compute_watchlist_hash + "b"
+    new_watchlist_hash = current_user.compute_watchlist_hash
     if current_user.watchlist_hash != new_watchlist_hash
       current_user.update_attributes(
-        watchlist_hash: new_watchlist_hash + "a",
+        watchlist_hash: new_watchlist_hash,
         recommendations_up_to_date: false
       )
       RecommendingWorker.perform_async(current_user.id)
     end
     
     # FIXME This is temporary!
-    # RecommendingWorker.new.perform(current_user.id)
+    RecommendingWorker.new.perform(current_user.id)
     
     # Load recommended anime.
     r = current_user.recommendation
@@ -22,6 +22,8 @@ class RecommendationsController < ApplicationController
     @status_categories.each do |cat|
       @recommendations[cat] = r ? JSON.parse(r.recommendations["by_status"])[cat].map {|x| Anime.find(x) } : []
     end
+
+    @neon_alley = r ? JSON.parse(r.recommendations["by_service"])["neon_alley"].map {|x| Anime.find(x) } : []
     
     # View convenience variables. Move to translations later.
     @word_before = {

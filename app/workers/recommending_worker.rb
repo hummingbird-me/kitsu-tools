@@ -4,12 +4,17 @@ class RecommendingWorker
   include Sidekiq::Worker
   
   def top_recommendations(recommendations, options={})
-    n       = options[:limit] || 10
-    exclude = options[:exclude] || []
+    n         = options[:limit] || 10
+    exclude   = options[:exclude] || []
+    intersect = options[:intersect] || false
     
     tr = []
     recommendations.each do |anime_id, score|
-      tr.push({anime_id: anime_id, score: score}) unless exclude.include? anime_id
+      unless exclude.include?(anime_id)
+        if !intersect or intersect.include?(anime_id)
+          tr.push({anime_id: anime_id, score: score})
+        end
+      end
     end
     
     tr.sort_by! {|x| -x[:score] }
@@ -61,7 +66,8 @@ class RecommendingWorker
       
     end
 
-    recommendation = user.recommendation || Recommendation.create(user_id: user_id)
+    user.recommendation.destroy if user.recommendation
+    recommendation = Recommendation.create(user_id: user_id)
     
     recommendation.recommendations ||= {}
     
@@ -73,6 +79,11 @@ class RecommendingWorker
       currently_watching: top_recommendations(recommendations[:by_status][:currently_watching], exclude: user_watchlists_anime_ids),
       plan_to_watch: top_recommendations(recommendations[:by_status][:plan_to_watch], exclude: user_watchlists_anime_ids),
       completed: top_recommendations(recommendations[:by_status][:completed], exclude: user_watchlists_anime_ids)
+    }.to_json
+    
+    # Save "by service" recommendations.
+    recommendation.recommendations["by_service"] = {
+      neon_alley: top_recommendations(recommendations[:general], intersect: Anime.neon_alley_ids, exclude: user_watchlists_anime_ids)
     }.to_json
     
     recommendation.save
