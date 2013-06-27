@@ -18,7 +18,7 @@ class Ability
     if user.nil?
       ### Guest permissions
       # Can view non-hentai anime.
-      can :read, Anime, "age_rating <> 'R18+'"
+      can :read, Anime, "age_rating <> 'R18+' OR age_rating IS NULL"
     else
       ### Regular user permissions
       can :read, Watchlist, :private => true, :user_id => user.id
@@ -26,7 +26,7 @@ class Ability
       can :update, User, :id => user.id
       
       if user.sfw_filter
-        can :read, Anime, "age_rating <> 'R18+'"
+        can :read, Anime, "age_rating <> 'R18+' OR age_rating IS NULL"
       else
         can :read, Anime
       end
