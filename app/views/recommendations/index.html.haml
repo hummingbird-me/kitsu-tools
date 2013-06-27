@@ -80,7 +80,8 @@
               Based on the anime 
               = @word_before[category] 
               %strong= category.titleize
-            %p.head-action= link_to "view more", "#"
+            - if false
+              %p.head-action= link_to "view more", "#"
           %hr.block-divider
           %ul.small-block-grid-2.large-block-grid-5.single-recs
             - @recommendations[category][0..4].each do |anime|
@@ -90,8 +91,7 @@
                     %a.small.button want to watch
                   = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
                 %p.title= anime.canonical_title(current_user.title_language_preference)
-                = link_to "Not Interested", "#", :class => "not-interested"
-          
+                .hide= link_to "Not Interested", "#", :class => "not-interested"
             
       / filter panel
       .large-12.columns.panel.no-padding.rounded-panel
