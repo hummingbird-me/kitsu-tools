@@ -14,7 +14,9 @@
 .large-12.columns.feed.no-padding
   - if user_signed_in?
     .large-12.columns.feed-form
-      = form_tag(user_comment_path(@user), method: "post") do
+      %form.comment
+        .posting-indicator
+          %i.icon-spin.icon-spinner
         %input.comment(placeholder="Write something..." type="text" name="comment" autocomplete="off")
 
   %ul.feed-list.activity-feed
@@ -23,6 +25,25 @@
     %i.icon.icon-spin.icon-spinner.icon-4x
 
 :coffee
+  @submitInProgress = false
+  that = this
+  $("form.comment").submit ->
+    unless that.submitInProgress
+      that.submitInProgress = true
+      $("form.comment .posting-indicator").fadeIn()
+      $.ajax
+        type: "post"
+        url: "#{user_comment_path(@user)}.json"
+        data: 
+          comment: $("input.comment").val()
+        success: (story) ->
+          StoryCollectionView.addStories story
+          $("form.comment .posting-indicator").fadeOut()
+          setTimeout (-> that.submitInProgress = false), 5000
+        error: ->
+          alert "Something went wrong. Please try again later."
+    return false
+  
   @getUserFeedItems("#{@user.to_param}")
   
   infiniteScrollLoader = ->

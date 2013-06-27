@@ -18,6 +18,13 @@
         padding: 6px;
       }
     }
+    .posting-indicator {
+      position: absolute;
+      padding: 8px;
+      text-align: right;
+      width: 96%;
+      display: none;
+    }
   }
   .feed-list {
     list-style: none;

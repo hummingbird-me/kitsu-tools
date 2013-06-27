@@ -143,6 +143,10 @@ class UsersController < ApplicationController
   
   def comment
     authenticate_user!
+    
+    sleep 2
+    
+    # Create the story.
     @user = User.find(params[:user_id])
     story = Story.create(
       story_type: "comment",
@@ -155,7 +159,11 @@ class UsersController < ApplicationController
       story: story,
       data: {comment: params[:comment]}
     )
-    redirect_to :back
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render :json => Entities::Story.represent(story) }
+    end
   end
 
   def toggle_connection

@@ -94,8 +94,10 @@ StoryCollectionViewClass = Backbone.View.extend
           if feedItems.length < 20
             that.loadedAll = true
             $(".activity-feed-spinner").hide()
-          that.collection.add feedItems
-          that.render()
+          that.addStories feedItems
+  addStories: (stories) ->
+    @collection.add stories
+    @render()
 
 @StoryCollectionView = new StoryCollectionViewClass
   collection: StoryCollection
