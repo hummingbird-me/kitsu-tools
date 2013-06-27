@@ -3,10 +3,13 @@ require 'json'
 class RecommendingWorker
   include Sidekiq::Worker
   
-  def top_recommendations(recommendations, n=10)
+  def top_recommendations(recommendations, options={})
+    n       = options[:limit] || 10
+    exclude = options[:exclude] || []
+    
     tr = []
     recommendations.each do |anime_id, score|
-      tr.push({anime_id: anime_id, score: score})
+      tr.push({anime_id: anime_id, score: score}) unless exclude.include? anime_id
     end
     
     tr.sort_by! {|x| -x[:score] }
@@ -21,6 +24,7 @@ class RecommendingWorker
     # Fetch relevant similarities from remote server.
     similarities = {}
     user_watchlists = user.watchlists
+    user_watchlists_anime_ids = user_watchlists.map {|x| x.anime_id }
     user_watchlists.each do |watchlist|
       similarities[watchlist.anime_id] ||= {}
       JSON.load( open("http://app.vikhyat.net/anime_safari/related/#{watchlist.anime.mal_id}") ).each do |similar|
@@ -57,7 +61,6 @@ class RecommendingWorker
       
     end
 
-    
     recommendation = user.recommendation || Recommendation.create(user_id: user_id)
     
     recommendation.recommendations ||= {}
@@ -67,9 +70,9 @@ class RecommendingWorker
     
     # Save "by status" recommendations.
     recommendation.recommendations["by_status"] = {
-      currently_watching: top_recommendations(recommendations[:by_status][:currently_watching]),
-      plan_to_watch: top_recommendations(recommendations[:by_status][:plan_to_watch]),
-      completed: top_recommendations(recommendations[:by_status][:completed])
+      currently_watching: top_recommendations(recommendations[:by_status][:currently_watching], exclude: user_watchlists_anime_ids),
+      plan_to_watch: top_recommendations(recommendations[:by_status][:plan_to_watch], exclude: user_watchlists_anime_ids),
+      completed: top_recommendations(recommendations[:by_status][:completed], exlude: user_watchlists_anime_ids)
     }.to_json
     
     recommendation.save
