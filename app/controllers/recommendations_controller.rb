@@ -13,7 +13,7 @@ class RecommendationsController < ApplicationController
     end
     
     # FIXME This is temporary!
-    RecommendingWorker.new.perform(current_user.id)
+    # RecommendingWorker.new.perform(current_user.id)
     
     # Load recommended anime.
     r = current_user.recommendation
