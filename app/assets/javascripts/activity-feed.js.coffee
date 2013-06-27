@@ -1,5 +1,6 @@
 SubstoryModel = Backbone.Model.extend
   decoratedJSON: ->
+    console.log "test"
     json = @toJSON()
     json["type"] = {}
     json["type"][@get("substory_type")] = true

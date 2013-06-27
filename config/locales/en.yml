@@ -3,7 +3,7 @@
 
 en:
   stories:
-    watched_episode_html: "%{user} watched episode %{number}."
+    watched_episode_html: "%{user} watched episode %{number}%{extra}."
     watchlist_status_updates:
       first_person:
         plan_to_watch_html: "%{user} plan to watch."

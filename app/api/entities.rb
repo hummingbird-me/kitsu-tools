@@ -85,6 +85,12 @@ module Entities
       substory.data["episode_number"]
     end
 
+    expose(:service,
+      if: lambda {|substory, options| substory.substory_type == "watched_episode" }
+    ) do |substory, options|
+      substory.data["service"]
+    end
+
     expose(:comment,
       if: lambda {|substory, options| substory.substory_type == "comment" }
     ) do |substory, options|

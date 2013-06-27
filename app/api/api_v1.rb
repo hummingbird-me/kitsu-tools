@@ -141,11 +141,17 @@ class API_v1 < Grape::API
 
       if params[:increment_episodes]
         @watchlist.update_episode_count @watchlist.episodes_watched+1
+        if current_user.neon_alley_integration? and Anime.neon_alley_ids.include? @anime.id
+          service = "neon_alley"
+        else
+          service = nil
+        end
         Substory.from_action({
           user_id: current_user.id,
           action_type: "watched_episode",
           anime_id: @anime.slug,
-          episode_number: @watchlist.episodes_watched
+          episode_number: @watchlist.episodes_watched,
+          service: service
         })
       end
       

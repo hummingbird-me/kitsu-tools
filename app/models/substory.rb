@@ -110,7 +110,8 @@ class Substory < ActiveRecord::Base
         substory_type: "watched_episode",
         story: story,
         data: {
-          episode_number: data[:episode_number]
+          episode_number: data[:episode_number],
+          service: data[:service]
         }
       })
 

@@ -17,6 +17,10 @@ Handlebars.registerHelper 'timeAgo', (t) ->
 Handlebars.registerHelper 'watchlistStatusChangeStory', (user, new_status) ->
   return I18n.t("stories.watchlist_status_updates.third_person." + new_status + "_html", {user: "<a href='" + user.url + "'>" + user.name + "</a>"})
 
-Handlebars.registerHelper 'watchedEpisodeStory', (user, episode_number) ->
-  return I18n.t("stories.watched_episode_html", {user: "<a href='" + user.url + "'>" + user.name + "</a>", number: episode_number})
+Handlebars.registerHelper 'watchedEpisodeStory', (user, episode_number, service) ->
+  extra = ""
+  if service
+    if service == "neon_alley"
+      extra = " on <a href='http://neonalley.com/' target='_blank'>Neon Alley</a>"
+  return I18n.t("stories.watched_episode_html", {user: "<a href='" + user.url + "'>" + user.name + "</a>", number: episode_number, extra: extra})
   
