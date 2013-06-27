@@ -25,53 +25,53 @@
       
 
       / Neon Alley Recommendations
-      / - if current_user.neon_alley_integration?
-      .large-12.columns.panel.no-padding.rounded-panel
-        .large-12.columns.panel-head
-          %p.head-title Anime you'll love on <strong>Neon Alley</strong>
-          %p.head-action= link_to "view more", "#"
-        %hr.block-divider
-        %h5.default-state.center Uh oh, we don't have any recommendations for you yet!  <a href="#">Rate more anime</a>
-        / %ul.small-block-grid-2.large-block-grid-5.single-recs
-        /   %li.single-rec
-        /     .rec-thumbnail
-        /       %p.wanna-watch
-        /         <a href="#" class="small button">want to watch</a>
-        /       = link_to (image_tag "http://hummingbird.me/system/23a6adad9c04bf4c85461f6f2e413c05a625ac5f_thumb.jpg?1362232853", :class => "rec-image"), "#"
-        /     %p.title Blue Exorcist
-        /     = link_to "Not Interested", "#", :class => "not-interested"
+      - if current_user.neon_alley_integration?
+        .large-12.columns.panel.no-padding.rounded-panel
+          .large-12.columns.panel-head
+            %p.head-title Anime you'll love on <strong>Neon Alley</strong>
+            %p.head-action= link_to "view more", "#"
+          %hr.block-divider
+          %h5.default-state.center Uh oh, we don't have any recommendations for you yet!  <a href="#">Rate more anime</a>
+          / %ul.small-block-grid-2.large-block-grid-5.single-recs
+          /   %li.single-rec
+          /     .rec-thumbnail
+          /       %p.wanna-watch
+          /         <a href="#" class="small button">want to watch</a>
+          /       = link_to (image_tag "http://hummingbird.me/system/23a6adad9c04bf4c85461f6f2e413c05a625ac5f_thumb.jpg?1362232853", :class => "rec-image"), "#"
+          /     %p.title Blue Exorcist
+          /     = link_to "Not Interested", "#", :class => "not-interested"
 
-        /   %li.single-rec
-        /     .rec-thumbnail
-        /       %p.wanna-watch
-        /         <a href="#" class="small button">want to watch</a>
-        /       = link_to (image_tag "http://hummingbird.me/system/0a3773f08b97c4dedb7fa2406ff151753c6faf75_thumb.jpg?1361874391", :class => "rec-image"), "#"
-        /     %p.title Death Note
-        /     = link_to "Not Interested", "#", :class => "not-interested"
+          /   %li.single-rec
+          /     .rec-thumbnail
+          /       %p.wanna-watch
+          /         <a href="#" class="small button">want to watch</a>
+          /       = link_to (image_tag "http://hummingbird.me/system/0a3773f08b97c4dedb7fa2406ff151753c6faf75_thumb.jpg?1361874391", :class => "rec-image"), "#"
+          /     %p.title Death Note
+          /     = link_to "Not Interested", "#", :class => "not-interested"
 
-        /   %li.single-rec
-        /     .rec-thumbnail
-        /       %p.wanna-watch
-        /         <a href="#" class="small button">want to watch</a>
-        /       = link_to (image_tag "http://hummingbird.me/system/34d3b683c619818c40114d226a5a0ff50c2077bb_thumb.jpg?1361874429", :class => "rec-image"), "#"
-        /     %p.title Kekkaishi
-        /     = link_to "Not Interested", "#", :class => "not-interested"
+          /   %li.single-rec
+          /     .rec-thumbnail
+          /       %p.wanna-watch
+          /         <a href="#" class="small button">want to watch</a>
+          /       = link_to (image_tag "http://hummingbird.me/system/34d3b683c619818c40114d226a5a0ff50c2077bb_thumb.jpg?1361874429", :class => "rec-image"), "#"
+          /     %p.title Kekkaishi
+          /     = link_to "Not Interested", "#", :class => "not-interested"
 
-        /   %li.single-rec
-        /     .rec-thumbnail
-        /       %p.wanna-watch
-        /         <a href="#" class="small button">want to watch</a>
-        /       = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
-        /     %p.title One Piece
-        /     = link_to "Not Interested", "#", :class => "not-interested"
+          /   %li.single-rec
+          /     .rec-thumbnail
+          /       %p.wanna-watch
+          /         <a href="#" class="small button">want to watch</a>
+          /       = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
+          /     %p.title One Piece
+          /     = link_to "Not Interested", "#", :class => "not-interested"
 
-        /   %li.single-rec
-        /     .rec-thumbnail
-        /       %p.wanna-watch
-        /         <a href="#" class="small button">want to watch</a>
-        /       = link_to (image_tag "http://hummingbird.me/system/cb03656a62aa29e13c8d1a4bbcb919b11bd57e68_thumb.jpg?1361877056", :class => "rec-image"), "#"
-        /     %p.title Fate/Zero
-        /     = link_to "Not Interested", "#", :class => "not-interested"
+          /   %li.single-rec
+          /     .rec-thumbnail
+          /       %p.wanna-watch
+          /         <a href="#" class="small button">want to watch</a>
+          /       = link_to (image_tag "http://hummingbird.me/system/cb03656a62aa29e13c8d1a4bbcb919b11bd57e68_thumb.jpg?1361877056", :class => "rec-image"), "#"
+          /     %p.title Fate/Zero
+          /     = link_to "Not Interested", "#", :class => "not-interested"
 
       / By status recommendations
       - @status_categories.each do |category|
@@ -111,14 +111,15 @@
             %li
               = link_to "Completed", "#"
 
-      .large-12.columns.panel.no-padding.rounded-panel
-        .large-12.columns.panel-head
-          %p.head-title By Service
-          %p.head-action= link_to "edit", "#"
-        %hr.block-divider
-          %ul.filter-options
-            %li
-              = link_to "Neon Alley", "#"
+      - if current_user.neon_alley_integration?
+        .large-12.columns.panel.no-padding.rounded-panel
+          .large-12.columns.panel-head
+            %p.head-title By Service
+            %p.head-action= link_to "edit", "#"
+          %hr.block-divider
+            %ul.filter-options
+              %li
+                = link_to "Neon Alley", "#"
 
       .large-12.columns.panel.no-padding.rounded-panel
         .large-12.columns.panel-head
