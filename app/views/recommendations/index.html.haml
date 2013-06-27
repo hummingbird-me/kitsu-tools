@@ -5,7 +5,7 @@
       %hr.title-divider
 
       - unless current_user.recommendations_up_to_date
-        %div.alert-box
+        .panel.rounded-panel
           %span.updating_recommendations We're updating your recommendations. 
           %span.check_back Check back in a minute!
         :javascript
@@ -24,195 +24,75 @@
           checkForCompletion();
       
 
-      / start recommendation block
-      .large-12.columns.panel.no-padding.rounded-panel
-        .large-12.columns.panel-head
-          %p.head-title Anime you'll love on <strong>Neon Alley</strong>
-          %p.head-action= link_to "view more", "#"
-        %hr.block-divider
-        %ul.small-block-grid-2.large-block-grid-5.single-recs
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/23a6adad9c04bf4c85461f6f2e413c05a625ac5f_thumb.jpg?1362232853", :class => "rec-image"), "#"
-            %p.title Blue Exorcist
-            = link_to "Not Interested", "#", :class => "not-interested"
+      / Neon Alley Recommendations
+      - if current_user.neon_alley_integration?
+        .large-12.columns.panel.no-padding.rounded-panel
+          .large-12.columns.panel-head
+            %p.head-title Anime you'll love on <strong>Neon Alley</strong>
+            %p.head-action= link_to "view more", "#"
+          %hr.block-divider
+          %ul.small-block-grid-2.large-block-grid-5.single-recs
+            %li.single-rec
+              .rec-thumbnail
+                %p.wanna-watch
+                  <a href="#" class="small button">want to watch</a>
+                = link_to (image_tag "http://hummingbird.me/system/23a6adad9c04bf4c85461f6f2e413c05a625ac5f_thumb.jpg?1362232853", :class => "rec-image"), "#"
+              %p.title Blue Exorcist
+              = link_to "Not Interested", "#", :class => "not-interested"
 
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/0a3773f08b97c4dedb7fa2406ff151753c6faf75_thumb.jpg?1361874391", :class => "rec-image"), "#"
-            %p.title Death Note
-            = link_to "Not Interested", "#", :class => "not-interested"
+            %li.single-rec
+              .rec-thumbnail
+                %p.wanna-watch
+                  <a href="#" class="small button">want to watch</a>
+                = link_to (image_tag "http://hummingbird.me/system/0a3773f08b97c4dedb7fa2406ff151753c6faf75_thumb.jpg?1361874391", :class => "rec-image"), "#"
+              %p.title Death Note
+              = link_to "Not Interested", "#", :class => "not-interested"
 
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/34d3b683c619818c40114d226a5a0ff50c2077bb_thumb.jpg?1361874429", :class => "rec-image"), "#"
-            %p.title Kekkaishi
-            = link_to "Not Interested", "#", :class => "not-interested"
+            %li.single-rec
+              .rec-thumbnail
+                %p.wanna-watch
+                  <a href="#" class="small button">want to watch</a>
+                = link_to (image_tag "http://hummingbird.me/system/34d3b683c619818c40114d226a5a0ff50c2077bb_thumb.jpg?1361874429", :class => "rec-image"), "#"
+              %p.title Kekkaishi
+              = link_to "Not Interested", "#", :class => "not-interested"
 
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
-            %p.title One Piece
-            = link_to "Not Interested", "#", :class => "not-interested"
+            %li.single-rec
+              .rec-thumbnail
+                %p.wanna-watch
+                  <a href="#" class="small button">want to watch</a>
+                = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
+              %p.title One Piece
+              = link_to "Not Interested", "#", :class => "not-interested"
 
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/cb03656a62aa29e13c8d1a4bbcb919b11bd57e68_thumb.jpg?1361877056", :class => "rec-image"), "#"
-            %p.title Fate/Zero
-            = link_to "Not Interested", "#", :class => "not-interested"
+            %li.single-rec
+              .rec-thumbnail
+                %p.wanna-watch
+                  <a href="#" class="small button">want to watch</a>
+                = link_to (image_tag "http://hummingbird.me/system/cb03656a62aa29e13c8d1a4bbcb919b11bd57e68_thumb.jpg?1361877056", :class => "rec-image"), "#"
+              %p.title Fate/Zero
+              = link_to "Not Interested", "#", :class => "not-interested"
 
-      / start recommendation block
-      .large-12.columns.panel.no-padding.rounded-panel
-        .large-12.columns.panel-head
-          %p.head-title Based on the anime you're <strong>Currently Watching</strong>
-          %p.head-action= link_to "view more", "#"
-        %hr.block-divider
-        %ul.small-block-grid-2.large-block-grid-5.single-recs
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/23a6adad9c04bf4c85461f6f2e413c05a625ac5f_thumb.jpg?1362232853", :class => "rec-image"), "#"
-            %p.title Blue Exorcist
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/0a3773f08b97c4dedb7fa2406ff151753c6faf75_thumb.jpg?1361874391", :class => "rec-image"), "#"
-            %p.title Death Note
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/34d3b683c619818c40114d226a5a0ff50c2077bb_thumb.jpg?1361874429", :class => "rec-image"), "#"
-            %p.title Kekkaishi
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
-            %p.title One Piece
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/cb03656a62aa29e13c8d1a4bbcb919b11bd57e68_thumb.jpg?1361877056", :class => "rec-image"), "#"
-            %p.title Fate/Zero
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-      / start recommendation block
-      .large-12.columns.panel.no-padding.rounded-panel
-        .large-12.columns.panel-head
-          %p.head-title Based on the anime you <strong>Plan to Watch</strong>
-          %p.head-action= link_to "view more", "#"
-        %hr.block-divider
-        %ul.small-block-grid-2.large-block-grid-5.single-recs
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/23a6adad9c04bf4c85461f6f2e413c05a625ac5f_thumb.jpg?1362232853", :class => "rec-image"), "#"
-            %p.title Blue Exorcist
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/0a3773f08b97c4dedb7fa2406ff151753c6faf75_thumb.jpg?1361874391", :class => "rec-image"), "#"
-            %p.title Death Note
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/34d3b683c619818c40114d226a5a0ff50c2077bb_thumb.jpg?1361874429", :class => "rec-image"), "#"
-            %p.title Kekkaishi
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
-            %p.title One Piece
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/cb03656a62aa29e13c8d1a4bbcb919b11bd57e68_thumb.jpg?1361877056", :class => "rec-image"), "#"
-            %p.title Fate/Zero
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-      / start recommendation block
-      .large-12.columns.panel.no-padding.rounded-panel
-        .large-12.columns.panel-head
-          %p.head-title Based on the anime you've <strong>Completed</strong>
-          %p.head-action= link_to "view more", "#"
-        %hr.block-divider
-        %ul.small-block-grid-2.large-block-grid-5.single-recs
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/23a6adad9c04bf4c85461f6f2e413c05a625ac5f_thumb.jpg?1362232853", :class => "rec-image"), "#"
-            %p.title Blue Exorcist
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/0a3773f08b97c4dedb7fa2406ff151753c6faf75_thumb.jpg?1361874391", :class => "rec-image"), "#"
-            %p.title Death Note
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/34d3b683c619818c40114d226a5a0ff50c2077bb_thumb.jpg?1361874429", :class => "rec-image"), "#"
-            %p.title Kekkaishi
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
-            %p.title One Piece
-            = link_to "Not Interested", "#", :class => "not-interested"
-
-          %li.single-rec
-            .rec-thumbnail
-              %p.wanna-watch
-                <a href="#" class="small button">want to watch</a>
-              = link_to (image_tag "http://hummingbird.me/system/cb03656a62aa29e13c8d1a4bbcb919b11bd57e68_thumb.jpg?1361877056", :class => "rec-image"), "#"
-            %p.title Fate/Zero
-            = link_to "Not Interested", "#", :class => "not-interested"
-    .large-3.columns.recs-right-side.no-padding-right
-
+      / By status recommendations
+      - @status_categories.each do |category|
+        .large-12.columns.panel.no-padding.rounded-panel
+          .large-12.columns.panel-head
+            %p.head-title 
+              Based on the anime 
+              = @word_before[category] 
+              %strong= category.titleize
+            %p.head-action= link_to "view more", "#"
+          %hr.block-divider
+          %ul.small-block-grid-2.large-block-grid-5.single-recs
+            - @recommendations[category][0..4].each do |anime|
+              %li.single-rec
+                .rec-thumbnail
+                  %p.wanna-watch
+                    %a.small.button want to watch
+                  = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
+                %p.title= anime.canonical_title(current_user.title_language_preference)
+                = link_to "Not Interested", "#", :class => "not-interested"
+          
+            
       / filter panel
       .large-12.columns.panel.no-padding.rounded-panel
         .large-12.columns.panel-head

@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :stories
   has_many :substories
+
+  has_one :recommendation
   
   def to_param
     "#{id} #{name}".parameterize
@@ -223,7 +225,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def watchlist_hash
+  def compute_watchlist_hash
     watchlists = self.watchlists.order(:id).map {|x| [x.id, x.status, x.rating] }
     Digest::MD5.hexdigest( watchlists.inspect )
   end
