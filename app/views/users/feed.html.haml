@@ -40,6 +40,7 @@
           StoryCollectionView.addStories story
           $("form.comment .posting-indicator").fadeOut()
           setTimeout (-> that.submitInProgress = false), 5000
+          $("input.comment").val("")
         error: ->
           alert "Something went wrong. Please try again later."
     return false
