@@ -15,7 +15,7 @@
 - hosts: all
   vars:
   - rbenv_root: /usr/local/rbenv
-  - ruby_version: 1.9.3-p429
+  - ruby_version: 2.0.0-p195
   sudo: True
   roles:
   - common

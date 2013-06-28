@@ -2,7 +2,6 @@ worker_processes 12
 working_directory "/u/apps/hummingbird/current"
 
 preload_app true
-# Memory savings when we switch to Ruby 2.0
 if GC.respond_to?(:copy_on_write_friendly=)
   GC.copy_on_write_friendly = true
 end
