@@ -3,6 +3,13 @@ require 'message_formatter'
 class ChatController < ApplicationController
   before_filter :authenticate_user!
   CHAT_VERSION = 15
+  
+  before_filter :fuck_off_demonnerd
+  def fuck_off_demonnerd
+    if current_user.id == 3577
+      response.headers["X-Accel-Limit-Rate"] = "300"
+    end
+  end
 
   def index
     hide_cover_image
