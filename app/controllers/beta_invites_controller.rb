@@ -11,7 +11,7 @@ class BetaInvitesController < ApplicationController
   end
 
   def invite_code
-    valid_codes = %w[ACEN2013 ANICHARTNET THEFAN]
+    valid_codes = %w[ACEN2013 ANICHARTNET THEFAN ANIMESUGGEST]
     email = params[:email].strip.downcase
     code = params[:invite_code].strip.upcase
     
