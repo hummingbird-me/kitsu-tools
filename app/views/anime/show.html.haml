@@ -89,56 +89,36 @@
           %h4 CAST
 
           // Hide me if only one language!!!
-          %dl.sub-nav.language-select
-            %dt Language:
-            %dd.active
-              %a{:href => "#"} Japanese
-            %dd
-              %a{:href => "#"} English
-            %dd
-              %a{:href => "#"} Italian
-            %dd
-              %a{:href => "#"} French
+          - if @languages.length > 1
+            %dl.sub-nav.language-select
+              %dt Language:
+              - @languages.each_with_index do |language, i|
+                %dd{:class => ("active" if i == 0), :id => language}
+                  %a(href="javascript:void(0)"){:id => language}= language
+                
+            :coffee
+              $("dl.language-select a").click ->
+                language = $(this).attr("id")
+                $("dl.language-select dd").removeClass("active")
+                $("dl.language-select dd#" + language).addClass("active")
+                $("ul.cast").hide()
+                $("ul.cast#" + language).show()
 
-          %ul.cast
-            %li.actor
-              %a.character{:href => "#"}
-                %img{:alt => "Marco Bodt - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/508/thumb/181983.jpg?1364999600", :width => "30"}
-                Marco Bodt
-              %span.va
-                %a.voice-actor{:href => "#"}
-                  Ryota Ohsaka
-                  %img{:alt => "Ryota Ohsaka - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/008/141/thumb/17573.jpg?1364654698", :width => "30"}
+          - @languages.each_with_index do |language, i|
+            %ul.cast{:id => language, :style => ("display: none" if i != 0)}
+              - @castings.select {|x| x.role == language }.each do |casting|
+                %li.actor
+                  %a.character
+                    = image_tag casting.character.image.url(:thumb_small), alt: "#{casting.character.name} - #{@anime.canonical_title}", width: 30
+                    = casting.character.name
+                  %span.va
+                    %a.voice-actor
+                      = casting.person.name
+                      = image_tag casting.person.image.url(:thumb_small), alt: "#{casting.person.name} - Voice Actor", width: 30, height: 47
 
-            %li.actor
-              %a.character{:href => "#"}
-                %img{:alt => "Eren Yaeger - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/507/thumb/172585.jpg?1364999599", :width => "30"}
-                Eren Yaeger
-              %span.va
-                %a.voice-actor{:href => "#"}
-                  Yuki Kaji
-                  %img{:alt => "Yuki Kaji - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/006/097/thumb/14609.jpg?1364651708", :width => "30"}
-
-            %li.actor
-              %a.character{:href => "http://filmaster.com/person/helena-bonham-carter-ii/"}
-                %img{:alt => "Armin Arelet - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/506/thumb/181747.jpg?1364999598", :width => "30"}
-                Armin Arelet
-              %span.va
-                %a.voice-actor{:href => "#"}
-                  Marina Inoue
-                  %img{:alt => "Marin Inoue - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/001/550/thumb/12688.jpg?1364645450", :width => "30"}
-
-            %li.actor
-              %a.character{:href => "#"}
-                %img{:alt => "Mikase Ackerman - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/505/thumb/125829.jpg?1364999597", :width => "30"}
-                Mikasa Ackerman
-              %span.va
-                %a.voice-actor{:href => "#"}
-                  Yui Ishikawa
-                  %img{:alt => "Yui Ishikawa - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/006/487/thumb/6526.jpg?1364652190", :width => "30"}
-            %li.show-more
-              %a{:href => "#"} Show all actors +
-            %hr
+              %li.show-more
+                %a{:href => "#"} Show all actors +
+              %hr
             
       .large-12.columns.ad-zone.center
         :javascript
