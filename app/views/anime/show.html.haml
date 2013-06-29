@@ -93,7 +93,13 @@
         .large-12.columns
           %p.series-meta-data 
             %span TV Series ·
-            %span R17+ ·
+            / Age Rating
+            - if @anime.age_rating
+              %span 
+                = @anime.age_rating
+                - if @anime.age_rating_guide
+                  (#{@anime.age_rating_guide})
+                ·
             %span 15 Episodes ·
             %span 24 Min Each ·
             %span Airing Since June 2013
