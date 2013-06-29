@@ -70,10 +70,8 @@
           %hr
         .large-12.columns
           .genres
-            %a.series-tag{:href => "#"} Action
-            %a.series-tag{:href => "#"} Drama
-            %a.series-tag{:href => "#"} Fantasy
-            %a.series-tag{:href => "#"} Super Power
+            - @anime.genres.each do |genre|
+              = link_to genre.name, genre, class: 'series-tag'
           %p.series-description Several hundred years ago, humans were nearly exterminated by giants. Giants are typically several stories tall, seem to have no intelligence, devour human beings and, worst of all, seem to do it for the pleasure rather than as a food source. A small percentage of humanity survived by walling themselves in a city protected by extremely high walls, even taller than the biggest of giants. Flash forward to the present and the city has not seen a giant ... <a href="#">[read more]</a>
 
           .social-links
