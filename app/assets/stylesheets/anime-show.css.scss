@@ -25,9 +25,23 @@
     }
   }
 
+  .side-block {
+    margin-bottom: 10px;
+    h5 {
+      margin-bottom: 0px;
+    }
+  }
   .face-grid {
     img {
       width: 60px;
+    }
+  }
+
+  .sidebar-series {
+    padding: 1px !important;
+    float: left !important;
+    img {
+      border-radius: 3px;
     }
   }
 
@@ -71,9 +85,12 @@
       a:hover {
         color: #fd7532;
       }
-      .active {
+      &.active {
         a {
           font-weight: normal;
+          &:hover {
+            color: #fff;
+          }
         }
       }
     }
@@ -111,6 +128,12 @@
   }
   .show-more {
     margin-top: 10px;
+  }
+
+  // Ad zone
+  .ad-zone {
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 // First block, displays anime thumbnail and description
