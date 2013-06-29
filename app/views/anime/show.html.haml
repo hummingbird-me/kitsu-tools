@@ -4,7 +4,7 @@
     // Left Column
     .large-2.columns.no-padding
       .quote-thumb
-        = image_tag "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"
+        = image_tag @anime.cover_image.url(:thumb)
       .large-12.columns.no-padding
         %a.small.button.split.padded{:href => "#"}
           Want to Watch
@@ -69,8 +69,9 @@
     .large-7.columns.center-column
       .panel
         .large-12.columns
-          %h2.series-title Attack on Titan 
-          %span.series-alt-title (Shingeki No Kyojin) 
+          %h2.series-title= title @anime.canonical_title(current_user)
+          - if (alt = @anime.alternate_title(current_user)) and alt.strip.length > 0
+            %span.series-alt-title (#{alt}) 
           %span.air-date 
 
         .large-12.columns
@@ -83,10 +84,8 @@
           %hr
         .large-12.columns
           .genres
-            %a.series-tag{:href => "#"} Action
-            %a.series-tag{:href => "#"} Drama
-            %a.series-tag{:href => "#"} Fantasy
-            %a.series-tag{:href => "#"} Super Power
+            - @anime.genres.each do |genre|
+              = link_to genre.name, genre, class: 'series-tag'
           %p.series-description Several hundred years ago, humans were nearly exterminated by giants. Giants are typically several stories tall, seem to have no intelligence, devour human beings and, worst of all, seem to do it for the pleasure rather than as a food source. A small percentage of humanity survived by walling themselves in a city protected by extremely high walls, even taller than the biggest of giants. Flash forward to the present and the city has not seen a giant ... <a href="#">[read more]</a>
 
           .social-links
@@ -104,56 +103,36 @@
           %h4 CAST
 
           // Hide me if only one language!!!
-          %dl.sub-nav.language-select
-            %dt Language:
-            %dd.active
-              %a{:href => "#"} Japanese
-            %dd
-              %a{:href => "#"} English
-            %dd
-              %a{:href => "#"} Italian
-            %dd
-              %a{:href => "#"} French
+          - if @languages.length > 1
+            %dl.sub-nav.language-select
+              %dt Language:
+              - @languages.each_with_index do |language, i|
+                %dd{:class => ("active" if i == 0), :id => language}
+                  %a(href="javascript:void(0)"){:id => language}= language
+                
+            :coffee
+              $("dl.language-select a").click ->
+                language = $(this).attr("id")
+                $("dl.language-select dd").removeClass("active")
+                $("dl.language-select dd#" + language).addClass("active")
+                $("ul.cast").hide()
+                $("ul.cast#" + language).show()
 
-          %ul.cast
-            %li.actor
-              %a.character{:href => "#"}
-                %img{:alt => "Marco Bodt - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/508/thumb/181983.jpg?1364999600", :width => "30"}
-                Marco Bodt
-              %span.va
-                %a.voice-actor{:href => "#"}
-                  Ryota Ohsaka
-                  %img{:alt => "Ryota Ohsaka - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/008/141/thumb/17573.jpg?1364654698", :width => "30"}
+          - @languages.each_with_index do |language, i|
+            %ul.cast{:id => language, :style => ("display: none" if i != 0)}
+              - @castings.select {|x| x.role == language }.each do |casting|
+                %li.actor
+                  %a.character
+                    = image_tag casting.character.image.url(:thumb_small), alt: "#{casting.character.name} - #{@anime.canonical_title}", width: 30
+                    = casting.character.name
+                  %span.va
+                    %a.voice-actor
+                      = casting.person.name
+                      = image_tag casting.person.image.url(:thumb_small), alt: "#{casting.person.name} - Voice Actor", width: 30, height: 47
 
-            %li.actor
-              %a.character{:href => "#"}
-                %img{:alt => "Eren Yaeger - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/507/thumb/172585.jpg?1364999599", :width => "30"}
-                Eren Yaeger
-              %span.va
-                %a.voice-actor{:href => "#"}
-                  Yuki Kaji
-                  %img{:alt => "Yuki Kaji - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/006/097/thumb/14609.jpg?1364651708", :width => "30"}
-
-            %li.actor
-              %a.character{:href => "http://filmaster.com/person/helena-bonham-carter-ii/"}
-                %img{:alt => "Armin Arelet - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/506/thumb/181747.jpg?1364999598", :width => "30"}
-                Armin Arelet
-              %span.va
-                %a.voice-actor{:href => "#"}
-                  Marina Inoue
-                  %img{:alt => "Marin Inoue - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/001/550/thumb/12688.jpg?1364645450", :width => "30"}
-
-            %li.actor
-              %a.character{:href => "#"}
-                %img{:alt => "Mikase Ackerman - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/505/thumb/125829.jpg?1364999597", :width => "30"}
-                Mikasa Ackerman
-              %span.va
-                %a.voice-actor{:href => "#"}
-                  Yui Ishikawa
-                  %img{:alt => "Yui Ishikawa - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/006/487/thumb/6526.jpg?1364652190", :width => "30"}
-            %li.show-more
-              %a{:href => "#"} Show all actors +
-            %hr
+              %li.show-more
+                %a{:href => "#"} Show all actors +
+              %hr
             
       .large-12.columns.panel.ad-zone.center
         :javascript
@@ -258,19 +237,20 @@
 
     // Right Column
     .large-3.columns
-
+    
       //trailer
-      .large-12.columns.no-padding.side-block
-        %h5 TRAILER
-        <iframe width="100%" height="auto" src="http://www.youtube.com/embed/znvVz-V-4Oc?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+      - if @anime.youtube_video_id
+        .large-12.columns.no-padding.side-block
+          %h5 TRAILER
+          .flex-video
+            %iframe(allowfullscreen frameborder=0 height="auto" width="100%"){:src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}"}
 
       //screns
-      .large-12.columns.no-padding.side-block
-        %h5 SCREENCAPS
-        = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/137/thumb/titan1.png?1366405880"
-        = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/138/thumb/titan3.jpg?1366405908"
-        = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/139/thumb/titan2.png?1366405939"
-        = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/140/thumb/titan4.jpg?1366405964"
+       - if @anime.gallery_images.count > 0
+        .large-12.columns.no-padding.side-block
+          %h5 SCREENCAPS
+          - @anime.gallery_images.each do |gallery_image|
+            = image_tag gallery_image.image.url(:thumb), alt: "#{@anime.canonical_title} Screencap"
 
       //quotes
       .large-12.columns.no-padding.side-block
