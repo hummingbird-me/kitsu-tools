@@ -6,6 +6,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
   }
+
   .series-tag {
     background-color: #ededed;
     border-color: #dbdbdb;
@@ -47,6 +48,10 @@
 
   .franchise-list {
     margin-bottom: 0px;
+    a.active {
+      color: lighten(#222, 50);
+      cursor: default;
+    }
   }
 
   // Center column Title
