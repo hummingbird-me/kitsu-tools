@@ -100,8 +100,20 @@
                 - if @anime.age_rating_guide
                   (#{@anime.age_rating_guide})
                 ·
-            %span 15 Episodes ·
-            %span 24 Min Each ·
+            / Episode count
+            %span 
+              - if @anime.episode_count and @anime.episode_count > 0
+                = @anime.episode_count
+              - else
+                ?
+              Episodes ·
+            / Episode length
+            %span 
+              - if @anime.episode_length and @anime.episode_length > 0
+                = @anime.episode_length
+              - else
+                ?
+              Min Each ·
             %span Airing Since June 2013
           %hr
         .large-12.columns
