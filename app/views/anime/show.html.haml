@@ -2,7 +2,7 @@
   .row
 
     // Left Column
-    .large-2.columns.no-padding
+    .large-2.columns.no-padding-right
       .quote-thumb
         = image_tag @anime.cover_image.url(:thumb)
       .series-rating
@@ -16,9 +16,10 @@
         %i.icon-star
         %i.icon-star-empty
         %i.icon-star-empty
+
       .large-12.columns.no-padding
-        %a.small.button.split.padded{:href => "#"}
-          Want to Watch
+        %a.small.button.split.padded.secondary{:href => "#"}
+          Currently Watching
           %span{"data-dropdown" => "drop1"}
         %ul#drop1.f-dropdown.watchlist-button{"data-dropdown-content" => ""}
           %li
@@ -38,41 +39,11 @@
           %li= link_to "Bakemonogatari", "#", :class => "active"
           %li= link_to "Nisemonogatari", "#"
           %li= link_to "Bakemonogatari (Manga)", "#"
-          
+
       .large-12.columns.no-padding.side-block
         = link_to (image_tag "jlist.png"), "http://anime.jlist.com/click/4785?url=http://www.jlist.com/search/all/attack_on_titan"
       .large-12.columns.no-padding.side-block
         = link_to (image_tag "amazon.png"), "http://www.amazon.com/s/?_encoding=UTF8&camp=1789&creative=390957&field-keywords=attack%20on%20titan&linkCode=ur2&rh=i%3Aaps%2Ck%3Aattack%20on%20titan&sprefix=attack%20%2Caps&tag=hummingbir0fe-20&url=search-alias%3Daps"
-
-      .large-12.columns.no-padding.side-block.face-grid
-        %h5 VIEWERS
-        .large-4.columns.face-grid-user.tip-top{"data-options" => "disable-for-touch:true", "data-selector" => "tooltip6225jlcjtt9", "data-tooltip" => "", :title => ""}
-          %a{:alt => "IcyFir3's avatar", :href => "/users/831-icyfir3"}
-            %img{:alt => "Ascw7sx", :src => "http://hummingbird.me/system/users/avatars/000/000/831/thumb_small/ascw7sx.jpg?1370298677"}/
-        .large-4.columns.face-grid-user.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "LordEnaster"}
-          %a{:alt => "LordEnaster's avatar", :href => "/users/3205-lordenaster"}
-            %img{:alt => "Setsuna-kamina", :src => "http://hummingbird.me/system/users/avatars/000/003/205/thumb_small/Setsuna-Kamina.jpg?1370301243"}/
-        .large-4.columns.face-grid-user.tip-top{"data-options" => "disable-for-touch:true", "data-selector" => "tooltipa0ao979zfr", "data-tooltip" => "", :title => ""}
-          %a{:alt => "FredMiles's avatar", :href => "/users/1441-fredmiles"}
-            %img{:alt => "Picture?1370299186", :src => "http://hummingbird.me/system/users/avatars/000/001/441/thumb_small/picture?1370299186"}/
-        .large-4.columns.face-grid-user.tip-top{"data-options" => "disable-for-touch:true", "data-selector" => "tooltipc1pvz9i19k9", "data-tooltip" => "", :title => ""}
-          %a{:alt => "Akkisblade's avatar", :href => "/users/1858-akkisblade"}
-            %img{:alt => "Picture?1370299780", :src => "http://hummingbird.me/system/users/avatars/000/001/858/thumb_small/picture?1370299780"}/
-        .large-4.columns.face-grid-user.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "Sodagod"}
-          %a{:alt => "Sodagod's avatar", :href => "/users/286-sodagod"}
-            %img{:alt => "Uimod_760px_389", :src => "http://hummingbird.me/system/users/avatars/000/000/286/thumb_small/uimod_760px_389.jpg?1370298145"}/
-        .large-4.columns.face-grid-user.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "aL1as"}
-          %a{:alt => "aL1as's avatar", :href => "/users/2497-al1as"}
-            %img{:alt => "Tumblr_m8npg7tbqt1r1uy0uo1_500", :src => "http://hummingbird.me/system/users/avatars/000/002/497/thumb_small/tumblr_m8npg7TBqT1r1uy0uo1_500.jpg?1370300446"}/
-        .large-4.columns.face-grid-user.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "dinoman411"}
-          %a{:alt => "dinoman411's avatar", :href => "/users/777-dinoman411"}
-            %img{:alt => "Tskune", :src => "http://hummingbird.me/system/users/avatars/000/000/777/thumb_small/Tskune.jpg?1370298602"}/
-        .large-4.columns.face-grid-user.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "sick2day"}
-          %a{:alt => "sick2day's avatar", :href => "/users/3590-sick2day"}
-            %img{:alt => "Hm1", :src => "http://hummingbird.me/system/users/avatars/000/003/590/thumb_small/HM1.jpg?1370301731"}/
-        .large-4.columns.face-grid-user.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "Teslanaut"}
-          %a{:alt => "Teslanaut's avatar", :href => "/users/3598-teslanaut"}
-            %img{:alt => "Avatar", :src => "http://hummingbird.me/system/users/avatars/000/003/598/thumb_small/Avatar.png?1370301735"}
 
       .large-12.columns.no-padding.side-block
         %h5 SIMILAR
@@ -176,6 +147,69 @@
           google_ad_width = 468;
           google_ad_height = 60;
         %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
+
+      .large-12.columns.panel.popular-reviews
+        .large-12.columns
+          %h4 Popular Reviews
+          %hr
+          .large-12.columns.no-padding
+            .large-1.columns.no-padding
+              = image_tag "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"
+            .large-11.columns
+              %h5 
+                Review by <a href="#">Josh</a> 
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star-empty
+                %i.icon-star-empty
+              %p Reviewing Attack on Titan, one of the most lauded films of the 21st century and also a favourite of mine, is a daunting task. Just how does one try to compress the infinite amounts of creativity this film bears into a short review and, perhaps more importantly, does it even need to be said anymore? With a position in the Top 250 of the recent Sight and Sound poll, despite being a recent animated film… <a href="#">Read Review</a>
+            %hr
+
+          .large-12.columns.no-padding
+            .large-1.columns.no-padding
+              = link_to (image_tag "http://hummingbird.me/system/users/avatars/000/000/956/thumb/tumblr_mip3faRBwQ1rediswo1_250.gif?1372022638"), "#"
+            .large-11.columns
+              %h5 
+                Review by <a href="#">Josh</a> 
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star-empty
+                %i.icon-star-empty
+                %i.icon-star-empty
+                %i.icon-star-empty
+              %p Reviewing Attack on Titan, one of the most lauded films of the 21st century and also a favourite of mine, is a daunting task. Just how does one try to compress the infinite amounts of creativity this film bears into a short review and, perhaps more importantly, does it even need to be said anymore? With a position in the Top 250 of the recent Sight and Sound poll, despite being a recent animated film… <a href="#">Read Review</a>
+            %hr
+          .large-12.columns.no-padding
+            .large-1.columns.no-padding
+              = link_to (image_tag "http://hummingbird.me/system/users/avatars/000/000/956/thumb/tumblr_mip3faRBwQ1rediswo1_250.gif?1372022638"), "#"
+            .large-11.columns
+              %h5 
+                Review by <a href="#">Josh</a> 
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star
+                %i.icon-star-empty
+                %i.icon-star-empty
+                %i.icon-star-empty
+                %i.icon-star-empty
+              %p Reviewing Attack on Titan, one of the most lauded films of the 21st century and also a favourite of mine, is a daunting task. Just how does one try to compress the infinite amounts of creativity this film bears into a short review and, perhaps more importantly, does it even need to be said anymore? With a position in the Top 250 of the recent Sight and Sound poll, despite being a recent animated film… <a href="#">Read Review</a>
+            %hr
+            %p.center <a href="#">Write a Review</a> or <a href="#">View All Reviews</a>
+
+
 
       .large-12.columns.option-bar.hide-for-small
         .small-6.large-2.columns
