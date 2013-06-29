@@ -135,14 +135,8 @@ class Anime < ActiveRecord::Base
     self.save
   end
 
-  def show_type
-    if title.include? "OVA" or (alt_title && alt_title.include?("OVA"))
-      "OVA"
-    elsif episode_count == 1
-      "Movie"
-    else
-      "TV"
-    end
+  def show_type_enum
+    ["OVA", "ONA", "Movie", "TV"]
   end
 
   before_save do

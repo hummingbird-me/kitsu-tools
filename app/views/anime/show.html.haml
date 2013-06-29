@@ -63,8 +63,15 @@
 
         .large-12.columns
           %p.series-meta-data 
-            %span TV Series ·
-            / Age Rating
+            / Show type
+            - if @anime.show_type
+              %span 
+                - if @anime.show_type == "TV"
+                  TV Series
+                - else
+                  = @anime.show_type
+                ·
+            / Age rating
             - if @anime.age_rating
               %span 
                 = @anime.age_rating
