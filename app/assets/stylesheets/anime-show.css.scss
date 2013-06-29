@@ -2,6 +2,17 @@
 .anime-show {
 
   // Global 
+
+  .quote-thumb {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    img {
+      @include border-radius(3px);
+    }
+  }
+  .series-rating {
+    margin-bottom: 10px;
+  }
   hr {
     margin-top: 10px;
     margin-bottom: 10px;
