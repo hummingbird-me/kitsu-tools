@@ -250,10 +250,8 @@
 
       //screns
       %h5 SCREENCAPS
-      = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/137/thumb/titan1.png?1366405880"
-      = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/138/thumb/titan3.jpg?1366405908"
-      = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/139/thumb/titan2.png?1366405939"
-      = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/140/thumb/titan4.jpg?1366405964"
+      - @anime.gallery_images.each do |gallery_image|
+        = image_tag gallery_image.image.url(:thumb), alt: "#{@anime.canonical_title} Screencap"
 
       //quotes
       %h5 Quotes
