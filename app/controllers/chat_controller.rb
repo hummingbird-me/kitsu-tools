@@ -19,7 +19,9 @@ class ChatController < ApplicationController
   # Update the current user's last seen time in Redis, and return a list of
   # online users.
   def ping
-    $redis.zadd("chat_last_seen", Time.now.to_i, current_user.id)
+    if current_user.id != 1
+      $redis.zadd("chat_last_seen", Time.now.to_i, current_user.id)
+    end
     
     @online_users = Rails.cache.fetch(:chat_online_users, :expires_in => 4.seconds) do
       user_ids = $redis.zrangebyscore("chat_last_seen", Time.now.to_i - 30, Time.now.to_i + 5)
