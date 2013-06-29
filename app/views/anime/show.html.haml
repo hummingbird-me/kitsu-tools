@@ -244,14 +244,15 @@
     // Right Column
     .large-3.columns
 
-      //trailer
-      %h5 TRAILER
-      <iframe width="100%" height="auto" src="http://www.youtube.com/embed/znvVz-V-4Oc?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+      - if @anime.youtube_video_id
+        %h5 TRAILER
+        .flex-video
+          %iframe(allowfullscreen frameborder=0 height="auto" width="100%"){:src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}"}
 
-      //screns
-      %h5 SCREENCAPS
-      - @anime.gallery_images.each do |gallery_image|
-        = image_tag gallery_image.image.url(:thumb), alt: "#{@anime.canonical_title} Screencap"
+      - if @anime.gallery_images.count > 0
+        %h5 SCREENCAPS
+        - @anime.gallery_images.each do |gallery_image|
+          = image_tag gallery_image.image.url(:thumb), alt: "#{@anime.canonical_title} Screencap"
 
       //quotes
       %h5 Quotes
