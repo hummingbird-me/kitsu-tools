@@ -4,7 +4,7 @@
     // Left Column
     .large-2.columns.no-padding
       .quote-thumb
-        = image_tag "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"
+        = image_tag @anime.cover_image.url(:thumb)
       .large-12.columns.no-padding
         %a.small.button.split.padded{:href => "#"}
           Want to Watch
@@ -55,8 +55,9 @@
     .large-7.columns.center-column
       .panel
         .large-12.columns
-          %h2.series-title Attack on Titan 
-          %span.series-alt-title (Shingeki No Kyojin) 
+          %h2.series-title= title @anime.canonical_title(current_user)
+          - if (alt = @anime.alternate_title(current_user)) and alt.strip.length > 0
+            %span.series-alt-title (#{alt}) 
           %span.air-date 
 
         .large-12.columns
