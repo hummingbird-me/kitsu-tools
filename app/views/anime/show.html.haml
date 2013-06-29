@@ -1,30 +1,79 @@
-.anime-discover.anime-show
+.anime-discover.anime-show.quote-page
   .row
-    / Main Content Section
-    / This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens
-    .large-8.columns
-      .panel.anime-details.cards.cf
-        .details-left
-          = render partial: "card", locals: {data: [@anime, @watchlist]} 
-        .details-right.large-8.columns
-          %h3= title(@anime.canonical_title(current_user))
 
-          .small-summary 
-            %span #{pluralize @anime.episode_count, 'episode'} / #{@anime.episode_length} min. each  ||
-            %span.has-tip{:"data-width" => 200, :title => @anime.age_rating_guide}
-              = @anime.age_rating
-            - if @anime.alternate_title(current_user) and @anime.alternate_title(current_user).length > 0
-              %span (Also known as <strong>#{@anime.alternate_title(current_user)}</strong>)
+    // Left Column
+    .large-2.columns.no-padding
+      .quote-thumb
+        = image_tag "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"
+      .large-12.columns.no-padding
+        %a.small.button.split.padded{:href => "#"}
+          Want to Watch
+          %span{"data-dropdown" => "drop1"}
+        %ul#drop1.f-dropdown.watchlist-button{"data-dropdown-content" => ""}
+          %li
+            %a{:href => "#"} Currently Watching
+          %li
+            %a{:href => "#"} Completed
+          %li
+            %a{:href => "#"} On Hold
+          %li
+            %a{:href => "#"} Dropped
+          %li
+            %a{:href => "#"} Remove 
+      .large-12.columns.no-padding.face-grid
+        %h5 CURRENT VIEWERS
+        .large-4.columns.face-grid-user.tip-right{"data-options" => "disable-for-touch:true", "data-selector" => "tooltip6225jlcjtt9", "data-tooltip" => "", :title => ""}
+          %a{:alt => "IcyFir3's avatar", :href => "/users/831-icyfir3"}
+            %img{:alt => "Ascw7sx", :src => "http://hummingbird.me/system/users/avatars/000/000/831/thumb_small/ascw7sx.jpg?1370298677"}/
+        .large-4.columns.face-grid-user.tip-right{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "LordEnaster"}
+          %a{:alt => "LordEnaster's avatar", :href => "/users/3205-lordenaster"}
+            %img{:alt => "Setsuna-kamina", :src => "http://hummingbird.me/system/users/avatars/000/003/205/thumb_small/Setsuna-Kamina.jpg?1370301243"}/
+        .large-4.columns.face-grid-user.tip-right{"data-options" => "disable-for-touch:true", "data-selector" => "tooltipa0ao979zfr", "data-tooltip" => "", :title => ""}
+          %a{:alt => "FredMiles's avatar", :href => "/users/1441-fredmiles"}
+            %img{:alt => "Picture?1370299186", :src => "http://hummingbird.me/system/users/avatars/000/001/441/thumb_small/picture?1370299186"}/
+        .large-4.columns.face-grid-user.tip-right{"data-options" => "disable-for-touch:true", "data-selector" => "tooltipc1pvz9i19k9", "data-tooltip" => "", :title => ""}
+          %a{:alt => "Akkisblade's avatar", :href => "/users/1858-akkisblade"}
+            %img{:alt => "Picture?1370299780", :src => "http://hummingbird.me/system/users/avatars/000/001/858/thumb_small/picture?1370299780"}/
+        .large-4.columns.face-grid-user.tip-right{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "Sodagod"}
+          %a{:alt => "Sodagod's avatar", :href => "/users/286-sodagod"}
+            %img{:alt => "Uimod_760px_389", :src => "http://hummingbird.me/system/users/avatars/000/000/286/thumb_small/uimod_760px_389.jpg?1370298145"}/
+        .large-4.columns.face-grid-user.tip-right{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "aL1as"}
+          %a{:alt => "aL1as's avatar", :href => "/users/2497-al1as"}
+            %img{:alt => "Tumblr_m8npg7tbqt1r1uy0uo1_500", :src => "http://hummingbird.me/system/users/avatars/000/002/497/thumb_small/tumblr_m8npg7TBqT1r1uy0uo1_500.jpg?1370300446"}/
+        .large-4.columns.face-grid-user.tip-right{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "dinoman411"}
+          %a{:alt => "dinoman411's avatar", :href => "/users/777-dinoman411"}
+            %img{:alt => "Tskune", :src => "http://hummingbird.me/system/users/avatars/000/000/777/thumb_small/Tskune.jpg?1370298602"}/
+        .large-4.columns.face-grid-user.tip-right{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "sick2day"}
+          %a{:alt => "sick2day's avatar", :href => "/users/3590-sick2day"}
+            %img{:alt => "Hm1", :src => "http://hummingbird.me/system/users/avatars/000/003/590/thumb_small/HM1.jpg?1370301731"}/
+        .large-4.columns.face-grid-user.tip-right{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "Teslanaut"}
+          %a{:alt => "Teslanaut's avatar", :href => "/users/3598-teslanaut"}
+            %img{:alt => "Avatar", :src => "http://hummingbird.me/system/users/avatars/000/003/598/thumb_small/Avatar.png?1370301735"}/
 
-          .producers
-            %p 
-            Producers: 
-            = @producers.map {|x| link_to(x.name, x) }.join(", ").html_safe
 
+    // Center Column
+    .large-7.columns.center-column
+      .panel
+        .large-12.columns
+          %h2.series-title Attack on Titan 
+          %span.series-alt-title (Shingeki No Kyojin) 
+          %span.air-date 
+
+        .large-12.columns
+          %p.series-meta-data 
+            %span TV Series ·
+            %span R17+ ·
+            %span 15 Episodes ·
+            %span 24 Min Each ·
+            %span Airing Since June 2013
+          %hr
+        .large-12.columns
           .genres
-            %p 
-            Genres:
-            = @genres.map {|x| link_to(x.name, x) }.join(", ").html_safe
+            %a.series-tag{:href => "#"} Action
+            %a.series-tag{:href => "#"} Drama
+            %a.series-tag{:href => "#"} Fantasy
+            %a.series-tag{:href => "#"} Super Power
+          %p.series-description Several hundred years ago, humans were nearly exterminated by giants. Giants are typically several stories tall, seem to have no intelligence, devour human beings and, worst of all, seem to do it for the pleasure rather than as a food source. A small percentage of humanity survived by walling themselves in a city protected by extremely high walls, even taller than the biggest of giants. Flash forward to the present and the city has not seen a giant ... <a href="#">[read more]</a>
 
           .social-links
             %ul.inline-list
@@ -34,220 +83,452 @@
                 %a.twitter-share-button{"data-via" => "Hummingbird_me", :href => "https://twitter.com/share"} Tweet
               %li
                 .g-plusone{"data-size" => "medium"}
+          %hr
+
+        // Cast
+        .large-12.columns
+          %h4 CAST
+
+          // Hide me if only one language!!!
+          %dl.sub-nav.language-select
+            %dt Language:
+            %dd.active
+              %a{:href => "#"} Japanese
+            %dd
+              %a{:href => "#"} English
+            %dd
+              %a{:href => "#"} Italian
+            %dd
+              %a{:href => "#"} French
+
+          %ul.cast
+            %li.actor
+              %a.character{:href => "#"}
+                %img{:alt => "Marco Bodt - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/508/thumb/181983.jpg?1364999600", :width => "30"}
+                Marco Bodt
+              %span.va
+                %a.voice-actor{:href => "#"}
+                  Ryota Ohsaka
+                  %img{:alt => "Ryota Ohsaka - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/008/141/thumb/17573.jpg?1364654698", :width => "30"}
+
+            %li.actor
+              %a.character{:href => "#"}
+                %img{:alt => "Eren Yaeger - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/507/thumb/172585.jpg?1364999599", :width => "30"}
+                Eren Yaeger
+              %span.va
+                %a.voice-actor{:href => "#"}
+                  Yuki Kaji
+                  %img{:alt => "Yuki Kaji - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/006/097/thumb/14609.jpg?1364651708", :width => "30"}
+
+            %li.actor
+              %a.character{:href => "http://filmaster.com/person/helena-bonham-carter-ii/"}
+                %img{:alt => "Armin Arelet - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/506/thumb/181747.jpg?1364999598", :width => "30"}
+                Armin Arelet
+              %span.va
+                %a.voice-actor{:href => "#"}
+                  Marina Inoue
+                  %img{:alt => "Marin Inoue - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/001/550/thumb/12688.jpg?1364645450", :width => "30"}
+
+            %li.actor
+              %a.character{:href => "#"}
+                %img{:alt => "Mikase Ackerman - Attack on Titan", :src => "http://hummingbird.me/system/characters/images/000/038/505/thumb/125829.jpg?1364999597", :width => "30"}
+                Mikasa Ackerman
+              %span.va
+                %a.voice-actor{:href => "#"}
+                  Yui Ishikawa
+                  %img{:alt => "Yui Ishikawa - Voice Actor", :src => "http://hummingbird.me/system/people/images/000/006/487/thumb/6526.jpg?1364652190", :width => "30"}
+            %li.show-more
+              %a{:href => "#"} Show all actors +
+            %hr
             
-          .synopsis
-            %strong Status: #{@anime.status}
-            %p #{@anime.synopsis}
-
-      - if can? :update, @anime
-        .panel.moderation-tools
-          %header 
-            .large-11.columns
-              Moderation Tools
-
-          .moderation-form
-            = form_for @anime do |f|
-              .row
-                / Episode Count and Length
-                .large-3.columns
-                  = f.label :episode_count, class: 'inline'
-                .large-9.columns
-                  = f.number_field :episode_count
-                .large-3.columns
-                  = f.label :episode_length, class: 'inline'
-                .large-9.columns
-                  = f.number_field :episode_length
-                / TheTVDB Series and Season IDs
-                .large-3.columns
-                  = f.label :thetvdb_series_id, "TheTVDB Series ID", class: 'inline'
-                .large-9.columns
-                  = f.number_field :thetvdb_series_id
-                .large-3.columns
-                  = f.label :thetvdb_season_id, "TheTVDB Season ID", class: 'inline'
-                .large-9.columns
-                  = f.number_field :thetvdb_season_id
-                / MAL ID
-                .large-3.columns
-                  = f.label :mal_id, "MAL ID", class: 'inline'
-                .large-9.columns
-                  = f.number_field :mal_id
-                / English canonical
-                .large-3.columns
-                  = f.label :english_canonical, "English Title Canonical?", class: 'inline'
-                .large-9.columns
-                  = f.check_box :english_canonical
-
-                .large-12.columns
-                  = f.submit class: 'button padded'
-            
-            = link_to "Get Episodes from TheTVDB", anime_get_episodes_from_thetvdb_path(@anime), class: 'button', method: :post
-            = link_to "Get Metadata from MAL", anime_get_metadata_from_mal_path(@anime), class: 'button', method: :post
-
-
-      .panel.community-rating
-        .upper.large-12.columns
-          .decoration.large-3.columns.hide-for-small
-            %p.left <i></i>
-
-          - if @anime.wilson_ci
-            .large-6.columns 
-              %h6 Community Rating
-              %p{:class => @anime.wilson_ci >= 0.5 ? "percentage-positive" : "percentage-negative"}
-                %i
-                #{(@anime.wilson_ci*100).to_i}%
-              %p.based-on Based on #{number_with_delimiter @anime.user_count} Ratings
-
-          .decoration.large-3.columns.hide-for-small
-            %p.right <i></i>
-        .lower.large-12.columns
-          .positive-review.large-6.columns
-            %h6 Top Rated <span>Positive</span> Review
-
-            - if @top_reviews[:positive]
-              %p
-                = @top_reviews[:positive].summary || truncate(strip_tags(@top_reviews[:positive].content), length: 300, omission: '...')
-                = link_to "read more", anime_review_path(@anime, @top_reviews[:positive])
-              %span.user
-                = image_tag @top_reviews[:positive].user.avatar.url(:thumb)
-                = link_to @top_reviews[:positive].user.name, @top_reviews[:positive].user
-            - else
-              .no-reviews.large-9.columns.large-centered
-                = image_tag "http://cl.ly/image/3u2X0t1B0E11/no-positive-reviews@2x.jpg"
-                %p 
-                  No positive reviews.
-                  %br
-                  = link_to new_anime_review_path(@anime) do
-                    Write the first!
-
-          .negative-review.large-6.columns
-            %h6 Top Rated <span>Negative</span> Review
-
-            - if @top_reviews[:negative]
-              %p
-                = @top_reviews[:negative].summary || truncate(strip_tags(@top_reviews[:negative].content), length: 300, omission: '...')
-                = link_to "read more", anime_review_path(@anime, @top_reviews[:negative])
-              %span.user
-                = image_tag @top_reviews[:negative].user.avatar.url(:thumb)
-                = link_to @top_reviews[:negative].user.name, @top_reviews[:negative].user
-            - else
-              .no-reviews.large-9.columns.large-centered
-                = image_tag "http://cl.ly/image/0T2u2t2J0Z35/no-negative-reviews@2x.jpg"
-                %p 
-                  No negative reviews.
-                  %br
-                  = link_to new_anime_review_path(@anime) do
-                    Write the first!
-                
-        .footer.large-12.columns
-          = link_to "view all reviews", anime_reviews_path(@anime)
-
-      .panel.episode-tracker
-        %header 
-          .large-11.columns
-            #{@anime.canonical_title(current_user)} Episodes
-          / .large-1.columns
-          /   = link_to "edit", "#"
-
-        = render partial: "episodes/list_four", locals: {episodes: @episodes, anime: @anime}
-
-      .panel.voice-actors
-        %header 
-          .large-11.columns
-            #{@anime.canonical_title(current_user)} Voice Actors
-          / .large-1.columns
-          /   = link_to "edit", "#"
-
-        .section-container.auto(data-section)
-          - @languages.each do |language|
-            %section
-              %p.title(data-section-title)
-                %a{:href => "##{language}"}= language
-              .content
-                - @castings.select {|x| x.role == language }.each do |casting|
-                  .actor-row.large-12.columns(data-section-content)
-                    .character.large-5.columns
-                      .headshot.large-2.columns
-                        = image_tag casting.character.image.url(:thumb)
-                      .name.large-10.columns
-                        %p= link_to casting.character.name, "#"
-                    .divider.large-2.columns
-                      %hr
-                    .actor.large-5.columns
-                      .name.large-10.columns
-                        %p= link_to casting.person.name, "#"
-                      .headshot.large-2.columns
-                        = image_tag casting.person.image.url(:thumb)
-                    
-        %footer.large-12.columns
-          %p= link_to "view complete cast", "#"
-
-    / Nav Sidebar
-    .large-4.columns
-      - if @anime.youtube_video_id
-        .trailer
-          .flex-video
-            %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}", :width => "420"}
-      .large-12.columns.sidebar-ad
+      .large-12.columns.ad-zone.center
         :javascript
           google_ad_client = "ca-pub-3410319844519574";
-          /* Anime Page Sidebar */
-          google_ad_slot = "9999756849";
-          google_ad_width = 300;
-          google_ad_height = 250;
-          
+          /* Anime Page - Center Column */
+          google_ad_slot = "4664352842";
+          google_ad_width = 468;
+          google_ad_height = 60;
         %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
 
-      = render "mini_gallery"
+      .large-12.columns.option-bar.hide-for-small
+        .small-6.large-2.columns
+          %p.option-title Activity Feed
+        .small-12.large-9.columns.options
+          %ul.status-tabs.inline-list
+            %li#tab-all.active
+              %a{:href => "#all", :onclick => "showRelevantSections('all')"} All
+            %li
+              %a{:href => "#comments", :onclick => "showRelevantSections('comments')"} Comments
+            %li
+              %a{:href => "#library", :onclick => "showRelevantSections('library')"} Library
+            %li
+              %a{:href => "#events", :onclick => "showRelevantSections('events')"} Events
 
-      .quotes.large-12.columns
-        %h5 #{@anime.canonical_title(current_user)} Quotes
+      .large-12.columns.feed.no-padding
+        .large-12.columns.feed-form
+          %form.comment
+            .posting-indicator
+              %i.icon-spin.icon-spinner
+            %input.comment{:autocomplete => "off", :name => "comment", :placeholder => "Write something...", :type => "text"}/
+        %ul.feed-list.activity-feed/
+        %div
+          %div
+            %li.feed-item.cf
+              .large-12.columns.feed-wrapper
+                .small-3.large-2.columns.no-padding-right
+                  %a{:href => "/users/2-josh"}
+                    %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/956/thumb/tumblr_mip3faRBwQ1rediswo1_250.gif?1372022638"}/
+                .small-9.large-10.columns
+                  %h4.anime-feed-title
+                    %a{:href => "/users/2-josh"} Clara
+                    commented on
+                    %a{:href => "#"} Attack on Titan
+                  %hr.feed-divider
+                    .large-12.columns.no-padding-left
+                      %p.wall-post-copy Can't wait until the next episode! <3
+                      %p.time
+                        %span.time-ago
+                          22 minutes ago
+          %div
+            %li.feed-item.cf
+              .large-12.columns.feed-wrapper
+                .small-3.large-2.columns.no-padding-right
+                  %a{:href => "/users/2-josh"}
+                    %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
+                .small-9.large-10.columns
+                  %h4.anime-feed-title
+                    %a{:href => "/users/2-josh"} Josh
+                    commented on
+                    %a{:href => "#"} Attack on Titan
+                  %hr.feed-divider
+                    .large-12.columns.no-padding-left
+                      %p.wall-post-copy I couldn't hold out any longer. I read the manga...
+                      %p.time
+                        %span.time-ago
+                          22 minutes ago
+          %div
+            %li.feed-item.cf
+              .large-12.columns.feed-wrapper
+                .small-3.large-2.columns.no-padding-right
+                  %a{:href => "/users/2-josh"}
+                    %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
+                .small-9.large-10.columns
+                  %h4.anime-feed-title
+                    %a{:href => "/users/2-josh"} Josh
+                    commented on
+                    %a{:href => "#"} Attack on Titan
+                  %hr.feed-divider
+                    .large-12.columns.no-padding-left
+                      %p.wall-post-copy I couldn't hold out any longer. I read the manga...
+                      %p.time
+                        %span.time-ago
+                          22 minutes ago          
+          %div
+            %li.feed-item.cf
+              .large-12.columns.feed-wrapper
+                .small-3.large-2.columns.no-padding-right
+                  %a{:href => "/users/2-josh"}
+                    %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
+                .small-9.large-10.columns
+                  %h4.anime-feed-title
+                    %a{:href => "/users/2-josh"} Josh
+                    commented on
+                    %a{:href => "#"} Attack on Titan
+                  %hr.feed-divider
+                    .large-12.columns.no-padding-left
+                      %p.wall-post-copy I couldn't hold out any longer. I read the manga...
+                      %p.time
+                        %span.time-ago
+                          22 minutes ago
 
-        - @quotes.each do |quote|
-          %blockquote
-            = quote.content
-            —
-            = quote.character_name
-        %p
-          = link_to "[Show all]", anime_quotes_url(@anime)
-          %a{"data-reveal-id" => "quoteModal", :href => "#"} [Submit quote]
+
+    // Right Column
+    .large-3.columns
+
+      //trailer
+      %h5 TRAILER
+      <iframe width="100%" height="auto" src="http://www.youtube.com/embed/znvVz-V-4Oc?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+
+      //screns
+      %h5 SCREENCAPS
+      = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/137/thumb/titan1.png?1366405880"
+      = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/138/thumb/titan3.jpg?1366405908"
+      = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/139/thumb/titan2.png?1366405939"
+      = image_tag "http://hummingbird.me/system/gallery_images/images/000/003/140/thumb/titan4.jpg?1366405964"
+
+      //quotes
+      %h5 Quotes
+      %blockquote
+        Only the victors are allowed to live. This world is merciless like that.
+        —
+        Mikasa Ackerman
+      %blockquote
+        If you think it's natural for people to sacrifice their own lives to save others, surely you understand that sometimes a single death can save many lives.
+        —
+        Mikasa Ackerman
+      %blockquote
+        The strong feed upon weak. It's such an obligingly simple rule. Except in this world, my friends tried to be strong.
+        —
+        Armin Arelet
+      %blockquote
+        I want to see and understand the world outside. i don't want to die inside these walls without knowing what's out there!
+        —
+        Eren Jaeger
+      %p
+        %a{:href => "http://hummingbird.me/anime/attack-on-titan/quotes"} [Show all]
+        %a{"data-reveal-id" => "quoteModal", :href => "#"} [Submit quote]
+
+
+/ .anime-discover.anime-show
+/   .row
+/     / Main Content Section
+/     / This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens
+/     .large-8.columns
+/       .panel.anime-details.cards.cf
+/         .details-left
+/           = render partial: "card", locals: {data: [@anime, @watchlist]} 
+/         .details-right.large-8.columns
+/           %h3= title(@anime.canonical_title(current_user))
+
+/           .small-summary 
+/             %span #{pluralize @anime.episode_count, 'episode'} / #{@anime.episode_length} min. each  ||
+/             %span.has-tip{:"data-width" => 200, :title => @anime.age_rating_guide}
+/               = @anime.age_rating
+/             - if @anime.alternate_title(current_user) and @anime.alternate_title(current_user).length > 0
+/               %span (Also known as <strong>#{@anime.alternate_title(current_user)}</strong>)
+
+/           .producers
+/             %p 
+/             Producers: 
+/             = @producers.map {|x| link_to(x.name, x) }.join(", ").html_safe
+
+/           .genres
+/             %p 
+/             Genres:
+/             = @genres.map {|x| link_to(x.name, x) }.join(", ").html_safe
+
+/           .social-links
+/             %ul.inline-list
+/               %li
+/                 .fb-like{"data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "50"}
+/               %li{:style => "background: none; width: 78px;"}
+/                 %a.twitter-share-button{"data-via" => "Hummingbird_me", :href => "https://twitter.com/share"} Tweet
+/               %li
+/                 .g-plusone{"data-size" => "medium"}
+            
+/           .synopsis
+/             %strong Status: #{@anime.status}
+/             %p #{@anime.synopsis}
+
+/       - if can? :update, @anime
+/         .panel.moderation-tools
+/           %header 
+/             .large-11.columns
+/               Moderation Tools
+
+/           .moderation-form
+/             = form_for @anime do |f|
+/               .row
+/                 / Episode Count and Length
+/                 .large-3.columns
+/                   = f.label :episode_count, class: 'inline'
+/                 .large-9.columns
+/                   = f.number_field :episode_count
+/                 .large-3.columns
+/                   = f.label :episode_length, class: 'inline'
+/                 .large-9.columns
+/                   = f.number_field :episode_length
+/                 / TheTVDB Series and Season IDs
+/                 .large-3.columns
+/                   = f.label :thetvdb_series_id, "TheTVDB Series ID", class: 'inline'
+/                 .large-9.columns
+/                   = f.number_field :thetvdb_series_id
+/                 .large-3.columns
+/                   = f.label :thetvdb_season_id, "TheTVDB Season ID", class: 'inline'
+/                 .large-9.columns
+/                   = f.number_field :thetvdb_season_id
+/                 / MAL ID
+/                 .large-3.columns
+/                   = f.label :mal_id, "MAL ID", class: 'inline'
+/                 .large-9.columns
+/                   = f.number_field :mal_id
+/                 / English canonical
+/                 .large-3.columns
+/                   = f.label :english_canonical, "English Title Canonical?", class: 'inline'
+/                 .large-9.columns
+/                   = f.check_box :english_canonical
+
+/                 .large-12.columns
+/                   = f.submit class: 'button padded'
+            
+/             = link_to "Get Episodes from TheTVDB", anime_get_episodes_from_thetvdb_path(@anime), class: 'button', method: :post
+/             = link_to "Get Metadata from MAL", anime_get_metadata_from_mal_path(@anime), class: 'button', method: :post
+
+
+/       .panel.community-rating
+/         .upper.large-12.columns
+/           .decoration.large-3.columns.hide-for-small
+/             %p.left <i></i>
+
+/           - if @anime.wilson_ci
+/             .large-6.columns 
+/               %h6 Community Rating
+/               %p{:class => @anime.wilson_ci >= 0.5 ? "percentage-positive" : "percentage-negative"}
+/                 %i
+/                 #{(@anime.wilson_ci*100).to_i}%
+/               %p.based-on Based on #{number_with_delimiter @anime.user_count} Ratings
+
+/           .decoration.large-3.columns.hide-for-small
+/             %p.right <i></i>
+/         .lower.large-12.columns
+/           .positive-review.large-6.columns
+/             %h6 Top Rated <span>Positive</span> Review
+
+/             - if @top_reviews[:positive]
+/               %p
+/                 = @top_reviews[:positive].summary || truncate(strip_tags(@top_reviews[:positive].content), length: 300, omission: '...')
+/                 = link_to "read more", anime_review_path(@anime, @top_reviews[:positive])
+/               %span.user
+/                 = image_tag @top_reviews[:positive].user.avatar.url(:thumb)
+/                 = link_to @top_reviews[:positive].user.name, @top_reviews[:positive].user
+/             - else
+/               .no-reviews.large-9.columns.large-centered
+/                 = image_tag "http://cl.ly/image/3u2X0t1B0E11/no-positive-reviews@2x.jpg"
+/                 %p 
+/                   No positive reviews.
+/                   %br
+/                   = link_to new_anime_review_path(@anime) do
+/                     Write the first!
+
+/           .negative-review.large-6.columns
+/             %h6 Top Rated <span>Negative</span> Review
+
+/             - if @top_reviews[:negative]
+/               %p
+/                 = @top_reviews[:negative].summary || truncate(strip_tags(@top_reviews[:negative].content), length: 300, omission: '...')
+/                 = link_to "read more", anime_review_path(@anime, @top_reviews[:negative])
+/               %span.user
+/                 = image_tag @top_reviews[:negative].user.avatar.url(:thumb)
+/                 = link_to @top_reviews[:negative].user.name, @top_reviews[:negative].user
+/             - else
+/               .no-reviews.large-9.columns.large-centered
+/                 = image_tag "http://cl.ly/image/0T2u2t2J0Z35/no-negative-reviews@2x.jpg"
+/                 %p 
+/                   No negative reviews.
+/                   %br
+/                   = link_to new_anime_review_path(@anime) do
+/                     Write the first!
+                
+/         .footer.large-12.columns
+/           = link_to "view all reviews", anime_reviews_path(@anime)
+
+/       .panel.episode-tracker
+/         %header 
+/           .large-11.columns
+/             #{@anime.canonical_title(current_user)} Episodes
+/           / .large-1.columns
+/           /   = link_to "edit", "#"
+
+/         = render partial: "episodes/list_four", locals: {episodes: @episodes, anime: @anime}
+
+/       .panel.voice-actors
+/         %header 
+/           .large-11.columns
+/             #{@anime.canonical_title(current_user)} Voice Actors
+/           / .large-1.columns
+/           /   = link_to "edit", "#"
+
+/         .section-container.auto(data-section)
+/           - @languages.each do |language|
+/             %section
+/               %p.title(data-section-title)
+/                 %a{:href => "##{language}"}= language
+/               .content
+/                 - @castings.select {|x| x.role == language }.each do |casting|
+/                   .actor-row.large-12.columns(data-section-content)
+/                     .character.large-5.columns
+/                       .headshot.large-2.columns
+/                         = image_tag casting.character.image.url(:thumb)
+/                       .name.large-10.columns
+/                         %p= link_to casting.character.name, "#"
+/                     .divider.large-2.columns
+/                       %hr
+/                     .actor.large-5.columns
+/                       .name.large-10.columns
+/                         %p= link_to casting.person.name, "#"
+/                       .headshot.large-2.columns
+/                         = image_tag casting.person.image.url(:thumb)
+                    
+/         %footer.large-12.columns
+/           %p= link_to "view complete cast", "#"
+
+/     / Nav Sidebar
+/     .large-4.columns
+/       - if @anime.youtube_video_id
+/         .trailer
+/           .flex-video
+/             %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}", :width => "420"}
+/       .large-12.columns.sidebar-ad
+/         :javascript
+/           google_ad_client = "ca-pub-3410319844519574";
+/           /* Anime Page Sidebar */
+/           google_ad_slot = "9999756849";
+/           google_ad_width = 300;
+/           google_ad_height = 250;
+          
+/         %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
+
+/       = render "mini_gallery"
+
+/       .quotes.large-12.columns
+/         %h5 #{@anime.canonical_title(current_user)} Quotes
+
+/         - @quotes.each do |quote|
+/           %blockquote
+/             = quote.content
+/             —
+/             = quote.character_name
+/         %p
+/           = link_to "[Show all]", anime_quotes_url(@anime)
+/           %a{"data-reveal-id" => "quoteModal", :href => "#"} [Submit quote]
 
 
 
-    - if user_signed_in? and current_user.admin?
-      .similar-anime.large-12.columns.hide-for-small
-        %header
-          .large-4.columns
-            %hr
-          .large-4.columns
-            %h3 Similar Anime
-          .large-4.columns
-            %hr
-          .row
-            .recommended.large-6.columns
-              .panel.large-12.columns
-                .large-4.columns
-                  = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
-                .large-8.columns.end
-                  %p.title Accel World
-                  %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual...
+/     - if user_signed_in? and current_user.admin?
+/       .similar-anime.large-12.columns.hide-for-small
+/         %header
+/           .large-4.columns
+/             %hr
+/           .large-4.columns
+/             %h3 Similar Anime
+/           .large-4.columns
+/             %hr
+/           .row
+/             .recommended.large-6.columns
+/               .panel.large-12.columns
+/                 .large-4.columns
+/                   = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
+/                 .large-8.columns.end
+/                   %p.title Accel World
+/                   %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual...
 
-                  .rating.negative.large-4.columns
-                    54%
+/                   .rating.negative.large-4.columns
+/                     54%
 
-            .recommended.large-6.columns
-              .panel.large-12.columns
-                .large-4.columns
-                  = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
-                .large-8.columns.end
-                  %p.title Accel World
-                  %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual...
+/             .recommended.large-6.columns
+/               .panel.large-12.columns
+/                 .large-4.columns
+/                   = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
+/                 .large-8.columns.end
+/                   %p.title Accel World
+/                   %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual...
 
-                  .rating.positive.large-4.columns
-                    72%
+/                   .rating.positive.large-4.columns
+/                     72%
 
-// Quote Modal
-#quoteModal.reveal-modal{:class => "medium"}
-  = render "quotes/new"
+/ // Quote Modal
+/ #quoteModal.reveal-modal{:class => "medium"}
+/   = render "quotes/new"
 
-- if user_signed_in?
-  = render partial: "watchlists/form_modal", locals: {watchlist: @watchlist || Watchlist.new(user: current_user, anime: @anime)}
+/ - if user_signed_in?
+/   = render partial: "watchlists/form_modal", locals: {watchlist: @watchlist || Watchlist.new(user: current_user, anime: @anime)}
