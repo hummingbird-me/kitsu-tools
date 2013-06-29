@@ -237,7 +237,6 @@
 
     // Right Column
     .large-3.columns
-    
       //trailer
       - if @anime.youtube_video_id
         .large-12.columns.no-padding.side-block
@@ -246,7 +245,7 @@
             %iframe(allowfullscreen frameborder=0 height="auto" width="100%"){:src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}"}
 
       //screns
-       - if @anime.gallery_images.count > 0
+      - if @anime.gallery_images.count > 0
         .large-12.columns.no-padding.side-block
           %h5 SCREENCAPS
           - @anime.gallery_images.each do |gallery_image|
