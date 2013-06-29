@@ -25,7 +25,6 @@
     border-style: solid;
     border-width: 1px;
     margin: 0;
-    font-family: "Consolas", "Menlo", "Courier", monospace;
     font-size: 0.9375em;
     padding: 0.125em 0.25em 0em;
     -webkit-border-radius: 3px;
@@ -41,11 +40,6 @@
     margin-bottom: 10px;
     h5 {
       margin-bottom: 0px;
-    }
-  }
-  .face-grid {
-    img {
-      width: 60px;
     }
   }
 
@@ -144,6 +138,16 @@
       margin-top: 11px;
       white-space: nowrap;
       content: ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . ";
+    }
+  }
+
+  .popular-reviews {
+    h5 {
+      margin-top: 0px;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
     }
   }
   .show-more {
