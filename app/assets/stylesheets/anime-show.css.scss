@@ -10,6 +10,13 @@
       @include border-radius(3px);
     }
   }
+  .status-button {
+    li {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 16px;
+    }
+  }
   .series-rating {
     margin-bottom: 10px;
   }
@@ -25,14 +32,12 @@
     border-style: solid;
     border-width: 1px;
     margin: 0;
-    font-size: 0.9375em;
-    padding: 0.125em 0.25em 0em;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
+    font-size: 14px;
+    padding: 3px 6px;
+    @include border-radius(3px);
     &:hover {
-      background-color: #fd864b; 
-      border-color: darken(#fd864b, 10);
-      color: #fff;
+      background-color: darken(#ededed, 5); 
+      border-color: darken(#ededed, 10);
     }
   }
 
@@ -141,22 +146,39 @@
     }
   }
 
+  .review-left-wrapper {
+    margin-bottom: 10px;
+    border-right: 1px solid #eee;
+  }
+
+  .read-review {
+    font-size: 15px;
+  }
+
   .popular-reviews {
+    h4 {
+      margin-top: 10px;
+    }
     h5 {
       margin-top: 0px;
     }
     p {
       font-size: 16px;
-      margin-bottom: 10px;
+      margin-bottom: 0px;
     }
   }
+
+  .reviews-footer {
+    margin-bottom: 10px !important; 
+  }
+
   .show-more {
     margin-top: 10px;
   }
 
   // Ad zone
   .ad-zone {
-    padding-top: 10px;
+    padding-top: 13px;
     padding-bottom: 10px;
   }
 }

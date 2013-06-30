@@ -1,3 +1,4 @@
+
 .anime-discover.anime-show.quote-page
   .row
 
@@ -5,33 +6,30 @@
     .large-2.columns.no-padding-right
       .quote-thumb
         = image_tag @anime.cover_image.url(:thumb)
-      .series-rating
-        %i.icon-star
-        %i.icon-star
-        %i.icon-star
-        %i.icon-star
-        %i.icon-star
-        %i.icon-star
-        %i.icon-star
-        %i.icon-star
-        %i.icon-star-empty
-        %i.icon-star-empty
+      / .series-rating
+      /   %i.icon-star
+      /   %i.icon-star
+      /   %i.icon-star
+      /   %i.icon-star-empty
+      /   %i.icon-star-empty
 
       .large-12.columns.no-padding
-        %a.small.button.split.padded.secondary{:href => "#"}
-          Currently Watching
-          %span{"data-dropdown" => "drop1"}
-        %ul#drop1.f-dropdown.watchlist-button{"data-dropdown-content" => ""}
+        %a.button.radius.padded{"data-dropdown" => "drop1", :href => "#"} Add to Watchlist
+
+        %ul#drop1.f-dropdown.status-button{"data-dropdown-content" => ""}
+          %li
+            %a{:href => "#"} Plan to Watch
           %li
             %a{:href => "#"} Currently Watching
           %li
-            %a{:href => "#"} Completed
+            %a{:href => "#"} Complete
           %li
             %a{:href => "#"} On Hold
           %li
             %a{:href => "#"} Dropped
-          %li
-            %a{:href => "#"} Remove 
+
+
+
 
       .large-12.columns.no-padding.side-block
         %h5 FRANCHISE
@@ -157,64 +155,61 @@
 
       .large-12.columns.panel.popular-reviews
         .large-12.columns
-          %h4 Popular Reviews
+          %h4 Trending Reviews
           %hr
           .large-12.columns.no-padding
-            .large-1.columns.no-padding
+            .large-1.columns.no-padding.center
               = image_tag "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"
-            .large-11.columns
-              %h5 
-                Review by <a href="#">Josh</a> 
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star-empty
-                %i.icon-star-empty
-              %p Reviewing Attack on Titan, one of the most lauded films of the 21st century and also a favourite of mine, is a daunting task. Just how does one try to compress the infinite amounts of creativity this film bears into a short review and, perhaps more importantly, does it even need to be said anymore? With a position in the Top 250 of the recent Sight and Sound poll, despite being a recent animated film… <a href="#">Read Review</a>
+            .large-9.columns.review-left-wrapper
+              %h5 Review by <a href="#">Josh</a> 
+              %p Mushishi is very mellow and relaxing - therapeutic even. An episodic supernatural anime with no other series like it.
+              %p 
+                <a href="#" class="read-review">Read Review</a>
+            .large-2.columns.no-padding
+              = image_tag "http://cl.ly/image/132t2H2f3G2X/placeholder.jpg"
+
             %hr
 
           .large-12.columns.no-padding
-            .large-1.columns.no-padding
-              = link_to (image_tag "http://hummingbird.me/system/users/avatars/000/000/956/thumb/tumblr_mip3faRBwQ1rediswo1_250.gif?1372022638"), "#"
-            .large-11.columns
-              %h5 
-                Review by <a href="#">Josh</a> 
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star-empty
-                %i.icon-star-empty
-                %i.icon-star-empty
-                %i.icon-star-empty
-              %p Reviewing Attack on Titan, one of the most lauded films of the 21st century and also a favourite of mine, is a daunting task. Just how does one try to compress the infinite amounts of creativity this film bears into a short review and, perhaps more importantly, does it even need to be said anymore? With a position in the Top 250 of the recent Sight and Sound poll, despite being a recent animated film… <a href="#">Read Review</a>
+            .large-1.columns.no-padding.center
+              = image_tag "http://hummingbird.me/system/users/avatars/000/000/371/thumb/avatar.png?1372436871"
+            .large-9.columns.review-left-wrapper
+              %h5 Review by <a href="#">Leondre</a> 
+              %p Kyoto Animation at it's finest, Hyouka is a masterpiece of charm and intrigue.
+              %p 
+                <a href="#" class="read-review">Read Review</a>
+            .large-2.columns.no-padding
+              = image_tag "http://cl.ly/image/132t2H2f3G2X/placeholder.jpg"
+
             %hr
+
           .large-12.columns.no-padding
-            .large-1.columns.no-padding
-              = link_to (image_tag "http://hummingbird.me/system/users/avatars/000/000/956/thumb/tumblr_mip3faRBwQ1rediswo1_250.gif?1372022638"), "#"
-            .large-11.columns
-              %h5 
-                Review by <a href="#">Josh</a> 
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star
-                %i.icon-star-empty
-                %i.icon-star-empty
-                %i.icon-star-empty
-                %i.icon-star-empty
-              %p Reviewing Attack on Titan, one of the most lauded films of the 21st century and also a favourite of mine, is a daunting task. Just how does one try to compress the infinite amounts of creativity this film bears into a short review and, perhaps more importantly, does it even need to be said anymore? With a position in the Top 250 of the recent Sight and Sound poll, despite being a recent animated film… <a href="#">Read Review</a>
+            .large-1.columns.no-padding.center
+              = image_tag "http://hummingbird.me/system/users/avatars/000/006/298/thumb/Ladd_Russo.gif?1372477221"
+            .large-9.columns.review-left-wrapper
+              %h5 Review by <a href="#">Mazz</a> 
+              %p One of anime's greatest casts of characters and most vibrant musical scores make Cowboy Bebop a true anime classic.
+              %p 
+                <a href="#" class="read-review">Read Review</a>
+            .large-2.columns.no-padding
+              = image_tag "http://cl.ly/image/132t2H2f3G2X/placeholder.jpg"
+
             %hr
-            %p.center <a href="#">Write a Review</a> or <a href="#">View All Reviews</a>
+
+          .large-12.columns.no-padding
+            .large-1.columns.no-padding.center
+              = image_tag "http://hummingbird.me/system/users/avatars/000/006/330/thumb/ac3lnk.jpg?1372411998"
+            .large-9.columns.review-left-wrapper
+              %h5 Review by <a href="#">Cairus</a> 
+              %p Mushishi is very mellow and relaxing - therapeutic even. An episodic supernatural anime with no other series like it.
+              %p 
+                <a href="#" class="read-review">Read Review</a>
+            .large-2.columns.no-padding
+              = image_tag "http://cl.ly/image/132t2H2f3G2X/placeholder.jpg"
+
+            %hr
+
+            %p.center.reviews-footer <a href="#">Write a Review</a> or <a href="#">View All Reviews</a>
 
 
 
@@ -348,8 +343,7 @@
         %p
           %a{:href => "http://hummingbird.me/anime/attack-on-titan/quotes"} [Show all]
           %a{"data-reveal-id" => "quoteModal", :href => "#"} [Submit quote]
-
-
+  
 / .anime-discover.anime-show
 /   .row
 /     / Main Content Section
