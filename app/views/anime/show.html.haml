@@ -328,23 +328,13 @@
 
       //quotes
       .large-12.columns.no-padding.side-block
-        %h5 Quotes
-        %blockquote
-          Only the victors are allowed to live. This world is merciless like that.
-          —
-          Mikasa Ackerman
-        %blockquote
-          If you think it's natural for people to sacrifice their own lives to save others, surely you understand that sometimes a single death can save many lives.
-          —
-          Mikasa Ackerman
-        %blockquote
-          The strong feed upon weak. It's such an obligingly simple rule. Except in this world, my friends tried to be strong.
-          —
-          Armin Arelet
-        %blockquote
-          I want to see and understand the world outside. i don't want to die inside these walls without knowing what's out there!
-          —
-          Eren Jaeger
+        %h5 QUOTES
+        - @quotes.each do |quote|
+          %blockquote
+            = quote.content
+            %br
+            &mdash;
+            = quote.character_name
         %p
           %a{:href => "http://hummingbird.me/anime/attack-on-titan/quotes"} [Show all]
           %a{"data-reveal-id" => "quoteModal", :href => "#"} [Submit quote]
