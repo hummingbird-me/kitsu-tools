@@ -149,7 +149,7 @@ class MalImport
 
   def self.fetch_watchlist_from_remote(username)
     watchlist = []
-    animelist = Hash.from_xml(open("http://myanimelist.net/malappinfo.php?status=all&type=anime&u=#{username}").read)
+    animelist = Hash.from_xml(open("http://myanimelist.net/malappinfo.php?status=all&type=anime&u=#{username}").read.encode('UTF-16', invalid: :replace, replace: '').encode('UTF-8'))
     status_map = {
       "1"           => "Currently Watching",
       "watching"    => "Currently Watching",
