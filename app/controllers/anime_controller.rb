@@ -21,8 +21,8 @@ class AnimeController < ApplicationController
     @genres = @anime.genres
     @producers = @anime.producers
     @quotes = Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => "votes DESC", :limit => 4})
-    @castings = Casting.where(anime_id: @anime.id, featured: true)
     
+    @castings = Casting.where(anime_id: @anime.id, featured: true)
     @languages = @castings.map {|x| x.role }.sort
     ["English", "Japanese"].reverse.each do |l|
       @languages.unshift l if @languages.include? l

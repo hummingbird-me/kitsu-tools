@@ -182,96 +182,97 @@
             or
             = link_to "View All Reviews", anime_reviews_path(@anime)
 
-      .large-12.columns.option-bar.hide-for-small
-        .small-6.large-2.columns
-          %p.option-title Activity Feed
-        .small-12.large-9.columns.options
-          %ul.status-tabs.inline-list
-            %li#tab-all.active
-              %a{:href => "#all", :onclick => "showRelevantSections('all')"} All
-            %li
-              %a{:href => "#comments", :onclick => "showRelevantSections('comments')"} Comments
-            %li
-              %a{:href => "#library", :onclick => "showRelevantSections('library')"} Library
-            %li
-              %a{:href => "#events", :onclick => "showRelevantSections('events')"} Events
+      - if false
+        .large-12.columns.option-bar.hide-for-small
+          .small-6.large-2.columns
+            %p.option-title Activity Feed
+          .small-12.large-9.columns.options
+            %ul.status-tabs.inline-list
+              %li#tab-all.active
+                %a{:href => "#all", :onclick => "showRelevantSections('all')"} All
+              %li
+                %a{:href => "#comments", :onclick => "showRelevantSections('comments')"} Comments
+              %li
+                %a{:href => "#library", :onclick => "showRelevantSections('library')"} Library
+              %li
+                %a{:href => "#events", :onclick => "showRelevantSections('events')"} Events
 
-      .large-12.columns.feed.no-padding
-        .large-12.columns.feed-form
-          %form.comment
-            .posting-indicator
-              %i.icon-spin.icon-spinner
-            %input.comment{:autocomplete => "off", :name => "comment", :placeholder => "Write something...", :type => "text"}/
-        %ul.feed-list.activity-feed/
-        %div
+        .large-12.columns.feed.no-padding
+          .large-12.columns.feed-form
+            %form.comment
+              .posting-indicator
+                %i.icon-spin.icon-spinner
+              %input.comment{:autocomplete => "off", :name => "comment", :placeholder => "Write something...", :type => "text"}/
+          %ul.feed-list.activity-feed/
           %div
-            %li.feed-item.cf
-              .large-12.columns.feed-wrapper
-                .small-3.large-2.columns.no-padding-right
-                  %a{:href => "/users/2-josh"}
-                    %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/956/thumb/tumblr_mip3faRBwQ1rediswo1_250.gif?1372022638"}/
-                .small-9.large-10.columns
-                  %h4.anime-feed-title
-                    %a{:href => "/users/2-josh"} Clara
-                    commented on
-                    %a{:href => "#"} Attack on Titan
-                  %hr.feed-divider
-                    .large-12.columns.no-padding-left
-                      %p.wall-post-copy Can't wait until the next episode! <3
-                      %p.time
-                        %span.time-ago
-                          22 minutes ago
-          %div
-            %li.feed-item.cf
-              .large-12.columns.feed-wrapper
-                .small-3.large-2.columns.no-padding-right
-                  %a{:href => "/users/2-josh"}
-                    %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
-                .small-9.large-10.columns
-                  %h4.anime-feed-title
-                    %a{:href => "/users/2-josh"} Josh
-                    commented on
-                    %a{:href => "#"} Attack on Titan
-                  %hr.feed-divider
-                    .large-12.columns.no-padding-left
-                      %p.wall-post-copy I couldn't hold out any longer. I read the manga...
-                      %p.time
-                        %span.time-ago
-                          22 minutes ago
-          %div
-            %li.feed-item.cf
-              .large-12.columns.feed-wrapper
-                .small-3.large-2.columns.no-padding-right
-                  %a{:href => "/users/2-josh"}
-                    %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
-                .small-9.large-10.columns
-                  %h4.anime-feed-title
-                    %a{:href => "/users/2-josh"} Josh
-                    commented on
-                    %a{:href => "#"} Attack on Titan
-                  %hr.feed-divider
-                    .large-12.columns.no-padding-left
-                      %p.wall-post-copy I couldn't hold out any longer. I read the manga...
-                      %p.time
-                        %span.time-ago
-                          22 minutes ago          
-          %div
-            %li.feed-item.cf
-              .large-12.columns.feed-wrapper
-                .small-3.large-2.columns.no-padding-right
-                  %a{:href => "/users/2-josh"}
-                    %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
-                .small-9.large-10.columns
-                  %h4.anime-feed-title
-                    %a{:href => "/users/2-josh"} Josh
-                    commented on
-                    %a{:href => "#"} Attack on Titan
-                  %hr.feed-divider
-                    .large-12.columns.no-padding-left
-                      %p.wall-post-copy I couldn't hold out any longer. I read the manga...
-                      %p.time
-                        %span.time-ago
-                          22 minutes ago
+            %div
+              %li.feed-item.cf
+                .large-12.columns.feed-wrapper
+                  .small-3.large-2.columns.no-padding-right
+                    %a{:href => "/users/2-josh"}
+                      %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/956/thumb/tumblr_mip3faRBwQ1rediswo1_250.gif?1372022638"}/
+                  .small-9.large-10.columns
+                    %h4.anime-feed-title
+                      %a{:href => "/users/2-josh"} Clara
+                      commented on
+                      %a{:href => "#"} Attack on Titan
+                    %hr.feed-divider
+                      .large-12.columns.no-padding-left
+                        %p.wall-post-copy Can't wait until the next episode! <3
+                        %p.time
+                          %span.time-ago
+                            22 minutes ago
+            %div
+              %li.feed-item.cf
+                .large-12.columns.feed-wrapper
+                  .small-3.large-2.columns.no-padding-right
+                    %a{:href => "/users/2-josh"}
+                      %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
+                  .small-9.large-10.columns
+                    %h4.anime-feed-title
+                      %a{:href => "/users/2-josh"} Josh
+                      commented on
+                      %a{:href => "#"} Attack on Titan
+                    %hr.feed-divider
+                      .large-12.columns.no-padding-left
+                        %p.wall-post-copy I couldn't hold out any longer. I read the manga...
+                        %p.time
+                          %span.time-ago
+                            22 minutes ago
+            %div
+              %li.feed-item.cf
+                .large-12.columns.feed-wrapper
+                  .small-3.large-2.columns.no-padding-right
+                    %a{:href => "/users/2-josh"}
+                      %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
+                  .small-9.large-10.columns
+                    %h4.anime-feed-title
+                      %a{:href => "/users/2-josh"} Josh
+                      commented on
+                      %a{:href => "#"} Attack on Titan
+                    %hr.feed-divider
+                      .large-12.columns.no-padding-left
+                        %p.wall-post-copy I couldn't hold out any longer. I read the manga...
+                        %p.time
+                          %span.time-ago
+                            22 minutes ago          
+            %div
+              %li.feed-item.cf
+                .large-12.columns.feed-wrapper
+                  .small-3.large-2.columns.no-padding-right
+                    %a{:href => "/users/2-josh"}
+                      %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
+                  .small-9.large-10.columns
+                    %h4.anime-feed-title
+                      %a{:href => "/users/2-josh"} Josh
+                      commented on
+                      %a{:href => "#"} Attack on Titan
+                    %hr.feed-divider
+                      .large-12.columns.no-padding-left
+                        %p.wall-post-copy I couldn't hold out any longer. I read the manga...
+                        %p.time
+                          %span.time-ago
+                            22 minutes ago
 
 
     // Right Column
