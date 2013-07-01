@@ -147,7 +147,7 @@
                       = image_tag casting.person.image.url(:thumb_small), alt: "#{casting.person.name} - Voice Actor", width: 30, height: 47
 
               %li.show-more
-                %a(data-tooltip title="Coming soon!"){:href => "#"} Show all actors +
+                %a(data-tooltip title="Coming soon!"){:href => "javascript:void(0)"} Show all actors +
               %hr
             
       .large-12.columns.panel.ad-zone.center
@@ -162,62 +162,25 @@
       .large-12.columns.panel.popular-reviews
         .large-12.columns
           %h4 Trending Reviews
+          - @reviews.each do |review|
+            %hr
+            .large-12.columns.no-padding
+              .large-1.columns.no-padding.center
+                = avatar_link review.user
+              .large-9.columns.review-left-wrapper
+                %h5 
+                  Review by
+                  = link_to review.user.name, review.user
+                %p= review.summary || truncate(strip_tags(review.content), length: 140, separator: ' ', omission: '...')
+                %p= link_to "Read Review", anime_review_path(@anime, review)
+              .large-2.columns.no-padding
+                = image_tag "http://cl.ly/image/132t2H2f3G2X/placeholder.jpg"
+
           %hr
-          .large-12.columns.no-padding
-            .large-1.columns.no-padding.center
-              = image_tag "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"
-            .large-9.columns.review-left-wrapper
-              %h5 Review by <a href="#">Josh</a> 
-              %p Mushishi is very mellow and relaxing - therapeutic even. An episodic supernatural anime with no other series like it.
-              %p 
-                <a href="#" class="read-review">Read Review</a>
-            .large-2.columns.no-padding
-              = image_tag "http://cl.ly/image/132t2H2f3G2X/placeholder.jpg"
-
-            %hr
-
-          .large-12.columns.no-padding
-            .large-1.columns.no-padding.center
-              = image_tag "http://hummingbird.me/system/users/avatars/000/000/371/thumb/avatar.png?1372436871"
-            .large-9.columns.review-left-wrapper
-              %h5 Review by <a href="#">Leondre</a> 
-              %p Kyoto Animation at it's finest, Hyouka is a masterpiece of charm and intrigue.
-              %p 
-                <a href="#" class="read-review">Read Review</a>
-            .large-2.columns.no-padding
-              = image_tag "http://cl.ly/image/132t2H2f3G2X/placeholder.jpg"
-
-            %hr
-
-          .large-12.columns.no-padding
-            .large-1.columns.no-padding.center
-              = image_tag "http://hummingbird.me/system/users/avatars/000/006/298/thumb/Ladd_Russo.gif?1372477221"
-            .large-9.columns.review-left-wrapper
-              %h5 Review by <a href="#">Mazz</a> 
-              %p One of anime's greatest casts of characters and most vibrant musical scores make Cowboy Bebop a true anime classic.
-              %p 
-                <a href="#" class="read-review">Read Review</a>
-            .large-2.columns.no-padding
-              = image_tag "http://cl.ly/image/132t2H2f3G2X/placeholder.jpg"
-
-            %hr
-
-          .large-12.columns.no-padding
-            .large-1.columns.no-padding.center
-              = image_tag "http://hummingbird.me/system/users/avatars/000/006/330/thumb/ac3lnk.jpg?1372411998"
-            .large-9.columns.review-left-wrapper
-              %h5 Review by <a href="#">Cairus</a> 
-              %p Mushishi is very mellow and relaxing - therapeutic even. An episodic supernatural anime with no other series like it.
-              %p 
-                <a href="#" class="read-review">Read Review</a>
-            .large-2.columns.no-padding
-              = image_tag "http://cl.ly/image/132t2H2f3G2X/placeholder.jpg"
-
-            %hr
-
-            %p.center.reviews-footer <a href="#">Write a Review</a> or <a href="#">View All Reviews</a>
-
-
+          %p.center.reviews-footer 
+            = link_to "Write a Review", new_anime_review_path(@anime)
+            or
+            = link_to "View All Reviews", anime_reviews_path(@anime)
 
       .large-12.columns.option-bar.hide-for-small
         .small-6.large-2.columns
