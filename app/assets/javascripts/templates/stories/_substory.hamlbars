@@ -43,9 +43,12 @@
         {{{watchedEpisodeStory user episode_number}}}
         {{/type.watched_episode}}
 
-        %p.time
-          %span.time-ago
-            {{timeAgo created_at}}
+        .actions.time
+          {{#permissions.destroy}}
+          %a.time-ago#remove(href="javascript:void(0)" data-id="{{id}}") Remove
+          ·
+          {{/permissions.destroy}}
+          %a.time-ago {{timeAgo created_at}}
       {{/type.comment}}
       {{#type.comment}}
       %p.wall-post-copy {{{comment}}}
