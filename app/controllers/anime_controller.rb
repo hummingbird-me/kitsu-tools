@@ -42,8 +42,7 @@ class AnimeController < ApplicationController
       @watchlist = false
     end
 
-    # Get the list of episodes.
-    @episodes = select_four_episodes(@watchlist, @anime)
+    @similar = @anime.similar(2)
 
     # Add to recently viewed.
     if @anime.sfw?

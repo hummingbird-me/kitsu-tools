@@ -43,12 +43,12 @@
       .large-12.columns.no-padding.side-block
         = link_to (image_tag "amazon.png"), "http://www.amazon.com/s/?_encoding=UTF8&camp=1789&creative=390957&field-keywords=attack%20on%20titan&linkCode=ur2&rh=i%3Aaps%2Ck%3Aattack%20on%20titan&sprefix=attack%20%2Caps&tag=hummingbir0fe-20&url=search-alias%3Daps"
 
-      .large-12.columns.no-padding.side-block
-        %h5 SIMILAR
-        .large-6.columns.sidebar-series.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "Nisemonogatari"}
-          = link_to (image_tag "http://hummingbird.me/system/25b0061ee66d1d930f396e90bf2b7d5b393c59da_thumb.jpg?1361877364"), "#"
-        .large-6.columns.sidebar-series.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => "Durarara!"}
-          = link_to (image_tag "http://hummingbird.me/system/5b806e0ba70a1fab387b1f33adf4d6fec4bdcf4a_thumb.jpg?1361876315"), "#"
+      - if @similar.length > 0
+        .large-12.columns.no-padding.side-block
+          %h5 SIMILAR
+          - @similar.each do |similar|
+            .large-6.columns.sidebar-series.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => similar.canonical_title(current_user)}
+              = link_to (image_tag similar.cover_image.url(:thumb), alt: similar.canonical_title), similar
 
     // Center Column
     .large-7.columns.center-column

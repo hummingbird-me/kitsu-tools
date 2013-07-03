@@ -151,4 +151,22 @@ class Anime < ActiveRecord::Base
   def self.neon_alley_ids
     [11, 12, 244, 412, 777, 1376, 1377, 1445, 1555, 2245, 3817, 4989, 5044, 5187, 5940, 5953, 6028, 6084, 6477, 6590, 6614, 7753]
   end
+
+  def similar(limit=20)
+    return [] unless mal_id
+
+    similar_anime = []
+    
+    begin
+      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{mal_id}")).sort_by {|x| -x["sim"] }
+      
+      similar_json.each do |similar|
+        sim = Anime.find_by_mal_id(similar["id"])
+        similar_anime.push(sim) if sim and similar_anime.length < limit
+      end
+    rescue
+    end
+    
+    similar_anime
+  end
 end
