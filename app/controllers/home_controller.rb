@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 
       respond_to do |format|
         format.html do
-          @forum_topics = Forem::Topic.by_most_recent_post.limit(10)
+          @forum_topics = Forem::Topic.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
           @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
         end
         format.json do
