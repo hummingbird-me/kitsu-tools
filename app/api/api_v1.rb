@@ -85,7 +85,7 @@ class API_v1 < Grape::API
     post ":user_id/feed/remove" do
       substory = Substory.find params[:substory_id]
       if current_ability.can? :destroy, substory
-        #substory.destroy
+        substory.destroy
         return true
       else
         return false
