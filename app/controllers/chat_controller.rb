@@ -31,8 +31,10 @@ class ChatController < ApplicationController
 
   def new_message
     if params[:message] and params[:message].strip.length > 0
-      c = ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message], formatted_message: MessageFormatter.format_message(params[:message]))
-      $redis.set("chat_latest_message_id", c[:"_id"])
+      if not current_user.ninja_banned?
+        c = ChatMessage.create(user_id: current_user.id, message_type: "regular", message: params[:message], formatted_message: MessageFormatter.format_message(params[:message]))
+        $redis.set("chat_latest_message_id", c[:"_id"])
+      end
       render :json => true
     else
       render :json => false
