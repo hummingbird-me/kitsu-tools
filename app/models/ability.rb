@@ -25,6 +25,7 @@ class Ability
 
       # Allow user to delete stories on their feed.
       can :destroy, Substory, :user_id => user.id
+      can :destroy, Substory, :story => {:user_id => user.id}
 
       can :update, User, :id => user.id
       
