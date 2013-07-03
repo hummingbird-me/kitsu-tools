@@ -1,7 +1,7 @@
 Forem::ForumsController.class_eval do
   def index
     @forums = Forem::Forum.order(:name)
-    if user_signed_in? and current_user.ninja_banned?
+    if user_signed_in? and (current_user.ninja_banned? or current_user.admin?)
       @topics = Forem::Topic.by_most_recent_post.page(params[:page]).per(Forem.per_page)
     else
       @topics = Forem::Topic.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').page(params[:page]).per(Forem.per_page)
@@ -17,7 +17,7 @@ Forem::ForumsController.class_eval do
       @forum.topics.visible.approved_or_pending_review_for(forem_user)
     end
 
-    if user_signed_in? and current_user.ninja_banned?
+    if user_signed_in? and (current_user.ninja_banned? or current_user.admin?)
       @topics = @topics.by_pinned_or_most_recent_post.page(params[:page]).per(Forem.per_page)
     else
       @topics = @topics.by_pinned_or_most_recent_post.joins(:user).where('NOT users.ninja_banned').page(params[:page]).per(Forem.per_page)

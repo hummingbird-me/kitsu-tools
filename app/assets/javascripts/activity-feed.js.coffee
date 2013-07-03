@@ -76,7 +76,7 @@ StoryView = Backbone.View.extend
             
       if @model.get("story_type") == "comment"
         if @model.get("poster").nb and currentUser.admin
-          @$el.css('background-color', '#ddd')
+          @$el.addClass 'ninja-ban'
       
   toggleExpand: ->
     @expanded = !@expanded

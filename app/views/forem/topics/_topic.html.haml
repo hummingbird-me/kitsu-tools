@@ -1,5 +1,5 @@
 - last_post = topic.posts.last
-.topic
+.topic{:class => ('ninja-ban' if user_signed_in? and current_user.admin? and topic.user.ninja_banned?)}
   .large-1.columns.avatar.hide-for-small
     = avatar_link last_post.user, :thumb_small
   .large-10.columns.topic-info

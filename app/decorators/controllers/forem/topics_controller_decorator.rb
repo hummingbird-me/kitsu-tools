@@ -3,7 +3,7 @@ Forem::TopicsController.class_eval do
     if find_topic
       register_view
 
-      if user_signed_in? and current_user.ninja_banned?
+      if user_signed_in? and (current_user.ninja_banned? or current_user.admin?)
         @posts = @topic.posts
       else
         @posts = @topic.posts.joins(:user).where('NOT users.ninja_banned')

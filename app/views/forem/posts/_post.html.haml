@@ -15,7 +15,7 @@
       .large-1.columns.avatar.hide-for-small
         = avatar_link post.user, :thumb_small
 
-      .large-11.columns.topic-info
+      .large-11.columns.topic-info{:class => ('ninja-ban' if user_signed_in? and current_user.admin? and post.user.ninja_banned?)}
         .username= link_to post.user, main_app.user_path(post.user)
         %p.sub-text{:datetime => post.created_at.to_s(:db)}= "#{time_ago_in_words(post.created_at)} #{t("ago")}"
         .topic-body 
