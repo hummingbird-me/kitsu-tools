@@ -33,6 +33,10 @@ StoryView = Backbone.View.extend
   template: HandlebarsTemplates["stories/story"]
   
   render: ->
+    if @model.get("story_type") == "comment"
+      if @model.get("poster").nb and (not currentUser or (currentUser and not (currentUser.admin or currentUser.nb)))
+        return
+    
     json = @model.toJSON()
     json["type"] = {}
     json["type"][@model.get("story_type")] = true
@@ -69,6 +73,10 @@ StoryView = Backbone.View.extend
               $(link).closest(".substory").fadeOut()
           else
             alert "Something went wrong. Please try again later."
+            
+      if @model.get("story_type") == "comment"
+        if @model.get("poster").nb and currentUser.admin
+          @$el.css('background-color', '#ddd')
       
   toggleExpand: ->
     @expanded = !@expanded

@@ -21,6 +21,7 @@ module Entities
     expose(:url) {|user, options| user_path(user) }
     expose(:avatar) {|user, options| user.avatar.url(:thumb) }
     expose(:avatar_small) {|user, options| user.avatar.url(:thumb_small) }
+    expose(:nb) {|user, options| user.ninja_banned? }
   end
   
   class Quote < Grape::Entity

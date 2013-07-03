@@ -12,7 +12,9 @@
         @currentUser = {
           id: #{current_user.id.inspect},
           name: #{current_user.name.inspect},
-          param: #{current_user.to_param.inspect}
+          param: #{current_user.to_param.inspect},
+          nb: #{current_user.ninja_banned?.inspect},
+          admin: #{current_user.admin?.inspect}
         }
     - else
       :coffee

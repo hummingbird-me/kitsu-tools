@@ -1177,7 +1177,7 @@ CREATE TABLE users (
     followers_count_hack integer DEFAULT 0,
     following_count integer DEFAULT 0,
     neon_alley_integration boolean DEFAULT false,
-    ninja_banned boolean
+    ninja_banned boolean DEFAULT false
 );
 
 
