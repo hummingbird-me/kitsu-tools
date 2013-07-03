@@ -39,6 +39,7 @@ class Ability
         ### Admin permissions
         can :update, Anime
         can :moderate, :forum
+        can :destroy, Substory
       end
     end
   end
