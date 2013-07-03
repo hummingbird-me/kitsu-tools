@@ -6,12 +6,12 @@ class HomeController < ApplicationController
 
       respond_to do |format|
         format.html do
-          @forum_topics = Forem::Topic.by_most_recent_post.limit(10)
+          @forum_topics = Forem::Topic.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
           @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
         end
         format.json do
           @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).page(params[:page]).per(20)
-          render :json => Entities::Story.represent(@stories, title_language_preference: user_signed_in? ? current_user.title_language_preference : "canonical")
+          render :json => Entities::Story.represent(@stories, current_ability: current_ability, title_language_preference: user_signed_in? ? current_user.title_language_preference : "canonical")
         end
       end
       

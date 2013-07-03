@@ -6,7 +6,7 @@ class ChatController < ApplicationController
   
   before_filter :fuck_off_demonnerd
   def fuck_off_demonnerd
-    if current_user.id == 3577
+    if current_user.id == 3577 or current_user.ninja_banned?
       response.headers["X-Accel-Limit-Rate"] = "300"
     end
   end

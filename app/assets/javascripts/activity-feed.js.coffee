@@ -33,6 +33,10 @@ StoryView = Backbone.View.extend
   template: HandlebarsTemplates["stories/story"]
   
   render: ->
+    if @model.get("story_type") == "comment"
+      if @model.get("poster").nb and (not currentUser or (currentUser and not (currentUser.admin or currentUser.nb)))
+        return
+    
     json = @model.toJSON()
     json["type"] = {}
     json["type"][@model.get("story_type")] = true
@@ -56,6 +60,23 @@ StoryView = Backbone.View.extend
     that = this
     @$el.find("a.show-more").click ->
       that.toggleExpand()
+
+    if currentUser
+      @$el.find("a#remove").click ->
+        id = $(this).attr("data-id")
+        link = this
+        $.post "/api/v1/users/" + currentUser.param + "/feed/remove", {substory_id: id}, (d) ->
+          if d
+            if that.model.get("substories").length == 1
+              $(link).closest("li.feed-item").fadeOut()
+            else
+              $(link).closest(".substory").fadeOut()
+          else
+            alert "Something went wrong. Please try again later."
+            
+      if @model.get("story_type") == "comment"
+        if @model.get("poster").nb and currentUser.admin
+          @$el.addClass 'ninja-ban'
       
   toggleExpand: ->
     @expanded = !@expanded

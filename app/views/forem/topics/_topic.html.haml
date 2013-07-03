@@ -1,5 +1,6 @@
-- last_post = topic.posts.last
-.topic
+- last_post = @last_post_and_count[topic.id][0]
+
+.topic{:class => ('ninja-ban' if user_signed_in? and current_user.admin? and topic.user.ninja_banned?)}
   .large-1.columns.avatar.hide-for-small
     = avatar_link last_post.user, :thumb_small
   .large-10.columns.topic-info
@@ -29,7 +30,7 @@
         %i.icon.icon-lock
       - else
         %i.icon-comments
-        = relevant_posts(topic).count - 1
+        = @last_post_and_count[topic.id][1] - 1
 
 /<tr class="topic <%= cycle('odd', 'even') %> <%= topic.locked? ? 'locked' : 'unlocked' %>">
 /  <td class='icon'>

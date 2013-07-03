@@ -23,6 +23,10 @@ class Ability
       ### Regular user permissions
       can :read, Watchlist, :private => true, :user_id => user.id
 
+      # Allow user to delete stories on their feed.
+      can :destroy, Substory, :user_id => user.id
+      can :destroy, Substory, :story => {:user_id => user.id}
+
       can :update, User, :id => user.id
       
       if user.sfw_filter
@@ -35,6 +39,7 @@ class Ability
         ### Admin permissions
         can :update, Anime
         can :moderate, :forum
+        can :destroy, Substory
       end
     end
   end

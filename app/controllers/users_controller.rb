@@ -144,8 +144,6 @@ class UsersController < ApplicationController
   def comment
     authenticate_user!
     
-    sleep 2
-    
     # Create the story.
     @user = User.find(params[:user_id])
     story = Story.create(

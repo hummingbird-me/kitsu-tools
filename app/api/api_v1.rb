@@ -73,8 +73,23 @@ class API_v1 < Grape::API
     get ":user_id/feed" do
       @user = User.find(params[:user_id])
       @stories = @user.stories.accessible_by(current_ability).order('updated_at DESC').page(params[:page]).per(20)
-
-      present @stories, with: Entities::Story, title_language_preference: user_signed_in? ? current_user.title_language_preference : "canonical"
+      
+      present @stories, with: Entities::Story, current_ability: current_ability, title_language_preference: (user_signed_in? ? current_user.title_language_preference : "canonical")
+    end
+    
+    desc "Delete a substory from the user's feed."
+    params do
+      requires :user_id, type: String
+      requires :substory_id, type: Integer
+    end
+    post ":user_id/feed/remove" do
+      substory = Substory.find params[:substory_id]
+      if current_ability.can? :destroy, substory
+        substory.destroy
+        return true
+      else
+        return false
+      end
     end
   end
   

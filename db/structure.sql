@@ -1176,7 +1176,8 @@ CREATE TABLE users (
     title_language_preference character varying(255) DEFAULT 'canonical'::character varying,
     followers_count_hack integer DEFAULT 0,
     following_count integer DEFAULT 0,
-    neon_alley_integration boolean DEFAULT false
+    neon_alley_integration boolean DEFAULT false,
+    ninja_banned boolean DEFAULT false
 );
 
 
@@ -2407,3 +2408,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130627022031');
 INSERT INTO schema_migrations (version) VALUES ('20130629180008');
 
 INSERT INTO schema_migrations (version) VALUES ('20130629222429');
+
+INSERT INTO schema_migrations (version) VALUES ('20130703015606');
