@@ -2,7 +2,13 @@ Forem::TopicsController.class_eval do
   def show
     if find_topic
       register_view
-      @posts = @topic.posts
+
+      if user_signed_in? and current_user.ninja_banned?
+        @posts = @topic.posts
+      else
+        @posts = @topic.posts.joins(:user).where('NOT users.ninja_banned')
+      end
+
       unless forem_admin_or_moderator?(@forum)
         @posts = @posts.approved_or_pending_review_for(forem_user)
       end
