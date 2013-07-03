@@ -6,6 +6,18 @@
         #{yield(:title)} | Hummingbird
       - else
         Hummingbird
+
+    - if user_signed_in?
+      :coffee
+        @currentUser = {
+          id: #{current_user.id.inspect},
+          name: #{current_user.name.inspect},
+          param: #{current_user.to_param.inspect}
+        }
+    - else
+      :coffee
+        @currentUser = null
+
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = javascript_include_tag "vendor/custom.modernizr"

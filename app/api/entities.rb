@@ -57,6 +57,7 @@ module Entities
   end
   
   class Substory < Grape::Entity
+    expose :id
     expose :substory_type
     expose :created_at
     
@@ -95,6 +96,17 @@ module Entities
       if: lambda {|substory, options| substory.substory_type == "comment" }
     ) do |substory, options|
       MessageFormatter.format_message substory.data["comment"]
+    end
+    
+    expose(:permissions) do |substory, options|
+      current_ability ||= options[:current_ability]
+      if current_ability
+        {
+          destroy: current_ability.can?(:destroy, substory)
+        }
+      else
+        {}
+      end
     end
   end
   

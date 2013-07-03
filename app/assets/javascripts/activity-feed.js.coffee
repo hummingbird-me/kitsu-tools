@@ -56,6 +56,19 @@ StoryView = Backbone.View.extend
     that = this
     @$el.find("a.show-more").click ->
       that.toggleExpand()
+
+    if currentUser
+      @$el.find("a#remove").click ->
+        id = $(this).attr("data-id")
+        link = this
+        $.post "/api/v1/users/" + currentUser.param + "/feed/remove", {substory_id: id}, (d) ->
+          if d
+            if that.model.get("substories").length == 1
+              $(link).closest("li.feed-item").fadeOut()
+            else
+              $(link).closest(".substory").fadeOut()
+          else
+            alert "Something went wrong. Please try again later."
       
   toggleExpand: ->
     @expanded = !@expanded
