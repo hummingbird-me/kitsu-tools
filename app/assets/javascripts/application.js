@@ -25,6 +25,7 @@
 //= require multiselect.js
 //= require typeahead.js
 //= require offcanvas.js
+//= require jquery.easy-pie-chart.js
 //
 //= require googleplus.js
 //= require twitter.js

@@ -162,7 +162,18 @@
                 %p= review.summary || truncate(strip_tags(review.content), length: 140, separator: ' ', omission: '...')
                 %p= link_to "Read Review", anime_review_path(@anime, review)
               .large-2.columns.no-padding
-                = image_tag "http://cl.ly/image/132t2H2f3G2X/placeholder.jpg"
+                .chart{:"data-percent" => review.rating * 10}
+                  = review.rating
+
+          :coffee
+            $(".chart").easyPieChart
+              size: 86
+          :css
+            .chart {
+              margin: 10px;
+              font-size: 2em;
+              font-weight: bold;
+            }
 
           %hr
           %p.center.reviews-footer 
