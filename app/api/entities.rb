@@ -13,7 +13,7 @@ module Entities
     expose(:cover_image) {|anime, options| anime.cover_image.url(:thumb) }
     expose(:short_synopsis) {|anime, options| anime.synopsis.truncate(380, separator: ' ') }
     expose :show_type
-    expose :genres, using: Entities::Genre
+    expose :genres, using: Entities::Genre, if: lambda {|anime, options| options[:genres].nil? or options[:genres] }
   end
   
   class MiniUser < Grape::Entity

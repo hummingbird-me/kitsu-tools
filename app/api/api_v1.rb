@@ -62,7 +62,7 @@ class API_v1 < Grape::API
       end
       title_language_preference ||= "canonical"
       
-      present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference
+      present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference, genres: false
     end
     
     desc "Returns the user's feed."
