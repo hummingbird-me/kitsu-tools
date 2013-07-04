@@ -24,7 +24,7 @@ class AnimeController < ApplicationController
     
     @castings = Casting.where(anime_id: @anime.id, featured: true)
     @languages = @castings.map {|x| x.role }.sort
-    ["English", "Japanese"].reverse.each do |l|
+    ["Japanese", "English"].reverse.each do |l|
       @languages.unshift l if @languages.include? l
     end
     @languages = @languages.uniq
