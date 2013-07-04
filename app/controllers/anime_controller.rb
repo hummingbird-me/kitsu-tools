@@ -32,7 +32,7 @@ class AnimeController < ApplicationController
     @gallery = @anime.gallery_images.limit(6)
 
     @reviews = Review.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id]}).sort_by do |review|
-      ci_lower_bound(review.votes.to_i, review.evaluations.length)
+      -ci_lower_bound(review.votes.to_i, review.evaluations.length)
     end
     @reviews = @reviews[0...4] if @reviews.length > 4
 
