@@ -46,6 +46,7 @@ end
 
 group :production do
   gem 'newrelic_rpm'
+  gem 'newrelic-grape'
 end
 
 # Testing

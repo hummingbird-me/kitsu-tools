@@ -72,7 +72,7 @@ renderProgress = (element) ->
   if status == "false"
     element.find("a").html "Add to Watchlist"
   else
-    element.find("a").html statusHumanizer[status]
+    element.find("a").addClass("secondary").html statusHumanizer[status]
     
   # Now, onto the dropdown.
   element.append $("<ul class='f-dropdown status-button' id='" + dropdownId + "'></ul>")
