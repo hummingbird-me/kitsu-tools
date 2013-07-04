@@ -83,8 +83,7 @@ after "deploy:update_code", "deploy:copy_old_sitemap"
 
 before "deploy", "deploy:sudo_prompt"
 
-after "deploy:restart",
-  "deploy:reload_unicorn"
+after "deploy:restart", "deploy:reload_unicorn"
 
 before "deploy:restart", "deploy:migrate"
 
