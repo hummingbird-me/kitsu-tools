@@ -14,22 +14,9 @@
       /   %i.icon-star-empty
 
       .large-12.columns.no-padding
-        %a.button.radius.padded{"data-dropdown" => "drop1", :href => "#"} Add to Watchlist
-
-        %ul#drop1.f-dropdown.status-button{"data-dropdown-content" => ""}
-          %li
-            %a{:href => "#"} Plan to Watch
-          %li
-            %a{:href => "#"} Currently Watching
-          %li
-            %a{:href => "#"} Complete
-          %li
-            %a{:href => "#"} On Hold
-          %li
-            %a{:href => "#"} Dropped
-
-
-
+        .watchlist-status-button{:"data-anime" => @anime.slug, :"data-status" => @watchlist ? @watchlist.status.parameterize : "false"}
+        :coffee
+          initializeWatchlistStatusButton $(".watchlist-status-button")
 
       .large-12.columns.no-padding.side-block
         %h5 FRANCHISE

@@ -47,3 +47,52 @@ renderProgress = (element) ->
   element.append icon
   element.append $("<span> </span>")
   element.append progress + " / " + total_episodes
+
+@initializeWatchlistStatusButton = (element) ->
+  unless currentUser
+    element.append $("<a href='/users/sign_in' class='button radius padded'>Add to Watchlist</a>")
+    return
+
+  element.empty()
+  
+  anime = element.attr("data-anime")
+  status = element.attr("data-status")
+  statusParams = ["plan-to-watch", "currently-watching", "completed", "on-hold", "dropped"]
+  statusHumanizer = {
+    "plan-to-watch": "Plan to Watch",
+    "currently-watching": "Currently Watching",
+    "completed": "Completed",
+    "on-hold": "On Hold",
+    "dropped": "Dropped"
+  }
+  
+  # Create the actual button.
+  dropdownId = anime + "-status-dropdown"
+  element.append $("<a class='button radius padded' href='javascript:void(0)' data-dropdown='" + dropdownId + "'></a>")
+  if status == "false"
+    element.find("a").html "Add to Watchlist"
+  else
+    element.find("a").html statusHumanizer[status]
+    
+  # Now, onto the dropdown.
+  element.append $("<ul class='f-dropdown status-button' id='" + dropdownId + "'></ul>")
+  _.each statusParams, (statusParam) ->
+    if status != statusParam
+      dropdownItem = $("<li><a href='javascript:void(0)'></a></li>")
+      dropdownItem.find("a").html statusHumanizer[statusParam]
+      dropdownItem.click ->
+        $.post "/api/v1/libraries/" + anime, {status: statusParam}, (d) ->
+          element.attr "data-status", d.status_parameterized
+          initializeWatchlistStatusButton element
+      element.find("ul").append dropdownItem
+  # Add "Remove" item.
+  if status != "false"
+    dropdownItem = $("<li><a href='javascript:void(0)'></a></li>")
+    dropdownItem.find("a").html "Remove"
+    dropdownItem.click ->
+      $.post "/watchlist/remove", {anime_id: anime}, (d) ->
+        if d
+          element.attr "data-status", "false"
+          initializeWatchlistStatusButton element
+    element.find("ul").append dropdownItem
+
