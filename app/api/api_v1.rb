@@ -1,6 +1,9 @@
 require_relative 'entities.rb'
+require_relative 'api_new_relic_instrumenter.rb'
 
 class API_v1 < Grape::API
+  use ApiNewRelicInstrumenter
+
   version 'v1', using: :path, format: :json, vendor: 'hummingbird'
 
   #
