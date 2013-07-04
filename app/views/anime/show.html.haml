@@ -18,12 +18,13 @@
         :coffee
           initializeWatchlistStatusButton $(".watchlist-status-button")
 
-      .large-12.columns.no-padding.side-block
-        %h5 FRANCHISE
-        %ul.franchise-list
-          %li= link_to "Bakemonogatari", "#", :class => "active"
-          %li= link_to "Nisemonogatari", "#"
-          %li= link_to "Bakemonogatari (Manga)", "#"
+      - if false
+        .large-12.columns.no-padding.side-block
+          %h5 FRANCHISE
+          %ul.franchise-list
+            %li= link_to "Bakemonogatari", "#", :class => "active"
+            %li= link_to "Nisemonogatari", "#"
+            %li= link_to "Bakemonogatari (Manga)", "#"
 
       .large-12.columns.no-padding.side-block
         = link_to (image_tag "jlist.png", alt: "J-List"), "http://anime.jlist.com/click/4785?url=http://www.jlist.com/search/all/#{@anime.canonical_title.parameterize.gsub("-", "_")}"
