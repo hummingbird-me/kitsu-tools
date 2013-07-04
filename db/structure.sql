@@ -1994,6 +1994,20 @@ CREATE INDEX index_watchlists_on_anime_id_and_rating ON watchlists USING btree (
 
 
 --
+-- Name: index_watchlists_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_watchlists_on_created_at ON watchlists USING btree (created_at DESC);
+
+
+--
+-- Name: index_watchlists_on_last_watched; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_watchlists_on_last_watched ON watchlists USING btree (last_watched DESC);
+
+
+--
 -- Name: person_mal_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2410,3 +2424,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130629180008');
 INSERT INTO schema_migrations (version) VALUES ('20130629222429');
 
 INSERT INTO schema_migrations (version) VALUES ('20130703015606');
+
+INSERT INTO schema_migrations (version) VALUES ('20130704221234');
