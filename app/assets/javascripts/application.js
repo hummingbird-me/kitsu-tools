@@ -25,6 +25,7 @@
 //= require multiselect.js
 //= require typeahead.js
 //= require offcanvas.js
+//= require jquery.easy-pie-chart.js
 //
 //= require googleplus.js
 //= require twitter.js
@@ -33,8 +34,6 @@
 //= require i18n/translations
 //
 //= require hogan-2.0.0.js
-//
-//= require bootstrap-tooltip.js
 //
 // Part 2 -- Library initialization.
 //

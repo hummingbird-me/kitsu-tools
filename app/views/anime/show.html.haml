@@ -1,31 +1,97 @@
-.anime-discover.anime-show
+
+.anime-discover.anime-show.quote-page
   .row
-    / Main Content Section
-    / This has been source ordered to come first in the markup (and on small devices) but to be to the right of the nav on larger screens
-    .large-8.columns
-      .panel.anime-details.cards.cf
-        .details-left
-          = render partial: "card", locals: {data: [@anime, @watchlist]} 
-        .details-right.large-8.columns
-          %h3= title(@anime.canonical_title(current_user))
 
-          .small-summary 
-            %span #{pluralize @anime.episode_count, 'episode'} / #{@anime.episode_length} min. each  ||
-            %span.has-tip{:"data-width" => 200, :title => @anime.age_rating_guide}
-              = @anime.age_rating
-            - if @anime.alternate_title(current_user) and @anime.alternate_title(current_user).length > 0
-              %span (Also known as <strong>#{@anime.alternate_title(current_user)}</strong>)
+    // Left Column
+    .large-2.columns.no-padding-right
+      .quote-thumb
+        = image_tag @anime.cover_image.url(:thumb)
+      / .series-rating
+      /   %i.icon-star
+      /   %i.icon-star
+      /   %i.icon-star
+      /   %i.icon-star-empty
+      /   %i.icon-star-empty
 
-          .producers
-            %p 
-            Producers: 
-            = @producers.map {|x| link_to(x.name, x) }.join(", ").html_safe
+      .large-12.columns.no-padding
+        .watchlist-status-button{:"data-anime" => @anime.slug, :"data-status" => @watchlist ? @watchlist.status.parameterize : "false"}
+        :coffee
+          initializeWatchlistStatusButton $(".watchlist-status-button")
 
+      - if false
+        .large-12.columns.no-padding.side-block
+          %h5 FRANCHISE
+          %ul.franchise-list
+            %li= link_to "Bakemonogatari", "#", :class => "active"
+            %li= link_to "Nisemonogatari", "#"
+            %li= link_to "Bakemonogatari (Manga)", "#"
+
+      .large-12.columns.no-padding.side-block
+        = link_to (image_tag "jlist.png", alt: "J-List"), "http://anime.jlist.com/click/4785?url=http://www.jlist.com/search/all/#{@anime.canonical_title.parameterize.gsub("-", "_")}"
+      .large-12.columns.no-padding.side-block
+        = link_to (image_tag "amazon.png", alt: "Amazon"), "http://www.amazon.com/s/?field-keywords=#{u @anime.canonical_title}&tag=hummingbir0fe-20"
+
+      - if @similar.length > 0
+        .large-12.columns.no-padding.side-block
+          %h5 SIMILAR
+          - @similar.each do |similar|
+            .large-6.columns.sidebar-series.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => similar.canonical_title(current_user)}
+              = link_to (image_tag similar.cover_image.url(:thumb), alt: similar.canonical_title), similar
+
+    // Center Column
+    .large-7.columns.center-column
+      .panel
+        .large-12.columns
+          %h2.series-title= title @anime.canonical_title(current_user)
+          - if (alt = @anime.alternate_title(current_user)) and alt.strip.length > 0
+            %span.series-alt-title (#{alt}) 
+          %span.air-date 
+
+        .large-12.columns
+          %p.series-meta-data 
+            / Show type
+            - if @anime.show_type
+              %span 
+                - if @anime.show_type == "TV"
+                  TV Series
+                - else
+                  = @anime.show_type
+                ·
+            / Age rating
+            - if @anime.age_rating
+              %span 
+                = @anime.age_rating
+                - if @anime.age_rating_guide
+                  (#{@anime.age_rating_guide})
+                ·
+            / Episode count
+            %span 
+              - if @anime.episode_count and @anime.episode_count > 0
+                = @anime.episode_count
+              - else
+                ?
+              Episodes ·
+            / Episode length
+            %span 
+              - if @anime.episode_length and @anime.episode_length > 0
+                = @anime.episode_length
+              - else
+                ?
+              Min Each ·
+            %span
+              = @anime.status
+          %hr
+        .large-12.columns
           .genres
-            %p 
-            Genres:
-            = @genres.map {|x| link_to(x.name, x) }.join(", ").html_safe
-
+            - @anime.genres.each do |genre|
+              = link_to genre.name, genre, class: 'series-tag'
+          / Synopsis
+          %p.series-description 
+            - if @anime.synopsis.length > 500
+              = truncate @anime.synopsis, length: 500, separator: ' ', omission: '...'
+              = link_to_function "[read more]", "$(this).parent().html('#{j @anime.synopsis}')"
+            - else
+              = @anime.synopsis
           .social-links
             %ul.inline-list
               %li
@@ -34,220 +100,204 @@
                 %a.twitter-share-button{"data-via" => "Hummingbird_me", :href => "https://twitter.com/share"} Tweet
               %li
                 .g-plusone{"data-size" => "medium"}
-            
-          .synopsis
-            %strong Status: #{@anime.status}
-            %p #{@anime.synopsis}
+          %hr
 
-      - if can? :update, @anime
-        .panel.moderation-tools
-          %header 
-            .large-11.columns
-              Moderation Tools
+        // Cast
+        .large-12.columns
+          %h4 CAST
 
-          .moderation-form
-            = form_for @anime do |f|
-              .row
-                / Episode Count and Length
-                .large-3.columns
-                  = f.label :episode_count, class: 'inline'
-                .large-9.columns
-                  = f.number_field :episode_count
-                .large-3.columns
-                  = f.label :episode_length, class: 'inline'
-                .large-9.columns
-                  = f.number_field :episode_length
-                / TheTVDB Series and Season IDs
-                .large-3.columns
-                  = f.label :thetvdb_series_id, "TheTVDB Series ID", class: 'inline'
-                .large-9.columns
-                  = f.number_field :thetvdb_series_id
-                .large-3.columns
-                  = f.label :thetvdb_season_id, "TheTVDB Season ID", class: 'inline'
-                .large-9.columns
-                  = f.number_field :thetvdb_season_id
-                / MAL ID
-                .large-3.columns
-                  = f.label :mal_id, "MAL ID", class: 'inline'
-                .large-9.columns
-                  = f.number_field :mal_id
-                / English canonical
-                .large-3.columns
-                  = f.label :english_canonical, "English Title Canonical?", class: 'inline'
-                .large-9.columns
-                  = f.check_box :english_canonical
-
-                .large-12.columns
-                  = f.submit class: 'button padded'
-            
-            = link_to "Get Episodes from TheTVDB", anime_get_episodes_from_thetvdb_path(@anime), class: 'button', method: :post
-            = link_to "Get Metadata from MAL", anime_get_metadata_from_mal_path(@anime), class: 'button', method: :post
-
-
-      .panel.community-rating
-        .upper.large-12.columns
-          .decoration.large-3.columns.hide-for-small
-            %p.left <i></i>
-
-          - if @anime.wilson_ci
-            .large-6.columns 
-              %h6 Community Rating
-              %p{:class => @anime.wilson_ci >= 0.5 ? "percentage-positive" : "percentage-negative"}
-                %i
-                #{(@anime.wilson_ci*100).to_i}%
-              %p.based-on Based on #{number_with_delimiter @anime.user_count} Ratings
-
-          .decoration.large-3.columns.hide-for-small
-            %p.right <i></i>
-        .lower.large-12.columns
-          .positive-review.large-6.columns
-            %h6 Top Rated <span>Positive</span> Review
-
-            - if @top_reviews[:positive]
-              %p
-                = @top_reviews[:positive].summary || truncate(strip_tags(@top_reviews[:positive].content), length: 300, omission: '...')
-                = link_to "read more", anime_review_path(@anime, @top_reviews[:positive])
-              %span.user
-                = image_tag @top_reviews[:positive].user.avatar.url(:thumb)
-                = link_to @top_reviews[:positive].user.name, @top_reviews[:positive].user
-            - else
-              .no-reviews.large-9.columns.large-centered
-                = image_tag "http://cl.ly/image/3u2X0t1B0E11/no-positive-reviews@2x.jpg"
-                %p 
-                  No positive reviews.
-                  %br
-                  = link_to new_anime_review_path(@anime) do
-                    Write the first!
-
-          .negative-review.large-6.columns
-            %h6 Top Rated <span>Negative</span> Review
-
-            - if @top_reviews[:negative]
-              %p
-                = @top_reviews[:negative].summary || truncate(strip_tags(@top_reviews[:negative].content), length: 300, omission: '...')
-                = link_to "read more", anime_review_path(@anime, @top_reviews[:negative])
-              %span.user
-                = image_tag @top_reviews[:negative].user.avatar.url(:thumb)
-                = link_to @top_reviews[:negative].user.name, @top_reviews[:negative].user
-            - else
-              .no-reviews.large-9.columns.large-centered
-                = image_tag "http://cl.ly/image/0T2u2t2J0Z35/no-negative-reviews@2x.jpg"
-                %p 
-                  No negative reviews.
-                  %br
-                  = link_to new_anime_review_path(@anime) do
-                    Write the first!
+          // Hide me if only one language!!!
+          - if @languages.length > 1
+            %dl.sub-nav.language-select
+              %dt Language:
+              - @languages.each_with_index do |language, i|
+                %dd{:class => ("active" if i == 0), :id => language}
+                  %a(href="javascript:void(0)"){:id => language}= language
                 
-        .footer.large-12.columns
-          = link_to "view all reviews", anime_reviews_path(@anime)
+            :coffee
+              $("dl.language-select a").click ->
+                language = $(this).attr("id")
+                $("dl.language-select dd").removeClass("active")
+                $("dl.language-select dd#" + language).addClass("active")
+                $("ul.cast").hide()
+                $("ul.cast#" + language).show()
 
-      .panel.episode-tracker
-        %header 
-          .large-11.columns
-            #{@anime.canonical_title(current_user)} Episodes
-          / .large-1.columns
-          /   = link_to "edit", "#"
+          - @languages.each_with_index do |language, i|
+            %ul.cast{:id => language, :style => ("display: none" if i != 0)}
+              - @castings.select {|x| x.role == language }.each do |casting|
+                %li.actor
+                  %a.character
+                    = image_tag casting.character.image.url(:thumb_small), alt: "#{casting.character.name} - #{@anime.canonical_title}", width: 30
+                    = casting.character.name
+                  %span.va
+                    %a.voice-actor
+                      = casting.person.name
+                      = image_tag casting.person.image.url(:thumb_small), alt: "#{casting.person.name} - Voice Actor", width: 30, height: 47
 
-        = render partial: "episodes/list_four", locals: {episodes: @episodes, anime: @anime}
-
-      .panel.voice-actors
-        %header 
-          .large-11.columns
-            #{@anime.canonical_title(current_user)} Voice Actors
-          / .large-1.columns
-          /   = link_to "edit", "#"
-
-        .section-container.auto(data-section)
-          - @languages.each do |language|
-            %section
-              %p.title(data-section-title)
-                %a{:href => "##{language}"}= language
-              .content
-                - @castings.select {|x| x.role == language }.each do |casting|
-                  .actor-row.large-12.columns(data-section-content)
-                    .character.large-5.columns
-                      .headshot.large-2.columns
-                        = image_tag casting.character.image.url(:thumb)
-                      .name.large-10.columns
-                        %p= link_to casting.character.name, "#"
-                    .divider.large-2.columns
-                      %hr
-                    .actor.large-5.columns
-                      .name.large-10.columns
-                        %p= link_to casting.person.name, "#"
-                      .headshot.large-2.columns
-                        = image_tag casting.person.image.url(:thumb)
-                    
-        %footer.large-12.columns
-          %p= link_to "view complete cast", "#"
-
-    / Nav Sidebar
-    .large-4.columns
-      - if @anime.youtube_video_id
-        .trailer
-          .flex-video
-            %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}", :width => "420"}
-      .large-12.columns.sidebar-ad
+              %li.show-more
+                %a(data-tooltip title="Coming soon!"){:href => "javascript:void(0)"} Show all actors +
+              %hr
+            
+      .large-12.columns.panel.ad-zone.center
         :javascript
           google_ad_client = "ca-pub-3410319844519574";
-          /* Anime Page Sidebar */
-          google_ad_slot = "9999756849";
-          google_ad_width = 300;
-          google_ad_height = 250;
-          
+          /* Anime Page - Center Column */
+          google_ad_slot = "4664352842";
+          google_ad_width = 468;
+          google_ad_height = 60;
         %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
 
-      = render "mini_gallery"
+      .large-12.columns.panel.popular-reviews
+        .large-12.columns
+          %h4 Trending Reviews
+          - @reviews.each do |review|
+            %hr
+            .large-12.columns.no-padding
+              .large-1.columns.no-padding.center
+                = avatar_link review.user
+              .large-9.columns.review-left-wrapper
+                %h5 
+                  Review by
+                  = link_to review.user.name, review.user
+                %p= review.summary || truncate(strip_tags(review.content), length: 140, separator: ' ', omission: '...')
+                %p= link_to "Read Review", anime_review_path(@anime, review)
+              .large-2.columns.no-padding
+                .chart{:"data-percent" => review.rating * 10}
+                  = review.rating
 
-      .quotes.large-12.columns
-        %h5 #{@anime.canonical_title(current_user)} Quotes
+          :coffee
+            $(".chart").easyPieChart
+              size: 86
+          :css
+            .chart {
+              margin: 10px;
+              font-size: 2em;
+              font-weight: bold;
+            }
 
+          %hr
+          %p.center.reviews-footer 
+            = link_to "Write a Review", new_anime_review_path(@anime)
+            or
+            = link_to "View All Reviews", anime_reviews_path(@anime)
+
+      - if false
+        .large-12.columns.option-bar.hide-for-small
+          .small-6.large-2.columns
+            %p.option-title Activity Feed
+          .small-12.large-9.columns.options
+            %ul.status-tabs.inline-list
+              %li#tab-all.active
+                %a{:href => "#all", :onclick => "showRelevantSections('all')"} All
+              %li
+                %a{:href => "#comments", :onclick => "showRelevantSections('comments')"} Comments
+              %li
+                %a{:href => "#library", :onclick => "showRelevantSections('library')"} Library
+              %li
+                %a{:href => "#events", :onclick => "showRelevantSections('events')"} Events
+
+        .large-12.columns.feed.no-padding
+          .large-12.columns.feed-form
+            %form.comment
+              .posting-indicator
+                %i.icon-spin.icon-spinner
+              %input.comment{:autocomplete => "off", :name => "comment", :placeholder => "Write something...", :type => "text"}/
+          %ul.feed-list.activity-feed/
+          %div
+            %div
+              %li.feed-item.cf
+                .large-12.columns.feed-wrapper
+                  .small-3.large-2.columns.no-padding-right
+                    %a{:href => "/users/2-josh"}
+                      %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/956/thumb/tumblr_mip3faRBwQ1rediswo1_250.gif?1372022638"}/
+                  .small-9.large-10.columns
+                    %h4.anime-feed-title
+                      %a{:href => "/users/2-josh"} Clara
+                      commented on
+                      %a{:href => "#"} Attack on Titan
+                    %hr.feed-divider
+                      .large-12.columns.no-padding-left
+                        %p.wall-post-copy Can't wait until the next episode! <3
+                        %p.time
+                          %span.time-ago
+                            22 minutes ago
+            %div
+              %li.feed-item.cf
+                .large-12.columns.feed-wrapper
+                  .small-3.large-2.columns.no-padding-right
+                    %a{:href => "/users/2-josh"}
+                      %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
+                  .small-9.large-10.columns
+                    %h4.anime-feed-title
+                      %a{:href => "/users/2-josh"} Josh
+                      commented on
+                      %a{:href => "#"} Attack on Titan
+                    %hr.feed-divider
+                      .large-12.columns.no-padding-left
+                        %p.wall-post-copy I couldn't hold out any longer. I read the manga...
+                        %p.time
+                          %span.time-ago
+                            22 minutes ago
+            %div
+              %li.feed-item.cf
+                .large-12.columns.feed-wrapper
+                  .small-3.large-2.columns.no-padding-right
+                    %a{:href => "/users/2-josh"}
+                      %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
+                  .small-9.large-10.columns
+                    %h4.anime-feed-title
+                      %a{:href => "/users/2-josh"} Josh
+                      commented on
+                      %a{:href => "#"} Attack on Titan
+                    %hr.feed-divider
+                      .large-12.columns.no-padding-left
+                        %p.wall-post-copy I couldn't hold out any longer. I read the manga...
+                        %p.time
+                          %span.time-ago
+                            22 minutes ago          
+            %div
+              %li.feed-item.cf
+                .large-12.columns.feed-wrapper
+                  .small-3.large-2.columns.no-padding-right
+                    %a{:href => "/users/2-josh"}
+                      %img{:alt => "Josh", :src => "http://hummingbird.me/system/users/avatars/000/000/002/thumb/534622_473195162710276_654386858_n_(1).jpg?1370705025"}/
+                  .small-9.large-10.columns
+                    %h4.anime-feed-title
+                      %a{:href => "/users/2-josh"} Josh
+                      commented on
+                      %a{:href => "#"} Attack on Titan
+                    %hr.feed-divider
+                      .large-12.columns.no-padding-left
+                        %p.wall-post-copy I couldn't hold out any longer. I read the manga...
+                        %p.time
+                          %span.time-ago
+                            22 minutes ago
+
+
+    // Right Column
+    .large-3.columns
+      //trailer
+      - if @anime.youtube_video_id
+        .large-12.columns.no-padding.side-block
+          %h5 TRAILER
+          .flex-video
+            %iframe(allowfullscreen frameborder=0 height="auto" width="100%"){:src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}"}
+
+      //screns
+      - if @anime.gallery_images.count > 0
+        .large-12.columns.no-padding.side-block
+          %h5 SCREENCAPS
+          - @anime.gallery_images.each do |gallery_image|
+            = image_tag gallery_image.image.url(:thumb), alt: "#{@anime.canonical_title} Screencap"
+
+      //quotes
+      .large-12.columns.no-padding.side-block
+        %h5 QUOTES
         - @quotes.each do |quote|
           %blockquote
             = quote.content
-            —
+            %br
+            &mdash;
             = quote.character_name
-        %p
-          = link_to "[Show all]", anime_quotes_url(@anime)
-          %a{"data-reveal-id" => "quoteModal", :href => "#"} [Submit quote]
-
-
-
-    - if user_signed_in? and current_user.admin?
-      .similar-anime.large-12.columns.hide-for-small
-        %header
-          .large-4.columns
-            %hr
-          .large-4.columns
-            %h3 Similar Anime
-          .large-4.columns
-            %hr
-          .row
-            .recommended.large-6.columns
-              .panel.large-12.columns
-                .large-4.columns
-                  = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
-                .large-8.columns.end
-                  %p.title Accel World
-                  %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual...
-
-                  .rating.negative.large-4.columns
-                    54%
-
-            .recommended.large-6.columns
-              .panel.large-12.columns
-                .large-4.columns
-                  = image_tag "http://localhost:3000/system/anime/cover_images/000/000/137/thumb/20539.jpg?1360397891"
-                .large-8.columns.end
-                  %p.title Accel World
-                  %p Sakamoto Ryota still has no job at age 22, and leads a rather dull life. But in the online game, BTOOOM!, he's stronger and more highly respected than anyone else. However, the game he's playing now is no longer virtual...
-
-                  .rating.positive.large-4.columns
-                    72%
-
-// Quote Modal
-#quoteModal.reveal-modal{:class => "medium"}
-  = render "quotes/new"
-
-- if user_signed_in?
-  = render partial: "watchlists/form_modal", locals: {watchlist: @watchlist || Watchlist.new(user: current_user, anime: @anime)}
+        = link_to "[show more]", anime_quotes_path(@anime)
+  

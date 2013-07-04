@@ -86,10 +86,10 @@ before "deploy", "deploy:sudo_prompt"
 after "deploy:restart",
   "deploy:reload_unicorn"
 
+before "deploy:restart", "deploy:migrate"
+
 before "sidekiq:restart", "deploy:stop_monit_sidekiq"
 after "sidekiq:restart", "deploy:start_monit_sidekiq"
-
-after "deploy:migrate", "deploy:reload_unicorn"
 
 after "deploy:update", "newrelic:notice_deployment"
 

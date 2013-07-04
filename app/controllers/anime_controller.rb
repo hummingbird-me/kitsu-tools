@@ -1,20 +1,28 @@
 class AnimeController < ApplicationController
   include EpisodesHelper
   
+  def ci_lower_bound(pos, n)
+    if n == 0
+      return 0
+    end
+    z = 1.96
+    phat = 1.0*pos/n
+    (phat + z*z/(2*n) - z * Math.sqrt((phat*(1-phat)+z*z/(4*n))/n))/(1+z*z/n)
+  end
+  
   def show
     @anime = Anime.find(params[:id])
-    # If an old id or a numeric id was used to find the record, then
-    # the request path will not match the post_path, and we should do
-    # a 301 redirect that uses the current friendly id.
+    # Redirect the user to the canonical URL if they got here from an old or
+    # numeric ID.
     if request.path != anime_path(@anime)
       return redirect_to @anime, :status => :moved_permanently
     end
     
     @genres = @anime.genres
     @producers = @anime.producers
-    @quotes = @anime.quotes.limit(4)
-    @castings = Casting.where(anime_id: @anime.id, featured: true)
+    @quotes = Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => "votes DESC", :limit => 4})
     
+    @castings = Casting.where(anime_id: @anime.id, featured: true)
     @languages = @castings.map {|x| x.role }.sort
     ["English", "Japanese"].reverse.each do |l|
       @languages.unshift l if @languages.include? l
@@ -23,10 +31,10 @@ class AnimeController < ApplicationController
 
     @gallery = @anime.gallery_images.limit(6)
 
-    @top_reviews = {
-      positive: @anime.reviews.where('rating > 5').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first,
-      negative: @anime.reviews.where('rating <= 5').find_with_reputation(:votes, :all, {order: "votes DESC", limit: 1}).first
-    }
+    @reviews = Review.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id]}).sort_by do |review|
+      ci_lower_bound(review.votes.to_i, review.evaluations.length)
+    end
+    @reviews = @reviews[0...4] if @reviews.length > 4
 
     if user_signed_in?
       @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
@@ -34,8 +42,7 @@ class AnimeController < ApplicationController
       @watchlist = false
     end
 
-    # Get the list of episodes.
-    @episodes = select_four_episodes(@watchlist, @anime)
+    @similar = @anime.similar(2)
 
     # Add to recently viewed.
     if @anime.sfw?
