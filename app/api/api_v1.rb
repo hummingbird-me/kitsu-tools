@@ -72,7 +72,7 @@ class API_v1 < Grape::API
     end
     get ":user_id/feed" do
       @user = User.find(params[:user_id])
-      @stories = @user.stories.accessible_by(current_ability).order('updated_at DESC').page(params[:page]).per(20)
+      @stories = @user.stories.accessible_by(current_ability).order('updated_at DESC').includes(:substories).page(params[:page]).per(20)
       
       present @stories, with: Entities::Story, current_ability: current_ability, title_language_preference: (user_signed_in? ? current_user.title_language_preference : "canonical")
     end
