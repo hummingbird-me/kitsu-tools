@@ -162,8 +162,9 @@
                 %p= review.summary || truncate(strip_tags(review.content), length: 140, separator: ' ', omission: '...')
                 %p= link_to "Read Review", anime_review_path(@anime, review)
               .large-2.columns.no-padding
-                .chart{:"data-percent" => review.rating * 10}
-                  = review.rating
+                - if review.rating
+                  .chart{:"data-percent" => review.rating * 10}
+                    = review.rating
 
           :coffee
             $(".chart").easyPieChart
