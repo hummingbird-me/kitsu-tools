@@ -34,6 +34,7 @@ class AdminController < ApplicationController
     @user_count   = User.count
 
     @hide_cover_image = true
+    @hide_footer_ad = true
   end
 
   def login_as_user
