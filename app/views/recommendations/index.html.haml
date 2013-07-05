@@ -116,16 +116,14 @@
     slug = $(this).attr("data-slug")
     $(this).html $("<i></i>").addClass("icon-spin").addClass("icon-spinner")
     that = this
-    $.post "/api/v1/libraries/" + slug, {status: "plan-to-watch"}, (d) ->
+    $.post "/recommendations/plan_to_watch", {anime: slug}, (d) ->
       $(that).find("i").removeClass("icon-spin").removeClass("icon-spinner").addClass("icon-ok")
-      $.get("/recommendations")
 
   $("a.not-interested").click ->
     slug = $(this).attr("data-slug")
     that = this
     $.post "/recommendations/not_interested", {anime: slug}, (d) ->
       $(that).closest("li").fadeTo(500, 0.2)
-      $.get("/recommendations")
   
 
 / .tooltip-contents.hide

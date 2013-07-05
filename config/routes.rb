@@ -15,6 +15,7 @@ Hummingbird::Application.routes.draw do
   # Recommendations
   match '/recommendations' => 'recommendations#index'
   match '/recommendations/not_interested' => 'recommendations#not_interested'
+  match '/recommendations/plan_to_watch' => 'recommendations#plan_to_watch'
 
   # Chat
   match '/chat' => 'chat#index'
