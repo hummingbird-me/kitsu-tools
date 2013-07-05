@@ -14,4 +14,4 @@ production:
   username: hummingbird
   password: TheBoilingPointOfCarbonDioxide
   host: localhost
-  pool: 25
+  pool: 50
