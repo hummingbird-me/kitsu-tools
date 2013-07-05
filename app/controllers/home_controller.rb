@@ -4,26 +4,19 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
 
-      if params[:ob] and false
+      @onboarding = true if (params[:ob] and current_user.mal_username.nil?)
 
-        @hide_footer_ad = true
-        render :onboarding
-
-      else
-
-        respond_to do |format|
-          format.html do
-            @forum_topics = Forem::Topic.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
-            @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
-          end
-          format.json do
-            @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).page(params[:page]).includes(:substories).per(20)
-            render :json => Entities::Story.represent(@stories, current_ability: current_ability, title_language_preference: user_signed_in? ? current_user.title_language_preference : "canonical")
-          end
+      respond_to do |format|
+        format.html do
+          @forum_topics = Forem::Topic.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
+          @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
         end
-      
+        format.json do
+          @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).page(params[:page]).includes(:substories).per(20)
+          render :json => Entities::Story.represent(@stories, current_ability: current_ability, title_language_preference: user_signed_in? ? current_user.title_language_preference : "canonical")
+        end
       end
-
+      
     else
       @hide_footer_ad = ab_test("footer_ad_on_guest_homepage", "show", "hide") == "hide"
       render :guest_index

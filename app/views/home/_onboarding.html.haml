@@ -1,0 +1,22 @@
+.reveal-modal.medium.onboarding#onboarding-modal
+  %h2 Welcome to Hummingbird!
+
+  - if false
+    %p.lead
+      If you have a MyAnimeList account, you can import your anime list.
+
+    %form
+      .large-6.columns
+        .row.collapse
+          .small-9.columns
+            %input(type="text" placeholder="MyAnimeList Username")
+          .small-3.columns
+            %a.button.prefix 
+              Import
+              %span.right
+                %i.icon-chevron-right
+
+
+:coffee
+  $ ->
+    $("#onboarding-modal").foundation('reveal', 'open')
