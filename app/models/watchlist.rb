@@ -59,6 +59,10 @@ class Watchlist < ActiveRecord::Base
     end
   end
   
+  after_save do
+    self.user.update_column :last_library_update, Time.now
+  end
+  
   def update_episode_count(new_count)
     old_count = self.episodes_watched
     self.episodes_watched = new_count

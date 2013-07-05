@@ -699,6 +699,39 @@ ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
 
 
 --
+-- Name: not_interesteds; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE not_interesteds (
+    id integer NOT NULL,
+    user_id integer,
+    media_id integer,
+    media_type character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: not_interesteds_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE not_interesteds_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: not_interesteds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE not_interesteds_id_seq OWNED BY not_interesteds.id;
+
+
+--
 -- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1177,7 +1210,9 @@ CREATE TABLE users (
     followers_count_hack integer DEFAULT 0,
     following_count integer DEFAULT 0,
     neon_alley_integration boolean DEFAULT false,
-    ninja_banned boolean DEFAULT false
+    ninja_banned boolean DEFAULT false,
+    last_library_update timestamp without time zone,
+    last_recommendations_update timestamp without time zone
 );
 
 
@@ -1364,6 +1399,13 @@ ALTER TABLE ONLY gallery_images ALTER COLUMN id SET DEFAULT nextval('gallery_ima
 --
 
 ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY not_interesteds ALTER COLUMN id SET DEFAULT nextval('not_interesteds_id_seq'::regclass);
 
 
 --
@@ -1606,6 +1648,14 @@ ALTER TABLE ONLY gallery_images
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: not_interesteds_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY not_interesteds
+    ADD CONSTRAINT not_interesteds_pkey PRIMARY KEY (id);
 
 
 --
@@ -1942,6 +1992,13 @@ CREATE INDEX index_friendly_id_slugs_on_sluggable_type ON friendly_id_slugs USIN
 --
 
 CREATE INDEX index_gallery_images_on_anime_id ON gallery_images USING btree (anime_id);
+
+
+--
+-- Name: index_not_interesteds_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_not_interesteds_on_user_id ON not_interesteds USING btree (user_id);
 
 
 --
@@ -2414,3 +2471,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130703015606');
 INSERT INTO schema_migrations (version) VALUES ('20130704221234');
 
 INSERT INTO schema_migrations (version) VALUES ('20130704223019');
+
+INSERT INTO schema_migrations (version) VALUES ('20130704233952');
+
+INSERT INTO schema_migrations (version) VALUES ('20130705000315');
+
+INSERT INTO schema_migrations (version) VALUES ('20130705000522');

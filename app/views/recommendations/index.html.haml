@@ -123,7 +123,7 @@
   $("a.not-interested").click ->
     slug = $(this).attr("data-slug")
     that = this
-    $.post "/api/v1/libraries/" + slug, {status: "dropped"}, (d) ->
+    $.post "/recommendations/not_interested", {anime: slug}, (d) ->
       $(that).closest("li").fadeTo(500, 0.2)
       $.get("/recommendations")
   

@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   has_many :substories
 
   has_one :recommendation
+  has_many :not_interested
+  has_many :not_interested_anime, through: :not_interested, source: :media, source_type: "Anime"
   
   def to_param
     "#{id} #{name}".parameterize

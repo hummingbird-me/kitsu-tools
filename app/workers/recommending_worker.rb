@@ -29,7 +29,7 @@ class RecommendingWorker
     # Fetch relevant similarities from remote server.
     similarities = {}
     user_watchlists = user.watchlists
-    user_watchlists_anime_ids = user_watchlists.map {|x| x.anime_id }
+    user_watchlists_anime_ids = (user_watchlists.map {|x| x.anime_id } + user.not_interested_anime.map {|x| x.id }).uniq
     user_watchlists.each do |watchlist|
       similarities[watchlist.anime_id] ||= {}
       JSON.load( open("http://app.vikhyat.net/anime_safari/related/#{watchlist.anime.mal_id}") ).each do |similar|
@@ -89,5 +89,6 @@ class RecommendingWorker
     recommendation.save
     
     user.update_column :recommendations_up_to_date, true
+    user.update_column :last_recommendations_update, Time.now
   end
 end

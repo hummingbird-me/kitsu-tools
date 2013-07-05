@@ -1,18 +1,19 @@
 class RecommendationsController < ApplicationController
+  before_filter :authenticate_user!
+  
   def index
-    authenticate_user!
     @hide_cover_image = true
     
-    new_watchlist_hash = current_user.compute_watchlist_hash
-    if current_user.watchlist_hash != new_watchlist_hash
-      current_user.update_attributes(
-        watchlist_hash: new_watchlist_hash,
-        recommendations_up_to_date: false
-      )
+    if current_user.last_library_update.nil?
+      current_user.update_column :last_library_update, Time.now
+    end
+
+    if current_user.last_recommendations_update.nil? or current_user.last_library_update > current_user.last_recommendations_update
+      current_user.update_column :recommendations_up_to_date, false
       RecommendingWorker.perform_async(current_user.id)
     end
     
-    # FIXME This is temporary!
+    # Uncomment for synchronous recommendations.
     # RecommendingWorker.new.perform(current_user.id)
     
     # Load recommended anime.
@@ -31,5 +32,14 @@ class RecommendationsController < ApplicationController
       "plan_to_watch" => "you",
       "completed" => "you've"
     }
+  end
+
+  def not_interested
+    anime = Anime.find params[:anime]
+    unless current_user.not_interested_anime.include? anime
+      current_user.not_interested_anime.push anime
+      current_user.update_column :last_library_update, Time.now
+    end
+    render :json => true
   end
 end

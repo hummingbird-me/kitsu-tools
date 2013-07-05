@@ -12,7 +12,9 @@ Hummingbird::Application.routes.draw do
   match '/privacy' => 'home#privacy'
   match '/developers/api' => 'home#api'
 
-  resources :recommendations
+  # Recommendations
+  match '/recommendations' => 'recommendations#index'
+  match '/recommendations/not_interested' => 'recommendations#not_interested'
 
   # Chat
   match '/chat' => 'chat#index'
