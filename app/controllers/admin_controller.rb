@@ -32,6 +32,8 @@ class AdminController < ApplicationController
     @recent_beta  = BetaInvite.order('created_at DESC').limit(5)
     @invited_beta = BetaInvite.where(invited: true).count
     @user_count   = User.count
+
+    @hide_cover_image = true
   end
 
   def login_as_user
