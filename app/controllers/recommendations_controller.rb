@@ -38,6 +38,7 @@ class RecommendationsController < ApplicationController
     anime = Anime.find params[:anime]
     unless current_user.not_interested_anime.include? anime
       current_user.not_interested_anime.push anime
+      mixpanel.track "Recommendations: Not Interested", {email: current_user.email, anime: anime.slug} if Rails.env.production?
       current_user.update_column :last_library_update, Time.now
     end
     render :json => true
