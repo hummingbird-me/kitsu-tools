@@ -133,6 +133,8 @@
     render: ->
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
       this.$el.html this.template this.model.toJSON()
+      if this.$el.find("span.total-episodes").html() == "0"
+        this.$el.find("span.total-episodes").html("?")
       that = this
       this.$el.find("td:first").click ->
         that.toggleDropdown()

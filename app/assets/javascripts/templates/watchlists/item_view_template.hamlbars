@@ -20,7 +20,9 @@
       %i.icon-angle-up
     {{/currentUsersProfile}}
     %span.edit {{episodes_watched}}
-    %span.hide-small / {{anime.episode_count}}
+    %span.hide-small 
+      \/ 
+      %span.total-episodes {{anime.episode_count}}
 
 %td{:width => "76"} 
   %span.select
