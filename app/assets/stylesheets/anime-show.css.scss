@@ -29,9 +29,11 @@
     background-color: #ededed;
     border-color: #dbdbdb;
     color: #222222;
+    display: inline-block;
     border-style: solid;
     border-width: 1px;
     margin: 0;
+    margin-bottom: 10px;
     font-size: 14px;
     padding: 3px 6px;
     @include border-radius(3px);
@@ -84,8 +86,8 @@
 
   // Center column description
   .genres {
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 0px;
   }
   .series-description {
     font-size: 16px;
