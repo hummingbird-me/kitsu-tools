@@ -1,24 +1,57 @@
 .onboarding {
-  form {
-    a.button {
-      border-radius: 0;
-      padding: 4px;
-      height: 2em;
-      line-height: 1.4em;
-      border: 1px solid rgb(238, 113, 51);
-      span.right {
-        line-height: 1.5em;
-        padding-right: 8px;
-      }
-      &:hover {
-        border: 1px solid rgba(0, 0, 0, 0);
-      }
+  a.button {
+    border-radius: 0;
+    padding: 4px;
+    height: 2em;
+    line-height: 1.4em;
+    border: 1px solid rgb(238, 113, 51);
+    span.right {
+      line-height: 1.5em;
+      padding-right: 8px;
+    }
+    &:hover {
+      border: 1px solid rgba(0, 0, 0, 0);
     }
   }
-  .mal-import-done {
+  .select-rating-system {
     display: none;
   }
   .skip-this-step {
-    color: #999;
+    font-size: 0.8em;
+    color: #9a9a9a;
+    float: right;
+    text-transform: uppercase;
+    i {
+      margin-left: 5px;
+    }
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+      transition: background-color 0.5s;
+      background-color: #eee;
+    }
+  }
+  .rating-system {
+    font-size: 1.8em;
+    margin: 18px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+    &.simple {
+      i {
+        margin-left: 10px;
+      }
+    }
+    &.active {
+      background-color: #f0f0f0;
+    }
+  }
+  .check-out-your-library {
+    display: none;
   }
 }

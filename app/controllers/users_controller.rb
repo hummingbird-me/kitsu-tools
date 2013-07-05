@@ -180,4 +180,22 @@ class UsersController < ApplicationController
       format.html { redirect_to :back }
     end
   end
+
+  def update_setting
+    authenticate_user!
+    
+    if params[:rating_system]
+      if params[:rating_system] == "simple"
+        current_user.star_rating = false
+      elsif params[:rating_system] == "advanced"
+        current_user.star_rating = true
+      end
+    end
+      
+    if current_user.save
+      render :json => true
+    else
+      render :json => false
+    end
+  end
 end

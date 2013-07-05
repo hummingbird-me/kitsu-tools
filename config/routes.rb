@@ -47,6 +47,7 @@ Hummingbird::Application.routes.draw do
     post :follow
     post :comment
     post :toggle_connection
+    post :update_setting
     
     post "/disconnect/facebook" => 'users#disconnect_facebook', 
       as: :disconnect_facebook
