@@ -52,5 +52,8 @@
 //= require activity-feed.js.coffee
 
 $(function() {
-  $(document).foundation();
+  $(document).foundation()
+             .foundation('reveal', {
+               closeOnBackgroundClick: false
+             });
 });
