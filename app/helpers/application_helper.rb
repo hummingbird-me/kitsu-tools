@@ -19,7 +19,7 @@ module ApplicationHelper
         return 2.0
       end
     else
-      2.0 + (watchlist.episodes_watched * 98.0 / anime.episode_count).to_i
+      2.0 + ((watchlist.episodes_watched || 0) * 98.0 / anime.episode_count).to_i
     end
   end
 
