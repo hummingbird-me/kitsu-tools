@@ -65,11 +65,13 @@
     if mal_username.length > 0
       $("#onboarding-modal form a span").fadeOut ->
         $("#onboarding-modal form a").html $("<i class='icon-spin icon-spinner'></i>")
-      $.post "/imports/myanimelist/new.json", {mal_username: mal_username}, (d) ->
+      $.post("/imports/myanimelist/new.json", {mal_username: mal_username}, (d) ->
         if d
           checkImportProgress()
         else
           alert "Something went wrong, couldn't import anime list."
+      ).error ->
+        checkImportProgress()
 
   checkImportProgress = ->
     $.get "/imports/status.json", (d) ->
