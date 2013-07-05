@@ -2,18 +2,42 @@ class ImportsController < ApplicationController
   before_filter :authenticate_user!
   
   def myanimelist
-    if params["mal_username"] && params["mal_username"].strip.length > 0
-      @user = current_user
-      @user.mal_username = params["mal_username"].strip
-      @user.save
-      @staged_import = StagedImport.find_or_create_by_user_id(@user.id)
-      @staged_import.data = {version: 1, complete: false}
-      @staged_import.save
-      MALImportWorker.perform_async(@user.mal_username, @staged_import.id)
-      redirect_to :back
-    else
-      flash[:alert] = "MyAnimeList username was blank."
-      redirect_to :back
+    respond_to do |format|
+      format.html do
+        if params["mal_username"] && params["mal_username"].strip.length > 0
+          @user = current_user
+          @user.mal_username = params["mal_username"].strip
+          @user.save
+          @staged_import = StagedImport.find_or_create_by_user_id(@user.id)
+          @staged_import.data = {version: 1, complete: false}
+          @staged_import.save
+          MALImportWorker.perform_async(@user.mal_username, @staged_import.id)
+          redirect_to :back
+        else
+          flash[:alert] = "MyAnimeList username was blank."
+          redirect_to :back
+        end
+      end
+      format.json do
+        # This bit is used by the onboarding import process.
+        if params[:mal_username] and params[:mal_username].strip.length > 0
+          current_user.mal_username = params[:mal_username].strip
+          current_user.save
+          staged_import = StagedImport.find_or_create_by_user_id(current_user.id)
+          staged_import.data = {version: 1, complete: false, apply: true}
+          staged_import.save
+          MALImportWorker.perform_async(current_user.mal_username, staged_import.id)
+          render :json => true
+        else
+          render :json => false
+        end
+      end
+    end
+  end
+  
+  def status
+    respond_to do |format|
+      format.json { render :json => current_user.staged_import.nil? }
     end
   end
   

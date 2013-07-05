@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   def index
     if user_signed_in?
 
-      @onboarding = true if (params[:ob] and current_user.mal_username.nil?)
+      @onboarding = true if params[:signup_tour]
 
       respond_to do |format|
         format.html do

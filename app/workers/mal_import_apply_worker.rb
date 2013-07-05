@@ -19,6 +19,7 @@ class MALImportApplyWorker
         
         @user.staged_import = nil
         @user.save
+        @staged_import.destroy
         @user.recompute_life_spent_on_anime
       end
     end

@@ -8,6 +8,8 @@ class MALImportWorker
     staged_import = StagedImport.find(staged_import_id)
     return if staged_import.nil?
     
+    apply = true if staged_import.data[:apply]
+    
     username = mal_username
 
     watchlist = MalImport.fetch_watchlist_from_remote(mal_username) rescue []
@@ -21,5 +23,9 @@ class MALImportWorker
     }
 
     staged_import.save    
+
+    if apply
+      MALImportApplyWorker.perform_async(staged_import.user.id)
+    end
   end
 end

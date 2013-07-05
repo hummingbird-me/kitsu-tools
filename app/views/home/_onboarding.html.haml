@@ -1,22 +1,59 @@
 .reveal-modal.medium.onboarding#onboarding-modal
   %h2 Welcome to Hummingbird!
 
-  - if false
+  .mal-import-section
     %p.lead
       If you have a MyAnimeList account, you can import your anime list.
 
-    %form
+    %form.mal-import
       .large-6.columns
         .row.collapse
           .small-9.columns
             %input(type="text" placeholder="MyAnimeList Username")
           .small-3.columns
             %a.button.prefix 
-              Import
-              %span.right
-                %i.icon-chevron-right
+              %span
+                Import
+                %span.right
+                  %i.icon-chevron-right
+
+  .mal-import-done
+    %p.lead
+      Finished importing your list!
+    %p
+      = link_to "Check out your library!", user_watchlist_path(current_user, signup_tour: true)
 
 
 :coffee
-  $ ->
-    $("#onboarding-modal").foundation('reveal', 'open')
+  $("#onboarding-modal").foundation('reveal', 'open')
+  
+  $("#onboarding-modal form a").click ->
+    mal_username = $("#onboarding-modal form input").val()
+    if mal_username.length > 0
+      $("#onboarding-modal form a span").fadeOut ->
+        $("#onboarding-modal form a").html $("<i class='icon-spin icon-spinner'></i>")
+      $.post "/imports/myanimelist/new.json", {mal_username: mal_username}, (d) ->
+        if d
+          checkImportProgress()
+        else
+          alert "We couldn't import your anime list because something went wrong."
+
+  checkImportProgress = ->
+    $.get "/imports/status.json", (d) ->
+      if d
+        $.get "/recommendations"
+        importDone()
+      else
+        setTimeout checkImportProgress, 2000
+
+  importDone = ->
+    $("#onboarding-modal form.mal-import a").html $("<i class='icon-ok'></i>")
+    $("#onboarding-modal .mal-import-section a").addClass "disabled"
+    $("#onboarding-modal .mal-import-section input").attr "disabled", "disabled"
+    $("#onboarding-modal .mal-import-section").fadeTo 1000, 0.4, ->
+      $("#onboarding-modal .mal-import-section").slideUp()
+      $("#onboarding-modal .mal-import-done").slideDown()
+      
+  $("#onboarding-modal form").submit ->
+    $("#onboarding-modal form a").click()
+    return false

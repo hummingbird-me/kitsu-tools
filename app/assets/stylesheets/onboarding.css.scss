@@ -6,7 +6,7 @@
       height: 2em;
       line-height: 1.4em;
       border: 1px solid rgb(238, 113, 51);
-      span {
+      span.right {
         line-height: 1.5em;
         padding-right: 8px;
       }
@@ -14,5 +14,8 @@
         border: 1px solid rgba(0, 0, 0, 0);
       }
     }
+  }
+  .mal-import-done {
+    display: none;
   }
 }
