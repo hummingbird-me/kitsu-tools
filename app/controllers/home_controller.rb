@@ -10,6 +10,9 @@ class HomeController < ApplicationController
         format.html do
           @forum_topics = Forem::Topic.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
           @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
+          if @recent_anime.length < 4
+            @recent_anime += current_user.watchlists.where("status <> 'Currently Watching'").includes(:anime).order("updated_at DESC, created_at DESC").limit(4 - @recent_anime.length)
+          end
         end
         format.json do
           @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).page(params[:page]).includes(:substories).per(20)
