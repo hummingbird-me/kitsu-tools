@@ -17,6 +17,6 @@
           //= anime.synopsis
         .large-3.columns
           .large-12.columns.no-padding
-            .watchlist-status-button{:"data-anime" => anime.slug, :"data-status" => @watchlist_status[anime.id] || "false"}
+            .watchlist-status-button{:"data-anime" => anime.slug, :"data-status" => (@watchlist_status[anime.id] || "false").parameterize}
 
 = paginate @results
