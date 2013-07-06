@@ -1,4 +1,4 @@
-worker_processes 12
+worker_processes 10
 working_directory "/u/apps/hummingbird/current"
 
 preload_app true
