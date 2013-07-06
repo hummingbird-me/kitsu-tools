@@ -13,6 +13,13 @@ class SearchController < ApplicationController
           @anime_list = @anime.fuzzy_search_by_title(params[:query])
         end
         @results = @anime_list
+
+        @watchlist_status = {}
+        if user_signed_in?
+          current_user.watchlists.where(anime_id: @results.map {|x| x.id }).each do |w|
+            @watchlist_status[w.anime_id] = w.status
+          end
+        end
         
         respond_to do |format|
           format.html { render "anime" }

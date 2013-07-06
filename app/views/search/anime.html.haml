@@ -15,28 +15,8 @@
                 %a{:onclick => "$(this).parent().parent().html('#{j anime.synopsis}')"} [read more]
           // Truncate this to around the length of the above, if possible
           //= anime.synopsis
-        .large-3.columns.hide
+        .large-3.columns
           .large-12.columns.no-padding
-            %a.small.button.split.padded{:href => "#"}
-              Want to Watch
-              %span{"data-dropdown" => "drop1"}
-            %ul#drop1.f-dropdown.watchlist-button{"data-dropdown-content" => ""}
-              %li
-                %a{:href => "#"} Currently Watching
-              %li
-                %a{:href => "#"} Completed
-              %li
-                %a{:href => "#"} On Hold
-              %li
-                %a{:href => "#"} Dropped
-              %li
-                %a{:href => "#"} Remove 
-          .large-12.columns.no-padding.text-center.search-rating
-            %p
-              %i.icon-star-empty
-              %i.icon-star-empty
-              %i.icon-star-empty
-              %i.icon-star-empty
-              %i.icon-star-empty
+            .watchlist-status-button{:"data-anime" => anime.slug, :"data-status" => @watchlist_status[anime.id] || "false"}
 
 = paginate @results

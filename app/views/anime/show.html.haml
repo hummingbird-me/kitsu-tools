@@ -15,8 +15,6 @@
 
       .large-12.columns.no-padding
         .watchlist-status-button{:"data-anime" => @anime.slug, :"data-status" => @watchlist ? @watchlist.status.parameterize : "false"}
-        :coffee
-          initializeWatchlistStatusButton $(".watchlist-status-button")
 
       - if false
         .large-12.columns.no-padding.side-block

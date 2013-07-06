@@ -96,3 +96,6 @@ renderProgress = (element) ->
           initializeWatchlistStatusButton element
     element.find("ul").append dropdownItem
 
+$ ->
+  $(".watchlist-status-button").each ->
+    initializeWatchlistStatusButton $(this)
