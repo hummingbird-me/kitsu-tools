@@ -77,7 +77,11 @@ class API_v1 < Grape::API
       requires :substory_id, type: Integer
     end
     post ":user_id/feed/remove" do
-      substory = Substory.find params[:substory_id]
+      begin
+        substory = Substory.find params[:substory_id]
+      rescue
+        return true
+      end
       if current_ability.can? :destroy, substory
         substory.destroy
         return true
