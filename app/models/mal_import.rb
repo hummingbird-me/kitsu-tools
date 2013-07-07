@@ -141,6 +141,15 @@ class MalImport
     
     # Status
     meta[:status] = sidebar.css("div").select {|x| x.text.include? "Status:" }[0].children[1].text.strip rescue nil
+
+    # Air dates
+    meta[:dates] = {}
+    begin
+      dates = sidebar.css('div').select {|x| x.text.include? "Aired:" }[0].text.gsub("Aired:", '').split(" to ").map {|x| x.strip }.map {|x| x == "?" ? nil : DateTime.parse(x).to_date }
+      meta[:dates][:from] = dates[0]
+      meta[:dates][:to] = dates[1]
+    rescue
+    end
     
     meta[:featured_character_mal_ids] = noko.css('table div.picSurround a').map {|x| x.attributes["href"].to_s }.select {|x| x =~ /character\// }.map {|x| x.scan(/character\/(\d+)/) }.flatten.map {|x| x.to_i }
     

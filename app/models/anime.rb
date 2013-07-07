@@ -125,13 +125,16 @@ class Anime < ActiveRecord::Base
     self.producers = (self.producers + meta[:producers]).uniq
     self.mal_age_rating = meta[:age_rating]
     self.age_rating, self.age_rating_guide = Anime.convert_age_rating(self.mal_age_rating)
-    self.episode_count = meta[:episode_count]
-    self.episode_length = meta[:episode_length]
+    self.episode_count ||= meta[:episode_count]
+    self.episode_length ||= meta[:episode_length]
     self.status = meta[:status]
 
     self.castings.select {|x| x.character and meta[:featured_character_mal_ids].include? x.character.mal_id }.each do |c|
       c.featured = true; c.save
     end
+    
+    self.started_airing_date = meta[:dates][:from]
+    self.finished_airing_date = meta[:dates][:to]
 
     self.save
   end

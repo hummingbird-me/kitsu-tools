@@ -42,7 +42,7 @@ class AnimeController < ApplicationController
       @watchlist = false
     end
 
-    @franchise_anime = @anime.franchises.map {|x| x.anime }.flatten.uniq
+    @franchise_anime = @anime.franchises.map {|x| x.anime }.flatten.uniq.sort_by {|x| x.started_airing_date }
     
     @similar = @anime.similar(2, exclude: @franchise_anime)
 

@@ -86,7 +86,9 @@ CREATE TABLE anime (
     english_canonical boolean DEFAULT false,
     age_rating_guide character varying(255),
     mal_age_rating character varying(255),
-    show_type character varying(255)
+    show_type character varying(255),
+    started_airing_date date,
+    finished_airing_date date
 );
 
 
@@ -2543,3 +2545,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130707071143');
 INSERT INTO schema_migrations (version) VALUES ('20130707073154');
 
 INSERT INTO schema_migrations (version) VALUES ('20130707073214');
+
+INSERT INTO schema_migrations (version) VALUES ('20130707121819');
