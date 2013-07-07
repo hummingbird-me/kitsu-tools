@@ -285,7 +285,7 @@
     // Right Column
     .large-3.columns
       //trailer
-      - if @anime.youtube_video_id
+      - if @anime.youtube_video_id and @anime.youtube_video_id.strip.length > 0
         .large-12.columns.no-padding.side-block
           %h5 TRAILER
           %a.sublime{:href => "#"+@anime.youtube_video_id, :"data-uid" => @anime.youtube_video_id, :"data-youtube-id" => @anime.youtube_video_id}
