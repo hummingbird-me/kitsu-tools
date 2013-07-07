@@ -288,8 +288,19 @@
       - if @anime.youtube_video_id
         .large-12.columns.no-padding.side-block
           %h5 TRAILER
-          .flex-video
-            %iframe(allowfullscreen frameborder=0 height="auto" width="100%"){:src => "http://www.youtube.com/embed/#{@anime.youtube_video_id}"}
+          %a.sublime{:href => "#"+@anime.youtube_video_id, :"data-uid" => @anime.youtube_video_id, :"data-youtube-id" => @anime.youtube_video_id}
+            .play-icon
+              %i.icon-play-circle.icon-4x
+            %img(width="null" height="null"){:src => "http://img.youtube.com/vi/#{@anime.youtube_video_id}/hqdefault.jpg"}
+          %video{:poster => "http://img.youtube.com/vi/#{@anime.youtube_video_id}/hqdefault.jpg", :id => @anime.youtube_video_id, :width => 640, :height => 360, :style => "display: none", :"data-uid" => @anime.youtube_video_id, :"data-youtube-id" => @anime.youtube_video_id, :preload => "none"}
+
+          / Add a "play" icon once the image has loaded.
+          :coffee
+            $("a.sublime img").load ->
+              $(".sublime .play-icon").css "top", $("a.sublime img").height()/2
+            $("a.sublime").click ->
+              analytics.track "Viewed Trailer",
+                anime: #{@anime.slug.inspect}
 
       //screns
       - if @anime.gallery_images.count > 0
