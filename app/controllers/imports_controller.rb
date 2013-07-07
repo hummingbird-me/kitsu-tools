@@ -2,7 +2,7 @@ class ImportsController < ApplicationController
   before_filter :authenticate_user!
   
   def myanimelist
-    mixpanel.track "Imported from MyAnimeList", {email: email} if Rails.env.production?
+    mixpanel.track "Imported from MyAnimeList", {email: current_user.email} if Rails.env.production?
     respond_to do |format|
       format.html do
         if params["mal_username"] && params["mal_username"].strip.length > 0
