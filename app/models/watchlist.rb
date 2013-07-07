@@ -64,7 +64,7 @@ class Watchlist < ActiveRecord::Base
   end
   
   def update_episode_count(new_count)
-    old_count = self.episodes_watched
+    old_count = self.episodes_watched || 0
     self.episodes_watched = new_count
     self.last_watched = Time.now
     self.save
