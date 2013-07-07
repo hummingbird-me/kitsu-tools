@@ -64,6 +64,14 @@
       color: lighten(#222, 50);
       cursor: default;
     }
+    li {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      &:last-child {
+        border-bottom: none;
+      }
+    }
   }
 
   // Center column Title
