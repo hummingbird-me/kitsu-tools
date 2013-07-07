@@ -90,6 +90,10 @@
   .series-meta-data {
     opacity: .5;
     font-size: 14px;
+    
+    span.has-tip {
+      font-weight: normal;
+    }
   }
 
   // Center column description

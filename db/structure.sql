@@ -78,7 +78,6 @@ CREATE TABLE anime (
     cover_image_content_type character varying(255),
     cover_image_file_size integer,
     cover_image_updated_at timestamp without time zone,
-    age_rating_tooltip character varying(255),
     wilson_ci double precision DEFAULT 0,
     user_count integer,
     thetvdb_series_id character varying(255),
@@ -2547,3 +2546,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130707073154');
 INSERT INTO schema_migrations (version) VALUES ('20130707073214');
 
 INSERT INTO schema_migrations (version) VALUES ('20130707121819');
+
+INSERT INTO schema_migrations (version) VALUES ('20130707130145');

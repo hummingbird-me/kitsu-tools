@@ -10,7 +10,8 @@ class Anime < ActiveRecord::Base
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, 
     :status, :synopsis, :cover_image, :youtube_video_id, :alt_title,
-    :thetvdb_series_id, :thetvdb_season_id, :show_type, :franchises
+    :thetvdb_series_id, :thetvdb_season_id, :show_type, :franchises, 
+    :english_canonical, :age_rating_guide
 
   has_attached_file :cover_image, 
     :styles => { :thumb => "225x335!", :"thumb@2x" => "450x670!" },

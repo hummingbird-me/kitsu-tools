@@ -1,4 +1,3 @@
-
 .anime-discover.anime-show.quote-page
   .row
 
@@ -56,11 +55,13 @@
                 ·
             / Age rating
             - if @anime.age_rating
-              %span 
-                = @anime.age_rating
-                - if @anime.age_rating_guide
-                  (#{@anime.age_rating_guide})
-                ·
+              - if @anime.age_rating_guide and @anime.age_rating_guide.strip.length > 0
+                %span.has-tip.tip-bottom(data-tooltip){title: @anime.age_rating_guide}
+                  = @anime.age_rating
+              - else
+                %span
+                  = @anime.age_rating
+              ·
             / Episode count
             %span 
               - if @anime.episode_count and @anime.episode_count > 0
@@ -76,7 +77,16 @@
                 ?
               Min Each ·
             %span
-              = @anime.status
+              - if @anime.status == "Finished Airing"
+                Aired 
+              - elsif @anime.status == "Currently Airing"
+                Airing
+              - else
+                Will Air
+              from 
+              = @anime.started_airing_date.try(:strftime, "%B %e, %Y") || "?"
+              to
+              = @anime.finished_airing_date.try(:strftime, "%B %e, %Y") || "?"
           %hr
         .large-12.columns
           .genres
