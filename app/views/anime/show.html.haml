@@ -16,11 +16,12 @@
       .large-12.columns.no-padding
         .watchlist-status-button{:"data-anime" => @anime.slug, :"data-status" => @watchlist ? @watchlist.status.parameterize : "false"}
 
-      .large-12.columns.no-padding.side-block
-        %h5 FRANCHISE
-        %ul.franchise-list
-          - @franchise_anime.each do |anime|
-            %li= anime_link anime, class: ('active' if anime == @anime)
+      - if @franchise_anime.length > 0 
+        .large-12.columns.no-padding.side-block
+          %h5 FRANCHISE
+          %ul.franchise-list
+            - @franchise_anime.each do |anime|
+              %li= anime_link anime, class: ('active' if anime == @anime)
 
       .large-12.columns.no-padding.side-block
         = link_to (image_tag "jlist.png", alt: "J-List"), "http://anime.jlist.com/click/4785?url=http://www.jlist.com/search/all/#{@anime.canonical_title.parameterize.gsub("-", "_")}"
