@@ -281,6 +281,16 @@ ALTER SEQUENCE episodes_id_seq OWNED BY episodes.id;
 
 
 --
+-- Name: favorite_genres_users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE favorite_genres_users (
+    genre_id integer,
+    user_id integer
+);
+
+
+--
 -- Name: follows; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1898,6 +1908,13 @@ CREATE INDEX index_episodes_on_anime_id ON episodes USING btree (anime_id);
 
 
 --
+-- Name: index_favorite_genres_users_on_genre_id_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_favorite_genres_users_on_genre_id_and_user_id ON favorite_genres_users USING btree (genre_id, user_id);
+
+
+--
 -- Name: index_follows_on_followed_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2548,3 +2565,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130707073214');
 INSERT INTO schema_migrations (version) VALUES ('20130707121819');
 
 INSERT INTO schema_migrations (version) VALUES ('20130707130145');
+
+INSERT INTO schema_migrations (version) VALUES ('20130707200030');

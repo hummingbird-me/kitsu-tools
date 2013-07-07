@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   has_one :recommendation
   has_many :not_interested
   has_many :not_interested_anime, through: :not_interested, source: :media, source_type: "Anime"
+
+  has_and_belongs_to_many :favorite_genres, class_name: "Genre", uniq: true, join_table: "favorite_genres_users"
   
   def to_param
     "#{id} #{name}".parameterize
