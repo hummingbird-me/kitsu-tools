@@ -62,8 +62,8 @@ module ApplicationHelper
   def user_link(user, options={})
     link_to (user == current_user and options[:you]) ? "You" : user.name, user
   end
-  def anime_link(anime)
-    link_to anime.canonical_title(current_user), anime
+  def anime_link(anime, options={})
+    link_to anime.canonical_title(current_user), anime, options
   end
 
   # For Devise

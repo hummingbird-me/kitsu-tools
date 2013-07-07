@@ -1181,7 +1181,6 @@ CREATE TABLE users (
     last_sign_in_ip character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    watchlist_hash character varying(255),
     recommendations_up_to_date boolean,
     avatar_file_name character varying(255),
     avatar_content_type character varying(255),
@@ -2477,3 +2476,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130704233952');
 INSERT INTO schema_migrations (version) VALUES ('20130705000315');
 
 INSERT INTO schema_migrations (version) VALUES ('20130705000522');
+
+INSERT INTO schema_migrations (version) VALUES ('20130705001644');
+
+INSERT INTO schema_migrations (version) VALUES ('20130707020219');

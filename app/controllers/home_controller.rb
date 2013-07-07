@@ -13,6 +13,9 @@ class HomeController < ApplicationController
           if @recent_anime.length < 4
             @recent_anime += current_user.watchlists.where("status <> 'Currently Watching'").includes(:anime).order("updated_at DESC, created_at DESC").limit(4 - @recent_anime.length)
           end
+          @trending_anime = Rails.cache.fetch(:cached_trending_anime, expires_in: 5.minutes) do
+            TrendingAnime.get.map {|x| {anime: Anime.find(x), currently_watching: Watchlist.where(anime_id: x, status: "Currently Watching").count} }
+          end
         end
         format.json do
           @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).page(params[:page]).includes(:substories).per(20)

@@ -22,44 +22,18 @@
 
       .large-12.columns.no-padding.trending-block
         .large-12.columns.block-title
-          %h4 Trending Today
+          %h4 Trending This Week
         %hr
         %ul
-          %li.large-12.columns.topic-row
-            .small-1.columns.no-padding
-              %p.count.center 1
-            .small-11.columns.no-padding-right.forum-title
-              .large-12.columns.no-padding
-                = link_to "Attack on Titan", "/anime/attack-on-titan", class: "trending-title"
-                %i 1165 Viewers
-          %li.large-12.columns.topic-row
-            .small-1.columns.no-padding
-              %p.count.center 2
-            .small-11.columns.no-padding-right.forum-title
-              .large-12.columns.no-padding
-                = link_to "Gargantia on the Verdurous...", "/anime/gargantia-on-the-verdurous-planet", class: "trending-title"
-                %i 785 Viewers
-          %li.large-12.columns.topic-row
-            .small-1.columns.no-padding
-              %p.count.center 3
-            .small-11.columns.no-padding-right.forum-title
-              .large-12.columns.no-padding
-                = link_to "OreImo Season 2", "/anime/oreimo-season-2", class: "trending-title"
-                %i 655 Viewers
-          %li.large-12.columns.topic-row
-            .small-1.columns.no-padding
-              %p.count.center 4
-            .small-11.columns.no-padding-right.forum-title
-              .large-12.columns.no-padding
-                = link_to "Naruto Shippuuden", "/anime/naruto-shippuuden", class: "trending-title"
-                %i 296 Viewers
-          %li.large-12.columns.topic-row
-            .small-1.columns.no-padding
-              %p.count.center 5
-            .small-11.columns.no-padding-right.forum-title
-              .large-12.columns.no-padding
-                = link_to "Sword Art Online", "/anime/sword-art-online", class: "trending-title"
-                %i 98 Viewers
+          - @trending_anime.each_with_index do |trending, i|
+            %li.large-12.columns.topic-row
+              .small-1.columns.no-padding
+                %p.count.center= i+1
+              .small-11.columns.no-padding-right.forum-title
+                .large-12.columns.no-padding
+                  = anime_link trending[:anime], class: 'trending-title'
+                  %i #{trending[:currently_watching]} Viewers
+      
       .large-12.columns.no-padding-left.no-padding-right.side-advert.hide-for-small
         :javascript
           google_ad_client = "ca-pub-3410319844519574";
