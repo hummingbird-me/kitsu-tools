@@ -44,7 +44,7 @@ class AnimeController < ApplicationController
 
     @franchise_anime = @anime.franchises.map {|x| x.anime }.flatten.uniq
     
-    @similar = @anime.similar(2)
+    @similar = @anime.similar(2, exclude: @franchise_anime)
 
     # Add to recently viewed.
     if @anime.sfw?

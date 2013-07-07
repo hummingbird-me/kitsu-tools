@@ -153,9 +153,10 @@ class Anime < ActiveRecord::Base
     [11, 12, 244, 412, 777, 1376, 1377, 1445, 1555, 2245, 3817, 4989, 5044, 5187, 5940, 5953, 6028, 6084, 6477, 6590, 6614, 7753]
   end
 
-  def similar(limit=20)
+  def similar(limit=20, options={})
     return [] unless mal_id
-
+    
+    exclude = options[:exclude] ? options[:exclude] : []
     similar_anime = []
     
     begin
@@ -163,7 +164,9 @@ class Anime < ActiveRecord::Base
       
       similar_json.each do |similar|
         sim = Anime.find_by_mal_id(similar["id"])
-        similar_anime.push(sim) if sim and similar_anime.length < limit
+        if sim and similar_anime.length < limit
+          similar_anime.push(sim) unless exclude.include? sim
+        end
       end
     rescue
     end
