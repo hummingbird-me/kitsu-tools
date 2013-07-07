@@ -91,6 +91,16 @@ CREATE TABLE anime (
 
 
 --
+-- Name: anime_franchises; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE anime_franchises (
+    anime_id integer,
+    franchise_id integer
+);
+
+
+--
 -- Name: anime_genres; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -595,6 +605,38 @@ CREATE SEQUENCE forem_views_id_seq
 --
 
 ALTER SEQUENCE forem_views_id_seq OWNED BY forem_views.id;
+
+
+--
+-- Name: franchises; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE franchises (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    english_title character varying(255),
+    romaji_title character varying(255)
+);
+
+
+--
+-- Name: franchises_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE franchises_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: franchises_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE franchises_id_seq OWNED BY franchises.id;
 
 
 --
@@ -1383,6 +1425,13 @@ ALTER TABLE ONLY forem_views ALTER COLUMN id SET DEFAULT nextval('forem_views_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY franchises ALTER COLUMN id SET DEFAULT nextval('franchises_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY friendly_id_slugs ALTER COLUMN id SET DEFAULT nextval('friendly_id_slugs_id_seq'::regclass);
 
 
@@ -1623,6 +1672,14 @@ ALTER TABLE ONLY forem_topics
 
 ALTER TABLE ONLY forem_views
     ADD CONSTRAINT forem_views_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: franchises_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY franchises
+    ADD CONSTRAINT franchises_pkey PRIMARY KEY (id);
 
 
 --
@@ -2480,3 +2537,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130705000522');
 INSERT INTO schema_migrations (version) VALUES ('20130705001644');
 
 INSERT INTO schema_migrations (version) VALUES ('20130707020219');
+
+INSERT INTO schema_migrations (version) VALUES ('20130707071143');
+
+INSERT INTO schema_migrations (version) VALUES ('20130707073154');
+
+INSERT INTO schema_migrations (version) VALUES ('20130707073214');
