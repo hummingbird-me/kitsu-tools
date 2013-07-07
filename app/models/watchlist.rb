@@ -69,7 +69,7 @@ class Watchlist < ActiveRecord::Base
     self.last_watched = Time.now
     self.save
 
-    self.user.update_life_spent_on_anime( (self.episodes_watched - old_count) * self.anime.episode_length )
+    self.user.update_life_spent_on_anime( (self.episodes_watched - old_count) * (self.anime.episode_length || 0) )
     TrendingAnime.vote self.anime_id
   end
   
