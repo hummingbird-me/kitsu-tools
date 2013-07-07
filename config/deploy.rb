@@ -90,7 +90,7 @@ before "deploy:restart", "deploy:migrate"
 before "sidekiq:restart", "deploy:stop_monit_sidekiq"
 after "sidekiq:restart", "deploy:start_monit_sidekiq"
 
-after "deploy:update", "newrelic:notice_deployment"
+after "deploy", "newrelic:notice_deployment"
 
 # To keep only the last 5 releases:
 # (Default is `set :keep_releases, 5`)
