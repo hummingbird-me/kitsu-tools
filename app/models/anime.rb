@@ -9,9 +9,9 @@ class Anime < ActiveRecord::Base
   friendly_id :canonical_title, :use => [:slugged, :history]
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, 
-    :status, :synopsis, :cover_image, :youtube_video_id, :alt_title,
-    :thetvdb_series_id, :thetvdb_season_id, :show_type, :franchises, 
-    :english_canonical, :age_rating_guide
+    :status, :synopsis, :cover_image, :youtube_video_id, :alt_title, :franchises,
+    :thetvdb_series_id, :thetvdb_season_id, :show_type, :english_canonical, 
+    :age_rating_guide, :started_airing_date, :finished_airing_date
 
   has_attached_file :cover_image, 
     :styles => { :thumb => "225x335!", :"thumb@2x" => "450x670!" },
