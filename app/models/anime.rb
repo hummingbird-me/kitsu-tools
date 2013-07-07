@@ -168,7 +168,7 @@ class Anime < ActiveRecord::Base
       
       similar_json.each do |similar|
         sim = Anime.find_by_mal_id(similar["id"])
-        if sim and similar_anime.length < limit
+        if sim and similar_anime.length < limit and (not self.sfw? or (self.sfw? and sim.sfw?))
           similar_anime.push(sim) unless exclude.include? sim
         end
       end
