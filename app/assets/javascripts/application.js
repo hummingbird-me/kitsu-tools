@@ -53,7 +53,4 @@
 
 $(function() {
   $(document).foundation()
-             .foundation('reveal', {
-               closeOnBackgroundClick: false
-             });
 });
