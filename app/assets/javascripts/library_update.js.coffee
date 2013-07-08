@@ -35,18 +35,24 @@ renderProgress = (element) ->
   anime_slug      = element.attr("data-anime-slug")
   progress        = element.attr("data-progress")
   total_episodes  = element.attr("data-total-episodes")
+  allow_incr      = element.attr("data-allow-increment") == "true"
   
-  icon = $("<a href='javascript:void(0)'><i class='icon icon-angle-up'></i></a>")
-  icon.click ->
-    icon.find("i").removeClass("icon-angle-up").addClass("icon-spin").addClass("icon-spinner")
-    $.post "/api/v1/libraries/" + anime_slug, {increment_episodes: true}, (d) ->
-      element.attr "data-progress", d.episodes_watched 
-      initializeProgressIncrement element
+  if allow_incr
+    icon = $("<a href='javascript:void(0)' class='click-add'><i class='icon icon-angle-up'></i></a>")
+    icon.click ->
+      icon.find("i").removeClass("icon-angle-up").addClass("icon-spin").addClass("icon-spinner")
+      $.post "/api/v1/libraries/" + anime_slug, {increment_episodes: true}, (d) ->
+        element.attr "data-progress", d.episodes_watched 
+        initializeProgressIncrement element
+  else
+    icon = $("<span></span>")
   
   element.empty()
   element.append icon
-  element.append $("<span> </span>")
-  element.append progress + " / " + total_episodes
+  element.append "<span> </span>"
+  element.append "<span class='edit'>" + progress + "</span>"
+  element.append " / "
+  element.append "<span class='total-episodes'>" + total_episodes + "</span>"
 
 @initializeWatchlistStatusButton = (element) ->
   unless currentUser

@@ -133,14 +133,12 @@
     render: ->
       this.model.set "formattedLastUpdateTime", moment(this.model.get("last_watched")).format('MMMM Do YYYY')
       this.$el.html this.template this.model.toJSON()
+      initializeProgressIncrement this.$el.find(".progress-updater")
       if this.$el.find("span.total-episodes").html() == "0"
         this.$el.find("span.total-episodes").html("?")
       that = this
       this.$el.find("td:first").click ->
         that.toggleDropdown()
-      this.$el.find("a.click-add").click ->
-        that.$el.find("a.click-add").removeAttr("href").html $("<i class='icon icon-spin icon-spinner'></i>")
-        that.model.update {increment_episodes: true}
       return this
       
     showDropdown: ->
