@@ -291,7 +291,7 @@
           %a.sublime{:href => "#"+@anime.youtube_video_id, :"data-uid" => @anime.youtube_video_id, :"data-youtube-id" => @anime.youtube_video_id}
             .play-icon
               %i.icon-play.icon-4x
-            %img(width="null" height="null"){:src => "http://img.youtube.com/vi/#{@anime.youtube_video_id}/hqdefault.jpg"}
+            %img(width="100%" height="auto"){:src => "http://img.youtube.com/vi/#{@anime.youtube_video_id}/hqdefault.jpg"}
           %video{:poster => "http://img.youtube.com/vi/#{@anime.youtube_video_id}/hqdefault.jpg", :id => @anime.youtube_video_id, :width => 640, :height => 360, :style => "display: none", :"data-uid" => @anime.youtube_video_id, :"data-youtube-id" => @anime.youtube_video_id, :preload => "none", :"data-youtube-suggested-quality" => "hd"}
 
           / Add a "play" icon once the image has loaded.
