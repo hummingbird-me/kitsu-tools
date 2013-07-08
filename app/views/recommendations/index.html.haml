@@ -97,19 +97,21 @@
               %li
                 = link_to "Neon Alley", "#"
 
-      - if false
-        .large-12.columns.panel.no-padding.rounded-panel
-          .large-12.columns.panel-head
-            %p.head-title By Genre
-            %p.head-action= link_to "edit", "#"
-          %hr.block-divider
-            %ul.filter-options
-              %li
-                = link_to "Action", "#"
-              %li
-                = link_to "Slice of Life", "#"
-              %li
-                = link_to "Ecchi", "#"
+      .large-12.columns.panel.no-padding.rounded-panel
+        .large-12.columns.panel-head
+          %p.head-title By Genre
+          %p.head-action= link_to "edit", "javascript:void(0)", "data-reveal-id" => "favorite_genres"
+        %hr.block-divider
+          %ul.filter-options.genre-list
+            - if current_user.favorite_genres.length > 0
+              - current_user.favorite_genres.each do |genre|
+                %li{id: genre.slug}= link_to genre.name, genre
+            - else
+              %li.no-favorites
+                %em (You haven't selected any favorite genres.)
+
+.reveal-modal.large#favorite_genres
+  = render partial: "genres/favorite_genres_modal"
 
 :coffee
   $("p.wanna-watch a").click ->

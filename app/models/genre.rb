@@ -16,6 +16,6 @@ class Genre < ActiveRecord::Base
     if user && user.sfw_filter 
       genres -= Genre.where('slug IN (?)', %w(hentai yaoi yuri shounen-ai shoujo-ai)) 
     end
-    genres
+    genres.sort_by {|x| x.name }
   end
 end

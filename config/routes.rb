@@ -85,7 +85,11 @@ Hummingbird::Application.routes.draw do
   # Personalize Filters
   match '/anime/filter/:filter(/:page)' => 'anime#index', :as => :filtered_listing
 
-  resources :genres
+  resources :genres do
+    post :add_to_favorites
+    post :remove_from_favorites
+  end
+
   resources :producers
   resources :characters
 
