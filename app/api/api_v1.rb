@@ -117,6 +117,10 @@ class API_v1 < Grape::API
           })
         end
         @watchlist.status = status if Watchlist.valid_statuses.include? status
+        if status == "Completed"
+          # Mark all episodes as viewed when the show is "Completed".
+          @watchlist.update_episode_count (@watchlist.anime.episode_count || 0)
+        end
       end
       
       # Update privacy.
