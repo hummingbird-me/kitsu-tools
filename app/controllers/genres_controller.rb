@@ -18,10 +18,10 @@ class GenresController < ApplicationController
 
   def add_to_favorites
     authenticate_user!
-    sleep 1
     @genre = Genre.find params[:id]
     unless current_user.favorite_genres.include? @genre
       current_user.favorite_genres.push @genre
+      current_user.update_column :last_library_update, Time.now
     end
     render :json => true
   end
@@ -31,6 +31,7 @@ class GenresController < ApplicationController
     @genre = Genre.find params[:id]
     if current_user.favorite_genres.include? @genre
       current_user.favorite_genres.delete @genre
+      current_user.update_column :last_library_update, Time.now
     end
     render :json => true
   end
