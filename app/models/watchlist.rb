@@ -65,7 +65,7 @@ class Watchlist < ActiveRecord::Base
   
   def update_episode_count(new_count)
     old_count = self.episodes_watched || 0
-    self.episodes_watched = new_count
+    self.episodes_watched = new_count || 0
 
     # If the show is completed and we know its episode count, don't allow users to
     # exceed the maximum number of episodes.
