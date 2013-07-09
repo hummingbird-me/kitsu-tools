@@ -2,16 +2,9 @@
 
   - unless @hide_footer_ad
     .large-12.columns.footer-ad.hide-for-small
+      %ins(class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-3410319844519574" data-ad-slot="4888559644")
       :javascript
-        google_ad_client = "ca-pub-3410319844519574";
-        /* Footer Ad */
-        google_ad_slot = "4888559644";
-        google_ad_width = 728;
-        google_ad_height = 90;
-        
-      %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
-
-
+        (adsbygoogle = window.adsbygoogle || []).push({});
 
   - if session[:recently_viewed] and session[:recently_viewed].length > 0
     .history-bar.hide-for-small

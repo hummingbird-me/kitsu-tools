@@ -316,7 +316,3 @@
             = quote.character_name
         = link_to "[show more]", anime_quotes_path(@anime)
   
-:coffee
-  $ ->
-    analytics.track "Viewed Anime Page",
-      anime: #{@anime.slug.inspect}
