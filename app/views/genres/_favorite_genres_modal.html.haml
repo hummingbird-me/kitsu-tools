@@ -1,5 +1,7 @@
 .favorite-genres
   %p.lead Select your favorite genres.
+  %p.subtext We will use your favorite genres to generate better recommendations tailored to your interests.
+  
   .row
     - Genre.default_filterable(current_user).each do |genre|
       .large-3.columns

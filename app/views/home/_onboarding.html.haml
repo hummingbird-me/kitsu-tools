@@ -1,27 +1,10 @@
-.reveal-modal.large.onboarding#onboarding-modal
+.reveal-modal.expand.onboarding#onboarding-modal
   %h2 Welcome to Hummingbird!
 
-  .mal-import-section
-    %p.lead
-      If you have a MyAnimeList account, you can import your anime list.
+  .select-favorite-genres.step
+    = render partial: "genres/favorite_genres_modal"
 
-    %form.mal-import
-      .large-6.columns
-        .row.collapse
-          .small-9.columns
-            %input(type="text" placeholder="MyAnimeList Username")
-          .small-3.columns
-            %a.button.prefix 
-              %span
-                Import
-                %span.right
-                  %i.icon-chevron-right
-    
-    .skip-this-step
-      Skip this step
-      %i.icon-chevron-sign-right
-
-  .select-rating-system
+  .select-rating-system.step
     %p.lead
       Which rating system do you prefer?
     .simple.rating-system(data-system="simple")
@@ -32,7 +15,6 @@
           %i.icon-smile
           %i.icon-meh
           %i.icon-frown
-
     .advanced.rating-system(data-system="advanced")
       .row
         .small-5.columns
@@ -43,23 +25,88 @@
           %i.icon-star
           %i.icon-star-half-empty
           %i.icon-star-empty
+  
+  .bootstrap-library.step
+    .mal-import-section
+      %p.lead
+        If you have a MyAnimeList account, you can import your anime list.
+      %form.mal-import
+        .large-6.columns
+          .row.collapse
+            .small-9.columns
+              %input(type="text" placeholder="MyAnimeList Username")
+            .small-3.columns
+              %a.button.prefix 
+                %span
+                  Import
+                  %span.right
+                    %i.icon-chevron-right
 
-    .skip-this-step
-      Skip this step
-      %i.icon-chevron-sign-right
-
-  .check-out-your-library
-    %p.lead
-      Your account is all set up now.
-      = link_to "Check out your library!", user_watchlist_path(current_user)
+  .completed.step
+    %p.lead Your account is all set up now.
+    %p 
+      Check out your 
+      = link_to "recommendations", "/recommendations"
+      or your
+      #{link_to "library", user_watchlist_path(current_user)}.
+            
+  .onboarding-progress
+  .skip-this-step
+    Next Step
+    %i.icon-chevron-sign-right
 
 :coffee
-  $("#onboarding-modal").foundation('reveal', 'open')
+  $ ->
+    # Don't close the modal on clicking the background.
+    $(document).foundation 'reveal',
+      closeOnBackgroundClick: false
 
-  $("#onboarding-modal form").submit ->
-    $("#onboarding-modal form a").click()
+    # Show the modal.
+    $("#onboarding-modal").foundation 'reveal', 'open'
+
+  # List of all steps selectors.
+  steps = ['.select-favorite-genres', '.select-rating-system', '.bootstrap-library', '.completed']
+  currentStep = 0
+
+  # Make a step visible.
+  showStep = (step) ->
+    _.each steps, (s) ->
+      $(s).slideUp()
+    $(step).slideDown()
+    $(".onboarding-progress").html "Step " + (currentStep+1) + " of " + (steps.length-1) + "."
+
+  # Show the first step.
+  showStep steps[currentStep]
+
+  # Show the next step.
+  nextStep = ->
+    currentStep += 1
+    if currentStep+1 == steps.length
+      $.get "/recommendations.json"
+      $(".onboarding-progress").hide()
+      $(".skip-this-step").hide()
+    showStep steps[currentStep]
+
+  # Skip step element.
+  $(".skip-this-step").click -> nextStep()
+
+  # Rating system selection.
+  $(".select-rating-system .rating-system").click ->
+    system = $(this).attr "data-system"
+    $(this).addClass "active"
+    $(".onboarding-progress").html $("<i class='icon-spin icon-spinner'></i>")
+    $.post "#{user_update_setting_path(current_user)}", {rating_system: system}, (d) ->
+      if d
+        nextStep()
+      else
+        alert "Something went wrong, couldn't save your rating preference."
+
+  # Don't actually *submit* the MAL import form.
+  $(".onboarding form").submit ->
+    $(".onboarding form a").click()
     return false
-  
+
+  # MAL Import.
   $("#onboarding-modal form a").click ->
     mal_username = $("#onboarding-modal form input").val()
     if mal_username.length > 0
@@ -69,39 +116,17 @@
         if d
           checkImportProgress()
         else
-          alert "Something went wrong, couldn't import anime list."
+          alert "Something went wrong, couldn't import your anime list."
       ).error ->
-        checkImportProgress()
+        alert "Something went wrong, couldn't import your anime list."
 
+  # Check MAL import status.
   checkImportProgress = ->
     $.get "/imports/status.json", (d) ->
       if d
         $.get "/recommendations"
         $("#onboarding-modal form.mal-import a").html $("<i class='icon-ok'></i>")
-        importDone()
+        nextStep()
       else
         setTimeout checkImportProgress, 2000
 
-  $(".mal-import-section .skip-this-step").click ->
-    importDone()
-
-  importDone = ->
-    $("#onboarding-modal .mal-import-section").slideUp()
-    $("#onboarding-modal .select-rating-system").slideDown()
-      
-  $(".select-rating-system .rating-system").click ->
-    system = $(this).attr "data-system"
-    $(this).addClass "active"
-    $(".select-rating-system .skip-this-step").html $("<i class='icon-spin icon-spinner'></i>")
-    $.post "#{user_update_setting_path(current_user)}", {rating_system: system}, (d) ->
-      if d
-        ratingSelectionDone()
-      else
-        alert "Something went wrong, could not save rating preference."
-  
-  $(".select-rating-system .skip-this-step").click ->
-    ratingSelectionDone()
-
-  ratingSelectionDone = ->
-    $("#onboarding-modal .select-rating-system").slideUp()
-    $("#onboarding-modal .check-out-your-library").slideDown()
