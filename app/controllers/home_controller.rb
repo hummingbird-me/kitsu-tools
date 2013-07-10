@@ -18,8 +18,8 @@ class HomeController < ApplicationController
           end
         end
         format.json do
-          @stories = Story.accessible_by(current_ability).order('updated_at DESC').where(user_id: current_user.following.map {|x| x.id } + [current_user.id]).page(params[:page]).includes(:substories).per(20)
-          render :json => Entities::Story.represent(@stories, current_ability: current_ability, title_language_preference: user_signed_in? ? current_user.title_language_preference : "canonical")
+          timeline = UserTimeline.fetch(current_user, page: params[:page])
+          render :json => timeline
         end
       end
       
