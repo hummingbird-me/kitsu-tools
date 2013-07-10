@@ -69,7 +69,7 @@ class Watchlist < ActiveRecord::Base
 
     # If the show is completed and we know its episode count, don't allow users to
     # exceed the maximum number of episodes.
-    if self.anime.episode_count and self.anime.episode_count > 0 and self.episodes_watched > self.anime.episode_count and self.anime.status == "Finished Airing"
+    if self.anime.episode_count and (self.anime.episode_count > 0 and self.episodes_watched > self.anime.episode_count) and self.anime.status == "Finished Airing"
       self.episodes_watched = self.anime.episode_count
     end
 
