@@ -212,7 +212,7 @@ class User < ActiveRecord::Base
   def can_edit_forem_posts?(forum);       true;       end
 
   searchable do
-    text :name
+    text :name, as: :name_fuzzy
     text :email
   end
 
