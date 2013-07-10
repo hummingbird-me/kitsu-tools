@@ -9,17 +9,23 @@ class RecommendingWorker
     intersect = options[:intersect] || false
     filter    = options[:filter] || lambda {|anime_id| true }
     
-    tr = []
+    tr_c = []
     recommendations.each do |anime_id, score|
-      unless exclude.include?(anime_id)
-        if (!intersect or intersect.include?(anime_id)) and filter[anime_id]
-          tr.push({anime_id: anime_id, score: score})
+      tr_c.push({anime_id: anime_id, score: score})
+    end
+    tr_c.sort_by! {|x| -x[:score] }
+    
+    tr = []
+    tr_c.each do |c|
+      if tr.length < n
+        anime_id = c[:anime_id]
+        unless exclude.include?(anime_id)
+          if (!intersect or intersect.include?(anime_id)) and filter[anime_id]
+            tr.push c
+          end
         end
       end
     end
-    
-    tr.sort_by! {|x| -x[:score] }
-    tr = tr[0...n] if tr.length > n
 
     tr.map {|x| x[:anime_id] }
   end
