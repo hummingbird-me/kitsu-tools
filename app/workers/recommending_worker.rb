@@ -7,11 +7,12 @@ class RecommendingWorker
     n         = options[:limit] || 10
     exclude   = options[:exclude] || []
     intersect = options[:intersect] || false
+    filter    = options[:filter] || lambda {|anime_id| true }
     
     tr = []
     recommendations.each do |anime_id, score|
       unless exclude.include?(anime_id)
-        if !intersect or intersect.include?(anime_id)
+        if (!intersect or intersect.include?(anime_id)) and filter[anime_id]
           tr.push({anime_id: anime_id, score: score})
         end
       end
@@ -55,6 +56,7 @@ class RecommendingWorker
       similarities[watchlist.anime_id].each do |similar, similarity|
         factor = similarity * ((watchlist.rating || 0) + 1.5)
         recommendations[:general][similar] += factor
+        
         if watchlist.status == "Currently Watching"
           recommendations[:by_status][:currently_watching][similar] += factor
         elsif watchlist.status == "Plan to Watch"
@@ -85,6 +87,13 @@ class RecommendingWorker
     recommendation.recommendations["by_service"] = {
       neon_alley: top_recommendations(recommendations[:general], intersect: Anime.neon_alley_ids, exclude: user_watchlists_anime_ids)
     }.to_json
+    
+    # Generate and save "favorite genre" recommendations.
+    favorite_genre_recommendations = {}
+    user.favorite_genres.each do |genre|
+      favorite_genre_recommendations[genre.slug] = top_recommendations(recommendations[:general], exclude: user_watchlists_anime_ids, filter: lambda {|anime_id| Anime.find(anime_id).genres.include? genre })
+    end
+    recommendation.recommendations["by_genre"] = favorite_genre_recommendations.to_json
     
     recommendation.save
     

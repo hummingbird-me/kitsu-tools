@@ -31,6 +31,11 @@ class RecommendationsController < ApplicationController
           @recommendations[cat] = r ? JSON.parse(r.recommendations["by_status"])[cat].map {|x| Anime.find(x) } : []
         end
 
+        @genre_recommendations = {}
+        current_user.favorite_genres.each do |genre|
+          @genre_recommendations[ genre.slug ] = r ? JSON.parse(r.recommendations["by_genre"])[genre.slug].map {|x| Anime.find(x) } : []
+        end
+
         @neon_alley = r ? JSON.parse(r.recommendations["by_service"])["neon_alley"].map {|x| Anime.find(x) } : []
         
         # View convenience variables. Move to translations later.

@@ -71,6 +71,31 @@
                   %p.title= anime.canonical_title(current_user.title_language_preference)
                   %a.not-interested(href="javascript:void(0)"){:"data-slug" => anime.slug} Not Interested
 
+      / By genre
+      - current_user.favorite_genres.each do |genre|
+        .large-12.columns.panel.no-padding.rounded-panel
+          %a{name: "genre_"+genre.slug}
+          .large-12.columns.panel-head
+            %p.head-title 
+              Based on your interest in 
+              %strong= genre.name
+            - if false
+              %p.head-action= link_to "view more", "#"
+          %hr.block-divider
+          - if @genre_recommendations[genre.slug].length == 0
+            %h5.default-state.center Uh oh, we don't have any recommendations for you yet!
+          - else
+            %ul.small-block-grid-2.large-block-grid-5.single-recs
+              - @genre_recommendations[genre.slug][0..4].each do |anime|
+                %li.single-rec
+                  .rec-thumbnail
+                    %p.wanna-watch
+                      %a.small.button{:"data-slug" => anime.slug}
+                        Plan to Watch
+                    = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
+                  %p.title= anime.canonical_title(current_user.title_language_preference)
+                  %a.not-interested(href="javascript:void(0)"){:"data-slug" => anime.slug} Not Interested
+
     .large-3.columns.recs-right-side
       / filter panel
       .large-12.columns.panel.no-padding.rounded-panel
@@ -105,7 +130,7 @@
           %ul.filter-options.genre-list
             - if current_user.favorite_genres.length > 0
               - current_user.favorite_genres.each do |genre|
-                %li{id: genre.slug}= link_to genre.name, genre
+                %li{id: genre.slug}= link_to genre.name, "#genre_"+genre.slug
             - else
               %li.no-favorites
                 %em (You haven't selected any favorite genres.)
