@@ -55,11 +55,15 @@
     Next Step
     %i.icon-chevron-sign-right
 
+  %a.close-reveal-modal &#215;
+
 :coffee
   $ ->
     # Don't close the modal on clicking the background.
     $(document).foundation 'reveal',
       closeOnBackgroundClick: false
+      close: ->
+        window.location.href = "/"
 
     # Show the modal.
     $("#onboarding-modal").foundation 'reveal', 'open'
@@ -85,6 +89,7 @@
       $.get "/recommendations.json"
       $(".onboarding-progress").hide()
       $(".skip-this-step").hide()
+      $(".close-reveal-modal").show()
     showStep steps[currentStep]
 
   # Skip step element.
