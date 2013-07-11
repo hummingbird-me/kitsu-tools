@@ -77,6 +77,11 @@
     #page.off-canvas.slide-nav
       = content_for?(:content) ? yield(:content) : yield
     = render 'shared/footer'
+    
+    .status-bar
+      %p 
+        %span Removed feed item.
+        %a(href="javascript:void(0)") Undo.
 
     - if Rails.env.production?
       :javascript
