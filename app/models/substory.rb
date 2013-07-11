@@ -7,7 +7,7 @@ class Substory < ActiveRecord::Base
   validates :user, :substory_type, presence: true
   
   after_create do
-    self.story.updated_at = self.created_at
+    self.story.set_last_update_time! self.created_at
     self.story.save
   end
   
