@@ -29,6 +29,15 @@
 #   Nothing to see here. >_<
 
 class UserTimeline
+  
+  # Return the feed of a given user, serialized as JSON.
+  #
+  # Parameters:
+  # * user: compulsory, the user whose timeline needs to be fetched.
+  # * options: optional. If options[:page] is set, then that page of results is
+  #            fetched. Otherwise, the first page is returned. Each page consists
+  #            of 20 stories.
+  # 
   def self.fetch(user, options={})
     page = options[:page] || 1
     ability = Ability.new user
