@@ -8,7 +8,6 @@
 # Parameters:
 # * INACTIVE_DAYS: Number of days before a user is considered to be inactive.
 # * CACHE_SIZE: Number of stories shown in a user's timeline.
-# * UPDATE_FREQ: For how much time is a cached timeline considered active.
 # * FRESH_FETCH_SIZE: How many stories to fetch when generating from scratch.
 #
 # What needs to be stored in Redis for the timelines:
@@ -21,15 +20,11 @@
 #
 # 1. Timelines for all active users are cached in Redis.
 # 2. Each cached timeline will hold a maximum of CACHE_SIZE stories.
-# 3. When the timeline is fetched, if it is more than UPDATE_FREQ seconds old, 
-#    update it.
-# 4. Updating the timeline involves finding the last CACHE_SIZE active users 
 #
 
 class UserTimeline
   INACTIVE_DAYS     = 10
   CACHE_SIZE        = 200
-  UPDATE_FREQ       = 30
   FRESH_FETCH_SIZE  = 50
   
   # Redis key names and prefixes.
@@ -39,6 +34,7 @@ class UserTimeline
   USER_FOLLOWING_PREFIX         = "user_following:"
   ACTIVE_FOLLOWED_USERS_PREFIX  = "active_followed_users:"
   TIMELINE_CACHE_PREFIX         = "user_timeline:"
+  TIMELINE_LOCK_PREFIX              = "timeline_lock:"
   
   #
   # Return the feed of a given user, serialized as JSON.
@@ -50,54 +46,68 @@ class UserTimeline
   #             consists of 20 stories.
   # 
   def self.fetch(user, options={})
-    page    = (options[:page] || 1).to_i
-    ability = Ability.new(user)
-    
-    UserTimeline.update_timeline!(user)
-    
     timeline_cache_key = TIMELINE_CACHE_PREFIX + user.id.to_s
-    timeline = JSON.parse $redis.get(timeline_cache_key)
     
+    unless $redis.exists timeline_cache_key
+      UserTimeline.regenerate_timeline!(user)
+    end
+    
+    timeline = $redis.get timeline_cache_key
+    timeline = JSON.parse timeline
+    
+    $redis.expire timeline_cache_key, INACTIVE_DAYS * 24 * 60 * 60
+    
+    page    = (options[:page] || 1).to_i
     start_index = 20 * (page-1)
     stop_index = start_index + 20 - 1
-    return timeline[start_index..stop_index].to_json
+    stop_index = -1 if stop_index > timeline.length-1
+
+    if start_index < timeline.length
+      timeline[start_index..stop_index].to_json
+    else
+      [].to_json
+    end
+  end
+  
+  # 
+  # Generate the given user's timeline from scratch, after it has expired.
+  #
+  # Parameters:
+  # * user: The user whose timeline is to be generated.
+  #
+  def self.regenerate_timeline!(user)
+    timeline_cache_key = TIMELINE_CACHE_PREFIX + user.id.to_s
+    ability = Ability.new user
+    
+    # Get the set of active followed users.
+    user_set = UserTimeline.get_active_followed_users(user)
+    if user_set.length > FRESH_FETCH_SIZE
+      user_set = user_set[0...FRESH_FETCH_SIZE] 
+    end
+    user_set += [user.id]
+    
+    # Get the list of stories.
+    stories = Story.accessible_by(ability).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(FRESH_FETCH_SIZE)
+    stories = JSON.parse Entities::Story.represent(stories, current_ability: ability, title_language_preference: user.title_language_preference).to_json
+    
+    # Save the stories as the user's timeline.
+    timeline = UserTimeline.aggregate([], stories)
+    UserTimeline.update_user_timeline! user, timeline
   end
   
   #
+  # Update a user's timeline to a new one.
   #
+  # Parameters:
+  # * user: The user whose timeline is to be set.
+  # * timeline: Entity representation of the timeline to be saved.
   #
-  def self.update_timeline!(user)
-    # Get the cached timeline.
+  def self.update_user_timeline!(user, timeline)
     timeline_cache_key = TIMELINE_CACHE_PREFIX + user.id.to_s
-    timeline = $redis.get(timeline_cache_key) || [].to_json
-    timeline = JSON.parse timeline
-    
-    # Get the time of the last timeline update.
-    if timeline.length > 0
-      last_timeline_update = $redis.zscore LAST_TIMELINE_UPDATE_TIME_KEY, user.id
-    else
-      last_timeline_update = nil
-    end
-    
-    if last_timeline_update.nil? or (Time.now.to_i - last_timeline_update.to_i) > UPDATE_FREQ
-      ## Timeline needs updating.
-
-      # Fetch new stories.
-      new_stories = UserTimeline.get_new_stories(user, last_timeline_update ? Time.at(last_timeline_update) : nil)
-      ability = Ability.new(user)
-      new_stories = Entities::Story.represent(new_stories, current_ability: ability, title_language_preference: user.title_language_preference).to_json
-      new_stories = JSON.parse new_stories
-
-      # Aggregate with cached timeline.
-      timeline = UserTimeline.aggregate(timeline, new_stories)
-      
-      # Save new timeline.
-      $redis.set timeline_cache_key, timeline.to_json
-      $redis.zadd LAST_TIMELINE_UPDATE_TIME_KEY, Time.now.to_i, user.id
-    end
-
-    $redis.expire timeline_cache_key, INACTIVE_DAYS * 24 * 60 * 60
+    $redis.set timeline_cache_key, timeline.to_json
+    $redis.zadd LAST_TIMELINE_UPDATE_TIME_KEY, Time.now.to_i, user.id
   end
+  
   
   #
   # Aggregate an array of `new_stories` into a given `cached_timeline` and
@@ -139,29 +149,6 @@ class UserTimeline
     new_timeline
   end
   
-  #
-  # Get all new stories to consider adding to the current user's timeline. 
-  #
-  # Parameters:
-  # * user: The user we are fetching stories for.
-  # * time: (optional) The time after which we need to look for stories. If 
-  #         this is not set, it means the user's timeline has expired from the 
-  #         cache and we are generating a new one from scratch.
-  #
-  def self.get_new_stories(user, time=nil)
-    ability = Ability.new user
-    user_set = UserTimeline.get_active_followed_users(user, time)
-    user_set = user_set[0...FRESH_FETCH_SIZE] if time.nil? and user_set.length > FRESH_FETCH_SIZE
-    user_set += [user.id]
-    stories = Story.accessible_by(ability).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(CACHE_SIZE)
-    if time
-      stories = stories.where('stories.updated_at > ?', time).limit(CACHE_SIZE)
-    else
-      stories = stories.limit(FRESH_FETCH_SIZE)
-    end
-    stories
-  end
-  
   # 
   # Return a list of user IDs corresponding to users who follow the given user
   # and had a story updated after the given time. Limited to CACHE_SIZE users.
@@ -181,6 +168,8 @@ class UserTimeline
     else
       active_ids = $redis.zrevrange active_followed_users_key, 0, CACHE_SIZE
     end
+    
+    $redis.del active_followed_users_key
     
     active_ids = active_ids[0...CACHE_SIZE] if active_ids.length > CACHE_SIZE
 
@@ -230,5 +219,24 @@ class UserTimeline
     following_key = USER_FOLLOWING_PREFIX + user.id.to_s
     $redis.srem followers_key, user.id
     $redis.srem following_key, followed.id
+  end
+  
+  #
+  # Acquire a lock on a user's timeline.
+  #
+  def self.acquire_lock(user)
+    lock_key = TIMELINE_LOCK_PREFIX + user.id.to_s
+    until $redis.setnx(lock_key, "locked")
+      sleep 1
+    end
+    $redis.expire lock_key, 5
+  end
+  
+  #
+  # Release lock on a user's timeline.
+  #
+  def self.release_lock(user)
+    lock_key = TIMELINE_LOCK_PREFIX + user.id.to_s
+    $redis.del lock_key
   end
 end
