@@ -9,6 +9,7 @@
 # * INACTIVE_DAYS: Number of days before a user is considered to be inactive.
 # * CACHE_SIZE: Number of stories shown in a user's timeline.
 # * UPDATE_FREQ: For how much time is a cached timeline considered active.
+# * FRESH_FETCH_SIZE: How many stories to fetch when generating from scratch.
 #
 # What needs to be stored in Redis for the timelines:
 #
@@ -26,9 +27,10 @@
 #
 
 class UserTimeline
-  INACTIVE_DAYS = 10
-  CACHE_SIZE    = 200
-  UPDATE_FREQ   = 30
+  INACTIVE_DAYS     = 10
+  CACHE_SIZE        = 200
+  UPDATE_FREQ       = 30
+  FRESH_FETCH_SIZE  = 20
   
   # Redis key names and prefixes.
   LAST_STORY_UPDATE_TIME_KEY    = "last_story_time"
@@ -72,11 +74,11 @@ class UserTimeline
     
     last_timeline_update = $redis.zscore LAST_TIMELINE_UPDATE_TIME_KEY, user.id
     if last_timeline_update.nil? or (Time.now.to_i - last_timeline_update.to_i) > UPDATE_FREQ
-      # Timeline needs updating.
-      p "update!"
+      ## Timeline needs updating.
 
       # Fetch new stories.
       new_stories = UserTimeline.get_new_stories(user, last_timeline_update ? Time.at(last_timeline_update) : nil)
+      new_stories = new_stories.limit(FRESH_FETCH_SIZE) if timeline.length == 0
       ability = Ability.new(user)
       new_stories = Entities::Story.represent(new_stories, current_ability: ability, title_language_preference: user.title_language_preference).to_json
       new_stories = JSON.parse new_stories
