@@ -30,7 +30,7 @@ class UserTimeline
   INACTIVE_DAYS     = 10
   CACHE_SIZE        = 200
   UPDATE_FREQ       = 30
-  FRESH_FETCH_SIZE  = 20
+  FRESH_FETCH_SIZE  = 50
   
   # Redis key names and prefixes.
   LAST_STORY_UPDATE_TIME_KEY    = "last_story_time"
@@ -78,7 +78,6 @@ class UserTimeline
 
       # Fetch new stories.
       new_stories = UserTimeline.get_new_stories(user, last_timeline_update ? Time.at(last_timeline_update) : nil)
-      new_stories = new_stories.limit(FRESH_FETCH_SIZE) if timeline.length == 0
       ability = Ability.new(user)
       new_stories = Entities::Story.represent(new_stories, current_ability: ability, title_language_preference: user.title_language_preference).to_json
       new_stories = JSON.parse new_stories
@@ -152,10 +151,14 @@ class UserTimeline
   #
   def self.get_new_stories(user, time=nil)
     ability = Ability.new user
-    user_set = UserTimeline.get_active_followed_users(user, time) + [user.id]
+    user_set = UserTimeline.get_active_followed_users(user, time)
+    user_set = user_set[0...FRESH_FETCH_SIZE] if time.nil? and user_set.length > FRESH_FETCH_SIZE
+    user_set += [user.id]
     stories = Story.accessible_by(ability).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(CACHE_SIZE)
     if time
-      stories = stories.where('stories.updated_at > ?', time)
+      stories = stories.where('stories.updated_at > ?', time).limit(CACHE_SIZE)
+    else
+      stories = stories.limit(FRESH_FETCH_SIZE)
     end
     stories
   end
