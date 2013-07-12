@@ -48,25 +48,48 @@ class UserTimeline
   #             consists of 20 stories.
   # 
   def self.fetch(user, options={})
-    page = (options[:page] || 1).to_i
-    ability = Ability.new user
+    page    = (options[:page] || 1).to_i
+    ability = Ability.new(user)
     
-    story_cache_key = TIMELINE_CACHE_PREFIX + user.id.to_s
-
-    stories = $redis.get story_cache_key
-    if stories
-      stories = JSON.parse stories
-    else
-      new_stories = UserTimeline.get_new_stories(user)
-      stories = Entities::Story.represent(new_stories, current_ability: ability, title_language_preference: user.title_language_preference)
-    end
-    # TODO Update if needed.
-    $redis.set story_cache_key, stories.to_json
-    $redis.expire story_cache_key, 30 # INACTIVE_DAYS * 24 * 60 * 60
+    UserTimeline.update_timeline!(user)
+    
+    timeline_cache_key = TIMELINE_CACHE_PREFIX + user.id.to_s
+    timeline = JSON.parse $redis.get(timeline_cache_key)
     
     start_index = 20 * (page-1)
     stop_index = start_index + 20 - 1
-    return stories[start_index..stop_index].to_json
+    return timeline[start_index..stop_index].to_json
+  end
+  
+  #
+  #
+  #
+  def self.update_timeline!(user)
+    # Get the cached timeline.
+    timeline_cache_key = TIMELINE_CACHE_PREFIX + user.id.to_s
+    timeline = $redis.get(timeline_cache_key) || [].to_json
+    timeline = JSON.parse timeline
+    
+    last_timeline_update = $redis.zscore LAST_TIMELINE_UPDATE_TIME_KEY, user.id
+    if last_timeline_update.nil? or (Time.now.to_i - last_timeline_update.to_i) > UPDATE_FREQ
+      # Timeline needs updating.
+      p "update!"
+
+      # Fetch new stories.
+      new_stories = UserTimeline.get_new_stories(user, Time.at(last_timeline_update))
+      ability = Ability.new(user)
+      new_stories = Entities::Story.represent(new_stories, current_ability: ability, title_language_preference: user.title_language_preference).to_json
+      new_stories = JSON.parse new_stories
+
+      # Aggregate with cached timeline.
+      timeline = UserTimeline.aggregate(timeline, new_stories)
+      
+      # Save new timeline.
+      $redis.set timeline_cache_key, timeline.to_json
+      $redis.zadd LAST_TIMELINE_UPDATE_TIME_KEY, Time.now.to_i, user.id
+    end
+
+    $redis.expire timeline_cache_key, INACTIVE_DAYS * 24 * 60 * 60
   end
   
   #
@@ -76,11 +99,44 @@ class UserTimeline
   # Parameters:
   # * cached_timeline: The current timeline cached for the given user. Already
   #                    in the entity representation.
-  # * new_stories: Array of new stories to be merged with the cached timeline.
+  # * new_stories: New stories to be merged with the cached timeline.
   #
-  def self.aggregate_stories(cached_timeline, new_stories)
-    # TODO: Implement this.
-    cached_timeline
+  def self.aggregate(cached_timeline, new_stories)
+    # Step 1. Convert the cached_timeline array into a (story id -> story) map.
+    story_map = {}
+    cached_timeline.each do |story|
+      story_map[story["id"]] = story
+    end
+    
+    # Step 2. Insert the new stories into the map.
+    new_stories.each do |story|
+      story_map[story["id"]] = story
+    end
+
+    # Step 3. Sort all of the stories into an array by update time.
+    new_timeline = []
+    story_map.each do |story_id, story|
+      new_timeline.push story
+    end
+    new_timeline.sort_by! {|s| s["updated_at"] }
+    new_timeline.reverse!
+    
+    # Step 4. Filter out stories that aren't relevant.
+    # TODO
+    
+    # Step 5. Take the top CACHE_SIZE stories.
+    new_timeline = new_timeline[0...CACHE_SIZE] if new_timeline.length > CACHE_SIZE
+    
+    # Step 6. Find the age of the newest substory of the oldest story.
+    # TODO
+    
+    # Step 7. Remove all substories that are older than this.
+    # TODO
+
+    # Step 8. Return the new timeline.
+    # TODO
+    
+    new_timeline
   end
   
   #
@@ -97,7 +153,7 @@ class UserTimeline
     user_set = UserTimeline.get_active_followed_users(user, time) + [user.id]
     stories = Story.accessible_by(ability).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(CACHE_SIZE)
     if time
-      stories = stories.where('updated_at >= ?', time)
+      stories = stories.where('stories.updated_at > ?', time)
     end
     stories
   end

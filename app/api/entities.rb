@@ -112,6 +112,8 @@ module Entities
   end
   
   class Story < Grape::Entity
+    expose :id
+
     expose :story_type
     expose :user, using: Entities::MiniUser
     expose :substories, using: Entities::Substory
