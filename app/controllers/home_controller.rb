@@ -24,8 +24,17 @@ class HomeController < ApplicationController
       end
       
     else
-      @hide_footer_ad = ab_test("footer_ad_on_guest_homepage", "show", "hide") == "hide"
-      render :guest_index
+
+      respond_to do |format|
+        format.html do
+          @hide_footer_ad = ab_test("footer_ad_on_guest_homepage", "show", "hide") == "hide"
+          render :guest_index
+        end
+        format.json do
+          render :json => []
+        end
+      end
+
     end
   end
   
