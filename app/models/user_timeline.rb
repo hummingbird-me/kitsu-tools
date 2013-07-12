@@ -62,7 +62,7 @@ class UserTimeline
     end
     # TODO Update if needed.
     $redis.set story_cache_key, stories.to_json
-    $redis.expire story_cache_key, INACTIVE_DAYS * 24 * 60 * 60
+    $redis.expire story_cache_key, 30 # INACTIVE_DAYS * 24 * 60 * 60
     
     start_index = 20 * (page-1)
     stop_index = start_index + 20 - 1
