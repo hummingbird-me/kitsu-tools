@@ -76,7 +76,7 @@ class UserTimeline
       p "update!"
 
       # Fetch new stories.
-      new_stories = UserTimeline.get_new_stories(user, Time.at(last_timeline_update))
+      new_stories = UserTimeline.get_new_stories(user, last_timeline_update? Time.at(last_timeline_update) : nil)
       ability = Ability.new(user)
       new_stories = Entities::Story.represent(new_stories, current_ability: ability, title_language_preference: user.title_language_preference).to_json
       new_stories = JSON.parse new_stories
