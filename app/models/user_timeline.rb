@@ -36,6 +36,7 @@ class UserTimeline
   USER_FOLLOWERS_PREFIX         = "user_followers:"
   USER_FOLLOWING_PREFIX         = "user_following:"
   ACTIVE_FOLLOWED_USERS_PREFIX  = "active_followed_users:"
+  TIMELINE_CACHE_PREFIX         = "user_timeline:"
   
   #
   # Return the feed of a given user, serialized as JSON.
@@ -47,10 +48,39 @@ class UserTimeline
   #             consists of 20 stories.
   # 
   def self.fetch(user, options={})
-    page = options[:page] || 1
+    page = (options[:page] || 1).to_i
     ability = Ability.new user
-    stories = UserTimeline.get_new_stories(user).page(page).per(20)
-    Entities::Story.represent(stories, current_ability: ability, title_language_preference: user.title_language_preference).to_json
+    
+    story_cache_key = TIMELINE_CACHE_PREFIX + user.id.to_s
+
+    stories = $redis.get story_cache_key
+    if stories
+      stories = JSON.parse stories
+    else
+      new_stories = UserTimeline.get_new_stories(user)
+      stories = Entities::Story.represent(new_stories, current_ability: ability, title_language_preference: user.title_language_preference)
+    end
+    # TODO Update if needed.
+    $redis.set story_cache_key, stories.to_json
+    $redis.expire story_cache_key, INACTIVE_DAYS * 24 * 60 * 60
+    
+    start_index = 20 * (page-1)
+    stop_index = start_index + 20 - 1
+    return stories[start_index..stop_index].to_json
+  end
+  
+  #
+  # Aggregate an array of `new_stories` into a given `cached_timeline` and
+  # return the new timeline.
+  #
+  # Parameters:
+  # * cached_timeline: The current timeline cached for the given user. Already
+  #                    in the entity representation.
+  # * new_stories: Array of new stories to be merged with the cached timeline.
+  #
+  def self.aggregate_stories(cached_timeline, new_stories)
+    # TODO: Implement this.
+    cached_timeline
   end
   
   #
@@ -64,9 +94,10 @@ class UserTimeline
   #
   def self.get_new_stories(user, time=nil)
     ability = Ability.new user
-    stories = Story.accessible_by(ability).order('updated_at DESC').where(user_id: UserTimeline.get_active_followed_users(user, time) + [user.id]).includes(:substories)
+    user_set = UserTimeline.get_active_followed_users(user, time) + [user.id]
+    stories = Story.accessible_by(ability).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(CACHE_SIZE)
     if time
-      stories = stories.where('updated_at > ?', time)
+      stories = stories.where('updated_at >= ?', time)
     end
     stories
   end
