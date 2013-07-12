@@ -27,7 +27,7 @@
 
 class UserTimeline
   INACTIVE_DAYS = 10
-  CACHE_SIZE    = 200
+  CACHE_SIZE    = 30
   UPDATE_FREQ   = 30
   
   # Redis key names and prefixes.
