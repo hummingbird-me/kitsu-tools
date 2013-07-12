@@ -2,8 +2,8 @@
 #
 # Definitions:
 #
-# * For the purposes of the user timeline, an active user is defined as a user who
-#   has generated a story in the last INACTIVE_DAYS days.
+# * For the purposes of the user timeline, an active user is defined as a user 
+#   who has generated a story in the last INACTIVE_DAYS days.
 #
 # Parameters:
 # * INACTIVE_DAYS: Number of days before a user is considered to be inactive.
@@ -35,21 +35,65 @@ class UserTimeline
   LAST_TIMELINE_UPDATE_TIME_KEY = "last_timeline_update"
   USER_FOLLOWERS_PREFIX         = "user_followers:"
   USER_FOLLOWING_PREFIX         = "user_following:"
+  ACTIVE_FOLLOWED_USERS_PREFIX  = "active_followed_users:"
   
   #
   # Return the feed of a given user, serialized as JSON.
   #
   # Parameters:
   # * user:     the user whose timeline needs to be fetched.
-  # * options:  (optional) If options[:page] is set, then that page of results is
-  #             fetched. Otherwise, the first page is returned. Each page consists
-  #             of 20 stories.
+  # * options:  (optional) If options[:page] is set, then that page of results 
+  #             is fetched. Otherwise, the first page is returned. Each page 
+  #             consists of 20 stories.
   # 
   def self.fetch(user, options={})
     page = options[:page] || 1
     ability = Ability.new user
-    stories = Story.accessible_by(ability).order('updated_at DESC').where(user_id: user.following.map {|x| x.id } + [user.id]).page(page).includes(:substories).per(20)
+    stories = UserTimeline.get_new_stories(user).page(page).per(20)
     Entities::Story.represent(stories, current_ability: ability, title_language_preference: user.title_language_preference).to_json
+  end
+  
+  #
+  # Get all new stories to consider adding to the current user's timeline. 
+  #
+  # Parameters:
+  # * user: The user we are fetching stories for.
+  # * time: (optional) The time after which we need to look for stories. If 
+  #         this is not set, it means the user's timeline has expired from the 
+  #         cache and we are generating a new one from scratch.
+  #
+  def self.get_new_stories(user, time=nil)
+    ability = Ability.new user
+    stories = Story.accessible_by(ability).order('updated_at DESC').where(user_id: UserTimeline.get_active_followed_users(user, time) + [user.id]).includes(:substories)
+    if time
+      stories = stories.where('updated_at > ?', time)
+    end
+    stories
+  end
+  
+  # 
+  # Return a list of user IDs corresponding to users who follow the given user
+  # and had a story updated after the given time. Limited to CACHE_SIZE users.
+  #
+  # Parameters:
+  # * user: The user in question.
+  # * time: (optional) If this is set, only return users with story updates
+  #         after the specified time.
+  #
+  def self.get_active_followed_users(user, time=nil)
+    active_followed_users_key = ACTIVE_FOLLOWED_USERS_PREFIX + user.id.to_s
+    following_key = USER_FOLLOWING_PREFIX + user.id.to_s
+    $redis.zinterstore active_followed_users_key, [LAST_STORY_UPDATE_TIME_KEY, following_key], aggregate: "max"
+
+    if time
+      active_ids = $redis.zrevrangebyscore active_followed_users_key, Time.now.to_i + 10, time.to_i
+    else
+      active_ids = $redis.zrevrange active_followed_users_key, 0, CACHE_SIZE
+    end
+    
+    active_ids = active_ids[0...CACHE_SIZE] if active_ids.length > CACHE_SIZE
+
+    active_ids
   end
   
   #
@@ -67,9 +111,9 @@ class UserTimeline
   end
   
   #
-  # Called when a user follows another user. It is cached to two Redis sets: one
-  # for the list of users followed by the current user, and the list of followers
-  # of the followed user.
+  # Called when a user follows another user. It is cached to two Redis sets: 
+  # one for the list of users followed by the current user, and the list of 
+  # followers of the followed user.
   #
   # Parameters:
   # * user: The user who performs the follow action.

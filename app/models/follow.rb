@@ -20,6 +20,6 @@ class Follow < ActiveRecord::Base
   before_destroy do
     User.decrement_counter 'following_count', self.follower_id
     User.decrement_counter 'followers_count_hack', self.followed_id
-    UserTimeline.notify_unfollow self.followers, self.followed
+    UserTimeline.notify_unfollow self.follower, self.followed
   end
 end
