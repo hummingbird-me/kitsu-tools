@@ -72,7 +72,13 @@ class UserTimeline
     timeline = $redis.get(timeline_cache_key) || [].to_json
     timeline = JSON.parse timeline
     
-    last_timeline_update = $redis.zscore LAST_TIMELINE_UPDATE_TIME_KEY, user.id
+    # Get the time of the last timeline update.
+    if timeline.length > 0
+      last_timeline_update = $redis.zscore LAST_TIMELINE_UPDATE_TIME_KEY, user.id
+    else
+      last_timeline_update = nil
+    end
+    
     if last_timeline_update.nil? or (Time.now.to_i - last_timeline_update.to_i) > UPDATE_FREQ
       ## Timeline needs updating.
 
