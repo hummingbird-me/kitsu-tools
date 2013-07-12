@@ -129,7 +129,8 @@ class UserTimeline
     new_timeline.reverse!
     
     # Step 4. Filter out stories that aren't relevant.
-    # TODO
+    # * Remove all stories that no longer exist.
+    new_timeline = new_timeline.select {|s| Story.exists? s["id"] }
     
     # Step 5. Take the top CACHE_SIZE stories.
     new_timeline = new_timeline[0...CACHE_SIZE] if new_timeline.length > CACHE_SIZE
