@@ -1,133 +1,415 @@
-.anime-discover
-  .filter-toolbar
-    .row
-      .large-12.columns
-        %form.autosubmit
+.anime-discover.anime-explore
+  .row
+    .large-12.columns
+      .large-6.columns
+        .panel
           %ul.inline-list
-            %li.large-3.columns
-              %select.autosubmit{:class => "single-select", :name => "filter"}
-                %option{:value => "all", :selected => ("selected" if @filter == "all")}
-                  %i.icon-globe
-                  All Anime
-                %option{:value => "recommended", :selected => ("selected" if @filter == "recommended")}
-                  %i.icon-heart
-                  Recommendations
-                %option{:value => "unseen", :selected => ("selected" if @filter == "unseen")}
-                  %i.icon-eye-close
-                  Haven't Seen
-                %option{:value => "unfinished", :selected => ("selected" if @filter == "unfinished")}
-                  %i.icon-tasks
-                  Haven't finished
+            %li Popularity
+            %li Genre
+            %li Date
+            %li Anticipation
 
-            %li.large-3.columns
-              %select{:multiple => "multiple", :class => "multiple-select", :name => "genres[]"}
-                - @all_genres.each do |genre|
-                  %option{:value => "#{genre.slug}", :selected => ("selected" if @genre_filter.include? genre)}
-                    %i.icon-film
-                    = genre.name
+      .large-6.columns
+        %p Search Anime
 
-            %li.large-3.columns
-              %select{:multiple => "multiple", :class => "multiple-nofiltera", :name => "types[]"}
-                %option{:disabled => "disabled"}
-                  Series
-                %option{:disabled => "disabled"}
-                  OVA / SPECIAL
+    .large-12.columns
+      %h4.top-title= title 'Trending Today'
+      %hr.title-divider
 
-            %li.large-3.columns
-              %select{:multiple => "multiple", :class => "multiple-nofilterb", :name => "watch[]"}
-                %option{:disabled => "disabled"}
-                  Netflix
-                %option{:disabled => "disabled"}
-                  Hulu
-                %option{:disabled => "disabled"}
-                  Crunchyroll
-                %option{:disabled => "disabled"}
-                  Funimation
-                %option{:disabled => "disabled"}
-                  Viz
+      .large-12.columns.no-padding.trending-panel
+        %ul
+          %li.large-2.columns.single-wrapper
+            .popular-card
+              %p.wanna-watch
+              = image_tag "http://hummingbird.me/system/69eea0b536f37295c14e7447ee8899c5a72ed059_thumb.jpg?1361875894"
+              %p.title Fullmetal Alchemist: Brotherhood
 
-  .row.content-body
-    .anime-grid.large-12.columns
-      - if @filter == "recommended" and !current_user.recommendations_up_to_date
-        %div.alert-box
-          %span.updating_recommendations We're updating your recommendations. 
-          %span.check_back Check back in a minute!
+          %li.large-2.columns.single-wrapper
+            .popular-card
+              %p.wanna-watch
+              = image_tag "http://hummingbird.me/system/21e780dc0cc37b7cf930330c0b2df5799aa239da_thumb.jpg?1373243428"
+              %p.title Steins;Gate
+          %li.large-2.columns.single-wrapper
+            .popular-card
+              %p.wanna-watch
+              = image_tag "http://hummingbird.me/system/d6296de882b7516a48c9f271404f166aec21ac37_thumb.jpg?1361875617"
+              %p.title Clannad: After Story
+          %li.large-2.columns.single-wrapper
+            .popular-card
+              %p.wanna-watch
+              = image_tag "http://hummingbird.me/system/9add096422e0a356de9088f282494862c81d943a_thumb.jpg?1361876448"
+              %p.title The Disappearance of Haruhi Suzumiya
+          %li.large-2.columns.single-wrapper
+            .popular-card
+              %p.wanna-watch
+              = image_tag "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"
+              %p.title Attack on Titan
+          %li.large-2.columns.single-wrapper
+            .popular-card
+              %p.wanna-watch
+              = image_tag "http://hummingbird.me/system/21e5d350e222c66992c3b5e90631a0e0c07f955b_thumb.jpg?1361873637"
+              %p.title Cowboy Bebop
+  .row
+    .large-12.columns
+      .panel.rounded-panel
+        .large-12.columns
+          %h4 Recently Reviewed
+          %hr 
+        .large-12.columns.recent-panel
+          %ul.recently-reviewed
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/6a0982065dcb44303fcb66612ac359087ba7bc43_thumb.jpg?1372389048"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/a7949f433d44fca657f702294bc197ac6b0fdd7b_thumb.jpg?1361873643"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/43089f36ca066f82f2150400ebd24194275ce4b1_thumb.jpg?1372998366"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/23524732bfd96cec6b5c9e104b43a186b77bd789_thumb.jpg?1361874799"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/c5b666f7937c18460883671332abada62f0e4278_thumb.jpg?1372978063"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/b0cb4fe22c74ad205729374e99d7420365eb9313_thumb.jpg?1372464310"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/67eac9f66f3b51c1f25d9cfa58dfc94d1db73893_thumb.jpg?1361876396"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/25b0061ee66d1d930f396e90bf2b7d5b393c59da_thumb.jpg?1361877364"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/f028f386be1ab53f0467dc33986ab55e40ab56cc_thumb.jpg?1361874950"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/37b36d545ac9fb79221514c34c38175494c141fe_thumb.jpg?1361875856"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/32f04cfb6ef905b438c34d2413091d3810432941_thumb.jpg?1372463782"
+            %li.large-1.columns.recent-review
+              = image_tag "http://hummingbird.me/system/a1dd6cdf9833939d243397e2aaa3027c33b39df4_thumb.jpg?1372977955"
+  .row
+    .large-8.columns
+      .panel.rounded-panel
+        .large-12.columns
+          %h4 Trending Reviews
+          %hr
+          .large-12.columns.no-padding.popular-reviews
+            .large-1.columns.no-padding.center
+              %a{:alt => "JetpackKoala's avatar", :href => "/users/1429-jetpackkoala"}
+                %img{:alt => "Gif_190x142_532215", :src => "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"}/
+            .large-9.columns.review-left-wrapper
+              %h5
+                Review by
+                %a{:href => "/users/1429-jetpackkoala"} JetpackKoala
+              %p Shingeki No Kyojin is an incredibly powerful anime, and is a unforgettable addition to the Action genre.
+              %p
+                %a{:href => "/anime/attack-on-titan/reviews/1756"} Read Review
+            .large-2.columns.no-padding
+              .chart.easyPieChart{"data-percent" => "100", :style => "width: 86px; height: 86px; line-height: 86px;"}
+                10
+                %canvas{:height => "86", :width => "86"}
+          %hr
+          .large-12.columns.no-padding.popular-reviews
+            .large-1.columns.no-padding.center
+              %a{:alt => "JetpackKoala's avatar", :href => "/users/1429-jetpackkoala"}
+                %img{:alt => "Gif_190x142_532215", :src => "http://hummingbird.me/system/d21412e0129ddf23df0a2b099dde53501ab66fbc_thumb.jpg?1361873733"}/
+            .large-9.columns.review-left-wrapper
+              %h5
+                Review by
+                %a{:href => "/users/1429-jetpackkoala"} Clara
+              %p Spirited Away is Hayao Miyazaki's masterpiece, and anime (and animation in general) doesn't get much better than this.
+              %p
+                %a{:href => "/anime/attack-on-titan/reviews/1756"} Read Review
+            .large-2.columns.no-padding
+              .chart.easyPieChart{"data-percent" => "70", :style => "width: 86px; height: 86px; line-height: 86px;"}
+                7
+                %canvas{:height => "86", :width => "86"}
+          %hr
+          .large-12.columns.no-padding.popular-reviews
+            .large-1.columns.no-padding.center
+              %a{:alt => "JetpackKoala's avatar", :href => "/users/1429-jetpackkoala"}
+                %img{:alt => "Gif_190x142_532215", :src => "http://hummingbird.me/system/8093d8186a3ac8252c81c46e1e03856ce25a7e4c_thumb.png?1373251502"}/
+            .large-9.columns.review-left-wrapper
+              %h5
+                Review by
+                %a{:href => "/users/1429-jetpackkoala"} Roriconfan
+              %p Review up to episode 65. Will edit as I watch more. MENTALITY This is the remake of a cult shonen show from 1999, which still remains...
+              %p
+                %a{:href => "/anime/attack-on-titan/reviews/1756"} Read Review
+            .large-2.columns.no-padding
+              .chart.easyPieChart{"data-percent" => "100", :style => "width: 86px; height: 86px; line-height: 86px;"}
+                10
+                %canvas{:height => "86", :width => "86"}
+          %hr
+          .large-12.columns.no-padding.popular-reviews
+            .large-1.columns.no-padding.center
+              %a{:alt => "JetpackKoala's avatar", :href => "/users/1429-jetpackkoala"}
+                %img{:alt => "Gif_190x142_532215", :src => "http://hummingbird.me/system/b4a8eddaa799bb8cbaa7a898affab88c6dea8995_thumb.jpeg?1372100747"}/
+            .large-9.columns.review-left-wrapper
+              %h5
+                Review by
+                %a{:href => "/users/1429-jetpackkoala"} AilesGrises
+              %p To start with the conclusion I will say that this is exemplary visual storytelling. Which you'd initially not suspect perhaps, seeing as...
+              %p
+                %a{:href => "/anime/attack-on-titan/reviews/1756"} Read Review
+            .large-2.columns.no-padding
+              .chart.easyPieChart{"data-percent" => "90", :style => "width: 86px; height: 86px; line-height: 86px;"}
+                9
+                %canvas{:height => "86", :width => "86"}
+          %hr
+          .large-12.columns.no-padding.popular-reviews
+            .large-1.columns.no-padding.center
+              %a{:alt => "JetpackKoala's avatar", :href => "/users/1429-jetpackkoala"}
+                %img{:alt => "Gif_190x142_532215", :src => "http://hummingbird.me/system/691e428d53f9d2c27560d333738b4a0ce2a522f1_thumb.jpg?1373243751"}
+            .large-9.columns.review-left-wrapper
+              %h5
+                Review by
+                %a{:href => "/users/1429-jetpackkoala"} BattleChili1
+              %p This show is epic. It is a combination of an epic story that goes from something very small to something HUGE by the end, occasional cool...
+              %p
+                %a{:href => "/anime/attack-on-titan/reviews/1756"} Read Review
+            .large-2.columns.no-padding
+              .chart.easyPieChart{"data-percent" => "90", :style => "width: 86px; height: 86px; line-height: 86px;"}
+                9
+                %canvas{:height => "86", :width => "86"}
+          %hr
+          .large-12.columns.no-padding.popular-reviews
+            .large-1.columns.no-padding.center
+              %a{:alt => "JetpackKoala's avatar", :href => "/users/1429-jetpackkoala"}
+                %img{:alt => "Gif_190x142_532215", :src => "http://hummingbird.me/system/36203532d91c7d9529e7a30354026d8ba4dd6b06_thumb.jpg?1361873864"}/
+            .large-9.columns.review-left-wrapper
+              %h5
+                Review by
+                %a{:href => "/users/1429-jetpackkoala"} Luxxy
+              %p Mushishi is very mellow and relaxing - therapeutic even. An episodic supernatural anime with no other series like it.
+              %p
+                %a{:href => "/anime/attack-on-titan/reviews/1756"} Read Review
+            .large-2.columns.no-padding
+              .chart.easyPieChart{"data-percent" => "90", :style => "width: 86px; height: 86px; line-height: 86px;"}
+                9
+                %canvas{:height => "86", :width => "86"}
+          :javascript
+            (function() {
+              $(".chart").easyPieChart({
+                size: 86
+              });
+            
+            }).call(this);
+          :css
+            .chart {
+              margin: 10px;
+              font-size: 2em;
+              font-weight: bold;
+            }
+          %hr
+
+          %p.center.reviews-footer
+            %a{:href => "/anime/attack-on-titan/reviews/new"} Load More Reviews
+
+    .large-4.columns.explore-sidebar
+      .panel.rounded-panel.center.side-advert
+        .large-12.columns.no-padding-left.no-padding
         :javascript
-          function checkForCompletion() {
-            $.getJSON("/users.json", function(data) { 
-              if (!data["recommendations_up_to_date"]) {
-                $("span.check_back").html("Hang on!");
-                setTimeout("checkForCompletion()", 5000);
-              }
-              else {
-                $("span.updating_recommendations").html("We're done updating your recommendations.");
-                $("span.check_back").html("<a href='/anime?filter=recommended'>Check them out!</a>");
-              }
-            });
-          }
-          checkForCompletion();
-      .row
-        - if @collection.length == 0
-          .not-found.panel
-            .title.large-12-columns
-              %h3 We couldn't find what you were looking for!
-              %p To make up for that, here's some random anime... have fun!
-            .row
-          - @collection = Anime.accessible_by(current_ability).order("RANDOM()").limit(6).map {|x| [x, @watchlist[x.id]] }
+          google_ad_client = "ca-pub-3410319844519574";
+          /* Homepage Sidebar */
+          google_ad_slot = "8094424442";
+          google_ad_width = 300;
+          google_ad_height = 250;
+
+        %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
+      .panel.rounded-panel
+        .large-12.columns.no-padding.forum-block
+          .large-6.columns.block-title
+            %h4 Forum
+          .large-6.columns.block-link
+            %a.right{:href => "/community/"} view forums
+          %hr/
+          %ul
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  %a{:href => "/community/forums/anime-discussion/topics/most-manly-animes"} Most Manly Animes?
+                .forum-time.pull-right
+                  %i 9 minutes ago
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  %a{:href => "/community/forums/site-suggestions/topics/a-page-for-the-community"} A page for the community
+                .forum-time.pull-right
+                  %i 14 minutes ago
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  %a{:href => "/community/forums/bug-reports/topics/mod-request-edit-delete-quotes"} [Mod Request] Edit/delete quotes
+                .forum-time.pull-right
+                  %i 41 minutes ago
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  %a{:href => "/community/forums/site-suggestions/topics/auto-anime-updade"} auto anime updade
+                .forum-time.pull-right
+                  %i about 1 hour ago
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  %a{:href => "/community/forums/bug-reports/topics/drop-down-menu-doesn-t-quite-show-remains-on-page"} Drop-down menu doesn't quite...
+                .forum-time.pull-right
+                  %i about 1 hour ago
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  %a{:href => "/community/forums/site-suggestions/topics/bigger-profile-pic-avatar"} Bigger Profile Pic/Avatar
+                .forum-time.pull-right
+                  %i about 1 hour ago
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  %a{:href => "/community/forums/site-suggestions/topics/fixed-header-and-side-menu"} Fixed header and side menu
+                .forum-time.pull-right
+                  %i about 1 hour ago
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  %a{:href => "/community/forums/anime-discussion/topics/what-is-your-dealbreaker-in-anime"} What is your Dealbreaker in Anime?
+                .forum-time.pull-right
+                  %i about 2 hours ago
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  %a{:href => "/community/forums/anime-discussion/topics/fate-series-anime-watch-order"} Fate series anime watch order
+                .forum-time.pull-right
+                  %i about 2 hours ago
+            %li.large-12.columns.topic-row
+              .large-12.columns.no-padding.forum-title
+                .pull-left
+                  %a{:href => "/community/forums/anime-discussion/topics/anime-gif-thread-go"} Anime GIF thread, go!
+                .forum-time.pull-right
+                  %i about 2 hours ago
+
+
+/   .filter-toolbar
+/     .row
+/       .large-12.columns
+/         %form.autosubmit
+/           %ul.inline-list
+/             %li.large-3.columns
+/               %select.autosubmit{:class => "single-select", :name => "filter"}
+/                 %option{:value => "all", :selected => ("selected" if @filter == "all")}
+/                   %i.icon-globe
+/                   All Anime
+/                 %option{:value => "recommended", :selected => ("selected" if @filter == "recommended")}
+/                   %i.icon-heart
+/                   Recommendations
+/                 %option{:value => "unseen", :selected => ("selected" if @filter == "unseen")}
+/                   %i.icon-eye-close
+/                   Haven't Seen
+/                 %option{:value => "unfinished", :selected => ("selected" if @filter == "unfinished")}
+/                   %i.icon-tasks
+/                   Haven't finished
+
+/             %li.large-3.columns
+/               %select{:multiple => "multiple", :class => "multiple-select", :name => "genres[]"}
+/                 - @all_genres.each do |genre|
+/                   %option{:value => "#{genre.slug}", :selected => ("selected" if @genre_filter.include? genre)}
+/                     %i.icon-film
+/                     = genre.name
+
+/             %li.large-3.columns
+/               %select{:multiple => "multiple", :class => "multiple-nofiltera", :name => "types[]"}
+/                 %option{:disabled => "disabled"}
+/                   Series
+/                 %option{:disabled => "disabled"}
+/                   OVA / SPECIAL
+
+/             %li.large-3.columns
+/               %select{:multiple => "multiple", :class => "multiple-nofilterb", :name => "watch[]"}
+/                 %option{:disabled => "disabled"}
+/                   Netflix
+/                 %option{:disabled => "disabled"}
+/                   Hulu
+/                 %option{:disabled => "disabled"}
+/                   Crunchyroll
+/                 %option{:disabled => "disabled"}
+/                   Funimation
+/                 %option{:disabled => "disabled"}
+/                   Viz
+
+/   .row.content-body
+/     .anime-grid.large-12.columns
+/       - if @filter == "recommended" and !current_user.recommendations_up_to_date
+/         %div.alert-box
+/           %span.updating_recommendations We're updating your recommendations. 
+/           %span.check_back Check back in a minute!
+/         :javascript
+/           function checkForCompletion() {
+/             $.getJSON("/users.json", function(data) { 
+/               if (!data["recommendations_up_to_date"]) {
+/                 $("span.check_back").html("Hang on!");
+/                 setTimeout("checkForCompletion()", 5000);
+/               }
+/               else {
+/                 $("span.updating_recommendations").html("We're done updating your recommendations.");
+/                 $("span.check_back").html("<a href='/anime?filter=recommended'>Check them out!</a>");
+/               }
+/             });
+/           }
+/           checkForCompletion();
+/       .row
+/         - if @collection.length == 0
+/           .not-found.panel
+/             .title.large-12-columns
+/               %h3 We couldn't find what you were looking for!
+/               %p To make up for that, here's some random anime... have fun!
+/             .row
+/           - @collection = Anime.accessible_by(current_ability).order("RANDOM()").limit(6).map {|x| [x, @watchlist[x.id]] }
           
-        = render partial: "anime/card", collection: @collection, as: :data
+/         = render partial: "anime/card", collection: @collection, as: :data
 
-      .row.pagination-centered
-        = paginate(@anime)
+/       .row.pagination-centered
+/         = paginate(@anime)
 
-      .row
-        .panel(style="text-align: center; padding: 8px; margin-top: 26px; opacity: 0.7")
-          %h5(style="display: inline")
-            Couldn't find what you were looking for?
-          %p(style="display: inline")
-            %a(href="mailto:vikhyat@hummingbird.ly") Send us an email!
+/       .row
+/         .panel(style="text-align: center; padding: 8px; margin-top: 26px; opacity: 0.7")
+/           %h5(style="display: inline")
+/             Couldn't find what you were looking for?
+/           %p(style="display: inline")
+/             %a(href="mailto:vikhyat@hummingbird.ly") Send us an email!
 
-:javascript
-  function capitalize(s) {
-    return s[0].toUpperCase() + s.substring(1);
-  }
-  $(".multiple-select").multiselect({
-    close: function() {
-      $("form.autosubmit").submit();
-    },
-    noneSelectedText: "All Genres",
-    selectedList: 2,
-    selectedText: function (c, t, a) {
-      if (c == t) {
-        return "All Genres";
-      }
-      else if (c == 2) {
-        return capitalize(a[0].value) + ", " + capitalize(a[1].value);
-      }
-      else if (c == 1) {
-        return capitalize(a[0].value);
-      }
-      else {
-        return c + " genres selected";
-      }
-    }
-  }).multiselectfilter();
-  $(".multiple-nofiltera").multiselect({
-    noneSelectedText: "Any Type",
-    header: "coming soon!",
-    selectedList: 3 // 0-based index
-  });
-  $(".multiple-nofilterb").multiselect({
-    noneSelectedText: "Watch Anywhere",
-    header: "coming soon!",
-    selectedList: 3 // 0-based index
-  });
-  $(".single-select").multiselect({
-    multiple: false,
-    header: "Select an option",
-    noneSelectedText: "Select an Option",
-    selectedList: 1
-  });
+/ :javascript
+/   function capitalize(s) {
+/     return s[0].toUpperCase() + s.substring(1);
+/   }
+/   $(".multiple-select").multiselect({
+/     close: function() {
+/       $("form.autosubmit").submit();
+/     },
+/     noneSelectedText: "All Genres",
+/     selectedList: 2,
+/     selectedText: function (c, t, a) {
+/       if (c == t) {
+/         return "All Genres";
+/       }
+/       else if (c == 2) {
+/         return capitalize(a[0].value) + ", " + capitalize(a[1].value);
+/       }
+/       else if (c == 1) {
+/         return capitalize(a[0].value);
+/       }
+/       else {
+/         return c + " genres selected";
+/       }
+/     }
+/   }).multiselectfilter();
+/   $(".multiple-nofiltera").multiselect({
+/     noneSelectedText: "Any Type",
+/     header: "coming soon!",
+/     selectedList: 3 // 0-based index
+/   });
+/   $(".multiple-nofilterb").multiselect({
+/     noneSelectedText: "Watch Anywhere",
+/     header: "coming soon!",
+/     selectedList: 3 // 0-based index
+/   });
+/   $(".single-select").multiselect({
+/     multiple: false,
+/     header: "Select an option",
+/     noneSelectedText: "Select an Option",
+/     selectedList: 1
+/   });
 
-- if user_signed_in?
-  = render partial: "watchlists/form_modal", collection: @collection.map {|x| x[1] || Watchlist.new(user: current_user, anime: x[0]) }, as: :watchlist
+/ - if user_signed_in?
+/   = render partial: "watchlists/form_modal", collection: @collection.map {|x| x[1] || Watchlist.new(user: current_user, anime: x[0]) }, as: :watchlist
