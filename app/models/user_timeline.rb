@@ -135,18 +135,7 @@ class UserTimeline
     # Step 5. Take the top CACHE_SIZE stories.
     new_timeline = new_timeline[0...CACHE_SIZE] if new_timeline.length > CACHE_SIZE
     
-    # Step 6. Find the age of the newest substory of the oldest story.
-    oldest_subs = new_timeline[-1]["substories"]
-    newest_substory_age = oldest_subs.map {|x| x["created_at"] }.max
-    
-    # Step 7. Remove all substories that are older than this.
-    new_timeline = new_timeline.map do |x| 
-      x["substories"] = x["substories"].select do |sub| 
-        sub["created_at"] >= newest_substory_age
-      end
-    end
-
-    # Step 8. Return the new timeline.
+    # Step 6. Return the new timeline.
     new_timeline
   end
   
