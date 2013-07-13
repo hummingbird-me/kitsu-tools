@@ -1,5 +1,10 @@
 - content_for(:extra_meta_content) do
-  %meta(property="og:type" content="hummingbird:anime")
+  - if @anime.show_type == "Movie"
+    %meta(property="og:type" content="video.movie")
+  - elsif ["OVA", "ONA", "TV"].include?(@anime.show_type) and (@anime.episode_count.nil? or @anime.episode_count == 0 or @anime.episode_count > 1)
+    %meta(property="og:type" content="video.tv_show")
+  - else
+    %meta(property="og:type" content="video.tv_episode")
   %meta(property="og:url"){content: anime_url(@anime)}
   %meta(property="og:description"){content: @anime.synopsis}
   
