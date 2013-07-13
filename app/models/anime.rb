@@ -137,6 +137,8 @@ class Anime < ActiveRecord::Base
     self.started_airing_date = meta[:dates][:from]
     self.finished_airing_date = meta[:dates][:to]
 
+    self.show_type = meta[:show_type] if meta[:show_type]
+
     self.save
   end
 

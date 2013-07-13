@@ -150,6 +150,15 @@ class MalImport
       meta[:dates][:to] = dates[1]
     rescue
     end
+
+    # Show type
+    begin
+      type = sidebar.css('div').select {|x| x.text.include? "Type:" }[0].text.gsub("Type:", '').strip
+      if ["TV", "Movie", "OVA", "Special", "ONA", "Music"].include? type
+        meta[:show_type] = type
+      end
+    rescue
+    end
     
     meta[:featured_character_mal_ids] = noko.css('table div.picSurround a').map {|x| x.attributes["href"].to_s }.select {|x| x =~ /character\// }.map {|x| x.scan(/character\/(\d+)/) }.flatten.map {|x| x.to_i }
     
