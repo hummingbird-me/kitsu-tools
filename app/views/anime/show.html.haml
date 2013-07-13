@@ -1,6 +1,7 @@
 - content_for(:extra_meta_content) do
   %meta(property="og:type" content="hummingbird:anime")
   %meta(property="og:url"){content: anime_url(@anime)}
+  %meta(property="og:description"){content: anime_url(@anime.synopsis)}
   
 .anime-discover.anime-show.quote-page
   .row
