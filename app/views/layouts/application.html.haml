@@ -1,6 +1,6 @@
 !!!
 %html
-  %head
+  %head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# hummingbird: http://ogp.me/ns/fb/hummingbird#")
     %title
       - if yield(:title).length > 0
         #{yield(:title)} | Hummingbird
@@ -25,8 +25,8 @@
     = csrf_meta_tags
     / %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
-    %meta(property="fb:app_id" content="325314560922421")
 
+    %meta(property="fb:app_id" content="325314560922421")
 
     - if yield(:title).length > 0
       %meta(property="og:title"){:content => yield(:title)}
