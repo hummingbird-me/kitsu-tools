@@ -18,37 +18,13 @@
 
       .large-12.columns.no-padding.trending-panel
         %ul
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/69eea0b536f37295c14e7447ee8899c5a72ed059_thumb.jpg?1361875894"
-              %p.title Fullmetal Alchemist: Brotherhood
-
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/21e780dc0cc37b7cf930330c0b2df5799aa239da_thumb.jpg?1373243428"
-              %p.title Steins;Gate
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/d6296de882b7516a48c9f271404f166aec21ac37_thumb.jpg?1361875617"
-              %p.title Clannad: After Story
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/9add096422e0a356de9088f282494862c81d943a_thumb.jpg?1361876448"
-              %p.title The Disappearance of Haruhi Suzumiya
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"
-              %p.title Attack on Titan
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/21e5d350e222c66992c3b5e90631a0e0c07f955b_thumb.jpg?1361873637"
-              %p.title Cowboy Bebop
+          - @trending_anime.each do |anime|
+            = link_to anime do
+              %li.large-2.columns.single-wrapper
+                .popular-card
+                  %p.wanna-watch
+                  = image_tag(anime.cover_image.url(:thumb), alt: anime.canonical_title)
+                  %p.title= anime.canonical_title(current_user)
   .row
     .large-12.columns
       .panel.rounded-panel
