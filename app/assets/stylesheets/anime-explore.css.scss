@@ -1,0 +1,124 @@
+@import "compass/css3";
+
+.anime-explore {
+  .trending-panel {
+    margin-bottom: 15px;
+  }
+	.single-wrapper {
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    .popular-card {
+      background: #fff;
+      @include border-bottom-radius(3px);
+      @include border-top-radius(3px);
+      box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+      img {
+        @include border-top-radius(3px);
+      }
+      .title {
+        margin-top: -5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 14px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .recent-panel {
+    margin-bottom: 10px;
+    .recently-reviewed {
+      .recent-review {
+        padding-left: 5px;
+        padding-right: 5px;
+        img {
+          @include border-radius(3px);
+        }
+      }
+    }
+  }
+
+  .popular-reviews {
+    h4 {
+      margin-top: 10px;
+    }
+    h5 {
+      margin-top: 0px;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 0px;
+    }
+    .review-left-wrapper {
+      margin-bottom: 10px;
+      border-right: 1px solid #eee;
+    }
+  }
+
+  .reviews-footer {
+    margin-bottom: 10px !important; 
+  }
+
+  .rounded-panel {
+    h4 {
+      margin-top: 10px;
+    }
+    hr {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .explore-sidebar {
+    padding-left: 5px;
+  }
+
+  .forum-block {
+    background: #fff;
+    .block-title {
+      h4 {
+        margin-bottom: 5px;
+      }
+    }
+
+    .block-link {
+      padding-top: 17px;
+    }
+
+    hr {
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    ul {
+      list-style: none;
+      .topic-row {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        .forum-title {
+          font-size: 15px;
+          a {
+            color: #717171;
+            &:hover {
+              color: #fd7532;
+            }
+          }
+        }
+        .forum-time {
+          font-size: 11px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+
+  .side-advert {
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }
+}
