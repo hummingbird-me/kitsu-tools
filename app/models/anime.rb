@@ -141,7 +141,7 @@ class Anime < ActiveRecord::Base
   end
 
   def show_type_enum
-    ["OVA", "ONA", "Movie", "TV"]
+    ["OVA", "ONA", "Movie", "TV", "Special", "Music"]
   end
 
   before_save do
