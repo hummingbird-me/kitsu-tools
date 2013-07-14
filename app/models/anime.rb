@@ -160,16 +160,14 @@ class Anime < ActiveRecord::Base
   end
 
   def similar(limit=20, options={})
-    return [] unless mal_id
-    
     exclude = options[:exclude] ? options[:exclude] : []
     similar_anime = []
     
     begin
-      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{mal_id}")).sort_by {|x| -x["sim"] }
+      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{self.id}")).sort_by {|x| -x["sim"] }
       
       similar_json.each do |similar|
-        sim = Anime.find_by_mal_id(similar["id"])
+        sim = Anime.find_by_id(similar["id"])
         if sim and similar_anime.length < limit and (not self.sfw? or (self.sfw? and sim.sfw?))
           similar_anime.push(sim) unless exclude.include? sim
         end
