@@ -18,37 +18,13 @@
 
       .large-12.columns.no-padding.trending-panel
         %ul
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/69eea0b536f37295c14e7447ee8899c5a72ed059_thumb.jpg?1361875894"
-              %p.title Fullmetal Alchemist: Brotherhood
-
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/21e780dc0cc37b7cf930330c0b2df5799aa239da_thumb.jpg?1373243428"
-              %p.title Steins;Gate
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/d6296de882b7516a48c9f271404f166aec21ac37_thumb.jpg?1361875617"
-              %p.title Clannad: After Story
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/9add096422e0a356de9088f282494862c81d943a_thumb.jpg?1361876448"
-              %p.title The Disappearance of Haruhi Suzumiya
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/2b571c8fd79a61a1f81827d986f66a93a06c40e3_thumb.jpg?1361877888"
-              %p.title Attack on Titan
-          %li.large-2.columns.single-wrapper
-            .popular-card
-              %p.wanna-watch
-              = image_tag "http://hummingbird.me/system/21e5d350e222c66992c3b5e90631a0e0c07f955b_thumb.jpg?1361873637"
-              %p.title Cowboy Bebop
+          - @trending_anime.each do |anime|
+            = link_to anime do
+              %li.large-2.columns.single-wrapper
+                .popular-card
+                  %p.wanna-watch
+                  = image_tag(anime.cover_image.url(:thumb), alt: anime.canonical_title)
+                  %p.title= anime.canonical_title(current_user)
   .row
     .large-12.columns
       .panel.rounded-panel
@@ -57,30 +33,10 @@
           %hr 
         .large-12.columns.recent-panel
           %ul.recently-reviewed
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/6a0982065dcb44303fcb66612ac359087ba7bc43_thumb.jpg?1372389048"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/a7949f433d44fca657f702294bc197ac6b0fdd7b_thumb.jpg?1361873643"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/43089f36ca066f82f2150400ebd24194275ce4b1_thumb.jpg?1372998366"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/23524732bfd96cec6b5c9e104b43a186b77bd789_thumb.jpg?1361874799"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/c5b666f7937c18460883671332abada62f0e4278_thumb.jpg?1372978063"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/b0cb4fe22c74ad205729374e99d7420365eb9313_thumb.jpg?1372464310"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/67eac9f66f3b51c1f25d9cfa58dfc94d1db73893_thumb.jpg?1361876396"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/25b0061ee66d1d930f396e90bf2b7d5b393c59da_thumb.jpg?1361877364"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/f028f386be1ab53f0467dc33986ab55e40ab56cc_thumb.jpg?1361874950"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/37b36d545ac9fb79221514c34c38175494c141fe_thumb.jpg?1361875856"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/32f04cfb6ef905b438c34d2413091d3810432941_thumb.jpg?1372463782"
-            %li.large-1.columns.recent-review
-              = image_tag "http://hummingbird.me/system/a1dd6cdf9833939d243397e2aaa3027c33b39df4_thumb.jpg?1372977955"
+            - @recent_reviews.each do |review|
+              %li.large-1.columns.recent-review(data-tooltip title="#{review.anime.canonical_title(current_user)}")
+                = link_to image_tag(review.anime.cover_image.url(:thumb), alt: "#{review.anime.canonical_title} Review"), anime_review_path(review.anime, review)
+
   .row
     .large-8.columns
       .panel.rounded-panel
