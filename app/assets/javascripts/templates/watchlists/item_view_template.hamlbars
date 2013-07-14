@@ -15,14 +15,7 @@
     %i.icon-reorder
 %td.episode-count{:width => "95"}
   .relative-wrapper 
-    {{#currentUsersProfile}}
-    %a.click-add
-      %i.icon-angle-up
-    {{/currentUsersProfile}}
-    %span.edit {{episodes_watched}}
-    %span.hide-small 
-      \/ 
-      %span.total-episodes {{anime.episode_count}}
+    %span.progress-updater(id="{{anime.slug}}" data-anime-slug="{{anime.slug}}" data-progress="{{episodes_watched}}" data-total-episodes="{{anime.episode_count}}" data-allow-increment="{{currentUsersProfile}}")
 
 %td{:width => "76"} 
   %span.select

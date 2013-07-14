@@ -1,0 +1,38 @@
+.favorite-genres
+  %p.lead Select your favorite genres.
+  %p.subtext We will use your favorite genres to generate better recommendations tailored to your interests.
+  
+  .row
+    - Genre.default_filterable(current_user).each do |genre|
+      .large-3.columns
+        .genre{:class => ("active" if current_user.favorite_genres.include?(genre)), :"data-genre" => genre.slug, :"data-favorite" => current_user.favorite_genres.include?(genre).inspect}
+          %span= genre.name
+
+:coffee
+  $(".genre").click ->
+    button    = this
+    genre     = $(button).attr("data-genre")
+    favorite  = $(button).attr("data-favorite") == "true"
+    
+    console.log favorite
+    console.log $(button).attr("data-favorite")
+
+    spinner = $("<i class='icon-spin icon-spinner' style='font-size: 0.8em;'></i>")
+    $(button).find("span").hide()
+    $(button).append spinner
+    
+    if favorite
+      $.post "/genres/" + genre + "/remove_from_favorites", {id: genre}, (d) ->
+        $(button).attr "data-favorite", "false"
+        $(button).removeClass "active"
+        $(".genre-list #" + genre).hide()
+        spinner.hide()
+        $(button).find("span").show()
+    else
+      $.post "/genres/" + genre + "/add_to_favorites", {id: genre}, (d) ->
+        $(button).attr "data-favorite", "true"
+        $(button).addClass "active"
+        $(".genre-list .no-favorites").hide()
+        $(".genre-list").append "<li id='"+genre+"'><a href='/genres/"+genre+"'>" + $(button).find("span").html() + "</a></li>"
+        spinner.hide()
+        $(button).find("span").show()

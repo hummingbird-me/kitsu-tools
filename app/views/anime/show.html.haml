@@ -1,3 +1,13 @@
+- content_for(:extra_meta_content) do
+  - if @anime.show_type == "Movie"
+    %meta(property="og:type" content="video.movie")
+  - elsif ["OVA", "ONA", "TV"].include?(@anime.show_type) and (@anime.episode_count.nil? or @anime.episode_count == 0 or @anime.episode_count > 1)
+    %meta(property="og:type" content="video.tv_show")
+  - else
+    %meta(property="og:type" content="video.tv_episode")
+  %meta(property="og:url"){content: anime_url(@anime)}
+  %meta(property="og:description"){content: @anime.synopsis}
+  
 .anime-discover.anime-show.quote-page
   .row
 
@@ -146,13 +156,9 @@
               %hr
             
       .large-12.columns.panel.ad-zone.center
+        %ins(class="adsbygoogle" style="display:inline-block;width:468px;height:60px" data-ad-client="ca-pub-3410319844519574" data-ad-slot="4664352842")
         :javascript
-          google_ad_client = "ca-pub-3410319844519574";
-          /* Anime Page - Center Column */
-          google_ad_slot = "4664352842";
-          google_ad_width = 468;
-          google_ad_height = 60;
-        %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
+          (adsbygoogle = window.adsbygoogle || []).push({});
 
       .large-12.columns.panel.popular-reviews
         .large-12.columns
@@ -291,7 +297,7 @@
           %a.sublime{:href => "#"+@anime.youtube_video_id, :"data-uid" => @anime.youtube_video_id, :"data-youtube-id" => @anime.youtube_video_id}
             .play-icon
               %i.icon-play.icon-4x
-            %img(width="null" height="null"){:src => "http://img.youtube.com/vi/#{@anime.youtube_video_id}/hqdefault.jpg"}
+            %img(width="100%" height="auto"){:src => "http://img.youtube.com/vi/#{@anime.youtube_video_id}/hqdefault.jpg"}
           %video{:poster => "http://img.youtube.com/vi/#{@anime.youtube_video_id}/hqdefault.jpg", :id => @anime.youtube_video_id, :width => 640, :height => 360, :style => "display: none", :"data-uid" => @anime.youtube_video_id, :"data-youtube-id" => @anime.youtube_video_id, :preload => "none", :"data-youtube-suggested-quality" => "hd"}
 
           / Add a "play" icon once the image has loaded.
@@ -320,7 +326,3 @@
             = quote.character_name
         = link_to "[show more]", anime_quotes_path(@anime)
   
-:coffee
-  $ ->
-    analytics.track "Viewed Anime Page",
-      anime: #{@anime.slug.inspect}

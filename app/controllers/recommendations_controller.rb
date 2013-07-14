@@ -16,26 +16,36 @@ class RecommendationsController < ApplicationController
     @hide_cover_image = true
     
     update_recommendations_if_needed
-    
-    # Uncomment for synchronous recommendations.
-    # RecommendingWorker.new.perform(current_user.id)
-    
-    # Load recommended anime.
-    r = current_user.recommendation
-    @status_categories = ["currently_watching", "plan_to_watch", "completed"]
-    @recommendations = {}
-    @status_categories.each do |cat|
-      @recommendations[cat] = r ? JSON.parse(r.recommendations["by_status"])[cat].map {|x| Anime.find(x) } : []
-    end
 
-    @neon_alley = r ? JSON.parse(r.recommendations["by_service"])["neon_alley"].map {|x| Anime.find(x) } : []
-    
-    # View convenience variables. Move to translations later.
-    @word_before = {
-      "currently_watching" => "you're",
-      "plan_to_watch" => "you",
-      "completed" => "you've"
-    }
+    respond_to do |format|
+      format.json { render :json => current_user.recommendations_up_to_date }
+      format.html do
+        # Uncomment for synchronous recommendations.
+        # RecommendingWorker.new.perform(current_user.id)
+        
+        # Load recommended anime.
+        r = current_user.recommendation
+        @status_categories = ["currently_watching", "plan_to_watch", "completed"]
+        @recommendations = {}
+        @status_categories.each do |cat|
+          @recommendations[cat] = JSON.parse(r.recommendations["by_status"])[cat].map {|x| Anime.find(x) } rescue []
+        end
+
+        @genre_recommendations = {}
+        current_user.favorite_genres.each do |genre|
+          @genre_recommendations[ genre.slug ] = JSON.parse(r.recommendations["by_genre"])[genre.slug].map {|x| Anime.find(x) } rescue []
+        end
+
+        @neon_alley = JSON.parse(r.recommendations["by_service"])["neon_alley"].map {|x| Anime.find(x) } rescue []
+        
+        # View convenience variables. Move to translations later.
+        @word_before = {
+          "currently_watching" => "you're",
+          "plan_to_watch" => "you",
+          "completed" => "you've"
+        }
+      end
+    end
   end
 
   def not_interested

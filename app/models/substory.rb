@@ -7,14 +7,16 @@ class Substory < ActiveRecord::Base
   validates :user, :substory_type, presence: true
   
   after_create do
-    self.story.updated_at = self.created_at
+    self.story.set_last_update_time! self.created_at
     self.story.save
+    StoryFanoutWorker.perform_async(self.user_id, self.story_id)
   end
   
   after_destroy do
     if self.story and self.story.reload.substories.length == 0
       self.story.destroy
     end
+    StoryFanoutWorker.perform_async(self.user_id, self.story_id)
   end
 
   def self.from_action(data)

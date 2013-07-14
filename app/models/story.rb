@@ -32,4 +32,11 @@ class Story < ActiveRecord::Base
       return Anime.find data["anime_id"]
     end
   end
+
+  def set_last_update_time!(time=nil)
+    time ||= Time.now
+    self.updated_at = time
+    self.save
+    UserTimeline.notify_story_updated(self.user, time)
+  end
 end

@@ -112,6 +112,8 @@ module Entities
   end
   
   class Story < Grape::Entity
+    expose :id
+
     expose :story_type
     expose :user, using: Entities::MiniUser
     expose :substories, using: Entities::Substory
@@ -122,6 +124,6 @@ module Entities
 
     expose(:self_post, if: lambda {|story, options| story.story_type == "comment" }) {|story, options| story.target == story.user }
 
-    expose(:substories_count) {|story, options| story.substories.count }
+    expose(:substories_count) {|story, options| story.substories.length }
   end
 end

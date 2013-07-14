@@ -22,7 +22,7 @@
 
       .large-12.columns.no-padding.trending-block
         .large-12.columns.block-title
-          %h4 Trending This Week
+          %h4 Trending Today
         %hr
         %ul
           - @trending_anime.each_with_index do |trending, i|
@@ -59,13 +59,7 @@
                   .large-6.columns.no-padding
                     Progress:
                   .large-6.columns.no-padding.progress-number
-                    %span.progress-updater{:id => watchlist.anime.slug, :"data-anime-slug" => watchlist.anime.slug, :"data-progress" => watchlist.episodes_watched, :"data-total-episodes" => watchlist.anime.episode_count}
-                      %a.count-add{:href => "javascript:void(0)"}
-                        %i.icon-angle-up
-                      18
-                      \/
-                      %span(class="total-episodes")
-                        = watchlist.anime.episode_count
+                    %span.progress-updater{:id => watchlist.anime.slug, :"data-anime-slug" => watchlist.anime.slug, :"data-progress" => watchlist.episodes_watched, :"data-total-episodes" => watchlist.anime.episode_count, :"data-allow-increment" => "true"}
                   
                   :javascript
                     initializeRatingInterface($(".rating##{watchlist.anime.slug}"), "#{current_user.star_rating ? "starRatings" : "smileyRatings"}");

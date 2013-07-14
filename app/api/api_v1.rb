@@ -48,7 +48,7 @@ class API_v1 < Grape::API
       @user = User.find(params[:user_id])
       status = Watchlist.status_parameter_to_status(params[:status])
 
-      watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime).page(params[:page]).per(100)
+      watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime, :user).page(params[:page]).per(100)
       
       title_language_preference = params[:title_language_preference]
       if title_language_preference.nil? and current_user
@@ -117,6 +117,10 @@ class API_v1 < Grape::API
           })
         end
         @watchlist.status = status if Watchlist.valid_statuses.include? status
+        if status == "Completed"
+          # Mark all episodes as viewed when the show is "Completed".
+          @watchlist.update_episode_count (@watchlist.anime.episode_count || 0)
+        end
       end
       
       # Update privacy.
@@ -153,6 +157,7 @@ class API_v1 < Grape::API
       end
 
       if params[:increment_episodes]
+        @watchlist.status = "Currently Watching"
         @watchlist.update_episode_count((@watchlist.episodes_watched||0)+1)
         if current_user.neon_alley_integration? and Anime.neon_alley_ids.include? @anime.id
           service = "neon_alley"

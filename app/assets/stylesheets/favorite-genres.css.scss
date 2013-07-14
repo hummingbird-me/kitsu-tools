@@ -1,0 +1,32 @@
+.favorite-genres {
+  p.lead {
+    margin-bottom: 0;
+  }
+  
+  p.subtext {
+    font-size: 0.9em;
+    font-style: italic;
+  }
+  
+  .genre {
+    padding: 8px;
+    margin-bottom: 6px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+
+    &.active {
+      background-color: #F2ECD8;
+      border: 1px solid #BFA654;
+      
+      &:hover {
+        background-color: #D9CB9E;
+      }
+    }
+    
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}

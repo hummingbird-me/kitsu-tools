@@ -65,11 +65,18 @@ class Watchlist < ActiveRecord::Base
   
   def update_episode_count(new_count)
     old_count = self.episodes_watched || 0
-    self.episodes_watched = new_count
+    self.episodes_watched = new_count || 0
+
+    # If the show is completed and we know its episode count, don't allow users to
+    # exceed the maximum number of episodes.
+    if self.anime.episode_count and (self.anime.episode_count > 0 and self.episodes_watched > self.anime.episode_count) and self.anime.status == "Finished Airing"
+      self.episodes_watched = self.anime.episode_count
+    end
+
     self.last_watched = Time.now
     self.save
 
-    self.user.update_life_spent_on_anime( (self.episodes_watched - old_count) * self.anime.episode_length )
+    self.user.update_life_spent_on_anime( (self.episodes_watched - old_count) * (self.anime.episode_length || 0) )
     TrendingAnime.vote self.anime_id
   end
   

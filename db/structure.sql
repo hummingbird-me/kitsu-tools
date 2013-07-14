@@ -281,6 +281,16 @@ ALTER SEQUENCE episodes_id_seq OWNED BY episodes.id;
 
 
 --
+-- Name: favorite_genres_users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE favorite_genres_users (
+    genre_id integer,
+    user_id integer
+);
+
+
+--
 -- Name: follows; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1898,6 +1908,13 @@ CREATE INDEX index_episodes_on_anime_id ON episodes USING btree (anime_id);
 
 
 --
+-- Name: index_favorite_genres_users_on_genre_id_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_favorite_genres_users_on_genre_id_and_user_id ON favorite_genres_users USING btree (genre_id, user_id);
+
+
+--
 -- Name: index_follows_on_followed_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2105,6 +2122,13 @@ CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (conf
 --
 
 CREATE INDEX index_watchlists_on_anime_id_and_rating ON watchlists USING btree (anime_id, rating);
+
+
+--
+-- Name: index_watchlists_on_user_id_and_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_watchlists_on_user_id_and_anime_id ON watchlists USING btree (user_id, anime_id);
 
 
 --
@@ -2548,3 +2572,13 @@ INSERT INTO schema_migrations (version) VALUES ('20130707073214');
 INSERT INTO schema_migrations (version) VALUES ('20130707121819');
 
 INSERT INTO schema_migrations (version) VALUES ('20130707130145');
+
+INSERT INTO schema_migrations (version) VALUES ('20130707200030');
+
+INSERT INTO schema_migrations (version) VALUES ('20130711083240');
+
+INSERT INTO schema_migrations (version) VALUES ('20130711110721');
+
+INSERT INTO schema_migrations (version) VALUES ('20130712003821');
+
+INSERT INTO schema_migrations (version) VALUES ('20130713053828');

@@ -27,6 +27,8 @@
 //= require offcanvas.js
 //= require jquery.easy-pie-chart.js
 //
+//= require vendor/custom.modernizr
+//
 //= require googleplus.js
 //= require twitter.js
 //
@@ -53,7 +55,4 @@
 
 $(function() {
   $(document).foundation()
-             .foundation('reveal', {
-               closeOnBackgroundClick: false
-             });
 });

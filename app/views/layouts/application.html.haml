@@ -1,6 +1,6 @@
 !!!
 %html
-  %head
+  %head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# hummingbird: http://ogp.me/ns/fb/hummingbird#")
     %title
       - if yield(:title).length > 0
         #{yield(:title)} | Hummingbird
@@ -22,12 +22,11 @@
 
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
-    = javascript_include_tag "vendor/custom.modernizr"
     = csrf_meta_tags
     / %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
 
-    %meta(property="fb:app_id" content="325314560922421")
 
+    %meta(property="fb:app_id" content="325314560922421")
 
     - if yield(:title).length > 0
       %meta(property="og:title"){:content => yield(:title)}
@@ -58,6 +57,9 @@
     / Sublime Video
     %script(type="text/javascript" src="http://cdn.sublimevideo.net/js/najrag6v.js")
 
+    / Async Adsense
+    %script(async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+
   %body
     // Facebook Code
     #fb-root
@@ -75,6 +77,11 @@
     #page.off-canvas.slide-nav
       = content_for?(:content) ? yield(:content) : yield
     = render 'shared/footer'
+    
+    .status-bar
+      %p 
+        %span Removed feed item.
+        %a(href="javascript:void(0)") Undo.
 
     - if Rails.env.production?
       :javascript
