@@ -17,6 +17,9 @@
 .cf:after {
     clear: both;
 }
+.row {
+  overflow: visible !important;
+}
 .connect-icon {
   margin-top: 15px;
 }
