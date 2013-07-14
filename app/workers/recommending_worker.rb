@@ -39,8 +39,8 @@ class RecommendingWorker
     user_watchlists_anime_ids = (user_watchlists.map {|x| x.anime_id } + user.not_interested_anime.map {|x| x.id }).uniq
     user_watchlists.each do |watchlist|
       similarities[watchlist.anime_id] ||= {}
-      JSON.load( open("http://app.vikhyat.net/anime_safari/related/#{watchlist.anime.id}") ).each do |similar|
-        similar_anime = Anime.find_by_id(similar["id"])
+      JSON.load( open("http://app.vikhyat.net/anime_safari/related/#{watchlist.anime.mal_id}") ).each do |similar|
+        similar_anime = Anime.find_by_mal_id(similar["id"])
         if similar_anime
           similar_id = similar_anime.id
           similarities[watchlist.anime_id][similar_id] = similar["sim"]
