@@ -157,6 +157,7 @@ class API_v1 < Grape::API
       end
 
       if params[:increment_episodes]
+        @watchlist.status = "Currently Watching"
         @watchlist.update_episode_count((@watchlist.episodes_watched||0)+1)
         if current_user.neon_alley_integration? and Anime.neon_alley_ids.include? @anime.id
           service = "neon_alley"
