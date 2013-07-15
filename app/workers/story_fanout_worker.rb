@@ -5,7 +5,7 @@ class StoryFanoutWorker
     followers = [user_id] + $redis.smembers(UserTimeline::USER_FOLLOWERS_PREFIX + user_id.to_s)
     story = Story.find_by_id story_id
     if story
-      followers += [story.user_id]
+      followers = [story.user_id] + followers
     end
     followers = followers.uniq
     

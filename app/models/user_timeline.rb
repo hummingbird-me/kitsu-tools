@@ -34,7 +34,7 @@ class UserTimeline
   USER_FOLLOWING_PREFIX         = "user_following:"
   ACTIVE_FOLLOWED_USERS_PREFIX  = "active_followed_users:"
   TIMELINE_CACHE_PREFIX         = "user_timeline:"
-  TIMELINE_LOCK_PREFIX              = "timeline_lock:"
+  TIMELINE_LOCK_PREFIX          = "timeline_lock:"
   
   #
   # Return the feed of a given user, serialized as JSON.
