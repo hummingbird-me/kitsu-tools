@@ -20,7 +20,7 @@ class RecommendingWorker
       if tr.length < n
         anime_id = c[:anime_id]
         unless exclude.include?(anime_id)
-          if (!intersect or intersect.include?(anime_id)) and filter[anime_id] and Anime.find(anime_id).show_type != "Specials"
+          if (!intersect or intersect.include?(anime_id)) and filter[anime_id] and Anime.find(anime_id).show_type != "Special"
             tr.push c
           end
         end
