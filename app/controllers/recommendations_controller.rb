@@ -1,12 +1,12 @@
 class RecommendationsController < ApplicationController
   before_filter :authenticate_user!
 
-  def update_recommendations_if_needed(needed=false)
+  def update_recommendations_if_needed
     if current_user.last_library_update.nil?
       current_user.update_column :last_library_update, Time.now
     end
 
-    if (needed or current_user.last_recommendations_update.nil? or current_user.last_library_update > current_user.last_recommendations_update)
+    if (current_user.last_recommendations_update.nil? or current_user.last_library_update > current_user.last_recommendations_update) and current_user.recommendations_up_to_date?
       current_user.update_column :recommendations_up_to_date, false
       RecommendingWorker.perform_async(current_user.id)
     end
@@ -55,7 +55,7 @@ class RecommendationsController < ApplicationController
       mixpanel.track "Recommendations: Not Interested", {email: current_user.email, anime: anime.slug} if Rails.env.production?
       current_user.update_column :last_library_update, Time.now
     end
-    update_recommendations_if_needed true
+    update_recommendations_if_needed
     render :json => true
   end
 
@@ -65,7 +65,7 @@ class RecommendationsController < ApplicationController
     watchlist.status = "Plan to Watch"
     watchlist.save
     mixpanel.track "Recommendations: Plan to Watch", {email: current_user.email, anime: anime.slug} if Rails.env.production?
-    update_recommendations_if_needed true
+    update_recommendations_if_needed
     render :json => true
   end
 end
