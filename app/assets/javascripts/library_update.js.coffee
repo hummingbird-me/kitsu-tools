@@ -14,8 +14,9 @@
       star.click ->
         element.find('.spinner').html $("<i class='pull-right icon icon-spin icon-spinner'></i>")
 
-        $.post "/api/v1/libraries/" + anime_slug, {rating: parseInt($(this).attr("data-rating")) - 3}, (d) ->
+        $.post "/api/v1/libraries/" + anime_slug, {rating: parseInt($(this).attr("data-rating"))}, (d) ->
           if d
+            console.log d.rating.value
             element.attr "data-rating", d.rating.value
             initializeRatingInterface element, type
 
