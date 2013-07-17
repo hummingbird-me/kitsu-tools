@@ -48,7 +48,7 @@ module Entities
           star_rating: watchlist.user.star_rating,
           simple: !watchlist.user.star_rating
         },
-        value: watchlist.rating ? watchlist.rating + 3 : "-",
+        value: watchlist.rating ? watchlist.rating : "-",
         positive: watchlist.positive?,
         negative: watchlist.negative?,
         neutral: watchlist.meh?,

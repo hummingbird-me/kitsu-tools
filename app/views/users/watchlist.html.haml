@@ -154,9 +154,9 @@
       dropdown_ratings.empty()
       rating = this.model.get("rating")
       if starRatings
-        for i in [-2..2]
+        for i in [1..5]
           star = $("<a class='star' data-rating='" + i + "'></a>")
-          if rating.value >= i + 3
+          if rating.value >= i
             star.append $("<i class='icon-star'></i>")
           else
             star.append $("<i class='icon-star-empty'></i>")
@@ -170,7 +170,7 @@
           neutral: "<span class='neutral-smiley'>:|</span>", 
           negative: "<span class='negative-smiley'>:(</span>"
         }
-        v = {positive: 2, neutral: 0, negative: -2}
+        v = {positive: 5, neutral: 3, negative: 1}
         for t in ['positive', 'neutral', 'negative']
           q = $("<a data-rating='" + v[t] + "'>" + m[t] + "</a>")
           q.click ->
