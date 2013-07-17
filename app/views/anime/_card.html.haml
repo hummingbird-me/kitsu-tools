@@ -38,7 +38,7 @@
     .vote-blocks
       - if user_signed_in? and current_user.star_rating
         .star-rating
-          - (-2).upto(2) do |i|
+          - 1.upto(5) do |i|
             - if readonly
               - if watchlist and watchlist.rating and watchlist.rating >= i
                 %i.icon-star
@@ -73,14 +73,14 @@
             - if watchlist and watchlist.positive?
               %strong.active= link_to "[:)]", update_rating_path(anime, "nil", width: width), remote: user_signed_in?
             - else
-              %strong= link_to ":)", update_rating_path(anime, 2, width: width), remote: user_signed_in?
+              %strong= link_to ":)", update_rating_path(anime, 5, width: width), remote: user_signed_in?
           %span.large-4.columns.meh
             - if watchlist and not (watchlist.positive? or watchlist.negative?) and not watchlist.rating.nil?
               %strong.active= link_to "[:|]", update_rating_path(anime, "nil", width: width), remote: user_signed_in?
             - else
-              %strong= link_to ":|", update_rating_path(anime, 0, width: width), remote: user_signed_in?
+              %strong= link_to ":|", update_rating_path(anime, 3, width: width), remote: user_signed_in?
           %span.large-4.columns.dislike
             - if watchlist and watchlist.negative?
               %strong.active= link_to "[:(]", update_rating_path(anime, "nil", width: width), remote: user_signed_in?
             - else
-              %strong= link_to ":(", update_rating_path(anime, -2, width: width), remote: user_signed_in?
+              %strong= link_to ":(", update_rating_path(anime, 1, width: width), remote: user_signed_in?

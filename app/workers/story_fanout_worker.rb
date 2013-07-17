@@ -3,14 +3,17 @@ class StoryFanoutWorker
 
   def perform(user_id, story_id)
     followers = [user_id] + $redis.smembers(UserTimeline::USER_FOLLOWERS_PREFIX + user_id.to_s)
+    story = Story.find_by_id story_id
+    if story
+      followers = [story.user_id] + followers
+    end
+    followers = followers.uniq
     
     followers.each do |follower_id|
       if $redis.exists(UserTimeline::TIMELINE_CACHE_PREFIX + follower_id.to_s)
         follower = User.find follower_id
         UserTimeline.acquire_lock follower
         
-        # TODO "push" story...
-        story = Story.find_by_id story_id
         if story
           stories = JSON.parse Entities::Story.represent([story], current_ability: Ability.new(follower), title_language_preference: follower.title_language_preference).to_json
         else

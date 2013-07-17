@@ -36,7 +36,7 @@ class WatchlistsController < ApplicationController
       if @watchlist.rating == params[:rating].to_i
         @watchlist.rating = nil
       else
-        @watchlist.rating = [ [-2, params[:rating].to_i].max, 2 ].min
+        @watchlist.rating = [ [1, params[:rating].to_i].max, 5 ].min
       end
     end
 
@@ -114,16 +114,13 @@ class WatchlistsController < ApplicationController
     @anime = Anime.find(params[:anime_id])
     @watch = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)
 
-    if params[:rating] == "nil"
+    if params[:rating] == "nil" or params[:rating].to_i == @watch.rating
       @watch.rating = nil
       @watch.save
     else
       rating = params[:rating].to_i
-      if rating <= 2 and rating >= -2
+      if rating <= 5 and rating >= 1
         @watch.rating = rating
-        if rating == -2 and !current_user.star_rating
-          @watch.status ||= "Dropped"
-        end
         @watch.status ||= "Currently Watching"
         @watch.save
       end

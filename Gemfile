@@ -21,6 +21,8 @@ gem 'forem', :path => 'vendor/forem'
 gem 'forem-html_formatter', :path => 'vendor/forem-html_formatter'
 gem 'rinku'
 
+gem 'rack-mini-profiler'
+
 gem 'sanitize'
 
 # Gems used only for assets and not required

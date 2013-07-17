@@ -137,7 +137,7 @@ class API_v1 < Grape::API
         if @watchlist.rating == params[:rating].to_i
           @watchlist.rating = nil
         else
-          @watchlist.rating = [ [-2, params[:rating].to_i].max, 2 ].min
+          @watchlist.rating = [ [1, params[:rating].to_i].max, 5 ].min
         end
       end
 

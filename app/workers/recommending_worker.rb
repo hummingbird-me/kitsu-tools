@@ -20,7 +20,7 @@ class RecommendingWorker
       if tr.length < n
         anime_id = c[:anime_id]
         unless exclude.include?(anime_id)
-          if (!intersect or intersect.include?(anime_id)) and filter[anime_id]
+          if (!intersect or intersect.include?(anime_id)) and filter[anime_id] and not ["Special", "Music"].include?(Anime.find(anime_id).show_type)
             tr.push c
           end
         end
@@ -47,6 +47,8 @@ class RecommendingWorker
         end
       end
     end
+
+    last_recommendations_update = Time.now
     
     recommendations = {
       general: Hash.new(0),
@@ -104,6 +106,6 @@ class RecommendingWorker
     recommendation.save
     
     user.update_column :recommendations_up_to_date, true
-    user.update_column :last_recommendations_update, Time.now
+    user.update_column :last_recommendations_update, last_recommendations_update
   end
 end

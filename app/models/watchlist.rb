@@ -32,11 +32,11 @@ class Watchlist < ActiveRecord::Base
   validates :status, inclusion: { in: Watchlist.valid_statuses }
 
   def positive?
-    rating && rating > 0
+    rating && rating > 3
   end
 
   def negative?
-    rating && rating < 0
+    rating && rating < 3
   end
 
   def meh?
@@ -111,7 +111,7 @@ class Watchlist < ActiveRecord::Base
           star_rating: self.user.star_rating,
           simple: !self.user.star_rating
         },
-        value: self.rating ? self.rating+3 : "-",
+        value: self.rating ? self.rating : "-",
         positive: self.positive?,
         negative: self.negative?,
         neutral: self.meh?,

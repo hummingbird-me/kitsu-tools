@@ -54,7 +54,7 @@
                 .meta-data.large-12.columns.no-padding-left
                   %p 
                     %h5.anime-title= anime_link watchlist.anime
-                  .rating{:id => watchlist.anime.slug, :"data-rating" => (watchlist.rating || -3) + 3, :"data-anime-slug" => watchlist.anime.slug}
+                  .rating{:id => watchlist.anime.slug, :"data-rating" => (watchlist.rating || 0), :"data-anime-slug" => watchlist.anime.slug}
                   %hr
                   .large-6.columns.no-padding
                     Progress:
