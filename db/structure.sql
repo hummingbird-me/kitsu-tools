@@ -2172,6 +2172,13 @@ CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (conf
 
 
 --
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
 -- Name: index_watchlists_on_anime_id_and_rating; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2640,3 +2647,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130713053828');
 INSERT INTO schema_migrations (version) VALUES ('20130715115258');
 
 INSERT INTO schema_migrations (version) VALUES ('20130717093608');
+
+INSERT INTO schema_migrations (version) VALUES ('20130717124249');
