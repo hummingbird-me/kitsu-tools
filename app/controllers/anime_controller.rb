@@ -87,8 +87,14 @@ class AnimeController < ApplicationController
   end
 
   def index
-    @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
-    @recent_reviews = Review.order('created_at DESC').limit(12).includes(:anime)
+    hide_cover_image
+
+    if params[:filter]
+      render :explore_filter
+    else
+      @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
+      @recent_reviews = Review.order('created_at DESC').limit(12).includes(:anime)
+    end
 
     return
     ### OLD EXPLORE PAGE CODE BELOW
