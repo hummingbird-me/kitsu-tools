@@ -205,9 +205,9 @@ class API_v1 < Grape::API
     get ':id/similar' do
       anime = Anime.find(params[:id])
       similar_anime = []
-      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{anime.mal_id}")).sort_by {|x| -x["sim"] }
+      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{anime.id}")).sort_by {|x| -x["sim"] }
       similar_json.each do |similar|
-        sim = Anime.find_by_mal_id(similar["id"])
+        sim = Anime.find_by_id(similar["id"])
         similar_anime.push(sim) if sim and similar_anime.length < (params[:limit] || 20)
       end
       similar_anime.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title, genres: x.genres.map {|x| {name: x.name} }, cover_image: x.cover_image.url(:thumb), url: anime_url(x)} }
