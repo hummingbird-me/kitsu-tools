@@ -164,7 +164,7 @@ class Anime < ActiveRecord::Base
     similar_anime = []
     
     begin
-      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{self.id}")).sort_by {|x| -x["sim"] }
+      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{self.id}")).select {|x| x["sim"] > 0.5 }.sort_by {|x| -x["sim"] }
       
       similar_json.each do |similar|
         sim = Anime.find_by_id(similar["id"])
