@@ -92,7 +92,7 @@ class Substory < ActiveRecord::Base
       anime = Anime.find data[:anime_id]
       story = Story.for_user_and_anime(user, anime)
 
-      Substory.create({
+      substory = Substory.create({
         user: user,
         substory_type: "watchlist_status_update",
         story: story,
@@ -101,6 +101,10 @@ class Substory < ActiveRecord::Base
           new_status: data[:new_status]
         }
       })
+      
+      if data[:time]
+        substory.update_column :created_at, data[:time]
+      end
 
     elsif data[:action_type] == "watched_episode"
 
