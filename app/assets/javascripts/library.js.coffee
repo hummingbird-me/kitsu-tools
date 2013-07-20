@@ -272,10 +272,9 @@ _.extend HB,
         @$el.find("td:first").click ->
           that.toggleDropdown()
 
-        if @model.get "currentUser"
-          episodeIncrementView = new HB.Library.EpisodeIncrementView
-            model: @model
-          @$el.find(".episode-count").html episodeIncrementView.render().el
+        episodeIncrementView = new HB.Library.EpisodeIncrementView
+          model: @model
+        @$el.find(".episode-count").html episodeIncrementView.render().el
         
         return this
     
