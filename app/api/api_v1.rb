@@ -170,6 +170,16 @@ class API_v1 < Grape::API
           episode_number: @watchlist.episodes_watched,
           service: service
         })
+        if @watchlist.status == "Completed"
+          Substory.from_action({
+            user_id: current_user.id,
+            action_type: "watchlist_status_update",
+            anime_id: @anime.slug,
+            old_status: "Currently Watching",
+            new_status: "Completed",
+            time: Time.now + 5.seconds
+          })
+        end
       end
       
       title_language_preference = params[:title_language_preference]
