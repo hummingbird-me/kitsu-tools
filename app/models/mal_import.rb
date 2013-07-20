@@ -141,6 +141,7 @@ class MalImport
     
     # Status
     meta[:status] = sidebar.css("div").select {|x| x.text.include? "Status:" }[0].children[1].text.strip rescue nil
+    meta[:status] = "Not Yet Aired" if meta[:status] == "Not yet aired"
 
     # Air dates
     meta[:dates] = {}

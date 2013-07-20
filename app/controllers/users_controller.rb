@@ -64,7 +64,7 @@ class UsersController < ApplicationController
   def watchlist
     @active_tab = :library
     @user = User.find(params[:user_id])
-    render "watchlist", layout: "profile"
+    render :library, layout: 'profile'
   end
 
   def follow

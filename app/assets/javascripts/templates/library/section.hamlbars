@@ -1,0 +1,40 @@
+.watchlist-row(id="table-{{status}}"){:class => "{{status}}"}
+  .large-12.columns.library-status-header
+    %h5.status 
+      {{humanStatus}}
+      {{#fetched}}
+      %span.item-count.pull-right ({{entryCount}})
+      {{/fetched}}
+  .row
+    .large-12.columns.library-table
+      %table.large-12.columns.fake-table-row
+        %thead
+          %tr.sortOptions
+            %th(width="495")
+              %a(data-sortparam="title") 
+                Title
+                %i.icon.icon-sort
+            %th(width="95")
+              %a(data-sortparam="progress") 
+                Progress
+                %i.icon.icon-sort
+            %th(width="76")
+              %a(data-sortparam="rating") 
+                Rating
+                %i.icon.icon-sort
+            %th(width="65")
+              %a(data-sortparam="type") 
+                Type
+                %i.icon.icon-sort
+
+        {{#fetched}}
+        %tbody.fake-table-row.library-item
+        {{/fetched}}
+        
+        {{^fetched}}
+        %tbody.loading-indicator
+          %tr
+            %td.center(colspan=4 style="color: #333")
+              %i.icon.icon-spin.icon-spinner.icon-3x
+        {{/fetched}}
+
