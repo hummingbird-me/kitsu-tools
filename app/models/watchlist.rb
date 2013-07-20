@@ -2,7 +2,7 @@ class Watchlist < ActiveRecord::Base
   belongs_to :user
   belongs_to :anime
   attr_accessible :user, :anime, :status, :episodes_watched, 
-    :updated_at, :last_watched, :imported, :rating
+    :updated_at, :last_watched, :imported, :rating, :user_id, :anime_id
 
   has_many :stories, dependent: :destroy
 
