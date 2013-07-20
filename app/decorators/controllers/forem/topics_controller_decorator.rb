@@ -1,5 +1,7 @@
 Forem::TopicsController.class_eval do
   def show
+    @hide_footer_ad = true
+
     if find_topic
       register_view
 
