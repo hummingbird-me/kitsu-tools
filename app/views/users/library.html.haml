@@ -38,18 +38,28 @@
       showRelevantSections("currently-watching")
       
   showRelevantSections()
+
+  librarySectionContents = {}
+  _.each HB.Library.validStatuses, (status) ->
+    librarySectionContents[status] = []
   
-  @fetchLibrarySection = (section) ->
+  @fetchLibrarySection = (section, page...) ->
+    page = if page[0] then page[0] else 1
     unless HB.Library.Sections[section].get "fetched"
-      path = "/api/v1/users/#{@user.to_param}/library?status=" + section
+      path = "/api/v1/users/#{@user.to_param}/library?status="+section+"&page="+page
       $.getJSON(path, (d) ->
-        collection = HB.Library.Sections[section].entries
-        _.map d, (x) -> 
+        _.each d, (x) -> 
           x.currentUser = #{(user_signed_in? and current_user == @user).inspect}
-          collection.add new HB.Library.Entry x
-        HB.Library.Sections[section].set "fetched", true
+          librarySectionContents[section].push new HB.Library.Entry x
+        if d.length < 400
+          collection = HB.Library.Sections[section].entries
+          collection.add librarySectionContents[section]
+          delete librarySectionContents[section]
+          HB.Library.Sections[section].set "fetched", true
+        else
+          fetchLibrarySection(section, page+1)
       ).error ->
-        setTimeout "fetchLibrarySection('"+section+"')", 2000
+        setTimeout "fetchLibrarySection('"+section+"', "+page+")", 2000
   
 
   _.each HB.Library.validStatuses, (status) -> 

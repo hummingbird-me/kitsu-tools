@@ -41,13 +41,19 @@ class API_v1 < Grape::API
     params do
       requires :user_id, type: String
       requires :status, type: String
+      optional :page, type: Integer
       optional :title_language_preference, type: String
     end
     get ':user_id/library' do
       @user = User.find(params[:user_id])
       status = Watchlist.status_parameter_to_status(params[:status])
 
-      watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime, :user)
+      if @user == current_user
+        watchlists = @user.watchlists.where(status: status).order(status == "Currently Watching" ? "last_watched DESC" : "created_at DESC").includes(:anime)
+      else
+        watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime)
+      end
+      watchlists = watchlists.page(params[:page]).per(400)
       
       title_language_preference = params[:title_language_preference]
       if title_language_preference.nil? and current_user

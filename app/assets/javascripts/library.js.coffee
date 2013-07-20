@@ -62,9 +62,9 @@ _.extend HB,
       comparator: (c) ->
         if this.sortByParameter == "lastWatchedDesc"
           if c.get("last_watched")
-            return -moment(c.get("last_watched")).unix()
+            return HB.utils.negateString(c.get("last_watched"))
           else
-            return -moment(c.get("updated_at")).unix()
+            return HB.utils.negateString(c.get("updated_at"))
         else if this.sortByParameter == "title"
           return c.get("anime").title.toLowerCase()
         else if this.sortByParameter == "titleDesc"
