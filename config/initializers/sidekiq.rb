@@ -1,4 +1,4 @@
-if false
+if true
   require 'json'
 
   class ObjectSpaceSidekiqMiddleware
