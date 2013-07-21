@@ -1,16 +1,78 @@
 .anime-discover.anime-explore
   .row
     .large-12.columns
-      .large-6.columns
-        .panel
-          %ul.inline-list
-            %li Popularity
-            %li Genre
-            %li Date
-            %li Anticipation
+      .large-9.columns.no-padding
+        .large-12.columns.no-padding
+          %p.cf.browse-label Browse By:
+          %ul.panel.rounded-panel.inline-list.explore-filter
+            %li
+              %a{"data-dropdown" => "drop1", "data-options" => "is_hover:true", :href => "#"} Year <i class="icon-caret-down"></i>
 
-      .large-6.columns
-        %p Search Anime
+              %ul#drop1.f-dropdown{"data-dropdown-content" => ""}
+                %li
+                  %a{:href => "#"} All
+                %li
+                  %a{:href => "#"} Upcoming
+                %li
+                  %a{:href => "#"} 2010s
+                %li
+                  %a{:href => "#"} 2000s
+                %li
+                  %a{:href => "#"} 1990s
+                %li
+                  %a{:href => "#"} 1980s
+                %li
+                  %a{:href => "#"} 1970s
+
+            %li
+              %a{"data-dropdown" => "drop2", "data-options" => "is_hover:true", :href => "#"} Genre <i class="icon-caret-down"></i>
+
+              %ul#drop2.f-dropdown{"data-dropdown-content" => ""}
+                %li
+                  %a{:href => "#"} Action
+                %li
+                  %a{:href => "#"} Adventure
+                %li
+                  %a{:href => "#"} Cars
+                %li
+                  %a{:href => "#"} Comedy
+                %li
+                  %a{:href => "#"} Dementia
+                %li
+                  %a{:href => "#"} Demons
+                %li
+                  %a{:href => "#"} Drama
+                %li
+                  %a{:href => "#"} Ecchi
+                %li
+                  %a{:href => "#"} Fantasy
+                %li
+                  %a{:href => "#"} Game
+                %li
+                  %a{:href => "#"} Harem
+                %li
+                  %a{:href => "#"} Historical
+                %li
+                  %a{:href => "#"} Horror
+
+            %li
+              %a{"data-dropdown" => "drop3", "data-options" => "is_hover:true", :href => "#"} Popular <i class="icon-caret-down"></i>
+
+              %ul#drop3.f-dropdown{"data-dropdown-content" => ""}
+                %li
+                  %a{:href => "#"} All Time
+                %li
+                  %a{:href => "#"} This Week
+                %li
+                  %a{:href => "#"} This Month
+                %li
+                  %a{:href => "#"} This Year
+
+            %li= link_to "Anticipated", "#"
+            %li= link_to "Airing Soon", "#"
+      .large-3.columns
+        %a.button.padded.secondary{:href => "#"} <i class="icon-random"></i> Something Random
+
 
     .large-12.columns
       %h4.top-title= title 'Trending Today'
@@ -21,7 +83,7 @@
           - @trending_anime.each do |anime|
             = link_to anime do
               %li.large-2.columns.single-wrapper
-                .popular-card
+                .popular-card.tip-top(data-tooltip title="#{anime.canonical_title(current_user)}")
                   %p.wanna-watch
                   = image_tag(anime.cover_image.url(:thumb), alt: anime.canonical_title)
                   %p.title= anime.canonical_title(current_user)
@@ -34,7 +96,7 @@
         .large-12.columns.recent-panel
           %ul.recently-reviewed
             - @recent_reviews.each do |review|
-              %li.large-1.columns.recent-review(data-tooltip title="#{review.anime.canonical_title(current_user)}")
+              %li.large-1.columns.recent-review.tip-top(data-tooltip title="#{review.anime.canonical_title(current_user)}")
                 = link_to image_tag(review.anime.cover_image.url(:thumb), alt: "#{review.anime.canonical_title} Review"), anime_review_path(review.anime, review)
 
   .row

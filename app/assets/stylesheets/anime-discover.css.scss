@@ -437,8 +437,6 @@
     color: #111;
     font-size: 13px;
     border: none;
-    @include border-radius(3px);
-    @include box-shadow(rgba(0,0,0,.1) 1px 1px 1px);
     &.cards {
       overflow: visible;
     }
