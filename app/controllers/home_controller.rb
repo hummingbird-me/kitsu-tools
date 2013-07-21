@@ -18,7 +18,7 @@ class HomeController < ApplicationController
           end
         end
         format.json do
-          timeline = UserTimeline.fetch(current_user, page: params[:page])
+          timeline = NewsFeed.new(current_user).fetch(params[:page])
           render :json => timeline
         end
       end

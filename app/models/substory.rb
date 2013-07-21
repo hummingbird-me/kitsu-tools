@@ -16,7 +16,6 @@ class Substory < ActiveRecord::Base
     if self.story and self.story.reload.substories.length == 0
       self.story.destroy
     end
-    StoryFanoutWorker.perform_async(self.user_id, self.story_id)
   end
 
   def self.from_action(data)
