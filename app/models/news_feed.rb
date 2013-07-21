@@ -54,7 +54,11 @@ class NewsFeed
     stop_index = start_index + 20 - 1
 
     story_ids = $redis.zrevrange @feed_key, start_index, stop_index
-    stories = story_ids.map {|x| Story.find_by_id x }.compact
+    story_id_to_story = {}
+    Story.where(id: story_ids).includes(:substories).each do |story|
+      story_id_to_story[story.id] = story
+    end
+    stories = story_ids.map {|x| story_id_to_story[x.to_i] }.compact
 
     ability = Ability.new @user
     
