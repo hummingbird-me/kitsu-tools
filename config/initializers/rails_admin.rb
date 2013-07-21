@@ -11,6 +11,7 @@ RailsAdmin.config do |config|
 
   # Who is the current user.
   config.current_user_method { current_user }
+  config.attr_accessible_role { :admin }
   
   config.actions do
     dashboard
