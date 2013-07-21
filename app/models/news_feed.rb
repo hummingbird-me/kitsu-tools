@@ -38,11 +38,15 @@ class NewsFeed
     @user = user
     @feed_key ||= FEED_PREFIX + @user.id.to_s
   end
+
+  def cached?
+    $redis.exists? @feed_key
+  end
   
   # Fetch a page of stories from the user's timeline. Generate a timeline if 
   # the user's timeline doesn't already exist in memory.
   def fetch(page=nil)
-    regenerate_feed! unless $redis.exists @feed_key
+    regenerate_feed! unless cached?
     $redis.expire @feed_key, INACTIVE_DAYS * 24 * 60 * 60
     
     page ||= 1

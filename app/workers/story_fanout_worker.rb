@@ -9,7 +9,8 @@ class StoryFanoutWorker
     followers = followers.uniq
     
     followers.each do |follower|
-      NewsFeed.new(follower).add! story
+      feed = NewsFeed.new(follower)
+      feed.add!(story) if feed.cached?
     end
   end
 end
