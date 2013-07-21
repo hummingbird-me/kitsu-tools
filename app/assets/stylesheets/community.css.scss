@@ -196,6 +196,7 @@
           border-top: 1px solid #eee;
           margin-top: 10px;
           padding-top: 7px;
+          font-family: inherit;
           a {
             color: #3f5765;;
             &:hover {
@@ -204,6 +205,7 @@
           }
         }
         p {
+          font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
           a {
             color: #fc6419;
             &:hover {
