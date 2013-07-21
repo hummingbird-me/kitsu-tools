@@ -40,7 +40,7 @@ class NewsFeed
   end
 
   def cached?
-    $redis.exists? @feed_key
+    $redis.exists @feed_key
   end
   
   # Fetch a page of stories from the user's timeline. Generate a timeline if 
