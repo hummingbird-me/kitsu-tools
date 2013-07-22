@@ -141,6 +141,7 @@ class MalImport
     
     # Status
     meta[:status] = sidebar.css("div").select {|x| x.text.include? "Status:" }[0].children[1].text.strip rescue nil
+    meta[:status] = "Not Yet Aired" if meta[:status] == "Not yet aired"
 
     # Air dates
     meta[:dates] = {}
@@ -282,14 +283,12 @@ class MalImport
         watchlist.notes = w[:notes]
         watchlist.imported = true
 
-        if watchlist.rating.nil?
-          rating = nil
-          if w[:rating] != '0'
-            rating = w[:rating].to_i rescue 5
-            rating = ((((rating - 1) / 9.0) - 0.5) * 2 * 2).round
-          end
-          watchlist.rating = rating
+        rating = nil
+        if w[:rating] != '0'
+          rating = w[:rating].to_i rescue 5
+          rating = ((((rating - 1) / 9.0) - 0.5) * 2 * 2).round + 3
         end
+        watchlist.rating = rating
         
         watchlists.push( [anime, watchlist] )
       end

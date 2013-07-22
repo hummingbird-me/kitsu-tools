@@ -48,7 +48,12 @@ class API_v1 < Grape::API
       @user = User.find(params[:user_id])
       status = Watchlist.status_parameter_to_status(params[:status])
 
-      watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime, :user).page(params[:page]).per(100)
+      if @user == current_user
+        watchlists = @user.watchlists.where(status: status).order(status == "Currently Watching" ? "last_watched DESC" : "created_at DESC").includes(:anime)
+      else
+        watchlists = @user.watchlists.accessible_by(current_ability).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime)
+      end
+      watchlists = watchlists.page(params[:page]).per(400)
       
       title_language_preference = params[:title_language_preference]
       if title_language_preference.nil? and current_user
@@ -171,6 +176,16 @@ class API_v1 < Grape::API
           episode_number: @watchlist.episodes_watched,
           service: service
         })
+        if @watchlist.status == "Completed"
+          Substory.from_action({
+            user_id: current_user.id,
+            action_type: "watchlist_status_update",
+            anime_id: @anime.slug,
+            old_status: "Currently Watching",
+            new_status: "Completed",
+            time: Time.now + 5.seconds
+          })
+        end
       end
       
       title_language_preference = params[:title_language_preference]
@@ -205,9 +220,9 @@ class API_v1 < Grape::API
     get ':id/similar' do
       anime = Anime.find(params[:id])
       similar_anime = []
-      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{anime.mal_id}")).sort_by {|x| -x["sim"] }
+      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{anime.id}")).sort_by {|x| -x["sim"] }
       similar_json.each do |similar|
-        sim = Anime.find_by_mal_id(similar["id"])
+        sim = Anime.find_by_id(similar["id"])
         similar_anime.push(sim) if sim and similar_anime.length < (params[:limit] || 20)
       end
       similar_anime.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title, genres: x.genres.map {|x| {name: x.name} }, cover_image: x.cover_image.url(:thumb), url: anime_url(x)} }

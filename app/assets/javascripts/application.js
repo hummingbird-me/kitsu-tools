@@ -43,13 +43,15 @@
 //
 // Part 3 -- Application initialization.
 //
+//= require_tree ./templates
+//
+//= require hummingbird.js.coffee
 //= require anime.js.coffee
+//= require library.js.coffee
 //= require library_update.js.coffee
 //= require login-signup.js
 //= require search.js.coffee
 //= require redactor.js.coffee
-//
-//= require_tree ./templates
 //
 //= require activity-feed.js.coffee
 

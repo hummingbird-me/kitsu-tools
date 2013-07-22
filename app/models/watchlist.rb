@@ -2,7 +2,7 @@ class Watchlist < ActiveRecord::Base
   belongs_to :user
   belongs_to :anime
   attr_accessible :user, :anime, :status, :episodes_watched, 
-    :updated_at, :last_watched, :imported, :rating
+    :updated_at, :last_watched, :imported, :rating, :user_id, :anime_id
 
   has_many :stories, dependent: :destroy
 
@@ -67,8 +67,8 @@ class Watchlist < ActiveRecord::Base
     old_count = self.episodes_watched || 0
     self.episodes_watched = new_count || 0
 
-    # If the show is completed and we know its episode count, don't allow users to
-    # exceed the maximum number of episodes.
+    # If the show is completed and we know its episode count, don't allow users
+    # to exceed the maximum number of episodes.
     if self.anime.episode_count and (self.anime.episode_count > 0 and self.episodes_watched > self.anime.episode_count) and self.anime.status == "Finished Airing"
       self.episodes_watched = self.anime.episode_count
     end

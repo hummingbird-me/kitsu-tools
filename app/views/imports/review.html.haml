@@ -37,9 +37,9 @@
                   %td= wld[1].status
                   %td
                     - if wld[1].rating
-                      = 3 + wld[1].rating
+                      = wld[1].rating
                       stars
-                      [#{wld[1].rating >= 0 ? ":)" : ":("}]
+                      [#{wld[1].rating >= 3 ? ":)" : ":("}]
                     - else
                       (not rated)
                   %td #{wld[1].episodes_watched}/#{wld[0].episode_count}
