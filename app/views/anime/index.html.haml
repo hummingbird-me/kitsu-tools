@@ -191,9 +191,21 @@
 
 :coffee
   $("a.genre-filter").popover
+    animation: true
     placement: "bottom"
     html: true
+    trigger: "manual"
     content: $(".popovers .genre-filter-popover").html()
+    
+  filterElements = [$("a.genre-filter")]
+  _.each filterElements, (f) ->
+    f.click ->
+      _.each filterElements, (f2) -> f2.popover('hide')
+      if $(this).attr "data-popover-open"
+        $(this).removeAttr "data-popover-open"
+      else
+        $(this).popover('show')
+        $(this).attr "data-popover-open", true
 
 /   .filter-toolbar
 /     .row
