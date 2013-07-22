@@ -115,6 +115,8 @@ class AnimeController < ApplicationController
         @sort = "all"
       end
       
+      @anime = Anime.accessible_by(current_ability).page(params[:page]).per(24)
+      
       render :explore_filter
     else
       @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
