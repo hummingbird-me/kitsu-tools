@@ -20,7 +20,7 @@
                 %li
                   = link_to "Library", user_signed_in? ? main_app.user_watchlist_path(current_user) : "/dashboard"
                 %li
-                  = link_to "Recommendations", main_app.anime_index_path(filter: 'recommended')
+                  = link_to "Recommendations", '/recommendations'
             %li
               %a{:href => "/anime"} Explore
             %li
