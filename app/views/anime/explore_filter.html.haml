@@ -28,23 +28,18 @@
 
         .panel.rounded-panel
           .large-12.columns
-            %h4.top-title.pull-left Where to Watch
+            %h4.top-title.pull-left Airing Date
             = submit_tag "Apply", class: "pull-right button submit-button"
             %hr.title-divider
             .large-12.columns
               .row.filter-section
-                %label.checkbox{:for => "hulu"}
-                  %input#hulu{"data-toggle" => "checkbox", :type => "checkbox", :value => ""}/
-                  Hulu
-                %label.checkbox{:for => "nextflix"}
-                  %input#netflix{"data-toggle" => "checkbox", :type => "checkbox", :value => ""}/
-                  Netflix
                 %label.checkbox{:for => "crunchyroll"}
-                  %input#crunchyroll{"data-toggle" => "checkbox", :type => "checkbox", :value => ""}/
-                  Crunchyroll
+                  %input#crunchyroll{"data-toggle" => "checkbox", :type => "radio", :value => ""}/
+                  Newest first
                 %label.checkbox{:for => "neonalley"}
-                  %input#neonalley{"data-toggle" => "checkbox", :type => "checkbox", :value => ""}/
-                  Neon Alley
+                  %input#neonalley{"data-toggle" => "checkbox", :type => "radio", :value => ""}/
+                  Oldest first
+
 
      
         .panel.rounded-panel
@@ -55,24 +50,13 @@
 
             .large-12.columns
               .row.filter-section
-                %label.checkbox{:for => "hulu"}
-                  %input#hulu{"data-toggle" => "checkbox", :type => "checkbox", :value => ""}/
+                %label.checkbox
+                  %input.select-all(type="checkbox"){:checked => @filter_years.all? {|y| @years.include? y }}
                   All
-                %label.checkbox{:for => "nextflix"}
-                  %input#netflix{"data-toggle" => "checkbox", :type => "checkbox", :value => ""}/
-                  Upcoming
-                %label.checkbox{:for => "crunchyroll"}
-                  %input#crunchyroll{"data-toggle" => "checkbox", :type => "checkbox", :value => ""}/
-                  2010s
-                %label.checkbox{:for => "neonalley"}
-                  %input#neonalley{"data-toggle" => "checkbox", :type => "checkbox", :value => ""}/
-                  2000s
-                %label.checkbox{:for => "neonalley"}
-                  %input#neonalley{"data-toggle" => "checkbox", :type => "checkbox", :value => ""}/
-                  1990s
-                %label.checkbox{:for => "neonalley"}
-                  %input#neonalley{"data-toggle" => "checkbox", :type => "checkbox", :value => ""}/
-                  1980s
+                - @filter_years.each do |year|
+                  %label.checkbox
+                    = check_box_tag "y[]", year, @years.include?(year)
+                    = year
 
         .panel.rounded-panel
           .large-12.columns
@@ -84,7 +68,7 @@
               .row
                 .large-12.columns
                   %label.checkbox
-                    %input.select-all(type="checkbox")
+                    %input.select-all(type="checkbox"){:checked => Genre.default_filterable(current_user).all? {|g| @genres.include? g }}
                     All
                 - Genre.default_filterable(current_user).each do |genre|
                   .large-6.columns
@@ -104,6 +88,18 @@
         if $(this).closest(".rounded-panel").find(".submit-button").is(":hidden")
           $(".rounded-panel .submit-button").fadeOut()
           $(this).closest(".rounded-panel").find(".submit-button").fadeIn()
+
+
+
+
+
+
+
+
+
+
+
+
 
     / Anime Listing.
     .large-9.columns.no-padding
