@@ -30,18 +30,10 @@
                 %i.icon-caret-down
             
             %li
-              %a{"data-dropdown" => "drop3", "data-options" => "is_hover:true", :href => "#"} Popular <i class="icon-caret-down"></i>
-
-              %ul#drop3.f-dropdown{"data-dropdown-content" => ""}
-                %li
-                  %a{:href => "#"} All Time
-                %li
-                  %a{:href => "#"} This Week
-                %li
-                  %a{:href => "#"} This Month
-                %li
-                  %a{:href => "#"} This Year
-
+              %a.popular-filter(href="javascript:void(0)")
+                Popular
+                %i.icon-caret-down
+                  
             %li= link_to "Anticipated", "#"
             %li= link_to "Airing Soon", "#"
       .large-3.columns
@@ -179,8 +171,6 @@
                 .forum-time.pull-right
                   %i about 2 hours ago
 
-
-
   .popovers.hide
     .genre-filter-popover
       .filter.genre-filter-popover-content
@@ -189,6 +179,13 @@
             .large-4.columns
               = link_to genre.name, anime_index_path(filter: true, g: genre), class: 'filter-option'
 
+    .popular-filter-popover
+      .filter.popular-filter-popover-content
+        = link_to "All Time", anime_index_path(filter: true, pop: "all"), class: 'filter-option'
+        = link_to "This Year", anime_index_path(filter: true, pop: "year"), class: 'filter-option'
+        = link_to "This Month", anime_index_path(filter: true, pop: "month"), class: 'filter-option'
+        = link_to "This Week", anime_index_path(filter: true, pop: "week"), class: 'filter-option'
+
 :coffee
   $("a.genre-filter").popover
     animation: true
@@ -196,8 +193,15 @@
     html: true
     trigger: "manual"
     content: $(".popovers .genre-filter-popover").html()
+  
+  $("a.popular-filter").popover
+    animation: true
+    placement: "bottom"
+    html: true
+    trigger: "manual"
+    content: $(".popovers .popular-filter-popover").html()
     
-  filterElements = [$("a.genre-filter")]
+  filterElements = [$("a.genre-filter"), $("a.popular-filter")]
   _.each filterElements, (f) ->
     f.click ->
       _.each filterElements, (f2) -> f2.popover('hide')
