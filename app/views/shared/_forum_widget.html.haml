@@ -1,0 +1,14 @@
+.large-12.columns.no-padding.forum-block
+  .large-6.columns.block-title
+    %h4 Forum
+  .large-6.columns.block-link
+    = link_to "view forums", link, class: 'right'
+  %hr
+  %ul
+    - forum_topics.each do |topic|
+      %li.large-12.columns.topic-row
+        .large-12.columns.no-padding.forum-title
+          .pull-left
+            = link_to truncate(topic.subject, length: 35, separator: ' '), forem.forum_topic_path(topic.forum, topic)
+          .forum-time.pull-right
+            %i #{distance_of_time_in_words_to_now(topic.last_post_at)} ago

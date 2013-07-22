@@ -90,73 +90,7 @@
 
         %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
       .panel.rounded-panel
-        .large-12.columns.no-padding.forum-block
-          .large-6.columns.block-title
-            %h4 Forum
-          .large-6.columns.block-link
-            %a.right{:href => "/community/"} view forums
-          %hr/
-          %ul
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  %a{:href => "/community/forums/anime-discussion/topics/most-manly-animes"} Most Manly Animes?
-                .forum-time.pull-right
-                  %i 9 minutes ago
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  %a{:href => "/community/forums/site-suggestions/topics/a-page-for-the-community"} A page for the community
-                .forum-time.pull-right
-                  %i 14 minutes ago
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  %a{:href => "/community/forums/bug-reports/topics/mod-request-edit-delete-quotes"} [Mod Request] Edit/delete quotes
-                .forum-time.pull-right
-                  %i 41 minutes ago
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  %a{:href => "/community/forums/site-suggestions/topics/auto-anime-updade"} auto anime updade
-                .forum-time.pull-right
-                  %i about 1 hour ago
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  %a{:href => "/community/forums/bug-reports/topics/drop-down-menu-doesn-t-quite-show-remains-on-page"} Drop-down menu doesn't quite...
-                .forum-time.pull-right
-                  %i about 1 hour ago
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  %a{:href => "/community/forums/site-suggestions/topics/bigger-profile-pic-avatar"} Bigger Profile Pic/Avatar
-                .forum-time.pull-right
-                  %i about 1 hour ago
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  %a{:href => "/community/forums/site-suggestions/topics/fixed-header-and-side-menu"} Fixed header and side menu
-                .forum-time.pull-right
-                  %i about 1 hour ago
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  %a{:href => "/community/forums/anime-discussion/topics/what-is-your-dealbreaker-in-anime"} What is your Dealbreaker in Anime?
-                .forum-time.pull-right
-                  %i about 2 hours ago
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  %a{:href => "/community/forums/anime-discussion/topics/fate-series-anime-watch-order"} Fate series anime watch order
-                .forum-time.pull-right
-                  %i about 2 hours ago
-            %li.large-12.columns.topic-row
-              .large-12.columns.no-padding.forum-title
-                .pull-left
-                  %a{:href => "/community/forums/anime-discussion/topics/anime-gif-thread-go"} Anime GIF thread, go!
-                .forum-time.pull-right
-                  %i about 2 hours ago
+        = render partial: "shared/forum_widget", locals: {forum_topics: @forum_topics, link: forem.forum_path("anime-manga")}
 
   .popovers.hide
     .genre-filter-popover
