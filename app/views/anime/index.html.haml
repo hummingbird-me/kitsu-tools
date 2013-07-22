@@ -25,36 +25,10 @@
                   %a{:href => "#"} 1970s
 
             %li
-              %a{"data-dropdown" => "drop2", "data-options" => "is_hover:true", :href => "#"} Genre <i class="icon-caret-down"></i>
-
-              %ul#drop2.f-dropdown{"data-dropdown-content" => ""}
-                %li
-                  %a{:href => "#"} Action
-                %li
-                  %a{:href => "#"} Adventure
-                %li
-                  %a{:href => "#"} Cars
-                %li
-                  %a{:href => "#"} Comedy
-                %li
-                  %a{:href => "#"} Dementia
-                %li
-                  %a{:href => "#"} Demons
-                %li
-                  %a{:href => "#"} Drama
-                %li
-                  %a{:href => "#"} Ecchi
-                %li
-                  %a{:href => "#"} Fantasy
-                %li
-                  %a{:href => "#"} Game
-                %li
-                  %a{:href => "#"} Harem
-                %li
-                  %a{:href => "#"} Historical
-                %li
-                  %a{:href => "#"} Horror
-
+              %a.genre-filter(href="javascript:void(0)")
+                Genre
+                %i.icon-caret-down
+            
             %li
               %a{"data-dropdown" => "drop3", "data-options" => "is_hover:true", :href => "#"} Popular <i class="icon-caret-down"></i>
 
@@ -205,6 +179,21 @@
                 .forum-time.pull-right
                   %i about 2 hours ago
 
+
+
+.popovers.hide
+  .genre-filter-popover
+    .genre-filter-popover-content
+      .row
+        - Genre.default_filterable(current_user).each do |genre|
+          .large-3.columns
+            = link_to genre.name, anime_index_path(filter: true, g: genre)
+
+:coffee
+  $("a.genre-filter").popover
+    placement: "bottom"
+    html: true
+    content: $(".popovers .genre-filter-popover").html()
 
 /   .filter-toolbar
 /     .row
