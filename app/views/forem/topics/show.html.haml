@@ -23,6 +23,8 @@
             .panel(style="margin-bottom: 0")
               %p 
                 = link_to t(".lock.#{@topic.locked}"), forem.toggle_lock_admin_topic_path(@topic), :method => :put
+                |
+                = link_to t(".pin.#{@topic.pinned}"), forem.toggle_pin_admin_topic_path(@topic), :method => :put
         .row
           .discussions.large-12.columns
             - if @topic.pending_review?
@@ -45,7 +47,10 @@
                   = link_to @topic.forum.title, forem.forum_path(@topic.forum)
                 - if @topic.locked?
                   .right
-                    %i.icon.icon-lock.icon-2x
+                    %i.icon-lock.icon-2x
+                - if @topic.pinned?
+                  .right
+                    %i.icon-pushpin.icon-2x
                 %p.topic-body= forem_format @first_post.text
 
               .row
@@ -122,7 +127,6 @@
 /   = link_to t(".hide.#{@topic.hidden}"), forem.toggle_hide_admin_topic_path(@topic), :method => :put
 /   |
 /   \#{link_to t(".lock.#{@topic.locked}"), forem.toggle_lock_admin_topic_path(@topic), :method => :put} |
-/   \#{link_to t(".pin.#{@topic.pinned}"), forem.toggle_pin_admin_topic_path(@topic), :method => :put}
 / - if @topic.pending_review?
 /   #topic_moderation.moderation
 /     = t(".pending_review")
