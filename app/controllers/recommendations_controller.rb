@@ -6,7 +6,7 @@ class RecommendationsController < ApplicationController
       current_user.update_column :last_library_update, Time.now
     end
 
-    if (current_user.last_recommendations_update.nil? or current_user.last_library_update > current_user.last_recommendations_update) and current_user.recommendations_up_to_date?
+    if (current_user.last_recommendations_update.nil? or current_user.last_library_update > current_user.last_recommendations_update)
       current_user.update_column :recommendations_up_to_date, false
       RecommendingWorker.perform_async(current_user.id)
     end
