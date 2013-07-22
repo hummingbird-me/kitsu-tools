@@ -12,6 +12,14 @@ $popoverTitleBackground: darken($popoverBackground, 3%);
 $popoverArrowOuterWidth: $popoverArrowWidth + 1;
 $popoverArrowOuterColor: rgba(0,0,0,.25);
 
+.fade {
+  opacity: 0;
+  @include transition(opacity .15s linear);
+  &.in {
+    opacity: 1;
+  }
+} 
+
 .popover {
   position: absolute;
   top: 0;

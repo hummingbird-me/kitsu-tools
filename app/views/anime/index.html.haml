@@ -186,7 +186,7 @@
     .genre-filter-popover-content
       .row
         - Genre.default_filterable(current_user).each do |genre|
-          .large-3.columns
+          .large-4.columns
             = link_to genre.name, anime_index_path(filter: true, g: genre)
 
 :coffee
@@ -201,11 +201,11 @@
   _.each filterElements, (f) ->
     f.click ->
       _.each filterElements, (f2) -> f2.popover('hide')
-      if $(this).attr "data-popover-open"
-        $(this).removeAttr "data-popover-open"
+      if $(this).hasClass "active-filter"
+        $(this).removeClass "active-filter"
       else
         $(this).popover('show')
-        $(this).attr "data-popover-open", true
+        $(this).addClass "active-filter"
 
 /   .filter-toolbar
 /     .row
