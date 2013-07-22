@@ -36,7 +36,7 @@
             %h5.default-state.center Uh oh, we don't have any recommendations for you yet!
           - else
             %ul.small-block-grid-2.large-block-grid-5.single-recs
-              - @neon_alley.each do |anime|
+              - @neon_alley[0..4].each do |anime|
                 %li.single-rec
                   .rec-thumbnail
                     %p.wanna-watch
