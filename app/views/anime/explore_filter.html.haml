@@ -17,13 +17,13 @@
                   = radio_button_tag :s, "all", @sort == "all"
                   All Time
                 %label.checkbox
-                  = radio_button_tag :s, "year", @sort == "year"
+                  = radio_button_tag :s, "year", @sort == "year", disabled: true
                   This Year
                 %label.checkbox
-                  = radio_button_tag :s, "month", @sort == "month"
+                  = radio_button_tag :s, "month", @sort == "month", disabled: true
                   This Month
                 %label.checkbox
-                  = radio_button_tag :s, "week", @sort == "week"
+                  = radio_button_tag :s, "week", @sort == "week", disabled: true
                   This Week
 
         .panel.rounded-panel
@@ -37,7 +37,7 @@
                   = radio_button_tag :s, "newest", @sort == "newest"
                   Newest First
                 %label.checkbox
-                  = radio_button_tag :s, "all", @sort == "oldest"
+                  = radio_button_tag :s, "oldest", @sort == "oldest"
                   Oldest First
      
         .panel.rounded-panel
@@ -86,17 +86,6 @@
         if $(this).closest(".rounded-panel").find(".submit-button").is(":hidden")
           $(".rounded-panel .submit-button").fadeOut()
           $(this).closest(".rounded-panel").find(".submit-button").fadeIn()
-
-
-
-
-
-
-
-
-
-
-
 
 
     / Anime Listing.

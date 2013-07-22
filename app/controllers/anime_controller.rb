@@ -115,7 +115,26 @@ class AnimeController < ApplicationController
         @sort = "all"
       end
       
-      @anime = Anime.accessible_by(current_ability).page(params[:page]).per(24)
+      @anime = Anime.accessible_by(current_ability).page(params[:page]).per(36)
+
+      # Apply genre filter.
+      if @genres.length > 10
+        @anime = @anime.exclude_genres(Genre.all - @genres)
+      else
+        @anime = @anime.include_genres(@genres)
+      end
+      
+      # Apply sort option.
+      if @sort == "newest"
+        @anime = @anime.order("started_airing_date DESC")
+      elsif @sort == "oldest"
+        @anime = @anime.order("started_airing_date")
+      else
+        @sort = "all"
+        @anime = @anime.order("wilson_ci DESC")
+      end
+      
+      # TODO Apply year filter.
       
       render :explore_filter
     else
@@ -126,6 +145,7 @@ class AnimeController < ApplicationController
     end
 
     return
+    
     ### OLD EXPLORE PAGE CODE BELOW
 
     # Establish a base scope.
@@ -140,15 +160,6 @@ class AnimeController < ApplicationController
       @slugs_to_filter = params[:genres]
       if @slugs_to_filter.length > 0
         @genre_filter = Genre.where("slug IN (?)", @slugs_to_filter)
-        if @genre_filter.length > 10
-          # There are more than 10 genres selected -- block the genres that
-          # haven't been selected.
-          @anime = @anime.exclude_genres(@all_genres - @genre_filter)
-        else
-          # 10 or fewer genres are enabled, search for all anime containing those
-          # genres instead.
-          @anime = @anime.include_genres(@genre_filter)
-        end
       end
     end
     @genre_filter ||= @all_genres
