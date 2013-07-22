@@ -66,8 +66,8 @@ a {
 .rounded-panel {
   background: #fff;
   border: none;
-  @include border-radius(3px);
-  @include box-shadow(rgba(0,0,0,.1) 1px 1px 3px);
+  @include border-radius(5px);
+  @include box-shadow(#e3e4e6 0px 2px 0px);
   .panel-head {
     .head-title {
       margin-bottom: 10px;
@@ -140,7 +140,7 @@ a {
 }
 
 body {
-	background: #eee;
+	background: #f1f2f6;
   overflow-x: hidden;  // disable horizontal scrolling on mobile.
   [role="complementary"] {
     width: 25%;
