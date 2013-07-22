@@ -62,6 +62,9 @@ Hummingbird::Application.routes.draw do
   match '/imports/apply'           => 'imports#apply', as: :review_apply
   match '/imports/cancel'          => 'imports#cancel', as: :review_cancel
   match '/imports/status'          => 'imports#status'
+  
+  # Random anime
+  match '/random/anime' => 'anime#random'
 
   resources :anime do
     post :get_episodes_from_thetvdb
