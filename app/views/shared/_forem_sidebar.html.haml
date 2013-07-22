@@ -1,7 +1,7 @@
 .forum-sidebar.large-3.columns
   %ul
     %li
-      %span{:class => ('active' if active_forum.nil?)}= link_to "Hummingbird Discussion", forem.root_path
-    - Forem::Forum.all.each do |forum|
+      %span{:class => ('active' if active_forum.nil?)}= link_to "Recent Topics", forem.root_path
+    - Forem::Forum.all.sort_by {|x| x.sort_order || 100 }.each do |forum|
       %li
         %span{:class => ('active' if active_forum == forum)}= link_to forum.title, forem.forum_path(forum)

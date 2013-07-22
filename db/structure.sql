@@ -364,7 +364,8 @@ CREATE TABLE forem_forums (
     description text,
     category_id integer,
     views_count integer DEFAULT 0,
-    slug character varying(255)
+    slug character varying(255),
+    sort_order integer
 );
 
 
@@ -2653,3 +2654,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130717124249');
 INSERT INTO schema_migrations (version) VALUES ('20130718062408');
 
 INSERT INTO schema_migrations (version) VALUES ('20130718171707');
+
+INSERT INTO schema_migrations (version) VALUES ('20130722054613');
