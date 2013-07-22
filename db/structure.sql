@@ -364,7 +364,8 @@ CREATE TABLE forem_forums (
     description text,
     category_id integer,
     views_count integer DEFAULT 0,
-    slug character varying(255)
+    slug character varying(255),
+    sort_order integer
 );
 
 
@@ -1331,7 +1332,7 @@ CREATE TABLE watchlists (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     episodes_watched integer DEFAULT 0,
-    rating integer,
+    rating numeric(2,1),
     last_watched timestamp without time zone,
     imported boolean,
     private boolean DEFAULT false,
@@ -2649,3 +2650,11 @@ INSERT INTO schema_migrations (version) VALUES ('20130715115258');
 INSERT INTO schema_migrations (version) VALUES ('20130717093608');
 
 INSERT INTO schema_migrations (version) VALUES ('20130717124249');
+
+INSERT INTO schema_migrations (version) VALUES ('20130718062408');
+
+INSERT INTO schema_migrations (version) VALUES ('20130718171707');
+
+INSERT INTO schema_migrations (version) VALUES ('20130722054613');
+
+INSERT INTO schema_migrations (version) VALUES ('20130722113657');

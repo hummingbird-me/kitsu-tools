@@ -31,6 +31,7 @@ class ReviewsController < ApplicationController
     value = params[:type] == "up" ? 1 : 0
     @review = Review.find(params[:id])
     @review.add_or_update_evaluation(:votes, value, current_user)
+    TrendingReviews.vote @review.id if value == 1
     redirect_to :back
   end
   
