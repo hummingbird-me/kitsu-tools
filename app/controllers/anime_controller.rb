@@ -96,6 +96,13 @@ class AnimeController < ApplicationController
     @filter_years = ["Upcoming", "2010s", "2000s", "1990s", "1980s", "1970s", "Older"]
 
     if params[:filter]
+
+      if params[:g]
+        @genres = Genre.where(slug: params[:g])
+      else
+        @genres = Genre.default_filterable(current_user)
+      end
+      
       render :explore_filter
     else
       @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
