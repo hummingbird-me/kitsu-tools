@@ -142,6 +142,7 @@ a {
 body {
 	background: #f1f2f6;
   overflow-x: hidden;  // disable horizontal scrolling on mobile.
+  margin-top: 70px;
   [role="complementary"] {
     width: 25%;
     .three, .row .three {
