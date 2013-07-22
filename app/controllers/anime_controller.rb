@@ -135,6 +135,31 @@ class AnimeController < ApplicationController
       end
       
       # TODO Apply year filter.
+      if @years.length != @filter_years.length
+        filter_year_ranges = {
+          "2010s" => Date.new(2010, 1, 1)..Date.new(2020, 1, 1),
+          "2000s" => Date.new(2000, 1, 1)..Date.new(2010, 1, 1),
+          "1990s" => Date.new(1990, 1, 1)..Date.new(2000, 1, 1),
+          "1980s" => Date.new(1980, 1, 1)..Date.new(1990, 1, 1),
+          "1970s" => Date.new(1970, 1, 1)..Date.new(1980, 1, 1),
+          "Older" => Date.new(1800, 1, 1)..Date.new(1970, 1, 1)
+        }
+        arel = Anime.arel_table
+        ranges = @years.map {|x| filter_year_ranges[x] }.compact
+        query = ranges.inject(arel) do |sum, range|
+          condition = arel[:started_airing_date].in(range).or(arel[:finished_airing_date].in(range))
+          sum.class == Arel::Table ? condition : sim.or(condition)
+        end
+        if @years.include? "Upcoming"
+          condition = arel[:status].eq("Not Yet Aired")
+          if query.class == Arel::Table
+            query = condition
+          else
+            query = query.or(arel[:status].eq("Not Yet Aired"))
+          end
+        end
+        @anime = @anime.where(query)
+      end
       
       render :explore_filter
     else
