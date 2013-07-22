@@ -13,18 +13,18 @@
 
             .large-12.columns
               .row.filter-section
-                %label.checkbox{:for => "hulu"}
-                  %input#hulu{"data-toggle" => "checkbox", :type => "radio", :value => ""}/
+                %label.checkbox
+                  = radio_button_tag :s, "all", @sort == "all"
                   All Time
-                %label.checkbox{:for => "nextflix"}
-                  %input#netflix{"data-toggle" => "checkbox", :type => "radio", :value => ""}/
-                  This Week
-                %label.checkbox{:for => "crunchyroll"}
-                  %input#crunchyroll{"data-toggle" => "checkbox", :type => "radio", :value => ""}/
-                  This Month
-                %label.checkbox{:for => "neonalley"}
-                  %input#neonalley{"data-toggle" => "checkbox", :type => "radio", :value => ""}/
+                %label.checkbox
+                  = radio_button_tag :s, "year", @sort == "year"
                   This Year
+                %label.checkbox
+                  = radio_button_tag :s, "month", @sort == "month"
+                  This Month
+                %label.checkbox
+                  = radio_button_tag :s, "week", @sort == "week"
+                  This Week
 
         .panel.rounded-panel
           .large-12.columns
@@ -33,14 +33,12 @@
             %hr.title-divider
             .large-12.columns
               .row.filter-section
-                %label.checkbox{:for => "crunchyroll"}
-                  %input#crunchyroll{"data-toggle" => "checkbox", :type => "radio", :value => ""}/
-                  Newest first
-                %label.checkbox{:for => "neonalley"}
-                  %input#neonalley{"data-toggle" => "checkbox", :type => "radio", :value => ""}/
-                  Oldest first
-
-
+                %label.checkbox
+                  = radio_button_tag :s, "newest", @sort == "newest"
+                  Newest First
+                %label.checkbox
+                  = radio_button_tag :s, "all", @sort == "oldest"
+                  Oldest First
      
         .panel.rounded-panel
           .large-12.columns

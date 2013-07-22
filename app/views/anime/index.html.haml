@@ -23,7 +23,7 @@
                 %i.icon-caret-down
                   
             %li= link_to "Anticipated", anime_index_path(filter: true, s: "all", y: ["Upcoming"])
-            %li= link_to "Airing Soon", anime_index_path(filter: true, s: "airdate", y: ["Upcoming"])
+            %li= link_to "Airing Soon", anime_index_path(filter: true, s: "oldest", y: ["Upcoming"])
 
       .large-3.columns
         %a.button.padded.secondary(href="/random/anime")

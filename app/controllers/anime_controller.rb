@@ -109,6 +109,12 @@ class AnimeController < ApplicationController
         @years = @filter_years
       end
       
+      if params[:s]
+        @sort = params[:s]
+      else
+        @sort = "all"
+      end
+      
       render :explore_filter
     else
       @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
