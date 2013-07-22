@@ -2,7 +2,7 @@
 
 .anime-discover.anime-explore
   .row
-    .large-3.columns
+    .large-3.columns.filter-sidebar
       = form_tag("/anime", method: :get) do
         = hidden_field_tag "filter", true
         .panel.rounded-panel
@@ -62,7 +62,7 @@
             = submit_tag "Apply", class: "pull-right button submit-button"
             %hr.title-divider
 
-            .large-12.columns.filter-section
+            .large-12.columns.filter-section.no-padding
               .row
                 .large-12.columns
                   %label.checkbox

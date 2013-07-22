@@ -1,6 +1,7 @@
 @import "compass/css3";
 
 .anime-explore {
+  padding-top: 40px;
   .filter {
     &.genre-filter-popover-content {
       width: 360px;
@@ -24,8 +25,6 @@
     padding: 5px 10px;
     display: none;
   }
-
-  margin-top: 30px;
   label {
     font-size: 16px;
   }
@@ -175,9 +174,18 @@
       }
     }
   }
-
   .side-advert {
     padding-bottom: 30px;
     padding-top: 30px;
+  }
+  .filter-sidebar {
+    .rounded-panel {
+      padding-bottom: 10px;
+    }
+  }
+  .filter-section {
+    label {
+      font-size: 14px;
+    }
   }
 }
