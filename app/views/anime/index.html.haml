@@ -181,13 +181,13 @@
 
 
 
-.popovers.hide
-  .genre-filter-popover
-    .genre-filter-popover-content
-      .row
-        - Genre.default_filterable(current_user).each do |genre|
-          .large-4.columns
-            = link_to genre.name, anime_index_path(filter: true, g: genre)
+  .popovers.hide
+    .genre-filter-popover
+      .filter.genre-filter-popover-content
+        .row
+          - Genre.default_filterable(current_user).each do |genre|
+            .large-4.columns
+              = link_to genre.name, anime_index_path(filter: true, g: genre), class: 'filter-option'
 
 :coffee
   $("a.genre-filter").popover

@@ -1,10 +1,21 @@
 @import "compass/css3";
 
-.genre-filter-popover-content {
-  width: 480px;
-}
-
 .anime-explore {
+  .filter {
+    &.genre-filter-popover-content {
+      width: 360px;
+    }
+    .filter-option {
+      display: block;
+      text-align: center;
+      padding: 0;
+      @include border-radius(4px);
+      &:hover {
+        background-color: darken(#fff, 4%);
+      }
+    }
+  }
+
   margin-top: 30px;
   label {
     font-size: 16px;
