@@ -461,13 +461,12 @@
 // Guest View
 .guest-home {
   background: #fff;
+  margin-top: -70px;
   .guest-nav {
     padding-top: 30px;
     .h-logo {
-      width: 100%;
-      height: auto;
-      max-width: 210px;
-      max-height: 42px;
+      position: absolute;
+      width: 80px;
     }
     .login-link {
       margin-bottom: 0px;

@@ -7,7 +7,7 @@
     .large-4.columns.push-8.left-column-content
       = render partial: "shared/forum_widget", locals: {forum_topics: @forum_topics, link: forem.root_path}
 
-      .large-12.columns.no-padding.trending-block
+      .large-12.columns.no-padding.trending-block.rounded-panel
         .large-12.columns.block-title
           %h4 Trending Today
         %hr
@@ -21,7 +21,7 @@
                   = anime_link trending[:anime], class: 'trending-title truncate'
                   %i #{trending[:currently_watching]} Viewers
       
-      .large-12.columns.no-padding-left.no-padding-right.side-advert.hide-for-small
+      .large-12.columns.no-padding-left.no-padding-right.side-advert.hide-for-small.rounded-panel
         :javascript
           google_ad_client = "ca-pub-3410319844519574";
           /* Homepage Sidebar */
