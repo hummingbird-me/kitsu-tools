@@ -33,4 +33,10 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     request.referrer
   end
+
+  # Can the user view NSFW posts in the forum?
+  def can_view_nsfw_forum_content?
+    user_signed_in? and ((not current_user.sfw_filter) or current_user.admin?)
+  end
+  helper_method :can_view_nsfw_forum_content?
 end
