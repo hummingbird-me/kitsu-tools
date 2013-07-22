@@ -93,6 +93,7 @@ class AnimeController < ApplicationController
 
   def index
     hide_cover_image
+    @filter_years = ["Upcoming", "2010s", "2000s", "1990s", "1980s", "1970s", "Older"]
 
     if params[:filter]
       render :explore_filter
