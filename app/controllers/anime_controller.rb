@@ -29,7 +29,7 @@ class AnimeController < ApplicationController
 
     @gallery = @anime.gallery_images.limit(6)
 
-    @reviews = Review.includes(:user).order("wilson_score DESC").limit(4)
+    @reviews = @anime.reviews.includes(:user).order("wilson_score DESC").limit(4)
 
     if user_signed_in?
       @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
