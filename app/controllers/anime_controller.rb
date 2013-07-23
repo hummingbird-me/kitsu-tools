@@ -155,7 +155,7 @@ class AnimeController < ApplicationController
     else
       @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
       @recent_reviews = Review.order('created_at DESC').limit(12).includes(:anime)
-      @trending_reviews = Review.where("created_at >= ?", 30.days.ago).order("wilson_score DESC").limit(6)
+      @trending_reviews = Review.select("DISTINCT ON (wilson_score, user_id) *").where("created_at >= ?", 30.days.ago).order("wilson_score DESC").limit(6)
       @forum_topics = Forem::Forum.find("anime-manga").topics.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
     end
 
