@@ -1005,7 +1005,8 @@ CREATE TABLE reviews (
     rating_sound integer,
     rating_character integer,
     rating_enjoyment integer,
-    summary character varying(255)
+    summary character varying(255),
+    wilson_score double precision
 );
 
 
@@ -2658,3 +2659,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130718171707');
 INSERT INTO schema_migrations (version) VALUES ('20130722054613');
 
 INSERT INTO schema_migrations (version) VALUES ('20130722113657');
+
+INSERT INTO schema_migrations (version) VALUES ('20130723155459');
+
+INSERT INTO schema_migrations (version) VALUES ('20130723163451');

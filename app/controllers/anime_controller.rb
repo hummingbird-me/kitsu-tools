@@ -1,15 +1,8 @@
+require 'wilson_score'
+
 class AnimeController < ApplicationController
   include EpisodesHelper
   
-  def ci_lower_bound(pos, n)
-    if n == 0
-      return 0
-    end
-    z = 1.96
-    phat = 1.0*pos/n
-    (phat + z*z/(2*n) - z * Math.sqrt((phat*(1-phat)+z*z/(4*n))/n))/(1+z*z/n)
-  end
-
   def random
     anime = Anime.where("age_rating <> 'R18+'").where(show_type: ["TV", "OVA", "ONA", "Movie"]).order("RANDOM()").limit(1)[0]
     redirect_to anime
@@ -36,10 +29,7 @@ class AnimeController < ApplicationController
 
     @gallery = @anime.gallery_images.limit(6)
 
-    @reviews = Review.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id]}).sort_by do |review|
-      -ci_lower_bound(review.votes.to_i, review.evaluations.length)
-    end
-    @reviews = @reviews[0...4] if @reviews.length > 4
+    @reviews = Review.includes(:user).order("wilson_score DESC").limit(4)
 
     if user_signed_in?
       @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
@@ -165,7 +155,7 @@ class AnimeController < ApplicationController
     else
       @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
       @recent_reviews = Review.order('created_at DESC').limit(12).includes(:anime)
-      @trending_reviews = TrendingReview.get(6).map {|x| Review.find_by_id(x) }.compact
+      @trending_reviews = Review.where("created_at >= ?", 30.days.ago).order("wilson_score DESC").limit(6)
       @forum_topics = Forem::Forum.find("anime-manga").topics.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
     end
 
