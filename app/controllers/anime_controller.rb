@@ -39,7 +39,6 @@ class AnimeController < ApplicationController
     @reviews = Review.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id]}).sort_by do |review|
       -ci_lower_bound(review.votes.to_i, review.evaluations.length)
     end
-    @reviews = @reviews.compact
     @reviews = @reviews[0...4] if @reviews.length > 4
 
     if user_signed_in?
@@ -166,7 +165,7 @@ class AnimeController < ApplicationController
     else
       @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
       @recent_reviews = Review.order('created_at DESC').limit(12).includes(:anime)
-      @trending_reviews = TrendingReview.get(6).map {|x| Review.find(x) }
+      @trending_reviews = TrendingReview.get(6).map {|x| Review.find_by_id(x) }.compact
       @forum_topics = Forem::Forum.find("anime-manga").topics.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
     end
 
