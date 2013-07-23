@@ -39,6 +39,7 @@ class AnimeController < ApplicationController
     @reviews = Review.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id]}).sort_by do |review|
       -ci_lower_bound(review.votes.to_i, review.evaluations.length)
     end
+    @reviews = @reviews.compact
     @reviews = @reviews[0...4] if @reviews.length > 4
 
     if user_signed_in?
