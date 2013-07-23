@@ -12,7 +12,7 @@ module Entities
     expose(:title) {|anime, options| anime.canonical_title(options[:title_language_preference]) }
     expose :episode_count
     expose(:cover_image) {|anime, options| anime.cover_image.url(:thumb) }
-    expose(:short_synopsis) {|anime, options| anime.synopsis.truncate(380, separator: ' ') }
+    expose(:synopsis) {|anime, options| anime.synopsis }
     expose :show_type
     expose :genres, using: Entities::Genre, if: lambda {|anime, options| options[:genres].nil? or options[:genres] }
   end

@@ -13,7 +13,7 @@
           %span.title 
             %a(href="{{anime.url}}") {{anime.title}}
           .rating
-          %span.description {{anime.short_synopsis}}
+          %span.description {{truncate anime.synopsis 400}}
           %span.description-link
             %a(style="color: #fd864b" href="{{anime.url}}") [Read More]
 
