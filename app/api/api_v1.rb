@@ -206,10 +206,18 @@ class API_v1 < Grape::API
     desc "Return an anime"
     params do
       requires :id, type: String, desc: "anime ID"
+      optional :title_language_preference, type: String
     end
     get ':id' do
       anime = Anime.find(params[:id])
-      {title: anime.canonical_title, alternate_title: anime.alternate_title, url: anime_url(anime)}
+      
+      title_language_preference = params[:title_language_preference]
+      if title_language_preference.nil? and current_user
+        title_language_preference = current_user.title_language_preference
+      end
+      title_language_preference ||= "canonical"
+
+      present anime, with: Entities::Anime, title_language_preference: title_language_preference
     end
     
     desc "Returns similar anime."
