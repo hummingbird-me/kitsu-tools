@@ -20,9 +20,10 @@ class User < ActiveRecord::Base
   end
   
   # Include devise modules. Others available are:
-  # :token_authenticatable, :lockable, :timeoutable
+  # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
-         :trackable, :validatable, :omniauthable, :confirmable, :async
+         :trackable, :validatable, :omniauthable, :confirmable, :async,
+         :token_authenticatable
 
   # Remember users by default.
   def remember_me; true; end

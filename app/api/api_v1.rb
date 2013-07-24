@@ -23,10 +23,25 @@ class API_v1 < Grape::API
   helpers do
     def warden; env['warden']; end
     def current_user
-      warden.user
+      if params[:auth_token]
+        user = User.find_by_authentication_token params[:auth_token]
+        if user.nil?
+          error!("Invalid authentication token", 401)
+        end
+        user
+      else
+        warden.user
+      end
     end
     def user_signed_in?
       not current_user.nil?
+    end
+    def authenticate_user!
+      if user_signed_in?
+        return true
+      else
+        error!("401 Unauthenticated", 401)
+      end
     end
     def current_ability
       @current_ability ||= Ability.new(current_user)
@@ -35,6 +50,26 @@ class API_v1 < Grape::API
 
   
   resource :users do
+    desc "Return authentication code"
+    params do
+      optional :username, type: String
+      optional :email, type: String
+      requires :password, type: String
+    end
+    post '/authenticate' do
+      @user = nil
+      if params[:username]
+        @user = User.find_by_name params[:username]
+      elsif params[:email]
+        @user = User.find_by_email params[:email]
+      end
+      if @user.nil? or (not @user.valid_password? params[:password])
+        error!("Invalid credentials", 401)
+      end
+      @user.reset_authentication_token! if @user.authentication_token.nil?
+      return @user.authentication_token
+    end
+    
     desc "Return the entries in a user's library under a specific status.", {
       object_fields: Entities::Watchlist.documentation
     }
@@ -102,7 +137,7 @@ class API_v1 < Grape::API
       requires :anime_slug, type: String
     end
     post ':anime_slug' do
-      return false unless user_signed_in?
+      authenticate_user!
 
       @anime = Anime.find(params["anime_slug"])
       @watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(@anime.id, current_user.id)

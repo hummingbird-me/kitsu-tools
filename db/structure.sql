@@ -1298,7 +1298,8 @@ CREATE TABLE users (
     neon_alley_integration boolean DEFAULT false,
     ninja_banned boolean DEFAULT false,
     last_library_update timestamp without time zone,
-    last_recommendations_update timestamp without time zone
+    last_recommendations_update timestamp without time zone,
+    authentication_token character varying(255)
 );
 
 
@@ -2167,6 +2168,13 @@ CREATE INDEX index_substories_on_user_id ON substories USING btree (user_id);
 
 
 --
+-- Name: index_users_on_authentication_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_authentication_token ON users USING btree (authentication_token);
+
+
+--
 -- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2665,3 +2673,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130723155459');
 INSERT INTO schema_migrations (version) VALUES ('20130723163451');
 
 INSERT INTO schema_migrations (version) VALUES ('20130723174945');
+
+INSERT INTO schema_migrations (version) VALUES ('20130723201948');
