@@ -9,7 +9,7 @@ if ENV['RAILS_ENV'] == 'production'
   pidfile '/u/apps/hummingbird/shared/pids/puma.pid'
   state_path '/u/apps/hummingbird/shared/puma.state'
   stdout_redirect '/u/apps/hummingbird/shared/log/puma.stdout.log'
-  stderr_redirect '/u/apps/hummingbird/shared/log/puma.stderr.log'
+  #stderr_redirect '/u/apps/hummingbird/shared/log/puma.stderr.log'
   
   ENV["BUNDLE_GEMFILE"] ="/u/apps/hummingbird/current/Gemfile"
   

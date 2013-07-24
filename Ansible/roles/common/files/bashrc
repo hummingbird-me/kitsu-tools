@@ -105,3 +105,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+PUMA_WORKERS=4
+RAILS_ENV=production

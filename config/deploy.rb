@@ -33,9 +33,9 @@ namespace :deploy do
     run "#{sudo} monit -g hummingbird stop"
   end
   
-  desc "reload unicorn"
-  task :reload_unicorn, roles: :web do
-    run "kill -USR2 `cat /u/apps/hummingbird/shared/pids/unicorn.pid`"
+  desc "reload puma"
+  task :reload_puma, roles: :web do
+    run "kill -USR1 `cat /u/apps/hummingbird/shared/pids/puma.pid`"
   end
 
   desc "stop monit from monitoring sidekiq"
@@ -83,7 +83,7 @@ after "deploy:update_code", "deploy:copy_old_sitemap"
 
 before "deploy", "deploy:sudo_prompt"
 
-after "deploy:restart", "deploy:reload_unicorn"
+after "deploy:restart", "deploy:reload_puma"
 
 before "deploy:restart", "deploy:migrate"
 
