@@ -97,7 +97,10 @@ class MalImport
   end
   
   def self.series_metadata(id)
-    MalImport.create_series_castings(id)
+    begin
+      MalImport.create_series_castings(id)
+    rescue
+    end
     
     noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}").read
     meta = {}
