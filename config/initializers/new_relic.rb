@@ -1,6 +1,6 @@
 GC::Profiler.enable
 
-if defined?(NewRelic) && defined?(Puma)
+if Rails.env.production?
   NewRelic::Agent.manual_start
   NewRelic::Agent.after_fork force_reconnect: true
 end
