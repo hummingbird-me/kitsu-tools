@@ -23,8 +23,8 @@
   action: service name=monit state=reloaded
   only_if: ${unicorn_monit_config.changed}
 
-- name: Start Unicorn with Monit
-  action: monit name=unicorn state=started
+- name: Start puma with Monit
+  action: monit name=puma state=started
 
 - name: Copy main nginx config
   copy: src=nginx.conf dest=/etc/nginx/nginx.conf

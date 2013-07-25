@@ -7,8 +7,8 @@
 - name: Create .ssh directory
   file: path=/home/vikhyat/.ssh state=directory owner=vikhyat
     
-- name: Copy over .bashrc 
-  copy: dest=/home/vikhyat/.bashrc src=bashrc
+- name: Copy over env 
+  copy: dest=/etc/profile.d/env src=env.sh owner=root group=root mode=0755
 
 - name: Set timezone to UTC
   lineinfile: dest=/etc/timezone state=present insertbefore=BOF

@@ -1,0 +1,2 @@
+export PUMA_WORKERS=4
+export RAILS_ENV=production
