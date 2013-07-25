@@ -22,7 +22,6 @@ else
 end
 
 preload_app!
-drain_on_shutdown
 
 on_restart do
   if defined?(ActiveRecord::Base)
