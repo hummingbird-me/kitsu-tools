@@ -9,7 +9,8 @@ module Entities
     expose :slug
     expose :status
     expose(:url) {|anime, options| anime_path(anime) }
-    expose(:title) {|anime, options| anime.canonical_title(options[:title_language_preference]) }
+    expose(:title) {|anime, options| anime.canonical_title }
+    expose(:alternate_title) {|anime, options| anime.alternate_title }
     expose :episode_count
     expose(:cover_image) {|anime, options| anime.cover_image.url(:thumb) }
     expose(:synopsis) {|anime, options| anime.synopsis }
