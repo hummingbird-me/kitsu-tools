@@ -39,5 +39,6 @@ on_worker_boot do
   $redis = Redis.connect
 
   require 'newrelic_rpm'
+  require 'newrelic-grape'
   NewRelic::Agent.manual_start
 end
