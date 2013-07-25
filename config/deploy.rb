@@ -14,8 +14,7 @@ default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
 server "sheska", :app, :web, :db, primary: true
-
-#role :db,  "your slave db-server here"
+# role :db, "slave db server"
 
 namespace :deploy do
   desc "stub task to get cap to prompt for the root password"
@@ -33,9 +32,9 @@ namespace :deploy do
     run "#{sudo} monit -g hummingbird stop"
   end
   
-  desc "reload puma"
-  task :reload_puma, roles: :web do
-    run "kill -USR1 `cat /u/apps/hummingbird/shared/pids/puma.pid`"
+  desc "restart puma"
+  task :restart_puma, roles: :web do
+    run "kill -USR2 `cat /u/apps/hummingbird/shared/pids/puma.pid`"
   end
 
   desc "stop monit from monitoring sidekiq"
@@ -83,7 +82,7 @@ after "deploy:update_code", "deploy:copy_old_sitemap"
 
 before "deploy", "deploy:sudo_prompt"
 
-after "deploy:restart", "deploy:reload_puma"
+after "deploy:restart", "deploy:restart_puma"
 
 before "deploy:restart", "deploy:migrate"
 

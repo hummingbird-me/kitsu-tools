@@ -19,3 +19,21 @@ else
   
   bind 'tcp://0.0.0.0:3000'
 end
+
+preload_app!
+
+on_restart do
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.connection.disconnect!
+  end
+  
+  $redis.quit
+end
+
+on_worker_boot do
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.establish_connection
+  end
+  
+  $redis = Redis.connect
+end
