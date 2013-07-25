@@ -9,8 +9,8 @@ module Entities
     expose :slug
     expose :status
     expose(:url) {|anime, options| anime_path(anime) }
-    expose(:title) {|anime, options| anime.canonical_title }
-    expose(:alternate_title) {|anime, options| (anime.alternate_title and anime.alternate_title.length > 0) ? anime.alternate_title : nil }
+    expose(:title) {|anime, options| anime.canonical_title(options[:title_language_preference]) }
+    expose(:alternate_title) {|anime, options| (anime.alternate_title(options[:title_language_preference]) and anime.alternate_title(options[:title_language_preference]).length > 0) ? anime.alternate_title(options[:title_language_preference]) : nil }
     expose :episode_count
     expose(:cover_image) {|anime, options| anime.cover_image.url(:thumb) }
     expose(:synopsis) {|anime, options| anime.synopsis }
