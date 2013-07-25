@@ -138,7 +138,7 @@ class AnimeController < ApplicationController
         ranges = @years.map {|x| filter_year_ranges[x] }.compact
         query = ranges.inject(arel) do |sum, range|
           condition = arel[:started_airing_date].in(range).or(arel[:finished_airing_date].in(range))
-          sum.class == Arel::Table ? condition : sim.or(condition)
+          sum.class == Arel::Table ? condition : sum.or(condition)
         end
         if @years.include? "Upcoming"
           condition = arel[:status].eq("Not Yet Aired")
