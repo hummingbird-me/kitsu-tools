@@ -1,0 +1,3 @@
+check process puma with pidfile /u/apps/hummingbird/shared/pids/puma.pid
+  start program = "/bin/su - vikhyat -c 'cd /u/apps/hummingbird/current/ && bundle exec puma -C config/puma.rb'"
+  stop program = "/bin/su - vikhyat -c 'kill `cat /u/apps/hummingbird/shared/pids/puma.pid`'"
