@@ -16,15 +16,15 @@
   action: apt pkg=imagemagick state=present
 
 - name: Add Puma to Monit
-  action: copy src=puma.monit dest=/etc/monit/conf.d/puma.monit
+  action: copy src=unicorn.monit dest=/etc/monit/conf.d/unicorn.monit
   register: unicorn_monit_config
 
 - name: Reload Monit
   action: service name=monit state=reloaded
   only_if: ${unicorn_monit_config.changed}
 
-- name: Start puma with Monit
-  action: monit name=puma state=started
+- name: Start unicorn with Monit
+  action: monit name=unicorn state=started
 
 - name: Copy main nginx config
   copy: src=nginx.conf dest=/etc/nginx/nginx.conf

@@ -100,8 +100,8 @@ gem "rails_admin"
 # For voting on stuff.
 gem "activerecord-reputation-system", require: 'reputation_system'
 
-# Use puma as the app server
-gem 'puma'
+# Use Unicorn as the app server
+gem 'unicorn'
 
 # Needed for MAL import.
 gem 'nokogiri', require: false
