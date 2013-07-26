@@ -1,7 +1,22 @@
 @import "compass/css3";
 @import "compass/utilities";
 .hummingbird-header-1 {
-
+  .hummingbird-header-actual {
+    -webkit-transform: translate(0,0);
+    -moz-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
+    -webkit-transition: -webkit-transform .5s .5s,background .5s,color .1s;
+    -moz-transition: -moz-transform .5s .5s,background .5s,color .1s;
+    -o-transition: -o-transform .5s .5s,background .5s,color .1s;
+    transition: transform .5s .5s,background .5s,color .1s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
   .nav-attached {
     position: absolute;
     top: 0px;
@@ -24,11 +39,11 @@
   // Apply to hide navbar
   .nav-hidden {
     opacity: 0;
-    -webkit-transform: translate(0,-60px);
-    -moz-transform: translate(0,-60px);
-    -ms-transform: translate(0,-60px);
-    -o-transform: translate(0,-60px);
-    transform: translate(0,-60px);
+    -webkit-transform: translate(0,-70px);
+    -moz-transform: translate(0,-70px);
+    -ms-transform: translate(0,-70px);
+    -o-transform: translate(0,-70px);
+    transform: translate(0,-70px);
     -webkit-transition: -webkit-transform .2s,background .3s,color .3s,opacity 0 .3s;
     -moz-transition: -moz-transform .2s,background .3s,color .3s,opacity 0 .3s;
     -o-transition: -o-transform .2s,background .3s,color .3s,opacity 0 .3s;

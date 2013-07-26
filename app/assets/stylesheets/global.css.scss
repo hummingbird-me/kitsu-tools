@@ -143,6 +143,9 @@ body {
 	background: #eee;
   overflow-x: hidden;  // disable horizontal scrolling on mobile.
   padding-top: 70px;
+  &.guest-padding {
+    padding-top: 110px;
+  }
   [role="complementary"] {
     width: 25%;
     .three, .row .three {
