@@ -26,6 +26,7 @@
 //= require typeahead.js
 //= require offcanvas.js
 //= require jquery.easy-pie-chart.js
+//= require jquery.ba-throttle-debounce.js
 //
 //= require vendor/custom.modernizr
 //
@@ -55,6 +56,7 @@
 //= require login-signup.js
 //= require search.js.coffee
 //= require redactor.js.coffee
+//= require header.js.coffee
 //
 //= require activity-feed.js.coffee
 
