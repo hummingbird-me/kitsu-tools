@@ -37,8 +37,7 @@ module Entities
     expose :rewatched_times
     expose :notes
     expose(:notes_present) {|watchlist, options| watchlist.notes and watchlist.notes.strip.length > 0 }
-    expose :status
-    expose(:status_parameterized) {|watchlist, options| watchlist.status.parameterize }
+    expose(:status) {|watchlist, options| watchlist.status.parameterize }
     expose(:id) {|watchlist, options| Digest::MD5.hexdigest("^_^" + watchlist.id.to_s) }
     expose :private
 

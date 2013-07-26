@@ -89,7 +89,7 @@ renderProgress = (element) ->
       dropdownItem.find("a").html statusHumanizer[statusParam]
       dropdownItem.click ->
         $.post "/api/v1/libraries/" + anime, {status: statusParam}, (d) ->
-          element.attr "data-status", d.status_parameterized
+          element.attr "data-status", d.status
           initializeWatchlistStatusButton element
       element.find("ul").append dropdownItem
   # Add "Remove" item.

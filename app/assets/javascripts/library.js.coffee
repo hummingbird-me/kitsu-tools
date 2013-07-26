@@ -31,7 +31,7 @@ _.extend HB,
         if json.anime.episode_count == 0
           json.anime.episode_count = "?"
         json.formattedLastUpdateTime = moment(@get("last_watched")).format('MMMM Do YYYY')
-        if (json.status_parameterized == "currently-watching" or json.status_parameterized == "plan-to-watch") and (json.anime.status != "Finished Airing")
+        if (json.status == "currently-watching" or json.status == "plan-to-watch") and (json.anime.status != "Finished Airing")
           if json.anime.status == "Currently Airing"
             json.anime.status = "Airing"
           else if json.anime.status == "Not Yet Aired"
@@ -44,9 +44,9 @@ _.extend HB,
     # section.
     SectionCollection: Backbone.Collection.extend
       initialize: ->
-        @on "change:status_parameterized", (model, newStatus) ->
-          oldStatus = model.previous("status_parameterized")
-          newStatus = model.get("status_parameterized")
+        @on "change:status", (model, newStatus) ->
+          oldStatus = model.previous("status")
+          newStatus = model.get("status")
           HB.Library.Sections[oldStatus].entries.remove model
           HB.Library.Sections[newStatus].entries.add model
 
@@ -202,7 +202,7 @@ _.extend HB,
           
       showDropdown: ->
         unless @dropdownOpen
-          HB.Library.Sections[@model.get("status_parameterized")]
+          HB.Library.Sections[@model.get("status")]
           # TODO Close any other dropdown open in this section.
           @trigger("dropdownOpen")
           @$el.after @dropdownTemplate @model.decoratedJSON()
@@ -235,7 +235,7 @@ _.extend HB,
               model: @model
             @dropdown.find(".rating").replaceWith ratingView.render().el
             # Set status and privacy.
-            @dropdown.find("option[value=" + @model.get("status_parameterized") + "]").prop("selected", true)
+            @dropdown.find("option[value=" + @model.get("status") + "]").prop("selected", true)
             @dropdown.find("option[value=" + (if @model.get("private") then "private" else "public") + "]").prop("selected", true)
             # "Remove from Library"
             @dropdown.find(".remove-from-library").click ->
@@ -243,7 +243,7 @@ _.extend HB,
               $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
                 if d
                   that.hideDropdown()
-                  status = that.model.get("status_parameterized")
+                  status = that.model.get("status")
                   HB.Library.Sections[status].entries.remove that.model
             # Submit updates when needed.
             @dropdown.find("form.custom").submit -> that.submitDropdownForm()
