@@ -61,7 +61,7 @@
     / Async Adsense
     %script(async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
 
-  %body
+  %body{:class => ("guest-padding" unless user_signed_in?)}
     // Facebook Code
     #fb-root
     :javascript

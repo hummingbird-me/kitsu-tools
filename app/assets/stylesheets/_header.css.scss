@@ -1,21 +1,12 @@
 @import "compass/css3";
 @import "compass/utilities";
+@import "compass/css3/user-interface";
+
 .hummingbird-header-1 {
   .hummingbird-header-actual {
-    -webkit-transform: translate(0,0);
-    -moz-transform: translate(0,0);
-    -ms-transform: translate(0,0);
-    -o-transform: translate(0,0);
-    transform: translate(0,0);
-    -webkit-transition: -webkit-transform .5s .5s,background .5s,color .1s;
-    -moz-transition: -moz-transform .5s .5s,background .5s,color .1s;
-    -o-transition: -o-transform .5s .5s,background .5s,color .1s;
-    transition: transform .5s .5s,background .5s,color .1s;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
+    @include transform(translate(0,0));
+    @include transition(transform .5s);
+    @include user-select(none);
   }
   .nav-attached {
     position: absolute;
@@ -23,31 +14,17 @@
   }
 
   // Apply to show navbar
-  .nav-visibile {
+  .nav-visible {
     opacity: 1;
-    -webkit-transform: translate(0,0);
-    -moz-transform: translate(0,0);
-    -ms-transform: translate(0,0);
-    -o-transform: translate(0,0);
-    transform: translate(0,0);
-    -webkit-transition: -webkit-transform .2s,background .3s,color .3s;
-    -moz-transition: -moz-transform .2s,background .3s,color .3s;
-    -o-transition: -o-transform .2s,background .3s,color .3s;
-    transition: transform .2s,background .3s,color .3s;
+    @include transform(translate(0,0));
+    @include transition(transform .2s);
   }
 
   // Apply to hide navbar
   .nav-hidden {
     opacity: 0;
-    -webkit-transform: translate(0,-70px);
-    -moz-transform: translate(0,-70px);
-    -ms-transform: translate(0,-70px);
-    -o-transform: translate(0,-70px);
-    transform: translate(0,-70px);
-    -webkit-transition: -webkit-transform .2s,background .3s,color .3s,opacity 0 .3s;
-    -moz-transition: -moz-transform .2s,background .3s,color .3s,opacity 0 .3s;
-    -o-transition: -o-transform .2s,background .3s,color .3s,opacity 0 .3s;
-    transition: transform .2s,background .3s,color .3s,opacity 0 .3s;
+    @include transform(translate(0,-70px));
+    @include transition(transform .2s, opacity 0 .3s);
   }
 
   // set logo position and size in header
