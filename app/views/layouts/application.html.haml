@@ -1,6 +1,7 @@
 !!!
 %html
   %head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# hummingbird: http://ogp.me/ns/fb/hummingbird#")
+    = NewRelic::Agent.browser_timing_header rescue nil
     %title
       - if yield(:title).length > 0
         #{yield(:title)} | Hummingbird
@@ -93,3 +94,4 @@
             email: '#{j current_user.email}',
             username: '#{j current_user.name}'
           });
+    = NewRelic::Agent.browser_timing_footer rescue nil
