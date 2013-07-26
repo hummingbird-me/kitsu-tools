@@ -17,14 +17,14 @@
   .nav-visible {
     opacity: 1;
     @include transform(translate(0,0));
-    @include transition(transform .2s);
+    @include transition(transform .2s, opacity .3s);
   }
 
   // Apply to hide navbar
   .nav-hidden {
     opacity: 0;
     @include transform(translate(0,-70px));
-    @include transition(transform .2s, opacity 0 .3s);
+    @include transition(transform .2s, opacity .3s);
   }
 
   // set logo position and size in header
