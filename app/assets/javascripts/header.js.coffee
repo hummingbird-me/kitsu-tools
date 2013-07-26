@@ -30,7 +30,6 @@ _.extend HB,
 
     scrollHander: ->
       top = $(window).scrollTop()
-      direction = if top > @lastScroll then "down" else "up"
       amount = Math.abs(top - @lastScroll)
 
       if top > @detachPoint
@@ -40,16 +39,16 @@ _.extend HB,
         @attach()
 
       if top > -1 and amount > @hideShowOffset
-        if direction == "down"
+        if top > @lastScroll
           @hide()
-        else if direction == "up"
+        else
           @show()
 
       @lastScroll = top
 
     init: ->
       @el = $(".hummingbird-header-actual")
-      $(window).bind "scroll", ($.throttle 300, $.proxy(@scrollHander, this))
+      $(window).bind "scroll", ($.throttle 250, $.proxy(@scrollHander, this))
 
 $ ->
   HB.header.init()
