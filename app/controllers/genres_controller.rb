@@ -13,7 +13,7 @@ class GenresController < ApplicationController
   end
 
   def show
-    redirect_to anime_index_path(:genres => params[:id])
+    redirect_to anime_index_path(:filter => true, :g => [params[:id]])
   end
 
   def add_to_favorites
