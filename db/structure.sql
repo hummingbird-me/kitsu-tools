@@ -150,7 +150,9 @@ CREATE TABLE beta_invites (
     token character varying(255),
     invited boolean DEFAULT false,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    subscribed boolean DEFAULT true,
+    encrypted_email character varying(255)
 );
 
 
@@ -2675,3 +2677,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130723163451');
 INSERT INTO schema_migrations (version) VALUES ('20130723174945');
 
 INSERT INTO schema_migrations (version) VALUES ('20130723201948');
+
+INSERT INTO schema_migrations (version) VALUES ('20130726020045');
+
+INSERT INTO schema_migrations (version) VALUES ('20130726021113');

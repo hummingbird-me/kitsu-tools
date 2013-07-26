@@ -26,6 +26,7 @@ Hummingbird::Application.routes.draw do
 
   match "/beta_invites/resend_invite" => "beta_invites#resend_invite", as: :resend_beta_invite
   match "/beta_invites/invite_code" => "beta_invites#invite_code"
+  match "/beta_invites/unsubscribe" => "beta_invites#unsubscribe"
   resources :beta_invites
 
   root :to => "home#index"
