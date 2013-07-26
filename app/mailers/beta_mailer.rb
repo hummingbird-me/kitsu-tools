@@ -11,6 +11,8 @@ class BetaMailer < ActionMailer::Base
   end
 
   def redesign_newsletter(beta_invite)
-    mail(to: beta_invite.email, subject: "What do you think of our redesign?")
+    @user = User.find_by_email beta_invite.email
+    subject = "What? Hummingbird is evolving!!"
+    mail(to: beta_invite.email, subject: subject)
   end
 end

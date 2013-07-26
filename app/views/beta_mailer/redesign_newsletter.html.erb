@@ -407,7 +407,7 @@
 
                                                               <!--==================== API Text Section ================-->
                                                                   <tr>                                                                                                           
-                                                                        <td valign="middle" align="center" height="10" bgcolor="#f8f8f8" class="sectionRegularInfoTextTD"><i>The Organization</i> has us cornered. We've developed the Hummingbird API but we need your help to create amazing apps. This is the choice of Steins;Gate. It's still a work in progress but it'll be ready for you within the next two weeks. You can of course start playing around with it now as well as commenting on functionality you'd like to see. We're counting on you, Lab Member XXXX.</td>
+                                                                    <td valign="middle" align="center" height="10" bgcolor="#f8f8f8" class="sectionRegularInfoTextTD"><i>The Organization</i> has us cornered. We've developed the Hummingbird API but we need your help to create amazing apps. This is the choice of Steins;Gate. It's still a work in progress but it'll be ready for you within the next two weeks. You can of course start playing around with it now as well as commenting on functionality you'd like to see. <% if @user %>We're counting on you, Lab Member <%= @user.id %>.<% end %></td>
                                                                   </tr>
                                                             </table>
                                                             <!--================== End of the section ================--> 
