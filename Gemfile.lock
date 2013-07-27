@@ -198,6 +198,7 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kgio (2.8.0)
     launchy (2.3.0)
       addressable (~> 2.3)
     letter_opener (1.1.2)
@@ -266,8 +267,6 @@ GEM
     polyglot (0.3.3)
     pr_geohash (1.0.0)
     progress (2.4.0)
-    puma (2.4.0)
-      rack (>= 1.1, < 2.0)
     pygments.rb (0.2.4)
       rubypython (~> 0.5.3)
     rack (1.4.5)
@@ -318,6 +317,7 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
+    raindrops (0.11.0)
     rake (10.0.4)
     rdiscount (2.0.7.2)
     rdoc (3.12.2)
@@ -429,6 +429,10 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    unicorn (4.6.2)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     virtus (0.5.4)
       backports (~> 2.6.1)
       descendants_tracker (~> 0.0.1)
@@ -477,7 +481,6 @@ DEPENDENCIES
   peach
   pg
   pg_search!
-  puma
   rack-mini-profiler
   rails (= 3.2.13)
   rails_admin
@@ -502,4 +505,5 @@ DEPENDENCIES
   tarantula
   therubyracer
   uglifier (>= 1.0.3)
+  unicorn
   zurb-foundation (~> 4.0.0)

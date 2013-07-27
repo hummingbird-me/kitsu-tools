@@ -101,7 +101,7 @@ gem "rails_admin"
 gem "activerecord-reputation-system", require: 'reputation_system'
 
 # Use Puma as the app server
-gem 'puma'
+gem 'unicorn'
 
 # Needed for MAL import.
 gem 'nokogiri', require: false

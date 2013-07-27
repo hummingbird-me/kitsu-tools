@@ -1,4 +1,4 @@
-puma:     bundle exec puma -C config/puma.rb
+unicorn:  bundle exec unicorn_rails -c config/unicorn.conf.rb
 redis:    redis-server config/redis.conf
 sidekiq:  bundle exec sidekiq -q default -q mailer
 mongo:    mongod
