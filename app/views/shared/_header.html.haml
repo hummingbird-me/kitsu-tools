@@ -38,14 +38,9 @@
               %li.has-form
                 .row.collapse.header-search
                   .small-12.columns
-                    .hide-for-medium-down
-                      %form#live_search_form{:action => "/search", :autocomplete => "off"}
-                        %input.typeahead#nav_search_input(type="text" name="query"){:placeholder => "Search for Anime, Users or Forum Posts", :value => params[:query], :autocomplete => "off"}
-                        %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
-                    .show-for-medium-down
-                      %form#live_search_form{:action => "/search", :autocomplete => "off"}
-                        %input.typeahead#nav_search_input(type="text" name="query"){:placeholder => "Search...", :value => params[:query], :autocomplete => "off"}
-                        %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
+                    %form#live_search_form{:action => "/search", :autocomplete => "off"}
+                      %input.typeahead#nav_search_input(type="text" name="query"){:placeholder => "Search...", :value => params[:query], :autocomplete => "off"}
+                      %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
 
             .large-2.columns
               %li.divider.show-for-small
