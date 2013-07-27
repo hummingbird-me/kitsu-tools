@@ -58,7 +58,7 @@ class RecommendingWorker
     user_watchlists.each do |watchlist|
       similarities[watchlist.anime_id].each do |similar_id, similarity|
         # TODO: factor should probably take recency into account.
-        factor = similarity * (watchlist.rating || 3)
+        factor = similarity * ((watchlist.rating || 3) - 2.7)
 
         raw_recommendations[:general][similar_id] += factor
         if watchlist.status == "Currently Watching"
@@ -111,8 +111,11 @@ class RecommendingWorker
     recommendations[:general] = recommendations[:general][0...10] if recommendations[:general].length > 10
 
     # Get "by service" and "by genre" recommendations.
+    genre_ids = {}
     general.each do |sid|
+      genre_ids[sid] ||= anime[sid].genre_ids
       halt = true
+
       if recommendations[:by_service][:neon_alley].length < 10
         halt = false
         if Anime.neon_alley_ids.include? sid
@@ -123,7 +126,7 @@ class RecommendingWorker
       favorite_genres.each do |genre|
         if recommendations[:by_genre][genre.slug].length < 10
           halt = false
-          if anime[sid].genres.include?(genre) and genre.nsfw? or (genre.sfw? and anime[sid].sfw?)
+          if genre_ids[sid].include?(genre.id) and (genre.nsfw? or (genre.sfw? and anime[sid].sfw?))
             recommendations[:by_genre][genre.slug].push sid
           end
         end
