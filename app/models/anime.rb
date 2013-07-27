@@ -19,15 +19,15 @@ class Anime < ActiveRecord::Base
     :hash_secret => "Tsukiakari no Michishirube"
 
   has_many :quotes
-  has_many :castings
+  has_many :castings, dependent: :destroy
   has_many :reviews
-  has_many :episodes
+  has_many :episodes, dependent: :destroy
   has_many :gallery_images
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
   has_and_belongs_to_many :franchises
 
-  has_many :watchlists
+  has_many :watchlists, dependent: :destroy
 
   validates :title, :slug, :presence => true, :uniqueness => true
 
