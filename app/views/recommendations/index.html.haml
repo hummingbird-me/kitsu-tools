@@ -1,7 +1,12 @@
 .row
   .large-12.columns
     .large-9.columns.recs-left-side.no-padding-right
-      %h3.top-title= title 'Anime Recommendations'
+      %h3.top-title
+        = title 'Anime Recommendations'
+        .pull-right
+          %a.button.padded(href="/recommendations/force_update")
+            %i.icon-refresh
+            Refresh
       %hr.title-divider
 
       - unless current_user.recommendations_up_to_date

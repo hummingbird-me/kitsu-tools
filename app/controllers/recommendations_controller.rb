@@ -11,6 +11,12 @@ class RecommendationsController < ApplicationController
       RecommendingWorker.perform_async(current_user.id)
     end
   end
+
+  def force_update
+    current_user.update_column :recommendations_up_to_date, false
+    RecommendingWorker.perform_async current_user.id
+    redirect_to "/recommendations"
+  end
   
   def index
     @hide_cover_image = true
