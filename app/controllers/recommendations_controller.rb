@@ -55,7 +55,6 @@ class RecommendationsController < ApplicationController
       mixpanel.track "Recommendations: Not Interested", {email: current_user.email, anime: anime.slug} if Rails.env.production?
       current_user.update_column :last_library_update, Time.now
     end
-    update_recommendations_if_needed
     render :json => true
   end
 
@@ -65,7 +64,6 @@ class RecommendationsController < ApplicationController
     watchlist.status = "Plan to Watch"
     watchlist.save
     mixpanel.track "Recommendations: Plan to Watch", {email: current_user.email, anime: anime.slug} if Rails.env.production?
-    update_recommendations_if_needed
     render :json => true
   end
 end
