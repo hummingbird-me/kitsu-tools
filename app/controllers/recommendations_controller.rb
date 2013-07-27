@@ -26,9 +26,6 @@ class RecommendationsController < ApplicationController
     respond_to do |format|
       format.json { render :json => current_user.recommendations_up_to_date }
       format.html do
-        # Uncomment for synchronous recommendations.
-        # RecommendingWorker.new.perform(current_user.id)
-        
         # Load recommended anime.
         r = current_user.recommendation
         @status_categories = ["currently_watching", "plan_to_watch", "completed"]
