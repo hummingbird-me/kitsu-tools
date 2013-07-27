@@ -14,6 +14,7 @@ _.extend HB,
         @attached = false
 
     attach: ->
+      @show()
       unless @attached
         @el.addClass("nav-attached")
         @attached = true

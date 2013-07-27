@@ -1,5 +1,5 @@
 workers ENV['PUMA_WORKERS']
-threads 0, 16
+threads 8, 16
 
 if ENV['RAILS_ENV'] == 'production'
   environment 'production'
