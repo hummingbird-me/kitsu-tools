@@ -22,8 +22,8 @@
                 Popular
                 %i.icon-caret-down
                   
-            %li= link_to "Anticipated", anime_index_path(filter: true, s: "all", y: ["Upcoming"])
-            %li= link_to "Airing Soon", anime_index_path(filter: true, s: "oldest", y: ["Upcoming"])
+            %li= link_to "Anticipated", anime_filter_path(s: "all", y: ["Upcoming"])
+            %li= link_to "Airing Soon", anime_filter_path(s: "oldest", y: ["Upcoming"])
 
       .large-3.columns
         %a.button.padded.secondary(href="/random/anime")
@@ -100,20 +100,20 @@
         .row
           - Genre.default_filterable(current_user).each do |genre|
             .large-4.columns
-              = link_to genre.name, anime_index_path(filter: true, g: [genre]), class: 'filter-option'
+              = link_to genre.name, anime_filter_path(g: [genre]), class: 'filter-option'
 
     .popular-filter-popover
       .filter.popular-filter-popover-content
-        = link_to "All Time", anime_index_path(filter: true, s: "all"), class: 'filter-option'
-        = link_to "This Year", anime_index_path(filter: true, s: "year"), class: 'filter-option'
-        = link_to "This Month", anime_index_path(filter: true, s: "month"), class: 'filter-option'
-        = link_to "This Week", anime_index_path(filter: true, s: "week"), class: 'filter-option'
+        = link_to "All Time", anime_filter_path(s: "all"), class: 'filter-option'
+        = link_to "This Year", anime_filter_path(s: "year"), class: 'filter-option'
+        = link_to "This Month", anime_filter_path(s: "month"), class: 'filter-option'
+        = link_to "This Week", anime_filter_path(s: "week"), class: 'filter-option'
 
     .year-filter-popover
       .filter.year-filter-popover-content
-        = link_to "All", anime_index_path(filter: true, y: @filter_years), class: 'filter-option'
+        = link_to "All", anime_filter_path(y: @filter_years), class: 'filter-option'
         - @filter_years.each do |year|
-          = link_to year, anime_index_path(filter: true, y: [year]), class: 'filter-option'
+          = link_to year, anime_filter_path(y: [year]), class: 'filter-option'
 
 :coffee
   $("a.genre-filter").popover
