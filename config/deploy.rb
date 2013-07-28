@@ -34,7 +34,7 @@ namespace :deploy do
   
   desc "reload unicorn"
   task :reload_unicorn, roles: :web do
-    run "kill -USR1 `cat /u/apps/hummingbird/shared/pids/unicorn.pid`"
+    run "kill -USR2 `cat /u/apps/hummingbird/shared/pids/unicorn.pid`"
   end
 
   desc "stop monit from monitoring sidekiq"
