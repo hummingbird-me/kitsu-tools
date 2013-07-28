@@ -103,6 +103,12 @@
               %li.large-2.columns.single-wrapper
                 = link_to anime do
                   .popular-card.tip-top(data-tooltip){"title" => anime.canonical_title(current_user)}
+                    - if @library_entries[anime.id]
+                      .watchlist-status-icon
+                        - if @library_entries[anime.id].status == "Completed"
+                          %i.icon-circle
+                        - else
+                          %i.icon-adjust.icon-flip-horizontal
                     %p.wanna-watch
                     = image_tag anime.cover_image.url(:thumb), alt: anime.canonical_title
                     %p.title= anime.canonical_title(current_user)
