@@ -67,7 +67,7 @@ Hummingbird::Application.routes.draw do
   
   # Random anime
   match '/random/anime' => 'anime#random'
-  match '/anime/filter' => 'anime#filter', as: :anime_filter
+  match '/anime/filter(/:sort)' => 'anime#filter', as: :anime_filter
 
   resources :anime do
     post :get_episodes_from_thetvdb
