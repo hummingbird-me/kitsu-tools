@@ -18,13 +18,20 @@ _.extend HB,
         currentUser: true
 
       # Update the corresponding entry in the server.
-      # TODO: Things to do when the status is changed.
       update: (data) ->
         if currentUser
           data.anime_id = @get("anime").slug
           that = this
           $.post "/api/v1/libraries/" + data.anime_id, data, (d) ->
             that.set d
+
+      remove: ->
+        that = this
+        $.post "/watchlist/remove", {anime_id: @get("anime").slug}, (d) ->
+          if d
+            status = that.get("status")
+            that.set {status: null}
+            HB.Library.Sections[status].entries.remove that
             
       decoratedJSON: ->
         json = @toJSON()
@@ -45,15 +52,16 @@ _.extend HB,
     SectionCollection: Backbone.Collection.extend
       initialize: ->
         @on "change:status", (model, newStatus) ->
-          oldStatus = model.previous("status")
-          newStatus = model.get("status")
-          HB.Library.Sections[oldStatus].entries.remove model
-          HB.Library.Sections[newStatus].entries.add model
+          if newStatus
+            oldStatus = model.previous("status")
+            newStatus = model.get("status")
+            HB.Library.Sections[oldStatus].entries.remove model
+            HB.Library.Sections[newStatus].entries.add model
 
-          HB.statusBar.text 'Moved ' + model.get("anime").title + ' to your "' + HB.Library.statusParamToHuman[newStatus] + '" list.'
-          HB.statusBar.action "Undo", ->
-            model.update {status: oldStatus}
-          HB.statusBar.show()
+            HB.statusBar.text 'Moved ' + model.get("anime").title + ' to your "' + HB.Library.statusParamToHuman[newStatus] + '" list.'
+            HB.statusBar.action "Undo", ->
+              model.update {status: oldStatus}
+            HB.statusBar.show()
           
       sortByParameter: "lastWatchedDesc"
       setSortByParameter: (param) ->
@@ -175,6 +183,42 @@ _.extend HB,
         @$el.append "<span class='total-episodes'>" + episode_count + "</span>"
           
         return this
+
+    StatusChangeWidget: Backbone.View.extend
+      initialize: ->
+        _(this).bindAll 'change'
+        @model.bind 'change', @change
+        
+      change: ->
+        @render
+
+      render: ->
+        @$el.empty()
+        dropdownId = @model.get("anime").slug + "-status-dropdown"
+        @$el.append "<a class='button radius padded' href='javascript:void(0)' data-dropdown='" + dropdownId + "'></a>"
+        if @model.get("status")
+          @$el.find("a").html HB.Library.statusParamToHuman[@model.get("status")]
+        else
+          @$el.find("a").html "Add to Library"
+        # Dropdown
+        @$el.append "<ul class='f-dropdown status-button' id='" + dropdownId + "'></ul>"
+        that = this
+        _.each HB.Library.validStatuses, (statusParam) ->
+          if that.model.get("status") != statusParam
+            dropdownItem = $("<li><a href='javascript: void(0)'></a></li>")
+            dropdownItem.find("a").html HB.Library.statusParamToHuman[statusParam]
+            dropdownItem.click ->
+              that.model.update {status: statusParam}
+            that.$el.find("ul").append dropdownItem
+        # Remove link.
+        if @model.get("status")
+          dropdownItem = $("<li><a href='javascript: void(0)'></a></li>")
+          dropdownItem.find("a").html "Remove"
+          dropdownItem.click ->
+            that.model.remove()
+          @$el.find("ul").append dropdownItem
+
+        return this
     
     # Single entry view.
     EntryView: Backbone.View.extend
@@ -230,18 +274,10 @@ _.extend HB,
             # Rating.
             ratingView = new HB.Library.RatingView
               model: @model
+            statusChangeWidget = new HB.Library.StatusChangeWidget
+              model: @model
             @dropdown.find(".rating").replaceWith ratingView.render().el
-            # Set status and privacy.
-            @dropdown.find("option[value=" + @model.get("status") + "]").prop("selected", true)
-            @dropdown.find("option[value=" + (if @model.get("private") then "private" else "public") + "]").prop("selected", true)
-            # "Remove from Library"
-            @dropdown.find(".remove-from-library").click ->
-              that.dropdownLoading()
-              $.post "/watchlist/remove", {anime_id: that.model.get("anime").slug}, (d) ->
-                if d
-                  that.hideDropdown()
-                  status = that.model.get("status")
-                  HB.Library.Sections[status].entries.remove that.model
+            @dropdown.find(".status-change-widget").append statusChangeWidget.render().el
             # Submit updates when needed.
             @dropdown.find("form.custom").submit -> that.submitDropdownForm()
             @dropdown.find("form.custom").change -> that.submitDropdownForm()

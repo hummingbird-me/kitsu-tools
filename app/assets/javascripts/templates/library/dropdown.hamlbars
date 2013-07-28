@@ -21,15 +21,9 @@
       {{#currentUser}}
       .large-4.columns.action-area
         .opacity-wrapper
-          %form.custom
-            .large-12.columns.library-status
-              .large-3.columns.option-label
-                %span Status:
-              .large-9.columns.status-dropdown
-                %select.medium(name="status")
-                  - Watchlist.valid_statuses.each do |status|
-                    %option{:value => status.parameterize}= status
+          .status-change-widget
 
+          %form.custom
             .large-12.columns.episodes-watched
               .large-3.columns.option-label
                 %span Watched:
@@ -56,11 +50,6 @@
                   %option(value="public") Public
                   %option(value="private") Private
 
-          .large-12.columns.remove-from-library.text-center
-            %span
-              %i.icon-remove
-              %a.remove-from-library Remove From Library
-      
         // Spinner
         %span.updating-icon.hide
           %i.icon-spinner.icon-spin.updating-icon
