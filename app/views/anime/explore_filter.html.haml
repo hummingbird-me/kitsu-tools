@@ -13,18 +13,18 @@
 
             .large-12.columns
               .row.filter-section
-                %label.checkbox
+                %label
                   = radio_button_tag :s, "all", @sort == "all"
-                  All Time
-                %label.checkbox
+                  %span All Time
+                %label
                   = radio_button_tag :s, "year", @sort == "year", disabled: true
-                  This Year
-                %label.checkbox
+                  %span.disabled This Year
+                %label
                   = radio_button_tag :s, "month", @sort == "month", disabled: true
-                  This Month
-                %label.checkbox
+                  %span.disabled This Month
+                %label
                   = radio_button_tag :s, "week", @sort == "week", disabled: true
-                  This Week
+                  %span.disabled This Week
 
         .panel.rounded-panel
           .large-12.columns
@@ -33,12 +33,12 @@
             %hr.title-divider
             .large-12.columns
               .row.filter-section
-                %label.checkbox
+                %label
                   = radio_button_tag :s, "newest", @sort == "newest"
-                  Newest First
-                %label.checkbox
+                  %span Newest First
+                %label
                   = radio_button_tag :s, "oldest", @sort == "oldest"
-                  Oldest First
+                  %span Oldest First
      
         .panel.rounded-panel
           .large-12.columns
@@ -48,13 +48,13 @@
 
             .large-12.columns
               .row.filter-section
-                %label.checkbox
+                %label
                   %input.select-all(type="checkbox"){:checked => @filter_years.all? {|y| @years.include? y }}
-                  All
+                  %span All
                 - @filter_years.each do |year|
-                  %label.checkbox
+                  %label
                     = check_box_tag "y[]", year, @years.include?(year)
-                    = year
+                    %span= year
 
         .panel.rounded-panel
           .large-12.columns
@@ -67,22 +67,26 @@
                 .large-12.columns
                   %label.checkbox
                     %input.select-all(type="checkbox"){:checked => Genre.default_filterable(current_user).all? {|g| @genres.include? g }}
-                    All
+                    %span All
                 - Genre.default_filterable(current_user).each do |genre|
                   .large-6.columns
                     %label.checkbox
                       = check_box_tag "g[]", genre.slug, @genres.include?(genre)
-                      = genre.name
+                      %span.genre= genre.name
                       
                       
     :coffee
-      $("input.select-all").change ->
-        if $(this).prop "checked"
-          $(this).closest(".filter-section").find("input").prop "checked", true
-        else
-          $(this).closest(".filter-section").find("input").prop "checked", false
+      $("input").iCheck
+        checkboxClass: 'icheckbox_flat-orange'
+        radioClass: 'iradio_flat-orange'
 
-      $("input").change ->
+      $("input.select-all").on 'ifChecked', ->
+          $(this).closest(".filter-section").find("input").iCheck('check')
+
+      $("input.select-all").on 'ifUnchecked', ->
+          $(this).closest(".filter-section").find("input").iCheck('uncheck')
+
+      $("input").on 'ifChanged', ->
         if $(this).closest(".rounded-panel").find(".submit-button").is(":hidden")
           $(".rounded-panel .submit-button").fadeOut()
           $(this).closest(".rounded-panel").find(".submit-button").fadeIn()
