@@ -97,8 +97,8 @@ class AnimeController < ApplicationController
       @years = @filter_years
     end
     
-    if params[:s]
-      @sort = params[:s]
+    if params[:sort]
+      @sort = params[:sort]
     else
       @sort = "all"
     end

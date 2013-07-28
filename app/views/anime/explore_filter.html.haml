@@ -6,41 +6,6 @@
       = form_tag("/anime/filter", method: :get) do
         .panel.rounded-panel
           .large-12.columns
-            %h4.top-title.pull-left Popular
-            = submit_tag "Apply", class: "pull-right button submit-button"
-            %hr.title-divider
-
-            .large-12.columns
-              .row.filter-section
-                %label
-                  = radio_button_tag :s, "all", @sort == "all"
-                  %span All Time
-                %label
-                  = radio_button_tag :s, "year", @sort == "year", disabled: true
-                  %span.disabled This Year
-                %label
-                  = radio_button_tag :s, "month", @sort == "month", disabled: true
-                  %span.disabled This Month
-                %label
-                  = radio_button_tag :s, "week", @sort == "week", disabled: true
-                  %span.disabled This Week
-
-        .panel.rounded-panel
-          .large-12.columns
-            %h4.top-title.pull-left Airing Date
-            = submit_tag "Apply", class: "pull-right button submit-button"
-            %hr.title-divider
-            .large-12.columns
-              .row.filter-section
-                %label
-                  = radio_button_tag :s, "newest", @sort == "newest"
-                  %span Newest First
-                %label
-                  = radio_button_tag :s, "oldest", @sort == "oldest"
-                  %span Oldest First
-     
-        .panel.rounded-panel
-          .large-12.columns
             %h4.top-title.pull-left Year
             = submit_tag "Apply", class: "pull-right button submit-button"
             %hr.title-divider
@@ -94,7 +59,26 @@
     / Anime Listing.
     .large-9.columns.no-padding
       .large-12.columns
-        %h4.top-title Anime
+        %h4.top-title.pull-left Anime
+        / Sort options
+        %a.rounded-panel.sort-option.has-dropdown(data-dropdown="sort-option-dropdown" href="javascript: void(0)")
+          %i.icon-caret-down
+          - if @sort == "all"
+            Popular: All Time
+          - elsif @sort == "newest"
+            Newest
+          - elsif @sort == "oldest"
+            Oldest
+  
+        .f-dropdown.content.sort-option-dropdown(data-dropdown-content id="sort-option-dropdown")
+          %h4 Sort By Popularity
+          %ul
+            %li= link_to "All Time", anime_filter_path(params.merge(sort: "all"))
+          %h4 Sort By Airing Date
+          %ul
+            %li= link_to "Newest", anime_filter_path(params.merge(sort: "newest"))
+            %li= link_to "Oldest", anime_filter_path(params.merge(sort: "oldest"))
+
         %hr.title-divider
         .large-12.columns.no-padding.trending-panel
           %ul
