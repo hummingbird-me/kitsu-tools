@@ -179,6 +179,20 @@
     padding-top: 30px;
   }
   .filter-sidebar {
+    label span {
+      top: -4px;
+      position: relative;
+      padding-left: 8px;
+      font-size: 1.24em;
+      &.disabled {
+        color: #999;
+      }
+      &.genre {
+        font-size: 0.9em;
+        padding-left: 4px;
+        top: -6px;
+      }
+    }
     .rounded-panel {
       padding-bottom: 10px;
     }
