@@ -90,7 +90,14 @@ class User < ActiveRecord::Base
   # For now, this will just check email addresses. In production, this should
   # check the user's ID as well.
   def admin?
-    (email == "c@vikhyat.net") or (email == "josh@hummingbird.ly") or (email == "harlequinmarie@gmail.com") or (email == "ryatt.tesla@gmail.com") or (email == "dev.colinl@gmail.com")
+    ["c@vikhyat.net", # Vik
+     "josh@hummingbird.ly", # Josh
+     "harlequinmarie@gmail.com", # Ashley
+     "ryatt.tesla@gmail.com", # Ryatt
+     "dev.colinl@gmail.com", # Psy
+     "lazypanda39@gmail.com", # Cai
+     "windowjunk@yahoo.com" # Tav
+    ].include? email
   end
 
   # Public: Find a user corresponding to a Facebook account.

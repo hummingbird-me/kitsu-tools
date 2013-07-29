@@ -439,7 +439,7 @@ GEM
     warden (1.2.1)
       rack (>= 1.0)
     workflow (0.8.0)
-    zurb-foundation (4.3.1)
+    zurb-foundation (4.0.9)
       sass (>= 3.2.0)
 
 PLATFORMS
@@ -506,4 +506,4 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   unicorn
-  zurb-foundation (~> 4.3.0)
+  zurb-foundation (~> 4.0.0)
