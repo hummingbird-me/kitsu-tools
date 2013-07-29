@@ -4,7 +4,7 @@
   .small-6.large-2.columns
     %p.option-title Anime Library
 
-  .small-12.large-9.columns.options
+  .small-12.large-10.columns.options
     %ul.status-tabs.inline-list
       %li.active#tab-all= link_to "All", "#all", onclick: "showRelevantSections('all')"
       - Watchlist.valid_statuses.each do |status|

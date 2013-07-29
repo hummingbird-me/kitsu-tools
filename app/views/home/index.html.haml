@@ -40,7 +40,7 @@
               .large-12.columns.meta-wrapper
                 .meta-data.large-12.columns.no-padding-left
                   %p 
-                    %h5.anime-title= anime_link watchlist.anime
+                    %h5.anime-title.truncate= anime_link watchlist.anime
                   .rating{:id => watchlist.anime.slug, :"data-rating" => (watchlist.rating || 0), :"data-anime-slug" => watchlist.anime.slug}
                   %hr
                   .large-6.columns.no-padding
