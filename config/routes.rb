@@ -20,7 +20,7 @@ Hummingbird::Application.routes.draw do
   match '/recommendations/force_update' => 'recommendations#force_update'
 
   # Chat
-  #match '/chat' => 'chat#index'
+  match '/chat' => 'chat#index'
   #match '/chat/ping' => 'chat#ping'
   #match '/chat/messages' => 'chat#messages'
   #match '/chat/new_message' => 'chat#new_message'
