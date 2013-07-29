@@ -14,15 +14,25 @@ Forem::ForumsController.class_eval do
   
   def index
     @forums = Forem::Forum.order(:name)
+
     if user_signed_in? and (current_user.ninja_banned? or current_user.admin?)
       @topics = Forem::Topic.by_most_recent_post.page(params[:page]).per(Forem.per_page)
     else
       @topics = Forem::Topic.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').page(params[:page]).per(Forem.per_page)
     end
+
+    # Don't show posts to the NSFW board on the homepage.
+    @topics = @topics.includes(:forum).where("forem_forums.name <> 'NSFW'")
+
     @last_post_and_count = last_post_and_count(@topics)
   end
   
   def show
+    if @forum.name == "NSFW" and (not can_view_nsfw_forum_content?) 
+      redirect_to "/community"
+      return
+    end
+      
     register_view
 
     @topics = if forem_admin_or_moderator?(@forum)

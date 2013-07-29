@@ -1,6 +1,3 @@
-// Required global settings and mixins for Foundation
-@import "foundation/foundation-global";
-
 // Settings file to override Foundation variables
 
 // You can find the variables for each component at the bottom of their
@@ -65,7 +62,7 @@ $secondary-color: #3498db;
 // Grid Variables
 //
 
-$row-width: emCalc(1140px);
+$row-width: 71.25em;
 // $column-gutter: 1.875em;
 // $total-columns: 12;
 
@@ -973,7 +970,7 @@ $switch-border-color: #d9d9d9;
 $topbar-bg: #fff;
 
 // Height and margin
-$topbar-height: 80px;
+$topbar-height: 70px;
 // $topbar-margin-bottom: emCalc(30px);
 
 // Control Input height for top bar
@@ -984,7 +981,7 @@ $topbar-height: 80px;
 // $topbar-title-font-size: emCalc(17px);
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: #8c8c8c;
+$topbar-link-color: #333;
 $topbar-link-weight: normal;
 // $topbar-link-font-size: emCalc(13px);
 

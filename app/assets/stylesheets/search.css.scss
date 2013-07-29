@@ -101,20 +101,27 @@
 .twitter-typeahead {
   position: relative;
   width: 100%;
-  min-width: 290px;
+  min-width: 410px;
   display: block;
-  @media (max-width: 1130px) {
-    min-width: 250px;
+  @media (max-width: 1140px) {
+    min-width: 360px;
   }
   @media (max-width: 1085px) {
+    min-width: 300px;
+  }
+  @media (max-width: 1030px) {
+    min-width: 240px;
+  }
+  @media (max-width: 960px) {
     min-width: 200px;
   }
+
   .tt-dropdown-menu {
     position: absolute;
     z-index: 100;
     left: 0px !important;
     width: 100% !important;
-    top: 66px !important;
+    top: 60px !important;
     display: block;
     right: auto;
   }

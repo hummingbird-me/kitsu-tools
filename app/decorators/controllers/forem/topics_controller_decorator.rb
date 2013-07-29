@@ -1,6 +1,13 @@
 Forem::TopicsController.class_eval do
   def show
+    @hide_footer_ad = true
+
     if find_topic
+      if @topic.forum.name == "NSFW" and (not can_view_nsfw_forum_content?) 
+        redirect_to "/community"
+        return
+      end
+
       register_view
 
       if user_signed_in? and (current_user.ninja_banned? or current_user.admin?)

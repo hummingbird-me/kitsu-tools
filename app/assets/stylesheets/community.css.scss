@@ -196,9 +196,17 @@
           border-top: 1px solid #eee;
           margin-top: 10px;
           padding-top: 7px;
+          font-family: inherit;
+          a {
+            color: #3f5765;;
+            &:hover {
+              color: #3f5765;
+            }
+          }
         }
-        .topic-body {
-          margin-bottom: 20px;
+        p {
+          font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+          font-size: 14px;
           a {
             color: #fc6419;
             &:hover {

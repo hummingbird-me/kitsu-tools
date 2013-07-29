@@ -2,7 +2,7 @@ class Watchlist < ActiveRecord::Base
   belongs_to :user
   belongs_to :anime
   attr_accessible :user, :anime, :status, :episodes_watched, 
-    :updated_at, :last_watched, :imported, :rating
+    :updated_at, :last_watched, :imported, :rating, :user_id, :anime_id
 
   has_many :stories, dependent: :destroy
 
@@ -32,11 +32,11 @@ class Watchlist < ActiveRecord::Base
   validates :status, inclusion: { in: Watchlist.valid_statuses }
 
   def positive?
-    rating && rating > 0
+    rating && rating > 3
   end
 
   def negative?
-    rating && rating < 0
+    rating && rating < 3
   end
 
   def meh?
@@ -63,12 +63,16 @@ class Watchlist < ActiveRecord::Base
     self.user.update_column :last_library_update, Time.now
   end
   
+  after_create do
+    TrendingAnime.vote self.anime_id
+  end
+  
   def update_episode_count(new_count)
     old_count = self.episodes_watched || 0
     self.episodes_watched = new_count || 0
 
-    # If the show is completed and we know its episode count, don't allow users to
-    # exceed the maximum number of episodes.
+    # If the show is completed and we know its episode count, don't allow users
+    # to exceed the maximum number of episodes.
     if self.anime.episode_count and (self.anime.episode_count > 0 and self.episodes_watched > self.anime.episode_count) and self.anime.status == "Finished Airing"
       self.episodes_watched = self.anime.episode_count
     end
@@ -77,7 +81,6 @@ class Watchlist < ActiveRecord::Base
     self.save
 
     self.user.update_life_spent_on_anime( (self.episodes_watched - old_count) * (self.anime.episode_length || 0) )
-    TrendingAnime.vote self.anime_id
   end
   
   def update_rewatched_times(new_times)
@@ -111,7 +114,7 @@ class Watchlist < ActiveRecord::Base
           star_rating: self.user.star_rating,
           simple: !self.user.star_rating
         },
-        value: self.rating ? self.rating+3 : "-",
+        value: self.rating ? self.rating : "-",
         positive: self.positive?,
         negative: self.negative?,
         neutral: self.meh?,

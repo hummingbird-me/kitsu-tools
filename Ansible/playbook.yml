@@ -47,8 +47,3 @@
   sudo: True
   roles:
   - solr
-
-- hosts: sidekiq
-  sudo: True
-  roles:
-  - sidekiq

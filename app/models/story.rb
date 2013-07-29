@@ -37,6 +37,6 @@ class Story < ActiveRecord::Base
     time ||= Time.now
     self.updated_at = time
     self.save
-    UserTimeline.notify_story_updated(self.user, time)
+    NewsFeed.notify_story_updated(self.user, time)
   end
 end

@@ -14,8 +14,7 @@ default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
 server "sheska", :app, :web, :db, primary: true
-
-#role :db,  "your slave db-server here"
+# role :db, "slave db server"
 
 namespace :deploy do
   desc "stub task to get cap to prompt for the root password"

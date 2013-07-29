@@ -47,3 +47,10 @@
                   .fb-like{"data-href" => "http://www.facebook.com/pages/Hummingbird/460188747373182?ref=hl", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
                 %li{:style => "background: none; width: 87px;"}
                   %a.twitter-share-button{"data-text" => "Hummingbird is a new and easy way to find anime titles you'll love. #anime", "data-url" => "http://www.hummingbird.ly", "data-via" => "Hummingbird_me", :href => "https://twitter.com/share"} Tweet
+
+
+- if user_signed_in? and [737, 172, 10217, 6772, 5822].include? current_user.id
+  :css
+    body {
+      cursor: url(http://i.imgur.com/CUjJQap.gif), progress;
+    }

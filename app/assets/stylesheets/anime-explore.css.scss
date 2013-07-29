@@ -1,0 +1,223 @@
+@import "compass/css3";
+
+.anime-explore {
+  padding-top: 40px;
+  .filter {
+    &.genre-filter-popover-content {
+      width: 360px;
+    }
+    &.popular-filter-popover-content, &.year-filter-popover-content {
+      width: 100px;
+    }
+    .filter-option {
+      display: block;
+      text-align: center;
+      padding: 0;
+      margin-top: 6px;
+      @include border-radius(4px);
+      &:hover {
+        background-color: darken(#fff, 4%);
+      }
+    }
+  }
+  .rounded-panel .submit-button {
+    margin: 8px 0;
+    padding: 3px 10px;
+    display: none;
+    font-size: 0.9em;
+  }
+  label {
+    font-size: 16px;
+  }
+  .top-title {
+    margin-top: 0px; 
+  }
+  .browse-label {
+    display: inline-block;
+    float: left;
+    width: 120px;
+    margin-top: 7px;
+  }
+  .explore-filter {
+    display: inline-block;
+    overflow: visible;
+    li {
+      border-right: 1px solid #ebeff2;
+      font-size: 16px;
+      a {
+        color: #333;
+        padding-bottom: 5px;
+        padding-right: 15px;
+        padding-top: 5px;
+        &:hover {
+          color: #fd864b;
+        }
+      }
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+  .trending-panel {
+    margin-bottom: 15px;
+  }
+  .single-wrapper {
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 15px;
+    .popular-card {
+      background: #fff;
+      @include border-bottom-radius(5px);
+      @include border-top-radius(5px);
+      @include box-shadow(#e3e4e6 0px 2px 0px);
+      img {
+        @include border-top-radius(5px);
+      }
+      .title {
+        margin-top: -5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        font-size: 14px;
+        padding-right: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 10px;
+        white-space: nowrap;
+        color: #333;
+      }
+      .watchlist-status-icon {
+        position: absolute;
+        right: 0;
+        top: -10px;
+        @include text-shadow(0 1px 2px #e3e4e6);
+      }
+    }
+  }
+  .recent-panel {
+    margin-bottom: 10px;
+    .recently-reviewed {
+      .recent-review {
+        padding-left: 5px;
+        padding-right: 5px;
+        img {
+          @include border-radius(3px);
+        }
+      }
+    }
+  }
+
+  .popular-reviews {
+    h4 {
+      margin-top: 10px;
+    }
+    h5 {
+      margin-top: 0px;
+    }
+    p {
+      font-size: 16px;
+      margin-bottom: 0px;
+    }
+    .review-left-wrapper {
+      margin-bottom: 10px;
+      border-right: 1px solid #eee;
+    }
+  }
+
+  .reviews-footer {
+    margin-bottom: 10px !important; 
+  }
+
+  .rounded-panel {
+    h4 {
+      margin-top: 10px;
+    }
+    hr {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .explore-sidebar {
+    padding-left: 5px;
+  }
+
+  .forum-block {
+    background: #fff;
+    .block-title {
+      h4 {
+        margin-bottom: 5px;
+      }
+    }
+
+    .block-link {
+      padding-top: 17px;
+    }
+
+    hr {
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+    ul {
+      list-style: none;
+      .topic-row {
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+        .forum-title {
+          font-size: 15px;
+          a {
+            color: #717171;
+            &:hover {
+              color: #fd7532;
+            }
+          }
+        }
+        .forum-time {
+          font-size: 11px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+  .side-advert {
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }
+  .filter-sidebar {
+    label span {
+      top: -3px;
+      position: relative;
+      padding-left: 8px;
+      font-size: 1.16em;
+      &.disabled {
+        color: #999;
+      }
+      &.genre {
+        font-size: 0.8em;
+        padding-left: 2px;
+        top: -5px;
+      }
+    }
+    .rounded-panel {
+      padding-bottom: 10px;
+    }
+  }
+  .sort-option {
+    color: #000;
+    padding: 4px 12px;
+    width: 200px;
+    float: right;
+    i {
+      margin-right: 10px;
+      color: #999;
+    }
+  }
+  .sort-option-dropdown {
+    h4 {
+      color: #9a9a9a;
+      text-transform: uppercase;
+      font-size: 0.8em;
+    }
+  }
+}

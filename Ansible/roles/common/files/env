@@ -1,0 +1,2 @@
+export UNICORN_PROCESSES=4
+export RAILS_ENV=production

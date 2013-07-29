@@ -26,10 +26,14 @@
       
   .large-1.columns.comment-count
     %p
-      - if topic.locked?
-        %i.icon.icon-lock
+      - if topic.pinned?
+        %i.icon-pushpin
+      - elsif topic.locked?
+        %i.icon-lock
       - else
         %i.icon-comments
+      
+      - unless topic.locked?
         = @last_post_and_count[topic.id][1] - 1
 
 /<tr class="topic <%= cycle('odd', 'even') %> <%= topic.locked? ? 'locked' : 'unlocked' %>">

@@ -17,15 +17,17 @@ Hummingbird::Application.routes.draw do
   match '/recommendations' => 'recommendations#index'
   match '/recommendations/not_interested' => 'recommendations#not_interested'
   match '/recommendations/plan_to_watch' => 'recommendations#plan_to_watch'
+  match '/recommendations/force_update' => 'recommendations#force_update'
 
   # Chat
-  match '/chat' => 'chat#index'
-  match '/chat/ping' => 'chat#ping'
-  match '/chat/messages' => 'chat#messages'
-  match '/chat/new_message' => 'chat#new_message'
+  #match '/chat' => 'chat#index'
+  #match '/chat/ping' => 'chat#ping'
+  #match '/chat/messages' => 'chat#messages'
+  #match '/chat/new_message' => 'chat#new_message'
 
   match "/beta_invites/resend_invite" => "beta_invites#resend_invite", as: :resend_beta_invite
   match "/beta_invites/invite_code" => "beta_invites#invite_code"
+  match "/beta_invites/unsubscribe" => "beta_invites#unsubscribe"
   resources :beta_invites
 
   root :to => "home#index"
@@ -62,6 +64,10 @@ Hummingbird::Application.routes.draw do
   match '/imports/apply'           => 'imports#apply', as: :review_apply
   match '/imports/cancel'          => 'imports#cancel', as: :review_cancel
   match '/imports/status'          => 'imports#status'
+  
+  # Random anime
+  match '/random/anime' => 'anime#random'
+  match '/anime/filter(/:sort)' => 'anime#filter', as: :anime_filter
 
   resources :anime do
     post :get_episodes_from_thetvdb
@@ -80,10 +86,8 @@ Hummingbird::Application.routes.draw do
       }
     end
   end
-  match '/reviews' => 'reviews#full_index'
 
-  # Personalize Filters
-  match '/anime/filter/:filter(/:page)' => 'anime#index', :as => :filtered_listing
+  match '/reviews' => 'reviews#full_index'
 
   resources :genres do
     post :add_to_favorites

@@ -150,7 +150,9 @@ CREATE TABLE beta_invites (
     token character varying(255),
     invited boolean DEFAULT false,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    subscribed boolean DEFAULT true,
+    encrypted_email character varying(255)
 );
 
 
@@ -364,7 +366,8 @@ CREATE TABLE forem_forums (
     description text,
     category_id integer,
     views_count integer DEFAULT 0,
-    slug character varying(255)
+    slug character varying(255),
+    sort_order integer
 );
 
 
@@ -1004,7 +1007,8 @@ CREATE TABLE reviews (
     rating_sound integer,
     rating_character integer,
     rating_enjoyment integer,
-    summary character varying(255)
+    summary character varying(255),
+    wilson_score double precision DEFAULT 0.0
 );
 
 
@@ -1296,7 +1300,8 @@ CREATE TABLE users (
     neon_alley_integration boolean DEFAULT false,
     ninja_banned boolean DEFAULT false,
     last_library_update timestamp without time zone,
-    last_recommendations_update timestamp without time zone
+    last_recommendations_update timestamp without time zone,
+    authentication_token character varying(255)
 );
 
 
@@ -1331,7 +1336,7 @@ CREATE TABLE watchlists (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     episodes_watched integer DEFAULT 0,
-    rating integer,
+    rating numeric(2,1),
     last_watched timestamp without time zone,
     imported boolean,
     private boolean DEFAULT false,
@@ -2165,10 +2170,24 @@ CREATE INDEX index_substories_on_user_id ON substories USING btree (user_id);
 
 
 --
+-- Name: index_users_on_authentication_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_authentication_token ON users USING btree (authentication_token);
+
+
+--
 -- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (confirmation_token);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
@@ -2638,3 +2657,27 @@ INSERT INTO schema_migrations (version) VALUES ('20130712003821');
 INSERT INTO schema_migrations (version) VALUES ('20130713053828');
 
 INSERT INTO schema_migrations (version) VALUES ('20130715115258');
+
+INSERT INTO schema_migrations (version) VALUES ('20130717093608');
+
+INSERT INTO schema_migrations (version) VALUES ('20130717124249');
+
+INSERT INTO schema_migrations (version) VALUES ('20130718062408');
+
+INSERT INTO schema_migrations (version) VALUES ('20130718171707');
+
+INSERT INTO schema_migrations (version) VALUES ('20130722054613');
+
+INSERT INTO schema_migrations (version) VALUES ('20130722113657');
+
+INSERT INTO schema_migrations (version) VALUES ('20130723155459');
+
+INSERT INTO schema_migrations (version) VALUES ('20130723163451');
+
+INSERT INTO schema_migrations (version) VALUES ('20130723174945');
+
+INSERT INTO schema_migrations (version) VALUES ('20130723201948');
+
+INSERT INTO schema_migrations (version) VALUES ('20130726020045');
+
+INSERT INTO schema_migrations (version) VALUES ('20130726021113');

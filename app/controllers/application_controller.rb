@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :fuck_off_lisa, :user_last_seen
+  before_filter :admin_check, :user_last_seen
   
-  def fuck_off_lisa
-    if user_signed_in? and current_user.id == 951
-      response.headers["X-Accel-Limit-Rate"] = "300"
+  def admin_check
+    if user_signed_in? and current_user.admin?
+      Rack::MiniProfiler.authorize_request
     end
   end
   
@@ -33,4 +33,10 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     request.referrer
   end
+
+  # Can the user view NSFW posts in the forum?
+  def can_view_nsfw_forum_content?
+    user_signed_in? and ((not current_user.sfw_filter) or current_user.admin?)
+  end
+  helper_method :can_view_nsfw_forum_content?
 end

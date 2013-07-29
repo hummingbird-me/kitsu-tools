@@ -1,25 +1,66 @@
 @import "compass/css3";
 @import "compass/utilities";
+@import "compass/css3/user-interface";
+
 .hummingbird-header-1 {
+  .hummingbird-header-actual {
+    @include transform(translate(0,0));
+    @include transition(transform .5s);
+    @include user-select(none);
+  }
+  .nav-attached {
+    position: absolute;
+    top: 0px;
+  }
+
+  // Apply to show navbar
+  .nav-visible {
+    opacity: 1;
+    @include transform(translate(0,0));
+    @include transition(transform .2s, opacity .3s);
+  }
+
+  // Apply to hide navbar
+  .nav-hidden {
+    opacity: 0;
+    @include transform(translate(0,-70px));
+    @include transition(transform .2s, opacity .3s);
+  }
+
   // set logo position and size in header
   .name {
     padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid #ebeff2;
     img {
       position: relative;
-      top: 21px;
-      width: 60px !important;
+      top: 12px;
+    }
+  }
+
+  .topnav-links {
+    border-right: 1px solid #ebeff2;
+  }
+
+  .dropdown {
+    li:last-child {
+      a {
+        @include border-bottom-radius(5px);
+        padding-bottom: 15px;
+      }
     }
   }
 
   .user-block {
     border-left: 1px solid #e5e5e5;
     .avatar-link-selector {
+      line-height: 0px;
+      padding-left: 0px;
       .avatar {
-        width: 40px;
-        height: 40px;
+        width: 70px;
+        height: 70px;
         position: relative;
-        top: 15px;
-        @include border-radius(100px); 
+        top: 0px;
       }
     }
   }
@@ -28,7 +69,7 @@
     margin-bottom: 0px !important;
     z-index: 9;
     a {
-      margin-right: 10px;
+      margin-right: 5px;
       font-size: 15px !important;
       font-family: "omnes-pro",sans-serif;
       font-weight: 500;
@@ -115,7 +156,7 @@
   }
   .header-search {
     position: relative;
-    top: 14px;
+    top: 9px;
     overflow: visible;
     .tt-hint {
       top: 8px !important;
@@ -143,7 +184,7 @@
     }
   }
   .guest-block {
-    height: 80px;
+    height: 70px;
     a {
       margin: 0px;
       padding: 0px !important;

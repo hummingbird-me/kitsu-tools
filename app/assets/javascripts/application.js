@@ -26,6 +26,8 @@
 //= require typeahead.js
 //= require offcanvas.js
 //= require jquery.easy-pie-chart.js
+//= require jquery.ba-throttle-debounce.js
+//= require jquery.icheck.js
 //
 //= require vendor/custom.modernizr
 //
@@ -37,19 +39,25 @@
 //
 //= require hogan-2.0.0.js
 //
+//= require bootstrap-tooltip.js
+//= require bootstrap-popover.js
+//
 // Part 2 -- Library initialization.
 //
 //= require handlebars_helpers.js.coffee
 //
 // Part 3 -- Application initialization.
 //
+//= require_tree ./templates
+//
+//= require hummingbird.js.coffee
 //= require anime.js.coffee
+//= require library.js.coffee
 //= require library_update.js.coffee
 //= require login-signup.js
 //= require search.js.coffee
 //= require redactor.js.coffee
-//
-//= require_tree ./templates
+//= require header.js.coffee
 //
 //= require activity-feed.js.coffee
 

@@ -1,13 +1,11 @@
+require 'wilson_score'
+
 class AnimeController < ApplicationController
   include EpisodesHelper
   
-  def ci_lower_bound(pos, n)
-    if n == 0
-      return 0
-    end
-    z = 1.96
-    phat = 1.0*pos/n
-    (phat + z*z/(2*n) - z * Math.sqrt((phat*(1-phat)+z*z/(4*n))/n))/(1+z*z/n)
+  def random
+    anime = Anime.where("age_rating <> 'R18+'").where(show_type: ["TV", "OVA", "ONA", "Movie"]).order("RANDOM()").limit(1)[0]
+    redirect_to anime
   end
   
   def show
@@ -31,10 +29,7 @@ class AnimeController < ApplicationController
 
     @gallery = @anime.gallery_images.limit(6)
 
-    @reviews = Review.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id]}).sort_by do |review|
-      -ci_lower_bound(review.votes.to_i, review.evaluations.length)
-    end
-    @reviews = @reviews[0...4] if @reviews.length > 4
+    @reviews = @anime.reviews.includes(:user).order("wilson_score DESC").limit(4)
 
     if user_signed_in?
       @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
@@ -42,7 +37,7 @@ class AnimeController < ApplicationController
       @watchlist = false
     end
 
-    @franchise_anime = @anime.franchises.map {|x| x.anime }.flatten.uniq.sort_by {|x| x.started_airing_date }
+    @franchise_anime = @anime.franchises.map {|x| x.anime }.flatten.uniq.sort_by {|x| x.started_airing_date || (Time.now + 100.years).to_date }
     
     @similar = @anime.similar(2, exclude: @franchise_anime)
 
@@ -86,7 +81,107 @@ class AnimeController < ApplicationController
     redirect_to @anime
   end
 
+  def filter
+    hide_cover_image
+    @filter_years = ["Upcoming", "2010s", "2000s", "1990s", "1980s", "1970s", "Older"]
+
+    if params[:g]
+      @genres = Genre.where(slug: params[:g])
+    else
+      @genres = Genre.default_filterable(current_user)
+    end
+    
+    if params[:y]
+      @years = params[:y]
+    else
+      @years = @filter_years
+    end
+    
+    if params[:sort]
+      @sort = params[:sort]
+    else
+      @sort = "all"
+    end
+    
+    @anime = Anime.accessible_by(current_ability).page(params[:page]).per(36)
+
+    # Apply genre filter.
+    if @genres.length > 10
+      @anime = @anime.exclude_genres(Genre.all - @genres)
+    else
+      @anime = @anime.include_genres(@genres)
+    end
+    
+    # Apply sort option.
+    if @sort == "newest"
+      @anime = @anime.order("started_airing_date DESC")
+    elsif @sort == "oldest"
+      @anime = @anime.order("started_airing_date")
+    else
+      @sort = "all"
+      @anime = @anime.order("wilson_ci DESC")
+    end
+    
+    # TODO Apply year filter.
+    if @years.length != @filter_years.length
+      filter_year_ranges = {
+        "2010s" => Date.new(2010, 1, 1)..Date.new(2020, 1, 1),
+        "2000s" => Date.new(2000, 1, 1)..Date.new(2010, 1, 1),
+        "1990s" => Date.new(1990, 1, 1)..Date.new(2000, 1, 1),
+        "1980s" => Date.new(1980, 1, 1)..Date.new(1990, 1, 1),
+        "1970s" => Date.new(1970, 1, 1)..Date.new(1980, 1, 1),
+        "Older" => Date.new(1800, 1, 1)..Date.new(1970, 1, 1)
+      }
+      arel = Anime.arel_table
+      ranges = @years.map {|x| filter_year_ranges[x] }.compact
+      query = ranges.inject(arel) do |sum, range|
+        condition = arel[:started_airing_date].in(range).or(arel[:finished_airing_date].in(range))
+        sum.class == Arel::Table ? condition : sum.or(condition)
+      end
+      if @years.include? "Upcoming"
+        condition = arel[:status].eq("Not Yet Aired")
+        if query.class == Arel::Table
+          query = condition
+        else
+          query = query.or(arel[:status].eq("Not Yet Aired"))
+        end
+      end
+      @anime = @anime.where(query)
+    end
+
+    # Load library entries for the user.
+    # NOTE When the seen/unseen filter is added use a join or something.
+    @library_entries = {}
+    if user_signed_in?
+      @library_entries = Watchlist.where(anime_id: @anime.map {|x| x.id}, 
+                                         user_id: current_user.id)
+                                  .index_by(&:anime_id)
+    end
+    
+    render :explore_filter
+  end
+
   def index
+    hide_cover_image
+    @filter_years = ["Upcoming", "2010s", "2000s", "1990s", "1980s", "1970s", "Older"]
+
+    @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
+    @recent_reviews = Review.order('created_at DESC').limit(12).includes(:anime)
+    trending_review_candidates = Review.where("created_at >= ?", 30.days.ago).order("wilson_score DESC").limit(30)
+    @trending_reviews = []
+    trending_review_candidates.each do |candidate|
+      unless @trending_reviews.any? {|r| r.user_id == candidate.user_id }
+        @trending_reviews.push candidate
+      end
+      break if @trending_reviews.length == 6
+    end
+    
+    @forum_topics = Forem::Forum.find("anime-manga").topics.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
+
+    return
+    
+    ### OLD EXPLORE PAGE CODE BELOW
+
     # Establish a base scope.
     @anime = Anime.accessible_by(current_ability)
 
@@ -99,15 +194,6 @@ class AnimeController < ApplicationController
       @slugs_to_filter = params[:genres]
       if @slugs_to_filter.length > 0
         @genre_filter = Genre.where("slug IN (?)", @slugs_to_filter)
-        if @genre_filter.length > 10
-          # There are more than 10 genres selected -- block the genres that
-          # haven't been selected.
-          @anime = @anime.exclude_genres(@all_genres - @genre_filter)
-        else
-          # 10 or fewer genres are enabled, search for all anime containing those
-          # genres instead.
-          @anime = @anime.include_genres(@genre_filter)
-        end
       end
     end
     @genre_filter ||= @all_genres

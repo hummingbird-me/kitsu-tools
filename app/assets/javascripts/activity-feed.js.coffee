@@ -90,6 +90,7 @@ StoryCollectionViewClass = Backbone.View.extend
     @collection.bind 'remove', @remove
     @loadedAll = false
     @fetchInProgress = false
+    @page = 1
   add: (story) ->
     @views[story.cid] = new StoryView
       model: story
@@ -105,15 +106,15 @@ StoryCollectionViewClass = Backbone.View.extend
     $(".activity-feed").append @$el
   fetchMore: (baseURL) ->
     unless @loadedAll or @fetchInProgress
-      page = 1 + Math.floor(@collection.length / 20)
       @fetchInProgress = true
       that = this
-      $.ajax baseURL + "page=" + page,
+      $.ajax baseURL + "page=" + @page,
         dataType: "json"
         error: -> that.fetchInProgress = false
         success: (feedItems) ->
+          that.page += 1
           that.fetchInProgress = false
-          if feedItems.length < 20
+          if feedItems.length == 0
             that.loadedAll = true
             $(".activity-feed-spinner").hide()
           that.addStories feedItems

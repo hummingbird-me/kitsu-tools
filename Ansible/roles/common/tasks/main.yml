@@ -6,6 +6,9 @@
 
 - name: Create .ssh directory
   file: path=/home/vikhyat/.ssh state=directory owner=vikhyat
+    
+- name: Copy over env 
+  copy: dest=/etc/profile.d/env.sh src=env owner=root group=root mode=0755
 
 - name: Set timezone to UTC
   lineinfile: dest=/etc/timezone state=present insertbefore=BOF
@@ -17,7 +20,7 @@
   only_if: ${timezone.changed}
 
 - name: Copy SSH stuff
-  action: copy dest=/home/vikhyat/.ssh/$item src=$item
+  copy: dest=/home/vikhyat/.ssh/$item src=$item
   with_items:
   - id_rsa
   - id_rsa.pub

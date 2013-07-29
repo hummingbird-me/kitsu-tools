@@ -14,8 +14,9 @@
       star.click ->
         element.find('.spinner').html $("<i class='pull-right icon icon-spin icon-spinner'></i>")
 
-        $.post "/api/v1/libraries/" + anime_slug, {rating: parseInt($(this).attr("data-rating")) - 3}, (d) ->
+        $.post "/api/v1/libraries/" + anime_slug, {rating: parseInt($(this).attr("data-rating"))}, (d) ->
           if d
+            console.log d.rating.value
             element.attr "data-rating", d.rating.value
             initializeRatingInterface element, type
 
@@ -88,7 +89,7 @@ renderProgress = (element) ->
       dropdownItem.find("a").html statusHumanizer[statusParam]
       dropdownItem.click ->
         $.post "/api/v1/libraries/" + anime, {status: statusParam}, (d) ->
-          element.attr "data-status", d.status_parameterized
+          element.attr "data-status", d.status
           initializeWatchlistStatusButton element
       element.find("ul").append dropdownItem
   # Add "Remove" item.
