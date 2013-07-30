@@ -68,6 +68,7 @@ gem 'rdiscount'
 
 # Attachments
 gem "paperclip", "~> 3.0"
+gem 'aws-sdk', '~> 1.5.7'
 
 # Better URLs.
 gem 'friendly_id', '~> 4.0.9'
