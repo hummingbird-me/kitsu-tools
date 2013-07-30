@@ -15,6 +15,7 @@ class Anime < ActiveRecord::Base
     :genre_ids, :producer_ids, :casting_ids
 
   has_attached_file :cover_image, 
+    :default_url => "/assets/missing-anime-cover.jpg",
     :styles => { :thumb => "225x335!", :"thumb@2x" => "450x670!" },
     :url => "/system/:hash_:style.:extension",
     :hash_secret => "Tsukiakari no Michishirube"
