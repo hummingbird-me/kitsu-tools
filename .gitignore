@@ -27,5 +27,4 @@ solr/pids
 .zeus.sock
 .vagrant
 
-.env
 aws_env
