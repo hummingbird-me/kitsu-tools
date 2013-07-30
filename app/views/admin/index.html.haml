@@ -24,6 +24,16 @@
                 %input(type="number" name="mal_id" placeholder="MAL ID")
               .large-4.columns
                 %input.button.small.prefix(type="submit" value="Submit")
+
+        .panel
+          %h5 Anime without MAL IDs
+          - if @anime_without_mal_id.length > 0
+            %ul
+              - @anime_without_mal_id.each do |anime|
+                %li= anime_link anime
+          - else
+            %em (Nothing here.)
+
         - if current_user.id == 1 or current_user.id == 2
           .alert-box.alert
             %h5 Forum Kill Switch
