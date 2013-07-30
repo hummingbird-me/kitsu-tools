@@ -1,51 +1,49 @@
-%h1(style="text-align: center")= title "Admin Panel"
+.panel
+  %h1(style="text-align: center")= title "Admin Panel"
 
 .row
+
   .large-3.columns
-    %ul.nav-bar.vertical
-      %li= link_to "Rails Admin", "/kotodama/rails_admin"
-      %li= link_to "Sidekiq Dashboard", "/kotodama/sidekiq"
-      %li= link_to "Forem Admin", forem.admin_root_url
-      %li= link_to "A/B Tests", "/kotodama/split"
+    .panel
+      %ul
+        %li= link_to "Rails Admin", "/kotodama/rails_admin", class: 'button padded'
+        %li= link_to "Sidekiq Dashboard", "/kotodama/sidekiq", class: 'button padded secondary'
+        %li= link_to "Forem Admin", forem.admin_root_url, class: 'button padded secondary'
+        %li= link_to "A/B Tests", "/kotodama/split", class: 'button padded secondary'
+
   .panel.large-9.columns
     .row
-      .large-5.columns
+      .large-9.columns
+        %h4 Actions
+        %hr
+        .panel
+          %h5 Create or Update by MAL ID
+          %form(method="get" action="/kotodama/find_or_create_by_mal")
+            .row.collapse
+              .large-8.columns
+                %input(type="number" name="mal_id" placeholder="MAL ID")
+              .large-4.columns
+                %input.button.small.prefix(type="submit" value="Submit")
+        - if current_user.id == 1 or current_user.id == 2
+          .alert-box.alert
+            %h5 Forum Kill Switch
+            %p
+              - if $redis.exists "forum_kill_switch"
+                = link_to "Enable Forum", "/kotodama/toggle_forum_kill_switch", class: "button padded", method: :post
+              - else
+                = link_to "Disable Forum", "/kotodama/toggle_forum_kill_switch", class: "button padded alert", method: :post
+
+      .large-3.columns
+        %h4 Statistics
+        %hr
         %table
           %tr
-            %td Number of sign-ups
+            %td Signups
             %td= @total_beta
-          %tr 
-            %td Number of invites sent
+          %tr
+            %td Invites Sent
             %td= @invited_beta
           %tr
-            %td Number of users registered
+            %td Registrations
             %td= @user_count
-        
-        %h5 Recent Invite Requests
-        %table
-          - @recent_beta.each do |bi|
-            %tr
-              %td= bi.email
-              %td= distance_of_time_in_words_to_now(bi.created_at, true)
 
-      .large-7.columns
-        .panel
-          .section-container.accordion(data-section)
-            .section
-              %p.title(data-section-title) Create/Update Anime
-              .content(data-section-content)
-                %form(method="get" action="/kotodama/find_or_create_by_mal")
-                  .row.collapse
-                    .large-8.columns
-                      %input(type="number" name="mal_id" placeholder="MAL ID")
-                    .large-4.columns
-                      %input.button.small.prefix(type="submit" value="Submit")
-            .section
-              %p.title(data-section-title) Invite to Beta
-              .content(data-section-content)
-                %form(method="get" action="/kotodama/invite_to_beta")
-                  .row.collapse
-                    .large-8.columns
-                      %input(type="email" name="email" placeholder="Email ID")
-                    .large-4.columns
-                      %input.button.small.prefix(type="submit" value="Submit")

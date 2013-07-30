@@ -26,10 +26,18 @@ class AdminController < ApplicationController
     flash[:success] = "Invited #{email}."
     redirect_to :back
   end
+
+  def toggle_forum_kill_switch
+    if $redis.exists("forum_kill_switch")
+      $redis.del("forum_kill_switch")
+    else
+      $redis.set("forum_kill_switch", "true")
+    end
+    redirect_to :back
+  end
   
   def index
     @total_beta   = BetaInvite.count
-    @recent_beta  = BetaInvite.order('created_at DESC').limit(5)
     @invited_beta = BetaInvite.where(invited: true).count
     @user_count   = User.count
 
