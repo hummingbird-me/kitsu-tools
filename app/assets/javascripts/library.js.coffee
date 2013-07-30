@@ -278,6 +278,7 @@ _.extend HB,
               model: @model
             @dropdown.find(".rating").replaceWith ratingView.render().el
             @dropdown.find(".status-change-widget").append statusChangeWidget.render().el
+            @dropdown.find("option[value=" + (if @model.get("private") then "private" else "public") + "]").prop("selected", true)
             # Submit updates when needed.
             @dropdown.find("form.custom").submit -> that.submitDropdownForm()
             @dropdown.find("form.custom").change -> that.submitDropdownForm()
