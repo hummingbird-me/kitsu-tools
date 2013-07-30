@@ -10,6 +10,9 @@
 - name: Copy over env 
   copy: dest=/etc/profile.d/env.sh src=env owner=root group=root mode=0755
 
+- name: Copy over AWS credentials
+  copy: dest=/etc/profile.d/aws.sh src=../aws_env owner=root group=root mode=0755
+
 - name: Set timezone to UTC
   lineinfile: dest=/etc/timezone state=present insertbefore=BOF
               regexp="^Etc/UTC" line="Etc/UTC"
@@ -38,4 +41,4 @@
 - include: newrelic.yml
 
 - name: Create Capistrano directory structure
-  file: path=/u/apps/hummingbird state=directory recurse=true owner=vikhyat mode=0755
+  file: path=/u/apps/hummingbird state=directory recurse=false owner=vikhyat mode=0755
