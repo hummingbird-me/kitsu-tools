@@ -5,6 +5,7 @@ class GalleryImage < ActiveRecord::Base
 
   has_attached_file :image, 
     styles: {thumb: '265x144'},
+    convert_options: {thumb: '-unsharp 2x0.5+1+0'},
     storage: :s3,
     s3_credentials: {
       bucket: ENV['AWS_BUCKET'],
