@@ -17,6 +17,7 @@ class Anime < ActiveRecord::Base
   has_attached_file :cover_image, 
     default_url: "/assets/missing-anime-cover.jpg",
     styles: {thumb: "225x335!" },
+    storage: :s3,
     s3_credentials: {
       bucket: ENV['AWS_BUCKET'],
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
