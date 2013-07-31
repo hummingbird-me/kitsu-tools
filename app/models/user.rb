@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar,
     styles: {
       thumb: '190x190#', 
-      thumb_small: {geometry: '50x50#', animated: false}
+      thumb_small: '50x50#'
     },
     convert_options: {thumb_small: '-unsharp 2x0.5+1+0'},
     default_url: "http://placekitten.com/g/190/190",
