@@ -93,4 +93,4 @@ after "deploy", "newrelic:notice_deployment"
 
 # To keep only the last 5 releases:
 # (Default is `set :keep_releases, 5`)
-# after "deploy:restart", "deploy:cleanup"
+after "deploy:restart", "deploy:cleanup"
