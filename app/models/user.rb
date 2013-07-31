@@ -250,7 +250,7 @@ class User < ActiveRecord::Base
   end
 
   before_save do
-    if self.facebook_id.strip == ""
+    if self.facebook_id and self.facebook_id.strip == ""
       self.facebook_id = nil
     end
   end

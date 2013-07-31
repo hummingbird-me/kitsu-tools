@@ -21,7 +21,7 @@ iptables -A INPUT -p tcp --dport ssh -j ACCEPT
   {% endfor %}
 {% endif %}
 
-{% if 'solr' if group_names %}
+{% if 'solr' in group_names %}
   # Allow traffic from all hosts to Solr.
   {% for host in groups['all'] %}
     iptables -A INPUT -p tcp --dport 8080 -s {{hostvars[host]['ansible_eth0']['ipv4']['address']}} -j ACCEPT
