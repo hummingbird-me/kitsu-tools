@@ -441,7 +441,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    uri-redis (0.4.2)
     uuidtools (2.1.4)
     virtus (0.5.4)
       backports (~> 2.6.1)
@@ -517,5 +516,4 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   unicorn
-  uri-redis
   zurb-foundation (~> 4.3.0)

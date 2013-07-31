@@ -16,7 +16,6 @@ gem 'mongoid', '~> 3.0.0'
 
 gem 'redis'
 gem 'redis-rails'
-gem 'uri-redis', require: 'false'
 
 gem 'forem', :path => 'vendor/forem'
 gem 'forem-html_formatter', :path => 'vendor/forem-html_formatter'
