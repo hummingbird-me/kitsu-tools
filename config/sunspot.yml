@@ -1,6 +1,6 @@
 production:
   solr:
-    hostname: ENV['SOLR_HOST']
+    hostname: localhost
     port: 8080
     log_level: WARNING
     path: '/solr/hummingbird/'
@@ -9,7 +9,7 @@ production:
 
 development:
   solr:
-    hostname: ENV['SOLR_HOST']
+    hostname: localhost
     port: 8982
     log_level: INFO
 
