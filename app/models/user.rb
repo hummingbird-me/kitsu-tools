@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-n/sh
   # Following stuff.
   has_many :follower_relations, dependent: :destroy, foreign_key: :followed_id, class_name: 'Follow'
   has_many :followers, through: :follower_relations, source: :follower, class_name: 'User'
