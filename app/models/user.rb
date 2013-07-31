@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+n/sh
   # Following stuff.
   has_many :follower_relations, dependent: :destroy, foreign_key: :followed_id, class_name: 'Follow'
   has_many :followers, through: :follower_relations, source: :follower, class_name: 'User'
@@ -247,5 +248,11 @@ class User < ActiveRecord::Base
   def compute_watchlist_hash
     watchlists = self.watchlists.order(:id).map {|x| [x.id, x.status, x.rating] }
     Digest::MD5.hexdigest( watchlists.inspect )
+  end
+
+  before_save do
+    if self.facebook_id.strip == ""
+      self.facebook_id = nil
+    end
   end
 end
