@@ -33,12 +33,31 @@ class User < ActiveRecord::Base
     :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio,
     :forem_admin, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned
 
-  has_attached_file :avatar, :styles => {:thumb => "190x190#", :thumb_small => "50x50#"},
-    :default_url => "http://placekitten.com/g/190/190"
-
-  has_attached_file :cover_image, :styles => {:thumb => "760x250#"},
-    :default_url => "http://hummingbird.me/default_cover.png"
-  
+  has_attached_file :avatar,
+    styles: {thumb: '190x190#', thumb_small: '50x50#'},
+    convert_options: {thumb_small: '-unsharp 2x0.5+1+0'},
+    default_url: "http://placekitten.com/190/190",
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV['AWS_BUCKET'],
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    url: ':s3_domain_url',
+    path: '/:class/:attachment/:id_partition/:style/:filename'
+    
+  has_attached_file :cover_image, 
+    styles: {thumb: {geometry: "760x250#", animated: false}},
+    default_url: "http://hummingbird.me/default_cover.png",
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV['AWS_BUCKET'],
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    url: ':s3_domain_url',
+    path: '/:class/:attachment/:id_partition/:style/:filename'
+    
   has_many :watchlists
   has_many :reviews
   has_many :quotes
