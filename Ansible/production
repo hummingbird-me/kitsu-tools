@@ -1,3 +1,6 @@
+[loadbalancer]
+106.186.25.22
+
 [webservers]
 106.186.25.22
 

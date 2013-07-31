@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Allow established sessions to receive traffic.
+iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# Allow SSH traffic.
+iptables -A INPUT -p tcp --dport ssh -j ACCEPT
+
+{% if 'loadbalancer' in group_names %}
+  # Allow port 80 HTTP traffic.
+  iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+{% endif %}
+
+# Block all traffic that wasn't allowed by the rules above.
+iptables -A INPUT -j DROP
