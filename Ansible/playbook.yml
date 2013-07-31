@@ -20,6 +20,11 @@
   roles:
   - common
 
+- hosts: loadbalancer
+  sudo: True
+  roles:
+  - loadbalancer
+
 - hosts: webservers
   sudo: True
   roles:

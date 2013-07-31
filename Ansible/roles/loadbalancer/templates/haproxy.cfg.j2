@@ -1,0 +1,45 @@
+# this config needs haproxy-1.1.28 or haproxy-1.2.1
+
+global
+  pidfile /var/run/haproxy.pid
+  log 127.0.0.1 local0 info
+  maxconn 4096
+  user haproxy
+  group haproxy
+  daemon
+
+defaults
+  mode http
+
+  contimeout	5000
+  clitimeout	50000
+  srvtimeout	50000
+
+  retries         3
+  option          redispatch
+  maxconn         2000
+
+  log	          global
+  option	  httplog
+  option	  dontlognull
+
+  balance         roundrobin
+
+  errorfile 503   /u/apps/hummingbird/current/public/503.html
+
+frontend http-in
+  bind :80
+  default_backend webserver
+  
+backend webserver
+  {% for host in groups['webservers'] %}
+  server fe{{loop.index}} {{hostvars[host]['ansible_eth0']['ipv4']['address']}}:3000 maxconn {{hostvars[host]['unicorn_processes']}}
+  {% endfor %}
+
+  stats enable
+  stats hide-version
+  stats scope   .
+  stats uri     /haproxy?stats
+  stats realm   HAProxy\ Statistics
+  stats auth    radiiquark:KarasuKarasu
+
