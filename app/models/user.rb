@@ -39,27 +39,12 @@ class User < ActiveRecord::Base
       thumb_small: '50x50#'
     },
     convert_options: {thumb_small: '-unsharp 2x0.5+1+0'},
-    default_url: "http://placekitten.com/g/190/190",
-    storage: :s3,
-    s3_credentials: {
-      bucket: ENV['AWS_BUCKET'],
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-    },
-    url: ':s3_domain_url',
-    path: '/:class/:attachment/:id_partition/:style/:filename'
+    default_url: "http://placekitten.com/g/190/190"
     
   has_attached_file :cover_image, 
     styles: {thumb: {geometry: "760x250#", animated: false}},
     default_url: "http://hummingbird.me/default_cover.png",
-    storage: :s3,
-    s3_credentials: {
-      bucket: ENV['AWS_BUCKET'],
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-    },
-    url: ':s3_domain_url',
-    path: '/:class/:attachment/:id_partition/:style/:filename'
+    storage: :s3
     
   has_many :watchlists
   has_many :reviews
