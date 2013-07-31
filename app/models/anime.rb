@@ -15,11 +15,16 @@ class Anime < ActiveRecord::Base
     :genre_ids, :producer_ids, :casting_ids
 
   has_attached_file :cover_image, 
-    :default_url => "/assets/missing-anime-cover.jpg",
-    :styles => { :thumb => "225x335!", :"thumb@2x" => "450x670!" },
-    :url => "/system/:hash_:style.:extension",
-    :hash_secret => "Tsukiakari no Michishirube"
-
+    default_url: "/assets/missing-anime-cover.jpg",
+    styles: {thumb: "225x335!" },
+    s3_credentials: {
+      bucket: ENV['AWS_BUCKET'],
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    url: ':s3_domain_url',
+    path: '/:class/:attachment/:id_partition/:style/:filename'
+    
   has_many :quotes
   has_many :castings, dependent: :destroy
   has_many :reviews
