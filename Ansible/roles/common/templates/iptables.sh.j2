@@ -9,15 +9,22 @@ iptables -A INPUT -i lo -j ACCEPT
 # Allow SSH traffic.
 iptables -A INPUT -p tcp --dport ssh -j ACCEPT
 
-# Allow port 80 HTTP traffic to the load balancer.
 {% if 'loadbalancer' in group_names %}
+  # Allow port 80 HTTP traffic to the load balancer.
   iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 {% endif %}
 
-# Allow traffic from all hosts to Redis.
 {% if 'redis' in group_names %}
+  # Allow traffic from all hosts to Redis.
   {% for host in groups['all'] %}
     iptables -A INPUT -p tcp --dport 6379 -s {{hostvars[host]['ansible_eth0']['ipv4']['address']}} -j ACCEPT
+  {% endfor %}
+{% endif %}
+
+{% if 'solr' if group_names %}
+  # Allow traffic from all hosts to Solr.
+  {% for host in groups['all'] %}
+    iptables -A INPUT -p tcp --dport 8080 -s {{hostvars[host]['ansible_eth0']['ipv4']['address']}} -j ACCEPT
   {% endfor %}
 {% endif %}
 
