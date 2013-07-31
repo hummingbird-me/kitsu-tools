@@ -1,0 +1,2 @@
+- name: Copy IPTables load on startup script
+  copy: dest=/etc/network/if-pre-up.d/iptablesload src=iptablesload mode=755

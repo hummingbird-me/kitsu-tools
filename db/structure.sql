@@ -2192,6 +2192,13 @@ CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
+-- Name: index_users_on_facebook_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_facebook_id ON users USING btree (facebook_id);
+
+
+--
 -- Name: index_users_on_lower_name_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2693,3 +2700,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130726021113');
 INSERT INTO schema_migrations (version) VALUES ('20130729173411');
 
 INSERT INTO schema_migrations (version) VALUES ('20130731140148');
+
+INSERT INTO schema_migrations (version) VALUES ('20130731144655');

@@ -39,6 +39,7 @@
 
 - include: rbenv.yml
 - include: newrelic.yml
+- include: iptables.yml
 
 - name: Create Capistrano directory structure
   file: path=/u/apps/hummingbird state=directory recurse=false owner=vikhyat mode=0755
