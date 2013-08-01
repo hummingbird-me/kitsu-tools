@@ -45,7 +45,7 @@ frontend http-in
   
 backend webserver
   {% for host in groups['webservers'] %}
-  server {{hostvars[host]['label']}} {{host}}:3000 weight {{hostvars[host]['unicorn_processes']}} check inter 2000
+  server {{hostvars[host]['label']}} {{host}}:3000 weight {{hostvars[host]['unicorn_processes']}} check inter 10000
   {% endfor %}
 
   option httpchk GET /
