@@ -2,7 +2,7 @@
 106.186.25.22
 
 [webservers]
-106.186.25.22 unicorn_processes=6 label=fe1
+106.186.25.22 unicorn_processes=10 label=fe1
 ec2-54-250-153-78.ap-northeast-1.compute.amazonaws.com unicorn_processes=2 label=micro1
 ec2-54-250-154-200.ap-northeast-1.compute.amazonaws.com unicorn_processes=2 label=micro2
 ec2-54-250-155-27.ap-northeast-1.compute.amazonaws.com unicorn_processes=2 label=micro3
