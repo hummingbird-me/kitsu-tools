@@ -60,3 +60,11 @@
   -o-animation-name: fadeInDown;
   animation-name: fadeInDown;
 }
+.fadeInSlower {
+  animation-delay: 2s;
+  -webkit-animation-delay: 2s; /* Safari and Chrome */
+  -webkit-animation-name: fadeInDown;
+  -moz-animation-name: fadeInDown;
+  -o-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}

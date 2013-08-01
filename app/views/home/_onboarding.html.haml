@@ -23,9 +23,9 @@
     .large-6.columns.rating-panel
       .simple.rating-system(data-system="simple")
         .row
-          .small-5.columns
+          .large-3.columns.no-padding
             Simple
-          .small-7.columns.rating-example
+          .large-8.columns.rating-example.no-padding
             %i.icon-smile
             %i.icon-meh
             %i.icon-frown
@@ -33,9 +33,9 @@
     .large-6.columns.rating-panel
       .advanced.rating-system(data-system="advanced")
         .row
-          .small-5.columns
+          .large-3.columns.no-padding
             Advanced
-          .small-7.columns.rating-example
+          .large-8.columns.rating-example.no-padding
             %i.icon-star
             %i.icon-star
             %i.icon-star
@@ -74,6 +74,13 @@
   .completed.step
     %h2.lead Whew... You're finished!
     %p.subtext Your Hummingbird account is setup and ready to go. Have a look at your <a href="/recommendations">recommendations</a>, find and <a href="/anime">rate the anime you've seen</a> or stop by the <a href="/community">forums</a> and say 'hello!' Hummingbird is a growing community, we're glad you're a part of it :3
+    .large-12.columns.center
+      .fb-like{"data-href" => "https://www.facebook.com/pages/Hummingbird/460188747373182", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
+      %a.twitter-share-button{"data-text" => "I just joined Hummingbird to track, share and discover new anime!", "data-url" => "http://www.hummingbird.me", "data-via" => "hummingbird_me", :href => "https://twitter.com/share"} Tweet
+
+      :javascript
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
     .large-12.columns.ob-bg
       = link_to (image_tag "ob-bg.jpg"), "/users/edit"
   
