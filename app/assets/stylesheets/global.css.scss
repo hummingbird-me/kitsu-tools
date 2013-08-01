@@ -126,6 +126,13 @@ a {
   }
 }
 
+.reveal-modal {
+  @include border-radius(5px);
+}
+.fixed {
+  z-index: 98 !important;
+}
+
 /**
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.

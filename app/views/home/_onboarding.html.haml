@@ -1,59 +1,89 @@
-.reveal-modal.expand.onboarding#onboarding-modal
-  %h2 Welcome to Hummingbird!
+.reveal-modal.expand.onboarding.large#onboarding-modal
+  .large-12.columns
+    .large-6.columns.no-padding
+      = image_tag "onboarding-logo.jpg"
+
+    .large-6.columns
+      .step-1.right.hide
+        = image_tag "step-1.png"
+      .step-2.right.hide
+        = image_tag "step-2.png"
+      .step-3.right
+        = image_tag "step-3.png"
+      .step-complete.right.hide
+        = image_tag "step-complete.png"
 
   .select-favorite-genres.step
     = render partial: "genres/favorite_genres_modal"
 
   .select-rating-system.step
-    %p.lead
-      Which rating system do you prefer?
-    .simple.rating-system(data-system="simple")
-      .row
-        .small-5.columns
-          Simple
-        .small-7.columns
-          %i.icon-smile
-          %i.icon-meh
-          %i.icon-frown
-    .advanced.rating-system(data-system="advanced")
-      .row
-        .small-5.columns
-          Advanced
-        .small-7.columns
-          %i.icon-star
-          %i.icon-star
-          %i.icon-star
-          %i.icon-star-half-empty
-          %i.icon-star-empty
+    %h2.lead How do you want to rate your anime?
+    %p.subtext Hummingbird has two rating sytems - simple and advanced. How precisely would you like to rate the anime you’ve watched?
+
+    .large-6.columns.rating-panel
+      .simple.rating-system(data-system="simple")
+        .row
+          .small-5.columns
+            Simple
+          .small-7.columns.rating-example
+            %i.icon-smile
+            %i.icon-meh
+            %i.icon-frown
+
+    .large-6.columns.rating-panel
+      .advanced.rating-system(data-system="advanced")
+        .row
+          .small-5.columns
+            Advanced
+          .small-7.columns.rating-example
+            %i.icon-star
+            %i.icon-star
+            %i.icon-star
+            %i.icon-star-half-empty
+            %i.icon-star-empty
   
   .bootstrap-library.step
     .mal-import-section
-      %p.lead
-        If you have a MyAnimeList account, you can import your anime list.
-      %form.mal-import
-        .large-6.columns
-          .row.collapse
-            .small-9.columns
-              %input(type="text" placeholder="MyAnimeList Username")
-            .small-3.columns
-              %a.button.prefix 
-                %span
-                  Import
-                  %span.right
-                    %i.icon-chevron-right
+      %h2.lead Let's connect your accounts elsewhere...
+      %p.subtext Hummingbird can connect and import from your favorite networks and services to help you feel right at home.
+
+      .large-6.columns.center.mal-connect
+        = image_tag "mal-connect.jpg"
+        %p Already have a MAL account? We can import it!
+        %form.mal-import
+          .large-12.columns
+            .row.collapse
+              .small-3.large-4.columns
+                %span.prefix MAL Username
+              .small-9.large-8.columns
+                %input(type="text" placeholder="Enter Your MAL Username")
+              .large-12.columns
+                %a.button
+                  %span
+                    IMPORT ACCOUNT
+                
+      .large-6.columns.center.na-connect
+        = image_tag "na-connect.jpg"
+        %p.na-description Receive personalized recommendations and sync with your Activity Feed! Don't have Neon Alley? <a href="http://www.neonalley.com">Learn More!</a>
+        .large-12.columns
+          %a.button
+            %span
+              CONNECT NEON ALLEY
 
   .completed.step
-    %p.lead Your account is all set up now.
-    %p 
-      Check out your 
-      = link_to "recommendations", "/recommendations"
-      or your
-      #{link_to "library", user_watchlist_path(current_user)}.
-            
-  .onboarding-progress
-  .skip-this-step
-    Next Step
-    %i.icon-chevron-sign-right
+    %h2.lead Whew... You're finished!
+    %p.subtext Your Hummingbird account is setup and ready to go. Have a look at your <a href="/recommendations">recommendations</a>, find and <a href="/anime">rate the anime you've seen</a> or stop by the <a href="/community">forums</a> and say 'hello!' Hummingbird is a growing community, we're glad you're a part of it :3
+    .large-12.columns.ob-bg
+      = link_to (image_tag "ob-bg.jpg"), "/users/edit"
+  
+  .large-12.columns.navigate-steps
+    .skip-this-step.button.secondary.left
+      %i.icon-chevron-sign-left
+      Previous Step
+  
+    .skip-this-step.button.right
+      Next Step
+      %i.icon-chevron-sign-right
 
   %a.close-reveal-modal &#215;
 
