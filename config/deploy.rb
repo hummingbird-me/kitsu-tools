@@ -14,9 +14,9 @@ set :sidekiq_role, :sidekiq
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
-role :app, "sheska", "37.139.11.135"
+role :app, "sheska"
 role :db, "sheska", primary: true
-role :web, "sheska", "37.139.11.135"
+role :web, "sheska"
 role :sidekiq, "sheska"
 
 namespace :deploy do
