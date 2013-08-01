@@ -26,7 +26,7 @@
   .select-rating-system {
     .rating-panel {
       .rating-system {
-        font-size: 1.8em;
+        font-size: 1.6em;
         background-color: #f7f7f7;
         border: 1px solid #ededed;
         @include border-radius(3px);
@@ -93,6 +93,9 @@
       width: 100%;
       margin-bottom: -45px;
     }
+  }
+  .fb-like {
+    margin-right: 20px;
   }
   
   .navigate-steps {

@@ -463,6 +463,17 @@
   margin-top: -110px;
   padding-top: 50px;
   margin-bottom: -20px;
+  .social-buttons {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    .fb-like {
+      margin-right: 20px;
+    }
+    .twitter-share-button.twitter-count-horizontal {
+      width: 78px !important;
+    }
+  }
   .h-logo {
     max-width: 135px;
     position: relative;
