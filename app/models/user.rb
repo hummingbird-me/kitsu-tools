@@ -134,8 +134,17 @@ class User < ActiveRecord::Base
     end
 
     # Just create a new account. >_>
+    name = auth.extra.raw_info.name.parameterize
+    name = name.gsub(/[^-_A-Za-z0-9]/, '')
+    if User.exists?("LOWER(name) = LOWER(#{name})", name)
+      if name.length > 20
+        name = name[0...15]
+      end
+      name = name + rand(9999).to_s
+    end
+    name = name[0...20] if name.length > 20
     user = User.new(
-      name: auth.extra.raw_info.name,
+      name: name,
       facebook_id: auth.uid,
       email: auth.info.email,
       avatar: URI.parse("http://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
