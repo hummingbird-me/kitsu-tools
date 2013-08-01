@@ -17,5 +17,5 @@
   only_if: ${haproxy_monit_config.changed}
 
 - name: Restart HAProxy if needed.
-  shell: monit restart haproxy
+  shell: kill `cat /var/run/haproxy.pid` && monit start haproxy
   only_if: ${haproxy_config.changed}

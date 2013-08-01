@@ -26,8 +26,6 @@ defaults
   balance         roundrobin
 
   stats enable
-  stats hide-version
-  stats scope   .
   stats uri     /haproxy?stats
   stats realm   HAProxy\ Statistics
   stats auth    radiiquark:KarasuKarasu
@@ -47,12 +45,12 @@ frontend http-in
   
 backend webserver
   {% for host in groups['webservers'] %}
-  server fe{{loop.index}} {{hostvars[host]['ansible_eth0']['ipv4']['address']}}:3000
+  server {{hostvars[host]['label']}} {{host}}:3000 weight {{hostvars[host]['unicorn_processes']}} check inter 2000
   {% endfor %}
 
   option httpchk GET /
 
 backend varnish
   {% for host in groups['varnish'] %}
-  server va{{loop.index}} {{hostvars[host]['ansible_eth0']['ipv4']['address']}}:7073
+  server va{{loop.index}} {{host}}:7073
   {% endfor %}

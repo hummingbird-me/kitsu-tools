@@ -9,12 +9,14 @@ set :scm, :git
 set :user, "vikhyat"
 set :git_enable_submodules, 1
 set :deploy_via, :remote_cache
+set :sidekiq_role, :sidekiq
 
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
-server "sheska", :app, :web, :db, primary: true
-# role :db, "slave db server"
+role :db, "sheska", primary: true
+role :web, "sheska", "37.139.11.135"
+role :sidekiq, "sheska"
 
 namespace :deploy do
   desc "stub task to get cap to prompt for the root password"
@@ -38,12 +40,12 @@ namespace :deploy do
   end
 
   desc "stop monit from monitoring sidekiq"
-  task :stop_monit_sidekiq, roles: :web do
+  task :stop_monit_sidekiq, roles: :sidekiq do
     run "#{sudo} monit unmonitor sidekiq"
   end
   
   desc "resume monit sidekiq monitoring "
-  task :start_monit_sidekiq, roles: :web do
+  task :start_monit_sidekiq, roles: :sidekiq do
     run "#{sudo} monit monitor sidekiq"
   end
   
