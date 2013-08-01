@@ -7,8 +7,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in_and_redirect @user, :event => :authentication
     else
       flash[:notice] = "Successfully created a new account using Facebook."
-      sign_in @user
-      redirect_to "/?signup_tour=true"
+      sign_in_and_redirect @user, "/?signup_tour=true"
     end
 
   end
