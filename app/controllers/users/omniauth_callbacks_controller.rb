@@ -4,9 +4,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     sign_in @user
     
     if @user.created_at < 2.minutes.ago
-      redirect "/"
+      redirect_to "/"
     else
-      redirect "/?signup_tour=true"
+      redirect_to "/?signup_tour=true"
     end
   end
 end
