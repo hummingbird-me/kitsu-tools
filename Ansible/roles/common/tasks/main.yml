@@ -57,7 +57,7 @@
 - name: Copy Postgres repository source file
   template: src=pgdg.list dest=/etc/apt/sources.list.d/pgdg.list
 
-- name: Install pg_config
+- name: Install libpq
   apt: pkg=$item state=present update_cache=yes
   with_items:
   - libpq-dev
