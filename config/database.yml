@@ -1,7 +1,8 @@
 development:
   adapter: postgresql
   database: hummingbird_development
-  host: localhost
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: 5432
 
 test:
   adapter: postgresql
@@ -13,5 +14,6 @@ production:
   database: hummingbird_production
   username: hummingbird
   password: TheBoilingPointOfCarbonDioxide
-  host: localhost
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: 5432
   pool: 50

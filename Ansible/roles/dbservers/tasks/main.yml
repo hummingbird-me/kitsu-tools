@@ -1,16 +1,8 @@
-- name: Add Postgres Apt signing key
-  apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc state=present
-
-- name: Copy Postgres repository source file
-  template: src=pgdg.list dest=/etc/apt/sources.list.d/pgdg.list
-
 - name: Install Postgres packages
-  apt: pkg=$item state=present update_cache=yes
+  apt: pkg=$item state=present
   with_items:
   - pgdg-keyring
   - postgresql-9.2
-  - libpq5
-  - libpq-dev
   - postgresql-contrib-9.2
   - python-psycopg2
 
