@@ -35,6 +35,15 @@ class AdminController < ApplicationController
     end
     redirect_to :back
   end
+
+  def toggle_registration_kill_switch
+    if $redis.exists("registration_kill_switch")
+      $redis.del("registration_kill_switch")
+    else
+      $redis.set("registration_kill_switch", "true")
+    end
+    redirect_to :back
+  end
   
   def index
     @total_beta   = BetaInvite.count

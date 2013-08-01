@@ -118,6 +118,7 @@ Hummingbird::Application.routes.draw do
     match '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
     match '/kotodama/invite_to_beta' => 'admin#invite_to_beta'
     post '/kotodama/toggle_forum_kill_switch' => 'admin#toggle_forum_kill_switch'
+    post '/kotodama/toggle_registration_kill_switch' => 'admin#toggle_registration_kill_switch'
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
     mount Split::Dashboard => '/kotodama/split'

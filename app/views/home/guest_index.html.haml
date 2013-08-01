@@ -13,7 +13,7 @@
       = image_tag "h-logo.png", :class => "h-logo animated fadeInSlow"
       %h3.guest-tagline.animated.fadeInDown Track, share and discover new anime.
 
-      - if false
+      - unless $redis.exists("registration_kill_switch")
         .large-6.columns.large-centered.cf.user-register.animated.fadeInDown
           .large-7.columns
             %a.button.padded.facebook-guest{:href => omniauth_authorize_path(User, :facebook)} <i class="icon-facebook-sign"></i> Sign up with Facebook
