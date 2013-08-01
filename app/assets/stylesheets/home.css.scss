@@ -509,6 +509,16 @@
       width: 100%;
     }
   }
+
+  // Launchrock Stuff
+  .LR-site-description {
+    p {
+      display: none !important;
+    }
+  }
+  .LR-pwd-lr {
+    display: none !important;
+  }
 }
 // .guest-home {
 //   background: #fff;
