@@ -41,11 +41,12 @@ frontend http-in
   redirect prefix http://hummingbird.me code 301 unless correct_host or s3_proxy
 
   use_backend varnish if s3_proxy
+  use_backend webserver if correct_host
   default_backend webserver
   
 backend webserver
   {% for host in groups['webservers'] %}
-  server {{hostvars[host]['label']}} {{host}}:3000 weight {{hostvars[host]['unicorn_processes']}} check inter 2000
+  server {{hostvars[host]['label']}} {{host}}:3000 weight {{hostvars[host]['unicorn_processes']}} check inter 10000
   {% endfor %}
 
   option httpchk GET /

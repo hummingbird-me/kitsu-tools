@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Flush all rules.
+iptables -F
+
 # Allow established sessions to receive traffic.
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
@@ -9,44 +12,14 @@ iptables -A INPUT -i lo -j ACCEPT
 # Allow SSH traffic.
 iptables -A INPUT -p tcp --dport ssh -j ACCEPT
 
+# Allow all traffic from other hosts.
+{% for host in groups['all'] %}
+iptables -A INPUT -s {{host}} -j ACCEPT
+{% endfor %}
+
+# Allow incoming port 80 traffic to the load balancer.
 {% if 'loadbalancer' in group_names %}
-  # Allow port 80 HTTP traffic to the load balancer.
-  iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-{% endif %}
-
-{% if 'webservers' in group_names %}
-  # Allow traffic to port 3000.
-  {% for host in groups['all'] %}
-    iptables -A INPUT -p tcp --dport 3000 -s {{hostvars[host]['ansible_eth0']['ipv4']['address']}} -j ACCEPT
-  {% endfor %}
-{% endif %}
-
-{% if 'dbservers' in group_names %}
-  # Allow traffic to Postgres.
-  {% for host in groups['all'] %}
-    iptables -A INPUT -p tcp --dport 5432 -s {{hostvars[host]['ansible_eth0']['ipv4']['address']}} -j ACCEPT
-  {% endfor %}
-{% endif %}
-
-{% if 'redis' in group_names %}
-  # Allow traffic from all hosts to Redis.
-  {% for host in groups['all'] %}
-    iptables -A INPUT -p tcp --dport 6379 -s {{hostvars[host]['ansible_eth0']['ipv4']['address']}} -j ACCEPT
-  {% endfor %}
-{% endif %}
-
-{% if 'solr' in group_names %}
-  # Allow traffic from all hosts to Solr.
-  {% for host in groups['all'] %}
-    iptables -A INPUT -p tcp --dport 8080 -s {{hostvars[host]['ansible_eth0']['ipv4']['address']}} -j ACCEPT
-  {% endfor %}
-{% endif %}
-
-{% if 'varnish' in group_names %}
-  # Allow traffic from all hosts to Varnish.
-  {% for host in groups['all'] %}
-    iptables -A INPUT -p tcp --dport 7073 -s {{hostvars[host]['ansible_eth0']['ipv4']['address']}} -j ACCEPT
-  {% endfor %}
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 {% endif %}
 
 # Drop all traffic that wasn't allowed by the rules above.

@@ -14,8 +14,9 @@ set :sidekiq_role, :sidekiq
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
+role :app, "sheska"
 role :db, "sheska", primary: true
-role :web, "sheska", "37.139.11.135"
+role :web, "sheska"
 role :sidekiq, "sheska"
 
 namespace :deploy do
@@ -49,27 +50,26 @@ namespace :deploy do
     run "#{sudo} monit monitor sidekiq"
   end
   
-  namespace :assets do
-    task :precompile, roles: :web, except: {no_release: true} do
-      changes = 0
-      begin
-        from = source.next_revision(current_revision)
-        changes = capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i
-      rescue
-        changes = 1
-      end
-
-      if changes > 0
-        run <<-CMD.compact
-          cd -- #{latest_release} &&
-          #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile &&
-          cp -- #{shared_path.shellescape}/assets/manifest.yml #{current_release.shellescape}/assets_manifest.yml
-        CMD
-      else
-        logger.info "Skipping asset pre-compilation because there were no asset changes"
-      end
-    end
-  end
+  #namespace :assets do
+  #    changes = 0
+  #    begin
+  #      from = source.next_revision(current_revision)
+  #      changes = capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i
+  #    rescue
+  #      changes = 1
+  #    end
+  #
+  #    if changes > 0
+  #      run <<-CMD.compact
+  #        cd -- #{latest_release} &&
+  #        #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile &&
+  #        cp -- #{shared_path.shellescape}/assets/manifest.yml #{current_release.shellescape}/assets_manifest.yml
+  #      CMD
+  #    else
+  #      logger.info "Skipping asset pre-compilation because there were no asset changes"
+  #    end
+  #  end
+  #end
   
   task :copy_old_sitemap do
     run "if [ -e #{previous_release}/public/sitemap_index.xml.gz ]; then cp #{previous_release}/public/sitemap* #{current_release}/public/; fi"

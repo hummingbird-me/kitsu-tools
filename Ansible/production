@@ -3,7 +3,6 @@
 
 [webservers]
 106.186.25.22 unicorn_processes=6 label=fe1
-37.139.11.135 unicorn_processes=2 label=fe2
 
 [redis]
 106.186.25.22

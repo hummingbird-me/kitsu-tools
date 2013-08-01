@@ -1,21 +1,19 @@
-- name: Add Postgres Apt signing key
-  apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc state=present
-
-- name: Copy Postgres repository source file
-  template: src=pgdg.list dest=/etc/apt/sources.list.d/pgdg.list
-
 - name: Install Postgres packages
-  apt: pkg=$item state=present update_cache=yes
+  apt: pkg=$item state=present
   with_items:
   - pgdg-keyring
   - postgresql-9.2
-  - libpq5
-  - libpq-dev
   - postgresql-contrib-9.2
   - python-psycopg2
 
 - name: Change postgres user password
   action: user name=postgres password={{postgres_password}}
+
+- name: Copy pg_hba.conf
+  copy: src=pg_hba.conf dest=/etc/postgresql/9.2/main/pg_hba.conf
+
+- name: Copy postgresql.conf
+  copy: src=postgresql.conf dest=/etc/postgresql/9.2/main/postgresql.conf
 
 - name: Create backups directory structure
   file: path=$item state=directory owner=postgres

@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :trackable, :validatable, :omniauthable, :confirmable, :async,
-         :token_authenticatable
+         :token_authenticatable,
+         allow_unconfirmed_access_for: 3.days
 
   # Remember users by default.
   def remember_me; true; end
@@ -71,14 +72,6 @@ class User < ActiveRecord::Base
   validates :facebook_id, allow_blank: true, uniqueness: true
 
   validates :title_language_preference, inclusion: {in: %w[canonical english romanized]}
-
-  validate :ensure_invited_to_beta, on: :create
-  def ensure_invited_to_beta
-    beta_invite = BetaInvite.find_by_email(self.email)
-    unless beta_invite && beta_invite.invited?
-      errors.add(:email, 'has not been invited to the beta yet.')
-    end
-  end
 
   def to_s
     name
@@ -149,6 +142,7 @@ class User < ActiveRecord::Base
       password: Devise.friendly_token[0, 20]
     )
     user.save
+    user.confirm!
     return user
   end
   

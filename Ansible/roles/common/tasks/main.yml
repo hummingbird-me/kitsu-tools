@@ -4,10 +4,10 @@
   - /u/apps/hummingbird
   - /u/apps/hummingbird/releases
   - /u/apps/hummingbird/shared
-  - /u/apps/hummingbird/releases/cached-copy
-  - /u/apps/hummingbird/releases/log
-  - /u/apps/hummingbird/releases/pids
-  - /u/apps/hummingbird/releases/system
+  - /u/apps/hummingbird/shared/cached-copy
+  - /u/apps/hummingbird/shared/log
+  - /u/apps/hummingbird/shared/pids
+  - /u/apps/hummingbird/shared/system
 
 - name: Install important packages
   apt: pkg=$item state=present
@@ -42,12 +42,24 @@
 - name: Install python-software-properties.
   action: apt pkg=python-software-properties state=present
 
+- include: iptables.yml
+- include: rbenv.yml
+- include: newrelic.yml
+
 - name: Install monit
   action: apt pkg=monit state=present
     
 - name: Copy monit config
   action: copy src=monitrc dest=/etc/monit/monitrc
 
-- include: iptables.yml
-- include: rbenv.yml
-- include: newrelic.yml
+- name: Add Postgres Apt signing key
+  apt_key: url=https://www.postgresql.org/media/keys/ACCC4CF8.asc state=present
+
+- name: Copy Postgres repository source file
+  template: src=pgdg.list dest=/etc/apt/sources.list.d/pgdg.list
+
+- name: Install pg_config
+  apt: pkg=$item state=present update_cache=yes
+  with_items:
+  - libpq-dev
+  - libpq5
