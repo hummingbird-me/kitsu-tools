@@ -147,13 +147,11 @@ a {
 }
 
 body {
-	background: #eee;
+  background: #eee;
   overflow-x: hidden;  // disable horizontal scrolling on mobile.
   padding-top: 70px;
   &.guest-padding {
     padding-top: 110px;
-    background-color: #333;
-    background-image: url(asset-path('guest-bg.jpg', image));
   }
   [role="complementary"] {
     width: 25%;
