@@ -42,5 +42,12 @@ iptables -A INPUT -p tcp --dport ssh -j ACCEPT
   {% endfor %}
 {% endif %}
 
+{% if 'varnish' in group_names %}
+  # Allow traffic from all hosts to Varnish.
+  {% for host in groups['all'] %}
+    iptables -A INPUT -p tcp --dport 7073 -s {{hostvars[host]['ansible_eth0']['ipv4']['address']}} -j ACCEPT
+  {% endfor %}
+{% endif %}
+
 # Drop all traffic that wasn't allowed by the rules above.
 iptables -A INPUT -j DROP
