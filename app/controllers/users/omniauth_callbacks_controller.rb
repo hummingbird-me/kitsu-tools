@@ -1,14 +1,12 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
     @user = User.find_for_facebook_oauth(request.env["omniauth.auth"], current_user)
+    sign_in @user
     
-    if @user.persisted?
-      flash[:notice] = "Successfully signed in using Facebook."
-      sign_in_and_redirect @user, :event => :authentication
+    if @user.created_at < 2.minutes.ago
+      redirect "/"
     else
-      flash[:notice] = "Successfully created a new account using Facebook."
-      sign_in_and_redirect @user, "/?signup_tour=true"
+      redirect "/?signup_tour=true"
     end
-
   end
 end
