@@ -17,5 +17,10 @@ iptables -A INPUT -p tcp --dport ssh -j ACCEPT
 iptables -A INPUT -s {{host}} -j ACCEPT
 {% endfor %}
 
+# Allow incoming port 80 traffic to the load balancer.
+{% if 'loadbalancer' in group_names %}
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+{% endif %}
+
 # Drop all traffic that wasn't allowed by the rules above.
 iptables -A INPUT -j DROP
