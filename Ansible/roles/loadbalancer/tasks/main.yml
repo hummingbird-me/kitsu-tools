@@ -17,5 +17,5 @@
   only_if: ${haproxy_monit_config.changed}
 
 - name: Restart HAProxy if needed.
-  action: monit name=haproxy state=restarted
+  shell: monit restart haproxy
   only_if: ${haproxy_config.changed}

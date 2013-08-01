@@ -29,11 +29,13 @@ defaults
 
 frontend http-in
   bind :80
+  acl correct_host hdr(host) hummingbird.me
+  redirect prefix http://hummingbird.me code 301 if !correct_host
   default_backend webserver
   
 backend webserver
   {% for host in groups['webservers'] %}
-  server fe{{loop.index}} {{hostvars[host]['ansible_eth0']['ipv4']['address']}}:3000 maxconn {{hostvars[host]['unicorn_processes']}}
+  server fe{{loop.index}} {{hostvars[host]['ansible_eth0']['ipv4']['address']}}:3000
   {% endfor %}
 
   stats enable
@@ -42,5 +44,4 @@ backend webserver
   stats uri     /haproxy?stats
   stats realm   HAProxy\ Statistics
   stats auth    radiiquark:KarasuKarasu
-  stats refresh 3s
 
