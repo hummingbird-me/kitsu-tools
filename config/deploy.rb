@@ -19,6 +19,13 @@ role :db, "sheska", primary: true
 role :web, "sheska"
 role :sidekiq, "sheska"
 
+role :web,
+     "ec2-54-250-155-149.ap-northeast-1.compute.amazonaws.com",
+     "ec2-54-250-153-78.ap-northeast-1.compute.amazonaws.com",
+     "ec2-54-250-155-27.ap-northeast-1.compute.amazonaws.com",
+     "ec2-54-250-154-200.ap-northeast-1.compute.amazonaws.com",
+     "ec2-54-250-151-211.ap-northeast-1.compute.amazonaws.com"
+
 namespace :deploy do
   desc "stub task to get cap to prompt for the root password"
   task :sudo_prompt, roles: :web do

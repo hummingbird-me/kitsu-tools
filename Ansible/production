@@ -3,6 +3,11 @@
 
 [webservers]
 106.186.25.22 unicorn_processes=6 label=fe1
+ec2-54-250-153-78.ap-northeast-1.compute.amazonaws.com unicorn_processes=1 label=i-aa7572a8
+ec2-54-250-154-200.ap-northeast-1.compute.amazonaws.com unicorn_processes=1 label=i-ab757a9
+ec2-54-250-155-27.ap-northeast-1.compute.amazonaws.com unicorn_processes=1 label=i-a97572ab
+ec2-54-250-151-211.ap-northeast-1.compute.amazonaws.com unicorn_processes=1 label=i-a97572ab
+ec2-54-250-155-149.ap-northeast-1.compute.amazonaws.com unicorn_processes=1 label=i-ad7572af
 
 [redis]
 106.186.25.22
