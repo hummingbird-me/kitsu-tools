@@ -72,14 +72,6 @@ class User < ActiveRecord::Base
 
   validates :title_language_preference, inclusion: {in: %w[canonical english romanized]}
 
-  validate :ensure_invited_to_beta, on: :create
-  def ensure_invited_to_beta
-    beta_invite = BetaInvite.find_by_email(self.email)
-    unless beta_invite && beta_invite.invited?
-      errors.add(:email, 'has not been invited to the beta yet.')
-    end
-  end
-
   def to_s
     name
   end
