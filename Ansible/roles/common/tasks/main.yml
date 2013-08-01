@@ -1,3 +1,14 @@
+- name: Create Capistrano directory structure
+  file: path=$item state=directory recurse=false owner=vikhyat mode=0755
+  with_items:
+  - /u/apps/hummingbird
+  - /u/apps/hummingbird/releases
+  - /u/apps/hummingbird/shared
+  - /u/apps/hummingbird/releases/cached-copy
+  - /u/apps/hummingbird/releases/log
+  - /u/apps/hummingbird/releases/pids
+  - /u/apps/hummingbird/releases/system
+
 - name: Install important packages
   apt: pkg=$item state=present
   with_items:
@@ -40,6 +51,3 @@
 - include: iptables.yml
 - include: rbenv.yml
 - include: newrelic.yml
-
-- name: Create Capistrano directory structure
-  file: path=/u/apps/hummingbird state=directory recurse=false owner=vikhyat mode=0755

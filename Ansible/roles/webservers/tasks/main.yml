@@ -15,7 +15,7 @@
 - name: Install imagemagick for paperclip
   action: apt pkg=imagemagick state=present
 
-- name: Add Puma to Monit
+- name: Add Unicorn to Monit
   action: copy src=unicorn.monit dest=/etc/monit/conf.d/unicorn.monit
   register: unicorn_monit_config
 

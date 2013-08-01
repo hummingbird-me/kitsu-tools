@@ -2,7 +2,8 @@
 106.186.25.22
 
 [webservers]
-106.186.25.22 unicorn_processes=6
+106.186.25.22 unicorn_processes=6 label=fe1
+37.139.11.135 unicorn_processes=2 label=fe2
 
 [redis]
 106.186.25.22
@@ -15,3 +16,7 @@
 
 [sidekiq]
 106.186.25.22
+
+[varnish]
+106.186.25.22
+
