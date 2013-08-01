@@ -41,6 +41,7 @@ frontend http-in
   redirect prefix http://hummingbird.me code 301 unless correct_host or s3_proxy
 
   use_backend varnish if s3_proxy
+  use_backend webserver if correct_host
   default_backend webserver
   
 backend webserver
