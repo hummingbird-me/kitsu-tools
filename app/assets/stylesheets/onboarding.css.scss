@@ -100,7 +100,7 @@
     margin-top: 20px;
   }
 
-  .skip-this-step {
+  .skip-this-step, .go-back-one-step {
     padding-left: 10px;
     float: right;
     border-radius: 4px;
@@ -119,7 +119,7 @@
     float: left;
   }
   
-  .skip-this-step, .onboarding-progress {
+  .skip-this-step, .go-back-one-step, .onboarding-progress {
     margin-top: 8px;
     padding: 8px;
     font-size: 0.8em;
