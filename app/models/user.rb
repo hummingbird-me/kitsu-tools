@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :trackable, :validatable, :omniauthable, :confirmable, :async,
-         :token_authenticatable
+         :token_authenticatable,
+         allow_unconfirmed_access_for: 3.days
 
   # Remember users by default.
   def remember_me; true; end

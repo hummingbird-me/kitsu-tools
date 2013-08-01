@@ -191,8 +191,12 @@
     }
   }
 }
+
 .guest-banner {
   background: #34495e;
+  .large-12 {
+    background: #34495e;
+  }
   text-align: center;
   a {
     font-size: 17px;
