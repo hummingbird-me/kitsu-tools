@@ -142,6 +142,7 @@ class User < ActiveRecord::Base
       password: Devise.friendly_token[0, 20]
     )
     user.save
+    user.confirm!
     return user
   end
   
