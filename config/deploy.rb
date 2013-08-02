@@ -19,21 +19,6 @@ role :db, "sheska", primary: true
 role :web, "sheska"
 role :sidekiq, "sheska"
 
-role :web,
-  "ec2-54-250-155-149.ap-northeast-1.compute.amazonaws.com",
-  "ec2-54-250-153-78.ap-northeast-1.compute.amazonaws.com",
-  "ec2-54-250-155-27.ap-northeast-1.compute.amazonaws.com",
-  "ec2-54-250-154-200.ap-northeast-1.compute.amazonaws.com",
-  "ec2-54-250-151-211.ap-northeast-1.compute.amazonaws.com"
-
-role :web,
-  "ec2-54-250-167-231.ap-northeast-1.compute.amazonaws.com",
-  "ec2-54-250-168-121.ap-northeast-1.compute.amazonaws.com",
-  "ec2-54-250-169-140.ap-northeast-1.compute.amazonaws.com",
-  "ec2-54-250-167-26.ap-northeast-1.compute.amazonaws.com",
-  "ec2-54-250-168-132.ap-northeast-1.compute.amazonaws.com",
-  "ec2-54-250-167-228.ap-northeast-1.compute.amazonaws.com"
-
 namespace :deploy do
   desc "stub task to get cap to prompt for the root password"
   task :sudo_prompt, roles: :web do
