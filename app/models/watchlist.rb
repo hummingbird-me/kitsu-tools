@@ -91,6 +91,11 @@ class Watchlist < ActiveRecord::Base
     self
   end
 
+  before_destroy do
+    self.update_episode_count 0
+    self.update_rewatched_times 0
+  end
+
   include ActionView::Helpers::TextHelper
   def to_hash(current_user=nil)
     {
