@@ -25,11 +25,6 @@
   roles:
   - webservers
 
-- hosts: loadbalancer
-  sudo: True
-  roles:
-  - loadbalancer
-
 - hosts: dbservers
   sudo: True
   vars:
