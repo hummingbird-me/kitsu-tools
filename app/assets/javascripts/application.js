@@ -28,22 +28,18 @@
 //= require jquery.easy-pie-chart.js
 //= require jquery.ba-throttle-debounce.js
 //= require jquery.icheck.js
-//
 //= require vendor/custom.modernizr
-//
 //= require googleplus.js
 //= require twitter.js
-//
-//= require i18n
-//= require i18n/translations
-//
 //= require hogan-2.0.0.js
-//
 //= require bootstrap-tooltip.js
 //= require bootstrap-popover.js
+//= require i18n
+//= require awesome_rating.js.coffee
 //
 // Part 2 -- Library initialization.
 //
+//= require i18n/translations
 //= require handlebars_helpers.js.coffee
 //
 // Part 3 -- Application initialization.

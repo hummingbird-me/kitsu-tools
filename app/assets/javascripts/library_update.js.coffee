@@ -1,4 +1,6 @@
 @initializeRatingInterface = (element, type) ->
+  return
+
   rating = parseInt element.attr("data-rating")
   anime_slug = element.attr("data-anime-slug")
   element.html ""

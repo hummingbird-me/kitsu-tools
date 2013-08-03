@@ -291,7 +291,7 @@ class MalImport
         rating = nil
         if w[:rating] != '0'
           rating = w[:rating].to_i rescue 5
-          rating = ((((rating - 1) / 9.0) - 0.5) * 2 * 2).round + 3
+          rating = rating.to_f / 2
         end
         watchlist.rating = rating
         
