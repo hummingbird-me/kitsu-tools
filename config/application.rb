@@ -11,7 +11,7 @@ end
 
 module Hummingbird
   class Application < Rails::Application
-    config.cache_store = :redis_store, "redis://#{ENV['REDIS_HOST']}:6379/0/cache"
+    config.cache_store = :redis_store, "redis://#{ENV['REDIS_HOST'] || 'localhost'}:6379/0/cache"
 
     config.paperclip_defaults = {
       storage: :s3,
