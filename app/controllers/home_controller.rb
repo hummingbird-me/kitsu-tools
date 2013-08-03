@@ -46,4 +46,7 @@ class HomeController < ApplicationController
 
   def recommendations
   end
+
+  def lists
+  end
 end

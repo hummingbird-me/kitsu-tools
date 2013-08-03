@@ -9,6 +9,7 @@ Hummingbird::Application.routes.draw do
 
   mount Forem::Engine => "/community"
 
+  match '/lists' => 'home#lists'
   match '/privacy' => 'home#privacy'
   match '/developers/api' => 'home#api'
 
@@ -41,6 +42,8 @@ Hummingbird::Application.routes.draw do
     get :feed
     get :followers
     get :following
+
+    resources :lists
 
     put "/cover_image"  => 'users#update_cover_image',  as: :cover_image
     put "/avatar"       => 'users#update_avatar',       as: :avatar
