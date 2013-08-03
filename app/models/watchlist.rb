@@ -87,7 +87,7 @@ class Watchlist < ActiveRecord::Base
     old_times = self.rewatched_times || 0
     self.rewatched_times = new_times
     self.save
-    self.user.update_life_spent_on_anime( (self.rewatched_times - old_times) * (self.anime.episode_count * self.anime.episode_length) )
+    self.user.update_life_spent_on_anime( (self.rewatched_times - old_times) * ((self.anime.episode_count || 0) * (self.anime.episode_length || 0)) )
     self
   end
 
