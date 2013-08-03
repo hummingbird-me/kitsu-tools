@@ -36,7 +36,7 @@ _.extend HB,
       if top > @detachPoint
         @detach()
 
-      if top <= 0
+      if top <= @detachPoint
         @attach()
 
       if top > -1 and amount > @hideShowOffset
