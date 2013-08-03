@@ -5,7 +5,7 @@ class TrendingAnime
   
   def self.vote(anime_id)
     $redis.zincrby STREAM_KEY, 2.0**((Time.now.to_i - EPOCH) / HALF_LIFE), anime_id
-    trim(STREAM_KEY, 10000)
+    trim(STREAM_KEY, 10000) if rand < 0.1
   end
   
   def self.get(limit=5)
@@ -13,6 +13,6 @@ class TrendingAnime
   end
   
   def self.trim(key, n)
-    $redis.zremrangebyrank(key, 0, -n) if rand < 2.0/n
+    $redis.zremrangebyrank(key, 0, -n)
   end
 end

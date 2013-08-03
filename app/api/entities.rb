@@ -7,11 +7,13 @@ module Entities
 
   class Anime < Grape::Entity
     expose :slug
+    expose :status
     expose(:url) {|anime, options| anime_path(anime) }
     expose(:title) {|anime, options| anime.canonical_title(options[:title_language_preference]) }
+    expose(:alternate_title) {|anime, options| (anime.alternate_title(options[:title_language_preference]) and anime.alternate_title(options[:title_language_preference]).length > 0) ? anime.alternate_title(options[:title_language_preference]) : nil }
     expose :episode_count
     expose(:cover_image) {|anime, options| anime.cover_image.url(:thumb) }
-    expose(:short_synopsis) {|anime, options| anime.synopsis.truncate(380, separator: ' ') }
+    expose(:synopsis) {|anime, options| anime.synopsis }
     expose :show_type
     expose :genres, using: Entities::Genre, if: lambda {|anime, options| options[:genres].nil? or options[:genres] }
   end
@@ -35,8 +37,7 @@ module Entities
     expose :rewatched_times
     expose :notes
     expose(:notes_present) {|watchlist, options| watchlist.notes and watchlist.notes.strip.length > 0 }
-    expose :status
-    expose(:status_parameterized) {|watchlist, options| watchlist.status.parameterize }
+    expose(:status) {|watchlist, options| watchlist.status.parameterize }
     expose(:id) {|watchlist, options| Digest::MD5.hexdigest("^_^" + watchlist.id.to_s) }
     expose :private
 

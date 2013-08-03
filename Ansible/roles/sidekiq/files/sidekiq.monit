@@ -1,3 +1,4 @@
 check process sidekiq with pidfile /u/apps/hummingbird/shared/pids/sidekiq.pid
+  group hummingbird
   start program = "/bin/su - vikhyat -c 'cd /u/apps/hummingbird/current/ && bundle exec sidekiq -e production -q default -q mailer -P /u/apps/hummingbird/shared/pids/sidekiq.pid'"
   stop program = "/bin/su - vikhyat -c 'kill `cat /u/apps/hummingbird/shared/pids/sidekiq.pid`'"

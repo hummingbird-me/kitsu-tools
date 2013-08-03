@@ -11,23 +11,23 @@ class Anime < ActiveRecord::Base
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, 
     :status, :synopsis, :cover_image, :youtube_video_id, :alt_title, :franchises,
     :thetvdb_series_id, :thetvdb_season_id, :show_type, :english_canonical, 
-    :age_rating_guide, :started_airing_date, :finished_airing_date
+    :age_rating_guide, :started_airing_date, :finished_airing_date, :franchise_ids,
+    :genre_ids, :producer_ids, :casting_ids
 
   has_attached_file :cover_image, 
-    :styles => { :thumb => "225x335!", :"thumb@2x" => "450x670!" },
-    :url => "/system/:hash_:style.:extension",
-    :hash_secret => "Tsukiakari no Michishirube"
-
+    default_url: "/assets/missing-anime-cover.jpg",
+    styles: {thumb: "225x335!" }
+    
   has_many :quotes
-  has_many :castings
+  has_many :castings, dependent: :destroy
   has_many :reviews
-  has_many :episodes
+  has_many :episodes, dependent: :destroy
   has_many :gallery_images
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
   has_and_belongs_to_many :franchises
 
-  has_many :watchlists
+  has_many :watchlists, dependent: :destroy
 
   validates :title, :slug, :presence => true, :uniqueness => true
 
@@ -164,7 +164,7 @@ class Anime < ActiveRecord::Base
     similar_anime = []
     
     begin
-      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{self.id}")).sort_by {|x| -x["sim"] }
+      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{self.id}")).select {|x| x["sim"] > 0.5 }.sort_by {|x| -x["sim"] }
       
       similar_json.each do |similar|
         sim = Anime.find_by_id(similar["id"])

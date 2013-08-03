@@ -43,4 +43,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_update_path_for(resource)
     "/dashboard"
   end
+
+  def after_sign_up_path_for(resource)
+    "/?signup_tour=true"
+  end
 end

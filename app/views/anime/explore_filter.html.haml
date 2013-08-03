@@ -1,0 +1,102 @@
+- title "Explore Anime"
+
+.anime-discover.anime-explore
+  .row
+    .large-3.columns.filter-sidebar
+      = form_tag("", method: :get) do
+        .panel.rounded-panel
+          .large-12.columns
+            %h4.top-title.pull-left Year
+            = submit_tag "Apply", class: "pull-right button submit-button"
+            %hr.title-divider
+
+            .large-12.columns
+              .row.filter-section
+                %label
+                  %input.select-all(type="checkbox"){:checked => @filter_years.all? {|y| @years.include? y }}
+                  %span All
+                - @filter_years.each do |year|
+                  %label
+                    = check_box_tag "y[]", year, @years.include?(year)
+                    %span= year
+
+        .panel.rounded-panel
+          .large-12.columns
+            %h4.top-title.pull-left Genres
+            = submit_tag "Apply", class: "pull-right button submit-button"
+            %hr.title-divider
+
+            .large-12.columns.filter-section.no-padding
+              .row
+                .large-12.columns
+                  %label.checkbox
+                    %input.select-all(type="checkbox"){:checked => Genre.default_filterable(current_user).all? {|g| @genres.include? g }}
+                    %span All
+                - Genre.default_filterable(current_user).each do |genre|
+                  .large-6.columns
+                    %label.checkbox
+                      = check_box_tag "g[]", genre.slug, @genres.include?(genre)
+                      %span.genre= genre.name
+                      
+                      
+    :coffee
+      $("input").iCheck
+        checkboxClass: 'icheckbox_flat-orange'
+        radioClass: 'iradio_flat-orange'
+
+      $("input.select-all").on 'ifChecked', ->
+          $(this).closest(".filter-section").find("input").iCheck('check')
+
+      $("input.select-all").on 'ifUnchecked', ->
+          $(this).closest(".filter-section").find("input").iCheck('uncheck')
+
+      $("input").on 'ifChanged', ->
+        if $(this).closest(".rounded-panel").find(".submit-button").is(":hidden")
+          $(".rounded-panel .submit-button").fadeOut()
+          $(this).closest(".rounded-panel").find(".submit-button").fadeIn()
+
+
+    / Anime Listing.
+    .large-9.columns.no-padding
+      .large-12.columns
+        %h4.top-title.pull-left Anime
+        / Sort options
+        %a.rounded-panel.sort-option.has-dropdown(data-dropdown="sort-option-dropdown" href="javascript: void(0)")
+          %i.icon-caret-down
+          - if @sort == "all"
+            Popular: All Time
+          - elsif @sort == "newest"
+            Newest
+          - elsif @sort == "oldest"
+            Oldest
+  
+        .f-dropdown.content.sort-option-dropdown(data-dropdown-content id="sort-option-dropdown")
+          %h4 Sort By Popularity
+          %ul
+            %li= link_to "All Time", anime_filter_path(params.merge(sort: "all"))
+          %h4 Sort By Airing Date
+          %ul
+            %li= link_to "Newest", anime_filter_path(params.merge(sort: "newest"))
+            %li= link_to "Oldest", anime_filter_path(params.merge(sort: "oldest"))
+
+        %hr.title-divider
+        .large-12.columns.no-padding.trending-panel
+          %ul
+            - @anime.each do |anime|
+              %li.large-2.columns.single-wrapper
+                = link_to anime do
+                  .popular-card.tip-top(data-tooltip){"title" => anime.canonical_title(current_user)}
+                    - if @library_entries[anime.id]
+                      .watchlist-status-icon
+                        - if @library_entries[anime.id].status == "Completed"
+                          %i.icon-circle
+                        - elsif @library_entries[anime.id].episodes_watched == 0
+                          %i.icon-circle-blank
+                        - else
+                          %i.icon-adjust.icon-flip-horizontal
+                    %p.wanna-watch
+                    = image_tag anime.cover_image.url(:thumb), alt: anime.canonical_title
+                    %p.title= anime.canonical_title(current_user)
+                
+          = paginate @anime
+

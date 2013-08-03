@@ -18,7 +18,7 @@ class HomeController < ApplicationController
           end
         end
         format.json do
-          timeline = UserTimeline.fetch(current_user, page: params[:page])
+          timeline = NewsFeed.new(current_user).fetch(params[:page])
           render :json => timeline
         end
       end
@@ -27,7 +27,8 @@ class HomeController < ApplicationController
 
       respond_to do |format|
         format.html do
-          @hide_footer_ad = ab_test("footer_ad_on_guest_homepage", "show", "hide") == "hide"
+          # @hide_footer_ad = ab_test("footer_ad_on_guest_homepage", "show", "hide") == "hide"
+          @hide_footer_ad = true
           render :guest_index
         end
         format.json do

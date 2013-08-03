@@ -11,11 +11,23 @@ class Genre < ActiveRecord::Base
     name
   end
 
+  def self.nsfw_slugs
+    %w(hentai yaoi yuri shounen-ai shoujo-ai)
+  end
+
+  def nsfw?
+    Genre.nsfw_slugs.include? self.slug
+  end
+
+  def sfw?
+    not nsfw?
+  end
+
   def self.default_filterable(user=nil)
-    genres = Genre.all
-    if user && user.sfw_filter 
-      genres -= Genre.where('slug IN (?)', %w(hentai yaoi yuri shounen-ai shoujo-ai)) 
+    if user.nil? or user.sfw_filter
+      Genre.order(:name).where('slug NOT IN (?)', Genre.nsfw_slugs).all
+    else
+      Genre.order(:name).all
     end
-    genres.sort_by {|x| x.name }
   end
 end

@@ -2,8 +2,8 @@ class AdminController < ApplicationController
   
   before_filter :allow_only_admins
   def allow_only_admins
-    # This shouldn't be needed becuse we also check for admin-ness in the routes.
-    # Still doing this just to be safe. 
+    # This shouldn't be needed becuse we also check for admin-ness in the 
+    # routes. Still doing this just to be safe. 
     authenticate_user!
     if not current_user.admin?
       raise ActionController::RoutingError.new('Not Found')
@@ -26,12 +26,31 @@ class AdminController < ApplicationController
     flash[:success] = "Invited #{email}."
     redirect_to :back
   end
+
+  def toggle_forum_kill_switch
+    if $redis.exists("forum_kill_switch")
+      $redis.del("forum_kill_switch")
+    else
+      $redis.set("forum_kill_switch", "true")
+    end
+    redirect_to :back
+  end
+
+  def toggle_registration_kill_switch
+    if $redis.exists("registration_kill_switch")
+      $redis.del("registration_kill_switch")
+    else
+      $redis.set("registration_kill_switch", "true")
+    end
+    redirect_to :back
+  end
   
   def index
     @total_beta   = BetaInvite.count
-    @recent_beta  = BetaInvite.order('created_at DESC').limit(5)
     @invited_beta = BetaInvite.where(invited: true).count
     @user_count   = User.count
+
+    @anime_without_mal_id = Anime.where(mal_id: nil)
 
     @hide_cover_image = true
     @hide_footer_ad = true

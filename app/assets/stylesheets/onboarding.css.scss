@@ -1,5 +1,16 @@
+@import "compass/css3";
+
 .onboarding {
   top: 40px;
+
+  .lead {
+    text-align: center;
+  }
+  
+  .subtext {
+    text-align: center;
+    color: #666666;
+  }
 
   h2 {
     margin-bottom: 10px;;
@@ -13,28 +24,86 @@
   }
 
   .select-rating-system {
-    .rating-system {
-      font-size: 1.8em;
-      margin: 18px;
-      padding: 10px;
-      text-align: center;
-      border-radius: 8px;
-      cursor: pointer;
-      &:hover {
-        background-color: #f0f0f0;
-      }
-      &.simple {
-        i {
-          margin-left: 10px;
+    .rating-panel {
+      .rating-system {
+        font-size: 1.6em;
+        background-color: #f7f7f7;
+        border: 1px solid #ededed;
+        @include border-radius(3px);
+        cursor: pointer;
+        padding: 15px;
+        -webkit-transition: background-color 250ms linear;
+        -moz-transition: background-color 250ms linear;
+        -o-transition: background-color 250ms linear;
+        -ms-transition: background-color 250ms linear;
+        transition: background-color 250ms linear;
+        .rating-example {
+          text-align: right;
         }
-      }
-      &.active {
-        background-color: #f0f0f0;
+        &:hover {
+          background-color: darken(#f7f7f7, 2)
+        }
+        &.simple {
+          i {
+            margin-left: 10px;
+          }
+        }
+        &.active {
+          background-color: #fdeee7;
+          border: 1px solid #e77e4a;
+        }
       }
     }
   }
+  .mal-connect {
+    padding: 20px;
+    border-right: 1px solid #eee;
+    .button {
+      background: #30529d;
+      @include border-radius(3px);
+      border: none;
+      padding-top: 10px;
+      padding-bottom: 30px;
+      &:hover{
+        background: darken(#30529d, 5);
+        border: none;
+      }
+    }
+  }
+  .na-connect {
+    padding: 20px;
+    .na-description {
+      margin-top: 21px;
+    }
+    .button {
+      background: #00acb8;
+      @include border-radius(3px);
+      border: none;
+      padding-top: 10px;
+      padding-bottom: 30px;
+      &:hover{
+        background: darken(#00acb8, 5);
+        border: none;
+      }
+    }
+  }
+  .ob-bg {
+    padding: 0px;
+    img {
+      width: 100%;
+      margin-bottom: -45px;
+    }
+  }
+  .fb-like {
+    margin-right: 20px;
+  }
   
-  .skip-this-step {
+  .navigate-steps {
+    padding: 5px;
+    margin-top: 20px;
+  }
+
+  .skip-this-step, .go-back-one-step {
     padding-left: 10px;
     float: right;
     border-radius: 4px;
@@ -43,20 +112,20 @@
     i {
       margin-left: 5px;
     }
-    &:hover {
-      background-color: #eee;
+    &.button {
+      color: #fff;
     }
+
   }
   
   .onboarding-progress {
     float: left;
   }
   
-  .skip-this-step, .onboarding-progress {
+  .skip-this-step, .go-back-one-step, .onboarding-progress {
     margin-top: 8px;
     padding: 8px;
     font-size: 0.8em;
-    color: #9a9a9a;
     text-transform: uppercase;
   }
 

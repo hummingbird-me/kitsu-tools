@@ -1,68 +1,75 @@
 .hummingbird-header-1
-  .contain-to-grid
-    %nav.top-bar.cf
-      %ul.title-area
-        %li.name
-          = link_to image_tag("logo.jpg", :height => "44px", :width => "70px"), "/"
-        %li.toggle-topbar.menu-icon
-          %a{:href => "#"}
-            %span Menu
-      %section.top-bar-section
-        / Left Nav Section
-        %ul.left
-          %li.has-dropdown
-            = link_to "My Library", "/dashboard"
-            %ul.dropdown
-              %li
-                = link_to "Profile", "/dashboard"
-              %li
-                = link_to "Watchlist", user_signed_in? ? main_app.user_watchlist_path(current_user) : "/dashboard"
-              %li
-                = link_to "Recommendations", main_app.anime_index_path(filter: 'recommended')
-          %li
-            %a{:href => "/anime"} Explore
-          %li
-            /.has-dropdown
-            = link_to "Community", forem.root_path
-            /%ul.dropdown
-            /  %li
-            /    = link_to "Forums", forem.root_path
-            /  /%li
-            /  /  = link_to "Chat", "/chat"
-
-        / Right Nav Section
-        %ul.right
-          %li.has-form
-            %form#live_search_form{:action => "/search", :autocomplete => "off"}
-              .row.collapse.header-search
-                .small-12.columns
-                  %input.typeahead#nav_search_input(type="text" name="query"){:placeholder => "Search Anime, People, Forum Posts", :value => params[:query], :autocomplete => "off"}
-                  %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
-
-          %li.divider.show-for-small
-          - if user_signed_in?
-            %li.user-block.has-dropdown
-              = link_to image_tag(current_user.avatar_url, :class => "avatar"), main_app.user_path(current_user), :class => "avatar-link-selector"
+  .hummingbird-header-actual.fixed.nav-attached
+    .contain-to-grid.rounded-panel
+      %nav.top-bar.cf
+        %ul.title-area
+          %li.name
+            = link_to image_tag("logo.jpg", :height => "48px", :width => "47px"), "/"
+          %li.toggle-topbar.menu-icon
+            %a{:href => "#"}
+              %span Menu
+        %section.top-bar-section
+          / Left Nav Section
+          %ul.left.topnav-links
+            %li= link_to "Home", "/"
+            %li.has-dropdown
+              = link_to "Dashboard", "/dashboard"
+              %ul.dropdown.rounded-panel
+                %li
+                  = link_to "Profile", "/dashboard"
+                %li
+                  = link_to "Library", user_signed_in? ? main_app.user_watchlist_path(current_user) : "/dashboard"
+                %li
+                  = link_to "Recommendations", '/recommendations'
+            %li
+              %a{:href => "/anime"} Explore
+            %li.has-dropdown
+              = link_to "Community", forem.root_path
               %ul.dropdown
                 %li
-                  = link_to "Edit profile", main_app.edit_user_registration_path
-                - if current_user.admin?
-                  %li 
-                    = link_to "Admin panel", "/kotodama"
+                  = link_to "Forums", forem.root_path
                 %li
-                  = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
-          - else
-            %li.guest-block
-              %span <a href="#{main_app.new_user_session_path}">Login</a> or <a href="#{main_app.new_user_registration_path}">Register</a>
+                  = link_to "Chat", "/chat"
 
-  - if not user_signed_in?
-    .guest-banner.hide-for-small
-      .large-12.columns
-        = link_to "Hummingbird is the easiest way to track, share and discover new anime. Request your invite now - Free.", main_app.new_user_registration_path
-        %span.guest-button= link_to "Request Invite", main_app.new_user_registration_path
+          / Right Nav Section
+          %ul.right
+            %li.has-form
+              .row.collapse.header-search
+                .small-12.columns
+                  %form#live_search_form{:action => "/search", :autocomplete => "off"}
+                    %input.typeahead#nav_search_input(type="text" name="query"){:placeholder => "Search...", :value => params[:query], :autocomplete => "off"}
+                    %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
+
+            %li.divider.show-for-small
+            - if user_signed_in?
+              %li.user-block.has-dropdown
+                = link_to image_tag(current_user.avatar_url, :class => "avatar"), main_app.user_path(current_user), :class => "avatar-link-selector"
+                %ul.dropdown.rounded-panel
+                  %li
+                    = link_to "Edit profile", main_app.edit_user_registration_path
+                  - if current_user.admin?
+                    %li 
+                      = link_to "Admin panel", "/kotodama"
+                  %li
+                    = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
+            - else
+              %li.guest-block
+                %span <a href="#{main_app.new_user_session_path}">Login</a> or <a href="#{main_app.new_user_registration_path}">Register</a>
+
+    - if not user_signed_in?
+      .guest-banner.hide-for-small
+        .large-12.columns
+          = link_to "Hummingbird is the easiest way to track, share and discover new anime. Request your invite now - Free.", main_app.new_user_registration_path
+          %span.guest-button= link_to "Request Invite", main_app.new_user_registration_path
+
+    - if user_signed_in? and not current_user.confirmed?
+      .guest-banner.hide-for-small
+        .large-12.columns
+          %a(data-tooltip data-width=500 title="You can confirm your email address by clicking on the link in the email you received after registration. If you didn't receive a confirmation email, click on the 'Resend Confirmation Email' button.") Please confirm your email address.
+          %span.guest-button= link_to "Resend Confirmation Email", new_confirmation_path(User)
   - unless @hide_cover_image
     = render partial: "shared/header_quote"
-    
-- flash.each do |style, message|
-  .alert-box{:class => style.to_s}= message
+      
+  - flash.each do |style, message|
+    .alert-box{:class => style.to_s}= message
 

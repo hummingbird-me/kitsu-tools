@@ -1,4 +1,21 @@
 class BetaInvitesController < ApplicationController
+  before_filter :redirect_to_sign_up
+  def redirect_to_sign_up
+    redirect_to '/users/sign_up'
+  end
+
+  def unsubscribe
+    if params[:u]
+      @beta_invite = BetaInvite.find_by_encrypted_email params[:u].downcase
+      if @beta_invite
+        @beta_invite.update_column :subscribed, false
+        render :text => "You have been unsubscribed. (#{@beta_invite.email})"
+        return
+      end
+    end
+    redirect_to "/"
+  end
+
   def index
     if params[:email].nil?
       redirect_to new_beta_invite_path
@@ -31,7 +48,7 @@ class BetaInvitesController < ApplicationController
     # Check whether there already is a beta invite by this name.
     email = params["beta_invite"]["email"].downcase
     if (beta_invite = BetaInvite.find_by_email(email)).nil?
-      beta_invite = BetaInvite.create(email: email)
+      beta_invite = BetaInvite.create(email: email, encrypted_email: SecureRandom.hex)
       BetaMailer.delay.beta_sign_up(beta_invite) if BetaInvite.find_by_email(email)
       finished("footer_ad_on_guest_homepage")
       mixpanel.track "Requested Invite", {email: email} if Rails.env.production?

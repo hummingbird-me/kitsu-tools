@@ -24,11 +24,11 @@
   sudo: True
   roles:
   - webservers
-      
-- hosts: redis
+
+- hosts: loadbalancer
   sudo: True
   roles:
-  - redis
+  - loadbalancer
 
 - hosts: dbservers
   sudo: True
@@ -42,13 +42,18 @@
   sudo_user: postgres
   tasks:
   - include: roles/dbservers/tasks/setup_db.yml
+      
+- hosts: redis
+  sudo: True
+  roles:
+  - redis
 
 - hosts: solr
   sudo: True
   roles:
   - solr
 
-- hosts: sidekiq
+- hosts: varnish
   sudo: True
   roles:
-  - sidekiq
+  - varnish

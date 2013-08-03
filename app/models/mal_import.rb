@@ -97,7 +97,10 @@ class MalImport
   end
   
   def self.series_metadata(id)
-    MalImport.create_series_castings(id)
+    begin
+      MalImport.create_series_castings(id)
+    rescue
+    end
     
     noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}").read
     meta = {}
@@ -141,6 +144,7 @@ class MalImport
     
     # Status
     meta[:status] = sidebar.css("div").select {|x| x.text.include? "Status:" }[0].children[1].text.strip rescue nil
+    meta[:status] = "Not Yet Aired" if meta[:status] == "Not yet aired"
 
     # Air dates
     meta[:dates] = {}
@@ -209,6 +213,8 @@ class MalImport
   
   # Private: get all of the reviews from a single given page.
   def self.get_reviews(page)
+    return []
+
     reviews = []
     page.css('div.borderDark').each do |rev|
       if rev.css('div.spaceit.borderLight small').text == "(Anime)"

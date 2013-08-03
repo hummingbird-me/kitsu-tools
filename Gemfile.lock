@@ -69,7 +69,13 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    addressable (2.3.5)
     arel (3.0.2)
+    aws-sdk (1.5.8)
+      httparty (~> 0.7)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     backports (2.6.7)
     bcrypt-ruby (3.0.1)
     beefcake (0.3.7)
@@ -175,6 +181,9 @@ GEM
     hike (1.2.2)
     hpricot (0.8.6)
     htmlentities (4.3.1)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.6.1)
     image_optim (0.8.0)
@@ -198,6 +207,10 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.8.0)
+    launchy (2.3.0)
+      addressable (~> 2.3)
+    letter_opener (1.1.2)
+      launchy (~> 2.2)
     libv8 (3.11.8.17)
     mail (2.5.3)
       i18n (>= 0.4.0)
@@ -354,7 +367,7 @@ GEM
     safe_yaml (0.9.1)
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
-    sass (3.2.7)
+    sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -428,13 +441,14 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.4)
     virtus (0.5.4)
       backports (~> 2.6.1)
       descendants_tracker (~> 0.0.1)
     warden (1.2.1)
       rack (>= 1.0)
     workflow (0.8.0)
-    zurb-foundation (4.0.9)
+    zurb-foundation (4.3.1)
       sass (>= 3.2.0)
 
 PLATFORMS
@@ -443,6 +457,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgres-hstore
   activerecord-reputation-system
+  aws-sdk (~> 1.5.7)
   better_errors
   binding_of_caller
   cancan
@@ -464,6 +479,7 @@ DEPENDENCIES
   image_optim
   jquery-rails
   kaminari
+  letter_opener
   mixpanel
   mongoid (~> 3.0.0)
   newrelic-grape
@@ -500,4 +516,4 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   unicorn
-  zurb-foundation (~> 4.0.0)
+  zurb-foundation (~> 4.3.0)

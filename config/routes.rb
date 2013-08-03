@@ -4,8 +4,7 @@ Hummingbird::Application.routes.draw do
   devise_for :users, controllers: { 
     omniauth_callbacks: "users/omniauth_callbacks",
     sessions: "users/sessions",
-    registrations: "users/registrations",
-    confirmations: "users/confirmations"
+    registrations: "users/registrations"
   }
 
   mount Forem::Engine => "/community"
@@ -17,15 +16,17 @@ Hummingbird::Application.routes.draw do
   match '/recommendations' => 'recommendations#index'
   match '/recommendations/not_interested' => 'recommendations#not_interested'
   match '/recommendations/plan_to_watch' => 'recommendations#plan_to_watch'
+  match '/recommendations/force_update' => 'recommendations#force_update'
 
   # Chat
   match '/chat' => 'chat#index'
-  match '/chat/ping' => 'chat#ping'
-  match '/chat/messages' => 'chat#messages'
-  match '/chat/new_message' => 'chat#new_message'
+  #match '/chat/ping' => 'chat#ping'
+  #match '/chat/messages' => 'chat#messages'
+  #match '/chat/new_message' => 'chat#new_message'
 
   match "/beta_invites/resend_invite" => "beta_invites#resend_invite", as: :resend_beta_invite
   match "/beta_invites/invite_code" => "beta_invites#invite_code"
+  match "/beta_invites/unsubscribe" => "beta_invites#unsubscribe"
   resources :beta_invites
 
   root :to => "home#index"
@@ -62,6 +63,10 @@ Hummingbird::Application.routes.draw do
   match '/imports/apply'           => 'imports#apply', as: :review_apply
   match '/imports/cancel'          => 'imports#cancel', as: :review_cancel
   match '/imports/status'          => 'imports#status'
+  
+  # Random anime
+  match '/random/anime' => 'anime#random'
+  match '/anime/filter(/:sort)' => 'anime#filter', as: :anime_filter
 
   resources :anime do
     post :get_episodes_from_thetvdb
@@ -80,10 +85,8 @@ Hummingbird::Application.routes.draw do
       }
     end
   end
-  match '/reviews' => 'reviews#full_index'
 
-  # Personalize Filters
-  match '/anime/filter/:filter(/:page)' => 'anime#index', :as => :filtered_listing
+  match '/reviews' => 'reviews#full_index'
 
   resources :genres do
     post :add_to_favorites
@@ -114,6 +117,8 @@ Hummingbird::Application.routes.draw do
     match '/kotodama/login_as' => 'admin#login_as_user'
     match '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
     match '/kotodama/invite_to_beta' => 'admin#invite_to_beta'
+    post '/kotodama/toggle_forum_kill_switch' => 'admin#toggle_forum_kill_switch'
+    post '/kotodama/toggle_registration_kill_switch' => 'admin#toggle_registration_kill_switch'
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
     mount Split::Dashboard => '/kotodama/split'

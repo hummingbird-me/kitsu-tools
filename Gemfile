@@ -31,7 +31,7 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
-  gem 'zurb-foundation', '~> 4.0.0'
+  gem 'zurb-foundation', '~> 4.3.0'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
   gem 'handlebars_assets'
@@ -43,6 +43,7 @@ gem 'sunspot_rails'
 group :development do
   gem 'sunspot_solr'
   gem "better_errors"
+  gem "letter_opener"
   gem "binding_of_caller"
 end
 
@@ -67,6 +68,7 @@ gem 'rdiscount'
 
 # Attachments
 gem "paperclip", "~> 3.0"
+gem 'aws-sdk', '~> 1.5.7'
 
 # Better URLs.
 gem 'friendly_id', '~> 4.0.9'
@@ -99,7 +101,7 @@ gem "rails_admin"
 # For voting on stuff.
 gem "activerecord-reputation-system", require: 'reputation_system'
 
-# Use Unicorn as the app server
+# Use Puma as the app server
 gem 'unicorn'
 
 # Needed for MAL import.

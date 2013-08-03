@@ -13,6 +13,15 @@ Handlebars.registerHelper 'pluralCount', (number, singular, plural) ->
 Handlebars.registerHelper 'timeAgo', (t) ->
   return moment(t).fromNow()
 
+Handlebars.registerHelper 'truncate', (str, len) ->
+  if str.length > len
+    new_str = $.trim(str).substring(0, len).split(" ").slice(0, -1).join(" ")
+    if new_str.length == 0
+      new_str = str.substring(0, len)
+    new_str += "..."
+  else
+    new_str = str
+  return new_str
 
 Handlebars.registerHelper 'watchlistStatusChangeStory', (user, new_status) ->
   return I18n.t("stories.watchlist_status_updates.third_person." + new_status + "_html", {user: "<a href='" + user.url + "'>" + user.name + "</a>"})
