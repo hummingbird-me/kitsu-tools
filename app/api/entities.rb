@@ -45,15 +45,8 @@ module Entities
     
     expose :rating do |watchlist, options|
       {
-        type: {
-          star_rating: watchlist.user.star_rating,
-          simple: !watchlist.user.star_rating
-        },
-        value: watchlist.rating ? watchlist.rating : "-",
-        positive: watchlist.positive?,
-        negative: watchlist.negative?,
-        neutral: watchlist.meh?,
-        unknown: watchlist.rating.nil?
+        type: watchlist.user.star_rating ? "advanced" : "simple",
+        value: watchlist.rating
       }
     end
   end
