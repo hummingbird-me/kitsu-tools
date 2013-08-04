@@ -1,4 +1,9 @@
 class BetaInvitesController < ApplicationController
+  before_filter :redirect_to_sign_up
+  def redirect_to_sign_up
+    redirect_to '/users/sign_up'
+  end
+
   def unsubscribe
     if params[:u]
       @beta_invite = BetaInvite.find_by_encrypted_email params[:u].downcase

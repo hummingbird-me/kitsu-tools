@@ -23,14 +23,13 @@
                   = link_to "Recommendations", '/recommendations'
             %li
               %a{:href => "/anime"} Explore
-            %li
-              /.has-dropdown
+            %li.has-dropdown
               = link_to "Community", forem.root_path
-              /%ul.dropdown
-              /  %li
-              /    = link_to "Forums", forem.root_path
-              /  /%li
-              /  /  = link_to "Chat", "/chat"
+              %ul.dropdown
+                %li
+                  = link_to "Forums", forem.root_path
+                %li
+                  = link_to "Chat", "/chat"
 
           / Right Nav Section
           %ul.right
@@ -62,6 +61,12 @@
         .large-12.columns
           = link_to "Hummingbird is the easiest way to track, share and discover new anime. Request your invite now - Free.", main_app.new_user_registration_path
           %span.guest-button= link_to "Request Invite", main_app.new_user_registration_path
+
+    - if user_signed_in? and not current_user.confirmed?
+      .guest-banner.hide-for-small
+        .large-12.columns
+          %a(data-tooltip data-width=500 title="You can confirm your email address by clicking on the link in the email you received after registration. If you didn't receive a confirmation email, click on the 'Resend Confirmation Email' button.") Please confirm your email address.
+          %span.guest-button= link_to "Resend Confirmation Email", new_confirmation_path(User)
   - unless @hide_cover_image
     = render partial: "shared/header_quote"
       

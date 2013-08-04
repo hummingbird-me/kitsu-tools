@@ -1,27 +1,30 @@
+@import "compass/css3";
+
 .favorite-genres {
-  p.lead {
-    margin-bottom: 0;
-  }
-  
-  p.subtext {
-    font-size: 0.9em;
-    font-style: italic;
+  .genre-panel {
+    padding: 5px;
+    float: left !important;
   }
   
   .genre {
     padding: 8px;
-    margin-bottom: 6px;
+    background-color: #f7f7f7;
     text-align: center;
     cursor: pointer;
-    border-radius: 6px;
-    border: 1px solid #e0e0e0;
+    @include border-radius(3px);
+    border: 1px solid #ededed;
+    -webkit-transition: background-color 250ms linear;
+    -moz-transition: background-color 250ms linear;
+    -o-transition: background-color 250ms linear;
+    -ms-transition: background-color 250ms linear;
+    transition: background-color 250ms linear;
 
     &.active {
-      background-color: #F2ECD8;
-      border: 1px solid #BFA654;
+      background-color: #fdeee7;
+      border: 1px solid #e77e4a;
       
       &:hover {
-        background-color: #D9CB9E;
+        background-color: darken(#fdeee7, 5);
       }
     }
     

@@ -11,6 +11,20 @@ end
 
 module Hummingbird
   class Application < Rails::Application
+    config.cache_store = :redis_store, "redis://#{ENV['REDIS_HOST'] || 'localhost'}:6379/0/cache"
+
+    config.paperclip_defaults = {
+      storage: :s3,
+      s3_credentials: {
+        bucket: ENV['AWS_BUCKET'],
+        access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+        secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+      },
+      s3_host_alias: 'static.hummingbird.me',
+      url: ':s3_alias_url',
+      path: '/:class/:attachment/:id_partition/:style/:filename'
+    }
+      
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

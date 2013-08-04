@@ -4,12 +4,12 @@ Hummingbird::Application.routes.draw do
   devise_for :users, controllers: { 
     omniauth_callbacks: "users/omniauth_callbacks",
     sessions: "users/sessions",
-    registrations: "users/registrations",
-    confirmations: "users/confirmations"
+    registrations: "users/registrations"
   }
 
   mount Forem::Engine => "/community"
 
+  match '/lists' => 'home#lists'
   match '/privacy' => 'home#privacy'
   match '/developers/api' => 'home#api'
 
@@ -20,7 +20,7 @@ Hummingbird::Application.routes.draw do
   match '/recommendations/force_update' => 'recommendations#force_update'
 
   # Chat
-  #match '/chat' => 'chat#index'
+  match '/chat' => 'chat#index'
   #match '/chat/ping' => 'chat#ping'
   #match '/chat/messages' => 'chat#messages'
   #match '/chat/new_message' => 'chat#new_message'
@@ -42,6 +42,8 @@ Hummingbird::Application.routes.draw do
     get :feed
     get :followers
     get :following
+
+    resources :lists
 
     put "/cover_image"  => 'users#update_cover_image',  as: :cover_image
     put "/avatar"       => 'users#update_avatar',       as: :avatar
@@ -118,6 +120,8 @@ Hummingbird::Application.routes.draw do
     match '/kotodama/login_as' => 'admin#login_as_user'
     match '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
     match '/kotodama/invite_to_beta' => 'admin#invite_to_beta'
+    post '/kotodama/toggle_forum_kill_switch' => 'admin#toggle_forum_kill_switch'
+    post '/kotodama/toggle_registration_kill_switch' => 'admin#toggle_registration_kill_switch'
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
     mount Split::Dashboard => '/kotodama/split'

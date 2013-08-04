@@ -1,42 +1,37 @@
 - title "Register"
 
-- session[:token] = params[:token] if params[:token]
+.login-register-card
+  .row
+    .large-8.columns.large-centered
+      .panel.login-box.signup
+        = form_for(resource, as: resource_name, url: registration_path(:user)) do |f|
+          - unless resource.errors.empty?
+            .alert-box.alert= devise_error_messages!
+          /.login-title Welcome to the beta!
+          = link_to omniauth_authorize_path(resource_name, :facebook) do
+            .social-buttons
+              #fb-signin.fb-button
+                = image_tag "icons/fb-logo.png"
+                %span FACEBOOK
+          %span.login-title-small OR, SIGN UP WITH
+          .input-wrap.signup
+            .login-input-wrap
+              = f.text_field :name, class: 'login-input'
+              %span.login-input-ghost Username
+          .input-wrap.signup
+            .login-input-wrap.left
+              = f.password_field :password, class: 'login-input'
+              %span.login-input-ghost Password
+            .input-ver-divider
+            .login-input-wrap.right
+              = f.password_field :password_confirmation, class: 'login-input'
+              %span.login-input-ghost Verify Password
+          .input-wrap.signup
+            .login-input-wrap
+              = f.email_field :email, class: 'login-input'
+              %span.login-input-ghost Email Address
 
-- if session[:token] and BetaInvite.valid_token?(session[:token])
-  .login-register-card
-    .row
-      .large-8.columns.large-centered
-        .panel.login-box.signup
-          = form_for(resource, as: resource_name, url: registration_path(:user)) do |f|
-            - unless resource.errors.empty?
-              .alert-box.alert= devise_error_messages!
-            .login-title Welcome to the beta!
-            /= link_to omniauth_authorize_path(resource_name, :facebook) do
-            /  .social-buttons
-            /    #fb-signin.fb-button
-            /      = image_tag "icons/fb-logo.png"
-            /      %span FACEBOOK
-            /%span.login-title-small OR, SIGN UP WITH
-            .input-wrap.signup
-              .login-input-wrap
-                = f.text_field :name, class: 'login-input'
-                %span.login-input-ghost Username
-            .input-wrap.signup
-              .login-input-wrap.left
-                = f.password_field :password, class: 'login-input'
-                %span.login-input-ghost Password
-              .input-ver-divider
-              .login-input-wrap.right
-                = f.password_field :password_confirmation, class: 'login-input'
-                %span.login-input-ghost Verify Password
-            .input-wrap.signup
-              .login-input-wrap
-                = f.email_field :email, class: 'login-input'
-                %span.login-input-ghost Email Address
-
-            .signup-step-buttons
-              = f.submit "Register Account", id: 'login', class: 'login-button'
-          .no-account.large-12.columns
-            = render "devise/shared/links"
-- else
-  = render partial: "beta_invites/new"
+          .signup-step-buttons
+            = f.submit "Register Account", id: 'login', class: 'login-button'
+        .no-account.large-12.columns
+          = render "devise/shared/links"

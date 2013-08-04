@@ -1,0 +1,32 @@
+.rating-widget {
+  text-align: center;
+  .rating {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    &.simple {
+      &.editable {
+        i:hover {
+          color: #5a5a5a;
+        }
+      }
+      font-size: 2em;
+      .icon-container {
+        padding-left: 10px;
+        padding-right: 10px;
+        color: #bbbbbb;
+        .active {
+          color: #34495e;
+        }
+      }
+    }
+    &.advanced {
+      font-size: 2em;
+      .icon-container {
+        padding-left: 4px;
+        padding-right: 4px;
+        color: #5a5a5a;
+      }
+    }
+  }
+}

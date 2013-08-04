@@ -12,6 +12,7 @@ class ChatController < ApplicationController
   def index
     hide_cover_image
     @chat_version = CHAT_VERSION
+    render :mibbit
   end
   
   # Update the current user's last seen time in Redis, and return a list of

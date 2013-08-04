@@ -460,157 +460,229 @@
 
 // Guest View
 .guest-home {
-  background: #fff;
   margin-top: -110px;
-  .guest-nav {
-    padding-top: 30px;
-    .h-logo {
-      position: absolute;
-      width: 80px;
+  padding-top: 50px;
+  margin-bottom: -20px;
+  .social-buttons {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    .fb-like {
+      margin-right: 20px;
     }
-    .login-link {
-      margin-bottom: 0px;
-      padding-top: 10px;
-    }
-  }
-  .tagline-area {
-    margin-top: 20px;
-    .tagline {
-      margin-bottom: 0px;
-    }
-    .flavor-text {
-      font-size: 20px;
-      margin-bottom: 0px;
+    .twitter-share-button.twitter-count-horizontal {
+      width: 78px !important;
     }
   }
-  input {
-    height: 36px;
-    @include box-shadow(none);
-    border-radius: 3px;
-  }
-  .top-cta {
-    @media (min-width: 768px) {
-      margin-bottom: 180px;
-    }
-  }
-  .main-features {
-    margin-top: 20px;
-  }
-  .find-anime {
-    font-size: 30px;
-    margin-bottom: 0px;
-    color: #222;
-    @media (max-width: 480px) {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-  }
-  .find-anime-description {
-    font-size: 20px;
-    margin-bottom: 0px;
-  }
-  .recommendation-area {
+  .h-logo {
+    max-width: 135px;
     position: relative;
-    .recommendation-input {
-      height: 45px;
-      margin-bottom: 30px;
-      font-size: 20px;
-      @media (max-width: 480px) {
-        font-size: 15px;
-      }
-    }
-    .search-button {
+    left: 25px;
+  } 
+  .guest-tagline {
+    margin-top: 5px;
+    color: #fff;
+  }
+  .facebook-guest {
+    background: #4c66a4;
+  }
+  .secondary {
+    color: #333;
+  }
+  .existing-user {
+    margin-top: 10px;
+    color: #fff;
+  }
+  .guest-screen {
+    width: 100%;
+    margin-top: 40px;
+  }
+  .bottom-section {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin-top: 350px;
+    position: fixed;
+    .splash {
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: url(asset-path('guest-screen.png', image));
+      background-size: contain;
+      background-position: 50% 100%;
+      background-repeat: no-repeat;
+      height: 100%;
+      margin: auto;
+      max-height: 461px;
+      max-width: 1034px;
       position: absolute;
-      right: 30px;
-      top: 14px;
+      width: 100%;
     }
   }
-  .screenshot-banner {
-    background: url("guest-banner.jpg");
-    background-size: cover;
-    max-width: 100%;
-    padding: 0px;
-    overflow: visible;
 
-    .mac-pro {
-      margin-top: -153px;
-      border-bottom: 1px solid #000;
-      text-align: center;
-      max-height: 533px;
+  // Launchrock Stuff
+  .LR-site-description {
+    p {
+      display: none !important;
     }
   }
-  .recommendations {
-    border-top: 1px solid #000;
-    border-bottom: 1px solid #000;
-    border-left: 1px solid #000;
-    .recommendation {
-      position: relative;
-      border-right: 1px solid #000;
-      img {
-        width: 100%;
-        max-height: 380px;
-        @media (min-width: 320px) {
-          min-height: 250px;
-        }
-        @media (min-width: 400px) {
-          min-height: 312px;
-        }
-        @media (min-width: 768px) {
-          min-height: 295px;
-        }
-      }
-      .meta-wrapper {
-        position: absolute;
-        bottom: 0px;
-        top: 0px;
-        padding: 10px;
-        background: url("rec-bg.png") bottom left repeat-x;
-        color: #fff;
-        p {
-          margin-bottom: 10px;
-        }
-        a {
-          color: #fff;
-        }
-        .meta-data {
-          position: absolute;
-          bottom: 22px;
-          .anime-title {
-            color: #fff;
-            margin-bottom: 0px;
-          }
-          .more-like-this {
-            font-size: 12px;
-            padding: 5px 10px;
-            background: #fff;
-            background: rgba(255,255,255,.7);
-            color: #000;
-            @include border-radius(3px);
-            @include transition(background, 0.5s);
-            &:hover {
-              background: #fff;
-            }
-          }
-        }
-      }
-    }
-  }
-  .secondary-cta-tagline {
-    font-size: 25px;
-    margin-bottom: 0px;
-    margin-top: 30px;
-  }
-  .mobile-cta-tagline {
-    font-size: 20px;
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
-  .bottom-cta {
-    padding-bottom: 30px;
-  }
-  .cta-button {
-    @media (max-width: 480px) {
-      padding-left: 0px;
-    }
+  .LR-pwd-lr {
+    display: none !important;
   }
 }
+// .guest-home {
+//   background: #fff;
+//   margin-top: -110px;
+//   .guest-nav {
+//     padding-top: 30px;
+//     .h-logo {
+//       position: absolute;
+//       width: 80px;
+//     }
+//     .login-link {
+//       margin-bottom: 0px;
+//       padding-top: 10px;
+//     }
+//   }
+//   .tagline-area {
+//     margin-top: 20px;
+//     .tagline {
+//       margin-bottom: 0px;
+//     }
+//     .flavor-text {
+//       font-size: 20px;
+//       margin-bottom: 0px;
+//     }
+//   }
+//   input {
+//     height: 36px;
+//     @include box-shadow(none);
+//     border-radius: 3px;
+//   }
+//   .top-cta {
+//     @media (min-width: 768px) {
+//       margin-bottom: 180px;
+//     }
+//   }
+//   .main-features {
+//     margin-top: 20px;
+//   }
+//   .find-anime {
+//     font-size: 30px;
+//     margin-bottom: 0px;
+//     color: #222;
+//     @media (max-width: 480px) {
+//       font-size: 20px;
+//       margin-bottom: 10px;
+//     }
+//   }
+//   .find-anime-description {
+//     font-size: 20px;
+//     margin-bottom: 0px;
+//   }
+//   .recommendation-area {
+//     position: relative;
+//     .recommendation-input {
+//       height: 45px;
+//       margin-bottom: 30px;
+//       font-size: 20px;
+//       @media (max-width: 480px) {
+//         font-size: 15px;
+//       }
+//     }
+//     .search-button {
+//       position: absolute;
+//       right: 30px;
+//       top: 14px;
+//     }
+//   }
+//   .screenshot-banner {
+//     background: url("guest-banner.jpg");
+//     background-size: cover;
+//     max-width: 100%;
+//     padding: 0px;
+//     overflow: visible;
+
+//     .mac-pro {
+//       margin-top: -153px;
+//       border-bottom: 1px solid #000;
+//       text-align: center;
+//       max-height: 533px;
+//     }
+//   }
+//   .recommendations {
+//     border-top: 1px solid #000;
+//     border-bottom: 1px solid #000;
+//     border-left: 1px solid #000;
+//     .recommendation {
+//       position: relative;
+//       border-right: 1px solid #000;
+//       img {
+//         width: 100%;
+//         max-height: 380px;
+//         @media (min-width: 320px) {
+//           min-height: 250px;
+//         }
+//         @media (min-width: 400px) {
+//           min-height: 312px;
+//         }
+//         @media (min-width: 768px) {
+//           min-height: 295px;
+//         }
+//       }
+//       .meta-wrapper {
+//         position: absolute;
+//         bottom: 0px;
+//         top: 0px;
+//         padding: 10px;
+//         background: url("rec-bg.png") bottom left repeat-x;
+//         color: #fff;
+//         p {
+//           margin-bottom: 10px;
+//         }
+//         a {
+//           color: #fff;
+//         }
+//         .meta-data {
+//           position: absolute;
+//           bottom: 22px;
+//           .anime-title {
+//             color: #fff;
+//             margin-bottom: 0px;
+//           }
+//           .more-like-this {
+//             font-size: 12px;
+//             padding: 5px 10px;
+//             background: #fff;
+//             background: rgba(255,255,255,.7);
+//             color: #000;
+//             @include border-radius(3px);
+//             @include transition(background, 0.5s);
+//             &:hover {
+//               background: #fff;
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+//   .secondary-cta-tagline {
+//     font-size: 25px;
+//     margin-bottom: 0px;
+//     margin-top: 30px;
+//   }
+//   .mobile-cta-tagline {
+//     font-size: 20px;
+//     margin-top: 20px;
+//     margin-bottom: 10px;
+//   }
+//   .bottom-cta {
+//     padding-bottom: 30px;
+//   }
+//   .cta-button {
+//     @media (max-width: 480px) {
+//       padding-left: 0px;
+//     }
+//   }
+// }

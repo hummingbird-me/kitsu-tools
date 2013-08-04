@@ -11,13 +11,13 @@ class Anime < ActiveRecord::Base
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, 
     :status, :synopsis, :cover_image, :youtube_video_id, :alt_title, :franchises,
     :thetvdb_series_id, :thetvdb_season_id, :show_type, :english_canonical, 
-    :age_rating_guide, :started_airing_date, :finished_airing_date
+    :age_rating_guide, :started_airing_date, :finished_airing_date, :franchise_ids,
+    :genre_ids, :producer_ids, :casting_ids
 
   has_attached_file :cover_image, 
-    :styles => { :thumb => "225x335!", :"thumb@2x" => "450x670!" },
-    :url => "/system/:hash_:style.:extension",
-    :hash_secret => "Tsukiakari no Michishirube"
-
+    default_url: "/assets/missing-anime-cover.jpg",
+    styles: {thumb: "225x335!" }
+    
   has_many :quotes
   has_many :castings, dependent: :destroy
   has_many :reviews

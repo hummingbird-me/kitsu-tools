@@ -73,7 +73,7 @@ class Watchlist < ActiveRecord::Base
 
     # If the show is completed and we know its episode count, don't allow users
     # to exceed the maximum number of episodes.
-    if self.anime.episode_count and (self.anime.episode_count > 0 and self.episodes_watched > self.anime.episode_count) and self.anime.status == "Finished Airing"
+    if self.anime.episode_count and (self.anime.episode_count > 0 and (self.episodes_watched || 0) > self.anime.episode_count) and self.anime.status == "Finished Airing"
       self.episodes_watched = self.anime.episode_count
     end
 
@@ -87,8 +87,13 @@ class Watchlist < ActiveRecord::Base
     old_times = self.rewatched_times || 0
     self.rewatched_times = new_times
     self.save
-    self.user.update_life_spent_on_anime( (self.rewatched_times - old_times) * (self.anime.episode_count * self.anime.episode_length) )
+    self.user.update_life_spent_on_anime( (self.rewatched_times - old_times) * ((self.anime.episode_count || 0) * (self.anime.episode_length || 0)) )
     self
+  end
+
+  before_destroy do
+    self.update_episode_count 0
+    self.update_rewatched_times 0
   end
 
   include ActionView::Helpers::TextHelper

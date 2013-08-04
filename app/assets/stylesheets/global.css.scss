@@ -49,6 +49,16 @@ a {
   padding-right: 0px !important;
 }
 
+.status-change-widget {
+  .button {
+    color: #fff !important;
+  }
+  li {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    font-size: 16px !important;
+  }
+}
 .truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -126,6 +136,13 @@ a {
   }
 }
 
+.reveal-modal {
+  @include border-radius(5px);
+}
+.fixed {
+  z-index: 98 !important;
+}
+
 /**
  * For IE 6/7 only
  * Include this rule to trigger hasLayout and contain floats.
@@ -140,7 +157,7 @@ a {
 }
 
 body {
-	background: #eee;
+  background: #eee;
   overflow-x: hidden;  // disable horizontal scrolling on mobile.
   padding-top: 70px;
   &.guest-padding {

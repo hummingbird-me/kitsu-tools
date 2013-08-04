@@ -15,7 +15,7 @@
 - name: Install imagemagick for paperclip
   action: apt pkg=imagemagick state=present
 
-- name: Add Puma to Monit
+- name: Add Unicorn to Monit
   action: copy src=unicorn.monit dest=/etc/monit/conf.d/unicorn.monit
   register: unicorn_monit_config
 
@@ -30,7 +30,7 @@
   copy: src=nginx.conf dest=/etc/nginx/nginx.conf
     
 - name: Copy nginx config files
-  action: copy src=frontend.nginx.conf dest=/etc/nginx/sites-enabled/hummingbird
+  template: src=frontend.nginx.conf dest=/etc/nginx/sites-enabled/hummingbird
   register: frontend_nginx_conf
     
 - name: Remove nginx default site

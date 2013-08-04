@@ -26,3 +26,5 @@ solr/pids
 
 .zeus.sock
 .vagrant
+
+aws_env

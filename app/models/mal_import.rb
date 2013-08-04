@@ -213,6 +213,8 @@ class MalImport
   
   # Private: get all of the reviews from a single given page.
   def self.get_reviews(page)
+    return []
+
     reviews = []
     page.css('div.borderDark').each do |rev|
       if rev.css('div.spaceit.borderLight small').text == "(Anime)"
@@ -289,7 +291,7 @@ class MalImport
         rating = nil
         if w[:rating] != '0'
           rating = w[:rating].to_i rescue 5
-          rating = ((((rating - 1) / 9.0) - 0.5) * 2 * 2).round + 3
+          rating = rating.to_f / 2
         end
         watchlist.rating = rating
         

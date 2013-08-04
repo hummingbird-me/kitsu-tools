@@ -1,10 +1,10 @@
 .favorite-genres
-  %p.lead Select your favorite genres.
-  %p.subtext We will use your favorite genres to generate better recommendations tailored to your interests.
+  %h2.lead What are your favorite genres?
+  %p.subtext We’ll use your favorite genres to improve your recommendations and customize your browsing experience on Hummingbird.
   
   .row
     - Genre.default_filterable(current_user).each do |genre|
-      .large-3.columns
+      .large-2.columns.genre-panel
         .genre{:class => ("active" if current_user.favorite_genres.include?(genre)), :"data-genre" => genre.slug, :"data-favorite" => current_user.favorite_genres.include?(genre).inspect}
           %span= genre.name
 

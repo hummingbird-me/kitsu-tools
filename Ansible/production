@@ -1,5 +1,8 @@
-[webservers]
+[loadbalancer]
 106.186.25.22
+
+[webservers]
+106.186.25.22 unicorn_processes=6
 
 [redis]
 106.186.25.22
@@ -12,3 +15,7 @@
 
 [sidekiq]
 106.186.25.22
+
+[varnish]
+106.186.25.22
+

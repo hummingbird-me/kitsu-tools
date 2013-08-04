@@ -1,6 +1,6 @@
 production:
   solr:
-    hostname: localhost
+    hostname: 106.186.25.22
     port: 8080
     log_level: WARNING
     path: '/solr/hummingbird/'

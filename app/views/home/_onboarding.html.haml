@@ -1,59 +1,97 @@
-.reveal-modal.expand.onboarding#onboarding-modal
-  %h2 Welcome to Hummingbird!
+.reveal-modal.expand.onboarding.large#onboarding-modal
+  .large-12.columns
+    .large-6.columns.no-padding
+      = image_tag "onboarding-logo.jpg"
+
+    .large-6.columns.step-marker-images
+      .step-image.step-1.right(style="display: none")
+        = image_tag "step-1.png"
+      .step-image.step-2.right(style="display: none")
+        = image_tag "step-2.png"
+      .step-image.step-3.right(style="display: none")
+        = image_tag "step-3.png"
+      .step-image.step-4.right(style="display: none")
+        = image_tag "step-complete.png"
 
   .select-favorite-genres.step
     = render partial: "genres/favorite_genres_modal"
 
   .select-rating-system.step
-    %p.lead
-      Which rating system do you prefer?
-    .simple.rating-system(data-system="simple")
-      .row
-        .small-5.columns
-          Simple
-        .small-7.columns
-          %i.icon-smile
-          %i.icon-meh
-          %i.icon-frown
-    .advanced.rating-system(data-system="advanced")
-      .row
-        .small-5.columns
-          Advanced
-        .small-7.columns
-          %i.icon-star
-          %i.icon-star
-          %i.icon-star
-          %i.icon-star-half-empty
-          %i.icon-star-empty
+    %h2.lead How do you want to rate your anime?
+    %p.subtext Hummingbird has two rating sytems - simple and advanced. How precisely would you like to rate the anime you’ve watched?
+
+    .large-6.columns.rating-panel
+      .simple.rating-system(data-system="simple")
+        .row
+          .large-3.columns.no-padding
+            Simple
+          .large-8.columns.rating-example.no-padding
+            %i.icon-smile
+            %i.icon-meh
+            %i.icon-frown
+
+    .large-6.columns.rating-panel
+      .advanced.rating-system(data-system="advanced")
+        .row
+          .large-3.columns.no-padding
+            Advanced
+          .large-8.columns.rating-example.no-padding
+            %i.icon-star
+            %i.icon-star
+            %i.icon-star
+            %i.icon-star-half-empty
+            %i.icon-star-empty
   
   .bootstrap-library.step
     .mal-import-section
-      %p.lead
-        If you have a MyAnimeList account, you can import your anime list.
-      %form.mal-import
-        .large-6.columns
-          .row.collapse
-            .small-9.columns
-              %input(type="text" placeholder="MyAnimeList Username")
-            .small-3.columns
-              %a.button.prefix 
-                %span
-                  Import
-                  %span.right
-                    %i.icon-chevron-right
+      %h2.lead Let's connect your accounts elsewhere...
+      %p.subtext Hummingbird can connect and import from your favorite networks and services to help you feel right at home.
+
+      .large-6.columns.center.mal-connect
+        = image_tag "mal-connect.jpg"
+        %p Already have a MAL account? We can import it!
+        %form.mal-import
+          .large-12.columns
+            .row.collapse
+              .small-3.large-4.columns
+                %span.prefix MAL Username
+              .small-9.large-8.columns
+                %input(type="text" placeholder="Enter Your MAL Username")
+              .large-12.columns
+                %a.button
+                  %span
+                    IMPORT ACCOUNT
+                
+      .large-6.columns.center.na-connect
+        = image_tag "na-connect.jpg"
+        %p.na-description Receive personalized recommendations and sync with your Activity Feed! Don't have Neon Alley? <a href="http://www.neonalley.com" target="_blank">Learn More!</a>
+        .large-12.columns
+          - if current_user.neon_alley_integration?
+            %a.button.padded.na-disconnect DISCONNECT NEON ALLEY
+          - else
+            %a.button.padded.na-connect CONNECT NEON ALLEY
 
   .completed.step
-    %p.lead Your account is all set up now.
-    %p 
-      Check out your 
-      = link_to "recommendations", "/recommendations"
-      or your
-      #{link_to "library", user_watchlist_path(current_user)}.
-            
-  .onboarding-progress
-  .skip-this-step
-    Next Step
-    %i.icon-chevron-sign-right
+    %h2.lead Whew... You're finished!
+    %p.subtext Your Hummingbird account is setup and ready to go. Have a look at your <a href="/recommendations">recommendations</a>, find and <a href="/anime">rate the anime you've seen</a> or stop by the <a href="/community">forums</a> and say 'hello!' Hummingbird is a growing community, we're glad you're a part of it :3
+    .large-12.columns.center
+      .fb-like{"data-href" => "https://www.facebook.com/pages/Hummingbird/460188747373182", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
+      %a.twitter-share-button{"data-text" => "I just joined Hummingbird to track, share and discover new anime!", "data-url" => "http://www.hummingbird.me", "data-via" => "hummingbird_me", :href => "https://twitter.com/share"} Tweet
+
+      :javascript
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+    .large-12.columns.ob-bg
+      = link_to (image_tag "ob-bg.jpg"), "/users/edit"
+  
+  .large-12.columns.navigate-steps
+    .go-back-one-step.button.secondary.left
+      %i.icon-chevron-sign-left
+      Previous Step
+  
+    .skip-this-step.button.right
+      Next Step
+      %i.icon-chevron-sign-right
 
   %a.close-reveal-modal &#215;
 
@@ -74,25 +112,40 @@
 
   # Make a step visible.
   showStep = (step) ->
-    _.each steps, (s) ->
-      $(s).slideUp()
-    $(step).slideDown()
-    $(".onboarding-progress").html "Step " + (currentStep+1) + " of " + (steps.length-1) + "."
+    if $(".step:visible").length > 0
+      $(".step:visible").hide()
+      $(step).show()
+    else
+      $(step).slideDown()
+
+    if currentStep == 0
+      $(".go-back-one-step").hide()
+    else if currentStep+1 < steps.length
+      $(".go-back-one-step").show()
+
+    $(".step-marker-images .step-image").hide()
+    $(".step-marker-images .step-" + (currentStep+1)).show()
 
   # Show the first step.
   showStep steps[currentStep]
+
+  # Show the previous step.
+  previousStep = ->
+    if currentStep > 0
+      currentStep -= 1
+      showStep steps[currentStep]
 
   # Show the next step.
   nextStep = ->
     currentStep += 1
     if currentStep+1 == steps.length
-      $.get "/recommendations.json"
       $(".onboarding-progress").hide()
+      $(".go-back-one-step").hide()
       $(".skip-this-step").hide()
       $(".close-reveal-modal").show()
     showStep steps[currentStep]
 
-  # Skip step element.
+  $(".go-back-one-step").click -> previousStep()
   $(".skip-this-step").click -> nextStep()
 
   # Rating system selection.
@@ -125,13 +178,41 @@
       ).error ->
         alert "Something went wrong, couldn't import your anime list."
 
+  # Neon Alley Connect.
+  path = #{user_toggle_connection_path(current_user).inspect}
+
+  addButtonLoader = (selector) ->
+    selector.html $("<i class='icon-spin icon-spinner'></i>")
+  
+  connect_na = ->
+    addButtonLoader $("a.na-connect")
+    $.ajax path,
+      method: 'post'
+      data:
+        connection: 'neonalley'
+        enable: true
+      success: ->
+        $("a.na-connect").removeClass("na-connect").addClass("na-disconnect").html("DISCONNECT NEON ALLEY").click disconnect_na
+  
+  disconnect_na = ->
+    addButtonLoader $("a.na-disconnect")
+    $.ajax path,
+      method: 'post'
+      data:
+        connection: 'neonalley'
+        disable: true
+      success: ->
+        $("a.na-disconnect").removeClass("na-disconnect").addClass("na-connect").html("CONNECT NEON ALLEY").click connect_na
+
+  $("a.na-disconnect").click disconnect_na
+  $("a.na-connect").click connect_na
+  
   # Check MAL import status.
   checkImportProgress = ->
     $.get "/imports/status.json", (d) ->
       if d
         $.get "/recommendations"
         $("#onboarding-modal form.mal-import a").html $("<i class='icon-ok'></i>")
-        nextStep()
       else
         setTimeout checkImportProgress, 2000
 

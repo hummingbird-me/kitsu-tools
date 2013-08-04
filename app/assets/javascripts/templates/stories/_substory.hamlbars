@@ -40,7 +40,7 @@
         {{/type.watchlist_status_update}}
 
         {{#type.watched_episode}}
-        {{{watchedEpisodeStory user episode_number}}}
+        {{{watchedEpisodeStory user episode_number service}}}
         {{/type.watched_episode}}
 
         .actions.time

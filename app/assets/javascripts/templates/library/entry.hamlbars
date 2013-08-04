@@ -28,14 +28,17 @@
 %td{:width => "76"} 
   %span.select
     {{#rating.type.star_rating}}
-
     %i.icon-star
+    {{#if rating.value}}
     {{rating.value}}
-  
+    {{/if}}
+    {{^rating.value}}
+    \-
+    {{/rating.value}}
     {{/rating.type.star_rating}}
 
     {{#rating.type.simple}}
-
+    {{#if rating.value}}
     {{#rating.positive}}
     %span.positive-smiley :)
     {{/rating.positive}}
@@ -45,10 +48,10 @@
     {{#rating.negative}}
     %span.negative-smiley :(
     {{/rating.negative}}
-    {{#rating.unknown}}
+    {{/if}}
+    {{^rating.value}}
     %span.unknown-smiley --
-    {{/rating.unknown}}
-    
+    {{/rating.value}}
     {{/rating.type.simple}}
 
 %td.show-type{:width => "65"} {{anime.show_type}}

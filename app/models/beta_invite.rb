@@ -1,5 +1,5 @@
 class BetaInvite < ActiveRecord::Base
-  attr_accessible :email, :invited, :token
+  attr_accessible :email, :invited, :token, :encrypted_email
   
   validates :email, uniqueness: true
 

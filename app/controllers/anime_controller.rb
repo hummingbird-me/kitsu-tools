@@ -2,6 +2,8 @@ require 'wilson_score'
 
 class AnimeController < ApplicationController
   include EpisodesHelper
+
+  caches_action :show, if: lambda { not user_signed_in? }, expires_in: 1.hour
   
   def random
     anime = Anime.where("age_rating <> 'R18+'").where(show_type: ["TV", "OVA", "ONA", "Movie"]).order("RANDOM()").limit(1)[0]
@@ -20,7 +22,7 @@ class AnimeController < ApplicationController
     @producers = @anime.producers
     @quotes = Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => "votes DESC", :limit => 4})
     
-    @castings = Casting.where(anime_id: @anime.id, featured: true)
+    @castings = Casting.where(anime_id: @anime.id, featured: true).sort_by {|x| x.order || 1000 }
     @languages = @castings.map {|x| x.role }.sort
     ["Japanese", "English"].reverse.each do |l|
       @languages.unshift l if @languages.include? l

@@ -120,35 +120,15 @@ _.extend HB,
 
         @$el.empty()
         rating = @model.get("rating")
-        
-        if rating.type.star_rating
-          for i in [1..5]
-            star = $("<a class='star' data-rating='" + i + "'></a>")
-            if rating.value >= i
-              star.append $("<i class='icon-star'></i>")
-            else
-              star.append $("<i class='icon-star-empty'></i>")
-            star.click ->
-              that.$el.append $("<i class='icon-spin icon-spinner'></i>")
-              that.model.update {rating: $(this).attr("data-rating")}
-            @$el.append star
-        else
-          m = {
-            positive: "<span class='positive-smiley'>:)</span>", 
-            neutral: "<span class='neutral-smiley'>:|</span>", 
-            negative: "<span class='negative-smiley'>:(</span>"
-          }
-          v = {positive: 5, neutral: 3, negative: 1}
-          for t in ['positive', 'neutral', 'negative']
-            q = $("<a data-rating='" + v[t] + "'>" + m[t] + "</a>")
-            q.click ->
-              that.$el.append $("<i class='icon icon-spin icon-spinner'></i>")
-              that.model.update {rating: $(this).attr("data-rating")}
-            if rating[t]
-              @$el.append $("<strong></strong>").append q
-            else
-              @$el.append q
-          
+
+        @$el.append "<div class='rating " + rating.type + "' data-rating='" + rating.value + "'></div>"
+        @$el.find(".rating").AwesomeRating
+          type: rating.type
+          editable: @model.get("currentUser")
+          update: (newRating, element, done) ->
+            that.model.update {rating: newRating}
+            done(newRating)
+
         return this
     
     # Episode increment view.
@@ -276,8 +256,9 @@ _.extend HB,
               model: @model
             statusChangeWidget = new HB.Library.StatusChangeWidget
               model: @model
-            @dropdown.find(".rating").replaceWith ratingView.render().el
+            @dropdown.find(".rating-widget").append ratingView.render().el
             @dropdown.find(".status-change-widget").append statusChangeWidget.render().el
+            @dropdown.find("option[value=" + (if @model.get("private") then "private" else "public") + "]").prop("selected", true)
             # Submit updates when needed.
             @dropdown.find("form.custom").submit -> that.submitDropdownForm()
             @dropdown.find("form.custom").change -> that.submitDropdownForm()
@@ -300,7 +281,16 @@ _.extend HB,
         return false
           
       render: ->
-        @$el.html @template @model.decoratedJSON()
+        decoratedJSON = @model.decoratedJSON()
+        decoratedJSON.rating =
+          type:
+            star_rating: @model.get("rating").type == "advanced"
+            simple: @model.get("rating").type == "simple"
+          value: @model.get("rating").value
+          negative: @model.get("rating").value <= 2.4
+          neutral: @model.get("rating").value > 2.4 and @model.get("rating").value < 3.6
+          positive: @model.get("rating").value >= 3.6
+        @$el.html @template decoratedJSON
         that = this
         @$el.find("td:first").click ->
           that.toggleDropdown()

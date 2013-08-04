@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :trackable, :validatable, :omniauthable, :confirmable, :async,
-         :token_authenticatable
+         :token_authenticatable,
+         allow_unconfirmed_access_for: 3.days
 
   # Remember users by default.
   def remember_me; true; end
@@ -33,12 +34,19 @@ class User < ActiveRecord::Base
     :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio,
     :forem_admin, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned
 
-  has_attached_file :avatar, :styles => {:thumb => "190x190#", :thumb_small => "50x50#"},
-    :default_url => "http://placekitten.com/g/190/190"
-
-  has_attached_file :cover_image, :styles => {:thumb => "760x250#"},
-    :default_url => "http://hummingbird.me/default_cover.png"
-  
+  has_attached_file :avatar,
+    styles: {
+      thumb: '190x190#', 
+      thumb_small: '50x50#'
+    },
+    convert_options: {thumb_small: '-unsharp 2x0.5+1+0'},
+    default_url: "http://placekitten.com/g/190/190"
+    
+  has_attached_file :cover_image, 
+    styles: {thumb: {geometry: "760x250#", animated: false}},
+    default_url: "http://hummingbird.me/default_cover.png",
+    storage: :s3
+    
   has_many :watchlists
   has_many :reviews
   has_many :quotes
@@ -64,14 +72,6 @@ class User < ActiveRecord::Base
   validates :facebook_id, allow_blank: true, uniqueness: true
 
   validates :title_language_preference, inclusion: {in: %w[canonical english romanized]}
-
-  validate :ensure_invited_to_beta, on: :create
-  def ensure_invited_to_beta
-    beta_invite = BetaInvite.find_by_email(self.email)
-    unless beta_invite && beta_invite.invited?
-      errors.add(:email, 'has not been invited to the beta yet.')
-    end
-  end
 
   def to_s
     name
@@ -134,14 +134,24 @@ class User < ActiveRecord::Base
     end
 
     # Just create a new account. >_>
+    name = auth.extra.raw_info.name.parameterize
+    name = name.gsub(/[^-_A-Za-z0-9]/, '')
+    if User.where("LOWER(name) = ?", name.downcase).count > 0
+      if name.length > 20
+        name = name[0...15]
+      end
+      name = name + rand(9999).to_s
+    end
+    name = name[0...20] if name.length > 20
     user = User.new(
-      name: auth.extra.raw_info.name,
+      name: name,
       facebook_id: auth.uid,
       email: auth.info.email,
       avatar: URI.parse("http://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
       password: Devise.friendly_token[0, 20]
     )
     user.save
+    user.confirm!
     return user
   end
   
@@ -195,7 +205,7 @@ class User < ActiveRecord::Base
     t = 0
     self.watchlists.each do |w|
       t += (w.anime.episode_length || 0) * (w.episodes_watched || 0)
-      t += (w.anime.episode_count || 0) * (w.anime.episode_length || 0) * w.rewatched_times
+      t += (w.anime.episode_count || 0) * (w.anime.episode_length || 0) * (w.rewatched_times || 0)
     end
     self.life_spent_on_anime = t
     self.save
@@ -240,5 +250,11 @@ class User < ActiveRecord::Base
   def compute_watchlist_hash
     watchlists = self.watchlists.order(:id).map {|x| [x.id, x.status, x.rating] }
     Digest::MD5.hexdigest( watchlists.inspect )
+  end
+
+  before_save do
+    if self.facebook_id and self.facebook_id.strip == ""
+      self.facebook_id = nil
+    end
   end
 end

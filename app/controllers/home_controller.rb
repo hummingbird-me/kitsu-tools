@@ -27,7 +27,8 @@ class HomeController < ApplicationController
 
       respond_to do |format|
         format.html do
-          @hide_footer_ad = ab_test("footer_ad_on_guest_homepage", "show", "hide") == "hide"
+          # @hide_footer_ad = ab_test("footer_ad_on_guest_homepage", "show", "hide") == "hide"
+          @hide_footer_ad = true
           render :guest_index
         end
         format.json do
@@ -44,5 +45,8 @@ class HomeController < ApplicationController
   end
 
   def recommendations
+  end
+
+  def lists
   end
 end
