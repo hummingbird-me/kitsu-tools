@@ -299,7 +299,7 @@
         .large-12.columns.no-padding.side-block
           %h5 SCREENCAPS
           - @anime.gallery_images.each do |gallery_image|
-            = image_tag gallery_image.image.url(:thumb), alt: "#{@anime.canonical_title} Screencap"
+            = image_tag gallery_image.image.url(:thumb), alt: "#{@anime.canonical_title} Screencap", style: 'padding-top: 5px'
 
       //quotes
       .large-12.columns.no-padding.side-block

@@ -4,6 +4,6 @@ class GalleryImage < ActiveRecord::Base
   validates :anime, :image, presence: true
 
   has_attached_file :image, 
-    styles: {thumb: '265x144'},
+    styles: {thumb: '265x'},
     convert_options: {thumb: '-unsharp 2x0.5+1+0'}
 end
