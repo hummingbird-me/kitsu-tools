@@ -267,10 +267,10 @@ class API_v1 < Grape::API
     requires :query, type: String, desc: "query string"
   end
   get '/search/anime' do
-    anime = Anime.accessible_by(current_ability)
-    results = anime.simple_search_by_title(params[:query]).limit(20)
+    anime = Anime.accessible_by(current_ability).includes(:genres)
+    results = anime.simple_search_by_title(params[:query]).limit(5)
     if results.length == 0
-      results = anime.fuzzy_search_by_title(params[:query]).limit(20)
+      results = anime.fuzzy_search_by_title(params[:query]).limit(5)
     end
 
     present results, with: Entities::Anime, title_language_preference: (current_user.try(:title_language_preference) || "canonical")

@@ -121,7 +121,7 @@
     z-index: 100;
     left: 0px !important;
     width: 100% !important;
-    top: 60px !important;
+    top: 61px !important;
     display: block;
     right: auto;
   }
@@ -130,23 +130,25 @@
     //position: absolute;
     //top: 55px;
     //left: -51px;
-    padding-left: 6px;
-    padding-right: 6px;
     background: white;
     @include border-bottom-radius(3px);
     @media (max-width: 1000px) {
       left: -30px;
       width: 110%;
     }
+    border: 1px solid #e0e0e0 !important;
 
     .tt-suggestion {
       float: none;
       border-bottom: 1px solid #eee !important;
       width: 100%;
       height: auto !important;
+      padding-left: 6px;
+      padding-right: 6px;
 
       p {
-        padding-top: 15px;
+        padding-top: 8px;
+        margin-bottom: 8px;
       }
     }
 
