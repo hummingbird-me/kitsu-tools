@@ -261,4 +261,18 @@ class API_v1 < Grape::API
       similar_anime.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title, genres: x.genres.map {|x| {name: x.name} }, cover_image: x.cover_image.url(:thumb), url: anime_url(x)} }
     end
   end
+
+  desc "Anime search API endpoint"
+  params do
+    requires :query, type: String, desc: "query string"
+  end
+  get '/search/anime' do
+    anime = Anime.accessible_by(current_ability)
+    results = anime.simple_search_by_title(params[:query]).limit(20)
+    if results.length == 0
+      results = anime.fuzzy_search_by_title(params[:query]).limit(20)
+    end
+
+    present results, with: Entities::Anime, title_language_preference: (current_user.try(:title_language_preference) || "canonical")
+  end
 end
