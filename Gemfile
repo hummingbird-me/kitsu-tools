@@ -12,8 +12,6 @@ gem 'riemann-client'
 gem 'pg'
 gem 'activerecord-postgres-hstore'
 
-gem 'mongoid', '~> 3.0.0'
-
 gem 'redis'
 gem 'redis-rails'
 

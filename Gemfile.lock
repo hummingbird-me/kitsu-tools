@@ -224,12 +224,6 @@ GEM
       rack
     mocha (0.13.3)
       metaclass (~> 0.0.1)
-    mongoid (3.0.23)
-      activemodel (~> 3.1)
-      moped (~> 1.2)
-      origin (~> 1.0)
-      tzinfo (~> 0.3.22)
-    moped (1.4.5)
     mtrc (0.0.4)
     multi_json (1.7.7)
     multi_xml (0.5.3)
@@ -261,7 +255,6 @@ GEM
     omniauth-oauth2 (1.0.3)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
-    origin (1.0.11)
     orm_adapter (0.4.0)
     paperclip (3.4.1)
       activemodel (>= 3.0.0)
@@ -481,7 +474,6 @@ DEPENDENCIES
   kaminari
   letter_opener
   mixpanel
-  mongoid (~> 3.0.0)
   newrelic-grape
   newrelic_rpm
   nokogiri
