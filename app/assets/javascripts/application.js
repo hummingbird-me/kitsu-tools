@@ -10,7 +10,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require jquery-ui-custom-1.10.3.js
 //= require underscore-1.4.4.js
 //= require backbone-1.0.0.js
 //= require moment.js
@@ -21,8 +20,6 @@
 //= require redactor-9.0.1.js
 //= require charcount.js
 //= require jscroll.js
-//= require multiselect-filter.js
-//= require multiselect.js
 //= require typeahead.js
 //= require offcanvas.js
 //= require jquery.easy-pie-chart.js
