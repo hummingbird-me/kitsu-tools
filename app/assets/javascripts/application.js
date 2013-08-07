@@ -31,7 +31,6 @@
 //= require vendor/custom.modernizr
 //= require googleplus.js
 //= require twitter.js
-//= require hogan-2.0.0.js
 //= require bootstrap-tooltip.js
 //= require bootstrap-popover.js
 //= require i18n
