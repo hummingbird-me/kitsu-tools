@@ -3,6 +3,9 @@
 # Flush all rules.
 iptables -F
 
+# Allow ICMP packets.
+iptables -A INPUT -p icmp -j ACCEPT
+
 # Allow established sessions to receive traffic.
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
