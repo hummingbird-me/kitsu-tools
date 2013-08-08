@@ -276,6 +276,13 @@
 
     // Right Column
     .large-3.columns
+      / Rating
+      - if @anime.bayesian_average
+        .large-12.columns.no-padding.side-block
+          %p
+            Rating:
+            = @anime.bayesian_average
+
       //trailer
       - if @anime.youtube_video_id and @anime.youtube_video_id.strip.length > 0
         .large-12.columns.no-padding.side-block
