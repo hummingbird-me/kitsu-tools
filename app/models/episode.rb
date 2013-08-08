@@ -8,8 +8,6 @@ class Episode < ActiveRecord::Base
 
   validates :anime, :number, presence: true
   validates_uniqueness_of :number, scope: [:anime_id, :season_number]
-
-  has_and_belongs_to_many :watchlists, :uniq => true
   
   def title
     t = read_attribute(:title)
