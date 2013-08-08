@@ -41,7 +41,10 @@ class AnimeController < ApplicationController
 
     @franchise_anime = @anime.franchises.map {|x| x.anime }.flatten.uniq.sort_by {|x| x.started_airing_date || (Time.now + 100.years).to_date }
     
+    if false
     @similar = @anime.similar(2, exclude: @franchise_anime)
+    end
+    @similar = []
 
     # Add to recently viewed.
     if @anime.sfw?
@@ -121,7 +124,7 @@ class AnimeController < ApplicationController
       @anime = @anime.order("started_airing_date")
     else
       @sort = "all"
-      @anime = @anime.order("wilson_ci DESC")
+      @anime = @anime.order("bayesian_average DESC")
     end
     
     # TODO Apply year filter.
@@ -213,7 +216,7 @@ class AnimeController < ApplicationController
     
     # Order by Wilson CI lower bound, except for the recommendations page.
     unless @filter == "recommended"
-      @anime = @anime.order('anime.wilson_ci DESC')
+      @anime = @anime.order('anime.bayesian_average DESC')
     end
 
     unless @filter == "unfinished"

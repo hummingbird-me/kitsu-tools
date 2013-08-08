@@ -277,11 +277,11 @@
     // Right Column
     .large-3.columns
       / Rating
-      - if @anime.bayesian_average
+      - if @anime.bayesian_average and @anime.bayesian_average > 0.01
         .large-12.columns.no-padding.side-block
-          %p
-            Rating:
-            = @anime.bayesian_average
+          %h5
+            RATING:
+            = "%.2f" % @anime.bayesian_average
 
       //trailer
       - if @anime.youtube_video_id and @anime.youtube_video_id.strip.length > 0
