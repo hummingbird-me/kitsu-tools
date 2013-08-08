@@ -59,43 +59,6 @@ class Watchlist < ActiveRecord::Base
     end
   end
   
-  after_save do
-    self.user.update_column :last_library_update, Time.now
-  end
-  
-  after_create do
-    TrendingAnime.vote self.anime_id
-  end
-  
-  def update_episode_count(new_count)
-    old_count = self.episodes_watched || 0
-    self.episodes_watched = new_count || 0
-
-    # If the show is completed and we know its episode count, don't allow users
-    # to exceed the maximum number of episodes.
-    if self.anime.episode_count and (self.anime.episode_count > 0 and (self.episodes_watched || 0) > self.anime.episode_count) and self.anime.status == "Finished Airing"
-      self.episodes_watched = self.anime.episode_count
-    end
-
-    self.last_watched = Time.now
-    self.save
-
-    self.user.update_life_spent_on_anime( (self.episodes_watched - old_count) * (self.anime.episode_length || 0) )
-  end
-  
-  def update_rewatched_times(new_times)
-    old_times = self.rewatched_times || 0
-    self.rewatched_times = new_times
-    self.save
-    self.user.update_life_spent_on_anime( (self.rewatched_times - old_times) * ((self.anime.episode_count || 0) * (self.anime.episode_length || 0)) )
-    self
-  end
-
-  before_destroy do
-    self.update_episode_count 0
-    self.update_rewatched_times 0
-  end
-
   include ActionView::Helpers::TextHelper
   def to_hash(current_user=nil)
     {
@@ -129,5 +92,64 @@ class Watchlist < ActiveRecord::Base
       id: Digest::MD5.hexdigest("^_^" + self.id.to_s),
       private: self.private
     }
+  end
+
+  def update_episode_count(new_count)
+    old_count = self.episodes_watched || 0
+    self.episodes_watched = new_count || 0
+
+    # If the show is completed and we know its episode count, don't allow users
+    # to exceed the maximum number of episodes.
+    if self.anime.episode_count and (self.anime.episode_count > 0 and (self.episodes_watched || 0) > self.anime.episode_count) and self.anime.status == "Finished Airing"
+      self.episodes_watched = self.anime.episode_count
+    end
+
+    self.last_watched = Time.now
+    self.save
+
+    self.user.update_life_spent_on_anime( (self.episodes_watched - old_count) * (self.anime.episode_length || 0) )
+  end
+  
+  def update_rewatched_times(new_times)
+    old_times = self.rewatched_times || 0
+    self.rewatched_times = new_times
+    self.save
+    self.user.update_life_spent_on_anime( (self.rewatched_times - old_times) * ((self.anime.episode_count || 0) * (self.anime.episode_length || 0)) )
+    self
+  end
+
+  def aggregate_changed_attributes
+    # Update anime rating frequencies.
+    if self.rating_changed?
+      if self.rating_was
+        self.anime.rating_frequencies[self.rating_was.to_s] = self.anime.rating_frequencies[self.rating_was.to_s].to_i
+        self.anime.rating_frequencies[self.rating_was.to_s] -= 1
+      end
+      if self.rating
+        self.anime.rating_frequencies[self.rating.to_s] ||= 0
+        self.anime.rating_frequencies[self.rating.to_s] = self.anime.rating_frequencies[self.rating.to_s].to_i
+        self.anime.rating_frequencies[self.rating.to_s] += 1
+      end
+      self.anime.save
+    end
+  end
+
+  before_save do
+    self.aggregate_changed_attributes
+  end
+
+  after_save do
+    self.user.update_column :last_library_update, Time.now
+  end
+  
+  after_create do
+    TrendingAnime.vote self.anime_id
+  end
+  
+  before_destroy do
+    self.rating = nil
+    self.update_episode_count 0
+    self.update_rewatched_times 0
+    self.aggregate_changed_attributes
   end
 end

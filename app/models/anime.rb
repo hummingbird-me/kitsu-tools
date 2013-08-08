@@ -14,6 +14,8 @@ class Anime < ActiveRecord::Base
     :age_rating_guide, :started_airing_date, :finished_airing_date, :franchise_ids,
     :genre_ids, :producer_ids, :casting_ids
 
+  serialize :rating_frequencies, ActiveRecord::Coders::Hstore
+
   has_attached_file :cover_image, 
     default_url: "/assets/missing-anime-cover.jpg",
     styles: {thumb: "225x335!" }

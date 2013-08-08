@@ -78,7 +78,7 @@ CREATE TABLE anime (
     cover_image_content_type character varying(255),
     cover_image_file_size integer,
     cover_image_updated_at timestamp without time zone,
-    wilson_ci double precision DEFAULT 0,
+    bayesian_average double precision DEFAULT 0,
     user_count integer,
     thetvdb_series_id character varying(255),
     thetvdb_season_id character varying(255),
@@ -87,7 +87,8 @@ CREATE TABLE anime (
     mal_age_rating character varying(255),
     show_type character varying(255),
     started_airing_date date,
-    finished_airing_date date
+    finished_airing_date date,
+    rating_frequencies hstore
 );
 
 
@@ -1875,7 +1876,7 @@ CREATE UNIQUE INDEX index_anime_on_mal_id ON anime USING btree (mal_id);
 -- Name: index_anime_on_wilson_ci; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_anime_on_wilson_ci ON anime USING btree (wilson_ci DESC);
+CREATE INDEX index_anime_on_wilson_ci ON anime USING btree (bayesian_average DESC);
 
 
 --
@@ -2644,3 +2645,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130729173411');
 INSERT INTO schema_migrations (version) VALUES ('20130731140148');
 
 INSERT INTO schema_migrations (version) VALUES ('20130731144655');
+
+INSERT INTO schema_migrations (version) VALUES ('20130808040207');
+
+INSERT INTO schema_migrations (version) VALUES ('20130808040934');
+
+INSERT INTO schema_migrations (version) VALUES ('20130808041102');
