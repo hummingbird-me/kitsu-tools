@@ -163,7 +163,7 @@ class MalImport
           meta[:dates][:from] = (dates.strip == "?") ? nil : DateTime.parse(dates).to_date 
         end
       end
-    #rescue
+    rescue
     end
 
     # Show type
