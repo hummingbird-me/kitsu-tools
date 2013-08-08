@@ -86,10 +86,17 @@
   }
 
   // Center Column Episode Count, duration, etc.
-  .series-meta-data {
+  .series-metadata {
     opacity: .5;
     font-size: 14px;
-    
+
+    li {
+      display: inline;
+
+      &:after            { content: " · "; }
+      &:last-child:after { content: ""; }
+    }
+
     span.has-tip {
       font-weight: normal;
     }

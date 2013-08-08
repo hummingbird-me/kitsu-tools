@@ -54,39 +54,42 @@
           %span.air-date 
 
         .large-12.columns
-          %p.series-meta-data 
-            / Show type
+          %ul.series-metadata
+            / Show Type
             - if @anime.show_type
-              %span 
-                - if @anime.show_type == "TV"
-                  TV Series
-                - else
-                  = @anime.show_type
-                ·
-            / Age rating
+              %li= @anime.show_type == "TV" ? "TV Series" : @anime.show_type
+
+            / Age Rating
             - if @anime.age_rating
-              - if @anime.age_rating_guide and @anime.age_rating_guide.strip.length > 0
-                %span.has-tip.tip-bottom(data-tooltip){title: @anime.age_rating_guide}
+              %li 
+                - if @anime.age_rating_guide and @anime.age_rating_guide.strip.length > 0
+                  %span.has-tip.tip-bottom(data-tooltip){title: @anime.age_rating_guide}
+                    = @anime.age_rating
+                - else
                   = @anime.age_rating
-              - else
-                %span
-                  = @anime.age_rating
-              ·
-            / Episode count
-            %span 
-              - if @anime.episode_count and @anime.episode_count > 0
-                = @anime.episode_count
-              - else
-                ?
-              Episodes ·
-            / Episode length
-            %span 
+
+            / Episode Count
+            - if @anime.episode_count and @anime.episode_count > 0
+              - if @anime.episode_count > 1
+                %li
+                  = @anime.episode_count
+                  episodes
+            - else
+              %li ? episodes
+
+            / Episode Length
+            %li
               - if @anime.episode_length and @anime.episode_length > 0
                 = @anime.episode_length
               - else
                 ?
-              Min Each ·
-            %span
+              - if @anime.episode_count.nil? or @anime.episode_count != 1
+                min each
+              - else
+                minutes
+
+            / Air Dates
+            %li
               - if @anime.status == "Finished Airing"
                 Aired 
               - elsif @anime.status == "Currently Airing"
@@ -97,6 +100,7 @@
               = @anime.started_airing_date.try(:strftime, "%B %e, %Y") || "?"
               to
               = @anime.finished_airing_date.try(:strftime, "%B %e, %Y") || "?"
+
           %hr
         .large-12.columns
           .genres
