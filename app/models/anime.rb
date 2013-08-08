@@ -9,10 +9,10 @@ class Anime < ActiveRecord::Base
   friendly_id :canonical_title, :use => [:slugged, :history]
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, 
-    :status, :synopsis, :cover_image, :youtube_video_id, :alt_title, :franchises,
-    :thetvdb_series_id, :thetvdb_season_id, :show_type, :english_canonical, 
-    :age_rating_guide, :started_airing_date, :finished_airing_date, :franchise_ids,
-    :genre_ids, :producer_ids, :casting_ids
+    :synopsis, :cover_image, :youtube_video_id, :alt_title, :franchises, :show_type,
+    :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide,
+    :started_airing_date, :finished_airing_date, :franchise_ids, :genre_ids,
+    :producer_ids, :casting_ids
 
   serialize :rating_frequencies, ActiveRecord::Coders::Hstore
 
@@ -135,7 +135,6 @@ class Anime < ActiveRecord::Base
     self.age_rating, self.age_rating_guide = Anime.convert_age_rating(self.mal_age_rating)
     self.episode_count ||= meta[:episode_count]
     self.episode_length ||= meta[:episode_length]
-    self.status = meta[:status]
 
     self.castings.select {|x| x.character and meta[:featured_character_mal_ids].include? x.character.mal_id }.each do |c|
       c.featured = true; c.save
@@ -153,6 +152,16 @@ class Anime < ActiveRecord::Base
     ["OVA", "ONA", "Movie", "TV", "Special", "Music"]
   end
 
+  def status
+    if started_airing_date.nil? or started_airing_date > Time.now.to_date
+      "Not Yet Aired"
+    elsif (finished_airing_date.nil? and episode_count == 1) or finished_airing_date and finished_airing_date < Time.now.to_date
+      "Finished Airing"
+    else
+      "Currently Airing"
+    end
+  end
+
   before_save do
     # If episode_count has increased, create new episodes.
     if self.episode_count and self.episodes.length < self.episode_count and (self.episodes.length == 0 or self.thetvdb_series_id.nil? or self.thetvdb_series_id.length == 0) 
@@ -167,6 +176,9 @@ class Anime < ActiveRecord::Base
   end
 
   def similar(limit=20, options={})
+    # FIXME
+    return [] if Rails.env.development?
+
     exclude = options[:exclude] ? options[:exclude] : []
     similar_anime = []
     

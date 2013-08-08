@@ -68,7 +68,6 @@ CREATE TABLE anime (
     age_rating character varying(255),
     episode_count integer,
     episode_length integer,
-    status character varying(255),
     synopsis text,
     youtube_video_id character varying(255),
     mal_id integer,
@@ -2651,3 +2650,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130808040207');
 INSERT INTO schema_migrations (version) VALUES ('20130808040934');
 
 INSERT INTO schema_migrations (version) VALUES ('20130808041102');
+
+INSERT INTO schema_migrations (version) VALUES ('20130808091709');

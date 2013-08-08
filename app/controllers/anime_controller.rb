@@ -141,11 +141,11 @@ class AnimeController < ApplicationController
         sum.class == Arel::Table ? condition : sum.or(condition)
       end
       if @years.include? "Upcoming"
-        condition = arel[:status].eq("Not Yet Aired")
+        condition = arel[:started_airing_date].gt(Time.now.to_date).or(arel[:started_airing_date].eq(nil))
         if query.class == Arel::Table
           query = condition
         else
-          query = query.or(arel[:status].eq("Not Yet Aired"))
+          query = query.or(condition)
         end
       end
       @anime = @anime.where(query)
