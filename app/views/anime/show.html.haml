@@ -89,17 +89,7 @@
                 minutes
 
             / Air Dates
-            %li
-              - if @anime.status == "Finished Airing"
-                Aired 
-              - elsif @anime.status == "Currently Airing"
-                Airing
-              - else
-                Will Air
-              from 
-              = @anime.started_airing_date.try(:strftime, "%B %e, %Y") || "?"
-              to
-              = @anime.finished_airing_date.try(:strftime, "%B %e, %Y") || "?"
+            %li= airing_date(@anime)
 
           %hr
         .large-12.columns

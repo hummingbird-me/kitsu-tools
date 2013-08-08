@@ -155,7 +155,7 @@ class Anime < ActiveRecord::Base
   def status
     if started_airing_date.nil? or started_airing_date > Time.now.to_date
       "Not Yet Aired"
-    elsif (finished_airing_date.nil? and episode_count == 1) or finished_airing_date and finished_airing_date < Time.now.to_date
+    elsif (finished_airing_date.nil? and episode_count == 1) or (finished_airing_date and finished_airing_date < Time.now.to_date)
       "Finished Airing"
     else
       "Currently Airing"
