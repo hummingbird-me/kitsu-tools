@@ -158,12 +158,12 @@ class MalImport
         meta[:dates][:to] = dates[1]
       else
         if dates.strip.match /^\d+$/
-          meta[:dates][:from] = Date.new x.strip.to_i
+          meta[:dates][:from] = Date.new dates.strip.to_i
         else
           meta[:dates][:from] = (dates.strip == "?") ? nil : DateTime.parse(dates).to_date 
         end
       end
-    rescue
+    #rescue
     end
 
     # Show type
