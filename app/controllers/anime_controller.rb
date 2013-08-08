@@ -41,10 +41,7 @@ class AnimeController < ApplicationController
 
     @franchise_anime = @anime.franchises.map {|x| x.anime }.flatten.uniq.sort_by {|x| x.started_airing_date || (Time.now + 100.years).to_date }
     
-    if false
     @similar = @anime.similar(2, exclude: @franchise_anime)
-    end
-    @similar = []
 
     # Add to recently viewed.
     if @anime.sfw?
@@ -124,7 +121,7 @@ class AnimeController < ApplicationController
       @anime = @anime.order("started_airing_date")
     else
       @sort = "all"
-      @anime = @anime.order("bayesian_average DESC")
+      @anime = @anime.order("bayesian_average DESC NULLS LAST")
     end
     
     # TODO Apply year filter.
