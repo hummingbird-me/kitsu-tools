@@ -19,11 +19,22 @@ module AnimesHelper
     end
 
     if anime.status == "Finished Airing"
-      "Aired from #{started} to #{finished}"
+      display = "Aired"
     elsif anime.status == "Currently Airing"
-      "Airing from #{started} to #{finished}"
+      display = "Airing"
     else
-      "Will air from #{started} to #{finished}"
+      display = "Will air"
     end
+
+    if anime.episode_count and anime.episode_count == 1
+      display += " on #{started}"
+    else
+      display += " from #{started}"
+      if finished != "?"
+        display += " to #{finished}"
+      end
+    end
+
+    display
   end
 end
