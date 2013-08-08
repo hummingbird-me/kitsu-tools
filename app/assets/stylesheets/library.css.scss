@@ -1,3 +1,9 @@
+@import "compass/css3/user-interface";
+
+.library-item-title {
+  @include user-select(none);
+}
+
 .rating-widget {
   text-align: center;
   .rating {
