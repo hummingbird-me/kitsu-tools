@@ -119,6 +119,11 @@ class Anime < ActiveRecord::Base
   end
   
   def get_metadata_from_mal
+    begin
+      MalImport.create_series_castings(id)
+    rescue
+    end
+    
     meta = MalImport.series_metadata(self.mal_id)
     self.title = meta[:title]
     self.alt_title = meta[:english_title]
