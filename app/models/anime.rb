@@ -153,12 +153,31 @@ class Anime < ActiveRecord::Base
   end
 
   def status
+    # If the started_airing_date is in the future or not specified, the show hasn't
+    # aired yet.
     if started_airing_date.nil? or started_airing_date > Time.now.to_date
-      "Not Yet Aired"
-    elsif (finished_airing_date.nil? and episode_count == 1) or (finished_airing_date and finished_airing_date < Time.now.to_date)
-      "Finished Airing"
+      return "Not Yet Aired"
+    end
+
+    # Since the show's airing date is in the past, it has either "Finished Airing" or
+    # is "Currently Airing".
+
+    # If the show has only one episode, then it has "Finished Airing".
+    if episode_count == 1
+      return "Finished Airing"
+    end
+
+    # If the finished_airing_date is specified and in the future, the the show is
+    # "Currently Airing". If it is specified and in the past, then the show has
+    # "Finished Airing". If it is not specified, the show is "Currently Airing".
+    if finished_airing_date.nil?
+      return "Currently Airing"
     else
-      "Currently Airing"
+      if finished_airing_date > Time.now.to_date
+        return "Currently Airing"
+      else
+        return "Finished Airing"
+      end
     end
   end
 
