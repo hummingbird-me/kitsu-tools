@@ -166,17 +166,14 @@ _.extend HB,
 
     StatusChangeWidget: Backbone.View.extend
       initialize: ->
-        _(this).bindAll 'change'
-        @model.bind 'change', @change
-        
-      change: ->
-        @render
+        _(this).bindAll 'render'
+        @model.bind 'change', @render
 
       render: ->
         @$el.empty()
         dropdownId = @model.get("anime").slug + "-status-dropdown"
         @$el.append "<a class='button radius padded' href='javascript:void(0)' data-dropdown='" + dropdownId + "'></a>"
-        if @model.get("status")
+        if @model.get("status") and @model.get("status").length > 0
           @$el.find("a").html HB.Library.statusParamToHuman[@model.get("status")]
         else
           @$el.find("a").html "Add to Library"
