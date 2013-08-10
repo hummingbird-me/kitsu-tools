@@ -221,3 +221,8 @@
     }
   }
 }
+
+/* Fix for the header overflow issue. */
+.top-bar-section .has-form {
+  padding: 0 20px;
+}
