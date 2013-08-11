@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'i18n-js', git: 'https://github.com/fnando/i18n-js.git'
-
 gem 'grape'
 gem 'grape-entity'
 

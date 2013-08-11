@@ -2,23 +2,6 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  stories:
-    watched_episode_html: "%{user} watched episode %{number}%{extra}."
-    watchlist_status_updates:
-      first_person:
-        plan_to_watch_html: "%{user} plan to watch."
-        currently_watching_html: "%{user} are currently watching."
-        completed_html: "%{user} have completed."
-        on_hold_html: "%{user} have placed on hold."
-        dropped_html: "%{user} have dropped."
-      third_person:
-        plan_to_watch_html: "%{user} plans to watch."
-        currently_watching_html: "%{user} is currently watching."
-        completed_html: "%{user} has completed."
-        on_hold_html: "%{user} has placed on hold."
-        dropped_html: "%{user} has dropped."
-
-        
   hello: "Hello world"
   admin:
     actions:

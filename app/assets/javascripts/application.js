@@ -29,12 +29,10 @@
 //= require twitter.js
 //= require bootstrap-tooltip.js
 //= require bootstrap-popover.js
-//= require i18n
 //= require awesome_rating.js.coffee
 //
 // Part 2 -- Library initialization.
 //
-//= require i18n/translations
 //= require handlebars_helpers.js.coffee
 //
 // Part 3 -- Application initialization.
