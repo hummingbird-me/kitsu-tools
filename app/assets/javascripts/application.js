@@ -23,7 +23,6 @@
 //= require typeahead.js
 //= require offcanvas.js
 //= require jquery.easy-pie-chart.js
-//= require jquery.ba-throttle-debounce.js
 //= require jquery.icheck.js
 //= require vendor/custom.modernizr
 //= require googleplus.js
