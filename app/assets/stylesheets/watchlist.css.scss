@@ -134,6 +134,7 @@
       padding: 10px;
       padding-top: 0px;
       .username {
+        @include hyphenation;
         margin: 0px;
         color: #fff;
       }
