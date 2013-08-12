@@ -172,10 +172,12 @@ _.extend HB,
       render: ->
         @$el.empty()
         dropdownId = @model.get("anime").slug + "-status-dropdown"
-        @$el.append "<a class='button radius padded' href='javascript:void(0)' data-dropdown='" + dropdownId + "'></a>"
-        if @model.get("status") and @model.get("status").length > 0
+        @$el.append "<a class='button secondary radius padded' href='javascript:void(0)' data-dropdown='" + dropdownId + "'></a>"
+        console.log @model.get "status"
+        if _.contains HB.Library.validStatuses, @model.get("status")
           @$el.find("a").html HB.Library.statusParamToHuman[@model.get("status")]
         else
+          @$el.find("a").removeClass "secondary"
           @$el.find("a").html "Add to Library"
         # Dropdown
         @$el.append "<ul class='f-dropdown status-button' id='" + dropdownId + "'></ul>"
