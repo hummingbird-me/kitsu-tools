@@ -1,6 +1,9 @@
 [loadbalancer]
 106.186.25.22
 
+[mail]
+106.186.25.22
+
 [webservers]
 106.186.25.22 unicorn_processes=6
 

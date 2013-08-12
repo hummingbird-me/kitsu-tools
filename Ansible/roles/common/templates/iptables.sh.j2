@@ -25,5 +25,10 @@ iptables -A INPUT -s {{host}} -j ACCEPT
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 {% endif %}
 
+# Allow incoming port 25 traffic to the mail server.
+{% if 'mail' in group_names %}
+iptables -A INPUT -p tcp --dport 25 -j ACCEPT
+{% endif %}
+
 # Drop all traffic that wasn't allowed by the rules above.
 iptables -A INPUT -j DROP
