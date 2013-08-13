@@ -6,7 +6,7 @@
       .small-12.columns
         = f.email_field :email, placeholder: 'Email Address'
         = f.password_field :password, placeholder: 'Password'
-        = f.hidden_field :return_to, value: request.original_url
+        = hidden_field_tag :return_to, request.original_url
         = f.submit "Login", class: 'button small pull-right'
 
         .pull-left.forgot-password
