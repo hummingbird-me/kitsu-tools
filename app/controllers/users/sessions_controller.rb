@@ -3,6 +3,10 @@ class Users::SessionsController < Devise::SessionsController
     session["user_return_to"] = request.referer
     self.resource = build_resource(nil, :unsafe => true)
     clean_up_passwords(resource)
-    respond_with(resource, serialize_options(resource))
+    if params[:return_to]
+      redirect_to params[:return_to]
+    else
+      respond_with(resource, serialize_options(resource))
+    end
   end
 end

@@ -261,3 +261,51 @@ body {
     }
   }
 }
+
+#signInModal {
+  p.lead {
+    text-align: center;
+  }
+  .alternate-label {
+    color: #999;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 40px;
+    font-style: italic;
+    span {
+      position: absolute;
+      background: #fff;
+      margin-top: 12px;
+      margin-left: 25px;
+      padding-left: 5px;
+      padding-right: 8px;
+    }
+  }
+  .forgot-password {
+    margin-top: 11px;
+  }
+  .button, .fb-button {
+    text-transform: uppercase;
+    &:hover {
+      background: #3f5765;
+    }
+  }
+  .fb-button {
+    @include border-radius(3px);
+    font-weight: 300;
+    font-size: 12px;
+    padding: 8px;
+    display: block;
+    text-align: center;
+    background: #5975b1;
+    color: white;
+    i {
+      font-size: 16px;
+      margin-right: 8px;
+    }
+    span {
+      position: relative;
+      top: -2px;
+    }
+  }
+}

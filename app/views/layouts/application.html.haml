@@ -70,6 +70,9 @@
       }(document, 'script', 'facebook-jssdk'));
       
     = render 'shared/header'
+
+    - unless user_signed_in?
+      = render 'shared/sign_in_modal'
     
     #page.off-canvas.slide-nav
       = content_for?(:content) ? yield(:content) : yield

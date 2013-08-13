@@ -54,7 +54,10 @@
                     = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
             - else
               %li.guest-block
-                %span <a href="#{main_app.new_user_session_path}">Login</a> or <a href="#{main_app.new_user_registration_path}">Register</a>
+                %span 
+                  %a{:href => main_app.new_user_session_path, :"data-reveal-id" => "signInModal"} Login
+                  or 
+                  %a{href: main_app.new_user_registration_path} Register
 
     - if not user_signed_in?
       .guest-banner.hide-for-small
