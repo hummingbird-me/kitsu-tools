@@ -1270,7 +1270,8 @@ CREATE TABLE users (
     ninja_banned boolean DEFAULT false,
     last_library_update timestamp without time zone,
     last_recommendations_update timestamp without time zone,
-    authentication_token character varying(255)
+    authentication_token character varying(255),
+    avatar_processing boolean
 );
 
 
@@ -2652,3 +2653,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130808040934');
 INSERT INTO schema_migrations (version) VALUES ('20130808041102');
 
 INSERT INTO schema_migrations (version) VALUES ('20130808091709');
+
+INSERT INTO schema_migrations (version) VALUES ('20130813051454');
+
+INSERT INTO schema_migrations (version) VALUES ('20130813052255');

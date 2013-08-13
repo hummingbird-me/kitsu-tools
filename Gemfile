@@ -64,6 +64,7 @@ gem 'rdiscount'
 
 # Attachments
 gem "paperclip", "~> 3.0"
+gem 'delayed_paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 
 # Better URLs.
