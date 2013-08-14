@@ -23,7 +23,7 @@
       /   %i.icon-star-empty
 
       .large-12.columns.no-padding
-        .watchlist-status-button{:"data-anime" => @anime.slug, :"data-status" => @watchlist ? @watchlist.status.parameterize : "false"}
+        .watchlist-status-button{:"data-anime" => @anime.slug, :"data-status" => @watchlist ? @watchlist.status.parameterize : ""}
 
       - if @franchise_anime.length > 0 
         .large-12.columns.no-padding.side-block
@@ -54,49 +54,43 @@
           %span.air-date 
 
         .large-12.columns
-          %p.series-meta-data 
-            / Show type
+          %ul.series-metadata
+            / Show Type
             - if @anime.show_type
-              %span 
-                - if @anime.show_type == "TV"
-                  TV Series
-                - else
-                  = @anime.show_type
-                ·
-            / Age rating
+              %li= @anime.show_type == "TV" ? "TV Series" : @anime.show_type
+
+            / Age Rating
             - if @anime.age_rating
-              - if @anime.age_rating_guide and @anime.age_rating_guide.strip.length > 0
-                %span.has-tip.tip-bottom(data-tooltip){title: @anime.age_rating_guide}
+              %li 
+                - if @anime.age_rating_guide and @anime.age_rating_guide.strip.length > 0
+                  %span.has-tip.tip-bottom(data-tooltip){title: @anime.age_rating_guide}
+                    = @anime.age_rating
+                - else
                   = @anime.age_rating
-              - else
-                %span
-                  = @anime.age_rating
-              ·
-            / Episode count
-            %span 
-              - if @anime.episode_count and @anime.episode_count > 0
-                = @anime.episode_count
-              - else
-                ?
-              Episodes ·
-            / Episode length
-            %span 
+
+            / Episode Count
+            - if @anime.episode_count and @anime.episode_count > 0
+              - if @anime.episode_count > 1
+                %li
+                  = @anime.episode_count
+                  episodes
+            - else
+              %li ? episodes
+
+            / Episode Length
+            %li
               - if @anime.episode_length and @anime.episode_length > 0
                 = @anime.episode_length
               - else
                 ?
-              Min Each ·
-            %span
-              - if @anime.status == "Finished Airing"
-                Aired 
-              - elsif @anime.status == "Currently Airing"
-                Airing
+              - if @anime.episode_count.nil? or @anime.episode_count != 1
+                min each
               - else
-                Will Air
-              from 
-              = @anime.started_airing_date.try(:strftime, "%B %e, %Y") || "?"
-              to
-              = @anime.finished_airing_date.try(:strftime, "%B %e, %Y") || "?"
+                minutes
+
+            / Air Dates
+            %li= airing_date(@anime)
+
           %hr
         .large-12.columns
           .genres
@@ -276,6 +270,13 @@
 
     // Right Column
     .large-3.columns
+      / Rating
+      - if @anime.bayesian_average and @anime.bayesian_average > 0.01
+        .large-12.columns.no-padding.side-block
+          %h5
+            RATING:
+            = "%.2f" % @anime.bayesian_average
+
       //trailer
       - if @anime.youtube_video_id and @anime.youtube_video_id.strip.length > 0
         .large-12.columns.no-padding.side-block
@@ -312,3 +313,7 @@
             = quote.character_name
         = link_to "[show more]", anime_quotes_path(@anime)
   
+
+/ Sublime Video
+%script(type="text/javascript" src="http://cdn.sublimevideo.net/js/najrag6v.js")
+

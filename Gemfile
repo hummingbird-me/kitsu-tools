@@ -2,8 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 
-gem 'i18n-js', git: 'https://github.com/fnando/i18n-js.git'
-
 gem 'grape'
 gem 'grape-entity'
 
@@ -11,8 +9,6 @@ gem 'riemann-client'
 
 gem 'pg'
 gem 'activerecord-postgres-hstore'
-
-gem 'mongoid', '~> 3.0.0'
 
 gem 'redis'
 gem 'redis-rails'
@@ -68,6 +64,7 @@ gem 'rdiscount'
 
 # Attachments
 gem "paperclip", "~> 3.0"
+gem 'delayed_paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 
 # Better URLs.

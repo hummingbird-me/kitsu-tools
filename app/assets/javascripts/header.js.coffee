@@ -29,7 +29,7 @@ _.extend HB,
         @el.removeClass("nav-visible").addClass("nav-hidden")
         @visible = false
 
-    scrollHander: ->
+    scrollHandler: ->
       top = $(window).scrollTop()
       amount = Math.abs(top - @lastScroll)
 
@@ -49,7 +49,7 @@ _.extend HB,
 
     init: ->
       @el = $(".hummingbird-header-actual")
-      $(window).bind "scroll", ($.throttle 250, $.proxy(@scrollHander, this))
+      $(window).bind 'scroll', _.throttle(_.bind(@scrollHandler, this), 250)
 
 $ ->
   HB.header.init()

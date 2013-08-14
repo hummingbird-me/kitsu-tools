@@ -22,7 +22,7 @@ class AnimeController < ApplicationController
     @producers = @anime.producers
     @quotes = Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => "votes DESC", :limit => 4})
     
-    @castings = Casting.where(anime_id: @anime.id, featured: true).sort_by {|x| x.order || 1000 }
+    @castings = Casting.where(anime_id: @anime.id, featured: true).includes(:person, :character).sort_by {|x| x.order || 1000 }
     @languages = @castings.map {|x| x.role }.sort
     ["Japanese", "English"].reverse.each do |l|
       @languages.unshift l if @languages.include? l
@@ -121,7 +121,7 @@ class AnimeController < ApplicationController
       @anime = @anime.order("started_airing_date")
     else
       @sort = "all"
-      @anime = @anime.order("wilson_ci DESC")
+      @anime = @anime.order("bayesian_average DESC NULLS LAST")
     end
     
     # TODO Apply year filter.
@@ -141,11 +141,11 @@ class AnimeController < ApplicationController
         sum.class == Arel::Table ? condition : sum.or(condition)
       end
       if @years.include? "Upcoming"
-        condition = arel[:status].eq("Not Yet Aired")
+        condition = arel[:started_airing_date].gt(Time.now.to_date).or(arel[:started_airing_date].eq(nil))
         if query.class == Arel::Table
           query = condition
         else
-          query = query.or(arel[:status].eq("Not Yet Aired"))
+          query = query.or(condition)
         end
       end
       @anime = @anime.where(query)
@@ -213,7 +213,7 @@ class AnimeController < ApplicationController
     
     # Order by Wilson CI lower bound, except for the recommendations page.
     unless @filter == "recommended"
-      @anime = @anime.order('anime.wilson_ci DESC')
+      @anime = @anime.order('anime.bayesian_average DESC')
     end
 
     unless @filter == "unfinished"

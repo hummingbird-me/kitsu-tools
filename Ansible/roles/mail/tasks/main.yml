@@ -1,0 +1,13 @@
+- name: Install Postfix
+  apt: pkg=postfix state=present
+
+- name: Copy main.cf
+  copy: src=main.cf dest=/etc/postfix/main.cf
+
+- name: Copy virtual map file
+  copy: src=virtual dest=/etc/postfix/virtual
+  register: virtual
+
+- name: Reload virtual map file
+  shell: postmap /etc/postfix/virtual && service postfix reload
+  only_if: ${virtual.changed}

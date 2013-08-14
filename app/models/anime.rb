@@ -9,10 +9,12 @@ class Anime < ActiveRecord::Base
   friendly_id :canonical_title, :use => [:slugged, :history]
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, 
-    :status, :synopsis, :cover_image, :youtube_video_id, :alt_title, :franchises,
-    :thetvdb_series_id, :thetvdb_season_id, :show_type, :english_canonical, 
-    :age_rating_guide, :started_airing_date, :finished_airing_date, :franchise_ids,
-    :genre_ids, :producer_ids, :casting_ids
+    :synopsis, :cover_image, :youtube_video_id, :alt_title, :franchises, :show_type,
+    :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide,
+    :started_airing_date, :finished_airing_date, :franchise_ids, :genre_ids,
+    :producer_ids, :casting_ids
+
+  serialize :rating_frequencies, ActiveRecord::Coders::Hstore
 
   has_attached_file :cover_image, 
     default_url: "/assets/missing-anime-cover.jpg",
@@ -117,6 +119,11 @@ class Anime < ActiveRecord::Base
   end
   
   def get_metadata_from_mal
+    begin
+      MalImport.create_series_castings(id)
+    rescue
+    end
+    
     meta = MalImport.series_metadata(self.mal_id)
     self.title = meta[:title]
     self.alt_title = meta[:english_title]
@@ -128,7 +135,6 @@ class Anime < ActiveRecord::Base
     self.age_rating, self.age_rating_guide = Anime.convert_age_rating(self.mal_age_rating)
     self.episode_count ||= meta[:episode_count]
     self.episode_length ||= meta[:episode_length]
-    self.status = meta[:status]
 
     self.castings.select {|x| x.character and meta[:featured_character_mal_ids].include? x.character.mal_id }.each do |c|
       c.featured = true; c.save
@@ -146,6 +152,35 @@ class Anime < ActiveRecord::Base
     ["OVA", "ONA", "Movie", "TV", "Special", "Music"]
   end
 
+  def status
+    # If the started_airing_date is in the future or not specified, the show hasn't
+    # aired yet.
+    if started_airing_date.nil? or started_airing_date > Time.now.to_date
+      return "Not Yet Aired"
+    end
+
+    # Since the show's airing date is in the past, it has either "Finished Airing" or
+    # is "Currently Airing".
+
+    # If the show has only one episode, then it has "Finished Airing".
+    if episode_count == 1
+      return "Finished Airing"
+    end
+
+    # If the finished_airing_date is specified and in the future, the the show is
+    # "Currently Airing". If it is specified and in the past, then the show has
+    # "Finished Airing". If it is not specified, the show is "Currently Airing".
+    if finished_airing_date.nil?
+      return "Currently Airing"
+    else
+      if finished_airing_date > Time.now.to_date
+        return "Currently Airing"
+      else
+        return "Finished Airing"
+      end
+    end
+  end
+
   before_save do
     # If episode_count has increased, create new episodes.
     if self.episode_count and self.episodes.length < self.episode_count and (self.episodes.length == 0 or self.thetvdb_series_id.nil? or self.thetvdb_series_id.length == 0) 
@@ -160,6 +195,9 @@ class Anime < ActiveRecord::Base
   end
 
   def similar(limit=20, options={})
+    # FIXME
+    return [] if Rails.env.development?
+
     exclude = options[:exclude] ? options[:exclude] : []
     similar_anime = []
     

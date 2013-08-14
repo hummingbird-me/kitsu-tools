@@ -10,30 +10,56 @@ def ci_lower_bound(pos, n)
 end
 
 namespace :compute do
-  desc "Compute the lower bound of the Wilson score CI for each anime"
-  task :wilson_ci => :environment do |t|
-    # NOTE This doesn't actually compute the Wilson CI, rather it computes a
-    #      Bayesian average.
+  desc "Compute the Bayesian average rating for every show"
+  task :bayesian_average => :environment do |t|
     #
-    #      See: http://masanjin.net/blog/how-to-rank-products-based-on-user-input
-    #prior = (-2..2).map {|x| Watchlist.where(rating: x).count }
-    prior = [2, 2, 2, 2, 2]
-    Anime.where({}).each do |anime|
-      votes = (-2..2).map {|x| anime.watchlists.where(rating: x).count }
-      posterior = votes.zip(prior).map {|a, b| a + b }
-      sum = posterior.sum
-      score = posterior.map.with_index {|v, i| (i + 1) * v }.inject {|a, b| a + b }.to_f / sum
-      anime.wilson_ci = (score - 1.0) / 4
-      anime.user_count = anime.watchlists.count
-      anime.save
+    # Bayesian rating:
+    #
+    #     r * v / (v + m) + c * m / (v + m)
+    #
+    #   where:
+    #     r: average for the show
+    #     v: number of votes for the show
+    #     m: minimum votes needed to display rating
+    #     c: average across all shows
+    #
+
+    m = 50
+    global_total_rating = 0
+    global_total_votes  = 0
+    anime_total_ratings = {}
+    anime_total_votes   = {}
+
+    Anime.find_each do |anime|
+      anime_total_ratings[anime.id] ||= 0
+      anime_total_votes[anime.id]   ||= 0
+
+      anime.rating_frequencies.each do |rating_s, count_s|
+        rating  = rating_s.to_f
+        count   = count_s.to_f
+
+        global_total_rating += rating * count
+        global_total_votes  += count
+
+        anime_total_ratings[anime.id] += rating * count
+        anime_total_votes[anime.id]   += count
+      end
+
+      STDERR.puts "Pass 1: #{anime.id}"
     end
-    # After computing the ratings, normalize them so that they span the range
-    # [0.2, 1].
-    min = Anime.all.map {|x| x.wilson_ci }.min
-    max = Anime.all.map {|x| x.wilson_ci }.max
-    Anime.where({}).each do |anime|
-      anime.wilson_ci = 0.2 + 0.8 * (anime.wilson_ci - min) / (max - min)
+
+    c = global_total_rating * 1.0 / global_total_votes
+
+    Anime.find_each do |anime|
+      v = anime_total_votes[anime.id]
+      if v >= m
+        r = anime_total_ratings[anime.id] * 1.0 / v
+        anime.bayesian_average = (r * v + c * m) / (v + m)
+      else
+        anime.bayesian_average = nil
+      end
       anime.save
+      STDERR.puts "Pass 2: #{anime.id}"
     end
   end
 end

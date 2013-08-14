@@ -70,6 +70,10 @@ class API_v1 < Grape::API
       optional :title_language_preference, type: String
     end
     get ':user_id/library' do
+      if params[:page] and params[:page] > 1
+        return []
+      end
+
       user = find_user(params[:user_id])
       status = Watchlist.status_parameter_to_status(params[:status])
 
@@ -78,7 +82,6 @@ class API_v1 < Grape::API
       else
         watchlists = user.watchlists.accessible_by(current_ability).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime)
       end
-      watchlists = watchlists.page(params[:page]).per(400)
       
       title_language_preference = params[:title_language_preference]
       if title_language_preference.nil? and current_user
@@ -125,6 +128,7 @@ class API_v1 < Grape::API
     desc "Update a specific anime's details in a user's library."
     params do
       requires :anime_slug, type: String
+      optional :increment_episodes, type: String
     end
     post ':anime_slug' do
       authenticate_user!
@@ -186,7 +190,7 @@ class API_v1 < Grape::API
         watchlist.update_episode_count params[:episodes_watched]
       end
 
-      if params[:increment_episodes]
+      if params[:increment_episodes] and params[:increment_episodes] == "true"
         watchlist.status = "Currently Watching"
         watchlist.update_episode_count((watchlist.episodes_watched||0)+1)
         if current_user.neon_alley_integration? and Anime.neon_alley_ids.include? anime.id
@@ -260,5 +264,19 @@ class API_v1 < Grape::API
       end
       similar_anime.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title, genres: x.genres.map {|x| {name: x.name} }, cover_image: x.cover_image.url(:thumb), url: anime_url(x)} }
     end
+  end
+
+  desc "Anime search API endpoint"
+  params do
+    requires :query, type: String, desc: "query string"
+  end
+  get '/search/anime' do
+    anime = Anime.accessible_by(current_ability).includes(:genres)
+    results = anime.simple_search_by_title(params[:query]).limit(5)
+    if results.length == 0
+      results = anime.fuzzy_search_by_title(params[:query]).limit(5)
+    end
+
+    present results, with: Entities::Anime, title_language_preference: (current_user.try(:title_language_preference) || "canonical")
   end
 end

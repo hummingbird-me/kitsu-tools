@@ -31,9 +31,9 @@
     .progress.six
       %span.meter{:style => "width: #{percentage_completed(anime, watchlist)}%"}
     .community-rating
-      .large-12.columns{:class => (anime.wilson_ci > 0.5 ? "positive" : "negative")}
+      .large-12.columns{:class => ((anime.bayesian_average || 5) > 2.5 ? "positive" : "negative")}
         %i
-        %h5= "#{(anime.wilson_ci*100).to_i}%"
+        %h5= anime.bayesian_average ? "#{(anime.bayesian_average*100/5).to_i}%" : "-"
 
     .vote-blocks
       - if user_signed_in? and current_user.star_rating

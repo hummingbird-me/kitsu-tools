@@ -41,12 +41,14 @@ class User < ActiveRecord::Base
     },
     convert_options: {thumb_small: '-unsharp 2x0.5+1+0'},
     default_url: "http://placekitten.com/g/190/190"
-    
+  
   has_attached_file :cover_image, 
     styles: {thumb: {geometry: "760x250#", animated: false}},
     default_url: "http://hummingbird.me/default_cover.png",
     storage: :s3
-    
+
+  process_in_background :avatar, processing_image_url: '/assets/processing-avatar.jpg'
+
   has_many :watchlists
   has_many :reviews
   has_many :quotes

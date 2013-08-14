@@ -97,11 +97,6 @@ class MalImport
   end
   
   def self.series_metadata(id)
-    begin
-      MalImport.create_series_castings(id)
-    rescue
-    end
-    
     noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}").read
     meta = {}
 
@@ -149,9 +144,25 @@ class MalImport
     # Air dates
     meta[:dates] = {}
     begin
-      dates = sidebar.css('div').select {|x| x.text.include? "Aired:" }[0].text.gsub("Aired:", '').split(" to ").map {|x| x.strip }.map {|x| x == "?" ? nil : DateTime.parse(x).to_date }
-      meta[:dates][:from] = dates[0]
-      meta[:dates][:to] = dates[1]
+      dates = sidebar.css('div').select {|x| x.text.include? "Aired:" }[0].text.gsub("Aired:", '')
+      if dates.include? "to"
+        dates = dates.split(" to ").map {|x| x.strip }
+        dates = dates.map do |x| 
+          if x.strip.match /^\d+$/
+            Date.new x.strip.to_i
+          else
+            x == "?" ? nil : DateTime.parse(x).to_date 
+          end
+        end
+        meta[:dates][:from] = dates[0]
+        meta[:dates][:to] = dates[1]
+      else
+        if dates.strip.match /^\d+$/
+          meta[:dates][:from] = Date.new dates.strip.to_i
+        else
+          meta[:dates][:from] = (dates.strip == "?") ? nil : DateTime.parse(dates).to_date 
+        end
+      end
     rescue
     end
 

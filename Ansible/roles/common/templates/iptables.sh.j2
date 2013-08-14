@@ -3,6 +3,9 @@
 # Flush all rules.
 iptables -F
 
+# Allow ICMP packets.
+iptables -A INPUT -p icmp -j ACCEPT
+
 # Allow established sessions to receive traffic.
 iptables -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
@@ -20,6 +23,11 @@ iptables -A INPUT -s {{host}} -j ACCEPT
 # Allow incoming port 80 traffic to the load balancer.
 {% if 'loadbalancer' in group_names %}
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+{% endif %}
+
+# Allow incoming port 25 traffic to the mail server.
+{% if 'mail' in group_names %}
+iptables -A INPUT -p tcp --dport 25 -j ACCEPT
 {% endif %}
 
 # Drop all traffic that wasn't allowed by the rules above.

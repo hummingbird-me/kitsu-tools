@@ -50,7 +50,8 @@
           bottom: 0px;
           top: 0px;
           padding: 10px;
-          background: url("rec-bg.png") bottom left repeat-x;
+          //background: url("rec-bg.png") bottom left repeat-x;
+          @include background(linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.6) 33%, rgba(0,0,0,0) 90%));
           color: #fff;
           p {
             margin-bottom: 5px;

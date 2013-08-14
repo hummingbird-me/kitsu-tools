@@ -12,6 +12,8 @@
         .large-8.columns.library-item-info
           %span.title 
             %a(href="{{anime.url}}") {{anime.title}}
+          %br
+          %br
           %span.description {{truncate anime.synopsis 400}}
           %span.description-link
             %a(style="color: #fd864b" href="{{anime.url}}") [Read More]
