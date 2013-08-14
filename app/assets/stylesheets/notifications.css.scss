@@ -1,3 +1,36 @@
-// Place all the styles related to the notifications controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/css3";
+
+.notifications {
+  margin: 20px 0;
+  .rounded-panel {
+    padding: 0;
+  }
+  h1 {
+    font-size: 1.8em;
+    border: 1px solid rgb(211, 211, 211);
+    background-color: rgb(221, 221, 221);
+    @include border-top-radius(3px);
+    padding-left: 10px;
+    margin-bottom: 0;
+  }
+  li {
+    .img {
+      text-align: center;
+      margin-right: 20px;
+      width: 50px;
+      img {
+        height: 50px;
+        width: auto;
+      }
+      display: inline-block;
+    }
+    padding: 15px 20px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    &:last-child {
+      border-bottom: none;
+    }
+    &.unread {
+      background-color: rgb(240, 240, 240);
+    }
+  }
+}

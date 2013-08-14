@@ -1,0 +1,24 @@
+.notifications
+  .row
+    .small-12.large-6.large-centered.columns.rounded-panel
+      %h1= title (pluralize 1, 'Unread Notification')
+      %ul
+        %li.unread
+          .img= avatar_link User.find(8), :thumb_small
+          = user_link User.find(8)
+          wrote a
+          = link_to "comment"
+          on your profile.
+        %li
+          .img= avatar_link User.find(2585), :thumb_small
+          = user_link User.find(2585)
+          wrote a
+          = link_to "comment"
+          on your profile.
+        %li
+          .img= avatar_link User.find(7828), :thumb_small
+          = user_link User.find(7828)
+          wrote a
+          = link_to "comment"
+          on your profile.
+
