@@ -128,6 +128,7 @@ class API_v1 < Grape::API
     desc "Update a specific anime's details in a user's library."
     params do
       requires :anime_slug, type: String
+      optional :increment_episodes, type: String
     end
     post ':anime_slug' do
       authenticate_user!
@@ -189,7 +190,7 @@ class API_v1 < Grape::API
         watchlist.update_episode_count params[:episodes_watched]
       end
 
-      if params[:increment_episodes]
+      if params[:increment_episodes] and params[:increment_episodes] == "true"
         watchlist.status = "Currently Watching"
         watchlist.update_episode_count((watchlist.episodes_watched||0)+1)
         if current_user.neon_alley_integration? and Anime.neon_alley_ids.include? anime.id
