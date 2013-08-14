@@ -2153,10 +2153,10 @@ CREATE UNIQUE INDEX index_users_on_lower_name_index ON users USING btree (lower(
 
 
 --
--- Name: index_watchlists_on_anime_id_and_rating; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_watchlists_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_watchlists_on_anime_id_and_rating ON watchlists USING btree (anime_id, rating);
+CREATE INDEX index_watchlists_on_user_id ON watchlists USING btree (user_id);
 
 
 --
@@ -2164,6 +2164,13 @@ CREATE INDEX index_watchlists_on_anime_id_and_rating ON watchlists USING btree (
 --
 
 CREATE UNIQUE INDEX index_watchlists_on_user_id_and_anime_id ON watchlists USING btree (user_id, anime_id);
+
+
+--
+-- Name: index_watchlists_on_user_id_and_status; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_watchlists_on_user_id_and_status ON watchlists USING btree (user_id, status);
 
 
 --
@@ -2657,3 +2664,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130808091709');
 INSERT INTO schema_migrations (version) VALUES ('20130813051454');
 
 INSERT INTO schema_migrations (version) VALUES ('20130813052255');
+
+INSERT INTO schema_migrations (version) VALUES ('20130814073240');
