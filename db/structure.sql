@@ -799,7 +799,9 @@ CREATE TABLE notifications (
     source_type character varying(255),
     data hstore,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    notification_type character varying(255),
+    seen boolean DEFAULT false
 );
 
 
@@ -2731,3 +2733,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130813052255');
 INSERT INTO schema_migrations (version) VALUES ('20130814073240');
 
 INSERT INTO schema_migrations (version) VALUES ('20130814165800');
+
+INSERT INTO schema_migrations (version) VALUES ('20130814184014');
+
+INSERT INTO schema_migrations (version) VALUES ('20130814184856');
