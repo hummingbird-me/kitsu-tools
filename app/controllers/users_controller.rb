@@ -143,19 +143,14 @@ class UsersController < ApplicationController
   
   def comment
     authenticate_user!
-    
+
     # Create the story.
     @user = User.find(params[:user_id])
-    story = Story.create(
-      story_type: "comment",
+    story = Action.broadcast(
+      action_type: "created_profile_comment",
       user: @user,
-      target: current_user
-    )
-    substory = Substory.create(
-      user: current_user,
-      substory_type: "comment",
-      story: story,
-      data: {comment: params[:comment]}
+      poster: current_user,
+      comment: params[:comment]
     )
 
     respond_to do |format|

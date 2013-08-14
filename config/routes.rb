@@ -7,6 +7,8 @@ Hummingbird::Application.routes.draw do
     registrations: "users/registrations"
   }
 
+  resource :notifications
+
   mount Forem::Engine => "/community"
 
   match '/lists' => 'home#lists'

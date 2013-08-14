@@ -789,6 +789,42 @@ ALTER SEQUENCE not_interesteds_id_seq OWNED BY not_interesteds.id;
 
 
 --
+-- Name: notifications; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE notifications (
+    id integer NOT NULL,
+    user_id integer,
+    source_id integer,
+    source_type character varying(255),
+    data hstore,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    notification_type character varying(255),
+    seen boolean DEFAULT false
+);
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE notifications_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
+
+
+--
 -- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1478,6 +1514,13 @@ ALTER TABLE ONLY not_interesteds ALTER COLUMN id SET DEFAULT nextval('not_intere
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notifications_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('people_id_seq'::regclass);
 
 
@@ -1730,6 +1773,14 @@ ALTER TABLE ONLY genres
 
 ALTER TABLE ONLY not_interesteds
     ADD CONSTRAINT not_interesteds_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: notifications_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY notifications
+    ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
 
 
 --
@@ -2080,6 +2131,20 @@ CREATE INDEX index_gallery_images_on_anime_id ON gallery_images USING btree (ani
 --
 
 CREATE INDEX index_not_interesteds_on_user_id ON not_interesteds USING btree (user_id);
+
+
+--
+-- Name: index_notifications_on_source_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_notifications_on_source_id ON notifications USING btree (source_id);
+
+
+--
+-- Name: index_notifications_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_notifications_on_user_id ON notifications USING btree (user_id);
 
 
 --
@@ -2666,3 +2731,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130813051454');
 INSERT INTO schema_migrations (version) VALUES ('20130813052255');
 
 INSERT INTO schema_migrations (version) VALUES ('20130814073240');
+
+INSERT INTO schema_migrations (version) VALUES ('20130814165800');
+
+INSERT INTO schema_migrations (version) VALUES ('20130814184014');
+
+INSERT INTO schema_migrations (version) VALUES ('20130814184856');
