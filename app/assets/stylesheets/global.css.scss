@@ -76,8 +76,8 @@ a {
 .rounded-panel {
   background: #fff;
   border: none;
-  @include border-radius(5px);
-  @include box-shadow(#e3e4e6 0px 2px 0px);
+  @include border-radius(3px);
+  @include box-shadow(rgba(0,0,0,0.15) 0px 1px 1px);
   .panel-head {
     .head-title {
       margin-bottom: 10px;

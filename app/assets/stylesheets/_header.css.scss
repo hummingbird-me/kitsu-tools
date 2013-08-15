@@ -52,7 +52,6 @@
   }
 
   .user-block {
-    border-left: 1px solid #e5e5e5;
     .avatar-link-selector {
       line-height: 0px;
       padding-left: 0px;
@@ -154,6 +153,9 @@
       margin-top: -100px;
     }
   }
+  .right-top-nav {
+    position: relative;
+  }
   .header-search {
     position: relative;
     top: 9px;
@@ -181,6 +183,82 @@
       display: inline-block;
       height: 36px;
       width: 36px;
+    }
+  }
+
+  /*Animation Prefs*/
+  .notification-block {
+    border-left: 1px solid #eee;
+    > a:after {
+      display: none !important;
+    }
+    .notification-button {
+      padding-right: 15px !important;
+      padding-left: 20px !important;
+      .icon-bell {
+        position: relative;
+        border: 1px solid #eee;
+        font-size: 20px;
+        color: #ddd;
+        border-radius: 3px;
+        padding: 10px;
+      }
+      
+      &.active {
+        .icon-bell {
+          color: #e57c48;
+          border-color: #e57c48;
+          -webkit-transform-origin: top center;
+          -moz-transform-origin: top center;
+          -o-transform-origin: top center;
+          transform-origin: top center;
+          -webkit-animation-name: swing;
+          -moz-animation-name: swing;
+          -o-animation-name: swing;
+          animation-name: swing;
+          -webkit-animation-iteration-count: infinite; /*Safari and Chrome*/
+        }
+      }
+    }
+    .dropdown {
+      background: #fff !important;
+      max-width: 430px;
+      // visibility: visible !important;
+      .single-notification {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 300;
+        font-size: 11px;
+        background: #f8f8fa;
+        &:hover {
+          color: #222 !important;
+          background: lighten(#f8f8fa, 1) !important;
+        }
+        &.new {
+          background: #fff;
+          &:hover {
+            background: darken(#fff, 2) !important;
+          }
+        }
+      }
+      .view-all-notifications {
+        &:hover {
+          background: lighten(#eee, 3) !important;
+        }
+      }
+
+      .status-info {
+        white-space: normal;
+        .time-ago {
+          margin-bottom: 0px;
+          font-size: 12px;
+          color: #bbb;
+        }
+      }
     }
   }
   .guest-block {

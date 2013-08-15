@@ -32,8 +32,8 @@
                   = link_to "Chat", "/chat"
 
           / Right Nav Section
-          %ul.right
-            %li.has-form
+          %ul.right.right-top-nav
+            %li.has-form.search-form
               .row.collapse.header-search
                 .small-12.columns
                   %form#live_search_form{:action => "/search", :autocomplete => "off"}
@@ -42,6 +42,46 @@
 
             %li.divider.show-for-small
             - if user_signed_in?
+              %li.notification-block.has-dropdown
+                %a.notification-button.active{:href => "/notifications"}
+                  %i.icon-bell &nbsp;02
+                    
+                %ul.dropdown.rounded-panel
+                  %li
+                    %a.single-notification.new.large-12.columns{:href => "#"}
+                      .large-1.columns.no-padding.avatar
+                        = image_tag "http://static.hummingbird.me/users/avatars/000/006/082/thumb/llhdewr1nbsu8505qhi6qe789.gif?1376524453"
+                      .large-11.columns.status-info
+                        <strong>Wexter</strong> wrote a comment on your profile feed.
+                        %p.time-ago about 1 hour ago
+
+                  %li
+                    %a.single-notification.new.large-12.columns{:href => "#"}
+                      .large-1.columns.no-padding.avatar
+                        = image_tag "http://static.hummingbird.me/users/avatars/000/014/744/thumb/250px-SuperSonic_Unleashed1.png?1376570767"
+                      .large-11.columns.status-info
+                        <strong>2Cool4Fun</strong> wrote a comment on your profile feed.
+                        %p.time-ago about 2 hours ago
+
+                  %li
+                    %a.single-notification.large-12.columns{:href => "#"}
+                      .large-1.columns.no-padding.avatar
+                        = image_tag "http://static.hummingbird.me/users/avatars/000/008/820/thumb/8820-2518611.jpg?1375247881"
+                      .large-11.columns.status-info
+                        <strong>Melen</strong> wrote a comment on your profile feed.
+                        %p.time-ago about 1 hour ago
+
+                  %li
+                    %a.single-notification.large-12.columns{:href => "#"}
+                      .large-1.columns.no-padding.avatar
+                        = image_tag "http://static.hummingbird.me/users/avatars/000/005/425/thumb/Because_Sunohara.gif?1375523842"
+                      .large-11.columns.status-info
+                        <strong>HitotsuSenshi</strong> wrote a comment on your profile feed.
+                        %p.time-ago about 1 hour ago
+                  %li
+                    %a.view-all-notifications.single-notification.large-12.columns.center{:href => "#"}
+                      view all
+
               %li.user-block.has-dropdown
                 = link_to image_tag(current_user.avatar_url, :class => "avatar"), main_app.user_path(current_user), :class => "avatar-link-selector"
                 %ul.dropdown.rounded-panel
