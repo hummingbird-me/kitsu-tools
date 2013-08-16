@@ -30,6 +30,11 @@
   roles:
   - webservers
 
+- hosts: sidekiq
+  sudo: True
+  roles:
+  - sidekiq
+
 - hosts: dbservers
   sudo: True
   vars:
