@@ -1,6 +1,6 @@
 %li.no-padding.cf
   - if notification.notification_type == "profile_comment"
-    %a.single-notification.large-12.columns{href: user_path(current_user), class: ('new' unless notification.seen?)}
+    %a.single-notification.large-12.columns{href: main_app.user_path(current_user), class: ('new' unless notification.seen?)}
       .large-1.columns.no-padding.avatar
         = image_tag notification.source.target.avatar.url(:thumb_small)
       .large-11.columns.status-info
