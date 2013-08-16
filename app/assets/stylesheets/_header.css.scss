@@ -240,7 +240,7 @@
       font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
       font-weight: 300;
       font-size: 11px;
-      background: #f8f8fa;
+      background: darken(#f8f8fa, 1);
       color: #404040 !important;
       &.new {
         background: #fff;
