@@ -1,11 +1,12 @@
 %li{class: ('unread' unless notification.seen?)}
   - if notification.notification_type == "profile_comment"
-    .img= avatar_link notification.source.target
-    = user_link notification.source.target
-    wrote a
-    comment
-    on your profile.
-  %span.time
-    = distance_of_time_in_words_to_now notification.created_at
-    ago
+    %a.single-notification.large-12.columns{:href => "/dashboard", class: ('new' unless notification.seen?)}
+      .large-2.columns.no-padding.avatar
+        = avatar_link notification.source.target
+      .large-10.columns.status-info
+        %strong= user_link notification.source.target
+        wrote a comment on your profile.
+        %p.time-ago
+          = distance_of_time_in_words_to_now notification.created_at
+          ago
 
