@@ -44,10 +44,10 @@
             - if user_signed_in?
               %li.notification-block
                 /.has-dropdown
-                %a.notification-button{href: "/notifications", class: ("active" if @unseen_notifications > 0)}
+                %a.notification-button{href: "/notifications", class: ("active" if Notification.unseen_count(current_user) > 0)}
                   %i.icon-bell 
-                    - if @unseen_notifications > 0
-                      %span.notification-count= "%02d" % @unseen_notifications
+                    - if Notification.unseen_count(current_user) > 0
+                      %span.notification-count= "%02d" % Notification.unseen_count(current_user)
                     
                 %ul.dropdown.rounded-panel
                   %li
