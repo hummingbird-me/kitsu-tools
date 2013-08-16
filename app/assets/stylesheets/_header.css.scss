@@ -192,6 +192,7 @@
     > a:after {
       display: none !important;
     }
+
     .notification-button {
       padding-right: 15px !important;
       padding-left: 20px !important;
@@ -202,6 +203,7 @@
         color: #ddd;
         border-radius: 3px;
         padding: 10px;
+        font-weight: 300;
       }
       
       &.active {
@@ -218,6 +220,10 @@
           animation-name: swing;
           -webkit-animation-iteration-count: infinite; /*Safari and Chrome*/
         }
+      }
+      .notification-count {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 300;
       }
     }
     .dropdown {
