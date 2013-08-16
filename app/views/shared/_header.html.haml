@@ -51,7 +51,7 @@
                 %ul.dropdown.rounded-panel
                   = render Notification.recent_notifications(current_user)
                   %li
-                    %a.view-all-notifications.single-notification.large-12.columns.center{:href => "#"}
+                    %a.view-all-notifications.single-notification.large-12.columns.center(href="/notifications")
                       view all
 
               %li.user-block.has-dropdown
