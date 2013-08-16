@@ -4,6 +4,11 @@
 
 // Search Suggestions
 @import "compass/css3";
+.search-form {
+  @media (max-width: 995px) {
+    width: 150px;
+  }
+}
 .search-body, .follow-following {
   background: #fff;
   @include border-bottom-radius(3px);
