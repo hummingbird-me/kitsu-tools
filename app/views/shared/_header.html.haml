@@ -41,10 +41,13 @@
                     %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
 
             %li.divider.show-for-small
-            - if user_signed_in? and false
-              %li.notification-block.has-dropdown
-                %a.notification-button.active{:href => "/notifications"}
-                  %i.icon-bell &nbsp;02
+            - if user_signed_in?
+              %li.notification-block
+                /.has-dropdown
+                %a.notification-button(href="/notifications")
+                  /.active
+                  %i.icon-bell 
+                  / &nbsp;02
                     
                 %ul.dropdown.rounded-panel
                   %li
