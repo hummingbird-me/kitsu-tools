@@ -1,9 +1,9 @@
-%li.cf
+%li.no-padding.cf
   - if notification.notification_type == "profile_comment"
     %a.single-notification.large-12.columns{href: user_path(current_user), class: ('new' unless notification.seen?)}
-      .large-2.columns.no-padding.avatar
+      .large-1.columns.no-padding.avatar
         = image_tag notification.source.target.avatar.url(:thumb_small)
-      .large-10.columns.status-info
+      .large-11.columns.status-info
         %strong= notification.source.target.name
         wrote a comment on your profile.
         %p.time-ago

@@ -20,6 +20,45 @@
 .row {
   overflow: visible !important;
 }
+
+
+.single-notification {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  font-size: 11px;
+  background: #f8f8fa;
+  &:hover {
+    color: #222 !important;
+    background: lighten(#eee, 3) !important;
+  }
+  &.new {
+    background: #fff;
+    &:hover {
+      background: darken(#fff, 2) !important;
+    }
+  }
+}
+
+.view-all-notifications {
+  &:hover {
+    background: lighten(#eee, 3) !important;
+  }
+}
+
+.status-info {
+  white-space: normal;
+  .time-ago {
+    margin-bottom: 0px;
+    font-size: 12px;
+    color: #bbb;
+  }
+}
+
 .connect-icon {
   margin-top: 15px;
 }
