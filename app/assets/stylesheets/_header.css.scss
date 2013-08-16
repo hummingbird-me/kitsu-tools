@@ -241,10 +241,7 @@
       font-weight: 300;
       font-size: 11px;
       background: #f8f8fa;
-      &:hover {
-        color: #222 !important;
-        background: lighten(#eee, 3) !important;
-      }
+      color: #404040 !important;
       &.new {
         background: #fff;
         &:hover {
@@ -254,8 +251,9 @@
     }
 
     .view-all-notifications {
+      background: lighten(#eee, 3) !important;
       &:hover {
-        background: lighten(#eee, 3) !important;
+        background: lighten(#eee, 5) !important;
       }
     }
 

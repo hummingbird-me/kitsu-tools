@@ -30,10 +30,9 @@
   border-bottom: 1px solid #eee;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
-  font-size: 11px;
   background: #f8f8fa;
+  color: #404040 !important;
   &:hover {
-    color: #222 !important;
     background: lighten(#eee, 3) !important;
   }
   &.new {
