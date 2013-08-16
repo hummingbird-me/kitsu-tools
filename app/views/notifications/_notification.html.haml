@@ -1,0 +1,11 @@
+%li{class: ('unread' unless notification.seen?)}
+  - if notification.notification_type == "profile_comment"
+    .img= avatar_link notification.source.target
+    = user_link notification.source.target
+    wrote a
+    comment
+    on your profile.
+  %span.time
+    = distance_of_time_in_words_to_now notification.created_at
+    ago
+
