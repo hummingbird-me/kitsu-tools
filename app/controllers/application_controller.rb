@@ -1,7 +1,15 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :admin_check, :user_last_seen
+  before_filter :admin_check, :user_last_seen, :user_unseen_notification_count
+
+  def user_unseen_notification_count
+    if user_signed_in?
+      @unseen_notifications = Rails.cache.fetch(:"#{current_user.id}_unseen_notifications", expires_in: 60.minutes) do
+        Notification.where(user_id: current_user, seen: false).count
+      end
+    end
+  end
   
   def admin_check
     if user_signed_in? and current_user.admin?

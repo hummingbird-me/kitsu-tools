@@ -42,10 +42,12 @@
 
             %li.divider.show-for-small
             - if user_signed_in?
-              %li.notification-block.has-dropdown
-                %a.notification-button.active{:href => "/notifications"}
+              %li.notification-block
+                /.has-dropdown
+                %a.notification-button{href: "/notifications", class: ("active" if @unseen_notifications > 0)}
                   %i.icon-bell 
-                    %span.notification-count 02
+                    - if @unseen_notifications > 0
+                      %span.notification-count= "%02d" % @unseen_notifications
                     
                 %ul.dropdown.rounded-panel
                   %li
