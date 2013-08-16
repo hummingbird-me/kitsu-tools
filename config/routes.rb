@@ -33,10 +33,11 @@ Hummingbird::Application.routes.draw do
   resources :beta_invites
 
   root :to => "home#index"
-  match '/feed' => "home#index"
 
   # Dashboard
   match '/dashboard' => 'home#dashboard'
+  match '/feed' => "home#feed"
+
   resources :users do
     get :watchlist
     get :reviews

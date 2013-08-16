@@ -1,99 +1,38 @@
-- if @onboarding
-  = render partial: 'onboarding'
+:css
+  .hummingbird-header-1, .footer {
+    display: none;
+  }
+  body.guest-padding {
+    background-color: #333;
+    background-image: url(/assets/guest-bg.jpg);
+  }
 
-.row
-  .large-12.columns.home-content
+.guest-home
+  .row
+    .large-11.columns.large-centered.center
+      = image_tag "h-logo.png", :class => "h-logo animated fadeInSlow"
+      %h3.guest-tagline.animated.fadeInDown Track, share and discover new anime.
 
-    .large-4.columns.push-8.left-column-content
-      = render partial: "shared/forum_widget", locals: {forum_topics: @forum_topics, link: forem.root_path}
+      - unless $redis.exists("registration_kill_switch")
+        .large-6.columns.large-centered.cf.user-register.animated.fadeInDown
+          .large-7.columns
+            %a.button.padded.facebook-guest{:href => omniauth_authorize_path(User, :facebook)} <i class="icon-facebook-sign"></i> Sign up with Facebook
+          .large-5.columns
+            %a.button.email-button.padded.secondary{:href => new_registration_path(User)} Sign up with email
+        %p.existing-user.animated.fadeInDown 
+          Already have an account? 
+          = link_to "Log in now", new_session_path(resource_name)
+      - else 
+        .large-7.columns.large-centered.cf.user-register.animated.fadeInDown
+          / Begin LaunchRock Widget
+          #lr-widget{:rel => "C8M45G4F"}
+          %script{:src => "//ignition.launchrock.com/ignition-current.min.js", :type => "text/javascript"}
+          / End LaunchRock Widget
+      .social-buttons.animated.fadeInSlower
+        .fb-like{"data-href" => "https://www.facebook.com/pages/Hummingbird/460188747373182", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
+        %a.twitter-share-button{"data-text" => "I just joined Hummingbird to track, share and discover new anime!", "data-url" => "http://www.hummingbird.me", "data-via" => "hummingbird_me", :href => "https://twitter.com/share"} Tweet
 
-      .large-12.columns.no-padding.trending-block.rounded-panel
-        .large-12.columns.block-title
-          %h4 Trending Today
-        %hr
-        %ul
-          - @trending_anime.each_with_index do |trending, i|
-            %li.large-12.columns.topic-row
-              .small-1.columns.no-padding
-                %p.count.center= i+1
-              .small-11.columns.no-padding-right.forum-title
-                .large-12.columns.no-padding
-                  = anime_link trending[:anime], class: 'trending-title truncate'
-                  %i #{trending[:currently_watching]} Viewers
-      
-      .large-12.columns.no-padding-left.no-padding-right.side-advert.hide-for-small.rounded-panel
         :javascript
-          google_ad_client = "ca-pub-3410319844519574";
-          /* Homepage Sidebar */
-          google_ad_slot = "8094424442";
-          google_ad_width = 300;
-          google_ad_height = 250;
-
-        %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
-
-    .large-8.columns.pull-4.left-home-column.no-padding
-      .large-12.columns.no-padding.recent-watched
-        .recommendations.hide-for-small
-          - @recent_anime.each do |watchlist|
-            .large-3.columns.no-padding.recommendation
-              = image_tag watchlist.anime.cover_image.url(:thumb)
-              .large-12.columns.meta-wrapper
-                .meta-data.large-12.columns.no-padding-left
-                  %p 
-                    %h5.anime-title.truncate= anime_link watchlist.anime
-                  .rating{:id => watchlist.anime.slug, :"data-rating" => (watchlist.rating || 0), :"data-anime-slug" => watchlist.anime.slug}
-                  %hr
-                  .large-6.columns.no-padding
-                    Progress:
-                  .large-6.columns.no-padding.progress-number
-                    %span.progress-updater{:id => watchlist.anime.slug, :"data-anime-slug" => watchlist.anime.slug, :"data-progress" => watchlist.episodes_watched, :"data-total-episodes" => watchlist.anime.episode_count, :"data-allow-increment" => "true"}
-                  
-                  :javascript
-                    initializeRatingInterface($(".rating##{watchlist.anime.slug}"), "#{current_user.star_rating ? "starRatings" : "smileyRatings"}");
-                    initializeProgressIncrement($(".progress-updater##{watchlist.anime.slug}"))
-          - (4-@recent_anime.length).times do
-            .large-3.columns.no-padding.recommendation
-              = image_tag "default.jpg"
-
-      .large-12.columns.hide-for-small.no-padding.center.home-banner
-        :javascript
-          google_ad_client = "ca-pub-3410319844519574";
-          /* Homepage Banner */
-          google_ad_slot = "9909234847";
-          google_ad_width = 728;
-          google_ad_height = 90;
-
-        %script{:src => "http://pagead2.googlesyndication.com/pagead/show_ads.js", :type => "text/javascript"}
-
-      .large-12.columns.option-bar
-        .small-2.large-4.columns
-          %p.option-title Activity Feed
-        .small-10.large-8.columns.options
-          %ul.status-tabs.inline-list
-            %li#tab-all.active
-              %a{:href => "#all", :onclick => "showRelevantSections('all')"} All
-            %li
-              %a{:href => "#comments", :onclick => "showRelevantSections('comments')"} Comments
-            %li
-              %a{:href => "#library", :onclick => "showRelevantSections('library')"} Library
-            %li
-              %a{:href => "#events", :onclick => "showRelevantSections('events')"} Events
-      .large-12.columns.feed.no-padding
-        .large-12.columns.feed-form.hide
-          %form
-            %input{:placeholder => "What are you up to?", :type => "text"}/
-
-        %ul.feed-list.activity-feed
-          
-        .center.activity-feed-spinner
-          %i.icon.icon-spin.icon-spinner.icon-4x
-
-        :coffee
-          @StoryCollectionView.fetchMore "/feed.json?"
-          infiniteScrollLoader = ->
-            if $(window).scrollTop() + 2000 > $(".activity-feed-spinner").offset().top
-              @StoryCollectionView.fetchMore "/feed.json?"
-
-          setInterval infiniteScrollLoader, 500
-          
-
+          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+      .large-12.columns.bottom-section
+        .splash
