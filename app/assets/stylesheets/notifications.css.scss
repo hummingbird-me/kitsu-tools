@@ -16,25 +16,8 @@
     margin-bottom: 0;
   }
   li {
-    .img {
-      text-align: center;
-      margin-right: 20px;
-      width: 50px;
-      img {
-        height: 50px;
-        width: auto;
-      }
-      display: inline-block;
-    }
-    .time {
-      font-size: 0.7em;
-      color: #aaa;
-    }
     padding: 15px 20px;
     border-top: 1px solid rgb(221, 221, 221);
-    &.unread {
-      background-color: rgb(240, 240, 240);
-    }
     &.nothing-here {
       height: 260px;
       background: url(asset-path('no-notifications-yet.png', image)) center center no-repeat;

@@ -1,4 +1,4 @@
-%li{class: ('unread' unless notification.seen?)}
+%li.cf{class: ('unread' unless notification.seen?)}
   - if notification.notification_type == "profile_comment"
     %a.single-notification.large-12.columns{:href => "/dashboard", class: ('new' unless notification.seen?)}
       .large-2.columns.no-padding.avatar
