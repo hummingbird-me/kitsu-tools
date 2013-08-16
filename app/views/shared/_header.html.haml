@@ -49,7 +49,7 @@
                       %span.notification-count= "%02d" % Notification.unseen_count(current_user)
                     
                 %ul.dropdown.rounded-panel
-                  = render Notification.recent_notifications(current_user)
+                  = render partial: "notifications/notification", collection: Notification.recent_notifications(current_user)
                   %li
                     %a.view-all-notifications.single-notification.large-12.columns.center(href="/notifications")
                       view all
