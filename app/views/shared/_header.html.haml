@@ -13,12 +13,12 @@
           %ul.left.topnav-links
             %li= link_to "Home", "/"
             %li.has-dropdown
-              = link_to "Dashboard", "/dashboard"
+              = link_to "Dashboard", main_app.user_path(current_user)
               %ul.dropdown.rounded-panel
                 %li
-                  = link_to "Profile", "/dashboard"
+                  = link_to "Profile", main_app.user_path(current_user)
                 %li
-                  = link_to "Library", user_signed_in? ? main_app.user_watchlist_path(current_user) : "/dashboard"
+                  = link_to "Library", user_signed_in? ? main_app.user_watchlist_path(current_user) : "/users/sign_in"
                 %li
                   = link_to "Recommendations", '/recommendations'
             %li

@@ -1,6 +1,6 @@
 %li.cf{class: ('unread' unless notification.seen?)}
   - if notification.notification_type == "profile_comment"
-    %a.single-notification.large-12.columns{:href => "/dashboard", class: ('new' unless notification.seen?)}
+    %a.single-notification.large-12.columns{:href => user_path(current_user), class: ('new' unless notification.seen?)}
       .large-2.columns.no-padding.avatar
         = avatar_link notification.source.target
       .large-10.columns.status-info

@@ -29,7 +29,7 @@
                 %li.hide-for-small= link_to "About", "#"
                 %li= link_to "Explore", "/anime"
                 %li.hide-for-small= link_to "Blog", "http://blog.hummingbird.ly"
-                %li= link_to "Dashboard", "/dashboard"
+                %li= link_to "Dashboard", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
                 %li= link_to "Community", forem.root_path
 
             .large-12.columns
