@@ -11,12 +11,20 @@ class Notification < ActiveRecord::Base
     end
   end
 
-  def self.uncache_notification_count(user_id)
-    user_id = user.id unless user_id.is_a? Fixnum
+  def self.recent_notifications(user_id)
+    user_id = user_id.id unless user_id.is_a? Fixnum
+    Rails.cache.fetch(:"#{user_id}_recent_notifications", expires_in: 60.minutes) do
+      Notification.where(user_id: user_id).order('NOT seen, created_at DESC').limit(3)
+    end
+  end
+
+  def self.uncache_notification_cache(user_id)
+    user_id = user_id.id unless user_id.is_a? Fixnum
     Rails.cache.delete(:"#{user_id}_unseen_notifications")
+    Rails.cache.delete(:"#{user_id}_recent_notifications")
   end
 
   after_create do
-    Notification.uncache_notification_count(self.user_id)
+    Notification.uncache_notification_cache(self.user_id)
   end
 end

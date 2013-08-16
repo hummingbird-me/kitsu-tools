@@ -11,6 +11,6 @@ class NotificationsController < ApplicationController
     if @notifications.count > 10
       Notification.where(user_id: current_user, seen: true).order("created_at").limit(@notifications.count - 10).each {|x| x.destroy }
     end
-    Rails.cache.delete(:"#{current_user.id}_unseen_notifications")
+    Notification.uncache_notification_cache(current_user.id)
   end
 end
