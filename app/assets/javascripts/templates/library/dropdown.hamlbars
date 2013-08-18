@@ -51,6 +51,14 @@
                   %option(value="public") Public
                   %option(value="private") Private
 
+            .large-12.columns.rewatching
+              .large-4.columns.option-label
+                %span Rewatching:
+              .large-8.columns.rewatching-dropdown
+                %select.medium(name="rewatching")
+                  %option(value="false") No
+                  %option(value="true") Yes
+
         // Spinner
         %span.updating-icon.hide
           %i.icon-spinner.icon-spin.updating-icon

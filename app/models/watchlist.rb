@@ -130,7 +130,21 @@ class Watchlist < ActiveRecord::Base
         self.anime.rating_frequencies[self.rating.to_s] = self.anime.rating_frequencies[self.rating.to_s].to_i
         self.anime.rating_frequencies[self.rating.to_s] += 1
       end
-      self.anime.save
+    end
+
+    # If "rewatching" was set to true and was false earlier, set the status to
+    # "Currently Watching" and "episodes_watched" to 0.
+    if self.rewatching_changed? and self.rewatching and not self.rewatching_was
+      self.status = "Currently Watching"
+      self.episodes_watched = 0
+    end
+
+    # If the status is "Completed" and "rewatching" is true, set "rewatching"
+    # to false and increment rewatched_times by 1.
+    if self.rewatching and self.status == "Completed"
+      self.rewatching = false
+      rt = self.rewatched_times || 0
+      self.update_rewatched_times(rt + 1)
     end
   end
 

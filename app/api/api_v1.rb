@@ -129,6 +129,7 @@ class API_v1 < Grape::API
     params do
       requires :anime_slug, type: String
       optional :increment_episodes, type: String
+      optional :rewatching, type: String
     end
     post ':anime_slug' do
       authenticate_user!
@@ -188,6 +189,11 @@ class API_v1 < Grape::API
       # Update episode count.
       if params[:episodes_watched]
         watchlist.update_episode_count params[:episodes_watched]
+      end
+
+      # Update "rewatching" status.
+      if params[:rewatching]
+        watchlist.rewatching = (params[:rewatching] == "true")
       end
 
       if params[:increment_episodes] and params[:increment_episodes] == "true"

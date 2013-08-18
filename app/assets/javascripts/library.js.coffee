@@ -257,7 +257,8 @@ _.extend HB,
               model: @model
             @dropdown.find(".rating-widget").append ratingView.render().el
             @dropdown.find(".status-change-widget").append statusChangeWidget.render().el
-            @dropdown.find("option[value=" + (if @model.get("private") then "private" else "public") + "]").prop("selected", true)
+            @dropdown.find("select[name=privacy] option[value=" + (if @model.get("private") then "private" else "public") + "]").prop("selected", true)
+            @dropdown.find("select[name=rewatching] option[value=" + @model.get("rewatching") + "]").prop("selected", true)
             # Submit updates when needed.
             @dropdown.find("form.custom").submit -> that.submitDropdownForm()
             @dropdown.find("form.custom").change -> that.submitDropdownForm()
