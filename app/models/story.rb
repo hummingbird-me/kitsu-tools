@@ -5,6 +5,8 @@ class Story < ActiveRecord::Base
   has_many :substories, dependent: :destroy
   attr_accessible :data, :story_type, :user, :target, :watchlist, :adult
 
+  has_many :notifications, as: :source, dependent: :destroy
+
   serialize :data, ActiveRecord::Coders::Hstore
   
   validates :user, :story_type, presence: true

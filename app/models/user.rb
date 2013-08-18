@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :stories
   has_many :substories
+  has_many :notifications
 
   has_one :recommendation
   has_many :not_interested
