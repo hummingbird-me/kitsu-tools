@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  attr_accessible :name, :mal_id
+  attr_accessible :name, :mal_id, :image
   validates :name, :presence => true
   has_many :castings, dependent: :destroy
 

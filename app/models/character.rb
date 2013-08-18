@@ -1,5 +1,5 @@
 class Character < ActiveRecord::Base
-  attr_accessible :description, :name, :mal_id
+  attr_accessible :description, :name, :mal_id, :image
   validates :name, :presence => true
   has_many :castings, dependent: :destroy
   
