@@ -132,19 +132,21 @@ class Watchlist < ActiveRecord::Base
       end
     end
 
-    # If "rewatching" was set to true and was false earlier, set the status to
-    # "Currently Watching" and "episodes_watched" to 0.
-    if self.rewatching_changed? and self.rewatching and not self.rewatching_was
-      self.status = "Currently Watching"
-      self.episodes_watched = 0
+    if self.rewatching_changed? 
+      # If "rewatching" was set to true and was false earlier, set the status 
+      # to "Currently Watching" and "episodes_watched" to 0.
+      if self.rewatching and not self.rewatching_was
+        self.status = "Currently Watching"
+        self.episodes_watched = 0
+      end
     end
 
     # If the status is "Completed" and "rewatching" is true, set "rewatching"
     # to false and increment rewatched_times by 1.
     if self.rewatching and self.status == "Completed"
       self.rewatching = false
-      rt = self.rewatched_times || 0
-      self.update_rewatched_times(rt + 1)
+      self.rewatched_times ||= 0
+      self.rewatched_times += 1
     end
   end
 
