@@ -4,6 +4,13 @@ class Notification < ActiveRecord::Base
   attr_accessible :user, :source, :data, :notification_type
   serialize :data, ActiveRecord::Coders::Hstore
 
+  def image
+    if notification_type == "profile_comment"
+      source.target.avatar.url(:thumb_small)
+    end
+  end
+
+
   def self.unseen_count(user_id)
     user_id = user_id.id unless user_id.is_a? Fixnum
     Rails.cache.fetch(:"#{user_id}_unseen_notifications", expires_in: 60.minutes) do

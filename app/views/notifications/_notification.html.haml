@@ -2,7 +2,7 @@
   - if notification.notification_type == "profile_comment" and notification.source
     %a.single-notification.large-12.columns{href: main_app.user_path(current_user), class: ('new' unless notification.seen?)}
       .large-1.columns.no-padding.avatar
-        = image_tag notification.source.target.avatar.url(:thumb_small)
+        = image_tag notification.image
       .large-11.columns.status-info
         %strong= notification.source.target.name
         wrote a comment on your profile.
