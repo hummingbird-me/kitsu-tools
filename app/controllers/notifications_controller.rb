@@ -20,6 +20,7 @@ class NotificationsController < ApplicationController
       redirect_to :back
     else
       notification.update_attributes(seen: true)
+      Notification.uncache_notification_cache(current_user.id)
       if notification.notification_type == "profile_comment"
         redirect_to user_path(current_user)
       end

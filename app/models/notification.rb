@@ -10,7 +10,6 @@ class Notification < ActiveRecord::Base
     end
   end
 
-
   def self.unseen_count(user_id)
     user_id = user_id.id unless user_id.is_a? Fixnum
     Rails.cache.fetch(:"#{user_id}_unseen_notifications", expires_in: 60.minutes) do
