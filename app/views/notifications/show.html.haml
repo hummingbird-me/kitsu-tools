@@ -1,9 +1,0 @@
-.notifications
-  .row
-    .small-12.large-6.large-centered.columns.rounded-panel
-      %h1= title (pluralize @unseen_notification_count, 'New Notification')
-      %ul
-        - if @notifications.length == 0
-          %li.nothing-here
-        - else
-          = render @notifications

@@ -1,8 +1,8 @@
 %li.no-padding.cf
-  - if notification.notification_type == "profile_comment"
-    %a.single-notification.large-12.columns{href: main_app.user_path(current_user), class: ('new' unless notification.seen?)}
-      .large-1.columns.no-padding.avatar
-        = image_tag notification.image
+  %a.single-notification.large-12.columns{href: main_app.notification_path(notification), class: ('new' unless notification.seen?)}
+    .large-1.columns.no-padding.avatar
+      = image_tag notification.image
+    - if notification.notification_type == "profile_comment"
       .large-11.columns.status-info
         %strong= notification.source.target.name
         wrote a comment on your profile.
