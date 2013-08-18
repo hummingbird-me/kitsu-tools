@@ -7,7 +7,7 @@ Hummingbird::Application.routes.draw do
     registrations: "users/registrations"
   }
 
-  resource :notifications
+  resources :notifications
 
   mount Forem::Engine => "/community"
 

@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
   before_filter :authenticate_user!
 
-  def show
+  def index
     hide_cover_image
     @notifications = Notification.where(user_id: current_user)
     @unseen_notification_count = @notifications.where(seen: false).count
