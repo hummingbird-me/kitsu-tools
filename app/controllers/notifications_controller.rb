@@ -15,11 +15,11 @@ class NotificationsController < ApplicationController
   end
 
   def show
-    notification = Notification.find(params[:id])
-    notification.update_attributes(seen: true)
-    if notification.nil?
+    notification = Notification.find_by_id(params[:id])
+    if notification.nil? or notification.user != current_user
       redirect_to :back
     else
+      notification.update_attributes(seen: true)
       if notification.notification_type == "profile_comment"
         redirect_to user_path(current_user)
       end
