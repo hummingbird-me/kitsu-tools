@@ -1,4 +1,4 @@
-- title "#{@season.to_s.titleize} #{@season_years[@season]} Anime"
+- title "#{@season == :tba ? "TBA" : @season.to_s.titleize} #{@season_years[@season]} Anime"
 
 .upcoming-shows
   .row
@@ -7,6 +7,7 @@
         - @seasons.each do |season|
           %li
             = link_to season.to_s.titleize + ' ' + @season_years[season].to_s, anime_season_path(season), class: 'button padded' + (@season == season ? ' secondary' : '')
+        %li= link_to "TBA", anime_season_path(:tba), class: 'button padded' + (@season == :tba ? ' secondary' : '')
 
   .row
     .large-9.large-centered.columns
