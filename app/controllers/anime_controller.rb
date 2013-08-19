@@ -113,14 +113,16 @@ class AnimeController < ApplicationController
       end
     end
 
+    @anime = Anime.accessible_by(current_ability)
+
     if @season != :tba
       start_date = Date.new(@season_years[@season], season_months[@season][0], 1)
       start_date -= 1.year if @season == :winter
       end_date = Date.new(@season_years[@season], season_months[@season][-1], 1).end_of_month
 
-      @anime = Anime.where('started_airing_date > ? AND started_airing_date < ?', start_date, end_date)
+      @anime = @anime.where('started_airing_date > ? AND started_airing_date < ?', start_date, end_date)
     else
-      @anime = Anime.where('started_airing_date IS NULL')
+      @anime = @anime.where('started_airing_date IS NULL')
     end
     
     @anime = @anime.group_by {|anime| anime.show_type }
