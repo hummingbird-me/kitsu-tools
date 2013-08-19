@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find(id)
-    find_by_name(id.to_s) || super
+    where('LOWER(name) = ?', id.to_s).first || super
   end
 
   # Following stuff.
