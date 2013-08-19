@@ -125,7 +125,7 @@ class AnimeController < ApplicationController
       @anime = @anime.where('started_airing_date IS NULL')
     end
     
-    @anime = @anime.order('bayesian_average DESC').group_by {|anime| anime.show_type }
+    @anime = @anime.order_by_popularity.group_by {|anime| anime.show_type }
   end
 
   def filter
@@ -166,7 +166,7 @@ class AnimeController < ApplicationController
       @anime = @anime.order("started_airing_date")
     else
       @sort = "all"
-      @anime = @anime.order("bayesian_average DESC NULLS LAST")
+      @anime = @anime.order_by_popularity
     end
     
     # TODO Apply year filter.

@@ -47,6 +47,10 @@ class Anime < ActiveRecord::Base
     age_rating != "R18+"
   end
 
+  def self.order_by_popularity
+    order('bayesian_average DESC NULLS LAST')
+  end
+
   # Use this function to get the title instead of directly accessing the title.
   def canonical_title(title_language_preference=nil)
     if title_language_preference and title_language_preference.class == User
