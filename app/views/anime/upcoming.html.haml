@@ -6,7 +6,7 @@
       %ul.seasons
         - @seasons.each do |season|
           %li
-            = link_to season.to_s.titleize, anime_season_path(season), class: 'button padded' + (@season == season ? ' secondary' : '')
+            = link_to season.to_s.titleize + ' ' + @season_years[season].to_s, anime_season_path(season), class: 'button padded' + (@season == season ? ' secondary' : '')
 
       .shows
         .row

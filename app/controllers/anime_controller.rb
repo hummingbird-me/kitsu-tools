@@ -100,10 +100,17 @@ class AnimeController < ApplicationController
 
     @season_years = {}
     if Time.now.month == 12
+      # If this is December, we are in the Winter season and want to show stuff
+      # for the upcoming year.
       @seasons.each {|s| @season_years[s] = Time.now.year + 1 }
     else
+      # Otherwise, at first set all of the seasons to the current year.
       @seasons.each {|s| @season_years[s] = Time.now.year }
-      @season_years[:winter] += 1
+      @seasons.each do |season|
+        if Time.now.month > season_months[season][-1]
+          @season_years[season] += 1
+        end
+      end
     end
 
     start_date = Date.new(@season_years[@season], season_months[@season][0], 1)
