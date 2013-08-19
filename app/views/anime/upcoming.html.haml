@@ -8,6 +8,7 @@
           %li
             = link_to season.to_s.titleize + ' ' + @season_years[season].to_s, anime_season_path(season), class: 'button padded' + (@season == season ? ' secondary' : '')
 
+  .row
     .large-9.large-centered.columns
       .shows
         .row
