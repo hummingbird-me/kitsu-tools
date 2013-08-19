@@ -16,7 +16,7 @@
           - ["TV", "Movie", "OVA", "ONA", "Special"].each do |type|
             - if @anime[type] and @anime[type].length > 0
               .large-12.columns
-                %h2= type == "TV" ? "TV Series" : type
+                %h2= (type == "TV" ? "TV Series" : type).pluralize
               %ul.large-block-grid-5
                 - @anime[type].each_with_index do |anime, i|
                   %li.card{class: ('end' if i == @anime[type].length-1)}
