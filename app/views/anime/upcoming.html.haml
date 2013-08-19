@@ -14,7 +14,7 @@
       .shows
         .row
           - ["TV", "Movie", "OVA", "ONA", "Special"].each do |type|
-            - if @anime[type].length > 0
+            - if @anime[type] and @anime[type].length > 0
               .large-12.columns
                 %h2= type == "TV" ? "TV Series" : type
               %ul.large-block-grid-5
