@@ -125,7 +125,7 @@ class AnimeController < ApplicationController
       @anime = @anime.where('started_airing_date IS NULL')
     end
     
-    @anime = @anime.group_by {|anime| anime.show_type }
+    @anime = @anime.order('bayesian_average DESC').group_by {|anime| anime.show_type }
   end
 
   def filter
