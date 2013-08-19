@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   # Friendly ID.
   def to_param
-    name.parameterize
+    name
   end
 
   def self.find(id)
