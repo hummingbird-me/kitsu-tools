@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_filter :admin_check, :user_last_seen
   
   def admin_check
-    if user_signed_in? and current_user.admin?
+    if user_signed_in? and current_user.admin? and current_user.id == 1
       Rack::MiniProfiler.authorize_request
     end
   end
