@@ -26,7 +26,7 @@
               %ul.dropdown.rounded-panel
                 %li
                   // change me to upcoming link
-                  = link_to "Upcoming", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
+                  = link_to "Upcoming", main_app.anime_season_path
             %li.has-dropdown
               = link_to "Community", forem.root_path
               %ul.dropdown
