@@ -117,7 +117,7 @@ class AnimeController < ApplicationController
     start_date -= 1.year if @season == :winter
     end_date = Date.new(@season_years[@season], season_months[@season][-1], 1).end_of_month
 
-    @anime = Anime.where('started_airing_date > ? AND started_airing_date < ?', start_date, end_date)
+    @anime = Anime.where('started_airing_date > ? AND started_airing_date < ?', start_date, end_date).group_by {|anime| anime.show_type }
   end
 
   def filter

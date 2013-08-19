@@ -11,10 +11,15 @@
     .large-9.large-centered.columns
       .shows
         .row
-          - @anime.each do |anime|
-            .large-3.columns.card
-              .rounded-panel
-                .image
-                  = link_to (image_tag anime.cover_image.url(:thumb)), anime
-                .title.truncate
-                  = anime.canonical_title(current_user)
+          - ["TV", "Movie", "OVA", "ONA", "Special"].each do |type|
+            - if @anime[type].length > 0
+              .large-12.columns
+                %h2= type == "TV" ? "TV Series" : type
+              %ul.large-block-grid-5
+                - @anime[type].each_with_index do |anime, i|
+                  %li.card{class: ('end' if i == @anime[type].length-1)}
+                    .rounded-panel
+                      .image
+                        = link_to (image_tag anime.cover_image.url(:thumb)), anime
+                      .title.truncate
+                        = anime.canonical_title(current_user)
