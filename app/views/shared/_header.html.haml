@@ -21,8 +21,12 @@
                   = link_to "Library", user_signed_in? ? main_app.user_watchlist_path(current_user) : "/users/sign_in"
                 %li
                   = link_to "Recommendations", '/recommendations'
-            %li
+            %li.has-dropdown
               %a{:href => "/anime"} Explore
+              %ul.dropdown.rounded-panel
+                %li
+                  // change me to upcoming link
+                  = link_to "Upcoming", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
             %li.has-dropdown
               = link_to "Community", forem.root_path
               %ul.dropdown
