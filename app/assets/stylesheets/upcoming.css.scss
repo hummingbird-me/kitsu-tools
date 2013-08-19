@@ -1,3 +1,5 @@
+@import "compass/css3";
+
 .upcoming-shows {
   margin-top: 30px;
   ul.seasons {
@@ -9,6 +11,20 @@
       a {
         display: inline;
       }
+    }
+  }
+  .shows {
+    margin-bottom: 40px;
+    .card {
+      margin-bottom: 10px;
+    }
+    .image {
+      @include border-top-radius(3px);
+    }
+    .title {
+      @include border-bottom-radius(3px);
+      background-color: #fff;
+      padding: 5px;
     }
   }
 }
