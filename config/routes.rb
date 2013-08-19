@@ -72,6 +72,7 @@ Hummingbird::Application.routes.draw do
   
   # Random anime
   match '/random/anime' => 'anime#random'
+  match '/anime/upcoming(/:season)' => 'anime#upcoming', as: :anime_season
   match '/anime/filter(/:sort)' => 'anime#filter', as: :anime_filter
 
   resources :anime do

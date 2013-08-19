@@ -83,6 +83,43 @@ class AnimeController < ApplicationController
     redirect_to @anime
   end
 
+  def upcoming
+    hide_cover_image
+
+    season_months = {
+      winter: [12, 1, 2],
+      spring: [3, 4, 5],
+      summer: [6, 7, 8],
+      fall: [9, 10, 11]
+    }
+
+    @seasons = [:winter, :spring, :summer, :fall]
+    @seasons.rotate! until season_months[@seasons[0]].include? Time.now.month
+    current_season = @seasons[0]
+    @season = params[:season].try(:to_sym) || current_season
+
+    @season_years = {}
+    if Time.now.month == 12
+      # If this is December, we are in the Winter season and want to show stuff
+      # for the upcoming year.
+      @seasons.each {|s| @season_years[s] = Time.now.year + 1 }
+    else
+      # Otherwise, at first set all of the seasons to the current year.
+      @seasons.each {|s| @season_years[s] = Time.now.year }
+      @seasons.each do |season|
+        if Time.now.month > season_months[season][-1]
+          @season_years[season] += 1
+        end
+      end
+    end
+
+    start_date = Date.new(@season_years[@season], season_months[@season][0], 1)
+    start_date -= 1.year if @season == :winter
+    end_date = Date.new(@season_years[@season], season_months[@season][-1], 1).end_of_month
+
+    @anime = Anime.where('started_airing_date > ? AND started_airing_date < ?', start_date, end_date)
+  end
+
   def filter
     hide_cover_image
     @filter_years = ["Upcoming", "2010s", "2000s", "1990s", "1980s", "1970s", "Older"]

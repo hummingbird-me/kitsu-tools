@@ -1,0 +1,15 @@
+- title "#{@season.to_s.titleize} #{@season_years[@season]} Anime"
+
+.upcoming-shows
+  .row
+    .large-12.columns
+      %ul.seasons
+        - @seasons.each do |season|
+          %li
+            = link_to season.to_s.titleize + ' ' + @season_years[season].to_s, anime_season_path(season), class: 'button padded' + (@season == season ? ' secondary' : '')
+
+      .shows
+        .row
+          - @anime.each do |anime|
+            .large-2.columns
+              = link_to (image_tag anime.cover_image.url(:thumb)), anime
