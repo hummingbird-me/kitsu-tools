@@ -1,4 +1,13 @@
 class User < ActiveRecord::Base
+  # Friendly ID.
+  def to_param
+    name.parameterize
+  end
+
+  def self.find(id)
+    find_by_name(id.to_s) || super
+  end
+
   # Following stuff.
   has_many :follower_relations, dependent: :destroy, foreign_key: :followed_id, class_name: 'Follow'
   has_many :followers, through: :follower_relations, source: :follower, class_name: 'User'
@@ -16,16 +25,11 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :favorite_genres, class_name: "Genre", uniq: true, join_table: "favorite_genres_users"
   
-  def to_param
-    "#{id} #{name}".parameterize
-  end
-  
   # Include devise modules. Others available are:
   # :lockable, :timeoutable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :trackable, :validatable, :omniauthable, :confirmable, :async,
-         :token_authenticatable,
-         allow_unconfirmed_access_for: 3.days
+         :token_authenticatable, allow_unconfirmed_access_for: 3.days
 
   # Remember users by default.
   def remember_me; true; end

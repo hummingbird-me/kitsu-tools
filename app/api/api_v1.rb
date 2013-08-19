@@ -33,7 +33,7 @@ class API_v1 < Grape::API
       if id == "me" and user_signed_in?
         current_user
       else
-        User.find(id.to_i)
+        User.find(id)
       end
     end
   end
