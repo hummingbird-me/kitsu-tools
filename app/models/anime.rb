@@ -48,7 +48,7 @@ class Anime < ActiveRecord::Base
   end
 
   def self.order_by_popularity
-    order('bayesian_average DESC NULLS LAST')
+    order('bayesian_average DESC NULLS LAST, user_count DESC NULLS LAST')
   end
 
   # Use this function to get the title instead of directly accessing the title.
