@@ -37,5 +37,5 @@ mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
 
-virtual_alias_domains = hummingbird.me
+virtual_alias_domains = hummingbird.me, hummingbird.ly
 virtual_alias_maps = hash:/etc/postfix/virtual
