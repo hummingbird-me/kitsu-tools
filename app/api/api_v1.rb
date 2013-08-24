@@ -59,6 +59,15 @@ class API_v1 < Grape::API
       user.reset_authentication_token! if user.authentication_token.nil?
       return user.authentication_token
     end
+
+    desc "Return the current user."
+    params do
+      requires :username, type: String
+    end
+    get ':username' do
+      user = find_user(params[:username])
+      present user, with: Entities::User
+    end
     
     desc "Return the entries in a user's library under a specific status.", {
       object_fields: Entities::Watchlist.documentation

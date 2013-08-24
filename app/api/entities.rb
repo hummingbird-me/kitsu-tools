@@ -18,6 +18,17 @@ module Entities
     expose :genres, using: Entities::Genre, if: lambda {|anime, options| options[:genres].nil? or options[:genres] }
     expose :mal_id, if: lambda {|anime, options| options[:include_mal_id] }
   end
+
+  class User < Grape::Entity
+    expose :name
+    expose(:avatar) {|user, options| user.avatar.url(:thumb) }
+    expose(:cover_image) {|user, options| user.cover_image.url(:thumb) }
+    expose :about
+    expose(:karma) {|user, options| user.reputation_for(:karma) }
+    expose(:show_adult_content) {|user, options| !user.sfw_filter }
+    expose :title_language_preference
+    expose :last_library_update
+  end
   
   class MiniUser < Grape::Entity
     expose :name
