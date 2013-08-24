@@ -43,24 +43,19 @@
   _.each HB.Library.validStatuses, (status) ->
     librarySectionContents[status] = []
   
-  @fetchLibrarySection = (section, page...) ->
-    page = if page[0] then page[0] else 1
+  @fetchLibrarySection = (section) ->
     unless HB.Library.Sections[section].get "fetched"
-      path = "/api/v1/users/#{@user.to_param}/library?status="+section+"&page="+page
+      path = "/api/v1/users/#{@user.to_param}/library?status="+section
       $.getJSON(path, (d) ->
         _.each d, (x) -> 
           x.currentUser = #{(user_signed_in? and current_user == @user).inspect}
           librarySectionContents[section].push new HB.Library.Entry x
-        if d.length < 400
-          collection = HB.Library.Sections[section].entries
-          collection.add librarySectionContents[section]
-          delete librarySectionContents[section]
-          HB.Library.Sections[section].set "fetched", true
-        else
-          fetchLibrarySection(section, page+1)
+        collection = HB.Library.Sections[section].entries
+        collection.add librarySectionContents[section]
+        delete librarySectionContents[section]
+        HB.Library.Sections[section].set "fetched", true
       ).error ->
-        setTimeout "fetchLibrarySection('"+section+"', "+page+")", 2000
-  
+        setTimeout "fetchLibrarySection('"+section+"')", 2000
 
   _.each HB.Library.validStatuses, (status) -> 
     fetchLibrarySection status
