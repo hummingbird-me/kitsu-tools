@@ -68,6 +68,7 @@ class API_v1 < Grape::API
       requires :status, type: String
       optional :page, type: Integer
       optional :title_language_preference, type: String
+      optional :include_mal_id, type: String
     end
     get ':user_id/library' do
       if params[:page] and params[:page] > 1
@@ -89,7 +90,7 @@ class API_v1 < Grape::API
       end
       title_language_preference ||= "canonical"
       
-      present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference, genres: false
+      present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference, genres: false, include_mal_id: params[:include_mal_id] == "true"
     end
     
     desc "Returns the user's feed."

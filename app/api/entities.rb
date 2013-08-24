@@ -16,6 +16,7 @@ module Entities
     expose(:synopsis) {|anime, options| anime.synopsis }
     expose :show_type
     expose :genres, using: Entities::Genre, if: lambda {|anime, options| options[:genres].nil? or options[:genres] }
+    expose :mal_id, if: lambda {|anime, options| options[:include_mal_id] }
   end
   
   class MiniUser < Grape::Entity
