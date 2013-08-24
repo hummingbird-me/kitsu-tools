@@ -25,6 +25,7 @@ module Entities
     expose(:cover_image) {|user, options| user.cover_image.url(:thumb) }
     expose :about
     expose(:karma) {|user, options| user.reputation_for(:karma) }
+    expose :life_spend_on_anime
     expose(:show_adult_content) {|user, options| !user.sfw_filter }
     expose :title_language_preference
     expose :last_library_update
