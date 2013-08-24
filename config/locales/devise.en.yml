@@ -53,7 +53,7 @@ en:
       failure: 'Could not authenticate you from %{kind} because "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Confirmation instructions'
+        subject: 'Confirm your Hummingbird account'
       reset_password_instructions:
         subject: 'Reset password instructions'
       unlock_instructions:
