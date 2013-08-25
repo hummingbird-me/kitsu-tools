@@ -77,8 +77,18 @@ class NewsFeed
   
   # Add a story to the user's news feed.
   def add!(story)
-    $redis.zadd @feed_key, story.updated_at.to_i, story.id
-    $redis.zremrangebyrank(@feed_key, 0, -CACHE_SIZE) if rand < 0.2
+    add_story = false
+    if story.story_type == "comment" 
+      if @user == story.target or @user.following.include?(story.target)
+        add_story = true
+      end
+    else
+      add_story = true
+    end
+    if add_story
+      $redis.zadd @feed_key, story.updated_at.to_i, story.id
+      $redis.zremrangebyrank(@feed_key, 0, -CACHE_SIZE) if rand < 0.2
+    end
   end
   
   # Return the set of active user IDs followed by our user, who were most 
