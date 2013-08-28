@@ -53,14 +53,14 @@ class NewsFeed
     start_index = 20 * (page.to_i-1)
     stop_index = start_index + 20 - 1
 
+    ability = Ability.new @user
+
     story_ids = $redis.zrevrange @feed_key, start_index, stop_index
     story_id_to_story = {}
-    Story.where(id: story_ids).includes(:substories).each do |story|
+    Story.where(id: story_ids).accessible_by(ability).includes(:substories).each do |story|
       story_id_to_story[story.id] = story
     end
     stories = story_ids.map {|x| story_id_to_story[x.to_i] }.compact
-
-    ability = Ability.new @user
     
     Entities::Story.represent(stories, current_ability: ability, title_language_preference: @user.title_language_preference).to_json
   end
