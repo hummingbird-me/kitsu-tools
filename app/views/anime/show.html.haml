@@ -149,10 +149,11 @@
                 %a(data-tooltip title="Coming soon!"){:href => "javascript:void(0)"} Show all actors +
               %hr
             
-      .large-12.columns.panel.ad-zone.center
-        %ins(class="adsbygoogle" style="display:inline-block;width:468px;height:60px" data-ad-client="ca-pub-3410319844519574" data-ad-slot="4664352842")
-        :javascript
-          (adsbygoogle = window.adsbygoogle || []).push({});
+      - if @anime.sfw?
+        .large-12.columns.panel.ad-zone.center
+          %ins(class="adsbygoogle" style="display:inline-block;width:468px;height:60px" data-ad-client="ca-pub-3410319844519574" data-ad-slot="4664352842")
+          :javascript
+            (adsbygoogle = window.adsbygoogle || []).push({});
 
       .large-12.columns.panel.popular-reviews
         .large-12.columns

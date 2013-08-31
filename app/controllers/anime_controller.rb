@@ -12,6 +12,9 @@ class AnimeController < ApplicationController
   
   def show
     @anime = Anime.find(params[:id])
+
+    @hide_footer_ad = ! @anime.sfw?
+
     # Redirect the user to the canonical URL if they got here from an old or
     # numeric ID.
     if request.path != anime_path(@anime)
