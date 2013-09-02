@@ -1,6 +1,5 @@
 SubstoryModel = Backbone.Model.extend
   decoratedJSON: ->
-    console.log "test"
     json = @toJSON()
     json["type"] = {}
     json["type"][@get("substory_type")] = true
@@ -30,7 +29,7 @@ StoryCollection.comparator = (story) ->
 
 StoryView = Backbone.View.extend
   initialize: -> @expanded = false
-  template: HandlebarsTemplates["stories/story"]
+  template: HandlebarsTemplates["old/templates/stories/story"]
   
   render: ->
     if @model.get("story_type") == "comment"

@@ -173,7 +173,6 @@ _.extend HB,
         @$el.empty()
         dropdownId = @model.get("anime").slug + "-status-dropdown"
         @$el.append "<a class='button secondary radius padded' href='javascript:void(0)' data-dropdown='" + dropdownId + "'></a>"
-        console.log @model.get "status"
         if _.contains HB.Library.validStatuses, @model.get("status")
           @$el.find("a").html HB.Library.statusParamToHuman[@model.get("status")]
         else
@@ -202,8 +201,8 @@ _.extend HB,
     # Single entry view.
     EntryView: Backbone.View.extend
       tagName: "tr"
-      template: HandlebarsTemplates["library/entry"]
-      dropdownTemplate: HandlebarsTemplates["library/dropdown"]
+      template: HandlebarsTemplates["old/templates/library/entry"]
+      dropdownTemplate: HandlebarsTemplates["old/templates/library/dropdown"]
       
       initialize: ->
         _(this).bindAll 'change'
@@ -304,7 +303,7 @@ _.extend HB,
     # Library Section view.
     SectionView: Backbone.View.extend
       tagName: "div"
-      template: HandlebarsTemplates["library/section"]
+      template: HandlebarsTemplates["old/templates/library/section"]
       
       initialize: ->
         _(this).bindAll 'change', 'add', 'remove', 'closeAllDropdowns'
@@ -334,7 +333,7 @@ _.extend HB,
         
         if @model.get("fetched")
           json.entryCount = @model.entries.length
-          
+
         @$el.html @template json
         
         # Render list entries.

@@ -18,7 +18,6 @@
 
         $.post "/api/v1/libraries/" + anime_slug, {rating: parseInt($(this).attr("data-rating"))}, (d) ->
           if d
-            console.log d.rating.value
             element.attr "data-rating", d.rating.value
             initializeRatingInterface element, type
 

@@ -10,45 +10,45 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require old/underscore-1.4.4.js
-//= require old/backbone-1.0.0.js
-//= require old/moment.js
-//= require old/handlebars-1.0.0.js
-//= require old/json2.js
-//= require old/jstorage.js
-//= require old/garlic.js
-//= require old/redactor-9.0.1.js
-//= require old/charcount.js
-//= require old/jscroll.js
-//= require old/typeahead.js
-//= require old/offcanvas.js
-//= require old/jquery.easy-pie-chart.js
-//= require old/jquery.icheck.js
+//= require ./underscore-1.4.4.js
+//= require ./backbone-1.0.0.js
+//= require ./moment.js
+//= require ./handlebars-1.0.0.js
+//= require ./json2.js
+//= require ./jstorage.js
+//= require ./garlic.js
+//= require ./redactor-9.0.1.js
+//= require ./charcount.js
+//= require ./jscroll.js
+//= require ./typeahead.js
+//= require ./offcanvas.js
+//= require ./jquery.easy-pie-chart.js
+//= require ./jquery.icheck.js
 //= require vendor/custom.modernizr
-//= require old/googleplus.js
-//= require old/twitter.js
-//= require old/bootstrap-tooltip.js
-//= require old/bootstrap-popover.js
-//= require old/awesome_rating.js.coffee
+//= require ./googleplus.js
+//= require ./twitter.js
+//= require ./bootstrap-tooltip.js
+//= require ./bootstrap-popover.js
+//= require ./awesome_rating.js.coffee
 //
 // Part 2 -- Library initialization.
 //
-//= require old/handlebars_helpers.js.coffee
+//= require ./handlebars_helpers.js.coffee
 //
 // Part 3 -- Application initialization.
 //
 //= require_tree ./templates
 //
-//= require old/hummingbird.js.coffee
-//= require old/anime.js.coffee
-//= require old/library.js.coffee
-//= require old/library_update.js.coffee
-//= require old/login-signup.js
-//= require old/search.js.coffee
-//= require old/redactor.js.coffee
-//= require old/header.js.coffee
+//= require ./hummingbird.js.coffee
+//= require ./anime.js.coffee
+//= require ./library.js.coffee
+//= require ./library_update.js.coffee
+//= require ./login-signup.js
+//= require ./search.js.coffee
+//= require ./redactor.js.coffee
+//= require ./header.js.coffee
 //
-//= require old/activity-feed.js.coffee
+//= require ./activity-feed.js.coffee
 
 $(function() {
   $(document).foundation()
