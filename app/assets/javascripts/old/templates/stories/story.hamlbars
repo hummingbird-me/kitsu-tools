@@ -39,7 +39,7 @@
       {{/type.media_story}}
       
       {{#substories}}
-      {{> stories/_substory}}
+      {{> old/templates/stories/_substory}}
       {{/substories}}
 
     {{#morethantwo}}
