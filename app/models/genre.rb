@@ -12,7 +12,7 @@ class Genre < ActiveRecord::Base
   end
 
   def self.nsfw_slugs
-    %w(hentai yaoi yuri shounen-ai shoujo-ai)
+    %w(hentai yaoi yuri)
   end
 
   def nsfw?
