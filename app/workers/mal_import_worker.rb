@@ -4,6 +4,8 @@ require 'open-uri'
 class MALImportWorker
   include Sidekiq::Worker
 
+  sidekiq_options throttle: {threshold: 1, period: 1.second}
+
   def perform(mal_username, staged_import_id)
     staged_import = StagedImport.find(staged_import_id)
     return if staged_import.nil?

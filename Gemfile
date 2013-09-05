@@ -86,6 +86,8 @@ gem 'kaminari'
 
 # Background jobs
 gem 'sidekiq'
+gem 'sidekiq-throttler'
+
 gem 'slim'
 gem 'sinatra', :require => nil
 

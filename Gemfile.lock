@@ -373,6 +373,9 @@ GEM
       json
       redis (>= 3.0)
       redis-namespace
+    sidekiq-throttler (0.2.0)
+      activesupport
+      sidekiq (>= 2.5, < 3.0)
     simple-random (0.9.3)
     simple_form (2.1.0)
       actionpack (~> 3.0)
@@ -491,6 +494,7 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   shoulda
   sidekiq
+  sidekiq-throttler
   simple_form
   simplecov
   sinatra
