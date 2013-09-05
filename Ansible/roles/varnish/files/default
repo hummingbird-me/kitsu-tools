@@ -40,14 +40,14 @@ MEMLOCK=82000
 ## Alternative 2, Configuration with VCL
 #
 # Listen on port 6081, administration on localhost:6082, and forward to
-# one content server selected by the vcl file, based on the request.  Use a 1GB
+# one content server selected by the vcl file, based on the request.  Use a 4GB
 # fixed-size cache file.
 #
 DAEMON_OPTS="-a :7073 \
              -T localhost:6082 \
              -f /etc/varnish/default.vcl \
              -S /etc/varnish/secret \
-             -s malloc,256m"
+             -s file,/var/cache/varnish.cache,4G"
 
 
 ## Alternative 3, Advanced configuration
