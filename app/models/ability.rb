@@ -15,11 +15,19 @@ class Ability
         story.watchlist.nil? or !story.watchlist.private
       end
     end
+
+    if user.nil? or user.sfw_filter
+      # Guests and people with the SFW filter on can see only non-sexual
+      # content.
+      can :read, Anime, "age_rating <> 'R18+' OR age_rating IS NULL" do |anime|
+        anime.age_rating != 'R18+'
+      end
+    else
+      can :read, Anime
+    end
     
     if user.nil?
       ### Guest permissions
-      # Can view non-hentai anime.
-      can :read, Anime, "age_rating <> 'R18+' OR age_rating IS NULL"
     else
       ### Regular user permissions
       can :read, Watchlist, :private => true, :user_id => user.id
@@ -29,12 +37,6 @@ class Ability
       can :destroy, Substory, :story => {:user_id => user.id}
 
       can :update, User, :id => user.id
-      
-      if user.sfw_filter
-        can :read, Anime, "age_rating <> 'R18+' OR age_rating IS NULL"
-      else
-        can :read, Anime
-      end
 
       if user.admin?
         ### Admin permissions

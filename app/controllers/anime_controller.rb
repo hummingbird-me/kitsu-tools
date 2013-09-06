@@ -4,6 +4,17 @@ class AnimeController < ApplicationController
   include EpisodesHelper
 
   caches_action :show, if: lambda { not user_signed_in? }, expires_in: 1.hour
+
+  def toggle_favorite
+    authenticate_user!
+    anime = Anime.find(params[:anime_id])
+    if current_user.has_favorite?(anime)
+      current_user.favorites.where(item_id: anime, item_type: "Anime").first.destroy
+    else
+      Favorite.create(user: current_user, item: anime)
+    end
+    redirect_to :back
+  end
   
   def random
     anime = Anime.where("age_rating <> 'R18+'").where(show_type: ["TV", "OVA", "ONA", "Movie"]).order("RANDOM()").limit(1)[0]

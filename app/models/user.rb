@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
     where('LOWER(name) = ?', id.to_s.downcase).first || super
   end
 
+  has_many :favorites
+  def has_favorite?(item)
+    self.favorites.exists?(item_id: item, item_type: item.class.to_s)
+  end
+
   # Following stuff.
   has_many :follower_relations, dependent: :destroy, foreign_key: :followed_id, class_name: 'Follow'
   has_many :followers, through: :follower_relations, source: :follower, class_name: 'User'

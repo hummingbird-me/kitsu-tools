@@ -53,6 +53,13 @@ class UsersController < ApplicationController
     @results = @user.followers.page(params[:page]).per(20)
     render "followers_following", layout: "layouts/profile"
   end
+
+  def favorite_anime
+    @active_tab = :favorite_anime
+    @user = User.find(params[:user_id])
+    @favorite_anime = @user.favorites.where(item_type: "Anime").order('id DESC').page(params[:page]).per(25)
+    render "favorite_anime", layout: "layouts/profile"
+  end
   
   def following
     @active_tab = :following

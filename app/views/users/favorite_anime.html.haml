@@ -1,0 +1,13 @@
+- title "#{@user.name}'s Favorite Anime"
+
+.large-12.columns
+  %ul.large-block-grid-5
+    - @favorite_anime.each_with_index do |fav, i|
+      - anime = fav.item
+      - if current_ability.can? :read, anime
+        %li.card{class: ('end' if i == @favorite_anime.length-1)}
+          .rounded-panel
+            .image= link_to (image_tag anime.cover_image.url(:thumb)), anime
+            .title.truncate= anime.canonical_title(current_user)
+
+  = paginate @favorite_anime

@@ -20,7 +20,7 @@
               %ul.large-block-grid-5
                 - @anime[type].each_with_index do |anime, i|
                   %li.card{class: ('end' if i == @anime[type].length-1)}
-                    .rounded-panel.tip-right
+                    .rounded-panel
                       .image
                         = link_to (image_tag anime.cover_image.url(:thumb)), anime
                       .title.truncate
