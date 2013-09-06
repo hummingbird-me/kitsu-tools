@@ -57,6 +57,8 @@
             %li{:class => ("active" if @active_tab == :followers)}
               = link_to "Followers", user_followers_path(@user)
               %span.sidebar-number= @user.followers_count
+            %li{:class => ("active" if @active_tab == :favorite_anime)}
+              = link_to "Favorite Anime", user_favorite_anime_path(@user)
             - if @user == current_user
               %li{:class => ("active" if @active_tab == :account_settings)}= link_to "Account Settings", main_app.edit_user_registration_path
 

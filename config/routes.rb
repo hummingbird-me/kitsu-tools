@@ -45,6 +45,7 @@ Hummingbird::Application.routes.draw do
     get :feed
     get :followers
     get :following
+    get :favorite_anime
 
     resources :lists
 
