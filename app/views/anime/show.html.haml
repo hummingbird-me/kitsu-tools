@@ -48,10 +48,16 @@
     .large-7.columns.center-column
       .panel
         .large-12.columns
-          %h2.series-title= title @anime.canonical_title(current_user)
-          - if (alt = @anime.alternate_title(current_user)) and alt.strip.length > 0
-            %span.series-alt-title (#{alt}) 
-          %span.air-date 
+          .pull-left
+            %h2.series-title= title @anime.canonical_title(current_user)
+            - if (alt = @anime.alternate_title(current_user)) and alt.strip.length > 0
+              %span.series-alt-title (#{alt})
+          .pull-right.favorite-icon
+            = link_to(anime_toggle_favorite_path(@anime), method: :post) do
+              - if current_user and current_user.has_favorite?(@anime)
+                %i.icon-heart
+              - else
+                %i.icon-heart-empty
 
         .large-12.columns
           %ul.series-metadata
@@ -124,7 +130,7 @@
               - @languages.each_with_index do |language, i|
                 %dd{:class => ("active" if i == 0), :id => language}
                   %a(href="javascript:void(0)"){:id => language}= language
-                
+
             :coffee
               $("dl.language-select a").click ->
                 language = $(this).attr("id")
@@ -148,7 +154,7 @@
               %li.show-more
                 %a(data-tooltip title="Coming soon!"){:href => "javascript:void(0)"} Show all actors +
               %hr
-            
+
       - if @anime.sfw?
         .large-12.columns.panel.ad-zone.center
           %ins(class="adsbygoogle" style="display:inline-block;width:468px;height:60px" data-ad-client="ca-pub-3410319844519574" data-ad-slot="4664352842")
