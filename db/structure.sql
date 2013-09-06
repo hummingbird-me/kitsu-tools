@@ -294,6 +294,39 @@ CREATE TABLE favorite_genres_users (
 
 
 --
+-- Name: favorites; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE favorites (
+    id integer NOT NULL,
+    user_id integer,
+    item_id integer,
+    item_type character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: favorites_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE favorites_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: favorites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE favorites_id_seq OWNED BY favorites.id;
+
+
+--
 -- Name: follows; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -753,6 +786,50 @@ CREATE SEQUENCE genres_id_seq
 --
 
 ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
+
+
+--
+-- Name: manga; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE manga (
+    id integer NOT NULL,
+    japanese_title character varying(255),
+    english_title character varying(255),
+    synopsis text,
+    cover_image_file_name character varying(255),
+    cover_image_content_type character varying(255),
+    cover_image_file_size integer,
+    cover_image_updated_at timestamp without time zone,
+    volume_count integer,
+    chapter_count integer,
+    status character varying(255),
+    start_date date,
+    end_date date,
+    serialization character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    mal_id integer
+);
+
+
+--
+-- Name: manga_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE manga_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: manga_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE manga_id_seq OWNED BY manga.id;
 
 
 --
@@ -1410,6 +1487,13 @@ ALTER TABLE ONLY episodes ALTER COLUMN id SET DEFAULT nextval('episodes_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY favorites ALTER COLUMN id SET DEFAULT nextval('favorites_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY follows ALTER COLUMN id SET DEFAULT nextval('follows_id_seq'::regclass);
 
 
@@ -1502,6 +1586,13 @@ ALTER TABLE ONLY gallery_images ALTER COLUMN id SET DEFAULT nextval('gallery_ima
 --
 
 ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY manga ALTER COLUMN id SET DEFAULT nextval('manga_id_seq'::regclass);
 
 
 --
@@ -1657,6 +1748,14 @@ ALTER TABLE ONLY episodes
 
 
 --
+-- Name: favorites_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY favorites
+    ADD CONSTRAINT favorites_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: follows_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1766,6 +1865,14 @@ ALTER TABLE ONLY gallery_images
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: manga_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY manga
+    ADD CONSTRAINT manga_pkey PRIMARY KEY (id);
 
 
 --
@@ -1971,6 +2078,27 @@ CREATE INDEX index_episodes_on_anime_id ON episodes USING btree (anime_id);
 --
 
 CREATE UNIQUE INDEX index_favorite_genres_users_on_genre_id_and_user_id ON favorite_genres_users USING btree (genre_id, user_id);
+
+
+--
+-- Name: index_favorites_on_item_id_and_item_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_favorites_on_item_id_and_item_type ON favorites USING btree (item_id, item_type);
+
+
+--
+-- Name: index_favorites_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_favorites_on_user_id ON favorites USING btree (user_id);
+
+
+--
+-- Name: index_favorites_on_user_id_and_item_id_and_item_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_favorites_on_user_id_and_item_id_and_item_type ON favorites USING btree (user_id, item_id, item_type);
 
 
 --
@@ -2740,3 +2868,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130814184014');
 INSERT INTO schema_migrations (version) VALUES ('20130814184856');
 
 INSERT INTO schema_migrations (version) VALUES ('20130816102141');
+
+INSERT INTO schema_migrations (version) VALUES ('20130831135654');
+
+INSERT INTO schema_migrations (version) VALUES ('20130831143553');
+
+INSERT INTO schema_migrations (version) VALUES ('20130906160600');
