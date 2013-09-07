@@ -80,7 +80,20 @@ class User < ActiveRecord::Base
     :length => {minimum: 3, maximum: 20},
     :format => {:with => /\A[-_A-Za-z0-9]+\z/, 
       :message => "can only contain alphabets, numbers, dashes and underscores."}
-  
+
+  INVALID_USERNAMES = %w(
+    admin administrator connect dashboard developer developers edit favorites
+    feature featured features feed follow followers following hummingbird index
+    javascript json sysadmin sysadministrator unfollow user users wiki you
+  )
+
+  validate :name_is_not_reserved
+  def name_is_not_reserved
+    if INVALID_USERNAMES.include? name.downcase
+      errors.add(:name, "is reserved")
+    end
+  end
+
   validates :facebook_id, allow_blank: true, uniqueness: true
 
   validates :title_language_preference, inclusion: {in: %w[canonical english romanized]}
