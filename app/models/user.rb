@@ -208,20 +208,20 @@ class User < ActiveRecord::Base
     genres        = Arel::Table.new(:genres)
     anime_genres  = Arel::Table.new(:anime_genres)
     watchlists_t  = Arel::Table.new(:watchlists)
-    
+
     mywatchlists  = watchlists_t.where(watchlists_t[:user_id].eq(id))
-    
+
     freqs = anime_genres.where(
               anime_genres[:anime_id].in( mywatchlists.project(:anime_id) )
             ).project(:genre_id, Arel.sql('COUNT(*) AS count'))
             .group(:genre_id).order('count DESC').take(3)
-            
+
     result = {}
-    
+
     connection.execute(freqs.to_sql).each do |h|
       result[ Genre.find(h["genre_id"]) ] = h["count"].to_f / watchlists.length
     end
-    
+
     result
   end
 
@@ -281,5 +281,10 @@ class User < ActiveRecord::Base
     if self.facebook_id and self.facebook_id.strip == ""
       self.facebook_id = nil
     end
+  end
+
+  # Return encrypted email.
+  def encrypted_email
+    Digest::MD5.hexdigest("giflasdyg7q2liub4fasludkjfh" + self.email)
   end
 end

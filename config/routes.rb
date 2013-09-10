@@ -118,6 +118,9 @@ Hummingbird::Application.routes.draw do
 
   match '/u/:username' => 'users#redirect_short_url'
 
+
+  match '/unsubscribe/:unsub_type/:hash' => 'users#unsubscribe'
+
   # Admin Panel
   constraint = lambda do |request| 
     request.env["warden"].authenticate? and request.env['warden'].user.admin?

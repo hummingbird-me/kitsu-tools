@@ -789,35 +789,29 @@ ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
 
 
 --
--- Name: manga; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: new_stories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE TABLE manga (
+CREATE TABLE new_stories (
     id integer NOT NULL,
-    japanese_title character varying(255),
-    english_title character varying(255),
-    synopsis text,
-    cover_image_file_name character varying(255),
-    cover_image_content_type character varying(255),
-    cover_image_file_size integer,
-    cover_image_updated_at timestamp without time zone,
-    volume_count integer,
-    chapter_count integer,
-    status character varying(255),
-    start_date date,
-    end_date date,
-    serialization character varying(255),
+    story_type character varying(255),
+    user_id integer,
+    source_id integer,
+    source_type character varying(255),
+    data hstore,
+    comments hstore,
+    substories hstore,
+    nsfw boolean DEFAULT false,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    mal_id integer
+    updated_at timestamp without time zone NOT NULL
 );
 
 
 --
--- Name: manga_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+-- Name: new_stories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
-CREATE SEQUENCE manga_id_seq
+CREATE SEQUENCE new_stories_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -826,10 +820,10 @@ CREATE SEQUENCE manga_id_seq
 
 
 --
--- Name: manga_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+-- Name: new_stories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
-ALTER SEQUENCE manga_id_seq OWNED BY manga.id;
+ALTER SEQUENCE new_stories_id_seq OWNED BY new_stories.id;
 
 
 --
@@ -1384,7 +1378,8 @@ CREATE TABLE users (
     last_library_update timestamp without time zone,
     last_recommendations_update timestamp without time zone,
     authentication_token character varying(255),
-    avatar_processing boolean
+    avatar_processing boolean,
+    subscribed_to_newsletter boolean DEFAULT true
 );
 
 
@@ -1592,7 +1587,7 @@ ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY manga ALTER COLUMN id SET DEFAULT nextval('manga_id_seq'::regclass);
+ALTER TABLE ONLY new_stories ALTER COLUMN id SET DEFAULT nextval('new_stories_id_seq'::regclass);
 
 
 --
@@ -1868,11 +1863,11 @@ ALTER TABLE ONLY genres
 
 
 --
--- Name: manga_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: new_stories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
-ALTER TABLE ONLY manga
-    ADD CONSTRAINT manga_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY new_stories
+    ADD CONSTRAINT new_stories_pkey PRIMARY KEY (id);
 
 
 --
@@ -2253,6 +2248,20 @@ CREATE INDEX index_friendly_id_slugs_on_sluggable_type ON friendly_id_slugs USIN
 --
 
 CREATE INDEX index_gallery_images_on_anime_id ON gallery_images USING btree (anime_id);
+
+
+--
+-- Name: index_new_stories_on_source_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_new_stories_on_source_id ON new_stories USING btree (source_id);
+
+
+--
+-- Name: index_new_stories_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_new_stories_on_user_id ON new_stories USING btree (user_id);
 
 
 --
@@ -2869,8 +2878,8 @@ INSERT INTO schema_migrations (version) VALUES ('20130814184856');
 
 INSERT INTO schema_migrations (version) VALUES ('20130816102141');
 
-INSERT INTO schema_migrations (version) VALUES ('20130831135654');
-
-INSERT INTO schema_migrations (version) VALUES ('20130831143553');
-
 INSERT INTO schema_migrations (version) VALUES ('20130906160600');
+
+INSERT INTO schema_migrations (version) VALUES ('20130909201702');
+
+INSERT INTO schema_migrations (version) VALUES ('20130910061902');
