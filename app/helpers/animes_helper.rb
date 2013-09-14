@@ -26,7 +26,7 @@ module AnimesHelper
       display = "Will air"
     end
 
-    if anime.episode_count and anime.episode_count == 1
+    if (anime.episode_count and anime.episode_count == 1) or started == finished
       display += " on #{started}"
     else
       display += " from #{started}"
