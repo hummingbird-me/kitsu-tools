@@ -168,7 +168,7 @@ class User < ActiveRecord::Base
       if name.length > 20
         name = name[0...15]
       end
-      name = name + rand(9999).to_s
+      name = name[0...10] + rand(9999).to_s
     end
     name = name[0...20] if name.length > 20
     user = User.new(
