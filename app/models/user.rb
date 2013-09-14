@@ -77,8 +77,8 @@ class User < ActiveRecord::Base
   validates :name,
     :presence   => true,
     :uniqueness => {:case_sensitive => false},
-    :length => {minimum: 3, maximum: 20},
-    :format => {:with => /\A[-_A-Za-z0-9]+\z/, 
+    :length => {minimum: 3, maximum: 15},
+    :format => {:with => /\A[_A-Za-z0-9]+\z/, 
       :message => "can only contain alphabets, numbers, dashes and underscores."}
 
   INVALID_USERNAMES = %w(
@@ -87,10 +87,13 @@ class User < ActiveRecord::Base
     javascript json sysadmin sysadministrator unfollow user users wiki you
   )
 
-  validate :name_is_not_reserved
-  def name_is_not_reserved
+  validate :valid_username
+  def valid_username
     if INVALID_USERNAMES.include? name.downcase
       errors.add(:name, "is reserved")
+    end
+    if name[0,1] =~ /[^A-Za-z0-9]/
+      errors.add(:name, "must begin with an alphabet or number")
     end
   end
 
