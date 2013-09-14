@@ -163,7 +163,7 @@ class User < ActiveRecord::Base
 
     # Just create a new account. >_>
     name = auth.extra.raw_info.name.parameterize
-    name = name.gsub(/[^-_A-Za-z0-9]/, '')
+    name = name.gsub(/[^_A-Za-z0-9]/, '')
     if User.where("LOWER(name) = ?", name.downcase).count > 0
       if name.length > 20
         name = name[0...15]
