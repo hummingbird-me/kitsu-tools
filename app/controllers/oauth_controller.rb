@@ -3,7 +3,11 @@ class OauthController < ApplicationController
   respond_to     :json
 
   def me
-    respond_with current_resource_owner
+    me = current_resource_owner
+    render :json => {
+      name: me.name,
+      email: me.email
+    }
   end
 
   private
