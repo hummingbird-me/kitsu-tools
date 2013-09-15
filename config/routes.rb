@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Hummingbird::Application.routes.draw do
   use_doorkeeper
+  match '/oauth/me' => 'oauth#me'
 
   devise_for :users, controllers: { 
     omniauth_callbacks: "users/omniauth_callbacks",
