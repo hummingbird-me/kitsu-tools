@@ -125,6 +125,9 @@ GEM
       warden (~> 1.2.1)
     devise-async (0.7.0)
       devise (>= 2.2)
+    doorkeeper (0.7.2)
+      jquery-rails (>= 2.0.2)
+      railties (>= 3.1)
     erubis (2.7.0)
     escape (0.0.4)
     execjs (1.4.0)
@@ -458,6 +461,7 @@ DEPENDENCIES
   delayed_paperclip
   devise
   devise-async
+  doorkeeper (~> 0.7.2)
   factory_girl_rails
   forem!
   forem-html_formatter!
