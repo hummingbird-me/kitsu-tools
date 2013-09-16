@@ -5,6 +5,7 @@ class OauthController < ApplicationController
   def me
     me = current_resource_owner
     render :json => {
+      id: me.id,
       name: me.name,
       email: me.email
     }
