@@ -24,4 +24,24 @@ Forem::TopicsController.class_eval do
       @posts = @posts.page(params[:page]).per(Forem.per_page)
     end
   end
+
+  def new
+    render nothing: true
+  end
+
+  def create
+    render nothing: true
+  end
+
+  def destroy
+    render nothing: true
+  end
+
+  def subscribe
+    render nothing: true
+  end
+
+  def unsubscribe
+    render nothing: true
+  end
 end
