@@ -8,16 +8,11 @@
       .forum-container.large-9.columns
         .row
           %header.cf
-            .large-9.columns
+            .large-12.columns
               %h3.forum-title
                 %i.icon-chevron-left
                 = link_to @forum.name, forem.forum_path(@forum)
-            .large-3.columns
-              - if user_signed_in?
-                - if !@topic.subscriber?(forem_user.id)
-                  %span.button= link_to "Subscribe", forem.subscribe_forum_topic_path(@forum, @topic)
-                - else
-                  %span.button.active= link_to "Unsubscribe", forem.unsubscribe_forum_topic_path(@forum, @topic)
+
         - if forem_admin?
           .row
             .panel(style="margin-bottom: 0")
