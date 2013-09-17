@@ -10,6 +10,8 @@ Hummingbird::Application.routes.draw do
     registrations: "users/registrations"
   }
 
+  match '/users/:name/avatar/:size' => 'users#avatar'
+
   resources :notifications
 
   mount Forem::Engine => "/community"

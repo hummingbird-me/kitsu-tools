@@ -192,9 +192,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def avatar
+    user = User.find(params[:name])
+    size = params[:size]
+    redirect_to user.avatar.url(:thumb)
+  end
+
   def update_setting
     authenticate_user!
-    
+
     if params[:rating_system]
       if params[:rating_system] == "simple"
         current_user.star_rating = false
@@ -202,7 +208,7 @@ class UsersController < ApplicationController
         current_user.star_rating = true
       end
     end
-      
+
     if current_user.save
       render :json => true
     else
