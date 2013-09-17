@@ -16,17 +16,17 @@ if ENV["RAILS_ENV"] == "production"
 else
 
   listen 3000, tcp_nopush: true
-  
+
 end
 
-  
+
 preload_app true
 if GC.respond_to?(:copy_on_write_friendly=)
   GC.copy_on_write_friendly = true
 end
 
-# Nuke workers after 30 seconds.
-timeout 30
+# Nuke workers after 10 seconds.
+timeout 10
 
 # Enable this flag to have unicorn test client connections by writing the
 # beginning of the HTTP headers before calling the application.  This
