@@ -286,6 +286,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  after_save do
+    ForumSyncWorker.perform_async(self.name)
+  end
+
   # Return encrypted email.
   def encrypted_email
     Digest::MD5.hexdigest("giflasdyg7q2liub4fasludkjfh" + self.email)
