@@ -30,10 +30,14 @@ class API_v1 < Grape::API
       @current_ability ||= Ability.new(current_user)
     end
     def find_user(id)
-      if id == "me" and user_signed_in?
-        current_user
-      else
-        User.find(id)
+      begin
+        if id == "me" and user_signed_in?
+          current_user
+        else
+          User.find(id)
+        end
+      rescue
+        error!("404 Not Found", 404)
       end
     end
   end
