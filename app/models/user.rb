@@ -287,7 +287,9 @@ class User < ActiveRecord::Base
   end
 
   after_save do
-    ForumSyncWorker.perform_async(self.name)
+    if self.avatar_file_name_changed?
+      ForumSyncWorker.perform_async(self.name)
+    end
   end
 
   # Return encrypted email.
