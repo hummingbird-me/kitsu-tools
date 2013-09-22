@@ -60,7 +60,7 @@ class NewsFeed
     end
     stories = story_ids.map {|x| story_id_to_story[x.to_i] }.compact
 
-    Entities::Story.represent(stories, current_ability: ability, title_language_preference: @user.title_language_preference).to_json
+    Entities::Story.represent(stories, current_user: @user, title_language_preference: @user.title_language_preference).to_json
   end
 
   # Regenerate the user's feed from scratch.
