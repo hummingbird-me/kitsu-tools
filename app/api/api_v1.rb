@@ -117,7 +117,7 @@ class API_v1 < Grape::API
       # Find stories to display.
       stories = user.stories.for_user(current_user).order('updated_at DESC').includes(:substories).page(params[:page]).per(20)
 
-      present stories, with: Entities::Story, current_ability: current_ability, title_language_preference: (user_signed_in? ? current_user.title_language_preference : "canonical")
+      present stories, with: Entities::Story, current_user: current_user, title_language_preference: (user_signed_in? ? current_user.title_language_preference : "canonical")
     end
 
     desc "Delete a substory from the user's feed."

@@ -107,10 +107,11 @@ module Entities
     ) do |substory, options|
       MessageFormatter.format_message substory.data["comment"]
     end
-    
+
     expose(:permissions) do |substory, options|
       current_ability ||= options[:current_ability]
-      if current_ability
+      current_user    ||= options[:current_user]
+      if current_ability or (substory.user == current_user)
         {
           destroy: current_ability.can?(:destroy, substory)
         }
