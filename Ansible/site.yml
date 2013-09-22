@@ -1,6 +1,6 @@
 ---
- Set up user accounts.
- Create the `vikhyat` user.
+# Set up user accounts.
+# Create the `vikhyat` user.
 - hosts: all
   sudo: True
   vars:

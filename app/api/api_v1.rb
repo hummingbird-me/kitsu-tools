@@ -105,7 +105,7 @@ class API_v1 < Grape::API
       
       present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference, genres: false, include_mal_id: params[:include_mal_id] == "true"
     end
-    
+
     desc "Returns the user's feed."
     params do
       requires :user_id, type: String
@@ -113,11 +113,13 @@ class API_v1 < Grape::API
     end
     get ":user_id/feed" do
       user = find_user(params[:user_id])
-      stories = user.stories.accessible_by(current_ability).order('updated_at DESC').includes(:substories).page(params[:page]).per(20)
-      
+
+      # Find stories to display.
+      stories = user.stories.for_user(current_user).order('updated_at DESC').includes(:substories).page(params[:page]).per(20)
+
       present stories, with: Entities::Story, current_ability: current_ability, title_language_preference: (user_signed_in? ? current_user.title_language_preference : "canonical")
     end
-    
+
     desc "Delete a substory from the user's feed."
     params do
       requires :user_id, type: String

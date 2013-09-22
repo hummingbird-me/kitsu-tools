@@ -8,9 +8,9 @@ class Story < ActiveRecord::Base
   has_many :notifications, as: :source, dependent: :destroy
 
   serialize :data, ActiveRecord::Coders::Hstore
-  
+
   validates :user, :story_type, presence: true
-  
+
   def self.for_user_and_anime(user, anime, story_type="media_story")
     story = user.stories.where(story_type: story_type, target_id: anime.id, target_type: "Anime")
     watchlist = Watchlist.find_by_user_id_and_anime_id(user.id, anime.id)
@@ -40,5 +40,13 @@ class Story < ActiveRecord::Base
     self.updated_at = time
     self.save
     NewsFeed.notify_story_updated(self.user, time)
+  end
+
+  def self.for_user(user)
+    if user.nil? or user.sfw_filter
+      where("NOT adult").joins("LEFT OUTER JOIN watchlists ON watchlists.id = stories.watchlist_id").where("watchlists.id IS NULL OR watchlists.private = 'f'")
+    else
+      joins("LEFT OUTER JOIN watchlists ON watchlists.id = stories.watchlist_id").where("watchlists.id IS NULL OR watchlists.private = 'f'")
+    end
   end
 end
