@@ -24,7 +24,8 @@ get '/sync' do
     user = User.find_by_username(username)
     if user
       hb_data = user.hummingbird_data
-      user.uploaded_avatar_template = hb_data["avatar"]
+      new_avatar = hb_data["avatar"].gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
+      user.uploaded_avatar_template = new_avatar
       user.save
     end
   end
