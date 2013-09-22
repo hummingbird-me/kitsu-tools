@@ -46,13 +46,18 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar,
     styles: {
-      thumb: '190x190#', 
-      thumb_small: '50x50#'
+      thumb: '190x190#',
+      thumb_small: '50x50#',
+      small: {geometry: '25x25#', animated: false}
     },
-    convert_options: {thumb_small: '-unsharp 2x0.5+1+0'},
-    default_url: "http://placekitten.com/g/190/190"
-  
-  has_attached_file :cover_image, 
+    convert_options: {
+      thumb_small: '-unsharp 2x0.5+1+0',
+      small: '-unsharp 2x0.3+1+0'
+    },
+    default_url: "http://placekitten.com/g/190/190",
+    processors: [:thumbnail, :paperclip_optimizer]
+
+  has_attached_file :cover_image,
     styles: {thumb: {geometry: "760x250#", animated: false}},
     default_url: "http://hummingbird.me/default_cover.png",
     storage: :s3

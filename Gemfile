@@ -65,6 +65,7 @@ gem 'rdiscount'
 
 # Attachments
 gem "paperclip", "~> 3.0"
+gem 'paperclip-optimizer'
 gem 'delayed_paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 
