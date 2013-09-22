@@ -292,7 +292,7 @@ class User < ActiveRecord::Base
   end
 
   after_save do
-    if self.avatar_file_name_changed?
+    if self.avatar_processing_changed? and (not self.avatar_processing)
       ForumSyncWorker.perform_async(self.name)
     end
   end
