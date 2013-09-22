@@ -111,7 +111,7 @@ module Entities
     expose(:permissions) do |substory, options|
       current_ability ||= options[:current_ability]
       current_user    ||= options[:current_user]
-      if current_ability or (substory.user == current_user)
+      if current_ability or (substory.user == current_user or current_user.admin?)
         {
           destroy: current_ability.can?(:destroy, substory)
         }
