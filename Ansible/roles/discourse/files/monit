@@ -1,4 +1,4 @@
 check process sync with pidfile /home/discourse/pids/sync
   group discourse
-  start program = "/bin/su - discourse -c 'cd /home/discourse/sync && bundle exec thin start -d -P /home/discourse/pids/sync'"
+  start program = "/bin/su - discourse -c 'cd /home/discourse/sync && bundle exec ruby app.rb'"
   stop program = "/bin/su - discourse -c 'kill `cat /home/discourse/pids/sync`'"
