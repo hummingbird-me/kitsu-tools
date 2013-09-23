@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       recommendations_up_to_date: current_user.recommendations_up_to_date,
       import_staging_completed: current_user.staged_import && current_user.staged_import.data[:complete]
     }
-    
+
     respond_to do |format|
       format.html {
         flash.keep
@@ -86,23 +86,30 @@ class UsersController < ApplicationController
   def follow
     authenticate_user!
     @user = User.find(params[:user_id])
-    
+
     if @user != current_user
       if @user.followers.include? current_user
         @user.followers.destroy current_user
         action_type = "unfollowed"
       else
-        @user.followers.push current_user
-        action_type = "followed"
+        if current_user.following_count < 2000
+          @user.followers.push current_user
+          action_type = "followed"
+        else
+          flash[:message] = "Wow! You're following 2,000 people?! You should unfollow a few people that no longer interest you before following any others."
+          action_type = nil
+        end
       end
-        
-      Substory.from_action({
-        user_id: current_user.id,
-        action_type: action_type,
-        followed_id: @user.id
-      })
+
+      if action_type
+        Substory.from_action({
+          user_id: current_user.id,
+          action_type: action_type,
+          followed_id: @user.id
+        })
+      end
     end
-    
+
     respond_to do |format|
       format.html { redirect_to :back }
     end
