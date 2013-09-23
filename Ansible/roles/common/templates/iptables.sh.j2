@@ -25,6 +25,11 @@ iptables -A INPUT -s {{host}} -j ACCEPT
 iptables -A INPUT -p tcp --dport 80 -j ACCEPT
 {% endif %}
 
+# Allow incoming port 80 traffic to the forum.
+{% if 'discourse' in group_names %}
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+{% endif %}
+
 # Allow incoming port 25 traffic to the mail server.
 {% if 'mail' in group_names %}
 iptables -A INPUT -p tcp --dport 25 -j ACCEPT
