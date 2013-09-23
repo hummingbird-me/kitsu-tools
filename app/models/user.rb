@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
     },
     convert_options: {
       thumb_small: '-unsharp 2x0.5+1+0',
-      small: '-unsharp 2x0.5+1+0'
+      small: '-unsharp 2x0.3+1+0'
     },
     default_url: "http://placekitten.com/g/190/190",
     processors: [:thumbnail, :paperclip_optimizer]
