@@ -115,7 +115,7 @@ class API_v1 < Grape::API
       user = find_user(params[:user_id])
 
       # Find stories to display.
-      stories = user.stories.for_user(current_user).order('updated_at DESC').includes(:substories).page(params[:page]).per(20)
+      stories = user.stories.where(story_type: "comment").for_user(current_user).order('updated_at DESC').includes(:substories).page(params[:page]).per(20)
 
       present stories, with: Entities::Story, current_user: current_user, title_language_preference: (user_signed_in? ? current_user.title_language_preference : "canonical")
     end

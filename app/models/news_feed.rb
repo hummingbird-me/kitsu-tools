@@ -55,7 +55,7 @@ class NewsFeed
 
     story_ids = $redis.zrevrange @feed_key, start_index, stop_index
     story_id_to_story = {}
-    Story.where(id: story_ids).for_user(@user).includes(:substories).each do |story|
+    Story.where(id: story_ids).where(story_type: "comment").for_user(@user).includes(:substories).each do |story|
       story_id_to_story[story.id] = story
     end
     stories = story_ids.map {|x| story_id_to_story[x.to_i] }.compact

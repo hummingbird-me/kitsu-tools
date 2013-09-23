@@ -58,12 +58,17 @@
   roles:
   - solr
 
-- hosts: varnish
-  sudo: True
-  roles:
-  - varnish
-
 - hosts: discourse
   sudo: True
   roles:
   - discourse
+
+- hosts: beanstalkd
+  sudo: True
+  roles:
+  - beanstalkd
+
+- hosts: varnish
+  sudo: True
+  roles:
+  - varnish
