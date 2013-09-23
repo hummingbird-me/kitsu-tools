@@ -71,6 +71,7 @@ GEM
       uuidtools (~> 2.1)
     backports (2.6.7)
     bcrypt-ruby (3.0.1)
+    beaneater (0.3.2)
     beefcake (0.3.7)
     better_errors (0.8.0)
       coderay (>= 1.0.0)
@@ -456,6 +457,7 @@ DEPENDENCIES
   activerecord-postgres-hstore
   activerecord-reputation-system
   aws-sdk (~> 1.5.7)
+  beaneater
   better_errors
   binding_of_caller
   cancan
