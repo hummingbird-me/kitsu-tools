@@ -293,7 +293,8 @@ class User < ActiveRecord::Base
 
   after_save do
     if self.avatar_processing_changed? and (not self.avatar_processing)
-      ForumSyncWorker.perform_async(self.name)
+      new_avatar = self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
+      $beanstalk.tubes["update-forum-avatar"].put({name: self.name, avatar: new_avatar}.to_json)
     end
   end
 
