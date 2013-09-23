@@ -44,6 +44,7 @@ before_fork do |server, worker|
   end
 
   $redis.quit
+  $beanstalk.close
 
   # Zero downtime deploys.
   #
@@ -73,5 +74,6 @@ after_fork do |server, worker|
   # between any number of forked children (assuming your kernel
   # correctly implements pread()/pwrite() system calls)
   $redis = Redis.connect(host: ENV['REDIS_HOST'])
+  $beanstalk = Beaneater::Pool.new
 end
 

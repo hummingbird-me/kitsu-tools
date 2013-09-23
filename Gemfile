@@ -15,6 +15,7 @@ gem 'redis'
 gem 'redis-rails'
 
 gem 'beaneater'
+gem 'beanstalkd_view'
 
 gem 'forem', :path => 'vendor/forem'
 gem 'forem-html_formatter', :path => 'vendor/forem-html_formatter'
