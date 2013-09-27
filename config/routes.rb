@@ -49,6 +49,7 @@ Hummingbird::Application.routes.draw do
     get :followers
     get :following
     get :favorite_anime
+    get :trigger_forum_sync
 
     resources :lists
 
@@ -59,7 +60,7 @@ Hummingbird::Application.routes.draw do
     post :comment
     post :toggle_connection
     post :update_setting
-    
+
     post "/disconnect/facebook" => 'users#disconnect_facebook', 
       as: :disconnect_facebook
   end
@@ -92,8 +93,8 @@ Hummingbird::Application.routes.draw do
       member { post :vote }
     end
     resources :episodes do
-      member { 
-        post :watch 
+      member {
+        post :watch
         post :bulk_update
       }
     end

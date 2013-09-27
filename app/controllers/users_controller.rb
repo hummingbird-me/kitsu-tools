@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     return
 
     @active_tab = :profile
-    
+
     @latest_reviews = @user.reviews.order('created_at DESC').limit(2)
 
     @anime_history = {
@@ -199,12 +199,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def avatar
-    user = User.find(params[:name])
-    size = params[:size]
-    redirect_to user.avatar.url(:thumb)
-  end
-
   def update_setting
     authenticate_user!
 
@@ -217,6 +211,17 @@ class UsersController < ApplicationController
     end
 
     if current_user.save
+      render :json => true
+    else
+      render :json => false
+    end
+  end
+
+  def trigger_forum_sync
+    username = params[:user_id]
+    secret   = params[:secret]
+    if secret == "topsecretsecret"
+      User.find(username).sync_to_forum!
       render :json => true
     else
       render :json => false
