@@ -291,11 +291,22 @@ class User < ActiveRecord::Base
     end
   end
 
-  after_save do
-    if self.avatar_processing_changed? and (not self.avatar_processing)
-      new_avatar = self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
-      $beanstalk.tubes["update-forum-avatar"].put({name: self.name, avatar: new_avatar}.to_json)
+  def sync_to_forum!
+    changes = {name: self.name_was}
+
+    # New name if changed.
+    if self.name_changed?
+      changes[:new_name] = self.name
     end
+
+    # Avatar.
+    changes[:new_avatar] = self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
+
+    $beanstalk.tubes["update-forum-account"].put(changes.to_json)
+  end
+
+  after_save do
+    self.sync_to_forum!
   end
 
   # Return encrypted email.

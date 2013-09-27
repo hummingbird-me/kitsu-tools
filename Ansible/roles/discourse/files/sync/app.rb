@@ -11,10 +11,10 @@ end
 
 $beanstalk = Beaneater::Pool.new
 
-$beanstalk.jobs.register('update-forum-avatar') do |job|
+$beanstalk.jobs.register('update-forum-account') do |job|
   job_hash = JSON.parse job.body
   user = User.find_by_username job_hash['name']
-  avatar = job_hash['avatar']
+  avatar = job_hash['new_avatar']
   if user
     user.uploaded_avatar_template = avatar
     user.save
