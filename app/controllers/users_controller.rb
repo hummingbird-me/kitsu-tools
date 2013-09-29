@@ -218,7 +218,7 @@ class UsersController < ApplicationController
   end
 
   def cover_image
-    user = User.find_by_username(params[:user_id]) || not_found!
+    user = User.find_by_name(params[:user_id]) || not_found!
     redirect_to user.cover_image.url(:thumb)
   end
 
