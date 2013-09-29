@@ -217,6 +217,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def cover_image
+    user = User.find_by_username(params[:user_id]) || not_found!
+    redirect_to user.cover_image.url(:thumb)
+  end
+
   def trigger_forum_sync
     username = params[:user_id]
     secret   = params[:secret]

@@ -39,4 +39,8 @@ class ApplicationController < ActionController::Base
     user_signed_in? and ((not current_user.sfw_filter) or current_user.admin?)
   end
   helper_method :can_view_nsfw_forum_content?
+
+  def not_found!
+    raise ActionController::RoutingError.new('Not Found')
+  end
 end

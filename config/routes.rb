@@ -50,6 +50,7 @@ Hummingbird::Application.routes.draw do
     get :following
     get :favorite_anime
     get :trigger_forum_sync
+    get :cover_image
 
     resources :lists
 
