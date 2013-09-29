@@ -1,7 +1,7 @@
 class MessageFormatter
   def self.format_message(message)
     formatted = Rinku.auto_link(ERB::Util.html_escape(message), :all, 'target="_blank"')
-    
+
     # Link @usernames.
     formatted = formatted.gsub(/@[-_A-Za-z0-9]+/) do |x|
       u = User.find_by_name(x[1..-1])
@@ -11,12 +11,12 @@ class MessageFormatter
         x
       end
     end
-    
+
     noko = Nokogiri::HTML.parse formatted
     links = noko.css('a').map {|link| link['href'] }
     if links.length > 0
       link = links[-1]
-      
+
       # Embed images.
       if link =~ /\.(gif|jpe?g|png)$/i
         begin
@@ -26,7 +26,7 @@ class MessageFormatter
         rescue
         end
       end
-      
+
       # Embed YouTube videos.
       if link =~ /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/
         begin
@@ -36,7 +36,7 @@ class MessageFormatter
         end
       end
     end
-    
+
     formatted
   end
 end

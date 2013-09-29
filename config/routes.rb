@@ -1,6 +1,9 @@
 require 'sidekiq/web'
 
 Hummingbird::Application.routes.draw do
+  use_doorkeeper
+  match '/oauth/me' => 'oauth#me'
+
   devise_for :users, controllers: { 
     omniauth_callbacks: "users/omniauth_callbacks",
     sessions: "users/sessions",
@@ -46,6 +49,8 @@ Hummingbird::Application.routes.draw do
     get :followers
     get :following
     get :favorite_anime
+    get :trigger_forum_sync
+    get :cover_image
 
     resources :lists
 
@@ -56,7 +61,7 @@ Hummingbird::Application.routes.draw do
     post :comment
     post :toggle_connection
     post :update_setting
-    
+
     post "/disconnect/facebook" => 'users#disconnect_facebook', 
       as: :disconnect_facebook
   end
@@ -89,8 +94,8 @@ Hummingbird::Application.routes.draw do
       member { post :vote }
     end
     resources :episodes do
-      member { 
-        post :watch 
+      member {
+        post :watch
         post :bulk_update
       }
     end
@@ -132,9 +137,11 @@ Hummingbird::Application.routes.draw do
     match '/kotodama/invite_to_beta' => 'admin#invite_to_beta'
     post '/kotodama/toggle_forum_kill_switch' => 'admin#toggle_forum_kill_switch'
     post '/kotodama/toggle_registration_kill_switch' => 'admin#toggle_registration_kill_switch'
+
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
     mount Split::Dashboard => '/kotodama/split'
+    mount BeanstalkdView::Server, at: '/kotodama/beanstalkd'
   end
 
   mount API => '/'

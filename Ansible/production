@@ -5,7 +5,7 @@
 106.186.25.22
 
 [webservers]
-106.186.25.22 unicorn_processes=6
+106.186.25.22 unicorn_processes=8
 
 [redis]
 106.186.25.22
@@ -22,3 +22,8 @@
 [varnish]
 106.186.25.22
 
+[discourse]
+162.243.13.212
+
+[beanstalkd]
+106.186.25.22

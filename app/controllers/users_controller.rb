@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       recommendations_up_to_date: current_user.recommendations_up_to_date,
       import_staging_completed: current_user.staged_import && current_user.staged_import.data[:complete]
     }
-    
+
     respond_to do |format|
       format.html {
         flash.keep
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     return
 
     @active_tab = :profile
-    
+
     @latest_reviews = @user.reviews.order('created_at DESC').limit(2)
 
     @anime_history = {
@@ -86,23 +86,30 @@ class UsersController < ApplicationController
   def follow
     authenticate_user!
     @user = User.find(params[:user_id])
-    
+
     if @user != current_user
       if @user.followers.include? current_user
         @user.followers.destroy current_user
         action_type = "unfollowed"
       else
-        @user.followers.push current_user
-        action_type = "followed"
+        if current_user.following_count < 2000
+          @user.followers.push current_user
+          action_type = "followed"
+        else
+          flash[:message] = "Wow! You're following 2,000 people?! You should unfollow a few people that no longer interest you before following any others."
+          action_type = nil
+        end
       end
-        
-      Substory.from_action({
-        user_id: current_user.id,
-        action_type: action_type,
-        followed_id: @user.id
-      })
+
+      if action_type
+        Substory.from_action({
+          user_id: current_user.id,
+          action_type: action_type,
+          followed_id: @user.id
+        })
+      end
     end
-    
+
     respond_to do |format|
       format.html { redirect_to :back }
     end
@@ -194,7 +201,7 @@ class UsersController < ApplicationController
 
   def update_setting
     authenticate_user!
-    
+
     if params[:rating_system]
       if params[:rating_system] == "simple"
         current_user.star_rating = false
@@ -202,8 +209,24 @@ class UsersController < ApplicationController
         current_user.star_rating = true
       end
     end
-      
+
     if current_user.save
+      render :json => true
+    else
+      render :json => false
+    end
+  end
+
+  def cover_image
+    user = User.find_by_name(params[:user_id]) || not_found!
+    redirect_to user.cover_image.url(:thumb)
+  end
+
+  def trigger_forum_sync
+    username = params[:user_id]
+    secret   = params[:secret]
+    if secret == "topsecretsecret"
+      User.find(username).sync_to_forum!
       render :json => true
     else
       render :json => false

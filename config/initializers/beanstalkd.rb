@@ -1,0 +1,1 @@
+$beanstalk = Beaneater::Pool.new

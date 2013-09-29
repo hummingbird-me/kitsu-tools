@@ -42,39 +42,37 @@ class NewsFeed
   def cached?
     $redis.exists @feed_key
   end
-  
+
   # Fetch a page of stories from the user's timeline. Generate a timeline if 
   # the user's timeline doesn't already exist in memory.
   def fetch(page=nil)
     regenerate_feed! unless cached?
     $redis.expire @feed_key, INACTIVE_DAYS * 24 * 60 * 60
-    
+
     page ||= 1
     start_index = 20 * (page.to_i-1)
     stop_index = start_index + 20 - 1
 
-    ability = Ability.new @user
-
     story_ids = $redis.zrevrange @feed_key, start_index, stop_index
     story_id_to_story = {}
-    Story.where(id: story_ids).accessible_by(ability).includes(:substories).each do |story|
+    Story.where(id: story_ids).for_user(@user).includes(:substories).each do |story|
       story_id_to_story[story.id] = story
     end
     stories = story_ids.map {|x| story_id_to_story[x.to_i] }.compact
-    
-    Entities::Story.represent(stories, current_ability: ability, title_language_preference: @user.title_language_preference).to_json
+
+    Entities::Story.represent(stories, current_user: @user, title_language_preference: @user.title_language_preference).to_json
   end
-  
+
   # Regenerate the user's feed from scratch.
   def regenerate_feed!
     ability = Ability.new @user
     user_set = active_followed_users + [@user.id]
-    
+
     stories = Story.accessible_by(ability).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(FRESH_FETCH_SIZE)
-    
+
     stories.each {|story| add! story }
   end
-  
+
   # Add a story to the user's news feed.
   def add!(story)
     add_story = false
@@ -90,20 +88,20 @@ class NewsFeed
       $redis.zremrangebyrank(@feed_key, 0, -CACHE_SIZE) if rand < 0.2
     end
   end
-  
+
   # Return the set of active user IDs followed by our user, who were most 
   # recently active. Limited to FRESH_FETCH_SIZE users. 
   def active_followed_users
     return @active_followed_users if @active_follower_users
-    
+
     active_followed_users_key = ACTIVE_FOLLOWED_USERS_PREFIX + @user.id.to_s
     following_key = USER_FOLLOWING_PREFIX + @user.id.to_s
-    
+
     $redis.zinterstore active_followed_users_key, [LAST_STORY_UPDATE_TIME_KEY, following_key], aggregate: "max"
-    
+
     active_ids = $redis.zrevrange active_followed_users_key, 0, FRESH_FETCH_SIZE-1
     $redis.del active_followed_users_key
-    
+
     @active_followed_users = active_ids
   end
 
@@ -137,7 +135,7 @@ class NewsFeed
     $redis.srem followers_key, user.id
     $redis.srem following_key, followed.id
   end
-  
+
   #
   # Called when a story is generated for a particular user. Save this time to a
   # Sorted Set stored in Redis.

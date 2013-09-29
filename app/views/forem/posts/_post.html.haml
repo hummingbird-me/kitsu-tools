@@ -21,30 +21,27 @@
         .topic-body 
           = forem_format(post.text)
 
-      .row
-        .toolbar
-          %ul
-            - if forem_user
-              - if can?(:reply, post.topic)
-                - if post.topic.can_be_replied_to?
-                  %li.reply-button 
-                    <i class="icon-reply"></i> 
-                    = link_to t('Reply', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id)
-
-              - if post.topic.can_be_replied_to?
-                %li.quote-button 
-                  <i class="icon-quote-left"></i> 
-                  = link_to t('Quote', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id, :quote => true)
-
-              - if post.owner_or_admin?(forem_user)
-                - if can?(:edit_post, post.topic.forum)
-                  %li.edit-button 
-                    <i class="icon-pencil"></i>
-                    = link_to t('Edit', :scope => 'forem.post'), forem.edit_topic_post_path(post.topic, post)
-                %li.delete-button 
-                  <i class="icon-trash"></i> 
-                  = link_to t('Delete', :scope => 'forem.topic'), forem.topic_post_path(post.topic, post), :method => :delete, :confirm => t("are_you_sure")
-
+      /.row
+      /  .toolbar
+      /    %ul
+      /      - if forem_user
+      /        - if can?(:reply, post.topic)
+      /          - if post.topic.can_be_replied_to?
+      /            %li.reply-button 
+      /              <i class="icon-reply"></i> 
+      /              = link_to t('Reply', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id)
+      /        - if post.topic.can_be_replied_to?
+      /          %li.quote-button 
+      /            <i class="icon-quote-left"></i> 
+      /            = link_to t('Quote', :scope => 'forem.topic'), forem.new_topic_post_path(post.topic, :reply_to_id => post.id, :quote => true)
+      /        - if post.owner_or_admin?(forem_user)
+      /          - if can?(:edit_post, post.topic.forum)
+      /            %li.edit-button 
+      /              <i class="icon-pencil"></i>
+      /              = link_to t('Edit', :scope => 'forem.post'), forem.edit_topic_post_path(post.topic, post)
+      /          %li.delete-button 
+      /            <i class="icon-trash"></i> 
+      /            = link_to t('Delete', :scope => 'forem.topic'), forem.topic_post_path(post.topic, post), :method => :delete, :confirm => t("are_you_sure")
 / %a{:name => "post-#{post.id}"}
 / <div id='post_#{post_counter + 1}' class='post #{cycle('odd', 'even')}'>
 / .user

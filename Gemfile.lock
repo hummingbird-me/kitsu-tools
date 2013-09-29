@@ -71,6 +71,13 @@ GEM
       uuidtools (~> 2.1)
     backports (2.6.7)
     bcrypt-ruby (3.0.1)
+    beaneater (0.3.2)
+    beanstalkd_view (1.2.4)
+      beaneater (~> 0.3.0)
+      json
+      sinatra (>= 1.3.0)
+      sinatra-contrib (>= 1.3.0)
+      vegas (~> 0.1.2)
     beefcake (0.3.7)
     better_errors (0.8.0)
       coderay (>= 1.0.0)
@@ -125,8 +132,12 @@ GEM
       warden (~> 1.2.1)
     devise-async (0.7.0)
       devise (>= 2.2)
+    doorkeeper (0.7.2)
+      jquery-rails (>= 2.0.2)
+      railties (>= 3.1)
     erubis (2.7.0)
     escape (0.0.4)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -257,6 +268,10 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
+    paperclip-optimizer (0.2.0)
+      image_optim (~> 0.8)
+      paperclip
+      paperclip (~> 3.4.1)
     peach (0.5.1)
     pg (0.15.1)
     pg-hstore (1.1.7)
@@ -270,6 +285,8 @@ GEM
       rack (>= 0.4)
     rack-cache (1.2)
       rack (>= 0.4)
+    rack-cors (0.2.7)
+      rack
     rack-mini-profiler (0.1.27)
       rack (>= 1.1.3)
     rack-mount (0.8.3)
@@ -388,6 +405,13 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.3)
       tilt (~> 1.3, >= 1.3.3)
+    sinatra-contrib (1.3.2)
+      backports (>= 2.0)
+      eventmachine
+      rack-protection
+      rack-test
+      sinatra (~> 1.3.0)
+      tilt (~> 1.3)
     sitemap_generator (3.4)
       builder
     slim (1.3.8)
@@ -433,6 +457,8 @@ GEM
       rack
       raindrops (~> 0.7)
     uuidtools (2.1.4)
+    vegas (0.1.11)
+      rack (>= 1.0.0)
     virtus (0.5.4)
       backports (~> 2.6.1)
       descendants_tracker (~> 0.0.1)
@@ -449,6 +475,8 @@ DEPENDENCIES
   activerecord-postgres-hstore
   activerecord-reputation-system
   aws-sdk (~> 1.5.7)
+  beaneater
+  beanstalkd_view
   better_errors
   binding_of_caller
   cancan
@@ -458,6 +486,7 @@ DEPENDENCIES
   delayed_paperclip
   devise
   devise-async
+  doorkeeper (~> 0.7.2)
   factory_girl_rails
   forem!
   forem-html_formatter!
@@ -478,9 +507,11 @@ DEPENDENCIES
   omniauth
   omniauth-facebook (= 1.4.0)
   paperclip (~> 3.0)
+  paperclip-optimizer
   peach
   pg
   pg_search!
+  rack-cors
   rack-mini-profiler
   rails (= 3.2.13)
   rails_admin

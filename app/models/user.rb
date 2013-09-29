@@ -46,13 +46,18 @@ class User < ActiveRecord::Base
 
   has_attached_file :avatar,
     styles: {
-      thumb: '190x190#', 
-      thumb_small: '50x50#'
+      thumb: '190x190#',
+      thumb_small: '50x50#',
+      small: {geometry: '25x25#', animated: false}
     },
-    convert_options: {thumb_small: '-unsharp 2x0.5+1+0'},
-    default_url: "http://placekitten.com/g/190/190"
-  
-  has_attached_file :cover_image, 
+    convert_options: {
+      thumb_small: '-unsharp 2x0.5+1+0',
+      small: '-unsharp 2x0.5+1+0'
+    },
+    default_url: "http://placekitten.com/g/190/190",
+    processors: [:thumbnail, :paperclip_optimizer]
+
+  has_attached_file :cover_image,
     styles: {thumb: {geometry: "760x250#", animated: false}},
     default_url: "http://hummingbird.me/default_cover.png",
     storage: :s3
@@ -77,8 +82,8 @@ class User < ActiveRecord::Base
   validates :name,
     :presence   => true,
     :uniqueness => {:case_sensitive => false},
-    :length => {minimum: 3, maximum: 20},
-    :format => {:with => /\A[-_A-Za-z0-9]+\z/, 
+    :length => {minimum: 3, maximum: 15},
+    :format => {:with => /\A[_A-Za-z0-9]+\z/, 
       :message => "can only contain alphabets, numbers, dashes and underscores."}
 
   INVALID_USERNAMES = %w(
@@ -87,10 +92,13 @@ class User < ActiveRecord::Base
     javascript json sysadmin sysadministrator unfollow user users wiki you
   )
 
-  validate :name_is_not_reserved
-  def name_is_not_reserved
+  validate :valid_username
+  def valid_username
     if INVALID_USERNAMES.include? name.downcase
       errors.add(:name, "is reserved")
+    end
+    if name[0,1] =~ /[^A-Za-z0-9]/
+      errors.add(:name, "must begin with an alphabet or number")
     end
   end
 
@@ -159,13 +167,13 @@ class User < ActiveRecord::Base
     end
 
     # Just create a new account. >_>
-    name = auth.extra.raw_info.name.parameterize
-    name = name.gsub(/[^-_A-Za-z0-9]/, '')
+    name = auth.extra.raw_info.name.parameterize.gsub('-', '_')
+    name = name.gsub(/[^_A-Za-z0-9]/, '')
     if User.where("LOWER(name) = ?", name.downcase).count > 0
       if name.length > 20
         name = name[0...15]
       end
-      name = name + rand(9999).to_s
+      name = name[0...10] + rand(9999).to_s
     end
     name = name[0...20] if name.length > 20
     user = User.new(
@@ -280,6 +288,28 @@ class User < ActiveRecord::Base
   before_save do
     if self.facebook_id and self.facebook_id.strip == ""
       self.facebook_id = nil
+    end
+  end
+
+  def sync_to_forum!
+    changes = {name: self.name_was}
+
+    # New name if changed.
+    if self.name_changed?
+      changes[:new_name] = self.name
+    end
+
+    # Avatar.
+    changes[:new_avatar] = self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
+
+    $beanstalk.tubes["update-forum-account"].put(changes.to_json)
+  end
+
+  after_save do
+    name_changed = self.name_changed?
+    avatar_changed = (not self.avatar_processing) and (self.avatar_processing_changed? or self.avatar_updated_at_changed?)
+    if name_changed or avatar_changed
+      self.sync_to_forum!
     end
   end
 

@@ -1,19 +1,23 @@
 - name: Add nginx repository
   action: apt_repository repo=ppa:nginx/stable state=present
   register: add_nginx_ppa
-    
+
 - name: Update package cache
   action: apt update_cache=yes
   only_if: ${add_nginx_ppa.changed}
 
 - name: Install nginx
   action: apt pkg=nginx state=latest
-    
+
 - name: Start nginx
   service: name=nginx state=started
-    
-- name: Install imagemagick for paperclip
-  action: apt pkg=imagemagick state=present
+
+- name: Install paperclip libraries
+  action: apt pkg=$item state=present
+  with_items:
+  - imagemagick
+  - libjpeg-progs
+  - optipng
 
 - name: Add Unicorn to Monit
   action: copy src=unicorn.monit dest=/etc/monit/conf.d/unicorn.monit

@@ -16,8 +16,8 @@
 
 - name: Create .ssh directory
   file: path=/home/vikhyat/.ssh state=directory owner=vikhyat
-    
-- name: Copy over env 
+
+- name: Copy over env
   template: dest=/etc/profile.d/env.sh src=env.j2 owner=root group=root mode=0755
 
 - name: Copy over AWS credentials
@@ -47,7 +47,7 @@
 
 - name: Install monit
   action: apt pkg=monit state=present
-    
+
 - name: Copy monit config
   action: copy src=monitrc dest=/etc/monit/monitrc
 

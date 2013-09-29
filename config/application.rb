@@ -80,5 +80,13 @@ module Hummingbird
     config.generators do |g|
       g.orm :active_record
     end
+
+    # CORS configuration.
+    config.middleware.use Rack::Cors do
+      allow do
+        origins "forums.hummingbird.me"
+        resource '/api/v1/*', headers: :any, methods: [:get]
+      end
+    end
   end
 end

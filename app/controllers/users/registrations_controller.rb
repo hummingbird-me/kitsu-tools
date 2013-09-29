@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.find(current_user.id)
     prev_unconfirmed_email = @user.unconfirmed_email if @user.respond_to?(:unconfirmed_email)
 
-    @user.name          = params[:user][:name]
+    # @user.name          = params[:user][:name]
     @user.email         = params[:user][:email]
     @user.bio           = params[:user][:bio]
     @user.sfw_filter    = params[:user][:sfw_filter]

@@ -32,7 +32,7 @@ class HomeController < ApplicationController
       format.json do
         if user_signed_in?
           render :json => NewsFeed.new(current_user).fetch(params[:page])
-        else 
+        else
           render :json => []
         end
       end

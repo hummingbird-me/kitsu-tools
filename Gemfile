@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 
 gem 'grape'
 gem 'grape-entity'
+gem 'doorkeeper', '~> 0.7.2'
 
 gem 'riemann-client'
 
@@ -13,11 +14,16 @@ gem 'activerecord-postgres-hstore'
 gem 'redis'
 gem 'redis-rails'
 
+gem 'beaneater'
+gem 'beanstalkd_view'
+
 gem 'forem', :path => 'vendor/forem'
 gem 'forem-html_formatter', :path => 'vendor/forem-html_formatter'
 gem 'rinku'
 
 gem 'rack-mini-profiler'
+
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'sanitize'
 
@@ -64,6 +70,7 @@ gem 'rdiscount'
 
 # Attachments
 gem "paperclip", "~> 3.0"
+gem 'paperclip-optimizer'
 gem 'delayed_paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 
