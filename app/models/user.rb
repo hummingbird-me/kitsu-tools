@@ -306,7 +306,11 @@ class User < ActiveRecord::Base
   end
 
   after_save do
-    self.sync_to_forum!
+    name_changed = self.name_changed?
+    avatar_changed = (not self.avatar_processing) and (self.avatar_processing_changed? or self.avatar_updated_at_changed?)
+    if name_changed or avatar_changed
+      self.sync_to_forum!
+    end
   end
 
   # Return encrypted email.
