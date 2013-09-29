@@ -23,6 +23,8 @@ gem 'rinku'
 
 gem 'rack-mini-profiler'
 
+gem 'rack-cors', require: 'rack/cors'
+
 gem 'sanitize'
 
 # Gems used only for assets and not required
