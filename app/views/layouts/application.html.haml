@@ -31,7 +31,7 @@
     - if yield(:title).length > 0
       %meta(property="og:title"){:content => yield(:title)}
     - if @anime and @anime.respond_to? :cover_image
-      %meta(property="og:image"){:content => "http://hummingbird.me" + @anime.cover_image.url}
+      %meta(property="og:image"){:content => @anime.cover_image.url}
 
     = yield(:extra_meta_content)
 
