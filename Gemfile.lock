@@ -272,7 +272,6 @@ GEM
       image_optim (~> 0.8)
       paperclip
       paperclip (~> 3.4.1)
-    peach (0.5.1)
     pg (0.15.1)
     pg-hstore (1.1.7)
     polyglot (0.3.3)
@@ -508,7 +507,6 @@ DEPENDENCIES
   omniauth-facebook (= 1.4.0)
   paperclip (~> 3.0)
   paperclip-optimizer
-  peach
   pg
   pg_search!
   rack-cors
