@@ -317,4 +317,8 @@ class User < ActiveRecord::Base
   def encrypted_email
     Digest::MD5.hexdigest("giflasdyg7q2liub4fasludkjfh" + self.email)
   end
+
+  def online?
+    self.last_seen > 5.minutes.ago
+  end
 end

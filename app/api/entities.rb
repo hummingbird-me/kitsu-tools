@@ -30,6 +30,7 @@ module Entities
     expose(:show_adult_content) {|user, options| !user.sfw_filter }
     expose :title_language_preference
     expose :last_library_update
+    expose(:online) {|user, options| user.online? }
   end
   
   class MiniUser < Grape::Entity
