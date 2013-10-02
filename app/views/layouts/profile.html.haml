@@ -13,7 +13,7 @@
               %li.upload
                 = form_for(@user, url: user_avatar_path(@user), html: {method: :put, multipart: true, style: 'display: inline'}) do |f|
                   .file-upload
-                    %i.icon-upload-alt 
+                    %i.icon-upload-alt
                     = f.file_field :avatar, id: 'user_avatar'
                     Upload from Computer
 
@@ -23,8 +23,8 @@
           Karma
 
         - if @user.last_seen
-          %p.last-seen 
-            Last Seen - 
+          %p.last-seen
+            Last Seen -
             %span.time-ago
               = short_time_ago @user.last_seen
               ago
