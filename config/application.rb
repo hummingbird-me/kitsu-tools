@@ -84,7 +84,7 @@ module Hummingbird
     # CORS configuration.
     config.middleware.use Rack::Cors do
       allow do
-        origins "forums.hummingbird.me", "forumstaging.hummingbird.me"
+        origins "forums.hummingbird.me", "forumstaging.hummingbird.me", "localhost:4000"
         resource '/api/v1/*', headers: :any, methods: [:get]
       end
     end
