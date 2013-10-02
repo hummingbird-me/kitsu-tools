@@ -32,7 +32,7 @@ module Entities
     expose :last_library_update
     expose(:online) {|user, options| user.online? }
   end
-  
+
   class MiniUser < Grape::Entity
     expose :name
     expose(:url) {|user, options| user_path(user) }

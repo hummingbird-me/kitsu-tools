@@ -70,9 +70,21 @@ class API_v1 < Grape::API
     end
     get ':username' do
       user = find_user(params[:username])
-      present user, with: Entities::User
+      {
+        name: user.name,
+        avatar: user.avatar.url(:thumb),
+        cover_image: user.cover_image.url(:thumb),
+        about: user.about,
+        bio: user.bio,
+        karma: user.reputation_for(:karma),
+        life_spent_on_anime: user.life_spent_on_anime,
+        show_adult_content: !user.sfw_filter?,
+        title_language_preference: user.title_language_preference,
+        last_library_update: user.last_library_update,
+        online: user.online?
+      }
     end
-    
+
     desc "Return the entries in a user's library under a specific status.", {
       object_fields: Entities::Watchlist.documentation
     }
