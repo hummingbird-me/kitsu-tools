@@ -7,7 +7,7 @@ class MALImportApplyWorker
     unless staged_import.nil? or !staged_import.data[:complete]
       watchlist = MalImport.get_watchlist_from_staged_import(staged_import)
       reviews   = MalImport.get_reviews_from_staged_import(staged_import)
-      
+
       user.transaction do
         reviews.each {|x| x.save }
 
@@ -16,7 +16,7 @@ class MALImportApplyWorker
           wl.update_episode_count wl.episodes_watched
           wl.save
         end
-        
+
         user.staged_import = nil
         user.save
         staged_import.destroy
