@@ -789,44 +789,6 @@ ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
 
 
 --
--- Name: new_stories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE new_stories (
-    id integer NOT NULL,
-    story_type character varying(255),
-    user_id integer,
-    source_id integer,
-    source_type character varying(255),
-    data hstore,
-    comments hstore,
-    substories hstore,
-    nsfw boolean DEFAULT false,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: new_stories_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE new_stories_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: new_stories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE new_stories_id_seq OWNED BY new_stories.id;
-
-
---
 -- Name: not_interesteds; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1693,13 +1655,6 @@ ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY new_stories ALTER COLUMN id SET DEFAULT nextval('new_stories_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY not_interesteds ALTER COLUMN id SET DEFAULT nextval('not_interesteds_id_seq'::regclass);
 
 
@@ -1987,14 +1942,6 @@ ALTER TABLE ONLY gallery_images
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
-
-
---
--- Name: new_stories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY new_stories
-    ADD CONSTRAINT new_stories_pkey PRIMARY KEY (id);
 
 
 --
@@ -2402,20 +2349,6 @@ CREATE INDEX index_gallery_images_on_anime_id ON gallery_images USING btree (ani
 
 
 --
--- Name: index_new_stories_on_source_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_new_stories_on_source_id ON new_stories USING btree (source_id);
-
-
---
--- Name: index_new_stories_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_new_stories_on_user_id ON new_stories USING btree (user_id);
-
-
---
 -- Name: index_not_interesteds_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2490,6 +2423,13 @@ CREATE INDEX index_staged_imports_on_user_id ON staged_imports USING btree (user
 --
 
 CREATE INDEX index_stories_on_user_id ON stories USING btree (user_id);
+
+
+--
+-- Name: index_substories_on_story_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_substories_on_story_id ON substories USING btree (story_id);
 
 
 --
@@ -3066,8 +3006,8 @@ INSERT INTO schema_migrations (version) VALUES ('20130816102141');
 
 INSERT INTO schema_migrations (version) VALUES ('20130906160600');
 
-INSERT INTO schema_migrations (version) VALUES ('20130909201702');
-
 INSERT INTO schema_migrations (version) VALUES ('20130910061902');
 
 INSERT INTO schema_migrations (version) VALUES ('20130915122325');
+
+INSERT INTO schema_migrations (version) VALUES ('20131008230721');
