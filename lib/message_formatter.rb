@@ -1,3 +1,5 @@
+require 'timeout'
+
 class MessageFormatter
   def self.format_message(message)
     formatted = Rinku.auto_link(ERB::Util.html_escape(message), :all, 'target="_blank"')
@@ -20,8 +22,10 @@ class MessageFormatter
       # Embed images.
       if link =~ /\.(gif|jpe?g|png)$/i
         begin
-          if open(link).size <= 1024*1024*2
-            formatted += "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600' />"
+          Timeout::timeout(5) do
+            if open(link).size <= 1024*1024*2
+              formatted += "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600' />"
+            end
           end
         rescue
         end
