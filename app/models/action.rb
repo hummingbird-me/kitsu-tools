@@ -34,7 +34,7 @@ class Action
       )
 
       if data[:user] != data[:poster]
-        unless data[:user].ninja_banned?
+        unless data[:poster].ninja_banned?
           Notification.create(
             notification_type: "profile_comment",
             user: data[:user],
