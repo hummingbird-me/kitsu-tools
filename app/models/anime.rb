@@ -16,10 +16,14 @@ class Anime < ActiveRecord::Base
 
   serialize :rating_frequencies, ActiveRecord::Coders::Hstore
 
-  has_attached_file :cover_image, 
+  has_attached_file :cover_image,
     default_url: "/assets/missing-anime-cover.jpg",
     styles: {thumb: "225x335!" }
-    
+
+  def cover_image_thumb
+    Rails.cache.fetch("anime_cover_image_thumb:#{self.id}") { self.cover_image.url(:thumb) }
+  end
+
   has_many :quotes
   has_many :castings, dependent: :destroy
   has_many :reviews
@@ -192,6 +196,10 @@ class Anime < ActiveRecord::Base
         Episode.create(anime_id: self.id, number: n)
       end
     end
+  end
+
+  after_save do
+    Rails.cache.write("anime_cover_image_thumb:#{self.id}", self.cover_image.url(:thumb))
   end
 
   def self.neon_alley_ids

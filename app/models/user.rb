@@ -319,6 +319,7 @@ class User < ActiveRecord::Base
   end
 
   def online?
+    return false unless self.last_seen
     self.last_seen > 5.minutes.ago
   end
 end

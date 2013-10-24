@@ -109,13 +109,13 @@ class API_v1 < Grape::API
       else
         watchlists = user.watchlists.accessible_by(current_ability).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime)
       end
-      
+
       title_language_preference = params[:title_language_preference]
       if title_language_preference.nil? and current_user
         title_language_preference = current_user.title_language_preference
       end
       title_language_preference ||= "canonical"
-      
+
       present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference, genres: false, include_mal_id: params[:include_mal_id] == "true"
     end
 

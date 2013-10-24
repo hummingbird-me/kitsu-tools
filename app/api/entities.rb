@@ -12,7 +12,7 @@ module Entities
     expose(:title) {|anime, options| anime.canonical_title(options[:title_language_preference]) }
     expose(:alternate_title) {|anime, options| (anime.alternate_title(options[:title_language_preference]) and anime.alternate_title(options[:title_language_preference]).length > 0) ? anime.alternate_title(options[:title_language_preference]) : nil }
     expose :episode_count
-    expose(:cover_image) {|anime, options| anime.cover_image.url(:thumb) }
+    expose(:cover_image) {|anime, options| anime.cover_image_thumb }
     expose(:synopsis) {|anime, options| anime.synopsis }
     expose :show_type
     expose :genres, using: Entities::Genre, if: lambda {|anime, options| options[:genres].nil? or options[:genres] }
@@ -58,15 +58,15 @@ module Entities
     expose :rewatching
 
     expose :anime, using: Entities::Anime
-    
+
     expose :rating do |watchlist, options|
       {
-        type: watchlist.user.star_rating ? "advanced" : "simple",
+        type: (watchlist.user.star_rating ? "advanced" : "simple"),
         value: watchlist.rating
       }
     end
   end
-  
+
   class Substory < Grape::Entity
     expose :id
     expose :substory_type
