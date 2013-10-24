@@ -68,7 +68,7 @@ class NewsFeed
     ability = Ability.new @user
     user_set = active_followed_users + [@user.id]
 
-    stories = Story.accessible_by(ability).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(FRESH_FETCH_SIZE)
+    stories = Story.for_user(@user).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(FRESH_FETCH_SIZE)
 
     stories.each {|story| add! story }
   end
