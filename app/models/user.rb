@@ -15,10 +15,10 @@ class User < ActiveRecord::Base
 
   # Following stuff.
   has_many :follower_relations, dependent: :destroy, foreign_key: :followed_id, class_name: 'Follow'
-  has_many :followers, through: :follower_relations, source: :follower, class_name: 'User'
+  has_many :followers, through: :follower_relations, source: :follower, class_name: 'User', order: 'follows.created_at DESC'
 
   has_many :following_relations, dependent: :destroy, foreign_key: :follower_id, class_name: 'Follow'
-  has_many :following, through: :following_relations, source: :followed, class_name: 'User'
+  has_many :following, through: :following_relations, source: :followed, class_name: 'User', order: 'follows.created_at DESC'
 
   has_many :stories
   has_many :substories
