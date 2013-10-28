@@ -11,7 +11,6 @@
         %section.top-bar-section
           / Left Nav Section
           %ul.left.topnav-links
-            %li= link_to "Home", "/"
             %li.has-dropdown
               = link_to "Dashboard", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
               %ul.dropdown.rounded-panel
@@ -34,6 +33,8 @@
                   = link_to "Forums", "http://forums.hummingbird.me/"
                 %li
                   = link_to "Chat", "/chat"
+            %li
+              %a(href="http://shop.hummingbird.me/") Shop
 
           / Right Nav Section
           %ul.right.right-top-nav
