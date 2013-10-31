@@ -1,11 +1,12 @@
-.large-12.columns.no-padding.forum-block.rounded-panel
-  .large-6.columns.block-title
-    %h4 Forum
-  .large-6.columns.block-link
-    = link_to "view forums", "http://forums.hummingbird.me/", class: 'right'
+:css
+  .sotm img {max-width: 90%;}
+
+.large-12.columns.no-padding.forum-block.rounded-panel.hide-for-small
+  .large-12.columns
+    %h4 November Shirt of the Month
   %hr
-  %ul
-    %p Topic list is temporarily unavailable.
+  %ul.sotm{:style => "text-align: center; padding-top: 15px;"}
+    = link_to image_tag("sotm-oct.png"), 'http://shop.hummingbird.me/products/shirt-of-the-month-1'
     /- forum_topics.each do |topic|
     /  %li.large-12.columns.topic-row
     /    .large-12.columns.no-padding.forum-title
