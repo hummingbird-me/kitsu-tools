@@ -30,6 +30,7 @@ Hummingbird::Application.routes.draw do
   #match '/chat/messages' => 'chat#messages'
   #match '/chat/new_message' => 'chat#new_message'
 
+  match '/unsubscribe/newsletter/:code' => 'home#unsubscribe'
   match "/beta_invites/resend_invite" => "beta_invites#resend_invite", as: :resend_beta_invite
   match "/beta_invites/invite_code" => "beta_invites#invite_code"
   match "/beta_invites/unsubscribe" => "beta_invites#unsubscribe"

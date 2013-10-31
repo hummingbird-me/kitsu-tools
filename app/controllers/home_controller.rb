@@ -39,6 +39,13 @@ class HomeController < ApplicationController
     end
   end
 
+  def unsubscribe
+    code = params[:code]
+    User.all.select {|x| x.encrypted_email == code }.each {|x| x.update_attributes subscribed_to_newsletter: false }
+    flash[:message] = "You have been unsubscribed from the newsletter."
+    redirect_to "/anime"
+  end
+
   def lists
   end
 end

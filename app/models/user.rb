@@ -42,7 +42,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me,
     :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio,
-    :forem_admin, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned
+    :forem_admin, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned,
+    :subscribed_to_newsletter
 
   has_attached_file :avatar,
     styles: {
