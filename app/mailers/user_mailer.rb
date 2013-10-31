@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
   def newsletter(user_id)
     @user = User.find user_id
     if @user.subscribed_to_newsletter?
-      @subject = "Wait, it's that time of the month already?"
+      @subject = "The Perfect Halloween Newsletter"
       mail(to: @user.email, subject: @subject)
     end
   end
