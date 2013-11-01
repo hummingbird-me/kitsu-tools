@@ -3,5 +3,5 @@ Ember.Application.initializer
 
   initialize: (container) ->
     store = container.lookup('store:main')
-    for key, value of window.preloadData
-      store.pushPayload key, value
+    for item in window.preloadData
+      store.pushPayload item["object_type"], item["object"]

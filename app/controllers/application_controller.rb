@@ -2,9 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def preload!(key, data)
-    @preload ||= {}
+    @preload ||= []
     data = [data] unless data.is_a? Array
-    @preload[key] = ActiveModel::ArraySerializer.new(data, scope: current_user, root: key.pluralize)
+    @preload.push({object_type: key, object: ActiveModel::ArraySerializer.new(data, scope: current_user, root: key.pluralize)})
   end
 
   def render_ember
