@@ -7,6 +7,15 @@ GIT
       sass (>= 3.2)
 
 GIT
+  remote: git://github.com/vikhyat/handlebars_assets.git
+  revision: 663848943fa08b171de966e3d611b348e0956219
+  specs:
+    handlebars_assets (0.14.1)
+      execjs (>= 1.2.9)
+      sprockets (>= 2.0.3)
+      tilt
+
+GIT
   remote: git@github.com:Casecommons/pg_search.git
   revision: 430b0e7c14261bb7b435e064963c7b7430d42b35
   specs:
@@ -167,8 +176,7 @@ GEM
     erubis (2.7.0)
     escape (0.0.4)
     eventmachine (1.0.3)
-    execjs (1.4.0)
-      multi_json (~> 1.0)
+    execjs (2.0.2)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -219,13 +227,9 @@ GEM
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
     handlebars-source (1.0.12)
-    handlebars_assets (0.13.0)
-      execjs (>= 1.2.9)
-      sprockets (>= 2.0.3)
-      tilt
     hashie (2.0.3)
     highline (1.6.18)
-    hike (1.2.2)
+    hike (1.2.3)
     hpricot (0.8.6)
     htmlentities (4.3.1)
     http_parser.rb (0.5.3)
@@ -279,7 +283,7 @@ GEM
     mocha (0.13.3)
       metaclass (~> 0.0.1)
     mtrc (0.0.4)
-    multi_json (1.7.7)
+    multi_json (1.8.2)
     multi_xml (0.5.3)
     multipart-post (1.2.0)
     nested_form (0.3.2)
@@ -562,7 +566,7 @@ DEPENDENCIES
   guard-livereload
   haml (~> 4.0)
   haml-rails
-  handlebars_assets
+  handlebars_assets!
   image_optim
   jquery-rails
   kaminari

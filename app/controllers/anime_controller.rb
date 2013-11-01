@@ -38,16 +38,10 @@ class AnimeController < ApplicationController
 
     @hide_footer_ad = ! @anime.sfw?
 
-    # Redirect the user to the canonical URL if they got here from an old or
-    # numeric ID.
-    if request.path != anime_path(@anime)
-      return redirect_to @anime, :status => :moved_permanently
-    end
-    
     @genres = @anime.genres
     @producers = @anime.producers
     @quotes = Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => "votes DESC", :limit => 4})
-    
+
     @castings = Casting.where(anime_id: @anime.id, featured: true).includes(:person, :character).sort_by {|x| x.order || 1000 }
     @languages = @castings.map {|x| x.role }.sort
     ["Japanese", "English"].reverse.each do |l|
