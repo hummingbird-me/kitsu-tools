@@ -1,6 +1,15 @@
 require 'sidekiq/web'
 
 Hummingbird::Application.routes.draw do
+  # API v2
+  namespace :api do
+    namespace :v2 do
+      resources :anime do
+        get :franchise
+      end
+    end
+  end
+
   use_doorkeeper
   match '/oauth/me' => 'oauth#me'
 
