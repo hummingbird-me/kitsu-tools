@@ -1,0 +1,102 @@
+// base styles
+@import "globals/all";
+
+/* 
+ =============================
+ Body
+ =============================
+*/
+body {
+  background-color: $darkEggshell;
+  font-family: $bodyFontFamily;
+  font-size: 16px;
+  margin-top: 48px;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin-bottom: 0;
+}
+
+a {
+	color: $darkOrange;
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+.left-align {
+  float: left;
+}
+.right-align {
+  float: right;
+}
+
+input:focus, textarea:focus {
+    outline: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.form-control {
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.inline-list {
+  padding-left: 0;
+  li {
+    display: inline-block;
+    float: left;
+    padding-right: 10px;
+    &:last-child {
+    	padding-right: 0;
+    }
+  }
+}
+
+.panel-default {
+  padding: 0;
+  border-color: #49505a;
+  .container {
+    width: 100%;
+  }
+}
+
+.panel-default > .panel-heading, .panel-footer, .panel-divider {
+	background-color: $eggshell;
+  border-color: #e9ebee;
+}
+.panel-divider {
+  border-radius: 0;
+  border-top: 1px solid #ddd;
+  padding: 10px 15px;
+  font-weight: bold;
+  font-family: $headerFontFamily;
+}
+.secondary {
+	color: $medGrey;
+}
+
+.relative {
+  position: relative;
+}
+
+.responsive-image {
+  width: 100%;
+  border-radius: 3px;
+}
+
+.no-padding {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.no-padding-left {
+  padding-left: 0;
+}
+
+.no-padding-right {
+  padding-right: 0;
+}

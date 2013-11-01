@@ -1,0 +1,200 @@
+// layout styles
+@import "globals/all";
+
+/* 
+ =============================
+ Status Panel
+ =============================
+*/
+
+.status-panel {
+  padding: 0px;
+  .status-form {
+    border: none;
+    box-shadow: none;
+    font-weight: 300;
+    font-size: 16px;
+    height: 50px;
+    padding-top: 15px;
+  }
+}
+
+.update-panel {
+  .series-title {
+    margin: 0;
+  }
+  .series-thumb {
+    padding-left: 0;
+    padding-right: 0; 
+  }
+  .inline-list {
+    li {
+      padding-right: 5px;
+      &:after {
+        content: " \00b7 ";
+      }
+      &:last-child {
+        &:after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  .comment-text {
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .user-image {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .event-info {
+    p {
+      font-size: 18px;
+      margin-bottom: 0;
+      margin-top: -5px;
+    }
+    @media (max-width: 990px) {
+      padding-left: 0px;
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+  li.single-event {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    &:first-child {
+      border-top: 1px solid #eee;
+    }
+    &:nth-of-type(2) {
+      @media (max-width: 400px) {
+        display: none;
+      }
+    }
+  }
+
+  .feed-events {
+    margin-top: 5px;
+  }
+}
+
+.status-toolbar {
+  padding-top: 0;
+  padding-bottom: 0;
+  .toolbar-actions {
+    padding-left: 0;
+    padding-right: 0;
+    .toolbar-action {
+      border-right: 1px solid $darkDivider;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      font-size: 16px;
+      .like-button {
+        padding-right: 5px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        color: #7e7e7e;
+        &:hover {
+          color: $pink;
+        }
+        &.active {
+          color: $pink;
+        }
+      }
+      .reply-button {
+        padding-left: 15px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        color: #7e7e7e;
+        &:hover {
+          color: $darkOrange;
+        }
+      }
+      .repost-button {
+        padding-left: 20px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        color: #7e7e7e;
+        &:hover {
+          color: $darkOrange;
+        }
+      }
+    }
+  }
+
+  .users-who-liked {
+    float: right;
+    padding-top: 8px;
+    .responsive-image {
+      max-width: 25px;
+    }
+    .more-likes {
+      color: $medGrey;
+      font-family: $headerFontFamily;
+      font-size: 20px;
+      border-radius: 3px;
+      background: $darkEggshell;
+      font-size: 14px;
+      position: relative;
+      top: 3px;
+      padding: 3px 5px 3px 5px;
+    }
+  }
+
+  @media (max-width: 995px) {
+    .users-who-liked {
+      li:nth-of-type(5), li:nth-of-type(4) {
+        display: none;
+      }
+    } 
+  }
+  @media (max-width: 400px) {
+    .users-who-liked {
+      li:nth-of-type(3), li:nth-of-type(2) {
+        display: none;
+      }
+    } 
+  }
+}
+
+.feed-comment-wrapper {
+  background-color: $eggshell;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  padding-bottom: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  width: 100%;
+  .feed-comment-form {
+    padding-bottom: 11px;
+  }
+  .feed-comment {
+    .row {
+      border-top: 1px solid #ddd;
+      margin-top: 3px;
+      padding-top: 10px;
+    }
+    .user-image {
+      padding: 0; 
+    }
+    .user-name {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .comment-content {
+      @media (max-width: 991px) {
+        padding-left: 0;
+      }
+    }
+  }
+}
