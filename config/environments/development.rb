@@ -39,6 +39,7 @@ Hummingbird::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = false
+  config.ember.variant = :development
 
   # Caching
   # Temporarily enable caching in development (COMMENT OUT WHEN DONE!)
