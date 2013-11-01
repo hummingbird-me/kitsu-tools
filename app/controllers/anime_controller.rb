@@ -22,6 +22,18 @@ class AnimeController < ApplicationController
   end
   
   def show
+    anime = Anime.find(params[:id])
+
+    # Redirect to canonical URL if this isn't it.
+    if request.path != anime_path(anime)
+      return redirect_to anime, status: :moved_permanently
+    end
+
+    preload! "anime", anime
+
+    render_ember
+
+    return
     @anime = Anime.find(params[:id])
 
     @hide_footer_ad = ! @anime.sfw?

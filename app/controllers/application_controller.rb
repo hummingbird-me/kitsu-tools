@@ -1,6 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  def preload!(key, data)
+    @preload ||= {}
+    data = [data] unless data.is_a? Array
+    @preload[key] = ActiveModel::ArraySerializer.new(data, scope: current_user, root: key.pluralize)
+  end
+
+  def render_ember
+    render "layouts/redesign", layout: false
+  end
+
+  ### PRE-EMBER CODE BELOW -- NEEDS REWRITING.
+
   before_filter :admin_check, :user_last_seen
   
   def admin_check
