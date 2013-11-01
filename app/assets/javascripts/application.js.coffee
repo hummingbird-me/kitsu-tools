@@ -4,7 +4,9 @@
 #= require handlebars
 #= require ember
 #= require ember-data
+#= require vendor
 #= require_self
+#= require_tree ./lib
 #= require hummingbird
 
 # Plural of anime is anime.
