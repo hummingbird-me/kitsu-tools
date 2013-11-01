@@ -1,4 +1,5 @@
-# For more information see: http://emberjs.com/guides/routing/
+Hummingbird.Router.reopen
+  location: 'history'
 
 Hummingbird.Router.map ()->
-  # @resource('posts')
+  @resource 'anime', path: '/anime/:id'
