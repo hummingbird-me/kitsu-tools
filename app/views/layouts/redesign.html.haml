@@ -44,7 +44,7 @@
 
     / Preload Models
     :javascript
-      window.currentUserName = #{(user_signed_in? ? current_user.name : nil).to_json}
+      window.currentUserName = #{(user_signed_in? ? current_user.name : nil).to_json};
       window.preloadData = #{(@preload || {}).to_json};
 
     = javascript_include_tag "application"
