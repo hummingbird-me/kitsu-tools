@@ -1,0 +1,63 @@
+!!!
+%html
+  %head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# hummingbird: http://ogp.me/ns/fb/hummingbird#")
+    %title Hummingbird (Loading...)
+
+    = stylesheet_link_tag    "application", :media => "all"
+    = csrf_meta_tags
+
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta(property="fb:app_id" content="325314560922421")
+
+    / Google Analytics
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-37633900-1']);
+      _gaq.push(['_setDomainName', 'hummingbird.me']);
+      _gaq.push(['_setCustomVar', 1, 'Anonymous', #{!current_user}, 2]);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    / Async Adsense Code
+    %script(async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+
+  %body
+    // Facebook Code
+    #fb-root
+    :javascript
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=452427161479702";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+
+    / Content
+    = content_for?(:content) ? yield(:content) : yield
+
+    / Preload Models
+    :javascript
+      window.currentUserName = #{(user_signed_in? ? current_user.name : nil).to_json}
+      window.preloadData = #{(@preload || {}).to_json};
+
+    = javascript_include_tag "application"
+
+    / Segment.io
+    - if Rails.env.production?
+      :javascript
+        var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias","ready"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+        analytics.load("c6svkipfq3");
+      - if user_signed_in?
+        :javascript
+          analytics.identify('#{j current_user.name}', {
+            email: '#{j current_user.email}',
+            username: '#{j current_user.name}'
+          });
+
