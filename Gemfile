@@ -55,6 +55,7 @@ group :development do
   gem "better_errors"
   gem "letter_opener"
   gem "binding_of_caller"
+  gem 'guard-livereload', require: false
   gem 'rack-livereload'
   gem 'rb-fsevent', require: false
   gem 'qunit-rails'
