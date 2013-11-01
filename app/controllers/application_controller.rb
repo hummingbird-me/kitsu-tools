@@ -1,10 +1,30 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :authenticate_user_from_token_cookie!
+
+  # Send an object along with the initial HTML response so that Ember will not need
+  # to make additional requests to fetch data.
   def preload!(key, data)
     @preload ||= []
     data = [data] unless data.is_a? Array
     @preload.push({object_type: key, object: ActiveModel::ArraySerializer.new(data, scope: current_user, root: key.pluralize)})
+  end
+
+  # Authenticate users *only* via the hb_auth cookie.
+  def authenticate_user_from_token_cookie!
+    auth_token = Rack::Request.new(env).cookies['hb_auth']
+    if auth_token
+      user = User.where(authentication_token: auth_token).first
+      if user
+        sign_in(user, store: false)
+        preload! "user", user
+        return
+      end
+    end
+    # If there is hb_auth cookie but the user is signed in through the Devise
+    # session cookie, sign them out.
+    sign_out(current_user) if user_signed_in?
   end
 
   def render_ember
