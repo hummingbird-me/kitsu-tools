@@ -2,4 +2,4 @@
 
 Hummingbird.Router.map ()->
   # @resource('posts')
-
+  @route 'sign-in'
