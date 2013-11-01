@@ -6,4 +6,5 @@
 #= require_tree ./templates
 #= require_tree ./routes
 #= require ./router
+#= require_tree ./initializers
 #= require_self
