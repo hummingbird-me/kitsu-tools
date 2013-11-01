@@ -120,28 +120,7 @@
 
         <div class="col-xs-12 col-md-9 series-content">
           <h2 class="series-title">{{canonicalTitle}}</h2>
-          <ul class="series-metadata">
-            <li>{{showType}}</li>
-            <li {{bind-attr title=ageRatingGuide}}>{{ageRating}}</li>
-            <li>
-            {{#if episodeCount}}
-            {{episodeCount}}
-            {{else}}
-            ?
-            {{/if}}
-            episodes
-            </li>
-            <li>
-            {{#if episodeLength}}
-            {{episodeLength}}
-            {{else}}
-            ?
-            {{/if}}
-            min
-            </li>
-            <li>{{formattedAirDates}}</li>
-          </ul>
-
+          {{partial "anime/infobar"}}
           <div class="series-description">
             <p>{{synopsis}}</p>
             <div class="social-links clearfix">
@@ -163,33 +142,27 @@
             <div class="tab-content">
               <div class="tab-pane active genre-tab">
                 {{#if showGenres}}
-                {{#each genre in genres}}
-                <span class="badge"><a href="javascript:void(0)">{{genre}}</a></span>
-                {{/each}}
+                  {{#each genre in genres}}
+                    <span class="badge"><a href="javascript:void(0)">{{genre}}</a></span>
+                  {{/each}}
                 {{/if}}
                 {{#if showFranchise}}
-                {{#if franchise.isLoaded}}
-                {{#each anime in franchise}}
-                <div class="rounded-block col-md-12 clearfix">
-                  <div class="col-md-2 no-padding">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/004/800/thumb/4800.jpg?1375236592">
-                  </div>
-                  <div class="col-md-10">
-                    <h4 class="series-title">{{anime.canonicalTitle}}</h4>
-                    <ul class="series-metadata">
-                      <li>TV</li>
-                      <li> R17+ </li>
-                      <li> 15 episodes </li>
-                      <li> 24 min </li>
-                      <li> Aired Jul 2009 - Jun 2010 </li>
-                    </ul>
-                    <p>A recap of episodes 1-5 of Bakemonogatari.</p>
-                  </div>
-                </div>
-                {{/each}}
-                {{else}}
-                LOADING!
-                {{/if}}
+                  {{#if franchise.isLoaded}}
+                    {{#each franchise}}
+                      <div class="rounded-block col-md-12 clearfix">
+                        <div class="col-md-2 no-padding">
+                          <img class="series-poster" {{bind-attr src=posterImage}}>
+                        </div>
+                        <div class="col-md-10">
+                          <h4 class="series-title">{{canonicalTitle}}</h4>
+                          {{partial "anime/infobar"}}
+                          <p>{{synopsis}}</p>
+                        </div>
+                      </div>
+                    {{/each}}
+                  {{else}}
+                    LOADING!
+                  {{/if}}
                 {{/if}}
                 <hr>
               </div>

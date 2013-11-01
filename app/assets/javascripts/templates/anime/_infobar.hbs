@@ -1,0 +1,21 @@
+<ul class="series-metadata">
+  <li>{{showType}}</li>
+  <li {{bind-attr title=ageRatingGuide}}>{{ageRating}}</li>
+  <li>
+    {{#if episodeCount}}
+      {{episodeCount}}
+    {{else}}
+      ?
+    {{/if}}
+    episodes
+  </li>
+  <li>
+    {{#if episodeLength}}
+      {{episodeLength}}
+    {{else}}
+      ?
+    {{/if}}
+    min
+  </li>
+  <li>{{formattedAirDates}}</li>
+</ul>
