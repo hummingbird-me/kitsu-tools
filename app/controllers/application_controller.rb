@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
     @preload.push({object_type: key, object: ActiveModel::ArraySerializer.new(data, scope: current_user, root: key.pluralize)})
   end
 
-  # Authenticate users *only* via the hb_auth cookie.
+  # Authenticate users *only* via the auth_token cookie.
   def authenticate_user_from_token_cookie!
-    auth_token = Rack::Request.new(env).cookies['hb_auth']
+    auth_token = Rack::Request.new(env).cookies['auth_token']
     if auth_token
       user = User.where(authentication_token: auth_token).first
       if user
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
         return
       end
     end
-    # If there is hb_auth cookie but the user is signed in through the Devise
+    # If there is auth_token cookie but the user is signed in through the Devise
     # session cookie, sign them out.
     sign_out(current_user) if user_signed_in?
   end

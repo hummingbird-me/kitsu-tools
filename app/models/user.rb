@@ -301,7 +301,7 @@ class User < ActiveRecord::Base
     end
 
     # Avatar.
-    changes[:new_avatar] = self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
+    changes[:new_avatar] = self.avatar_template
 
     $beanstalk.tubes["update-forum-account"].put(changes.to_json)
   end
@@ -322,5 +322,9 @@ class User < ActiveRecord::Base
   def online?
     return false unless self.last_seen
     self.last_seen > 5.minutes.ago
+  end
+
+  def avatar_template
+    self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
   end
 end
