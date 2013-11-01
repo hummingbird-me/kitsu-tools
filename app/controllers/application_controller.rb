@@ -14,13 +14,13 @@ class ApplicationController < ActionController::Base
   ### PRE-EMBER CODE BELOW -- NEEDS REWRITING.
 
   before_filter :admin_check, :user_last_seen
-  
+
   def admin_check
     if user_signed_in? and current_user.admin? and current_user.id == 1
       Rack::MiniProfiler.authorize_request
     end
   end
-  
+
   def user_last_seen
     if user_signed_in?
       $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || user_path(resource)
   end
-  
+
   def after_sign_out_path_for(resource)
     request.referrer
   end
