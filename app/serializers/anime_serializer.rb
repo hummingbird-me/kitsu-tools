@@ -1,5 +1,5 @@
 class AnimeSerializer < ActiveModel::Serializer
-  attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing
+  attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps
 
   def id
     object.slug
@@ -23,5 +23,9 @@ class AnimeSerializer < ActiveModel::Serializer
 
   def finished_airing
     object.finished_airing_date
+  end
+
+  def screencaps
+    object.gallery_images.map {|g| g.image.url(:thumb) }
   end
 end

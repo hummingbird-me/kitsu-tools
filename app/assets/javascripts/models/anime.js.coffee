@@ -11,6 +11,7 @@ Hummingbird.Anime = DS.Model.extend
   episodeLength: DS.attr('number')
   startedAiring: DS.attr('date')
   finishedAiring: DS.attr('date')
+  screencaps: DS.attr('array')
 
   franchise: DS.hasMany('anime', async: true)
 

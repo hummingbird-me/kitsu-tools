@@ -34,12 +34,9 @@
     </div>
     <div class="col-md-3 gallery">
       <ul class="gallery-images">
-        <li class="col-xs-6 col-md-12 no-padding-left"><img src="http://static.hummingbird.me/gallery_images/images/000/004/578/thumb/bakemonogatari-screenshot-episode-1_4.jpg?1377464657"></li>
-        <li class="col-xs-6 col-md-12 no-padding-left"><img src="http://static.hummingbird.me/gallery_images/images/000/004/579/thumb/bakemonogatari-screenshot-episode-1_13.jpg?1377464698"></li>
-        <li class="col-xs-6 col-md-12 no-padding-left"><img src="http://static.hummingbird.me/gallery_images/images/000/004/580/thumb/nekomimi-bakemonogatari-hanekawa-tsubasa-anime_zpsa1ea868b.png?1377464753"></li>
-        <li class="col-xs-6 col-md-12 no-padding-left"><img src="http://static.hummingbird.me/gallery_images/images/000/004/581/thumb/_Coalgirls__Bakemonogatari_09_(1920x1080_Blu-Ray_FLAC)__F5A7FB10_now_where_on_earth_I_have_seen_this_before.jpg?1377466405"></li>
-        <li class="col-xs-6 col-md-12 no-padding-left"><img src="http://static.hummingbird.me/gallery_images/images/000/004/583/thumb/bakemonogatari-screenshot-episode-3_2.jpg?1377464795"></li>
-        <li class="col-xs-6 col-md-12 no-padding-left"><img src="http://static.hummingbird.me/gallery_images/images/000/004/581/thumb/_Coalgirls__Bakemonogatari_09_(1920x1080_Blu-Ray_FLAC)__F5A7FB10_now_where_on_earth_I_have_seen_this_before.jpg?1377466405"></li>
+        {{#each imageURL in screencaps}}
+          <li class="col-xs-6 col-md-12 no-padding-left"><img {{bind-attr src=imageURL}}></li>
+        {{/each}}
       </ul>
     </div>
     <div class="col-xs-12 col-md-9 series-body">
@@ -161,7 +158,7 @@
                       </div>
                     {{/each}}
                   {{else}}
-                    LOADING!
+                    {{loading-indicator}}
                   {{/if}}
                 {{/if}}
                 <hr>
