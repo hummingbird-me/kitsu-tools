@@ -6,9 +6,8 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
   showQuotes: (-> @get('activeTab') == "Quotes").property('activeTab')
 
   # Legacy -- remove after Ember transition is complete.
-  fullQuotesURL: (->
-    "/anime/" + @get('model.id') + "/quotes"
-  ).property('model.id')
+  fullQuotesURL: (-> "/anime/" + @get('model.id') + "/quotes").property('model.id')
+  fullReviewsURL: (-> "/anime/" + @get('model.id') + "/reviews").property('model.id')
   # End Legacy
 
   actions:
