@@ -189,7 +189,8 @@ CREATE TABLE castings (
     updated_at timestamp without time zone NOT NULL,
     voice_actor boolean,
     featured boolean,
-    "order" integer
+    "order" integer,
+    language character varying(255)
 );
 
 
@@ -3011,3 +3012,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130910061902');
 INSERT INTO schema_migrations (version) VALUES ('20130915122325');
 
 INSERT INTO schema_migrations (version) VALUES ('20131008230721');
+
+INSERT INTO schema_migrations (version) VALUES ('20131102013808');
+
+INSERT INTO schema_migrations (version) VALUES ('20131102051314');
