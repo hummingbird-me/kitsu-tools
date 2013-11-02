@@ -14,6 +14,7 @@ Hummingbird.Anime = DS.Model.extend
   screencaps: DS.attr('array')
 
   franchise: DS.hasMany('anime', async: true)
+  featuredQuotes: DS.hasMany('quote')
 
   airingStatus: (->
     unless @get('startedAiring')

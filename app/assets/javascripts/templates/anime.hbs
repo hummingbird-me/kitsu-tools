@@ -135,6 +135,7 @@
             <ul class="nav nav-tabs">
               <li {{bind-attr class="showGenres:active"}}><a href="javascript:void(0)" {{action switchTo "Genres"}}>Genres</a></li>
               <li {{bind-attr class="showFranchise:active"}}><a href="javascript:void(0)" {{action switchTo "Franchise"}}>Franchise</a></li>
+              <li {{bind-attr class="showQuotes:active"}}><a href="javascript:void(0)" {{action switchTo "Quotes"}}>Quotes</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active genre-tab">
@@ -161,13 +162,22 @@
                     {{loading-indicator}}
                   {{/if}}
                 {{/if}}
+                {{#if showQuotes}}
+                  {{#each featuredQuotes}}
+                    <div class="rounded-block col-md-12 clearfix">
+                      <p><strong>{{characterName}}:</strong> {{content}}</p>
+                      <span class="favorited-by">Favorited by {{pluralize favoriteCount "user" "users"}} - <a href="#">Favorite this quote</a></span>
+                      <span class="report-quote"><a href="#">Report Quote</a></span>
+                    </div>
+                  {{/each}}
+                  <a {{bind-attr href=fullQuotesURL}}>view all</a>
+                {{/if}}
                 <hr>
               </div>
             </div>
           </div>
           <div class="info-tabs">
             <ul id="myTab" class="nav nav-tabs">
-              <li class="active"><a href="#genres" data-toggle="tab">Genres</a></li>
               <li class="dropdown">
               <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Cast <b class="caret"></b></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
@@ -176,20 +186,8 @@
               </ul>
               </li>
               <li class=""><a href="#studios" data-toggle="tab">Studios</a></li>
-              <li class=""><a href="#franchise" data-toggle="tab">Franchise</a></li>
-              <li class=""><a href="#quotes" data-toggle="tab">Quotes</a></li>
             </ul>
             <div id="myTabContent" class="tab-content">
-              <div class="tab-pane fade active in genre-tab" id="genres">
-                <span class="badge"><a href="#">Adventure</a></span>
-                <span class="badge"><a href="#">Comedy</a></span>
-                <span class="badge"><a href="#">Drama</a></span>
-                <span class="badge"><a href="#">Mystery</a></span>
-                <span class="badge"><a href="#">Supernatural</a></span>
-                <span class="badge"><a href="#">Romance</a></span>
-                <span class="badge"><a href="#">Horror</a></span>
-                <hr>
-              </div>
               <div class="tab-pane fade genre-tab" id="studios">
                 <div class="col-md-12 rounded-block clearfix no-padding-right">
                   <div class="col-md-12 no-padding studio-name">
@@ -329,133 +327,6 @@
                   </li>
                   <hr>
                 </ul>
-              </div>
-              <div class="tab-pane fade genre-tab" id="franchise">
-                <div class="rounded-block col-md-12 clearfix">
-                  <div class="col-xs-2 col-md-2 no-padding">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/004/800/thumb/4800.jpg?1375236592">
-                  </div>
-                  <div class="col-xs-10 col-md-10">
-                    <h4 class="series-title">Bakemonogatari: Recap</h4>
-                    <ul class="series-metadata">
-                      <li>TV</li>
-                      <li> R17+ </li>
-                      <li> 15 episodes </li>
-                      <li> 24 min </li>
-                      <li> Aired Jul 2009 - Jun 2010 </li>
-                    </ul>
-                    <p>A recap of episodes 1-5 of Bakemonogatari.</p>
-                  </div>
-                </div>
-                <div class="rounded-block col-md-12 clearfix">
-                  <div class="col-md-2 no-padding">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/006/546/thumb/Nisemonogatari.png?1377466076">
-                  </div>
-                  <div class="col-xs-10 col-md-10">
-                    <h4 class="series-title">Nisemonogatari</h4>
-                    <ul class="series-metadata">
-                      <li>TV</li>
-                      <li> R17+ </li>
-                      <li> 15 episodes </li>
-                      <li> 24 min </li>
-                      <li> Aired Jul 2009 - Jun 2010 </li>
-                    </ul>
-                    <p>In Bakemonogatari, the story centers on Koyomi Araragi, a third-year high school student who has recently survived a vampire attack, and finds himself mixed up with all kinds of apparitions: gods, ghosts, myths, and spirits. However, in Nisemonogatari, we pick up right where we left off and follow Koyomi as the psychological twists delve deeper and deeper. (Source: ANN)</p>
-                  </div>
-                </div>
-                <div class="rounded-block col-md-12 clearfix">
-                  <div class="col-xs-2 col-md-2 no-padding">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/007/294/thumb/126724426597167459.png?1377467270">
-                  </div>
-                  <div class="col-xs-10 col-md-10">
-                    <h4 class="series-title">Nekomonogatari: Kuro</h4>
-                    <ul class="series-metadata">
-                      <li>TV</li>
-                      <li> R17+ </li>
-                      <li> 15 episodes </li>
-                      <li> 24 min </li>
-                      <li> Aired Jul 2009 - Jun 2010 </li>
-                    </ul>
-                    <p>Koyomi Araragi is a student who has recently survived a vampire attack, with the help of his friend Hanekawa Tsubasa. Now, he finds that she has been possessed by an oddity called the Curse Cat, and is now attacking people, including her parents. He must now find a way to help get rid of the Curse Cat. (Source: ANN)</p>
-                  </div>
-                </div>
-                <div class="rounded-block col-md-12 clearfix">
-                  <div class="col-xs-2 col-md-2 no-padding">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/007/573/thumb/monogataris2.jpg?1375909461">
-                  </div>
-                  <div class="col-xs-10 col-md-10">
-                    <h4 class="series-title">Monogatari Series: Second Season</h4>
-                    <ul class="series-metadata">
-                      <li>TV</li>
-                      <li> R17+ </li>
-                      <li> 15 episodes </li>
-                      <li> 24 min </li>
-                      <li> Aired Jul 2009 - Jun 2010 </li>
-                    </ul>
-                    <p>Walking to school one day Tsubasa Hanekawa encounters a huge white tiger apparition at a crossroads that talks to her. The next day her house burns down. Homeless, and not wanting to stay with her family, she lies and tells them she has a place to stay, but instead sleeps in the old cram school. She's awakened by an angry and upset Hitagi Senjogahara who ridicules her for worrying her and drags her to her place to stay instead. The two of them soon discover that Araragi has gone missing and...</p>
-                  </div>
-                </div>
-                <div class="rounded-block col-md-12 clearfix">
-                  <div class="col-xs-2 col-md-2 no-padding">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/008/032/thumb/Kanbaru.Suruga.full.994373.jpg?1380044093">
-                  </div>
-                  <div class="col-xs-10 col-md-10">
-                    <h4 class="series-title">Hanamonogatari</h4>
-                    <ul class="series-metadata">
-                      <li>TV</li>
-                      <li> R17+ </li>
-                      <li> 15 episodes </li>
-                      <li> 24 min </li>
-                      <li> Aired Jul 2009 - Jun 2010 </li>
-                    </ul>
-                    <p>Hanamonogatari is the sixth part of the Monogatari series and contains the story of the Suruga Devil.</p>
-                  </div>
-                </div>
-                <div class="rounded-block col-md-12 clearfix">
-                  <div class="col-xs-2 col-md-2 no-padding">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/005/649/thumb/KZWy3.jpg?1377469473">
-                  </div>
-                  <div class="col-xs-10 col-md-10">
-                    <h4 class="series-title">Kizumonogatari</h4>
-                    <ul class="series-metadata">
-                      <li>TV</li>
-                      <li> R17+ </li>
-                      <li> 15 episodes </li>
-                      <li> 24 min </li>
-                      <li> Aired Jul 2009 - Jun 2010 </li>
-                    </ul>
-                    <p>"I think it's about time I talked about Kiss-Shot-Acerola-Orion Heart-Under-Blade. I believe it's something I have to do. I met her in the spring break between my second and third years of high school. That meeting had such impact and was also quite devastating." (Source: Araragi Koyomi Novel )</p>
-                  </div>
-                </div>
-                <hr>
-              </div>
-              <div class="tab-pane fade genre-tab" id="quotes">
-                <div class="rounded-block col-md-12 clearfix">
-                  <p><strong>Senjougahara Hitagi:</strong> If I kill you, that means I'll be the one closest to you when you're on your deathbed. Isn't it romantic?</p>
-                  <span class="favorited-by">Favorited by 7 users - <a href="#">Favorite this quote</a></span>
-                  <span class="report-quote"><a href="#">Report Quote</a></span>
-                </div>
-                <div class="rounded-block col-md-12 clearfix">
-                  <p><strong>Senjougahara Hitagi:</strong> If I kill you, that means I'll be the one closest to you when you're on your deathbed. Isn't it romantic?</p>
-                  <span class="favorited-by">Favorited by 7 users - <a href="#">Favorite this quote</a></span>
-                  <span class="report-quote"><a href="#">Report Quote</a></span>
-                </div>
-                <div class="rounded-block col-md-12 clearfix">
-                  <p><strong>Senjougahara Hitagi:</strong> If I kill you, that means I'll be the one closest to you when you're on your deathbed. Isn't it romantic?</p>
-                  <span class="favorited-by">Favorited by 7 users - <a href="#">Favorite this quote</a></span>
-                  <span class="report-quote"><a href="#">Report Quote</a></span>
-                </div>
-                <div class="rounded-block col-md-12 clearfix">
-                  <p><strong>Senjougahara Hitagi:</strong> If I kill you, that means I'll be the one closest to you when you're on your deathbed. Isn't it romantic?</p>
-                  <span class="favorited-by">Favorited by 7 users - <a href="#">Favorite this quote</a></span>
-                  <span class="report-quote"><a href="#">Report Quote</a></span>
-                </div>
-                <div class="rounded-block col-md-12 clearfix">
-                  <p><strong>Senjougahara Hitagi:</strong> If I kill you, that means I'll be the one closest to you when you're on your deathbed. Isn't it romantic?</p>
-                  <span class="favorited-by">Favorited by 7 users - <a href="#">Favorite this quote</a></span>
-                  <span class="report-quote"><a href="#">Report Quote</a></span>
-                </div>
-                <hr>
               </div>
             </div>
           </div>

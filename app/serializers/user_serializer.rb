@@ -15,7 +15,7 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def online
-    object.last_seen > 5.minutes.ago
+    object.online?
   end
 
   # Is the current_user following this user?
