@@ -15,12 +15,12 @@ class AnimeController < ApplicationController
     end
     redirect_to :back
   end
-  
+
   def random
     anime = Anime.where("age_rating <> 'R18+'").where(show_type: ["TV", "OVA", "ONA", "Movie"]).order("RANDOM()").limit(1)[0]
     redirect_to anime
   end
-  
+
   def show
     anime = Anime.find(params[:id])
 
@@ -34,12 +34,7 @@ class AnimeController < ApplicationController
     render_ember
 
     return
-    @anime = Anime.find(params[:id])
 
-    @hide_footer_ad = ! @anime.sfw?
-
-    @genres = @anime.genres
-    @producers = @anime.producers
     @quotes = Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => "votes DESC", :limit => 4})
 
     @castings = Casting.where(anime_id: @anime.id, featured: true).includes(:person, :character).sort_by {|x| x.order || 1000 }

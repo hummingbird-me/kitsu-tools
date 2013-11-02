@@ -119,7 +119,7 @@
           <h2 class="series-title">{{canonicalTitle}}</h2>
           {{partial "anime/infobar"}}
           <div class="series-description">
-            <p>{{synopsis}}</p>
+            <p>{{truncate-text text=synopsis length=500}}</p>
             <div class="social-links clearfix">
               <ul class="inline-list">
                 <li style="background: none; width: 78px; margin-right: 10px;">
@@ -151,9 +151,9 @@
                           <img class="series-poster" {{bind-attr src=posterImage}}>
                         </div>
                         <div class="col-md-10">
-                          <h4 class="series-title">{{canonicalTitle}}</h4>
+                          <h4 class="series-title">{{#link-to 'anime' id}}{{canonicalTitle}}{{/link-to}}</h4>
                           {{partial "anime/infobar"}}
-                          <p>{{synopsis}}</p>
+                          <p>{{truncate-text text=synopsis length=300}}</p>
                         </div>
                       </div>
                     {{/each}}
