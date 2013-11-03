@@ -87,7 +87,11 @@ CREATE TABLE anime (
     show_type character varying(255),
     started_airing_date date,
     finished_airing_date date,
-    rating_frequencies hstore
+    rating_frequencies hstore,
+    poster_image_file_name character varying(255),
+    poster_image_content_type character varying(255),
+    poster_image_file_size integer,
+    poster_image_updated_at timestamp without time zone
 );
 
 
@@ -189,7 +193,8 @@ CREATE TABLE castings (
     updated_at timestamp without time zone NOT NULL,
     voice_actor boolean,
     featured boolean,
-    "order" integer
+    "order" integer,
+    language character varying(255)
 );
 
 
@@ -3011,3 +3016,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130910061902');
 INSERT INTO schema_migrations (version) VALUES ('20130915122325');
 
 INSERT INTO schema_migrations (version) VALUES ('20131008230721');
+
+INSERT INTO schema_migrations (version) VALUES ('20131102013808');
+
+INSERT INTO schema_migrations (version) VALUES ('20131102051314');
+
+INSERT INTO schema_migrations (version) VALUES ('20131103092810');

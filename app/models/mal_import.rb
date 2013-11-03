@@ -112,7 +112,7 @@ class MalImport
     sidebar = noko.css('table tr td.borderClass')[0]
     
     # Cover image URL
-    meta[:cover_image_url] = sidebar.css("img")[0].attribute('src').value
+    meta[:poster_image_url] = sidebar.css("img")[0].attribute('src').value
     
     # Genres
     meta[:genres] = (sidebar.css("div").select {|x| x.text.include? "Genres:" }[0].css("a").map(&:text) rescue []).map {|x| Genre.find_by_name(x) }.compact

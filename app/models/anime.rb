@@ -9,7 +9,7 @@ class Anime < ActiveRecord::Base
   friendly_id :canonical_title, :use => [:slugged, :history]
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, 
-    :synopsis, :cover_image, :youtube_video_id, :alt_title, :franchises, :show_type,
+    :synopsis, :cover_image, :poster_image, :youtube_video_id, :alt_title, :franchises, :show_type,
     :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide,
     :started_airing_date, :finished_airing_date, :franchise_ids, :genre_ids,
     :producer_ids, :casting_ids
@@ -20,8 +20,11 @@ class Anime < ActiveRecord::Base
     default_url: "/assets/missing-anime-cover.jpg",
     styles: {thumb: "225x335!" }
 
-  def cover_image_thumb
-    Rails.cache.fetch("anime_cover_image_thumb:#{self.id}") { self.cover_image.url(:thumb) }
+  has_attached_file :poster_image, default_url: "/assets/missing-anime-cover.jpg",
+    styles: {large: "200x290!", medium: "100x150!"}
+
+  def poster_image_thumb
+    Rails.cache.fetch("anime_poster_image_thumb:#{self.id}") { self.poster_image.url(:large) }
   end
 
   has_many :quotes
@@ -136,7 +139,7 @@ class Anime < ActiveRecord::Base
     self.title = meta[:title]
     self.alt_title = meta[:english_title]
     self.synopsis = meta[:synopsis]
-    self.cover_image = URI(meta[:cover_image_url]) if self.cover_image_file_name.nil?
+    self.poster_image = URI(meta[:poster_image_url]) if self.poster_image_file_name.nil?
     self.genres = (self.genres + meta[:genres]).uniq
     self.producers = (self.producers + meta[:producers]).uniq
     self.mal_age_rating = meta[:age_rating]
@@ -199,7 +202,7 @@ class Anime < ActiveRecord::Base
   end
 
   after_save do
-    Rails.cache.write("anime_cover_image_thumb:#{self.id}", self.cover_image.url(:thumb))
+    Rails.cache.write("anime_poster_image_thumb:#{self.id}", self.poster_image.url(:large))
   end
 
   def self.neon_alley_ids

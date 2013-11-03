@@ -2,7 +2,7 @@
   .row
     .large-2.columns.no-padding
       .quote-thumb
-        = image_tag @anime.cover_image.url(:thumb), alt: @anime.canonical_title(current_user)
+        = image_tag @anime.poster_image.url(:large), alt: @anime.canonical_title(current_user)
         - if false
           .large-12.columns.no-padding
             %a.small.button.split.padded{:href => "#"}

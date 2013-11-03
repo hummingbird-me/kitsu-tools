@@ -112,7 +112,7 @@
             - @recent_reviews.each do |review|
               = link_to anime_review_path(review.anime, review) do
                 %li.touchcarousel-item 
-                  .carousel_img{:style => "background-image: url(#{review.anime.cover_image.url(:thumb)});"}
+                  .carousel_img{:style => "background-image: url(#{review.anime.poster_image.url(:large)});"}
                   .meta
                     %h3= review.anime.canonical_title(current_user)
                     %h1= review.rating
