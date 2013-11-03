@@ -114,8 +114,6 @@ Hummingbird::Application.routes.draw do
 
   # Watchlist
   resources :watchlists
-  match '/watchlist/add/:anime_id' => 'watchlists#add_to_watchlist', 
-    as: :add_to_watchlist
   match '/watchlist/remove' => 'watchlists#remove_from_watchlist', 
     as: :remove_from_watchlist
   match '/watchlist/rate/:anime_id/:rating' => 'watchlists#update_rating', 
