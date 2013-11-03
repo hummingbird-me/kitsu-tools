@@ -4,10 +4,10 @@ class AddAttachmentPosterImageToAnime < ActiveRecord::Migration
       t.attachment :poster_image
     end
 
-    Anime.find_each do |anime|
-      anime.poster_image = URI(anime.cover_image.url)
-      anime.save
-    end
+#    Anime.find_each do |anime|
+#      anime.poster_image = URI(anime.cover_image.url)
+#      anime.save
+#    end
   end
 
   def self.down
