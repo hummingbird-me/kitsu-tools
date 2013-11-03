@@ -682,6 +682,9 @@
     padding-right: 15px;
     float: left;
   }
+  @media (max-width: 480px) {
+    padding: 0;
+  }
 }
 
 .series-title {
@@ -815,6 +818,20 @@
   padding-top: 15px;
   @media (max-width: 991px) {
     margin-bottom: 15px;
+  }
+}
+
+.related-user {
+  padding: 1px;
+  overflow: hidden;
+  border-radius: 3px;
+  img:hover {
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: .6;
   }
 }
 

@@ -1,5 +1,8 @@
 .bg-image {
 	padding-top: 180px;
+	@media (max-width: 480px) {
+		padding-top: 0;
+	}
 }
 
 .bg-image-wrapper {
