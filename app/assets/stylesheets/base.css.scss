@@ -14,16 +14,28 @@ body {
 }
 
 ul {
-	list-style: none;
-	padding: 0;
-	margin-bottom: 0;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
 }
 
 a {
-	color: $darkOrange;
-	&:hover {
-		text-decoration: none;
-	}
+  color: $darkOrange;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.container {
+  @media (min-width: 768px) {
+    width: 100%;
+  }
+  @media (min-width: 992px) {
+    width: 100%;
+  }
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
 }
 
 .left-align {
@@ -51,7 +63,7 @@ input:focus, textarea:focus {
     float: left;
     padding-right: 10px;
     &:last-child {
-    	padding-right: 0;
+      padding-right: 0;
     }
   }
 }
@@ -65,7 +77,7 @@ input:focus, textarea:focus {
 }
 
 .panel-default > .panel-heading, .panel-footer, .panel-divider {
-	background-color: $eggshell;
+  background-color: $eggshell;
   border-color: #e9ebee;
 }
 .panel-divider {
@@ -76,7 +88,7 @@ input:focus, textarea:focus {
   font-family: $headerFontFamily;
 }
 .secondary {
-	color: $medGrey;
+  color: $medGrey;
 }
 
 .relative {

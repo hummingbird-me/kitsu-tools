@@ -662,8 +662,16 @@
 .gallery {
   float: right;
   padding-left: 0;
-  @media (max-width: 991px) {
-    padding-left: 30px;
+  // @media (max-width: 991px) {
+  //   padding-left: 30px;
+  // }
+  @media (max-width: 940px) {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 0;
+    .col-sm-12 {
+      width: 25%
+    }
   }
 }
 
@@ -678,12 +686,15 @@
 
 .series-body {
   padding-right: 10px;
-  @media (max-width: 991px) {
-    padding-right: 15px;
-    float: left;
-  }
+  // @media (max-width: 991px) {
+  //   padding-right: 15px;
+  //   float: left;
+  // }
   @media (max-width: 480px) {
     padding: 0;
+  }
+  @media (max-width: 940px) {
+    width: 100%;
   }
 }
 
@@ -764,20 +775,20 @@
   background: #fff;
   border-left: 1px solid #ddd;
   border-top-right-radius: 4px;
-  @media (max-width: 991px) {
-    float: left;
-    border-top: 1px solid #ddd;
-    border-left: none;
-  }
+  // @media (max-width: 991px) {
+  //   float: left;
+  //   border-top: 1px solid #ddd;
+  //   border-left: none;
+  // }
 }
 
 .series-poster {
   width: 100%;
   border-radius: 3px;
-  @media (max-width: 991px) {
-    padding-left: 0;
-    padding-right: 15px;
-  }
+  // @media (max-width: 991px) {
+  //   padding-left: 0;
+  //   padding-right: 15px;
+  // }
 }
 
 .sidebar-title {
@@ -798,27 +809,27 @@
     &:last-child {
       margin-bottom: 0;
     }
-    @media (max-width: 991px) {
-      padding-left: 10px;
-      padding-right: 10px;
-    }
+    // @media (max-width: 991px) {
+    //   padding-left: 10px;
+    //   padding-right: 10px;
+    // }
   }
 }
 
 .buy-series {
-  @media (max-width: 991px) {
-    margin-top: 15px;
-    border-top: 1px solid #ddd;
-    padding-top: 15px;
-  }
+  // @media (max-width: 991px) {
+  //   margin-top: 15px;
+  //   border-top: 1px solid #ddd;
+  //   padding-top: 15px;
+  // }
 }
 .watch-series {
   margin-top: 15px;
   border-top: 1px solid #ddd;
   padding-top: 15px;
-  @media (max-width: 991px) {
-    margin-bottom: 15px;
-  }
+  // @media (max-width: 991px) {
+  //   margin-bottom: 15px;
+  // }
 }
 
 .related-user {
