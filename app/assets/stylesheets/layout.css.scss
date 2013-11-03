@@ -821,6 +821,20 @@
   }
 }
 
+.related-user {
+  padding: 1px;
+  overflow: hidden;
+  border-radius: 3px;
+  img:hover {
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: .6;
+  }
+}
+
 .tab-pane {
   padding-top: 15px;
   padding-left: 0;
