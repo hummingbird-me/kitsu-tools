@@ -4,7 +4,7 @@
     - if image == :user
       = avatar_link review.user, :thumb_small
     - elsif image == :anime
-      = link_to image_tag(review.anime.cover_image.url(:thumb), alt: review.anime.canonical_title(current_user)), anime_review_path(review.anime, review)
+      = link_to image_tag(review.anime.poster_image.url(:medium), alt: review.anime.canonical_title(current_user)), anime_review_path(review.anime, review)
   .large-9.columns.review-left-wrapper
     %h5 
       - if image == :anime

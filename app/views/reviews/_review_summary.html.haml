@@ -2,10 +2,7 @@
   .panel.review-block
     .large-12.columns
       .large-3.columns.review-thumbnail
-        = link_to image_tag(review.anime.cover_image.url(:thumb)), anime_review_path(review.anime, review)
-        / .vote-blocks.large-12.columns
-        /   - (-2).upto(2) do |i|
-        /     = review.rating >= i ? "★" : "☆"
+        = link_to image_tag(review.anime.poster_image.url(:medium)), anime_review_path(review.anime, review)
       %h3= link_to truncate(review.anime.canonical_title(current_user), length: 25, omission: '...'), anime_review_path(review.anime, review)
       %p
         = (review.summary || truncate(strip_tags(review.content), length: 500, omission: '...')).gsub("&nbsp;", " ")

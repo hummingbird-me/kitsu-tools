@@ -30,8 +30,8 @@
 
     - if yield(:title).length > 0
       %meta(property="og:title"){:content => yield(:title)}
-    - if @anime and @anime.respond_to? :cover_image
-      %meta(property="og:image"){:content => @anime.cover_image.url}
+    - if @anime and @anime.respond_to? :poster_image
+      %meta(property="og:image"){:content => @anime.poster_image.url}
 
     = yield(:extra_meta_content)
 

@@ -2,7 +2,7 @@
   - @results.each do |anime|
     %li.search-result.cf
       .large-1.columns.hide-for-small.thumbnail.no-padding-right
-        = image_tag anime.cover_image.url(:thumb)
+        = image_tag anime.poster_image.url(:medium)
       .small-12.large-11.columns
         .large-12.columns.title
           = link_to anime.canonical_title(current_user), anime

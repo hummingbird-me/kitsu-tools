@@ -26,7 +26,7 @@
 
           / %p.summary #{truncate(anime.synopsis, length: 300, omission: '...')}
         / %figcaption= link_to anime.title, anime
-        = image_tag anime.cover_image.url(:thumb), alt: anime.canonical_title(current_user)
+        = image_tag anime.poster_image.url(:large), alt: anime.canonical_title(current_user)
 
     .progress.six
       %span.meter{:style => "width: #{percentage_completed(anime, watchlist)}%"}

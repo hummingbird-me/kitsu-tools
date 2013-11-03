@@ -95,7 +95,7 @@
                         - else
                           %i.icon-adjust.icon-flip-horizontal
                     %p.wanna-watch
-                    = image_tag anime.cover_image.url(:thumb), alt: anime.canonical_title
+                    = image_tag anime.poster_image.url(:large), alt: anime.canonical_title
                     %p.title= anime.canonical_title(current_user)
                 
           = paginate @anime

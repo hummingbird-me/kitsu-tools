@@ -297,7 +297,7 @@ class API_v1 < Grape::API
         sim = Anime.find_by_id(similar["id"])
         similar_anime.push(sim) if sim and similar_anime.length < (params[:limit] || 20)
       end
-      similar_anime.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title, genres: x.genres.map {|x| {name: x.name} }, cover_image: x.cover_image.url(:thumb), url: anime_url(x)} }
+      similar_anime.map {|x| {id: x.slug, title: x.canonical_title, alternate_title: x.alternate_title, genres: x.genres.map {|x| {name: x.name} }, cover_image: x.poster_image.url(:large), url: anime_url(x)} }
     end
   end
 
