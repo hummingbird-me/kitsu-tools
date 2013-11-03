@@ -14,7 +14,7 @@ class AnimeSerializer < ActiveModel::Serializer
   end
 
   def poster_image
-    object.cover_image.url(:thumb)
+    object.poster_image.url(:large)
   end
 
   def genres
