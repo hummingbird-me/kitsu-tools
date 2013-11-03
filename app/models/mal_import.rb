@@ -4,7 +4,7 @@ class MalImport
   def self.create_series_castings(id)
     anime = Anime.find_by_mal_id id
 
-    noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}/a/characters").read
+    noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}/a/characters", "User-Agent" => "Ruby/2 vikhyat").read
     cont = noko.css('h2').select {|x| x.text.include? "Characters & Voice Actors" }[0].parent
 
     charactersc = []
@@ -48,7 +48,7 @@ class MalImport
       charmap[char[:mal_id]] = Character.find_by_mal_id(char[:mal_id]) || Character.create(name: char[:name].strip.split(', ').reverse.join(' '), mal_id: char[:mal_id])
       if charmap[char[:mal_id]].image_file_name.nil?
         begin
-          charmap[char[:mal_id]].image = URI(Nokogiri::HTML(open("http://myanimelist.net/character/#{char[:mal_id]}")).css("img")[0].attributes["src"].value)
+          charmap[char[:mal_id]].image = URI(Nokogiri::HTML(open("http://myanimelist.net/character/#{char[:mal_id]}", "User-Agent" => "Ruby/2 vikhyat")).css("img")[0].attributes["src"].value)
           charmap[char[:mal_id]].image = nil if charmap[char[:mal_id]].image_file_name =~ /na\.gif/
           charmap[char[:mal_id]].save
         rescue
@@ -87,7 +87,7 @@ class MalImport
     anime.castings.map {|x| x.person }.uniq.each do |person|
       if person.image_file_name.nil?
         begin
-          person.image = URI(Nokogiri::HTML(open("http://myanimelist.net/people/#{person.mal_id}")).css("img")[0].attributes["src"].value)
+          person.image = URI(Nokogiri::HTML(open("http://myanimelist.net/people/#{person.mal_id}", "User-Agent" => "Ruby/2 vikhyat")).css("img")[0].attributes["src"].value)
           person.image = nil if person.image_file_name =~ /na\.gif/
           person.save
         rescue
@@ -97,7 +97,7 @@ class MalImport
   end
   
   def self.series_metadata(id)
-    noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}").read
+    noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}", "User-Agent" => "Ruby/2 vikhyat").read
     meta = {}
 
     # Get title and alternate title.
@@ -195,7 +195,7 @@ class MalImport
 
   def self.fetch_watchlist_from_remote(username)
     watchlist = []
-    animelist = Hash.from_xml(open("http://myanimelist.net/malappinfo.php?status=all&type=anime&u=#{username}").read.encode('ASCII-8BIT', invalid: :replace, undef: :replace, replace: '').split('').select {|x| x =~ VALID_XML_CHARS }.join.encode('UTF-8'))
+    animelist = Hash.from_xml(open("http://myanimelist.net/malappinfo.php?status=all&type=anime&u=#{username}", "User-Agent" => "Ruby/2 vikhyat").read.encode('ASCII-8BIT', invalid: :replace, undef: :replace, replace: '').split('').select {|x| x =~ VALID_XML_CHARS }.join.encode('UTF-8'))
     status_map = {
       "1"           => "Currently Watching",
       "watching"    => "Currently Watching",
@@ -259,12 +259,12 @@ class MalImport
   def self.fetch_reviews_from_remote(username)
     reviews = []
     
-    reviewpage = Nokogiri::HTML(open("http://myanimelist.net/profile/#{username}/reviews"), nil, 'utf-8')
+    reviewpage = Nokogiri::HTML(open("http://myanimelist.net/profile/#{username}/reviews", "User-Agent" => "Ruby/2 vikhyat"), nil, 'utf-8')
     reviews += MalImport.get_reviews(reviewpage)
     page = 0
     while reviewpage.css('a').any? {|t| t.text == "More Reviews" }
       page += 1
-      reviewpage = Nokogiri::HTML(open("http://myanimelist.net/profile/#{username}/reviews&p=#{page}"), nil, 'utf-8')
+      reviewpage = Nokogiri::HTML(open("http://myanimelist.net/profile/#{username}/reviews&p=#{page}", "User-Agent" => "Ruby/2 vikhyat"), nil, 'utf-8')
       reviews += MalImport.get_reviews(reviewpage)
     end
     
