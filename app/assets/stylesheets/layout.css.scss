@@ -682,6 +682,9 @@
     padding-right: 15px;
     float: left;
   }
+  @media (max-width: 480px) {
+    padding: 0;
+  }
 }
 
 .series-title {
