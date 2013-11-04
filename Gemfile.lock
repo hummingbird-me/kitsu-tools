@@ -537,7 +537,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers
+  active_model_serializers (~> 0.8)
   activerecord-postgres-hstore
   activerecord-reputation-system
   anjlab-bootstrap-rails!

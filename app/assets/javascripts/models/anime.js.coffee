@@ -12,11 +12,13 @@ Hummingbird.Anime = DS.Model.extend
   startedAiring: DS.attr('date')
   finishedAiring: DS.attr('date')
   screencaps: DS.attr('array')
+  languages: DS.attr('array')
 
   producers: DS.hasMany('producer')
   franchise: DS.hasMany('anime', async: true)
   featuredQuotes: DS.hasMany('quote')
   trendingReviews: DS.hasMany('review')
+  featuredCastings: DS.hasMany('casting')
 
   airingStatus: (->
     unless @get('startedAiring')

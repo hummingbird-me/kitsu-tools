@@ -1,10 +1,11 @@
 class AnimeSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps
+  attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages
 
   has_many :featured_quotes, root: :quotes
   has_many :trending_reviews, root: :reviews
+  has_many :featured_castings, root: :castings
   has_many :producers, embed_key: :slug
 
   def id
@@ -35,11 +36,19 @@ class AnimeSerializer < ActiveModel::Serializer
     object.gallery_images.map {|g| g.image.url(:thumb) }
   end
 
+  def languages
+    object.castings.where(role: "Voice Actor").select("DISTINCT(language)").map {|x| x.language }
+  end
+
   def featured_quotes
     Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", object.id], :order => "votes DESC", :limit => 4})
   end
 
   def trending_reviews
     object.reviews.includes(:user).order("wilson_score DESC").limit(4)
+  end
+
+  def featured_castings
+    object.castings.where(featured: true).includes(:person, :character).sort_by {|x| x.order || 100 }
   end
 end
