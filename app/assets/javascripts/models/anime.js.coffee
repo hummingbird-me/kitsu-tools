@@ -15,6 +15,7 @@ Hummingbird.Anime = DS.Model.extend
 
   franchise: DS.hasMany('anime', async: true)
   featuredQuotes: DS.hasMany('quote')
+  trendingReviews: DS.hasMany('review')
 
   airingStatus: (->
     unless @get('startedAiring')

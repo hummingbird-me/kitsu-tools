@@ -4,6 +4,7 @@ class AnimeSerializer < ActiveModel::Serializer
   attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps
 
   has_many :featured_quotes, root: :quotes
+  has_many :trending_reviews, root: :reviews
 
   def id
     object.slug
@@ -35,5 +36,9 @@ class AnimeSerializer < ActiveModel::Serializer
 
   def featured_quotes
     Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", object.id], :order => "votes DESC", :limit => 4})
+  end
+
+  def trending_reviews
+    object.reviews.includes(:user).order("wilson_score DESC").limit(4)
   end
 end

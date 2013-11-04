@@ -393,73 +393,22 @@
             </div>
           </div>
           <h4>Trending Reviews <a {{bind-attr href=fullReviewsURL}} class="btn btn-xs btn-default pull-right">view all</a></h4>
-          <div class="col-sm-12 rounded-block clearfix">
-            <div class="col-xs-2 no-padding-left">
-              <img class="reviewer-thumb" src="http://static.hummingbird.me/users/avatars/000/005/425/thumb/Saber-Alter.gif?1380294926">
-            </div>
-            <div class="col-xs-10 no-padding-left">
-              <h4 class="reviewer-name"><span class="subtext">review by</span> HitotsuSenshi</h4>
-              <span class="review-stars">
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class=" icon-star-half-empty"></i>
-              </span>
-              <p class="review-summary">Bakemonogatari is a superb anime with very few flaws. Engaging story and top notch animation are where it truly shines.</p>
-            </div>
-          </div>
-
-          <div class="col-sm-12 rounded-block clearfix">
-            <div class="col-xs-2 no-padding-left">
-              <img class="reviewer-thumb" src="http://static.hummingbird.me/users/avatars/000/006/772/thumb/tumblr_inline_mrnpjey3zI1qz4rgp.gif?1380295938">
-            </div>
-            <div class="col-xs-10 no-padding-left">
-              <h4 class="reviewer-name"><span class="subtext">review by</span> Cuntologics</h4>
-              <span class="review-stars">
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-              </span>
-              <p class="review-summary">Bakemonogatari is a stellar title which never fails to impress you with its spontaneous word play and delicious visuals.</p>
-            </div>
-          </div>
-
-          <div class="col-sm-12 rounded-block clearfix">
-            <div class="col-xs-2 no-padding-left">
-              <img class="reviewer-thumb" src="http://static.hummingbird.me/users/avatars/000/003/362/thumb/3362-shinobu_platinum_crop.jpg?1380293363">
-            </div>
-            <div class="col-xs-10 no-padding-left">
-              <h4 class="reviewer-name"><span class="subtext">review by</span> TsunTsunSama</h4>
-              <span class="review-stars">
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star-empty"></i>
-                <i class="icon-star-empty"></i>
-              </span>
-              <p class="review-summary">A great anime for almost everyone, Unique and Fun.</p>
-            </div>
-          </div>
-
-          <div class="col-sm-12 rounded-block clearfix">
-            <div class="col-xs-2 no-padding-left">
-              <img class="reviewer-thumb" src="http://static.hummingbird.me/users/avatars/000/002/946/thumb/2946-addsafasfasfsafasf.jpg?1380293053">
-            </div>
-            <div class="col-xs-10 no-padding-left">
-              <h4 class="reviewer-name"><span class="subtext">review by</span> Alf</h4>
-              <span class="review-stars">
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class="icon-star"></i>
-                <i class=" icon-star-half-empty"></i>
-                <i class="icon-star-empty"></i>
-              </span>
-              <p class="review-summary">Hands down one of the best slices of life ever, taking a boring genre and making a darkly intriguing original story.</p>
-            </div>
-          </div>
+          {{#each trendingReviews}}
+          <a {{bind-attr href=reviewURL}}>
+              <div class="col-sm-12 rounded-block clearfix">
+                <div class="col-xs-2 no-padding-left">
+                  {{avatar user 'thumb_small'}}
+                </div>
+                <div class="col-xs-10 no-padding-left">
+                  <h4 class="reviewer-name"><span class="subtext">review by</span> {{user.username}}</h4>
+                  <span class="review-stars">
+                    {{stars rating}}
+                  </span>
+                  <p class="review-summary">{{summary}}</p>
+                </div>
+              </div>
+            </a>
+          {{/each}}
         </div>
       </div>
     </div>

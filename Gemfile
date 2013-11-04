@@ -4,7 +4,7 @@ gem 'rails', '3.2.13'
 
 gem 'grape'
 gem 'grape-entity'
-gem 'active_model_serializers'
+gem 'active_model_serializers', '~> 0.8'
 gem 'doorkeeper', '~> 0.7.2'
 
 gem 'riemann-client'
