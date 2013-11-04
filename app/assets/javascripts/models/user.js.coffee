@@ -11,8 +11,3 @@ Hummingbird.User = DS.Model.extend
     @get("avatarTemplate").replace('{size}', 'thumb')
   ).property('avatarTemplate')
 
-Hummingbird.UserSerializer = Hummingbird.ApplicationSerializer.extend
-  normalize: (type, hash, property) ->
-    hash['id'] = hash['username']
-    @_super(type, hash, property)
-

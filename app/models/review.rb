@@ -8,7 +8,7 @@ class Review < ActiveRecord::Base
     :summary
 
   validates :user, :anime, :content, :presence => true
-  
+
   # Don't allow a user to review an anime more than once.
   validates :user_id, :uniqueness => {:scope => :anime_id}
 

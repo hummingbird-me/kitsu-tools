@@ -36,7 +36,7 @@
         .recommendations.hide-for-small
           - @recent_anime.each do |watchlist|
             .large-3.columns.no-padding.recommendation
-              = image_tag watchlist.anime.cover_image.url(:thumb)
+              = image_tag watchlist.anime.poster_image.url(:large)
               .large-12.columns.meta-wrapper
                 .meta-data.large-12.columns.no-padding-left
                   %p 

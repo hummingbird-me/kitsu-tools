@@ -66,7 +66,7 @@ class Watchlist < ActiveRecord::Base
         slug: self.anime.slug,
         url: Rails.application.routes.url_helpers.anime_path(self.anime),
         title: self.anime.canonical_title(current_user),
-        cover_image: self.anime.cover_image.url(:thumb),
+        cover_image: self.anime.poster_image.url(:large),
         episode_count: self.anime.episode_count,
         short_synopsis: truncate(self.anime.synopsis, length: 380, separator: ' '),
         show_type: self.anime.show_type

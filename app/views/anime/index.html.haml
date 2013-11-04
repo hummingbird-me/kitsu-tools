@@ -42,7 +42,7 @@
               %li.large-2.columns.single-wrapper
                 .popular-card.tip-top(data-tooltip title="#{anime.canonical_title(current_user)}")
                   %p.wanna-watch
-                  = image_tag(anime.cover_image.url(:thumb), alt: anime.canonical_title)
+                  = image_tag(anime.poster_image.url(:large), alt: anime.canonical_title)
                   %p.title= anime.canonical_title(current_user)
   .row
     .large-12.columns
@@ -54,7 +54,7 @@
           %ul.recently-reviewed
             - @recent_reviews.each do |review|
               %li.large-1.columns.recent-review.tip-top(data-tooltip title="#{review.anime.canonical_title(current_user)}")
-                = link_to image_tag(review.anime.cover_image.url(:thumb), alt: "#{review.anime.canonical_title} Review"), anime_review_path(review.anime, review)
+                = link_to image_tag(review.anime.poster_image.url(:large), alt: "#{review.anime.canonical_title} Review"), anime_review_path(review.anime, review)
 
   .row
     .large-8.columns

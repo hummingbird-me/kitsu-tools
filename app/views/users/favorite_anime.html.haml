@@ -7,7 +7,7 @@
       - if current_ability.can? :read, anime
         %li.card{class: ('end' if i == @favorite_anime.length-1)}
           .rounded-panel
-            .image= link_to (image_tag anime.cover_image.url(:thumb)), anime
+            .image= link_to (image_tag anime.poster_image.url(:large)), anime
             .title.truncate= anime.canonical_title(current_user)
 
   = paginate @favorite_anime

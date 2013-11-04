@@ -27,7 +27,7 @@
             });
           }
           checkForCompletion();
-      
+
       - else
         / Neon Alley Recommendations
         - if current_user.neon_alley_integration?
@@ -47,10 +47,10 @@
                       %p.wanna-watch
                         %a.small.button{:"data-slug" => anime.slug}
                           Plan to Watch
-                      = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
+                      = link_to (image_tag anime.poster_image(:large), alt: anime.canonical_title(current_user.title_language_preference)), anime
                     %p.title= anime.canonical_title(current_user.title_language_preference)
                     %a.not-interested(href="javascript:void(0)"){:"data-slug" => anime.slug} Not Interested
-                  
+
         / By status recommendations
         - @status_categories.each do |category|
           .large-12.columns.panel.no-padding.rounded-panel
@@ -72,7 +72,7 @@
                       %p.wanna-watch
                         %a.small.button{:"data-slug" => anime.slug}
                           Plan to Watch
-                      = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
+                      = link_to (image_tag anime.poster_image(:large), alt: anime.canonical_title(current_user.title_language_preference)), anime
                     %p.title= anime.canonical_title(current_user.title_language_preference)
                     %a.not-interested(href="javascript:void(0)"){:"data-slug" => anime.slug} Not Interested
 
@@ -97,7 +97,7 @@
                       %p.wanna-watch
                         %a.small.button{:"data-slug" => anime.slug}
                           Plan to Watch
-                      = link_to (image_tag anime.cover_image(:thumb), alt: anime.canonical_title(current_user.title_language_preference)), anime
+                      = link_to (image_tag anime.poster_image(:large), alt: anime.canonical_title(current_user.title_language_preference)), anime
                     %p.title= anime.canonical_title(current_user.title_language_preference)
                     %a.not-interested(href="javascript:void(0)"){:"data-slug" => anime.slug} Not Interested
 
@@ -156,30 +156,4 @@
     that = this
     $.post "/recommendations/not_interested", {anime: slug}, (d) ->
       $(that).closest("li").fadeTo(500, 0.2)
-  
 
-/ .tooltip-contents.hide
-/   .large-12.columns
-/     %h4 Death Note
-/     %p Yagami Light is a 17-year-old genius from Japan who is tired of his life, school, and the state of the world as he knows it. One day, on the way home from class, Light stumbles upon a dark notebook with "Death Note" written on the front... <a href="#">read more</a>
-/     %h6 Because you added:
-/     .large-12.columns.no-padding
-/       .large-2.columns
-/         = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
-/       .large-2.columns
-/         = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
-/       .large-2.columns
-/         = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
-/       .large-2.columns.end
-/         = link_to (image_tag "http://hummingbird.me/system/141d05611a95fdfaec3f77581aaacd0cc2826dfe_thumb.jpg?1361873644", :class => "rec-image"), "#"
-
-
-
-/ :coffee
-/   $(".rec-image").tooltip
-/     placement: 'right'
-/     html: true
-/     delay:
-/       show: 700
-/       hide: 100
-/     title: $(".tooltip-contents").html()

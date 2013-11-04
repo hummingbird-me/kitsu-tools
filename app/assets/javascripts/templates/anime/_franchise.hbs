@@ -1,0 +1,16 @@
+{{#if franchise.isLoaded}}
+  {{#each franchise}}
+    <div class="rounded-block col-sm-12 clearfix franchise-show">
+      <div class="col-sm-2 no-padding">
+        <img class="series-poster" {{bind-attr src=posterImage}}>
+      </div>
+      <div class="col-sm-10">
+        <h4 class="series-title">{{#link-to 'anime' id}}{{canonicalTitle}}{{/link-to}}</h4>
+        {{partial "anime/infobar"}}
+        <p>{{truncate-text text=synopsis length=300}}</p>
+      </div>
+    </div>
+  {{/each}}
+{{else}}
+  {{loading-indicator}}
+{{/if}}

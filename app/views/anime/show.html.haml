@@ -14,7 +14,7 @@
     // Left Column
     .large-2.columns.no-padding-right
       .quote-thumb
-        = image_tag @anime.cover_image.url(:thumb)
+        = image_tag @anime.poster_image.url(:large)
       / .series-rating
       /   %i.icon-star
       /   %i.icon-star
@@ -42,7 +42,7 @@
           %h5 SIMILAR
           - @similar.each do |similar|
             .large-6.columns.sidebar-series.tip-top{"data-options" => "disable-for-touch:true", "data-tooltip" => "", :title => similar.canonical_title(current_user)}
-              = link_to (image_tag similar.cover_image.url(:thumb), alt: similar.canonical_title), similar
+              = link_to (image_tag similar.poster_image.url(:large), alt: similar.canonical_title), similar
 
     // Center Column
     .large-7.columns.center-column

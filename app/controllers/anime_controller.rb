@@ -35,37 +35,10 @@ class AnimeController < ApplicationController
 
     return
 
-    @castings = Casting.where(anime_id: @anime.id, featured: true).includes(:person, :character).sort_by {|x| x.order || 1000 }
-    @languages = @castings.map {|x| x.role }.sort
-    ["Japanese", "English"].reverse.each do |l|
-      @languages.unshift l if @languages.include? l
-    end
-    @languages = @languages.uniq
-
-    @gallery = @anime.gallery_images.limit(6)
-
-    @reviews = @anime.reviews.includes(:user).order("wilson_score DESC").limit(4)
-
     if user_signed_in?
       @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
     else
       @watchlist = false
-    end
-
-    @franchise_anime = @anime.franchises.map {|x| x.anime }.flatten.uniq.sort_by {|x| x.started_airing_date || (Time.now + 100.years).to_date }
-    
-    @similar = @anime.similar(2, exclude: @franchise_anime)
-
-    # Add to recently viewed.
-    if @anime.sfw?
-      session[:recently_viewed] ||= []
-      session[:recently_viewed].delete( params[:id] )
-      session[:recently_viewed].unshift( params[:id] )
-      session[:recently_viewed].pop while session[:recently_viewed].length > 7
-    end
-
-    respond_to do |format|
-      format.html { render :show }
     end
   end
 
