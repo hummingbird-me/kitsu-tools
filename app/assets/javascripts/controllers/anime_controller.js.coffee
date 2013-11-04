@@ -4,6 +4,7 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
   showGenres: (-> @get('activeTab') == "Genres").property('activeTab')
   showFranchise: (-> @get('activeTab') == "Franchise").property('activeTab')
   showQuotes: (-> @get('activeTab') == "Quotes").property('activeTab')
+  showStudios: (-> @get('activeTab') == "Studios").property('activeTab')
 
   # Legacy -- remove after Ember transition is complete.
   fullQuotesURL: (-> "/anime/" + @get('model.id') + "/quotes").property('model.id')

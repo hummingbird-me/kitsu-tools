@@ -198,6 +198,7 @@
               <li {{bind-attr class="showGenres:active"}}><a href="javascript:void(0)" {{action switchTo "Genres"}}>Genres</a></li>
               <li {{bind-attr class="showFranchise:active"}}><a href="javascript:void(0)" {{action switchTo "Franchise"}}>Franchise</a></li>
               <li {{bind-attr class="showQuotes:active"}}><a href="javascript:void(0)" {{action switchTo "Quotes"}}>Quotes</a></li>
+              <li {{bind-attr class="showStudios:active"}}><a href="javascript:void(0)" {{action switchTo "Studios"}}>Studios</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active genre-tab">
@@ -234,6 +235,42 @@
                   {{/each}}
                   <a {{bind-attr href=fullQuotesURL}} class="btn btn-default">view all</a>
                 {{/if}}
+                {{#if showStudios}}
+                  <span><strong>Produced by: &nbsp;</strong></span>
+                  {{#each producers}}
+                    <span class="badge"><a href="javascript:void(0)">{{name}}</a></span>
+                  {{/each}}
+                  <hr>
+
+                  <div class="col-sm-12 no-padding studio-name" style="position: absolute; padding: 60px; text-align: center; font-size: 1.4em; font-weight: bold; z-index: 10">
+                    <span style="padding: 10px; border-radius: 6px; background-color: rgba(150,150,150,0.4)">
+                      (coming soon)
+                    </span>
+                  </div>
+                  <div class="col-sm-12 rounded-block clearfix no-padding-right" style="opacity: 0.2">
+                    <div class="col-sm-12 no-padding studio-name">
+                      produced by <strong>Shaft</strong>, also known for:
+                    </div>
+                    <div class="col-xs-2 no-padding-left">
+                      <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
+                    </div>
+                    <div class="col-xs-2 no-padding-left">
+                      <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
+                    </div>
+                    <div class="col-xs-2 no-padding-left">
+                      <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
+                    </div>
+                    <div class="col-xs-2 no-padding-left">
+                      <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
+                    </div>
+                    <div class="col-xs-2 no-padding-left">
+                      <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
+                    </div>
+                    <div class="col-xs-2 no-padding-left">
+                      <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
+                    </div>
+                  </div>
+                {{/if}}
                 <hr>
               </div>
             </div>
@@ -249,37 +286,6 @@
               </li>
               <li class=""><a href="#studios" data-toggle="tab">Studios</a></li>
             </ul>
-            <div id="myTabContent" class="tab-content">
-              <div class="tab-pane fade genre-tab" id="studios">
-                <div class="col-sm-12 rounded-block clearfix no-padding-right">
-                  <div class="col-sm-12 no-padding studio-name">
-                    produced by <strong>Shaft</strong>, also known for:
-                  </div>
-                  <div class="col-xs-2 no-padding-left">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
-                  </div>
-                  <div class="col-xs-2 no-padding-left">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
-                  </div>
-                  <div class="col-xs-2 no-padding-left">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
-                  </div>
-                  <div class="col-xs-2 no-padding-left">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
-                  </div>
-                  <div class="col-xs-2 no-padding-left">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
-                  </div>
-                  <div class="col-xs-2 no-padding-left">
-                    <img class="series-poster" src="http://static.hummingbird.me/anime/cover_images/000/003/919/thumb/Watanabe-Hitagi0-650x856.jpg?1377464077">
-                  </div>
-                </div>
-                <span><strong>Licensed by: &nbsp;</strong></span>
-                <span class="badge"><a href="#">Aniplex</a></span>
-                <span class="badge"><a href="#">Kodansha</a></span>
-                <span class="badge"><a href="#">Aniplex of America</a></span>
-                <hr>
-              </div>
               <div class="tab-pane fade" id="dropdown1">
                 <ul class="cast" id="Korean" style="">
                   <li class="actor">

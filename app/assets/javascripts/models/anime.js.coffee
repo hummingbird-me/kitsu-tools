@@ -13,6 +13,7 @@ Hummingbird.Anime = DS.Model.extend
   finishedAiring: DS.attr('date')
   screencaps: DS.attr('array')
 
+  producers: DS.hasMany('producer')
   franchise: DS.hasMany('anime', async: true)
   featuredQuotes: DS.hasMany('quote')
   trendingReviews: DS.hasMany('review')
