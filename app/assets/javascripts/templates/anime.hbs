@@ -42,14 +42,14 @@
     <div class="col-xs-12 col-sm-9 series-body">
       <div class="panel panel-default series-panel clearfix">
         <div class="col-xs-12 col-sm-3 series-sidebar">
-          <div class="col-xs-5 col-sm-12 no-padding">
-            <img class="series-poster" {{bind-attr src=posterImage}}>
-          </div>
-          <div class="col-xs-7 text-center hidden-sm hidden-lg">
+          <div class="col-xs-12 text-center hidden-sm hidden-md hidden-lg">
             <h4 class="series-title">{{canonicalTitle}}</h4>
           </div>
-          <div class="hidden-sm hidden-lg">{{partial "anime/infobar"}}</div>
-          <div class="community-rating col-xs-7 col-sm-12 no-padding">
+          <div class="hidden-sm hidden-md hidden-lg">{{partial "anime/infobar"}}</div>
+          <div class="col-xs-6 col-sm-12 no-padding">
+            <img class="series-poster" {{bind-attr src=posterImage}}>
+          </div>
+          <div class="community-rating col-xs-6 col-sm-12 no-padding">
             <hr>
             <h5 class="sidebar-title text-center">Community Ratings</h5>
             <ul class="community-rating-wrapper">
@@ -115,7 +115,7 @@
             </div>
           </div>
           <div class="col-sm-12 clearfix">
-            <div class="series-description hidden-sm hidden-lg">
+            <div class="series-description hidden-sm hidden-md hidden-lg">
               <p>{{truncate-text text=synopsis length=500}}</p>
               <div class="social-links clearfix">
                 <ul class="inline-list">

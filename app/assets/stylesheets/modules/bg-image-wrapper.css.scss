@@ -1,10 +1,10 @@
 .bg-image {
   padding-top: 180px;
-  @media (max-width: 480px) {
-    padding-top: 0;
-  }
   @media (max-width: 940px) {
     padding-top: 70px;
+  }
+  @media (max-width: 480px) {
+    padding-top: 0;
   }
 }
 
