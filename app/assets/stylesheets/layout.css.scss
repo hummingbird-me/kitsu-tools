@@ -782,6 +782,9 @@
 }
 .series-panel {
   background: $eggshell;
+  @media (max-width: 768px) {
+    background: #fff;
+  }
 }
 
 .series-sidebar {
