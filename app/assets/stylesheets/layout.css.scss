@@ -673,6 +673,27 @@
       width: 25%
     }
   }
+  li {
+    @media (min-width: 941px) {
+      padding-right: 0;
+    }
+  }
+}
+
+.poster-container {
+  max-width: 200px;
+  padding-bottom: 5px;
+  @media (min-width: 941px) {
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+  }
+}
+
+.sidebar-copy {
+  @media (max-width: 941px) {
+    padding-bottom: 5px;
+  }
 }
 
 .gallery-images {
@@ -701,6 +722,9 @@
 .series-title {
   font-weight: normal;
   margin-bottom: 0;
+  @media (max-width: 941px) {
+    margin-bottom: 15px;
+  }
 }
 .series-metadata {
   color: #888;
@@ -832,6 +856,15 @@
   // }
 }
 
+.current-watching {
+  margin-top: 15px;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+  // @media (max-width: 991px) {
+  //   margin-bottom: 15px;
+  // }
+}
+
 .related-user {
   padding: 1px;
   overflow: hidden;
@@ -845,10 +878,27 @@
     opacity: .6;
   }
 }
-
+.nav-tabs {
+  border-bottom: none;
+}
 .tab-pane {
   padding-top: 15px;
-  padding-left: 0;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 10px;
+  border-radius: 3px;
+  .rounded-block {
+    border: none;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 0;
+    border-radius: 0;
+    &:hover {
+      border: none;
+      border-bottom: 1px solid #ddd;
+    }
+  }
 }
 
 .info-tabs {
@@ -868,6 +918,12 @@
   padding-top: 15px;
   padding-bottom: 8px;
   margin-bottom: 15px;
+  &:hover {
+    border: 1px solid #777;
+  }
+  .resposive-image {
+    padding-bottom: 5px;
+  }
 }
 
 .reviewer-thumb {
@@ -878,6 +934,7 @@
 .reviewer-name {
   display: inline-block;
   margin-top: 5px;
+  color: #444;
   .subtext {
     font-weight: normal;
     color: #888;
@@ -886,6 +943,7 @@
 }
 .review-summary {
   font-size: 16px;
+  color: #444;
 }
 
 .review-stars {

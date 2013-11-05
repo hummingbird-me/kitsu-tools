@@ -45,9 +45,26 @@
           <div class="col-xs-12 text-center hidden-sm hidden-md hidden-lg">
             <h4 class="series-title">{{canonicalTitle}}</h4>
           </div>
-          <div class="hidden-sm hidden-md hidden-lg">{{partial "anime/infobar"}}</div>
-          <div class="col-xs-6 col-sm-12 no-padding">
+          
+          <div class=" poster-container col-xs-5 col-sm-12">
             <img class="series-poster" {{bind-attr src=posterImage}}>
+          </div>
+
+          <div class="col-xs-7 hidden-sm hidden-md hidden-lg no-padding">{{partial "anime/infobar"}}</div>
+          <div class="col-sm-12 clearfix sidebar-copy">
+            <div class="series-description hidden-sm hidden-md hidden-lg">
+              <p>{{truncate-text text=synopsis length=500}}</p>
+              <div class="social-links clearfix">
+                <ul class="inline-list">
+                  <li style="background: none; width: 78px; margin-right: 10px;">
+                  <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1381275758.html#_=1381748393383&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;size=m&amp;text=Bakemonogatari%20%7C%20Hummingbird&amp;url=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;via=Hummingbird_me" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px;"></iframe>
+                  </li>
+                  <li>
+                  <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1381748393311" name="I0_1381748393311" src="https://apis.google.com/u/0/_/+1/fastbutton?usegapi=1&amp;bsv=o&amp;size=medium&amp;hl=en-US&amp;origin=http%3A%2F%2Fhummingbird.me&amp;url=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.rH61Rx8ffI0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAItRSTN6m7GNFgp1JmU00eC9SBpsNGIq5w#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1381748393311&amp;parent=http%3A%2F%2Fhummingbird.me&amp;pfname=&amp;rpctoken=29101695" data-gapiattached="true" title="+1"></iframe></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
           <div class="community-rating col-xs-6 col-sm-12 no-padding">
             <hr>
@@ -114,26 +131,12 @@
               <a href="#"><img src="http://cl.ly/image/3T34020P1h0f/hulu.png"></a>
             </div>
           </div>
-          <div class="col-sm-12 clearfix">
-            <div class="series-description hidden-sm hidden-md hidden-lg">
-              <p>{{truncate-text text=synopsis length=500}}</p>
-              <div class="social-links clearfix">
-                <ul class="inline-list">
-                  <li style="background: none; width: 78px; margin-right: 10px;">
-                  <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1381275758.html#_=1381748393383&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;size=m&amp;text=Bakemonogatari%20%7C%20Hummingbird&amp;url=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;via=Hummingbird_me" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px;"></iframe>
-                  </li>
-                  <li>
-                  <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1381748393311" name="I0_1381748393311" src="https://apis.google.com/u/0/_/+1/fastbutton?usegapi=1&amp;bsv=o&amp;size=medium&amp;hl=en-US&amp;origin=http%3A%2F%2Fhummingbird.me&amp;url=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.rH61Rx8ffI0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAItRSTN6m7GNFgp1JmU00eC9SBpsNGIq5w#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1381748393311&amp;parent=http%3A%2F%2Fhummingbird.me&amp;pfname=&amp;rpctoken=29101695" data-gapiattached="true" title="+1"></iframe></div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          
 
 
-          <div class="watch-series col-xs-12 col-sm-12 col-sm-12 no-padding">
+          <div class="current-watching col-xs-12 col-sm-12 col-sm-12 no-padding">
             <h5 class="sidebar-title">Currently Watching</h5>
-            <div class="col-xs-12 col-sm-12 no-padding">
+            <div class="col-xs-12 col-sm-12 no-padding clearfix">
               <div class="col-xs-3 col-sm-3 related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/000/001/thumb_small/av.jpg?1383103791"></a>
                 <span class="overlay"></span>
@@ -225,10 +228,11 @@
                 {{#if showStudios}}
                   {{partial "anime/studios"}}
                 {{/if}}
-                <hr>
               </div>
             </div>
-
+            <div class="banner-ad">
+              <img src="http://cl.ly/image/1J302K0d191e/Image%202013.11.04%205%3A30%3A33%20PM.jpeg">
+            </div>
             <h4>Trending Reviews <a {{bind-attr href=fullReviewsURL}} class="btn btn-xs btn-default pull-right">view all</a></h4>
             {{#each trendingReviews}}
               <a {{bind-attr href=reviewURL}}>
