@@ -126,7 +126,7 @@ class User < ActiveRecord::Base
   def admin?
     ["c@vikhyat.net", # Vik
      "josh@hummingbird.ly", # Josh
-     "harlequinmarie@gmail.com", # Ashley
+     # "harlequinmarie@gmail.com", # Ashley
      "ryatt.tesla@gmail.com", # Ryatt
      "dev.colinl@gmail.com", # Psy
      "lazypanda39@gmail.com", # Cai
