@@ -1,7 +1,7 @@
 class AnimeSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages, :community_ratings
+  attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages, :community_ratings, :youtube_video_id
 
   has_many :featured_quotes, root: :quotes
   has_many :trending_reviews, root: :reviews
