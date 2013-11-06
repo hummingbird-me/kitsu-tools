@@ -700,6 +700,27 @@
   @include clearfix();
 }
 
+.trailer {
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 28px;
+    border-radius: 3px;
+  }
+  .play-icon {
+    width: 100%;
+    top: 80px;
+    text-align: center;
+    position: absolute;
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    opacity: 0.4;
+  }
+  &:hover .play-icon {
+    opacity: 0.8;
+  }
+}
+
 .gallery-images {
   img {
     width: 100%;

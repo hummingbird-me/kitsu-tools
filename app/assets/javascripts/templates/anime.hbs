@@ -33,6 +33,13 @@
       </ul>
     </div>
     <div class="col-sm-3 gallery hidden-xs">
+      <div class="trailer">
+        <a target="_blank" {{bind-attr href=trailerLink}}>
+          <div class="play-icon"><i class="icon-play icon-4x"></i></div>
+          <img width="100%" height="auto" {{bind-attr src=trailerPreviewImage}}>
+        </a>
+      </div>
+
       <ul class="gallery-images">
         {{#each imageURL in screencaps}}
           <li class="col-xs-6 col-sm-12 no-padding-left"><img {{bind-attr src=imageURL}}></li>
