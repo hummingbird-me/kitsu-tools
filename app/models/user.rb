@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
   has_attached_file :avatar,
     styles: {
       thumb: '190x190#',
-      thumb_small: '50x50#',
+      thumb_small: {geometry: '50x50#', animated: false},
       small: {geometry: '25x25#', animated: false}
     },
     convert_options: {
