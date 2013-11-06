@@ -1,7 +1,7 @@
 class AnimeSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages
+  attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages, :community_ratings
 
   has_many :featured_quotes, root: :quotes
   has_many :trending_reviews, root: :reviews
@@ -50,5 +50,22 @@ class AnimeSerializer < ActiveModel::Serializer
 
   def featured_castings
     object.castings.where(featured: true).includes(:person, :character).sort_by {|x| x.order || 100 }
+  end
+
+  def community_ratings
+    ratings = []
+    0.upto(5).each do |i|
+      previous_rating = (object.rating_frequencies["#{i}.0"] || 0).to_i
+      next_rating     = (object.rating_frequencies["#{i+1}.0"] || 0).to_i
+      current_rating  = (object.rating_frequencies["#{i}.5"] || 0).to_i
+
+      ratings.push previous_rating
+      if current_rating < previous_rating and current_rating < next_rating
+        current_rating = (next_rating + previous_rating) / 2
+      end
+      ratings.push current_rating
+    end
+    ratings.pop; ratings.shift
+    ratings
   end
 end
