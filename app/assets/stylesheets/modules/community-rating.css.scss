@@ -6,14 +6,32 @@
 	float: left;
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 5px;
+	padding-left: 0;
+	padding-right: 0;
 	margin-top: 15px;
 	margin-bottom: 15px;
+	@include make-xs-column(12);
+	@include make-sm-column(12);
+	@media (min-width: 768px) {
+		padding-top: 15px;
+		border-top: 1px solid #ddd;
+		padding-left: 0;
+		padding-right: 0;
+	}
 	.sidebar-title {
-		margin-bottom: 0;
+		margin-bottom: 5px;
 	}
 	.star {
 		display: inline;
-		font-size: 25px;
+		font-size: 30px;
+		@media (min-width: 941px) and (max-width: 1200px) {
+			font-size: 25px;
+		}
+	}
+	&.active {
+		.star {
+			color: #ec8661 !important;
+		}
 	}
 }
 
@@ -56,6 +74,19 @@
 	}
 	&.last {
 		margin-right: 0;
+	}
+	&:hover {
+		border: 1px solid #000;
+		cursor: pointer;
+		.rating-value {
+			width: 12px;
+			@media (min-width: 941px) and (max-width: 1200px) {
+				width: 8px;
+			}
+			@media (min-width: 768px) and (max-width: 827px) {
+				width: 10px;
+			}
+		}
 	}
 }
 
