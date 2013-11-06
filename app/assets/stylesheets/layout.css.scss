@@ -688,12 +688,16 @@
     padding-left: 0;
     padding-bottom: 0;
   }
+  @include make-xs-column(5);
+  @include make-sm-column(12);
 }
 
 .sidebar-copy {
   @media (max-width: 941px) {
     padding-bottom: 5px;
   }
+  @include make-sm-column(12);
+  @include clearfix();
 }
 
 .gallery-images {
@@ -717,6 +721,8 @@
   @media (max-width: 940px) {
     width: 100%;
   }
+  @include make-xs-column(12);
+  @include make-sm-column(9);
 }
 
 .series-title {
@@ -780,16 +786,20 @@
 .series-description {
   font-size: 18px;
 }
+
 .series-panel {
   background: $eggshell;
   @media (max-width: 768px) {
     background: #fff;
   }
+  @include clearfix();
 }
 
 .series-sidebar {
   padding: 10px;
   border-radius: 3px;
+  @include make-xs-column(12);
+  @include make-sm-column(3);
   hr {
     margin-top: 15px;
     margin-bottom: 15px;

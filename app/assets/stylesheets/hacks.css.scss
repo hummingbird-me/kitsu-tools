@@ -1,4 +1,9 @@
+@import "globals/all";
+
 .franchise-show {
+  @include make-sm-column(12);
+  @include clearfix();
+
   .series-metadata li, p {
     font-size: 0.9em;
   }
