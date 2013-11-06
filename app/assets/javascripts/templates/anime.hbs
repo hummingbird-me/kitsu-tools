@@ -1,5 +1,5 @@
-{{!-- Background Image --}}
-<div class="bg-image-wrapper series" style="background:url('http://cl.ly/image/2d3v1H0f2g19/grayscale.jpg'); background-position-y: -250px;"></div>
+{{!-- Background Image (Add .bg-image-wrapper IF a BG image is present) --}}
+<div class="bg-image-wrapper series" style="background:url('http://cl.ly/image/2d3v1H0f2g19/grayscale.jpg'); background-position: 0 -250px;"></div>
 <div class="wrapper-fade"></div>
 
 {{!-- Library Container --}}
@@ -66,11 +66,20 @@
               </div>
             </div>
           </div>
-          <div class="community-rating col-xs-6 col-sm-12 no-padding">
-            <hr>
+          <div class="personal-rating col-xs-12 col-sm-12 no-padding">
+            <h5 class="sidebar-title text-center">Your Rating</h5>
+            <!-- Star Rating -->
+            <ul class="star-rating">
+              <li class="star"><i class="icon-star-empty"></i></li>
+              <li class="star"><i class="icon-star-empty"></i></li>
+              <li class="star"><i class="icon-star-empty"></i></li>
+              <li class="star"><i class="icon-star-empty"></i></li>
+              <li class="star"><i class="icon-star-empty"></i></li>
+            </ul>
+          </div>
+          <div class="community-rating col-xs-12 col-sm-12 no-padding">
             <h5 class="sidebar-title text-center">Community Ratings</h5>
             <ul class="community-rating-wrapper">
-              <li class="legend">1</li>
               <li class="rating-column">
               <div class="rating-value" style="height: 0%;">
               </div>
@@ -111,30 +120,28 @@
               <div class="rating-value" style="height: 33.333333333333336%;">
               </div>
               </li>
-              <li class="legend">5</li>
             </ul>
-            <hr>
           </div>
           <div id="affiliate" class="buy-series col-xs-12 col-sm-7 col-sm-12 no-padding">
             <h5 class="sidebar-title">Where to Buy</h5>
-            <div class="col-xs-6 col-sm-12 no-padding">
+            <div class="affiliate-button col-xs-6 col-sm-12 no-padding">
               <a href="#"><img src="http://hummingbird.me/assets/jlist-936b9137d45e73fb901ef36592fb840e.png"></a>
             </div>
-            <div class="col-xs-6 col-sm-12 no-padding">
+            <div class="affiliate-button col-xs-6 col-sm-12 no-padding">
               <a href="#"><img src="http://hummingbird.me/assets/amazon-217b6b780588b2293069a5778925a2f4.png"></a>
             </div>
             <hr>
           </div>
           <div id="affiliate" class="watch-series col-xs-12 col-sm-12 no-padding">
             <h5 class="sidebar-title">Where to Watch</h5>
-            <div class="col-xs-6 col-sm-12 no-padding">
+            <div class="affiliate-button col-xs-6 col-sm-12 no-padding">
               <a href="#"><img src="http://cl.ly/image/3T34020P1h0f/hulu.png"></a>
             </div>
           </div>
           
 
 
-          <div class="current-watching col-xs-12 col-sm-12 col-sm-12 no-padding">
+          <div class="current-watching col-xs-12 col-sm-12 col-sm-12 hidden-xs no-padding">
             <h5 class="sidebar-title">Currently Watching</h5>
             <div class="col-xs-12 col-sm-12 no-padding clearfix">
               <div class="col-xs-3 col-sm-3 related-user">

@@ -1,39 +1,47 @@
-.community-rating {
-	hr {
-		margin-top: 15px;
-		margin-bottom: 15px;
-		border: 0;
-		border-top: 1px solid #ddd;
+.personal-rating {
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 5px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	.sidebar-title {
+		margin-bottom: 0;
 	}
-	@media (max-width: 991px) {
-    padding: 0;
-  }
-}
-.community-rating-wrapper {
-	position: relative;
-	height: 40px;
-	li {
-		float: left;
+	.star {
+		display: inline;
+		font-size: 25px;
 	}
 }
 
-.legend {
-	font-size: 11px;
-	font-weight: bold;
-	line-height: 40px;
-	width: 16px;
+.community-rating {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+}
+
+.affiliate-button {
+	@media (max-width: 768px) {
+		padding: 10px;
+	}
+}
+
+.community-rating-wrapper {
+	position: relative;
+	height: 40px;
 	text-align: center;
+	li {
+		display: inline-block;
+	}
 }
 
 .rating-column {
 	bottom: 0;
-	width: 14px;
+	width: 12px;
 	height: 40px;
 	background: #c6c7c8;
-	margin-right: 2px;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
-	@media (max-width: 1200px) {
+	@media (min-width: 941px) and (max-width: 1200px) {
 		width: 10px;
 	}
 	&.last {
@@ -44,11 +52,11 @@
 .rating-value {
 	position: absolute;
 	bottom: 0;
-	width: 14px;
+	width: 12px;
 	background: #525a65;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
-	@media (max-width: 1200px) {
+	@media (min-width: 941px) and (max-width: 1200px) {
 		width: 10px;
 	}
 }
