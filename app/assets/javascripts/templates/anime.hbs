@@ -28,30 +28,37 @@
       </ul>
       <ul class="right-buttons">
         <li>
-        <button type="button" class="btn btn-default top-button">Follow Series</button>
+        {{!-- <button type="button" class="btn btn-default top-button">Follow Series</button> --}}
         </li>
       </ul>
     </div>
-    <div class="col-sm-3 gallery hidden-xs">
+    <div class="gallery hidden-xs">
+      <div class="trailer hidden-sm">
+        <a target="_blank" {{bind-attr href=trailerLink}}>
+          <div class="play-icon"><i class="icon-play icon-4x"></i></div>
+          <img width="100%" height="auto" {{bind-attr src=trailerPreviewImage}}>
+        </a>
+      </div>
+
       <ul class="gallery-images">
         {{#each imageURL in screencaps}}
           <li class="col-xs-6 col-sm-12 no-padding-left"><img {{bind-attr src=imageURL}}></li>
         {{/each}}
       </ul>
     </div>
-    <div class="col-xs-12 col-sm-9 series-body">
-      <div class="panel panel-default series-panel clearfix">
-        <div class="col-xs-12 col-sm-3 series-sidebar">
+    <div class="series-body">
+      <div class="panel panel-default series-panel">
+        <div class="series-sidebar">
           <div class="col-xs-12 text-center hidden-sm hidden-md hidden-lg">
             <h4 class="series-title">{{canonicalTitle}}</h4>
           </div>
-          
-          <div class=" poster-container col-xs-5 col-sm-12">
+
+          <div class="poster-container">
             <img class="series-poster" {{bind-attr src=posterImage}}>
           </div>
 
           <div class="col-xs-7 hidden-sm hidden-md hidden-lg no-padding">{{partial "anime/infobar"}}</div>
-          <div class="col-sm-12 clearfix sidebar-copy">
+          <div class="sidebar-copy">
             <div class="series-description hidden-sm hidden-md hidden-lg">
               <p>{{truncate-text text=synopsis length=500}}</p>
               <div class="social-links clearfix">
@@ -77,50 +84,9 @@
               <li class="star"><i class="icon-star-empty"></i></li>
             </ul>
           </div>
-          <div class="community-rating col-xs-12 col-sm-12 no-padding">
-            <h5 class="sidebar-title text-center">Community Ratings</h5>
-            <ul class="community-rating-wrapper">
-              <li class="rating-column">
-              <div class="rating-value" style="height: 0%;">
-              </div>
-              </li>
-              <li class="rating-column">
-              <div class="rating-value" style="height: 0%;">
-              </div>
-              </li>
-              <li class="rating-column">
-              <div class="rating-value" style="height: 0%;">
-              </div>
-              </li>
-              <li class="rating-column">
-              <div class="rating-value" style="height: 0%;">
-              </div>
-              </li>
-              <li class="rating-column">
-              <div class="rating-value" style="height: 0%;">
-              </div>
-              </li>
-              <li class="rating-column">
-              <div class="rating-value" style="height: 0%;">
-              </div>
-              </li>
-              <li class="rating-column">
-              <div class="rating-value" style="height: 33.333333333333336%;">
-              </div>
-              </li>
-              <li class="rating-column">
-              <div class="rating-value" style="height: 100%;">
-              </div>
-              </li>
-              <li class="rating-column">
-              <div class="rating-value" style="height: 66.66666666666667%;">
-              </div>
-              </li>
-              <li class="rating-column last">
-              <div class="rating-value" style="height: 33.333333333333336%;">
-              </div>
-              </li>
-            </ul>
+          <div class="community-rating">
+            <h5 class="sidebar-title text-center">Community Rating</h5>
+            {{community-rating communityRatings}}
           </div>
           <div id="affiliate" class="buy-series col-xs-12 col-sm-7 col-sm-12 no-padding">
             <h5 class="sidebar-title">Where to Buy</h5>
@@ -138,8 +104,6 @@
               <a href="#"><img src="http://cl.ly/image/3T34020P1h0f/hulu.png"></a>
             </div>
           </div>
-          
-
 
           <div class="current-watching col-xs-12 col-sm-12 col-sm-12 hidden-xs no-padding">
             <h5 class="sidebar-title">Currently Watching</h5>

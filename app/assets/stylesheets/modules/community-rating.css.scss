@@ -1,5 +1,9 @@
+// base styles
+@import "globals/all";
+
 .personal-rating {
 	text-align: center;
+	float: left;
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 5px;
 	margin-top: 15px;
@@ -13,16 +17,18 @@
 	}
 }
 
-.community-rating {
-	border-bottom: 1px solid #ddd;
-	margin-bottom: 15px;
-	padding-bottom: 15px;
-}
-
 .affiliate-button {
 	@media (max-width: 768px) {
 		padding: 10px;
 	}
+}
+
+.community-rating {
+  @include make-xs-column(12);
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
 }
 
 .community-rating-wrapper {
@@ -31,18 +37,22 @@
 	text-align: center;
 	li {
 		display: inline-block;
+		margin-right: 4px;
 	}
 }
 
 .rating-column {
 	bottom: 0;
-	width: 12px;
+	width: 14px;
 	height: 40px;
 	background: #c6c7c8;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 	@media (min-width: 941px) and (max-width: 1200px) {
 		width: 10px;
+	}
+	@media (min-width: 768px) and (max-width: 827px) {
+		width: 12px;
 	}
 	&.last {
 		margin-right: 0;
@@ -52,11 +62,14 @@
 .rating-value {
 	position: absolute;
 	bottom: 0;
-	width: 12px;
+	width: 14px;
 	background: #525a65;
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px;
 	@media (min-width: 941px) and (max-width: 1200px) {
 		width: 10px;
+	}
+	@media (min-width: 768px) and (max-width: 827px) {
+		width: 12px;
 	}
 }

@@ -2,13 +2,13 @@
   {{#each filteredCast}}
     <li class="actor">
       <a class="character">
-        <img alt="Karen Araragi - Bakemonogatari" src="http://static.hummingbird.me/characters/images/000/027/159/thumb_small/27159.jpg?1375254267" width="30">
+        <img {{bind-attr src=character.image}} width="30" height="47">
         {{character.name}}
       </a>
       <span class="va">
         <a class="voice-actor">
           {{person.name}}
-          <img alt="Seon Hye Kim - Voice Actor" height="47" src="http://static.hummingbird.me/people/images/000/000/128/thumb_small/128.jpg?1375223304" width="30">
+          <img {{bind-attr src=person.image}} height="47" width="30">
         </a>
       </span>
     </li>
