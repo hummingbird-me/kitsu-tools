@@ -9,8 +9,8 @@
 
   @media (max-width: 940px) {
     width: 100%;
-    padding-left: 20px;
-    padding-right: 0;
+    padding-left: 10px;
+    padding-right: 20px;
     .col-sm-12 {
       width: 25%
     }
@@ -71,6 +71,16 @@
     margin-bottom: 10px;
     border-radius: 3px;
   }
+  .gallery-image {
+    @include make-xs-column(2);
+    @include make-sm-column(12);
+    padding-left: 0;
+    padding-right: 0;
+    @media (max-width: 940px) {
+      padding-left: 10px;
+      width: 25%
+    }
+  }
 }
 
 .series-body {
@@ -83,6 +93,11 @@
   @media (max-width: 940px) {
     width: 100%;
   }
+}
+
+.series-title-wrapper {
+  @include make-xs-column(12);
+  text-align: center;
 }
 
 .series-title {
@@ -112,6 +127,7 @@
 
 .top-buttons {
   margin-bottom: 15px;
+  @include make-sm-column(12);
   .top-button {
     border: none;
     background: #2f333b;
@@ -162,6 +178,8 @@
 }
 
 .series-content {
+  @include make-xs-column(12);
+  @include make-sm-column(9);
   background: #fff;
   border-left: 1px solid #ddd;
   border-top-right-radius: 4px;
@@ -179,9 +197,20 @@
 
 .buy-series, .watch-series {
   float: left;
+  @include make-xs-column(12);
+  @include make-sm-column(12);
+  padding-left: 0;
+  padding-right: 0;
   img {
     width: 100%;
   }
+}
+
+.affiliate-button {
+  @include make-xs-column(6);
+  @include make-sm-column(12);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 #affiliate {
@@ -200,13 +229,27 @@
 }
 
 .current-watching {
+  @include make-xs-column(12);
+  @include make-sm-column(12);
   margin-top: 15px;
   border-top: 1px solid #ddd;
   padding-top: 15px;
+  padding-left: 0;
+  padding-right: 0;
   float: left;
 }
 
-.related-user {
+.related-user-wrapper {
+  @include make-xs-column(12);
+  @include make-sm-column(12);
+  @include clearfix;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.related-user { 
+  @include make-xs-column(3);
+  @include make-sm-column(3);
   padding: 1px;
   overflow: hidden;
   border-radius: 3px;
@@ -242,6 +285,12 @@
   }
 }
 
+.series-infobar {
+  @include make-xs-column(7);
+  padding-left: 0;
+  padding-right: 0; 
+}
+
 .info-tabs {
   margin-top: 15px;
   @media (max-width: 768px) {
@@ -270,9 +319,24 @@
   }
 }
 
+.trending-review {
+  @include make-sm-column(12);
+  @include clearfix;
+}
+
+.reviewer-thumb-wrapper {
+  @include make-xs-column(2);
+  padding-left: 0;
+}
+
 .reviewer-thumb {
   border-radius: 3px;
   width: 100%;
+}
+
+.reviewer-name-wrapper {
+  @include make-xs-column(10);
+  padding-left: 0;
 }
 
 .reviewer-name {

@@ -6,7 +6,7 @@
 <div class="container bg-image">
   {{!-- Library Table Row --}}
   <div class="row">
-    <div class="col-xs-12 top-buttons">
+    <div class="top-buttons">
       <ul class="left-buttons">
         <li>
         <button type="button" class="btn btn-default top-button heart"><i class="icon-heart-empty"></i></button>
@@ -44,14 +44,14 @@
 
       <ul class="gallery-images">
         {{#each imageURL in screencaps}}
-          <li class="col-xs-6 col-sm-12 no-padding-left"><img {{bind-attr src=imageURL}}></li>
+          <li class="gallery-image"><img {{bind-attr src=imageURL}}></li>
         {{/each}}
       </ul>
     </div>
     <div class="series-body">
       <div class="panel panel-default series-panel">
         <div class="series-sidebar">
-          <div class="col-xs-12 text-center hidden-sm hidden-md hidden-lg">
+          <div class="series-title-wrapper hidden-sm hidden-md hidden-lg">
             <h4 class="series-title">{{canonicalTitle}}</h4>
           </div>
 
@@ -59,7 +59,7 @@
             <img class="series-poster" {{bind-attr src=posterImage}}>
           </div>
 
-          <div class="col-xs-7 hidden-sm hidden-md hidden-lg no-padding">{{partial "anime/infobar"}}</div>
+          <div class="series-infobar hidden-sm hidden-md hidden-lg">{{partial "anime/infobar"}}</div>
           <div class="sidebar-copy">
             <div class="series-description hidden-sm hidden-md hidden-lg">
               <p>{{truncate-text text=synopsis length=500}}</p>
@@ -90,70 +90,70 @@
             <h5 class="sidebar-title text-center">Community Rating</h5>
             {{community-rating communityRatings}}
           </div>
-          <div id="affiliate" class="buy-series col-xs-12 col-sm-7 col-sm-12 no-padding">
+          <div id="affiliate" class="buy-series">
             <h5 class="sidebar-title">Where to Buy</h5>
-            <div class="affiliate-button col-xs-6 col-sm-12 no-padding">
+            <div class="affiliate-button">
               <a href="#"><img src="http://hummingbird.me/assets/jlist-936b9137d45e73fb901ef36592fb840e.png"></a>
             </div>
-            <div class="affiliate-button col-xs-6 col-sm-12 no-padding">
+            <div class="affiliate-button">
               <a href="#"><img src="http://hummingbird.me/assets/amazon-217b6b780588b2293069a5778925a2f4.png"></a>
             </div>
             <hr>
           </div>
-          <div id="affiliate" class="watch-series col-xs-12 col-sm-12 no-padding">
+          <div id="affiliate" class="watch-series">
             <h5 class="sidebar-title">Where to Watch</h5>
-            <div class="affiliate-button col-xs-6 col-sm-12 no-padding">
+            <div class="affiliate-button">
               <a href="#"><img src="http://cl.ly/image/3T34020P1h0f/hulu.png"></a>
             </div>
           </div>
 
-          <div class="current-watching col-xs-12 col-sm-12 col-sm-12 hidden-xs no-padding">
+          <div class="current-watching hidden-xs">
             <h5 class="sidebar-title">Currently Watching</h5>
-            <div class="col-xs-12 col-sm-12 no-padding clearfix">
-              <div class="col-xs-3 col-sm-3 related-user">
+            <div class="related-user-wrapper">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/000/001/thumb_small/av.jpg?1383103791"></a>
                 <span class="overlay"></span>
               </div>
-              <div class="col-xs-3 col-sm-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/017/742/thumb/tewi.jpg?1383369463"></a>
                 <span class="overlay"></span>
               </div>
-              <div class="col-xs-3 col-sm-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/015/510/thumb_small/Kurapika's_Judgement_Chain_Resized.gif?1383345464"></a>
                 <span class="overlay"></span>
               </div>
-              <div class="col-xs-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/018/229/thumb/Excalibur_Poster.jpg?1382542336"></a>
               </div>
-              <div class="col-xs-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/013/405/thumb/Izayoi_Face.jpg?1383382546"></a>
               </div>
-              <div class="col-xs-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/003/660/thumb_small/3660-erikaav-2.gif?1380293586"></a>
               </div>
-              <div class="col-xs-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/002/186/thumb_small/vlcsnap-2013-10-31-19h44m40s41.png?1383269579"></a>
               </div>
-              <div class="col-xs-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/005/425/thumb/Saber_vs._Lancer.gif?1383286920"></a>
               </div>
-              <div class="col-xs-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/007/884/thumb/orly.gif?1381872582"></a>
               </div>
-              <div class="col-xs-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/005/097/thumb/Dance.gif?1382799146"></a>
               </div>
-              <div class="col-xs-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/010/314/thumb/neosignal.jpg?1382241023"></a>
               </div>
-              <div class="col-xs-3 related-user">
+              <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/006/330/thumb/TuxAv.png?1381784629"></a>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-xs-12 col-sm-9 series-content">
+        <div class="series-content">
           <h2 class="series-title hidden-xs">{{canonicalTitle}}</h2>
           <div class="hidden-xs">{{partial "anime/infobar"}}</div>
           <div class="series-description hidden-xs">
@@ -209,11 +209,11 @@
             <h4>Trending Reviews <a {{bind-attr href=fullReviewsURL}} class="btn btn-xs btn-default pull-right">view all</a></h4>
             {{#each trendingReviews}}
               <a {{bind-attr href=reviewURL}}>
-                <div class="col-sm-12 rounded-block clearfix">
-                  <div class="col-xs-2 no-padding-left">
+                <div class="trending-review rounded-block">
+                  <div class="reviewer-thumb-wrapper">
                     {{avatar user 'thumb'}}
                   </div>
-                  <div class="col-xs-10 no-padding-left">
+                  <div class="reviewer-name-wrapper">
                     <h4 class="reviewer-name"><span class="subtext">review by</span> {{user.username}}</h4>
                     <span class="review-stars">
                       {{stars rating}}
