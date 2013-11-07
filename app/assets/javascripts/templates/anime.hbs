@@ -172,8 +172,8 @@
           <div class="info-tabs">
             <ul class="nav nav-tabs">
               <li {{bind-attr class="showGenres:active"}}><a href="javascript:void(0)" {{action switchTo "Genres"}}>Genres</a></li>
-              <li {{bind-attr class="showFranchise:active"}}><a href="javascript:void(0)" {{action switchTo "Franchise"}}>Franchise</a></li>
-              <li {{bind-attr class="showQuotes:active"}}><a href="javascript:void(0)" {{action switchTo "Quotes"}}>Quotes</a></li>
+              <li class="hidden-xs" {{bind-attr class="showFranchise:active"}}><a href="javascript:void(0)" {{action switchTo "Franchise"}}>Franchise</a></li>
+              <li class="hidden-xs" {{bind-attr class="showQuotes:active"}}><a href="javascript:void(0)" {{action switchTo "Quotes"}}>Quotes</a></li>
               <li {{bind-attr class=":dropdown showCast:active"}}>
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Cast <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -182,7 +182,17 @@
                   {{/each}}
                 </ul>
               </li>
-              <li {{bind-attr class="showStudios:active"}}><a href="javascript:void(0)" {{action switchTo "Studios"}}>Studios</a></li>
+              <!-- more drop-down -->
+              <li {{bind-attr class=":dropdown showCast:active"}}>
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  {{#each language in languages}}
+                    <li><a href="javascript:void(0)" {{action setLanguage language}}>{{language}}</a></li>
+                  {{/each}}
+                </ul>
+              </li>
+
+              <li class="hidden-xs" {{bind-attr class="showStudios:active"}}><a href="javascript:void(0)" {{action switchTo "Studios"}}>Studios</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active genre-tab">
