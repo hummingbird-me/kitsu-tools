@@ -2,11 +2,11 @@
 @import "globals/all";
 
 .gallery {
+  @include make-sm-column(3);
+  @include pull-right;
   float: right;
   padding-left: 0;
-  // @media (max-width: 991px) {
-  //   padding-left: 30px;
-  // }
+
   @media (max-width: 940px) {
     width: 100%;
     padding-left: 20px;
@@ -25,6 +25,8 @@
 .poster-container {
   max-width: 200px;
   padding-bottom: 5px;
+  @include make-xs-column(5);
+  @include make-sm-column(12);
   @media (min-width: 941px) {
     padding-right: 0;
     padding-left: 0;
@@ -33,10 +35,34 @@
 }
 
 .sidebar-copy {
+  @include make-sm-column(12);
+  @include clearfix();
   @media (max-width: 941px) {
     padding-bottom: 5px;
   }
 }
+
+.trailer {
+  img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 28px;
+    border-radius: 3px;
+  }
+  .play-icon {
+    width: 100%;
+    top: 80px;
+    text-align: center;
+    position: absolute;
+    color: #fff;
+    text-shadow: 0 0 2px #000;
+    opacity: 0.4;
+  }
+  &:hover .play-icon {
+    opacity: 0.8;
+  }
+}
+
 
 .gallery-images {
   img {
@@ -49,10 +75,8 @@
 
 .series-body {
   padding-right: 10px;
-  // @media (max-width: 991px) {
-  //   padding-right: 15px;
-  //   float: left;
-  // }
+  @include make-xs-column(12);
+  @include make-sm-column(9);
   @media (max-width: 480px) {
     padding: 0;
   }
@@ -118,6 +142,7 @@
 }
 .series-panel {
   background: $eggshell;
+  @include clearfix();
   @media (max-width: 768px) {
     background: #fff;
   }
@@ -126,6 +151,8 @@
 .series-sidebar {
   padding: 10px;
   border-radius: 3px;
+  @include make-xs-column(12);
+  @include make-sm-column(3);
   hr {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -138,20 +165,11 @@
   background: #fff;
   border-left: 1px solid #ddd;
   border-top-right-radius: 4px;
-  // @media (max-width: 991px) {
-  //   float: left;
-  //   border-top: 1px solid #ddd;
-  //   border-left: none;
-  // }
 }
 
 .series-poster {
   width: 100%;
   border-radius: 3px;
-  // @media (max-width: 991px) {
-  //   padding-left: 0;
-  //   padding-right: 15px;
-  // }
 }
 
 .sidebar-title {
@@ -172,27 +190,13 @@
     &:last-child {
       margin-bottom: 0;
     }
-    // @media (max-width: 991px) {
-    //   padding-left: 10px;
-    //   padding-right: 10px;
-    // }
   }
 }
 
-.buy-series {
-  // @media (max-width: 991px) {
-  //   margin-top: 15px;
-  //   border-top: 1px solid #ddd;
-  //   padding-top: 15px;
-  // }
-}
 .watch-series {
   margin-top: 15px;
   border-top: 1px solid #ddd;
   padding-top: 15px;
-  // @media (max-width: 991px) {
-  //   margin-bottom: 15px;
-  // }
 }
 
 .current-watching {
