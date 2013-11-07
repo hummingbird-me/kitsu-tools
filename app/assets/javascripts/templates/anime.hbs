@@ -149,6 +149,7 @@
               <div class="related-user">
                 <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/006/330/thumb/TuxAv.png?1381784629"></a>
               </div>
+              <span class="additional-users">+ 459 others</span>
             </div>
           </div>
         </div>
@@ -220,7 +221,7 @@
             {{#each trendingReviews}}
               <a {{bind-attr href=reviewURL}}>
                 <div class="trending-review rounded-block">
-                  <div class="reviewer-thumb-wrapper">
+                  <div class="reviewer-thumb-wrapper hidden-xs">
                     {{avatar user 'thumb'}}
                   </div>
                   <div class="reviewer-name-wrapper">
