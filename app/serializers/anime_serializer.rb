@@ -33,7 +33,7 @@ class AnimeSerializer < ActiveModel::Serializer
   end
 
   def screencaps
-    object.gallery_images.map {|g| g.image.url(:thumb) }
+    object.gallery_images.limit(4).map {|g| g.image.url(:thumb) }
   end
 
   def languages
