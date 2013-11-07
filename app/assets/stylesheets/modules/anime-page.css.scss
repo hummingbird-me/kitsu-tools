@@ -335,8 +335,10 @@
 }
 
 .reviewer-name-wrapper {
-  @include make-xs-column(10);
+  @include make-xs-column(12);
+  @include make-sm-column(10);
   padding-left: 0;
+  padding-right: 0;
 }
 
 .reviewer-name {
@@ -356,6 +358,7 @@
 
 .review-stars {
   float: right;
+  padding-right: 0;
   margin-top: 5px;
   color: #777;
 }
@@ -421,6 +424,7 @@
   }
 
 .genre-tab {
+  @include clearfix;
   .badge {
     background: #eee;
     border-radius: 3px;
@@ -442,5 +446,11 @@
   .badge a {
     font-weight: normal;
     color: #666;
+  }
+}
+
+.favorite-count {
+  @media (max-width: 500px) {
+    display: none;
   }
 }

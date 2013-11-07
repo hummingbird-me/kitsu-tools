@@ -1,7 +1,7 @@
 {{#each featuredQuotes}}
-  <div class="rounded-block col-sm-12 clearfix">
+  <div class="rounded-block col-sm-12 clearfix no-padding">
     <p><strong>{{characterName}}:</strong> {{content}}</p>
-    <span class="favorited-by">Favorited by {{pluralize favoriteCount "user" "users"}} - <a href="#">Favorite this quote</a></span>
+    <span class="favorited-by"><span class="favorite-count">Favorited by {{pluralize favoriteCount "user" "users"}} - </span><a href="#">Favorite this quote</a></span>
     <span class="report-quote"><a href="#">Report Quote</a></span>
   </div>
 {{/each}}
