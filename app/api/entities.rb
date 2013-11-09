@@ -78,19 +78,19 @@ module Entities
     ) do |substory, options|
       Entities::MiniUser.represent substory.target
     end
-    
+
     expose(:quote,
       if: lambda {|substory, options| %w[liked_quote submitted_quote].include? substory.substory_type }
     ) do |substory, options|
       Entities::Quote.represent substory.target
     end
-    
+
     expose(:new_status,
       if: lambda {|substory, options| substory.substory_type == "watchlist_status_update" }
     ) do |substory, options|
-      substory.data["new_status"].parameterize.underscore
+      (substory.data["new_status"] || "Currently Watching").parameterize.underscore
     end
-    
+
     expose(:episode_number,
       if: lambda {|substory, options| substory.substory_type == "watched_episode" }
     ) do |substory, options|
