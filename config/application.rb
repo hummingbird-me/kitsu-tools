@@ -9,6 +9,9 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+# Make sure PhantomJS is installed.
+Phantomjs.path
+
 module Hummingbird
   class Application < Rails::Application
     config.cache_store = :redis_store, "redis://#{ENV['REDIS_HOST'] || 'localhost'}:6379/0/cache"
@@ -24,7 +27,7 @@ module Hummingbird
       url: ':s3_alias_url',
       path: '/:class/:attachment/:id_partition/:style/:filename'
     }
-      
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -81,6 +84,10 @@ module Hummingbird
     config.generators do |g|
       g.orm :active_record
     end
+
+    # SEO middleware.
+    require_relative '../lib/render_ember.rb'
+    config.middleware.use ::RenderEmber
 
     # CORS configuration.
     config.middleware.use Rack::Cors do
