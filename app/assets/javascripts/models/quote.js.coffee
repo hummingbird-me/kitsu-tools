@@ -3,4 +3,5 @@ Hummingbird.Quote = DS.Model.extend
   content: DS.attr('string')
   username: DS.attr('string')
   favoriteCount: DS.attr('number')
+  isFavorite: DS.attr('boolean')
 
