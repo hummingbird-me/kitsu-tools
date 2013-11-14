@@ -7,6 +7,7 @@ Hummingbird::Application.routes.draw do
       resources :anime do
         get :franchise
       end
+      resources :quotes
     end
   end
 

@@ -48,3 +48,4 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
         quote.set('isFavorite', false)
       else
         quote.set('isFavorite', true)
+      quote.save()
