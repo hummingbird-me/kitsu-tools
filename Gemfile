@@ -19,6 +19,7 @@ gem 'ember-rails'
 gem 'ember-source', '1.1.2'
 gem 'ember-data-source', '1.0.0.beta.3'
 gem 'coffee-rails', '~> 3.2.1'
+gem 'emblem-rails'
 
 gem 'beaneater'
 gem 'beanstalkd_view'
