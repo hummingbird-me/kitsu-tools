@@ -183,6 +183,9 @@
   background: #fff;
   border-left: 1px solid #ddd;
   border-top-right-radius: 4px;
+  @media (min-width: 768px) {
+    min-height: 1000px;
+  }
 }
 
 .series-poster {
@@ -322,6 +325,15 @@
 .trending-review {
   @include make-sm-column(12);
   @include clearfix;
+}
+
+.trending-review-empty {
+  text-align: center;
+  margin-bottom: 35px;
+  .empty-icon {
+    font-size: 100px;
+    color: #aaa;
+  }
 }
 
 .reviewer-thumb-wrapper {
