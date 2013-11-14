@@ -8,7 +8,7 @@ class Api::V2::ApiController < ApplicationController
 
   def authenticate_user_from_token_param!
     # API should not accept cookie authentication.
-    sign_out(currrent_user) if user_signed_in?
+    sign_out(current_user) if user_signed_in?
 
     if params[:auth_token]
       user = User.where(authentication_token: params[:auth_token]).first
