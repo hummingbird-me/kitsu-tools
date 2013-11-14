@@ -42,3 +42,9 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
       else
         @set('model.isFavorite', true)
       @get('model').save()
+
+    toggleQuoteFavorite: (quote) ->
+      if quote.get('isFavorite')
+        quote.set('isFavorite', false)
+      else
+        quote.set('isFavorite', true)
