@@ -137,7 +137,14 @@
     &.heart {
       font-size: 20px;
       padding-bottom: 1px;
-      padding-top: 5px;
+      padding-top: 4px;
+      &.active {
+        background: #f77d70;
+        color: #9f554e;
+      }
+      &:hover {
+        opacity: .8;
+      }
     }
   }
   .left-buttons {
