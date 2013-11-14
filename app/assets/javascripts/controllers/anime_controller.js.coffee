@@ -41,3 +41,4 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
         @set('model.isFavorite', false)
       else
         @set('model.isFavorite', true)
+      @get('model').save()
