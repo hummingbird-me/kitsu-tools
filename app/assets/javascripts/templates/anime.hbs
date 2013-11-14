@@ -9,7 +9,9 @@
     <div class="top-buttons">
       <ul class="left-buttons">
         <li>
-        <button type="button" class="btn btn-default top-button heart"><i class="icon-heart-empty"></i></button>
+          <button type="button" {{bind-attr class=":btn :btn-default :top-button :heard isFavorite:active"}}>
+            <i {{bind-attr class="isFavorite:icon-heart:icon-heart-empty"}}></i>
+          </button>
         </li>
         <li>
         <div class="btn-group">
