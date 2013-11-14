@@ -35,3 +35,9 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
       @set 'activeTab', newTab
       if newTab == "Franchise"
         @get 'model.franchise'
+
+    toggleFavorite: ->
+      if @get('model.isFavorite')
+        @set('model.isFavorite', false)
+      else
+        @set('model.isFavorite', true)
