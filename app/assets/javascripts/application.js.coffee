@@ -32,4 +32,7 @@ window.lastVisitedURL = '/'
 unless window.location.href.match('/sign-in')
   window.lastVisitedURL = window.location.href
 
-@Hummingbird = Ember.Application.create()
+$("#ember-root").html("")
+
+@Hummingbird = Ember.Application.create
+  rootElement: "#ember-root"
