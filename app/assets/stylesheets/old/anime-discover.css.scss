@@ -551,7 +551,7 @@
         z-index: 9;
         @include opacity(0.90);
         @include border-top-radius(3px);
-        @include background-image(linear-gradient(left top, #393939, #000));
+        //@include background-image(linear-gradient(left top, #393939, #000));
         display: none;
         
         .link-block {

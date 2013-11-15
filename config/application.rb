@@ -81,6 +81,8 @@ module Hummingbird
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
+    config.assets.precompile += ['bootstrap.js']
+
     config.generators do |g|
       g.orm :active_record
     end
