@@ -1,0 +1,97 @@
+body {
+  font-family: $bodyFontFamily;
+  font-weight: 300;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headerFontFamily;
+  font-weight: bold;
+}
+
+/* 
+ =============================
+ Adelle
+ =============================
+*/
+
+// Adelle Regular
+@font-face {
+    font-family: 'adelle';
+    src: url('adelle_reg-webfont.eot');
+    src: url('adelle_reg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('adelle_reg-webfont.woff') format('woff'),
+         url('adelle_reg-webfont.ttf') format('truetype'),
+         url('adelle_reg-webfont.svg#adelle_rgregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// Adelle Regular Italic
+@font-face {
+    font-family: 'adelle';
+    src: url('adelle_italic-webfont.eot');
+    src: url('adelle_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('adelle_italic-webfont.woff') format('woff'),
+         url('adelle_italic-webfont.ttf') format('truetype'),
+         url('adelle_italic-webfont.svg#adelle_rgitalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+// Adelle Bold
+@font-face {
+    font-family: 'adelle';
+    src: url('adelle_bold-webfont.eot');
+    src: url('adelle_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('adelle_bold-webfont.woff') format('woff'),
+         url('adelle_bold-webfont.ttf') format('truetype'),
+         url('adelle_bold-webfont.svg#adelle_rgbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+// Adelle Bold Italic
+@font-face {
+    font-family: 'adelle';
+    src: url('adelle_bolditalic-webfont.eot');
+    src: url('adelle_bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('adelle_bolditalic-webfont.woff') format('woff'),
+         url('adelle_bolditalic-webfont.ttf') format('truetype'),
+         url('adelle_bolditalic-webfont.svg#adelle_rgbold_italic') format('svg');
+    font-weight: bold;
+    font-style: italic;
+
+}
+
+
+/* 
+ =============================
+ Klavika
+ =============================
+*/
+
+// Klavika Regular
+@font-face {
+    font-family: 'klavika';
+    src: url('klavikaregular-tf-webfont.eot');
+    src: url('klavikaregular-tf-webfont.eot?#iefix') format('embedded-opentype'),
+         url('klavikaregular-tf-webfont.woff') format('woff'),
+         url('klavikaregular-tf-webfont.ttf') format('truetype'),
+         url('klavikaregular-tf-webfont.svg#klavika_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+// Klavika Bold
+@font-face {
+    font-family: 'klavika';
+    src: url('klavikamedium-tf-webfont.eot');
+    src: url('klavikamedium-tf-webfont.eot?#iefix') format('embedded-opentype'),
+         url('klavikamedium-tf-webfont.woff') format('woff'),
+         url('klavikamedium-tf-webfont.ttf') format('truetype'),
+         url('klavikamedium-tf-webfont.svg#klavika_mediummedium') format('svg');
+    font-weight: bold;
+    font-style: normal;
+
+}

@@ -4,6 +4,7 @@ gem 'rails', '3.2.13'
 
 gem 'grape'
 gem 'grape-entity'
+gem 'active_model_serializers', '~> 0.8'
 gem 'doorkeeper', '~> 0.7.2'
 
 gem 'riemann-client'
@@ -13,6 +14,12 @@ gem 'activerecord-postgres-hstore'
 
 gem 'redis'
 gem 'redis-rails'
+
+gem 'ember-rails'
+gem 'ember-source', '1.1.2'
+gem 'ember-data-source', '1.0.0.beta.3'
+gem 'coffee-rails', '~> 3.2.1'
+gem 'emblem-rails'
 
 gem 'beaneater'
 gem 'beanstalkd_view'
@@ -32,11 +39,13 @@ gem 'sanitize'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem 'compass-rails'
   gem 'zurb-foundation', '~> 4.3.0'
   gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
-  gem 'handlebars_assets'
+  gem 'handlebars_assets', github: 'vikhyat/handlebars_assets'
+  gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
+                                github: 'anjlab/bootstrap-rails'
+  gem 'autoprefixer-rails'
 end
 
 gem 'sunspot_rails'
@@ -47,6 +56,10 @@ group :development do
   gem "better_errors"
   gem "letter_opener"
   gem "binding_of_caller"
+  gem 'guard-livereload', require: false
+  gem 'rack-livereload'
+  gem 'rb-fsevent', require: false
+  gem 'qunit-rails'
 end
 
 group :production do
@@ -128,3 +141,4 @@ gem 'split', require: 'split/dashboard'
 
 # SEO
 gem 'sitemap_generator'
+gem 'phantomjs'

@@ -1,0 +1,16 @@
+<ul class="cast">
+  {{#each filteredCast}}
+    <li class="actor">
+      <a class="character">
+        <img {{bind-attr src=character.image}} width="30" height="47">
+        {{character.name}}
+      </a>
+      <span class="va">
+        <a class="voice-actor">
+          {{person.name}}
+          <img {{bind-attr src=person.image}} height="47" width="30">
+        </a>
+      </span>
+    </li>
+  {{/each}}
+</ul>

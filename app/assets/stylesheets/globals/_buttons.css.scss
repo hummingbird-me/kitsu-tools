@@ -1,0 +1,30 @@
+.follow-button {
+  background: $orange;
+  border: none;
+  border-radius: 3px;
+  font-family: $headerFontFamily;
+  font-size: 20px;
+  color: #fff;
+  &:hover {
+    background: darken($orange, 8);
+    color: #fff;
+  }
+}
+
+.fb-connect {
+  border-color: #3b5998;
+  background-color: #3b5998;
+  &:hover {
+    border-color: #324a80;
+    background-color: #324a80;
+  }
+}
+
+.twt-connect {
+ border-color: #4099FF;
+ background-color: #4099FF;
+ &:hover {
+  border-color: darken(#4099FF, 10);
+  background-color: darken(#4099FF, 10);
+ }
+}

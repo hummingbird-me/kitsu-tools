@@ -1,0 +1,56 @@
+/* 
+ Brand colors
+ ============
+
+ $orange - Orange color used for Buttons and Graphs.
+ $darkOrange - Dark Orange color used for important text links.
+ $grey - Primary body text color.
+ $lightGrey - Light Grey color used for form field placeholder text.
+ $medGrey - Medium Grey color used for secondary text.
+ $darkGrey - Dark Grey color used for header text.
+ $pink - Pink color used for 'like' states.
+ $navy - Navy color used for background of header.
+ $lighterNavy - Lighter Navy color used for navigation arrows in 'Recently Watched' section of homepage.
+ $lightNavy - Light Navy color used for 'Recently Watched' section background.
+ $darkNavy - Dark Navy color used for background of navigation elements in header.
+ $eggshell - Eggshell colors used for panel header background.
+ $darkEggshell - Dark Eggshell color used for site background.
+ $lightEggshell - Light Eggshell color used for panel footer background.
+ $divider - Divider color used on light (white) backgrounds.
+ $darkDivider - Dark Divider color used on dark eggshell backgrounds.
+
+*/
+
+$orange: #f89774;
+$darkOrange: #ec8661;
+$grey: #4c4c4c;
+$lightGrey: #ababab;
+$medGrey: #999;
+$darkGrey: #2f2f2f;
+$pink: #fb7070;
+$navy: #2f343b;
+$lighterNavy: #838a93;
+$lightNavy: #525a65;
+$darkNavy: #272c33;
+$eggshell: #f5f7f8;
+$lightEggshell: #f9f9f9;
+$darkEggshell: #525a65;
+$divider: #eee;
+$darkDivider: #e1e1e1;
+
+
+/* 
+ Typography
+ ============
+ $headerFontFamily - Font Family used for Header Tags.
+ $bodyFontFamily - Font Family used for body text.
+ $linkColor - Link Color of all text links.
+ %linkHoverColor - Link color of all text links when hovered.
+
+*/
+
+$headerFontFamily: "klavika", Helvetica, Arial, sans-serif;
+$bodyFontFamily: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$linkColor: $orange;
+$linkHoverColor: $darkOrange;
+

@@ -3,70 +3,29 @@ require 'wilson_score'
 class AnimeController < ApplicationController
   include EpisodesHelper
 
-  caches_action :show, if: lambda { not user_signed_in? }, expires_in: 1.hour
-
-  def toggle_favorite
-    authenticate_user!
-    anime = Anime.find(params[:anime_id])
-    if current_user.has_favorite?(anime)
-      current_user.favorites.where(item_id: anime, item_type: "Anime").first.destroy
-    else
-      Favorite.create(user: current_user, item: anime)
-    end
-    redirect_to :back
-  end
-  
   def random
     anime = Anime.where("age_rating <> 'R18+'").where(show_type: ["TV", "OVA", "ONA", "Movie"]).order("RANDOM()").limit(1)[0]
     redirect_to anime
   end
-  
+
   def show
-    @anime = Anime.find(params[:id])
+    anime = Anime.find(params[:id])
 
-    @hide_footer_ad = ! @anime.sfw?
-
-    # Redirect the user to the canonical URL if they got here from an old or
-    # numeric ID.
-    if request.path != anime_path(@anime)
-      return redirect_to @anime, :status => :moved_permanently
+    # Redirect to canonical URL if this isn't it.
+    if request.path != anime_path(anime)
+      return redirect_to anime, status: :moved_permanently
     end
-    
-    @genres = @anime.genres
-    @producers = @anime.producers
-    @quotes = Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => "votes DESC", :limit => 4})
-    
-    @castings = Casting.where(anime_id: @anime.id, featured: true).includes(:person, :character).sort_by {|x| x.order || 1000 }
-    @languages = @castings.map {|x| x.role }.sort
-    ["Japanese", "English"].reverse.each do |l|
-      @languages.unshift l if @languages.include? l
-    end
-    @languages = @languages.uniq
 
-    @gallery = @anime.gallery_images.limit(6)
+    preload! "anime", anime
 
-    @reviews = @anime.reviews.includes(:user).order("wilson_score DESC").limit(4)
+    render_ember
+
+    return
 
     if user_signed_in?
       @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
     else
       @watchlist = false
-    end
-
-    @franchise_anime = @anime.franchises.map {|x| x.anime }.flatten.uniq.sort_by {|x| x.started_airing_date || (Time.now + 100.years).to_date }
-    
-    @similar = @anime.similar(2, exclude: @franchise_anime)
-
-    # Add to recently viewed.
-    if @anime.sfw?
-      session[:recently_viewed] ||= []
-      session[:recently_viewed].delete( params[:id] )
-      session[:recently_viewed].unshift( params[:id] )
-      session[:recently_viewed].pop while session[:recently_viewed].length > 7
-    end
-
-    respond_to do |format|
-      format.html { render :show }
     end
   end
 

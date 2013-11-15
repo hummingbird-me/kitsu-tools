@@ -38,7 +38,11 @@ Hummingbird::Application.configure do
   config.assets.compress = false
 
   # Expands the lines which load the assets
-  config.assets.debug = false
+  config.assets.debug = true
+  config.ember.variant = :development
+
+  # LiveReload
+  config.middleware.insert_after(ActionDispatch::Static, Rack::LiveReload)
 
   # Caching
   # Temporarily enable caching in development (COMMENT OUT WHEN DONE!)

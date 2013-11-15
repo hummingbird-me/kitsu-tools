@@ -1,0 +1,266 @@
+{{!-- Background Image --}}
+{{!-- <div class="bg-image-wrapper series" style="background:url('http://cl.ly/image/2d3v1H0f2g19/grayscale.jpg'); background-position: 0 -250px;"></div> --}}
+<div class="wrapper-fade"></div>
+
+{{!-- Library Container --}}
+{{!-- bg-image when there is a background image, no-bg-image when there isn't. --}}
+<div class="container no-bg-image">
+  {{!-- Library Table Row --}}
+  <div class="row">
+    <div class="top-buttons">
+      <ul class="left-buttons">
+        <li>
+          <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart isFavorite:active"}} {{action toggleFavorite}}>
+            <i {{bind-attr class="isFavorite:icon-heart:icon-heart-empty"}}></i>
+          </button>
+        </li>
+        <li>
+        <div class="btn-group">
+          <button {{bind-attr class=":btn :btn-default :dropdown-toggle :top-button libraryStatus:active"}} type="button" data-toggle="dropdown">
+            {{#if libraryStatus}}
+              {{libraryStatus}}
+            {{else}}
+              add to library
+            {{/if}}
+          </button>
+          <ul class="dropdown-menu">
+            <li><a {{action setLibraryStatus "Currently Watching"}}>Currently Watching</a></li>
+            <li><a {{action setLibraryStatus "Plan to Watch"}}>Plan to Watch</a></li>
+            <li><a {{action setLibraryStatus "Completed"}}>Completed</a></li>
+            <li><a {{action setLibraryStatus "On Hold"}}>On Hold</a></li>
+            <li><a {{action setLibraryStatus "Dropped"}}>Dropped</a></li>
+            <li><a {{action setLibraryStatus nil}}>Remove from Library</a></li>
+          </ul>
+        </div>
+        </li>
+      </ul>
+      <ul class="right-buttons">
+        <li>
+        {{!-- <button type="button" class="btn btn-default top-button">Follow Series</button> --}}
+        </li>
+      </ul>
+    </div>
+    <div class="gallery hidden-xs">
+      {{#if youtubeVideoId}}
+        <div class="trailer hidden-sm">
+          <a target="_blank" {{bind-attr href=trailerLink}}>
+            <div class="play-icon"><i class="icon-play icon-4x"></i></div>
+            <img width="100%" height="auto" {{bind-attr src=trailerPreviewImage}}>
+          </a>
+        </div>
+      {{/if}}
+
+      <ul class="gallery-images">
+        {{#each imageURL in screencaps}}
+          <li class="gallery-image"><img {{bind-attr src=imageURL}}></li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="series-body">
+      <div class="panel panel-default series-panel">
+        <div class="series-sidebar">
+          <div class="series-title-wrapper hidden-sm hidden-md hidden-lg">
+            <h4 class="series-title">{{canonicalTitle}}</h4>
+          </div>
+
+          <div class="poster-container">
+            <img class="series-poster" {{bind-attr src=posterImage}}>
+          </div>
+
+          <div class="series-infobar hidden-sm hidden-md hidden-lg">{{partial "anime/infobar"}}</div>
+          <div class="sidebar-copy">
+            <div class="series-description hidden-sm hidden-md hidden-lg">
+              <p>{{truncate-text text=synopsis length=500}}</p>
+              {{!-- <div class="social-links clearfix">
+                <ul class="inline-list">
+                  <li style="background: none; width: 78px; margin-right: 10px;">
+                  <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1381275758.html#_=1381748393383&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;size=m&amp;text=Bakemonogatari%20%7C%20Hummingbird&amp;url=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;via=Hummingbird_me" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px;"></iframe>
+                  </li>
+                  <li>
+                  <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1381748393311" name="I0_1381748393311" src="https://apis.google.com/u/0/_/+1/fastbutton?usegapi=1&amp;bsv=o&amp;size=medium&amp;hl=en-US&amp;origin=http%3A%2F%2Fhummingbird.me&amp;url=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.rH61Rx8ffI0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAItRSTN6m7GNFgp1JmU00eC9SBpsNGIq5w#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1381748393311&amp;parent=http%3A%2F%2Fhummingbird.me&amp;pfname=&amp;rpctoken=29101695" data-gapiattached="true" title="+1"></iframe></div>
+                  </li>
+                </ul>
+              </div> --}}
+            </div>
+          </div>
+
+          <div class="personal-rating active">
+          </div>
+          {{!--
+            <h5 class="sidebar-title text-center">Your Rating</h5>
+            <!-- Star Rating -->
+            <ul class="star-rating">
+              <li class="star"><i class="icon-star"></i></li>
+              <li class="star"><i class="icon-star"></i></li>
+              <li class="star"><i class="icon-star"></i></li>
+              <li class="star"><i class="icon-star-half-empty"></i></li>
+              <li class="star"><i class="icon-star-empty"></i></li>
+            </ul>
+          </div>
+          --}}
+
+          <div class="community-rating">
+            <h5 class="sidebar-title text-center">Community Rating</h5>
+            {{community-rating communityRatings}}
+          </div>
+
+          <div id="affiliate" class="buy-series">
+            <h5 class="sidebar-title">Where to Buy</h5>
+            <div class="affiliate-button">
+              <a href="#"><img src="http://hummingbird.me/assets/jlist-936b9137d45e73fb901ef36592fb840e.png"></a>
+            </div>
+            <div class="affiliate-button">
+              <a href="#"><img src="http://hummingbird.me/assets/amazon-217b6b780588b2293069a5778925a2f4.png"></a>
+            </div>
+            <hr>
+          </div>
+
+          {{!--
+          <div id="affiliate" class="watch-series">
+            <h5 class="sidebar-title">Where to Watch</h5>
+            <div class="affiliate-button">
+              <a href="#"><img src="http://cl.ly/image/3T34020P1h0f/hulu.png"></a>
+            </div>
+          </div>
+
+          <div class="current-watching hidden-xs">
+            <h5 class="sidebar-title">Currently Watching</h5>
+            <div class="related-user-wrapper">
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/000/001/thumb_small/av.jpg?1383103791"></a>
+                <span class="overlay"></span>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/017/742/thumb/tewi.jpg?1383369463"></a>
+                <span class="overlay"></span>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/015/510/thumb_small/Kurapika's_Judgement_Chain_Resized.gif?1383345464"></a>
+                <span class="overlay"></span>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/018/229/thumb/Excalibur_Poster.jpg?1382542336"></a>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/013/405/thumb/Izayoi_Face.jpg?1383382546"></a>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/003/660/thumb_small/3660-erikaav-2.gif?1380293586"></a>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/002/186/thumb_small/vlcsnap-2013-10-31-19h44m40s41.png?1383269579"></a>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/005/425/thumb/Saber_vs._Lancer.gif?1383286920"></a>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/007/884/thumb/orly.gif?1381872582"></a>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/005/097/thumb/Dance.gif?1382799146"></a>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/010/314/thumb/neosignal.jpg?1382241023"></a>
+              </div>
+              <div class="related-user">
+                <a href="#"><img class="responsive-image" src="http://static.hummingbird.me/users/avatars/000/006/330/thumb/TuxAv.png?1381784629"></a>
+              </div>
+              <span class="additional-users">+ 459 others</span>
+            </div>
+          </div> --}}
+        </div>
+
+        <div class="series-content">
+          <h2 class="series-title hidden-xs">{{canonicalTitle}}</h2>
+          <div class="hidden-xs">{{partial "anime/infobar"}}</div>
+          <div class="series-description hidden-xs">
+            <p>{{truncate-text text=synopsis length=500}}</p>
+            <div class="social-links clearfix">
+              <ul class="inline-list">
+                <li style="background: none; width: 78px; margin-right: 10px;">
+                <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1381275758.html#_=1381748393383&amp;count=horizontal&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;size=m&amp;text=Bakemonogatari%20%7C%20Hummingbird&amp;url=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;via=Hummingbird_me" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 107px; height: 20px;"></iframe>
+                </li>
+                <li>
+                <div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background-color: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background-position: initial initial; background-repeat: initial initial;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1381748393311" name="I0_1381748393311" src="https://apis.google.com/u/0/_/+1/fastbutton?usegapi=1&amp;bsv=o&amp;size=medium&amp;hl=en-US&amp;origin=http%3A%2F%2Fhummingbird.me&amp;url=http%3A%2F%2Fhummingbird.me%2Fanime%2Fbakemonogatari&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.en.rH61Rx8ffI0.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Frs%3DAItRSTN6m7GNFgp1JmU00eC9SBpsNGIq5w#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I0_1381748393311&amp;parent=http%3A%2F%2Fhummingbird.me&amp;pfname=&amp;rpctoken=29101695" data-gapiattached="true" title="+1"></iframe></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="info-tabs">
+            <ul class="nav nav-tabs">
+              <li {{bind-attr class="showGenres:active"}}><a href="javascript:void(0)" {{action switchTo "Genres"}}>Genres</a></li>
+              <li class="hidden-xs" {{bind-attr class="showFranchise:active"}}><a href="javascript:void(0)" {{action switchTo "Franchise"}}>Franchise</a></li>
+              <li class="hidden-xs" {{bind-attr class="showQuotes:active"}}><a href="javascript:void(0)" {{action switchTo "Quotes"}}>Quotes</a></li>
+              <li {{bind-attr class=":dropdown showCast:active"}}>
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Cast <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  {{#each language in languages}}
+                    <li><a href="javascript:void(0)" {{action setLanguage language}}>{{language}}</a></li>
+                  {{/each}}
+                </ul>
+              </li>
+              {{!-- <!-- more drop-down -->
+              <li {{bind-attr class=":dropdown showCast:active"}}>
+                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  {{#each language in languages}}
+                    <li><a href="javascript:void(0)" {{action setLanguage language}}>{{language}}</a></li>
+                  {{/each}}
+                </ul>
+              </li> --}}
+
+              <li class="hidden-xs" {{bind-attr class="showStudios:active"}}><a href="javascript:void(0)" {{action switchTo "Studios"}}>Studios</a></li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active genre-tab">
+                {{#if showGenres}}
+                  {{partial "anime/genres"}}
+                {{/if}}
+                {{#if showFranchise}}
+                  {{partial "anime/franchise"}}
+                {{/if}}
+                {{#if showQuotes}}
+                  {{partial "anime/featured_quotes"}}
+                {{/if}}
+                {{#if showCast}}
+                  {{partial "anime/cast"}}
+                {{/if}}
+                {{#if showStudios}}
+                  {{partial "anime/studios"}}
+                {{/if}}
+              </div>
+            </div>
+            <div class="banner-ad" style="display: none">
+              <img src="http://cl.ly/image/1J302K0d191e/Image%202013.11.04%205%3A30%3A33%20PM.jpeg">
+            </div>
+            <h4>Trending Reviews <a {{bind-attr href=fullReviewsURL}} class="btn btn-xs btn-default pull-right">view all</a></h4>
+            {{#each trendingReviews}}
+              <a {{bind-attr href=reviewURL}}>
+                <div class="trending-review rounded-block">
+                  <div class="reviewer-thumb-wrapper hidden-xs">
+                    {{avatar user 'thumb'}}
+                  </div>
+                  <div class="reviewer-name-wrapper">
+                    <h4 class="reviewer-name"><span class="subtext">review by</span> {{user.username}}</h4>
+                    <span class="review-stars">
+                      {{stars rating}}
+                    </span>
+                    <p class="review-summary">{{summary}}</p>
+                  </div>
+                </div>
+              </a>
+            {{else}}
+              <div class="trending-review-empty">
+                <i class="empty-icon icon-meh"></i>
+                <h4>Well, this is pretty awkward.</h4>
+                <p>You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.</p>
+                <a {{bind-attr href=newReviewURL}} class="btn btn-default">Write the first review</a>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
