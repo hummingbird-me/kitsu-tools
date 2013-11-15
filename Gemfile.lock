@@ -124,6 +124,7 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     celluloid (0.14.1)
       timers (>= 1.0.0)
+    chunky_png (1.2.8)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -136,6 +137,10 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    compass (0.12.2)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
     connection_pool (1.1.0)
     debug_inspector (0.0.2)
     decorators (1.0.3)
@@ -189,6 +194,7 @@ GEM
     formatador (0.2.4)
     friendly_id (4.0.9)
     fspath (2.0.4)
+    fssm (0.2.10)
     gemoji (1.4.0)
     grape (0.4.1)
       activesupport
@@ -545,6 +551,7 @@ DEPENDENCIES
   cancan
   capistrano
   coffee-rails (~> 3.2.1)
+  compass
   delayed_paperclip
   devise
   devise-async
