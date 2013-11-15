@@ -49,3 +49,7 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
       else
         quote.set('isFavorite', true)
       quote.save()
+
+    setLibraryStatus: (newStatus) ->
+      @set('model.libraryStatus', newStatus)
+      @get('model').save()

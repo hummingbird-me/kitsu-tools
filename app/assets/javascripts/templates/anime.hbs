@@ -16,16 +16,20 @@
         </li>
         <li>
         <div class="btn-group">
-          <button class="btn btn-default dropdown-toggle top-button" type="button" data-toggle="dropdown">
-            add to library
+          <button {{bind-attr class=":btn :btn-default :dropdown-toggle :top-button libraryStatus:active"}} type="button" data-toggle="dropdown">
+            {{#if libraryStatus}}
+              {{libraryStatus}}
+            {{else}}
+              add to library
+            {{/if}}
           </button>
           <ul class="dropdown-menu">
-            <li><a href="#">Currently Watching</a></li>
-            <li><a href="#">Plan to Watch</a></li>
-            <li><a href="#">Completed</a></li>
-            <li><a href="#">On Hold</a></li>
-            <li><a href="#">Dropped</a></li>
-            <li><a href="#">Remove from Library</a></li>
+            <li><a {{action setLibraryStatus "Currently Watching"}}>Currently Watching</a></li>
+            <li><a {{action setLibraryStatus "Plan to Watch"}}>Plan to Watch</a></li>
+            <li><a {{action setLibraryStatus "Completed"}}>Completed</a></li>
+            <li><a {{action setLibraryStatus "On Hold"}}>On Hold</a></li>
+            <li><a {{action setLibraryStatus "Dropped"}}>Dropped</a></li>
+            <li><a {{action setLibraryStatus nil}}>Remove from Library</a></li>
           </ul>
         </div>
         </li>
