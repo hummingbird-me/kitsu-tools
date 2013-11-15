@@ -20,6 +20,7 @@ ul {
 }
 
 a {
+  cursor: pointer;
   color: $darkOrange;
   &:hover {
     text-decoration: none;
