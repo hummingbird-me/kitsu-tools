@@ -24,6 +24,27 @@ module Api::V2
         current_user.favorites.where(item_id: anime, item_type: "Anime").first.destroy
       end
 
+
+      # TEMPORARY: Library Status.
+      new_watchlist_status = params[:anime]["library_status"]
+      if new_watchlist_status.nil?
+        # Delete watchlist.
+        watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
+        watchlist.destroy
+      else
+        watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
+        Substory.from_action({
+          user_id: current_user.id,
+          action_type: "watchlist_status_update",
+          anime_id: anime.slug,
+          old_status: watchlist.status,
+          new_status: new_watchlist_status,
+          time: Time.now
+        })
+        watchlist.status = new_watchlist_status
+        watchlist.save
+      end
+
       render json: anime
     end
   end

@@ -1,7 +1,7 @@
 class AnimeSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages, :community_ratings, :youtube_video_id, :is_favorite
+  attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages, :community_ratings, :youtube_video_id, :is_favorite, :library_status
 
   has_many :featured_quotes, root: :quotes
   has_many :trending_reviews, root: :reviews
@@ -71,5 +71,18 @@ class AnimeSerializer < ActiveModel::Serializer
 
   def is_favorite
     scope && scope.has_favorite?(object)
+  end
+
+  def library_status
+    if scope
+      watchlist = Watchlist.where(user_id: scope, anime_id: object)
+      if watchlist.length > 0
+        watchlist.first.status
+      else
+        nil
+      end
+    else
+      nil
+    end
   end
 end

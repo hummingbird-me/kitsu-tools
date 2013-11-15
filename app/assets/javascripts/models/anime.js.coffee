@@ -17,6 +17,8 @@ Hummingbird.Anime = DS.Model.extend
   youtubeVideoId: DS.attr('string')
   isFavorite: DS.attr('boolean')
 
+  libraryStatus: DS.attr('string')
+
   producers: DS.hasMany('producer')
   franchise: DS.hasMany('anime', async: true)
   featuredQuotes: DS.hasMany('quote')
