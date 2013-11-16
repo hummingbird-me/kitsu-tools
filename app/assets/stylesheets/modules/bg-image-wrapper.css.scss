@@ -1,21 +1,11 @@
 .bg-image {
   padding-top: 180px;
-  @media (max-width: 940px) {
-    padding-top: 70px;
-  }
-  @media (max-width: 480px) {
-    padding-top: 0;
-  }
-}
-
-.no-bg-image {
-  padding-top: 30px;
 }
 
 .bg-image-wrapper {
   &.login {
     width: 100%;
-    background: image-url("tsundere.png");
+    background: image-url("tsundere.jpg");
     height: 625px;
     background-size: cover;
     margin-top: -20px;
