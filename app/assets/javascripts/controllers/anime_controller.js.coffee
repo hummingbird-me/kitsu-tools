@@ -26,30 +26,3 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
   newReviewURL: (-> "/anime/" + @get('model.id') + "/reviews/new").property('model.id')
   # End Legacy
 
-  actions:
-    setLanguage: (language) ->
-      @set 'language', language
-      @send 'switchTo', 'Cast'
-
-    switchTo: (newTab) ->
-      @set 'activeTab', newTab
-      if newTab == "Franchise"
-        @get 'model.franchise'
-
-    toggleFavorite: ->
-      if @get('model.isFavorite')
-        @set('model.isFavorite', false)
-      else
-        @set('model.isFavorite', true)
-      @get('model').save()
-
-    toggleQuoteFavorite: (quote) ->
-      if quote.get('isFavorite')
-        quote.set('isFavorite', false)
-      else
-        quote.set('isFavorite', true)
-      quote.save()
-
-    setLibraryStatus: (newStatus) ->
-      @set('model.libraryStatus', newStatus)
-      @get('model').save()

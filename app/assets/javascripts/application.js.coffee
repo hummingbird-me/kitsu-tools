@@ -21,6 +21,7 @@ Ember.Route.reopen
       document.title = "Hummingbird"
     @_super()
 
+
 # Scroll to top on entering route.
 Ember.Route.reopen
   render: (controller, model) ->
