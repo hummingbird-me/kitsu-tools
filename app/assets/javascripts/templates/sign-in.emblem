@@ -8,7 +8,7 @@
         = input type="text" name="email" value=email placeholder="Email address"
         = input type="password" name="password" value=password placeholder="Password"
         p.forgot-password
-          a forgot password?
+          a href="/users/password/new" forgot password?
         button type="submit" Sign in
 
         p.switch-form-link
@@ -24,4 +24,4 @@
           | Facebook Connect
         hr
         .fb-likebox
-          iframe src="//www.facebook.com/plugins/follow.php?href=http%3A%2F%2Fwww.facebook.com%2Fzuck&amp;width=300&amp;height=80&amp;colorscheme=light&amp;layout=standard&amp;show_faces=true&amp;appId=230064847031252" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:80px" allowTransparency="true"
+          iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2Fpages%2FHummingbird%2F460188747373182&amp;width=300&amp;layout=standard&amp;action=like&amp;show_faces=true&amp;share=true&amp;height=80&amp;appId=325314560922421" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:80px" allowTransparency="true"
