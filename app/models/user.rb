@@ -306,6 +306,10 @@ class User < ActiveRecord::Base
     $beanstalk.tubes["update-forum-account"].put(changes.to_json)
   end
 
+  after_create do
+    self.reset_authentication_token!
+  end
+
   after_save do
     name_changed = self.name_changed?
     avatar_changed = (not self.avatar_processing) and (self.avatar_processing_changed? or self.avatar_updated_at_changed?)
