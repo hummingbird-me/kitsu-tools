@@ -14,3 +14,4 @@ class VoiceActorsLanguageFromRole < ActiveRecord::Migration
     end
   end
 end
+

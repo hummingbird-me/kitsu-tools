@@ -29,7 +29,6 @@ Hummingbird.Session =
   signInWithoutRedirect: (email, password) -> Hummingbird.Session.signInWithOptionalRedirect(email, password, false)
 
   signOut: ->
-    alert document.cookie
     document.cookie = "auth_token=abc;max-age=0;path=/"
-    alert document.cookie
+    window.location.href = window.location.href
 
