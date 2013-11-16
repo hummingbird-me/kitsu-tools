@@ -1,0 +1,6 @@
+li.dropdown.user-area
+  a.dropdown-toggle.navbar-avatar data-toggle='dropdown'
+    avatar currentUser "thumb_small"
+  ul.dropdown-menu.right-nav-section
+    li
+      a{action 'signOut'} Sign out

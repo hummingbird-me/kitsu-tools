@@ -1,0 +1,6 @@
+if currentUser.isSignedIn
+  partial "header/notifications"
+  partial "header/avatar"
+else
+  li
+    link-to 'sign-in' | Sign in
