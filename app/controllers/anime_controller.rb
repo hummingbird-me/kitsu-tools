@@ -19,14 +19,6 @@ class AnimeController < ApplicationController
     preload! "anime", anime
 
     render_ember
-
-    return
-
-    if user_signed_in?
-      @watchlist = Watchlist.where(anime_id: @anime.id, user_id: current_user.id).first
-    else
-      @watchlist = false
-    end
   end
 
   def update

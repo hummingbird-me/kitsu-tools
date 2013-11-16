@@ -3,3 +3,5 @@ Hummingbird.Router.reopen
 
 Hummingbird.Router.map ()->
   @resource 'anime', path: '/anime/:id'
+
+  @route 'sign-in'
