@@ -16,10 +16,10 @@
           a Create one.
 
       .col-md-6
-        button.btn.btn-primary.btn-lg.btn-block.twt-connect type="button"
+        /button.btn.btn-primary.btn-lg.btn-block.twt-connect type="button"
           i.icon-twitter-sign
           | Twitter Connect
-        button.btn.btn-primary.btn-lg.btn-block.fb-connect type="button"
+        a.btn.btn-primary.btn-lg.btn-block.fb-connect href="/users/auth/facebook"
           i.icon-facebook-sign
           | Facebook Connect
         hr
