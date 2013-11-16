@@ -3,7 +3,7 @@
   {{partial "header/avatar"}}
 {{else}}
   <li>
-    <a href="/users/sign_in">Sign in</a>
+    {{#link-to 'sign-in'}}Sign in{{/link-to}}
   </li>
 {{/if}}
 

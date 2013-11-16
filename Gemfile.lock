@@ -95,6 +95,9 @@ GEM
       ember-source
       execjs
       handlebars-source
+    barber-emblem (0.1.1)
+      barber (>= 0.4.1)
+      emblem-source
     bcrypt-ruby (3.0.1)
     beaneater (0.3.2)
     beanstalkd_view (1.2.4)
@@ -175,6 +178,10 @@ GEM
       railties (>= 3.1)
     ember-source (1.1.2)
       handlebars-source (= 1.0.12)
+    emblem-rails (0.1.1)
+      barber-emblem (~> 0.1.1)
+      ember-rails (>= 0.11.1)
+    emblem-source (0.3.4)
     erubis (2.7.0)
     escape (0.0.4)
     eventmachine (1.0.3)
@@ -561,6 +568,7 @@ DEPENDENCIES
   ember-data-source (= 1.0.0.beta.3)
   ember-rails
   ember-source (= 1.1.2)
+  emblem-rails
   factory_girl_rails
   forem!
   forem-html_formatter!

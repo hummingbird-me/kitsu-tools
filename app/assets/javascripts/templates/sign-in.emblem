@@ -1,0 +1,27 @@
+.bg-image-wrapper.login
+  .col-md-8.col-md-offset-2.panel.panel-default.account-panel
+    .panel-heading
+      h2 B-Baka! It's not like we missed you...
+    .panel-body
+      form.account-form.col-md-6 submit="signIn"
+        h3 Sign in to your account
+        = input type="text" name="email" value=email placeholder="Email address"
+        = input type="password" name="password" value=password placeholder="Password"
+        p.forgot-password
+          a forgot password?
+        button type="submit" Sign in
+
+        p.switch-form-link
+          | Don't have an account?
+          a Create one.
+
+      .col-md-6
+        button.btn.btn-primary.btn-lg.btn-block.twt-connect type="button"
+          i.icon-twitter-sign
+          | Twitter Connect
+        button.btn.btn-primary.btn-lg.btn-block.fb-connect type="button"
+          i.icon-facebook-sign
+          | Facebook Connect
+        hr
+        .fb-likebox
+          iframe src="//www.facebook.com/plugins/follow.php?href=http%3A%2F%2Fwww.facebook.com%2Fzuck&amp;width=300&amp;height=80&amp;colorscheme=light&amp;layout=standard&amp;show_faces=true&amp;appId=230064847031252" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:300px; height:80px" allowTransparency="true"
