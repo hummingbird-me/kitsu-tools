@@ -99,10 +99,12 @@
           </div>
           --}}
 
-          <div class="community-rating">
-            <h5 class="sidebar-title text-center">Community Rating</h5>
-            {{community-rating communityRatings}}
-          </div>
+          {{#if bayesianRating}}
+            <div class="community-rating">
+              <h5 class="sidebar-title text-center">Community Rating: {{roundedBayesianRating}}</h5>
+              {{community-rating communityRatings}}
+            </div>
+          {{/if}}
 
           <div id="affiliate" class="buy-series">
             <h5 class="sidebar-title">Where to Buy</h5>

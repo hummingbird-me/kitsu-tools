@@ -8,6 +8,13 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
   showStudios: (-> @get('activeTab') == "Studios").property('activeTab')
   showCast: (-> @get('activeTab') == "Cast").property('activeTab')
 
+  roundedBayesianRating: (->
+    if @get('model.bayesianRating')
+      @get('model.bayesianRating').toFixed(2)
+    else
+      null
+  ).property('model.bayesianRating')
+
   filteredCast: (->
     @get('model.featuredCastings').filterBy 'language', @get('language')
   ).property('model.featuredCastings', 'language')

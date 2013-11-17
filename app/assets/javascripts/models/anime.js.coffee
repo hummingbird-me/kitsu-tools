@@ -13,10 +13,11 @@ Hummingbird.Anime = DS.Model.extend
   finishedAiring: DS.attr('date')
   screencaps: DS.attr('array')
   languages: DS.attr('array')
-  communityRatings: DS.attr('array')
   youtubeVideoId: DS.attr('string')
-  isFavorite: DS.attr('boolean')
+  communityRatings: DS.attr('array')
+  bayesianRating: DS.attr('number')
 
+  isFavorite: DS.attr('boolean')
   libraryStatus: DS.attr('string')
 
   producers: DS.hasMany('producer')
