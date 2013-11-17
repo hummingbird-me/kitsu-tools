@@ -9,7 +9,10 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
   showCast: (-> @get('activeTab') == "Cast").property('activeTab')
 
   coverImageStyle: (->
-    "background: url('" + @get('model.coverImage') + "')"
+    style = "background: url('" + @get('model.coverImage') + "');"
+    if @get('model.coverImageTopOffset')
+      style += "background-position: 0 -" + @get('model.coverImageTopOffset') + "px;"
+    style
   ).property('model.coverImage')
 
   roundedBayesianRating: (->
