@@ -3,4 +3,5 @@ if currentUser.isSignedIn
   partial "header/avatar"
 else
   li
-    link-to 'sign-in' | Sign in
+    a href="/users/sign_in" Sign in
+/    link-to 'sign-in' | Sign in
