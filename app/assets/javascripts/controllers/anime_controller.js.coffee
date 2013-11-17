@@ -9,7 +9,7 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
   showCast: (-> @get('activeTab') == "Cast").property('activeTab')
 
   coverImageStyle: (->
-    style = "background: url('" + @get('model.coverImage') + "');"
+    style = "background: url('" + @get('model.coverImage') + "') center;"
     if @get('model.coverImageTopOffset')
       style += "background-position: 0 -" + @get('model.coverImageTopOffset') + "px;"
     style

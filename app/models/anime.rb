@@ -8,12 +8,12 @@ class Anime < ActiveRecord::Base
   extend FriendlyId
   friendly_id :canonical_title, :use => [:slugged, :history]
 
-  attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :synopsis, :cover_image, :poster_image, :youtube_video_id, :alt_title, :franchises, :show_type, :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide, :started_airing_date, :finished_airing_date, :franchise_ids, :genre_ids, :producer_ids, :casting_ids
+  attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :synopsis, :cover_image, :cover_image_top_offset, :poster_image, :youtube_video_id, :alt_title, :franchises, :show_type, :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide, :started_airing_date, :finished_airing_date, :franchise_ids, :genre_ids, :producer_ids, :casting_ids
 
   serialize :rating_frequencies, ActiveRecord::Coders::Hstore
 
   has_attached_file :cover_image,
-    styles: {thumb: ["1400x600#", :jpg]},
+    styles: {thumb: ["1400x500#", :jpg]},
     convert_options: {thumb: "-quality 70 -colorspace Gray"}
 
   has_attached_file :poster_image, default_url: "/assets/missing-anime-cover.jpg",
