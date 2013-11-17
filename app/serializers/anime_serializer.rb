@@ -1,7 +1,7 @@
 class AnimeSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :canonical_title, :synopsis, :cover_image, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages, :community_ratings, :youtube_video_id, :is_favorite, :library_status, :bayesian_rating
+  attributes :id, :canonical_title, :synopsis, :cover_image, :cover_image_top_offset, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages, :community_ratings, :youtube_video_id, :is_favorite, :library_status, :bayesian_rating
 
   has_many :featured_quotes, root: :quotes
   has_many :trending_reviews, root: :reviews
@@ -18,6 +18,10 @@ class AnimeSerializer < ActiveModel::Serializer
 
   def cover_image
     object.cover_image_file_name ? object.cover_image.url(:thumb) : nil
+  end
+
+  def cover_image_top_offset
+    object.cover_image_top_offset || 0
   end
 
   def poster_image
