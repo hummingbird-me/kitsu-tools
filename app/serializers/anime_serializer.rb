@@ -17,7 +17,7 @@ class AnimeSerializer < ActiveModel::Serializer
   end
 
   def cover_image
-    object.cover_image.url(:thumb)
+    object.cover_image_file_name ? object.cover_image.url(:thumb) : nil
   end
 
   def poster_image
