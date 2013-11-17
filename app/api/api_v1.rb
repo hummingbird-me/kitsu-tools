@@ -2,12 +2,12 @@ require_relative 'entities.rb'
 
 class API_v1 < Grape::API
   version 'v1', using: :path, format: :json, vendor: 'hummingbird'
-  
+
   helpers do
     def warden; env['warden']; end
     def current_user
-      if params[:auth_token]
-        user = User.find_by_authentication_token params[:auth_token]
+      if params[:auth_token] or cookies[:auth_token]
+        user = User.find_by_authentication_token(params[:auth_token] || cookies[:auth_token])
         if user.nil?
           error!("Invalid authentication token", 401)
         end
