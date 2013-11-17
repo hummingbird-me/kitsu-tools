@@ -13,7 +13,7 @@ class API_v1 < Grape::API
         end
         user
       else
-        warden.user
+        nil
       end
     end
     def user_signed_in?
