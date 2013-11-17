@@ -13,8 +13,8 @@ class Anime < ActiveRecord::Base
   serialize :rating_frequencies, ActiveRecord::Coders::Hstore
 
   has_attached_file :cover_image,
-    styles: {bg: ["1400x600!", :jpg]},
-    convert_options: {bg: "-quality 70 -grayscale"}
+    styles: {thumb: ["1400x600!", :jpg]},
+    convert_options: {thumb: "-quality 70 -grayscale"}
 
   has_attached_file :poster_image, default_url: "/assets/missing-anime-cover.jpg",
     styles: {large: "200x290!", medium: "100x150!"}
@@ -59,7 +59,7 @@ class Anime < ActiveRecord::Base
     if title_language_preference and title_language_preference.class == User
       title_language_preference = title_language_preference.title_language_preference
     end
-    
+
     if title_language_preference and title_language_preference == "romanized"
       return title
     elsif title_language_preference and title_language_preference == "english"

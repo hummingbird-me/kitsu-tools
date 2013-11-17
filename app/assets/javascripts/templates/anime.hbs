@@ -1,10 +1,12 @@
 {{!-- Background Image --}}
-{{!-- <div class="bg-image-wrapper series" style="background:url('http://cl.ly/image/2d3v1H0f2g19/grayscale.jpg'); background-position: 0 -250px;"></div> --}}
+{{#if coverImage}}
+  <div class="bg-image-wrapper series" {{bind-attr style=coverImageStyle}}></div>
+{{/if}}
 <div class="wrapper-fade"></div>
 
 {{!-- Library Container --}}
 {{!-- bg-image when there is a background image, no-bg-image when there isn't. --}}
-<div class="container no-bg-image">
+<div {{bind-attr class=":container coverImage:bg-image:no-bg-image"}}>
   {{!-- Library Table Row --}}
   <div class="row">
     <div class="top-buttons">

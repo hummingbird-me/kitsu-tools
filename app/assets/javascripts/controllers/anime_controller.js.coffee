@@ -8,6 +8,10 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
   showStudios: (-> @get('activeTab') == "Studios").property('activeTab')
   showCast: (-> @get('activeTab') == "Cast").property('activeTab')
 
+  coverImageStyle: (->
+    "background: url('" + @get('model.coverImage') + "')"
+  ).property('model.coverImage')
+
   roundedBayesianRating: (->
     if @get('model.bayesianRating')
       @get('model.bayesianRating').toFixed(2)

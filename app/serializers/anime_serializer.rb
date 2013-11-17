@@ -17,7 +17,7 @@ class AnimeSerializer < ActiveModel::Serializer
   end
 
   def cover_image
-    object.cover_image.url(:bg)
+    object.cover_image.url(:thumb)
   end
 
   def poster_image
