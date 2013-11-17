@@ -1,6 +1,7 @@
 Hummingbird.Anime = DS.Model.extend
   canonicalTitle: DS.attr('string')
   synopsis: DS.attr('string')
+  coverImage: DS.attr('string')
   posterImage: DS.attr('string')
   genres: DS.attr('array')
   languages: DS.attr('array')
