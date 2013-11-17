@@ -8,11 +8,11 @@ Hummingbird.AnimeRoute = Ember.Route.extend
 
   actions:
     setLanguage: (language) ->
-      @set 'language', language
+      @set 'controller.language', language
       @send 'switchTo', 'Cast'
 
     switchTo: (newTab) ->
-      @set 'activeTab', newTab
+      @set 'controller.activeTab', newTab
       if newTab == "Franchise"
         @get 'model.franchise'
 

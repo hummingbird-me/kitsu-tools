@@ -12,8 +12,8 @@
         button type="submit" Sign in
 
         p.switch-form-link
-          | Don't have an account?
-          a Create one.
+          | Don't have an account? 
+          a href="/users/sign_up" Create one.
 
       .col-md-6
         /button.btn.btn-primary.btn-lg.btn-block.twt-connect type="button"
