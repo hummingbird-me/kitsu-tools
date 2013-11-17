@@ -11,7 +11,7 @@ Hummingbird::Application.routes.draw do
     end
   end
 
-  match '/sign-in' => 'auth#sign_in'
+  match '/sign-in' => 'auth#sign_in_action'
 
   use_doorkeeper
   match '/oauth/me' => 'oauth#me'
