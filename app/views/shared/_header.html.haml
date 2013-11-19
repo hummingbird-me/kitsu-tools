@@ -12,7 +12,7 @@
           / Left Nav Section
           %ul.left.topnav-links
             %li.has-dropdown
-              = link_to "Dashboard", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
+              = link_to "Dashboard", user_signed_in? ? "/" : "/users/sign_in"
               %ul.dropdown.rounded-panel
                 %li
                   = link_to "Profile", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
