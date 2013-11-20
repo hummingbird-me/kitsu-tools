@@ -2,7 +2,7 @@ Hummingbird.TruncateTextComponent = Ember.Component.extend
   expanded: false
 
   isTruncated: (->
-    @get('text').length > @get('length')
+    @get('text').length > @get('length') + 10
   ).property('text', 'length')
 
   truncatedText: (->
