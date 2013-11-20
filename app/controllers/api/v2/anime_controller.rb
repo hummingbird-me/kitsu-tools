@@ -27,12 +27,11 @@ module Api::V2
 
       # TEMPORARY: Library Status.
       new_watchlist_status = params[:anime]["library_status"]
+      watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
       if new_watchlist_status.nil?
         # Delete watchlist.
-        watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
         watchlist.destroy
-      else
-        watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
+      elsif watchlist.status != new_watchlist_status
         Substory.from_action({
           user_id: current_user.id,
           action_type: "watchlist_status_update",
