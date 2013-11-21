@@ -8,6 +8,7 @@ gem 'active_model_serializers', '~> 0.8'
 gem 'doorkeeper', '~> 0.7.2'
 
 gem 'riemann-client'
+gem 'fastclick-rails'
 
 gem 'pg'
 gem 'activerecord-postgres-hstore'

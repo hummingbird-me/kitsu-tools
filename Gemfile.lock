@@ -193,6 +193,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.8.7)
       multipart-post (~> 1.1)
+    fastclick-rails (0.0.1)
     ffi (1.0.11)
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
@@ -570,6 +571,7 @@ DEPENDENCIES
   ember-source (= 1.1.2)
   emblem-rails
   factory_girl_rails
+  fastclick-rails
   forem!
   forem-html_formatter!
   friendly_id (~> 4.0.9)
