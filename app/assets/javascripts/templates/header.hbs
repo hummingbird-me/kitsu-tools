@@ -19,17 +19,23 @@
 
     <div class='collapse navbar-collapse navbar-ex1-collapse'>
       <ul class='nav navbar-nav'>
-        <li class='dropdown active'>
-          <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-            Dashboard <b class='caret'></b>
-          </a>
-          <!-- <i class='dropdown-arrow dropdown-arrow-inverse'></i> -->
-          <ul class='dropdown-menu left-nav-section'>
-            <li><a href='#'>Profile</a></li>
-            <li><a href='#'>Library</a></li>
-            <li><a href='#'>Recommendations</a></li>
-          </ul>
-        </li>
+        {{#if currentUser.isSignedIn}}
+          <li class='dropdown active'>
+            <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+              Dashboard <b class='caret'></b>
+            </a>
+            <!-- <i class='dropdown-arrow dropdown-arrow-inverse'></i> -->
+            <ul class='dropdown-menu left-nav-section'>
+              <li><a href="/users/{{unbound currentUser.username}}/feed">Profile</a></li>
+              <li><a href='/users/{{unbound currentUser.username}}/watchlist'>Library</a></li>
+              <li><a href='/recommendations'>Recommendations</a></li>
+            </ul>
+          </li>
+        {{else}}
+          <li class='dropdown active'>
+            <a href="/users/sign_in">Dashboard</a>
+          </li>
+        {{/if}}
 
         <li class='dropdown'>
           <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
