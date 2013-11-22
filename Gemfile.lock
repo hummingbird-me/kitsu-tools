@@ -489,6 +489,8 @@ GEM
       tilt (~> 1.3)
     sitemap_generator (3.4)
       builder
+    skylight (0.1.8)
+      activesupport (>= 3.0.0)
     slim (1.3.8)
       temple (~> 0.6.3)
       tilt (~> 1.3.3)
@@ -618,6 +620,7 @@ DEPENDENCIES
   simplecov
   sinatra
   sitemap_generator
+  skylight
   slim
   split
   sunspot_rails
