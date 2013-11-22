@@ -1,7 +1,7 @@
 _.extend HB,
   Library:
     validStatuses: ["currently-watching", "plan-to-watch", "completed", "on-hold", "dropped"]
-    
+
     statusParamToHuman: {
       "currently-watching": "Currently Watching",
       "plan-to-watch": "Plan to Watch",
@@ -9,7 +9,7 @@ _.extend HB,
       "on-hold": "On Hold",
       "dropped": "Dropped"
     }
-    
+
     # Model for individual library entries.
     Entry: Backbone.Model.extend
       defaults:
@@ -27,12 +27,12 @@ _.extend HB,
 
       remove: ->
         that = this
-        $.post "/watchlist/remove", {anime_id: @get("anime").slug}, (d) ->
+        $.post "/api/v1/libraries/" + @get("anime").slug + "/remove", (d) ->
           if d
             status = that.get("status")
             that.set {status: null}
             HB.Library.Sections[status].entries.remove that
-            
+
       decoratedJSON: ->
         json = @toJSON()
         if json.anime.episode_count == 0

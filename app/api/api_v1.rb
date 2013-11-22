@@ -42,7 +42,6 @@ class API_v1 < Grape::API
     end
   end
 
-  
   resource :users do
     desc "Return authentication code"
     params do
@@ -152,8 +151,19 @@ class API_v1 < Grape::API
       end
     end
   end
-  
+
   resource :libraries do
+    desc "Remove an entry"
+    params do
+      requires :anime_slug, type: String
+    end
+    post ':anime_slug/remove' do
+      anime = Anime.find(params["anime_slug"])
+      watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
+      watchlist.destroy
+      true
+    end
+
     desc "Update a specific anime's details in a user's library."
     params do
       requires :anime_slug, type: String
@@ -165,7 +175,7 @@ class API_v1 < Grape::API
 
       anime = Anime.find(params["anime_slug"])
       watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
-        
+
       # Update status.
       if params[:status]
         status = Watchlist.status_parameter_to_status(params[:status])
@@ -186,7 +196,7 @@ class API_v1 < Grape::API
           watchlist.update_episode_count (watchlist.anime.episode_count || 0)
         end
       end
-      
+
       # Update privacy.
       if params[:privacy]
         if params[:privacy] == "private"
@@ -214,7 +224,7 @@ class API_v1 < Grape::API
       if params[:notes]
         watchlist.notes = params[:notes]
       end
-      
+
       # Update episode count.
       if params[:episodes_watched]
         watchlist.update_episode_count params[:episodes_watched]
@@ -251,13 +261,13 @@ class API_v1 < Grape::API
           })
         end
       end
-      
+
       title_language_preference = params[:title_language_preference]
       if title_language_preference.nil? and current_user
         title_language_preference = current_user.title_language_preference
       end
       title_language_preference ||= "canonical"
-      
+
       if watchlist.save
         present watchlist, with: Entities::Watchlist, title_language_preference: title_language_preference
       else
@@ -265,7 +275,7 @@ class API_v1 < Grape::API
       end
     end
   end
-  
+
   resource :anime do
     desc "Return an anime"
     params do
