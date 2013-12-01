@@ -1,10 +1,9 @@
 Hummingbird.AnimeRoute = Ember.Route.extend
   model: (params) ->
-    @store.find 'anime', params.id
+    @store.find('anime', params.id)
 
-  title: (->
-    @modelFor("anime").get("canonicalTitle")
-  ).property('model.canonicalTitle')
+  afterModel: (resolvedModel) ->
+    Hummingbird.TitleManager.setTitle resolvedModel.get('canonicalTitle')
 
   actions:
     setLanguage: (language) ->

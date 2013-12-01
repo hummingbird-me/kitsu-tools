@@ -16,16 +16,6 @@ $ ->
 # Plural of anime is anime.
 Ember.Inflector.inflector.rules.uncountable['anime'] = true
 
-# Set the page title.
-Ember.Route.reopen
-  activate: ->
-    if @get("title")
-      document.title = @get("title") + " | Hummingbird"
-    else
-      document.title = "Hummingbird"
-    @_super()
-
-
 # Scroll to top on entering route.
 Ember.Route.reopen
   render: (controller, model) ->
@@ -41,3 +31,18 @@ $("#ember-root").html("")
 
 @Hummingbird = Ember.Application.create
   rootElement: "#ember-root"
+
+  TitleManager: Ember.Object.extend(
+    title: null
+
+    setTitle: (title) ->
+      @set 'title', title
+
+    setPageTitle: (->
+      if @get("title")
+        document.title = @get("title") + " | Hummingbird"
+      else
+        document.title = "Hummingbird"
+    ).observes('title').on('init')
+  ).create()
+
