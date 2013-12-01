@@ -92,7 +92,8 @@ CREATE TABLE anime (
     poster_image_content_type character varying(255),
     poster_image_file_size integer,
     poster_image_updated_at timestamp without time zone,
-    cover_image_top_offset integer
+    cover_image_top_offset integer,
+    ann_id integer
 );
 
 
@@ -3025,3 +3026,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131102051314');
 INSERT INTO schema_migrations (version) VALUES ('20131103092810');
 
 INSERT INTO schema_migrations (version) VALUES ('20131117151157');
+
+INSERT INTO schema_migrations (version) VALUES ('20131201220642');
