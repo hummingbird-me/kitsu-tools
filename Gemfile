@@ -65,7 +65,7 @@ group :development do
   gem 'qunit-rails'
 end
 
-gem 'skylight', '0.2.0'
+gem 'skylight', '0.1.8'
 
 group :production do
   gem 'newrelic_rpm'
