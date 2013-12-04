@@ -177,7 +177,12 @@
         </div>
 
         <div class="series-content">
-          <h2 class="series-title hidden-xs">{{canonicalTitle}}</h2>
+          <h2 class="series-title hidden-xs">
+            {{canonicalTitle}}
+            {{#if alternateTitle}}
+              <small>{{#bootstrap-tooltip title=alternateTitle placement="right"}}<i class="icon icon-question-sign"></i>{{/bootstrap-tooltip}}</small>
+            {{/if}}
+          </h2>
           <div class="hidden-xs">{{partial "anime/infobar"}}</div>
           <div class="series-description hidden-xs">
             <p>{{truncate-text text=synopsis length=500}}</p>
