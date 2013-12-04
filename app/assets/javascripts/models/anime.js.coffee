@@ -23,7 +23,7 @@ Hummingbird.Anime = DS.Model.extend
   libraryStatus: DS.attr('string')
 
   producers: DS.hasMany('producer')
-  franchise: DS.hasMany('anime', async: true)
+  franchises: DS.hasMany('franchise', async: true)
   featuredQuotes: DS.hasMany('quote')
   trendingReviews: DS.hasMany('review')
   featuredCastings: DS.hasMany('casting')
@@ -73,11 +73,4 @@ Hummingbird.Anime = DS.Model.extend
 
     result
   ).property('startedAiring', 'finishedAiring')
-
-Hummingbird.AnimeSerializer = Hummingbird.ApplicationSerializer.extend
-  normalize: (type, hash, property) ->
-    hash['links'] = {
-      "franchise": "/api/v2/anime/" + hash['id'] + "/franchise"
-    }
-    @_super(type, hash, property)
 

@@ -4,3 +4,4 @@ sidekiq:    bundle exec sidekiq -q default -q mailer -q paperclip
 solr:       bundle exec rake sunspot:solr:run
 guard:      bundle exec guard start -i
 beanstalkd: beanstalkd -p 11300
+log:        tail -f log/development.log

@@ -7,6 +7,7 @@ class AnimeSerializer < ActiveModel::Serializer
   has_many :trending_reviews, root: :reviews
   has_many :featured_castings, root: :castings
   has_many :producers, embed_key: :slug
+  has_many :franchises, include: false
 
   def id
     object.slug

@@ -4,10 +4,9 @@ Hummingbird::Application.routes.draw do
   # API v2
   namespace :api do
     namespace :v2 do
-      resources :anime do
-        get :franchise
-      end
+      resources :anime
       resources :quotes
+      resources :franchises
     end
   end
 
