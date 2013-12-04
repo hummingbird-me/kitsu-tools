@@ -196,7 +196,7 @@
     .notification-button {
       padding-right: 15px !important;
       padding-left: 20px !important;
-      .icon-bell {
+      .fa-bell-o {
         position: relative;
         border: 1px solid #dcdcdc;
         font-size: 20px;
@@ -207,7 +207,7 @@
       }
       
       &.active {
-        .icon-bell {
+        .fa-bell-o {
           color: #e57c48;
           border-color: #e57c48;
           -webkit-transform-origin: top center;
