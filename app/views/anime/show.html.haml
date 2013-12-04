@@ -15,12 +15,6 @@
     .large-2.columns.no-padding-right
       .quote-thumb
         = image_tag @anime.poster_image.url(:large)
-      / .series-rating
-      /   %i.icon-star
-      /   %i.icon-star
-      /   %i.icon-star
-      /   %i.icon-star-empty
-      /   %i.icon-star-empty
 
       .large-12.columns.no-padding
         .watchlist-status-button{:"data-anime" => @anime.slug, :"data-status" => @watchlist ? @watchlist.status.parameterize : ""}
@@ -55,9 +49,9 @@
           .pull-right.favorite-icon
             = link_to(anime_toggle_favorite_path(@anime), method: :post) do
               - if current_user and current_user.has_favorite?(@anime)
-                %i.icon-heart
+                %i.fa.fa-heart
               - else
-                %i.icon-heart-empty
+                %i.fa.fa-heart-empty
 
         .large-12.columns
           %ul.series-metadata
@@ -201,7 +195,7 @@
           .large-12.columns.feed-form
             %form.comment
               .posting-indicator
-                %i.icon-spin.icon-spinner
+                %i.fa.fa-spin.fa-spinner
               %input.comment{:autocomplete => "off", :name => "comment", :placeholder => "Write something...", :type => "text"}/
           %ul.feed-list.activity-feed/
           %div
@@ -290,7 +284,7 @@
           %h5 TRAILER
           %a.sublime{:href => "#"+@anime.youtube_video_id, :"data-uid" => @anime.youtube_video_id, :"data-youtube-id" => @anime.youtube_video_id}
             .play-icon
-              %i.icon-play.icon-4x
+              %i.fa.fa-play.fa-4x
             %img(width="100%" height="auto"){:src => "http://img.youtube.com/vi/#{@anime.youtube_video_id}/hqdefault.jpg"}
           %video{:poster => "http://img.youtube.com/vi/#{@anime.youtube_video_id}/hqdefault.jpg", :id => @anime.youtube_video_id, :width => 640, :height => 360, :style => "display: none", :"data-uid" => @anime.youtube_video_id, :"data-youtube-id" => @anime.youtube_video_id, :preload => "none", :"data-youtube-suggested-quality" => "hd"}
 

@@ -38,7 +38,7 @@
           .chat-text
             .panel#chatLoading(style='text-align: center')
               Loading...
-              %i.icon.icon-spin.icon-spinner(style="margin-left: 10px")
+              %i.fa.fa-spin.fa-spinner(style="margin-left: 10px")
   .row
     .small-12.large-10.columns.input-area.right
       #notificationMessage.large-12.columns.update-banner.hide
@@ -49,7 +49,7 @@
           .small-12.columns
             .input-wrapper
               %input.message(type="text" placeholder="Write Something...")
-              %i.icon-share-alt{:onclick => "$('form.sendMessage').submit()"}
+              %i.fa.fa-share{:onclick => "$('form.sendMessage').submit()"}
     
 
 :coffee
@@ -129,10 +129,10 @@
       <div class='large-2 columns time-stamp' data-created-at='{{created_at}}'>
         <p></p>
         {{#id}}
-          <span><i class='icon icon-ok status-icon'></i></span>
+          <span><i class='fa fa-check status-icon'></i></span>
         {{/id}}
         {{^id}}
-          <span><i class='icon icon-spin icon-spinner status-icon'></i></span>
+          <span><i class='fa fa-spin fa-spinner status-icon'></i></span>
         {{/id}}
       </div>
     "),
@@ -292,7 +292,7 @@
   
   checkConnectivity = ->
     if moment().unix() - lastUpdateTime.unix() > 30
-      $("#notificationMessage p").html "<i class='icon icon-refresh icon-spin'></i> Trying to reconnect... <a href='/chat'>Please refresh if this takes too long.</a>"
+      $("#notificationMessage p").html "<i class='fa fa-refresh fa-spin'></i> Trying to reconnect... <a href='/chat'>Please refresh if this takes too long.</a>"
       if moment().unix() % 5 == 0
         getMessagesFromRemote()
       $("#notificationMessage").addClass("red").show()

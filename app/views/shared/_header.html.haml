@@ -49,7 +49,7 @@
             - if user_signed_in?
               %li.notification-block.has-dropdown
                 %a.notification-button{href: "/notifications", class: ("active" if Notification.unseen_count(current_user) > 0)}
-                  %i.icon-bell 
+                  %i.fa.fa-bell-o
                     - if Notification.unseen_count(current_user) > 0
                       %span.notification-count= "%02d" % Notification.unseen_count(current_user)
                     

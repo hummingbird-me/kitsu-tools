@@ -5,14 +5,14 @@
         = title 'Anime Recommendations'
         .pull-right
           %a.button.padded(href="/recommendations/force_update")
-            %i.icon-refresh
+            %i.fa.fa-refresh
             Refresh
       %hr.title-divider
 
       - unless current_user.recommendations_up_to_date
         .panel.rounded-panel
           .updating-recommendations
-            %i.icon-spin.icon-spinner
+            %i.fa.fa-spin.fa-spinner
             We're updating your recommendations. Hang on!
         :javascript
           function checkForCompletion() {
@@ -146,10 +146,10 @@
 :coffee
   $("p.wanna-watch a").click ->
     slug = $(this).attr("data-slug")
-    $(this).html $("<i></i>").addClass("icon-spin").addClass("icon-spinner")
+    $(this).html $("<i class='fa'></i>").addClass("fa-spin").addClass("fa-spinner")
     that = this
     $.post "/recommendations/plan_to_watch", {anime: slug}, (d) ->
-      $(that).find("i").removeClass("icon-spin").removeClass("icon-spinner").addClass("icon-ok")
+      $(that).find("i").removeClass("fa-spin").removeClass("fa-spinner").addClass("fa-check")
 
   $("a.not-interested").click ->
     slug = $(this).attr("data-slug")

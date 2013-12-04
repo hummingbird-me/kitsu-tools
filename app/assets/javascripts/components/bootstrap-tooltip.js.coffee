@@ -1,5 +1,5 @@
 Hummingbird.BootstrapTooltipComponent = Ember.Component.extend
-  tagName: 'span'
+  tagName: 'a'
   didInsertElement: ->
     @$().tooltip
       placement: @get('placement')

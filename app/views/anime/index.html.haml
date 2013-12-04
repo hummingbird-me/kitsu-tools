@@ -10,24 +10,24 @@
             %li
               %a.year-filter(href="javascript:void(0)")
                 Year
-                %i.icon-caret-down
+                %i.fa.fa-caret-down
 
             %li
               %a.genre-filter(href="javascript:void(0)")
                 Genre
-                %i.icon-caret-down
-            
+                %i.fa.fa-caret-down
+
             %li
               %a.popular-filter(href="javascript:void(0)")
                 Popular
-                %i.icon-caret-down
-                  
+                %i.fa.fa-caret-down
+
             %li= link_to "Anticipated", anime_filter_path(sort: "all", y: ["Upcoming"])
             %li= link_to "Airing Soon", anime_filter_path(sort: "oldest", y: ["Upcoming"])
 
       .large-3.columns
         %a.button.padded.secondary(href="/random/anime")
-          %i.icon-random
+          %i.fa.fa-random
           Something Random
 
 

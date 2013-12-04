@@ -62,7 +62,7 @@
         %h4.top-title.pull-left Anime
         / Sort options
         %a.rounded-panel.sort-option.has-dropdown(data-dropdown="sort-option-dropdown" href="javascript: void(0)")
-          %i.icon-caret-down
+          %i.fa.fa-caret-down
           - if @sort == "all"
             Popular: All Time
           - elsif @sort == "newest"
@@ -89,11 +89,11 @@
                     - if @library_entries[anime.id]
                       .watchlist-status-icon
                         - if @library_entries[anime.id].status == "Completed"
-                          %i.icon-circle
+                          %i.fa.fa-circle
                         - elsif @library_entries[anime.id].episodes_watched == 0
-                          %i.icon-circle-blank
+                          %i.fa.fa-circle-o
                         - else
-                          %i.icon-adjust.icon-flip-horizontal
+                          %i.fa.fa-adjust.fa-flip-horizontal
                     %p.wanna-watch
                     = image_tag anime.poster_image.url(:large), alt: anime.canonical_title
                     %p.title= anime.canonical_title(current_user)

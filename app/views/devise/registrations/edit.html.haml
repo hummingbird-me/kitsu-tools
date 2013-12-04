@@ -116,7 +116,7 @@
               path = #{user_toggle_connection_path(current_user).inspect}
 
               addButtonLoader = (selector) ->
-                selector.html $("<i class='icon-spin icon-spinner'></i>")
+                selector.html $("<i class='fa fa-spin fa-spinner'></i>")
               
               connect_na = ->
                 addButtonLoader $("a.na-connect")
@@ -148,11 +148,11 @@
             .large-4.columns
               - if @user.facebook_id
                 .big-facebook-button.off
-                  %i.icon-facebook
+                  %i.fa.fa-facebook
                   = link_to "Disconnect", user_disconnect_facebook_path(current_user), method: :post
               - else
                 .big-facebook-button
-                  %i.icon-facebook
+                  %i.fa.fa-facebook
                   = link_to "Connect to Facebook", omniauth_authorize_path(resource_name, :facebook)
 
           .large-12.columns.mal-import

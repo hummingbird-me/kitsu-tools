@@ -9,12 +9,12 @@
             %h5.title #{anime.canonical_title(current_user)}
 
           .large-12.columns.preview
-            %i.icon-external-link
+            %i.fa.fa-external-link
             %a{"data-reveal-id" => "preview_#{anime.slug}", :href => "#"} Quick View
 
           - if !readonly
             .large-12.columns.add-watchlist
-              %i.icon-list-alt
+              %i.fa.fa-list-alt
               - if user_signed_in?
                 %a{"data-reveal-id" => "watchlist_#{anime.slug}", :href => "#"}
                   - if watchlist
@@ -41,15 +41,15 @@
           - 1.upto(5) do |i|
             - if readonly
               - if watchlist and watchlist.rating and watchlist.rating >= i
-                %i.icon-star
+                %i.fa.fa-star
               - else
-                %i.icon-star-empty
+                %i.fa.fa-star-o
             - else
               = link_to update_rating_path(anime, i, width: width), remote: user_signed_in? do
                 - if watchlist and watchlist.rating and watchlist.rating >= i
-                  %i.icon-star
+                  %i.fa.fa-star
                 - else
-                  %i.icon-star-empty
+                  %i.fa.fa-star-o
       - else
         - if readonly
           %span.large-4.columns.like

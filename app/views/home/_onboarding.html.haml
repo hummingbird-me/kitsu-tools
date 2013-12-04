@@ -26,9 +26,9 @@
           .large-3.columns.no-padding
             Simple
           .large-8.columns.rating-example.no-padding
-            %i.icon-smile
-            %i.icon-meh
-            %i.icon-frown
+            %i.fa.fa-smile-o
+            %i.fa.fa-meh-o
+            %i.fa.fa-frown-o
 
     .large-6.columns.rating-panel
       .advanced.rating-system(data-system="advanced")
@@ -36,11 +36,11 @@
           .large-3.columns.no-padding
             Advanced
           .large-8.columns.rating-example.no-padding
-            %i.icon-star
-            %i.icon-star
-            %i.icon-star
-            %i.icon-star-half-empty
-            %i.icon-star-empty
+            %i.fa.fa-star
+            %i.fa.fa-star
+            %i.fa.fa-star
+            %i.fa.fa-star-half-o
+            %i.fa.fa-star-o
   
   .bootstrap-library.step
     .mal-import-section
@@ -86,12 +86,12 @@
   
   .large-12.columns.navigate-steps
     .go-back-one-step.button.secondary.left
-      %i.icon-chevron-sign-left
+      %i.fa.fa-chevron-circle-left
       Previous Step
   
     .skip-this-step.button.right
       Next Step
-      %i.icon-chevron-sign-right
+      %i.fa.fa-chevron-circle-right
 
   %a.close-reveal-modal &#215;
 
@@ -152,7 +152,7 @@
   $(".select-rating-system .rating-system").click ->
     system = $(this).attr "data-system"
     $(this).addClass "active"
-    $(".onboarding-progress").html $("<i class='icon-spin icon-spinner'></i>")
+    $(".onboarding-progress").html $("<i class='fa fa-spin fa-spinner'></i>")
     $.post "#{user_update_setting_path(current_user)}", {rating_system: system}, (d) ->
       if d
         nextStep()
@@ -169,7 +169,7 @@
     mal_username = $("#onboarding-modal form input").val()
     if mal_username.length > 0
       $("#onboarding-modal form a span").fadeOut ->
-        $("#onboarding-modal form a").html $("<i class='icon-spin icon-spinner'></i>")
+        $("#onboarding-modal form a").html $("<i class='fa fa-spin fa-spinner'></i>")
       $.post("/imports/myanimelist/new.json", {mal_username: mal_username}, (d) ->
         if d
           checkImportProgress()
@@ -182,7 +182,7 @@
   path = #{user_toggle_connection_path(current_user).inspect}
 
   addButtonLoader = (selector) ->
-    selector.html $("<i class='icon-spin icon-spinner'></i>")
+    selector.html $("<i class='fa fa-spin fa-spinner'></i>")
   
   connect_na = ->
     addButtonLoader $("a.na-connect")
@@ -212,7 +212,7 @@
     $.get "/imports/status.json", (d) ->
       if d
         $.get "/recommendations"
-        $("#onboarding-modal form.mal-import a").html $("<i class='icon-ok'></i>")
+        $("#onboarding-modal form.mal-import a").html $("<i class='fa fa-check'></i>")
       else
         setTimeout checkImportProgress, 2000
 

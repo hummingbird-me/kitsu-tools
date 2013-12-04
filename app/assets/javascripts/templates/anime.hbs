@@ -33,7 +33,7 @@
         {{#if libraryStatus}}
           <li>
             <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart isFavorite:active"}} {{action toggleFavorite}}>
-              <i {{bind-attr class="isFavorite:icon-heart:icon-heart-empty"}}></i>
+              <i {{bind-attr class=":fa isFavorite:fa-heart:fa-heart-o"}}></i>
             </button>
           </li>
         {{/if}}
@@ -48,7 +48,7 @@
       {{#if youtubeVideoId}}
         <div class="trailer hidden-sm">
           <a target="_blank" {{bind-attr href=trailerLink}}>
-            <div class="play-icon"><i class="icon-play icon-4x"></i></div>
+            <div class="play-icon"><i class="fa fa-play fa-4x"></i></div>
             <img width="100%" height="auto" {{bind-attr src=trailerPreviewImage}}>
           </a>
         </div>
@@ -94,11 +94,11 @@
             <h5 class="sidebar-title text-center">Your Rating</h5>
             <!-- Star Rating -->
             <ul class="star-rating">
-              <li class="star"><i class="icon-star"></i></li>
-              <li class="star"><i class="icon-star"></i></li>
-              <li class="star"><i class="icon-star"></i></li>
-              <li class="star"><i class="icon-star-half-empty"></i></li>
-              <li class="star"><i class="icon-star-empty"></i></li>
+              <li class="star"><i class="fa fa-star"></i></li>
+              <li class="star"><i class="fa fa-star"></i></li>
+              <li class="star"><i class="fa fa-star"></i></li>
+              <li class="star"><i class="fa fa-star-half-o"></i></li>
+              <li class="star"><i class="fa fa-star-o"></i></li>
             </ul>
           </div>
           --}}
@@ -180,7 +180,7 @@
           <h2 class="series-title hidden-xs">
             {{canonicalTitle}}
             {{#if alternateTitle}}
-              <small>{{#bootstrap-tooltip title=alternateTitle placement="right"}}<i class="icon icon-question-sign"></i>{{/bootstrap-tooltip}}</small>
+              <small>{{#bootstrap-tooltip title=alternateTitle placement="right"}}<i class="fa fa-question-circle"></i>{{/bootstrap-tooltip}}</small>
             {{/if}}
           </h2>
           <div class="hidden-xs">{{partial "anime/infobar"}}</div>
@@ -262,7 +262,7 @@
               </a>
             {{else}}
               <div class="trending-review-empty">
-                <i class="empty-icon icon-meh"></i>
+                <i class="empty-icon fa fa-meh"></i>
                 <h4>Well, this is pretty awkward.</h4>
                 <p>You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.</p>
                 <a {{bind-attr href=newReviewURL}} class="btn btn-default">Write the first review</a>

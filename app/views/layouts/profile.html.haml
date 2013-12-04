@@ -5,7 +5,7 @@
         - if false and can? :update, @user
           .avatar-upload-button
             %a{"data-dropdown" => "avatar-upload", :href => "#"} 
-              %i.icon-picture
+              %i.fa.fa-picture-o
               %span Edit Avatar
             %ul#avatar-upload.f-dropdown.content{"data-dropdown-content" => ""}
               %li.help
@@ -13,7 +13,7 @@
               %li.upload
                 = form_for(@user, url: user_avatar_path(@user), html: {method: :put, multipart: true, style: 'display: inline'}) do |f|
                   .file-upload
-                    %i.icon-upload-alt
+                    %i.fa.fa-upload
                     = f.file_field :avatar, id: 'user_avatar'
                     Upload from Computer
 
@@ -67,7 +67,7 @@
         - if can? :update, @user
           .cover-upload-button.hide-for-small
             %a{"data-dropdown" => "cover-upload", :href => "#"} 
-              %i.icon-picture
+              %i.fa.fa-picture-o
               %span Edit Cover Photo
             %ul#cover-upload.f-dropdown.content{"data-dropdown-content" => ""}
               %li.help
@@ -75,7 +75,7 @@
               %li.upload
                 = form_for(@user, url: user_cover_image_path(@user), html: {method: :put, multipart: true, style: 'display: inline'}) do |f|
                   .file-upload
-                    %i.icon-upload-alt 
+                    %i.fa.fa-upload
                     = f.file_field :cover_image, id: 'user_avatar'
                     Upload from Computer
         .small-12.columns.small-centered.mobile-header.show-for-small

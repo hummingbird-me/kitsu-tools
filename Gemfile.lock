@@ -168,20 +168,21 @@ GEM
       http_parser.rb (~> 0.5.3)
     ember-data-source (1.0.0.beta.3)
       ember-source
-    ember-rails (0.13.0)
+    ember-rails (0.14.1)
       active_model_serializers
       barber (>= 0.4.1)
       ember-data-source
       ember-source
       execjs (>= 1.2)
       handlebars-source
+      jquery-rails (>= 1.0.17)
       railties (>= 3.1)
     ember-source (1.2.0)
       handlebars-source (= 1.1.1)
-    emblem-rails (0.1.1)
+    emblem-rails (0.2.1)
       barber-emblem (~> 0.1.1)
-      ember-rails (>= 0.11.1)
-    emblem-source (0.3.4)
+      ember-rails (>= 0.14.0)
+    emblem-source (0.3.5)
     erubis (2.7.0)
     escape (0.0.4)
     eventmachine (1.0.3)
@@ -195,6 +196,8 @@ GEM
       multipart-post (~> 1.1)
     fastclick-rails (0.0.1)
     ffi (1.0.11)
+    font-awesome-rails (4.0.3.0)
+      railties (>= 3.2, < 5.0)
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
@@ -570,9 +573,10 @@ DEPENDENCIES
   ember-data-source (= 1.0.0.beta.3)
   ember-rails
   ember-source (= 1.2.0)
-  emblem-rails
+  emblem-rails (~> 0.2.1)
   factory_girl_rails
   fastclick-rails
+  font-awesome-rails (~> 4.0)
   forem!
   forem-html_formatter!
   friendly_id (~> 4.0.9)

@@ -39,17 +39,17 @@
             .rating-thumbs.large-12.columns
               .positive-vote.large-6.columns
                 = link_to vote_anime_review_path(@anime, @review, type: "up"), method: :post, class: ('active' if @evaluation && @evaluation.value == 1.0) do
-                  %i.icon-thumbs-up.icon.icon-2x
+                  %i.fa.fa-thumbs-up.fa-2x
               .negative-vote.large-6.columns
                 = link_to vote_anime_review_path(@anime, @review, type: "down"), method: :post, class: ('active' if @evaluation && @evaluation.value != 1.0) do
-                  %i.icon-thumbs-down.icon-2x
+                  %i.fa.fa-thumbs-down.fa-2x
 
       .main-content.large-7.columns
         %div(style="margin-top: 14px")
           - if current_user == @review.user
 
             %a{:href => "#{edit_anime_review_path(@anime, @review)}"}
-              %i.icon-pencil
+              %i.fa.fa-pencil
               Edit Review
 
 

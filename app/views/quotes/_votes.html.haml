@@ -3,8 +3,8 @@
   = pluralize votes.to_i, "likes"
   - if current_user && quote.has_evaluation?(:votes, current_user)
     = link_to main_app.vote_anime_quote_path(quote.anime, quote, type: "down"), method: :post, remote: true do
-      %i.icon-star
+      %i.fa.fa-star
   - else
     = link_to main_app.vote_anime_quote_path(quote.anime, quote, type: "up"), method: :post, remote: true do
-      %i.icon-star-empty
+      %i.fa.fa-star-o
 

@@ -20,7 +20,7 @@ gem 'ember-rails'
 gem 'ember-source', '1.2.0'
 gem 'ember-data-source', '1.0.0.beta.3'
 gem 'coffee-rails', '~> 3.2.1'
-gem 'emblem-rails'
+gem 'emblem-rails', '~> 0.2.1'
 
 gem 'beaneater'
 gem 'beanstalkd_view'
@@ -48,6 +48,7 @@ group :assets do
   gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
                                 github: 'anjlab/bootstrap-rails'
   gem 'autoprefixer-rails'
+  gem 'font-awesome-rails', '~> 4.0'
 end
 
 gem 'sunspot_rails'
