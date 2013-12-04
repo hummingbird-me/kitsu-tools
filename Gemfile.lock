@@ -176,8 +176,8 @@ GEM
       execjs (>= 1.2)
       handlebars-source
       railties (>= 3.1)
-    ember-source (1.1.2)
-      handlebars-source (= 1.0.12)
+    ember-source (1.2.0)
+      handlebars-source (= 1.1.1)
     emblem-rails (0.1.1)
       barber-emblem (~> 0.1.1)
       ember-rails (>= 0.11.1)
@@ -236,7 +236,7 @@ GEM
       activesupport (>= 3.1, < 4.1)
       haml (>= 3.1, < 4.1)
       railties (>= 3.1, < 4.1)
-    handlebars-source (1.0.12)
+    handlebars-source (1.1.1)
     hashie (2.0.3)
     highline (1.6.18)
     hike (1.2.3)
@@ -569,7 +569,7 @@ DEPENDENCIES
   doorkeeper (~> 0.7.2)
   ember-data-source (= 1.0.0.beta.3)
   ember-rails
-  ember-source (= 1.1.2)
+  ember-source (= 1.2.0)
   emblem-rails
   factory_girl_rails
   fastclick-rails
