@@ -76,7 +76,7 @@ $.fn.AwesomeRating = (options) ->
             $(widget).find(".icon-container").each ->
               index = $(this).attr("data-rating")
               starClass = starFor newRating, index
-              $(this).find("i").removeClass('icon-star').removeClass('icon-star-half-empty').removeClass('icon-star-empty').addClass starClass
+              $(this).find("i").removeClass('fa-star').removeClass('fa-star-half-o').removeClass('fa-star-o').addClass starClass
           mouseleave: ->
             $(widget).html renderStars rating
           click: (e) ->

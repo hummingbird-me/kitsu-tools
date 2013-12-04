@@ -602,14 +602,14 @@
 
         .library-item-title {
           cursor: pointer;
-          .icon-reorder {
+          .fa-bars {
             position: absolute;
             right: 5px;
             color: #bdbcbc;
             display: none;
           }
           &:hover {
-            .icon-reorder {
+            .fa-bars {
               display: inline-block;
             }
           }
@@ -705,7 +705,7 @@
           }
           .remove-from-library {
             border-bottom: none;
-            .icon-remove {
+            .fa-times {
               color: #e54242;
             }
             a {

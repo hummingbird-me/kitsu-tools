@@ -189,7 +189,7 @@
     }
   }
 
-  .icon-search {
+  .fa-search {
     color: #999;
     position: absolute;
     z-index: 1;
@@ -206,7 +206,7 @@
     font-weight: 300;
   }
 
-  .icon-bell {
+  .fa-bell-o {
     color: pink;
     font-size: 22px;
     position: relative;
@@ -409,7 +409,7 @@
     }
   }
 
-  .icon-exchange, .icon-heart-empty, .icon-envelope-alt {
+  .fa-exchange, .fa-heart-o, .fa-envelope-o {
     @media (max-width: 400px) {
       display: none;
     }

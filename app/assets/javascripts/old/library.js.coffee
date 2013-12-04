@@ -144,10 +144,10 @@ _.extend HB,
       
       render: ->
         if @model.get("currentUser")
-          icon = $("<span class='increment'><a href='javascript:void(0)'><i class='icon-angle-up'></i></a> </span>")
+          icon = $("<span class='increment'><a href='javascript:void(0)'><i class='fa fa-angle-up'></i></a> </span>")
           that = this
           icon.click ->
-            $(this).find("i").removeClass("icon-angle-up").addClass("icon-spin").addClass("icon-spinner")
+            $(this).find("i").removeClass("fa-angle-up").addClass("fa-spin").addClass("fa-spinner")
             that.model.update {increment_episodes: true}
         else
           icon = ""
@@ -346,16 +346,16 @@ _.extend HB,
         # Display correct sort indicator.
         sortOrder = @model.entries.sortByParameter
         @$el.find(".sortOptions a").removeClass("active")
-        @$el.find(".sortOptions a i").removeClass("icon-sort-down").removeClass("icon-sort-up").addClass("icon-sort")
+        @$el.find(".sortOptions a i").removeClass("fa-sort-asc").removeClass("fa-sort-desc").addClass("fa-sort")
         if sortOrder.substr(-4) == "Desc"
           param = sortOrder.substr(0, sortOrder.length-4)
         else
           param = sortOrder
         anchor = @$el.find(".sortOptions a[data-sortparam='" + param + "']")
         if sortOrder.substr(-4) == "Desc"
-          anchor.find("i").removeClass("icon-sort").addClass("icon-sort-down")
+          anchor.find("i").removeClass("fa-sort").addClass("fa-sort-asc")
         else
-          anchor.find("i").removeClass("icon-sort").addClass("icon-sort-up")
+          anchor.find("i").removeClass("fa-sort").addClass("fa-sort-desc")
         anchor.addClass("active")
 
         # Activate sorting options.
