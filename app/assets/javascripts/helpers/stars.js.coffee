@@ -2,9 +2,9 @@ Ember.Handlebars.registerBoundHelper 'stars', (rating) ->
   stars = ""
   for i in [1..5]
     if rating >= i
-      stars += "<i class='icon-star'></i>"
+      stars += "<i class='fa fa-star'></i>"
     else if rating > (i-0.6)
-      stars += "<i class='icon-star-half-empty'></i>"
+      stars += "<i class='fa fa-star-half-o'></i>"
     else
-      stars += "<i class='icon-star-empty'></i>"
+      stars += "<i class='fa fa-star-o'></i>"
   new Handlebars.SafeString(stars)

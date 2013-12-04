@@ -55,11 +55,11 @@
 
         .large-12.columns.remove-from-library.text-center
           %span
-            %i.icon-remove
+            %i.fa.fa-times
             %a.remove-from-library Remove From Library
     // Spinner
     %span.updating-icon.hide
-      %i.icon-spinner.icon-spin.updating-icon
+      %i.fa.fa-spinner.fa-spin.updating-icon
     {{/currentUsersProfile}}
 
     {{^currentUsersProfile}}
@@ -73,7 +73,7 @@
           .small-12
             %textarea{:placeholder => "Personal Notes about {{anime.title}}", :class => "personal-notes", :name => "notes"} {{notes}}
             %small.error.saving-indicator(style="display:none")
-              %i.icon.icon-spin.icon-spinner
+              %i.fa.fa-spin.fa-spinner
               Saving...
       {{/currentUsersProfile}}
 

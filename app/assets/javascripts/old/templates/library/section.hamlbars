@@ -13,19 +13,19 @@
             %th(width="495")
               %a(data-sortparam="title") 
                 Title
-                %i.icon.icon-sort
+                %i.fa.fa-sort
             %th(width="95")
               %a(data-sortparam="progress") 
                 Progress
-                %i.icon.icon-sort
+                %i.fa.fa-sort
             %th(width="76")
               %a(data-sortparam="rating") 
                 Rating
-                %i.icon.icon-sort
+                %i.fa.fa-sort
             %th(width="65")
               %a(data-sortparam="type") 
                 Type
-                %i.icon.icon-sort
+                %i.fa.fa-sort
 
         {{#fetched}}
         %tbody.fake-table-row.library-item
@@ -35,6 +35,6 @@
         %tbody.loading-indicator
           %tr
             %td.center(colspan=4 style="color: #333")
-              %i.icon.icon-spin.icon-spinner.icon-3x
+              %i.fa.fa-spin.fa-spinner.fa-3x
         {{/fetched}}
 

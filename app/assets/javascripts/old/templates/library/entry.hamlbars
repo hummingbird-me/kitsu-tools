@@ -5,19 +5,19 @@
     {{#private}}
     %span.item-indicator
       &#8901;
-      %i.icon-eye-close 
+      %i.fa.fa-eye-slash
     {{/private}}
 
     {{#notes_present}}
     %span.item-indicator
       &#8901;
-      %i.icon-book.tip-right(data-tooltip title="{{notes}}")
+      %i.fa.fa-book.tip-right(data-tooltip title="{{notes}}")
     {{/notes_present}}
 
     {{#rewatching}}
     %span.item-indicator
       &#8901;
-      %i.icon-repeat
+      %i.fa.fa-repeat
     {{/rewatching}}
 
     {{#if anime.status}}
@@ -26,7 +26,7 @@
       %span.label.radius.secondary {{anime.status}}
     {{/if}}
     
-    %i.icon-reorder
+    %i.fa.fa-bars
       
 %td.episode-count{:width => "95"}
   .relative-wrapper.episode-count
@@ -34,7 +34,7 @@
 %td{:width => "76"} 
   %span.select
     {{#rating.type.star_rating}}
-    %i.icon-star
+    %i.fa.fa-star
     {{#if rating.value}}
     {{rating.value}}
     {{/if}}

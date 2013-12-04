@@ -4,15 +4,15 @@
     {{#private}}
     %span.item-indicator
       &#8901;
-      %i.icon-eye-close 
+      %i.fa.fa-eye-slash
     {{/private}}
     {{#notes_present}}
     %span.item-indicator
       &#8901;
       %span.has-tip(data-tooltip){:title => "{{notes}}"}
-        %i.icon-book
+        %i.fa.fa-book
     {{/notes_present}}
-    %i.icon-reorder
+    %i.fa.fa-bars
 %td.episode-count{:width => "95"}
   .relative-wrapper 
     %span.progress-updater(id="{{anime.slug}}" data-anime-slug="{{anime.slug}}" data-progress="{{episodes_watched}}" data-total-episodes="{{anime.episode_count}}" data-allow-increment="{{currentUsersProfile}}")
@@ -21,7 +21,7 @@
   %span.select
     {{#rating.type.star_rating}}
 
-    %i.icon-star
+    %i.fa.fa-star
     {{rating.value}}
   
     {{/rating.type.star_rating}}

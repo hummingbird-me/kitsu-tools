@@ -46,11 +46,11 @@
     .large-12.columns.center
       %a.show-more(href="javascript:void(0)")
         {{^expanded}}
-        %i.icon.icon-angle-down
+        %i.fa.fa-angle-down
         Show {{additional}} More
         {{/expanded}}
         {{#expanded}}
-        %i.icon.icon-angle-up
+        %i.fa.fa-angle-up
         Hide
         {{/expanded}}
     {{/morethantwo}}

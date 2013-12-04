@@ -12,11 +12,11 @@ roundSimpleRating = (rating) ->
     return 5
 
 simpleRatingIcons =
-  1: 'icon-frown'
-  3: 'icon-meh'
-  5: 'icon-smile'
+  1: 'fa fa-frown-o'
+  3: 'fa fa-meh-o'
+  5: 'fa fa-smile-o'
 
-advancedRatingIcons = ['icon-star-empty', 'icon-star-half-empty', 'icon-star']
+advancedRatingIcons = ['fa fa-star-o', 'fa fa-star-half-o', 'fa fa-star']
 
 nearestHalf = (number) ->
   if number == null or number == "null" or number == ""

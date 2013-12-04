@@ -9,12 +9,12 @@
     for i in [1..5]
       star = $("<a class='star' data-rating='" + i + "' href='javascript: void(0)'></a>")
       if rating >= i
-        star.append $("<i class='icon icon-star'></i>")
+        star.append $("<i class='fa fa-star'></i>")
       else
-        star.append $("<i class='icon icon-star-empty'></i>")
+        star.append $("<i class='fa fa-star-o'></i>")
 
       star.click ->
-        element.find('.spinner').html $("<i class='pull-right icon icon-spin icon-spinner'></i>")
+        element.find('.spinner').html $("<i class='pull-right fa fa-spin fa-spinner'></i>")
 
         $.post "/api/v1/libraries/" + anime_slug, {rating: parseInt($(this).attr("data-rating"))}, (d) ->
           if d
@@ -40,9 +40,9 @@ renderProgress = (element) ->
   allow_incr      = element.attr("data-allow-increment") == "true"
   
   if allow_incr
-    icon = $("<a href='javascript:void(0)' class='click-add'><i class='icon icon-angle-up'></i></a>")
+    icon = $("<a href='javascript:void(0)' class='click-add'><i class='fa fa-angle-up'></i></a>")
     icon.click ->
-      icon.find("i").removeClass("icon-angle-up").addClass("icon-spin").addClass("icon-spinner")
+      icon.find("i").removeClass("fa-angle-up").addClass("fa-spin").addClass("fa-spinner")
       $.post "/api/v1/libraries/" + anime_slug, {increment_episodes: true}, (d) ->
         element.attr "data-progress", d.episodes_watched 
         initializeProgressIncrement element

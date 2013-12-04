@@ -61,7 +61,7 @@
 
         // Spinner
         %span.updating-icon.hide
-          %i.icon-spinner.icon-spin.updating-icon
+          %i.fa.fa-spinner.fa-spin.updating-icon
         {{/currentUser}}
 
         {{^currentUser}}
@@ -75,7 +75,7 @@
             .small-12
               %textarea{:placeholder => "Personal Notes about {{anime.title}}", :class => "personal-notes", :name => "notes"} {{notes}}
               %small.error.saving-indicator(style="display:none")
-                %i.icon.icon-spin.icon-spinner
+                %i.fa.fa-spin.fa-spinner
                 Saving...
         {{/currentUser}}
 
