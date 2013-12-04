@@ -12,29 +12,31 @@
     <div class="top-buttons">
       <ul class="left-buttons">
         <li>
-          <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart isFavorite:active"}} {{action toggleFavorite}}>
-            <i {{bind-attr class="isFavorite:icon-heart:icon-heart-empty"}}></i>
-          </button>
+          <div class="btn-group">
+            <button {{bind-attr class=":btn :btn-default :dropdown-toggle :top-button libraryStatus:active"}} type="button" data-toggle="dropdown">
+              {{#if libraryStatus}}
+                {{libraryStatus}}
+              {{else}}
+                add to library
+              {{/if}}
+            </button>
+            <ul class="dropdown-menu">
+              <li><a {{action setLibraryStatus "Currently Watching"}}>Currently Watching</a></li>
+              <li><a {{action setLibraryStatus "Plan to Watch"}}>Plan to Watch</a></li>
+              <li><a {{action setLibraryStatus "Completed"}}>Completed</a></li>
+              <li><a {{action setLibraryStatus "On Hold"}}>On Hold</a></li>
+              <li><a {{action setLibraryStatus "Dropped"}}>Dropped</a></li>
+              <li><a {{action setLibraryStatus nil}}>Remove from Library</a></li>
+            </ul>
+          </div>
         </li>
-        <li>
-        <div class="btn-group">
-          <button {{bind-attr class=":btn :btn-default :dropdown-toggle :top-button libraryStatus:active"}} type="button" data-toggle="dropdown">
-            {{#if libraryStatus}}
-              {{libraryStatus}}
-            {{else}}
-              add to library
-            {{/if}}
-          </button>
-          <ul class="dropdown-menu">
-            <li><a {{action setLibraryStatus "Currently Watching"}}>Currently Watching</a></li>
-            <li><a {{action setLibraryStatus "Plan to Watch"}}>Plan to Watch</a></li>
-            <li><a {{action setLibraryStatus "Completed"}}>Completed</a></li>
-            <li><a {{action setLibraryStatus "On Hold"}}>On Hold</a></li>
-            <li><a {{action setLibraryStatus "Dropped"}}>Dropped</a></li>
-            <li><a {{action setLibraryStatus nil}}>Remove from Library</a></li>
-          </ul>
-        </div>
-        </li>
+        {{#if libraryStatus}}
+          <li>
+            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart isFavorite:active"}} {{action toggleFavorite}}>
+              <i {{bind-attr class="isFavorite:icon-heart:icon-heart-empty"}}></i>
+            </button>
+          </li>
+        {{/if}}
       </ul>
       <ul class="right-buttons">
         <li>
