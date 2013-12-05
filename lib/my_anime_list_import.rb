@@ -72,12 +72,11 @@ class MyAnimeListImport
       wl.notes = item[:notes]
       wl.imported = true
 
-      rating = nil
-      if item[:rating] != '0'
-        rating = item[:rating].to_i rescue 5
-        rating = rating.to_f / 2
+      if item[:rating] != 0
+        wl.rating = item[:rating].to_f / 2
+      else
+        wl.rating = nil
       end
-      wl.rating = rating
 
       wl.save!
     end
