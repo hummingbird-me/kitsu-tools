@@ -137,7 +137,7 @@ Hummingbird::Application.routes.draw do
   match '/unsubscribe/:unsub_type/:hash' => 'users#unsubscribe'
 
   # Admin Panel
-  constraint = lambda do |request| 
+  constraint = lambda do |request|
     request.env["warden"].authenticate? and request.env['warden'].user.admin?
   end
   constraints constraint do
