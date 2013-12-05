@@ -196,8 +196,6 @@ GEM
       multipart-post (~> 1.1)
     fastclick-rails (0.0.1)
     ffi (1.0.11)
-    font-awesome-rails (4.0.3.0)
-      railties (>= 3.2, < 5.0)
     font-awesome-sass-rails (3.0.2.2)
       railties (>= 3.1.1)
       sass-rails (>= 3.1.1)
@@ -576,7 +574,6 @@ DEPENDENCIES
   emblem-rails (~> 0.2.1)
   factory_girl_rails
   fastclick-rails
-  font-awesome-rails (~> 4.0)
   forem!
   forem-html_formatter!
   friendly_id (~> 4.0.9)

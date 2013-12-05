@@ -16,7 +16,7 @@ simpleRatingIcons =
   3: 'fa fa-meh-o'
   5: 'fa fa-smile-o'
 
-advancedRatingIcons = ['fa fa-star-o', 'fa fa-star-half', 'fa fa-star']
+advancedRatingIcons = ['fa fa-star-o', 'fa fa-star-half-o', 'fa fa-star']
 
 nearestHalf = (number) ->
   if number == null or number == "null" or number == ""

@@ -48,7 +48,6 @@ group :assets do
   gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
                                 github: 'anjlab/bootstrap-rails'
   gem 'autoprefixer-rails'
-  gem 'font-awesome-rails', '~> 4.0'
 end
 
 gem 'sunspot_rails'
