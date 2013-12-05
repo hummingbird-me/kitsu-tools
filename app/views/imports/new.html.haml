@@ -1,0 +1,12 @@
+.row(style="margin-top: 40px; margin-bottom: 200px")
+  .large-6.large-offset-3.columns
+    .panel
+      %h3 MyAnimeList Import
+      %hr
+      %p Your list is being imported. Please hang on!
+
+      %form#refreshform(method="post")
+        %input(type="hidden" name="authenticity_token"){value: form_authenticity_token}
+
+:javascript
+  setTimeout(function() { $("form#refreshform").submit(); }, 5000);

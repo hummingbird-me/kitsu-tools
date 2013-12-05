@@ -156,52 +156,17 @@
                   = link_to "Connect to Facebook", omniauth_authorize_path(resource_name, :facebook)
 
           .large-12.columns.mal-import
-            .large-6.columns
+            .large-12.columns
               %a(name="import")
                 %h3{:style => "margin-top: -4px; margin-bottom: 5px;"} MyAnimeList Import
-              %p Import all watchlist anime entries and reviews submitted to your MAL account.  
-            .large-6.columns
-              - if @user.staged_import
-                - if @user.staged_import.data[:applying]
-                  %p.text-center Your import is nearly complete.
-                - elsif @user.staged_import.data[:complete]
-                  %p.text-center{:style => "margin-bottom: 10px; margin-top: 10px;"} Great news! Your import is ready! 
-                  = link_to "Review Import", review_import_path, :class => "button padded"
-                - else
-                  %p.in_progress.text-center Your import is currently in progress. 
-                  %span.check_back Please check back shortly!
-                  = link_to "Cancel", review_cancel_path, class: 'button secondary padded'
-                  :javascript
-                    function checkForCompletion() {
-                      $.getJSON("/users.json", function(data) { 
-                        if (!data["import_staging_completed"]) {
-                          $("span.check_back").html("");
-                          setTimeout("checkForCompletion()", 5000);
-                        }
-                        else {
-                          $("p.in_progress.text-center").html("Your import is ready!");
-                          $("span.check_back").html("<a class='button padded' href='#{review_import_path}'>Check it out.</a>");
-                        }
-                      });
-                    }
-                    checkForCompletion();
-                  
-              - else
-                = form_tag("/imports/myanimelist/new") do
-                  .row.collapse
-                    .small-3.large-4.columns
-                      %span.prefix MAL Username
-                    .small-6.large-8.columns
-                      = text_field_tag :mal_username, @user.mal_username, :placeholder => "Enter your MAL Username"
-
-                    .small-12.large-12.columns
-                      %input(type="submit" class="button padded expand" value="Import")
-
-                    / .large-5.columns
-                    /   .large-8.columns
-                    /     = text_field_tag :mal_username, @user.mal_username
-                    /   .large-4.columns
-                    /     %input(type="submit" class="button expand postfix" value="Import")
+              %p Due to recent restrictions on the MyAnimeList API, the only way to currently import your MAL account is by <a href="http://myanimelist.net/panel.php?go=export" target="_blank">exporting your anime list</a> and uploading it using the form below.
+              %form#malimport(action="/mal_import" method="post" enctype="multipart/form-data")
+                %input(type="file" name="animelist")
+                %input(type="hidden" name="authenticity_token"){value: form_authenticity_token}
+              :javascript
+                $("form#malimport input").change(function() {
+                  $("form#malimport").submit();
+                });
 
 :javascript
   $(".password-confirmation-box").slideUp();

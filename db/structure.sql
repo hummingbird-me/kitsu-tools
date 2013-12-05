@@ -1298,38 +1298,6 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: staged_imports; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE staged_imports (
-    id integer NOT NULL,
-    user_id integer,
-    data text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: staged_imports_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE staged_imports_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: staged_imports_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE staged_imports_id_seq OWNED BY staged_imports.id;
-
-
---
 -- Name: stories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1454,7 +1422,8 @@ CREATE TABLE users (
     last_recommendations_update timestamp without time zone,
     authentication_token character varying(255),
     avatar_processing boolean,
-    subscribed_to_newsletter boolean DEFAULT true
+    subscribed_to_newsletter boolean DEFAULT true,
+    mal_import_in_progress boolean
 );
 
 
@@ -1760,13 +1729,6 @@ ALTER TABLE ONLY rs_reputations ALTER COLUMN id SET DEFAULT nextval('rs_reputati
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY staged_imports ALTER COLUMN id SET DEFAULT nextval('staged_imports_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY stories ALTER COLUMN id SET DEFAULT nextval('stories_id_seq'::regclass);
 
 
@@ -2061,14 +2023,6 @@ ALTER TABLE ONLY rs_reputation_messages
 
 ALTER TABLE ONLY rs_reputations
     ADD CONSTRAINT rs_reputations_pkey PRIMARY KEY (id);
-
-
---
--- Name: staged_imports_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY staged_imports
-    ADD CONSTRAINT staged_imports_pkey PRIMARY KEY (id);
 
 
 --
@@ -2419,13 +2373,6 @@ CREATE UNIQUE INDEX index_people_on_mal_id ON people USING btree (mal_id);
 
 
 --
--- Name: index_staged_imports_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_staged_imports_on_user_id ON staged_imports USING btree (user_id);
-
-
---
 -- Name: index_stories_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2526,6 +2473,8 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 --
 -- PostgreSQL database dump complete
 --
+
+SET search_path TO "$user",public;
 
 INSERT INTO schema_migrations (version) VALUES ('20130129153309');
 
@@ -3028,3 +2977,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131103092810');
 INSERT INTO schema_migrations (version) VALUES ('20131117151157');
 
 INSERT INTO schema_migrations (version) VALUES ('20131201220642');
+
+INSERT INTO schema_migrations (version) VALUES ('20131205080847');
+
+INSERT INTO schema_migrations (version) VALUES ('20131205081224');

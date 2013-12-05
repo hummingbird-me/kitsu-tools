@@ -66,8 +66,6 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :quotes
 
-  has_one :staged_import
-
   has_reputation :karma, :source => [
     {reputation: :review_votes},
     {reputation: :quote_votes}

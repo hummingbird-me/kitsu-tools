@@ -1,5 +1,22 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :hide_cover_image
+  prepend_before_filter :authenticate_user_from_token_cookie!
+
+  # Authenticate users *only* via the auth_token cookie.
+  def authenticate_user_from_token_cookie!
+    auth_token = Rack::Request.new(env).cookies['auth_token']
+    if auth_token
+      user = User.where(authentication_token: auth_token).first
+      if user
+        sign_in(user, store: false)
+        preload! "user", user
+        return
+      end
+    end
+    # If there is auth_token cookie but the user is signed in through the Devise
+    # session cookie, sign them out.
+    sign_out(current_user) if user_signed_in?
+  end
 
   def edit
     @active_tab = :account_settings

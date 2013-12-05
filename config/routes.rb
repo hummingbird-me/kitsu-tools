@@ -74,7 +74,7 @@ Hummingbird::Application.routes.draw do
     post :toggle_connection
     post :update_setting
 
-    post "/disconnect/facebook" => 'users#disconnect_facebook', 
+    post "/disconnect/facebook" => 'users#disconnect_facebook',
       as: :disconnect_facebook
   end
 
@@ -82,12 +82,8 @@ Hummingbird::Application.routes.draw do
   match '/search' => 'search#basic', as: :search
   
   # Imports
-  match '/imports/myanimelist/new' => 'imports#myanimelist'
-  match '/imports/review'          => 'imports#review', as: :review_import
-  match '/imports/apply'           => 'imports#apply', as: :review_apply
-  match '/imports/cancel'          => 'imports#cancel', as: :review_cancel
-  match '/imports/status'          => 'imports#status'
-  
+  match '/mal_import' => 'imports#new', via: [:post]
+
   # Random anime
   match '/random/anime' => 'anime#random'
   match '/anime/upcoming(/:season)' => 'anime#upcoming', as: :anime_season
