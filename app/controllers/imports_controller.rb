@@ -6,6 +6,8 @@ class ImportsController < ApplicationController
   def new
     hide_cover_image
 
+    mixpanel.track "Imported from MyAnimeList", {email: current_user.email} if Rails.env.production?
+
     if params[:animelist]
       if params[:animelist].content_type !="application/x-gzip"
         flash[:error] = "Please directly upload the compressed file you downloaded from MAL."
