@@ -36,11 +36,8 @@ class User < ActiveRecord::Base
          :validatable, :omniauthable, :confirmable, :async,
          :token_authenticatable, allow_unconfirmed_access_for: 3.days
 
-  # Remember users by default.
-  def remember_me; true; end
-
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me,
+  attr_accessible :name, :email, :password, :password_confirmation,
     :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio,
     :forem_admin, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned,
     :subscribed_to_newsletter
