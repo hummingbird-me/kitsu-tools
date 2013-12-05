@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :favorite_genres, class_name: "Genre", uniq: true, join_table: "favorite_genres_users"
   
   # Include devise modules. Others available are:
-  # :lockable, :timeoutable, :trackable.
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable,
+  # :lockable, :timeoutable, :trackable, :rememberable.
+  devise :database_authenticatable, :registerable, :recoverable,
          :validatable, :omniauthable, :confirmable, :async,
          :token_authenticatable, allow_unconfirmed_access_for: 3.days
 
