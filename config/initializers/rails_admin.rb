@@ -5,7 +5,7 @@ RailsAdmin.config do |config|
   ################  Global configuration  ################
 
   # Set the app name.
-  config.main_app_name = ['MakiseKurisu', 'Admin']
+  config.main_app_name = ['Biribiri', 'Admin']
 
   # Who is the current user.
   config.current_user_method { current_user }
