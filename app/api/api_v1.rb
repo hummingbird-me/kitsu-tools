@@ -69,7 +69,7 @@ class API_v1 < Grape::API
     end
     get ':username' do
       user = find_user(params[:username])
-      {
+      json = {
         name: user.name,
         avatar: user.avatar.url(:thumb),
         cover_image: user.cover_image.url(:thumb),
@@ -83,6 +83,10 @@ class API_v1 < Grape::API
         online: user.online?,
         following: (user_signed_in? and user.followers.include?(current_user))
       }
+      if user == current_user
+        json["email"] = user.email
+      end
+      json
     end
 
     desc "Return the entries in a user's library under a specific status.", {
