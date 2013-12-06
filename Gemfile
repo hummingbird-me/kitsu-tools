@@ -5,7 +5,6 @@ gem 'rails', '3.2.16'
 gem 'grape'
 gem 'grape-entity'
 gem 'active_model_serializers', '~> 0.8'
-gem 'doorkeeper', '~> 0.7.2'
 
 gem 'riemann-client'
 gem 'fastclick-rails'

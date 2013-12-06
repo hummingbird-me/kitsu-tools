@@ -160,9 +160,6 @@ GEM
       warden (~> 1.2.1)
     devise-async (0.7.0)
       devise (>= 2.2)
-    doorkeeper (0.7.2)
-      jquery-rails (>= 2.0.2)
-      railties (>= 3.1)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
@@ -567,7 +564,6 @@ DEPENDENCIES
   delayed_paperclip
   devise
   devise-async
-  doorkeeper (~> 0.7.2)
   ember-data-source (= 1.0.0.beta.3)
   ember-rails
   ember-source (= 1.2.0)

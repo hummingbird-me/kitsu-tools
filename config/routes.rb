@@ -12,10 +12,7 @@ Hummingbird::Application.routes.draw do
 
   match '/sign-in' => 'auth#sign_in_action'
 
-  use_doorkeeper
-  match '/oauth/me' => 'oauth#me'
-
-  devise_for :users, controllers: { 
+  devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
     sessions: "users/sessions",
     registrations: "users/registrations"
