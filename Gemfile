@@ -24,6 +24,8 @@ gem 'emblem-rails', '~> 0.2.1'
 gem 'beaneater'
 gem 'beanstalkd_view'
 
+gem 'indexable', path: 'vendor/indexable'
+
 gem 'forem', :path => 'vendor/forem'
 gem 'forem-html_formatter', :path => 'vendor/forem-html_formatter'
 gem 'rinku'

@@ -88,8 +88,7 @@ module Hummingbird
     end
 
     # SEO middleware.
-    require_relative '../lib/render_ember.rb'
-    config.middleware.use ::RenderEmber
+    config.middleware.use Rack::Indexable
 
     # CORS configuration.
     config.middleware.use Rack::Cors do

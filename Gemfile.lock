@@ -44,6 +44,11 @@ PATH
       forem
       sanitize
 
+PATH
+  remote: vendor/indexable
+  specs:
+    indexable (0.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -580,6 +585,7 @@ DEPENDENCIES
   haml-rails
   handlebars_assets!
   image_optim
+  indexable!
   jquery-rails
   kaminari
   letter_opener
