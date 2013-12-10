@@ -16,13 +16,6 @@ GIT
       tilt
 
 GIT
-  remote: git://github.com/vikhyat/indexable.git
-  revision: 93f2e9811cb887d30f0ecc0c7547667fe8a58b71
-  specs:
-    indexable (0.0.3)
-      rack
-
-GIT
   remote: git@github.com:Casecommons/pg_search.git
   revision: 430b0e7c14261bb7b435e064963c7b7430d42b35
   specs:
@@ -260,6 +253,8 @@ GEM
       progress (~> 2.4.0)
     image_size (1.1.2)
     in_threads (1.1.1)
+    indexable (0.0.4)
+      rack
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
@@ -586,7 +581,7 @@ DEPENDENCIES
   haml-rails
   handlebars_assets!
   image_optim
-  indexable!
+  indexable (~> 0.0.4)
   jquery-rails
   kaminari
   letter_opener
