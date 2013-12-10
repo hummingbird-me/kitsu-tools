@@ -16,6 +16,14 @@ GIT
       tilt
 
 GIT
+  remote: git://github.com/vikhyat/indexable.git
+  revision: 581ad24a65d7f4b313cc9d92a0d84a8a4899bc76
+  specs:
+    indexable (0.0.1)
+      phantomjs.rb (~> 2.0)
+      rack
+
+GIT
   remote: git@github.com:Casecommons/pg_search.git
   revision: 430b0e7c14261bb7b435e064963c7b7430d42b35
   specs:
@@ -43,12 +51,6 @@ PATH
     forem-html_formatter (0.1.0)
       forem
       sanitize
-
-PATH
-  remote: vendor/indexable
-  specs:
-    indexable (0.0.1)
-      phantomjs.rb (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
