@@ -146,4 +146,4 @@ gem 'split', require: 'split/dashboard'
 
 # SEO
 gem 'sitemap_generator'
-gem 'phantomjs'
+gem 'phantomjs.rb'

@@ -1,15 +1,21 @@
+// TODO Add header.
+//
+// Based off https://gist.github.com/pieterjongsma/4515412
+
 var fs      = require('fs');
 var system  = require('system');
 var page    = require('webpage').create();
-var url     = system.args[1];
+var path    = system.args[1];
+var url     = system.args[2];
+var content = fs.read(path);
 
 // Keep track of whether the page has already been exported, because the '
 // 'setTimeout's we use might cause it to be exported multiple times.
 var pageHasBeenExported = false;
-function output(json) {
+function exportPage(content) {
   if (!pageHasBeenExported) {
     pageHasBeenExported = true;
-    console.log(JSON.stringify(json));
+    console.log(content);
     phantom.exit();
   }
 }
@@ -20,7 +26,7 @@ function output(json) {
 //
 // This is not strictly true, because sometimes a resource still needs to be
 // rendered after loading, or the application might still be building a request.
-// To work around this, we wait an addition 5 seconds to make sure rendering etc.
+// To work around this, we wait an addition 2 seconds to make sure rendering etc.
 // can take place.
 //
 // We need to keep track of request/response IDs, not just the count because larger
@@ -28,9 +34,11 @@ function output(json) {
 
 var activeRequests = [];
 
-page.onResourceRequested = function(requestData, request) {
+page.onResourceRequested = function(requestData, networkRequest) {
   if ((/ga\.js/gi).test(requestData.url) || (/dc\.js/gi).test(requestData.url)) {
-    request.abort();
+    // Don't load ga.js and dc.js to avoid polluting Google Analytics data
+    // regardless of whether external resources are allowed or not.
+    networkRequest.abort();
   }
   else {
     activeRequests.push(requestData.id);
@@ -44,25 +52,12 @@ page.onResourceReceived = function(response) {
   // Should we output the HTML?
   if (activeRequests.length == 0) {
     window.setTimeout(function() {
-      if (activeRequests == 0) {
-        output({"status": 200, "content": page.content});
+      if (activeRequests.length == 0) {
+        exportPage(page.content);
       }
-    }, 5000);
+    }, 2000);
   }
 }
 
-page.open(url, function(status) {
-  if (status != 'success') {
-    output({"status": 404, "content": "Page not found"});
-    phantom.exit();
-  }
-  else {
-    // If the page isn't finished loading in 10 seconds, something is probably
-    // wrong and we're going to just return.
-    window.setTimeout(function() {
-      output({"status": 500, "content": "Something went wrong"});
-      phantom.exit();
-    }, 10000);
-  }
-});
+page.setContent(content, url);
 

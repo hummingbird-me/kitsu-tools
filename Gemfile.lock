@@ -338,7 +338,7 @@ GEM
       paperclip (~> 3.4.1)
     pg (0.15.1)
     pg-hstore (1.1.7)
-    phantomjs (1.9.2.0)
+    phantomjs.rb (2.0.0)
     polyglot (0.3.3)
     pr_geohash (1.0.0)
     progress (2.4.0)
@@ -599,7 +599,7 @@ DEPENDENCIES
   paperclip-optimizer
   pg
   pg_search!
-  phantomjs
+  phantomjs.rb
   qunit-rails
   rack-cors
   rack-livereload
