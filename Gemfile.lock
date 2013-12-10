@@ -17,10 +17,9 @@ GIT
 
 GIT
   remote: git://github.com/vikhyat/indexable.git
-  revision: 92c5723619b01d8772518b5633c44a8a4b868185
+  revision: 93f2e9811cb887d30f0ecc0c7547667fe8a58b71
   specs:
-    indexable (0.0.2)
-      phantomjs.rb (~> 2.0)
+    indexable (0.0.3)
       rack
 
 GIT
@@ -341,7 +340,6 @@ GEM
       paperclip (~> 3.4.1)
     pg (0.15.1)
     pg-hstore (1.1.7)
-    phantomjs.rb (2.0.0)
     polyglot (0.3.3)
     pr_geohash (1.0.0)
     progress (2.4.0)
