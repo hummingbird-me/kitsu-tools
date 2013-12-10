@@ -14,8 +14,7 @@ class UsersController < ApplicationController
     authenticate_user!
 
     @status = {
-      recommendations_up_to_date: current_user.recommendations_up_to_date,
-      import_staging_completed: current_user.staged_import && current_user.staged_import.data[:complete]
+      recommendations_up_to_date: current_user.recommendations_up_to_date
     }
 
     respond_to do |format|
