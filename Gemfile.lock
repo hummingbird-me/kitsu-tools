@@ -253,7 +253,7 @@ GEM
       progress (~> 2.4.0)
     image_size (1.1.2)
     in_threads (1.1.1)
-    indexable (0.0.4)
+    indexable (0.1.0)
       rack
     journey (1.0.4)
     jquery-rails (2.2.1)
@@ -581,7 +581,7 @@ DEPENDENCIES
   haml-rails
   handlebars_assets!
   image_optim
-  indexable (~> 0.0.4)
+  indexable (~> 0.1)
   jquery-rails
   kaminari
   letter_opener

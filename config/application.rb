@@ -84,9 +84,6 @@ module Hummingbird
       g.orm :active_record
     end
 
-    # SEO middleware.
-    config.middleware.use Rack::Indexable
-
     # CORS configuration.
     config.middleware.use Rack::Cors do
       allow do
