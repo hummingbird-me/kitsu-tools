@@ -1,3 +1,5 @@
+require 'phantomjs.rb'
+
 module Rack
   class Indexable
     CRAWLER_USER_AGENTS = [

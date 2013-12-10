@@ -47,7 +47,8 @@ PATH
 PATH
   remote: vendor/indexable
   specs:
-    indexable (0.0.0)
+    indexable (0.0.1)
+      phantomjs.rb (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -599,7 +600,6 @@ DEPENDENCIES
   paperclip-optimizer
   pg
   pg_search!
-  phantomjs.rb
   qunit-rails
   rack-cors
   rack-livereload
