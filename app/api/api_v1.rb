@@ -162,6 +162,8 @@ class API_v1 < Grape::API
       requires :anime_slug, type: String
     end
     post ':anime_slug/remove' do
+      authenticate_user!
+
       anime = Anime.find(params["anime_slug"])
       watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
       watchlist.destroy
