@@ -46,6 +46,8 @@ Hummingbird.Anime = DS.Model.extend
       return "Currently Airing"
   ).property('startedAiring', 'finishedAiring', 'episodeCount')
 
+  notYetAired: Ember.computed.equal('airingStatus', 'Not Yet Aired')
+
   formattedAirDates: (->
     if @get('startedAiring')
       formattedStartedAiring = moment(@get('startedAiring')).format("D MMM YYYY")
