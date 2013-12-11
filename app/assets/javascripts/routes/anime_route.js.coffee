@@ -19,16 +19,24 @@ Hummingbird.AnimeRoute = Ember.Route.extend
       alert('Need to be signed in') unless @get('currentUser.isSignedIn')
       libraryEntry = @currentModel.get('libraryEntry')
       libraryEntry.set 'isFavorite', not libraryEntry.get('isFavorite')
-      libraryEntry.save()
+      libraryEntry.save().then Ember.K, ->
+        alert "Something went wrong."
+        libraryEntry.rollback()
 
     toggleQuoteFavorite: (quote) ->
       quote.set 'isFavorite', not quote.get('isFavorite')
-      quote.save()
+      quote.save().then Ember.K, ->
+        alert "Something went wrong."
+        quote.rollback()
 
     removeFromLibrary: ->
-      libraryEntry = @currentModel.get('libraryEntry')
+      anime = @currentModel
+      libraryEntry = anime.get('libraryEntry')
       libraryEntry.deleteRecord()
-      libraryEntry.save()
+      libraryEntry.save().then Ember.K, ->
+        alert "Something went wrong."
+        libraryEntry.rollback()
+        anime.rollback()
 
     setLibraryStatus: (newStatus) ->
       libraryEntry = @currentModel.get('libraryEntry')
@@ -38,4 +46,6 @@ Hummingbird.AnimeRoute = Ember.Route.extend
         libraryEntry = @store.createRecord 'libraryEntry',
           status: newStatus
           anime: @currentModel
-      libraryEntry.save()
+      libraryEntry.save().then Ember.K, ->
+        alert "Something went wrong."
+        libraryEntry.rollback()

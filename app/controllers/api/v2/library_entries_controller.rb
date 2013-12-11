@@ -16,17 +16,21 @@ module Api::V2
         status: params[:library_entry][:status]
       })
 
-      begin
-        library_entry.save!
+      if library_entry.save
         render json: library_entry
-      rescue
+      else
         return error!(library_entry.errors.full_messages * ', ', 500)
       end
     end
 
-    def update
+    def find_library_entry_by_id(id)
       library_entry = LibraryEntry.find params[:id]
-      return error!("unauthorized", 403) if library_entry.user != current_user
+      (library_entry.user == current_user) ? library_entry : nil
+    end
+
+    def update
+      library_entry = find_library_entry_by_id params[:id]
+      return error!("unauthorized", 403) if library_entry.nil?
 
       library_entry.status = params[:library_entry][:status]
 
@@ -42,10 +46,20 @@ module Api::V2
         current_user.favorites.where(item_id: anime, item_type: "Anime").first.destroy
       end
 
-      begin
-        library_entry.save!
+      if library_entry.save
         render json: library_entry
-      rescue
+      else
+        return error!(library_entry.errors.full_messages * ', ', 500)
+      end
+    end
+
+    def destroy
+      library_entry = find_library_entry_by_id params[:id]
+      return error!("unauthorized", 403) if library_entry.nil?
+
+      if library_entry.destroy
+        render json: library_entry
+      else
         return error!(library_entry.errors.full_messages * ', ', 500)
       end
     end
