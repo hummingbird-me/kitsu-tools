@@ -75,6 +75,7 @@ end
 # Testing
 group :test do
   gem 'simplecov'
+  gem 'shoulda'
 end
 
 gem 'jquery-rails'

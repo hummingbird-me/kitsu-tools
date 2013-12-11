@@ -20,13 +20,11 @@ Hummingbird.AnimeRoute = Ember.Route.extend
       libraryEntry = @currentModel.get('libraryEntry')
       libraryEntry.set 'isFavorite', not libraryEntry.get('isFavorite')
       libraryEntry.save().then Ember.K, ->
-        alert "Something went wrong."
         libraryEntry.rollback()
 
     toggleQuoteFavorite: (quote) ->
       quote.set 'isFavorite', not quote.get('isFavorite')
       quote.save().then Ember.K, ->
-        alert "Something went wrong."
         quote.rollback()
 
     removeFromLibrary: ->
@@ -34,7 +32,6 @@ Hummingbird.AnimeRoute = Ember.Route.extend
       libraryEntry = anime.get('libraryEntry')
       libraryEntry.deleteRecord()
       libraryEntry.save().then Ember.K, ->
-        alert "Something went wrong."
         libraryEntry.rollback()
         anime.rollback()
 
@@ -47,5 +44,4 @@ Hummingbird.AnimeRoute = Ember.Route.extend
           status: newStatus
           anime: @currentModel
       libraryEntry.save().then Ember.K, ->
-        alert "Something went wrong."
         libraryEntry.rollback()
