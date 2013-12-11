@@ -1,6 +1,8 @@
 module Api::V2
   class QuotesController < ApiController
     def update
+      authenticate_user!
+
       quote = Quote.find(params[:id])
 
       # Update favorite status.

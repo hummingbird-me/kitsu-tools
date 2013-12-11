@@ -14,8 +14,8 @@
         <li>
           <div class="btn-group">
             <button {{bind-attr class=":btn :btn-default :dropdown-toggle :top-button libraryStatus:active"}} type="button" data-toggle="dropdown">
-              {{#if libraryStatus}}
-                {{libraryStatus}}
+              {{#if libraryEntry.status}}
+                {{libraryEntry.status}}
               {{else}}
                 add to library
               {{/if}}
@@ -26,14 +26,14 @@
               <li><a {{action setLibraryStatus "Completed"}}>Completed</a></li>
               <li><a {{action setLibraryStatus "On Hold"}}>On Hold</a></li>
               <li><a {{action setLibraryStatus "Dropped"}}>Dropped</a></li>
-              <li><a {{action setLibraryStatus nil}}>Remove from Library</a></li>
+              <li><a {{action removeFromLibrary}}>Remove from Library</a></li>
             </ul>
           </div>
         </li>
-        {{#if libraryStatus}}
+        {{#if libraryEntry.status}}
           <li>
-            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart isFavorite:active"}} {{action toggleFavorite}}>
-              <i {{bind-attr class=":fa isFavorite:fa-heart:fa-heart-o"}}></i>
+            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart libraryEntry.isFavorite:active"}} {{action toggleFavorite}}>
+              <i {{bind-attr class=":fa libraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i>
             </button>
           </li>
         {{/if}}

@@ -1,13 +1,15 @@
 class AnimeSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :canonical_title, :alternate_title, :synopsis, :cover_image, :cover_image_top_offset, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages, :community_ratings, :youtube_video_id, :is_favorite, :library_status, :bayesian_rating
+  attributes :id, :canonical_title, :alternate_title, :synopsis, :cover_image, :cover_image_top_offset, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :finished_airing, :screencaps, :languages, :community_ratings, :youtube_video_id, :bayesian_rating
 
   has_many :featured_quotes, root: :quotes
   has_many :trending_reviews, root: :reviews
   has_many :featured_castings, root: :castings
   has_many :producers, embed_key: :slug
   has_many :franchises, include: false
+
+  has_one :library_entry
 
   def id
     object.slug
@@ -82,24 +84,11 @@ class AnimeSerializer < ActiveModel::Serializer
     ratings
   end
 
-  def is_favorite
-    scope && scope.has_favorite?(object)
-  end
-
-  def library_status
-    if scope
-      watchlist = Watchlist.where(user_id: scope, anime_id: object)
-      if watchlist.length > 0
-        watchlist.first.status
-      else
-        nil
-      end
-    else
-      nil
-    end
-  end
-
   def bayesian_rating
     object.bayesian_average
+  end
+
+  def library_entry
+    scope && LibraryEntry.where(user_id: scope.id, anime_id: object.id).first
   end
 end

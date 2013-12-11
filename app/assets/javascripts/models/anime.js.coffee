@@ -20,8 +20,7 @@ Hummingbird.Anime = DS.Model.extend
   communityRatings: DS.attr('array')
   bayesianRating: DS.attr('number')
 
-  isFavorite: DS.attr('boolean')
-  libraryStatus: DS.attr('string')
+  libraryEntry: DS.belongsTo('libraryEntry')
 
   producers: DS.hasMany('producer')
   franchises: DS.hasMany('franchise', async: true)

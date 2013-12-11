@@ -17,13 +17,25 @@ Hummingbird.AnimeRoute = Ember.Route.extend
 
     toggleFavorite: ->
       alert('Need to be signed in') unless @get('currentUser.isSignedIn')
-      @currentModel.set 'isFavorite', not @currentModel.get('isFavorite')
-      @currentModel.save()
+      libraryEntry = @currentModel.get('libraryEntry')
+      libraryEntry.set 'isFavorite', not libraryEntry.get('isFavorite')
+      libraryEntry.save()
 
     toggleQuoteFavorite: (quote) ->
       quote.set 'isFavorite', not quote.get('isFavorite')
       quote.save()
 
+    removeFromLibrary: ->
+      libraryEntry = @currentModel.get('libraryEntry')
+      libraryEntry.deleteRecord()
+      libraryEntry.save()
+
     setLibraryStatus: (newStatus) ->
-      @currentModel.set 'libraryStatus', newStatus
-      @currentModel.save()
+      libraryEntry = @currentModel.get('libraryEntry')
+      if libraryEntry
+        libraryEntry.set 'status', newStatus
+      else
+        libraryEntry = @store.createRecord 'libraryEntry',
+          status: newStatus
+          anime: @currentModel
+      libraryEntry.save()
