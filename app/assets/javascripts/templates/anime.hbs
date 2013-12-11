@@ -181,7 +181,9 @@
             <ul class="nav nav-tabs">
               <li {{bind-attr class="showGenres:active"}}><a href="javascript:void(0)" {{action switchTo "Genres"}}>Genres</a></li>
               <li class="hidden-xs" {{bind-attr class="showFranchise:active"}}><a href="javascript:void(0)" {{action switchTo "Franchise"}}>Franchise</a></li>
-              <li class="hidden-xs" {{bind-attr class="showQuotes:active"}}><a href="javascript:void(0)" {{action switchTo "Quotes"}}>Quotes</a></li>
+              {{#unless notYetAired}}
+                <li class="hidden-xs" {{bind-attr class="showQuotes:active"}}><a href="javascript:void(0)" {{action switchTo "Quotes"}}>Quotes</a></li>
+              {{/unless}}
               <li {{bind-attr class=":dropdown showCast:active"}}>
                 <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Cast <b class="caret"></b></a>
                 <ul class="dropdown-menu">
