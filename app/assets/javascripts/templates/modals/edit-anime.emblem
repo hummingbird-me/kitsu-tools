@@ -7,7 +7,19 @@ bootstrap-modal action="close"
         label Synopsis
         = textarea value=synopsis class="form-control" rows=3
       .form-group
+        label Episode Count
+        = input type="number" value=episodeCount class="form-control"
+      .form-group
+        label Episode Length
+        = input type="number" value=episodeLength class="form-control"
+      .form-group
         label Poster Image URL
         = input value=posterImage class="form-control"
+      .form-group
+        label Cover Image URL
+        = input value=coverImage class="form-control"
+      .form-group
+        label Cover Image Top Offset
+        = input value=coverImageTopOffset class="form-control"
   .modal-footer
     p Modal footer...
