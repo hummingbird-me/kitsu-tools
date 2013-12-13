@@ -27,10 +27,6 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
     "http://img.youtube.com/vi/" + @get('model.youtubeVideoId') + "/hqdefault.jpg"
   ).property('model.youtubeVideoId')
 
-  trailerLink: (->
-    "http://www.youtube.com/watch?v=" + @get('model.youtubeVideoId')
-  ).property('model.youtubeVideoId')
-
   # Legacy -- remove after Ember transition is complete.
   fullQuotesURL: (-> "/anime/" + @get('model.id') + "/quotes").property('model.id')
   fullReviewsURL: (-> "/anime/" + @get('model.id') + "/reviews").property('model.id')

@@ -47,7 +47,7 @@
     <div class="gallery hidden-xs">
       {{#if youtubeVideoId}}
         <div class="trailer hidden-sm">
-          <a target="_blank" {{bind-attr href=trailerLink}}>
+          <a {{action openModal 'Youtube' this}}>
             <div class="play-icon"><i class="fa fa-play fa-4x"></i></div>
             <img width="100%" height="auto" {{bind-attr src=trailerPreviewImage}}>
           </a>

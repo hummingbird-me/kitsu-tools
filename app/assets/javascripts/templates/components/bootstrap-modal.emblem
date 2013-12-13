@@ -1,0 +1,7 @@
+.modal{action "close"} style="display: block"
+  .modal-dialog
+    .modal-content{action bubbles=false}
+      .modal-body
+        yield
+
+.modal-backdrop.fade.in

@@ -16,12 +16,6 @@ $ ->
 # Plural of anime is anime.
 Ember.Inflector.inflector.rules.uncountable['anime'] = true
 
-# Scroll to top on entering route.
-Ember.Route.reopen
-  render: (controller, model) ->
-    @_super()
-    window.scrollTo(0, 0)
-
 # Used for redirecting after log in.
 window.lastVisitedURL = '/'
 unless window.location.href.match('/sign-in')

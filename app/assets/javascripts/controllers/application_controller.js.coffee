@@ -12,6 +12,9 @@ Hummingbird.ApplicationController = Ember.Controller.extend
       else
         @afterFirstHit = true
 
+    # Scroll to the top of the page.
+    window.scrollTo(0, 0)
+
   ).observes('currentPath')
 
   actions:
