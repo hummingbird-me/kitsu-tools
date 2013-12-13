@@ -1,0 +1,7 @@
+bootstrap-modal action="close"
+  .modal-header
+    h4.modal-title Edit Anime
+  .modal-body
+    p Modal contents go here.
+  .modal-footer
+    p Modal footer...

@@ -40,7 +40,9 @@
       </ul>
       <ul class="right-buttons">
         <li>
-        {{!-- <button type="button" class="btn btn-default top-button">Follow Series</button> --}}
+          {{#if currentUser.isAdmin}}
+            <button class="btn btn-default top-button" {{action openModal 'EditAnime' this}}><i class='fa fa-pencil'></i></button>
+          {{/if}}
         </li>
       </ul>
     </div>
