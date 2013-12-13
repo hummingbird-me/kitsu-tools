@@ -2,6 +2,12 @@ bootstrap-modal action="close"
   .modal-header
     h4.modal-title Edit Anime
   .modal-body
-    p Modal contents go here.
+    form
+      .form-group
+        label Synopsis
+        = textarea value=synopsis class="form-control" rows=3
+      .form-group
+        label Poster Image URL
+        = input value=posterImage class="form-control"
   .modal-footer
     p Modal footer...
