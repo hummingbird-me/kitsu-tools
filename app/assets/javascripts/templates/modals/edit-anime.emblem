@@ -2,6 +2,13 @@ bootstrap-modal action="close"
   .modal-header
     h4.modal-title Edit Anime
   .modal-body
+    .alert.alert-danger
+      .media
+        .pull-left
+          i.fa.fa-3x.fa-exclamation-triangle <span> </span>
+        .media-body
+          strong This feature is under development.
+          div There is no way to actually save your changes right now.
     form
       .form-group
         label Synopsis
