@@ -29,4 +29,4 @@ bootstrap-modal action="close"
         label Cover Image Top Offset
         = input value=coverImageTopOffset class="form-control"
   .modal-footer
-    p Modal footer...
+    button.btn.btn-primary{action "save"} Submit
