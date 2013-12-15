@@ -41,7 +41,7 @@
       <ul class="right-buttons">
         <li>
           {{#if currentUser.isSignedIn}}
-            <button {{bind-attr class=":btn :btn-default :top-button isDirty:active"}} {{action openModal 'EditAnime' this}}><i class='fa fa-pencil'></i></button>
+            <button {{bind-attr class=":btn :btn-default :top-button isDirty:active"}} {{action openModal 'edit-anime' this}}><i class='fa fa-pencil'></i></button>
           {{/if}}
         </li>
       </ul>
@@ -49,7 +49,7 @@
     <div class="gallery hidden-xs">
       {{#if youtubeVideoId}}
         <div class="trailer hidden-sm">
-          <a {{action openModal 'Youtube' this}}>
+          <a {{action openModal 'youtube' this}}>
             <div class="play-icon"><i class="fa fa-play fa-4x"></i></div>
             <img width="100%" height="auto" {{bind-attr src=trailerPreviewImage}}>
           </a>

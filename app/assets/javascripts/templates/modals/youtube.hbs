@@ -1,7 +1,5 @@
-{{#with view as parentView}}
-  {{#bootstrap-modal action="close"}}
-    <div class="modal-body">
-      <iframe width="540" height="315" {{bind-attr src=parentView.youtubeEmbedURL}} frameborder="0" allowfullscreen></iframe>
-    </div>
-  {{/bootstrap-modal}}
-{{/with}}
+{{#bootstrap-modal action="close"}}
+  <div class="modal-body">
+    <iframe width="540" height="315" {{bind-attr src=youtubeEmbedURL}} frameborder="0" allowfullscreen></iframe>
+  </div>
+{{/bootstrap-modal}}
