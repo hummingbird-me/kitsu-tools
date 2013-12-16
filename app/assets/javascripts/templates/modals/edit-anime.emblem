@@ -29,4 +29,7 @@ bootstrap-modal action="close"
         label Cover Image Top Offset
         = input value=coverImageTopOffset class="form-control"
   .modal-footer
-    button.btn.btn-primary{action "save"} Submit
+    button.btn.btn-primary{action "save"}
+      if isSaving
+        i.fa.fa-spin.fa-spinner
+      |  Submit
