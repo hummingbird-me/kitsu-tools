@@ -92,7 +92,6 @@
                 %li.hide= link_to "About", user_path(@user)
                 %li= link_to "Library", user_watchlist_path(@user)
                 %li.hide= link_to "Reviews", user_reviews_path(@user)
-                %li.hide= link_to "Forum Posts", user_forum_posts_path(@user)
                 %li.hide= link_to "Following", "#"
                 %li.hide= link_to "Followers", "#"
                 - if @user == current_user
