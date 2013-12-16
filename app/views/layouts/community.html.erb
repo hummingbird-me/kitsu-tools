@@ -1,6 +1,11 @@
 <html>
   <head>
     <title>
+      <% if @topic %>
+        <%= @topic.subject %>
+      <% elsif @forum %>
+        <%= @forum.name %>
+      <% end %>
       (Hummingbird Forums Archive)
     </title>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
