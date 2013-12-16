@@ -1,10 +1,11 @@
 require 'open-uri'
+require 'resource_fetcher'
 
 class MalImport
   def self.create_series_castings(id)
     anime = Anime.find_by_mal_id id
 
-    noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}/a/characters", "User-Agent" => "Ruby/2 vikhyat").read
+    noko = Nokogiri::HTML ResourceFetcher.new("http://myanimelist.net/anime/#{id}/a/characters").get
     cont = noko.css('h2').select {|x| x.text.include? "Characters & Voice Actors" }[0].parent
 
     charactersc = []
@@ -48,7 +49,7 @@ class MalImport
       charmap[char[:mal_id]] = Character.find_by_mal_id(char[:mal_id]) || Character.create(name: char[:name].strip.split(', ').reverse.join(' '), mal_id: char[:mal_id])
       if charmap[char[:mal_id]].image_file_name.nil?
         begin
-          charmap[char[:mal_id]].image = URI(Nokogiri::HTML(open("http://myanimelist.net/character/#{char[:mal_id]}", "User-Agent" => "Ruby/2 vikhyat")).css("img")[0].attributes["src"].value)
+          charmap[char[:mal_id]].image = URI(Nokogiri::HTML(ResourceFetcher.new("http://myanimelist.net/character/#{char[:mal_id]}").get).css("img")[0].attributes["src"].value)
           charmap[char[:mal_id]].image = nil if charmap[char[:mal_id]].image_file_name =~ /na\.gif/
           charmap[char[:mal_id]].save
         rescue
@@ -87,7 +88,7 @@ class MalImport
     anime.castings.map {|x| x.person }.uniq.each do |person|
       if person.image_file_name.nil?
         begin
-          person.image = URI(Nokogiri::HTML(open("http://myanimelist.net/people/#{person.mal_id}", "User-Agent" => "Ruby/2 vikhyat")).css("img")[0].attributes["src"].value)
+          person.image = URI(Nokogiri::HTML(ResourceFetcher.new("http://myanimelist.net/people/#{person.mal_id}").get).css("img")[0].attributes["src"].value)
           person.image = nil if person.image_file_name =~ /na\.gif/
           person.save
         rescue
@@ -97,7 +98,7 @@ class MalImport
   end
   
   def self.series_metadata(id)
-    noko = Nokogiri::HTML open("http://myanimelist.net/anime/#{id}", "User-Agent" => "Ruby/2 vikhyat").read
+    noko = Nokogiri::HTML ResourceFetcher.new("http://myanimelist.net/anime/#{id}").get
     meta = {}
 
     # Get title and alternate title.

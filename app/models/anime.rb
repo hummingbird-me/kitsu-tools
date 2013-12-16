@@ -126,11 +126,6 @@ class Anime < ActiveRecord::Base
   end
   
   def get_metadata_from_mal
-    begin
-      MalImport.create_series_castings(id)
-    rescue
-    end
-    
     meta = MalImport.series_metadata(self.mal_id)
     self.title = meta[:title]
     self.alt_title = meta[:english_title]
@@ -153,6 +148,12 @@ class Anime < ActiveRecord::Base
     self.show_type = meta[:show_type] if meta[:show_type]
 
     self.save
+
+    begin
+      MalImport.create_series_castings(id)
+    rescue
+    end
+    
   end
 
   def show_type_enum
