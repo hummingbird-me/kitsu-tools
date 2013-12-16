@@ -48,9 +48,6 @@
             %li.hide
               = link_to "Reviews", user_reviews_path(@user)
               %span.sidebar-number= @user.reviews.count
-            %li.hide
-              = link_to "Forum Posts", user_forum_posts_path(@user)
-              %span.sidebar-number= nil
             %li{:class => ("active" if @active_tab == :following)}
               = link_to "Following", user_following_path(@user)
               %span.sidebar-number= @user.following_count
