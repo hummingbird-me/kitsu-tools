@@ -1,0 +1,50 @@
+<div class='page-header'>
+  <h1>
+    <%= link_to @topic.forum do %><i class="glyphicon glyphicon-chevron-left"></i><% end %>
+    <%= @topic.subject %>
+    <small>Page <%= params[:page] || 1 %></small>
+  </h1>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-md-2">
+      <%= @first_post.user.name %>
+    </div>
+    <div class="col-md-10">
+      <%= @first_post.formatted_html.html_safe %>
+    </div>
+  </div>
+  <div class="panel-footer post-meta">
+    Created on <%= @topic.created_at.strftime("%B %d, %Y") %> in <%= link_to @topic.forum.name, @topic.forum %>
+  </div>
+</div>
+
+<hr>
+
+<%= paginate @posts %>
+
+<% ((params[:page].nil? or params[:page] == 1) ? @posts[1..-1] : @posts).each do |post| %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-md-2">
+        <%= link_to post.user do %>
+          <div class="avatar">
+            <%= image_tag post.user.avatar.url(:thumb), class: 'img-rounded' %>
+          </div>
+          <div class="username">
+            <%= post.user.name %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-10">
+        <%= post.formatted_html.html_safe %>
+      </div>
+    </div>
+    <div class="panel-footer post-meta">
+      <%= @topic.created_at.strftime("%I:%M:%S %p (%Z) | %B %d, %Y") %>
+    </div>
+  </div>
+<% end %>
+
+<%= paginate @posts %>

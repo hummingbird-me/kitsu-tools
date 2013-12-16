@@ -15,9 +15,8 @@
               %ul.inline-list{:style => "margin-bottom: 0px;"}
                 %li.hide-for-small= link_to "About", "#"
                 %li= link_to "Explore", "/anime"
-                %li.hide-for-small= link_to "Blog", "http://blog.hummingbird.ly"
                 %li= link_to "Dashboard", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
-                %li= link_to "Community", forem.root_path
+                %li= link_to "Community", "http://forums.hummingbird.me/"
 
             .large-12.columns
               %ul.inline-list{:style => "opacity: .5; font-size: 12px;"}

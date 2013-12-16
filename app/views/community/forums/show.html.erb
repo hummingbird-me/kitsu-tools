@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1>
+    <a href="/community"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    <%= @forum.name %>
+    <small><%= @forum.topics.count %> topics</small>
+  </h1>
+</div>
+
+<ul class="list-group">
+  <% @topics.each do |topic| %>
+    <li class="list-group-item">
+      <% if topic.pinned %>
+        <i class="glyphicon glyphicon-pushpin"></i>
+      <% end %>
+      <% if topic.locked %>
+        <i class="glyphicon glyphicon-lock"></i>
+      <% end %>
+      <%= link_to topic.subject, community_forum_topic_path(@forum, topic) %>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @topics %>

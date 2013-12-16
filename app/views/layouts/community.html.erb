@@ -1,0 +1,78 @@
+<html>
+  <head>
+    <title>
+      (Hummingbird Forums Archive)
+    </title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      body {
+        padding-top: 100px;
+      }
+      nav a {
+        color: #fff !important;
+      }
+      .archive-notice {
+        opacity: 0.85;
+        z-index: 1000;
+        padding: 10px;
+        text-align: center;
+        top: 50px;
+        position: fixed;
+        width: 100%;
+        border-radius: 0;
+      }
+      .forum-name {
+        font-size: 1.4em;
+      }
+      .forum-meta {
+        margin-top: 5px;
+      }
+      .post-meta {
+        text-align: right;
+        font-size: 0.9em;
+        padding: 4px;
+        padding-right: 10px;
+      }
+      .avatar {
+        text-align: center;
+      }
+      .avatar img {
+        height: 100px;
+        width: 100px;
+      }
+      .username {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+    </style>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-37633900-1']);
+      _gaq.push(['_setDomainName', 'hummingbird.me']);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Hummingbird</a>
+      </div>
+    </nav>
+    <div class="alert alert-info archive-notice">
+      <p><strong>You are viewing the forum archives.</strong> <a class="btn btn-xs btn-primary" href="http://forums.hummingbird.me/" style="margin-left: 20px; margin-top: -3px;">Check out the new forums.</a></p>
+    </div>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

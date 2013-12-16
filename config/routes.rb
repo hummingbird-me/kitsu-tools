@@ -21,7 +21,13 @@ Hummingbird::Application.routes.draw do
 
   resources :notifications
 
-  mount Forem::Engine => "/community"
+  namespace :community do
+    get '/' => 'forums#index'
+    resources :forums do
+      resources :topics
+    end
+    mount Forem::Engine => "/"
+  end
 
   match '/lists' => 'home#lists'
   match '/privacy' => 'home#privacy'
