@@ -533,7 +533,8 @@ CREATE TABLE forem_posts (
     updated_at timestamp without time zone NOT NULL,
     reply_to_id integer,
     state character varying(255) DEFAULT 'approved'::character varying,
-    notified boolean DEFAULT false
+    notified boolean DEFAULT false,
+    formatted_html text
 );
 
 
@@ -2797,3 +2798,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131205080847');
 INSERT INTO schema_migrations (version) VALUES ('20131205081224');
 
 INSERT INTO schema_migrations (version) VALUES ('20131206232738');
+
+INSERT INTO schema_migrations (version) VALUES ('20131216082712');
