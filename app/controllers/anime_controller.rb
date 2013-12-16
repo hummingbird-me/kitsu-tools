@@ -169,7 +169,7 @@ class AnimeController < ApplicationController
                                          user_id: current_user.id)
                                   .index_by(&:anime_id)
     end
-    
+
     render :explore_filter
   end
 
@@ -187,11 +187,9 @@ class AnimeController < ApplicationController
       end
       break if @trending_reviews.length == 6
     end
-    
-    @forum_topics = Forem::Forum.find("anime-manga").topics.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
 
     return
-    
+
     ### OLD EXPLORE PAGE CODE BELOW
 
     # Establish a base scope.

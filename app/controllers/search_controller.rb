@@ -30,15 +30,6 @@ class SearchController < ApplicationController
           format.json { render :json => @results.map {|x| [x.title, x.alt_title] }.flatten.compact }
         end
 
-      elsif @search_type == "forum-posts"
-
-        @results = Forem::Post.search(:include => [:user, :topic]) do
-          fulltext params[:query]
-          paginate :page => (params[:page] || 1)
-        end.results
-
-        render "forum_posts"
-
       elsif @search_type == "users"
 
         @results = User.search do

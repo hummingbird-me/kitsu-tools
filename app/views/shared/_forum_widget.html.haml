@@ -7,10 +7,3 @@
   %hr
   %ul.sotm{:style => "text-align: center; padding-top: 15px;"}
     = link_to image_tag("sotm-oct.png"), 'http://shop.hummingbird.me/products/shirt-of-the-month-1'
-    /- forum_topics.each do |topic|
-    /  %li.large-12.columns.topic-row
-    /    .large-12.columns.no-padding.forum-title
-    /      .pull-left
-    /        = link_to truncate(topic.subject, length: 35, separator: ' '), forem.forum_topic_path(topic.forum, topic)
-    /      .forum-time.pull-right
-    /        %i #{distance_of_time_in_words_to_now(topic.last_post_at)} ago

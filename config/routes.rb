@@ -26,7 +26,6 @@ Hummingbird::Application.routes.draw do
     resources :forums do
       resources :topics
     end
-    mount Forem::Engine => "/"
   end
 
   match '/lists' => 'home#lists'
@@ -60,7 +59,6 @@ Hummingbird::Application.routes.draw do
   resources :users do
     get :watchlist
     get :reviews
-    get :forum_posts
     get :feed
     get :followers
     get :following

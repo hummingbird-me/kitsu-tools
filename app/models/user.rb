@@ -37,10 +37,7 @@ class User < ActiveRecord::Base
          :token_authenticatable, allow_unconfirmed_access_for: 3.days
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation,
-    :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio,
-    :forem_admin, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned,
-    :subscribed_to_newsletter
+  attr_accessible :name, :email, :password, :password_confirmation, :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned, :subscribed_to_newsletter
 
   has_attached_file :avatar,
     styles: {
@@ -248,15 +245,6 @@ class User < ActiveRecord::Base
       self.save
     end
   end
-
-  # Forem permissions
-  def can_read_forem_category?(category); true;       end
-  def can_read_forem_forums?;             true;       end
-  def can_read_forem_forum?(forum);       true;       end
-  def can_read_forem_topic?(topic);       true;       end
-  def can_create_forem_topic?(topic);     persisted?; end
-  def can_reply_to_forem_topic?(topic);   persisted?; end
-  def can_edit_forem_posts?(forum);       true;       end
 
   searchable do
     text :name, as: :name_fuzzy

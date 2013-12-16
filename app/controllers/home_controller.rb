@@ -14,7 +14,6 @@ class HomeController < ApplicationController
     if user_signed_in?
       @onboarding = true if params[:signup_tour]
 
-      @forum_topics = Forem::Topic.by_most_recent_post.joins(:user).where('NOT users.ninja_banned').limit(10)
       @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
       if @recent_anime.length < 4
         @recent_anime += current_user.watchlists.where("status <> 'Currently Watching'").includes(:anime).order("updated_at DESC, created_at DESC").limit(4 - @recent_anime.length)
