@@ -13,7 +13,7 @@ class Anime < ActiveRecord::Base
   serialize :rating_frequencies, ActiveRecord::Coders::Hstore
 
   has_attached_file :cover_image,
-    styles: {thumb: ["1400x500#", :jpg]},
+    styles: {thumb: ["1400x900>", :jpg]},
     convert_options: {thumb: "-quality 70 -colorspace Gray"}
 
   has_attached_file :poster_image, default_url: "/assets/missing-anime-cover.jpg",
