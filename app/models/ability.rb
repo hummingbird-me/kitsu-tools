@@ -41,7 +41,6 @@ class Ability
       if user.admin?
         ### Admin permissions
         can :update, Anime
-        can :moderate, :forum
         can :destroy, Substory
       end
     end
