@@ -9,7 +9,14 @@
 <div class="panel panel-default">
   <div class="panel-body">
     <div class="col-md-2">
-      <%= @first_post.user.name %>
+      <%= link_to @first_post.user do %>
+        <div class="avatar">
+          <%= image_tag @first_post.user.avatar.url(:thumb), class: 'img-rounded' %>
+        </div>
+        <div class="username">
+          <%= @first_post.user.name %>
+        </div>
+      <% end %>
     </div>
     <div class="col-md-10">
       <%= @first_post.formatted_html.html_safe %>
