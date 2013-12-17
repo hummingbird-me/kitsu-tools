@@ -1,7 +1,7 @@
 %td.library-item-title{:width => "495"}
   .relative-wrapper
     {{anime.title}}
-    
+
     {{#private}}
     %span.item-indicator
       &#8901;
@@ -25,9 +25,9 @@
       &#8901;
       %span.label.radius.secondary {{anime.status}}
     {{/if}}
-    
+
     %i.fa.fa-bars
-      
+
 %td.episode-count{:width => "95"}
   .relative-wrapper.episode-count
 
