@@ -73,9 +73,13 @@
       font-family: "omnes-pro",sans-serif;
       font-weight: 500;
     }
+    .top-bar-section li a {
+      background: #fff !important;
+      color: #333 !important;
+    }
     .top-bar-section li a:not(.button):hover {
-      background: white;
-      color: #fd864b;
+      background: white !important;
+      color: #fd864b !important;
     }
     .top-bar-section ul li.active a {
       background: white;
