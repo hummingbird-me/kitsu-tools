@@ -820,7 +820,8 @@ CREATE TABLE manga (
     mal_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    status character varying(255)
+    status character varying(255),
+    cover_image_top_offset integer DEFAULT 0
 );
 
 
@@ -2866,3 +2867,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131216082712');
 INSERT INTO schema_migrations (version) VALUES ('20131218090356');
 
 INSERT INTO schema_migrations (version) VALUES ('20131218095441');
+
+INSERT INTO schema_migrations (version) VALUES ('20131218122344');
