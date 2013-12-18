@@ -40,7 +40,7 @@ RailsAdmin.config do |config|
   # config.excluded_models = ['Anime', 'Casting', 'Character', 'Genre', 'Person', 'Producer', 'Quote', 'Recommendation', 'Review', 'User', 'Watchlist']
 
   # Include specific models (exclude the others):
-  config.included_models = ['Anime', 'Casting', 'Character', 'Episode', 'Franchise', 'GalleryImage', 'Genre', 'Person', 'Producer', 'Quote', 'Review', 'Story', 'Substory', 'User', 'Community::Forum', 'Community::Post', 'Community::Topic']
+  config.included_models = ['Anime', 'Casting', 'Character', 'Episode', 'Franchise', 'GalleryImage', 'Genre', 'Person', 'Producer', 'Quote', 'Review', 'Story', 'Substory', 'User', 'Community::Forum', 'Community::Post', 'Community::Topic', 'Manga']
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]

@@ -797,6 +797,53 @@ ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
 
 
 --
+-- Name: manga; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE manga (
+    id integer NOT NULL,
+    romaji_title character varying(255),
+    slug character varying(255),
+    english_title character varying(255),
+    synopsis text,
+    poster_image_file_name character varying(255),
+    poster_image_content_type character varying(255),
+    poster_image_file_size integer,
+    poster_image_updated_at timestamp without time zone,
+    cover_image_file_name character varying(255),
+    cover_image_content_type character varying(255),
+    cover_image_file_size integer,
+    cover_image_updated_at timestamp without time zone,
+    start_date date,
+    end_date date,
+    serialization character varying(255),
+    mal_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    status character varying(255)
+);
+
+
+--
+-- Name: manga_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE manga_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: manga_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE manga_id_seq OWNED BY manga.id;
+
+
+--
 -- Name: not_interesteds; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1526,6 +1573,13 @@ ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY manga ALTER COLUMN id SET DEFAULT nextval('manga_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY not_interesteds ALTER COLUMN id SET DEFAULT nextval('not_interesteds_id_seq'::regclass);
 
 
@@ -1785,6 +1839,14 @@ ALTER TABLE ONLY gallery_images
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: manga_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY manga
+    ADD CONSTRAINT manga_pkey PRIMARY KEY (id);
 
 
 --
@@ -2800,3 +2862,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131205081224');
 INSERT INTO schema_migrations (version) VALUES ('20131206232738');
 
 INSERT INTO schema_migrations (version) VALUES ('20131216082712');
+
+INSERT INTO schema_migrations (version) VALUES ('20131218090356');
+
+INSERT INTO schema_migrations (version) VALUES ('20131218095441');
