@@ -1,1 +1,10 @@
-p test
+if coverImage
+  .bg-image-wrapper.series style=coverImageStyle
+.wrapper-fade
+
+/ TODO...
+.container
+  .panel.panel-default
+    .panel-body
+      h1 #{title}
+
