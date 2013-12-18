@@ -5,6 +5,7 @@ Hummingbird::Application.routes.draw do
   namespace :api do
     namespace :v2 do
       resources :anime
+      resources :manga
       resources :quotes
       resources :franchises
       resources :library_entries
@@ -110,6 +111,8 @@ Hummingbird::Application.routes.draw do
       }
     end
   end
+
+  resources :manga
 
   match '/reviews' => 'reviews#full_index'
 
