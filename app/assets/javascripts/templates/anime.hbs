@@ -208,21 +208,21 @@
             </ul>
             <div class="tab-content">
               <div class="tab-pane active genre-tab">
-                {{#if showGenres}}
+                <div {{bind-attr class=":slider showGenres::hidden"}}>
                   {{partial "anime/genres"}}
-                {{/if}}
+                </div>
                 {{#if showFranchise}}
                   {{partial "anime/franchise"}}
                 {{/if}}
-                {{#if showQuotes}}
+                <div {{bind-attr class=":slider showQuotes::hidden"}}>
                   {{partial "anime/featured_quotes"}}
-                {{/if}}
-                {{#if showCast}}
+                </div>
+                <div {{bind-attr class=":slider showCast::hidden"}}>
                   {{partial "anime/cast"}}
-                {{/if}}
-                {{#if showStudios}}
+                </div>
+                <div {{bind-attr class=":slider showStudios::hidden"}}>
                   {{partial "anime/studios"}}
-                {{/if}}
+                </div>
               </div>
             </div>
             <div class="banner-ad" style="display: none">
