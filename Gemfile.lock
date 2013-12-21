@@ -138,7 +138,7 @@ GEM
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
-    ember-data-source (1.0.0.beta.3)
+    ember-data-source (1.0.0.beta.4)
       ember-source
     ember-rails (0.14.1)
       active_model_serializers
@@ -515,7 +515,7 @@ DEPENDENCIES
   delayed_paperclip
   devise
   devise-async
-  ember-data-source (= 1.0.0.beta.3)
+  ember-data-source (= 1.0.0.beta.4)
   ember-rails
   ember-source (= 1.2.0)
   emblem-rails (~> 0.2.1)

@@ -17,7 +17,7 @@ gem 'redis-rails'
 
 gem 'ember-rails'
 gem 'ember-source', '1.2.0'
-gem 'ember-data-source', '1.0.0.beta.3'
+gem 'ember-data-source', '1.0.0.beta.4'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'emblem-rails', '~> 0.2.1'
 
