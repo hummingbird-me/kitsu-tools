@@ -142,7 +142,7 @@
   border-radius: 100% 0 100% 100%;
   background: #fff;
   margin: 24px auto;
-  animation: spin 1s infinite;
+  animation: loading-spin 1s infinite;
   backface-visibility: hidden;
   transform: translateZ(0);
   position: relative;
@@ -160,7 +160,7 @@
   border-radius: 100%;
 }
 
-@keyframes spin {
+@keyframes loading-spin {
   0% {
     animation-timing-function: ease-in;
     transform: rotate(-20deg);
