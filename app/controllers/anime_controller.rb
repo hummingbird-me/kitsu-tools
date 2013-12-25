@@ -21,20 +21,6 @@ class AnimeController < ApplicationController
     render_ember
   end
 
-  def get_episodes_from_thetvdb
-    @anime = Anime.find(params[:anime_id])
-    authorize! :update, @anime
-    TheTvdb.save_episode_data(@anime)
-    redirect_to @anime
-  end
-
-  def get_metadata_from_mal
-    @anime = Anime.find(params[:anime_id])
-    authorize! :update, @anime
-    @anime.get_metadata_from_mal
-    redirect_to @anime
-  end
-
   def upcoming
     hide_cover_image
 
