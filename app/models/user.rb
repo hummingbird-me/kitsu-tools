@@ -279,9 +279,7 @@ class User < ActiveRecord::Base
     changes = {name: self.name_was, auth_token: self.authentication_token}
 
     # New name if changed.
-    if self.name_changed?
-      changes[:new_name] = self.name
-    end
+    changes[:new_name] = self.name
 
     # Avatar.
     changes[:new_avatar] = self.avatar_template

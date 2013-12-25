@@ -18,10 +18,13 @@ loop do
   job = $beanstalk.tubes.reserve
   job_hash = JSON.parse job.body
   username = job_hash['name']
-  user = User.find_by_username username
+  auth_token = job_hash['auth_token']
+  user = User.where(auth_token: auth_token).first || User.where(username: username).first
   avatar = job_hash['new_avatar']
+  new_name = job_hash['new_name']
   STDERR.puts "Started processing user #{username}."
   if user
+    user.username = new_name
     user.uploaded_avatar_template = avatar
     user.save
   end
