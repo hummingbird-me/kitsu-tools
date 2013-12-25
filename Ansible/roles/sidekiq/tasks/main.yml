@@ -4,4 +4,4 @@
 
 - name: Reload Monit
   action: service name=monit state=reloaded
-  only_if: ${sidekiq_monit_config.changed}
+  when: sidekiq_monit_config.changed

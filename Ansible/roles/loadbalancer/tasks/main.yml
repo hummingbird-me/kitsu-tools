@@ -14,8 +14,8 @@
 
 - name: Reload Monit
   service: name=monit state=reloaded
-  only_if: ${haproxy_monit_config.changed}
+  when: haproxy_monit_config.changed
 
 - name: Restart HAProxy if needed.
   shell: kill `cat /var/run/haproxy.pid` && monit start haproxy
-  only_if: ${haproxy_config.changed}
+  when: haproxy_config.changed

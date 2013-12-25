@@ -1,19 +1,19 @@
 - name: Install Redis
   action: apt pkg=redis-server state=present
-    
+
 - name: Don't start Redis on boot
   action: service name=redis-server state=stopped enabled=no
 
 - name: Copy Redis configuration
   action: copy src=redis.conf dest=/etc/redis/redis.conf
-    
+
 - name: Add Redis to Monit
   action: copy src=redis.monit dest=/etc/monit/conf.d/redis.monit
   register: redis_monit_config
-    
+
 - name: Reload Monit
   action: service name=monit state=reloaded
-  only_if: ${redis_monit_config.changed}
-    
+  when: redis_monit_config.changed
+
 - name: Start Redis with Monit
   action: monit name=redis-server state=started

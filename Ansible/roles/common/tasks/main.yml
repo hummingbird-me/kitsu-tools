@@ -30,7 +30,7 @@
 
 - name: Reconfigure tzdata
   shell: dpkg-reconfigure -f noninteractive tzdata
-  only_if: ${timezone.changed}
+  when: timezone.changed
 
 - name: Copy SSH stuff
   copy: dest=/home/vikhyat/.ssh/$item src=$item

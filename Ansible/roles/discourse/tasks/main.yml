@@ -23,9 +23,9 @@
 
 - name: discourse | restart monit
   service: name=monit state=restarted
-  only_if: ${monit_config.changed}
+  when: monit_config.changed
 
 - name: discourse | restart sync
   shell: monit restart sync
-  only_if: ${project.changed}
+  when: project.changed
 

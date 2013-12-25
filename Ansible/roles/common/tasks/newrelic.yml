@@ -4,11 +4,11 @@
 
 - name: Add New Relic key
   shell: apt-key adv --keyserver hkp://subkeys.pgp.net --recv-keys 548C16BF
-  only_if: ${new_relic_repo.changed}
+  when: new_relic_repo.changed
 
 - name: Update apt cache
   apt: update_cache=yes
-  only_if: ${new_relic_repo.changed}
+  when: new_relic_repo.changed
 
 - name: Install server monitor daemon
   apt: pkg=newrelic-sysmond

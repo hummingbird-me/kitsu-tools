@@ -10,7 +10,7 @@
 
 - name: Reload virtual map file
   shell: postmap /etc/postfix/virtual && service postfix reload
-  only_if: ${virtual.changed}
+  when: virtual.changed
 
 - name: Install nodejs and npm
   apt: pkg=$item state=present
