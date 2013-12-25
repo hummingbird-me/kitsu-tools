@@ -276,7 +276,7 @@ class User < ActiveRecord::Base
   end
 
   def sync_to_forum!
-    changes = {name: self.name_was}
+    changes = {name: self.name_was, auth_token: self.authentication_token}
 
     # New name if changed.
     if self.name_changed?
