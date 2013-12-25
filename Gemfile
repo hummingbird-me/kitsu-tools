@@ -111,8 +111,7 @@ gem 'sidekiq-throttler'
 gem 'slim'
 gem 'sinatra', :require => nil
 
-# Fuzzy Search with Postgres.
-gem 'pg_search', git: "git@github.com:Casecommons/pg_search.git"
+gem 'pg_search', '~> 0.7'
 
 # Admin panel
 gem "rails_admin"
@@ -120,7 +119,7 @@ gem "rails_admin"
 # For voting on stuff.
 gem "activerecord-reputation-system", require: 'reputation_system'
 
-# Use Puma as the app server
+# Use Unicorn as the app server
 gem 'unicorn'
 
 # Needed for MAL import.
