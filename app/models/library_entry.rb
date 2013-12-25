@@ -5,6 +5,7 @@ class LibraryEntry < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :anime
+  has_many :stories, dependent: :destroy
 
   validates :user, :anime, :status, presence: true
   validates :user_id, uniqueness: {scope: :anime_id}
@@ -12,7 +13,6 @@ class LibraryEntry < ActiveRecord::Base
   VALID_STATUSES = ["Currently Watching", "Plan to Watch", "Completed", "On Hold",
                     "Dropped"]
   validates :status, inclusion: {in: VALID_STATUSES}
-
 
   # FIXME Need to write tests for this. Also need to improve this interface. :/
   def generate_status_change_story

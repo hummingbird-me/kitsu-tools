@@ -14,10 +14,6 @@ class Watchlist < ActiveRecord::Base
     ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   end
 
-  def episodes
-    self.anime.episodes[0..self.episodes_watched]
-  end
-
   def self.status_parameter_to_status(snake)
     t = {
       "currently-watching" => "Currently Watching",
@@ -28,7 +24,7 @@ class Watchlist < ActiveRecord::Base
     }
     t[snake]
   end
-  
+
   validates :status, inclusion: { in: Watchlist.valid_statuses }
 
   def positive?
@@ -58,7 +54,7 @@ class Watchlist < ActiveRecord::Base
       self.status = "Completed"
     end
   end
-  
+
   include ActionView::Helpers::TextHelper
   def to_hash(current_user=nil)
     {
@@ -109,7 +105,7 @@ class Watchlist < ActiveRecord::Base
 
     self.user.update_life_spent_on_anime( (self.episodes_watched - old_count) * (self.anime.episode_length || 0) )
   end
-  
+
   def update_rewatched_times(new_times)
     old_times = self.rewatched_times || 0
     self.rewatched_times = new_times
@@ -132,8 +128,8 @@ class Watchlist < ActiveRecord::Base
       end
     end
 
-    if self.rewatching_changed? 
-      # If "rewatching" was set to true and was false earlier, set the status 
+    if self.rewatching_changed?
+      # If "rewatching" was set to true and was false earlier, set the status
       # to "Currently Watching" and "episodes_watched" to 0.
       if self.rewatching and not self.rewatching_was
         self.status = "Currently Watching"
@@ -157,11 +153,11 @@ class Watchlist < ActiveRecord::Base
   after_save do
     self.user.update_column :last_library_update, Time.now
   end
-  
+
   after_create do
     TrendingAnime.vote self.anime_id
   end
-  
+
   before_destroy do
     self.rating = nil
     self.update_episode_count 0

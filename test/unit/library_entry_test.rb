@@ -3,6 +3,7 @@ require 'test_helper'
 class LibraryEntryTest < ActiveSupport::TestCase
   should belong_to(:user)
   should belong_to(:anime)
+  should have_many(:stories).dependent(:destroy)
   should validate_presence_of(:user)
   should validate_presence_of(:anime)
   should validate_presence_of(:status)
