@@ -2335,6 +2335,20 @@ CREATE INDEX index_watchlists_on_user_id_and_status ON watchlists USING btree (u
 
 
 --
+-- Name: manga_fuzzy_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX manga_fuzzy_search_index ON manga USING gin ((((COALESCE((romaji_title)::text, ''::text) || ' '::text) || COALESCE((english_title)::text, ''::text))) gin_trgm_ops);
+
+
+--
+-- Name: manga_simple_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX manga_simple_search_index ON manga USING gin (((to_tsvector('simple'::regconfig, COALESCE((romaji_title)::text, ''::text)) || to_tsvector('simple'::regconfig, COALESCE((english_title)::text, ''::text)))));
+
+
+--
 -- Name: person_mal_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2869,3 +2883,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131218090356');
 INSERT INTO schema_migrations (version) VALUES ('20131218095441');
 
 INSERT INTO schema_migrations (version) VALUES ('20131218122344');
+
+INSERT INTO schema_migrations (version) VALUES ('20131226003349');
