@@ -6,6 +6,8 @@
       .small-12.large-11.columns
         .large-12.columns.title
           = link_to manga.romaji_title, manga
+          - if manga.english_title and manga.english_title.length > 0
+            %span (#{manga.english_title})
         .large-12.columns.synopsis
           %p
             = truncate(manga.synopsis, length: 280, separator: ' ')
