@@ -1,0 +1,14 @@
+%ul.anime-list
+  - @results.each do |manga|
+    %li.search-result.cf
+      .large-1.columns.hide-for-small.thumbnail.no-padding-right
+        = image_tag manga.poster_image.url(:medium)
+      .small-12.large-11.columns
+        .large-12.columns.title
+          = link_to manga.romaji_title, manga
+        .large-12.columns.synopsis
+          %p
+            = truncate(manga.synopsis, length: 280, separator: ' ')
+            - if manga.synopsis.length > 280
+              %span
+                %a{:onclick => "$(this).parent().parent().html('#{j manga.synopsis}')"} [read more]

@@ -13,11 +13,10 @@
       .large-12.columns.option-bar
         .small-6.large-2.columns.hide-for-small
           %p.option-title Search Results
-          
-        .small-12.large-9.columns.options 
-          /.hide-for-medium-down
+
+        .small-12.large-9.columns.options
           %ul.status-tabs.inline-list
-            - %w[ anime forum-posts users ].each do |t|
+            - %w[ anime manga users ].each do |t|
               %li{:class => ("active" if @search_type == t)}
                 = link_to t.titleize, search_path(type: t, query: params[:query])
       = yield
