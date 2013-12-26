@@ -60,7 +60,7 @@ class AnimeController < ApplicationController
     else
       @anime = @anime.where('started_airing_date IS NULL')
     end
-    
+
     @anime = @anime.order_by_popularity.group_by {|anime| anime.show_type }
   end
 

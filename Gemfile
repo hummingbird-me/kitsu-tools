@@ -73,6 +73,8 @@ end
 group :test do
   gem 'simplecov'
   gem 'shoulda'
+  gem 'timecop'
+  gem 'mock_redis'
 end
 
 gem 'jquery-rails'

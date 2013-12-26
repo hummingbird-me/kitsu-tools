@@ -243,6 +243,7 @@ GEM
       escape
       json
       rack
+    mock_redis (0.10.0)
     mtrc (0.0.4)
     multi_json (1.8.2)
     multi_xml (0.5.3)
@@ -465,6 +466,7 @@ GEM
       ref
     thor (0.18.1)
     tilt (1.3.7)
+    timecop (0.7.0)
     timers (1.1.0)
     treetop (1.4.15)
       polyglot
@@ -528,6 +530,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   mixpanel
+  mock_redis
   newrelic-grape
   newrelic_rpm
   nokogiri
@@ -565,6 +568,7 @@ DEPENDENCIES
   sunspot_rails
   sunspot_solr
   therubyracer
+  timecop
   uglifier (>= 1.0.3)
   unicorn
   zurb-foundation (~> 4.3.0)
