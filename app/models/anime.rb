@@ -23,18 +23,18 @@ class Anime < ActiveRecord::Base
     Rails.cache.fetch("anime_poster_image_thumb:#{self.id}") { self.poster_image.url(:large) }
   end
 
-  has_many :quotes
+  has_many :quotes, dependent: :destroy
   has_many :castings, dependent: :destroy
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
   has_many :episodes, dependent: :destroy
-  has_many :gallery_images
+  has_many :gallery_images, dependent: :destroy
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
   has_and_belongs_to_many :franchises
 
   has_many :watchlists, dependent: :destroy
 
-  validates :title, :slug, :presence => true, :uniqueness => true
+  validates :title, :presence => true, :uniqueness => true
 
   # Filter out hentai if `filterp` is true or nil.
   def self.sfw_filter(current_user)
@@ -75,7 +75,7 @@ class Anime < ActiveRecord::Base
     if title_language_preference and title_language_preference.class == User
       title_language_preference = title_language_preference.title_language_preference
     end
-    
+
     if title_language_preference and title_language_preference == "romanized"
       return alt_title
     elsif title_language_preference and title_language_preference == "english"
@@ -124,7 +124,7 @@ class Anime < ActiveRecord::Base
       "PG"                              => ["PG",   "Children"]
     }[rating] || [rating, nil]
   end
-  
+
   def get_metadata_from_mal
     meta = MalImport.series_metadata(self.mal_id)
     self.title = meta[:title]
@@ -141,7 +141,7 @@ class Anime < ActiveRecord::Base
     self.castings.select {|x| x.character and meta[:featured_character_mal_ids].include? x.character.mal_id }.each do |c|
       c.featured = true; c.save
     end
-    
+
     self.started_airing_date = meta[:dates][:from]
     self.finished_airing_date = meta[:dates][:to]
 
@@ -153,7 +153,7 @@ class Anime < ActiveRecord::Base
       MalImport.create_series_castings(id)
     rescue
     end
-    
+
   end
 
   def show_type_enum
