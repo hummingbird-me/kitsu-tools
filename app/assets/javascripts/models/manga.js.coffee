@@ -4,3 +4,4 @@ Hummingbird.Manga = DS.Model.extend
   coverImage: DS.attr('string')
   coverImageTopOffset: DS.attr('string')
   posterImage: DS.attr('string')
+  synopsis: DS.attr('string')
