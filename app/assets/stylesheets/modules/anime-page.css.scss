@@ -35,7 +35,7 @@
 }
 
 .sidebar-copy {
-  @include make-sm-column(12);
+  @include make-xs-column(7);
   @include clearfix();
   @media (max-width: 941px) {
     padding-bottom: 5px;
@@ -296,9 +296,8 @@
 }
 
 .series-infobar {
-  @include make-xs-column(7);
   padding-left: 0;
-  padding-right: 0; 
+  padding-right: 0;
 }
 
 .info-tabs {

@@ -63,23 +63,28 @@
     <div class="series-body">
       <div class="panel panel-default series-panel">
         <div class="series-sidebar">
+          <!-- Mobile title -->
           <div class="series-title-wrapper hidden-sm hidden-md hidden-lg">
-            <h4 class="series-title">{{canonicalTitle}}</h4>
+            <h4 class="series-title">
+              {{canonicalTitle}}
+              {{#if alternateTitle}}
+                <small>{{alternateTitle}}</small>
+              {{/if}}
+            </h4>
           </div>
 
           <div class="poster-container">
             <img class="series-poster" {{bind-attr src=posterImage}}>
           </div>
 
-          <div class="series-infobar hidden-sm hidden-md hidden-lg">{{partial "anime/infobar"}}</div>
-          <div class="sidebar-copy">
-            <div class="series-description hidden-sm hidden-md hidden-lg">
-              <p>{{truncate-text text=synopsis length=500}}</p>
+          <div class="sidebar-copy hidden-sm hidden-md hidden-lg">
+            <div class="series-infobar">{{partial "anime/infobar"}}</div>
+            <div class="series-description">
+              <p>{{truncate-text text=synopsis length=300}}</p>
             </div>
           </div>
 
-          <div class="personal-rating active">
-          </div>
+          <div class="personal-rating active"></div>
           {{!--
             <h5 class="sidebar-title text-center">Your Rating</h5>
             <!-- Star Rating -->
