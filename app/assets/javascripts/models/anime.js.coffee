@@ -13,6 +13,7 @@ Hummingbird.Anime = DS.Model.extend
   episodeCount: DS.attr('number')
   episodeLength: DS.attr('number')
   startedAiring: DS.attr('date')
+  startedAiringDateKnown: DS.attr('boolean')
   finishedAiring: DS.attr('date')
   screencaps: DS.attr('array')
   languages: DS.attr('array')
@@ -50,7 +51,8 @@ Hummingbird.Anime = DS.Model.extend
 
   formattedAirDates: (->
     if @get('startedAiring')
-      formattedStartedAiring = moment(@get('startedAiring')).format("D MMM YYYY")
+      format = if @get('startedAiringDateKnown') then "D MMM YYYY" else "MMM YYYY"
+      formattedStartedAiring = moment(@get('startedAiring')).format(format)
     else
       formattedStartedAiring = "?"
 
