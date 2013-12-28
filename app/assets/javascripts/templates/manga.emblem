@@ -2,8 +2,31 @@ if coverImage
   .bg-image-wrapper.series style=coverImageStyle
 .wrapper-fade
 
-/ TODO...
-.container
+div class={:container coverImage:bg-image:no-bg-image}
+  / Library Table Row
+  .row
+    .top-buttons
+      ul.left-buttons
+        li
+          .btn-group
+            button.btn.btn-default.dropdown-toggle.top-button data-toggle="dropdown"
+              | add to library
+            ul.dropdown-menu
+              li: a Coming soon!
+
+      ul.right-buttons
+        li
+          button class={:btn :btn-default :top-button isDirty:active}
+            i.fa.fa-pencil
+
+  / Gallery goes here.
+  .gallery.hidden-xs
+    ul.gallery-images
+
+  / TODO Finish this up.
+  .series-body
+    .panel.panel-default.series-panel
+
   .panel.panel-default
     .panel-body
       h1 #{title}
