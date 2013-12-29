@@ -1,7 +1,7 @@
 class MangaSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :romaji_title, :english_title, :cover_image, :cover_image_top_offset, :poster_image, :synopsis
+  attributes :id, :romaji_title, :english_title, :cover_image, :cover_image_top_offset, :poster_image, :synopsis, :chapter_count, :volume_count
 
   def id
     object.slug

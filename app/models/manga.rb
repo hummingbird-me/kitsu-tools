@@ -23,6 +23,8 @@
 #  updated_at                :datetime         not null
 #  status                    :string(255)
 #  cover_image_top_offset    :integer          default(0)
+#  volume_count              :integer
+#  chapter_count             :integer
 #
 
 class Manga < ActiveRecord::Base

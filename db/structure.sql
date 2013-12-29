@@ -822,7 +822,9 @@ CREATE TABLE manga (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     status character varying(255),
-    cover_image_top_offset integer DEFAULT 0
+    cover_image_top_offset integer DEFAULT 0,
+    volume_count integer,
+    chapter_count integer
 );
 
 
@@ -2888,3 +2890,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131218122344');
 INSERT INTO schema_migrations (version) VALUES ('20131226003349');
 
 INSERT INTO schema_migrations (version) VALUES ('20131228215205');
+
+INSERT INTO schema_migrations (version) VALUES ('20131229043925');
