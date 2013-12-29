@@ -9,6 +9,7 @@ Hummingbird::Application.routes.draw do
       resources :quotes
       resources :franchises
       resources :library_entries
+      resources :reviews
     end
   end
 

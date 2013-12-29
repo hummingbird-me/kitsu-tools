@@ -17,3 +17,7 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
   amazonLink: (->
     "http://www.amazon.com/s/?field-keywords=" + encodeURIComponent(@get('model.canonicalTitle')) + "&tag=hummingbir0fe-20"
   ).property('model.canonicalTitle')
+
+  # Legacy -- remove after Ember transition is complete.
+  newReviewURL: (-> "/anime/" + @get('model.id') + "/reviews/new").property('model.id')
+  # End Legacy

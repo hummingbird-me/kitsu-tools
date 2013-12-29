@@ -102,13 +102,24 @@
 
 .series-title {
   font-weight: normal;
+  font-size: 30px;
   margin-bottom: 10px;
   border-bottom: 1px solid #ddd;
   padding-bottom: 5px;
   @media (max-width: 941px) {
     margin-bottom: 10px;
   }
+
+  .fa {
+    margin: 0 4px 0 6px;
+    font-size: 17px;
+  }
+
+  a {
+    color: #333;
+  }
 }
+
 .series-metadata {
   color: #888;
   font-size: 14px;

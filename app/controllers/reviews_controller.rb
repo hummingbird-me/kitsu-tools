@@ -5,9 +5,14 @@ class ReviewsController < ApplicationController
 
   def index
     @anime = Anime.find(params[:anime_id])
-    if user_signed_in?
-      @watchlist = current_user.watchlists.where(anime_id: @anime).first
-    end
+
+    preload! "anime", @anime
+    preload! "review", @anime.reviews
+
+    render "anime/show", layout: "redesign"
+
+    return
+
     @reviews = Review.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => 'votes DESC'})
     @user_evaluations = Hash.new(false)
     if user_signed_in?
@@ -25,7 +30,7 @@ class ReviewsController < ApplicationController
       @evaluation = @review.evaluations.where(source_id: current_user.id).first
     end
   end
-  
+
   def vote
     authenticate_user!
     value = params[:type] == "up" ? 1 : 0
@@ -34,7 +39,7 @@ class ReviewsController < ApplicationController
     @review.update_wilson_score!
     redirect_to :back
   end
-  
+
   def new
     authenticate_user!
     @anime = Anime.find(params[:anime_id])
@@ -48,13 +53,13 @@ class ReviewsController < ApplicationController
 
   def create
     authenticate_user!
-    
+
     @anime = Anime.find(params[:anime_id])
     @review = Review.find_by_user_id_and_anime_id(current_user.id, @anime.id)
     if @review.nil?
       @review = Review.new(user: current_user, anime: @anime)
     end
-    
+
     @review.content = params["review"]["content"]
     @review.summary = params["review"]["summary"]
     @review.summary = nil if @review.summary.strip.length == 0
@@ -86,7 +91,7 @@ class ReviewsController < ApplicationController
       # Logic
     end
   end
-  
+
   def update
     create
   end

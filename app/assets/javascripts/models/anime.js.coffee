@@ -26,6 +26,7 @@ Hummingbird.Anime = DS.Model.extend
   producers: DS.hasMany('producer')
   franchises: DS.hasMany('franchise', async: true)
   featuredQuotes: DS.hasMany('quote')
+  reviews: DS.hasMany('review', async: true)
   trendingReviews: DS.hasMany('review')
   featuredCastings: DS.hasMany('casting')
 

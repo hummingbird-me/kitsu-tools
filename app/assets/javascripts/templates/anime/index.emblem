@@ -1,3 +1,12 @@
+h1.series-title.hidden-xs
+  | #{canonicalTitle}
+  if alternateTitle
+    small
+      bootstrap-tooltip title=alternateTitle placement="right"
+        i.fa.fa-question-circle
+
+.hidden-xs: partial "anime/infobar"
+
 .series-description.hidden-xs
   p: truncate-text text=synopsis length=500
 
@@ -68,5 +77,5 @@ unless notYetAired
         i.empty-icon.fa.fa-meh
         h4 Well, this is pretty awkward.
         p You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.
-        a.btn.btn-default href=newReviewURL Write the first review
+        a.btn.btn-default href=anime.newReviewURL Write the first review
 
