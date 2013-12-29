@@ -60,6 +60,10 @@ group :development do
   gem 'rack-livereload'
   gem 'rb-fsevent', require: false
   gem 'qunit-rails'
+
+  # Deploy with Capistrano
+  gem 'capistrano', require: false
+  gem 'rvm-capistrano', require: false
 end
 
 gem 'skylight', '0.1.8'
@@ -126,10 +130,6 @@ gem 'unicorn'
 
 # Needed for MAL import.
 gem 'nokogiri', require: false
-
-# Deploy with Capistrano
-gem 'capistrano'
-gem 'rvm-capistrano'
 
 # Image optimization
 gem 'image_optim', require: false
