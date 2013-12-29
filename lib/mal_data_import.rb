@@ -12,7 +12,7 @@ class MALDataImport
     manga.end_date = DateTime.parse(json["dates"]["to"]).to_date if json["dates"] and json["dates"]["to"]
 
     if Rails.env.production?
-      manga.poster_image = URI(json["cover_image"]) if json["cover_image"]
+      manga.poster_image = URI(json["poster_image"]) if json["poster_image"]
     end
 
     manga.save
