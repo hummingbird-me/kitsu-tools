@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: forem_topics
+#
+#  id           :integer          not null, primary key
+#  forum_id     :integer
+#  user_id      :integer
+#  subject      :string(255)
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  locked       :boolean          default(FALSE), not null
+#  pinned       :boolean          default(FALSE)
+#  hidden       :boolean          default(FALSE)
+#  last_post_at :datetime
+#  state        :string(255)      default("approved")
+#  views_count  :integer          default(0)
+#  slug         :string(255)
+#
+
 module Community
   class Topic < ActiveRecord::Base
     self.table_name = 'forem_topics'

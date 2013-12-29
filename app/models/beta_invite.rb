@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: beta_invites
+#
+#  id              :integer          not null, primary key
+#  email           :string(255)
+#  token           :string(255)
+#  invited         :boolean          default(FALSE)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  subscribed      :boolean          default(TRUE)
+#  encrypted_email :string(255)
+#
+
 class BetaInvite < ActiveRecord::Base
   attr_accessible :email, :invited, :token, :encrypted_email
   

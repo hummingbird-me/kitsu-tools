@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: watchlists
+#
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  anime_id         :integer
+#  status           :string(255)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  episodes_watched :integer          default(0)
+#  rating           :decimal(2, 1)
+#  last_watched     :datetime
+#  imported         :boolean
+#  private          :boolean          default(FALSE)
+#  notes            :text
+#  rewatched_times  :integer          default(0)
+#  rewatching       :boolean
+#
+
 class Watchlist < ActiveRecord::Base
   belongs_to :user
   belongs_to :anime

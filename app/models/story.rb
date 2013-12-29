@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: stories
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  data         :hstore
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  story_type   :string(255)
+#  target_id    :integer
+#  target_type  :string(255)
+#  watchlist_id :integer
+#  adult        :boolean          default(FALSE)
+#
+
 class Story < ActiveRecord::Base
   belongs_to :watchlist
   belongs_to :user

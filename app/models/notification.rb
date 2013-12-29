@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id                :integer          not null, primary key
+#  user_id           :integer
+#  source_id         :integer
+#  source_type       :string(255)
+#  data              :hstore
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  notification_type :string(255)
+#  seen              :boolean          default(FALSE)
+#
+
 class Notification < ActiveRecord::Base
   belongs_to :user
   belongs_to :source, polymorphic: true

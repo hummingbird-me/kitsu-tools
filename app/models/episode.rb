@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: episodes
+#
+#  id            :integer          not null, primary key
+#  anime_id      :integer
+#  number        :integer
+#  title         :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  season_number :integer
+#
+
 class Episode < ActiveRecord::Base
   belongs_to :anime
   attr_accessible :anime_id, :number, :title, :anime, :season_number
