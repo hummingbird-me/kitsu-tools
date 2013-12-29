@@ -4,10 +4,10 @@ class MALDataImport
 
     manga = Manga.find_by_mal_id(json["mal_id"]) || Manga.new(mal_id: json["mal_id"])
 
-    manga.romaji_title = json["romaji_title"] if json["romaji_title"]
-    manga.english_title = json["english_title"] if json["english_title"]
-    manga.synopsis = json["synopsis"] if json["synopsis"]
-    manga.status = json["status"] if json["status"]
+    manga.romaji_title = json["romaji_title"]
+    manga.english_title = json["english_title"]
+    manga.synopsis = json["synopsis"]
+    manga.status = json["status"]
     manga.start_date = DateTime.parse(json["dates"]["from"]).to_date if json["dates"] and json["dates"]["from"]
     manga.end_date = DateTime.parse(json["dates"]["to"]).to_date if json["dates"] and json["dates"]["to"]
     manga.volume_count = json["volumes"]
