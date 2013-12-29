@@ -52,12 +52,12 @@ Hummingbird.Anime = DS.Model.extend
   formattedAirDates: (->
     if @get('startedAiring')
       format = if @get('startedAiringDateKnown') then "D MMM YYYY" else "MMM YYYY"
-      formattedStartedAiring = moment(@get('startedAiring')).format(format)
+      formattedStartedAiring = moment(@get('startedAiring')).utc().format(format)
     else
       formattedStartedAiring = "?"
 
     if @get('finishedAiring')
-      formattedFinishedAiring = moment(@get('finishedAiring')).format("D MMM YYYY")
+      formattedFinishedAiring = moment(@get('finishedAiring')).utc().format("D MMM YYYY")
     else
       formattedFinishedAiring = "?"
 
