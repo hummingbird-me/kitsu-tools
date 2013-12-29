@@ -19,41 +19,41 @@ div class={:container coverImage:bg-image:no-bg-image}
           button class={:btn :btn-default :top-button isDirty:active}
             i.fa.fa-pencil
 
-  / Gallery goes here.
-  .gallery.hidden-xs
-    ul.gallery-images
+    / Gallery goes here.
+    .gallery.hidden-xs
+      ul.gallery-images
 
-  .series-body
-    .panel.panel-default.series-panel
-      .series-sidebar
-        / Mobile title
-        .series-title-wrapper.visible-xs
-          h4.series-title
+    .series-body
+      .panel.panel-default.series-panel
+        .series-sidebar
+          / Mobile title
+          .series-title-wrapper.visible-xs
+            h4.series-title
+              | #{romajiTitle}
+              if englishTitle
+                small (#{englishTitle})
+          / Poster
+          .poster-container
+            img.series-poster src=posterImage
+
+          .sidebar-copy.visible-xs
+            / TODO Manga infobar
+            .series-infobar
+            .series-description
+              p: truncate-text text=synopsis length=300
+
+        .series-content
+          h2.series-title.hidden-xs
             | #{romajiTitle}
             if englishTitle
-              small (#{englishTitle})
-        / Poster
-        .poster-container
-          img.series-poster src=posterImage
+              small
+                bootstrap-tooltip title=englishTitle placement="right"
+                  i.fa.fa-question-circle
 
-        .sidebar-copy.visible-xs
-          / TODO Manga infobar
-          .series-infobar
-          .series-description
-            p: truncate-text text=synopsis length=300
+          / Manga infobar
+          .hidden-xs
 
-      .series-content
-        h2.series-title.hidden-xs
-          | #{romajiTitle}
-          if englishTitle
-            small
-              bootstrap-tooltip title=englishTitle placement="right"
-                i.fa.fa-question-circle
-
-        / Manga infobar
-        .hidden-xs
-
-        .series-description.hidden-xs
-          p: truncate-text text=synopsis length=500
+          .series-description.hidden-xs
+            p: truncate-text text=synopsis length=500
 
 
