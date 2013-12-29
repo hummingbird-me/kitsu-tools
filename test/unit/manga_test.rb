@@ -31,6 +31,7 @@ require 'test_helper'
 
 class MangaTest < ActiveSupport::TestCase
   should validate_presence_of(:romaji_title)
+  should have_and_belong_to_many(:genres)
 
   test "should implement search scopes" do
     assert Manga.fuzzy_search_by_title("monstre").include?(manga(:monster)), "manga fuzzy search"

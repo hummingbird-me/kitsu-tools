@@ -798,6 +798,16 @@ ALTER SEQUENCE genres_id_seq OWNED BY genres.id;
 
 
 --
+-- Name: genres_manga; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE genres_manga (
+    manga_id integer NOT NULL,
+    genre_id integer NOT NULL
+);
+
+
+--
 -- Name: manga; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1995,6 +2005,20 @@ CREATE UNIQUE INDEX character_mal_id ON characters USING btree (mal_id);
 
 
 --
+-- Name: index_anime_genres_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_anime_genres_on_anime_id ON anime_genres USING btree (anime_id);
+
+
+--
+-- Name: index_anime_genres_on_genre_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_anime_genres_on_genre_id ON anime_genres USING btree (genre_id);
+
+
+--
 -- Name: index_anime_on_mal_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2223,6 +2247,20 @@ CREATE INDEX index_friendly_id_slugs_on_sluggable_type ON friendly_id_slugs USIN
 --
 
 CREATE INDEX index_gallery_images_on_anime_id ON gallery_images USING btree (anime_id);
+
+
+--
+-- Name: index_genres_manga_on_genre_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_genres_manga_on_genre_id ON genres_manga USING btree (genre_id);
+
+
+--
+-- Name: index_genres_manga_on_manga_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_genres_manga_on_manga_id ON genres_manga USING btree (manga_id);
 
 
 --
@@ -2892,3 +2930,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131226003349');
 INSERT INTO schema_migrations (version) VALUES ('20131228215205');
 
 INSERT INTO schema_migrations (version) VALUES ('20131229043925');
+
+INSERT INTO schema_migrations (version) VALUES ('20131229051532');
+
+INSERT INTO schema_migrations (version) VALUES ('20131229052255');

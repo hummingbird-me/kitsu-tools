@@ -47,4 +47,6 @@ class Manga < ActiveRecord::Base
 
   has_attached_file :poster_image, default_url: "/assets/missing-anime-cover.jpg",
     styles: {large: "200x290!", medium: "100x150!"}
+
+  has_and_belongs_to_many :genres
 end
