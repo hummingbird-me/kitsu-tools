@@ -2,30 +2,13 @@ Hummingbird.AnimeRoute = Ember.Route.extend
   model: (params) ->
     @store.find('anime', params.id)
 
-  afterModel: (resolvedModel) ->
-    Hummingbird.TitleManager.setTitle resolvedModel.get('canonicalTitle')
-
   actions:
-    setLanguage: (language) ->
-      @set 'controller.language', language
-      @send 'switchTo', 'Cast'
-
-    switchTo: (newTab) ->
-      @set 'controller.activeTab', newTab
-      if newTab == "Franchise"
-        @get 'model.franchise'
-
     toggleFavorite: ->
       alert('Need to be signed in') unless @get('currentUser.isSignedIn')
       libraryEntry = @currentModel.get('libraryEntry')
       libraryEntry.set 'isFavorite', not libraryEntry.get('isFavorite')
       libraryEntry.save().then Ember.K, ->
         libraryEntry.rollback()
-
-    toggleQuoteFavorite: (quote) ->
-      quote.set 'isFavorite', not quote.get('isFavorite')
-      quote.save().then Ember.K, ->
-        quote.rollback()
 
     removeFromLibrary: ->
       anime = @currentModel

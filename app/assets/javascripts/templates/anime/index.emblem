@@ -1,0 +1,72 @@
+.series-description.hidden-xs
+  p: truncate-text text=synopsis length=500
+
+.info-tabs
+  ul.nav.nav-tabs
+    li class={showGenres:active}
+      a{action switchTo "Genres"} Genres
+    li class={:hidden-xs showFranchise:active}
+      a{action switchTo "Franchise"} Franchise
+    unless notYetAired
+      li class={:hidden-xs showQuotes:active}
+        a{action switchTo "Quotes"} Quotes
+    li class={:dropdown showCast:active}
+      a.dropdown-toggle data-toggle="dropdown"
+        | Cast
+        b.caret
+      ul.dropdown-menu
+        each language in languages
+          li: a{action setLanguage language} #{language}
+    li class={:hidden-xs showStudios:active}
+      a{action switchTo "Studios"} Studios
+    li.dropdown.visible-xs
+      a.dropdown-toggle data-toggle="dropdown"
+        | More
+        b.caret
+        ul.dropdown-menu
+          li: a{action switchTo "Franchise"} Franchise
+          unless notYetAired
+            li: a{action switchTo "Quotes"} Quotes
+          li: a{action switchTo "Studios"} Studios
+
+  .tab-content
+    .tab-pane.active.genre-tab
+      div class={:slider showGenres::hidden}
+        partial "anime/genres"
+      if showFranchise
+        partial "anime/franchise"
+      div class={:slider showQuotes::hidden}
+        partial "anime/featured_quotes"
+      div class={:slider showCast::hidden}
+        partial "anime/cast"
+      div class={:slider showStudios::hidden}
+        partial "anime/studios"
+
+.banner-ad style="display: none"
+  img src="http://cl.ly/image/1J302K0d191e/Image%202013.11.04%205%3A30%3A33%20PM.jpeg"
+
+unless notYetAired
+  .review-listing
+    h4
+      | Trending Reviews
+      a.btn.btn-xs.btn-default.pull-right href=fullReviewsURL view all
+
+    each trendingReviews
+      a href=reviewURL
+        .review.rounded-block
+          .reviewer-thumb-wrapper.hidden-xs
+            avatar user 'thumb'
+          .reviewer.name-wrapper
+            h4.reviewer-name
+              span.subtext review by
+              | #{user.username}
+            span.review-stars
+              stars rating
+            p.review-summary #{summary}
+    else
+      .trending-review-empty
+        i.empty-icon.fa.fa-meh
+        h4 Well, this is pretty awkward.
+        p You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.
+        a.btn.btn-default href=newReviewURL Write the first review
+
