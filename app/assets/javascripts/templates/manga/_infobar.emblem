@@ -1,0 +1,13 @@
+ul.series-metadata
+  li
+    if volumeCount
+      | #{volumeCount}
+    else
+      | ?
+    |  volumes
+  li
+    if chapterCount
+      | #{chapterCount}
+    else
+      | ?
+    |  chapters

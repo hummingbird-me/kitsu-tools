@@ -1,0 +1,3 @@
+.series-description.hidden-xs
+  p: truncate-text text=synopsis length=500
+
