@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
     @anime = Anime.find(params[:anime_id])
 
     preload! "anime", @anime
-    preload! "review", @anime.reviews
+    preload! "review", @anime.reviews.includes(:user)
 
     render "anime/show", layout: "redesign"
 
