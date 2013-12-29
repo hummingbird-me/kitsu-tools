@@ -66,8 +66,6 @@ group :development do
   gem 'rvm-capistrano', require: false
 end
 
-gem 'skylight', '0.1.8'
-
 group :production do
   gem 'newrelic_rpm'
   gem 'newrelic-grape'
