@@ -1,5 +1,5 @@
 class MALDataImport
-  def self.manga_from_json(json)
+  def self.manga_from_json(json, import_poster_image=false)
     raise ArgumentError, "JSON must contain MAL ID" if json["mal_id"].nil?
 
     manga = Manga.find_by_mal_id(json["mal_id"]) || Manga.new(mal_id: json["mal_id"])
@@ -11,7 +11,7 @@ class MALDataImport
     manga.start_date = DateTime.parse(json["dates"]["from"]).to_date if json["dates"] and json["dates"]["from"]
     manga.end_date = DateTime.parse(json["dates"]["to"]).to_date if json["dates"] and json["dates"]["to"]
 
-    if Rails.env.production?
+    if import_poster_image
       manga.poster_image = URI(json["poster_image"]) if json["poster_image"]
     end
 
