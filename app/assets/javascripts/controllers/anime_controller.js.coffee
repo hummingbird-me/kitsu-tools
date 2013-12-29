@@ -14,3 +14,6 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
     "http://img.youtube.com/vi/" + @get('model.youtubeVideoId') + "/hqdefault.jpg"
   ).property('model.youtubeVideoId')
 
+  amazonLink: (->
+    "http://www.amazon.com/s/?field-keywords=" + encodeURIComponent(@get('model.canonicalTitle')) + "&tag=hummingbir0fe-20"
+  ).property('model.canonicalTitle')
