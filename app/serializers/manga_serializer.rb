@@ -1,7 +1,7 @@
 class MangaSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :romaji_title, :english_title, :cover_image, :cover_image_top_offset, :poster_image, :synopsis, :chapter_count, :volume_count
+  attributes :id, :romaji_title, :english_title, :cover_image, :cover_image_top_offset, :poster_image, :synopsis, :chapter_count, :volume_count, :genres
 
   def id
     object.slug
@@ -9,6 +9,10 @@ class MangaSerializer < ActiveModel::Serializer
 
   def cover_image
     object.cover_image.url(:thumb)
+  end
+
+  def genres
+    object.genres.map {|x| x.name.parameterize }.sort
   end
 
   def poster_image

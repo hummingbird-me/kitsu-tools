@@ -1,3 +1,12 @@
 .series-description.hidden-xs
   p: truncate-text text=synopsis length=500
 
+.info-tabs
+  ul.nav.nav-tabs
+    li class={showGenres:active}
+      a{action switchTo "Genres"} Genres
+
+  .tab-content
+    .tab-pane.active.genre-tab
+      div class={:slider showGenres::hidden}
+        partial "media/genres"

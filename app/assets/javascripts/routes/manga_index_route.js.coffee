@@ -5,4 +5,3 @@ Hummingbird.MangaIndexRoute = Ember.Route.extend
   afterModel: (resolvedModel) ->
     Hummingbird.TitleManager.setTitle resolvedModel.get('romajiTitle')
 
-

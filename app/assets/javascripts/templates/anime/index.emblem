@@ -41,7 +41,7 @@ h1.series-title.hidden-xs
   .tab-content
     .tab-pane.active.genre-tab
       div class={:slider showGenres::hidden}
-        partial "anime/genres"
+        partial "media/genres"
       if showFranchise
         partial "anime/franchise"
       div class={:slider showQuotes::hidden}

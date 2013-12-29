@@ -1,0 +1,3 @@
+each genre in genres
+  span.badge: a #{genre}
+

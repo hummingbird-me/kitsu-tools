@@ -8,14 +8,16 @@ class MALDataImport
     manga.english_title = json["english_title"]
     manga.synopsis = json["synopsis"]
     manga.status = json["status"]
-    manga.start_date = DateTime.parse(json["dates"]["from"]).to_date if json["dates"]
-    manga.end_date = DateTime.parse(json["dates"]["to"]).to_date if json["dates"]
+    manga.start_date = DateTime.parse(json["dates"]["from"]).to_date if json["dates"] and json["dates"]["from"]
+    manga.end_date = DateTime.parse(json["dates"]["to"]).to_date if json["dates"] and json["dates"]["to"]
     manga.volume_count = json["volumes"]
     manga.chapter_count = json["chapters"]
 
     if import_poster_image
       manga.poster_image = URI(json["poster_image"])
     end
+
+    manga.genres = json["genres"].map {|x| Genre.find_by_name(x) }.compact
 
     manga.save
   end

@@ -2,11 +2,11 @@ Hummingbird.AnimeIndexController = Ember.ObjectController.extend
   activeTab: "Genres"
   language: null
 
-  showGenres: (-> @get('activeTab') == "Genres").property('activeTab')
-  showFranchise: (-> @get('activeTab') == "Franchise").property('activeTab')
-  showQuotes: (-> @get('activeTab') == "Quotes").property('activeTab')
-  showStudios: (-> @get('activeTab') == "Studios").property('activeTab')
-  showCast: (-> @get('activeTab') == "Cast").property('activeTab')
+  showGenres: Ember.computed.equal('activeTab', 'Genres')
+  showFranchise: Ember.computed.equal('activeTab', 'Franchise')
+  showQuotes: Ember.computed.equal('activeTab', 'Quotes')
+  showStudios: Ember.computed.equal('activeTab', 'Studios')
+  showCast: Ember.computed.equal('activeTab', 'Cast')
 
   filteredCast: (->
     @get('model.featuredCastings').filterBy 'language', @get('language')
@@ -16,4 +16,14 @@ Hummingbird.AnimeIndexController = Ember.ObjectController.extend
   fullQuotesURL: (-> "/anime/" + @get('model.id') + "/quotes").property('model.id')
   fullReviewsURL: (-> "/anime/" + @get('model.id') + "/reviews").property('model.id')
   # End Legacy
+
+  actions:
+    switchTo: (newTab) ->
+      @set 'activeTab', newTab
+      if newTab == "Franchise"
+        @get 'model.franchise'
+
+    setLanguage: (language) ->
+      @set 'language', language
+      @send 'switchTo', 'Cast'
 
