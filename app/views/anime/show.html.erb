@@ -1,0 +1,11 @@
+<% if @anime.show_type == "Movie" %>
+  <meta property="og:type" content="video.movie">
+<% elsif ["OVA", "ONA", "TV"].include? @anime.show_type %>
+  <meta property="og:type" content="video.tv_show">
+<% else %>
+  <meta property="og:type" content="video.tv_episode">
+<% end %>
+
+<meta property="og:url" content="<%= anime_url(@anime) %>">
+<meta property="og:description" content="<%= @anime.synopsis.gsub('"', '\\"') %>">
+<meta property="og:image" content="<%= @anime.poster_image.url %>">

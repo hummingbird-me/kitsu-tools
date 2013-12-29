@@ -5,6 +5,7 @@ class AnimeControllerTest < ActionController::TestCase
     get :show, id: 'sword-art-online'
     assert_response 200
     assert assigns["preload"].length > 0
+    assert_not_nil assigns["anime"]
   end
 
   test "redirects to canonical URL" do
