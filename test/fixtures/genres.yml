@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: genres
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  slug        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
+#
+
+mystery:
+  name: Mystery
+  slug: mystery
+
+drama:
+  name: Drama
+  slug: drama
+
+psychological:
+  name: Psychological
+  slug: psychological
+
+seinen:
+  name: Seinen
+  slug: seinen

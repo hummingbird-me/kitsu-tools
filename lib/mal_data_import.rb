@@ -17,7 +17,9 @@ class MALDataImport
       manga.poster_image = URI(json["poster_image"])
     end
 
-    manga.genres = json["genres"].map {|x| Genre.find_by_name(x) }.compact
+    if json["genres"]
+      manga.genres = json["genres"].map {|x| Genre.find_by_name(x) }.compact
+    end
 
     manga.save
   end
