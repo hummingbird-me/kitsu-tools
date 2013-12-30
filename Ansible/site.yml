@@ -53,11 +53,6 @@
   roles:
   - redis
 
-- hosts: solr
-  sudo: True
-  roles:
-  - solr
-
 - hosts: discourse
   sudo: True
   roles:

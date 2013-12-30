@@ -1,5 +1,0 @@
-<solr persistent="true">
-  <cores adminPath="/admin/cores">
-    <core name="hummingbird" instanceDir="hummingbird" dataDir="/var/lib/solr/hummingbird/data" />
-  </cores>
-</solr>
