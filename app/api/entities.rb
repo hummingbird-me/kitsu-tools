@@ -106,7 +106,12 @@ module Entities
     expose(:comment,
       if: lambda {|substory, options| substory.substory_type == "comment" }
     ) do |substory, options|
-      MessageFormatter.format_message substory.data["comment"]
+      if substory.data["formatted_comment"].nil?
+        formatted_comment = MessageFormatter.format_message substory.data["comment"]
+        substory.data["formatted_comment"] = formatted_comment
+        substory.save
+      end
+      substory.data["formatted_comment"]
     end
 
     expose(:permissions) do |substory, options|
