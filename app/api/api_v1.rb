@@ -110,7 +110,7 @@ class API_v1 < Grape::API
       if user == current_user
         watchlists = user.watchlists.where(status: status).order(status == "Currently Watching" ? "last_watched DESC" : "created_at DESC").includes(:anime)
       else
-        watchlists = user.watchlists.accessible_by(current_ability).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime)
+        watchlists = user.watchlists.where(private: false).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime)
       end
 
       title_language_preference = params[:title_language_preference]
@@ -119,7 +119,7 @@ class API_v1 < Grape::API
       end
       title_language_preference ||= "canonical"
 
-      present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference, genres: false, include_mal_id: params[:include_mal_id] == "true"
+      present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference, genres: false, include_mal_id: params[:include_mal_id] == "true", rating_type: (user.star_rating ? "advanced" : "simple")
     end
 
     desc "Returns the user's feed."

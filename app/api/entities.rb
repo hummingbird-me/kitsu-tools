@@ -52,7 +52,7 @@ module Entities
     expose :rewatched_times
     expose :notes
     expose(:notes_present) {|watchlist, options| watchlist.notes and watchlist.notes.strip.length > 0 }
-    expose(:status) {|watchlist, options| watchlist.status.parameterize }
+    expose(:status) {|watchlist, options| watchlist.status.downcase.gsub(' ', '-') }
     expose(:id) {|watchlist, options| Digest::MD5.hexdigest("^_^" + watchlist.id.to_s) }
     expose :private
     expose :rewatching
@@ -61,7 +61,7 @@ module Entities
 
     expose :rating do |watchlist, options|
       {
-        type: (watchlist.user.star_rating ? "advanced" : "simple"),
+        type: options[:rating_type] || (watchlist.user.star_rating ? "advanced" : "simple"),
         value: watchlist.rating
       }
     end
