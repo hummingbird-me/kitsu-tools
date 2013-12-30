@@ -1,0 +1,13 @@
+a href=reviewURL
+  .review.rounded-block
+    .reviewer-thumb-wrapper.hidden-xs
+      avatar user 'thumb'
+    .reviewer-name-wrapper
+      h4.reviewer-name
+        span.subtext review by
+        | #{user.username}
+      span.review-stars
+        stars rating
+      p.review-summary #{summary}
+      p.review-likes #{positiveVotes} out of #{totalVotes} users found this review helpful.
+

@@ -9,17 +9,7 @@ a.btn.btn-primary style="margin: 16px; width: 95%" href=anime.newReviewURL
 
 .review-listing
   each
-    a href=reviewURL
-      .review.rounded-block
-        .reviewer-thumb-wrapper.hidden-xs
-          avatar user 'thumb'
-        .reviewer.name-wrapper
-          h4.reviewer-name
-            span.subtext review by
-            | #{user.username}
-          span.review-stars
-            stars rating
-          p.review-summary #{summary}
+    partial "media/review_summary"
   else
     .trending-review-empty
       i.empty-icon.fa.fa-meh

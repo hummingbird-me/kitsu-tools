@@ -61,17 +61,7 @@ unless notYetAired
       link-to 'anime.reviews' classNames="btn btn-xs btn-default pull-right" | view all
 
     each trendingReviews
-      a href=reviewURL
-        .review.rounded-block
-          .reviewer-thumb-wrapper.hidden-xs
-            avatar user 'thumb'
-          .reviewer.name-wrapper
-            h4.reviewer-name
-              span.subtext review by
-              | #{user.username}
-            span.review-stars
-              stars rating
-            p.review-summary #{summary}
+      partial "media/review_summary"
     else
       .trending-review-empty
         i.empty-icon.fa.fa-meh
