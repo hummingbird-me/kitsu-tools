@@ -145,7 +145,7 @@ class API_v1 < Grape::API
       rescue
         return true
       end
-      if current_ability.can? :destroy, substory
+      if current_user and (current_user.admin? or (current_user.id == substory.user_id) or (current_user.id == substory.story.user_id))
         substory.destroy
         return true
       else

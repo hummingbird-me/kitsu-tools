@@ -115,18 +115,15 @@ module Entities
     end
 
     expose(:permissions) do |substory, options|
-      current_ability ||= options[:current_ability]
-      current_user    ||= options[:current_user]
-      if (current_ability and current_ability.can?(:destroy, substory)) or (current_user and (substory.user == current_user or current_user.admin?))
-        {
-          destroy: true
-        }
+      current_user ||= options[:current_user]
+      if current_user and ((substory.user_id == current_user.id) or (substory.story.user_id == current_user.id) or current_user.admin?)
+        {destroy: true}
       else
         {}
       end
     end
   end
-  
+
   class Story < Grape::Entity
     expose :id
 
