@@ -1,6 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :cover_image_url, :avatar_template, :online, :about, 
-    :is_followed
+  attributes :id, :username, :cover_image_url, :avatar_template, :about
 
   def id
     object.name
@@ -16,19 +15,6 @@ class UserSerializer < ActiveModel::Serializer
 
   def avatar_template
     object.avatar_template
-  end
-
-  def online
-    object.online?
-  end
-
-  # Is the current_user following this user?
-  def is_followed
-    if scope
-      (scope.id != object.id) and (object.followers.include? scope)
-    else
-      false
-    end
   end
 end
 
