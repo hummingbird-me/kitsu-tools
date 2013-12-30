@@ -60,7 +60,11 @@ class Anime < ActiveRecord::Base
     styles: {large: "200x290!", medium: "100x150!"}
 
   def poster_image_thumb
-    Rails.cache.fetch("anime_poster_image_thumb:#{self.id}") { self.poster_image.url(:large) }
+    if self.poster_image_file_name.nil?
+      "http://hummingbird.me/assets/missing-anime-cover.jpg"
+    else
+      "http://static.hummingbird.me/anime/poster_images/#{"%03d" % (self.id/1000000 % 1000)}/#{"%03d" % (self.id/1000 % 1000)}/#{"%03d" % (self.id % 1000)}/large/#{self.poster_image_file_name}?#{self.poster_image_updated_at.to_i}"
+    end
   end
 
   has_many :quotes, dependent: :destroy
