@@ -26,6 +26,8 @@ $("#ember-root").html("")
 @Hummingbird = Ember.Application.create
   rootElement: "#ember-root"
 
+  utils: {}
+
   TitleManager: Ember.Object.extend(
     title: null
 

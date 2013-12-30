@@ -7,6 +7,10 @@ Hummingbird.Review = DS.Model.extend
   positiveVotes: DS.attr('number')
   totalVotes: DS.attr('number')
 
+  wilsonScore: (->
+    Hummingbird.utils.wilsonScore @get('positiveVotes'), @get('totalVotes')
+  ).property('positiveVotes', 'totalVotes')
+
   # Legacy stuff.
   reviewURL: (->
     "/anime/" + @get("anime.id") + "/reviews/" + @get("id")
