@@ -19,8 +19,8 @@
 
         = image_tag @user.avatar_url, class: "avatar-image", style: 'height: 190px; width: 190px'
         %span.karma
-          = number_with_delimiter @user.reputation_for(:karma).to_i 
-          Karma
+          %a(href="http://forums.hummingbird.me/t/karma-has-been-removed/3985")
+            %i.fa.fa-question-circle
 
         - if @user.last_seen
           %p.last-seen
