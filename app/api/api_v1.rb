@@ -94,7 +94,7 @@ class API_v1 < Grape::API
     }
     params do
       requires :user_id, type: String
-      requires :status, type: String
+      optional :status, type: String
       optional :page, type: Integer
       optional :title_language_preference, type: String
       optional :include_mal_id, type: String
@@ -107,11 +107,9 @@ class API_v1 < Grape::API
       user = find_user(params[:user_id])
       status = Watchlist.status_parameter_to_status(params[:status])
 
-      if user == current_user
-        watchlists = user.watchlists.where(status: status).order(status == "Currently Watching" ? "last_watched DESC" : "created_at DESC").includes(:anime)
-      else
-        watchlists = user.watchlists.where(private: false).where(status: status).order(status == "Currently Watching" ? 'last_watched DESC' : 'created_at DESC').includes(:anime)
-      end
+      watchlists = user.watchlists.includes(:anime)
+      watchlists = watchlists.where(status: status) if status
+      watchlists = watchlists.where(private: false) if user != current_user
 
       title_language_preference = params[:title_language_preference]
       if title_language_preference.nil? and current_user

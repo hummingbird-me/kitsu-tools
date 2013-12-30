@@ -8,7 +8,7 @@
 #
 # Examples:
 # * TODO
-
+#
 class LibraryService
   # Initialize a LibraryService object for a particular user and media.
   #
@@ -19,4 +19,6 @@ class LibraryService
     @user = user
     @media = media
   end
+
+
 end

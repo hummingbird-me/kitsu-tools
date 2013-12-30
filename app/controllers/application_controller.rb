@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   def preload_user
     if user_signed_in?
       preload! "user", current_user
+      Rack::MiniProfiler.authorize_request if current_user.id == 1
     end
   end
 
@@ -23,13 +24,7 @@ class ApplicationController < ActionController::Base
 
   ### PRE-EMBER CODE BELOW -- NEEDS REWRITING.
 
-  before_filter :admin_check, :user_last_seen
-
-  def admin_check
-    if user_signed_in? and current_user.admin? and current_user.id == 1
-      Rack::MiniProfiler.authorize_request
-    end
-  end
+  before_filter :user_last_seen
 
   def user_last_seen
     if user_signed_in?
