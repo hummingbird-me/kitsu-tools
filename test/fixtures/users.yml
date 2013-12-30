@@ -1,0 +1,50 @@
+vikhyat:
+  id: 1
+  email: c@vikhyat.net
+  name: vikhyat
+  encrypted_password: $2a$10$Ol5injh687n9t3xXCwtMaec2CsMPysQvCWChBltfMgEoeaIMhn9Zu
+  reset_password_token: MyptK871XUpjDgCcbUbn
+  reset_password_sent_at: 2013-03-03 11:34:33.232378000 Z
+  remember_created_at: 2013-11-22 14:03:40.719753000 Z
+  sign_in_count: 901
+  current_sign_in_at: 2013-12-04 22:38:06.795590000 Z
+  last_sign_in_at: 2013-12-04 22:37:53.690211000 Z
+  current_sign_in_ip: 127.0.0.1
+  last_sign_in_ip: 127.0.0.1
+  created_at: 2013-02-20 16:21:01.289227000 Z
+  updated_at: 2013-12-30 03:17:07.117321000 Z
+  recommendations_up_to_date: true
+  avatar_file_name: tumblr_mj083fBShe1r0p39zo1_500.gif
+  avatar_content_type: image/gif
+  avatar_file_size: 622211
+  avatar_updated_at: 2013-09-22 13:32:53.191885000 Z
+  facebook_id: '530577081'
+  bio: test
+  sfw_filter: true
+  star_rating: true
+  mal_username: vikhyat
+  life_spent_on_anime: 223434
+  about: https://twitter.com/vikhyatk
+  confirmation_token:
+  confirmed_at: 2013-03-03 10:25:21.477558000 Z
+  confirmation_sent_at: 2013-03-03 10:09:43.255396000 Z
+  unconfirmed_email:
+  forem_admin: true
+  forem_state: approved
+  forem_auto_subscribe: false
+  cover_image_file_name: tumblr_m875gp4yla1rygue4o1_500.jpg
+  cover_image_content_type: image/jpeg
+  cover_image_file_size: 16532
+  cover_image_updated_at: 2013-09-04 17:57:36.681668000 Z
+  english_anime_titles: true
+  title_language_preference: canonical
+  followers_count_hack: 1039
+  following_count: 988
+  neon_alley_integration: false
+  ninja_banned: false
+  last_library_update: 2013-12-30 03:17:37.271880000 Z
+  last_recommendations_update: 2013-12-05 05:41:16.855258000 Z
+  authentication_token: CWZeN12y1seSwMEqtWbd
+  avatar_processing: false
+  subscribed_to_newsletter: true
+  mal_import_in_progress: false

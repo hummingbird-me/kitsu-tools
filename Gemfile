@@ -48,11 +48,8 @@ group :assets do
   gem 'autoprefixer-rails'
 end
 
-gem 'sunspot_rails'
-
 # Gems to help with development.
 group :development do
-  gem 'sunspot_solr'
   gem "better_errors"
   gem "letter_opener"
   gem "binding_of_caller"

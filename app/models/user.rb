@@ -63,6 +63,10 @@ class User < ActiveRecord::Base
     where('LOWER(name) = ?', id.to_s.downcase).first || super
   end
 
+  def self.search(query)
+    where('name LIKE :query OR email LIKE :query', query: "#{query}%")
+  end
+
   has_many :favorites
   def has_favorite?(item)
     self.favorites.exists?(item_id: item, item_type: item.class.to_s)
@@ -291,7 +295,7 @@ class User < ActiveRecord::Base
     self.life_spent_on_anime = t
     self.save
   end
-  
+
   def update_life_spent_on_anime(delta)
     if life_spent_on_anime.nil?
       self.recompute_life_spent_on_anime
@@ -299,11 +303,6 @@ class User < ActiveRecord::Base
       self.life_spent_on_anime += delta
       self.save
     end
-  end
-
-  searchable do
-    text :name, as: :name_fuzzy
-    text :email
   end
 
   def followers_count
