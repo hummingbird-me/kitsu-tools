@@ -40,4 +40,25 @@ class LibraryEntryTest < ActiveSupport::TestCase
     entry.destroy
     assert_equal original_user_count, anime.reload.user_count
   end
+
+  test "should track ratings" do
+    anime = Anime.find('monster')
+    nil_count = anime.rating_frequencies["nil"].to_i || 0
+    one_count = anime.rating_frequencies["1.0"].to_i || 0
+    two_count = anime.rating_frequencies["2.0"].to_i || 0
+    entry = LibraryEntry.create!(anime_id: anime.id,
+                                 user_id: users(:vikhyat).id,
+                                 status: "Currently Watching")
+    assert_equal nil_count+1, anime.reload.rating_frequencies["nil"].to_i
+    entry.update_attributes(rating: 1)
+    assert_equal nil_count, anime.reload.rating_frequencies["nil"].to_i
+    assert_equal one_count+1, anime.reload.rating_frequencies["1.0"].to_i
+    entry.update_attributes(rating: 2)
+    assert_equal one_count, anime.reload.rating_frequencies["1.0"].to_i
+    assert_equal two_count+1, anime.reload.rating_frequencies["2.0"].to_i
+    entry.destroy
+    assert_equal nil_count, anime.reload.rating_frequencies["nil"].to_i
+    assert_equal one_count, anime.reload.rating_frequencies["1.0"].to_i
+    assert_equal two_count, anime.reload.rating_frequencies["2.0"].to_i
+  end
 end

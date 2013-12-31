@@ -21,7 +21,7 @@
 class LibraryEntry < ActiveRecord::Base
   self.table_name = "watchlists"
 
-  attr_accessible :user_id, :anime_id, :status
+  attr_accessible :user_id, :anime_id, :status, :rating
 
   belongs_to :user
   belongs_to :anime
@@ -50,6 +50,27 @@ class LibraryEntry < ActiveRecord::Base
 
   before_save do
     self.generate_status_change_story
+
+    # Track aggregated rating frequencies for the show.
+    # Need the hand-written SQL because there's no way to other way to atomically
+    # increment/decrement hstore fields.
+    if self.persisted?
+      if self.rating_changed?
+        okey = (self.rating_was || "nil").to_s
+        nkey = (self.rating || "nil").to_s
+        Anime.update_all(
+          "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{okey}', ((COALESCE((rating_frequencies -> '#{okey}'), '0'))::integer - 1)::text) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer + 1)::text)",
+          "id = #{self.anime.id}"
+        )
+      end
+    else
+      # New record -- just need to do an increment.
+      nkey = (self.rating || "nil").to_s
+      Anime.update_all(
+        "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer + 1)::text)",
+        "id = #{self.anime.id}"
+      )
+    end
   end
 
   after_create do
@@ -58,5 +79,12 @@ class LibraryEntry < ActiveRecord::Base
 
   before_destroy do
     Anime.decrement_counter 'user_count', self.anime_id
+
+    # Update the shows rating frequencies. Handwritten SQL for atomicity.
+    nkey = (self.rating || "nil").to_s
+    Anime.update_all(
+      "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer - 1)::text)",
+      "id = #{self.anime.id}"
+    )
   end
 end
