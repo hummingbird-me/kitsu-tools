@@ -9,7 +9,7 @@ class AnimeControllerTest < ActionController::TestCase
   end
 
   test "redirects to canonical URL" do
-    get :show, id: 6589
+    get :show, id: anime(:sword_art_online).id
     assert_response 301
   end
 

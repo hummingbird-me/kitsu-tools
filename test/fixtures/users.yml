@@ -1,5 +1,59 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                          :integer          not null, primary key
+#  email                       :string(255)      default(""), not null
+#  name                        :string(255)
+#  encrypted_password          :string(255)      default(""), not null
+#  reset_password_token        :string(255)
+#  reset_password_sent_at      :datetime
+#  remember_created_at         :datetime
+#  sign_in_count               :integer          default(0)
+#  current_sign_in_at          :datetime
+#  last_sign_in_at             :datetime
+#  current_sign_in_ip          :string(255)
+#  last_sign_in_ip             :string(255)
+#  created_at                  :datetime         not null
+#  updated_at                  :datetime         not null
+#  recommendations_up_to_date  :boolean
+#  avatar_file_name            :string(255)
+#  avatar_content_type         :string(255)
+#  avatar_file_size            :integer
+#  avatar_updated_at           :datetime
+#  facebook_id                 :string(255)
+#  bio                         :text
+#  sfw_filter                  :boolean          default(TRUE)
+#  star_rating                 :boolean          default(FALSE)
+#  mal_username                :string(255)
+#  life_spent_on_anime         :integer
+#  about                       :text
+#  confirmation_token          :string(255)
+#  confirmed_at                :datetime
+#  confirmation_sent_at        :datetime
+#  unconfirmed_email           :string(255)
+#  forem_admin                 :boolean          default(FALSE)
+#  forem_state                 :string(255)      default("approved")
+#  forem_auto_subscribe        :boolean          default(FALSE)
+#  cover_image_file_name       :string(255)
+#  cover_image_content_type    :string(255)
+#  cover_image_file_size       :integer
+#  cover_image_updated_at      :datetime
+#  english_anime_titles        :boolean          default(TRUE)
+#  title_language_preference   :string(255)      default("canonical")
+#  followers_count_hack        :integer          default(0)
+#  following_count             :integer          default(0)
+#  neon_alley_integration      :boolean          default(FALSE)
+#  ninja_banned                :boolean          default(FALSE)
+#  last_library_update         :datetime
+#  last_recommendations_update :datetime
+#  authentication_token        :string(255)
+#  avatar_processing           :boolean
+#  subscribed_to_newsletter    :boolean          default(TRUE)
+#  mal_import_in_progress      :boolean
+#
+
 vikhyat:
-  id: 1
   email: c@vikhyat.net
   name: vikhyat
   encrypted_password: $2a$10$Ol5injh687n9t3xXCwtMaec2CsMPysQvCWChBltfMgEoeaIMhn9Zu
@@ -48,3 +102,53 @@ vikhyat:
   avatar_processing: false
   subscribed_to_newsletter: true
   mal_import_in_progress: false
+
+josh:
+  email: josh@hummingbird.ly
+  name: Josh
+  encrypted_password: $2a$10$I9j/S6n18lj20w2pExihRuvmR2o60AaNOfbSRmbYZGeklnv402pxO
+  reset_password_token:
+  reset_password_sent_at:
+  remember_created_at: 2013-09-18 01:08:21.749361000 Z
+  sign_in_count: 240
+  current_sign_in_at: 2013-09-18 01:08:21.772027000 Z
+  last_sign_in_at: 2013-09-17 17:35:16.460567000 Z
+  current_sign_in_ip: 71.195.65.46
+  last_sign_in_ip: 71.195.65.46
+  created_at: 2013-02-21 16:59:53.925238000 Z
+  updated_at: 2013-09-22 14:53:31.026232000 Z
+  recommendations_up_to_date: true
+  avatar_file_name: 4zdl.jpg
+  avatar_content_type: image/jpeg
+  avatar_file_size: 61835
+  avatar_updated_at: 2013-09-22 14:52:18.525186000 Z
+  facebook_id:
+  bio: ''
+  sfw_filter: true
+  star_rating: true
+  mal_username: kurotsuki
+  life_spent_on_anime: 66123
+  about: (-_-;)
+  confirmation_token:
+  confirmed_at: 2013-03-03 13:23:04.069592000 Z
+  confirmation_sent_at: 2013-03-03 12:55:33.472041000 Z
+  unconfirmed_email:
+  forem_admin: true
+  forem_state: approved
+  forem_auto_subscribe: false
+  cover_image_file_name: 2-hum.png
+  cover_image_content_type: image/png
+  cover_image_file_size: 409843
+  cover_image_updated_at: 2013-07-31 01:56:11.192788000 Z
+  english_anime_titles: true
+  title_language_preference: canonical
+  followers_count_hack: 656
+  following_count: 342
+  neon_alley_integration: true
+  ninja_banned: false
+  last_library_update: 2013-09-22 19:37:18.851425000 Z
+  last_recommendations_update: 2013-09-17 04:56:06.391249000 Z
+  authentication_token: gpY9LhJopfsNwJmiXx1h
+  avatar_processing: false
+  subscribed_to_newsletter: true
+  mal_import_in_progress:

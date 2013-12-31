@@ -6,6 +6,9 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
+require 'sidekiq/testing'
+Sidekiq::Testing.inline!
+
 class ActiveSupport::TestCase
   fixtures :all
 end

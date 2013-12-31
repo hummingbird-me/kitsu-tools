@@ -32,8 +32,14 @@ module Api::V2
       library_entry = find_library_entry_by_id params[:id]
       return error!("unauthorized", 403) if library_entry.nil?
 
+      # Update status.
       unless params[:library_entry][:status].nil?
         library_entry.status = params[:library_entry][:status]
+      end
+
+      # Update rating.
+      unless params[:library_entry][:rating].nil?
+        library_entry.rating = params[:library_entry][:rating]
       end
 
       ## TEMPORARY -- Change when favorite status is moved into the library

@@ -39,7 +39,6 @@
 #
 
 sword_art_online:
-  id: 6589
   title: Sword Art Online
   alt_title: ''
   slug: sword-art-online
@@ -71,3 +70,38 @@ sword_art_online:
   poster_image_updated_at:
   cover_image_top_offset: 0
   ann_id:
+
+monster:
+  title: Monster
+  alt_title: ''
+  slug: monster
+  age_rating: R17+
+  episode_count: 74
+  episode_length: 24
+  synopsis: 'Kenzou Tenma, a Japanese brain surgeon in Germany, had it all: incredible skill at his work, a rich and beautiful fiancee, and a promising career at his hospital. However, after becoming disenchanted by hospital politics, he chose to save the life of a young boy who got shot in the head over the life of the mayor. As a result he lost the support of the hospital director, as well as his position in the hospital and his fiance. A short time later, the hospital director and the doctors that replaced him were murdered, and once again he was catapulted back onto the top. But as the chief suspect of the murders, Tenma did not get a easy life. As a matter of fact, it seems that the boy he saved was much more than he had appeared to be... Now to clear his name and to correct his past mistake, Tenma must get to the bottom of these and other murders, and investigate the truth of the Monster who is behind all of this. (Source: ANN)'
+  youtube_video_id: ''
+  mal_id: 19
+  created_at: 2013-02-20 16:00:23.893649000 Z
+  updated_at: 2013-09-08 22:37:24.479881000 Z
+  cover_image_file_name: 10.jpg
+  cover_image_content_type: image/jpeg
+  cover_image_file_size: 31950
+  cover_image_updated_at: 2013-07-31 01:02:10.148175000 Z
+  bayesian_average: 4.42463877253956
+  user_count: 3853
+  thetvdb_series_id: ''
+  thetvdb_season_id: ''
+  english_canonical: false
+  age_rating_guide: Mild Nudity
+  mal_age_rating: R+ - Mild Nudity
+  show_type: TV
+  started_airing_date: 2004-04-07
+  finished_airing_date: 2005-09-28
+  poster_image_file_name:
+  poster_image_content_type:
+  poster_image_file_size:
+  poster_image_updated_at:
+  cover_image_top_offset:
+  ann_id:
+  started_airing_date_known: true
+
