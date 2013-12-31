@@ -55,8 +55,6 @@ $.fn.AwesomeRating = (options) ->
           icon.click ->
             newRating = roundSimpleRating($(this).attr("data-rating"))
             options["update"](newRating)
-            options["rating"] = newRating
-            $(widget).AwesomeRating options
         $(this).append icon
     else
       # Advanced ratings.
@@ -76,6 +74,4 @@ $.fn.AwesomeRating = (options) ->
           click: (e) ->
             newRating = nearestHalf(5 * (e.pageX - $(widget).offset().left) / $(widget).width() + 0.5)
             options["update"](newRating)
-            options["rating"] = newRating
-            $(widget).AwesomeRating options
 

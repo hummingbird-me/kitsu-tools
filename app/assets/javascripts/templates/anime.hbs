@@ -85,12 +85,14 @@
             <p>{{truncate-text text=synopsis length=300}}</p>
           </div>
 
-          <div class="personal-rating active">
-            {{#if currentUser.isSignedIn}}
-              <h5 class="sidebar-title text-center">Your Rating</h5>
-              {{awesome-rating editable="true"}}
+          {{#if currentUser.isSignedIn}}
+            {{#if libraryEntry.status}}
+              <div class="personal-rating active">
+                <h5 class="sidebar-title text-center">Your Rating</h5>
+                {{awesome-rating editable="true" action="setLibraryRating"}}
+              </div>
             {{/if}}
-          </div>
+          {{/if}}
 
           {{#if bayesianRating}}
             <div class="community-rating">

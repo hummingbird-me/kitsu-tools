@@ -28,3 +28,6 @@ Hummingbird.AnimeRoute = Ember.Route.extend
           anime: @currentModel
       libraryEntry.save().then Ember.K, ->
         libraryEntry.rollback()
+
+    setLibraryRating: (newRating) ->
+      alert newRating

@@ -8,19 +8,14 @@
 .personal-rating {
   text-align: center;
   float: left;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 0;
   margin-top: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 0;
   @include make-xs-column(12);
   @include make-sm-column(12);
   @media (min-width: 768px) {
-    padding-top: 15px;
+    padding: 15px 0 0 0;
     border-top: 1px solid #ddd;
-    padding-left: 0;
-    padding-right: 0;
   }
   .sidebar-title {
     margin-bottom: 5px;
@@ -48,9 +43,10 @@
 .community-rating {
   @include make-xs-column(12);
   padding: 0;
+  border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 15px;
-  padding-bottom: 15px;
+  margin: 15px 0;
+  padding: 15px 0;
 }
 
 .community-rating-wrapper {

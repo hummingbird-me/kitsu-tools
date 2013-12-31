@@ -11,6 +11,6 @@ Hummingbird.AwesomeRatingComponent = Ember.Component.extend
       type: @get('type')
       editable: @get('editable')
       update: (newRating) ->
-        alert "Not implemented yet -- coming soon!"
+        that.sendAction 'action', newRating
         that.set 'rating', newRating
   ).on('didInsertElement').observes('rating')
