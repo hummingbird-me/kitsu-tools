@@ -5,15 +5,17 @@ class ApplicationController < ActionController::Base
 
   # Send an object along with the initial HTML response so that Ember will not need
   # to make additional requests to fetch data.
-  def preload!(key, data)
+  def preload!(data, options={})
     @preload ||= []
     data = [data] unless data.is_a? Array
-    @preload.push({object_type: key, object: ActiveModel::ArraySerializer.new(data, scope: current_user, root: key.pluralize)})
+    options[:scope] = current_user
+    options[:root] = data.first.class.to_s.underscore.pluralize
+    @preload.push(ActiveModel::ArraySerializer.new(data, options))
   end
 
   def preload_user
     if user_signed_in?
-      preload! "user", current_user
+      preload! current_user
       Rack::MiniProfiler.authorize_request if current_user.id == 1
     end
   end

@@ -14,7 +14,7 @@ class AnimeController < ApplicationController
       return redirect_to @anime, status: :moved_permanently
     end
 
-    preload! "anime", @anime
+    preload! @anime
     render layout: 'redesign'
   end
 

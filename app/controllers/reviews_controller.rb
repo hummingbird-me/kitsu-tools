@@ -6,8 +6,8 @@ class ReviewsController < ApplicationController
   def index
     @anime = Anime.find(params[:anime_id])
 
-    preload! "review", Review.includes(:user).find_with_reputation(:votes, :all, conditions: ['anime_id = ?', @anime.id], order: 'votes DESC')
-    preload! "anime", @anime
+    preload! Review.includes(:user).find_with_reputation(:votes, :all, conditions: ['anime_id = ?', @anime.id], order: 'votes DESC')
+    preload! @anime
 
     render "anime/show", layout: "redesign"
   end
