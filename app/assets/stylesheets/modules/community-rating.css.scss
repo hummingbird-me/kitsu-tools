@@ -33,7 +33,7 @@
     }
   }
   &.active {
-    .star {
+    .icon-container {
       color: #ec8661 !important;
     }
   }
@@ -60,6 +60,9 @@
   li {
     display: inline-block;
     margin-right: 4px;
+    @media (min-width: 768px) and (max-width: 1200px) {
+      margin-right: 3px;
+    }
   }
 }
 
