@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :cover_image_url, :avatar_template, :about
+  attributes :id, :username, :cover_image_url, :avatar_template, :about, :rating_type
 
   def id
     object.name
@@ -15,6 +15,10 @@ class UserSerializer < ActiveModel::Serializer
 
   def avatar_template
     object.avatar_template
+  end
+
+  def rating_type
+    object.star_rating? ? "advanced" : "simple"
   end
 end
 

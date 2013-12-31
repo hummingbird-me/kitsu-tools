@@ -26,6 +26,15 @@
     @media (min-width: 768px) and (max-width: 1200px) {
       font-size: 25px;
     }
+    /* Simple rating icons. */
+    .fa-frown-o, .fa-meh-o, .fa-smile-o {
+      color: #999;
+      padding: 0 4px;
+      font-size: 1.2em;
+    }
+    .active {
+      color: #ec8661;
+    }
   }
   &.active {
     .icon-container {

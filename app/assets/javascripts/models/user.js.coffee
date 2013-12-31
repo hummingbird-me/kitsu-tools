@@ -4,6 +4,7 @@ Hummingbird.User = DS.Model.extend
   avatarTemplate: DS.attr('string')
   online: DS.attr('boolean')
   about: DS.attr('string')
+  ratingType: DS.attr('string')
 
   isFollowed: DS.attr('boolean')
 
