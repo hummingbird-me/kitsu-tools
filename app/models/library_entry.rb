@@ -51,4 +51,12 @@ class LibraryEntry < ActiveRecord::Base
   before_save do
     self.generate_status_change_story
   end
+
+  after_create do
+    Anime.increment_counter 'user_count', self.anime_id
+  end
+
+  before_destroy do
+    Anime.decrement_counter 'user_count', self.anime_id
+  end
 end
