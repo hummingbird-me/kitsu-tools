@@ -135,19 +135,6 @@ class Watchlist < ActiveRecord::Base
   end
 
   def aggregate_changed_attributes
-    # Update anime rating frequencies.
-    if self.rating_changed?
-      if self.rating_was
-        self.anime.rating_frequencies[self.rating_was.to_s] = self.anime.rating_frequencies[self.rating_was.to_s].to_i
-        self.anime.rating_frequencies[self.rating_was.to_s] -= 1
-      end
-      if self.rating
-        self.anime.rating_frequencies[self.rating.to_s] ||= 0
-        self.anime.rating_frequencies[self.rating.to_s] = self.anime.rating_frequencies[self.rating.to_s].to_i
-        self.anime.rating_frequencies[self.rating.to_s] += 1
-      end
-    end
-
     if self.rewatching_changed?
       # If "rewatching" was set to true and was false earlier, set the status
       # to "Currently Watching" and "episodes_watched" to 0.
