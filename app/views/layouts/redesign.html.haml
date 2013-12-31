@@ -12,8 +12,8 @@
     %meta(name="og:title" content="Hummingbird")
     = yield
 
-    / Google Analytics
     :javascript
+      // Google Analytics
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-37633900-1']);
       _gaq.push(['_setDomainName', 'hummingbird.me']);
@@ -27,10 +27,10 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
 
-  %body
-    // Facebook Code
-    #fb-root
-    :javascript
+      // Twitter
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+      // Facebook
       (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -38,6 +38,9 @@
         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=452427161479702";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+
+  %body
+    #fb-root
 
     / Content
     #ember-root
