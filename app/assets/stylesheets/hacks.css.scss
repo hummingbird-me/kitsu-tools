@@ -23,6 +23,7 @@
 }
 
 /* Crisper header "Hummingbird" text in Firefox. */
-a.navbar-brand img {
+a.navbar-brand {
+  padding: 14px;
   image-rendering: optimizeQuality;
 }
