@@ -61,4 +61,16 @@ class LibraryEntryTest < ActiveSupport::TestCase
     assert_equal one_count, anime.reload.rating_frequencies["1.0"].to_i
     assert_equal two_count, anime.reload.rating_frequencies["2.0"].to_i
   end
+
+  test "accepts only valid ratings" do
+    entry = LibraryEntry.first
+    [-1, 0, 0.1].each do |i|
+      entry.rating = i
+      assert !entry.valid?, "#{i} is invalid"
+    end
+    [0.5, nil, 5].each do |i|
+      entry.rating = i
+      assert entry.valid?, "#{i} is valid"
+    end
+  end
 end
