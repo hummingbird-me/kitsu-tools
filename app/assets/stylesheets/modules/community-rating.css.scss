@@ -53,9 +53,8 @@
   @include make-xs-column(12);
   padding: 0;
   border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  margin: 15px 0 0;
-  padding: 15px 0;
+  margin: 15px 0 0 0;
+  padding: 15px 0 5px 0;
 }
 
 .community-rating-wrapper {

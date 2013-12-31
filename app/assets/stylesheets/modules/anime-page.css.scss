@@ -220,9 +220,9 @@
   float: left;
   @include make-xs-column(12);
   @include make-sm-column(12);
-  padding-left: 0;
-  padding-right: 0;
-  margin-top: 15px;
+  padding: 15px 0;
+  margin: 15px 0 0 0;
+  border-top: 1px solid #ddd;
   img {
     width: 100%;
   }
