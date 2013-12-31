@@ -32,18 +32,22 @@ module Api::V2
       library_entry = find_library_entry_by_id params[:id]
       return error!("unauthorized", 403) if library_entry.nil?
 
-      library_entry.status = params[:library_entry][:status]
+      unless params[:library_entry][:status].nil?
+        library_entry.status = params[:library_entry][:status]
+      end
 
       ## TEMPORARY -- Change when favorite status is moved into the library
       #               entry model.
-      favorite_status = params[:library_entry][:is_favorite]
-      anime = library_entry.anime
-      if favorite_status and !current_user.has_favorite?(anime)
-        # Add favorite.
-        Favorite.create(user: current_user, item: anime)
-      elsif current_user.has_favorite?(anime) and !favorite_status
-        # Remove favorite.
-        current_user.favorites.where(item_id: anime, item_type: "Anime").first.destroy
+      unless params[:library_entry][:is_favorite].nil?
+        favorite_status = params[:library_entry][:is_favorite]
+        anime = library_entry.anime
+        if favorite_status and !current_user.has_favorite?(anime)
+          # Add favorite.
+          Favorite.create(user: current_user, item: anime)
+        elsif current_user.has_favorite?(anime) and !favorite_status
+          # Remove favorite.
+          current_user.favorites.where(item_id: anime, item_type: "Anime").first.destroy
+        end
       end
 
       if library_entry.save
