@@ -8,6 +8,10 @@ Hummingbird.AnimeIndexController = Ember.ObjectController.extend
   showStudios: Ember.computed.equal('activeTab', 'Studios')
   showCast: Ember.computed.equal('activeTab', 'Cast')
 
+  fbLikeURL: (->
+    "http://hummingbird.me/anime/" + @get('model.id')
+  ).property('model.id')
+
   filteredCast: (->
     @get('model.featuredCastings').filterBy 'language', @get('language')
   ).property('model.featuredCastings', 'language')

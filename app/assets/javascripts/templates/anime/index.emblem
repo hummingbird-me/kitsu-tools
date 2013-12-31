@@ -11,7 +11,7 @@ h1.series-title.hidden-xs
   p: truncate-text text=synopsis length=500
 
   .social-buttons
-    .fb-like data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"
+    .fb-like data-href=fbLikeURL data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"
     a href="https://twitter.com/share" class="twitter-share-button" data-via="hummingbird_me" Tweet
 
 .info-tabs
