@@ -1,4 +1,14 @@
 {{render header}}
 
+{{#unless currentUser.isSignedin}}
+<div class="signup-cta hidden-xs">
+  <p>
+    Hummingbird is the easiest way to track, share and discover new anime.
+    <small>Join now, for free!</small>
+    <a class="btn btn-xs" href="/users/sign_up">Get Started</a>
+  </p>
+</div>
+{{/unless}}
+
 {{outlet}}
 {{outlet modal}}

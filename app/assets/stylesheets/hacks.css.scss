@@ -22,8 +22,40 @@
   }
 }
 
-/* Crisper header "Hummingbird" text in Firefox. */
+/* Fix extra 2px of space at the bottom of the header. */
 a.navbar-brand {
   padding: 14px;
-  image-rendering: optimizeQuality;
 }
+
+/* Signup CTA below the header. */
+.signup-cta {
+  text-align: center;
+  background-color: transparentize($navy, 0.05);
+  margin-top: 50px;
+  margin-bottom: 0;
+  width: 100%;
+  border-top: 1px solid $darkNavy;
+  border-bottom: 1px solid transparentize($darkNavy, 0.7);
+  z-index: 1000;
+  p {
+    color: darken($eggshell, 15%);
+    margin: 0;
+    padding: 18px 0;
+    font-size: 1.4em;
+    @media (max-width: 1000px) {
+      font-size: 1em;
+      padding: 10px 0;
+    }
+  }
+  small {
+    color: $darkEggshell;
+  }
+  a.btn {
+    margin-left: 5px;
+    background-color: $darkOrange;
+    color: lighten($orange, 25%);
+    font-size: 0.9em;
+    padding: 2px 10px;
+  }
+}
+
