@@ -1,4 +1,5 @@
 require_relative 'entities.rb'
+require 'message_formatter'
 
 class API_v1 < Grape::API
   version 'v1', using: :path, format: :json, vendor: 'hummingbird'
@@ -7,12 +8,13 @@ class API_v1 < Grape::API
   helpers do
     def warden; env['warden']; end
     def current_user
+      return env['current_user'] if env['current_user']
       if params[:auth_token] or cookies[:auth_token]
         user = User.find_by_authentication_token(params[:auth_token] || cookies[:auth_token])
         if user.nil?
           error!("Invalid authentication token", 401)
         end
-        user
+        env['current_user'] = user
       else
         nil
       end
@@ -53,22 +55,92 @@ class API_v1 < Grape::API
         status: w.status.downcase.gsub(' ', '-'),
         private: w.private,
         rewatching: w.rewatching,
-        anime: {
-          slug: w.anime.slug,
-          status: w.anime.status,
-          url: "http://hummingbird.me/anime/#{w.anime.slug}",
-          title: w.anime.canonical_title(title_language_preference),
-          alternate_title: w.anime.alternate_title(title_language_preference),
-          episode_count: w.anime.episode_count,
-          cover_image: w.anime.poster_image_thumb,
-          synopsis: w.anime.synopsis,
-          show_type: w.anime.show_type
-        },
+        anime: present_anime(w.anime, title_language_preference, false),
         rating: {
           type: rating_type,
           value: w.rating
         }
       }
+    end
+
+    def present_miniuser(user)
+      {
+        name: user.name,
+        url: "http://hummingbird.me/users/#{user.name}",
+        avatar: user.avatar.url(:thumb),
+        avatar_small: user.avatar.url(:thumb_small),
+        nb: user.ninja_banned?
+      }
+    end
+
+    def present_anime(anime, title_language_preference, include_genres=true)
+      json = {
+        slug: anime.slug,
+        status: anime.status,
+        url: "http://hummingbird.me/anime/#{anime.slug}",
+        title: anime.canonical_title(title_language_preference),
+        alternate_title: anime.alternate_title(title_language_preference),
+        episode_count: anime.episode_count,
+        cover_image: anime.poster_image_thumb,
+        synopsis: anime.synopsis,
+        show_type: anime.show_type
+      }
+      if include_genres
+        json[:genres] = anime.genres.map {|x| {name: x.name} }
+      end
+      json
+    end
+
+    def present_story(story, current_user, title_language_preference)
+      json = {
+        id: story.id,
+        story_type: story.story_type,
+        user: present_miniuser(story.user),
+        updated_at: story.updated_at,
+      }
+      if story.story_type == "comment"
+        json[:self_post] = (story.target == story.user)
+        json[:poster] = present_miniuser(story.target)
+      elsif story.story_type == "media_story"
+        json[:media] = present_anime(story.target, title_language_preference)
+      end
+      substories = story.substories
+      json[:substories_count] = substories.length
+      json[:substories] = substories.map do |substory|
+        subjson = {
+          id: substory.id,
+          substory_type: substory.substory_type,
+          created_at: substory.created_at
+        }
+        if substory.substory_type == "followed"
+          subjson[:followed_user] = present_miniuser(substory.target)
+        elsif %w[liked_quote submitted_quote].include? substory.substory_type
+          quote = substory.target
+          subjson[:quote] = {
+            content: quote.content,
+            character_name: quote.character_name
+          }
+        elsif substory.substory_type == "watchlist_status_update"
+          subjson[:new_status] = (substory.data["new_status"] || "Currently Watching").downcase.gsub(' ', '_')
+        elsif substory.substory_type == "watched_episode"
+          subjson[:episode_number] = substory.data["episode_number"]
+          subjson[:service] = substory.data["service"]
+        elsif substory.substory_type == "comment"
+          if substory.data["formatted_comment"].nil?
+            formatted_comment = MessageFormatter.format_message substory.data["comment"]
+            substory.data["formatted_comment"] = formatted_comment
+            substory.save
+          end
+          subjson[:comment] = substory.data["formatted_comment"]
+        end
+        if current_user and ((substory.user_id == current_user.id) or (story.user_id == current_user.id) or current_user.admin?)
+          subjson[:permissions] = {}
+        else
+          subjson[:permissions] = {}
+        end
+        subjson
+      end
+      json
     end
   end
 
@@ -78,7 +150,7 @@ class API_v1 < Grape::API
   end
   get '/timeline' do
     if user_signed_in?
-      Entities::Story.represent(NewsFeed.new(current_user).fetch(params[:page]), current_user: current_user, title_language_preference: current_user.title_language_preference)
+      NewsFeed.new(current_user).fetch(params[:page]).map {|x| present_story(x, current_user, current_user.title_language_preference) }
     else
       []
     end
@@ -173,7 +245,7 @@ class API_v1 < Grape::API
       # Find stories to display.
       stories = user.stories.for_user(current_user).order('updated_at DESC').includes(:substories, :user, :target).page(params[:page]).per(20)
 
-      present stories, with: Entities::Story, current_user: current_user, title_language_preference: (user_signed_in? ? current_user.title_language_preference : "canonical")
+      stories.map {|x| present_story(x, current_user, current_user.title_language_preference) }
     end
 
     desc "Delete a substory from the user's feed."
@@ -331,16 +403,16 @@ class API_v1 < Grape::API
     end
     get ':id' do
       anime = Anime.find(params[:id])
-      
+
       title_language_preference = params[:title_language_preference]
       if title_language_preference.nil? and current_user
         title_language_preference = current_user.title_language_preference
       end
       title_language_preference ||= "canonical"
 
-      present anime, with: Entities::Anime, title_language_preference: title_language_preference
+      present_anime(anime, title_language_preference)
     end
-    
+
     desc "Returns similar anime."
     params do
       requires :id, type: String, desc: "anime ID"

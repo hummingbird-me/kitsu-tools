@@ -26,6 +26,10 @@ class HomeController < ApplicationController
     end
   end
 
+  def feed
+    redirect_to "/api/v1/timeline?page=#{params[:page] || 1}"
+  end
+
   def unsubscribe
     code = params[:code]
     User.all.select {|x| x.encrypted_email == code }.each {|x| x.update_attributes subscribed_to_newsletter: false }

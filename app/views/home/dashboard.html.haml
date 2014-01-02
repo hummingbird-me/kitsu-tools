@@ -92,7 +92,7 @@
           @StoryCollectionView.fetchMore "/api/v1/timeline?"
           infiniteScrollLoader = ->
             if $(window).scrollTop() + 2000 > $(".activity-feed-spinner").offset().top
-              @StoryCollectionView.fetchMore "/feed.json?"
+              @StoryCollectionView.fetchMore "/api/v1/timeline?"
 
           setInterval infiniteScrollLoader, 500
 
