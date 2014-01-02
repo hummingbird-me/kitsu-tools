@@ -20,7 +20,7 @@
                 .large-12.columns.no-padding
                   = anime_link trending[:anime], class: 'trending-title truncate'
                   %i #{trending[:currently_watching]} Viewers
-      
+
       .large-12.columns.no-padding-left.no-padding-right.side-advert.hide-for-small.rounded-panel
         :javascript
           google_ad_client = "ca-pub-3410319844519574";
@@ -84,16 +84,15 @@
             %input{:placeholder => "What are you up to?", :type => "text"}/
 
         %ul.feed-list.activity-feed
-          
+
         .center.activity-feed-spinner
           %i.fa.fa-spin.fa-spinner.fa-4x
 
         :coffee
-          @StoryCollectionView.fetchMore "/feed.json?"
+          @StoryCollectionView.fetchMore "/api/v1/timeline?"
           infiniteScrollLoader = ->
             if $(window).scrollTop() + 2000 > $(".activity-feed-spinner").offset().top
               @StoryCollectionView.fetchMore "/feed.json?"
 
           setInterval infiniteScrollLoader, 500
-          
 

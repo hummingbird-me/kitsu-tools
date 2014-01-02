@@ -56,7 +56,7 @@ Hummingbird::Application.routes.draw do
 
   # Dashboard
   match '/dashboard' => 'home#dashboard'
-  match '/feed' => "home#feed"
+  get '/feed', to: redirect('/api/v1/timeline')
 
   resources :users do
     get :watchlist

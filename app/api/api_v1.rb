@@ -72,6 +72,18 @@ class API_v1 < Grape::API
     end
   end
 
+  desc "Return the user's timeline"
+  params do
+    optional :page, type: Integer
+  end
+  get '/timeline' do
+    if user_signed_in?
+      Entities::Story.represent(NewsFeed.new(current_user).fetch(params[:page]), current_user: current_user, title_language_preference: current_user.title_language_preference)
+    else
+      []
+    end
+  end
+
   resource :users do
     desc "Return authentication code"
     params do

@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       render :index
     end
   end
-  
+
   def dashboard
     if user_signed_in?
       @onboarding = true if params[:signup_tour]
@@ -23,18 +23,6 @@ class HomeController < ApplicationController
       end
     else
       redirect_to "/"
-    end
-  end
-
-  def feed
-    respond_to do |format|
-      format.json do
-        if user_signed_in?
-          render :json => NewsFeed.new(current_user).fetch(params[:page])
-        else
-          render :json => []
-        end
-      end
     end
   end
 
