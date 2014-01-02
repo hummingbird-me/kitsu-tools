@@ -2,6 +2,7 @@ require_relative 'entities.rb'
 
 class API_v1 < Grape::API
   version 'v1', using: :path, format: :json, vendor: 'hummingbird'
+  formatter :json, lambda {|object, env| MultiJson.dump(object) }
 
   helpers do
     def warden; env['warden']; end
@@ -39,6 +40,35 @@ class API_v1 < Grape::API
       rescue
         error!("404 Not Found", 404)
       end
+    end
+
+    def present_watchlist(w, rating_type, title_language_preference)
+      {
+        id: w.id,
+        episodes_watched: w.episodes_watched,
+        last_watched: w.last_watched || w.updated_at,
+        rewatched_times: w.rewatched_times,
+        notes: w.notes,
+        notes_present: (w.notes and w.notes.strip.length > 0),
+        status: w.status.downcase.gsub(' ', '-'),
+        private: w.private,
+        rewatching: w.rewatching,
+        anime: {
+          slug: w.anime.slug,
+          status: w.anime.status,
+          url: "http://hummingbird.me/anime/#{w.anime.slug}",
+          title: w.anime.canonical_title(title_language_preference),
+          alternate_title: w.anime.alternate_title(title_language_preference),
+          episode_count: w.anime.episode_count,
+          cover_image: w.anime.poster_image_thumb,
+          synopsis: w.anime.synopsis,
+          show_type: w.anime.show_type
+        },
+        rating: {
+          type: rating_type,
+          value: w.rating
+        }
+      }
     end
   end
 
@@ -89,9 +119,7 @@ class API_v1 < Grape::API
       json
     end
 
-    desc "Return the entries in a user's library under a specific status.", {
-      object_fields: Entities::Watchlist.documentation
-    }
+    desc "Return the entries in a user's library under a specific status."
     params do
       requires :user_id, type: String
       optional :status, type: String
@@ -117,7 +145,9 @@ class API_v1 < Grape::API
       end
       title_language_preference ||= "canonical"
 
-      present watchlists, with: Entities::Watchlist, title_language_preference: title_language_preference, genres: false, include_mal_id: params[:include_mal_id] == "true", rating_type: (user.star_rating ? "advanced" : "simple")
+      rating_type = user.star_rating? ? "advanced" : "simple"
+
+      watchlists.map {|w| present_watchlist(w, rating_type, title_language_preference) }
     end
 
     desc "Returns the user's feed."
@@ -271,9 +301,10 @@ class API_v1 < Grape::API
         title_language_preference = current_user.title_language_preference
       end
       title_language_preference ||= "canonical"
+      rating_type = current_user.star_rating? ? "advanced" : "simple"
 
       if watchlist.save
-        present watchlist, with: Entities::Watchlist, title_language_preference: title_language_preference
+        present_watchlist(watchlist, rating_type, title_language_preference)
       else
         return false
       end

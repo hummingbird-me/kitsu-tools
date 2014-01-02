@@ -267,6 +267,7 @@ GEM
       jwt (~> 0.1.4)
       multi_json (~> 1.0)
       rack (~> 1.2)
+    oj (2.5.1)
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
@@ -522,6 +523,7 @@ DEPENDENCIES
   newrelic-grape
   newrelic_rpm
   nokogiri
+  oj
   omniauth
   omniauth-facebook (= 1.4.0)
   paperclip (~> 3.0)
