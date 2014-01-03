@@ -14,13 +14,13 @@
         .col-sm-12.col-md-10.account-info
           h1.username #{username}
           ul.inline-list.clearfix
-            li: a
+            li: bootstrap-tooltip title="Coming soon!" placement="bottom"
               .fa.fa-exchange &nbsp;
               | Compare
-            li: a
+            li: bootstrap-tooltip title="Coming soon!" placement="bottom"
               .fa.fa-heart-o &nbsp;
               | Suggest
-            li: a
+            li: bootstrap-tooltip title="Coming soon!" placement="bottom"
               .fa.fa-envelope-o &nbsp;
               | Message
       unless viewingSelf
