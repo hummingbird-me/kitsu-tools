@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
   end
 
   def self.search(query)
-    where('name LIKE :query OR email LIKE :query', query: "#{query}%")
+    where('LOWER(name) LIKE :query OR LOWER(email) LIKE :query', query: "#{query.downcase}%")
   end
 
   has_many :favorites

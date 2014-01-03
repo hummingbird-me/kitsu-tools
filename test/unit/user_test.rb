@@ -62,5 +62,7 @@ class UserTest < ActiveSupport::TestCase
     assert !User.search('vikhyatsdaf').include?(users(:vikhyat))
     assert User.search('c@vikhyat').include?(users(:vikhyat))
     assert User.search('c@vikhyat.net').include?(users(:vikhyat))
+    assert User.search('vikhYat').include?(users(:vikhyat)), "search should be case insensitive"
+    assert User.search('c@Vikhyat.net').include?(users(:vikhyat)), "search should be case insensitive"
   end
 end
