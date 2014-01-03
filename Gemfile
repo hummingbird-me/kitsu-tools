@@ -34,7 +34,6 @@ gem 'oj'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
   gem 'compass-rails'
   gem 'zurb-foundation', '~> 4.3.0'
   gem 'therubyracer', :platforms => :ruby
