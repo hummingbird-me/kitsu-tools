@@ -134,7 +134,7 @@ class API_v1 < Grape::API
           subjson[:comment] = substory.data["formatted_comment"]
         end
         if current_user and ((substory.user_id == current_user.id) or (story.user_id == current_user.id) or current_user.admin?)
-          subjson[:permissions] = {}
+          subjson[:permissions] = {destroy: true}
         else
           subjson[:permissions] = {}
         end
