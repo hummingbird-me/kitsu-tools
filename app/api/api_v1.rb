@@ -445,6 +445,8 @@ class API_v1 < Grape::API
       results = anime.fuzzy_search_by_title(params[:query]).limit(5)
     end
 
-    present results, with: Entities::Anime, title_language_preference: (current_user.try(:title_language_preference) || "canonical")
+    title_language_preference = current_user.try(:title_language_preference) || "canonical"
+
+    results.map {|x| present_anime(x) }
   end
 end
