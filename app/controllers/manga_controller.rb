@@ -2,11 +2,17 @@ class MangaController < ApplicationController
   def show
     @manga = Manga.find(params[:id])
 
-    if request.path != manga_path(@manga)
-      return redirect_to @manga, status: :moved_permanently
-    end
+    respond_to do |format|
+      format.json { render json: @manga }
 
-    preload! @manga
-    render_ember
+      format.html do
+        if request.path != manga_path(@manga)
+          return redirect_to @manga, status: :moved_permanently
+        end
+
+        preload! @manga
+        render_ember
+      end
+    end
   end
 end

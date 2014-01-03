@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::V2::LibraryEntriesControllerTest < ActionController::TestCase
+class LibraryEntriesControllerTest < ActionController::TestCase
   test "need to be authenticated to create library entry" do
     post :create, library_entry: {anime_id: 'monster', status: 'Plan to Watch'}
     assert_nil LibraryEntry.where(anime_id: anime(:monster), user_id: users(:vikhyat)).first

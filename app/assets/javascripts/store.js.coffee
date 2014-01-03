@@ -4,7 +4,6 @@ Hummingbird.Store = DS.Store.extend
   revision: 13
   adapter: '_ams'
 
-Hummingbird.ApplicationAdapter = DS.ActiveModelAdapter.extend
-  namespace: 'api/v2'
+Hummingbird.ApplicationAdapter = DS.ActiveModelAdapter.extend({})
 
 Hummingbird.ApplicationSerializer = DS.ActiveModelSerializer.extend({})

@@ -6,4 +6,10 @@ class MangaControllerTest < ActionController::TestCase
     assert_response 200
     assert assigns["preload"].length > 0
   end
+
+  test "can get manga json" do
+    get :show, format: :json, id: 'monster'
+    assert_response 200
+    assert_equal MangaSerializer.new(manga(:monster)).to_json, @response.body
+  end
 end

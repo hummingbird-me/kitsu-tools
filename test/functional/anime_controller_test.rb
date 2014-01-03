@@ -8,6 +8,12 @@ class AnimeControllerTest < ActionController::TestCase
     assert_not_nil assigns["anime"]
   end
 
+  test "can get anime json" do
+    get :show, format: :json, id: 'sword-art-online'
+    assert_response 200
+    assert_equal @response.body, AnimeSerializer.new(anime(:sword_art_online)).to_json
+  end
+
   test "redirects to canonical URL" do
     get :show, id: anime(:sword_art_online).id
     assert_response 301
@@ -43,5 +49,12 @@ class AnimeControllerTest < ActionController::TestCase
     assert_not_nil assigns(:trending_anime)
     assert_not_nil assigns(:trending_reviews)
     assert_not_nil assigns(:recent_reviews)
+  end
+
+  test "can get multiple anime json" do
+    get :index, format: :json, ids: ['monster', 'sword-art-online']
+    assert_response 200
+    assert JSON.parse(@response.body)["anime"].map {|x| x['id'] }.include? 'monster'
+    assert JSON.parse(@response.body)["anime"].map {|x| x['id'] }.include? 'sword-art-online'
   end
 end

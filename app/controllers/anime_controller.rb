@@ -9,13 +9,20 @@ class AnimeController < ApplicationController
   def show
     @anime = Anime.find(params[:id])
 
-    # Redirect to canonical URL if this isn't it.
-    if request.path != anime_path(@anime)
-      return redirect_to @anime, status: :moved_permanently
-    end
+    respond_to do |format|
+      format.html do
+        # Redirect to canonical URL if this isn't it.
+        if request.path != anime_path(@anime)
+          return redirect_to @anime, status: :moved_permanently
+        end
 
-    preload! @anime
-    render layout: 'redesign'
+        preload! @anime
+        render layout: 'redesign'
+      end
+      format.json do
+        render json: @anime
+      end
+    end
   end
 
   def upcoming
@@ -144,18 +151,44 @@ class AnimeController < ApplicationController
   end
 
   def index
-    hide_cover_image
-    @filter_years = ["Upcoming", "2010s", "2000s", "1990s", "1980s", "1970s", "Older"]
+    respond_to do |format|
+      format.html do
+        hide_cover_image
+        @filter_years = ["Upcoming", "2010s", "2000s", "1990s", "1980s", "1970s", "Older"]
 
-    @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
-    @recent_reviews = Review.order('created_at DESC').limit(12).includes(:anime)
-    trending_review_candidates = Review.where("created_at >= ?", 30.days.ago).order("wilson_score DESC").limit(30)
-    @trending_reviews = []
-    trending_review_candidates.each do |candidate|
-      unless @trending_reviews.any? {|r| r.user_id == candidate.user_id }
-        @trending_reviews.push candidate
+        @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
+        @recent_reviews = Review.order('created_at DESC').limit(12).includes(:anime)
+        trending_review_candidates = Review.where("created_at >= ?", 30.days.ago).order("wilson_score DESC").limit(30)
+        @trending_reviews = []
+        trending_review_candidates.each do |candidate|
+          unless @trending_reviews.any? {|r| r.user_id == candidate.user_id }
+            @trending_reviews.push candidate
+          end
+          break if @trending_reviews.length == 6
+        end
       end
-      break if @trending_reviews.length == 6
+
+      format.json do
+        anime = Anime.where(slug: params[:ids])
+        render json: anime
+      end
     end
+  end
+
+  def update
+    authenticate_user!
+    anime = Anime.find(params[:id])
+    if current_user.admin?
+      anime.synopsis = params[:anime][:synopsis]
+      anime.episode_count = params[:anime][:episode_count]
+      anime.episode_length = params[:anime][:episode_length]
+      unless Rails.env.development?
+        anime.poster_image = URI(params[:anime][:poster_image])
+        anime.cover_image = URI(params[:anime][:cover_image])
+      end
+      anime.cover_image_top_offset = params[:anime][:cover_image_top_offset]
+      anime.save
+    end
+    render json: anime
   end
 end

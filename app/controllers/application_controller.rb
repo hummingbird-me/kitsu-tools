@@ -24,6 +24,11 @@ class ApplicationController < ActionController::Base
     render "layouts/redesign", layout: false
   end
 
+  # Render a JSON error with the given error message and status code.
+  def error!(message, status)
+    render json: {error: message}, status: status
+  end
+
   ### PRE-EMBER CODE BELOW -- NEEDS REWRITING.
 
   before_filter :user_last_seen

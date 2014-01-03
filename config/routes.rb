@@ -1,17 +1,9 @@
 require 'sidekiq/web'
 
 Hummingbird::Application.routes.draw do
-  # API v2
-  namespace :api do
-    namespace :v2 do
-      resources :anime
-      resources :manga
-      resources :quotes
-      resources :franchises
-      resources :library_entries
-      resources :reviews
-    end
-  end
+  resources :library_entries
+  resources :reviews
+  resources :franchises
 
   match '/sign-in' => 'auth#sign_in_action'
 
