@@ -59,5 +59,5 @@
   when: ruby_installed|failed
 
 - name: rbenv | install bundler
-  shell: RBENV_ROOT={{rbenv_root}} {{rbenv_root}}/shims/gem install bundle --no-ri --no-rdoc && RBENV_ROOT={{rbenv_root}} {{rbenv_root}}/bin/rbenv rehash creates={{rbenv_root}}/versions/{{ruby_version}}/bin/bundle
+  shell: RBENV_ROOT={{rbenv_root}} {{rbenv_root}}/shims/gem install bundler --no-ri --no-rdoc && RBENV_ROOT={{rbenv_root}} {{rbenv_root}}/bin/rbenv rehash creates={{rbenv_root}}/versions/{{ruby_version}}/bin/bundle
 

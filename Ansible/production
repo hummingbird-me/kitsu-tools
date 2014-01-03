@@ -5,7 +5,7 @@
 106.186.25.22
 
 [webservers]
-106.186.25.22 unicorn_processes=8
+106.186.25.22 unicorn_processes=5
 
 [redis]
 106.186.25.22
