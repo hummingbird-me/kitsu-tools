@@ -6,6 +6,9 @@ Hummingbird.Router.map ()->
     @route 'reviews'
 
   @resource 'manga', path: '/manga/:id', ->
+    @route 'index'
+
+  @resource 'user', path: '/users/:id', ->
     @route 'reviews'
 
   @route 'sign-in'

@@ -1,0 +1,45 @@
+.user-cover
+  img.cover-photo src=coverImageURL
+  .cover-overlay
+
+.container.relative
+  .row
+    .user-cover-options
+      .col-md-10.user-wrapper
+        .col-sm-2.col-md-2.user-avatar.clearfix
+          .large-avatar
+            img src=avatarURL height="130" width="130"
+            .online-box
+              div class={:online-indicator online:online:offline}
+        .col-sm-12.col-md-10.account-info
+          h1.username #{username}
+          ul.inline-list.clearfix
+            li: a
+              .icon-exchange &nbsp;
+              | Compare
+            li: a
+              .icon-heart-empty &nbsp;
+              | Suggest
+            li: a
+              .icon-envelope-alt &nbsp;
+              | Message
+      unless viewingSelf
+        button.btn.btn-default.btn-lg.follow-button
+          if following
+            | Unfollow
+          else
+            | Follow
+
+.profile-navigation
+  .container
+    .row
+      ul.inline-list.clearfix
+        li.nav-link
+          a Activity Feed
+        li.nav-link.dropdown
+          a.dropdown-toggle.navbar-avatar data-toggle="dropdown" Library
+          ul.dropdown-menu.profile-nav-drop
+            li: a Anime
+            li: a Manga
+
+outlet

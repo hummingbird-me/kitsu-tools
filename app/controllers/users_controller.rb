@@ -102,6 +102,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     @active_tab = :reviews
     @reviews = @user.reviews.order("created_at DESC").page(params[:page]).per(15)
+    render_ember
   end
 
   def update_cover_image
