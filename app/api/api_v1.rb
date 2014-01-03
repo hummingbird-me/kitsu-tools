@@ -447,6 +447,6 @@ class API_v1 < Grape::API
 
     title_language_preference = current_user.try(:title_language_preference) || "canonical"
 
-    results.map {|x| present_anime(x) }
+    results.map {|x| present_anime(x, title_language_preference, false) }
   end
 end
