@@ -74,21 +74,25 @@ class API_v1 < Grape::API
     end
 
     def present_anime(anime, title_language_preference, include_genres=true)
-      json = {
-        slug: anime.slug,
-        status: anime.status,
-        url: "http://hummingbird.me/anime/#{anime.slug}",
-        title: anime.canonical_title(title_language_preference),
-        alternate_title: anime.alternate_title(title_language_preference),
-        episode_count: anime.episode_count,
-        cover_image: anime.poster_image_thumb,
-        synopsis: anime.synopsis,
-        show_type: anime.show_type
-      }
-      if include_genres
-        json[:genres] = anime.genres.map {|x| {name: x.name} }
+      if anime
+        json = {
+          slug: anime.slug,
+          status: anime.status,
+          url: "http://hummingbird.me/anime/#{anime.slug}",
+          title: anime.canonical_title(title_language_preference),
+          alternate_title: anime.alternate_title(title_language_preference),
+          episode_count: anime.episode_count,
+          cover_image: anime.poster_image_thumb,
+          synopsis: anime.synopsis,
+          show_type: anime.show_type
+        }
+        if include_genres
+          json[:genres] = anime.genres.map {|x| {name: x.name} }
+        end
+        json
+      else
+        {}
       end
-      json
     end
 
     def present_story(story, current_user, title_language_preference)
