@@ -30,7 +30,10 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    redirect_to user_feed_path(user)
+    respond_to do |format|
+      format.html { redirect_to user_feed_path(user) }
+      format.json { render json: user }
+    end
   end
 
   def followers

@@ -8,20 +8,20 @@
       .col-md-10.user-wrapper
         .col-sm-2.col-md-2.user-avatar.clearfix
           .large-avatar
-            img src=avatarURL height="130" width="130"
+            avatar model 'thumb'
             .online-box
               div class={:online-indicator online:online:offline}
         .col-sm-12.col-md-10.account-info
           h1.username #{username}
           ul.inline-list.clearfix
             li: a
-              .icon-exchange &nbsp;
+              .fa.fa-exchange &nbsp;
               | Compare
             li: a
-              .icon-heart-empty &nbsp;
+              .fa.fa-heart-o &nbsp;
               | Suggest
             li: a
-              .icon-envelope-alt &nbsp;
+              .fa.fa-envelope-o &nbsp;
               | Message
       unless viewingSelf
         button.btn.btn-default.btn-lg.follow-button
