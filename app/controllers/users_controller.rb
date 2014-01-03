@@ -27,32 +27,10 @@ class UsersController < ApplicationController
       }
     end
   end
-  
+
   def show
-    begin
-      @user = User.find(params[:id])
-    rescue
-      # TEMPORARY
-      # Support the slug URLs as well. Remove this once it becomes a performance
-      # issue.
-      @user = User.all.select {|x| x.name.parameterize == params[:id] }.first
-      raise ActionController::RoutingError.new('Not Found') if @user.nil?
-      redirect_to @user, :status => :moved_permanently
-      return
-    end
-
-    redirect_to user_feed_path(@user)
-    return
-
-    @active_tab = :profile
-
-    @latest_reviews = @user.reviews.order('created_at DESC').limit(2)
-
-    @anime_history = {
-      recently_watched: @user.watchlists.order('last_watched DESC').where("status <> 'Dropped' AND status <> 'Plan to Watch'").limit(3).map(&:anime),
-      recently_completed: @user.watchlists.where(status: "Completed").order('last_watched DESC').limit(3).map(&:anime),
-      plan_to_watch: @user.watchlists.where(status: "Plan to Watch").order('updated_at DESC').limit(3).map(&:anime)
-    }
+    user = User.find(params[:id])
+    redirect_to user_feed_path(user)
   end
 
   def followers
@@ -119,7 +97,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     render "feed", layout: "layouts/profile"
   end
-  
+
   def reviews
     @user = User.find(params[:user_id])
     @active_tab = :reviews
