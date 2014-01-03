@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :cover_image_url, :avatar_template, :about, :rating_type
+  attributes :id, :username, :cover_image_url, :avatar_template, :rating_type
 
   def id
     object.name

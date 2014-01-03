@@ -3,8 +3,6 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       format.html do
         @anime = Anime.find(params[:anime_id])
-        reviews = Review.includes(:user).find_with_reputation(:votes, :all, conditions: ['anime_id = ?', @anime.id], order: 'votes DESC')
-        preload! reviews
         preload! @anime
         render "anime/show", layout: "redesign"
       end
