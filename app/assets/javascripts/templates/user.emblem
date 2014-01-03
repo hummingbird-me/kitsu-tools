@@ -1,5 +1,5 @@
 .user-cover
-  img.cover-photo src=coverImageURL
+  img.cover-photo src=coverImageUrl
   .cover-overlay
 
 .container.relative
