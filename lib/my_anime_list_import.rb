@@ -80,8 +80,6 @@ class MyAnimeListImport
 
       wl.save!
     end
-
-    @user.recompute_life_spent_on_anime
   end
 
 end
