@@ -19,6 +19,7 @@ Hummingbird.AnimeIndexController = Ember.ObjectController.extend
   # Legacy -- remove after Ember transition is complete.
   fullQuotesURL: (-> "/anime/" + @get('model.id') + "/quotes").property('model.id')
   fullReviewsURL: (-> "/anime/" + @get('model.id') + "/reviews").property('model.id')
+  newReviewURL: (-> "/anime/" + @get('model.id') + "/reviews/new").property('model.id')
   # End Legacy
 
   actions:
