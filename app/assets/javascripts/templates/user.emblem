@@ -35,11 +35,13 @@
     .row
       ul.inline-list.clearfix
         li.nav-link
-          a Activity Feed
+          a href=feedURL Activity Feed
         li.nav-link.dropdown
           a.dropdown-toggle.navbar-avatar data-toggle="dropdown" Library
-          ul.dropdown-menu.profile-nav-drop
-            li: a Anime
-            li: a Manga
+          ul.dropdown-menu
+            li: a href=libraryURL Anime
+            li: a Manga (Coming soon!)
+        li.nav-link
+          link-to 'user.reviews' | Reviews
 
 outlet
