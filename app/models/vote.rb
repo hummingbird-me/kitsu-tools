@@ -3,6 +3,10 @@ class Vote < ActiveRecord::Base
   belongs_to :user
   attr_accessible :user, :target, :positive
 
+  def self.for(user, target)
+    Vote.where(user_id: user.id, target_id: target.id, target_type: target.class.name).first
+  end
+
   after_create do
     self.target_type.constantize.increment_counter 'total_votes', self.target_id
     if self.positive?

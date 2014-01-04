@@ -38,8 +38,8 @@ class Review < ActiveRecord::Base
   ]
 
   def update_wilson_score!
-    positive = self.reputation_for(:votes)
-    total = self.evaluations.count
+    positive = self.positive_votes
+    total = self.total_votes
     self.update_column :wilson_score, WilsonScore.lower_bound(positive, total)
   end
 end

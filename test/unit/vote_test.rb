@@ -24,4 +24,10 @@ class VoteTest < ActiveSupport::TestCase
     assert_equal initial_pos, review.reload.positive_votes
     assert_equal initial_tot, review.reload.total_votes
   end
+
+  test "can get vote for user and model using `for`" do
+    assert_nil Vote.for(users(:vikhyat), reviews(:one))
+    Vote.create(user: users(:vikhyat), target: reviews(:one))
+    assert_not_nil Vote.for(users(:vikhyat), reviews(:one))
+  end
 end

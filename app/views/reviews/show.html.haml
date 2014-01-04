@@ -16,7 +16,7 @@
       .review-info.large-12.columns
         .large-2.columns
           %span.avatar= image_tag @review.user.avatar.url(:thumb)
-          %p.username= link_to @review.user.name, @review.user 
+          %p.username= link_to @review.user.name, @review.user
         .large-10.columns
           %span.anime-title
             = link_to @review.anime.canonical_title(current_user), @review.anime
@@ -28,7 +28,7 @@
           %span.facebook
             .fb-like{"data-layout" => "box_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
 
-          %span.twitter 
+          %span.twitter
             %a.twitter-share-button{"data-count" => "vertical", "data-text" => "#{@review.summary}", "data-via" => "Hummingbird_me", :href => "https://twitter.com/share"} Tweet
 
           %span.google-plus
@@ -38,10 +38,10 @@
             %p Rate Review
             .rating-thumbs.large-12.columns
               .positive-vote.large-6.columns
-                = link_to vote_anime_review_path(@anime, @review, type: "up"), method: :post, class: ('active' if @evaluation && @evaluation.value == 1.0) do
+                = link_to vote_anime_review_path(@anime, @review, type: "up"), method: :post, class: ('active' if @evaluation && @evaluation.positive?) do
                   %i.fa.fa-thumbs-up.fa-2x
               .negative-vote.large-6.columns
-                = link_to vote_anime_review_path(@anime, @review, type: "down"), method: :post, class: ('active' if @evaluation && @evaluation.value != 1.0) do
+                = link_to vote_anime_review_path(@anime, @review, type: "down"), method: :post, class: ('active' if @evaluation && !@evaluation.positive) do
                   %i.fa.fa-thumbs-down.fa-2x
 
       .main-content.large-7.columns

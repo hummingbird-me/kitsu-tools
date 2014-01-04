@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
           reviews = Review.where(id: params[:ids]).includes(:user)
         elsif params[:anime_id]
           anime = Anime.find params[:anime_id]
-          reviews = Kaminari.paginate_array(Review.includes(:user).find_with_reputation(:votes, :all, conditions: ["anime_id = ?", anime.id], order: 'votes DESC')).page(params[:page]).per(20)
+          reviews = anime.reviews.order('wilson_score DESC').page(params[:page]).per(20)
         end
         render json: reviews
       end
@@ -23,16 +23,17 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @recent_reviews = Review.order('created_at DESC').limit(10).select {|x| x.anime.sfw? }
     if user_signed_in?
-      @evaluation = @review.evaluations.where(source_id: current_user.id).first
+      @evaluation = Vote.for(current_user, @review)
     end
   end
 
   def vote
     authenticate_user!
-    value = params[:type] == "up" ? 1 : 0
     @review = Review.find(params[:id])
-    @review.add_or_update_evaluation(:votes, value, current_user)
-    @review.update_wilson_score!
+    vote = Vote.for(current_user, @review) || Vote.new(user: current_user, target: @review)
+    vote.positive = params[:type] == "up"
+    vote.save
+    @review.reload.update_wilson_score!
     redirect_to :back
   end
 
@@ -67,7 +68,7 @@ class ReviewsController < ApplicationController
     @review.rating_sound      = [[1, params["review"]["rating_sound"].to_i].max, 10].min rescue nil
     @review.rating_character  = [[1, params["review"]["rating_character"].to_i].max, 10].min rescue nil
     @review.rating_enjoyment  = [[1, params["review"]["rating_enjoyment"].to_i].max, 10].min rescue nil
-    
+
     if @review.save
       redirect_to anime_review_path(@anime, @review)
     else

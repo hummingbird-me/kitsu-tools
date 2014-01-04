@@ -13,14 +13,6 @@ class ReviewSerializer < ActiveModel::Serializer
     object.rating / 2.0
   end
 
-  def positive_votes
-    object.votes rescue object.reputation_for(:votes)
-  end
-
-  def total_votes
-    object.evaluations.count
-  end
-
   def attributes
     hash = super
     hash["user_id"] = object.user.name
