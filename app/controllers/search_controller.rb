@@ -49,6 +49,10 @@ class SearchController < ApplicationController
       @results = User.search(params[:query]).page(params[:page]).per(20)
       render "users"
 
+    else
+
+      not_found!
+
     end
 
   end
