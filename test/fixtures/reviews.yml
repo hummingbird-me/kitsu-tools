@@ -1,0 +1,15 @@
+one:
+  user: vikhyat
+  anime: sword_art_online
+  content: Review content goes here.
+  created_at: 2013-03-21 17:12:56.427244000 Z
+  updated_at: 2013-03-21 17:41:31.435360000 Z
+  rating: 7
+  source: hummingbird
+  rating_story: 6
+  rating_animation: 9
+  rating_sound: 8
+  rating_character: 5
+  rating_enjoyment: 8
+  summary: SAO is a textbook example of misused potential, with amazing animation brought down by poor plot and characterizations.
+  wilson_score: 0.782433758350299

@@ -7,7 +7,12 @@ class ReviewsController < ApplicationController
         render "anime/show", layout: "redesign"
       end
       format.json do
-        reviews = Review.where(id: params[:ids]).includes(:user)
+        if params[:ids]
+          reviews = Review.where(id: params[:ids]).includes(:user)
+        elsif params[:anime_id]
+          anime = Anime.find params[:anime_id]
+          reviews = Kaminari.paginate_array(Review.includes(:user).find_with_reputation(:votes, :all, conditions: ["anime_id = ?", anime.id], order: 'votes DESC')).page(params[:page]).per(20)
+        end
         render json: reviews
       end
     end
