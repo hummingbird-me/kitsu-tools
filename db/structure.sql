@@ -1115,7 +1115,9 @@ CREATE TABLE reviews (
     rating_character integer,
     rating_enjoyment integer,
     summary character varying(255),
-    wilson_score double precision DEFAULT 0.0
+    wilson_score double precision DEFAULT 0.0,
+    positive_votes integer DEFAULT 0,
+    total_votes integer DEFAULT 0
 );
 
 
@@ -1400,6 +1402,40 @@ CREATE SEQUENCE users_id_seq
 --
 
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: votes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE votes (
+    id integer NOT NULL,
+    target_id integer NOT NULL,
+    target_type character varying(255) NOT NULL,
+    user_id integer NOT NULL,
+    positive boolean DEFAULT true NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: votes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE votes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: votes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE votes_id_seq OWNED BY votes.id;
 
 
 --
@@ -1692,6 +1728,13 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY watchlists ALTER COLUMN id SET DEFAULT nextval('watchlists_id_seq'::regclass);
 
 
@@ -1973,6 +2016,14 @@ ALTER TABLE ONLY substories
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: votes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY votes
+    ADD CONSTRAINT votes_pkey PRIMARY KEY (id);
 
 
 --
@@ -2352,6 +2403,13 @@ CREATE UNIQUE INDEX index_users_on_facebook_id ON users USING btree (facebook_id
 --
 
 CREATE UNIQUE INDEX index_users_on_lower_name_index ON users USING btree (lower((name)::text));
+
+
+--
+-- Name: index_votes_on_target_id_and_target_type_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_votes_on_target_id_and_target_type_and_user_id ON votes USING btree (target_id, target_type, user_id);
 
 
 --
@@ -2934,3 +2992,7 @@ INSERT INTO schema_migrations (version) VALUES ('20131229043925');
 INSERT INTO schema_migrations (version) VALUES ('20131229051532');
 
 INSERT INTO schema_migrations (version) VALUES ('20131229052255');
+
+INSERT INTO schema_migrations (version) VALUES ('20140104051104');
+
+INSERT INTO schema_migrations (version) VALUES ('20140104051454');
