@@ -8,7 +8,6 @@ class AnimeSerializer < ActiveModel::Serializer
   has_many :featured_castings, root: :castings
   has_many :producers, embed_key: :slug
   has_many :franchises, include: false
-  has_many :reviews, include: false
 
   has_one :library_entry
 
