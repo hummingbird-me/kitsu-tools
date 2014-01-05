@@ -519,50 +519,50 @@ User Profile
     margin-top: 10px;
     margin-bottom: 10px;
   }
-}
-.drop-arrow {
-  position: relative;
-  height: 15px;
-  margin-bottom: 10px;
-}
-.drop-arrow:after, .drop-arrow:before {
-  top: 100%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
+  .drop-arrow {
+    position: relative;
+    height: 15px;
+    margin-bottom: 10px;
+  }
+  .drop-arrow:after, .drop-arrow:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
 
-.drop-arrow:after {
-  border-color: rgba(255, 255, 255, 0);
-  border-top-color: #fff;
-  border-width: 15px;
-  left: 50%;
-  top: 0px;
-  margin-left: -15px;
-}
-.drop-arrow:before {
-  border-color: rgba(221, 221, 221, 0);
-  border-top-color: #ddd;
-  border-width: 16px;
-  left: 50%;
-  top: 0px;
-  margin-left: -16px;
-}
-.personal-notes {
-  width: 100%;
-  border-radius: 3px;
-  height: 26px;
-  text-indent: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-}
-.rating-widget {
-  text-align: center;
-  font-size: 30px;
-  color: #777;
+  .drop-arrow:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #fff;
+    border-width: 15px;
+    left: 50%;
+    top: 0px;
+    margin-left: -15px;
+  }
+  .drop-arrow:before {
+    border-color: rgba(221, 221, 221, 0);
+    border-top-color: #ddd;
+    border-width: 16px;
+    left: 50%;
+    top: 0px;
+    margin-left: -16px;
+  }
+  .personal-notes {
+    width: 100%;
+    border-radius: 3px;
+    height: 26px;
+    text-indent: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+  }
+  .awesome-rating-widget {
+    text-align: center;
+    font-size: 30px;
+    color: #777;
+  }
 }
 .list-group-item {
   .list-item-left {

@@ -70,9 +70,15 @@ class UsersController < ApplicationController
   end
 
   def library
-    @active_tab = :library
-    @user = User.find(params[:user_id])
-    render :library, layout: 'profile'
+    if params[:user_id] == "vikhyat"
+      user = User.find params[:user_id]
+      preload! user
+      render_ember
+    else
+      @active_tab = :library
+      @user = User.find(params[:user_id])
+      render :library, layout: 'profile'
+    end
   end
 
   def follow
