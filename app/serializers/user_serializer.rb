@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :cover_image_url, :avatar_template, :rating_type, :mini_bio
+  attributes :id, :username, :cover_image_url, :avatar_template, :rating_type, :mini_bio, :is_followed
 
   def id
     object.name
@@ -23,6 +23,14 @@ class UserSerializer < ActiveModel::Serializer
 
   def mini_bio
     object.bio
+  end
+
+  def is_followed
+    if scope
+      object.follower_relations.where(follower_id: scope.id).length > 0
+    else
+      false
+    end
   end
 end
 

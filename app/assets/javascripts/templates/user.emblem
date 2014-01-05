@@ -25,7 +25,7 @@
               | Message
       unless viewingSelf
         button.btn.btn-default.btn-lg.follow-button
-          if following
+          if isFollowed
             | Unfollow
           else
             | Follow
