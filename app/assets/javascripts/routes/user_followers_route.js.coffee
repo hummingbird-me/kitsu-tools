@@ -4,4 +4,3 @@ Hummingbird.UserFollowersRoute = Ember.Route.extend Hummingbird.Paginated,
 
   afterModel: ->
     Hummingbird.TitleManager.setTitle @modelFor('user').get('username') + "'s Followers"
-

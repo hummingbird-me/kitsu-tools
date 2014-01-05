@@ -14,7 +14,8 @@ Hummingbird.ApplicationController = Ember.Controller.extend
 
     # Scroll to the top of the page.
     Ember.run.next ->
-      if window.location.href.match('/users/')
+      # TODO
+      if false and window.location.href.match('/users/')
         scrollAmount = 120
       else
         scrollAmount = 0
