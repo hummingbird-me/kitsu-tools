@@ -24,7 +24,7 @@
               .fa.fa-envelope-o &nbsp;
               | Message
       unless viewingSelf
-        button.btn.btn-default.btn-lg.follow-button
+        button.btn.btn-default.btn-lg.follow-button{action toggleFollow}
           if isFollowed
             | Unfollow
           else

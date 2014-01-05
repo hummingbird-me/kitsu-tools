@@ -104,6 +104,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to :back }
+      format.json { render json: true }
     end
   end
 
