@@ -70,7 +70,7 @@ class UsersController < ApplicationController
   end
 
   def library
-    if params[:user_id] == "vikhyat"
+    if params[:user_id] == "vikhyat" and Rails.env.development?
       user = User.find params[:user_id]
       preload! user
       render_ember
