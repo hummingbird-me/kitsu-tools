@@ -1,7 +1,7 @@
 Hummingbird.Review = DS.Model.extend
   summary: DS.attr('string')
   rating: DS.attr('number')
-  user: DS.belongsTo('user', async: true)
+  user: DS.belongsTo('user')
   anime: DS.belongsTo('anime', async: true)
   animeTitle: DS.attr('string')
 

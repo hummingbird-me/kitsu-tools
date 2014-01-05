@@ -2,7 +2,7 @@ class ReviewSerializer < ActiveModel::Serializer
   embed :ids
 
   attributes :id, :summary, :rating, :positive_votes, :total_votes, :anime_title
-  has_one :user, embed_key: :name
+  has_one :user, embed_key: :name, include: true
   has_one :anime, embed_key: :slug
 
   def anime_title
