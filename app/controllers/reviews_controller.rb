@@ -7,12 +7,13 @@ class ReviewsController < ApplicationController
         render "anime/show", layout: "redesign"
       end
       format.json do
+        reviews = Review.page(params[:page]).per(20).includes(:anime).includes(:user)
         if params[:anime_id]
           anime = Anime.find params[:anime_id]
-          reviews = anime.reviews.order('wilson_score DESC').page(params[:page]).per(20)
+          reviews = reviews.where(anime_id: anime.id).order('wilson_score DESC')
         elsif params[:user_id]
           user = User.find params[:user_id]
-          reviews = user.reviews.order('wilson_score DESC').page(params[:page]).per(20)
+          reviews = reviews.where(user_id: user.id).order('created_at DESC')
         end
         render json: reviews, meta: {page: (params[:page] || 1), total: reviews.total_pages}
       end
