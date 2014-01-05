@@ -1,0 +1,14 @@
+.review-listing
+  each
+    .col-xs-12.col-md-6
+      a href=reviewURL
+        .review.rounded-block
+          h4.reviewer-name
+            | #{animeTitle}
+          span.review-stars
+            stars rating
+          p.review-summary #{summary}
+          p.review-likes #{positiveVotes} out of #{totalVotes} users found this review helpful.
+
+if canLoadMore
+  load-more classNames="light" action="loadNextPage"

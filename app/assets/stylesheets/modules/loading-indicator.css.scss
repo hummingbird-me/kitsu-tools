@@ -7,6 +7,10 @@
   text-align: center;
 }
 
+.light .loading-indicator > div {
+  background-color: $lighterNavy;
+}
+
 .loading-indicator > div {
   width: 18px;
   height: 18px;

@@ -10,6 +10,9 @@ class ReviewsController < ApplicationController
         if params[:anime_id]
           anime = Anime.find params[:anime_id]
           reviews = anime.reviews.order('wilson_score DESC').page(params[:page]).per(20)
+        elsif params[:user_id]
+          user = User.find params[:user_id]
+          reviews = user.reviews.order('wilson_score DESC').page(params[:page]).per(20)
         end
         render json: reviews, meta: {page: (params[:page] || 1), total: reviews.total_pages}
       end
@@ -17,8 +20,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
-    @anime = Anime.find(params[:anime_id])
     @review = Review.find(params[:id])
+    @anime = @review.anime
     @recent_reviews = Review.order('created_at DESC').limit(10).select {|x| x.anime.sfw? }
     if user_signed_in?
       @evaluation = Vote.for(current_user, @review)

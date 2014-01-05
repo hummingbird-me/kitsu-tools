@@ -356,6 +356,7 @@ h4.series-title {
     @include make-xs-column(12);
     @include clearfix;
     padding: 8px;
+    background-color: #fff;
   }
 
   .trending-review-empty {

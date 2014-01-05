@@ -1,8 +1,9 @@
 Hummingbird.Review = DS.Model.extend
   summary: DS.attr('string')
   rating: DS.attr('number')
-  user: DS.belongsTo('user')
-  anime: DS.belongsTo('anime')
+  user: DS.belongsTo('user', async: true)
+  anime: DS.belongsTo('anime', async: true)
+  animeTitle: DS.attr('string')
 
   positiveVotes: DS.attr('number')
   totalVotes: DS.attr('number')
@@ -13,6 +14,6 @@ Hummingbird.Review = DS.Model.extend
 
   # Legacy stuff.
   reviewURL: (->
-    "/anime/" + @get("anime.id") + "/reviews/" + @get("id")
+    "/anime/_/reviews/" + @get("id")
   ).property('anime', 'id')
   # End legacy stuff.
