@@ -50,8 +50,9 @@ Hummingbird::Application.routes.draw do
   match '/dashboard' => 'home#dashboard'
   match '/feed' => 'home#feed'
 
+  match '/users/:id/watchlist' => redirect {|params, request| "/users/#{params[:id]}/library" }
   resources :users do
-    get :watchlist
+    get :library
     get :reviews
     get :feed
     get :followers

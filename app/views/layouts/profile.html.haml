@@ -43,7 +43,7 @@
             %li{:class => ("active" if @active_tab == :feed)}= link_to "Activity Feed", user_feed_path(@user)
             %li.hide= link_to "About", user_path(@user)
             %li{:class => ("active" if @active_tab == :library)}
-              = link_to "Library", user_watchlist_path(@user)
+              = link_to "Library", user_library_path(@user)
               %span.sidebar-number= @user.watchlists.count
             %li.hide
               = link_to "Reviews", user_reviews_path(@user)
@@ -90,7 +90,7 @@
               %ul#drop1.f-dropdown
                 %li.hide= link_to "Activity Feed", "#"
                 %li.hide= link_to "About", user_path(@user)
-                %li= link_to "Library", user_watchlist_path(@user)
+                %li= link_to "Library", user_library_path(@user)
                 %li.hide= link_to "Reviews", user_reviews_path(@user)
                 %li.hide= link_to "Following", "#"
                 %li.hide= link_to "Followers", "#"

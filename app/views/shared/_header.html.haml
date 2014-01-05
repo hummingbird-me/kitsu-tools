@@ -17,7 +17,7 @@
                 %li
                   = link_to "Profile", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
                 %li
-                  = link_to "Library", user_signed_in? ? main_app.user_watchlist_path(current_user) : "/users/sign_in"
+                  = link_to "Library", user_signed_in? ? main_app.user_library_path(current_user) : "/users/sign_in"
                 %li
                   = link_to "Recommendations", '/recommendations'
             %li.has-dropdown

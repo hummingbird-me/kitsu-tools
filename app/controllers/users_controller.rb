@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     render "favorite_anime", layout: "layouts/profile"
   end
 
-  def watchlist
+  def library
     @active_tab = :library
     @user = User.find(params[:user_id])
     render :library, layout: 'profile'
