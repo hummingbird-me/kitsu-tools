@@ -59,3 +59,38 @@ a.navbar-brand {
   }
 }
 
+/* User Following Section */
+.user-listing {
+  @include make-xs-column(12);
+  @include make-md-column(6);
+  @include make-md-column-offset(3);
+
+  .user {
+    @include make-xs-column(12);
+
+    color: $grey;
+    border-bottom: 1px solid $divider;
+    padding: 10px 0;
+  }
+
+  .user-avatar {
+    @include make-xs-column(2);
+    text-align: right;
+    img {
+      width: 50px;
+    }
+  }
+
+  .user-content {
+    @include make-xs-column(10);
+
+    h4 {
+      margin: 0;
+    }
+
+    p {
+      font-size: 0.9em;
+      margin-bottom: 0;
+    }
+  }
+}

@@ -9,6 +9,8 @@ Hummingbird.Router.map ()->
     @route 'reviews'
 
   @resource 'user', path: '/users/:id', ->
+    @route 'following'
+    @route 'followers'
     @route 'reviews'
 
   @route 'sign-in'

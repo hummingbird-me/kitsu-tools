@@ -3,7 +3,7 @@ Hummingbird.User = DS.Model.extend
   coverImageUrl: DS.attr('string')
   avatarTemplate: DS.attr('string')
   online: DS.attr('boolean')
-  about: DS.attr('string')
+  miniBio: DS.attr('string')
   ratingType: DS.attr('string')
 
   isFollowed: DS.attr('boolean')
@@ -12,3 +12,6 @@ Hummingbird.User = DS.Model.extend
     @get("avatarTemplate").replace('{size}', 'thumb')
   ).property('avatarTemplate')
 
+  userLink: (->
+    "/users/" + @get('id')
+  ).property('id')

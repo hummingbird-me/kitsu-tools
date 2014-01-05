@@ -43,5 +43,9 @@
             li: a Manga (Coming soon!)
         li.nav-link
           link-to 'user.reviews' | Reviews
+        li.nav-link
+          link-to 'user.following' | Following
+        li.nav-link
+          link-to 'user.followers' | Followers
 
 outlet

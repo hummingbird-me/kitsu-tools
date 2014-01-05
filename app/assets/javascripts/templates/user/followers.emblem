@@ -1,0 +1,14 @@
+.container
+  .user-listing
+    .panel.row
+      each
+        a href=userLink
+          .user
+            .user-avatar
+              avatar this 'thumb_small'
+            .user-content
+              h4 #{username}
+              p #{miniBio}
+
+      if canLoadMore
+        load-more action="loadNextPage"

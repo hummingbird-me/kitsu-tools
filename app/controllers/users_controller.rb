@@ -11,20 +11,34 @@ class UsersController < ApplicationController
   end
 
   def index
-    authenticate_user!
+    if params[:followed_by] or params[:followers_of]
 
-    @status = {
-      recommendations_up_to_date: current_user.recommendations_up_to_date
-    }
+      if params[:followed_by]
+        users = User.find(params[:followed_by]).following
+      elsif params[:followers_of]
+        users = User.find(params[:followers_of]).followers
+      end
+      users = users.page(params[:page]).per(20)
 
-    respond_to do |format|
-      format.html {
-        flash.keep
-        redirect_to '/'
+      render json: users, meta: {page: (params[:page] || 1), total: users.total_pages}
+
+    else
+      ### OLD CODE PATH BELOW.
+      authenticate_user!
+
+      @status = {
+        recommendations_up_to_date: current_user.recommendations_up_to_date
       }
-      format.json {
-        render :json => @status
-      }
+
+      respond_to do |format|
+        format.html {
+          flash.keep
+          redirect_to '/'
+        }
+        format.json {
+          render :json => @status
+        }
+      end
     end
   end
 
@@ -37,17 +51,15 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @active_tab = :followers
-    @user = User.find(params[:user_id])
-    @results = @user.followers.page(params[:page]).per(20)
-    render "followers_following", layout: "layouts/profile"
+    user = User.find(params[:user_id])
+    preload! user
+    render_ember
   end
 
   def following
-    @active_tab = :following
-    @user = User.find(params[:user_id])
-    @results = @user.following.page(params[:page]).per(20)
-    render "followers_following", layout: "layouts/profile"
+    user = User.find(params[:user_id])
+    preload! user
+    render_ember
   end
 
   def favorite_anime
@@ -102,9 +114,8 @@ class UsersController < ApplicationController
   end
 
   def reviews
-    @user = User.find(params[:user_id])
-    @active_tab = :reviews
-    @reviews = @user.reviews.order("created_at DESC").page(params[:page]).per(15)
+    user = User.find(params[:user_id])
+    preload! user
     render_ember
   end
 
