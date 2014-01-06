@@ -4,7 +4,7 @@ class AnimeControllerTest < ActionController::TestCase
   test "can get anime" do
     get :show, id: 'sword-art-online'
     assert_response 200
-    assert assigns["preload"].length > 0
+    assert_preloaded "full_anime"
     assert_not_nil assigns["anime"]
   end
 

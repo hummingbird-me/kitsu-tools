@@ -9,7 +9,10 @@ class ApplicationController < ActionController::Base
     @preload ||= []
     data = [data] unless data.is_a? Array
     options[:scope] = current_user
-    options[:root] = data.first.class.to_s.underscore.pluralize
+    options[:root] ||= data.first.class.to_s.underscore.pluralize
+    if options[:serializer]
+      options[:each_serializer] = options[:serializer]
+    end
     @preload.push(ActiveModel::ArraySerializer.new(data, options))
   end
 
