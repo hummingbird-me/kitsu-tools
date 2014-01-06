@@ -13,23 +13,23 @@
                   li: a Manga Library (Coming soon!)
             .col-xs-6.col-sm-9.col-md-9
               .btn-group.library-sections.hidden-sm.hidden-xs
-                button.btn.btn-default All
-                button.btn.btn-default Currently Watching
-                button.btn.btn-default Plan to Watch
-                button.btn.btn-default Completed
-                button.btn.btn-default On Hold
-                button.btn.btn-default Dropped
+                button{action showSection "View All"} class={:btn :btn-default showAll:active} All
+                button{action showSection "Currently Watching"} class={:btn :btn-default showCurrentlyWatching:active} Currently Watching
+                button{action showSection "Plan to Watch"} class={:btn :btn-default showPlanToWatch:active} Plan to Watch
+                button{action showSection "Completed"} class={:btn :btn-default showCompleted:active} Completed
+                button{action showSection "On Hold"} class={:btn :btn-default showOnHold:active} On Hold
+                button{action showSection "Dropped"} class={:btn :btn-default showDropped:active} Dropped
               .btn-group.library-sections.visible-sm.visible-xs
                 button.btn.btn-default.dropdown-toggle data-toggle="dropdown"
-                  | View All
-                  span.carent
+                  | #{showSection}
+                  span.caret
                 ul.dropdown-menu
-                  li: a View All
-                  li: a Currently Watching
-                  li: a Plan to Watch
-                  li: a Completed
-                  li: a On Hold
-                  li: a Dropped
+                  li: a{action showSection "View All"} View All
+                  li: a{action showSection "Currently Watching"} Currently Watching
+                  li: a{action showSection "Plan to Watch"} Plan to Watch
+                  li: a{action showSection "Completed"} Completed
+                  li: a{action showSection "On Hold"} On Hold
+                  li: a{action showSection "Dropped"} Dropped
         .container
           .row
             .col-md-12.search-wrapper
@@ -43,62 +43,54 @@
                 .list-item-progress Progress
                 .list-item-score.not-rated Rating
                 .list-item-type Type
-        .panel-divider
-          span Currently Watching
-          span.right-align 24 Titles
-        ul.list-group
-          li.list-group-item.clearfix
-            .list-item-left.col-xs-12.col-sm-6.col-md-6
-              | Sasami-san@Ganbaranai
-            .list-item-right.col-xs-12.col-sm-6.col-md-6
-              .list-item-progress
-                input.input-progress value="2"
-                span.progress-sep &#47;
-                span.list-item-total 12
-              .list-item-score.not-rated
-                i.fa.fa-star
-                span ----
-              .list-item-type
-                span TV
-          li.list-group-item.clearfix
-            .list-item-left.col-xs-12.col-sm-6.col-md-6
-              | Monogatari Series: Second Season
-            .list-item-right.col-xs-12.col-sm-6.col-md-6
-              .list-item-progress
-                input.input-progress value="4"
-                span.progress-sep &#47;
-                span.list-item-total 26
-              .list-item-score.not-rated
-                i.fa.fa-star
-                span ----
-              .list-item-type
-                span TV
-          .library-dropdown.clearfix
-            .drop-arrow
-            .col-md-12
-              textarea.personal-notes placeholder="Personal Notes about Monogatari Series: Second Season"
-            .col-md-2.no-padding-right.hidden-xs.hidden-sm
-              img.drop-thumb src="http://static.hummingbird.me/anime/poster_images/000/007/573/large/monogataris2.jpg?1383501611"
-            .col-md-6
-              p.drop-description Walking to school one day Tsubasa Hanekawa encounters a huge white tiger apparition at a crossroads that talks to her. The next day her house burns down. Homeless, and not wanting to stay with her family, she lies and tells them she has a place to stay, but instead sleeps in the old cram school. She's awakened by an angry and upset Hitagi Senjogahara who ridicules her for worrying her and drags her to her place to stay instead. The two of them soon discover that Araragi has gone missing and has urged them in a text message not to look for him. (Source: ANN)
-            .col-md-4
-              .drop-options
-                .btn-group.btn-block
-                  button.btn.btn-block.dropdown-toggle data-toggle="dropdown"
-                    | Currently Watching
-                    span.caret
-                  ul.dropdown-menu
-                    li Test
-                hr
-                .text-center
-                  form
-                    label.radio-inline
-                      input name="private" type="radio" value="true" Private
-                    label.radio-inline
-                      input name="private" type="radio" value="false" Public
-                hr
-                .text-center
-                  awesome-rating type="advanced" editable="true" rating="2.5"
-                hr
-                .text-center
-                  a view advanced options
+
+
+        each sectionsWithVisibility
+          if visible
+            .panel-divider
+              span #{title}
+              span.right-align #{length} Titles
+            ul.list-group
+              each content
+                li.list-group-item.clearfix
+                  .list-item-left.col-xs-12.col-sm-6.col-md-6
+                    | #{canonicalTitle}
+                  .list-item-right.col-xs-12.col-sm-6.col-md-6
+                    .list-item-progress
+                      input.input-progress value="2"
+                      span.progress-sep &#47;
+                      span.list-item-total 12
+                    .list-item-score.not-rated
+                      i.fa.fa-star
+                      span ----
+                    .list-item-type
+                      span TV
+        .library-dropdown.clearfix
+          .drop-arrow
+          .col-md-12
+            textarea.personal-notes placeholder="Personal Notes about Monogatari Series: Second Season"
+          .col-md-2.no-padding-right.hidden-xs.hidden-sm
+            img.drop-thumb src="http://static.hummingbird.me/anime/poster_images/000/007/573/large/monogataris2.jpg?1383501611"
+          .col-md-6
+            p.drop-description Walking to school one day Tsubasa Hanekawa encounters a huge white tiger apparition at a crossroads that talks to her. The next day her house burns down. Homeless, and not wanting to stay with her family, she lies and tells them she has a place to stay, but instead sleeps in the old cram school. She's awakened by an angry and upset Hitagi Senjogahara who ridicules her for worrying her and drags her to her place to stay instead. The two of them soon discover that Araragi has gone missing and has urged them in a text message not to look for him. (Source: ANN)
+          .col-md-4
+            .drop-options
+              .btn-group.btn-block
+                button.btn.btn-block.dropdown-toggle data-toggle="dropdown"
+                  | Currently Watching
+                  span.caret
+                ul.dropdown-menu
+                  li Test
+              hr
+              .text-center
+                form
+                  label.radio-inline
+                    input name="private" type="radio" value="true" Private
+                  label.radio-inline
+                    input name="private" type="radio" value="false" Public
+              hr
+              .text-center
+                awesome-rating type="advanced" editable="true" rating="2.5"
+              hr
+              .text-center
+                a view advanced options

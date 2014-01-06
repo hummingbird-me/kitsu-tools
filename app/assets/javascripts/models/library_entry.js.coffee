@@ -3,3 +3,4 @@ Hummingbird.LibraryEntry = DS.Model.extend
   status: DS.attr('string')
   isFavorite: DS.attr('boolean')
   rating: DS.attr('number')
+  canonicalTitle: DS.attr('string')
