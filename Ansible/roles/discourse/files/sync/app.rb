@@ -5,8 +5,15 @@ require 'active_record'
 
 File.open('/home/discourse/pids/sync', 'w') {|f| f.puts Process.pid }
 
-dbconf = YAML.load(File.open('/home/discourse/discourse/config/database.yml'))["production"]
-ActiveRecord::Base.establish_connection(dbconf)
+ActiveRecord::Base.establish_connection({
+  pool: 5,
+  timeout: 5000,
+  adapter: "postgresql",
+  host: "localhost",
+  database: "discourse_production",
+  username: "discourse",
+  password: "PostgreSQLTrigramsExtensionIsAmazinglyOkay"
+})
 
 class User < ActiveRecord::Base
 end
@@ -26,7 +33,9 @@ loop do
   STDERR.puts job.body
   if user
     user.username = new_name
-    user.uploaded_avatar_template = avatar
+    if avatar.length <= 255
+      user.uploaded_avatar_template = avatar
+    end
     user.save
   end
   STDERR.puts "Processed user #{username}."
