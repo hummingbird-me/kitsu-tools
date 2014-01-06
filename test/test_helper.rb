@@ -19,6 +19,6 @@ class ActionController::TestCase
   include Devise::TestHelpers
 
   def assert_preloaded(key)
-    assert JSON.parse(assigns["preload"].to_json).keys.include?(key), "#{key} should be preloaded"
+    assert JSON.parse(assigns["preload"].to_json).map {|x| x.keys }.flatten.include?(key), "#{key} should be preloaded"
   end
 end

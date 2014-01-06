@@ -1,7 +1,20 @@
 class LibraryEntriesController < ApplicationController
-  before_filter :authenticate_user!
+  def index
+    if params[:user_id]
+      user = User.find params[:user_id]
+      library_entries = LibraryEntry.where(user_id: user.id).includes(:anime).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
+      if user_signed_in?
+        if current_user != user
+          library_entries = library_entries.where(private: false)
+        end
+      end
+      render json: library_entries
+    end
+  end
 
   def create
+    authenticate_user!
+
     anime = Anime.find params[:library_entry][:anime_id]
     return error!("unknown anime id", 404) if anime.nil?
 
@@ -28,6 +41,8 @@ class LibraryEntriesController < ApplicationController
   end
 
   def update
+    authenticate_user!
+
     library_entry = find_library_entry_by_id params[:id]
     return error!("unauthorized", 403) if library_entry.nil?
 
@@ -63,6 +78,8 @@ class LibraryEntriesController < ApplicationController
   end
 
   def destroy
+    authenticate_user!
+
     library_entry = find_library_entry_by_id params[:id]
     return error!("unauthorized", 403) if library_entry.nil?
 

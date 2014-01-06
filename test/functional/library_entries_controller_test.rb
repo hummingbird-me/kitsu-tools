@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class LibraryEntriesControllerTest < ActionController::TestCase
+  test "can get user library entries" do
+    get :index, format: :json, user_id: 'vikhyat'
+    assert_response 200
+    assert JSON.parse(@response.body)["library_entries"].any? {|x| x["anime_id"] == "sword-art-online" }
+  end
+
   test "need to be authenticated to create library entry" do
     post :create, library_entry: {anime_id: 'monster', status: 'Plan to Watch'}
     assert_nil LibraryEntry.where(anime_id: anime(:monster), user_id: users(:vikhyat)).first

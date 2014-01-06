@@ -5,6 +5,10 @@ class LibraryEntrySerializer < ActiveModel::Serializer
   has_one :anime, embed_key: :slug
 
   def is_favorite
-    scope && scope.has_favorite?(object.anime)
+    if object.respond_to? :favorite_id
+      !object.favorite_id.nil?
+    else
+      scope && scope.has_favorite?(object.anime)
+    end
   end
 end
