@@ -1,12 +1,8 @@
 Hummingbird.Anime = DS.Model.extend
   canonicalTitle: DS.attr('string')
-  alternateTitle: DS.attr('string')
   synopsis: DS.attr('string')
-  coverImage: DS.attr('string')
-  coverImageTopOffset: DS.attr('number')
   posterImage: DS.attr('string')
   genres: DS.attr('array')
-  languages: DS.attr('array')
   showType: DS.attr('string')
   ageRating: DS.attr('string')
   ageRatingGuide: DS.attr('string')
@@ -15,19 +11,8 @@ Hummingbird.Anime = DS.Model.extend
   startedAiring: DS.attr('date')
   startedAiringDateKnown: DS.attr('boolean')
   finishedAiring: DS.attr('date')
-  screencaps: DS.attr('array')
-  languages: DS.attr('array')
-  youtubeVideoId: DS.attr('string')
-  communityRatings: DS.attr('array')
-  bayesianRating: DS.attr('number')
 
   libraryEntry: DS.belongsTo('libraryEntry')
-
-  producers: DS.hasMany('producer')
-  franchises: DS.hasMany('franchise', async: true)
-  featuredQuotes: DS.hasMany('quote')
-  trendingReviews: DS.hasMany('review')
-  featuredCastings: DS.hasMany('casting')
 
   airingStatus: (->
     unless @get('startedAiring')

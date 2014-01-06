@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  
+
   before_filter :allow_only_admins
   def allow_only_admins
     # This shouldn't be needed becuse we also check for admin-ness in the 

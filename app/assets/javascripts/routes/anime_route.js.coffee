@@ -1,6 +1,6 @@
 Hummingbird.AnimeRoute = Ember.Route.extend
   model: (params) ->
-    @store.find('anime', params.id)
+    @store.find('fullAnime', params.id)
 
   actions:
     toggleFavorite: ->
