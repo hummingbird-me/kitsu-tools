@@ -11,7 +11,7 @@ class AnimeControllerTest < ActionController::TestCase
   test "can get anime json" do
     get :show, format: :json, id: 'sword-art-online'
     assert_response 200
-    assert_equal @response.body, AnimeSerializer.new(anime(:sword_art_online)).to_json
+    assert_equal AnimeSerializer.new(anime(:sword_art_online)).to_json, @response.body
   end
 
   test "redirects to canonical URL" do
