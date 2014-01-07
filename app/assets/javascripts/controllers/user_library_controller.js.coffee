@@ -30,10 +30,14 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
   ).property('content.@each.status', 'sectionNames')
 
   sectionsWithVisibility: (->
-    that = this
-    @get('sections').map (x) ->
+    result = @get('sections')
+    showSection = @get('showSection')
+
+    result.forEach (x) ->
       section = x.get('title')
-      x.set('visible', (that.get('showSection') == section) or (that.get('showSection') == "View All"))
+      x.set 'visible', (showSection == section) or (showSection == "View All")
+
+    result
   ).property('sections', 'showSection')
 
   actions:
