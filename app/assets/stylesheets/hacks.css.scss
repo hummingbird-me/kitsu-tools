@@ -74,6 +74,7 @@ a.navbar-brand {
 
   .user {
     @include make-xs-column(12);
+    @include clearfix();
 
     border-bottom: 1px solid $divider;
     padding: 10px 0;
