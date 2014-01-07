@@ -65,32 +65,32 @@
                       span ----
                     .list-item-type
                       span TV
-        .library-dropdown.clearfix
-          .drop-arrow
-          .col-md-12
-            textarea.personal-notes placeholder="Personal Notes about Monogatari Series: Second Season"
-          .col-md-2.no-padding-right.hidden-xs.hidden-sm
-            img.drop-thumb src="http://static.hummingbird.me/anime/poster_images/000/007/573/large/monogataris2.jpg?1383501611"
-          .col-md-6
-            p.drop-description Walking to school one day Tsubasa Hanekawa encounters a huge white tiger apparition at a crossroads that talks to her. The next day her house burns down. Homeless, and not wanting to stay with her family, she lies and tells them she has a place to stay, but instead sleeps in the old cram school. She's awakened by an angry and upset Hitagi Senjogahara who ridicules her for worrying her and drags her to her place to stay instead. The two of them soon discover that Araragi has gone missing and has urged them in a text message not to look for him. (Source: ANN)
-          .col-md-4
-            .drop-options
-              .btn-group.btn-block
-                button.btn.btn-block.dropdown-toggle data-toggle="dropdown"
-                  | Currently Watching
-                  span.caret
-                ul.dropdown-menu
-                  li Test
-              hr
-              .text-center
-                form
-                  label.radio-inline
-                    input name="private" type="radio" value="true" Private
-                  label.radio-inline
-                    input name="private" type="radio" value="false" Public
-              hr
-              .text-center
-                awesome-rating type="advanced" editable="true" rating="2.5"
-              hr
-              .text-center
-                a view advanced options
+          .library-dropdown.clearfix
+            .drop-arrow
+            .col-md-12
+              textarea.personal-notes placeholder="Personal Notes about Monogatari Series: Second Season"
+            .col-md-2.no-padding-right.hidden-xs.hidden-sm
+              img.drop-thumb src="http://static.hummingbird.me/anime/poster_images/000/007/573/large/monogataris2.jpg?1383501611"
+            .col-md-6
+              p.drop-description Walking to school one day Tsubasa Hanekawa encounters a huge white tiger apparition at a crossroads that talks to her. The next day her house burns down. Homeless, and not wanting to stay with her family, she lies and tells them she has a place to stay, but instead sleeps in the old cram school. She's awakened by an angry and upset Hitagi Senjogahara who ridicules her for worrying her and drags her to her place to stay instead. The two of them soon discover that Araragi has gone missing and has urged them in a text message not to look for him. (Source: ANN)
+            .col-md-4
+              .drop-options
+                .btn-group.btn-block
+                  button.btn.btn-block.dropdown-toggle data-toggle="dropdown"
+                    | Currently Watching
+                    span.caret
+                  ul.dropdown-menu
+                    li Test
+                hr
+                .text-center
+                  form
+                    label.radio-inline
+                      input name="private" type="radio" value="true" Private
+                    label.radio-inline
+                      input name="private" type="radio" value="false" Public
+                hr
+                .text-center
+                  awesome-rating type="advanced" editable="true" rating="2.5"
+                hr
+                .text-center
+                  a view advanced options

@@ -5,7 +5,7 @@
 }
 
 .library-dropdown {
-  background: $eggshell;
+  background: linear-gradient(to bottom, darken($eggshell, 5%), $eggshell 10%, $eggshell 90%, darken($eggshell, 10%));
   padding-bottom: 15px;
   .drop-thumb {
     max-width: 100%;
