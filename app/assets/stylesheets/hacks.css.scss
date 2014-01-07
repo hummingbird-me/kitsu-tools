@@ -62,13 +62,19 @@ a.navbar-brand {
 /* User Following Section */
 .user-listing {
   @include make-xs-column(12);
-  @include make-md-column(6);
-  @include make-md-column-offset(3);
+  @include make-md-column(8);
+  @include make-md-column-offset(2);
+
+  .panel-heading {
+    padding: 16px 24px 12px;
+    h3 {
+      font-size: 1.2em;
+    }
+  }
 
   .user {
     @include make-xs-column(12);
 
-    color: $grey;
     border-bottom: 1px solid $divider;
     padding: 10px 0;
   }
@@ -82,7 +88,8 @@ a.navbar-brand {
   }
 
   .user-content {
-    @include make-xs-column(10);
+    @include make-xs-column(7);
+    color: $grey;
 
     h4 {
       margin: 0;
@@ -92,5 +99,21 @@ a.navbar-brand {
       font-size: 0.9em;
       margin-bottom: 0;
     }
+  }
+
+  .follow-button-column {
+    @include make-xs-column(3);
+    text-align: center;
+  }
+}
+
+.profile-leaderboard {
+  text-align: center;
+  margin: 20px;
+  .ad {
+    padding: 10px 12px;
+    display: inline-block;
+    background: darken($lightNavy, 5%);
+    border-radius: 5px;
   }
 }

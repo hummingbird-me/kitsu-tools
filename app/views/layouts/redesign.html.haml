@@ -51,6 +51,7 @@
       window.preloadData = #{(@preload || []).to_json};
 
     = javascript_include_tag "application"
+    %script(src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
 
     / Segment.io
     - if Rails.env.production?

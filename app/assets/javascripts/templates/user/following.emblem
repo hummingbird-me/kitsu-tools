@@ -1,14 +1,26 @@
+.profile-leaderboard
+  .ad
+    ad-unit
+
 .container
   .user-listing
-    .panel.row
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Followed by #{user.username}
       each
-        a href=userLink
-          .user
+        .user
+          a href=userLink
             .user-avatar
               avatar this 'thumb_small'
             .user-content
               h4 #{username}
               p #{miniBio}
+          .follow-button-column
+            a.btn.follow-button{action toggleFollow this}
+              if isFollowed
+                | Unfollow
+              else
+                | Follow
 
       if canLoadMore
         load-more action="loadNextPage"

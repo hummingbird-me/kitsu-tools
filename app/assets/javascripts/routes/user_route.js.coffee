@@ -3,13 +3,13 @@ Hummingbird.UserRoute = Ember.Route.extend
     @store.find 'user', params.id
 
   actions:
-    toggleFollow: ->
-      that = this
+    toggleFollow: (user) ->
+      originalState = user.get('isFollowed')
+      user.set 'isFollowed', !originalState
       ic.ajax
-        url: "/users/" + @currentModel.get('id') + "/follow"
+        url: "/users/" + user.get('id') + "/follow"
         type: "POST"
         dataType: "json"
-      .then ->
-        that.currentModel.set 'isFollowed', !that.currentModel.get('isFollowed')
-      , ->
+      .then (->), ->
         alert "Something went wrong."
+        user.set 'isFollowed', originalState
