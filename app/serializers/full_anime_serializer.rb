@@ -9,6 +9,7 @@ class FullAnimeSerializer < AnimeSerializer
   has_many :featured_castings, root: :castings
   has_many :producers, embed_key: :slug
   has_many :franchises, include: false
+  has_one :library_entry
 
   def alternate_title
     object.alternate_title

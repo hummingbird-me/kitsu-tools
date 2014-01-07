@@ -1,12 +1,8 @@
 class LibraryEntrySerializer < ActiveModel::Serializer
   embed :ids
 
-  attributes :id, :status, :is_favorite, :rating, :canonical_title
-  has_one :anime, embed_key: :slug
-
-  def canonical_title
-    object.anime.canonical_title
-  end
+  attributes :id, :status, :is_favorite, :rating
+  has_one :anime, embed_key: :slug, include: true
 
   def is_favorite
     if object.respond_to? :favorite_id

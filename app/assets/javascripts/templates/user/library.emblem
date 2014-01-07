@@ -54,17 +54,21 @@
               each content
                 li.list-group-item.clearfix
                   .list-item-left.col-xs-12.col-sm-6.col-md-6
-                    | #{canonicalTitle}
+                    | #{anime.canonicalTitle}
                   .list-item-right.col-xs-12.col-sm-6.col-md-6
                     .list-item-progress
                       input.input-progress value="2"
                       span.progress-sep &#47;
-                      span.list-item-total 12
+                      span.list-item-total
+                        if anime.episodeCount
+                          | #{anime.episodeCount}
+                        else
+                          | ?
                     .list-item-score.not-rated
                       i.fa.fa-star
                       span ----
                     .list-item-type
-                      span TV
+                      span #{anime.showType}
           .library-dropdown.clearfix
             .drop-arrow
             .col-md-12

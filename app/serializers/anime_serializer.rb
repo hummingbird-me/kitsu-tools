@@ -1,11 +1,9 @@
 class AnimeSerializer < ActiveModel::Serializer
-  embed :ids, include: true
+  embed :ids
 
   attributes :id, :canonical_title, :synopsis, :poster_image, :genres, :show_type,
     :age_rating, :age_rating_guide, :episode_count, :episode_length,
     :started_airing, :started_airing_date_known, :finished_airing
-
-  has_one :library_entry
 
   def id
     object.slug
@@ -17,6 +15,14 @@ class AnimeSerializer < ActiveModel::Serializer
 
   def poster_image
     object.poster_image.url(:large)
+  end
+
+  def episode_count
+    (object.episode_count and object.episode_count > 0) ? object.episode_count : nil
+  end
+
+  def episode_length
+    (object.episode_length and object.episode_length > 0) ? object.episode_length : nil
   end
 
   def genres
