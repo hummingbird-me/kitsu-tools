@@ -145,7 +145,7 @@ GEM
     emblem-rails (0.2.1)
       barber-emblem (~> 0.1.1)
       ember-rails (>= 0.14.0)
-    emblem-source (0.3.5)
+    emblem-source (0.3.9)
     erubis (2.7.0)
     escape (0.0.4)
     eventmachine (1.0.3)
@@ -505,6 +505,7 @@ DEPENDENCIES
   ember-rails
   ember-source (= 1.3.0)
   emblem-rails (~> 0.2.1)
+  emblem-source (~> 0.3.8)
   fastclick-rails
   friendly_id (~> 4.0.9)
   grape
