@@ -46,29 +46,29 @@
 
 
         each sectionsWithVisibility
-          if visible
+          div class=visible::hidden
             .panel-divider
               span #{title}
               span.right-align #{length} Titles
             ul.list-group
-              each content
+              groupedEach content
                 li.list-group-item.clearfix
                   .list-item-left.col-xs-12.col-sm-6.col-md-6
-                    | #{anime.canonicalTitle}
+                    | #{unbound anime.canonicalTitle}
                   .list-item-right.col-xs-12.col-sm-6.col-md-6
                     .list-item-progress
                       input.input-progress value="2"
                       span.progress-sep &#47;
                       span.list-item-total
                         if anime.episodeCount
-                          | #{anime.episodeCount}
+                          | #{unbound anime.episodeCount}
                         else
                           | ?
                     .list-item-score.not-rated
                       i.fa.fa-star
                       span ----
                     .list-item-type
-                      span #{anime.showType}
+                      span #{unbound anime.showType}
           .library-dropdown.clearfix
             .drop-arrow
             .col-md-12

@@ -27,7 +27,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
         length: agg[section].length
 
     result
-  ).property('content.@each.status', 'sectionNames', 'showSection')
+  ).property('content.@each.status', 'sectionNames')
 
   sectionsWithVisibility: (->
     that = this
