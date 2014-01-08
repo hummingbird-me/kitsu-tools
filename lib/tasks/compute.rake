@@ -47,7 +47,6 @@ namespace :compute do
       else
         anime.bayesian_average = nil
       end
-      anime.user_count = anime.watchlists.count
       anime.save
       STDERR.puts "Pass 2: #{anime.id}"
     end
