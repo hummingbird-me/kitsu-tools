@@ -398,7 +398,7 @@ class API_v1 < Grape::API
       end
 
       if result
-        present_watchlist(watchlist, rating_type, title_language_preference)
+        present_watchlist(watchlist.reload, rating_type, title_language_preference)
       else
         return false
       end
