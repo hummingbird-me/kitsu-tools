@@ -47,9 +47,10 @@ end
 
 # Gems to help with development.
 group :development do
-  gem "better_errors"
-  gem "letter_opener"
-  gem "binding_of_caller"
+  gem 'foreman'
+  gem 'better_errors'
+  gem 'letter_opener'
+  gem 'binding_of_caller'
   gem 'guard-livereload', require: false
   gem 'rack-livereload'
   gem 'rb-fsevent', require: false
