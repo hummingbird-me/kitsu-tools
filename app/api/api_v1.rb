@@ -328,15 +328,6 @@ class API_v1 < Grape::API
         end
       end
 
-      # Update rating.
-      if params[:rating]
-        if watchlist.rating == params[:rating].to_i
-          watchlist.rating = nil
-        else
-          watchlist.rating = [ [0, params[:rating].to_f].max, 5 ].min
-        end
-      end
-
       # Update rewatched_times.
       if params[:rewatched_times]
         watchlist.update_rewatched_times params[:rewatched_times]
@@ -391,7 +382,22 @@ class API_v1 < Grape::API
       title_language_preference ||= "canonical"
       rating_type = current_user.star_rating? ? "advanced" : "simple"
 
-      if watchlist.save
+      result = watchlist.save
+
+      # Update rating.
+      if params[:rating]
+        library_entry = LibraryEntry.where(user_id: current_user.id,
+                                           anime_id: anime.id).first
+
+        if library_entry.rating == params[:rating].to_f
+          library_entry.rating = nil
+        else
+          library_entry.rating = [ [0, params[:rating].to_f].max, 5].min
+        end
+        result = result and library_entry.save
+      end
+
+      if result
         present_watchlist(watchlist, rating_type, title_language_preference)
       else
         return false
