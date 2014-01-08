@@ -24,14 +24,16 @@ namespace :compute do
       anime_total_votes[anime.id]   ||= 0
 
       anime.rating_frequencies.each do |rating_s, count_s|
-        rating  = rating_s.to_f
-        count   = count_s.to_f
+        if rating_s != "nil"
+          rating  = rating_s.to_f
+          count   = count_s.to_f
 
-        global_total_rating += rating * count
-        global_total_votes  += count
+          global_total_rating += rating * count
+          global_total_votes  += count
 
-        anime_total_ratings[anime.id] += rating * count
-        anime_total_votes[anime.id]   += count
+          anime_total_ratings[anime.id] += rating * count
+          anime_total_votes[anime.id]   += count
+        end
       end
 
       STDERR.puts "Pass 1: #{anime.id}"
