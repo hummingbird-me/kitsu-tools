@@ -12,7 +12,7 @@ li.list-group-item.clearfix
     .list-item-type
       span #{unbound anime.showType}
 
-div class={:library-dropdown view.showDropdown:visible:hidden}
+.library-dropdown style="display: none"
   .drop-arrow
   .col-md-12
     textarea.personal-notes placeholder="Personal Notes"

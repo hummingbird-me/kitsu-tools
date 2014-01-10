@@ -3,4 +3,10 @@ Hummingbird.LibraryEntryView = Ember.View.extend
   showDropdown: false
 
   click: ->
-    @set 'showDropdown', !@get('showDropdown')
+    that = this
+    if @get('showDropdown')
+      @$('.library-dropdown').slideUp 200, ->
+        that.set 'showDropdown', false
+    else
+      @$('.library-dropdown').slideDown 200, ->
+        that.set 'showDropdown', true

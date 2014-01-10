@@ -4,28 +4,12 @@
   padding: 10px;
 }
 
-@keyframes showDropdown {
-  from {
-    opacity: 0;
-    max-height: 0;
-  }
-  to {
-    opacity: 1;
-    max-height: 500px;
-  }
-}
-
 .library-dropdown {
   @include clearfix();
 
   background: linear-gradient(to bottom, darken($eggshell, 5%), $eggshell 10%, $eggshell 90%, darken($eggshell, 10%));
-
-  &.visible {
-    overflow: auto;
-    animation: showDropdown 0.5s linear;
-  }
-
   padding-bottom: 15px;
+
   .drop-thumb {
     max-width: 100%;
     max-height: auto;
