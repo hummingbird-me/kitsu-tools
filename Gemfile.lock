@@ -54,7 +54,7 @@ GEM
       multi_json (~> 1.0)
     addressable (2.3.5)
     arel (3.0.3)
-    autoprefixer-rails (0.8.20131001)
+    autoprefixer-rails (1.0.20140110)
       execjs
     aws-sdk (1.5.8)
       httparty (~> 0.7)
