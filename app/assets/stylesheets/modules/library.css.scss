@@ -78,8 +78,12 @@
 }
 
 .list-group-item {
+  @include clearfix();
+
   .list-item-left {
     padding-left: 0;
+    user-select: none;
+    cursor: pointer;
   }
   .list-item-right {
     text-align: right;
