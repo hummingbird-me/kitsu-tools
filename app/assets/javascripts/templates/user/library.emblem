@@ -44,7 +44,6 @@
                 .list-item-score.not-rated Rating
                 .list-item-type Type
 
-
         each sectionsWithVisibility
           div class=visible::hidden
             .panel-divider
@@ -59,11 +58,7 @@
                     .list-item-progress
                       input.input-progress value="2"
                       span.progress-sep &#47;
-                      span.list-item-total
-                        if anime.episodeCount
-                          | #{unbound anime.episodeCount}
-                        else
-                          | ?
+                      span.list-item-total #{unbound anime.displayEpisodeCount}
                     .list-item-score.not-rated
                       i.fa.fa-star
                       span ----

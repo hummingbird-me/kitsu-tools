@@ -14,6 +14,14 @@ Hummingbird.Anime = DS.Model.extend
 
   libraryEntry: DS.belongsTo('libraryEntry')
 
+  displayEpisodeCount: (->
+    e = @get('episodeCount')
+    if e
+      e
+    else
+      "?"
+  ).property('episodeCount')
+
   airingStatus: (->
     unless @get('startedAiring')
       return "Not Yet Aired"
