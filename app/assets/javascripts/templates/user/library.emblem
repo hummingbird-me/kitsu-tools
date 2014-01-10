@@ -41,7 +41,7 @@
                 | Title
               .list-item-right.col-xs-12.col-sm-6.col-md-6
                 .list-item-progress Progress
-                .list-item-score.not-rated Rating
+                .list-item-score Rating
                 .list-item-type Type
 
         each sectionsWithVisibility

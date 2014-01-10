@@ -174,4 +174,8 @@
   border-left: 0;
   border-right: 0;
   font-family: $headerFontFamily;
+
+  .list-item-right .list-item-type {
+    font-weight: normal;
+  }
 }

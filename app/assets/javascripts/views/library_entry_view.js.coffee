@@ -3,7 +3,7 @@ Hummingbird.LibraryEntryView = Ember.View.extend
   showDropdown: false
 
   click: (event) ->
-    if $(event.target).hasClass('list-item-left')
+    unless event.target.nodeName == "INPUT"
       that = this
       if @get('showDropdown')
         @$('.library-dropdown').slideUp 200, ->
