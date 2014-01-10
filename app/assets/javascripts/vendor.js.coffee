@@ -2,4 +2,3 @@
 #= require fastclick
 #= require ic-ajax
 #= require ember-renderspeed
-#= require grouped-each
