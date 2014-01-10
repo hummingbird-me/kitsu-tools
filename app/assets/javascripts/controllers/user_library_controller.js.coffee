@@ -1,6 +1,6 @@
 Hummingbird.UserLibraryController = Ember.ArrayController.extend
   sectionNames: ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
-  showSection: "View All"
+  showSection: "Currently Watching"
 
   showAll: Ember.computed.equal('showSection', "View All")
   showCurrentlyWatching: Ember.computed.equal('showSection', "Currently Watching")

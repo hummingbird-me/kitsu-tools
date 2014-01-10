@@ -45,7 +45,7 @@
                 .list-item-type Type
 
         each sectionsWithVisibility
-          div class=visible::hidden
+          if visible
             .panel-divider
               span #{title}
               span.right-align #{length} Titles
