@@ -1,45 +1,50 @@
-.list-group-item
-  .list-item-left.col-xs-12.col-sm-6.col-md-6
-    | #{unbound anime.canonicalTitle}
-  .list-item-right.col-xs-12.col-sm-6.col-md-6
-    .list-item-progress
-      input.input-progress value="2"
-      span.progress-sep &#47;
-      span.list-item-total #{unbound anime.displayEpisodeCount}
-    .list-item-score.not-rated
-      i.fa.fa-star
-      span ----
-    .list-item-type
-      span #{unbound anime.showType}
+.library-entry
+  .library-overlay
+    .icon
+      i.fa.fa-spin.fa-spinner
 
-.library-dropdown style="display: none"
-  .drop-arrow
-  .col-md-12
-    textarea.personal-notes placeholder="Personal Notes"
-  .col-md-2.no-padding-right.hidden-xs.hidden-sm
-    img.drop-thumb src=anime.posterImage!
-  .col-md-6
-    h4: link-to 'anime' anime | #{unbound anime.canonicalTitle}
-    p.drop-description #{unbound anime.synopsis}
-  .col-md-4
-    .drop-options
-      .btn-group.btn-block
-        button.btn.btn-block.dropdown-toggle data-toggle="dropdown"
-          | #{status}
-          span.caret
-        ul.dropdown-menu
-          li Test
-      hr
-      .text-center
-        form
-          label.radio-inline
-            input name="private" type="radio" value="true" Private
-          label.radio-inline
-            input name="private" type="radio" value="false" Public
-      hr
-      .text-center
-        awesome-rating type="advanced" editable="true" rating="2.5"
-      hr
-      .text-center
-        a view advanced options
+  .list-group-item
+    .list-item-left.col-xs-12.col-sm-6.col-md-6
+      | #{unbound anime.canonicalTitle}
+    .list-item-right.col-xs-12.col-sm-6.col-md-6
+      .list-item-progress
+        input.input-progress value="2"
+        span.progress-sep &#47;
+        span.list-item-total #{unbound anime.displayEpisodeCount}
+      .list-item-score.not-rated
+        i.fa.fa-star
+        span ----
+      .list-item-type
+        span #{unbound anime.showType}
+
+  .library-dropdown style="display: none"
+    .drop-arrow
+    .col-md-12
+      textarea.personal-notes placeholder="Personal Notes"
+    .col-md-2.no-padding-right.hidden-xs.hidden-sm
+      img.drop-thumb src=anime.posterImage!
+    .col-md-6
+      h4: link-to 'anime' anime | #{unbound anime.canonicalTitle}
+      p.drop-description #{unbound anime.synopsis}
+    .col-md-4
+      .drop-options
+        .btn-group.btn-block
+          button.btn.btn-block.dropdown-toggle data-toggle="dropdown"
+            | #{status}
+            span.caret
+          ul.dropdown-menu
+            li Test
+        hr
+        .text-center
+          form
+            label.radio-inline
+              input name="private" type="radio" value="true" Private
+            label.radio-inline
+              input name="private" type="radio" value="false" Public
+        hr
+        .text-center
+          awesome-rating type="advanced" editable="true" rating="2.5"
+        hr
+        .text-center
+          a view advanced options
 
