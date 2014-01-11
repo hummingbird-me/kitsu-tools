@@ -124,7 +124,7 @@ josh:
   avatar_updated_at: 2013-09-22 14:52:18.525186000 Z
   facebook_id:
   bio: ''
-  sfw_filter: true
+  sfw_filter: false
   star_rating: true
   mal_username: kurotsuki
   life_spent_on_anime: 66123

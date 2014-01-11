@@ -2,10 +2,20 @@ class LibraryEntriesController < ApplicationController
   def index
     if params[:user_id]
       user = User.find params[:user_id]
-      library_entries = LibraryEntry.where(user_id: user.id).includes(:anime, :genres).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
+      library_entries = LibraryEntry.where(user_id: user.id).includes(:genres).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
+
+      # Filter private entries.
       if current_user != user
         library_entries = library_entries.where(private: false)
       end
+
+      # Filter adult entries.
+      if user_signed_in? and !current_user.sfw_filter?
+        library_entries = library_entries.includes(:anime)
+      else
+        library_entries = library_entries.includes(:anime).where("anime.age_rating <> 'R18+'")
+      end
+
       render json: library_entries
     end
   end
