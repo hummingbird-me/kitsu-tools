@@ -1,7 +1,7 @@
 class LibraryEntrySerializer < ActiveModel::Serializer
   embed :ids
 
-  attributes :id, :status, :is_favorite, :rating
+  attributes :id, :status, :is_favorite, :rating, :episodes_watched
   has_one :anime, embed_key: :slug, include: true
 
   def is_favorite

@@ -8,7 +8,7 @@
       | #{unbound anime.canonicalTitle}
     .list-item-right.col-xs-12.col-sm-6.col-md-6
       .list-item-progress
-        input.input-progress value="2"
+        input.input-progress value=episodesWatched
         span.progress-sep &#47;
         span.list-item-total #{unbound anime.displayEpisodeCount}
       .list-item-score.not-rated
@@ -43,7 +43,7 @@
               input name="private" type="radio" value="false" Public
         hr
         .text-center
-          awesome-rating type="advanced" editable="true" rating="2.5"
+          awesome-rating type=user.ratingType editable=user.viewingSelf rating=rating
         hr
         .text-center
           a view advanced options
