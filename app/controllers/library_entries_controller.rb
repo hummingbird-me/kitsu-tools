@@ -3,10 +3,8 @@ class LibraryEntriesController < ApplicationController
     if params[:user_id]
       user = User.find params[:user_id]
       library_entries = LibraryEntry.where(user_id: user.id).includes(:anime, :genres).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
-      if user_signed_in?
-        if current_user != user
-          library_entries = library_entries.where(private: false)
-        end
+      if current_user != user
+        library_entries = library_entries.where(private: false)
       end
       render json: library_entries
     end
