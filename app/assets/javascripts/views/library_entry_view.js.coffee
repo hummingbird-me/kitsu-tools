@@ -2,9 +2,11 @@ Hummingbird.LibraryEntryView = Ember.View.extend
   templateName: "library/entry"
   showDropdown: false
 
+  user: Ember.computed.alias('controller.user')
+
   entryRatingHTML: (->
     rating = @get('content.rating')
-    if @get('controller.user.ratingType') == "advanced"
+    if @get('user.ratingType') == "advanced"
       if rating
         new Handlebars.SafeString ("<i class='fa fa-star'></i> " + rating.toFixed(1))
       else

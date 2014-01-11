@@ -27,23 +27,25 @@
       p.drop-description #{unbound anime.synopsis}
     .col-md-4
       .drop-options
-        .btn-group.btn-block
-          button.btn.btn-block.dropdown-toggle data-toggle="dropdown"
-            | #{status}
-            span.caret
-          ul.dropdown-menu
-            li Test
-        hr
-        .text-center
-          form
-            label.radio-inline
-              input name="private" type="radio" value="true" Private
-            label.radio-inline
-              input name="private" type="radio" value="false" Public
-        hr
-        .text-center
-          awesome-rating type=user.ratingType editable=user.viewingSelf rating=rating
-        hr
+        if view.user.viewingSelf
+          .btn-group.btn-block
+            button.btn.btn-block.dropdown-toggle data-toggle="dropdown"
+              | #{status}
+              span.caret
+            ul.dropdown-menu
+              li Test
+          hr
+          .text-center
+            form
+              label.radio-inline
+                input name="private" type="radio" value="true" Private
+              label.radio-inline
+                input name="private" type="radio" value="false" Public
+          hr
+          .text-center
+            awesome-rating type=view.user.ratingType editable=view.user.viewingSelf rating=rating
+          hr
+
         .text-center
           a view advanced options
 
