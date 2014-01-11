@@ -4,6 +4,8 @@
 #= require handlebars
 #= require ember
 #= require ember-data
+#= require react
+#= require_tree ./react
 #= require vendor
 #= require_self
 #= require_tree ./lib

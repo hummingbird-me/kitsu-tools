@@ -117,9 +117,18 @@
   cursor: pointer;
 
   .list-item-left {
+    @include make-xs-column(12);
+    @include make-sm-column(6);
+    @include make-md-column(6);
+
     padding-left: 0;
   }
+
   .list-item-right {
+    @include make-xs-column(12);
+    @include make-sm-column(6);
+    @include make-md-column(6);
+
     text-align: right;
     padding-right: 0;
     @media (max-width: 768px) {

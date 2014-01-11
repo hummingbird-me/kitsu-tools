@@ -367,6 +367,11 @@ GEM
     rdiscount (2.0.7.2)
     rdoc (3.12.2)
       json (~> 1.4)
+    react-rails (0.8.0.0)
+      execjs
+      rails (>= 3.1)
+      react-source (= 0.8.0)
+    react-source (0.8.0)
     redis (3.0.6)
     redis-actionpack (3.2.3)
       actionpack (~> 3.2.3)
@@ -544,6 +549,7 @@ DEPENDENCIES
   rails_admin
   rb-fsevent
   rdiscount
+  react-rails (~> 0.8.0.0)
   redis
   redis-rails
   riemann-client

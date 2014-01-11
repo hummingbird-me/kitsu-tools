@@ -47,6 +47,8 @@ Hummingbird::Application.configure do
   # Caching
   # Temporarily enable caching in development (COMMENT OUT WHEN DONE!)
   #config.action_controller.perform_caching = true
-  #config.cache_store = :redis_store  
+  #config.cache_store = :redis_store
+
+  config.react.variant = :development
 end
 
