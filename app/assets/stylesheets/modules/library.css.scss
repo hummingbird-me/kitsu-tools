@@ -185,12 +185,13 @@
 }
 
 .search-wrapper {
-  padding-left: 0;
+  padding: 0;
 }
 
 .library-search {
   border: none;
-  padding-left: 0;
+  border-radius: 0;
+  width: 100%;
   height: 50px;
   font-size: 16px;
   font-family: $headerFontFamily;
