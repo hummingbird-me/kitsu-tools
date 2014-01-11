@@ -3,4 +3,5 @@ li.dropdown.user-area
     avatar currentUser "thumb_small"
   ul.dropdown-menu.right-nav-section
     li
+      a href="/users/edit" Edit Profile
       a{action 'signOut'} Sign out
