@@ -11,9 +11,8 @@
         input.input-progress value=episodesWatched
         span.progress-sep &#47;
         span.list-item-total #{unbound anime.displayEpisodeCount}
-      .list-item-score.not-rated
-        i.fa.fa-star
-        span ----
+      div class={:list-item-score rating::not-rated}
+        | #{view.entryRatingHTML}
       .list-item-type
         span #{unbound anime.showType}
 

@@ -1,4 +1,7 @@
 Hummingbird.UserLibraryController = Ember.ArrayController.extend
+  needs: "user"
+  user: Ember.computed.alias('controllers.user')
+
   sectionNames: ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   showSection: "Currently Watching"
 

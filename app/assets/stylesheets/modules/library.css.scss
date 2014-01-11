@@ -155,13 +155,17 @@
     .list-item-score {
       margin-right: 20px;
       padding-right: 20px;
-      text-align: left;
-      min-width: 58px;
+      text-align: center;
+      min-width: 64px;
       display: inline-block;
       height: 16px;
       border-right: 1px solid #eee;
       &.not-rated {
         color: $lightGrey;
+      }
+
+      .fa-smile-o, .fa-frown-o, .fa-meh-o {
+        font-size: 1.28em;
       }
     }
     .list-item-type {
