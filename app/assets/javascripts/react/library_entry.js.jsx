@@ -1,58 +1,12 @@
 /** @jsx React.DOM */
 
-var LibraryEntryReactComponent = React.createClass({
-  getInitialState: function() {
-    return {dropdownOpen: false};
-  },
-
-  toggleDropdown: function(event) {
-    this.setState({dropdownOpen: !this.state.dropdownOpen});
-  },
-
+var LibraryDropdownReactComponent = React.createClass({
   render: function() {
     var content = this.props.content;
 
-    var ratingDivClass = "list-item-score";
-    if (Ember.isNone(content.get('rating'))) {
-      ratingDivClass += " not-rated";
-    }
-
-    var dropdownClass = "library-dropdown";
-    if (this.state.dropdownOpen) {
-      dropdownClass += " open";
-    }
-    else {
-      dropdownClass += " hidden";
-    }
-
-    return (
-      <div className="library-entry">
-        <div className="library-overlay">
-          <div className="icon">
-            <i className="fa fa-spin fa-spinner"></i>
-          </div>
-        </div>
-
-        <div className="list-group-item" onClick={this.toggleDropdown}>
-          <div className="list-item-left">
-            {content.get('anime.canonicalTitle')}
-          </div>
-          <div className="list-item-right">
-            <div className="list-item-progress">
-              <input className="input-progress" type="number" value={content.get('episodesWatched')} />
-              <span className="progress-sep">/</span>
-              <span className="list-item-total">{content.get('anime.displayEpisodeCount')}</span>
-            </div>
-            <div className={ratingDivClass}>
-              <span>----</span>
-            </div>
-            <div className="list-item-type">
-              <span>{content.get('anime.showType')}</span>
-            </div>
-          </div>
-        </div>
-
-        <div className={dropdownClass}>
+    if (this.props.dropdownOpen) {
+      return (
+        <div className="library-dropdown">
           <div className="drop-arrow" />
           <div className="col-md-12">
             <textarea className="personal-notes" placeholder={"Personal notes about " + content.get('anime.canonicalTitle')} />
@@ -104,6 +58,61 @@ var LibraryEntryReactComponent = React.createClass({
             </div>
           </div>
         </div>
+      );
+    }
+    else {
+      return (
+        <div />
+      );
+    }
+  }
+});
+
+var LibraryEntryReactComponent = React.createClass({
+  getInitialState: function() {
+    return {dropdownOpen: false};
+  },
+
+  toggleDropdown: function(event) {
+    this.setState({dropdownOpen: !this.state.dropdownOpen});
+  },
+
+  render: function() {
+    var content = this.props.content;
+
+    var ratingDivClass = "list-item-score";
+    if (Ember.isNone(content.get('rating'))) {
+      ratingDivClass += " not-rated";
+    }
+
+    return (
+      <div className="library-entry">
+        <div className="library-overlay">
+          <div className="icon">
+            <i className="fa fa-spin fa-spinner"></i>
+          </div>
+        </div>
+
+        <div className="list-group-item" onClick={this.toggleDropdown}>
+          <div className="list-item-left">
+            {content.get('anime.canonicalTitle')}
+          </div>
+          <div className="list-item-right">
+            <div className="list-item-progress">
+              <input className="input-progress" type="number" value={content.get('episodesWatched')} />
+              <span className="progress-sep">/</span>
+              <span className="list-item-total">{content.get('anime.displayEpisodeCount')}</span>
+            </div>
+            <div className={ratingDivClass}>
+              <span>----</span>
+            </div>
+            <div className="list-item-type">
+              <span>{content.get('anime.showType')}</span>
+            </div>
+          </div>
+        </div>
+
+        <LibraryDropdownReactComponent dropdownOpen={this.state.dropdownOpen} content={content} view={this.props.view} />
       </div>
     );
   }
