@@ -3,6 +3,9 @@
 var LibraryDropdownReactComponent = React.createClass({
   changeStatus: function(newStatus) {
     this.props.content.set('status', newStatus);
+    this.props.content.save().then(Ember.K, function() {
+      alert("Something went wrong.");
+    });
   },
 
   render: function() {
