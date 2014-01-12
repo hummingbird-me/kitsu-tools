@@ -86,7 +86,9 @@ var LibraryEntryReactComponent = React.createClass({
   },
 
   toggleDropdown: function(event) {
-    this.setState({dropdownOpen: !this.state.dropdownOpen});
+    if (event.target.nodeName != "INPUT") {
+      this.setState({dropdownOpen: !this.state.dropdownOpen});
+    }
   },
 
   render: function() {
@@ -130,3 +132,10 @@ var LibraryEntryReactComponent = React.createClass({
   }
 });
 
+var LibraryEntryGroupReactComponent = React.createClass({
+  render: function() {
+    return (
+      <p>Test</p>
+    );
+  }
+});

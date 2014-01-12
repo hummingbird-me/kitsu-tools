@@ -50,5 +50,6 @@ Hummingbird::Application.configure do
   #config.cache_store = :redis_store
 
   config.react.variant = :development
+  config.react.addons = true
 end
 
