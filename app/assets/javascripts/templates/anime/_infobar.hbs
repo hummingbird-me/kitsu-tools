@@ -2,11 +2,7 @@
   <li>{{showType}}</li>
   <li {{bind-attr title=ageRatingGuide}}>{{ageRating}}</li>
   <li>
-    {{#if episodeCount}}
-      {{episodeCount}}
-    {{else}}
-      ?
-    {{/if}}
+    {{displayEpisodeCount}}
     episodes
   </li>
   <li>
