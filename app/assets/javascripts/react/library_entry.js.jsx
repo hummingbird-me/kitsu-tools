@@ -1,8 +1,13 @@
 /** @jsx React.DOM */
 
 var LibraryDropdownReactComponent = React.createClass({
+  changeStatus: function(newStatus) {
+    this.props.content.set('status', newStatus);
+  },
+
   render: function() {
     var content = this.props.content;
+    var validStatuses = ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"];
 
     if (this.props.dropdownOpen) {
       return (
@@ -27,11 +32,11 @@ var LibraryDropdownReactComponent = React.createClass({
                     <i className="fa fa-caret-down" />
                   </button>
                   <ul className="dropdown-menu">
-                    <li><a>Currently Watching</a></li>
-                    <li><a>Plan to Watch</a></li>
-                    <li><a>Completed</a></li>
-                    <li><a>On Hold</a></li>
-                    <li><a>Dropped</a></li>
+                    {
+                      validStatuses.map(function(s) {
+                        return (<li key={s}><a onClick={this.changeStatus.bind(this, s)}>{s}</a></li>);
+                      }.bind(this))
+                    }
                   </ul>
                 </div>
                 <hr />
