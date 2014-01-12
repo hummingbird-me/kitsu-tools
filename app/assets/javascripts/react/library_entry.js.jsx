@@ -21,13 +21,17 @@ var LibraryDropdownReactComponent = React.createClass({
           <div className="col-md-4">
             <div className="drop-options">
               <div className={this.props.view.get('user.viewingSelf') ? '' : 'hidden'}>
-                <div className="btn-group btn-block">
+                <div className="btn-group btn-block status-select">
                   <button className="btn btn-block dropdown-toggle" data-toggle="dropdown">
                     {content.get('status')}
-                    <span className="caret" />
+                    <i className="fa fa-caret-down" />
                   </button>
                   <ul className="dropdown-menu">
-                    <li>Test</li>
+                    <li><a>Currently Watching</a></li>
+                    <li><a>Plan to Watch</a></li>
+                    <li><a>Completed</a></li>
+                    <li><a>On Hold</a></li>
+                    <li><a>Dropped</a></li>
                   </ul>
                 </div>
                 <hr />

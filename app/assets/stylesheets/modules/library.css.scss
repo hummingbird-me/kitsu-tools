@@ -43,6 +43,23 @@
   background: linear-gradient(to bottom, darken($eggshell, 5%), $eggshell 10%, $eggshell 90%, darken($eggshell, 10%));
   padding-bottom: 15px;
 
+  .status-select {
+    .btn {
+      z-index: 1001;
+      font-size: 18px;
+      background-color: darken($orange, 5);
+      color: #fff;
+    }
+    .dropdown-menu {
+      width: 100%;
+      padding-top: 10px;
+      margin-top: -5px;
+    }
+    .fa {
+      margin-left: 8px;
+    }
+  }
+
   .drop-thumb {
     max-width: 100%;
     max-height: auto;
