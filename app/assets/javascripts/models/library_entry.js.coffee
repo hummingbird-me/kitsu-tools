@@ -4,9 +4,7 @@ Hummingbird.LibraryEntry = DS.Model.extend
   isFavorite: DS.attr('boolean')
   rating: DS.attr('number')
   episodesWatched: DS.attr('number')
-
-  canonicalTitle: DS.attr('string')
-  showType: DS.attr('string')
+  private: DS.attr('boolean')
 
   positiveRating: (-> @get('rating') >= 3.6).property('rating')
   negativeRating: (-> @get('rating') <= 2.4).property('rating')

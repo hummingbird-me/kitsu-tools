@@ -8,6 +8,13 @@ var LibraryDropdownReactComponent = React.createClass({
     });
   },
 
+  changePrivate: function(newPrivate) {
+    this.props.content.set('private', newPrivate);
+    this.props.content.save().then(Ember.K, function() {
+      alert("Something went wrong.");
+    });
+  },
+
   render: function() {
     var content = this.props.content;
     var validStatuses = ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"];
@@ -47,11 +54,11 @@ var LibraryDropdownReactComponent = React.createClass({
                 <div className="text-center">
                   <form>
                     <label className="radio-inline">
-                      <input name="private" type="radio" value="true" />
+                      <input name="private" type="radio" value="true" checked={this.props.content.get('private')} onClick={this.changePrivate.bind(this, true)} />
                       Private
                     </label>
                     <label className="radio-inline">
-                      <input name="private" type="radio" value="false" />
+                      <input name="private" type="radio" value="false" checked={!this.props.content.get('private')} onClick={this.changePrivate.bind(this, false)} />
                       Public
                     </label>
                   </form>

@@ -64,6 +64,10 @@ class LibraryEntriesController < ApplicationController
       library_entry.rating = params[:library_entry][:rating]
     end
 
+    unless params[:library_entry][:private].nil?
+      library_entry.private = params[:library_entry][:private]
+    end
+
     ## TEMPORARY -- Change when favorite status is moved into the library
     #               entry model.
     unless params[:library_entry][:is_favorite].nil?
