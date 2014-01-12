@@ -151,7 +151,7 @@ var LibraryEntryReactComponent = React.createClass({
               {rating}
             </div>
             <div className="list-item-type">
-              <span>{content.get('anime.showType')}</span>
+              {content.get('anime.showType')}
             </div>
           </div>
         </div>

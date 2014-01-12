@@ -149,7 +149,7 @@
     @include make-lg-column(4);
 
     text-align: right;
-    padding-right: 0;
+    padding-right: 15px;
     @media (max-width: 768px) {
       padding-left: 0;
       text-align: left;
