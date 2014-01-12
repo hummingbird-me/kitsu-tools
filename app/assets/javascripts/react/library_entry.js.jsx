@@ -106,6 +106,29 @@ var LibraryEntryReactComponent = React.createClass({
       "not-rated": Ember.isNone(content.get('rating'))
     });
 
+    var rating;
+    if (content.get('rating')) {
+      if (this.props.view.get('user.ratingType') == "advanced") {
+        rating = (
+          <span>
+            <i className="fa fa-star" />
+            {' '}
+            {content.get('rating').toFixed(1)}
+          </span>
+        );
+      }
+      else {
+        var iconClass;
+        if (content.get('positiveRating')) { iconClass = "fa fa-smile-o"; }
+        if (content.get('negativeRating')) { iconClass = "fa fa-frown-o"; }
+        if (content.get('neutralRating')) { iconClass = "fa fa-meh-o"; }
+        rating = (<i className={iconClass} />);
+      }
+    }
+    else {
+      rating = (<span>----</span>);
+    }
+
     return (
       <div className="library-entry">
         <div className="library-overlay">
@@ -125,7 +148,7 @@ var LibraryEntryReactComponent = React.createClass({
               <span className="list-item-total">{content.get('anime.displayEpisodeCount')}</span>
             </div>
             <div className={ratingDivClass}>
-              <span>----</span>
+              {rating}
             </div>
             <div className="list-item-type">
               <span>{content.get('anime.showType')}</span>
