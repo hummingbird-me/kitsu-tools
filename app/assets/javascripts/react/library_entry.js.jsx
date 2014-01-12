@@ -14,11 +14,11 @@ var LibraryDropdownReactComponent = React.createClass({
           <div className="col-md-2 no-padding-right hidden-xs hidden-sm">
             <img className="drop-thumb" src={content.get('anime.posterImage')} />
           </div>
-          <div className="col-md-6">
+          <div className="col-md-6 col-sm-8 hidden-xs">
             <h4>{content.get('anime.canonicalTitle')}</h4>
             <p className="drop-description">{content.get('anime.synopsis')}</p>
           </div>
-          <div className="col-md-4">
+          <div className="col-md-4 col-sm-4">
             <div className="drop-options">
               <div className={this.props.view.get('user.viewingSelf') ? '' : 'hidden'}>
                 <div className="btn-group btn-block status-select">
