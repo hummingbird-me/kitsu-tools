@@ -5,6 +5,7 @@ Hummingbird::Application.routes.draw do
   resources :reviews
   resources :franchises
   resources :full_anime
+  resources :quotes
 
   match '/sign-in' => 'auth#sign_in_action'
 
