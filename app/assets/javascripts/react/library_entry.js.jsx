@@ -94,10 +94,10 @@ var LibraryEntryReactComponent = React.createClass({
   render: function() {
     var content = this.props.content;
 
-    var ratingDivClass = "list-item-score";
-    if (Ember.isNone(content.get('rating'))) {
-      ratingDivClass += " not-rated";
-    }
+    var ratingDivClass = React.addons.classSet({
+      "list-item-score": true,
+      "not-rated": Ember.isNone(content.get('rating'))
+    });
 
     return (
       <div className="library-entry">
