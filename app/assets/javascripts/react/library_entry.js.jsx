@@ -6,6 +6,7 @@ var LibraryDropdownReactComponent = React.createClass({
     this.props.content.save().then(Ember.K, function() {
       alert("Something went wrong.");
     });
+    this.forceUpdate();
   },
 
   changePrivate: function(newPrivate) {
@@ -13,6 +14,7 @@ var LibraryDropdownReactComponent = React.createClass({
     this.props.content.save().then(Ember.K, function() {
       alert("Something went wrong.");
     });
+    this.forceUpdate();
   },
 
   render: function() {

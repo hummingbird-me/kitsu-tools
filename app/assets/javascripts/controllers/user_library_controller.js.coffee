@@ -23,11 +23,11 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       agg[item.get('status')].push item
 
     result = []
+
     @get('sectionNames').forEach (section) ->
       result.push Ember.Object.create
         title: section
         content: agg[section]
-        length: agg[section].length
 
     result
   ).property('content.@each.status', 'sectionNames')

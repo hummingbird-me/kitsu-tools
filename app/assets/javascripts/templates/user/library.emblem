@@ -48,6 +48,6 @@
           if visible
             .panel-divider
               span #{title}
-              span.right-align #{length} Titles
+              span.right-align #{content.length} Titles
             .list-group
               each content itemViewClass="Hummingbird.LibraryEntryView"
