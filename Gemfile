@@ -34,6 +34,9 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'sanitize'
 gem 'oj'
 
+gem 'fast_blank' # Faster `String#blank?`, which is used a lot but ActiveRecord.
+
+
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -108,8 +111,8 @@ gem 'kaminari'
 # Background jobs
 gem 'sidekiq'
 gem 'sidekiq-throttler'
-
 gem 'slim'
+
 gem 'sinatra', :require => nil
 
 gem 'pg_search', '~> 0.7'
