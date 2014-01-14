@@ -173,7 +173,8 @@
             <span>{this.props.content.get('title')}</span>
             <span className="right-align">
               {this.props.content.get('content.length')}
-              Titles
+              {' '}
+              {this.props.content.get('content.length') == 1 ? 'Title' : 'Titles'}
             </span>
           </div>
           {

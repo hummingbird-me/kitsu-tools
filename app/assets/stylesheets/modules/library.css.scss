@@ -128,6 +128,10 @@
   }
 }
 
+.list-group {
+  margin-bottom: 0;
+}
+
 .list-group-item {
   @include clearfix();
   user-select: none;
