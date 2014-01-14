@@ -14,22 +14,16 @@
             .col-xs-6.col-sm-9.col-md-9
               .btn-group.library-sections.hidden-sm.hidden-xs
                 button{action showSection "View All"} class={:btn :btn-default showAll:active} All
-                button{action showSection "Currently Watching"} class={:btn :btn-default showCurrentlyWatching:active} Currently Watching
-                button{action showSection "Plan to Watch"} class={:btn :btn-default showPlanToWatch:active} Plan to Watch
-                button{action showSection "Completed"} class={:btn :btn-default showCompleted:active} Completed
-                button{action showSection "On Hold"} class={:btn :btn-default showOnHold:active} On Hold
-                button{action showSection "Dropped"} class={:btn :btn-default showDropped:active} Dropped
+                each section in sections
+                  button{action showSection section} class={:btn :btn-default section.displayVisible:active} #{section.title}
               .btn-group.library-sections.visible-sm.visible-xs
                 button.btn.btn-default.dropdown-toggle data-toggle="dropdown"
                   | #{showSection}
                   span.caret
                 ul.dropdown-menu
                   li: a{action showSection "View All"} View All
-                  li: a{action showSection "Currently Watching"} Currently Watching
-                  li: a{action showSection "Plan to Watch"} Plan to Watch
-                  li: a{action showSection "Completed"} Completed
-                  li: a{action showSection "On Hold"} On Hold
-                  li: a{action showSection "Dropped"} Dropped
+                  each section in sections
+                    li: a{action showSection section} #{section.title}
         .container
           .row
             .col-md-12.search-wrapper
