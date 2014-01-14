@@ -172,6 +172,7 @@ var LibraryEntrySectionReactComponent = React.createClass({
           <span>{this.props.content.get('title')}</span>
           <span className="right-align">
             {this.props.content.get('content.length')}
+            Titles
           </span>
         </div>
         {
