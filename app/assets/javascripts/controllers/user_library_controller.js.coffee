@@ -25,6 +25,16 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
         displayVisible: name == that.get('showSection')
   ).observes('showSection')
 
+  updateSectionContents: (->
+    agg = {}
+    @get('sectionNames').forEach (name) ->
+      agg[name] = []
+    @get('content').forEach (item) ->
+      agg[item.get('status')].push item
+    @get('sections').forEach (section) ->
+      section.set 'content', agg[section.get('title')]
+  ).observes('content.@each.status')
+
   actions:
     showSection: (section) ->
       if typeof(section) == "string"
@@ -32,65 +42,3 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       else
         @set 'showSection', section.get('title')
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  #showSection: "Currently Watching"
-  #
-  #showAll: Ember.computed.equal('showSection', "View All")
-  #showCurrentlyWatching: Ember.computed.equal('showSection', "Currently Watching")
-  #showPlanToWatch: Ember.computed.equal('showSection', "Plan to Watch")
-  #showCompleted: Ember.computed.equal('showSection', "Completed")
-  #showOnHold: Ember.computed.equal('showSection', "On Hold")
-  #showDropped: Ember.computed.equal('showSection', "Dropped")
-  #
-  #sections: (->
-  #  that = this
-  #  agg = {}
-  #
-  #  @get('sectionNames').forEach (section) ->
-  #    agg[section] = []
-  #
-  #  @get('content').forEach (item) ->
-  #    agg[item.get('status')].push item
-  #
-  #  result = []
-  #
-  #  @get('sectionNames').forEach (section) ->
-  #    result.push Ember.Object.create
-  #      title: section
-  #      content: agg[section]
-  #
-  #  result
-  #).property('content.@each.status', 'sectionNames')
-  #
-  #sectionsWithVisibility: (->
-  #  result = @get('sections')
-  #  showSection = @get('showSection')
-  #
-  #  result.forEach (x) ->
-  #    section = x.get('title')
-  #    x.set 'visible', (showSection == section) or (showSection == "View All")
-  #
-  #  result
-  #).property('sections', 'showSection')
-  #

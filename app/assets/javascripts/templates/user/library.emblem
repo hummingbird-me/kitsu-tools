@@ -38,7 +38,7 @@
                 .list-item-score Rating
                 .list-item-type Type
 
-        each sectionsWithVisibility
+        each sections
           if visible
             .panel-divider
               span #{title}
