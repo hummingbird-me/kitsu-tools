@@ -164,15 +164,21 @@ var LibraryEntryReactComponent = React.createClass({
   }
 });
 
-var LibraryEntryGroupReactComponent = React.createClass({
+var LibraryEntrySectionReactComponent = React.createClass({
   render: function() {
     return (
       <div className="list-group">
-      {
-        this.props.content.map(function(entry) {
-          return (<LibraryEntryReactComponent key={entry.get('anime.id')} view={this.props.view} content={entry} />);
-        }.bind(this))
-      }
+        <div className="panel-divider">
+          <span>{this.props.content.get('title')}</span>
+          <span className="right-align">
+            {this.props.content.get('content.length')}
+          </span>
+        </div>
+        {
+          this.props.content.get('content').map(function(entry) {
+            return (<LibraryEntryReactComponent key={entry.get('anime.id')} view={this.props.view} content={entry} />);
+          }.bind(this))
+        }
       </div>
     );
   }

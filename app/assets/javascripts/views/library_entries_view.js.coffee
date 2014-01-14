@@ -2,7 +2,7 @@ Hummingbird.LibraryEntriesView = Ember.View.extend
   user: Ember.computed.alias('controller.user')
 
   didInsertElement: ->
-    @set 'reactComponent', LibraryEntryGroupReactComponent(
+    @set 'reactComponent', LibraryEntrySectionReactComponent(
       content: @get('content')
       view: this
     )

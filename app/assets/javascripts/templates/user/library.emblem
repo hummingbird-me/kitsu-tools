@@ -38,9 +38,5 @@
                 .list-item-score Rating
                 .list-item-type Type
 
-        each sections
-          if visible
-            .panel-divider
-              span #{title}
-              span.right-align #{content.length} Titles
-            view Hummingbird.LibraryEntriesView content=content
+        each section in sections
+          view Hummingbird.LibraryEntriesView content=section

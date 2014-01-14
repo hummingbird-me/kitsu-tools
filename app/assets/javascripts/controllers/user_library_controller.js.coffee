@@ -23,7 +23,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       section.setProperties
         visible: (name == that.get('showSection')) or that.get('showAll')
         displayVisible: name == that.get('showSection')
-  ).observes('showSection')
+  ).observes('showSection', 'showAll')
 
   updateSectionContents: (->
     agg = {}
