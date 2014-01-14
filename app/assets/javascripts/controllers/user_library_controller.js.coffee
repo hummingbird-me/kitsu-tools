@@ -1,6 +1,7 @@
 Hummingbird.UserLibraryController = Ember.ArrayController.extend
   needs: "user"
   user: Ember.computed.alias('controllers.user')
+  reactComponent: null
 
   sectionNames: ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   showSection: "Currently Watching"
@@ -23,6 +24,8 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       section.setProperties
         visible: (name == that.get('showSection')) or that.get('showAll')
         displayVisible: name == that.get('showSection')
+
+    @notifyReactComponent()
   ).observes('showSection', 'showAll')
 
   updateSectionContents: (->
@@ -33,7 +36,14 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       agg[item.get('status')].push item
     @get('sections').forEach (section) ->
       section.set 'content', agg[section.get('title')]
+
+    @notifyReactComponent()
   ).observes('content.@each.status')
+
+  notifyReactComponent: ->
+    if @get('reactComponent')
+      @get('reactComponent').forceUpdate()
+      console.log 'notified react component.'
 
   actions:
     showSection: (section) ->

@@ -38,5 +38,4 @@
                 .list-item-score Rating
                 .list-item-type Type
 
-        each section in sections
-          view Hummingbird.LibraryEntriesView content=section
+        div#library-sections

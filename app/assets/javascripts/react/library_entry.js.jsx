@@ -183,3 +183,19 @@ var LibraryEntrySectionReactComponent = React.createClass({
     );
   }
 });
+
+var LibrarySectionsReactComponent = React.createClass({
+  render: function() {
+    return (
+      <div>
+        {
+          this.props.content.filter(function (section) {
+            return section.get('visible');
+          }).map(function (section) {
+            return (<LibraryEntrySectionReactComponent key={section.get('title')} content={section} view={this.props.view} />);
+          }.bind(this))
+        }
+      </div>
+    );
+  }
+});
