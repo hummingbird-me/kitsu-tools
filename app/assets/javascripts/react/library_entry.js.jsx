@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 
 (function() {
-  var LibraryDropdownReactComponent = React.createClass({
+  var LibraryDropdown = React.createClass({
     changeStatus: function(newStatus) {
       this.props.content.set('status', newStatus);
       this.props.content.save().then(Ember.K, function() {
@@ -90,7 +90,7 @@
     }
   });
 
-  var LibraryEntryReactComponent = React.createClass({
+  var LibraryEntry = React.createClass({
     getInitialState: function() {
       return {dropdownOpen: false};
     },
@@ -159,13 +159,13 @@
             </div>
           </div>
 
-          <LibraryDropdownReactComponent dropdownOpen={this.state.dropdownOpen} content={content} view={this.props.view} />
+          <LibraryDropdown dropdownOpen={this.state.dropdownOpen} content={content} view={this.props.view} />
         </div>
       );
     }
   });
 
-  var LibraryEntrySectionReactComponent = React.createClass({
+  var LibrarySection = React.createClass({
     render: function() {
       return (
         <div className="list-group">
@@ -178,7 +178,7 @@
           </div>
           {
             this.props.content.get('content').map(function(entry) {
-              return (<LibraryEntryReactComponent key={entry.get('anime.id')} view={this.props.view} content={entry} />);
+              return (<LibraryEntry key={entry.get('anime.id')} view={this.props.view} content={entry} />);
             }.bind(this))
           }
         </div>
@@ -194,7 +194,7 @@
             this.props.content.filter(function (section) {
               return section.get('visible');
             }).map(function (section) {
-              return (<LibraryEntrySectionReactComponent key={section.get('title')} content={section} view={this.props.view} />);
+              return (<LibrarySection key={section.get('title')} content={section} view={this.props.view} />);
             }.bind(this))
           }
         </div>
