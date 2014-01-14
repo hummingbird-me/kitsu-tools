@@ -167,7 +167,13 @@ var LibraryEntryReactComponent = React.createClass({
 var LibraryEntryGroupReactComponent = React.createClass({
   render: function() {
     return (
-      <p>Test</p>
+      <div className="list-group">
+      {
+        this.props.content.map(function(entry) {
+          return (<LibraryEntryReactComponent key={entry.get('anime.id')} view={this.props.view} content={entry} />);
+        }.bind(this))
+      }
+      </div>
     );
   }
 });

@@ -1,8 +1,8 @@
-Hummingbird.LibraryEntryView = Ember.View.extend
+Hummingbird.LibraryEntriesView = Ember.View.extend
   user: Ember.computed.alias('controller.user')
 
   didInsertElement: ->
-    @set 'reactComponent', LibraryEntryReactComponent(
+    @set 'reactComponent', LibraryEntryGroupReactComponent(
       content: @get('content')
       view: this
     )

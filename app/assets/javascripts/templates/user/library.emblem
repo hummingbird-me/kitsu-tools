@@ -49,5 +49,4 @@
             .panel-divider
               span #{title}
               span.right-align #{content.length} Titles
-            .list-group
-              each content itemViewClass="Hummingbird.LibraryEntryView"
+            view Hummingbird.LibraryEntriesView content=content
