@@ -112,7 +112,7 @@ class User < ActiveRecord::Base
     processors: [:thumbnail, :paperclip_optimizer]
 
   has_attached_file :cover_image,
-    styles: {thumb: {geometry: "760x250#", animated: false}},
+    styles: {thumb: {geometry: "1400x330#", animated: false}},
     default_url: "http://hummingbird.me/default_cover.png",
     storage: :s3
 
