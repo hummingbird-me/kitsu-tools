@@ -3,9 +3,14 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
   user: Ember.computed.alias('controllers.user')
   reactComponent: null
 
+  filter: ""
+
   sectionNames: ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   showSection: "Currently Watching"
-  showAll: Ember.computed.equal('showSection', 'View All')
+  showAll: (->
+    @get('showSection') == "View All" or @get('filter').length > 0
+  ).property('showSection', 'filter')
+
 
   sections: (->
     that = this
@@ -14,7 +19,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
         title: name
         content: []
         visible: (name == that.get('showSection')) or that.get('showAll')
-        displayVisible: name == that.get('showSection')
+        displayVisible: (name == that.get('showSection')) and !that.get('showAll')
   ).property('sectionNames')
 
   updateSectionVisibility: (->
@@ -23,22 +28,27 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       name = section.get('title')
       section.setProperties
         visible: (name == that.get('showSection')) or that.get('showAll')
-        displayVisible: name == that.get('showSection')
+        displayVisible: (name == that.get('showSection')) and !that.get('showAll')
 
     @notifyReactComponent()
   ).observes('showSection', 'showAll')
 
   updateSectionContents: (->
     agg = {}
+    filter = @get('filter').toLowerCase()
+
     @get('sectionNames').forEach (name) ->
       agg[name] = []
+
     @get('content').forEach (item) ->
-      agg[item.get('status')].push item
+      if (filter.length == 0) or (item.get('anime.canonicalTitle').toLowerCase().indexOf(filter) >= 0)
+        agg[item.get('status')].push item
+
     @get('sections').forEach (section) ->
       section.set 'content', agg[section.get('title')]
 
     @notifyReactComponent()
-  ).observes('content.@each.status')
+  ).observes('content.@each.status', 'filter')
 
   notifyReactComponent: ->
     if @get('reactComponent')

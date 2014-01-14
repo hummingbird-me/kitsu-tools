@@ -27,7 +27,7 @@
         .container
           .row
             .col-md-12.search-wrapper
-              input.form-control.library-search type="text" placeholder="Search this anime library..."
+              = input class="form-control library-search" type="text" placeholder="Search this anime library..." value=filter
         .container.hidden-xs
           .row
             li.list-group-item.library-filter.clearfix
