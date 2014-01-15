@@ -79,9 +79,10 @@
             %li
               %a{:href => "#events", :onclick => "showRelevantSections('events')"} Events
       .large-12.columns.feed.no-padding
-        .large-12.columns.feed-form.hide
-          %form
-            %input{:placeholder => "What are you up to?", :type => "text"}/
+        .large-12.columns.feed-form
+          %form.comment
+            %textarea.comment(placeholder="Write something..." name="comment")
+            %button.button.padded(type="submit") Post
 
         %ul.feed-list.activity-feed
 
@@ -89,6 +90,33 @@
           %i.fa.fa-spin.fa-spinner.fa-4x
 
         :coffee
+          @submitInProgress = false
+          that = this
+          $("textarea.comment").autosize()
+          $("textarea.comment").focus ->
+            $("form.comment button").slideDown()
+          $("form.comment").submit ->
+            if $("textarea.comment").val().length > 0
+              unless that.submitInProgress
+                that.submitInProgress = true
+                $("form.comment .posting-indicator").fadeIn()
+                $("form.comment button").html("<i class='fa fa-spin fa-spinner'></i>")
+                $("form.comment button").attr("disabled", true)
+                $.ajax
+                  type: "post"
+                  url: "#{user_comment_path(current_user)}.json"
+                  data:
+                    comment: $("textarea.comment").val()
+                  success: (story) ->
+                    StoryCollectionView.addStories story
+                    $("form.comment button").html("Post")
+                    $("form.comment button").attr("disabled", false)
+                    $("textarea.comment").val("")
+                    setTimeout (-> that.submitInProgress = false), 5000
+                  error: ->
+                    alert "Something went wrong. Please try again later."
+            return false
+
           @StoryCollectionView.fetchMore "/api/v1/timeline?"
           infiniteScrollLoader = ->
             if $(window).scrollTop() + 2000 > $(".activity-feed-spinner").offset().top
