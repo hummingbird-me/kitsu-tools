@@ -53,7 +53,13 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
   notifyReactComponent: ->
     if @get('reactComponent')
       @get('reactComponent').forceUpdate()
-      console.log 'notified react component.'
+
+  saveLibraryEntry: (libraryEntry) ->
+    title = libraryEntry.get('anime.canonicalTitle')
+
+    Messenger().expectPromise (-> libraryEntry.save()),
+      successMessage: "Saved " + title + "!"
+      progressMessage: "Saving " + title + "..."
 
   actions:
     showSection: (section) ->
@@ -63,7 +69,14 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
         @set 'showSection', section.get('title')
 
     setStatus: (libraryEntry, newStatus) ->
-      alert newStatus
+      libraryEntry.set 'status', newStatus
+
+      if newStatus == "Completed" and libraryEntry.get('anime.episodeCount') and libraryEntry.get('episodesWatched') != libraryEntry.get('anime.episodeCount')
+        libraryEntry.set 'episodesWatched', libraryEntry.get('anime.episodeCount')
+        Messenger().post "Marked all episodes as watched."
+
+      @notifyReactComponent()
+      @saveLibraryEntry(libraryEntry)
 
     setPrivate: (libraryEntry, newPrivate) ->
       alert newPrivate
