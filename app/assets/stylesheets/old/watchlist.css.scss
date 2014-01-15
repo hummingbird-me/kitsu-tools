@@ -283,7 +283,7 @@
       }
       .cover-photo-shadow {
         background: url(asset-path('cover-shadow.png', image)) bottom left repeat-x;
-        height: 250px;
+        height: 179px;
         position: relative;
         @media (max-width: 767px) {
           background: rgba(0,0,0,.7);
