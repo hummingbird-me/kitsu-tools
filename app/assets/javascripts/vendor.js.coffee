@@ -2,3 +2,5 @@
 #= require fastclick
 #= require ic-ajax
 #= require ember-renderspeed
+#= require messenger/messenger
+#= require messenger/messenger-theme-flat
