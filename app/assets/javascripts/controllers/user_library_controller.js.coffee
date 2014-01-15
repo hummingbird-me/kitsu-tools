@@ -62,3 +62,6 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       else
         @set 'showSection', section.get('title')
 
+    setRating: (libraryEntry, rating) ->
+      alert rating
+

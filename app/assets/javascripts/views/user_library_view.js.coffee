@@ -6,7 +6,7 @@ Hummingbird.UserLibraryView = Ember.View.extend
   didInsertElement: ->
     @set 'reactComponent', LibrarySectionsReactComponent(
       content: @get('sections')
-      view: this
+      view: this,
     )
     React.renderComponent @get('reactComponent'), @get('element').querySelector('#library-sections')
 
