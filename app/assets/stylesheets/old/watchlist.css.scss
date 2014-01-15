@@ -279,7 +279,7 @@
         -webkit-backface-visibility: hidden; /* Fix for transition flickering */
         position: absolute;
         width: 100%;
-        min-height: 250px;
+        min-height: 179px;
       }
       .cover-photo-shadow {
         background: url(asset-path('cover-shadow.png', image)) bottom left repeat-x;
