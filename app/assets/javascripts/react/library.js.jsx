@@ -149,12 +149,6 @@
 
       return (
         <div className="library-entry">
-          <div className="library-overlay">
-            <div className="icon">
-              <i className="fa fa-spin fa-spinner"></i>
-            </div>
-          </div>
-
           <div className="list-group-item" onClick={this.toggleDropdown}>
             <div className="list-item-left">
               {content.get('anime.canonicalTitle')}
