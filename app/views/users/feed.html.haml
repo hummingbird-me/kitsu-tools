@@ -15,38 +15,45 @@
   - if user_signed_in?
     .large-12.columns.feed-form
       %form.comment
-        .posting-indicator
-          %i.fa.fa-spin.fa-spinner
-        %input.comment(placeholder="Write something..." type="text" name="comment" autocomplete="off")
+        %textarea.comment(placeholder="Write something..." name="comment")
+        %button.button.padded(type="submit") Post
+
 
   %ul.feed-list.activity-feed
-  
+
   .center.activity-feed-spinner
     %i.fa.fa-spin.fa-spinner.fa-4x
 
 :coffee
   @submitInProgress = false
   that = this
+  $("textarea.comment").autosize()
+  $("textarea.comment").focus ->
+    $("form.comment button").slideDown()
   $("form.comment").submit ->
-    unless that.submitInProgress
-      that.submitInProgress = true
-      $("form.comment .posting-indicator").fadeIn()
-      $.ajax
-        type: "post"
-        url: "#{user_comment_path(@user)}.json"
-        data: 
-          comment: $("input.comment").val()
-        success: (story) ->
-          StoryCollectionView.addStories story
-          $("form.comment .posting-indicator").fadeOut()
-          setTimeout (-> that.submitInProgress = false), 5000
-          $("input.comment").val("")
-        error: ->
-          alert "Something went wrong. Please try again later."
+    if $("textarea.comment").val().length > 0
+      unless that.submitInProgress
+        that.submitInProgress = true
+        $("form.comment .posting-indicator").fadeIn()
+        $("form.comment button").html("<i class='fa fa-spin fa-spinner'></i>")
+        $("form.comment button").attr("disabled", true)
+        $.ajax
+          type: "post"
+          url: "#{user_comment_path(@user)}.json"
+          data:
+            comment: $("textarea.comment").val()
+          success: (story) ->
+            StoryCollectionView.addStories story
+            $("form.comment button").html("Post")
+            $("form.comment button").attr("disabled", false)
+            $("textarea.comment").val("")
+            setTimeout (-> that.submitInProgress = false), 5000
+          error: ->
+            alert "Something went wrong. Please try again later."
     return false
-  
+
   @getUserFeedItems("#{@user.to_param}")
-  
+
   infiniteScrollLoader = ->
     if $(window).scrollTop() + 2000 > $(".activity-feed-spinner").offset().top
       @getUserFeedItems("#{@user.to_param}")

@@ -17,6 +17,7 @@
 //= require ./json2.js
 //= require ./jstorage.js
 //= require ./garlic.js
+//= require ./jquery.autosize.js
 //= require ./redactor-9.0.1.js
 //= require ./charcount.js
 //= require ./jscroll.js
