@@ -92,7 +92,7 @@
         :coffee
           @submitInProgress = false
           that = this
-          $("textarea.comment").autosize()
+          $("textarea.comment").autosize(append: "\n")
           $("textarea.comment").focus ->
             $("form.comment button").slideDown()
           $("form.comment").submit ->
