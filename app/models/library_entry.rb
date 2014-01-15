@@ -18,6 +18,8 @@
 #  rewatching       :boolean
 #
 
+require 'story_factory'
+
 class LibraryEntry < ActiveRecord::Base
   self.table_name = "watchlists"
 
@@ -45,14 +47,7 @@ class LibraryEntry < ActiveRecord::Base
   # FIXME Need to write tests for this. Also need to improve this interface. :/
   def generate_status_change_story
     if self.status_changed?
-      Substory.from_action({
-        user_id: self.user_id,
-        action_type: "watchlist_status_update",
-        anime_id: self.anime.slug,
-        old_status: self.status_was,
-        new_status: self.status,
-        time: Time.now
-      })
+      StoryFactory.status_change_story self.user_id, self.anime.slug, self.status_was, self.status
     end
   end
 
