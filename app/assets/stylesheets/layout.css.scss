@@ -414,7 +414,7 @@ User Profile
       display: none;
     }
   }
-  .follow-button {
+  .upload-cover, .follow-button {
     position: absolute;
     right: 15px;
     top: 87px;
@@ -428,6 +428,17 @@ User Profile
       top: -25px;
       padding-right: 35px;
       padding-left: 35px;
+    }
+  }
+  .upload-cover {
+    position: absolute;
+    right: 15px;
+    top: 87px;
+    padding: 5px 20px;
+    text-transform: uppercase;
+    @media (max-width: 630px) {
+      right: 13px;
+      top: -25px;
     }
   }
 }

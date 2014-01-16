@@ -226,4 +226,24 @@ class UsersController < ApplicationController
       render :json => false
     end
   end
+
+  def update
+    authenticate_user!
+
+    user = User.find(params[:id])
+
+    if current_user == user
+      user.about = params[:user][:about]
+
+      if Rails.env.production? and params[:user][:cover_image_url] =~ /^data:image/
+        user.cover_image = params[:user][:cover_image_url]
+      end
+    end
+
+    if user.save
+      render json: user
+    else
+      return error!(user.errors.full_messages * ', ', 500)
+    end
+  end
 end

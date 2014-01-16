@@ -58,8 +58,8 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
     @notifyReactComponent()
     title = libraryEntry.get('anime.canonicalTitle')
     Messenger().expectPromise (-> libraryEntry.save()),
-      successMessage: "Saved " + title + "!"
       progressMessage: "Saving " + title + "..."
+      successMessage: "Saved " + title + "!"
 
   actions:
     showSection: (section) ->

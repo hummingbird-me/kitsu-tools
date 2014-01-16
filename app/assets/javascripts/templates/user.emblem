@@ -23,7 +23,12 @@
             li: bootstrap-tooltip title="Coming soon!" placement="bottom"
               .fa.fa-envelope-o &nbsp;
               | Message
-      unless viewingSelf
+      if viewingSelf
+        label.upload-cover style="font-size: 0.8em; opacity: 0.8" for="coverImage"
+          i.fa.fa-upload &nbsp;
+          | Upload Cover
+        Hummingbird.FileUpload action="coverSelected" id="coverImage"
+      else
         button.btn.btn-default.btn-lg.follow-button{action toggleFollow this}
           if isFollowed
             | Unfollow

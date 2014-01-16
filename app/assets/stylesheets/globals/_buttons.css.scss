@@ -11,6 +11,19 @@
   }
 }
 
+.upload-cover {
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 12px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  font-family: $headerFontFamily;
+  color: #fff;
+  &:hover {
+    color: #fff;
+  }
+}
+
 .fb-connect {
   border-color: #3b5998;
   background-color: #3b5998;

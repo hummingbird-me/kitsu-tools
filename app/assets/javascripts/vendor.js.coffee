@@ -4,3 +4,4 @@
 #= require ember-renderspeed
 #= require messenger/messenger
 #= require messenger/messenger-theme-flat
+#= require jcrop
