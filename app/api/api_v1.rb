@@ -4,6 +4,7 @@ require 'message_formatter'
 class API_v1 < Grape::API
   version 'v1', using: :path, format: :json, vendor: 'hummingbird'
   formatter :json, lambda {|object, env| MultiJson.dump(object) }
+  rescue_from ActiveRecord::RecordNotFound
 
   helpers do
     def warden; env['warden']; end
