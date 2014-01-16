@@ -78,7 +78,7 @@ class LibraryEntriesControllerTest < ActionController::TestCase
   end
 
   test "can update library entry when authenticated" do
-    StoryFactory.expects(:status_change_story).with(users(:vikhyat).id, "sword-art-online", "Plan to Watch", "Currently Watching")
+    StoryFactory.expects(:status_change_story).with(users(:vikhyat).id, "sword-art-online", "Plan to Watch", "On Hold")
     id = watchlists(:one).id
     sign_in users(:vikhyat)
     put :update, id: id, library_entry: {status: 'On Hold', rating: 3.5}

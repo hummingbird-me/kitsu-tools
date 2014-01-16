@@ -44,16 +44,7 @@ class LibraryEntry < ActiveRecord::Base
     end
   end
 
-  # FIXME Need to write tests for this. Also need to improve this interface. :/
-  def generate_status_change_story
-    if self.status_changed?
-      StoryFactory.status_change_story self.user_id, self.anime.slug, self.status_was, self.status
-    end
-  end
-
   before_save do
-    self.generate_status_change_story
-
     # Track aggregated rating frequencies for the show.
     # Need the hand-written SQL because there's no way to other way to atomically
     # increment/decrement hstore fields.

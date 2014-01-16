@@ -36,6 +36,8 @@ class LibraryEntriesController < ApplicationController
       status: params[:library_entry][:status]
     })
 
+    StoryFactory.status_change_story(current_user.id, anime.slug, nil, library_entry.status)
+
     if library_entry.save
       render json: library_entry
     else
@@ -56,7 +58,9 @@ class LibraryEntriesController < ApplicationController
 
     # Update status.
     unless params[:library_entry][:status].nil?
+      old_status = library_entry.status
       library_entry.status = params[:library_entry][:status]
+      StoryFactory.status_change_story(current_user.id, library_entry.anime.slug, old_status, library_entry.status)
     end
 
     # Update rating.
