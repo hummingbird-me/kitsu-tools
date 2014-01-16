@@ -242,6 +242,7 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.2)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.2)
@@ -249,6 +250,8 @@ GEM
       escape
       json
       rack
+    mocha (1.0.0)
+      metaclass (~> 0.0.1)
     mock_redis (0.10.0)
     mtrc (0.0.4)
     multi_json (1.8.4)
@@ -534,6 +537,7 @@ DEPENDENCIES
   kaminari
   letter_opener
   mixpanel
+  mocha
   mock_redis
   newrelic-grape
   newrelic_rpm

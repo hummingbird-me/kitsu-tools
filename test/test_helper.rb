@@ -9,6 +9,8 @@ require 'rails/test_help'
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
 
+require 'mocha/mini_test'
+
 $redis = MockRedis.new
 
 class ActiveSupport::TestCase

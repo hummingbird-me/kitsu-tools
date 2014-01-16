@@ -37,7 +37,6 @@ class Substory < ActiveRecord::Base
     user = User.find data[:user_id]
 
     if data[:action_type] == "followed"
-      
       followed_user = User.find data[:followed_id]
 
       # Find or create a user story for this follow action.
@@ -49,40 +48,40 @@ class Substory < ActiveRecord::Base
       else
         story = Story.create user: user, story_type: "followed"
       end
-      
+
       substory = Substory.create({
-        user: user, 
-        substory_type: "followed", 
-        target: followed_user, 
+        user: user,
+        substory_type: "followed",
+        target: followed_user,
         story: story
       })
 
     elsif data[:action_type] == "unfollowed"
 
       followed_user = User.find data[:followed_id]
-      
+
       Substory.where(user_id: user.id, substory_type: "followed", target_id: followed_user.id, target_type: "User").each {|x| x.destroy }
 
     elsif data[:action_type] == "liked_quote"
-      
+
       quote = Quote.find(data[:quote_id])
-      
+
       # First, check to see if a substory for this quote already exists for this 
       # user. If so, don't do anything.
       if user.substories.where(substory_type: "liked_quote", target_id: quote, target_type: "Quote").length > 0
         return
       end
-      
+
       # Otherwise, find the relevant story and add a substory to it.
       story = Story.for_user_and_anime(user, quote.anime, "media_story")
 
       substory = Substory.create({
-        user: user, 
-        substory_type: "liked_quote", 
-        target: quote, 
+        user: user,
+        substory_type: "liked_quote",
+        target: quote,
         story: story
       })
-      
+
     elsif data[:action_type] == "unliked_quote"
 
       quote = Quote.find(data[:quote_id])
@@ -95,9 +94,9 @@ class Substory < ActiveRecord::Base
       story = Story.for_user_and_anime(user, quote.anime, "media_story")
 
       substory = Substory.create({
-        user: user, 
-        substory_type: "submitted_quote", 
-        target: quote, 
+        user: user,
+        substory_type: "submitted_quote",
+        target: quote,
         story: story
       })
 
@@ -115,7 +114,7 @@ class Substory < ActiveRecord::Base
           new_status: data[:new_status]
         }
       })
-      
+
       if data[:time]
         substory.update_column :created_at, data[:time]
       end

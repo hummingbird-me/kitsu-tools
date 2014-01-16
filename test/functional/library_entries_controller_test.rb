@@ -98,4 +98,12 @@ class LibraryEntriesControllerTest < ActionController::TestCase
     delete :destroy, id: id
     assert_nil LibraryEntry.find_by_id(id)
   end
+
+  test "library status change story is created" do
+    StoryFactory.expects(:status_change_story).with(users(:vikhyat).id, "sword-art-online", "Plan to Watch", "Currently Watching")
+
+    id = watchlists(:one).id
+    sign_in users(:vikhyat)
+    put :update, id: id, library_entry: {status: 'Currently Watching', rating: 3.5}
+  end
 end

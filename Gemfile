@@ -77,6 +77,7 @@ group :test do
   gem 'shoulda'
   gem 'timecop'
   gem 'mock_redis'
+  gem 'mocha'
 end
 
 gem 'jquery-rails'
