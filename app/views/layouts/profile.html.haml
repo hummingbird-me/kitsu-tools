@@ -65,7 +65,7 @@
               %span Edit Cover Photo
             %ul#cover-upload.f-dropdown.content{"data-dropdown-content" => ""}
               %li.help
-                %span Cover Size 760x250
+                %span Cover Size 1400x330
               %li.upload
                 = form_for(@user, url: user_cover_image_path(@user), html: {method: :put, multipart: true, style: 'display: inline'}) do |f|
                   .file-upload
