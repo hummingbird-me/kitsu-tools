@@ -22,7 +22,7 @@ Hummingbird.ModalsCropCoverView = Ember.View.extend
 
       initialSelect = null
       if imageWidth / imageHeight == 1400 / 330
-        initialSelect = [0, 0, initialWidth, initialHeight]
+        initialSelect = [0, 0, imageWidth, imageHeight]
       else if imageWidth / imageHeight > 1400 / 330
         y = imageHeight
         x = 1400 * y / 330
