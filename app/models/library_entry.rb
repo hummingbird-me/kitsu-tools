@@ -53,6 +53,11 @@ class LibraryEntry < ActiveRecord::Base
       self.user.update_life_spent_on_anime( (self.episodes_watched - self.episodes_watched_was) * (self.anime.episode_length || 0) )
     end
 
+    # Set the `last_watched` field.
+    if self.episodes_watched_changed?
+      self.last_watched = Time.now
+    end
+
     # Track aggregated rating frequencies for the show.
     # Need the hand-written SQL because there's no way to other way to atomically
     # increment/decrement hstore fields.
