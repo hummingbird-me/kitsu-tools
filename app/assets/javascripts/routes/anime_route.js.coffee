@@ -2,21 +2,25 @@ Hummingbird.AnimeRoute = Ember.Route.extend
   model: (params) ->
     @store.find('fullAnime', params.id)
 
+  saveLibraryEntry: (libraryEntry) ->
+    anime = @currentModel
+    Messenger().expectPromise (-> libraryEntry.save()),
+      progressMessage: "Saving " + anime.get('canonicalTitle') + "..."
+      successMessage: "Saved " + anime.get('canonicalTitle') + "!"
+
   actions:
     toggleFavorite: ->
       alert('Need to be signed in') unless @get('currentUser.isSignedIn')
       libraryEntry = @currentModel.get('libraryEntry')
       libraryEntry.set 'isFavorite', not libraryEntry.get('isFavorite')
-      libraryEntry.save().then Ember.K, ->
-        libraryEntry.rollback()
+      @saveLibraryEntry libraryEntry
 
     removeFromLibrary: ->
       anime = @currentModel
       libraryEntry = anime.get('libraryEntry')
-      libraryEntry.deleteRecord()
-      libraryEntry.save().then Ember.K, ->
-        libraryEntry.rollback()
-        anime.rollback()
+      Messenger().expectPromise (-> libraryEntry.destroyRecord()),
+        progressMessage: "Removing " + anime.get('canonicalTitle') + " from your library..."
+        successMessage: "Removed " + anime.get('canonicalTitle') + " from your library!"
 
     setLibraryStatus: (newStatus) ->
       libraryEntry = @currentModel.get('libraryEntry')
@@ -26,11 +30,9 @@ Hummingbird.AnimeRoute = Ember.Route.extend
         libraryEntry = @store.createRecord 'libraryEntry',
           status: newStatus
           anime: @currentModel
-      libraryEntry.save().then Ember.K, ->
-        libraryEntry.rollback()
+      @saveLibraryEntry libraryEntry
 
     setLibraryRating: (newRating) ->
       libraryEntry = @currentModel.get('libraryEntry')
       libraryEntry.set 'rating', newRating
-      libraryEntry.save().then Ember.K, ->
-        libraryEntry.rollback()
+      @saveLibraryEntry libraryEntry

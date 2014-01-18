@@ -12,7 +12,7 @@
         <li>
           <div class="btn-group">
             <button {{bind-attr class=":btn :btn-default :dropdown-toggle :top-button libraryStatus:active"}} type="button" data-toggle="dropdown">
-              {{#if libraryEntry.status}}
+              {{#if libraryEntryExists}}
                 {{libraryEntry.status}}
               {{else}}
                 add to library
@@ -28,7 +28,7 @@
             </ul>
           </div>
         </li>
-        {{#if libraryEntry.status}}
+        {{#if libraryEntryExists}}
           <li>
             <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart libraryEntry.isFavorite:active"}} {{action toggleFavorite}}>
               <i {{bind-attr class=":fa libraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i>
@@ -88,7 +88,7 @@
           </div>
 
           {{#if currentUser.isSignedIn}}
-            {{#if libraryEntry.status}}
+            {{#if libraryEntryExists}}
               <div class="personal-rating active">
                 <h5 class="sidebar-title text-center">Your Rating</h5>
                 {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=libraryEntry.rating}}

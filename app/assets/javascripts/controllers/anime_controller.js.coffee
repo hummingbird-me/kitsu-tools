@@ -14,6 +14,10 @@ Hummingbird.AnimeController = Ember.ObjectController.extend
     "http://img.youtube.com/vi/" + @get('model.youtubeVideoId') + "/hqdefault.jpg"
   ).property('model.youtubeVideoId')
 
+  libraryEntryExists: (->
+    (not Ember.isNone(@get('model.libraryEntry'))) and (not @get('model.libraryEntry.isDeleted'))
+  ).property('model.libraryEntry', 'model.libraryEntry.isDeleted')
+
   amazonLink: (->
     "http://www.amazon.com/s/?field-keywords=" + encodeURIComponent(@get('model.canonicalTitle')) + "&tag=hummingbir0fe-20"
   ).property('model.canonicalTitle')
