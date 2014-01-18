@@ -90,5 +90,9 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       @saveLibraryEntry(libraryEntry)
 
     saveEpisodesWatched: (libraryEntry) ->
+      if libraryEntry.get('anime.episodeCount') and libraryEntry.get('episodesWatched') == libraryEntry.get('anime.episodeCount')
+        if libraryEntry.get('status') != "Completed"
+          Messenger().post "Marked " + libraryEntry.get('anime.canonicalTitle') + " as complete."
+          libraryEntry.set 'status', "Completed"
       @saveLibraryEntry(libraryEntry)
 
