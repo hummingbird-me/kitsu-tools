@@ -57,23 +57,23 @@ class LibraryEntriesController < ApplicationController
     return error!("unauthorized", 403) if library_entry.nil?
 
     # Update status.
-    unless params[:library_entry][:status].nil?
+    if params[:library_entry].has_key? :status
       old_status = library_entry.status
       library_entry.status = params[:library_entry][:status]
     end
 
     # Update rating.
-    unless params[:library_entry][:rating].nil?
+    if params[:library_entry].has_key? :rating
       library_entry.rating = params[:library_entry][:rating]
     end
 
-    unless params[:library_entry][:private].nil?
+    if params[:library_entry].has_key? :private
       library_entry.private = params[:library_entry][:private]
     end
 
     ## TEMPORARY -- Change when favorite status is moved into the library
     #               entry model.
-    unless params[:library_entry][:is_favorite].nil?
+    if params[:library_entry].has_key? :is_favorite
       favorite_status = params[:library_entry][:is_favorite]
       anime = library_entry.anime
       if favorite_status and !current_user.has_favorite?(anime)

@@ -82,6 +82,8 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       @saveLibraryEntry(libraryEntry)
 
     setRating: (libraryEntry, newRating) ->
+      if libraryEntry.get('rating') == newRating
+        newRating = null
       libraryEntry.set 'rating', newRating
       @saveLibraryEntry(libraryEntry)
 
