@@ -300,8 +300,7 @@ class User < ActiveRecord::Base
     if life_spent_on_anime.nil?
       self.recompute_life_spent_on_anime
     else
-      self.life_spent_on_anime += delta
-      self.save
+      self.update_column :life_spent_on_anime, self.life_spent_on_anime + delta
     end
   end
 
