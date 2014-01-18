@@ -1456,7 +1456,7 @@ CREATE TABLE watchlists (
     private boolean DEFAULT false,
     notes text,
     rewatched_times integer DEFAULT 0,
-    rewatching boolean
+    rewatching boolean DEFAULT false
 );
 
 
@@ -2998,3 +2998,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140104051104');
 INSERT INTO schema_migrations (version) VALUES ('20140104051454');
 
 INSERT INTO schema_migrations (version) VALUES ('20140104054300');
+
+INSERT INTO schema_migrations (version) VALUES ('20140118103543');
