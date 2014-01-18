@@ -18,6 +18,7 @@
   - imagemagick
   - libjpeg-progs
   - optipng
+  - pngcrush
 
 - name: Add Unicorn to Monit
   action: copy src=unicorn.monit dest=/etc/monit/conf.d/unicorn.monit
