@@ -44,6 +44,7 @@ class LibraryEntry < ActiveRecord::Base
 
   before_save do
     # Track life spent on anime.
+    self.episodes_watched = 0 if self.episodes_watched.nil?
     if self.episodes_watched_changed?
       self.user.update_life_spent_on_anime( (self.episodes_watched - self.episodes_watched_was) * (self.anime.episode_length || 0) )
     end
