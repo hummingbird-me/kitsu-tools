@@ -73,4 +73,22 @@ class LibraryEntryTest < ActiveSupport::TestCase
       assert entry.valid?, "#{i} is valid"
     end
   end
+
+  test "updating episodes watched also updates user's life spent on anime" do
+    initial = users(:vikhyat).life_spent_on_anime
+    entry = LibraryEntry.first
+    entry.episodes_watched += 1
+    entry.save
+    assert_equal initial+entry.anime.episode_length, User.find('vikhyat').life_spent_on_anime
+  end
+
+  test "creating new library entry counts life spent on anime" do
+    initial = users(:vikhyat).life_spent_on_anime
+    anime = Anime.find('monster')
+    entry = LibraryEntry.create!(anime_id: anime.id,
+                                 user_id: users(:vikhyat).id,
+                                 status: "Currently Watching",
+                                 episodes_watched: 3)
+    assert_equal initial+3*entry.anime.episode_length, User.find('vikhyat').life_spent_on_anime
+  end
 end

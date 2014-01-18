@@ -63,9 +63,13 @@ class LibraryEntriesControllerTest < ActionController::TestCase
     Substory.expects(:from_action)
 
     sign_in users(:vikhyat)
-    post :create, library_entry: {anime_id: 'monster', status: 'Plan to Watch'}
+    post :create, library_entry: {anime_id: 'monster', status: 'Plan to Watch', episodes_watched: 3, private: true}
     assert_response 200
-    assert_not_nil LibraryEntry.where(anime_id: anime(:monster), user_id: users(:vikhyat)).first
+    library_entry = LibraryEntry.where(anime_id: anime(:monster), user_id: users(:vikhyat)).first
+    assert_not_nil library_entry
+    assert_equal "Plan to Watch", library_entry.status
+    assert_equal 3, library_entry.episodes_watched
+    assert library_entry.private?
   end
 
   test "need to be authenticated as correct user to update library entry" do
@@ -81,9 +85,10 @@ class LibraryEntriesControllerTest < ActionController::TestCase
     Substory.expects(:from_action)
     id = watchlists(:one).id
     sign_in users(:vikhyat)
-    put :update, id: id, library_entry: {status: 'On Hold', rating: 3.5}
+    put :update, id: id, library_entry: {status: 'On Hold', rating: 3.5, episodes_watched: 3}
     assert_equal "On Hold", LibraryEntry.find(id).status
     assert_equal 3.5, LibraryEntry.find(id).rating
+    assert_equal 3, LibraryEntry.find(id).episodes_watched
   end
 
   test "need to be authenticated as the correct user to destroy library entry" do
@@ -107,5 +112,17 @@ class LibraryEntriesControllerTest < ActionController::TestCase
     id = watchlists(:one).id
     sign_in users(:vikhyat)
     put :update, id: id, library_entry: {rating: 2}
+  end
+
+  test "create story when episode count is incremented by one" do
+    id = watchlists(:one).id
+    le = LibraryEntry.find(id)
+    sign_in users(:vikhyat)
+
+    Substory.expects(:from_action)
+    put :update, id: id, library_entry: {episodes_watched: le.episodes_watched+1}
+
+    Substory.expects(:from_action).never
+    put :update, id: id, library_entry: {episodes_watched: le.episodes_watched+5}
   end
 end

@@ -50,6 +50,16 @@ class Action
   def self.from_library_entry(l)
     if l.persisted?
 
+      if l.episodes_watched_changed? and l.episodes_watched - l.episodes_watched_was == 1
+        Substory.from_action({
+          user_id: l.user.id,
+          action_type: "watched_episode",
+          anime_id: l.anime.slug,
+          episode_number: l.episodes_watched,
+          service: nil
+        })
+      end
+
       if l.status_changed?
         Substory.from_action({
           user_id: l.user.id,
