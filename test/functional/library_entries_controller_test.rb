@@ -60,7 +60,7 @@ class LibraryEntriesControllerTest < ActionController::TestCase
   end
 
   test "can create library entry once authenticated" do
-    StoryFactory.expects(:status_change_story).with(users(:vikhyat).id, "monster", nil, "Plan to Watch")
+    Substory.expects(:from_action)
 
     sign_in users(:vikhyat)
     post :create, library_entry: {anime_id: 'monster', status: 'Plan to Watch'}
@@ -78,7 +78,7 @@ class LibraryEntriesControllerTest < ActionController::TestCase
   end
 
   test "can update library entry when authenticated" do
-    StoryFactory.expects(:status_change_story).with(users(:vikhyat).id, "sword-art-online", "Plan to Watch", "On Hold")
+    Substory.expects(:from_action)
     id = watchlists(:one).id
     sign_in users(:vikhyat)
     put :update, id: id, library_entry: {status: 'On Hold', rating: 3.5}
@@ -100,5 +100,12 @@ class LibraryEntriesControllerTest < ActionController::TestCase
     sign_in users(:vikhyat)
     delete :destroy, id: id
     assert_nil LibraryEntry.find_by_id(id)
+  end
+
+  test "updating rating doesn't create story" do
+    Substory.expects(:from_action).never
+    id = watchlists(:one).id
+    sign_in users(:vikhyat)
+    put :update, id: id, library_entry: {rating: 2}
   end
 end

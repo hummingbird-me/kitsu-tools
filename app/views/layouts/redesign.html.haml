@@ -40,6 +40,15 @@
       }(document, 'script', 'facebook-jssdk'));
 
   %body
+    :javascript
+      (function(){
+        var bsa = document.createElement('script');
+           bsa.type = 'text/javascript';
+           bsa.async = true;
+           bsa.src = 'http://s3.buysellads.com/ac/bsa.js';
+        (document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);
+      })();
+
     #fb-root
 
     / Content
@@ -51,7 +60,6 @@
       window.preloadData = #{(@preload || []).to_json};
 
     = javascript_include_tag "application"
-    %script(src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
 
     / Segment.io
     - if Rails.env.production?

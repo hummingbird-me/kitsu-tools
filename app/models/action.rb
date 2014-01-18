@@ -46,4 +46,31 @@ class Action
       return story
     end
   end
+
+  def self.from_library_entry(l)
+    if l.persisted?
+
+      if l.status_changed?
+        Substory.from_action({
+          user_id: l.user.id,
+          action_type: "watchlist_status_update",
+          anime_id: l.anime.slug,
+          old_status: l.status_was,
+          new_status: l.status,
+          time: Time.now
+        })
+      end
+
+    else
+      # Need to make a "added to library" status update.
+      Substory.from_action({
+        user_id: l.user.id,
+        action_type: "watchlist_status_update",
+        anime_id: l.anime.slug,
+        old_status: nil,
+        new_status: l.status,
+        time: Time.now
+      })
+    end
+  end
 end

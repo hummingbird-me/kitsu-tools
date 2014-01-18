@@ -55,8 +55,8 @@ h1.series-title.hidden-xs
       div class={:slider showStudios::hidden}
         partial "anime/studios"
 
-.banner-ad style="display: none"
-  img src="http://cl.ly/image/1J302K0d191e/Image%202013.11.04%205%3A30%3A33%20PM.jpeg"
+  .banner-ad
+    img src="http://placekitten.com/729/90"
 
 unless notYetAired
   .review-listing

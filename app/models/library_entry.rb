@@ -18,8 +18,6 @@
 #  rewatching       :boolean
 #
 
-require 'story_factory'
-
 class LibraryEntry < ActiveRecord::Base
   self.table_name = "watchlists"
 
