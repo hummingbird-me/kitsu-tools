@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: votes
+#
+#  id          :integer          not null, primary key
+#  target_id   :integer          not null
+#  target_type :string(255)      not null
+#  user_id     :integer          not null
+#  positive    :boolean          default(TRUE), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 class Vote < ActiveRecord::Base
   belongs_to :target, polymorphic: true
   belongs_to :user

@@ -72,6 +72,18 @@ class LibraryEntriesControllerTest < ActionController::TestCase
     assert library_entry.private?
   end
 
+  test "can create library entry with null values set to defaults" do
+    sign_in users(:vikhyat)
+    post :create, library_entry: {anime_id: 'monster', status: 'Plan to Watch', episodes_watched: nil, private: nil, rewatch_count: nil}
+    assert_response 200
+    library_entry = LibraryEntry.where(anime_id: anime(:monster), user_id: users(:vikhyat)).first
+    assert_not_nil library_entry
+    assert_equal "Plan to Watch", library_entry.status
+    assert_equal 0, library_entry.episodes_watched
+    assert_equal false, library_entry.private
+    assert_equal 0, library_entry.rewatched_times
+  end
+
   test "need to be authenticated as correct user to update library entry" do
     id = watchlists(:one).id
     put :update, id: id, library_entry: {status: 'On Hold', rating: 3.5}

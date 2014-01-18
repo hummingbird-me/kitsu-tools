@@ -1449,14 +1449,14 @@ CREATE TABLE watchlists (
     status character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    episodes_watched integer DEFAULT 0,
+    episodes_watched integer DEFAULT 0 NOT NULL,
     rating numeric(2,1),
     last_watched timestamp without time zone,
     imported boolean,
     private boolean DEFAULT false,
     notes text,
-    rewatched_times integer DEFAULT 0,
-    rewatching boolean DEFAULT false
+    rewatched_times integer DEFAULT 0 NOT NULL,
+    rewatching boolean DEFAULT false NOT NULL
 );
 
 
@@ -3000,3 +3000,9 @@ INSERT INTO schema_migrations (version) VALUES ('20140104051454');
 INSERT INTO schema_migrations (version) VALUES ('20140104054300');
 
 INSERT INTO schema_migrations (version) VALUES ('20140118103543');
+
+INSERT INTO schema_migrations (version) VALUES ('20140118210327');
+
+INSERT INTO schema_migrations (version) VALUES ('20140118211222');
+
+INSERT INTO schema_migrations (version) VALUES ('20140118225716');

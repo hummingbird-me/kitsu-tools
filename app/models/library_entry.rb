@@ -8,14 +8,14 @@
 #  status           :string(255)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  episodes_watched :integer          default(0)
+#  episodes_watched :integer          default(0), not null
 #  rating           :decimal(2, 1)
 #  last_watched     :datetime
 #  imported         :boolean
 #  private          :boolean          default(FALSE)
 #  notes            :text
-#  rewatched_times  :integer          default(0)
-#  rewatching       :boolean
+#  rewatched_times  :integer          default(0), not null
+#  rewatching       :boolean          default(FALSE), not null
 #
 
 class LibraryEntry < ActiveRecord::Base
@@ -43,8 +43,12 @@ class LibraryEntry < ActiveRecord::Base
   end
 
   before_save do
-    # Track life spent on anime.
+    # Set field defaults.
     self.episodes_watched = 0 if self.episodes_watched.nil?
+    self.rewatched_times = 0 if self.rewatched_times.nil?
+    self.private = false if self.private.nil?
+
+    # Track life spent on anime.
     if self.episodes_watched_changed?
       self.user.update_life_spent_on_anime( (self.episodes_watched - self.episodes_watched_was) * (self.anime.episode_length || 0) )
     end

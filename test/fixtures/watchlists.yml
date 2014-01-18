@@ -8,14 +8,14 @@
 #  status           :string(255)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  episodes_watched :integer          default(0)
+#  episodes_watched :integer          default(0), not null
 #  rating           :decimal(2, 1)
 #  last_watched     :datetime
 #  imported         :boolean
 #  private          :boolean          default(FALSE)
 #  notes            :text
-#  rewatched_times  :integer          default(0)
-#  rewatching       :boolean
+#  rewatched_times  :integer          default(0), not null
+#  rewatching       :boolean          default(FALSE), not null
 #
 
 one:

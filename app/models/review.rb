@@ -17,6 +17,8 @@
 #  rating_enjoyment :integer
 #  summary          :string(255)
 #  wilson_score     :float            default(0.0)
+#  positive_votes   :integer          default(0)
+#  total_votes      :integer          default(0)
 #
 
 require 'wilson_score'
