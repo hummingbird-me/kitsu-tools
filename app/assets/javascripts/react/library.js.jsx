@@ -116,6 +116,43 @@
       }
     },
 
+    changeProgress: function(event) {
+      if (!this.props.view.get('user.viewingSelf')) { return; }
+
+      var focused = $(event.target).is(":focus");
+      var originalEpisodesWatched = this.props.content.get('episodesWatched');
+      var episodesWatched = parseInt(event.target.value);
+
+      // Don't allow exceeding the show's episode count.
+      var animeEpisodeCount = this.props.content.get('anime.episodeCount');
+      if (animeEpisodeCount && episodesWatched > animeEpisodeCount) {
+        episodesWatched = originalEpisodesWatched;
+      }
+
+      // Let's not go below zero.
+      if (episodesWatched < 0) { episodesWatched = originalEpisodesWatched; }
+
+      this.props.content.set('episodesWatched', episodesWatched);
+
+      if (!focused) {
+        Ember.run.debounce(this, this.saveEpisodesWatched, 500);
+      }
+    },
+
+    saveEpisodesWatched: function(event) {
+      if (event && event.target.nodeName == "FORM") {
+        event.preventDefault();
+        event.target.querySelector("input").blur();
+      }
+      else {
+        if (this.props.content.get('isDirty')) {
+          var controller = this.props.view.get('controller');
+          var libraryEntry = this.props.content;
+          controller.send('saveEpisodesWatched', libraryEntry);
+        }
+      }
+    },
+
     render: function() {
       var content = this.props.content;
 
@@ -155,7 +192,9 @@
             </div>
             <div className="list-item-right">
               <div className="list-item-progress">
-                <input className="input-progress" type="number" value={content.get('episodesWatched')} />
+                <form style={ {display: "inline"} } onSubmit={this.saveEpisodesWatched} >
+                  <input className="input-progress" type="number" pattern="[0-9]*" value={content.get('episodesWatched')} onChange={this.changeProgress} onBlur={this.saveEpisodesWatched} />
+                </form>
                 <span className="progress-sep">/</span>
                 <span className="list-item-total">{content.get('anime.displayEpisodeCount')}</span>
               </div>

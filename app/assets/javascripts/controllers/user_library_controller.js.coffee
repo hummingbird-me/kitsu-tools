@@ -29,8 +29,6 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       section.setProperties
         visible: (name == that.get('showSection')) or that.get('showAll')
         displayVisible: (name == that.get('showSection')) and !that.get('showAll')
-
-    @notifyReactComponent()
   ).observes('showSection', 'showAll')
 
   updateSectionContents: (->
@@ -46,16 +44,20 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
 
     @get('sections').forEach (section) ->
       section.set 'content', agg[section.get('title')]
-
-    @notifyReactComponent()
   ).observes('content.@each.status', 'filter')
 
-  notifyReactComponent: ->
-    if @get('reactComponent')
-      @get('reactComponent').forceUpdate()
+  notifyReactComponent: (->
+    Ember.run.once this, ->
+      if @get('reactComponent')
+        @get('reactComponent').forceUpdate()
+  ).observes('filter', 'section.@each.visible',
+             'content.@each.episodesWatched',
+             'content.@each.status',
+             'content.@each.rating',
+             'content.@each.private',
+             'content.@each.episodesWatched')
 
   saveLibraryEntry: (libraryEntry) ->
-    @notifyReactComponent()
     title = libraryEntry.get('anime.canonicalTitle')
     Messenger().expectPromise (-> libraryEntry.save()),
       progressMessage: "Saving " + title + "..."
@@ -85,5 +87,8 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       if libraryEntry.get('rating') == newRating
         newRating = null
       libraryEntry.set 'rating', newRating
+      @saveLibraryEntry(libraryEntry)
+
+    saveEpisodesWatched: (libraryEntry) ->
       @saveLibraryEntry(libraryEntry)
 
