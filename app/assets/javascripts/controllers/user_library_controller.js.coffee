@@ -50,7 +50,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
     Ember.run.once this, ->
       if @get('reactComponent')
         @get('reactComponent').forceUpdate()
-  ).observes('filter', 'section.@each.visible',
+  ).observes('filter', 'showSection',
              'content.@each.episodesWatched',
              'content.@each.status',
              'content.@each.rating',
