@@ -40,6 +40,7 @@ $.fn.AwesomeRating = (options) ->
     widget = this
     rating = options["rating"]
     $(widget).empty()
+    $(widget).unbind()
     if options["editable"]
       $(widget).addClass "editable"
     if options["type"] == "simple"

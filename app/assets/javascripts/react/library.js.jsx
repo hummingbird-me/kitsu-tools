@@ -17,18 +17,16 @@
     componentDidUpdate: function(prevProps, newProps, rootNode) {
       if (this.props.dropdownOpen) {
         if (this.props.view.get('user.viewingSelf')) {
-          if ($(rootNode).find(".awesome-rating-widget").text() == " RATING WIDGET HERE. ") {
-            var controller = this.props.view.get('controller');
-            var libraryEntry = this.props.content;
-            $(rootNode).find(".awesome-rating-widget").AwesomeRating({
-              editable: true,
-              type: this.props.view.get('user.ratingType'),
-              rating: this.props.content.get('rating'),
-              update: function (newRating) {
-                controller.send('setRating', libraryEntry, newRating);
-              }
-            });
-          }
+          var controller = this.props.view.get('controller');
+          var libraryEntry = this.props.content;
+          $(rootNode).find(".awesome-rating-widget").AwesomeRating({
+            editable: true,
+            type: this.props.view.get('user.ratingType'),
+            rating: this.props.content.get('rating'),
+            update: function (newRating) {
+              controller.send('setRating', libraryEntry, newRating);
+            }
+          });
         }
       }
     },
