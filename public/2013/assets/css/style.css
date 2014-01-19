@@ -206,8 +206,10 @@ body {
   left: 0;
   padding: 10px;
   line-height: 30px; }
-
-.navbar-left, .navbar-right {
+.navbar-right {
+  width: auto;
+}
+.navbar-left {
   width: 80px; }
   @media (max-width: 500px) {
     .navbar-left, .navbar-right {
@@ -521,6 +523,10 @@ a {
 #popular-fall .slide-overlay {
   background: url(../images/kill-la-kill.jpg);
   background-size: cover; }
+
+.fb-like {
+  padding-right: 10px;
+}
 
 .absolute-wrap {
   position: absolute;
