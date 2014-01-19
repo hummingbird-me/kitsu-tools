@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    
+        <!-- Hammer reload -->
+          <script>
+            setInterval(function(){
+              try {
+                if(typeof ws != 'undefined' && ws.readyState == 1){return true;}
+                ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
+                ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
+                ws.onmessage = function(){
+                  var links = document.getElementsByTagName('link'); 
+                    for (var i = 0; i < links.length;i++) { 
+                    var link = links[i]; 
+                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
+                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
+                      link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
+                    }
+                  }
+                }
+              }catch(e){}
+            }, 1000)
+          </script>
+        <!-- /Hammer reload -->
+      
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
+    <meta charset='utf-8'>
+    <title>The Year in Anime 2013</title>
+    <meta content='width=device-width, initial-scale=1, user-scalable=no' name='viewport'>
+    <meta content='website' property='og:type'>
+    <meta content='assets/images/social-thumb.jpg' property='og:image'>
+    <meta content='http://www.hummingbird.me/2013/' property='og:url'>
+    <meta content='The Year in Anime 2013' property='og:title'>
+    <meta content='2013 was an incredible year for anime.' property='og:description'>
+    <meta content='' property='fb:app_id'>
+    <meta content='' property='twitter:site:id'>
+    <meta content='summary' name='twitter:card'>
+    <meta content='assets/images/social-thumb.jpg' property='twitter:image'>
+    <link href='assets/css/style.css' rel='stylesheet'>
+    <link href='assets/css/foundation.css' rel='stylesheet'>
+    <link href='assets/css/ionicons.css' rel='stylesheet'>
+    <script>
+      if (window.location.href == "http://hummingbird.me/2013") {
+        window.location.href = "http://hummingbird.me/2013/";
+      }
+    </script>
+  </head>
+  <body class='hb-grey'>
+    <div id='fb-root'></div>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class='view bg'>
+      <div class='navbar bg-a no-select white'>
+        <div class='navbar-left left'>
+          <button class='js-shifty-toggle btn bg white mobile-hide'>
+            <i class='ion-navicon-round'></i>
+          </button>
+          <a class='navbar-brand' href='http://www.hummingbird.me'>
+            <img height='20px' src='http://hummingbird.me/assets/logo-new.jpg' width='119px'>
+          </a>
+        </div>
+        <div class='navbar-right right right-align'>
+          <button class='js-shifty-toggle btn bg white right mobile-show'>
+            <i class='ion-navicon-round'></i>
+          </button>
+          <div class='fb-like mobile-hide' data-action='like' data-href='http://www.hummingbird.me/2013' data-layout='button_count' data-share='false' data-show-faces='false'></div>
+          <a class='twitter-share-button mobile-hide' data-text="It's been a great year of anime - Hummingbird Year in Review" data-via='hummingbird_me' href='https://twitter.com/share'>Tweet</a>
+          <script>
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+          </script>
+        </div>
+        <div class='h3 center mobile-hide'>
+          2013 Year in Review
+        </div>
+      </div>
+      <div class='shifty' id='menu'>
+        <div class='shifty-inner'>
+          <div class='shifty-content'>
+            <div class='slideshow no-select'>
+              <div class='slide center' data-color='hb-grey' id='home'>
+                <div class='absolute-fill year-wrap'>
+                  <div class='year-banner'>
+                    <h1 class='year'>2013</h1>
+                    <p class='year-title'>Year in Review</p>
+                    <p class='year-description'>A glimpse at the best anime of 2013, as well as our growth as a platform , <br class="mobile-hide"> collated from our amazing community’s activity.</p>
+                  </div>
+                </div>
+                <div class='slide-footer mobile-show white'>
+                  <p>
+                    Swipe to start &nbsp;
+                    <i class='ion-chevron-right'></i>
+                  </p>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='episodes-tracked'>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <p class='h1r'>
+                      On March 2nd, 2013
+                      <br>
+                      we opened the doors to our private beta.
+                      <br>
+                      <br>
+                      <span class='highlight'>10,375</span>
+                      people requested an invite.
+                      <br class='mobile-hide'>
+                      We were surprised, excited and... terrified.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='episodes-tracked'>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <p class='h1r'>
+                      Nearly one year later...
+                      <br>
+                      Over
+                      <span class='highlight'>3,000</span>
+                      people visit Hummingbird daily.
+                      <br>
+                      <br>
+                      Almost
+                      <span class='highlight'>35,000</span>
+                      hours of anime
+                      <br class='mobile-hide'>
+                      are tracked through Hummingbird, every day.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='episodes-tracked'>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <p class='h1r'>
+                      In 2013 our community watched
+                      <br class='mobile-hide'>
+                      a whopping
+                      <span class='highlight'>12,717,095</span>
+                      hours of anime.
+                      <br>
+                      <br>
+                      Twelve million ******* hours.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='episodes-tracked'>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <p class='h1r'>
+                      Of those
+                      <span class='highlight'>104,357</span>
+                      were spent watching Attack on Titan.
+                      <br>
+                      <br>
+                      Let's have a look at the best of 2013...
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='highest-rated-tv'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Highest Rated TV Series
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2>Attack on Titan</h2>
+                        <i class='ion-ios7-star'>&nbsp;4.47</i>
+                        <i class='ion-ios7-people'>&nbsp;15,964</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Highest Rated TV Series</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Attack on Titan'>
+                            <a href='http://hummingbird.me/anime/attack-on-titan'>
+                              <img src='assets/images/posters/attack-on-titan.png'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Chihayafuru 2'>
+                            <a href='http://hummingbird.me/anime/chihayafuru-2'>
+                              <img src='assets/images/posters/chihayafuru.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Monogatari Series: Second Season'>
+                            <a href='http://hummingbird.me/anime/monogatari-series-second-season'>
+                              <img src='assets/images/posters/monogatari.jpg'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kuroko no Basket 2'>
+                            <a href='http://hummingbird.me/anime/kuroko-no-basket-2'>
+                              <img src='assets/images/posters/kuroko.png'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Toaru Kagaku no Railgun S'>
+                            <a href='http://hummingbird.me/anime/toaru-kagaku-no-railgun-s'>
+                              <img src='assets/images/posters/railgun.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The World God Only Knows: Goddess Arc'>
+                            <a href='http://hummingbird.me/anime/the-world-god-only-knows-goddess-arc'>
+                              <img src='assets/images/posters/the-world-god-only-knows.png'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Hajime no Ippo: Rising'>
+                            <a href='http://hummingbird.me/anime/hajime-no-ippo-rising'>
+                              <img src='assets/images/posters/hajime-no-ippo.jpg'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Magi: The Kingdom of Magic'>
+                            <a href='http://hummingbird.me/anime/magi-the-kingdom-of-magic'>
+                              <img src='assets/images/posters/magi.png'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kyousougiga'>
+                            <a href='http://hummingbird.me/anime/kyousougiga-tv'>
+                              <img src='assets/images/posters/kyousougiga.jpg'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The Devil is a Part-Timer!'>
+                            <a href='http://hummingbird.me/anime/the-devil-is-a-part-timer'>
+                              <img src='assets/images/posters/hataraku.jpg'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='aot2-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='slide-text center small-12 columns'>
+                      <div class='small-3 columns'>
+                        <a href='http://hummingbird.me/anime/attack-on-titan'>
+                          <img src='assets/images/posters/attack-on-titan.png'>
+                        </a>
+                      </div>
+                      <div class='small-9 columns text-left'>
+                        <p class='h1r'>
+                          I want to see and understand the world outside. I don't want to die inside these walls without knowing what's out there!
+                          <br>
+                          <br>
+                          <small>
+                            &mdash; Eren Jaeger
+                          </small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='highest-rated-movie'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Highest Rated Movie / OVA
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2 class='long-title'>Steins;Gate: Burdened Region of Déjà vu</h2>
+                        <i class='ion-ios7-star'>&nbsp;4.29</i>
+                        <i class='ion-ios7-people'>&nbsp;3,786</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Highest Rated Movies / OVAs</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Steins;Gate: Burdened Region of Déjà vu'>
+                            <a href='http://hummingbird.me/anime/steins-gate-fuka-ryouiki-no-deja-vu'>
+                              <img src='assets/images/posters/steins-gate.png'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Gintama: The Final Chapter - Be Forever Yorozuya'>
+                            <a href='http://hummingbird.me/anime/gintama-kanketsu-hen-yorozuya-yo-eien-nare'>
+                              <img src='assets/images/posters/gintama.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The Garden of Words'>
+                            <a href='http://hummingbird.me/anime/the-garden-of-words'>
+                              <img src='assets/images/posters/garden-of-words.png'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Mahou Shoujo Madoka★Magica Movie 3: Rebellion'>
+                            <a href='http://hummingbird.me/anime/mahou-shoujo-madoka-magica-movie-3-hangyaku-no-monogatari'>
+                              <img src='assets/images/posters/madoka.jpg'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Little Witch Academia'>
+                            <a href='http://hummingbird.me/anime/little-witch-academia'>
+                              <img src='assets/images/posters/little-witch-academia.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Berserk Ougon Jidaihen III: Kourin'>
+                            <a href='http://hummingbird.me/anime/berserk-ougon-jidaihen-iii-kourin'>
+                              <img src='assets/images/posters/berserk.jpg'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Hanasaku Iroha: Home Sweet Home'>
+                            <a href='http://hummingbird.me/anime/hanasaku-iroha-home-sweet-home'>
+                              <img src='assets/images/posters/hanasaku-iroha.jpg'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title="Attack on Titan: Ilse's Journal">
+                            <a href='http://hummingbird.me/anime/attack-on-titan-ilse-s-journal'>
+                              <img src='assets/images/posters/aot-ilse.jpg'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='SKET Dance OVA'>
+                            <a href='http://hummingbird.me/anime/sket-dance-ova'>
+                              <img src='assets/images/posters/sket-dance.jpg'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Hetalia: The Beautiful World'>
+                            <a href='http://hummingbird.me/anime/hetalia-the-beautiful-world'>
+                              <img src='assets/images/posters/hetalia.jpg'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='stg-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='slide-text center small-12 columns'>
+                      <div class='small-3 columns'>
+                        <a href='http://hummingbird.me/anime/steins-gate-fuka-ryouiki-no-deja-vu'>
+                          <img src='assets/images/posters/steins-gate.png'>
+                        </a>
+                      </div>
+                      <div class='small-9 columns text-left'>
+                        <p class='h1r'>
+                          You were always suffering alone. And you will be the only one disappearing... That's... That's... That's selfish!
+                          <br>
+                          <br>
+                          <small>
+                            &mdash; Makise Kurisu
+                          </small>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-tv'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular Show
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2>Attack on Titan</h2>
+                        <i class='ion-ios7-star'>&nbsp;4.47</i>
+                        <i class='ion-ios7-people'>&nbsp;15,964</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Most Popular Shows</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Attack on Titan'>
+                            <a href='http://hummingbird.me/anime/attack-on-titan'>
+                              <img src='assets/images/posters/attack-on-titan.png'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The Devil is a Part-Timer!'>
+                            <a href='http://hummingbird.me/anime/the-devil-is-a-part-timer'>
+                              <img src='assets/images/posters/hataraku.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Gargantia on the Verdurous Planet'>
+                            <a href='http://hummingbird.me/anime/gargantia-on-the-verdurous-planet'>
+                              <img src='assets/images/posters/gargantia.jpg'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kill la Kill'>
+                            <a href='http://hummingbird.me/anime/kill-la-kill'>
+                              <img src='assets/images/posters/kill-la-kill.jpg'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='My Teen Romantic Comedy SNAFU'>
+                            <a href='http://hummingbird.me/anime/my-teen-romantic-comedy-snafu'>
+                              <img src='assets/images/posters/romcom.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Watamote'>
+                            <a href='http://hummingbird.me/anime/watashi-ga-motenai-no-wa-dou-kangaetemo-omaera-ga-warui'>
+                              <img src='assets/images/posters/watamote.jpg'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='OreImo Season 2'>
+                            <a href='http://hummingbird.me/anime/oreimo-season-2'>
+                              <img src='assets/images/posters/oreimo.jpg'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kyoukai no Kanata'>
+                            <a href='http://hummingbird.me/anime/kyoukai-no-kanata'>
+                              <img src='assets/images/posters/kyoukai-no-kanata.jpg'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Danganronpa'>
+                            <a href='http://hummingbird.me/anime/danganronpa-kibou-no-gakuen-to-zetsubou-no-koukousei-the-animation'>
+                              <img src='assets/images/posters/danganronpa.jpg'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The "Hentai" Prince and the Stony Cat'>
+                            <a href='http://hummingbird.me/anime/the-hentai-prince-and-the-stony-cat'>
+                              <img src='assets/images/posters/hentai-ouji.jpg'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='aot-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='row'>
+                      <div class='slide-text center small-12 columns'>
+                        <div class='small-3 columns'>
+                          <a href='http://hummingbird.me/anime/attack-on-titan'>
+                            <img src='assets/images/posters/attack-on-titan.png'>
+                          </a>
+                        </div>
+                        <div class='small-9 columns text-left'>
+                          <p class='h1r'>
+                            Only the victors are allowed to live.
+                            This world is merciless like that.
+                            <br>
+                            <br>
+                            <small>
+                              &mdash; Mikasa Ackerman
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-comedy'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular Comedy Series
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2>The Devil is a Part-Timer!</h2>
+                        <i class='ion-ios7-star'>&nbsp;4.13</i>
+                        <i class='ion-ios7-people'>&nbsp;8,055</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Most Popular Comedies</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The Devil is a Part-Timer!'>
+                            <a href='http://hummingbird.me/anime/the-devil-is-a-part-timer'>
+                              <img src='assets/images/posters/hataraku.jpg'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kill la Kill'>
+                            <a href='http://hummingbird.me/anime/kill-la-kill'>
+                              <img src='assets/images/posters/kill-la-kill.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='My Teen Romantic Comedy SNAFU'>
+                            <a href='http://hummingbird.me/anime/my-teen-romantic-comedy-snafu'>
+                              <img src='assets/images/posters/romcom.jpg'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Watamote'>
+                            <a href='http://hummingbird.me/anime/watashi-ga-motenai-no-wa-dou-kangaetemo-omaera-ga-warui'>
+                              <img src='assets/images/posters/watamote.jpg'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='OreImo Season 2'>
+                            <a href='http://hummingbird.me/anime/oreimo-season-2'>
+                              <img src='assets/images/posters/oreimo.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The "Hentai" Prince and the Stony Cat'>
+                            <a href='http://hummingbird.me/anime/the-hentai-prince-and-the-stony-cat'>
+                              <img src='assets/images/posters/hentai-ouji.jpg'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Boku wa Tomodachi ga Sukunai NEXT'>
+                            <a href='http://hummingbird.me/anime/boku-wa-tomodachi-ga-sukunai-next'>
+                              <img src='assets/images/posters/haganai.jpg'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Blood Lad'>
+                            <a href='http://hummingbird.me/anime/blood-lad'>
+                              <img src='assets/images/posters/blood-lad.jpg'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Date A Live'>
+                            <a href='http://hummingbird.me/anime/date-a-live'>
+                              <img src='assets/images/posters/date-a-live.jpg'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Monogatari Series: Second Season'>
+                            <a href='http://hummingbird.me/anime/monogatari-series-second-season'>
+                              <img src='assets/images/posters/monogatari.jpg'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='dpt-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='row'>
+                      <div class='slide-text center small-12 columns'>
+                        <div class='small-3 columns'>
+                          <a href='http://hummingbird.me/anime/the-devil-is-a-part-timer'>
+                            <img src='assets/images/posters/hataraku.jpg'>
+                          </a>
+                        </div>
+                        <div class='small-9 columns text-left'>
+                          <p class='h1r'>
+                            I can't believe you actually said &ldquo;There are people inside this little panel!&rdquo; when you saw a flat-screen TV.
+                            <br>
+                            <br>
+                            <small>
+                              &mdash; Emi Yusa
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-sol'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular Slice of Life Series
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2>OreImo Season 2</h2>
+                        <i class='ion-ios7-star'>&nbsp;3.86</i>
+                        <i class='ion-ios7-people'>&nbsp;6,739</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Most Popular Slice of Life</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='OreImo Season 2'>
+                            <a href='http://hummingbird.me/anime/oreimo-season-2'>
+                              <img src='assets/images/posters/oreimo.jpg'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kyoukai no Kanata'>
+                            <a href='http://hummingbird.me/anime/kyoukai-no-kanata'>
+                              <img src='assets/images/posters/kyoukai-no-kanata.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Tamako Market'>
+                            <a href='http://hummingbird.me/anime/tamako-market'>
+                              <img src='assets/images/posters/tamako-market.jpg'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The Garden of Words'>
+                            <a href='http://hummingbird.me/anime/the-garden-of-words'>
+                              <img src='assets/images/posters/garden-of-words.png'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Silver Spoon'>
+                            <a href='http://hummingbird.me/anime/gin-no-saji'>
+                              <img src='assets/images/posters/silver-spoon.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Servant x Service'>
+                            <a href='http://hummingbird.me/anime/servant-x-service'>
+                              <img src='assets/images/posters/servant-x-service.jpg'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='OreImo Specials'>
+                            <a href='http://hummingbird.me/anime/oreimo-specials'>
+                              <img src='assets/images/posters/oreimo-specials.jpg'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='GJ-bu'>
+                            <a href='http://hummingbird.me/anime/gj-bu'>
+                              <img src='assets/images/posters/gjbu.jpg'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Yuyushiki'>
+                            <a href='http://hummingbird.me/anime/yuyushiki'>
+                              <img src='assets/images/posters/yuyushiki.jpg'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kiniro Mosaic'>
+                            <a href='http://hummingbird.me/anime/kiniro-mosaic'>
+                              <img src='assets/images/posters/kiniro-mosaic.jpg'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='ore-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='row'>
+                      <div class='slide-text center small-12 columns'>
+                        <div class='small-3 columns'>
+                          <a href='http://hummingbird.me/anime/the-devil-is-a-part-timer'>
+                            <img src='http://static.hummingbird.me/anime/poster_images/000/007/006/large/7006.jpeg?1383500005'>
+                          </a>
+                        </div>
+                        <div class='small-9 columns text-left'>
+                          <p class='h1r'>
+                            But "living together" makes it sound like you and I... are two lovers living in cohabitation.
+                            <br>
+                            <br>
+                            <small>
+                              &mdash; Aragaki Ayase
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-romance'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular Romance Series
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2>The Devil is a Part-Timer!</h2>
+                        <i class='ion-ios7-star'>&nbsp;4.13</i>
+                        <i class='ion-ios7-people'>&nbsp;8,055</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Most Popular Romance</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The Devil is a Part-Timer!'>
+                            <a href='http://hummingbird.me/anime/the-devil-is-a-part-timer'>
+                              <img src='assets/images/posters/hataraku.jpg'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Gargantia on the Verdurous Planet'>
+                            <a href='http://hummingbird.me/anime/gargantia-on-the-verdurous-planet'>
+                              <img src='assets/images/posters/gargantia.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='My Teen Romantic Comedy SNAFU'>
+                            <a href='http://hummingbird.me/anime/my-teen-romantic-comedy-snafu'>
+                              <img src='assets/images/posters/romcom.jpg'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The "Hentai" Prince and the Stony Cat'>
+                            <a href='http://hummingbird.me/anime/the-hentai-prince-and-the-stony-cat'>
+                              <img src='assets/images/posters/hentai-ouji.jpg'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Boku wa Tomodachi ga Sukunai NEXT'>
+                            <a href='http://hummingbird.me/anime/boku-wa-tomodachi-ga-sukunai-next'>
+                              <img src='assets/images/posters/haganai.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Maoyu'>
+                            <a href='http://hummingbird.me/anime/maoyu'>
+                              <img src='assets/images/posters/maoyu.jpg'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Date A Live'>
+                            <a href='http://hummingbird.me/anime/date-a-live'>
+                              <img src='assets/images/posters/date-a-live.jpg'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Monogatari Series: Second Season'>
+                            <a href='http://hummingbird.me/anime/monogatari-series-second-season'>
+                              <img src='assets/images/posters/monogatari.jpg'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Log Horizon'>
+                            <a href='http://hummingbird.me/anime/log-horizon'>
+                              <img src='assets/images/posters/log-horizon.png'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Oreshura'>
+                            <a href='http://hummingbird.me/anime/oreshura'>
+                              <img src='assets/images/posters/oreshura.jpg'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='dpt2-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='row'>
+                      <div class='slide-text center small-12 columns'>
+                        <div class='small-3 columns'>
+                          <a href='http://hummingbird.me/anime/my-teen-romantic-comedy-snafu'>
+                            <img src='assets/images/posters/romcom.jpg'>
+                          </a>
+                        </div>
+                        <div class='small-9 columns text-left'>
+                          <p class='h1r'>
+                            I can't do that. You and I are from two different worlds. We were never meant for each other.
+                            <br>
+                            <br>
+                            <small>
+                              &mdash; Sadao Maou
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-fantasy'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular Fantasy Series
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2>Attack on Titan</h2>
+                        <i class='ion-ios7-star'>&nbsp;4.47</i>
+                        <i class='ion-ios7-people'>&nbsp;15,964</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Most Popular Fantasy Series</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Attack on Titan'>
+                            <a href='http://hummingbird.me/anime/attack-on-titan'>
+                              <img src='assets/images/posters/attack-on-titan.png'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The Devil is a Part-Timer!'>
+                            <a href='http://hummingbird.me/anime/the-devil-is-a-part-timer'>
+                              <img src='assets/images/posters/hataraku.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Maoyu'>
+                            <a href='http://hummingbird.me/anime/maoyu'>
+                              <img src='assets/images/posters/maoyu.jpg'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Log Horizon'>
+                            <a href='http://hummingbird.me/anime/log-horizon'>
+                              <img src='assets/images/posters/log-horizon.png'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title="Problem Children Are Coming From Another World, Aren't They?">
+                            <a href='http://hummingbird.me/anime/problem-children-are-coming-from-another-world-aren-t-they'>
+                              <img src='assets/images/posters/problem-children.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Toaru Kagaku no Railgun S'>
+                            <a href='http://hummingbird.me/anime/toaru-kagaku-no-railgun-s'>
+                              <img src='assets/images/posters/railgun.jpg'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The Sunday Without God'>
+                            <a href='http://hummingbird.me/anime/kamisama-no-inai-nichiyoubi'>
+                              <img src='assets/images/posters/sunday.jpg'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Little Witch Academia'>
+                            <a href='http://hummingbird.me/anime/little-witch-academia'>
+                              <img src='assets/images/posters/little-witch-academia.jpg'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Strike the Blood'>
+                            <a href='http://hummingbird.me/anime/strike-the-blood'>
+                              <img src='assets/images/posters/strike-the-blood.png'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Nagi no Asukara'>
+                            <a href='http://hummingbird.me/anime/nagi-no-asukara'>
+                              <img src='assets/images/posters/nagiasu.jpg'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='aot3-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='row'>
+                      <div class='slide-text center small-12 columns'>
+                        <div class='small-3 columns'>
+                          <a href='http://hummingbird.me/anime/attack-on-titan'>
+                            <img src='assets/images/posters/attack-on-titan.png'>
+                          </a>
+                        </div>
+                        <div class='small-9 columns text-left'>
+                          <p class='h1r'>
+                            You seriously don't know why human beings eat potatoes?
+                            <br>
+                            <br>
+                            <small>
+                              &mdash; Sasha Braus
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-mecha'>
+                <div class='slide-overlay'></div>
+                <div class='content-wrapper'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular Mecha Series
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2 class='long-title'>Gargantia on the Verdurous Planet</h2>
+                        <i class='ion-ios7-star'>&nbsp;3.99</i>
+                        <i class='ion-ios7-people'>&nbsp;7,029</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 6 Most Popular Mecha</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Gargantia on the Verdurous Planet'>
+                            <a href='http://hummingbird.me/anime/gargantia-on-the-verdurous-planet'>
+                              <img src='assets/images/posters/gargantia.jpg'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Date A Live'>
+                            <a href='http://hummingbird.me/anime/date-a-live'>
+                              <img src='assets/images/posters/date-a-live.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kakumeiki Valvrave'>
+                            <a href='http://hummingbird.me/anime/kakumeiki-valvrave'>
+                              <img src='assets/images/posters/valvrave.jpg'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='IS: Infinite Stratos 2'>
+                            <a href='http://hummingbird.me/anime/is-infinite-stratos-2'>
+                              <img src='assets/images/posters/is-2.png'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kakumeiki Valvrave Season 2'>
+                            <a href='http://hummingbird.me/anime/kakumeiki-valvrave-2nd-season'>
+                              <img src='assets/images/posters/valvrave-2.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Ginga Kikoutai Majestic Prince'>
+                            <a href='http://hummingbird.me/anime/ginga-kikoutai-majestic-prince'>
+                              <img src='assets/images/posters/majestic-prince.png'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='chamber-quote'>
+                <div class='quote-overlay'></div>
+                <div class='row'>
+                  <div class='slide-text center small-12 columns'>
+                    <div class='small-3 columns'>
+                      <a href='Gargantia on the Verdurous Planet'>
+                        <img src='assets/images/posters/gargantia.jpg'>
+                      </a>
+                    </div>
+                    <div class='small-9 columns text-left'>
+                      <p class='h1r'>
+                        Civilization itself is proof that that mankind stands at the apex of all creation.
+                        <br>
+                        <br>
+                        <small>
+                          &mdash; Chamber
+                        </small>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-sports'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular Sports Series
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2>Free!</h2>
+                        <i class='ion-ios7-star'>&nbsp;3.79</i>
+                        <i class='ion-ios7-people'>&nbsp;5,384</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 6 Most Popular Sports</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Free!'>
+                            <a href='http://hummingbird.me/anime/free'>
+                              <img src='assets/images/posters/free.png'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Chihayafuru 2'>
+                            <a href='http://hummingbird.me/anime/chihayafuru-2'>
+                              <img src='assets/images/posters/chihayafuru.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kuroko no Basket 2'>
+                            <a href='http://hummingbird.me/anime/kuroko-no-basket-2'>
+                              <img src='assets/images/posters/kuroko.png'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Walkure Romanze'>
+                            <a href='http://hummingbird.me/anime/walkure-romanze'>
+                              <img src='assets/images/posters/romanze.jpg'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Diamond no Ace'>
+                            <a href='http://hummingbird.me/anime/diamond-no-ace'>
+                              <img src='assets/images/posters/diamond-no-ace.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Yowamushi Pedal'>
+                            <a href='http://hummingbird.me/anime/yowamushi-pedal'>
+                              <img src='assets/images/posters/yowamushi-pedal.jpg'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='free-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='row'>
+                      <div class='slide-text center small-12 columns'>
+                        <div class='small-3 columns'>
+                          <a href='http://hummingbird.me/anime/free'>
+                            <img src='http://static.hummingbird.me/anime/poster_images/000/007/664/large/1.png?1383501837'>
+                          </a>
+                        </div>
+                        <div class='small-9 columns text-left'>
+                          <p class='h1r'>
+                            When you're ten, they call you a prodigy. When you're fifteen, they call you a genius. Once you hit twenty, you're just an ordinary person.
+                            <br>
+                            <br>
+                            <small>
+                              &mdash; Haruka Nanase
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-winter'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular from Winter 2013
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2 class='long-title'>Nekomonogatari: Kuro</h2>
+                        <i class='ion-ios7-star'>&nbsp;4.18</i>
+                        <i class='ion-ios7-people'>&nbsp;5,518</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Most Popular from Winter 2013</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Nekomonogatari: Kuro (2012)'>
+                            <a href='http://hummingbird.me/anime/nekomonogatari-kuro'>
+                              <img src='assets/images/posters/nekomonogatari.png'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Boku wa Tomodachi ga Sukunai NEXT'>
+                            <a href='http://hummingbird.me/anime/boku-wa-tomodachi-ga-sukunai-next'>
+                              <img src='assets/images/posters/haganai.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Maoyu'>
+                            <a href='http://hummingbird.me/anime/maoyu'>
+                              <img src='assets/images/posters/maoyu.jpg'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title="Problem Children Are Coming From Another World, Aren't They?">
+                            <a href='http://hummingbird.me/anime/problem-children-are-coming-from-another-world-aren-t-they'>
+                              <img src='assets/images/posters/problem-children.jpg'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Oreshura'>
+                            <a href='http://hummingbird.me/anime/oreshura'>
+                              <img src='assets/images/posters/oreshura.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kotoura-san'>
+                            <a href='http://hummingbird.me/anime/kotoura-san'>
+                              <img src='assets/images/posters/kotoura-san.jpg'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Tamako Market'>
+                            <a href='http://hummingbird.me/anime/tamako-market'>
+                              <img src='assets/images/posters/tamako-market.jpg'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Sasami-san@Ganbaranai'>
+                            <a href='http://hummingbird.me/anime/sasami-san-ganbaranai'>
+                              <img src='assets/images/posters/sasami.jpg'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='GJ-bu'>
+                            <a href='http://hummingbird.me/anime/gj-bu'>
+                              <img src='assets/images/posters/gjbu.jpg'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Amnesia'>
+                            <a href='http://hummingbird.me/anime/amnesia'>
+                              <img src='assets/images/posters/amnesia.jpg'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='neko-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='row'>
+                      <div class='slide-text center small-12 columns'>
+                        <div class='small-3 columns'>
+                          <a href='http://hummingbird.me/anime/nekomonogatari-kuro'>
+                            <img src='http://static.hummingbird.me/anime/poster_images/000/007/294/large/126724426597167459.png?1383500823'>
+                          </a>
+                        </div>
+                        <div class='small-9 columns text-left'>
+                          <p class='h1r'>
+                            Gifted humans must be aware of the effect that gift has on the humans around them.
+                            <br>
+                            <br>
+                            <small>
+                              &mdash; Oshino Meme
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-spring'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular from Spring 2013
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2>Attack on Titan</h2>
+                        <i class='ion-ios7-star'>&nbsp;4.46</i>
+                        <i class='ion-ios7-people'>&nbsp;15,941</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Most Popular from Spring 2013</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Attack on Titan'>
+                            <a href='http://hummingbird.me/anime/attack-on-titan'>
+                              <img src='assets/images/posters/attack-on-titan.png'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The Devil is a Part-Timer!'>
+                            <a href='http://hummingbird.me/anime/the-devil-is-a-part-timer'>
+                              <img src='assets/images/posters/hataraku.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Gargantia on the Verdurous Planet'>
+                            <a href='http://hummingbird.me/anime/gargantia-on-the-verdurous-planet'>
+                              <img src='assets/images/posters/gargantia.jpg'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='My Teen Romantic Comedy SNAFU'>
+                            <a href='http://hummingbird.me/anime/my-teen-romantic-comedy-snafu'>
+                              <img src='assets/images/posters/romcom.jpg'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='OreImo Season 2'>
+                            <a href='http://hummingbird.me/anime/oreimo-season-2'>
+                              <img src='assets/images/posters/oreimo.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The "Hentai" Prince and the Stony Cat'>
+                            <a href='http://hummingbird.me/anime/the-hentai-prince-and-the-stony-cat'>
+                              <img src='assets/images/posters/hentai-ouji.jpg'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Date A Live'>
+                            <a href='http://hummingbird.me/anime/date-a-live'>
+                              <img src='assets/images/posters/date-a-live.jpg'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Toaru Kagaku no Railgun S'>
+                            <a href='http://hummingbird.me/anime/toaru-kagaku-no-railgun-s'>
+                              <img src='assets/images/posters/railgun.jpg'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kakumeiki Valvrave'>
+                            <a href='http://hummingbird.me/anime/kakumeiki-valvrave'>
+                              <img src='assets/images/posters/valvrave.jpg'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Devil Survivor 2 The Animation'>
+                            <a href='http://hummingbird.me/anime/devil-survivor-2-the-animation'>
+                              <img src='assets/images/posters/devil-survivor.png'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='aot4-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='row'>
+                      <div class='slide-text center small-12 columns'>
+                        <div class='small-3 columns'>
+                          <a href='http://hummingbird.me/anime/attack-on-titan'>
+                            <img src='assets/images/posters/attack-on-titan.png'>
+                          </a>
+                        </div>
+                        <div class='small-9 columns text-left'>
+                          <p class='h1r'>
+                            The strong feed upon weak. It's such an obligingly simple rule. Except in this world, my friends tried to be strong.
+                            <br>
+                            <br>
+                            <small>
+                              &mdash; Armin Arelet
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-summer'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular from Summer 2013
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2>Watamote</h2>
+                        <i class='ion-ios7-star'>&nbsp;3.66</i>
+                        <i class='ion-ios7-people'>&nbsp;6,806</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Most Popular from Summer 2013</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Watamote'>
+                            <a href='http://hummingbird.me/anime/watashi-ga-motenai-no-wa-dou-kangaetemo-omaera-ga-warui'>
+                              <img src='assets/images/posters/watamote.jpg'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Danganronpa'>
+                            <a href='http://hummingbird.me/anime/danganronpa-kibou-no-gakuen-to-zetsubou-no-koukousei-the-animation'>
+                              <img src='assets/images/posters/danganronpa.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Free!'>
+                            <a href='http://hummingbird.me/anime/free'>
+                              <img src='assets/images/posters/free.png'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Blood Lad'>
+                            <a href='http://hummingbird.me/anime/blood-lad'>
+                              <img src='assets/images/posters/blood-lad.jpg'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Monogatari Series: Second Season'>
+                            <a href='http://hummingbird.me/anime/monogatari-series-second-season'>
+                              <img src='assets/images/posters/monogatari.jpg'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The World God Only Knows: Goddess Arc'>
+                            <a href='http://hummingbird.me/anime/the-world-god-only-knows-goddess-arc'>
+                              <img src='assets/images/posters/the-world-god-only-knows.png'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='The Sunday Without God'>
+                            <a href='http://hummingbird.me/anime/kamisama-no-inai-nichiyoubi'>
+                              <img src='assets/images/posters/sunday.jpg'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='High School DxD New'>
+                            <a href='http://hummingbird.me/anime/high-school-dxd-new'>
+                              <img src='assets/images/posters/highschool-ne.jpg'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Gatchaman Crowds'>
+                            <a href='http://hummingbird.me/anime/gatchaman-crowds'>
+                              <img src='assets/images/posters/gatchaman.png'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Silver Spoon'>
+                            <a href='http://hummingbird.me/anime/gin-no-saji'>
+                              <img src='assets/images/posters/silver-spoon.jpg'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='wata-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='row'>
+                      <div class='slide-text center small-12 columns'>
+                        <div class='small-3 columns'>
+                          <a href='http://hummingbird.me/anime/watashi-ga-motenai-no-wa-dou-kangaetemo-omaera-ga-warui'>
+                            <img src='http://static.hummingbird.me/anime/poster_images/000/007/504/large/7504.jpg?1383501418'>
+                          </a>
+                        </div>
+                        <div class='small-9 columns text-left'>
+                          <p class='h1r'>
+                            The only thing I've gotten better at since I started high school is pretending to wake up from pretending to be asleep.
+                            <br>
+                            <br>
+                            <small>
+                              &mdash; Tomoko Kuroki
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='slide white' data-color='hb-grey' id='popular-fall'>
+                <div class='slide-overlay'></div>
+                <div class='row'>
+                  <div class='small-12 columns text-center'>
+                    <div class='series-category'>
+                      Most Popular from Fall 2013
+                    </div>
+                  </div>
+                </div>
+                <div class='absolute-wrap'>
+                  <div class='row'>
+                    <div class='small-12 columns text-center'>
+                      <div class='series-title'>
+                        <h2>Kill la Kill</h2>
+                        <i class='ion-ios7-star'>&nbsp;4.11</i>
+                        <i class='ion-ios7-people'>&nbsp;7,011</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='series-footer'>
+                    <div class='row'>
+                      <div class='runner-ups small-12 columns'>
+                        <p>Top 10 Most Popular from Fall 2013</p>
+                        <ul class='small-block-grid-5 large-block-grid-10'>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kill la Kill'>
+                            <a href='http://hummingbird.me/anime/kill-la-kill'>
+                              <img src='assets/images/posters/kill-la-kill.jpg'>
+                              <div class='list-number'>1</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Kyoukai no Kanata'>
+                            <a href='http://hummingbird.me/anime/kyoukai-no-kanata'>
+                              <img src='assets/images/posters/kyoukai-no-kanata.jpg'>
+                              <div class='list-number'>2</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Log Horizon'>
+                            <a href='http://hummingbird.me/anime/log-horizon'>
+                              <img src='assets/images/posters/log-horizon.png'>
+                              <div class='list-number'>3</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Golden Time'>
+                            <a href='http://hummingbird.me/anime/golden-time'>
+                              <img src='assets/images/posters/golden-time.png'>
+                              <div class='list-number'>4</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Coppelion'>
+                            <a href='http://hummingbird.me/anime/coppelion'>
+                              <img src='assets/images/posters/coppelion.png'>
+                              <div class='list-number'>5</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Strike the Blood'>
+                            <a href='http://hummingbird.me/anime/strike-the-blood'>
+                              <img src='assets/images/posters/strike-the-blood.png'>
+                              <div class='list-number'>6</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='IS: Infinite Stratos 2'>
+                            <a href='http://hummingbird.me/anime/is-infinite-stratos-2'>
+                              <img src='assets/images/posters/is-2.png'>
+                              <div class='list-number'>7</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Nagi no Asukara'>
+                            <a href='http://hummingbird.me/anime/nagi-no-asukara'>
+                              <img src='assets/images/posters/nagiasu.jpg'>
+                              <div class='list-number'>8</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Noucome'>
+                            <a href='http://hummingbird.me/anime/noucome-my-mental-choices-are-completely-interfering-with-my-school-romantic-comedy'>
+                              <img src='assets/images/posters/noucome.png'>
+                              <div class='list-number'>9</div>
+                            </a>
+                          </li>
+                          <li class='has-tip tip-top runner-poster' data-options='disable_for_touch:true' data-tooltip title='Unbreakable Machine-Doll'>
+                            <a href='http://hummingbird.me/anime/unbreakable-machine-doll'>
+                              <img src='assets/images/posters/unbreakable-machine-doll.png'>
+                              <div class='list-number'>10</div>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='klk-quote'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <div class='row'>
+                      <div class='slide-text center small-12 columns'>
+                        <div class='small-3 columns'>
+                          <a href='http://hummingbird.me/anime/kill-la-kill'>
+                            <img src='http://static.hummingbird.me/anime/poster_images/000/007/712/large/kill_la_kill_by_dragoontooth-d6wpq3e.jpg?1387141548'>
+                          </a>
+                        </div>
+                        <div class='small-9 columns text-left'>
+                          <p class='h1r'>
+                            Suzuki used to sit here, but he was killed by the student council yesterday, so it's free now!
+                            <br>
+                            <br>
+                            <small>
+                              &mdash; Mankanshoku Mako
+                            </small>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='episodes-tracked'>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <p class='h1r'>
+                      In 2013 our users
+                      <br>
+                      tracked
+                      <span class='highlight'>31,361,270</span>
+                      episodes
+                      <br class='mobile-hide'>
+                      of anime through Hummingbird.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='user-posts'>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <p class='h1r'>
+                      Those same users posted
+                      <br>
+                      <span class='highlight'>143,511</span>
+                      updates to their activity feed
+                      <br class='mobile-hide'>
+                      and created
+                      <span class='highlight'>351,673</span>
+                      forum posts
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class='quote-slide slide white' data-color='hb-grey' id='final-slide'>
+                <div class='quote-overlay'></div>
+                <div class='table y100'>
+                  <div class='table-cell center px2'>
+                    <p class='h1r'>
+                      <br>
+                      This year has been made great
+                      <br class='mobile-hide'>
+                      by the incredible people using Hummingbird.
+                      <br>
+                      <br>
+                      Want to contribute to the next Year in Review?
+                      <br>
+                      <a href="http://hummingbird.me/">Create an Account</a>
+                      <br>
+                      <br>
+                      <div class='fb-like' data-action='like' data-href='http://www.hummingbird.me/2013' data-layout='button_count' data-share='false' data-show-faces='false'></div>
+                      <a class='twitter-share-button' data-text="It's been a great year of anime - Hummingbird Year in Review" data-via='hummingbird_me' href='https://twitter.com/share'>Tweet</a>
+                      <script>
+                        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+                      </script>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class='js-slide-previous rail rail-left p1 clickable no-select mobile-hide'>
+              <div class='table-cell'>
+                <img alt='left' height='48' src='assets/images/arrow-left.svg' width='24'>
+              </div>
+            </div>
+            <div class='js-slide-next rail rail-right right-align p1 clickable no-select mobile-hide'>
+              <p class='js-coach-mark table-cell bold px2 white hide'>Start</p>
+              <div class='table-cell'>
+                <img alt='right' height='48' src='assets/images/arrow-right.svg' width='24'>
+              </div>
+            </div>
+          </div>
+          <div class='shifty-menu scrolly menu bg-white'>
+            <div class='py4'>
+              <ul class='list-simple center mb4' id='toc'>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green26' href='#home'>Home</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#highest-rated-tv'>Highest Rated TV Series</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#highest-rated-movie'>Highest Rated Movie</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#popular-tv'>Most Popular TV Series</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#popular-fantasy'>Most Popular Fantasy Series</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#popular-comedy'>Most Popular Comedy Series</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#popular-sol'>Most Popular Slice of Life Series</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#popular-mecha'>Most Popular Mecha Series</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#popular-sports'>Most Popular Sports Series</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#popular-winter'>Most Popular from Winter 2013</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#popular-spring'>Most Popular from Spring 2013</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#popular-summer'>Most Popular from Summer 2013</a>
+                </li>
+                <li>
+                  <a class='h2 lh5 block js-slide-btn link-green24' href='#popular-fall'>Most Popular from Fall 2013</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- .shifty-menu -->
+    <!-- .view -->
+    <script src='assets/js/jquery-2.0.3.min.js'></script>
+    <script src='assets/js/flipsnap.js'></script>
+    <script src='assets/js/modernizr.custom.js'></script>
+    <script src='assets/js/fastclick.js'></script>
+    <script src='assets/js/jquery.fitvids.js'></script>
+    <script src='assets/js/slideshow.js'></script>
+    <script src='assets/js/foundation.min.js'></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,244 @@
+body * {
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+section :first-child {
+  margin-top: 0;
+}
+
+blockquote {
+  border: none;
+}
+
+/* First Heading Slide. */
+section.header {
+  text-align: center;
+  background: #105b63;
+  padding-top: 100px;
+  height: 500px;
+}
+
+section.header h2 {
+  color: #fffad5;
+  text-transform: uppercase;
+  margin: 0 0 0 0;
+  letter-spacing: 4px;
+  opacity: 0.8;
+  font-size: 1.6em;
+}
+
+section.header h1 {
+  font-size: 7em;
+  font-family: 'Montserrat', sans-serif;
+  text-shadow: 1px 1px rgb(14, 77, 84), 2px 2px rgb(14, 77, 84), 3px 3px rgb(14, 78, 85), 4px 4px rgb(14, 79, 86), 5px 5px rgb(14, 79, 86), 6px 6px rgb(14, 80, 87), 7px 7px rgb(14, 81, 88), 8px 8px rgb(14, 81, 89), 9px 9px rgb(14, 82, 89), 10px 10px rgb(14, 83, 90), 11px 11px rgb(14, 83, 91), 12px 12px rgb(15, 84, 91), 13px 13px rgb(15, 85, 92), 14px 14px rgb(15, 85, 93), 15px 15px rgb(15, 86, 94), 16px 16px rgb(15, 87, 94), 17px 17px rgb(15, 87, 95), 18px 18px rgb(15, 88, 96), 19px 19px rgb(15, 89, 96), 20px 20px rgb(15, 89, 97), 21px 21px rgb(15, 90, 98), 22px 22px rgb(16, 91, 99);
+  margin: 0;
+  color: #fffaf1;
+}
+
+section.header h3 {
+  color: #fffad5;
+  font-size: 1.5em;
+  margin: 20px 0 0 0;
+  display: inline-block;
+  padding: 20px 50px;
+  background-color: rgba(189, 73, 50, 0.9);
+  border-radius: 4px
+}
+
+/* Anime Feature Section. */
+section.anime-feature {
+  padding: 80px 0 100px 0;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+section.anime-feature .img {
+  text-align: center;
+}
+
+section.anime-feature img {
+  max-width: 120px;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 2px 8px #000;
+  border-radius: 2px;
+}
+
+section.anime-feature h3 {
+  display: inline-block;
+  font-size: 0.8em;
+  padding: 8px 15px;
+  border-radius: 2px;
+  background-color: rgba(189, 73, 50, 0.8);
+  color: #fffad5;
+}
+
+section.anime-feature h2 {
+  font-size: 1.5em;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+section.anime-feature h2 strong {
+  font-family: 'Montserrat', sans-serif;
+}
+
+section.anime-feature blockquote {
+  max-width: 500px;
+  margin: auto;
+}
+
+section.anime-feature blockquote p {
+  font-size: 2em;
+  line-height: 1.2em;
+  text-align: right;
+  color: #333;
+}
+
+section.anime-feature blockquote cite {
+  text-align: right;
+  font-size: 1.3em;
+}
+
+/* Anime Listing */
+section.anime-listing {
+  background: #333;
+}
+
+section.anime-listing h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0;
+}
+
+/* Show Listing Styles */
+.show {
+  position: relative;
+  padding: 0
+}
+
+.show img {
+  width: 100%;
+  height: auto;
+}
+
+.show .title {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 6px 8px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  text-shadow: 0 1px 2px #000;
+}
+
+.show .meta {
+  position: absolute;
+  right: 0;
+  background-color: rgba(189, 73, 50, 0.9);
+  color: #fffad5;
+  margin: 6px 8px;
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 1px 0 rgba(44, 34, 34, 0.7);
+  font-size: 0.8em
+}
+
+/* Anime Feature Sections. */
+
+.highest-rated {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/aot-cover.jpg);
+}
+
+.potato-quote {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/sasha-braus.jpg);
+}
+
+.highest-rated-movie {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/steins-gate-cover.jpg);
+}
+
+.highest-rated-movie h1 {
+  font-size: 1.3em;
+}
+
+.popular-tv {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/aot-cover-2.jpg);
+}
+
+.emi-yusa {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/hataraku-cover.jpg);
+}
+
+.hikki {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/hikki.jpg);
+}
+
+.mirai-quote {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/kuriyama-bucket.jpg);
+}
+
+.misaka-quote {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/mikasa.jpg);
+}
+
+.chamber-quote {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/chamber.jpg);
+}
+
+.kirara-quote {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/kirara.jpg);
+}
+
+.hikki-2 {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/hikki-2.jpg);
+}
+
+.nanase-quote {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.9)), url(images/haruka-nanase.jpg);
+}
+
+/* Medium & Up Styles. */
+@media (min-width: 40.063em) {
+  section.header {
+    height: 600px;
+    font-size: 1.5em;
+  }
+  
+  section.anime-feature {
+    height: 540px;
+    padding-top: 140px;
+  }
+  
+  section.anime-feature blockquote {
+    margin-top: 60px;
+  }
+  
+  .anime-listing {
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+}
+
+/* Large & Up Styles. */
+@media (min-width: 64.063em) {
+  
+  section.anime-feature h1 {
+    font-size: 4em;
+  }
+  
+  section.anime-feature img {
+    max-width: 500px;
+  }
+  
+  section.anime-feature h3 {
+    font-size: 1.5em;
+  }
+}
