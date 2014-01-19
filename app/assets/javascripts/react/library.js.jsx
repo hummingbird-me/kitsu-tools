@@ -268,6 +268,10 @@
                 ? <span className="anime-label"><i className="fa fa-repeat" /></span>
                 : ''
               }
+              { content.get('notes') && content.get('notes').length > 0
+                ? <span className="anime-label"><i className="fa fa-book" /></span>
+                : ''
+              }
               { content.get('anime.airingStatus') == "Finished Airing"
                 ? ''
                 : <span className="anime-label"><span className="label label-primary">{content.get('anime.airingStatus')}</span></span>
