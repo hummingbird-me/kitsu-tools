@@ -70,13 +70,18 @@ class UsersController < ApplicationController
   end
 
   def library
+    @user = User.find(params[:user_id])
+
+    # Redirect to canonical URL if this isn't it.
+    if request.path != user_library_path(@user)
+      return redirect_to user_library_path(@user), status: :moved_permanently
+    end
+
     if Rails.env.development? or params[:user_id] == "vikhyat"
-      user = User.find params[:user_id]
-      preload! user
+      preload! @user
       render_ember
     else
       @active_tab = :library
-      @user = User.find(params[:user_id])
       render :library, layout: 'profile'
     end
   end
