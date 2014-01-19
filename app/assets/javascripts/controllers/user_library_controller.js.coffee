@@ -55,7 +55,8 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
              'content.@each.status',
              'content.@each.rating',
              'content.@each.private',
-             'content.@each.episodesWatched')
+             'content.@each.episodesWatched',
+             'content.@each.rewatching')
 
   saveLibraryEntry: (libraryEntry) ->
     title = libraryEntry.get('anime.canonicalTitle')
@@ -87,6 +88,18 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       if libraryEntry.get('rating') == newRating
         newRating = null
       libraryEntry.set 'rating', newRating
+      @saveLibraryEntry(libraryEntry)
+
+    toggleRewatching: (libraryEntry) ->
+      currentState = libraryEntry.get('rewatching')
+      if currentState
+        libraryEntry.set 'rewatching', false
+      else
+        libraryEntry.set 'rewatching', true
+        if libraryEntry.get('status') != "Currently Watching"
+          libraryEntry.set 'status', "Currently Watching"
+          libraryEntry.set 'episodesWatched', 0
+          Messenger().post "Moved " + libraryEntry.get('anime.canonicalTitle') + " to Currently Watching."
       @saveLibraryEntry(libraryEntry)
 
     saveEpisodesWatched: (libraryEntry) ->

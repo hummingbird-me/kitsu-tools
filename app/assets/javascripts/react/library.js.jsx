@@ -14,6 +14,12 @@
       controller.send('setPrivate', libraryEntry, newPrivate);
     },
 
+    toggleRewatching: function(event) {
+      var controller = this.props.view.get('controller');
+      var libraryEntry = this.props.content;
+      controller.send('toggleRewatching', libraryEntry);
+    },
+
     componentDidUpdate: function(prevProps, newProps, rootNode) {
       if (this.props.dropdownOpen) {
         if (this.props.view.get('user.viewingSelf')) {
@@ -86,6 +92,14 @@
                       RATING WIDGET HERE.
                     </div>
                   </div>
+                  <hr />
+                </div>
+
+                <div className="text-center">
+                  <label>
+                    <input type="checkbox" name="checkbox" checked={this.props.content.get('rewatching')} onChange={this.toggleRewatching} />
+                    Rewatching
+                  </label>
                   <hr />
                 </div>
 

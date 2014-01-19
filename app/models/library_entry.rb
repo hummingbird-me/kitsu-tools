@@ -70,7 +70,7 @@ class LibraryEntry < ActiveRecord::Base
     end
 
     # Set the `last_watched` field.
-    if self.episodes_watched_changed?
+    if self.episodes_watched_changed? or self.status.changed?
       self.last_watched = Time.now
     end
 
