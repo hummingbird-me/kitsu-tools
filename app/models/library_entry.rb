@@ -14,7 +14,7 @@
 #  imported         :boolean
 #  private          :boolean          default(FALSE)
 #  notes            :text
-#  rewatched_times  :integer          default(0), not null
+#  rewatch_count    :integer          default(0), not null
 #  rewatching       :boolean          default(FALSE), not null
 #
 
@@ -45,16 +45,16 @@ class LibraryEntry < ActiveRecord::Base
   before_save do
     # Set field defaults.
     self.episodes_watched = 0 if self.episodes_watched.nil?
-    self.rewatched_times = 0 if self.rewatched_times.nil?
+    self.rewatch_count = 0 if self.rewatch_count.nil?
     self.private = false if self.private.nil?
 
     # Rewatching logic and life spent on anime.
     if self.rewatching and self.status_changed? and self.status == "Completed"
       self.rewatching = false
-      self.rewatched_times += 1
+      self.rewatch_count += 1
     end
-    if self.rewatched_times_changed?
-      self.user.update_life_spent_on_anime( (self.rewatched_times - self.rewatched_times_was) * ((self.anime.episode_count || 0) * (self.anime.episode_length || 0)) )
+    if self.rewatch_count_changed?
+      self.user.update_life_spent_on_anime( (self.rewatch_count - self.rewatch_count_was) * ((self.anime.episode_count || 0) * (self.anime.episode_length || 0)) )
     end
     if self.rewatching_changed?
       if self.rewatching
@@ -70,7 +70,7 @@ class LibraryEntry < ActiveRecord::Base
     end
 
     # Set the `last_watched` field.
-    if self.episodes_watched_changed? or self.status.changed?
+    if self.episodes_watched_changed? or self.status_changed?
       self.last_watched = Time.now
     end
 

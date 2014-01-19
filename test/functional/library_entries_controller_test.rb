@@ -81,7 +81,7 @@ class LibraryEntriesControllerTest < ActionController::TestCase
     assert_equal "Plan to Watch", library_entry.status
     assert_equal 0, library_entry.episodes_watched
     assert_equal false, library_entry.private
-    assert_equal 0, library_entry.rewatched_times
+    assert_equal 0, library_entry.rewatch_count
   end
 
   test "need to be authenticated as correct user to update library entry" do

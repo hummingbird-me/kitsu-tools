@@ -14,7 +14,7 @@
 #  imported         :boolean
 #  private          :boolean          default(FALSE)
 #  notes            :text
-#  rewatched_times  :integer          default(0), not null
+#  rewatch_count    :integer          default(0), not null
 #  rewatching       :boolean          default(FALSE), not null
 #
 
@@ -89,7 +89,7 @@ class Watchlist < ActiveRecord::Base
       },
       episodes_watched: self.episodes_watched,
       last_watched: self.last_watched || self.updated_at,
-      rewatched_times: self.rewatched_times,
+      rewatched_times: self.rewatch_count,
       notes: self.notes,
       notes_present: (self.notes and self.notes.strip.length > 0),
       status: self.status,
@@ -127,10 +127,10 @@ class Watchlist < ActiveRecord::Base
   end
 
   def update_rewatched_times(new_times)
-    old_times = self.rewatched_times || 0
-    self.rewatched_times = new_times
+    old_times = self.rewatch_count || 0
+    self.rewatch_count = new_times
     self.save
-    self.user.update_life_spent_on_anime( (self.rewatched_times - old_times) * ((self.anime.episode_count || 0) * (self.anime.episode_length || 0)) )
+    self.user.update_life_spent_on_anime( (self.rewatch_count - old_times) * ((self.anime.episode_count || 0) * (self.anime.episode_length || 0)) )
     self
   end
 
@@ -145,11 +145,11 @@ class Watchlist < ActiveRecord::Base
     end
 
     # If the status is "Completed" and "rewatching" is true, set "rewatching"
-    # to false and increment rewatched_times by 1.
+    # to false and increment rewatch_count by 1.
     if self.rewatching and self.status == "Completed"
       self.rewatching = false
-      self.rewatched_times ||= 0
-      self.rewatched_times += 1
+      self.rewatch_count ||= 0
+      self.rewatch_count += 1
     end
   end
 

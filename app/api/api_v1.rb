@@ -50,7 +50,7 @@ class API_v1 < Grape::API
         id: w.id,
         episodes_watched: w.episodes_watched,
         last_watched: w.last_watched || w.updated_at,
-        rewatched_times: w.rewatched_times,
+        rewatched_times: w.rewatch_count,
         notes: w.notes,
         notes_present: (w.notes and w.notes.strip.length > 0),
         status: w.status.downcase.gsub(' ', '-'),

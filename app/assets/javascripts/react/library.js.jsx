@@ -15,9 +15,42 @@
     },
 
     toggleRewatching: function(event) {
-      var controller = this.props.view.get('controller');
-      var libraryEntry = this.props.content;
-      controller.send('toggleRewatching', libraryEntry);
+      if (this.props.view.get('user.viewingSelf')) {
+        var controller = this.props.view.get('controller');
+        var libraryEntry = this.props.content;
+        controller.send('toggleRewatching', libraryEntry);
+      }
+    },
+
+    changeRewatchCount: function(event) {
+      if (!this.props.view.get('user.viewingSelf')) { return; }
+
+      var focused = $(event.target).is(":focus");
+      var originalRewatchCount = this.props.content.get('rewatchCount');
+      var rewatchCount = parseInt(event.target.value);
+
+      // Let's not go below zero.
+      if (rewatchCount < 0) { rewatchCount = originalRewatchCount; }
+
+      this.props.content.set('rewatchCount', rewatchCount);
+
+      if (!focused) {
+        Ember.run.debounce(this, this.saveRewatchCount, 500);
+      }
+    },
+
+    saveRewatchCount: function (event) {
+      if (event && event.target.nodeName == "FORM") {
+        event.preventDefault();
+        event.target.querySelector("input").blur();
+      }
+      else {
+        if (this.props.content.get('isDirty')) {
+          var controller = this.props.view.get('controller');
+          var libraryEntry = this.props.content;
+          controller.send('saveRewatchCount', libraryEntry);
+        }
+      }
     },
 
     componentDidUpdate: function(prevProps, newProps, rootNode) {
@@ -97,14 +130,18 @@
 
                 <div className="text-center">
                   <label>
-                    <input type="checkbox" name="checkbox" checked={this.props.content.get('rewatching')} onChange={this.toggleRewatching} />
+                    <input type="checkbox" checked={this.props.content.get('rewatching')} onChange={this.toggleRewatching} />
                     Rewatching
                   </label>
                   <hr />
                 </div>
 
                 <div className="text-center">
-                  <a>view advanced options</a>
+                  <form className="form-inline" onSubmit={this.saveRewatchCount}>
+                    Rewatched
+                    <input type="number" className="form-control" style={ {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"} } value={this.props.content.get('rewatchCount')} onChange={this.changeRewatchCount} onBlur={this.saveRewatchCount} />
+                    times.
+                  </form>
                 </div>
               </div>
             </div>

@@ -14,7 +14,7 @@
 #  imported         :boolean
 #  private          :boolean          default(FALSE)
 #  notes            :text
-#  rewatched_times  :integer          default(0), not null
+#  rewatch_count    :integer          default(0), not null
 #  rewatching       :boolean          default(FALSE), not null
 #
 

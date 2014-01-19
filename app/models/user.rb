@@ -290,7 +290,7 @@ class User < ActiveRecord::Base
     t = 0
     self.watchlists.each do |w|
       t += (w.anime.episode_length || 0) * (w.episodes_watched || 0)
-      t += (w.anime.episode_count || 0) * (w.anime.episode_length || 0) * (w.rewatched_times || 0)
+      t += (w.anime.episode_count || 0) * (w.anime.episode_length || 0) * (w.rewatch_count || 0)
     end
     self.life_spent_on_anime = t
     self.save

@@ -49,7 +49,7 @@ module Entities
   class Watchlist < Grape::Entity
     expose :episodes_watched
     expose(:last_watched) {|watchlist, options| watchlist.last_watched || watchlist.updated_at }
-    expose :rewatched_times
+    expose(:rewatched_times) {|watchlist, options| watchlist.rewatch_count }
     expose :notes
     expose(:notes_present) {|watchlist, options| watchlist.notes and watchlist.notes.strip.length > 0 }
     expose(:status) {|watchlist, options| watchlist.status.downcase.gsub(' ', '-') }

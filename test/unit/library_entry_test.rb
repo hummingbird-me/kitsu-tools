@@ -14,7 +14,7 @@
 #  imported         :boolean
 #  private          :boolean          default(FALSE)
 #  notes            :text
-#  rewatched_times  :integer          default(0), not null
+#  rewatch_count    :integer          default(0), not null
 #  rewatching       :boolean          default(FALSE), not null
 #
 
@@ -117,10 +117,10 @@ class LibraryEntryTest < ActiveSupport::TestCase
     assert !entry.rewatching
     initial = initial + entry.anime.episode_length * entry.anime.episode_count
     assert_equal initial, user.reload.life_spent_on_anime
-    assert_equal 1, entry.rewatched_times
+    assert_equal 1, entry.rewatch_count
 
     # Manually set rewatched times.
-    entry.rewatched_times = 2
+    entry.rewatch_count = 2
     entry.save
     initial = initial + entry.anime.episode_length * entry.anime.episode_count
     assert_equal initial, user.reload.life_spent_on_anime

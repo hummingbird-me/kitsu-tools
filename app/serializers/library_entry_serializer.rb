@@ -16,10 +16,6 @@ class LibraryEntrySerializer < ActiveModel::Serializer
     end
   end
 
-  def rewatch_count
-    object.rewatched_times
-  end
-
   def last_watched
     object.last_watched || object.created_at
   end
