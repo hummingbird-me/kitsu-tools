@@ -15,8 +15,10 @@
     },
 
     changeNotes: function(event) {
-      this.props.content.set('notes', event.target.value);
-      this.forceUpdate();
+      if (this.props.view.get('user.viewingSelf')) {
+        this.props.content.set('notes', event.target.value);
+        this.forceUpdate();
+      }
     },
 
     toggleRewatching: function(event) {
@@ -50,7 +52,7 @@
         event.target.querySelector("input").blur();
       }
       else {
-        if (this.props.content.get('isDirty')) {
+        if (this.props.view.get('user.viewingSelf') && this.props.content.get('isDirty')) {
           var controller = this.props.view.get('controller');
           var libraryEntry = this.props.content;
           controller.send('saveLibraryEntry', libraryEntry);
