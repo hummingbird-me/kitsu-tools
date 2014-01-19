@@ -260,6 +260,10 @@
           <div className={listGroupClass} onClick={this.toggleDropdown}>
             <div className="list-item-left">
               {content.get('anime.canonicalTitle')}
+              { content.get('private')
+                ? <span className="anime-label"><i className="fa fa-eye-slash" /></span>
+                : ''
+              }
               { content.get('anime.airingStatus') == "Finished Airing"
                 ? ''
                 : <span className="anime-label"><span className="label label-primary">{content.get('anime.airingStatus')}</span></span>
