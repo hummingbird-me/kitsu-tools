@@ -79,11 +79,6 @@ class UsersController < ApplicationController
 
     preload! @user
     render_ember
-    return
-
-    # Old Library
-    @active_tab = :library
-    render :library, layout: 'profile'
   end
 
   def follow
