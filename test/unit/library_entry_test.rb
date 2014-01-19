@@ -91,4 +91,38 @@ class LibraryEntryTest < ActiveSupport::TestCase
                                  episodes_watched: 3)
     assert_equal initial+3*entry.anime.episode_length, User.find('vikhyat').life_spent_on_anime
   end
+
+  test "rewatches count towards life spent on anime" do
+    user = User.find('vikhyat')
+
+    entry = LibraryEntry.first
+    entry.episodes_watched = entry.anime.episode_count
+    entry.status = "Completed"
+    entry.save
+    initial = user.reload.life_spent_on_anime
+
+    # Start rewatching.
+    entry.status = "Currently Watching"
+    entry.rewatching = true
+    entry.episodes_watched = 0
+    entry.save
+
+    assert_equal initial, user.reload.life_spent_on_anime
+
+    # Finish rewatching.
+    entry.episodes_watched = entry.anime.episode_count
+    entry.status = "Completed"
+    entry.save
+
+    assert !entry.rewatching
+    initial = initial + entry.anime.episode_length * entry.anime.episode_count
+    assert_equal initial, user.reload.life_spent_on_anime
+    assert_equal 1, entry.rewatched_times
+
+    # Manually set rewatched times.
+    entry.rewatched_times = 2
+    entry.save
+    initial = initial + entry.anime.episode_length * entry.anime.episode_count
+    assert_equal initial, user.reload.life_spent_on_anime
+  end
 end

@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
     name
   end
 
-  def self.find(id)
+  def self.find(id, options={})
     where('LOWER(name) = ?', id.to_s.downcase).first || super
   end
 

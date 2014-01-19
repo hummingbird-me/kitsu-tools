@@ -48,6 +48,22 @@ class LibraryEntry < ActiveRecord::Base
     self.rewatched_times = 0 if self.rewatched_times.nil?
     self.private = false if self.private.nil?
 
+    # Rewatching logic and life spent on anime.
+    if self.rewatching and self.status_changed? and self.status == "Completed"
+      self.rewatching = false
+      self.rewatched_times += 1
+    end
+    if self.rewatched_times_changed?
+      self.user.update_life_spent_on_anime( (self.rewatched_times - self.rewatched_times_was) * ((self.anime.episode_count || 0) * (self.anime.episode_length || 0)) )
+    end
+    if self.rewatching_changed?
+      if self.rewatching
+        self.user.update_life_spent_on_anime( (self.anime.episode_count || 0) * (self.anime.episode_length || 0) )
+      else
+        self.user.update_life_spent_on_anime( - (self.anime.episode_count || 0) * (self.anime.episode_length || 0) )
+      end
+    end
+
     # Track life spent on anime.
     if self.episodes_watched_changed?
       self.user.update_life_spent_on_anime( (self.episodes_watched - self.episodes_watched_was) * (self.anime.episode_length || 0) )
