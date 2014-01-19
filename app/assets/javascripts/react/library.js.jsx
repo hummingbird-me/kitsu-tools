@@ -101,7 +101,7 @@
               <img className="drop-thumb" src={content.get('anime.posterImage')} />
             </div>
             <div className="col-md-6 col-sm-8 hidden-xs">
-              <h4>{content.get('anime.canonicalTitle')}</h4>
+              <h4><a href={"/anime/" + content.get('anime.id')}>{content.get('anime.canonicalTitle')}</a></h4>
               <p className="drop-description">{content.get('anime.synopsis')}</p>
             </div>
             <div className="col-md-4 col-sm-4">
