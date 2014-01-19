@@ -1,29 +1,6 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    
-        <!-- Hammer reload -->
-          <script>
-            setInterval(function(){
-              try {
-                if(typeof ws != 'undefined' && ws.readyState == 1){return true;}
-                ws = new WebSocket('ws://'+(location.host || 'localhost').split(':')[0]+':35353')
-                ws.onopen = function(){ws.onclose = function(){document.location.reload()}}
-                ws.onmessage = function(){
-                  var links = document.getElementsByTagName('link'); 
-                    for (var i = 0; i < links.length;i++) { 
-                    var link = links[i]; 
-                    if (link.rel === 'stylesheet' && !link.href.match(/typekit/)) { 
-                      href = link.href.replace(/((&|\?)hammer=)[^&]+/,''); 
-                      link.href = href + (href.indexOf('?')>=0?'&':'?') + 'hammer='+(new Date().valueOf());
-                    }
-                  }
-                }
-              }catch(e){}
-            }, 1000)
-          </script>
-        <!-- /Hammer reload -->
-      
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <meta charset='utf-8'>
     <title>The Year in Anime 2013</title>
@@ -44,6 +21,19 @@
       if (window.location.href == "http://hummingbird.me/2013") {
         window.location.href = "http://hummingbird.me/2013/";
       }
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-37633900-1']);
+      _gaq.push(['_setDomainName', 'hummingbird.me']);
+      _gaq.push(['_setCustomVar', 1, 'Anonymous', #{!current_user}, 2]);
+      _gaq.push(['_setAllowLinker', true]);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
     </script>
   </head>
   <body class='hb-grey'>
