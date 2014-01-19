@@ -56,7 +56,7 @@ h1.series-title.hidden-xs
         partial "anime/studios"
 
   .banner-ad
-    img src="http://placekitten.com/729/90"
+    ad-unit adId="1293412" adClass="257f81e798bd68dd81e60f42838f361f"
 
 unless notYetAired
   .review-listing

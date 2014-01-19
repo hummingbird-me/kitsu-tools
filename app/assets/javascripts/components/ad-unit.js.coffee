@@ -3,11 +3,8 @@ Hummingbird.AdUnitComponent = Ember.Component.extend
   adClass: null
   classNames: ['ad-unit']
 
-  template: (context) ->
-    id = "bsap_" + context.get('adId')
-    className = "bsarocks bsap_" + context.get('adClass')
-    bsaDiv = "<div id='" + id + "' class='" + className + "'></div>"
-    bsaDiv
+  divId: (-> "bsap_" + @get('adId')).property('adId')
+  divClass: (-> "bsarocks bsap_" + @get('adClass')).property('adClass')
 
   didInsertElement: ->
     if typeof(_bsap) != "undefined"

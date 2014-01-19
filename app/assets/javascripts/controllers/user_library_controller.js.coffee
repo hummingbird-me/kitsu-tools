@@ -49,7 +49,6 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       sortedContent = agg[section.get('title')].sort (a, b) ->
         aProp = a.get(sortProperty)
         bProp = b.get(sortProperty)
-        console.log(aProp)
 
         if aProp < bProp
           -1 * sortAsc
