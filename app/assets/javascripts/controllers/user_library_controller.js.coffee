@@ -43,7 +43,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
         agg[item.get('status')].push item
 
     @get('sections').forEach (section) ->
-      section.set 'content', agg[section.get('title')]
+      section.set 'content', agg[section.get('title')].sortBy('lastWatched').reverse()
   ).observes('content.@each.status', 'filter')
 
   notifyReactComponent: (->
