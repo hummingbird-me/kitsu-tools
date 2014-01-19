@@ -31,12 +31,12 @@
         .container.hidden-xs
           .row
             li.list-group-item.library-filter.clearfix
-              .list-item-left.col-xs-12.col-sm-6.col-md-6
+              .list-item-left.col-xs-12.col-sm-6.col-md-6 click="setSort 'anime.lowercaseCanonicalTitle'"
                 | Title
               .list-item-right.col-xs-12.col-sm-6.col-md-6
-                .list-item-progress Progress
-                .list-item-score Rating
-                .list-item-type Type
+                .list-item-progress click="setSort 'episodesWatched'" Progress
+                .list-item-score click="setSort 'rating'" Rating
+                .list-item-type click="setSort 'anime.showType'" Type
 
         div#library-sections
 

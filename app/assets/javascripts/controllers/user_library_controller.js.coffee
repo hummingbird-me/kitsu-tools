@@ -4,6 +4,8 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
   reactComponent: null
 
   filter: ""
+  sortBy: "lastWatched"
+  sortAsc: false
 
   sectionNames: ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   showSection: "Currently Watching"
@@ -33,6 +35,8 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
   updateSectionContents: (->
     agg = {}
     filter = @get('filter').toLowerCase()
+    sortProperty = @get('sortBy')
+    sortAsc = if @get('sortAsc') then 1 else -1
 
     @get('sectionNames').forEach (name) ->
       agg[name] = []
@@ -42,14 +46,26 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
         agg[item.get('status')].push item
 
     @get('sections').forEach (section) ->
-      section.set 'content', agg[section.get('title')].sortBy('lastWatched').reverse()
-  ).observes('content.@each.status', 'filter')
+      sortedContent = agg[section.get('title')].sort (a, b) ->
+        aProp = a.get(sortProperty)
+        bProp = b.get(sortProperty)
+        console.log(aProp)
+
+        if aProp < bProp
+          -1 * sortAsc
+        else if aProp == bProp
+          0
+        else
+          1 * sortAsc
+
+      section.set 'content', sortedContent
+  ).observes('content.@each.status', 'filter', 'sortProperty', 'sortAsc')
 
   notifyReactComponent: (->
     Ember.run.once this, ->
       if @get('reactComponent')
         @get('reactComponent').forceUpdate()
-  ).observes('filter', 'showSection',
+  ).observes('filter', 'showSection', 'sortProperty', 'sortAsc',
              'content.@each.episodesWatched',
              'content.@each.status',
              'content.@each.rating',
@@ -66,6 +82,16 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       successMessage: "Saved " + title + "!"
 
   actions:
+    setSort: (newSort) ->
+      if @get('sortBy') == newSort
+        if @get('sortAsc')
+          @set 'sortAsc', false
+        else
+          @set 'sortBy', 'lastWatched'
+      else
+        @set 'sortBy', newSort
+        @set 'sortAsc', true
+
     showSection: (section) ->
       if typeof(section) == "string"
         @set 'showSection', section
