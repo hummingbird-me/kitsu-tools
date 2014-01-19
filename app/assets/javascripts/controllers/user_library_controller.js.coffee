@@ -11,7 +11,6 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
     @get('showSection') == "View All" or @get('filter').length > 0
   ).property('showSection', 'filter')
 
-
   sections: (->
     that = this
     @get('sectionNames').map (name) ->
@@ -56,6 +55,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
              'content.@each.rating',
              'content.@each.private',
              'content.@each.episodesWatched',
+             'content.@each.notes',
              'content.@each.rewatchCount',
              'content.@each.rewatching')
 
@@ -103,7 +103,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
           Messenger().post "Moved " + libraryEntry.get('anime.canonicalTitle') + " to Currently Watching."
       @saveLibraryEntry(libraryEntry)
 
-    saveRewatchCount: (libraryEntry) ->
+    saveLibraryEntry: (libraryEntry) ->
       @saveLibraryEntry(libraryEntry)
 
     saveEpisodesWatched: (libraryEntry) ->

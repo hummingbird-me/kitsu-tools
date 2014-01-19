@@ -21,7 +21,7 @@ class LibraryEntriesController < ApplicationController
   end
 
   def update_library_entry_using_params(library_entry, params)
-    [:status, :rating, :private, :episodes_watched, :rewatching, :rewatch_count].each do |x|
+    [:status, :rating, :private, :episodes_watched, :rewatching, :rewatch_count, :notes].each do |x|
       if params[:library_entry].has_key? x
         library_entry[x] = params[:library_entry][x]
       end

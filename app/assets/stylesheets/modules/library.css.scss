@@ -84,13 +84,21 @@
     top: 0px;
     margin-left: -16px;
   }
+  .personal-notes-div {
+  }
   .personal-notes {
-    width: 100%;
+    width: 90%;
     border-radius: 3px;
     height: 26px;
     text-indent: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
+    transition: height 0.2s ease 0s;
+    resize: none;
+  }
+  .personal-notes-save {
+    width: 8%;
+    float: right;
   }
   .awesome-rating-widget {
     text-align: center;

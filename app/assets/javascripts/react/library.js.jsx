@@ -14,6 +14,11 @@
       controller.send('setPrivate', libraryEntry, newPrivate);
     },
 
+    changeNotes: function(event) {
+      this.props.content.set('notes', event.target.value);
+      this.forceUpdate();
+    },
+
     toggleRewatching: function(event) {
       if (this.props.view.get('user.viewingSelf')) {
         var controller = this.props.view.get('controller');
@@ -35,11 +40,11 @@
       this.props.content.set('rewatchCount', rewatchCount);
 
       if (!focused) {
-        Ember.run.debounce(this, this.saveRewatchCount, 500);
+        Ember.run.debounce(this, this.saveLibraryEntry, 500);
       }
     },
 
-    saveRewatchCount: function (event) {
+    saveLibraryEntry: function (event) {
       if (event && event.target.nodeName == "FORM") {
         event.preventDefault();
         event.target.querySelector("input").blur();
@@ -48,13 +53,15 @@
         if (this.props.content.get('isDirty')) {
           var controller = this.props.view.get('controller');
           var libraryEntry = this.props.content;
-          controller.send('saveRewatchCount', libraryEntry);
+          controller.send('saveLibraryEntry', libraryEntry);
         }
       }
     },
 
     componentDidUpdate: function(prevProps, newProps, rootNode) {
       if (this.props.dropdownOpen) {
+        $(rootNode).find("textarea.personal-notes").autosize({append: "\n"});
+
         if (this.props.view.get('user.viewingSelf')) {
           var controller = this.props.view.get('controller');
           var libraryEntry = this.props.content;
@@ -74,12 +81,19 @@
       var content = this.props.content;
       var validStatuses = ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"];
 
+      var saveButtonClass = React.addons.classSet({
+        "btn": true,
+        "personal-notes-save": true,
+        "btn-primary": this.props.content.get('isDirty')
+      });
+
       if (this.props.dropdownOpen) {
         return (
           <div className="library-dropdown">
             <div className="drop-arrow" />
             <div className="col-md-12">
-              <textarea className="personal-notes" placeholder={"Personal notes about " + content.get('anime.canonicalTitle')} />
+              <textarea className="personal-notes" placeholder={"Personal notes about " + content.get('anime.canonicalTitle')} value={this.props.content.get('notes')} onChange={this.changeNotes} />
+              <button className={saveButtonClass} onClick={this.saveLibraryEntry}>Save</button>
             </div>
             <div className="col-md-2 no-padding-right hidden-xs hidden-sm">
               <img className="drop-thumb" src={content.get('anime.posterImage')} />
@@ -137,9 +151,9 @@
                 </div>
 
                 <div className="text-center">
-                  <form className="form-inline" onSubmit={this.saveRewatchCount}>
+                  <form className="form-inline" onSubmit={this.saveLibraryEntry}>
                     Rewatched
-                    <input type="number" className="form-control" style={ {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"} } value={this.props.content.get('rewatchCount')} onChange={this.changeRewatchCount} onBlur={this.saveRewatchCount} />
+                    <input type="number" className="form-control" style={ {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"} } value={this.props.content.get('rewatchCount')} onChange={this.changeRewatchCount} onBlur={this.saveLibraryEntry} />
                     times.
                   </form>
                 </div>
