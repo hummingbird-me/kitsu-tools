@@ -14,6 +14,10 @@ Hummingbird.Anime = DS.Model.extend
 
   libraryEntry: DS.belongsTo('libraryEntry')
 
+  lowercaseCanonicalTitle: (->
+    @get('canonicalTitle').toLowerCase()
+  ).property('canonicalTitle')
+
   displayEpisodeCount: (->
     e = @get('episodeCount')
     if e

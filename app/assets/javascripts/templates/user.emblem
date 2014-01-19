@@ -44,7 +44,7 @@
         li.nav-link.dropdown
           a.dropdown-toggle.navbar-avatar data-toggle="dropdown" Library
           ul.dropdown-menu
-            li: a href=libraryURL Anime
+            li: link-to 'user.library' | Anime
             li: a Manga (Coming soon!)
         li.nav-link
           link-to 'user.reviews' | Reviews
