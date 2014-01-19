@@ -108,6 +108,10 @@
   user-select: none;
   cursor: pointer;
 
+  &.odd {
+    background: #fcfcfc;
+  }
+
   .list-item-left {
     @include make-xs-column(12);
     @include make-sm-column(7);

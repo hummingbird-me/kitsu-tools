@@ -161,6 +161,12 @@
         "not-rated": Ember.isNone(content.get('rating'))
       });
 
+      var listGroupClass = React.addons.classSet({
+        "list-group-item": true,
+        "odd": this.props.index % 2 == 1,
+        "even": this.props.index % 2 == 0
+      });
+
       var rating;
       if (content.get('rating')) {
         if (this.props.view.get('user.ratingType') == "advanced") {
@@ -186,7 +192,7 @@
 
       return (
         <div className="library-entry">
-          <div className="list-group-item" onClick={this.toggleDropdown}>
+          <div className={listGroupClass} onClick={this.toggleDropdown}>
             <div className="list-item-left">
               {content.get('anime.canonicalTitle')}
               { content.get('anime.airingStatus') == "Finished Airing"
@@ -230,8 +236,8 @@
             </span>
           </div>
           {
-            this.props.content.get('content').map(function(entry) {
-              return (<LibraryEntry key={entry.get('anime.id')} view={this.props.view} content={entry} />);
+            this.props.content.get('content').map(function(entry, i) {
+              return (<LibraryEntry key={entry.get('anime.id')} view={this.props.view} content={entry} index={i} />);
             }.bind(this))
           }
         </div>
