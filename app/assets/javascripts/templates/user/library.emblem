@@ -39,3 +39,6 @@
                 .list-item-type Type
 
         div#library-sections
+
+    .hidden-sm.col-md-2
+      img src="http://placekitten.com/160/600"
