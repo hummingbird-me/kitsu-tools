@@ -79,6 +79,14 @@
       }
     },
 
+    goToAnime: function(event) {
+      if (Ember.ViewUtils.isSimpleClick(event)) {
+        event.preventDefault();
+        var router = this.props.view.get('controller.target.router');
+        router.transitionTo('anime.index', this.props.content.get('anime.id'));
+      }
+    },
+
     render: function() {
       var content = this.props.content;
       var validStatuses = ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"];
@@ -101,7 +109,7 @@
               <img className="drop-thumb" src={content.get('anime.posterImage')} />
             </div>
             <div className="col-md-6 col-sm-8 hidden-xs">
-              <h4><a href={"/anime/" + content.get('anime.id')}>{content.get('anime.canonicalTitle')}</a></h4>
+              <h4><a href={"/anime/" + content.get('anime.id')} onClick={this.goToAnime}>{content.get('anime.canonicalTitle')}</a></h4>
               <p className="drop-description">{content.get('anime.synopsis')}</p>
             </div>
             <div className="col-md-4 col-sm-4">
