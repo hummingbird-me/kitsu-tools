@@ -77,7 +77,7 @@ class UsersController < ApplicationController
       return redirect_to user_library_path(@user), status: :moved_permanently
     end
 
-    if params[:new] == "true"
+    if params[:new] == "true" or params[:user_id] == "vikhyat"
       preload! @user
       render_ember
     else
