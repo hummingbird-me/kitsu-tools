@@ -107,6 +107,7 @@
   @include clearfix();
   user-select: none;
   cursor: pointer;
+  border-radius: 0 !important;
 
   &.odd {
     background: #fcfcfc;
