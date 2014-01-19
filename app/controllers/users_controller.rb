@@ -73,9 +73,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
 
     # Redirect to canonical URL if this isn't it.
-    if request.path != user_library_path(@user)
-      return redirect_to user_library_path(@user), status: :moved_permanently
-    end
+    #if request.path != user_library_path(@user)
+    #  return redirect_to user_library_path(@user), status: :moved_permanently
+    #end
 
     if params[:new] == "true" or params[:user_id] == "vikhyat"
       preload! @user
