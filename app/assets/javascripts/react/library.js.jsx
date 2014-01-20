@@ -3,88 +3,104 @@
 (function() {
   var LibraryDropdown = React.createClass({
     changeStatus: function(newStatus) {
-      var controller = this.props.view.get('controller');
-      var libraryEntry = this.props.content;
-      controller.send('setStatus', libraryEntry, newStatus);
+      Ember.run(function() {
+        var controller = this.props.view.get('controller');
+        var libraryEntry = this.props.content;
+        controller.send('setStatus', libraryEntry, newStatus);
+      }.bind(this));
     },
 
     changePrivate: function(newPrivate) {
-      var controller = this.props.view.get('controller');
-      var libraryEntry = this.props.content;
-      controller.send('setPrivate', libraryEntry, newPrivate);
+      Ember.run(function() {
+        var controller = this.props.view.get('controller');
+        var libraryEntry = this.props.content;
+        controller.send('setPrivate', libraryEntry, newPrivate);
+      }.bind(this));
     },
 
     changeNotes: function(event) {
-      if (this.props.view.get('user.viewingSelf')) {
-        this.props.content.set('notes', event.target.value);
-        this.forceUpdate();
-      }
+      Ember.run(function() {
+        if (this.props.view.get('user.viewingSelf')) {
+          this.props.content.set('notes', event.target.value);
+          this.forceUpdate();
+        }
+      }.bind(this));
     },
 
     toggleRewatching: function(event) {
-      if (this.props.view.get('user.viewingSelf')) {
-        var controller = this.props.view.get('controller');
-        var libraryEntry = this.props.content;
-        controller.send('toggleRewatching', libraryEntry);
-      }
-    },
-
-    changeRewatchCount: function(event) {
-      if (!this.props.view.get('user.viewingSelf')) { return; }
-
-      var focused = $(event.target).is(":focus");
-      var originalRewatchCount = this.props.content.get('rewatchCount');
-      var rewatchCount = parseInt(event.target.value);
-
-      // Let's not go below zero.
-      if (rewatchCount < 0) { rewatchCount = originalRewatchCount; }
-
-      this.props.content.set('rewatchCount', rewatchCount);
-
-      if (!focused) {
-        Ember.run.debounce(this, this.saveLibraryEntry, 500);
-      }
-    },
-
-    saveLibraryEntry: function (event) {
-      if (event && event.target.nodeName == "FORM") {
-        event.preventDefault();
-        event.target.querySelector("input").blur();
-      }
-      else {
-        if (this.props.view.get('user.viewingSelf') && this.props.content.get('isDirty')) {
-          var controller = this.props.view.get('controller');
-          var libraryEntry = this.props.content;
-          controller.send('saveLibraryEntry', libraryEntry);
-        }
-      }
-    },
-
-    componentDidUpdate: function(prevProps, newProps, rootNode) {
-      if (this.props.dropdownOpen) {
-        $(rootNode).find("textarea.personal-notes").autosize({append: "\n"});
-
+      Ember.run(function() {
         if (this.props.view.get('user.viewingSelf')) {
           var controller = this.props.view.get('controller');
           var libraryEntry = this.props.content;
-          $(rootNode).find(".awesome-rating-widget").AwesomeRating({
-            editable: true,
-            type: this.props.view.get('user.ratingType'),
-            rating: this.props.content.get('rating'),
-            update: function (newRating) {
-              controller.send('setRating', libraryEntry, newRating);
-            }
-          });
+          controller.send('toggleRewatching', libraryEntry);
         }
-      }
+      }.bind(this));
+    },
+
+    changeRewatchCount: function(event) {
+      Ember.run(function() {
+        if (!this.props.view.get('user.viewingSelf')) { return; }
+
+        var focused = $(event.target).is(":focus");
+        var originalRewatchCount = this.props.content.get('rewatchCount');
+        var rewatchCount = parseInt(event.target.value);
+
+        // Let's not go below zero.
+        if (rewatchCount < 0) { rewatchCount = originalRewatchCount; }
+
+        this.props.content.set('rewatchCount', rewatchCount);
+
+        if (!focused) {
+          Ember.run.debounce(this, this.saveLibraryEntry, 500);
+        }
+      }.bind(this));
+    },
+
+    saveLibraryEntry: function (event) {
+      Ember.run(function() {
+        if (event && event.target.nodeName == "FORM") {
+          event.preventDefault();
+          event.target.querySelector("input").blur();
+        }
+        else {
+          if (this.props.view.get('user.viewingSelf') && this.props.content.get('isDirty')) {
+            var controller = this.props.view.get('controller');
+            var libraryEntry = this.props.content;
+            controller.send('saveLibraryEntry', libraryEntry);
+          }
+        }
+      }.bind(this));
+    },
+
+    componentDidUpdate: function(prevProps, newProps, rootNode) {
+      Ember.run(function() {
+        if (this.props.dropdownOpen) {
+          $(rootNode).find("textarea.personal-notes").autosize({append: "\n"});
+
+          if (this.props.view.get('user.viewingSelf')) {
+            var controller = this.props.view.get('controller');
+            var libraryEntry = this.props.content;
+            $(rootNode).find(".awesome-rating-widget").AwesomeRating({
+              editable: true,
+              type: this.props.view.get('user.ratingType'),
+              rating: this.props.content.get('rating'),
+              update: function (newRating) {
+                controller.send('setRating', libraryEntry, newRating);
+              }
+            });
+          }
+        }
+      }.bind(this));
     },
 
     goToAnime: function(event) {
-      if (Ember.ViewUtils.isSimpleClick(event)) {
-        event.preventDefault();
-        var router = this.props.view.get('controller.target.router');
-        router.transitionTo('anime.index', this.props.content.get('anime.id'));
-      }
+      Ember.run(function() {
+        if (Ember.ViewUtils.isSimpleClick(event)) {
+          event.preventDefault();
+          var router = this.props.view.get('controller.target.router');
+          router.transitionTo('anime.index', this.props.content.get('anime.id'));
+        }
+      }.bind(this));
     },
 
     render: function() {
@@ -186,46 +202,52 @@
     },
 
     toggleDropdown: function(event) {
-      if (event.target.nodeName != "INPUT") {
-        this.setState({dropdownOpen: !this.state.dropdownOpen});
-      }
+      Ember.run(function() {
+        if (event.target.nodeName != "INPUT") {
+          this.setState({dropdownOpen: !this.state.dropdownOpen});
+        }
+      }.bind(this));
     },
 
     changeProgress: function(event) {
-      if (!this.props.view.get('user.viewingSelf')) { return; }
+      Ember.run(function() {
+        if (!this.props.view.get('user.viewingSelf')) { return; }
 
-      var focused = $(event.target).is(":focus");
-      var originalEpisodesWatched = this.props.content.get('episodesWatched');
-      var episodesWatched = parseInt(event.target.value);
+        var focused = $(event.target).is(":focus");
+        var originalEpisodesWatched = this.props.content.get('episodesWatched');
+        var episodesWatched = parseInt(event.target.value);
 
-      // Don't allow exceeding the show's episode count.
-      var animeEpisodeCount = this.props.content.get('anime.episodeCount');
-      if (animeEpisodeCount && episodesWatched > animeEpisodeCount) {
-        episodesWatched = originalEpisodesWatched;
-      }
+        // Don't allow exceeding the show's episode count.
+        var animeEpisodeCount = this.props.content.get('anime.episodeCount');
+        if (animeEpisodeCount && episodesWatched > animeEpisodeCount) {
+          episodesWatched = originalEpisodesWatched;
+        }
 
-      // Let's not go below zero.
-      if (episodesWatched < 0) { episodesWatched = originalEpisodesWatched; }
+        // Let's not go below zero.
+        if (episodesWatched < 0) { episodesWatched = originalEpisodesWatched; }
 
-      this.props.content.set('episodesWatched', episodesWatched);
+        this.props.content.set('episodesWatched', episodesWatched);
 
-      if (!focused) {
-        Ember.run.debounce(this, this.saveEpisodesWatched, 500);
-      }
+        if (!focused) {
+          Ember.run.debounce(this, this.saveEpisodesWatched, 500);
+        }
+      }.bind(this));
     },
 
     saveEpisodesWatched: function(event) {
-      if (event && event.target.nodeName == "FORM") {
-        event.preventDefault();
-        event.target.querySelector("input").blur();
-      }
-      else {
-        if (this.props.content.get('isDirty')) {
-          var controller = this.props.view.get('controller');
-          var libraryEntry = this.props.content;
-          controller.send('saveEpisodesWatched', libraryEntry);
+      Ember.run(function() {
+        if (event && event.target.nodeName == "FORM") {
+          event.preventDefault();
+          event.target.querySelector("input").blur();
         }
-      }
+        else {
+          if (this.props.content.get('isDirty')) {
+            var controller = this.props.view.get('controller');
+            var libraryEntry = this.props.content;
+            controller.send('saveEpisodesWatched', libraryEntry);
+          }
+        }
+      }.bind(this));
     },
 
     render: function() {

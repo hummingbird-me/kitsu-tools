@@ -62,6 +62,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
 
   notifyReactComponent: (->
     Ember.run.once this, ->
+      console.log "notifying component"
       if @get('reactComponent')
         @get('reactComponent').forceUpdate()
   ).observes('filter', 'showSection', 'sortProperty', 'sortAsc',
