@@ -8,5 +8,6 @@ Ember.Application.initializer
     if window.currentUserName
       user = store.find 'user', window.currentUserName
       controller.set 'content', user
+
     container.typeInjection 'controller', 'currentUser', 'controller:currentUser'
     container.typeInjection 'route', 'currentUser', 'controller:currentUser'

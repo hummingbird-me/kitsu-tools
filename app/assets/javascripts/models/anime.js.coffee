@@ -1,5 +1,7 @@
 Hummingbird.Anime = DS.Model.extend
   canonicalTitle: DS.attr('string')
+  englishTitle: DS.attr('string')
+  romajiTitle: DS.attr('string')
   synopsis: DS.attr('string')
   posterImage: DS.attr('string')
   genres: DS.attr('array')
@@ -13,6 +15,19 @@ Hummingbird.Anime = DS.Model.extend
   finishedAiring: DS.attr('date')
 
   libraryEntry: DS.belongsTo('libraryEntry')
+
+  displayTitle: (->
+    # HACK! No way right now to inject the current user into models.
+    currentUser = Hummingbird.__container__.lookup('controller:currentUser')
+    title = @get('canonicalTitle')
+    if currentUser.get('isSignedIn')
+      pref = currentUser.get('titleLanguagePreference')
+      if pref == "english" and @get('englishTitle') and @get('englishTitle').length > 0
+        title = @get('englishTitle')
+      else if pref == "romanized" and @get('romajiTitle') and @get('romajiTitle').length > 0
+        title = @get('romajiTitle')
+    title
+  ).property('canonicalTitle', 'englishTitle', 'romajiTitle')
 
   lowercaseCanonicalTitle: (->
     @get('canonicalTitle').toLowerCase()

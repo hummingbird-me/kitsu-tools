@@ -118,14 +118,14 @@
           <div className="library-dropdown">
             <div className="drop-arrow" />
             <div className="col-md-12">
-              <textarea className="personal-notes" placeholder={"Personal notes about " + content.get('anime.canonicalTitle')} value={this.props.content.get('notes')} onChange={this.changeNotes} />
+              <textarea className="personal-notes" placeholder={"Personal notes about " + content.get('anime.displayTitle')} value={this.props.content.get('notes')} onChange={this.changeNotes} />
               <button className={saveButtonClass} onClick={this.saveLibraryEntry}>Save</button>
             </div>
             <div className="col-md-2 no-padding-right hidden-xs hidden-sm">
               <img className="drop-thumb" src={content.get('anime.posterImage')} />
             </div>
             <div className="col-md-6 col-sm-8 hidden-xs">
-              <h4><a href={"/anime/" + content.get('anime.id')} onClick={this.goToAnime}>{content.get('anime.canonicalTitle')}</a></h4>
+              <h4><a href={"/anime/" + content.get('anime.id')} onClick={this.goToAnime}>{content.get('anime.displayTitle')}</a></h4>
               <p className="drop-description">{content.get('anime.synopsis')}</p>
             </div>
             <div className="col-md-4 col-sm-4">
@@ -291,7 +291,7 @@
         <div className="library-entry">
           <div className={listGroupClass} onClick={this.toggleDropdown}>
             <div className="list-item-left">
-              {content.get('anime.canonicalTitle')}
+              {content.get('anime.displayTitle')}
               { content.get('private')
                 ? <span className="anime-label"><i className="fa fa-eye-slash" /></span>
                 : ''
