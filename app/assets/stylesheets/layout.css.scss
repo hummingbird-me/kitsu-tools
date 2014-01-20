@@ -334,15 +334,22 @@ User Profile
     }
   }
   .user-avatar {
-    @media (max-width: 768px) {
+    @media (max-width: 990px) {
       position: absolute;
+      bottom: 4px;
+    }
+    @media (max-width: 768px) {
       top: -115px;
       left: 0px;
+      bottom: auto;
     }
   }
   .large-avatar {
     position: relative;
     float: left;
+    @media (max-width: 768px) {
+      max-width: 130px;
+    }
     img {
       border-radius: 3px;
     }
