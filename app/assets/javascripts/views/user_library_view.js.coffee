@@ -12,3 +12,4 @@ Hummingbird.UserLibraryView = Ember.View.extend
 
   willClearRender: ->
     React.unmountComponentAtNode @get('element').querySelector('#library-sections')
+    @set 'reactComponent', null

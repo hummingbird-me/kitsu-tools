@@ -401,10 +401,10 @@ a {
   background: url(../images/mikasa.jpg); }
 
 #aot2-quote .quote-overlay {
-  background: url(../images/aot-4.png); }
+  background: url(../images/aot-4.jpg); }
 
 #aot3-quote .quote-overlay {
-  background: url(../images/potato.png); }
+  background: url(../images/potato.jpg); }
 
 #aot4-quote .quote-overlay {
   background: url(../images/aot-5.jpg); }
@@ -469,7 +469,7 @@ a {
   opacity: 0.30; }
 
 #final-slide .quote-overlay {
-  background: url(../images/new-year.png);
+  background: url(../images/new-year.jpg);
   opacity: .05; }
 
 #highest-rated-tv .slide-overlay {

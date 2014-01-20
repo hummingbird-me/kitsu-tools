@@ -14,7 +14,7 @@ class AnimeSerializer < ActiveModel::Serializer
   end
 
   def poster_image
-    object.poster_image.url(:large)
+    object.poster_image_thumb
   end
 
   def episode_count

@@ -50,7 +50,7 @@ class Action
   def self.from_library_entry(l)
     if l.persisted?
 
-      if l.episodes_watched_changed? and l.episodes_watched - l.episodes_watched_was == 1
+      if l.episodes_watched_changed? and l.episodes_watched and l.episodes_watched - l.episodes_watched_was == 1
         Substory.from_action({
           user_id: l.user.id,
           action_type: "watched_episode",
