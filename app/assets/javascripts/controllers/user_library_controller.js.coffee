@@ -108,6 +108,13 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
 
       @saveLibraryEntry(libraryEntry)
 
+    removeFromLibrary: (libraryEntry) ->
+      anime = libraryEntry.get('anime')
+      Messenger().expectPromise (-> libraryEntry.destroyRecord()),
+        progressMessage: "Removing " + anime.get('canonicalTitle') + " from your library..."
+        successMessage: "Removed " + anime.get('canonicalTitle') + " from your library!"
+
+
     setPrivate: (libraryEntry, newPrivate) ->
       libraryEntry.set 'private', newPrivate
       @saveLibraryEntry(libraryEntry)

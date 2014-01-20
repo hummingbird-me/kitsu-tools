@@ -10,6 +10,14 @@
       }.bind(this));
     },
 
+    removeFromLibrary: function() {
+      Ember.run(function() {
+        var controller = this.props.view.get('controller');
+        var libraryEntry = this.props.content;
+        controller.send('removeFromLibrary', libraryEntry);
+      }.bind(this));
+    },
+
     changePrivate: function(newPrivate) {
       Ember.run(function() {
         var controller = this.props.view.get('controller');
@@ -142,6 +150,7 @@
                           return (<li key={s}><a onClick={this.changeStatus.bind(this, s)}>{s}</a></li>);
                         }.bind(this))
                       }
+                      <li><a onClick={this.removeFromLibrary}>Remove from Library</a></li>
                     </ul>
                   </div>
                   <hr />
@@ -345,7 +354,9 @@
             </span>
           </div>
           {
-            this.props.content.get('content').map(function(entry, i) {
+            this.props.content.get('content').filter(function(entry) {
+              return !entry.get('isDeleted');
+            }).map(function(entry, i) {
               return (<LibraryEntry key={entry.get('anime.id')} view={this.props.view} content={entry} index={i} />);
             }.bind(this))
           }
