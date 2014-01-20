@@ -4,6 +4,7 @@ Hummingbird.ModalsCropCoverView = Ember.View.extend
 
     canvas = @get('element').querySelector('#cropCanvas')
     context = canvas.getContext('2d')
+    context.clearRect(0, 0, canvas.width, canvas.height);
 
     imageObj = new Image()
     imageObj.onload = ->
