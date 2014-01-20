@@ -125,10 +125,14 @@
         return (
           <div className="library-dropdown">
             <div className="drop-arrow" />
-            <div className="col-md-12">
-              <textarea className="personal-notes" placeholder={"Personal notes about " + content.get('anime.displayTitle')} value={this.props.content.get('notes')} onChange={this.changeNotes} />
-              <button className={saveButtonClass} onClick={this.saveLibraryEntry}>Save</button>
-            </div>
+            { this.props.view.get('user.viewingSelf')
+              ?
+                <div className="col-md-12">
+                  <textarea className="personal-notes" placeholder={"Personal notes about " + content.get('anime.displayTitle')} value={this.props.content.get('notes')} onChange={this.changeNotes} />
+                  <button className={saveButtonClass} onClick={this.saveLibraryEntry}>Save</button>
+                </div>
+              : ''
+            }
             <div className="col-md-2 no-padding-right hidden-xs hidden-sm">
               <img className="drop-thumb" src={content.get('anime.posterImage')} />
             </div>
@@ -257,6 +261,23 @@
           }
         }
       }.bind(this));
+    },
+
+    componentDidMount: function(rootNode) {
+      Ember.run(function() {
+        var notes = this.props.content.get('notes');
+        if (notes && notes.length > 0) {
+          $(rootNode).find(".fa-book").tooltip('destroy');
+          $(rootNode).find(".fa-book").tooltip({
+            title: notes,
+            placement: "right"
+          });
+        }
+      }.bind(this));
+    },
+
+    componentDidUpdate: function(prevProps, nextProps, rootNode) {
+      this.componentDidMount(rootNode);
     },
 
     render: function() {
