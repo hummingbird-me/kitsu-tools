@@ -266,7 +266,7 @@
     componentDidMount: function(rootNode) {
       Ember.run(function() {
         var notes = this.props.content.get('notes');
-        if (notes && notes.length > 0) {
+        if (notes) {
           $(rootNode).find(".fa-book").tooltip('destroy');
           $(rootNode).find(".fa-book").tooltip({
             title: notes,
@@ -330,7 +330,7 @@
                 ? <span className="anime-label"><i className="fa fa-repeat" /></span>
                 : ''
               }
-              { content.get('notes') && content.get('notes').length > 0
+              { content.get('notes')
                 ? <span className="anime-label"><i className="fa fa-book" /></span>
                 : ''
               }
