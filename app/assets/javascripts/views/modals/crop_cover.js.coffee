@@ -5,7 +5,7 @@ Hummingbird.ModalsCropCoverView = Ember.View.extend
     element = @get('element')
     canvas = element.querySelector('#cropCanvas')
     context = canvas.getContext('2d')
-    context.fillStyle = 'white';
+    context.fillStyle = 'black';
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     imageObj = new Image()
@@ -43,7 +43,7 @@ Hummingbird.ModalsCropCoverView = Ember.View.extend
       @$("#preview").Jcrop
         aspectRatio: 1400 / 330
         boxWidth: 500
-        bgColor: 'white'
+        bgColor: 'black'
         setSelect: initialSelect
         onSelect: ((c) ->
           @cropImage(c)
