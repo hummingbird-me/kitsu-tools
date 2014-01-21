@@ -89,7 +89,7 @@ Hummingbird.Anime = DS.Model.extend
     else
       result = "Will air"
 
-    if (@get('episodeCount') and @get('episodeCount') == 1) or (formattedStartedAiring == formattedFinishedAiring and formattedStaredAiring != "?")
+    if (@get('episodeCount') and @get('episodeCount') == 1) or (formattedStartedAiring == formattedFinishedAiring and formattedStartedAiring != "?")
       result += " on " + formattedStartedAiring
     else
       result += " from " + formattedStartedAiring
