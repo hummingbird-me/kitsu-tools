@@ -12,7 +12,7 @@ class AnimeSerializer < ActiveModel::Serializer
   end
 
   def english_title
-    object.alternate_title
+    object.alt_title
   end
 
   def romaji_title
