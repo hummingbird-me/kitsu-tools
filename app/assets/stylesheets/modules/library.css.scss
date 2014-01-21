@@ -232,14 +232,18 @@
   }
 
   button.active, button:hover {
-    border: 1px solid #ccc;
-    border-right: none;
+    border: 1px solid #adadad;
+    margin-right: -1px;
   }
 
   button:last-of-type {
     border-right: 1px solid #ccc;
     border-top-right-radius: 4px !important;
     border-bottom-right-radius: 4px !important;
+    &.active, &:hover {
+      margin-right: 0;
+      border-right: 1px solid #adadad;
+    }
   }
 }
 
