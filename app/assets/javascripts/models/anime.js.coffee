@@ -29,8 +29,8 @@ Hummingbird.Anime = DS.Model.extend
     title
   ).property('canonicalTitle', 'englishTitle', 'romajiTitle')
 
-  lowercaseCanonicalTitle: (->
-    @get('canonicalTitle').toLowerCase()
+  lowercaseDisplayTitle: (->
+    @get('displayTitle').toLowerCase()
   ).property('canonicalTitle')
 
   displayEpisodeCount: (->
