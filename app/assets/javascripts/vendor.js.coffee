@@ -6,3 +6,4 @@
 #= require messenger/messenger-theme-flat
 #= require jcrop
 #= require jquery.autosize
+#= require rgbaster

@@ -129,3 +129,28 @@ a.navbar-brand {
     display: inline-block;
   }
 }
+
+/** Customizations to improve how cropping works -- **/
+
+/* Drop shadow on the actual image inside the crop. */
+.jcrop .jcrop-holder {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Transparent background for the header and footer. */
+.modal-content {
+  transition: background 1s ease-in;
+  border-color: rgba(255, 255, 255, 0.7);
+
+  .modal-footer, .modal-header {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  .modal-header {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .modal-footer {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+  }
+}
