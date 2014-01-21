@@ -226,6 +226,21 @@
 
 .library-sections {
   float: right;
+
+  button {
+    border-right: none;
+  }
+
+  button.active, button:hover {
+    border: 1px solid #ccc;
+    border-right: none;
+  }
+
+  button:last-of-type {
+    border-right: 1px solid #ccc;
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+  }
 }
 
 .search-wrapper {
