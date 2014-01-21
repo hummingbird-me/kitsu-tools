@@ -42,7 +42,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       agg[name] = []
 
     @get('content').forEach (item) ->
-      if (filter.length == 0) or (item.get('anime.canonicalTitle').toLowerCase().indexOf(filter) >= 0)
+      if (filter.length == 0) or (item.get('anime.searchString').indexOf(filter) >= 0)
         agg[item.get('status')].push item
 
     @get('sections').forEach (section) ->

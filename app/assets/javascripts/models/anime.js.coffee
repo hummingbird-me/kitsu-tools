@@ -33,6 +33,15 @@ Hummingbird.Anime = DS.Model.extend
     @get('displayTitle').toLowerCase()
   ).property('canonicalTitle')
 
+  searchString: (->
+    str = @get('canonicalTitle')
+    if @get('englishTitle') and @get('englishTitle').length > 0
+      str += @get('englishTitle')
+    if @get('romajiTitle') and @get('romajiTitle').length > 0
+      str += @get('romajiTitle')
+    str.toLowerCase()
+  ).property('canonicalTitle', 'englishTitle', 'romajiTitle')
+
   displayEpisodeCount: (->
     e = @get('episodeCount')
     if e
