@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :preload_user
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # Send an object along with the initial HTML response so that Ember will not need
   # to make additional requests to fetch data.
@@ -33,8 +34,6 @@ class ApplicationController < ActionController::Base
     render json: {error: message}, status: status
   end
 
-  ### PRE-EMBER CODE BELOW -- NEEDS REWRITING.
-
   def hide_cover_image
     @hide_cover_image = true
   end
@@ -53,5 +52,10 @@ class ApplicationController < ActionController::Base
 
   def not_found!
     raise ActionController::RoutingError.new('Not Found')
+  end
+
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) << :name
   end
 end

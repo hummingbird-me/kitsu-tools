@@ -138,6 +138,7 @@ class User < ActiveRecord::Base
 
   validate :valid_username
   def valid_username
+    return unless name
     if INVALID_USERNAMES.include? name.downcase
       errors.add(:name, "is reserved")
     end
