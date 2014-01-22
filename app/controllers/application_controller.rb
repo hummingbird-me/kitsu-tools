@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       preload! current_user
       Rack::MiniProfiler.authorize_request if current_user.id == 1
+      $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
     end
   end
 
@@ -33,14 +34,6 @@ class ApplicationController < ActionController::Base
   end
 
   ### PRE-EMBER CODE BELOW -- NEEDS REWRITING.
-
-  before_filter :user_last_seen
-
-  def user_last_seen
-    if user_signed_in?
-      $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
-    end
-  end
 
   def hide_cover_image
     @hide_cover_image = true
