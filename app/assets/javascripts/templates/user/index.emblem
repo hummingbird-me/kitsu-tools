@@ -1,0 +1,17 @@
+.container.profile-content
+  .row
+    / Left "About" column
+    .col-sm-5.col-md-5.about-info.hidden-xs
+      / About User Panel
+      .panel.panel-default.user-about-panel
+        .panel-heading
+          h3.panel-title About #{user.username}
+        .panel-body #{user.about}
+
+      / Random panel
+      .panel.panel-default
+        .panel-heading
+          h3.panel-title Panel title
+        .panel-body Panel content
+
+
