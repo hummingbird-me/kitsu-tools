@@ -122,14 +122,6 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :quotes
 
-  has_reputation :karma, :source => [
-    {reputation: :review_votes},
-    {reputation: :quote_votes}
-  ]
-
-  has_reputation :review_votes, source: {reputation: :votes, of: :reviews}
-  has_reputation :quote_votes,  source: {reputation: :votes, of: :quotes}
-
   # Validations
   validates :name,
     :presence   => true,

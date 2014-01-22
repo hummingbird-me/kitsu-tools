@@ -32,7 +32,7 @@ class FullAnimeSerializer < AnimeSerializer
   end
 
   def featured_quotes
-    Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", object.id], :order => "votes DESC", :limit => 4})
+    object.quotes.includes(:user).order('positive_votes DESC').limit(4)
   end
 
   def trending_reviews
