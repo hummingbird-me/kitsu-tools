@@ -31,7 +31,7 @@ gem 'beanstalkd_view'
 
 gem 'indexable', '~> 0.1'
 gem 'rinku'
-gem 'rack-mini-profiler'
+#gem 'rack-mini-profiler'
 gem 'rack-cors', require: 'rack/cors'
 gem 'sanitize'
 gem 'oj'
