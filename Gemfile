@@ -41,7 +41,6 @@ gem 'fast_blank' # Faster `String#blank?`, which is used a lot but ActiveRecord.
 
 # Was assets group.
 gem 'sass-rails',   '~> 4.0'
-gem 'compass-rails'
 gem 'zurb-foundation', '~> 4.3.0'
 gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.0.3'
