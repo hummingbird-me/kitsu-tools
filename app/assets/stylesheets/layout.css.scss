@@ -451,32 +451,43 @@ User Profile
 
 
 .profile-navigation {
-  background: #49505a;
+  background: #2f343b;
   margin-bottom: 20px;
+  border-bottom: 1px solid #646b75;
   .inline-list {
-    text-align: center;
+    text-align: left;
+    padding-left: 10px;
     margin-bottom: 0;
     .nav-link {
       float: none;
-      border-left: 1px solid darken(#49505a, 5);
-      padding: 15px 0 15px 0;
-      &:last-child {
-        border-right: 1px solid darken(#49505a, 5);
-      }
+      padding: 10px 0 10px 0;
       > a {
         padding: 20px;
         font-family: $bodyFontFamily;
-        font-size: 20px;
+        font-size: 18px;
         font-weight: 300;
         color: #adacac;
-        &:hover {
-          color: $darkGrey;
-          text-decoration: none;
-        }
-        &.active {
-          color: darken(#49505a, 15);
-        }
+        position: relative;
       }
+    }
+    .nav-link a::before {
+      position: absolute;
+      top: 8px;
+      left: 20px;
+      overflow: hidden;
+      padding: 10px 0;
+      max-width: 0;
+      border-bottom: 1px solid #fff;
+      color: #fff;
+      content: attr(data-hover);
+      -webkit-transition: max-width 0.5s;
+      -moz-transition: max-width 0.5s;
+      transition: max-width 0.5s;
+    }
+
+    .nav-link a:hover::before,
+    .nav-link a:focus::before {
+      max-width: 100%;
     }
 
     // Hide less important links on mobile
