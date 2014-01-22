@@ -45,6 +45,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+    # Redirect to canonical URL if this isn't it.
+    if request.path != user_path(@user)
+      return redirect_to user_path(@user), status: :moved_permanently
+    end
+
     respond_to do |format|
       format.html do
 
