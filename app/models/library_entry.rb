@@ -25,6 +25,10 @@ class LibraryEntry < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :anime
+
+  belongs_to :select_anime, class_name: "Anime", foreign_key: :anime_id,
+    select: [:id, :slug, :title, :alt_title, :synopsis, :poster_image_file_name, :poster_image_updated_at, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing_date, :finished_airing_date, :started_airing_date_known, :english_canonical]
+
   has_many :stories, dependent: :destroy, foreign_key: :watchlist_id
 
   validates :user, :anime, :status, presence: true

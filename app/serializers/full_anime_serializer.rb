@@ -63,4 +63,12 @@ class FullAnimeSerializer < AnimeSerializer
   def genres
     object.genres.map {|x| x.name.parameterize }.sort
   end
+
+  def bayesian_rating
+    object.bayesian_average
+  end
+
+  def library_entry
+    scope && LibraryEntry.where(user_id: scope.id, anime_id: object.id).first
+  end
 end
