@@ -43,16 +43,23 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
-    if user.name == "vikhyat"
-      preload! user
-      render_ember
-    else
-      respond_to do |format|
-        format.html { redirect_to user_feed_path(user) }
-        format.json { render json: user }
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html do
+
+        if @user.name == "vikhyat"
+          preload! @user
+          render_ember
+        else
+          @active_tab = :feed
+          render "feed", layout: "layouts/profile"
+        end
+
       end
+      format.json { render json: user }
     end
+
   end
 
   def followers
@@ -116,16 +123,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to :back }
       format.json { render json: true }
-    end
-  end
-
-  def feed
-    @user = User.find(params[:user_id])
-    if @user.name == "vikhyat"
-      redirect_to user_path(@user)
-    else
-      @active_tab = :feed
-      render "feed", layout: "layouts/profile"
     end
   end
 

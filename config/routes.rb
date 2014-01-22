@@ -53,10 +53,11 @@ Hummingbird::Application.routes.draw do
   match '/feed' => 'home#feed'
 
   match '/users/:id/watchlist' => redirect {|params, request| "/users/#{params[:id]}/library" }
+  match '/users/:id/feed' => redirect {|params, request| "/users/#{params[:id]}" }
+
   resources :users do
     get :library
     get :reviews
-    get :feed
     get :followers
     get :following
     get :favorite_anime
