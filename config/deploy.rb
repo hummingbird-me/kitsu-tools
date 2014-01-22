@@ -57,6 +57,11 @@ namespace :deploy do
   task :refresh_sitemaps do
     run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake sitemap:refresh"
   end
+
+  task :cleanup, :except => {:no_release => true} do
+    count = fetch(:keep_releases, 5).to_i
+    run "ls -1dt #{releases_path}/* | tail -n +#{count + 1} | #{try_sudo} xargs rm -rf"
+  end
 end
 
 after "deploy:update_code", "deploy:copy_old_sitemap"
