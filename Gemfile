@@ -123,9 +123,6 @@ gem 'pg_search', '~> 0.7'
 # Admin panel
 gem "rails_admin"
 
-# For voting on stuff.
-gem "activerecord-reputation-system", require: 'reputation_system'
-
 # Use Unicorn as the app server
 gem 'unicorn'
 
