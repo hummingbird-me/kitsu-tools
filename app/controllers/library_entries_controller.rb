@@ -11,9 +11,9 @@ class LibraryEntriesController < ApplicationController
 
       # Filter adult entries.
       if user_signed_in? and !current_user.sfw_filter?
-        library_entries = library_entries.includes(:select_anime)
+        library_entries = library_entries.includes(:anime)
       else
-        library_entries = library_entries.includes(:select_anime).where("anime.age_rating <> 'R18+' OR anime.age_rating IS NULL")
+        library_entries = library_entries.includes(:anime).where("anime.age_rating <> 'R18+' OR anime.age_rating IS NULL")
       end
 
       render json: library_entries

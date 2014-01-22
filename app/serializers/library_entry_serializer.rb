@@ -2,12 +2,7 @@ class LibraryEntrySerializer < ActiveModel::Serializer
   embed :ids
 
   attributes :id, :status, :is_favorite, :rating, :episodes_watched, :private, :rewatching, :rewatch_count, :last_watched, :notes
-
   has_one :anime, embed_key: :slug, include: true
-
-  def anime
-    object.select_anime
-  end
 
   def include_private?
     object.private?

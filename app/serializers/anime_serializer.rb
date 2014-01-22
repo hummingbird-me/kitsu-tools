@@ -1,8 +1,6 @@
 class AnimeSerializer < ActiveModel::Serializer
   embed :ids
 
-  # NOTE: Update the corresponding select in the library entry model when this is 
-  # changed.
   attributes :id, :canonical_title, :english_title, :romaji_title, :synopsis, :poster_image, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :started_airing_date_known, :finished_airing
 
   def id
@@ -39,5 +37,13 @@ class AnimeSerializer < ActiveModel::Serializer
 
   def finished_airing
     object.finished_airing_date
+  end
+
+  def bayesian_rating
+    object.bayesian_average
+  end
+
+  def library_entry
+    scope && LibraryEntry.where(user_id: scope.id, anime_id: object.id).first
   end
 end
