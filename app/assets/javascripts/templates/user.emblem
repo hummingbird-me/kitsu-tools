@@ -40,12 +40,9 @@
     .row
       ul.inline-list.clearfix
         li.nav-link
-          a.active data-hover="Feed" href=feedURL Feed
-        li.nav-link.dropdown
-          a.dropdown-toggle.navbar-avatar data-toggle="dropdown" data-hover="Library" Library
-          ul.dropdown-menu
-            li: link-to 'user.library' | Anime
-            li: a Manga (Coming soon!)
+          a data-hover="Feed" href=feedURL Feed
+        li.nav-link
+          link-to 'user.library' data-hover="Library" | Library
         li.nav-link
           link-to 'user.reviews' data-hover="Reviews" | Reviews
         li.nav-link
