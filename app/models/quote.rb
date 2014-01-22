@@ -12,10 +12,6 @@
 #
 
 class Quote < ActiveRecord::Base
-  has_reputation :votes, source: :user, source_of: [
-    {reputation: :quote_votes, of: :user}
-  ]
-
   attr_accessible :anime_id, :character_name, :content
 
   belongs_to :anime
