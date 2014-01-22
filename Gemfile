@@ -31,7 +31,6 @@ gem 'beanstalkd_view'
 
 gem 'indexable', '~> 0.1'
 gem 'rinku'
-gem 'rack-mini-profiler'
 gem 'rack-cors', require: 'rack/cors'
 gem 'sanitize'
 gem 'oj'
@@ -65,6 +64,8 @@ group :development do
   gem 'rvm-capistrano', require: false
 end
 
+gem 'rack-mini-profiler'
+gem 'flamegraph'
 group :production do
   gem 'newrelic_rpm'
   gem 'newrelic-grape'
