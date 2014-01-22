@@ -12,14 +12,14 @@
           %h4 Trending Today
         %hr
         %ul
-          /- @trending_anime.each_with_index do |trending, i|
-          /  %li.large-12.columns.topic-row
-          /    .small-1.columns.no-padding
-          /      %p.count.center= i+1
-          /    .small-11.columns.no-padding-right.forum-title
-          /      .large-12.columns.no-padding
-          /        = anime_link trending[:anime], class: 'trending-title truncate'
-          /        %i #{trending[:currently_watching]} Viewers
+          - @trending_anime.each_with_index do |trending, i|
+            %li.large-12.columns.topic-row
+              .small-1.columns.no-padding
+                %p.count.center= i+1
+              .small-11.columns.no-padding-right.forum-title
+                .large-12.columns.no-padding
+                  = anime_link trending[:anime], class: 'trending-title truncate'
+                  %i #{trending[:currently_watching]} Viewers
 
       .large-12.columns.no-padding-left.no-padding-right.side-advert.hide-for-small.rounded-panel
         :javascript
