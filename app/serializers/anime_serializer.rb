@@ -1,7 +1,7 @@
 class AnimeSerializer < ActiveModel::Serializer
   embed :ids
 
-  attributes :id, :canonical_title, :english_title, :romaji_title, :synopsis, :poster_image, :genres, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :started_airing_date_known, :finished_airing
+  attributes :id, :canonical_title, :english_title, :romaji_title, :synopsis, :poster_image, :show_type, :age_rating, :age_rating_guide, :episode_count, :episode_length, :started_airing, :started_airing_date_known, :finished_airing
 
   def id
     object.slug
@@ -29,10 +29,6 @@ class AnimeSerializer < ActiveModel::Serializer
 
   def episode_length
     (object.episode_length and object.episode_length > 0) ? object.episode_length : nil
-  end
-
-  def genres
-    object.genres.map {|x| x.name.parameterize }.sort
   end
 
   def started_airing

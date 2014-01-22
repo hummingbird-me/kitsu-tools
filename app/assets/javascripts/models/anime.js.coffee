@@ -4,7 +4,6 @@ Hummingbird.Anime = DS.Model.extend
   romajiTitle: DS.attr('string')
   synopsis: DS.attr('string')
   posterImage: DS.attr('string')
-  genres: DS.attr('array')
   showType: DS.attr('string')
   ageRating: DS.attr('string')
   ageRatingGuide: DS.attr('string')
