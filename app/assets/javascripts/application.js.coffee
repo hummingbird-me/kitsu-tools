@@ -29,3 +29,6 @@ $("#ember-root").html("")
   rootElement: "#ember-root"
   utils: {}
 
+Ember.LinkView.reopen
+  attributeBindings: ['href', 'title', 'rel', 'data-hover']
+
