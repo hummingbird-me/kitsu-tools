@@ -282,8 +282,8 @@ class API_v1 < Grape::API
       authenticate_user!
 
       anime = Anime.find(params["anime_slug"])
-      watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
-      watchlist.destroy
+      library_entry = LibraryEntry.where(user_id: current_user.id, anime_id: anime.id).first
+      library_entry.destroy
       true
     end
 
@@ -297,83 +297,57 @@ class API_v1 < Grape::API
       authenticate_user!
 
       anime = Anime.find(params["anime_slug"])
-      watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
 
-      # Update status.
+      library_entry = LibraryEntry.where(user_id: current_user.id, anime_id: anime.id).first || LibraryEntry.new({user_id: current_user.id, anime_id: anime.id})
+
       if params[:status]
-        status = Watchlist.status_parameter_to_status(params[:status])
-        if watchlist.status != status
-          # Create an action if the status was changed.
-          Substory.from_action({
-            user_id: current_user.id,
-            action_type: "watchlist_status_update",
-            anime_id: anime.slug,
-            old_status: watchlist.status,
-            new_status: status,
-            time: Time.now
-          })
-        end
-        watchlist.status = status if Watchlist.valid_statuses.include? status
-        if status == "Completed"
+        t = {
+          "currently-watching" => "Currently Watching",
+          "plan-to-watch"      => "Plan to Watch",
+          "completed"          => "Completed",
+          "on-hold"            => "On Hold",
+          "dropped"            => "Dropped"
+        }
+        library_entry.status = t[params[:status]]
+
+        if library_entry.status == "Completed" and anime.episode_count
           # Mark all episodes as viewed when the show is "Completed".
-          watchlist.update_episode_count (watchlist.anime.episode_count || 0)
+          library_entry.episodes_watched = anime.episode_count
         end
       end
 
       # Update privacy.
       if params[:privacy]
         if params[:privacy] == "private"
-          watchlist.private = true
+          library_entry.private = true
         elsif params[:privacy] == "public"
-          watchlist.private = false
+          library_entry.private = false
         end
       end
 
       # Update rewatched_times.
       if params[:rewatched_times]
-        watchlist.update_rewatched_times params[:rewatched_times]
+        library_entry.rewatch_count = params[:rewatched_times]
       end
 
       # Update notes.
       if params[:notes]
-        watchlist.notes = params[:notes]
+        library_entry.notes = params[:notes]
       end
 
       # Update episode count.
       if params[:episodes_watched]
-        watchlist.update_episode_count params[:episodes_watched]
+        library_entry.episodes_watched = params[:episodes_watched]
       end
 
       # Update "rewatching" status.
       if params[:rewatching]
-        watchlist.rewatching = (params[:rewatching] == "true")
+        library_entry.rewatching = (params[:rewatching] == "true")
       end
 
       if params[:increment_episodes] and params[:increment_episodes] == "true"
-        watchlist.status = "Currently Watching"
-        watchlist.update_episode_count((watchlist.episodes_watched||0)+1)
-        if current_user.neon_alley_integration? and Anime.neon_alley_ids.include? anime.id
-          service = "neon_alley"
-        else
-          service = nil
-        end
-        Substory.from_action({
-          user_id: current_user.id,
-          action_type: "watched_episode",
-          anime_id: anime.slug,
-          episode_number: watchlist.episodes_watched,
-          service: service
-        })
-        if watchlist.status == "Completed"
-          Substory.from_action({
-            user_id: current_user.id,
-            action_type: "watchlist_status_update",
-            anime_id: anime.slug,
-            old_status: "Currently Watching",
-            new_status: "Completed",
-            time: Time.now + 5.seconds
-          })
-        end
+        library_entry.status = "Currently Watching"
+        library_entry.episodes_watched += 1
       end
 
       title_language_preference = params[:title_language_preference]
@@ -383,13 +357,8 @@ class API_v1 < Grape::API
       title_language_preference ||= "canonical"
       rating_type = current_user.star_rating? ? "advanced" : "simple"
 
-      result = watchlist.save
-
       # Update rating.
       if params[:rating]
-        library_entry = LibraryEntry.where(user_id: current_user.id,
-                                           anime_id: anime.id).first
-
         if library_entry.rating == params[:rating].to_f
           library_entry.rating = nil
         else
@@ -398,8 +367,10 @@ class API_v1 < Grape::API
         result = result and library_entry.save
       end
 
-      if result
-        present_watchlist(watchlist.reload, rating_type, title_language_preference)
+      Action.from_library_entry(library_entry)
+
+      if library_entry.save
+        present_watchlist(library_entry.reload, rating_type, title_language_preference)
       else
         return false
       end
