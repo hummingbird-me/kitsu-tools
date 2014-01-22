@@ -5,6 +5,15 @@
 
   .panel {
     border: none;
+    @media (max-width: 500px) {
+      margin-bottom: -60px;
+    }
+  }
+}
+
+.library-table {
+  @media (max-width: 500px) {
+    padding: 0;
   }
 }
 
@@ -163,6 +172,7 @@
     padding-right: 15px;
     @media (max-width: 768px) {
       padding-left: 0;
+      padding-right: 0;
       text-align: left;
       padding-top: 10px;
     }

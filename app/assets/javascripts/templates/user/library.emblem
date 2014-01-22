@@ -1,6 +1,6 @@
 .container.library-container
   .row
-    .col-sm-12.col-md-10
+    .library-table.col-sm-12.col-md-10
       .panel.panel-default
         .container
           .row.library-header
@@ -40,5 +40,5 @@
 
         div#library-sections
 
-    .hidden-sm.col-md-2
+    .hidden-xs.col-md-2
       ad-unit adId="1293411" adClass="257f81e798bd68dd81e60f42838f361f"
