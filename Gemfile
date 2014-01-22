@@ -39,18 +39,16 @@ gem 'oj'
 gem 'fast_blank' # Faster `String#blank?`, which is used a lot but ActiveRecord.
 
 
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 4.0'
-  gem 'compass-rails'
-  gem 'zurb-foundation', '~> 4.3.0'
-  gem 'therubyracer', :platforms => :ruby
-  gem 'uglifier', '>= 1.0.3'
-  gem 'handlebars_assets', github: 'vikhyat/handlebars_assets'
-  gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
-                                github: 'anjlab/bootstrap-rails'
-  gem 'autoprefixer-rails'
-end
+# Was assets group.
+gem 'sass-rails',   '~> 4.0'
+gem 'compass-rails'
+gem 'zurb-foundation', '~> 4.3.0'
+gem 'therubyracer', :platforms => :ruby
+gem 'uglifier', '>= 1.0.3'
+gem 'handlebars_assets', github: 'vikhyat/handlebars_assets'
+gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
+                              github: 'anjlab/bootstrap-rails'
+gem 'autoprefixer-rails'
 
 # Gems to help with development.
 group :development do
