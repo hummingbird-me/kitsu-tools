@@ -1,4 +1,5 @@
 Hummingbird.FullAnime = Hummingbird.Anime.extend
+  genres: DS.attr('array')
   alternateTitle: DS.attr('string')
   coverImage: DS.attr('string')
   coverImageTopOffset: DS.attr('number')
