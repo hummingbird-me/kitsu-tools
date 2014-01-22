@@ -40,7 +40,7 @@
     .row
       ul.inline-list.clearfix
         li.nav-link
-          a data-hover="Feed" href=feedURL Feed
+          a.active data-hover="Feed" href=feedURL Feed
         li.nav-link.dropdown
           a.dropdown-toggle.navbar-avatar data-toggle="dropdown" data-hover="Library" Library
           ul.dropdown-menu

@@ -468,6 +468,9 @@ User Profile
         font-weight: 300;
         color: #adacac;
         position: relative;
+        &.active {
+          color: #fff;
+        }
       }
     }
     .nav-link a::before {
