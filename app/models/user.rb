@@ -74,10 +74,10 @@ class User < ActiveRecord::Base
 
   # Following stuff.
   has_many :follower_relations, dependent: :destroy, foreign_key: :followed_id, class_name: 'Follow'
-  has_many :followers, through: :follower_relations, source: :follower, class_name: 'User', order: 'follows.created_at DESC'
+  has_many :followers, -> { order('follows.created_at DESC') }, through: :follower_relations, source: :follower, class_name: 'User'
 
   has_many :following_relations, dependent: :destroy, foreign_key: :follower_id, class_name: 'Follow'
-  has_many :following, through: :following_relations, source: :followed, class_name: 'User', order: 'follows.created_at DESC'
+  has_many :following, -> { order('follows.created_at DESC') }, through: :following_relations, source: :followed, class_name: 'User'
 
   has_many :stories
   has_many :substories
@@ -87,13 +87,13 @@ class User < ActiveRecord::Base
   has_many :not_interested
   has_many :not_interested_anime, through: :not_interested, source: :media, source_type: "Anime"
 
-  has_and_belongs_to_many :favorite_genres, class_name: "Genre", uniq: true, join_table: "favorite_genres_users"
+  has_and_belongs_to_many :favorite_genres, -> { uniq }, class_name: "Genre", join_table: "favorite_genres_users"
   
   # Include devise modules. Others available are:
   # :lockable, :timeoutable, :trackable, :rememberable.
   devise :database_authenticatable, :registerable, :recoverable,
          :validatable, :omniauthable, :confirmable, :async,
-         :token_authenticatable, allow_unconfirmed_access_for: 3.days
+         allow_unconfirmed_access_for: 3.days
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :email, :password, :password_confirmation, :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned, :subscribed_to_newsletter
@@ -326,6 +326,16 @@ class User < ActiveRecord::Base
     if self.facebook_id and self.facebook_id.strip == ""
       self.facebook_id = nil
     end
+
+    # Make sure the user has an authentication token.
+    if self.authentication_token.blank?
+      token = nil
+      loop do
+        token = Devise.friendly_token
+        break unless User.where(authentication_token: token).first
+      end
+      self.authentication_token = token
+    end
   end
 
   def sync_to_forum!
@@ -338,10 +348,6 @@ class User < ActiveRecord::Base
     changes[:new_avatar] = self.avatar_template
 
     $beanstalk.tubes["update-forum-account"].put(changes.to_json)
-  end
-
-  after_create do
-    self.reset_authentication_token!
   end
 
   after_save do

@@ -37,9 +37,9 @@ class Genre < ActiveRecord::Base
 
   def self.default_filterable(user=nil)
     if user.nil? or user.sfw_filter
-      Genre.order(:name).where('slug NOT IN (?)', Genre.nsfw_slugs).all
+      Genre.order(:name).where('slug NOT IN (?)', Genre.nsfw_slugs)
     else
-      Genre.order(:name).all
+      Genre.order(:name)
     end
   end
 end

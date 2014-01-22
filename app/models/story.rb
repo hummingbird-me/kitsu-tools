@@ -23,8 +23,6 @@ class Story < ActiveRecord::Base
 
   has_many :notifications, as: :source, dependent: :destroy
 
-  serialize :data, ActiveRecord::Coders::Hstore
-
   validates :user, :story_type, presence: true
 
   def self.for_user_and_anime(user, anime, story_type="media_story")

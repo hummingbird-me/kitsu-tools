@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
+gem 'rails', '4.0.2'
+
+# Pending switching to strong params.
+gem 'protected_attributes'
 
 gem 'grape'
 gem 'grape-entity'
@@ -9,8 +12,7 @@ gem 'active_model_serializers', '~> 0.8'
 gem 'riemann-client'
 gem 'fastclick-rails'
 
-gem 'pg'
-gem 'activerecord-postgres-hstore'
+gem 'pg', '0.15.1'
 
 gem 'redis'
 gem 'redis-rails'
@@ -18,7 +20,7 @@ gem 'redis-rails'
 gem 'ember-rails'
 gem 'ember-source', '1.3.1.1'
 gem 'ember-data-source', '1.0.0.beta.5'
-gem 'coffee-rails', '~> 3.2.1'
+gem 'coffee-rails', '~> 4.0'
 gem 'emblem-rails', '~> 0.2.1'
 gem 'emblem-source', '~> 0.3.8'
 
@@ -39,7 +41,7 @@ gem 'fast_blank' # Faster `String#blank?`, which is used a lot but ActiveRecord.
 
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails',   '~> 4.0'
   gem 'compass-rails'
   gem 'zurb-foundation', '~> 4.3.0'
   gem 'therubyracer', :platforms => :ruby
@@ -93,7 +95,7 @@ gem 'delayed_paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 
 # Better URLs.
-gem 'friendly_id', '~> 4.0.9'
+gem 'friendly_id', '~> 5.0'
 
 # Authentication.
 gem 'devise'
