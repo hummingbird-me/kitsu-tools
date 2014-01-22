@@ -41,7 +41,7 @@
                     %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
 
             %li.divider.show-for-small
-            - if user_signed_in?
+            - if false and user_signed_in?
               %li.notification-block.has-dropdown
                 %a.notification-button{href: "/notifications", class: ("active" if Notification.unseen_count(current_user) > 0)}
                   %i.fa.fa-bell-o
