@@ -44,9 +44,14 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    respond_to do |format|
-      format.html { redirect_to user_feed_path(user) }
-      format.json { render json: user }
+    if user.name == "vikhyat"
+      preload! user
+      render_ember
+    else
+      respond_to do |format|
+        format.html { redirect_to user_feed_path(user) }
+        format.json { render json: user }
+      end
     end
   end
 
@@ -115,9 +120,13 @@ class UsersController < ApplicationController
   end
 
   def feed
-    @active_tab = :feed
     @user = User.find(params[:user_id])
-    render "feed", layout: "layouts/profile"
+    if @user.name == "vikhyat"
+      redirect_to user_path(@user)
+    else
+      @active_tab = :feed
+      render "feed", layout: "layouts/profile"
+    end
   end
 
   def reviews
