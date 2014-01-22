@@ -105,10 +105,7 @@ Hummingbird::Application.routes.draw do
   #match '/watchlist/update' => 'watchlists#update_watchlist'
 
   # Admin Panel
-  constraint = lambda do |request|
-    request.env["warden"].authenticate? and request.env['warden'].user.admin?
-  end
-  constraints constraint do
+  authenticated :user, lambda {|u| u.admin? } do
     get '/kotodama' => 'admin#index', as: :admin_panel
     get '/kotodama/login_as' => 'admin#login_as_user'
     post '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
