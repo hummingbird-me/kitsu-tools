@@ -31,7 +31,7 @@
         .container.hidden-xs
           .row
             li.list-group-item.library-filter.clearfix
-              .list-item-left.col-xs-12.col-sm-6.col-md-6 click="setSort 'anime.lowercaseCanonicalTitle'"
+              .list-item-left.col-xs-12.col-sm-6.col-md-6 click="setSort 'anime.lowercaseDisplayTitle'"
                 | Title
               .list-item-right.col-xs-12.col-sm-6.col-md-6
                 .list-item-progress click="setSort 'episodesWatched'" Progress

@@ -8,6 +8,10 @@ class LibraryEntrySerializer < ActiveModel::Serializer
     object.private?
   end
 
+  def include_notes?
+    object.notes and object.notes.strip.length > 0
+  end
+
   def is_favorite
     if object.respond_to? :favorite_id
       !object.favorite_id.nil?

@@ -8,6 +8,8 @@ Hummingbird.User = DS.Model.extend
 
   isFollowed: DS.attr('boolean')
 
+  titleLanguagePreference: DS.attr('string')
+
   avatarUrl: (->
     @get("avatarTemplate").replace('{size}', 'thumb')
   ).property('avatarTemplate')

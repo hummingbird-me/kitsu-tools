@@ -1357,7 +1357,7 @@ CREATE TABLE users (
     sfw_filter boolean DEFAULT true,
     star_rating boolean DEFAULT false,
     mal_username character varying(255),
-    life_spent_on_anime integer,
+    life_spent_on_anime integer DEFAULT 0 NOT NULL,
     about text,
     confirmation_token character varying(255),
     confirmed_at timestamp without time zone,
@@ -2151,6 +2151,13 @@ CREATE UNIQUE INDEX index_favorites_on_user_id_and_item_id_and_item_type ON favo
 --
 
 CREATE INDEX index_follows_on_followed_id ON follows USING btree (follower_id);
+
+
+--
+-- Name: index_follows_on_followed_id_and_follower_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_follows_on_followed_id_and_follower_id ON follows USING btree (followed_id, follower_id);
 
 
 --
@@ -3008,3 +3015,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140118211222');
 INSERT INTO schema_migrations (version) VALUES ('20140118225716');
 
 INSERT INTO schema_migrations (version) VALUES ('20140119035828');
+
+INSERT INTO schema_migrations (version) VALUES ('20140120075042');
+
+INSERT INTO schema_migrations (version) VALUES ('20140122022049');

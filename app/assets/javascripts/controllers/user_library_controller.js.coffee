@@ -42,7 +42,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
       agg[name] = []
 
     @get('content').forEach (item) ->
-      if (filter.length == 0) or (item.get('anime.canonicalTitle').toLowerCase().indexOf(filter) >= 0)
+      if (filter.length == 0) or (item.get('anime.searchString').indexOf(filter) >= 0)
         agg[item.get('status')].push item
 
     @get('sections').forEach (section) ->
@@ -107,6 +107,13 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
         Messenger().post "Marked all episodes as watched."
 
       @saveLibraryEntry(libraryEntry)
+
+    removeFromLibrary: (libraryEntry) ->
+      anime = libraryEntry.get('anime')
+      Messenger().expectPromise (-> libraryEntry.destroyRecord()),
+        progressMessage: "Removing " + anime.get('canonicalTitle') + " from your library..."
+        successMessage: "Removed " + anime.get('canonicalTitle') + " from your library!"
+
 
     setPrivate: (libraryEntry, newPrivate) ->
       libraryEntry.set 'private', newPrivate

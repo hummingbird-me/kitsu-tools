@@ -10,6 +10,14 @@
       }.bind(this));
     },
 
+    removeFromLibrary: function() {
+      Ember.run(function() {
+        var controller = this.props.view.get('controller');
+        var libraryEntry = this.props.content;
+        controller.send('removeFromLibrary', libraryEntry);
+      }.bind(this));
+    },
+
     changePrivate: function(newPrivate) {
       Ember.run(function() {
         var controller = this.props.view.get('controller');
@@ -117,15 +125,19 @@
         return (
           <div className="library-dropdown">
             <div className="drop-arrow" />
-            <div className="col-md-12">
-              <textarea className="personal-notes" placeholder={"Personal notes about " + content.get('anime.canonicalTitle')} value={this.props.content.get('notes')} onChange={this.changeNotes} />
-              <button className={saveButtonClass} onClick={this.saveLibraryEntry}>Save</button>
-            </div>
+            { this.props.view.get('user.viewingSelf')
+              ?
+                <div className="col-md-12">
+                  <textarea className="personal-notes" placeholder={"Personal notes about " + content.get('anime.displayTitle')} value={this.props.content.get('notes')} onChange={this.changeNotes} />
+                  <button className={saveButtonClass} onClick={this.saveLibraryEntry}>Save</button>
+                </div>
+              : ''
+            }
             <div className="col-md-2 no-padding-right hidden-xs hidden-sm">
               <img className="drop-thumb" src={content.get('anime.posterImage')} />
             </div>
             <div className="col-md-6 col-sm-8 hidden-xs">
-              <h4><a href={"/anime/" + content.get('anime.id')} onClick={this.goToAnime}>{content.get('anime.canonicalTitle')}</a></h4>
+              <h4><a href={"/anime/" + content.get('anime.id')} onClick={this.goToAnime}>{content.get('anime.displayTitle')}</a></h4>
               <p className="drop-description">{content.get('anime.synopsis')}</p>
             </div>
             <div className="col-md-4 col-sm-4">
@@ -142,6 +154,7 @@
                           return (<li key={s}><a onClick={this.changeStatus.bind(this, s)}>{s}</a></li>);
                         }.bind(this))
                       }
+                      <li><a onClick={this.removeFromLibrary}>Remove from Library</a></li>
                     </ul>
                   </div>
                   <hr />
@@ -250,6 +263,23 @@
       }.bind(this));
     },
 
+    componentDidMount: function(rootNode) {
+      Ember.run(function() {
+        var notes = this.props.content.get('notes');
+        if (notes) {
+          $(rootNode).find(".fa-book").tooltip('destroy');
+          $(rootNode).find(".fa-book").tooltip({
+            title: notes,
+            placement: "right"
+          });
+        }
+      }.bind(this));
+    },
+
+    componentDidUpdate: function(prevProps, nextProps, rootNode) {
+      this.componentDidMount(rootNode);
+    },
+
     render: function() {
       var content = this.props.content;
 
@@ -291,7 +321,7 @@
         <div className="library-entry">
           <div className={listGroupClass} onClick={this.toggleDropdown}>
             <div className="list-item-left">
-              {content.get('anime.canonicalTitle')}
+              {content.get('anime.displayTitle')}
               { content.get('private')
                 ? <span className="anime-label"><i className="fa fa-eye-slash" /></span>
                 : ''
@@ -300,7 +330,7 @@
                 ? <span className="anime-label"><i className="fa fa-repeat" /></span>
                 : ''
               }
-              { content.get('notes') && content.get('notes').length > 0
+              { content.get('notes')
                 ? <span className="anime-label"><i className="fa fa-book" /></span>
                 : ''
               }
@@ -345,7 +375,9 @@
             </span>
           </div>
           {
-            this.props.content.get('content').map(function(entry, i) {
+            this.props.content.get('content').filter(function(entry) {
+              return !entry.get('isDeleted');
+            }).map(function(entry, i) {
               return (<LibraryEntry key={entry.get('anime.id')} view={this.props.view} content={entry} index={i} />);
             }.bind(this))
           }
