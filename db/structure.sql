@@ -2154,6 +2154,13 @@ CREATE INDEX index_follows_on_followed_id ON follows USING btree (follower_id);
 
 
 --
+-- Name: index_follows_on_followed_id_and_follower_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_follows_on_followed_id_and_follower_id ON follows USING btree (followed_id, follower_id);
+
+
+--
 -- Name: index_follows_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3010,3 +3017,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140118225716');
 INSERT INTO schema_migrations (version) VALUES ('20140119035828');
 
 INSERT INTO schema_migrations (version) VALUES ('20140120075042');
+
+INSERT INTO schema_migrations (version) VALUES ('20140122022049');
