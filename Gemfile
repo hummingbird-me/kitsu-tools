@@ -46,7 +46,6 @@ gem 'uglifier', '>= 1.0.3'
 gem 'handlebars_assets', github: 'vikhyat/handlebars_assets'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'autoprefixer-rails'
-gem 'csso-rails'
 
 # Gems to help with development.
 group :development do

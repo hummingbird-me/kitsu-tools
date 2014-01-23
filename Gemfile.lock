@@ -98,8 +98,6 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     connection_pool (1.2.0)
-    csso-rails (0.3.3)
-      execjs (>= 1)
     debug_inspector (0.0.2)
     delayed_paperclip (2.6.1)
       paperclip (>= 3.3.0)
@@ -502,7 +500,6 @@ DEPENDENCIES
   cancan
   capistrano
   coffee-rails (~> 4.0)
-  csso-rails
   delayed_paperclip
   devise
   devise-async
