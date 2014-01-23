@@ -107,6 +107,6 @@ class LibraryEntry < ActiveRecord::Base
     )
 
     # Update user's life spent on anime.
-    self.user.update_life_spent_on_anime( (self.episodes_watched - self.episodes_watched_was) * (self.anime.episode_length || 0) )
+    self.user.update_life_spent_on_anime( - self.episodes_watched * (self.anime.episode_length || 0) )
   end
 end
