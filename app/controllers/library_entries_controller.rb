@@ -2,7 +2,7 @@ class LibraryEntriesController < ApplicationController
   def index
     if params[:user_id]
       user = User.find params[:user_id]
-      library_entries = LibraryEntry.where(user_id: user.id)
+      library_entries = LibraryEntry.where(user_id: user.id).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
 
       # Filter private entries.
       if current_user != user
@@ -24,6 +24,20 @@ class LibraryEntriesController < ApplicationController
     [:status, :rating, :private, :episodes_watched, :rewatching, :rewatch_count, :notes].each do |x|
       if params[:library_entry].has_key? x
         library_entry[x] = params[:library_entry][x]
+      end
+    end
+
+    ## TEMPORARY -- Change when favorite status is moved into the library
+    #               entry model.
+    if params[:library_entry].has_key? :is_favorite
+      favorite_status = params[:library_entry][:is_favorite]
+      anime = library_entry.anime
+      if favorite_status and !current_user.has_favorite?(anime)
+        # Add favorite.
+        Favorite.create(user: current_user, item: anime)
+      elsif current_user.has_favorite?(anime) and !favorite_status
+        # Remove favorite.
+        current_user.favorites.where(item_id: anime, item_type: "Anime").first.destroy
       end
     end
   end

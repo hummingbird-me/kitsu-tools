@@ -9,7 +9,6 @@ Hummingbird.FullAnime = Hummingbird.Anime.extend
   youtubeVideoId: DS.attr('string')
   communityRatings: DS.attr('array')
   bayesianRating: DS.attr('number')
-  isFavorite: DS.attr('boolean')
 
   producers: DS.hasMany('producer')
   franchises: DS.hasMany('franchise', async: true)

@@ -1,7 +1,7 @@
 class LibraryEntrySerializer < ActiveModel::Serializer
   embed :ids
 
-  attributes :id, :status, :rating, :episodes_watched, :private, :rewatching, :rewatch_count, :last_watched, :notes
+  attributes :id, :status, :is_favorite, :rating, :episodes_watched, :private, :rewatching, :rewatch_count, :last_watched, :notes
   has_one :anime, embed_key: :slug, include: true
 
   def include_private?
@@ -10,6 +10,14 @@ class LibraryEntrySerializer < ActiveModel::Serializer
 
   def include_notes?
     object.notes and object.notes.strip.length > 0
+  end
+
+  def is_favorite
+    if object.respond_to? :favorite_id
+      !object.favorite_id.nil?
+    else
+      scope && scope.has_favorite?(object.anime)
+    end
   end
 
   def last_watched

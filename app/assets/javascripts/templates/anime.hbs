@@ -30,8 +30,8 @@
         </li>
         {{#if libraryEntryExists}}
           <li>
-            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart isFavorite:active"}} {{action toggleFavorite}}>
-              <i {{bind-attr class=":fa isFavorite:fa-heart:fa-heart-o"}}></i>
+            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart libraryEntry.isFavorite:active"}} {{action toggleFavorite}}>
+              <i {{bind-attr class=":fa libraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i>
             </button>
           </li>
         {{/if}}
@@ -39,7 +39,7 @@
       <ul class="right-buttons">
         <li>
           {{#if currentUser.isSignedIn}}
-            <button {{bind-attr class=":btn :btn-default :top-button"}} {{action openModal 'edit-anime' this}}><i class='fa fa-pencil'></i></button>
+            <button {{bind-attr class=":btn :btn-default :top-button isDirty:active"}} {{action openModal 'edit-anime' this}}><i class='fa fa-pencil'></i></button>
           {{/if}}
         </li>
       </ul>
