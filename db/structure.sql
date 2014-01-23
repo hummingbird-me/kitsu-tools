@@ -87,7 +87,7 @@ CREATE TABLE anime (
     show_type character varying(255),
     started_airing_date date,
     finished_airing_date date,
-    rating_frequencies hstore,
+    rating_frequencies hstore DEFAULT ''::hstore NOT NULL,
     poster_image_file_name character varying(255),
     poster_image_content_type character varying(255),
     poster_image_file_size integer,
@@ -1005,7 +1005,8 @@ CREATE TABLE quotes (
     character_name character varying(255),
     user_id integer,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    positive_votes integer DEFAULT 0 NOT NULL
 );
 
 
@@ -1138,112 +1139,6 @@ CREATE SEQUENCE reviews_id_seq
 --
 
 ALTER SEQUENCE reviews_id_seq OWNED BY reviews.id;
-
-
---
--- Name: rs_evaluations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE rs_evaluations (
-    id integer NOT NULL,
-    reputation_name character varying(255),
-    source_id integer,
-    source_type character varying(255),
-    target_id integer,
-    target_type character varying(255),
-    value double precision DEFAULT 0.0,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: rs_evaluations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE rs_evaluations_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: rs_evaluations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE rs_evaluations_id_seq OWNED BY rs_evaluations.id;
-
-
---
--- Name: rs_reputation_messages; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE rs_reputation_messages (
-    id integer NOT NULL,
-    sender_id integer,
-    sender_type character varying(255),
-    receiver_id integer,
-    weight double precision DEFAULT 1.0,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: rs_reputation_messages_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE rs_reputation_messages_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: rs_reputation_messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE rs_reputation_messages_id_seq OWNED BY rs_reputation_messages.id;
-
-
---
--- Name: rs_reputations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE rs_reputations (
-    id integer NOT NULL,
-    reputation_name character varying(255),
-    value double precision DEFAULT 0.0,
-    aggregated_by character varying(255),
-    target_id integer,
-    target_type character varying(255),
-    active boolean DEFAULT true,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
-);
-
-
---
--- Name: rs_reputations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE rs_reputations_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: rs_reputations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE rs_reputations_id_seq OWNED BY rs_reputations.id;
 
 
 --
@@ -1686,27 +1581,6 @@ ALTER TABLE ONLY reviews ALTER COLUMN id SET DEFAULT nextval('reviews_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY rs_evaluations ALTER COLUMN id SET DEFAULT nextval('rs_evaluations_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY rs_reputation_messages ALTER COLUMN id SET DEFAULT nextval('rs_reputation_messages_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY rs_reputations ALTER COLUMN id SET DEFAULT nextval('rs_reputations_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY stories ALTER COLUMN id SET DEFAULT nextval('stories_id_seq'::regclass);
 
 
@@ -1968,30 +1842,6 @@ ALTER TABLE ONLY recommendations
 
 ALTER TABLE ONLY reviews
     ADD CONSTRAINT reviews_pkey PRIMARY KEY (id);
-
-
---
--- Name: rs_evaluations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY rs_evaluations
-    ADD CONSTRAINT rs_evaluations_pkey PRIMARY KEY (id);
-
-
---
--- Name: rs_reputation_messages_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY rs_reputation_messages
-    ADD CONSTRAINT rs_reputation_messages_pkey PRIMARY KEY (id);
-
-
---
--- Name: rs_reputations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY rs_reputations
-    ADD CONSTRAINT rs_reputations_pkey PRIMARY KEY (id);
 
 
 --
@@ -3019,3 +2869,11 @@ INSERT INTO schema_migrations (version) VALUES ('20140119035828');
 INSERT INTO schema_migrations (version) VALUES ('20140120075042');
 
 INSERT INTO schema_migrations (version) VALUES ('20140122022049');
+
+INSERT INTO schema_migrations (version) VALUES ('20140122110937');
+
+INSERT INTO schema_migrations (version) VALUES ('20140122132326');
+
+INSERT INTO schema_migrations (version) VALUES ('20140122133530');
+
+INSERT INTO schema_migrations (version) VALUES ('20140122140909');

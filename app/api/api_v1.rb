@@ -178,7 +178,6 @@ class API_v1 < Grape::API
       if user.nil? or (not user.valid_password? params[:password])
         error!("Invalid credentials", 401)
       end
-      user.reset_authentication_token! if user.authentication_token.nil?
       return user.authentication_token
     end
 

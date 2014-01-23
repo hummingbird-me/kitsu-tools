@@ -50,35 +50,17 @@ namespace :deploy do
     run "#{sudo} monit monitor sidekiq"
   end
 
-  namespace :assets do
-    desc "asset precompilation"
-    task :precompile do
-      changes = 0
-      begin
-        from = source.next_revision(current_revision)
-        changes = capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ app/assets/ | wc -l").to_i
-      rescue
-        changes = 1
-      end
-
-      if changes > 0
-        run <<-CMD.compact
-          cd -- #{latest_release} &&
-          #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile &&
-          cp -- #{shared_path.shellescape}/assets/manifest.yml #{current_release.shellescape}/assets_manifest.yml
-        CMD
-      else
-        logger.info "Skipping asset pre-compilation because there were no asset changes"
-      end
-    end
-  end
-
   task :copy_old_sitemap do
     run "if [ -e #{previous_release}/public/sitemap_index.xml.gz ]; then cp #{previous_release}/public/sitemap* #{current_release}/public/; fi"
   end
 
   task :refresh_sitemaps do
     run "cd #{latest_release} && RAILS_ENV=#{rails_env} bundle exec rake sitemap:refresh"
+  end
+
+  task :cleanup, :except => {:no_release => true} do
+    count = fetch(:keep_releases, 5).to_i
+    run "ls -1dt #{releases_path}/* | tail -n +#{count + 1} | #{try_sudo} xargs rm -rf"
   end
 end
 

@@ -1,15 +1,6 @@
 class UsersController < ApplicationController
   before_filter :hide_cover_image
 
-  def unsubscribe
-    unsub_type = params[:unsub_type]
-    hash = params[:hash]
-    user = User.all.select {|x| x.encrypted_email == hash }.first
-    user.update_column :subscribed_to_newsletter, false
-    flash[:notice] = "Successfully unsubscribed #{user.email}."
-    redirect_to '/'
-  end
-
   def index
     if params[:followed_by] or params[:followers_of]
 

@@ -7,7 +7,7 @@ class QuotesController < ApplicationController
     # This query is potentially slow, investigate later.
     @users = @anime.watchlists.where(status: "Currently Watching").order("last_watched DESC").joins(:user).where('users.avatar_file_name IS NOT NULL').includes(:user).limit(9).map {|x| x.user }
 
-    @quotes = Quote.includes(:user).find_with_reputation(:votes, :all, {:conditions => ["anime_id = ?", @anime.id], :order => "votes DESC"})
+    @quotes = @anime.quotes.includes(:user).order('positive_votes DESC')
   end
 
   def new
@@ -41,7 +41,10 @@ class QuotesController < ApplicationController
     authenticate_user!
     @quote = Quote.find(params[:id])
     if params[:type] == "up"
-      @quote.add_or_update_evaluation(:votes, 1, current_user)
+      vote = Vote.for(current_user, @quote)
+      if vote.nil?
+        Vote.create(user: current_user, target: @quote)
+      end
       Substory.from_action({
         user_id: current_user.id,
         action_type: "liked_quote",
@@ -49,7 +52,10 @@ class QuotesController < ApplicationController
         time: Time.now
       })
     else
-      @quote.delete_evaluation(:votes, current_user)
+      vote = Vote.for(current_user, @quote)
+      unless vote.nil?
+        vote.destroy
+      end
       Substory.from_action({
         user_id: current_user.id,
         action_type: "unliked_quote",
@@ -60,6 +66,7 @@ class QuotesController < ApplicationController
 
     respond_to do |format|
       if request.xhr?
+        @quote = @quote.reload
         format.js { render "replace_votes" }
       end
       format.html { redirect_to :back }
@@ -73,7 +80,10 @@ class QuotesController < ApplicationController
 
     # Update favorite status.
     if params[:quote]["is_favorite"]
-      quote.add_or_update_evaluation(:votes, 1, current_user)
+      vote = Vote.for(current_user, quote)
+      if vote.nil?
+        Vote.create(user: current_user, target: quote)
+      end
       Substory.from_action({
         user_id: current_user.id,
         action_type: "liked_quote",
@@ -81,7 +91,10 @@ class QuotesController < ApplicationController
         time: Time.now
       })
     else
-      quote.delete_evaluation(:votes, current_user)
+      vote = Vote.for(current_user, quote)
+      unless vote.nil?
+        vote.destroy
+      end
       Substory.from_action({
         user_id: current_user.id,
         action_type: "unliked_quote",
@@ -90,6 +103,6 @@ class QuotesController < ApplicationController
       })
     end
 
-    render json: quote
+    render json: quote.reload
   end
 end

@@ -18,11 +18,9 @@ class HomeController < ApplicationController
       if @recent_anime.length < 4
         @recent_anime += current_user.watchlists.where("status <> 'Currently Watching'").includes(:anime).order("updated_at DESC, created_at DESC").limit(4 - @recent_anime.length)
       end
-      @trending_anime = Rails.cache.fetch(:cached_trending_anime, expires_in: 60.minutes) do
-        TrendingAnime.get.map do |x|
-          anime = Anime.find(x)
-          {anime: anime, currently_watching: anime.user_count}
-        end
+      @trending_anime = TrendingAnime.get.map do |x|
+        anime = Anime.find(x)
+        {anime: anime, currently_watching: anime.user_count}
       end
     else
       redirect_to "/"

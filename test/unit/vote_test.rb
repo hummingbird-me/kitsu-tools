@@ -43,4 +43,17 @@ class VoteTest < ActiveSupport::TestCase
     Vote.create(user: users(:vikhyat), target: reviews(:one))
     assert_not_nil Vote.for(users(:vikhyat), reviews(:one))
   end
+
+  test "tracks only positive votes when the model only has positive_votes" do
+    quote = quotes(:one)
+    initial_votes = quote.positive_votes
+    vote = Vote.create(user: users(:vikhyat), target: quote)
+    assert_equal initial_votes+1, quote.reload.positive_votes
+    vote.positive = false
+    assert !vote.valid?
+    vote.positive = true
+    vote.save
+    vote.destroy
+    assert_equal initial_votes, quote.reload.positive_votes
+  end
 end

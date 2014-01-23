@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.16'
+gem 'rails', '4.0.2'
+
+# Pending switching to strong params.
+gem 'protected_attributes'
 
 gem 'grape'
 gem 'grape-entity'
@@ -9,8 +12,7 @@ gem 'active_model_serializers', '~> 0.8'
 gem 'riemann-client'
 gem 'fastclick-rails'
 
-gem 'pg'
-gem 'activerecord-postgres-hstore'
+gem 'pg', '0.15.1'
 
 gem 'redis'
 gem 'redis-rails'
@@ -18,7 +20,7 @@ gem 'redis-rails'
 gem 'ember-rails'
 gem 'ember-source', '1.3.1.1'
 gem 'ember-data-source', '1.0.0.beta.5'
-gem 'coffee-rails', '~> 3.2.1'
+gem 'coffee-rails', '~> 4.0'
 gem 'emblem-rails', '~> 0.2.1'
 gem 'emblem-source', '~> 0.3.8'
 
@@ -29,7 +31,6 @@ gem 'beanstalkd_view'
 
 gem 'indexable', '~> 0.1'
 gem 'rinku'
-gem 'rack-mini-profiler'
 gem 'rack-cors', require: 'rack/cors'
 gem 'sanitize'
 gem 'oj'
@@ -37,18 +38,15 @@ gem 'oj'
 gem 'fast_blank' # Faster `String#blank?`, which is used a lot but ActiveRecord.
 
 
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'compass-rails'
-  gem 'zurb-foundation', '~> 4.3.0'
-  gem 'therubyracer', :platforms => :ruby
-  gem 'uglifier', '>= 1.0.3'
-  gem 'handlebars_assets', github: 'vikhyat/handlebars_assets'
-  gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
-                                github: 'anjlab/bootstrap-rails'
-  gem 'autoprefixer-rails'
-end
+# Was assets group.
+gem 'sass-rails',   '~> 4.0'
+gem 'zurb-foundation', '~> 4.3.0'
+gem 'therubyracer', :platforms => :ruby
+gem 'uglifier', '>= 1.0.3'
+gem 'handlebars_assets', github: 'vikhyat/handlebars_assets'
+gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
+                              github: 'anjlab/bootstrap-rails'
+gem 'autoprefixer-rails'
 
 # Gems to help with development.
 group :development do
@@ -66,6 +64,8 @@ group :development do
   gem 'rvm-capistrano', require: false
 end
 
+gem 'rack-mini-profiler'
+gem 'flamegraph'
 group :production do
   gem 'newrelic_rpm'
   gem 'newrelic-grape'
@@ -93,7 +93,7 @@ gem 'delayed_paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 
 # Better URLs.
-gem 'friendly_id', '~> 4.0.9'
+gem 'friendly_id', '~> 5.0'
 
 # Authentication.
 gem 'devise'
@@ -120,9 +120,6 @@ gem 'pg_search', '~> 0.7'
 
 # Admin panel
 gem "rails_admin"
-
-# For voting on stuff.
-gem "activerecord-reputation-system", require: 'reputation_system'
 
 # Use Unicorn as the app server
 gem 'unicorn'

@@ -35,10 +35,6 @@ class Review < ActiveRecord::Base
   # Don't allow a user to review an anime more than once.
   validates :user_id, :uniqueness => {:scope => :anime_id}
 
-  has_reputation :votes, source: :user, source_of: [
-    {reputation: :review_votes, of: :user}
-  ]
-
   def update_wilson_score!
     positive = self.positive_votes
     total = self.total_votes

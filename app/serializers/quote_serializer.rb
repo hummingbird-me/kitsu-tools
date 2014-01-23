@@ -6,10 +6,10 @@ class QuoteSerializer < ActiveModel::Serializer
   end
 
   def favorite_count
-    object.votes rescue object.reputation_for(:votes)
+    object.positive_votes
   end
 
   def is_favorite
-    scope && object.has_evaluation?(:votes, scope)
+    scope && !Vote.for(scope, object).nil?
   end
 end

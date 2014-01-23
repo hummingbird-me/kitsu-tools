@@ -80,17 +80,15 @@ class LibraryEntry < ActiveRecord::Base
       if self.rating_changed?
         okey = (self.rating_was || "nil").to_s
         nkey = (self.rating || "nil").to_s
-        Anime.update_all(
-          "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{okey}', ((COALESCE((rating_frequencies -> '#{okey}'), '0'))::integer - 1)::text) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer + 1)::text)",
-          "id = #{self.anime.id}"
+        Anime.where(id: self.anime.id).update_all(
+          "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{okey}', ((COALESCE((rating_frequencies -> '#{okey}'), '0'))::integer - 1)::text) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer + 1)::text)"
         )
       end
     else
       # New record -- just need to do an increment.
       nkey = (self.rating || "nil").to_s
-      Anime.update_all(
-        "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer + 1)::text)",
-        "id = #{self.anime.id}"
+      Anime.where(id: self.anime.id).update_all(
+        "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer + 1)::text)"
       )
     end
   end
@@ -104,9 +102,8 @@ class LibraryEntry < ActiveRecord::Base
 
     # Update the shows rating frequencies. Handwritten SQL for atomicity.
     nkey = (self.rating || "nil").to_s
-    Anime.update_all(
-      "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer - 1)::text)",
-      "id = #{self.anime.id}"
+    Anime.where(id: self.anime.id).update_all(
+      "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer - 1)::text)"
     )
   end
 end

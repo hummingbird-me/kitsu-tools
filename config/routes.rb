@@ -7,7 +7,7 @@ Hummingbird::Application.routes.draw do
   resources :full_anime
   resources :quotes
 
-  match '/sign-in' => 'auth#sign_in_action'
+  get '/sign-in' => 'auth#sign_in_action'
 
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
@@ -24,36 +24,25 @@ Hummingbird::Application.routes.draw do
     end
   end
 
-  match '/lists' => 'home#lists'
-  match '/privacy' => 'home#privacy'
-  match '/developers/api' => 'home#api'
+  get '/privacy' => 'home#privacy'
 
   # Recommendations
-  match '/recommendations' => 'recommendations#index'
-  match '/recommendations/not_interested' => 'recommendations#not_interested'
-  match '/recommendations/plan_to_watch' => 'recommendations#plan_to_watch'
-  match '/recommendations/force_update' => 'recommendations#force_update'
+  get '/recommendations' => 'recommendations#index'
+  post '/recommendations/not_interested' => 'recommendations#not_interested'
+  post '/recommendations/plan_to_watch' => 'recommendations#plan_to_watch'
+  get '/recommendations/force_update' => 'recommendations#force_update'
 
-  # Chat
-  match '/chat' => 'chat#index'
-  #match '/chat/ping' => 'chat#ping'
-  #match '/chat/messages' => 'chat#messages'
-  #match '/chat/new_message' => 'chat#new_message'
-
-  match '/unsubscribe/newsletter/:code' => 'home#unsubscribe'
-  match "/beta_invites/resend_invite" => "beta_invites#resend_invite", as: :resend_beta_invite
-  match "/beta_invites/invite_code" => "beta_invites#invite_code"
-  match "/beta_invites/unsubscribe" => "beta_invites#unsubscribe"
-  resources :beta_invites
+  get '/unsubscribe/newsletter/:code' => 'home#unsubscribe'
 
   root :to => "home#index"
 
   # Dashboard
-  match '/dashboard' => 'home#dashboard'
-  match '/feed' => 'home#feed'
+  get '/dashboard' => 'home#dashboard'
+  get '/feed' => 'home#feed'
 
-  match '/users/:id/watchlist' => redirect {|params, request| "/users/#{params[:id]}/library" }
-  match '/users/:id/feed' => redirect {|params, request| "/users/#{params[:id]}" }
+  get '/users/:id/watchlist' => redirect {|params, request| "/users/#{params[:id]}/library" }
+  get '/u/:id' => redirect {|params, request| "/users/#{params[:id]}" }
+  get '/users/:id/feed' => redirect {|params, request| "/users/#{params[:id]}" }
 
   resources :users do
     get :library
@@ -62,7 +51,6 @@ Hummingbird::Application.routes.draw do
     get :following
     get :favorite_anime
     get :trigger_forum_sync
-    get :cover_image
 
     resources :lists
 
@@ -79,15 +67,15 @@ Hummingbird::Application.routes.draw do
   end
 
   # Search
-  match '/search' => 'search#basic', as: :search
-  
+  get '/search' => 'search#basic', as: :search
+
   # Imports
-  match '/mal_import' => 'imports#new', via: [:post]
+  post '/mal_import' => 'imports#new'
 
   # Random anime
-  match '/random/anime' => 'anime#random'
-  match '/anime/upcoming(/:season)' => 'anime#upcoming', as: :anime_season
-  match '/anime/filter(/:sort)' => 'anime#filter', as: :anime_filter
+  get '/random/anime' => 'anime#random'
+  get '/anime/upcoming(/:season)' => 'anime#upcoming', as: :anime_season
+  get '/anime/filter(/:sort)' => 'anime#filter', as: :anime_filter
 
   resources :anime do
     resources :casts
@@ -101,8 +89,6 @@ Hummingbird::Application.routes.draw do
 
   resources :manga
 
-  match '/reviews' => 'reviews#full_index'
-
   resources :genres do
     post :add_to_favorites
     post :remove_from_favorites
@@ -112,27 +98,18 @@ Hummingbird::Application.routes.draw do
   resources :characters
 
   # Watchlist
-  resources :watchlists
-  match '/watchlist/remove' => 'watchlists#remove_from_watchlist', 
-    as: :remove_from_watchlist
-  match '/watchlist/rate/:anime_id/:rating' => 'watchlists#update_rating', 
-    as: :update_rating
-  match '/watchlist/update' => 'watchlists#update_watchlist'
-
-  match '/u/:username' => 'users#redirect_short_url'
-
-
-  match '/unsubscribe/:unsub_type/:hash' => 'users#unsubscribe'
+  #resources :watchlists
+  #match '/watchlist/remove' => 'watchlists#remove_from_watchlist',
+  #  as: :remove_from_watchlist
+  #match '/watchlist/rate/:anime_id/:rating' => 'watchlists#update_rating',
+  #  as: :update_rating
+  #match '/watchlist/update' => 'watchlists#update_watchlist'
 
   # Admin Panel
-  constraint = lambda do |request|
-    request.env["warden"].authenticate? and request.env['warden'].user.admin?
-  end
-  constraints constraint do
-    match '/kotodama' => 'admin#index', as: :admin_panel
-    match '/kotodama/login_as' => 'admin#login_as_user'
-    match '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
-    match '/kotodama/invite_to_beta' => 'admin#invite_to_beta'
+  authenticated :user, lambda {|u| u.admin? } do
+    get '/kotodama' => 'admin#index', as: :admin_panel
+    get '/kotodama/login_as' => 'admin#login_as_user'
+    post '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
     post '/kotodama/toggle_forum_kill_switch' => 'admin#toggle_forum_kill_switch'
     post '/kotodama/toggle_registration_kill_switch' => 'admin#toggle_registration_kill_switch'
 
