@@ -92,6 +92,16 @@ class LibraryEntryTest < ActiveSupport::TestCase
     assert_equal initial+3*entry.anime.episode_length, User.find('vikhyat').life_spent_on_anime
   end
 
+  test "removing library entry subtracts time from life spent on anime" do
+    initial = users(:vikhyat).life_spent_on_anime
+    entry = LibraryEntry.first
+    entry.episodes_watched += 1
+    entry.save
+    assert_equal initial+entry.anime.episode_length, User.find('vikhyat').reload.life_spent_on_anime
+    entry.destroy
+    assert_equal initial, User.find('vikhyat').reload.life_spent_on_anime
+  end
+
   test "rewatches count towards life spent on anime" do
     user = User.find('vikhyat')
 
