@@ -1,9 +1,7 @@
-// layout styles
-@import "globals/all";
-
 .gallery {
-  @include make-sm-column(3);
-  @include pull-right;
+  @extend .pull-right;
+  @extend .col-sm-3;
+
   float: right;
   padding-left: 0;
 
@@ -23,10 +21,11 @@
 }
 
 .poster-container {
+  @extend .col-xs-5;
+  @extend .col-sm-12;
+
   max-width: 200px;
   padding-bottom: 5px;
-  @include make-xs-column(5);
-  @include make-sm-column(12);
   @media (min-width: 941px) {
     padding-right: 0;
     padding-left: 0;
@@ -35,8 +34,8 @@
 }
 
 .sidebar-copy {
-  @include make-xs-column(7);
-  @include clearfix();
+  @extend .col-xs-7;
+  @extend .clearfix;
   @media (max-width: 941px) {
     padding-bottom: 5px;
   }
@@ -72,8 +71,8 @@
     border-radius: 3px;
   }
   .gallery-image {
-    @include make-xs-column(2);
-    @include make-sm-column(12);
+    @extend .col-xs-2;
+    @extend .col-sm-12;
     padding-left: 0;
     padding-right: 0;
     @media (max-width: 940px) {
@@ -84,9 +83,9 @@
 }
 
 .series-body {
+  @extend .col-xs-12;
+  @extend .col-sm-9;
   padding-right: 10px;
-  @include make-xs-column(12);
-  @include make-sm-column(9);
   @media (max-width: 480px) {
     padding: 0;
   }
@@ -96,7 +95,7 @@
 }
 
 .series-title-wrapper {
-  @include make-xs-column(12);
+  @extend .col-xs-12;
   text-align: center;
 }
 
@@ -144,8 +143,8 @@ h4.series-title {
 }
 
 .top-buttons {
+  @extend .col-sm-12;
   margin-bottom: 15px;
-  @include make-sm-column(12);
   .top-button {
     border: none;
     background: #2f333b;
@@ -183,17 +182,17 @@ h4.series-title {
 }
 .series-panel {
   background: $eggshell;
-  @include clearfix();
+  @extend .clearfix;
   @media (max-width: 768px) {
     background: #fff;
   }
 }
 
 .series-sidebar {
+  @extend .col-xs-12;
+  @extend .col-sm-3;
   padding: 10px;
   border-radius: 3px;
-  @include make-xs-column(12);
-  @include make-sm-column(3);
   hr {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -203,8 +202,8 @@ h4.series-title {
 }
 
 .series-content {
-  @include make-xs-column(12);
-  @include make-sm-column(9);
+  @extend .col-xs-12;
+  @extend .col-sm-9;
   background: #fff;
   border-left: 1px solid #ddd;
   border-top-right-radius: 4px;
@@ -224,9 +223,9 @@ h4.series-title {
 }
 
 .buy-series, .watch-series {
+  @extend .col-xs-12;
+  @extend .col-sm-12;
   float: left;
-  @include make-xs-column(12);
-  @include make-sm-column(12);
   padding: 15px 0;
   margin: 15px 0 0 0;
   border-top: 1px solid #ddd;
@@ -236,8 +235,8 @@ h4.series-title {
 }
 
 .affiliate-button {
-  @include make-xs-column(6);
-  @include make-sm-column(12);
+  @extend .col-xs-6;
+  @extend .col-sm-12;
   padding-left: 0;
   padding-right: 0;
 }
@@ -258,8 +257,8 @@ h4.series-title {
 }
 
 .current-watching {
-  @include make-xs-column(12);
-  @include make-sm-column(12);
+  @extend .col-xs-12;
+  @extend .col-sm-12;
   margin-top: 15px;
   border-top: 1px solid #ddd;
   padding-top: 15px;
@@ -269,24 +268,21 @@ h4.series-title {
 }
 
 .related-user-wrapper {
-  @include make-xs-column(12);
-  @include make-sm-column(12);
-  @include clearfix;
+  @extend .col-xs-12;
+  @extend .col-sm-12;
+  @extend .clearfix;
   padding-left: 0;
   padding-right: 0;
 }
 
-.related-user { 
-  @include make-xs-column(3);
-  @include make-sm-column(3);
+.related-user {
+  @extend .col-xs-3;
+  @extend .col-sm-3;
   padding: 1px;
   overflow: hidden;
   border-radius: 3px;
+
   img:hover {
-    -webkit-transform: scale(1.5);
-    -moz-transform: scale(1.5);
-    -ms-transform: scale(1.5);
-    -o-transform: scale(1.5);
     transform: scale(1.5);
     opacity: .6;
   }
@@ -320,7 +316,7 @@ h4.series-title {
 }
 
 .info-tabs {
-  @include make-xs-column(12);
+  @extend .col-xs-12;
 
   margin-top: 15px;
   @media (max-width: 768px) {
@@ -350,11 +346,11 @@ h4.series-title {
 }
 
 .review-listing {
-  @include make-xs-column(12);
+  @extend .col-xs-12;
 
   .review {
-    @include make-xs-column(12);
-    @include clearfix;
+    @extend .col-xs-12;
+    @extend .clearfix;
     padding: 8px;
     background-color: #fff;
   }
@@ -369,7 +365,7 @@ h4.series-title {
   }
 
   .reviewer-thumb-wrapper {
-    @include make-sm-column(2);
+    @extend .col-sm-2;
     padding-left: 4px;
     padding-top: 8px;
   }
@@ -380,8 +376,8 @@ h4.series-title {
   }
 
   .reviewer-name-wrapper {
-    @include make-xs-column(12);
-    @include make-sm-column(10);
+    @extend .col-xs-12;
+    @extend .col-sm-10;
     padding: 0;
   }
 
@@ -479,7 +475,7 @@ h4.series-title {
   }
 
 .genre-tab {
-  @include clearfix;
+  @extend .clearfix;
   .badge {
     background: #eee;
     border-radius: 3px;

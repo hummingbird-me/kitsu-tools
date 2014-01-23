@@ -1,5 +1,3 @@
-@import "globals/all";
-
 .franchise-show {
   @include make-sm-column(12);
   @include clearfix();

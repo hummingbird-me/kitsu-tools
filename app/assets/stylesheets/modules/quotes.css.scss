@@ -1,15 +1,15 @@
 .favorited-by {
-	color: #888;
-	font-size: 14px;
+  color: #888;
+  font-size: 14px;
 }
 .report-quote {
-	float: right;
-	font-size: 14px;
-	a {
-		color: red;
-		opacity: .3;
-		&:hover {
-			opacity: 1;
-		}
-	}
+  float: right;
+  font-size: 14px;
+  a {
+    color: red;
+    opacity: .3;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

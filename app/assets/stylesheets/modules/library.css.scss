@@ -1,5 +1,3 @@
-@import "globals/all";
-
 .library-container {
   padding: 10px;
 
@@ -22,7 +20,7 @@
 }
 
 .library-dropdown {
-  @include clearfix();
+  @extend .clearfix;
 
   background: linear-gradient(to bottom, darken($eggshell, 5%), $eggshell 10%, $eggshell 90%, darken($eggshell, 10%));
   padding-bottom: 15px;
@@ -125,7 +123,7 @@
 }
 
 .list-group-item {
-  @include clearfix();
+  @extend .clearfix;
   user-select: none;
   cursor: pointer;
   border-radius: 0 !important;
@@ -135,10 +133,10 @@
   }
 
   .list-item-left {
-    @include make-xs-column(12);
-    @include make-sm-column(7);
-    @include make-md-column(7);
-    @include make-lg-column(8);
+    @extend .col-xs-12;
+    @extend .col-sm-7;
+    @extend .col-md-7;
+    @extend .col-lg-8;
 
     padding-left: 0;
 
@@ -163,10 +161,10 @@
   }
 
   .list-item-right {
-    @include make-xs-column(12);
-    @include make-sm-column(5);
-    @include make-md-column(5);
-    @include make-lg-column(4);
+    @extend .col-xs-12;
+    @extend .col-sm-5;
+    @extend .col-md-5;
+    @extend .col-lg-4;
 
     text-align: right;
     padding-right: 15px;

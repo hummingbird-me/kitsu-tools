@@ -1,13 +1,8 @@
-/*
- *= require bootstrap
- *= require vendored
- *
- *= require ./base
- *= require ./layout
- *= require_tree ./modules
- *
- *= require hacks
- *
- * NOTE: Don't include any actual CSS in this file.
- *
- */
+//= require vendored
+@import "bootstrap";
+@import "globals/all";
+
+@import "base";
+@import "layout";
+@import "modules/*";
+@import "hacks";

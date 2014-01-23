@@ -1,18 +1,15 @@
-// base styles
-@import "globals/all";
-
 .awesome-rating-widget {
   display: inline-block;
 }
 
 .personal-rating {
+  @extend .col-xs-12;
+  @extend .col-sm-12;
   text-align: center;
   float: left;
   padding: 0;
   margin-top: 15px;
   margin-bottom: 0;
-  @include make-xs-column(12);
-  @include make-sm-column(12);
   @media (min-width: 768px) {
     padding: 15px 0 0 0;
     border-top: 1px solid #ddd;
@@ -50,7 +47,7 @@
 }
 
 .community-rating {
-  @include make-xs-column(12);
+  @extend .col-xs-12;
   padding: 0;
   border-top: 1px solid #ddd;
   margin: 15px 0 0 0;
