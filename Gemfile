@@ -44,8 +44,7 @@ gem 'zurb-foundation', '~> 4.3.0'
 gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.0.3'
 gem 'handlebars_assets', github: 'vikhyat/handlebars_assets'
-gem 'anjlab-bootstrap-rails', require: 'bootstrap-rails',
-                              github: 'anjlab/bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.0.3.0'
 gem 'autoprefixer-rails'
 
 # Gems to help with development.

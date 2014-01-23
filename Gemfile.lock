@@ -1,12 +1,4 @@
 GIT
-  remote: git://github.com/anjlab/bootstrap-rails.git
-  revision: 3250d5494a8fb2715d3a16e24c7b82f57266ff42
-  specs:
-    anjlab-bootstrap-rails (3.0.3.0)
-      railties (>= 3.0)
-      sass (>= 3.2)
-
-GIT
   remote: git://github.com/vikhyat/handlebars_assets.git
   revision: 663848943fa08b171de966e3d611b348e0956219
   specs:
@@ -79,6 +71,8 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.0.3.0)
+      sass (~> 3.2)
     builder (3.1.4)
     cancan (1.6.10)
     capistrano (2.15.5)
@@ -496,13 +490,13 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.8)
-  anjlab-bootstrap-rails!
   autoprefixer-rails
   aws-sdk (~> 1.5.7)
   beaneater
   beanstalkd_view
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.0.3.0)
   cancan
   capistrano
   coffee-rails (~> 4.0)
