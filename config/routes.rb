@@ -77,6 +77,8 @@ Hummingbird::Application.routes.draw do
   get '/anime/filter(/:sort)' => 'anime#filter', as: :anime_filter
 
   resources :anime do
+    post :toggle_favorite
+
     resources :casts
     resources :quotes do
       member { post :vote }

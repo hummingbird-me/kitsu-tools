@@ -11,9 +11,16 @@ Hummingbird.AnimeRoute = Ember.Route.extend
   actions:
     toggleFavorite: ->
       alert('Need to be signed in') unless @get('currentUser.isSignedIn')
-      libraryEntry = @currentModel.get('libraryEntry')
-      libraryEntry.set 'isFavorite', not libraryEntry.get('isFavorite')
-      @saveLibraryEntry libraryEntry
+      anime = @currentModel
+      anime.set 'isFavorite', not anime.get('isFavorite')
+      Messenger().expectPromise (->
+        ic.ajax
+          url: "/anime/" + anime.get('id') + "/toggle_favorite"
+          type: "POST"
+          dataType: "json"
+      ),
+        progressMessage: "Saving..."
+        successMessage: "Saved!"
 
     removeFromLibrary: ->
       anime = @currentModel

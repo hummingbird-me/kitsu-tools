@@ -191,4 +191,17 @@ class AnimeController < ApplicationController
     end
     render json: anime
   end
+
+  def toggle_favorite
+    authenticate_user!
+    anime = Anime.find(params[:anime_id])
+    if !current_user.has_favorite?(anime)
+      # Add favorite.
+      Favorite.create(user: current_user, item: anime)
+    else
+      # Remove favorite.
+      current_user.favorites.where(item_id: anime, item_type: "Anime").first.destroy
+    end
+    render json: true
+  end
 end

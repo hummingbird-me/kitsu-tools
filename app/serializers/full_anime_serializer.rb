@@ -2,7 +2,8 @@ class FullAnimeSerializer < AnimeSerializer
   embed :ids, include: true
 
   attributes :alternate_title, :cover_image, :cover_image_top_offset, :screencaps,
-    :languages, :community_ratings, :youtube_video_id, :bayesian_rating, :genres
+    :languages, :community_ratings, :youtube_video_id, :bayesian_rating, :genres,
+    :is_favorite
 
   has_many :featured_quotes, root: :quotes
   has_many :trending_reviews, root: :reviews
@@ -62,5 +63,9 @@ class FullAnimeSerializer < AnimeSerializer
 
   def genres
     object.genres.map {|x| x.name.parameterize }.sort
+  end
+
+  def is_favorite
+    scope && scope.has_favorite?(object)
   end
 end
