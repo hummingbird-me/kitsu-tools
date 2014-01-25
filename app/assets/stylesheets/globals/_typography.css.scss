@@ -53,11 +53,11 @@ h1, h2, h3, h4, h5, h6 {
 // Adelle Bold Italic
 @font-face {
     font-family: 'adelle';
-    src: asset-url('adelle_bolditalic-webfont.eot', font);
-    src: asset-url('adelle_bolditalic-webfont.eot?#iefix', font) format('embedded-opentype'),
-         asset-url('adelle_bolditalic-webfont.woff', font) format('woff'),
-         asset-url('adelle_bolditalic-webfont.ttf', font) format('truetype'),
-         asset-url('adelle_bolditalic-webfont.svg#adelle_rgbold_italic', font) format('svg');
+    src: asset-url('adelle_bolditalic-webfont.eot');
+    src: asset-url('adelle_bolditalic-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('adelle_bolditalic-webfont.woff') format('woff'),
+         asset-url('adelle_bolditalic-webfont.ttf') format('truetype'),
+         asset-url('adelle_bolditalic-webfont.svg#adelle_rgbold_italic') format('svg');
     font-weight: bold;
     font-style: italic;
 
@@ -73,11 +73,11 @@ h1, h2, h3, h4, h5, h6 {
 // Klavika Regular
 @font-face {
     font-family: 'klavika';
-    src: asset-url('klavikaregular-tf-webfont.eot', font);
-    src: asset-url('klavikaregular-tf-webfont.eot?#iefix', font) format('embedded-opentype'),
-         asset-url('klavikaregular-tf-webfont.woff', font) format('woff'),
-         asset-url('klavikaregular-tf-webfont.ttf', font) format('truetype'),
-         asset-url('klavikaregular-tf-webfont.svg#klavika_regularregular', font) format('svg');
+    src: asset-url('klavikaregular-tf-webfont.eot');
+    src: asset-url('klavikaregular-tf-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('klavikaregular-tf-webfont.woff') format('woff'),
+         asset-url('klavikaregular-tf-webfont.ttf') format('truetype'),
+         asset-url('klavikaregular-tf-webfont.svg#klavika_regularregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -86,11 +86,11 @@ h1, h2, h3, h4, h5, h6 {
 // Klavika Bold
 @font-face {
     font-family: 'klavika';
-    src: asset-url('klavikamedium-tf-webfont.eot', font);
-    src: asset-url('klavikamedium-tf-webfont.eot?#iefix', font) format('embedded-opentype'),
-         asset-url('klavikamedium-tf-webfont.woff', font) format('woff'),
-         asset-url('klavikamedium-tf-webfont.ttf', font) format('truetype'),
-         asset-url('klavikamedium-tf-webfont.svg#klavika_mediummedium', font) format('svg');
+    src: asset-url('klavikamedium-tf-webfont.eot');
+    src: asset-url('klavikamedium-tf-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('klavikamedium-tf-webfont.woff') format('woff'),
+         asset-url('klavikamedium-tf-webfont.ttf') format('truetype'),
+         asset-url('klavikamedium-tf-webfont.svg#klavika_mediummedium') format('svg');
     font-weight: bold;
     font-style: normal;
 

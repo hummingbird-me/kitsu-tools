@@ -366,6 +366,10 @@ class API_v1 < Grape::API
         result = result and library_entry.save
       end
 
+      if library_entry.episodes_watched_changed? and library_entry.episodes_watched == library_entry.anime.episode_count
+        library_entry.status = "Completed"
+      end
+
       Action.from_library_entry(library_entry)
 
       if library_entry.save

@@ -41,6 +41,11 @@ class UsersController < ApplicationController
       return redirect_to user_path(@user), status: :moved_permanently
     end
 
+    if user_signed_in? and current_user == @user
+      # Clear notifications if the current user is viewing his/her feed.
+      Notification.where(user: @user, notification_type: "profile_comment", seen: false).update_all seen: true
+    end
+
     respond_to do |format|
       format.html do
 

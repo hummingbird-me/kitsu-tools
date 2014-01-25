@@ -105,5 +105,8 @@ class LibraryEntry < ActiveRecord::Base
     Anime.where(id: self.anime.id).update_all(
       "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer - 1)::text)"
     )
+
+    # Update user's life spent on anime.
+    self.user.update_life_spent_on_anime( - self.episodes_watched * (self.anime.episode_length || 0) )
   end
 end
