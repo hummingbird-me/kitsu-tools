@@ -103,7 +103,9 @@
 
     goToAnime: function(event) {
       Ember.run(function() {
-        if (Ember.ViewUtils.isSimpleClick(event)) {
+        var modifier = event.shiftKey || event.metaKey || event.altKey || event.ctrlKey,
+            secondaryClick = event.button > 0;
+        if (!modifier && !secondaryClick) {
           event.preventDefault();
           var router = this.props.view.get('controller.target.router');
           router.transitionTo('anime.index', this.props.content.get('anime.id'));
