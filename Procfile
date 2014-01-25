@@ -1,4 +1,4 @@
-unicorn:    bundle exec unicorn_rails -c config/unicorn.conf.rb
+unicorn:    bundle exec unicorn -c config/unicorn.conf.rb
 redis:      redis-server config/redis.conf
 sidekiq:    bundle exec sidekiq -q default -q mailer -q paperclip
 guard:      bundle exec guard start -i
