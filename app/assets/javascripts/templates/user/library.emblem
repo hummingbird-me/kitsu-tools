@@ -30,13 +30,20 @@
               = input class="library-search" type="text" placeholder="Search this anime library..." value=filter
         .container.hidden-xs
           .row
-            li.list-group-item.library-filter
+            li class={:library-filter sortBy sortAsc:asc:desc}
               .list-item-left click="setSort 'anime.lowercaseDisplayTitle'"
                 | Title
+                i.fa
               .list-item-right
-                .list-item-progress click="setSort 'episodesWatched'" Progress
-                .list-item-score click="setSort 'rating'" Rating
-                .list-item-type click="setSort 'anime.showType'" Type
+                .list-item-progress click="setSort 'episodesWatched'"
+                  | Progress
+                  i.fa
+                .list-item-score click="setSort 'rating'"
+                  | Rating
+                  i.fa
+                .list-item-type click="setSort 'anime.showType'"
+                  | Type
+                  i.fa
 
         div#library-sections
 

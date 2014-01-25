@@ -298,6 +298,8 @@
 }
 
 .library-filter {
+  @extend .list-group-item;
+
   border-radius: 0 !important;
   border-bottom: 0;
   border-left: 0;
@@ -306,5 +308,24 @@
 
   .list-item-right .list-item-type {
     font-weight: normal;
+    .fa {
+      margin-left: 1px;
+    }
   }
+
+  .fa {
+    @extend .fa-sort;
+    color: #aaa;
+    margin-left: 5px;
+  }
+
+  /* Sort icon. */
+  &.asc.anime\.lowercaseDisplayTitle .list-item-left .fa { @extend .fa-sort-up; }
+  &.desc.anime\.lowercaseDisplayTitle .list-item-left .fa { @extend .fa-sort-down; }
+  &.asc.episodesWatched .list-item-progress .fa { @extend .fa-sort-up; }
+  &.desc.episodesWatched .list-item-progress .fa { @extend .fa-sort-down; }
+  &.asc.rating .list-item-score .fa { @extend .fa-sort-up; }
+  &.desc.rating .list-item-score .fa { @extend .fa-sort-down; }
+  &.asc.anime\.showType .list-item-type .fa { @extend .fa-sort-up; }
+  &.desc.anime\.showType .list-item-type .fa { @extend .fa-sort-down; }
 }
