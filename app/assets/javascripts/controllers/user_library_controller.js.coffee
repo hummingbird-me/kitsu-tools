@@ -58,7 +58,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
           1 * sortAsc
 
       section.set 'content', sortedContent
-  ).observes('content.@each.status', 'filter', 'sortProperty', 'sortAsc')
+  ).observes('content.@each.status', 'filter', 'sortBy', 'sortAsc')
 
   actuallyNotifyReactComponent: ->
     if @get('reactComponent')
@@ -66,7 +66,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
 
   notifyReactComponent: (->
     Ember.run.once this, 'actuallyNotifyReactComponent'
-  ).observes('filter', 'showSection', 'sortProperty', 'sortAsc',
+  ).observes('filter', 'showSection', 'sortBy', 'sortAsc',
              'content.@each.episodesWatched',
              'content.@each.status',
              'content.@each.rating',
