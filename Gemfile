@@ -15,6 +15,7 @@ gem 'fastclick-rails'
 
 gem 'pg', '0.15.1'
 
+gem 'hiredis'
 gem 'redis'
 gem 'redis-rails'
 

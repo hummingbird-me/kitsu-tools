@@ -191,6 +191,7 @@ GEM
     hashie (2.0.5)
     highline (1.6.20)
     hike (1.2.3)
+    hiredis (0.4.5)
     http_parser.rb (0.5.3)
     httparty (0.12.0)
       json (~> 1.8)
@@ -519,6 +520,7 @@ DEPENDENCIES
   haml (~> 4.0)
   haml-rails
   handlebars_assets!
+  hiredis
   image_optim
   indexable (~> 0.1)
   jquery-rails
