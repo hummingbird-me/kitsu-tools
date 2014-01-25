@@ -43,6 +43,7 @@ class UsersController < ApplicationController
 
     if user_signed_in? and current_user == @user
       # Clear notifications if the current user is viewing his/her feed.
+      # TODO This needs to be moved elsewhere.
       Notification.where(user: @user, notification_type: "profile_comment", seen: false).update_all seen: true
     end
 
