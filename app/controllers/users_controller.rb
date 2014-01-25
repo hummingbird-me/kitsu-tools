@@ -108,6 +108,12 @@ class UsersController < ApplicationController
   def feed
     @active_tab = :feed
     @user = User.find(params[:user_id])
+
+    if user_signed_in? and current_user == @user
+      # Clear notifications if the current user is viewing his/her feed.
+      Notification.where(user: @user, notification_type: "profile_comment", seen: false).update_all seen: true
+    end
+
     render "feed", layout: "layouts/profile"
   end
 
