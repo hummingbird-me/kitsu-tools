@@ -1,39 +1,39 @@
-.container.library-container
+.library-container
   .row
-    .library-table.col-sm-12.col-md-10
+    .library-table
       .panel.panel-default
         .container
-          .row.library-header
+          .library-header
             .col-xs-6.col-sm-3.col-md-3
-              .btn-group.library-type
+              .library-type
                 button.btn.btn-default.dropdown-toggle data-toggle="dropdown"
                   | Anime Library
-                  span.caret
+                  i.fa.fa-caret-down
                 ul.dropdown-menu
                   li: a Manga Library (Coming soon!)
             .col-xs-6.col-sm-9.col-md-9
-              .btn-group.library-sections.hidden-sm.hidden-xs
+              .library-sections.hidden-sm.hidden-xs
                 button{action showSection "View All"} class={:btn :btn-default showAll:active} All
                 each section in sections
                   button{action showSection section} class={:btn :btn-default section.displayVisible:active} #{section.title}
-              .btn-group.library-sections.visible-sm.visible-xs
+              .library-sections.visible-sm.visible-xs
                 button.btn.btn-default.dropdown-toggle data-toggle="dropdown"
                   | #{showSection}
-                  span.caret
+                  i.fa.fa-caret-down
                 ul.dropdown-menu
                   li: a{action showSection "View All"} View All
                   each section in sections
                     li: a{action showSection section} #{section.title}
         .container
           .row
-            .col-md-12.search-wrapper
-              = input class="form-control library-search" type="text" placeholder="Search this anime library..." value=filter
+            .search-wrapper
+              = input class="library-search" type="text" placeholder="Search this anime library..." value=filter
         .container.hidden-xs
           .row
-            li.list-group-item.library-filter.clearfix
-              .list-item-left.col-xs-12.col-sm-6.col-md-6 click="setSort 'anime.lowercaseDisplayTitle'"
+            li.list-group-item.library-filter
+              .list-item-left click="setSort 'anime.lowercaseDisplayTitle'"
                 | Title
-              .list-item-right.col-xs-12.col-sm-6.col-md-6
+              .list-item-right
                 .list-item-progress click="setSort 'episodesWatched'" Progress
                 .list-item-score click="setSort 'rating'" Rating
                 .list-item-type click="setSort 'anime.showType'" Type

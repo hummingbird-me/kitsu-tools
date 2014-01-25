@@ -1,4 +1,6 @@
 .library-container {
+  @extend .container;
+
   padding: 10px;
 
   .panel {
@@ -10,6 +12,9 @@
 }
 
 .library-table {
+  @extend .col-sm-12;
+  @extend .col-md-10;
+
   @media (max-width: 500px) {
     padding: 0;
   }
@@ -227,12 +232,28 @@
 }
 
 .library-header {
+  @extend .row;
+
   padding-top: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid #ddd;
 }
 
+.library-type {
+  @extend .btn-group;
+
+  button .fa {
+    margin-left: 5px;
+  }
+}
+
 .library-sections {
+  @extend .btn-group;
+
+  button .fa {
+    margin-left: 5px;
+  }
+
   float: right;
 
   button {
@@ -256,10 +277,13 @@
 }
 
 .search-wrapper {
+  @extend .col-md-12;
   padding: 0;
 }
 
 .library-search {
+  @extend .form-control;
+
   border: none;
   border-radius: 0;
   width: 100%;
