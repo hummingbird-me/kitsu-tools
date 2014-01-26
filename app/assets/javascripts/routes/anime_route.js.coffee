@@ -30,6 +30,8 @@ Hummingbird.AnimeRoute = Ember.Route.extend
         libraryEntry = @store.createRecord 'libraryEntry',
           status: newStatus
           anime: @currentModel
+      if newStatus == "Completed"
+        libraryEntry.set 'episodesWatched', libraryEntry.get('anime.episodeCount')
       @saveLibraryEntry libraryEntry
 
     setLibraryRating: (newRating) ->
