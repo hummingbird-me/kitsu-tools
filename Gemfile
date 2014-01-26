@@ -16,7 +16,7 @@ gem 'fastclick-rails'
 gem 'pg', '0.15.1'
 
 gem 'hiredis'
-gem 'redis'
+gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
 
 gem 'ember-rails'
