@@ -96,7 +96,7 @@ class LibraryEntriesController < ApplicationController
     return error!("unauthorized", 403) if library_entry.nil?
 
     if library_entry.destroy
-      render json: library_entry
+      render json: nil
     else
       return error!(library_entry.errors.full_messages * ', ', 500)
     end
