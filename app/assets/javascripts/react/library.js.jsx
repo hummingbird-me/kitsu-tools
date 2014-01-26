@@ -343,6 +343,7 @@
             </div>
             <div className="list-item-right">
               <div className="list-item-progress">
+                <i className="episode-increment" />
                 <form style={ {display: "inline"} } onSubmit={this.saveEpisodesWatched} >
                   <input className="input-progress" type="number" pattern="[0-9]*" value={content.get('episodesWatched')} onChange={this.changeProgress} onBlur={this.saveEpisodesWatched} />
                 </form>

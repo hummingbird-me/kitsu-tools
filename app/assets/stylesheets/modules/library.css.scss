@@ -24,6 +24,23 @@
   position: relative;
 }
 
+.episode-increment {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  top: -9px;
+  font-size: 20px;
+  transition: opacity .60s ease-in-out;
+  -moz-transition: opacity .60s ease-in-out;
+  -webkit-transition: opacity .60s ease-in-out;
+  @extend .fa; 
+  @extend .fa-angle-up;
+  opacity: 0;
+  &:hover {
+    color: $orange;
+  }
+}
+
 .library-dropdown {
   @extend .clearfix;
 
@@ -227,6 +244,12 @@
       font-weight: bold;
       line-height: 14px;
       text-align: center;
+    }
+  }
+
+  &:hover {
+    .episode-increment {
+      opacity: 1;
     }
   }
 }
