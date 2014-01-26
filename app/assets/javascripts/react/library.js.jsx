@@ -345,7 +345,7 @@
               <div className="list-item-progress">
                 <i className="episode-increment" />
                 <form style={ {display: "inline"} } onSubmit={this.saveEpisodesWatched} >
-                  <input className="input-progress" type="number" pattern="[0-9]*" value={content.get('episodesWatched')} onChange={this.changeProgress} onBlur={this.saveEpisodesWatched} />
+                  <input className="input-progress" type="text" pattern="[0-9]*" value={content.get('episodesWatched')} onChange={this.changeProgress} onBlur={this.saveEpisodesWatched} />
                 </form>
                 <span className="progress-sep">/</span>
                 <span className="list-item-total">{content.get('anime.displayEpisodeCount')}</span>
