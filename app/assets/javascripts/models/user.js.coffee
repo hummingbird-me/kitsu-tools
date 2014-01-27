@@ -1,5 +1,5 @@
 Hummingbird.User = DS.Model.extend
-  username: DS.attr('string')
+  username: Ember.computed.alias('id')
   coverImageUrl: DS.attr('string')
   avatarTemplate: DS.attr('string')
   online: DS.attr('boolean')
