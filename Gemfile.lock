@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/vikhyat/friendly_id.git
-  revision: 3c3ed972f7acc7e2304f39a8b9a74843e69f7e6a
+  revision: bcf4686495eb11c895ad492bcc832db3f9c661ea
   specs:
     friendly_id (5.0.2)
       activerecord (>= 4.0.0)
