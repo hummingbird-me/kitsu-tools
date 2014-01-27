@@ -46,7 +46,7 @@ class Anime < ActiveRecord::Base
     using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
 
   extend FriendlyId
-  friendly_id :canonical_title, :use => [:slugged]
+  friendly_id :canonical_title, :use => [:slugged, :history]
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :ann_id, :synopsis, :cover_image, :cover_image_top_offset, :poster_image, :youtube_video_id, :alt_title, :franchises, :show_type, :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide, :started_airing_date, :started_airing_date_known, :finished_airing_date, :franchise_ids, :genre_ids, :producer_ids, :casting_ids
 

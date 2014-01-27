@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/vikhyat/friendly_id.git
+  revision: 3c3ed972f7acc7e2304f39a8b9a74843e69f7e6a
+  specs:
+    friendly_id (5.0.2)
+      activerecord (>= 4.0.0)
+
+GIT
   remote: git://github.com/vikhyat/handlebars_assets.git
   revision: 663848943fa08b171de966e3d611b348e0956219
   specs:
@@ -154,8 +161,6 @@ GEM
       dotenv (>= 0.7)
       thor (>= 0.13.6)
     formatador (0.2.4)
-    friendly_id (5.0.2)
-      activerecord (~> 4.0.0)
     fspath (2.1.0)
     grape (0.6.1)
       activesupport
@@ -513,7 +518,7 @@ DEPENDENCIES
   fastclick-rails
   flamegraph
   foreman
-  friendly_id (~> 5.0)
+  friendly_id!
   grape
   grape-entity
   guard-livereload

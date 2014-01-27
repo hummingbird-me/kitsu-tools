@@ -94,7 +94,7 @@ gem 'delayed_paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 
 # Better URLs.
-gem 'friendly_id', '~> 5.0'
+gem 'friendly_id', github: 'vikhyat/friendly_id'
 
 # Authentication.
 gem 'devise'

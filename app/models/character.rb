@@ -18,7 +18,7 @@ class Character < ActiveRecord::Base
   attr_accessible :description, :name, :mal_id, :image
   validates :name, :presence => true
   has_many :castings, dependent: :destroy
-  
+
   has_attached_file :image,
     styles: {thumb_small: "30x39#"},
     default_url: "/assets/default-avatar.jpg",
