@@ -6,7 +6,7 @@
       .panel.panel-default.user-about-panel
         .panel-heading
           h3.panel-title About #{user.username}
-        .panel-body #{user.about}
+        .panel-body #{user.miniBio}
 
       / Random panel
       .panel.panel-default
