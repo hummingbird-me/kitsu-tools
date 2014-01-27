@@ -108,7 +108,7 @@ Hummingbird::Application.routes.draw do
   authenticated :user, lambda {|u| u.admin? } do
     get '/kotodama' => 'admin#index', as: :admin_panel
     get '/kotodama/login_as' => 'admin#login_as_user'
-    post '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
+    get '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
     post '/kotodama/toggle_forum_kill_switch' => 'admin#toggle_forum_kill_switch'
     post '/kotodama/toggle_registration_kill_switch' => 'admin#toggle_registration_kill_switch'
 
