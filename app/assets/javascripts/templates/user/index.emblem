@@ -20,8 +20,8 @@
 
     .personal-feed
       / Status Update Panel
-      .panel.panel-default
+      .status-update-panel
         .panel-body.status-panel
-          textarea.status-form.form-control placeholder="What do you want to talk about?" rows="1"
+          textarea.status-form placeholder="What do you want to talk about?" rows="1"
         .panel-footer Panel footer
 

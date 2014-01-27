@@ -29,4 +29,13 @@
       padding-right: 10px;
     }
   }
+
+  .status-update-panel {
+    @extend .panel;
+    @extend .panel-default;
+
+    .panel-footer {
+      display: none;
+    }
+  }
 }
