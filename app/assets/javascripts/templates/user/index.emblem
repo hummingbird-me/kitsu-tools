@@ -3,13 +3,13 @@
     / Left "About" column
     .about-info
       / About User Panel
-      .panel.panel-default.user-about-panel
+      .user-about-panel
         .panel-heading
           h3.panel-title About #{user.username}
         .panel-body #{user.miniBio}
 
       / Anime Breakdown Panel
-      .panel.panel-default
+      .anime-breakdown-panel
         .panel-heading
           h3.panel-title Anime Breakdown
         .panel-body

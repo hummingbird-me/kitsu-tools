@@ -10,6 +10,16 @@
     padding-right: 0px;
   }
 
+  .user-about-panel {
+    @extend .panel;
+    @extend .panel-default;
+  }
+
+  .anime-breakdown-panel {
+    @extend .panel;
+    @extend .panel-default;
+  }
+
   .personal-feed {
     @extend .col-sm-7;
     @extend .col-md-7;
