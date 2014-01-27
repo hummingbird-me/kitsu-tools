@@ -40,7 +40,7 @@
     .row
       ul.inline-list.clearfix
         li.nav-link
-          a data-hover="Feed" href=feedURL Feed
+          link-to 'user.index' data-hover="Feed" | Feed
         li.nav-link
           link-to 'user.library' data-hover="Library" | Library
         li.nav-link
