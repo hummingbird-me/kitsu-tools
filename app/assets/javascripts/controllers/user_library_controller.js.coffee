@@ -4,8 +4,8 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
   reactComponent: null
 
   filter: ""
-  sortBy: "lastWatched"
-  sortAsc: false
+  sortBy: JSON.parse(localStorage.getItem('librarySortBy')) || "lastWatched"
+  sortAsc: JSON.parse(localStorage.getItem('librarySortAsc')) || false
 
   sectionNames: ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   showSection: "Currently Watching"
@@ -58,7 +58,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
           1 * sortAsc
 
       section.set 'content', sortedContent
-  ).observes('content.@each.status', 'filter', 'sortProperty', 'sortAsc')
+  ).observes('content.@each.status', 'filter', 'sortBy', 'sortAsc')
 
   actuallyNotifyReactComponent: ->
     if @get('reactComponent')
@@ -66,7 +66,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
 
   notifyReactComponent: (->
     Ember.run.once this, 'actuallyNotifyReactComponent'
-  ).observes('filter', 'showSection', 'sortProperty', 'sortAsc',
+  ).observes('filter', 'showSection', 'sortBy', 'sortAsc',
              'content.@each.episodesWatched',
              'content.@each.status',
              'content.@each.rating',
@@ -75,6 +75,11 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend
              'content.@each.notes',
              'content.@each.rewatchCount',
              'content.@each.rewatching')
+
+  persistSort: (->
+    localStorage.setItem 'librarySortBy', JSON.stringify(@get('sortBy'))
+    localStorage.setItem 'librarySortAsc', JSON.stringify(@get('sortAsc'))
+  ).observes('sortBy', 'sortAsc')
 
   saveLibraryEntry: (libraryEntry) ->
     title = libraryEntry.get('anime.canonicalTitle')

@@ -12,15 +12,6 @@ Hummingbird.ApplicationController = Ember.Controller.extend
       else
         @afterFirstHit = true
 
-    # Scroll to the top of the page.
-    Ember.run.next ->
-      # TODO
-      if false and window.location.href.match('/users/')
-        scrollAmount = 120
-      else
-        scrollAmount = 0
-      window.scrollTo(0, scrollAmount)
-
   ).observes('currentPath')
 
   actions:

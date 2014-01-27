@@ -35,7 +35,7 @@ class Manga < ActiveRecord::Base
     using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
 
   extend FriendlyId
-  friendly_id :romaji_title, use: [:slugged]
+  friendly_id :romaji_title, use: [:slugged, :history]
 
   attr_accessible :cover_image, :cover_image_top_offset, :end_date, :english_title, :mal_id, :poster_image, :romaji_title, :serialization, :start_date, :status, :synopsis
 
