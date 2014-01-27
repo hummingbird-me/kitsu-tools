@@ -25,3 +25,41 @@
           textarea.status-form placeholder="What do you want to talk about?" rows="1"
         .panel-footer Panel footer
 
+
+      .panel.panel-default
+        .panel-body.update-panel
+          .col-xs-2.col-sm-2.col-md-2.series-thumb
+            img.responsive-image src="http://static.hummingbird.me/anime/poster_images/000/007/881/large/noragami_1.jpg?1389205049"
+
+          .col-xs-10.col-sm-10.col-md-10
+            h4.series-title Steins;Gate
+            / Genres
+            ul.inline-list.secondary.hidden-xs.clearfix
+              li Comedy
+              li Supernatural
+              li Shounen
+
+            ul.feed-events
+              li.single-event
+                .row
+                  .col-md-11
+                    .col-md-1.user-image.hidden-sm.hidden-xs
+                      img.responsive-image src="http://static.hummingbird.me/users/avatars/000/000/001/thumb_small/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+
+                    .col-sm-12.col-md-11.event-info
+                      p: <a>vikhyat</a> watched episode 12
+                      ul.inline-list.secondary
+                        li Remove
+                        li 1 hour ago
+
+              li.single-event
+                .row
+                  .col-md-11
+                    .col-md-1.user-image.hidden-sm.hidden-xs
+                      img.responsive-image src="http://static.hummingbird.me/users/avatars/000/000/001/thumb_small/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+
+                    .col-sm-12.col-md-11.event-info
+                      p: <a>vikhyat</a> watched episode 11
+                      ul.inline-list.secondary
+                        li Remove
+                        li 1 hour ago
