@@ -1,7 +1,7 @@
-.container.profile-content
+.profile-content
   .row
     / Left "About" column
-    .col-sm-5.col-md-5.about-info.hidden-xs
+    .about-info
       / About User Panel
       .panel.panel-default.user-about-panel
         .panel-heading
@@ -11,7 +11,10 @@
       / Random panel
       .panel.panel-default
         .panel-heading
-          h3.panel-title Panel title
-        .panel-body Panel content
+          h3.panel-title Anime Breakdown
+        .panel-body
+          ul
+            li I've watched <strong>1 million hours</strong> of anime.
+            li I've seen <strong>101%</strong> of all anime. My ratings are <strong>20</strong> points <strong>higher</strong> than average.
 
 

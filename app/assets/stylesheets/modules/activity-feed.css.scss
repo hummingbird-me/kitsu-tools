@@ -1,0 +1,20 @@
+.profile-content {
+  @extend .container;
+  margin-top: 30px;
+
+  .about-info {
+    @extend .col-sm-5;
+    @extend .col-md-5;
+    @extend .hidden-xs;
+
+    padding-right: 0px;
+  }
+
+  .personal-feed {
+    padding-left: 25px;
+    @media (max-width: 768px) {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
