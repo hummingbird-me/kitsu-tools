@@ -26,7 +26,7 @@
             </a>
             <!-- <i class='dropdown-arrow dropdown-arrow-inverse'></i> -->
             <ul class='dropdown-menu left-nav-section'>
-              <li><a href="/users/{{unbound currentUser.username}}/feed">Profile</a></li>
+              <li>{{#link-to 'user.index' currentUser}}Profile{{/link-to}}</li>
               <li>{{#link-to 'user.library' currentUser}}Library{{/link-to}}</li>
               <li><a href='/recommendations'>Recommendations</a></li>
             </ul>
