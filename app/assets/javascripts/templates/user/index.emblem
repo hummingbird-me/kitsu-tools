@@ -8,7 +8,7 @@
           h3.panel-title About #{user.username}
         .panel-body #{user.miniBio}
 
-      / Random panel
+      / Anime Breakdown Panel
       .panel.panel-default
         .panel-heading
           h3.panel-title Anime Breakdown
@@ -17,4 +17,11 @@
             li I've watched <strong>1 million hours</strong> of anime.
             li I've seen <strong>101%</strong> of all anime. My ratings are <strong>20</strong> points <strong>higher</strong> than average.
 
+
+    .personal-feed
+      / Status Update Panel
+      .panel.panel-default
+        .panel-body.status-panel
+          textarea.status-form.form-control placeholder="What do you want to talk about?" rows="1"
+        .panel-footer Panel footer
 
