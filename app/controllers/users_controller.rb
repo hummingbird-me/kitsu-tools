@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       end
       users = users.page(params[:page]).per(20)
 
-      render json: users, meta: {page: (params[:page] || 1), total: users.total_pages}
+      render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
 
     else
       ### OLD CODE PATH BELOW.

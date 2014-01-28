@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
           user = User.find params[:user_id]
           reviews = reviews.where(user_id: user.id).order('created_at DESC')
         end
-        render json: reviews, meta: {page: (params[:page] || 1), total: reviews.total_pages}
+        render json: reviews, meta: {cursor: 1 + (params[:page] || 1).to_i}
       end
     end
   end
