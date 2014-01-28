@@ -1,3 +1,10 @@
 .panel.panel-default
   .panel-body.update-panel
-    | #{id}
+    if commentStory
+      | comment story implementation here.
+    if mediaStory
+      | media story implementation here.
+    if followedStory
+      | followed story implementation here.
+    if unknownStory
+      | #{type}
