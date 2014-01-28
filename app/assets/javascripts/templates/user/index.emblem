@@ -15,7 +15,7 @@
             h3.panel-title Anime Breakdown
           .panel-body
             ul
-              li I've watched <strong>#{userInfo.lifeSpentOnAnime} minutes</strong> of anime.
+              li I've watched <strong>#{lifeSpentOnAnimeFmt}</strong> of anime.
       else
         loading-indicator classNames="light"
 
