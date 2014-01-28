@@ -1,7 +1,14 @@
-.panel.panel-default
-  .panel-body.update-panel
+.story
+  .update-panel
     if commentStory
-      | comment story implementation here.
+      .user-image
+        link-to 'user' poster: avatar poster 'thumb'
+      .comment-content
+        h4.story-title
+          link-to 'user' poster | #{poster.username}
+          |  to 
+          link-to 'user' user | #{user.username}
+        p.secondary #{createdAt}
     if mediaStory
       | media story implementation here.
     if followedStory
