@@ -8,14 +8,16 @@
           h3.panel-title About #{user.username}
         .panel-body #{user.miniBio}
 
-      / Anime Breakdown Panel
-      .anime-breakdown-panel
-        .panel-heading
-          h3.panel-title Anime Breakdown
-        .panel-body
-          ul
-            li I've watched <strong>1 million hours</strong> of anime.
-            li I've seen <strong>101%</strong> of all anime. My ratings are <strong>20</strong> points <strong>higher</strong> than average.
+      if userInfo.isFulfilled
+        / Anime Breakdown Panel
+        .anime-breakdown-panel
+          .panel-heading
+            h3.panel-title Anime Breakdown
+          .panel-body
+            ul
+              li I've watched <strong>#{userInfo.lifeSpentOnAnime} minutes</strong> of anime.
+      else
+        loading-indicator classNames="light"
 
 
     .personal-feed
