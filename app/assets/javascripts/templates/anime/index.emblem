@@ -55,8 +55,9 @@ h1.series-title.hidden-xs
       div class={:slider showStudios::hidden}
         partial "anime/studios"
 
-  .banner-ad
-    ad-unit adId="1293412" adClass="257f81e798bd68dd81e60f42838f361f"
+  unless nsfw
+    .banner-ad
+      ad-unit adId="1293412" adClass="257f81e798bd68dd81e60f42838f361f"
 
 unless notYetAired
   .review-listing
