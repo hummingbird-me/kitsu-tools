@@ -7,6 +7,7 @@ Hummingbird.LoadMoreComponent = Ember.Component.extend
 
   didInsertElement: ->
     $(window).bind 'scroll.loadmore', $.proxy(@checkInView, this)
+    @checkInView()
 
   willClearRender: ->
     $(window).unbind 'scroll.loadmore'
