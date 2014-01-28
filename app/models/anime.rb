@@ -24,11 +24,10 @@
 #  thetvdb_season_id         :string(255)
 #  english_canonical         :boolean          default(FALSE)
 #  age_rating_guide          :string(255)
-#  mal_age_rating            :string(255)
 #  show_type                 :string(255)
 #  started_airing_date       :date
 #  finished_airing_date      :date
-#  rating_frequencies        :hstore
+#  rating_frequencies        :hstore           default({}), not null
 #  poster_image_file_name    :string(255)
 #  poster_image_content_type :string(255)
 #  poster_image_file_size    :integer
@@ -175,8 +174,7 @@ class Anime < ActiveRecord::Base
     self.poster_image = URI(meta[:poster_image_url]) if self.poster_image_file_name.nil?
     self.genres = (self.genres + meta[:genres]).uniq
     self.producers = (self.producers + meta[:producers]).uniq
-    self.mal_age_rating = meta[:age_rating]
-    self.age_rating, self.age_rating_guide = Anime.convert_age_rating(self.mal_age_rating)
+    self.age_rating, self.age_rating_guide = Anime.convert_age_rating(meta[:age_rating])
     self.episode_count ||= meta[:episode_count]
     self.episode_length ||= meta[:episode_length]
 

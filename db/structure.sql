@@ -83,7 +83,6 @@ CREATE TABLE anime (
     thetvdb_season_id character varying(255),
     english_canonical boolean DEFAULT false,
     age_rating_guide character varying(255),
-    mal_age_rating character varying(255),
     show_type character varying(255),
     started_airing_date date,
     finished_airing_date date,
@@ -2877,3 +2876,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140122132326');
 INSERT INTO schema_migrations (version) VALUES ('20140122133530');
 
 INSERT INTO schema_migrations (version) VALUES ('20140122140909');
+
+INSERT INTO schema_migrations (version) VALUES ('20140128145357');

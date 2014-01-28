@@ -26,7 +26,7 @@
 #  sfw_filter                  :boolean          default(TRUE)
 #  star_rating                 :boolean          default(FALSE)
 #  mal_username                :string(255)
-#  life_spent_on_anime         :integer
+#  life_spent_on_anime         :integer          default(0), not null
 #  about                       :text
 #  confirmation_token          :string(255)
 #  confirmed_at                :datetime

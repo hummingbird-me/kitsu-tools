@@ -6,6 +6,8 @@ gem 'rails', '4.0.2'
 # Pending switching to strong params.
 gem 'protected_attributes'
 
+gem 'annotate', require: false
+
 gem 'grape'
 gem 'grape-entity'
 gem 'active_model_serializers', '~> 0.8'
