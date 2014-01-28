@@ -1,6 +1,9 @@
 Hummingbird.Paginated = Ember.Mixin.create({
   // Return an empty array immediately from the model hook.
-  model: function() { return []; },
+  model: function() {
+    this.set('cursor', null);
+    return [];
+  },
 
   // Wrapper around fetchPage which needs to be implemented by the route.
   // Keeps track of whether we are currently fetching a page, and saves the cursor

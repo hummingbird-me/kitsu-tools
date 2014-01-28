@@ -2,6 +2,9 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   needs: "user"
   user: Ember.computed.alias('controllers.user')
 
+  sortProperties: ['createdAt']
+  sortAscending: false
+
   lifeSpentOnAnimeFmt: (->
     minutes = @get('userInfo.lifeSpentOnAnime')
 

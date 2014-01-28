@@ -8,7 +8,11 @@
           link-to 'user' poster | #{poster.username}
           |  to 
           link-to 'user' user | #{user.username}
-        p.secondary #{createdAt}
+        p.secondary 5 minutes ago
+      .row
+        .col-sm-12
+          .clearfix
+          p.comment-text Rehello goodbye.
     if mediaStory
       | media story implementation here.
     if followedStory
