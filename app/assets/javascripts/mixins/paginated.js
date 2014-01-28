@@ -14,7 +14,7 @@ Hummingbird.Paginated = Ember.Mixin.create({
 
       Ember.run.next(function() { self.set('currentlyFetchingPage', false); });
 
-      if (objects.length == 0) { self.setCanLoadMore(false); }
+      if (objects.get('length') == 0) { self.setCanLoadMore(false); }
       else { self.setCanLoadMore(true); }
 
       return objects;
