@@ -20,7 +20,11 @@ class AnimeSerializer < ActiveModel::Serializer
   end
 
   def poster_image
-    object.poster_image_thumb
+    if !object.sfw? and (scope.nil? or scope.try(:sfw_filter))
+      "/assets/missing-anime-cover.jpg"
+    else
+      object.poster_image_thumb
+    end
   end
 
   def episode_count
