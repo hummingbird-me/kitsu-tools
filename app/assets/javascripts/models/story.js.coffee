@@ -3,3 +3,4 @@ Hummingbird.Story = DS.Model.extend
   user: DS.belongsTo('user')
   poster: DS.belongsTo('user')
   createdAt: DS.attr('date')
+  comment: DS.attr('string')

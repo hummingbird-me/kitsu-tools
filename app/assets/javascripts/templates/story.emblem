@@ -12,7 +12,7 @@
       .row
         .col-sm-12
           .clearfix
-          p.comment-text Rehello goodbye.
+          p.comment-text {{{comment}}}
     if mediaStory
       | media story implementation here.
     if followedStory
