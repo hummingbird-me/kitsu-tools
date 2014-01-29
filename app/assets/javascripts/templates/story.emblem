@@ -2,7 +2,7 @@
   .update-panel
     if commentStory
       .user-image
-        link-to 'user' poster: avatar poster 'thumb'
+        link-to 'user' poster: avatar poster 'thumb_small'
       .comment-content
         h4.story-title
           link-to 'user' poster | #{poster.username}
