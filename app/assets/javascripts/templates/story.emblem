@@ -23,6 +23,31 @@
         ul.genre-list
           each genre in media.genres
             li #{genre}
+
+        ul.feed-events
+          li.single-event
+            .row
+              .col-md-11
+                .user-image.hidden-sm.hidden-xs
+                  img.responsive-image src="http://static.hummingbird.me/users/avatars/000/000/001/thumb_small/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+
+                .col-sm-12.col-md-11.event-info
+                  p: <a>vikhyat</a> watched episode 12
+                  ul.inline-list.secondary
+                    li Remove
+                    li 1 hour ago
+          li.single-event
+            .row
+              .col-md-11
+                .user-image.hidden-sm.hidden-xs
+                  img.responsive-image src="http://static.hummingbird.me/users/avatars/000/000/001/thumb_small/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+
+                .col-sm-12.col-md-11.event-info
+                  p: <a>vikhyat</a> watched episode 11
+                  ul.inline-list.secondary
+                    li Remove
+                    li 1 hour ago
+
     if followedStory
       | followed story implementation here.
     if unknownStory
