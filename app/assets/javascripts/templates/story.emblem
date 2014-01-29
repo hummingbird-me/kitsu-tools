@@ -8,7 +8,7 @@
           link-to 'user' poster | #{poster.username}
           |  to 
           link-to 'user' user | #{user.username}
-        p.secondary 5 minutes ago
+        p.secondary: time-ago time=createdAt
       .row
         .col-sm-12
           .clearfix
