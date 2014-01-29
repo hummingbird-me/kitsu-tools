@@ -27,7 +27,7 @@
           textarea.status-form placeholder="What do you want to talk about?" rows="1"
         .panel-footer Panel footer
 
-      each content itemController="story" itemViewClass="Hummingbird.StoryView"
+      each itemController="story" itemViewClass="Hummingbird.StoryView"
 
       load-more classNames="light" action="loadNextPage"
 
