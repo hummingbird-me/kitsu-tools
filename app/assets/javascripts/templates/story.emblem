@@ -48,7 +48,20 @@
                 | Show More
 
     if followedStory
-      | followed story implementation here.
+      .user-image
+        link-to 'user' user: avatar user 'thumb_small'
+      .comment-content
+        h4.story-title
+          link-to 'user' user | #{user.username}
+          |  followed 
+          pluralize followedUsers.length "user" "users"
+        p.secondary: time-ago time=createdAt
+      .row
+        .col-sm-12
+          .clearfix
+          ol
+            each followedUser in followedUsers
+              li: link-to 'user' followedUser | #{followedUser.username}
 
     if unknownStory
       | #{type}

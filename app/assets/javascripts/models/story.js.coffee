@@ -6,3 +6,4 @@ Hummingbird.Story = DS.Model.extend
   comment: DS.attr('string')
   media: DS.belongsTo('media', polymorphic: true)
   substories: DS.hasMany('substory')
+  followedUsers: DS.hasMany('user')
