@@ -4,6 +4,10 @@ class LibraryEntriesController < ApplicationController
       user = User.find params[:user_id]
       library_entries = LibraryEntry.where(user_id: user.id).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
 
+      if params[:status]
+        library_entries = library_entries.where(status: params[:status])
+      end
+
       # Filter private entries.
       if current_user != user
         library_entries = library_entries.where(private: false)
