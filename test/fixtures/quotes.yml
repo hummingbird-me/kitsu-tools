@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: quotes
+#
+#  id             :integer          not null, primary key
+#  anime_id       :integer
+#  content        :text
+#  character_name :string(255)
+#  user_id        :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  positive_votes :integer          default(0), not null
+#
+
 one:
   anime: sword_art_online
   content: Life isn’t so bad. It’s not so bad.

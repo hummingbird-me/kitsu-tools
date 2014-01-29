@@ -15,6 +15,8 @@ Hummingbird.Anime = DS.Model.extend
 
   libraryEntry: DS.belongsTo('libraryEntry')
 
+  nsfw: (-> @get('ageRating') == "R18+" or @get('ageRating') == "R17+").property('ageRating')
+
   displayTitle: (->
     # HACK! No way right now to inject the current user into models.
     currentUser = Hummingbird.__container__.lookup('controller:currentUser')

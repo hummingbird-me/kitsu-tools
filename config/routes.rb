@@ -26,6 +26,12 @@ Hummingbird::Application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v2 do
+      resources :anime
+    end
+  end
+
   get '/privacy' => 'home#privacy'
 
   # Recommendations
