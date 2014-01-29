@@ -12,6 +12,7 @@ Hummingbird.Anime = DS.Model.extend
   startedAiring: DS.attr('date')
   startedAiringDateKnown: DS.attr('boolean')
   finishedAiring: DS.attr('date')
+  genres: DS.attr('array')
 
   libraryEntry: DS.belongsTo('libraryEntry')
 

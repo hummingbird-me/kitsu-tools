@@ -19,7 +19,10 @@
       .media-content
         h4.story-title
           link-to mediaRoute media.id | #{media.displayTitle}
-        | media story implementation here.
+        / Genres
+        ul.genre-list
+          each genre in media.genres
+            li #{genre}
     if followedStory
       | followed story implementation here.
     if unknownStory

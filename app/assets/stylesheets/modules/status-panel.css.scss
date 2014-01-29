@@ -46,6 +46,18 @@
     @extend .col-md-10;
   }
 
+  .genre-list {
+    @extend .inline-list;
+    @extend .secondary;
+    @extend .hidden-xs;
+    @extend .clearfix;
+
+    /* because metamorphs */
+    li:last-of-type:after {
+      content: "";
+    }
+  }
+
   .user-image {
     @extend .col-xs-2;
     @extend .col-sm-1;
