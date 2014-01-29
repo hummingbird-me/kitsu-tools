@@ -33,7 +33,9 @@
                   .user-image.hidden-sm.hidden-xs
                     link-to 'user' user: avatar user 'thumb_small'
                   .col-sm-12.col-md-11.event-info
-                    p Event test
+                    p
+                      link-to 'user' user | #{user.username}
+                      |  {{{substory.html}}}
                     ul.inline-list.secondary
                       li Remove
                       li: time-ago time=substory.createdAt
