@@ -14,7 +14,12 @@
           .clearfix
           p.comment-text {{{comment}}}
     if mediaStory
-      | media story implementation here.
+      .series-thumb
+        img.responsive-image src=media.posterImage
+      .media-content
+        h4.story-title
+          link-to mediaRoute media | #{media.displayTitle}
+        | media story implementation here.
     if followedStory
       | followed story implementation here.
     if unknownStory

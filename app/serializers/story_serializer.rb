@@ -5,6 +5,7 @@ class StorySerializer < ActiveModel::Serializer
 
   has_one :user, embed_key: :name
   has_one :poster, embed_key: :name, root: :users
+  has_one :media, polymorphic: true, embed_key: :slug
 
   def type
     object.story_type
@@ -22,5 +23,12 @@ class StorySerializer < ActiveModel::Serializer
   end
   def include_comment?
     object.story_type == "comment"
+  end
+
+  def media
+    object.target
+  end
+  def include_media?
+    object.story_type == "media_story"
   end
 end

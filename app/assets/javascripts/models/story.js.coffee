@@ -4,3 +4,4 @@ Hummingbird.Story = DS.Model.extend
   poster: DS.belongsTo('user')
   createdAt: DS.attr('date')
   comment: DS.attr('string')
+  media: DS.belongsTo('media', polymorphic: true)
