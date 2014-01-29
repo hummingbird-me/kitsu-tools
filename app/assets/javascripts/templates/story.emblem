@@ -18,7 +18,7 @@
         img.responsive-image src=media.posterImage
       .media-content
         h4.story-title
-          link-to mediaRoute media | #{media.displayTitle}
+          link-to mediaRoute media.id | #{media.displayTitle}
         | media story implementation here.
     if followedStory
       | followed story implementation here.
