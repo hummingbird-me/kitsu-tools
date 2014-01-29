@@ -5,3 +5,4 @@ Hummingbird.Story = DS.Model.extend
   createdAt: DS.attr('date')
   comment: DS.attr('string')
   media: DS.belongsTo('media', polymorphic: true)
+  substories: DS.hasMany('substory')
