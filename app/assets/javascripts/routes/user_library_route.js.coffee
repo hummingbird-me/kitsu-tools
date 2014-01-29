@@ -9,7 +9,7 @@ Hummingbird.UserLibraryRoute = Ember.Route.extend
     controller.set 'loadingRemaining', true
     user_id = @modelFor('user').get('id')
     @store.find('libraryEntry', user_id: user_id).then (entries) ->
-      controller.get('content').addObjects entries.filter((l) -> l.get('status') != "Currently Watching").get('length')
+      controller.get('content').addObjects entries.filter((l) -> l.get('status') != "Currently Watching")
       controller.set 'loadingRemaining', false
 
   deactivate: ->
