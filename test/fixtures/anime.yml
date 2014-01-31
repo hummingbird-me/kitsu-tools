@@ -59,7 +59,6 @@ sword_art_online:
   thetvdb_season_id: ''
   english_canonical: false
   age_rating_guide: Teens 13 or older
-  mal_age_rating: PG-13 - Teens 13 or older
   show_type: TV
   started_airing_date: 2012-07-08
   finished_airing_date: 2012-12-23
@@ -92,7 +91,6 @@ monster:
   thetvdb_season_id: ''
   english_canonical: false
   age_rating_guide: Mild Nudity
-  mal_age_rating: R+ - Mild Nudity
   show_type: TV
   started_airing_date: 2004-04-07
   finished_airing_date: 2005-09-28

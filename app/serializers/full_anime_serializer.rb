@@ -59,8 +59,4 @@ class FullAnimeSerializer < AnimeSerializer
     ratings.pop; ratings.shift
     ratings
   end
-
-  def genres
-    object.genres.map {|x| x.name.parameterize }.sort
-  end
 end

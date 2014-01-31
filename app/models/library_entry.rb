@@ -25,6 +25,7 @@ class LibraryEntry < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :anime
+  has_many :genres, through: :anime
   has_many :stories, dependent: :destroy, foreign_key: :watchlist_id
 
   validates :user, :anime, :status, presence: true

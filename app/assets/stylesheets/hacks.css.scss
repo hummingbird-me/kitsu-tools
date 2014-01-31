@@ -3,6 +3,9 @@ a {
   outline: 0 !important;
 }
 
+/* Fix panel rounded corner artefacts. */
+.panel { border: none; }
+
 .franchise-show {
   @include make-sm-column(12);
   @include clearfix();

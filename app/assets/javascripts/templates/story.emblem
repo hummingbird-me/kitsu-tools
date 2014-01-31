@@ -1,0 +1,67 @@
+.story
+  .update-panel
+    if commentStory
+      .user-image
+        link-to 'user' poster: avatar poster 'thumb_small'
+      .comment-content
+        h4.story-title
+          link-to 'user' poster | #{poster.username}
+          |  to 
+          link-to 'user' user | #{user.username}
+        p.secondary: time-ago time=createdAt
+      .row
+        .col-sm-12
+          .clearfix
+          p.comment-text {{{comment}}}
+
+    if mediaStory
+      .series-thumb
+        img.responsive-image src=media.posterImage
+      .media-content
+        h4.story-title
+          link-to mediaRoute media.id | #{media.displayTitle}
+        / Genres
+        ul.genre-list
+          each genre in media.genres
+            li #{genre}
+
+        ul.feed-events
+          each substory in displaySubstories
+            li.single-event
+              .row
+                .col-md-11
+                  .user-image.hidden-sm.hidden-xs
+                    link-to 'user' user: avatar user 'thumb_small'
+                  .col-sm-12.col-md-11.event-info
+                    p
+                      link-to 'user' user | #{user.username}
+                      |  {{{substory.html}}}
+                    ul.inline-list.secondary
+                      li Remove
+                      li: time-ago time=substory.createdAt
+
+          if moreThanTwoSubstories
+            a{action "toggleShowAll"}
+              if showAll
+                | Show Less
+              else
+                | Show More
+
+    if followedStory
+      .user-image
+        link-to 'user' user: avatar user 'thumb_small'
+      .comment-content
+        h4.story-title
+          link-to 'user' user | #{user.username}
+          |  followed 
+          pluralize followedUsers.length "user" "users"
+        p.secondary: time-ago time=createdAt
+      .row
+        .col-sm-12
+          .clearfix
+          ol
+            each followedUser in followedUsers
+              li: link-to 'user' followedUser | #{followedUser.username}
+
+    if unknownStory
+      | #{type}

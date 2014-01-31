@@ -1,6 +1,6 @@
 check process unicorn with pidfile /u/apps/hummingbird/shared/pids/unicorn.pid
   group hummingbird
-  start program = "/bin/su - vikhyat -c 'cd /u/apps/hummingbird/current/ && bundle exec unicorn_rails -c config/unicorn.conf.rb'"
+  start program = "/bin/su - vikhyat -c 'cd /u/apps/hummingbird/current/ && bundle exec unicorn -c config/unicorn.conf.rb'"
   stop program = "/bin/su - vikhyat -c 'kill `cat /u/apps/hummingbird/shared/pids/unicorn.pid`'"
   if totalmemory > 60% for 5 cycles
     then exec "/bin/kill -USR2 `/bin/cat /u/apps/hummingbird/shared/pids/unicorn.pid`"
