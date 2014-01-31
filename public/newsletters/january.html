@@ -1,0 +1,508 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="format-detection" content="telephone=no">
+<title><%= @subject %></title>
+<style type="text/css">
+  a {text-decoration: none; color: #f3730b;}
+  td                {border-collapse:collapse;}
+  
+  .mailingOptions         {color:#cccccc; font-family:Arial, Tahoma, Verdana, sans-serif;            font-size:13px;  font-weight:lighter;   padding:0; margin:0; text-align:left;            letter-spacing:0; }
+  .mailingOptions2          {color:#cccccc; font-family:Arial, Tahoma, Verdana, sans-serif;            font-size:13px;  font-weight:lighter;   padding:0; margin:0; text-align:right;           letter-spacing:0; }
+  .mailingOptionsLink       {color:#999999;  text-decoration:none; outline:none;                    font-weight:lighter;} 
+  .date             {color:#999999; font-family:Arial, Tahoma, Verdana, sans-serif;            font-size:13px;  font-weight:bold;     padding:0; margin:0; text-align:center;           letter-spacing:0; }
+  .menu             {color:#dddddd; font-family:Arial, Tahoma, Verdana, sans-serif;            font-size:13px;  font-weight:bold;   padding:0; margin:0; text-align:center;  line-height:130%;  letter-spacing:0; }
+  .menuLink           {color:#999999;  text-decoration:none; outline:none;}  
+  
+  .companySloganTD        {color:#f3730b; font-family:Arial, Tahoma, Verdana, sans-serif;           font-size:23px; font-weight:bold;     padding:0; margin:0; text-align:center;  line-height:150%;   letter-spacing:0; }
+  .clickableSloganTD        {color:#f3730b; font-family:Arial, Tahoma, Verdana, sans-serif;           font-size:15px;  font-weight:bold;    padding:0; margin:0; text-align:center;  line-height:160%; letter-spacing:0; }
+  .clickableSloganLink        {color:#f3730b;  text-decoration:none; outline:none;}   
+  
+  .sectionsHeaderTD       {color:#666666; font-family:Arial, Tahoma, Verdana, sans-serif;     font-size:28px;  font-weight:lighter;   padding:0; margin:0; text-align:center;   line-height:145%;  letter-spacing:0;}
+  .subHeaderTD          {color:#888888; font-family:Arial, Tahoma, Verdana, sans-serif;     font-size:18px;  font-weight:lighter;   padding:0; margin:0; text-align:left;   line-height:155%;  letter-spacing:0;}
+  .sectionRegularInfoTextTD   {color:#777777; font-family:Arial, Tahoma, Verdana, sans-serif;       font-size:15px;  font-weight:lighter;   padding:0; margin:0; text-align:left;       line-height:165%;  letter-spacing:0;}
+  .buttonsAndImagesLink     {color:#bbbbbb; text-decoration:none; outline:none;                   font-weight:lighter;} 
+  
+  .footerInfoTDSupport        {color:#666666; font-family: Arial, Tahoma, Verdana, sans-serif;      font-size:13px; font-weight:lighter;  padding:0; margin:0; text-align:left;   line-height:165%;   letter-spacing:0;}
+  .footerInfoTDSupport2     {color:#666666; font-family: Arial, Tahoma, Verdana, sans-serif;      font-size:13px; font-weight:lighter;  padding:0; margin:0; text-align:left;   line-height:165%;   letter-spacing:0;}
+  .footerInfoTDLink       {color:#888888; text-decoration:none; outline:none; border-bottom:1px dotted #f3730b; font-weight:bold;}
+  
+  .iphoneAvoidAutoLinkHackDate  {color:#666666; text-decoration: none; pointer-events: none;}
+  .iphoneAvoidAutoLinkHackDate2 {color:#999999; text-decoration: none; pointer-events: none;}
+
+  .subscribeUnsubscribeLink   {color:#666666;  text-decoration:none;  outline:none; border-bottom:1px dotted #f3730b;    font-weight:bold;  letter-spacing:0;}
+  
+  .pictureAlternativeTextTD     {color:#bbbbbb; font-family:Arial, Tahoma, Verdana, sans-serif;       font-size:8px;                  padding:0; margin:0; text-align:center; line-height:1px;}
+  
+  .adressOrAnyOtherTD     {color:#ffffff; font-family:Arial, Tahoma, Verdana, sans-serif;         font-size:13px;  font-weight:lighter;     padding:0; margin:0; text-align:center; line-height:165%;  letter-spacing:0;}
+  .copyrightTD            {color:#ffffff; font-family:Arial, Tahoma, Verdana, sans-serif;         font-size:13px;  font-weight:bold;    padding:0; margin:0; text-align:center; line-height:165%;  letter-spacing:0;}
+  
+  .ReadMsgBody{width: 100%; }
+  .ExternalClass{width: 100%; }
+  body{-webkit-text-size-adjust:100%;  -ms-text-size-adjust:100%;  -webkit-font-smoothing:antialiased; margin:0 !important;   padding:0 !important;   width:100% !important; }
+  
+
+
+
+@media only screen and (max-width: 599px) 
+       {
+    body{min-width:100% !important;}  
+       
+    table[class=eraseForMobile]     {width:0; display:none !important;}
+    table[class=table600]       {width:420px !important;}
+    table[class=table200]     {width:420px !important;}
+    table[class=table200B]      {width:420px !important; margin:20px 0 0 0 !important;}
+    table[class=youreceive]     {width:160px !important;}
+    table[class=contactJpg]       {width:230px !important;}
+    
+    td[class=companySloganTD]     {font-size:19px !important;}
+    td[class=sectionsHeaderTD]    {font-size:22px !important;}
+    td[class=subHeaderTD]       {font-size:17px !important;}
+    td[class=sectionRegularInfoTextTD]  {font-size:14px !important;}
+    
+    img[class=image600]       {width:420px !important; height:203px !important;}
+    img[class=image280]       {width:260px !important; height:260px !important;}
+    }
+    
+
+
+@media only screen and (max-width: 479px) 
+       {
+    body{min-width:100% !important;} 
+    
+    table[class=eraseForMobile]     {width:0; display:none !important;}
+    table[class=table600]       {width:280px !important;}
+    table[class=table200]     {width:280px !important;}
+    table[class=table200B]      {width:280px !important; margin:20px 0 0 0 !important;}
+    table[class=youreceive]     {width:280px !important; margin:20px 0 0 0 !important;}
+    table[class=contactJpg]       {width:280px !important;}
+    
+    td[class=companySloganTD]     {font-size:16px !important;}
+    td[class=sectionsHeaderTD]    {font-size:20px !important;}
+    td[class=subHeaderTD]       {font-size:16px !important;}
+    td[class=sectionRegularInfoTextTD]  {font-size:14px !important;}
+    td[class=footerInfoTDSupport] {text-align:center !important;}
+    td[class=footerInfoTDSupport2]  {text-align:center !important;}
+    
+    img[class=removeImage]    {display:none !important;}
+    img[class=image600]       {width:280px !important; height:135px !important;}
+    img[class=image280]       {width:280px !important; height:280px !important;}
+    }
+
+
+
+
+
+</style>
+</head>
+<body style="background-color: #f8f8f8;margin: 0;padding: 0;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;width: 100%;">
+<center>
+      <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff">
+    <tr>
+      <td valign="top" align="center" style="border-collapse: collapse;">
+
+
+                     <!--================= 3PX THICK DIVIDER LINE ============-->
+                      <table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#eeeeee">
+                              <tr>
+                                    <td valign="top" align="center" height="3" bgcolor="#f3730b" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                              </tr>
+        </table>
+                        <!--==================== End of the section ==============-->  
+
+
+                        <!--=========================================================== DATE, AND MAILING OPTIONS SECTION ==== -->
+                        <table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8" class="eraseForMobile">
+                          <tr>
+                                    <td valign="top" align="center" bgcolor="#f8f8f8" style="border-collapse: collapse;"> 
+                                      <table align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8">
+                                            <tr>
+                                                  <td valign="top" align="center" height="10" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                </tr>
+              </table>
+                                  <table align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8">
+                                                <tr>
+
+
+                                                  <!--======= VIEW ONLINE Link =====-->
+                                                  <td valign="middle" align="left" width="180" height="15" bgcolor="#f8f8f8" class="mailingOptions" style="border-collapse: collapse;color: #cccccc;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;letter-spacing: 0;"><a href="http://hummingbird.me/newsletters/october.html" target="_blank" class="mailingOptionsLink" style="text-decoration: none;color: #999999;outline: none;font-weight: lighter;">View online version</a></td>
+                                                  <!--================ end of view online section ============-->
+
+
+                                                      <!--================= DATE SECTION Here ===============-->
+                                                      <td valign="middle" align="center" width="240" height="15" bgcolor="#f8f8f8" class="date" style="border-collapse: collapse;color: #999999;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: bold;padding: 0;margin: 0;text-align: center;letter-spacing: 0;"><a href="#" class="iphoneAvoidAutoLinkHackDate2" style="text-decoration: none;color: #999999;pointer-events: none;">January 2014</a></td>
+                                                      <!--================ end of date section ===============-->
+
+
+                                                      <!--=== FORWARD AND SUBSCRIBE LINKS, don't use words too long here =-->
+                                                      <td valign="middle" align="right" width="180" height="15" bgcolor="#f8f8f8" class="mailingOptions2" style="border-collapse: collapse;color: #cccccc;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: right;letter-spacing: 0;"></td>
+                                                  <!--============= end of forward subscribe section ==========-->
+                                                </tr>
+                                          </table>
+                                    </td>
+                              </tr>
+        </table>
+                        <table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8" class="eraseForMobile" style="border-bottom-style:solid; border-bottom-color:#ffffff; border-bottom-width:1px;">
+          <tr>
+            <td valign="top" align="center" height="10" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+          </tr>
+        </table>
+                        <!--========================================================================== End of the section ====-->  
+                        <!--========= LINE UNDER THE MAILING OPTIONS AND DATE ======-->
+                        <table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="border-top-style:solid; border-top-color:#eeeeee; border-top-width:1px;">
+                          <tr>
+                                <td valign="top" align="center" height="5" bgcolor="#ffffff" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+          </tr>
+        </table>
+                        <!--=================== End of the section ===============-->
+                        <!--================================================================== HB LOGO SECTION =====-->
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="table600">
+                          <tr>
+                                    <td valign="top" align="center" bgcolor="#ffffff" style="border-collapse: collapse;">                             
+                                  <table align="center" width="250" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff">
+                                                <tr>
+                                          <td valign="top" align="center" width="250" bgcolor="#ffffff" class="pictureAlternativeTextTD" style="border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;"><a href="#" target="_blank" class="buttonsAndImagesLink" style="text-decoration: none;color: #bbbbbb;outline: none;font-weight: lighter;"><img src="http://cl.ly/image/0R3g2J3W2C2U/h-logo.jpg" style="display:block;" alt="" border="0" align="top" hspace="0" vspace="0" width="250" height="100"></a></td>
+                                    </tr>
+              </table>
+            </td>
+                              </tr>
+        </table>
+                        <!--======================================================================= End of the section =====-->
+
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="eraseForMobile">
+                          <tr>
+                                    <td valign="top" align="center" bgcolor="#ffffff" style="border-collapse: collapse;"> 
+                                          <!--======================  LINE =====================-->
+                                          <table align="center" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#eeeeee">
+                                                <tr>
+                                                  <td valign="top" align="center" height="1" bgcolor="#eeeeee" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                </tr>
+              </table>
+                                          <!--==================== End of the section ==============--> 
+
+
+                                          <!--================================================================= MENU SECTION ====-->
+                                          <table align="center" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff">
+                                            <tr>
+                                                  <td valign="middle" align="center" height="12" bgcolor="#ffffff" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                </tr>
+                                                <tr>
+                                                      <td valign="middle" align="center" width="600" height="15" bgcolor="#ffffff" class="menu" style="border-collapse: collapse;color: #dddddd;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: bold;padding: 0;margin: 0;text-align: center;line-height: 130%;letter-spacing: 0;"><a href="http://hummingbird.me/" target="_blank" class="menuLink" style="text-decoration: none;color: #999999;outline: none;">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://hummingbird.me/dashboard" target="_blank" class="menuLink" style="text-decoration: none;color: #999999;outline: none;">Dashboard</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://hummingbird.me/anime" target="_blank" class="menuLink" style="text-decoration: none;color: #999999;outline: none;">Explore</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://hummingbird.me/community/" target="_blank" class="menuLink" style="text-decoration: none;color: #999999;outline: none;">Community</a></td>
+                                                </tr>
+                                                <tr>
+                                                  <td valign="middle" align="center" height="11" bgcolor="#ffffff" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                </tr>
+                                          </table>
+                                          <!--=============================================================== End of the section ====-->                                           
+            </td>
+          </tr>
+        </table>
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="table600" style="border-top-style:solid; border-top-color:#eeeeee; border-top-width:1px;">
+                          <tr>
+                                    <td valign="middle" align="center" height="21" bgcolor="#ffffff" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+          </tr>
+        </table>
+                        <!--================================================================ Title SECTION ==== -->
+        <table align="center" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="table600">
+                              <tr>
+            <!--=== Title SECTION ====-->
+            <td valign="middle" align="center" height="15" bgcolor="#ffffff" class="companySloganTD" style="border-collapse: collapse;color: #f3730b;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 23px;font-weight: bold;padding: 0;margin: 0;text-align: center;line-height: 150%;letter-spacing: 0;">The Newseltter that leapt through time!</td>
+            <!--================ End of the section ================-->
+                              </tr>                       
+        </table>
+                        <!--======================================================================= End of the section ====-->
+
+                        <table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="border-bottom-style:solid; border-bottom-color:#eeeeee; border-bottom-width:1px;">
+                          <tr>
+                                <td valign="top" align="center" height="21" bgcolor="#ffffff" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+          </tr>
+        </table>
+                  </td>
+    </tr>
+  </table>
+      <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8">
+    <tr>
+      <td valign="top" align="center" style="border-collapse: collapse;">
+            <!--============================================================================================================ END OF THE HEADER SECTION ==-->      
+
+  
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    
+                        
+                        
+                        
+                        
+                        
+                       <!--================================================================================== Intro section ===-->
+                        <table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8" style="border-top-style:solid; border-top-color:#ffffff; border-top-width:1px;">
+                          <tr>
+                                <td valign="top" align="center" height="21" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+          </tr>
+        </table>
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600">
+                          <tr>
+                                <!--================== Intro Text SECTION =============-->
+                                    <td valign="middle" align="center" height="10" bgcolor="#f8f8f8" class="sectionRegularInfoTextTD" style="border-collapse: collapse;color: #777777;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 15px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;">
+                                    <strong>It's 2014! Except... It's not.</strong>
+                                    Not for me, anyway! I'm testing an amazing new product that we've spent the last couple months developing here at the Hummingbird HQ.
+                                    <br>
+                                    <br>
+                                    Unfortunately, Vik made me promise not to tell you guys abou-- OKAY FINE, IT'S A TIME MACHINE! You read correctly, I'm writing this newsletter from the past. Your may be wondering, "Josh, why didn't I ever get a November or December newsletter?" Well, that's easy to answer. I murdered past Josh to protect my future identity. I'm sure he would have written those newsletters if he wasn't dead... but he is. I could write them, but I already wrote them once, before I was murdered in 2013.
+                                    <br>
+                                    <br>
+                                    When we weren't working on bending time and space to our will, we were researching a new technology that allows us to power our servers with the howls of outrage from readers who felt wronged when something they love was excluded from the "best of" for the year.
+                                    <br>
+                                    <br>
+                                    <strong>What's that? You're wondering what the best anime of 2013 are? Look no further than the <a href="http://hummingbird.me/2013">Hummingbird Year in Review</a>!</strong></td>
+                                <!--================== End of the section ================-->
+
+                              </tr>
+                              <tr>
+                                <td valign="top" align="center" height="25" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                              </tr>
+                        </table>
+
+                        <!--================== New Logo SECTION =================-->
+                        <table align="center" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0">
+                          <tr>
+                                <!-- image width MUST BE 596 pixels , and its height MUST BE 290px. ======-->
+                                <td valign="top" align="center" bgcolor="#f8f8f8" class="pictureAlternativeTextTD" style="border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;"><a href="http://hummingbird.me/2013" style="text-decoration: none;color: #f3730b;"><img class="image600" src="http://cl.ly/image/3F461Z3V2K2t/newir.jpg" style="display:block;" alt="IMG" border="0" align="top" hspace="0" vspace="0"></a></td>
+                              </tr>
+                        </table>
+                        <!--================== End of the section ================-->
+
+                        <!--==== Awesome Padding ====-->
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600">
+                          <tr>
+                                <td valign="top" align="center" height="20" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                              </tr>
+                        </table>
+                        <!--================== End of the section ================-->
+
+                        <!--================== Witty Quote section =================-->
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600">
+                          <tr>
+                                    <td valign="middle" align="center" height="10" bgcolor="#f8f8f8" class="sectionsHeaderTD" style="border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 20px;font-weight: lighter;padding: 0;margin: 0;text-align: center;line-height: 145%;letter-spacing: 0;">Spoilers: <a href="http://hummingbird.me/anime/diabolik-lovers">Diabolik Lovers</a> didn't win.</td>
+                              </tr>
+                        </table>
+                        <!--================== End of the section ================-->
+
+                        <!--==== Awesome Padding ====-->
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600" style="border-bottom-style:solid; border-bottom-color:#e8e8e8; border-bottom-width:1px;">
+                           <tr>
+            <td valign="top" align="center" height="15" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+          </tr>
+        </table>
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600" style="border-top-style:solid; border-top-color:#ffffff; border-top-width:1px;">
+                           <tr>
+            <td valign="top" align="center" height="15" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+          </tr>
+        </table>
+                        <!--================== End of the section ================-->
+
+                         <!-- ================== Logo Info Section ==================-->
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600">
+                          <tr>      
+                                <!--== (You may use a "<br/>" tag to be able to cut current line from anywhere you wish ) ==-->                                                                                                     
+                                    <td valign="middle" align="center" bgcolor="#f8f8f8" height="10" class="sectionRegularInfoTextTD" style="border-collapse: collapse;color: #777777;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 15px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;">Machines are starting to become self-aware. It seems killing past Josh had dire consequences. Dire. Not Diarhhea. Grow up, this is serious. Unfortunately, as you may have suspected, my cofounder, Vikhyat, was indeed a cyborg.
+                                    <br>
+                                    <br>
+                                    Now that it's come down to man vs machine, I'm sad to report that he chose the other side. Armed with a giant mech suit made out of toasters, $200 toothbrushes and thinner ipads, I'm not sure he can be defeated. All I have to defend the humans with is that really itchy sweater I made out of things I found in your trash.
+                                    <br>
+                                    <br>
+                                    I can't help but think about how good January 2014 would have been if we hadn't tried to control space and time. We would have probably launched the newly redesigned <a href="http://hummingbird.me/users/Josh">Libary pages</a>. The ones with the <a href="http://hummingbird.me/users/Vikhyat">beautiful large cover photos</a> and the increased speed. Rest assured, I'm going to do everything in my power to get things back to normal. If you never received a commemorative <a href="http://seabreacher.com/seabreacher-x/">shark boat</a> for being a member of the world's most ass-kicking-ist anime website named after a bird, you'll know I've failed... and I'm sorry.
+                                    <br>
+                                    <br>
+                                    If you enjoyed the newsletter, be sure to <a href="https://twitter.com/intent/tweet?in_reply_to=395777256603525120&related=hummingbird_me,twitterapi" style="text-decoration: none;color: #f3730b;">tweet and let us know</a> or discuss it <a href="http://forums.hummingbird.me/t/hummingbird-january-newsletter/5268" style="text-decoration: none;color: #f3730b;">on the forums</a>, keep in mind that I'm personally informed whenever anyone decides not to post on the forums, and I cry very hard every time it happens.  
+                                    <br>
+                                    <!--================== End of the section ================-->
+                                    </td>
+                              </tr>
+                        </table>
+                        <!--================== End of the section ================-->
+
+                        <!--=============================================================================================================== footer ====-->
+              </td>
+    </tr>
+  </table>           
+      <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8">
+    <tr>
+      <td valign="top" align="center" style="border-collapse: collapse;">
+                    <table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8" style="border-top-style:solid; border-top-color:#ffffff; border-top-width:1px;">
+                          <tr>
+                                <td valign="top" align="center" height="20" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+          </tr>
+        </table>
+                        <!--================================================================ Anime quote ==== -->
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8" class="table600">
+                          <tr>
+                                    <td valign="top" align="center" bgcolor="#f8f8f8" style="border-collapse: collapse;">                           
+                                  <table align="center" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8">
+                                                <tr>
+                                                      <!--=== Quote text  ====-->
+                                                      <td valign="middle" align="center" height="15" bgcolor="#f8f8f8" class="companySloganTD" style="border-collapse: collapse;color: #f3730b;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 23px;font-weight: bold;padding: 0;margin: 0;text-align: center;line-height: 150%;letter-spacing: 0;">"Your banana is all floppy." 
+                                                      </td>
+                                                  <!--================= End of the section ===============-->
+                                                </tr>
+                                                <tr>
+                                                      <!--=== Quote Author  ====-->
+                                                      <td valign="middle" align="center" height="15" bgcolor="#f8f8f8" style="border-collapse: collapse;">— Daru (The Girl Who Leapt Through Time)
+                                                      </td>
+                                                  <!--================= End of the section ===============-->
+                                                </tr>
+                                          </table>
+            </td>
+                              </tr>
+        </table>
+                        <!--======================================================================= End of the section ====--> 
+                        <!--==== Awesome paddng ====-->
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600" style="border-bottom-style:solid; border-bottom-color:#e8e8e8; border-bottom-width:1px;">
+                           <tr>
+            <td valign="top" align="center" height="20" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+          </tr>
+        </table>
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600" style="border-top-style:solid; border-top-color:#ffffff; border-top-width:1px;">
+                           <tr>
+            <td valign="top" align="center" height="20" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+          </tr>
+        </table>
+                        <!--================== End of the section ================-->
+                        <!--============ Contact Stuff ==========-->
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600">
+                          <tr>
+                                <td valign="top" height="15" bgcolor="#f8f8f8" style="border-collapse: collapse;"> 
+                                      <table align="left" width="260" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0">
+                                            <tr>
+                                                  <td valign="top" align="center" height="15" bgcolor="#f8f8f8" style="border-collapse: collapse;">
+                                                        <!--============================================== Home Section =====-->
+                                                            <table align="center" width="260" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="contactJpg">
+                                                                  <tr>
+                                                                    <!--============= Icon ===========-->
+                                                                        <td valign="top" align="center" bgcolor="#f8f8f8" class="pictureAlternativeTextTD" style="border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;"><img class="removeImage" src="https://d2q0qd5iz04n9u.cloudfront.net/_ssl/proxy.php/http/gallery.mailchimp.com/14592d1effa224168c1609dbc/images/iconHome.jpg" style="display:block;" alt="" border="0" align="top" hspace="0" vspace="0" width="30" height="30"></td>
+                                                                       <!--============= Link ============-->
+                                                                        <td valign="top" align="left" width="230" bgcolor="#f8f8f8" class="footerInfoTDSupport2" style="border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;"><a href="http://www.hummingbird.me" target="_blank" class="footerInfoTDLink" style="text-decoration: none;color: #888888;outline: none;border-bottom: 1px dotted #f3730b;font-weight: bold;">www.hummingbird.me</a></td>
+                                                                  </tr>
+                                                            </table>
+                                                             <!--============================================================ End of Home  ========-->
+                                                             <!--========================================= Email Stuff =====-->
+                                                             <table align="center" width="260" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="contactJpg">
+                                                                  <tr>
+                                                                    <!--============= Icon ===========-->
+                                                                        <td valign="top" align="center" bgcolor="#f8f8f8" class="pictureAlternativeTextTD" style="border-collapse: collapse;color: #bbbbbb;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 8px;padding: 0;margin: 0;text-align: center;line-height: 1px;"><img class="removeImage" src="https://d2q0qd5iz04n9u.cloudfront.net/_ssl/proxy.php/http/gallery.mailchimp.com/14592d1effa224168c1609dbc/images/iconEmail.jpg" style="display:block;" alt="" border="0" align="top" hspace="0" vspace="0" width="30" height="30"></td>
+                                                                        <!--============= Link ============-->
+                                                                        <td valign="top" align="left" width="230" bgcolor="#f8f8f8" class="footerInfoTDSupport2" style="border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;"><a href="#" target="_blank" class="footerInfoTDLink" style="text-decoration: none;color: #888888;outline: none;border-bottom: 1px dotted #f3730b;font-weight: bold;">josh@hummingbird.me</a></td>
+                                                                  </tr>
+                                                            </table>
+                                                            <!--============================================================= End contact =====-->
+                  </td>
+                </tr>
+              </table>
+                                          <table align="left" width="322" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="youreceive">
+                                                <tr>
+                                                  <td valign="top" align="center" bgcolor="#f8f8f8" style="border-collapse: collapse;">
+                                                            <table align="center" width="5" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="eraseForMobile">
+                                                                  <tr>
+                                                                        <td valign="top" align="center" height="20" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                                                                  </tr>
+                                                            </table>
+                                                      </td>
+                                                  <td valign="top" align="center" bgcolor="#f8f8f8" style="border-collapse: collapse;">
+                    <table align="center" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0">
+                                                                  <tr>
+                                                                    <!--==================================== Unsubscribe ====-->
+                                                                    <td valign="top" align="center" height="20" bgcolor="#f8f8f8" class="footerInfoTDSupport" style="border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;">You are receiving this because you've signed up for the Hummingbird Beta. You have great taste.<br> Tired of being awesome? <a href="http://hummingbird.me/unsubscribe/newsletter/<%= @user.encrypted_email %>" target="_blank" class="subscribeUnsubscribeLink" style="text-decoration: none;color: #666666;outline: none;border-bottom: 1px dotted #f3730b;font-weight: bold;letter-spacing: 0;">Unsubscribe</a> from this list</td>
+                                                                    <!--====================================================== End of the section ================-->
+                                                                  </tr>
+                                                            </table>
+                  </td>
+                                                </tr>
+              </table>
+                                    </td>
+                              </tr>
+                        </table>
+                        <!--================== End of the section ================-->
+                        <table align="center" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8" class="table600">
+                          <tr>
+                                    <td valign="top" align="center" bgcolor="#f8f8f8" style="border-collapse: collapse;"> 
+              <!--==== Awesome Padding ====-->
+                                          <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600" style="border-bottom-style:solid; border-bottom-color:#e8e8e8; border-bottom-width:1px;">
+                                                 <tr>
+                                                      <td valign="top" align="center" height="20" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                                                </tr>
+                                          </table>
+                                          <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600" style="border-top-style:solid; border-top-color:#ffffff; border-top-width:1px;">
+                                                 <tr>
+                                                      <td valign="top" align="center" height="15" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                                                </tr>
+                                          </table>
+                                          <!--================== End of the section ================-->
+                                          <!--==== social icons ======-->
+                                          <table align="center" width="50" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f8f8">
+                                                <tr>
+                                                  <!--=============== Facebook ==========-->
+                                                      <td valign="top" align="center" height="15" bgcolor="#f8f8f8" style="border-collapse: collapse;"><a href="https://www.facebook.com/pages/Hummingbird/460188747373182" target="_blank" class="buttonsAndImagesLink" style="text-decoration: none;color: #bbbbbb;outline: none;font-weight: lighter;"><img src="https://d2q0qd5iz04n9u.cloudfront.net/_ssl/proxy.php/http/gallery.mailchimp.com/14592d1effa224168c1609dbc/images/facebookSocial.jpg" style="display:block;" alt="" border="0" align="top" hspace="0" vspace="0" width="45" height="50"></a></td>
+                                                      <!--=============== End of facebook section ========-->
+                                                      <!--===============  Twitter ==========-->
+                                                      <td valign="top" align="center" height="15" bgcolor="#f8f8f8" style="border-collapse: collapse;"><a href="https://twitter.com/hummingbird_me" target="_blank" class="buttonsAndImagesLink" style="text-decoration: none;color: #bbbbbb;outline: none;font-weight: lighter;"><img src="https://d2q0qd5iz04n9u.cloudfront.net/_ssl/proxy.php/http/gallery.mailchimp.com/14592d1effa224168c1609dbc/images/twitterSocial.jpg" style="display:block;" alt="" border="0" align="top" hspace="0" vspace="0" width="45" height="50"></a></td>
+                                                      <!--=============== End of twitter section ========-->
+                                                </tr>
+                                          </table>
+                                          <!--========================== End of the section ========================--> 
+                                    </td>
+          </tr>
+        </table>
+                        <!--===== Awesome Padding ========-->
+                       <table align="center" width="100%" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600" style="border-bottom-style:solid; border-bottom-color:#e8e8e8; border-bottom-width:1px;">
+                          <tr>
+                                <td valign="top" align="center" height="15" bgcolor="#f8f8f8" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                              </tr>
+                        </table>
+                        <!--================== End of the section ================-->
+                        <table align="center" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f3730b" style="border-top-style:solid; border-top-color:#ffffff; border-top-width:1px;">
+                          <tr>
+                                <td valign="top" align="center" height="15" bgcolor="#f3730b" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                              </tr>
+                              <!--======================================================================================== Copyright ==== -->
+          <tr>
+                                <td valign="top" align="center" height="15" bgcolor="#f3730b" style="border-collapse: collapse;">
+                                  <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f3730b" border="0" class="table600">
+                                            <tr>
+                                                      <!--=============== Address ================-->
+                                                      <td valign="middle" align="center" height="10" bgcolor="#f3730b" class="adressOrAnyOtherTD" style="border-collapse: collapse;color: #ffffff;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: center;line-height: 165%;letter-spacing: 0;">123 Laughlin Farm RD, Blairsville PA, 15717</td>  
+                                              <!--=============== End of the section ================-->
+                                                </tr>
+                                                <tr>
+                                                      <td valign="middle" align="center" height="5" bgcolor="#f3730b" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td> 
+                                            </tr>
+                                                <tr>
+                                                      <!--=============== Copyright ================-->
+                                                      <td valign="middle" align="center" height="10" bgcolor="#f3730b" class="copyrightTD" style="border-collapse: collapse;color: #ffffff;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: bold;padding: 0;margin: 0;text-align: center;line-height: 165%;letter-spacing: 0;">&copy; Copyright Hummingbird 2013 (This makes us look official!)</td>
+                                                      <!--================== End of the section ================--> 
+                                            </tr>
+                                          </table>
+            </td>
+          </tr>
+                              <tr>
+                                <td valign="top" align="center" height="15" bgcolor="#f3730b" style="font-size: 0;line-height: 0;border-collapse: collapse;">&nbsp;</td>
+                              </tr>
+        </table>
+                        <!--============================================================================================= End of the section =====-->
+      </td>
+    </tr>
+  </table>
+      <!--================================================================================================================ End footer (finally finished!) ====-->           
+</center>
+</body>
+</html>
