@@ -12,7 +12,7 @@
 
 class Genre < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :name, :use => [:slugged]
+  friendly_id :name, :use => [:slugged, :history]
 
   attr_accessible :name, :description
   has_and_belongs_to_many :animes

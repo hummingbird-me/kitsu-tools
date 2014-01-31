@@ -3,6 +3,7 @@ Hummingbird.AnimeIndexRoute = Ember.Route.extend
     @modelFor 'anime'
 
   afterModel: (resolvedModel) ->
+    Ember.run.next -> window.scrollTo 0, 0
     Hummingbird.TitleManager.setTitle resolvedModel.get('canonicalTitle')
 
   actions:

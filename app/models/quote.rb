@@ -9,6 +9,7 @@
 #  user_id        :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  positive_votes :integer          default(0), not null
 #
 
 class Quote < ActiveRecord::Base

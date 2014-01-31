@@ -51,7 +51,7 @@
 
         var focused = $(event.target).is(":focus");
         var originalRewatchCount = this.props.content.get('rewatchCount');
-        var rewatchCount = parseInt(event.target.value);
+        var rewatchCount = parseInt(event.target.value) || 0;
 
         // Let's not go below zero.
         if (rewatchCount < 0) { rewatchCount = originalRewatchCount; }
@@ -218,9 +218,16 @@
 
     toggleDropdown: function(event) {
       Ember.run(function() {
-        if (event.target.nodeName != "INPUT") {
+        if (event.target.nodeName !== "INPUT" && event.target.nodeName !== "I") {
           this.setState({dropdownOpen: !this.state.dropdownOpen});
         }
+      }.bind(this));
+    },
+
+    incrementEpisodes: function(event) {
+      Ember.run(function() {
+        this.props.content.incrementProperty('episodesWatched');
+        Ember.run.debounce(this, this.saveEpisodesWatched, 500);
       }.bind(this));
     },
 
@@ -228,9 +235,8 @@
       Ember.run(function() {
         if (!this.props.view.get('user.viewingSelf')) { return; }
 
-        var focused = $(event.target).is(":focus");
         var originalEpisodesWatched = this.props.content.get('episodesWatched');
-        var episodesWatched = parseInt(event.target.value);
+        var episodesWatched = parseInt(event.target.value) || 0;
 
         // Don't allow exceeding the show's episode count.
         var animeEpisodeCount = this.props.content.get('anime.episodeCount');
@@ -242,10 +248,6 @@
         if (episodesWatched < 0) { episodesWatched = originalEpisodesWatched; }
 
         this.props.content.set('episodesWatched', episodesWatched);
-
-        if (!focused) {
-          Ember.run.debounce(this, this.saveEpisodesWatched, 500);
-        }
       }.bind(this));
     },
 
@@ -343,8 +345,11 @@
             </div>
             <div className="list-item-right">
               <div className="list-item-progress">
+                { this.props.view.get('user.viewingSelf')
+                  ? <i className="episode-increment" onClick={this.incrementEpisodes} />
+                  : '' }
                 <form style={ {display: "inline"} } onSubmit={this.saveEpisodesWatched} >
-                  <input className="input-progress" type="number" pattern="[0-9]*" value={content.get('episodesWatched')} onChange={this.changeProgress} onBlur={this.saveEpisodesWatched} />
+                  <input className="input-progress" type="text" pattern="[0-9]*" value={content.get('episodesWatched')} onChange={this.changeProgress} onBlur={this.saveEpisodesWatched} />
                 </form>
                 <span className="progress-sep">/</span>
                 <span className="list-item-total">{content.get('anime.displayEpisodeCount')}</span>

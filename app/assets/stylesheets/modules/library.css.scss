@@ -1,4 +1,6 @@
 .library-container {
+  @extend .container;
+
   padding: 10px;
 
   .panel {
@@ -10,6 +12,9 @@
 }
 
 .library-table {
+  @extend .col-sm-12;
+  @extend .col-md-10;
+
   @media (max-width: 500px) {
     padding: 0;
   }
@@ -17,6 +22,23 @@
 
 .library-entry {
   position: relative;
+}
+
+.episode-increment {
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  top: -9px;
+  font-size: 20px;
+  transition: opacity .60s ease-in-out;
+  -moz-transition: opacity .60s ease-in-out;
+  -webkit-transition: opacity .60s ease-in-out;
+  @extend .fa; 
+  @extend .fa-angle-up;
+  opacity: 0;
+  &:hover {
+    color: $orange;
+  }
 }
 
 .library-dropdown {
@@ -224,15 +246,48 @@
       text-align: center;
     }
   }
+
+  &:hover {
+    .episode-increment {
+      opacity: 1;
+    }
+  }
 }
 
 .library-header {
+  @extend .row;
+
   padding-top: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid #ddd;
 }
 
+.library-type {
+  @extend .btn-group;
+
+  button .fa {
+    margin-left: 5px;
+  }
+}
+
+.library-loading {
+  @extend .fa;
+  @extend .fa-spin;
+  @extend .fa-spinner;
+
+  float: right;
+  font-size: 1.6em;
+  padding: 0.2em 0.5em;
+  color: $grey;
+}
+
 .library-sections {
+  @extend .btn-group;
+
+  button .fa {
+    margin-left: 5px;
+  }
+
   float: right;
 
   button {
@@ -256,10 +311,13 @@
 }
 
 .search-wrapper {
+  @extend .col-md-12;
   padding: 0;
 }
 
 .library-search {
+  @extend .form-control;
+
   border: none;
   border-radius: 0;
   width: 100%;
@@ -274,6 +332,8 @@
 }
 
 .library-filter {
+  @extend .list-group-item;
+
   border-radius: 0 !important;
   border-bottom: 0;
   border-left: 0;
@@ -282,5 +342,24 @@
 
   .list-item-right .list-item-type {
     font-weight: normal;
+    .fa {
+      margin-left: 1px;
+    }
   }
+
+  .fa {
+    @extend .fa-sort;
+    color: #aaa;
+    margin-left: 5px;
+  }
+
+  /* Sort icon. */
+  &.asc.anime\.lowercaseDisplayTitle .list-item-left .fa { @extend .fa-sort-up; }
+  &.desc.anime\.lowercaseDisplayTitle .list-item-left .fa { @extend .fa-sort-down; }
+  &.asc.episodesWatched .list-item-progress .fa { @extend .fa-sort-up; }
+  &.desc.episodesWatched .list-item-progress .fa { @extend .fa-sort-down; }
+  &.asc.rating .list-item-score .fa { @extend .fa-sort-up; }
+  &.desc.rating .list-item-score .fa { @extend .fa-sort-down; }
+  &.asc.anime\.showType .list-item-type .fa { @extend .fa-sort-up; }
+  &.desc.anime\.showType .list-item-type .fa { @extend .fa-sort-down; }
 }

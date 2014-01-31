@@ -24,11 +24,10 @@
 #  thetvdb_season_id         :string(255)
 #  english_canonical         :boolean          default(FALSE)
 #  age_rating_guide          :string(255)
-#  mal_age_rating            :string(255)
 #  show_type                 :string(255)
 #  started_airing_date       :date
 #  finished_airing_date      :date
-#  rating_frequencies        :hstore
+#  rating_frequencies        :hstore           default({}), not null
 #  poster_image_file_name    :string(255)
 #  poster_image_content_type :string(255)
 #  poster_image_file_size    :integer

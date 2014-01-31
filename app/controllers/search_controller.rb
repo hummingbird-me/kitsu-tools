@@ -46,7 +46,7 @@ class SearchController < ApplicationController
 
     elsif @search_type == "users"
 
-      @results = User.search(params[:query]).page(params[:page]).per(20)
+      @results = User.search(params[:query] || "askdhjfg").page(params[:page]).per(20)
       render "users"
 
     else

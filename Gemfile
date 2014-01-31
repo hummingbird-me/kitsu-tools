@@ -6,6 +6,8 @@ gem 'rails', '4.0.2'
 # Pending switching to strong params.
 gem 'protected_attributes'
 
+gem 'annotate', require: false
+
 gem 'grape'
 gem 'grape-entity'
 gem 'active_model_serializers', '~> 0.8'
@@ -15,7 +17,8 @@ gem 'fastclick-rails'
 
 gem 'pg', '0.15.1'
 
-gem 'redis'
+gem 'hiredis'
+gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
 
 gem 'ember-rails'
@@ -93,7 +96,7 @@ gem 'delayed_paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 
 # Better URLs.
-gem 'friendly_id', '~> 5.0'
+gem 'friendly_id', github: 'vikhyat/friendly_id'
 
 # Authentication.
 gem 'devise'

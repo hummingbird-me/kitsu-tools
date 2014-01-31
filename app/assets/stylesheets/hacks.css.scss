@@ -1,3 +1,8 @@
+/* Remove annoying Firefox link outlines. */
+a {
+  outline: 0 !important;
+}
+
 .franchise-show {
   @include make-sm-column(12);
   @include clearfix();

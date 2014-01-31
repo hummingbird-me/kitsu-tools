@@ -24,11 +24,10 @@
 #  thetvdb_season_id         :string(255)
 #  english_canonical         :boolean          default(FALSE)
 #  age_rating_guide          :string(255)
-#  mal_age_rating            :string(255)
 #  show_type                 :string(255)
 #  started_airing_date       :date
 #  finished_airing_date      :date
-#  rating_frequencies        :hstore
+#  rating_frequencies        :hstore           default({}), not null
 #  poster_image_file_name    :string(255)
 #  poster_image_content_type :string(255)
 #  poster_image_file_size    :integer
@@ -46,7 +45,7 @@ class Anime < ActiveRecord::Base
     using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
 
   extend FriendlyId
-  friendly_id :canonical_title, :use => [:slugged]
+  friendly_id :canonical_title, :use => [:slugged, :history]
 
   attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :ann_id, :synopsis, :cover_image, :cover_image_top_offset, :poster_image, :youtube_video_id, :alt_title, :franchises, :show_type, :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide, :started_airing_date, :started_airing_date_known, :finished_airing_date, :franchise_ids, :genre_ids, :producer_ids, :casting_ids
 
@@ -175,8 +174,7 @@ class Anime < ActiveRecord::Base
     self.poster_image = URI(meta[:poster_image_url]) if self.poster_image_file_name.nil?
     self.genres = (self.genres + meta[:genres]).uniq
     self.producers = (self.producers + meta[:producers]).uniq
-    self.mal_age_rating = meta[:age_rating]
-    self.age_rating, self.age_rating_guide = Anime.convert_age_rating(self.mal_age_rating)
+    self.age_rating, self.age_rating_guide = Anime.convert_age_rating(meta[:age_rating])
     self.episode_count ||= meta[:episode_count]
     self.episode_length ||= meta[:episode_length]
 

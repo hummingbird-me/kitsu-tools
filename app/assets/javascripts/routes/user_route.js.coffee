@@ -2,6 +2,9 @@ Hummingbird.UserRoute = Ember.Route.extend
   model: (params) ->
     @store.find 'user', params.id
 
+  afterModel: (resolvedModel) ->
+    Ember.run.next -> window.scrollTo 0, 155
+
   actions:
     toggleFollow: (user) ->
       originalState = user.get('isFollowed')

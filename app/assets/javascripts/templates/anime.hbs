@@ -54,7 +54,9 @@
         </div>
       {{/if}}
 
-      {{ad-unit adId="1293379" adClass="257f81e798bd68dd81e60f42838f361f"}}
+      {{#unless nsfw}}
+        {{ad-unit adId="1293379" adClass="257f81e798bd68dd81e60f42838f361f"}}
+      {{/unless}}
 
       <ul class="gallery-images">
         {{#each imageURL in screencaps}}
