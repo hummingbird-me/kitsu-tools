@@ -33,6 +33,7 @@ loop do
   STDERR.puts job.body
   if user
     user.username = new_name
+    user.username_lower = new_name.downcase
     if avatar.length <= 255
       user.uploaded_avatar_template = avatar
     end

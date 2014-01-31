@@ -20,11 +20,6 @@
   roles:
   - common
 
-- hosts: mail
-  sudo: True
-  roles:
-  - mail
-
 - hosts: webservers
   sudo: True
   roles:
@@ -67,3 +62,8 @@
   sudo: True
   roles:
   - varnish
+
+- hosts: mail
+  sudo: True
+  roles:
+  - mail
