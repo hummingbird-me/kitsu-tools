@@ -3,10 +3,6 @@ class QuotesController < ApplicationController
     @anime = Anime.find(params[:anime_id])
     @watchlist = current_user.watchlists.where(anime_id: @anime).first if user_signed_in?
     @gallery = @anime.gallery_images.limit(4)
-
-    # This query is potentially slow, investigate later.
-    @users = @anime.watchlists.where(status: "Currently Watching").order("last_watched DESC").joins(:user).where('users.avatar_file_name IS NOT NULL').includes(:user).limit(9).map {|x| x.user }
-
     @quotes = @anime.quotes.includes(:user).order('positive_votes DESC')
   end
 

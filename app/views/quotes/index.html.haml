@@ -20,12 +20,6 @@
               %li
                 %a{:href => "#"} Remove 
 
-        .large-12.columns.no-padding.face-grid
-          %h5 CURRENT VIEWERS
-          - @users.each do |user|
-            .large-4.columns.face-grid-user.tip-right(data-tooltip data-options="disable-for-touch:true"){:title => user.name}
-              = avatar_link user, :thumb_small
-
     .large-7.columns.center-column
       .panel.center
         %h4.center= title "#{@anime.canonical_title(current_user)} Quotes"
