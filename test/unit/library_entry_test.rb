@@ -135,4 +135,13 @@ class LibraryEntryTest < ActiveSupport::TestCase
     initial = initial + entry.anime.episode_length * entry.anime.episode_count
     assert_equal initial, user.reload.life_spent_on_anime
   end
+
+  test "should not allow exceeding total number of episodes" do
+    entry = LibraryEntry.first
+    entry.episodes_watched = entry.anime.episode_count
+    entry.save
+    entry.episodes_watched = entry.anime.episode_count + 1
+    entry.save
+    assert_equal entry.anime.episode_count, entry.reload.episodes_watched
+  end
 end

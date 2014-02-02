@@ -48,6 +48,8 @@ class Action
   end
 
   def self.from_library_entry(l)
+    return unless l.valid?
+
     if l.persisted?
 
       if l.episodes_watched_changed? and l.episodes_watched and l.episodes_watched - l.episodes_watched_was == 1
