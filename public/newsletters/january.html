@@ -4,8 +4,98 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="format-detection" content="telephone=no">
-<title><%= @subject %></title>
+<title>The Newsletter that Leapt Through Time</title>
+<style type="text/css">
+  a {text-decoration: none; color: #f3730b;}
+  td                {border-collapse:collapse;}
+  
+  .mailingOptions         {color:#cccccc; font-family:Arial, Tahoma, Verdana, sans-serif;            font-size:13px;  font-weight:lighter;   padding:0; margin:0; text-align:left;            letter-spacing:0; }
+  .mailingOptions2          {color:#cccccc; font-family:Arial, Tahoma, Verdana, sans-serif;            font-size:13px;  font-weight:lighter;   padding:0; margin:0; text-align:right;           letter-spacing:0; }
+  .mailingOptionsLink       {color:#999999;  text-decoration:none; outline:none;                    font-weight:lighter;} 
+  .date             {color:#999999; font-family:Arial, Tahoma, Verdana, sans-serif;            font-size:13px;  font-weight:bold;     padding:0; margin:0; text-align:center;           letter-spacing:0; }
+  .menu             {color:#dddddd; font-family:Arial, Tahoma, Verdana, sans-serif;            font-size:13px;  font-weight:bold;   padding:0; margin:0; text-align:center;  line-height:130%;  letter-spacing:0; }
+  .menuLink           {color:#999999;  text-decoration:none; outline:none;}  
+  
+  .companySloganTD        {color:#f3730b; font-family:Arial, Tahoma, Verdana, sans-serif;           font-size:23px; font-weight:bold;     padding:0; margin:0; text-align:center;  line-height:150%;   letter-spacing:0; }
+  .clickableSloganTD        {color:#f3730b; font-family:Arial, Tahoma, Verdana, sans-serif;           font-size:15px;  font-weight:bold;    padding:0; margin:0; text-align:center;  line-height:160%; letter-spacing:0; }
+  .clickableSloganLink        {color:#f3730b;  text-decoration:none; outline:none;}   
+  
+  .sectionsHeaderTD       {color:#666666; font-family:Arial, Tahoma, Verdana, sans-serif;     font-size:28px;  font-weight:lighter;   padding:0; margin:0; text-align:center;   line-height:145%;  letter-spacing:0;}
+  .subHeaderTD          {color:#888888; font-family:Arial, Tahoma, Verdana, sans-serif;     font-size:18px;  font-weight:lighter;   padding:0; margin:0; text-align:left;   line-height:155%;  letter-spacing:0;}
+  .sectionRegularInfoTextTD   {color:#777777; font-family:Arial, Tahoma, Verdana, sans-serif;       font-size:15px;  font-weight:lighter;   padding:0; margin:0; text-align:left;       line-height:165%;  letter-spacing:0;}
+  .buttonsAndImagesLink     {color:#bbbbbb; text-decoration:none; outline:none;                   font-weight:lighter;} 
+  
+  .footerInfoTDSupport        {color:#666666; font-family: Arial, Tahoma, Verdana, sans-serif;      font-size:13px; font-weight:lighter;  padding:0; margin:0; text-align:left;   line-height:165%;   letter-spacing:0;}
+  .footerInfoTDSupport2     {color:#666666; font-family: Arial, Tahoma, Verdana, sans-serif;      font-size:13px; font-weight:lighter;  padding:0; margin:0; text-align:left;   line-height:165%;   letter-spacing:0;}
+  .footerInfoTDLink       {color:#888888; text-decoration:none; outline:none; border-bottom:1px dotted #f3730b; font-weight:bold;}
+  
+  .iphoneAvoidAutoLinkHackDate  {color:#666666; text-decoration: none; pointer-events: none;}
+  .iphoneAvoidAutoLinkHackDate2 {color:#999999; text-decoration: none; pointer-events: none;}
 
+  .subscribeUnsubscribeLink   {color:#666666;  text-decoration:none;  outline:none; border-bottom:1px dotted #f3730b;    font-weight:bold;  letter-spacing:0;}
+  
+  .pictureAlternativeTextTD     {color:#bbbbbb; font-family:Arial, Tahoma, Verdana, sans-serif;       font-size:8px;                  padding:0; margin:0; text-align:center; line-height:1px;}
+  
+  .adressOrAnyOtherTD     {color:#ffffff; font-family:Arial, Tahoma, Verdana, sans-serif;         font-size:13px;  font-weight:lighter;     padding:0; margin:0; text-align:center; line-height:165%;  letter-spacing:0;}
+  .copyrightTD            {color:#ffffff; font-family:Arial, Tahoma, Verdana, sans-serif;         font-size:13px;  font-weight:bold;    padding:0; margin:0; text-align:center; line-height:165%;  letter-spacing:0;}
+  
+  .ReadMsgBody{width: 100%; }
+  .ExternalClass{width: 100%; }
+  body{-webkit-text-size-adjust:100%;  -ms-text-size-adjust:100%;  -webkit-font-smoothing:antialiased; margin:0 !important;   padding:0 !important;   width:100% !important; }
+  
+
+
+
+@media only screen and (max-width: 599px) 
+       {
+    body{min-width:100% !important;}  
+       
+    table[class=eraseForMobile]     {width:0; display:none !important;}
+    table[class=table600]       {width:420px !important;}
+    table[class=table200]     {width:420px !important;}
+    table[class=table200B]      {width:420px !important; margin:20px 0 0 0 !important;}
+    table[class=youreceive]     {width:160px !important;}
+    table[class=contactJpg]       {width:230px !important;}
+    
+    td[class=companySloganTD]     {font-size:19px !important;}
+    td[class=sectionsHeaderTD]    {font-size:22px !important;}
+    td[class=subHeaderTD]       {font-size:17px !important;}
+    td[class=sectionRegularInfoTextTD]  {font-size:14px !important;}
+    
+    img[class=image600]       {width:420px !important; height:203px !important;}
+    img[class=image280]       {width:260px !important; height:260px !important;}
+    }
+    
+
+
+@media only screen and (max-width: 479px) 
+       {
+    body{min-width:100% !important;} 
+    
+    table[class=eraseForMobile]     {width:0; display:none !important;}
+    table[class=table600]       {width:280px !important;}
+    table[class=table200]     {width:280px !important;}
+    table[class=table200B]      {width:280px !important; margin:20px 0 0 0 !important;}
+    table[class=youreceive]     {width:280px !important; margin:20px 0 0 0 !important;}
+    table[class=contactJpg]       {width:280px !important;}
+    
+    td[class=companySloganTD]     {font-size:16px !important;}
+    td[class=sectionsHeaderTD]    {font-size:20px !important;}
+    td[class=subHeaderTD]       {font-size:16px !important;}
+    td[class=sectionRegularInfoTextTD]  {font-size:14px !important;}
+    td[class=footerInfoTDSupport] {text-align:center !important;}
+    td[class=footerInfoTDSupport2]  {text-align:center !important;}
+    
+    img[class=removeImage]    {display:none !important;}
+    img[class=image600]       {width:280px !important; height:135px !important;}
+    img[class=image280]       {width:280px !important; height:280px !important;}
+    }
+
+
+
+
+
+</style>
 </head>
 <body style="background-color: #f8f8f8;margin: 0;padding: 0;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;width: 100%;">
 <center>
@@ -204,7 +294,7 @@
                         <!--================== Witty Quote section =================-->
                         <table align="center" width="600" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0" class="table600">
                           <tr>
-                                    <td valign="middle" align="center" height="10" bgcolor="#f8f8f8" class="sectionsHeaderTD" style="border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 20px;font-weight: lighter;padding: 0;margin: 0;text-align: center;line-height: 145%;letter-spacing: 0;">Spoiler: <a href="http://hummingbird.me/anime/diabolik-lovers" style="text-decoration: none;color: #f3730b;">Diabolik Lovers</a> didn't win.</td>
+                                    <td valign="middle" align="center" height="10" bgcolor="#f8f8f8" class="sectionsHeaderTD" style="border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 20px;font-weight: lighter;padding: 0;margin: 0;text-align: center;line-height: 145%;letter-spacing: 0;">Spoiler: <a href="http://hummingbird.me/anime/diabolik-lovers">Diabolik Lovers</a> didn't win.</td>
                               </tr>
                         </table>
                         <!--================== End of the section ================-->
@@ -236,8 +326,6 @@
                                     <br>
                                     <br>
                                     If you enjoyed the newsletter, be sure to <a href="https://twitter.com/intent/tweet?in_reply_to=429113073606356992&related=hummingbird_me,twitterapi" style="text-decoration: none;color: #f3730b;">tweet and let us know</a> or discuss it <a href="http://forums.hummingbird.me/t/hummingbird-january-newsletter/5268" style="text-decoration: none;color: #f3730b;">on the forums</a>, keep in mind that I'm personally informed whenever anyone decides not to post on the forums, and I cry very hard every time it happens.  
-                                    <br>
-                                    <br>
                                     <br>
                                     <!--================== End of the section ================-->
                                     </td>
@@ -334,7 +422,7 @@
                     <table align="center" cellpadding="0" cellspacing="0" bgcolor="#f8f8f8" border="0">
                                                                   <tr>
                                                                     <!--==================================== Unsubscribe ====-->
-                                                                    <td valign="top" align="center" height="20" bgcolor="#f8f8f8" class="footerInfoTDSupport" style="border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;">You are receiving this because you've signed up for the Hummingbird Beta. You have great taste.<br> Tired of being awesome? <a href="http://hummingbird.me/unsubscribe/newsletter/&lt;%= @user.encrypted_email %&gt;" target="_blank" class="subscribeUnsubscribeLink" style="text-decoration: none;color: #666666;outline: none;border-bottom: 1px dotted #f3730b;font-weight: bold;letter-spacing: 0;">Unsubscribe</a> from this list</td>
+                                                                    <td valign="top" align="center" height="20" bgcolor="#f8f8f8" class="footerInfoTDSupport" style="border-collapse: collapse;color: #666666;font-family: Arial, Tahoma, Verdana, sans-serif;font-size: 13px;font-weight: lighter;padding: 0;margin: 0;text-align: left;line-height: 165%;letter-spacing: 0;">You're reading this in our archive. You have great taste.<br></td>
                                                                     <!--====================================================== End of the section ================-->
                                                                   </tr>
                                                             </table>
@@ -416,5 +504,19 @@
   </table>
       <!--================================================================================================================ End footer (finally finished!) ====-->           
 </center>
+<script>
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-37633900-1']);
+  _gaq.push(['_setDomainName', 'hummingbird.me']);
+  _gaq.push(['_setCustomVar', 1, 'Anonymous', false, 2]);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
 </body>
 </html>
