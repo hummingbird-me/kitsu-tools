@@ -43,7 +43,7 @@ class LibraryEntry < ActiveRecord::Base
 
   validate :episodes_watched_less_than_total
   def episodes_watched_less_than_total
-    if self.anime.try(:episode_count) and (self.episodes_watched || 0) > self.anime.episode_count
+    if (self.anime.try(:episode_count) || 0) > 0 and (self.episodes_watched || 0) > self.anime.episode_count
       errors.add(:episodes_watched, "cannot exceed total number of episodes")
     end
   end
