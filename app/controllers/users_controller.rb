@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html do
 
-        if @user.name == "vikhyat"
+        if params.has_key?(:new_feed) or Rails.env.development?
           preload! @user
           render_ember
         else
