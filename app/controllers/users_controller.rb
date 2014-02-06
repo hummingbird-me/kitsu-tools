@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       end
       users = users.page(params[:page]).per(20)
 
-      render json: users, meta: {page: (params[:page] || 1), total: users.total_pages}
+      render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
 
     else
       ### OLD CODE PATH BELOW.
@@ -34,11 +34,34 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = User.find(params[:id])
+    @user = User.find(params[:id])
+
+    # Redirect to canonical URL if this isn't it.
+    if request.path != user_path(@user)
+      return redirect_to user_path(@user), status: :moved_permanently
+    end
+
+    if user_signed_in? and current_user == @user
+      # Clear notifications if the current user is viewing his/her feed.
+      # TODO This needs to be moved elsewhere.
+      Notification.where(user: @user, notification_type: "profile_comment", seen: false).update_all seen: true
+    end
+
     respond_to do |format|
-      format.html { redirect_to user_feed_path(user) }
+      format.html do
+
+        if params.has_key?(:new_feed) or Rails.env.development?
+          preload! @user
+          render_ember
+        else
+          @active_tab = :feed
+          render "feed", layout: "layouts/profile"
+        end
+
+      end
       format.json { render json: user }
     end
+
   end
 
   def followers
@@ -103,18 +126,6 @@ class UsersController < ApplicationController
       format.html { redirect_to :back }
       format.json { render json: true }
     end
-  end
-
-  def feed
-    @active_tab = :feed
-    @user = User.find(params[:user_id])
-
-    if user_signed_in? and current_user == @user
-      # Clear notifications if the current user is viewing his/her feed.
-      Notification.where(user: @user, notification_type: "profile_comment", seen: false).update_all seen: true
-    end
-
-    render "feed", layout: "layouts/profile"
   end
 
   def reviews

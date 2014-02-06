@@ -1,0 +1,32 @@
+.profile-content
+  .row
+    / Left "About" column
+    .about-info
+      / About User Panel
+      .user-about-panel
+        .panel-heading
+          h3.panel-title About #{user.username}
+        .panel-body #{user.miniBio}
+
+      if userInfo.isFulfilled
+        / Anime Breakdown Panel
+        .anime-breakdown-panel
+          .panel-heading
+            h3.panel-title Anime Breakdown
+          .panel-body
+            ul
+              li I've watched <strong>#{lifeSpentOnAnimeFmt}</strong> of anime.
+      else
+        loading-indicator classNames="light"
+
+    .personal-feed
+      / Status Update Panel
+      .status-update-panel
+        .panel-body.status-panel
+          textarea.status-form placeholder="What do you want to talk about?" rows="1"
+        .panel-footer Panel footer
+
+      each itemController="story" itemViewClass="Hummingbird.StoryView"
+
+      load-more classNames="light" action="loadNextPage"
+

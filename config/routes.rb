@@ -6,6 +6,8 @@ Hummingbird::Application.routes.draw do
   resources :franchises
   resources :full_anime
   resources :quotes
+  resources :stories
+  resources :user_infos
 
   get '/sign-in' => 'auth#sign_in_action'
 
@@ -48,10 +50,11 @@ Hummingbird::Application.routes.draw do
 
   get '/users/:id/watchlist' => redirect {|params, request| "/users/#{params[:id]}/library" }
   get '/u/:id' => redirect {|params, request| "/users/#{params[:id]}" }
+  get '/users/:id/feed' => redirect {|params, request| "/users/#{params[:id]}" }
+
   resources :users do
     get :library
     get :reviews
-    get :feed
     get :followers
     get :following
     get :favorite_anime

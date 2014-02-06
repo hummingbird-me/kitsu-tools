@@ -7,23 +7,71 @@
 .status-panel {
   padding: 0px;
   .status-form {
+    @extend .form-control;
     border: none;
     box-shadow: none;
     font-weight: 300;
     font-size: 16px;
     height: 50px;
     padding-top: 15px;
+    padding-bottom: 15px;
+    resize: none;
+    transition: height 0.2s ease 0s;
   }
 }
 
+.story {
+  @extend .panel;
+  @extend .panel-default;
+}
+
 .update-panel {
-  .series-title {
+  @extend .panel-body;
+
+  .story-title {
     margin: 0;
   }
+
   .series-thumb {
+    @extend .col-xs-2;
+    @extend .col-sm-2;
+    @extend .col-md-2;
     padding-left: 0;
-    padding-right: 0; 
+    padding-right: 0;
   }
+
+  .media-content {
+    @extend .col-xs-10;
+    @extend .col-sm-10;
+    @extend .col-md-10;
+  }
+
+  .genre-list {
+    @extend .inline-list;
+    @extend .secondary;
+    @extend .hidden-xs;
+    @extend .clearfix;
+
+    /* because metamorphs */
+    li:last-of-type:after {
+      content: "";
+    }
+  }
+
+  .user-image {
+    @extend .col-xs-2;
+    @extend .col-sm-1;
+    @extend .col-md-1;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .comment-content {
+    @extend .col-xs-10;
+    @extend .col-sm-11;
+    @extend .col-md-11;
+  }
+
   .inline-list {
     li {
       padding-right: 5px;
@@ -43,11 +91,6 @@
     padding-top: 10px;
     padding-bottom: 0;
     margin-bottom: 0;
-  }
-
-  .user-image {
-    padding-left: 0;
-    padding-right: 0;
   }
 
   .event-info {
@@ -160,7 +203,7 @@
       li:nth-of-type(3), li:nth-of-type(2) {
         display: none;
       }
-    } 
+    }
   }
 }
 
