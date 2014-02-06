@@ -14,10 +14,10 @@ set :sidekiq_role, :sidekiq
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
-role :app, "sheska"
-role :db, "sheska", primary: true
-role :web, "sheska"
-role :sidekiq, "sheska"
+role :app, "162.243.200.81"
+role :db, "162.243.200.81", primary: true
+role :web, "162.243.200.81"
+role :sidekiq, "162.243.200.81"
 
 namespace :deploy do
   desc "stub task to get cap to prompt for the root password"

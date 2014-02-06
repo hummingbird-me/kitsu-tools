@@ -42,7 +42,7 @@
   action: apt pkg=python-software-properties state=present
 
 - include: iptables.yml
-- include: rbenv.yml
+#- include: rbenv.yml
 - include: newrelic.yml
 
 - name: Install monit
