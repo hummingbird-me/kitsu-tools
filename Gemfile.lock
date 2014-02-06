@@ -272,6 +272,7 @@ GEM
     newrelic_rpm (3.7.1.188)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
+    non-stupid-digest-assets (1.0.3)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -541,6 +542,7 @@ DEPENDENCIES
   newrelic-grape
   newrelic_rpm
   nokogiri
+  non-stupid-digest-assets
   oj
   omniauth
   omniauth-facebook (= 1.4.0)

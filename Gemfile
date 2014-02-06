@@ -50,6 +50,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'handlebars_assets', github: 'vikhyat/handlebars_assets'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'autoprefixer-rails'
+gem 'non-stupid-digest-assets'
 
 # Gems to help with development.
 group :development do
