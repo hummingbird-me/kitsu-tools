@@ -23,13 +23,6 @@ class QuotesController < ApplicationController
     @quote.user = current_user
     @quote.save
 
-    Substory.from_action({
-      user_id: current_user,
-      action_type: "submitted_quote",
-      quote_id: @quote.id,
-      time: Time.now
-    })
-
     redirect_to anime_quotes_path(@anime)
   end
 
@@ -41,23 +34,11 @@ class QuotesController < ApplicationController
       if vote.nil?
         Vote.create(user: current_user, target: @quote)
       end
-      Substory.from_action({
-        user_id: current_user.id,
-        action_type: "liked_quote",
-        quote_id: @quote.id,
-        time: Time.now
-      })
     else
       vote = Vote.for(current_user, @quote)
       unless vote.nil?
         vote.destroy
       end
-      Substory.from_action({
-        user_id: current_user.id,
-        action_type: "unliked_quote",
-        quote_id: @quote.id,
-        time: Time.now
-      })
     end
 
     respond_to do |format|
@@ -80,23 +61,11 @@ class QuotesController < ApplicationController
       if vote.nil?
         Vote.create(user: current_user, target: quote)
       end
-      Substory.from_action({
-        user_id: current_user.id,
-        action_type: "liked_quote",
-        quote_id: quote.id,
-        time: Time.now
-      })
     else
       vote = Vote.for(current_user, quote)
       unless vote.nil?
         vote.destroy
       end
-      Substory.from_action({
-        user_id: current_user.id,
-        action_type: "unliked_quote",
-        quote_id: quote.id,
-        time: Time.now
-      })
     end
 
     render json: quote.reload

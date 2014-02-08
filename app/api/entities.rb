@@ -71,18 +71,12 @@ module Entities
     expose :id
     expose :substory_type
     expose :created_at
-    
+
     expose(
       :followed_user,
       if: lambda {|substory, options| substory.substory_type == "followed" }
     ) do |substory, options|
       Entities::MiniUser.represent substory.target
-    end
-
-    expose(:quote,
-      if: lambda {|substory, options| %w[liked_quote submitted_quote].include? substory.substory_type }
-    ) do |substory, options|
-      Entities::Quote.represent substory.target
     end
 
     expose(:new_status,

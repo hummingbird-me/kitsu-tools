@@ -61,43 +61,6 @@ class Substory < ActiveRecord::Base
 
       Substory.where(user_id: user.id, substory_type: "followed", target_id: followed_user.id, target_type: "User").each {|x| x.destroy }
 
-    elsif data[:action_type] == "liked_quote"
-
-      quote = Quote.find(data[:quote_id])
-
-      # First, check to see if a substory for this quote already exists for this 
-      # user. If so, don't do anything.
-      if user.substories.where(substory_type: "liked_quote", target_id: quote, target_type: "Quote").length > 0
-        return
-      end
-
-      # Otherwise, find the relevant story and add a substory to it.
-      story = Story.for_user_and_anime(user, quote.anime, "media_story")
-
-      substory = Substory.create({
-        user: user,
-        substory_type: "liked_quote",
-        target: quote,
-        story: story
-      })
-
-    elsif data[:action_type] == "unliked_quote"
-
-      quote = Quote.find(data[:quote_id])
-      Substory.where(user_id: user.id, substory_type: "liked_quote", target_id: quote.id, target_type: "Quote").each {|x| x.destroy }
-
-    elsif data[:action_type] == "submitted_quote"
-
-      quote = Quote.find(data[:quote_id])
-
-      story = Story.for_user_and_anime(user, quote.anime, "media_story")
-
-      substory = Substory.create({
-        user: user,
-        substory_type: "submitted_quote",
-        target: quote,
-        story: story
-      })
 
     elsif data[:action_type] == "watchlist_status_update"
 

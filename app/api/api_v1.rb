@@ -119,12 +119,6 @@ class API_v1 < Grape::API
         }
         if substory.substory_type == "followed"
           subjson[:followed_user] = present_miniuser(substory.target)
-        elsif %w[liked_quote submitted_quote].include? substory.substory_type
-          quote = substory.target
-          subjson[:quote] = {
-            content: quote.content,
-            character_name: quote.character_name
-          }
         elsif substory.substory_type == "watchlist_status_update"
           subjson[:new_status] = (substory.data["new_status"] || "Currently Watching").downcase.gsub(' ', '_')
         elsif substory.substory_type == "watched_episode"

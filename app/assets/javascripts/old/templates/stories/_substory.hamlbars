@@ -19,22 +19,6 @@
         %a(href="{{followed_user.url}}") {{followed_user.name}}
         {{/type.followed}}
 
-        {{#type.submitted_quote}}
-        %a(href="{{user.url}}") {{user.name}}
-        submitted a quote.
-        %p.quote-preview
-          %i
-            "{{quote.content}}" &mdash; {{quote.character_name}}
-        {{/type.submitted_quote}}
-
-        {{#type.liked_quote}}
-        %a(href="{{user.url}}") {{user.name}}
-        liked a quote.
-        %p.quote-preview
-          %i
-            "{{quote.content}}" &mdash; {{quote.character_name}}
-        {{/type.liked_quote}}
-
         {{#type.watchlist_status_update}}
         {{{watchlistStatusChangeStory user new_status}}}
         {{/type.watchlist_status_update}}
