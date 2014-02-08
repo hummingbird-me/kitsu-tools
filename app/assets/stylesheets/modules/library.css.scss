@@ -162,7 +162,7 @@
     padding-left: 0;
 
     span.anime-label {
-      &:before { content: ' ⋅ '; }
+      float: right;
 
       span.label {
         font-size: 11px;
