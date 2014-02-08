@@ -1,10 +1,14 @@
-Bootstrapping development environment
--------------------------------------
+### Setting up a development environment on OS X
 
-1. Install Vagrant.
-2. cd Ansible/ && vagrant up
-3. Install Ansible.
-4. Run this: `ansible-playbook -i development playbook.yml -u vagrant --private-key=~/.vagrant.d/insecure_private_key -vvv`
-5. If step 4 failed, run it again.
+* Install Ruby 2.1.0 using RVM: https://rvm.io/rvm/install
+* Install Homebrew: http://brew.sh/
+* Using Homebrew, install the following:
+  a. git
+  b. curl
+  c. v8
+  d. ...to be continued.
+* Install Postgres.app: http://postgresapp.com/
+* Get a database dump from Vikhyat and load it into Postgres.
+* cd hummingbird && bundle install
+* bundle exec foreman start
 
-# TODO: remaining steps: deployment with Capistrano.
