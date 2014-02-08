@@ -20,9 +20,10 @@
             li: bootstrap-tooltip title="Coming soon!" placement="bottom"
               .fa.fa-heart-o &nbsp;
               | Suggest
-            li: bootstrap-tooltip title="Coming soon!" placement="bottom"
-              .fa.fa-envelope-o &nbsp;
-              | Message
+            unless viewingSelf
+              li: bootstrap-tooltip title="Coming soon!" placement="bottom"
+                .fa.fa-envelope-o &nbsp;
+                | Message
       if viewingSelf
         label.upload-cover style="font-size: 0.8em; opacity: 0.8" for="coverImage"
           i.fa.fa-upload &nbsp;
