@@ -113,6 +113,7 @@ class User < ActiveRecord::Base
 
   has_attached_file :cover_image,
     styles: {thumb: {geometry: "1400x330#", animated: false, format: :jpg}},
+    convert_options: {thumb: '-interlace Plane'},
     default_url: "http://hummingbird.me/default_cover.png",
     storage: :s3
 
