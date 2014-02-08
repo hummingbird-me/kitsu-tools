@@ -119,10 +119,10 @@
   .personal-notes-div {
   }
   .personal-notes {
+    padding: 10px;
     width: 80%;
     border-radius: 3px;
-    height: 26px;
-    text-indent: 10px;
+    height: 80px!important;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     transition: height 0.2s ease 0s;
@@ -158,11 +158,13 @@
     @extend .col-sm-7;
     @extend .col-md-7;
     @extend .col-lg-8;
-
+    
     padding-left: 0;
+    padding-right: 0;
 
     span.anime-label {
       float: right;
+      margin-right: ;
 
       span.label {
         font-size: 11px;
@@ -282,6 +284,8 @@
 
 .library-sections {
   @extend .btn-group;
+  
+  padding-bottom: 10px; /* See rounded corners */
 
   button .fa {
     margin-left: 5px;
