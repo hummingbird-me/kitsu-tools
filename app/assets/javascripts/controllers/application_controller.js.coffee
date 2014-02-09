@@ -17,4 +17,3 @@ Hummingbird.ApplicationController = Ember.Controller.extend
   actions:
     signOut: ->
       Hummingbird.Session.signOut()
-      window.location.href = window.location.href

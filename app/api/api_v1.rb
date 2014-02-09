@@ -285,6 +285,7 @@ class API_v1 < Grape::API
       requires :anime_slug, type: String
       optional :increment_episodes, type: String
       optional :rewatching, type: String
+      optional :include_mal_id, type: String
     end
     post ':anime_slug' do
       authenticate_user!
@@ -367,7 +368,9 @@ class API_v1 < Grape::API
       Action.from_library_entry(library_entry)
 
       if library_entry.save
-        present_watchlist(library_entry.reload, rating_type, title_language_preference)
+        wl = present_watchlist(library_entry.reload, rating_type, title_language_preference)
+        wl.merge(mal_id: anime.mal_id) if params[:include_mal_id] == "true"
+        wl
       else
         return false
       end
