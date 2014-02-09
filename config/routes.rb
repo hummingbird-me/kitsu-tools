@@ -10,6 +10,7 @@ Hummingbird::Application.routes.draw do
   resources :user_infos
 
   get '/sign-in' => 'auth#sign_in_action'
+  post '/sign-out' => 'auth#sign_out_action'
 
   devise_for :users, controllers: {
     omniauth_callbacks: "users/omniauth_callbacks",
