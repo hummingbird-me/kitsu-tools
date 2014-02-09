@@ -1,3 +1,5 @@
+
+
 .gallery {
   @extend .pull-right;
   @extend .col-sm-3;
@@ -505,5 +507,50 @@ h4.series-title {
 .favorite-count {
   @media (max-width: 500px) {
     display: none;
+  }
+}
+
+// review page
+.back-to-anime {
+  @extend .col-md-12;
+  margin-top: 55px;
+  padding-left: 0;
+}
+.review-content {
+  @extend .col-xs-12;
+  padding-left: 0;
+  padding-right: 0;
+  p {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 30px;
+  }
+  .youtube-frame {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    .youtube-background {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -15px;
+      right: -15px;
+      background: #2f343b;
+    }
+    iframe {
+      width: 550px;
+      z-index: 1;
+      position: relative;
+      border-radius: 3px;
+      border: 5px solid #23272d;
+    }
+  }
+  .review-title {
+    text-align: center;
+    span {
+      font-weight: 300;
+    }
   }
 }
