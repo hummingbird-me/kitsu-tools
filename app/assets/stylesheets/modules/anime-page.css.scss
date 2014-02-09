@@ -207,6 +207,7 @@ h4.series-title {
   background: #fff;
   border-left: 1px solid #ddd;
   border-top-right-radius: 4px;
+  overflow: hidden;
   @media (min-width: 768px) {
     min-height: 1000px;
   }

@@ -1,1 +1,148 @@
-New list.
+.user-list
+  .row
+    .large-12.columns
+      %h4.top-title New List
+      %hr.title-divider
+      .large-12.columns.no-padding
+        %form.custom
+          .large-6.columns
+            .large-12.columns
+              %label Name of List
+              %input{:placeholder => "Example: 'Top 10 anime of 2013', 'Anime that makes me cry'", :type => "text"}
+            .large-12.columns
+              %label Tags
+              %input{:placeholder => "Example: 'Top 10', 'Best of'", :type => "text"}
+            .large-12.columns
+              .large-6.columns
+                %label{:for => "checkbox1"}
+                  %input#checkbox1{:style => "display: none;", :type => "checkbox"}/
+                  %span.custom.checkbox
+                  Label for Checkbox
+              .large-6.columns
+                %label{:for => "checkbox2"}
+                  %input#checkbox2{:checked => "", :style => "display: none;", :type => "checkbox"}/
+                  %span.custom.checkbox.checked
+                  Label for Checkbox
+          .large-6.columns
+            .large-12.columns
+              %label List Description
+              %textarea{:placeholder => ""}
+          .large-12.columns
+            .large-5.columns
+              .row.collapse
+                .small-4.large-3.columns
+                  %span.prefix Add an Anime
+                .small-8.large-9.columns
+                  %input{:placeholder => "Find anime by title...", :type => "text"}
+            .large-6.columns.no-padding
+              .large-12.columns
+                %a.large-5.columns.medium.button.padded.right{:href => "#"} Save
+      .large-12.columns
+        %ul.list-items.cf
+          %li.empty-list-placeholder
+          %li.list-entry.cf
+            .large-11.columns.entry-content
+              .list-number
+                1
+              .poster
+                = image_tag "http://static.hummingbird.me/anime/cover_images/000/000/012/thumb/12.png?1375232531", :height => "52", :width => "35"
+              .list-item-details
+                %h3.entry-heading.truncate
+                  One Piece
+                  %small 1999
+                .add-notes
+                  %a.list-item-edit{:href => "#"} Add notes
+                  %span.mobile-remove.hide-for-medium-up
+                    %a.list-item-edit{:href => "#"} Remove
+            .large-1.columns.no-padding.hide-for-small
+              .large-7.columns.trash
+                %a{:href => "#"}
+                  %i.icon-trash
+              .large-5.columns.reorder
+                %i.icon-reorder
+
+          %li.list-entry.cf
+            .large-11.columns.entry-content
+              .list-number
+                2
+              .poster
+                = image_tag "http://static.hummingbird.me/anime/cover_images/000/004/696/thumb/4696.jpg?1375236498", :height => "52", :width => "35"
+              .list-item-details
+                %h3.entry-heading.truncate
+                  Durarara!!
+                  %small 2010
+                .add-notes
+                  %a.list-item-edit{:href => "#"} Add notes
+                  %span.mobile-remove.hide-for-medium-up
+                    %a.list-item-edit{:href => "#"} Remove
+            .large-1.columns.no-padding.hide-for-small
+              .large-7.columns.trash
+                %a{:href => "#"}
+                  %i.icon-trash
+              .large-5.columns.reorder
+                %i.icon-reorder
+
+          %li.list-entry.cf
+            .large-11.columns.entry-content
+              .list-number
+                3
+              .poster
+                = image_tag "http://static.hummingbird.me/anime/cover_images/000/005/098/thumb/5098.jpeg?1375236872", :height => "52", :width => "35"
+              .list-item-details
+                %h3.entry-heading.truncate
+                  Shiki
+                  %small 2010
+                .add-notes
+                  %a.list-item-edit{:href => "#"} Add notes
+                  %span.mobile-remove.hide-for-medium-up
+                    %a.list-item-edit{:href => "#"} Remove
+            .large-1.columns.no-padding.hide-for-small
+              .large-7.columns.trash
+                %a{:href => "#"}
+                  %i.icon-trash
+              .large-5.columns.reorder
+                %i.icon-reorder
+
+          %li.list-entry.cf
+            .large-11.columns.entry-content
+              .list-number
+                4
+              .poster
+                = image_tag "http://static.hummingbird.me/anime/cover_images/000/007/504/thumb/7504.jpg?1375239171", :height => "52", :width => "35"
+              .list-item-details
+                %h3.entry-heading.truncate
+                  Watashi ga Motenai no wa Dou Kangaetemo Omaera ga Warui!
+                  %small 2013
+                .add-notes
+                  %a.list-item-edit{:href => "#"} Add notes
+                  %span.mobile-remove.hide-for-medium-up
+                    %a.list-item-edit{:href => "#"} Remove
+            .large-1.columns.no-padding.hide-for-small
+              .large-7.columns.trash
+                %a{:href => "#"}
+                  %i.icon-trash
+              .large-5.columns.reorder
+                %i.icon-reorder
+
+          %li.list-entry.cf
+            .large-11.columns.entry-content
+              .list-number
+                5
+              .poster
+                = image_tag "http://static.hummingbird.me/anime/cover_images/000/007/358/thumb/7358.jpg?1375239020", :height => "52", :width => "35"
+              .list-item-details
+                %h3.entry-heading.truncate
+                  Kamisama no Inai Nichiyoubi 
+                  %small 2013
+                .add-notes
+                  %a.list-item-edit{:href => "#"} Add notes
+                  %span.mobile-remove.hide-for-medium-up
+                    %a.list-item-edit{:href => "#"} Remove
+            .large-1.columns.no-padding.hide-for-small
+              .large-7.columns.trash
+                %a{:href => "#"}
+                  %i.icon-trash
+              .large-5.columns.reorder
+                %i.icon-reorder
+
+

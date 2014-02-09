@@ -1,76 +1,109 @@
-h1.series-title.hidden-xs
-  | #{canonicalTitle}
-  if alternateTitle
-    small
-      bootstrap-tooltip title=alternateTitle placement="right"
-        i.fa.fa-question-circle
+.review-cover
+  .user-cover
+    .cover-photo style="background-image: url(http://static.hummingbird.me/users/cover_images/000/000/002/thumb/base64.jpg?1390833466);"
+    .cover-overlay
+.container.relative
+  .row
+    .user-cover-options
+      .col-md-10.user-wrapper
+        .col-sm-2.col-md-2.user-avatar.clearfix
+          .large-avatar
+            img.responsive-image alt="Josh" src="http://static.hummingbird.me/users/avatars/000/000/002/thumb/avatar.jpg?1383507589"
+            .online-box
+              .online-indicator.online
+        .col-sm-12.col-md-10.account-info
+          h1.username introverturtle
+      button.btn.btn-default.btn-lg.follow-button Unfollow
+.profile-navigation
+  .container
+    .row
+      ul.inline-list.clearfix
+        li.nav-link
+          a#ember570.ember-view href="/users/Josh" Feed
+        li.nav-link
+          a#ember571.ember-view href="/users/Josh/library" Library
+        li.nav-link
+          a#ember572.ember-view href="/users/Josh/reviews" Reviews
+        li.nav-link
+          a#ember579.ember-view href="/users/Josh/following" Following
+        li.nav-link
+          a#ember586.ember-view href="/users/Josh/followers" Followers
 
-.hidden-xs: partial "anime/infobar"
 
-.series-description.hidden-xs
-  p: truncate-text text=synopsis length=500
 
-  .social-buttons
-    .fb-like data-href=fbLikeURL data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"
-    a href="https://twitter.com/share" class="twitter-share-button" data-via="hummingbird_me" Tweet
+/ h1.series-title.hidden-xs
+/   | #{canonicalTitle}
+/   if alternateTitle
+/     small
+/       bootstrap-tooltip title=alternateTitle placement="right"
+/         i.fa.fa-question-circle
 
-.info-tabs
-  ul.nav.nav-tabs
-    li class={showGenres:active}
-      a{action switchTo "Genres"} Genres
-    li class={:hidden-xs showFranchise:active}
-      a{action switchTo "Franchise"} Franchise
-    unless notYetAired
-      li class={:hidden-xs showQuotes:active}
-        a{action switchTo "Quotes"} Quotes
-    li class={:dropdown showCast:active}
-      a.dropdown-toggle data-toggle="dropdown"
-        | Cast
-        b.caret
-      ul.dropdown-menu
-        each language in languages
-          li: a{action setLanguage language} #{language}
-    li class={:hidden-xs showStudios:active}
-      a{action switchTo "Studios"} Studios
-    li.dropdown.visible-xs
-      a.dropdown-toggle data-toggle="dropdown"
-        | More
-        b.caret
-        ul.dropdown-menu
-          li: a{action switchTo "Franchise"} Franchise
-          unless notYetAired
-            li: a{action switchTo "Quotes"} Quotes
-          li: a{action switchTo "Studios"} Studios
+/ .hidden-xs: partial "anime/infobar"
 
-  .tab-content
-    .tab-pane.active.genre-tab
-      div class={:slider showGenres::hidden}
-        partial "media/genres"
-      if showFranchise
-        partial "anime/franchise"
-      div class={:slider showQuotes::hidden}
-        partial "anime/featured_quotes"
-      div class={:slider showCast::hidden}
-        partial "anime/cast"
-      div class={:slider showStudios::hidden}
-        partial "anime/studios"
+/ .series-description.hidden-xs
+/   p: truncate-text text=synopsis length=500
 
-  unless nsfw
-    .banner-ad
-      ad-unit adId="1293412" adClass="257f81e798bd68dd81e60f42838f361f"
+/   .social-buttons
+/     .fb-like data-href=fbLikeURL data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"
+/     a href="https://twitter.com/share" class="twitter-share-button" data-via="hummingbird_me" Tweet
 
-unless notYetAired
-  .review-listing
-    h4
-      | Trending Reviews
-      link-to 'anime.reviews' classNames="btn btn-xs btn-default pull-right" | view all
+/ .info-tabs
+/   ul.nav.nav-tabs
+/     li class={showGenres:active}
+/       a{action switchTo "Genres"} Genres
+/     li class={:hidden-xs showFranchise:active}
+/       a{action switchTo "Franchise"} Franchise
+/     unless notYetAired
+/       li class={:hidden-xs showQuotes:active}
+/         a{action switchTo "Quotes"} Quotes
+/     li class={:dropdown showCast:active}
+/       a.dropdown-toggle data-toggle="dropdown"
+/         | Cast
+/         b.caret
+/       ul.dropdown-menu
+/         each language in languages
+/           li: a{action setLanguage language} #{language}
+/     li class={:hidden-xs showStudios:active}
+/       a{action switchTo "Studios"} Studios
+/     li.dropdown.visible-xs
+/       a.dropdown-toggle data-toggle="dropdown"
+/         | More
+/         b.caret
+/         ul.dropdown-menu
+/           li: a{action switchTo "Franchise"} Franchise
+/           unless notYetAired
+/             li: a{action switchTo "Quotes"} Quotes
+/           li: a{action switchTo "Studios"} Studios
 
-    each trendingReviews
-      partial "media/review_summary"
-    else
-      .trending-review-empty
-        i.empty-icon.fa.fa-meh-o
-        h4 Well, this is pretty awkward.
-        p You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.
-        a.btn.btn-default href=newReviewURL Write the first review
+/   .tab-content
+/     .tab-pane.active.genre-tab
+/       div class={:slider showGenres::hidden}
+/         partial "media/genres"
+/       if showFranchise
+/         partial "anime/franchise"
+/       div class={:slider showQuotes::hidden}
+/         partial "anime/featured_quotes"
+/       div class={:slider showCast::hidden}
+/         partial "anime/cast"
+/       div class={:slider showStudios::hidden}
+/         partial "anime/studios"
+
+/   unless nsfw
+/     .banner-ad
+/       ad-unit adId="1293412" adClass="257f81e798bd68dd81e60f42838f361f"
+
+/ unless notYetAired
+/   .review-listing
+/     h4
+/       | Trending Reviews
+/       link-to 'anime.reviews' classNames="btn btn-xs btn-default pull-right" | view all
+
+/     each trendingReviews
+/       partial "media/review_summary"
+/     else
+/       .trending-review-empty
+/         i.empty-icon.fa.fa-meh-o
+/         h4 Well, this is pretty awkward.
+/         p You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.
+/         a.btn.btn-default href=newReviewURL Write the first review
 
