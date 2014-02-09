@@ -83,8 +83,6 @@
     componentDidUpdate: function(prevProps, newProps, rootNode) {
       Ember.run(function() {
         if (this.props.dropdownOpen) {
-          $(rootNode).find("textarea.personal-notes").autosize({append: "\n"});
-
           if (this.props.view.get('user.viewingSelf')) {
             var controller = this.props.view.get('controller');
             var libraryEntry = this.props.content;
