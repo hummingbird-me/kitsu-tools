@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :cover_image_url, :avatar_template, :rating_type, :mini_bio, :is_followed, :title_language_preference
+  attributes :id, :cover_image_url, :avatar_template, :rating_type, :mini_bio, :is_followed, :title_language_preference, :online
 
   def id
     object.name
@@ -31,6 +31,10 @@ class UserSerializer < ActiveModel::Serializer
 
   def include_title_language_preference?
     scope == object
+  end
+
+  def online
+    object.online?
   end
 end
 
