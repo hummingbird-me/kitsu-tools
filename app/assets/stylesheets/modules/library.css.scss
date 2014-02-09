@@ -283,9 +283,11 @@
 }
 
 .library-sections {
+  padding-bottom: 10px;
+}
+
+.library-sections {
   @extend .btn-group;
-  
-  padding-bottom: 10px; /* See rounded corners */
 
   button .fa {
     margin-left: 5px;
