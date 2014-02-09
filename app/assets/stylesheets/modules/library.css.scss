@@ -282,11 +282,11 @@
   color: $grey;
 }
 
-.library-sections {
+#library-sections {
   padding-bottom: 10px;
 }
 
-.library-sections {
+.library-section-select {
   @extend .btn-group;
 
   button .fa {
