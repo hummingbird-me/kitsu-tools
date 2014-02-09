@@ -318,7 +318,7 @@
         }
       }
       else {
-        rating = (<span>&mdash;&mdash;</span>);
+        rating = (<span>&mdash;</span>);
       }
 
       return (
