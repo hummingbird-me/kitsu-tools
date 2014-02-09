@@ -272,7 +272,7 @@
           $(rootNode).find(".fa-book").tooltip('destroy');
           $(rootNode).find(".fa-book").tooltip({
             title: notes,
-            placement: "right"
+            placement: "left"
           });
         }
       }.bind(this));
@@ -324,6 +324,10 @@
           <div className={listGroupClass} onClick={this.toggleDropdown}>
             <div className="list-item-left">
               {content.get('anime.displayTitle')}
+              { content.get('anime.airingStatus') == "Finished Airing"
+                ? ''
+                : <span className="anime-label"><span className="label label-primary">{content.get('anime.airingStatus')}</span></span>
+              }
               { content.get('private')
                 ? <span className="anime-label"><i className="fa fa-eye-slash" /></span>
                 : ''
@@ -335,10 +339,6 @@
               { content.get('notes')
                 ? <span className="anime-label"><i className="fa fa-book" /></span>
                 : ''
-              }
-              { content.get('anime.airingStatus') == "Finished Airing"
-                ? ''
-                : <span className="anime-label"><span className="label label-primary">{content.get('anime.airingStatus')}</span></span>
               }
             </div>
             <div className="list-item-right">
