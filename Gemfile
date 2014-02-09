@@ -84,7 +84,6 @@ group :test do
   gem 'mocha'
 end
 
-gem 'jquery-rails'
 gem 'haml', '~> 4.0'
 gem 'haml-rails'
 gem 'simple_form'

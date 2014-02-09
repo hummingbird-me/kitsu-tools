@@ -533,7 +533,6 @@ DEPENDENCIES
   hiredis
   image_optim
   indexable (~> 0.1)
-  jquery-rails
   kaminari
   letter_opener
   mixpanel
