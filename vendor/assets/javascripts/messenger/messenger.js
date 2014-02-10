@@ -573,7 +573,7 @@ window.Messenger.Events = (function() {
       var $action, $actions, $cancel, $link, $message, $text, action, _i, _len, _ref2,
         _this = this;
       $message = $("<div class='messenger-message message alert " + opts.type + " message-" + opts.type + " alert-" + opts.type + "'>");
-      if (opts.showCloseButton) {
+      if (true || opts.showCloseButton) {
         $cancel = $('<button type="button" class="messenger-close" data-dismiss="alert">&times;</button>');
         $cancel.click(function() {
           _this.cancel();
@@ -1209,7 +1209,7 @@ window.Messenger.Events = (function() {
     defaultOpts = {
       extraClasses: 'messenger-fixed messenger-on-bottom',
       theme: 'flat',
-      maxMessages: 9,
+      maxMessages: 4,
       parentLocations: ['body']
     };
     opts = $.extend(defaultOpts, $._messengerDefaults, Messenger.options, opts);
