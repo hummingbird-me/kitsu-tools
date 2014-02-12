@@ -73,7 +73,6 @@ gem 'flamegraph'
 group :production do
   gem 'newrelic_rpm'
   gem 'newrelic-grape'
-  gem 'skylight', '0.3.0.rc.3'
 end
 
 # Testing
