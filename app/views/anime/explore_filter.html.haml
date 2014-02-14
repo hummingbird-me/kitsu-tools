@@ -37,8 +37,8 @@
                     %label.checkbox
                       = check_box_tag "g[]", genre.slug, @genres.include?(genre)
                       %span.genre= genre.name
-                      
-                      
+
+
     :coffee
       $("input").iCheck
         checkboxClass: 'icheckbox_flat-orange'
@@ -63,17 +63,20 @@
         / Sort options
         %a.rounded-panel.sort-option.has-dropdown(data-dropdown="sort-option-dropdown" href="javascript: void(0)")
           %i.fa.fa-caret-down
-          - if @sort == "all"
-            Popular: All Time
+          - if @sort == "rating"
+            Highest Rated
+          - elsif @sort == "popular"
+            Most Popular
           - elsif @sort == "newest"
             Newest
           - elsif @sort == "oldest"
             Oldest
-  
+
         .f-dropdown.content.sort-option-dropdown(data-dropdown-content id="sort-option-dropdown")
           %h4 Sort By Popularity
           %ul
-            %li= link_to "All Time", anime_filter_path(params.merge(sort: "all"))
+            %li= link_to "Highest Rated", anime_filter_path(params.merge(sort: "rating"))
+            %li= link_to "Most Popular", anime_filter_path(params.merge(sort: "popular"))
           %h4 Sort By Airing Date
           %ul
             %li= link_to "Newest", anime_filter_path(params.merge(sort: "newest"))
