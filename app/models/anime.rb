@@ -91,7 +91,7 @@ class Anime < ActiveRecord::Base
     age_rating != "R18+"
   end
 
-  def self.order_by_popularity
+  def self.order_by_rating
     order('bayesian_average DESC NULLS LAST, user_count DESC NULLS LAST')
   end
 

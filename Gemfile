@@ -22,8 +22,8 @@ gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
 
 gem 'ember-rails'
-gem 'ember-source', '1.3.2'
-gem 'ember-data-source', '1.0.0.beta.5'
+gem 'ember-source', '1.4.0.beta.6'
+gem 'ember-data-source', '1.0.0.beta.6'
 gem 'coffee-rails', '~> 4.0'
 gem 'emblem-rails', '~> 0.2.1'
 gem 'emblem-source', '~> 0.3.8'
@@ -84,7 +84,6 @@ group :test do
   gem 'mocha'
 end
 
-gem 'jquery-rails'
 gem 'haml', '~> 4.0'
 gem 'haml-rails'
 gem 'simple_form'

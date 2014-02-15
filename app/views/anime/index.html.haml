@@ -19,7 +19,7 @@
 
             %li
               %a.popular-filter(href="javascript:void(0)")
-                Popular
+                Order
                 %i.fa.fa-caret-down
 
             %li= link_to "Anticipated", anime_filter_path(sort: "all", y: ["Upcoming"])
@@ -104,10 +104,8 @@
 
     .popular-filter-popover
       .filter.popular-filter-popover-content
-        = link_to "All Time", anime_filter_path(sort: "all"), class: 'filter-option'
-        = link_to "This Year", anime_filter_path(sort: "year"), class: 'filter-option'
-        = link_to "This Month", anime_filter_path(sort: "month"), class: 'filter-option'
-        = link_to "This Week", anime_filter_path(sort: "week"), class: 'filter-option'
+        = link_to "Highest Rated", anime_filter_path(sort: "rating"), class: 'filter-option'
+        = link_to "Most Popular", anime_filter_path(sort: "popular"), class: 'filter-option'
 
     .year-filter-popover
       .filter.year-filter-popover-content

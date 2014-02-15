@@ -32,7 +32,7 @@
   transition: opacity .60s ease-in-out;
   -moz-transition: opacity .60s ease-in-out;
   -webkit-transition: opacity .60s ease-in-out;
-  @extend .fa; 
+  @extend .fa;
   @extend .fa-angle-up;
   opacity: 0;
   &:hover {
@@ -45,6 +45,26 @@
 
   background: linear-gradient(to bottom, darken($eggshell, 5%), $eggshell 10%, $eggshell 90%, darken($eggshell, 10%));
   padding-bottom: 15px;
+
+  h4 {
+    margin-bottom: 0;
+  }
+
+  .genres {
+    margin-bottom: 5px;
+    li {
+      display: inline;
+      font-size: 0.9em;
+      opacity: 0.8;
+      &:after {
+        content: " · ";
+        font-weight: bold;
+      }
+      &:last-child:after {
+        content: "";
+      }
+    }
+  }
 
   .status-select {
     .btn {

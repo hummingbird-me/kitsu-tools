@@ -67,7 +67,7 @@ class AnimeController < ApplicationController
       @anime = @anime.where('started_airing_date IS NULL')
     end
 
-    @anime = @anime.order_by_popularity.group_by {|anime| anime.show_type }
+    @anime = @anime.order_by_rating.group_by {|anime| anime.show_type }
   end
 
   def filter
@@ -79,19 +79,19 @@ class AnimeController < ApplicationController
     else
       @genres = Genre.default_filterable(current_user)
     end
-    
+
     if params[:y]
       @years = params[:y]
     else
       @years = @filter_years
     end
-    
+
     if params[:sort]
       @sort = params[:sort]
     else
       @sort = "all"
     end
-    
+
     @anime = Anime.accessible_by(current_ability).page(params[:page]).per(36)
 
     # Apply genre filter.
@@ -100,17 +100,19 @@ class AnimeController < ApplicationController
     else
       @anime = @anime.include_genres(@genres)
     end
-    
+
     # Apply sort option.
     if @sort == "newest"
       @anime = @anime.order("started_airing_date DESC")
     elsif @sort == "oldest"
       @anime = @anime.order("started_airing_date")
+    elsif @sort == "popular"
+      @anime = @anime.order("user_count DESC NULLS LAST")
     else
-      @sort = "all"
-      @anime = @anime.order_by_popularity
+      @sort = "rating"
+      @anime = @anime.order_by_rating
     end
-    
+
     # TODO Apply year filter.
     if @years.length != @filter_years.length
       filter_year_ranges = {
