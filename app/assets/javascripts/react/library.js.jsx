@@ -138,6 +138,13 @@
             </div>
             <div className="col-md-6 col-sm-8 hidden-xs">
               <h4><a href={"/anime/" + content.get('anime.id')} onClick={this.goToAnime}>{content.get('anime.displayTitle')}</a></h4>
+              <ul className="genres">
+                {
+                  content.get('anime.genres').map(function(genre) {
+                    return (<li>{genre}</li>);
+                  })
+                }
+              </ul>
               <p className="drop-description">{content.get('anime.synopsis')}</p>
             </div>
             <div className="col-md-4 col-sm-4">
