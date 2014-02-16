@@ -672,16 +672,18 @@ p img {
   .breakdown-content {
     @extend .col-md-10;
     padding-left: 0;
+    padding-right: 0;
     @media (max-width: 992px) {
       padding-right: 0;
     }
   }
   .verdict-title {
-    @extend .col-md-8;
+    @extend .col-md-5;
     padding-left: 15px;
+    padding-right: 0;
   }
   .breakdown-title {
-    @extend .col-md-4;
+    @extend .col-md-7;
     border-left: 1px solid #ddd;
     padding-left: 15px;
   }
@@ -766,7 +768,8 @@ p img {
     color: #fff;
     font-size: 20px;
     padding-top: 30px;
-    padding-left: 60px;
+    padding-left: 25px;
+    padding-right: 40px;
     @media (max-width: 1100px) {
       padding-left: 20px;
     }
