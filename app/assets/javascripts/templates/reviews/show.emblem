@@ -1,37 +1,40 @@
 .review-cover
   .user-cover
-    .cover-photo style="background-image: url(http://static.hummingbird.me/users/cover_images/000/000/002/thumb/base64.jpg?1390833466);"
+    .cover-photo style=coverImageStyle
     .cover-overlay
+
 .container.relative
   .row
     .user-cover-options
       .col-sm-10.user-wrapper
         .col-sm-2.col-xs-2.user-avatar.clearfix
           .large-avatar
-            img.responsive-image alt="Josh" src="http://static.hummingbird.me/users/avatars/000/000/002/thumb/avatar.jpg?1383507589"
+            avatar user 'thumb'
             .online-box
-              .online-indicator.online
+              div class={:online-indicator user.online:online:offline}
         .col-xs-12.col-sm-10.account-info
-          h1.username introverturtle
+          h1.username #{user.username}
       button.btn.btn-default.btn-lg.follow-button Unfollow
 .profile-navigation
   .container
     .row
       ul.inline-list.clearfix
         li.nav-link
-          a#ember570.ember-view href="/users/Josh" Feed
+          link-to 'user.index' user data-hover="Feed" | Feed
         li.nav-link
-          a#ember571.ember-view href="/users/Josh/library" Library
+          link-to 'user.library' user data-hover="Library" | Library
         li.nav-link
-          a#ember572.ember-view href="/users/Josh/reviews" Reviews
+          link-to 'user.reviews' user data-hover="Reviews" | Reviews
         li.nav-link
-          a#ember579.ember-view href="/users/Josh/following" Following
+          link-to 'user.following' user data-hover="Following" | Following
         li.nav-link
-          a#ember586.ember-view href="/users/Josh/followers" Followers
+          link-to 'user.followers' user data-hover="Followers" | Followers
 .back-to-anime
-  a href="#" Back to anime page
+  link-to 'anime.index' | Back to anime page
+
 .review-content
-  h1.review-title Attack on Titan <span>Review</span>
+  h1.review-title #{anime.displayTitle} <span>Review</span>
+
   p This is just a first impression based on the <strong>first four episodes</strong>. I will update this with a full review when the entire show is over.
   .youtube-frame
     iframe allowfullscreen="" frameborder="0" height="315" src="//www.youtube.com/embed/kd383XVbMXE" width="560"
