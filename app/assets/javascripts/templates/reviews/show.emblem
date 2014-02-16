@@ -84,9 +84,9 @@
             .dec-score
               strong 3.0
   .summary-block
-    %p Attack on Titan has started stong and so far this train has not slowed down. A great action series with a lot of promise.
+    p #{summary}
 
-.comment-section
+.comment-section style="display: none"
   .comment-title
     h4 There are <span>12</span> comments.
   .comment-form
