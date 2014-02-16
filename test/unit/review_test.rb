@@ -30,6 +30,11 @@ class ReviewTest < ActiveSupport::TestCase
   should validate_presence_of(:anime)
   should validate_presence_of(:content)
   should validate_presence_of(:rating)
+  should validate_presence_of(:rating_animation)
+  should validate_presence_of(:rating_sound)
+  should validate_presence_of(:rating_character)
+  should validate_presence_of(:rating_enjoyment)
+  should validate_presence_of(:rating_story)
   should validate_uniqueness_of(:user_id).scoped_to(:anime_id)
 
   def test_should_update_wilson_score
