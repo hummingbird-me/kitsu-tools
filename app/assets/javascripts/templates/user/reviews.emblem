@@ -4,7 +4,7 @@
       link-to 'reviews.show' anime.id id
         .review.rounded-block
           h4.reviewer-name
-            | #{animeTitle}
+            | #{anime.displayTitle}
           span.review-stars
             stars rating
           p.review-summary #{summary}
