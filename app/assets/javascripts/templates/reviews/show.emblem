@@ -35,6 +35,9 @@
 .review-content
   h1.review-title #{anime.displayTitle} <span>Review</span>
 
+  .spoiler-block Tread carefully! This review contains spoilers!!
+  .progress-block This is a review up until episode 17!
+
   p This is just a first impression based on the <strong>first four episodes</strong>. I will update this with a full review when the entire show is over.
   .youtube-frame
     iframe allowfullscreen="" frameborder="0" height="315" src="//www.youtube.com/embed/kd383XVbMXE" width="560"
@@ -58,22 +61,26 @@
         ul
           li.clearfix
             .col-xs-9
-              i.fa.fa-plus-circle &nbsp; Story...
+              i.fa.fa-plus-circle
+              | &nbsp; Story...
             .dec-score
               strong 3.0
           li.clearfix
             .col-xs-9
-              i.fa.fa-minus-circle &nbsp; Animation...
+              i.fa.fa-minus-circle
+              | &nbsp; Animation...
             .dec-score
               strong 2.5
           li.clearfix
             .col-xs-9
-              i.fa.fa-minus-circle &nbsp; Sound...
+              i.fa.fa-minus-circle
+              | &nbsp; Sound...
             .dec-score
               strong 2.5
           li.clearfix
             .col-xs-9.columns
-              i.fa.fa-plus-circle &nbsp; Characters...
+              i.fa.fa-plus-circle
+              | &nbsp; Characters...
             .dec-score
               strong 3.0
   .summary-block
@@ -139,81 +146,4 @@
               <i class="fa fa-angle-down"></i>
           span class="bullet" •
           <a href="#">Reply</a>
-
-
-/ h1.series-title.hidden-xs
-/   | #{canonicalTitle}
-/   if alternateTitle
-/     small
-/       bootstrap-tooltip title=alternateTitle placement="right"
-/         i.fa.fa-question-circle
-
-/ .hidden-xs: partial "anime/infobar"
-
-/ .series-description.hidden-xs
-/   p: truncate-text text=synopsis length=500
-
-/   .social-buttons
-/     .fb-like data-href=fbLikeURL data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"
-/     a href="https://twitter.com/share" class="twitter-share-button" data-via="hummingbird_me" Tweet
-
-/ .info-tabs
-/   ul.nav.nav-tabs
-/     li class={showGenres:active}
-/       a{action switchTo "Genres"} Genres
-/     li class={:hidden-xs showFranchise:active}
-/       a{action switchTo "Franchise"} Franchise
-/     unless notYetAired
-/       li class={:hidden-xs showQuotes:active}
-/         a{action switchTo "Quotes"} Quotes
-/     li class={:dropdown showCast:active}
-/       a.dropdown-toggle data-toggle="dropdown"
-/         | Cast
-/         b.caret
-/       ul.dropdown-menu
-/         each language in languages
-/           li: a{action setLanguage language} #{language}
-/     li class={:hidden-xs showStudios:active}
-/       a{action switchTo "Studios"} Studios
-/     li.dropdown.visible-xs
-/       a.dropdown-toggle data-toggle="dropdown"
-/         | More
-/         b.caret
-/         ul.dropdown-menu
-/           li: a{action switchTo "Franchise"} Franchise
-/           unless notYetAired
-/             li: a{action switchTo "Quotes"} Quotes
-/           li: a{action switchTo "Studios"} Studios
-
-/   .tab-content
-/     .tab-pane.active.genre-tab
-/       div class={:slider showGenres::hidden}
-/         partial "media/genres"
-/       if showFranchise
-/         partial "anime/franchise"
-/       div class={:slider showQuotes::hidden}
-/         partial "anime/featured_quotes"
-/       div class={:slider showCast::hidden}
-/         partial "anime/cast"
-/       div class={:slider showStudios::hidden}
-/         partial "anime/studios"
-
-/   unless nsfw
-/     .banner-ad
-/       ad-unit adId="1293412" adClass="257f81e798bd68dd81e60f42838f361f"
-
-/ unless notYetAired
-/   .review-listing
-/     h4
-/       | Trending Reviews
-/       link-to 'anime.reviews' classNames="btn btn-xs btn-default pull-right" | view all
-
-/     each trendingReviews
-/       partial "media/review_summary"
-/     else
-/       .trending-review-empty
-/         i.empty-icon.fa.fa-meh-o
-/         h4 Well, this is pretty awkward.
-/         p You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.
-/         a.btn.btn-default href=newReviewURL Write the first review
 
