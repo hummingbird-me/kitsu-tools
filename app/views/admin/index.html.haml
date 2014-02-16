@@ -34,21 +34,6 @@
           - else
             %em (Nothing here.)
 
-        - if current_user.id == 1 or current_user.id == 2
-          .alert-box.alert
-            %h5 Forum kill switch
-            %p
-              - if $redis.exists "forum_kill_switch"
-                = link_to "Enable Forum", "/kotodama/toggle_forum_kill_switch", class: "button padded", method: :post
-              - else
-                = link_to "Disable Forum", "/kotodama/toggle_forum_kill_switch", class: "button padded alert", method: :post
-            %h5 Registration kill switch
-            %p
-              - if $redis.exists "registration_kill_switch"
-                = link_to "Enable Registration", "/kotodama/toggle_registration_kill_switch", class: "button padded", method: :post
-              - else
-                = link_to "Disable Registration", "/kotodama/toggle_registration_kill_switch", class: "button padded alert", method: :post
-
       .large-3.columns
         %h4 Statistics
         %hr

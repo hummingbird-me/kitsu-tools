@@ -27,24 +27,6 @@ class AdminController < ApplicationController
     redirect_to :back
   end
 
-  def toggle_forum_kill_switch
-    if $redis.exists("forum_kill_switch")
-      $redis.del("forum_kill_switch")
-    else
-      $redis.set("forum_kill_switch", "true")
-    end
-    redirect_to :back
-  end
-
-  def toggle_registration_kill_switch
-    if $redis.exists("registration_kill_switch")
-      $redis.del("registration_kill_switch")
-    else
-      $redis.set("registration_kill_switch", "true")
-    end
-    redirect_to :back
-  end
-  
   def index
     @total_beta   = BetaInvite.count
     @invited_beta = BetaInvite.where(invited: true).count
@@ -60,5 +42,8 @@ class AdminController < ApplicationController
     user = User.find(params[:user_id].strip.downcase)
     sign_in(:user, user)
     redirect_to "/"
+  end
+
+  def stats
   end
 end
