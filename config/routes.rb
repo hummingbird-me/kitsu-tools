@@ -2,12 +2,14 @@ require 'sidekiq/web'
 
 Hummingbird::Application.routes.draw do
   resources :library_entries
-  resources :reviews
   resources :franchises
   resources :full_anime
   resources :quotes
   resources :stories
   resources :user_infos
+  resources :reviews do
+    post :vote
+  end
 
   get '/sign-in' => 'auth#sign_in_action'
   post '/sign-out' => 'auth#sign_out_action'
@@ -91,9 +93,7 @@ Hummingbird::Application.routes.draw do
     resources :quotes do
       member { post :vote }
     end
-    resources :reviews do
-      member { post :vote }
-    end
+    resources :reviews
   end
 
   resources :manga

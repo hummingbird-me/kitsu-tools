@@ -78,7 +78,9 @@
           </div>
 
           <div class="poster-container">
-            <img class="series-poster" {{bind-attr src=posterImage}}>
+            {{#link-to 'anime.index'}}
+              <img class="series-poster" {{bind-attr src=posterImage}}>
+            {{/link-to}}
           </div>
 
           <div class="sidebar-copy visible-xs">

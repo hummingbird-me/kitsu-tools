@@ -1,0 +1,22 @@
+h1.series-title.hidden-xs
+  link-to 'anime' anime.id | #{anime.canonicalTitle}
+  small
+    i.fa.fa-chevron-right
+    | Reviews
+
+a.btn.btn-primary style="margin: 16px; width: 95%" href=anime.newReviewURL
+  | Create a new review
+
+.review-listing
+  each
+    partial "media/review_summary"
+  else
+    unless canLoadMore
+      .trending-review-empty
+        i.empty-icon.fa.fa-meh
+        h4 Well, this is pretty awkward.
+        p You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.
+        a.btn.btn-default href=anime.newReviewURL Write the first review
+
+  if canLoadMore
+    load-more action="loadNextPage"

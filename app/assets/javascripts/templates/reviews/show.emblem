@@ -1,0 +1,175 @@
+.review-cover
+  .user-cover
+    .cover-photo style=coverImageStyle
+    .cover-overlay
+
+.container.relative
+  .row
+    .user-cover-options
+      .col-sm-10.user-wrapper
+        .col-sm-2.col-xs-2.user-avatar.clearfix
+          .large-avatar
+            avatar user 'thumb'
+            .online-box
+              div class={:online-indicator user.online:online:offline}
+        .col-xs-12.col-sm-10.account-info
+          h1.username #{user.username}
+      unless writtenBySelf
+        button.btn.btn-default.btn-lg.follow-button{action toggleFollow user}
+          if user.isFollowed
+            | Unfollow
+          else
+            | Follow
+
+.profile-navigation
+  .container
+    .row
+      ul.inline-list.clearfix
+        li.nav-link
+          link-to 'user.index' user data-hover="Feed" | Feed
+        li.nav-link
+          link-to 'user.library' user data-hover="Library" | Library
+        li.nav-link
+          link-to 'user.reviews' user data-hover="Reviews" | Reviews
+        li.nav-link
+          link-to 'user.following' user data-hover="Following" | Following
+        li.nav-link
+          link-to 'user.followers' user data-hover="Followers" | Followers
+
+.back-to-anime
+  .col-xs-6
+    link-to 'anime.index' | Back to anime page
+  .col-xs-6
+    if writtenBySelf
+      a href=editPath class="edit-review" edit review
+
+.review-content
+  h1.review-title #{anime.displayTitle} <span>Review</span>
+
+  .spoiler-block style="display:none" Tread carefully! This review contains spoilers!!
+  .progress-block style="display:none" This is a review up until episode 17!
+
+  | {{{formattedContent}}}
+
+.reader-actions
+  .reader-vote
+    .recommend
+      a{action "upvote"} class={upvoted:active}
+        i.fa.fa-thumbs-o-up &nbsp;
+        if liked
+          | Recommended
+        else
+          | Recommend
+    .dislike
+      a{action "downvote"} class={downvoted:active}
+        i.fa.fa-thumbs-o-down
+  .reader-share style="display: none"
+    .share-icons
+      .twitter
+        a href="#" <i class="fa fa-twitter"></i>
+      .facebook
+        a href="#" <i class="fa fa-facebook"></i>
+      .flag-review
+        a href="#" <i class="fa fa-flag"></i>
+
+.review-breakdown
+  .breakdown-header
+    .verdict-title
+      h4 Verdict
+    .breakdown-title
+      h4 Breakdown
+  .breakdown-content
+    .score-block
+      h1.score #{ratingFirstDigit}
+      h5.decimal-score #{ratingDecimalPart}
+    .breakdown-block
+      .breakdown-content
+        ul
+          li.clearfix
+            .col-xs-9
+              i.fa.fa-plus-circle
+              | &nbsp; Story...
+            .dec-score
+              strong #{ratingStory}
+          li.clearfix
+            .col-xs-9
+              i.fa.fa-minus-circle
+              | &nbsp; Animation...
+            .dec-score
+              strong #{ratingAnimation}
+          li.clearfix
+            .col-xs-9
+              i.fa.fa-minus-circle
+              | &nbsp; Sound...
+            .dec-score
+              strong #{ratingSound}
+          li.clearfix
+            .col-xs-9.columns
+              i.fa.fa-plus-circle
+              | &nbsp; Characters...
+            .dec-score
+              strong #{ratingCharacter}
+  .summary-block
+    p #{summary}
+
+.comment-section style="display: none"
+  .comment-title
+    h4 There are <span>12</span> comments.
+  .comment-form
+    .user-thumb
+      img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+    .user-form
+      textarea type="text"  placeholder="Join the discussion"
+  .comments
+
+    .comment
+      .user-thumb
+        img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+      .comment-info
+        h4.username Username <span class="time-ago">23 minutes ago</span>
+        p Please let's both of us stop trying to justify this whole thing and admit you're in danger.
+        .comment-votes
+          a href="#"
+            .positive-vote
+              span.vote-count 18 &nbsp;
+              <i class="fa fa-angle-up"></i>
+          a href="#"
+            .negative-vote
+              <i class="fa fa-angle-down"></i>
+          span class="bullet" •
+          <a href="#">Reply</a>
+
+    .comment.reply
+      .user-thumb
+        img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+      .comment-info
+        h4.username Username <span class="time-ago">23 minutes ago</span>
+        p Please let's both of us stop trying to justify this whole thing and admit you're in danger.
+        .comment-votes
+          a href="#"
+            .positive-vote
+              span.vote-count 18 &nbsp;
+              <i class="fa fa-angle-up"></i>
+          a href="#"
+            .negative-vote
+              <i class="fa fa-angle-down"></i>
+          span class="bullet" •
+          <a href="#">Reply</a>
+
+    .comment
+      .user-thumb
+        img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+      .comment-info
+        h4.username Username <span class="time-ago">23 minutes ago</span>
+        p Please let's both of us stop trying to justify this whole thing and admit you're in danger.
+        .comment-votes
+          a href="#"
+            .positive-vote
+              span.vote-count 18 &nbsp;
+              <i class="fa fa-angle-up"></i>
+          a href="#"
+            .negative-vote
+              <i class="fa fa-angle-down"></i>
+          span class="bullet" •
+          <a href="#">Reply</a>
+

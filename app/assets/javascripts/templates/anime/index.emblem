@@ -63,7 +63,7 @@ unless notYetAired
   .review-listing
     h4
       | Trending Reviews
-      link-to 'anime.reviews' classNames="btn btn-xs btn-default pull-right" | view all
+      link-to 'reviews.index' classNames="btn btn-xs btn-default pull-right" | view all
 
     each trendingReviews
       partial "media/review_summary"
@@ -73,4 +73,5 @@ unless notYetAired
         h4 Well, this is pretty awkward.
         p You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.
         a.btn.btn-default href=newReviewURL Write the first review
+
 

@@ -1,3 +1,5 @@
+
+
 .gallery {
   @extend .pull-right;
   @extend .col-sm-3;
@@ -207,8 +209,27 @@ h4.series-title {
   background: #fff;
   border-left: 1px solid #ddd;
   border-top-right-radius: 4px;
+  overflow: hidden;
   @media (min-width: 768px) {
     min-height: 1000px;
+  }
+  .user-cover-options {
+    .large-avatar {
+      @media (max-width: 760px) {
+        display: none;
+      }
+    }
+    .account-info {
+      @media (max-width: 760px) {
+        padding-left: 0 !important;
+      }
+    }
+    .follow-button {
+      @media (max-width: 500px) {
+        position: absolute;
+        top: -10px;
+      }
+    }
   }
 }
 
@@ -504,5 +525,386 @@ h4.series-title {
 .favorite-count {
   @media (max-width: 500px) {
     display: none;
+  }
+}
+
+p img {
+  max-width: 100%;
+}
+
+// review page
+.back-to-anime {
+  @extend .col-md-12;
+  margin-top: 55px;
+  padding-left: 0;
+  padding-right: 0;
+  @media (max-width: 464px) {
+    margin-top: 95px;
+  }
+}
+
+.edit-review {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: #333;
+  float: right;
+  &:hover {
+    color: $darkOrange;
+    border-color: $orange;
+  }
+}
+
+.spoiler-block, .progress-block {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-radius: 1px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.spoiler-block {
+  background: #eed4d4;
+  color: #9f4442;
+}
+
+.progress-block {
+  background: #fce6cc;
+  color: #955b12;
+}
+
+.review-content {
+  @extend .col-xs-12;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 20px;
+  line-height: 1.5;
+  p {
+    margin-bottom: 30px;
+  }
+  .youtube-frame {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    padding-top: 25px;
+    padding-bottom: 20px;
+    .youtube-background {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -15px;
+      right: -15px;
+      background: #2f343b;
+    }
+    iframe {
+      width: 100%;
+      max-width: 550px;
+      z-index: 1;
+      position: relative;
+      border-radius: 3px;
+      border: 5px solid #23272d;
+    }
+  }
+  .review-title {
+    text-align: center;
+    span {
+      font-weight: 300;
+    }
+  }
+}
+
+.reader-actions {
+  @extend .col-xs-12;
+  padding: 0;
+  .reader-vote {
+    @extend .col-xs-8;
+    padding: 0;
+    .recommend, .dislike {
+      display: inline-block;
+      a {
+        color: #333;
+        padding: 5px 10px;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        &:hover {
+          color: $darkOrange;
+          border-color: $orange;
+        }
+        &.active {
+          color: #2a6496;
+          border-color: #2a6496;
+        }
+      }
+    }
+    .recommend {
+      margin-right: 10px;
+    }
+  }
+  .share-icons {
+    text-align: right;
+    .twitter, .facebook, .flag-review {
+      display: inline-block;
+      margin-right: 20px;
+      font-size: 20px;
+      a {
+        color: #b3b3b1;
+        &:hover {
+          color: $darkOrange;
+        }
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .flag-review a {
+      &:hover {
+        color: #9f4442;
+      }
+    }
+  }
+}
+
+.review-breakdown {
+  @extend .col-md-12;
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  padding: 0;
+  h1,h2,h3,h4,h5,h6 {
+    font-weight: bold;
+  }
+  .breakdown-content {
+    @extend .col-md-10;
+    padding-left: 0;
+    padding-right: 0;
+    @media (max-width: 992px) {
+      padding-right: 0;
+    }
+  }
+  .verdict-title {
+    @extend .col-md-5;
+    padding-left: 15px;
+    padding-right: 0;
+  }
+  .breakdown-title {
+    @extend .col-md-7;
+    border-left: 1px solid #ddd;
+    padding-left: 15px;
+  }
+  .breakdown-content {
+    @extend .col-md-12;
+    background: #2f343b;
+  }
+  .score-block {
+    @extend .col-md-5;
+    background: #da5e3f;
+    text-align: center;
+    overflow: hidden;
+    .score {
+      font-size: 190px;
+      z-index: 2;
+      position: relative;
+    }
+    .decimal-score {
+      font-size: 70px;
+      position: relative;
+      top: -70px;
+      z-index: 1;
+    }
+    .score, .decimal-score {
+      display: inline;
+      color: #f6714e;
+      font-family: "proxima-nova",sans-serif;
+      text-shadow: rgb(169, 72, 49) -1px 1px,
+      rgb(170, 73, 49) -2px 2px,
+      rgb(171, 73, 49) -3px 3px,
+      rgb(172, 74, 50) -4px 4px,
+      rgb(173, 74, 50) -5px 5px,
+      rgb(174, 75, 50) -6px 6px,
+      rgb(175, 75, 51) -7px 7px,
+      rgb(177, 76, 51) -8px 8px,
+      rgb(178, 76, 51) -9px 9px,
+      rgb(179, 77, 52) -10px 10px,
+      rgb(180, 77, 52) -11px 11px,
+      rgb(181, 78, 52) -12px 12px,
+      rgb(182, 78, 53) -13px 13px,
+      rgb(183, 79, 53) -14px 14px,
+      rgb(185, 79, 53) -15px 15px,
+      rgb(186, 80, 54) -16px 16px,
+      rgb(187, 80, 54) -17px 17px,
+      rgb(188, 81, 54) -18px 18px,
+      rgb(189, 81, 55) -19px 19px,
+      rgb(190, 82, 55) -20px 20px,
+      rgb(191, 82, 55) -21px 21px,
+      rgb(193, 83, 56) -22px 22px,
+      rgb(194, 83, 56) -23px 23px,
+      rgb(195, 84, 56) -24px 24px,
+      rgb(196, 84, 56) -25px 25px,
+      rgb(197, 85, 57) -26px 26px,
+      rgb(198, 85, 57) -27px 27px,
+      rgb(199, 86, 57) -28px 28px,
+      rgb(200, 86, 58) -29px 29px,
+      rgb(202, 87, 58) -30px 30px,
+      rgb(203, 87, 58) -31px 31px,
+      rgb(204, 88, 59) -32px 32px,
+      rgb(205, 88, 59) -33px 33px,
+      rgb(206, 89, 59) -34px 34px,
+      rgb(207, 89, 60) -35px 35px,
+      rgb(208, 90, 60) -36px 36px,
+      rgb(210, 90, 60) -37px 37px,
+      rgb(211, 91, 61) -38px 38px,
+      rgb(212, 91, 61) -39px 39px,
+      rgb(213, 92, 61) -40px 40px,
+      rgb(214, 92, 62) -41px 41px,
+      rgb(215, 93, 62) -42px 42px,
+      rgb(216, 93, 62) -43px 43px,
+      rgb(218, 94, 63) -44px 44px;
+      height: 100%;
+      width: 100%;
+      small {
+        color: #f6714e;
+      }
+    }
+  }
+  .breakdown-block {
+    @extend .col-xs-7;
+    background: #2f343b;
+    color: #fff;
+    font-size: 20px;
+    padding-top: 30px;
+    padding-left: 25px;
+    padding-right: 40px;
+    @media (max-width: 1100px) {
+      padding-left: 20px;
+    }
+    @media (max-width: 992px) {
+      width: 100%;
+      padding-top: 15px;
+    }
+    ul {
+      margin-bottom: 0px;
+    }
+    .icon-plus-sign, .icon-minus-sign {
+      font-size: 30px;
+      position: relative;
+      top: 5px;
+      margin-right: 10px;
+    }
+    .dec-score {
+      text-align: right;
+      line-height: 40px;
+      position: relative;
+      top: -8px;
+    }
+  }
+}
+.summary-block {
+  @extend .col-xs-12;
+  background: #cdcdcd;
+  color: #666666;
+  float: left;
+  padding: 10px;
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
+  padding-bottom: 0;
+  i {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.comment-section {
+  @extend .col-xs-12;
+  padding: 0;
+  .comment-title {
+    @extend .col-xs-12;
+    border-bottom: 1px solid #ddd;
+    span {
+      color: #da5e3f;
+    }
+  }
+  .user-thumb {
+    @extend .col-xs-1;
+    padding: 0;
+    img {
+      max-width: 100%;
+      border-radius: 3px;
+    }
+  }
+
+  .comment-form {
+    @extend .col-xs-12;
+    margin-top: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    .user-form {
+      @extend .col-xs-11;
+      padding-right: 0;
+      textarea {
+        width: 100%;
+        height: 48px;
+        padding-top: 10px;
+        text-indent: 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+      }
+    }
+  }
+  .comments {
+    @extend .col-xs-12;
+    margin-top: 20px;
+    .comment {
+      @extend .col-xs-12;
+      padding-left: 0;
+      padding-right: 0;
+      margin-bottom: 20px;
+      &.reply {
+        padding-left: 65px;
+      }
+    }
+    .comment-info {
+      @extend .col-xs-11;
+      padding-right: 0;
+      .username {
+        margin-top: 0;
+        margin-bottom: 5px;
+        .time-ago {
+          color: #bebebe;
+          font-size: 14px;
+          font-weight: 300;
+          font-family: $bodyFontFamily;
+        }
+      }
+    }
+  }
+  .bullet {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 10px;
+    position: relative;
+    top: -2px;
+    color: #cdcdcd;
+  }
+  .comment-votes {
+    @extend .col-xs-12;
+    padding-left: 0;
+    a {
+      color: #222;
+      &:hover {
+        color: $orange;
+      }
+    }
+    .positive-vote, .negative-vote {
+      display: inline-block;
+    }
+    .positive-vote {
+      border-right: 1px solid #ddd;
+      padding-right: 10px;
+      margin-right: 10px;
+    }
+    .fa {
+      font-size: 20px;
+    }
   }
 }

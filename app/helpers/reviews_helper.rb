@@ -2,12 +2,11 @@ module ReviewsHelper
   def simple_format_review(text, html_options={}, options={})
     text = '' if text.nil?
     text = text.dup
-    start_tag = tag('p', html_options, true)
-    text = sanitize(text) unless options[:sanitize] == false
+    text = sanitize_review(text) unless options[:sanitize] == false
     text = text.to_str
     text.gsub!(/\r\n?/, "\n")                    # \r\n and \r -> \n
-    text.gsub!(/(\n)?\n+/, "</p>\n\n#{start_tag}")  # 2+ newline  -> paragraph
-    text.insert 0, start_tag
+    text.gsub!(/(\n)?\n+/, "</p>\n\n<p>")  # 2+ newline  -> paragraph
+    text.insert 0, "<p>"
     text.html_safe.safe_concat("</p>")
   end
 
@@ -86,7 +85,14 @@ module ReviewsHelper
       :transformers => [allow_youtube_transformer]
     }
 
-    Sanitize.clean(html, configuration).html_safe
+    html = Sanitize.clean(html, configuration).html_safe
+    noko = Nokogiri::HTML.fragment(html)
+
+    # Wrap youtube videos.
+    noko.css('iframe').wrap('<div class="youtube-frame"></div>')
+    p noko.css('.youtube-frame').each {|node| node.add_child('<div class="youtube-background"></div>') }
+
+    noko.to_html
   end
 
   def rating_description(r)

@@ -1,10 +1,10 @@
 .review-listing
   each
     .col-xs-12.col-md-6
-      a href=reviewURL
+      link-to 'reviews.show' anime.id id
         .review.rounded-block
           h4.reviewer-name
-            | #{animeTitle}
+            | #{anime.displayTitle}
           span.review-stars
             stars rating
           p.review-summary #{summary}

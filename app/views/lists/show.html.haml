@@ -1,1 +1,200 @@
-Show list.
+.anime-discover.anime-explore.user-list
+  .row
+    .large-9.columns.entry-content
+      .panel.rounded-panel
+        .large-12.columns
+          .large-12.columns
+            %h2.list-name Top 10 Anime off all time
+            .list-description
+              %p The world of anime has a lot to offer. From Naruto to Spirited Away, it is a huge universe, allowing filmmakers, storytellers and artists tell stories in a different way, and use their imagination to it's full potential. Here are the 10 animated, I would deem to be the greatest.
+
+          .large-12.columns.list-grid
+            %ul.large-block-grid-5
+              %li.center
+                %img.tip-top{"data-tooltip" => "", :title => "Naruto Shippuden", :src => "http://img1.ak.crunchyroll.com/i/spire1/d7a8b3541d44709a1df5197947debacc1367432151_full.jpg"}
+                %h4.list-entry-number 1
+
+              %li.center
+                %img.tip-top{"data-tooltip" => "", :title => "Attack on Titan", :src => "http://static.hummingbird.me/anime/cover_images/000/007/442/thumb/7442.png?1375239106"}
+                %h4.list-entry-number 2
+
+              %li.center
+                %img.tip-top{"data-tooltip" => "", :title => "Hunter X Hunter",:src => "http://img1.ak.crunchyroll.com/i/spire4/15df7bc2e44c5b7d6dbb577b4af4e2d91342725613_full.jpg"}
+                %h4.list-entry-number 3
+
+              %li.center
+                %img.tip-top{"data-tooltip" => "", :title => "The World God Only Knows",:src => "http://img1.ak.crunchyroll.com/i/spire3/4462386a1d99869f81bcc2cf3effc7671375831867_full.jpg"}
+                %h4.list-entry-number 4
+
+              %li.center
+                %img.tip-top{"data-tooltip" => "", :title => "Maka Ouji: Devils and Realist",:src => "http://img1.ak.crunchyroll.com/i/spire2/ee891011d4f27b2c7aea8ec45c5042121373185343_full.jpg"}
+                %h4.list-entry-number 5
+
+              %li.center
+                %img.tip-top{"data-tooltip" => "", :title => "Free!",:src => "http://img1.ak.crunchyroll.com/i/spire1/7831a76a0f5961376bfa088f8f1e3fb61372365681_full.jpg"}
+                %h4.list-entry-number 6
+
+              %li.center
+                %img.tip-top{"data-tooltip" => "", :title => "Majestic Prince",:src => "http://img1.ak.crunchyroll.com/i/spire4/3de041c6d82a9a21b331b73c5175f5941372730036_full.jpg"}
+                %h4.list-entry-number 7
+
+              %li.center
+                %img.tip-top{"data-tooltip" => "", :title => "Hakkenden: Eight Dogs of the East",:src => "http://img1.ak.crunchyroll.com/i/spire1/5fb9c1054b6ecd601122f540a2caf5a91372922899_full.jpg"}
+                %h4.list-entry-number 8
+
+              %li.center
+                %img.tip-top{"data-tooltip" => "", :title => "The Sunday without God",:src => "http://img1.ak.crunchyroll.com/i/spire1/d4e0f7bb37eb53e7c79a355c948d665b1373186751_full.jpg"}
+                %h4.list-entry-number 9
+
+              %li.center
+                %img.tip-top{"data-tooltip" => "", :title => "Free",:src => "http://img1.ak.crunchyroll.com/i/spire3/1b7b13d547ab551edd381dd21e52c5c31372367873_full.jpg"}
+                %h4.list-entry-number 10
+
+      .large-12.columns.comment-area.no-padding
+        %h3.comment-title
+          Comments
+        %span.radius.secondary.label.comment-count 05
+
+      .large-12.columns.comment-form.no-padding
+        .large-1.columns.no-padding
+          = image_tag "http://static.hummingbird.me/users/avatars/000/000/002/thumb/2-new-avatar.png?1375236555", :class => "user-image"
+        .large-11.columns.no-padding-right
+          %form
+            %textarea.comment-input{:placeholder => "Provide feedback and share your comments..."}
+          %a.button.padded.right.dark-button{:href => "#"} Post Comment
+
+      .large-12.columns.user-comments.no-padding
+
+        //comment
+        .large-12.columns.user-comment.no-padding-left.no-padding-right
+          .large-1.columns
+            = image_tag "http://static.hummingbird.me/users/avatars/000/006/330/thumb/6330-Rex.png?1375244798", :class => "user-image"
+
+          .large-11.columns.no-padding-right
+            .large-12.columns.no-padding
+              .large-8.columns.no-padding
+                %h4.user-title 
+                  %a{:href => "#"} Cairus
+                  %small Said:
+
+                
+              .large-4.columns
+                %p.time-stamp.right about 1 hour ago
+            .large-12.columns.no-padding
+              .comment-text
+                %p I don't want to say Free! is bad, it isn't. It is a very well made series. However, I watched it, I paid attention to every second of it, and I can only remember like 3 scenes. I found the whole thing to be technically impressive, but forgettable.
+
+        //comment
+        .large-12.columns.user-comment.no-padding-left.no-padding-right
+          .large-1.columns
+            = image_tag "http://static.hummingbird.me/users/avatars/000/002/585/thumb/WbgTu.gif?1376006367", :class => "user-image"
+
+          .large-11.columns.no-padding-right
+            .large-12.columns.no-padding
+              .large-8.columns.no-padding
+                %h4.user-title 
+                  %a{:href => "#"} Aerosteine
+                  %small Said:
+
+                
+              .large-4.columns
+                %p.time-stamp.right about 3 hours ago
+            .large-12.columns.no-padding
+              %p.comment-text Moe is good, moe is great!
+
+        //comment
+        .large-12.columns.user-comment.no-padding-left.no-padding-right
+          .large-1.columns
+            = image_tag "http://static.hummingbird.me/users/avatars/000/000/433/thumb/akutabe2.png?1375736388", :class => "user-image"
+
+          .large-11.columns.no-padding-right
+            .large-12.columns.no-padding
+              .large-8.columns.no-padding
+                %h4.user-title 
+                  %a{:href => "#"} Ryatt
+                  %small Said:
+
+                
+              .large-4.columns
+                %p.time-stamp.right about 4 hours ago
+            .large-12.columns.no-padding
+              %p.comment-text Seriously, fuck demonnerd.
+
+        //comment
+        .large-12.columns.user-comment.no-padding-left.no-padding-right
+          .large-1.columns
+            = image_tag "http://static.hummingbird.me/users/avatars/000/000/008/thumb/8-AVATAR.jpg?1375236559", :class => "user-image"
+
+          .large-11.columns.no-padding-right
+            .large-12.columns.no-padding
+              .large-8.columns.no-padding
+                %h4.user-title 
+                  %a{:href => "#"} Roriconfan
+                  %small Said:
+
+                
+              .large-4.columns
+                %p.time-stamp.right about 9 hours ago
+            .large-12.columns.no-padding
+              .comment-text
+                %p Spirited Away is without a doubt the worst anime ever made. I have been saying that since I first saw the film about 3 years ago. It is not even a close 2nd to another film.
+                <br>
+                %p I'm sure most of you are unlucky enough to have never watched the film, but will probably disagree with me.
+
+        //comment
+        .large-12.columns.user-comment.no-padding-left.no-padding-right
+          .large-1.columns
+            = image_tag "http://static.hummingbird.me/users/avatars/000/003/577/thumb/3577-tumblr_mlv3bmsk7P1r67h3uo1_500.gif?1375280980", :class => "user-image"
+
+          .large-11.columns.no-padding-right
+            .large-12.columns.no-padding
+              .large-8.columns.no-padding
+                %h4.user-title 
+                  %a{:href => "#"} Demonnerd
+                  %small Said:
+
+                
+              .large-4.columns
+                %p.time-stamp.right about 12 hours ago
+            .large-12.columns.no-padding
+              .comment-text
+                %p YOU FORGOT BOKU NO PICO!! LOLOL!
+
+    .large-3.columns
+      .panel.rounded-panel.user-info
+        .small-4.columns.no-padding
+          = image_tag "http://static.hummingbird.me/users/avatars/000/000/002/thumb/2-new-avatar.png?1375236555"
+        .small-8.columns
+          .large-12.columns
+            %h4= link_to "Josh", "#"
+            %a.medium.button.padded.dark-button{:href => "#"} Follow
+
+      .panel.rounded-panel.entry-info
+        .time-to-read.small-4.columns.no-padding
+          %h4.ttr.center 01 min
+          %p.ttr-description.center time to read
+        .entry-stats.small-8.columns.no-padding
+          .large-12.columns
+            %ul
+              %li
+                %i.icon-eye-open 
+                <strong>2546</strong> Views
+              %li
+                %i.icon-thumbs-up-alt
+                <strong>150</strong> Likes
+              %li
+                %i.icon-comment-alt 
+                <strong>2546</strong> Comments
+
+      .panel.rounded-panel.entry-voting
+        %h5.entry-vote-title.center Was this list accurate?
+        .large-10.columns
+          %a.medium.button.padded{:href => "#"} Like this list
+
+        .large-2.columns.no-padding-left
+          %a.expand.button.padded.secondary.dislike-button{:href => "#"} 
+            %i.icon-thumbs-down-alt
+
+    
+
+

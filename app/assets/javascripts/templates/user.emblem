@@ -50,6 +50,6 @@
           link-to 'user.following' data-hover="Following" | Following
         li.nav-link
           link-to 'user.followers' data-hover="Followers" | Followers
-          
+
 .min-height-wrapper
   outlet
