@@ -1,7 +1,7 @@
 class ReviewSerializer < ActiveModel::Serializer
   embed :ids
 
-  attributes :id, :summary, :rating, :positive_votes, :total_votes
+  attributes :id, :summary, :positive_votes, :total_votes, :rating, :rating_story, :rating_animation, :rating_sound, :rating_character, :rating_enjoyment
   has_one :user, embed_key: :name, include: true
   has_one :anime, embed_key: :slug
 
@@ -11,6 +11,26 @@ class ReviewSerializer < ActiveModel::Serializer
 
   def rating
     object.rating / 2.0
+  end
+
+  def rating_story
+    object.rating_story / 2.0
+  end
+
+  def rating_animation
+    object.rating_animation / 2.0
+  end
+
+  def rating_sound
+    object.rating_sound / 2.0
+  end
+
+  def rating_character
+    object.rating_character / 2.0
+  end
+
+  def rating_enjoyment
+    object.rating_enjoyment / 2.0
   end
 
   def attributes
