@@ -631,6 +631,10 @@ p img {
           color: $darkOrange;
           border-color: $orange;
         }
+        &.active {
+          color: #2a6496;
+          border-color: #2a6496;
+        }
       }
     }
     .recommend {
