@@ -3,7 +3,8 @@ Hummingbird.Router.reopen
 
 Hummingbird.Router.map ()->
   @resource 'anime', path: '/anime/:id', ->
-    @route 'reviews'
+    @resource 'reviews', path: '/reviews', ->
+      @route 'show', path: '/:review_id'
 
   @resource 'manga', path: '/manga/:id', ->
     @route 'reviews'

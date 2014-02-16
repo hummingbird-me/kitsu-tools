@@ -63,7 +63,7 @@ unless notYetAired
   .review-listing
     h4
       | Trending Reviews
-      link-to 'anime.reviews' classNames="btn btn-xs btn-default pull-right" | view all
+      link-to 'reviews.index' classNames="btn btn-xs btn-default pull-right" | view all
 
     each trendingReviews
       partial "media/review_summary"
