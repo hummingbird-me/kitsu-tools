@@ -54,9 +54,15 @@
 .reader-actions
   .reader-vote
     .recommend
-      a href="#" <i class="fa fa-thumbs-o-up"></i> I recommend this review
+      a{action "upvote"} class={upvoted:active}
+        i.fa.fa-thumbs-o-up &nbsp;
+        if liked
+          | Recommended
+        else
+          | Recommend
     .dislike
-      a href="#" <i class="fa fa-thumbs-o-down"></i>
+      a{action "downvote"} class={downvoted:active}
+        i.fa.fa-thumbs-o-down
   .reader-share
     .share-icons
       .twitter
