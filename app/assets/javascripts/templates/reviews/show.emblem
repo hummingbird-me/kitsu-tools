@@ -37,7 +37,10 @@
           link-to 'user.followers' user data-hover="Followers" | Followers
 
 .back-to-anime
-  link-to 'anime.index' | Back to anime page
+  .col-xs-6
+    link-to 'anime.index' | Back to anime page
+  .col-xs-6
+    a href="#" class="edit-review" edit review
 
 .review-content
   h1.review-title #{anime.displayTitle} <span>Review</span>

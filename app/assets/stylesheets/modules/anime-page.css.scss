@@ -537,8 +537,21 @@ p img {
   @extend .col-md-12;
   margin-top: 55px;
   padding-left: 0;
+  padding-right: 0;
   @media (max-width: 464px) {
     margin-top: 95px;
+  }
+}
+
+.edit-review {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 3px;
+  color: #333;
+  float: right;
+  &:hover {
+    color: $darkOrange;
+    border-color: $orange;
   }
 }
 
@@ -565,9 +578,9 @@ p img {
   @extend .col-xs-12;
   padding-left: 0;
   padding-right: 0;
+  font-size: 20px;
+  line-height: 1.5;
   p {
-    font-size: 20px;
-    line-height: 1.5;
     margin-bottom: 30px;
   }
   .youtube-frame {
@@ -732,6 +745,7 @@ p img {
   }
 }
 .summary-block {
+  @extend .col-xs-12;
   background: #cdcdcd;
   color: #666666;
   float: left;
