@@ -5,7 +5,8 @@ class MessageFormatter
     formatted = Rinku.auto_link(ERB::Util.html_escape(message), :all, 'target="_blank"')
 
     # Replace newlines with <br>.
-    formatted = formatted.strip.gsub(/\n+/, "<br>")
+    formatted = formatted.strip.gsub(/\n{3,}/, "\n\n")
+    formatted = formatted.gsub(/\n/, "<br>")
 
     # Link @usernames.
     formatted = formatted.gsub(/@[-_A-Za-z0-9]+/) do |x|
