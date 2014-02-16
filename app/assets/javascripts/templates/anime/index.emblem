@@ -1,76 +1,141 @@
-h1.series-title.hidden-xs
-  | #{canonicalTitle}
-  if alternateTitle
-    small
-      bootstrap-tooltip title=alternateTitle placement="right"
-        i.fa.fa-question-circle
+.review-cover
+  .user-cover
+    .cover-photo style="background-image: url(http://static.hummingbird.me/users/cover_images/000/000/002/thumb/base64.jpg?1390833466);"
+    .cover-overlay
+.container.relative
+  .row
+    .user-cover-options
+      .col-sm-10.user-wrapper
+        .col-sm-2.col-xs-2.user-avatar.clearfix
+          .large-avatar
+            img.responsive-image alt="Josh" src="http://static.hummingbird.me/users/avatars/000/000/002/thumb/avatar.jpg?1383507589"
+            .online-box
+              .online-indicator.online
+        .col-xs-12.col-sm-10.account-info
+          h1.username introverturtle
+      button.btn.btn-default.btn-lg.follow-button Unfollow
+.profile-navigation
+  .container
+    .row
+      ul.inline-list.clearfix
+        li.nav-link
+          a#ember570.ember-view href="/users/Josh" Feed
+        li.nav-link
+          a#ember571.ember-view href="/users/Josh/library" Library
+        li.nav-link
+          a#ember572.ember-view href="/users/Josh/reviews" Reviews
+        li.nav-link
+          a#ember579.ember-view href="/users/Josh/following" Following
+        li.nav-link
+          a#ember586.ember-view href="/users/Josh/followers" Followers
+.back-to-anime
+  a href="#" Back to anime page
+.review-content
+  h1.review-title Attack on Titan <span>Review</span>
+  .spoiler-block Tread carefully! This review contains spoilers!!
+  .progress-block This is a review up until episode 17!
 
-.hidden-xs: partial "anime/infobar"
+  p This is just a first impression based on the <strong>first four episodes</strong>. I will update this with a full review when the entire show is over.
+  .youtube-frame
+    iframe allowfullscreen="" frameborder="0" height="315" src="//www.youtube.com/embed/kd383XVbMXE" width="560"
+    .youtube-background
+  p As I’ve stated numerous times before I don’t usually watch seasonal show in my fear of finding something amazing cause when that happens I‘d like to think of it as something similar to dragging an great session of sex over a 26 week period. You get reeled in at the beginning with this amazing looking show flashing you with just a little bit of the potential she has, you start the session and its exciting as hell, its thrilling, its electrifying, it feels like your first time again but just as you start to get your rhythm going BAM the sessions over, you didn’t cum and you have to wait another week to continue again. After an agonizing week of waiting and anticipating you start again, it takes a little time to get into again cause it’s been a while but as soon as you’re really into it, it fucking ends again. This process repeats for about 26 weeks with some weeks having its ups and downs but because it might have a shitty ending YOU DON’T EVEN KNOW IF YOU’LL CLIMAX CORRECTLY and ….where was I going with this? Oh yeah. Attack on Titan.
+  p
+    img src="http://4.bp.blogspot.com/-T7KaEHspXl0/UOS4h50dmeI/AAAAAAAACR0/yD71xanrRV0/s1600/Black-Lagoon.jpg"
 
-.series-description.hidden-xs
-  p: truncate-text text=synopsis length=500
+.review-breakdown
+  .breakdown-header
+    .verdict-title
+      h4 Verdict
+    .breakdown-title
+      h4 Breakdown
+  .breakdown-content
+    .score-block
+      h1.score 3
+      h5.decimal-score .0
+    .breakdown-block
+      .breakdown-content
+        ul
+          li.clearfix
+            .col-xs-9
+              <icon class="fa fa-plus-circle"></i> &nbsp; Story...
+            .dec-score
+              strong 3.0
+          li.clearfix
+            .col-xs-9
+              <icon class="fa fa-plus-circle"></i> &nbsp; Animation...
+            .dec-score
+              strong 2.5
+          li.clearfix
+            .col-xs-9
+              <icon class="fa fa-minus-circle"></i> &nbsp; Sound...
+            .dec-score
+              strong 2.5
+          li.clearfix
+            .col-xs-9.columns
+              <icon class="fa fa-plus-circle"></i> &nbsp; Characters...
+            .dec-score
+              strong 3.0
+  .summary-block
+    %p Attack on Titan has started stong and so far this train has not slowed down. A great action series with a lot of promise.
 
-  .social-buttons
-    .fb-like data-href=fbLikeURL data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"
-    a href="https://twitter.com/share" class="twitter-share-button" data-via="hummingbird_me" Tweet
+.comment-section
+  .comment-title
+    h4 There are <span>12</span> comments.
+  .comment-form
+    .user-thumb
+      img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+    .user-form
+      textarea type="text"  placeholder="Join the discussion"
+  .comments
 
-.info-tabs
-  ul.nav.nav-tabs
-    li class={showGenres:active}
-      a{action switchTo "Genres"} Genres
-    li class={:hidden-xs showFranchise:active}
-      a{action switchTo "Franchise"} Franchise
-    unless notYetAired
-      li class={:hidden-xs showQuotes:active}
-        a{action switchTo "Quotes"} Quotes
-    li class={:dropdown showCast:active}
-      a.dropdown-toggle data-toggle="dropdown"
-        | Cast
-        b.caret
-      ul.dropdown-menu
-        each language in languages
-          li: a{action setLanguage language} #{language}
-    li class={:hidden-xs showStudios:active}
-      a{action switchTo "Studios"} Studios
-    li.dropdown.visible-xs
-      a.dropdown-toggle data-toggle="dropdown"
-        | More
-        b.caret
-        ul.dropdown-menu
-          li: a{action switchTo "Franchise"} Franchise
-          unless notYetAired
-            li: a{action switchTo "Quotes"} Quotes
-          li: a{action switchTo "Studios"} Studios
+    .comment
+      .user-thumb
+        img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+      .comment-info
+        h4.username Username <span class="time-ago">23 minutes ago</span>
+        p Please let's both of us stop trying to justify this whole thing and admit you're in danger.
+        .comment-votes
+          a href="#"
+            .positive-vote
+              span.vote-count 18 &nbsp;
+              <i class="fa fa-angle-up"></i>
+          a href="#"
+            .negative-vote
+              <i class="fa fa-angle-down"></i>
+          span class="bullet" •
+          <a href="#">Reply</a>
 
-  .tab-content
-    .tab-pane.active.genre-tab
-      div class={:slider showGenres::hidden}
-        partial "media/genres"
-      if showFranchise
-        partial "anime/franchise"
-      div class={:slider showQuotes::hidden}
-        partial "anime/featured_quotes"
-      div class={:slider showCast::hidden}
-        partial "anime/cast"
-      div class={:slider showStudios::hidden}
-        partial "anime/studios"
+    .comment.reply
+      .user-thumb
+        img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+      .comment-info
+        h4.username Username <span class="time-ago">23 minutes ago</span>
+        p Please let's both of us stop trying to justify this whole thing and admit you're in danger.
+        .comment-votes
+          a href="#"
+            .positive-vote
+              span.vote-count 18 &nbsp;
+              <i class="fa fa-angle-up"></i>
+          a href="#"
+            .negative-vote
+              <i class="fa fa-angle-down"></i>
+          span class="bullet" •
+          <a href="#">Reply</a>
 
-  unless nsfw
-    .banner-ad
-      ad-unit adId="1293412" adClass="257f81e798bd68dd81e60f42838f361f"
-
-unless notYetAired
-  .review-listing
-    h4
-      | Trending Reviews
-      link-to 'reviews.index' classNames="btn btn-xs btn-default pull-right" | view all
-
-    each trendingReviews
-      partial "media/review_summary"
-    else
-      .trending-review-empty
-        i.empty-icon.fa.fa-meh-o
-        h4 Well, this is pretty awkward.
-        p You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.
-        a.btn.btn-default href=newReviewURL Write the first review
-
+    .comment
+      .user-thumb
+        img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323"
+      .comment-info
+        h4.username Username <span class="time-ago">23 minutes ago</span>
+        p Please let's both of us stop trying to justify this whole thing and admit you're in danger.
+        .comment-votes
+          a href="#"
+            .positive-vote
+              span.vote-count 18 &nbsp;
+              <i class="fa fa-angle-up"></i>
+          a href="#"
+            .negative-vote
+              <i class="fa fa-angle-down"></i>
+          span class="bullet" •
+          <a href="#">Reply</a>

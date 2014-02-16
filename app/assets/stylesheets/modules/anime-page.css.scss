@@ -541,6 +541,26 @@ p img {
     margin-top: 95px;
   }
 }
+
+.spoiler-block, .progress-block {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 15px;
+  border-radius: 1px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.spoiler-block {
+  background: #eed4d4;
+  color: #9f4442;
+}
+
+.progress-block {
+  background: #fce6cc;
+  color: #955b12;
+}
+
 .review-content {
   @extend .col-xs-12;
   padding-left: 0;
