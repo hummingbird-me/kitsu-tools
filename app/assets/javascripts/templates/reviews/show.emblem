@@ -45,7 +45,7 @@
   .spoiler-block style="display:none" Tread carefully! This review contains spoilers!!
   .progress-block style="display:none" This is a review up until episode 17!
 
-  | {{{content.content}}}
+  | {{{formattedContent}}}
 
 .review-breakdown
   .breakdown-header

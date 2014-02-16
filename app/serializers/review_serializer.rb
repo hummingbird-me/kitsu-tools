@@ -3,7 +3,7 @@ class ReviewSerializer < ActiveModel::Serializer
 
   embed :ids
 
-  attributes :id, :summary, :positive_votes, :total_votes, :rating, :rating_story, :rating_animation, :rating_sound, :rating_character, :rating_enjoyment, :content
+  attributes :id, :summary, :positive_votes, :total_votes, :rating, :rating_story, :rating_animation, :rating_sound, :rating_character, :rating_enjoyment, :content, :formatted_content
   has_one :user, embed_key: :name, include: true
   has_one :anime, embed_key: :slug
 
@@ -35,7 +35,7 @@ class ReviewSerializer < ActiveModel::Serializer
     object.rating_enjoyment / 2.0
   end
 
-  def content
+  def formatted_content
     if object.source == "mal_import"
       simple_format_review(object.content)
     else
