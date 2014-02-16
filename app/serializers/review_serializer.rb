@@ -1,7 +1,9 @@
 class ReviewSerializer < ActiveModel::Serializer
+  include ReviewsHelper
+
   embed :ids
 
-  attributes :id, :summary, :positive_votes, :total_votes, :rating, :rating_story, :rating_animation, :rating_sound, :rating_character, :rating_enjoyment
+  attributes :id, :summary, :positive_votes, :total_votes, :rating, :rating_story, :rating_animation, :rating_sound, :rating_character, :rating_enjoyment, :content
   has_one :user, embed_key: :name, include: true
   has_one :anime, embed_key: :slug
 
@@ -31,6 +33,14 @@ class ReviewSerializer < ActiveModel::Serializer
 
   def rating_enjoyment
     object.rating_enjoyment / 2.0
+  end
+
+  def content
+    if object.source == "mal_import"
+      simple_format_review(object.content)
+    else
+      sanitize_review(object.content)
+    end
   end
 
   def attributes
