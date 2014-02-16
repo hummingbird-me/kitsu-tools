@@ -28,10 +28,6 @@ class AdminController < ApplicationController
   end
 
   def index
-    @total_beta   = BetaInvite.count
-    @invited_beta = BetaInvite.where(invited: true).count
-    @user_count   = User.count
-
     @anime_without_mal_id = Anime.where(mal_id: nil).reject {|x| x.genres.map(&:name).include? "Anime Influenced" }
 
     @hide_cover_image = true
@@ -45,5 +41,19 @@ class AdminController < ApplicationController
   end
 
   def stats
+    stats = {}
+
+    stats[:registrations] = {total: {}, confirmed: {}}
+
+    User.where('created_at >= ?', 1.week.ago).find_each do |user|
+      daysago = ((Time.now - user.created_at) / (3600*24)).to_i
+      stats[:registrations][:total][daysago] ||= 0
+      stats[:registrations][:confirmed][daysago] ||= 0
+
+      stats[:registrations][:total][daysago] += 1
+      stats[:registrations][:confirmed][daysago] += 1 if user.confirmed?
+    end
+
+    render json: stats
   end
 end
