@@ -18,8 +18,7 @@ Hummingbird.ReviewsShowController = Ember.ObjectController.extend
   ratingStory: (-> @get('model.ratingStory').toFixed(1) ).property('model.ratingStory')
   ratingAnimation: (-> @get('model.ratingAnimation').toFixed(1) ).property('model.ratingAnimation')
   ratingSound: (-> @get('model.ratingSound').toFixed(1) ).property('model.ratingSound')
-  ratingCharacters: (-> @get('model.ratingCharacters').toFixed(1) ).property('model.ratingCharacters')
-  ratingEnjoyment: (-> @get('model.ratingEnjoyment').toFixed(1) ).property('model.ratingEnjoyment')
+  ratingCharacter: (-> @get('model.ratingCharacter').toFixed(1) ).property('model.ratingCharacter')
 
   editPath: (->
     "/anime/" + @get('model.anime.id') + "/reviews/" + @get('model.id') + "/edit"
