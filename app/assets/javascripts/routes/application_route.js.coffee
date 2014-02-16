@@ -1,5 +1,19 @@
 Hummingbird.ApplicationRoute = Ember.Route.extend
   actions:
+    toggleFollow: (user) ->
+      unless @get('currentUser.isSignedIn')
+        alert "Need to be signed in!"
+        return
+      originalState = user.get('isFollowed')
+      user.set 'isFollowed', !originalState
+      ic.ajax
+        url: "/users/" + user.get('id') + "/follow"
+        type: "POST"
+        dataType: "json"
+      .then (->), ->
+        alert "Something went wrong."
+        user.set 'isFollowed', originalState
+
     openModal: (modalName, model) ->
       @controllerFor("modals." + modalName).set 'content', model
       @render "modals/" + modalName,

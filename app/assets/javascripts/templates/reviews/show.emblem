@@ -14,7 +14,13 @@
               div class={:online-indicator user.online:online:offline}
         .col-xs-12.col-sm-10.account-info
           h1.username #{user.username}
-      button.btn.btn-default.btn-lg.follow-button Unfollow
+      unless writtenBySelf
+        button.btn.btn-default.btn-lg.follow-button{action toggleFollow user}
+          if user.isFollowed
+            | Unfollow
+          else
+            | Follow
+
 .profile-navigation
   .container
     .row
@@ -29,6 +35,7 @@
           link-to 'user.following' user data-hover="Following" | Following
         li.nav-link
           link-to 'user.followers' user data-hover="Followers" | Followers
+
 .back-to-anime
   link-to 'anime.index' | Back to anime page
 
@@ -83,6 +90,12 @@
               | &nbsp; Characters...
             .dec-score
               strong 3.0
+          li.clearfix
+            .col-xs-9.columns
+              i.fa.fa-plus-circle
+              | &nbsp; Enjoyment...
+            .dec-score
+              strong 0.5
   .summary-block
     p #{summary}
 
