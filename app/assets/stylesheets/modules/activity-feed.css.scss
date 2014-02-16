@@ -41,7 +41,31 @@
     }
   }
 
-  .anime-breakdown-panel {
+  .grid-thumb {
+    padding: 5px !important;
+    .thumbnail {
+      padding: 0;
+      border: none;
+      margin-bottom: 0;
+      img {
+        border-radius: 3px;
+      }
+    }
+  }
+
+  .photos-videos {
+    .grid-thumb {
+      @extend .col-sm-3;
+    }
+  }
+
+  .favorite-anime {
+    .grid-thumb {
+      @extend .col-sm-4;
+    }
+  }
+
+  .anime-breakdown-panel, .photos-videos, .favorite-anime {
     @extend .panel;
     @extend .panel-default;
   }
