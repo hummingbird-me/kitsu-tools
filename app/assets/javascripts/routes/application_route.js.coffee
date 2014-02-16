@@ -10,7 +10,7 @@ Hummingbird.ApplicationRoute = Ember.Route.extend
         url: "/users/" + user.get('id') + "/follow"
         type: "POST"
         dataType: "json"
-      .then (->), ->
+      .then Ember.K, ->
         alert "Something went wrong."
         user.set 'isFollowed', originalState
 

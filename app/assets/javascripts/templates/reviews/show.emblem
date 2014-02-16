@@ -63,7 +63,7 @@
     .dislike
       a{action "downvote"} class={downvoted:active}
         i.fa.fa-thumbs-o-down
-  .reader-share
+  .reader-share style="display: none"
     .share-icons
       .twitter
         a href="#" <i class="fa fa-twitter"></i>
