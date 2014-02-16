@@ -42,8 +42,8 @@
 .review-content
   h1.review-title #{anime.displayTitle} <span>Review</span>
 
-  .spoiler-block Tread carefully! This review contains spoilers!!
-  .progress-block This is a review up until episode 17!
+  .spoiler-block style="display:none" Tread carefully! This review contains spoilers!!
+  .progress-block style="display:none" This is a review up until episode 17!
 
   p This is just a first impression based on the <strong>first four episodes</strong>. I will update this with a full review when the entire show is over.
   .youtube-frame
