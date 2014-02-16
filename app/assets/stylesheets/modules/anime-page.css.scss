@@ -614,6 +614,53 @@ p img {
   }
 }
 
+.reader-actions {
+  @extend .col-xs-12;
+  padding: 0;
+  .reader-vote {
+    @extend .col-xs-8;
+    padding: 0;
+    .recommend, .dislike {
+      display: inline-block;
+      a {
+        color: #333;
+        padding: 5px 10px;
+        border-radius: 3px;
+        border: 1px solid #ddd;
+        &:hover {
+          color: $darkOrange;
+          border-color: $orange;
+        }
+      }
+    }
+    .recommend {
+      margin-right: 10px;
+    }
+  }
+  .share-icons {
+    text-align: right;
+    .twitter, .facebook, .flag-review {
+      display: inline-block;
+      margin-right: 20px;
+      font-size: 20px;
+      a {
+        color: #b3b3b1;
+        &:hover {
+          color: $darkOrange;
+        }
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .flag-review a {
+      &:hover {
+        color: #9f4442;
+      }
+    }
+  }
+}
+
 .review-breakdown {
   @extend .col-md-12;
   margin-top: 10px;

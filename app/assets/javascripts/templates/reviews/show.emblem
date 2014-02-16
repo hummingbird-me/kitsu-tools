@@ -50,6 +50,21 @@
 
   | {{{formattedContent}}}
 
+.reader-actions
+  .reader-vote
+    .recommend
+      a href="#" <i class="fa fa-thumbs-o-up"></i> I recommend this review
+    .dislike
+      a href="#" <i class="fa fa-thumbs-o-down"></i>
+  .reader-share
+    .share-icons
+      .twitter
+        a href="#" <i class="fa fa-twitter"></i>
+      .facebook
+        a href="#" <i class="fa fa-facebook"></i>
+      .flag-review
+        a href="#" <i class="fa fa-flag"></i>
+
 .review-breakdown
   .breakdown-header
     .verdict-title
