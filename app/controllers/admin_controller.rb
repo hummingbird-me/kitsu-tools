@@ -44,7 +44,6 @@ class AdminController < ApplicationController
     stats = {}
 
     stats[:registrations] = {total: {}, confirmed: {}}
-
     User.where('created_at >= ?', 1.week.ago).find_each do |user|
       daysago = user.created_at.strftime("%b %d")
       stats[:registrations][:total][daysago] ||= 0
@@ -53,6 +52,9 @@ class AdminController < ApplicationController
       stats[:registrations][:total][daysago] += 1
       stats[:registrations][:confirmed][daysago] += 1 if user.confirmed?
     end
+    firstkey = stats[:registrations][:total].keys.sort.first
+    stats[:registrations][:total].delete firstkey
+    stats[:registrations][:confirmed].delete firstkey
 
     render json: stats
   end
