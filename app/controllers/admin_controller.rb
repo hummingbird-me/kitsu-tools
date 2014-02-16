@@ -46,7 +46,7 @@ class AdminController < ApplicationController
     stats[:registrations] = {total: {}, confirmed: {}}
 
     User.where('created_at >= ?', 1.week.ago).find_each do |user|
-      daysago = ((Time.now - user.created_at) / (3600*24)).to_i
+      daysago = user.created_at.strftime("%b %d")
       stats[:registrations][:total][daysago] ||= 0
       stats[:registrations][:confirmed][daysago] ||= 0
 
