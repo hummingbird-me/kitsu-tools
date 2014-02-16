@@ -58,22 +58,22 @@
         ul
           li.clearfix
             .col-xs-9
-              i.fa.fa-plus-circle &nbsp; Story...
+              <icon class="fa fa-plus-circle"></i> &nbsp; Story...
             .dec-score
               strong 3.0
           li.clearfix
             .col-xs-9
-              i.fa.fa-minus-circle &nbsp; Animation...
+              <icon class="fa fa-plus-circle"></i> &nbsp; Animation...
             .dec-score
               strong 2.5
           li.clearfix
             .col-xs-9
-              i.fa.fa-minus-circle &nbsp; Sound...
+              <icon class="fa fa-minus-circle"></i> &nbsp; Sound...
             .dec-score
               strong 2.5
           li.clearfix
             .col-xs-9.columns
-              i.fa.fa-plus-circle &nbsp; Characters...
+              <icon class="fa fa-plus-circle"></i> &nbsp; Characters...
             .dec-score
               strong 3.0
   .summary-block
