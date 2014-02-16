@@ -7,6 +7,20 @@
         .panel-heading
           h3.panel-title About #{user.username}
         .panel-body #{user.miniBio}
+        .user-interests
+          ul
+            li
+              .interest-icon <i class="fa fa-calendar"></i>
+              .interest Born <strong>Jan. 2nd, 1990</strong> (age 24)
+            li
+              .interest-icon <i class="fa fa-heart"></i>
+              .interest Waifu is <a href="#">Haruhi Suzumiya</a>
+            li
+              .interest-icon <i class="fa fa-home"></i>
+              .interest Lives in Chicago, IL
+            li
+              .interest-icon <i class="fa fa-link"></i>
+              .interest <a href="#">Twitter</a>
 
       if userInfo.isFulfilled
         / Anime Breakdown Panel
@@ -18,6 +32,13 @@
               li I've watched <strong>#{lifeSpentOnAnimeFmt}</strong> of anime.
       else
         loading-indicator classNames="light"
+      / Anime Breakdown Panel
+      .anime-breakdown-panel
+        .panel-heading
+          h3.panel-title Anime Breakdown
+        .panel-body
+          ul
+            li I've watched <strong>#{lifeSpentOnAnimeFmt}</strong> of anime.
 
     .personal-feed
       / Status Update Panel

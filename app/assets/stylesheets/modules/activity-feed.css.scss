@@ -13,6 +13,32 @@
   .user-about-panel {
     @extend .panel;
     @extend .panel-default;
+    @extend .clearfix;
+    .user-interests {
+      @extend .col-xs-12;
+      margin-bottom: 15px;
+      li {
+        @extend .clearfix;
+        margin-bottom: 5px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      .interest-icon {
+        @extend .col-xs-1;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        position: relative;
+        top: 1px;
+        color: #999999;
+      }
+      .interest {
+        @extend .col-xs-11;
+        padding-left: 0;
+        font-size: 18px;
+      }
+    }
   }
 
   .anime-breakdown-panel {
