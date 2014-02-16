@@ -40,7 +40,8 @@
   .col-xs-6
     link-to 'anime.index' | Back to anime page
   .col-xs-6
-    a href="#" class="edit-review" edit review
+    if writtenBySelf
+      a href=editPath class="edit-review" edit review
 
 .review-content
   h1.review-title #{anime.displayTitle} <span>Review</span>
