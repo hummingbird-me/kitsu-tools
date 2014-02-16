@@ -170,7 +170,7 @@ class User < ActiveRecord::Base
   # check the user's ID as well.
   def admin?
     ["c@vikhyat.net", # Vik
-     "josh@hummingbird.ly", # Josh
+     "josh@hummingbird.me", # Josh
      # "harlequinmarie@gmail.com", # Ashley
      "ryatt.tesla@gmail.com", # Ryatt
      "dev.colinl@gmail.com", # Psy
