@@ -23,6 +23,22 @@ class ReviewsController < ApplicationController
   def show
     @review = Review.find(params[:id])
     @anime = @review.anime
+
+    respond_to do |format|
+      format.html do
+        if request.path != anime_review_path(@anime, @review)
+          return redirect_to anime_review_path(@anime, @review), status: :moved_permanently
+        end
+
+        preload! @anime, serializer: FullAnimeSerializer
+        preload! @review
+
+        render "anime/show", layout: 'redesign'
+      end
+    end
+
+    @review = Review.find(params[:id])
+    @anime = @review.anime
     @recent_reviews = Review.order('created_at DESC').limit(10).select {|x| x.anime.sfw? }
     if user_signed_in?
       @evaluation = Vote.for(current_user, @review)
