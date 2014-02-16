@@ -49,9 +49,14 @@ class ReviewsController < ApplicationController
     authenticate_user!
 
     @review = Review.find(params[:review_id])
-    vote = Vote.for(current_user, @review) || Vote.new(user: current_user, target: @review)
-    vote.positive = params[:type] == "up"
-    vote.save
+
+    if params[:type] == "remove"
+      Vote.for(current_user, @review).try(:destroy)
+    else
+      vote = Vote.for(current_user, @review) || Vote.new(user: current_user, target: @review)
+      vote.positive = params[:type] == "up"
+      vote.save
+    end
     @review.reload.update_wilson_score!
 
     render json: true

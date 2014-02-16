@@ -24,5 +24,5 @@ Hummingbird.ReviewsShowController = Ember.ObjectController.extend
     "/anime/" + @get('model.anime.id') + "/reviews/" + @get('model.id') + "/edit"
   ).property('model.id', 'model.anime.id')
 
-  upvoted: (-> @get('model.liked') == true ).property('model.liked')
-  downvoted: (-> @get('model.liked') == false ).property('model.liked')
+  upvoted: (-> @get('model.liked') == "true" ).property('model.liked')
+  downvoted: (-> @get('model.liked') == "false" ).property('model.liked')

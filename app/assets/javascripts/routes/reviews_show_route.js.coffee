@@ -8,7 +8,10 @@ Hummingbird.ReviewsShowRoute = Ember.Route.extend
 
   actions:
     upvote: ->
-      @currentModel.set('liked', true)
+      if @currentModel.get('liked') == "true"
+        @send "unvote"
+        return
+      @currentModel.set('liked', "true")
       ic.ajax
         url: "/reviews/" + @currentModel.get('id') + "/vote"
         type: "POST"
@@ -18,7 +21,10 @@ Hummingbird.ReviewsShowRoute = Ember.Route.extend
         alert "Couldn't recommend review, something went wrong."
 
     downvote: ->
-      @currentModel.set('liked', false)
+      if @currentModel.get('liked') == "false"
+        @send "unvote"
+        return
+      @currentModel.set('liked', "false")
       ic.ajax
         url: "/reviews/" + @currentModel.get('id') + "/vote"
         type: "POST"
@@ -26,3 +32,14 @@ Hummingbird.ReviewsShowRoute = Ember.Route.extend
           type: "down"
       .then Ember.K, ->
         alert "Couldn't downvote review, something went wrong."
+
+    unvote: ->
+      @currentModel.set('liked', null)
+      ic.ajax
+        url: "/reviews/" + @currentModel.get('id') + "/vote"
+        type: "POST"
+        data:
+          type: "remove"
+      .then Ember.K, ->
+        alert "Couldn't vote on review, something went wrong."
+
