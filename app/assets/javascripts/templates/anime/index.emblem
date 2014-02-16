@@ -32,6 +32,9 @@
   a href="#" Back to anime page
 .review-content
   h1.review-title Attack on Titan <span>Review</span>
+  .spoiler-block Tread carefully! This review contains spoilers!!
+  .progress-block This is a review up until episode 17!
+
   p This is just a first impression based on the <strong>first four episodes</strong>. I will update this with a full review when the entire show is over.
   .youtube-frame
     iframe allowfullscreen="" frameborder="0" height="315" src="//www.youtube.com/embed/kd383XVbMXE" width="560"
