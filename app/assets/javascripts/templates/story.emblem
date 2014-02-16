@@ -6,7 +6,7 @@
       .comment-content
         h4.story-title
           link-to 'user' poster | #{poster.username}
-          |  to 
+          |  <i class="fa fa-share reply-icon"></i>
           link-to 'user' user | #{user.username}
         p.secondary: time-ago time=createdAt
       .row
@@ -57,7 +57,7 @@
           pluralize followedUsers.length "user" "users"
         p.secondary: time-ago time=createdAt
       .row
-        .col-sm-12
+        .comment-text
           .clearfix
           ol
             each followedUser in followedUsers

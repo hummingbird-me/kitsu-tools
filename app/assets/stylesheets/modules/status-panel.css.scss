@@ -23,12 +23,19 @@
 .story {
   @extend .panel;
   @extend .panel-default;
+  margin-bottom: 5px;
 }
 
 .update-panel {
   @extend .panel-body;
 
   .story-title {
+    color: #999999;
+    font-weight: 300;
+    a {
+      color: #333;
+      font-weight: 700;
+    }
     margin: 0;
   }
 
@@ -69,7 +76,13 @@
   .comment-content {
     @extend .col-xs-10;
     @extend .col-sm-11;
-    @extend .col-md-11;
+    .reply-icon {
+      color: #999999;
+      padding-right: 10px;
+      padding-left: 7px;
+      position: relative;
+      top: 2px;
+    }
   }
 
   .inline-list {
@@ -87,8 +100,10 @@
   }
 
   .comment-text {
+    @extend .col-sm-11;
+    @extend .col-xs-10;
+    float: right;
     font-size: 16px;
-    padding-top: 10px;
     padding-bottom: 0;
     margin-bottom: 0;
   }
