@@ -32,7 +32,7 @@ class AdminController < ApplicationController
     @invited_beta = BetaInvite.where(invited: true).count
     @user_count   = User.count
 
-    @anime_without_mal_id = Anime.where(mal_id: nil)
+    @anime_without_mal_id = Anime.where(mal_id: nil).reject {|x| x.genres.map(&:name).include? "Anime Influenced" }
 
     @hide_cover_image = true
     @hide_footer_ad = true
