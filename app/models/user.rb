@@ -101,12 +101,12 @@ class User < ActiveRecord::Base
   has_attached_file :avatar,
     styles: {
       thumb: '190x190#',
-      thumb_small: {geometry: '50x50#', animated: false},
-      small: {geometry: '25x25#', animated: false}
+      thumb_small: {geometry: '100x100#', animated: false, format: :jpg},
+      small: {geometry: '50x50#', animated: false, format: :jpg}
     },
     convert_options: {
-      thumb_small: '-unsharp 2x0.5+1+0',
-      small: '-unsharp 2x0.5+1+0'
+      thumb_small: '-unsharp 2x0.5+1+0 -quality 0',
+      small: '-unsharp 2x0.5+1+0 -quality 0'
     },
     default_url: "http://placekitten.com/g/190/190",
     processors: [:thumbnail, :paperclip_optimizer]
