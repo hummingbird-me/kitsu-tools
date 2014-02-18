@@ -6,4 +6,4 @@ bootstrap-modal action="close"
   .modal-footer
     button.btn.btn-primary{action "upload"} Upload
 
-canvas#cropCanvas style="display: none" height="330" width="1400"
+canvas#cropCanvas style="display: none" height="660" width="2800"

@@ -10,7 +10,7 @@ Hummingbird.ModalsCropCoverView = Ember.View.extend
 
     imageObj = new Image()
     imageObj.onload = ->
-      context.drawImage this, c.x, c.y, c.w, c.h, 0, 0, 1400, 330
+      context.drawImage this, c.x, c.y, c.w, c.h, 0, 0, 2800, 660
       canvasDataURL = canvas.toDataURL('image/jpeg')
       RGBaster.colors canvasDataURL, (payload) ->
         element.querySelector('.modal-content').style.background = payload.dominant
