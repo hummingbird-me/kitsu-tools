@@ -99,6 +99,12 @@ class LibraryEntry < ActiveRecord::Base
         "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer + 1)::text)"
       )
     end
+
+  after_save do
+    # Vote for the show to appear on the trending list.
+    TrendingAnime.vote self.anime_id
+    # Update the user's `last_library_update` time.
+    self.user.update_column :last_library_update, Time.now
   end
 
   after_create do
