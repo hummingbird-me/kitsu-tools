@@ -105,8 +105,8 @@ class User < ActiveRecord::Base
       small: {geometry: '50x50#', animated: false, format: :jpg}
     },
     convert_options: {
-      thumb_small: '-unsharp 2x0.5+1+0 -quality 0',
-      small: '-unsharp 2x0.5+1+0 -quality 0'
+      thumb_small: '-quality 0',
+      small: '-quality 0'
     },
     default_url: "http://placekitten.com/g/190/190",
     processors: [:thumbnail, :paperclip_optimizer]
