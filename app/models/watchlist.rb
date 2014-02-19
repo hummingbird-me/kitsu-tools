@@ -157,14 +157,6 @@ class Watchlist < ActiveRecord::Base
     self.aggregate_changed_attributes
   end
 
-  after_save do
-    self.user.update_column :last_library_update, Time.now
-  end
-
-  after_create do
-    TrendingAnime.vote self.anime_id
-  end
-
   before_destroy do
     self.rating = nil
     self.update_episode_count 0

@@ -246,17 +246,6 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  # Public: Return a hash table which returns false for all of the shows the user
-  #         doesn't have on their watchlist, and the watchlist object for shows
-  #         which they do have on.
-  def watchlist_table
-    watchlist = Hash.new(false)
-    Watchlist.where(:user_id => id).each do |watch|
-      watchlist[ watch.anime_id ] = watch
-    end
-    watchlist
-  end
-
   # Return the top 3 genres the user has watched, along with a percentage of
   # anime watched that contain each of those genres.
   def top_genres
