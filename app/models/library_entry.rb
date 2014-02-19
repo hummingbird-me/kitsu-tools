@@ -99,6 +99,7 @@ class LibraryEntry < ActiveRecord::Base
         "rating_frequencies = COALESCE(rating_frequencies, hstore(ARRAY[]::text[])) || hstore('#{nkey}', ((COALESCE((rating_frequencies -> '#{nkey}'), '0'))::integer + 1)::text)"
       )
     end
+  end
 
   after_save do
     # Vote for the show to appear on the trending list.

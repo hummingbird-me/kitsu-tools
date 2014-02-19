@@ -1,4 +1,4 @@
-check process redis-server with pidfile /var/run/redis.pid
+check process redis-server with pidfile /var/run/redis/redis.pid
   group hummingbird
   start program = "/usr/bin/redis-server /etc/redis/redis.conf"
   stop program  = "/bin/kill `cat /var/run/redis.pid`"
