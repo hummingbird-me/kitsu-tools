@@ -90,7 +90,7 @@ module ReviewsHelper
 
     # Wrap youtube videos.
     noko.css('iframe').wrap('<div class="youtube-frame"></div>')
-    p noko.css('.youtube-frame').each {|node| node.add_child('<div class="youtube-background"></div>') }
+    noko.css('.youtube-frame').each {|node| node.add_child('<div class="youtube-background"></div>') }
 
     noko.to_html
   end
