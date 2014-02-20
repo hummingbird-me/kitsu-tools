@@ -109,6 +109,12 @@
               | &nbsp; Characters...
             .dec-score
               strong #{ratingCharacter}
+          li.clearfix
+            .col-xs-9.columns
+              i.fa.fa-plus-circle
+              | &nbsp; Enjoyment...
+            .dec-score
+              strong #{ratingEnjoyment}
   .summary-block
     p #{summary}
 
