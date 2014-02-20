@@ -51,7 +51,7 @@ class MyAnimeListImport
           title: indv["series_title"],
           rating: indv["my_score"].to_i,
           episodes_watched: indv["my_watched_episodes"].to_i,
-          status: STATUS_MAP[indv["my_status"]] || (raise "unknown status: #{indv["my_status"]}"),
+          status: STATUS_MAP[indv["my_status"]] || "Currently Watching",
           last_updated: Time.at(indv["my_last_updated"].to_i),
           notes: indv["my_tags"]
         }
