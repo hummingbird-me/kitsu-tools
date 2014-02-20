@@ -71,7 +71,7 @@ class MyAnimeListImport
       if ani.nil?
         not_imported.push ("* " + item[:title])
       else
-        wl = LibraryEntry.where(user_id: @user.id, anime_id: ani.id).first || LibraryEntry.new(user: @user, anime: ani)
+        wl = LibraryEntry.where(user_id: @user.id, anime_id: ani.id).first || LibraryEntry.new(user_id: @user.id, anime_id: ani.id)
         wl.status = item[:status]
         wl.episodes_watched = item[:episodes_watched]
         wl.updated_at = item[:last_updated]
