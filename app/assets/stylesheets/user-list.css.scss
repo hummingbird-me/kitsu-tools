@@ -1,0 +1,110 @@
+@import "compass/css3";
+.user-list {
+  .list-items {
+    border: 1px solid #cdcdcd;
+    @include border-radius(3px);
+    .list-entry {
+      border-bottom: 1px solid #cdcdcd;
+      .entry-content {
+        padding: 10px;
+        overflow: hidden;
+        .list-number {
+          position: relative;
+          height: 52px;
+          width: 48px;
+          line-height: 52px;
+          color: #a9a9a9;
+          float: left;
+          margin-right: 10px;
+          border: 1px solid #cdcdcd;
+          font-size: 24px;
+          text-align: center;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
+        }
+        .poster {
+          display: block;
+          overflow: hidden;
+          position: relative;
+          float: left;
+          margin-right: 10px;
+          -webkit-background-clip: padding-box;
+          -webkit-border-radius: 4px;
+          -moz-border-radius: 4px;
+          border-radius: 4px;
+        }
+        .entry-heading {
+          margin-top: -7px;
+          position: relative;
+          margin-bottom: -10px;
+          top: -5px;
+        }
+        .add-notes {
+          margin-bottom: 0px;
+          display: inline-block;
+        }
+        .mobile-remove {
+          display: inline-block;
+          &:before {
+            content: " \00b7 ";
+          }
+        }
+      }
+      .trash {
+        font-size: 25px;
+        text-align: right;
+        padding: 10px;
+        padding-top: 23px;
+        padding-bottom: 17px;
+        border-right: 1px solid #cdcdcd;
+        a {
+          color: #a9a9a9;
+          &:hover {
+            color: #fd864b;
+          }
+        }
+      }
+      .reorder {
+        font-size: 19px;
+        color: #a9a9a9;
+        text-align: center;
+        padding: 0px;
+        padding-top: 25px;
+      }
+    }
+    li:last-child {
+      border-bottom: none;
+    }
+    li:hover {
+      cursor: move;
+      background: darken(#eee, 3);
+    }
+  }
+
+  // List Show
+  .list-name {
+    margin-top: 20px;
+  }
+  .list-description {
+    margin-bottom: 15px;
+  }
+  .list-grid {
+    img {
+      @include border-radius(5px);
+    }
+  }
+  .list-entry {
+    text-align: center;
+  }
+  .list-entry-number {
+    border: 1px solid #dbdbdb;
+    color: #a5a3a3;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: inline-block;
+    @include border-radius(3px);
+  }
+}

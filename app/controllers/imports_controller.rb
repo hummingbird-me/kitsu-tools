@@ -6,7 +6,6 @@ class ImportsController < ApplicationController
   def new
     hide_cover_image
 
-
     if params[:animelist]
       begin
         if params[:animelist].content_type == "text/xml"
@@ -31,7 +30,7 @@ class ImportsController < ApplicationController
 
     unless current_user.mal_import_in_progress?
       flash[:success] = "Import completed successfully."
-      redirect_to "/users/edit"
+      redirect_to user_path(current_user)
     end
   end
 end

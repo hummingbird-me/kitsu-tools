@@ -101,19 +101,19 @@ class User < ActiveRecord::Base
   has_attached_file :avatar,
     styles: {
       thumb: '190x190#',
-      thumb_small: {geometry: '50x50#', animated: false},
-      small: {geometry: '25x25#', animated: false}
+      thumb_small: {geometry: '100x100#', animated: false, format: :jpg},
+      small: {geometry: '50x50#', animated: false, format: :jpg}
     },
     convert_options: {
-      thumb_small: '-unsharp 2x0.5+1+0',
-      small: '-unsharp 2x0.5+1+0'
+      thumb_small: '-quality 0',
+      small: '-quality 0'
     },
     default_url: "http://placekitten.com/g/190/190",
     processors: [:thumbnail, :paperclip_optimizer]
 
   has_attached_file :cover_image,
-    styles: {thumb: {geometry: "1400x330#", animated: false, format: :jpg}},
-    convert_options: {thumb: '-interlace Plane'},
+    styles: {thumb: {geometry: "2800x660#", animated: false, format: :jpg}},
+    convert_options: {thumb: '-interlace Plane -quality 0'},
     default_url: "http://hummingbird.me/default_cover.png",
     storage: :s3
 
@@ -170,7 +170,7 @@ class User < ActiveRecord::Base
   # check the user's ID as well.
   def admin?
     ["c@vikhyat.net", # Vik
-     "josh@hummingbird.ly", # Josh
+     "josh@hummingbird.me", # Josh
      # "harlequinmarie@gmail.com", # Ashley
      "ryatt.tesla@gmail.com", # Ryatt
      "dev.colinl@gmail.com", # Psy
@@ -244,17 +244,6 @@ class User < ActiveRecord::Base
     end
     self.facebook_id = uid
     self.save
-  end
-
-  # Public: Return a hash table which returns false for all of the shows the user
-  #         doesn't have on their watchlist, and the watchlist object for shows
-  #         which they do have on.
-  def watchlist_table
-    watchlist = Hash.new(false)
-    Watchlist.where(:user_id => id).each do |watch|
-      watchlist[ watch.anime_id ] = watch
-    end
-    watchlist
   end
 
   # Return the top 3 genres the user has watched, along with a percentage of

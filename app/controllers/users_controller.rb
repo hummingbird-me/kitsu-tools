@@ -59,7 +59,7 @@ class UsersController < ApplicationController
         end
 
       end
-      format.json { render json: user }
+      format.json { render json: @user }
     end
 
   end

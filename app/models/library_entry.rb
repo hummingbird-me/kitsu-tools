@@ -101,6 +101,13 @@ class LibraryEntry < ActiveRecord::Base
     end
   end
 
+  after_save do
+    # Vote for the show to appear on the trending list.
+    TrendingAnime.vote self.anime_id
+    # Update the user's `last_library_update` time.
+    self.user.update_column :last_library_update, Time.now
+  end
+
   after_create do
     Anime.increment_counter 'user_count', self.anime_id
   end

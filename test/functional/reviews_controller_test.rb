@@ -12,4 +12,10 @@ class ReviewsControllerTest < ActionController::TestCase
     assert_response 200
     assert JSON.parse(@response.body)["reviews"].any? {|x| x["id"] == reviews(:one).id }
   end
+
+  test "redirects to canonical URL" do
+    review = reviews(:one)
+    get :show, anime_id: "_", id: reviews(:one).id
+    assert_response 301
+  end
 end

@@ -53,7 +53,7 @@
       .comment-content
         h4.story-title
           link-to 'user' user | #{user.username}
-          |  followed
+          |  followed 
           pluralize followedUsers.length "user" "users"
         p.secondary: time-ago time=createdAt
       .row

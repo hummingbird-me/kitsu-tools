@@ -4,7 +4,7 @@ Hummingbird.AnimeIndexRoute = Ember.Route.extend
 
   afterModel: (resolvedModel) ->
     Ember.run.next -> window.scrollTo 0, 0
-    Hummingbird.TitleManager.setTitle resolvedModel.get('canonicalTitle')
+    Hummingbird.TitleManager.setTitle resolvedModel.get('displayTitle')
 
   actions:
     toggleQuoteFavorite: (quote) ->

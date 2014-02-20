@@ -48,13 +48,14 @@ class MyAnimeListImport
       hashdata.each do |indv|
         parsd = {
           mal_id: indv["series_animedb_id"].to_i,
+          title: indv["series_title"],
           rating: indv["my_score"].to_i,
           episodes_watched: indv["my_watched_episodes"].to_i,
-          status: STATUS_MAP[indv["my_status"]] || (raise "unknown status: #{indv["my_status"]}"),
+          status: STATUS_MAP[indv["my_status"]] || "Currently Watching",
           last_updated: Time.at(indv["my_last_updated"].to_i),
           notes: indv["my_tags"]
         }
-        @data.push(parsd) unless Anime.find_by_mal_id(parsd[:mal_id]).nil?
+        @data.push(parsd)
       end
     end
     @data
@@ -62,24 +63,47 @@ class MyAnimeListImport
 
   def apply!
     anime = Anime.where(mal_id: data.map {|x| x[:mal_id] }).index_by(&:mal_id)
+    not_imported = []
+    import_count = 0
 
     data.each do |item|
       ani = anime[ item[:mal_id] ]
-      wl = Watchlist.where(user_id: @user.id, anime_id: ani.id).first || Watchlist.new(user: @user, anime: ani)
-      wl.status = item[:status]
-      wl.update_episode_count item[:episodes_watched]
-      wl.updated_at = item[:last_updated]
-      wl.notes = item[:notes]
-      wl.imported = true
-
-      if item[:rating] != 0
-        wl.rating = item[:rating].to_f / 2
+      if ani.nil?
+        not_imported.push ("* " + item[:title])
       else
-        wl.rating = nil
-      end
+        wl = LibraryEntry.where(user_id: @user.id, anime_id: ani.id).first || LibraryEntry.new(user_id: @user.id, anime_id: ani.id)
+        wl.status = item[:status]
+        wl.episodes_watched = item[:episodes_watched]
+        if ani.episode_count and wl.episodes_watched > ani.episode_count
+          wl.episodes_watched = ani.episode_count
+        end
+        wl.updated_at = item[:last_updated]
+        wl.notes = item[:notes]
+        wl.imported = true
 
-      wl.save!
+        if item[:rating] != 0
+          wl.rating = item[:rating].to_f / 2
+        else
+          wl.rating = nil
+        end
+
+        wl.save!
+        import_count += 1
+      end
     end
+
+    comment = "Hey, we just finished importing #{import_count} titles from your MAL account."
+    if not_imported.length > 0
+      comment += " The following were not imported:\n\n"
+      comment += not_imported.join("\n")
+    end
+
+    Action.broadcast(
+      action_type: "created_profile_comment",
+      user: @user,
+      poster: User.find(1),
+      comment: comment
+    )
   end
 
 end

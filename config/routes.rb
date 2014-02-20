@@ -2,12 +2,14 @@ require 'sidekiq/web'
 
 Hummingbird::Application.routes.draw do
   resources :library_entries
-  resources :reviews
   resources :franchises
   resources :full_anime
   resources :quotes
   resources :stories
   resources :user_infos
+  resources :reviews do
+    post :vote
+  end
 
   get '/sign-in' => 'auth#sign_in_action'
   post '/sign-out' => 'auth#sign_out_action'
@@ -91,9 +93,7 @@ Hummingbird::Application.routes.draw do
     resources :quotes do
       member { post :vote }
     end
-    resources :reviews do
-      member { post :vote }
-    end
+    resources :reviews
   end
 
   resources :manga
@@ -117,10 +117,9 @@ Hummingbird::Application.routes.draw do
   # Admin Panel
   authenticated :user, lambda {|u| u.admin? } do
     get '/kotodama' => 'admin#index', as: :admin_panel
+    get '/kotodama/stats' => 'admin#stats'
     get '/kotodama/login_as' => 'admin#login_as_user'
     get '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
-    post '/kotodama/toggle_forum_kill_switch' => 'admin#toggle_forum_kill_switch'
-    post '/kotodama/toggle_registration_kill_switch' => 'admin#toggle_registration_kill_switch'
 
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'

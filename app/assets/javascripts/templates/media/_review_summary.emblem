@@ -1,4 +1,4 @@
-a href=reviewURL
+link-to 'reviews.show' id
   .review.rounded-block
     .reviewer-thumb-wrapper.hidden-xs
       avatar user 'thumb'

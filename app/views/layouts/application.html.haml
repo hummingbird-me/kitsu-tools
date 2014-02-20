@@ -20,6 +20,7 @@
       :coffee
         @currentUser = null
 
+    %link(rel="stylesheet" media="all" href="/old-application.css")
     = stylesheet_link_tag    "old/application", :media => "all"
     = javascript_include_tag "old/application"
     = csrf_meta_tags
@@ -68,18 +69,18 @@
         js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=452427161479702";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
-      
+
     = render 'shared/header'
 
     - unless user_signed_in?
       = render 'shared/sign_in_modal'
-    
+
     #page.off-canvas.slide-nav
       = content_for?(:content) ? yield(:content) : yield
     = render 'shared/footer'
-    
+
     .status-bar
-      %p 
+      %p
         %span Removed feed item.
         %a(href="javascript:void(0)") Undo.
 

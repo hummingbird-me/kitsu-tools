@@ -13,7 +13,7 @@
 
   .panel.large-9.columns
     .row
-      .large-9.columns
+      .large-6.columns
         %h4 Actions
         %hr
         .panel
@@ -34,32 +34,41 @@
           - else
             %em (Nothing here.)
 
-        - if current_user.id == 1 or current_user.id == 2
-          .alert-box.alert
-            %h5 Forum kill switch
-            %p
-              - if $redis.exists "forum_kill_switch"
-                = link_to "Enable Forum", "/kotodama/toggle_forum_kill_switch", class: "button padded", method: :post
-              - else
-                = link_to "Disable Forum", "/kotodama/toggle_forum_kill_switch", class: "button padded alert", method: :post
-            %h5 Registration kill switch
-            %p
-              - if $redis.exists "registration_kill_switch"
-                = link_to "Enable Registration", "/kotodama/toggle_registration_kill_switch", class: "button padded", method: :post
-              - else
-                = link_to "Disable Registration", "/kotodama/toggle_registration_kill_switch", class: "button padded alert", method: :post
-
-      .large-3.columns
+      .large-6.columns
         %h4 Statistics
         %hr
-        %table
-          %tr
-            %td Signups
-            %td= @total_beta
-          %tr
-            %td Invites Sent
-            %td= @invited_beta
-          %tr
-            %td Registrations
-            %td= @user_count
 
+        %h5 Registrations over the last week
+        %canvas(id="registrations" height="200" width="400")
+
+
+%script(src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/0.2.0/Chart.min.js")
+:coffee
+  $.getJSON "/kotodama/stats", (data) ->
+    console.log data
+    # Registration chart
+    labels = Object.keys(data["registrations"]["total"])
+    confirmed = []
+    total = []
+    labels.forEach (key) ->
+      confirmed.push data["registrations"]["confirmed"][key]
+      total.push data["registrations"]["total"][key]
+    ctx = document.getElementById("registrations").getContext("2d")
+    chart = new Chart(ctx).Line
+      labels: labels
+      datasets: [
+        {
+          fillColor : "rgba(220,220,220,0.5)",
+          strokeColor : "rgba(220,220,220,1)",
+          pointColor : "rgba(220,220,220,1)",
+          pointStrokeColor : "#fff",
+          data: total
+        },
+        {
+          fillColor : "rgba(151,187,205,0.5)",
+          strokeColor : "rgba(151,187,205,1)",
+          pointColor : "rgba(151,187,205,1)",
+          pointStrokeColor : "#fff",
+          data: confirmed
+        }
+      ]

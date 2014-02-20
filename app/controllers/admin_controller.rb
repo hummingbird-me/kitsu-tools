@@ -27,30 +27,8 @@ class AdminController < ApplicationController
     redirect_to :back
   end
 
-  def toggle_forum_kill_switch
-    if $redis.exists("forum_kill_switch")
-      $redis.del("forum_kill_switch")
-    else
-      $redis.set("forum_kill_switch", "true")
-    end
-    redirect_to :back
-  end
-
-  def toggle_registration_kill_switch
-    if $redis.exists("registration_kill_switch")
-      $redis.del("registration_kill_switch")
-    else
-      $redis.set("registration_kill_switch", "true")
-    end
-    redirect_to :back
-  end
-  
   def index
-    @total_beta   = BetaInvite.count
-    @invited_beta = BetaInvite.where(invited: true).count
-    @user_count   = User.count
-
-    @anime_without_mal_id = Anime.where(mal_id: nil)
+    @anime_without_mal_id = Anime.where(mal_id: nil).reject {|x| x.genres.map(&:name).include? "Anime Influenced" }
 
     @hide_cover_image = true
     @hide_footer_ad = true
@@ -60,5 +38,24 @@ class AdminController < ApplicationController
     user = User.find(params[:user_id].strip.downcase)
     sign_in(:user, user)
     redirect_to "/"
+  end
+
+  def stats
+    stats = {}
+
+    stats[:registrations] = {total: {}, confirmed: {}}
+    User.where('created_at >= ?', 1.week.ago).find_each do |user|
+      daysago = user.created_at.strftime("%b %d")
+      stats[:registrations][:total][daysago] ||= 0
+      stats[:registrations][:confirmed][daysago] ||= 0
+
+      stats[:registrations][:total][daysago] += 1
+      stats[:registrations][:confirmed][daysago] += 1 if user.confirmed?
+    end
+    firstkey = stats[:registrations][:total].keys.sort.first
+    stats[:registrations][:total].delete firstkey
+    stats[:registrations][:confirmed].delete firstkey
+
+    render json: stats
   end
 end
