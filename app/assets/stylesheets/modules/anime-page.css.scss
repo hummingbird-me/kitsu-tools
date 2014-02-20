@@ -700,6 +700,7 @@ p img {
     background: #da5e3f;
     text-align: center;
     overflow: hidden;
+    padding-bottom: 10px;
     .score {
       font-size: 190px;
       z-index: 2;
@@ -771,7 +772,7 @@ p img {
     background: #2f343b;
     color: #fff;
     font-size: 20px;
-    padding-top: 30px;
+    padding-top: 10px;
     padding-left: 25px;
     padding-right: 40px;
     @media (max-width: 1100px) {
