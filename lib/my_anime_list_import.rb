@@ -73,7 +73,7 @@ class MyAnimeListImport
       else
         wl = LibraryEntry.where(user_id: @user.id, anime_id: ani.id).first || LibraryEntry.new(user: @user, anime: ani)
         wl.status = item[:status]
-        wl.update_episode_count item[:episodes_watched]
+        wl.episodes_watched = item[:episodes_watched]
         wl.updated_at = item[:last_updated]
         wl.notes = item[:notes]
         wl.imported = true
