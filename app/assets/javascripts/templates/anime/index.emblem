@@ -17,30 +17,30 @@ h1.series-title.hidden-xs
 .info-tabs
   ul.nav.nav-tabs
     li class={showGenres:active}
-      a{action switchTo "Genres"} Genres
+      a{action "switchTo" "Genres"} Genres
     li class={:hidden-xs showFranchise:active}
-      a{action switchTo "Franchise"} Franchise
+      a{action "switchTo" "Franchise"} Franchise
     unless notYetAired
       li class={:hidden-xs showQuotes:active}
-        a{action switchTo "Quotes"} Quotes
+        a{action "switchTo" "Quotes"} Quotes
     li class={:dropdown showCast:active}
       a.dropdown-toggle data-toggle="dropdown"
         | Cast
         b.caret
       ul.dropdown-menu
         each language in languages
-          li: a{action setLanguage language} #{language}
+          li: a{action "setLanguage" language} #{language}
     li class={:hidden-xs showStudios:active}
-      a{action switchTo "Studios"} Studios
+      a{action "switchTo" "Studios"} Studios
     li.dropdown.visible-xs
       a.dropdown-toggle data-toggle="dropdown"
         | More
         b.caret
         ul.dropdown-menu
-          li: a{action switchTo "Franchise"} Franchise
+          li: a{action "switchTo" "Franchise"} Franchise
           unless notYetAired
-            li: a{action switchTo "Quotes"} Quotes
-          li: a{action switchTo "Studios"} Studios
+            li: a{action "switchTo" "Quotes"} Quotes
+          li: a{action "switchTo" "Studios"} Studios
 
   .tab-content
     .tab-pane.active.genre-tab

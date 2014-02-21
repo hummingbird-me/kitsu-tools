@@ -4,7 +4,7 @@
 .info-tabs
   ul.nav.nav-tabs
     li class={showGenres:active}
-      a{action switchTo "Genres"} Genres
+      a{action "switchTo" "Genres"} Genres
 
   .tab-content
     .tab-pane.active.genre-tab

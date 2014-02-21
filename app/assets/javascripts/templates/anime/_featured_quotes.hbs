@@ -3,7 +3,7 @@
     <p><strong>{{characterName}}:</strong> {{content}}</p>
     <span class="favorited-by">
       <span class="favorite-count">Favorited by {{pluralize favoriteCount "user" "users"}} - </span>
-      <a {{action toggleQuoteFavorite this}}>
+      <a {{action "toggleQuoteFavorite" this}}>
         {{#if isFavorite}}
           Unfavorite this quote
         {{else}}

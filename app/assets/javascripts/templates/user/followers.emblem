@@ -16,7 +16,7 @@
               h4 #{username}
               p #{miniBio}
           .follow-button-column
-            a.btn.follow-button{action toggleFollow this}
+            a.btn.follow-button{action "toggleFollow" this}
               if isFollowed
                 | Unfollow
               else

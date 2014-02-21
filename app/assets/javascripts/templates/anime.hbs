@@ -19,18 +19,18 @@
               {{/if}}
             </button>
             <ul class="dropdown-menu">
-              <li><a {{action setLibraryStatus "Currently Watching"}}>Currently Watching</a></li>
-              <li><a {{action setLibraryStatus "Plan to Watch"}}>Plan to Watch</a></li>
-              <li><a {{action setLibraryStatus "Completed"}}>Completed</a></li>
-              <li><a {{action setLibraryStatus "On Hold"}}>On Hold</a></li>
-              <li><a {{action setLibraryStatus "Dropped"}}>Dropped</a></li>
-              <li><a {{action removeFromLibrary}}>Remove from Library</a></li>
+              <li><a {{action "setLibraryStatus" "Currently Watching"}}>Currently Watching</a></li>
+              <li><a {{action "setLibraryStatus" "Plan to Watch"}}>Plan to Watch</a></li>
+              <li><a {{action "setLibraryStatus" "Completed"}}>Completed</a></li>
+              <li><a {{action "setLibraryStatus" "On Hold"}}>On Hold</a></li>
+              <li><a {{action "setLibraryStatus" "Dropped"}}>Dropped</a></li>
+              <li><a {{action "removeFromLibrary"}}>Remove from Library</a></li>
             </ul>
           </div>
         </li>
         {{#if libraryEntryExists}}
           <li>
-            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart libraryEntry.isFavorite:active"}} {{action toggleFavorite}}>
+            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart libraryEntry.isFavorite:active"}} {{action "toggleFavorite"}}>
               <i {{bind-attr class=":fa libraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i>
             </button>
           </li>
@@ -39,7 +39,7 @@
       <ul class="right-buttons">
         <li>
           {{#if currentUser.isSignedIn}}
-            <button {{bind-attr class=":btn :btn-default :top-button isDirty:active"}} {{action openModal 'edit-anime' this}}><i class='fa fa-pencil'></i></button>
+            <button {{bind-attr class=":btn :btn-default :top-button isDirty:active"}} {{action "openModal" 'edit-anime' this}}><i class='fa fa-pencil'></i></button>
           {{/if}}
         </li>
       </ul>
@@ -47,7 +47,7 @@
     <div class="gallery hidden-xs">
       {{#if youtubeVideoId}}
         <div class="trailer hidden-sm">
-          <a {{action openModal 'youtube' this}}>
+          <a {{action "openModal" 'youtube' this}}>
             <div class="play-icon"><i class="fa fa-play fa-4x"></i></div>
             <img width="100%" height="auto" {{bind-attr src=trailerPreviewImage}}>
           </a>

@@ -16,17 +16,17 @@
                 i.library-loading
               else
                 .library-section-select.hidden-sm.hidden-xs
-                  button{action showSection "View All"} class={:btn :btn-default showAll:active} All
+                  button{action "showSection" "View All"} class={:btn :btn-default showAll:active} All
                   each section in sections
-                    button{action showSection section} class={:btn :btn-default section.displayVisible:active} #{section.title}
+                    button{action "showSection" section} class={:btn :btn-default section.displayVisible:active} #{section.title}
                 .library-section-select.hidden-md.hidden-lg
                   button.btn.btn-default.dropdown-toggle data-toggle="dropdown"
                     | #{showSection}
                     i.fa.fa-caret-down
                   ul.dropdown-menu
-                    li: a{action showSection "View All"} View All
+                    li: a{action "showSection" "View All"} View All
                     each section in sections
-                      li: a{action showSection section} #{section.title}
+                      li: a{action "showSection" section} #{section.title}
 
         .container
           .row
