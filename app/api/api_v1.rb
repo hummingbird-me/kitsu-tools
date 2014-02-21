@@ -207,7 +207,6 @@ class API_v1 < Grape::API
       optional :status, type: String
       optional :page, type: Integer
       optional :title_language_preference, type: String
-      optional :include_mal_id, type: String
     end
     get ':user_id/library' do
       if params[:page] and params[:page] > 1
