@@ -125,7 +125,7 @@ GEM
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
-    ember-data-source (1.0.0.beta.6)
+    ember-data-source (1.0.0.beta.7)
       ember-source
     ember-rails (0.14.1)
       active_model_serializers
@@ -136,7 +136,7 @@ GEM
       handlebars-source
       jquery-rails (>= 1.0.17)
       railties (>= 3.1)
-    ember-source (1.4.0.beta.6)
+    ember-source (1.5.0.beta.1.1)
       handlebars-source (~> 1.0)
     emblem-rails (0.2.1)
       barber-emblem (~> 0.1.1)
@@ -514,9 +514,9 @@ DEPENDENCIES
   delayed_paperclip
   devise
   devise-async
-  ember-data-source (= 1.0.0.beta.6)
+  ember-data-source (= 1.0.0.beta.7)
   ember-rails
-  ember-source (= 1.4.0.beta.6)
+  ember-source (= 1.5.0.beta.1.1)
   emblem-rails (~> 0.2.1)
   emblem-source (~> 0.3.8)
   fast_blank
