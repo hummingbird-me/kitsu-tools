@@ -364,11 +364,11 @@ GEM
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
     rdiscount (2.1.7)
-    react-rails (0.8.0.0)
+    react-rails (0.9.0.0)
       execjs
       rails (>= 3.1)
-      react-source (= 0.8.0)
-    react-source (0.8.0)
+      react-source (= 0.9.0)
+    react-source (0.9.0)
     redis (3.0.7)
     redis-actionpack (4.0.0)
       actionpack (~> 4)
@@ -451,7 +451,7 @@ GEM
       redis-namespace (>= 1.1.0)
       simple-random
       sinatra (>= 1.2.6)
-    sprockets (2.10.1)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -558,7 +558,7 @@ DEPENDENCIES
   rails_admin
   rb-fsevent
   rdiscount
-  react-rails (~> 0.8.0.0)
+  react-rails (~> 0.9.0.0)
   redis
   redis-rails
   riemann-client

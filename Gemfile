@@ -28,7 +28,7 @@ gem 'coffee-rails', '~> 4.0'
 gem 'emblem-rails', '~> 0.2.1'
 gem 'emblem-source', '~> 0.3.8'
 
-gem 'react-rails', '~> 0.8.0.0'
+gem 'react-rails', '~> 0.9.0.0'
 
 gem 'beaneater'
 gem 'beanstalkd_view'

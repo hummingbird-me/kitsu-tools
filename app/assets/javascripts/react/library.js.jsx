@@ -80,13 +80,13 @@
       }.bind(this));
     },
 
-    componentDidUpdate: function(prevProps, newProps, rootNode) {
+    componentDidUpdate: function(prevProps, newProps) {
       Ember.run(function() {
         if (this.props.dropdownOpen) {
           if (this.props.view.get('user.viewingSelf')) {
             var controller = this.props.view.get('controller');
             var libraryEntry = this.props.content;
-            $(rootNode).find(".awesome-rating-widget").AwesomeRating({
+            $(this.getDOMNode()).find(".awesome-rating-widget").AwesomeRating({
               editable: true,
               type: this.props.view.get('user.ratingType'),
               rating: this.props.content.get('rating'),
@@ -141,7 +141,7 @@
               <ul className="genres">
                 {
                   content.get('anime.genres').map(function(genre) {
-                    return (<li>{genre}</li>);
+                    return (<li key={genre}>{genre}</li>);
                   })
                 }
               </ul>
@@ -169,11 +169,11 @@
                   <div className="text-center">
                     <form>
                       <label className="radio-inline">
-                        <input name="private" type="radio" value="true" checked={this.props.content.get('private')} onClick={this.changePrivate.bind(this, true)} />
+                        <input name="private" type="radio" value="true" checked={this.props.content.get('private')} onChange={this.changePrivate.bind(this, true)} />
                         Private
                       </label>
                       <label className="radio-inline">
-                        <input name="private" type="radio" value="false" checked={!this.props.content.get('private')} onClick={this.changePrivate.bind(this, false)} />
+                        <input name="private" type="radio" value="false" checked={!this.props.content.get('private')} onChange={this.changePrivate.bind(this, false)} />
                         Public
                       </label>
                     </form>
@@ -190,8 +190,7 @@
 
                 <div className="text-center">
                   <label>
-                    <input type="checkbox" checked={this.props.content.get('rewatching')} onChange={this.toggleRewatching} />
-                    Rewatching
+                    <input type="checkbox" checked={this.props.content.get('rewatching')} onChange={this.toggleRewatching} /> Rewatching
                   </label>
                   <hr />
                 </div>
@@ -272,12 +271,12 @@
       }.bind(this));
     },
 
-    componentDidMount: function(rootNode) {
+    componentDidMount: function() {
       Ember.run(function() {
         var notes = this.props.content.get('notes');
         if (notes) {
-          $(rootNode).find(".fa-book").tooltip('destroy');
-          $(rootNode).find(".fa-book").tooltip({
+          $(this.getDOMNode()).find(".fa-book").tooltip('destroy');
+          $(this.getDOMNode()).find(".fa-book").tooltip({
             title: notes,
             placement: "left"
           });
@@ -285,8 +284,8 @@
       }.bind(this));
     },
 
-    componentDidUpdate: function(prevProps, nextProps, rootNode) {
-      this.componentDidMount(rootNode);
+    componentDidUpdate: function(prevProps, nextProps) {
+      this.componentDidMount();
     },
 
     render: function() {
