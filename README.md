@@ -39,6 +39,3 @@ This setup is using `Ubuntu` running inside `VirtualBox` on a Windows machine.
 * Install the Postgresql packages `postgresql-9.2`, `postgresql-contrib-9.2`
 * Install RVM via `\curl -L https://get.rvm.io | bash -s stable --ruby=2.1.0`
 * Get a database dump from `vikhyat` and *restore* it via `pg_restore -U username -d dbname dumpfile`
-
-
-note: failed username change before restoring dump
