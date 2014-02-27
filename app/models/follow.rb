@@ -25,12 +25,10 @@ class Follow < ActiveRecord::Base
   after_create do
     User.increment_counter 'following_count', self.follower_id
     User.increment_counter 'followers_count_hack', self.followed_id
-    NewsFeed.notify_follow self.follower, self.followed
   end
 
   before_destroy do
     User.decrement_counter 'following_count', self.follower_id
     User.decrement_counter 'followers_count_hack', self.followed_id
-    NewsFeed.notify_unfollow self.follower, self.followed
   end
 end

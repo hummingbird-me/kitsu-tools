@@ -53,7 +53,6 @@ class Story < ActiveRecord::Base
     time ||= Time.now
     self.updated_at = time
     self.save
-    NewsFeed.notify_story_updated(self.user, time)
   end
 
   def self.for_user(user)

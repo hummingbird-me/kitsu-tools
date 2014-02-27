@@ -31,7 +31,6 @@ class NewsFeed
   FEED_PREFIX                   = "user_newsfeed:"
   USER_FOLLOWERS_PREFIX         = "user_followers:"
   USER_FOLLOWING_PREFIX         = "user_following:"
-  LAST_STORY_UPDATE_TIME_KEY    = "last_story_time"
   ACTIVE_FOLLOWED_USERS_PREFIX  = "active_followed_users:"
 
   def initialize(user)
@@ -63,7 +62,6 @@ class NewsFeed
 
   # Regenerate the user's feed from scratch.
   def regenerate_feed!
-    ability = Ability.new @user
     user_set = active_followed_users + [@user.id]
 
     stories = Story.for_user(@user).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(FRESH_FETCH_SIZE)
@@ -87,64 +85,9 @@ class NewsFeed
     end
   end
 
-  # Return the set of active user IDs followed by our user, who were most 
-  # recently active. Limited to FRESH_FETCH_SIZE users. 
+  # Return the set of active user IDs followed by our user, who were most
+  # recently active. Limited to FRESH_FETCH_SIZE users.
   def active_followed_users
-    return @active_followed_users if @active_follower_users
-
-    active_followed_users_key = ACTIVE_FOLLOWED_USERS_PREFIX + @user.id.to_s
-    following_key = USER_FOLLOWING_PREFIX + @user.id.to_s
-
-    $redis.zinterstore active_followed_users_key, [LAST_STORY_UPDATE_TIME_KEY, following_key], aggregate: "max"
-
-    active_ids = $redis.zrevrange active_followed_users_key, 0, FRESH_FETCH_SIZE-1
-    $redis.del active_followed_users_key
-
-    @active_followed_users = active_ids
-  end
-
-  #
-  # Called when a user follows another user. It is cached to two Redis sets: 
-  # one for the list of users followed by the current user, and the list of 
-  # followers of the followed user.
-  #
-  # Parameters:
-  # * user: The user who performs the follow action.
-  # * followed: The user who was followed.
-  #
-  def self.notify_follow(user, followed)
-    followers_key = USER_FOLLOWERS_PREFIX + followed.id.to_s
-    following_key = USER_FOLLOWING_PREFIX + user.id.to_s
-    $redis.sadd followers_key, user.id
-    $redis.sadd following_key, followed.id
-  end
-
-  #
-  # Called when a user unfollows another. Removes the cached items added by
-  # `notify_follow`.
-  #
-  # Parameters:
-  # * user: The user who performs the unfollow action.
-  # * followed: The user who was unfollowed.
-  #
-  def self.notify_unfollow(user, followed)
-    followers_key = USER_FOLLOWERS_PREFIX + followed.id.to_s
-    following_key = USER_FOLLOWING_PREFIX + user.id.to_s
-    $redis.srem followers_key, user.id
-    $redis.srem following_key, followed.id
-  end
-
-  #
-  # Called when a story is generated for a particular user. Save this time to a
-  # Sorted Set stored in Redis.
-  #
-  # Parameters:
-  # * user: User for whom the story was generated.
-  # * time: (optional) Time of the update. Defaults to Time.now if it is not
-  #         provided.
-  #
-  def self.notify_story_updated(user, time=nil)
-    time ||= Time.now
-    $redis.zadd LAST_STORY_UPDATE_TIME_KEY, time.to_i, user.id
+    @user.following.limit(FRESH_FETCH_SIZE)
   end
 end
