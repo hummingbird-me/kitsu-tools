@@ -84,37 +84,13 @@
       h5.decimal-score #{ratingDecimalPart}
     .breakdown-block
       .breakdown-content
-        ul
+        ul: each breakdown
           li.clearfix
             .col-xs-9
-              i.fa.fa-plus-circle
-              | &nbsp; Story...
+              i class={:fa positive:fa-plus-circle:fa-minus-circle}
+              | &nbsp; #{title}...
             .dec-score
-              strong #{ratingStory}
-          li.clearfix
-            .col-xs-9
-              i.fa.fa-minus-circle
-              | &nbsp; Animation...
-            .dec-score
-              strong #{ratingAnimation}
-          li.clearfix
-            .col-xs-9
-              i.fa.fa-minus-circle
-              | &nbsp; Sound...
-            .dec-score
-              strong #{ratingSound}
-          li.clearfix
-            .col-xs-9.columns
-              i.fa.fa-plus-circle
-              | &nbsp; Characters...
-            .dec-score
-              strong #{ratingCharacter}
-          li.clearfix
-            .col-xs-9.columns
-              i.fa.fa-plus-circle
-              | &nbsp; Enjoyment...
-            .dec-score
-              strong #{ratingEnjoyment}
+              strong #{rating}
   .summary-block
     p #{summary}
 

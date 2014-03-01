@@ -9,7 +9,7 @@ Hummingbird.Review = DS.Model.extend
   ratingStory: DS.attr('number')
   ratingAnimation: DS.attr('number')
   ratingSound: DS.attr('number')
-  ratingCharacter: DS.attr('number')
+  ratingCharacters: DS.attr('number')
   ratingEnjoyment: DS.attr('number')
 
   liked: DS.attr('string')
