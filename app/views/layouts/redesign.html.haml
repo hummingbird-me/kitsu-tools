@@ -3,13 +3,8 @@
   %head(prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# hummingbird: http://ogp.me/ns/fb/hummingbird#")
     %title Hummingbird
 
+    = stylesheet_link_tag    "application", :media => "all"
     = csrf_meta_tags
-
-    - if Rails.env.development?
-      = stylesheet_link_tag    "application", :media => "all"
-    - else
-      %style(type="text/css")
-        = Rails.application.assets["application.css"].to_s.html_safe
 
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     %meta(property="fb:app_id" content="325314560922421")
