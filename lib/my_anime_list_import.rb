@@ -93,6 +93,12 @@ class MyAnimeListImport
     end
 
     comment = "Hey, we just finished importing #{import_count} titles from your MAL account."
+
+    # If the user account was created in the last 24 hours add a welcome message.
+    if @user.created_at >= 1.day.ago
+      comment += " Welcome to Hummingbird!"
+    end
+
     if not_imported.length > 0
       comment += " The following were not imported:\n\n"
       comment += not_imported.join("\n")
