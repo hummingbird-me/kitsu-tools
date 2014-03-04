@@ -100,7 +100,7 @@ class MyAnimeListImport
     end
 
     if not_imported.length > 0
-      comment += " The following were not imported:\n\n"
+      comment += "\n\nThe following were not imported:\n"
       comment += not_imported.join("\n")
     end
 
