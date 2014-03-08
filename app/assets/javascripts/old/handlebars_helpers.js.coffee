@@ -36,9 +36,9 @@ Handlebars.registerHelper 'watchlistStatusChangeStory', (user, new_status) ->
 
 Handlebars.registerHelper 'watchedEpisodeStory', (user, episode_number, service) ->
   extra = ""
-  if service
-    if service == "neon_alley"
-      extra = " on <a href='http://neonalley.com/' target='_blank'>Neon Alley</a>"
+  #if service
+  #  if service == "neon_alley"
+  #    extra = " on <a href='http://neonalley.com/' target='_blank'>Neon Alley</a>"
 
   user = "<a href='" + user.url + "'>" + user.name + "</a>"
   number = episode_number

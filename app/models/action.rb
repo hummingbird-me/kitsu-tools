@@ -54,11 +54,6 @@ class Action
 
       if l.episodes_watched_changed? and l.episodes_watched and l.episodes_watched - l.episodes_watched_was == 1
         service = nil
-        if l.user.neon_alley_integration? and Anime.neon_alley_ids.include?(l.anime.id)
-          service = "neon_alley"
-        else
-          service = nil
-        end
         Substory.from_action({
           user_id: l.user.id,
           action_type: "watched_episode",
