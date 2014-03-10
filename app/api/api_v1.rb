@@ -368,8 +368,11 @@ class API_v1 < Grape::API
 
       if library_entry.save
         wl = present_watchlist(library_entry.reload, rating_type, title_language_preference)
-        wl.merge(mal_id: anime.mal_id) if params[:include_mal_id] == "true"
-        wl
+        if params[:include_mal_id] == "true"
+          wl.merge(mal_id: anime.mal_id)
+        else
+          wl
+        end
       else
         return false
       end
