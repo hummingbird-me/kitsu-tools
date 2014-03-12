@@ -260,6 +260,8 @@ h4.series-title {
   @extend .col-sm-12;
   padding-left: 0;
   padding-right: 0;
+  width: auto;
+  max-width: 50%;
 }
 
 #affiliate {
@@ -268,6 +270,9 @@ h4.series-title {
     &:last-child {
       margin-bottom: 0;
     }
+  }
+  hr {
+    clear: left;
   }
 }
 
@@ -616,7 +621,7 @@ p img {
 
 .reader-actions {
   @extend .col-xs-12;
-  padding: 0;
+  padding: 10px 0;
   .reader-vote {
     @extend .col-xs-8;
     padding: 0;
@@ -668,7 +673,6 @@ p img {
 .review-breakdown {
   @extend .col-md-12;
   margin-top: 10px;
-  border-top: 1px solid #ddd;
   padding: 0;
   h1,h2,h3,h4,h5,h6 {
     font-weight: bold;
@@ -685,11 +689,25 @@ p img {
     @extend .col-md-5;
     padding-left: 15px;
     padding-right: 0;
+    @media (max-width: 768px) {
+      display: none;
+    }
   }
   .breakdown-title {
     @extend .col-md-7;
     border-left: 1px solid #ddd;
     padding-left: 15px;
+    @media (max-width: 768px) {
+      border-left: none;
+    }
+    h4{
+      @media (max-width: 768px) {
+        &:before {
+          content: "Verdict & ";
+        }
+        border-left: none;
+      }
+    }
   }
   .breakdown-content {
     @extend .col-md-12;
