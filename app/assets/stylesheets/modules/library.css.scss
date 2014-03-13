@@ -29,9 +29,9 @@
   padding: 10px;
   top: -9px;
   font-size: 20px;
-  transition: opacity .60s ease-in-out;
-  -moz-transition: opacity .60s ease-in-out;
-  -webkit-transition: opacity .60s ease-in-out;
+  transition: opacity .20s ease-in-out;
+  -moz-transition: opacity .20s ease-in-out;
+  -webkit-transition: opacity .20s ease-in-out;
   @extend .fa;
   @extend .fa-angle-up;
   opacity: 0;
@@ -108,7 +108,7 @@
   .drop-arrow {
     position: relative;
     height: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
   .drop-arrow:after, .drop-arrow:before {
     top: 100%;
