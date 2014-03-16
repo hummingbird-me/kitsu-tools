@@ -17591,7 +17591,7 @@ body .easyPieChart canvas {
   padding: 0;
   width: 20px;
   height: 20px;
-  background: url(/assets/icheck-orange-18d9908eaf5eaef5916d34830335132b.png) no-repeat;
+  background: url(/assets/icheck-orange.png) no-repeat;
   border: none;
   cursor: pointer;
 }
@@ -17632,7 +17632,7 @@ body .easyPieChart canvas {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (min-device-pixel-ratio: 1.5) {
   .icheckbox_flat-orange,.iradio_flat-orange {
-    background-image: url(/assets/icheck-orange@2x-37bd6e7ecc93773975a51324600e4967.png);
+    background-image: url(/assets/icheck-orange@2x.png);
     -webkit-background-size: 176px 22px;
     background-size: 176px 22px;
   }
