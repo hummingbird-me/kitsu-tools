@@ -260,8 +260,15 @@ h4.series-title {
   @extend .col-sm-12;
   padding-left: 0;
   padding-right: 0;
-  width: auto;
-  max-width: 50%;
+  @media (max-width: 768px) {
+    text-align: center;
+    width: 100%;
+    float: none;
+    a {
+      display: inline-block;
+      width: auto;
+    }
+  }
 }
 
 #affiliate {
@@ -699,9 +706,7 @@ p img {
     padding-left: 15px;
     @media (max-width: 768px) {
       border-left: none;
-    }
-    h4{
-      @media (max-width: 768px) {
+      h4{
         &:before {
           content: "Verdict & ";
         }
