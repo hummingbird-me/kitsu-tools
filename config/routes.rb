@@ -124,7 +124,6 @@ Hummingbird::Application.routes.draw do
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
     mount Split::Dashboard => '/kotodama/split'
-    mount BeanstalkdView::Server, at: '/kotodama/beanstalkd'
   end
 
   mount API => '/'

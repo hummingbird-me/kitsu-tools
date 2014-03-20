@@ -30,9 +30,6 @@ gem 'emblem-source', '~> 0.3.8'
 
 gem 'react-rails', '~> 0.9.0.0'
 
-gem 'beaneater'
-gem 'beanstalkd_view'
-
 gem 'indexable', '~> 0.1'
 gem 'rinku'
 gem 'rack-cors', require: 'rack/cors'

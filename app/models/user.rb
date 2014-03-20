@@ -323,15 +323,7 @@ class User < ActiveRecord::Base
   end
 
   def sync_to_forum!
-    changes = {name: self.name_was, auth_token: self.authentication_token}
-
-    # New name if changed.
-    changes[:new_name] = self.name
-
-    # Avatar.
-    changes[:new_avatar] = self.avatar_template
-
-    $beanstalk.tubes["update-forum-account"].put(changes.to_json)
+    UserSyncWorker.perform_async(self.id) if Rails.env.production?
   end
 
   after_save do
