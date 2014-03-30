@@ -99,47 +99,47 @@
 
       .row
         .large-12.columns#connection-settings
-          .large-12.columns.neon-alley.facebook-connect
-            .large-10.columns.no-padding
-              .large-1.columns.no-padding
-                = image_tag "https://si0.twimg.com/profile_images/2344625017/j467pvyrkn9317tpwr1e_bigger.jpeg", :class => "connect-icon"
-              .large-11.columns
-                %h4 Neon Alley
-                %p Receive personalized recommendations and sync Activity Feed.
-            .large-2.columns.no-padding{:style => "margin-top: 20px;"}
-              - if current_user.neon_alley_integration?
-                %a.button.padded.na-disconnect Disconnect
-              - else
-                %a.button.padded.na-connect Connect
+          -# .large-12.columns.neon-alley.facebook-connect
+          -#   .large-10.columns.no-padding
+          -#     .large-1.columns.no-padding
+          -#       = image_tag "https://si0.twimg.com/profile_images/2344625017/j467pvyrkn9317tpwr1e_bigger.jpeg", :class => "connect-icon"
+          -#     .large-11.columns
+          -#       %h4 Neon Alley
+          -#       %p Receive personalized recommendations and sync Activity Feed.
+          -#   .large-2.columns.no-padding{:style => "margin-top: 20px;"}
+          -#     - if current_user.neon_alley_integration?
+          -#       %a.button.padded.na-disconnect Disconnect
+          -#     - else
+          -#       %a.button.padded.na-connect Connect
 
-            :coffee
-              path = #{user_toggle_connection_path(current_user).inspect}
+          -#   :coffee
+          -#     path = #{user_toggle_connection_path(current_user).inspect}
 
-              addButtonLoader = (selector) ->
-                selector.html $("<i class='fa fa-spin fa-spinner'></i>")
+          -#     addButtonLoader = (selector) ->
+          -#       selector.html $("<i class='fa fa-spin fa-spinner'></i>")
               
-              connect_na = ->
-                addButtonLoader $("a.na-connect")
-                $.ajax path,
-                  method: 'post'
-                  data:
-                    connection: 'neonalley'
-                    enable: true
-                  success: ->
-                    $("a.na-connect").removeClass("na-connect").addClass("na-disconnect").html("Disconnect").click disconnect_na
+          -#     connect_na = ->
+          -#       addButtonLoader $("a.na-connect")
+          -#       $.ajax path,
+          -#         method: 'post'
+          -#         data:
+          -#           connection: 'neonalley'
+          -#           enable: true
+          -#         success: ->
+          -#           $("a.na-connect").removeClass("na-connect").addClass("na-disconnect").html("Disconnect").click disconnect_na
               
-              disconnect_na = ->
-                addButtonLoader $("a.na-disconnect")
-                $.ajax path,
-                  method: 'post'
-                  data:
-                    connection: 'neonalley'
-                    disable: true
-                  success: ->
-                    $("a.na-disconnect").removeClass("na-disconnect").addClass("na-connect").html("Connect").click connect_na
+          -#     disconnect_na = ->
+          -#       addButtonLoader $("a.na-disconnect")
+          -#       $.ajax path,
+          -#         method: 'post'
+          -#         data:
+          -#           connection: 'neonalley'
+          -#           disable: true
+          -#         success: ->
+          -#           $("a.na-disconnect").removeClass("na-disconnect").addClass("na-connect").html("Connect").click connect_na
 
-              $("a.na-disconnect").click disconnect_na
-              $("a.na-connect").click connect_na
+          -#     $("a.na-disconnect").click disconnect_na
+          -#     $("a.na-connect").click connect_na
 
           .large-12.columns.facebook-connect
             .large-8.columns
