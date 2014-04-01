@@ -59,7 +59,7 @@ h1.series-title.hidden-xs
     .banner-ad
       ad-unit adId="1293412" adClass="257f81e798bd68dd81e60f42838f361f"
 
-unless notYetAired
+
   .review-listing
     h4
       | Trending Reviews

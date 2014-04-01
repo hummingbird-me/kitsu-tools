@@ -1,69 +1,35 @@
 .hummingbird-header-1
-  .hummingbird-header-actual.fixed.nav-attached
+  .hummingbird-header-actual
     .contain-to-grid.rounded-panel
       %nav.top-bar.cf
-        %ul.title-area
-          %li.name
-            = link_to image_tag("logo.jpg", :height => "48px", :width => "47px"), "/"
-          %li.toggle-topbar.menu-icon
-            %a{:href => "#"}
-              %span Menu
         %section.top-bar-section
           / Left Nav Section
           %ul.left.topnav-links
             %li
               %a(href="/") Home
-            %li.has-dropdown
+            %li
               = link_to "Dashboard", user_signed_in? ? "/" : "/users/sign_in"
-              %ul.dropdown.rounded-panel
-                %li
-                  = link_to "Profile", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
-                %li
-                  = link_to "Library", user_signed_in? ? main_app.user_library_path(current_user) : "/users/sign_in"
-                %li
-                  = link_to "Recommendations", '/recommendations'
-            %li.has-dropdown
+
+            %li
               %a{:href => "/anime"} Explore
-              %ul.dropdown.rounded-panel
-                %li
-                  // change me to upcoming link
-                  = link_to "Upcoming", main_app.anime_season_path
+
             %li
               = link_to "Community", "http://forums.hummingbird.me/"
 
           / Right Nav Section
           %ul.right.right-top-nav
-            %li.has-form.search-form
-              .row.collapse.header-search
-                .small-12.columns
-                  %form#live_search_form{:action => "/search", :autocomplete => "off"}
-                    %input.typeahead#nav_search_input(type="text" name="query"){:placeholder => "Search...", :value => params[:query], :autocomplete => "off"}
-                    %input#nav_search_submit.submit.ss-icon{:type => "submit", :value => "search"}
 
             %li.divider.show-for-small
             - if user_signed_in?
-              %li.notification-block.has-dropdown
+              %li.notification-block
                 %a.notification-button{href: "/notifications", class: ("active" if Notification.unseen_count(current_user) > 0)}
                   %i.fa.fa-bell-o
                     - if Notification.unseen_count(current_user) > 0
                       %span.notification-count= "%02d" % Notification.unseen_count(current_user)
 
-                %ul.dropdown.rounded-panel
-                  = render partial: "notifications/notification", collection: Notification.recent_notifications(current_user)
-                  %li
-                    %a.view-all-notifications.single-notification.large-12.columns.center(href="/notifications")
-                      view all
-
-              %li.user-block.has-dropdown
-                = link_to image_tag(current_user.avatar_url, :class => "avatar"), main_app.user_path(current_user), :class => "avatar-link-selector"
-                %ul.dropdown.rounded-panel
-                  %li
-                    = link_to "Edit profile", main_app.edit_user_registration_path
-                  - if current_user.admin?
-                    %li 
-                      = link_to "Admin panel", "/kotodama"
-                  %li
-                    = link_to "Sign out", main_app.destroy_user_session_path, :method => :delete
+              %li.user-block
+                = link_to image_tag(current_user.avatar_url, :class => "avatar"), main_app.edit_user_registration_path, :class => "avatar-link-selector"
+    
             - else
               %li.guest-block
                 %span 
@@ -87,4 +53,6 @@
       
   - flash.each do |style, message|
     .alert-box{:class => style.to_s}= message
+.row
+  %h1.announcement Welcome to the Hummingbird Redesign!! <a href="http://forums.hummingbird.me/t/the-new-redesign/7247">Read More</a>
 

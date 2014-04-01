@@ -10,23 +10,23 @@ _.extend HB,
 
     detach: ->
       if @attached and not @visible
-        @el.removeClass("nav-attached")
+        @el.removeClass("nav-attached2")
         @attached = false
 
     attach: ->
       @show()
       unless @attached
-        @el.addClass("nav-attached")
+        @el.addClass("nav-attached2")
         @attached = true
 
     show: ->
       unless @visible
-        @el.removeClass("nav-hidden").addClass("nav-visible")
+        @el.removeClass("nav-hidden2").addClass("nav-visible2")
         @visible = true
 
     hide: ->
       if @visible
-        @el.removeClass("nav-visible").addClass("nav-hidden")
+        @el.removeClass("nav-visible2").addClass("nav-hidden2")
         @visible = false
 
     scrollHandler: ->
