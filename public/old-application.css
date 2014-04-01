@@ -30,8 +30,7 @@ body {
   color: #222222;
   padding: 0;
   margin: 0;
-  font-family: Verdana, Arial !important;
-  font-size: 11px;
+  font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1;
@@ -1299,7 +1298,7 @@ div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,th,td {
 }
 
 a {
-  color: #1d439b;
+  color: #2ba6cb;
   text-decoration: none;
   line-height: inherit;
 }
@@ -3372,10 +3371,11 @@ label.error {
 
 .top-bar {
   overflow: hidden;
+  height: 45px;
+  line-height: 45px;
   position: relative;
+  background: #111111;
   margin-bottom: 0;
-  height: 34px;
-  background: #2e51a2;
 }
 
 .top-bar ul {
@@ -7166,7 +7166,7 @@ div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,th,td {
 }
 
 a {
-  color: #1d439b;
+  color: #fd864b;
   text-decoration: none;
   line-height: inherit;
 }
@@ -9240,8 +9240,8 @@ label.error {
 
 .top-bar {
   overflow: hidden;
-  height: 34px;
-  line-height: 34px;
+  height: 70px;
+  line-height: 70px;
   position: relative;
   background: white;
   margin-bottom: 0;
@@ -9593,7 +9593,7 @@ label.error {
 
   .top-bar-section li a:not(.button) {
     padding: 0 23.333333333333332px;
-    line-height: 34px;
+    line-height: 70px;
     background: white;
   }
 
@@ -13504,8 +13504,6 @@ a.th {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 963px;
-  margin: 0 auto;
 }
 
 .hummingbird-header-1 .nav-attached {
@@ -13543,7 +13541,7 @@ a.th {
 }
 
 .hummingbird-header-1 .topnav-links {
-
+  border-right: 1px solid #ebeff2;
 }
 
 .hummingbird-header-1 .dropdown li:last-child a {
@@ -13558,8 +13556,8 @@ a.th {
 }
 
 .hummingbird-header-1 .user-block .avatar-link-selector .avatar {
-  width: 34px;
-  height: 34px;
+  width: 70px;
+  height: 70px;
   position: relative;
   top: 0px;
 }
@@ -13567,8 +13565,6 @@ a.th {
 .hummingbird-header-1 .top-bar {
   margin-bottom: 0px !important;
   z-index: 9;
-  height: 34px;
-  background: #2e51a2;
 }
 
 .hummingbird-header-1 .top-bar a {
@@ -13579,16 +13575,13 @@ a.th {
 }
 
 .hummingbird-header-1 .top-bar .top-bar-section li a {
-  background: #2e51a2 !important;
-  color: #fff !important;
-  font-weight: bold;
-  font-family: Verdana, Arial;
-  font-size: 13px !important;
+  background: #fff !important;
+  color: #333 !important;
 }
 
 .hummingbird-header-1 .top-bar .top-bar-section li a:not(.button):hover {
-  background: #E1E7F5 !important;
-  color: #000 !important;
+  background: white !important;
+  color: #fd864b !important;
 }
 
 .hummingbird-header-1 .top-bar .top-bar-section ul li.active a {
@@ -13724,8 +13717,11 @@ a.th {
 
 .hummingbird-header-1 .notification-block .notification-button .fa-bell-o {
   position: relative;
+  border: 1px solid #dcdcdc;
   font-size: 20px;
   color: #dcdcdc;
+  border-radius: 3px;
+  padding: 10px;
   font-weight: 300;
 }
 
@@ -16487,20 +16483,10 @@ a.th {
 
 .feed .feed-list li.feed-item .feed-wrapper .anime-feed-title {
   margin: 0px;
-  font-size: 11px;
 }
 
 .feed .feed-list li.feed-item .feed-wrapper .anime-feed-genres {
   margin: 0px !important;
-  font-size: 11px;
-}
-
-.substory {
-  font-size: 11px
-}
-
-.substory a {
-  font-size: 11px;
 }
 
 .feed .feed-list li.feed-item .feed-wrapper .anime-feed-genres a {
@@ -16531,7 +16517,7 @@ a.th {
 
 .feed .feed-list li.feed-item .feed-wrapper .wall-post-copy {
   margin-bottom: 0px;
-  font-size: 11px;
+  font-size: 18px;
 }
 
 .feed .feed-list li.feed-item .feed-wrapper .feed-divider {
@@ -16546,7 +16532,7 @@ a.th {
 
 .feed .feed-list li.feed-item .feed-wrapper .time .time-ago {
   color: #a0a0a0;
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .feed .feed-list li.feed-item .feed-wrapper .time .time-ago a {
@@ -16666,7 +16652,6 @@ a.th {
 
 .row {
   overflow: visible !important;
-  max-width: 963px !important;
 }
 
 .single-notification {
@@ -16855,11 +16840,10 @@ a {
 }
 
 body {
-  background: url('/assets/hb-bg.jpg') no-repeat scroll center top;
+  background: #eee;
   overflow-x: hidden;
-  padding-top: 160px;
+  padding-top: 70px;
   font-weight: 300;
-}
 }
 
 body.guest-padding {
@@ -17050,9 +17034,7 @@ body .easyPieChart canvas {
 }
 
 .home-content {
-  margin-top: 0px;
-  border: 1px solid #EBEBEB;
-  padding-top: 15px;
+  margin-top: 30px;
 }
 
 .home-content .recent-watched .recommendations {
@@ -23680,19 +23662,5 @@ table.tableSorter th div.sortArrow div.sortArrowDescending {
 .user-watchlist .adzone {
   margin-top: 15px;
 }
-.announcement {
-  font-family: Verdana, Arial;
-  text-align: left;
-  background-color: #e1e7f5;
-  color: #000000;
-  font-size: 16px;
-  font-weight: bold;
-  border-width: 1px 1px 1px 1px;
-  border-style: solid;
-  border-bottom-color: #1d439b;
-  border-left-color: #ebebeb;
-  border-right-color: #ebebeb;
-  border-top-color: #ebebeb;
-  padding: 5px 9px;
-  margin: 0;
-}
+
+
