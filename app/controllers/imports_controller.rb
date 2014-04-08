@@ -22,7 +22,7 @@ class ImportsController < ApplicationController
 
         mixpanel.track "Imported from MyAnimeList", {email: current_user.email} if Rails.env.production?
       rescue
-        flash[:error] = "There was a problem importing your anime list. Please send an email to <a href='mailto:vikhyat@hummingbird.me'>vikhyat@hummingbird.me</a> with the file you are trying to import.".html_safe
+        flash[:error] = "There was a problem importing your anime list. Please send an email to <a href='mailto:josh@hummingbird.me'>josh@hummingbird.me</a> with the file you are trying to import.".html_safe
         redirect_to "/users/edit"
         return
       end
