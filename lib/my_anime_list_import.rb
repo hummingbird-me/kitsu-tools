@@ -107,7 +107,7 @@ class MyAnimeListImport
     Action.broadcast(
       action_type: "created_profile_comment",
       user: @user,
-      poster: User.find(1),
+      poster: User.find(2),
       comment: comment
     )
   end
