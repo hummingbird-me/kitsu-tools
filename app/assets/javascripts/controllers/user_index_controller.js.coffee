@@ -4,6 +4,21 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
 
   sortProperties: ['createdAt']
   sortAscending: false
+  newPost: ""
+  actions:
+    submitPost: (post)->
+      _this = @
+      window.uinCon = @ 
+      newPost = @get('newPost')
+      Ember.$.ajax
+        url: "/users/" + _this.get('user.id') + "/comment.json"
+        data: {comment: newPost}
+        type: "POST"
+        success: (payload)->
+          stories = _this.store.find 'story', user_id: _this.get('userInfo.id')
+          _this.setProperties({'content': stories, newPost: ""})
+        failure: ()->
+          alert("Failed to save comment")
 
   lifeSpentOnAnimeFmt: (->
     minutes = @get('userInfo.lifeSpentOnAnime')

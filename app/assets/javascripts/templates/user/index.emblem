@@ -91,8 +91,9 @@
       / Status Update Panel
       .status-update-panel
         .panel-body.status-panel
-          textarea.status-form placeholder="What do you want to talk about?" rows="1"
-        .panel-footer Panel footer
+          view Ember.TextArea class="status-form" placeholder="What do you want to talk about?" rows="1" valueBinding="newPost"
+        .panel-footer
+          button.btn click="submitPost" Post 
 
       each itemController="story" itemViewClass="Hummingbird.StoryView"
 

@@ -1,4 +1,4 @@
-worker_processes ENV["UNICORN_PROCESSES"].to_i
+worker_processes ENV["UNICORN_PROCESSES"].to_i 
 
 if ENV["RAILS_ENV"] == "production"
 
