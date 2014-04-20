@@ -43,8 +43,9 @@ Hummingbird.StoryController = Ember.ObjectController.extend
         url: '/api/v1/users/' + feeduser + '/feed/remove'
         method: 'POST'
         data: {story_id: _id}
-        success: ->
-          stories = userIndexCon.store.find 'story', user_id: userIndexCon.get('userInfo.id')
-          userIndexCon.set('content', stories)
+        success: (results) ->
+          if results 
+            stories = userIndexCon.store.find 'story', user_id: userIndexCon.get('userInfo.id')
+            userIndexCon.set('content', stories)
         failure: ->
           alert "Could not delete post"

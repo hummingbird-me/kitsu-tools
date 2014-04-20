@@ -256,9 +256,9 @@ class API_v1 < Grape::API
       rescue
         return true
       end
-      if current_user and (current_user.admin? or (current_user.id == story.user_id)) 
+      if current_user and (current_user.admin? or (current_user.id == story.user_id)) or (current_user.id == story.target_id)
         story.destroy
-        return true
+        return true 
       else
         return false 
       end
