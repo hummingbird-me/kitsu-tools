@@ -28,7 +28,7 @@ class MessageFormatter
         begin
           Timeout::timeout(5) do
             if open(link).size <= 1024*1024*2
-              formatted += "<br><img class='autoembed' src='#{link}' style='max-height: 200px; width: auto; max-width: 600' />"
+              formatted += "<br><a href='#{link}'><img class='autoembed' src='#{link}' style='max-height: 800px; width: auto; max-width: 600' /></a>"
             end
           end
         rescue
