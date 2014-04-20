@@ -70,6 +70,49 @@
     @extend .panel-default;
   }
 
+  .anime-breakdown-panel{
+    .breakdown-info {
+      text-align: center;
+      .breakdown-infotitle {
+        display: block;
+        font-weight: bold;
+      }
+      .breakdown-infotext {
+        font-size: 0.89em;
+      }
+    }
+    .breakdown-genrelist {
+      li {
+        padding: 7px 0 3px 0;
+        border-bottom: 1px solid #f2f2f2;
+        &:last-of-type {
+          border: none;
+        }
+        span {
+          font-family: "klavika", Helvetica, Arial, sans-serif;
+          font-weight: bold;
+        }
+      }
+      .breakdown-numbr {
+        display: inline-block;
+        float: right;
+        color: #ec8661;
+      }
+    }
+    .breakdown-time {
+      color: #999;
+    }
+    .breakdown-icon {
+      display: inline-block;
+      padding-right: 15px;
+      float: left;
+      i {
+        color: #999;
+        font-size: 2.8em;
+      }
+    }
+  }
+
   .personal-feed {
     @extend .col-sm-7;
     @extend .col-md-7;

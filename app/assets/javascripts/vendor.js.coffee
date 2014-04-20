@@ -7,3 +7,4 @@
 #= require jcrop
 #= require jquery.autosize
 #= require rgbaster
+#= require chart.js

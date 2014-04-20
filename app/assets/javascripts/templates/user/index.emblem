@@ -58,8 +58,35 @@
           .panel-heading
             h3.panel-title Anime Breakdown
           .panel-body
+            .row
+              .col-md-5
+                .breakdown-graph
+                  canvas id="breakdown"
+                .breakdown-info
+                  span.breakdown-infotitle Adventure
+                  span.breakdown-infotext out of aaa titles
+              .col-md-7
+                ul.breakdown-genrelist
+                  li
+                    span.breakdown-genre Action
+                    span.breakdown-numbr 100
+                  li
+                    span.breakdown-genre Comedy
+                    span.breakdown-numbr 100
+                  li
+                    span.breakdown-genre Ecchi
+                    span.breakdown-numbr 100
+                  li
+                    span.breakdown-genre Horror
+                    span.breakdown-numbr 100
+                  li
+                    span.breakdown-genre Mecha
+                    span.breakdown-numbr 100
+            hr
             ul
-              li I've watched <strong>#{lifeSpentOnAnimeFmt}</strong> of anime.
+              li
+                span.breakdown-icon <i class="fa fa-desktop"></i>
+                span.breakdown-time I've watched <strong>#{lifeSpentOnAnimeFmt}</strong> of anime.
       else
         loading-indicator classNames="light"
 
