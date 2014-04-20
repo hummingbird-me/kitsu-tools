@@ -7,50 +7,50 @@
         .panel-heading
           h3.panel-title About #{user.username}
         .panel-body #{user.miniBio}
-        .user-interests
-          ul
-            li
-              .interest-icon <i class="fa fa-calendar"></i>
-              .interest Born <strong>Jan. 2nd, 1990</strong> (age 24)
-            li
-              .interest-icon <i class="fa fa-heart"></i>
-              .interest Waifu is <a href="#">Haruhi Suzumiya</a>
-            li
-              .interest-icon <i class="fa fa-home"></i>
-              .interest Lives in <strong>Chicago, IL</strong>
-            li
-              .interest-icon <i class="fa fa-link"></i>
-              .interest <a href="#">Twitter</a>
+        / .user-interests
+        /   ul
+        /     li
+        /       .interest-icon <i class="fa fa-calendar"></i>
+        /       .interest Born <strong>Jan. 2nd, 1990</strong> (age 24)
+        /     li
+        /       .interest-icon <i class="fa fa-heart"></i>
+        /       .interest Waifu is <a href="#">Haruhi Suzumiya</a>
+        /     li
+        /       .interest-icon <i class="fa fa-home"></i>
+        /       .interest Lives in <strong>Chicago, IL</strong>
+        /     li
+        /       .interest-icon <i class="fa fa-link"></i>
+        /       .interest <a href="#">Twitter</a>
 
-      .photos-videos
-        .panel-heading
-          h3.panel-title Photos and Videos
-        .panel-body
-          .media-grid
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://placekitten.com/300/300"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://placekitten.com/300/300"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://placekitten.com/300/300"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://placekitten.com/300/300"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://placekitten.com/300/300"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://placekitten.com/300/300"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://placekitten.com/300/300"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://placekitten.com/300/300"
+      / .photos-videos
+      /   .panel-heading
+      /     h3.panel-title Photos and Videos
+      /   .panel-body
+      /     .media-grid
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://placekitten.com/300/300"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://placekitten.com/300/300"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://placekitten.com/300/300"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://placekitten.com/300/300"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://placekitten.com/300/300"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://placekitten.com/300/300"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://placekitten.com/300/300"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://placekitten.com/300/300"
 
       if userInfo.isFulfilled
         / Anime Breakdown Panel
@@ -58,31 +58,31 @@
           .panel-heading
             h3.panel-title Anime Breakdown
           .panel-body
-            .row
-              .col-md-5
-                .breakdown-graph
-                  canvas id="breakdown"
-                .breakdown-info
-                  span.breakdown-infotitle Adventure
-                  span.breakdown-infotext out of aaa titles
-              .col-md-7
-                ul.breakdown-genrelist
-                  li
-                    span.breakdown-genre Action
-                    span.breakdown-numbr 100
-                  li
-                    span.breakdown-genre Comedy
-                    span.breakdown-numbr 100
-                  li
-                    span.breakdown-genre Ecchi
-                    span.breakdown-numbr 100
-                  li
-                    span.breakdown-genre Horror
-                    span.breakdown-numbr 100
-                  li
-                    span.breakdown-genre Mecha
-                    span.breakdown-numbr 100
-            hr
+            / .row
+            /   .col-md-5
+            /     .breakdown-graph
+            /       canvas id="breakdown"
+            /     .breakdown-info
+            /       span.breakdown-infotitle Adventure
+            /       span.breakdown-infotext out of aaa titles
+            /   .col-md-7
+            /     ul.breakdown-genrelist
+            /       li
+            /         span.breakdown-genre Action
+            /         span.breakdown-numbr 100
+            /       li
+            /         span.breakdown-genre Comedy
+            /         span.breakdown-numbr 100
+            /       li
+            /         span.breakdown-genre Ecchi
+            /         span.breakdown-numbr 100
+            /       li
+            /         span.breakdown-genre Horror
+            /         span.breakdown-numbr 100
+            /       li
+            /         span.breakdown-genre Mecha
+            /         span.breakdown-numbr 100
+            / hr
             ul
               li
                 span.breakdown-icon <i class="fa fa-desktop"></i>
@@ -90,29 +90,29 @@
       else
         loading-indicator classNames="light"
 
-      .favorite-anime
-        .panel-heading
-          h3.panel-title Favorite Anime
-        .panel-body
-          .media-grid
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://static.hummingbird.me/anime/poster_images/000/003/458/large/3458.jpg?1383488136"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://static.hummingbird.me/anime/poster_images/000/007/622/large/b0012149_5229cf3c7f4ee.png?1385352364"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://static.hummingbird.me/anime/poster_images/000/007/881/large/noragami_1.jpg?1389205049"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://static.hummingbird.me/anime/poster_images/000/008/057/large/Hamtora.jpg?1386914416"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://static.hummingbird.me/anime/poster_images/000/006/164/large/6164.jpg?1383497623"
-            .grid-thumb
-              a class="thumbnail"
-                img src="http://static.hummingbird.me/anime/poster_images/000/000/024/large/24.jpg?1383475952"
+      / .favorite-anime
+      /   .panel-heading
+      /     h3.panel-title Favorite Anime
+      /   .panel-body
+      /     .media-grid
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://static.hummingbird.me/anime/poster_images/000/003/458/large/3458.jpg?1383488136"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://static.hummingbird.me/anime/poster_images/000/007/622/large/b0012149_5229cf3c7f4ee.png?1385352364"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://static.hummingbird.me/anime/poster_images/000/007/881/large/noragami_1.jpg?1389205049"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://static.hummingbird.me/anime/poster_images/000/008/057/large/Hamtora.jpg?1386914416"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://static.hummingbird.me/anime/poster_images/000/006/164/large/6164.jpg?1383497623"
+      /       .grid-thumb
+      /         a class="thumbnail"
+      /           img src="http://static.hummingbird.me/anime/poster_images/000/000/024/large/24.jpg?1383475952"
 
     .personal-feed
       / Status Update Panel
