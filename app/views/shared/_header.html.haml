@@ -4,15 +4,13 @@
       %nav.top-bar.cf
         %ul.title-area
           %li.name
-            = link_to image_tag("logo.jpg", :height => "48px", :width => "47px"), "/"
+            = link_to image_tag("http://localhost:3000/assets/logo-new.jpg", :height => "20px", :width => "119px"), "/"
           %li.toggle-topbar.menu-icon
             %a{:href => "#"}
               %span Menu
         %section.top-bar-section
           / Left Nav Section
           %ul.left.topnav-links
-            %li
-              %a(href="/") Home
             %li.has-dropdown
               = link_to "Dashboard", user_signed_in? ? "/" : "/users/sign_in"
               %ul.dropdown.rounded-panel
