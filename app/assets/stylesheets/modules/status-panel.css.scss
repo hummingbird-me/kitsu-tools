@@ -58,6 +58,7 @@
     @extend .secondary;
     @extend .hidden-xs;
     @extend .clearfix;
+    font-size: 14px;
 
     /* because metamorphs */
     li:last-of-type:after {
@@ -82,6 +83,16 @@
       padding-left: 7px;
       position: relative;
       top: 2px;
+    }
+    .secondary {
+      font-size: 14px;
+    }
+    .remove-post {
+      color: #999;
+      transition: ease-in .2s;
+      &:hover {
+        color: red;
+      }
     }
   }
 

@@ -8,13 +8,14 @@
           link-to 'user' poster | #{poster.username}
           |  <i class="fa fa-share reply-icon"></i>
           link-to 'user' user | #{user.username}
-        p.secondary: time-ago time=createdAt
+        p.secondary
+          time-ago time=createdAt
+          if belongsToUser
+            a.remove-post click="removeComment" &nbsp;· remove
       .row
         .col-sm-12
           .clearfix
           p.comment-text {{{comment}}}
-      if belongsToUser
-        button.btn click="removeComment" Remove
 
     if mediaStory
       .series-thumb
