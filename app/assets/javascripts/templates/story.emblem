@@ -13,6 +13,8 @@
         .col-sm-12
           .clearfix
           p.comment-text {{{comment}}}
+      if belongsToUser
+        button.btn click="removeComment" Remove
 
     if mediaStory
       .series-thumb

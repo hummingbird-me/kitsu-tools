@@ -4,7 +4,14 @@ Hummingbird.StoryController = Ember.ObjectController.extend
   followedStory: Ember.computed.equal('model.type', 'followed')
   knownStory: Ember.computed.any('commentStory', 'mediaStory', 'followedStory')
   unknownStory: Ember.computed.not('knownStory')
-
+  needs: ['current_user', 'user_index']
+  
+  belongsToUser:(->
+    window.loggedInUser = @get('controllers.current_user.model')
+    console.log( @get 'model.poster' )
+    return loggedInUser.get('id') == @get('model.poster.id')
+  ).property('model.poster')
+  
   mediaRoute: (->
     if @get('model.media').constructor.toString() == "Hummingbird.Anime"
       return 'anime'
@@ -27,3 +34,18 @@ Hummingbird.StoryController = Ember.ObjectController.extend
   actions:
     toggleShowAll: ->
       @set 'showAll', not @get('showAll')
+    removeComment: ->
+      feeduser = @get('user.id')
+      _id = @get('model.id')
+      story = @get('model')
+      userIndexCon = @get('controllers.user_index')      
+      Ember.$.ajax
+        url: '/api/v1/users/' + feeduser + '/feed/remove'
+        method: 'POST'
+        data: {story_id: _id}
+        success: (results) ->
+          if results 
+            stories = userIndexCon.store.find 'story', user_id: userIndexCon.get('userInfo.id')
+            userIndexCon.set('content', stories)
+        failure: ->
+          alert "Could not delete post"
