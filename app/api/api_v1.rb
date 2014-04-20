@@ -248,19 +248,19 @@ class API_v1 < Grape::API
     desc "Delete a substory from the user's feed."
     params do
       requires :user_id, type: String
-      requires :substory_id, type: Integer
+      requires :story_id, type: Integer
     end
     post ":user_id/feed/remove" do
       begin
-        substory = Substory.find params[:substory_id]
+        story = Story.find params[:story_id]
       rescue
         return true
       end
-      if current_user and (current_user.admin? or (current_user.id == substory.user_id) or (current_user.id == substory.story.user_id))
-        substory.destroy
+      if current_user and (current_user.admin? or (current_user.id == story.user_id)) 
+        story.destroy
         return true
       else
-        return false
+        return false 
       end
     end
   end
