@@ -3371,8 +3371,8 @@ label.error {
 
 .top-bar {
   overflow: hidden;
-  height: 45px;
-  line-height: 45px;
+  height: 50px;
+  line-height: 50px;
   position: relative;
   background: #111111;
   margin-bottom: 0;
@@ -9240,8 +9240,8 @@ label.error {
 
 .top-bar {
   overflow: hidden;
-  height: 70px;
-  line-height: 70px;
+  height: 50px;
+  line-height: 50px;
   position: relative;
   background: white;
   margin-bottom: 0;
@@ -9593,7 +9593,7 @@ label.error {
 
   .top-bar-section li a:not(.button) {
     padding: 0 23.333333333333332px;
-    line-height: 70px;
+    line-height: 50px;
     background: white;
   }
 
@@ -9673,9 +9673,9 @@ label.error {
   }
 
   .top-bar-section .has-form {
-    background: white;
+    background: #2f343b;
     padding: 0 23.333333333333332px;
-    height: 70px;
+    height: 50px;
   }
 
   .top-bar-section ul.right li .dropdown {
@@ -13556,8 +13556,8 @@ a.th {
 }
 
 .hummingbird-header-1 .user-block .avatar-link-selector .avatar {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   position: relative;
   top: 0px;
 }
@@ -13565,6 +13565,7 @@ a.th {
 .hummingbird-header-1 .top-bar {
   margin-bottom: 0px !important;
   z-index: 9;
+  background: #2f343b;
 }
 
 .hummingbird-header-1 .top-bar a {
@@ -13575,8 +13576,8 @@ a.th {
 }
 
 .hummingbird-header-1 .top-bar .top-bar-section li a {
-  background: #fff !important;
-  color: #333 !important;
+  background: #2f343b !important;
+  color: #fff !important;
 }
 
 .hummingbird-header-1 .top-bar .top-bar-section li a:not(.button):hover {
