@@ -128,7 +128,12 @@
     @extend .panel-default;
 
     .panel-footer {
+      @extend .clearfix;
       display: none;
+      background: transparent;
+      border: none;
+      padding-top: 0;
+      margin-top: -35px;
     }
   }
 

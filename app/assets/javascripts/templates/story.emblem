@@ -40,7 +40,8 @@
                       link-to 'user' user | #{user.username}
                       |  {{{substory.html}}}
                     ul.inline-list.secondary
-                      li Remove
+                      if belongsToUser
+                        a.remove-post click="removeComment" remove
                       li: time-ago time=substory.createdAt
 
           if moreThanTwoSubstories

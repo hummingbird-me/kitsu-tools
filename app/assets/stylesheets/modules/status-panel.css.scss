@@ -6,10 +6,13 @@
 
 .status-panel {
   padding: 0px;
+  background: linear-gradient(to bottom, #f7f7f8 0%,#ffffff 100%);
+  border-radius: 3px;
   .status-form {
     @extend .form-control;
-    border: none;
-    box-shadow: none;
+    background: transparent;
+    border: none !important;
+    box-shadow: none !important;
     font-weight: 300;
     font-size: 16px;
     height: 50px;
@@ -149,6 +152,9 @@
 
   .feed-events {
     margin-top: 5px;
+    .secondary {
+      font-size: 14px;
+    }
   }
 }
 
