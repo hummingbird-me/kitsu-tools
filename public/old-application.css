@@ -13771,20 +13771,19 @@ a.th {
 }
 
 .hummingbird-header-1 .notification-block .single-notification.new {
-  background: #fff;
+  background: #272c33 !important;
 }
 
 .hummingbird-header-1 .notification-block .single-notification.new:hover {
-  background: #fafafa !important;
+  background: #272c33 !important;
 }
 
 .hummingbird-header-1 .notification-block .view-all-notifications {
-  background: #f6f6f6 !important;
+  background: #272c33 !important;
 }
 
 .hummingbird-header-1 .notification-block .view-all-notifications:hover {
-  background: #f6f6f6 !important;
-  color: #fff;
+  background: #272c33 !important;
 }
 
 .hummingbird-header-1 .notification-block .status-info {
