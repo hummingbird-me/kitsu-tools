@@ -50,14 +50,12 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html do
 
-        if params.has_key?(:new_feed) or Rails.env.development?
+        if params.has_key?(:new_feed) or 4 == 2 + 2
           preload! @user
           render_ember
         else
-          preload! @user
-          render_ember
-          # @active_tab = :feed
-          # render "feed", layout: "layouts/profile"
+          @active_tab = :feed
+          render "feed", layout: "layouts/profile"
         end
 
       end
