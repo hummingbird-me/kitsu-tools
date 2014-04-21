@@ -93,7 +93,7 @@
         .panel-body.status-panel
           view Ember.TextArea class="status-form" placeholder="What do you want to talk about?" rows="1" valueBinding="newPost"
         .panel-footer
-          button.btn click="submitPost" Post 
+          button.btn click="submitPost" class=inFlight:disabled Post 
 
       each itemController="story" itemViewClass="Hummingbird.StoryView"
 
