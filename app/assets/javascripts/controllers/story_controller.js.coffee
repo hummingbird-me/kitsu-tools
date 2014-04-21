@@ -45,7 +45,7 @@ Hummingbird.StoryController = Ember.ObjectController.extend
         data: {story_id: _id}
         success: (results) ->
           if results 
-            stories = userIndexCon.store.find 'story', user_id: userIndexCon.get('userInfo.id')
-            userIndexCon.set('content', stories)
+            #stories = userIndexCon.store.find 'story', user_id: userIndexCon.get('userInfo.id')
+            userIndexCon.get('target').send('reloadFirstPage')
         failure: ->
           alert "Could not delete post"

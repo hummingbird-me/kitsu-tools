@@ -45,6 +45,15 @@ Hummingbird.Paginated = Ember.Mixin.create({
           that.controller.get('content').addObjects(objects);
         });
       }
+    },
+    reloadFirstPage: function(){
+      var _this = this;
+      if (this.get('canLoadMore') && !this.get('currentlyFetchingPage')){
+        this.fetchPageProxy().then(function(objects){ 
+          _this.controller.get('content').clear();
+          _this.controller.get('content').addObjects(objects);
+        });
+      }
     }
   }
 });

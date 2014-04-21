@@ -20,8 +20,8 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
           type: "POST"
           success: (payload)->
             stories = _this.store.find 'story', user_id: _this.get('userInfo.id')
-            _this.setProperties({'content': stories, newPost: "", inFlight: false})
-            
+            _this.setProperties({newPost: "", inFlight: false})
+            _this.get('target').send('reloadFirstPage') 
           failure: ()->
             alert("Failed to save comment")
       else return
