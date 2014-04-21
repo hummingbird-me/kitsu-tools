@@ -9,6 +9,9 @@
     background: darken($orange, 8);
     color: #fff;
   }
+  &.unfollow {
+    background: #999;
+  }
 }
 
 .upload-cover {
