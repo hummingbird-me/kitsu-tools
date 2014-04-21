@@ -1,8 +1,4 @@
 Hummingbird.UserIndexRoute = Ember.Route.extend Hummingbird.Paginated,
-  beforeModel: (transition) ->
-    unless dont_refresh
-      window.location.href = "/users/" + @modelFor('user').get('id')
-      transition.abort()
 
   fetchPage: (page) ->
     @store.find 'story', user_id: @modelFor('user').get('id'), page: page
