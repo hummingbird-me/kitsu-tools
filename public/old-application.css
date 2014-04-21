@@ -13762,7 +13762,7 @@ a.th {
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #999;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
   font-size: 11px;
@@ -13783,7 +13783,8 @@ a.th {
 }
 
 .hummingbird-header-1 .notification-block .view-all-notifications:hover {
-  background: #fbfbfb !important;
+  background: #f6f6f6 !important;
+  color: #fff;
 }
 
 .hummingbird-header-1 .notification-block .status-info {
