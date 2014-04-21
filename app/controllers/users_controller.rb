@@ -54,8 +54,10 @@ class UsersController < ApplicationController
           preload! @user
           render_ember
         else
-          @active_tab = :feed
-          render "feed", layout: "layouts/profile"
+          preload! @user
+          render_ember
+          # @active_tab = :feed
+          # render "feed", layout: "layouts/profile"
         end
 
       end
