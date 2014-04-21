@@ -4,5 +4,5 @@ Hummingbird.CurrentUserController = Ember.ObjectController.extend
   ).property('@content')
 
   isAdmin: (->
-    ["vikhyat", "Josh", "ryn", "Saijin", "Tavor", "Cairus"].contains @get('content.username')
+    ["vikhyat", "Josh", "ryn", "Saijin", "Cairus"].contains @get('content.username')
   ).property('@content.username')
