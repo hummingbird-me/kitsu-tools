@@ -7,9 +7,9 @@ Hummingbird.StoryController = Ember.ObjectController.extend
   needs: ['current_user', 'user_index']
   
   belongsToUser:(->
-    window.loggedInUser = @get('controllers.current_user.model')
-    console.log( @get 'model.poster' )
-    return loggedInUser.get('id') == @get('model.poster.id')
+    loggedInUser = @get('controllers.current_user.model')
+    window.sto = @get('model')
+    return loggedInUser.get('id') == @get('model.poster.id') || loggedInUser.get('id') == @get('model.user.id')
   ).property('model.poster')
   
   mediaRoute: (->
@@ -45,7 +45,7 @@ Hummingbird.StoryController = Ember.ObjectController.extend
         data: {story_id: _id}
         success: (results) ->
           if results 
-            stories = userIndexCon.store.find 'story', user_id: userIndexCon.get('userInfo.id')
-            userIndexCon.set('content', stories)
+            #stories = userIndexCon.store.find 'story', user_id: userIndexCon.get('userInfo.id')
+            userIndexCon.get('target').send('reloadFirstPage')
         failure: ->
           alert "Could not delete post"
