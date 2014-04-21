@@ -101,13 +101,17 @@
     }
     .breakdown-time {
       color: #999;
+      strong {
+        color: #686868;
+        font-weight: normal;
+      }
     }
     .breakdown-icon {
       display: inline-block;
       padding-right: 15px;
       float: left;
       i {
-        color: #999;
+        color: #686868;
         font-size: 2.8em;
       }
     }

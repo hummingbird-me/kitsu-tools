@@ -85,7 +85,7 @@
             / hr
             ul
               li
-                span.breakdown-icon <i class="fa fa-desktop"></i>
+                span.breakdown-icon <i class="fa fa-eye"></i>
                 span.breakdown-time I've watched <strong>#{lifeSpentOnAnimeFmt}</strong> of anime.
       else
         loading-indicator classNames="light"
