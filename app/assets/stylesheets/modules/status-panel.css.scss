@@ -80,6 +80,10 @@
     @extend .col-md-1;
     padding-left: 0;
     padding-right: 0;
+    @media (max-width: 767px) {
+      padding: 0 0 7px 0;
+      max-width: 52px;
+    }
   }
 
   .comment-content {
@@ -266,6 +270,7 @@
       border-top: 1px solid #ddd;
       margin-top: 3px;
       padding-top: 10px;
+      word-wrap: break-word;
     }
     .user-image {
       padding: 0; 
