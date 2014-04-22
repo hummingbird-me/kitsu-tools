@@ -39,7 +39,7 @@ class MessageFormatter
       if link =~ /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/
         begin
           code = link.scan(/v=([A-Za-z0-9\-_]+)/)[0][0]
-          formatted += "<br><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='http://youtube.com/embed/#{code}' />"
+          formatted += "<div class='video-embed'><div class='video-wrapper'><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='http://youtube.com/embed/#{code}' > </iframe></div></div>"
         rescue
         end
       end
