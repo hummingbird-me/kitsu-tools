@@ -7,6 +7,7 @@ Hummingbird.StoryController = Ember.ObjectController.extend
   needs: ['current_user', 'user_index']
   
   belongsToUser:(->
+    window.story = @
     loggedInUser = @get('controllers.current_user.model')
     window.sto = @get('model')
     return loggedInUser.get('id') == @get('model.poster.id') || loggedInUser.get('id') == @get('model.user.id')
