@@ -85,7 +85,7 @@
             / hr
             ul
               li
-                span.breakdown-icon <i class="fa fa-desktop"></i>
+                span.breakdown-icon <i class="fa fa-eye"></i>
                 span.breakdown-time I've watched <strong>#{lifeSpentOnAnimeFmt}</strong> of anime.
       else
         loading-indicator classNames="light"
@@ -118,9 +118,9 @@
       / Status Update Panel
       .status-update-panel
         .panel-body.status-panel
-          view Ember.TextArea class="status-form" placeholder="What do you want to talk about?" rows="1" valueBinding="newPost"
+          view Ember.TextArea class="status-form" placeholder="Write something..." rows="1" valueBinding="newPost"
         .panel-footer
-          button.btn click="submitPost" class=inFlight:disabled Post 
+          button.btn.status-button click="submitPost" class=inFlight:disabled Post Status
 
       each itemController="story" itemViewClass="Hummingbird.StoryView"
 

@@ -9,6 +9,9 @@
     background: darken($orange, 8);
     color: #fff;
   }
+  &.unfollow {
+    background: #999;
+  }
 }
 
 .upload-cover {
@@ -40,4 +43,15 @@
   border-color: darken(#4099FF, 10);
   background-color: darken(#4099FF, 10);
  }
+}
+
+.status-button {
+  float: right;
+  background-color: $orange;
+  color: #fff !important;
+  transition: ease-in .2s;
+  padding: 10px 30px;
+  &:hover {
+    background-color: darken($darkOrange, 2);
+  }
 }

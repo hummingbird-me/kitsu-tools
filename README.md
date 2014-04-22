@@ -1,5 +1,15 @@
-### Setting up a development environment on OS X
+### Commit informations
+The Hummingbird changelog is automatically labeling commits based on the first word in their commit message.
+It currently supports the labels `ADD` and `FIX` as well as the `MISC` label if the word didn't match any of the add or fix lists.  
+The following is a small list of words that can be used to specify a commit type. The changelog script checks for `word`, `word+ed` and `word+ing`  
 
+| Label | Words |
+| --- | --- |
+|`ADD` | `add`, `create`, `complete`, `increase` |
+|`FIX` | `fix`, `change`, `update`, `merge`, `remove`, `drop`, `revert`, `hide`, `stop`. |
+
+
+### Setting up a development environment on OS X
 * Install `Homebrew`: http://brew.sh/
 * Install `Ruby 2.1.0` using RVM: https://rvm.io/rvm/install
 * Using `Homebrew`, install the following: `git`,  `curl`, `v8`, `beanstalkd`, `redis`
@@ -13,7 +23,7 @@
 
 ### Setting up a development environment on Windows
 This setup is using `Ubuntu` running inside `VirtualBox` on a Windows machine.  
-Cursiv lines are bugfixes and/or optional, just read them carefully and decide what to do.
+Cursive lines are bugfixes and/or optional, just read them carefully and decide what to do.
 
 * Make sure that you have enabled the `VT-x` / `AMD-v` settings in your BIOS,  
  otherwise VirtualBox will not boot correctly.

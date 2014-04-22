@@ -3371,8 +3371,8 @@ label.error {
 
 .top-bar {
   overflow: hidden;
-  height: 45px;
-  line-height: 45px;
+  height: 50px;
+  line-height: 50px;
   position: relative;
   background: #111111;
   margin-bottom: 0;
@@ -3494,6 +3494,11 @@ label.error {
   width: auto;
   -webkit-transition: left 300ms ease-out;
   transition: left 300ms ease-out;
+}
+
+.top-bar-section .has-dropdown>a:after {
+  border-color: #999 transparent transparent transparent !important;
+  top: 25px !important;
 }
 
 .top-bar-section ul {
@@ -9240,8 +9245,8 @@ label.error {
 
 .top-bar {
   overflow: hidden;
-  height: 70px;
-  line-height: 70px;
+  height: 50px;
+  line-height: 50px;
   position: relative;
   background: white;
   margin-bottom: 0;
@@ -9593,7 +9598,7 @@ label.error {
 
   .top-bar-section li a:not(.button) {
     padding: 0 23.333333333333332px;
-    line-height: 70px;
+    line-height: 50px;
     background: white;
   }
 
@@ -9673,9 +9678,9 @@ label.error {
   }
 
   .top-bar-section .has-form {
-    background: white;
+    background: #2f343b;
     padding: 0 23.333333333333332px;
-    height: 70px;
+    height: 50px;
   }
 
   .top-bar-section ul.right li .dropdown {
@@ -13532,7 +13537,7 @@ a.th {
 .hummingbird-header-1 .name {
   padding-left: 10px;
   padding-right: 10px;
-  border-right: 1px solid #ebeff2;
+  border-right: none;
 }
 
 .hummingbird-header-1 .name img {
@@ -13541,7 +13546,7 @@ a.th {
 }
 
 .hummingbird-header-1 .topnav-links {
-  border-right: 1px solid #ebeff2;
+  border-right: none;
 }
 
 .hummingbird-header-1 .dropdown li:last-child a {
@@ -13553,11 +13558,16 @@ a.th {
 .hummingbird-header-1 .user-block .avatar-link-selector {
   line-height: 0px;
   padding-left: 0px;
+  padding-right: 25px !important;
+}
+
+.top-bar-section .right-top-nav .has-dropdown>a:after {
+  display: none !important;
 }
 
 .hummingbird-header-1 .user-block .avatar-link-selector .avatar {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   position: relative;
   top: 0px;
 }
@@ -13565,6 +13575,7 @@ a.th {
 .hummingbird-header-1 .top-bar {
   margin-bottom: 0px !important;
   z-index: 9;
+  background: #2f343b;
 }
 
 .hummingbird-header-1 .top-bar a {
@@ -13575,13 +13586,12 @@ a.th {
 }
 
 .hummingbird-header-1 .top-bar .top-bar-section li a {
-  background: #fff !important;
-  color: #333 !important;
+  background: #272c33 !important;
+  color: #999999 !important;
 }
 
 .hummingbird-header-1 .top-bar .top-bar-section li a:not(.button):hover {
-  background: white !important;
-  color: #fd864b !important;
+  color: #fff !important;
 }
 
 .hummingbird-header-1 .top-bar .top-bar-section ul li.active a {
@@ -13668,7 +13678,7 @@ a.th {
 
 .hummingbird-header-1 .header-search {
   position: relative;
-  top: 9px;
+  top: 0;
   overflow: visible;
 }
 
@@ -13703,7 +13713,7 @@ a.th {
 }
 
 .hummingbird-header-1 .notification-block {
-  border-left: 1px solid #eee;
+  border-left: none;
 }
 
 .hummingbird-header-1 .notification-block>a:after {
@@ -13717,9 +13727,10 @@ a.th {
 
 .hummingbird-header-1 .notification-block .notification-button .fa-bell-o {
   position: relative;
-  border: 1px solid #dcdcdc;
+  border: 1px solid #999;
   font-size: 20px;
-  color: #dcdcdc;
+  color: #999;
+  top: 1px;
   border-radius: 3px;
   padding: 10px;
   font-weight: 300;
@@ -13751,7 +13762,7 @@ a.th {
   padding-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #999;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
   font-size: 11px;
@@ -13760,19 +13771,19 @@ a.th {
 }
 
 .hummingbird-header-1 .notification-block .single-notification.new {
-  background: #fff;
+  background: #272c33 !important;
 }
 
 .hummingbird-header-1 .notification-block .single-notification.new:hover {
-  background: #fafafa !important;
+  background: #272c33 !important;
 }
 
 .hummingbird-header-1 .notification-block .view-all-notifications {
-  background: #f6f6f6 !important;
+  background: #272c33 !important;
 }
 
 .hummingbird-header-1 .notification-block .view-all-notifications:hover {
-  background: #fbfbfb !important;
+  background: #272c33 !important;
 }
 
 .hummingbird-header-1 .notification-block .status-info {
@@ -14974,7 +14985,7 @@ a.th {
 }
 
 .anime-explore .explore-filter li {
-  border-right: 1px solid #ebeff2;
+  border-right: none;
   font-size: 16px;
 }
 
@@ -16749,6 +16760,9 @@ a {
   margin-bottom: 15px;
 }
 
+.hummingbird-header-1 .rounded-panel{
+  background: #2f343b;
+}
 .rounded-panel {
   background: #fff;
   border: none;

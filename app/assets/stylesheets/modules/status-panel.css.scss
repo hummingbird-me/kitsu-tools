@@ -6,10 +6,13 @@
 
 .status-panel {
   padding: 0px;
+  background: linear-gradient(to bottom, #f7f7f8 0%,#ffffff 100%);
+  border-radius: 3px;
   .status-form {
     @extend .form-control;
-    border: none;
-    box-shadow: none;
+    background: transparent;
+    border: none !important;
+    box-shadow: none !important;
     font-weight: 300;
     font-size: 16px;
     height: 50px;
@@ -23,7 +26,7 @@
 .story {
   @extend .panel;
   @extend .panel-default;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .update-panel {
@@ -58,11 +61,17 @@
     @extend .secondary;
     @extend .hidden-xs;
     @extend .clearfix;
+    font-size: 14px;
 
     /* because metamorphs */
     li:last-of-type:after {
       content: "";
     }
+  }
+
+  .user-info-bar {
+    @extend .col-sm-12;
+    margin-bottom: 15px;
   }
 
   .user-image {
@@ -83,6 +92,16 @@
       position: relative;
       top: 2px;
     }
+    .secondary {
+      font-size: 14px;
+    }
+    .remove-post {
+      color: #999;
+      transition: ease-in .2s;
+      &:hover {
+        color: red;
+      }
+    }
   }
 
   .inline-list {
@@ -100,12 +119,18 @@
   }
 
   .comment-text {
-    @extend .col-sm-11;
+    @extend .col-sm-12;
     @extend .col-xs-10;
-    float: right;
     font-size: 16px;
     padding-bottom: 0;
+    padding-left: 0;
     margin-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    a {
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 
   .event-info {
@@ -138,6 +163,9 @@
 
   .feed-events {
     margin-top: 5px;
+    .secondary {
+      font-size: 14px;
+    }
   }
 }
 

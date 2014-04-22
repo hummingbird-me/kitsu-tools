@@ -171,12 +171,12 @@ class User < ActiveRecord::Base
   def admin?
     ["c@vikhyat.net", # Vik
      "josh@hummingbird.me", # Josh
-     # "harlequinmarie@gmail.com", # Ashley
-     "ryatt.tesla@gmail.com", # Ryatt
+     "hummingbird.ryn@gmail.com", # Ryatt
      "dev.colinl@gmail.com", # Psy
      "lazypanda39@gmail.com", # Cai
      "windowjunk@yahoo.com", # Tav
-     "adennisjin@gmail.com" # Dennis
+     "adennisjin@gmail.com", # Dennis
+     "svengehring@cybrox.eu" # Cybrox
     ].include? email
   end
 

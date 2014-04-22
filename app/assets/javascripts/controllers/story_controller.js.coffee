@@ -4,11 +4,10 @@ Hummingbird.StoryController = Ember.ObjectController.extend
   followedStory: Ember.computed.equal('model.type', 'followed')
   knownStory: Ember.computed.any('commentStory', 'mediaStory', 'followedStory')
   unknownStory: Ember.computed.not('knownStory')
-  needs: ['current_user', 'user_index']
+  needs: ['user_index']
   
   belongsToUser:(->
-    loggedInUser = @get('controllers.current_user.model')
-    window.sto = @get('model')
+    loggedInUser = @get('currentUser')
     return loggedInUser.get('id') == @get('model.poster.id') || loggedInUser.get('id') == @get('model.user.id')
   ).property('model.poster')
   
@@ -45,7 +44,6 @@ Hummingbird.StoryController = Ember.ObjectController.extend
         data: {story_id: _id}
         success: (results) ->
           if results 
-            #stories = userIndexCon.store.find 'story', user_id: userIndexCon.get('userInfo.id')
             userIndexCon.get('target').send('reloadFirstPage')
         failure: ->
           alert "Could not delete post"

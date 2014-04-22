@@ -290,9 +290,9 @@ User Profile
 }
 
 .profile-navigation {
-  background: #2f343b;
+  background: #f5f5f5;
   margin-bottom: 20px;
-  border-bottom: 1px solid #646b75;
+  border-bottom: 1px solid #ddd;
   .inline-list {
     text-align: left;
     padding-left: 10px;
@@ -308,7 +308,7 @@ User Profile
         color: #adacac;
         position: relative;
         &.active {
-          color: #fff;
+          color: $darkOrange;
         }
       }
     }
@@ -319,8 +319,8 @@ User Profile
       overflow: hidden;
       padding: 10px 0;
       max-width: 0;
-      border-bottom: 1px solid #fff;
-      color: #fff;
+      border-bottom: 1px solid $darkOrange;
+      color: $darkOrange;
       content: attr(data-hover);
       -webkit-transition: max-width 0.5s;
       -moz-transition: max-width 0.5s;
@@ -351,4 +351,22 @@ User Profile
   height: 600px;
   background: $darkEggshell;
   border: 1px solid $lightGrey;
+}
+
+.video-embed {
+  @extend .col-sm-12;
+  padding: 15px;
+}
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }

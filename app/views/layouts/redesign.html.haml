@@ -40,18 +40,18 @@
       }(document, 'script', 'facebook-jssdk'));
 
   %body
-    / Temporary:
-    - if Rails.env.development?
-      :javascript
-        var dont_refresh = true;
-    - else
-      :javascript
-        var dont_refresh;
-        if (location.href.match(/new_feed/)) {
-          dont_refresh = true;
-        } else {
-          dont_refresh = false;
-        }
+    -# / Temporary:
+    -# - if Rails.env.development?
+    -#   :javascript
+    -#     var dont_refresh = true;
+    -# - else
+    -#   :javascript
+    -#     var dont_refresh;
+    -#     if (location.href.match(/new_feed/)) {
+    -#       dont_refresh = true;
+    -#     } else {
+    -#       dont_refresh = false;
+    -#     }
 
     :javascript
       (function(){
