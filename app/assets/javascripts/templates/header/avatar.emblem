@@ -4,4 +4,15 @@ li.dropdown.user-area
   ul.dropdown-menu.right-nav-section
     li
       a href="/users/edit" Edit Profile
+      a onclick="$('#changelog').modal('show');" View Changelog
+      #changelog.modal.fade aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1'
+        .modal-dialog
+          .modal-content
+            .modal-header
+              button.close aria-hidden='true' data-dismiss='modal' type='button' &#215;
+              h4#myModalLabel.modal-title Modal title
+            .modal-body test
+
+
+
       a{action 'signOut'} Sign out
