@@ -122,7 +122,7 @@
         .panel-footer
           button.btn.status-button click="submitPost" class=inFlight:disabled Post Status
 
-      each itemController="story" itemViewClass="Hummingbird.StoryView"
+      each content itemController="story" itemViewClass="Hummingbird.StoryView"
 
       load-more classNames="light" action="loadNextPage"
 
