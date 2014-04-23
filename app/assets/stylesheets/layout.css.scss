@@ -370,3 +370,58 @@ User Profile
     height: 100%;
   }
 }
+
+.follow-panel-wrapper {
+  @extend .col-sm-3;
+  padding: 5px;
+}
+.follow-panel {
+  @extend .panel;
+  @extend .default-panel;
+  min-height: 250px;
+  margin-bottom: 0;
+  padding-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  .user-cover {
+    height: 100px;
+    background: #ddd;
+    .cover-photo {
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+  .user-avatar {
+    padding-left: 10px;
+    padding-right: 20px;
+    position: absolute;
+    top: 100px;
+    width: 100%;
+    .follow-button {
+      padding: 4px 20px;
+      margin-top: 16px;
+      font-size: 16px;
+      float: right;
+    }
+    img {
+      width: 60px;
+      position: relative;
+      top: -15px;
+    }
+  }
+  .mini-bio {
+    height: 65px;
+    overflow: hidden;
+  }
+  .user-info {
+    margin-top: 50px;
+    padding: 0 10px;
+    a {
+      color: #333;
+      transition: .1s ease-in;
+      &:hover {
+        color: $orange;
+      }
+    }
+  }
+}

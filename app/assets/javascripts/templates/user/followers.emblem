@@ -2,25 +2,45 @@
   .ad
     ad-unit adId="1293413" adClass="257f81e798bd68dd81e60f42838f361f"
 
-.container
-  .user-listing
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title #{user.username}'s Followers
-      each
-        .user
-          a href=userLink
-            .user-avatar
-              avatar this 'thumb_small'
-            .user-content
-              h4 #{username}
-              p #{miniBio}
-          .follow-button-column
-            a.btn.follow-button{action "toggleFollow" this}
-              if isFollowed
-                | Unfollow
-              else
-                | Follow
+/ .container
+/   .user-listing
+/     .panel.panel-default
+/       .panel-heading
+/         h3.panel-title #{user.username}'s Followers
+/       each
+/         .user
+/           a href=userLink
+/             .user-avatar
+/               avatar this 'thumb_small'
+/             .user-content
+/               h4 #{username}
+/               p #{miniBio}
+/           .follow-button-column
+/             a.btn.follow-button{action "toggleFollow" this}
+/               if isFollowed
+/                 | Unfollow
+/               else
+/                 | Follow
 
-      if canLoadMore
-        load-more action="loadNextPage"
+/       if canLoadMore
+/         load-more action="loadNextPage"
+.container
+  each
+    .follow-panel-wrapper
+      .follow-panel
+        .user-cover
+          .cover-photo style=coverImageStyle
+        .user-avatar
+          avatar this 'thumb'
+          if isFollowed
+            a.btn.follow-button.unfollow{action "toggleFollow" user} Unfollow
+          else
+            a.btn.follow-button{action "toggleFollow" this} Follow
+
+        .user-info
+          a href=userLink
+            h4 #{username}
+          p.mini-bio #{miniBio}
+
+if canLoadMore
+  load-more action="loadNextPage"
