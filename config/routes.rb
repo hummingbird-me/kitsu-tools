@@ -7,6 +7,7 @@ Hummingbird::Application.routes.draw do
   resources :quotes
   resources :stories
   resources :user_infos
+  resources :changelogs
   resources :reviews do
     post :vote
   end
