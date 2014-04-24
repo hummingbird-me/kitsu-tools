@@ -6,7 +6,8 @@
     .follow-panel-wrapper
       .follow-panel
         .user-cover
-          .cover-photo style=coverImageStyle
+          .cover-photo style=controller.controllers.user.coverImageStyle
+
         .user-avatar
           avatar this 'thumb'
           if isFollowed
