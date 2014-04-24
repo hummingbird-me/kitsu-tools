@@ -49,6 +49,18 @@ class SearchController < ApplicationController
       @results = User.search(params[:query] || "askdhjfg").page(params[:page]).per(20)
       render "users"
 
+    elsif @search_type == "character"
+
+      @char_list = Character.simple_search_by_name(params[:query])
+      if @char_list.length == 0
+        @char_list = Character.fuzzy_search_by_name(params[:query])
+      end
+      @results = @char_list
+
+      respond_to do |format|
+        format.json { render :json => @results.map {|x| {:id => x.id, :name => x.name} }.flatten.compact }
+      end
+
     else
 
       not_found!

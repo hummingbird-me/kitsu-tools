@@ -15,6 +15,12 @@
 #
 
 class Character < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :fuzzy_search_by_name, against: [:name],
+    using: [:trigram], ranked_by: ":trigram"
+  pg_search_scope :simple_search_by_name, against: [:name],
+    using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
+
   attr_accessible :description, :name, :mal_id, :image
   validates :name, :presence => true
   has_many :castings, dependent: :destroy
