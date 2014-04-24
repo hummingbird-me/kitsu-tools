@@ -5,10 +5,12 @@
   each
     .follow-panel-wrapper
       .follow-panel
-        .user-cover
-          .cover-photo style=coverImageStyle
+        a href=userLink
+          .user-cover
+            .cover-photo style=coverImageStyle
         .user-avatar
-          avatar this 'thumb'
+          a href=userLink
+            avatar this 'thumb'
           if isFollowed
             a.btn.follow-button.unfollow{action "toggleFollow" this} Unfollow
           else
