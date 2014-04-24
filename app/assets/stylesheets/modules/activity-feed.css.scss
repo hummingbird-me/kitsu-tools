@@ -20,6 +20,7 @@
       border: 1px solid #ddd;
       height: 100px;
       padding: 10px;
+      resize: vertical;
     }
     .user-interests {
       @extend .col-xs-12;
