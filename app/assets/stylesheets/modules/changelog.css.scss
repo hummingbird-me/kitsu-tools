@@ -1,0 +1,54 @@
+.changelog {
+	max-height: 500px;
+	overflow: scroll;
+	.changelog-loading { text-align: center }
+	/* ^ temp */
+
+	hr:first-of-type {
+		display: none;
+	}
+	.changelog-commit-date {
+		display: inline-block;
+		width: 100%;
+		padding-bottom: 10px;
+		font-weight: bold;
+	}
+	.changelog-commit {
+		padding: 5px 0;
+		.changelog-commit-type {
+			float: left;
+			.changelog-commit-label {
+				display: inline-block;
+				min-width: 50px;
+				padding: 3px 9px;
+				background: #95a5a6;
+				color: #fff;
+				font-size: 0.75em;
+				text-align: center;
+				text-transform: uppercase;
+				border: none;
+				border-radius: 3px;
+
+				&.add { background: #1abc9c; }
+				&.fix { background: #3498db; }
+			}
+			.changelog-commit-avatar {
+				width: 23px;
+				height: 23px;
+				margin: 0 20px;
+				vertical-align: top;
+				border: 1px solid #ddd;
+				border-radius: 3px;
+			}
+
+		}
+		.changelog-commit-message {
+
+		}
+		&:after {
+			display: block;
+			content: ' ';
+			clear: left;
+		}
+	}
+}

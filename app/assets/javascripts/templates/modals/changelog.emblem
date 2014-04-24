@@ -1,0 +1,17 @@
+bootstrap-modal action="close"
+	.modal-header
+		h4.modal-title Hummingbird Changelog
+	.modal-body.changelog
+		.changelog-loading
+			/loading-indicator
+			span Fetching latest changelog
+		each commits
+			if newdate
+				hr
+				span.changelog-commit-date = date
+			.changelog-commit
+				.changelog-commit-type
+					span.changelog-commit-label class=type = type
+					img.changelog-commit-avatar src=uimg
+				.changelog-commit-message
+					span=mesg
