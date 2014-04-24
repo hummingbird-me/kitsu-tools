@@ -7,11 +7,12 @@
       .follow-panel
         .user-cover
           .cover-photo style=controller.controllers.user.coverImageStyle
+          img src=coverImageUrl
 
         .user-avatar
           avatar this 'thumb'
           if isFollowed
-            a.btn.follow-button.unfollow{action "toggleFollow" user} Unfollow
+            a.btn.follow-button.unfollow{action "toggleFollow" this} Unfollow
           else
             a.btn.follow-button{action "toggleFollow" this} Follow
 
