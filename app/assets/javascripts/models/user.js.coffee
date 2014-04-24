@@ -14,6 +14,10 @@ Hummingbird.User = DS.Model.extend
     @get("avatarTemplate").replace('{size}', 'thumb')
   ).property('avatarTemplate')
 
+  coverImageStyle: (->
+   "background-image: url(" +  @get('coverImageUrl') + ")"
+  ).property('coverImageUrl')
+
   userLink: (->
     "/users/" + @get('id')
   ).property('id')

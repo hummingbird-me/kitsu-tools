@@ -6,9 +6,7 @@
     .follow-panel-wrapper
       .follow-panel
         .user-cover
-          .cover-photo style=controller.controllers.user.coverImageStyle
-          img src=coverImageUrl
-
+          .cover-photo style=coverImageStyle
         .user-avatar
           avatar this 'thumb'
           if isFollowed
@@ -20,6 +18,7 @@
           a href=userLink
             h4 #{username}
           p.mini-bio #{miniBio}
+            #{controller.followerCoverUrl}
 
 if canLoadMore
   load-more action="loadNextPage"
