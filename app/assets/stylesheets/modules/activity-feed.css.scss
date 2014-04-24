@@ -14,6 +14,13 @@
     @extend .panel;
     @extend .panel-default;
     @extend .clearfix;
+    .edit-bio {
+      width: 100%;
+      border-radius: 3px;
+      border: 1px solid #ddd;
+      height: 100px;
+      padding: 10px;
+    }
     .user-interests {
       @extend .col-xs-12;
       margin-bottom: 15px;
@@ -36,7 +43,31 @@
       .interest {
         @extend .col-xs-11;
         padding-left: 0;
+        padding-right: 0;
         font-size: 18px;
+        input {
+          width: 100%;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+          font-size: 16px;
+          padding: 3px 10px;
+        }
+      }
+    }
+    .submit-form {
+      @extend .col-sm-12;
+      margin-bottom: 15px;
+      text-align: right;
+      button {
+        background: $orange;
+        color: #fff;
+        border: none;
+        &:hover {
+          background: $darkOrange;
+        }
+        &:active {
+          background: darken($darkOrange, 5);
+        }
       }
     }
   }

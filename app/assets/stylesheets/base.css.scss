@@ -90,6 +90,14 @@ input:focus, textarea:focus {
 .panel-title {
   color: #7a7a7a;
 }
+
+.edit-panel {
+  position: absolute;
+  right: 15px;
+  top: 8px;
+  letter-spacing: 1px;
+}
+
 .secondary {
   color: $medGrey;
 }

@@ -6,12 +6,30 @@
       .user-about-panel
         .panel-heading
           h3.panel-title About #{user.username}
-        .panel-body #{user.miniBio}
+          span.edit-panel
+            a href="#" edit
+
+        // == User Info Edit ==
+        .panel-body
+          textarea.edit-bio maxlength="160" rows="3" placeholder="Tell us about yourself  :3"
+        .user-interests
+          ul
+            li
+              .interest-icon <i class="fa fa-heart"></i>
+              .interest <input type="text" placeholder="Waifu"></input>
+            li
+              .interest-icon <i class="fa fa-home"></i>
+              .interest <input type="text" placeholder="Location"></input>
+            li
+              .interest-icon <i class="fa fa-link"></i>
+              .interest <input type="text" placeholder="Website"></input>
+        .submit-form
+          button.btn.btn-default type="button" Update Profile
+
+        // == User Info ==
+        / .panel-body #{user.miniBio}
         / .user-interests
         /   ul
-        /     li
-        /       .interest-icon <i class="fa fa-calendar"></i>
-        /       .interest Born <strong>Jan. 2nd, 1990</strong> (age 24)
         /     li
         /       .interest-icon <i class="fa fa-heart"></i>
         /       .interest Waifu is <a href="#">Haruhi Suzumiya</a>
