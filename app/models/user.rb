@@ -246,8 +246,8 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  # Return the top 3 genres the user has watched, along with a percentage of
-  # anime watched that contain each of those genres.
+  # Return the top 3 genres the user has watched, along with
+  # the number of anime watched that contain each of those genres.
   def top_genres
     genres        = Arel::Table.new(:genres)
     anime_genres  = Arel::Table.new(:anime_genres)
@@ -258,12 +258,12 @@ class User < ActiveRecord::Base
     freqs = anime_genres.where(
               anime_genres[:anime_id].in( mywatchlists.project(:anime_id) )
             ).project(:genre_id, Arel.sql('COUNT(*) AS count'))
-            .group(:genre_id).order('count DESC').take(3)
+            .group(:genre_id).order('count DESC').take(5)
 
     result = {}
 
     connection.execute(freqs.to_sql).each do |h|
-      result[ Genre.find(h["genre_id"]) ] = h["count"].to_f / watchlists.length
+      result[ Genre.find(h["genre_id"]) ] = h["count"].to_f
     end
 
     result

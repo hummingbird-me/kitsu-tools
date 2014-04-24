@@ -7,3 +7,14 @@ Hummingbird.Store = DS.Store.extend
 Hummingbird.ApplicationAdapter = DS.ActiveModelAdapter.extend({})
 
 Hummingbird.ApplicationSerializer = DS.ActiveModelSerializer.extend({})
+
+# Custom data type: Array
+DS.JSONTransforms.array =
+  serialize: (jsonData)->
+    if Em.typeOf(jsonData) is 'array' then jsonData else []
+
+  deserialize: (externalData)->
+    switch Em.typeOf(externalData)
+      when 'array'  then return externalData
+      when 'string' then return externalData.split(',').map((item)-> jQuery.trim(item))
+      else               return []
