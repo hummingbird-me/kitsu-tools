@@ -2,9 +2,6 @@ bootstrap-modal action="close"
 	.modal-header
 		h4.modal-title Hummingbird Changelog
 	.modal-body.changelog
-		.changelog-loading
-			/loading-indicator
-			span Fetching latest changelog
 		each commits
 			if newdate
 				hr
@@ -15,3 +12,5 @@ bootstrap-modal action="close"
 					img.changelog-commit-avatar src=uimg
 				.changelog-commit-message
 					span=mesg
+		.changelog-loading
+			loading-indicator

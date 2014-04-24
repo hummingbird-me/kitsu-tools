@@ -2,7 +2,3 @@ Hummingbird.ModalsChangelogController = Ember.ObjectController.extend Hummingbir
   commits:( ->
     @store.find('changelog', {order: 'date'});
   ).property('@each.changelog')
-
-  afterRender:( ->
-  	$('.changelog-loading').hide()
-  )

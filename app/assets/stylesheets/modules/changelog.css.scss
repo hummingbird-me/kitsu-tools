@@ -1,8 +1,6 @@
 .changelog {
 	max-height: 500px;
-	overflow: scroll;
-	.changelog-loading { text-align: center }
-	/* ^ temp */
+	overflow-y: auto;
 
 	hr:first-of-type {
 		display: none;
