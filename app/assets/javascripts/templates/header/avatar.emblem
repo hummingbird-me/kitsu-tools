@@ -4,7 +4,7 @@ li.dropdown.user-area
   ul.dropdown-menu.right-nav-section
     li
       a href="/users/edit" Edit Profile
-      a onclick="$('#changelog').modal('show');" View Changelog
+      / a onclick="$('#changelog').modal('show');" View Changelog
       #changelog.modal.fade aria-hidden='true' aria-labelledby='myModalLabel' role='dialog' tabindex='-1'
         .modal-dialog
           .modal-content

@@ -1,26 +1,24 @@
 .profile-leaderboard
   .ad
     ad-unit adId="1293413" adClass="257f81e798bd68dd81e60f42838f361f"
-
 .container
-  .user-listing
-    .panel.panel-default
-      .panel-heading
-        h3.panel-title Followed by #{user.username}
-      each
-        .user
-          a href=userLink
-            .user-avatar
-              avatar this 'thumb_small'
-            .user-content
-              h4 #{username}
-              p #{miniBio}
-          .follow-button-column
-            a.btn.follow-button{action "toggleFollow" this}
-              if isFollowed
-                | Unfollow
-              else
-                | Follow
+  each
+    .follow-panel-wrapper
+      .follow-panel
+        .user-cover
+          .cover-photo style=coverImageStyle
+        .user-avatar
+          avatar this 'thumb'
+          if isFollowed
+            a.btn.follow-button.unfollow{action "toggleFollow" this} Unfollow
+          else
+            a.btn.follow-button{action "toggleFollow" this} Follow
 
-      if canLoadMore
-        load-more action="loadNextPage"
+        .user-info
+          a href=userLink
+            h4 #{username}
+          p.mini-bio #{miniBio}
+            #{controller.followerCoverUrl}
+
+if canLoadMore
+  load-more action="loadNextPage"
