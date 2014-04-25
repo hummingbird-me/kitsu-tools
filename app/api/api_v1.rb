@@ -96,6 +96,15 @@ class API_v1 < Grape::API
       end
     end
 
+    def present_favorite_anime(anime, title_language_preference, include_genres=true)
+      if anime
+        fav_anime = Anime.find(anime.item_id)
+        present_anime(fav_anime, title_language_preference)
+      else
+        {}
+      end
+    end
+
     def present_story(story, current_user, title_language_preference)
       json = {
         id: story.id,
@@ -193,7 +202,8 @@ class API_v1 < Grape::API
         title_language_preference: user.title_language_preference,
         last_library_update: user.last_library_update,
         online: user.online?,
-        following: (user_signed_in? and user.followers.include?(current_user))
+        following: (user_signed_in? and user.followers.include?(current_user)),
+	favorites: user.favorites
       }
       if user == current_user
         json["email"] = user.email
@@ -229,6 +239,17 @@ class API_v1 < Grape::API
       rating_type = user.star_rating? ? "advanced" : "simple"
 
       watchlists.map {|w| present_watchlist(w, rating_type, title_language_preference) }
+    end
+
+    desc "Returns the user's favorite Animes"
+    params do
+      requires :user_id, type: String
+      optional :page, type: Integer
+    end
+    get ":user_id/favorite_anime" do
+      @user = User.find(params[:user_id])
+      @favorite_anime = @user.favorites.where(item_type: "Anime").order('id DESC').page(params[:page]).per(25)
+      @favorite_anime.map {|a| present_favorite_anime(a, @user.try(:title_language_preference) || "canonical")}
     end
 
     desc "Returns the user's feed."

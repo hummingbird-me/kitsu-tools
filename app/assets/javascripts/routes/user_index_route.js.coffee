@@ -5,6 +5,14 @@ Hummingbird.UserIndexRoute = Ember.Route.extend Hummingbird.Paginated,
 
   setupController: (controller, model) ->
     controller.set 'userInfo', @store.find('userInfo', @modelFor('user').get('id'))
+    Ember.$.ajax
+      url: '/api/v1/users/' + @modelFor('user').get('id') + '/favorite_anime'
+      type: 'GET'
+      success: (payload)->
+        controller.set('favorite_anime', payload)
+      failure: ->
+        console.log 'failed to retrieve favorite anime'
+       
     # For the pagination mixin to work correctly:
     @setCanLoadMore(true)
     controller.set 'canLoadMore', true

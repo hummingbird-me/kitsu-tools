@@ -6,8 +6,27 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   sortAscending: false
   newPost: ""
   inFlight: false
+  favorite_anime: []
+  favorite_anime_page: 1
+
+  favorite_anime_list: (->
+    animes = @get('favorite_anime')
+    page = @get('favorite_anime_page')    
+    animes = animes.slice( (page-1)*6, page*6)
+    return animes 
+  ).property('favorite_anime', 'favorite_anime_page')
 
   actions:
+    goPrevPage: ->
+      page = @get('favorite_anime_page')
+      if page > 1
+        --page
+        @set('favorite_anime_page', page)    
+    goNextPage: ->
+      page = @get('favorite_anime_page')
+      if( page*6 + 1 <= @get('favorite_anime').length )
+        ++page 
+        @set('favorite_anime_page', page)
     submitPost: (post)->
       _this = @
       newPost = @get('newPost')

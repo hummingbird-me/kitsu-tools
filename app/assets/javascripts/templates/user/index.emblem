@@ -108,11 +108,21 @@
       else
         loading-indicator classNames="light"
 
-      / .favorite-anime
-      /   .panel-heading
-      /     h3.panel-title Favorite Anime
-      /   .panel-body
-      /     .media-grid
+      .favorite-anime
+        .panel-heading
+          h3.panel-title Favorite Anime
+        .panel-body
+          .media-grid
+            each anime in favorite_anime_list
+              .grid-thumb
+                a.thumbnail href=anime.url              
+                  img src=anime.cover_image
+
+        / This part needs Styling
+        button.btn-xs.btn-default click="goPrevPage" <
+        span Load More
+        button.btn-xs.btn-default click="goNextPage" > 
+
       /       .grid-thumb
       /         a class="thumbnail"
       /           img src="http://static.hummingbird.me/anime/poster_images/000/003/458/large/3458.jpg?1383488136"
