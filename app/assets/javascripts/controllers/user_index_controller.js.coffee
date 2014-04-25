@@ -8,6 +8,13 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   inFlight: false
   favorite_anime: []
   favorite_anime_page: 1
+  
+  can_load_more:(->
+    page = @get('favorite_anime_page')
+    if (page*6 + 1 <= @get('favorite_anime').length)
+      return true
+    else return false
+  ).property('favorite_anime_page', 'favorite_anime')
 
   favorite_anime_list: (->
     animes = @get('favorite_anime')

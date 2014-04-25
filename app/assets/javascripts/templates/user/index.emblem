@@ -6,28 +6,28 @@
       .user-about-panel
         .panel-heading
           h3.panel-title About #{user.username}
-          span.edit-panel
-            a href="#" edit
+          / span.edit-panel
+          /   a href="#" edit
 
         // == User Info Edit ==
-        .panel-body
-          textarea.edit-bio maxlength="160" rows="3" placeholder="Tell us about yourself  :3"
-        .user-interests
-          ul
-            li
-              .interest-icon <i class="fa fa-heart"></i>
-              .interest <input type="text" placeholder="Waifu"></input>
-            li
-              .interest-icon <i class="fa fa-home"></i>
-              .interest <input type="text" placeholder="Location"></input>
-            li
-              .interest-icon <i class="fa fa-link"></i>
-              .interest <input type="text" placeholder="Website"></input>
-        .submit-form
-          button.btn.btn-default type="button" Update Profile
+        / .panel-body
+        /   textarea.edit-bio maxlength="160" rows="3" placeholder="Tell us about yourself  :3"
+        / .user-interests
+        /   ul
+        /     li
+        /       .interest-icon <i class="fa fa-heart"></i>
+        /       .interest <input type="text" placeholder="Waifu"></input>
+        /     li
+        /       .interest-icon <i class="fa fa-home"></i>
+        /       .interest <input type="text" placeholder="Location"></input>
+        /     li
+        /       .interest-icon <i class="fa fa-link"></i>
+        /       .interest <input type="text" placeholder="Website"></input>
+        / .submit-form
+        /   button.btn.btn-default type="button" Update Profile
 
         // == User Info ==
-        / .panel-body #{user.miniBio}
+        .panel-body #{user.miniBio}
         / .user-interests
         /   ul
         /     li
@@ -128,13 +128,13 @@
               .no-favorites.text-center
                 if viewingSelf
                   h3 You have no favorites.
-                  a href="#" How to add Favorites
+                  a href="http://forums.hummingbird.me/t/how-to-adding-an-anime-to-your-favorites" How to add Favorites
                 else
                   h3 #{user.username} has no favorites.
                   p Clearly they're an individual of fine, discerning tastes.
-
-          a class="view-more-button" click="loadMoreFavorite_animes" View More
-
+          if can_load_more
+            .more-wrapper
+              a class="view-more-button" click="loadMoreFavorite_animes" View More
       /       .grid-thumb
       /         a class="thumbnail"
       /           img src="http://static.hummingbird.me/anime/poster_images/000/003/458/large/3458.jpg?1383488136"

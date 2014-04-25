@@ -97,6 +97,12 @@
     }
   }
 
+  .no-favorites {
+    h3 {
+      margin-top: 5px;
+    }
+  }
+
   .anime-breakdown-panel, .photos-videos, .favorite-anime {
     @extend .panel;
     @extend .panel-default;
