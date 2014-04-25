@@ -115,10 +115,10 @@
             // Show by default
             / a href="#" edit
             // Show 'save' when user is editing
-            a href="#" save
+            / a href="#" save
         .panel-body
           .media-grid
-            if favorite_anime_list 
+            if favorite_anime_list
               each anime in favorite_anime_list
                 .grid-thumb
                   a.thumbnail href=anime.url
@@ -127,11 +127,17 @@
               if can_load_more
                 a click="loadMoreFavorite_animes" View More   
             else
-              p No Favorites Found
+              .no-favorites.text-center
+                if viewingSelf
+                  h3 You have no favorites.
+                  a href="#" How to add Favorites
+                else
+                  h3 #{user.username} has no favorites.
+                  p Clearly, they're an individual of fine, discerning tastes.
+
 
         / This part needs Styling
         / button.btn-xs.btn-default click="goPrevPage" <
-        
         / button.btn-xs.btn-default click="goNextPage" > 
 
       /       .grid-thumb
