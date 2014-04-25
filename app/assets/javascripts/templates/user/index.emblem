@@ -118,16 +118,26 @@
             / a href="#" save
         .panel-body
           .media-grid
-            each anime in favorite_anime_list
-              .grid-thumb
-                a.thumbnail href=anime.url
-                  // only give class 'shake' when user is editing.
-                  img src=anime.cover_image
+            if favorite_anime_list
+              each anime in favorite_anime_list
+                .grid-thumb
+                  a.thumbnail href=anime.url
+                    // only give class 'shake' when user is editing.
+                    img src=anime.cover_image
+            else
+              .no-favorites.text-center
+                if viewingSelf
+                  h3 You have no favorites.
+                  a href="#" How to add Favorites
+                else
+                  h3 #{user.username} has no favorites.
+                  p Clearly, they're an individual of fine, discerning tastes.
+
 
         / This part needs Styling
         / button.btn-xs.btn-default click="goPrevPage" <
         a click="loadMoreFavorite_animes" View More
-        / button.btn-xs.btn-default click="goNextPage" > 
+        / button.btn-xs.btn-default click="goNextPage" >
 
       /       .grid-thumb
       /         a class="thumbnail"
