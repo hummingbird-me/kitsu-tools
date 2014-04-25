@@ -11,12 +11,24 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
 
   favorite_anime_list: (->
     animes = @get('favorite_anime')
-    page = @get('favorite_anime_page')    
-    animes = animes.slice( (page-1)*6, page*6)
+    page = @get('favorite_anime_page')  
+  
+    #if using the goPrev and goNext page style, slice the array into a chunk 
+    #animes = animes.slice( (page-1)*6, page*6)
+
+    #if using loadMoreFavorite_animes, slice the array from [0] to the page
+    animes = animes.slice(0, page*6 )
+
     return animes 
   ).property('favorite_anime', 'favorite_anime_page')
 
   actions:
+    loadMoreFavorite_animes: ->
+      page = @get('favorite_anime_page')
+      if (page*6 + 1 <= @get('favorite_anime').length)
+        ++page
+        @set('favorite_anime_page', page)
+    
     goPrevPage: ->
       page = @get('favorite_anime_page')
       if page > 1
