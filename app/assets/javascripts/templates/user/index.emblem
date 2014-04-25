@@ -131,13 +131,9 @@
                   a href="#" How to add Favorites
                 else
                   h3 #{user.username} has no favorites.
-                  p Clearly, they're an individual of fine, discerning tastes.
+                  p Clearly they're an individual of fine, discerning tastes.
 
-
-        / This part needs Styling
-        / button.btn-xs.btn-default click="goPrevPage" <
-        a click="loadMoreFavorite_animes" View More
-        / button.btn-xs.btn-default click="goNextPage" >
+          a class="view-more-button" click="loadMoreFavorite_animes" View More
 
       /       .grid-thumb
       /         a class="thumbnail"

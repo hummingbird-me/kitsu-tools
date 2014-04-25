@@ -102,6 +102,10 @@
     @extend .panel-default;
   }
 
+  .media-grid {
+    @extend .clearfix;
+  }
+
   .anime-breakdown-panel{
     .breakdown-info {
       text-align: center;

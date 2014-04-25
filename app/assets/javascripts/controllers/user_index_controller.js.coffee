@@ -91,3 +91,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
     str
 
   ).property('userInfo.lifeSpentOnAnime')
+
+  viewingSelf: (->
+    @get('controllers.user.id') == @get('currentUser.id')
+  ).property('model.id')
