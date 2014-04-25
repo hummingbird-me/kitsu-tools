@@ -80,6 +80,9 @@ input:focus, textarea:focus {
   background-color: #f5f5f5;
   border-color: #e0e0e0;
 }
+.panel-heading {
+  position: relative;
+}
 .panel-divider {
   border-radius: 0;
   border-top: 1px solid #ddd;

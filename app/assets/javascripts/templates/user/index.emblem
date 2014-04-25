@@ -111,12 +111,18 @@
       .favorite-anime
         .panel-heading
           h3.panel-title Favorite Anime
+          span.edit-panel
+            // Show by default
+            / a href="#" edit
+            // Show 'save' when user is editing
+            a href="#" save
         .panel-body
           .media-grid
             each anime in favorite_anime_list
               .grid-thumb
-                a.thumbnail href=anime.url              
-                  img src=anime.cover_image
+                a.thumbnail href=anime.url
+                  // only give class 'shake' when user is editing.
+                  img class="shake" src=anime.cover_image
 
         / This part needs Styling
         button.btn-xs.btn-default click="goPrevPage" <
