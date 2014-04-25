@@ -56,3 +56,23 @@
     background-color: darken($darkOrange, 2);
   }
 }
+
+.more-wrapper {
+  padding: 5px;
+}
+
+.view-more-button {
+  display: block;
+  text-align: center;
+  border: 1px solid;
+  margin-top: 10px;
+  border-radius: 3px;
+  padding: 10px;
+  color: #999;
+  border-color: #dedede;
+  transition: .1s ease-in;
+  &:hover {
+    color: $darkOrange;
+    border-color: $orange;
+  }
+}

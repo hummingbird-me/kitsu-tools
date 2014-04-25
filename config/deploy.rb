@@ -3,7 +3,7 @@ require 'bundler/capistrano'
 require 'new_relic/recipes'
 
 set :application, "hummingbird"
-set :repository,  "git@github.com:vikhyat/hummingbird.git"
+set :repository,  "git@github.com:JoshFabian/hummingbird-v2.git"
 
 set :scm, :git
 set :user, "vikhyat"
