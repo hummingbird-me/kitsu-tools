@@ -125,9 +125,9 @@
                   img class="shake" src=anime.cover_image
 
         / This part needs Styling
-        button.btn-xs.btn-default click="goPrevPage" <
-        span Load More
-        button.btn-xs.btn-default click="goNextPage" > 
+        / button.btn-xs.btn-default click="goPrevPage" <
+        a click="loadMoreFavorite_animes" View More
+        / button.btn-xs.btn-default click="goNextPage" > 
 
       /       .grid-thumb
       /         a class="thumbnail"
