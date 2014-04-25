@@ -1,5 +1,7 @@
 bootstrap-modal action="close"
 	.modal-header
+		button click="close" class="close"
+			i.fa.fa-times
 		h4.modal-title Hummingbird Changelog
 	.modal-body.changelog
 		each commits
@@ -9,8 +11,10 @@ bootstrap-modal action="close"
 			.changelog-commit
 				.changelog-commit-type
 					span.changelog-commit-label class=type = type
-					img.changelog-commit-avatar src=uimg
+					bootstrap-tooltip title=name placement="top"
+						img.changelog-commit-avatar src=uimg
 				.changelog-commit-message
 					span=mesg
-		.changelog-loading
-			loading-indicator
+		if isLoading
+			.changelog-loading
+				loading-indicator
