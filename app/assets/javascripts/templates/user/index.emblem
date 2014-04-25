@@ -124,12 +124,14 @@
                   a.thumbnail href=anime.url
                     // only give class 'shake' when user is editing.
                     img class="shake" src=anime.cover_image
+              if can_load_more
+                a click="loadMoreFavorite_animes" View More   
             else
               p No Favorites Found
 
         / This part needs Styling
         / button.btn-xs.btn-default click="goPrevPage" <
-        a click="loadMoreFavorite_animes" View More
+        
         / button.btn-xs.btn-default click="goNextPage" > 
 
       /       .grid-thumb
