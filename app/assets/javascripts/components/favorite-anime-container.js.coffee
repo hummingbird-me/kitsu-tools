@@ -3,6 +3,9 @@ Hummingbird.FavoriteAnimeContainerComponent = Em.Component.extend(Hummingbird.So
   classNames: 'media-grid'
   #TODO: Make this more efficient, sends a lot of Requests Currently. Once the editing mode is implemented, 
   # should only send after finished editing 
+  disabled:(->
+    return !@get('isEditing')
+  ).property('isEditing')  
   updateSortOrder: (indexes)->
     list = @get("favorite_anime_list")
     _this = @
