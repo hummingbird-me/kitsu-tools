@@ -276,7 +276,7 @@ class API_v1 < Grape::API
     end
     get ":user_id/favorite_anime" do
       @user = User.find(params[:user_id])
-      @favorite_anime = @user.favorites.where(item_type: "Anime").order('id DESC').page(params[:page]).per(25)
+      @favorite_anime = @user.favorites.where(item_type: "Anime").order('fav_rank')
       @favorite_anime.map {|a| present_favorite_anime(a, @user.try(:title_language_preference) || "canonical")}
     end
 
@@ -312,7 +312,7 @@ class API_v1 < Grape::API
     end    
     get ":user_id/favorites" do
       @user = User.find(params[:user_id])
-      @favorites = @user.favorites
+      @favorites = @user.favorites.order('fav_rank')
       @favorites.map {|f| present_favorite(f)}
     end
 
