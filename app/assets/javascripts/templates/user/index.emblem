@@ -116,44 +116,12 @@
             / a href="#" edit
             // Show 'save' when user is editing
             / a href="#" save
+
         .panel-body
-          .media-grid
-            if favorite_anime_list
-              each anime in favorite_anime_list
-                .grid-thumb
-                  a.thumbnail href=anime.url
-                    // only give class 'shake' when user is editing.
-                    img src=anime.cover_image
-            else
-              .no-favorites.text-center
-                if viewingSelf
-                  h3 You have no favorites.
-                  a href="http://forums.hummingbird.me/t/how-to-adding-an-anime-to-your-favorites" How to add Favorites
-                else
-                  h3 #{user.username} has no favorites.
-                  p Clearly they're an individual of fine, discerning tastes.
+          favorite-anime-container favorite_anime_list=favorite_anime_list
           if can_load_more
             .more-wrapper
-              a class="view-more-button" click="loadMoreFavorite_animes" View More
-      /       .grid-thumb
-      /         a class="thumbnail"
-      /           img src="http://static.hummingbird.me/anime/poster_images/000/003/458/large/3458.jpg?1383488136"
-      /       .grid-thumb
-      /         a class="thumbnail"
-      /           img src="http://static.hummingbird.me/anime/poster_images/000/007/622/large/b0012149_5229cf3c7f4ee.png?1385352364"
-      /       .grid-thumb
-      /         a class="thumbnail"
-      /           img src="http://static.hummingbird.me/anime/poster_images/000/007/881/large/noragami_1.jpg?1389205049"
-      /       .grid-thumb
-      /         a class="thumbnail"
-      /           img src="http://static.hummingbird.me/anime/poster_images/000/008/057/large/Hamtora.jpg?1386914416"
-      /       .grid-thumb
-      /         a class="thumbnail"
-      /           img src="http://static.hummingbird.me/anime/poster_images/000/006/164/large/6164.jpg?1383497623"
-      /       .grid-thumb
-      /         a class="thumbnail"
-      /           img src="http://static.hummingbird.me/anime/poster_images/000/000/024/large/24.jpg?1383475952"
-
+              a class="view-more-button" click="loadMoreFavorite_animes" View More        
     .personal-feed
       / Status Update Panel
       .status-update-panel

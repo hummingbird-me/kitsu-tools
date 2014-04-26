@@ -99,9 +99,37 @@ class API_v1 < Grape::API
     def present_favorite_anime(anime, title_language_preference, include_genres=true)
       if anime
         fav_anime = Anime.find(anime.item_id)
-        present_anime(fav_anime, title_language_preference)
+        json = {
+          slug: fav_anime.slug,
+          status: fav_anime.status,
+          url: "http://hummingbird.me/anime/#{fav_anime.slug}",
+          title: fav_anime.canonical_title(title_language_preference),
+          alternate_title: fav_anime.alternate_title(title_language_preference),
+          episode_count: fav_anime.episode_count,
+          cover_image: fav_anime.poster_image_thumb,
+          synopsis: fav_anime.synopsis,
+          show_type: fav_anime.show_type,
+          fav_rank: anime.fav_rank,
+          fav_id: anime.id
+        }
+        if include_genres
+          json[:genres] = fav_anime.genres.map {|x| {name: x.name} }
+        end
+        json
       else
         {}
+      end
+    end
+    
+    def present_favorite(favorite)
+      if favorite
+        json = {
+         id: favorite.id,
+         item_type: favorite.item_type,
+         fav_rank: favorite.fav_rank
+        }    
+      else 
+       {}
       end
     end
 
@@ -252,6 +280,18 @@ class API_v1 < Grape::API
       @favorite_anime.map {|a| present_favorite_anime(a, @user.try(:title_language_preference) || "canonical")}
     end
 
+    desc "Updates User's Favorite ranks"
+    params do
+      requires :user_id, type: String
+      requires :id, type: Integer
+      requires :fav_rank, type: Integer
+    end
+    post ":user_id/favorite_anime/update" do
+      favorite = Favorite.find(params[:id])
+      favorite.fav_rank = params[:fav_rank]
+      favorite.save
+    end    
+
     desc "Returns the user's feed."
     params do
       requires :user_id, type: String
@@ -264,6 +304,16 @@ class API_v1 < Grape::API
       stories = user.stories.for_user(current_user).order('updated_at DESC').includes(:substories, :user, :target).page(params[:page]).per(20)
 
       stories.map {|x| present_story(x, current_user, current_user.try(:title_language_preference) || "canonical") }
+    end
+    
+    desc "Returns the user's list of favorites"
+    params do
+      requires :user_id, type: String
+    end    
+    get ":user_id/favorites" do
+      @user = User.find(params[:user_id])
+      @favorites = @user.favorites
+      @favorites.map {|f| present_favorite(f)}
     end
 
     desc "Delete a substory from the user's feed."

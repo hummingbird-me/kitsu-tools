@@ -1,5 +1,4 @@
 JQ = Ember.Namespace.create();
-
 // Create a new mixin for jQuery UI widgets using the Ember
 // mixin syntax.
 JQ.Widget = Em.Mixin.create({

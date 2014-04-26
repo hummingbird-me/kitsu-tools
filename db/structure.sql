@@ -310,7 +310,8 @@ CREATE TABLE favorites (
     item_id integer,
     item_type character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    fav_rank integer DEFAULT 0
 );
 
 
@@ -1975,6 +1976,13 @@ CREATE UNIQUE INDEX index_favorite_genres_users_on_genre_id_and_user_id ON favor
 
 
 --
+-- Name: index_favorites_on_fav_rank; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_favorites_on_fav_rank ON favorites USING btree (fav_rank);
+
+
+--
 -- Name: index_favorites_on_item_id_and_item_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2882,3 +2890,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140128145357');
 INSERT INTO schema_migrations (version) VALUES ('20140208021954');
 
 INSERT INTO schema_migrations (version) VALUES ('20140217051836');
+
+INSERT INTO schema_migrations (version) VALUES ('20140425232359');

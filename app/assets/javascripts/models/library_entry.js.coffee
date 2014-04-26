@@ -9,6 +9,7 @@ Hummingbird.LibraryEntry = DS.Model.extend
   rewatchCount: DS.attr('number')
   notes: DS.attr('string')
   lastWatched: DS.attr('date')
+  fav_rank: DS.attr('number')  
 
   positiveRating: (-> @get('rating') >= 3.6).property('rating')
   negativeRating: (-> @get('rating') <= 2.4).property('rating')

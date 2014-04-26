@@ -24,13 +24,15 @@ class StorySerializer < ActiveModel::Serializer
     first_substory = object.substories.first
     # FIXME This logic doesn't belong in a serializer. Move it to the substory
     # before_save hook.
-    if first_substory.data["formatted_comment"].nil?
-      formatted_comment = MessageFormatter.format_message first_substory.data["comment"]
-      first_substory.data["formatted_comment"] = formatted_comment
-      first_substory.save
-    end
+    if first_substory
+      if first_substory.data["formatted_comment"].nil?
+        formatted_comment = MessageFormatter.format_message first_substory.data["comment"]
+        first_substory.data["formatted_comment"] = formatted_comment
+        first_substory.save
+      end
     first_substory.data["formatted_comment"]
-  end
+    end
+      end
   def include_comment?
     object.story_type == "comment"
   end
