@@ -12,6 +12,7 @@ gem 'grape'
 gem 'grape-entity'
 gem 'active_model_serializers', '~> 0.8'
 
+gem "skylight"
 gem 'riemann-client'
 gem 'fastclick-rails'
 
