@@ -1,6 +1,6 @@
 if favorite_anime_list 
   each anime in favorite_anime_list
-    li.grid-thumb data-id=anime.fav_id 
+    li.grid-thumb data-id=anime.fav_id class=isEditing:shake
       a.thumbnail href=anime.url
         // only give class 'shake' when user is editing.
         img src=anime.cover_image

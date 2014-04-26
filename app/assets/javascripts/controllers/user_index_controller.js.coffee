@@ -9,6 +9,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   favorite_anime: []
   favorite_anime_page: 1
   isEditing: false  
+  editingFavorites: false
 
   can_load_more:(->
     page = @get('favorite_anime_page')
@@ -36,6 +37,21 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
       @set('isEditing', true)    
     doneEditing: ->
       @set('isEditing', false)
+    editFav: ->
+      @set('editingFavorites', true)
+    doneEditingFav: ->
+      @set('editingFavorites', false)
+      url = "/api/v1/users/" + @get('currentUser.id') + '/favorite_anime/update'
+      list = @get('favorite_anime_list')
+      _this = @
+
+      list.forEach (item)->
+        Ember.$.ajax
+          url: url
+          data: {id: item.fav_id, user_id: _this.get('currentUser.id'), fav_rank: item.fav_rank}
+          method: 'POST'
+          failure: ->
+            console.log "Failed to Update Favorites Ranks"
 
     loadMoreFavorite_animes: ->
       page = @get('favorite_anime_page')

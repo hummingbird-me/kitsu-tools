@@ -116,13 +116,13 @@
         .panel-heading
           h3.panel-title Favorite Anime
           span.edit-panel
-            // Show by default
-            / a href="#" edit
-            // Show 'save' when user is editing
-            / a href="#" save
+            unless editingFavorites
+              a click="editFav" Edit 
+            else
+              a click="doneEditingFav" Save       
 
         .panel-body
-          favorite-anime-container favorite_anime_list=favorite_anime_list currentUser=currentUser isEditing=isEditing
+          favorite-anime-container favorite_anime_list=favorite_anime_list currentUser=currentUser isEditing=editingFavorites
           if can_load_more
             .more-wrapper
               a class="view-more-button" click="loadMoreFavorite_animes" View More        
