@@ -25,6 +25,10 @@ class HomeController < ApplicationController
     else
       redirect_to "/"
     end
+
+    if params.has_key?(:new_dash)
+      render_ember
+    end
   end
 
   def feed
