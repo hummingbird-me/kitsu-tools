@@ -42,15 +42,17 @@
     .row
       ul.inline-list.clearfix
         li.nav-link
-          link-to 'user.index' data-hover="Feed" | Feed
+          link-to 'user.index' | Feed
         li.nav-link
-          link-to 'user.library' data-hover="Library" | Library
+          link-to 'user.library' | Library
         li.nav-link
-          link-to 'user.reviews' data-hover="Reviews" | Reviews
+          link-to 'user.reviews' | Reviews
         li.nav-link
-          link-to 'user.following' data-hover="Following" | Following
+          link-to 'user.following' | Following
         li.nav-link
-          link-to 'user.followers' data-hover="Followers" | Followers
+          link-to 'user.followers' | Followers
+        li.nav-link
+          a href=forumProfile Forums
 
 .min-height-wrapper
   outlet

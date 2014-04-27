@@ -307,7 +307,11 @@ User Profile
         font-weight: 300;
         color: #adacac;
         position: relative;
+        transition: .2s ease-in;
         &.active {
+          color: $darkOrange;
+        }
+        &:hover {
           color: $darkOrange;
         }
       }

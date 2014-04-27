@@ -6,9 +6,9 @@ Hummingbird.UserController = Ember.ObjectController.extend
   ).property('coverUrl')
 
 
-  viewingSelf: (->
-    @get('model.id') == @get('currentUser.id')
-  ).property('model.id')
+  forumProfile: (->
+    "http://forums.hummingbird.me/users/" + @get('model.username')
+  ).property('model.username')
 
   # Legacy URLs
   feedURL: (->
