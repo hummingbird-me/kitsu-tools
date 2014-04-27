@@ -2,7 +2,7 @@
   postgresql_db: db=hummingbird_production encoding='UTF-8' lc_collate='en_US.UTF-8' lc_ctype='en_US.UTF-8' template='template0'
 
 - name: Create hummingbird user
-  postgresql_user: db=hummingbird_production user=hummingbird password=TheBoilingPointOfCarbonDioxide priv=ALL
+  postgresql_user: db=hummingbird_production user=hummingbird password=4lph4b37 priv=ALL
 
 - name: Create Postgres Trigrams extension
   action: command psql -d hummingbird_production -c "create extension if not exists pg_trgm;"

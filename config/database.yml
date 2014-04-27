@@ -13,7 +13,7 @@ production:
   adapter: postgresql
   database: hummingbird_production
   username: hummingbird
-  password: TheBoilingPointOfCarbonDioxide
+  password: 4lph4b37
   host: <%= ENV['POSTGRES_HOST'] %>
   port: 5432
   pool: 50
