@@ -1,10 +1,10 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :cover_image_url, :avatar_template, :rating_type, :mini_bio, :is_followed, :title_language_preference, :online
+  attributes :id, :cover_image_url, :avatar_template, :rating_type, :mini_bio, :is_followed, :title_language_preference, :online, :waifu, :location, :website
 
   def id
     object.name
   end
-
+  
   def cover_image_url
     object.cover_image.url(:thumb)
   end

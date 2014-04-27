@@ -51,7 +51,11 @@
 #  avatar_processing           :boolean
 #  subscribed_to_newsletter    :boolean          default(TRUE)
 #  mal_import_in_progress      :boolean
-#
+#  location                    :string
+#  website                     :string
+#  waifu                       :string
+#  waifu_or_husbando           :boolean          default(FALSE) TRUE = Husbando
+
 
 class User < ActiveRecord::Base
   # Friendly ID.

@@ -6,43 +6,40 @@
       .user-about-panel
         .panel-heading
           h3.panel-title About #{user.username}
-          / span.edit-panel
-          /   unless isEditing
-          /     a click="goToEditing" Edit Info
+          span.edit-panel
+            unless isEditing
+              a click="goToEditing" Edit Info
+            else
+              a click="doneEditing" Save
 
-        / if isEditing
-        /   .submit-form
-        /     button.btn.btn-default type="button" click="doneEditing" Update Profile
-
-        /  .panel-body
-        /    textarea.edit-bio maxlength="160" rows="3" placeholder="Tell us about yourself  :3"
-        /  .user-interests
-        /    ul
-        /      li
-        /        .interest-icon <i class="fa fa-heart"></i>
-        /        .interest <input type="text" placeholder="Waifu"></input>
-        /      li
-        /        .interest-icon <i class="fa fa-home"></i>
-        /        .interest <input type="text" placeholder="Location"></input>
-        /      li
-        /        .interest-icon <i class="fa fa-link"></i>
-        /        .interest <input type="text" placeholder="Website"></input>
-        /  .submit-form
-        /    button.btn.btn-default type="button" click="doneEditing" Update Profile
+        .panel-body
+          if isEditing
+            == textarea class="edit-bio" rows="3" placeholder="Tell us about yourself  :3" value=user.bio
+            .user-interests
+              ul
+                li
+                  .interest-icon <i class="fa fa-heart"></i>
+                  .interest #{input type="text" placeholder="Waifu" value=user.waifu}
+                li
+                  .interest-icon <i class="fa fa-home"></i>
+                  .interest #{input type="text" placeholder="Location" value=user.location}
+                li
+                  .interest-icon <i class="fa fa-link"></i>
+                  .interest #{input type="text" placeholder="Website" value=user.website}
         
-        / else   
-        .panel-body #{user.miniBio}
-        /   .user-interests
-        /     ul
-        /       li
-        /         .interest-icon <i class="fa fa-heart"></i>
-        /         .interest Waifu is <a href="#">Haruhi Suzumiya</a>
-        /       li
-        /         .interest-icon <i class="fa fa-home"></i>
-        /         .interest Lives in <strong>Chicago, IL</strong>
-        /       li
-        /         .interest-icon <i class="fa fa-link"></i>
-        /         .interest <a href="#">Twitter</a>
+          else   
+            .p #{user.miniBio}
+            .user-interests
+              ul
+                li
+                  .interest-icon <i class="fa fa-heart"></i>
+                  .interest Waifu is <a href="#"> #{user.waifu} </a>
+                li
+                  .interest-icon <i class="fa fa-home"></i>
+                  .interest Lives in <strong>#{user.location}</strong>
+                li
+                  .interest-icon <i class="fa fa-link"></i>
+                  .interest <a href="#">#{user.website}</a>
 
       / .photos-videos
       /   .panel-heading

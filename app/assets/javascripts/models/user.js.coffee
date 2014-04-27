@@ -4,6 +4,11 @@ Hummingbird.User = DS.Model.extend
   avatarTemplate: DS.attr('string')
   online: DS.attr('boolean')
   miniBio: DS.attr('string')
+  bio: DS.attr('string')
+  location: DS.attr('string')
+  website: DS.attr('string')
+  waifu: DS.attr('string')
+  waifu_or_husbando: DS.attr('boolean', default: false)
   ratingType: DS.attr('string')
 
   isFollowed: DS.attr('boolean')

@@ -3,7 +3,6 @@
 --
 
 SET statement_timeout = 0;
-SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -1277,7 +1276,11 @@ CREATE TABLE users (
     authentication_token character varying(255),
     avatar_processing boolean,
     subscribed_to_newsletter boolean DEFAULT true,
-    mal_import_in_progress boolean
+    mal_import_in_progress boolean,
+    waifu character varying(255),
+    location character varying(255),
+    website character varying(255),
+    waifu_or_husbando boolean DEFAULT false
 );
 
 
@@ -2264,10 +2267,38 @@ CREATE UNIQUE INDEX index_users_on_facebook_id ON users USING btree (facebook_id
 
 
 --
+-- Name: index_users_on_location; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_location ON users USING btree (location);
+
+
+--
 -- Name: index_users_on_lower_name_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_lower_name_index ON users USING btree (lower((name)::text));
+
+
+--
+-- Name: index_users_on_waifu; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_waifu ON users USING btree (waifu);
+
+
+--
+-- Name: index_users_on_waifu_or_husbando; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_waifu_or_husbando ON users USING btree (waifu_or_husbando);
+
+
+--
+-- Name: index_users_on_website; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_website ON users USING btree (website);
 
 
 --
@@ -2893,3 +2924,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140208021954');
 INSERT INTO schema_migrations (version) VALUES ('20140217051836');
 
 INSERT INTO schema_migrations (version) VALUES ('20140425232359');
+
+INSERT INTO schema_migrations (version) VALUES ('20140427213739');

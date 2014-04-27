@@ -220,6 +220,10 @@ class API_v1 < Grape::API
       user = find_user(params[:username])
       json = {
         name: user.name,
+        waifu: user.waifu,
+        waifu_or_husbando: user.waifu_or_husbando,
+        location: user.location,
+        website: user.website,
         avatar: user.avatar.url(:thumb),
         cover_image: user.cover_image.url(:thumb),
         about: user.about,

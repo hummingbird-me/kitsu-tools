@@ -10,7 +10,6 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   favorite_anime_page: 1
   isEditing: false  
   editingFavorites: false
-
   can_load_more:(->
     page = @get('favorite_anime_page')
     if (page*6 + 1 <= @get('favorite_anime').length)
@@ -36,6 +35,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
     goToEditing: ->
       @set('isEditing', true)    
     doneEditing: ->
+      @get('user.content').save()
       @set('isEditing', false)
     editFav: ->
       @set('editingFavorites', true)
