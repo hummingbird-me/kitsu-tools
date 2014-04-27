@@ -31,8 +31,7 @@ class LibraryEntry < ActiveRecord::Base
   validates :user, :anime, :status, presence: true
   validates :user_id, uniqueness: {scope: :anime_id}
 
-  VALID_STATUSES = ["Currently Watching", "Plan to Watch", "Completed", "On Hold",
-                    "Dropped"]
+  VALID_STATUSES = ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   validates :status, inclusion: {in: VALID_STATUSES}
 
   validate :rating_is_valid
