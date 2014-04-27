@@ -115,11 +115,12 @@
       .favorite-anime
         .panel-heading
           h3.panel-title Favorite Anime
-          span.edit-panel
-            unless editingFavorites
-              a click="editFav" Edit 
-            else
-              a click="doneEditingFav" Save       
+          if viewingSelf
+            span.edit-panel
+              unless editingFavorites
+                a click="editFav" Edit 
+              else
+                a click="doneEditingFav" Save       
 
         .panel-body
           favorite-anime-container favorite_anime_list=favorite_anime_list currentUser=currentUser isEditing=editingFavorites
