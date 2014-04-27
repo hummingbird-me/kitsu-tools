@@ -7,12 +7,6 @@ Hummingbird.SortableMixin = Em.Mixin.create(JQ.Widget,{
   uiEvents: ['create', 'start', 'drag', 'stop', 'update'],
   //jquery UI options
   revert: 'invalid',
-  opacity: 0.8,
   cursor: 'move',
   tolerance: 'pointer',
-  cursorAt:{
-    top: 100,
-    left: 70
-  },
-  containment: 'parent'
 })
