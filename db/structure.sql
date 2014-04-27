@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -311,7 +312,7 @@ CREATE TABLE favorites (
     item_type character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    fav_rank integer DEFAULT 0
+    fav_rank integer DEFAULT 9999
 );
 
 

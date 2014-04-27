@@ -1,9 +1,16 @@
 if favorite_anime_list 
   each anime in favorite_anime_list
-    li.grid-thumb data-id=anime.fav_id 
-      a.thumbnail href=anime.url
-        // only give class 'shake' when user is editing.
-        img src=anime.cover_image
+    li.grid-thumb data-id=anime.fav_id
+        if isEditing
+          a.thumbnail
+            .move-overlay.editing
+              i.fa.fa-arrows
+            img src=anime.cover_image
+        else
+          a.thumbnail href=anime.url
+            .move-overlay
+              i.fa.fa-arrows
+            img src=anime.cover_image
 else
   .no-favorites.text-center
     if viewingSelf

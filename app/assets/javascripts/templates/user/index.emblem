@@ -6,13 +6,13 @@
       .user-about-panel
         .panel-heading
           h3.panel-title About #{user.username}
-          span.edit-panel
-            unless isEditing
-              a click="goToEditing" Edit Info
+          / span.edit-panel
+          /   unless isEditing
+          /     a click="goToEditing" Edit Info
 
-        if isEditing
-          .submit-form
-            button.btn.btn-default type="button" click="doneEditing" Update Profile
+        / if isEditing
+        /   .submit-form
+        /     button.btn.btn-default type="button" click="doneEditing" Update Profile
 
         /  .panel-body
         /    textarea.edit-bio maxlength="160" rows="3" placeholder="Tell us about yourself  :3"
@@ -31,7 +31,7 @@
         /    button.btn.btn-default type="button" click="doneEditing" Update Profile
         
         / else   
-        /   .panel-body #{user.miniBio}
+        .panel-body #{user.miniBio}
         /   .user-interests
         /     ul
         /       li

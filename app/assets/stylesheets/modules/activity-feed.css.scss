@@ -79,9 +79,33 @@
       padding: 0;
       border: none;
       margin-bottom: 0;
+      position: relative;
+      overflow: hidden;
       img {
         border-radius: 3px;
       }
+    }
+  }
+
+  .move-overlay {
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    font-size: 25px;
+    line-height: 190px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    right: 0;
+    transition: .3s ease-in;
+    opacity: 0;
+    &.editing {
+      opacity: 1;
+      cursor: move;
+    }
+    &:hover {
+      background: rgba(0,0,0,.8);
     }
   }
 
