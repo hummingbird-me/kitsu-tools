@@ -61,6 +61,18 @@ class SearchController < ApplicationController
         format.json { render :json => @results.map {|x| {:id => x.id, :name => x.name} }.flatten.compact }
       end
 
+    # Mixed search for autocomplete. Currently supports anime and users
+    elsif @search_type == "mixed"
+      anime = Anime.fuzzy_search_by_title(params[:query])[0..3]
+      users = User.search(params[:query])[0..1]
+
+      formattedAnime = anime.map {|x| {:type => 'anime', :title => x.title} }.flatten
+      formattedUsers = users.map {|x| {:type => 'users', :title => x.name } }.flatten
+
+      respond_to do |format|
+        format.json { render :json => [formattedAnime, formattedUsers].flatten }
+      end
+
     else
 
       not_found!
