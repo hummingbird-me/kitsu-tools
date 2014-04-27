@@ -6,7 +6,10 @@ Hummingbird.FavoriteAnimeContainerComponent = Em.Component.extend(Hummingbird.So
   disabled:(->
     return !@get('isEditing')
   ).property('isEditing') 
-
+ 
+  connectWith: ->
+    this.$().find('.grid-thumb')
+ 
   updateSortOrder: (indexes)->
     list = @get("favorite_anime_list")
     _this = @
