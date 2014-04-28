@@ -222,6 +222,8 @@ class API_v1 < Grape::API
         name: user.name,
         waifu: user.waifu,
         waifu_or_husbando: user.waifu_or_husbando,
+        waifu_slug: user.waifu_slug,
+        waifu_char_id: user.waifu_char_id,
         location: user.location,
         website: user.website,
         avatar: user.avatar.url(:thumb),
@@ -473,7 +475,7 @@ class API_v1 < Grape::API
     params do
       requires :id, type: String, desc: "character ID"
     end
-    post 'casting' do
+    get 'casting/:id' do
     casting = Casting.where(character_id: params[:id]).first.anime_id
     anime = Anime.find(casting)
     json = {anime_slug: anime.slug }

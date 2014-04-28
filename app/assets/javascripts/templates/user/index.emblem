@@ -36,7 +36,8 @@
                 li
                   .interest-icon <i class="fa fa-heart"></i>
                   if hasWaifu
-                    .interest #{user.waifuOrHusbando} is <a href="#"> #{user.waifu} </a>
+                    .interest #{user.waifuOrHusbando} is 
+                      <a {{bindAttr href="waifu_slug"}}> #{user.waifu} </a>
                   else
                     .interest Waifu/Husbando Not Selected
                 li

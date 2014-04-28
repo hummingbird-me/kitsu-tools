@@ -10,7 +10,8 @@ Hummingbird.User = DS.Model.extend
   waifu: DS.attr('string')
   waifuOrHusbando: DS.attr('string')
   ratingType: DS.attr('string')
-
+  waifuCharId: DS.attr('string')
+  waifuSlug: DS.attr('string')
   isFollowed: DS.attr('boolean')
 
   titleLanguagePreference: DS.attr('string')

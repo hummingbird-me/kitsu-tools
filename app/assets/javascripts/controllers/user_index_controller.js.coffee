@@ -1,6 +1,7 @@
 Hummingbird.UserIndexController = Ember.ArrayController.extend
   needs: "user"
   user: Ember.computed.alias('controllers.user')
+  waifu_slug: Ember.computed.alias('user.waifuSlug')
   hasWaifu: Ember.computed.any('user.waifu')
   hasLocation: Ember.computed.any('user.location')
   hasWebsite: Ember.computed.any('user.website')
@@ -15,7 +16,6 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   editingFavorites: false
   selectChoices: ["Waifu", "Husbando"] 
   selectedWaifu: null
- 
   can_load_more:(->
     page = @get('favorite_anime_page')
     if (page*6 + 1 <= @get('favorite_anime').length)
@@ -59,7 +59,10 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
           failure: ->
             console.log "Failed to Update Favorites Ranks"
     didSelectWaifu: (character)->
-      console.log character
+      @set('selectedWaifu', character)
+      @get('user').set('waifu', character.value)
+      @get('user').set('waifuCharId', character.char_id)
+      console.log "set waifu, character"
     loadMoreFavorite_animes: ->
       page = @get('favorite_anime_page')
       if (page*6 + 1 <= @get('favorite_anime').length)

@@ -55,12 +55,30 @@
 #  website                     :string
 #  waifu                       :string
 #  waifu_or_husbando           :string
-
-
+#  waifu_slug            :string
+#  waifu_char_id         :string
 class User < ActiveRecord::Base
   # Friendly ID.
   def to_param
     name
+  end
+ 
+  def waifu_slug
+    charId = self.waifu_char_id
+    if charId != "0000"
+      casting = Casting.where(character_id: charId).first.anime_id
+      if casting
+        anime = Anime.find(casting)
+        if anime
+          slug = anime.slug
+        else
+         slug = "#"
+        end
+      end
+    else
+      slug = "#" 
+    end 
+    slug 
   end
 
   def self.find(id, options={})

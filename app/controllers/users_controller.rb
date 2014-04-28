@@ -246,8 +246,9 @@ class UsersController < ApplicationController
       user.waifu = params[:user][:waifu]
       user.website = params[:user][:website]
       user.waifu_or_husbando = params[:user][:waifu_or_husbando]
-      user.bio = params[:user][:mini_bio]
-
+      user.bio = params[:user][:mini_bio] 
+      user.waifu_char_id = params[:user][:waifu_char_id]
+      
       if Rails.env.production? and params[:user][:cover_image_url] =~ /^data:image/
         user.cover_image = params[:user][:cover_image_url]
       end

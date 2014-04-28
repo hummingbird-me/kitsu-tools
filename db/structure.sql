@@ -1280,7 +1280,9 @@ CREATE TABLE users (
     waifu character varying(255),
     location character varying(255),
     website character varying(255),
-    waifu_or_husbando character varying(255)
+    waifu_or_husbando character varying(255),
+    waifu_slug character varying(255) DEFAULT '#'::character varying,
+    waifu_char_id character varying(255) DEFAULT '0000'::character varying
 );
 
 
@@ -2288,10 +2290,24 @@ CREATE INDEX index_users_on_waifu ON users USING btree (waifu);
 
 
 --
+-- Name: index_users_on_waifu_char_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_waifu_char_id ON users USING btree (waifu_char_id);
+
+
+--
 -- Name: index_users_on_waifu_or_husbando; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_users_on_waifu_or_husbando ON users USING btree (waifu_or_husbando);
+
+
+--
+-- Name: index_users_on_waifu_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_waifu_slug ON users USING btree (waifu_slug);
 
 
 --
@@ -2926,3 +2942,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140217051836');
 INSERT INTO schema_migrations (version) VALUES ('20140425232359');
 
 INSERT INTO schema_migrations (version) VALUES ('20140427213739');
+
+INSERT INTO schema_migrations (version) VALUES ('20140428051945');
