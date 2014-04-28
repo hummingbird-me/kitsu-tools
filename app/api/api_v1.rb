@@ -469,6 +469,17 @@ class API_v1 < Grape::API
       present_anime(anime, title_language_preference)
     end
 
+    desc "Return an Anime Slug Searched From Character Id"
+    params do
+      requires :id, type: String, desc: "character ID"
+    end
+    post 'casting' do
+    casting = Casting.where(character_id: params[:id]).first.anime_id
+    anime = Anime.find(casting)
+    json = {anime_slug: anime.slug }
+    json
+    end
+
     desc "Returns similar anime."
     params do
       requires :id, type: String, desc: "anime ID"

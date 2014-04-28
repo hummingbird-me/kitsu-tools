@@ -59,8 +59,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
           failure: ->
             console.log "Failed to Update Favorites Ranks"
     didSelectWaifu: (character)->
-      console.log(Ember.get(character, 'name')      
-
+      console.log character
     loadMoreFavorite_animes: ->
       page = @get('favorite_anime_page')
       if (page*6 + 1 <= @get('favorite_anime').length)
