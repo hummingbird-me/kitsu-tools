@@ -115,6 +115,9 @@ Global Header
       padding-left: 0px;
       padding-right: 0px;
       background: none !important;
+      &.new {
+        color: #e57c48;
+      }
     }
     .dropdown-menu {
       min-width: 500px;

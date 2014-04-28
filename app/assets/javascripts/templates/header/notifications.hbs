@@ -3,10 +3,10 @@
 </li>
 <li class='dropdown notifications'>
   <a class='dropdown-toggle notification-link' data-toggle='dropdown' href='#'>
-    <i class='fa fa-bell active'>&nbsp;{{notificationNew}}</i>
+    <i class='fa fa-bell active'>&nbsp;{{strpad newNotifications.length}}</i>
   </a>
   <ul class='dropdown-menu notification-dropdown right-nav-section'>
-    {{#each notifications}}
+    {{#each panelNotifications}}
       <li>
         <a {{bind-attr class=":clearfix :notification seen:nonew:new"}}='clearfix notification new' href='#'>
           <div class='col-xs-1 col-sm-1 col-md-1 user-avatar'>
@@ -22,6 +22,10 @@
             <small>{{time-ago time=created_at}}</small>
           </div>
         </a>
+      </li>
+    {{else}}
+      <li>
+        <span>You don't have any notifications yet.</span>
       </li>
     {{/each}}
     <li>

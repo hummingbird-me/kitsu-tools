@@ -1,8 +1,6 @@
 Hummingbird.HeaderController = Ember.Controller.extend
-  notificationNew: (->
-    '04'
-  ).property('notification')
+  newNotifications: Ember.computed.filterBy("notifications", "seen", false)
 
-  notifications: (->
-    @store.find('notification')
+  panelNotifications: (->
+    @store.all('notification')
   ).property('@each.notification')

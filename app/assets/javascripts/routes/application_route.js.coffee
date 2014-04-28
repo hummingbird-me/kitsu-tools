@@ -1,4 +1,8 @@
 Hummingbird.ApplicationRoute = Ember.Route.extend
+  setupController: (controller, model) ->
+    headerController = @controllerFor("header")
+    headerController.set("notifications", @store.find('notification'))
+
   actions:
     toggleFollow: (user) ->
       unless @get('currentUser.isSignedIn')
