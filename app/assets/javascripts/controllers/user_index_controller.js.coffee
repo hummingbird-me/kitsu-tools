@@ -14,6 +14,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   isEditing: false  
   editingFavorites: false
   selectChoices: ["Waifu", "Husbando"] 
+  selectedWaifu: null
  
   can_load_more:(->
     page = @get('favorite_anime_page')
@@ -57,6 +58,8 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
           method: 'POST'
           failure: ->
             console.log "Failed to Update Favorites Ranks"
+    didSelectWaifu: (character)->
+      console.log(Ember.get(character, 'name')      
 
     loadMoreFavorite_animes: ->
       page = @get('favorite_anime_page')

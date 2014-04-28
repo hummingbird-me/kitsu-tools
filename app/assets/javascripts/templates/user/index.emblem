@@ -19,9 +19,9 @@
               ul
                 li
                   .interest-icon <i class="fa fa-heart"></i>
-                  p choice: #{user.waifuOrHusbando}
                   .interest
                     | {{{view Ember.Select content=selectChoices selection=user.waifuOrHusbando}}}
+                    | {{{waifu-selector action="didSelectWaifu" value=user.waifu}}}
                 li
                   .interest-icon <i class="fa fa-home"></i>
                   .interest #{input type="text" placeholder="Location" value=user.location}
