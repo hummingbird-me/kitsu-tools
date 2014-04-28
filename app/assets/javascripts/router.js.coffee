@@ -16,4 +16,5 @@ Hummingbird.Router.map ()->
     @route 'followers'
 
   @route 'dashboard'
+  @route 'notifications'
   @route 'sign-in'

@@ -1,62 +1,32 @@
 <li class="notifications">
   <a href="/search"><i class='fa fa-search' style="position: relative; bottom: initial;"></i></a>
 </li>
-{{!-- <li class='dropdown notifications'>
+<li class='dropdown notifications'>
   <a class='dropdown-toggle notification-link' data-toggle='dropdown' href='#'>
-    <i class='fa fa-bell active'>&nbsp;04</i>
+    <i class='fa fa-bell active'>&nbsp;{{notificationNew}}</i>
   </a>
   <ul class='dropdown-menu notification-dropdown right-nav-section'>
+    {{#each notifications}}
+      <li>
+        <a {{bind-attr class=":clearfix :notification seen:nonew:new"}}='clearfix notification new' href='#'>
+          <div class='col-xs-1 col-sm-1 col-md-1 user-avatar'>
+            <img {{bind-attr src="source_avatar"}}>
+          </div>
+          <div class='col-xs-11 col-sm-11 col-md-11 user-info'>
+            <h5 class='username'>
+              {{source_user}}
+              <small class='user-action'>
+                wrote a comment on your profile.
+              </small>
+            </h5>
+            <small>{{time-ago time=created_at}}</small>
+          </div>
+        </a>
+      </li>
+    {{/each}}
     <li>
-      <a class='clearfix notification new' href='#'>
-        <div class='col-xs-1 col-sm-1 col-md-1 user-avatar'>
-          <img src='http://static.hummingbird.me/users/avatars/000/016/666/thumb_small/picture?1377445253'>
-        </div>
-        <div class='col-xs-11 col-sm-11 col-md-11 user-info'>
-          <h5 class='username'>
-            Sushi-kun
-            <small class='user-action'>
-              wrote a comment on your profile.
-            </small>
-          </h5>
-          <small>about 2 hours ago</small>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a class='clearfix notification' href='#'>
-        <div class='col-xs-1 col-sm-1 col-md-1 user-avatar'>
-          <img src='http://static.hummingbird.me/users/avatars/000/016/666/thumb_small/picture?1377445253'>
-        </div>
-        <div class='col-xs-11 col-sm-11 col-md-11 user-info'>
-          <h5 class='username'>
-            David
-            <small class='user-action'>
-              wrote a comment on your profile.
-            </small>
-          </h5>
-          <small>about 2 hours ago</small>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a class='clearfix notification' href='#'>
-        <div class='col-xs-1 col-sm-1 col-md-1 user-avatar'>
-          <img src='http://static.hummingbird.me/users/avatars/000/016/666/thumb_small/picture?1377445253'>
-        </div>
-        <div class='col-xs-11 col-sm-11 col-md-11 user-info'>
-          <h5 class='username'>
-            Terry
-            <small class='user-action'>
-              wrote a comment on your profile.
-            </small>
-          </h5>
-          <small>about 2 hours ago</small>
-        </div>
-      </a>
-    </li>
-    <li>
-      <a href='#'>View All Notifications</a>
+      {{!-- <a href='#'>View All Notifications</a> --}}
+      {{#link-to 'notifications'}}View All Notifications{{/link-to}}
     </li>
   </ul>
 </li>
- --}}
