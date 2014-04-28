@@ -54,7 +54,7 @@
 #  location                    :string
 #  website                     :string
 #  waifu                       :string
-#  waifu_or_husbando           :boolean          default(FALSE) TRUE = Husbando
+#  waifu_or_husbando           :string
 
 
 class User < ActiveRecord::Base

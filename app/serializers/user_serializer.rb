@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :cover_image_url, :avatar_template, :rating_type, :mini_bio, :is_followed, :title_language_preference, :online, :waifu, :location, :website
+  attributes :id, :cover_image_url, :avatar_template, :rating_type, :mini_bio, :is_followed, :title_language_preference, :online, :waifu, :location, :website, :waifu_or_husbando
 
   def id
     object.name

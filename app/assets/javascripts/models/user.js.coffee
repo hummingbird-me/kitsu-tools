@@ -8,7 +8,7 @@ Hummingbird.User = DS.Model.extend
   location: DS.attr('string')
   website: DS.attr('string')
   waifu: DS.attr('string')
-  waifu_or_husbando: DS.attr('boolean', default: false)
+  waifuOrHusbando: DS.attr('string')
   ratingType: DS.attr('string')
 
   isFollowed: DS.attr('boolean')

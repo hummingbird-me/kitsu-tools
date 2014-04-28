@@ -14,12 +14,14 @@
 
         .panel-body
           if isEditing
-            == textarea class="edit-bio" rows="3" placeholder="Tell us about yourself  :3" value=user.bio
+            == textarea class="edit-bio" rows="3" placeholder="Tell us about yourself  :3" value=user.miniBio
             .user-interests
               ul
                 li
                   .interest-icon <i class="fa fa-heart"></i>
-                  .interest #{input type="text" placeholder="Waifu" value=user.waifu}
+                  p choice: #{user.waifuOrHusbando}
+                  .interest
+                    | {{{view Ember.Select content=selectChoices selection=user.waifuOrHusbando}}}
                 li
                   .interest-icon <i class="fa fa-home"></i>
                   .interest #{input type="text" placeholder="Location" value=user.location}
@@ -33,7 +35,10 @@
               ul
                 li
                   .interest-icon <i class="fa fa-heart"></i>
-                  .interest Waifu is <a href="#"> #{user.waifu} </a>
+                  if hasWaifu
+                    .interest #{user.waifuOrHusbando} is <a href="#"> #{user.waifu} </a>
+                  else
+                    .interest Waifu/Husbando Not Selected
                 li
                   .interest-icon <i class="fa fa-home"></i>
                   .interest Lives in <strong>#{user.location}</strong>

@@ -1,6 +1,9 @@
 Hummingbird.UserIndexController = Ember.ArrayController.extend
   needs: "user"
   user: Ember.computed.alias('controllers.user')
+  hasWaifu: Ember.computed.any('user.waifu')
+  hasLocation: Ember.computed.any('user.location')
+  hasWebsite: Ember.computed.any('user.website')
 
   sortProperties: ['createdAt']
   sortAscending: false
@@ -10,6 +13,8 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   favorite_anime_page: 1
   isEditing: false  
   editingFavorites: false
+  selectChoices: ["Waifu", "Husbando"] 
+ 
   can_load_more:(->
     page = @get('favorite_anime_page')
     if (page*6 + 1 <= @get('favorite_anime').length)

@@ -1280,7 +1280,7 @@ CREATE TABLE users (
     waifu character varying(255),
     location character varying(255),
     website character varying(255),
-    waifu_or_husbando boolean DEFAULT false
+    waifu_or_husbando character varying(255)
 );
 
 
