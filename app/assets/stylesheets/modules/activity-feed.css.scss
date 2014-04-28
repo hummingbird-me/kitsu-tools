@@ -24,7 +24,8 @@
     }
     .user-interests {
       @extend .col-xs-12;
-      margin-bottom: 15px;
+      margin: 10px 10px 0 -8px;
+      padding: 0;
       li {
         @extend .clearfix;
         margin-bottom: 5px;

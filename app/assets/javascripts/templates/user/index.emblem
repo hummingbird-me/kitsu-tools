@@ -35,24 +35,20 @@
             .user-interests
               ul
                 li
-                  .interest-icon <i class="fa fa-heart"></i>
                   if hasWaifu
+                    .interest-icon <i class="fa fa-heart"></i>
                     .interest #{user.waifuOrHusbando} is 
                       <a {{bindAttr href="waifu_slug"}}> #{user.waifu} </a>
-                  else
-                    .interest Waifu/Husbando Not Selected
                 li
-                  .interest-icon <i class="fa fa-home"></i>
                   if hasLocation
+                    .interest-icon <i class="fa fa-home"></i>
                     .interest Lives in <strong>#{user.location}</strong>
-                  else
-                    .interest Location Not Specified
+
                 li
-                  .interest-icon <i class="fa fa-link"></i>
                   if hasWebsite
+                    .interest-icon <i class="fa fa-link"></i>
                     .interest {{autolink user.website}}
-                  else
-                    .interest No Website Specified
+                    
       / .photos-videos
       /   .panel-heading
       /     h3.panel-title Photos and Videos
