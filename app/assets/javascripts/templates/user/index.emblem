@@ -7,10 +7,11 @@
         .panel-heading
           h3.panel-title About #{user.username}
           span.edit-panel
-            unless isEditing
-              a click="goToEditing" Edit Info
-            else
-              a click="doneEditing" Save
+            if viewingSelf
+              unless isEditing
+                a click="goToEditing" Edit Info
+              else
+                a click="doneEditing" Save
 
         .panel-body
           if isEditing
