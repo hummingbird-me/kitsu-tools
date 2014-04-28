@@ -62,7 +62,6 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
       @set('selectedWaifu', character)
       @get('user').set('waifu', character.value)
       @get('user').set('waifuCharId', character.char_id)
-      console.log "set waifu, character"
     loadMoreFavorite_animes: ->
       page = @get('favorite_anime_page')
       if (page*6 + 1 <= @get('favorite_anime').length)

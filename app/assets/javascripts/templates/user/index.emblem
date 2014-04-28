@@ -45,7 +45,7 @@
                   .interest Lives in <strong>#{user.location}</strong>
                 li
                   .interest-icon <i class="fa fa-link"></i>
-                  .interest <a href="#">#{user.website}</a>
+                  .interest {{autolink user.website}}
 
       / .photos-videos
       /   .panel-heading
