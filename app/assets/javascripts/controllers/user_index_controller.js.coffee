@@ -1,7 +1,10 @@
 Hummingbird.UserIndexController = Ember.ArrayController.extend
   needs: "user"
   user: Ember.computed.alias('controllers.user')
-  waifu_slug: Ember.computed.alias('user.waifuSlug')
+  waifu_slug: (->
+     waifu_slug = @get('user.waifuSlug')
+     return "/anime/" + waifu_slug
+  ).property('user.waifuSlug')
   hasWaifu: Ember.computed.any('user.waifu')
   hasLocation: Ember.computed.any('user.location')
   hasWebsite: Ember.computed.any('user.website')
