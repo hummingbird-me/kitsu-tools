@@ -33,14 +33,6 @@
                   - if devise_mapping.confirmable? and resource.pending_reconfirmation?
                     %p Currently waiting confirmation for: #{resource.unconfirmed_email}
 
-                %p
-                  = f.label :mini_bio
-                  = f.text_area :bio, rows: 5
-
-                %p
-                  = f.label :about_me
-                  = f.text_area :about, rows: 5
-
                 %p 
                   = f.label :password, "New Password"
                   = f.password_field :password, :autocomplete => "off"
@@ -84,11 +76,6 @@
                     %label Avatar (190x190)
                     %span.user-avatar= image_tag current_user.avatar_url
                     = f.file_field :avatar
-
-                  %li
-                    %label Cover (1400x330)
-                    = image_tag @user.cover_image.url(:thumb), :class => "cover-image"
-                    = f.file_field :cover_image
 
               .large-12.columns{:style => "margin-top: 30px;"}
                 .large-8.columns.large-centered   

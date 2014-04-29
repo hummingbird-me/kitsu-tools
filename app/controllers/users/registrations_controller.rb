@@ -12,12 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     @user.name          = params[:user][:name]
     @user.email         = params[:user][:email]
-    @user.bio           = params[:user][:bio]
     @user.sfw_filter    = params[:user][:sfw_filter]
     @user.star_rating   = params[:user][:star_rating]
-    @user.about         = params[:user][:about]
     @user.avatar        = params[:user][:avatar] unless params[:user][:avatar].blank?
-    @user.cover_image   = params[:user][:cover_image] unless params[:user][:cover_image].blank?
 
     @user.title_language_preference = params[:user][:title_language_preference]
 
