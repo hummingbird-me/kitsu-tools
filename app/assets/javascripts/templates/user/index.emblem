@@ -15,14 +15,15 @@
 
         .panel-body
           if isEditing
-            == textarea class="edit-bio" rows="3" placeholder="Tell us about yourself  :3" value=user.miniBio
+            == textarea class="edit-bio" rows="3" maxlength="160" placeholder="Tell us about yourself  :3" value=user.miniBio
             .user-interests
               ul
                 li
                   .interest-icon <i class="fa fa-heart"></i>
                   .interest
                     | {{{view Ember.Select content=selectChoices selection=user.waifuOrHusbando}}}
-                    button.btn.btn-xs click="unselectWaifu" Remove
+                    if user.waifu
+                      a class="remove-waifu" click="unselectWaifu" Remove
                     | {{{waifu-selector action="didSelectWaifu" value=user.waifu clearInput=unselectingWaifu}}}
                 li
                   .interest-icon <i class="fa fa-home"></i>

@@ -7,7 +7,7 @@ Hummingbird.WaifuSelectorComponent = Em.Component.extend
     shouldClear = @get('clearInput')
     if shouldClear
       @set('value', '')
-      @.$().val('Removing ...').attr('disabled', true)
+      @.$().val('Removed, save to make changes.').attr('disabled', true)
   ).observes('clearInput')
   didInsertElement: ->
     @.$().val(@get('value'))
