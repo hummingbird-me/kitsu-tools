@@ -3,6 +3,12 @@ Hummingbird.WaifuSelectorComponent = Em.Component.extend
   searchText: null
   tagName: 'input'
   className: 'typeahead'
+  waifuClearObserver: (->
+    shouldClear = @get('clearInput')
+    if shouldClear
+      @set('value', '')
+      @.$().val('Removing ...').attr('disabled', true)
+  ).observes('clearInput')
   didInsertElement: ->
     @.$().val(@get('value'))
     bloodhound = new Bloodhound

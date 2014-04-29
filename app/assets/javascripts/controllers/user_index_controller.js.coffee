@@ -8,6 +8,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   hasWaifu: Ember.computed.any('user.waifu')
   hasLocation: Ember.computed.any('user.location')
   hasWebsite: Ember.computed.any('user.website')
+  unselectingWaifu: false
 
   sortProperties: ['createdAt']
   sortAscending: false
@@ -41,9 +42,13 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
  
 
   actions:
+    unselectWaifu: ->
+      @set('unselectingWaifu', true)
+      @set('user.waifu', null)
     goToEditing: ->
       @set('isEditing', true)    
     doneEditing: ->
+      @set('unselectingWaifu', false)
       @get('user.content').save()
       @set('isEditing', false)
     editFav: ->
