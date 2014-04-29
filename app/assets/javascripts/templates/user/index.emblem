@@ -9,7 +9,7 @@
           span.edit-panel
             if viewingSelf
               unless isEditing
-                a click="goToEditing" Edit Info
+                a click="goToEditing" Edit
               else
                 a click="doneEditing" Save
 
