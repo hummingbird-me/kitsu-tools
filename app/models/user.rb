@@ -66,14 +66,17 @@ class User < ActiveRecord::Base
   def waifu_slug
     charId = self.waifu_char_id
     if charId != "0000"
-      casting = Casting.where(character_id: charId).first.anime_id
-      if casting
+      casting = Casting.where(character_id: charId)
+      if casting.first != nil
+        casting = casting.first.anime_id
         anime = Anime.find(casting)
-        if anime
+        if anime.slug != nil
           slug = anime.slug
         else
          slug = "#"
         end
+      else
+        slug = "#"
       end
     else
       slug = "#" 
