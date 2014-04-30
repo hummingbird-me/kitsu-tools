@@ -60,13 +60,21 @@
           link-to 'user' user | #{user.username}
           |  followed 
           pluralize followedUsers.length "user" "users"
-        p.secondary: time-ago time=createdAt
+        ul.inline-list.secondary
+          if belongsToUser
+            a.remove-post click="removeComment" · remove
+          li: time-ago time=createdAt
       .row
         .comment-text
           .clearfix
-          ol
+          ul.follow-bubbles
             each followedUser in followedUsers
-              li: link-to 'user' followedUser | #{followedUser.username}
+              li
+                link-to 'user' followedUser
+                  .user-bubble
+                    .bubble-avatar
+                      avatar followedUser 'thumb_small'
+                    h4.bubble-name #{followedUser.username}
 
     if unknownStory
       | #{type}

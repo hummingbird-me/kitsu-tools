@@ -212,3 +212,49 @@
     }
   }
 }
+
+.follow-bubbles {
+  padding-left: 15px;
+  margin-top: 15px;
+  li {
+    @extend .col-sm-6;
+    @extend .col-xs-12;
+    padding-left: 0;
+    padding-right: 10px;
+    @media (max-width: 768px) {
+      padding-right: 0;
+    }
+    @media (min-width: 768px) {
+      &:nth-child(even) {
+        padding-right: 0;
+      }
+    }
+    .user-bubble {
+      @extend .clearfix;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 10px;
+      margin-bottom: 10px;
+      transition: .2s ease-in;
+      .bubble-avatar {
+        @extend .col-sm-2;
+        @extend .col-xs-2;
+        padding: 0;
+      }
+      .bubble-name {
+        @extend .col-sm-10;
+        @extend .col-xs-10;
+        color: #333;
+        position: relative;
+        top: 5px;
+        transition: .3s ease-in;
+      }
+      &:hover {
+        border-color: $orange;
+        .bubble-name {
+          color: $darkOrange;
+        }
+      }
+    }
+  }
+}
