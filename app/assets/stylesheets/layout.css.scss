@@ -432,3 +432,59 @@ User Profile
     }
   }
 }
+
+.notification-panel-wrapper {
+  /* temp with one col */
+  .col-md-6 {
+    float: none;
+    margin: 0 auto;
+  }
+
+  padding-top: 50px;
+  .notification-panel {
+    margin: 10px 0;
+    padding: 8px 10px;
+    background: #fff;
+    border-radius: 3px;
+    img {
+      float: left;
+      width: 50px;
+      height: 50px;
+      margin: 0 6px 6px 0;
+    }
+    .badge {
+      float: right;
+    }
+  }
+}
+
+@-webkit-keyframes spaceboots {
+  0% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+  10% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+  30% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+  40% { -webkit-transform: translate(1px, -1px) rotate(1deg); }
+  50% { -webkit-transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { -webkit-transform: translate(0px, 2px) rotate(0deg); }
+  70% { -webkit-transform: translate(-3px, 0px) rotate(1deg); }
+  80% { -webkit-transform: translate(-1px, -1px) rotate(1deg); }
+  90% { -webkit-transform: translate(-1px, -2px) rotate(-1deg); }
+  100% { -webkit-transform: translate(2px, 1px) rotate(0deg); }
+}
+.shake {
+  -webkit-animation-name: spaceboots;
+  -webkit-animation-duration: 3.5s;
+  -webkit-transform-origin:50% 50%;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  opacity: 1;
+  transition: .1s ease-in;
+  &:hover {
+    -webkit-animation-play-state: paused;
+    opacity: .6;
+    cursor: move;
+  }
+}
+.shake {
+  display:inline-block
+}

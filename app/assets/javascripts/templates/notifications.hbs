@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row notification-panel-wrapper">
+    <div class="col-md-6">
+      {{#each}}
+        <div class="notification-panel">
+          <img {{bind-attr src=source_avatar}} />
+          <strong>{{source_user}}</strong> wrote a comment on your profile.
+          <p class="time-ago">
+            {{time-ago time=created_at}}
+          </p>
+        </div>
+      {{/each}}
+    </div>
+    <!--<div class="col-md-6">Anm Notifications</div>-->
+  </div>
+</div>

@@ -3,13 +3,11 @@ class NotificationsController < ApplicationController
 
   def index
     hide_cover_image
-    @notifications = Notification.where(user_id: current_user)
-    @unseen_notification_count = @notifications.where(seen: false).count
-    @notifications = @notifications.order("created_at DESC").limit(50)
+    @notifications = Notification.where(user_id: current_user).order("created_at DESC").limit(10)
     
     respond_to do |format|
       format.json { render json: @notifications, each_serializer: NotificationSerializer }
-      format.html { render :index }
+      format.html { render_ember }
     end
     @notifications.where(seen: false).each {|x| x.update_column :seen, true }
     if @notifications.count > 10
