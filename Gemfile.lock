@@ -1,13 +1,13 @@
 GIT
-  remote: git://github.com/vikhyat/friendly_id.git
-  revision: bcf4686495eb11c895ad492bcc832db3f9c661ea
+  remote: git://github.com/joshfabian/friendly_id.git
+  revision: 816389e86601c50da01151177ac1a23e7c29eec4
   specs:
     friendly_id (5.0.2)
       activerecord (>= 4.0.0)
 
 GIT
-  remote: git://github.com/vikhyat/handlebars_assets.git
-  revision: 663848943fa08b171de966e3d611b348e0956219
+  remote: git://github.com/joshfabian/handlebars_assets.git
+  revision: 2ccc016ed1899c8571265294a50b6d70f4b18bdc
   specs:
     handlebars_assets (0.14.1)
       execjs (>= 1.2.9)

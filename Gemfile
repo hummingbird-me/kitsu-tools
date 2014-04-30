@@ -45,7 +45,7 @@ gem 'sass-rails',   '~> 4.0'
 gem 'zurb-foundation', '~> 4.3.0'
 gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.0.3'
-gem 'handlebars_assets', github: 'vikhyat/handlebars_assets'
+gem 'handlebars_assets', github: 'joshfabian/handlebars_assets'
 gem 'bootstrap-sass', '~> 3.1.0'
 gem 'autoprefixer-rails'
 gem 'non-stupid-digest-assets'
@@ -94,7 +94,7 @@ gem 'delayed_paperclip'
 gem 'aws-sdk', '~> 1.5.7'
 
 # Better URLs.
-gem 'friendly_id', github: 'vikhyat/friendly_id'
+gem 'friendly_id', github: 'joshfabian/friendly_id'
 
 # Authentication.
 gem 'devise'
