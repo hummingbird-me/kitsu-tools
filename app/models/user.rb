@@ -199,9 +199,9 @@ class User < ActiveRecord::Base
      "hummingbird.ryn@gmail.com", # Ryatt
      "dev.colinl@gmail.com", # Psy
      "lazypanda39@gmail.com", # Cai
-     "windowjunk@yahoo.com", # Tav
      "adennisjin@gmail.com", # Dennis
      "svengehring@cybrox.eu" # Cybrox
+     "pchen4@gmail.com" # pchen
     ].include? email
   end
 
