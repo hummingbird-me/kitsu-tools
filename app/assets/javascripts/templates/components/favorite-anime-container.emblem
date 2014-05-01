@@ -17,6 +17,6 @@ else
       h3 You have no favorites.
       a href="http://forums.hummingbird.me/t/how-to-adding-an-anime-to-your-favorites" How to add Favorites
     else
-      h3 #{currentUser.username} has no favorites.
+      h3 #{user.username} has no favorites.
       p Clearly they're an individual of fine, discerning tastes.
 

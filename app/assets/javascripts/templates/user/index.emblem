@@ -131,7 +131,7 @@
                 a click="doneEditingFav" Save       
 
         .panel-body
-          favorite-anime-container favorite_anime_list=favorite_anime_list currentUser=currentUser isEditing=editingFavorites
+          favorite-anime-container favorite_anime_list=favorite_anime_list currentUser=currentUser isEditing=editingFavorites user=user
           if can_load_more
             .more-wrapper
               a class="view-more-button" click="loadMoreFavorite_animes" View More        
