@@ -28,3 +28,6 @@ solr/pids
 .vagrant
 
 aws_env
+
+# Ignore local files that cant be assume-unchanged
+sftp-config.json
