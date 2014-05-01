@@ -2,56 +2,26 @@ class LibraryEntriesController < ApplicationController
   def index
     if params[:user_id]
       user = User.find params[:user_id]
+      library_entries = LibraryEntry.where(user_id: user.id).includes(:genres).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
 
-      library_entries = LibraryEntry.includes({ anime: :genres })
-                                    .references({ anime: :genres })
-                                    .where(user_id: user.id)
-
-      # Filter based on status
       if params[:status]
         library_entries = library_entries.where(status: params[:status])
       end
 
-      # Filter private entries
+      # Filter private entries.
       if current_user != user
         library_entries = library_entries.where(private: false)
       end
 
-      # Filter adult entries
-      unless user_signed_in? and not current_user.sfw_filter?
-        library_entries = library_entries.where("anime.age_rating <> 'R18+' OR anime.age_rating IS NULL")
+      # Filter adult entries.
+      if user_signed_in? and !current_user.sfw_filter?
+        library_entries = library_entries.includes(:anime)
+      else
+        library_entries = library_entries.includes(:anime).where("anime.age_rating <> 'R18+' OR anime.age_rating IS NULL").references(:anime)
       end
 
-      results = library_entries.to_a
-      favorites = get_favorite_animes_for_user(user)
-
-      results.each do |result|
-        # dynamically add a "favorite_id" attribute that's used in the serializer to prevent N+1
-        # couldn't find another way to add a "custom" attribute that can be used by the serializer
-        result.class.send(:define_method, "favorite_id=".to_sym) { |value| instance_variable_set("@favorite_id", value) }
-        result.class.send(:define_method, :favorite_id) { instance_variable_get("@favorite_id") }
-        result.favorite_id = favorites[result.anime_id]
-      end
-
-      render json: results
+      render json: library_entries
     end
-  end
-
-  def get_favorite_animes_for_user(user)
-    favorites = {}
-
-    sql = <<-SQL
-      SELECT watchlists.anime_id AS anime_id, favorites.id AS favorite_id
-      FROM watchlists
-      LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id
-      WHERE watchlists.user_id = #{user.id}
-    SQL
-
-    ActiveRecord::Base.connection.execute(sql).each do |fav|
-      favorites[fav["anime_id"].to_i] = fav["favorite_id"]
-    end
-
-    favorites
   end
 
   def update_library_entry_using_params(library_entry, params)
