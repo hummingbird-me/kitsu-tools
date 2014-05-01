@@ -15,7 +15,8 @@
 
         .panel-body
           if isEditing
-            == textarea class="edit-bio" rows="3" maxlength="160" placeholder="Tell us about yourself  :3" value=user.miniBio
+            div class={ :edit-bio-chars bioCharsLeft:hasleft:noleft } #{bioCharCounter} left
+            == textarea class="edit-bio" rows="4" placeholder="Tell us about yourself  :3" value=user.miniBio
             .user-interests
               ul
                 li

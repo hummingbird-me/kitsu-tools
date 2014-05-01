@@ -10,6 +10,19 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   hasWebsite: Ember.computed.any('user.website')
   unselectingWaifu: false
 
+  bioCharsLeft: (->
+    @get('bioCharCounter') != 0
+  ).property('bioCharCounter')
+  bioCharCounter: (->
+    newString = @get('user.miniBio')
+    newLength = newString.length
+    remLength = 161 - newLength
+    if remLength <= 0
+      @set('user.miniBio', newString[0...160])
+      remLength = 0
+    remLength
+  ).property('user.miniBio')
+
   sortProperties: ['createdAt']
   sortAscending: false
   newPost: ""
