@@ -105,7 +105,7 @@ Global Header
     text-align: center;
     height: 50px;
     padding: 0px 10px 0px 10px;
-    &:hover, &.isactive {
+    &:hover {
       background-color: darken($darkNavy, 2);
     }
     a {
@@ -126,17 +126,53 @@ Global Header
 
   .searchbar {
     background: darken($darkNavy, 2);
-    padding: 10px 15px;
-    margin: 0;
-    height: 50px;
-    input {
+    padding: 0;
+    &.isinactive {
+      background: #2F343B;
+      &:hover {
+        background: darken($darkNavy, 2) !important;
+      }
+    }
+    .search-field {
+      display: inline-block;
+      margin-left: 10px;
       background: none;
       border: none;
       border-bottom: 1px dotted #aaa;
       color: #fff;
       &:focus {
         outline: none;
-      border-bottom: 1px solid #aaa;
+        border-bottom: 1px solid #aaa;
+      }
+    }
+    a {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    .search-dropdown {
+      background: darken($darkNavy, 2);
+      border-radius: 0 0 4px 4px;
+      .search-result {
+        padding: 10px;
+        text-align: left;
+        border-top: 1px solid darken($darkNavy, 1);
+        .search-result-thumb {
+          float: left;
+          height: 30px;
+          width: 30px;
+          border: 1px solid darken($darkNavy, 1)
+          border-radius: 3px;
+          margin-right: 10px;
+        }
+        .search-result-title {
+          color: #fff;
+        } 
+        .search-result-badge {
+          float: right;
+        }
+        .search-result-break {
+          clear: both;
+        }
       }
     }
   }
