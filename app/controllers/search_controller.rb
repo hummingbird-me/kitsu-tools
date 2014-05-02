@@ -68,7 +68,7 @@ class SearchController < ApplicationController
       users = User.search(params[:query])[0..1]
 
       formattedAnime = anime.map { |x|
-        {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.id}" }
+        {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
       }.flatten
       formattedUsers = users.map { |x|
         {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" } 
