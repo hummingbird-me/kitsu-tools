@@ -1,21 +1,25 @@
 class SearchController < ApplicationController
   STOP_WORDS = /season/i
 
+  def search_database (type, query, page)
+    model = case type
+      when "anime" then Anime.page(page).per(20)
+      when "manga" then Manga.page(page).per(20)
+      when "character" then Character.page(page).per(20)
+    end
+    list = model.simple_search_by_title(query)
+    list = model.fuzzy_search_by_title(query) if list.length == 0
+    list
+  end
+
   def basic
 
     # What are we searching for?
     @search_type = params[:type] || "anime"
 
     if @search_type == "anime"
-
       query = (params[:query] || "").gsub(STOP_WORDS, '')
-
-      @anime = Anime.accessible_by(current_ability).page(params[:page]).per(20)
-      @anime_list = @anime.simple_search_by_title(query)
-      if @anime_list.length == 0
-        @anime_list = @anime.fuzzy_search_by_title(query)
-      end
-      @results = @anime_list
+      @results = search_database 'anime', query, params[:page]
 
       @watchlist_status = {}
       if user_signed_in?
@@ -29,42 +33,37 @@ class SearchController < ApplicationController
         format.json { render :json => @results.map {|x| [x.title, x.alt_title] }.flatten.compact }
       end
 
+
+
     elsif @search_type == "manga"
-
       query = (params[:query] || "").gsub(STOP_WORDS, '')
-
-      @manga = Manga.page(params[:page]).per(20)
-      @manga_list = @manga.simple_search_by_title(query)
-      if @manga_list.count == 0
-        @manga_list = @manga.fuzzy_search_by_title(query)
-      end
-      @results = @manga_list
+      @results = search_database 'manga', query, params[:page]
 
       respond_to do |format|
         format.html { render :manga }
       end
 
-    elsif @search_type == "users"
 
+
+    elsif @search_type == "users"
       @results = User.search(params[:query] || "askdhjfg").page(params[:page]).per(20)
       render "users"
 
-    elsif @search_type == "character"
 
-      @char_list = Character.simple_search_by_name(params[:query])
-      if @char_list.length == 0
-        @char_list = Character.fuzzy_search_by_name(params[:query])
-      end
-      @results = @char_list
+
+    elsif @search_type == "character"
+      @results = search_database 'character', params[:query], params[:page]
 
       respond_to do |format|
         format.json { render :json => @results.map {|x| {:id => x.id, :name => x.name} }.flatten.compact }
       end
 
-    # Mixed search for autocomplete. Currently supports anime and users
+
+
+    # Mixed search for the instant search form in the header.
+    # This will only return minimal data about anime and users
     elsif @search_type == "mixed"
-      anime = Anime.simple_search_by_title(params[:query])
-      anime = Anime.fuzzy_search_by_title(params[:query]) if anime.length == 0
+      anime = search_database 'anime', params[:query], params[:page]
       users = User.search(params[:query])[0..1]
 
       formattedAnime = anime.map { |x|
@@ -78,11 +77,33 @@ class SearchController < ApplicationController
         format.json { render :json => [formattedAnime, formattedUsers].flatten }
       end
 
+
+    # Mixed full search for the instant search form on the search page
+    # This will return all information about an anime or user
+    elsif @search_type == "full"
+      anime = search_database 'anime', params[:query], params[:page]
+      users = User.search(params[:query]).limit(20)
+
+      watchlist_status = {}
+      if user_signed_in?
+        current_user.watchlists.where(anime_id: anime.map {|x| x.id }).each do |w|
+          watchlist_status[w.anime_id] = w.status
+        end
+      end
+
+      formattedAnime = anime.map do |x|
+        {:id => x.id, :type => 'anime', :title => x.title, :desc => x.synopsis, :link => "/anime/#{x.slug}" }
+      end
+      formattedUsers = users.map { |x|
+        {:type => 'user', :title => x.name, :desc => x.bio, :image => x.avatar_template, :link => "/users/#{x.name}"}
+      }
+
+      respond_to do |format|
+        format.json { render :json => [formattedAnime, watchlist_status, formattedUsers].flatten }
+      end
+
     else
-
       not_found!
-
     end
-
   end
 end
