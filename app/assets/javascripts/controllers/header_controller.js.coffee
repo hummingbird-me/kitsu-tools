@@ -25,10 +25,9 @@ Hummingbird.HeaderController = Ember.Controller.extend
   instantSearch: (->
     blodhound = @get('bhInstance')
     searchterm = @get('searchTerm')
+    @set('fullSearchLink', "/search/"+searchterm)
     blodhound.get searchterm, (suggestions) =>
       @set('instantSearchResults', suggestions)
-      jQuery.each suggestions, (index, item) ->
-        console.log(item)
   ).observes('searchTerm')
 
   actions:

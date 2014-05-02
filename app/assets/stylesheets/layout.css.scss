@@ -178,7 +178,10 @@ Global Header
         } 
         .search-result-badge {
           float: right;
-          font-size: 0.8em;
+          font-size: 0.7em;
+          font-weight: normal;
+          &.anime { background: #3A5FCD; }
+          &.user  { background: #6959CD; }
         }
         .search-result-break {
           clear: both;

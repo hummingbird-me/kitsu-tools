@@ -11,7 +11,7 @@
         <a {{bind-attr href="result.link"}}>
           <img class="search-result-thumb" {{bind-attr src="result.image"}} />
           <span class="search-result-title">{{result.title}}</span>
-          <span class="search-result-badge badge">{{result.type}}</span>
+          <span {{bind-attr class=":search-result-badge :badge result.type"}}>{{result.type}}</span>
           <div class="search-result-break"></div>
         </a>
       </li>
