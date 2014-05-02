@@ -66,8 +66,12 @@ class SearchController < ApplicationController
       anime = Anime.fuzzy_search_by_title(params[:query])[0..3]
       users = User.search(params[:query])[0..1]
 
-      formattedAnime = anime.map {|x| {:type => 'Anime', :title => x.title, :image => x.poster_image_thumb } }.flatten
-      formattedUsers = users.map {|x| {:type => 'Users', :title => x.name,  :image => x.avatar_template} }.flatten
+      formattedAnime = anime.map { |x|
+        {:type => 'Anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.id}" }
+      }.flatten
+      formattedUsers = users.map { |x|
+        {:type => 'User', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" } 
+      }.flatten
 
       respond_to do |format|
         format.json { render :json => [formattedAnime, formattedUsers].flatten }

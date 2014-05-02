@@ -15,7 +15,7 @@ Hummingbird.HeaderController = Ember.Controller.extend
         url: '/search.json?query=%QUERY&type=mixed'
         filter: (results)->
           Ember.$.map(results.search, (r)->
-            {title: r.title, type: r.type, image: r.image}
+            {title: r.title, type: r.type, image: r.image, link: r.link}
           )
     bloodhound.initialize()
     @set('bhInstance', bloodhound)

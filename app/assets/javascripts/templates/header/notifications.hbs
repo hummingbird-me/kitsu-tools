@@ -8,10 +8,12 @@
   <ul {{bind-attr class=":search-dropdown"}}>
     {{#each result in instantSearchResults}}
       <li class="search-result">
-        <img class="search-result-thumb" {{bind-attr src="result.image"}} />
-        <span class="search-result-title">{{result.title}}</span>
-        <span class="search-result-badge badge">{{result.type}}</span>
-        <div class="search-result-break"></div>
+        <a {{bind-attr href="result.link"}}>
+          <img class="search-result-thumb" {{bind-attr src="result.image"}} />
+          <span class="search-result-title">{{result.title}}</span>
+          <span class="search-result-badge badge">{{result.type}}</span>
+          <div class="search-result-break"></div>
+        </a>
       </li>
     {{/each}}
   </ul>
