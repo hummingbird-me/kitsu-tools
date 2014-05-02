@@ -92,14 +92,34 @@ class SearchController < ApplicationController
       end
 
       formattedAnime = anime.map do |x|
-        {:id => x.id, :type => 'anime', :title => x.title, :desc => x.synopsis, :link => "/anime/#{x.slug}" }
+        {
+          :id => x.id,
+          :type => 'anime',
+          :title => x.title,
+          :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
+          :image => x.poster_image_thumb,
+          :link => "/anime/#{x.slug}",
+          :badges => [
+            {:class => 'anime', :content => "Anime"},
+            {:class => 'episodes', :content => "#{x.show_type}, #{x.episode_count}"}
+          ]
+        }
       end
       formattedUsers = users.map { |x|
-        {:type => 'user', :title => x.name, :desc => x.bio, :image => x.avatar_template, :link => "/users/#{x.name}"}
+        {
+          :type => 'user',
+          :title => x.name,
+          :desc => x.bio,
+          :image => x.avatar_template,
+          :link => "/users/#{x.name}",
+          :badges => [
+            {:class => 'user', :content => "User"}
+          ]
+        }
       }
 
       respond_to do |format|
-        format.json { render :json => [formattedAnime, watchlist_status, formattedUsers].flatten }
+        format.json { render :json => [formattedAnime, formattedUsers, watchlist_status].flatten }
       end
 
     else

@@ -1,0 +1,46 @@
+<div class="container search-container">
+  <div class="search-container-head">
+    <h2>Search Hummingbird for...</h2>
+  </div>
+  <div class="search-container-body">
+    <div class="row">
+      <div class="col-md-8">
+        {{input value=searchTerm placeholder="I'm sure there's something intresting to find here!"}}
+      </div>
+      <div class="col-md-4">
+        {{view Ember.Select content=filters selectionBinding=selectedFilter}}
+      </div>
+    </div>
+    <hr />
+    <ul class="search-container-results">
+      {{#each result in filteredSearchResutlts}}
+        <li class="search-result row">
+          <div class="col-md-8">
+            <a {{bind-attr href="result.link"}}>
+            <img {{bind-attr src="result.image"}} class="search-result-image" />
+            <div class="pull-right">
+              {{#each badge in result.badges}}
+                <span {{bind-attr class=":badge badge.class"}}>{{badge.content}}</span>
+              {{/each}}
+            </div>
+            <p class="search-result-details">
+              <strong>{{result.title}}</strong><br />
+              {{result.desc}}
+            <p>
+            </a>
+          </div>
+          <div class="col-md-4">
+            &nbsp;
+          </div>
+        </li>
+      {{else}}
+        {{#if hasSearchTerm}}
+          <p class="search-results-nosuccess">
+          <span class="noresults-icon"><i class="fa fa-meh-o"></i></span>
+          <span class="noresults-text">Haven't found anything for "{{searchTerm}}"</span>
+          </p>
+        {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
