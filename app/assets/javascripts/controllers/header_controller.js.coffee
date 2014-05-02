@@ -22,6 +22,9 @@ Hummingbird.HeaderController = Ember.Controller.extend
     @_super()
   )
 
+  submitSearch: (->
+    @transitionToRoute('search', @get('searchTerm'));
+  )
   instantSearch: (->
     blodhound = @get('bhInstance')
     searchterm = @get('searchTerm')

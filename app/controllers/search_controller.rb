@@ -63,7 +63,8 @@ class SearchController < ApplicationController
 
     # Mixed search for autocomplete. Currently supports anime and users
     elsif @search_type == "mixed"
-      anime = Anime.fuzzy_search_by_title(params[:query])[0..3]
+      anime = Anime.simple_search_by_title(params[:query])
+      anime = Anime.fuzzy_search_by_title(params[:query]) if anime.length == 0
       users = User.search(params[:query])[0..1]
 
       formattedAnime = anime.map { |x|
