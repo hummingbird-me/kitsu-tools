@@ -25,7 +25,7 @@ class SearchController < ApplicationController
       end
 
       respond_to do |format|
-        format.html { render "anime" }
+        format.html { render_ember }
         format.json { render :json => @results.map {|x| [x.title, x.alt_title] }.flatten.compact }
       end
 

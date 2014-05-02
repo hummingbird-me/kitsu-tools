@@ -15,6 +15,7 @@ Hummingbird.HeaderController = Ember.Controller.extend
         url: '/search.json?query=%QUERY&type=mixed'
         filter: (results)->
           Ember.$.map(results.search, (r)->
+            #r.title = r.title[0..20]+"..." if r.title.length > 20
             {title: r.title, type: r.type, image: r.image, link: r.link}
           )
     bloodhound.initialize()
