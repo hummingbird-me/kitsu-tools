@@ -1,5 +1,10 @@
-<li class="notifications">
-  <a href="/search"><i class='fa fa-search' style="position: relative; bottom: initial;"></i></a>
+{{#if showSearchbar}}
+<li class="searchbar">
+  {{input value=searchTerm placeholder="Search for..."}}
+</li>
+{{/if}}
+<li {{bind-attr class=":notifications showSearchbar:isactive:isinactive"}}>
+  <a {{action 'toggleSearchbar'}}><i class='fa fa-search' style="position: relative; bottom: initial;"></i></a>
 </li>
 <li class='dropdown notifications'>
   <a class='dropdown-toggle notification-link' data-toggle='dropdown' href='#'>

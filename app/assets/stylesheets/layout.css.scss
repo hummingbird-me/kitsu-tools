@@ -105,7 +105,7 @@ Global Header
     text-align: center;
     height: 50px;
     padding: 0px 10px 0px 10px;
-    &:hover {
+    &:hover, &.isactive {
       background-color: darken($darkNavy, 2);
     }
     a {
@@ -121,6 +121,23 @@ Global Header
     }
     .dropdown-menu {
       min-width: 500px;
+    }
+  }
+
+  .searchbar {
+    background: darken($darkNavy, 2);
+    padding: 10px 15px;
+    margin: 0;
+    height: 50px;
+    input {
+      background: none;
+      border: none;
+      border-bottom: 1px dotted #aaa;
+      color: #fff;
+      &:focus {
+        outline: none;
+      border-bottom: 1px solid #aaa;
+      }
     }
   }
 
