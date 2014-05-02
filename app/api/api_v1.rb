@@ -45,6 +45,13 @@ class API_v1 < Grape::API
       end
     end
 
+    def save_favorite(key, value)
+      item = value
+      favorite = Favorite.find(item.id)
+      favorite.fav_rank = item.fav_rank
+      favorite.save
+    end
+
     def present_watchlist(w, rating_type, title_language_preference)
       {
         id: w.id,
@@ -288,14 +295,12 @@ class API_v1 < Grape::API
 
     desc "Updates User's Favorite ranks"
     params do
-      requires :user_id, type: String
-      requires :id, type: Integer
-      requires :fav_rank, type: Integer
+      requires :data
     end
     post ":user_id/favorite_anime/update" do
-      favorite = Favorite.find(params[:id])
-      favorite.fav_rank = params[:fav_rank]
-      favorite.save
+       data = params[:data]
+       data.each {|key,value| save_favorite(key,value)}
+       data              
     end    
 
     desc "Returns the user's feed."

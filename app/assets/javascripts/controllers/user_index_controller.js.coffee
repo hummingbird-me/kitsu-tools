@@ -71,14 +71,19 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
       url = "/api/v1/users/" + @get('currentUser.id') + '/favorite_anime/update'
       list = @get('favorite_anime_list')
       _this = @
+      data = {} 
 
       list.forEach (item)->
-        Ember.$.ajax
-          url: url
-          data: {id: item.fav_id, user_id: _this.get('currentUser.id'), fav_rank: item.fav_rank}
-          method: 'POST'
-          failure: ->
-            console.log "Failed to Update Favorites Ranks"
+        data[item.fav_id]={id: item.fav_id, user_id: _this.get('currentUser.id'), fav_rank: item.fav_rank}
+
+      Ember.$.ajax
+        url: url
+        data: {data:data}
+        method: 'POST'
+        failure: ->
+          console.log "Failed to Update Favorites Ranks"
+
+
     didSelectWaifu: (character)->
       @set('selectedWaifu', character)
       @get('user').set('waifu', character.value)
