@@ -1,3 +1,6 @@
+a {
+  transition: .2s ease-in;
+}
 .follow-button {
   background: $orange;
   border: none;
@@ -74,5 +77,21 @@
   &:hover {
     color: $darkOrange;
     border-color: $orange;
+  }
+}
+
+.episode-button {
+  background: #fff;
+  border-radius: 3px;
+  padding: 10px 15px;
+  color: #40434d;
+  transition: .1s ease-in;
+  &:hover {
+    color: $darkOrange;
+  }
+  @media (max-width: 1100px) {
+    span {
+      display: none;
+    }
   }
 }

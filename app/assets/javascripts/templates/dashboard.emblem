@@ -1,0 +1,134 @@
+.recently-watched
+  .container
+    .row
+      ul.series-slider
+        li.watched-series.active
+          .overlay-wrapper
+            .overlay-panel
+              h4.series-title No Game, No Life
+              .actionable
+                a class="episode-button" href="#" Mark <strong>EP 04</strong> <span>Seen</span>
+                a class="mark-multiple" href="#" Mark Multiple
+              .stats
+                %h4 25% Complete
+                %p Seen 03 of 12
+            img class="responsive-image" src="http://static.hummingbird.me/anime/poster_images/000/007/880/large/1925651277_c97a3bb9_2.jpg?1396763791"
+
+        li.watched-series
+            .overlay-wrapper
+              .overlay-panel
+                h4.series-title Hanbun no Tsuki ga Noboru Sora
+                .actionable
+                  a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
+                  a class="mark-multiple" href="#" Mark Multiple
+                .stats
+                  %h4 10% Complete
+                  %p Seen 01 of 10
+              img class="responsive-image" src="http://static.hummingbird.me/anime/poster_images/000/008/052/large/bb_01_cs1w1_888x1280.jpg?1396763576"
+
+        li.watched-series
+          .overlay-wrapper
+            .overlay-panel
+              h4.series-title Hanbun no Tsuki ga Noboru Sora
+              .actionable
+                a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
+                a class="mark-multiple" href="#" Mark Multiple
+              .stats
+                %h4 10% Complete
+                %p Seen 01 of 10
+            img class="responsive-image" src="http://static.hummingbird.me/anime/poster_images/000/000/012/large/12.png?1383475925"
+
+        li.watched-series
+          .overlay-wrapper
+            .overlay-panel
+              h4.series-title Hanbun no Tsuki ga Noboru Sora
+              .actionable
+                a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
+                a class="mark-multiple" href="#" Mark Multiple
+              .stats
+                %h4 10% Complete
+                %p Seen 01 of 10
+            img class="responsive-image" src="http://static.hummingbird.me/anime/poster_images/000/007/821/large/0cf2bb1d8613e37f7b8913b0cc85065b1389123747_full.jpg?1390001989"
+
+        li.watched-series
+          .overlay-wrapper
+            .overlay-panel
+              h4.series-title Hanbun no Tsuki ga Noboru Sora
+              .actionable
+                a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
+                a class="mark-multiple" href="#" Mark Multiple
+              .stats
+                %h4 10% Complete
+                %p Seen 01 of 10
+            img class="responsive-image" src="http://static.hummingbird.me/anime/poster_images/000/000/181/large/x_ee93c42c.jpg?1398474350"
+
+        li.watched-series
+          .overlay-wrapper
+            .overlay-panel
+              h4.series-title Hanbun no Tsuki ga Noboru Sora
+              .actionable
+                a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
+                a class="mark-multiple" href="#" Mark Multiple
+              .stats
+                %h4 10% Complete
+                %p Seen 01 of 10
+            img class="responsive-image" src="http://static.hummingbird.me/anime/poster_images/000/007/712/large/kill_la_kill_by_dragoontooth-d6wpq3e.jpg?1387141548"
+
+.container
+  .row
+    .secondary-info
+      p forum bullshit
+
+    .user-feed
+      .status-update-panel
+        .panel-body.status-panel
+          textarea.status-form placeholder="Write something..." rows="1"
+        .panel-footer
+          button.btn.status-button data-bindattr-12="12" data-ember-action="11" Post Status
+
+      .story
+        .update-panel
+          .row
+            .user-info-bar
+              .user-image
+                img.responsive-image src="http://static.hummingbird.me/users/avatars/000/001/760/thumb_small/trash.jpg?1398735308"
+              .comment-content
+                h4.story-title
+                  a Madoka
+                p.secondary
+                  span 9 hours ago
+                  a.remove-post  · remove
+          .row
+            .col-sm-12.clearfix
+              p.comment-text Hahaha, totally forgot about that, funny thing is, I have that saved in a folder somewhere too. Never forget.
+      .story
+        .update-panel
+          .row
+            .user-info-bar
+              .user-image
+                img.responsive-image src="http://static.hummingbird.me/users/avatars/000/007/840/thumb_small/10151371_10202388577930429_316244695_n.jpg?1398920210"
+              .comment-content
+                h4.story-title
+                  a TieriaShirin
+                p.secondary
+                  span 9 hours ago
+                  a.remove-post  · remove
+          .row
+            .col-sm-12.clearfix
+              p.comment-text Better not be a limit on favorites like myanimelist x.x
+
+      .story
+        .update-panel
+          .row
+            .user-info-bar
+              .user-image
+                img.responsive-image src="http://static.hummingbird.me/users/avatars/000/027/036/thumb_small/ibnleKv8yowJYT.jpg?1398882355"
+              .comment-content
+                h4.story-title
+                  a Trixter
+                p.secondary
+                  span 9 hours ago
+                  a.remove-post  · remove
+          .row
+            .col-sm-12.clearfix
+              p.comment-text when u said a bit u meant it huh xD

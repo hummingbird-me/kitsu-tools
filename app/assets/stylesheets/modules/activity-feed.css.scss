@@ -1,233 +1,232 @@
 .profile-content {
   @extend .container;
   margin-top: 30px;
+}
 
-  .about-info {
-    @extend .col-sm-5;
-    @extend .col-md-5;
-    @extend .hidden-xs;
+.secondary-info {
+  @extend .col-sm-5;
+  @extend .col-md-5;
+  @extend .hidden-xs;
 
-    padding-right: 0px;
+  padding-right: 0px;
+}
+
+.user-about-panel {
+  @extend .panel;
+  @extend .panel-default;
+  @extend .clearfix;
+  .edit-bio-chars {
+    display: block;
+    float: right;
+    margin: -5px 0 1px 0;
+    color: #999;
+    font-size: 12px;
+    &.noleft {
+      color: #FF6347;
+    }
   }
-
-  .user-about-panel {
-    @extend .panel;
-    @extend .panel-default;
-    @extend .clearfix;
-    .edit-bio-chars {
-      display: block;
-      float: right;
-      margin: -5px 0 1px 0;
-      color: #ccc;
-      font-weight: bold;
-      font-size: 1.2em;
-      &.noleft {
-        color: #FF6347;
+  .edit-bio {
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    height: 100px;
+    padding: 10px;
+    resize: vertical;
+  }
+  .user-interests {
+    @extend .col-xs-12;
+    margin: 10px 10px 0 -8px;
+    padding: 0;
+    li {
+      @extend .clearfix;
+      margin-bottom: 5px;
+      &:last-child {
+        margin-bottom: 0;
       }
     }
-    .edit-bio {
-      width: 100%;
-      border-radius: 3px;
-      border: 1px solid #ddd;
-      height: 100px;
-      padding: 10px;
-      resize: vertical;
+    .remove-waifu {
+      font-size: 85%;
+      padding-left: 10px;
     }
-    .user-interests {
-      @extend .col-xs-12;
-      margin: 10px 10px 0 -8px;
-      padding: 0;
-      li {
-        @extend .clearfix;
-        margin-bottom: 5px;
-        &:last-child {
-          margin-bottom: 0;
-        }
-      }
-      .remove-waifu {
-        font-size: 85%;
-        padding-left: 10px;
-      }
-      .interest-icon {
-        @extend .col-xs-1;
-        padding-left: 0;
-        padding-right: 0;
-        text-align: center;
-        position: relative;
-        top: 1px;
-        color: #999999;
-      }
-      .interest {
-        @extend .col-xs-11;
-        padding-left: 0;
-        padding-right: 0;
-        font-size: 18px;
-        input {
-          width: 100%;
-          border: 1px solid #ddd;
-          border-radius: 3px;
-          font-size: 16px;
-          padding: 3px 10px;
-        }
-        select {
-          border: 1px solid #ddd;
-          border-radius: 3px;
-          padding: 2px 5px;
-          margin: 3px 0;
-          font-size: 16px;
-        }
-      }
-    }
-    .submit-form {
-      @extend .col-sm-12;
-      margin-bottom: 15px;
-      text-align: right;
-      button {
-        background: $orange;
-        color: #fff;
-        border: none;
-        &:hover {
-          background: $darkOrange;
-        }
-        &:active {
-          background: darken($darkOrange, 5);
-        }
-      }
-    }
-  }
-
-  .grid-thumb {
-    padding: 5px !important;
-    .thumbnail {
-      padding: 0;
-      border: none;
-      margin-bottom: 0;
-      position: relative;
-      overflow: hidden;
-      img {
-        border-radius: 3px;
-      }
-    }
-  }
-
-  .move-overlay {
-    background: rgba(0,0,0,.5);
-    color: #fff;
-    font-size: 25px;
-    line-height: 190px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    text-align: center;
-    right: 0;
-    transition: .3s ease-in;
-    opacity: 0;
-    &.editing {
-      opacity: 1;
-      cursor: move;
-    }
-    &:hover {
-      background: rgba(0,0,0,.8);
-    }
-  }
-
-  .photos-videos {
-    .grid-thumb {
-      @extend .col-sm-3;
-    }
-  }
-
-  .favorite-anime {
-    .grid-thumb {
-      @extend .col-sm-4;
-    }
-  }
-
-  .no-favorites {
-    h3 {
-      margin-top: 5px;
-    }
-  }
-
-  .anime-breakdown-panel, .photos-videos, .favorite-anime {
-    @extend .panel;
-    @extend .panel-default;
-  }
-
-  .media-grid {
-    @extend .clearfix;
-  }
-
-  .anime-breakdown-panel{
-    .breakdown-info {
+    .interest-icon {
+      @extend .col-xs-1;
+      padding-left: 0;
+      padding-right: 0;
       text-align: center;
-      .breakdown-infotitle {
-        display: block;
+      position: relative;
+      top: 1px;
+      color: #999999;
+    }
+    .interest {
+      @extend .col-xs-11;
+      padding-left: 0;
+      padding-right: 0;
+      font-size: 18px;
+      input {
+        width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        font-size: 16px;
+        padding: 3px 10px;
+      }
+      select {
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        padding: 2px 5px;
+        margin: 3px 0;
+        font-size: 16px;
+      }
+    }
+  }
+  .submit-form {
+    @extend .col-sm-12;
+    margin-bottom: 15px;
+    text-align: right;
+    button {
+      background: $orange;
+      color: #fff;
+      border: none;
+      &:hover {
+        background: $darkOrange;
+      }
+      &:active {
+        background: darken($darkOrange, 5);
+      }
+    }
+  }
+}
+
+.grid-thumb {
+  padding: 5px !important;
+  .thumbnail {
+    padding: 0;
+    border: none;
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+    img {
+      border-radius: 3px;
+    }
+  }
+}
+
+.move-overlay {
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  font-size: 25px;
+  line-height: 190px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  right: 0;
+  transition: .3s ease-in;
+  opacity: 0;
+  &.editing {
+    opacity: 1;
+    cursor: move;
+  }
+  &:hover {
+    background: rgba(0,0,0,.8);
+  }
+}
+
+.photos-videos {
+  .grid-thumb {
+    @extend .col-sm-3;
+  }
+}
+
+.favorite-anime {
+  .grid-thumb {
+    @extend .col-sm-4;
+  }
+}
+
+.no-favorites {
+  h3 {
+    margin-top: 5px;
+  }
+}
+
+.anime-breakdown-panel, .photos-videos, .favorite-anime {
+  @extend .panel;
+  @extend .panel-default;
+}
+
+.media-grid {
+  @extend .clearfix;
+}
+
+.anime-breakdown-panel{
+  .breakdown-info {
+    text-align: center;
+    .breakdown-infotitle {
+      display: block;
+      font-weight: bold;
+    }
+    .breakdown-infotext {
+      font-size: 0.89em;
+    }
+  }
+  .breakdown-genrelist {
+    li {
+      padding: 7px 0 3px 0;
+      border-bottom: 1px solid #f2f2f2;
+      &:last-of-type {
+        border: none;
+      }
+      span {
+        font-family: "klavika", Helvetica, Arial, sans-serif;
         font-weight: bold;
       }
-      .breakdown-infotext {
-        font-size: 0.89em;
-      }
     }
-    .breakdown-genrelist {
-      li {
-        padding: 7px 0 3px 0;
-        border-bottom: 1px solid #f2f2f2;
-        &:last-of-type {
-          border: none;
-        }
-        span {
-          font-family: "klavika", Helvetica, Arial, sans-serif;
-          font-weight: bold;
-        }
-      }
-      .breakdown-numbr {
-        display: inline-block;
-        float: right;
-        color: #ec8661;
-      }
-    }
-    .breakdown-time {
-      color: #999;
-      strong {
-        color: #686868;
-        font-weight: normal;
-      }
-    }
-    .breakdown-icon {
+    .breakdown-numbr {
       display: inline-block;
-      padding-right: 15px;
-      float: left;
-      i {
-        color: #686868;
-        font-size: 2.8em;
-      }
+      float: right;
+      color: #ec8661;
     }
   }
-
-  .personal-feed {
-    @extend .col-sm-7;
-    @extend .col-md-7;
-    padding-left: 15px;
-    @media (max-width: 768px) {
-      padding-left: 10px;
-      padding-right: 10px;
+  .breakdown-time {
+    color: #999;
+    strong {
+      color: #686868;
+      font-weight: normal;
     }
   }
-
-  .status-update-panel {
-    @extend .panel;
-    @extend .panel-default;
-
-    .panel-footer {
-      @extend .clearfix;
-      display: none;
-      background: transparent;
-      border: none;
-      padding-top: 0;
-      margin-top: -25px;
+  .breakdown-icon {
+    display: inline-block;
+    padding-right: 15px;
+    float: left;
+    i {
+      color: #686868;
+      font-size: 2.8em;
     }
+  }
+}
+
+.user-feed {
+  @extend .col-sm-7;
+  @extend .col-md-7;
+  padding-left: 15px;
+  @media (max-width: 768px) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+.status-update-panel {
+  @extend .panel;
+  @extend .panel-default;
+
+  .panel-footer {
+    @extend .clearfix;
+    display: none;
+    background: transparent;
+    border: none;
+    padding-top: 0;
+    margin-top: -25px;
   }
 }
 
@@ -272,6 +271,100 @@
         .bubble-name {
           color: $darkOrange;
         }
+      }
+    }
+  }
+}
+
+
+/*
+  Global Feed
+*/
+.user-dashboard {
+  @extend .container;
+  margin-top: 30px;
+}
+
+.recently-watched {
+  background: darken(#e6e6e6, 5);
+  padding: 12px;
+  margin-bottom: 30px;
+  .series-title {
+    color: #fff;
+    margin-bottom: 60px;
+    border: none;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .series-slider {
+    padding-left: 10px;
+  }
+  .mark-multiple {
+    display: block;
+    margin-top: 15px;
+    color: #fff;
+    &:hover {
+      color: $darkOrange;
+    }
+  }
+  .watched-series {
+    @extend .col-sm-2;
+    padding: 10px;
+    float: left;
+    @media (max-width: 900px) {
+      width: 25%;
+    }
+    @media (max-width: 625px) {
+      width: 33.3333333333%;
+    }
+    @media (max-width: 490px) {
+      width: 50%;
+    }
+    .overlay-wrapper {
+      position: relative;
+    }
+    .overlay-panel {
+      background: rgba(39, 44, 50, .8);
+      border-radius: 3px;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 5px 10px;
+      opacity: 0;
+      transition: opacity .3s ease-in-out;
+    }
+    .actionable {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      margin-top: -20px;
+    }
+    .stats {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      color: #bdc5d1;
+      h4 {
+        margin-bottom: 0;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+    &.active {
+      .overlay-panel {
+        opacity: 1;
+      }
+    }
+    &:hover {
+      .overlay-panel {
+        opacity: 1;
       }
     }
   }

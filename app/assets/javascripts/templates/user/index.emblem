@@ -1,7 +1,7 @@
 .profile-content
   .row
     / Left "About" column
-    .about-info
+    .secondary-info
       / About User Panel
       .user-about-panel
         .panel-heading
@@ -126,16 +126,16 @@
           if viewingSelf
             span.edit-panel
               unless editingFavorites
-                a click="editFav" Edit 
+                a click="editFav" Edit
               else
-                a click="doneEditingFav" Save       
+                a click="doneEditingFav" Save
 
         .panel-body
           favorite-anime-container favorite_anime_list=favorite_anime_list currentUser=currentUser isEditing=editingFavorites user=user
           if can_load_more
             .more-wrapper
-              a class="view-more-button" click="loadMoreFavorite_animes" View More        
-    .personal-feed
+              a class="view-more-button" click="loadMoreFavorite_animes" View More
+    .user-feed
       / Status Update Panel
       .status-update-panel
         .panel-body.status-panel

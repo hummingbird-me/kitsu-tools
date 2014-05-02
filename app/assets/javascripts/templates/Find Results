@@ -1,0 +1,130 @@
+Searching 2191 files for "edit-bio"
+
+/Users/joshfabian/hummingbird-v2/app/assets/javascripts/templates/user/index.emblem:
+   16          .panel-body
+   17            if isEditing
+   18:             div class={ :edit-bio-chars bioCharsLeft:hasleft:noleft } #{bioCharCounter} left
+   19:             == textarea class="edit-bio" rows="4" placeholder="Tell us about yourself  :3" value=user.miniBio
+   20              .user-interests
+   21                ul
+
+/Users/joshfabian/hummingbird-v2/app/assets/stylesheets/modules/activity-feed.css.scss:
+   15      @extend .panel-default;
+   16      @extend .clearfix;
+   17:     .edit-bio-chars {
+   18        display: block;
+   19        float: right;
+   ..
+   26        }
+   27      }
+   28:     .edit-bio {
+   29        width: 100%;
+   30        border-radius: 3px;
+
+~/hummingbird-v2/log/development.log:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sass/4428eaca17b161cf0f5eccf5c337b85f0344e7a5/activity-feed.css.scssc:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/0d3881005b0646df783d5c24683d34f5:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/6cc48025662bf7bf1ed71e8175d51050:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/86e145a39f85cceeaffdff91ebb61449:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/8ab512c9b33ac90e699b73469d71f061:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/a3b5655e8637878b0dcb4c1ed3653934:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/b26a62931886303d51e9e29b61e96dd7:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/bb9e1833196ce393289b084524c1caf7:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/bcca522c6302f184f12fe0e8a7d7e71a:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/c13fc73ceafa45876a901b3e775b83ae:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/c772c1b43bb6bf3d1806a6d30b9a901f:
+    <binary>
+
+40 matches across 14 files
+
+
+Searching 2224 files for "personal-feed"
+
+/Users/joshfabian/hummingbird-v2/app/assets/javascripts/templates/user/index.emblem:
+  136              .more-wrapper
+  137                a class="view-more-button" click="loadMoreFavorite_animes" View More        
+  138:     .personal-feed
+  139        / Status Update Panel
+  140        .status-update-panel
+
+/Users/joshfabian/hummingbird-v2/app/assets/stylesheets/modules/activity-feed.css.scss:
+  206    }
+  207  
+  208:   .personal-feed {
+  209      @extend .col-sm-7;
+  210      @extend .col-md-7;
+
+~/hummingbird-v2/log/development.log:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sass/4428eaca17b161cf0f5eccf5c337b85f0344e7a5/activity-feed.css.scssc:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/0d3881005b0646df783d5c24683d34f5:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/6cc48025662bf7bf1ed71e8175d51050:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/86e145a39f85cceeaffdff91ebb61449:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/8ab512c9b33ac90e699b73469d71f061:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/a3b5655e8637878b0dcb4c1ed3653934:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/b26a62931886303d51e9e29b61e96dd7:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/bb9e1833196ce393289b084524c1caf7:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/bcca522c6302f184f12fe0e8a7d7e71a:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/c13fc73ceafa45876a901b3e775b83ae:
+    <binary>
+
+~/hummingbird-v2/tmp/cache/assets/development/sprockets/c772c1b43bb6bf3d1806a6d30b9a901f:
+    <binary>
+
+79 matches across 14 files
+
+
+Searching 2301 files for "new_dash"
+
+/Users/joshfabian/hummingbird-v2/app/controllers/home_controller.rb:
+   27      end
+   28  
+   29:     if params.has_key?(:new_dash) or 1=1
+   30        render_ember
+   31      end
+
+~/hummingbird-v2/log/development.log:
+    <binary>
+
+11 matches across 2 files
