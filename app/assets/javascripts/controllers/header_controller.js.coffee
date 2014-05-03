@@ -24,9 +24,10 @@ Hummingbird.HeaderController = Ember.Controller.extend
     @_super()
   )
 
-  submitSearch: (->
-    @transitionToRoute('search', @get('searchTerm'));
-  )
+  instantSearchResults: []
+  hasInstantSearchResults: (->
+    @get('instantSearchResults').length != 0
+  ).property('instantSearchResults')
   instantSearch: (->
     blodhound = @get('bhInstance')
     searchterm = @get('searchTerm')
@@ -41,3 +42,6 @@ Hummingbird.HeaderController = Ember.Controller.extend
       if @get('showSearchbar') == false
         @set('instantSearchResults', [])
       false #prevent event-bubbling
+    submitSearch: ->
+      alert 'a'
+      @transitionToRoute('search', @get('searchTerm'));

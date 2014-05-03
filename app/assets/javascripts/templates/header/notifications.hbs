@@ -5,6 +5,7 @@
   <a {{action 'toggleSearchbar'}} class="search-link">
     <i class='fa fa-search' style="position: relative; bottom: initial;"></i>
   </a>
+  {{#if hasInstantSearchResults}}
   <ul {{bind-attr class=":search-dropdown"}}>
     {{#each result in instantSearchResults}}
       <li class="search-result">
@@ -18,7 +19,11 @@
         </a>
       </li>
     {{/each}}
+    <li class="search-result search-result-more">
+      {{#link-to 'search' searchTerm}}View more (enter){{/link-to}}
+    </li>
   </ul>
+  {{/if}}
 </li>
 <li class='dropdown notifications'>
   <a class='dropdown-toggle notification-link' data-toggle='dropdown' href='#'>
