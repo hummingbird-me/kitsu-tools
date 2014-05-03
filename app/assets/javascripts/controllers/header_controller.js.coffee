@@ -11,6 +11,7 @@ Hummingbird.HeaderController = Ember.Controller.extend
       datumTokenizer: (d)->
         Bloodhound.tokenizers.whitespace(d.value)
       queryTokenizer: Bloodhound.tokenizers.whitespace
+      limit: 6
       remote:
         url: '/search.json?query=%QUERY&type=mixed'
         filter: (results)->

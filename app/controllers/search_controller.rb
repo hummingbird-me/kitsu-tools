@@ -64,7 +64,8 @@ class SearchController < ApplicationController
     # This will only return minimal data about anime and users
     elsif @search_type == "mixed"
       anime = search_database 'anime', params[:query], params[:page]
-      users = User.search(params[:query])[0..1]
+      users = User.match(params[:query])
+      users = User.search(params[:query]) if users.length == 0
 
       formattedAnime = anime.map { |x|
         {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }

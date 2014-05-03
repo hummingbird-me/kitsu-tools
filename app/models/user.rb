@@ -88,6 +88,10 @@ class User < ActiveRecord::Base
     where('LOWER(name) = ?', id.to_s.downcase).first || super
   end
 
+  def self.match(query)
+    where('LOWER(name) = ?', query.to_s.downcase)
+  end
+
   def self.search(query)
     where('LOWER(name) LIKE :query OR LOWER(email) LIKE :query', query: "#{query.downcase}%")
   end
