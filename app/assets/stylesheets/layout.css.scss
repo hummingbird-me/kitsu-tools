@@ -154,9 +154,12 @@ Global Header
     .search-dropdown {
       background: darken($darkNavy, 2);
       border-radius: 0 0 4px 4px;
+      max-width: 300px;
+      overflow: hidden;
       .search-result {
         text-align: left;
         border-top: 1px solid darken($darkNavy, 1);
+        position: relative;
         a {
           display: block;
           width: 100%;
@@ -177,11 +180,17 @@ Global Header
         }
         .search-result-title {
           color: #fff;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding-right: 60px;
         } 
         .search-result-badge {
-          float: right;
           font-size: 0.7em;
           font-weight: normal;
+          position: absolute;
+          right: 15px;
+          top: 12px;
           &.anime { background: #3A5FCD; }
           &.user  { background: #6959CD; }
         }
