@@ -1,4 +1,4 @@
-.recently-watched
+.recently-watched class={showUpdater:expanded:notexpanded}
   ul.series-slider
     li.watched-series.active
       .overlay-wrapper

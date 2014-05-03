@@ -36,6 +36,8 @@ Hummingbird.HeaderController = Ember.Controller.extend
       @set('instantSearchResults', suggestions)
   ).observes('searchTerm')
 
+  showUpdater: false
+
   actions:
     toggleSearchbar: ->
       @toggleProperty('showSearchbar')
@@ -45,3 +47,5 @@ Hummingbird.HeaderController = Ember.Controller.extend
     submitSearch: ->
       alert 'a'
       @transitionToRoute('search', @get('searchTerm'));
+    toggleUpdater: ->
+      @toggleProperty('showUpdater')

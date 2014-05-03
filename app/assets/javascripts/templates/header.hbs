@@ -52,7 +52,13 @@
         <li class='dropdown'>
           <a href="http://forums.hummingbird.me">Community</a>
         </li>
-        <li><a href="#" id="recent-toggle">Update</a></li>
+        <li>
+          {{#if showUpdater}}
+            <a {{action 'toggleUpdater'}} class="close-recent" href="#" id="recent-toggle">Close</a>
+          {{else}}
+            <a {{action 'toggleUpdater'}} href="#" id="recent-toggle">Update</a>
+          {{/if}}
+        </li>
       </ul>
 
 {{!--       <form class='navbar-form navbar-left' role='search'>
