@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   database: hummingbird_development
-  host: <%= ENV['POSTGRES_HOST'] %>
+  host: localhost
   port: 5432
 
 test:
