@@ -9,7 +9,7 @@
   <ul {{bind-attr class=":search-dropdown"}}>
     {{#each result in instantSearchResults}}
       <li class="search-result">
-        <a {{bind-attr href="result.link"}}>
+        <a {{bind-attr href="result.link" title="result.title"}}>
           <div class="search-result-thumb">
             <img {{bind-attr src="result.image"}} />
           </div>
