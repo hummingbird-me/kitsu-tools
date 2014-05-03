@@ -290,11 +290,12 @@
   background: #4b5360;
   padding: 12px;
   width: 100%;
-  overflow: scroll;
+  overflow: hidden;
   margin-top: -304px;
   transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
   &.expanded {
     margin-top: 0;
+    overflow-x: scroll;
   }
   .series-title {
     color: #fff;
