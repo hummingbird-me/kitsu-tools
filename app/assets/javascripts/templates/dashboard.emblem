@@ -9,7 +9,7 @@
             each post in recentPostPaged
               li.latest-post
                 .latest-post-title
-                  a href="post.link" #{post.title}
+                  a href=post.link #{post.title}
                   .pull-right
                     span.badge #{post.posts} <i class="fa fa-pencil"></i>
                 .latest-post-details
