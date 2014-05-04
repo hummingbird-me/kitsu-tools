@@ -7,8 +7,17 @@
   @extend .col-sm-5;
   @extend .col-md-5;
   @extend .hidden-xs;
-
   padding-right: 0px;
+}
+
+.latest-posts-panel {
+  @extend .panel;
+  @extend .panel-default;
+  @extend .clearfix;
+  .latest-post {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
 }
 
 .user-about-panel {

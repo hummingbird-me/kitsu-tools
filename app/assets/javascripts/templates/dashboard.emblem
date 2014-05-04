@@ -1,7 +1,28 @@
 .container
   .row
     .secondary-info
-      p forum bullshit
+      .latest-posts-panel
+        .panel-heading
+          h3.panel-title Community discussions
+        .panel-body
+          ul.latest-post-list
+          each post in recentPost
+            li.latest-post
+              post.title
+          else
+            loading-indicator
+
+      .latest-posts-panel
+        .panel-heading
+          h3.panel-title Industry news
+        .panel-body
+          ul.latest-post-list
+          each post in recentNews
+            li.latest-post
+              post.title
+          else
+            loading-indicator
+
 
     .user-feed
       .status-update-panel
