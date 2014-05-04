@@ -30,7 +30,7 @@
           h3.panel-title Industry news
         .panel-body
           ul.latest-post-list
-            each post in recentPostPaged
+            each post in recentNewsPaged
               li.latest-post
                 .latest-post-title
                   a href=post.link #{post.title}

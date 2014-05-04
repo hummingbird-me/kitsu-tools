@@ -22,7 +22,7 @@ Hummingbird.DashboardController = Ember.Controller.extend
     $.getJSON "http://forums.hummingbird.me/latest.json", (payload) =>
       @set('recentPost', @generateThreadList(payload))
 
-    $.getJSON "http://forums.hummingbird.me/category/industry-news/l/latest.json", (payload) =>
+    $.getJSON "http://forums.hummingbird.me/category/industry-news.json", (payload) =>
       @set('recentNews', @generateThreadList(payload))
 
   generateThreadList: (rawload) ->
