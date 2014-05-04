@@ -4,6 +4,7 @@ Hummingbird::Application.routes.draw do
   resources :library_entries
   resources :franchises
   resources :full_anime
+  resources :news_feeds
   resources :quotes
   resources :stories
   resources :user_infos

@@ -199,6 +199,21 @@ class API_v1 < Grape::API
     end
   end
 
+  desc "Return the user's timeline - ember model"
+  params do
+    optional :page, type: Integer
+  end
+  get '/timeline/newsFeeds' do
+    if user_signed_in?
+      feed = NewsFeed.new(current_user).fetch(params[:page])
+      #feed.to_json
+      feed[:meta] = {cursor: 1 + (params[:page] || 1).to_i}
+      feed
+    else
+      []
+    end
+  end
+
   resource :users do
     desc "Return authentication code"
     params do

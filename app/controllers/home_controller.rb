@@ -26,9 +26,9 @@ class HomeController < ApplicationController
       redirect_to "/"
     end
 
-    if params.has_key?(:new_dash) #or user_signed_in?
+#    if params.has_key?(:new_dash) #or user_signed_in?
       render_ember
-    end
+ #   end
   end
 
   def feed
