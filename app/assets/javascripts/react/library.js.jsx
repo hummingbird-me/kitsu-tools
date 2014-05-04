@@ -350,7 +350,7 @@
             <div className="list-item-right">
               <div className="list-item-progress">
                 { this.props.view.get('user.viewingSelf')
-                  ? <i className="episode-increment" onClick={this.incrementEpisodes} />
+                  ? <i title="Increment episode count" className="episode-increment" onClick={this.incrementEpisodes} />
                   : '' }
                 <form style={ {display: "inline"} } onSubmit={this.saveEpisodesWatched} >
                   <input className="input-progress" type="text" pattern="[0-9]*" value={content.get('episodesWatched')} onChange={this.changeProgress} onBlur={this.saveEpisodesWatched} />
