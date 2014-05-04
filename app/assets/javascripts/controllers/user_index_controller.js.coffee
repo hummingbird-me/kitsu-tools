@@ -15,6 +15,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   ).property('bioCharCounter')
   bioCharCounter: (->
     newString = @get('user.miniBio')
+    newString = "" if(newString == null || newString == undefined)
     newLength = newString.length
     remLength = 160 - newLength
     if remLength <= 0
