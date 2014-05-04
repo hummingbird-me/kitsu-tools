@@ -15,6 +15,6 @@ bootstrap-modal action="close"
 						img.changelog-commit-avatar src=uimg
 				.changelog-commit-message
 					span=mesg
-		if isLoading
+		else
 			.changelog-loading
 				loading-indicator
