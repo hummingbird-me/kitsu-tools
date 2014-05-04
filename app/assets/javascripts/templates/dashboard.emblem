@@ -34,7 +34,8 @@
               li.latest-post
                 .latest-post-title
                   a href=post.link #{post.title}
-                  span.badge.pull-right #{post.posts}
+                  .pull-right
+                    span.badge #{post.posts} <i class="fa fa-pencil"></i>
                 .latest-post-details
                   span.post-time-ago 
                     time-ago time=post.udate
