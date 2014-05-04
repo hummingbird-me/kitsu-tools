@@ -1,4 +1,4 @@
-.profile-content {
+.profile-content  {
   @extend .container;
   margin-top: 30px;
 }
@@ -14,9 +14,37 @@
   @extend .panel;
   @extend .panel-default;
   @extend .clearfix;
-  .latest-post {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+  .panel-body {
+    padding: 0;
+    .latest-post-list {
+      margin: 0;
+      padding: 0;
+      .latest-post {
+        list-style-type: none;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+        .badge {
+          background: #FFA07A;
+        }
+        .post-time-ago {
+          display: inline-block;
+          padding-top: 2px;
+          font-size: 0.8em;
+          color: #666;
+        }
+        .recent-post-avatar {
+          width: 20px;
+          height: 20px;
+          border: 1px solid #ddd;
+          border-radius: 2px;
+        }
+      }
+      .latest-post-more {
+        padding: 10px;
+        text-align: center;
+        background: #f7f7f7;
+      }
+    }
   }
 }
 

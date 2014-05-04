@@ -4,6 +4,12 @@
   text-align: center;
 }
 
+.small-loader {
+  .loading-indicator {
+    margin: 10px auto;
+  }
+}
+
 .light .loading-indicator > div {
   background-color: $lighterNavy;
 }

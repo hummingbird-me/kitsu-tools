@@ -6,22 +6,47 @@
           h3.panel-title Community discussions
         .panel-body
           ul.latest-post-list
-          each post in recentPost
-            li.latest-post
-              post.title
-          else
-            loading-indicator
+            each post in recentPostPaged
+              li.latest-post
+                .latest-post-title
+                  a href="post.link" #{post.title}
+                  .pull-right
+                    span.badge #{post.posts} <i class="fa fa-pencil"></i>
+                .latest-post-details
+                  span.post-time-ago 
+                    time-ago time=post.udate
+                  .pull-right
+                    each user in post.users
+                      a.userImage href=user.link title=user.name
+                        img.recent-post-avatar src=user.image
+            else
+              li.small-loader
+                loading-indicator
+            li.latest-post-more
+              a click="showMorePost" Show more
 
       .latest-posts-panel
         .panel-heading
           h3.panel-title Industry news
         .panel-body
           ul.latest-post-list
-          each post in recentNews
-            li.latest-post
-              post.title
-          else
-            loading-indicator
+            each post in recentPostPaged
+              li.latest-post
+                .latest-post-title
+                  a href=post.link #{post.title}
+                  span.badge.pull-right #{post.posts}
+                .latest-post-details
+                  span.post-time-ago 
+                    time-ago time=post.udate
+                  .pull-right
+                    each user in post.users
+                      a.userImage href=user.link title=user.name
+                        img.recent-post-avatar src=user.image
+            else
+              li.small-loader
+                loading-indicator
+            li.latest-post-more
+              a click="showMorePost" Show more
 
 
     .user-feed
