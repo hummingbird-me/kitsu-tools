@@ -5,6 +5,13 @@ Hummingbird.DashboardController = Ember.Controller.extend
   recentPostNum: 10
   recentNewsNum: 10
 
+  recentPostMax: (->
+    @get('recentPostNum') == 30
+  ).property('recentPostNum')
+  recentNewsMax: (->
+    @get('recentNewsNum') == 30
+  ).property('recentNewsNum')
+
   recentPostPaged: (->
     @get('recentPost').slice(0, @get('recentPostNum'))
   ).property('recentPost', 'recentPostNum')
@@ -52,6 +59,13 @@ Hummingbird.DashboardController = Ember.Controller.extend
 
   actions: 
     showMorePost: ->
-      @set('recentPostNum', @get('recentPostNum')+10) if @get('recentPostNum') < 30
+      if @get('recentPostMax')
+        window.location.replace("http://forums.hummingbird.me/latest");
+      else
+        @set('recentPostNum', @get('recentPostNum')+10)
+      
     showMoreNews: ->
-      @set('recentNewsNum', @get('recentNewsNum')+10) if @get('recentNewsNum') < 30
+      if @get('recentNewsMax')
+        window.location.replace("http://forums.hummingbird.me/category/industry-news");
+      else
+        @set('recentNewsNum', @get('recentNewsNum')+10)
