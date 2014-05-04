@@ -6,7 +6,6 @@
           h4.series-title No Game, No Life
           .actionable
             a class="episode-button" href="#" Mark <strong>EP 04</strong> <span>Seen</span>
-            a class="mark-multiple" href="#" Mark Multiple
           .stats
             %h4 25% Complete
             %p Seen 03 of 12
@@ -15,10 +14,9 @@
     li.watched-series
         .overlay-wrapper
           .overlay-panel
-            h4.series-title Hanbun no Tsuki ga Noboru Sora
+            h4.series-title Black Bullet
             .actionable
               a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
-              a class="mark-multiple" href="#" Mark Multiple
             .stats
               %h4 10% Complete
               %p Seen 01 of 10
@@ -27,10 +25,9 @@
     li.watched-series
       .overlay-wrapper
         .overlay-panel
-          h4.series-title Hanbun no Tsuki ga Noboru Sora
+          h4.series-title One Piece
           .actionable
             a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
-            a class="mark-multiple" href="#" Mark Multiple
           .stats
             %h4 10% Complete
             %p Seen 01 of 10
@@ -39,10 +36,9 @@
     li.watched-series
       .overlay-wrapper
         .overlay-panel
-          h4.series-title Hanbun no Tsuki ga Noboru Sora
+          h4.series-title Nisekoi False Love
           .actionable
             a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
-            a class="mark-multiple" href="#" Mark Multiple
           .stats
             %h4 10% Complete
             %p Seen 01 of 10
@@ -51,10 +47,9 @@
     li.watched-series
       .overlay-wrapper
         .overlay-panel
-          h4.series-title Hanbun no Tsuki ga Noboru Sora
+          h4.series-title Samurai Champloo
           .actionable
             a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
-            a class="mark-multiple" href="#" Mark Multiple
           .stats
             %h4 10% Complete
             %p Seen 01 of 10
@@ -63,10 +58,9 @@
     li.watched-series
       .overlay-wrapper
         .overlay-panel
-          h4.series-title Hanbun no Tsuki ga Noboru Sora
+          h4.series-title Kill la Kill
           .actionable
             a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
-            a class="mark-multiple" href="#" Mark Multiple
           .stats
             %h4 10% Complete
             %p Seen 01 of 10
@@ -77,7 +71,6 @@
           h4.series-title No Game, No Life
           .actionable
             a class="episode-button" href="#" Mark <strong>EP 04</strong> <span>Seen</span>
-            a class="mark-multiple" href="#" Mark Multiple
           .stats
             %h4 25% Complete
             %p Seen 03 of 12
@@ -86,10 +79,9 @@
     li.watched-series
         .overlay-wrapper
           .overlay-panel
-            h4.series-title Hanbun no Tsuki ga Noboru Sora
+            h4.series-title Black Bullet
             .actionable
               a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
-              a class="mark-multiple" href="#" Mark Multiple
             .stats
               %h4 10% Complete
               %p Seen 01 of 10
@@ -101,7 +93,6 @@
           h4.series-title Hanbun no Tsuki ga Noboru Sora
           .actionable
             a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
-            a class="mark-multiple" href="#" Mark Multiple
           .stats
             %h4 10% Complete
             %p Seen 01 of 10
@@ -113,7 +104,6 @@
           h4.series-title Hanbun no Tsuki ga Noboru Sora
           .actionable
             a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
-            a class="mark-multiple" href="#" Mark Multiple
           .stats
             %h4 10% Complete
             %p Seen 01 of 10
@@ -125,7 +115,6 @@
           h4.series-title Hanbun no Tsuki ga Noboru Sora
           .actionable
             a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
-            a class="mark-multiple" href="#" Mark Multiple
           .stats
             %h4 10% Complete
             %p Seen 01 of 10
@@ -137,7 +126,6 @@
           h4.series-title Hanbun no Tsuki ga Noboru Sora
           .actionable
             a class="episode-button" href="#" Mark <strong>EP 02</strong> <span>Seen</span>
-            a class="mark-multiple" href="#" Mark Multiple
           .stats
             %h4 10% Complete
             %p Seen 01 of 10
