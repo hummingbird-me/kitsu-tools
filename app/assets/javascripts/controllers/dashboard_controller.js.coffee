@@ -1,15 +1,14 @@
 Hummingbird.DashboardController = Ember.Controller.extend
   recentPost: []
   recentNews: []
-
-  recentPostNum: 10
-  recentNewsNum: 10
+  recentPostNum: 5
+  recentNewsNum: 5
 
   recentPostMax: (->
-    @get('recentPostNum') == 30
+    @get('recentPostNum') == 29
   ).property('recentPostNum')
   recentNewsMax: (->
-    @get('recentNewsNum') == 30
+    @get('recentNewsNum') == 29
   ).property('recentNewsNum')
 
   recentPostPaged: (->
@@ -17,7 +16,7 @@ Hummingbird.DashboardController = Ember.Controller.extend
   ).property('recentPost', 'recentPostNum')
   recentNewsPaged: (->
     @get('recentNews').slice(0, @get('recentNewsNum'))
-  ).property('recentNews', 'recentPostNum')
+  ).property('recentNews', 'recentNewsNum')
 
   init: ->
     $.getJSON "http://forums.hummingbird.me/latest.json", (payload) =>
@@ -62,10 +61,10 @@ Hummingbird.DashboardController = Ember.Controller.extend
       if @get('recentPostMax')
         window.location.replace("http://forums.hummingbird.me/latest");
       else
-        @set('recentPostNum', @get('recentPostNum')+10)
+        @set('recentPostNum', @get('recentPostNum')+8)
       
     showMoreNews: ->
       if @get('recentNewsMax')
         window.location.replace("http://forums.hummingbird.me/category/industry-news");
       else
-        @set('recentNewsNum', @get('recentNewsNum')+10)
+        @set('recentNewsNum', @get('recentNewsNum')+8)
