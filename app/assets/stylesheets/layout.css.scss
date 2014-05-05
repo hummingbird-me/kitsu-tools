@@ -117,6 +117,7 @@ Global Header
       background: none !important;
       i {
         &.hasNew { color: #e57c48; }
+        &.hasNoNew { padding: 0 10px; }
       }
     }
     .dropdown-menu {
