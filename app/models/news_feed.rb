@@ -45,7 +45,7 @@ class NewsFeed
   # Fetch a page of stories from the user's timeline. Generate a timeline if 
   # the user's timeline doesn't already exist in memory.
   def fetch(page=nil)
-    regenerate_feed! unless cached?
+    regenerate_feed! 
     $redis.expire @feed_key, INACTIVE_DAYS * 24 * 60 * 60
 
     page ||= 1
@@ -65,7 +65,6 @@ class NewsFeed
     user_set = active_followed_users + [@user.id]
 
     stories = Story.for_user(@user).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(FRESH_FETCH_SIZE)
-
     stories.each {|story| add! story }
   end
 
