@@ -19,6 +19,17 @@
     .latest-post-list {
       margin: 0;
       padding: 0;
+      .latest-post-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 5px;
+        a {
+          color: #555;
+          font-weight: 500;
+          font-size: 14px;
+        }
+      }
       .latest-post {
         list-style-type: none;
         border-bottom: 1px solid #ddd;
@@ -32,12 +43,13 @@
           font-size: 0.8em;
           color: #666;
         }
-        .recent-post-avatar {
-          width: 20px;
-          height: 20px;
-          border: 1px solid #ddd;
-          border-radius: 2px;
-        }
+      }
+      .recent-post-avatar {
+        width: 20px;
+        height: 20px;
+        border: none;
+        border-radius: 3px;
+        margin-right: 5px ;
       }
       .latest-post-more {
         padding: 10px;

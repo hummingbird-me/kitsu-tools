@@ -35,7 +35,6 @@ Hummingbird.DashboardController = Ember.Controller.extend
     for topic in rawload.topic_list.topics
       continue if topic.pinned
       title = topic.title
-      title = topic.title[0..40]+"..." if title.length > 40
       posts = topic.highest_post_number
       udate = topic.last_posted_at
       link  = "http://forums.hummingbird.me/t/"+topic.slug+"/"+topic.id+"/"
