@@ -55,6 +55,12 @@
         padding: 10px;
         text-align: center;
         background: #f7f7f7;
+        a {
+          color: #7a7a7a;
+          &:hover {
+            color: $orange;
+          }
+        }
       }
     }
   }
