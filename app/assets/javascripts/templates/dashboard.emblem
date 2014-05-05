@@ -55,9 +55,9 @@
     .user-feed
       .status-update-panel
         .panel-body.status-panel
-          textarea.status-form placeholder="Write something..." rows="1"
+          view Ember.TextArea class="status-form" placeholder="Write something..." rows="1" valueBinding="newPost"
         .panel-footer
-          button.btn.status-button data-bindattr-12="12" data-ember-action="11" Post Status
+          button.btn.status-button click="submitPost" class=inFlight:disabled Post Status
 
       each content itemController="story" itemViewClass="Hummingbird.StoryView"
       

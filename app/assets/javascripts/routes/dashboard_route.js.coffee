@@ -10,4 +10,12 @@ Hummingbird.DashboardRoute = Ember.Route.extend Hummingbird.Paginated,
     @setCanLoadMore(true)
     controller.set 'canLoadMore', true
     controller.set 'model', []
+    if Ember.isNone(@get('pollster'))
+      @set 'pollster', Hummingbird.Pollster.create
+        onPoll: -> 
+          controller.get('target').send('reloadFirstPage')
+      
+    @get('pollster').start()
+  deactivate:->
+    @get('pollster').stop()
 

@@ -21,10 +21,18 @@ Hummingbird.HeaderQuickUpdateComponent = Ember.Component.extend
   episodesWatchedStats: (->
     epsWatched = @get('item.episodesWatched')
     eps = @get('item.anime.episodeCount')
-
-    return Math.ceil( (epsWatched / eps) * 100)
+    if eps
+      return Math.ceil( (epsWatched / eps) * 100)
+    else return "--"
   ).property('item.anime', 'item')
-
+ 
+  episodeCount: (->
+    count = @get('item.anime.episodeCount')
+    if count
+      return count
+    else return "?"
+  ).property('item.anime')
+  
   incrementLabel: (->
     epsWatched = @get('item.episodesWatched')
     eps = @get('item.anime.episodeCount')

@@ -3,6 +3,8 @@ Hummingbird.DashboardController = Ember.Controller.extend
   recentNews: []
   recentPostNum: 5
   recentNewsNum: 5
+  newPost: ""
+  inFlight: false
 
   recentPostMax: (->
     @get('recentPostNum') == 29
@@ -25,14 +27,6 @@ Hummingbird.DashboardController = Ember.Controller.extend
 
     $.getJSON "http://forums.hummingbird.me/category/industry-news.json", (payload) =>
       @set('recentNews', @generateThreadList(payload))
-    @.updateFeed()
- 
-  updateFeed: ->
-    _this = @
-    Ember.run.later @, (-> 
-      _this.get('target').send('reloadFirstPage')   
-      _this.updateFeed()
-    ), 30000
  
   generateThreadList: (rawload) ->
     listElements = []
@@ -76,3 +70,19 @@ Hummingbird.DashboardController = Ember.Controller.extend
         window.location.replace("http://forums.hummingbird.me/category/industry-news");
       else
         @set('recentNewsNum', @get('recentNewsNum')+8)
+    submitPost: (post)->
+      _this = @
+      newPost = @get('newPost')
+
+      if newPost.length > 0 
+        @set('inFlight', true)
+        Ember.$.ajax
+          url: "/users/" + _this.get('currentUser.id') + "/comment.json"
+          data: {comment: newPost}
+          type: "POST"
+          success: (payload)->
+            _this.setProperties({newPost: "", inFlight: false})
+            _this.get('target').send('reloadFirstPage') 
+          failure: ()->
+            alert("Failed to save comment")
+      else return
