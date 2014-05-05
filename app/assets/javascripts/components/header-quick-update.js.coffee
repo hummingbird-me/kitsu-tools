@@ -8,9 +8,10 @@ Hummingbird.HeaderQuickUpdateComponent = Ember.Component.extend
       epsWatched = item.get('episodesWatched')
       eps = @get('item.anime.episodeCount')
 
-      if (epsWatched < eps)
+      if (epsWatched < eps || !eps)
         item.set('episodesWatched', epsWatched + 1)
         item.save()
+        
  
   imageUrl: (->
     item = @get('item')
