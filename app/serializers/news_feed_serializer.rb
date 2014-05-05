@@ -25,7 +25,7 @@ class NewsFeedSerializer < ActiveModel::Serializer
     # FIXME This logic doesn't belong in a serializer. Move it to the substory
     # before_save hook.
     if first_substory
-      if first_substory.data["formatted_comment"].nil?
+      if first_substory.data["formatted_comment"]
         formatted_comment = MessageFormatter.format_message first_substory.data["comment"]
         first_substory.data["formatted_comment"] = formatted_comment
         first_substory.save
