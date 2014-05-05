@@ -26,6 +26,7 @@ Hummingbird.DashboardController = Ember.Controller.extend
     $.getJSON "http://forums.hummingbird.me/category/industry-news.json", (payload) =>
       @set('recentNews', @generateThreadList(payload))
     @.updateFeed()
+    window.dcon = @    
  
   updateFeed: ->
     _this = @
@@ -33,7 +34,7 @@ Hummingbird.DashboardController = Ember.Controller.extend
       _this.get('target').send('reloadFirstPage')   
       _this.updateFeed()
     ), 30000
-
+ 
   generateThreadList: (rawload) ->
     listElements = []
     listUserOrdr = {}
