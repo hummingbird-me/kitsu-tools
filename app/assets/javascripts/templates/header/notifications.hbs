@@ -6,7 +6,7 @@
     <i class='fa fa-search' style="position: relative; bottom: initial;"></i>
   </a>
   {{#if hasInstantSearchResults}}
-  <ul {{bind-attr class=":search-dropdown"}}>
+  <ul class="search-dropdown">
     {{#each result in instantSearchResults}}
       <li class="search-result">
         <a {{bind-attr href="result.link" title="result.title"}}>
@@ -19,9 +19,11 @@
         </a>
       </li>
     {{/each}}
+    {{!--
     <li class="search-result search-result-more">
       {{#link-to 'search' searchTerm}}View more (enter){{/link-to}}
     </li>
+    --}}
   </ul>
   {{/if}}
 </li>
@@ -57,7 +59,6 @@
       </li>
     {{/each}}
     <li>
-      {{!-- <a href='#'>View All Notifications</a> --}}
       {{#link-to 'notifications'}}View All Notifications{{/link-to}}
     </li>
   </ul>
