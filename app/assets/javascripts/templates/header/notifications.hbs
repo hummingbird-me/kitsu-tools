@@ -1,6 +1,6 @@
 <li {{bind-attr class=":notifications :searchbar showSearchbar:isactive:isinactive"}}>
   {{#if showSearchbar}}
-    {{input class="search-field" action="submitSearch" value=searchTerm placeholder="Search for..."}}
+    {{input class="search-field" value=searchTerm placeholder="Search for..."}}
   {{/if}}
   <a {{action 'toggleSearchbar'}} class="search-link">
     <i class='fa fa-search' style="position: relative; bottom: initial;"></i>
@@ -27,12 +27,16 @@
 </li>
 <li class='dropdown notifications'>
   <a class='dropdown-toggle notification-link' data-toggle='dropdown' href='#'>
-    <i class='fa fa-bell active'>&nbsp;{{strpad newNotifications.length}}</i>
+    <i {{bind-attr class=':fa :fa-bell :active hasUnreadNotifications:hasNew:hasNoNew'}}>
+      {{#if hasUnreadNotifications}}
+        {{strpad unreadNotifications}}
+      {{/if}}
+    </i>
   </a>
   <ul class='dropdown-menu notification-dropdown right-nav-section'>
-    {{#each panelNotifications}}
-      <li>
-        <a {{bind-attr class=":clearfix :notification seen:nonew:new"}}='clearfix notification new' href='#'>
+    {{#each limitedNotifications}}
+      <li {{bind-attr class=":notification-element seen:nonew:new"}}>
+        {{#link-to 'user.index' controller.currentUser classNames="clearfix"}}
           <div class='col-xs-1 col-sm-1 col-md-1 user-avatar'>
             <img {{bind-attr src="source_avatar"}}>
           </div>
@@ -45,7 +49,7 @@
             </h5>
             <small>{{time-ago time=created_at}}</small>
           </div>
-        </a>
+        {{/link-to}}
       </li>
     {{else}}
       <li>

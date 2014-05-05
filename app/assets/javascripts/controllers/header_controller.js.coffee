@@ -1,10 +1,11 @@
 Hummingbird.HeaderController = Ember.Controller.extend
-  newNotifications: Ember.computed.filterBy("notifications", "seen", false)
+  unreadNotifications: 0
+  hasUnreadNotifications: (->
+    @get('unreadNotifications') != 0
+  ).property('unreadNotifications')
   showSearchbar: false
+  limitedNotifications: []
 
-  panelNotifications: (->
-    @store.all('notification')
-  ).property('@each.notification')
 
   init: (->
     bloodhound = new Bloodhound
@@ -16,11 +17,19 @@ Hummingbird.HeaderController = Ember.Controller.extend
         url: '/search.json?query=%QUERY&type=mixed'
         filter: (results)->
           Ember.$.map(results.search, (r)->
-            #r.title = r.title[0..20]+"..." if r.title.length > 20
             {title: r.title, type: r.type, image: r.image, link: r.link}
           )
     bloodhound.initialize()
     @set('bhInstance', bloodhound)
+
+    @store.find('notification').then( (result) =>
+      newOnes = 0
+      for notif in result.get('content')
+        newOnes++ if notif.get('seen') == false
+      @set('unreadNotifications', newOnes)
+      @set('limitedNotifications', result.slice(0, 3))
+    )
+
     @_super()
   )
 
@@ -31,7 +40,6 @@ Hummingbird.HeaderController = Ember.Controller.extend
   instantSearch: (->
     blodhound = @get('bhInstance')
     searchterm = @get('searchTerm')
-    @set('fullSearchLink', "/search/"+searchterm)
     blodhound.get searchterm, (suggestions) =>
       @set('instantSearchResults', suggestions)
   ).observes('searchTerm')

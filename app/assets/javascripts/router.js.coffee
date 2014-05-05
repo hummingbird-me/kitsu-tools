@@ -15,7 +15,7 @@ Hummingbird.Router.map ()->
     @route 'following'
     @route 'followers'
 
-  @resource 'search', path: '/search/:searchterm'
+#  @resource 'search', path: '/search/:searchterm'
 
   @route 'dashboard'
   @route 'notifications'

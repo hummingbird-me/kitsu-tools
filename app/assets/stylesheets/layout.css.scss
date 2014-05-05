@@ -110,15 +110,13 @@ Global Header
     &:hover {
       background-color: darken($darkNavy, 2);
     }
-    a {
-      white-space: normal;
-    }
     .notification-link {
+      white-space: normal;
       padding-left: 0px;
       padding-right: 0px;
       background: none !important;
-      &.new {
-        color: #e57c48;
+      i {
+        &.hasNew { color: #e57c48; }
       }
     }
     .dropdown-menu {
@@ -208,14 +206,10 @@ Global Header
   }
 
   .notification-dropdown {
-    .notification {
-      padding: 10px 0 10px 10px;
+    .notification-element {
       &.new {
         background: #f7edda;
         border-bottom: 1px solid #e5d6b8;
-        &:hover {
-          background: darken(#f7edda, 5);
-        }
       }
     }
     .user-avatar {
