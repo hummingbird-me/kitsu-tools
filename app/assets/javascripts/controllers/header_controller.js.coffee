@@ -54,8 +54,7 @@ Hummingbird.HeaderController = Ember.Controller.extend
         @set('instantSearchResults', [])
       false #prevent event-bubbling
     submitSearch: ->
-      alert 'a'
-      @transitionToRoute('search', @get('searchTerm'));
+      window.location.replace("http://hummingbird.me/search?query="+@get('searchTerm'))
     toggleUpdater: ->
       self = @
       # refreshes the list for the quick update
