@@ -3,7 +3,15 @@ Hummingbird.ApplicationRoute = Ember.Route.extend
     headerController = @controllerFor("header")
     headerController.set("notifications", @store.find('notification'))
 
+
+
   actions:
+    setupQuickUpdate: ->
+      headerController = @controllerFor("header")
+      if @get('currentUser.isSignedIn')
+        headerController.set 'recentLibraryEntries', @store.find('library_entry', {user_id: @get('currentUser.id'), recent: true})
+      else 
+        headerController.set 'recentLibraryEntries', []
     toggleFollow: (user) ->
       unless @get('currentUser.isSignedIn')
         alert "Need to be signed in!"

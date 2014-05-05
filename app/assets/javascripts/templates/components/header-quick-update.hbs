@@ -1,0 +1,18 @@
+<div class = "overlay-wrapper">
+  <div class = "overlay-panel">
+     <h4 class = "series-title"> {{item.anime.canonicalTitle}} </h4>
+     <div class = "actionable">
+       {{#unless seriesIsCompleted}}
+         <a class="episode-button" href="#"{{action "incCnt"}}> Mark <strong>EP {{incrementLabel}}</strong> <span>Seen</span> </a>
+       {{else}}
+         <a class="episode-button" href="#"> <strong> Completed! </strong> </a>
+       {{/unless}}
+     </div>
+     <div class = "stats">
+              <h4>{{episodesWatchedStats}} % Complete </h4>
+              <p> Seen {{item.episodesWatched}} of {{item.anime.episodeCount}} </p>
+     </div>
+  </div>
+  
+  <img class="responsive-image" {{bind-attr src=imageUrl}}></img>
+</div>

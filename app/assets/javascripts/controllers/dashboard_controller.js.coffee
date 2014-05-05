@@ -19,6 +19,7 @@ Hummingbird.DashboardController = Ember.Controller.extend
   ).property('recentNews', 'recentNewsNum')
 
   init: ->
+    @send("setupQuickUpdate")
     $.getJSON "http://forums.hummingbird.me/latest.json", (payload) =>
       @set('recentPost', @generateThreadList(payload))
 

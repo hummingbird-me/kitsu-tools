@@ -12,6 +12,9 @@ class LibraryEntriesController < ApplicationController
       if current_user != user
         library_entries = library_entries.where(private: false)
       end
+      if params[:recent]
+        library_entries = library_entries.order("updated_at DESC").limit(12)
+      end
 
       # Filter adult entries.
       if user_signed_in? and !current_user.sfw_filter?

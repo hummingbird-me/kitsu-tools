@@ -297,6 +297,10 @@ class API_v1 < Grape::API
       watchlists.map {|w| present_watchlist(w, rating_type, title_language_preference) }
     end
 
+    
+
+
+
     desc "Returns the user's favorite Animes"
     params do
       requires :user_id, type: String
@@ -375,6 +379,15 @@ class API_v1 < Grape::API
       library_entry.destroy
       true
     end
+     
+    desc "Get recently updated Entries"
+    get '/recent' do
+       entries = LibraryEntry.where(user_id: current_user).order("updated_at DESC").limit(12)
+
+      {library_entries: entries.to_a}
+    end   
+
+
 
     desc "Update a specific anime's details in a user's library."
     params do

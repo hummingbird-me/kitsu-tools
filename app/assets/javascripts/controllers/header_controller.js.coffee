@@ -36,7 +36,8 @@ Hummingbird.HeaderController = Ember.Controller.extend
       @set('instantSearchResults', suggestions)
   ).observes('searchTerm')
 
-  showUpdater: false
+  showUpdater: false 
+  recentLibraryEntries: []
 
   actions:
     toggleSearchbar: ->
@@ -48,4 +49,11 @@ Hummingbird.HeaderController = Ember.Controller.extend
       alert 'a'
       @transitionToRoute('search', @get('searchTerm'));
     toggleUpdater: ->
+      self = @
+      # refreshes the list for the quick update
       @toggleProperty('showUpdater')
+      if @get('showUpdater') == false
+        Ember.run.later @, (->
+         self.send('setupQuickUpdate')
+        ), 300
+      false
