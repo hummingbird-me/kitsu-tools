@@ -9,6 +9,13 @@ Hummingbird.HeaderController = Ember.Controller.extend
     return @get('recentLibraryEntries')
   ).property('recentLibraryEntries.@each')
 
+  firstEntry: (->
+    if @get('recentLibraryEntries')
+      return (@get('recentLibraryEntries.firstObject.id'))
+    else 
+      return false
+  ).property('recentLibraryEntries.@each')
+
   init: (->
     bloodhound = new Bloodhound
       datumTokenizer: (d)->

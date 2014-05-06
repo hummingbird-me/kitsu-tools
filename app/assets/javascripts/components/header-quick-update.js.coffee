@@ -1,6 +1,12 @@
 Hummingbird.HeaderQuickUpdateComponent = Ember.Component.extend
   tagNames: "li"
   classNames: "watched-series"
+  classNameBindings: ["active"]
+  
+  active: (->
+    firstEntry = @get('firstEntry')
+    return (firstEntry == @get('item.id'))
+  ).property('firstEntry')
 
   actions:
     incCnt: ->
