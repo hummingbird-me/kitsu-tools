@@ -5,7 +5,7 @@ Hummingbird.Pollster = Em.Object.extend
     @set 'timer', Ember.run.later(@, ->
       _this.onPoll()
       _this.start()
-     , 60000)
+     , 120000)
   stop: -> 
      timer = @get('timer')
      Ember.run.cancel(timer)
