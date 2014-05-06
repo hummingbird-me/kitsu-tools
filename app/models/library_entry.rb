@@ -21,7 +21,7 @@
 class LibraryEntry < ActiveRecord::Base
   self.table_name = "watchlists"
 
-  attr_accessible :user_id, :anime_id, :status, :rating, :private, :episodes_watched
+  attr_accessible :user_id, :anime_id, :status, :rating, :private, :episodes_watched, :updated_at
 
   belongs_to :user
   belongs_to :anime

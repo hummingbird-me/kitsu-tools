@@ -5,7 +5,9 @@ Hummingbird.HeaderController = Ember.Controller.extend
   ).property('unreadNotifications')
   showSearchbar: false
   limitedNotifications: []
-
+  entriesLoaded: (->
+    return @get('recentLibraryEntries')
+  ).property('recentLibraryEntries.@each')
 
   init: (->
     bloodhound = new Bloodhound
@@ -62,5 +64,5 @@ Hummingbird.HeaderController = Ember.Controller.extend
       if @get('showUpdater') == false
         Ember.run.later @, (->
          self.send('setupQuickUpdate')
-        ), 300
+        ), 10
       false

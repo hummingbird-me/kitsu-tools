@@ -46,12 +46,17 @@ Hummingbird.Paginated = Ember.Mixin.create({
         });
       }
     },
+    // changed this function around so the name is wrong. this function adds new objects to the front of the content array for display
     reloadFirstPage: function(){
       var _this = this;
       if (this.get('canLoadMore') && !this.get('currentlyFetchingPage')){
         this.fetchPageProxy().then(function(objects){ 
-          _this.controller.get('content').clear();
-          _this.controller.get('content').addObjects(objects);
+          content = _this.controller.get('content');
+          newobjects = objects.filter(function(n){
+            return content.indexOf(n) === -1;
+          });
+          _this.controller.get('content').unshiftObjects(newobjects);
+       
         });
       }
     }

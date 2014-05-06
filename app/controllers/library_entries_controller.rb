@@ -1,9 +1,14 @@
 class LibraryEntriesController < ApplicationController
   def index
-    if params[:user_id]
+    if params[:user_id] 
       user = User.find params[:user_id]
-      library_entries = LibraryEntry.where(user_id: user.id).includes(:genres).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
-
+     
+      #if recent get the first 12 entries and then populate the nested models
+      if params[:recent]
+        library_entries = LibraryEntry.where(user_id: user.id).where("status = ? or status = ?","Currently Watching", "Completed").includes({ anime: :genres }).references({ anime: :genres }).order("watchlists.updated_at DESC").limit(12)
+      else
+        library_entries = LibraryEntry.where(user_id: user.id).includes(:genres).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
+      end
       if params[:status]
         library_entries = library_entries.where(status: params[:status])
       end
@@ -11,9 +16,6 @@ class LibraryEntriesController < ApplicationController
       # Filter private entries.
       if current_user != user
         library_entries = library_entries.where(private: false)
-      end
-      if params[:recent]
-        library_entries = library_entries.order("watchlists.updated_at DESC").limit(12)
       end
 
       # Filter adult entries.
