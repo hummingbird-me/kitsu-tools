@@ -36,7 +36,7 @@ Hummingbird.Paginated = Ember.Mixin.create({
     this.set('canLoadMore', canLoadMore);
     if (this.controller) { this.controller.set('canLoadMore', canLoadMore); }
   },
-
+  newObjectsForFeed: [],
   actions: {
     loadNextPage: function() {
       var that = this;
@@ -46,8 +46,28 @@ Hummingbird.Paginated = Ember.Mixin.create({
         });
       }
     },
-    // changed this function around so the name is wrong. this function adds new objects to the front of the content array for display
-    reloadFirstPage: function(){
+    checkForNewObjects: function(){
+      var _this = this;
+      if (this.get('canLoadMore') && !this.get('currentlyFetchingPage')){
+        this.fetchPageProxy().then(function(objects){ 
+          var content = _this.controller.get('content');
+          newobjects = objects.filter(function(n){
+            return content.indexOf(n) === -1;
+          });
+          
+          var newObjectsForFeed = this.get('newObjectsForFeed');
+          var len = newObjectsForFeed.length;
+          newObjectsForFeed.unshiftObjects(newobjects.slice(0,len));
+          
+        });
+      }
+    },
+    addNewObjects: function(){
+      var content = this.controller.get('content');
+      var newObjectsForFeed = this.get('newObjectsForFeed');
+      content.unshiftObjects(newObjectsForFeed);
+    },
+    checkForAndAddNewObjects: function(){
       var _this = this;
       if (this.get('canLoadMore') && !this.get('currentlyFetchingPage')){
         this.fetchPageProxy().then(function(objects){ 

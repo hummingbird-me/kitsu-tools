@@ -82,7 +82,7 @@ Hummingbird.DashboardController = Ember.Controller.extend
           type: "POST"
           success: (payload)->
             _this.setProperties({newPost: "", inFlight: false})
-            _this.get('target').send('reloadFirstPage') 
+            _this.get('target').send('checkForAndAddNewObjects') 
           failure: ()->
             alert("Failed to save comment")
       else return

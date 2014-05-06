@@ -10,6 +10,10 @@ Hummingbird.StoryController = Ember.ObjectController.extend
     loggedInUser = @get('currentUser')
     return loggedInUser.get('id') == @get('model.poster.id') || loggedInUser.get('id') == @get('model.user.id')
   ).property('model.poster')
+
+  selfpost: (->
+    return (@get('model.poster.id') == @get('model.user.id'))   
+  ).property('model.poster', 'model.user')
   
   mediaRoute: (->
     if @get('model.media').constructor.toString() == "Hummingbird.Anime"
