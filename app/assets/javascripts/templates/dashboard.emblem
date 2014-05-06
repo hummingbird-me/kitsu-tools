@@ -49,7 +49,7 @@
               li.small-loader
                 loading-indicator
             li.latest-post-more
-              a click="showMorePost" Show more
+              a click="showMoreNews" Show more
 
 
     .user-feed

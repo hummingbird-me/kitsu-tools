@@ -8,8 +8,8 @@
           .comment-content.
             h4.story-title
               link-to 'user' poster | #{poster.username}
-              / |  <i class="fa fa-share reply-icon"></i>
-              / link-to 'user' user | #{user.username}
+              |  <i class="fa fa-share reply-icon"></i>
+              link-to 'user' user | #{user.username}
             p.secondary
               time-ago time=createdAt
               if belongsToUser
