@@ -26,7 +26,8 @@ Hummingbird.HeaderController = Ember.Controller.extend
         url: '/search.json?query=%QUERY&type=mixed'
         filter: (results)->
           Ember.$.map(results.search, (r)->
-            {title: r.title, type: r.type, image: r.image, link: r.link}
+            # There actually has to be a way to send the img params to the thumb generator in the request, this is just a temp. solution
+            {title: r.title, type: r.type, image: r.image.replace("{size}", "small").replace(".gif?", ".jpg?"), link: r.link}
           )
     bloodhound.initialize()
     @set('bhInstance', bloodhound)
@@ -44,7 +45,7 @@ Hummingbird.HeaderController = Ember.Controller.extend
 
   instantSearchResults: []
   hasInstantSearchResults: (->
-    @get('instantSearchResults').length != 0
+    @get('instantSearchResults').length != 0 && @get('searchTerm').length != 0
   ).property('instantSearchResults')
   instantSearch: (->
     blodhound = @get('bhInstance')

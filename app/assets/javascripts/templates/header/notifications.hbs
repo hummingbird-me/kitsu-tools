@@ -1,6 +1,6 @@
 <li {{bind-attr class=":notifications :searchbar showSearchbar:isactive:isinactive"}}>
   {{#if showSearchbar}}
-    {{input class="search-field" action="submitSearch" value=searchTerm placeholder="Search for..."}}
+    {{instant-search class="search-field" action="submitSearch" focusLost="toggleSearchbar" value=searchTerm placeholder="Search for..."}}
   {{/if}}
   <a {{action 'toggleSearchbar'}} class="search-link">
     <i class='fa fa-search' style="position: relative; bottom: initial;"></i>
