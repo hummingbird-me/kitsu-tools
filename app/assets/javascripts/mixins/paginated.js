@@ -55,7 +55,7 @@ Hummingbird.Paginated = Ember.Mixin.create({
             return content.indexOf(n) === -1;
           });
           
-          var newObjectsForFeed = this.get('newObjectsForFeed');
+          var newObjectsForFeed = _this.get('newObjectsForFeed');
           var len = newObjectsForFeed.length;
           newObjectsForFeed.unshiftObjects(newobjects.slice(0,len));
           
