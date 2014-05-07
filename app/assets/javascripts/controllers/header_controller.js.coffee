@@ -58,11 +58,13 @@ Hummingbird.HeaderController = Ember.Controller.extend
   recentLibraryEntries: []
 
   actions:
-    toggleSearchbar: ->
-      @toggleProperty('showSearchbar')
-      if @get('showSearchbar') == false
-        @set('instantSearchResults', [])
-      false #prevent event-bubbling
+    showSearchfield: ->
+      @set('showSearchbar', true)
+      @set('instantSearchResults', [])
+    hideSearchfield: ->
+      Ember.run.later(@, (->
+        @set('showSearchbar', false)
+      ), 100)
     submitSearch: ->
       window.location.replace("http://hummingbird.me/search?query="+@get('searchTerm'))
     toggleUpdater: ->
