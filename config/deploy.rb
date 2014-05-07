@@ -6,7 +6,7 @@ set :application, "hummingbird"
 set :repository,  "git@github.com:JoshFabian/hummingbird-v2.git"
 
 set :scm, :git
-set :user, "vikhyat"
+set :user, "root"
 set :git_enable_submodules, 1
 set :deploy_via, :remote_cache
 set :sidekiq_role, :sidekiq
@@ -14,10 +14,10 @@ set :sidekiq_role, :sidekiq
 default_run_options[:pty] = true
 default_run_options[:shell] = '/bin/bash --login'
 
-role :app, "162.243.200.81"
-role :db, "162.243.200.81", primary: true
-role :web, "162.243.200.81"
-role :sidekiq, "162.243.200.81"
+role :app, "162.243.41.218"
+role :db, "162.243.41.218", primary: true
+role :web, "162.243.41.218"
+role :sidekiq, "162.243.41.218"
 
 namespace :deploy do
   desc "stub task to get cap to prompt for the root password"
