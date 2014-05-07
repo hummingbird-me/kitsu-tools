@@ -76,6 +76,9 @@ GEM
     bootstrap-sass (3.1.0.0)
       sass (~> 3.2)
     builder (3.1.4)
+    bullet (4.9.0)
+      activesupport
+      uniform_notifier (~> 1.6.0)
     cancan (1.6.10)
     capistrano (2.15.5)
       highline
@@ -469,6 +472,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.6.1)
     uuidtools (2.1.4)
     virtus (1.0.1)
       axiom-types (~> 0.0.5)
@@ -491,6 +495,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.1.0)
+  bullet
   cancan
   capistrano
   coffee-rails (~> 4.0)

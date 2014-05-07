@@ -54,7 +54,7 @@ class NewsFeed
 
     story_ids = $redis.zrevrange @feed_key, start_index, stop_index
     story_id_to_story = {}
-    Story.where(id: story_ids).for_user(@user).includes(:substories, :user, :target).each do |story|
+    Story.where(id: story_ids).for_user(@user).includes({substories: :user}, :user, :target).each do |story|
       story_id_to_story[story.id] = story
     end
     stories = story_ids.map {|x| story_id_to_story[x.to_i] }.compact
@@ -64,7 +64,7 @@ class NewsFeed
   def regenerate_feed!
     user_set = active_followed_users + [@user.id]
 
-    stories = Story.for_user(@user).order('updated_at DESC').where(user_id: user_set).includes(:substories).limit(FRESH_FETCH_SIZE)
+    stories = Story.for_user(@user).order('updated_at DESC').where(user_id: user_set).includes(:user, :target, :substories).limit(FRESH_FETCH_SIZE)
     stories.each {|story| add! story }
   end
 

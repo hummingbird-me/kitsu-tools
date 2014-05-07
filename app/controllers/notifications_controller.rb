@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
 
   def index
     hide_cover_image
-    @notifications = Notification.where(user_id: current_user).order("created_at DESC").limit(10)
+    @notifications = Notification.where(user_id: current_user).order("created_at DESC").includes(:source, source: :target).limit(10)
     
     respond_to do |format|
       format.json { render json: @notifications, each_serializer: NotificationSerializer }

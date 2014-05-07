@@ -60,7 +60,7 @@ group :development do
   gem 'rack-livereload'
   gem 'rb-fsevent', require: false
   gem 'qunit-rails'
-
+  gem 'bullet'
   # Deploy with Capistrano
   gem 'capistrano', require: false
   gem 'rvm-capistrano', require: false
