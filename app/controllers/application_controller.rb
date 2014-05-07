@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       sign_out :user unless cookies[:auth_token]
 
       preload! current_user
-      Rack::MiniProfiler.authorize_request if current_user.id == 1
+      # Rack::MiniProfiler.authorize_request if current_user.id == 1
       $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
     elsif cookies[:auth_token]
       sign_in User.find_by_authentication_token(cookies[:auth_token])
