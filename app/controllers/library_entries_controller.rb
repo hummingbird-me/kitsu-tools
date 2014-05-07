@@ -5,7 +5,7 @@ class LibraryEntriesController < ApplicationController
      
       #if recent get the first 12 entries and then populate the nested models
       if params[:recent]
-        library_entries = LibraryEntry.where(user_id: user.id).where("status = ? or status = ?","Currently Watching").includes({ anime: :genres }).references({ anime: :genres }).order("watchlists.updated_at DESC").limit(12)
+        library_entries = LibraryEntry.where(user_id: user.id).where("status = ? or status = ?","Currently Watching", "Completed").includes({ anime: :genres }).references({ anime: :genres }).order("watchlists.updated_at DESC").limit(12)
       else
         library_entries = LibraryEntry.where(user_id: user.id).includes(:genres).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
       end
