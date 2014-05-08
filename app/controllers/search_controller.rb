@@ -49,7 +49,12 @@ class SearchController < ApplicationController
       @results = User.search(params[:query] || "askdhjfg").page(params[:page]).per(20)
       render "users"
 
-
+    elsif @search_type == "users_to_follow"
+      @results = User.search(params[:query] || "askdhjfg").page(params[:page]).per(20)
+      render json: @results
+      #respond_to do |format|
+      #  format.json { render :json => @results.map {|x| {:id => x.id, :name => x.name} }.flatten.compact }
+      #end
 
     elsif @search_type == "character"
       @results = search_database 'character', params[:query], params[:page]

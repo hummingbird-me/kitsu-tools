@@ -29,6 +29,7 @@ class AdminController < ApplicationController
 
   def index
     @anime_without_mal_id = Anime.where(mal_id: nil).reject {|x| x.genres.map(&:name).include? "Anime Influenced" }
+    @users_to_follow = User.where(to_follow: true)
 
     @hide_cover_image = true
     @hide_footer_ad = true
@@ -58,4 +59,17 @@ class AdminController < ApplicationController
 
     render json: stats
   end
+
+  def users_to_follow
+    @users_to_follow = User.where(to_follow: true)
+  end
+
+  def users_to_follow_submit
+    user = User.find(params[:user_id])
+    to_follow = params[:to_follow]
+    user.to_follow = to_follow
+    user.save
+    redirect_to '/kotodama' 
+  end
+
 end

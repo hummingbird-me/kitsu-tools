@@ -464,6 +464,10 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     trollop (2.0)
+    twitter-typeahead-rails (0.10.2)
+      actionpack (>= 3.1)
+      jquery-rails
+      railties (>= 3.1)
     tzinfo (0.3.38)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
@@ -566,6 +570,7 @@ DEPENDENCIES
   split
   therubyracer
   timecop
+  twitter-typeahead-rails
   uglifier (>= 1.0.3)
   unicorn
   zurb-foundation (~> 4.3.0)

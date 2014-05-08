@@ -122,6 +122,8 @@ Hummingbird::Application.routes.draw do
     get '/kotodama/stats' => 'admin#stats'
     get '/kotodama/login_as' => 'admin#login_as_user'
     get '/kotodama/find_or_create_by_mal' => 'admin#find_or_create_by_mal'
+    get '/kotodama/users_to_follow' => 'admin#users_to_follow'
+    get '/kotodama/users_to_follow_submit' => 'admin#users_to_follow_submit'
 
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'

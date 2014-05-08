@@ -8,3 +8,4 @@
 #= require jquery.autosize
 #= require rgbaster
 #= require chart.js
+#= require typeahead-bloodhound

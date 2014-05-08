@@ -139,3 +139,5 @@ gem 'split', require: 'split/dashboard'
 
 # SEO
 gem 'sitemap_generator'
+
+gem 'twitter-typeahead-rails'

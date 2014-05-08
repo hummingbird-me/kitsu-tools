@@ -16,6 +16,31 @@
         %h4 Actions
         %hr
         .panel
+          %h5 Users To Follow
+          %form(method="GET" action="/kotodama/users_to_follow_submit")
+            .row.collapse
+              .large-8.columns
+                %input(type="text" placeholder="Username" class="username_input" name="user_id") 
+              .large-4.columnsi
+                %input(type="hidden" name="to_follow" value="true")
+                %input.button.small.prefix(type="submit" value="Submit")
+        .panel
+          %h5 Recommended Users
+          - if @users_to_follow.length > 0
+            %ul
+              - @users_to_follow.each do |users|
+                %li
+                  %form(method="GET" action="/kotodama/users_to_follow_submit")
+                    %span= users.name
+                    %input(type="hidden" name="to_follow" value="false")
+                    %input{:type=>"hidden", :name=>"user_id", :value => users.id}
+                    %input.button.small.prefix(type="submit" value="submit")
+
+          - else
+            %em (Nothing here.)
+
+
+        .panel
           %h5 Create or Update by MAL ID
           %form(method="get" action="/kotodama/find_or_create_by_mal")
             .row.collapse
@@ -71,3 +96,25 @@
           data: confirmed
         }
       ]
+
+:javascript
+  var bloodhound =  new Bloodhound({
+    datumTokenizer: function(d){
+    return Bloodhound.tokenizers.whitespace(d.value);
+  },
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  remote: {
+    url: '/search.json?query=%QUERY&type=users_to_follow',
+    filter: function(users){
+      return $.map(users.search, function(user){
+        return {value: user.id}
+      })
+    }
+  }
+  })
+  bloodhound.initialize();
+ 
+  $('.username_input').typeahead(null,{ displayKey: 'value' , source: bloodhound.ttAdapter(), autocomplete: "on" }); 
+
+
+

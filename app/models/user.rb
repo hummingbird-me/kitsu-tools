@@ -57,6 +57,8 @@
 #  waifu_or_husbando           :string
 #  waifu_slug            :string
 #  waifu_char_id         :string
+#  to_follow  			:boolean	default(FALSE)
+
 class User < ActiveRecord::Base
   # Friendly ID.
   def to_param

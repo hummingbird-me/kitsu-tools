@@ -5,6 +5,7 @@
 #= require ember
 #= require ember-data
 #= require jquery-ui-1.10.3.custom.min
+#= require twitter/typeahead
 #= require autolink
 #= require react
 #= require_tree ./react
