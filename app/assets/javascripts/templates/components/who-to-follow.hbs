@@ -1,13 +1,13 @@
 <div class = "follow-panel-wrapper">
   <div class = "follow-panel">
-    <a {{bind-attr href=user.id}}> 
+    <a {{bind-attr href=user.userLink}}> 
       <div class = "user-cover">
        <div class = "cover-photo" {{bind-attr style=user.coverImageStyle}}> </div>
       </div>
     </a>
    
     <div class = "user-avatar">
-      <a {{bind-attr href=user.id}}>  {{avatar user 'thumb'}} </a>
+      <a {{bind-attr href=user.userLink}}>  {{avatar user 'thumb'}} </a>
       <a class = "btn follow-button" {{action "toggleFollow" user}}> Follow </a>
     </div>
     
