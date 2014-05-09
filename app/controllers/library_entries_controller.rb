@@ -5,9 +5,9 @@ class LibraryEntriesController < ApplicationController
      
       #if recent get the first 12 entries and then populate the nested models
       if params[:recent]
-        library_entries = LibraryEntry.where(user_id: user.id, status: "Currently Watching").includes({ anime: :genres }).references({ anime: :genres }).order("watchlists.updated_at DESC").limit(12)
+        library_entries = LibraryEntry.where(user_id: user.id, status: "Currently Watching").includes(anime: :genres).order("watchlists.updated_at DESC").limit(12)
       else
-        library_entries = LibraryEntry.where(user_id: user.id).includes(:genres).joins("LEFT OUTER JOIN favorites ON favorites.user_id = #{user.id} AND favorites.item_type = 'Anime' AND favorites.item_id = watchlists.anime_id").select("watchlists.*, favorites.id AS favorite_id")
+        library_entries = LibraryEntry.where(user_id: user.id).includes(anime: :genres)
       end
       if params[:status]
         library_entries = library_entries.where(status: params[:status])
@@ -19,10 +19,8 @@ class LibraryEntriesController < ApplicationController
       end
 
       # Filter adult entries.
-      if user_signed_in? and !current_user.sfw_filter?
-        library_entries = library_entries.includes(:anime)
-      else
-        library_entries = library_entries.includes(:anime).where("anime.age_rating <> 'R18+' OR anime.age_rating IS NULL").references(:anime)
+      unless user_signed_in? and !current_user.sfw_filter?
+        library_entries = library_entries.where("anime.age_rating <> 'R18+' OR anime.age_rating IS NULL").references(:anime)
       end
 
       render json: library_entries
