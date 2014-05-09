@@ -1,3 +1,3 @@
-{{#each user in usersToFollow}}
-  {{who-to-follow user=user}}
+{{#each user in filteredArray}}
+  {{who-to-follow user=user currentUser=currentUser}}
 {{/each}}

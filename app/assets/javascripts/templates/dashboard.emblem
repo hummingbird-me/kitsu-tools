@@ -57,7 +57,7 @@
         .panel-heading
           h3.panel-title Who to Follow
         .panel-body
-          who-to-follow-container usersToFollow=usersToFollow
+          who-to-follow-container usersToFollow=mutableUsersToFollow currentUser=currentUser action="loadMoreToFollow"
 
     .user-feed
       .status-update-panel

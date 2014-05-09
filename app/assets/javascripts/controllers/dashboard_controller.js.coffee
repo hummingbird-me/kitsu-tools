@@ -57,8 +57,32 @@ Hummingbird.DashboardController = Ember.Controller.extend
         link:  link
 
     listElements
-
-  actions: 
+  mutableUsersToFollow: []
+  usersToFollowChanged: (->
+    mutable = []
+    usersToFollow  = @get('usersToFollow')
+    if usersToFollow.isFulfilled
+      usersToFollow.forEach( (user)->
+        mutable.addObject(user)
+        return
+      )
+    this.set('mutableUsersToFollow', mutable)
+  ).observes('usersToFollow', 'usersToFollow.isFulfilled', 'usersToFollow.length')
+  newUsersToLoad: []
+  newUserObserver: (->
+    mutable = @get('mutableUsersToFollow')
+    newUsers = @get('newUsersToLoad')
+    if newUsers and newUsers.isFulfilled  
+      newUsers.forEach((user)->
+        mutable.pushObject(user)
+        return
+      )
+  ).observes('newUsersToLoad', 'newUsersToLoad.isFulfilled', 'newUsersToLoad.length')
+  actions:
+    loadMoreToFollow: ->
+      newusers = @store.find 'user', followlist: true, user_id: @get('currentUser.id')
+      @set('newUsersToLoad', null)
+      @set('newUsersToLoad', newusers)
     showMorePost: ->
       if @get('recentPostMax')
         window.location.replace("http://forums.hummingbird.me/latest");
