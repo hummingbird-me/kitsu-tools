@@ -1,9 +1,9 @@
 %span{:class => "quote_#{quote.id}_votes"}
   = pluralize quote.positive_votes.to_i, "likes"
   - if current_user && !Vote.for(current_user, quote).nil?
-    = link_to main_app.vote_anime_quote_path(quote.anime, quote, type: "down"), method: :post, remote: true do
+    = link_to main_app.vote_anime_quote_path(quote.anime_id, quote, type: "down"), method: :post, remote: true do
       %i.fa.fa-star
   - else
-    = link_to main_app.vote_anime_quote_path(quote.anime, quote, type: "up"), method: :post, remote: true do
+    = link_to main_app.vote_anime_quote_path(quote.anime_id, quote, type: "up"), method: :post, remote: true do
       %i.fa.fa-star-o
 
