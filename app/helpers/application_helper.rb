@@ -51,7 +51,7 @@ module ApplicationHelper
     begin
       anime.quotes.order('RANDOM()').first || Quote.order('RANDOM()').first
     rescue
-      Quote.includes(:anime).where("anime.age_rating <> 'R18+'").order('RANDOM()').first
+      Quote.includes(:anime).where("anime.age_rating <> 'R18+'").references(:anime).order('RANDOM()').first
     end
   end
 
