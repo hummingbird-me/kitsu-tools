@@ -15,4 +15,8 @@ class TrendingAnime
   def self.trim(key, n)
     $redis.zremrangebyrank(key, 0, -n)
   end
+
+  def self.list(count = 5)
+    Anime.find(get(count))
+  end
 end

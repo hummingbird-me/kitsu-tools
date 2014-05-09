@@ -158,7 +158,7 @@ class AnimeController < ApplicationController
         hide_cover_image
         @filter_years = ["Upcoming", "2010s", "2000s", "1990s", "1980s", "1970s", "Older"]
 
-        @trending_anime = TrendingAnime.get(6).map {|x| Anime.find(x) }
+        @trending_anime = TrendingAnime.list(6)
         @recent_reviews = Review.order('created_at DESC').limit(12).includes(:anime)
         trending_review_candidates = Review.where("created_at >= ?", 30.days.ago).order("wilson_score DESC").limit(30)
         @trending_reviews = []
