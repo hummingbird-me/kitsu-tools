@@ -17,7 +17,7 @@ Hummingbird.DashboardRoute = Ember.Route.extend Hummingbird.Paginated,
       console.log(item.get('id'), @get('currentUser.id'))
       item.get('id') != @get('currentUser.id')
     )
-    controller.set('usersToFollow', filtered)
+    controller.set('usersToFollow', results)
 
     if Ember.isNone(@get('pollster'))
       @set 'pollster', Hummingbird.Pollster.create
