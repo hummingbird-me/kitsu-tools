@@ -79,6 +79,9 @@ Hummingbird.DashboardController = Ember.Controller.extend
       )
   ).observes('newUsersToLoad', 'newUsersToLoad.isFulfilled', 'newUsersToLoad.length')
   actions:
+    dismiss: (user)->
+      mutable = @get('mutableUsersToFollow')
+      mutable.removeObject(user)
     loadMoreToFollow: ->
       newusers = @store.find 'user', followlist: true, user_id: @get('currentUser.id')
       @set('newUsersToLoad', null)

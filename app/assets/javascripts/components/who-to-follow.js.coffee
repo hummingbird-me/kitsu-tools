@@ -13,3 +13,5 @@ Hummingbird.WhoToFollowComponent = Em.Component.extend
       .then Ember.K, ->
         alert "Something went wrong."
         user.set 'isFollowed', originalState
+    dismiss: (user)->
+      @sendAction("action", user)

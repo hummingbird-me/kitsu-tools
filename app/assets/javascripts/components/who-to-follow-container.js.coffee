@@ -17,3 +17,7 @@ Hummingbird.WhoToFollowContainerComponent = Em.Component.extend
     if len and len < 8
       @sendAction()
   ).observes('filteredLength')
+
+  actions:
+    dismiss: (user)->
+      @sendAction("dismiss", user)

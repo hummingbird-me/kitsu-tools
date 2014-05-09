@@ -9,6 +9,7 @@
     <div class = "user-avatar">
       <a {{bind-attr href=user.userLink}}>  {{avatar user 'thumb'}} </a>
       <a class = "btn follow-button" {{action "toggleFollow" user}}> Follow </a>
+      <a class = "btn follow-button" {{action "dismiss" user}}> Dismiss </a>
     </div>
     
      <div class = "user-info">
