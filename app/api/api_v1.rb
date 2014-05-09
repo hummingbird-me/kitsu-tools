@@ -266,6 +266,20 @@ class API_v1 < Grape::API
       end
       json
     end
+    
+    desc "Gets list of users to Follow"
+    params do 
+      requires :user_id, type: String
+    end
+
+    get ':user_id/followlist' do
+      userid = find_user(params[:username]).id
+      to_follow = User.where({to_follow: true}).includes(:cover_image)
+    end
+
+    get ':user_id/randomlist' do
+      random_to_follow = User.where({to_follow: false}).order("RANDOM()").limit(10)
+    end
 
     desc "Return the entries in a user's library under a specific status."
     params do

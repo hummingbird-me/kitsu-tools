@@ -52,6 +52,13 @@
               a click="showMoreNews" Show more
 
 
+
+      .latest-posts-panel
+        .panel-heading
+          h3.panel-title Who to Follow
+        .panel-body
+          who-to-follow-container usersToFollow=usersToFollow
+
     .user-feed
       .status-update-panel
         .panel-body.status-panel

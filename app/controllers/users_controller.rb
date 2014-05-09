@@ -12,6 +12,15 @@ class UsersController < ApplicationController
       users = users.page(params[:page]).per(20)
 
       render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
+    
+    elsif params[:randomlist] or params[:followlist]
+      if params[:followlist]
+        to_follow = User.where({to_follow:true})      
+        render json: to_follow
+      else
+        random_to_follow = User.where({to_follow: false}).order("RANDOM()").limit(10)
+        render json: random_to_follow
+      end
 
     else
       ### OLD CODE PATH BELOW.
