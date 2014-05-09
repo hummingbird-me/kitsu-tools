@@ -103,6 +103,11 @@ class User < ActiveRecord::Base
     self.favorites.exists?(item_id: item, item_type: item.class.to_s)
   end
 
+  def has_favorite2?(item)
+    @favorites ||= favorites.select('item_type, item_id')
+    @favorites.detect {|x| x.item_id == item.id and item.class.to_s == x.item_type }
+  end
+
   # Following stuff.
   has_many :follower_relations, dependent: :destroy, foreign_key: :followed_id, class_name: 'Follow'
   has_many :followers, -> { order('follows.created_at DESC') }, through: :follower_relations, source: :follower, class_name: 'User'

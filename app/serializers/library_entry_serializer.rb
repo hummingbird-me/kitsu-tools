@@ -13,12 +13,7 @@ class LibraryEntrySerializer < ActiveModel::Serializer
   end
 
   def is_favorite
-    # HACK TO PREVENT N+1
-    if object.respond_to? :favorite_id
-      !object.favorite_id.nil?
-    else
-      scope && scope.has_favorite?(object.anime)
-    end
+    scope and scope.respond_to?(:has_favorite2?) and scope.has_favorite2? object.anime
   end
 
   def last_watched
