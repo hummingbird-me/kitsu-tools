@@ -60,7 +60,7 @@
         h4.story-title
           link-to 'user' user | #{user.username}
           |  followed 
-          pluralize followedUsers.length "user" "users"
+          pluralize followsCount.length "user" "users"
         ul.inline-list.secondary
           if belongsToUser
             a.remove-post click="removeComment" · remove
@@ -76,6 +76,12 @@
                     .bubble-avatar
                       avatar followedUser 'thumb_small'
                     h4.bubble-name #{followedUser.username}
+            if moreThanFourFollows
+              a{action "toggleShowAll"}
+                if showAll
+                  | Show Less
+                else
+                  | Show More
 
     if unknownStory
       | #{type}

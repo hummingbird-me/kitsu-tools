@@ -26,6 +26,22 @@ Hummingbird.StoryController = Ember.ObjectController.extend
     @get('model.substories.length') > 2
   ).property('model.substories')
 
+  moreThanFourFollows: (->
+    @get('model.followedUsers.length') > 4
+  ).property('model.followedUsers')
+
+  followsCount: (->
+   sorted = @get('model.followedUsers').sortBy('createdAt').reverse()
+  ).property('model.substories', 'showAll')
+
+  followedUsers: (->
+    sorted = @get('model.followedUsers').sortBy('createdAt').reverse()
+    if sorted.length > 4 and not @get('showAll')
+      sorted.slice(0, 4)
+    else
+      sorted
+  ).property('model.substories', 'showAll')
+
   displaySubstories: (->
     sorted = @get('model.substories').sortBy('createdAt').reverse()
     if sorted.length > 2 and not @get('showAll')

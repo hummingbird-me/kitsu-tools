@@ -1,25 +1,24 @@
-<div class = "follow-panel-wrapper">
-  <div class = "follow-panel">
-    <a {{bind-attr href=user.userLink}}> 
+<li class = "whotofollow">
+  <div>
+{{!--     <a {{bind-attr href=user.userLink}}> 
       <div class = "user-cover">
        <div class = "cover-photo" {{bind-attr style=user.coverImageStyle}}> </div>
       </div>
-    </a>
-   
-    <div class = "user-avatar">
-      <a {{bind-attr href=user.userLink}}>  {{avatar user 'thumb'}} </a>
-      <a class = "btn follow-button" {{action "toggleFollow" user}}> Follow </a>
-      <a class = "btn follow-button" {{action "dismiss" user}}> Dismiss </a>
-    </div>
-    
-     <div class = "user-info">
-      <a {{bind-attr href=user.userLink}}> 
-        <h4>{{user.username}} </h4>
-      </a>
-      <p class = "mini-bio">
-        {{user.miniBio}}
-      </p>
-    </div> 
+    </a> --}}
+   <div class="follow-image">
+    <a {{bind-attr href=user.userLink}}>  {{avatar user 'thumb'}} </a>
+   </div>
+   <div class="col-sm-10">
+    <a {{bind-attr href=user.userLink}}> <h4>{{user.username}} </h4></a>
+    <a class = "btn follow-button" {{action "toggleFollow" user}}> Follow </a>
+    <a class = "btn follow-button unfollow" {{action "dismiss" user}}> <i class="fa fa-times"></i></a>
+   </div>
+
+   <div class="follow-bio">
+    <p class = "mini-bio">
+      {{user.miniBio}}
+    </p>
+   </div>
   </div>
-</div>
+</li>
 

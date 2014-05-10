@@ -24,6 +24,12 @@
                 loading-indicator
             li.latest-post-more
               a click="showMorePost" Show more
+      .latest-posts-panel
+        .panel-heading
+          h3.panel-title Who to Follow
+        .panel-body
+          ul
+            who-to-follow-container usersToFollow=mutableUsersToFollow currentUser=currentUser action="loadMoreToFollow" dismiss="dismiss"
 
       .latest-posts-panel
         .panel-heading
@@ -50,14 +56,6 @@
                 loading-indicator
             li.latest-post-more
               a click="showMoreNews" Show more
-
-
-
-      .latest-posts-panel
-        .panel-heading
-          h3.panel-title Who to Follow
-        .panel-body
-          who-to-follow-container usersToFollow=mutableUsersToFollow currentUser=currentUser action="loadMoreToFollow" dismiss="dismiss"
 
     .user-feed
       .status-update-panel

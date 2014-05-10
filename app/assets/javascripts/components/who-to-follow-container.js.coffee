@@ -8,7 +8,7 @@ Hummingbird.WhoToFollowContainerComponent = Em.Component.extend
         return (user.get('id') != _this.get('currentUser.id') and user.get('isFollowed') == false)
       )
       @set('filteredLength', filtered.length)
-      return filtered.slice(0,4)
+      return filtered.slice(0,3)
     else []
   ).property('usersToFollow.@each', 'usersToFollow.@each.isFollowed')
   

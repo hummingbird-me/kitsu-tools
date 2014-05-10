@@ -14,6 +14,10 @@ a {
   }
   &.unfollow {
     background: #999;
+    &:hover {
+      background: darken(#999, 15);
+      color: #fff;
+    }
   }
 }
 

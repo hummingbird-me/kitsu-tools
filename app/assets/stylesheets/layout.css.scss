@@ -484,7 +484,7 @@ User Profile
     top: 100px;
     width: 100%;
     .follow-button {
-      padding: 4px 20px;
+      padding: 5px 20px;
       margin-top: 16px;
       font-size: 16px;
       float: right;
@@ -509,6 +509,35 @@ User Profile
         color: $orange;
       }
     }
+  }
+}
+
+.whotofollow {
+  @extend .clearfix;
+  padding: 15px;
+  padding-bottom: 0;
+  border-bottom: 1px solid #ddd;
+  transition: all 3s ease;
+  &:nth-child(3n) {
+    border-bottom: none;
+  }
+  .follow-button {
+    padding: 5px 40px;
+    &.unfollow {
+      padding: 5px 15px !important;
+    }
+  }
+  h4 {
+    margin-top: 7px;
+  }
+  .follow-bio {
+    @extend .col-sm-12;
+    margin-top: 10px;
+    padding: 0;
+  }
+  .follow-image {
+    @extend .col-sm-2;
+    padding: 0;
   }
 }
 
