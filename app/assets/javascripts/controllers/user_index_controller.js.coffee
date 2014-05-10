@@ -140,7 +140,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
     if months > 0
       if str.length > 0
         str += ", "
-      str += months + " " + (if month == 1 then "month" else "months")
+      str += months + " " + (if months == 1 then "month" else "months")
     if days > 0
       if str.length > 0
         str += ", "
