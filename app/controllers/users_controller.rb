@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       to_follow = User.where({to_follow:true})      
       followed_users = User.find(params[:user_id]).following
       if to_follow.length < 5
-        to_follow += User.where({to_follow: false}).order("RANDOM()").limit(10)
+        to_follow += User.where({to_follow: false}).where("bio <> ''").order("RANDOM()").limit(10)
       end
     
       followed_ids = followed_users.pluck(:id)
