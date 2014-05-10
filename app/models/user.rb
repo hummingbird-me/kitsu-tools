@@ -119,6 +119,7 @@ class User < ActiveRecord::Base
   has_many :substories
   has_many :notifications
 
+  has_many :votes
   has_one :recommendation
   has_many :not_interested
   has_many :not_interested_anime, through: :not_interested, source: :media, source_type: "Anime"
@@ -368,6 +369,12 @@ class User < ActiveRecord::Base
     if name_changed or avatar_changed
       self.sync_to_forum!
     end
+  end
+
+  def voted_for?(target)
+    @votes ||= {}
+    @votes[target.class.to_s] ||= votes.where(:target_type => target.class.to_s).pluck(:target_id)
+    @votes[target.class.to_s].member? target.id
   end
 
   # Return encrypted email.
