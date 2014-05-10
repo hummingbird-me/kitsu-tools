@@ -7,8 +7,13 @@ class SearchController < ApplicationController
       when "manga" then Manga.page(page).per(20)
       when "character" then Character.page(page).per(20)
     end
-    list = model.simple_search_by_title(query)
-    list = model.fuzzy_search_by_title(query) if list.length == 0
+    if type == "anime" or type == "manga"
+      list = model.simple_search_by_title(query)
+      list = model.fuzzy_search_by_title(query) if list.length == 0
+    elsif type == "character"
+      list = model.simple_search_by_name(query)
+      list = model.fuzzy_search_by_name(query) if list.length == 0
+    end
     list
   end
 
@@ -59,10 +64,10 @@ class SearchController < ApplicationController
     elsif @search_type == "character"
       @results = search_database 'character', params[:query], params[:page]
 
-      respond_to do |format|
-        format.json { render :json => @results.map {|x| {:id => x.id, :name => x.name} }.flatten.compact }
-      end
-
+      #respond_to do |format|
+       # format.json { render :json => @results.map {|x| {:id => x.id, :name => x.name} }.flatten.compact }
+     # end
+      render json: @results
 
 
     # Mixed search for the instant search form in the header.
