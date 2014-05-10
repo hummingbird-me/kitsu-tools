@@ -53,11 +53,10 @@ class NewsFeed
     stop_index = start_index + 20 - 1
 
     story_ids = $redis.zrevrange @feed_key, start_index, stop_index
-    story_id_to_story = {}
-    Story.where(id: story_ids).for_user(@user).includes({substories: :user}, :user, :target).each do |story|
-      story_id_to_story[story.id] = story
-    end
-    stories = story_ids.map {|x| story_id_to_story[x.to_i] }.compact
+    story_ids.collect! &:to_i
+    stories = Story.where(id: story_ids, :target_type => 'Anime').for_user(@user).includes(:user, :target => :genres, substories: :user)
+    stories += Story.where(id: story_ids).where('target_type <> ?', 'Anime').for_user(@user).includes(:user, :target, substories: :user) if story_ids.length > stories.length
+    stories.sort_by {|s| story_ids.find_index s.id }
   end
 
   # Regenerate the user's feed from scratch.
