@@ -373,8 +373,14 @@ class User < ActiveRecord::Base
 
   def voted_for?(target)
     @votes ||= {}
-    @votes[target.class.to_s] ||= votes.where(:target_type => target.class.to_s).pluck(:target_id)
+    @votes[target.class.to_s] ||= votes.where(target_type: target.class.to_s).pluck(:target_id)
     @votes[target.class.to_s].member? target.id
+  end
+
+  def liked?(target)
+    @pvotes ||= {}
+    @pvotes[target.class.to_s] ||= Hash[votes.where(target_type: target.class.to_s).pluck(:target_id, :positive)]
+    @pvotes[target.class.to_s][target.id]
   end
 
   # Return encrypted email.

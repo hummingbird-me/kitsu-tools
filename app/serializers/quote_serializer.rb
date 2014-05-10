@@ -10,6 +10,6 @@ class QuoteSerializer < ActiveModel::Serializer
   end
 
   def is_favorite
-    scope && !Vote.for(scope, object).nil?
+    scope && scope.voted_for?(object)
   end
 end
