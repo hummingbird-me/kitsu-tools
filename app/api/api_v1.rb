@@ -170,8 +170,9 @@ class API_v1 < Grape::API
           subjson[:service] = substory.data["service"]
         elsif substory.substory_type == "comment"
           if substory.data["formatted_comment"].nil?
-            formatted_comment = MessageFormatter.format_message substory.data["comment"]
-            substory.data["formatted_comment"] = formatted_comment
+            data = substory.data.dup
+            data["formatted_comment"] = MessageFormatter.format_message substory.data["comment"]
+            substory.data = data
             substory.save
           end
           subjson[:comment] = substory.data["formatted_comment"]
