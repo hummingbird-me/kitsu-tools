@@ -33,7 +33,7 @@ class Substory < ActiveRecord::Base
   end
 
   before_save do
-    if data['comment'].present?
+    if data and data['comment'].present?
       h = data.dup
       h['formatted_comment'] = MessageFormatter.format_message data['comment']
       self.data = h
