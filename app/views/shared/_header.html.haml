@@ -41,10 +41,11 @@
             %li.divider.show-for-small
             - if user_signed_in?
               %li.notification-block.has-dropdown
-                %a.notification-button{href: "/notifications", class: ("active" if Notification.unseen_count(current_user) > 0)}
+                - new_notifications_count = Notification.unseen_count(current_user)
+                %a.notification-button{href: "/notifications", class: ("active" if new_notifications_count > 0)}
                   %i.fa.fa-bell-o
-                    - if Notification.unseen_count(current_user) > 0
-                      %span.notification-count= "%02d" % Notification.unseen_count(current_user)
+                    - if new_notifications_count > 0
+                      %span.notification-count= "%02d" % new_notifications_count
 
                 %ul.dropdown.rounded-panel
                   = render partial: "notifications/notification", collection: Notification.recent_notifications(current_user)
