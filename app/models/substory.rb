@@ -18,7 +18,7 @@ class Substory < ActiveRecord::Base
   belongs_to :target, polymorphic: true
   belongs_to :story
   attr_accessible :user, :target, :story, :substory_type, :data
-  validates :user_id, :substory_type, presence: true
+  validates :user, :substory_type, presence: true
 
   after_create do
     self.story.set_last_update_time! self.created_at
@@ -29,14 +29,6 @@ class Substory < ActiveRecord::Base
   after_destroy do
     if self.story and self.story.reload.substories.length == 0
       self.story.destroy
-    end
-  end
-
-  before_save do
-    if data and data['comment'].present?
-      h = data.dup
-      h['formatted_comment'] = MessageFormatter.format_message data['comment']
-      self.data = h
     end
   end
 

@@ -36,7 +36,8 @@ class ReviewSerializer < ActiveModel::Serializer
   end
 
   def liked
-    scope && scope.liked?(object)
+    return nil if scope.nil? or Vote.for(scope, object).nil?
+    Vote.for(scope, object).positive?
   end
 
   def formatted_content

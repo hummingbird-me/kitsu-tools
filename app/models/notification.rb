@@ -34,7 +34,7 @@ class Notification < ActiveRecord::Base
   def self.recent_notifications(user_id)
     user_id = user_id.id unless user_id.is_a? Fixnum
     #Rails.cache.fetch(:"#{user_id}_recent_notifications", expires_in: 60.minutes) do
-    Notification.where(user_id: user_id).includes(source: :target).order('CASE WHEN seen THEN 1 ELSE 0 END, created_at DESC').limit(3)
+    Notification.where(user_id: user_id).order('CASE WHEN seen THEN 1 ELSE 0 END, created_at DESC').limit(3).dup
     #end
   end
 

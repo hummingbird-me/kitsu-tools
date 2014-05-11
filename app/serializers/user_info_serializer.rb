@@ -6,7 +6,7 @@ class UserInfoSerializer < ActiveModel::Serializer
   end
 
   def anime_watched
-    object.watchlists.count
+  	object.watchlists.all.count
   end
 
   def top_genres

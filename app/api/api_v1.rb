@@ -105,7 +105,7 @@ class API_v1 < Grape::API
 
     def present_favorite_anime(anime, title_language_preference, include_genres=true)
       if anime
-        fav_anime = anime.item
+        fav_anime = Anime.find(anime.item_id)
         json = {
           slug: fav_anime.slug,
           status: fav_anime.status,
@@ -169,6 +169,12 @@ class API_v1 < Grape::API
           subjson[:episode_number] = substory.data["episode_number"]
           subjson[:service] = substory.data["service"]
         elsif substory.substory_type == "comment"
+          if substory.data["formatted_comment"].nil?
+            data = substory.data.dup
+            data["formatted_comment"] = MessageFormatter.format_message substory.data["comment"]
+            substory.data = data
+            substory.save
+          end
           subjson[:comment] = substory.data["formatted_comment"]
         end
         if current_user and ((substory.user_id == current_user.id) or (story.user_id == current_user.id) or current_user.admin?)
@@ -317,7 +323,7 @@ class API_v1 < Grape::API
     end
     get ":user_id/favorite_anime" do
       @user = User.find(params[:user_id])
-      @favorite_anime = @user.favorites.where(item_type: "Anime").order('fav_rank').includes(item: :genres)
+      @favorite_anime = @user.favorites.where(item_type: "Anime").order('fav_rank')
       @favorite_anime.map {|a| present_favorite_anime(a, @user.try(:title_language_preference) || "canonical")}
     end
 
