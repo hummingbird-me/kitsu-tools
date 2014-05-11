@@ -105,7 +105,7 @@ class API_v1 < Grape::API
 
     def present_favorite_anime(anime, title_language_preference, include_genres=true)
       if anime
-        fav_anime = Anime.find(anime.item_id)
+        fav_anime = anime.item
         json = {
           slug: fav_anime.slug,
           status: fav_anime.status,
@@ -323,7 +323,7 @@ class API_v1 < Grape::API
     end
     get ":user_id/favorite_anime" do
       @user = User.find(params[:user_id])
-      @favorite_anime = @user.favorites.where(item_type: "Anime").order('fav_rank')
+      @favorite_anime = @user.favorites.where(item_type: "Anime").order('fav_rank').includes(item: :genres)
       @favorite_anime.map {|a| present_favorite_anime(a, @user.try(:title_language_preference) || "canonical")}
     end
 
