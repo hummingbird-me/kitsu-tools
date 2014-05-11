@@ -32,6 +32,14 @@ class Substory < ActiveRecord::Base
     end
   end
 
+  before_save do
+    if data['comment'].present?
+      h = data.dup
+      h['formatted_comment'] = MessageFormatter.format_message data['comment']
+      self.data = h
+    end
+  end
+
   def self.from_action(data)
     user = User.find data[:user_id]
 
