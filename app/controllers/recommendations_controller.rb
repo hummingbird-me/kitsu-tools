@@ -31,16 +31,16 @@ class RecommendationsController < ApplicationController
         @status_categories = ["currently_watching", "plan_to_watch", "completed"]
         @recommendations = {}
         @status_categories.each do |cat|
-          @recommendations[cat] = JSON.parse(r.recommendations["by_status"])[cat].map {|x| Anime.find(x) } rescue []
+          @recommendations[cat] = Anime.where(id: r.by_status[cat])
         end
 
         @genre_recommendations = {}
         current_user.favorite_genres.each do |genre|
-          @genre_recommendations[ genre.slug ] = JSON.parse(r.recommendations["by_genre"])[genre.slug].map {|x| Anime.find(x) } rescue []
+          @genre_recommendations[ genre.slug ] = Anime.where(id: r.by_genre[genre.slug])
         end
 
-        @neon_alley = JSON.parse(r.recommendations["by_service"])["neon_alley"].map {|x| Anime.find(x) } rescue []
-        
+        @neon_alley = Anime.where(id: r.by_service['neon_alley'])
+
         # View convenience variables. Move to translations later.
         @word_before = {
           "currently_watching" => "you're",
