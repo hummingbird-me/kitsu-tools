@@ -169,12 +169,6 @@ class API_v1 < Grape::API
           subjson[:episode_number] = substory.data["episode_number"]
           subjson[:service] = substory.data["service"]
         elsif substory.substory_type == "comment"
-          if substory.data["formatted_comment"].nil?
-            data = substory.data.dup
-            data["formatted_comment"] = MessageFormatter.format_message substory.data["comment"]
-            substory.data = data
-            substory.save
-          end
           subjson[:comment] = substory.data["formatted_comment"]
         end
         if current_user and ((substory.user_id == current_user.id) or (story.user_id == current_user.id) or current_user.admin?)
