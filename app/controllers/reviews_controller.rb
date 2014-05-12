@@ -36,13 +36,6 @@ class ReviewsController < ApplicationController
         render "anime/show", layout: 'redesign'
       end
     end
-
-    @review = Review.find(params[:id])
-    @anime = @review.anime
-    @recent_reviews = Review.order('created_at DESC').limit(10).select {|x| x.anime.sfw? }
-    if user_signed_in?
-      @evaluation = Vote.for(current_user, @review)
-    end
   end
 
   def vote
