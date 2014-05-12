@@ -20,6 +20,10 @@ class Character < ActiveRecord::Base
     using: [:trigram], ranked_by: ":trigram"
   pg_search_scope :simple_search_by_name, against: [:name],
     using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
+  class << self
+    alias_method :simple_search_by_title, :simple_search_by_name
+    alias_method :fuzzy_search_by_title, :fuzzy_search_by_name
+  end
 
   attr_accessible :description, :name, :mal_id, :image
   validates :name, :presence => true
