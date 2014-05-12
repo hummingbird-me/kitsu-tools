@@ -64,27 +64,6 @@ class User < ActiveRecord::Base
   def to_param
     name
   end
- 
-  def waifu_slug
-    charId = self.waifu_char_id
-    if charId != "0000"
-      casting = Casting.where(character_id: charId)
-      if casting.first != nil
-        casting = casting.first.anime_id
-        anime = Anime.find(casting)
-        if anime.slug != nil
-          slug = anime.slug
-        else
-         slug = "#"
-        end
-      else
-        slug = "#"
-      end
-    else
-      slug = "#" 
-    end 
-    slug 
-  end
 
   def self.find(id, options={})
     where('LOWER(name) = ?', id.to_s.downcase).first || super
@@ -125,7 +104,9 @@ class User < ActiveRecord::Base
   has_many :not_interested_anime, through: :not_interested, source: :media, source_type: "Anime"
 
   has_and_belongs_to_many :favorite_genres, -> { uniq }, class_name: "Genre", join_table: "favorite_genres_users"
-  
+
+  belongs_to :waifu_character, foreign_key: :waifu_char_id, class_name: 'Casting', primary_key: :character_id
+
   # Include devise modules. Others available are:
   # :lockable, :timeoutable, :trackable, :rememberable.
   devise :database_authenticatable, :registerable, :recoverable,
@@ -356,6 +337,12 @@ class User < ActiveRecord::Base
         break unless User.where(authentication_token: token).first
       end
       self.authentication_token = token
+    end
+
+    if waifu_char_id != '0000' and changed_attributes['waifu_char_id'] and waifu_character
+      self.waifu_slug = waifu_character.anime.slug || '#'
+    else
+      self.waifu_slug = '#'
     end
   end
 
