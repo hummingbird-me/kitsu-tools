@@ -22,11 +22,7 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def is_followed
-    if scope
-      object.follower_relations.where(follower_id: scope.id).length > 0
-    else
-      false
-    end
+    object.follower_relations.length > 0
   end
 
   def include_title_language_preference?
