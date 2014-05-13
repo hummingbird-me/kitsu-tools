@@ -160,14 +160,7 @@ class AnimeController < ApplicationController
 
         @trending_anime = TrendingAnime.list(6)
         @recent_reviews = Review.order('created_at DESC').limit(12).includes(:anime)
-        trending_review_candidates = Review.where("created_at >= ?", 30.days.ago).order("wilson_score DESC").limit(30).includes(:anime, :user)
-        @trending_reviews = []
-        trending_review_candidates.each do |candidate|
-          unless @trending_reviews.any? {|r| r.user_id == candidate.user_id }
-            @trending_reviews.push candidate
-          end
-          break if @trending_reviews.length == 6
-        end
+        @trending_reviews = Review.trending(start: 30.days.ago, limit: 6).includes(:anime, :user)
       end
 
       format.json do

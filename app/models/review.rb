@@ -38,4 +38,10 @@ class Review < ActiveRecord::Base
     total = self.total_votes
     self.update_column :wilson_score, WilsonScore.lower_bound(positive, total)
   end
+
+  def self.trending(params = {})
+    limit = params[:limit] || 6
+    start = (params[:start] || 30.days.ago).to_s :db
+    from("(SELECT DISTINCT ON (user_id) * FROM reviews WHERE (created_at >= '#{start}') ORDER BY user_id, wilson_score DESC, id DESC LIMIT #{limit}) reviews").order('reviews.wilson_score DESC')
+  end
 end
