@@ -92,7 +92,7 @@ class AnimeController < ApplicationController
       @sort = "all"
     end
 
-    @anime = Anime.accessible_by(current_ability).page(params[:page]).per(36)
+    @anime = Anime.accessible_by(current_ability).references(:genres).page(params[:page]).per(36)
 
     # Apply genre filter.
     if @genres.length > 10
