@@ -3,7 +3,6 @@ class UsersController < ApplicationController
 
   def index
     if params[:followed_by] or params[:followers_of]
-
       if params[:followed_by]
         users = User.find(params[:followed_by]).following
       elsif params[:followers_of]
@@ -12,18 +11,19 @@ class UsersController < ApplicationController
       users = users.page(params[:page]).per(20).includes(:follower_relations)
 
       render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
-    
-    elsif params[:randomlist] or params[:followlist]
-      to_follow = User.where({to_follow:true})      
-      followed_users = User.find(params[:user_id]).following
-      if to_follow.length < 5
-        to_follow += User.where({to_follow: false}).where("bio <> ''").order("RANDOM()").limit(10)
-      end
-    
-      followed_ids = followed_users.pluck(:id)
-      to_follow.reject!{|u| followed_ids.include? u.id}
-      render json: to_follow
 
+    elsif params[:randomlist] or params[:followlist]
+      user = User.find(params[:user_id])
+
+      # we want a random list of users we aren't already following
+      to_follow = User.where("id NOT IN (SELECT followed_id FROM follows WHERE follower_id = ?)", user.id)
+                      .where("id <> ?", user.id)
+                      .where("bio <> ''")
+                      .order("RANDOM()")
+                      .limit(10)
+                      .includes(:followers)
+
+      render json: to_follow
     else
       ### OLD CODE PATH BELOW.
       authenticate_user!
@@ -176,7 +176,7 @@ class UsersController < ApplicationController
     raise ActionController::RoutingError.new('Not Found') if @user.nil?
     redirect_to @user
   end
-  
+
   def comment
     authenticate_user!
 
@@ -206,7 +206,7 @@ class UsersController < ApplicationController
       end
       current_user.save
     end
-    
+
     respond_to do |format|
       format.html { redirect_to :back }
     end
@@ -257,9 +257,9 @@ class UsersController < ApplicationController
       user.waifu = params[:user][:waifu]
       user.website = params[:user][:website]
       user.waifu_or_husbando = params[:user][:waifu_or_husbando]
-      user.bio = params[:user][:mini_bio] 
+      user.bio = params[:user][:mini_bio]
       user.waifu_char_id = params[:user][:waifu_char_id]
-      
+
       if Rails.env.production? and params[:user][:cover_image_url] =~ /^data:image/
         user.cover_image = params[:user][:cover_image_url]
       end
