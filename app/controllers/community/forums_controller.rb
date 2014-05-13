@@ -3,7 +3,7 @@ module Community
     layout 'community'
 
     def index
-      @forums = Community::Forum.order(:sort_order).where("name <> 'NSFW'")
+      @forums = Community::Forum.order(:sort_order).where("name <> 'NSFW'").select('forem_forums.*, COUNT(*) AS topics_count').joins('LEFT JOIN forem_topics ON forem_topics.forum_id = forem_forums.id').group('forem_forums.id')
     end
 
     def show
