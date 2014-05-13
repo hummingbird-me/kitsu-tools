@@ -48,7 +48,6 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (4.0.2)
-    atomic (1.1.14)
     autoprefixer-rails (1.0.20140117)
       execjs
     aws-sdk (1.5.8)
@@ -250,7 +249,7 @@ GEM
       metaclass (~> 0.0.1)
     mock_redis (0.11.0)
     mtrc (0.0.4)
-    multi_json (1.8.4)
+    multi_json (1.10.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nested_form (0.3.2)
@@ -430,7 +429,7 @@ GEM
       tilt (~> 1.3, >= 1.3.4)
     sitemap_generator (4.3.1)
       builder
-    skylight (0.3.12)
+    skylight (0.3.13)
       activesupport (>= 3.0.0)
     slim (2.0.2)
       temple (~> 0.6.6)
@@ -455,8 +454,7 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.18.1)
-    thread_safe (0.1.3)
-      atomic
+    thread_safe (0.3.3)
     tilt (1.4.1)
     timecop (0.7.1)
     timers (1.1.0)
@@ -468,7 +466,7 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (0.3.38)
+    tzinfo (0.3.39)
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
