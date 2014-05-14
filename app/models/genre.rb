@@ -15,7 +15,7 @@ class Genre < ActiveRecord::Base
   friendly_id :name, :use => [:slugged, :history]
 
   attr_accessible :name, :description
-  has_and_belongs_to_many :animes
+  has_and_belongs_to_many :anime
 
   validates :name, :slug, :presence => true, :uniqueness => true
 
