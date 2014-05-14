@@ -51,7 +51,7 @@ module ApplicationHelper
     if anime and quote = anime.quotes.order('RANDOM()').first
       quote
     else
-      Quote.includes(:anime).where("anime.age_rating <> 'R18+'").references(:anime).order('RANDOM()').first
+      Quote.includes(:anime).where("anime.age_rating <> 'R18+'").references(:anime).where('"quotes"."id" >= (SELECT RANDOM() * MAX("id") FROM "quotes")::integer').first
     end
   end
 
