@@ -48,9 +48,9 @@ module ApplicationHelper
   end
 
   def overlay_quote_from_anime(anime)
-    begin
-      anime.quotes.order('RANDOM()').first || Quote.order('RANDOM()').first
-    rescue
+    if anime and quote = anime.quotes.order('RANDOM()').first
+      quote
+    else
       Quote.includes(:anime).where("anime.age_rating <> 'R18+'").references(:anime).order('RANDOM()').first
     end
   end
