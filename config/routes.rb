@@ -1,14 +1,14 @@
 require 'sidekiq/web'
 
 Hummingbird::Application.routes.draw do
-  resources :library_entries
-  resources :franchises
-  resources :full_anime
-  resources :news_feeds
+  resources :library_entries, except: [:new, :edit]
+  resources :franchises, only: [:index, :show]
+  resources :full_anime, only: [:show]
+  resources :news_feeds, only: [:index]
   resources :quotes
-  resources :stories
-  resources :user_infos
-  resources :changelogs
+  resources :stories, only: [:index]
+  resources :user_infos, only: [:show]
+  resources :changelogs, only: [:index]
   resources :reviews do
     post :vote
   end
@@ -22,7 +22,7 @@ Hummingbird::Application.routes.draw do
     registrations: "users/registrations"
   }
 
-  resources :notifications
+  resources :notifications, only: [:index, :show]
 
   namespace :community do
     get '/' => 'forums#index'
@@ -57,7 +57,7 @@ Hummingbird::Application.routes.draw do
   get '/u/:id' => redirect {|params, request| "/users/#{params[:id]}" }
   get '/users/:id/feed' => redirect {|params, request| "/users/#{params[:id]}" }
 
-  resources :users do
+  resources :users, only: [:index, :show, :update] do
     get :library
     get :reviews
     get :followers
@@ -90,23 +90,23 @@ Hummingbird::Application.routes.draw do
   get '/anime/upcoming(/:season)' => 'anime#upcoming', as: :anime_season
   get '/anime/filter(/:sort)' => 'anime#filter', as: :anime_filter
 
-  resources :anime do
-    resources :casts
+  resources :anime, only: [:show, :index, :update] do
+    resources :casts, only: [:index]
     resources :quotes do
       member { post :vote }
     end
     resources :reviews
   end
 
-  resources :manga
+  resources :manga, only: [:show]
 
-  resources :genres do
+  resources :genres, only: [:index, :show] do
     post :add_to_favorites
     post :remove_from_favorites
   end
 
   resources :producers
-  resources :characters
+  resources :characters, only: [:show]
 
   # Watchlist
   #resources :watchlists
