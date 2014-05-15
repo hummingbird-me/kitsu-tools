@@ -3,7 +3,20 @@ class ReviewSerializer < ActiveModel::Serializer
 
   embed :ids
 
-  attributes :id, :summary, :positive_votes, :total_votes, :rating, :rating_story, :rating_animation, :rating_sound, :rating_characters, :rating_enjoyment, :content, :formatted_content, :liked
+  attributes :id,
+             :summary,
+             :positive_votes,
+             :total_votes,
+             :rating,
+             :rating_story,
+             :rating_animation,
+             :rating_sound,
+             :rating_characters,
+             :rating_enjoyment,
+             :content,
+             :formatted_content,
+             :liked
+
   has_one :user, embed_key: :name, include: true
   has_one :anime, embed_key: :slug
 
@@ -36,8 +49,7 @@ class ReviewSerializer < ActiveModel::Serializer
   end
 
   def liked
-    return nil if scope.nil? or Vote.for(scope, object).nil?
-    Vote.for(scope, object).positive?
+    scope && Vote.for(scope, object).try(:positive?)
   end
 
   def formatted_content

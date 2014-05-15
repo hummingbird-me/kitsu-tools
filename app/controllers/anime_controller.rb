@@ -7,7 +7,7 @@ class AnimeController < ApplicationController
   end
 
   def show
-    @anime = Anime.find(params[:id])
+    @anime = Anime.includes(:genres).find(params[:id])
 
     respond_to do |format|
       format.html do
@@ -144,7 +144,7 @@ class AnimeController < ApplicationController
     # NOTE When the seen/unseen filter is added use a join or something.
     @library_entries = {}
     if user_signed_in?
-      @library_entries = Watchlist.where(anime_id: @anime.map {|x| x.id}, 
+      @library_entries = Watchlist.where(anime_id: @anime.map {|x| x.id},
                                          user_id: current_user.id)
                                   .index_by(&:anime_id)
     end

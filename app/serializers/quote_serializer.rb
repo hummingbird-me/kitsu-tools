@@ -1,5 +1,10 @@
 class QuoteSerializer < ActiveModel::Serializer
-  attributes :id, :character_name, :content, :username, :favorite_count, :is_favorite
+  attributes :id,
+             :character_name,
+             :content,
+             :username,
+             :favorite_count,
+             :is_favorite
 
   def username
     object.user.name
@@ -10,6 +15,6 @@ class QuoteSerializer < ActiveModel::Serializer
   end
 
   def is_favorite
-    scope && !Vote.for(scope, object).nil?
+    scope && Vote.for(scope, object).present?
   end
 end

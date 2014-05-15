@@ -11,18 +11,14 @@ class ApplicationController < ActionController::Base
     data = [data] unless data.is_a? Array
     options[:scope] = current_user
     options[:root] ||= data.first.class.to_s.underscore.pluralize
-    if options[:serializer]
-      options[:each_serializer] = options[:serializer]
-    end
-    @preload.push(ActiveModel::ArraySerializer.new(data, options))
+    options[:each_serializer] = options[:serializer] if options[:serializer]
+    @preload << ActiveModel::ArraySerializer.new(data, options)
   end
 
   def check_user_authentication
     if user_signed_in?
       sign_out :user unless cookies[:auth_token]
-
       preload! current_user
-      # Rack::MiniProfiler.authorize_request if current_user.id == 1
       $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
     elsif cookies[:auth_token]
       sign_in User.find_by_authentication_token(cookies[:auth_token])

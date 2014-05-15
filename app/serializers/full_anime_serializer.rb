@@ -1,8 +1,14 @@
 class FullAnimeSerializer < AnimeSerializer
   embed :ids, include: true
 
-  attributes :alternate_title, :cover_image, :cover_image_top_offset, :screencaps,
-    :languages, :community_ratings, :youtube_video_id, :bayesian_rating, :genres
+  attributes :alternate_title,
+             :cover_image,
+             :cover_image_top_offset,
+             :screencaps,
+             :languages,
+             :community_ratings,
+             :youtube_video_id,
+             :bayesian_rating
 
   has_many :featured_quotes, root: :quotes
   has_many :trending_reviews, root: :reviews
@@ -11,8 +17,8 @@ class FullAnimeSerializer < AnimeSerializer
   has_many :franchises, include: false
   has_one :library_entry
 
-  def alternate_title
-    object.alternate_title
+  def library_entry
+    scope && LibraryEntry.where(user_id: scope.id, anime_id: object.id).first
   end
 
   def cover_image
@@ -28,7 +34,7 @@ class FullAnimeSerializer < AnimeSerializer
   end
 
   def languages
-    object.castings.where(role: "Voice Actor").select("DISTINCT(language)").map {|x| x.language }
+    object.castings.where(role: "Voice Actor").select("DISTINCT(language)").map(&:language).sort
   end
 
   def featured_quotes
@@ -45,18 +51,25 @@ class FullAnimeSerializer < AnimeSerializer
 
   def community_ratings
     ratings = []
-    0.upto(5).each do |i|
-      previous_rating = (object.rating_frequencies["#{i}.0"] || 0).to_i
+    (0..5).each do |i|
+      previous_rating = (object.rating_frequencies["#{i}.0"]   || 0).to_i
       next_rating     = (object.rating_frequencies["#{i+1}.0"] || 0).to_i
-      current_rating  = (object.rating_frequencies["#{i}.5"] || 0).to_i
+      current_rating  = (object.rating_frequencies["#{i}.5"]   || 0).to_i
 
-      ratings.push previous_rating
-      if current_rating < previous_rating and current_rating < next_rating
+      ratings << previous_rating
+      if current_rating < previous_rating && current_rating < next_rating
         current_rating = (next_rating + previous_rating) / 2
       end
-      ratings.push current_rating
+      ratings << current_rating
     end
-    ratings.pop; ratings.shift
+    ratings.pop
+    ratings.shift
+
     ratings
   end
+
+  def bayesian_rating
+    object.bayesian_average
+  end
+
 end
