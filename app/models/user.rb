@@ -83,8 +83,8 @@ class User < ActiveRecord::Base
   end
 
   def has_favorite2?(item)
-    @favorites ||= favorites.select('item_type, item_id')
-    @favorites.detect {|x| x.item_id == item.id and item.class.to_s == x.item_type }
+    @favorites ||= favorites.pluck(:item_id, :item_type)
+    !! @favorites.member?([item.id, item.class.to_s])
   end
 
   # Following stuff.
