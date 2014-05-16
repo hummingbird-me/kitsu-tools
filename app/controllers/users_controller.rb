@@ -8,7 +8,10 @@ class UsersController < ApplicationController
       elsif params[:followers_of]
         users = User.find(params[:followers_of]).followers
       end
-      users = users.page(params[:page]).per(20).includes(:follower_relations)
+      users = users.page(params[:page]).per(20)
+      if current_user
+        users = users.includes(:follower_relations)
+      end
 
       render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
 
