@@ -33,7 +33,7 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def is_followed
-    scope ? !!object.follower_relations.detect {|x| x.follower_id == scope.id } : false
+    scope ? !!object.follower_items.detect {|x| x.follower_id == scope.id } : false
   end
 
   def include_title_language_preference?

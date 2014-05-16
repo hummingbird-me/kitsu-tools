@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       end
       users = users.page(params[:page]).per(20)
       if current_user
-        users = users.includes(:follower_relations)
+        users = users.includes(:follower_items)
       end
 
       render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
