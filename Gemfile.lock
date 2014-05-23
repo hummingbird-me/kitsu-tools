@@ -66,7 +66,6 @@ GEM
       barber (>= 0.4.1)
       emblem-source
     bcrypt-ruby (3.1.2)
-    beefcake (0.5.0)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -75,16 +74,7 @@ GEM
     bootstrap-sass (3.1.0.0)
       sass (~> 3.2)
     builder (3.1.4)
-    bullet (4.9.0)
-      activesupport
-      uniform_notifier (~> 1.6.0)
     cancan (1.6.10)
-    capistrano (2.15.5)
-      highline
-      net-scp (>= 1.0.0)
-      net-sftp (>= 2.0.0)
-      net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.1.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     climate_control (0.0.3)
@@ -191,7 +181,6 @@ GEM
       railties (>= 4.0.1)
     handlebars-source (1.3.0)
     hashie (2.0.5)
-    highline (1.6.20)
     hike (1.2.3)
     hiredis (0.4.5)
     http_parser.rb (0.5.3)
@@ -248,18 +237,10 @@ GEM
     mocha (1.0.0)
       metaclass (~> 0.0.1)
     mock_redis (0.11.0)
-    mtrc (0.0.4)
     multi_json (1.10.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     nested_form (0.3.2)
-    net-scp (1.1.2)
-      net-ssh (>= 2.6.5)
-    net-sftp (2.1.2)
-      net-ssh (>= 2.6.5)
-    net-ssh (2.7.0)
-    net-ssh-gateway (1.2.0)
-      net-ssh (>= 2.6.5)
     newrelic-grape (1.3.1)
       grape
       newrelic_rpm
@@ -384,13 +365,7 @@ GEM
       redis (>= 2.2)
     ref (1.0.5)
     remotipart (1.2.1)
-    riemann-client (0.2.2)
-      beefcake (>= 0.3.5)
-      mtrc (>= 0.0.4)
-      trollop (>= 1.16.2)
     rinku (1.7.3)
-    rvm-capistrano (1.5.1)
-      capistrano (~> 2.15.4)
     safe_yaml (0.9.7)
     sanitize (2.1.0)
       nokogiri (>= 1.4.4)
@@ -461,7 +436,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    trollop (2.0)
     twitter-typeahead-rails (0.10.2)
       actionpack (>= 3.1)
       jquery-rails
@@ -474,7 +448,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    uniform_notifier (1.6.1)
     uuidtools (2.1.4)
     virtus (1.0.1)
       axiom-types (~> 0.0.5)
@@ -497,9 +470,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.1.0)
-  bullet
   cancan
-  capistrano
   coffee-rails (~> 4.0)
   delayed_paperclip
   devise
@@ -551,9 +522,7 @@ DEPENDENCIES
   react-rails (~> 0.9.0.0)
   redis
   redis-rails
-  riemann-client
   rinku
-  rvm-capistrano
   sanitize
   sass-rails (~> 4.0)
   shoulda
