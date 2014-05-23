@@ -1,5 +1,0 @@
-check process haproxy with pidfile /var/run/haproxy.pid
-  group hummingbird
-  start program = "/usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg"
-  stop program  = "/bin/kill -9 `cat /var/run/haproxy.pid`"
-

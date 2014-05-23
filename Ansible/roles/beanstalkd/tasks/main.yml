@@ -1,9 +1,0 @@
----
-- name: Install beanstalkd
-  apt: pkg=beanstalkd state=present
-
-- name: Copy defaults file
-  copy: src=default dest=/etc/default/beanstalkd
-
-- name: Start beanstalkd
-  service: name=beanstalkd state=started

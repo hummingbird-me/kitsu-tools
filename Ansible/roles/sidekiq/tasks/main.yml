@@ -1,7 +1,0 @@
-- name: Add Sidekiq to Monit
-  copy: src=sidekiq.monit dest=/etc/monit/conf.d/sidekiq.monit
-  register: sidekiq_monit_config
-
-- name: Reload Monit
-  action: service name=monit state=reloaded
-  when: sidekiq_monit_config.changed

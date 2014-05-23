@@ -1,5 +1,0 @@
-source 'https://rubygems.org'
-
-gem 'beaneater'
-gem 'activerecord'
-gem 'pg'

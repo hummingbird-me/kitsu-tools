@@ -1,3 +1,0 @@
-check process haraka-outbound with pidfile /u/apps/hummingbird/shared/pids/haraka.pid
-  start program = "/usr/local/bin/haraka -c /home/vikhyat/haraka/haraka-outbound"
-  stop program = "/bin/kill `cat /u/apps/hummingbird/shared/pids/haraka.pid`"
