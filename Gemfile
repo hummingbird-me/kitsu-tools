@@ -61,9 +61,6 @@ group :development do
   gem 'rb-fsevent', require: false
   gem 'qunit-rails'
   gem 'bullet'
-  # Deploy with Capistrano
-  gem 'capistrano', require: false
-  gem 'rvm-capistrano', require: false
 end
 
 gem 'rack-mini-profiler'
