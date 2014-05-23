@@ -12,8 +12,6 @@ gem 'grape'
 gem 'grape-entity'
 gem 'active_model_serializers', '~> 0.8'
 
-gem "skylight"
-
 gem 'fastclick-rails'
 
 gem 'pg', '0.15.1'
@@ -64,11 +62,6 @@ end
 
 gem 'rack-mini-profiler'
 gem 'flamegraph'
-
-group :production do
-  gem 'newrelic_rpm'
-  gem 'newrelic-grape'
-end
 
 # Testing
 group :test do
