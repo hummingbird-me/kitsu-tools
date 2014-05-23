@@ -1,6 +1,0 @@
-[submodule "vendor/forem"]
-	path = vendor/forem
-	url = git@github.com:vikhyat/forem.git
-[submodule "vendor/forem-html_formatter"]
-	path = vendor/forem-html_formatter
-	url = git@github.com:vikhyat/forem-html_formatter.git
