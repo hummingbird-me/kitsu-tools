@@ -60,7 +60,6 @@ group :development do
   gem 'rack-livereload'
   gem 'rb-fsevent', require: false
   gem 'qunit-rails'
-  gem 'bullet'
 end
 
 gem 'rack-mini-profiler'
