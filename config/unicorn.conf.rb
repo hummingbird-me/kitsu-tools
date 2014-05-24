@@ -1,7 +1,6 @@
-worker_processes ENV["UNICORN_PROCESSES"].to_i 
+worker_processes ENV["UNICORN_PROCESSES"].to_i
 
 if ENV["RAILS_ENV"] == "production"
-
   working_directory "/u/apps/hummingbird/current"
   listen "/tmp/unicorn.sock", backlog: 1024
   pid "/u/apps/hummingbird/shared/pids/unicorn.pid"
@@ -16,14 +15,10 @@ if ENV["RAILS_ENV"] == "production"
 else
 
   listen 3000, tcp_nopush: true
-
 end
 
 
 preload_app true
-if GC.respond_to?(:copy_on_write_friendly=)
-  GC.copy_on_write_friendly = true
-end
 
 # Nuke workers after 60 seconds.
 timeout 60
