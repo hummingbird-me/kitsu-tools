@@ -211,7 +211,7 @@ GEM
     kaminari (0.15.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    kgio (2.8.1)
+    kgio (2.9.2)
     launchy (2.4.2)
       addressable (~> 2.3)
     letter_opener (1.2.0)
@@ -327,7 +327,7 @@ GEM
       activesupport (= 4.0.5)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.12.0)
+    raindrops (0.13.0)
     rake (10.3.2)
     rake-compiler (0.9.2)
       rake
@@ -438,7 +438,7 @@ GEM
     uglifier (2.4.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unicorn (4.8.0)
+    unicorn (4.8.3)
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
@@ -530,5 +530,5 @@ DEPENDENCIES
   timecop
   twitter-typeahead-rails
   uglifier (>= 1.0.3)
-  unicorn
+  unicorn (~> 4.8)
   zurb-foundation (~> 4.3.0)
