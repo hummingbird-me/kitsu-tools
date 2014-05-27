@@ -32,7 +32,7 @@ gem 'react-rails', '~> 0.9.0.0'
 gem 'indexable', '~> 0.1'
 gem 'rinku'
 gem 'rack-cors', require: 'rack/cors'
-gem 'sanitize'
+gem 'sanitize', '~> 2.1'
 gem 'oj'
 
 gem 'fast_blank' # Faster `String#blank?`, which is used a lot but ActiveRecord.

@@ -510,7 +510,7 @@ DEPENDENCIES
   redis
   redis-rails
   rinku
-  sanitize
+  sanitize (~> 2.1)
   sass-rails (~> 4.0)
   shoulda
   sidekiq
