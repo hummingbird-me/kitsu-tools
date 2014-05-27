@@ -8,11 +8,10 @@
           h3.panel-title About #{user.username}
           span.edit-panel
             if viewingSelf
-              unless isEditing
-                a{action "goToEditing"}
-                  i.fa.fa-pencil
+              if isEditing
+                button.btn.btn-default.btn-xs{action "saveUserInfo"} Save
               else
-                a.btn.btn-default.btn-xs{action "doneEditing"} Save
+                a{action "editUserInfo"}: i.fa.fa-pencil
 
         .panel-body
           if isEditing

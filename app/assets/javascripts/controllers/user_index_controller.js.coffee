@@ -30,7 +30,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
   inFlight: false
   favorite_anime: []
   favorite_anime_page: 1
-  isEditing: false  
+  isEditing: false
   editingFavorites: false
   selectChoices: ["Waifu", "Husbando"] 
   selectedWaifu: null
@@ -43,28 +43,30 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
 
   favorite_anime_list: (->
     animes = @get('favorite_anime')
-    page = @get('favorite_anime_page')  
-  
+    page = @get('favorite_anime_page')
+
     #if using the goPrev and goNext page style, slice the array into a chunk 
     #animes = animes.slice( (page-1)*6, page*6)
 
     #if using loadMoreFavorite_animes, slice the array from [0] to the page
     animes = animes.slice(0, page*6 )
 
-    return animes 
+    return animes
   ).property('favorite_anime', 'favorite_anime_page')
- 
+
 
   actions:
     unselectWaifu: ->
       @set('unselectingWaifu', true)
       @set('user.waifu', null)
-    goToEditing: ->
-      @set('isEditing', true)    
-    doneEditing: ->
+
+    editUserInfo: -> @set('isEditing', true)
+
+    saveUserInfo: ->
       @set('unselectingWaifu', false)
       @get('user.content').save()
       @set('isEditing', false)
+
     editFav: ->
       @set('editingFavorites', true)
     doneEditingFav: ->
@@ -72,11 +74,12 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
       url = "/api/v1/users/" + @get('currentUser.id') + '/favorite_anime/update'
       list = @get('favorite_anime_list')
       _this = @
-      data = {} 
+      data = {}
 
       list.forEach (item)->
         data[item.fav_id]={id: item.fav_id, user_id: _this.get('currentUser.id'), fav_rank: item.fav_rank}
 
+      # FIXME this should be using ember-data.
       Ember.$.ajax
         url: url
         data: {data:data}
@@ -94,7 +97,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend
       if (page*6 + 1 <= @get('favorite_anime').length)
         ++page
         @set('favorite_anime_page', page)
-    
+
     goPrevPage: ->
       page = @get('favorite_anime_page')
       if page > 1
