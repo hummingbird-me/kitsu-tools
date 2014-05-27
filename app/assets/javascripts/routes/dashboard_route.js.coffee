@@ -4,9 +4,13 @@ Hummingbird.DashboardRoute = Ember.Route.extend Hummingbird.Paginated,
       return @store.find 'news_feed', user_id: @get('currentUser.id'), page: page
     else
       return @store.find 'news_feed', user_id: @get('currentUser.id')
+
   setupController: (controller, model) ->
     currentUser = @get('currentUser')
     controller.set 'userInfo', @store.find('userInfo', @get('currentUser.id'))
+
+    Hummingbird.TitleManager.setTitle "Dashboard"
+
     # For the pagination mixin to work correctly:
     @setCanLoadMore(true)
     controller.set 'canLoadMore', true
@@ -19,8 +23,9 @@ Hummingbird.DashboardRoute = Ember.Route.extend Hummingbird.Paginated,
       @set 'pollster', Hummingbird.Pollster.create
         onPoll: -> 
           controller.get('target').send('checkForNewObjects')
-      
+
     @get('pollster').start()
+
   deactivate:->
     @get('pollster').stop()
 

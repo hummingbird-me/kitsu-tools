@@ -10,7 +10,11 @@
         <span class='fa fa-bar'></span>
       </button>
 
-      <a class='navbar-brand' href='/'><img src="/assets/logo-new.jpg" width="119px" height="20px"></a>
+      {{#if currentUser.isSignedIn}}
+        {{#link-to 'dashboard' class="navbar-brand"}}<img src="/assets/logo-new.jpg" width="119px" height="20px">{{/link-to}}
+      {{else}}
+        <a class='navbar-brand' href='/'><img src="/assets/logo-new.jpg" width="119px" height="20px"></a>
+      {{/if}}
 
       <!-- Mobile navigation -->
       <ul class='nav navbar-right mobile-user-nav visible-xs'>
