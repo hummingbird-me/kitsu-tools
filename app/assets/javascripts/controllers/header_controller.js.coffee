@@ -27,7 +27,7 @@ Hummingbird.HeaderController = Ember.Controller.extend
         filter: (results)->
           Ember.$.map(results.search, (r)->
             # There actually has to be a way to send the img params to the thumb generator in the request, this is just a temp. solution
-            {title: r.title, type: r.type, image: r.image.replace("{size}", "small").replace(".gif?", ".jpg?"), link: r.link}
+            {title: r.title, type: r.type, image: r.image.replace("{size}", "small").replace(/\.[a-z]+\?/, ".jpg?"), link: r.link}
           )
     bloodhound.initialize()
     @set('bhInstance', bloodhound)

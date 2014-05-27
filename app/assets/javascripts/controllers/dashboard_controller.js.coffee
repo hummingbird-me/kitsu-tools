@@ -46,7 +46,7 @@ Hummingbird.DashboardController = Ember.Controller.extend
         users.push
           link:  "http://forums.hummingbird.me/users/"+thisName+"/activity"
           name:  thisName
-          image: listUserOrdr[user.user_id]['avatar_template'].replace("{size}", "small").replace(".gif?", ".jpg?")
+          image: listUserOrdr[user.user_id]['avatar_template'].replace("{size}", "small").replace(/\.[a-z]+\?/, '.jpg?')
           title: user.description
 
       listElements.push
