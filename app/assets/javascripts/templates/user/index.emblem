@@ -9,9 +9,10 @@
           span.edit-panel
             if viewingSelf
               unless isEditing
-                a click="goToEditing" Edit
+                a{action "goToEditing"}
+                  i.fa.fa-pencil
               else
-                a click="doneEditing" Save
+                a.btn.btn-default.btn-xs{action "doneEditing"} Save
 
         .panel-body
           if isEditing
@@ -32,8 +33,8 @@
                 li
                   .interest-icon <i class="fa fa-link"></i>
                   .interest #{input type="text" placeholder="Website" value=user.website}
-        
-          else   
+
+          else
             .p #{user.miniBio}
             .user-interests
               ul
@@ -51,7 +52,7 @@
                   if hasWebsite
                     .interest-icon <i class="fa fa-link"></i>
                     .interest {{autolink user.website}}
-                    
+
       / .photos-videos
       /   .panel-heading
       /     h3.panel-title Photos and Videos
@@ -126,9 +127,10 @@
           if viewingSelf
             span.edit-panel
               unless editingFavorites
-                a click="editFav" Edit
+                a{action "editFav"}
+                  i.fa.fa-pencil
               else
-                a click="doneEditingFav" Save
+                a.btn.btn-xs.btn-default{action "doneEditingFav"} Save
 
         .panel-body
           favorite-anime-container favorite_anime_list=favorite_anime_list currentUser=currentUser isEditing=editingFavorites user=user
