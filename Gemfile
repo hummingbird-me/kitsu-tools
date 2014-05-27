@@ -21,7 +21,7 @@ gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
 
 gem 'ember-rails'
-gem 'ember-source', '1.6.0.beta.1'
+gem 'ember-source', '1.5.0'
 gem 'ember-data-source', '1.0.0.beta.7'
 gem 'coffee-rails', '~> 4.0'
 gem 'emblem-rails', '~> 0.2.1'
