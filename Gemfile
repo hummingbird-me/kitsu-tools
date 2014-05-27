@@ -14,7 +14,7 @@ gem 'active_model_serializers', '~> 0.8'
 
 gem 'fastclick-rails', "~> 1.0"
 
-gem 'pg', '0.15.1'
+gem 'pg', '0.17.1'
 
 gem 'hiredis'
 gem 'redis', require: ['redis', 'redis/connection/hiredis']
