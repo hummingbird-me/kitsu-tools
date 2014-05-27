@@ -125,7 +125,7 @@ GEM
     emblem-rails (0.2.1)
       barber-emblem (~> 0.1.1)
       ember-rails (>= 0.14.0)
-    emblem-source (0.3.11)
+    emblem-source (0.3.15)
     equalizer (0.0.9)
     erubis (2.7.0)
     escape (0.0.4)
@@ -473,7 +473,7 @@ DEPENDENCIES
   ember-rails
   ember-source (= 1.6.0.beta.1)
   emblem-rails (~> 0.2.1)
-  emblem-source (~> 0.3.8)
+  emblem-source (~> 0.3)
   fast_blank
   fastclick-rails
   flamegraph

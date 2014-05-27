@@ -25,7 +25,7 @@ gem 'ember-source', '1.6.0.beta.1'
 gem 'ember-data-source', '1.0.0.beta.7'
 gem 'coffee-rails', '~> 4.0'
 gem 'emblem-rails', '~> 0.2.1'
-gem 'emblem-source', '~> 0.3.8'
+gem 'emblem-source', '~> 0.3'
 
 gem 'react-rails', '~> 0.9.0.0'
 
