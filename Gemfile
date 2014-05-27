@@ -90,10 +90,8 @@ gem 'friendly_id', github: 'joshfabian/friendly_id'
 gem 'devise', '~> 3.2'
 gem 'devise-async' # Async email for Devise
 gem 'omniauth'
-gem 'omniauth-facebook', '= 1.4.0'  # Using version 1.4.0 instead of the latest
-                                    # because of an issue where the first time
-                                    # (when the user authorizes the application),
-                                    # the user is not logged in for some reason.
+gem 'omniauth-facebook', '~> 1.6'
+
 # Authorization.
 gem 'cancan', "~> 1.6"
 
