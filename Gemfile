@@ -78,7 +78,7 @@ gem 'simple_form'
 gem 'rdiscount'
 
 # Attachments
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 4.1"
 gem 'paperclip-optimizer'
 gem 'delayed_paperclip', "~> 2.7"
 gem 'aws-sdk', '~> 1.41'

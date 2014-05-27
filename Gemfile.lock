@@ -259,7 +259,7 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     orm_adapter (0.5.0)
-    paperclip (3.5.4)
+    paperclip (4.1.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
@@ -500,7 +500,7 @@ DEPENDENCIES
   oj
   omniauth
   omniauth-facebook (= 1.4.0)
-  paperclip (~> 3.0)
+  paperclip (~> 4.1)
   paperclip-optimizer
   pg (= 0.15.1)
   pg_search (~> 0.7)
