@@ -45,11 +45,5 @@ Hummingbird::Application.configure do
 
   config.react.variant = :development
   config.react.addons = true
-  config.after_initialize do
-    Bullet.enable = true
-    Bullet.bullet_logger = true
-    # Bullet.growl = true
-  end
-
 end
 
