@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.1.2'
 
-gem 'rails', '4.0.3'
+gem 'rails', '~> 4.0'
 
 # Pending switching to strong params.
 gem 'protected_attributes'
