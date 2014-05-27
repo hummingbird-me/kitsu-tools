@@ -3,7 +3,6 @@
 --
 
 SET statement_timeout = 0;
-SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -1283,7 +1282,8 @@ CREATE TABLE users (
     website character varying(255),
     waifu_or_husbando character varying(255),
     waifu_slug character varying(255) DEFAULT '#'::character varying,
-    waifu_char_id character varying(255) DEFAULT '0000'::character varying
+    waifu_char_id character varying(255) DEFAULT '0000'::character varying,
+    to_follow boolean DEFAULT false
 );
 
 
@@ -1913,6 +1913,20 @@ CREATE UNIQUE INDEX character_mal_id ON characters USING btree (mal_id);
 
 
 --
+-- Name: index_anime_franchises_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_anime_franchises_on_anime_id ON anime_franchises USING btree (anime_id);
+
+
+--
+-- Name: index_anime_franchises_on_franchise_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_anime_franchises_on_franchise_id ON anime_franchises USING btree (franchise_id);
+
+
+--
 -- Name: index_anime_genres_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1927,6 +1941,13 @@ CREATE INDEX index_anime_genres_on_genre_id ON anime_genres USING btree (genre_i
 
 
 --
+-- Name: index_anime_on_age_rating; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_anime_on_age_rating ON anime USING btree (age_rating);
+
+
+--
 -- Name: index_anime_on_mal_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1934,10 +1955,31 @@ CREATE UNIQUE INDEX index_anime_on_mal_id ON anime USING btree (mal_id);
 
 
 --
+-- Name: index_anime_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_anime_on_slug ON anime USING btree (slug);
+
+
+--
 -- Name: index_anime_on_wilson_ci; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_anime_on_wilson_ci ON anime USING btree (bayesian_average DESC);
+
+
+--
+-- Name: index_anime_producers_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_anime_producers_on_anime_id ON anime_producers USING btree (anime_id);
+
+
+--
+-- Name: index_anime_producers_on_producer_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_anime_producers_on_producer_id ON anime_producers USING btree (producer_id);
 
 
 --
@@ -2022,13 +2064,6 @@ CREATE INDEX index_follows_on_followed_id ON follows USING btree (follower_id);
 --
 
 CREATE UNIQUE INDEX index_follows_on_followed_id_and_follower_id ON follows USING btree (followed_id, follower_id);
-
-
---
--- Name: index_follows_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_follows_on_user_id ON follows USING btree (followed_id);
 
 
 --
@@ -2284,6 +2319,13 @@ CREATE UNIQUE INDEX index_users_on_lower_name_index ON users USING btree (lower(
 
 
 --
+-- Name: index_users_on_to_follow; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_users_on_to_follow ON users USING btree (to_follow);
+
+
+--
 -- Name: index_users_on_waifu; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2323,6 +2365,13 @@ CREATE INDEX index_users_on_website ON users USING btree (website);
 --
 
 CREATE UNIQUE INDEX index_votes_on_target_id_and_target_type_and_user_id ON votes USING btree (target_id, target_type, user_id);
+
+
+--
+-- Name: index_votes_on_user_id_and_target_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_votes_on_user_id_and_target_type ON votes USING btree (user_id, target_type);
 
 
 --
@@ -2945,3 +2994,17 @@ INSERT INTO schema_migrations (version) VALUES ('20140425232359');
 INSERT INTO schema_migrations (version) VALUES ('20140427213739');
 
 INSERT INTO schema_migrations (version) VALUES ('20140428051945');
+
+INSERT INTO schema_migrations (version) VALUES ('20140508014623');
+
+INSERT INTO schema_migrations (version) VALUES ('20140509185245');
+
+INSERT INTO schema_migrations (version) VALUES ('20140510170525');
+
+INSERT INTO schema_migrations (version) VALUES ('20140511184722');
+
+INSERT INTO schema_migrations (version) VALUES ('20140511190858');
+
+INSERT INTO schema_migrations (version) VALUES ('20140512093910');
+
+INSERT INTO schema_migrations (version) VALUES ('20140515093555');
