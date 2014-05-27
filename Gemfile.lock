@@ -330,11 +330,11 @@ GEM
     rb-inotify (0.9.3)
       ffi (>= 0.5.0)
     rdiscount (2.1.7)
-    react-rails (0.9.0.0)
+    react-rails (0.10.0.0)
       execjs
       rails (>= 3.1)
-      react-source (= 0.9.0)
-    react-source (0.9.0)
+      react-source (= 0.10.0)
+    react-source (0.10.0)
     redis (3.0.7)
     redis-actionpack (4.0.0)
       actionpack (~> 4)
@@ -506,7 +506,7 @@ DEPENDENCIES
   rails_admin
   rb-fsevent
   rdiscount
-  react-rails (~> 0.9.0.0)
+  react-rails (~> 0.10.0.0)
   redis
   redis-rails
   rinku

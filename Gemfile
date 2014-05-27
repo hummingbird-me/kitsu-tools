@@ -27,7 +27,7 @@ gem 'coffee-rails', '~> 4.0'
 gem 'emblem-rails', '~> 0.2.1'
 gem 'emblem-source', '~> 0.3'
 
-gem 'react-rails', '~> 0.9.0.0'
+gem 'react-rails', '~> 0.10.0.0'
 
 gem 'indexable', '~> 0.1'
 gem 'rinku'
