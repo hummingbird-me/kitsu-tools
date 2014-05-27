@@ -1,3 +1,7 @@
+# hummingbird
+
+[![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird.png)](https://codeclimate.com/github/hummingbird-me/hummingbird)
+
 ### Commit informations
 The Hummingbird changelog is automatically labeling commits based on their commit message.
 It currently supports the labels `ADD` and `FIX` as well as the `MISC` label if no word in the commit message match any of the words from the add or fix lists.  
