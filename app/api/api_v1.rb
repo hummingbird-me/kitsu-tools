@@ -225,9 +225,9 @@ class API_v1 < Grape::API
     post '/authenticate' do
       user = nil
       if params[:username]
-        user = User.where("LOWER(name) = ?", params[:username]).first
+        user = User.where("LOWER(name) = ?", params[:username].downcase).first
       elsif params[:email]
-        user = User.where("LOWER(email) = ?", params[:email]).first
+        user = User.where("LOWER(email) = ?", params[:email].downcase).first
       end
       if user.nil? or (not user.valid_password? params[:password])
         error!("Invalid credentials", 401)
