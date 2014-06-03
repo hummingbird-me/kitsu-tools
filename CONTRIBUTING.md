@@ -15,7 +15,16 @@ When submitting an issue please describe the issue clearly, including how to rep
 Pull Requests
 -------------
 
-TBD
+We love pull requests! We are very happy to work with you to get your changes merged in, however please keep the following in mind.
+
+* Adhere to the coding conventions you see in the surrounding code.
+* Include tests, and make sure all tests pass.
+* Before submitting a pull-request, clean up the history by going over your commits and squashing together minor changes and fixes into the corresponding commits. You can do this using the interactive rebase command.
+
+What to work on
+---------------
+
+If you want to help out with Hummingbird but are not sure what to work on check out [this topic](http://forums.hummingbird.me/t/how-to-help-out-with-hummingbird/9390) for some ideas.
 
 Security
 --------
