@@ -16,3 +16,8 @@ Pull Requests
 -------------
 
 TBD
+
+Security
+--------
+
+Please do not publish security vulnerabilities before giving us a change to fix them. All security issues should be reported to [vikhyat@hummingbird.me](mailto:vikhyat@hummingbird.me) directly. If you are not sure whether or not something is a security issue it is better to err on the side of caution and contact us at [vikhyat@hummingbird.me](mailto:vikhyat@hummingbird.me) first.
