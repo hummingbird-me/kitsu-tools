@@ -21,7 +21,10 @@ module Api::V2
         finished_airing: anime.finished_airing_date,
         screencaps: anime.gallery_images.map {|x| x.image.url(:thumb) },
         youtube_trailer_id: anime.youtube_video_id,
-        community_rating: anime.bayesian_average
+        community_rating: anime.bayesian_average,
+        age_rating: nfb(anime.age_rating),
+        episode_count: anime.episode_count,
+        episode_length: anime.episode_length
       }
     end
   end
