@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       preload! current_user
       $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
     elsif cookies[:auth_token]
-      sign_in User.find_by_authentication_token(cookies[:auth_token])
+      sign_in User.find_by(authentication_token: cookies[:auth_token])
     end
   end
 
