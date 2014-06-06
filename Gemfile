@@ -60,6 +60,7 @@ group :development do
   gem 'qunit-rails'
 end
 
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'rack-mini-profiler'
 gem 'flamegraph'
 
