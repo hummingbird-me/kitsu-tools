@@ -51,13 +51,14 @@
 #  avatar_processing           :boolean
 #  subscribed_to_newsletter    :boolean          default(TRUE)
 #  mal_import_in_progress      :boolean
-#  location                    :string
-#  website                     :string
-#  waifu                       :string
-#  waifu_or_husbando           :string
-#  waifu_slug            :string
-#  waifu_char_id         :string
-#  to_follow  			:boolean	default(FALSE)
+#  waifu                       :string(255)
+#  location                    :string(255)
+#  website                     :string(255)
+#  waifu_or_husbando           :string(255)
+#  waifu_slug                  :string(255)      default("#")
+#  waifu_char_id               :string(255)      default("0000")
+#  to_follow                   :boolean          default(FALSE)
+#
 
 class User < ActiveRecord::Base
   # Friendly ID.

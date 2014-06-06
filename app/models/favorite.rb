@@ -8,8 +8,9 @@
 #  item_type  :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  fav_rank   :integer		
+#  fav_rank   :integer          default(9999)
 #
+
 class Favorite < ActiveRecord::Base
   belongs_to :user
   belongs_to :item, polymorphic: true
