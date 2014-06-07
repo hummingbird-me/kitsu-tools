@@ -1,6 +1,6 @@
 # hummingbird
 
-[![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird.png)](https://codeclimate.com/github/hummingbird-me/hummingbird) [![Dependency Status](https://gemnasium.com/hummingbird-me/hummingbird.svg)](https://gemnasium.com/hummingbird-me/hummingbird)
+[![Build Status](https://secure.travis-ci.org/hummingbird-me/hummingbird.png?branch=master)](http://travis-ci.org/hummingbird-me/hummingbird) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird.png)](https://codeclimate.com/github/hummingbird-me/hummingbird) [![Dependency Status](https://gemnasium.com/hummingbird-me/hummingbird.svg)](https://gemnasium.com/hummingbird-me/hummingbird)
 
 ### Commit informations
 The Hummingbird changelog is automatically labeling commits based on their commit message.

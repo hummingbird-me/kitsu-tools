@@ -1,0 +1,6 @@
+language: ruby
+rvm:
+  - 2.1.2
+before_script:
+  - bundle exec rake db:create db:structure:load
+script: bundle exec rake test
