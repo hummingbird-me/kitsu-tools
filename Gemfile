@@ -43,7 +43,6 @@ gem 'sass-rails',   '~> 4.0'
 gem 'zurb-foundation', '~> 4.3.0'
 gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.0.3'
-gem 'handlebars_assets', github: 'joshfabian/handlebars_assets'
 gem 'bootstrap-sass', '~> 3.1'
 gem 'autoprefixer-rails', '~> 1.1'
 gem 'non-stupid-digest-assets'
