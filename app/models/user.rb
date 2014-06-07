@@ -147,7 +147,7 @@ class User < ActiveRecord::Base
   validates :name,
     :presence   => true,
     :uniqueness => {:case_sensitive => false},
-    :length => {minimum: 3, maximum: 15},
+    :length => {minimum: 3, maximum: 20},
     :format => {:with => /\A[_A-Za-z0-9]+\z/,
       :message => "can only contain alphabets, numbers, and underscores."}
 
