@@ -9281,13 +9281,13 @@ label.error {
 }
 
 .top-bar .name {
-  height: 70px;
+  height: 50px;
   margin: 0;
   font-size: 16px;
 }
 
 .top-bar .name h1 {
-  line-height: 70px;
+  line-height: 50px;
   font-size: 1.0625em;
   margin: 0;
 }
@@ -13525,15 +13525,6 @@ a.th {
   transition: transform 0.2s, opacity 0.3s;
 }
 
-.hummingbird-header-1 .nav-hidden {
-  opacity: 0;
-  -webkit-transform: translate(0, -70px);
-  -ms-transform: translate(0, -70px);
-  transform: translate(0, -70px);
-  -webkit-transition: -webkit-transform 0.2s, opacity 0.3s;
-  transition: transform 0.2s, opacity 0.3s;
-}
-
 .hummingbird-header-1 .name {
   padding-left: 10px;
   padding-right: 10px;
@@ -16856,12 +16847,12 @@ a {
 body {
   background: #eee;
   overflow-x: hidden;
-  padding-top: 70px;
+  padding-top: 50px;
   font-weight: 300;
 }
 
 body.guest-padding {
-  padding-top: 110px;
+  padding-top: 97px;
 }
 
 body [role="complementary"] {
