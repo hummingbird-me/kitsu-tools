@@ -14,6 +14,7 @@ Hummingbird::Application.configure do
   config.static_cache_control = "public, max-age=3600"
 
   config.assets.image_optim = false
+  config.cache_store = :memory_store
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
