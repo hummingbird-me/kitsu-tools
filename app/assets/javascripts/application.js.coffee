@@ -1,4 +1,4 @@
-#= require ./lib/bind_pollyfill
+#= require ./lib/bind_polyfill.js
 #= require jquery
 #= require bootstrap
 #= require handlebars
