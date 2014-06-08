@@ -12,8 +12,10 @@ preload_app true
 
 pid "#{hummingbird_path}/tmp/pids/unicorn.pid"
 
-stderr_path "#{hummingbird_path}/log/unicorn.stderr.log"
-stdout_path "#{hummingbird_path}/log/unicorn.stdout.log"
+if ENV['RAILS_ENV'] == 'production'
+  stderr_path "#{hummingbird_path}/log/unicorn.stderr.log"
+  stdout_path "#{hummingbird_path}/log/unicorn.stdout.log"
+end
 
 # Enable this flag to have unicorn test client connections by writing the
 # beginning of the HTTP headers before calling the application.  This
