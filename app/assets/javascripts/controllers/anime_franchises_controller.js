@@ -1,9 +1,12 @@
 Hummingbird.AnimeFranchisesController = Ember.ArrayController.extend({
+  // A show can belong to multiple franchises, this property will return a list
+  // of all of the shows from the set of franchises.
   franchiseAnime: function () {
     var anime = [];
-    this.get('content.@each.anime').forEach(function(fa) {
-      return anime = anime.concat(fa.toArray());
+    this.get('content.@each.anime').forEach(function(anime) {
+      anime = anime.concat(anime.toArray());
     });
+
     return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
       content: anime.uniq(),
       sortProperties: ['startedAiring', 'finishedAiring'],

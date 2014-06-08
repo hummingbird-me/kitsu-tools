@@ -20,8 +20,8 @@ $(function() {
 });
 
 // Plural of anime is anime.
-Ember.Inflector.inflector.rules.uncountable['anime'] = true;
-Ember.Inflector.inflector.rules.uncountable['full_anime'] = true;
+Ember.Inflector.inflector.rules.uncountable.anime = true;
+Ember.Inflector.inflector.rules.uncountable.full_anime = true;
 
 // Used for redirecting after log in.
 // TODO: This shouldn't be a global on window.
