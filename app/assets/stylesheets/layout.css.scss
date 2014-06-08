@@ -140,12 +140,9 @@ Global Header
       margin-left: 10px;
       background: none;
       border: none;
-      border-bottom: 1px dotted #aaa;
+      border-bottom: 1px solid #aaa;
       color: #fff;
-      &:focus {
-        outline: none;
-        border-bottom: 1px solid #aaa;
-      }
+      &:focus { outline: none; }
     }
     a {
       display: inline-block;
