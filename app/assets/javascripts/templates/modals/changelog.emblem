@@ -4,17 +4,13 @@ bootstrap-modal action="close"
 			i.fa.fa-times
 		h4.modal-title Hummingbird Changelog
 	.modal-body.changelog
-		each commits
-			if newdate
-				hr
-				span.changelog-commit-date = date
-			.changelog-commit
-				.changelog-commit-type
-					span.changelog-commit-label class=type = type
-					bootstrap-tooltip title=name placement="top"
-						img.changelog-commit-avatar src=uimg
-				.changelog-commit-message
-					span=mesg
-		else
-			.changelog-loading
-				loading-indicator
+		p.changelog-message
+			| The Hummingbird changelog will no longer be directly embedded here since 
+			a href="http://forums.hummingbird.me/t/hummingbird-is-now-open-source/9870" Hummingbird is now an open source project.
+		p.changelog-message
+			| A list of the latest commits which represent all recent changes on the project, can be found 
+			a href="https://github.com/hummingbird-me/hummingbird/commits/master" on the respective GitHub repository. 
+			| Important updates and news will additionally be announced in the 
+			a href="http://forums.hummingbird.me/category/site-news" site news section on the forums. 
+			| Discussions regarding further Hummingbird development may be started in the 
+			a href="http://forums.hummingbird.me/category/dev" dev section.
