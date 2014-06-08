@@ -261,10 +261,10 @@ class Anime < ActiveRecord::Base
 
     exclude = options[:exclude] ? options[:exclude] : []
     similar_anime = []
-    
+
     begin
-      similar_json = JSON.load(open("http://app.vikhyat.net/anime_safari/related/#{self.id}")).select {|x| x["sim"] > 0.5 }.sort_by {|x| -x["sim"] }
-      
+      similar_json = JSON.load(open("http://app.vikhyat.net/anime_graph/related/#{self.id}")).select {|x| x["sim"] > 0.5 }.sort_by {|x| -x["sim"] }
+
       similar_json.each do |similar|
         sim = Anime.find_by_id(similar["id"])
         if sim and similar_anime.length < limit and (not self.sfw? or (self.sfw? and sim.sfw?))
@@ -273,7 +273,7 @@ class Anime < ActiveRecord::Base
       end
     rescue
     end
-    
+
     similar_anime
   end
 end

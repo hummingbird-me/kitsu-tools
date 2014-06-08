@@ -20,7 +20,7 @@ class RecommendingWorker
     anime = {}
     user_watchlists.each do |watchlist|
       similarities[watchlist.anime_id] ||= {}
-      JSON.load( open("http://app.vikhyat.net/anime_safari/related/#{watchlist.anime.id}") ).each do |similar|
+      JSON.load( open("http://app.vikhyat.net/anime_graph/related/#{watchlist.anime.id}") ).each do |similar|
         similar_anime = Anime.find_by_id(similar["id"])
         if similar_anime and ["OVA", "ONA", "Movie", "TV"].include? similar_anime.show_type
           anime[similar_anime.id] = similar_anime
