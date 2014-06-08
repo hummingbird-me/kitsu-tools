@@ -23,8 +23,8 @@ class UsersController < ApplicationController
                       .where("id <> ?", user.id)
                       .where("bio <> ''")
                       .order("RANDOM()")
-                      .limit(10)
-                      .includes(:followers)
+                      .limit(5)
+                      #.includes(:followers)
 
       render json: to_follow
     else
