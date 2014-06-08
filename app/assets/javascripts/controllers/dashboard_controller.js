@@ -121,7 +121,7 @@ Hummingbird.DashboardController = Ember.Controller.extend({
       }
     },
     submitPost: function (post) {
-      var _this = this;
+      var _this = this
         , newPost = this.get('newPost');
 
       if (newPost.length > 0) {
