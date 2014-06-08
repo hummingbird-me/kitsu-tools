@@ -282,7 +282,7 @@ class User < ActiveRecord::Base
 
     result = {}
 
-    connection.execute(freqs.to_sql).each do |h|
+    ActiveRecord::Base.connection.execute(freqs.to_sql).each do |h|
       result[ Genre.find(h["genre_id"]) ] = h["count"].to_f
     end
 
