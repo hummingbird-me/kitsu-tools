@@ -31,6 +31,16 @@ before_fork do |server, worker|
   ActiveRecord::Base.connection.disconnect!
   $redis.quit
 
+  # For zero downtime deploys.
+  old_pid = "#{server.config[:pid]}.oldbin"
+  if File.exists?(old_pid) && server.pid != old_pid
+    begin
+      Process.kill("QUIT", File.read(old_pid).to_i)
+    rescue Errno::ENOENT, Errno::ERSCH
+      # Someone else did our job for us.
+    end
+  end
+
   # Throttle master from forking too quickly. Partially prevents identical
   # repeated signals from being lost when the receiving process is busy.
   sleep 1
