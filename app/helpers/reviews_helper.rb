@@ -89,7 +89,7 @@ module ReviewsHelper
     noko = Nokogiri::HTML.fragment(html)
 
     # Wrap youtube videos.
-    noko.css('iframe').wrap('<div class="youtube-frame"></div>')
+    noko.css('iframe').each {|x| x.swap("<div class='youtube-frame'>#{x}</div>") }
     noko.css('.youtube-frame').each {|node| node.add_child('<div class="youtube-background"></div>') }
 
     noko.to_html
