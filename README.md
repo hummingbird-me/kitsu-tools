@@ -1,4 +1,4 @@
-# hummingbird
+# Hummingbird
 
 [![Build Status](https://secure.travis-ci.org/hummingbird-me/hummingbird.png?branch=master)](http://travis-ci.org/hummingbird-me/hummingbird) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird.png)](https://codeclimate.com/github/hummingbird-me/hummingbird) [![Dependency Status](https://gemnasium.com/hummingbird-me/hummingbird.svg)](https://gemnasium.com/hummingbird-me/hummingbird)
 
@@ -12,7 +12,7 @@ If you have any questions don't hesitate to contact us! Feel free to drop by the
 
 ### License
 
-Copyright 2014 Hummingbird Media Inc.
+Copyright 2014 Hummingbird Media, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
