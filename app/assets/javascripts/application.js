@@ -4,12 +4,11 @@
 //= require handlebars
 //= require ember
 //= require ember-data
-//= jquery-ui-1.10.3.custom.min
+//= require vendor
 //= twitter/typeahead
 //= require autolink
 //= require react
 //= require_tree ./react
-//= require vendor
 //= require_self
 //= require_tree ./lib
 //= require hummingbird
