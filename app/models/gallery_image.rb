@@ -18,7 +18,11 @@ class GalleryImage < ActiveRecord::Base
   attr_accessible :anime_id, :description, :image
   validates :anime, :image, presence: true
 
-  has_attached_file :image, 
+  has_attached_file :image,
     styles: {thumb: '265x'},
     convert_options: {thumb: '-unsharp 2x0.5+1+0'}
+
+  validates_attachment :image, content_type: {
+    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  }
 end

@@ -131,13 +131,21 @@ class User < ActiveRecord::Base
     default_url: "http://placekitten.com/g/190/190",
     processors: [:thumbnail, :paperclip_optimizer]
 
+  validates_attachment :avatar, content_type: {
+    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  }
+
+  process_in_background :avatar, processing_image_url: '/assets/processing-avatar.jpg'
+
   has_attached_file :cover_image,
     styles: {thumb: {geometry: "2800x660#", animated: false, format: :jpg}},
     convert_options: {thumb: '-interlace Plane -quality 0'},
     default_url: "http://hummingbird.me/default_cover.png",
     storage: :s3
 
-  process_in_background :avatar, processing_image_url: '/assets/processing-avatar.jpg'
+  validates_attachment :cover_image, content_type: {
+    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  }
 
   has_many :watchlists
   has_many :reviews

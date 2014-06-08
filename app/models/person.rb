@@ -22,4 +22,8 @@ class Person < ActiveRecord::Base
     styles: {thumb_small: "30x39#"},
     default_url: "/assets/default-avatar.jpg",
     convert_options: {all: "-unsharp 2x0.5+1+0"}
+
+  validates_attachment :image, content_type: {
+    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  }
 end

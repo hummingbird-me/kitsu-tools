@@ -53,8 +53,17 @@ class Anime < ActiveRecord::Base
     styles: {thumb: ["1400x900>", :jpg]},
     convert_options: {thumb: "-quality 70 -colorspace Gray"}
 
+  validates_attachment :cover_image, content_type: {
+    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  }
+
   has_attached_file :poster_image, default_url: "/assets/missing-anime-cover.jpg",
     styles: {large: "200x290!", medium: "100x150!"}
+
+  validates_attachment :poster_image, content_type: {
+    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  }
+
 
   def poster_image_thumb
     if self.poster_image_file_name.nil?
