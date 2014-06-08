@@ -3,8 +3,8 @@ Hummingbird.AnimeFranchisesController = Ember.ArrayController.extend({
   // of all of the shows from the set of franchises.
   franchiseAnime: function () {
     var anime = [];
-    this.get('content.@each.anime').forEach(function(anime) {
-      anime = anime.concat(anime.toArray());
+    this.get('content.@each.anime').forEach(function(animeSet) {
+      anime = anime.concat(animeSet.toArray());
     });
 
     return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
