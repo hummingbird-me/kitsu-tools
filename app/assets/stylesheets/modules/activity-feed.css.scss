@@ -32,6 +32,9 @@
     padding: 10px;
     resize: vertical;
   }
+  .about {
+    font-size: 16px;
+  }
   .user-interests {
     @extend .col-xs-12;
     margin: 10px 10px 0 -8px;
@@ -60,7 +63,7 @@
       @extend .col-xs-11;
       padding-left: 0;
       padding-right: 0;
-      font-size: 18px;
+      font-size: 16px;
       input {
         width: 100%;
         border: 1px solid #ddd;
