@@ -33,10 +33,13 @@ class MyAnimeListImport
   def initialize(user, xml)
     @user = user
     @xml = xml
-    # We need to do this because MAL is not decent enough to return valid XML. Try
-    # to get rid of any characters that break Hash.from_xml because it expects XML
-    # and not the crap MAL returns.
+
+    # We need to do this because MAL returns broken XML. We need to get rid of
+    # characters that break Hash.from_xml.
+    # TODO: This does not get rid of all of the errors. Use xmllint instead of
+    #       all of this. (See issue #1 on Github)
     @clean_xml = @xml.encode('ASCII-8BIT', invalid: :replace, undef: :replace, replace: '').split('').select {|x| x =~ VALID_XML_CHARS }.join.encode('UTF-8')
+
     @data = nil
   end
 
