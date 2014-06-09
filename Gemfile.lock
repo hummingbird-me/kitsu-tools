@@ -41,7 +41,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
-    autoprefixer-rails (1.1.20140523)
+    autoprefixer-rails (1.1.20140605)
       execjs
     aws-sdk (1.41.0)
       json (~> 1.4)
@@ -125,7 +125,7 @@ GEM
     erubis (2.7.0)
     escape (0.0.4)
     eventmachine (1.0.3)
-    execjs (2.0.2)
+    execjs (2.2.0)
     exifr (1.1.3)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
@@ -196,7 +196,7 @@ GEM
       railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
-    kaminari (0.15.1)
+    kaminari (0.16.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
@@ -238,7 +238,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
-    oj (2.9.3)
+    oj (2.9.5)
     omniauth (1.2.1)
       hashie (>= 1.2, < 3)
       rack (~> 1.0)
@@ -416,7 +416,7 @@ GEM
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
-    thread_safe (0.3.3)
+    thread_safe (0.3.4)
     tilt (1.4.1)
     timecop (0.7.1)
     timers (1.1.0)
@@ -427,7 +427,7 @@ GEM
       actionpack (>= 3.1)
       jquery-rails
       railties (>= 3.1)
-    tzinfo (1.2.0)
+    tzinfo (1.2.1)
       thread_safe (~> 0.1)
     uglifier (2.5.0)
       execjs (>= 0.3.0)
@@ -480,7 +480,7 @@ DEPENDENCIES
   haml-rails
   hiredis
   image_optim (~> 0.13)
-  kaminari
+  kaminari (~> 0.16.0)
   letter_opener
   mixpanel
   mocha

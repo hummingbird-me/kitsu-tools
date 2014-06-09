@@ -95,7 +95,7 @@ gem 'omniauth-facebook', '~> 1.6'
 gem 'cancan', "~> 1.6"
 
 # For pagination.
-gem 'kaminari'
+gem 'kaminari', '~> 0.16.0'
 
 # Background jobs
 gem 'sidekiq'
