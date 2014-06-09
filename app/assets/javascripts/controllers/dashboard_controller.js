@@ -49,7 +49,7 @@ Hummingbird.DashboardController = Ember.Controller.extend({
         , link = "http://forums.hummingbird.me/t/" + topic.slug + "/" + topic.id + "/"
         , users = [];
 
-      for (var ii = 0, ll = topic.posters.length; ii < ll; ll++) {
+      for (var ii = 0, ll = topic.posters.length; ii < ll; ii++) {
         var user = topic.posters[ii]
           , thisName = listUserOrdr[user.user_id].username;
         users.push({
