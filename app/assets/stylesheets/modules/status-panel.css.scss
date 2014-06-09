@@ -91,10 +91,11 @@
     @extend .col-sm-11;
     .reply-icon {
       color: #999999;
-      padding-right: 10px;
-      padding-left: 7px;
+      padding-right: 5px;
+      padding-left: 4px;
       position: relative;
-      top: 2px;
+      top: -1px;
+      font-size: 0.6em;
     }
     .secondary {
       font-size: 14px;
