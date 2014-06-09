@@ -139,10 +139,19 @@
   }
 
   .event-info {
+    @extend .col-sm-12;
+    @extend .col-md-11;
+
     p {
-      font-size: 18px;
+      font-size: 15px;
       margin-bottom: 0;
       margin-top: -5px;
+      padding-top: 1px;
+    }
+    ul {
+      padding-top: 1px;
+      font-size: 13px;
+      opacity: 0.8;
     }
     @media (max-width: 990px) {
       padding-left: 0px;
