@@ -12,6 +12,7 @@ Hummingbird.Paginated = Ember.Mixin.create({
     var self = this;
     this.set('currentlyFetchingPage', true);
 
+    if (!cursor) { cursor = 1; }
     return this.fetchPage(cursor).then(function(objects) {
       self.set('cursor', objects.get('meta.cursor'));
 
