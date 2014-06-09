@@ -12,9 +12,9 @@ Hummingbird.StoryController = Ember.ObjectController.extend({
     return loggedInUser.get('id') === this.get('model.poster.id') || loggedInUser.get('id') === this.get('model.user.id');
   }.property('model.poster'),
 
-  selfpost: function () {
+  selfPost: function () {
     return this.get('model.poster.id') === this.get('model.user.id');
-  }.property('model.poster', 'model.user'),
+  }.property('model.poster.id', 'model.user.id'),
 
   mediaRoute: function () {
     if (this.get('model.media').constructor.toString() === "Hummingbird.Anime") {

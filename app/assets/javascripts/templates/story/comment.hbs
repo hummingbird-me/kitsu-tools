@@ -1,0 +1,34 @@
+<div class="story">
+  <div class="update-panel">
+    <div class="row">
+      <div class="user-info-bar">
+        <div class="user-image">
+          {{#link-to 'user' poster}}
+            {{avatar poster "thumb_small"}}
+          {{/link-to}}
+        </div>
+        <div class="comment-content">
+          <h4 class="story-title">
+            {{#link-to 'user' poster}}{{poster.username}}{{/link-to}}
+            {{#unless selfPost}}
+              <i class="fa fa-share reply-icon"></i>
+              {{#link-to 'user' user}}{{user.username}}{{/link-to}}
+            {{/unless}}
+          </h4>
+          <p class="secondary">
+            {{time-ago time=createdAt}}
+            {{#if belongsToUser}}
+              ·
+              <a class="remove-post" {{action "removeComment"}}>remove</a>
+            {{/if}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 clearfix">
+        <p class="comment-text">{{{comment}}}</p>
+      </div>
+    </div>
+  </div>
+</div>
