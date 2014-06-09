@@ -121,9 +121,6 @@ gem 'image_optim', '~> 0.13', require: false
 # Metrics
 gem 'mixpanel'
 
-# A/B Testing
-gem 'split', require: 'split/dashboard'
-
 # SEO
 gem 'sitemap_generator'
 
