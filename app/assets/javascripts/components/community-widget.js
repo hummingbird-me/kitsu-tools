@@ -17,9 +17,12 @@ Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
         users[user.id] = user;
       });
 
-      for (var i=0; i<5; i++) {
+      for (var i=0; i<data.topic_list.topics.length; i++) {
         var topicInfo = data.topic_list.topics[i],
             topic = {};
+
+        if (topics.length === 5) break;
+        if (topicInfo.pinned) continue;
 
         topic.title = topicInfo.title;
         topic.url = "http://forums.hummingbird.me/t/" + topicInfo.slug + "/" + topicInfo.id + "/";
