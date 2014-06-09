@@ -1,29 +1,9 @@
 .user-dashboard
   .row
     .secondary-info
-      .latest-posts-panel
-        .panel-heading
-          h3.panel-title Community discussions
-        .panel-body
-          ul.latest-post-list
-            each post in recentPostPaged
-              li.latest-post
-                .latest-post-title
-                  a href=post.link #{post.title}
-                .latest-post-details
-                  span.post-time-ago 
-                    <span>#{post.posts}</span>
-                    <span>&nbsp;posts ·&nbsp;</span>
-                    time-ago time=post.udate
-                  .pull-right
-                    each user in post.users
-                      a.userImage href=user.link title=user.name
-                        img.recent-post-avatar src=user.image
-            else
-              li.small-loader
-                loading-indicator
-            li.latest-post-more
-              a click="showMorePost" Show more
+      community-widget title="Community discussions" showMoreURL="http://forums.hummingbird.me/" apiCall="http://forums.hummingbird.me/latest.json"
+
+      / FIXME It is not correct to be using the latest-posts-panel class here.
       .latest-posts-panel
         .panel-heading
           h3.panel-title Who to Follow
@@ -31,31 +11,7 @@
           ul
             who-to-follow-container usersToFollow=mutableUsersToFollow currentUser=currentUser action="loadMoreToFollow" dismiss="dismiss"
 
-      .latest-posts-panel
-        .panel-heading
-          h3.panel-title Industry news
-        .panel-body
-          ul.latest-post-list
-            each post in recentNewsPaged
-              li.latest-post
-                .latest-post-title
-                  a href=post.link #{post.title}
-                  .pull-right
-                    span.badge 
-                .latest-post-details
-                  span.post-time-ago 
-                    <span>#{post.posts}</span>
-                    <span>&nbsp;posts ·&nbsp;</span>
-                    time-ago time=post.udate
-                  .pull-right
-                    each user in post.users
-                      a.userImage href=user.link title=user.name
-                        img.recent-post-avatar src=user.image
-            else
-              li.small-loader
-                loading-indicator
-            li.latest-post-more
-              a click="showMoreNews" Show more
+      community-widget title="Industry news" showMoreURL="http://forums.hummingbird.me/category/industry-news" apiCall="http://forums.hummingbird.me/category/industry-news.json"
 
     .user-feed
       .status-update-panel
@@ -65,7 +21,7 @@
           button.btn.status-button click="submitPost" class=inFlight:disabled Post
 
       each content itemController="story" itemViewClass="Hummingbird.StoryView"
-      
+
       if canLoadMore
         load-more classNames="light" action="loadNextPage"
 

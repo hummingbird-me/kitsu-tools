@@ -1,0 +1,36 @@
+<div class="panel-heading">
+  <h3 class="panel-title">{{title}}</h3>
+</div>
+
+<div class="panel-body">
+  <ul class="latest-post-list">
+    {{#each topic in topics}}
+      <li class="latest-post">
+        <div class="latest-post-title">
+          <a {{bind-attr href="topic.url"}}>{{topic.title}}</a>
+        </div>
+        <div class="latest-post-details">
+          <div class="post-count-and-time">
+            {{topic.postCount}} posts
+            · {{time-ago time=topic.lastPostTime}}
+          </div>
+          <div class="pull-right">
+            {{#each user in topic.users}}
+              <a {{bind-attr title="user.name" href="user.url"}}>
+                <img class="recent-post-avatar" src="http://hummingbird.me/assets/processing-avatar.jpg">
+              </a>
+            {{/each}}
+          </div>
+        </div>
+      </li>
+    {{else}}
+      <li class="small-loader">
+        {{loading-indicator}}
+      </li>
+    {{/each}}
+
+    <li class="latest-post-more">
+      <a {{bind-attr href="showMoreURL"}}>Show more</a>
+    </li>
+  </ul>
+</div>
