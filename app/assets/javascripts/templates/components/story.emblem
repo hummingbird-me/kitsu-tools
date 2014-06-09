@@ -1,4 +1,0 @@
-with story
-  .panel.panel-default
-    .panel-body.update-panel
-      p #{id}
