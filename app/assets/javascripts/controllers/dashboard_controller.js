@@ -120,6 +120,8 @@ Hummingbird.DashboardController = Ember.Controller.extend({
         return this.set('recentNewsNum', this.get('recentNewsNum') + 8);
       }
     },
+
+    // FIXME This is _broken_.
     submitPost: function (post) {
       var _this = this
         , newPost = this.get('newPost');
@@ -135,7 +137,7 @@ Hummingbird.DashboardController = Ember.Controller.extend({
               newPost: "",
               inFlight: false
             });
-            return _this.get('target').send('checkForAndAddNewObjects');
+            window.location.href = window.location.href;
           },
           failure: function () {
             return alert("Failed to save comment");

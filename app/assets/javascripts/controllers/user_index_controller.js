@@ -139,6 +139,8 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend({
         return this.set('favorite_anime_page', page);
       }
     },
+
+    // FIXME This is _broken_.
     submitPost: function (post) {
       var newPost, _this;
       _this = this;
@@ -161,7 +163,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend({
               newPost: "",
               inFlight: false
             });
-            return _this.get('target').send('checkForAndAddNewObjects');
+            window.location.href = window.location.href;
           },
           failure: function () {
             return alert("Failed to save comment");
