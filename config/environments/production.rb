@@ -2,6 +2,18 @@ Hummingbird::Application.configure do
   routes.default_url_options = {host: 'hummingbird.me'}
   # Settings specified here will take precedence over those in config/application.rb
 
+  config.paperclip_defaults = {
+    storage: :s3,
+    s3_credentials: {
+      bucket: ENV['AWS_BUCKET'],
+      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+    },
+    s3_host_alias: 'static.hummingbird.me',
+    url: ':s3_alias_url',
+    path: '/:class/:attachment/:id_partition/:style/:filename'
+  }
+
   # Code is not reloaded between requests
   config.cache_classes = true
   config.eager_load = true
