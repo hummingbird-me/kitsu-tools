@@ -26,7 +26,8 @@
 .story {
   @extend .panel;
   @extend .panel-default;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  border-radius: 2px;
 }
 
 .update-panel {
@@ -143,7 +144,7 @@
     @extend .col-md-11;
 
     p {
-      font-size: 15px;
+      font-size: 14px;
       margin-bottom: 0;
       margin-top: -5px;
       padding-top: 1px;
@@ -178,7 +179,7 @@
   .feed-events {
     margin-top: 5px;
     .secondary {
-      font-size: 14px;
+      font-size: 13px;
     }
   }
 }

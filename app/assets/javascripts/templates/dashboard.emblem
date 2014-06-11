@@ -1,8 +1,8 @@
 .user-dashboard
   .row
     .secondary-info
+      community-widget title="Industry news" showMoreURL="http://forums.hummingbird.me/category/industry-news" apiCall="http://forums.hummingbird.me/category/industry-news.json"
       community-widget title="Community discussions" showMoreURL="http://forums.hummingbird.me/" apiCall="http://forums.hummingbird.me/latest.json"
-
       / FIXME It is not correct to be using the latest-posts-panel class here.
       .latest-posts-panel
         .panel-heading
@@ -11,7 +11,7 @@
           ul
             who-to-follow-container usersToFollow=mutableUsersToFollow currentUser=currentUser action="loadMoreToFollow" dismiss="dismiss"
 
-      community-widget title="Industry news" showMoreURL="http://forums.hummingbird.me/category/industry-news" apiCall="http://forums.hummingbird.me/category/industry-news.json"
+      
 
     .user-feed
       .status-update-panel
