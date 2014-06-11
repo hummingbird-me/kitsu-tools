@@ -1,0 +1,56 @@
+.latest-posts-panel {
+  @extend .panel;
+  @extend .panel-default;
+  @extend .clearfix;
+  .panel-body {
+    padding: 0;
+    .latest-post-list {
+      margin: 0;
+      padding: 0;
+      .latest-post-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 5px;
+        a {
+          color: #555;
+          font-weight: 500;
+          font-size: 14px;
+        }
+      }
+      .latest-post {
+        list-style-type: none;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+        .badge {
+          background: #FFA07A;
+        }
+        .post-count-and-time {
+          display: inline-block;
+          padding-top: 2px;
+          font-size: 0.8em;
+          color: #666;
+        }
+      }
+      .recent-post-avatar {
+        width: 20px;
+        height: 20px;
+        border: none;
+        border-radius: 3px;
+        margin-right: 5px ;
+      }
+      .latest-post-more {
+        padding: 10px;
+        text-align: center;
+        background: #f7f7f7;
+        a {
+          color: #7a7a7a;
+          &:hover {
+            color: $orange;
+          }
+        }
+      }
+    }
+  }
+}
+

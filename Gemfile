@@ -95,7 +95,7 @@ gem 'omniauth-facebook', '~> 1.6'
 gem 'cancan', "~> 1.6"
 
 # For pagination.
-gem 'kaminari'
+gem 'kaminari', '~> 0.16.0'
 
 # Background jobs
 gem 'sidekiq'
@@ -120,9 +120,6 @@ gem 'image_optim', '~> 0.13', require: false
 
 # Metrics
 gem 'mixpanel'
-
-# A/B Testing
-gem 'split', require: 'split/dashboard'
 
 # SEO
 gem 'sitemap_generator'

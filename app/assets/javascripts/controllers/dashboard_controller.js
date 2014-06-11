@@ -23,52 +23,8 @@ Hummingbird.DashboardController = Ember.Controller.extend({
   init: function () {
     var _this = this;
     this.send("setupQuickUpdate");
-    $.getJSON("http://forums.hummingbird.me/latest.json", function (payload) {
-      return _this.set('recentPost', _this.generateThreadList(payload));
-    });
-    $.getJSON("http://forums.hummingbird.me/category/industry-news.json", function (payload) {
-      return _this.set('recentNews', _this.generateThreadList(payload));
-    });
   },
 
-  generateThreadList: function (rawload) {
-    var listElements = [];
-    var listUserOrdr = {};
-    for (var i = 0, l = rawload.users.length; i < l; i++) {
-      var user = rawload.users[i];
-      listUserOrdr[user.id] = user;
-    }
-
-    for (i = 0, l = rawload.topic_list.topics.length; i < l; i++) {
-      var topic = rawload.topic_list.topics[i];
-      if (topic.pinned) continue;
-
-      var title = topic.title
-        , posts = topic.highest_post_number
-        , udate = topic.last_posted_at
-        , link = "http://forums.hummingbird.me/t/" + topic.slug + "/" + topic.id + "/"
-        , users = [];
-
-      for (var ii = 0, ll = topic.posters.length; ii < ll; ii++) {
-        var user = topic.posters[ii]
-          , thisName = listUserOrdr[user.user_id].username;
-        users.push({
-          link: "http://forums.hummingbird.me/users/" + thisName + "/activity",
-          name: thisName,
-          image: listUserOrdr[user.user_id]['avatar_template'].replace("{size}", "small").replace(/\.[a-zA-Z]+\?/, '.jpg?'),
-          title: user.description
-        });
-      }
-      listElements.push({
-        title: title,
-        posts: posts,
-        users: users,
-        udate: udate,
-        link: link
-      });
-    }
-    return listElements;
-  },
   mutableUsersToFollow: [],
   usersToFollowChanged: (function () {
     var mutable = []
@@ -105,21 +61,8 @@ Hummingbird.DashboardController = Ember.Controller.extend({
       this.set('newUsersToLoad', null);
       return this.set('newUsersToLoad', newusers);
     },
-    showMorePost: function () {
-      if (this.get('recentPostMax')) {
-        return window.location.replace("http://forums.hummingbird.me/latest");
-      } else {
-        return this.set('recentPostNum', this.get('recentPostNum') + 8);
-      }
-    },
 
-    showMoreNews: function () {
-      if (this.get('recentNewsMax')) {
-        return window.location.replace("http://forums.hummingbird.me/category/industry-news");
-      } else {
-        return this.set('recentNewsNum', this.get('recentNewsNum') + 8);
-      }
-    },
+    // FIXME This is _broken_.
     submitPost: function (post) {
       var _this = this
         , newPost = this.get('newPost');
@@ -135,7 +78,7 @@ Hummingbird.DashboardController = Ember.Controller.extend({
               newPost: "",
               inFlight: false
             });
-            return _this.get('target').send('checkForAndAddNewObjects');
+            window.location.href = window.location.href;
           },
           failure: function () {
             return alert("Failed to save comment");

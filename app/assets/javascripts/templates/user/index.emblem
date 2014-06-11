@@ -34,7 +34,7 @@
                   .interest #{input type="text" placeholder="Website" value=user.website}
 
           else
-            .p #{user.miniBio}
+            p.about #{user.miniBio}
             .user-interests
               ul
                 li
@@ -146,5 +146,6 @@
 
       each content itemController="story" itemViewClass="Hummingbird.StoryView"
 
-      load-more classNames="light" action="loadNextPage"
+      if canLoadMore
+        load-more classNames="light" action="loadNextPage"
 
