@@ -59,6 +59,8 @@ group :development do
 end
 
 gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'skylight'
 gem 'rack-mini-profiler'
 gem 'flamegraph'
 
