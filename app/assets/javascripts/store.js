@@ -1,4 +1,4 @@
-# http://emberjs.com/guides/models/defining-a-store/
+// http://emberjs.com/guides/models/defining-a-store/
 
 Hummingbird.Store = DS.Store.extend({
   revision: 13,
