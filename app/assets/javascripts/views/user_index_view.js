@@ -1,4 +1,5 @@
-Hummingbird.DashboardView = Ember.View.extend({
+// FIXME This is the same as DashboardView, need to DRY.
+Hummingbird.UserIndexView = Ember.View.extend({
   didInsertElement: function() {
     var self = this;
     this.$(".status-form").focus(function() {
