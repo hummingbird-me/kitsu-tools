@@ -54,8 +54,8 @@ class NewsFeed
 
     story_ids = $redis.zrevrange @feed_key, start_index, stop_index
     story_ids.collect! &:to_i
-    stories = Story.where(id: story_ids, :target_type => 'Anime').for_user(@user).includes(:user, :target => :genres, substories: :user)
-    stories += Story.where(id: story_ids).where('target_type <> ?', 'Anime').for_user(@user).includes(:user, :target, substories: :user) if story_ids.length > stories.length
+    stories = Story.where(id: story_ids, :target_type => 'Anime').for_user(@user).includes(:user, :substories, target: :genres, substories: :user)
+    stories += Story.where(id: story_ids).where('target_type <> ?', 'Anime').for_user(@user).includes(:user, :substories, :target, substories: :user) if story_ids.length > stories.length
     stories.sort_by {|s| story_ids.find_index s.id }
   end
 
