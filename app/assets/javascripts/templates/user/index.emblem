@@ -91,7 +91,7 @@
             .row
               .col-md-5
                 .breakdown-graph
-                  canvas id="breakdown"
+                  ember-chart type="Doughnut" data=animeBreakdown options=animeOptions
                 .breakdown-info
                   span.breakdown-infotitle Adventure
                   span.breakdown-infotext #{userInfo.animeWatched} out of #{userInfo.animeTotal} titles
