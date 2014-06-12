@@ -42,14 +42,10 @@
 //
 //= require ./hummingbird.js.coffee
 //= require ./anime.js.coffee
-//= require ./library.js.coffee
 //= require ./library_update.js.coffee
 //= require ./login-signup.js
-//= require ./search.js.coffee
 //= require ./redactor.js.coffee
 //= require ./header.js.coffee
-//
-//= require ./activity-feed.js.coffee
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
