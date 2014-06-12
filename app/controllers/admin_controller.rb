@@ -19,14 +19,6 @@ class AdminController < ApplicationController
     redirect_to @anime
   end
 
-  def invite_to_beta
-    email = params[:email]
-    inv = BetaInvite.find_or_create_by_email(email)
-    inv.invite!
-    flash[:success] = "Invited #{email}."
-    redirect_to :back
-  end
-
   def index
     @anime_without_mal_id = Anime.where(mal_id: nil).where(%{"anime"."id" NOT IN (SELECT "anime_genres"."anime_id" FROM "anime_genres" INNER JOIN "genres" ON "genres"."id" = "anime_genres"."genre_id" AND "genres"."name" = 'Anime Influenced')})
     @users_to_follow = User.where(to_follow: true)
