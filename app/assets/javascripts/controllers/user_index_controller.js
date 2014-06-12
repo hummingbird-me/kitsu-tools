@@ -180,7 +180,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend({
     var topData = topGenre[0]['num'];
     return [{
       value: parseInt(topData),
-      color:"#ec8661"
+      color: "#ec8661"
     },{
       value : (parseInt(this.get('userInfo.animeWatched')) - topData),
       color : "#f7cab9"
