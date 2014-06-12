@@ -43,7 +43,7 @@ gem 'zurb-foundation', '~> 4.3.0'
 gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.0.3'
 gem 'bootstrap-sass', '~> 3.1'
-gem 'autoprefixer-rails', '~> 1.1'
+gem 'autoprefixer-rails', '~> 1.2'
 gem 'non-stupid-digest-assets'
 
 # Gems to help with development.
@@ -82,7 +82,7 @@ gem 'rdiscount'
 gem "paperclip", "~> 4.1"
 gem 'paperclip-optimizer'
 gem 'delayed_paperclip', "~> 2.7"
-gem 'aws-sdk', '~> 1.41'
+gem 'aws-sdk', '~> 1.42'
 
 # Better URLs.
 gem 'friendly_id', github: 'joshfabian/friendly_id'
@@ -97,7 +97,7 @@ gem 'omniauth-facebook', '~> 1.6'
 gem 'cancan', "~> 1.6"
 
 # For pagination.
-gem 'kaminari', '~> 0.16.0'
+gem 'kaminari', '~> 0.16'
 
 # Background jobs
 gem 'sidekiq'

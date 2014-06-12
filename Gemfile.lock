@@ -41,9 +41,9 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
-    autoprefixer-rails (1.1.20140605)
+    autoprefixer-rails (1.2.0.20140609)
       execjs
-    aws-sdk (1.41.0)
+    aws-sdk (1.42.0)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     axiom-types (0.1.1)
@@ -196,7 +196,7 @@ GEM
       railties (>= 3.2.16)
     json (1.8.1)
     jwt (1.0.0)
-    kaminari (0.16.0)
+    kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
@@ -448,8 +448,8 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.8)
   annotate
-  autoprefixer-rails (~> 1.1)
-  aws-sdk (~> 1.41)
+  autoprefixer-rails (~> 1.2)
+  aws-sdk (~> 1.42)
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.1)
@@ -476,7 +476,7 @@ DEPENDENCIES
   haml-rails
   hiredis
   image_optim (~> 0.13)
-  kaminari (~> 0.16.0)
+  kaminari (~> 0.16)
   letter_opener
   mixpanel
   mocha
