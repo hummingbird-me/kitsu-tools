@@ -10,11 +10,11 @@
     </h4>
     <ul class="inline-list secondary">
       {{#if belongsToUser}}
+        <li>{{time-ago time=createdAt}}</li>
         <li>
           ·
           <a class="remove-post" {{action "deleteStory"}}>remove</a>
         </li>
-        <li>{{time-ago time=createdAt}}</li>
       {{/if}}
     </ul>
   </div>
