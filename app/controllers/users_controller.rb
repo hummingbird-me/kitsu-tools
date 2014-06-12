@@ -63,15 +63,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html do
-
-        if params.has_key?(:old_feed)
-          @active_tab = :feed
-          render "feed", layout: "layouts/profile"
-        else
-          preload! @user
-          render_ember
-        end
-
+        preload! @user
+        render_ember
       end
       format.json { render json: @user }
     end
