@@ -1,6 +1,6 @@
 Hummingbird.DashboardRoute = Ember.Route.extend Hummingbird.Paginated,
   fetchPage: (page) ->
-    @store.find 'news_feed', user_id: @get('currentUser.id'), page: page
+    @store.find 'story', news_feed: true, page: page
 
   setupController: (controller, model) ->
     currentUser = @get('currentUser')

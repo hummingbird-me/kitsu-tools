@@ -38,7 +38,7 @@ class Story < ActiveRecord::Base
     end
     story
   end
-  
+
   def quote
     return Quote.find data["quote_id"]
   end
@@ -61,5 +61,10 @@ class Story < ActiveRecord::Base
     else
       joins("LEFT OUTER JOIN watchlists ON watchlists.id = stories.watchlist_id").where("watchlists.id IS NULL OR watchlists.private = 'f'")
     end
+  end
+
+  # Can this story be deleted by the specified user?
+  def can_be_deleted_by?(user)
+    user && (user.admin? || (user.id == self.user_id) || (user.id == self.target_id))
   end
 end

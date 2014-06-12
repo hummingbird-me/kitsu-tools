@@ -28,6 +28,15 @@
   @extend .panel-default;
   margin-bottom: 10px;
   border-radius: 2px;
+
+  .deleted-story {
+    padding: 10px;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0.5;
+  }
 }
 
 .update-panel {

@@ -61,30 +61,7 @@ Hummingbird.StoryController = Ember.ObjectController.extend({
     },
 
     deleteStory: function() {
-      this.get('model').deleteRecord();
-    },
-
-    removeComment: function () {
-      var feeduser, story, userIndexCon, _id;
-      feeduser = this.get('user.id');
-      _id = this.get('model.id');
-      story = this.get('model');
-      userIndexCon = this.get('controllers.user_index');
-      return Ember.$.ajax({
-        url: '/api/v1/users/' + feeduser + '/feed/remove',
-        method: 'POST',
-        data: {
-          story_id: _id
-        },
-        success: function (results) {
-          if (results) {
-            return userIndexCon.get('target').send('reloadFirstPage');
-          }
-        },
-        error: function () {
-          return alert("Could not delete post");
-        }
-      });
+      this.get('model').destroyRecord();
     }
   }
 });
