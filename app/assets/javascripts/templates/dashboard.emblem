@@ -11,14 +11,8 @@
           ul
             who-to-follow-container usersToFollow=mutableUsersToFollow currentUser=currentUser action="loadMoreToFollow" dismiss="dismiss"
 
-      
-
     .user-feed
-      .status-update-panel
-        .panel-body.status-panel
-          view Ember.TextArea class="status-form" placeholder="Write something..." rows="1" valueBinding="newPost"
-        .panel-footer
-          button.btn.status-button click="submitPost" class=inFlight:disabled Post
+      post-comment username=currentUser.username
 
       each content itemController="story" itemViewClass="Hummingbird.StoryView"
 

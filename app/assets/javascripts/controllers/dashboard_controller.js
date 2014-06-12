@@ -60,31 +60,6 @@ Hummingbird.DashboardController = Ember.Controller.extend({
       });
       this.set('newUsersToLoad', null);
       return this.set('newUsersToLoad', newusers);
-    },
-
-    // FIXME This is _broken_.
-    submitPost: function (post) {
-      var _this = this
-        , newPost = this.get('newPost');
-
-      if (newPost.length > 0) {
-        this.set('inFlight', true);
-        return Ember.$.ajax({
-          url: "/users/" + _this.get('currentUser.id') + "/comment.json",
-          data: { comment: newPost },
-          type: "POST",
-          success: function (payload) {
-            _this.setProperties({
-              newPost: "",
-              inFlight: false
-            });
-            window.location.href = window.location.href;
-          },
-          error: function () {
-            return alert("Failed to save comment");
-          }
-        });
-      }
     }
   }
 });

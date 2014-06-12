@@ -139,40 +139,6 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend({
         return this.set('favorite_anime_page', page);
       }
     },
-
-    // FIXME This is _broken_.
-    submitPost: function (post) {
-      var newPost, _this;
-      _this = this;
-      newPost = this.get('newPost');
-
-      if (newPost.length > 0) {
-        this.set('inFlight', true);
-        return Ember.$.ajax({
-          url: "/users/" + _this.get('user.id') + "/comment.json",
-          data: {
-            comment: newPost
-          },
-          type: "POST",
-          success: function (payload) {
-            var stories;
-            stories = _this.store.find('story', {
-              user_id: _this.get('userInfo.id')
-            });
-            _this.setProperties({
-              newPost: "",
-              inFlight: false
-            });
-            window.location.href = window.location.href;
-          },
-          error: function () {
-            return alert("Failed to save comment");
-          }
-        });
-      } else {
-
-      }
-    }
   },
   lifeSpentOnAnimeFmt: function () {
     var days, hours, minutes, months, str, years;

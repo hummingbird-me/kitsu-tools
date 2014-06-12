@@ -137,12 +137,7 @@
             .more-wrapper
               a class="view-more-button" click="loadMoreFavorite_animes" View More
     .user-feed
-      / Status Update Panel
-      .status-update-panel
-        .panel-body.status-panel
-          view Ember.TextArea class="status-form" placeholder="Write something..." rows="1" valueBinding="newPost"
-        .panel-footer
-          button.btn.status-button click="submitPost" class=inFlight:disabled Post
+      post-comment username=user.username
 
       each content itemController="story" itemViewClass="Hummingbird.StoryView"
 
