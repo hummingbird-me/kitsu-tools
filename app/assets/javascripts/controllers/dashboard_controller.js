@@ -1,25 +1,4 @@
-Hummingbird.DashboardController = Ember.Controller.extend({
-  recentPost: [],
-  recentNews: [],
-  recentPostNum: 5,
-  recentNewsNum: 5,
-  newPost: "",
-  inFlight: false,
-
-  recentPostMax: function () {
-    return this.get('recentPostNum') === 29;
-  }.property('recentPostNum'),
-  recentNewsMax: function () {
-    return this.get('recentNewsNum') === 29;
-  }.property('recentNewsNum'),
-
-  recentPostPaged: function () {
-    return this.get('recentPost').slice(0, this.get('recentPostNum'));
-  }.property('recentPost', 'recentPostNum'),
-  recentNewsPaged: function () {
-    return this.get('recentNews').slice(0, this.get('recentNewsNum'));
-  }.property('recentNews', 'recentNewsNum'),
-
+Hummingbird.DashboardController = Ember.ArrayController.extend({
   init: function () {
     var _this = this;
     this.send("setupQuickUpdate");
@@ -48,11 +27,32 @@ Hummingbird.DashboardController = Ember.Controller.extend({
       });
     }
   }.observes('newUsersToLoad', 'newUsersToLoad.isFulfilled', 'newUsersToLoad.length'),
+
   actions: {
+    postComment: function(comment) {
+      var self = this;
+      ic.ajax({
+        url: "/stories",
+        type: "POST",
+        data: {
+          story: {
+            type: "comment",
+            user_id: this.get('currentUser.id'),
+            comment: comment
+          }
+        }
+      }).then(function(response) {
+        window.location.href = window.location.href;
+      }, function() {
+        alert("Could not submit comment.");
+      });
+    },
+
     dismiss: function (user) {
       var mutable = this.get('mutableUsersToFollow');
       return mutable.removeObject(user);
     },
+
     loadMoreToFollow: function () {
       var newusers = this.store.find('user', {
         followlist: true,

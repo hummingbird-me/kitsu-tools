@@ -123,6 +123,25 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend({
       }
     },
 
+    postComment: function(comment) {
+      var self = this;
+      ic.ajax({
+        url: "/stories",
+        type: "POST",
+        data: {
+          story: {
+            type: "comment",
+            user_id: this.get('user.id'),
+            comment: comment
+          }
+        }
+      }).then(function(response) {
+        window.location.href = window.location.href;
+      }, function() {
+        alert("Could not submit comment.");
+      });
+    },
+
     goPrevPage: function () {
       var page;
       page = this.get('favorite_anime_page');

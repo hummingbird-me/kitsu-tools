@@ -137,7 +137,7 @@
             .more-wrapper
               a class="view-more-button" click="loadMoreFavorite_animes" View More
     .user-feed
-      post-comment username=user.username
+      post-comment action="postComment"
 
       each content itemController="story" itemViewClass="Hummingbird.StoryView"
 

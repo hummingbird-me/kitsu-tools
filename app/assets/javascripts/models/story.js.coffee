@@ -8,6 +8,3 @@ Hummingbird.Story = DS.Model.extend
   substories: DS.hasMany('substory')
   followedUsers: DS.hasMany('user')
 
-  coverImageStyle: (->
-   "background-image: url(" +  @get('coverImageUrl') + ")"
-  ).property('coverImageUrl')
