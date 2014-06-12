@@ -4,7 +4,6 @@ Hummingbird.StoryController = Ember.ObjectController.extend({
   followedStory: Ember.computed.equal('model.type', 'followed'),
   knownStory: Ember.computed.any('commentStory', 'mediaStory', 'followedStory'),
   unknownStory: Ember.computed.not('knownStory'),
-  needs: ['user_index'],
 
   belongsToUser: function () {
     var loggedInUser;
@@ -60,6 +59,11 @@ Hummingbird.StoryController = Ember.ObjectController.extend({
     toggleShowAll: function () {
       return this.set('showAll', !this.get('showAll'));
     },
+
+    deleteStory: function() {
+      this.get('model').deleteRecord();
+    },
+
     removeComment: function () {
       var feeduser, story, userIndexCon, _id;
       feeduser = this.get('user.id');
