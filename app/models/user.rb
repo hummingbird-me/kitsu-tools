@@ -274,7 +274,7 @@ class User < ActiveRecord::Base
     self.save
   end
 
-  # Return the top 3 genres the user has watched, along with
+  # Return the top 5 genres the user has completed, along with
   # the number of anime watched that contain each of those genres.
   def top_genres
     genres        = Arel::Table.new(:genres)
@@ -282,16 +282,21 @@ class User < ActiveRecord::Base
     watchlists_t  = Arel::Table.new(:watchlists)
 
     mywatchlists  = watchlists_t.where(watchlists_t[:user_id].eq(id))
+                                .where(watchlists_t[:status].eq("Completed"))
 
     freqs = anime_genres.where(
               anime_genres[:anime_id].in( mywatchlists.project(:anime_id) )
             ).project(:genre_id, Arel.sql('COUNT(*) AS count'))
             .group(:genre_id).order('count DESC').take(5)
 
-    result = Array.new
-
+    genre_counts = {}
     ActiveRecord::Base.connection.execute(freqs.to_sql).each do |h|
-      result.push({genre: Genre.find(h["genre_id"]), num: h["count"].to_f})
+      genre_counts[h["genre_id"]] = h["count"].to_f
+    end
+
+    result = []
+    Genre.where(id: genre_counts.keys).each do |genre|
+      result.push({genre: genre, num: genre_counts[genre.id]})
     end
 
     result
