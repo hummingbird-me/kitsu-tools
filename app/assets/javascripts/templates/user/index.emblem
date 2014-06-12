@@ -93,8 +93,8 @@
                 .breakdown-graph
                   ember-chart type="Doughnut" data=animeBreakdown options=animeOptions
                 .breakdown-info
-                  span.breakdown-infotitle Adventure
-                  span.breakdown-infotext #{userInfo.animeWatched} out of #{userInfo.animeTotal} titles
+                  span.breakdown-infotitle #{userInfo.topGenres.0.genre.name}
+                  span.breakdown-infotext #{userInfo.topGenres.0.num} out of #{userInfo.animeWatched} titles
               .col-md-7
                 ul.breakdown-genrelist
                   each genre in userInfo.topGenres

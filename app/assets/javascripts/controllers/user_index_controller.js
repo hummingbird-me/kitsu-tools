@@ -176,11 +176,13 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend({
   },
 
   animeBreakdown: function(){
+    var topGenre = this.get('userInfo.topGenres');
+    var topData = topGenre[0]['num'];
     return [{
-      value: parseInt(this.get('userInfo.animeWatched')),
+      value: parseInt(topData),
       color:"#ec8661"
     },{
-      value : (parseInt(this.get('userInfo.animeTotal')) - parseInt(this.get('userInfo.animeWatched'))),
+      value : (parseInt(this.get('userInfo.animeWatched')) - topData),
       color : "#f7cab9"
     }];
   }.property(),
