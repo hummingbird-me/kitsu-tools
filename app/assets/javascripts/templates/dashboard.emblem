@@ -12,7 +12,7 @@
             who-to-follow-container usersToFollow=mutableUsersToFollow currentUser=currentUser action="loadMoreToFollow" dismiss="dismiss"
 
     .user-feed
-      post-comment action="postComment"
+      post-comment username=currentUser.username
 
       each content itemController="story" itemViewClass="Hummingbird.StoryView"
 

@@ -6,7 +6,7 @@ Hummingbird::Application.routes.draw do
   resources :full_anime, only: [:show]
   resources :news_feeds, only: [:index]
   resources :quotes
-  resources :stories, only: [:index, :create]
+  resources :stories, only: [:index]
   resources :user_infos, only: [:show]
   resources :changelogs, only: [:index]
   resources :reviews do

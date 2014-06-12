@@ -6,20 +6,4 @@ class StoriesController < ApplicationController
       render json: stories, meta: {cursor: 1 + (params[:page] || 1).to_i}
     end
   end
-
-  # We only need to handle creation of "comment" stories.
-  def create
-    authenticate_user!
-    params.require(:story).permit(:user_id, :comment)
-
-    user = User.find(params[:story][:user_id])
-    story = Action.broadcast(
-      action_type: "created_profile_comment",
-      user: user,
-      poster: current_user,
-      comment: params[:story][:comment]
-    )
-
-    render json: story
-  end
 end
