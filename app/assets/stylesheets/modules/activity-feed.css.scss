@@ -201,6 +201,22 @@
 }
 
 .anime-breakdown-panel{
+  .breakdown-graph {
+    .breakdown-graph-data {
+      position: relative;
+      color: #ec8661;
+      font-size: 2em;
+      .breakdown-number {
+        display: inline-block;
+        position: absolute;
+        text-align: center;
+        margin-top: -0.8em;
+        width: 100%;
+        left: 0;
+        top: 50%;
+      }
+    }
+  }
   .breakdown-info {
     text-align: center;
     .breakdown-infotitle {

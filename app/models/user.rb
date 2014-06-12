@@ -288,10 +288,10 @@ class User < ActiveRecord::Base
             ).project(:genre_id, Arel.sql('COUNT(*) AS count'))
             .group(:genre_id).order('count DESC').take(5)
 
-    result = {}
+    result = Array.new
 
     ActiveRecord::Base.connection.execute(freqs.to_sql).each do |h|
-      result[ Genre.find(h["genre_id"]) ] = h["count"].to_f
+      result.push({genre: Genre.find(h["genre_id"]), num: h["count"].to_f})
     end
 
     result

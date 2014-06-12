@@ -90,31 +90,22 @@
           .panel-heading
             h3.panel-title Anime Breakdown
           .panel-body
-            / .row
-            /   .col-md-5
-            /     .breakdown-graph
-            /       canvas id="breakdown"
-            /     .breakdown-info
-            /       span.breakdown-infotitle Adventure
-            /       span.breakdown-infotext out of aaa titles
-            /   .col-md-7
-            /     ul.breakdown-genrelist
-            /       li
-            /         span.breakdown-genre Action
-            /         span.breakdown-numbr 100
-            /       li
-            /         span.breakdown-genre Comedy
-            /         span.breakdown-numbr 100
-            /       li
-            /         span.breakdown-genre Ecchi
-            /         span.breakdown-numbr 100
-            /       li
-            /         span.breakdown-genre Horror
-            /         span.breakdown-numbr 100
-            /       li
-            /         span.breakdown-genre Mecha
-            /         span.breakdown-numbr 100
-            / hr
+            .row
+              .col-md-5
+                .breakdown-graph
+                  .breakdown-graph-data
+                    ember-chart type="Doughnut" data=animeBreakdown options=animeOptions
+                    span.breakdown-number #{userInfo.topGenres.0.num}
+                .breakdown-info
+                  span.breakdown-infotitle #{userInfo.topGenres.0.genre.name}
+                  span.breakdown-infotext out of #{userInfo.animeWatched} titles
+              .col-md-7
+                ul.breakdown-genrelist
+                  each genre in userInfo.topGenres
+                    li
+                      span.breakdown-genre #{genre.genre.name}
+                      span.breakdown-numbr #{genre.num}
+            hr
             ul
               li
                 span.breakdown-icon <i class="fa fa-eye"></i>

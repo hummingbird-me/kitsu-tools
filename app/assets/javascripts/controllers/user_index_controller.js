@@ -140,6 +140,28 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend({
       }
     },
   },
+
+  animeBreakdown: function(){
+    var topGenre = this.get('userInfo.topGenres');
+    var topData = topGenre[0]['num'];
+    return [{
+      value: parseInt(topData),
+      color: "#ec8661"
+    },{
+      value : (parseInt(this.get('userInfo.animeWatched')) - topData),
+      color : "#f7cab9"
+    }];
+  }.property(),
+
+  animeOptions: function(){
+    return {
+      percentageInnerCutout : 75,
+      segmentShowStroke : false,
+      segmentStrokeWidth : 0,
+      animation : false
+    }
+  }.property(),
+
   lifeSpentOnAnimeFmt: function () {
     var days, hours, minutes, months, str, years;
     minutes = this.get('userInfo.lifeSpentOnAnime');

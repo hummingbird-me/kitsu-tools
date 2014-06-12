@@ -1,9 +1,5 @@
 class UserInfoSerializer < ActiveModel::Serializer
-  attributes :id, :life_spent_on_anime, :anime_total, :anime_watched, :top_genres
-
-  def anime_total
-  	Anime.all.count
-  end
+  attributes :id, :life_spent_on_anime, :anime_watched, :top_genres
 
   def anime_watched
   	object.watchlists.all.count
