@@ -292,7 +292,7 @@ class User < ActiveRecord::Base
       result.push({genre: genre, num: freqs[genre.id]})
     end
 
-    result
+    result.sort_by {|x| -x[:num] }
   end
 
   # How many minutes the user has spent watching anime.
