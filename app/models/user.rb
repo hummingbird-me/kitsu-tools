@@ -148,6 +148,7 @@ class User < ActiveRecord::Base
   }
 
   has_many :watchlists
+  has_many :library_entries, dependent: :destroy
   has_many :reviews
   has_many :quotes
 
@@ -277,26 +278,18 @@ class User < ActiveRecord::Base
   # Return the top 5 genres the user has completed, along with
   # the number of anime watched that contain each of those genres.
   def top_genres
-    genres        = Arel::Table.new(:genres)
-    anime_genres  = Arel::Table.new(:anime_genres)
-    watchlists_t  = Arel::Table.new(:watchlists)
-
-    mywatchlists  = watchlists_t.where(watchlists_t[:user_id].eq(id))
-                                .where(watchlists_t[:status].eq("Completed"))
-
-    freqs = anime_genres.where(
-              anime_genres[:anime_id].in( mywatchlists.project(:anime_id) )
-            ).project(:genre_id, Arel.sql('COUNT(*) AS count'))
-            .group(:genre_id).order('count DESC').take(5)
-
-    genre_counts = {}
-    ActiveRecord::Base.connection.execute(freqs.to_sql).each do |h|
-      genre_counts[h["genre_id"]] = h["count"].to_f
-    end
+    freqs = library_entries.where(status: "Completed")
+                           .joins(:genres)
+                           .group('genres.id')
+                           .select('COUNT(*) as count, genres.id as genre_id')
+                           .order('count DESC')
+                           .limit(5).each_with_object({}) do |x, obj|
+                             obj[x.genre_id] = x.count.to_f
+                           end
 
     result = []
-    Genre.where(id: genre_counts.keys).each do |genre|
-      result.push({genre: genre, num: genre_counts[genre.id]})
+    Genre.where(id: freqs.keys).each do |genre|
+      result.push({genre: genre, num: freqs[genre.id]})
     end
 
     result
