@@ -82,6 +82,9 @@ a.navbar-brand {
     @include clearfix();
   }
 
+  .panel-default, .user-about-panel, .anime-breakdown-panel, .photos-videos, .favorite-anime, .status-update-panel, .latest-posts-panel, .story {
+    margin-bottom: 10px;
+  }
   .user {
     @include make-xs-column(12);
 

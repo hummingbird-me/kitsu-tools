@@ -5,9 +5,9 @@ class LibraryEntriesController < ApplicationController
 
       #if recent get the first 12 entries and then populate the nested models
       if params[:recent]
-        library_entries = LibraryEntry.where(user_id: user.id, status: "Currently Watching").includes(anime: :genres).order("watchlists.updated_at DESC").limit(12)
+        library_entries = LibraryEntry.where(user_id: user.id, status: "Currently Watching").includes(:anime, anime: :genres).order("watchlists.updated_at DESC").limit(12)
       else
-        library_entries = LibraryEntry.where(user_id: user.id).includes(:anime)
+        library_entries = LibraryEntry.where(user_id: user.id).includes(:anime) #, anime: :genres)
       end
       if params[:status]
         library_entries = library_entries.where(status: params[:status])

@@ -80,7 +80,7 @@ Hummingbird.DashboardController = Ember.Controller.extend({
             });
             window.location.href = window.location.href;
           },
-          failure: function () {
+          error: function () {
             return alert("Failed to save comment");
           }
         });
