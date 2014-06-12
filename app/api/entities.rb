@@ -6,6 +6,10 @@ module Entities
   end
 
   class Anime < Grape::Entity
+    def anime_path(anime)
+      "/anime/#{anime.slug}"
+    end
+
     expose :slug
     expose :status
     expose(:url) {|anime, options| anime_path(anime) }
@@ -34,18 +38,22 @@ module Entities
   end
 
   class MiniUser < Grape::Entity
+    def user_path(user)
+      "/users/#{user.name}"
+    end
+
     expose :name
     expose(:url) {|user, options| user_path(user) }
     expose(:avatar) {|user, options| user.avatar.url(:thumb) }
     expose(:avatar_small) {|user, options| user.avatar.url(:thumb_small) }
     expose(:nb) {|user, options| user.ninja_banned? }
   end
-  
+
   class Quote < Grape::Entity
     expose :content
     expose :character_name
   end
-  
+
   class Watchlist < Grape::Entity
     expose :episodes_watched
     expose(:last_watched) {|watchlist, options| watchlist.last_watched || watchlist.updated_at }
