@@ -57,10 +57,12 @@
           <a href="http://forums.hummingbird.me">Community</a>
         </li>
         <li>
-          {{#if showUpdater}}
-            <a {{action 'toggleUpdater'}} class="close-recent" href="#" id="recent-toggle">Close</a>
-          {{else}}
-            <a {{action 'toggleUpdater'}} href="#" id="recent-toggle">Update</a>
+          {{#if currentUser.isSignedIn}}
+            {{#if showUpdater}}
+              <a {{action 'toggleUpdater'}} class="close-recent" href="#" id="recent-toggle">Close</a>
+            {{else}}
+              <a {{action 'toggleUpdater'}} href="#" id="recent-toggle">Update</a>
+            {{/if}}
           {{/if}}
         </li>
       </ul>
