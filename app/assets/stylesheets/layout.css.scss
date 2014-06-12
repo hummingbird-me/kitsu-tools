@@ -112,12 +112,14 @@ Global Header
     }
     .notification-link {
       white-space: normal;
-      padding-left: 0px;
-      padding-right: 0px;
+      padding: 0 10px;
       background: none !important;
-      i {
-        &.hasNew { color: #e57c48; }
-        &.hasNoNew { padding: 0 10px; }
+      &.hasNew { color: #e57c48; }
+      &.hasNoNew {
+        i {
+          padding: 0 10px;
+        }
+      }
       }
     }
     .dropdown-menu {
