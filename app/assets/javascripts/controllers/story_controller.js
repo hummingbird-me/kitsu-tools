@@ -77,7 +77,7 @@ Hummingbird.StoryController = Ember.ObjectController.extend({
             return userIndexCon.get('target').send('reloadFirstPage');
           }
         },
-        failure: function () {
+        error: function () {
           return alert("Could not delete post");
         }
       });

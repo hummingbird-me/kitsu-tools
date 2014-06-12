@@ -103,7 +103,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend({
           data: data
         },
         method: 'POST',
-        failure: function () {
+        error: function () {
           return console.log("Failed to Update Favorites Ranks");
         }
       });
@@ -165,7 +165,7 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend({
             });
             window.location.href = window.location.href;
           },
-          failure: function () {
+          error: function () {
             return alert("Failed to save comment");
           }
         });
