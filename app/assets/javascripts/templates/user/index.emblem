@@ -1,4 +1,6 @@
 .profile-content
+  a#left-column.mobile-tab.btn.btn-default href="#left-column" Show User Info
+  a#right-column.mobile-tab.btn.btn-default href="#right-column" Show User Feed
   .row
     / Left "About" column
     .secondary-info

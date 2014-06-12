@@ -3,11 +3,49 @@
   margin-top: 30px;
 }
 
+
+.mobile-tab {
+  @extend .col-md-6;
+  @extend .col-xs-6;
+  display: none;
+  border-radius: 0px;
+  margin: 10px 0;
+  padding: 15px 0;
+  width: 100%;
+  @media (max-width: 768px) {
+    display: block;
+    & + .row {
+      margin: 0;
+      .secondary-info,
+      .user-feed {
+        padding: 0;
+      }
+    }
+    /* Initial status */
+    &:not(:target) + .mobile-tab:not(:target){
+      & + .row > .secondary-info { display: none !important; }
+      display: none;
+    }
+    /* Toggled status */
+    &:target{
+      display: none;
+      &#right-column + .row .user-feed { display: block; }
+      &#right-column + .row .secondary-info { display: none !important; }
+      &#left-column + .row .secondary-info { display: block; }
+      &#left-column + .row .user-feed { display: none !important; }
+    }
+    &:after {
+      @extend .clearfix;
+    }
+  }
+}
+
 .secondary-info {
   @extend .col-sm-5;
   @extend .col-md-5;
-  @extend .hidden-xs;
+  //@extend .hidden-xs;
   padding-right: 0px;
+  display: block;
 }
 
 .user-about-panel {
@@ -100,6 +138,7 @@
 
 .grid-thumb {
   padding: 5px !important;
+  float: left !important;
   .thumbnail {
     padding: 0;
     border: none;
