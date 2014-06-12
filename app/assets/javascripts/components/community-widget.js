@@ -7,7 +7,10 @@ Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
 
     ic.ajax({
       url: this.get('apiCall'),
-      type: "GET"
+      type: "GET",
+      xhrFields: {
+        withCredentials: true
+      }
     }).then(function(data) {
 
       var users = {},
@@ -25,7 +28,7 @@ Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
         if (topicInfo.pinned) continue;
 
         topic.title = topicInfo.title;
-        topic.url = "http://forums.hummingbird.me/t/" + topicInfo.slug + "/" + topicInfo.id + "/";
+        topic.url = "http://forums.hummingbird.me/t/" + topicInfo.slug + "/" + topicInfo.id + "/" + (topicInfo.last_read_post_number!==undefined ? topicInfo.last_read_post_number : "");
         topic.postCount = topicInfo.highest_post_number;
         topic.lastPostTime = topicInfo.last_posted_at;
 
