@@ -27,30 +27,34 @@ class Vote < ActiveRecord::Base
     Vote.where(user_id: user.id, target_id: target.id, target_type: target.class.name).first
   end
 
-  after_create do
-    if self.target.respond_to? :total_votes
-      self.target_type.constantize.increment_counter 'total_votes', self.target_id
-    end
-    if self.positive?
-      self.target_type.constantize.increment_counter 'positive_votes', self.target_id
+  def increment_target(key)
+    if self.target.respond_to? key.to_sym
+      self.target_type.constantize.increment_counter key.to_s, self.target_id
     end
   end
 
+  def decrement_target(key)
+    if self.target.respond_to? key.to_sym
+      self.target_type.constantize.decrement_counter key.to_s, self.target_id
+    end
+  end
+
+  after_create do
+    self.increment_target(:total_votes)
+    self.increment_target(:positive_votes) if self.positive?
+  end
+
   after_destroy do
-    if self.target.respond_to? :total_votes
-      self.target_type.constantize.decrement_counter 'total_votes', self.target_id
-    end
-    if self.positive?
-      self.target_type.constantize.decrement_counter 'positive_votes', self.target_id
-    end
+    self.decrement_target(:total_votes)
+    self.decrement_target(:positive_votes) if self.positive?
   end
 
   before_save do
     if self.persisted? and self.positive_changed?
       if self.positive and !self.positive_was
-        self.target_type.constantize.increment_counter 'positive_votes', self.target_id
+        self.increment_target(:positive_votes)
       elsif !self.positive and self.positive_was
-        self.target_type.constantize.decrement_counter 'positive_votes', self.target_id
+        self.decrement_target(:positive_votes)
       end
     end
   end

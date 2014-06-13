@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
         render "anime/show", layout: "redesign"
       end
       format.json do
-        reviews = Review.page(params[:page]).per(20).includes(:anime).includes(:user)
+        reviews = Review.page(params[:page]).per(20).includes(:anime, :user)
         if params[:anime_id]
           anime = Anime.find params[:anime_id]
           reviews = reviews.where(anime_id: anime.id).order('wilson_score DESC')
