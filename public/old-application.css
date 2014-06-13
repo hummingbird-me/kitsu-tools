@@ -9331,7 +9331,7 @@ label.error {
   height: 34px;
   line-height: 33px;
   padding: 0;
-  color: #222222;
+  color: whitesmoke;
 }
 
 .top-bar .toggle-topbar.menu-icon a span {
@@ -9340,8 +9340,8 @@ label.error {
   display: block;
   width: 16px;
   height: 0;
-  -webkit-box-shadow: 0 10px 0 1px #222222, 0 16px 0 1px #222222, 0 22px 0 1px #222222;
-  box-shadow: 0 10px 0 1px #222222, 0 16px 0 1px #222222, 0 22px 0 1px #222222;
+  -webkit-box-shadow: 0 10px 0 1px whitesmoke, 0 16px 0 1px whitesmoke, 0 22px 0 1px whitesmoke;
+  box-shadow: 0 10px 0 1px whitesmoke, 0 16px 0 1px whitesmoke, 0 22px 0 1px whitesmoke;
 }
 
 .top-bar.expanded {
@@ -13788,7 +13788,12 @@ a.th {
 }
 
 .hummingbird-header-1 .guest-block {
-  height: 70px;
+  height: 50px;
+  color: #999999;
+  font-size: small;
+  background: #272c33;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 .hummingbird-header-1 .guest-block a {
