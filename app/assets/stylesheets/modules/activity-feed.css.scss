@@ -181,6 +181,7 @@
 
 .favorite-anime {
   .grid-thumb {
+    @extend .col-xs-4;
     @extend .col-sm-4;
   }
 }
@@ -202,6 +203,7 @@
 
 .anime-breakdown-panel{
   .breakdown-graph {
+    text-align: center;
     .breakdown-graph-data {
       position: relative;
       color: #ec8661;
