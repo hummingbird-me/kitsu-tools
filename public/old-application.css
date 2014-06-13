@@ -19612,17 +19612,26 @@ body .ui-tooltip {
   display: block;
 }
 
-.login-register-card .login-input-ghost {
-  position: absolute;
-  left: 0;
-  top: 19px;
+/* We can't group these because one bad selector kills the whole group */
+/* Webkit and Blink */
+.login-register-card .login-input::-webkit-input-placeholder {
   color: #b5b5b5;
   font-size: 13px;
-  white-space: nowrap;
 }
-
-.login-register-card input.login-input:focus .login-input-ghost {
-  display: none;
+/* Firefox 4-18 */
+.login-register-card .login-input:-moz-placeholder {
+  color: #b5b5b5;
+  font-size: 13px;
+}
+/* Firefox 19+ changes from pseudo-class to pseudo-element */
+.login-register-card .login-input::-moz-placeholder {
+  color: #b5b5b5;
+  font-size: 13px;
+}
+/* Internet Explorer 10 */
+.login-register-card .login-input:-ms-input-placeholder {
+  color: #b5b5b5;
+  font-size: 13px;
 }
 
 .login-register-card .input-hor-divider {
