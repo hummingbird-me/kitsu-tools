@@ -49,8 +49,8 @@ class NewsFeed
     $redis.expire @feed_key, INACTIVE_DAYS * 24 * 60 * 60
 
     page ||= 1
-    start_index = 20 * (page.to_i-1)
-    stop_index = start_index + 20 - 1
+    start_index = 30 * (page.to_i-1)
+    stop_index = start_index + 30 - 1
 
     story_ids = $redis.zrevrange(@feed_key, start_index, stop_index).collect(&:to_i)
 
