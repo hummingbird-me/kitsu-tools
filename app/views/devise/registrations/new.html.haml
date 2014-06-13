@@ -16,20 +16,16 @@
           %span.login-title-small OR, SIGN UP WITH
           .input-wrap.signup
             .login-input-wrap
-              = f.text_field :name, class: 'login-input'
-              %span.login-input-ghost Username
+              = f.text_field :name, class: 'login-input', placeholder: 'Username'
           .input-wrap.signup
             .login-input-wrap.left
-              = f.password_field :password, class: 'login-input'
-              %span.login-input-ghost Password
+              = f.password_field :password, class: 'login-input', placeholder: 'Password'
             .input-ver-divider
             .login-input-wrap.right
-              = f.password_field :password_confirmation, class: 'login-input'
-              %span.login-input-ghost Verify Password
+              = f.password_field :password_confirmation, class: 'login-input', placeholder: 'Verify Password'
           .input-wrap.signup
             .login-input-wrap
-              = f.email_field :email, class: 'login-input'
-              %span.login-input-ghost Email Address
+              = f.email_field :email, class: 'login-input', placeholder: 'E-Mail Address'
 
           .signup-step-buttons
             = f.submit "Register Account", id: 'login', class: 'login-button'

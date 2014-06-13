@@ -9,13 +9,11 @@
           .input-wrap
             .login-input-wrap
               = image_tag "icons/input-arrow.png", :style => "width: 4px; height: 7px;"
-              = f.email_field :email, class: 'login-input'
-              %span.login-input-ghost E-Mail Address
+              = f.email_field :email, class: 'login-input', placeholder: 'E-Mail Address'
             .input-hor-divider
             .login-input-wrap
               = image_tag "icons/input-arrow.png", :style => "width: 4px; height: 7px;"
-              = f.password_field :password, class: 'login-input'
-              %span.login-input-ghost Password
+              = f.password_field :password, class: 'login-input', placeholder: 'Password'
           = f.submit "LOGIN", id: 'login', class: 'login-button'
         
           .password-reset
