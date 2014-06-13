@@ -80,9 +80,7 @@
         .large-12.columns
           %a(data-tooltip data-width=500 title="You can confirm your email address by clicking on the link in the email you received after registration. If you didn't receive a confirmation email, click on the 'Resend Confirmation Email' button.") Please confirm your email address.
           %span.guest-button= link_to "Resend Confirmation Email", new_confirmation_path(User)
-  - unless @hide_cover_image
-    = render partial: "shared/header_quote"
-      
+
   - flash.each do |style, message|
     .alert-box{:class => style.to_s}= message
 
