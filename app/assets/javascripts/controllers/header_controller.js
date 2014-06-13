@@ -31,7 +31,7 @@ Hummingbird.HeaderController = Ember.Controller.extend({
             return {
               title: r.title,
               type: r.type,
-              image: r.image.replace("{size}", "small").replace(/\.[a-zA-Z]+\?/, ".jpg?"),
+              image: r.image.replace((r.type=="user"?"{size}":"large"), (r.type=="user"?"small":"medium")).replace(/(\.[a-zA-Z]+)?\?/, ".jpg?"),
               link: r.link
             };
           });
