@@ -279,6 +279,7 @@ class User < ActiveRecord::Base
   # the number of anime watched that contain each of those genres.
   def top_genres
     freqs = library_entries.where(status: "Completed")
+                           .where(private: false)
                            .joins(:genres)
                            .group('genres.id')
                            .select('COUNT(*) as count, genres.id as genre_id')
