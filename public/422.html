@@ -1,26 +1,108 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The change you wanted was rejected (422)</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
 
+    body {
+      margin: 0;
+      padding: 0;
+      background: #E6E6E6;
+      font-family: "Trebuchet MS", Helvetica, sans-serif;
+    }
+
+    a { color: #ec8661; text-decoration: none; }
+    a:hover { color: #2a6496; }
+
+    .nav, .navbar, .navbar-inverse { background-color: #2F343B; }
+
+    .error-message { margin-top: 100px; }
+    .error-message hr { margin: 5px 0; }
+    .error-message h3 { margin-top: 0; font-weight: bold; }
+
+    .error-image {
+      display: block;
+      max-width: 100%;
+      border: 1px solid #ccc;
+    }
+
+    .error-art {
+      font-size: 0.9em;
+      color: #666;
+    }
+    
+  </style>
+
+  <title>The change you wanted was rejected. (422)</title>
+</head>
 <body>
-  <!-- This file lives in public/422.html -->
-  <div class="dialog">
-    <h1>The change you wanted was rejected.</h1>
-    <p>Maybe you tried to change something you didn't have access to.</p>
+
+  <nav class='navbar navbar-inverse navbar-fixed-top hb-nav' role='navigation'>
+    <div class='container'>
+      <div class='navbar-header'>
+        <a class='navbar-brand' href='/'>
+          <img src="http://hummingbird.me/assets/logo-new.jpg" width="119px" height="20px">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container error-message">
+    <div class="row">
+      <div class="col-md-7 error-image-frame">
+        <img id="error-jsimage" class="error-image" src="" />
+        <span class="error-art">Error art submitted by <a id="error-jsuser" href=""></a>.</span>
+      </div>
+      <div class="col-md-5">
+        <h3>Error #422, Change rejected.</h3>
+        <p>
+          We're sorry but it looks like the change you wanted 
+          was rejected. This usually happens if the server was
+          unable to follow your request. - Might also happen if
+          you'd try to change politics, economy or the laws of physic.
+        </p>
+        <hr />
+        <p>
+          <strong>You might want to...</strong><br />
+          <strong>&rsaquo;</strong> Go back to <a href="/">Hummingbird</a>.<br />
+          <strong>&rsaquo;</strong> Go to the <a href="/search">Search Page</a>.<br /><br />
+          If you think this is a bug, please report it on
+          <a href="http://forums.hummingbird.me/category/bugs">the forums</a>.
+        </p>
+      </div>
+    </div>
   </div>
+
+
+  <script type="text/javascript">
+
+    var images = [
+      ["Melen", "wQhAf7C.jpg"],
+      ["Jordan", "ylq29qb.jpg"],
+      ["earaiden", "WVLskzF.jpg"],
+      ["Nullet", "Y1b1K5R.jpg"],
+      ["calioop", "V4adlna.jpg"],
+      ["littleladyred", "eU4pwaK.jpg"],
+      ["kami", "Kuz1ONt.jpg"],
+      ["rtil", "5J0t70x.jpg"],
+      ["Magpii", "1VBtfdt.jpg"],
+      ["James", "QpPfYsg.jpg"],
+      ["Raphael", "f1TGLPX.jpg"],
+      ["Magpii", "MNt9zo4.jpg"],
+      ["DarKCroX", "K9fP1PT.gif"]
+    ];
+
+
+    // ------------------------------------------
+    var img = document.getElementById("error-jsimage"),
+        usr = document.getElementById("error-jsuser");
+        num = Math.floor(Math.random() * (images.length - 1));
+
+    usr.setAttribute('href', '/users/'+images[num][0]);
+    usr.appendChild(document.createTextNode(images[num][0]));
+    img.setAttribute('src', 'http://i.imgur.com/'+images[num][1]);
+
+  </script>
+
 </body>
 </html>
