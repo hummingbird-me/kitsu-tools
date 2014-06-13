@@ -7,6 +7,7 @@ Hummingbird::Application.routes.draw do
   resources :news_feeds, only: [:index]
   resources :quotes
   resources :stories, only: [:index, :destroy]
+  delete '/substories/:id' => 'stories#destroy_substory'
   resources :user_infos, only: [:show]
   resources :changelogs, only: [:index]
   resources :reviews do

@@ -172,6 +172,7 @@
   }
 
   li.single-event {
+    box-sizing: border-box;
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -182,6 +183,11 @@
       @media (max-width: 400px) {
         display: none;
       }
+    }
+
+    transition: opacity 0.4s ease-in;
+    &.deleted-event {
+      opacity: 0.2;
     }
   }
 

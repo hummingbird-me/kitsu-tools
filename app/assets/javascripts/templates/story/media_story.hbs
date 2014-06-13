@@ -13,7 +13,7 @@
     </ul>
     <ul class="feed-events">
       {{#each substory in displaySubstories}}
-        <li class="single-event">
+        <li {{bind-attr class=":single-event substory.isDeleted:deleted-event"}}>
           <div class="row">
             <div class="col-md-11">
               <div class="user-image hidden-sm hidden-xs">
@@ -29,7 +29,7 @@
                 <ul class="inline-list secondary">
                   {{#if belongsToUser}}
                     <li>
-                      <a class="remove-post" {{action deleteStory}}>remove</a>
+                      <a class="remove-post" {{action deleteSubstory substory}}>remove</a>
                     </li>
                   {{/if}}
                   <li>{{time-ago time=substory.createdAt}}</li>
