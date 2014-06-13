@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     if params[:followed_by] or params[:followers_of]
+
       if params[:followed_by]
         users = User.find(params[:followed_by]).following
       elsif params[:followers_of]
@@ -15,20 +16,8 @@ class UsersController < ApplicationController
 
       render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
 
-    elsif params[:randomlist] or params[:followlist]
-      user = User.find(params[:user_id])
-
-      # we want a random list of users we aren't already following
-      to_follow = User.where("id NOT IN (SELECT followed_id FROM follows WHERE follower_id = ?)", user.id)
-                      .where("id <> ?", user.id)
-                      .where("bio <> ''")
-                      .order("RANDOM()")
-                      .limit(5)
-                      #.includes(:followers)
-
-      render json: to_follow
     else
-      ### OLD CODE PATH BELOW.
+      ### OLD CODE PATH BELOW. Used only by the recommendations page.
       authenticate_user!
 
       @status = {

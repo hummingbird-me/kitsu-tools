@@ -12,17 +12,3 @@ Hummingbird.DashboardRoute = Ember.Route.extend Hummingbird.Paginated,
     @setCanLoadMore(true)
     controller.set 'canLoadMore', true
     controller.set 'model', []
-
-    results = @store.find 'user', followlist: true, user_id: @get('currentUser.id')
-    controller.set('usersToFollow', results)
-
-    #if Ember.isNone(@get('pollster'))
-    #  @set 'pollster', Hummingbird.Pollster.create
-    #    onPoll: ->
-    #      controller.get('target').send('checkForNewObjects')
-    #
-    #@get('pollster').start()
-
-  #deactivate: ->
-  #  @get('pollster').stop()
-
