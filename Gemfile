@@ -66,12 +66,13 @@ gem 'flamegraph'
 
 # Testing
 group :test do
-  gem 'simplecov'
   gem 'shoulda'
   gem 'timecop'
   gem 'mock_redis'
   gem 'mocha'
 end
+
+gem 'codeclimate-test-reporter', group: :test, require: nil
 
 gem 'haml', '~> 4.0'
 gem 'haml-rails'

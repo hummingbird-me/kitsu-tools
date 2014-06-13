@@ -73,6 +73,8 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
+    codeclimate-test-reporter (0.3.0)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -454,6 +456,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-sass (~> 3.1)
   cancan (~> 1.6)
+  codeclimate-test-reporter
   coffee-rails (~> 4.0)
   delayed_paperclip (~> 2.7)
   devise (~> 3.2)
@@ -509,7 +512,6 @@ DEPENDENCIES
   sidekiq
   sidekiq-throttler
   simple_form
-  simplecov
   sinatra
   sitemap_generator
   skylight
