@@ -37,6 +37,7 @@ Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
           var user = users[poster.user_id];
           topic.users.push({
             name: user.username,
+            avatar: "http://forums.hummingbird.me" + user.avatar_template.replace("{size}", "20"),
             url: "http://forums.hummingbird.me/users/" + user.username + "/activity"
           });
         });

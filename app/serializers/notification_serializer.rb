@@ -7,6 +7,6 @@ class NotificationSerializer < ActiveModel::Serializer
   end
 
   def source_avatar
-    object.source.target.avatar.url
+    object.source.target.avatar.url(:thumb_small)
   end
 end
