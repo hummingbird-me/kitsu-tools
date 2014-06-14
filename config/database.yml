@@ -1,14 +1,19 @@
 development:
   adapter: postgresql
   database: hummingbird_development
+  username: postgres
+  password: blableblu
   host: localhost
   port: 5432
 
 test:
   adapter: postgresql
   database: hummingbird_test
+  username: postgres
+  password: blableblu
   host: localhost
-
+  port: 5432
+  
 production:
   adapter: postgresql
   database: hummingbird_production

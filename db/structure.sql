@@ -858,6 +858,38 @@ ALTER SEQUENCE manga_id_seq OWNED BY manga.id;
 
 
 --
+-- Name: media; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE media (
+    id integer NOT NULL,
+    mediable_id integer,
+    mediable_type character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: media_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE media_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: media_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE media_id_seq OWNED BY media.id;
+
+
+--
 -- Name: not_interesteds; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1358,7 +1390,9 @@ CREATE TABLE watchlists (
     private boolean DEFAULT false,
     notes text,
     rewatch_count integer DEFAULT 0 NOT NULL,
-    rewatching boolean DEFAULT false NOT NULL
+    rewatching boolean DEFAULT false NOT NULL,
+    media_id integer,
+    watchable_type text DEFAULT 'Anime'::text
 );
 
 
@@ -1526,6 +1560,13 @@ ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::reg
 --
 
 ALTER TABLE ONLY manga ALTER COLUMN id SET DEFAULT nextval('manga_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY media ALTER COLUMN id SET DEFAULT nextval('media_id_seq'::regclass);
 
 
 --
@@ -1785,6 +1826,14 @@ ALTER TABLE ONLY genres
 
 ALTER TABLE ONLY manga
     ADD CONSTRAINT manga_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: media_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY media
+    ADD CONSTRAINT media_pkey PRIMARY KEY (id);
 
 
 --
@@ -2221,6 +2270,13 @@ CREATE INDEX index_genres_manga_on_manga_id ON genres_manga USING btree (manga_i
 
 
 --
+-- Name: index_media_on_mediable_id_and_mediable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_media_on_mediable_id_and_mediable_type ON media USING btree (mediable_id, mediable_type);
+
+
+--
 -- Name: index_not_interesteds_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2246,6 +2302,13 @@ CREATE INDEX index_notifications_on_user_id ON notifications USING btree (user_i
 --
 
 CREATE UNIQUE INDEX index_people_on_mal_id ON people USING btree (mal_id);
+
+
+--
+-- Name: index_quotes_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_quotes_on_anime_id ON quotes USING btree (anime_id);
 
 
 --
@@ -2372,6 +2435,13 @@ CREATE UNIQUE INDEX index_votes_on_target_id_and_target_type_and_user_id ON vote
 --
 
 CREATE INDEX index_votes_on_user_id_and_target_type ON votes USING btree (user_id, target_type);
+
+
+--
+-- Name: index_watchlists_on_media_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_watchlists_on_media_id ON watchlists USING btree (media_id);
 
 
 --
@@ -3001,10 +3071,25 @@ INSERT INTO schema_migrations (version) VALUES ('20140509185245');
 
 INSERT INTO schema_migrations (version) VALUES ('20140510170525');
 
+INSERT INTO schema_migrations (version) VALUES ('20140510191245');
+
+INSERT INTO schema_migrations (version) VALUES ('20140511135230');
+
 INSERT INTO schema_migrations (version) VALUES ('20140511184722');
 
 INSERT INTO schema_migrations (version) VALUES ('20140511190858');
 
 INSERT INTO schema_migrations (version) VALUES ('20140512093910');
 
+INSERT INTO schema_migrations (version) VALUES ('20140512094905');
+
+INSERT INTO schema_migrations (version) VALUES ('20140512104608');
+
+INSERT INTO schema_migrations (version) VALUES ('20140512104625');
+
 INSERT INTO schema_migrations (version) VALUES ('20140515093555');
+
+INSERT INTO schema_migrations (version) VALUES ('20140517144844');
+
+INSERT INTO schema_migrations (version) VALUES ('20140613205304');
+
