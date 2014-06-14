@@ -204,8 +204,7 @@ class User < ActiveRecord::Base
      "dev.colinl@gmail.com", # Psy
      "lazypanda39@gmail.com", # Cai
      "adennisjin@gmail.com", # Dennis
-     "svengehring@cybrox.eu", # Cybrox
-     "pchen4@gmail.com" # pchen
+     "svengehring@cybrox.eu" # Cybrox
     ].include? email
   end
 

@@ -14,7 +14,8 @@ class UserSerializer < ActiveModel::Serializer
              :waifu_slug,
              :waifu_char_id,
              :last_sign_in_at,
-             :current_sign_in_at
+             :current_sign_in_at,
+             :is_admin
 
   def id
     object.name
@@ -42,5 +43,9 @@ class UserSerializer < ActiveModel::Serializer
 
   def online
     object.online?
+  end
+
+  def is_admin
+    object.admin?
   end
 end
