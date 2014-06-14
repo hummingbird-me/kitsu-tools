@@ -4,8 +4,8 @@ Hummingbird::Application.configure do
 
   config.paperclip_defaults = {
     storage: :filesystem,
-    url: '/uploads/',
-    path: File.expand_path("#{File.dirname(__FILE__)}/../../public/uploads")
+    url: '/uploads/:class/:attachment/:id_partition/:style/:filename',
+    path: "#{Rails.root}/public/uploads/:class/:attachment/:id_partition/:style/:filename"
   }
 
   # The test environment is used exclusively to run your application's
