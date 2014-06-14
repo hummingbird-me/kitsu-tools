@@ -17,7 +17,7 @@
           <div class="pull-right">
             {{#each user in topic.users}}
               <a {{bind-attr title="user.name" href="user.url"}}>
-                <img class="recent-post-avatar" src="http://hummingbird.me/assets/processing-avatar.jpg">
+                <img class="recent-post-avatar" {{bind-attr src="user.avatar"}}>
               </a>
             {{/each}}
           </div>
