@@ -138,8 +138,7 @@ class User < ActiveRecord::Base
   has_attached_file :cover_image,
     styles: {thumb: {geometry: "2800x660#", animated: false, format: :jpg}},
     convert_options: {thumb: '-interlace Plane -quality 0'},
-    default_url: "http://hummingbird.me/default_cover.png",
-    storage: :s3
+    default_url: "http://hummingbird.me/default_cover.png"
 
   validates_attachment :cover_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
