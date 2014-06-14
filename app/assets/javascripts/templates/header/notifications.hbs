@@ -30,7 +30,7 @@
   {{/if}}
 </li>
 <li class='dropdown notifications'>
-  <a class='dropdown-toggle notification-link hasUnreadNotifications:hasNew:hasNoNew' data-toggle='dropdown' href='#'>
+  <a {{bind-attr class="dropdown-toggle notification-link hasUnreadNotifications:hasNew:hasNoNew"}} data-toggle='dropdown' href='#'>
     <i {{bind-attr class=':fa :fa-bell :active'}}>
       {{#if hasUnreadNotifications}}
         {{strpad unreadNotifications}}

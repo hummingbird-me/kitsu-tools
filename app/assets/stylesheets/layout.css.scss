@@ -106,13 +106,12 @@ Global Header
   .notifications {
     text-align: center;
     height: 50px;
-    padding: 0px 10px 0px 10px;
     &:hover {
       background-color: darken($darkNavy, 2);
     }
     .notification-link {
       white-space: normal;
-      padding: 0 10px;
+      padding: 16px 16px;
       background: none !important;
       &.hasNew { color: #e57c48; }
       &.hasNoNew {
