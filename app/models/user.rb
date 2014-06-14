@@ -347,10 +347,8 @@ class User < ActiveRecord::Base
       self.authentication_token = token
     end
 
-    if waifu_char_id != '0000' and changed_attributes['waifu_char_id'] and waifu_character
-      self.waifu_slug = waifu_character.anime.slug || '#'
-    else
-      self.waifu_slug = '#'
+    if waifu_char_id != '0000' and changed_attributes['waifu_char_id']
+      self.waifu_slug = waifu_character ? waifu_character.anime.slug : '#'
     end
   end
 
