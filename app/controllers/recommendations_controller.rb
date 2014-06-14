@@ -63,7 +63,7 @@ class RecommendationsController < ApplicationController
 
   def plan_to_watch
     anime = Anime.find params[:anime]
-    watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
+    watchlist = Watchlist.find_or_create_by(anime_id: anime.id, user_id: current_user.id)
     watchlist.status = "Plan to Watch"
     watchlist.save
     mixpanel.track "Recommendations: Plan to Watch", {email: current_user.email, anime: anime.slug} if Rails.env.production?
