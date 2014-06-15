@@ -77,26 +77,14 @@
   <script type="text/javascript">
 
     var images = [
-      ["Melen", "wQhAf7C.jpg"],
-      ["Jordan", "ylq29qb.jpg"],
-      ["earaiden", "WVLskzF.jpg"],
-      ["Nullet", "Y1b1K5R.jpg"],
-      ["calioop", "V4adlna.jpg"],
-      ["littleladyred", "eU4pwaK.jpg"],
-      ["kami", "Kuz1ONt.jpg"],
-      ["rtil", "5J0t70x.jpg"],
-      ["Magpii", "1VBtfdt.jpg"],
-      ["James", "QpPfYsg.jpg"],
-      ["Raphael", "f1TGLPX.jpg"],
-      ["Magpii", "MNt9zo4.jpg"],
-      ["DarKCroX", "K9fP1PT.gif"]
+      ["littleladyred", "eU4pwaK.jpg"]
     ];
 
 
     // ------------------------------------------
     var img = document.getElementById("error-jsimage"),
         usr = document.getElementById("error-jsuser");
-        num = Math.floor(Math.random() * (images.length - 1));
+        num = Math.floor(Math.random() * images.length);
 
     usr.setAttribute('href', '/users/'+images[num][0]);
     usr.appendChild(document.createTextNode(images[num][0]));
