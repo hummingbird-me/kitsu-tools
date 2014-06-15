@@ -7,7 +7,7 @@ before_script:
   - bundle exec rake db:create db:structure:load
 script: bundle exec rake test
 after_success:
-  - echo -e "Host: 107.170.189.56\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - "echo -e \"Host: 107.170.189.56\n\tStrictHostKeyChecking no\n\" >> ~/.ssh/config"
   - ssh root@107.170.189.56 "/var/hummingbird/deploy.sh"
 notifications:
   hipchat:
