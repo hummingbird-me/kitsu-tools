@@ -1,10 +1,15 @@
 language: ruby
 env:
-  - secure: "cjx/dR9jqO9mkaFMK/5I3A2cD7DU/PebidQDJMjukAKRoRIM7YvL7oneFJCuYXj0XfuXSi1k+92A++msLEyZnI0cTuQ8HcDMoZQI89m88mvkxwxADy57M2w3DdQfrLtWMBVT6xxykHpddltKM4ABYW1/zOy9A0t3ABFbrLjgKYQ="
+  - secure: cjx/dR9jqO9mkaFMK/5I3A2cD7DU/PebidQDJMjukAKRoRIM7YvL7oneFJCuYXj0XfuXSi1k+92A++msLEyZnI0cTuQ8HcDMoZQI89m88mvkxwxADy57M2w3DdQfrLtWMBVT6xxykHpddltKM4ABYW1/zOy9A0t3ABFbrLjgKYQ=
 rvm:
   - 2.1.2
 before_script:
   - bundle exec rake db:create db:structure:load
 script: bundle exec rake test
 after_success:
+  - echo -e "Host: 107.170.189.56\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ssh root@107.170.189.56 "/var/hummingbird/deploy.sh"
+notifications:
+  hipchat:
+    rooms:
+      secure: aXpt7vF8j08UA48UltX9BOd5PjaSp8EG6lcKtjM6oi2K0EF+NlJq3RZRKgrYbNTISbOjJUJlFdbGG8oUBi0ilZV0kvF2JYlB16HZgUEcsSeTInUEmPZoy+VvgTve/L+b4+2cgC0pyxC6kzCk9PAYQ3ZCsqSbwISZmHV4cG1k9tg=
