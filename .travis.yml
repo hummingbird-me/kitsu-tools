@@ -6,3 +6,5 @@ rvm:
 before_script:
   - bundle exec rake db:create db:structure:load
 script: bundle exec rake test
+after_success:
+  - ssh root@107.170.189.56 "/var/hummingbird/deploy.sh"
