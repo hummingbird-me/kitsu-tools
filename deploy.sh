@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
 
 # This script will update the git repository to the latest revision in the
 # origin's master branch. Then it restarts sidekiq using monit and does a zero
@@ -14,9 +14,9 @@ git checkout master
 git reset --hard HEAD@{upstream}
 
 # bundle install, precompile assets, migrate database
-bundle install --deployment --without test
-bundle exec rake assets:precompile
-bundle exec rake db:migrate
+su - hummingbird -c 'bundle install --deployment --without test'
+su - hummingbird -c 'bundle exec rake assets:precompile'
+su - hummingbird -c 'bundle exec rake db:migrate'
 
 # restart sidekiq
 monit restart sidekiq
