@@ -16,4 +16,5 @@
 //= require jquery-ui-1.10.3.custom.min
 //= require autolink
 //= require react
+//= require twitter/typeahead
 //= require message-bus
