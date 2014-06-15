@@ -34,8 +34,9 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'sanitize', '~> 2.1'
 gem 'oj'
 
-gem 'fast_blank' # Faster `String#blank?`, which is used a lot but ActiveRecord.
+gem 'fast_blank' # Faster `String#blank?`, which is used a lot by ActiveRecord.
 
+gem 'message_bus'
 
 # Was assets group.
 gem 'sass-rails',   '~> 4.0'
