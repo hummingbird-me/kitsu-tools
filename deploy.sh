@@ -6,17 +6,19 @@
 #
 # It is intended to be run by Travis after a successful build.
 
-cd "$(dirname "$0")"
+DIR=$(dirname "$0")
+cd $DIR
 
 # Update the git repo.
 git fetch
 git checkout master
 git reset --hard HEAD@{upstream}
+chown -R hummingbird:www-data .
 
 # bundle install, precompile assets, migrate database
-su - hummingbird -c 'bundle install --deployment --without test'
-su - hummingbird -c 'bundle exec rake assets:precompile'
-su - hummingbird -c 'bundle exec rake db:migrate'
+su - hummingbird -c "cd $DIR && bundle install --deployment --without test"
+su - hummingbird -c "cd $DIR && bundle exec rake assets:precompile"
+su - hummingbird -c "cd $DIR && bundle exec rake db:migrate"
 
 # restart sidekiq
 monit restart sidekiq
