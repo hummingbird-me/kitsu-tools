@@ -65,8 +65,8 @@
     animation-name: placeHolderShimmer;
     animation-timing-function: linear;
     background: #f6f7f8;
-    background-image: -webkit-gradient(linear, left center, right center, from(#f6f7f8), color-stop(.2, #edeef1), color-stop(.4, #f6f7f8), to(#f6f7f8));
-    background-image: -webkit-linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+    background-image: gradient(linear, left center, right center, from(#f6f7f8), color-stop(.2, #edeef1), color-stop(.4, #f6f7f8), to(#f6f7f8));
+    background-image: linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
     background-repeat: no-repeat;
     background-size: 800px 104px;
     height: 60px;
@@ -124,9 +124,9 @@
   }
 }
 
-@-webkit-keyframes placeHolderShimmer{
-  0% {background-position:-468px 0}
-  100%{background-position:468px 0}
+@keyframes placeHolderShimmer{
+  0% { background-position: -468px 0; }
+  100% { background-position: 468px 0; }
 }
 
 
