@@ -1,5 +1,5 @@
 Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
-  classNames: ["latest-posts-panel"],
+  classNames: ["community-widget-panel"],
   topics: [],
 
   loadPosts: function() {

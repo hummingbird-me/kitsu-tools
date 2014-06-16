@@ -1,4 +1,4 @@
-.latest-posts-panel {
+.community-widget-panel {
   @extend .panel;
   @extend .panel-default;
   @extend .clearfix;
@@ -52,5 +52,86 @@
       }
     }
   }
+  &.loading-state {
+    .panel-heading {
+      padding: 18px;
+    }
+    .panel-body {
+
+    }
+    .loading-wrapper {
+      padding: 10px;
+    }
+    .loading-image {
+      -webkit-animation-duration: 1s;
+      -webkit-animation-fill-mode: forwards;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-name: placeHolderShimmer;
+      -webkit-animation-timing-function: linear;
+      background: #f6f7f8;
+      background-image: -webkit-gradient(linear, left center, right center, from(#f6f7f8), color-stop(.2, #edeef1), color-stop(.4, #f6f7f8), to(#f6f7f8));
+      background-image: -webkit-linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+      background-repeat: no-repeat;
+      background-size: 800px 104px;
+      height: 60px;
+      position: relative;
+      div {
+        background: #fff;
+        height: 6px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        &.l-1 {
+          top: 28px;
+          height: 12px;
+        }
+        &.l-2 {
+          top: 36px;
+          height: 24px;
+          width: 183px;
+          left: 130px;
+        }
+        &.l-3 {
+          height: 24px;
+          top: 36px;
+          right: 20px;
+          left: inherit;
+          width: 10px;
+        }
+        &.l-4 {
+          height: 24px;
+          top: 36px;
+          right: 50px;
+          left: inherit;
+          width: 10px;
+        }
+        &.l-5 {
+          height: 24px;
+          top: 36px;
+          right: 80px;
+          left: inherit;
+          width: 10px;
+        }
+        &.l-6 {
+          height: 24px;
+          top: 36px;
+          right: 110px;
+          left: inherit;
+          width: 10px;
+        }
+      }
+    }
+  }
 }
+.loading-post {
+  hr {
+    margin: 0;
+  }
+}
+
+@-webkit-keyframes placeHolderShimmer{
+  0% {background-position:-468px 0}
+  100%{background-position:468px 0}
+}
+
 
