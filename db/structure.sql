@@ -68,7 +68,7 @@ CREATE TABLE anime (
     age_rating character varying(255),
     episode_count integer,
     episode_length integer,
-    synopsis text,
+    synopsis text DEFAULT ''::text NOT NULL,
     youtube_video_id character varying(255),
     mal_id integer,
     created_at timestamp without time zone NOT NULL,
@@ -816,7 +816,7 @@ CREATE TABLE manga (
     romaji_title character varying(255),
     slug character varying(255),
     english_title character varying(255),
-    synopsis text,
+    synopsis text DEFAULT ''::text NOT NULL,
     poster_image_file_name character varying(255),
     poster_image_content_type character varying(255),
     poster_image_file_size integer,
@@ -3008,3 +3008,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140511190858');
 INSERT INTO schema_migrations (version) VALUES ('20140512093910');
 
 INSERT INTO schema_migrations (version) VALUES ('20140515093555');
+
+INSERT INTO schema_migrations (version) VALUES ('20140616040317');
+

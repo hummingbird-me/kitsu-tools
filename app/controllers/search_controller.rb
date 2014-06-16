@@ -81,7 +81,7 @@ class SearchController < ApplicationController
         {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
       }.flatten
       formattedUsers = users.map { |x|
-        {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" } 
+        {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" }
       }.flatten
 
       respond_to do |format|
