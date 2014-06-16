@@ -340,7 +340,7 @@ GEM
       rails (>= 3.1)
       react-source (= 0.10.0)
     react-source (0.10.0)
-    redis (3.1.0)
+    redis (3.0.7)
     redis-actionpack (4.0.0)
       actionpack (~> 4)
       redis-rack (~> 1.5.0)
@@ -348,7 +348,8 @@ GEM
     redis-activesupport (4.0.0)
       activesupport (~> 4)
       redis-store (~> 1.1.0)
-    redis-namespace (0.4.3)
+    redis-namespace (1.4.1)
+      redis (~> 3.0.4)
     redis-rack (1.5.0)
       rack (~> 1.5)
       redis-store (~> 1.1.0)
@@ -376,12 +377,12 @@ GEM
     shoulda-context (1.2.1)
     shoulda-matchers (2.6.1)
       activesupport (>= 3.0.0)
-    sidekiq (2.14.0)
-      celluloid (>= 0.14.1)
-      connection_pool (>= 1.0.0)
+    sidekiq (3.1.4)
+      celluloid (>= 0.15.2)
+      connection_pool (>= 2.0.0)
       json
-      redis (>= 3.0.4)
-      redis-namespace
+      redis (>= 3.0.6)
+      redis-namespace (>= 1.3.1)
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -502,13 +503,13 @@ DEPENDENCIES
   rb-fsevent
   rdiscount
   react-rails (~> 0.10.0.0)
-  redis (~> 3.1)
+  redis
   redis-rails
   rinku
   sanitize (~> 2.1)
   sass-rails (~> 4.0)
   shoulda
-  sidekiq
+  sidekiq (~> 3.1)
   simple_form
   sinatra
   sitemap_generator

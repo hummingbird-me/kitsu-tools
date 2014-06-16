@@ -17,7 +17,7 @@ gem 'fastclick-rails', "~> 1.0"
 gem 'pg', '0.17.1'
 
 gem 'hiredis'
-gem 'redis', '~> 3.1', require: ['redis', 'redis/connection/hiredis']
+gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
 
 gem 'ember-rails', '~> 0.15'
@@ -102,7 +102,7 @@ gem 'cancan', "~> 1.6"
 gem 'kaminari', '~> 0.16'
 
 # Background jobs
-gem 'sidekiq'
+gem 'sidekiq', '~> 3.1'
 
 gem 'sinatra', :require => nil
 
