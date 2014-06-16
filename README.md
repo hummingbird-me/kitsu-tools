@@ -4,6 +4,11 @@
 
 [![Hummingbird is now Open Source](http://hummingbird-forum.s3.amazonaws.com/86407dbb64dbecfee0cbd74b759a4b33f70657b74c29.jpg)](http://forums.hummingbird.me/t/hummingbird-is-now-open-source/9870)
 
+### What is Hummingbird?
+
+Hummingbird is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
+
+
 ### Contributing
 
 To get started have a look at the [development environment setup instructions](https://github.com/hummingbird-me/hummingbird/wiki/Setting-up-a-development-environment) and this [topic with ideas for helping out with Hummingbird](http://forums.hummingbird.me/t/how-to-help-out-with-hummingbird/9390). Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/master/CONTRIBUTING.md).
