@@ -18,7 +18,6 @@
 //= require ./jstorage.js
 //= require ./garlic.js
 //= require ./jquery.autosize.js
-//= require ./redactor-9.0.1.js
 //= require ./charcount.js
 //= require ./jscroll.js
 //= require ./typeahead.js
@@ -44,7 +43,6 @@
 //= require ./anime.js.coffee
 //= require ./library_update.js.coffee
 //= require ./login-signup.js
-//= require ./redactor.js.coffee
 //= require ./header.js.coffee
 
 /*jslint unparam: true, browser: true, indent: 2 */
