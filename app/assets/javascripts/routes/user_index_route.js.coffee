@@ -22,4 +22,5 @@ Hummingbird.UserIndexRoute = Ember.Route.extend Hummingbird.Paginated,
     controller.set 'model', []
 
   afterModel: ->
+    Ember.run.next -> window.scrollTo 0, 0
     Hummingbird.TitleManager.setTitle @modelFor('user').get('username') + "'s Profile"
