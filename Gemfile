@@ -17,7 +17,7 @@ gem 'fastclick-rails', "~> 1.0"
 gem 'pg', '0.17.1'
 
 gem 'hiredis'
-gem 'redis', require: ['redis', 'redis/connection/hiredis']
+gem 'redis', '~> 3.1', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
 
 gem 'ember-rails', '~> 0.15'
