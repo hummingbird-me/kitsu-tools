@@ -9,7 +9,7 @@
 #  age_rating                :string(255)
 #  episode_count             :integer
 #  episode_length            :integer
-#  synopsis                  :text
+#  synopsis                  :text             default(""), not null
 #  youtube_video_id          :string(255)
 #  mal_id                    :integer
 #  created_at                :datetime         not null
