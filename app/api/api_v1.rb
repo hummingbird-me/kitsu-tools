@@ -84,6 +84,7 @@ class API_v1 < Grape::API
     def present_anime(anime, title_language_preference, include_genres=true)
       if anime
         json = {
+          id: anime.id,
           slug: anime.slug,
           status: anime.status,
           url: "http://hummingbird.me/anime/#{anime.slug}",
@@ -106,22 +107,9 @@ class API_v1 < Grape::API
     def present_favorite_anime(anime, title_language_preference, include_genres=true)
       if anime
         fav_anime = Anime.find(anime.item_id)
-        json = {
-          slug: fav_anime.slug,
-          status: fav_anime.status,
-          url: "http://hummingbird.me/anime/#{fav_anime.slug}",
-          title: fav_anime.canonical_title(title_language_preference),
-          alternate_title: fav_anime.alternate_title(title_language_preference),
-          episode_count: fav_anime.episode_count,
-          cover_image: fav_anime.poster_image_thumb,
-          synopsis: fav_anime.synopsis,
-          show_type: fav_anime.show_type,
-          fav_rank: anime.fav_rank,
-          fav_id: anime.id
-        }
-        if include_genres
-          json[:genres] = fav_anime.genres.map {|x| {name: x.name} }
-        end
+        json = present_anime(fav_anime, title_language_preference, include_genres)
+        json[:fav_rank] = anime.fav_rank
+        json[:fav_id] = anime.id
         json
       else
         {}
