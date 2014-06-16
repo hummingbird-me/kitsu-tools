@@ -103,7 +103,6 @@ gem 'kaminari', '~> 0.16'
 
 # Background jobs
 gem 'sidekiq'
-gem 'sidekiq-throttler'
 
 gem 'sinatra', :require => nil
 
