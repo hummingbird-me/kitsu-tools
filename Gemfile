@@ -84,7 +84,7 @@ gem 'rdiscount'
 gem "paperclip", "~> 4.1"
 gem 'paperclip-optimizer'
 gem 'delayed_paperclip', "~> 2.7"
-gem 'aws-sdk', '~> 1.42'
+gem 'aws-sdk', '~> 1.43'
 
 # Better URLs.
 gem 'friendly_id', github: 'joshfabian/friendly_id'

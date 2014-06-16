@@ -37,13 +37,13 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    annotate (2.6.3)
+    annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (1.2.0.20140609)
       execjs
-    aws-sdk (1.42.0)
+    aws-sdk (1.43.2)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     axiom-types (0.1.1)
@@ -156,7 +156,7 @@ GEM
       rack-accept
       rack-mount
       virtus (>= 1.0.0)
-    grape-entity (0.4.2)
+    grape-entity (0.4.3)
       activesupport
       multi_json (>= 1.3.2)
     guard (2.6.1)
@@ -244,7 +244,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
-    oj (2.9.5)
+    oj (2.9.6)
     omniauth (1.2.1)
       hashie (>= 1.2, < 3)
       rack (~> 1.0)
@@ -424,7 +424,7 @@ GEM
       railties (>= 3.1)
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
-    uglifier (2.5.0)
+    uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicorn (4.8.3)
@@ -448,7 +448,7 @@ DEPENDENCIES
   active_model_serializers (~> 0.8)
   annotate
   autoprefixer-rails (~> 1.2)
-  aws-sdk (~> 1.42)
+  aws-sdk (~> 1.43)
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.1)
