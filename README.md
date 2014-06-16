@@ -13,7 +13,7 @@ Hummingbird is a modern anime discovery platform that helps you track the anime 
 
 To get started have a look at the [development environment setup instructions](https://github.com/hummingbird-me/hummingbird/wiki/Setting-up-a-development-environment) and this [topic with ideas for helping out with Hummingbird](http://forums.hummingbird.me/t/how-to-help-out-with-hummingbird/9390). Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/master/CONTRIBUTING.md).
 
-If you have any questions don't hesitate to contact us! Feel free to drop by the [development Hipchat room](https://www.hipchat.com/gIQZzCGPS) (if none of us are online you can still ask, we will reply later) or create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev).
+If you have any questions don't hesitate to contact us! Feel free to drop by the [development Hipchat room](https://www.hipchat.com/gIQZzCGPS) or create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev).
 
 ### License
 
