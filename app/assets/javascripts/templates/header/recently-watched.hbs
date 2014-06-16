@@ -1,5 +1,5 @@
 {{#if entriesLoaded}}
-<div {{bind-attr class=":recently-watched showUpdater:expanded:notexpanded"}}>
+<div id = "scrollfix" {{bind-attr class=":recently-watched showUpdater:expanded:notexpanded"}}>
   <ul class = "series-slider">
     {{#each entry in recentLibraryEntries}}
       {{header-quick-update item=entry action="updated" firstEntry=firstEntry}}
