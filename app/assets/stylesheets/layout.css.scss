@@ -106,7 +106,6 @@ Global Header
   .notifications {
     text-align: center;
     height: 50px;
-    width: 50px;
     &:hover {
       background-color: darken($darkNavy, 2);
     }
@@ -149,8 +148,8 @@ Global Header
       &:focus { outline: none; }
     }
     a {
-      width: 50px;
       display: inline-block;
+      margin: 0 10px;
     }
     .search-dropdown {
       background: darken($darkNavy, 2);
