@@ -149,8 +149,8 @@ Global Header
       &:focus { outline: none; }
     }
     a {
+      width: 50px;
       display: inline-block;
-      margin: 0 10px;
     }
     .search-dropdown {
       background: darken($darkNavy, 2);
