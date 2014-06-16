@@ -106,6 +106,7 @@ Global Header
   .notifications {
     text-align: center;
     height: 50px;
+    width: 50px;
     &:hover {
       background-color: darken($darkNavy, 2);
     }
