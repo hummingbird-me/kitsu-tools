@@ -9,7 +9,8 @@ module Api::V2
     # Presenters.
     def present_anime(anime)
       {
-        id: anime.slug,
+        id: anime.id,
+        slug: anime.slug,
         canonical_title: anime.canonical_title,
         english_title: nfb(anime.alt_title),
         romaji_title: nfb(anime.title),
