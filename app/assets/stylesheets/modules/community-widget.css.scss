@@ -69,7 +69,7 @@
     background-image: linear-gradient(left, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
     background-repeat: no-repeat;
     background-size: 800px 104px;
-    height: 60px;
+    height: 49px;
     position: relative;
     div {
       background: #fff;
@@ -77,48 +77,37 @@
       left: 0;
       position: absolute;
       right: 0;
+      &.l-2, &.l-3, &.l-4, &.l-5, &.l-6 {
+        height: 24px;
+        width: 10px;
+        top: 30px;
+        left: inherit;
+      }
       &.l-1 {
-        top: 28px;
-        height: 12px;
+        top: 20px;
+        height: 10px;
       }
       &.l-2 {
-        top: 36px;
-        height: 24px;
         width: 183px;
         left: 130px;
       }
       &.l-3 {
-        height: 24px;
-        top: 36px;
         right: 20px;
-        left: inherit;
-        width: 10px;
       }
       &.l-4 {
-        height: 24px;
-        top: 36px;
         right: 50px;
-        left: inherit;
-        width: 10px;
       }
       &.l-5 {
-        height: 24px;
-        top: 36px;
         right: 80px;
-        left: inherit;
-        width: 10px;
       }
       &.l-6 {
-        height: 24px;
-        top: 36px;
         right: 110px;
-        left: inherit;
-        width: 10px;
       }
     }
   }
 }
 .loading-post {
+  border-bottom: 1px solid #ddd;
   hr {
     margin: 0;
   }
