@@ -345,7 +345,7 @@
 */
 .user-dashboard {
   @extend .container;
-  margin-top: 80px;
+  margin-top: 20px;
 }
 
 .recently-watched {
@@ -354,7 +354,7 @@
   padding: 12px;
   width: 100%;
   overflow: hidden;
-  margin-top: -304px;
+  margin-top: -299px;
   transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
   &.expanded {
     margin-top: 0;
@@ -369,8 +369,39 @@
     text-overflow: ellipsis;
   }
   .series-slider {
-    padding-left: 10px;
-    width: 2400px;
+    position: relative;
+    .update-loading {
+      background: darken(#4b5360, 5);
+      color: #999;
+      border-radius: 3px;
+      text-align: center;
+      height: 254px;
+      line-height: 254px;
+      .fa-spinner {
+        font-size: 32px;
+      }
+    }
+    .arrow-nav {
+      color: #5f6673;
+      &:hover {
+        color: lighten(#5f6673, 15);
+      }
+      &.inactive {
+        color: darken(#5f6673, 3);
+        cursor: default;
+      }
+    }
+    .fa-angle-left, .fa-angle-right {
+      position: absolute;
+      font-size: 100px;
+      top: 75px;
+    }
+    .fa-angle-left {
+      left: -75px;
+    }
+    .fa-angle-right {
+      right: -75px;
+    }
   }
   .mark-multiple {
     display: block;
@@ -381,8 +412,8 @@
     }
   }
   .watched-series {
-    @extend .col-sm-1;
-    @extend .col-xs-1;
+    @extend .col-sm-2;
+    @extend .col-xs-2;
     padding: 10px;
     float: left;
     .overlay-wrapper {

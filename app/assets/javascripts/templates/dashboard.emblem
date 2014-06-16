@@ -1,3 +1,4 @@
+h4.text-center Include 'recent-activity' partial right here and hide update button from header while on index page.
 .user-dashboard
   a#left-column.mobile-tab.btn.btn-default href="#left-column" Show Sidebar
   a#right-column.mobile-tab.btn.btn-default href="#right-column" Show Activity Feed
@@ -14,4 +15,3 @@
 
       if canLoadMore
         load-more classNames="light" action="loadNextPage"
-

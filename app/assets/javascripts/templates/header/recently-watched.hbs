@@ -1,9 +1,15 @@
 {{#if entriesLoaded}}
-<div {{bind-attr class=":recently-watched showUpdater:expanded:notexpanded"}}>
-  <ul class = "series-slider">
-    {{#each entry in recentLibraryEntries}}
-      {{header-quick-update item=entry action="updated" firstEntry=firstEntry}}
-    {{/each}}
-  </ul>
-</div>
+<div class="row">
+  <div {{bind-attr class=":recently-watched showUpdater:expanded:notexpanded"}}>
+    <div class="container no-padding">
+      <div class="series-slider">
+        <a href="#" class="arrow-nav inactive"> <i class="fa fa-angle-left"></i> </a>
+        {{#each entry in recentLibraryEntries}}
+          {{header-quick-update item=entry action="updated" firstEntry=firstEntry}}
+        {{/each}}
+        <a href="#" class="arrow-nav"> <i class="fa fa-angle-right"></i> </a>
+      </ul>
+    </div>
+  </div>
+</row>
 {{/if}}
