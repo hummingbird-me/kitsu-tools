@@ -5,7 +5,7 @@ class Api::V2::AnimeControllerTest < ActionController::TestCase
     get :show, id: 'sword-art-online'
     assert_response 200
 
-    get :show, id: '6589'
+    get :show, id: anime(:sword_art_online).id
     assert_response 200
   end
 end

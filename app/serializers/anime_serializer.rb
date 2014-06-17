@@ -2,7 +2,6 @@ class AnimeSerializer < ActiveModel::Serializer
   embed :ids
 
   attributes :id,
-             :slug,
              :canonical_title,
              :english_title,
              :romaji_title,
@@ -17,6 +16,10 @@ class AnimeSerializer < ActiveModel::Serializer
              :started_airing_date_known,
              :finished_airing,
              :genres
+
+  def id
+    object.slug
+  end
 
   def english_title
     object.alt_title

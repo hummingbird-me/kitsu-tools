@@ -38,7 +38,6 @@
 #
 
 sword_art_online:
-  id: 6589
   title: Sword Art Online
   alt_title: ''
   slug: sword-art-online
@@ -71,7 +70,6 @@ sword_art_online:
   ann_id:
 
 monster:
-  id: 10
   title: Monster
   alt_title: ''
   slug: monster
