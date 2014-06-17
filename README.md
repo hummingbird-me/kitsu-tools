@@ -4,16 +4,23 @@
 
 [![Hummingbird is now Open Source](http://hummingbird-forum.s3.amazonaws.com/86407dbb64dbecfee0cbd74b759a4b33f70657b74c29.jpg)](http://forums.hummingbird.me/t/hummingbird-is-now-open-source/9870)
 
-### What is Hummingbird?
-
-Hummingbird is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
-
-
 ### Contributing
 
 To get started have a look at the [development environment setup instructions](https://github.com/hummingbird-me/hummingbird/wiki/Setting-up-a-development-environment) and this [topic with ideas for helping out with Hummingbird](http://forums.hummingbird.me/t/how-to-help-out-with-hummingbird/9390). Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/master/CONTRIBUTING.md).
 
 If you have any questions don't hesitate to contact us! Feel free to drop by the [development Hipchat room](https://www.hipchat.com/gIQZzCGPS) or create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev).
+
+### What is Hummingbird?
+
+Hummingbird is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
+
+[User Dashboard](http://cl.ly/image/1M1l081z0L1y/Screen%20Shot%202014-06-14%20at%2010.57.17%20PM%20copy.png)
+
+[User Profile](http://cl.ly/image/0W1z0r3L3Z0v/profile.jpg)
+
+[Anime Page](http://cl.ly/image/1d3Q2Q0o2i0L/anime-page.jpg)
+
+
 
 ### License
 
