@@ -14,11 +14,14 @@ If you have any questions don't hesitate to contact us! Feel free to drop by the
 
 Hummingbird is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
 
-[User Dashboard](http://cl.ly/image/1M1l081z0L1y/Screen%20Shot%202014-06-14%20at%2010.57.17%20PM%20copy.png)
+![User Dashboard]
+(http://cl.ly/image/1M1l081z0L1y/Screen%20Shot%202014-06-14%20at%2010.57.17%20PM%20copy.png)
 
-[User Profile](http://cl.ly/image/0W1z0r3L3Z0v/profile.jpg)
+![User Profile]
+(http://cl.ly/image/0W1z0r3L3Z0v/profile.jpg)
 
-[Anime Page](http://cl.ly/image/1d3Q2Q0o2i0L/anime-page.jpg)
+![Anime Page]
+(http://cl.ly/image/1d3Q2Q0o2i0L/anime-page.jpg)
 
 
 
