@@ -28,6 +28,14 @@ Cursive lines are bugfixes and/or optional, just read them carefully and decide 
 	* *Install Guest module via `sh VBoxLinuxAdditions.run`*
 * Select `Edit > Shared folders` in the VirtualBox Overview and click the `+` icon to add a new shared folder
 * Mount your shared folder via `sudo mount -t vboxsf name-of-the-folder path-to-folder-on-vm`
+* Optionally, you can add your VM as a host so you can access the site from your host system (Windows)
+ * Type `ifconfig` and copy the ip from your ethernet interface (usually `eth0`)
+ * Navigate to `%systemroot%\system32\drivers\etc` on windows and edit the file `hosts`
+ * Add the ip you copied and the name you want to link it on a new line: `192.168.1.38 hummingbird.cb`
+ * Save the file and request the url in your webbrowser to see if it works `hummingbird.cb:3000`
+* Follow Linux install instructions to setup VM
+
+### Setting up a development environment on Debian flavoured Linux
 * Set up the PGDG apt repository http://www.postgresql.org/about/news/1432/
 * Add the Postgresql package repository via `sudo add-apt-repository ppa:pitti/postgresql`
 * Update packagelist via `sudo apt-get udpate`
@@ -50,8 +58,3 @@ Cursive lines are bugfixes and/or optional, just read them carefully and decide 
  * If the page itself displays database errors, check your user's permissions
  * Alternatively just `ALTER USER yourname WITH SUPERUSER` to bypass security
 
-* Optionally, you can add your VM as a host so you can access the site from your host system (Windows)
- * Type `ifconfig` and copy the ip from your ethernet interface (usually `eth0`)
- * Navigate to `%systemroot%\system32\drivers\etc` on windows and edit the file `hosts`
- * Add the ip you copied and the name you want to link it on a new line: `192.168.1.38 hummingbird.cb`
- * Save the file and request the url in your webbrowser to see if it works `hummingbird.cb:3000`
