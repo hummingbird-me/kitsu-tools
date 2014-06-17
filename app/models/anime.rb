@@ -78,6 +78,7 @@ class Anime < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :episodes, dependent: :destroy
   has_many :gallery_images, dependent: :destroy
+  has_many :stories, as: :target, dependent: :destroy
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
   has_and_belongs_to_many :franchises
