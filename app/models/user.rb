@@ -226,13 +226,13 @@ class User < ActiveRecord::Base
     # Try to find a user already associated with the Facebook ID.
     user = User.where(facebook_id: auth.uid).first
     return user if user
-    
+
     # If the user is logged in, connect their account to Facebook.
     if not signed_in_resource.nil?
       signed_in_resource.connect_to_facebook(auth.uid)
       return signed_in_resource
     end
-    
+
     # If there is a user with the same email, connect their account to this
     # Facebook account.
     user = User.find_by_email(auth.info.email)
@@ -255,7 +255,7 @@ class User < ActiveRecord::Base
       name: name,
       facebook_id: auth.uid,
       email: auth.info.email,
-      avatar: URI.parse("http://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
+      avatar: URI.parse("https://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
       password: Devise.friendly_token[0, 20]
     )
     user.save
