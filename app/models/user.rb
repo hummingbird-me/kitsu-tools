@@ -372,7 +372,7 @@ class User < ActiveRecord::Base
 
   # Return encrypted email.
   def encrypted_email
-    Digest::MD5.hexdigest("giflasdyg7q2liub4fasludkjfh" + self.email)
+    Digest::MD5.hexdigest(ENV['FORUM_SYNC_SECRET'] + self.email)
   end
 
   def online?
