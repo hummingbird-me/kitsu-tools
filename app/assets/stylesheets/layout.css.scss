@@ -24,6 +24,37 @@ Global Header
 .hb-nav {
   background-color: $navy;
   border: none;
+  @media (max-width: 768px) {
+    .container { padding: 0; }
+    .navbar-permanent {
+      background-color: #272C33;
+      float: left;
+      margin: 0;
+      padding: 0;
+      li {
+        float: left;
+        height: 50px;
+        a {
+          display: inline-block;
+          text-align: center;
+          line-height: 50px;
+          width: 100% !important;
+          margin: 0;
+          padding: 0;
+        }
+      }
+      &.navbar-permanent-left {
+        width: 25%;
+        li { width: 100%; }
+      }
+      &.navbar-permanent-right {
+        width: 75%;
+        li { width: 33.333%; }
+      }
+    }
+  }
+  
+
   .dropdown {
     background-color: $darkNavy;
     font-family: $headerFontFamily;
@@ -123,10 +154,8 @@ Global Header
   }
 
   .searchbar {
-    background: darken($darkNavy, 2);
     padding: 0;
     &.isinactive {
-      background: #2F343B;
       &:hover {
         background: darken($darkNavy, 2) !important;
       }

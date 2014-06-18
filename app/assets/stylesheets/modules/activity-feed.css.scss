@@ -444,6 +444,12 @@
   text-align:center;
   margin: 11px 11px;
   transition: .1s ease-in-out;
+  @media (max-width: 768px) {
+    background: none;
+    margin: 0;
+    padding: 0;
+    line-height: 50px;
+  }
   &.close-recent {
     background:#dd6149;
     color: #fff;
