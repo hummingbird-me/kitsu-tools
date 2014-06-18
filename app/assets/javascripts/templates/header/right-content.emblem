@@ -1,8 +1,0 @@
-partial "header/search"
-if currentUser.isSignedIn
-  partial "header/notifications"
-  partial "header/avatar"
-else
-  li
-    a href="/users/sign_in" Sign in
-/    link-to 'sign-in' | Sign in
