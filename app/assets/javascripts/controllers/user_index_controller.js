@@ -141,23 +141,18 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend({
     },
   },
 
-  hasAnimeBreakdown: true,
   animeBreakdown: function(){
-    var topGenre = this.get('userInfo.topGenres');
-    var chartData = [];
-    if(topGenre.length > 0){
-      this.set('hasAnimeBreakdown', false);
+    var topGenres = this.get('userInfo.topGenres'),
+        chartData = [];
 
-      chartData = [{
-        value: parseInt(topGenre[0]['num']),
-        color: "#ec8661"
-      },{
-        value : (parseInt(this.get('userInfo.animeWatched')) - topGenre[0]['num']),
-        color : "#f7cab9"
-      }];
+    if (topGenres && topGenres.length > 0) {
+      return [
+        {value: parseInt(topGenres[0]['num']), color: "#ec8661"},
+        {value: this.get('userInfo.animeWatched') - parseInt(topGenres[0]['num']), color: "#f7cab9"}
+      ];
+    } else {
+      return false;
     }
-
-    return chartData;
   }.property('userInfo.topGenres'),
 
   animeOptions: function(){

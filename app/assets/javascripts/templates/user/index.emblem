@@ -90,7 +90,7 @@
           .panel-heading
             h3.panel-title Anime Breakdown
           .panel-body
-            if hasAnimeBreakdown
+            if animeBreakdown
               .row
                 .col-md-5
                   .breakdown-graph
