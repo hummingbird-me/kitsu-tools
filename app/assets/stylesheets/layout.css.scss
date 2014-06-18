@@ -15,10 +15,14 @@ Global Header
 =============================
 */
 
-.navbar-toggle {
-  float: left;
-  padding-right: 0px;
-  margin-right: 0px;
+.navbar-temporary {
+  display: none;
+  float: right;
+  width: 50px;
+  height: 50px;
+  font-size: 2em;
+  line-height: 50px;
+  text-align: center;
 }
 
 .hb-nav {
@@ -26,6 +30,9 @@ Global Header
   border: none;
   @media (max-width: 768px) {
     .container { padding: 0; }
+    .navbar-header { padding: 0 15px; }
+    .navbar-visible,
+    .navbar-temporary { display: block !important; }
     .navbar-permanent {
       background-color: #272C33;
       float: left;
