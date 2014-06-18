@@ -90,22 +90,23 @@
           .panel-heading
             h3.panel-title Anime Breakdown
           .panel-body
-            .row
-              .col-md-5
-                .breakdown-graph
-                  .breakdown-graph-data
-                    ember-chart type="Doughnut" data=animeBreakdown options=animeOptions
-                    span.breakdown-number #{userInfo.topGenres.0.num}
-                .breakdown-info
-                  span.breakdown-infotitle #{userInfo.topGenres.0.genre.name}
-                  span.breakdown-infotext out of #{userInfo.animeWatched} titles
-              .col-md-7
-                ul.breakdown-genrelist
-                  each genre in userInfo.topGenres
-                    li
-                      span.breakdown-genre #{genre.genre.name}
-                      span.breakdown-numbr #{genre.num}
-            hr
+            if hasAnimeBreakdown
+              .row
+                .col-md-5
+                  .breakdown-graph
+                    .breakdown-graph-data
+                      ember-chart type="Doughnut" data=animeBreakdown options=animeOptions
+                      span.breakdown-number #{userInfo.topGenres.0.num}
+                  .breakdown-info
+                    span.breakdown-infotitle #{userInfo.topGenres.0.genre.name}
+                    span.breakdown-infotext out of #{userInfo.animeWatched} titles
+                .col-md-7
+                  ul.breakdown-genrelist
+                    each genre in userInfo.topGenres
+                      li
+                        span.breakdown-genre #{genre.genre.name}
+                        span.breakdown-numbr #{genre.num}
+              hr
             ul
               li
                 span.breakdown-icon <i class="fa fa-eye"></i>
