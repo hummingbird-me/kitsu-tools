@@ -445,6 +445,7 @@
   margin: 11px 11px;
   transition: .1s ease-in-out;
   @media (max-width: 768px) {
+    border-radius: none;
     background: none;
     margin: 0;
     padding: 0;
