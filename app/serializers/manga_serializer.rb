@@ -1,7 +1,22 @@
 class MangaSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :romaji_title, :english_title, :cover_image, :cover_image_top_offset, :poster_image, :synopsis, :chapter_count, :volume_count, :genres
+  attributes :id, 
+             :romaji_title, 
+             :english_title, 
+             :cover_image, 
+             :cover_image_top_offset, 
+             :poster_image, 
+             :synopsis, 
+             :chapter_count, 
+             :volume_count, 
+             :genres
+
+  has_one :manga_library
+
+  def manga_library
+    scope && Consuming.where(user_id: scope.id, item_id: object.id, item_type: "Manga").first
+  end
 
   def id
     object.slug

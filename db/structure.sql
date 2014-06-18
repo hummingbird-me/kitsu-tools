@@ -257,6 +257,47 @@ ALTER SEQUENCE characters_id_seq OWNED BY characters.id;
 
 
 --
+-- Name: consumings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE consumings (
+    id integer NOT NULL,
+    user_id integer,
+    item_id integer,
+    item_type character varying(255),
+    status character varying(255),
+    private boolean DEFAULT false,
+    parts_consumed integer DEFAULT 0,
+    blocks_consumed integer DEFAULT 0,
+    reconsume_count integer DEFAULT 0,
+    reconsuming boolean DEFAULT false,
+    last_consumed timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    rating numeric(2,1)
+);
+
+
+--
+-- Name: consumings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE consumings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: consumings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE consumings_id_seq OWNED BY consumings.id;
+
+
+--
 -- Name: episodes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1447,6 +1488,13 @@ ALTER TABLE ONLY characters ALTER COLUMN id SET DEFAULT nextval('characters_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY consumings ALTER COLUMN id SET DEFAULT nextval('consumings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY episodes ALTER COLUMN id SET DEFAULT nextval('episodes_id_seq'::regclass);
 
 
@@ -1690,6 +1738,14 @@ ALTER TABLE ONLY castings
 
 ALTER TABLE ONLY characters
     ADD CONSTRAINT characters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: consumings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY consumings
+    ADD CONSTRAINT consumings_pkey PRIMARY KEY (id);
 
 
 --
@@ -2060,6 +2116,20 @@ CREATE UNIQUE INDEX index_characters_on_mal_id ON characters USING btree (mal_id
 
 
 --
+-- Name: index_consumings_on_item_id_and_item_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_consumings_on_item_id_and_item_type ON consumings USING btree (item_id, item_type);
+
+
+--
+-- Name: index_consumings_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_consumings_on_user_id ON consumings USING btree (user_id);
+
+
+--
 -- Name: index_episodes_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2113,6 +2183,13 @@ CREATE INDEX index_follows_on_followed_id ON follows USING btree (follower_id);
 --
 
 CREATE UNIQUE INDEX index_follows_on_followed_id_and_follower_id ON follows USING btree (followed_id, follower_id);
+
+
+--
+-- Name: index_follows_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_follows_on_user_id ON follows USING btree (followed_id);
 
 
 --
@@ -3092,4 +3169,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140515093555');
 INSERT INTO schema_migrations (version) VALUES ('20140517144844');
 
 INSERT INTO schema_migrations (version) VALUES ('20140613205304');
+
+INSERT INTO schema_migrations (version) VALUES ('20140614220406');
+
+INSERT INTO schema_migrations (version) VALUES ('20140617152640');
 

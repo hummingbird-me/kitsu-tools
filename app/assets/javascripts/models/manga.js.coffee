@@ -8,3 +8,5 @@ Hummingbird.Manga = DS.Model.extend
   volumeCount: DS.attr('number')
   chapterCount: DS.attr('number')
   genres: DS.attr('array')
+
+  mangaLibrary: DS.belongsTo('mangaLibrary')
