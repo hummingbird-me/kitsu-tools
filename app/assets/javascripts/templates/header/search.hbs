@@ -1,4 +1,4 @@
-<li {{bind-attr class=":notifications :searchbar showSearchbar:isactive:isinactive"}}>
+<li {{bind-attr class=":header-item :searchbar showSearchbar:isactive:isinactive"}}>
   {{#if showSearchbar}}
     {{instant-search class="search-field" action="submitSearch" focusLost="hideSearchfield" value=searchTerm placeholder="Search for..."}}
   {{/if}}

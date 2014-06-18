@@ -1,5 +1,5 @@
-<li class='dropdown notifications'>
-  <a {{bind-attr class="dropdown-toggle notification-link hasUnreadNotifications:hasNew:hasNoNew"}} data-toggle='dropdown' href='#'>
+<li class='dropdown header-item notifications'>
+  <a {{bind-attr class="dropdown-toggle :notification-link hasUnreadNotifications:hasNew:hasNoNew"}} data-toggle='dropdown' href='#'>
     <i {{bind-attr class=':fa :fa-bell :active'}}>
       {{#if hasUnreadNotifications}}
         {{strpad unreadNotifications}}

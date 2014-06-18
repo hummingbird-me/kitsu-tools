@@ -1,13 +1,11 @@
 <nav class='navbar navbar-inverse navbar-fixed-top hb-nav' role='navigation'>
   {{partial "header/recently-watched"}}
+
   <div class='container'>
     <div class='navbar-header'>
-      <!-- Toggle navigation button for small devices -->
+
       <button class='navbar-toggle' data-target='.navbar-ex1-collapse' data-toggle='collapse' type='button'>
-        <span class='sr-only'>Toggle Navigation</span>
-        <span class='fa fa-bar'></span>
-        <span class='fa fa-bar'></span>
-        <span class='fa fa-bar'></span>
+        <span class='fa fa-bars'></span>
       </button>
 
       {{#if currentUser.isSignedIn}}
@@ -16,11 +14,7 @@
         <a class='navbar-brand' href='/'><img src="/assets/logo-new.jpg" width="119px" height="20px"></a>
       {{/if}}
 
-      <!-- Mobile navigation -->
-      <ul class='nav navbar-right mobile-user-nav visible-xs'>
-        {{partial "header/right-content"}}
-      </ul>
-    </div> <!-- .navbar-header -->
+    </div>
 
     <div class='collapse navbar-collapse navbar-ex1-collapse'>
       <ul class='nav navbar-nav'>
@@ -66,13 +60,6 @@
           {{/if}}
         </li>
       </ul>
-
-{{!--       <form class='navbar-form navbar-left' role='search'>
-        <i class='fa fa-search'></i>
-        <div class='form-group'>
-          <input class='form-control' placeholder='Search...' type='text'>
-        </div>
-      </form> --}}
 
       <ul class='nav navbar-nav navbar-right'>
         {{partial "header/right-content"}}

@@ -103,21 +103,15 @@ Global Header
     }
   }
 
-  .notifications {
+  .header-item {
     text-align: center;
     height: 50px;
-    &:hover {
-      background-color: darken($darkNavy, 2);
-    }
-    .notification-link {
-      white-space: normal;
-      padding: 16px 16px;
-      background: none !important;
-      &.hasNew { color: #e57c48; }
-      &.hasNoNew {
-        i {
-          padding: 0 10px;
-        }
+    &:hover { background-color: darken($darkNavy, 2); }
+    &.notifications {
+      .notification-link {
+        width: 50px;
+        text-align: center;
+        &.hasNew { color: #e57c48; }
       }
     }
     .dropdown-menu {
@@ -140,7 +134,7 @@ Global Header
     .search-field {
       display: inline-block;
       width: 240px;
-      margin-left: 10px;
+      margin-left: 5px;
       background: none;
       border: none;
       border-bottom: 1px solid #aaa;
@@ -149,7 +143,8 @@ Global Header
     }
     a {
       display: inline-block;
-      margin: 0 10px;
+      text-align: center;
+      width: 50px;
     }
     .search-dropdown {
       background: darken($darkNavy, 2);
@@ -320,7 +315,7 @@ Global Header
   .mobile-user-nav {
     margin-bottom: 0px;
     margin-top: 0px;
-    .notifications, .user-area {
+    .header-item, .user-area {
       float: right;
     }
     .user-area {
@@ -338,7 +333,7 @@ Global Header
       }
     }
 
-    .notifications {
+    .header-item {
       .dropdown-menu {
         right: -40px;
         left: inherit;
