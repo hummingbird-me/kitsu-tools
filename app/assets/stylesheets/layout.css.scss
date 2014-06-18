@@ -23,6 +23,8 @@ Global Header
   font-size: 2em;
   line-height: 50px;
   text-align: center;
+  i { color: #999999; }
+  &:hover { i { color: white; }}
 }
 
 .hb-nav {
@@ -33,6 +35,19 @@ Global Header
     .navbar-header { padding: 0 15px; }
     .navbar-visible,
     .navbar-temporary { display: block !important; }
+    .navbar-collapse {
+      margin: 0;
+      padding: 0;
+      .dropdown-menu {
+        &:hover { background-color: none; }
+        &::after,
+        &::before { display: none; }
+        a {
+          padding: 10px 20px !important;
+          border-bottom: none;
+        }
+      }
+    }
     .navbar-permanent {
       background-color: #272C33;
       float: left;
