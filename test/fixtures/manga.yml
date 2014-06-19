@@ -39,7 +39,7 @@ monster:
 fruta:
   mal_id: 2
   english_title: "Fruta!"
-  slug: "Fruta"
+  slug: "fruta"
   synopsis: "Killy, a silent loner possessing an incredibly powerful weapon known as a Gravitational Beam Emitter, wanders a vast technological world known as 'The City'. He is searching for Net Terminal Genes, a (possibly) extinct genetic marker that allows humans to access the 'Netsphere', a sort of computerized control network for The City. The City is an endless vertical space of artificially-constructed walls, stairways and caverns, separated into massive 'floors' by nearly-impenetrable barriers known as 'Megastructure'. The City is inhabited by scattered human and transhuman tribes as well as hostile cyborgs known as Silicon Creatures. The Net Terminal Genes appear to be the key to halting the unhindered, chaotic expansion of the Megastructure, as well as a way of stopping the murderous horde known as the Safeguard from destroying all humanity."
   genres: psychological
   chapter_count: 50

@@ -83,7 +83,7 @@ class Anime < ActiveRecord::Base
   has_and_belongs_to_many :franchises
 
   has_many :watchlists, dependent: :destroy
-
+  # has_many :consumings, as: :item TODO: this will be used once we decide to unify library stuff 
   validates :title, :presence => true, :uniqueness => true
 
   # Filter out hentai if `filterp` is true or nil.

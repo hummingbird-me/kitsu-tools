@@ -3,7 +3,9 @@ class Consuming < ActiveRecord::Base
   # Associations
   belongs_to :user
   belongs_to :item, polymorphic: true
-  
+
+  attr_accessible :user_id, :item_id, :item_type, :status, :rating, :private, :parts_consumed, :blocks_consumed
+    
   # Internal Constants
   private
   

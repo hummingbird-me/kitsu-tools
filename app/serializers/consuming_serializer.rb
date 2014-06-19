@@ -10,11 +10,16 @@ class ConsumingSerializer < ActiveModel::Serializer
              :private,
              :reconsuming,
              :reconsume_count,
-             :last_consumed
-  has_one :item, embed_key: :slug, include: true
+             :last_consumed,
+             :item_type,
+             :item_slug
 
   def include_private?
     object.private?
+  end
+
+  def item_slug
+    object.item.slug
   end
 
   def is_favorite
