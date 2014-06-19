@@ -16,6 +16,8 @@ To get started have a look at the [development environment setup instructions](h
 
 If you have any questions don't hesitate to contact us! Feel free to drop by the [development Hipchat room](https://www.hipchat.com/gIQZzCGPS) or create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev).
 
+Please don't use Github issues for feature requests, instead create a topic in the [forum feedback category](http://forums.hummingbird.me/category/feedback).
+
 ### Screenshots
 
 [![](http://cl.ly/image/47431Z1t0v0c/profile-small.jpg)](http://hummingbird.me/users/Josh)
