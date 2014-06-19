@@ -109,14 +109,6 @@ Hummingbird::Application.routes.draw do
   resources :producers
   resources :characters, only: [:show]
 
-  # Watchlist
-  #resources :watchlists
-  #match '/watchlist/remove' => 'watchlists#remove_from_watchlist',
-  #  as: :remove_from_watchlist
-  #match '/watchlist/rate/:anime_id/:rating' => 'watchlists#update_rating',
-  #  as: :update_rating
-  #match '/watchlist/update' => 'watchlists#update_watchlist'
-
   # Admin Panel
   authenticated :user, lambda {|u| u.admin? } do
     get '/kotodama' => 'admin#index', as: :admin_panel

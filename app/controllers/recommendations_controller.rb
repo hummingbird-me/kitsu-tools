@@ -17,10 +17,10 @@ class RecommendationsController < ApplicationController
     RecommendingWorker.perform_async current_user.id
     redirect_to "/recommendations"
   end
-  
+
   def index
     @hide_cover_image = true
-    
+
     update_recommendations_if_needed
 
     respond_to do |format|
@@ -63,9 +63,8 @@ class RecommendationsController < ApplicationController
 
   def plan_to_watch
     anime = Anime.find params[:anime]
-    watchlist = Watchlist.find_or_create_by(anime_id: anime.id, user_id: current_user.id)
-    watchlist.status = "Plan to Watch"
-    watchlist.save
+    library_entry = LibraryEntry.find_or_create_by(anime_id: anime.id, user_id: current_user.id)
+    library_entry.update_attributes status: "Plan to Watch"
     mixpanel.track "Recommendations: Plan to Watch", {email: current_user.email, anime: anime.slug} if Rails.env.production?
     render :json => true
   end
