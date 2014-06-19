@@ -18,6 +18,8 @@ Global Header
 .navbar-temporary {
   display: none;
   float: right;
+  position: relative;
+  right: 100px;
   width: 50px;
   height: 50px;
   font-size: 2em;
@@ -27,12 +29,34 @@ Global Header
   &:hover { i { color: white; }}
 }
 
+.navbar-brand {
+  background-image: url("/assets/logo-sprite.png");
+  background-position: 0 -112px;
+  background-size: 119px 70px;
+  width: 119px;
+  height: 20px;
+  position: relative;
+  margin-left: 0 !important;
+  margin-right: 20px;
+  top: 8px;
+  @media (max-width: 768px) {
+    background-position: -2px 0;
+    background-size: 105px 60px;
+    width: 34px;
+    height: 40px;
+    top: 8px;
+    left: 15px;
+  }
+}
+
 .hb-nav {
   background-color: $navy;
   border: none;
   @media (max-width: 768px) {
     .container { padding: 0; }
-    .navbar-header { padding: 0 15px; }
+    .navbar-header { 
+      padding: 0 15px;
+    }
     .navbar-visible,
     .navbar-temporary { display: block !important; }
     .navbar-collapse {
@@ -53,6 +77,22 @@ Global Header
       float: left;
       margin: 0;
       padding: 0;
+      .user-area {
+        position: absolute;
+        top: -51px;
+        right: 0;
+        width: 50px !important;
+        display: inline-block;
+        .navbar-avatar {
+          text-align: left;
+        }
+      }
+      .notifications {
+        position: absolute;
+        top: -51px;
+        right: 50px;
+        width: 50px !important;
+      }
       li {
         float: left;
         height: 50px;
@@ -60,17 +100,19 @@ Global Header
           display: inline-block;
           text-align: center;
           line-height: 50px;
-          width: 100% !important;
           margin: 0;
           padding: 0;
         }
       }
       &.navbar-permanent-left {
         width: 25%;
+        border-top: 1px solid #000;
         li { width: 100%; }
       }
       &.navbar-permanent-right {
         width: 75%;
+        position: relative;
+        border-top: 1px solid #000;
         li { width: 33.333%; }
       }
     }
@@ -182,6 +224,11 @@ Global Header
         background: darken($darkNavy, 2) !important;
       }
     }
+    @media (max-width: 768px) {
+      float: right;
+      width: 100% !important;
+      text-align: right !important;
+    }
     .search-field {
       display: inline-block;
       width: 240px;
@@ -191,6 +238,9 @@ Global Header
       border-bottom: 1px solid #aaa;
       color: #fff;
       &:focus { outline: none; }
+      @media (max-width: 768px) {
+        width: 150px;
+      }
     }
     a {
       display: inline-block;
@@ -300,11 +350,11 @@ Global Header
   }
 
   .form-group {
-    @media (min-width: 768px) {
-      width: 25%;
-      position: absolute;
-      text-indent: 15px;
-    }
+    // @media (min-width: 768px) {
+    //   width: 25%;
+    //   position: absolute;
+    //   text-indent: 15px;
+    // }
     .form-control {
       color: $orange;
       font-size: 18px;
