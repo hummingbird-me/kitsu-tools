@@ -3,8 +3,7 @@ Hummingbird.Pollster = Em.Object.extend({
 
 
   start: function() {
-    var _this;
-    _this = this;
+    var _this = this;
     return this.set('timer', Ember.run.later(this, function() {
       _this.onPoll();
       return _this.start();
@@ -12,8 +11,7 @@ Hummingbird.Pollster = Em.Object.extend({
   },
 
   stop: function() {
-    var timer;
-    timer = this.get('timer');
+    var timer = this.get('timer');
     return Ember.run.cancel(timer);
   },
   
