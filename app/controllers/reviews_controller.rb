@@ -1,3 +1,5 @@
+include ReviewsHelper
+
 class ReviewsController < ApplicationController
   def index
     respond_to do |format|
@@ -76,7 +78,7 @@ class ReviewsController < ApplicationController
     end
 
     @review.content = params["review"]["content"]
-    @review.summary = params["review"]["summary"]
+    @review.summary = ReviewsHelper.sanitize_review(params["review"]["summary"])
     @review.summary = nil if @review.summary.strip.length == 0
     @review.source  = "hummingbird"
 

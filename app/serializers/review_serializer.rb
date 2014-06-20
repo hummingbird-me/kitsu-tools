@@ -56,7 +56,7 @@ class ReviewSerializer < ActiveModel::Serializer
     if object.source == "mal_import"
       simple_format_review(object.content)
     else
-      sanitize_review(object.content)
+      object.content
     end
   end
 

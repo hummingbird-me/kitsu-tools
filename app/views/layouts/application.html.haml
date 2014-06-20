@@ -20,6 +20,7 @@
       :coffee
         @currentUser = null
 
+    %link{:rel => :stylesheet, :type => :"text/css", :href => "//cdnjs.cloudflare.com/ajax/libs/summernote/0.5.1/summernote-bs3.css"}
     %link(rel="stylesheet" media="all" href="/old-application.css?3")
     = javascript_include_tag "old/application"
     = csrf_meta_tags
@@ -37,6 +38,7 @@
 
     // Typekit Code
     %script{:src => "//use.typekit.net/nlt2ped.js", :type => "text/javascript"}
+    %script{:src => "//cdnjs.cloudflare.com/ajax/libs/summernote/0.5.1/summernote.min.js", :type => "text/javascript"}
     :javascript
       try{Typekit.load();}catch(e){}
 
