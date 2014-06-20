@@ -30,16 +30,19 @@ class RecommendationsController < ApplicationController
         r = current_user.recommendation
         @status_categories = ["currently_watching", "plan_to_watch", "completed"]
         @recommendations = {}
-        @status_categories.each do |cat|
-          @recommendations[cat] = Anime.where(id: r.by_status[cat])
-        end
-
         @genre_recommendations = {}
-        current_user.favorite_genres.each do |genre|
-          @genre_recommendations[ genre.slug ] = Anime.where(id: r.by_genre[genre.slug])
-        end
+        
+        unless r.nil?
+          @status_categories.each do |cat|
+            @recommendations[cat] = Anime.where(id: r.by_status[cat])
+          end
+          
+          current_user.favorite_genres.each do |genre|
+            @genre_recommendations[ genre.slug ] = Anime.where(id: r.by_genre[genre.slug])
+          end
 
-        @neon_alley = Anime.where(id: r.by_service['neon_alley'])
+          @neon_alley = Anime.where(id: r.by_service['neon_alley'])
+        end
 
         # View convenience variables. Move to translations later.
         @word_before = {
