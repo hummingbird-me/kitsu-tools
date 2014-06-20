@@ -40,9 +40,9 @@
 class Anime < ActiveRecord::Base
   include PgSearch
   pg_search_scope :fuzzy_search_by_title, against: [:title, :alt_title],
-    using: [:trigram], ranked_by: ":trigram"
+    using: {trigram: {threshold: 0.1}}, ranked_by: ":trigram"
   pg_search_scope :simple_search_by_title, against: [:title, :alt_title],
-    using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
+    using: {tsearch: {normalization: 10, dictionary: "english"}}, ranked_by: ":tsearch"
 
   extend FriendlyId
   friendly_id :canonical_title, :use => [:slugged, :history]
