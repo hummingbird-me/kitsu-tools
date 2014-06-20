@@ -26,4 +26,21 @@ class Person < ActiveRecord::Base
   validates_attachment :image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
+
+  def self.create_or_update_from_hash(hash)
+    person = Person.find_by(mal_id: hash[:external_id])
+    if person.nil? && Person.where(name: hash[:name]).count > 1
+      logger.error "Count not find unique Person by name='#{hash[:name]}'."
+      return
+    end
+    person ||= Person.find_by(name: hash[:name])
+    person ||= Person.new
+
+    person.assign_attributes({
+      name: hash[:name],
+      mal_id: hash[:external_id]
+    })
+    person.save!
+    person
+  end
 end

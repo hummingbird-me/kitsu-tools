@@ -25,7 +25,7 @@ class Character < ActiveRecord::Base
     alias_method :fuzzy_search_by_title, :fuzzy_search_by_name
   end
 
-  attr_accessible :description, :name, :mal_id, :image
+  attr_accessible :description, :name, :mal_id, :image, :role
   validates :name, :presence => true
   has_many :castings, dependent: :destroy
 
@@ -37,4 +37,24 @@ class Character < ActiveRecord::Base
   validates_attachment :image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
+
+  def self.create_or_update_from_hash(hash)
+    character = Character.find_by(mal_id: hash[:external_id])
+
+    # NOTE: Ideally we'd find by name+series but that doesn't seem possible
+    # Should we name+role?
+    if character.nil? && Character.where(name: hash[:name]).count > 1
+      logger.error "Count not find unique Character by name='#{hash[:name]}'."
+      return
+    end
+    character ||= Character.find_by(name: hash[:name])
+    character ||= Character.new({
+      mal_id: hash[:external_id],
+      name: hash[:name],
+      # Apparently we lack a corresponding field?
+#     role: hash[:role]
+    })
+    character.save!
+    character
+  end
 end

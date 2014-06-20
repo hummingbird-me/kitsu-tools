@@ -47,7 +47,7 @@ class Anime < ActiveRecord::Base
   extend FriendlyId
   friendly_id :canonical_title, :use => [:slugged, :history]
 
-  attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :ann_id, :synopsis, :cover_image, :cover_image_top_offset, :poster_image, :youtube_video_id, :alt_title, :franchises, :show_type, :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide, :started_airing_date, :started_airing_date_known, :finished_airing_date, :franchise_ids, :genre_ids, :producer_ids, :casting_ids
+  attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :ann_id, :synopsis, :cover_image, :cover_image_top_offset, :poster_image, :youtube_video_id, :alt_title, :franchises, :show_type, :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide, :started_airing_date, :started_airing_date_known, :finished_airing_date, :franchise_ids, :genre_ids, :producer_ids, :casting_ids, :genres, :producers
 
   has_attached_file :cover_image,
     styles: {thumb: ["1400x900>", :jpg]},
@@ -155,6 +155,7 @@ class Anime < ActiveRecord::Base
           )', genres.map(&:id))
   end
 
+  # TODO: move this to MAL stuff
   # Return [age rating, guide]
   def self.convert_age_rating(rating)
     {
@@ -172,37 +173,57 @@ class Anime < ActiveRecord::Base
       "PG13"                            => ["PG13", "Teens 13 or older"],
       "G"                               => ["G",    "All Ages"],
       "PG"                              => ["PG",   "Children"]
-    }[rating] || [rating, nil]
+    }[rating] || [rating, nil] # TODO: Maybe do ["Other", rating] instead?
   end
 
-  def get_metadata_from_mal
-    meta = MalImport.series_metadata(self.mal_id)
-    self.title = meta[:title]
-    self.alt_title = meta[:english_title]
-    self.synopsis = meta[:synopsis]
-    self.poster_image = URI(meta[:poster_image_url]) if self.poster_image_file_name.nil?
-    self.genres = (self.genres + meta[:genres]).uniq
-    self.producers = (self.producers + meta[:producers]).uniq
-    self.age_rating, self.age_rating_guide = Anime.convert_age_rating(meta[:age_rating])
-    self.episode_count ||= meta[:episode_count]
-    self.episode_length ||= meta[:episode_length]
-
-    self.castings.select {|x| x.character and meta[:featured_character_mal_ids].include? x.character.mal_id }.each do |c|
-      c.featured = true; c.save
+  def self.create_or_update_from_hash hash
+    # First the creation logic
+    # TODO: stop hard-coding the ID column
+    anime = Anime.find_by(mal_id: hash[:external_id])
+    if anime.nil? && Anime.where(title: hash[:title]).count > 1
+      log "Could not find unique Anime by title=#{hash[:title]}.  Ignoring."
+      return
     end
+    anime ||= Anime.find_by(title: hash[:title])
+    anime ||= Anime.new
 
-    self.started_airing_date = meta[:dates][:from]
-    self.finished_airing_date = meta[:dates][:to]
-
-    self.show_type = meta[:show_type] if meta[:show_type]
-
-    self.save
-
-    begin
-      MalImport.create_series_castings(id)
-    rescue
+    # TODO: stop clobbering existing values
+    # Metadata
+    anime.assign_attributes({
+      mal_id: hash[:external_id],
+      title: hash[:title],
+      alt_title: hash[:title_ja_jp],
+      synopsis: hash[:synopsis],
+      poster_image: hash[:poster_image],
+      genres: begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end,
+      producers: begin hash[:producers].map { |p| Producer.find_by name: p }.compact rescue [] end,
+      age_rating: hash[:age_rating],
+      age_rating_guide: hash[:age_rating_guide],
+      episode_count: hash[:episode_count],
+      episode_length: hash[:episode_length],
+      started_airing_date: begin hash[:dates][0] rescue nil end,
+      finished_airing_date: begin hash[:dates][1] rescue nil end,
+      show_type: hash[:show_type]
+    })
+    anime.save!
+    # Staff castings
+    hash[:staff].each do |staff|
+      Casting.create_or_update_from_hash staff.merge({
+        anime: anime
+      })
     end
-
+    # VA castings
+    hash[:characters].each do |ch|
+      character = Character.create_or_update_from_hash ch
+      ch[:voice_actors].each do |actor|
+        Casting.create_or_update_from_hash actor.merge({
+          # TODO: This should probably get moved out to MALImport itself
+          featured: ch[:featured],
+          character: character,
+          anime: anime
+        })
+      end
+    end
   end
 
   def show_type_enum
