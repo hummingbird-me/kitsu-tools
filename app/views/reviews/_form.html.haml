@@ -16,7 +16,7 @@
       warning: 20,
       counterText: ''  
     });
-    /* Styles will be added back after redesign, need to change escape sequences / storage */
+
     $('#full-review').summernote({
       height: 300,
       minHeight: null,
@@ -24,7 +24,8 @@
       focus: true,
       toolbar: [
         ['style', ['bold', 'italic', 'underline', 'clear']]
-      ]
+      ],
+      styleWithSpan: false
     });
     $('#full-review').code($('#redactor_content').val());
   });
@@ -60,7 +61,7 @@
             .summary
               = f.text_area :summary, rows: 3, :id => "charcount", :maxlength => "120", :lengthcut => "true", :placeholder => "e.g. 'A great modernization of an under-appreciated genre. [Anime title] is fast, furious, and endlessly deep.'"
 
-            .button.padded{:onClick => "submitit();"}
+            %button.padded{:onClick => "submitit();"}
               Submit
 
         .extra-sidebar.large-3.columns
