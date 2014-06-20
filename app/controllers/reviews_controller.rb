@@ -1,5 +1,3 @@
-include ReviewsHelper
-
 class ReviewsController < ApplicationController
   def index
     respond_to do |format|
