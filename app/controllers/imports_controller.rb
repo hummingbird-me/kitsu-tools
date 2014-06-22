@@ -17,6 +17,14 @@ class ImportsController < ApplicationController
         gz = Zlib::GzipReader.new(params[:animelist])
         xml = gz.read
         gz.close
+
+        # xmllint the incoming xml.
+        IO.popen("xmllint - --format --encode utf-8", "r+") do |f|
+          f.write xml
+          f.close_write
+          xml = f.read
+        end
+
         current_user.update_column :mal_import_in_progress, true
         MyAnimeListImportApplyWorker.perform_async(current_user.id, xml)
 
