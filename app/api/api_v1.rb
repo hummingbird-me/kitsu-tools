@@ -451,10 +451,11 @@ class API_v1 < Grape::API
 
       # Update rating.
       if params[:rating]
-        if library_entry.rating == params[:rating].to_f
+        rating = params[:rating].to_f
+        if library_entry.rating == rating or rating == 0
           library_entry.rating = nil
         else
-          library_entry.rating = [ [0, params[:rating].to_f].max, 5].min
+          library_entry.rating = [ [0, rating].max, 5].min
         end
         result = result and library_entry.save
       end
