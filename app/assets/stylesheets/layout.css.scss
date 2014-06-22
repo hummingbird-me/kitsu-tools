@@ -25,7 +25,12 @@ Global Header
   font-size: 2em;
   line-height: 50px;
   text-align: center;
-  i { color: #999999; }
+  i { 
+    color: #999999; 
+    font-size: 25px;
+    position: relative;
+    top: -4px;
+  }
   &:hover { i { color: white; }}
 }
 
@@ -48,7 +53,9 @@ Global Header
     left: 15px;
   }
 }
-
+.recently-watched ~ .notifications {
+  top: 304px !important;
+}
 .hb-nav {
   background-color: $navy;
   border: none;
@@ -79,7 +86,7 @@ Global Header
       padding: 0;
       .user-area {
         position: absolute;
-        top: -51px;
+        top: 0px;
         right: 0;
         width: 50px !important;
         display: inline-block;
@@ -89,7 +96,7 @@ Global Header
       }
       .notifications {
         position: absolute;
-        top: -51px;
+        top: 0px;
         right: 50px;
         width: 50px !important;
       }
@@ -111,13 +118,57 @@ Global Header
       }
       &.navbar-permanent-right {
         width: 75%;
-        position: relative;
         border-top: 1px solid #000;
         li { width: 33.333%; }
       }
     }
   }
   
+  .user-area {
+    .dropdown-menu {
+      left: inherit;
+      right: 0;
+      position: absolute !important;
+      dosplay: table;
+      @extend .clearfix;
+      li {
+        background: #fff;
+        width: 100% !important;
+        a {
+          width: 100% !important;
+          padding: 15px !important;
+          background: #fff;
+          border-radius: 0 !important;
+          &:hover {
+            color: #999999 !important;
+          }
+        }
+      }
+    }
+  }
+  .notification-dropdown {
+    left: inherit;
+    position: absolute !important;
+    right: -50px;
+    min-width: 300px !important;
+    li {
+      background: #fff;
+      width: 100% !important;
+      a {
+        width: 100% !important;
+        padding: 15px !important;
+        &:hover {
+          color: #999999 !important;
+        }
+      }
+    }
+    .view-all {
+      padding-top: 20px;
+    }
+    &:before, &:after {
+      right: 67px !important;
+    }
+  }
 
   .dropdown {
     background-color: $darkNavy;
