@@ -6,7 +6,7 @@ Hummingbird.MangaController = Ember.ObjectController.extend({
   amazonLink: function() {
     return "http://www.amazon.com/s/?field-keywords=" + encodeURIComponent(this.get('model.romajiTitle')) + "&tag=hummingbir0fe-20";
   }.property('model.romajiTitle'),
-  mangaLibraryExists: function() {
-    return (!Ember.isNone(this.get('model.mangaLibrary')));
-  }.property('model.mangaLibrary')
+  mangaLibraryEntryExists: function() {
+    return (!Ember.isNone(this.get('model.mangaLibraryEntry')));
+  }.property('model.mangaLibraryEntry')
 });

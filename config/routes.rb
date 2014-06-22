@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 Hummingbird::Application.routes.draw do
   resources :library_entries, except: [:new, :edit]
-  resources :manga_libraries, except: [:new, :edit]
+  resources :manga_library_entries, except: [:new, :edit]
   resources :franchises, only: [:index, :show]
   resources :full_anime, only: [:show]
   resources :news_feeds, only: [:index]

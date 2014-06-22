@@ -150,6 +150,7 @@ class User < ActiveRecord::Base
 
   has_many :watchlists
   has_many :library_entries, dependent: :destroy
+  has_many :manga_library_entries, dependent: :destroy
   has_many :reviews
   has_many :quotes
 

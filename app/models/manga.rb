@@ -57,5 +57,5 @@ class Manga < ActiveRecord::Base
   }
 
   has_and_belongs_to_many :genres
-  has_many :consumings, as: :item
+  has_many :manga_library_entries, dependent: :destroy
 end

@@ -12,15 +12,15 @@
         <li>
           <div class="btn-group">
             <button {{bind-attr class=":btn :btn-default :dropdown-toggle :top-button libraryStatus:active"}} type="button" data-toggle="dropdown">
-              {{#if MangaLibraryExists}}
-                {{MangaLibrary.status}}
+              {{#if mangaLibraryEntryExists}}
+                {{mangaLibraryEntry.status}}
               {{else}}
                 add to library
               {{/if}}
             </button>
             <ul class="dropdown-menu">
-              <li><a {{action "setLibraryStatus" "Currently Watching"}}>Currently Watching</a></li>
-              <li><a {{action "setLibraryStatus" "Plan to Watch"}}>Plan to Watch</a></li>
+              <li><a {{action "setLibraryStatus" "Currently Reading"}}>Currently Reading</a></li>
+              <li><a {{action "setLibraryStatus" "Plan to Read"}}>Plan to Read</a></li>
               <li><a {{action "setLibraryStatus" "Completed"}}>Completed</a></li>
               <li><a {{action "setLibraryStatus" "On Hold"}}>On Hold</a></li>
               <li><a {{action "setLibraryStatus" "Dropped"}}>Dropped</a></li>
@@ -28,6 +28,13 @@
             </ul>
           </div>
         </li>
+        {{#if mangaLibraryEntryExists}}
+          <li>
+            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart mangaLibraryEntry.isFavorite:active"}} {{action "toggleFavorite"}}>
+              <i {{bind-attr class=":fa mangaLibraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i>
+            </button>
+          </li>
+        {{/if}}
       </ul>
       <ul class="right-buttons">
         <li>
@@ -72,10 +79,10 @@
           </div>
 
           {{#if currentUser.isSignedIn}}
-            {{#if MangaLibraryExists}}
+            {{#if mangaLibraryEntryExists}}
               <div class="personal-rating active">
                 <h5 class="sidebar-title text-center">Your Rating</h5>
-                {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=MangaLibrary.rating}}
+                {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=MangaLibraryEntry.rating}}
               </div>
             {{/if}}
           {{/if}}

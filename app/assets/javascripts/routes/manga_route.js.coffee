@@ -2,38 +2,41 @@ Hummingbird.MangaRoute = Ember.Route.extend
   model: (params) ->
     @store.find 'manga', params.id
 
-  saveMangaLibrary: (mangaLibrary) ->
+  saveMangaLibraryEntry: (mangaLibraryEntry) ->
     manga = @currentModel
-    Messenger().expectPromise (-> mangaLibrary.save()),
+    Messenger().expectPromise (-> mangaLibraryEntry.save()),
       progressMessage: "Saving " + manga.get('romajiTitle') + "..."
       successMessage: "Saved " + manga.get('romajiTitle') + "!"
 
   actions:
+    toggleFavorite: ->
+      alert('Need to be signed in') unless @get('currentUser.isSignedIn')
+      mangaLibraryEntry = @currentModel.get('mangaLibraryEntry')
+      mangaLibraryEntry.set 'isFavorite', not mangaLibraryEntry.get('isFavorite')
+      @saveMangaLibraryEntry mangaLibraryEntry
 
     removeFromLibrary: ->
       manga = @currentModel
-      mangaLibrary = manga.get('mangaLibrary')
-      Messenger().expectPromise (-> mangaLibrary.destroyRecord()),
+      mangaLibraryEntry = manga.get('mangaLibraryEntry')
+      Messenger().expectPromise (-> mangaLibraryEntry.destroyRecord()),
         progressMessage: "Removing " + manga.get('canonicalTitle') + " from your library..."
         successMessage: "Removed " + manga.get('canonicalTitle') + " from your library!"
 
     setLibraryStatus: (newStatus) ->
       manga = @currentModel
-      mangaLibrary = @currentModel.get('mangaLibrary')
-      if @controllerFor('manga').get('mangaLibraryExists')
-        console.log "It has a library"
-        mangaLibrary.set 'status', newStatus
+      mangaLibraryEntry = @currentModel.get('mangaLibraryEntry')
+      if @controllerFor('manga').get('mangaLibraryEntryExists')
+        mangaLibraryEntry.set 'status', newStatus
       else
-        console.log "Needs a new library"
-        mangaLibrary = @store.createRecord 'mangaLibrary',
+        mangaLibraryEntry = @store.createRecord 'mangaLibraryEntry',
           status: newStatus
-          item: @currentModel
+          manga: @currentModel
       if newStatus == "Completed"
-        mangaLibrary.set 'partsConsumed', manga.get('chapterCount')
-        mangaLibrary.set 'blocksConsumed', manga.get('volumeCount')
-      @saveMangaLibrary mangaLibrary
+        mangaLibraryEntry.set 'partsConsumed', manga.get('chapterCount')
+        mangaLibraryEntry.set 'blocksConsumed', manga.get('volumeCount')
+      @saveMangaLibraryEntry mangaLibraryEntry
 
     setLibraryRating: (newRating) ->
-      mangaLibrary = @currentModel.get('mangaLibrary')
-      mangaLibrary.set 'rating', newRating
-      @saveMangaLibrary mangaLibrary
+      mangaLibraryEntry = @currentModel.get('mangaLibraryEntry')
+      mangaLibraryEntry.set 'rating', newRating
+      @saveMangaLibraryEntry mangaLibraryEntry

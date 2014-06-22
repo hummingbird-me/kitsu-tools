@@ -899,6 +899,46 @@ ALTER SEQUENCE manga_id_seq OWNED BY manga.id;
 
 
 --
+-- Name: manga_library_entries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE manga_library_entries (
+    id integer NOT NULL,
+    user_id integer,
+    manga_id integer,
+    status character varying(255),
+    private boolean DEFAULT false,
+    chapters_readed integer DEFAULT 0,
+    volumes_readed integer DEFAULT 0,
+    rereading_count integer DEFAULT 0,
+    rereading boolean DEFAULT false,
+    last_readed timestamp without time zone,
+    rating numeric(2,1),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: manga_library_entries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE manga_library_entries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: manga_library_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE manga_library_entries_id_seq OWNED BY manga_library_entries.id;
+
+
+--
 -- Name: media; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1614,6 +1654,13 @@ ALTER TABLE ONLY manga ALTER COLUMN id SET DEFAULT nextval('manga_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY manga_library_entries ALTER COLUMN id SET DEFAULT nextval('manga_library_entries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY media ALTER COLUMN id SET DEFAULT nextval('media_id_seq'::regclass);
 
 
@@ -1738,14 +1785,6 @@ ALTER TABLE ONLY castings
 
 ALTER TABLE ONLY characters
     ADD CONSTRAINT characters_pkey PRIMARY KEY (id);
-
-
---
--- Name: consumings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY consumings
-    ADD CONSTRAINT consumings_pkey PRIMARY KEY (id);
 
 
 --
@@ -1874,6 +1913,14 @@ ALTER TABLE ONLY gallery_images
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: manga_library_entries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY manga_library_entries
+    ADD CONSTRAINT manga_library_entries_pkey PRIMARY KEY (id);
 
 
 --
@@ -2344,6 +2391,20 @@ CREATE INDEX index_genres_manga_on_genre_id ON genres_manga USING btree (genre_i
 --
 
 CREATE INDEX index_genres_manga_on_manga_id ON genres_manga USING btree (manga_id);
+
+
+--
+-- Name: index_manga_library_entries_on_manga_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_manga_library_entries_on_manga_id ON manga_library_entries USING btree (manga_id);
+
+
+--
+-- Name: index_manga_library_entries_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_manga_library_entries_on_user_id ON manga_library_entries USING btree (user_id);
 
 
 --
@@ -3173,4 +3234,16 @@ INSERT INTO schema_migrations (version) VALUES ('20140613205304');
 INSERT INTO schema_migrations (version) VALUES ('20140614220406');
 
 INSERT INTO schema_migrations (version) VALUES ('20140617152640');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620195245');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620204530');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620211343');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620211542');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620222815');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620224034');
 

@@ -12,12 +12,11 @@ class MangaSerializer < ActiveModel::Serializer
              :volume_count, 
              :genres
 
-  has_one :manga_library
+  has_one :manga_library_entry
 
-  def manga_library
-    scope && Consuming.where(user_id: scope.id, item_id: object.id, item_type: "Manga").first
+  def manga_library_entry
+    scope && MangaLibraryEntry.where(user_id: scope.id, manga_id: object.id).first
   end
-
   def id
     object.slug
   end
