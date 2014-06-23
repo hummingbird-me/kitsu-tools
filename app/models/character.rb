@@ -49,11 +49,11 @@ class Character < ActiveRecord::Base
     end
     character ||= Character.find_by(name: hash[:name])
     character ||= Character.new({
-      mal_id: hash[:external_id],
       name: hash[:name],
       # Apparently we lack a corresponding field?
 #     role: hash[:role]
     })
+    character.mal_id = hash[:external_id] if character.mal_id.nil?
     character.save!
     character
   end

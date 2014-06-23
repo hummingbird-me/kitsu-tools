@@ -190,20 +190,20 @@ class Anime < ActiveRecord::Base
     # TODO: stop clobbering existing values
     # Metadata
     anime.assign_attributes({
-      mal_id: hash[:external_id],
-      title: hash[:title],
-      alt_title: hash[:title_ja_jp],
-      synopsis: hash[:synopsis],
-      poster_image: hash[:poster_image],
-      genres: begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end,
-      producers: begin hash[:producers].map { |p| Producer.find_by name: p }.compact rescue [] end,
-      age_rating: hash[:age_rating],
-      age_rating_guide: hash[:age_rating_guide],
-      episode_count: hash[:episode_count],
-      episode_length: hash[:episode_length],
-      started_airing_date: begin hash[:dates][0] rescue nil end,
-      finished_airing_date: begin hash[:dates][1] rescue nil end,
-      show_type: hash[:show_type]
+      mal_id: (hash[:external_id] if anime.mal_id.nil?),
+      title: (hash[:title] if anime.title.nil?),
+      alt_title: (hash[:title_ja_jp] if anime.alt_title.nil?),
+      synopsis: (hash[:synopsis] if anime.synopsis.nil?),
+      poster_image: (hash[:poster_image] if anime.poster_image.nil?),
+      genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if anime.genres.nil?),
+      producers: (begin hash[:producers].map { |p| Producer.find_by name: p }.compact rescue [] end if anime.producers.nil?),
+      age_rating: (hash[:age_rating] if anime.age_rating.nil?),
+      age_rating_guide: (hash[:age_rating_guide] if anime.age_rating_guide.nil?),
+      episode_count: (hash[:episode_count] if anime.episode_count.nil?),
+      episode_length: (hash[:episode_length] if anime.episode_length.nil?),
+      started_airing_date: (begin hash[:dates][0] rescue nil end if anime.started_airing_date.nil?),
+      finished_airing_date: (begin hash[:dates][1] rescue nil end if anime.finished_airing_date.nil?),
+      show_type: (hash[:show_type] if anime.show_type.nil?)
     })
     anime.save!
     # Staff castings

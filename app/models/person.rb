@@ -37,8 +37,8 @@ class Person < ActiveRecord::Base
     person ||= Person.new
 
     person.assign_attributes({
-      name: hash[:name],
-      mal_id: hash[:external_id]
+      name: (hash[:name] if person.name.nil?),
+      mal_id: (hash[:external_id] if person.mal_id.nil?)
     })
     person.save!
     person
