@@ -98,10 +98,13 @@ class MALImport
         serialization: begin @sidebar.css('span:contains("Serialization:") ~ a').map(&:text)[0] rescue nil end,
       })
     when :anime
+      age_rating = begin @sidebar.css('div:contains("Rating:")')[0].children[1].text.strip rescue nil end
+      age_rating = convert_age_rating(age_rating)
       meta.merge!({
         dates: begin @sidebar.css('div:contains("Aired:")')[0].text.gsub("Aired:", '').split("to").map { |s| parse_maldate(s) } rescue nil end,
         producers: begin (@sidebar.css('span:contains("Producers:") ~ a').map(&:text) rescue []).compact end,
-        age_rating: begin @sidebar.css('div:contains("Rating:")')[0].children[1].text.strip rescue nil end,
+        age_rating: age_rating[0],
+        age_rating_guide: age_rating[1],
         episode_count: begin @sidebar.css('div:contains("Episodes:")')[0].children[1].text.strip.to_i rescue nil end,
         episode_length: parse_duration(begin @sidebar.css('div:contains("Duration:")')[0].children[1].text.strip rescue nil end),
       })
@@ -119,6 +122,23 @@ class MALImport
   end
 
   private
+  def convert_age_rating(rating)
+    {
+      ""                                => [nil,    nil],
+      "None"                            => [nil,    nil],
+      "PG-13 - Teens 13 or older"       => ["PG13", "Teens 13 or older"],
+      "R - 17+ (violence & profanity)"  => ["R17+", "Violence, Profanity"],
+      "R+ - Mild Nudity"                => ["R17+", "Mild Nudity"],
+      "PG - Children"                   => ["PG",   "Children"],
+      "Rx - Hentai"                     => ["R18+", "Hentai"],
+      "G - All Ages"                    => ["G",    "All Ages"],
+      "PG-13"                           => ["PG13", "Teens 13 or older"],
+      "R+"                              => ["R17+", "Mild Nudity"],
+      "PG13"                            => ["PG13", "Teens 13 or older"],
+      "G"                               => ["G",    "All Ages"],
+      "PG"                              => ["PG",   "Children"]
+    }[rating] || [rating, nil]
+  end
   def nameflip(name)
     name.split(',').map(&:strip).reverse.join(' ')
   end

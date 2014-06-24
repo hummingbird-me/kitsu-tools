@@ -155,27 +155,6 @@ class Anime < ActiveRecord::Base
           )', genres.map(&:id))
   end
 
-  # TODO: move this to MAL stuff
-  # Return [age rating, guide]
-  def self.convert_age_rating(rating)
-    {
-      nil                               => [nil,    nil],
-      ""                                => [nil,    nil],
-      "None"                            => [nil,    nil],
-      "PG-13 - Teens 13 or older"       => ["PG13", "Teens 13 or older"],
-      "R - 17+ (violence & profanity)"  => ["R17+", "Violence, Profanity"],
-      "R+ - Mild Nudity"                => ["R17+", "Mild Nudity"],
-      "PG - Children"                   => ["PG",   "Children"],
-      "Rx - Hentai"                     => ["R18+", "Hentai"],
-      "G - All Ages"                    => ["G",    "All Ages"],
-      "PG-13"                           => ["PG13", "Teens 13 or older"],
-      "R+"                              => ["R17+", "Mild Nudity"],
-      "PG13"                            => ["PG13", "Teens 13 or older"],
-      "G"                               => ["G",    "All Ages"],
-      "PG"                              => ["PG",   "Children"]
-    }[rating] || [rating, nil] # TODO: Maybe do ["Other", rating] instead?
-  end
-
   def self.create_or_update_from_hash hash
     # First the creation logic
     # TODO: stop hard-coding the ID column
