@@ -4,7 +4,7 @@ class MALImport
   def initialize (media, id)
     @media = media
     @mal_id = id
-    @main_noko = Nokogiri::HTML open("http://myanimelist.net/#{media.to_s}/#{id}", 'User-Agent' => 'iMAL-iOS').read
+    @main_noko = Nokogiri::HTML open("http://myanimelist.net/#{media.to_s}/#{id}/", 'User-Agent' => 'iMAL-iOS').read
     char_page = Nokogiri::HTML open("http://myanimelist.net/#{media.to_s}/#{id}/a/characters", 'User-Agent' => 'iMAL-iOS').read
     @char_noko = char_page.css('h2:contains("Characters")')[0].parent
     @sidebar = @main_noko.css('td.borderClass')[0]
@@ -108,7 +108,7 @@ class MALImport
     end
 
     # post processing
-    meta[:english_title] = nil if meta[:english_title] == meta[:title]
+    meta[:title][:en_us] = nil if meta[:title][:en_us] == meta[:title][:canonical]
     return meta
   end
   def to_h
