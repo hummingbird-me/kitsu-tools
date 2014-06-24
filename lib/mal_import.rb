@@ -41,11 +41,13 @@ class MALImport
         {
           external_id: external_id,
           name: nameflip(chara.css('td:nth-child(2) > a').text),
+          image: person_image(chara.css("img")[0]['src']),
           role: chara.css('td:nth-child(2) small').text,
           featured: featured_chars.include?(external_id),
           voice_actors: chara.css('td:nth-child(3) tr > td:nth-child(1)').map do |va|
             {
               external_id: va.css('a')[0]['href'].scan(/people\/(\d+)\//).flatten[0].to_i,
+              image: person_image(va.parent.css("img")[0]['src']),
               name: nameflip(va.css('a').text),
               lang: va.css('small').text
             } if va.children.length > 0
@@ -122,6 +124,14 @@ class MALImport
   end
 
   private
+  def person_image(img)
+    img = img.gsub("v.jpg", ".jpg")
+    if img.include?("questionmark")
+      nil
+    else
+      URI(img)
+    end
+  end
   def convert_age_rating(rating)
     {
       ""                                => [nil,    nil],
