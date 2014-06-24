@@ -24,7 +24,7 @@ class MALImport
         {
           external_id: author['href'].scan(/people\/(\d+)\//).flatten[0].to_i,
           name: nameflip(author.text.strip),
-          role: author.next.text.scan(/\(([a-zA-Z ]+)\)/).flatten[0].strip
+          role: author.next.text.scan(/\(([^()]+)\)/).flatten[0].strip
         }
       end
     end

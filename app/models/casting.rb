@@ -39,7 +39,7 @@ class Casting < ActiveRecord::Base
   #     featured: true,
   #     role: "Director" }
   def self.create_or_update_from_hash(hash)
-    person = Person.create_or_update_from_hash(hash)
+    person = Person.create_or_update_from_hash(hash) unless hash[:name].nil?
 
     if hash[:character] ### Voice Actor
       casting = Casting.find_or_initialize_by({
