@@ -43,7 +43,11 @@
           %h5 Create or Update by MAL ID
           %form(method="get" action="/kotodama/find_or_create_by_mal")
             .row.collapse
-              .large-8.columns
+              .large-4.columns
+                %select(name="media")
+                  %option(value="anime") Anime
+                  %option(value="manga") Manga
+              .large-4.columns
                 %input(type="number" name="mal_id" placeholder="MAL ID")
               .large-4.columns
                 %input.button.small.prefix(type="submit" value="Submit")
