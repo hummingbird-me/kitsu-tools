@@ -23,6 +23,7 @@ class MALImportTest < ActiveSupport::TestCase
     assert_equal "Manga", malware[:type]
     assert_equal "Finished", malware[:status]
     assert_not_nil malware[:serialization]
+    assert_instance_of URI::HTTP, malware[:poster_image]
     malware[:dates].each { |date| assert_instance_of Date, date }
   end
   test "can get manga characters" do
@@ -65,6 +66,7 @@ class MALImportTest < ActiveSupport::TestCase
     assert_equal "TV", malware[:type]
     assert_equal "Finished Airing", malware[:status]
     assert_not malware[:producers].empty?
+    assert_instance_of URI::HTTP, malware[:poster_image]
     malware[:dates].each { |date| assert_instance_of Date, date }
   end
   test "can get anime characters" do
@@ -80,6 +82,7 @@ class MALImportTest < ActiveSupport::TestCase
     assert_not_nil kirito
     assert_equal "Kazuto Kirigaya", kirito[:name]
     assert_equal "Main", kirito[:role]
+    assert_instance_of URI::HTTP, kirito[:image]
     assert_equal 36765, kirito[:external_id]
   end
   test "can get anime character's voice actors" do
@@ -90,6 +93,7 @@ class MALImportTest < ActiveSupport::TestCase
     bryce = actors.select { |a| a[:name] == "Bryce Papenbrook" }[0]
     assert_equal "Bryce Papenbrook", bryce[:name]
     assert_equal "English", bryce[:lang]
+    assert_instance_of URI::HTTP, bryce[:image]
     assert_equal 732, bryce[:external_id]
   end
   test "can get anime character's info with one-word name" do
@@ -98,6 +102,7 @@ class MALImportTest < ActiveSupport::TestCase
     assert_not_nil yui
     assert_equal "Yui", yui[:name]
     assert_equal "Supporting", yui[:role]
+    assert_instance_of URI::HTTP, yui[:image]
     assert_equal 43892, yui[:external_id]
   end
   test "can get anime staff" do
