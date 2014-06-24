@@ -71,6 +71,7 @@ group :test do
   gem 'timecop'
   gem 'mock_redis'
   gem 'mocha'
+  gem 'fakeweb'
 end
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
