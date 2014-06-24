@@ -180,14 +180,13 @@ class Anime < ActiveRecord::Base
     # First the creation logic
     # TODO: stop hard-coding the ID column
     anime = Anime.find_by(mal_id: hash[:external_id])
-    if anime.nil? && Anime.where(title: hash[:title]).count > 1
-      log "Could not find unique Anime by title=#{hash[:title]}.  Ignoring."
+    if anime.nil? && Anime.where(title: hash[:title][:canonical]).count > 1
+      log "Could not find unique Anime by title=#{hash[:title][:canonical]}.  Ignoring."
       return
     end
-    anime ||= Anime.find_by(title: hash[:title])
+    anime ||= Anime.find_by(title: hash[:title][:canonical])
     anime ||= Anime.new
 
-    # TODO: stop clobbering existing values
     # Metadata
     anime.assign_attributes({
       mal_id: (hash[:external_id] if anime.mal_id.nil?),
@@ -203,8 +202,8 @@ class Anime < ActiveRecord::Base
       episode_length: (hash[:episode_length] if anime.episode_length.nil?),
       started_airing_date: (begin hash[:dates][0] rescue nil end if anime.started_airing_date.nil?),
       finished_airing_date: (begin hash[:dates][1] rescue nil end if anime.finished_airing_date.nil?),
-      show_type: (hash[:show_type] if anime.show_type.nil?)
-    })
+      show_type: (hash[:type] if anime.show_type.nil?)
+    }.compact)
     anime.save!
     # Staff castings
     hash[:staff].each do |staff|
@@ -215,15 +214,23 @@ class Anime < ActiveRecord::Base
     # VA castings
     hash[:characters].each do |ch|
       character = Character.create_or_update_from_hash ch
-      ch[:voice_actors].each do |actor|
-        Casting.create_or_update_from_hash actor.merge({
-          # TODO: This should probably get moved out to MALImport itself
+      if ch[:voice_actors].length > 0
+        ch[:voice_actors].each do |actor|
+          Casting.create_or_update_from_hash actor.merge({
+            featured: ch[:featured],
+            character: character,
+            anime: anime
+          })
+        end
+      else
+        Casting.create_or_update_from_hash({
           featured: ch[:featured],
           character: character,
           anime: anime
         })
       end
     end
+    anime
   end
 
   def show_type_enum

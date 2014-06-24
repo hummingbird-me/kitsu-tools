@@ -39,16 +39,17 @@ class Casting < ActiveRecord::Base
   #     featured: true,
   #     role: "Director" }
   def self.create_or_update_from_hash(hash)
-    person = Person.create_or_update_from_hash(hash) unless hash[:name].nil?
+    person = Person.create_or_update_from_hash(hash) unless hash[:name].blank?
 
     if hash[:character] ### Voice Actor
+      # TODO: overwrite castings when adding the first voice actor if there's already a casting
       casting = Casting.find_or_initialize_by({
-        person: person,
         language: hash[:lang],
         character: hash[:character],
         anime: hash[:anime]
       })
-      casting.role = 'Voice Actor'
+      casting.person = person
+      casting.role = 'Voice Actor' unless person.nil?
     else ### Staff
       casting = Casting.find_or_initialize_by({
         person: person,

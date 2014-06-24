@@ -39,7 +39,7 @@ class Person < ActiveRecord::Base
     person.assign_attributes({
       name: (hash[:name] if person.name.nil?),
       mal_id: (hash[:external_id] if person.mal_id.nil?)
-    })
+    }.compact)
     person.save!
     person
   end
