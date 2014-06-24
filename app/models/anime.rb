@@ -191,8 +191,8 @@ class Anime < ActiveRecord::Base
     # Metadata
     anime.assign_attributes({
       mal_id: (hash[:external_id] if anime.mal_id.nil?),
-      title: (hash[:title] if anime.title.nil?),
-      alt_title: (hash[:title_ja_jp] if anime.alt_title.nil?),
+      title: (hash[:title][:canonical] if anime.title.nil?),
+      alt_title: (hash[:title][:ja_jp] if anime.alt_title.nil?),
       synopsis: (hash[:synopsis] if anime.synopsis.nil?),
       poster_image: (hash[:poster_image] if anime.poster_image.nil?),
       genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if anime.genres.nil?),

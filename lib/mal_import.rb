@@ -67,8 +67,12 @@ class MALImport
   def metadata
     meta = {
       external_id: @mal_id,
-      title: @main_noko.css('h1').children[1].text.strip,
-      english_title: begin @sidebar.css('div:contains("English:")')[0].text.gsub("English: ", "") rescue nil end,
+      title: {
+        canonical: @main_noko.css('h1').children[1].text.strip,
+        unknown: begin @sidebar.css('div:contains("Synonyms:")')[0].text.gsub("Synonyms: ", "").split(",").map(&:strip) rescue nil end,
+        en_us: begin @sidebar.css('div:contains("English:")')[0].text.gsub("English: ", "") rescue nil end,
+        ja_jp: begin @sidebar.css('div:contains("Japanese:")')[0].text.gsub("Japanese: ", "") rescue nil end
+      }.compact,
       synopsis: begin
         synopsis = @main_noko.css('td td:contains("Synopsis")')[0].text.gsub("Synopsis", '')
         if synopsis.include? "No synopsis has been added"
