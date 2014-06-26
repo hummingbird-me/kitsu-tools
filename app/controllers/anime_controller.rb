@@ -1,6 +1,7 @@
 require 'wilson_score'
 
 class AnimeController < ApplicationController
+  include MicrodataHelper
   def random
     anime = Anime.where("age_rating <> 'R18+'").where(show_type: ["TV", "OVA", "ONA", "Movie"]).order("RANDOM()").limit(1)[0]
     redirect_to anime
