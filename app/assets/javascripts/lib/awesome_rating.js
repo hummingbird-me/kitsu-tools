@@ -47,7 +47,7 @@ var renderStars = function(rating) {
 
 $.fn.AwesomeRating = function(options) {
   return this.each(function() {
-    var _results;
+    var _results = [];
     var widget = this,
       rating = options["rating"];
     $(widget).empty();
