@@ -1,6 +1,9 @@
 Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
-  classNames: ["latest-posts-panel"],
+  classNames: ["community-widget-panel"],
   topics: [],
+
+  // Number of loading fake posts to show.
+  loadingSeq: [1, 2, 3, 4, 5],
 
   loadPosts: function() {
     var self = this;
@@ -37,6 +40,7 @@ Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
           var user = users[poster.user_id];
           topic.users.push({
             name: user.username,
+            avatar: user.avatar_template.replace(/\.[a-zA-Z]+\?/, '.jpg?').replace("{size}", "small"),
             url: "http://forums.hummingbird.me/users/" + user.username + "/activity"
           });
         });

@@ -5068,6 +5068,7 @@ ul.pagination {
   display: block;
   height: 1.5em;
   margin-left: -0.3125em;
+  clear: both;
 }
 
 ul.pagination li {

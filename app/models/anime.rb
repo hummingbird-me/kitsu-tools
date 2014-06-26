@@ -9,7 +9,7 @@
 #  age_rating                :string(255)
 #  episode_count             :integer
 #  episode_length            :integer
-#  synopsis                  :text
+#  synopsis                  :text             default(""), not null
 #  youtube_video_id          :string(255)
 #  mal_id                    :integer
 #  created_at                :datetime         not null
@@ -40,14 +40,14 @@
 class Anime < ActiveRecord::Base
   include PgSearch
   pg_search_scope :fuzzy_search_by_title, against: [:title, :alt_title],
-    using: [:trigram], ranked_by: ":trigram"
+    using: {trigram: {threshold: 0.1}}, ranked_by: ":trigram"
   pg_search_scope :simple_search_by_title, against: [:title, :alt_title],
-    using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
+    using: {tsearch: {normalization: 10, dictionary: "english"}}, ranked_by: ":tsearch"
 
   extend FriendlyId
   friendly_id :canonical_title, :use => [:slugged, :history]
 
-  attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :ann_id, :synopsis, :cover_image, :cover_image_top_offset, :poster_image, :youtube_video_id, :alt_title, :franchises, :show_type, :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide, :started_airing_date, :started_airing_date_known, :finished_airing_date, :franchise_ids, :genre_ids, :producer_ids, :casting_ids
+  attr_accessible :title, :age_rating, :episode_count, :episode_length, :mal_id, :ann_id, :synopsis, :cover_image, :cover_image_top_offset, :poster_image, :youtube_video_id, :alt_title, :franchises, :show_type, :thetvdb_series_id, :thetvdb_season_id, :english_canonical, :age_rating_guide, :started_airing_date, :started_airing_date_known, :finished_airing_date, :franchise_ids, :genre_ids, :producer_ids, :casting_ids, :genres, :producers
 
   has_attached_file :cover_image,
     styles: {thumb: ["1400x900>", :jpg]},
@@ -78,6 +78,7 @@ class Anime < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :episodes, dependent: :destroy
   has_many :gallery_images, dependent: :destroy
+  has_many :stories, as: :target, dependent: :destroy
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
   has_and_belongs_to_many :franchises
@@ -155,54 +156,61 @@ class Anime < ActiveRecord::Base
           )', genres.map(&:id))
   end
 
-  # Return [age rating, guide]
-  def self.convert_age_rating(rating)
-    {
-      nil                               => [nil,    nil],
-      ""                                => [nil,    nil],
-      "None"                            => [nil,    nil],
-      "PG-13 - Teens 13 or older"       => ["PG13", "Teens 13 or older"],
-      "R - 17+ (violence & profanity)"  => ["R17+", "Violence, Profanity"],
-      "R+ - Mild Nudity"                => ["R17+", "Mild Nudity"],
-      "PG - Children"                   => ["PG",   "Children"],
-      "Rx - Hentai"                     => ["R18+", "Hentai"],
-      "G - All Ages"                    => ["G",    "All Ages"],
-      "PG-13"                           => ["PG13", "Teens 13 or older"],
-      "R+"                              => ["R17+", "Mild Nudity"],
-      "PG13"                            => ["PG13", "Teens 13 or older"],
-      "G"                               => ["G",    "All Ages"],
-      "PG"                              => ["PG",   "Children"]
-    }[rating] || [rating, nil]
-  end
-
-  def get_metadata_from_mal
-    meta = MalImport.series_metadata(self.mal_id)
-    self.title = meta[:title]
-    self.alt_title = meta[:english_title]
-    self.synopsis = meta[:synopsis]
-    self.poster_image = URI(meta[:poster_image_url]) if self.poster_image_file_name.nil?
-    self.genres = (self.genres + meta[:genres]).uniq
-    self.producers = (self.producers + meta[:producers]).uniq
-    self.age_rating, self.age_rating_guide = Anime.convert_age_rating(meta[:age_rating])
-    self.episode_count ||= meta[:episode_count]
-    self.episode_length ||= meta[:episode_length]
-
-    self.castings.select {|x| x.character and meta[:featured_character_mal_ids].include? x.character.mal_id }.each do |c|
-      c.featured = true; c.save
+  def self.create_or_update_from_hash hash
+    # First the creation logic
+    # TODO: stop hard-coding the ID column
+    anime = Anime.find_by(mal_id: hash[:external_id])
+    if anime.nil? && Anime.where(title: hash[:title][:canonical]).count > 1
+      log "Could not find unique Anime by title=#{hash[:title][:canonical]}.  Ignoring."
+      return
     end
+    anime ||= Anime.find_by(title: hash[:title][:canonical])
+    anime ||= Anime.new
 
-    self.started_airing_date = meta[:dates][:from]
-    self.finished_airing_date = meta[:dates][:to]
-
-    self.show_type = meta[:show_type] if meta[:show_type]
-
-    self.save
-
-    begin
-      MalImport.create_series_castings(id)
-    rescue
+    # Metadata
+    anime.assign_attributes({
+      mal_id: (hash[:external_id] if anime.mal_id.nil?),
+      title: (hash[:title][:canonical] if anime.title.nil?),
+      alt_title: (hash[:title][:ja_en] if anime.alt_title.nil?),
+      synopsis: (hash[:synopsis] if anime.synopsis.nil?),
+      poster_image: (hash[:poster_image] if anime.poster_image.nil?),
+      genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if anime.genres.blank?),
+      producers: (begin hash[:producers].map { |p| Producer.find_by name: p }.compact rescue [] end if anime.producers.blank?),
+      age_rating: (hash[:age_rating] if anime.age_rating.nil?),
+      age_rating_guide: (hash[:age_rating_guide] if anime.age_rating_guide.nil?),
+      episode_count: (hash[:episode_count] if anime.episode_count.nil?),
+      episode_length: (hash[:episode_length] if anime.episode_length.nil?),
+      started_airing_date: (begin hash[:dates][0] rescue nil end if anime.started_airing_date.nil?),
+      finished_airing_date: (begin hash[:dates][1] rescue nil end if anime.finished_airing_date.nil?),
+      show_type: (hash[:type] if anime.show_type.nil?)
+    }.compact)
+    anime.save!
+    # Staff castings
+    hash[:staff].each do |staff|
+      Casting.create_or_update_from_hash staff.merge({
+        anime: anime
+      })
     end
-
+    # VA castings
+    hash[:characters].each do |ch|
+      character = Character.create_or_update_from_hash ch
+      if ch[:voice_actors].length > 0
+        ch[:voice_actors].each do |actor|
+          Casting.create_or_update_from_hash actor.merge({
+            featured: ch[:featured],
+            character: character,
+            anime: anime
+          })
+        end
+      else
+        Casting.create_or_update_from_hash({
+          featured: ch[:featured],
+          character: character,
+          anime: anime
+        })
+      end
+    end
+    anime
   end
 
   def show_type_enum

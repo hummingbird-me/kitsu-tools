@@ -1,13 +1,3 @@
-//= require ./lib/bind_polyfill
-//= require jquery
-//= require bootstrap
-//= require handlebars
-//= require ember
-//= require ember-data
-//= require vendor
-//= twitter/typeahead
-//= require autolink
-//= require react
 //= require_tree ./react
 //= require_self
 //= require_tree ./lib

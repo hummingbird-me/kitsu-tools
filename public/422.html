@@ -20,6 +20,7 @@
     .error-message hr { margin: 5px 0; }
     .error-message h3 { margin-top: 0; font-weight: bold; }
 
+    .error-image-frame { padding-bottom: 15px; }
     .error-image {
       display: block;
       max-width: 100%;
@@ -30,10 +31,10 @@
       font-size: 0.9em;
       color: #666;
     }
-    
+
   </style>
 
-  <title>The change you wanted was rejected. (422)</title>
+  <title>Error #422 | Hummingbird</title>
 </head>
 <body>
 
@@ -51,56 +52,34 @@
     <div class="row">
       <div class="col-md-7 error-image-frame">
         <img id="error-jsimage" class="error-image" src="" />
-        <span class="error-art">Error art submitted by <a id="error-jsuser" href=""></a>.</span>
+        <span class="error-art">Art submitted by <a id="error-jsuser" href=""></a>.</span>
       </div>
       <div class="col-md-5">
-        <h3>Error #422, Change rejected.</h3>
-        <p>
-          We're sorry but it looks like the change you wanted 
-          was rejected. This usually happens if the server was
-          unable to follow your request. - Might also happen if
-          you'd try to change politics, economy or the laws of physic.
-        </p>
-        <hr />
-        <p>
-          <strong>You might want to...</strong><br />
-          <strong>&rsaquo;</strong> Go back to <a href="/">Hummingbird</a>.<br />
-          <strong>&rsaquo;</strong> Go to the <a href="/search">Search Page</a>.<br /><br />
-          If you think this is a bug, please report it on
-          <a href="http://forums.hummingbird.me/category/bugs">the forums</a>.
-        </p>
+        <h3>Error #422 &mdash; Change rejected</h3>
+        <p>We're sorry but it looks like the change you wanted was rejected. This usually happens if the server was unable to follow your request. Might also happen if you'd try to change politics, economy or the laws of physics.</p>
+        <h4>You might want to...</h4>
+        <ul>
+          <li>Go back to <a href="/">Hummingbird</a>.</li>
+          <li>Go to the <a href="/search">search page</a>.</li>
+        </ul>
+        <p>If you think this is a bug, please report it on the <a href="http://forums.hummingbird.me/category/bugs">forums</a>.</p>
       </div>
     </div>
   </div>
 
-
   <script type="text/javascript">
 
     var images = [
-      ["Melen", "wQhAf7C.jpg"],
-      ["Jordan", "ylq29qb.jpg"],
-      ["earaiden", "WVLskzF.jpg"],
-      ["Nullet", "Y1b1K5R.jpg"],
-      ["calioop", "V4adlna.jpg"],
-      ["littleladyred", "eU4pwaK.jpg"],
-      ["kami", "Kuz1ONt.jpg"],
-      ["rtil", "5J0t70x.jpg"],
-      ["Magpii", "1VBtfdt.jpg"],
-      ["James", "QpPfYsg.jpg"],
-      ["Raphael", "f1TGLPX.jpg"],
-      ["Magpii", "MNt9zo4.jpg"],
-      ["DarKCroX", "K9fP1PT.gif"]
+      ["littleladyred", "eU4pwaK.jpg"]
     ];
 
-
-    // ------------------------------------------
     var img = document.getElementById("error-jsimage"),
         usr = document.getElementById("error-jsuser");
-        num = Math.floor(Math.random() * (images.length - 1));
+        num = Math.floor(Math.random() * images.length);
 
-    usr.setAttribute('href', '/users/'+images[num][0]);
+    usr.setAttribute('href', '/users/' + images[num][0]);
     usr.appendChild(document.createTextNode(images[num][0]));
-    img.setAttribute('src', 'http://i.imgur.com/'+images[num][1]);
+    img.setAttribute('src', 'http://i.imgur.com/' + images[num][1]);
 
   </script>
 

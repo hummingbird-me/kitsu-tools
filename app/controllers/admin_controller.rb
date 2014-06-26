@@ -1,3 +1,5 @@
+require_dependency 'mal_import'
+
 class AdminController < ApplicationController
 
   before_filter :allow_only_admins
@@ -11,12 +13,15 @@ class AdminController < ApplicationController
   end
 
   def find_or_create_by_mal
-    @anime = Anime.find_by_mal_id params[:mal_id]
-    if @anime.nil?
-      @anime = Anime.create title: params[:mal_id], mal_id: params[:mal_id]
+    media = params[:media].to_sym
+    mal = MALImport.new(media, params[:mal_id].to_i)
+    @thing = case media
+    when :anime
+      Anime.create_or_update_from_hash mal.to_h
+    when :manga
+      Manga.create_or_update_from_hash mal.to_h
     end
-    @anime.get_metadata_from_mal
-    redirect_to @anime
+    redirect_to @thing
   end
 
   def index

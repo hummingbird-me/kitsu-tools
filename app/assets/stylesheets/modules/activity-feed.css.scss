@@ -440,8 +440,8 @@
   line-height:20px;
   font-size:12px;
   font-weight: 700;
+  font-smoothing: antialiased;
   text-align:center;
-  -webkit-font-smoothing: antialiased;
   margin: 11px 11px;
   transition: .1s ease-in-out;
   &.close-recent {

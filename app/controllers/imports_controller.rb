@@ -17,12 +17,20 @@ class ImportsController < ApplicationController
         gz = Zlib::GzipReader.new(params[:animelist])
         xml = gz.read
         gz.close
+
+        # xmllint the incoming xml.
+        IO.popen("xmllint - --format --encode utf-8", "r+") do |f|
+          f.write xml
+          f.close_write
+          xml = f.read
+        end
+
         current_user.update_column :mal_import_in_progress, true
         MyAnimeListImportApplyWorker.perform_async(current_user.id, xml)
 
         mixpanel.track "Imported from MyAnimeList", {email: current_user.email} if Rails.env.production?
       rescue
-        flash[:error] = "There was a problem importing your anime list. Please send an email to <a href='mailto:josh@hummingbird.me'>josh@hummingbird.me</a> with the file you are trying to import.".html_safe
+        flash[:error] = "There was a problem importing your anime list. Please send an email to <a href='mailto:vikhyat@hummingbird.me'>vikhyat@hummingbird.me</a> with the file you are trying to import.".html_safe
         redirect_to "/users/edit"
         return
       end

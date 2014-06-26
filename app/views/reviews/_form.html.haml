@@ -1,5 +1,21 @@
+%link{:rel => :stylesheet, :type => :"text/css", :href => "//cdnjs.cloudflare.com/ajax/libs/summernote/0.5.1/summernote-bs3.css"}
+%script{:src => "//cdnjs.cloudflare.com/ajax/libs/summernote/0.5.1/summernote.min.js", :type => "text/javascript"}
+%script{:src => "//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js", :type => "text/javascript"}
+
+
 :css
   .hummingbird-header figure {border-bottom: 3px solid #fd7532;}
+  .note-image-dialog .modal-body h5:first-of-type,
+  .note-image-dialog .modal-body input:first-of-type,
+  .note-codable,
+  .tooltip { display: none !important; }
+  .note-editable {
+    background-color: white;
+    border: 1px solid #ddd;
+    overflow: auto;
+    padding: 10px;
+    font-size: 13px;
+  }
 
 :javascript
   $(document).ready(function(){ 
@@ -8,7 +24,31 @@
       warning: 20,
       counterText: ''  
     });
+
+    $('#full-review').summernote({
+      height: 300,
+      minHeight: null,
+      maxHeight: 500,
+      focus: true,
+      toolbar: [
+        ['style', ['bold', 'italic', 'underline', 'clear']],
+        ['insert', ['link', 'picture', 'video']],
+        ['misc', ['undo', 'redo']],
+      ],
+      styleWithSpan: false
+    });
+    $('#full-review').code($('#redactor_content').val());
   });
+
+  function submitit(){
+    var input = $('#full-review').code();
+    if(input.length < 50){
+      alert('Your review is too short! (min 50 chars.)');
+      return;
+    }
+    $('#redactor_content').html(input);
+    $('form')[1].submit();
+  }
 .anime-discover.full-reviews
   .row.content-body
     .row
@@ -23,14 +63,16 @@
     = form_for [@anime, @review] do |f|
       .row
         .main-content.large-7.columns.large-offset-2
-          = f.text_area :content, rows: 7, :id => "redactor_content"
+          #full-review
+          = f.text_area :content, rows: 7, :id => "redactor_content", :style => "display:none;"
           %p.help-text 
             (optional) Summarize your review in one sentence. <br/>
             This will be used when your review is being shared across social networks.
             .summary
               = f.text_area :summary, rows: 3, :id => "charcount", :maxlength => "120", :lengthcut => "true", :placeholder => "e.g. 'A great modernization of an under-appreciated genre. [Anime title] is fast, furious, and endlessly deep.'"
 
-            = f.submit class: "button padded"
+            %button.padded{:onClick => "submitit();"}
+              Submit
 
         .extra-sidebar.large-3.columns
           .review-subrating

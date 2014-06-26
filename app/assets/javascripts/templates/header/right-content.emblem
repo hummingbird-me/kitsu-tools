@@ -1,3 +1,4 @@
+partial "header/search"
 if currentUser.isSignedIn
   partial "header/notifications"
   partial "header/avatar"

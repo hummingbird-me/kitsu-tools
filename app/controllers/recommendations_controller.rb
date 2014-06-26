@@ -17,10 +17,10 @@ class RecommendationsController < ApplicationController
     RecommendingWorker.perform_async current_user.id
     redirect_to "/recommendations"
   end
-  
+
   def index
     @hide_cover_image = true
-    
+
     update_recommendations_if_needed
 
     respond_to do |format|
@@ -30,16 +30,19 @@ class RecommendationsController < ApplicationController
         r = current_user.recommendation
         @status_categories = ["currently_watching", "plan_to_watch", "completed"]
         @recommendations = {}
-        @status_categories.each do |cat|
-          @recommendations[cat] = Anime.where(id: r.by_status[cat])
-        end
-
         @genre_recommendations = {}
-        current_user.favorite_genres.each do |genre|
-          @genre_recommendations[ genre.slug ] = Anime.where(id: r.by_genre[genre.slug])
-        end
+        
+        unless r.nil?
+          @status_categories.each do |cat|
+            @recommendations[cat] = Anime.where(id: r.by_status[cat])
+          end
+          
+          current_user.favorite_genres.each do |genre|
+            @genre_recommendations[ genre.slug ] = Anime.where(id: r.by_genre[genre.slug])
+          end
 
-        @neon_alley = Anime.where(id: r.by_service['neon_alley'])
+          @neon_alley = Anime.where(id: r.by_service['neon_alley'])
+        end
 
         # View convenience variables. Move to translations later.
         @word_before = {
@@ -63,9 +66,8 @@ class RecommendationsController < ApplicationController
 
   def plan_to_watch
     anime = Anime.find params[:anime]
-    watchlist = Watchlist.find_or_create_by_anime_id_and_user_id(anime.id, current_user.id)
-    watchlist.status = "Plan to Watch"
-    watchlist.save
+    library_entry = LibraryEntry.find_or_create_by(anime_id: anime.id, user_id: current_user.id)
+    library_entry.update_attributes status: "Plan to Watch"
     mixpanel.track "Recommendations: Plan to Watch", {email: current_user.email, anime: anime.slug} if Rails.env.production?
     render :json => true
   end

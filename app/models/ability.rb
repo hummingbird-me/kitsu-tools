@@ -1,10 +1,10 @@
+# NOTE: Do _not_ add anything to this file. We are in the process of getting rid
+#       of cancan.
 class Ability
   include CanCan::Ability
 
   def initialize(user)
     # Global permissions
-    can :read, Watchlist, :private => false
-
     if user.nil? or user.sfw_filter
       # Guests and people with the SFW filter on can see only non-sexual
       # content.
@@ -19,8 +19,6 @@ class Ability
       ### Guest permissions
     else
       ### Regular user permissions
-      can :read, Watchlist, :private => true, :user_id => user.id
-
       can :update, User, :id => user.id
     end
   end

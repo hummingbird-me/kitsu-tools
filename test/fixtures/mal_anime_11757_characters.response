@@ -1,0 +1,2014 @@
+HTTP/1.1 200 OK
+Date: Tue, 24 Jun 2014 03:14:44 GMT
+Server: Apache/2.2.15 (CentOS)
+Vary: Accept-Encoding
+X-Served-By: app9v-mal.ao.prd.lax
+Connection: close
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=utf-8
+Set-Cookie: incap_ses_225_81958=WzBqBAH+gxmBefsZe1wfAyTtqFMAAAAA9hJiZB75ZmAUFl+rkRkZNA==; path=/; Domain=.myanimelist.net
+Set-Cookie: visid_incap_81958=0QxXheQkT9W1ZPT7esuH5RntqFMAAAAAQUIPAAAAAAAyyfPc7M+vU8PEBVyP0YBo; expires=Wed, 22 Jun 2016 12:53:40 GMT; path=/; Domain=.myanimelist.net
+X-Iinfo: 9-67445001-67445002 NNNN CT(2 -1 0) RT(1403579684177 0) q(0 0 0 0) r(1 1)
+X-CDN: Incapsula
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+	<title>Sword Art Online - MyAnimeList.net</title>
+    <meta name="Description" content="Sword Art Online Information, Sword Art Online Reviews,  Synonyms: S.A.O; SAO" />
+    <meta name="Keywords" content="Sword Art Online, Sword Art Online information, Sword Art Online details, Sword Art Online discussion, Sword Art Online characters, Sword Art Online voice actors, Sword Art Online seiyuu" />
+    <meta name="Author" content="Garrett Gyssler">
+	
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+		<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.v5.js"></script>
+		<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.v1.js"></script>
+	
+		<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js"></script>
+		
+				<script type="text/javascript" src="http://cdn.myanimelist.net/js/fansubbers.v7.js"></script>
+				<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js"></script>
+				<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.v2.js"></script>
+				<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.v12.js"></script>
+				<script type="text/javascript" src="http://cdn.myanimelist.net/js/animeinfo.v9.js"></script>
+				<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.v5.css" type="text/css" />
+				<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.v1.css" type="text/css" />
+				<link rel="stylesheet" href="http://cdn.myanimelist.net/css/infopages.v1.css" type="text/css" />
+				<link rel="stylesheet" href="http://cdn.myanimelist.net/css/myanimelist.v45.css" type="text/css" />
+			<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css" />
+	<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.v18.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.v3.css" />
+	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.v1.css" />
+	<link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
+	
+	<link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
+
+	<!-- BEGIN TRIGGER TAG INITIALIZATION -->
+	<script type="text/javascript" src="http://cdn.triggertag.gorillanation.com/js/triggertag.js"></script>
+	<script type="text/javascript">getTrigger('4834');</script>
+	<!-- END TRIGGER TAG INITIALIZATION -->
+	<!-- GAM HEADER SCRIPT -->
+		<script type="text/javascript" src="http://partner.googleadservices.com/gampad/google_service.js">
+		</script>
+		<script type="text/javascript">
+		GS_googleAddAdSenseService("ca-pub-1304704158939332");
+		GS_googleEnableAllServices();
+		</script>
+		<script type="text/javascript">
+		GA_googleUseIframeRendering();
+		</script>
+	<!-- END OF GAM HEADER SCRIPT -->
+
+	<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-369102-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+	<script type="text/javascript">
+   (function() {
+       function async_load(){
+           var protocol = ('https:' == document.location.protocol ? 'https://' : 'http://');
+           var s = document.createElement('script');
+           s.src = protocol + 'pagefair.com/static/adblock_detection/js/d.min.js';
+           var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+       }
+       bm_website_code = '3882DD60FDA947CD';
+       jQuery(document).ready(async_load);
+   })();
+</script></head>
+
+<body onload="">
+<div id="myanimelist">
+
+
+	<div id="headerSmall">
+		<a href="/">MyAnimeList.net</a>
+	</div>
+	
+<div id="menu">
+    
+    <div id="menu_right">
+    	
+        <div id="searchBar">
+
+        <input type="text" class="inputtext" id="topSearchText" value="Search" onkeydown="return ts_checkEnter(event);" size="30" /> 
+        <select id="topSearchValue" class="inputtext" onchange="ts_selection();">
+        <option value="0">Anime</option>
+        <option value="1">Manga</option>
+        <option value="2">Characters</option>
+        <option value="6">People</option>
+        <option value="3">Fansub Groups</option>
+        <option value="4">Clubs</option>
+        <option value="5">Users</option>
+        </select>
+        
+        <input type="image" src="http://cdn.myanimelist.net/images/magnify.gif" value="Search" onclick="ts_subSearch(5);" />
+        
+        </div>
+        
+	</div>
+	
+	<div id="menu_left">
+		<ul id="nav">
+						<li class="small"><a href="/anime.php">Anime</a>
+				<ul class="wider">
+										<li><a href="/reviews.php?t=anime">Reviews</a></li>
+					<li><a href="/recommendations.php?s=recentrecs&t=anime">Recommendations</a></li>
+					<li><a href="/topanime.php">Top Anime</a></li>
+					<li><a href="/fansub-groups.php">Fansub Groups</a></li>
+				</ul>
+			</li>
+			<li class="small"><a href="/manga.php">Manga</a>
+				<ul class="wider">
+										<li><a href="/reviews.php?t=manga">Reviews</a></li>
+					<li><a href="/recommendations.php?s=recentrecs&t=manga">Recommendations</a></li>
+					<li><a href="/topmanga.php">Top Manga</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Community</a>
+				<ul>
+					<li><a href="/forum/">Forums</a></li>
+					<li><a href="/clubs.php">Clubs</a></li>
+					<li><a href="/blog.php">Blogs</a></li>
+					<li><a href="/users.php">Users</a></li>
+					<li><a href="/about.php?go=team">Staff</a></li>
+					<li><a href="/about.php?go=support">Help</a></li>
+				</ul>
+			</li>
+			<li class="medium"><a href="#">Industry</a>
+				<ul class="wide">
+					<li><a href="/people.php">People</a></li>
+					<li><a href="/character.php">Characters</a></li>
+					<li><a href="/news.php">News</a></li>
+					<li><a href="/favorites.php">Top Favorites</a></li>
+				</ul>
+			</li>
+			
+			<li class="tiny"><a href="/register.php">Join</a></li>
+			<li class="smaller"><a href="/ajaxtb.php?login" id="malLogin">Login</a></li>
+						</ul>
+	</div>
+</div>
+
+<div id="contentWrapper">
+
+	<div id="roadblock">
+				<div class="ad230">
+						<script type="text/javascript">
+						if ((typeof(f325922)=='undefined' || f325922 > 0) ) {
+						if(typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000; if(typeof(gnm_tile) == 'undefined') gnm_tile=1;
+						document.write('<scr'+'ipt src="http://n4403ad.doubleclick.net/adj/gn.cr.myanimelist.net/ros;sect=ros;sz=230x90,963x90;rating=PG-13;tile='+(gnm_tile++)+';ord='+gnm_ord+'?" type="text/javascript"></scr'+'ipt>');
+						} else {
+							GA_googleFillSlotWithSize("ca-pub-1304704158939332", "myanimelist_ros_230x90", 230, 90);
+						}
+						</script>
+						</div>
+				<div class="ad728">
+						<!-- 728x90 -->
+						<script type="text/javascript">
+						  if (typeof(gnm_ord)=='undefined' || (typeof(ad963_enabled)!= 'undefined' && ad963_enabled == false)) gnm_ord=Math.random()*10000000000000000;
+						  if (typeof(gnm_tile) == 'undefined') gnm_tile=1;
+						  document.write('<scr'+'ipt src="http://n4403ad.doubleclick.net/adj/gn.cr.myanimelist.net/ros;sect=ros;sz=728x90,970x90;dcopt=ist;type=pop;type=int;type=boom;dga=;dgg=;rating=PG-13;tile='+(gnm_tile++)+';ord=' + gnm_ord + ';?" type="text/javascript"></scr' + 'ipt>');
+						</script>
+						</div>
+				</div>
+	<h1><div style="float: right; font-size: 13px;">Ranked #256</div>Sword Art Online</h1>
+	<div id="content">
+	
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+<tr>
+	 <td class="borderClass" width="225" style="border-width: 0 1px 0 0;" valign="top"><div style="text-align: center;"><a href="/anime/11757/Sword_Art_Online/pic&pid=39717"><img src="http://cdn.myanimelist.net/images/anime/11/39717.jpg" alt="Sword Art Online" align="center"></a></div><div id="profileRows"><a href="#addtolistanchor" onclick="myinfo_toggleAdd();">Add to My List</a><a href="javascript:void(0);" onclick="fav_clicker(1,1,11757);" style="font-weight: normal;"><span id="favOutput">Add to Favorites</span></a><a href="javascript:doedit(11757);">Edit Anime Information</a><a onclick="buyAnime(this)" id="rightStufButton" class="btn redButton" data-form-id="rightStufForm">Buy @ RightStuf</a>
+	
+	<a class="btn redButton" target="_blank" href="http://www.amazon.com/gp/search?ie=UTF8&camp=1789&creative=9325&index=dvd&keywords=Sword%20Art%20Online&linkCode=ur2&tag=MyAnimeList-20">Buy from Amazon</a><img src="http://www.assoc-amazon.com/e/ir?t=MyAnimeList-20&l=ur2&o=1" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />
+	
+	<a class="btn redButton" target="_blank" href="http://japan-best.com/en/search?controller=search&orderby=position&orderway=desc&category=10&search_query=Sword%20Art%20Online&submit_search.x=10&submit_%20search.y=-100&submit_search=&a_aid=52284216cdb1e">Buy from Japan-Best</a>
+	
+	<FORM target="_blank" id="rightStufForm" method="POST" action="http://www.rightstuf.com/cgi-bin/catalogmgr/browse/link/t=search,c=right-stuf,v=right-stuf,w=submit,a=myanimelist">
+	<input type="hidden" name="input-title" value="Sword Art Online">
+	<INPUT type=hidden name=use-title value=enabled>
+	<INPUT type=hidden name=select-title-1 value=1>
+	</FORM></div><div class="pw-widget pw-size-medium">
+	<a class="pw-button-facebook"></a>
+	<a class="pw-button-twitter"></a>
+	<a class="pw-button-reddit"></a>
+	<a class="pw-button-baidu"></a>
+	<a class="pw-button-email"></a>
+	<a class="pw-button-post"></a>
+</div>
+<script src="http://i.po.st/share/script/post-widget.js#publisherKey=oe6728mm4cppjqru6bqt" type="text/javascript"></script>
+<div id="editdiv" style="display: none; margin-bottom: 16px;">
+<form method="GET" action="/dbchanges.php" style="display: inline;">
+<input type="hidden" name="aid" value="11757">
+<div class="spaceit_pad">What would you like to edit?</div>
+<select name="t" class="inputtext">
+<option value="synopsis">Synopsis<option value="pic">Picture<option value="airingdates">Airing Dates<option value="producers">Producers<option value="relations">Relations<option value="rating">Rating<option value="duration">Duration
+</select> &nbsp;<input type="submit" value="Go" class="inputButton">
+</form>
+</div>
+<h2>Alternative Titles</h2><div class="spaceit_pad"><span class="dark_text">English:</span> Sword Art Online</div><div class="spaceit_pad"><span class="dark_text">Synonyms:</span> S.A.O, SAO</div><div class="spaceit_pad"><span class="dark_text">Japanese:</span> ソードアート・オンライン</div><br />
+	<h2>Information</h2>
+	<div><span class="dark_text">Type:</span> TV</div>
+	<div class="spaceit"><span class="dark_text">Episodes:</span> 25
+	</div>
+	<div><span class="dark_text">Status:</span> Finished Airing</div>
+	<div class="spaceit"><span class="dark_text">Aired:</span> Jul  8, 2012 to Dec  23, 2012</div>
+	<div><span class="dark_text">Producers:</span> <a href="/anime.php?p=17">Aniplex</a>, <a href="/anime.php?p=56">A-1 Pictures</a>, <a href="/anime.php?p=79">Genco</a>, <a href="/anime.php?p=315">DAX Production</a>, <a href="/anime.php?p=493">Aniplex of America</a><sup><small>L</small></sup>, <a href="/anime.php?p=681">ASCII Media Works</a></div><div class="spaceit"><span class="dark_text">Genres:</span>
+	  <a href="/anime.php?genre[]=1">Action</a>, <a href="/anime.php?genre[]=2">Adventure</a>, <a href="/anime.php?genre[]=10">Fantasy</a>, <a href="/anime.php?genre[]=11">Game</a>, <a href="/anime.php?genre[]=22">Romance</a>, <a href="/anime.php?genre[]=27">Shounen</a></div><div><span class="dark_text">Duration:</span>
+	  23 min. per episode</div><div class="spaceit"><span class="dark_text">Rating:</span>
+	  PG-13 - Teens 13 or older</div>
+	  <sup><small>L</small></sup><small> represents licensing company</small></div>
+	  <br />
+	  <br />
+		<h2>Statistics</h2><div><span class="dark_text">Score:</span> 8.24<sup><small>1</small></sup> <small>(scored by 228875 users)</small></div>
+		<div class="spaceit"><span class="dark_text">Ranked:</span> #256<sup><small>2</small></sup></div>
+		<div><span class="dark_text">Popularity:</span> #8</div>
+		
+		<div class="spaceit"><span class="dark_text">Members:</span> 324,872</div>
+		<div><span class="dark_text">Favorites:</span> 21,086</div><div style="margin-top: 2px;"><small><sup><small>1</small></sup>  indicates a weighted score</small></div>
+		<div><sup><small>2</small></sup><small> based on the <a href="/topanime.php">top anime</a> page.</small></div>
+	<br />
+	<a name="addtolistanchor"></a>
+	<h2>My Info</h2><div><a href="javascript:void(0);" id="addclicker" onclick="myinfo_toggleAdd();">Add to My List</a></div>
+	<div id="addtolist" style="display: none;">
+	<input type="hidden" id="myinfo_anime_id" value="11757">
+	<input type="hidden" id="myinfo_curstatus" value="2">
+
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+	<td class="spaceit">Status:</td>
+	<td class="spaceit"><select id="myinfo_status" name="myinfo_status" onchange="checkEps(this);" class="inputtext"><option value="1" >Watching</option><option value="2" >Completed</option><option value="3" >On-Hold</option><option value="4" >Dropped</option><option value="6" >Plan to Watch</option></select></td>
+	</tr>
+	<tr>
+	<td class="spaceit">Eps Seen:</td>
+	<td class="spaceit"><input type="text" id="myinfo_watchedeps" name="myinfo_watchedeps" size="3" class="inputtext" value=""> / <span id="curEps">25</span></td>
+	</tr>
+	<tr>
+	<td class="spaceit">Your Score:</td>
+	<td class="spaceit"><select id="myinfo_score" name="myinfo_score" class="inputtext"><option value="0">Select</option><option value="10" >(10) Masterpiece</option><option value="9" >(9) Great</option><option value="8" >(8) Very Good</option><option value="7" >(7) Good</option><option value="6" >(6) Fine</option><option value="5" >(5) Average</option><option value="4" >(4) Bad</option><option value="3" >(3) Very Bad</option><option value="2" >(2) Horrible</option><option value="1" >(1) Appalling</option></select></td>
+	</tr>
+	<tr>
+	  <td>&nbsp;</td>
+	  <td><input type="button" name="myinfo_submit" value="Add" onclick="myinfo_addtolist(11757);" class="inputButton"> <span id="addtolistresult"><a href="/panel.php?go=add&selected_series_id=11757">Add Detailed Info</a></span></td>
+	</tr>
+	</table>
+	</div>
+	<div id="myinfoDisplay" style="padding-left: 89px; margin-top: 3px;"></div>
+	<br>
+	  <h2>Popular Tags</h2>
+	  <span style="font-size: 11px;">No tags found</span></td><td valign="top" style="padding: 0;">
+	<a name="lower"></a>
+	<div id="horiznav_nav" style="margin: 5px 0 10px 0;">
+		<ul style="margin-right: 0; padding-right: 0;">
+		<li><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/" >Details</a></li>
+		<li><a  href="http://myanimelist.net/anime/11757/Sword_Art_Online/reviews">Reviews</a></li>
+		<li><a  href="http://myanimelist.net/anime/11757/Sword_Art_Online/userrecs">Recommendations</a>
+		<li><a  href="http://myanimelist.net/anime/11757/Sword_Art_Online/stats">Stats</a></li>
+		<li><a class="horiznav_active" href="http://myanimelist.net/anime/11757/Sword_Art_Online/characters">Characters & Staff</a></li>
+		<li><a  href="http://myanimelist.net/anime/11757/Sword_Art_Online/news">News</a></li>
+		<li><a  href="http://myanimelist.net/anime/11757/Sword_Art_Online/forum">Forum</a></li>
+		<li><a  href="http://myanimelist.net/anime/11757/Sword_Art_Online/pics">Pictures</a></li>
+			<li><a  href="/anime/11757/Sword_Art_Online/moreinfo">More Info</a></li>
+		</ul>
+	</div>
+	<div style="padding: 0 7px;"><h2><div class="floatRightHeader"><a href="#" onclick="window.open('/info.php?go=helpcharva','Help','width=600,height=350,location=0'); return false;">Edit Help</a></div>Characters & Voice Actors</h2><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/36765/Kazuto_Kirigaya" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/13/159377t.jpg" alt="Kirigaya, Kazuto" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/36765/Kazuto_Kirigaya">Kirigaya, Kazuto</a>
+			<div class="spaceit_pad"><small>Main</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/732/Bryce_Papenbrook">Papenbrook, Bryce</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/732/Bryce_Papenbrook"><img src="http://cdn.myanimelist.net/images/voiceactors/3/29853v.jpg" alt="Papenbrook, Bryce" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1110/Alessio_De_Filippis">De Filippis, Alessio</a><br />
+					<small>Italian</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1110/Alessio_De_Filippis"><img src="http://cdn.myanimelist.net/images/voiceactors/3/11716v.jpg" alt="De Filippis, Alessio" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/11817/Yoshitsugu_Matsuoka">Matsuoka, Yoshitsugu</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/11817/Yoshitsugu_Matsuoka"><img src="http://cdn.myanimelist.net/images/voiceactors/2/11844v.jpg" alt="Matsuoka, Yoshitsugu" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/14753/Su_Jin_Kang">Kang, Su Jin</a><br />
+					<small>Korean</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/14753/Su_Jin_Kang"><img src="http://cdn.myanimelist.net/images/voiceactors/2/15289v.jpg" alt="Kang, Su Jin" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/21035/Patrick_Keller">Keller, Patrick</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/21035/Patrick_Keller"><img src="http://cdn.myanimelist.net/images/voiceactors/2/23959v.jpg" alt="Keller, Patrick" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/25691/Damien_Laquet">Laquet, Damien</a><br />
+					<small>French</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/25691/Damien_Laquet"><img src="http://cdn.myanimelist.net/images/voiceactors/1/28001v.jpg" alt="Laquet, Damien" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/36831/Suguha_Kirigaya" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/9/192515t.jpg" alt="Kirigaya, Suguha" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/36831/Suguha_Kirigaya">Kirigaya, Suguha</a>
+			<div class="spaceit_pad"><small>Main</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1415/Eva_Padoan">Padoan, Eva</a><br />
+					<small>Italian</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1415/Eva_Padoan"><img src="http://cdn.myanimelist.net/images/voiceactors/1/1355v.jpg" alt="Padoan, Eva" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1653/Julia_Meynen">Meynen, Julia</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1653/Julia_Meynen"><img src="http://cdn.myanimelist.net/images/voiceactors/2/2770v.jpg" alt="Meynen, Julia" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/6996/Ayana_Taketatsu">Taketatsu, Ayana</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/6996/Ayana_Taketatsu"><img src="http://cdn.myanimelist.net/images/voiceactors/3/15393v.jpg" alt="Taketatsu, Ayana" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/11369/Cassandra_Lee_Morris">Morris, Cassandra Lee</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/11369/Cassandra_Lee_Morris"><img src="http://cdn.myanimelist.net/images/voiceactors/3/13011v.jpg" alt="Morris, Cassandra Lee" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/14865/Yeon_So">So, Yeon</a><br />
+					<small>Korean</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/14865/Yeon_So"><img src="http://cdn.myanimelist.net/images/voiceactors/2/15463v.jpg" alt="So, Yeon" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/36828/Asuna_Yuuki" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/5/177225t.jpg" alt="Yuuki, Asuna" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/36828/Asuna_Yuuki">Yuuki, Asuna</a>
+			<div class="spaceit_pad"><small>Main</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/890/Haruka_Tomatsu">Tomatsu, Haruka</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/890/Haruka_Tomatsu"><img src="http://cdn.myanimelist.net/images/voiceactors/1/19521v.jpg" alt="Tomatsu, Haruka" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1650/Cherami_Leigh">Leigh, Cherami</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1650/Cherami_Leigh"><img src="http://cdn.myanimelist.net/images/voiceactors/3/30331v.jpg" alt="Leigh, Cherami" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/8812/Mi_Sook_Jeong">Jeong, Mi Sook</a><br />
+					<small>Korean</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/8812/Mi_Sook_Jeong"><img src="http://cdn.myanimelist.net/images/voiceactors/1/25851v.jpg" alt="Jeong, Mi Sook" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/9247/Francesca_Manicone">Manicone, Francesca</a><br />
+					<small>Italian</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/9247/Francesca_Manicone"><img src="http://cdn.myanimelist.net/images/voiceactors/2/10999v.jpg" alt="Manicone, Francesca" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/22915/Denise_Monteiro">Monteiro, Denise</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/22915/Denise_Monteiro"><img src="http://cdn.myanimelist.net/images/voiceactors/1/26293v.jpg" alt="Monteiro, Denise" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/43892/Yui" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/13/204447t.jpg" alt="Yui" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/43892/Yui">Yui</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/396/Stephanie_Sheh">Sheh, Stephanie</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/396/Stephanie_Sheh"><img src="http://cdn.myanimelist.net/images/voiceactors/3/20363v.jpg" alt="Sheh, Stephanie" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/762/Kanae_Itou">Itou, Kanae</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/762/Kanae_Itou"><img src="http://cdn.myanimelist.net/images/voiceactors/2/22798v.jpg" alt="Itou, Kanae" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/14769/Min_Jeong_Yeo">Yeo, Min Jeong</a><br />
+					<small>Korean</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/14769/Min_Jeong_Yeo"><img src="http://cdn.myanimelist.net/images/voiceactors/3/15317v.jpg" alt="Yeo, Min Jeong" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/31957/Christiane_Werk">Werk, Christiane</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/31957/Christiane_Werk"><img src="http://cdn.myanimelist.net/images/voiceactors/1/32995v.jpg" alt="Werk, Christiane" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/54777/Sachi" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/12/175995t.jpg" alt="Sachi" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/54777/Sachi">Sachi</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/869/Saori_Hayami">Hayami, Saori</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/869/Saori_Hayami"><img src="http://cdn.myanimelist.net/images/voiceactors/3/32733v.jpg" alt="Hayami, Saori" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/8492/Xanthe_Huynh">Huynh, Xanthe</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/8492/Xanthe_Huynh"><img src="http://cdn.myanimelist.net/images/voiceactors/1/12013v.jpg" alt="Huynh, Xanthe" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/22919/Kristin_Wöckel">Wöckel, Kristin</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/22919/Kristin_Wöckel"><img src="http://cdn.myanimelist.net/images/voiceactors/3/26297v.jpg" alt="Wöckel, Kristin" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/54779/Keita" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/13/173819t.jpg" alt="Keita" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/54779/Keita">Keita</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/600/Toshiyuki_Toyonaga">Toyonaga, Toshiyuki</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/600/Toshiyuki_Toyonaga"><img src="http://cdn.myanimelist.net/images/voiceactors/2/13289v.jpg" alt="Toyonaga, Toshiyuki" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/20853/Lucien_Dodge">Dodge, Lucien</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/20853/Lucien_Dodge"><img src="http://cdn.myanimelist.net/images/voiceactors/1/23801v.jpg" alt="Dodge, Lucien" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/65169/Diabel" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/4/174903t.jpg" alt="Diabel" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/65169/Diabel">Diabel</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/257/Nobuyuki_Hiyama">Hiyama, Nobuyuki</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/257/Nobuyuki_Hiyama"><img src="http://cdn.myanimelist.net/images/voiceactors/1/12505v.jpg" alt="Hiyama, Nobuyuki" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1003/Fritz_Rott">Rott, Fritz</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1003/Fritz_Rott"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Rott, Fritz" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/27075/Sean_Chiplock">Chiplock, Sean</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/27075/Sean_Chiplock"><img src="http://cdn.myanimelist.net/images/voiceactors/1/28977v.jpg" alt="Chiplock, Sean" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/65171/Kibaou" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/5/174905t.jpg" alt="Kibaou" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/65171/Kibaou">Kibaou</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1/Tomokazu_Seki">Seki, Tomokazu</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1/Tomokazu_Seki"><img src="http://cdn.myanimelist.net/images/voiceactors/3/17141v.jpg" alt="Seki, Tomokazu" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/390/Derek_Stephen_Prince">Prince, Derek Stephen</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/390/Derek_Stephen_Prince"><img src="http://cdn.myanimelist.net/images/voiceactors/2/15719v.jpg" alt="Prince, Derek Stephen" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/66327/Kuradeel" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/2/177111t.jpg" alt="Kuradeel" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/66327/Kuradeel">Kuradeel</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/68/Kouji_Yusa">Yusa, Kouji</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/68/Kouji_Yusa"><img src="http://cdn.myanimelist.net/images/voiceactors/2/10489v.jpg" alt="Yusa, Kouji" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1261/Ivo_De_palma">De palma, Ivo</a><br />
+					<small>Italian</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1261/Ivo_De_palma"><img src="http://cdn.myanimelist.net/images/voiceactors/3/1257v.jpg" alt="De palma, Ivo" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1547/Doug_Erholtz">Erholtz, Doug</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1547/Doug_Erholtz"><img src="http://cdn.myanimelist.net/images/voiceactors/3/24653v.jpg" alt="Erholtz, Doug" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/66645/Argo" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/6/184741t.jpg" alt="Argo" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/66645/Argo">Argo</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/11369/Cassandra_Lee_Morris">Morris, Cassandra Lee</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/11369/Cassandra_Lee_Morris"><img src="http://cdn.myanimelist.net/images/voiceactors/3/13011v.jpg" alt="Morris, Cassandra Lee" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/16453/Shiori_Izawa">Izawa, Shiori</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/16453/Shiori_Izawa"><img src="http://cdn.myanimelist.net/images/voiceactors/1/26147v.jpg" alt="Izawa, Shiori" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/67149/Caynz" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/12/176791t.jpg" alt="Caynz" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/67149/Caynz">Caynz</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/336/Kyle_Hebert">Hebert, Kyle</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/336/Kyle_Hebert"><img src="http://cdn.myanimelist.net/images/voiceactors/1/24209v.jpg" alt="Hebert, Kyle" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/911/Tokuyoshi_Kawashima">Kawashima, Tokuyoshi</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/911/Tokuyoshi_Kawashima"><img src="http://cdn.myanimelist.net/images/voiceactors/1/10205v.jpg" alt="Kawashima, Tokuyoshi" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/67151/Yolko" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/16/175847t.jpg" alt="Yolko" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/67151/Yolko">Yolko</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1284/Jolanda_Granato">Granato, Jolanda</a><br />
+					<small>Italian</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1284/Jolanda_Granato"><img src="http://cdn.myanimelist.net/images/voiceactors/3/1277v.jpg" alt="Granato, Jolanda" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/12490/Nozomi_Yamamoto">Yamamoto, Nozomi</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/12490/Nozomi_Yamamoto"><img src="http://cdn.myanimelist.net/images/voiceactors/2/12216v.jpg" alt="Yamamoto, Nozomi" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/22929/Nora_Jokhosha">Jokhosha, Nora</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/22929/Nora_Jokhosha"><img src="http://cdn.myanimelist.net/images/voiceactors/3/26307v.jpg" alt="Jokhosha, Nora" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/23713/Natalie_Hoover">Hoover, Natalie</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/23713/Natalie_Hoover"><img src="http://cdn.myanimelist.net/images/voiceactors/1/26541v.jpg" alt="Hoover, Natalie" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/68885/Heathcliff" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/2/178383t.jpg" alt="Heathcliff" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/68885/Heathcliff">Heathcliff</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/243/Tooru_Ookawa">Ookawa, Tooru</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/243/Tooru_Ookawa"><img src="http://cdn.myanimelist.net/images/voiceactors/2/11487v.jpg" alt="Ookawa, Tooru" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/858/Kevin_M._Connolly">Connolly, Kevin M.</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/858/Kevin_M._Connolly"><img src="http://cdn.myanimelist.net/images/voiceactors/1/22315v.jpg" alt="Connolly, Kevin M." border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/9534/Marco_Balzarotti">Balzarotti, Marco</a><br />
+					<small>Italian</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/9534/Marco_Balzarotti"><img src="http://cdn.myanimelist.net/images/voiceactors/3/7065v.jpg" alt="Balzarotti, Marco" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/69403/Godfrey" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/10/179187t.jpg" alt="Godfrey" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/69403/Godfrey">Godfrey</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/179/Masashi_Ebara">Ebara, Masashi</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/179/Masashi_Ebara"><img src="http://cdn.myanimelist.net/images/voiceactors/2/16615v.jpg" alt="Ebara, Masashi" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/336/Kyle_Hebert">Hebert, Kyle</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/336/Kyle_Hebert"><img src="http://cdn.myanimelist.net/images/voiceactors/1/24209v.jpg" alt="Hebert, Kyle" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/70677/Sasha" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/6/181189t.jpg" alt="Sasha" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/70677/Sasha">Sasha</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/19335/Kyoko_Fujii">Fujii, Kyoko</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/19335/Kyoko_Fujii"><img src="http://cdn.myanimelist.net/images/voiceactors/2/22059v.jpg" alt="Fujii, Kyoko" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/21785/Erika_Harlacher">Harlacher, Erika</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/21785/Erika_Harlacher"><img src="http://cdn.myanimelist.net/images/voiceactors/3/26655v.jpg" alt="Harlacher, Erika" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/70679/Yuriel" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/16/181195t.jpg" alt="Yuriel" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/70679/Yuriel">Yuriel</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/348/Ryoko_Shiraishi">Shiraishi, Ryoko</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/348/Ryoko_Shiraishi"><img src="http://cdn.myanimelist.net/images/voiceactors/3/26923v.jpg" alt="Shiraishi, Ryoko" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/13703/Amanda_Celine_Miller">Miller, Amanda Celine</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/13703/Amanda_Celine_Miller"><img src="http://cdn.myanimelist.net/images/voiceactors/1/13887v.jpg" alt="Miller, Amanda Celine" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/70681/Thinker" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/11/181191t.jpg" alt="Thinker" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/70681/Thinker">Thinker</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/279/Takahiro_Mizushima">Mizushima, Takahiro</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/279/Takahiro_Mizushima"><img src="http://cdn.myanimelist.net/images/voiceactors/3/25331v.jpg" alt="Mizushima, Takahiro" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/8757/René_Dawn-Claude">Dawn-Claude, René</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/8757/René_Dawn-Claude"><img src="http://cdn.myanimelist.net/images/voiceactors/3/6147v.jpg" alt="Dawn-Claude, René" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/70683/PoH" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/14/181193t.jpg" alt="PoH" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/70683/PoH">PoH</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/285/Tsuyoshi_Koyama">Koyama, Tsuyoshi</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/285/Tsuyoshi_Koyama"><img src="http://cdn.myanimelist.net/images/voiceactors/2/8108v.jpg" alt="Koyama, Tsuyoshi" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/71579/Rosalia" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/3/183337t.jpg" alt="Rosalia" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/71579/Rosalia">Rosalia</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/144/Megumi_Toyoguchi">Toyoguchi, Megumi</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/144/Megumi_Toyoguchi"><img src="http://cdn.myanimelist.net/images/voiceactors/2/14823v.jpg" alt="Toyoguchi, Megumi" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/13705/Laura_Post">Post, Laura</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/13705/Laura_Post"><img src="http://cdn.myanimelist.net/images/voiceactors/3/25065v.jpg" alt="Post, Laura" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/72337/Schmitt" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/12/184325t.jpg" alt="Schmitt" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/72337/Schmitt">Schmitt</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/102/Masayuki_Katou">Katou, Masayuki</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/102/Masayuki_Katou"><img src="http://cdn.myanimelist.net/images/voiceactors/1/11815v.jpg" alt="Katou, Masayuki" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/8491/Kaiji_Tang">Tang, Kaiji</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/8491/Kaiji_Tang"><img src="http://cdn.myanimelist.net/images/voiceactors/3/23861v.jpg" alt="Tang, Kaiji" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/72339/Tetsuo" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/12/185411t.jpg" alt="Tetsuo" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/72339/Tetsuo">Tetsuo</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/7512/Kenji_Akabane">Akabane, Kenji</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/7512/Kenji_Akabane"><img src="http://cdn.myanimelist.net/images/voiceactors/1/25561v.jpg" alt="Akabane, Kenji" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/72341/Sasamaru" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/13/185409t.jpg" alt="Sasamaru" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/72341/Sasamaru">Sasamaru</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/556/Tsubasa_Yonaga">Yonaga, Tsubasa</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/556/Tsubasa_Yonaga"><img src="http://cdn.myanimelist.net/images/voiceactors/3/17889v.jpg" alt="Yonaga, Tsubasa" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/72343/Ducker" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/15/185413t.jpg" alt="Ducker" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/72343/Ducker">Ducker</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/7695/Takuya_Eguchi">Eguchi, Takuya</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/7695/Takuya_Eguchi"><img src="http://cdn.myanimelist.net/images/voiceactors/3/31795v.jpg" alt="Eguchi, Takuya" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/21481/Erik_Kimerer">Kimerer, Erik</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/21481/Erik_Kimerer"><img src="http://cdn.myanimelist.net/images/voiceactors/3/24681v.jpg" alt="Kimerer, Erik" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/72345/Grimlock" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/14/185403t.jpg" alt="Grimlock" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/72345/Grimlock">Grimlock</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/109/Ken_Narita">Narita, Ken</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/109/Ken_Narita"><img src="http://cdn.myanimelist.net/images/voiceactors/2/25305v.jpg" alt="Narita, Ken" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/72347/Nishida" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/7/185393t.jpg" alt="Nishida" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/72347/Nishida">Nishida</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1431/Shirou_Saitou">Saitou, Shirou</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1431/Shirou_Saitou"><img src="http://cdn.myanimelist.net/images/voiceactors/1/9500v.jpg" alt="Saitou, Shirou" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/72653/Kagemune" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/3/187199t.jpg" alt="Kagemune" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/72653/Kagemune">Kagemune</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/394/Mitsuaki_Madono">Madono, Mitsuaki</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/394/Mitsuaki_Madono"><img src="http://cdn.myanimelist.net/images/voiceactors/2/15923v.jpg" alt="Madono, Mitsuaki" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/5476/Keith_Silverstein">Silverstein, Keith</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/5476/Keith_Silverstein"><img src="http://cdn.myanimelist.net/images/voiceactors/1/33313v.jpg" alt="Silverstein, Keith" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/72711/Corbert" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/16/185399t.jpg" alt="Corbert" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/72711/Corbert">Corbert</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/395/Tetsu_Inada">Inada, Tetsu</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/395/Tetsu_Inada"><img src="http://cdn.myanimelist.net/images/voiceactors/3/32729v.jpg" alt="Inada, Tetsu" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/72901/Alicia_Rue" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/14/187203t.jpg" alt="Alicia Rue" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/72901/Alicia_Rue">Alicia Rue</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/61/Chiwa_Saito">Saito, Chiwa</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/61/Chiwa_Saito"><img src="http://cdn.myanimelist.net/images/voiceactors/1/32829v.jpg" alt="Saito, Chiwa" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/489/Cristina_Valenzuela">Valenzuela, Cristina</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/489/Cristina_Valenzuela"><img src="http://cdn.myanimelist.net/images/voiceactors/1/3644v.jpg" alt="Valenzuela, Cristina" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/72903/Eugene" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/8/187201t.jpg" alt="Eugene" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/72903/Eugene">Eugene</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/720/Kenta_Miyake">Miyake, Kenta</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/720/Kenta_Miyake"><img src="http://cdn.myanimelist.net/images/voiceactors/3/10303v.jpg" alt="Miyake, Kenta" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/72905/Sigurd" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/10/192503t.jpg" alt="Sigurd" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/72905/Sigurd">Sigurd</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/296/Takuya_Kirimoto">Kirimoto, Takuya</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/296/Takuya_Kirimoto"><img src="http://cdn.myanimelist.net/images/voiceactors/1/17441v.jpg" alt="Kirimoto, Takuya" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/654/Tony_Oliver">Oliver, Tony</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/654/Tony_Oliver"><img src="http://cdn.myanimelist.net/images/voiceactors/2/12598v.jpg" alt="Oliver, Tony" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/73811/Sakuya" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/7/187205t.jpg" alt="Sakuya" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/73811/Sakuya">Sakuya</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/380/Sayuri_Yahagi">Yahagi, Sayuri</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/380/Sayuri_Yahagi"><img src="http://cdn.myanimelist.net/images/voiceactors/2/23777v.jpg" alt="Yahagi, Sayuri" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/7993/Lauren_Landa">Landa, Lauren</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/7993/Lauren_Landa"><img src="http://cdn.myanimelist.net/images/voiceactors/1/16813v.jpg" alt="Landa, Lauren" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/74093/Jitax" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/10/192501t.jpg" alt="Jitax" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/74093/Jitax">Jitax</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/738/Kazunari_Tanaka">Tanaka, Kazunari</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/738/Kazunari_Tanaka"><img src="http://cdn.myanimelist.net/images/voiceactors/2/17731v.jpg" alt="Tanaka, Kazunari" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/37681/Keiko_Ayano" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/7/166547t.jpg" alt="Ayano, Keiko" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/37681/Keiko_Ayano">Ayano, Keiko</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1233/Serena_Clerici">Clerici, Serena</a><br />
+					<small>Italian</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1233/Serena_Clerici"><img src="http://cdn.myanimelist.net/images/voiceactors/1/10923v.jpg" alt="Clerici, Serena" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/5250/Rina_Hidaka">Hidaka, Rina</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/5250/Rina_Hidaka"><img src="http://cdn.myanimelist.net/images/voiceactors/3/17977v.jpg" alt="Hidaka, Rina" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/12344/Christine_Marie_Cabanos">Cabanos, Christine Marie</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/12344/Christine_Marie_Cabanos"><img src="http://cdn.myanimelist.net/images/voiceactors/2/19803v.jpg" alt="Cabanos, Christine Marie" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/22903/Tanja_Esche">Esche, Tanja</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/22903/Tanja_Esche"><img src="http://cdn.myanimelist.net/images/voiceactors/1/26285v.jpg" alt="Esche, Tanja" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/70687/Atsushi_Kanemoto" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/3/181325t.jpg" alt="Kanemoto, Atsushi" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/70687/Atsushi_Kanemoto">Kanemoto, Atsushi</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/15743/Ryota_Ohsaka">Ohsaka, Ryota</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/15743/Ryota_Ohsaka"><img src="http://cdn.myanimelist.net/images/voiceactors/3/26149v.jpg" alt="Ohsaka, Ryota" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/36829/Akihiko_Kayaba" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/2/192505t.jpg" alt="Kayaba, Akihiko" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/36829/Akihiko_Kayaba">Kayaba, Akihiko</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/11/Kouichi_Yamadera">Yamadera, Kouichi</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/11/Kouichi_Yamadera"><img src="http://cdn.myanimelist.net/images/voiceactors/3/27897v.jpg" alt="Yamadera, Kouichi" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1418/Marc_Diraison">Diraison, Marc</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1418/Marc_Diraison"><img src="http://cdn.myanimelist.net/images/voiceactors/1/1359v.jpg" alt="Diraison, Marc" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/36833/Midori_Kirigaya" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/4/192507t.jpg" alt="Kirigaya, Midori" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/36833/Midori_Kirigaya">Kirigaya, Midori</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/54/Aya_Endou">Endou, Aya</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/54/Aya_Endou"><img src="http://cdn.myanimelist.net/images/voiceactors/3/10132v.jpg" alt="Endou, Aya" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/313/Caitlin_Glass">Glass, Caitlin</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/313/Caitlin_Glass"><img src="http://cdn.myanimelist.net/images/voiceactors/1/29837v.jpg" alt="Glass, Caitlin" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/22917/Gabi_Franke">Franke, Gabi</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/22917/Gabi_Franke"><img src="http://cdn.myanimelist.net/images/voiceactors/3/26295v.jpg" alt="Franke, Gabi" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/54099/Andrew_Gilbert_Mills" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/7/177117t.jpg" alt="Mills, Andrew Gilbert" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/54099/Andrew_Gilbert_Mills">Mills, Andrew Gilbert</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/25/Hiroki_Yasumoto">Yasumoto, Hiroki</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/25/Hiroki_Yasumoto"><img src="http://cdn.myanimelist.net/images/voiceactors/3/18239v.jpg" alt="Yasumoto, Hiroki" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/340/Patrick_Seitz">Seitz, Patrick</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/340/Patrick_Seitz"><img src="http://cdn.myanimelist.net/images/voiceactors/3/23365v.jpg" alt="Seitz, Patrick" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1289/Claudio_Moneta">Moneta, Claudio</a><br />
+					<small>Italian</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1289/Claudio_Moneta"><img src="http://cdn.myanimelist.net/images/voiceactors/3/1281v.jpg" alt="Moneta, Claudio" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/72349/Shinichi_Nagata" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/2/192511t.jpg" alt="Nagata, Shinichi" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/72349/Shinichi_Nagata">Nagata, Shinichi</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/1160/Davide_Garbolino">Garbolino, Davide</a><br />
+					<small>Italian</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/1160/Davide_Garbolino"><img src="http://cdn.myanimelist.net/images/voiceactors/1/1284v.jpg" alt="Garbolino, Davide" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/7992/Marianne_Miller">Miller, Marianne</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/7992/Marianne_Miller"><img src="http://cdn.myanimelist.net/images/voiceactors/1/22892v.jpg" alt="Miller, Marianne" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/15919/Ayumu_Murase">Murase, Ayumu</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/15919/Ayumu_Murase"><img src="http://cdn.myanimelist.net/images/voiceactors/2/32399v.jpg" alt="Murase, Ayumu" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/22921/Florian_Hoffmann">Hoffmann, Florian</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/22921/Florian_Hoffmann"><img src="http://cdn.myanimelist.net/images/voiceactors/2/26301v.jpg" alt="Hoffmann, Florian" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/70685/Shouichi_Shinkawa" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/11/181323t.jpg" alt="Shinkawa, Shouichi" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/70685/Shouichi_Shinkawa">Shinkawa, Shouichi</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">&nbsp;
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/43906/Rika_Shinozaki" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/9/166543t.jpg" alt="Shinozaki, Rika" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/43906/Rika_Shinozaki">Shinozaki, Rika</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/823/Ayahi_Takagaki">Takagaki, Ayahi</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/823/Ayahi_Takagaki"><img src="http://cdn.myanimelist.net/images/voiceactors/3/12696v.jpg" alt="Takagaki, Ayahi" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/14285/Sarah_Williams">Williams, Sarah</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/14285/Sarah_Williams"><img src="http://cdn.myanimelist.net/images/voiceactors/2/20265v.jpg" alt="Williams, Sarah" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/14823/Mi_Na_Yun">Yun, Mi Na</a><br />
+					<small>Korean</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/14823/Mi_Na_Yun"><img src="http://cdn.myanimelist.net/images/voiceactors/2/15395v.jpg" alt="Yun, Mi Na" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/22901/Nina_Amerschläger">Amerschläger, Nina</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/22901/Nina_Amerschläger"><img src="http://cdn.myanimelist.net/images/voiceactors/2/26283v.jpg" alt="Amerschläger, Nina" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/71581/Nobuyuki_Sugou" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/5/192509t.jpg" alt="Sugou, Nobuyuki" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/71581/Nobuyuki_Sugou">Sugou, Nobuyuki</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/160/Takehito_Koyasu">Koyasu, Takehito</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/160/Takehito_Koyasu"><img src="http://cdn.myanimelist.net/images/voiceactors/2/10264v.jpg" alt="Koyasu, Takehito" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/860/Todd_Haberkorn">Haberkorn, Todd</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/860/Todd_Haberkorn"><img src="http://cdn.myanimelist.net/images/voiceactors/2/923v.jpg" alt="Haberkorn, Todd" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/20082/Ruggero_Andreozzi">Andreozzi, Ruggero</a><br />
+					<small>Italian</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/20082/Ruggero_Andreozzi"><img src="http://cdn.myanimelist.net/images/voiceactors/3/22431v.jpg" alt="Andreozzi, Ruggero" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/20905/Peter_Lehn">Lehn, Peter</a><br />
+					<small>German</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/20905/Peter_Lehn"><img src="http://cdn.myanimelist.net/images/voiceactors/2/23275v.jpg" alt="Lehn, Peter" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/36830/Ryoutarou_Tsuboi" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/14/177109t.jpg" alt="Tsuboi, Ryoutarou" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/36830/Ryoutarou_Tsuboi">Tsuboi, Ryoutarou</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/125/Hiroaki_Hirata">Hirata, Hiroaki</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/125/Hiroaki_Hirata"><img src="http://cdn.myanimelist.net/images/voiceactors/3/5346v.jpg" alt="Hirata, Hiroaki" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/232/Kirk_Thornton">Thornton, Kirk</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/232/Kirk_Thornton"><img src="http://cdn.myanimelist.net/images/voiceactors/3/12848v.jpg" alt="Thornton, Kirk" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/36832/Shouzou_Yuuki" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/16/185417t.jpg" alt="Yuuki, Shouzou" vspace="4" hspace="8" border="0"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/36832/Shouzou_Yuuki">Yuuki, Shouzou</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/5476/Keith_Silverstein">Silverstein, Keith</a><br />
+					<small>English</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/5476/Keith_Silverstein"><img src="http://cdn.myanimelist.net/images/voiceactors/1/33313v.jpg" alt="Silverstein, Keith" border="0"></a></div>
+					</td>
+					</tr>
+					<tr>
+					<td valign="top" align="right" style="padding: 0 4px;" nowrap>
+					<a href="/people/6755/Kazuhiro_Yamaji">Yamaji, Kazuhiro</a><br />
+					<small>Japanese</small>
+					</td>
+					<td valign="top"><div class="picSurround"><a href="/people/6755/Kazuhiro_Yamaji"><img src="http://cdn.myanimelist.net/images/voiceactors/1/11275v.jpg" alt="Yamaji, Kazuhiro" border="0"></a></div>
+					</td>
+					</tr>
+				<tr>
+				</table>
+			</td>
+			</tr>
+			</table>
+	<br><a name="staff"></a>
+	<h2><div class="floatRightHeader"><a href="/dbchanges.php?aid=11757&t=staff">Add staff</a></div>Staff</h2>
+	
+		<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/14031/Iwakami_Atsuhiro"><img src="http://cdn.myanimelist.net/images/voiceactors/1/29425v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor"><a href="/people/14031/Iwakami_Atsuhiro">Iwakami, Atsuhiro</a>
+				<br><small>Producer</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/9323/Mori_Yasunori"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/9323/Mori_Yasunori">Mori, Yasunori</a>
+				<br><small>Producer</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/10801/Itou_Tomohiko"><img src="http://cdn.myanimelist.net/images/voiceactors/3/17855v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/10801/Itou_Tomohiko">Itou, Tomohiko</a>
+				<br><small>Director, Episode Director, Storyboard</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/6016/Iwanami_Yoshikazu"><img src="http://cdn.myanimelist.net/images/voiceactors/3/2623v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/6016/Iwanami_Yoshikazu">Iwanami, Yoshikazu</a>
+				<br><small>Sound Director</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/19775/Fujiwara_Yoshiyuki"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/19775/Fujiwara_Yoshiyuki">Fujiwara, Yoshiyuki</a>
+				<br><small>Episode Director, Storyboard, Key Animation, 2nd Key Animation</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/21215/Shikama_Takahiro"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/21215/Shikama_Takahiro">Shikama, Takahiro</a>
+				<br><small>Episode Director, Storyboard, Key Animation</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/22203/David_Alex_Von"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/22203/David_Alex_Von">David, Alex Von</a>
+				<br><small>Script, ADR Director</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/25893/Tamura_Koutarou"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/25893/Tamura_Koutarou">Tamura, Koutarou</a>
+				<br><small>Storyboard</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/29577/Shigenaga_Ryosuke"><img src="http://cdn.myanimelist.net/images/voiceactors/3/30889v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/29577/Shigenaga_Ryosuke">Shigenaga, Ryosuke</a>
+				<br><small>Theme Song Composition, Theme Song Lyrics, Theme Song Arrangement</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/10561/LiSA"><img src="http://cdn.myanimelist.net/images/voiceactors/1/13915v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/10561/LiSA">LiSA</a>
+				<br><small>Theme Song Performance</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/14345/Watanabe_Sho"><img src="http://cdn.myanimelist.net/images/voiceactors/1/27923v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/14345/Watanabe_Sho">Watanabe, Sho</a>
+				<br><small>Theme Song Composition, Theme Song Lyrics</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/13693/Aoi_Eir"><img src="http://cdn.myanimelist.net/images/voiceactors/1/22105v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/13693/Aoi_Eir">Aoi, Eir</a>
+				<br><small>Theme Song Performance</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/890/Tomatsu_Haruka"><img src="http://cdn.myanimelist.net/images/voiceactors/1/19521v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/890/Tomatsu_Haruka">Tomatsu, Haruka</a>
+				<br><small>Theme Song Performance</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/15651/Haruna_Luna"><img src="http://cdn.myanimelist.net/images/voiceactors/1/32477v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/15651/Haruna_Luna">Haruna, Luna</a>
+				<br><small>Theme Song Performance</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/9890/REMI"><img src="http://cdn.myanimelist.net/images/voiceactors/3/8273v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/9890/REMI">REMI</a>
+				<br><small>Music</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/29525/Nakayama_Ryuu"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/29525/Nakayama_Ryuu">Nakayama, Ryuu</a>
+				<br><small>2nd Key Animation, Key Animation</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/5077/Kajiura_Yuki"><img src="http://cdn.myanimelist.net/images/voiceactors/1/11743v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/5077/Kajiura_Yuki">Kajiura, Yuki</a>
+				<br><small>Music</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/15189/Adachi_Shingo"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/15189/Adachi_Shingo">Adachi, Shingo</a>
+				<br><small>Character Design, Chief Animation Director</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/30527/Ishida_Keiichi"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/30527/Ishida_Keiichi">Ishida, Keiichi</a>
+				<br><small>Key Animation</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/8102/Takeda_Yusuke"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/8102/Takeda_Yusuke">Takeda, Yusuke</a>
+				<br><small>Art Director</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/11466/Kawahara_Reki"><img src="http://cdn.myanimelist.net/images/voiceactors/3/24769v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/11466/Kawahara_Reki">Kawahara, Reki</a>
+				<br><small>Original Creator</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/15949/Akai_Toshifumi"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/15949/Akai_Toshifumi">Akai, Toshifumi</a>
+				<br><small>Key Animation</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/28577/Kawakami_Tetsuya"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/28577/Kawakami_Tetsuya">Kawakami, Tetsuya</a>
+				<br><small>Chief Animation Director, Character Design</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/869/Hayami_Saori"><img src="http://cdn.myanimelist.net/images/voiceactors/3/32733v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/869/Hayami_Saori">Hayami, Saori</a>
+				<br><small>Inserted Song Performance</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/21271/Abe_Nozomu"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/21271/Abe_Nozomu">Abe, Nozomu</a>
+				<br><small>Key Animation</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/5956/Amemiya_Akira"><img src="http://cdn.myanimelist.net/images/voiceactors/2/12704v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/5956/Amemiya_Akira">Amemiya, Akira</a>
+				<br><small>Key Animation</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/19916/Arai_Jun"><img src="http://cdn.myanimelist.net/images/voiceactors/3/23247v.jpg"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/19916/Arai_Jun">Arai, Jun</a>
+				<br><small>Key Animation</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/17785/abec"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/17785/abec">abec</a>
+				<br><small>Original Character Design</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/28583/Hamaguchi_Akira"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/28583/Hamaguchi_Akira">Hamaguchi, Akira</a>
+				<br><small>Key Animation</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/11008/Buriki"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/11008/Buriki">Buriki</a>
+				<br><small>Principle Drawing</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/21017/Tomioka_Hiroshi"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/21017/Tomioka_Hiroshi">Tomioka, Hiroshi</a>
+				<br><small>Key Animation</small></td>
+			</tr>
+			
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/30003/Miwa_Kazuhiro"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/30003/Miwa_Kazuhiro">Miwa, Kazuhiro</a>
+				<br><small>Key Animation</small></td>
+			</tr>
+			</table>
+</div>
+</td>
+</tr>
+</table>
+
+</div>
+
+<div id="rightcontentunder">
+
+<a href="/about.php?go=support">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/modules.php?go=faq">FAQ</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/about.php">About</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="/about.php?go=contact">Contact</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://www.craveonline.com/termsofuse.php?site=www.MyAnimeList.net" target="_blank">Terms</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="http://www.craveonline.com/privacy.php?site=www.MyAnimeList.net" target="_blank">Privacy</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a id="_bapw-link" href="#" target="_blank" style=""><img id="_bapw-icon" style="border:0 !important;display:inline !important;vertical-align:middle !important"/> <span style="vertical-align:middle !important">AdChoices</span></a><script>/*<![CDATA[*/(function(){var c=247,g=595,b=false,i=document,f=i.getElementById("_bapw-link"),a=(i.location.protocol=="https:"?"https":"http"),h=(a=="https"?"https://info.evidon.com/c/betrad/pub/":"http://cdn.betrad.com/pub/");function e(j){var d=new Image();d.src=a+"://l.betrad.com/pub/p.gif?pid="+c+"&ocid="+g+"&i"+j+"=1&r="+Math.random()}i.getElementById("_bapw-icon").src=h+"icon1.png";f.onmouseover=function(){if(/#$/.test(f.href)){f.href="http://info.evidon.com/pub_info/"+c+"?v=1"}};f.onclick=function(){var j=window._bap_p_overrides;function d(m,p){var n=i.getElementsByTagName("head")[0]||i.documentElement,l=b,k=i.createElement("script");function o(){k.onload=k.onreadystatechange=null;n.removeChild(k);p()}k.src=m;k.onreadystatechange=function(){if(!l&&(this.readyState=="loaded"||this.readyState=="complete")){l=true;o()}};k.onload=o;n.insertBefore(k,n.firstChild)}if(j&&j.hasOwnProperty(c)){if(j[c].new_window){e("c");return true}}this.onclick="return "+b;d(a+"://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js",function(){d(h+"pub2.js",function(){BAPW.i(f,{pid:c,ocid:g})})});return b};e("i")}());/*]]>*/</script>
+	
+<div id="copyright">
+MyAnimeList.net is a property of <a href="http://www.craveonline.com">CraveOnline</a>, LLC. an <a href="http://www.evolvemediallc.com">Evolve Media</a>, LLC company. &copy;2013 All Rights Reserved. <div style="position: absolute; left: -999em">monitoring_string = "1d62297d23059a80b6e7551767f2653f"</div>
+</div>
+
+</div>
+
+</div>
+
+<!--  control container height -->
+<div style="clear:both;"></div>
+
+<!-- end rightbody -->
+</div>
+
+
+</div>
+<!-- Begin comScore Tag -->
+<script>
+    document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
+</script>
+
+<script>
+  COMSCORE.beacon({
+    c1:2,
+    c2:6036161,
+    c3:"",
+    c4:"",
+    c5:"",
+    c6:"",
+    c15:""
+  });
+</script>
+<noscript>
+  <img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&c3=&c4=&c5=&c6=&c15=&cj=1" />
+</noscript>
+<!-- End comScore Tag -->
+
+<!-- start Vibrant Media IntelliTXT script section -->
+<script type="text/javascript" src="http://myanimelist.us.intellitxt.com/intellitxt/front.asp?ipid=30532"></script>
+<!-- end Vibrant Media IntelliTXT script section -->
+	
+	<script type="text/javascript" src="http://cdn1.craveonline.com/libraries/pebblebed/js/cookie_notice.min.js"></script>
+	
+<script type="text/javascript">
+//<![CDATA[
+(function() {
+var _analytics_scr = document.createElement('script');
+_analytics_scr.type = 'text/javascript'; _analytics_scr.async = true; _analytics_scr.src = '/_Incapsula_Resource?SWJIYLWA=2977d8d74f63d7f8fedbea018b7a1d05&ns=2';
+var _analytics_elem = document.getElementsByTagName('script')[0]; _analytics_elem.parentNode.insertBefore(_analytics_scr, _analytics_elem);
+})();
+// ]]>
+</script></body>
+</html>
