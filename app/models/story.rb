@@ -27,7 +27,7 @@ class Story < ActiveRecord::Base
 
   def self.for_user_and_anime(user, anime, story_type="media_story")
     story = user.stories.where(story_type: story_type, target_id: anime.id, target_type: "Anime")
-    watchlist = Watchlist.find_by_user_id_and_anime_id(user.id, anime.id)
+    watchlist = Watchlist.find_by(user_id: user.id, anime_id: anime.id)
     if story.length > 0
       story = story[0]
       story.watchlist = watchlist

@@ -9,20 +9,6 @@ module ApplicationHelper
     sanitize(RDiscount.new(Haml::Helpers.html_escape(text)).to_html).html_safe
   end
 
-  def percentage_completed(anime, watchlist)
-    return 0 if !watchlist or !anime.episode_count
-
-    if anime.episode_count == 0
-      if watchlist.status == "Finished"
-        return 100.0
-      else
-        return 2.0
-      end
-    else
-      2.0 + ((watchlist.episodes_watched || 0) * 98.0 / anime.episode_count).to_i
-    end
-  end
-
   # Convert minutes into a string like "1 month, 4 days, 21 hours and 7 minutes"
   def format_minutes(minutes)
     return "0 minutes" if minutes.nil? or minutes == 0
@@ -44,14 +30,6 @@ module ApplicationHelper
       return oarray[0]
     else
       return (oarray[0..-2] * ', ') + " and #{oarray[-1]}"
-    end
-  end
-
-  def overlay_quote_from_anime(anime)
-    if anime and quote = anime.quotes.order('RANDOM()').first
-      quote
-    else
-      Quote.includes(:anime).where("anime.age_rating <> 'R18+'").references(:anime).where('"quotes"."id" >= (SELECT RANDOM() * MAX("id") FROM "quotes")::integer').first
     end
   end
 
@@ -88,12 +66,12 @@ module ApplicationHelper
     if difference_in_seconds < 60
       return pluralize(difference_in_seconds, "second")
     end
-    
+
     difference_in_minutes = difference_in_seconds / 60
     if difference_in_minutes < 60
       return pluralize(difference_in_minutes, "minute")
     end
-    
+
     difference_in_hours = difference_in_minutes / 60
     if difference_in_hours < 24
       return pluralize(difference_in_hours, "hour")
@@ -103,12 +81,12 @@ module ApplicationHelper
     if difference_in_days < 30
       return pluralize(difference_in_days, "day")
     end
-    
+
     difference_in_months = difference_in_days / 30
     if difference_in_months < 12
       return pluralize(difference_in_months, "month")
     end
-    
+
     difference_in_years = difference_in_days / 365
     return pluralize(difference_in_years, "year")
   end

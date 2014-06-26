@@ -1,26 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
   <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
 
+    body {
+      margin: 0;
+      padding: 0;
+      background: #E6E6E6;
+      font-family: "Trebuchet MS", Helvetica, sans-serif;
+    }
+
+    a { color: #ec8661; text-decoration: none; }
+    a:hover { color: #2a6496; }
+
+    .nav, .navbar, .navbar-inverse { background-color: #2F343B; }
+
+    .error-message { margin-top: 100px; }
+    .error-message hr { margin: 5px 0; }
+    .error-message h3 { margin-top: 0; font-weight: bold; }
+
+    .error-image-frame { padding-bottom: 15px; }
+    .error-image {
+      display: block;
+      max-width: 100%;
+      border: 1px solid #ccc;
+    }
+
+    .error-art {
+      font-size: 0.9em;
+      color: #666;
+    }
+
+  </style>
+
+  <title>Error #404 | Hummingbird</title>
+</head>
 <body>
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
+
+  <nav class='navbar navbar-inverse navbar-fixed-top hb-nav' role='navigation'>
+    <div class='container'>
+      <div class='navbar-header'>
+        <a class='navbar-brand' href='/'>
+          <img src="http://hummingbird.me/assets/logo-new.jpg" width="119px" height="20px">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container error-message">
+    <div class="row">
+      <div class="col-md-7 error-image-frame">
+        <img id="error-jsimage" class="error-image" src="" />
+        <span class="error-art">Art submitted by <a id="error-jsuser" href=""></a>.</span>
+      </div>
+      <div class="col-md-5">
+        <h3>Error #404 &mdash; Page not found</h3>
+        <p>We're sorry but it looks like the page you were looking for was either eaten by some cats or disappeared under other mysterious circumstances.</p>
+        <h4>You're here because...</h4>
+        <ul>
+          <li>You mistyped a URL or used an outdated bookmark.</li>
+          <li>You have searched for something that doesn't exist.</li>
+          <li>You followed a link that no longer exists.</li>
+        </ul>
+        <h4>You might want to...</h4>
+        <ul>
+          <li>Go back to <a href="/">Hummingbird</a>.</li>
+          <li>Go to the <a href="/search">search page</a>.</li>
+        </ul>
+        <p>If you think this is a bug, please report it on the <a href="http://forums.hummingbird.me/category/bugs">forums</a>.</p>
+      </div>
+    </div>
   </div>
+
+  <script type="text/javascript">
+
+    var images = [
+      ["Melen", "wQhAf7C.jpg"],
+      ["Jordan", "ylq29qb.jpg"],
+      ["earaiden", "WVLskzF.jpg"],
+      ["Nullet", "Y1b1K5R.jpg"],
+      ["calioop", "V4adlna.jpg"],
+      ["kami", "Kuz1ONt.jpg"],
+      ["rtil", "5J0t70x.jpg"],
+      ["Magpii", "1VBtfdt.jpg"],
+      ["James", "QpPfYsg.jpg"],
+      ["Raphael", "f1TGLPX.jpg"],
+      ["Magpii", "MNt9zo4.jpg"],
+      ["DarKCroX", "K9fP1PT.gif"]
+    ];
+
+    var img = document.getElementById("error-jsimage"),
+        usr = document.getElementById("error-jsuser");
+        num = Math.floor(Math.random() * images.length);
+
+    usr.setAttribute('href', '/users/' + images[num][0]);
+    usr.appendChild(document.createTextNode(images[num][0]));
+    img.setAttribute('src', 'http://i.imgur.com/' + images[num][1]);
+
+  </script>
+
 </body>
 </html>

@@ -24,16 +24,15 @@
 }
 
 .episode-increment {
+  @extend .fa;
+  @extend .fa-angle-up;
+
   position: absolute;
   left: 0;
   padding: 10px;
   top: -9px;
   font-size: 20px;
   transition: opacity .20s ease-in-out;
-  -moz-transition: opacity .20s ease-in-out;
-  -webkit-transition: opacity .20s ease-in-out;
-  @extend .fa;
-  @extend .fa-angle-up;
   opacity: 0;
   &:hover {
     color: $orange;

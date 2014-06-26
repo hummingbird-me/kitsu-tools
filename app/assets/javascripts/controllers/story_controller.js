@@ -62,6 +62,10 @@ Hummingbird.StoryController = Ember.ObjectController.extend({
 
     deleteStory: function() {
       this.get('model').destroyRecord();
+    },
+
+    deleteSubstory: function(substory) {
+      substory.destroyRecord();
     }
   }
 });

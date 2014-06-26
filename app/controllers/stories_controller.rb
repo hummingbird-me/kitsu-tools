@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
     params.permit(:user_id, :news_feed, :page)
 
     if params[:user_id]
-      stories = User.find(params[:user_id]).stories.for_user(current_user).order('updated_at DESC').includes({substories: :user}, :user, :target).page(params[:page]).per(20)
+      stories = User.find(params[:user_id]).stories.for_user(current_user).order('updated_at DESC').includes({substories: :user}, :user, :target).page(params[:page]).per(30)
     elsif params[:news_feed]
       stories = NewsFeed.new(current_user).fetch(params[:page] || 1)
     end
@@ -14,20 +14,26 @@ class StoriesController < ApplicationController
   def destroy
     authenticate_user!
     params.require(:id)
-
     story = Story.find_by(id: params[:id])
-    if story.nil?
-      # Already deleted.
-      render json: true
-      return
-    end
+    render json: destroy_resource(story, story)
+  end
 
-    # Are we allowed to delete the story?
+  def destroy_substory
+    authenticate_user!
+    params.require(:id)
+    substory = Substory.find_by(id: params[:id])
+    render json: destroy_resource(substory.story, substory)
+  end
+
+  private
+
+  def destroy_resource(story, resource)
+    return true if resource.nil? # Already destroyed.
     if story.can_be_deleted_by?(current_user)
-      story.destroy!
-      render json: true
+      resource.destroy!
+      return true
     else
-      render json: false
+      return false
     end
   end
 end

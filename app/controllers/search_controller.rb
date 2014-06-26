@@ -7,13 +7,8 @@ class SearchController < ApplicationController
       when "manga" then Manga.page(page).per(20)
       when "character" then Character.page(page).per(20)
     end
-    if type == "anime" or type == "manga"
-      list = model.simple_search_by_title(query)
-      list = model.fuzzy_search_by_title(query) if list.length == 0
-    elsif type == "character"
-      list = model.simple_search_by_name(query)
-      list = model.fuzzy_search_by_name(query) if list.length == 0
-    end
+    list = model.simple_search_by_title(query)
+    list = model.fuzzy_search_by_title(query) if list.length == 0
     list
   end
 
@@ -81,7 +76,7 @@ class SearchController < ApplicationController
         {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
       }.flatten
       formattedUsers = users.map { |x|
-        {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" } 
+        {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" }
       }.flatten
 
       respond_to do |format|

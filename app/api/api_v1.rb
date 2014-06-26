@@ -84,6 +84,7 @@ class API_v1 < Grape::API
     def present_anime(anime, title_language_preference, include_genres=true)
       if anime
         json = {
+          id: anime.id,
           slug: anime.slug,
           status: anime.status,
           url: "http://hummingbird.me/anime/#{anime.slug}",
@@ -106,22 +107,9 @@ class API_v1 < Grape::API
     def present_favorite_anime(anime, title_language_preference, include_genres=true)
       if anime
         fav_anime = Anime.find(anime.item_id)
-        json = {
-          slug: fav_anime.slug,
-          status: fav_anime.status,
-          url: "http://hummingbird.me/anime/#{fav_anime.slug}",
-          title: fav_anime.canonical_title(title_language_preference),
-          alternate_title: fav_anime.alternate_title(title_language_preference),
-          episode_count: fav_anime.episode_count,
-          cover_image: fav_anime.poster_image_thumb,
-          synopsis: fav_anime.synopsis,
-          show_type: fav_anime.show_type,
-          fav_rank: anime.fav_rank,
-          fav_id: anime.id
-        }
-        if include_genres
-          json[:genres] = fav_anime.genres.map {|x| {name: x.name} }
-        end
+        json = present_anime(fav_anime, title_language_preference, include_genres)
+        json[:fav_rank] = anime.fav_rank
+        json[:fav_id] = anime.id
         json
       else
         {}
@@ -266,20 +254,6 @@ class API_v1 < Grape::API
         json["email"] = user.email
       end
       json
-    end
-    
-    desc "Gets list of users to Follow"
-    params do 
-      requires :user_id, type: String
-    end
-
-    get ':user_id/followlist' do
-      userid = find_user(params[:username]).id
-      to_follow = User.where({to_follow: true}).includes(:cover_image)
-    end
-
-    get ':user_id/randomlist' do
-      random_to_follow = User.where({to_follow: false}).order("RANDOM()").limit(10)
     end
 
     desc "Return the entries in a user's library under a specific status."
@@ -477,10 +451,11 @@ class API_v1 < Grape::API
 
       # Update rating.
       if params[:rating]
-        if library_entry.rating == params[:rating].to_f
+        rating = params[:rating].to_f
+        if library_entry.rating == rating or rating == 0
           library_entry.rating = nil
         else
-          library_entry.rating = [ [0, params[:rating].to_f].max, 5].min
+          library_entry.rating = [ [0, rating].max, 5].min
         end
         result = result and library_entry.save
       end

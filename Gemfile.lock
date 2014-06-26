@@ -37,13 +37,13 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    annotate (2.6.3)
+    annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (5.0.1.20140414130214)
     autoprefixer-rails (1.2.0.20140609)
       execjs
-    aws-sdk (1.42.0)
+    aws-sdk (1.43.2)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     axiom-types (0.1.1)
@@ -73,6 +73,8 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
+    codeclimate-test-reporter (0.3.0)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -97,10 +99,12 @@ GEM
       warden (~> 1.2.3)
     devise-async (0.9.0)
       devise (~> 3.2)
-    docile (1.1.3)
-    dotenv (0.7.0)
-    dotenv-rails (0.7.0)
-      dotenv (= 0.7.0)
+    docile (1.1.5)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    dotenv-rails (0.11.1)
+      dotenv (= 0.11.1)
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -139,8 +143,8 @@ GEM
       fast_stack
     font-awesome-rails (4.1.0.0)
       railties (>= 3.2, < 5.0)
-    foreman (0.66.0)
-      dotenv (~> 0.7.0)
+    foreman (0.71.0)
+      dotenv (~> 0.11.1)
       thor (~> 0.19.1)
     formatador (0.2.5)
     fspath (2.1.0)
@@ -154,7 +158,7 @@ GEM
       rack-accept
       rack-mount
       virtus (>= 1.0.0)
-    grape-entity (0.4.2)
+    grape-entity (0.4.3)
       activesupport
       multi_json (>= 1.3.2)
     guard (2.6.1)
@@ -175,7 +179,7 @@ GEM
       haml (>= 3.1, < 5.0)
       railties (>= 4.0.1)
     handlebars-source (1.3.0)
-    hashie (2.1.1)
+    hashie (2.1.2)
     hike (1.2.3)
     hiredis (0.5.2)
     http_parser.rb (0.6.0)
@@ -205,14 +209,18 @@ GEM
     letter_opener (1.2.0)
       launchy (~> 2.2)
     libv8 (3.16.14.3)
-    listen (2.7.5)
+    listen (2.7.8)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
-    lumberjack (1.0.5)
+    lumberjack (1.0.6)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    message_bus (0.9.4)
+      eventmachine
+      rack (>= 1.1.3)
+      redis
     metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (1.25.1)
@@ -238,7 +246,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
-    oj (2.9.5)
+    oj (2.9.6)
     omniauth (1.2.1)
       hashie (>= 1.2, < 3)
       rack (~> 1.0)
@@ -263,13 +271,13 @@ GEM
       activerecord (>= 3.1)
       activesupport (>= 3.1)
       arel
-    polyglot (0.3.4)
+    polyglot (0.3.5)
     progress (3.0.0)
     protected_attributes (1.0.7)
       activemodel (>= 4.0.1, < 5.0)
-    pry (0.9.12.6)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
+    pry (0.10.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
       slop (~> 3.4)
     qunit-rails (0.0.7)
       railties
@@ -324,7 +332,7 @@ GEM
     rake-compiler (0.9.2)
       rake
     rb-fsevent (0.9.4)
-    rb-inotify (0.9.4)
+    rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdiscount (2.1.7.1)
     react-rails (0.10.0.0)
@@ -369,15 +377,12 @@ GEM
     shoulda-context (1.2.1)
     shoulda-matchers (2.6.1)
       activesupport (>= 3.0.0)
-    sidekiq (3.0.2)
+    sidekiq (3.1.4)
       celluloid (>= 0.15.2)
       connection_pool (>= 2.0.0)
       json
       redis (>= 3.0.6)
       redis-namespace (>= 1.3.1)
-    sidekiq-throttler (0.4.0)
-      activesupport
-      sidekiq (>= 2.5, < 3.1)
     simple_form (3.0.2)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -394,9 +399,6 @@ GEM
       builder
     skylight (0.3.14)
       activesupport (>= 3.0.0)
-    slim (2.0.2)
-      temple (~> 0.6.6)
-      tilt (>= 1.3.3, < 2.1)
     slop (3.5.0)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -407,7 +409,6 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    temple (0.6.7)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -425,7 +426,7 @@ GEM
       railties (>= 3.1)
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
-    uglifier (2.5.0)
+    uglifier (2.5.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unicorn (4.8.3)
@@ -449,11 +450,12 @@ DEPENDENCIES
   active_model_serializers (~> 0.8)
   annotate
   autoprefixer-rails (~> 1.2)
-  aws-sdk (~> 1.42)
+  aws-sdk (~> 1.43)
   better_errors
   binding_of_caller
   bootstrap-sass (~> 3.1)
   cancan (~> 1.6)
+  codeclimate-test-reporter
   coffee-rails (~> 4.0)
   delayed_paperclip (~> 2.7)
   devise (~> 3.2)
@@ -478,6 +480,7 @@ DEPENDENCIES
   image_optim (~> 0.13)
   kaminari (~> 0.16)
   letter_opener
+  message_bus
   mixpanel
   mocha
   mock_redis
@@ -506,14 +509,11 @@ DEPENDENCIES
   sanitize (~> 2.1)
   sass-rails (~> 4.0)
   shoulda
-  sidekiq
-  sidekiq-throttler
+  sidekiq (~> 3.1)
   simple_form
-  simplecov
   sinatra
   sitemap_generator
   skylight
-  slim
   therubyracer
   timecop
   twitter-typeahead-rails

@@ -204,8 +204,7 @@ class User < ActiveRecord::Base
      "dev.colinl@gmail.com", # Psy
      "lazypanda39@gmail.com", # Cai
      "adennisjin@gmail.com", # Dennis
-     "svengehring@cybrox.eu", # Cybrox
-     "pchen4@gmail.com" # pchen
+     "svengehring@cybrox.eu" # Cybrox
     ].include? email
   end
 
@@ -227,13 +226,13 @@ class User < ActiveRecord::Base
     # Try to find a user already associated with the Facebook ID.
     user = User.where(facebook_id: auth.uid).first
     return user if user
-    
+
     # If the user is logged in, connect their account to Facebook.
     if not signed_in_resource.nil?
       signed_in_resource.connect_to_facebook(auth.uid)
       return signed_in_resource
     end
-    
+
     # If there is a user with the same email, connect their account to this
     # Facebook account.
     user = User.find_by_email(auth.info.email)
@@ -256,7 +255,7 @@ class User < ActiveRecord::Base
       name: name,
       facebook_id: auth.uid,
       email: auth.info.email,
-      avatar: URI.parse("http://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
+      avatar: URI.parse("https://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
       password: Devise.friendly_token[0, 20]
     )
     user.save
@@ -348,10 +347,8 @@ class User < ActiveRecord::Base
       self.authentication_token = token
     end
 
-    if waifu_char_id != '0000' and changed_attributes['waifu_char_id'] and waifu_character
-      self.waifu_slug = waifu_character.anime.slug || '#'
-    else
-      self.waifu_slug = '#'
+    if waifu_char_id != '0000' and changed_attributes['waifu_char_id']
+      self.waifu_slug = waifu_character ? waifu_character.anime.slug : '#'
     end
   end
 
@@ -375,7 +372,7 @@ class User < ActiveRecord::Base
 
   # Return encrypted email.
   def encrypted_email
-    Digest::MD5.hexdigest("giflasdyg7q2liub4fasludkjfh" + self.email)
+    Digest::MD5.hexdigest(ENV['FORUM_SYNC_SECRET'] + self.email)
   end
 
   def online?

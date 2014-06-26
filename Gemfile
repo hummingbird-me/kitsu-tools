@@ -34,8 +34,9 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'sanitize', '~> 2.1'
 gem 'oj'
 
-gem 'fast_blank' # Faster `String#blank?`, which is used a lot but ActiveRecord.
+gem 'fast_blank' # Faster `String#blank?`, which is used a lot by ActiveRecord.
 
+gem 'message_bus'
 
 # Was assets group.
 gem 'sass-rails',   '~> 4.0'
@@ -66,12 +67,13 @@ gem 'flamegraph'
 
 # Testing
 group :test do
-  gem 'simplecov'
   gem 'shoulda'
   gem 'timecop'
   gem 'mock_redis'
   gem 'mocha'
 end
+
+gem 'codeclimate-test-reporter', group: :test, require: nil
 
 gem 'haml', '~> 4.0'
 gem 'haml-rails'
@@ -82,7 +84,7 @@ gem 'rdiscount'
 gem "paperclip", "~> 4.1"
 gem 'paperclip-optimizer'
 gem 'delayed_paperclip', "~> 2.7"
-gem 'aws-sdk', '~> 1.42'
+gem 'aws-sdk', '~> 1.43'
 
 # Better URLs.
 gem 'friendly_id', github: 'joshfabian/friendly_id'
@@ -100,9 +102,7 @@ gem 'cancan', "~> 1.6"
 gem 'kaminari', '~> 0.16'
 
 # Background jobs
-gem 'sidekiq'
-gem 'sidekiq-throttler'
-gem 'slim'
+gem 'sidekiq', '~> 3.1'
 
 gem 'sinatra', :require => nil
 

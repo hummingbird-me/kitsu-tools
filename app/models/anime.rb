@@ -9,7 +9,7 @@
 #  age_rating                :string(255)
 #  episode_count             :integer
 #  episode_length            :integer
-#  synopsis                  :text
+#  synopsis                  :text             default(""), not null
 #  youtube_video_id          :string(255)
 #  mal_id                    :integer
 #  created_at                :datetime         not null
@@ -40,9 +40,9 @@
 class Anime < ActiveRecord::Base
   include PgSearch
   pg_search_scope :fuzzy_search_by_title, against: [:title, :alt_title],
-    using: [:trigram], ranked_by: ":trigram"
+    using: {trigram: {threshold: 0.1}}, ranked_by: ":trigram"
   pg_search_scope :simple_search_by_title, against: [:title, :alt_title],
-    using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
+    using: {tsearch: {normalization: 10, dictionary: "english"}}, ranked_by: ":tsearch"
 
   extend FriendlyId
   friendly_id :canonical_title, :use => [:slugged, :history]
@@ -78,6 +78,7 @@ class Anime < ActiveRecord::Base
   has_many :reviews, dependent: :destroy
   has_many :episodes, dependent: :destroy
   has_many :gallery_images, dependent: :destroy
+  has_many :stories, as: :target, dependent: :destroy
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
   has_and_belongs_to_many :franchises

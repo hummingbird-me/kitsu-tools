@@ -6,7 +6,7 @@
 #  romaji_title              :string(255)
 #  slug                      :string(255)
 #  english_title             :string(255)
-#  synopsis                  :text
+#  synopsis                  :text             default(""), not null
 #  poster_image_file_name    :string(255)
 #  poster_image_content_type :string(255)
 #  poster_image_file_size    :integer

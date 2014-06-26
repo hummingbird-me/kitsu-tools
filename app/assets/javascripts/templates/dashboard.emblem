@@ -3,15 +3,9 @@
   a#right-column.mobile-tab.btn.btn-default href="#right-column" Show Activity Feed
   .row
     .secondary-info
+      community-loading-widget
       community-widget title="Industry news" showMoreURL="http://forums.hummingbird.me/category/industry-news" apiCall="http://forums.hummingbird.me/category/industry-news.json"
       community-widget title="Community discussions" showMoreURL="http://forums.hummingbird.me/" apiCall="http://forums.hummingbird.me/latest.json"
-      / FIXME It is not correct to be using the latest-posts-panel class here.
-      .latest-posts-panel
-        .panel-heading
-          h3.panel-title Who to Follow
-        .panel-body
-          ul
-            who-to-follow-container usersToFollow=mutableUsersToFollow currentUser=currentUser action="loadMoreToFollow" dismiss="dismiss"
 
     .user-feed
       post-comment username=currentUser.username

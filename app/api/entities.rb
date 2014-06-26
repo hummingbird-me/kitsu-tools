@@ -10,6 +10,7 @@ module Entities
       "/anime/#{anime.slug}"
     end
 
+    expose :id
     expose :slug
     expose :status
     expose(:url) {|anime, options| anime_path(anime) }

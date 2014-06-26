@@ -57,7 +57,7 @@
     .recommend
       a{action "upvote"} class={upvoted:active}
         i.fa.fa-thumbs-o-up &nbsp;
-        if liked
+        if upvoted
           | Recommended
         else
           | Recommend

@@ -144,9 +144,9 @@ class AnimeController < ApplicationController
     # NOTE When the seen/unseen filter is added use a join or something.
     @library_entries = {}
     if user_signed_in?
-      @library_entries = Watchlist.where(anime_id: @anime.map {|x| x.id},
-                                         user_id: current_user.id)
-                                  .index_by(&:anime_id)
+      @library_entries = LibraryEntry.where(anime_id: @anime.map {|x| x.id},
+                                            user_id: current_user.id)
+                                     .index_by(&:anime_id)
     end
 
     render :explore_filter

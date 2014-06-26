@@ -17,9 +17,10 @@
 class Character < ActiveRecord::Base
   include PgSearch
   pg_search_scope :fuzzy_search_by_name, against: [:name],
-    using: [:trigram], ranked_by: ":trigram"
+    using: {trigram: {threshold: 0.1}}, ranked_by: ":trigram"
   pg_search_scope :simple_search_by_name, against: [:name],
-    using: {:tsearch => {:normalization => 10}}, ranked_by: ":tsearch"
+    using: {tsearch: {normalization: 10, dictionary: "english"}}, ranked_by: ":tsearch"
+    
   class << self
     alias_method :simple_search_by_title, :simple_search_by_name
     alias_method :fuzzy_search_by_title, :fuzzy_search_by_name
