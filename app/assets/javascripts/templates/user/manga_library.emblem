@@ -49,7 +49,7 @@
                   | Type
                   i.fa
 
-        div#library-sections
+        div#manga-library-sections
 
     .hidden-xs.hidden-sm.col-md-2
       ad-unit adId="1293411" adClass="257f81e798bd68dd81e60f42838f361f"

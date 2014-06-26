@@ -37,9 +37,18 @@ class Manga < ActiveRecord::Base
   extend FriendlyId
   friendly_id :romaji_title, use: [:slugged, :history]
 
-  attr_accessible :cover_image, :cover_image_top_offset, :end_date, :english_title, :mal_id, :poster_image, :romaji_title, :serialization, :start_date, :status, :synopsis
+  attr_accessible :cover_image, :type, :cover_image_top_offset, :end_date, :english_title, :mal_id, :poster_image, :romaji_title, :serialization, :start_date, :status, :synopsis
+
+    # Internal Constants
+  private
+  
+  VALID_TYPES =  ["Manga","Novel", "One Shot", "Doujin","Manwha", "Manhua", "OEL"]
+
+  public
+
 
   validates :romaji_title, presence: true
+  validates :type, inclusion: { in: VALID_TYPES }
 
   has_attached_file :cover_image,
     styles: {thumb: ["1400x900>", :jpg]},

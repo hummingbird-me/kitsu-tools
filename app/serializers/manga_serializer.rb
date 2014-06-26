@@ -10,7 +10,8 @@ class MangaSerializer < ActiveModel::Serializer
              :synopsis, 
              :chapter_count, 
              :volume_count, 
-             :genres
+             :genres,
+             :type
 
   has_one :manga_library_entry
 

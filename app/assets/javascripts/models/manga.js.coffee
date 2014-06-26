@@ -5,6 +5,7 @@ Hummingbird.Manga = DS.Model.extend
   coverImageTopOffset: DS.attr('string')
   posterImage: DS.attr('string')
   synopsis: DS.attr('string')
+  type: DS.attr('string')
   volumeCount: DS.attr('number')
   chapterCount: DS.attr('number')
   genres: DS.attr('array')
@@ -22,7 +23,6 @@ Hummingbird.Manga = DS.Model.extend
         title = @get('englishTitle')
       else if pref == "romanized" and @get('romajiTitle') and @get('romajiTitle').length > 0
         title = @get('romajiTitle')
-    console.log title
     title
   ).property('englishTitle', 'romajiTitle')
 

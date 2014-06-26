@@ -4,12 +4,12 @@ Hummingbird.UserMangaLibraryView = Ember.View.extend
   reactComponent: Ember.computed.alias 'controller.reactComponent'
 
   didInsertElement: ->
-    @set 'reactComponent', LibrarySectionsReactComponent(
+    @set 'reactComponent', MangaLibrarySectionsReactComponent(
       content: @get('sections')
       view: this,
     )
-    React.renderComponent @get('reactComponent'), @get('element').querySelector('#library-sections')
+    React.renderComponent @get('reactComponent'), @get('element').querySelector('#manga-library-sections')
 
   willClearRender: ->
-    React.unmountComponentAtNode @get('element').querySelector('#library-sections')
+    React.unmountComponentAtNode @get('element').querySelector('#manga-library-sections')
     @set 'reactComponent', null

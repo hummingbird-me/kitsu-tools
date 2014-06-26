@@ -319,7 +319,7 @@
                 {rating}
               </div>
               <div className="list-item-type">
-                {content.get('manga.showType')}
+                {content.get('manga.type')}
               </div>
             </div>
           </div>
