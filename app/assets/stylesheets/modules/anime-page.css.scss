@@ -626,6 +626,10 @@ p img {
   }
 }
 
+.review-content img {
+  width: 100%;
+}
+
 .reader-actions {
   @extend .col-xs-12;
   padding: 10px 0;
