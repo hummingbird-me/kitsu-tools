@@ -76,8 +76,8 @@ class SearchController < ApplicationController
       formattedAnime = anime.map { |x|
         {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
       }.flatten
-      formattedManga = anime.map { |x|
-        {:type => 'manga', :title => x.title, :image => x.poster_image_thumb, :link => "/manga/#{x.slug}" }
+      formattedManga = manga.map { |x|
+        {:type => 'manga', :title => x.romaji_title, :image => x.poster_image_thumb, :link => "/manga/#{x.slug}" }
       }.flatten
       formattedUsers = users.map { |x|
         {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" }

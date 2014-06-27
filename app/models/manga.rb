@@ -67,6 +67,14 @@ class Manga < ActiveRecord::Base
   has_and_belongs_to_many :genres
   has_many :manga_library_entries, dependent: :destroy
 
+  def poster_image_thumb
+    if self.poster_image_file_name.nil?
+      "http://hummingbird.me/assets/missing-anime-cover.jpg"
+    else
+      "http://static.hummingbird.me/manga/poster_images/#{"%03d" % (self.id/1000000 % 1000)}/#{"%03d" % (self.id/1000 % 1000)}/#{"%03d" % (self.id % 1000)}/large/#{self.poster_image_file_name}?#{self.poster_image_updated_at.to_i}"
+    end
+  end
+
   def self.create_or_update_from_hash hash
     # First the creation logic
     # TODO: stop hard-coding the ID column
