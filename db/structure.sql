@@ -909,11 +909,11 @@ CREATE TABLE manga_library_entries (
     manga_id integer,
     status character varying(255),
     private boolean DEFAULT false,
-    chapters_readed integer DEFAULT 0,
-    volumes_readed integer DEFAULT 0,
-    rereading_count integer DEFAULT 0,
+    chapters_read integer DEFAULT 0,
+    volumes_read integer DEFAULT 0,
+    reread_count integer DEFAULT 0,
     rereading boolean DEFAULT false,
-    last_readed timestamp without time zone,
+    last_read timestamp without time zone,
     rating numeric(2,1),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -3251,4 +3251,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140620222815');
 INSERT INTO schema_migrations (version) VALUES ('20140620224034');
 
 INSERT INTO schema_migrations (version) VALUES ('20140626200713');
+
+INSERT INTO schema_migrations (version) VALUES ('20140627050628');
+
+INSERT INTO schema_migrations (version) VALUES ('20140627051435');
 

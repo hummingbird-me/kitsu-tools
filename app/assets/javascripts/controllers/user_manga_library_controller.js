@@ -5,7 +5,7 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
 
   libraryName: "Manga Library",
   filter: "",
-  sortBy: JSON.parse(localStorage.getItem('librarySortBy')) || "lastReaded",
+  sortBy: JSON.parse(localStorage.getItem('librarySortBy')) || "lastRead",
   sortAsc: JSON.parse(localStorage.getItem('librarySortAsc')) || false,
 
   sectionNames: ["Currently Reading", "Plan to Read", "Completed", "On Hold", "Dropped"],
@@ -84,11 +84,11 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
   notifyReactComponent: function () {
     return Ember.run.once(this, 'actuallyNotifyReactComponent');
   }.observes('filter', 'showSection', 'sortBy', 'sortAsc',
-             'content.@each.chaptersReaded',
+             'content.@each.chaptersRead',
              'content.@each.status',
              'content.@each.rating',
              'content.@each.private',
-             'content.@each.rereadingCount',
+             'content.@each.rereadCount',
              'content.@each.rereading'),
 
   persistSort: function () {
@@ -113,7 +113,7 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
         if (this.get('sortAsc')) {
           return this.set('sortAsc', false);
         } else {
-          return this.set('sortBy', 'lastReaded');
+          return this.set('sortBy', 'lastRead');
         }
       } else {
         this.set('sortBy', newSort);

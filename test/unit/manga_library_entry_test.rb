@@ -27,22 +27,22 @@ class MangaLibraryEntryTest < ActiveSupport::TestCase
   test "should not allow exceeding total number of chapters" do
     MangaLibraryEntry.find_each do |entry| 
       total = entry.manga.chapter_count
-      entry.chapters_readed = total
+      entry.chapters_read = total
       entry.save
-      entry.chapters_readed = total + 1
+      entry.chapters_read = total + 1
       entry.save
-      assert_equal total, entry.reload.chapters_readed
+      assert_equal total, entry.reload.chapters_read
     end
   end
 
   test "should not allow exceeding total number of volumes" do
     MangaLibraryEntry.find_each do |entry| 
       total = entry.manga.volume_count
-      entry.volumes_readed = total
+      entry.volumes_read = total
       entry.save
-      entry.volumes_readed = total + 1
+      entry.volumes_read = total + 1
       entry.save
-      assert_equal total, entry.reload.volumes_readed
+      assert_equal total, entry.reload.volumes_read
     end
   end
 end

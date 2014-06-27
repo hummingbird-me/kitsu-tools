@@ -3,12 +3,12 @@ Hummingbird.MangaLibraryEntry = DS.Model.extend({
   status: DS.attr('string'),
   isFavorite: DS.attr('boolean'),
   rating: DS.attr('number'),
-  chaptersReaded: DS.attr('number'),
-  volumesReaded: DS.attr('number'),
+  chaptersRead: DS.attr('number'),
+  volumesRead: DS.attr('number'),
   "private": DS.attr('boolean'),
   rereading: DS.attr('boolean'),
-  rereadedCount: DS.attr('number'),
-  lastReaded: DS.attr('date'),
+  rereadCount: DS.attr('number'),
+  lastRead: DS.attr('date'),
   positiveRating: (function() {
     return this.get('rating') >= 3.6;
   }).property('rating'),

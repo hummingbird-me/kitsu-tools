@@ -40,8 +40,11 @@
                 | Title
                 i.fa
               .list-item-right
-                .list-item-progress click="setSort 'chaptersReaded'"
-                  | Progress
+                .list-item-progress click="setSort 'volumesRead'"
+                  | Volumes
+                  i.fa
+                .list-item-progress click="setSort 'chaptersRead'"
+                  | Chapters
                   i.fa
                 .list-item-score click="setSort 'rating'"
                   | Rating

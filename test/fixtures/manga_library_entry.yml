@@ -5,11 +5,11 @@ joshblame:
   manga: blame
   status: Currently Reading
   private: false
-  chapters_readed: 1
-  volumes_readed: 1
-  rereading_count: 1
+  chapters_read: 1
+  volumes_read: 1
+  reread_count: 1
   rereading: false
-  last_readed: 2014-06-20 19:28:15
+  last_read: 2014-06-20 19:28:15
   rating: 2
 
 vikhyatblame:
@@ -17,9 +17,9 @@ vikhyatblame:
   manga: blame
   status: Currently Reading
   private: false
-  chapters_readed: 1
-  volumes_readed: 1
-  rereading_count: 1
+  chapters_read: 1
+  volumes_read: 1
+  reread_count: 1
   rereading: false
-  last_readed: 2014-06-20 19:28:15
+  last_read: 2014-06-20 19:28:15
   rating: 2

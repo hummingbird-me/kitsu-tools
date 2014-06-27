@@ -19,8 +19,8 @@ Hummingbird.MangaRoute = Ember.Route.extend
       manga = @currentModel
       mangaLibraryEntry = manga.get('mangaLibraryEntry')
       Messenger().expectPromise (-> mangaLibraryEntry.destroyRecord()),
-        progressMessage: "Removing " + manga.get('canonicalTitle') + " from your library..."
-        successMessage: "Removed " + manga.get('canonicalTitle') + " from your library!"
+        progressMessage: "Removing " + manga.get('romanjiTitle') + " from your library..."
+        successMessage: "Removed " + manga.get('romanjiTitle') + " from your library!"
 
     setLibraryStatus: (newStatus) ->
       manga = @currentModel
@@ -32,8 +32,8 @@ Hummingbird.MangaRoute = Ember.Route.extend
           status: newStatus
           manga: @currentModel
       if newStatus == "Completed"
-        mangaLibraryEntry.set 'partsConsumed', manga.get('chapterCount')
-        mangaLibraryEntry.set 'blocksConsumed', manga.get('volumeCount')
+        mangaLibraryEntry.set 'chaptersRead', manga.get('chapterCount')
+        mangaLibraryEntry.set 'volumesRead', manga.get('volumeCount')
       @saveMangaLibraryEntry mangaLibraryEntry
 
     setLibraryRating: (newRating) ->

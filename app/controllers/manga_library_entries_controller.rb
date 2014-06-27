@@ -15,7 +15,7 @@ class MangaLibraryEntriesController < ApplicationController
   end
 
   def update_manga_library_entry_using_params(manga_library_entry, params)
-    [:status, :rating, :private, :chapters_readed, :volumes_readed, :rereading, :rereading_count].each do |x|
+    [:status, :rating, :private, :chapters_read, :volumes_read, :rereading, :reread_count].each do |x|
       if params[:manga_library_entry].has_key? x
         manga_library_entry[x] = params[:manga_library_entry][x]
       end

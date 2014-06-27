@@ -36,18 +36,18 @@
       }.bind(this));
     },
 
-    changeRereadingCount: function(event) {
+    changeRereadCount: function(event) {
       Ember.run(function() {
         if (!this.props.view.get('user.viewingSelf')) { return; }
 
         var focused = $(event.target).is(":focus");
-        var originalRereadingCount = this.props.content.get('rereadingCount');
-        var rereadingCount = parseInt(event.target.value) || 0;
+        var originalRereadCount = this.props.content.get('rereadCount');
+        var rereadCount = parseInt(event.target.value) || 0;
 
         // Let's not go below zero.
-        if (rereadingCount < 0) { rereadingCount = originalRereadingCount; }
+        if (rereadCount < 0) { rereadCount = originalRereadCount; }
 
-        this.props.content.set('rereadingCount', rereadingCount);
+        this.props.content.set('rereadCount', rereadCount);
 
         if (!focused) {
           Ember.run.debounce(this, this.saveMangaLibraryEntry, 500);
@@ -179,8 +179,8 @@
 
                 <div className="text-center">
                   <form className="form-inline" onSubmit={this.saveMangaLibraryEntry}>
-                    Rereaded
-                    <input type="number" className="form-control" style={ {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"} } value={this.props.content.get('rereadingCount')} onChange={this.changeRereadingCount} onBlur={this.saveMangaLibraryEntry} />
+                    Reread
+                    <input type="number" className="form-control" style={ {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"} } value={this.props.content.get('rereadCount')} onChange={this.changeRereadingCount} onBlur={this.saveMangaLibraryEntry} />
                     times.
                   </form>
                 </div>
@@ -212,8 +212,16 @@
 
     incrementChapters: function(event) {
       Ember.run(function() {
-        this.props.content.incrementProperty('chaptersReaded');
-        Ember.run.debounce(this, this.saveChaptersReaded, 500);
+        this.props.content.incrementProperty('chaptersRead');
+        Ember.run.debounce(this, this.saveChaptersRead, 500);
+      }.bind(this));
+    },
+
+
+    incrementVolumes: function(event) {
+      Ember.run(function() {
+        this.props.content.incrementProperty('volumesRead');
+        Ember.run.debounce(this, this.saveVolumesRead, 500);
       }.bind(this));
     },
 
@@ -221,23 +229,37 @@
       Ember.run(function() {
         if (!this.props.view.get('user.viewingSelf')) { return; }
 
-        var originalChaptersReaded = this.props.content.get('chaptersReaded');
-        var chaptersReaded = parseInt(event.target.value) || 0;
+        var originalChaptersReaded = this.props.content.get('chaptersRead');
+        var chaptersRead = parseInt(event.target.value) || 0;
 
         // Don't allow exceeding the show's chapter count.
         var mangaChapterCount = this.props.content.get('manga.chapterCount');
-        if (mangaChapterCount && chaptersReaded > mangaChapterCount) {
-          chaptersReaded = originalChaptersReaded;
+        if (mangaChapterCount && chaptersRead > mangaChapterCount) {
+          chaptersRead = originalChaptersReaded;
         }
 
         // Let's not go below zero.
-        if (chaptersReaded < 0) { chaptersReaded = originalChaptersReaded; }
+        if (chaptersRead < 0) { chaptersRead = originalChaptersReaded; }
 
-        this.props.content.set('chaptersReaded', chaptersReaded);
+        this.props.content.set('chaptersRead', chaptersRead);
+
+        var originalVolumesReaded = this.props.content.get('volumesRead');
+        var volumesRead = parseInt(event.target.value) || 0;
+
+        // Don't allow exceeding the show's volume count.
+        var mangaVolumeCount = this.props.content.get('manga.volumeCount');
+        if (mangaVolumeCount && volumesRead > mangaVolumeCount) {
+          volumesRead = originalVolumesReaded;
+        }
+
+        // Let's not go below zero.
+        if (volumesRead < 0) { volumesRead = originalVolumesReaded; }
+
+        this.props.content.set('volumesRead', volumesRead);
       }.bind(this));
     },
 
-    saveChaptersReaded: function(event) {
+    saveVolumesRead: function(event) {
       Ember.run(function() {
         if (event && event.target.nodeName == "FORM") {
           event.preventDefault();
@@ -247,7 +269,23 @@
           if (this.props.content.get('isDirty')) {
             var controller = this.props.view.get('controller');
             var libraryEntry = this.props.content;
-            controller.send('saveChaptersReaded', libraryEntry);
+            controller.send('saveVolumesRead', libraryEntry);
+          }
+        }
+      }.bind(this));
+    },
+
+    saveChaptersRead: function(event) {
+      Ember.run(function() {
+        if (event && event.target.nodeName == "FORM") {
+          event.preventDefault();
+          event.target.querySelector("input").blur();
+        }
+        else {
+          if (this.props.content.get('isDirty')) {
+            var controller = this.props.view.get('controller');
+            var libraryEntry = this.props.content;
+            controller.send('saveChaptersRead', libraryEntry);
           }
         }
       }.bind(this));
@@ -307,10 +345,20 @@
             <div className="list-item-right">
               <div className="list-item-progress">
                 { this.props.view.get('user.viewingSelf')
+                  ? <i title="Increment volume count" className="episode-increment" onClick={this.incrementVolumes} />
+                  : '' }
+                <form style={ {display: "inline"} } onSubmit={this.saveVolumeRead} >
+                  <input className="input-progress" type="text" pattern="[0-9]*" value={content.get('volumesRead')} onChange={this.changeProgress} onBlur={this.saveVolumesRead} />
+                </form>
+                <span className="progress-sep">/</span>
+                <span className="list-item-total">{content.get('manga.displayVolumeCount')}</span>
+              </div>
+              <div className="list-item-progress">
+                { this.props.view.get('user.viewingSelf')
                   ? <i title="Increment chapter count" className="episode-increment" onClick={this.incrementChapters} />
                   : '' }
-                <form style={ {display: "inline"} } onSubmit={this.saveChaptersReaded} >
-                  <input className="input-progress" type="text" pattern="[0-9]*" value={content.get('chaptersReaded')} onChange={this.changeProgress} onBlur={this.saveChaptersReaded} />
+                <form style={ {display: "inline"} } onSubmit={this.saveChaptersRead} >
+                  <input className="input-progress" type="text" pattern="[0-9]*" value={content.get('chaptersRead')} onChange={this.changeProgress} onBlur={this.saveChaptersRead} />
                 </form>
                 <span className="progress-sep">/</span>
                 <span className="list-item-total">{content.get('manga.displayChapterCount')}</span>

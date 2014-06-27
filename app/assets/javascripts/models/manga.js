@@ -57,5 +57,15 @@ Hummingbird.Manga = DS.Model.extend({
     } else {
       return "?";
     }
-  }).property("chapterCount")
+  }).property("chapterCount"),
+  displayVolumeCount: (function() {
+    var e;
+    e = void 0;
+    e = this.get("volumeCount");
+    if (e) {
+      return e;
+    } else {
+      return "?";
+    }
+  }).property("volumeCount")
 });

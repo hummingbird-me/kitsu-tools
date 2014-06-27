@@ -5,12 +5,12 @@ class MangaLibraryEntrySerializer < ActiveModel::Serializer
              :status,
              :is_favorite,
              :rating,
-             :chapters_readed,
-             :volumes_readed,
+             :chapters_read,
+             :volumes_read,
              :private,
              :rereading,
-             :rereading_count,
-             :last_readed
+             :reread_count,
+             :last_read
   has_one :manga, embed_key: :slug, include: true
            
   def include_private?

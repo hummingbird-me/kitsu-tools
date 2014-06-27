@@ -38,13 +38,13 @@ class MangaLibraryEntriesControllerTest < ActionController::TestCase
 
   test "can create library entry once authenticated" do
     sign_in users(:vikhyat)
-    post :create, manga_library_entry: {user_id: users(:vikhyat), manga_id: 'monster', status: 'Plan to Read', chapters_readed: 8, volumes_readed: 2, private: true}
+    post :create, manga_library_entry: {user_id: users(:vikhyat), manga_id: 'monster', status: 'Plan to Read', chapters_read: 8, volumes_read: 2, private: true}
     assert_response 200
     manga_library_entries = MangaLibraryEntry.where(manga: manga(:monster), user_id: users(:vikhyat)).first
     assert_not_nil manga_library_entries
     assert_equal "Plan to Read", manga_library_entries.status
-    assert_equal 8, manga_library_entries.chapters_readed
-    assert_equal 2, manga_library_entries.volumes_readed
+    assert_equal 8, manga_library_entries.chapters_read
+    assert_equal 2, manga_library_entries.volumes_read
     assert manga_library_entries.private?
   end
 
@@ -60,10 +60,10 @@ class MangaLibraryEntriesControllerTest < ActionController::TestCase
   test "can update library entry when authenticated" do
     id = manga_library_entry(:joshblame).id
     sign_in users(:josh)
-    put :update, id: id, manga_library_entry: {status: 'On Hold', rating: 3.5, chapters_readed: 3}
+    put :update, id: id, manga_library_entry: {status: 'On Hold', rating: 3.5, chapters_read: 3}
     assert_equal "On Hold", MangaLibraryEntry.find(id).status
     assert_equal 3.5, MangaLibraryEntry.find(id).rating
-    assert_equal 3, MangaLibraryEntry.find(id).chapters_readed
+    assert_equal 3, MangaLibraryEntry.find(id).chapters_read
   end
 
   test "need to be authenticated as the correct user to destroy library entry" do
