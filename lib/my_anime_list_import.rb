@@ -26,10 +26,10 @@ class MyAnimeListImport
   def data
     if @data.nil?
       @data = []
-      hashdata = Hash.from_xml(@xml)
-      hashdata = hashdata["myanimelist"]["anime"]
-      hashdata.each do |indv|
-        parsd = {
+      hashdata = Hash.from_xml(@xml)["myanimelist"]["anime"]
+
+      @data = hashdata.map do |indv|
+        {
           mal_id: indv["series_animedb_id"].to_i,
           title: indv["series_title"],
           rating: indv["my_score"].to_i,
@@ -38,7 +38,6 @@ class MyAnimeListImport
           last_updated: Time.at(indv["my_last_updated"].to_i),
           notes: indv["my_tags"]
         }
-        @data.push(parsd)
       end
     end
     @data
