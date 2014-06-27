@@ -10,14 +10,6 @@
       }.bind(this));
     },
 
-    changeVolumesRead: function(newValue) {
-      Ember.run(function() {
-        var controller = this.props.view.get('controller');
-        var libraryEntry = this.props.content;
-        controller.send('setVolumesRead', libraryEntry, newValue);
-      });
-    },
-
     removeFromMangaLibrary: function() {
       Ember.run(function() {
         var controller = this.props.view.get('controller');
@@ -40,6 +32,25 @@
           var controller = this.props.view.get('controller');
           var libraryEntry = this.props.content;
           controller.send('toggleRereading', libraryEntry);
+        }
+      }.bind(this));
+    },
+
+    changeVolumesRead: function(event) {
+      Ember.run(function() {
+        if (!this.props.view.get('user.viewingSelf')) { return; }
+
+        var focused = $(event.target).is(":focus");
+        var originalVolumesRead = this.props.content.get('volumesRead');
+        var volumesRead = parseInt(event.target.value) || 0;
+
+        // Let's not go below zero.
+        if (volumesRead < 0) { volumesRead = originalVolumesRead; }
+
+        this.props.content.set('volumesRead', volumesRead);
+
+        if (!focused) {
+          Ember.run.debounce(this, this.saveMangaLibraryEntry, 500);
         }
       }.bind(this));
     },
@@ -196,7 +207,7 @@
                 <div className="text-center">
                   <form className="form-inline" onSubmit={this.saveMangaLibraryEntry}>
                     Reread
-                    <input type="number" className="form-control" style={ {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"} } value={this.props.content.get('rereadCount')} onChange={this.changeRereadingCount} onBlur={this.saveMangaLibraryEntry} />
+                    <input type="number" className="form-control" style={ {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"} } value={this.props.content.get('rereadCount')} onChange={this.changeRereadCount} onBlur={this.saveMangaLibraryEntry} />
                     times.
                   </form>
                 </div>
@@ -251,22 +262,6 @@
         if (chaptersRead < 0) { chaptersRead = originalChaptersRead; }
 
         this.props.content.set('chaptersRead', chaptersRead);
-      }.bind(this));
-    },
-
-    saveVolumesRead: function(event) {
-      Ember.run(function() {
-        if (event && event.target.nodeName == "FORM") {
-          event.preventDefault();
-          event.target.querySelector("input").blur();
-        }
-        else {
-          if (this.props.content.get('isDirty')) {
-            var controller = this.props.view.get('controller');
-            var libraryEntry = this.props.content;
-            controller.send('saveVolumesRead', libraryEntry);
-          }
-        }
       }.bind(this));
     },
 

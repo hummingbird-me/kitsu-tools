@@ -151,6 +151,7 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
     },
 
     setVolumesRead: function(libraryEntry, newValue) {
+      alert("TesT");
       libraryEntry.set('volumesRead', newValue);
       return this.saveMangaLibraryEntry(libraryEntry);
     },
