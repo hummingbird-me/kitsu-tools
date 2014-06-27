@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+joshblame:
+  user: josh
+  manga: blame
+  status: Currently Reading
+  private: false
+  chapters_read: 1
+  volumes_read: 1
+  reread_count: 1
+  rereading: false
+  last_read: 2014-06-20 19:28:15
+  rating: 2
+
+vikhyatblame:
+  user: vikhyat
+  manga: blame
+  status: Currently Reading
+  private: false
+  chapters_read: 1
+  volumes_read: 1
+  reread_count: 1
+  rereading: false
+  last_read: 2014-06-20 19:28:15
+  rating: 2

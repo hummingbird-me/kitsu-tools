@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Hummingbird::Application.routes.draw do
   resources :library_entries, except: [:new, :edit]
+  resources :manga_library_entries, except: [:new, :edit]
   resources :franchises, only: [:index, :show]
   resources :full_anime, only: [:show]
   resources :news_feeds, only: [:index]
@@ -55,10 +56,12 @@ Hummingbird::Application.routes.draw do
   get '/feed' => 'home#feed'
 
   get '/users/:id/watchlist' => redirect {|params, request| "/users/#{params[:id]}/library" }
+  get '/users/:id/library/manga' => 'users#manga_library'
   get '/u/:id' => redirect {|params, request| "/users/#{params[:id]}" }
   get '/users/:id/feed' => redirect {|params, request| "/users/#{params[:id]}" }
 
   resources :users, only: [:index, :show, :update] do
+    get 'library/manga'
     get :library
     get :reviews
     get :followers
