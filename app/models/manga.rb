@@ -96,5 +96,6 @@ class Manga < ActiveRecord::Base
       status: (hash[:status] if manga.status.nil?)
     }.compact)
     manga.save!
+    manga
   end
 end
