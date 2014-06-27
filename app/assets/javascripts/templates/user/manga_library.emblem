@@ -40,9 +40,6 @@
                 | Title
                 i.fa
               .list-item-right
-                .list-item-progress click="setSort 'volumesRead'"
-                  | Volumes
-                  i.fa
                 .list-item-progress click="setSort 'chaptersRead'"
                   | Chapters
                   i.fa

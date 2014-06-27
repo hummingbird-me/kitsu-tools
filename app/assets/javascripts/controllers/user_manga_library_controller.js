@@ -145,8 +145,8 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
       return Messenger().expectPromise((function () {
         return libraryEntry.destroyRecord();
       }), {
-        progressMessage: "Removing " + manga.get('englishTitle') + " from your library...",
-        successMessage: "Removed " + manga.get('englishTitle') + " from your library!"
+        progressMessage: "Removing " + manga.get('displayTitle') + " from your library...",
+        successMessage: "Removed " + manga.get('displayTitle') + " from your library!"
       });
     },
 
@@ -173,7 +173,7 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
         if (libraryEntry.get('status') !== "Currently Reading") {
           libraryEntry.set('status', "Currently Reading");
           libraryEntry.set('chaptersRead', 0);
-          Messenger().post("Moved " + libraryEntry.get('manga.englishTitle') + " to Currently Reading.");
+          Messenger().post("Moved " + libraryEntry.get('manga.displayTitle') + " to Currently Reading.");
         }
       }
       return this.saveMangaLibraryEntry(libraryEntry);
@@ -186,7 +186,7 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
     saveChaptersRead: function (libraryEntry) {
       if (libraryEntry.get('manga.chapterCount') && libraryEntry.get('chaptersRead') === libraryEntry.get('manga.chapterCount')) {
         if (libraryEntry.get('status') !== "Completed") {
-          Messenger().post("Marked " + libraryEntry.get('manga.englishTitle') + " as complete.");
+          Messenger().post("Marked " + libraryEntry.get('manga.displayTitle') + " as complete.");
           libraryEntry.set('status', "Completed");
         }
       }
