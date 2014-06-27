@@ -14,7 +14,7 @@ class MangaLibraryEntry < ActiveRecord::Base
   public
   
   validates :user, :manga, :status, presence: true
-  validates :user, :uniqueness => { :scope => :manga }
+  validates :user_id, :uniqueness => { :scope => :manga_id }
   validates :status, inclusion: { in: VALID_STATUSES }
   validate :rating_is_valid
   validate :chapters_readed_less_than_total
@@ -29,17 +29,13 @@ class MangaLibraryEntry < ActiveRecord::Base
   end
 
   def chapters_readed_less_than_total
-    readed = self.chapters_readed
-    total = self.manga.chapter_count
-    unless readed.nil? or (0 <= readed and readed <= total)
+    if (self.manga.try(:chapter_count) || 0) > 0 and (self.chapters_readed || 0) > self.manga.chapter_count
       errors.add(:chapters_readed, "cannot exceed total number of chapters")
     end
   end
 
   def volumes_readed_less_than_total
-    total = self.manga.volume_count
-    readed = self.volumes_readed
-    unless readed.nil? or (0 <= readed and readed <= total)
+    if (self.manga.try(:volume_count) || 0) > 0 and (self.volumes_readed || 0) > self.manga.volume_count
       errors.add(:volumes_readed, "cannot exceed total number of volumes")
     end
   end

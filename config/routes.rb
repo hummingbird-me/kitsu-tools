@@ -61,6 +61,7 @@ Hummingbird::Application.routes.draw do
   get '/users/:id/feed' => redirect {|params, request| "/users/#{params[:id]}" }
 
   resources :users, only: [:index, :show, :update] do
+    get 'library/manga'
     get :library
     get :reviews
     get :followers

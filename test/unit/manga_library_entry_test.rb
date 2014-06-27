@@ -9,7 +9,7 @@ class MangaLibraryEntryTest < ActiveSupport::TestCase
   should validate_presence_of(:user)
   should validate_presence_of(:manga)
   should validate_presence_of(:status)
-  should validate_uniqueness_of(:user).scoped_to(:manga)
+  should validate_uniqueness_of(:user_id).scoped_to(:manga_id)
   should ensure_inclusion_of(:status).in_array(["Currently Reading", "Plan to Read", "Completed", "On Hold", "Dropped"])
 
   test "accepts only valid ratings" do
