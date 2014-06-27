@@ -95,8 +95,8 @@ class MALImport
     when :manga
       meta.merge!({
         dates: begin @sidebar.css('div:contains("Published:")')[0].text.gsub("Published:", '').split("to").map { |s| parse_maldate(s) } rescue nil end,
-        volumes: begin @sidebar.css('div:contains("Volumes:")')[0].text.gsub("Volumes: ", "").strip.to_i rescue nil end,
-        chapters: begin @sidebar.css('div:contains("Chapters:")')[0].text.gsub("Chapters: ", "").strip.to_i rescue nil end,
+        volume_count: begin @sidebar.css('div:contains("Volumes:")')[0].text.gsub("Volumes: ", "").strip.to_i rescue nil end,
+        chapter_count: begin @sidebar.css('div:contains("Chapters:")')[0].text.gsub("Chapters: ", "").strip.to_i rescue nil end,
         serialization: begin @sidebar.css('span:contains("Serialization:") ~ a').map(&:text)[0] rescue nil end,
       })
     when :anime
