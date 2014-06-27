@@ -27,17 +27,5 @@ Hummingbird.UserMangaLibraryRoute = Ember.Route.extend({
 
   afterModel: function() {
     return Hummingbird.TitleManager.setTitle(this.modelFor('user').get('id') + "'s Library");
-  },
-
-  actions: {
-    changeLibrary: function(name) {
-      if (name === "Anime Library") {
-        this.controllerFor('user.manga_library').set("libraryName", "Anime Library");
-        this.transitionTo('user.library');
-      }
-      if (name === "Manga Library") {
-        return this.controllerFor('user.manga_library').set("libraryName", "Manga Library");
-      }
-    }
   }
 });

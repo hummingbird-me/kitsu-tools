@@ -20,7 +20,7 @@ Hummingbird.Router.map(function() {
     this.route('following');
     this.route('followers');
   });
-  
+
   this.route('sign-in');
   this.route('dashboard');
   this.route('development');

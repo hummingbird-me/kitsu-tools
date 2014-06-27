@@ -7,7 +7,7 @@
             .col-xs-6.col-sm-3.col-md-3
               .library-type
                 button.btn.btn-default.dropdown-toggle data-toggle="dropdown"
-                  | #{libraryName}
+                  | Manga Library
                   i.fa.fa-caret-down
                 ul.dropdown-menu
                   li: a{action "changeLibrary" "Manga Library"} Manga Library
