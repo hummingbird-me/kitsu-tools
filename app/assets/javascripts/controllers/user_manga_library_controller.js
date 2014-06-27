@@ -98,7 +98,7 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
 
   saveMangaLibraryEntry: function (libraryEntry) {
     var title;
-    title = libraryEntry.get('manga.englishTitle');
+    title = libraryEntry.get('manga.romajiTitle');
     return Messenger().expectPromise((function () {
       return libraryEntry.save();
     }), {
