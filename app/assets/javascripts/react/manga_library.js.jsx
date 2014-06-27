@@ -229,31 +229,31 @@
       Ember.run(function() {
         if (!this.props.view.get('user.viewingSelf')) { return; }
 
-        var originalChaptersReaded = this.props.content.get('chaptersRead');
+        var originalChaptersRead = this.props.content.get('chaptersRead');
         var chaptersRead = parseInt(event.target.value) || 0;
 
         // Don't allow exceeding the show's chapter count.
         var mangaChapterCount = this.props.content.get('manga.chapterCount');
         if (mangaChapterCount && chaptersRead > mangaChapterCount) {
-          chaptersRead = originalChaptersReaded;
+          chaptersRead = originalChaptersRead;
         }
 
         // Let's not go below zero.
-        if (chaptersRead < 0) { chaptersRead = originalChaptersReaded; }
+        if (chaptersRead < 0) { chaptersRead = originalChaptersRead; }
 
         this.props.content.set('chaptersRead', chaptersRead);
 
-        var originalVolumesReaded = this.props.content.get('volumesRead');
+        var originalVolumesRead = this.props.content.get('volumesRead');
         var volumesRead = parseInt(event.target.value) || 0;
 
         // Don't allow exceeding the show's volume count.
         var mangaVolumeCount = this.props.content.get('manga.volumeCount');
         if (mangaVolumeCount && volumesRead > mangaVolumeCount) {
-          volumesRead = originalVolumesReaded;
+          volumesRead = originalVolumesRead;
         }
 
         // Let's not go below zero.
-        if (volumesRead < 0) { volumesRead = originalVolumesReaded; }
+        if (volumesRead < 0) { volumesRead = originalVolumesRead; }
 
         this.props.content.set('volumesRead', volumesRead);
       }.bind(this));

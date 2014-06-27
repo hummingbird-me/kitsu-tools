@@ -132,9 +132,9 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
     setStatus: function (libraryEntry, newStatus) {
       libraryEntry.set('status', newStatus);
 
-      if (newStatus === "Completed" && libraryEntry.get('manga.chapterCount') && libraryEntry.get('chaptersReaded') !== libraryEntry.get('manga.chapterCount')) {
-        libraryEntry.set('chaptersReaded', libraryEntry.get('manga.chapterCount'));
-        Messenger().post("Marked all chapters as Readed.");
+      if (newStatus === "Completed" && libraryEntry.get('manga.chapterCount') && libraryEntry.get('chaptersRead') !== libraryEntry.get('manga.chapterCount')) {
+        libraryEntry.set('chaptersRead', libraryEntry.get('manga.chapterCount'));
+        Messenger().post("Marked all chapters as Read.");
       }
 
       return this.saveMangaLibraryEntry(libraryEntry);
@@ -173,7 +173,7 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
         libraryEntry.set('rereading', true);
         if (libraryEntry.get('status') !== "Currently Reading") {
           libraryEntry.set('status', "Currently Reading");
-          libraryEntry.set('chaptersReaded', 0);
+          libraryEntry.set('chaptersRead', 0);
           Messenger().post("Moved " + libraryEntry.get('manga.englishTitle') + " to Currently Reading.");
         }
       }
@@ -184,8 +184,8 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
       return this.saveMangaLibraryEntry(libraryEntry);
     },
 
-    saveChaptersReaded: function (libraryEntry) {
-      if (libraryEntry.get('manga.chapterCount') && libraryEntry.get('chaptersReaded') === libraryEntry.get('manga.chapterCount')) {
+    saveChaptersRead: function (libraryEntry) {
+      if (libraryEntry.get('manga.chapterCount') && libraryEntry.get('chaptersRead') === libraryEntry.get('manga.chapterCount')) {
         if (libraryEntry.get('status') !== "Completed") {
           Messenger().post("Marked " + libraryEntry.get('manga.englishTitle') + " as complete.");
           libraryEntry.set('status', "Completed");

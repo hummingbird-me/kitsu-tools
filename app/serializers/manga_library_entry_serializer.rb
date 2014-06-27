@@ -22,8 +22,8 @@ class MangaLibraryEntrySerializer < ActiveModel::Serializer
     scope and scope.respond_to?(:has_favorite2?) and scope.has_favorite2? object.manga
   end
 
-  def last_readed
-    object.last_readed || object.created_at
+  def last_read
+    object.last_read || object.created_at
   end
 
 end
