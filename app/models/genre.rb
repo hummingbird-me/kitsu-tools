@@ -16,6 +16,7 @@ class Genre < ActiveRecord::Base
 
   attr_accessible :name, :description
   has_and_belongs_to_many :anime
+  has_and_belongs_to_many :manga
 
   validates :name, :slug, :presence => true, :uniqueness => true
 

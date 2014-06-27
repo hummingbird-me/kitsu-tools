@@ -1,15 +1,15 @@
-Hummingbird.UserLibraryController = Ember.ArrayController.extend({
+Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
   needs: "user",
   user: Ember.computed.alias('controllers.user'),
   reactComponent: null,
 
-  libraryName: "Anime Library",
+  libraryName: "Manga Library",
   filter: "",
-  sortBy: JSON.parse(localStorage.getItem('librarySortBy')) || "lastWatched",
+  sortBy: JSON.parse(localStorage.getItem('librarySortBy')) || "lastRead",
   sortAsc: JSON.parse(localStorage.getItem('librarySortAsc')) || false,
-  sectionNames: ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"],
-  showSection: "Currently Watching",
 
+  sectionNames: ["Currently Reading", "Plan to Read", "Completed", "On Hold", "Dropped"],
+  showSection: "Currently Reading",
   showAll: function () {
     return this.get('showSection') === "View All" || this.get('filter').length > 0;
   }.property('showSection', 'filter'),
@@ -52,7 +52,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend({
     });
 
     this.get('content').forEach(function (item) {
-      if ((filter.length === 0) || (item.get('anime.searchString').indexOf(filter) >= 0)) {
+      if ((filter.length === 0) || (item.get('manga.searchString').indexOf(filter) >= 0)) {
         return agg[item.get('status')].push(item);
       }
     });
@@ -84,23 +84,21 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend({
   notifyReactComponent: function () {
     return Ember.run.once(this, 'actuallyNotifyReactComponent');
   }.observes('filter', 'showSection', 'sortBy', 'sortAsc',
-             'content.@each.episodesWatched',
+             'content.@each.chaptersRead',
              'content.@each.status',
              'content.@each.rating',
              'content.@each.private',
-             'content.@each.episodesWatched',
-             'content.@each.notes',
-             'content.@each.rewatchCount',
-             'content.@each.rewatching'),
+             'content.@each.rereadCount',
+             'content.@each.rereading'),
 
   persistSort: function () {
-    localStorage.setItem('librarySortBy', JSON.stringify(this.get('sortBy')));
-    return localStorage.setItem('librarySortAsc', JSON.stringify(this.get('sortAsc')));
+    localStorage.setItem('mangaLibrarySortBy', JSON.stringify(this.get('sortBy')));
+    return localStorage.setItem('mangaLibrarySortAsc', JSON.stringify(this.get('sortAsc')));
   }.observes('sortBy', 'sortAsc'),
 
-  saveLibraryEntry: function (libraryEntry) {
+  saveMangaLibraryEntry: function (libraryEntry) {
     var title;
-    title = libraryEntry.get('anime.canonicalTitle');
+    title = libraryEntry.get('manga.englishTitle');
     return Messenger().expectPromise((function () {
       return libraryEntry.save();
     }), {
@@ -115,7 +113,7 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend({
         if (this.get('sortAsc')) {
           return this.set('sortAsc', false);
         } else {
-          return this.set('sortBy', 'lastWatched');
+          return this.set('sortBy', 'lastRead');
         }
       } else {
         this.set('sortBy', newSort);
@@ -134,28 +132,28 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend({
     setStatus: function (libraryEntry, newStatus) {
       libraryEntry.set('status', newStatus);
 
-      if (newStatus === "Completed" && libraryEntry.get('anime.episodeCount') && libraryEntry.get('episodesWatched') !== libraryEntry.get('anime.episodeCount')) {
-        libraryEntry.set('episodesWatched', libraryEntry.get('anime.episodeCount'));
-        Messenger().post("Marked all episodes as watched.");
+      if (newStatus === "Completed" && libraryEntry.get('manga.chapterCount') && libraryEntry.get('chaptersRead') !== libraryEntry.get('manga.chapterCount')) {
+        libraryEntry.set('chaptersRead', libraryEntry.get('manga.chapterCount'));
+        Messenger().post("Marked all chapters as Read.");
       }
 
-      return this.saveLibraryEntry(libraryEntry);
+      return this.saveMangaLibraryEntry(libraryEntry);
     },
 
-    removeFromLibrary: function (libraryEntry) {
-      var anime;
-      anime = libraryEntry.get('anime');
+    removeFromMangaLibrary: function (libraryEntry) {
+      var manga;
+      manga = libraryEntry.get('manga');
       return Messenger().expectPromise((function () {
         return libraryEntry.destroyRecord();
       }), {
-        progressMessage: "Removing " + anime.get('canonicalTitle') + " from your library...",
-        successMessage: "Removed " + anime.get('canonicalTitle') + " from your library!"
+        progressMessage: "Removing " + manga.get('englishTitle') + " from your library...",
+        successMessage: "Removed " + manga.get('englishTitle') + " from your library!"
       });
     },
 
     setPrivate: function (libraryEntry, newPrivate) {
       libraryEntry.set('private', newPrivate);
-      return this.saveLibraryEntry(libraryEntry);
+      return this.saveMangaLibraryEntry(libraryEntry);
     },
 
     setRating: function (libraryEntry, newRating) {
@@ -163,37 +161,37 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend({
         newRating = null;
       }
       libraryEntry.set('rating', newRating);
-      return this.saveLibraryEntry(libraryEntry);
+      return this.saveMangaLibraryEntry(libraryEntry);
     },
 
-    toggleRewatching: function (libraryEntry) {
+    toggleRereading: function (libraryEntry) {
       var currentState;
-      currentState = libraryEntry.get('rewatching');
+      currentState = libraryEntry.get('rereading');
       if (currentState) {
-        libraryEntry.set('rewatching', false);
+        libraryEntry.set('rereading', false);
       } else {
-        libraryEntry.set('rewatching', true);
-        if (libraryEntry.get('status') !== "Currently Watching") {
-          libraryEntry.set('status', "Currently Watching");
-          libraryEntry.set('episodesWatched', 0);
-          Messenger().post("Moved " + libraryEntry.get('anime.canonicalTitle') + " to Currently Watching.");
+        libraryEntry.set('rereading', true);
+        if (libraryEntry.get('status') !== "Currently Reading") {
+          libraryEntry.set('status', "Currently Reading");
+          libraryEntry.set('chaptersRead', 0);
+          Messenger().post("Moved " + libraryEntry.get('manga.englishTitle') + " to Currently Reading.");
         }
       }
-      return this.saveLibraryEntry(libraryEntry);
+      return this.saveMangaLibraryEntry(libraryEntry);
     },
 
-    saveLibraryEntry: function (libraryEntry) {
-      return this.saveLibraryEntry(libraryEntry);
+    saveMangaLibraryEntry: function (libraryEntry) {
+      return this.saveMangaLibraryEntry(libraryEntry);
     },
 
-    saveEpisodesWatched: function (libraryEntry) {
-      if (libraryEntry.get('anime.episodeCount') && libraryEntry.get('episodesWatched') === libraryEntry.get('anime.episodeCount')) {
+    saveChaptersRead: function (libraryEntry) {
+      if (libraryEntry.get('manga.chapterCount') && libraryEntry.get('chaptersRead') === libraryEntry.get('manga.chapterCount')) {
         if (libraryEntry.get('status') !== "Completed") {
-          Messenger().post("Marked " + libraryEntry.get('anime.canonicalTitle') + " as complete.");
+          Messenger().post("Marked " + libraryEntry.get('manga.englishTitle') + " as complete.");
           libraryEntry.set('status', "Completed");
         }
       }
-      return this.saveLibraryEntry(libraryEntry);
+      return this.saveMangaLibraryEntry(libraryEntry);
     }
   }
 });

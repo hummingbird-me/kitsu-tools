@@ -37,9 +37,17 @@ class Manga < ActiveRecord::Base
   extend FriendlyId
   friendly_id :romaji_title, use: [:slugged, :history]
 
-  attr_accessible :cover_image, :cover_image_top_offset, :end_date, :english_title, :mal_id, :poster_image, :romaji_title, :serialization, :start_date, :status, :synopsis, :genres, :volume_count, :chapter_count
+  attr_accessible :cover_image, :type, :cover_image_top_offset, :end_date, :english_title, :mal_id, :poster_image, :romaji_title, :serialization, :start_date, :status, :synopsis, :genres, :volume_count, :chapter_count
+
+  # Internal Constants
+  private
+  
+  VALID_TYPES =  ["Manga","Novel", "One Shot", "Doujin","Manwha", "Manhua", "OEL"]
+
+  public
 
   validates :romaji_title, presence: true
+  validates :type, inclusion: { in: VALID_TYPES }
 
   has_attached_file :cover_image,
     styles: {thumb: ["1400x900>", :jpg]},
@@ -57,6 +65,7 @@ class Manga < ActiveRecord::Base
   }
 
   has_and_belongs_to_many :genres
+  has_many :manga_library_entries, dependent: :destroy
 
   def self.create_or_update_from_hash hash
     # First the creation logic
@@ -75,6 +84,7 @@ class Manga < ActiveRecord::Base
       english_title: (hash[:title][:en_us] if manga.english_title.nil?),
       romaji_title: (hash[:title][:en_jp] || hash[:title][:canonical] if manga.romaji_title.nil?),
       synopsis: (hash[:synopsis] if manga.synopsis.nil?),
+      type: (hash[:type] if manga.type.nil?),
       poster_image: (hash[:poster_image] if manga.poster_image.nil?),
       genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if manga.genres.nil?),
       # TODO: replace this with a serialization table like producers?
@@ -86,20 +96,5 @@ class Manga < ActiveRecord::Base
       status: (hash[:status] if manga.status.nil?)
     }.compact)
     manga.save!
-    # Staff castings
-    hash[:staff].each do |staff|
-      Casting.create_or_update_from_hash staff.merge({
-        manga: manga
-      })
-    end
-    # Character castings
-    hash[:characters].each do |ch|
-      character = Character.create_or_update_from_hash ch
-      Casting.create_or_update_from_hash({
-        featured: ch[:featured],
-        character: character,
-        manga: manga
-      })
-    end
   end
 end

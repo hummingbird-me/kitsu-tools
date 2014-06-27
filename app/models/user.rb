@@ -79,6 +79,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :favorites
+  has_many :consumings
   def has_favorite?(item)
     self.favorites.exists?(item_id: item, item_type: item.class.to_s)
   end
@@ -116,7 +117,7 @@ class User < ActiveRecord::Base
          allow_unconfirmed_access_for: 3.days
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :password, :password_confirmation, :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned, :subscribed_to_newsletter
+  attr_accessible :name, :email, :location, :password, :password_confirmation, :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned, :subscribed_to_newsletter
 
   has_attached_file :avatar,
     styles: {
@@ -149,6 +150,7 @@ class User < ActiveRecord::Base
 
   has_many :watchlists
   has_many :library_entries, dependent: :destroy
+  has_many :manga_library_entries, dependent: :destroy
   has_many :reviews
   has_many :quotes
 

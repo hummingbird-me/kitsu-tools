@@ -257,6 +257,47 @@ ALTER SEQUENCE characters_id_seq OWNED BY characters.id;
 
 
 --
+-- Name: consumings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE consumings (
+    id integer NOT NULL,
+    user_id integer,
+    item_id integer,
+    item_type character varying(255),
+    status character varying(255),
+    private boolean DEFAULT false,
+    parts_consumed integer DEFAULT 0,
+    blocks_consumed integer DEFAULT 0,
+    reconsume_count integer DEFAULT 0,
+    reconsuming boolean DEFAULT false,
+    last_consumed timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    rating numeric(2,1)
+);
+
+
+--
+-- Name: consumings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE consumings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: consumings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE consumings_id_seq OWNED BY consumings.id;
+
+
+--
 -- Name: episodes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -834,7 +875,8 @@ CREATE TABLE manga (
     status character varying(255),
     cover_image_top_offset integer DEFAULT 0,
     volume_count integer,
-    chapter_count integer
+    chapter_count integer,
+    type character varying(255) DEFAULT 'Manga'::character varying
 );
 
 
@@ -855,6 +897,78 @@ CREATE SEQUENCE manga_id_seq
 --
 
 ALTER SEQUENCE manga_id_seq OWNED BY manga.id;
+
+
+--
+-- Name: manga_library_entries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE manga_library_entries (
+    id integer NOT NULL,
+    user_id integer,
+    manga_id integer,
+    status character varying(255),
+    private boolean DEFAULT false,
+    chapters_read integer DEFAULT 0,
+    volumes_read integer DEFAULT 0,
+    reread_count integer DEFAULT 0,
+    rereading boolean DEFAULT false,
+    last_read timestamp without time zone,
+    rating numeric(2,1),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: manga_library_entries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE manga_library_entries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: manga_library_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE manga_library_entries_id_seq OWNED BY manga_library_entries.id;
+
+
+--
+-- Name: media; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE media (
+    id integer NOT NULL,
+    mediable_id integer,
+    mediable_type character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: media_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE media_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: media_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE media_id_seq OWNED BY media.id;
 
 
 --
@@ -1358,7 +1472,9 @@ CREATE TABLE watchlists (
     private boolean DEFAULT false,
     notes text,
     rewatch_count integer DEFAULT 0 NOT NULL,
-    rewatching boolean DEFAULT false NOT NULL
+    rewatching boolean DEFAULT false NOT NULL,
+    media_id integer,
+    watchable_type text DEFAULT 'Anime'::text
 );
 
 
@@ -1407,6 +1523,13 @@ ALTER TABLE ONLY castings ALTER COLUMN id SET DEFAULT nextval('castings_id_seq':
 --
 
 ALTER TABLE ONLY characters ALTER COLUMN id SET DEFAULT nextval('characters_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY consumings ALTER COLUMN id SET DEFAULT nextval('consumings_id_seq'::regclass);
 
 
 --
@@ -1526,6 +1649,20 @@ ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::reg
 --
 
 ALTER TABLE ONLY manga ALTER COLUMN id SET DEFAULT nextval('manga_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY manga_library_entries ALTER COLUMN id SET DEFAULT nextval('manga_library_entries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY media ALTER COLUMN id SET DEFAULT nextval('media_id_seq'::regclass);
 
 
 --
@@ -1780,11 +1917,27 @@ ALTER TABLE ONLY genres
 
 
 --
+-- Name: manga_library_entries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY manga_library_entries
+    ADD CONSTRAINT manga_library_entries_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: manga_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY manga
     ADD CONSTRAINT manga_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: media_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY media
+    ADD CONSTRAINT media_pkey PRIMARY KEY (id);
 
 
 --
@@ -2011,6 +2164,20 @@ CREATE UNIQUE INDEX index_characters_on_mal_id ON characters USING btree (mal_id
 
 
 --
+-- Name: index_consumings_on_item_id_and_item_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_consumings_on_item_id_and_item_type ON consumings USING btree (item_id, item_type);
+
+
+--
+-- Name: index_consumings_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_consumings_on_user_id ON consumings USING btree (user_id);
+
+
+--
 -- Name: index_episodes_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2064,6 +2231,13 @@ CREATE INDEX index_follows_on_followed_id ON follows USING btree (follower_id);
 --
 
 CREATE UNIQUE INDEX index_follows_on_followed_id_and_follower_id ON follows USING btree (followed_id, follower_id);
+
+
+--
+-- Name: index_follows_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_follows_on_user_id ON follows USING btree (followed_id);
 
 
 --
@@ -2221,6 +2395,27 @@ CREATE INDEX index_genres_manga_on_manga_id ON genres_manga USING btree (manga_i
 
 
 --
+-- Name: index_manga_library_entries_on_manga_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_manga_library_entries_on_manga_id ON manga_library_entries USING btree (manga_id);
+
+
+--
+-- Name: index_manga_library_entries_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_manga_library_entries_on_user_id ON manga_library_entries USING btree (user_id);
+
+
+--
+-- Name: index_media_on_mediable_id_and_mediable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_media_on_mediable_id_and_mediable_type ON media USING btree (mediable_id, mediable_type);
+
+
+--
 -- Name: index_not_interesteds_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2246,6 +2441,13 @@ CREATE INDEX index_notifications_on_user_id ON notifications USING btree (user_i
 --
 
 CREATE UNIQUE INDEX index_people_on_mal_id ON people USING btree (mal_id);
+
+
+--
+-- Name: index_quotes_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_quotes_on_anime_id ON quotes USING btree (anime_id);
 
 
 --
@@ -2372,6 +2574,13 @@ CREATE UNIQUE INDEX index_votes_on_target_id_and_target_type_and_user_id ON vote
 --
 
 CREATE INDEX index_votes_on_user_id_and_target_type ON votes USING btree (user_id, target_type);
+
+
+--
+-- Name: index_watchlists_on_media_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_watchlists_on_media_id ON watchlists USING btree (media_id);
 
 
 --
@@ -3001,13 +3210,49 @@ INSERT INTO schema_migrations (version) VALUES ('20140509185245');
 
 INSERT INTO schema_migrations (version) VALUES ('20140510170525');
 
+INSERT INTO schema_migrations (version) VALUES ('20140510191245');
+
+INSERT INTO schema_migrations (version) VALUES ('20140511135230');
+
 INSERT INTO schema_migrations (version) VALUES ('20140511184722');
 
 INSERT INTO schema_migrations (version) VALUES ('20140511190858');
 
 INSERT INTO schema_migrations (version) VALUES ('20140512093910');
 
+INSERT INTO schema_migrations (version) VALUES ('20140512094905');
+
+INSERT INTO schema_migrations (version) VALUES ('20140512104608');
+
+INSERT INTO schema_migrations (version) VALUES ('20140512104625');
+
 INSERT INTO schema_migrations (version) VALUES ('20140515093555');
 
+INSERT INTO schema_migrations (version) VALUES ('20140517144844');
+
+INSERT INTO schema_migrations (version) VALUES ('20140613205304');
+
+INSERT INTO schema_migrations (version) VALUES ('20140614220406');
+
 INSERT INTO schema_migrations (version) VALUES ('20140616040317');
+
+INSERT INTO schema_migrations (version) VALUES ('20140617152640');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620195245');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620204530');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620211343');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620211542');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620222815');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620224034');
+
+INSERT INTO schema_migrations (version) VALUES ('20140626200713');
+
+INSERT INTO schema_migrations (version) VALUES ('20140627050628');
+
+INSERT INTO schema_migrations (version) VALUES ('20140627051435');
 

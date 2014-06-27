@@ -2,13 +2,12 @@ development:
   adapter: postgresql
   database: hummingbird_development
   host: localhost
-  port: 5432
 
 test:
   adapter: postgresql
   database: hummingbird_test
   host: localhost
-
+  
 production:
   adapter: postgresql
   database: hummingbird_production
