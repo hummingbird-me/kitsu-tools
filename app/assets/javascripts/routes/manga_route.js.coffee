@@ -19,8 +19,8 @@ Hummingbird.MangaRoute = Ember.Route.extend
       manga = @currentModel
       mangaLibraryEntry = manga.get('mangaLibraryEntry')
       Messenger().expectPromise (-> mangaLibraryEntry.destroyRecord()),
-        progressMessage: "Removing " + manga.get('romanjiTitle') + " from your library..."
-        successMessage: "Removed " + manga.get('romanjiTitle') + " from your library!"
+        progressMessage: "Removing " + manga.get('romajiTitle') + " from your library..."
+        successMessage: "Removed " + manga.get('romajiTitle') + " from your library!"
 
     setLibraryStatus: (newStatus) ->
       manga = @currentModel
