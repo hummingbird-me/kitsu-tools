@@ -85,6 +85,7 @@ class Manga < ActiveRecord::Base
       english_title: (hash[:title][:en_us] if manga.english_title.nil?),
       romaji_title: (hash[:title][:en_jp] || hash[:title][:canonical] if manga.romaji_title.nil?),
       synopsis: (hash[:synopsis] if manga.synopsis.nil?),
+      type: (hash[:type] if manga.type.nil?),
       poster_image: (hash[:poster_image] if manga.poster_image.nil?),
       genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if manga.genres.nil?),
       # TODO: replace this with a serialization table like producers?
@@ -96,20 +97,5 @@ class Manga < ActiveRecord::Base
       status: (hash[:status] if manga.status.nil?)
     }.compact)
     manga.save!
-    # Staff castings
-    hash[:staff].each do |staff|
-      Casting.create_or_update_from_hash staff.merge({
-        manga: manga
-      })
-    end
-    # Character castings
-    hash[:characters].each do |ch|
-      character = Character.create_or_update_from_hash ch
-      Casting.create_or_update_from_hash({
-        featured: ch[:featured],
-        character: character,
-        manga: manga
-      })
-    end
   end
 end
