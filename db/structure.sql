@@ -940,38 +940,6 @@ ALTER SEQUENCE manga_library_entries_id_seq OWNED BY manga_library_entries.id;
 
 
 --
--- Name: media; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE media (
-    id integer NOT NULL,
-    mediable_id integer,
-    mediable_type character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: media_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE media_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: media_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE media_id_seq OWNED BY media.id;
-
-
---
 -- Name: not_interesteds; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1472,9 +1440,7 @@ CREATE TABLE watchlists (
     private boolean DEFAULT false,
     notes text,
     rewatch_count integer DEFAULT 0 NOT NULL,
-    rewatching boolean DEFAULT false NOT NULL,
-    media_id integer,
-    watchable_type text DEFAULT 'Anime'::text
+    rewatching boolean DEFAULT false NOT NULL
 );
 
 
@@ -1662,13 +1628,6 @@ ALTER TABLE ONLY manga_library_entries ALTER COLUMN id SET DEFAULT nextval('mang
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY media ALTER COLUMN id SET DEFAULT nextval('media_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY not_interesteds ALTER COLUMN id SET DEFAULT nextval('not_interesteds_id_seq'::regclass);
 
 
@@ -1786,6 +1745,14 @@ ALTER TABLE ONLY castings
 
 ALTER TABLE ONLY characters
     ADD CONSTRAINT characters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: consumings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY consumings
+    ADD CONSTRAINT consumings_pkey PRIMARY KEY (id);
 
 
 --
@@ -1930,14 +1897,6 @@ ALTER TABLE ONLY manga_library_entries
 
 ALTER TABLE ONLY manga
     ADD CONSTRAINT manga_pkey PRIMARY KEY (id);
-
-
---
--- Name: media_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY media
-    ADD CONSTRAINT media_pkey PRIMARY KEY (id);
 
 
 --
@@ -2234,13 +2193,6 @@ CREATE UNIQUE INDEX index_follows_on_followed_id_and_follower_id ON follows USIN
 
 
 --
--- Name: index_follows_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_follows_on_user_id ON follows USING btree (followed_id);
-
-
---
 -- Name: index_forem_categories_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2409,13 +2361,6 @@ CREATE INDEX index_manga_library_entries_on_user_id ON manga_library_entries USI
 
 
 --
--- Name: index_media_on_mediable_id_and_mediable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_media_on_mediable_id_and_mediable_type ON media USING btree (mediable_id, mediable_type);
-
-
---
 -- Name: index_not_interesteds_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2441,13 +2386,6 @@ CREATE INDEX index_notifications_on_user_id ON notifications USING btree (user_i
 --
 
 CREATE UNIQUE INDEX index_people_on_mal_id ON people USING btree (mal_id);
-
-
---
--- Name: index_quotes_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_quotes_on_anime_id ON quotes USING btree (anime_id);
 
 
 --
@@ -2574,13 +2512,6 @@ CREATE UNIQUE INDEX index_votes_on_target_id_and_target_type_and_user_id ON vote
 --
 
 CREATE INDEX index_votes_on_user_id_and_target_type ON votes USING btree (user_id, target_type);
-
-
---
--- Name: index_watchlists_on_media_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_watchlists_on_media_id ON watchlists USING btree (media_id);
 
 
 --
@@ -3210,27 +3141,13 @@ INSERT INTO schema_migrations (version) VALUES ('20140509185245');
 
 INSERT INTO schema_migrations (version) VALUES ('20140510170525');
 
-INSERT INTO schema_migrations (version) VALUES ('20140510191245');
-
-INSERT INTO schema_migrations (version) VALUES ('20140511135230');
-
 INSERT INTO schema_migrations (version) VALUES ('20140511184722');
 
 INSERT INTO schema_migrations (version) VALUES ('20140511190858');
 
 INSERT INTO schema_migrations (version) VALUES ('20140512093910');
 
-INSERT INTO schema_migrations (version) VALUES ('20140512094905');
-
-INSERT INTO schema_migrations (version) VALUES ('20140512104608');
-
-INSERT INTO schema_migrations (version) VALUES ('20140512104625');
-
 INSERT INTO schema_migrations (version) VALUES ('20140515093555');
-
-INSERT INTO schema_migrations (version) VALUES ('20140517144844');
-
-INSERT INTO schema_migrations (version) VALUES ('20140613205304');
 
 INSERT INTO schema_migrations (version) VALUES ('20140614220406');
 
@@ -3238,17 +3155,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140616040317');
 
 INSERT INTO schema_migrations (version) VALUES ('20140617152640');
 
-INSERT INTO schema_migrations (version) VALUES ('20140620195245');
-
-INSERT INTO schema_migrations (version) VALUES ('20140620204530');
-
-INSERT INTO schema_migrations (version) VALUES ('20140620211343');
-
-INSERT INTO schema_migrations (version) VALUES ('20140620211542');
-
 INSERT INTO schema_migrations (version) VALUES ('20140620222815');
-
-INSERT INTO schema_migrations (version) VALUES ('20140620224034');
 
 INSERT INTO schema_migrations (version) VALUES ('20140626200713');
 
