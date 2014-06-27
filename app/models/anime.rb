@@ -172,7 +172,7 @@ class Anime < ActiveRecord::Base
       mal_id: (hash[:external_id] if anime.mal_id.nil?),
       title: (hash[:title][:canonical] if anime.title.nil?),
       alt_title: (hash[:title][:ja_en] if anime.alt_title.nil?),
-      synopsis: (hash[:synopsis] if anime.synopsis.nil?),
+      synopsis: (hash[:synopsis] if anime.synopsis.blank?),
       poster_image: (hash[:poster_image] if anime.poster_image.nil?),
       genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if anime.genres.blank?),
       producers: (begin hash[:producers].map { |p| Producer.find_by name: p }.compact rescue [] end if anime.producers.blank?),

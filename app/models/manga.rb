@@ -91,7 +91,7 @@ class Manga < ActiveRecord::Base
       mal_id: (hash[:external_id] if manga.mal_id.nil?),
       english_title: (hash[:title][:en_us] if manga.english_title.nil?),
       romaji_title: (hash[:title][:en_jp] || hash[:title][:canonical] if manga.romaji_title.nil?),
-      synopsis: (hash[:synopsis] if manga.synopsis.nil?),
+      synopsis: (hash[:synopsis] if manga.synopsis.blank?),
       type: (hash[:type] if manga.type.nil?),
       poster_image: (hash[:poster_image] if manga.poster_image.nil?),
       genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if manga.genres.nil?),
