@@ -45,9 +45,11 @@ Hummingbird.HeaderQuickUpdateComponent = Ember.Component.extend({
       var item = this.get('item'),
           epsWatched = item.get('episodesWatched'),
           eps = this.get('item.anime.episodeCount');
-          
       if (epsWatched < eps || !eps) {
         item.set('episodesWatched', epsWatched + 1);
+        if((epsWatched + 1) == eps){
+          item.set('status', 'Completed');
+        }
         return item.save();
       }
     }
