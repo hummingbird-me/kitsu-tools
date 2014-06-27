@@ -22,7 +22,7 @@ Hummingbird.HeaderController = Ember.Controller.extend({
         return Bloodhound.tokenizers.whitespace(d.value);
       },
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      limit: 6,
+      limit: 8,
       remote: {
         url: '/search.json?query=%QUERY&type=mixed',
         filter: function (results) {

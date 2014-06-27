@@ -69,18 +69,22 @@ class SearchController < ApplicationController
     # This will only return minimal data about anime and users
     elsif @search_type == "mixed"
       anime = search_database 'anime', params[:query], params[:page]
+      manga = search_database 'manga', params[:query], params[:page]
       users = User.match(params[:query])
       users = User.search(params[:query]) if users.length == 0
 
       formattedAnime = anime.map { |x|
         {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
       }.flatten
+      formattedManga = anime.map { |x|
+        {:type => 'manga', :title => x.title, :image => x.poster_image_thumb, :link => "/manga/#{x.slug}" }
+      }.flatten
       formattedUsers = users.map { |x|
         {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" }
       }.flatten
 
       respond_to do |format|
-        format.json { render :json => [formattedAnime, formattedUsers].flatten }
+        format.json { render :json => [formattedAnime.take(3), formattedManga.take(3), formattedUsers.take(2)].flatten }
       end
 
 
