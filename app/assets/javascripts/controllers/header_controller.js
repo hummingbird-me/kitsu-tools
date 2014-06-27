@@ -84,7 +84,7 @@ Hummingbird.HeaderController = Ember.Controller.extend({
       }), 100);
     },
     submitSearch: function () {
-      return window.location.replace("http://hummingbird.me/search?query=" + this.get('searchTerm'));
+      return window.location.replace("/search?query=" + this.get('searchTerm'));
     },
     toggleUpdater: function () {
       var _this = this;
