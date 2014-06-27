@@ -37,8 +37,7 @@ Hummingbird.MangaRoute = Ember.Route.extend({
     },
     
     setLibraryStatus: function(newStatus) {
-      var manga = this.currentModel,
-          mangaLibraryEntry = this.currentModel.get('mangaLibraryEntry');
+      var mangaLibraryEntry = this.currentModel.get('mangaLibraryEntry');
       if (this.controllerFor('manga').get('mangaLibraryEntryExists')) {
         mangaLibraryEntry.set('status', newStatus);
       } else {
@@ -48,8 +47,8 @@ Hummingbird.MangaRoute = Ember.Route.extend({
         });
       }
       if (newStatus === "Completed") {
-        mangaLibraryEntry.set('chaptersRead', manga.get('chapterCount'));
-        mangaLibraryEntry.set('volumesRead', manga.get('volumeCount'));
+        mangaLibraryEntry.set('chaptersRead', mangaLibraryEntry.get('manga.chapterCount'));
+        mangaLibraryEntry.set('volumesRead', mangaLibraryEntry.get('manga.volumeCount'));
       }
       return this.saveMangaLibraryEntry(mangaLibraryEntry);
     },

@@ -9,13 +9,16 @@ Hummingbird.MangaLibraryEntry = DS.Model.extend({
   rereading: DS.attr('boolean'),
   rereadCount: DS.attr('number'),
   lastRead: DS.attr('date'),
-  positiveRating: (function() {
-    return this.get('rating') >= 3.6;
-  }).property('rating'),
-  negativeRating: (function() {
-    return this.get('rating') <= 2.4;
-  }).property('rating'),
-  neutralRating: (function() {
-    return this.get('rating') > 2.4 && this.get('rating') < 3.6;
-  }).property('rating')
+  
+  positiveRating: function() {
+    return (this.get('rating') >= 3.6);
+  }.property('rating'),
+  
+  negativeRating: function() {
+    return (this.get('rating') <= 2.4);
+  }.property('rating'),
+  
+  neutralRating: function() {
+    return (this.get('rating') > 2.4 && this.get('rating') < 3.6);
+  }.property('rating')
 });
