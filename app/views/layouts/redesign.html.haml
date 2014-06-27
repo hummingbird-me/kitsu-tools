@@ -10,7 +10,7 @@
     %meta(property="fb:app_id" content="325314560922421")
     %meta(name="fragment" content="!")
     %meta(name="og:title" content="Hummingbird")
-    = yield
+    = yield :head
 
     :javascript
       // Google Analytics
@@ -40,6 +40,19 @@
       }(document, 'script', 'facebook-jssdk'));
 
   %body
+    %noscript
+      %nav.navbar.navbar-inverse.hb-nav.navbar-fixed-top
+        %div.container
+          %a.navbar-brand{href: "/"}
+            %img{width: "119px", height: "20px", src: "/assets/logo-new.jpg", alt: "Hummingbird"}
+          %ul.nav.navbar-nav
+            %li.dropdown
+              %a{href: "/anime"} Trending Anime
+            %li.dropdown
+              %a{href: "/anime/upcoming"} Upcoming Anime
+            %li.dropdown
+              %a{href: "http://forums.hummingbird.me/"} Community
+      = yield :body
     -# / Temporary:
     -# - if Rails.env.development?
     -#   :javascript
