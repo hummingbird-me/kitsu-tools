@@ -57,7 +57,7 @@
             <ul class="series-metadata">
               <%= schema_tag(:meta, :inLanguage,  "ja-JP") %>
               <li <%= schema_prop(:isFamilyFriendly, @anime.sfw?) %>><%= @anime.sfw? ? "SFW" : "NSFW" %></li>
-              <li <%= schema_prop(:contentRating) %>><%= @anime.age_rating.split(" - ")[0].strip %></li>
+              <li <%= schema_prop(:contentRating) %>><%= @anime.age_rating %></li>
               <li <%= schema_prop(:numberOfEpisodes, @anime.episode_count) %>><%= @anime.episode_count %> episodes</li>
               <!-- There's no microformat for episode-length, but we can set a duration on episode items -->
               <li><%= @anime.episode_length %> min</li>
