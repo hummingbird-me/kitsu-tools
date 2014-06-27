@@ -10,6 +10,14 @@
       }.bind(this));
     },
 
+    changeVolumesRead: function(newValue) {
+      Ember.run(function() {
+        var controller = this.props.view.get('controller');
+        var libraryEntry = this.props.content;
+        controller.send('setVolumesRead', libraryEntry, newValue);
+      });
+    },
+
     removeFromMangaLibrary: function() {
       Ember.run(function() {
         var controller = this.props.view.get('controller');
@@ -149,6 +157,14 @@
                   <hr />
 
                   <div className="text-center">
+                    <form className="form-inline" onSubmit={this.saveMangaLibraryEntry}>
+                      Volumes Read:
+                      <input type="number" className="form-control" style={ {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"} } value={this.props.content.get('volumesRead')} onChange={this.changeVolumesRead} onBlur={this.saveMangaLibraryEntry} />
+                    </form>
+                    <hr />
+                  </div>
+
+                  <div className="text-center">
                     <form>
                       <label className="radio-inline">
                         <input name="private" type="radio" value="true" checked={this.props.content.get('private')} onChange={this.changeMangaPrivate.bind(this, true)} />
@@ -218,13 +234,6 @@
     },
 
 
-    incrementVolumes: function(event) {
-      Ember.run(function() {
-        this.props.content.incrementProperty('volumesRead');
-        Ember.run.debounce(this, this.saveVolumesRead, 500);
-      }.bind(this));
-    },
-
     changeProgress: function(event) {
       Ember.run(function() {
         if (!this.props.view.get('user.viewingSelf')) { return; }
@@ -242,20 +251,6 @@
         if (chaptersRead < 0) { chaptersRead = originalChaptersRead; }
 
         this.props.content.set('chaptersRead', chaptersRead);
-
-        var originalVolumesRead = this.props.content.get('volumesRead');
-        var volumesRead = parseInt(event.target.value) || 0;
-
-        // Don't allow exceeding the show's volume count.
-        var mangaVolumeCount = this.props.content.get('manga.volumeCount');
-        if (mangaVolumeCount && volumesRead > mangaVolumeCount) {
-          volumesRead = originalVolumesRead;
-        }
-
-        // Let's not go below zero.
-        if (volumesRead < 0) { volumesRead = originalVolumesRead; }
-
-        this.props.content.set('volumesRead', volumesRead);
       }.bind(this));
     },
 
@@ -343,16 +338,6 @@
               }
             </div>
             <div className="list-item-right">
-              <div className="list-item-progress">
-                { this.props.view.get('user.viewingSelf')
-                  ? <i title="Increment volume count" className="episode-increment" onClick={this.incrementVolumes} />
-                  : '' }
-                <form style={ {display: "inline"} } onSubmit={this.saveVolumeRead} >
-                  <input className="input-progress" type="text" pattern="[0-9]*" value={content.get('volumesRead')} onChange={this.changeProgress} onBlur={this.saveVolumesRead} />
-                </form>
-                <span className="progress-sep">/</span>
-                <span className="list-item-total">{content.get('manga.displayVolumeCount')}</span>
-              </div>
               <div className="list-item-progress">
                 { this.props.view.get('user.viewingSelf')
                   ? <i title="Increment chapter count" className="episode-increment" onClick={this.incrementChapters} />
