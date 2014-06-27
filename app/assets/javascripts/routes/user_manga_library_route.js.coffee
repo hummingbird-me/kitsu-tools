@@ -17,3 +17,12 @@ Hummingbird.UserMangaLibraryRoute = Ember.Route.extend
 
   afterModel: ->
     Hummingbird.TitleManager.setTitle @modelFor('user').get('id') + "'s Library"
+
+  actions: 
+    changeLibrary: (name) ->
+      if name is "Anime Library"
+        @controllerFor('user.manga_library').set("libraryName", "Anime Library")
+        @transitionTo('user.library')
+      if name is "Manga Library"
+        @controllerFor('user.manga_library').set("libraryName", "Manga Library")
+      

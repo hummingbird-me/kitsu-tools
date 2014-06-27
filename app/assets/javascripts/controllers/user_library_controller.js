@@ -3,12 +3,13 @@ Hummingbird.UserLibraryController = Ember.ArrayController.extend({
   user: Ember.computed.alias('controllers.user'),
   reactComponent: null,
 
+  libraryName: "Anime Library",
   filter: "",
   sortBy: JSON.parse(localStorage.getItem('librarySortBy')) || "lastWatched",
   sortAsc: JSON.parse(localStorage.getItem('librarySortAsc')) || false,
-
   sectionNames: ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"],
   showSection: "Currently Watching",
+
   showAll: function () {
     return this.get('showSection') === "View All" || this.get('filter').length > 0;
   }.property('showSection', 'filter'),
