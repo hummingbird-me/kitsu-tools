@@ -78,7 +78,7 @@ CREATE TABLE anime (
     cover_image_file_size integer,
     cover_image_updated_at timestamp without time zone,
     bayesian_average double precision DEFAULT 0 NOT NULL,
-    user_count double precision DEFAULT 0 NOT NULL,
+    user_count integer DEFAULT 0 NOT NULL,
     thetvdb_series_id character varying(255),
     thetvdb_season_id character varying(255),
     english_canonical boolean DEFAULT false,
@@ -3164,4 +3164,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140627050628');
 INSERT INTO schema_migrations (version) VALUES ('20140627051435');
 
 INSERT INTO schema_migrations (version) VALUES ('20140628075917');
+
+INSERT INTO schema_migrations (version) VALUES ('20140628102257');
 
