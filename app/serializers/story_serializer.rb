@@ -6,7 +6,6 @@ class StorySerializer < ActiveModel::Serializer
   has_one :user, embed_key: :name
   has_one :media, polymorphic: true, embed_key: :slug
   has_one :poster, embed_key: :name, root: :users
-  has_many :followed_users, embed_key: :name, root: :users
   has_many :substories
 
   def type
@@ -39,14 +38,10 @@ class StorySerializer < ActiveModel::Serializer
     object.substories.count
   end
 
+  def substories
+    object.substories
+  end
   def include_substories?
-    object.story_type == "media_story"
-  end
-
-  def followed_users
-    object.substories.map {|x| x.target }
-  end
-  def include_followed_users?
-    object.story_type == "followed"
+    ["media_story", "followed"].include? object.story_type
   end
 end

@@ -40,6 +40,7 @@ class Substory < ActiveRecord::Base
     end
   end
 
+  # TODO: Deprecate this in favour of the Action service.
   def self.from_action(data)
     user = User.find data[:user_id]
 

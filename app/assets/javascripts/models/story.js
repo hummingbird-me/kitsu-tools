@@ -7,7 +7,6 @@ Hummingbird.Story = DS.Model.extend({
   media: DS.belongsTo('media', { polymorphic: true }),
   substories: DS.hasMany('substory'),
   substoryCount: DS.attr('number'),
-  followedUsers: DS.hasMany('user'),
 
   coverImageStyle: function() {
     return "background-image: url(" + this.get('coverImageUrl') + ")";

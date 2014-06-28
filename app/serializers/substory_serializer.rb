@@ -1,5 +1,9 @@
 class SubstorySerializer < ActiveModel::Serializer
+  embed :ids, include: true
+
   attributes :id, :type, :created_at, :new_status, :episode_number
+
+  has_one :user, embed_key: :name
 
   def type
     object.substory_type
@@ -17,5 +21,12 @@ class SubstorySerializer < ActiveModel::Serializer
   end
   def include_episode_number?
     object.substory_type == "watched_episode"
+  end
+
+  def user
+    object.target
+  end
+  def include_user?
+    object.substory_type == "followed"
   end
 end
