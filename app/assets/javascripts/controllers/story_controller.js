@@ -25,15 +25,6 @@ Hummingbird.StoryController = Ember.ObjectController.extend({
 
   moreThanTwoSubstories: Em.computed.gt('model.substoryCount', 2),
 
-  followedUsers: function () {
-    var sorted = this.get('model.followedUsers').sortBy('createdAt').reverse();
-    if (sorted.length > 2 && !this.get('showAll')) {
-      return sorted.slice(0, 2);
-    } else {
-      return sorted;
-    }
-  }.property('model.substories', 'showAll'),
-
   displaySubstories: function () {
     var sorted = this.get('model.substories').sortBy('createdAt').reverse();
     if (sorted.length > 2 && !this.get('showAll')) {
