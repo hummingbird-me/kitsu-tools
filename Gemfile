@@ -43,6 +43,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'bootstrap-sass', '~> 3.2'
 gem 'autoprefixer-rails', '~> 2.0'
 gem 'non-stupid-digest-assets'
+gem 'font-awesome-sass'
 
 # Gems to help with development.
 group :development do
