@@ -43,8 +43,8 @@ gem 'sass-rails',   '~> 4.0'
 gem 'zurb-foundation', '~> 4.3.0'
 gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.0.3'
-gem 'bootstrap-sass', '~> 3.1'
-gem 'autoprefixer-rails', '~> 1.2'
+gem 'bootstrap-sass', '~> 3.2'
+gem 'autoprefixer-rails', '~> 2.0'
 gem 'non-stupid-digest-assets'
 
 # Gems to help with development.
@@ -85,8 +85,8 @@ gem 'rdiscount'
 # Attachments
 gem "paperclip", "~> 4.1"
 gem 'paperclip-optimizer'
-gem 'delayed_paperclip', "~> 2.7"
-gem 'aws-sdk', '~> 1.43'
+gem 'delayed_paperclip', "~> 2.8"
+gem 'aws-sdk', '~> 1.45'
 
 # Better URLs.
 gem 'friendly_id', github: 'joshfabian/friendly_id'
