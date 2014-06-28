@@ -52,7 +52,7 @@
                 li
                   if hasWebsite
                     .interest-icon <i class="fa fa-link"></i>
-                    .interest {{autolink user.website}}
+                    .interest <a {{bind-attr href=user.website}}>{{user.website}}</a>
 
       / .photos-videos
       /   .panel-heading
