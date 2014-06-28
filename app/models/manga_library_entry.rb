@@ -18,12 +18,8 @@
 #
 
 class MangaLibraryEntry < ActiveRecord::Base
-
-  attr_accessible :user_id, :manga_id, :status, :rating, :private, :chapters_read, :volumes_read, :reread_count, :rereading, :last_read
-
   belongs_to :user
   belongs_to :manga
-
 
   # Internal Constants
   private

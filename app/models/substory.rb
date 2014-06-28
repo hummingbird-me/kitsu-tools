@@ -17,7 +17,6 @@ class Substory < ActiveRecord::Base
   belongs_to :user
   belongs_to :target, polymorphic: true
   belongs_to :story
-  attr_accessible :user, :target, :story, :substory_type, :data
   validates :user, :substory_type, presence: true
 
   after_create do

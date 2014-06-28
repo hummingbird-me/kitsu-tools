@@ -116,9 +116,6 @@ class User < ActiveRecord::Base
          :validatable, :omniauthable, :confirmable, :async,
          allow_unconfirmed_access_for: 3.days
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :name, :email, :location, :password, :password_confirmation, :watchlist_hash, :recommendations_up_to_date, :avatar, :facebook_id, :bio, :about, :cover_image, :sfw_filter, :star_rating, :ninja_banned, :subscribed_to_newsletter
-
   has_attached_file :avatar,
     styles: {
       thumb: '190x190#',

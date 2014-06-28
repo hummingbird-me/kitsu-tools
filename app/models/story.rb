@@ -19,7 +19,6 @@ class Story < ActiveRecord::Base
   belongs_to :user
   belongs_to :target, polymorphic: true
   has_many :substories, dependent: :destroy
-  attr_accessible :data, :story_type, :user, :target, :watchlist, :adult
 
   has_many :notifications, as: :source, dependent: :destroy
 

@@ -11,7 +11,6 @@
 
 class Recommendation < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :user_id
 
   %w[by_status by_genre by_service general].each do |kind|
     define_method kind do

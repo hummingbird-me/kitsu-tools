@@ -14,7 +14,6 @@
 class Vote < ActiveRecord::Base
   belongs_to :target, polymorphic: true
   belongs_to :user
-  attr_accessible :user, :target, :positive
 
   validate :check_target_accepts_negative
   def check_target_accepts_negative

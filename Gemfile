@@ -3,9 +3,6 @@ ruby '2.1.2'
 
 gem 'rails', '~> 4.0'
 
-# Pending switching to strong params.
-gem 'protected_attributes'
-
 gem 'annotate', require: false
 
 gem 'grape'

@@ -13,7 +13,6 @@
 
 class Episode < ActiveRecord::Base
   belongs_to :anime
-  attr_accessible :anime_id, :number, :title, :anime, :season_number
 
   def episode_number
     number
@@ -21,7 +20,7 @@ class Episode < ActiveRecord::Base
 
   validates :anime, :number, presence: true
   validates_uniqueness_of :number, scope: [:anime_id, :season_number]
-  
+
   def title
     t = read_attribute(:title)
     if t.nil?

@@ -15,7 +15,6 @@
 
 class GalleryImage < ActiveRecord::Base
   belongs_to :anime
-  attr_accessible :anime_id, :description, :image
   validates :anime, :image, presence: true
 
   has_attached_file :image,
