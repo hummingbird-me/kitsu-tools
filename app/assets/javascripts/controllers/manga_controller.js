@@ -10,6 +10,6 @@ Hummingbird.MangaController = Ember.ObjectController.extend(Hummingbird.HasCurre
   }.property('model.romajiTitle'),
 
   mangaLibraryEntryExists: function() {
-    return (!Ember.isNone(this.get('model.mangaLibraryEntry')));
-  }.property('model.mangaLibraryEntry')
+    return (!Ember.isNone(this.get('model.mangaLibraryEntry'))) && (!this.get('model.mangaLibraryEntry.isDeleted'));
+  }.property('model.mangaLibraryEntry', 'model.mangaLibraryEntry.isDeleted')
 });

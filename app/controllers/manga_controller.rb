@@ -10,7 +10,7 @@ class MangaController < ApplicationController
           return redirect_to @manga, status: :moved_permanently
         end
 
-        preload! @manga
+        preload! @manga, serializer: FullMangaSerializer, root: "full_manga"
         render_ember
       end
     end
