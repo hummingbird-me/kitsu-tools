@@ -79,7 +79,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :favorites
-  has_many :consumings
+
   def has_favorite?(item)
     self.favorites.exists?(item_id: item, item_type: item.class.to_s)
   end
