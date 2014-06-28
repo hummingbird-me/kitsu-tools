@@ -53,11 +53,10 @@ class LibraryEntry < ActiveRecord::Base
     # Set field defaults.
     self.episodes_watched = 0 if self.episodes_watched.nil?
     self.rewatch_count = 0 if self.rewatch_count.nil?
+    self.private = false if self.private.nil?
   end
 
   before_save do
-    self.private = false if self.private.nil?
-    
     # Rewatching logic and life spent on anime.
     if self.rewatching and self.status_changed? and self.status == "Completed"
       self.rewatching = false

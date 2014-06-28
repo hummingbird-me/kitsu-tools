@@ -45,6 +45,7 @@ class MangaLibraryEntry < ActiveRecord::Base
     self.chapters_read = 0 if self.chapters_read.nil?
     self.volumes_read = 0 if self.volumes_read.nil?
     self.reread_count = 0 if self.reread_count.nil?
+    self.private = false if self.private.nil?
   end
 
   before_save do    
