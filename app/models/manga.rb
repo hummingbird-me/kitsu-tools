@@ -88,20 +88,20 @@ class Manga < ActiveRecord::Base
 
     # Metadata
     manga.assign_attributes({
-      mal_id: (hash[:external_id] if manga.mal_id.nil?),
-      english_title: (hash[:title][:en_us] if manga.english_title.nil?),
-      romaji_title: (hash[:title][:en_jp] || hash[:title][:canonical] if manga.romaji_title.nil?),
+      mal_id: (hash[:external_id] if manga.mal_id.blank?),
+      english_title: (hash[:title][:en_us] if manga.english_title.blank?),
+      romaji_title: (hash[:title][:en_jp] || hash[:title][:canonical] if manga.romaji_title.blank?),
       synopsis: (hash[:synopsis] if manga.synopsis.blank?),
-      type: (hash[:type] if manga.type.nil?),
-      poster_image: (hash[:poster_image] if manga.poster_image.nil?),
-      genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if manga.genres.nil?),
+      type: (hash[:type] if manga.type.blank?),
+      poster_image: (hash[:poster_image] if manga.poster_image.blank?),
+      genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if manga.genres.blank?),
       # TODO: replace this with a serialization table like producers?
-      serialization: (hash[:serialization] if manga.serialization.nil?),
-      volume_count: (hash[:volume_count] if manga.volume_count.nil?),
-      chapter_count: (hash[:chapter_count] if manga.chapter_count.nil?),
-      start_date: (begin hash[:dates][0] rescue nil end if manga.start_date.nil?),
-      end_date: (begin hash[:dates][1] rescue nil end if manga.end_date.nil?),
-      status: (hash[:status] if manga.status.nil?)
+      serialization: (hash[:serialization] if manga.serialization.blank?),
+      volume_count: (hash[:volume_count] if manga.volume_count.blank?),
+      chapter_count: (hash[:chapter_count] if manga.chapter_count.blank?),
+      start_date: (begin hash[:dates][0] rescue nil end if manga.start_date.blank?),
+      end_date: (begin hash[:dates][1] rescue nil end if manga.end_date.blank?),
+      status: (hash[:status] if manga.status.blank?)
     }.compact)
     manga.save!
     manga

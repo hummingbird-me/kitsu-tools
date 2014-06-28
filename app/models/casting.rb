@@ -57,7 +57,7 @@ class Casting < ActiveRecord::Base
         anime: hash[:anime]
       })
     end
-    casting.featured = hash[:featured] if casting.featured.nil?
+    casting.featured = hash[:featured] if casting.featured.blank?
     casting.save!
     casting
   end

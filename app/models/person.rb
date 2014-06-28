@@ -37,9 +37,9 @@ class Person < ActiveRecord::Base
     person ||= Person.new
 
     person.assign_attributes({
-      name: (hash[:name] if person.name.nil?),
-      mal_id: (hash[:external_id] if person.mal_id.nil?),
-      image: (hash[:image] if person.image.nil?)
+      name: (hash[:name] if person.name.blank?),
+      mal_id: (hash[:external_id] if person.mal_id.blank?),
+      image: (hash[:image] if person.image.blank?)
     }.compact)
     person.save!
     person
