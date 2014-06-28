@@ -15,25 +15,18 @@ class StoriesController < ApplicationController
     authenticate_user!
     params.require(:id)
     story = Story.find_by(id: params[:id])
-    render json: destroy_resource(story, story)
-  end
 
-  def destroy_substory
-    authenticate_user!
-    params.require(:id)
-    substory = Substory.find_by(id: params[:id])
-    render json: destroy_resource(substory.story, substory)
-  end
+    if story.nil?
+      # Story has already been deleted.
+      render json: true
+      return
+    end
 
-  private
-
-  def destroy_resource(story, resource)
-    return true if resource.nil? # Already destroyed.
     if story.can_be_deleted_by?(current_user)
-      resource.destroy!
-      return true
+      story.destroy!
+      render json: true
     else
-      return false
+      render json: false
     end
   end
 end
