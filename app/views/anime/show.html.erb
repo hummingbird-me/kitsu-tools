@@ -67,9 +67,9 @@
                       else "Will air"
                       end %><% started = @anime.started_airing_date; finished = @anime.finished_airing_date %>
               <%= @anime.episodes.count == 1 ? "on" : "from" %>
-              <time <%= schema_prop(:startDate, started.iso8601) %>><%= started.strftime "%e %b %Y" %></time>
+              <time <%= schema_prop(:startDate, started.try(:iso8601)) %>><%= started.strftime "%e %b %Y" %></time>
               <% unless finished.nil? %>
-                to <time <%= schema_prop(:endDate, finished.iso8601) %>><%= finished.strftime "%e %b %Y" %></time>
+                to <time <%= schema_prop(:endDate, finished.try(:iso8601)) %>><%= finished.strftime "%e %b %Y" %></time>
               <% end %>
               </li>
             </ul>
