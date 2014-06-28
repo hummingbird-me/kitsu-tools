@@ -28,7 +28,8 @@ class LibraryEntry < ActiveRecord::Base
   has_many :genres, through: :anime
   has_many :stories, dependent: :destroy, foreign_key: :watchlist_id
 
-  validates :user, :anime, :status, presence: true
+  validates :user, :anime, :status, :episodes_watched, :rewatch_count, 
+    presence: true
   validates :user_id, uniqueness: {scope: :anime_id}
 
   VALID_STATUSES = ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
@@ -47,13 +48,15 @@ class LibraryEntry < ActiveRecord::Base
       errors.add(:episodes_watched, "cannot exceed total number of episodes")
     end
   end
-
-  before_save do
+  
+  before_validation do
     # Set field defaults.
     self.episodes_watched = 0 if self.episodes_watched.nil?
     self.rewatch_count = 0 if self.rewatch_count.nil?
     self.private = false if self.private.nil?
+  end
 
+  before_save do
     # Rewatching logic and life spent on anime.
     if self.rewatching and self.status_changed? and self.status == "Completed"
       self.rewatching = false
