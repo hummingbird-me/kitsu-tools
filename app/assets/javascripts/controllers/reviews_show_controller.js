@@ -1,4 +1,4 @@
-Hummingbird.ReviewsShowController = Ember.ObjectController.extend({
+Hummingbird.ReviewsShowController = Ember.ObjectController.extend(Hummingbird.HasCurrentUser, {
   coverImageStyle: function () {
     return "background-image: url(" + this.get('user.coverImageUrl') + ")";
   }.property('user.coverUrl'),

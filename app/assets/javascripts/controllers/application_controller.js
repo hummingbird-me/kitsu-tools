@@ -1,4 +1,4 @@
-Hummingbird.ApplicationController = Ember.Controller.extend({
+Hummingbird.ApplicationController = Ember.Controller.extend(Hummingbird.HasCurrentUser, {
   routeChanged: function () {
     // Track the last visited URL for redirection on sign in.
     if (!window.location.href.match('/sign-in')) {

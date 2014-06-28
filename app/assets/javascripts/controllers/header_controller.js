@@ -1,4 +1,4 @@
-Hummingbird.HeaderController = Ember.Controller.extend({
+Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUser, {
   unreadNotifications: 0,
   hasUnreadNotifications: function () {
     return this.get('unreadNotifications') !== 0;

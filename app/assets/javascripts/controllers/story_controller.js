@@ -1,4 +1,4 @@
-Hummingbird.StoryController = Ember.ObjectController.extend({
+Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurrentUser, {
   commentStory: Ember.computed.equal('model.type', 'comment'),
   mediaStory: Ember.computed.equal('model.type', 'media_story'),
   followedStory: Ember.computed.equal('model.type', 'followed'),

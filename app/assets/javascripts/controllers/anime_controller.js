@@ -1,4 +1,4 @@
-Hummingbird.AnimeController = Ember.ObjectController.extend({
+Hummingbird.AnimeController = Ember.ObjectController.extend(Hummingbird.HasCurrentUser, {
   coverImageStyle: function() {
     return "background: url('" + this.get('model.coverImage') + "'); background-position: 50% -" + this.get('model.coverImageTopOffset') + "px;";
   }.property('model.coverImage', 'model.coverImageTopOffset'),
