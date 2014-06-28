@@ -1,5 +1,5 @@
 class MyAnimeListImport
-  STATUS_MAP = {
+  ANIME_STATUS_MAP = {
     "1"             => "Currently Watching",
     "watching"      => "Currently Watching",
     "Watching"      => "Currently Watching",
@@ -16,28 +16,63 @@ class MyAnimeListImport
     "plantowatch"   => "Plan to Watch",
     "Plan to Watch" => "Plan to Watch"
   }
+  MANGA_STATUS_MAP = {
+    "1"             => "Currently Reading",
+    "reading"       => "Currently Reading",
+    "Reading"       => "Currently Reading",
+    "2"             => "Completed",
+    "completed"     => "Completed",
+    "Completed"     => "Completed",
+    "3"             => "On Hold",
+    "onhold"        => "On Hold",
+    "On-Hold"       => "On Hold",
+    "4"             => "Dropped",
+    "dropped"       => "Dropped",
+    "Dropped"       => "Dropped",
+    "6"             => "Plan to Read",
+    "plantoread"    => "Plan to Read",
+    "Plan to Read"  => "Plan to Read"
+  }
 
   def initialize(user, xml)
     @user = user
     @xml = xml
     @data = nil
+    @list = "anime"
   end
 
   def data
     if @data.nil?
       @data = []
-      hashdata = Hash.from_xml(@xml)["myanimelist"]["anime"]
+      hashdata = Hash.from_xml(@xml)["myanimelist"]
 
-      @data = hashdata.map do |indv|
-        {
-          mal_id: indv["series_animedb_id"].to_i,
-          title: indv["series_title"],
+      @list = "manga" if hashdata.includes?("manga")
+
+      @data = hashdata[@list].map do |indv|
+        row = {
           rating: indv["my_score"].to_i,
-          episodes_watched: indv["my_watched_episodes"].to_i,
-          status: STATUS_MAP[indv["my_status"]] || "Currently Watching",
-          last_updated: Time.at(indv["my_last_updated"].to_i),
           notes: indv["my_tags"]
         }
+        if @list == "manga"
+          row.merge!({
+            mal_id: indv["manga_mangadb_id"].to_i,
+            title: indv["manga_title"],
+
+            status: MANGA_STATUS_MAP[indv["my_status"]] || "Currently Reading",
+            volumes_read: indv["my_read_volumes"],
+            chapters_read: indv["my_read_chapters"],
+          })
+        elsif @list == "anime"
+          row.merge!({
+            mal_id: indv["series_animedb_id"].to_i,
+            title: indv["series_title"],
+
+            status: ANIME_STATUS_MAP[indv["my_status"]] || "Currently Watching",
+            episodes_watched: indv["my_watched_episodes"].to_i,
+            last_updated: Time.at(indv["my_last_updated"].to_i)
+          })
+        end
+        row
       end
     end
     @data
