@@ -40,6 +40,31 @@ class MangaLibraryEntry < ActiveRecord::Base
   validate :chapters_read_less_than_total
   validate :volumes_read_less_than_total
 
+  before_validation do
+    # Set field defaults
+    self.chapters_read = 0 if self.chapters_read.nil?
+    self.volumes_read = 0 if self.volumes_read.nil?
+    self.reread_count = 0 if self.reread_count.nil?
+  end
+
+  before_save do    
+    # Rereading logic
+    if self.rereading && self.status_changed? && self.status == "Completed"
+      self.rereading = false
+      self.reread_count += 1
+    end
+    
+    # Set `last_read` field
+    if self.chapters_read_changed? || self.volumes_read_changed? || self.status_changed?
+      self.last_read = Time.now
+    end
+  end
+  
+  after_save do
+    # Update users `last_library_update` field
+    self.user.update_column :last_library_update, Time.now
+  end
+  
   private
 
   def rating_is_valid
