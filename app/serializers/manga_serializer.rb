@@ -30,8 +30,4 @@ class MangaSerializer < ActiveModel::Serializer
   def include_romaji_title?
     object.romaji_title && object.romaji_title.strip.length > 0
   end
-
-  def include_cover_image?
-    not object.cover_image_file_name.nil?
-  end
 end

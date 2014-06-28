@@ -1,7 +1,7 @@
 class FullMangaSerializer < MangaSerializer
   embed :ids, include: true
   
-  attributes :cover_image
+  attributes :cover_image,
              :cover_image_top_offset
              
   has_one :manga_library_entry
