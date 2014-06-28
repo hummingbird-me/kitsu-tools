@@ -307,6 +307,16 @@ Global Header
     }
   }
 
+  .user-area {
+    .dropdown-menu.right-nav-section {
+      i.fa {
+        opacity: 0.6;
+        margin-left: -6px;
+        margin-right: 6px;
+      }
+    }
+  }
+
   .mobile-user-nav {
     margin-bottom: 0px;
     margin-top: 0px;

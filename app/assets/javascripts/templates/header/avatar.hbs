@@ -1,0 +1,9 @@
+<li class="dropdown user-area">
+  <a class="dropdown-toggle navbar-avatar" data-toggle="dropdown">
+    {{avatar currentUser "thumb_small"}}
+  </a>
+  <ul class="dropdown-menu right-nav-section">
+    <li><a href="/users/edit"><i class="fa fa-cog"></i> Account Settings</a></li>
+    <li><a {{action 'signOut'}}><i class="fa fa-sign-out"></i> Sign Out</a></li>
+  </ul>
+</li>
