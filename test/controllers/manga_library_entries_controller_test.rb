@@ -49,7 +49,7 @@ class MangaLibraryEntriesControllerTest < ActionController::TestCase
   end
 
   test "need to be authenticated as correct user to update library entry" do
-    id = manga_library_entry(:vikhyatblame).id
+    id = manga_library_entries(:vikhyatblame).id
     put :update, id: id, manga_library_entry: {status: 'On Hold', rating: 3.5}
     assert_equal "Currently Reading", MangaLibraryEntry.find(id).status
     sign_in users(:josh)
@@ -58,7 +58,7 @@ class MangaLibraryEntriesControllerTest < ActionController::TestCase
   end
 
   test "can update library entry when authenticated" do
-    id = manga_library_entry(:joshblame).id
+    id = manga_library_entries(:joshblame).id
     sign_in users(:josh)
     put :update, id: id, manga_library_entry: {status: 'On Hold', rating: 3.5, chapters_read: 3}
     assert_equal "On Hold", MangaLibraryEntry.find(id).status
@@ -67,7 +67,7 @@ class MangaLibraryEntriesControllerTest < ActionController::TestCase
   end
 
   test "need to be authenticated as the correct user to destroy library entry" do
-    id = manga_library_entry(:vikhyatblame).id
+    id = manga_library_entries(:vikhyatblame).id
     delete :destroy, id: id
     assert_not_nil MangaLibraryEntry.find_by_id(id)
     sign_in users(:josh)
@@ -76,7 +76,7 @@ class MangaLibraryEntriesControllerTest < ActionController::TestCase
   end
 
   test "can destroy library entry when authenticated" do
-    id = manga_library_entry(:joshblame).id
+    id = manga_library_entries(:joshblame).id
     sign_in users(:josh)
     delete :destroy, id: id
     assert_nil MangaLibraryEntry.find_by_id(id)

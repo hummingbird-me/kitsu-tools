@@ -77,8 +77,8 @@ CREATE TABLE anime (
     cover_image_content_type character varying(255),
     cover_image_file_size integer,
     cover_image_updated_at timestamp without time zone,
-    bayesian_average double precision DEFAULT 0,
-    user_count integer,
+    bayesian_average double precision DEFAULT 0 NOT NULL,
+    user_count double precision DEFAULT 0 NOT NULL,
     thetvdb_series_id character varying(255),
     thetvdb_season_id character varying(255),
     english_canonical boolean DEFAULT false,
@@ -91,9 +91,9 @@ CREATE TABLE anime (
     poster_image_content_type character varying(255),
     poster_image_file_size integer,
     poster_image_updated_at timestamp without time zone,
-    cover_image_top_offset integer,
+    cover_image_top_offset integer DEFAULT 0 NOT NULL,
     ann_id integer,
-    started_airing_date_known boolean DEFAULT true
+    started_airing_date_known boolean DEFAULT true NOT NULL
 );
 
 
@@ -905,14 +905,14 @@ ALTER SEQUENCE manga_id_seq OWNED BY manga.id;
 
 CREATE TABLE manga_library_entries (
     id integer NOT NULL,
-    user_id integer,
-    manga_id integer,
-    status character varying(255),
-    private boolean DEFAULT false,
-    chapters_read integer DEFAULT 0,
-    volumes_read integer DEFAULT 0,
-    reread_count integer DEFAULT 0,
-    rereading boolean DEFAULT false,
+    user_id integer NOT NULL,
+    manga_id integer NOT NULL,
+    status character varying(255) NOT NULL,
+    private boolean DEFAULT false NOT NULL,
+    chapters_read integer DEFAULT 0 NOT NULL,
+    volumes_read integer DEFAULT 0 NOT NULL,
+    reread_count integer DEFAULT 0 NOT NULL,
+    rereading boolean DEFAULT false NOT NULL,
     last_read timestamp without time zone,
     rating numeric(2,1),
     created_at timestamp without time zone,
@@ -3162,4 +3162,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140626200713');
 INSERT INTO schema_migrations (version) VALUES ('20140627050628');
 
 INSERT INTO schema_migrations (version) VALUES ('20140627051435');
+
+INSERT INTO schema_migrations (version) VALUES ('20140628075917');
 

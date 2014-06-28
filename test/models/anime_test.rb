@@ -18,8 +18,8 @@
 #  cover_image_content_type  :string(255)
 #  cover_image_file_size     :integer
 #  cover_image_updated_at    :datetime
-#  bayesian_average          :float            default(0.0)
-#  user_count                :integer
+#  bayesian_average          :float            default(0.0), not null
+#  user_count                :float            default(0.0), not null
 #  thetvdb_series_id         :string(255)
 #  thetvdb_season_id         :string(255)
 #  english_canonical         :boolean          default(FALSE)
@@ -32,9 +32,9 @@
 #  poster_image_content_type :string(255)
 #  poster_image_file_size    :integer
 #  poster_image_updated_at   :datetime
-#  cover_image_top_offset    :integer
+#  cover_image_top_offset    :integer          default(0), not null
 #  ann_id                    :integer
-#  started_airing_date_known :boolean          default(TRUE)
+#  started_airing_date_known :boolean          default(TRUE), not null
 #
 
 require 'test_helper'

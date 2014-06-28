@@ -1,26 +1,35 @@
+# == Schema Information
+#
+# Table name: manga_library_entries
+#
+#  id            :integer          not null, primary key
+#  user_id       :integer          not null
+#  manga_id      :integer          not null
+#  status        :string(255)      not null
+#  private       :boolean          default(FALSE), not null
+#  chapters_read :integer          default(0), not null
+#  volumes_read  :integer          default(0), not null
+#  reread_count  :integer          default(0), not null
+#  rereading     :boolean          default(FALSE), not null
+#  last_read     :datetime
+#  rating        :decimal(2, 1)
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 require 'test_helper'
 
 class MangaLibraryEntryTest < ActiveSupport::TestCase
-
-  fixtures :users, :manga, :manga_library_entry
-  
-  should belong_to(:user)
-  should belong_to(:manga)
-  should validate_presence_of(:user)
-  should validate_presence_of(:manga)
-  should validate_presence_of(:status)
-  should validate_uniqueness_of(:user_id).scoped_to(:manga_id)
-  should ensure_inclusion_of(:status).in_array(["Currently Reading", "Plan to Read", "Completed", "On Hold", "Dropped"])
 
   test "accepts only valid ratings" do
     entry = MangaLibraryEntry.first
     [-1, 0, 0.1].each do |i|
       entry.rating = i
-      assert !entry.valid?, "#{i} is invalid"
+      assert !entry.valid?, "#{i} should be invalid"
     end
     [0.5, nil, 5].each do |i|
       entry.rating = i
-      assert entry.valid?, "#{i} is valid"
+      assert entry.valid?, "#{i} should be valid"
     end
   end
 

@@ -3,14 +3,14 @@
 # Table name: manga_library_entries
 #
 #  id            :integer          not null, primary key
-#  user_id       :integer
-#  manga_id      :integer
-#  status        :string(255)
-#  private       :boolean          default(FALSE)
-#  chapters_read :integer          default(0)
-#  volumes_read  :integer          default(0)
-#  reread_count  :integer          default(0)
-#  rereading     :boolean          default(FALSE)
+#  user_id       :integer          not null
+#  manga_id      :integer          not null
+#  status        :string(255)      not null
+#  private       :boolean          default(FALSE), not null
+#  chapters_read :integer          default(0), not null
+#  volumes_read  :integer          default(0), not null
+#  reread_count  :integer          default(0), not null
+#  rereading     :boolean          default(FALSE), not null
 #  last_read     :datetime
 #  rating        :decimal(2, 1)
 #  created_at    :datetime
@@ -20,19 +20,20 @@
 class MangaLibraryEntry < ActiveRecord::Base
 
   attr_accessible :user_id, :manga_id, :status, :rating, :private, :chapters_read, :volumes_read, :reread_count, :rereading, :last_read
-  
+
   belongs_to :user
   belongs_to :manga
 
-    
+
   # Internal Constants
   private
-  
+
   VALID_STATUSES = ["Currently Reading", "Plan to Read", "Completed", "On Hold", "Dropped"]
 
   public
-  
-  validates :user, :manga, :status, presence: true
+
+  validates :user, :manga, :status, :chapters_read, :volumes_read, :reread_count,
+    :status, presence: true
   validates :user_id, :uniqueness => { :scope => :manga_id }
   validates :status, inclusion: { in: VALID_STATUSES }
   validate :rating_is_valid
