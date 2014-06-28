@@ -1,4 +1,10 @@
 class SubstoriesController < ApplicationController
+  def index
+    params.require(:story_id)
+    story = Story.for_user(current_user).find_by(id: params[:story_id])
+    render json: story.try(:substories)
+  end
+
   def destroy
     authenticate_user!
     params.require(:id)

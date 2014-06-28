@@ -8,7 +8,7 @@ Hummingbird::Application.routes.draw do
   resources :news_feeds, only: [:index]
   resources :quotes
   resources :stories, only: [:index, :destroy]
-  resources :substories, only: [:destroy]
+  resources :substories, only: [:index, :destroy]
   resources :user_infos, only: [:show]
   resources :changelogs, only: [:index]
   resources :reviews do

@@ -4,16 +4,18 @@ Hummingbird.StoryController = Ember.ObjectController.extend({
   followedStory: Ember.computed.equal('model.type', 'followed'),
   knownStory: Ember.computed.any('commentStory', 'mediaStory', 'followedStory'),
   unknownStory: Ember.computed.not('knownStory'),
+  substories: Ember.computed.any('allSubstories', 'model.substories'),
+  selfPost: Hummingbird.computed.propertyEqual('model.poster.id', 'model.user.id'),
+  moreThanTwoSubstories: Em.computed.gt('model.substoryCount', 2),
+
+  showAll: false,
+  loadingAll: false,
+  loadedAll: Hummingbird.computed.propertyEqual('substories.length', 'model.substoryCount'),
 
   belongsToUser: function () {
-    var loggedInUser;
-    loggedInUser = this.get('currentUser');
+    var loggedInUser = this.get('currentUser');
     return loggedInUser.get('id') === this.get('model.poster.id') || loggedInUser.get('id') === this.get('model.user.id');
   }.property('model.poster'),
-
-  selfPost: function () {
-    return this.get('model.poster.id') === this.get('model.user.id');
-  }.property('model.poster.id', 'model.user.id'),
 
   mediaRoute: function () {
     if (this.get('model.media').constructor.toString() === "Hummingbird.Anime") {
@@ -21,21 +23,29 @@ Hummingbird.StoryController = Ember.ObjectController.extend({
     }
   }.property('model.media'),
 
-  showAll: false,
-
-  moreThanTwoSubstories: Em.computed.gt('model.substoryCount', 2),
 
   displaySubstories: function () {
-    var sorted = this.get('model.substories').sortBy('createdAt').reverse();
+    var sorted = this.get('substories').sortBy('createdAt').reverse();
     if (sorted.length > 2 && !this.get('showAll')) {
       return sorted.slice(0, 2);
     } else {
       return sorted;
     }
-  }.property('model.substories', 'showAll'),
+  }.property('substories', 'showAll'),
 
   actions: {
     toggleShowAll: function () {
+      var self = this;
+      if (!this.get('loadedAll')) {
+        if (!this.get('loadingAll')) {
+          // Load all substories for this story.
+          this.store.find('substory', {story_id: this.get('model.id')}).then(function(substories) {
+            self.set('allSubstories', substories);
+            self.set('loadingAll', false);
+          });
+        }
+        this.set('loadingAll', true);
+      }
       return this.set('showAll', !this.get('showAll'));
     },
 

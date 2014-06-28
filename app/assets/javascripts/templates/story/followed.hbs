@@ -33,13 +33,19 @@
           </li>
         {{/each}}
         {{#if moreThanTwoSubstories}}
-          <a {{action "toggleShowAll"}}>
-            {{#if showAll}}
-              Show Less
+          <li class="view-more">
+            {{#if loadingAll}}
+              <i class="fa fa-spin fa-spinner"></i>
             {{else}}
-              Show More
+              <a {{action "toggleShowAll"}}>
+                {{#if showAll}}
+                  Show Less
+                {{else}}
+                  Show More
+                {{/if}}
+              </a>
             {{/if}}
-          </a>
+          </li>
         {{/if}}
       </ul>
     </div>
