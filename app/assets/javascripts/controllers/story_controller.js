@@ -23,24 +23,12 @@ Hummingbird.StoryController = Ember.ObjectController.extend({
 
   showAll: false,
 
-  moreThanTwoSubstories: function () {
-    return this.get('model.substories.length') > 2;
-  }.property('model.substories'),
-
-  moreThanFourFollows: function () {
-    return this.get('model.followedUsers.length') > 4;
-  }.property('model.followedUsers'),
-
-  followsCount: function () {
-    // TL Note: this is ... interesting
-    var sorted;
-    return sorted = this.get('model.followedUsers').sortBy('createdAt').reverse();
-  }.property('model.substories', 'showAll'),
+  moreThanTwoSubstories: Em.computed.gt('model.substoryCount', 2),
 
   followedUsers: function () {
     var sorted = this.get('model.followedUsers').sortBy('createdAt').reverse();
-    if (sorted.length > 4 && !this.get('showAll')) {
-      return sorted.slice(0, 4);
+    if (sorted.length > 2 && !this.get('showAll')) {
+      return sorted.slice(0, 2);
     } else {
       return sorted;
     }

@@ -6,7 +6,7 @@
     <h4 class="story-title">
       {{#link-to 'user' user}}{{user.username}}{{/link-to}}
       followed
-      {{pluralize followsCount.length "user" "users"}}
+      {{pluralize substoryCount "user" "users"}}
     </h4>
     <p class="secondary">
       {{time-ago time=createdAt}}
@@ -32,7 +32,7 @@
             {{/link-to}}
           </li>
         {{/each}}
-        {{#if moreThanFourFollows}}
+        {{#if moreThanTwoSubstories}}
           <a {{action "toggleShowAll"}}>
             {{#if showAll}}
               Show Less

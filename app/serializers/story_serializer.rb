@@ -1,7 +1,7 @@
 class StorySerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :type, :created_at, :comment
+  attributes :id, :type, :created_at, :comment, :substory_count
 
   has_one :user, embed_key: :name
   has_one :media, polymorphic: true, embed_key: :slug
@@ -33,6 +33,10 @@ class StorySerializer < ActiveModel::Serializer
   end
   def include_media?
     object.story_type == "media_story"
+  end
+
+  def substory_count
+    object.substories.count
   end
 
   def include_substories?
