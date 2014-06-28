@@ -5,4 +5,3 @@ li.dropdown.user-area
     li
       a href="/users/edit" Edit Profile
       a{action 'signOut'} Sign out
-      a click="openModal 'changelog' this" View Changelog
