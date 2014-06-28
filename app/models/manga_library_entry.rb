@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: manga_library_entries
+#
+#  id            :integer          not null, primary key
+#  user_id       :integer
+#  manga_id      :integer
+#  status        :string(255)
+#  private       :boolean          default(FALSE)
+#  chapters_read :integer          default(0)
+#  volumes_read  :integer          default(0)
+#  reread_count  :integer          default(0)
+#  rereading     :boolean          default(FALSE)
+#  last_read     :datetime
+#  rating        :decimal(2, 1)
+#  created_at    :datetime
+#  updated_at    :datetime
+#
+
 class MangaLibraryEntry < ActiveRecord::Base
 
   attr_accessible :user_id, :manga_id, :status, :rating, :private, :chapters_read, :volumes_read, :reread_count, :rereading, :last_read
