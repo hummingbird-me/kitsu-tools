@@ -62,6 +62,7 @@ end
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'skylight'
+gem 'newrelic_rpm'
 gem 'rack-mini-profiler'
 gem 'flamegraph'
 
