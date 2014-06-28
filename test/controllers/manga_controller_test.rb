@@ -4,7 +4,8 @@ class MangaControllerTest < ActionController::TestCase
   test "can get manga" do
     get :show, id: 'monster'
     assert_response 200
-    assert_preloaded "manga"
+    assert_preloaded "full_manga"
+    assert_not_nil assigns["manga"]
   end
 
   test "can get manga json" do
