@@ -15,6 +15,8 @@ Hummingbird::Application.routes.draw do
     post :vote
   end
 
+  resource :chat, only: [:show, :create]
+
   get '/sign-in' => 'auth#sign_in_action'
   post '/sign-out' => 'auth#sign_out_action'
 

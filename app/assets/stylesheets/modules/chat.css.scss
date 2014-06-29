@@ -1,0 +1,92 @@
+.chat-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+
+  .online-users, .chat-window {
+    height: 100%;
+  }
+
+  .online-users {
+    width: 20%;
+    border-right: 1px solid #999;
+    position: fixed;
+
+    ul {
+      li {
+        height: 50px;
+        border-bottom: 1px solid #999;
+
+        img {
+          height: 50px;
+          width: 50px;
+          margin-right: 10px;
+          border-radius: 0;
+        }
+
+        &.header {
+          text-align: center;
+          padding-top: 9px;
+          height: 40px;
+        }
+      }
+    }
+  }
+
+  .chat-window {
+    margin-left: 20%;
+    width: 80%;
+
+    .chat-items {
+      padding-bottom: 50px;
+      li {
+        @extend .clearfix;
+
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+
+        border-bottom: 1px solid #999;
+        .username, .message {
+          float: left;
+        }
+        .username {
+          width: 12%;
+          text-align: right;
+          padding-right: 20px;
+          font-weight: bold;
+          opacity: 0.8;
+        }
+        .message {
+          width: 88%;
+        }
+      }
+    }
+
+    .entry {
+      border-top: 1px solid #999;
+      height: 55px;
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+      background: #fff;
+
+      form {
+        height: 100%;
+        width: 80%;
+      }
+
+      input {
+        height: 100%;
+        width: 89%;
+        padding-left: 10px;
+      }
+
+      button {
+        height: 100%;
+        width: 10%;
+        border-radius: 0;
+        margin: 0;
+      }
+    }
+  }
+}

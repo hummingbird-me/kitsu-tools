@@ -1,0 +1,36 @@
+<div class="chat-container">
+  <div class="online-users">
+    <ul>
+      <li class="header">Online Users</li>
+      <li>
+        {{#link-to 'user' currentUser}}
+          {{avatar currentUser "thumb_small"}}
+          {{currentUser.username}}
+        {{/link-to}}
+      </li>
+      <li>
+        This is not implemented yet.
+      </li>
+    </ul>
+  </div>
+
+  <div class="chat-window">
+    <div class="chat-items">
+      <ul>
+        {{#each}}
+          <li>
+            <div class="username">{{username}}</div>
+            <div class="message">{{message}}</div>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+
+    <div class="entry">
+      <form {{action "sendMessage" on="submit"}} >
+        {{input value=message placeholder="Say something..."}}
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+</div>

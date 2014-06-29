@@ -25,4 +25,6 @@ Hummingbird.Router.map(function() {
   this.route('dashboard');
   this.route('development');
   this.route('notifications');
+
+  this.route('chat');
 });
