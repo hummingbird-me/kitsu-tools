@@ -3,7 +3,7 @@ Ember.Application.initializer({
 
   initialize: function() {
     var bus = MessageBus;
-    bus.callbackInterval = 5000;
+    bus.callbackInterval = 500;
     bus.enableLongPolling = true;
   }
 });
