@@ -10,7 +10,7 @@ class ChatsController < ApplicationController
       MessageBus.publish "/chat", {
         message: params[:message],
         username: current_user.name
-      }.to_json
+      }
     end
 
     render json: true

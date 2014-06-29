@@ -10,7 +10,7 @@ Hummingbird.ChatRoute = Ember.Route.extend({
   activate: function() {
     var self = this;
     MessageBus.subscribe("/chat", function(data) {
-      self.get('controller.model').pushObject(JSON.parse(data));
+      self.get('controller.model').pushObject(data);
     });
   },
 
