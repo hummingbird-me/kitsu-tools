@@ -79,46 +79,49 @@ class MyAnimeListImport
   end
 
   def apply!
-    anime = Anime.where(mal_id: data.map {|x| x[:mal_id] }).index_by(&:mal_id)
-    not_imported = []
-    import_count = 0
+    table = (@list == "manga") ? Manga : Anime
+    animangoes = table.select(:id, :episodes_watched, :mal_id)
+                      .where(mal_id: data.map {|x| x[:mal_id] })
+                      .index_by(&:mal_id)
+    failures = []
+    count = 0
 
-    data.each do |item|
-      ani = anime[ item[:mal_id] ]
-      if ani.nil?
-        not_imported.push ("* " + item[:title])
+    data.each do |mal_entry|
+      animanga = animangoes[mal_entry[:mal_id]]
+      if animanga.nil?
+        failures << mal_entry[:title]
       else
-        wl = LibraryEntry.where(user_id: @user.id, anime_id: ani.id).first || LibraryEntry.new(user_id: @user.id, anime_id: ani.id)
-        wl.status = item[:status]
-        wl.episodes_watched = item[:episodes_watched]
-        if ani.episode_count and ani.episode_count > 0 and wl.episodes_watched > ani.episode_count
-          wl.episodes_watched = ani.episode_count
-        end
-        wl.updated_at = item[:last_updated]
-        wl.notes = item[:notes]
-        wl.imported = true
+        entry = nil
+        if @list == "manga"
+          entry = MangaLibraryEntry.where(user_id: @user.id, manga_id: animanga.id).first_or_initialize
 
-        if item[:rating] != 0
-          wl.rating = item[:rating].to_f / 2
+          entry.chapters_read = min_ignore_zero(animanga.chapter_count, mal_entry[:chapters_read])
+          entry.volumes_read  = min_ignore_zero(animanga.volume_count,  mal_entry[:volumes_read])
         else
-          wl.rating = nil
+          entry = LibraryEntry.where(user_id: @user.id, anime_id: animanga.id).first_or_initialize
+          entry.episodes_watched = min_ignore_zero(animanga.episode_count, mal_entry[:episodes_watched])
         end
+        entry.updated_at = mal_entry[:last_updated]
+        entry.notes = mal_entry[:notes]
+        entry.imported = true
+        entry.rating = item[:rating].to_f / 2
+        entry.rating = nil if entry.rating == 0
 
-        wl.save!
-        import_count += 1
+        entry.save!
+        count += 1
       end
     end
 
-    comment = "Hey, we just finished importing #{import_count} titles from your MAL account."
+    comment = "Hey, we just finished importing #{count} titles from your MAL account."
 
     # If the user account was created in the last 24 hours add a welcome message.
     if @user.created_at >= 1.day.ago
-      comment += " Welcome to Hummingbird!"
+      comment << " Welcome to Hummingbird!"
     end
 
-    if not_imported.length > 0
-      comment += "\n\nThe following were not imported:\n"
-      comment += not_imported.join("\n")
+    if failures.length > 0
+      comment << "\n\nThe following were not imported:\n * "
+      comment << not_imported.join("\n * ")
     end
 
     Action.broadcast(
@@ -128,5 +131,11 @@ class MyAnimeListImport
       comment: comment
     )
   end
-
+  private
+  # Weird hack, I'm sorry.  Zero is not a nil
+  def min_ignore_zero(a, b)
+    return b if a.nil? || a == 0
+    return a if b.nil? || b == 0
+    [a, b].min
+  end
 end
