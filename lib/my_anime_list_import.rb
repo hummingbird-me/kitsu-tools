@@ -46,7 +46,7 @@ class MyAnimeListImport
       @data = []
       hashdata = Hash.from_xml(@xml)["myanimelist"]
 
-      @list = "manga" if hashdata.includes?("manga")
+      @list = "manga" if hashdata.include?("manga")
 
       @data = hashdata[@list].map do |indv|
         row = {
@@ -59,8 +59,8 @@ class MyAnimeListImport
             title: indv["manga_title"],
 
             status: MANGA_STATUS_MAP[indv["my_status"]] || "Currently Reading",
-            volumes_read: indv["my_read_volumes"],
-            chapters_read: indv["my_read_chapters"],
+            volumes_read: indv["my_read_volumes"].to_i,
+            chapters_read: indv["my_read_chapters"].to_i,
           })
         elsif @list == "anime"
           row.merge!({
@@ -79,10 +79,10 @@ class MyAnimeListImport
   end
 
   def apply!
+    # this is a dumb hack for side effects of setting @list.  Sorry.
+    data
     table = (@list == "manga") ? Manga : Anime
-    animangoes = table.select(:id, :episodes_watched, :mal_id)
-                      .where(mal_id: data.map {|x| x[:mal_id] })
-                      .index_by(&:mal_id)
+    animangoes = table.where(mal_id: data.map {|x| x[:mal_id] }).index_by(&:mal_id)
     failures = []
     count = 0
 
@@ -101,10 +101,11 @@ class MyAnimeListImport
           entry = LibraryEntry.where(user_id: @user.id, anime_id: animanga.id).first_or_initialize
           entry.episodes_watched = min_ignore_zero(animanga.episode_count, mal_entry[:episodes_watched])
         end
+        entry.status = mal_entry[:status]
         entry.updated_at = mal_entry[:last_updated]
         entry.notes = mal_entry[:notes]
         entry.imported = true
-        entry.rating = item[:rating].to_f / 2
+        entry.rating = mal_entry[:rating].to_f / 2
         entry.rating = nil if entry.rating == 0
 
         entry.save!
@@ -121,7 +122,7 @@ class MyAnimeListImport
 
     if failures.length > 0
       comment << "\n\nThe following were not imported:\n * "
-      comment << not_imported.join("\n * ")
+      comment << failures.join("\n * ")
     end
 
     Action.broadcast(
