@@ -91,7 +91,9 @@ class Manga < ActiveRecord::Base
       english_title: (hash[:title][:en_us] if manga.english_title.blank?),
       romaji_title: (hash[:title][:en_jp] || hash[:title][:canonical] if manga.romaji_title.blank?),
       synopsis: (hash[:synopsis] if manga.synopsis.blank?),
-      manga_type: (hash[:type] if manga.manga_type.blank?),
+      # Wondering why this doesn't have an if blank?
+      # Well, some jerk put a DEFAULT on the column, so it's never blank.
+      manga_type: hash[:type],
       poster_image: (hash[:poster_image] if manga.poster_image.blank?),
       genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if manga.genres.blank?),
       # TODO: replace this with a serialization table like producers?

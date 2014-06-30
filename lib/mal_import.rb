@@ -157,7 +157,7 @@ class MALImport
     when :anime
       ["TV", "Movie", "OVA", "Special", "ONA", "Music"]
     when :manga
-      ["Manga"]
+      ["Manga", "Novel", "One Shot", "Doujin", "Manwha", "Manhua", "OEL"]
     end
   end
   def parse_duration(dur)

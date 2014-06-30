@@ -1,4 +1,5 @@
 ul.series-metadata
+  li #{mangaType}
   li
     if volumeCount
       | #{volumeCount}
