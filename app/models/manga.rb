@@ -111,6 +111,21 @@ class Manga < ActiveRecord::Base
       end_date: (begin hash[:dates][1] rescue nil end if manga.end_date.blank?),
       status: (hash[:status] if manga.status.blank?)
     }.compact)
+    # Staff castings
+    hash[:staff].each do |staff|
+      Casting.create_or_update_from_hash staff.merge({
+        castable: manga
+      })
+    end
+    # Character castings
+    hash[:characters].each do |ch|
+      character = Character.create_or_update_from_hash ch
+      Casting.create_or_update_from_hash({
+        featured: ch[:featured],
+        character: character,
+        castable: manga
+      })
+    end
     manga.save!
     manga
   end
