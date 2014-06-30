@@ -44,16 +44,13 @@ class MyAnimeListImport
   def data
     if @data.nil?
       @data = []
-      hashdata = Hash.from_xml(@xml)["myanimelist"]
 
-      @list = "manga" if hashdata.include?("manga")
-
-      @data = hashdata[@list].map do |indv|
+      @data = hashdata[list].map do |indv|
         row = {
           rating: indv["my_score"].to_i,
           notes: indv["my_tags"]
         }
-        if @list == "manga"
+        if list == "manga"
           row.merge!({
             mal_id: indv["manga_mangadb_id"].to_i,
             title: indv["manga_title"],
@@ -62,7 +59,7 @@ class MyAnimeListImport
             volumes_read: indv["my_read_volumes"].to_i,
             chapters_read: indv["my_read_chapters"].to_i,
           })
-        elsif @list == "anime"
+        elsif list == "anime"
           row.merge!({
             mal_id: indv["series_animedb_id"].to_i,
             title: indv["series_title"],
@@ -79,9 +76,7 @@ class MyAnimeListImport
   end
 
   def apply!
-    # this is a dumb hack for side effects of setting @list.  Sorry.
-    data
-    table = (@list == "manga") ? Manga : Anime
+    table = (list == "manga") ? Manga : Anime
     animangoes = table.where(mal_id: data.map {|x| x[:mal_id] }).index_by(&:mal_id)
     failures = []
     count = 0
@@ -92,14 +87,13 @@ class MyAnimeListImport
         failures << mal_entry[:title]
       else
         entry = nil
-        if @list == "manga"
+        if list == "manga"
           entry = MangaLibraryEntry.where(user_id: @user.id, manga_id: animanga.id).first_or_initialize
-
-          entry.chapters_read = min_ignore_zero(animanga.chapter_count, mal_entry[:chapters_read])
-          entry.volumes_read  = min_ignore_zero(animanga.volume_count,  mal_entry[:volumes_read])
+          entry.chapters_read = restrict_range(mal_entry[:chapters_read], animanga.chapter_count)
+          entry.volumes_read  = restrict_range(mal_entry[:volumes_read], animanga.volume_count)
         else
           entry = LibraryEntry.where(user_id: @user.id, anime_id: animanga.id).first_or_initialize
-          entry.episodes_watched = min_ignore_zero(animanga.episode_count, mal_entry[:episodes_watched])
+          entry.episodes_watched = restrict_range(mal_entry[:episodes_watched], animanga_episode_count)
         end
         entry.status = mal_entry[:status]
         entry.updated_at = mal_entry[:last_updated]
@@ -133,10 +127,26 @@ class MyAnimeListImport
     )
   end
   private
-  # Weird hack, I'm sorry.  Zero is not a nil
-  def min_ignore_zero(a, b)
-    return b if a.nil? || a == 0
-    return a if b.nil? || b == 0
-    [a, b].min
+  def restrict_range(num, max)
+    # FIXME: Hack because we use 0 instead of nil
+    return num if max.nil? || max == 0
+    [num, max].min
   end
+  def hashdata
+    if @hashdata.nil?
+      @hashdata = Hash.from_xml(@xml)["myanimelist"]
+    else
+      @hashdata
+    end
+  end
+  def list
+    if hashdata.include?("manga")
+      "manga"
+    elsif hashdata.include?("anime")
+      "anime"
+    else
+      raise "Unknown list type"
+    end
+  end
+
 end
