@@ -46,7 +46,7 @@
                 .list-item-score click="setSort 'rating'"
                   | Rating
                   i.fa
-                .list-item-type click="setSort 'manga.showType'"
+                .list-item-type click="setSort 'manga.mangaType'"
                   | Type
                   i.fa
 

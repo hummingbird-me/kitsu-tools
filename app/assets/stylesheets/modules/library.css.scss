@@ -379,12 +379,12 @@
   }
 
   /* Sort icon. */
-  &.asc.anime\.lowercaseDisplayTitle .list-item-left .fa { @extend .fa-sort-up; }
-  &.desc.anime\.lowercaseDisplayTitle .list-item-left .fa { @extend .fa-sort-down; }
-  &.asc.episodesWatched .list-item-progress .fa { @extend .fa-sort-up; }
-  &.desc.episodesWatched .list-item-progress .fa { @extend .fa-sort-down; }
+  &.asc.anime\.lowercaseDisplayTitle, &.asc.manga\.lowercaseDisplayTitle { .list-item-left .fa { @extend .fa-sort-up; } }
+  &.desc.anime\.lowercaseDisplayTitle, &.desc.manga\.lowercaseDisplayTitle { .list-item-left .fa { @extend .fa-sort-down; } }
+  &.asc.episodesWatched, &.asc.chaptersRead { .list-item-progress .fa { @extend .fa-sort-up; } }
+  &.desc.episodesWatched, &.desc.chaptersRead { .list-item-progress .fa { @extend .fa-sort-down; } }
   &.asc.rating .list-item-score .fa { @extend .fa-sort-up; }
   &.desc.rating .list-item-score .fa { @extend .fa-sort-down; }
-  &.asc.anime\.showType .list-item-type .fa { @extend .fa-sort-up; }
-  &.desc.anime\.showType .list-item-type .fa { @extend .fa-sort-down; }
+  &.asc.anime\.showType, &.asc.manga\.mangaType { .list-item-type .fa { @extend .fa-sort-up; } }
+  &.desc.anime\.showType, &.desc.manga\.mangaType { .list-item-type .fa { @extend .fa-sort-down; } }
 }
