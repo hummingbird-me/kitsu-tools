@@ -3,7 +3,7 @@ Hummingbird.Manga = DS.Model.extend({
   englishTitle: DS.attr("string"),
   posterImage: DS.attr("string"),
   synopsis: DS.attr("string"),
-  type: DS.attr("string"),
+  mangaType: DS.attr("string"),
   volumeCount: DS.attr("number"),
   chapterCount: DS.attr("number"),
   genres: DS.attr("array"),

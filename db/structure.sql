@@ -835,7 +835,7 @@ CREATE TABLE manga (
     cover_image_top_offset integer DEFAULT 0,
     volume_count integer,
     chapter_count integer,
-    type character varying(255) DEFAULT 'Manga'::character varying
+    manga_type character varying(255) DEFAULT 'Manga'::character varying
 );
 
 
@@ -3102,4 +3102,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140628102257');
 INSERT INTO schema_migrations (version) VALUES ('20140628184936');
 
 INSERT INTO schema_migrations (version) VALUES ('20140629091741');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630031803');
 

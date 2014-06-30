@@ -9,7 +9,7 @@ class MangaSerializer < ActiveModel::Serializer
              :chapter_count, 
              :volume_count, 
              :genres,
-             :type
+             :manga_type
 
   def id
     object.slug
