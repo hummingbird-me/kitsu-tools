@@ -78,7 +78,7 @@ class Anime < ActiveRecord::Base
   end
 
   has_many :quotes, dependent: :destroy
-  has_many :castings, dependent: :destroy
+  has_many :castings, dependent: :destroy, as: :castable
   has_many :reviews, dependent: :destroy
   has_many :episodes, dependent: :destroy
   has_many :gallery_images, dependent: :destroy
@@ -192,7 +192,7 @@ class Anime < ActiveRecord::Base
     # Staff castings
     hash[:staff].each do |staff|
       Casting.create_or_update_from_hash staff.merge({
-        anime: anime
+        castable: anime
       })
     end
     # VA castings
@@ -203,7 +203,7 @@ class Anime < ActiveRecord::Base
           Casting.create_or_update_from_hash actor.merge({
             featured: ch[:featured],
             character: character,
-            anime: anime
+            castable: anime
           })
         end
       else

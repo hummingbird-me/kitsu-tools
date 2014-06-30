@@ -16,7 +16,7 @@
 #
 
 class Casting < ActiveRecord::Base
-  belongs_to :anime
+  belongs_to :castable, polymorphic: true
   belongs_to :person
   belongs_to :character
 
@@ -45,7 +45,7 @@ class Casting < ActiveRecord::Base
       casting = Casting.find_or_initialize_by({
         language: hash[:lang],
         character: hash[:character],
-        anime: hash[:anime]
+        castable: hash[:castable]
       })
       casting.person = person
       casting.role = 'Voice Actor' unless person.nil?
@@ -53,7 +53,7 @@ class Casting < ActiveRecord::Base
       casting = Casting.find_or_initialize_by({
         person: person,
         role: hash[:role],
-        anime: hash[:anime]
+        castable: hash[:castable]
       })
     end
     casting.featured = hash[:featured] if casting.featured.blank?

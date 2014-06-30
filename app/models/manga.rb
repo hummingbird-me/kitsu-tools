@@ -63,6 +63,7 @@ class Manga < ActiveRecord::Base
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
 
+  has_many :castings, dependent: :destroy, as: :castable
   has_and_belongs_to_many :genres
   has_many :manga_library_entries, dependent: :destroy
 
