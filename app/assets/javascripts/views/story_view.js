@@ -11,4 +11,10 @@ Hummingbird.StoryView = Ember.View.extend({
   rerenderOnDeletion: function() {
     this.rerender();
   }.observes('content.isDeleted'),
+
+  didInsertElement: function() {
+    var commentEl = this.$('.comment-text')[0];
+    if(commentEl.offsetHeight < commentEl.scrollHeight)
+      this.controller.set('overflowing', true);
+  }
 });

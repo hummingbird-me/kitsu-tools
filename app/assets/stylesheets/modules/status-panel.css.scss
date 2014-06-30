@@ -99,6 +99,7 @@
   .comment-content {
     @extend .col-xs-10;
     @extend .col-sm-11;
+
     .reply-icon {
       color: #999999;
       padding-right: 5px;
@@ -142,9 +143,15 @@
     margin-bottom: 0;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-height: 400px;
+
     a {
       white-space: nowrap;
       overflow: hidden;
+    }
+
+    &.full-post {
+      max-height: none;
     }
   }
 
@@ -275,7 +282,7 @@
       li:nth-of-type(5), li:nth-of-type(4) {
         display: none;
       }
-    } 
+    }
   }
   @media (max-width: 400px) {
     .users-who-liked {
@@ -305,7 +312,7 @@
       word-wrap: break-word;
     }
     .user-image {
-      padding: 0; 
+      padding: 0;
     }
     .user-name {
       margin-top: 5px;
