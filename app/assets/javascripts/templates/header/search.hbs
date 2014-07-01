@@ -10,14 +10,12 @@
     <ul class="search-dropdown">
       {{#each result in instantSearchResults}}
         <li class="search-result">
-          <a {{bind-attr href="result.link" title="result.title"}}>
             <div class="search-result-thumb">
-              <img {{bind-attr src="result.image"}} />
+                <img {{bind-attr src="result.image"}} />
             </div>
-            <div class="search-result-title">{{result.title}}</div>
+            <div class="search-result-title"><a {{bind-attr href="result.link" title="result.title"}}>{{result.title}}</a></div>
             <span {{bind-attr class=":search-result-badge :badge result.type"}}>{{result.type}}</span>
             <div class="search-result-break"></div>
-          </a>
         </li>
       {{/each}}
       {{!--
