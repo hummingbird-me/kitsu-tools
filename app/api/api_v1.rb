@@ -115,15 +115,15 @@ class API_v1 < Grape::API
         {}
       end
     end
-    
+
     def present_favorite(favorite)
       if favorite
         json = {
          id: favorite.id,
          item_type: favorite.item_type,
          fav_rank: favorite.fav_rank
-        }    
-      else 
+        }
+      else
        {}
       end
     end
@@ -286,7 +286,7 @@ class API_v1 < Grape::API
       watchlists.map {|w| present_watchlist(w, rating_type, title_language_preference) }
     end
 
-    
+
 
 
 
@@ -308,8 +308,8 @@ class API_v1 < Grape::API
     post ":user_id/favorite_anime/update" do
        data = params[:data]
        data.each {|key,value| save_favorite(key,value)}
-       data              
-    end    
+       data
+    end
 
     desc "Returns the user's feed."
     params do
@@ -324,11 +324,11 @@ class API_v1 < Grape::API
 
       stories.map {|x| present_story(x, current_user, current_user.try(:title_language_preference) || "canonical") }
     end
-    
+
     desc "Returns the user's list of favorites"
     params do
       requires :user_id, type: String
-    end    
+    end
     get ":user_id/favorites" do
       @user = User.find(params[:user_id])
       @favorites = @user.favorites.order('fav_rank')
@@ -368,13 +368,13 @@ class API_v1 < Grape::API
       library_entry.destroy
       true
     end
-     
+
     desc "Get recently updated Entries"
     get '/recent' do
        entries = LibraryEntry.where(user_id: current_user).order("updated_at DESC").limit(12)
 
       {library_entries: entries.to_a}
-    end   
+    end
 
 
 
@@ -459,6 +459,18 @@ class API_v1 < Grape::API
         end
         result = result and library_entry.save
       end
+
+      #Update rating without the weird behaviour.
+      if params[:sane_rating_update]
+        rating = params[:sane_rating_update].to_f
+        if rating == 0
+          library_entry.rating = nil
+        else
+          library_entry.rating = [ [0, rating].max, 5].min
+        end
+        result = result and library_entry.save
+      end
+
 
       if library_entry.episodes_watched_changed? and library_entry.episodes_watched == library_entry.anime.episode_count
         library_entry.status = "Completed"
