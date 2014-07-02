@@ -4,8 +4,8 @@ Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
   reactComponent: null,
 
   filter: "",
-  sortBy: JSON.parse(localStorage.getItem('librarySortBy')) || "lastRead",
-  sortAsc: JSON.parse(localStorage.getItem('librarySortAsc')) || false,
+  sortBy: JSON.parse(localStorage.getItem('mangaLibrarySortBy')) || "lastRead",
+  sortAsc: JSON.parse(localStorage.getItem('mangaLibrarySortAsc')) || false,
 
   sectionNames: ["Currently Reading", "Plan to Read", "Completed", "On Hold", "Dropped"],
   showSection: "Currently Reading",
