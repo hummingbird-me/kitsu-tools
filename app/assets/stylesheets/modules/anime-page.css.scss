@@ -616,6 +616,11 @@ p img {
       position: relative;
       border-radius: 3px;
       border: 5px solid #23272d;
+
+      &:fullscreen {
+        max-width: 100%;
+        border: 0;
+      }
     }
   }
   .review-title {
