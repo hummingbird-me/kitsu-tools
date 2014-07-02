@@ -19576,7 +19576,6 @@ body .ui-tooltip {
   height: 46px;
   padding: 6px 0 2px 0px;
   position: absolute;
-  z-index: 10001;
   -webkit-box-shadow: none;
   -o-box-shadow: none;
   -ms-box-shadow: none;
