@@ -14,7 +14,8 @@ Hummingbird.StoryView = Ember.View.extend({
 
   didInsertElement: function() {
     var commentEl = this.$('.comment-text')[0];
-    if(commentEl.offsetHeight < commentEl.scrollHeight)
+    if (commentEl && commentEl.offsetHeight < commentEl.scrollHeight) {
       this.controller.set('overflowing', true);
+    }
   }
 });
