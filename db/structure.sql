@@ -187,7 +187,7 @@ ALTER SEQUENCE beta_invites_id_seq OWNED BY beta_invites.id;
 
 CREATE TABLE castings (
     id integer NOT NULL,
-    anime_id integer,
+    castable_id integer,
     person_id integer,
     character_id integer,
     role character varying(255),
@@ -196,7 +196,8 @@ CREATE TABLE castings (
     voice_actor boolean,
     featured boolean,
     "order" integer,
-    language character varying(255)
+    language character varying(255),
+    castable_type character varying(255)
 );
 
 
@@ -2041,10 +2042,10 @@ CREATE INDEX index_anime_producers_on_producer_id ON anime_producers USING btree
 
 
 --
--- Name: index_castings_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_castings_on_castable_id_and_castable_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_castings_on_anime_id ON castings USING btree (anime_id);
+CREATE INDEX index_castings_on_castable_id_and_castable_type ON castings USING btree (castable_id, castable_type);
 
 
 --
@@ -3102,6 +3103,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140628102257');
 INSERT INTO schema_migrations (version) VALUES ('20140628184936');
 
 INSERT INTO schema_migrations (version) VALUES ('20140629091741');
+
+INSERT INTO schema_migrations (version) VALUES ('20140630020533');
 
 INSERT INTO schema_migrations (version) VALUES ('20140630031803');
 

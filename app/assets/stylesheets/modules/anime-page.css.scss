@@ -472,7 +472,7 @@ h4.series-title {
       }
     }
   }
-  .actor {
+  .casting {
     margin-top: 5px;
     .character {
       background: #fff;
@@ -498,6 +498,8 @@ h4.series-title {
         margin-left: 5px;
       }
     }
+  }
+  .actor {
     &:before {
       float: left;
       width: 0;

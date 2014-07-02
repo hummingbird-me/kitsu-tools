@@ -16,8 +16,12 @@ h2.series-title.hidden-xs
   ul.nav.nav-tabs
     li class={showGenres:active}
       a{action "switchTo" "Genres"} Genres
+    li class={showCharacters:active}
+      a{action "switchTo" "Characters"} Characters
 
   .tab-content
     .tab-pane.active.genre-tab
       div class={:slider showGenres::hidden}
         partial "media/genres"
+      div class={:slider showCharacters::hidden}
+        partial "manga/characters"

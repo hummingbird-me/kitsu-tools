@@ -60,6 +60,7 @@ class MALImport
         {
           external_id: external_id,
           name: nameflip(chara.css('td:nth-child(2) > a').text),
+          image: person_image(chara.css("img")[0]['src']),
           role: chara.css('td:nth-child(2) small').text,
           featured: featured_chars.include?(external_id)
         }
