@@ -26,7 +26,12 @@
   </div>
   <div class="row">
     <div class="col-sm-12 clearfix">
-      <p class="comment-text">{{{comment}}}</p>
+        <p {{bind-attr class=":comment-text isExpanded:full-post" }}>{{{comment}}}</p>
     </div>
+    {{#if overflowing}}
+        <div class="view-more">
+            <a {{action "toggleFullPost"}}>{{showMoreText}}</a>
+        </div>
+    {{/if}}
   </div>
 </div>

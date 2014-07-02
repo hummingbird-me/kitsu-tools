@@ -7,6 +7,9 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
   substories: Ember.computed.any('allSubstories', 'model.substories'),
   selfPost: Hummingbird.computed.propertyEqual('model.poster.id', 'model.user.id'),
   moreThanTwoSubstories: Em.computed.gt('model.substoryCount', 2),
+  isExpanded: false,
+  overflowing: false,
+  showMoreText: 'Show More',
 
   showAll: false,
   loadingAll: false,
@@ -55,6 +58,14 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
 
     deleteSubstory: function(substory) {
       substory.destroyRecord();
+    },
+
+    toggleFullPost: function() {
+      this.set('isExpanded', !this.get('isExpanded'));
+      if(this.get('isExpanded'))
+        this.set('showMoreText', 'Show Less');
+      else
+        this.set('showMoreText', 'Show More');
     }
   }
 });
