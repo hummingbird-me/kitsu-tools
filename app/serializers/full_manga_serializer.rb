@@ -2,10 +2,10 @@ class FullMangaSerializer < MangaSerializer
   embed :ids, include: true
 
   attributes :cover_image,
-             :cover_image_top_offset,
-             :featured_castings
+             :cover_image_top_offset
 
   has_one :manga_library_entry
+  has_many :featured_castings, root: :castings
 
   def manga_library_entry
     scope && MangaLibraryEntry.where(user_id: scope.id, manga_id: object.id).first
