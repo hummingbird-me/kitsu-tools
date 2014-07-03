@@ -162,9 +162,6 @@ Global Header
         }
       }
     }
-    .view-all {
-      padding-top: 20px;
-    }
     &:before, &:after {
       right: 67px !important;
     }
@@ -184,8 +181,7 @@ Global Header
 
   .dropdown-menu {
     margin-top: 20px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-radius: 0px;
     padding-top: 0;
     padding-bottom: 0;
     a {
