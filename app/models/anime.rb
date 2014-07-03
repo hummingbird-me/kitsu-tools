@@ -19,7 +19,7 @@
 #  cover_image_file_size     :integer
 #  cover_image_updated_at    :datetime
 #  bayesian_average          :float            default(0.0), not null
-#  user_count                :float            default(0.0), not null
+#  user_count                :integer          default(0), not null
 #  thetvdb_series_id         :string(255)
 #  thetvdb_season_id         :string(255)
 #  english_canonical         :boolean          default(FALSE)

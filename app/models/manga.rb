@@ -25,7 +25,7 @@
 #  cover_image_top_offset    :integer          default(0)
 #  volume_count              :integer
 #  chapter_count             :integer
-#  type                      :string(255)      default("Manga")
+#  manga_type                :string(255)      default("Manga")
 #
 
 class Manga < ActiveRecord::Base
