@@ -93,7 +93,7 @@ class MyAnimeListImport
           entry.volumes_read  = restrict_range(mal_entry[:volumes_read], animanga.volume_count)
         else
           entry = LibraryEntry.where(user_id: @user.id, anime_id: animanga.id).first_or_initialize
-          entry.episodes_watched = restrict_range(mal_entry[:episodes_watched], animanga_episode_count)
+          entry.episodes_watched = restrict_range(mal_entry[:episodes_watched], animanga.episode_count)
         end
         entry.status = mal_entry[:status]
         entry.updated_at = mal_entry[:last_updated]
