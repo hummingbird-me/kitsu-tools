@@ -346,7 +346,7 @@ class User < ActiveRecord::Base
     end
 
     if waifu_char_id != '0000' and changed_attributes['waifu_char_id']
-      self.waifu_slug = waifu_character ? waifu_character.anime.slug : '#'
+      self.waifu_slug = waifu_character ? waifu_character.castable.slug : '#'
     end
   end
 
