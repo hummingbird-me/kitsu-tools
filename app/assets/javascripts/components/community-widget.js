@@ -31,7 +31,10 @@ Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
         if (topicInfo.pinned) continue;
 
         topic.title = topicInfo.title;
-        topic.url = "http://forums.hummingbird.me/t/" + topicInfo.slug + "/" + topicInfo.id + "/" + (topicInfo.last_read_post_number!==undefined ? topicInfo.last_read_post_number : "");
+        topic.url = "http://forums.hummingbird.me/t/" + topicInfo.slug + "/" + topicInfo.id;
+        if (topicInfo.last_read_post_number) {
+          topic.url += topicInfo.last_read_post_number;
+        }
         topic.postCount = topicInfo.highest_post_number;
         topic.lastPostTime = topicInfo.last_posted_at;
 
