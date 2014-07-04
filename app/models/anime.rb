@@ -210,7 +210,7 @@ class Anime < ActiveRecord::Base
         Casting.create_or_update_from_hash({
           featured: ch[:featured],
           character: character,
-          anime: anime
+          castable: anime
         })
       end
     end

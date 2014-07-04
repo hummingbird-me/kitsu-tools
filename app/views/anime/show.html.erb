@@ -84,12 +84,14 @@
                     <%= schema_image(:image, casting.character.image.url, { alt: ""}) %>
                     <span <%= schema_prop(:characterName) %>><%= casting.character.name %></span>
                   </a>
-                  <span class="va" <%= schema_scope(:Person, :actor) %>>
-                    <a class="voice-actor">
-                      <span <%= schema_prop(:name) %>><%= casting.person.name %></span>
-                      <%= schema_image(:image, casting.person.image.url, { alt: ""}) %>
-                    </a>
-                  </span>
+                  <%- unless casting.person.nil? %>
+                    <span class="va" <%= schema_scope(:Person, :actor) %>>
+                      <a class="voice-actor">
+                        <span <%= schema_prop(:name) %>><%= casting.person.name %></span>
+                        <%= schema_image(:image, casting.person.image.url, { alt: ""}) %>
+                      </a>
+                    </span>
+                  <%- end %>
                 </li>
               <% end %>
             </ul>
