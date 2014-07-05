@@ -156,7 +156,7 @@ class User < ActiveRecord::Base
     :uniqueness => {:case_sensitive => false},
     :length => {minimum: 3, maximum: 20},
     :format => {:with => /\A[_A-Za-z0-9]+\z/,
-      :message => "can only contain alphabets, numbers, and underscores."}
+      :message => "can only contain letters, numbers, and underscores."}
 
   INVALID_USERNAMES = %w(
     admin administrator connect dashboard developer developers edit favorites
@@ -171,7 +171,10 @@ class User < ActiveRecord::Base
       errors.add(:name, "is reserved")
     end
     if name[0,1] =~ /[^A-Za-z0-9]/
-      errors.add(:name, "must begin with an alphabet or number")
+      errors.add(:name, "must begin with a letter or number")
+    end
+    if name =~ /^[0-9]*$/
+      errors.add(:name, "cannot be entirely numbers")
     end
   end
 
