@@ -3,7 +3,6 @@ Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUse
   hasUnreadNotifications: function () {
     return this.get('unreadNotifications') !== 0;
   }.property('unreadNotifications'),
-  showSearchbar: false,
   limitedNotifications: [],
   entriesLoaded: function () {
     return this.get('recentLibraryEntries');
@@ -17,32 +16,6 @@ Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUse
   }.property('recentLibraryEntries.@each'),
   init: function () {
     var _this = this;
-    var bloodhound = new Bloodhound({
-      datumTokenizer: function (d) {
-        return Bloodhound.tokenizers.whitespace(d.value);
-      },
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      limit: 8,
-      remote: {
-        url: '/search.json?query=%QUERY&type=mixed',
-        filter: function (results) {
-          return Ember.$.map(results.search, function (r) {
-            // There actually has to be a way to send the img params to the thumb generator in the request, this is just a temp. solution
-            if (r.type=="user") {
-              r.image = r.image.replace(/(\.[a-zA-Z]+)?\?/, ".jpg?")
-            }
-            return {
-              title: r.title,
-              type: r.type,
-              image: r.image.replace((r.type=="user"?"{size}":"large"), (r.type=="user"?"small":"medium")),
-              link: r.link
-            };
-          });
-        }
-      }
-    });
-    bloodhound.initialize();
-    this.set('bhInstance', bloodhound);
     this.store.find('notification').then(function (result) {
       var newOnes, notif, _i, _len, _ref;
       newOnes = 0;
@@ -58,32 +31,10 @@ Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUse
     });
     return this._super();
   },
-  instantSearchResults: [],
-  hasInstantSearchResults: function () {
-    return this.get('instantSearchResults').length !== 0 && this.get('searchTerm').length !== 0;
-  }.property('instantSearchResults'),
-  instantSearch: function () {
-    var blodhound, searchterm,
-      _this = this;
-    blodhound = this.get('bhInstance');
-    searchterm = this.get('searchTerm');
-    return blodhound.get(searchterm, function (suggestions) {
-      return _this.set('instantSearchResults', suggestions);
-    });
-  }.observes('searchTerm'),
   showUpdater: false,
   showMenu: false,
   recentLibraryEntries: [],
   actions: {
-    showSearchfield: function () {
-      this.set('showSearchbar', true);
-      this.set('instantSearchResults', []);
-    },
-    hideSearchfield: function () {
-      return Ember.run.later(this, (function () {
-        return this.set('showSearchbar', false);
-      }), 100);
-    },
     submitSearch: function () {
       return window.location.replace("/search?query=" + this.get('searchTerm'));
     },

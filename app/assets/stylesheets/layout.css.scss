@@ -266,16 +266,25 @@ Global Header
 
   .searchbar {
     padding: 0;
-    &.isinactive {
-      &:hover {
-        background: darken($darkNavy, 2) !important;
-      }
-    }
+
     @media (max-width: 768px) {
       float: right;
       width: 100% !important;
       text-align: right !important;
     }
+
+    .search-link {
+      display: inline-block;
+      text-align: center;
+      width: 50px;
+      padding: 15px;
+
+      .fa {
+        position: relative;
+        bottom: auto;
+      }
+    }
+
     .search-field {
       display: inline-block;
       width: 240px;
@@ -289,11 +298,7 @@ Global Header
         width: 150px;
       }
     }
-    a {
-      display: inline-block;
-      text-align: center;
-      width: 50px;
-    }
+
     .search-dropdown {
       background: darken($darkNavy, 2);
       border-radius: 0 0 4px 4px;
@@ -333,7 +338,7 @@ Global Header
           white-space: nowrap;
           padding-right: 60px;
           line-height: 30px;
-        } 
+        }
         .search-result-badge {
           font-size: 0.7em;
           font-weight: normal;

@@ -1,0 +1,24 @@
+<span {{bind-attr class="collapsed:hidden"}}>
+  {{input value=query classNames="search-field" placeholder="Search for..."}}
+
+  {{#if searchResults}}
+    <ul class="search-dropdown">
+      {{#each result in searchResults}}
+        <li class="search-result">
+          <a {{bind-attr href="result.link" title="result.title"}}>
+            <div class="search-result-thumb">
+              <img {{bind-attr src="result.image"}} />
+            </div>
+            <div class="search-result-title">{{result.title}}</div>
+            <span {{bind-attr class=":search-result-badge :badge result.type"}}>{{result.type}}</span>
+            <div class="search-result-break"></div>
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</span>
+
+<a class="search-link" {{action 'toggleSearchVisibility'}}>
+  <i class="fa fa-search"></i>
+</a>
