@@ -58,11 +58,6 @@ GEM
       barber (>= 0.4.1)
       emblem-source
     bcrypt (3.1.7)
-    better_errors (1.1.0)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     builder (3.2.2)
@@ -86,7 +81,6 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     connection_pool (2.0.0)
-    debug_inspector (0.0.2)
     delayed_paperclip (2.8.0)
       paperclip (>= 3.3)
     descendants_tracker (0.0.4)
@@ -453,8 +447,6 @@ DEPENDENCIES
   annotate
   autoprefixer-rails (~> 2.0)
   aws-sdk (~> 1.45)
-  better_errors
-  binding_of_caller
   bootstrap-sass (~> 3.2)
   cancan (~> 1.6)
   codeclimate-test-reporter
