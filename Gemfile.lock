@@ -214,10 +214,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    message_bus (0.9.4)
-      eventmachine
-      rack (>= 1.1.3)
-      redis
     metaclass (0.0.4)
     method_source (0.8.2)
     mime-types (1.25.1)
@@ -476,7 +472,6 @@ DEPENDENCIES
   image_optim (~> 0.13)
   kaminari (~> 0.16)
   letter_opener
-  message_bus
   mixpanel
   mocha
   mock_redis
