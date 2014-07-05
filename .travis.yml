@@ -1,8 +1,12 @@
 language: ruby
 env:
+  - WAD_S3_BUCKET_NAME=travis-wad
+  - WAD_S3_REGION=us-west-2
+  - secure: JN2mfVHbKBmqYSWCUanSyKS4TfDxRdBIkkdKgww58uvUVrgnYKzGlV+T0KQrx8GoAG32H/S3C9gFwOYs7Zh/M7a74IPNaXiQmPvON4Ao1xYSpgNpVeFai4EK1342shLCLxu5v9xdKnddBFQ15m6xH0TCByTqcEz66fgkjFzhi9A=
   - secure: cjx/dR9jqO9mkaFMK/5I3A2cD7DU/PebidQDJMjukAKRoRIM7YvL7oneFJCuYXj0XfuXSi1k+92A++msLEyZnI0cTuQ8HcDMoZQI89m88mvkxwxADy57M2w3DdQfrLtWMBVT6xxykHpddltKM4ABYW1/zOy9A0t3ABFbrLjgKYQ=
 rvm:
   - 2.1.2
+install: "bin/wad"
 before_script:
   - bundle exec rake db:create db:structure:load
 script: bundle exec rake test
