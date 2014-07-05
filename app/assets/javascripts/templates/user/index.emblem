@@ -108,7 +108,7 @@
                         span.breakdown-numbr #{genre.num}
               hr
             ul
-              li
+              li.breakdown-watched
                 span.breakdown-icon <i class="fa fa-eye"></i>
                 span.breakdown-time I've watched <strong>#{lifeSpentOnAnimeFmt}</strong> of anime.
       else
