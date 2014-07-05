@@ -247,6 +247,11 @@
       color: #ec8661;
     }
   }
+  .breakdown-watched {
+    display: flex;
+    flex-align: center;
+    align-items: center;
+  }
   .breakdown-time {
     color: #999;
     strong {
@@ -257,7 +262,6 @@
   .breakdown-icon {
     display: inline-block;
     padding-right: 15px;
-    float: left;
     i {
       color: #686868;
       font-size: 2.8em;
