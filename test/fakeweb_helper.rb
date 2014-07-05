@@ -1,6 +1,6 @@
 require 'fakeweb'
 
-FakeWeb.allow_net_connect = false
+FakeWeb.allow_net_connect = %r[^https?://codeclimate.com/]
 
 def fake(routes)
   routes.map { |k, v|
