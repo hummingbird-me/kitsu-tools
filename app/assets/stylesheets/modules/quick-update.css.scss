@@ -96,10 +96,17 @@
         font-size: 14px;
       }
     }
-    &:hover, &:nth-of-type(1) {
-      .overlay-panel {
-        opacity: 1;
-      }
+    &:nth-of-type(1) {
+      .overlay-panel { opacity: 1; }
+    }
+    &:hover {
+      .overlay-panel { opacity: 1 !important; }
+    }
+  }
+
+  .container:hover {
+    .watched-series:nth-of-type(1) .overlay-panel {
+      opacity: 0;
     }
   }
 }
