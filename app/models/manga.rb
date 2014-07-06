@@ -41,7 +41,7 @@ class Manga < ActiveRecord::Base
   # Internal Constants
   private
 
-  VALID_TYPES =  ["Manga", "Novel", "One Shot", "Doujin", "Manwha", "Manhua", "OEL"]
+  VALID_TYPES =  ["Manga", "Novel", "One Shot", "Doujin", "Manhwa", "Manhua", "OEL"]
 
   public
 
