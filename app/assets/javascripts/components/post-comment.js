@@ -2,6 +2,7 @@ Hummingbird.PostCommentComponent = Ember.Component.extend({
   classNames: ["status-update-panel"],
 
   didInsertElement: function() {
+    var self = this;
     this.$(".status-form").focus(function() {
       self.$(".status-form").autosize({append: "\n"});
       self.$(".panel-footer").slideDown(200);
