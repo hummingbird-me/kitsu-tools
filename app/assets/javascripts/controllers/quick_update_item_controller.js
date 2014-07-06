@@ -24,6 +24,8 @@ Hummingbird.QuickUpdateItemController = Ember.ObjectController.extend({
       libraryEntry.set('episodesWatched', this.get('nextEpisodeNumber'));
       if (this.get('isComplete')) {
         libraryEntry.set('status', "Completed");
+      } else {
+        libraryEntry.set('status', "Plan to Watch");
       }
       this.set('loading', true);
       libraryEntry.save().then(function() {

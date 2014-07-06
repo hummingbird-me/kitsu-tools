@@ -10,7 +10,7 @@ class LibraryEntriesController < ApplicationController
     library_entries = LibraryEntry.where(user_id: user.id).includes(:anime, anime: :genres).references(:anime, anime: :genres)
 
     if params.has_key?(:recent)
-      library_entries = library_entries.where(status: "Currently Watching").order('last_watched DESC').page(params[:page] || 1).per(6)
+      library_entries = library_entries.where(status: ["Currently Watching", "Plan to Watch"]).order('status, last_watched DESC').page(params[:page] || 1).per(6)
     end
 
     if params[:status]
