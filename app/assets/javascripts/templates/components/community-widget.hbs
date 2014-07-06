@@ -24,7 +24,7 @@
         </div>
       </li>
     {{else}}
-      {{#each loadingSeq}}
+      {{#repeat 5}}
         <li class="loading-post">
           <div class="loading-wrapper">
             <div class="loading-image">
@@ -37,7 +37,7 @@
             </div>
           </div>
         </li>
-      {{/each}}
+      {{/repeat}}
     {{/each}}
 
     <li class="latest-post-more">

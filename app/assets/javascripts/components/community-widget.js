@@ -2,9 +2,6 @@ Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
   classNames: ["community-widget-panel"],
   topics: [],
 
-  // Number of loading fake posts to show.
-  loadingSeq: [1, 2, 3, 4, 5],
-
   loadPosts: function() {
     var self = this;
 
