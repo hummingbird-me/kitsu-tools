@@ -10,7 +10,7 @@
           {{/repeat}}
         {{else}}
           {{#each libraryEntries itemController="quickUpdateItem"}}
-            <li class="watched-series">
+            <li {{bind-attr class=":watched-series isPTW:plan-to-watch"}}>
               <div class="overlay-wrapper">
                 <div class="overlay-panel">
                   <h4 class="series-title">
