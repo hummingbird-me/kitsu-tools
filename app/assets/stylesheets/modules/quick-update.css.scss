@@ -104,9 +104,7 @@
     }
   }
 
-  .container:hover {
-    .watched-series:nth-of-type(1) .overlay-panel {
-      opacity: 0;
-    }
+  ul:hover .watched-series:nth-of-type(1) .overlay-panel {
+    opacity: 0;
   }
 }
