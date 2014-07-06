@@ -12,6 +12,9 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+  .container {
+    width: 980px; //Adjust Slider Size
+  }
   .series-slider {
     position: relative;
     .update-loading {
