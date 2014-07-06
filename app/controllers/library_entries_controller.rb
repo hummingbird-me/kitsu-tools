@@ -1,30 +1,33 @@
 class LibraryEntriesController < ApplicationController
   def index
-    if params[:user_id]
-      user = User.find params[:user_id]
-
-      #if recent get the first 12 entries and then populate the nested models
-      if params[:recent]
-        library_entries = LibraryEntry.where(user_id: user.id, status: "Currently Watching").includes(:anime, anime: :genres).references(:anime, anime: :genres).order("watchlists.updated_at DESC").limit(6)
-      else
-        library_entries = LibraryEntry.where(user_id: user.id).includes(:anime, anime: :genres).references(:anime, anime: :genres)
-      end
-      if params[:status]
-        library_entries = library_entries.where(status: params[:status])
-      end
-
-      # Filter private entries.
-      if current_user != user
-        library_entries = library_entries.where(private: false)
-      end
-
-      # Filter adult entries.
-      unless user_signed_in? and !current_user.sfw_filter?
-        library_entries = library_entries.where("anime.age_rating <> 'R18+' OR anime.age_rating IS NULL").references(:anime)
-      end
-
-      render json: library_entries
+    unless params[:user_id]
+      authenticate_user!
+      params[:user_id] = current_user.id
     end
+
+    user = User.find(params[:user_id])
+
+    library_entries = LibraryEntry.where(user_id: user.id).includes(:anime, anime: :genres).references(:anime, anime: :genres)
+
+    if params.has_key?(:recent)
+      library_entries = library_entries.where(status: "Currently Watching").order('last_watched DESC').page(params[:page] || 1).per(6)
+    end
+
+    if params[:status]
+      library_entries = library_entries.where(status: params[:status])
+    end
+
+    # Filter private entries.
+    if current_user != user
+      library_entries = library_entries.where(private: false)
+    end
+
+    # Filter adult entries.
+    unless user_signed_in? and !current_user.sfw_filter?
+      library_entries = library_entries.where("anime.age_rating <> 'R18+' OR anime.age_rating IS NULL").references(:anime)
+    end
+
+    render json: library_entries
   end
 
   def update_library_entry_using_params(library_entry, params)

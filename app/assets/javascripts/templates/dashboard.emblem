@@ -1,4 +1,5 @@
-h4.text-center Include 'recent-activity' partial right here and hide update button from header while on index page.
+quick-update
+
 .user-dashboard
   a#left-column.mobile-tab.btn.btn-default href="#left-column" Show Sidebar
   a#right-column.mobile-tab.btn.btn-default href="#right-column" Show Activity Feed

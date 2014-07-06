@@ -354,12 +354,6 @@
   padding: 12px;
   width: 100%;
   overflow: hidden;
-  margin-top: -299px;
-  transition: margin 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94);
-  &.expanded {
-    margin-top: 0;
-    overflow-x: scroll;
-  }
   .series-title {
     color: #fff;
     margin-bottom: 60px;
@@ -429,7 +423,7 @@
       bottom: 0;
       left: 0;
       padding: 5px 10px;
-      opacity: 0;
+      opacity: 0.2;
       transition: opacity .3s ease-in-out;
     }
     .actionable {
@@ -437,7 +431,7 @@
       top: 50%;
       left: 0;
       right: 0;
-      margin-top: -10px;
+      margin-top: -20px;
     }
     .stats {
       position: absolute;

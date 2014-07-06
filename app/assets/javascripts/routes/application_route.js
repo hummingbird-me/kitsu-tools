@@ -5,18 +5,6 @@ Hummingbird.ApplicationRoute = Ember.Route.extend({
   },
 
   actions: {
-    setupQuickUpdate: function() {
-      var headerController = this.controllerFor("header");
-      if (this.get('currentUser.isSignedIn')) {
-        return headerController.set('recentLibraryEntries', this.store.find('library_entry', {
-          user_id: this.get('currentUser.id'),
-          recent: true
-        }));
-      } else {
-        return headerController.set('recentLibraryEntries', []);
-      }
-    },
-
     toggleFollow: function(user) {
       if (!this.get('currentUser.isSignedIn')) {
         alert("Need to be signed in!");
