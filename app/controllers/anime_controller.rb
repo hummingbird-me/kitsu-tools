@@ -17,7 +17,7 @@ class AnimeController < ApplicationController
           return redirect_to @anime, status: :moved_permanently
         end
 
-        preload! @anime, serializer: FullAnimeSerializer, root: "full_anime"
+        preload_to_ember! @anime, serializer: FullAnimeSerializer, root: "full_anime"
         render layout: 'redesign'
       end
       format.json do

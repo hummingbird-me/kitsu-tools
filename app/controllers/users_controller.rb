@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html do
-        preload! @user
+        preload_to_ember! @user
         render_ember
       end
       format.json { render json: @user }
@@ -62,13 +62,13 @@ class UsersController < ApplicationController
 
   def followers
     user = User.find(params[:user_id])
-    preload! user
+    preload_to_ember! user
     render_ember
   end
 
   def following
     user = User.find(params[:user_id])
-    preload! user
+    preload_to_ember! user
     render_ember
   end
 
@@ -87,14 +87,14 @@ class UsersController < ApplicationController
       return redirect_to user_library_path(@user), status: :moved_permanently
     end
 
-    preload! @user
+    preload_to_ember! @user
     render_ember
   end
 
   def manga_library
     @user = User.find(params[:user_id])
 
-    preload! @user
+    preload_to_ember! @user
     render_ember
   end
 
@@ -133,7 +133,7 @@ class UsersController < ApplicationController
 
   def reviews
     user = User.find(params[:user_id])
-    preload! user
+    preload_to_ember! user
     render_ember
   end
 
