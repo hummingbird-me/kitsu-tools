@@ -1,5 +1,3 @@
-require 'message_formatter'
-
 module Entities
   class Genre < Grape::Entity
     expose :name

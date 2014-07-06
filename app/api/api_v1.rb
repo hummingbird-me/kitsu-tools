@@ -1,5 +1,4 @@
 require_relative 'entities.rb'
-require 'message_formatter'
 
 class API_v1 < Grape::API
   version 'v1', using: :path, format: :json, vendor: 'hummingbird'
