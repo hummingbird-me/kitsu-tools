@@ -11,15 +11,8 @@ Hummingbird.LibraryEntry = DS.Model.extend({
   lastWatched: DS.attr('date'),
   fav_rank: DS.attr('number'),
 
-
-  positiveRating: function() {
-    return (this.get('rating') >= 3.6);
-  }.property('rating'),
-
-  negativeRating: function() {
-    return (this.get('rating') <= 2.4);
-  }.property('rating'),
-
+  positiveRating: Em.computed.gte('rating', 3.6),
+  negativeRating: Em.computed.lte('rating', 2.4),
   neutralRating: function() {
     return (this.get('rating') > 2.4 && this.get('rating') < 3.6);
   }.property('rating')

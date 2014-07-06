@@ -1,8 +1,4 @@
 Hummingbird.UserIndexRoute = Ember.Route.extend(Hummingbird.Paginated, {
-  enter: function() {
-    return this.controllerFor('application').send("setupQuickUpdate");
-  },
-
   fetchPage: function(page) {
     return this.store.find('story', {
       user_id: this.modelFor('user').get('id'),

@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="recently-watched">
+    <div class="container no-padding">
+      <div class="series-slider">
+        <a {{bind-attr class=":arrow-nav canGoBack::inactive"}} {{action "goBack"}}><i class="fa fa-angle-left"></i></a>
+
+        <ul>
+          {{#if loading}}
+            {{#repeat 6}}
+              <li class="watched-series"><div class="update-loading"><i class="fa fa-spin fa-spinner"></i></div></li>
+            {{/repeat}}
+          {{else}}
+            {{#each libraryEntries itemController="quickUpdateItem"}}
+              <li class="watched-series">
+                <div class="overlay-wrapper">
+                  <div class="overlay-panel">
+                    <h4 class="series-title">
+                      {{anime.canonicalTitle}}
+                    </h4>
+                    <div class="actionable">
+                      {{#if loading}}
+                        <a class="episode-button"><i class="fa fa-spin fa-spinner"></i></a>
+                      {{else}}
+                        {{#if isComplete}}
+                          <a class="episode-button"><strong>Completed!</strong></a>
+                        {{else}}
+                          <a class="episode-button" {{action "markViewed"}}>
+                            Mark <strong>EP {{nextEpisodeNumber}}</strong> Seen
+                          </a>
+                        {{/if}}
+                      {{/if}}
+                    </div>
+                    <div class="stats">
+                      <h4>{{percentComplete}}% Complete</h4>
+                      <p>Seen {{episodesWatched}} of {{anime.displayEpisodeCount}}</p>
+                    </div>
+                  </div>
+
+                  <img class="responsive-image" {{bind-attr src="anime.posterImage"}}>
+                </div>
+              </li>
+            {{/each}}
+          {{/if}}
+        </ul>
+
+        <a {{bind-attr class=":arrow-nav canGoForward::inactive"}} {{action "goForward"}}><i class="fa fa-angle-right"></i></a>
+      </div>
+    </div>
+  </div>
+</div>

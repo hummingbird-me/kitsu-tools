@@ -1,19 +1,18 @@
 Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUser, {
+  needs: ['application'],
+
+  showUpdater: false,
+  showMenu: false,
   unreadNotifications: 0,
+
+  allowQuickUpdate: function() {
+    return this.get('currentUser.isSignedIn') && this.get('controllers.application.currentRouteName') !== "dashboard";
+  }.property('controllers.application.currentRouteName', 'currentUser.isSignedIn'),
+
   hasUnreadNotifications: function () {
     return this.get('unreadNotifications') !== 0;
   }.property('unreadNotifications'),
   limitedNotifications: [],
-  entriesLoaded: function () {
-    return this.get('recentLibraryEntries');
-  }.property('recentLibraryEntries.@each'),
-  firstEntry: function () {
-    if (this.get('recentLibraryEntries')) {
-      return this.get('recentLibraryEntries.firstObject.id');
-    } else {
-      return false;
-    }
-  }.property('recentLibraryEntries.@each'),
   init: function () {
     var _this = this;
     this.store.find('notification').then(function (result) {
@@ -31,23 +30,13 @@ Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUse
     });
     return this._super();
   },
-  showUpdater: false,
-  showMenu: false,
-  recentLibraryEntries: [],
+
   actions: {
     submitSearch: function () {
       return window.location.replace("/search?query=" + this.get('searchTerm'));
     },
     toggleUpdater: function () {
-      var _this = this;
-      // refreshes the list for the quick update
       this.toggleProperty('showUpdater');
-      if (this.get('showUpdater') === false) {
-        Ember.run.later(this, (function () {
-          return _this.send('setupQuickUpdate');
-        }), 10);
-      }
-      return false;
     },
     toggleMenu: function(){
       this.toggleProperty('showMenu');

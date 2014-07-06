@@ -1,5 +1,1 @@
-Hummingbird.DashboardController = Ember.Controller.extend(Hummingbird.HasCurrentUser, {
-  init: function () {
-    this.send("setupQuickUpdate");
-  },
-});
+Hummingbird.DashboardController = Ember.Controller.extend(Hummingbird.HasCurrentUser);

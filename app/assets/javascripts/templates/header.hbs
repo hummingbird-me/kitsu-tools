@@ -1,5 +1,7 @@
 <nav class='navbar navbar-inverse navbar-fixed-top hb-nav' role='navigation'>
-  {{partial "header/recently-watched"}}
+  {{#if showUpdater}}
+    {{quick-update}}
+  {{/if}}
 
   <div class='container clearfix'>
     <div class='navbar-header'>
@@ -53,7 +55,7 @@
 
     <ul class="nav navbar-nav navbar-permanent navbar-permanent-left">
       <li>
-        {{#if currentUser.isSignedIn}}
+        {{#if allowQuickUpdate}}
           {{#if showUpdater}}
             <a {{action 'toggleUpdater'}} class="close-recent" href="#" id="recent-toggle">Close</a>
           {{else}}
