@@ -261,7 +261,7 @@
   }
   .breakdown-icon {
     display: inline-block;
-    padding-right: 15px;
+    min-width: 60px;
     i {
       color: #686868;
       font-size: 2.8em;
