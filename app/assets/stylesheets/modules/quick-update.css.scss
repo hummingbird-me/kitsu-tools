@@ -64,8 +64,8 @@
       position: relative;
     }
     .overlay-panel {
-      background-color: rgba(39, 44, 50, .4);
-      opacity: 0.6;
+      background-color: rgba(39, 44, 50, .8);
+      opacity: 0;
       border-radius: 3px;
       text-align: center;
       position: absolute;
@@ -74,7 +74,6 @@
       bottom: 0;
       left: 0;
       padding: 5px 10px;
-      transition: background-color .3s ease-in-out;
       transition: opacity .3s ease-in-out;
     }
     .actionable {
@@ -97,9 +96,8 @@
         font-size: 14px;
       }
     }
-    &:hover {
+    &:hover, &:nth-of-type(1) {
       .overlay-panel {
-        background-color: rgba(39, 44, 50, .8);
         opacity: 1;
       }
     }
