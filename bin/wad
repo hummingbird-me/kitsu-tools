@@ -307,7 +307,7 @@ class Wad
   end
 
   def s3_credentials
-    (ENV['WAD_S3_CREDENTIALS'] || ":").split(':')
+    (ENV['WAD_S3_CREDENTIALS'] || "wrong:credentials").split(':')
   end
 
   def s3_access_key_id
