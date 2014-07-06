@@ -3,7 +3,9 @@ Hummingbird.QuickUpdateComponent = Ember.Component.extend({
   page: 1,
   libraryEntries: [],
   canGoBack: Em.computed.gt('page', 1),
-  canGoForward: true,
+  canGoForward: function() {
+    return !this.get('loading') && this.get('libraryEntries.length') === 6;
+  }.property('loading', 'libraryEntries.length'),
 
   fetchPage: function(page) {
     var store = this.get('targetObject.store')
@@ -25,12 +27,12 @@ Hummingbird.QuickUpdateComponent = Ember.Component.extend({
   actions: {
     goBack: function() {
       if (!this.get('canGoBack')) { return; }
-      alert("TODO");
+      this.fetchPage(this.get('page') - 1);
     },
 
     goForward: function() {
       if (!this.get('canGoForward')) { return; }
-      alert("TODO");
+      this.fetchPage(this.get('page') + 1);
     }
   }
 });
