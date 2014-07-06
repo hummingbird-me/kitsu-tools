@@ -352,6 +352,7 @@ class Wad
   end
 
   def s3_write
+    return if ENV['WAD_S3_CREDENTIALS'].nil?
     log "Trying to write Wad to S3"
     s3_write_streaming
   rescue Errno::EPIPE
