@@ -1,5 +1,7 @@
 <span {{bind-attr class="collapsed:hidden"}}>
-  {{input value=query classNames="search-field" placeholder="Search for..."}}
+  <form {{action submitQuery on="submit"}}>
+    {{input value=query classNames="search-field" placeholder="Search for..."}}
+  </form>
 
   {{#if searchResults}}
     <ul class="search-dropdown">

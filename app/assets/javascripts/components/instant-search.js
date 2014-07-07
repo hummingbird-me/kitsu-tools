@@ -67,6 +67,10 @@ Hummingbird.InstantSearchComponent = Ember.Component.extend({
       if (!this.get('collapsed')) {
         this.$(".search-field").focus();
       }
+    },
+
+    submitQuery: function() {
+      window.location.href = "/search?query=" + this.get('query');
     }
   }
 });
