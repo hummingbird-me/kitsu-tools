@@ -62,15 +62,6 @@
                 %a.button
                   %span
                     IMPORT ACCOUNT
-                
-      .large-6.columns.center.na-connect
-        = image_tag "na-connect.jpg"
-        %p.na-description Receive personalized recommendations and sync with your Activity Feed! Don't have Neon Alley? <a href="http://www.neonalley.com" target="_blank">Learn More!</a>
-        .large-12.columns
-          - if current_user.neon_alley_integration?
-            %a.button.padded.na-disconnect DISCONNECT NEON ALLEY
-          - else
-            %a.button.padded.na-connect CONNECT NEON ALLEY
 
   .completed.step
     %h2.lead Whew... You're finished!
@@ -179,34 +170,8 @@
       ).error ->
         alert "Something went wrong, couldn't import your anime list."
 
-  # Neon Alley Connect.
-  path = #{user_toggle_connection_path(current_user).inspect}
-
   addButtonLoader = (selector) ->
     selector.html $("<i class='fa fa-spin fa-spinner'></i>")
-  
-  connect_na = ->
-    addButtonLoader $("a.na-connect")
-    $.ajax path,
-      method: 'post'
-      data:
-        connection: 'neonalley'
-        enable: true
-      success: ->
-        $("a.na-connect").removeClass("na-connect").addClass("na-disconnect").html("DISCONNECT NEON ALLEY").click disconnect_na
-  
-  disconnect_na = ->
-    addButtonLoader $("a.na-disconnect")
-    $.ajax path,
-      method: 'post'
-      data:
-        connection: 'neonalley'
-        disable: true
-      success: ->
-        $("a.na-disconnect").removeClass("na-disconnect").addClass("na-connect").html("CONNECT NEON ALLEY").click connect_na
-
-  $("a.na-disconnect").click disconnect_na
-  $("a.na-connect").click connect_na
   
   # Check MAL import status.
   checkImportProgress = ->

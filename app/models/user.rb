@@ -43,7 +43,6 @@
 #  title_language_preference   :string(255)      default("canonical")
 #  followers_count_hack        :integer          default(0)
 #  following_count             :integer          default(0)
-#  neon_alley_integration      :boolean          default(FALSE)
 #  ninja_banned                :boolean          default(FALSE)
 #  last_library_update         :datetime
 #  last_recommendations_update :datetime

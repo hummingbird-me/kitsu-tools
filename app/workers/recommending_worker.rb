@@ -82,7 +82,6 @@ class RecommendingWorker
         completed: []
       },
       by_service: {
-        neon_alley: []
       },
       by_genre: {
       }
@@ -115,13 +114,6 @@ class RecommendingWorker
     general.each do |sid|
       genre_ids[sid] ||= anime[sid].genre_ids
       halt = true
-
-      if recommendations[:by_service][:neon_alley].length < 10
-        halt = false
-        if Anime.neon_alley_ids.include? sid
-          recommendations[:by_service][:neon_alley].push sid
-        end
-      end
 
       favorite_genres.each do |genre|
         if recommendations[:by_genre][genre.slug].length < 10

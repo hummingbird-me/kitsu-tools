@@ -1313,7 +1313,6 @@ CREATE TABLE users (
     title_language_preference character varying(255) DEFAULT 'canonical'::character varying,
     followers_count_hack integer DEFAULT 0,
     following_count integer DEFAULT 0,
-    neon_alley_integration boolean DEFAULT false,
     ninja_banned boolean DEFAULT false,
     last_library_update timestamp without time zone,
     last_recommendations_update timestamp without time zone,
@@ -3107,4 +3106,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140629091741');
 INSERT INTO schema_migrations (version) VALUES ('20140630020533');
 
 INSERT INTO schema_migrations (version) VALUES ('20140630031803');
+
+INSERT INTO schema_migrations (version) VALUES ('20140707100609');
 

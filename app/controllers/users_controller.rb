@@ -190,15 +190,6 @@ class UsersController < ApplicationController
   def toggle_connection
     authenticate_user!
 
-    if params[:connection] == "neonalley"
-      if params[:enable]
-        current_user.neon_alley_integration = true
-      elsif params[:disable]
-        current_user.neon_alley_integration = false
-      end
-      current_user.save
-    end
-
     respond_to do |format|
       format.html { redirect_to :back }
     end
