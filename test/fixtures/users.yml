@@ -43,7 +43,6 @@
 #  title_language_preference   :string(255)      default("canonical")
 #  followers_count_hack        :integer          default(0)
 #  following_count             :integer          default(0)
-#  neon_alley_integration      :boolean          default(FALSE)
 #  ninja_banned                :boolean          default(FALSE)
 #  last_library_update         :datetime
 #  last_recommendations_update :datetime
@@ -101,7 +100,6 @@ vikhyat:
   title_language_preference: canonical
   followers_count_hack: 1039
   following_count: 988
-  neon_alley_integration: false
   ninja_banned: false
   last_library_update: 2013-12-30 03:17:37.271880000 Z
   last_recommendations_update: 2013-12-05 05:41:16.855258000 Z
@@ -151,7 +149,6 @@ josh:
   title_language_preference: canonical
   followers_count_hack: 656
   following_count: 342
-  neon_alley_integration: true
   ninja_banned: false
   last_library_update: 2013-09-22 19:37:18.851425000 Z
   last_recommendations_update: 2013-09-17 04:56:06.391249000 Z

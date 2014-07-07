@@ -263,10 +263,6 @@ class Anime < ActiveRecord::Base
     Rails.cache.write("anime_poster_image_thumb:#{self.id}", self.poster_image.url(:large))
   end
 
-  def self.neon_alley_ids
-    [11, 12, 244, 412, 777, 1376, 1377, 1445, 1555, 2245, 3817, 4989, 5044, 5187, 5940, 5953, 6028, 6084, 6477, 6590, 6614, 7753]
-  end
-
   def similar(limit=20, options={})
     # FIXME
     return [] if Rails.env.development?

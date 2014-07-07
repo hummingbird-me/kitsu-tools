@@ -40,8 +40,6 @@ class RecommendationsController < ApplicationController
           current_user.favorite_genres.each do |genre|
             @genre_recommendations[ genre.slug ] = Anime.where(id: r.by_genre[genre.slug])
           end
-
-          @neon_alley = Anime.where(id: r.by_service['neon_alley'])
         end
 
         # View convenience variables. Move to translations later.
