@@ -32,9 +32,6 @@
 #  confirmed_at                :datetime
 #  confirmation_sent_at        :datetime
 #  unconfirmed_email           :string(255)
-#  forem_admin                 :boolean          default(FALSE)
-#  forem_state                 :string(255)      default("approved")
-#  forem_auto_subscribe        :boolean          default(FALSE)
 #  cover_image_file_name       :string(255)
 #  cover_image_content_type    :string(255)
 #  cover_image_file_size       :integer
@@ -89,9 +86,6 @@ vikhyat:
   confirmed_at: 2013-03-03 10:25:21.477558000 Z
   confirmation_sent_at: 2013-03-03 10:09:43.255396000 Z
   unconfirmed_email:
-  forem_admin: true
-  forem_state: approved
-  forem_auto_subscribe: false
   cover_image_file_name: tumblr_m875gp4yla1rygue4o1_500.jpg
   cover_image_content_type: image/jpeg
   cover_image_file_size: 16532
@@ -138,9 +132,6 @@ josh:
   confirmed_at: 2013-03-03 13:23:04.069592000 Z
   confirmation_sent_at: 2013-03-03 12:55:33.472041000 Z
   unconfirmed_email:
-  forem_admin: true
-  forem_state: approved
-  forem_auto_subscribe: false
   cover_image_file_name: 2-hum.png
   cover_image_content_type: image/png
   cover_image_file_size: 409843

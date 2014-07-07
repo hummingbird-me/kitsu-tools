@@ -32,9 +32,6 @@
 #  confirmed_at                :datetime
 #  confirmation_sent_at        :datetime
 #  unconfirmed_email           :string(255)
-#  forem_admin                 :boolean          default(FALSE)
-#  forem_state                 :string(255)      default("approved")
-#  forem_auto_subscribe        :boolean          default(FALSE)
 #  cover_image_file_name       :string(255)
 #  cover_image_content_type    :string(255)
 #  cover_image_file_size       :integer

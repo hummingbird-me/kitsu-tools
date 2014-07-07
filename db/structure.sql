@@ -1302,9 +1302,6 @@ CREATE TABLE users (
     confirmed_at timestamp without time zone,
     confirmation_sent_at timestamp without time zone,
     unconfirmed_email character varying(255),
-    forem_admin boolean DEFAULT false,
-    forem_state character varying(255) DEFAULT 'approved'::character varying,
-    forem_auto_subscribe boolean DEFAULT false,
     cover_image_file_name character varying(255),
     cover_image_content_type character varying(255),
     cover_image_file_size integer,
@@ -3109,3 +3106,4 @@ INSERT INTO schema_migrations (version) VALUES ('20140630031803');
 
 INSERT INTO schema_migrations (version) VALUES ('20140707100609');
 
+INSERT INTO schema_migrations (version) VALUES ('20140707102503');
