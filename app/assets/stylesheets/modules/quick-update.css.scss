@@ -60,7 +60,7 @@
       position: relative;
     }
     .overlay-panel {
-      background-image: linear-gradient(rgba(39, 44, 50, .1), rgba(39, 44, 50, .99));
+      background-image: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .80));
       opacity: 1;
       border-radius: 3px;
       text-align: center;
@@ -101,7 +101,7 @@
 
     &:hover {
       .overlay-panel { 
-        background-image: linear-gradient(rgba(39, 44, 50, .9), rgba(39, 44, 50, .9));
+        background-image: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8));
       }
       .actionable, .series-title {opacity: 1;}
     }
