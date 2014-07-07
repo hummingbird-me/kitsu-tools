@@ -36,7 +36,6 @@
 #  cover_image_content_type    :string(255)
 #  cover_image_file_size       :integer
 #  cover_image_updated_at      :datetime
-#  english_anime_titles        :boolean          default(TRUE)
 #  title_language_preference   :string(255)      default("canonical")
 #  followers_count_hack        :integer          default(0)
 #  following_count             :integer          default(0)
@@ -90,7 +89,6 @@ vikhyat:
   cover_image_content_type: image/jpeg
   cover_image_file_size: 16532
   cover_image_updated_at: 2013-09-04 17:57:36.681668000 Z
-  english_anime_titles: true
   title_language_preference: canonical
   followers_count_hack: 1039
   following_count: 988
@@ -136,7 +134,6 @@ josh:
   cover_image_content_type: image/png
   cover_image_file_size: 409843
   cover_image_updated_at: 2013-07-31 01:56:11.192788000 Z
-  english_anime_titles: true
   title_language_preference: canonical
   followers_count_hack: 656
   following_count: 342

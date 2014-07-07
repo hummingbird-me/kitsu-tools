@@ -36,7 +36,6 @@
 #  cover_image_content_type    :string(255)
 #  cover_image_file_size       :integer
 #  cover_image_updated_at      :datetime
-#  english_anime_titles        :boolean          default(TRUE)
 #  title_language_preference   :string(255)      default("canonical")
 #  followers_count_hack        :integer          default(0)
 #  following_count             :integer          default(0)
