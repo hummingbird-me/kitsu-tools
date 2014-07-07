@@ -1,9 +1,10 @@
 <div class="quick-update">
   <div class="container no-padding">
     <div class="series-slider">
-      <a {{bind-attr class=":arrow-nav canGoBack::inactive"}} {{action "goBack"}}><i class="fa fa-angle-left"></i></a>
-
       <ul>
+        <li class="update-arrow">
+          <a {{bind-attr class=":arrow-nav canGoBack::inactive"}} {{action "goBack"}}><i class="fa fa-angle-left"></i></a>
+        </li>
         {{#if loading}}
           {{#repeat 6}}
             <li class="watched-series"><div class="update-loading"><i class="fa fa-spin fa-spinner"></i></div></li>
@@ -26,7 +27,7 @@
                         <a class="episode-button"><strong>Completed!</strong></a>
                       {{else}}
                         <a class="episode-button" {{action "markViewed"}}>
-                          Mark <strong>EP {{nextEpisodeNumber}}</strong> Seen
+                          Mark <strong>EP {{nextEpisodeNumber}}</strong>
                         </a>
                       {{/if}}
                     {{/if}}
@@ -48,9 +49,10 @@
             </li>
           {{/each}}
         {{/if}}
+        <li class="update-arrow">
+          <a {{bind-attr class=":arrow-nav canGoForward::inactive"}} {{action "goForward"}}><i class="fa fa-angle-right"></i></a>
+        </li>
       </ul>
-
-      <a {{bind-attr class=":arrow-nav canGoForward::inactive"}} {{action "goForward"}}><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 </div>

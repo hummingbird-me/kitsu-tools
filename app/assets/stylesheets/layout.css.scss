@@ -251,7 +251,7 @@ Global Header
     &:hover { background-color: darken($darkNavy, 2); }
     &.notifications {
       .notification-link {
-        width: 50px;
+        min-width: 50px;
         text-align: center;
         &.hasNew { color: #e57c48; }
       }
@@ -282,6 +282,9 @@ Global Header
       text-align: center;
       width: 50px;
       padding: 15px;
+      @media (max-width: 768px) {
+        padding: 0px;
+      }
 
       .fa {
         position: relative;
