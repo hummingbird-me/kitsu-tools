@@ -69,7 +69,6 @@ Hummingbird::Application.routes.draw do
     get :followers
     get :following
     get :favorite_anime
-    get :trigger_forum_sync
 
     resources :lists
 
