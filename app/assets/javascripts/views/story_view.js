@@ -12,10 +12,22 @@ Hummingbird.StoryView = Ember.View.extend({
     this.rerender();
   }.observes('content.isDeleted'),
 
-  didInsertElement: function() {
-    var commentEl = this.$('.comment-text')[0];
-    if (commentEl && commentEl.offsetHeight < commentEl.scrollHeight) {
+  truncateLongComments: function() {
+    var commentEl = this.$(".comment-text")[0]
+    if (commentEl.offsetHeight < commentEl.scrollHeight) {
       this.controller.set('overflowing', true);
+    }
+  },
+
+  didInsertElement: function() {
+    var storyType = this.get('content.type'),
+        self = this;
+
+    if (storyType === "comment") {
+      this.truncateLongComments();
+      this.$("img").load(function() {
+        self.truncateLongComments();
+      });
     }
   }
 });
