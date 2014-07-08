@@ -21,7 +21,7 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
   }.property('model.poster'),
 
   mediaRoute: function () {
-    if (this.get('model.media').constructor.toString() === "Hummingbird.Anime") {
+    if (this.get('mediaStory') && this.get('model.media').constructor.toString() === "Hummingbird.Anime") {
       return 'anime';
     }
   }.property('model.media'),

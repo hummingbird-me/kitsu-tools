@@ -1,7 +1,7 @@
 Hummingbird.LoadMoreComponent = Ember.Component.extend({
   checkInView: function() {
     var elementBottom = this.$().offset().top + this.$().height(),
-        windowBottom = window.scrollY + Ember.$(window).height();
+        windowBottom = window.pageYOffset + Ember.$(window).height();
     if (elementBottom < windowBottom + 200) {
       this.sendAction();
     }
