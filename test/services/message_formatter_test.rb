@@ -46,4 +46,8 @@ class MessageFormatterTest < ActiveSupport::TestCase
   test "no <br> for image-only posts" do
     assert_no_match /br/, format("http://i.imgur.com/CUjJQap.gif")
   end
+
+  test "avoid three <br>s in a row for images" do
+    assert_equal 2, format("a\n\nhttp://i.imgur.com/CUjJQap.gif").scan("br").count
+  end
 end
