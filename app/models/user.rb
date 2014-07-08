@@ -160,7 +160,7 @@ class User < ActiveRecord::Base
   INVALID_USERNAMES = %w(
     admin administrator connect dashboard developer developers edit favorites
     feature featured features feed follow followers following hummingbird index
-    javascript json sysadmin sysadministrator unfollow user users wiki you
+    javascript json sysadmin sysadministrator system unfollow user users wiki you
   )
 
   validate :valid_username
