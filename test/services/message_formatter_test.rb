@@ -15,6 +15,10 @@ class MessageFormatterTest < ActiveSupport::TestCase
     assert_match /href=/, format("http://vikhyat.net/")
   end
 
+  test "does not link emails" do
+    assert_no_match /href=/, format("Idolm@ster. Literally.")
+  end
+
   test "replaces newlines with <br>" do
     assert_match /a<br\s?\/?>b/, format("a\nb")
     assert_match /a(<br\s?\/?>){2}b/, format("a\n\n\nb") # max two <br>s

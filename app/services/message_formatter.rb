@@ -23,7 +23,7 @@ class MessageFormatter
   private
 
   def autolink
-    @processed = Rinku.auto_link(ERB::Util.html_escape(@processed), :all, 'target="_blank"')
+    @processed = Rinku.auto_link(ERB::Util.html_escape(@processed), :urls, 'target="_blank"')
   end
 
   def link_usernames
