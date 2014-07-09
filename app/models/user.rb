@@ -255,7 +255,7 @@ class User < ActiveRecord::Base
       name: name,
       facebook_id: auth.uid,
       email: auth.info.email,
-      avatar: URI.parse("https://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
+      avatar: open("https://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
       password: Devise.friendly_token[0, 20]
     )
     user.save
@@ -268,7 +268,7 @@ class User < ActiveRecord::Base
   # Returns nothing.
   def connect_to_facebook(uid)
     if not self.avatar.exists?
-      self.avatar = URI.parse("http://graph.facebook.com/#{uid}/picture?width=200&height=200")
+      self.avatar = open("http://graph.facebook.com/#{uid}/picture?width=200&height=200")
     end
     self.facebook_id = uid
     self.save
