@@ -149,7 +149,6 @@ Global Header
     left: inherit;
     position: absolute !important;
     right: -50px;
-    min-width: 300px !important;
     li {
       background: #fff;
       width: 100% !important;
@@ -260,7 +259,7 @@ Global Header
       }
     }
     .dropdown-menu {
-      min-width: 500px;
+      min-width: 250px;
     }
     .view-all {
       text-align: center;
@@ -388,6 +387,7 @@ Global Header
         font-size: 18px;
         margin-top: 0;
         margin-bottom: 4px;
+        padding-right: 30px;
         .user-action {
           color: $darkGrey;
         }
@@ -469,7 +469,6 @@ Global Header
     .dropdown-menu.right-nav-section {
       i.fa {
         opacity: 0.6;
-        margin-left: -6px;
         margin-right: 6px;
       }
     }
