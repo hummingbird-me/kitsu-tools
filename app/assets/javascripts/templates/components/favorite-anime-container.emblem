@@ -2,15 +2,16 @@ if favorite_anime_list
   each anime in favorite_anime_list
     li.grid-thumb data-id=anime.fav_id
         if isEditing
-          a.thumbnail
+          div.thumbnail
             .move-overlay.editing
               i.fa.fa-arrows
             img src=anime.cover_image
         else
-          a.thumbnail href=anime.url
-            .move-overlay
-              i.fa.fa-arrows
-            img src=anime.cover_image
+          link-to 'anime' anime.slug
+            div.thumbnail
+              .move-overlay
+                i.fa.fa-arrows
+              img src=anime.cover_image
 else
   .no-favorites.text-center
     if viewingSelf

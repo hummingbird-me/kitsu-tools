@@ -42,8 +42,9 @@
                 li
                   if hasWaifu
                     .interest-icon <i class="fa fa-heart"></i>
-                    .interest #{user.waifuOrHusbando} is 
-                      <a {{bind-attr href="waifu_slug"}}> #{user.waifu} </a>
+                    .interest
+                      | #{user.waifuOrHusbando} is 
+                      link-to 'anime' waifu_slug | #{user.waifu}
                 li
                   if hasLocation
                     .interest-icon <i class="fa fa-home"></i>
