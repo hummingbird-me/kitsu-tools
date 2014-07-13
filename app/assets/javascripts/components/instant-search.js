@@ -65,8 +65,7 @@ Hummingbird.InstantSearchComponent = Ember.Component.extend({
     toggleSearchVisibility: function() {
       this.toggleProperty('collapsed');
       if (!this.get('collapsed')) {
-        var search = this.$(".search-field");
-        setTimeout(function() { search.focus(); }, 100);
+        Ember.run.next(this, function() { this.$(".search-field").focus(); });
       }
     },
 
