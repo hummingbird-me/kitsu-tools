@@ -155,6 +155,15 @@
     text-align: center;
     font-size: 30px;
     color: #777;
+    i.simple {
+      padding: 0 5px;
+      &.active {
+        color: $darkOrange;
+      }
+      &:hover {
+        color: black;
+      }
+    }
   }
 }
 
