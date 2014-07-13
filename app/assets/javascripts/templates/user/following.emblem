@@ -5,7 +5,7 @@
   each
     .follow-panel-wrapper
       .follow-panel
-        a href=userLink
+        link-to 'user' username
           .user-cover
             .cover-photo style=coverImageStyle
         .user-avatar
@@ -17,8 +17,8 @@
             a.btn.follow-button{action "toggleFollow" this} Follow
 
         .user-info
-          a href=userLink
-            h4 #{username}
+          h4
+            link-to 'user' username | #{username}
           p.mini-bio #{miniBio}
             #{controller.followerCoverUrl}
 

@@ -72,6 +72,7 @@
   }
   .about {
     font-size: 16px;
+    overflow-wrap: break-word;
   }
   .user-interests {
     @extend .col-xs-12;

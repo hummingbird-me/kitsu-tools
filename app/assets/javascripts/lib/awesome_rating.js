@@ -61,7 +61,7 @@ $.fn.AwesomeRating = function(options) {
       // Loop through 1,3,5.
       for (var i = 1; i <= 5; i += 2) {
         var icon = $("<span class='icon-container' data-rating='" + i + "'><i></i></span>");
-        icon.find("i").addClass(simpleRatingIcons[i]);
+        icon.find("i").addClass(simpleRatingIcons[i] + " simple");
         if (rating === i) {
           icon.find("i").addClass("active");
         }
