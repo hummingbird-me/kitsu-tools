@@ -435,6 +435,8 @@ h4.series-title {
     color: #444;
     margin: 4px 0;
     line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .review-likes {
@@ -849,6 +851,10 @@ p img {
   i {
     font-size: 18px;
     font-weight: bold;
+  }
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
