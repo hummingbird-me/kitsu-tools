@@ -34,13 +34,12 @@
 
   &.series {
     width: 100%;
-    height: 550px;
     background-size: cover !important;
     background-repeat: no-repeat !important;
-    margin-top: -20px;
-    padding-top: 200px;
     position: absolute;
     opacity: .10;
+    top: 0;
+    bottom: 0;
   }
 }
 
