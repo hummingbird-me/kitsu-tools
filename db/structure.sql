@@ -1347,6 +1347,41 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
+-- Name: videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE videos (
+    id integer NOT NULL,
+    url character varying(255) NOT NULL,
+    embed_data character varying(255) NOT NULL,
+    available_regions character varying(255)[] DEFAULT '{US}'::character varying[],
+    episode_id integer,
+    streamer_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: videos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE videos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: videos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE videos_id_seq OWNED BY videos.id;
+
+
+--
 -- Name: votes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1656,6 +1691,13 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY videos ALTER COLUMN id SET DEFAULT nextval('videos_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regclass);
 
 
@@ -1928,6 +1970,14 @@ ALTER TABLE ONLY substories
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY videos
+    ADD CONSTRAINT videos_pkey PRIMARY KEY (id);
 
 
 --
@@ -2343,6 +2393,20 @@ CREATE INDEX index_users_on_waifu_or_husbando ON users USING btree (waifu_or_hus
 --
 
 CREATE INDEX index_users_on_waifu_slug ON users USING btree (waifu_slug);
+
+
+--
+-- Name: index_videos_on_episode_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_videos_on_episode_id ON videos USING btree (episode_id);
+
+
+--
+-- Name: index_videos_on_episode_id_and_streamer_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_videos_on_episode_id_and_streamer_id ON videos USING btree (episode_id, streamer_id);
 
 
 --
@@ -3027,4 +3091,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140707102503');
 INSERT INTO schema_migrations (version) VALUES ('20140707110148');
 
 INSERT INTO schema_migrations (version) VALUES ('20140731164542');
+
+INSERT INTO schema_migrations (version) VALUES ('20140714064353');
 

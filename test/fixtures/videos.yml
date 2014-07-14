@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: videos
+#
+#  id                :integer          not null, primary key
+#  url               :string(255)      not null
+#  embed_data        :string(255)      not null
+#  available_regions :string(255)      default(["US"]), is an Array
+#  episode_id        :integer
+#  streamer_id       :integer
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+
+one:
+  url: MyString
+  embed_data: MyString
+  available_regions: ['US']
+  episode_id: 
+  streamer_id: 
+
+two:
+  url: MyString
+  embed_data: MyString
+  available_regions: ['US']
+  episode_id: 
+  streamer_id: 
