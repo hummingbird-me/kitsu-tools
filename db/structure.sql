@@ -269,7 +269,12 @@ CREATE TABLE episodes (
     title character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    season_number integer
+    season_number integer,
+    synopsis text,
+    thumbnail_file_name character varying(255),
+    thumbnail_content_type character varying(255),
+    thumbnail_file_size integer,
+    thumbnail_updated_at timestamp without time zone
 );
 
 
@@ -3140,4 +3145,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140731164542');
 INSERT INTO schema_migrations (version) VALUES ('20140714064353');
 
 INSERT INTO schema_migrations (version) VALUES ('20140714072239');
+
+INSERT INTO schema_migrations (version) VALUES ('20140714111212');
 

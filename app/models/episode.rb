@@ -2,17 +2,23 @@
 #
 # Table name: episodes
 #
-#  id            :integer          not null, primary key
-#  anime_id      :integer
-#  number        :integer
-#  title         :string(255)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  season_number :integer
+#  id                     :integer          not null, primary key
+#  anime_id               :integer
+#  number                 :integer
+#  title                  :string(255)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  season_number          :integer
+#  synopsis               :text
+#  thumbnail_file_name    :string(255)
+#  thumbnail_content_type :string(255)
+#  thumbnail_file_size    :integer
+#  thumbnail_updated_at   :datetime
 #
 
 class Episode < ActiveRecord::Base
   belongs_to :anime
+  has_many :videos, dependent: :destroy
 
   def episode_number
     number
