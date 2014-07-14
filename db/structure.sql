@@ -1233,6 +1233,36 @@ ALTER SEQUENCE stories_id_seq OWNED BY stories.id;
 
 
 --
+-- Name: streamers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE streamers (
+    id integer NOT NULL,
+    site_name character varying(255) NOT NULL,
+    oembed_uri character varying(255)
+);
+
+
+--
+-- Name: streamers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE streamers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: streamers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE streamers_id_seq OWNED BY streamers.id;
+
+
+--
 -- Name: substories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1677,6 +1707,13 @@ ALTER TABLE ONLY stories ALTER COLUMN id SET DEFAULT nextval('stories_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY streamers ALTER COLUMN id SET DEFAULT nextval('streamers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY substories ALTER COLUMN id SET DEFAULT nextval('substories_id_seq'::regclass);
 
 
@@ -1954,6 +1991,14 @@ ALTER TABLE ONLY reviews
 
 ALTER TABLE ONLY stories
     ADD CONSTRAINT stories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: streamers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY streamers
+    ADD CONSTRAINT streamers_pkey PRIMARY KEY (id);
 
 
 --
@@ -3093,4 +3138,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140707110148');
 INSERT INTO schema_migrations (version) VALUES ('20140731164542');
 
 INSERT INTO schema_migrations (version) VALUES ('20140714064353');
+
+INSERT INTO schema_migrations (version) VALUES ('20140714072239');
 

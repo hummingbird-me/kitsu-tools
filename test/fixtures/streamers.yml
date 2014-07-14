@@ -1,0 +1,12 @@
+# == Schema Information
+#
+# Table name: streamers
+#
+#  id         :integer          not null, primary key
+#  site_name  :string(255)      not null
+#  oembed_uri :string(255)
+#
+
+hulu:
+  site_name: Hulu
+  oembed_uri: http://www.hulu.com/api/oembed.json
