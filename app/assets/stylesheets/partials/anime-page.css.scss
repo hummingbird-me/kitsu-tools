@@ -1,3 +1,5 @@
+@import 'mixins/block-grid';
+
 .series-header {
   background: #4b5360;
   position: relative;
@@ -172,6 +174,138 @@
     }
   }
 }
+
+.episode-thumbs {
+  @include block-grid(5);
+  .thumbnail {
+    a {
+      position: relative;
+      display: block;
+    }
+    .description {
+      position: absolute;
+      bottom: 0;
+      background: #333;
+      background: rgba(0,0,0,.5);
+      padding: 5px 10px;
+      width: 100%;
+      color: #fff;
+    }
+    .play-icon {
+      position: absolute;
+      bottom: 50px;
+      width: 100%;
+      text-align: center;
+      .fa-play {
+        background: #333;
+        background: rgba(0,0,0,.7);
+        padding: 14px 12px 12px 16px;
+        color: #fff;
+        border-radius: 50%;
+        opacity: 0;
+        transition: .2s ease-in;
+      }
+    }
+    &:hover {
+      .fa-play {
+        opacity: 1;
+        transition: .2s ease-in;
+      }
+    }
+  }
+}
+
+.series-reviews {
+  @extend .col-sm-6;
+  padding-left: 0;
+
+  .review-listing {
+    @extend .col-xs-12;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fff;
+    padding: 0px;
+
+    .review {
+      @extend .col-xs-12;
+      @extend .clearfix;
+      padding: 8px;
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+      transition: .2s ease-in;
+      &:hover {
+        background: lighten(#eee, 3);
+      }
+    }
+
+    .trending-review-empty {
+      text-align: center;
+      margin-bottom: 35px;
+      .empty-icon {
+        font-size: 100px;
+        color: #aaa;
+      }
+    }
+
+    .reviewer-thumb-wrapper {
+      @extend .col-sm-2;
+      padding-left: 4px;
+      padding-top: 8px;
+    }
+
+    .reviewer-thumb {
+      border-radius: 3px;
+      width: 100%;
+    }
+
+    .reviewer-name-wrapper {
+      @extend .col-xs-12;
+      @extend .col-sm-10;
+      padding: 0;
+    }
+
+    .reviewer-name {
+      display: inline-block;
+      margin: 2px 0;
+      color: #444;
+      .subtext {
+        font-weight: normal;
+        color: #888;
+        font-size: 16px;
+        margin-right: 4px;
+      }
+    }
+
+    .review-summary {
+      font-size: 16px;
+      color: #444;
+      margin: 4px 0;
+      line-height: 20px;
+    }
+
+    .review-likes {
+      font-size: 12px;
+      color: #999;
+      margin: 2px 0;
+    }
+
+    .review-stars {
+      padding: 0;
+      margin: 0;
+      color: #777;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+.series-gallery {
+  @extend .col-sm-6;
+  padding-right: 0;
+}
+
+
 
 // .gallery {
 //   @extend .pull-right;
@@ -485,74 +619,6 @@
 //   }
 // }
 
-// .review-listing {
-//   @extend .col-xs-12;
-
-//   .review {
-//     @extend .col-xs-12;
-//     @extend .clearfix;
-//     padding: 8px;
-//     background-color: #fff;
-//   }
-
-//   .trending-review-empty {
-//     text-align: center;
-//     margin-bottom: 35px;
-//     .empty-icon {
-//       font-size: 100px;
-//       color: #aaa;
-//     }
-//   }
-
-//   .reviewer-thumb-wrapper {
-//     @extend .col-sm-2;
-//     padding-left: 4px;
-//     padding-top: 8px;
-//   }
-
-//   .reviewer-thumb {
-//     border-radius: 3px;
-//     width: 100%;
-//   }
-
-//   .reviewer-name-wrapper {
-//     @extend .col-xs-12;
-//     @extend .col-sm-10;
-//     padding: 0;
-//   }
-
-//   .reviewer-name {
-//     display: inline-block;
-//     margin: 2px 0;
-//     color: #444;
-//     .subtext {
-//       font-weight: normal;
-//       color: #888;
-//       font-size: 16px;
-//       margin-right: 4px;
-//     }
-//   }
-
-//   .review-summary {
-//     font-size: 16px;
-//     color: #444;
-//     margin: 4px 0;
-//     line-height: 20px;
-//   }
-
-//   .review-likes {
-//     font-size: 12px;
-//     color: #999;
-//     margin: 2px 0;
-//   }
-
-//   .review-stars {
-//     float: right;
-//     padding: 0;
-//     margin: 0;
-//     color: #777;
-//   }
-// }
 
 // .studio-name {
 //   margin-bottom: 10px;

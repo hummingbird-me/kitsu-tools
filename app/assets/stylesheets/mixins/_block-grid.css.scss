@@ -1,0 +1,51 @@
+// Block Grid
+// Technique adapted from Foundation 5 for Bootstrap 3.
+// https://github.com/zurb/foundation/blob/f755d8704123f86c281ede0b171881e2672f150d/scss/foundation/components/_block-grid.scss
+// Original LESS Version by Christopher Mitchell (https://gist.github.com/ChrisTM)
+// Converted to SCSS by Rasmus Jürs (https://github.com/Jursdotme)
+ 
+[class*="block-grid-"] {
+  display: block;
+  margin: -($grid-gutter-width/5);
+  padding: 0;
+  @include clearfix();
+}
+ 
+.block-grid-item {
+  display: inline;
+  margin: 0;
+  padding: ($grid-gutter-width/5);
+  height: auto;
+  float: left;
+  list-style: none;
+}
+ 
+@mixin block-grid ($per-row) {
+  & > .block-grid-item {
+    width: (100%/$per-row);
+ 
+    $nth-equation: #{$per-row}n+'+'+1;
+    &:nth-of-type(n) { clear: none; }
+    &:nth-of-type(#{$nth-equation}) { clear: both; }
+  }
+}
+ 
+@mixin block-grids($size) {
+  .block-grid-#{$size}-1  { @include block-grid(1);  }
+  .block-grid-#{$size}-2  { @include block-grid(2);  }
+  .block-grid-#{$size}-3  { @include block-grid(3);  }
+  .block-grid-#{$size}-4  { @include block-grid(4);  }
+  .block-grid-#{$size}-5  { @include block-grid(5);  }
+  .block-grid-#{$size}-6  { @include block-grid(6);  }
+  .block-grid-#{$size}-7  { @include block-grid(7);  }
+  .block-grid-#{$size}-8  { @include block-grid(8);  }
+  .block-grid-#{$size}-9  { @include block-grid(9);  }
+  .block-grid-#{$size}-10 { @include block-grid(10); }
+  .block-grid-#{$size}-11 { @include block-grid(11); }
+  .block-grid-#{$size}-12 { @include block-grid(12); }
+}
+ 
+@include block-grids(xs); 
+@media (min-width: $screen-sm-min) { @include block-grids(sm) }
+@media (min-width: $screen-md-min) { @include block-grids(md) }
+@media (min-width: $screen-lg-min) { @include block-grids(lg) }

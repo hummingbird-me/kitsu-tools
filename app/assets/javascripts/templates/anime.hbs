@@ -68,3 +68,112 @@
     </div>
   </div>
 </div>
+
+<div class="episode-bar">
+  <div class="container">
+    <h2 class="grey-title"> 
+      <a href="#">
+        Episodes 
+        <i class="fa fa-angle-right"></i>
+      </a>
+    </h1>
+      <ul class="episode-thumbs block-grid-5">
+        <li class="block-grid-item">
+          <div class="thumbnail">
+            <a href="#">
+              <img src="http://ib1.huluim.com/video/60211296?size=220x124&amp;region=us">
+              <div class="description">
+                <div class="title">Episode 1</div>   
+              </div>
+              <div class="play-icon">
+                <i class="fa fa-play"></i>
+              </div>
+            </a>
+          </div>
+        </li>
+
+        <li class="block-grid-item">
+          <div class="thumbnail">
+            <a href="#">
+              <img src="http://ib2.huluim.com/video/60211297?size=220x124&amp;region=us">
+              <div class="description">
+                <div class="title">Episode 2</div>
+              </div>
+              <div class="play-icon">
+                <i class="fa fa-play"></i>
+              </div>
+            </a>
+          </div>
+        </li>
+
+        <li class="block-grid-item">
+          <div class="thumbnail">
+            <a href="#">
+              <img src="http://ib3.huluim.com/video/60211298?size=220x124&amp;region=us">
+              <div class="description">
+                <div class="title">Episode 3</div>  
+              </div>
+              <div class="play-icon">
+                <i class="fa fa-play"></i>
+              </div>
+            </a>
+          </div>
+        </li>
+
+        <li class="block-grid-item">
+          <div class="thumbnail">
+            <a href="#">
+              <img src="http://ib4.huluim.com/video/60211299?size=220x124&amp;region=us">
+              <div class="description">
+                <div class="title">Episode 4</div>  
+              </div>
+              <div class="play-icon">
+                <i class="fa fa-play"></i>
+              </div>
+            </a>
+          </div>
+        </li>
+
+        <li class="block-grid-item">
+          <div class="thumbnail">
+            <a href="#">
+              <img src="http://ib3.huluim.com/video/60214794?size=220x124&amp;region=us">
+              <div class="description">
+                <div class="title">Episode 5</div>  
+              </div>
+              <div class="play-icon">
+                <i class="fa fa-play"></i>
+              </div>
+            </a>
+          </div>
+        </li>
+      </ul>
+  </div>
+</div>
+
+<div class="container">
+  <div class="series-reviews">
+    <h2 class="grey-title"> 
+      <a href="#">
+        Reviews 
+        <i class="fa fa-angle-right"></i>
+      </a>
+    </h1>
+    <div class="review-listing">
+      {{partial "anime/trending-reviews"}}
+    </div>
+  </div>
+
+  <div class="series-gallery">
+    <h2 class="grey-title"> 
+      Screencaps
+    </h1>
+    <div class="gallery">
+      <ul class="block-grid-2">
+        {{#each imageURL in screencaps}}
+          <li class="block-grid-item"><img {{bind-attr src=imageURL}}></li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>

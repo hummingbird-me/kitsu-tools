@@ -128,3 +128,20 @@ input:focus, textarea:focus {
 .no-padding-right {
   padding-right: 0;
 }
+
+.grey-title {
+  color: #a4a4a4;
+  font-weight: normal;
+  margin-bottom: 15px;
+  .fa {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+  }
+  a {
+    color: #a4a4a4;
+    &:hover {
+      color: $darkOrange;
+    }
+  }
+}
