@@ -39,6 +39,10 @@ class AnimeControllerTest < ActionController::TestCase
       get :upcoming, season: :summer
       assert_response 200
       assert assigns(:anime).values.flatten.include?(anime(:sword_art_online))
+
+      get :upcoming, season: :foo
+      assert_response 200
+      assert !assigns(:anime).values.flatten.include?(anime(:sword_art_online))
     end
   end
 
