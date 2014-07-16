@@ -1,8 +1,5 @@
-// http://emberjs.com/guides/models/defining-a-store/
-
-Hummingbird.Store = DS.Store.extend({
-  revision: 13,
-  adapter: '_ams'
+Hummingbird.ApplicationStore = DS.Store.extend({
+  revision: 13
 });
 
 Hummingbird.ApplicationAdapter = DS.ActiveModelAdapter.extend({});
