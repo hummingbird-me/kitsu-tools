@@ -30,16 +30,16 @@ class AnimeController < ApplicationController
     hide_cover_image
 
     season_months = {
-      winter: [12, 1, 2],
-      spring: [3, 4, 5],
-      summer: [6, 7, 8],
-      fall: [9, 10, 11]
+      'winter' => [12, 1, 2],
+      'spring' => [3, 4, 5],
+      'summer' => [6, 7, 8],
+      'fall'   => [9, 10, 11]
     }
 
-    @seasons = [:winter, :spring, :summer, :fall]
+    @seasons = ['winter', 'spring', 'summer', 'fall']
     @seasons.rotate! until season_months[@seasons[0]].include? Time.now.month
     current_season = @seasons[0]
-    @season = params[:season].try(:to_sym) || current_season
+    @season = [@seasons, 'tba'].flatten.include?(params[:season]) ? params[:season] : current_season
 
     @season_years = {}
     if Time.now.month == 12
@@ -58,9 +58,9 @@ class AnimeController < ApplicationController
 
     @anime = Anime.accessible_by(current_ability)
 
-    if @season != :tba
+    if @season != 'tba'
       start_date = Date.new(@season_years[@season], season_months[@season][0], 1)
-      start_date -= 1.year if @season == :winter
+      start_date -= 1.year if @season == 'winter'
       end_date = Date.new(@season_years[@season], season_months[@season][-1], 1).end_of_month
 
       @anime = @anime.where('started_airing_date > ? AND started_airing_date < ?', start_date, end_date)
