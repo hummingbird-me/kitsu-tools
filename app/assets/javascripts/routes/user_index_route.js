@@ -8,25 +8,23 @@ Hummingbird.UserIndexRoute = Ember.Route.extend(Hummingbird.Paginated, {
 
   setupController: function(controller, model) {
     controller.set('userInfo', this.store.find('userInfo', this.modelFor('user').get('id')));
-    Ember.$.ajax({
-      url: '/api/v1/users/' + this.modelFor('user').get('id') + '/favorite_anime',
-      type: 'GET',
-      success: function(payload) {
-        return controller.set('favorite_anime', payload);
-      },
-      failure: function() {
-        return console.log('failed to retrieve favorite anime');
-      }
+
+    ic.ajax({
+      url: '/api/v1/users/'+this.modelFor('user').get('id')+'/favorite_anime',
+      type: 'GET'
+    }).then(function(favoriteAnime) {
+        controller.set('favorite_anime', favoriteAnime);
     });
+
     this.setCanLoadMore(true);
     controller.set('canLoadMore', true);
-    return controller.set('model', []);
+    controller.set('model', []);
+
+    this.loadNextPage();
   },
-  
+
   afterModel: function() {
-    Ember.run.next(function() {
-      return window.scrollTo(0, 0);
-    });
+    Ember.run.next(function() { window.scrollTo(0, 0); });
     return Hummingbird.TitleManager.setTitle(this.modelFor('user').get('username') + "'s Profile");
   }
 });
