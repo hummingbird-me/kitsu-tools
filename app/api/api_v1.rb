@@ -47,8 +47,12 @@ class API_v1 < Grape::API
     def save_favorite(key, value)
       item = value
       favorite = Favorite.find(item.id)
-      favorite.fav_rank = item.fav_rank
-      favorite.save
+      if favorite.user == current_user
+        favorite.fav_rank = item.fav_rank
+        favorite.save
+      else
+        error!("Unauthorized", 403)
+      end
     end
 
     def present_watchlist(w, rating_type, title_language_preference)
