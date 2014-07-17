@@ -7,7 +7,7 @@ quick-update
     .secondary-info
       community-loading-widget
       community-widget title="Industry news" showMoreURL="http://forums.hummingbird.me/category/industry-news" apiCall="http://forums.hummingbird.me/category/industry-news.json"
-      community-widget title="Community discussions" showMoreURL="http://forums.hummingbird.me/" apiCall="http://forums.hummingbird.me/latest.json"
+      community-widget title="Community discussions" showMoreURL="http://forums.hummingbird.me/" apiCall="http://forums.hummingbird.me/latest.json?exclude_category=industry%20news"
 
     .user-feed
       post-comment username=currentUser.username

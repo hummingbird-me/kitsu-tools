@@ -87,7 +87,7 @@ class LibraryEntriesController < ApplicationController
     authenticate_user!
 
     library_entry = find_library_entry_by_id params[:id]
-    return error!("unauthorized", 403) if library_entry.nil?
+    return error!("Unauthorized", 403) if library_entry.nil?
 
     update_library_entry_using_params(library_entry, params)
     Action.from_library_entry(library_entry)
@@ -103,7 +103,7 @@ class LibraryEntriesController < ApplicationController
     authenticate_user!
 
     library_entry = find_library_entry_by_id params[:id]
-    return error!("unauthorized", 403) if library_entry.nil?
+    return error!("Unauthorized", 403) if library_entry.nil?
 
     if library_entry.destroy
       render json: nil

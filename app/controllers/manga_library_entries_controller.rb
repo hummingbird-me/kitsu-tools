@@ -64,7 +64,7 @@ class MangaLibraryEntriesController < ApplicationController
     authenticate_user!
 
     manga_library_entry = find_manga_library_entry_by_id params[:id]
-    return error!("unauthorized", 403) if manga_library_entry.nil?
+    return error!("Unauthorized", 403) if manga_library_entry.nil?
 
     update_manga_library_entry_using_params(manga_library_entry, params)
     if manga_library_entry.save
@@ -78,7 +78,7 @@ class MangaLibraryEntriesController < ApplicationController
     authenticate_user!
 
     manga_library_entry = find_manga_library_entry_by_id params[:id]
-    return error!("unauthorized", 403) if manga_library_entry.nil?
+    return error!("Unauthorized", 403) if manga_library_entry.nil?
 
     if manga_library_entry.destroy
       render json: nil
