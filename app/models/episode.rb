@@ -24,6 +24,11 @@ class Episode < ActiveRecord::Base
     number
   end
 
+  has_attached_file :thumbnail
+  validates_attachment :thumbnail, content_type: {
+    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  }
+
   validates :anime, :number, presence: true
   validates_uniqueness_of :number, scope: [:anime_id, :season_number]
 
