@@ -53,6 +53,7 @@
       <div class="col-md-7 error-image-frame">
         <img id="error-jsimage" class="error-image" src="" />
         <span class="error-art">Art submitted by <a id="error-jsuser" href=""></a>.</span>
+        <span id="error-jsartist"></span>
       </div>
       <div class="col-md-5">
         <h3>Error #404 &mdash; Page not found</h3>
@@ -76,27 +77,31 @@
   <script type="text/javascript">
 
     var images = [
-      ["Melen", "wQhAf7C.jpg"],
-      ["Jordan", "ylq29qb.jpg"],
-      ["earaiden", "WVLskzF.jpg"],
-      ["Nullet", "Y1b1K5R.jpg"],
-      ["calioop", "V4adlna.jpg"],
-      ["kami", "Kuz1ONt.jpg"],
-      ["rtil", "5J0t70x.jpg"],
-      ["Magpii", "1VBtfdt.jpg"],
-      ["James", "QpPfYsg.jpg"],
-      ["Raphael", "f1TGLPX.jpg"],
-      ["Magpii", "MNt9zo4.jpg"],
-      ["DarKCroX", "K9fP1PT.gif"]
+      ["wQhAf7C.jpg", "Melen"],
+      ["ylq29qb.jpg", "Jordan"],
+      ["WVLskzF.jpg", "earaiden"],
+      ["Y1b1K5R.jpg", "Nullet"],
+      ["V4adlna.jpg", "calioop"],
+      ["Kuz1ONt.jpg", "kami"],
+      ["5J0t70x.jpg", "rtil"],
+      ["1VBtfdt.jpg", "Magpii"],
+      ["QpPfYsg.jpg", "James"],
+      ["f1TGLPX.jpg", "Raphael"],
+      ["MNt9zo4.jpg", "Magpii"],
+      ["K9fP1PT.gif", "DarKCroX"]
     ];
 
-    var img = document.getElementById("error-jsimage"),
-        usr = document.getElementById("error-jsuser");
+    var usr = document.getElementById("error-jsuser"),
+        img = document.getElementById("error-jsimage"),
+        aut = document.getElementById("error-jsartist"),
         num = Math.floor(Math.random() * images.length);
 
-    usr.setAttribute('href', '/users/' + images[num][0]);
-    usr.appendChild(document.createTextNode(images[num][0]));
-    img.setAttribute('src', 'http://i.imgur.com/' + images[num][1]);
+    usr.setAttribute('href', '/users/' + images[num][1]);
+    usr.appendChild(document.createTextNode(images[num][1]));
+    img.setAttribute('src', 'http://i.imgur.com/' + images[num][0]);
+
+    if(images[num][2])
+      aut.appendChild(document.createTextNode('Based on an image '+images[num][2]));
 
   </script>
 

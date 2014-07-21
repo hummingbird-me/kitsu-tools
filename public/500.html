@@ -53,6 +53,7 @@
       <div class="col-md-7 error-image-frame">
         <img id="error-jsimage" class="error-image" src="" />
         <span class="error-art">Art submitted by <a id="error-jsuser" href=""></a>.</span>
+        <span id="error-jsartist"></span>
       </div>
       <div class="col-md-5">
         <h3>Error #500 &mdash; Internal server error</h3>
@@ -76,18 +77,23 @@
   <script type="text/javascript">
 
     var images = [
-      ["littleladyred", "eU4pwaK.jpg"],
-      ["corruptedhelios", "5LfUHEk.jpg"],
-      ["HyperWind", "E732Gks.jpg"]
+      ["eU4pwaK.jpg", "littleladyred"],
+      ["5LfUHEk.jpg", "corruptedhelios"],
+      ["E732Gks.jpg", "HyperWind"],
+      ["gUMcBOx.png", "Snagret", "from Kagerou Daze."]
     ];
 
-    var img = document.getElementById("error-jsimage"),
-        usr = document.getElementById("error-jsuser");
+    var usr = document.getElementById("error-jsuser"),
+        img = document.getElementById("error-jsimage"),
+        aut = document.getElementById("error-jsartist"),
         num = Math.floor(Math.random() * images.length);
 
-    usr.setAttribute('href', '/users/' + images[num][0]);
-    usr.appendChild(document.createTextNode(images[num][0]));
-    img.setAttribute('src', 'http://i.imgur.com/' + images[num][1]);
+    usr.setAttribute('href', '/users/' + images[num][1]);
+    usr.appendChild(document.createTextNode(images[num][1]));
+    img.setAttribute('src', 'http://i.imgur.com/' + images[num][0]);
+
+    if(images[num][2])
+      aut.appendChild(document.createTextNode('Based on an image '+images[num][2]));
 
   </script>
 
