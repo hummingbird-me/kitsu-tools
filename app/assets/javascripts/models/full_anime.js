@@ -4,6 +4,7 @@ Hummingbird.FullAnime = Hummingbird.Anime.extend({
   coverImageTopOffset: DS.attr('number'),
   languages: DS.attr('array'),
   screencaps: DS.attr('array'),
+  episodes: DS.hasMany('episode'),
   languages: DS.attr('array'),
   youtubeVideoId: DS.attr('string'),
   communityRatings: DS.attr('array'),
