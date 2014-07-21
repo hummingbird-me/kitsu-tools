@@ -101,6 +101,7 @@ Hummingbird::Application.routes.draw do
       member { post :vote }
     end
     resources :reviews
+    resources :episodes
   end
 
   resources :manga, only: [:show]
