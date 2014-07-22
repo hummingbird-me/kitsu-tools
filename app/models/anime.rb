@@ -78,7 +78,9 @@ class Anime < ActiveRecord::Base
   end
 
   has_many :quotes, dependent: :destroy
+  # TODO: pick a name and stick to it
   has_many :castings, dependent: :destroy, as: :castable
+  has_many :favorites, dependent: :destroy, as: :item
   has_many :reviews, dependent: :destroy
   has_many :episodes, dependent: :destroy
   has_many :gallery_images, dependent: :destroy
