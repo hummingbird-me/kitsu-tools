@@ -20,8 +20,6 @@
       color: #999;
       border-radius: 3px;
       text-align: center;
-      height: 254px;
-      line-height: 254px;
       .fa-spinner {
         font-size: 32px;
       }
@@ -100,16 +98,18 @@
     }
 
     &:hover {
-      .overlay-panel { 
+      .overlay-panel {
         background-image: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .8));
       }
-      .actionable, .series-title {opacity: 1;}
+      .actionable, .series-title {
+        opacity: 1;
+      }
     }
   }
   @media (max-width: 1051px) {
     .fa-angle-left, .fa-angle-right {
       font-size: 90px !important;
-    } 
+    }
   }
   @media (max-width: 959px) {
     overflow: scroll;
