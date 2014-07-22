@@ -61,7 +61,7 @@ h1.series-title.hidden-xs
 
 unless notYetAired
   .review-listing
-    if finishedAiring
+    if completedAiring
       h4
         | Trending Reviews
         link-to 'reviews.index' classNames="btn btn-xs btn-default pull-right" | view all

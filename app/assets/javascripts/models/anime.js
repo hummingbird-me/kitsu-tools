@@ -63,6 +63,8 @@ Hummingbird.Anime = DS.Model.extend({
   }.property('startedAiring', 'finishedAiring', 'episodeCount'),
 
   notYetAired: Ember.computed.equal('airingStatus', 'Not Yet Aired'),
+  
+  completedAiring: Ember.computed.equal('airingStatus', 'Finished Airing'),
 
   formattedAirDates: function() {
     var format, formattedFinishedAiring, formattedStartedAiring, result;
