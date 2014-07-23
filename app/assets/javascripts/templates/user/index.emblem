@@ -43,7 +43,7 @@
                   if hasWaifu
                     .interest-icon <i class="fa fa-heart"></i>
                     .interest
-                      | #{user.waifuOrHusbando} is 
+                      | #{user.waifuOrHusbando} is
                       link-to 'anime' waifu_slug | #{user.waifu}
                 li
                   if hasLocation
@@ -53,7 +53,7 @@
                 li
                   if hasWebsite
                     .interest-icon <i class="fa fa-link"></i>
-                    .interest <a {{bind-attr href=user.website}}>{{user.website}}</a>
+                    .interest <a {{bind-attr href=user.websiteLink}}>{{user.website}}</a>
 
       / .photos-videos
       /   .panel-heading

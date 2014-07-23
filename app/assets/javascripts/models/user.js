@@ -15,7 +15,6 @@ Hummingbird.User = DS.Model.extend({
   isFollowed: DS.attr('boolean'),
   titleLanguagePreference: DS.attr('string'),
 
-
   avatarUrl: function() {
     return this.get("avatarTemplate").replace('{size}', 'thumb');
   }.property('avatarTemplate'),
@@ -26,5 +25,13 @@ Hummingbird.User = DS.Model.extend({
 
   userLink: function() {
     return "/users/" + this.get('id');
-  }.property('id')
+  }.property('id'),
+
+  websiteLink: function() {
+    if (this.get("website").search(/^http[s]?\:\/\//) == -1) {
+      return 'http://' + this.get("website");
+    } else {
+      return this.get("website");
+    }
+  }.property('website')
 });
