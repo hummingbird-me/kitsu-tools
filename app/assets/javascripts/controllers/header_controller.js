@@ -13,6 +13,11 @@ Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUse
     return this.get('unreadNotifications') !== 0;
   }.property('unreadNotifications'),
   limitedNotifications: [],
+  broadcast: {
+    icon: 'fa-exclamation-circle',
+    message: 'Forums are back! If you can\'t access them, please clear your cache.',
+    link: 'http://en.wikipedia.org/wiki/Wikipedia:Bypass_your_cache#Cache_clearing_and_disabling'
+  },
   init: function () {
     var _this = this;
     this.store.find('notification').then(function (result) {

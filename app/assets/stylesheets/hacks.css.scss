@@ -33,6 +33,38 @@ a.navbar-brand {
   padding: 14px;
 }
 
+/* Broadcast announcements below the header */
+.broadcast {
+  text-align: left;
+  background-color: transparentize($navy, 0.05);
+  width: 100%;
+  padding-left: 40px;
+  border-bottom: 1px solid transparentize($darkNavy, 0.7);
+  &:first-child {
+    border-top: 1px solid $darkNavy;
+  }
+  i.fa-2x {
+    color: $orange;
+    position: relative;
+    top: 4px;
+    margin-right: 15px;
+  }
+  p {
+    color: darken($eggshell, 15%);
+    margin: 0;
+    padding: 18px 0;
+    font-size: 1.4em;
+    display: inline-block;
+    @media (max-width: 1000px) {
+      font-size: 1em;
+      padding: 10px 0;
+    }
+  }
+  a {
+    margin-left: 10px;
+  }
+}
+
 /* Signup CTA below the header. */
 .signup-cta {
   text-align: center;
