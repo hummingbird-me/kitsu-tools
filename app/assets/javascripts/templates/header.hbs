@@ -70,14 +70,15 @@
     </ul>
   </div>
 </nav>
+
 {{#if broadcast}}
-<div class="broadcast">
-  {{#if icon}}
-  <i {{bind-attr class=":fa :fa-2x icon"}}></i>
-  {{/if}}
-  <p>{{message}}</p>
-  {{#if link}}
-    <a {{bind-attr href=link}}>Info <i class="fa fa-external-link"></i></a>
-  {{/if}}
+  <div class="broadcast">
+    {{#if broadcast.icon}}
+      <i {{bind-attr class=":fa :fa-2x broadcast.icon"}}></i>
+    {{/if}}
+    <p>{{broadcast.message}}</p>
+    {{#if broadcast.link}}
+      <a {{bind-attr href=broadcast.link}}>Info <i class="fa fa-external-link"></i></a>
+    {{/if}}
   </div>
 {{/if}}
