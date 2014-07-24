@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
     @preload << ActiveModel::ArraySerializer.new(data, options)
   end
 
+  # Preload for the generic non-ED preloader.
+  def generic_preload!(key, value)
+    @generic_preload ||= {}
+    @generic_preload[key] = value
+  end
+
   def check_user_authentication
     if user_signed_in?
       sign_out :user unless cookies[:auth_token]

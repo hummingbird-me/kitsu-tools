@@ -84,6 +84,7 @@
     :javascript
       window.currentUserName = #{(user_signed_in? ? current_user.name : nil).to_json};
       window.preloadData = #{(@preload || []).to_json};
+      window.genericPreload = #{(@generic_preload || {}).to_json};
 
     = javascript_include_tag "vendor"
     = javascript_include_tag "application"
