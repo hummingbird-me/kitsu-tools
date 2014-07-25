@@ -14,7 +14,7 @@ Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUse
   }.property('unreadNotifications'),
   limitedNotifications: [],
 
-  broadcast: Hummingbird.PreloadStore.get('broadcast'),
+  blotter: Hummingbird.PreloadStore.get('blotter'),
 
   init: function () {
     var _this = this;

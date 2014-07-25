@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :check_user_authentication, :preload_broadcast_message
+  before_filter :check_user_authentication, :preload_blotter
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # Send an object along with the initial HTML response that will be loaded into
@@ -32,13 +32,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def preload_broadcast_message
+  def preload_blotter
     if user_signed_in?
-      generic_preload! "broadcast", {
-        icon: 'fa-exclamation-circle',
-        message: "Forums are back! If you can't access them, please clear your cache.",
-        link: 'http://en.wikipedia.org/wiki/Wikipedia:Bypass_your_cache#Cache_clearing_and_disabling'
-      }
+      generic_preload! "blotter", Blotter.get
     end
   end
 
