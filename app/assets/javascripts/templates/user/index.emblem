@@ -43,7 +43,7 @@
                   if hasWaifu
                     .interest-icon <i class="fa fa-heart"></i>
                     .interest
-                      | #{user.waifuOrHusbando} is
+                      | #{user.waifuOrHusbando} is 
                       link-to 'anime' waifu_slug | #{user.waifu}
                 li
                   if hasLocation
@@ -138,4 +138,3 @@
 
       if canLoadMore
         load-more classNames="light" action="loadNextPage"
-
