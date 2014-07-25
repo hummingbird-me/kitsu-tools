@@ -23873,3 +23873,20 @@ fieldset[disabled] .twitter-typeahead .tt-input {
 .tt-dropdown-menu .tt-suggestion p {
   margin: 0;
 }
+
+.blotterbox .action-delete {
+  color: #D41010;
+  float: right;
+}
+.blotterbox .blotter-current {
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 10px 0px;
+  background-color: rgba(47, 52, 59, 0.95);
+  color: #c8D3D9;
+  line-height: 1.3em;
+}
+.blotterbox .blotter-current a,
+.blotterbox .blotter-current i {
+  color: #F89774;
+}

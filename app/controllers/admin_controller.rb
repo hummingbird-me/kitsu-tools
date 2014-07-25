@@ -27,6 +27,7 @@ class AdminController < ApplicationController
   def index
     @anime_without_mal_id = Anime.where(mal_id: nil).where(%{"anime"."id" NOT IN (SELECT "anime_genres"."anime_id" FROM "anime_genres" INNER JOIN "genres" ON "genres"."id" = "anime_genres"."genre_id" AND "genres"."name" = 'Anime Influenced')})
     @users_to_follow = User.where(to_follow: true)
+    @blotter = Blotter.get
     @hide_cover_image = true
     @hide_footer_ad = true
   end
@@ -66,6 +67,19 @@ class AdminController < ApplicationController
     user.to_follow = to_follow
     user.save
     redirect_to '/kotodama' 
+  end
+
+  def blotter_set
+    Blotter.set({
+      icon: params[:icon],
+      message: params[:message],
+      link: params[:link]
+    })
+    redirect_to '/kotodama'
+  end
+  def blotter_clear
+    Blotter.clear
+    redirect_to '/kotodama'
   end
 
 end

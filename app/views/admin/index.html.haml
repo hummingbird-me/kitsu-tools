@@ -14,6 +14,30 @@
       .large-6.columns
         %h4 Actions
         %hr
+        .panel.blotterbox
+          %h5
+            Blotter
+            - unless @blotter.nil?
+              = link_to "/kotodama/blotter_clear" do
+                %i.fa.fa-trash-o.action-delete
+          - unless @blotter.nil?
+            .blotter-current
+              %i{class: "fa #{@blotter['icon']}"}
+              %span= @blotter['message']
+              - unless @blotter['link'].blank?
+                %a{href: @blotter['link']}
+                  Info
+                  %i(class="fa fa-external-link")
+          %form(method="GET" action="/kotodama/blotter_set")
+            %input(type="hidden" name="icon"){value: (@blotter.try(:[], 'icon') || 'fa-exclamation-circle')}
+            .row.collapse
+              .large-12.columns
+                %input(type="text" placeholder="Message" name="message"){value: @blotter.try(:[], 'message')}
+              .large-8.columns
+                %input(type="url" placeholder="Link" name="link"){value: @blotter.try(:[], 'link')}
+              .large-4.columns
+                %input.button.small.prefix(type="submit" value="Set")
+              .large-2.columns
         .panel
           %h5 Users To Follow
           %form(method="GET" action="/kotodama/users_to_follow_submit")

@@ -71,14 +71,15 @@
   </div>
 </nav>
 
-{{#if broadcast}}
-  <div class="broadcast">
-    {{#if broadcast.icon}}
-      <i {{bind-attr class=":fa :fa-2x broadcast.icon"}}></i>
+{{#if showBlotter}}
+  <div class="blotter">
+    {{#if blotter.icon}}
+      <i {{bind-attr class=":fa :fa-2x blotter.icon"}}></i>
     {{/if}}
-    <p>{{broadcast.message}}</p>
-    {{#if broadcast.link}}
-      <a {{bind-attr href=broadcast.link}}>Info <i class="fa fa-external-link"></i></a>
+    <p>{{blotter.message}}</p>
+    {{#if blotter.link}}
+      <a {{bind-attr href=blotter.link}}>Info <i class="fa fa-external-link"></i></a>
     {{/if}}
+    <a class="btn btn-xs" {{action 'dismissBlotter'}}>Okay, got it!</a>
   </div>
 {{/if}}
