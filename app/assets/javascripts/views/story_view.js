@@ -14,7 +14,7 @@ Hummingbird.StoryView = Ember.View.extend({
 
   truncateLongComments: function() {
     var commentEl = this.$(".comment-text")[0]
-    if (commentEl.offsetHeight < commentEl.scrollHeight) {
+    if (commentEl.offsetHeight < commentEl.scrollHeight - 1) {
       this.controller.set('overflowing', true);
     }
   },
