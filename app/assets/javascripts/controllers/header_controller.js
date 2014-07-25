@@ -15,6 +15,9 @@ Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUse
   limitedNotifications: [],
 
   blotter: Hummingbird.PreloadStore.get('blotter'),
+  showBlotter: function () {
+    return this.get('blotter.message') && (window.localStorage.dismissedBlotter != this.get('blotter.message'));
+  }.property('blotter.message'),
 
   init: function () {
     var _this = this;
@@ -41,8 +44,12 @@ Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUse
     toggleUpdater: function () {
       this.toggleProperty('showUpdater');
     },
-    toggleMenu: function(){
+    toggleMenu: function () {
       this.toggleProperty('showMenu');
+    },
+    dismissBlotter: function () {
+      window.localStorage.dismissedBlotter = this.get('blotter.message');
+      this.notifyPropertyChange('showBlotter');
     }
   }
 });

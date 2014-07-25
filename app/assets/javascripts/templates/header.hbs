@@ -71,8 +71,8 @@
   </div>
 </nav>
 
-{{#if blotter}}
-  <div class="broadcast">
+{{#if showBlotter}}
+  <div class="blotter">
     {{#if blotter.icon}}
       <i {{bind-attr class=":fa :fa-2x blotter.icon"}}></i>
     {{/if}}
@@ -80,5 +80,6 @@
     {{#if blotter.link}}
       <a {{bind-attr href=blotter.link}}>Info <i class="fa fa-external-link"></i></a>
     {{/if}}
+    <a class="btn btn-xs" {{action 'dismissBlotter'}}>Okay, got it!</a>
   </div>
 {{/if}}
