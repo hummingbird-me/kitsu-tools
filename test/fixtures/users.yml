@@ -32,14 +32,10 @@
 #  confirmed_at                :datetime
 #  confirmation_sent_at        :datetime
 #  unconfirmed_email           :string(255)
-#  forem_admin                 :boolean          default(FALSE)
-#  forem_state                 :string(255)      default("approved")
-#  forem_auto_subscribe        :boolean          default(FALSE)
 #  cover_image_file_name       :string(255)
 #  cover_image_content_type    :string(255)
 #  cover_image_file_size       :integer
 #  cover_image_updated_at      :datetime
-#  english_anime_titles        :boolean          default(TRUE)
 #  title_language_preference   :string(255)      default("canonical")
 #  followers_count_hack        :integer          default(0)
 #  following_count             :integer          default(0)
@@ -89,14 +85,10 @@ vikhyat:
   confirmed_at: 2013-03-03 10:25:21.477558000 Z
   confirmation_sent_at: 2013-03-03 10:09:43.255396000 Z
   unconfirmed_email:
-  forem_admin: true
-  forem_state: approved
-  forem_auto_subscribe: false
   cover_image_file_name: tumblr_m875gp4yla1rygue4o1_500.jpg
   cover_image_content_type: image/jpeg
   cover_image_file_size: 16532
   cover_image_updated_at: 2013-09-04 17:57:36.681668000 Z
-  english_anime_titles: true
   title_language_preference: canonical
   followers_count_hack: 1039
   following_count: 988
@@ -138,14 +130,10 @@ josh:
   confirmed_at: 2013-03-03 13:23:04.069592000 Z
   confirmation_sent_at: 2013-03-03 12:55:33.472041000 Z
   unconfirmed_email:
-  forem_admin: true
-  forem_state: approved
-  forem_auto_subscribe: false
   cover_image_file_name: 2-hum.png
   cover_image_content_type: image/png
   cover_image_file_size: 409843
   cover_image_updated_at: 2013-07-31 01:56:11.192788000 Z
-  english_anime_titles: true
   title_language_preference: canonical
   followers_count_hack: 656
   following_count: 342

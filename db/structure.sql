@@ -1302,14 +1302,10 @@ CREATE TABLE users (
     confirmed_at timestamp without time zone,
     confirmation_sent_at timestamp without time zone,
     unconfirmed_email character varying(255),
-    forem_admin boolean DEFAULT false,
-    forem_state character varying(255) DEFAULT 'approved'::character varying,
-    forem_auto_subscribe boolean DEFAULT false,
     cover_image_file_name character varying(255),
     cover_image_content_type character varying(255),
     cover_image_file_size integer,
     cover_image_updated_at timestamp without time zone,
-    english_anime_titles boolean DEFAULT true,
     title_language_preference character varying(255) DEFAULT 'canonical'::character varying,
     followers_count_hack integer DEFAULT 0,
     following_count integer DEFAULT 0,
@@ -3108,4 +3104,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140630020533');
 INSERT INTO schema_migrations (version) VALUES ('20140630031803');
 
 INSERT INTO schema_migrations (version) VALUES ('20140707100609');
+
+INSERT INTO schema_migrations (version) VALUES ('20140707102503');
+
+INSERT INTO schema_migrations (version) VALUES ('20140707110148');
 

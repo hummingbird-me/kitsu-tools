@@ -32,14 +32,10 @@
 #  confirmed_at                :datetime
 #  confirmation_sent_at        :datetime
 #  unconfirmed_email           :string(255)
-#  forem_admin                 :boolean          default(FALSE)
-#  forem_state                 :string(255)      default("approved")
-#  forem_auto_subscribe        :boolean          default(FALSE)
 #  cover_image_file_name       :string(255)
 #  cover_image_content_type    :string(255)
 #  cover_image_file_size       :integer
 #  cover_image_updated_at      :datetime
-#  english_anime_titles        :boolean          default(TRUE)
 #  title_language_preference   :string(255)      default("canonical")
 #  followers_count_hack        :integer          default(0)
 #  following_count             :integer          default(0)

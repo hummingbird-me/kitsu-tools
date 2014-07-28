@@ -218,17 +218,6 @@ class UsersController < ApplicationController
     redirect_to user.cover_image.url(:thumb)
   end
 
-  def trigger_forum_sync
-    username = params[:user_id]
-    secret   = params[:secret]
-    if secret == "topsecretsecret"
-      User.find(username).sync_to_forum!
-      render :json => true
-    else
-      render :json => false
-    end
-  end
-
   def update
     authenticate_user!
 
