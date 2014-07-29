@@ -192,21 +192,6 @@ class API_v1 < Grape::API
     end
   end
 
-  desc "Return the user's timeline - ember model"
-  params do
-    optional :page, type: Integer
-  end
-  get '/timeline/newsFeeds' do
-    if user_signed_in?
-      feed = NewsFeed.new(current_user).fetch(params[:page])
-      #feed.to_json
-      feed[:meta] = {cursor: 1 + (params[:page] || 1).to_i}
-      feed
-    else
-      []
-    end
-  end
-
   resource :users do
     desc "Return authentication code"
     params do
@@ -252,7 +237,7 @@ class API_v1 < Grape::API
         last_library_update: user.last_library_update,
         online: user.online?,
         following: (user_signed_in? and user.followers.include?(current_user)),
-	favorites: user.favorites
+        favorites: user.favorites
       }
       if user == current_user
         json["email"] = user.email
@@ -290,19 +275,15 @@ class API_v1 < Grape::API
       watchlists.map {|w| present_watchlist(w, rating_type, title_language_preference) }
     end
 
-
-
-
-
     desc "Returns the user's favorite Animes"
     params do
       requires :user_id, type: String
       optional :page, type: Integer
     end
     get ":user_id/favorite_anime" do
-      @user = User.find(params[:user_id])
-      @favorite_anime = @user.favorites.where(item_type: "Anime").order('fav_rank')
-      @favorite_anime.map {|a| present_favorite_anime(a, @user.try(:title_language_preference) || "canonical")}
+      user = find_user(params[:user_id])
+      favorite_anime = user.favorites.where(item_type: "Anime").order('fav_rank')
+      favorite_anime.map {|a| present_favorite_anime(a, user.try(:title_language_preference) || "canonical")}
     end
 
     desc "Updates User's Favorite ranks"
@@ -310,9 +291,9 @@ class API_v1 < Grape::API
       requires :data
     end
     post ":user_id/favorite_anime/update" do
-       data = params[:data]
-       data.each {|key,value| save_favorite(key,value)}
-       data
+      data = params[:data]
+      data.each {|key,value| save_favorite(key,value)}
+      data
     end
 
     desc "Returns the user's feed."
