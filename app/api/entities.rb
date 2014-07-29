@@ -63,6 +63,7 @@ module Entities
     expose(:id) {|watchlist, options| Digest::MD5.hexdigest("^_^" + watchlist.id.to_s) }
     expose :private
     expose :rewatching
+    expose :updated_at
 
     expose :anime, using: Entities::Anime
 
