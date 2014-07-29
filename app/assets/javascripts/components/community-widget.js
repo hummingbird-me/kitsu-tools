@@ -7,7 +7,10 @@ Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
 
     ic.ajax({
       url: this.get('apiCall'),
-      type: "GET"
+      type: "GET",
+      xhrFields: {
+        withCredentials: true
+      }
     }).then(function(data) {
 
       var users = {},
