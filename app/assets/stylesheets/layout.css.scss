@@ -303,9 +303,8 @@ Global Header
       border-bottom: 1px solid #aaa;
       color: #fff;
       &:focus { outline: none; }
-      @media (max-width: 768px) {
-        width: 150px;
-      }
+      @media (min-width: 768px) { margin: 13px 0 12px 20px; }
+      @media (max-width: 768px) { width: 150px; }
     }
 
     .search-dropdown {
