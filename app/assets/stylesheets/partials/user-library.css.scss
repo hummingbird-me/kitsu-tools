@@ -72,11 +72,13 @@
       background-color: darken($orange, 5);
       color: #fff;
     }
+
     .dropdown-menu {
       width: 100%;
       padding-top: 10px;
       margin-top: -5px;
     }
+
     .fa {
       margin-left: 8px;
     }
@@ -87,10 +89,12 @@
     max-height: auto;
     border-radius: 3px;
   }
+
   .drop-description {
     font-size: 14px;
     line-height: 20px;
   }
+
   .drop-options {
     background-color: #fff;
     border: 1px solid #ddd;
@@ -100,15 +104,18 @@
       font-size: 16px;
     }
   }
+
   hr {
     margin-top: 10px;
     margin-bottom: 10px;
   }
+
   .drop-arrow {
     position: relative;
     height: 15px;
     margin-bottom: 15px;
   }
+
   .drop-arrow:after, .drop-arrow:before {
     top: 100%;
     border: solid transparent;
@@ -127,6 +134,7 @@
     top: 0px;
     margin-left: -15px;
   }
+
   .drop-arrow:before {
     border-color: rgba(221, 221, 221, 0);
     border-top-color: #ddd;
@@ -135,8 +143,7 @@
     top: 0px;
     margin-left: -16px;
   }
-  .personal-notes-div {
-  }
+
   .personal-notes {
     padding: 10px;
     width: 80%;
@@ -147,10 +154,12 @@
     transition: height 0.2s ease 0s;
     resize: none;
   }
+
   .personal-notes-save {
     width: 18%;
     float: right;
   }
+
   .awesome-rating-widget {
     text-align: center;
     font-size: 30px;
@@ -225,6 +234,7 @@
       text-align: left;
       padding-top: 10px;
     }
+
     .list-item-progress {
       margin-right: 20px;
       padding-right: 20px;
@@ -240,10 +250,12 @@
         border-radius: 3px;
         border: 1px solid #ddd;
       }
+
       .progress-sep {
         float: left;
         padding: 0 0 0 10px;
       }
+
       .list-item-total {
         float: left;
         width: 34px;
@@ -251,6 +263,7 @@
         font-weight: bold;
       }
     }
+
     .list-item-score {
       margin-right: 20px;
       padding-right: 20px;
@@ -267,6 +280,7 @@
         font-size: 1.28em;
       }
     }
+
     .list-item-type {
       display: inline-block;
       width: 42px;
@@ -316,12 +330,11 @@
 
 .library-section-select {
   @extend .btn-group;
+  float: right;
 
   button .fa {
     margin-left: 5px;
   }
-
-  float: right;
 
   button {
     border-right: none;

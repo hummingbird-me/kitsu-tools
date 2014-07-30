@@ -2,30 +2,37 @@
   @extend .panel;
   @extend .panel-default;
   @extend .clearfix;
+
   .panel-body {
     padding: 0;
+
     .latest-post-list {
       margin: 0;
       padding: 0;
+
       .latest-post-title {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         margin-bottom: 5px;
+
         a {
           color: #555;
           font-weight: 500;
           font-size: 14px;
         }
       }
+
       .latest-post {
         list-style-type: none;
         border-bottom: 1px solid #ddd;
         padding: 10px;
         height: 70px;
+
         .badge {
           background: #FFA07A;
         }
+
         .post-count-and-time {
           display: inline-block;
           padding-top: 2px;
@@ -33,6 +40,7 @@
           color: #666;
         }
       }
+
       .recent-post-avatar {
         width: 20px;
         height: 20px;
@@ -40,10 +48,12 @@
         border-radius: 3px;
         margin-right: 2px ;
       }
+
       .latest-post-more {
         padding: 10px;
         text-align: center;
         background: #f7f7f7;
+
         a {
           color: #7a7a7a;
           &:hover {
@@ -53,12 +63,15 @@
       }
     }
   }
+
   .loading-heading {
     padding: 18px;
   }
+
   .loading-wrapper {
     padding: 10px;
   }
+
   .loading-image {
     animation-duration: 1s;
     animation-fill-mode: forwards;
@@ -72,51 +85,46 @@
     background-size: 800px 104px;
     height: 49px;
     position: relative;
+
     div {
       background: #fff;
       height: 6px;
       left: 0;
       position: absolute;
       right: 0;
+
       &.l-2, &.l-3, &.l-4, &.l-5, &.l-6 {
         height: 24px;
         width: 10px;
         top: 30px;
         left: inherit;
       }
+
       &.l-1 {
         top: 20px;
         height: 10px;
       }
+
       &.l-2 {
         width: 183px;
         left: 130px;
       }
-      &.l-3 {
-        right: 20px;
-      }
-      &.l-4 {
-        right: 50px;
-      }
-      &.l-5 {
-        right: 80px;
-      }
-      &.l-6 {
-        right: 110px;
-      }
+
+      &.l-3 { right: 20px; }
+      &.l-4 { right: 50px; }
+      &.l-5 { right: 80px; }
+      &.l-6 { right: 110px; }
     }
   }
 }
+
 .loading-post {
   border-bottom: 1px solid #ddd;
-  hr {
-    margin: 0;
-  }
+
+  hr { margin: 0; }
 }
 
 @keyframes placeHolderShimmer{
   0% { background-position: -468px 0; }
   100% { background-position: 468px 0; }
 }
-
-

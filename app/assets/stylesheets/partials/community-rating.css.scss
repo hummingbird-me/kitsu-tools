@@ -5,6 +5,7 @@
 .personal-rating {
   @extend .col-xs-12;
   @extend .col-sm-12;
+
   text-align: center;
   float: left;
   padding: 0;
@@ -14,28 +15,34 @@
     padding: 15px 0 0 0;
     border-top: 1px solid #ddd;
   }
+
   .sidebar-title {
     margin-bottom: 5px;
   }
+
   .icon-container {
     font-size: 30px;
     padding: 0 2px;
     @media (min-width: 768px) and (max-width: 1200px) {
       font-size: 25px;
     }
+
     /* Simple rating icons. */
     .fa-frown-o, .fa-meh-o, .fa-smile-o {
       color: #999;
       padding: 0 4px;
       font-size: 1.2em;
     }
+
     .active {
       color: #ec8661;
     }
+
     .simple:hover {
       color: black;
     }
   }
+
   &.active {
     .icon-container {
       color: #ec8661;
@@ -51,6 +58,7 @@
 
 .community-rating {
   @extend .col-xs-12;
+
   padding: 0;
   border-top: 1px solid #ddd;
   margin: 15px 0 0 0;
@@ -61,6 +69,7 @@
   position: relative;
   height: 40px;
   text-align: center;
+
   li {
     display: inline-block;
     margin-right: 4px;
@@ -80,12 +89,15 @@
   @media (min-width: 768px) and (max-width: 1200px) {
     width: 10px;
   }
+
   &.last {
     margin-right: 0;
   }
+
   &:hover {
     border: 1px solid #000;
     cursor: pointer;
+    
     .rating-value {
       width: 12px;
       @media (min-width: 768px) and (max-width: 1200px) {

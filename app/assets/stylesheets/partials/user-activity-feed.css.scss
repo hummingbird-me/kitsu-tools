@@ -3,10 +3,10 @@
   margin-top: 30px;
 }
 
-
 .mobile-tab {
   @extend .col-md-6;
   @extend .col-xs-6;
+
   display: none;
   border-radius: 0px;
   margin: 10px 0;
@@ -21,11 +21,13 @@
         padding: 0;
       }
     }
+
     /* Initial status */
     &:not(:target) + .mobile-tab:not(:target){
       & + .row > .secondary-info { display: none !important; }
       display: none;
     }
+
     /* Toggled status */
     &:target{
       display: none;
@@ -34,6 +36,7 @@
       &#left-column + .row .secondary-info { display: block; }
       &#left-column + .row .user-feed { display: none !important; }
     }
+
     &:after {
       @extend .clearfix;
     }
@@ -43,7 +46,6 @@
 .secondary-info {
   @extend .col-sm-5;
   @extend .col-md-5;
-  //@extend .hidden-xs;
   padding-right: 0px;
   display: block;
 }
@@ -52,6 +54,7 @@
   @extend .panel;
   @extend .panel-default;
   @extend .clearfix;
+
   .edit-bio-chars {
     display: block;
     float: right;
@@ -62,6 +65,7 @@
       color: #FF6347;
     }
   }
+
   .edit-bio {
     width: 100%;
     border-radius: 3px;
@@ -70,10 +74,12 @@
     padding: 10px;
     resize: vertical;
   }
+
   .about {
     font-size: 16px;
     word-wrap: break-word;
   }
+
   .user-interests {
     @extend .col-xs-12;
     margin: 10px 10px 0 -8px;
@@ -85,10 +91,12 @@
         margin-bottom: 0;
       }
     }
+
     .remove-waifu {
       font-size: 85%;
       padding-left: 10px;
     }
+
     .interest-icon {
       @extend .col-xs-1;
       padding-left: 0;
@@ -98,11 +106,13 @@
       top: -1px;
       color: #999999;
     }
+
     .interest {
       @extend .col-xs-11;
       padding-left: 0;
       padding-right: 0;
       font-size: 15px;
+
       input {
         width: 100%;
         border: 1px solid #ddd;
@@ -110,6 +120,7 @@
         font-size: 16px;
         padding: 3px 10px;
       }
+
       select {
         border: 1px solid #ddd;
         border-radius: 3px;
@@ -119,17 +130,21 @@
       }
     }
   }
+
   .submit-form {
     @extend .col-sm-12;
     margin-bottom: 15px;
     text-align: right;
+
     button {
       background: $orange;
       color: #fff;
       border: none;
+
       &:hover {
         background: $darkOrange;
       }
+
       &:active {
         background: darken($darkOrange, 5);
       }
@@ -140,12 +155,14 @@
 .grid-thumb {
   padding: 5px !important;
   float: left !important;
+
   .thumbnail {
     padding: 0;
     border: none;
     margin-bottom: 0;
     position: relative;
     overflow: hidden;
+
     img {
       border-radius: 3px;
     }
@@ -165,10 +182,12 @@
   right: 0;
   transition: .3s ease-in;
   opacity: 0;
+
   &.editing {
     opacity: 1;
     cursor: move;
   }
+
   &:hover {
     background: rgba(0,0,0,.8);
   }
@@ -205,10 +224,12 @@
 .anime-breakdown-panel{
   .breakdown-graph {
     text-align: center;
+
     .breakdown-graph-data {
       position: relative;
       color: #ec8661;
       font-size: 2em;
+
       .breakdown-number {
         display: inline-block;
         position: absolute;
@@ -220,39 +241,48 @@
       }
     }
   }
+
   .breakdown-info {
     text-align: center;
+
     .breakdown-infotitle {
       display: block;
       font-weight: bold;
     }
+
     .breakdown-infotext {
       font-size: 0.89em;
     }
   }
+
   .breakdown-genrelist {
     li {
       padding: 7px 0 3px 0;
       border-bottom: 1px solid #f2f2f2;
+
       &:last-of-type {
         border: none;
       }
+
       span {
         font-family: "klavika", Helvetica, Arial, sans-serif;
         font-weight: bold;
       }
     }
+
     .breakdown-numbr {
       display: inline-block;
       float: right;
       color: #ec8661;
     }
   }
+
   .breakdown-watched {
     display: flex;
     flex-align: center;
     align-items: center;
   }
+
   .breakdown-time {
     color: #999;
     strong {
@@ -260,6 +290,7 @@
       font-weight: normal;
     }
   }
+
   .breakdown-icon {
     display: inline-block;
     min-width: 60px;
@@ -273,6 +304,7 @@
 .user-feed {
   @extend .col-sm-7;
   @extend .col-md-7;
+
   padding-left: 15px;
   @media (max-width: 768px) {
     padding-left: 10px;
@@ -297,9 +329,11 @@
 .follow-bubbles {
   padding-left: 15px;
   margin-top: 15px;
+
   li {
     @extend .col-sm-6;
     @extend .col-xs-12;
+
     padding-left: 0;
     padding-right: 10px;
     @media (max-width: 768px) {
@@ -310,6 +344,7 @@
         padding-right: 0;
       }
     }
+
     .user-bubble {
       @extend .clearfix;
       border: 1px solid #ddd;
@@ -317,11 +352,13 @@
       padding: 10px;
       margin-bottom: 10px;
       transition: .2s ease-in;
+
       .bubble-avatar {
         @extend .col-sm-2;
         @extend .col-xs-2;
         padding: 0;
       }
+
       .bubble-name {
         @extend .col-sm-10;
         @extend .col-xs-10;
@@ -330,6 +367,7 @@
         top: 5px;
         transition: .3s ease-in;
       }
+
       &:hover {
         border-color: $orange;
         .bubble-name {
@@ -337,44 +375,5 @@
         }
       }
     }
-  }
-}
-
-
-/*
-  Global Feed
-*/
-.user-dashboard {
-  @extend .container;
-  margin-top: 20px;
-}
-
-#recent-toggle {
-  background: #23272d;
-  font-family: "klavika", Helvetica, Arial, sans-serif;
-  width: 100px;
-  border-radius: 3px;
-  padding: 4px 5px;
-  color: #999999;
-  line-height:20px;
-  font-size:12px;
-  font-weight: 700;
-  font-smoothing: antialiased;
-  text-align:center;
-  margin: 11px 11px;
-  transition: .1s ease-in-out;
-  @media (max-width: 768px) {
-    border-radius: none;
-    background: none;
-    margin: 0;
-    padding: 0;
-    line-height: 50px;
-  }
-  &.close-recent {
-    background:#dd6149;
-    color: #fff;
-  }
-  &:hover {
-    color: #fff;
   }
 }

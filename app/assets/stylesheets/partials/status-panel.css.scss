@@ -1,15 +1,11 @@
-/*
- =============================
- Status Panel
- =============================
-*/
-
 .status-panel {
   padding: 0px;
   background: linear-gradient(to bottom, #f7f7f8 0%,#ffffff 100%);
   border-radius: 3px;
+
   .status-form {
     @extend .form-control;
+
     background: transparent;
     border: none !important;
     box-shadow: none !important;
@@ -26,6 +22,7 @@
 .story {
   @extend .panel;
   @extend .panel-default;
+
   margin-bottom: 10px;
   border-radius: 2px;
 
@@ -45,17 +42,19 @@
   .story-title {
     color: #999999;
     font-weight: 300;
+    margin: 0;
+
     a {
       color: #333;
       font-weight: 700;
     }
-    margin: 0;
   }
 
   .series-thumb {
     @extend .col-xs-2;
     @extend .col-sm-2;
     @extend .col-md-2;
+
     padding-left: 0;
     padding-right: 0;
   }
@@ -71,6 +70,7 @@
     @extend .secondary;
     @extend .hidden-xs;
     @extend .clearfix;
+
     font-size: 14px;
 
     /* because metamorphs */
@@ -88,6 +88,7 @@
     @extend .col-xs-2;
     @extend .col-sm-1;
     @extend .col-md-1;
+
     padding-left: 0;
     padding-right: 0;
     @media (max-width: 767px) {
@@ -108,9 +109,11 @@
       top: -1px;
       font-size: 0.6em;
     }
+
     .secondary {
       font-size: 14px;
     }
+
     .remove-post {
       color: #999;
       transition: ease-in .2s;
@@ -137,6 +140,7 @@
   .comment-text {
     @extend .col-sm-12;
     @extend .col-xs-12;
+
     font-size: 16px;
     padding-bottom: 0;
     padding-left: 0;
@@ -165,11 +169,13 @@
       margin-top: -5px;
       padding-top: 1px;
     }
+
     ul {
       padding-top: 1px;
       font-size: 13px;
       opacity: 0.8;
     }
+
     @media (max-width: 990px) {
       padding-left: 0px;
       p {
@@ -183,16 +189,18 @@
     border-bottom: 1px solid #eee;
     padding-bottom: 10px;
     padding-top: 10px;
+    transition: opacity 0.4s ease-in;
+
     &:nth-of-type(1) {
       border-top: 1px solid #eee;
     }
+
     &:nth-of-type(2) {
       @media (max-width: 400px) {
         display: none;
       }
     }
 
-    transition: opacity 0.4s ease-in;
     &.deleted-event {
       opacity: 0.2;
     }
@@ -204,6 +212,7 @@
       font-size: 13px;
     }
   }
+
   .view-more {
     text-align: center;
     display: block;
@@ -215,42 +224,51 @@
 .status-toolbar {
   padding-top: 0;
   padding-bottom: 0;
+
   .toolbar-actions {
     padding-left: 0;
     padding-right: 0;
+
     .toolbar-action {
       border-right: 1px solid $darkDivider;
       padding-top: 10px;
       padding-bottom: 10px;
       font-size: 16px;
+
       .like-button {
         padding-right: 5px;
         padding-bottom: 10px;
         padding-top: 10px;
         color: #7e7e7e;
+
         &:hover {
           color: $pink;
         }
+
         &.active {
           color: $pink;
         }
       }
+
       .reply-button {
         padding-left: 15px;
         padding-right: 10px;
         padding-bottom: 10px;
         padding-top: 10px;
         color: #7e7e7e;
+
         &:hover {
           color: $darkOrange;
         }
       }
+
       .repost-button {
         padding-left: 20px;
         padding-right: 10px;
         padding-bottom: 10px;
         padding-top: 10px;
         color: #7e7e7e;
+
         &:hover {
           color: $darkOrange;
         }
@@ -261,9 +279,11 @@
   .users-who-liked {
     float: right;
     padding-top: 8px;
+
     .responsive-image {
       max-width: 25px;
     }
+
     .more-likes {
       color: $medGrey;
       font-family: $headerFontFamily;
@@ -284,6 +304,7 @@
       }
     }
   }
+
   @media (max-width: 400px) {
     .users-who-liked {
       li:nth-of-type(3), li:nth-of-type(2) {
@@ -301,9 +322,11 @@
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   width: 100%;
+
   .feed-comment-form {
     padding-bottom: 11px;
   }
+
   .feed-comment {
     .row {
       border-top: 1px solid #ddd;
@@ -311,13 +334,16 @@
       padding-top: 10px;
       word-wrap: break-word;
     }
+
     .user-image {
       padding: 0;
     }
+
     .user-name {
       margin-top: 5px;
       margin-bottom: 5px;
     }
+    
     .comment-content {
       @media (max-width: 991px) {
         padding-left: 0;

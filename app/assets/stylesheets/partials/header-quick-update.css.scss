@@ -1,9 +1,15 @@
+/**
+ * Hummingbird > Header > Quick Update Panel
+ */
+
+
 .quick-update {
   @extend .clearfix;
   background: #4b5360;
   padding: 12px;
   width: 100%;
   overflow: hidden;
+
   .series-title {
     color: #fff;
     margin-bottom: 60px;
@@ -12,6 +18,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
   .series-slider {
     position: relative;
 
@@ -24,6 +31,7 @@
         font-size: 32px;
       }
     }
+
     .arrow-nav {
       color: #5f6673;
       &:hover {
@@ -34,6 +42,7 @@
         cursor: default;
       }
     }
+
     .fa-angle-left, .fa-angle-right {
       float: left;
       position: relative;
@@ -41,6 +50,7 @@
       top: 75px;
     }
   }
+
   .mark-multiple {
     display: block;
     margin-top: 15px;
@@ -49,6 +59,7 @@
       color: $darkOrange;
     }
   }
+
   .watched-series {
     width: 15.5%;
     min-width: 145px;
@@ -57,6 +68,7 @@
     .overlay-wrapper {
       position: relative;
     }
+
     .overlay-panel {
       background-image: linear-gradient(rgba(0, 0, 0, .1), rgba(0, 0, 0, .80));
       opacity: 1;
@@ -70,10 +82,12 @@
       padding: 5px 10px;
       transition: opacity .3s ease-in-out;
     }
+
     .series-title {
       opacity: 0;
       transition: opacity .3s ease-in-out;
     }
+
     .actionable {
       position: absolute;
       top: 50%;
@@ -83,6 +97,7 @@
       opacity: 0;
       transition: opacity .3s ease-in-out;
     }
+
     .stats {
       position: absolute;
       bottom: 0;
@@ -106,11 +121,13 @@
       }
     }
   }
+
   @media (max-width: 1051px) {
     .fa-angle-left, .fa-angle-right {
       font-size: 90px !important;
     }
   }
+
   @media (max-width: 959px) {
     overflow: scroll;
 

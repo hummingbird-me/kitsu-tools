@@ -1,19 +1,24 @@
 .account-panel {
   margin-top: 0 !important;
+
   .panel-heading {
     text-align: center;
+
     p {
       font-size: 18px;
     }
   }
 }
+
 .account-form {
   border: 1px solid #ddd;
   border-radius: 3px;
   padding-bottom: 5px;
+
   .forgot-password {
     margin-top: -10px;
   }
+
   input {
     width: 100%;
     margin-bottom: 15px;
@@ -22,6 +27,7 @@
     border-radius: 3px;
     border: 1px solid #ddd;
   }
+
   button {
     width: 100%;
     border-radius: 3px;
@@ -31,6 +37,7 @@
     font-family: $headerFontFamily;
     padding: 10px;
   }
+  
   .switch-form-link {
     text-align: center;
     margin-top: 15px;

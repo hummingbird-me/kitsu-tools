@@ -1,4 +1,3 @@
-// user cover image
 .user-cover {
   height: 330px;
   overflow: hidden;
@@ -20,28 +19,25 @@
   }
 }
 
-// user cover options
+
+/* User Cover Options */
 .user-cover-options {
   color: #fff;
   position: absolute;
   width: 100%;
   top: -145px;
+
   .user-wrapper {
     padding-left: 0;
 
     .account-info {
       padding: 5px;
-      @media (max-width: 1200px) {
-        padding-left: 30px;
-      }
-      @media (max-width: 990px) {
-        padding-left: 160px;
-      }
-      @media (max-width: 768px) {
-        padding-left: 15px;
-      }
+      @media (max-width: 1200px) { padding-left: 30px; }
+      @media (max-width: 990px) { padding-left: 160px; }
+      @media (max-width: 768px) { padding-left: 15px; }
     }
   }
+
   .user-avatar {
     @media (max-width: 990px) {
       position: absolute;
@@ -53,15 +49,13 @@
       bottom: auto;
     }
   }
+
   .large-avatar {
     position: relative;
     float: left;
-    @media (max-width: 768px) {
-      max-width: 130px;
-    }
-    img {
-      border-radius: 3px;
-    }
+    @media (max-width: 768px) { max-width: 130px; }
+    img { border-radius: 3px; }
+
     .online-box {
       background: rgba(0,0,0,.3);
       width: 20px;
@@ -71,6 +65,7 @@
       right: 0;
       border-top-left-radius: 3px;
       border-bottom-right-radius: 3px;
+
       .online-indicator {
         position: absolute;
         width: 10px;
@@ -80,12 +75,9 @@
         right: 5px;
         border: 1px solid #333;
         z-index: 1;
-        &.online {
-          background: #58e08e;
-        }
-        &.offline {
-          background: #afafaf;
-        }
+
+        &.online { background: #58e08e; }
+        &.offline { background: #afafaf; }
       }
     }
   }
@@ -99,6 +91,7 @@
   .username {
     margin-top: 43px;
   }
+
   .inline-list {
     margin-bottom: 0;
     li {
@@ -130,6 +123,7 @@
       display: none;
     }
   }
+
   .upload-cover, .follow-button {
     position: absolute;
     right: 15px;
@@ -145,6 +139,7 @@
       padding-left: 35px;
     }
   }
+
   .upload-cover {
     position: absolute;
     right: 15px;
@@ -158,7 +153,8 @@
   }
 }
 
-// user cover for reviews
+
+/* User Cover for Review Page */
 .series-content {
   .review-cover {
     position: absolute;
@@ -172,14 +168,17 @@
       bottom: -45px;
     }
   }
+
   .container.relative {
     height: 150px;
   }
+
   .profile-navigation {
     position: absolute;
     left: 0;
     right: 0;
   }
+
   .user-cover-options {
     top: 35px;
     .user-avatar {
@@ -194,6 +193,7 @@
       margin-left: 15px;
     }
   }
+
   .user-wrapper {
     width: 100%;
     .account-info {
@@ -202,6 +202,7 @@
       }
     }
   }
+
   .follow-button {
     font-size: 16px;
     background: #eee;
