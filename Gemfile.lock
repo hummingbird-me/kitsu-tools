@@ -446,7 +446,6 @@ DEPENDENCIES
   bootstrap-sass (~> 3.2)
   cancan (~> 1.6)
   codeclimate-test-reporter
-  coffee-rails (~> 4.0)
   delayed_paperclip (~> 2.8)
   devise (~> 3.2)
   devise-async
