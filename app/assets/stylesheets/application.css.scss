@@ -1,9 +1,18 @@
-//= require vendored
+// Require and import vendor styles
+//= require vendor
 @import "bootstrap";
 @import "font-awesome";
-@import "globals/all";
 
-@import "base";
-@import "layout";
-@import "modules/*";
-@import "hacks";
+// Import Hummingbird core modules
+@import "modules/variables";
+@import "modules/typography";
+@import "modules/buttons";
+
+// Import Hummingbird partial styles
+@import "partials/*";
+
+// Import Hummingbird base styles
+@import "base/base";
+@import "base/layout";
+@import "base/animations";
+@import "base/hacks";
