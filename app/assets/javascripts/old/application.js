@@ -29,21 +29,21 @@
 //= require ./twitter.js
 //= require ./bootstrap-tooltip.js
 //= require ./bootstrap-popover.js
-//= require ./awesome_rating.js.coffee
+//= require ./awesome_rating.js
 //
 // Part 2 -- Library initialization.
 //
-//= require ./handlebars_helpers.js.coffee
+//= require ./handlebars_helpers.js
 //
 // Part 3 -- Application initialization.
 //
 //= require_tree ./templates
 //
-//= require ./hummingbird.js.coffee
-//= require ./anime.js.coffee
-//= require ./library_update.js.coffee
+//= require ./hummingbird.js
+//= require ./anime.js
+//= require ./library_update.js
 //= require ./login-signup.js
-//= require ./header.js.coffee
+//= require ./header.js
 
 /*jslint unparam: true, browser: true, indent: 2 */
 
