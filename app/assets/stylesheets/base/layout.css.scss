@@ -1,20 +1,11 @@
 html { overflow-y: scroll; }
 
-/*
-=============================
-Development Styles
-=============================
-*/
+/* Development Styles */
 .profiler-results {
   display: none;
 }
 
-/*
-=============================
-Global Header
-=============================
-*/
-
+/* Global Header */
 .navbar-temporary {
   display: none;
   float: right;
@@ -25,12 +16,14 @@ Global Header
   font-size: 2em;
   line-height: 50px;
   text-align: center;
+
   i { 
     color: #999999; 
     font-size: 25px;
     position: relative;
     top: -4px;
   }
+
   &:hover { i { color: white; }}
 }
 
@@ -44,6 +37,7 @@ Global Header
   margin-left: 0 !important;
   margin-right: 20px;
   top: 8px;
+
   @media (max-width: 768px) {
     background-position: -2px 0;
     background-size: 105px 60px;
@@ -53,9 +47,11 @@ Global Header
     left: 15px;
   }
 }
+
 .quick-update ~ .notifications {
   top: 304px !important;
 }
+
 .hb-nav {
   background-color: $navy;
   border: none;
@@ -64,21 +60,26 @@ Global Header
     .navbar-header { 
       padding: 0 15px;
     }
+
     .navbar-visible,
     .navbar-temporary { display: block !important; }
+
     .navbar-collapse {
       margin: 0;
       padding: 0;
       .dropdown-menu {
         &:hover { background-color: none; }
+
         &::after,
         &::before { display: none; }
+
         a {
           padding: 10px 20px !important;
           border-bottom: none;
         }
       }
     }
+
     .navbar-permanent {
       background-color: #272C33;
       float: left;
@@ -94,12 +95,14 @@ Global Header
           text-align: left;
         }
       }
+
       .notifications {
         position: absolute;
         top: 0px;
         right: 50px;
         width: 50px !important;
       }
+
       li {
         float: left;
         height: 50px;
@@ -111,11 +114,13 @@ Global Header
           padding: 0;
         }
       }
+
       &.navbar-permanent-left {
         width: 25%;
         border-top: 1px solid #000;
         li { width: 100%; }
       }
+
       &.navbar-permanent-right {
         width: 75%;
         border-top: 1px solid #000;
@@ -126,18 +131,22 @@ Global Header
   
   .user-area {
     .dropdown-menu {
+      @extend .clearfix;
+
       left: inherit;
       right: 0;
       position: absolute !important;
-      @extend .clearfix;
+
       li {
         background: #fff;
         width: 100% !important;
+
         a {
           width: 100% !important;
           padding: 15px !important;
           background: #fff;
           border-radius: 0 !important;
+
           &:hover {
             color: #999999 !important;
           }
@@ -145,21 +154,26 @@ Global Header
       }
     }
   }
+
   .notification-dropdown {
     left: inherit;
     position: absolute !important;
     right: -50px;
+
     li {
       background: #fff;
       width: 100% !important;
+
       a {
         width: 100% !important;
         padding: 15px !important;
+
         &:hover {
           color: #999999 !important;
         }
       }
     }
+
     &:before, &:after {
       right: 67px !important;
     }
@@ -169,9 +183,11 @@ Global Header
     background-color: $darkNavy;
     font-family: $headerFontFamily;
     font-size: 16px;
+
     &:hover {
       background-color: darken($darkNavy, 2);
     }
+
     &.active .dropdown-toggle {
       background-color: darken($darkNavy, 2);
     }
@@ -182,10 +198,12 @@ Global Header
     border-radius: 0px;
     padding-top: 0;
     padding-bottom: 0;
+
     a {
       border-bottom: 1px solid #eee;
       padding-bottom: 10px;
       padding-top: 10px;
+
       &:hover {
         color: $darkOrange;
         background: $lightEggshell;
@@ -222,6 +240,7 @@ Global Header
       border-width: 8px;
       margin-left: -8px;
     }
+
     &:before {
       border-bottom-color: rgba(0, 0, 0, 0.30);
       border-width: 9px;
@@ -232,6 +251,7 @@ Global Header
       &:after {
         left: 25px;
       }
+
       &:before {
         left: 25px;
       }
@@ -241,6 +261,7 @@ Global Header
       &:after {
         right: 25px;
       }
+
       &:before {
         right: 25px;
       }
@@ -250,7 +271,11 @@ Global Header
   .header-item {
     text-align: center;
     height: 50px;
-    &:hover { background-color: darken($darkNavy, 2); }
+
+    &:hover {
+      background-color: darken($darkNavy, 2);
+    }
+
     &.notifications {
       .notification-link {
         min-width: 50px;
@@ -258,9 +283,11 @@ Global Header
         &.hasNew { color: #e57c48; }
       }
     }
+
     .dropdown-menu {
       min-width: 250px;
     }
+
     .view-all {
       text-align: center;
     }
@@ -302,6 +329,7 @@ Global Header
       border: none;
       border-bottom: 1px solid #aaa;
       color: #fff;
+
       &:focus { outline: none; }
       @media (min-width: 768px) { margin: 13px 0 12px 20px; }
       @media (max-width: 768px) { width: 150px; }
@@ -312,10 +340,12 @@ Global Header
       border-radius: 0 0 4px 4px;
       max-width: 300px;
       overflow: hidden;
+
       .search-result {
         text-align: left;
         border-top: 1px solid darken($darkNavy, 1);
         position: relative;
+
         a {
           display: block;
           width: 100%;
@@ -323,10 +353,12 @@ Global Header
           padding: 10px;
           margin: 0;
           transition: .1s ease-in;
+
           &:hover {
            background: lighten($darkNavy, 5);
           }
         }
+
         .search-result-thumb {
           float: left;
           height: 30px;
@@ -335,10 +367,12 @@ Global Header
           border-radius: 3px;
           margin-right: 10px;
           overflow: hidden;
+
           img {
             width: 100%;
           }
         }
+
         .search-result-title {
           color: #fff;
           overflow: hidden;
@@ -347,16 +381,19 @@ Global Header
           padding-right: 60px;
           line-height: 30px;
         }
+
         .search-result-badge {
           font-size: 0.7em;
           font-weight: normal;
           position: absolute;
           right: 15px;
           top: 15px;
+
           &.anime { background: #3A5FCD; }
           &.manga { background: #836FFF; }
           &.user  { background: #6959CD; }
         }
+
         .search-result-break {
           clear: both;
         }
@@ -371,6 +408,7 @@ Global Header
         border-bottom: 1px solid #e5d6b8;
       }
     }
+
     .user-avatar {
       padding: 0;
       img {
@@ -378,6 +416,7 @@ Global Header
         border-radius: 3px;
       }
     }
+
     .user-info {
       text-align: left;
       padding-left: 10px;
@@ -391,10 +430,12 @@ Global Header
           color: $darkGrey;
         }
       }
+
       .preview {
         margin-bottom: 0;
         font-family: $bodyFontFamily;
       }
+
       small {
         color: $medGrey;
         font-family: $bodyFontFamily;
@@ -416,11 +457,13 @@ Global Header
     //   position: absolute;
     //   text-indent: 15px;
     // }
+
     .form-control {
       color: $orange;
       font-size: 18px;
       font-family: $headerFontFamily;
     }
+
     &:focus {
       outline: none;
     }
@@ -434,13 +477,13 @@ Global Header
   }
 
   .form-control {
-    @media (min-width: 768px) {
-      background-color: #2f343b;
-    }
     border: none;
     box-shadow: none;
     font-size: 18px;
     font-weight: 300;
+    @media (min-width: 768px) {
+      background-color: #2f343b;
+    }
   }
 
   .fa-bell-o {
@@ -448,11 +491,14 @@ Global Header
     font-size: 22px;
     position: relative;
     top: -2px;
+
     .notification-count {
       display: none;
     }
+
     &.active {
       color: $orange;
+
       .notification-count {
         display: inline-block;
         position: absolute;
@@ -476,17 +522,21 @@ Global Header
   .mobile-user-nav {
     margin-bottom: 0px;
     margin-top: 0px;
+
     .header-item, .user-area {
       float: right;
     }
+
     .user-area {
       .dropdown-menu {
         right: 10px;
         left: inherit;
+
         &.right-nav-section {
           &:after {
             right: 15px !important;
           }
+
           &:before {
             right: 14px !important;
           }
@@ -500,10 +550,12 @@ Global Header
         left: inherit;
         min-width: 0px;
         width: 300px;
+
         &.right-nav-section {
           &:after {
             right: 65px !important;
           }
+
           &:before {
             right: 64px !important;
           }
@@ -516,6 +568,7 @@ Global Header
     width: 50px;
     height: 50px;
     padding-left: 0;
+
     img {
       position: absolute;
       top: 0;
@@ -542,13 +595,16 @@ User Profile
   background: #f5f5f5;
   margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
+
   .inline-list {
     text-align: left;
     padding-left: 10px;
     margin-bottom: 0;
+
     .nav-link {
       float: none;
       padding: 10px 0 10px 0;
+
       > a {
         padding: 20px;
         font-family: $bodyFontFamily;
@@ -557,14 +613,17 @@ User Profile
         color: #adacac;
         position: relative;
         transition: .2s ease-in;
+
         &.active {
           color: $darkOrange;
         }
+
         &:hover {
           color: $darkOrange;
         }
       }
     }
+
     .nav-link a::before {
       position: absolute;
       top: 8px;
@@ -588,6 +647,7 @@ User Profile
       .reviews-link, .lists-link {
         display: none;
       }
+
       .nav-link {
         a {
           font-size: 15px;
@@ -608,11 +668,13 @@ User Profile
   @extend .col-sm-12;
   padding: 15px 0 0 0;
 }
+
 .video-wrapper {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
   padding-top: 25px;
   height: 0;
+
   iframe {
     position: absolute;
     top: 0;
@@ -626,14 +688,17 @@ User Profile
   @extend .col-sm-3;
   padding: 5px;
 }
+
 .follow-panel {
   @extend .panel;
   @extend .default-panel;
+
   min-height: 250px;
   margin-bottom: 0;
   padding-bottom: 10px;
   overflow: hidden;
   text-overflow: ellipsis;
+
   .user-cover {
     height: 100px;
     background: #ddd;
@@ -642,6 +707,7 @@ User Profile
       background-position: center center;
     }
   }
+
   .user-avatar {
     padding-left: 10px;
     padding-right: 20px;
@@ -654,23 +720,28 @@ User Profile
       font-size: 16px;
       float: right;
     }
+
     img {
       width: 60px;
       position: relative;
       top: -15px;
     }
   }
+
   .mini-bio {
     height: 65px;
     overflow: hidden;
     word-wrap: break-word;
   }
+
   .user-info {
     margin-top: 50px;
     padding: 0 10px;
+
     a {
       color: #333;
       transition: .1s ease-in;
+
       &:hover {
         color: $orange;
       }
@@ -680,32 +751,39 @@ User Profile
 
 .whotofollow {
   @extend .clearfix;
+
   padding: 15px;
   padding-bottom: 0;
   border-bottom: 1px solid #ddd;
   transition: all 3s ease;
+
   &:nth-child(3n) {
     border-bottom: none;
   }
+
   .follow-button {
     padding: 2px 30px;
     &.unfollow {
       padding: 2px 15px !important;
     }
   }
+
   h4 {
     margin-top: 7px;
   }
+
   .follow-bio {
     @extend .col-sm-12;
     margin-top: 10px;
     padding: 0;
   }
+
   .follow-image {
     @extend .col-sm-2;
     padding: 0;
   }
 }
+
 
 /*
 =============================
@@ -725,17 +803,20 @@ Notifications page
     padding: 8px 10px;
     background: #fff;
     border-radius: 3px;
+
     img {
       float: left;
       width: 50px;
       height: 50px;
       margin: 0 6px 6px 0;
     }
+
     .badge {
       float: right;
     }
   }
 }
+
 
 /*
 =============================
@@ -744,6 +825,7 @@ Search page
 */
 .search-container {
   margin-top: 100px;
+
   .search-container-head {
     padding: 6px;
     background-color: #f5f5f5;
@@ -754,18 +836,21 @@ Search page
     font-weight: bold;
     text-align: center;
   }
+
   .search-container-body {
     padding: 30px 15px;
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     border-top: none;
     border-radius: 0 0 5px 5px;
+
     input {
       width: 94%;
       padding: 6px 3%;
       border: 1px solid #ddd;
       border-radius: 3px;
     }
+
     select {
       width: 94%;
       border: 1px solid #ddd;
@@ -773,6 +858,7 @@ Search page
       padding: 6px 3%;
       color: #999;
     }
+
     .search-container-results {
       .search-results-empty {
         display: block;
@@ -781,9 +867,11 @@ Search page
         font-size: 2em;
         color: #999;
       }
+
       .search-result {
         padding: 15px 0;
         a { color: #000; }
+
         .search-result-image {
           float: left;
           border: 1px solid #ddd;
@@ -791,9 +879,11 @@ Search page
           width: 70px;
           margin-right: 15px;
         }
+
         .search-result-details {
           text-align: justify;
         }
+
         .badge {
           float: right;
           margin: 0 5px;
@@ -803,6 +893,7 @@ Search page
           &.user  { background: #6959CD; }
         }
       }
+
       .search-results-nosuccess {
         padding: 50px 0;
         text-align: center;
@@ -825,6 +916,7 @@ Search page
   90% { transform: translate(-1px, -2px) rotate(-1deg); }
   100% { transform: translate(2px, 1px) rotate(0deg); }
 }
+
 .shake {
   animation-name: spaceboots;
   animation-duration: 3.5s;
@@ -839,6 +931,7 @@ Search page
     cursor: move;
   }
 }
+
 .shake {
   display:inline-block
 }
