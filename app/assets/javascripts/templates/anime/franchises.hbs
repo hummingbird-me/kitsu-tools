@@ -4,8 +4,7 @@
       <img class="series-poster" {{bind-attr src=posterImage}} />
     </div>
     <div class="col-sm-10 col-xs-12">
-      <h4>
-        {{series-title}}
+      <h4 class="series-title">
         {{#link-to 'anime' id}}{{canonicalTitle}}{{/link-to}}
       </h4>
       {{partial "anime/infobar"}}
