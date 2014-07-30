@@ -8,8 +8,7 @@
           </div>
           <img {{bind-attr src=anime.cover_image}} />
         </div>
-      {{/if}}
-      <else>
+      {{else}}
         {{#link-to 'anime' anime.slug}}
           <div class="thumbnail">
             <div class="move-overlay">
@@ -19,7 +18,7 @@
             <img {{bind-attr src=anime.cover_image}} />
           </div>
         {{/link-to}}
-      </else>
+      {{/if}}
     </li>
   {{else}}
     <div class="no-favorites text-center">
