@@ -61,14 +61,12 @@ h1.series-title.hidden-xs
 
 unless notYetAired
   .review-listing
-    if completedAiring
-      h4
-        | Trending Reviews
-        link-to 'reviews.index' classNames="btn btn-xs btn-default pull-right" | view all
-    else
-      h4
+    h4
+      if recentlyStartedAiring
         | First Impressions
-        link-to 'reviews.index' classNames="btn btn-xs btn-default pull-right" | view all
+      else
+        | Trending Reviews
+      link-to 'reviews.index' classNames="btn btn-xs btn-default pull-right" | view all
 
     each trendingReviews
       partial "media/review_summary"
