@@ -1,6 +1,7 @@
 a {
   transition: .2s ease-in;
 }
+
 .follow-button {
   background: $orange;
   border: none;
@@ -8,12 +9,15 @@ a {
   font-family: $headerFontFamily;
   font-size: 20px;
   color: #fff;
+
   &:hover {
     background: darken($orange, 8);
     color: #fff;
   }
+
   &.unfollow {
     background: #999;
+
     &:hover {
       background: darken(#999, 15);
       color: #fff;
@@ -29,6 +33,7 @@ a {
   border-radius: 3px;
   font-family: $headerFontFamily;
   color: #fff;
+
   &:hover {
     color: #fff;
   }
@@ -37,6 +42,7 @@ a {
 .fb-connect {
   border-color: #3b5998;
   background-color: #3b5998;
+
   &:hover {
     border-color: #324a80;
     background-color: #324a80;
@@ -46,6 +52,7 @@ a {
 .twt-connect {
  border-color: #4099FF;
  background-color: #4099FF;
+
  &:hover {
   border-color: darken(#4099FF, 10);
   background-color: darken(#4099FF, 10);
@@ -60,6 +67,7 @@ a {
   padding: 5px 20px;
   position: relative;
   margin-bottom: 5px;
+
   &:hover {
     background-color: darken($darkOrange, 2);
   }
@@ -79,6 +87,7 @@ a {
   color: #999;
   border-color: #dedede;
   transition: .1s ease-in;
+
   &:hover {
     color: $darkOrange;
     border-color: $orange;
@@ -93,9 +102,11 @@ a {
   padding: 10px 15px;
   color: #40434d;
   transition: .1s ease-in;
+
   &:hover {
     color: $darkOrange;
   }
+  
   @media (max-width: 1100px) {
     span {
       display: none;
