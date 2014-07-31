@@ -1,10 +1,14 @@
 Hummingbird.PreloadStore = {
-  get: function(key) {
-    return window.genericPreload[key];
+  get: function(key, fetch) {
+    if (typeof window.genericPreload[key] !== "undefined") {
+      return window.genericPreload[key];
+    } else if (typeof fetch !== "undefined") {
+      return fetch();
+    }
   },
 
-  pop: function(key) {
-    var value = Hummingbird.PreloadStore.get(key);
+  pop: function(key, fetch) {
+    var value = Hummingbird.PreloadStore.get(key, fetch);
     delete window.genericPreload[key];
     return value;
   }

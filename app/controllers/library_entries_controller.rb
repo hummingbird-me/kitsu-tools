@@ -1,3 +1,5 @@
+require_dependency 'library_entry_query'
+
 class LibraryEntriesController < ApplicationController
   def index
     unless params[:user_id]
@@ -7,25 +9,14 @@ class LibraryEntriesController < ApplicationController
 
     user = User.find(params[:user_id])
 
-    library_entries = LibraryEntry.where(user_id: user.id).includes(:anime, anime: :genres).references(:anime, anime: :genres)
-
-    if params.has_key?(:recent)
-      library_entries = library_entries.where(status: ["Currently Watching", "Plan to Watch"]).order('status, last_watched DESC').page(params[:page] || 1).per(6)
-    end
-
-    if params[:status]
-      library_entries = library_entries.where(status: params[:status])
-    end
-
-    # Filter private entries.
-    if current_user != user
-      library_entries = library_entries.where(private: false)
-    end
-
-    # Filter adult entries.
-    unless user_signed_in? and !current_user.sfw_filter?
-      library_entries = library_entries.where("anime.age_rating <> 'R18+' OR anime.age_rating IS NULL").references(:anime)
-    end
+    library_entries = LibraryEntryQuery.find(
+      user_id: user.id,
+      recent: params.has_key?(:recent),
+      page: params[:page],
+      status: params[:status],
+      include_private: (current_user == user),
+      include_adult: (user_signed_in? && !current_user.sfw_filter?)
+    )
 
     render json: library_entries
   end
