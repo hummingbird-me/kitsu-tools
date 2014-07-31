@@ -1,8 +1,25 @@
 Hummingbird.Paginated = Ember.Mixin.create({
   // Return an empty array immediately from the model hook.
   model: function() {
-    this.set('cursor', null);
-    return [];
+    if (this.get('preloadKey')) {
+      this.set('cursor', 2);
+
+      var self = this,
+          store = this.store,
+          preloadKey = this.get('preloadKey'),
+          preloadPath = this.get('preloadPath'),
+          preloadObject = this.get('preloadObject');
+
+      var preloadData = Hummingbird.PreloadStore.pop(preloadKey);
+      if (typeof preloadData === "undefined") return [];
+
+      store.pushPayload(preloadData);
+      var ids = preloadData[preloadPath].map(function(x) { return x.id; });
+      return store.findByIds(preloadObject, ids);
+    } else {
+      this.set('cursor', null);
+      return [];
+    }
   },
 
   // Wrapper around fetchPage which needs to be implemented by the route.

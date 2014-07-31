@@ -1,32 +1,13 @@
 Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
+  preloadKey: "dashboard_timeline",
+  preloadPath: "stories",
+  preloadObject: "story",
+
   fetchPage: function(page) {
-    var self = this,
-        store = this.store;
-
-    var finder = function() {
-      return self.store.find('story', {
-        news_feed: true,
-        page: page
-      });
-    };
-
-    if (page == 1) {
-      // TODO need a common pattern for this.
-      var finderED = finder;
-      finder = function() {
-        return Hummingbird.PreloadStore.popAsync('dashboard_timeline', finderED).then(function(stories) {
-          if (typeof stories["stories"] === "undefined") {
-            return stories;
-          } else {
-            store.pushPayload(stories);
-            var ids = stories["stories"].map(function(x) { return x.id });
-            return store.findByIds('story', ids);
-          }
-        });
-      };
-    }
-
-    return finder();
+    return this.store.find('story', {
+      news_feed: true,
+      page: page
+    });
   },
 
   setupController: function(controller, model) {
@@ -35,6 +16,6 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
     Hummingbird.TitleManager.setTitle("Dashboard");
     this.setCanLoadMore(true);
     controller.set('canLoadMore', true);
-    return controller.set('model', []);
+    return controller.set('model', model);
   }
 });
