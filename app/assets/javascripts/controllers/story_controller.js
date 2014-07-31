@@ -20,6 +20,10 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
     return loggedInUser.get('id') === this.get('model.poster.id') || loggedInUser.get('id') === this.get('model.user.id');
   }.property('model.poster'),
 
+  canDeleteStory: function() {
+    return this.get('belongsToUser') || this.get('currentUser.isAdmin');
+  }.property('belongsToUser', 'currentUser.isAdmin'),
+
   mediaRoute: function () {
     if (this.get('mediaStory') && this.get('model.media').constructor.toString() === "Hummingbird.Anime") {
       return 'anime';

@@ -14,6 +14,7 @@ Hummingbird.User = DS.Model.extend({
   waifuSlug: DS.attr('string'),
   isFollowed: DS.attr('boolean'),
   titleLanguagePreference: DS.attr('string'),
+  isAdmin: DS.attr('boolean'),
 
   avatarUrl: function() {
     return this.get("avatarTemplate").replace('{size}', 'thumb');
