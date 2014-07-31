@@ -1,9 +1,0 @@
-bootstrap-modal action="close"
-  .modal-header
-    h4.modal-title Crop Cover Image
-  .modal-body.jcrop
-    img src=originalImage id="preview"
-  .modal-footer
-    button.btn.btn-primary{action "upload"} Upload
-
-canvas#cropCanvas style="display: none" height="660" width="2800"

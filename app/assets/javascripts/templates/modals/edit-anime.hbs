@@ -1,0 +1,50 @@
+{{#bootstrap-modal action="close"}}
+  <div class="modal-header">
+    <h4 class="modal-title"> Edit Anime</h4>
+  </div>
+  <div class="modal-body">
+    <div class="alert alert-danger">
+      <div class="media">
+        <div class="pull-left">
+          <i class="fa fa-3x fa-exclamation-triangle"></i> <span></span>
+        </div>
+        <div class="media-body">
+          <strong> This feature is under development.</strong>
+          <div> There is no way to actually save your changes right now.</div>
+        </div>
+      </div>
+    </div>
+    <form>
+      <div class="form-group">
+        <label> Synopsis</label>
+        <textarea value=synopsis class="form-control" rows=3></textarea>
+      </div>
+      <div class="form-group">
+        <label> Episode Count</label>
+        <input type="number" value=episodeCount class="form-control" />
+      </div>
+      <div class="form-group">
+        <label> Episode Length</label>
+        <input type="number" value=episodeLength class="form-control" />
+      </div>
+      <div class="form-group">
+        <label> Poster Image URL</label>
+        <input value=posterImage class="form-control" />
+      </div>
+      <div class="form-group">
+        <label> Cover Image URL</label>
+        <input value=coverImage class="form-control" />
+      </div>
+      <div class="form-group">
+        <label> Cover Image Top Offset</label>
+        <input value=coverImageTopOffset class="form-control" />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" {{action "save"}}>
+      {{#if isSaving}}<i class="fa fa-spin fa-spinner"></i>{{/if}}
+      Submit
+    </button>
+  </div>
+{{/bootstrap-modal}}
