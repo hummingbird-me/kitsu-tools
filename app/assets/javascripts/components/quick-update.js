@@ -57,10 +57,6 @@ Hummingbird.QuickUpdateComponent = Ember.Component.extend({
     }).appendTo("body");
   }.on('didInsertElement'),
 
-  slideDown: function() {
-    this.$(".quick-update").slideDown();
-  }.on('didInsertElement'),
-
   actions: {
     goBack: function() {
       if (!this.get('canGoBack')) { return; }
