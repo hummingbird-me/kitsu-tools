@@ -21,27 +21,32 @@ Hummingbird.PostCommentComponent = Ember.Component.extend({
     this.$(".status-form").trigger("autosize.destroy");
   },
 
+  // Submit on Cmd/Ctrl+Enter.
+  keyDown: function(e) {
+    if ((e.metaKey || e.ctrlKey) && e.keyCode === 13) {
+      this.send('submitPost');
+    }
+  },
+
   actions: {
     submitPost: function() {
-      var _this = this
-        , newPost = this.get('newPost');
+      var self = this,
+          newPost = this.get('newPost');
 
       if (newPost.length > 0) {
         this.set('inFlight', true);
-        return Ember.$.ajax({
-          url: "/users/" + _this.get('username') + "/comment.json",
+        ic.ajax({
+          url: "/users/" + self.get('username') + "/comment.json",
           data: { comment: newPost },
-          type: "POST",
-          success: function (payload) {
-            _this.setProperties({
-              newPost: "",
-              inFlight: false
-            });
-            window.location.href = window.location.href;
-          },
-          error: function () {
-            alert("Failed to save comment");
-          }
+          type: "POST"
+        }).then(function() {
+          self.setProperties({
+            newPost: "",
+            inFlight: false
+          });
+          window.location.href = window.location.href;
+        }, function() {
+          alert("Failed to save comment");
         });
       }
     }
