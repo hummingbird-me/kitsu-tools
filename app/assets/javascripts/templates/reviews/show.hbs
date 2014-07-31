@@ -1,0 +1,221 @@
+<div class="review-cover">
+  <div class="user-cover">
+    <div class="cover-photo" {{bind-attr style=coverImageStyle}}></div>
+    <div class="cover-overlay"></div>
+  </div>
+</div>
+
+<div class="container relative">
+  <div class="row">
+    <div class="user-cover-options">
+      <div class="col-sm-10 user-wrapper">
+        <div class="col-sm-2 col-xs-2 user-avatar clearfix">
+          <div class="large-avatar">
+            {{avatar user 'thumb'}}
+            <div class="online-box">
+              <div {{bind-attr class=":online-indicator user.online:online:offline"}}></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-10 account-info">
+          <h1 class="username"> {{user.username}}</h1>
+        </div>
+      </div>
+      {{#unless writtenBySelf}}
+        {{#if user.isFollowed}}
+          <button class="btn btn-default btn-lg follow-button unfollow" {{action toggleFollow user}}>
+            Unfollow
+          </button>
+        {{else}}
+          <button class="btn btn-default btn-lg follow-button" {{action toggleFollow user}}>
+            Follow
+          </button>
+        {{/if}}
+      {{/unless}}
+    </div>
+  </div>
+</div>
+
+<div class="profile-navigation">
+  <div class="container">
+    <div class="row">
+      <ul class="inline-list clearfix">
+        <li class="nav-link">
+          {{#link-to 'user.index' user data-hover="Feed"}}Feed{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'user.library' user data-hover="Library"}}Library{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'user.reviews' user data-hover="Reviews"}}Reviews{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'user.following' user data-hover="Following"}}Following{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'user.followers' user data-hover="Followers"}}Followers{{/link-to}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="back-to-anime">
+  <div class="col-xs-6">
+    {{#link-to 'anime.index'}} Back to anime page{{/link-to}}
+  </div>
+  <div class="col-xs-6">
+    {{#if writtenBySelf}}
+      <a {{bind-attr href=editPath}} class="edit-review"> edit review</a>
+    {{/if}}
+  </div>
+</div>
+
+<div class="review-content">
+  <h1 class="review-title"> {{anime.displayTitle}} Review</h1>
+  <div class="spoiler-block" style="display:none"> Tread carefully! This review contains spoilers!!</div>
+  <div class="progress-block" style="display:none"> This is a review up until episode 17!</div>
+  {{{formattedContent}}}
+</div>
+
+<div class="reader-actions">
+  <div class="reader-vote">
+    <div class="recommend">
+      <a {{action "upvote"}} {{bind-attr class="upvoted:active"}}>
+        <i class="fa fa-thumbs-o-up"></i>
+        {{#if upvoted}}
+          Recommended
+        {{else}}
+          Recommend
+        {{/if}}
+      </a>
+    </div>
+    <div class="dislike">
+      <a {{action "downvote"}} {{bind-attr class="downvoted:active"}}>
+        <i class="fa fa-thumbs-o-down"></i>
+      </a>
+    </div>
+  </div>
+  <div class="reader-share" style="display: none">
+    <div class="share-icons">
+      <div class="twitter"><a href="#"><i class="fa fa-twitter"></i></a> </div>
+      <div class="facebook"><a href="#"><i class="fa fa-facebook"></i></a> </div>
+      <div class="flag-review"><a href="#"><i class="fa fa-flag"></i></a> </div>
+    </div>
+  </div>
+</div>
+
+<div class="review-breakdown">
+  <div class="breakdown-header">
+    <div class="verdict-title">
+      <h4> Verdict</h4>
+    </div>
+    <div class="breakdown-title">
+      <h4> Breakdown</h4>
+    </div>
+  </div>
+  <div class="breakdown-content">
+    <div class="score-block">
+      <h1 class="score"> {{ratingFirstDigit}}</h1>
+      <h5 class="decimal-score"> {{ratingDecimalPart}}</h5>
+    </div>
+    <div class="breakdown-block">
+      <div class="breakdown-content">
+        <ul>
+          {{#each breakdown}}
+            <li class="clearfix">
+              <div class="col-xs-9">
+                <i {{bind-attr class=":fa positive:fa-plus-circle:fa-minus-circle"}}></i>
+                &nbsp; {{title}}...
+              </div>
+              <div class="dec-score">
+                <strong>{{rating}}</strong>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="summary-block">
+    <p>{{summary}}</p>
+  </div>
+</div>
+
+{{!--
+<div class="comment-section">
+  <div class="comment-title">
+    <h4> There are <span>12</span> comments.</h4>
+  </div>
+  <div class="comment-form">
+    <div class="user-thumb">
+      <img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323" />
+    </div>
+    <div class="user-form">
+      <textarea type="text" placeholder="Join the discussion"></textarea>
+    </div>
+  </div>
+
+  <div class="comments">
+    <div class="comment">
+      <div class="user-thumb">
+        <img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323" />
+      </div>
+      <div class="comment-info">
+        <h4 class="username">
+          Username
+          <span class="time-ago">23 minutes ago</span>
+        </h4>
+        <p>
+          Please let's both of us stop trying to justify this whole thing and admit you're in danger.
+        </p>
+        <div class="comment-votes">
+          <a href="#">
+            <div class="positive-vote">
+              <span class="vote-count"> 18 &nbsp;</span>
+              <i class="fa fa-angle-up"></i>
+            </div>
+          </a>
+          <a href="#">
+            <div class="negative-vote">
+              <i class="fa fa-angle-down"></i>
+            </div>
+          </a>
+          <span class="bullet"> •</span>
+          <a href="#">Reply</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="comment-reply">
+      <div class="user-thumb">
+        <img src="http://static.hummingbird.me/users/avatars/000/000/001/thumb/tumblr_mj083fBShe1r0p39zo1_500.gif?1390539323" />
+      </div>
+      <div class="comment-info">
+        <h4 class="username">
+          Username
+          <span class="time-ago">23 minutes ago</span>
+        </h4>
+        <p>
+          Please let's both of us stop trying to justify this whole thing and admit you're in danger.
+        </p>
+        <div class="comment-votes">
+          <a href="#">
+            <div class="positive-vote">
+              <span class="vote-count"> 18 &nbsp;</span>
+              <i class="fa fa-angle-up"></i>
+            </div>
+          </a>
+          <a href="#">
+            <div class="negative-vote">
+              <i class="fa fa-angle-down"></i>
+            </div>
+          </a>
+          <span class="bullet"> •</span>
+          <a href="#">Reply</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+--}}
