@@ -1,6 +1,5 @@
 class StoriesController < ApplicationController
   def index
-    sleep 10
     params.permit(:user_id, :news_feed, :page)
 
     if params[:user_id]
