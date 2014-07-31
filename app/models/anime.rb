@@ -180,15 +180,16 @@ class Anime < ActiveRecord::Base
       alt_title: (hash[:title][:ja_en] if anime.alt_title.blank?),
       synopsis: (hash[:synopsis] if anime.synopsis.blank?),
       poster_image: (hash[:poster_image] if anime.poster_image.blank?),
+      show_type: (hash[:type] if anime.show_type.blank?),
       genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if anime.genres.blank?),
       producers: (begin hash[:producers].map { |p| Producer.find_by name: p }.compact rescue [] end if anime.producers.blank?),
-      age_rating: (hash[:age_rating] if anime.age_rating.blank?),
-      age_rating_guide: (hash[:age_rating_guide] if anime.age_rating_guide.blank?),
-      episode_count: (hash[:episode_count] if anime.episode_count.blank?),
-      episode_length: (hash[:episode_length] if anime.episode_length.blank?),
-      started_airing_date: (begin hash[:dates][0] rescue nil end if anime.started_airing_date.blank?),
-      finished_airing_date: (begin hash[:dates][1] rescue nil end if anime.finished_airing_date.blank?),
-      show_type: (hash[:type] if anime.show_type.blank?)
+      # These fields are always more accurate elsewhere
+      age_rating: hash[:age_rating],
+      age_rating_guide: hash[:age_rating_guide],
+      episode_count: hash[:episode_count],
+      episode_length: hash[:episode_length],
+      started_airing_date: begin hash[:dates][0] rescue nil end,
+      finished_airing_date: begin hash[:dates][1] rescue nil end
     }.compact)
     anime.save!
     # Staff castings

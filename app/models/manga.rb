@@ -106,11 +106,12 @@ class Manga < ActiveRecord::Base
       genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if manga.genres.blank?),
       # TODO: replace this with a serialization table like producers?
       serialization: (hash[:serialization] if manga.serialization.blank?),
-      volume_count: (hash[:volume_count] if manga.volume_count.blank?),
-      chapter_count: (hash[:chapter_count] if manga.chapter_count.blank?),
-      start_date: (begin hash[:dates][0] rescue nil end if manga.start_date.blank?),
-      end_date: (begin hash[:dates][1] rescue nil end if manga.end_date.blank?),
-      status: (hash[:status] if manga.status.blank?)
+      # These fields are always more accurate elsewhere
+      volume_count: hash[:volume_count],
+      chapter_count: hash[:chapter_count],
+      start_date: begin hash[:dates][0] rescue nil end,
+      end_date: begin hash[:dates][1] rescue nil end,
+      status: hash[:status]
     }.compact)
     # Staff castings
     hash[:staff].each do |staff|
