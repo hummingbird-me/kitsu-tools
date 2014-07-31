@@ -1,14 +1,10 @@
-/**
- * Hummingbird > Header > Quick Update Panel
- */
-
-
 .quick-update {
   @extend .clearfix;
   background: #4b5360;
   padding: 12px;
   width: 100%;
   overflow: hidden;
+  display: none;
 
   .series-title {
     color: #fff;

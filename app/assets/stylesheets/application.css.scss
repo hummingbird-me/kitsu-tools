@@ -8,6 +8,9 @@
 @import "modules/typography";
 @import "modules/buttons";
 
+// Import Hummingbird components styles
+@import "components/*";
+
 // Import Hummingbird partial styles
 @import "partials/*";
 
