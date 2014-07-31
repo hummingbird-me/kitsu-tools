@@ -14,7 +14,31 @@ Hummingbird.QuickUpdateComponent = Ember.Component.extend({
     this.set('page', page);
     this.set('loading', true);
 
-    store.find('libraryEntry', {recent: true, page: page}).then(function(entries) {
+    var finder = function() {
+      return store.find('libraryEntry', {recent: true, page: page});
+    };
+
+    // This is complicated, but we need it to preload the quick update on the
+    // homepage.
+    if (page === 1) {
+      var finderED = finder;
+      finder = function() {
+        return Hummingbird.PreloadStore.popAsync('recent_library_entries', finderED).then(function(libraryEntries) {
+          if (typeof libraryEntries["library_entries"] === "undefined") {
+            // Loaded from Ember Data.
+            return libraryEntries;
+          } else {
+            store.pushPayload(libraryEntries);
+            var ids = libraryEntries["library_entries"].map(function (x) {
+              return x.id;
+            });
+            return store.findByIds('libraryEntry', ids);
+          }
+        });
+      };
+    }
+
+    finder().then(function(entries) {
       self.set('libraryEntries', entries);
       self.set('loading', false);
     });

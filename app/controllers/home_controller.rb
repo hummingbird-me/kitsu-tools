@@ -1,3 +1,5 @@
+require_dependency 'library_entry_query'
+
 class HomeController < ApplicationController
   before_filter :hide_cover_image
 
@@ -11,21 +13,21 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    if user_signed_in?
-      @onboarding = true if params[:signup_tour]
-
-      @recent_anime = current_user.watchlists.where(status: "Currently Watching").includes(:anime).order("last_watched DESC").limit(4)
-      if @recent_anime.length < 4
-        @recent_anime += current_user.watchlists.where("status <> 'Currently Watching'").includes(:anime).order("updated_at DESC, created_at DESC").limit(4 - @recent_anime.length)
-      end
-      @trending_anime = TrendingAnime.list
-    else
+    unless user_signed_in?
       redirect_to root_url
+      return
     end
 
-    if params.has_key?(:new_dash) or user_signed_in?
-      render_ember
-    end
+    recent_library_entries = LibraryEntryQuery.find(
+      user_id: current_user.id,
+      recent: true,
+      include_private: true,
+      include_adult: !current_user.sfw_filter?
+    )
+
+    generic_preload! "recent_library_entries", ed_serialize(recent_library_entries, serializer: LibraryEntrySerializer)
+
+    render_ember
   end
 
   def feed
