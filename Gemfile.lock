@@ -113,7 +113,7 @@ GEM
       handlebars-source (> 1.0.0)
       jquery-rails (>= 1.0.17)
       railties (>= 3.1)
-    ember-source (1.6.0)
+    ember-source (1.7.0.beta.4)
       handlebars-source (~> 1.0)
     emblem-rails (0.2.1)
       barber-emblem (~> 0.1.1)
@@ -453,7 +453,7 @@ DEPENDENCIES
   dotenv-rails
   ember-data-source (= 1.0.0.beta.8)
   ember-rails (~> 0.15)
-  ember-source (= 1.6.0)
+  ember-source (= 1.7.0.beta.4)
   emblem-rails (~> 0.2.1)
   emblem-source (~> 0.3)
   fakeweb
