@@ -16,7 +16,7 @@ Hummingbird.PreloadStore = {
   popEmberData: function(key, path, object, store, edQuery) {
     var data = Hummingbird.PreloadStore.pop(key);
     if (typeof data === "undefined") {
-      if (typeof eqQuery !== "undefined") {
+      if (typeof edQuery !== "undefined") {
         return edQuery();
       } else {
         return null;
