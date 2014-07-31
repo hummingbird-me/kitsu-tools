@@ -13,14 +13,19 @@ Hummingbird.PreloadStore = {
     return value;
   },
 
-  popAsync: function(key, fetchPromise) {
-    var value = Hummingbird.PreloadStore.pop(key);
-    if (typeof value !== "undefined") {
-      return new Ember.RSVP.Promise(function(resolve, reject) {
-        return resolve(value);
-      });
-    } else {
-      return fetchPromise();
+  popEmberData: function(key, path, object, store, edQuery) {
+    var data = Hummingbird.PreloadStore.pop(key);
+    if (typeof data === "undefined") {
+      if (typeof eqQuery !== "undefined") {
+        return edQuery();
+      } else {
+        return null;
+      }
     }
+    store.pushPayload(data);
+    var ids = data[path].map(function(x) { return x.id; });
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      return resolve(store.findByIds(object, ids));
+    });
   }
 };

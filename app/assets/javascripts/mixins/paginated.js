@@ -4,18 +4,13 @@ Hummingbird.Paginated = Ember.Mixin.create({
     if (this.get('preloadKey')) {
       this.set('cursor', 2);
 
-      var self = this,
-          store = this.store,
-          preloadKey = this.get('preloadKey'),
-          preloadPath = this.get('preloadPath'),
-          preloadObject = this.get('preloadObject');
+      var store = this.store,
+          key = this.get('preloadKey'),
+          path = this.get('preloadPath'),
+          object = this.get('preloadObject');
 
-      var preloadData = Hummingbird.PreloadStore.pop(preloadKey);
-      if (typeof preloadData === "undefined") return [];
-
-      store.pushPayload(preloadData);
-      var ids = preloadData[preloadPath].map(function(x) { return x.id; });
-      return store.findByIds(preloadObject, ids);
+      return Hummingbird.PreloadStore.popEmberData(key, path, object, store,
+                                                   function() { return []; });
     } else {
       this.set('cursor', null);
       return [];

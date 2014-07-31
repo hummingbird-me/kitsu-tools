@@ -7,10 +7,6 @@ Hummingbird.QuickUpdateComponent = Ember.Component.extend({
     return !this.get('loading') && this.get('libraryEntries.length') === 6;
   }.property('loading', 'libraryEntries.length'),
 
-  preloadKey: "recent_library_entries",
-  preloadPath: "library_entries",
-  preloadObject: "libraryEntry",
-
   fetchPage: function(page) {
     var store = this.get('targetObject.store')
         self = this;
@@ -18,7 +14,9 @@ Hummingbird.QuickUpdateComponent = Ember.Component.extend({
     this.set('page', page);
     this.set('loading', true);
 
-    return store.find('libraryEntry', {recent: true, page: page}).then(function(entries) {
+    Hummingbird.PreloadStore.popEmberData("recent_library_entries", "library_entries", "libraryEntry", store, function() {
+      return store.find('libraryEntry', {recent: true, page: page});
+    }).then(function(entries) {
       self.set('libraryEntries', entries);
       self.set('loading', false);
     });
