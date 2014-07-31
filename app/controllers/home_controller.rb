@@ -24,8 +24,10 @@ class HomeController < ApplicationController
       include_private: true,
       include_adult: !current_user.sfw_filter?
     )
-
     generic_preload! "recent_library_entries", ed_serialize(recent_library_entries, serializer: LibraryEntrySerializer)
+
+    stories = NewsFeed.new(current_user).fetch(1)
+    generic_preload! "dashboard_timeline", ed_serialize(stories)
 
     render_ember
   end
