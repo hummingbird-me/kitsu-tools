@@ -13,6 +13,8 @@ gem 'fastclick-rails', "~> 1.0"
 
 gem 'pg', '0.17.1'
 
+gem 'pghero'
+
 gem 'hiredis'
 gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
