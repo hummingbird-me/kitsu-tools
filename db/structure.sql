@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -2079,13 +2080,6 @@ CREATE UNIQUE INDEX index_favorite_genres_users_on_genre_id_and_user_id ON favor
 
 
 --
--- Name: index_favorites_on_fav_rank; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_favorites_on_fav_rank ON favorites USING btree (fav_rank);
-
-
---
 -- Name: index_favorites_on_item_id_and_item_type; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2156,31 +2150,10 @@ CREATE INDEX index_forem_moderator_groups_on_forum_id ON forem_moderator_groups 
 
 
 --
--- Name: index_forem_posts_on_reply_to_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_forem_posts_on_reply_to_id ON forem_posts USING btree (reply_to_id);
-
-
---
--- Name: index_forem_posts_on_state; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_forem_posts_on_state ON forem_posts USING btree (state);
-
-
---
 -- Name: index_forem_posts_on_topic_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_forem_posts_on_topic_id ON forem_posts USING btree (topic_id);
-
-
---
--- Name: index_forem_posts_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_forem_posts_on_user_id ON forem_posts USING btree (user_id);
 
 
 --
@@ -2195,41 +2168,6 @@ CREATE INDEX index_forem_topics_on_forum_id ON forem_topics USING btree (forum_i
 --
 
 CREATE UNIQUE INDEX index_forem_topics_on_slug ON forem_topics USING btree (slug);
-
-
---
--- Name: index_forem_topics_on_state; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_forem_topics_on_state ON forem_topics USING btree (state);
-
-
---
--- Name: index_forem_topics_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_forem_topics_on_user_id ON forem_topics USING btree (user_id);
-
-
---
--- Name: index_forem_views_on_topic_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_forem_views_on_topic_id ON forem_views USING btree (viewable_id);
-
-
---
--- Name: index_forem_views_on_updated_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_forem_views_on_updated_at ON forem_views USING btree (updated_at);
-
-
---
--- Name: index_forem_views_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_forem_views_on_user_id ON forem_views USING btree (user_id);
 
 
 --
@@ -2258,13 +2196,6 @@ CREATE INDEX index_friendly_id_slugs_on_sluggable_type ON friendly_id_slugs USIN
 --
 
 CREATE INDEX index_gallery_images_on_anime_id ON gallery_images USING btree (anime_id);
-
-
---
--- Name: index_genres_manga_on_genre_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_genres_manga_on_genre_id ON genres_manga USING btree (genre_id);
 
 
 --
@@ -2373,13 +2304,6 @@ CREATE UNIQUE INDEX index_users_on_facebook_id ON users USING btree (facebook_id
 
 
 --
--- Name: index_users_on_location; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_users_on_location ON users USING btree (location);
-
-
---
 -- Name: index_users_on_lower_name_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2419,13 +2343,6 @@ CREATE INDEX index_users_on_waifu_or_husbando ON users USING btree (waifu_or_hus
 --
 
 CREATE INDEX index_users_on_waifu_slug ON users USING btree (waifu_slug);
-
-
---
--- Name: index_users_on_website; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_users_on_website ON users USING btree (website);
 
 
 --
@@ -3108,4 +3025,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140707100609');
 INSERT INTO schema_migrations (version) VALUES ('20140707102503');
 
 INSERT INTO schema_migrations (version) VALUES ('20140707110148');
+
+INSERT INTO schema_migrations (version) VALUES ('20140731164542');
 
