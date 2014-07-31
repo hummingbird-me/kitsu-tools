@@ -49,12 +49,12 @@ Hummingbird.QuickUpdateComponent = Ember.Component.extend({
   }.on('didInsertElement'),
 
   setLoaderHeight: function() {
-    var loadingElement = this.$(".update-loading"),
-        height = loadingElement.width() * 290 / 200,
-        heightProp = height + "px";
+    var watchedSeries = this.$(".watched-series"),
+        height = watchedSeries.width() * 290 / 200;
 
-    loadingElement.css('height', heightProp)
-                  .css('line-height', heightProp);
+    $("<div />", {
+      html: "<style>.update-loading { height: " + height + "px; line-height: " + height + "px; }</style>"
+    }).appendTo("body");
   }.on('didInsertElement'),
 
   slideDown: function() {
