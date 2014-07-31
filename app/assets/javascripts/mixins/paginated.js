@@ -46,6 +46,9 @@ Hummingbird.Paginated = Ember.Mixin.create({
   setupController: function(controller, model) {
     this.setCanLoadMore(true);
     controller.set('canLoadMore', this.get('canLoadMore'));
+    if (model.length === 0) {
+      this.set('cursor', null);
+    }
     controller.set('model', model);
   },
 

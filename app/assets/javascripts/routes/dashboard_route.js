@@ -16,6 +16,9 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
     Hummingbird.TitleManager.setTitle("Dashboard");
     this.setCanLoadMore(true);
     controller.set('canLoadMore', true);
-    return controller.set('model', model);
+    if (model.length === 0) {
+      this.set('cursor', null);
+    }
+    controller.set('model', model);
   }
 });
