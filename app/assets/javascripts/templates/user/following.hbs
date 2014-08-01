@@ -1,0 +1,40 @@
+<div class="profile-leaderboard">
+  <div class="ad">
+    {{ad-unit adId="1293413" adClass="257f81e798bd68dd81e60f42838f361f"}}
+  </div>
+</div>
+
+<div class="container">
+  {{#each}}
+    <div class="follow-panel-wrapper">
+      <div class="follow-panel">
+        {{#link-to 'user' username}}
+          <div class="user-cover">
+            <div class="cover-photo" {{bind-attr style=coverImageStyle}}></div>
+          </div>
+        {{/link-to}}
+        <div class="user-avatar">
+          <a {{bind-attr href=userLink}}>
+            {{avatar this 'thumb'}}
+          </a>
+          {{#if isFollowed}}
+            <a class="btn follow-button unfollow" {{action "toggleFollow" this}}> Unfollow</a>
+          {{else}}
+            <a class="btn follow-button" {{action "toggleFollow" this}}> Follow</a>
+          {{/if}}
+        </div>
+        <div class="user-info">
+          <h4>{{#link-to 'user' username}}{{username}}{{/link-to}}</h4>
+          <p class="mini-bio">
+            {{miniBio}}
+            {{controller.followerCoverUrl}}
+          </p>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{#if canLoadMore}}
+  {{load-more action="loadNextPage"}}
+{{/if}}

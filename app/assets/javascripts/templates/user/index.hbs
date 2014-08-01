@@ -1,0 +1,213 @@
+<div class="profile-content">
+  <a id="left-column" class="mobile-tab btn btn-default" href="#left-column"> Show User Info</a>
+  <a id="right-column" class="mobile-tab btn btn-default" href="#right-column"> Show User Feed</a>
+  <div class="row">
+    <div class="secondary-info">
+      <div class="user-about-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title"> About {{user.username}}</h3>
+          <span class="edit-panel">
+            {{#if viewingSelf}}
+              {{#if isEditing}}
+                <button class="btn btn-default btn-xs" {{action "saveUserInfo"}}> Save</button>
+              {{else}}
+                <a {{action "editUserInfo"}}>
+                  <i class="fa fa-pencil"></i>
+                </a>
+              {{/if}}
+            {{/if}}
+          </span>
+        </div>
+
+        <div class="panel-body">
+          {{#if isEditing}}
+            <div {{bind-attr class=":edit-bio-chars bioCharsLeft:hasleft:noleft"}}>
+              {{bioCharCounter}} left
+            </div>
+
+            {{{textarea class="edit-bio" rows="4" placeholder="Tell us about yourself  :3" value=user.miniBio}}}
+            <div class="user-interests">
+              <ul>
+                <li>
+                  <div class="interest-icon"> <i class="fa fa-heart"></i></div>
+                  <div class="interest">
+                    {{{view Ember.Select content=selectChoices selection=user.waifuOrHusbando}}}
+                    {{#if user.waifu}}
+                      <a class="remove-waifu" {{action "unselectWaifu"}}> Remove</a>
+                    {{/if}}
+                    {{{waifu-selector action="didSelectWaifu" value=user.waifu clearInput=unselectingWaifu}}}
+                  </div>
+                </li>
+                <li>
+                  <div class="interest-icon"> <i class="fa fa-home"></i></div>
+                  <div class="interest"> {{input type="text" placeholder="Location" value=user.location}}</div>
+                </li>
+                <li>
+                  <div class="interest-icon"> <i class="fa fa-link"></i></div>
+                  <div class="interest"> {{input type="text" placeholder="Website" value=user.website}}</div>
+                </li>
+              </ul>
+            </div>
+          {{else}}
+            <p class="about"> {{user.miniBio}}</p>
+            <div class="user-interests">
+              <ul>
+                <li>
+                  {{#if hasWaifu}}
+                    <div class="interest-icon"> <i class="fa fa-heart"></i></div>
+                    <div class="interest">
+                      {{user.waifuOrHusbando}} is 
+                      {{#link-to 'anime' waifu_slug}} {{user.waifu}}{{/link-to}}
+                    </div>
+                  {{/if}}
+                </li>
+                <li>
+                  {{#if hasLocation}}
+                    <div class="interest-icon"> <i class="fa fa-home"></i></div>
+                    <div class="interest"> Lives in <strong>{{user.location}}</strong></div>
+                  {{/if}}
+                </li>
+                <li>
+                  {{#if hasWebsite}}
+                    <div class="interest-icon"> <i class="fa fa-link"></i></div>
+                    <div class="interest"> <a {{bind-attr href=user.websiteLink}}>{{user.website}}</a></div>
+                  {{/if}}
+                </li>
+              </ul>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+
+      {{!--
+      <div class="photos-videos">
+        <div class="panel-heading">
+          <h3 class="panel-title"> Photos and Videos</h3>
+        <div class="panel-body">
+          <div class="media-grid">
+            <div class="grid-thumb">
+              <a class="thumbnail">
+                <img src="http://placekitten.com/300/300" />
+              </a>
+            </div>
+            <div class="grid-thumb">
+              <a class="thumbnail">
+                <img src="http://placekitten.com/300/300" />
+              </a>
+            </div>
+            <div class="grid-thumb">
+              <a class="thumbnail">
+                <img src="http://placekitten.com/300/300" />
+              </a>
+            </div>
+            <div class="grid-thumb">
+              <a class="thumbnail">
+                <img src="http://placekitten.com/300/300" />
+              </a>
+            </div>
+            <div class="grid-thumb">
+              <a class="thumbnail">
+                <img src="http://placekitten.com/300/300" />
+              </a>
+            </div>
+            <div class="grid-thumb">
+              <a class="thumbnail">
+                <img src="http://placekitten.com/300/300" />
+              </a>
+            </div>
+            <div class="grid-thumb">
+              <a class="thumbnail">
+                <img src="http://placekitten.com/300/300" />
+              </a>
+            </div>
+            <div class="grid-thumb">
+              <a class="thumbnail">
+                <img src="http://placekitten.com/300/300" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      --}}
+
+      {{#if userInfo.isFulfilled}}
+        <div class="anime-breakdown-panel">
+          <div class="panel-heading">
+            <h3 class="panel-title"> Anime Breakdown</h3>
+          </div>
+          <div class="panel-body">
+            {{#if animeBreakdown}}
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="breakdown-graph">
+                    <div class="breakdown-graph-data">
+                      {{ember-chart type="Doughnut" data=animeBreakdown options=animeOptions}}
+                      <span class="breakdown-number"> {{userInfo.topGenres.0.num}}</span>
+                    </div>
+                  </div>
+                  <div class="breakdown-info">
+                    <span class="breakdown-infotitle"> {{userInfo.topGenres.0.genre.name}}</span>
+                    <span class="breakdown-infotext"> out of {{userInfo.animeWatched}} titles</span>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <ul class="breakdown-genrelist">
+                    {{#each genre in userInfo.topGenres}}
+                      <li>
+                        <span class="breakdown-genre"> {{genre.genre.name}}</span>
+                        <span class="breakdown-numbr"> {{genre.num}}</span>
+                      </li>
+                    {{/each}}
+                  </ul>
+                </div>
+              </div>
+              <hr />
+            {{/if}}
+            <ul>
+              <li class="breakdown-watched">
+                <span class="breakdown-icon"> <i class="fa fa-eye"></i></span>
+                <span class="breakdown-time"> I've watched <strong>{{lifeSpentOnAnimeFmt}}</strong> of anime.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {{else}}
+        {{loading-indicator classNames="light"}}
+      {{/if}}
+
+      <div class="favorite-anime">
+        <div class="panel-heading">
+          <h3 class="panel-title"> Favorite Anime</h3>
+          {{#if viewingSelf}}
+            <span class="edit-panel">
+              {{#unless editingFavorites}}
+                <a {{action "editFav"}}><i class="fa fa-pencil"></i></a>
+              {{else}}
+                <a class="btn btn-xs btn-default" {{action "doneEditingFav"}}> Save</a>
+              {{/unless}}
+            </span>
+          {{/if}}
+        </div>
+
+        <div class="panel-body">
+          {{favorite-anime-container favorite_anime_list=favorite_anime_list currentUser=currentUser isEditing=editingFavorites user=user}}
+          {{#if can_load_more}}
+            <div class="more-wrapper">
+              <a class="view-more-button" {{action "loadMoreFavorite_animes"}}> View More</a>
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+
+    <div class="user-feed">
+      {{post-comment username=user.username}}
+
+      {{each content itemController="story" itemViewClass="Hummingbird.StoryView"}}
+
+      {{#if canLoadMore}}
+        {{load-more classNames="light" action="loadNextPage"}}
+      {{/if}}
+    </div>
+  </div>
+</div>
