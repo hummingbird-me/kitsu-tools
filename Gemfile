@@ -22,8 +22,6 @@ gem 'redis-rails'
 gem 'ember-rails', '~> 0.15'
 gem 'ember-source', '1.7.0.beta.4'
 gem 'ember-data-source', '1.0.0.beta.8'
-gem 'emblem-rails', '~> 0.2.1'
-gem 'emblem-source', '~> 0.3'
 
 gem 'react-rails', '~> 0.10.0.0'
 

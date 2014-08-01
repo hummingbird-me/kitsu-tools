@@ -54,9 +54,6 @@ GEM
       ember-source
       execjs
       handlebars-source
-    barber-emblem (0.1.1)
-      barber (>= 0.4.1)
-      emblem-source
     bcrypt (3.1.7)
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
@@ -115,10 +112,6 @@ GEM
       railties (>= 3.1)
     ember-source (1.7.0.beta.4)
       handlebars-source (~> 1.0)
-    emblem-rails (0.2.1)
-      barber-emblem (~> 0.1.1)
-      ember-rails (>= 0.14.0)
-    emblem-source (0.3.16)
     equalizer (0.0.9)
     erubis (2.7.0)
     escape (0.0.4)
@@ -454,8 +447,6 @@ DEPENDENCIES
   ember-data-source (= 1.0.0.beta.8)
   ember-rails (~> 0.15)
   ember-source (= 1.7.0.beta.4)
-  emblem-rails (~> 0.2.1)
-  emblem-source (~> 0.3)
   fakeweb
   fast_blank
   fastclick-rails (~> 1.0)
