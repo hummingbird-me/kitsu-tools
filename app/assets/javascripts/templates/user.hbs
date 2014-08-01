@@ -1,0 +1,90 @@
+<div class="user-cover">
+  <div class="cover-photo" {{bind-attr style=coverImageStyle}}></div>
+  <div class="cover-overlay"></div>
+</div>
+
+<div class="container relative">
+  <div class="row">
+    <div class="user-cover-options">
+      <div class="col-md-10 user-wrapper">
+        <div class="col-sm-2 col-md-2 user-avatar clearfix">
+          <div class="large-avatar">
+            {{avatar model 'thumb'}}
+            <div class="online-box">
+              <div {{bind-attr class=":online-indicator online:online:offline"}}></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-10 account-info">
+          <h1 class="username"> {{username}}</h1>
+          <ul class="inline-list clearfix">
+            <li>
+              {{#bootstrap-tooltip title="Coming soon!" placement="bottom"}}
+                <i class="fa fa-exchange"></i> Compare
+              {{/bootstrap-tooltip}}
+            </li>
+            <li>
+              {{#bootstrap-tooltip title="Coming soon!" placement="bottom"}}
+                <i class="fa fa-heart-o"></i> Suggest
+              {{/bootstrap-tooltip}}
+            </li>
+            {{#unless viewingSelf}}
+              <li>
+                {{#bootstrap-tooltip title="Coming soon!" placement="bottom"}}
+                  <i class="fa fa-envelope-o"></i> Message
+                {{/bootstrap-tooltip}}
+              </li>
+            {{/unless}}
+          </ul>
+        </div>
+      </div>
+      {{#if viewingSelf}}
+        <label class="upload-cover" style="font-size: 0.8em; opacity: 0.8" for="coverImage">
+          <i class="fa fa-upload"></i> Upload Cover
+        </label>
+        {{view Hummingbird.FileUpload action="coverSelected" id="coverImage"}}
+      {{else}}
+        {{#if isFollowed}}
+          <button class="btn btn-default btn-lg follow-button unfollow" {{action "toggleFollow" this}}>
+            Unfollow
+          </button>
+        {{else}}
+          <button class="btn btn-default btn-lg follow-button" {{action "toggleFollow" this}}>
+            Follow
+          </button>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+<div class="profile-navigation">
+  <div class="container">
+    <div class="row">
+      <ul class="inline-list clearfix">
+        <li class="nav-link">
+          {{#link-to 'user.index'}}Feed{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'user.library'}}Library{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'user.reviews'}}Reviews{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'user.following'}}Following{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'user.followers'}}Followers{{/link-to}}
+        </li>
+        <li class="nav-link">
+          <a {{bind-attr href=forumProfile}}>Forums</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="min-height-wrapper">
+  {{outlet}}
+</div>

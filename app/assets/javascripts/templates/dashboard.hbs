@@ -1,0 +1,24 @@
+{{quick-update}}
+
+<div class="user-dashboard">
+  <a id="left-column" class="mobile-tab btn btn-default" href="#left-column"> Show Sidebar</a>
+  <a id="right-column" class="mobile-tab btn btn-default" href="#right-column"> Show Activity Feed</a>
+
+  <div class="row">
+    <div class="secondary-info">
+      {{community-loading-widget}}
+      {{community-widget title="Industry news" showMoreURL="http://forums.hummingbird.me/category/industry-news" apiCall="http://forums.hummingbird.me/category/industry-news.json"}}
+      {{community-widget title="Community discussions" showMoreURL="http://forums.hummingbird.me/" apiCall="http://forums.hummingbird.me/latest.json?exclude_category=industry%20news"}}
+    </div>
+
+    <div class="user-feed">
+      {{post-comment username=currentUser.username}}
+
+      {{each content itemController="story" itemViewClass="Hummingbird.StoryView"}}
+
+      {{#if canLoadMore}}
+        {{load-more classNames="light" action="loadNextPage"}}
+      {{/if}}
+    </div>
+  </div>
+</div>
