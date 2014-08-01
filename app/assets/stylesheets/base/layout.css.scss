@@ -311,8 +311,10 @@ html { overflow-y: scroll; }
       text-align: center;
       width: 50px;
       padding: 15px;
+      line-height: 20px;
       @media (max-width: 768px) {
         padding: 0px;
+        line-height: 50px;
       }
 
       .fa {
