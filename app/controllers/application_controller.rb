@@ -8,12 +8,14 @@ class ApplicationController < ActionController::Base
   # Ember Data's cache.
   def preload_to_ember!(data, options={})
     @preload ||= []
-    @preload << ed_serialize(data, options)
+    data = ed_serialize(data, options)
+    @preload << data unless data.nil?
   end
 
   def ed_serialize(data, options={})
     data = data.to_a if data.respond_to? :to_ary
     data = [data] unless data.is_a? Array
+    return if data.empty?
     options[:scope] = current_user
     options[:root] ||= data.first.class.to_s.underscore.pluralize
     options[:each_serializer] = options[:serializer] if options[:serializer]
