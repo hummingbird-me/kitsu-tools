@@ -24,6 +24,7 @@
                   {{#each section in sections}}
                     <button {{action "showSection" section}} {{bind-attr class=":btn :btn-default section.displayVisible:active"}}> {{section.title}}</button>
                   {{/each}}
+                </div>
                 <div class="library-section-select hidden-md hidden-lg">
                   <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                     {{showSection}} <i class="fa fa-caret-down"></i>
@@ -69,10 +70,10 @@
 
         <div id="library-sections"></div>
       </div>
-    </div>
 
-    <div class="hidden-xs hidden-sm col-md-2">
-      {{ad-unit adId="1293411" adClass="257f81e798bd68dd81e60f42838f361f"}}
+      <div class="hidden-xs hidden-sm col-md-2">
+        {{ad-unit adId="1293411" adClass="257f81e798bd68dd81e60f42838f361f"}}
+      </div>
     </div>
   </div>
 </div>
