@@ -24,16 +24,17 @@
                   {{#each section in sections}}
                     <button {{action "showSection" section}} {{bind-attr class=":btn :btn-default section.displayVisible:active"}}> {{section.title}}</button>
                   {{/each}}
-                <div class="library-section-select hidden-md hidden-lg">
-                  <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    {{showSection}} <i class="fa fa-caret-down"></i>
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a {{action "showSection" "View All"}}> View All</a></li>
-                    {{#each section in sections}}
-                      <li><a {{action "showSection" section}}> {{section.title}}</a></li>
-                    {{/each}}
-                  </ul>
+                    <div class="library-section-select hidden-md hidden-lg">
+                      <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                        {{showSection}} <i class="fa fa-caret-down"></i>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a {{action "showSection" "View All"}}> View All</a></li>
+                        {{#each section in sections}}
+                          <li><a {{action "showSection" section}}> {{section.title}}</a></li>
+                        {{/each}}
+                      </ul>
+                    </div>
                 </div>
               {{/if}}
             </div>
