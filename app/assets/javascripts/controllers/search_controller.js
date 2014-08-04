@@ -4,6 +4,7 @@ Hummingbird.SearchController = Ember.Controller.extend({
   performedSearch: false,
   userTypedSearch: false,
   searchResults: [],
+  searchRequest: "",
   filter: "Everything",
   query: "",
 
@@ -38,11 +39,12 @@ Hummingbird.SearchController = Ember.Controller.extend({
     if(this.get('query').length < 3){
       this.setProperties({
         'searchResults': [],
+        'searchRequest': self.get('query')+' (too short)',
         'performedSearch': true
       });
       return;
     }
-    
+
     var self = this;
     ic.ajax({
       url: '/search.json?type=full&query='+this.get('query'),
@@ -50,6 +52,7 @@ Hummingbird.SearchController = Ember.Controller.extend({
     }).then(function(payload) {
       self.setProperties({
         'searchResults': payload.search,
+        'searchRequest': self.get('query'),
         'performedSearch': true
       });
     });

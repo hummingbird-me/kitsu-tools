@@ -64,8 +64,8 @@ class SearchController < ApplicationController
       # with more detailed information about anime, manga and users
       # as well as a direct library / following widget (<- not yet)
       when "full"
-        anime = search_database 'anime', @query, @page, 50
-        manga = search_database 'manga', @query, @page, 50
+        anime = search_database 'anime', @query, @page, 30
+        manga = search_database 'manga', @query, @page, 30
         users = User.search(@query).page(1).per(20)
 
         formattedAnime = anime.map do |x| {
