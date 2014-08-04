@@ -29,7 +29,7 @@ class SearchController < ApplicationController
       end
 
       respond_to do |format|
-        format.html { render "anime" }
+        format.html { render_ember }
         format.json { render :json => @results.map {|x| [x.title, x.alt_title] }.flatten.compact }
       end
 
@@ -40,14 +40,14 @@ class SearchController < ApplicationController
       @results = search_database 'manga', query, params[:page]
 
       respond_to do |format|
-        format.html { render :manga }
+        format.html { render_ember }
       end
 
 
 
     elsif @search_type == "users"
       @results = User.search(params[:query] || "askdhjfg").page(params[:page]).per(20)
-      render "users"
+      render_ember
 
     elsif @search_type == "users_to_follow"
       @results = User.search(params[:query] || "askdhjfg").page(params[:page]).per(20)
