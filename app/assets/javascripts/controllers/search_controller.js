@@ -6,15 +6,20 @@ Hummingbird.SearchController = Ember.Controller.extend({
   filters: ["Everything", "Anime", "Manga", "User"],
 
   init: function () {
-    if(!Ember.empty(this.get('query'))){
-      this.performSearch;
-    }
+    this.set('didSearch', false);
     this._super();
+    console.log(this.get('query'));
+    if(!Ember.empty(this.get('query'))){
+      this.performSearch();
+    }
   },
 
   filteredSearchResults: function(){
-    return this.get('searchResults');
-  }.property('searchResults'),
+    var self = this;
+    return this.get('searchResults').filter(function(result){
+      return (result.type == self.get('filter').toLowerCase() || "Everything" == self.get('filter'));
+    });
+  }.property('searchResults', 'filter'),
 
   performSearch: function(){
     var self = this;
@@ -22,7 +27,10 @@ Hummingbird.SearchController = Ember.Controller.extend({
       url: '/search.json?type=full&query='+this.get('query'),
       type: "GET"
     }).then(function(payload) {
-      self.set('searchResults', payload.search);
+      self.setProperties({
+        'searchResults': payload.search,
+        'didSearch': true
+      });
     });
   },
 
