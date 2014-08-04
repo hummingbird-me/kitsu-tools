@@ -59,6 +59,43 @@ class SearchController < ApplicationController
 
         @results = [formattedAnime.take(3), formattedManga.take(3), formattedUsers.take(2)].flatten
 
+      # Full search provides search results for the search page
+      # with more detailed information about anime, manga and users
+      # as well as a direct library / following widget (<- not yet)
+      when "full"
+        anime = search_database 'anime', @query, @page
+        manga = search_database 'manga', @query, @page
+        users = User.search(@query)
+
+        formattedAnime = anime.map do |x|
+          {
+            :id => x.id,
+            :type => 'anime',
+            :title => x.title,
+            :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
+            :image => x.poster_image_thumb,
+            :link => "/anime/#{x.slug}",
+            :badges => [
+              {:class => 'anime', :content => "Anime"},
+              {:class => 'episodes', :content => "#{x.show_type}, #{x.episode_count}"}
+            ]
+          }
+        end
+        formattedUsers = users.map { |x|
+          {
+            :type => 'user',
+            :title => x.name,
+            :desc => x.bio,
+            :image => x.avatar_template,
+            :link => "/users/#{x.name}",
+            :badges => [
+              {:class => 'user', :content => "User"}
+            ]
+          }
+        }
+
+        @results = [formattedAnime, formattedUsers].flatten
+
       else
         not_found!
     end
