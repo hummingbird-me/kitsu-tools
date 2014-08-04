@@ -8,19 +8,22 @@
         {{input value=query placeholder="I'm sure there's something intresting to find here!"}}
       </div>
       <div class="col-md-4">
-        {{view Ember.Select content=filters selectionBinding=selectedFilter}}
+        {{view Ember.Select content=filters selectionBinding=filter}}
       </div>
     </div>
     <hr />
     <ul class="search-container-results">
       {{#each result in filteredSearchResutlts}}
-        <li class="search-result row">
-          <div class="col-md-8">
+        <li class="search-result">
+        {{!-- == TODO: For 2 col layout with library feature later ==
+          <li class="search-result row">
+            <div class="col-md-8">
+          --}}
             <a {{bind-attr href="result.link"}}>
             <img {{bind-attr src="result.image"}} class="search-result-image" />
             <div class="pull-right">
               {{#each badge in result.badges}}
-                <span {{bind-attr class=":badge badge.class"}}>{{badge.content}}</span>
+                <span {{bind-attr class=":badge badge.class"}}>{{{badge.content}}}</span>
               {{/each}}
             </div>
             <p class="search-result-details">
@@ -28,10 +31,12 @@
               {{result.desc}}
             <p>
             </a>
+          {{!--
           </div>
           <div class="col-md-4">
             &nbsp;
           </div>
+          --}}
         </li>
       {{else}}
         {{#if hasquery}}

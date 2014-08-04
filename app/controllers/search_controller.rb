@@ -67,32 +67,39 @@ class SearchController < ApplicationController
         manga = search_database 'manga', @query, @page
         users = User.search(@query)
 
-        formattedAnime = anime.map do |x|
-          {
-            :id => x.id,
-            :type => 'anime',
-            :title => x.title,
-            :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
-            :image => x.poster_image_thumb,
-            :link => "/anime/#{x.slug}",
-            :badges => [
-              {:class => 'anime', :content => "Anime"},
-              {:class => 'episodes', :content => "#{x.show_type}, #{x.episode_count}"}
-            ]
-          }
+        formattedAnime = anime.map do |x| {
+          :type => 'anime',
+          :title => x.title,
+          :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
+          :image => x.poster_image_thumb,
+          :link => "/anime/#{x.slug}",
+          :badges => [
+            {:class => 'anime', :content => "Anime"},
+            {:class => 'episodes', :content => "#{x.episode_count}ep &bull; #{x.episode_length}min"},
+            {:class => 'episodes', :content => "#{x.show_type} &bull; #{x.age_rating}"}
+          ]}
         end
-        formattedUsers = users.map { |x|
-          {
-            :type => 'user',
-            :title => x.name,
-            :desc => x.bio,
-            :image => x.avatar_template,
-            :link => "/users/#{x.name}",
-            :badges => [
-              {:class => 'user', :content => "User"}
-            ]
-          }
-        }
+        formattedManga = manga.map do |x| {
+          :type => 'manga',
+          :title => x.english_title,
+          :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
+          :image => x.poster_image_thumb,
+          :link => "/manga/#{x.slug}",
+          :badges => [
+            {:class => 'manga', :content => "Manga"},
+            {:class => 'episodes', :content => "#{x.volume_count}vol &bull; #{x.chapter_count}chap"}
+          ]}
+        end
+        formattedUsers = users.map do |x| {
+          :type => 'user',
+          :title => x.name,
+          :desc => x.bio,
+          :image => x.avatar_template,
+          :link => "/users/#{x.name}",
+          :badges => [
+            {:class => 'user', :content => "User"}
+          ]}
+        end
 
         @results = [formattedAnime, formattedUsers].flatten
 

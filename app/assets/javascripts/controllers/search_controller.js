@@ -1,9 +1,9 @@
 Hummingbird.SearchController = Ember.Controller.extend({
-  queryParams: ['query'],
+  queryParams: ['query', 'filter'],
   searchResults: [],
-  selectedFilter: null,
+  filter: null,
   query: "",
-  filters: ["Everything", "Anime", "User"],
+  filters: ["Everything", "Anime", "Manga", "User"],
 
   init: function () {
     var bloodhound = new Bloodhound({
@@ -39,7 +39,7 @@ Hummingbird.SearchController = Ember.Controller.extend({
   filteredSearchResutlts: function () {
     var filter, filterd, results;
     results = this.get('searchResults');
-    filter = this.get('selectedFilter');
+    filter = this.get('filter');
     filterd = [];
     jQuery.each(results, function (index, item) {
       if (item.type === filter.toLowerCase() || filter === "Everything") {
@@ -49,7 +49,7 @@ Hummingbird.SearchController = Ember.Controller.extend({
       }
     });
     return filterd;
-  }.property('searchResults', 'selectedFilter'),
+  }.property('searchResults', 'filter'),
 
   instantSearch: function () {
     var _this = this
