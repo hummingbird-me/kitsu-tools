@@ -1,7 +1,8 @@
 Hummingbird.SearchController = Ember.Controller.extend({
+  queryParams: ['query'],
   searchResults: [],
   selectedFilter: null,
-  searchTerm: "",
+  query: "",
   filters: ["Everything", "Anime", "User"],
 
   init: function () {
@@ -31,9 +32,9 @@ Hummingbird.SearchController = Ember.Controller.extend({
     return this._super();
   },
 
-  hasSearchTerm: function () {
-    return this.get('searchTerm').length !== 0;
-  }.property('searchTerm'),
+  hasquery: function () {
+    return this.get('query').length !== 0;
+  }.property('query'),
 
   filteredSearchResutlts: function () {
     var filter, filterd, results;
@@ -53,10 +54,10 @@ Hummingbird.SearchController = Ember.Controller.extend({
   instantSearch: function () {
     var _this = this
       , blodhound = this.get('bhInstance')
-      , searchterm = this.get('searchTerm');
-    return blodhound.get(searchterm, function (suggestions) {
+      , query = this.get('query');
+    return blodhound.get(query, function (suggestions) {
       suggestions.pop();
       return _this.set('searchResults', suggestions);
     });
-  }.observes('searchTerm')
+  }.observes('query')
 });
