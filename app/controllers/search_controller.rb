@@ -1,11 +1,11 @@
 class SearchController < ApplicationController
   STOP_WORDS = /season/i
 
-  def search_database (type, query, page)
+  def search_database (type, query, page, perpage = 20)
     model = case type
-      when "anime" then Anime.page(page).per(20)
-      when "manga" then Manga.page(page).per(20)
-      when "character" then Character.page(page).per(20)
+      when "anime" then Anime.page(page).per(perpage)
+      when "manga" then Manga.page(page).per(perpage)
+      when "character" then Character.page(page).per(perpage)
     end
     list = model.simple_search_by_title(query)
     list = model.fuzzy_search_by_title(query) if list.length == 0
@@ -63,8 +63,9 @@ class SearchController < ApplicationController
       # with more detailed information about anime, manga and users
       # as well as a direct library / following widget (<- not yet)
       when "full"
-        anime = search_database 'anime', @query, @page
-        manga = search_database 'manga', @query, @page
+        return [] if @query.length < 3
+        anime = search_database 'anime', @query, @page, 50
+        manga = search_database 'manga', @query, @page, 50
         users = User.search(@query)
 
         formattedAnime = anime.map do |x| {
