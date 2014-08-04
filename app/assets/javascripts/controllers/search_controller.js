@@ -35,6 +35,14 @@ Hummingbird.SearchController = Ember.Controller.extend({
 
 
   performSearch: function(){
+    if(this.get('query').length < 3){
+      this.setProperties({
+        'searchResults': [],
+        'performedSearch': true
+      });
+      return;
+    }
+    
     var self = this;
     ic.ajax({
       url: '/search.json?type=full&query='+this.get('query'),

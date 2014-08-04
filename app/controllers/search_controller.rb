@@ -2,6 +2,7 @@ class SearchController < ApplicationController
   STOP_WORDS = /season/i
 
   def search_database (type, query, page, perpage = 20)
+    return [] if query.length < 3
     model = case type
       when "anime" then Anime.page(page).per(perpage)
       when "manga" then Manga.page(page).per(perpage)
@@ -45,7 +46,7 @@ class SearchController < ApplicationController
         anime = search_database 'anime', @query, @page
         manga = search_database 'manga', @query, @page
         users = User.match(@query)
-        users = User.search(@query) if users.length == 0
+        users = User.search(@query).page(1).per(20) if users.length == 0
 
         formattedAnime = anime.map { |x|
           {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
@@ -63,10 +64,9 @@ class SearchController < ApplicationController
       # with more detailed information about anime, manga and users
       # as well as a direct library / following widget (<- not yet)
       when "full"
-        return [] if @query.length < 3
         anime = search_database 'anime', @query, @page, 50
         manga = search_database 'manga', @query, @page, 50
-        users = User.search(@query)
+        users = User.search(@query).page(1).per(20)
 
         formattedAnime = anime.map do |x| {
           :type => 'anime',
