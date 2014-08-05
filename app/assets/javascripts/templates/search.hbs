@@ -13,39 +13,43 @@
     </form>
     <hr />
     <ul class="search-container-results">
-      {{#each result in filteredSearchResults}}
-        <li class="search-result clearfix">
-        {{!-- == TODO: For 2 col layout with library feature later ==
-          <li class="search-result row">
-            <div class="col-md-8">
-          --}}
-            <a {{bind-attr href="result.link"}}>
-            <img {{bind-attr src="result.image"}} class="search-result-image" />
-            <div class="pull-right">
-              {{#each badge in result.badges}}
-                <span {{bind-attr class=":badge badge.class"}}>{{{badge.content}}}</span>
-              {{/each}}
-            </div>
-            <p class="search-result-details">
-              <strong>{{result.title}}</strong><br />
-              {{result.desc}}
-            <p>
-            </a>
-          {{!--
-          </div>
-          <div class="col-md-4">
-            &nbsp;
-          </div>
-          --}}
-        </li>
+      {{#if performingSearch}}
+        <li>{{loading-indicator}}</li>
       {{else}}
-        {{#if performedSearch}}
-          <p class="search-results-nosuccess">
-          <span class="noresults-icon"><i class="fa fa-meh-o"></i></span>
-          <span class="noresults-text">No results found for <strong>{{filter}}: {{searchRequest}}</strong></span>
-          </p>
-        {{/if}}
-      {{/each}}
+        {{#each result in filteredSearchResults}}
+          <li class="search-result clearfix">
+          {{!-- == TODO: For 2 col layout with library feature later ==
+            <li class="search-result row">
+              <div class="col-md-8">
+            --}}
+              <a {{bind-attr href="result.link"}}>
+              <img {{bind-attr src="result.image"}} class="search-result-image" />
+              <div class="pull-right">
+                {{#each badge in result.badges}}
+                  <span {{bind-attr class=":badge badge.class"}}>{{{badge.content}}}</span>
+                {{/each}}
+              </div>
+              <p class="search-result-details">
+                <strong>{{result.title}}</strong><br />
+                {{result.desc}}
+              <p>
+              </a>
+            {{!--
+            </div>
+            <div class="col-md-4">
+              &nbsp;
+            </div>
+            --}}
+          </li>
+        {{else}}
+          {{#if performedSearch}}
+            <p class="search-results-nosuccess">
+            <span class="noresults-icon"><i class="fa fa-meh-o"></i></span>
+            <span class="noresults-text">No results found for <strong>{{filter}}: {{searchRequest}}</strong></span>
+            </p>
+          {{/if}}
+        {{/each}}
+      {{/if}}
     </ul>
   </div>
 </div>
