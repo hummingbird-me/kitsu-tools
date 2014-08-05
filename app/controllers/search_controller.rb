@@ -102,7 +102,7 @@ class SearchController < ApplicationController
           ]}
         end
 
-        @results = [formattedAnime, formattedUsers].flatten
+        @results = [formattedAnime, formattedManga, formattedUsers].flatten
 
       else
         not_found!
