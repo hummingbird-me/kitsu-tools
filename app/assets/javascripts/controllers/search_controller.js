@@ -17,7 +17,7 @@ Hummingbird.SearchController = Ember.Controller.extend({
   }.property('searchResults', 'filter'),
 
   observeQuery: function() {
-    if (this.get('query.length') > 2) {
+    if (this.get('query.length') >= 2) {
       Ember.run.debounce(this, this.performSearch, 500);
     }
   }.observes('query'),
@@ -30,10 +30,10 @@ Hummingbird.SearchController = Ember.Controller.extend({
 
     var self = this;
 
-    if(this.get('query').length < 4){
+    if(this.get('query').length < 2){
       this.setProperties({
         'searchResults': [],
-        'searchRequest': self.get('query')+' (too short, min. 4 chars)',
+        'searchRequest': self.get('query')+' (too short, min. 2 chars)',
         'performedSearch': true
       });
       return;
