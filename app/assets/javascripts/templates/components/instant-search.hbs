@@ -17,6 +17,9 @@
           </a>
         </li>
       {{/each}}
+      <li class="search-result show-more">
+        {{#link-to 'search' (query-params query=query)}}Show More{{/link-to}}
+      </li>
     </ul>
   {{/if}}
 </span>

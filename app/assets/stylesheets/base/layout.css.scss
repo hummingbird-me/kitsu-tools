@@ -400,6 +400,19 @@ html { overflow-y: scroll; }
           clear: both;
         }
       }
+
+      .show-more {
+        text-align: center;
+
+        a {
+          color: #fff;
+          text-transform: uppercase;
+          font-size: 0.7em;
+          font-weight: bold;
+          opacity: 0.8;
+          letter-spacing: 1px;
+        }
+      }
     }
   }
 
