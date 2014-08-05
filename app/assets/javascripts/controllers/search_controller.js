@@ -1,62 +1,62 @@
 Hummingbird.SearchController = Ember.Controller.extend({
+  filters: ["Everything", "Anime", "Manga", "User"],
+  queryParams: ['query', 'filter'],
+  performingSearch: false,
+  performedSearch: false,
+  userTypedSearch: false,
   searchResults: [],
-  selectedFilter: null,
-  searchTerm: "",
-  filters: ["Everything", "Anime", "User"],
+  searchRequest: "",
+  filter: "Everything",
+  query: "",
 
-  init: function () {
-    var bloodhound = new Bloodhound({
-      datumTokenizer: function (d) {
-        return Bloodhound.tokenizers.whitespace(d.value);
-      },
-      queryTokenizer: Bloodhound.tokenizers.whitespace,
-      remote: {
-        url: '/search.json?query=%QUERY&type=full',
-        filter: function (results) {
-          return Ember.$.map(results.search, function (r) {
-            return {
-              type: r.type,
-              title: r.title,
-              desc: r.desc,
-              image: r.image,
-              link: r.link,
-              badges: r.badges
-            };
-          });
-        }
-      }
+  filteredSearchResults: function(){
+    var self = this;
+    return this.get('searchResults').filter(function(result){
+      return (result.type === self.get('filter').toLowerCase() || "Everything" === self.get('filter'));
     });
-    bloodhound.initialize();
-    this.set('bhInstance', bloodhound);
-    return this._super();
+  }.property('searchResults', 'filter'),
+
+  observeQuery: function() {
+    if (this.get('query.length') > 2) {
+      Ember.run.debounce(this, this.performSearch, 500);
+    }
+  }.observes('query'),
+
+  performSearch: function() {
+    if (this.get('performingSearch')) {
+      Ember.run.later(this, this.performSearch, 100);
+      return;
+    }
+
+    var self = this;
+
+    if(this.get('query').length < 4){
+      this.setProperties({
+        'searchResults': [],
+        'searchRequest': self.get('query')+' (too short, min. 4 chars)',
+        'performedSearch': true
+      });
+      return;
+    }
+
+    this.set('performingSearch', true);
+    ic.ajax({
+      url: '/search.json?type=full&query=' + this.get('query'),
+      type: "GET"
+    }).then(function(payload) {
+      self.set('performingSearch', false);
+      var query = self.get('query');
+      self.setProperties({
+        'searchResults': payload.search,
+        'searchRequest': query,
+        'performedSearch': true
+      });
+    });
   },
 
-  hasSearchTerm: function () {
-    return this.get('searchTerm').length !== 0;
-  }.property('searchTerm'),
-
-  filteredSearchResutlts: function () {
-    var filter, filterd, results;
-    results = this.get('searchResults');
-    filter = this.get('selectedFilter');
-    filterd = [];
-    jQuery.each(results, function (index, item) {
-      if (item.type === filter.toLowerCase() || filter === "Everything") {
-        if (item.title !== "") {
-          return filterd.push(item);
-        }
-      }
-    });
-    return filterd;
-  }.property('searchResults', 'selectedFilter'),
-
-  instantSearch: function () {
-    var _this = this
-      , blodhound = this.get('bhInstance')
-      , searchterm = this.get('searchTerm');
-    return blodhound.get(searchterm, function (suggestions) {
-      suggestions.pop();
-      return _this.set('searchResults', suggestions);
-    });
-  }.observes('searchTerm')
+  actions: {
+    submitSearch: function(){
+      this.performSearch();
+    }
+  }
 });

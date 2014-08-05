@@ -1,11 +1,12 @@
 class SearchController < ApplicationController
   STOP_WORDS = /season/i
 
-  def search_database (type, query, page)
+  def search_database (type, query, page, perpage = 20)
+    return [] if query.length < 3
     model = case type
-      when "anime" then Anime.page(page).per(20)
-      when "manga" then Manga.page(page).per(20)
-      when "character" then Character.page(page).per(20)
+      when "anime" then Anime.page(page).per(perpage)
+      when "manga" then Manga.page(page).per(perpage)
+      when "character" then Character.page(page).per(perpage)
     end
     list = model.simple_search_by_title(query)
     list = model.fuzzy_search_by_title(query) if list.length == 0
@@ -14,96 +15,60 @@ class SearchController < ApplicationController
 
   def basic
 
-    # What are we searching for?
-    @search_type = params[:type] || "anime"
+    @stype = params[:type] || "anime"
+    @query = params[:query] || ""
+    @page  = params[:page]
 
-    if @search_type == "anime"
-      query = (params[:query] || "").gsub(STOP_WORDS, '')
-      @results = search_database 'anime', query, params[:page]
+    case @stype
+      when "anime"
+        query = (@query || "").gsub(STOP_WORDS, '')
+        found = search_database 'anime', query, @page
 
-      @watchlist_status = {}
-      if user_signed_in?
-        current_user.watchlists.where(anime_id: @results.map {|x| x.id }).each do |w|
-          @watchlist_status[w.anime_id] = w.status
-        end
-      end
+        # TODO: Re-write broken watchlist stuff here
+        @results = found.map {|x| [x.title, x.alt_title] }.flatten.compact
 
-      respond_to do |format|
-        format.html { render "anime" }
-        format.json { render :json => @results.map {|x| [x.title, x.alt_title] }.flatten.compact }
-      end
+      when "manga"
+        query = (query || "").gsub(STOP_WORDS, '')
+        @results = search_database 'manga', query, @page
 
+      when "users"
+        @results = User.search(@query).page(@page).per(20)
 
+      when "users_to_follow"
+        @results = User.search(@query).page(@page).per(20)
 
-    elsif @search_type == "manga"
-      query = (params[:query] || "").gsub(STOP_WORDS, '')
-      @results = search_database 'manga', query, params[:page]
+      when "character"
+        @results = search_database 'character', @query, @page
 
-      respond_to do |format|
-        format.html { render :manga }
-      end
+      # Mixed search provides search results for the instant
+      # search field in the page header.
+      when "mixed"
+        anime = search_database 'anime', @query, @page
+        manga = search_database 'manga', @query, @page
+        users = User.match(@query)
+        users = User.search(@query).page(1).per(20) if users.length == 0
 
+        formattedAnime = anime.map { |x|
+          {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
+        }.flatten
+        formattedManga = manga.map { |x|
+          {:type => 'manga', :title => x.romaji_title, :image => x.poster_image_thumb, :link => "/manga/#{x.slug}" }
+        }.flatten
+        formattedUsers = users.map { |x|
+          {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" }
+        }.flatten
 
+        @results = [formattedAnime.take(3), formattedManga.take(3), formattedUsers.take(2)].flatten
 
-    elsif @search_type == "users"
-      @results = User.search(params[:query] || "askdhjfg").page(params[:page]).per(20)
-      render "users"
+      # Full search provides search results for the search page
+      # with more detailed information about anime, manga and users
+      # as well as a direct library / following widget (<- not yet)
+      when "full"
+        anime = search_database 'anime', @query, @page, 30
+        manga = search_database 'manga', @query, @page, 30
+        users = User.search(@query).page(1).per(20)
 
-    elsif @search_type == "users_to_follow"
-      @results = User.search(params[:query] || "askdhjfg").page(params[:page]).per(20)
-      render json: @results
-      #respond_to do |format|
-      #  format.json { render :json => @results.map {|x| {:id => x.id, :name => x.name} }.flatten.compact }
-      #end
-
-    elsif @search_type == "character"
-      @results = search_database 'character', params[:query], params[:page]
-
-      #respond_to do |format|
-       # format.json { render :json => @results.map {|x| {:id => x.id, :name => x.name} }.flatten.compact }
-     # end
-      render json: @results
-
-
-    # Mixed search for the instant search form in the header.
-    # This will only return minimal data about anime and users
-    elsif @search_type == "mixed"
-      anime = search_database 'anime', params[:query], params[:page]
-      manga = search_database 'manga', params[:query], params[:page]
-      users = User.match(params[:query])
-      users = User.search(params[:query]) if users.length == 0
-
-      formattedAnime = anime.map { |x|
-        {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
-      }.flatten
-      formattedManga = manga.map { |x|
-        {:type => 'manga', :title => x.romaji_title, :image => x.poster_image_thumb, :link => "/manga/#{x.slug}" }
-      }.flatten
-      formattedUsers = users.map { |x|
-        {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" }
-      }.flatten
-
-      respond_to do |format|
-        format.json { render :json => [formattedAnime.take(3), formattedManga.take(3), formattedUsers.take(2)].flatten }
-      end
-
-
-    # Mixed full search for the instant search form on the search page
-    # This will return all information about an anime or user
-    elsif @search_type == "full"
-      anime = search_database 'anime', params[:query], params[:page]
-      users = User.search(params[:query]).limit(20)
-
-      watchlist_status = {}
-      if user_signed_in?
-        current_user.watchlists.where(anime_id: anime.map {|x| x.id }).each do |w|
-          watchlist_status[w.anime_id] = w.status
-        end
-      end
-
-      formattedAnime = anime.map do |x|
-        {
-          :id => x.id,
+        formattedAnime = anime.map do |x| {
           :type => 'anime',
           :title => x.title,
           :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
@@ -111,12 +76,22 @@ class SearchController < ApplicationController
           :link => "/anime/#{x.slug}",
           :badges => [
             {:class => 'anime', :content => "Anime"},
-            {:class => 'episodes', :content => "#{x.show_type}, #{x.episode_count}"}
-          ]
-        }
-      end
-      formattedUsers = users.map { |x|
-        {
+            {:class => 'episodes', :content => "#{x.episode_count}ep &bull; #{x.episode_length}min"},
+            {:class => 'episodes', :content => "#{x.show_type} &bull; #{x.age_rating}"}
+          ]}
+        end
+        formattedManga = manga.map do |x| {
+          :type => 'manga',
+          :title => x.english_title,
+          :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
+          :image => x.poster_image_thumb,
+          :link => "/manga/#{x.slug}",
+          :badges => [
+            {:class => 'manga', :content => "Manga"},
+            {:class => 'episodes', :content => "#{x.volume_count}vol &bull; #{x.chapter_count}chap"}
+          ]}
+        end
+        formattedUsers = users.map do |x| {
           :type => 'user',
           :title => x.name,
           :desc => x.bio,
@@ -124,16 +99,18 @@ class SearchController < ApplicationController
           :link => "/users/#{x.name}",
           :badges => [
             {:class => 'user', :content => "User"}
-          ]
-        }
-      }
+          ]}
+        end
 
-      respond_to do |format|
-        format.json { render :json => [formattedAnime, formattedUsers, watchlist_status].flatten }
-      end
+        @results = [formattedAnime, formattedUsers].flatten
 
-    else
-      not_found!
+      else
+        not_found!
+    end
+
+    respond_to do |format|
+      format.html { render_ember }
+      format.json { render :json => @results }
     end
   end
 end

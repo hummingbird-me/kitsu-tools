@@ -21,6 +21,7 @@ Hummingbird.Router.map(function() {
     this.route('followers');
   });
 
+  this.route('search');
   this.route('sign-in');
   this.route('dashboard');
   this.route('development');

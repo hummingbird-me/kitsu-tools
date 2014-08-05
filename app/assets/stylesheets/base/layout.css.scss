@@ -891,7 +891,12 @@ Search page
           margin: 0 5px;
           font-size: 0.7em;
           font-weight: normal;
+          background: #eeeeee;
+          border-radius: 3px;
+          color: #333;
+          &.anime, &.manga, &.user { color: white; }
           &.anime { background: #3A5FCD; }
+          &.manga { background: #836FFF; }
           &.user  { background: #6959CD; }
         }
       }
