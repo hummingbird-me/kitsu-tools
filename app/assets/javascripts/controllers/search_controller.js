@@ -11,11 +11,9 @@ Hummingbird.SearchController = Ember.Controller.extend({
   filteredSearchResults: function(){
     var self = this;
     return this.get('searchResults').filter(function(result){
-      return (result.type == self.get('filter').toLowerCase() || "Everything" == self.get('filter'));
+      return (result.type === self.get('filter').toLowerCase() || "Everything" === self.get('filter'));
     });
   }.property('searchResults', 'filter'),
-
-
 
   // Devnote: For some reason, the Ember query parameter is not accesible
   // during init or after init._super(); This hack will trigger at the first
@@ -24,12 +22,12 @@ Hummingbird.SearchController = Ember.Controller.extend({
   timesQueryChanged: 0,
 
   countQueryChanged: function (){
-    this.incrementProperty('timesQueryChanged')
+    this.incrementProperty('timesQueryChanged');
   }.observes('query'),
 
   forcePerformSearch: function(){
     if(!this.get('performedSearch') && !Ember.empty(this.get('query')))
-      if(this.get('query').length > 2 && this.get('timesQueryChanged') == 0)
+      if(this.get('query').length > 2 && this.get('timesQueryChanged') === 0)
         this.performSearch();
   }.observes('query'),
 
