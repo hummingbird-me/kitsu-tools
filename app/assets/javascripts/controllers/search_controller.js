@@ -15,25 +15,13 @@ Hummingbird.SearchController = Ember.Controller.extend({
     });
   }.property('searchResults', 'filter'),
 
-  // Devnote: For some reason, the Ember query parameter is not accesible
-  // during init or after init._super(); This hack will trigger at the first
-  // query change unless the seach term is <2 chars long. (Ember beta build)
-  // On the first change, queryCounter actually still is set to zero.
-  timesQueryChanged: 0,
-
-  countQueryChanged: function (){
-    this.incrementProperty('timesQueryChanged');
+  observeQuery: function() {
+    if (this.get('query.length') > 2) {
+      Ember.run.debounce(this, this.performSearch, 500);
+    }
   }.observes('query'),
 
-  forcePerformSearch: function(){
-    if(!this.get('performedSearch') && !Ember.empty(this.get('query')))
-      if(this.get('query').length > 2 && this.get('timesQueryChanged') === 0)
-        this.performSearch();
-  }.observes('query'),
-
-
-
-  performSearch: function(){
+  performSearch: function() {
     var self = this;
 
     if(this.get('query').length < 4){
