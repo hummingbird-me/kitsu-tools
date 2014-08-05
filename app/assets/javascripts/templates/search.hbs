@@ -23,16 +23,16 @@
               <div class="col-md-8">
             --}}
               <a {{bind-attr href="result.link"}}>
-              <img {{bind-attr src="result.image"}} class="search-result-image" />
-              <div class="pull-right">
-                {{#each badge in result.badges}}
-                  <span {{bind-attr class=":badge badge.class"}}>{{{badge.content}}}</span>
-                {{/each}}
-              </div>
-              <p class="search-result-details">
-                <strong>{{result.title}}</strong><br />
-                {{result.desc}}
-              <p>
+                <img {{bind-attr src="result.image"}} class="search-result-image" />
+                <div class="pull-right">
+                  {{#each badge in result.badges}}
+                    <span {{bind-attr class=":badge badge.class"}}>{{{badge.content}}}</span>
+                  {{/each}}
+                </div>
+                <p class="search-result-details">
+                  <strong>{{result.title}}</strong><br />
+                  {{result.desc}}
+                <p>
               </a>
             {{!--
             </div>

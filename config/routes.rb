@@ -85,7 +85,7 @@ Hummingbird::Application.routes.draw do
   end
 
   # Search
-  get '/search(/:query)' => 'search#basic', as: :search
+  get '/search' => 'search#basic', as: :search
 
   # Imports
   post '/mal_import' => 'imports#new'

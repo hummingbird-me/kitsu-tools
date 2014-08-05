@@ -41,7 +41,7 @@ Hummingbird.SearchController = Ember.Controller.extend({
 
     this.set('performingSearch', true);
     ic.ajax({
-      url: '/search.json?type=full&query='+this.get('query'),
+      url: '/search.json?type=full&query=' + this.get('query'),
       type: "GET"
     }).then(function(payload) {
       self.set('performingSearch', false);
@@ -53,10 +53,6 @@ Hummingbird.SearchController = Ember.Controller.extend({
       });
     });
   },
-
-  hasquery: function () {
-    return this.get('query').length !== 0;
-  }.property('query'),
 
   actions: {
     submitSearch: function(){
