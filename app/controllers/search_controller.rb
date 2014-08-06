@@ -88,7 +88,7 @@ class SearchController < ApplicationController
           :link => x.slug,
           :badges => [
             {:class => 'manga', :content => "Manga"},
-            {:class => 'episodes', :content => "#{x.volume_count || ""}vol &bull; #{x.chapter_count || "?"}chap"}
+            {:class => 'episodes', :content => "#{x.volume_count || "?"}vol &bull; #{x.chapter_count || "?"}chap"}
           ]}
         end
         formattedUsers = users.map do |x| {
