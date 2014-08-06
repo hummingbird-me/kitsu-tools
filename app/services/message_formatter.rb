@@ -54,7 +54,7 @@ class MessageFormatter
       if @processed.strip.length > 0 && !(@processed =~ /(<br\s?\/?>\s*){2,}$/)
         @processed += "<br>"
       end
-      @processed += "<a href='#{link}'><img class='autoembed' src='#{link}' style='max-height: 500px; width: auto;' /></a>"
+      @processed += "<a href='#{link}' target='_blank'><img class='autoembed' src='#{link}' style='max-height: 500px; width: auto;' /></a>"
     elsif code = embeddable_video_code(link)
       delete_links
       @processed += "<div class='video-embed clearfix'><div class='video-wrapper'><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='http://youtube.com/embed/#{code}'> </iframe></div></div>"
