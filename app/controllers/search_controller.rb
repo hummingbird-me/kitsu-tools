@@ -95,7 +95,7 @@ class SearchController < ApplicationController
           :type => 'user',
           :title => x.name,
           :desc => x.bio,
-          :image => x.avatar_template,
+          :image => x.avatar_url,
           :link => "/users/#{x.name}",
           :badges => [
             {:class => 'user', :content => "User"}
