@@ -49,6 +49,7 @@ end
 after_fork do |server, worker|
   # the following is *required* for Rails + "preload_app true",
   ActiveRecord::Base.establish_connection
-  $redis = Redis.connect(host: ENV['REDIS_HOST'])
+
+  $redis = Redis.new(driver: :hiredis, host: ENV['REDIS_HOST'])
 end
 

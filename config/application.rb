@@ -9,7 +9,8 @@ end
 
 module Hummingbird
   class Application < Rails::Application
-    config.cache_store = :redis_store, "redis://#{ENV['REDIS_HOST'] || 'localhost'}:6379/0/cache"
+    config.cache_store = :redis_store,
+      (ENV["REDIS_URL"] || "redis://localhost:6379/0") + "/cache"
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
