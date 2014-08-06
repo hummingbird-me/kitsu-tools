@@ -4,7 +4,7 @@ class SearchController < ApplicationController
   def search_database (type, query, page, perpage = 20)
     return [] if query.length < 3
     model = case type
-      when "anime" then Anime.page(page).per(perpage)
+      when "anime" then Anime.page(page).per(perpage).sfw_filter(current_user)
       when "manga" then Manga.page(page).per(perpage)
       when "character" then Character.page(page).per(perpage)
     end
