@@ -82,13 +82,13 @@ class SearchController < ApplicationController
         end
         formattedManga = manga.map do |x| {
           :type => 'manga',
-          :title => x.english_title,
+          :title => x.romaji_title,
           :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
           :image => x.poster_image_thumb,
           :link => "/manga/#{x.slug}",
           :badges => [
             {:class => 'manga', :content => "Manga"},
-            {:class => 'episodes', :content => "#{x.volume_count}vol &bull; #{x.chapter_count}chap"}
+            {:class => 'episodes', :content => "#{x.volume_count || ""}vol &bull; #{x.chapter_count || "?"}chap"}
           ]}
         end
         formattedUsers = users.map do |x| {
