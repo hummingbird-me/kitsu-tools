@@ -73,7 +73,7 @@ class SearchController < ApplicationController
           :title => x.title,
           :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
           :image => x.poster_image_thumb,
-          :link => "/anime/#{x.slug}",
+          :link => x.slug,
           :badges => [
             {:class => 'anime', :content => "Anime"},
             {:class => 'episodes', :content => "#{x.episode_count}ep &bull; #{x.episode_length}min"},
@@ -85,7 +85,7 @@ class SearchController < ApplicationController
           :title => x.romaji_title,
           :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
           :image => x.poster_image_thumb,
-          :link => "/manga/#{x.slug}",
+          :link => x.slug,
           :badges => [
             {:class => 'manga', :content => "Manga"},
             {:class => 'episodes', :content => "#{x.volume_count || ""}vol &bull; #{x.chapter_count || "?"}chap"}
@@ -96,7 +96,7 @@ class SearchController < ApplicationController
           :title => x.name,
           :desc => x.bio,
           :image => x.avatar_url,
-          :link => "/users/#{x.name}",
+          :link => x.name,
           :badges => [
             {:class => 'user', :content => "User"}
           ]}

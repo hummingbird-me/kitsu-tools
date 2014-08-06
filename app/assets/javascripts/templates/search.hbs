@@ -22,7 +22,7 @@
             <li class="search-result row">
               <div class="col-md-8">
             --}}
-              <a {{bind-attr href="result.link"}}>
+              {{#link-to result.type result.link}}
                 <img {{bind-attr src="result.image"}} class="search-result-image" />
                 <div class="pull-right">
                   {{#each badge in result.badges}}
@@ -33,7 +33,7 @@
                   <strong>{{result.title}}</strong><br />
                   {{result.desc}}
                 <p>
-              </a>
+              {{/link-to}}
             {{!--
             </div>
             <div class="col-md-4">
