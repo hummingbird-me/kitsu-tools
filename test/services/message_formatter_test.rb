@@ -46,6 +46,12 @@ class MessageFormatterTest < ActiveSupport::TestCase
     assert_match /http:\/\/youtube.com\/embed\/v8YEw6JaM3c/, format
   end
 
+  test "does not embed youtube user pages" do
+    format = format("https://www.youtube.com/user/numberphile")
+
+    assert_no_match /iframe/, format
+  end
+
   test "removes original embedded link URL" do
     fmt = format("message http://i.imgur.com/CUjJQap.gif")
     noko = Nokogiri::HTML.parse fmt

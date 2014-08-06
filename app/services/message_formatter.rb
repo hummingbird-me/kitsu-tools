@@ -72,7 +72,7 @@ class MessageFormatter
   end
 
   def embeddable_video_code(link)
-    return unless match_data = /(?:http:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/.match(link)
+    return unless match_data = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?([\w-]+)$/.match(link)
     match_data[1]
   rescue
     nil
