@@ -36,7 +36,9 @@ class StorySerializer < ActiveModel::Serializer
   end
 
   def substory_count
-    object.substories.count
+    count = object.substories.count
+    count -= 1 if object.story_type == "comment"
+    count
   end
 
   def substories
