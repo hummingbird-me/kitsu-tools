@@ -3,10 +3,15 @@
     <div class="col-md-6">
       {{#each}}
         <div class="notification-panel">
-          <img {{bind-attr src=source_avatar}} />
-          <strong>{{source_user}}</strong> wrote a comment on your profile.
+          <img {{bind-attr src=sourceAvatar}} />
+          {{#if isProfileComment}}
+            <strong>{{sourceUser}}</strong> wrote a comment on your profile.
+          {{/if}}
+          {{#if isCommentReply}}
+            <strong>{{sourceUser}}</strong> wrote a reply to your comment.
+          {{/if}}
           <p class="time-ago">
-            {{time-ago time=created_at}}
+            {{time-ago time=createdAt}}
           </p>
         </div>
       {{/each}}

@@ -10,12 +10,21 @@ class SubstoriesController < ApplicationController
 
     params.require(:substory).permit(:type).permit(:story_id).permit(:reply)
 
+    story = Story.find(params[:substory][:story_id])
+
     substory = Substory.create(
       user: current_user,
       substory_type: "reply",
-      story: Story.find(params[:substory][:story_id]),
+      story: story,
       data: {reply: params[:substory][:reply]}
     )
+    if current_user != story.user
+      Notification.create(
+        notification_type: "comment_reply",
+        user: current_user,
+        source: story
+      )
+    end
 
     render json: substory
   end

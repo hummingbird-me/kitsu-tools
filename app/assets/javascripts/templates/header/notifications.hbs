@@ -9,20 +9,23 @@
   <ul class='dropdown-menu notification-dropdown right-nav-section'>
     {{#each limitedNotifications}}
       <li {{bind-attr class=":notification-element seen:nonew:new"}}>
-        {{#link-to 'user.index' controller.currentUser classNames="clearfix"}}
+        <a {{bind-attr href=link}}>
           <div class='col-xs-1 col-sm-1 col-md-1 user-avatar'>
-            <img {{bind-attr src="source_avatar"}}>
+            <img {{bind-attr src="sourceAvatar"}}>
           </div>
           <div class='col-xs-11 col-sm-11 col-md-11 user-info'>
             <h5 class='username'>
-              {{source_user}}
-              <small class='user-action'>
-                wrote a comment on your profile.
-              </small>
+              {{sourceUser}}
+              {{#if isProfileComment}}
+                <small class='user-action'>wrote a comment on your profile.</small>
+              {{/if}}
+              {{#if isCommentReply}}
+                <small class='user-action'>wrote a reply to your comment.</small>
+              {{/if}}
             </h5>
             <small>{{time-ago time=created_at}}</small>
           </div>
-        {{/link-to}}
+        </a>
       </li>
     {{else}}
       <li class="no-notifications">

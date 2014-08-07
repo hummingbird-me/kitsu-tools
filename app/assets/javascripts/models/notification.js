@@ -1,8 +1,15 @@
 Hummingbird.Notification = DS.Model.extend({
-  source_type: DS.attr('string'),
-  source_user: DS.attr('string'),
-  source_avatar: DS.attr('string'),
-  created_at: DS.attr('date'),
-  notification_type: DS.attr('string'),
-  seen: DS.attr('boolean')
+  sourceType: DS.attr('string'),
+  sourceUser: DS.attr('string'),
+  sourceAvatar: DS.attr('string'),
+  createdAt: DS.attr('date'),
+  notificationType: DS.attr('string'),
+  seen: DS.attr('boolean'),
+
+  isProfileComment: Em.computed.equal('notificationType', "profile_comment"),
+  isCommentReply: Em.computed.equal('notificationType', "comment_reply"),
+
+  link: function() {
+    return "/notifications/" + this.get('id');
+  }.property('id')
 });

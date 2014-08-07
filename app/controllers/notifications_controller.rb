@@ -25,6 +25,8 @@ class NotificationsController < ApplicationController
       Notification.uncache_notification_cache(current_user.id)
       if notification.notification_type == "profile_comment"
         redirect_to user_path(current_user)
+      elsif notification.notification_type == "comment_reply"
+        redirect_to user_path(notification.source.user)
       end
     end
   end
