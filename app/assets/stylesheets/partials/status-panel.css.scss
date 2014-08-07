@@ -84,6 +84,10 @@
     margin-bottom: 15px;
   }
 
+  .post-content {
+    @extend .col-sm-12;
+  }
+
   .user-image {
     @extend .col-xs-2;
     @extend .col-sm-1;
@@ -225,7 +229,8 @@
 
   .actions {
     @extend .row;
-    padding: 0 15px;
+    margin: 0;
+    padding: 0;
   }
 
   .btn {
@@ -240,14 +245,18 @@
 
   .reply-button {
     float: right;
+    border-left: 1px solid #e0e0e0;
   }
 
   .reply-form {
+    padding: 10px;
+    margin-bottom: -2px;
     border-top: 1px solid #e0e0e0;
 
     textarea {
       width: 100%;
-      border: 0;
+      border: 1px solid #ddd;
+      border-radius: 3px;
       padding: 10px;
     }
   }
@@ -257,6 +266,8 @@
 
     border-top: 1px solid #e0e0e0;
     padding: 10px;
+    margin-left: 0;
+    margin-right: 0;
 
     &.is-new {
       opacity: 0.4;
@@ -264,10 +275,28 @@
 
     .user-avatar {
       @extend .col-xs-1;
+
+      padding-left: 0;
+      padding-right: 10px;
     }
 
     .content {
       @extend .col-xs-11;
+
+      font-size: 14px;
+      padding-left: 0;
+    }
+
+    .username a {
+      color: #333;
+      font-weight: bold;
+    }
+
+    .remove-post {
+      color: #999999;
+      &:hover {
+        color: #c0392b;
+      }
     }
 
     p {
