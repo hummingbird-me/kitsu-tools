@@ -21,8 +21,8 @@ class SubstoriesController < ApplicationController
     if current_user != story.user
       Notification.create(
         notification_type: "comment_reply",
-        user: current_user,
-        source: story
+        user: story.user,
+        source: substory
       )
     end
 
