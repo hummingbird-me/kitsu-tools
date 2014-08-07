@@ -4,9 +4,7 @@
 //= require hummingbird
 
 // Initialize FastClick.
-$(function() {
-  new FastClick(document.body);
-});
+$(function() { new FastClick(document.body); });
 
 // Plural of anime is anime.
 Ember.Inflector.inflector.rules.uncountable.anime = true;
