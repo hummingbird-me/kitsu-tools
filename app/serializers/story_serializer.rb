@@ -20,7 +20,8 @@ class StorySerializer < ActiveModel::Serializer
   end
 
   def comment
-    first_substory = object.substories.first
+    first_substory = object.substories.select {|x| x.substory_type == "comment" }.try(:first)
+    return unless first_substory
     first_substory.data["formatted_comment"]
   end
   def include_comment?
@@ -39,6 +40,7 @@ class StorySerializer < ActiveModel::Serializer
   end
 
   def substories
-    object.substories.sort_by {|x| x.created_at }.reverse.take(2)
+    object.substories.reject {|x| x.substory_type == "comment" }
+                     .sort_by {|x| x.created_at }.reverse.take(2)
   end
 end

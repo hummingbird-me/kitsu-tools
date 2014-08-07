@@ -55,7 +55,8 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
           story: self.get('model'),
           user: user,
           type: "reply",
-          reply: self.get('reply')
+          reply: self.get('reply'),
+          createdAt: new Date()
         });
         reply.save();
         self.incrementProperty('substoryCount');
@@ -84,7 +85,11 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
     },
 
     deleteSubstory: function(substory) {
-      substory.destroyRecord();
+      var self = this;
+      substory.destroyRecord().then(function() {
+        self.get('model.substories').removeObject(substory);
+        self.decrementProperty('substoryCount');
+      });
     },
 
     toggleFullPost: function() {
