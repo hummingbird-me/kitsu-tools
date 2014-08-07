@@ -50,7 +50,7 @@
     {{/if}}
   {{/if}}
   {{#each substory in displaySubstories}}
-    <div class="reply">
+    <div {{bind-attr class=":reply substory.isNew"}}>
       {{#link-to 'user' substory.user}}
         {{substory.user.username}}
       {{/link-to}}
