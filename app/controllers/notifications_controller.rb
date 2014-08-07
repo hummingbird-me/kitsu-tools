@@ -26,7 +26,7 @@ class NotificationsController < ApplicationController
       if notification.notification_type == "profile_comment"
         redirect_to user_path(current_user)
       elsif notification.notification_type == "comment_reply"
-        redirect_to user_path(notification.source.user)
+        redirect_to user_path(notification.source.story.user)
       end
     end
   end
