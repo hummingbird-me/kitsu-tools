@@ -17,10 +17,16 @@ class Notification < ActiveRecord::Base
   belongs_to :user
   belongs_to :source, polymorphic: true
 
-  def image
+  def source_user
     if notification_type == "profile_comment"
-      source.target.avatar.url(:thumb_small)
+      source.target
+    elsif notification_type == "comment_reply"
+      source.user
     end
+  end
+
+  def image
+    source_user.avatar.url(:thumb_small)
   end
 
   def self.unseen_count(user_id)

@@ -19,6 +19,8 @@ class Substory < ActiveRecord::Base
   belongs_to :story
   validates :user, :substory_type, presence: true
 
+  has_many :notifications, as: :source, dependent: :destroy
+
   after_create do
     self.story.set_last_update_time! self.created_at
     self.story.save
