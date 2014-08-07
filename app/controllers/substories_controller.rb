@@ -2,7 +2,11 @@ class SubstoriesController < ApplicationController
   def index
     params.require(:story_id)
     story = Story.for_user(current_user).find_by(id: params[:story_id])
-    render json: story.try(:substories)
+    substories = story.try(:substories)
+    if story && story.story_type == "comment"
+      substories = substories.where("substory_type <> 'comment'")
+    end
+    render json: substories
   end
 
   def create
