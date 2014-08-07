@@ -16,7 +16,7 @@ class SubstoriesController < ApplicationController
       user: current_user,
       substory_type: "reply",
       story: story,
-      data: {reply: params[:substory][:reply]}
+      data: {reply: MessageFormatter.format_message(params[:substory][:reply])}
     )
     if current_user != story.user
       Notification.create(
