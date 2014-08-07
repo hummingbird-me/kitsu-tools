@@ -221,6 +221,53 @@
   }
 }
 
+.comment-replies {
+  @extend .panel-footer;
+
+  padding: 0;
+  font-size: 0.8em;
+
+  .actions {
+    @extend .row;
+    padding: 0 15px;
+  }
+
+  .btn {
+    display: inline-block;
+    color: #666;
+    border-radius: 0;
+
+    .fa {
+      margin-right: 2px;
+    }
+  }
+
+  .reply-button {
+    float: right;
+  }
+
+  .reply-form {
+    border-top: 1px solid #e0e0e0;
+
+    textarea {
+      width: 100%;
+      border: 0;
+      padding: 10px;
+    }
+  }
+
+  .reply {
+    border-top: 1px solid #e0e0e0;
+    padding: 15px;
+  }
+
+  .view-more {
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    padding: 10px;
+  }
+}
+
 .status-toolbar {
   padding-top: 0;
   padding-bottom: 0;

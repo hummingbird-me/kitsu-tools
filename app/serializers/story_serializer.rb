@@ -41,7 +41,4 @@ class StorySerializer < ActiveModel::Serializer
   def substories
     object.substories.sort_by {|x| x.created_at }.reverse.take(2)
   end
-  def include_substories?
-    ["media_story", "followed"].include? object.story_type
-  end
 end

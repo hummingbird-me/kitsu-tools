@@ -5,6 +5,21 @@ class SubstoriesController < ApplicationController
     render json: story.try(:substories)
   end
 
+  def create
+    authenticate_user!
+
+    params.require(:substory).permit(:type).permit(:story_id).permit(:reply)
+
+    substory = Substory.create(
+      user: current_user,
+      substory_type: "reply",
+      story: Story.find(params[:substory][:story_id]),
+      data: {reply: params[:substory][:reply]}
+    )
+
+    render json: substory
+  end
+
   def destroy
     authenticate_user!
     params.require(:id)

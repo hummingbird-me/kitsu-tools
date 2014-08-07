@@ -1,7 +1,7 @@
 class SubstorySerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :type, :created_at, :new_status, :episode_number
+  attributes :id, :type, :created_at, :new_status, :episode_number, :reply
 
   has_one :user, embed_key: :name
 
@@ -23,10 +23,22 @@ class SubstorySerializer < ActiveModel::Serializer
     object.substory_type == "watched_episode"
   end
 
+  def reply
+    object.data["reply"]
+  end
+  def include_reply?
+    object.substory_type == "reply"
+  end
+
   def user
-    object.target
+    case object.substory_type
+    when "followed"
+      object.target
+    when "reply"
+      object.user
+    end
   end
   def include_user?
-    object.substory_type == "followed"
+    %w[followed reply].include? object.substory_type
   end
 end

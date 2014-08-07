@@ -11,6 +11,9 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
   overflowing: false,
   showMoreText: 'Show More',
 
+  // Comment replies.
+  showReplyForm: false,
+
   showAll: false,
   loadingAll: false,
   loadedAll: Hummingbird.computed.propertyEqual('substories.length', 'model.substoryCount'),
@@ -38,9 +41,29 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
     } else {
       return sorted;
     }
-  }.property('substories', 'showAll'),
+  }.property('substories.@each', 'showAll'),
 
   actions: {
+    toggleShowReplyForm: function() {
+      this.toggleProperty('showReplyForm');
+    },
+
+    submitReply: function() {
+      var self = this;
+      this.store.find('user', this.get('currentUser.id')).then(function(user) {
+        var reply = self.store.createRecord('substory', {
+          story: self.get('model'),
+          user: user,
+          type: "reply",
+          reply: self.get('reply')
+        });
+        reply.save();
+        self.incrementProperty('substoryCount');
+        self.get('model.substories').addObject(reply);
+        self.set('reply', '');
+      });
+    },
+
     toggleShowAll: function () {
       var self = this;
       if (!this.get('loadedAll')) {

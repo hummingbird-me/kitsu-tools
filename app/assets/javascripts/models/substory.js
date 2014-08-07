@@ -3,7 +3,9 @@ Hummingbird.Substory = DS.Model.extend({
   createdAt: DS.attr('date'),
   newStatus: DS.attr('string'),
   episodeNumber: DS.attr('number'),
+  reply: DS.attr('string'),
   user: DS.belongsTo('user'),
+  story: DS.belongsTo('story'),
 
   html: function() {
     if (this.get('type') === "watchlist_status_update") {

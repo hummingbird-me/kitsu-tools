@@ -35,3 +35,45 @@
     {{/if}}
   </div>
 </div>
+
+<div class="comment-replies">
+  {{#if currentUser.isSignedIn}}
+    <div class="actions">
+      <div class="btn reply-button" {{action toggleShowReplyForm}}>
+        <i class="fa fa-reply"></i> Reply
+      </div>
+    </div>
+    {{#if showReplyForm}}
+      <div class="reply-form">
+        {{expanding-textarea value=reply rows="1" placeholder="Write something interesting..." enterAction="submitReply"}}
+      </div>
+    {{/if}}
+  {{/if}}
+  {{#each substory in displaySubstories}}
+    <div class="reply">
+      {{#link-to 'user' substory.user}}
+        {{substory.user.username}}
+      {{/link-to}}
+      {{substory.reply}}
+      {{time-ago time=substory.createdAt}}
+      {{#if canDeleteStory}}
+        <a class="remove-post" {{action deleteSubstory substory}}>remove</a>
+      {{/if}}
+    </div>
+  {{/each}}
+  {{#if moreThanTwoSubstories}}
+    <div class="view-more">
+      {{#if loadingAll}}
+        <i class="fa fa-spin fa-spinner"></i>
+      {{else}}
+        <a {{action "toggleShowAll"}}>
+          {{#if showAll}}
+            Show Less
+          {{else}}
+            Show More
+          {{/if}}
+        </a>
+      {{/if}}
+    </div>
+  {{/if}}
+</div>
