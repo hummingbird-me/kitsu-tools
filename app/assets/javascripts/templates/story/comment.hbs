@@ -53,14 +53,32 @@
   {{/if}}
   {{#each substory in displaySubstories}}
     <div {{bind-attr class=":reply substory.isNew"}}>
-      {{#link-to 'user' substory.user}}
-        {{substory.user.username}}
-      {{/link-to}}
-      {{substory.reply}}
-      {{time-ago time=substory.createdAt}}
-      {{#if canDeleteStory}}
-        <a class="remove-post" {{action deleteSubstory substory}}>remove</a>
-      {{/if}}
+      <div class="user-avatar">
+        {{#link-to 'user' substory.user}}
+          {{avatar substory.user 'thumb_small'}}
+        {{/link-to}}
+      </div>
+      <div class="content">
+        <p>
+          <span class="username">
+            {{#link-to 'user' substory.user}}
+              {{substory.user.username}}
+            {{/link-to}}
+          </span>
+          <span class="comment">
+            {{substory.reply}}
+          </span>
+        </p>
+        <p class="secondary">
+          {{time-ago time=substory.createdAt}}
+          {{#if canDeleteStory}}
+            ·
+            <a class="remove-post" {{action deleteSubstory substory}}>remove</a>
+          {{/if}}
+        </p>
+      </div>
+
+
     </div>
   {{/each}}
   {{#if moreThanTwoSubstories}}

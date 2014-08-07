@@ -253,11 +253,25 @@
   }
 
   .reply {
+    @extend .row;
+
     border-top: 1px solid #e0e0e0;
-    padding: 15px;
+    padding: 10px;
 
     &.is-new {
       opacity: 0.4;
+    }
+
+    .user-avatar {
+      @extend .col-xs-1;
+    }
+
+    .content {
+      @extend .col-xs-11;
+    }
+
+    p {
+      margin: 0;
     }
   }
 
