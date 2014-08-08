@@ -26,7 +26,7 @@
   </div>
   <div class="row">
     <div class="post-content clearfix">
-        <p {{bind-attr class=":comment-text isExpanded:full-post" }}>{{{comment}}}</p>
+      <p {{bind-attr class=":comment-text isExpanded:full-post" }}>{{{comment}}}</p>
     </div>
     {{#if overflowing}}
       <div class="view-more">
@@ -43,11 +43,6 @@
         <i class="fa fa-reply"></i> Reply
       </div>
     </div>
-    {{#if showReplyForm}}
-      <div class="reply-form">
-        {{expanding-textarea value=reply rows="1" placeholder="Write something interesting..." enterAction="submitReply"}}
-      </div>
-    {{/if}}
   {{/if}}
   {{#each substory in displaySubstories}}
     <div {{bind-attr class=":reply substory.isNew"}}>
@@ -75,8 +70,6 @@
           {{/if}}
         </p>
       </div>
-
-
     </div>
   {{/each}}
   {{#if moreThanTwoSubstories}}
@@ -93,5 +86,12 @@
         </a>
       {{/if}}
     </div>
+  {{/if}}
+  {{#if currentUser.isSignedIn}}
+    {{#if showReplyForm}}
+      <div class="reply-form">
+        {{expanding-textarea value=reply rows="1" placeholder="Write something interesting..." enterAction="submitReply"}}
+      </div>
+    {{/if}}
   {{/if}}
 </div>
