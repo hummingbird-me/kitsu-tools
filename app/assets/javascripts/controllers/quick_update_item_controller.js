@@ -9,7 +9,7 @@ Hummingbird.QuickUpdateItemController = Ember.ObjectController.extend({
         episodeCount = this.get('anime.episodeCount');
 
     if (episodeCount) {
-      return Math.ceil(100 * episodesWatched / episodeCount);
+      return Math.floor(100 * episodesWatched / episodeCount);
     } else {
       return "?";
     }
