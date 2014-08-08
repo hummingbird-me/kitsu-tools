@@ -226,6 +226,7 @@
 
   padding: 0;
   font-size: 0.8em;
+  border-top: none;
 
   .actions {
     @extend .row;
@@ -439,7 +440,7 @@
       margin-top: 5px;
       margin-bottom: 5px;
     }
-    
+
     .comment-content {
       @media (max-width: 991px) {
         padding-left: 0;
