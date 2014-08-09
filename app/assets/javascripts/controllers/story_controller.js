@@ -11,9 +11,6 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
   overflowing: false,
   showMoreText: 'Show More',
 
-  // Comment replies.
-  showReplyForm: false,
-
   showAll: false,
   loadingAll: false,
   loadedAll: Hummingbird.computed.propertyEqual('substories.length', 'model.substoryCount'),
@@ -44,10 +41,6 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
   }.property('substories.@each', 'showAll'),
 
   actions: {
-    toggleShowReplyForm: function() {
-      this.toggleProperty('showReplyForm');
-    },
-
     submitReply: function() {
       var self = this;
       this.store.find('user', this.get('currentUser.id')).then(function(user) {

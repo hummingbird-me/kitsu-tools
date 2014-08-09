@@ -26,7 +26,7 @@
   </div>
   <div class="row">
     <div class="post-content clearfix">
-        <p {{bind-attr class=":comment-text isExpanded:full-post" }}>{{{comment}}}</p>
+      <p {{bind-attr class=":comment-text isExpanded:full-post" }}>{{{comment}}}</p>
     </div>
     {{#if overflowing}}
       <div class="view-more">
@@ -37,17 +37,22 @@
 </div>
 
 <div class="comment-replies">
-  {{#if currentUser.isSignedIn}}
+  {{#if moreThanTwoSubstories}}
     <div class="actions">
-      <div class="btn reply-button" {{action toggleShowReplyForm}}>
-        <i class="fa fa-reply"></i> Reply
+      <div class="view-more">
+        {{#if loadingAll}}
+          <i class="fa fa-spin fa-spinner"></i>
+        {{else}}
+          <a {{action "toggleShowAll"}}>
+            {{#if showAll}}
+              Show Less
+            {{else}}
+              Show All {{substoryCount}} Replies
+            {{/if}}
+          </a>
+        {{/if}}
       </div>
     </div>
-    {{#if showReplyForm}}
-      <div class="reply-form">
-        {{expanding-textarea value=reply rows="1" placeholder="Write something interesting..." enterAction="submitReply"}}
-      </div>
-    {{/if}}
   {{/if}}
   {{#each substory in displaySubstories}}
     <div {{bind-attr class=":reply substory.isNew"}}>
@@ -79,19 +84,9 @@
 
     </div>
   {{/each}}
-  {{#if moreThanTwoSubstories}}
-    <div class="view-more">
-      {{#if loadingAll}}
-        <i class="fa fa-spin fa-spinner"></i>
-      {{else}}
-        <a {{action "toggleShowAll"}}>
-          {{#if showAll}}
-            Show Less
-          {{else}}
-            Show All {{substoryCount}} Replies
-          {{/if}}
-        </a>
-      {{/if}}
+  {{#if currentUser.isSignedIn}}
+    <div class="reply-form">
+      {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
     </div>
   {{/if}}
 </div>
