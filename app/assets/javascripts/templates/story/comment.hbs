@@ -37,24 +37,27 @@
 </div>
 
 <div class="comment-replies">
-  {{#if moreThanTwoSubstories}}
+  {{!--
     <div class="actions">
-      <div class="view-more">
-        {{#if loadingAll}}
-          <i class="fa fa-spin fa-spinner"></i>
-        {{else}}
-          <a {{action "toggleShowAll"}}>
-            {{#if showAll}}
-              Show Less
-            {{else}}
-              Show All {{substoryCount}} Replies
-            {{/if}}
-          </a>
-        {{/if}}
-      </div>
+      TODO Likes, reposts, like / respost buttons.
+    </div>
+  --}}
+  {{#if moreThanTwoSubstories}}
+    <div class="view-more">
+      {{#if loadingAll}}
+        <i class="fa fa-spin fa-spinner"></i>
+      {{else}}
+        <a {{action "toggleShowAll"}}>
+          {{#if showAll}}
+            Show Less
+          {{else}}
+            Show All {{substoryCount}} Replies
+          {{/if}}
+        </a>
+      {{/if}}
     </div>
   {{/if}}
-  {{#each substory in displaySubstories}}
+  {{#each substory in reversedDisplaySubstories}}
     <div {{bind-attr class=":reply substory.isNew"}}>
       <div class="user-avatar">
         {{#link-to 'user' substory.user}}

@@ -40,6 +40,10 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
     }
   }.property('substories.@each', 'showAll'),
 
+  reversedDisplaySubstories: function() {
+    return this.get('displaySubstories').reverse();
+  }.property('displaySubstories.@each'),
+
   actions: {
     submitReply: function() {
       var self = this;
