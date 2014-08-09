@@ -445,5 +445,9 @@
 .series-gallery {
   @extend .col-sm-6;
   padding-right: 0;
+  img {
+    width: 100%;
+    height: 150px;
+  }
 }
 
