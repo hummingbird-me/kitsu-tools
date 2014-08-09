@@ -72,10 +72,10 @@
           {{#link-to 'user.reviews'}}Reviews{{/link-to}}
         </li>
         <li class="nav-link">
-          {{#link-to 'user.following'}}Following{{/link-to}}
+          {{#link-to 'user.following'}}Following ({{followingCount}}){{/link-to}}
         </li>
         <li class="nav-link">
-          {{#link-to 'user.followers'}}Followers{{/link-to}}
+          {{#link-to 'user.followers'}}Followers ({{followerCount}}){{/link-to}}
         </li>
         <li class="nav-link">
           <a {{bind-attr href=forumProfile}}>Forums</a>
