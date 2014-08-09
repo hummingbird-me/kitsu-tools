@@ -87,6 +87,49 @@
             letter-spacing: 1px;
           }
         }
+        .cast {
+          overflow: hidden;
+        }
+        .casting {
+          margin-top: 5px;
+        }
+        .character {
+          background: #fff;
+          padding: 16px 0;
+          padding-right: 5px;
+          color: #222;
+        }
+
+        .voice-actor {
+          background: #fff;
+          padding: 16px 0;
+          padding-left: 5px;
+        }
+
+        img {
+          vertical-align: middle;
+          margin-right: 5px;
+          width: 30px;
+          height: 39px;
+        }
+
+        .va {
+          float: right;
+          img {
+            margin-right: 0px;
+            margin-left: 5px;
+          }
+        }
+
+        .actor {
+          &:before {
+            float: left;
+            width: 0;
+            margin-top: 11px;
+            white-space: nowrap;
+            content: ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . ";
+          }
+        }
         .actor:before {
           color:  #838c9a;
           margin-top: 7px;
@@ -97,6 +140,28 @@
         }
         .character {
           padding-left: 0;
+        }
+      }
+      .tab-pane {
+        padding-top: 15px;
+        border: 1px solid #838c9a;
+        margin-bottom: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 10px;
+        border-radius: 3px;
+        border-top-left-radius: 0;
+
+        .rounded-block {
+          border: none;
+          border-bottom: 1px solid #ddd;
+          margin-bottom: 0;
+          border-radius: 0;
+
+          &:hover {
+            border: none;
+            border-bottom: 1px solid #ddd;
+          }
         }
       }
       .nav-tabs {
@@ -143,14 +208,12 @@
     @media (max-width: 768px) {
       width: 100%;
       padding: 15px;
-      .top-buttons {
-        width: 100%;
-        float: left;
-      }
     }
     .top-buttons {
       margin-bottom: 5px;
-      padding-top: 15px;
+      float: left;
+      width: 100%;
+      padding: 15px 15px 0 15px;
       .btn-group {
         width: 100%;
         .btn {
@@ -237,7 +300,7 @@
       border-radius: 3px;
       .personal-rating {
         border-top: 1px solid #000;
-        padding: 15px 0 5px 0;
+        padding: 5px 0 5px 0;
         .icon-container .fa {
           transition: all .2s ease-in;
           &:hover {
