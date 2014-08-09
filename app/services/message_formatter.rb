@@ -46,7 +46,7 @@ class MessageFormatter
     links = noko.css('a').map {|link| link['href'] }
 
     # Only do autoembedding if there is exactly one embeddable link.
-    embeddable_links = links.select{|link| embeddable_image?(link) || embeddable_video_code != nil}
+    embeddable_links = links.select{|link| embeddable_image?(link) || embeddable_video_code(link) != nil}
     return if embeddable_links.length != 1
     link = embeddable_links.first
 
