@@ -19,13 +19,42 @@ Hummingbird.AnimeController = Ember.ObjectController.extend(Hummingbird.HasCurre
     return (!Ember.isNone(this.get('model.libraryEntry'))) && (!this.get('model.libraryEntry.isDeleted'));
   }.property('model.libraryEntry', 'model.libraryEntry.isDeleted'),
 
-  amazonLink: function() {
-    return "http://www.amazon.com/s/?field-keywords=" + encodeURIComponent(this.get('model.canonicalTitle')) + "&tag=hummingbir0fe-20";
-  }.property('model.canonicalTitle'),
+  activeTab: "Genres",
+  language: null,
+
+  showGenres: Ember.computed.equal('activeTab', 'Genres'),
+  showFranchise: Ember.computed.equal('activeTab', 'Franchise'),
+  showQuotes: Ember.computed.equal('activeTab', 'Quotes'),
+  showStudios: Ember.computed.equal('activeTab', 'Studios'),
+  showCast: Ember.computed.equal('activeTab', 'Cast'),
+
+  filteredCast: function () {
+    return this.get('model.featuredCastings').filterBy('language', this.get('language'));
+  }.property('model.featuredCastings', 'language'),
+
 
   // Legacy -- remove after Ember transition is complete.
   newReviewURL: function() {
     return "/anime/" + this.get('model.id') + "/reviews/new";
-  }.property('model.id')
+  }.property('model.id'),
+  fullQuotesURL: function () {
+    return "/anime/" + this.get('model.id') + "/quotes";
+  }.property('model.id'),
+  fullReviewsURL: function () {
+    return "/anime/" + this.get('model.id') + "/reviews";
+  }.property('model.id'),
   // End Legacy
+
+  actions: {
+    switchTo: function (newTab) {
+      this.set('activeTab', newTab);
+      if (newTab === "Franchise") {
+        return this.get('model.franchise');
+      }
+    },
+    setLanguage: function (language) {
+      this.set('language', language);
+      return this.send('switchTo', 'Cast');
+    }
+  }
 });

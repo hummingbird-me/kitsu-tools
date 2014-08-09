@@ -1,13 +1,11 @@
 <div class="series-header">
-  {{!-- <div class="bg-image-wrapper series" {{bind-attr style=coverImageStyle}}></div> --}}
-  <div class="bg-image-wrapper series" style="background: url('http://static.hummingbird.me/anime/cover_images/000/007/442/thumb/Attack-On-Titan-HD-Wallpapers-Pack2.jpg?1384816727'); background-position: 50% -0px;"></div>
+  <div class="bg-image-wrapper series" {{bind-attr style=coverImageStyle}}></div>
   <div class="container">
 
     {{!-- Anime poster image --}}
     <div class="poster-container">
       {{#link-to 'anime.index'}}
-        {{!-- <img class="series-poster" {{bind-attr src=posterImage}}> --}}
-        <img class="series-poster" src="http://static.hummingbird.me/anime/poster_images/000/007/442/large/7442.png?1383501242">
+        <img class="series-poster" {{bind-attr src=posterImage}}>
       {{/link-to}}
     </div>
 
@@ -24,8 +22,7 @@
       <div class="synopsis">
         <p>{{truncate-text text=synopsis length=500}}</p>
       </div>
-      {{!-- This is literally just copy-pasted static html from production. Needs replaced with the actual code. 
-      I don't understand handlebars or emblem well enough to convert between the two while maintaining functionality. --}}
+
       {{partial "anime/info_tabs"}}
     </div>
     <div class="right-column">
@@ -69,6 +66,7 @@
   </div>
 </div>
 
+{{!--
 <div class="episode-bar">
   <div class="container">
     <h2 class="grey-title"> 
@@ -139,7 +137,7 @@
             <a href="#">
               <img src="http://ib3.huluim.com/video/60214794?size=220x124&amp;region=us">
               <div class="description">
-                <div class="title">Episode 5</div>  
+                <div class="title">Episode 5</div>
               </div>
               <div class="play-icon">
                 <i class="fa fa-play"></i>
@@ -150,12 +148,13 @@
       </ul>
   </div>
 </div>
+--}}
 
 <div class="container">
   <div class="series-reviews">
-    <h2 class="grey-title"> 
+    <h2 class="grey-title">
       <a href="#">
-        Reviews 
+        Reviews
         <i class="fa fa-angle-right"></i>
       </a>
     </h1>
