@@ -17,11 +17,12 @@
   .middle-column {
      @extend .col-sm-7;
      .series-title {
-      color: #eaeaea;
-      margin-top: 0;
-      .alternate-title {
-        color: #b3b3b3;
-      }
+       color: #eaeaea;
+       margin-top: 0;
+       .alternate-title {
+         display: inline-block;
+         color: #b3b3b3;
+       }
      }
     .synopsis {
       color: #e5e5e5;
