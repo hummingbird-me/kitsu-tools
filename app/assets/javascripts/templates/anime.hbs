@@ -46,6 +46,12 @@
             <li><a {{action "setLibraryStatus" "Dropped"}}>Dropped</a></li>
             <li><a {{action "removeFromLibrary"}}>Remove from Library</a></li>
           </ul>
+
+          {{#if libraryEntryExists}}
+            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart libraryEntry.isFavorite:active"}} {{action "toggleFavorite"}}>
+              <i {{bind-attr class=":fa libraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i>
+            </button>
+          {{/if}}
         </div>
       </div>
       <div class="series-ratings clearfix">
