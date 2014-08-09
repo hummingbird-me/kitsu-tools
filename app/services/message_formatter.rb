@@ -45,9 +45,10 @@ class MessageFormatter
     noko = Nokogiri::HTML.fragment(@processed)
     links = noko.css('a').map {|link| link['href'] }
 
-    # Only do autoembedding if there is exactly one link.
-    return if links.length != 1
-    link = links.first
+    # Only do autoembedding if there is exactly one embeddable link.
+    embeddable_links = links.select{|link| embeddable_image?(link) || embeddable_video_code != nil}
+    return if embeddable_links.length != 1
+    link = embeddable_links.first
 
     if embeddable_image?(link)
       delete_links
