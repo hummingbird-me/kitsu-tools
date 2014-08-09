@@ -61,6 +61,7 @@ class MessageFormatterTest < ActiveSupport::TestCase
 
   test "links usernames" do
     assert_match /href=/, format("@vikhyat")
+    assert_match /href=/, format("@Vikhyat")
   end
 
   test "no <br> for image-only posts" do

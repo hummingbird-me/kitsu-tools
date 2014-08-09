@@ -62,7 +62,11 @@ class User < ActiveRecord::Base
   end
 
   def self.find(id)
-    where('LOWER(name) = ?', id.to_s.downcase).first || super
+    User.find_by_username(id) || super
+  end
+
+  def self.find_by_username(username)
+    where('LOWER(name) = ?', username.to_s.downcase).first
   end
 
   def self.match(query)

@@ -28,8 +28,8 @@ class MessageFormatter
 
   def link_usernames
     @processed.gsub!(/@[_A-Za-z0-9]+/) do |x|
-      if user = User.find_by(name: x[1..-1])
-        "<span class='name'>@<a href='//hummingbird.me/users/#{user.name}' target='_blank' data-user-name='#{user.name}'>#{user.name}</a></span>"
+      if user = User.find_by_username(x[1..-1])
+        "<a href='//hummingbird.me/users/#{user.name}' target='_blank' data-user-name='#{user.name}' class='name'>@#{user.name}</a>"
       else
         x
       end
