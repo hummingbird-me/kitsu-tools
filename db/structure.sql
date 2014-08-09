@@ -3140,11 +3140,11 @@ INSERT INTO schema_migrations (version) VALUES ('20140707102503');
 
 INSERT INTO schema_migrations (version) VALUES ('20140707110148');
 
-INSERT INTO schema_migrations (version) VALUES ('20140731164542');
-
 INSERT INTO schema_migrations (version) VALUES ('20140714064353');
 
 INSERT INTO schema_migrations (version) VALUES ('20140714072239');
 
 INSERT INTO schema_migrations (version) VALUES ('20140714111212');
+
+INSERT INTO schema_migrations (version) VALUES ('20140731164542');
 
