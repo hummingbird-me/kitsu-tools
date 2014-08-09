@@ -418,6 +418,12 @@ html { overflow-y: scroll; }
 
   .notification-dropdown {
     .notification-element {
+      @extend .clearfix;
+
+      a {
+        @extend .clearfix;
+      }
+
       &.new {
         background: #f7edda;
         border-bottom: 1px solid #e5d6b8;
@@ -458,7 +464,7 @@ html { overflow-y: scroll; }
       }
     }
 
-    li:last-child a {
+    .view-all {
       background: $eggshell;
       &:hover {
         color: $darkOrange;

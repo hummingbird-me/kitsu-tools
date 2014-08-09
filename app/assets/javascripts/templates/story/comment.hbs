@@ -28,12 +28,12 @@
     <div class="post-content clearfix">
       <p {{bind-attr class=":comment-text isExpanded:full-post" }}>{{{comment}}}</p>
     </div>
-    {{#if overflowing}}
-      <div class="view-more">
-        <a {{action "toggleFullPost"}}>{{showMoreText}}</a>
-      </div>
-    {{/if}}
   </div>
+  {{#if overflowing}}
+    <div class="row view-more">
+      <a {{action "toggleFullPost"}}>{{showMoreText}}</a>
+    </div>
+  {{/if}}
 </div>
 
 <div class="comment-replies">
