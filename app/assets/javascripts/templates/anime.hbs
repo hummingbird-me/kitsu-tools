@@ -7,7 +7,8 @@
       {{#link-to 'anime.index'}}
         <img class="series-poster" {{bind-attr src=posterImage}}>
       {{/link-to}}
-      <a {{action "openModal" "youtube" this}}>
+      <a class="trailer-link" {{action "openModal" "youtube" this}}>
+        <i {{bind-attr class=":fa :fa-youtube-play"}}></i>
         View Trailer
     </a>
     </div>
@@ -31,11 +32,16 @@
     <div class="right-column">
       <div class="top-buttons">
         <div class="btn-group">
+          {{#if libraryEntryExists}}
+            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart libraryEntry.isFavorite:active"}} {{action "toggleFavorite"}}>
+              <i {{bind-attr class=":fa libraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i> Favorite
+            </button>
+          {{/if}}
           <button {{bind-attr class=":btn :btn-default :dropdown-toggle :top-button libraryStatus:active"}} type="button" data-toggle="dropdown">
             {{#if libraryEntryExists}}
-              {{libraryEntry.status}}
+              {{libraryEntry.status}} <i {{bind-attr class=":fa :fa-caret-down"}}></i>
             {{else}}
-              Add to Library
+              Add to Library <i {{bind-attr class=":fa :fa-caret-down"}}></i>
             {{/if}}
           </button>
           <ul class="dropdown-menu">
@@ -47,11 +53,6 @@
             <li><a {{action "removeFromLibrary"}}>Remove from Library</a></li>
           </ul>
 
-          {{#if libraryEntryExists}}
-            <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart libraryEntry.isFavorite:active"}} {{action "toggleFavorite"}}>
-              <i {{bind-attr class=":fa libraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i>
-            </button>
-          {{/if}}
         </div>
       </div>
       <div class="series-ratings clearfix">

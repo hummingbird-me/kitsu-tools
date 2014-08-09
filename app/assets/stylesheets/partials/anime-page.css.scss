@@ -4,13 +4,40 @@
   background: #4b5360;
   position: relative;
   padding: 30px 0;
+  .container {
+    padding-right: 0;
+    @media (max-width: 768px) {
+      padding-left: 0;
+    }
+  }
   .poster-container {
     @extend .col-sm-2;
     padding: 0;
+    width: 21%;
+    @media (max-width: 1000px) {
+      width: 16%;
+    } 
+    @media (max-width: 768px) {
+      display: none;
+    }
     .series-poster {
       width: 100%;
-      max-width: 270px;
       border-radius: 5px;
+    }
+    .trailer-link {
+      color: #fff;
+      border: 1px solid #838c9a;
+      border-radius: 3px;
+      display: block;
+      text-align: center;
+      padding: 5px 0 7px;
+      margin-top: 15px;
+      .fa {
+        margin-right: 5px;
+      }
+      &:hover {
+        border-color: #fff;
+      }
     }
   }
 
@@ -60,6 +87,17 @@
             letter-spacing: 1px;
           }
         }
+        .actor:before {
+          color:  #838c9a;
+          margin-top: 7px;
+        }
+        .character, .voice-actor {
+          background: #4b5360;
+          color: #fff;
+        }
+        .character {
+          padding-left: 0;
+        }
       }
       .nav-tabs {
         border-bottom: none;
@@ -97,6 +135,19 @@
   .right-column {
     @extend .col-sm-3;
     padding: 0;
+    width: 20%;
+    float: right;
+    @media (max-width: 1000px) {
+      width: 25%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 15px;
+      .top-buttons {
+        width: 100%;
+        float: left;
+      }
+    }
     .top-buttons {
       margin-bottom: 5px;
       padding-top: 15px;
@@ -147,12 +198,25 @@
         color: #fff;
         font-family: $headerFontFamily;
         font-size: 16px;
+        transition: background .2s ease-in;
+        border-radius: 4px;
+        &:hover {
+          background: darken(#16a085, 5);
+        }
         &.heart {
-          font-size: 20px;
+          font-size: 17px;
           padding-bottom: 1px;
-          padding-top: 4px;
+          padding: 8px 0 6px 0;
+          margin-bottom: 10px;
+          background: #F76F61;
+          border-radius: 4px !important; // This is very hacky
           &:hover {
-            opacity: .8;
+            background: darken(#F76F61, 5);
+          }
+          &.active {
+            background: #95a5a6;
+            color: #2c3e50;
+            box-shadow: none;
           }
         }
         &.active {
