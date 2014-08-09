@@ -9,19 +9,23 @@
 
   .inline-list {
     text-align: left;
-    padding-left: 10px;
+    padding-left: 15px;
     margin-bottom: 0;
 
     .nav-link {
       float: none;
       padding: 10px 0 10px 0;
+      border-right: 1px solid #ddd;
+      &:first-child {
+        border-left: 1px solid #ddd;
+      }
 
       > a {
         padding: 20px;
         font-family: $bodyFontFamily;
-        font-size: 18px;
+        font-size: 15px;
         font-weight: 300;
-        color: #adacac;
+        color: #8d8d8d;
         position: relative;
         transition: .2s ease-in;
 
