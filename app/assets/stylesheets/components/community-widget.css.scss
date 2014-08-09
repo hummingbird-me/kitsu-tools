@@ -2,6 +2,8 @@
   @extend .panel;
   @extend .panel-default;
   @extend .clearfix;
+  float: left;
+  width: 100%;
 
   .panel-body {
     padding: 0;

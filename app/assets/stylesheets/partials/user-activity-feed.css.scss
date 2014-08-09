@@ -1,6 +1,6 @@
 .profile-content  {
   @extend .container;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .mobile-tab {
@@ -215,6 +215,8 @@
 .anime-breakdown-panel, .photos-videos, .favorite-anime {
   @extend .panel;
   @extend .panel-default;
+  float: left;
+  width: 100%;
 }
 
 .media-grid {

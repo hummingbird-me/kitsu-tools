@@ -8,3 +8,23 @@
     height: auto;
   }
 }
+
+.feed-head-advert, .feed-sidebar-advert, .feed-sm-sidebar-advert {
+  @extend .col-xs-12;
+  background: #d6d6d6;
+  text-align: center;
+  padding: 10px 0 5px 0;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.feed-head-advert {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  margin-bottom: 15px;
+  margin-top: -21px;
+}
+
+.feed-sidebar-advert, .feed-sm-sidebar-advert {
+  margin-bottom: 20px;
+}
