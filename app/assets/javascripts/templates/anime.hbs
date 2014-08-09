@@ -7,6 +7,9 @@
       {{#link-to 'anime.index'}}
         <img class="series-poster" {{bind-attr src=posterImage}}>
       {{/link-to}}
+      <a {{action "openModal" "youtube" this}}>
+        View Trailer
+    </a>
     </div>
 
     <div class="middle-column">
