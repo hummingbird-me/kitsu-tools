@@ -64,6 +64,7 @@ class Story < ActiveRecord::Base
 
   # Can this story be deleted by the specified user?
   def can_be_deleted_by?(user)
-    user && (user.admin? || (user.id == self.user_id) || (user.id == self.target_id))
+    return false if user.nil?
+    user.admin? || user.id == self.user_id || user.id == self.target_id
   end
 end

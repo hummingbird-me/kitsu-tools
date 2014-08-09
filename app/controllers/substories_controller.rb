@@ -44,7 +44,7 @@ class SubstoriesController < ApplicationController
       return
     end
 
-    if substory.story.can_be_deleted_by?(current_user)
+    if substory.can_be_deleted_by?(current_user)
       substory.destroy!
       render json: true
     else

@@ -21,6 +21,11 @@ class Substory < ActiveRecord::Base
 
   has_many :notifications, as: :source, dependent: :destroy
 
+  def can_be_deleted_by?(user)
+    return false if user.nil?
+    self.user_id == user.id || self.story.can_be_deleted_by?(user)
+  end
+
   after_create do
     self.story.set_last_update_time! self.created_at
     self.story.save
