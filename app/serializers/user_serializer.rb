@@ -15,7 +15,9 @@ class UserSerializer < ActiveModel::Serializer
              :waifu_char_id,
              :last_sign_in_at,
              :current_sign_in_at,
-             :is_admin
+             :is_admin,
+             :following_count,
+             :follower_count
 
   def id
     object.name
@@ -47,5 +49,9 @@ class UserSerializer < ActiveModel::Serializer
 
   def is_admin
     object.admin?
+  end
+
+  def follower_count
+    object.followers_count_hack
   end
 end
