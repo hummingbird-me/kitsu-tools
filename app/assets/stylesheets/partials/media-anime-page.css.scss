@@ -352,12 +352,13 @@ h4.series-title {
 
 .tab-pane {
   padding-top: 15px;
-  border: 1px solid #ddd;
+  border: 1px solid #838c9a;
   margin-bottom: 15px;
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 10px;
   border-radius: 3px;
+  border-top-left-radius: 0;
 
   .rounded-block {
     border: none;

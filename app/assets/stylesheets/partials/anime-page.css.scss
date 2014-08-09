@@ -98,7 +98,8 @@
     @extend .col-sm-3;
     padding: 0;
     .top-buttons {
-      margin-bottom: 15px;
+      margin-bottom: 5px;
+      padding-top: 15px;
       .btn-group {
         width: 100%;
         .btn {
@@ -170,6 +171,21 @@
       background: #2f343b;
       background: rgba(47, 52, 59, .7);
       border-radius: 3px;
+      .personal-rating {
+        border-top: 1px solid #000;
+        padding: 15px 0 5px 0;
+        .icon-container .fa {
+          transition: all .2s ease-in;
+          &:hover {
+            color: #fff;
+          }
+          &.active {
+            &:hover {
+              color: $orange;
+            }
+          }
+        }
+      }
     }
   }
 }
