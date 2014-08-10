@@ -39,21 +39,23 @@
           </div>
         </li>
       {{/each}}
-      {{#if moreThanTwoSubstories}}
-        <li class="view-more">
-          {{#if loadingAll}}
-            <i class="fa fa-spin fa-spinner"></i>
-          {{else}}
-            <a {{action "toggleShowAll"}}>
-              {{#if showAll}}
-                Show Less
-              {{else}}
-                Show More
-              {{/if}}
-            </a>
-          {{/if}}
-        </li>
-      {{/if}}
     </ul>
   </div>
 </div>
+{{#if moreThanTwoSubstories}}
+  <div class="comment-replies">
+    <div class="view-more">
+      {{#if loadingAll}}
+        <i class="fa fa-spin fa-spinner"></i>
+      {{else}}
+        <a {{action "toggleShowAll"}}>
+          {{#if showAll}}
+            Show Less
+          {{else}}
+            Show More
+          {{/if}}
+        </a>
+      {{/if}}
+    </div>
+  </div>
+{{/if}}
