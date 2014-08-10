@@ -25,7 +25,8 @@ module Api::V2
         community_rating: anime.bayesian_average,
         age_rating: nfb(anime.age_rating),
         episode_count: anime.episode_count,
-        episode_length: anime.episode_length
+        episode_length: anime.episode_length,
+        finished_airing: anime.finished_airing_date.present?
       }
     end
   end
