@@ -20,7 +20,8 @@
         {{/link-to}}
       {{/if}}
     </li>
-  {{else}}
+  {{/each}}
+{{else}}
     <div class="no-favorites text-center">
       {{#if viewingSelf}}
         <h3>You have no favorites.</h3>
@@ -30,5 +31,4 @@
         <p>Clearly they're an individual of fine, discerning tastes.</p>
       {{/if}}
     </div>
-  {{/each}}
 {{/if}}

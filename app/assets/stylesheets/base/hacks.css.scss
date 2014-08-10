@@ -61,7 +61,7 @@ a.navbar-brand {
   p {
     color: darken($eggshell, 15%);
     margin: 0;
-    padding: 18px 0;
+    padding: 14px 0;
     font-size: 1.4em;
     display: inline-block;
     @media (max-width: 1000px) {
@@ -76,11 +76,14 @@ a.navbar-brand {
 
   a.btn {
     float: right;
-    margin: 20px;
+    margin: 16px;
     background-color: $darkNavy;
     color: darken($eggshell, 15%);
     font-size: 0.9em;
     padding: 2px 10px;
+    @media (max-width: 1000px) {
+      margin: 8px;
+    }
   }
 
   a.btn:hover {
@@ -178,16 +181,6 @@ a.navbar-brand {
   .follow-button-column {
     @include make-xs-column(3);
     text-align: center;
-  }
-}
-
-.profile-leaderboard {
-  text-align: center;
-  margin: 20px;
-
-  .ad {
-    display: inline-block;
-    border-radius: 5px;
   }
 }
 
