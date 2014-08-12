@@ -46,6 +46,7 @@
 .secondary-info {
   @extend .col-sm-5;
   @extend .col-md-5;
+  @extend .clearfix;
   padding-right: 0px;
   display: block;
 }
