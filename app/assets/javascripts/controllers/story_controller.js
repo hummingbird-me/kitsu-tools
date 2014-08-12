@@ -18,7 +18,7 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
   belongsToUser: function () {
     var loggedInUser = this.get('currentUser');
     return loggedInUser.get('id') === this.get('model.poster.id') || loggedInUser.get('id') === this.get('model.user.id');
-  }.property('model.poster'),
+  }.property('model.poster', 'model.user'),
 
   canDeleteStory: function() {
     return this.get('belongsToUser') || this.get('currentUser.isAdmin');

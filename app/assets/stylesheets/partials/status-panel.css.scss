@@ -256,7 +256,6 @@
       border-radius: 3px;
       padding: 10px;
       resize: none;
-      transition: height 0.2s ease 0s;
     }
   }
 
@@ -306,6 +305,7 @@
       margin: 0;
       overflow: hidden;
       text-overflow: ellipsis;
+      float: left;
     }
   }
 
