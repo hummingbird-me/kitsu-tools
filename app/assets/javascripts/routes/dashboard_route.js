@@ -20,5 +20,15 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
       this.set('cursor', null);
     }
     controller.set('model', model);
+
+    if (model.get('length') === 0) {
+      this.loadNextPage();
+    }
+  },
+
+  actions: {
+    goToDashboard: function() {
+      this.refresh();
+    }
   }
 });

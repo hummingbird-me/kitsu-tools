@@ -5,6 +5,14 @@ Hummingbird.ApplicationRoute = Ember.Route.extend({
   },
 
   actions: {
+    goToDashboard: function() {
+      if (this.get('currentUser.isSignedIn')) {
+        this.transitionTo('dashboard');
+      } else {
+        window.location.href = '/';
+      }
+    },
+
     toggleFollow: function(user) {
       if (!this.get('currentUser.isSignedIn')) {
         alert("Need to be signed in!");
@@ -30,7 +38,7 @@ Hummingbird.ApplicationRoute = Ember.Route.extend({
         into: 'application'
       });
     },
-    
+
     closeModal: function() {
       return this.disconnectOutlet({
         outlet: 'modal',

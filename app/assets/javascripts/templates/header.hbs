@@ -5,17 +5,11 @@
 
   <div class='container clearfix'>
     <div class='navbar-header'>
-
       <a {{action 'toggleMenu'}} class='navbar-temporary'>
         <i class='fa fa-bars'></i>
       </a>
 
-      {{#if currentUser.isSignedIn}}
-        {{#link-to 'dashboard' class="navbar-brand"}}{{/link-to}}
-      {{else}}
-        <a class='navbar-brand' href='/'></a>
-      {{/if}}
-
+      <a class='navbar-brand' {{action goToDashboard}}></a>
     </div>
 
     <ul {{bind-attr class=':nav :navbar-nav :collapse :navbar-collapse showMenu:navbar-visible'}}>
