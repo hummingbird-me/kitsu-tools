@@ -9,8 +9,7 @@
 
   <div class="row">
     <div class="secondary-info">
-      {{community-loading-widget}}
-      <div class="community-widget-panel">
+      <div class="community-widget-panel" style="display: none">
         <div class="panel-heading">
           <h3 class="panel-title">Trending Anime</h3>
         </div>
@@ -86,12 +85,11 @@
                   </div>
                 </div>
               </li>
-
-              
           </ul>
         </div>
       </div>
 
+      {{community-loading-widget}}
       {{community-widget title="Industry news" showMoreURL="http://forums.hummingbird.me/category/industry-news" apiCall="http://forums.hummingbird.me/category/industry-news.json"}}
       <div class="feed-sm-sidebar-advert">
         {{ad-unit adId="1298407" adClass="257f81e798bd68dd81e60f42838f361f"}}
