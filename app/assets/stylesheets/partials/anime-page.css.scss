@@ -203,16 +203,22 @@
   }
   .right-column {
     @extend .col-sm-3;
+
+    background: rgba(47, 52, 59, .7);
+    border-radius: 3px;
     padding: 0;
     width: 20%;
     float: right;
+
     @media (max-width: 1000px) {
       width: 25%;
     }
+
     @media (max-width: 768px) {
       width: 100%;
       padding: 15px;
     }
+
     .top-buttons {
       margin-bottom: 5px;
       float: left;
@@ -220,7 +226,7 @@
       padding: 15px 15px 0 15px;
       .btn-group {
         width: 100%;
-        .btn {
+        .top-button {
           width: 100%;
           background: #16a085;
           padding: 8px 0 6px 0;
@@ -260,6 +266,9 @@
         }
       }
       .top-button {
+        @extend .btn;
+        @extend .btn-default;
+
         border: none;
         background: #2f333b;
         color: #fff;
@@ -299,9 +308,8 @@
       }
     }
     .series-ratings {
-      background: #2f343b;
-      background: rgba(47, 52, 59, .7);
-      border-radius: 3px;
+      @extend .clearfix;
+
       .personal-rating {
         border-top: 1px solid #000;
         padding: 5px 0 5px 0;
@@ -358,6 +366,39 @@
         transition: .2s ease-in;
       }
     }
+  }
+}
+
+/* Condensed header shown on non-index anime pages. */
+.series-header.condensed {
+  .poster-container, .synopsis, .info-tabs, .series-ratings {
+    display: none;
+  }
+
+  .top-buttons {
+    @extend .clearfix;
+
+    .btn-group .top-button {
+      width: 50%;
+
+      &.heart {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+      }
+
+      &.library-entry {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+
+  .middle-column {
+    @extend .col-sm-8;
+  }
+
+  .right-column {
+    @extend .col-sm-4;
   }
 }
 

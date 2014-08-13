@@ -1,4 +1,10 @@
 Hummingbird.AnimeController = Ember.ObjectController.extend(Hummingbird.HasCurrentUser, {
+  needs: ['application'],
+
+  isIndex: function() {
+    return this.get('controllers.application.currentRouteName') === "anime.index";
+  }.property('controllers.application.currentRouteName'),
+
   coverImageStyle: function() {
     return "background: url('" + this.get('model.coverImage') + "'); background-position: 50% -" + this.get('model.coverImageTopOffset') + "px;";
   }.property('model.coverImage', 'model.coverImageTopOffset'),
