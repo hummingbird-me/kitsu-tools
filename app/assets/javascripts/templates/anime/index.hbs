@@ -168,10 +168,10 @@
 <div class="container">
   <div class="series-reviews">
     <h2 class="grey-title">
-      <a href="#">
+      {{#link-to 'reviews.index'}}
         Reviews
         <i class="fa fa-angle-right"></i>
-      </a>
+      {{/link-to}}
     </h1>
     <div class="review-listing">
       {{partial "anime/trending-reviews"}}
