@@ -48,7 +48,7 @@ class MyAnimeListImport
       @data = hashdata[list].map do |indv|
         row = {
           rating: indv["my_score"].to_i,
-          notes: indv["my_tags"]
+          notes: indv["my_comments"].blank? ? indv["my_tags"] : indv["my_comments"]
         }
         if list == "manga"
           row.merge!({
@@ -58,6 +58,7 @@ class MyAnimeListImport
             status: MANGA_STATUS_MAP[indv["my_status"]] || "Currently Reading",
             volumes_read: indv["my_read_volumes"].to_i,
             chapters_read: indv["my_read_chapters"].to_i,
+            reread_count: indv["my_times_read"].to_i
           })
         elsif list == "anime"
           row.merge!({
@@ -66,7 +67,8 @@ class MyAnimeListImport
 
             status: ANIME_STATUS_MAP[indv["my_status"]] || "Currently Watching",
             episodes_watched: indv["my_watched_episodes"].to_i,
-            last_updated: Time.at(indv["my_last_updated"].to_i)
+            rewatch_count: indv["my_times_watched"].to_i,
+            rewatching: indv["my_rewatching"] == "1"
           })
         end
         row
@@ -91,12 +93,15 @@ class MyAnimeListImport
           entry = MangaLibraryEntry.where(user_id: @user.id, manga_id: animanga.id).first_or_initialize
           entry.chapters_read = restrict_range(mal_entry[:chapters_read], animanga.chapter_count)
           entry.volumes_read  = restrict_range(mal_entry[:volumes_read], animanga.volume_count)
+          entry.reread_count = mal_entry[:reread_count]
         else
           entry = LibraryEntry.where(user_id: @user.id, anime_id: animanga.id).first_or_initialize
           entry.episodes_watched = restrict_range(mal_entry[:episodes_watched], animanga.episode_count)
+          entry.rewatch_count = mal_entry[:rewatch_count] < 255 ? mal_entry[:rewatch_count] : 0
+          entry.rewatching = mal_entry[:rewatching]
         end
         entry.status = mal_entry[:status]
-        entry.updated_at = mal_entry[:last_updated]
+        entry.updated_at = Time.now
         entry.notes = mal_entry[:notes]
         entry.imported = true
         entry.rating = mal_entry[:rating].to_f / 2
