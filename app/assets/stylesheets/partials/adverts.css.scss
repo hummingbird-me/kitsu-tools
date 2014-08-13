@@ -9,13 +9,18 @@
   }
 }
 
-.feed-head-advert, .feed-sidebar-advert, .feed-sm-sidebar-advert {
+.feed-head-advert, .feed-sidebar-advert, .feed-sm-sidebar-advert, .anime-page-advert {
   @extend .col-xs-12;
   background: #d6d6d6;
   text-align: center;
   padding: 10px 0 5px 0;
   overflow: hidden;
   border-radius: 4px;
+}
+
+.anime-page-advert {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .feed-head-advert {

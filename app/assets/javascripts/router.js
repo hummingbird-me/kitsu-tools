@@ -4,6 +4,9 @@ Hummingbird.Router.reopen({
 
 Hummingbird.Router.map(function() {
   this.resource('anime', {path: '/anime/:id'}, function() {
+    this.resource('episodes', {path: '/episodes'}, function () {
+       this.route('show', {path: '/:episode_id'});
+    });
     this.resource('reviews', {path: '/reviews'}, function() {
       this.route('show', {path: '/:review_id'});
     });

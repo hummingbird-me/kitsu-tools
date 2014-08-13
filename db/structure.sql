@@ -269,7 +269,12 @@ CREATE TABLE episodes (
     title character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    season_number integer
+    season_number integer,
+    synopsis text,
+    thumbnail_file_name character varying(255),
+    thumbnail_content_type character varying(255),
+    thumbnail_file_size integer,
+    thumbnail_updated_at timestamp without time zone
 );
 
 
@@ -1233,6 +1238,35 @@ ALTER SEQUENCE stories_id_seq OWNED BY stories.id;
 
 
 --
+-- Name: streamers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE streamers (
+    id integer NOT NULL,
+    site_name character varying(255) NOT NULL
+);
+
+
+--
+-- Name: streamers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE streamers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: streamers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE streamers_id_seq OWNED BY streamers.id;
+
+
+--
 -- Name: substories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1344,6 +1378,43 @@ CREATE SEQUENCE users_id_seq
 --
 
 ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE videos (
+    id integer NOT NULL,
+    url character varying(255) NOT NULL,
+    embed_data character varying(255) NOT NULL,
+    available_regions character varying(255)[] DEFAULT '{US}'::character varying[],
+    episode_id integer,
+    streamer_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    sub_lang character varying(255),
+    dub_lang character varying(255)
+);
+
+
+--
+-- Name: videos_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE videos_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: videos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE videos_id_seq OWNED BY videos.id;
 
 
 --
@@ -1642,6 +1713,13 @@ ALTER TABLE ONLY stories ALTER COLUMN id SET DEFAULT nextval('stories_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY streamers ALTER COLUMN id SET DEFAULT nextval('streamers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY substories ALTER COLUMN id SET DEFAULT nextval('substories_id_seq'::regclass);
 
 
@@ -1650,6 +1728,13 @@ ALTER TABLE ONLY substories ALTER COLUMN id SET DEFAULT nextval('substories_id_s
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY videos ALTER COLUMN id SET DEFAULT nextval('videos_id_seq'::regclass);
 
 
 --
@@ -1915,6 +2000,14 @@ ALTER TABLE ONLY stories
 
 
 --
+-- Name: streamers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY streamers
+    ADD CONSTRAINT streamers_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: substories_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1928,6 +2021,14 @@ ALTER TABLE ONLY substories
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: videos_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY videos
+    ADD CONSTRAINT videos_pkey PRIMARY KEY (id);
 
 
 --
@@ -2343,6 +2444,20 @@ CREATE INDEX index_users_on_waifu_or_husbando ON users USING btree (waifu_or_hus
 --
 
 CREATE INDEX index_users_on_waifu_slug ON users USING btree (waifu_slug);
+
+
+--
+-- Name: index_videos_on_episode_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_videos_on_episode_id ON videos USING btree (episode_id);
+
+
+--
+-- Name: index_videos_on_episode_id_and_streamer_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_videos_on_episode_id_and_streamer_id ON videos USING btree (episode_id, streamer_id);
 
 
 --
@@ -3026,5 +3141,13 @@ INSERT INTO schema_migrations (version) VALUES ('20140707102503');
 
 INSERT INTO schema_migrations (version) VALUES ('20140707110148');
 
+INSERT INTO schema_migrations (version) VALUES ('20140714064353');
+
+INSERT INTO schema_migrations (version) VALUES ('20140714072239');
+
+INSERT INTO schema_migrations (version) VALUES ('20140714111212');
+
 INSERT INTO schema_migrations (version) VALUES ('20140731164542');
+
+INSERT INTO schema_migrations (version) VALUES ('20140813001044');
 

@@ -112,6 +112,9 @@ gem 'unicorn', "~> 4.8"
 # Needed for MAL import.
 gem 'nokogiri', require: false
 
+# Needed for Hulu import
+gem 'hooloo', require: false
+
 # Image optimization
 gem 'image_optim', '~> 0.13', require: false
 

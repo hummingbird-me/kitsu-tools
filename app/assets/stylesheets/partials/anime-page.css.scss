@@ -1,0 +1,504 @@
+@import 'mixins/block-grid';
+
+.series-header {
+  background: #4b5360;
+  position: relative;
+  padding: 30px 0;
+  .container {
+    padding-right: 0;
+    @media (max-width: 768px) {
+      padding-left: 0;
+    }
+  }
+  .poster-container {
+    @extend .col-sm-2;
+    padding: 0;
+    width: 21%;
+    @media (max-width: 1000px) {
+      width: 16%;
+    }
+    @media (max-width: 768px) {
+      display: none;
+    }
+    .series-poster {
+      width: 100%;
+      border-radius: 5px;
+    }
+    .trailer-link {
+      color: #fff;
+      border: 1px solid #838c9a;
+      border-radius: 3px;
+      display: block;
+      text-align: center;
+      padding: 5px 0 7px;
+      margin-top: 15px;
+      .fa {
+        margin-right: 5px;
+      }
+      &:hover {
+        border-color: #fff;
+      }
+    }
+  }
+
+  .middle-column {
+     @extend .col-sm-7;
+     .series-title {
+       margin-top: 0;
+
+       a {
+         color: #eaeaea;
+       }
+
+       .alternate-title {
+         display: inline-block;
+         color: #b3b3b3;
+       }
+     }
+    .synopsis {
+      color: #e5e5e5;
+      font-size: 18px;
+    }
+    .series-metadata {
+      color: #b3b3b3;
+      font-size: 14px;
+      li {
+        display: inline;
+        &:after {
+          content: " · ";
+        }
+        &:last-child {
+          &:after {
+            content: "";
+          }
+        }
+      }
+    }
+    .info-tabs {
+      @extend .col-xs-12;
+      margin-top: 15px;
+      padding: 0;
+      .slider {
+        .badge {
+          background: #838c9a;
+          border-radius: 3px;
+          padding: 7px 5px;
+          margin-right: 10px;
+          a {
+            color: #fff;
+            font-weight: normal;
+            padding: 7px 5px;
+            letter-spacing: 1px;
+          }
+        }
+        .cast {
+          overflow: hidden;
+        }
+        .casting {
+          margin-top: 5px;
+        }
+        .character {
+          background: #fff;
+          padding: 16px 0;
+          padding-right: 5px;
+          color: #222;
+        }
+
+        .voice-actor {
+          background: #fff;
+          padding: 16px 0;
+          padding-left: 5px;
+        }
+
+        img {
+          vertical-align: middle;
+          margin-right: 5px;
+          width: 30px;
+          height: 39px;
+        }
+
+        .va {
+          float: right;
+          img {
+            margin-right: 0px;
+            margin-left: 5px;
+          }
+        }
+
+        .actor {
+          &:before {
+            float: left;
+            width: 0;
+            margin-top: 11px;
+            white-space: nowrap;
+            content: ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . ";
+          }
+        }
+        .actor:before {
+          color:  #838c9a;
+          margin-top: 7px;
+        }
+        .character, .voice-actor {
+          background: #4b5360;
+          color: #fff;
+        }
+        .character {
+          padding-left: 0;
+        }
+      }
+      .tab-pane {
+        padding-top: 15px;
+        border: 1px solid #838c9a;
+        margin-bottom: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-bottom: 10px;
+        border-radius: 3px;
+        border-top-left-radius: 0;
+
+        .rounded-block {
+          border: none;
+          border-bottom: 1px solid #ddd;
+          margin-bottom: 0;
+          border-radius: 0;
+
+          &:hover {
+            border: none;
+            border-bottom: 1px solid #ddd;
+          }
+        }
+      }
+      .nav-tabs {
+        border-bottom: none;
+        > li.active > a {
+          background: none;
+          border: none;
+          color: #fff;
+          border: 1px solid #838c9a;
+          &:hover {
+            background: none;
+            border: none;
+            color: #fff;
+            border: 1px solid #838c9a;
+          }
+        }
+        li > a {
+          color: darken(#fff, 30);
+          font-family: "klavika", Helvetica, Arial, sans-serif;
+          &:hover {
+            background: #838c9a;
+            color: #fff;
+            border: 1px solid #838c9a;
+          }
+        }
+      }
+      li > a {
+        padding: 5px 15px;
+      }
+      hr {
+        margin-top: 10px;
+        border-color: #ddd;
+      }
+    }
+  }
+  .right-column {
+    @extend .col-sm-3;
+
+    background: rgba(47, 52, 59, .7);
+    border-radius: 3px;
+    padding: 0;
+    width: 20%;
+    float: right;
+
+    @media (max-width: 1000px) {
+      width: 25%;
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+      padding: 15px;
+    }
+
+    .top-buttons {
+      margin-bottom: 5px;
+      float: left;
+      width: 100%;
+      padding: 15px 15px 0 15px;
+      .btn-group {
+        width: 100%;
+        .top-button {
+          width: 100%;
+          background: #16a085;
+          padding: 8px 0 6px 0;
+          font-size: 17px;
+        }
+        &.open {
+          .btn {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+            box-shadow: none;
+          }
+          .dropdown-menu {
+            left: 0;
+            right: 0;
+            border-top-right-radius: 0;
+            border-top-left-radius: 0;
+            margin-top: 0;
+            border: none;
+            background: darken(#16a085, 10);
+            padding: 0;
+            li {
+              a {
+                border-bottom: 1px solid darken(#16a085, 15);
+                padding: 10px;
+                color: #fff;
+                &:hover {
+                  background: lighten(#107360, 5);
+                }
+              }
+              &:last-child {
+                a {
+                  border-bottom: none;
+                }
+              }
+            }
+          }
+        }
+      }
+      .top-button {
+        @extend .btn;
+        @extend .btn-default;
+
+        border: none;
+        background: #2f333b;
+        color: #fff;
+        font-family: $headerFontFamily;
+        font-size: 16px;
+        transition: background .2s ease-in;
+        border-radius: 4px;
+        &:hover {
+          background: darken(#16a085, 5);
+        }
+        &.heart {
+          font-size: 17px;
+          padding-bottom: 1px;
+          padding: 8px 0 6px 0;
+          margin-bottom: 10px;
+          background: #F76F61;
+          border-radius: 4px !important; // This is very hacky
+          &:hover {
+            background: darken(#F76F61, 5);
+          }
+          &.active {
+            background: #95a5a6;
+            color: #2c3e50;
+            box-shadow: none;
+          }
+        }
+        &.active {
+          background: #f77d70;
+          color: #9f554e;
+        }
+      }
+      .left-buttons {
+        display: inline-block;
+        li {
+          display: inline;
+        }
+      }
+    }
+    .series-ratings {
+      @extend .clearfix;
+
+      .personal-rating {
+        border-top: 1px solid #000;
+        padding: 5px 0 5px 0;
+        .icon-container .fa {
+          transition: all .2s ease-in;
+          &:hover {
+            color: #fff;
+          }
+          &.active {
+            &:hover {
+              color: $orange;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.episode-thumbs {
+  @include block-grid(5);
+  .thumbnail {
+    a {
+      position: relative;
+      display: block;
+    }
+    .description {
+      position: absolute;
+      bottom: 0;
+      background: #333;
+      background: rgba(0,0,0,.5);
+      padding: 5px 10px;
+      width: 100%;
+      color: #fff;
+    }
+    .play-icon {
+      position: absolute;
+      bottom: 50px;
+      width: 100%;
+      text-align: center;
+      .fa-play {
+        background: #333;
+        background: rgba(0,0,0,.7);
+        padding: 14px 12px 12px 16px;
+        color: #fff;
+        border-radius: 50%;
+        opacity: 0;
+        transition: .2s ease-in;
+      }
+    }
+    &:hover {
+      .fa-play {
+        opacity: 1;
+        transition: .2s ease-in;
+      }
+    }
+  }
+}
+
+/* Condensed header shown on non-index anime pages. */
+.series-header .condensed {
+  .series-title {
+    font-size: 38px;
+    margin-bottom: 4px;
+  }
+
+  .poster-container, .synopsis, .info-tabs, .series-ratings {
+    display: none;
+  }
+
+  .top-buttons {
+    @extend .clearfix;
+
+    .btn-group .top-button {
+      width: 50%;
+
+      border-radius: 0 !important;
+
+      &:first-of-type {
+        border-top-left-radius: 4px !important;
+        border-bottom-left-radius: 4px !important;
+      }
+      &:last-of-type {
+        border-top-right-radius: 4px !important;
+        border-bottom-right-radius: 4px !important;
+      }
+    }
+  }
+
+  .middle-column {
+    @extend .col-sm-8;
+  }
+
+  .right-column {
+    @extend .col-sm-4;
+  }
+}
+
+.series-reviews {
+  @extend .col-sm-6;
+  padding-left: 0;
+
+  .review-listing {
+    @extend .col-xs-12;
+    border-radius: 3px;
+    overflow: hidden;
+    background: #fff;
+    padding: 0px;
+
+    .review {
+      @extend .col-xs-12;
+      @extend .clearfix;
+      padding: 8px;
+      padding: 15px;
+      border-bottom: 1px solid #ccc;
+      transition: .2s ease-in;
+      &:hover {
+        background: lighten(#eee, 3);
+      }
+    }
+
+    .trending-review-empty {
+      text-align: center;
+      margin-bottom: 35px;
+      .empty-icon {
+        font-size: 100px;
+        color: #aaa;
+      }
+    }
+
+    .reviewer-thumb-wrapper {
+      @extend .col-sm-2;
+      padding-left: 4px;
+      padding-top: 8px;
+    }
+
+    .reviewer-thumb {
+      border-radius: 3px;
+      width: 100%;
+    }
+
+    .reviewer-name-wrapper {
+      @extend .col-xs-12;
+      @extend .col-sm-10;
+      padding: 0;
+    }
+
+    .reviewer-name {
+      display: inline-block;
+      margin: 2px 0;
+      color: #444;
+      .subtext {
+        font-weight: normal;
+        color: #888;
+        font-size: 16px;
+        margin-right: 4px;
+      }
+    }
+
+    .review-summary {
+      font-size: 16px;
+      color: #444;
+      margin: 4px 0;
+      line-height: 20px;
+    }
+
+    .review-likes {
+      font-size: 12px;
+      color: #999;
+      margin: 2px 0;
+    }
+
+    .review-stars {
+      padding: 0;
+      margin: 0;
+      color: #777;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
+
+.series-gallery {
+  @extend .col-sm-6;
+  padding-right: 0;
+  img {
+    width: 100%;
+    height: 150px;
+  }
+}
+

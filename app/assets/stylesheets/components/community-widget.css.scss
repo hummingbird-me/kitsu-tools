@@ -31,10 +31,6 @@
         padding: 10px;
         height: 70px;
 
-        .badge {
-          background: #FFA07A;
-        }
-
         .post-count-and-time {
           display: inline-block;
           padding-top: 2px;
@@ -61,6 +57,59 @@
             color: $orange;
           }
         }
+      }
+    }
+  }
+
+  .trend-rank {
+    font-weight: bold;
+    border: 1px solid #D1D1D1;
+    font-size: 20px;
+    border-radius: 50%;
+    line-height: 30px;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    color: #7a7a80;
+    position: relative;
+    top: 7px;
+    float: left;
+    margin-right: 15px;
+  }
+
+  .trend-poster {
+    width: 50px;
+    height: 50px;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 3px;
+  }
+
+  .trend-info {
+    float: left;
+    display: inline-block;
+    margin-left: 10px;
+    h4 {
+      margin-top: 0;
+      margin-bottom: 5px;
+      font-weight: normal;
+    }
+  }
+
+  .trend-categories {
+    .badge {
+      background: #838c9a;
+      border-radius: 3px;
+      padding: 7px 5px;
+      margin-right: 2px;
+      font-size: 10px;
+      a {
+        color: #fff;
+        font-weight: normal;
+        padding: 7px 5px;
+        letter-spacing: 1px;
       }
     }
   }
