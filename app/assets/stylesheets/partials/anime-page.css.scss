@@ -381,14 +381,15 @@
     .btn-group .top-button {
       width: 50%;
 
-      &.heart {
-        border-top-right-radius: 0 !important;
-        border-bottom-right-radius: 0 !important;
-      }
+      border-radius: 0 !important;
 
-      &.library-entry {
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
+      &:first-of-type {
+        border-top-left-radius: 4px !important;
+        border-bottom-left-radius: 4px !important;
+      }
+      &:last-of-type {
+        border-top-right-radius: 4px !important;
+        border-bottom-right-radius: 4px !important;
       }
     }
   }
