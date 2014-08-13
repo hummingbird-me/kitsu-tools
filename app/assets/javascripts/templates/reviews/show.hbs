@@ -1,64 +1,4 @@
-<div class="review-cover">
-  <div class="user-cover">
-    <div class="cover-photo" {{bind-attr style=coverImageStyle}}></div>
-    <div class="cover-overlay"></div>
-  </div>
-</div>
-
-<div class="container relative">
-  <div class="row">
-    <div class="user-cover-options">
-      <div class="col-sm-10 user-wrapper">
-        <div class="col-sm-2 col-xs-2 user-avatar clearfix">
-          <div class="large-avatar">
-            {{avatar user 'thumb'}}
-            <div class="online-box">
-              <div {{bind-attr class=":online-indicator user.online:online:offline"}}></div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-10 account-info">
-          <h1 class="username"> {{user.username}}</h1>
-        </div>
-      </div>
-      {{#unless writtenBySelf}}
-        {{#if user.isFollowed}}
-          <button class="btn btn-default btn-lg follow-button unfollow" {{action toggleFollow user}}>
-            Unfollow
-          </button>
-        {{else}}
-          <button class="btn btn-default btn-lg follow-button" {{action toggleFollow user}}>
-            Follow
-          </button>
-        {{/if}}
-      {{/unless}}
-    </div>
-  </div>
-</div>
-
-<div class="profile-navigation">
-  <div class="container">
-    <div class="row">
-      <ul class="inline-list clearfix">
-        <li class="nav-link">
-          {{#link-to 'user.index' user data-hover="Feed"}}Feed{{/link-to}}
-        </li>
-        <li class="nav-link">
-          {{#link-to 'user.library' user data-hover="Library"}}Library{{/link-to}}
-        </li>
-        <li class="nav-link">
-          {{#link-to 'user.reviews' user data-hover="Reviews"}}Reviews{{/link-to}}
-        </li>
-        <li class="nav-link">
-          {{#link-to 'user.following' user data-hover="Following"}}Following{{/link-to}}
-        </li>
-        <li class="nav-link">
-          {{#link-to 'user.followers' user data-hover="Followers"}}Followers{{/link-to}}
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+<div class="col-sm-6 col-sm-offset-3">
 
 <div class="back-to-anime">
   <div class="col-xs-6">
@@ -219,3 +159,5 @@
   </div>
 </div>
 --}}
+
+</div>
