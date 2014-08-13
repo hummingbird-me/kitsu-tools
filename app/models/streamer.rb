@@ -2,9 +2,8 @@
 #
 # Table name: streamers
 #
-#  id         :integer          not null, primary key
-#  site_name  :string(255)      not null
-#  oembed_uri :string(255)
+#  id        :integer          not null, primary key
+#  site_name :string(255)      not null
 #
 
 class Streamer < ActiveRecord::Base

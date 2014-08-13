@@ -10,6 +10,8 @@
 #  streamer_id       :integer
 #  created_at        :datetime
 #  updated_at        :datetime
+#  sub_lang          :string(255)
+#  dub_lang          :string(255)
 #
 
 require 'test_helper'
