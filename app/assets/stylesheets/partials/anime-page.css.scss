@@ -16,7 +16,7 @@
     width: 21%;
     @media (max-width: 1000px) {
       width: 16%;
-    } 
+    }
     @media (max-width: 768px) {
       display: none;
     }
@@ -370,7 +370,12 @@
 }
 
 /* Condensed header shown on non-index anime pages. */
-.series-header.condensed {
+.series-header .condensed {
+  .series-title {
+    font-size: 38px;
+    margin-bottom: 4px;
+  }
+
   .poster-container, .synopsis, .info-tabs, .series-ratings {
     display: none;
   }

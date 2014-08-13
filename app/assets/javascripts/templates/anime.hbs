@@ -1,7 +1,13 @@
-<div {{bind-attr class=":series-header isIndex::condensed"}}>
+<div class="series-header">
   <div class="bg-image-wrapper series" {{bind-attr style=coverImageStyle}}></div>
   <div class="container">
-    {{partial "anime/full_header"}}
+    {{#if isIndex}}
+      {{partial "anime/full_header"}}
+    {{else}}
+      <div class="condensed">
+        {{partial "anime/full_header"}}
+      </div>
+    {{/if}}
   </div>
 </div>
 
