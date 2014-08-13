@@ -1243,8 +1243,7 @@ ALTER SEQUENCE stories_id_seq OWNED BY stories.id;
 
 CREATE TABLE streamers (
     id integer NOT NULL,
-    site_name character varying(255) NOT NULL,
-    oembed_uri character varying(255)
+    site_name character varying(255) NOT NULL
 );
 
 
@@ -1393,7 +1392,9 @@ CREATE TABLE videos (
     episode_id integer,
     streamer_id integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    sub_lang character varying(255),
+    dub_lang character varying(255)
 );
 
 
@@ -3147,4 +3148,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140714072239');
 INSERT INTO schema_migrations (version) VALUES ('20140714111212');
 
 INSERT INTO schema_migrations (version) VALUES ('20140731164542');
+
+INSERT INTO schema_migrations (version) VALUES ('20140813001044');
 
