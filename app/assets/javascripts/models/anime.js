@@ -61,14 +61,6 @@ Hummingbird.Anime = DS.Model.extend({
   }.property('startedAiring', 'finishedAiring', 'episodeCount'),
 
   notYetAired: Ember.computed.equal('airingStatus', 'Not Yet Aired'),
-  
-  recentlyStartedAiring: function() {
-    if (this.get('airingStatus') === "Finished Airing") return false;
-    var startedAiring = this.get('startedAiring');
-    //Used to hide "First Impressions" from long-term ongoing shows like Naruto Shippuden
-    //Checks if show started airing in past 10 weeks(6048000000 ms)
-    return startedAiring && Date.now() - startedAiring < 6048000000;
-  }.property('startedAiring'),
 
   formattedAirDates: function() {
     var format, formattedFinishedAiring, formattedStartedAiring, result;

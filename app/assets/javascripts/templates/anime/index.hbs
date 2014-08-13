@@ -169,7 +169,11 @@
   <div class="series-reviews">
     <h2 class="grey-title">
       {{#link-to 'reviews.index'}}
-        Reviews
+        {{#if recentlyStartedAiring}}
+          First Impressions
+        {{else}}
+          Reviews
+        {{/if}}
         <i class="fa fa-angle-right"></i>
       {{/link-to}}
     </h1>
