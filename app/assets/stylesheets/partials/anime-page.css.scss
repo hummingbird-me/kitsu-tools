@@ -74,16 +74,43 @@
         }
       }
     }
+    .genre-tab {
+      @extend .clearfix;
+    }
+    .franchise-show {
+      padding: 0;
+      color: #e5e5e5;
+      .series-poster {
+        width: 100%;
+        border-radius: 3px;
+      }
+    }
     .info-tabs {
       @extend .col-xs-12;
       margin-top: 15px;
       padding: 0;
       .slider {
+        @extend .clearfix;
+        margin-bottom: -5px;
+        .btn {
+          background-color: #e5e5e5;
+          border: none;
+          margin-bottom: 10px;
+          float: right;
+        }
+        .favorite-count {
+          color: #b3b3b3;
+        }
+        .report-quote a {
+          color: #e74c3c;
+          opacity: 1;
+        }
         .badge {
           background: #838c9a;
           border-radius: 3px;
           padding: 7px 5px;
           margin-right: 10px;
+          margin-bottom: 10px;
           a {
             color: #fff;
             font-weight: normal;
@@ -157,14 +184,18 @@
         border-top-left-radius: 0;
 
         .rounded-block {
+          color: #e5e5e5;
           border: none;
-          border-bottom: 1px solid #ddd;
-          margin-bottom: 0;
+          border-bottom: 1px solid #838c9a;
           border-radius: 0;
-
-          &:hover {
-            border: none;
-            border-bottom: 1px solid #ddd;
+          margin-bottom: 15px;
+          padding-bottom: 15px;
+          border-bottom: 1px solid #838c9a;
+          &:first-child {
+            padding-top: 0;
+          }
+          &:last-child {
+            border-bottom: none;
           }
         }
       }
