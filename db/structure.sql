@@ -2349,6 +2349,13 @@ CREATE UNIQUE INDEX index_people_on_mal_id ON people USING btree (mal_id);
 
 
 --
+-- Name: index_quotes_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_quotes_on_anime_id ON quotes USING btree (anime_id);
+
+
+--
 -- Name: index_stories_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3100,6 +3107,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140508014623');
 INSERT INTO schema_migrations (version) VALUES ('20140509185245');
 
 INSERT INTO schema_migrations (version) VALUES ('20140510170525');
+
+INSERT INTO schema_migrations (version) VALUES ('20140511135230');
 
 INSERT INTO schema_migrations (version) VALUES ('20140511184722');
 
