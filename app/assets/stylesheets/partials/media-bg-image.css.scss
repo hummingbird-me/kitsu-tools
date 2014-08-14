@@ -21,8 +21,6 @@
 
   &.register {
     width: 100%;
-    // Missing image?
-    //background: image-url("steins.png");
     height: 625px;
     background-size: cover;
     margin-top: -20px;
@@ -35,6 +33,7 @@
   &.series {
     width: 100%;
     background-repeat: no-repeat !important;
+    background-size: cover;
     position: absolute;
     opacity: .05;
     top: 0;
