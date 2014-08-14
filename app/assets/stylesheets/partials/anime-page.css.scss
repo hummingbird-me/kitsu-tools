@@ -416,7 +416,7 @@
 
     .btn-group .top-button {
       width: 50%;
-
+      margin: 0;
       border-radius: 0 !important;
 
       &:first-of-type {
@@ -436,6 +436,15 @@
 
   .right-column {
     @extend .col-sm-4;
+
+    & .no-entry {
+      @extend .col-sm-2;
+      float: right;
+
+      .btn-group .top-button {
+        width: 100%;
+      }
+    }
   }
 }
 
