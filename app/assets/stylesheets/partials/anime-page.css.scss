@@ -464,9 +464,15 @@
   }
 }
 
+.reviews-index {
+  h1 {
+    margin-left: 5px;
+  }
+}
+
 .series-reviews {
   @extend .col-sm-6;
-  padding-left: 0;
+  padding: 0 5px;
 
   .review-listing {
     @extend .col-xs-12;
