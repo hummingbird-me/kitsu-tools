@@ -118,6 +118,9 @@
             letter-spacing: 1px;
           }
         }
+        .studios-header {
+          color: #eaeaea;
+        }
         .cast {
           overflow: hidden;
         }
@@ -201,25 +204,38 @@
       }
       .nav-tabs {
         border-bottom: none;
-        > li.active > a {
-          background: none;
-          border: none;
-          color: #fff;
-          border: 1px solid #838c9a;
-          &:hover {
+        li {
+          &.active > a {
             background: none;
             border: none;
             color: #fff;
             border: 1px solid #838c9a;
+            &:hover {
+              background: none;
+              border: none;
+              color: #fff;
+              border: 1px solid #838c9a;
+            }
           }
-        }
-        li > a {
-          color: darken(#fff, 30);
-          font-family: "klavika", Helvetica, Arial, sans-serif;
-          &:hover {
+          &.open > a {
             background: #838c9a;
             color: #fff;
             border: 1px solid #838c9a;
+            &:hover {
+              background: #838c9a;
+            }
+          }
+          &.open .dropdown-menu {
+            background: #4b5360;
+          }
+          & > a {
+            color: darken(#fff, 30);
+            font-family: "klavika", Helvetica, Arial, sans-serif;
+            &:hover {
+              background: #838c9a;
+              color: #fff;
+              border: 1px solid #838c9a;
+            }
           }
         }
       }
@@ -416,7 +432,7 @@
 
     .btn-group .top-button {
       width: 50%;
-
+      margin: 0;
       border-radius: 0 !important;
 
       &:first-of-type {
@@ -436,12 +452,27 @@
 
   .right-column {
     @extend .col-sm-4;
+
+    & .no-entry {
+      @extend .col-sm-2;
+      float: right;
+
+      .btn-group .top-button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.reviews-index {
+  h1 {
+    margin-left: 5px;
   }
 }
 
 .series-reviews {
   @extend .col-sm-6;
-  padding-left: 0;
+  padding: 0 5px;
 
   .review-listing {
     @extend .col-xs-12;

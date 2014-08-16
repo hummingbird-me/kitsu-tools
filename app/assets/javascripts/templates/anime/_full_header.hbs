@@ -27,7 +27,7 @@
 
   {{partial "anime/info_tabs"}}
 </div>
-<div class="right-column">
+<div {{bind-attr class=":right-column libraryEntryExists::no-entry"}}>
   <div class="top-buttons">
     <div class="btn-group">
       {{#if libraryEntryExists}}
