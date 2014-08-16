@@ -15,7 +15,7 @@ class EpisodesController < ApplicationController
     end
   end
   def show
-    @episode = Episodes.find(params[:id])
+    @episode = Episode.find(params[:id])
     @anime = @episode.anime
 
     respond_to do |format|
