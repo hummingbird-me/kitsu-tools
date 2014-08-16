@@ -172,7 +172,7 @@ GEM
     hashie (3.2.0)
     hike (1.2.3)
     hiredis (0.5.2)
-    hooloo (0.2.0)
+    hooloo (0.2.1)
       multi_json (~> 1.0)
     http_parser.rb (0.6.0)
     i18n (0.6.11)
@@ -350,6 +350,7 @@ GEM
     ref (1.0.5)
     remotipart (1.2.1)
     rinku (1.7.3)
+    rubyfish (0.0.6)
     safe_yaml (1.0.3)
     sanitize (2.1.0)
       nokogiri (>= 1.4.4)
@@ -492,6 +493,7 @@ DEPENDENCIES
   redis
   redis-rails
   rinku
+  rubyfish
   sanitize (~> 2.1)
   sass-rails (~> 4.0)
   shoulda

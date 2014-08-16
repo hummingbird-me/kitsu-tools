@@ -114,6 +114,7 @@ gem 'nokogiri', require: false
 
 # Needed for Hulu import
 gem 'hooloo', require: false
+gem 'rubyfish' # String matching
 
 # Image optimization
 gem 'image_optim', '~> 0.13', require: false
