@@ -43,6 +43,6 @@ class StorySerializer < ActiveModel::Serializer
 
   def substories
     object.substories.reject {|x| x.substory_type == "comment" }
-                     .sort_by {|x| x.created_at }.reverse.take(2)
+                     .sort_by {|x| x.created_at }.reverse.take(@options[:substory_limit] || 2)
   end
 end

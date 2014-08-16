@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   def index
-    params.permit(:user_id, :news_feed, :page)
+    params.permit(:user_id, :news_feed, :page, :substory_limit)
 
     if params[:user_id]
       stories = User.find(params[:user_id]).stories.for_user(current_user).order('updated_at DESC').includes({substories: :user}, :user, :target).page(params[:page]).per(30)
@@ -8,7 +8,8 @@ class StoriesController < ApplicationController
       stories = NewsFeed.new(current_user).fetch(params[:page] || 1)
     end
 
-    render json: stories, meta: {cursor: 1 + (params[:page] || 1).to_i}
+    render json: stories, meta: {cursor: 1 + (params[:page] || 1).to_i},
+      substory_limit: (params[:substory_limit] || 2).to_i
   end
 
   def destroy
