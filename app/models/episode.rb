@@ -51,4 +51,17 @@ class Episode < ActiveRecord::Base
     s = season_number ? "s#{"%02d" % season_number}" : ""
     "#{s}e#{"%02d" % episode_number}"
   end
+  def self.create_or_update_from_hash(hash)
+    episode = Episode.where(
+      anime: hash[:anime],
+      number: hash[:episode],
+      season_number: hash[:season]
+    ).first_or_create
+    episode.assign_attributes({
+      title: (hash[:title] if episode.title.blank?),
+      synopsis: (hash[:synopsis] if episode.synopsis.blank?),
+      thumbnail: (hash[:thumbnail] if episode.thumbnail.blank?)
+    }.compact)
+    episode.save!
+  end
 end

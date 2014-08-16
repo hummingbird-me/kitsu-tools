@@ -17,4 +17,18 @@
 class Video < ActiveRecord::Base
   belongs_to :episode
   belongs_to :streamer
+
+  def self.create_or_update_from_hash(hash)
+    video = Video.where(
+      episode: hash[:episode],
+      streamer: hash[:streamer],
+      sub_lang: hash[:sub_lang],
+      dub_lang: hash[:dub_lang]
+    ).first_or_create
+    video.assign_attributes({
+      embed_data: hash[:embed_data],
+      available_regions: hash[:available_regions]
+    })
+    video.save!
+  end
 end
