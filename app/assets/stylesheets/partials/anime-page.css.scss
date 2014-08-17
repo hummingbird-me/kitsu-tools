@@ -453,7 +453,7 @@
   .right-column {
     @extend .col-sm-4;
 
-    & .no-entry {
+    &.no-entry {
       @extend .col-sm-2;
       float: right;
 
