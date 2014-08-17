@@ -107,7 +107,7 @@ class UsersController < ApplicationController
         @user.followers.destroy current_user
         action_type = "unfollowed"
       else
-        if current_user.following_count < 2000
+        if current_user.following_count < 5000
           @user.followers.push current_user
           action_type = "followed"
         else
