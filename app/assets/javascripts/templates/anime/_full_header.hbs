@@ -43,9 +43,9 @@
       {{/if}}
       <button {{bind-attr class=":top-button :library-entry :dropdown-toggle libraryStatus:active"}} type="button" data-toggle="dropdown">
         {{#if libraryEntryExists}}
-          {{libraryEntry.status}} <i {{bind-attr class=":fa :fa-caret-down"}}></i>
+          {{libraryEntry.status}}&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
         {{else}}
-          Add to Library <i {{bind-attr class=":fa :fa-caret-down"}}></i>
+          Add to Library&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
         {{/if}}
       </button>
       <ul class="dropdown-menu">
