@@ -57,7 +57,7 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
         });
         reply.save();
         self.incrementProperty('substoryCount');
-        self.get('model.substories').addObject(reply);
+        self.get('substories').addObject(reply);
         self.set('reply', '');
       });
     },
