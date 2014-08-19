@@ -55,8 +55,15 @@ class Anime < ActiveRecord::Base
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
 
-  has_attached_file :poster_image, default_url: "/assets/missing-anime-cover.jpg",
-    styles: {large: "200x290!", medium: "100x150!"}
+  has_attached_file :poster_image,
+    styles: {
+      large: {geometry: '490x710!', animated: false, format: :jpg},
+      medium: '100x150!'
+    },
+    convert_options: {
+      large: '-quality 0'
+    }
+    default_url: '/assets/missing-anime-cover.jpg'
 
   validates_attachment :poster_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
