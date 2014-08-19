@@ -1,4 +1,5 @@
-require 'my_anime_list_import'
+require_dependency 'xml_cleaner'
+require_dependency 'my_anime_list_import'
 
 class ImportsController < ApplicationController
   before_filter :authenticate_user!
@@ -18,12 +19,7 @@ class ImportsController < ApplicationController
         xml = gz.read
         gz.close
 
-        # xmllint the incoming xml.
-        IO.popen("xmllint - --format --encode utf-8", "r+") do |f|
-          f.write xml
-          f.close_write
-          xml = f.read
-        end
+        xml = XMLCleaner.clean(xml)
 
         current_user.update_column :mal_import_in_progress, true
         MyAnimeListImportApplyWorker.perform_async(current_user.id, xml)
