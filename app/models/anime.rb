@@ -62,7 +62,7 @@ class Anime < ActiveRecord::Base
     },
     convert_options: {
       large: '-quality 0'
-    }
+    },
     default_url: '/assets/missing-anime-cover.jpg'
 
   validates_attachment :poster_image, content_type: {
