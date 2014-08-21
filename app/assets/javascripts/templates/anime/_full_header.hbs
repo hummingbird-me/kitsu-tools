@@ -31,15 +31,21 @@
   <div class="top-buttons">
     <div class="btn-group">
       {{#if libraryEntryExists}}
-        <button type="button" {{bind-attr class=":top-button :heart libraryEntry.isFavorite:active"}} {{action "toggleFavorite"}}>
-          <i {{bind-attr class=":fa libraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i> Favorite
-        </button>
+        {{#if libraryEntry.isFavorite}}
+          <button type="button" class="top-button heart active" {{action "toggleFavorite"}}>
+            <i class="fa fa-heart"></i> Favorited
+          </button>
+        {{else}}
+          <button type="button" class="top-button heart" {{action "toggleFavorite"}}>
+            <i class="fa fa-heart-o"></i> Favorite
+          </button>
+        {{/if}}
       {{/if}}
       <button {{bind-attr class=":top-button :library-entry :dropdown-toggle libraryStatus:active"}} type="button" data-toggle="dropdown">
         {{#if libraryEntryExists}}
-          {{libraryEntry.status}} <i {{bind-attr class=":fa :fa-caret-down"}}></i>
+          {{libraryEntry.status}}&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
         {{else}}
-          Add to Library <i {{bind-attr class=":fa :fa-caret-down"}}></i>
+          Add to Library&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
         {{/if}}
       </button>
       <ul class="dropdown-menu">
