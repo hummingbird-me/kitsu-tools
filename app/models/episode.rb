@@ -63,5 +63,6 @@ class Episode < ActiveRecord::Base
       thumbnail: (hash[:thumbnail] if episode.thumbnail.blank?)
     }.compact)
     episode.save!
+    episode
   end
 end

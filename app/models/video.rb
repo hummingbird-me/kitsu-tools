@@ -21,15 +21,16 @@ class Video < ActiveRecord::Base
   def self.create_or_update_from_hash(hash)
     video = Video.where(
       episode: hash[:episode],
-      streamer: hash[:streamer],
-      sub_lang: hash[:sub_lang],
-      dub_lang: hash[:dub_lang]
+      url: hash[:url]
     ).first_or_initialize
     video.assign_attributes({
+      streamer: hash[:streamer],
       embed_data: hash[:embed_data],
       available_regions: hash[:available_regions],
-      url: hash[:url]
+      sub_lang: hash[:sub_lang],
+      dub_lang: hash[:dub_lang]
     })
     video.save!
+    video
   end
 end
