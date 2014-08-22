@@ -1,5 +1,5 @@
 desc "Bulk import videos from Hulu"
-task :bulk_import_hulu => :environment do
+task :bulk_import_hulu, [:shows] => [:environment] do |t, args|
   require 'hooloo'
   require 'rubyfish'
 
@@ -33,12 +33,12 @@ task :bulk_import_hulu => :environment do
     end
   end
   def best_magic(options, min_or_max, &block)
-    sorted = options.compact.map do |a|
+    sorted = options.compact.map do |anime|
       {
-        anime: a,
+        anime: anime,
         sort: [
-          block.try(:call, a.title.try(:downcase) || ''),
-          block.try(:call, a.alt_title.try(:downcase) || '')
+          block.try(:call, anime.title.try(:downcase) || ''),
+          block.try(:call, anime.alt_title.try(:downcase) || '')
         ].compact.reject{ |a| a.try(:nan?) || false }.send(min_or_max)
       }
     end.sort { |a, b| a[:sort] <=> b[:sort] }
@@ -56,22 +56,10 @@ task :bulk_import_hulu => :environment do
 
 
   puts '==> Loading anime from Hulu'
-  anime_genre = Hooloo::Genre.new 'anime'
-  i = 0
-  shows = []
-  loop do
-    page = anime_genre.shows(items_per_page: 100, position: i * 100)
-    break if page.length == 0
-    shows << page
-    i += 1
-  end
-  shows.flatten!
-  shows.compact!
+  shows = Hooloo::Genre.new('anime').shows
+  shows = shows.first(args[:shows].to_i) unless args[:shows].nil?
 
-
-  puts '==> Attempting to match %d shows' % shows.length
-  success = 0
-  failure = 0
+  puts '==> Attempting to match shows'
   shows.each do |show|
     options = []
     ## Exact Match
