@@ -9,7 +9,6 @@ task :bulk_import_hulu, [:shows] => [:environment] do |t, args|
   def import_episodes(anime, show, how=nil, uncertain=false)
     @results[how] = 0 unless @results.has_key?(how)
     @results[how] += 1
-    printf "++++ %s ---> %s, %s VIA %s\n", show.name, anime.title, anime.alt_title, how.to_s.upcase if uncertain
 
     show.videos.each do |video|
       next unless video.video_type == 'episode'
@@ -28,9 +27,10 @@ task :bulk_import_hulu, [:shows] => [:environment] do |t, args|
         embed_data: { embed_url: video.oembed[:embed_url] }.to_json,
         available_regions: ['US'],
         sub_lang: video.closed_captions.join(',').upcase,
-        dub_lang: video.has_captions? ? 'EN' : 'JP'
+        dub_lang: begin video.categories.include?('Subtitled') ? 'EN' : 'JP' rescue 'JP' end
       })
     end
+    printf "????  %s --> %s (via %s)\n", show.name, [anime.title, anime.alt_title].compact.join(', '), how.to_s if uncertain
   end
   def best_magic(options, min_or_max, &block)
     sorted = options.compact.map do |anime|
@@ -84,9 +84,10 @@ task :bulk_import_hulu, [:shows] => [:environment] do |t, args|
     best = best_magic(options, :max) { |title| RubyFish::LongestSubsequence.distance(title, show.name.downcase).to_f / (title.length + show.name.length) }
     next import_episodes(best[:anime], show, :subsequence, best[:sort] < 0.4) if best[:sort] > 0.33
 
-    printf "---- %s ---> %s\n", show.name, options.compact.map{ |a| [a.title, a.alt_title] }.compact.flatten.join(', ')
+    printf "----  %s ---> %s\n", show.name, options.compact.map{ |a| [a.title, a.alt_title] }.compact.flatten.join(', ')
+    @results[:fail] += 1
   end
-  puts "====== Of %d =======" % shows.length
+  puts "====== Of %d =======" % @results.values.reduce(:+)
   @results.each do |how, num|
     puts "%s: %d" % [how.to_s, num]
   end
