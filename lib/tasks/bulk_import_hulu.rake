@@ -3,26 +3,29 @@ task :bulk_import_hulu => :environment do
   require 'hooloo'
   require 'rubyfish'
 
-  @results = {}
+  @results = {
+    fail: 0
+  }
   def import_episodes(anime, show, how=nil, uncertain=false)
     @results[how] = 0 unless @results.has_key?(how)
     @results[how] += 1
     printf "++++ %s ---> %s, %s VIA %s\n", show.name, anime.title, anime.alt_title, how.to_s.upcase if uncertain
 
     show.videos.each do |video|
-      next unless video.type == 'episode'
+      next unless video.video_type == 'episode'
       episode = Episode.create_or_update_from_hash({
         anime: anime,
         episode: video.episode_number,
         season: video.season_number,
-        title: video.title.gsub(/^([sd]ub) /i, '').trim,
+        title: video.title.gsub(/^([sd]ub) /i, '').strip,
         synopsis: video.description,
         thumbnail: video.thumbnail_url
       })
       Video.create_or_update_from_hash({
-        streamer: streamer,
+        streamer: @streamer,
         episode: episode,
-        embed_data: video.embed_data.to_json,
+        url: "http://www.hulu.com/watch/#{video.id}",
+        embed_data: { embed_url: video.oembed[:embed_url] }.to_json,
         available_regions: ['US'],
         sub_lang: video.closed_captions.join(',').upcase,
         dub_lang: video.has_captions? ? 'EN' : 'JP'
@@ -47,7 +50,7 @@ task :bulk_import_hulu => :environment do
   end
 
   puts '==> Creating streamer entry'
-  streamer = Streamer.where(
+  @streamer = Streamer.where(
     site_name: 'Hulu'
   ).first_or_create
 
