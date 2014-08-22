@@ -10,6 +10,8 @@ task :bulk_import_hulu, [:shows] => [:environment] do |t, args|
     @results[how] = 0 unless @results.has_key?(how)
     @results[how] += 1
 
+    printf "%s --> %s\n", show.name, [anime.title, anime.alt_title].compact.delete_if(&:empty?).join(', ')
+
     show.videos.each do |video|
       next unless video.video_type == 'episode'
       episode = Episode.create_or_update_from_hash({
@@ -20,17 +22,24 @@ task :bulk_import_hulu, [:shows] => [:environment] do |t, args|
         synopsis: video.description,
         thumbnail: video.thumbnail_url
       })
+      # I know it could be better but it'll work for now
+      dubs = 'EN'
+      dubs = 'JP' if begin video.categories.include?('Subtitled') rescue false end
+      dubs = 'JP' if video.title.include?('(sub)')
+      dubs = 'ES' if show.name.include?('(Español)')
       Video.create_or_update_from_hash({
         streamer: @streamer,
         episode: episode,
         url: "http://www.hulu.com/watch/#{video.id}",
-        embed_data: { embed_url: video.oembed[:embed_url] }.to_json,
+        embed_data: { embed_url: video.oembed['embed_url'] }.to_json,
         available_regions: ['US'],
         sub_lang: video.closed_captions.join(',').upcase,
-        dub_lang: begin video.categories.include?('Subtitled') ? 'EN' : 'JP' rescue 'JP' end
+        dub_lang: dubs
       })
+      print '.'
     end
-    printf "????  %s --> %s (via %s)\n", show.name, [anime.title, anime.alt_title].compact.join(', '), how.to_s if uncertain
+    print "\n"
+    $stderr.printf "???? %s --> %s (via %s)\n", show.name, [anime.title, anime.alt_title].compact.delete_if(&:empty?).join(', '), how.to_s if uncertain
   end
   def best_magic(options, min_or_max, &block)
     sorted = options.compact.map do |anime|
@@ -84,7 +93,7 @@ task :bulk_import_hulu, [:shows] => [:environment] do |t, args|
     best = best_magic(options, :max) { |title| RubyFish::LongestSubsequence.distance(title, show.name.downcase).to_f / (title.length + show.name.length) }
     next import_episodes(best[:anime], show, :subsequence, best[:sort] < 0.4) if best[:sort] > 0.33
 
-    printf "----  %s ---> %s\n", show.name, options.compact.map{ |a| [a.title, a.alt_title] }.compact.flatten.join(', ')
+    $stderr.printf "----  %s ---> %s\n", show.name, options.compact.map{ |a| [a.title, a.alt_title] }.compact.flatten.join(', ')
     @results[:fail] += 1
   end
   puts "====== Of %d =======" % @results.values.reduce(:+)
