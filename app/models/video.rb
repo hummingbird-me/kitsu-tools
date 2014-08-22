@@ -24,10 +24,11 @@ class Video < ActiveRecord::Base
       streamer: hash[:streamer],
       sub_lang: hash[:sub_lang],
       dub_lang: hash[:dub_lang]
-    ).first_or_create
+    ).first_or_initialize
     video.assign_attributes({
       embed_data: hash[:embed_data],
-      available_regions: hash[:available_regions]
+      available_regions: hash[:available_regions],
+      url: hash[:url]
     })
     video.save!
   end

@@ -56,7 +56,7 @@ class Episode < ActiveRecord::Base
       anime: hash[:anime],
       number: hash[:episode],
       season_number: hash[:season]
-    ).first_or_create
+    ).first_or_initialize
     episode.assign_attributes({
       title: (hash[:title] if episode.title.blank?),
       synopsis: (hash[:synopsis] if episode.synopsis.blank?),

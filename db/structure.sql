@@ -2461,13 +2461,6 @@ CREATE INDEX index_videos_on_episode_id ON videos USING btree (episode_id);
 
 
 --
--- Name: index_videos_on_episode_id_and_streamer_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_videos_on_episode_id_and_streamer_id ON videos USING btree (episode_id, streamer_id);
-
-
---
 -- Name: index_votes_on_target_id_and_target_type_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3159,4 +3152,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140714111212');
 INSERT INTO schema_migrations (version) VALUES ('20140731164542');
 
 INSERT INTO schema_migrations (version) VALUES ('20140813001044');
+
+INSERT INTO schema_migrations (version) VALUES ('20140820213008');
 
