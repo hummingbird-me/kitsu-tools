@@ -20,8 +20,8 @@ gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
 
 gem 'ember-rails', '~> 0.15'
-gem 'ember-source', '1.7.0.beta.4'
-gem 'ember-data-source', '1.0.0.beta.8'
+gem 'ember-source', '1.8.0.beta.1'
+gem 'ember-data-source', '1.0.0.beta.9'
 
 gem 'react-rails', '~> 0.10.0.0'
 
