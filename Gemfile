@@ -38,7 +38,7 @@ gem 'zurb-foundation', '~> 4.3.0'
 gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.0.3'
 gem 'bootstrap-sass', '~> 3.2'
-gem 'autoprefixer-rails', '~> 2.0'
+gem 'autoprefixer-rails', '~> 3.0'
 gem 'non-stupid-digest-assets'
 gem 'font-awesome-sass'
 
@@ -54,8 +54,6 @@ end
 
 gem 'dotenv-rails', groups: [:development, :test]
 
-gem 'skylight'
-gem 'newrelic_rpm'
 gem 'rack-mini-profiler'
 gem 'flamegraph'
 
@@ -88,7 +86,7 @@ gem 'friendly_id', github: 'joshfabian/friendly_id'
 gem 'devise', '~> 3.2'
 gem 'devise-async' # Async email for Devise
 gem 'omniauth'
-gem 'omniauth-facebook', '~> 1.6'
+gem 'omniauth-facebook', '~> 2.0'
 
 # Authorization.
 gem 'cancan', "~> 1.6"
