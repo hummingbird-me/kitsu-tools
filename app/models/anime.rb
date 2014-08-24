@@ -169,7 +169,38 @@ class Anime < ActiveRecord::Base
           )', genres.map(&:id))
   end
 
-  def self.create_or_update_from_hash hash
+  def title_distance(title)
+    titles = [self.title, self.alt_title].compact
+    # Damerau-Levenshtein Distance
+    levenshtein = titles.map { |t| RubyFish::DamerauLevenshtein.distance(t, title) }.min
+
+    # Longest Common Subsequence (Normalized
+    subsequence = titles.map { |t| [t, RubyFish::LongestSubsequence.distance(t, title)] }
+                        .map { |t| [t[0].length, title.length].max - t[1] }.min
+
+    # Average and square to determine cost
+    [levenshtein, subsequence].flatten.map { |x| x ** 2 }.instance_eval { sum.to_f / size }
+  end
+
+  def self.fuzzy_find(title)
+    # Exact
+    anime = Anime.where("lower(title) = :title OR lower(alt_title) = :title", title: title.downcase).first
+    return anime unless anime.nil?
+
+    # Trigram
+    options = Anime.fuzzy_search_by_title(title).first(10)
+    anime = options.first
+    return anime if !anime.nil? && anime.pg_search_rank > 0.7
+
+    # Sort by distance, ascending
+    anime = options.map do |a|
+      { anime: a, distance: a.title_distance(title) }
+    end.sort { |a, b| a[:distance] <=> b[:distance] }
+
+    anime.first[:anime] if anime.first[:distance] < 80
+  end
+
+  def self.create_or_update_from_hash(hash)
     # First the creation logic
     # TODO: stop hard-coding the ID column
     anime = Anime.find_by(mal_id: hash[:external_id])
