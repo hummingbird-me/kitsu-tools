@@ -1,4 +1,4 @@
-{{!--
+<!-- Episodes on this page should start at either episode 1 or the most recent episode the user has seen -->
 <div class="episode-bar">
   <div class="container">
     <h2 class="grey-title">
@@ -6,7 +6,16 @@
         Episodes
         <i class="fa fa-angle-right"></i>
       </a>
-    </h1>
+    </h2>
+    <div class="language-dropdown dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+        Subbed
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dubbed</a></li>
+      </ul>
+    </div>
       <ul class="episode-thumbs block-grid-5">
         <li class="block-grid-item">
           <div class="thumbnail">
@@ -80,7 +89,6 @@
       </ul>
   </div>
 </div>
---}}
 
 <div class="container">
   <div class="series-reviews">

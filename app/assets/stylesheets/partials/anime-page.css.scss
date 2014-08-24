@@ -4,10 +4,20 @@
   background: #4b5360;
   position: relative;
   padding: 30px 0;
+  overflow: hidden;
   .container {
     padding-right: 0;
     @media (max-width: 768px) {
       padding-left: 0;
+    }
+  }
+  &.episode-show {
+    .container {
+      padding-right: 15px;
+      @media (max-width: 768px) {
+        padding-left: 0;
+        padding-right: 0;
+      }
     }
   }
   .poster-container {
@@ -380,9 +390,24 @@
   }
 }
 
+.episode-bar {
+  .grey-title {
+    float: left;
+  }
+  .language-dropdown, .season-dropdown {
+    float: right;
+    margin-top: 20px;
+  }
+  .season-dropdown {
+    margin-right: 10px;
+  }
+}
+
 .episode-thumbs {
   @include block-grid(5);
   .thumbnail {
+    position: relative;
+    top: 0;
     a {
       position: relative;
       display: block;
@@ -412,11 +437,48 @@
       }
     }
     &:hover {
+      top: -2px;
       .fa-play {
         opacity: 1;
         transition: .2s ease-in;
       }
     }
+  }
+}
+
+.episode-list {
+  .thumbnail {
+    margin-bottom: 0;
+  }
+}
+
+.episode-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+  margin-top: -30px;
+  margin-bottom: -30px;
+  box-shadow: 0 0 22px 10px rgba(0,0,0,.2);
+  iframe {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.episode-summary {
+  background: #fff;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  .episode-title {
+    font-weight: normal;
+    color: #707985;
   }
 }
 
@@ -500,6 +562,8 @@
     .trending-review-empty {
       text-align: center;
       margin-bottom: 35px;
+      padding: 25px;
+      padding-bottom: 0;
       .empty-icon {
         font-size: 100px;
         color: #aaa;

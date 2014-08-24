@@ -27,6 +27,7 @@ html { overflow-y: scroll; }
   &:hover { i { color: white; }}
 }
 
+
 .navbar-brand {
   background-image: url("/assets/logo-sprite.png");
   background-position: 0 -112px;
@@ -46,6 +47,10 @@ html { overflow-y: scroll; }
     top: 8px;
     left: 15px;
   }
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: 0;
 }
 
 .quick-update ~ .notifications {

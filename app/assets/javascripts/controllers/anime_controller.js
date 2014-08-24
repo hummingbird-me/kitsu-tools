@@ -6,7 +6,7 @@ Hummingbird.AnimeController = Ember.ObjectController.extend(Hummingbird.HasCurre
   }.property('controllers.application.currentRouteName'),
 
   coverImageStyle: function() {
-    return "background: url('" + this.get('model.coverImage') + "'); background-position: 50% -" + this.get('model.coverImageTopOffset') + "px;";
+    return "background-image: url('" + this.get('model.coverImage') + "'); background-position: 50% -" + this.get('model.coverImageTopOffset') + "px;";
   }.property('model.coverImage', 'model.coverImageTopOffset'),
 
   roundedBayesianRating: function() {
