@@ -79,24 +79,30 @@ class MyAnimeListImport
 
   def apply!
     table = (list == "manga") ? Manga : Anime
-    animangoes = table.where(mal_id: data.map {|x| x[:mal_id] }).index_by(&:mal_id)
+    media_list = table.where(mal_id: data.map {|x| x[:mal_id] }).index_by(&:mal_id)
     failures = []
     count = 0
 
     data.each do |mal_entry|
-      animanga = animangoes[mal_entry[:mal_id]]
-      if animanga.nil?
-        failures << mal_entry[:title]
+      media = media_list[mal_entry[:mal_id]]
+      if media.nil?
+        begin
+          media = table.create_or_update_from_hash(
+            MALImport.new(list.to_sym, mal_entry[:mal_id]).to_h
+          )
+        rescue
+          failures << mal_entry[:title]
+        end
       else
         entry = nil
         if list == "manga"
-          entry = MangaLibraryEntry.where(user_id: @user.id, manga_id: animanga.id).first_or_initialize
-          entry.chapters_read = restrict_range(mal_entry[:chapters_read], animanga.chapter_count)
-          entry.volumes_read  = restrict_range(mal_entry[:volumes_read], animanga.volume_count)
+          entry = MangaLibraryEntry.where(user_id: @user.id, manga_id: media.id).first_or_initialize
+          entry.chapters_read = restrict_range(mal_entry[:chapters_read], media.chapter_count)
+          entry.volumes_read  = restrict_range(mal_entry[:volumes_read], media.volume_count)
           entry.reread_count = mal_entry[:reread_count]
         else
-          entry = LibraryEntry.where(user_id: @user.id, anime_id: animanga.id).first_or_initialize
-          entry.episodes_watched = restrict_range(mal_entry[:episodes_watched], animanga.episode_count)
+          entry = LibraryEntry.where(user_id: @user.id, anime_id: media.id).first_or_initialize
+          entry.episodes_watched = restrict_range(mal_entry[:episodes_watched], media.episode_count)
           entry.rewatch_count = mal_entry[:rewatch_count] < 255 ? mal_entry[:rewatch_count] : 0
           entry.rewatching = mal_entry[:rewatching]
         end
@@ -120,7 +126,7 @@ class MyAnimeListImport
     end
 
     if failures.length > 0
-      comment << "\n\nThe following were not imported:\n * "
+      comment << "\n\nThe following could not be imported:\n * "
       comment << failures.join("\n * ")
     end
 
