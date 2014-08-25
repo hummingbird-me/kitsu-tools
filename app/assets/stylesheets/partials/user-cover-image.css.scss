@@ -101,14 +101,17 @@
       margin-right: 10px;
       &:hover {
         border-color: $orange;
-        a {
+        a, label {
           color: $orange;
         }
       }
       &:last-child {
         margin-right: 0;
       }
-      a {
+      a, label {
+        display: inline;
+        font-weight: normal;
+        cursor: pointer;
         padding: 5px 10px 5px 10px;
         color: #fff;
         &:hover {
@@ -124,7 +127,7 @@
     }
   }
 
-  .upload-cover, .follow-button {
+  .follow-button {
     position: absolute;
     right: 15px;
     top: 87px;
@@ -137,18 +140,6 @@
       top: -25px;
       padding-right: 35px;
       padding-left: 35px;
-    }
-  }
-
-  .upload-cover {
-    position: absolute;
-    right: 15px;
-    top: 87px;
-    padding: 5px 20px;
-    text-transform: uppercase;
-    @media (max-width: 630px) {
-      right: 13px;
-      top: -25px;
     }
   }
 }

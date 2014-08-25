@@ -18,26 +18,30 @@
         <div class="col-sm-12 col-md-10 account-info">
           <h1 class="username"> {{username}}</h1>
           <ul class="inline-list clearfix">
-            <li>
-              {{#bootstrap-tooltip title="Coming soon!" placement="bottom"}}
-                <i class="fa fa-exchange"></i> Compare
-              {{/bootstrap-tooltip}}
-            </li>
-            {{#unless viewingSelf}}
+            {{#if viewingSelf}}
+              <li>
+                <label for="cover-image">
+                  <i class="fa fa-upload"></i> Upload Cover
+                </label>
+                {{view Hummingbird.FileUpload action="coverSelected"
+                                              id="cover-image"}}
+              </li>
+            {{else}}
+              <li>
+                {{#bootstrap-tooltip title="Coming soon!" placement="bottom"}}
+                  <i class="fa fa-exchange"></i> Compare
+                {{/bootstrap-tooltip}}
+              </li>
               <li>
                 {{#bootstrap-tooltip title="Coming soon!" placement="bottom"}}
                   <i class="fa fa-envelope-o"></i> Message
                 {{/bootstrap-tooltip}}
               </li>
-            {{/unless}}
+            {{/if}}
           </ul>
         </div>
       </div>
       {{#if viewingSelf}}
-        <label class="upload-cover" style="font-size: 0.8em; opacity: 0.8" for="coverImage">
-          <i class="fa fa-upload"></i> Upload Cover
-        </label>
-        {{view Hummingbird.FileUpload action="coverSelected" id="coverImage"}}
       {{else}}
         {{#if isFollowed}}
           <button class="btn btn-default btn-lg follow-button unfollow" {{action "toggleFollow" this}}>

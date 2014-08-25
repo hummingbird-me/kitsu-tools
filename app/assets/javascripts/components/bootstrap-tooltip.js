@@ -1,7 +1,6 @@
 Hummingbird.BootstrapTooltipComponent = Ember.Component.extend({
   tagName: 'a',
 
-
   initializeTooltip: function() {
     return this.$().tooltip({
       placement: this.get('placement'),
