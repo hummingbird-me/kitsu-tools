@@ -1,9 +1,4 @@
 Hummingbird.ApplicationRoute = Ember.Route.extend({
-  setupController: function(controller, model) {
-    var headerController = this.controllerFor("header");
-    return headerController.set("notifications", this.store.find('notification'));
-  },
-
   actions: {
     goToDashboard: function() {
       if (this.get('currentUser.isSignedIn')) {
