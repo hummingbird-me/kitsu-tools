@@ -7,16 +7,8 @@ Hummingbird.ApplicationController = Ember.Controller.extend(Hummingbird.HasCurre
       window.lastVisitedURL = window.location.href;
     }
 
-    // Track Google Analytics page view.
-    if (window._gaq) {
-      if (this.afterFirstHit) {
-        Em.run.schedule('afterRender', function() {
-          _gaq.push(['_trackPageview']);
-        });
-      } else {
-        this.afterFirstHit = true;
-      }
-    }
+    // Track page view
+    window.analytics.page();
   }.observes('currentPath'),
 
   // Close the quick update panel on page transition.

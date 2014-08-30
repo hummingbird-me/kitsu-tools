@@ -13,20 +13,6 @@
     = yield :head
 
     :javascript
-      // Google Analytics
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-37633900-1']);
-      _gaq.push(['_setDomainName', 'hummingbird.me']);
-      _gaq.push(['_setCustomVar', 1, 'Anonymous', #{!current_user}, 2]);
-      _gaq.push(['_setAllowLinker', true]);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
       // Twitter
       !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 
@@ -53,18 +39,6 @@
             %li.dropdown
               %a{href: "http://forums.hummingbird.me/"} Community
       = yield :body
-    -# / Temporary:
-    -# - if Rails.env.development?
-    -#   :javascript
-    -#     var dont_refresh = true;
-    -# - else
-    -#   :javascript
-    -#     var dont_refresh;
-    -#     if (location.href.match(/new_feed/)) {
-    -#       dont_refresh = true;
-    -#     } else {
-    -#       dont_refresh = false;
-    -#     }
 
     :javascript
       (function(){
@@ -86,18 +60,18 @@
       window.preloadData = #{(@preload || []).to_json};
       window.genericPreload = #{(@generic_preload || {}).to_json};
 
-    = javascript_include_tag "vendor"
-    = javascript_include_tag "application"
-
     / Segment.io
     - if Rails.env.production?
       :javascript
-        var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+"d2dq2ahtl5zl1z.cloudfront.net/analytics.js/v1/"+e+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias","ready"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
-        analytics.load("c6svkipfq3");
+        window.analytics=window.analytics||[],window.analytics.methods=["identify","group","track","page","pageview","alias","ready","on","once","off","trackLink","trackForm","trackClick","trackSubmit"],window.analytics.factory=function(t){return function(){var a=Array.prototype.slice.call(arguments);return a.unshift(t),window.analytics.push(a),window.analytics}};for(var i=0;i<window.analytics.methods.length;i++){var key=window.analytics.methods[i];window.analytics[key]=window.analytics.factory(key)}window.analytics.load=function(t){if(!document.getElementById("analytics-js")){var a=document.createElement("script");a.type="text/javascript",a.id="analytics-js",a.async=!0,a.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.io/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n)}},window.analytics.SNIPPET_VERSION="2.0.9",
+        window.analytics.load("wsxq90kyox");
+        window.analytics.page();
       - if user_signed_in?
         :javascript
-          analytics.identify('#{j current_user.name}', {
+          analytics.identify('#{j current_user.id}-#{j current_user.name}', {
             email: '#{j current_user.email}',
             username: '#{j current_user.name}'
           });
 
+    = javascript_include_tag "vendor"
+    = javascript_include_tag "application"
