@@ -68,7 +68,7 @@
         window.analytics.page();
       - if user_signed_in?
         :javascript
-          analytics.identify('#{j current_user.id}-#{j current_user.name}', {
+          analytics.identify('#{current_user.id}-#{j current_user.name}', {
             email: '#{j current_user.email}',
             username: '#{j current_user.name}'
           });
