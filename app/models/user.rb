@@ -358,8 +358,9 @@ class User < ActiveRecord::Base
 
   after_save do
     name_changed = self.name_changed?
+    auth_token_changed = self.authentication_token_changed?
     avatar_changed = (not self.avatar_processing) && (self.avatar_processing_changed? || self.avatar_updated_at_changed?)
-    if name_changed || avatar_changed
+    if name_changed || avatar_changed || auth_token_changed?
       self.sync_to_forum!
     end
   end
