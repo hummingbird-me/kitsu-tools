@@ -64,6 +64,12 @@ class MessageFormatterTest < ActiveSupport::TestCase
     assert_match /href=/, format("@Vikhyat")
   end
 
+  test "doesn't remove links that are not embedded" do
+    fmt = format("http://vikhyat.net http://i.imgur.com/CUjJQap.gif")
+    noko = Nokogiri::HTML.parse fmt
+    assert_equal 2, noko.css('a').length
+  end
+
   test "no <br> for image-only posts" do
     assert_no_match /br/, format("http://i.imgur.com/CUjJQap.gif")
   end

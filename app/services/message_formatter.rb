@@ -51,13 +51,13 @@ class MessageFormatter
     link = embeddable_links.first
 
     if embeddable_image?(link)
-      delete_links
+      delete_link(link)
       if @processed.strip.length > 0 && !(@processed =~ /(<br\s?\/?>\s*){2,}$/)
         @processed += "<br>"
       end
       @processed += "<a href='#{link}' target='_blank'><img class='autoembed' src='#{link}' style='max-height: 500px; width: auto; max-width: 100%;' /></a>"
     elsif code = embeddable_video_code(link)
-      delete_links
+      delete_link(link)
       @processed += "<div class='video-embed clearfix'><div class='video-wrapper'><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='http://youtube.com/embed/#{code}'> </iframe></div></div>"
     end
   end
@@ -79,7 +79,11 @@ class MessageFormatter
     nil
   end
 
-  def delete_links
-    @processed = Nokogiri::HTML.fragment(@processed).tap {|x| x.css('a').remove }.to_s
+  def delete_link(link)
+    @processed = Nokogiri::HTML.fragment(@processed).tap do |fragment|
+      fragment.css('a').select do |anchor|
+        anchor['href'] == link
+      end.each(&:remove)
+    end.to_s
   end
 end
