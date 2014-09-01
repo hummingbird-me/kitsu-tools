@@ -31,4 +31,6 @@ Hummingbird.Router.map(function() {
   this.route('notifications');
 
   this.route('chat');
+
+  this.route('apps');
 });
