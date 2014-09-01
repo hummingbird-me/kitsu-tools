@@ -187,14 +187,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def toggle_connection
-    authenticate_user!
-
-    respond_to do |format|
-      format.html { redirect_to :back }
-    end
-  end
-
   def update_setting
     authenticate_user!
 
