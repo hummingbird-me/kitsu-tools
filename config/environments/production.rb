@@ -10,6 +10,7 @@ Hummingbird::Application.configure do
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     },
     s3_host_alias: 'static.hummingbird.me',
+    s3_protocol: :https,
     url: ':s3_alias_url',
     path: '/:class/:attachment/:id_partition/:style/:filename'
   }
