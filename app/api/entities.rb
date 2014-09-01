@@ -22,6 +22,27 @@ module Entities
     expose :mal_id, if: lambda {|anime, options| options[:include_mal_id] }
   end
 
+  class MiniAnime < Grape::Entity
+    expose :id
+    expose :slug
+    expose :status
+    expose(:english_title) { |anime, options| anime.alt_title unless anime.alt_title.blank? }
+    expose(:romaji_title) { |anime, options| anime.title unless anime.title.blank? }
+    expose :episode_count
+    expose :show_type
+  end
+
+  class MiniManga < Grape::Entity
+    expose :id
+    expose :slug
+    expose :status
+    expose :english_title
+    expose :romaji_title
+    expose :volume_count
+    expose :chapter_count
+    expose :manga_type
+  end
+
   class User < Grape::Entity
     expose :name
     expose(:avatar) {|user, options| user.avatar.url(:thumb) }
@@ -73,6 +94,33 @@ module Entities
         value: watchlist.rating
       }
     end
+  end
+
+  class MiniLibraryEntry < Grape::Entity
+    expose :episodes_watched
+    expose(:last_watched) { |watchlist, options| watchlist.last_watched || watchlist.updated_at }
+    expose :rewatch_count
+    expose :rewatching
+    expose :notes
+    expose(:status) { |watchlist, options| watchlist.status.downcase.gsub(' ', '-') }
+    expose :private
+    expose :rating
+
+    expose :anime, using: Entities::MiniAnime
+  end
+
+  class MiniMangaLibraryEntry < Grape::Entity
+    expose :chapters_read
+    expose :volumes_read
+    expose(:last_read) { |entry, options| entry.last_read || entry.updated_at }
+    expose :reread_count
+    expose :rereading
+    expose :notes
+    expose(:status) { |entry, options| entry.status.downcase.gsub(' ', '-') }
+    expose :private
+    expose:rating
+
+    expose :manga, using: Entities::MiniManga
   end
 
   class Substory < Grape::Entity
