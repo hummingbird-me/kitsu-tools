@@ -96,6 +96,10 @@ GEM
     dotenv-deployment (0.0.2)
     dotenv-rails (0.11.1)
       dotenv (= 0.11.1)
+    dropbox-api (0.4.2)
+      hashie
+      multi_json
+      oauth
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
@@ -228,6 +232,7 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     non-stupid-digest-assets (1.0.4)
+    oauth (0.4.7)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -446,6 +451,7 @@ DEPENDENCIES
   devise (~> 3.2)
   devise-async
   dotenv-rails
+  dropbox-api
   ember-data-source (= 1.0.0.beta.9)
   ember-rails (~> 0.15)
   ember-source (= 1.8.0.beta.1)

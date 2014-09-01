@@ -53,6 +53,8 @@
 #  waifu_slug                  :string(255)      default("#")
 #  waifu_char_id               :string(255)      default("0000")
 #  to_follow                   :boolean          default(FALSE)
+#  dropbox_token               :string(255)
+#  dropbox_secret              :string(255)
 #
 
 require 'test_helper'

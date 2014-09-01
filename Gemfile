@@ -107,6 +107,9 @@ gem "rails_admin"
 # Use Unicorn as the app server
 gem 'unicorn', "~> 4.8"
 
+# Needed for Dropbox backup
+gem 'dropbox-api'
+
 # Needed for MAL import.
 gem 'nokogiri', require: false
 
