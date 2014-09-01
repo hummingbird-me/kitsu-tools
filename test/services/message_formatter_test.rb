@@ -36,14 +36,14 @@ class MessageFormatterTest < ActiveSupport::TestCase
     format = format("https://www.youtube.com/watch?v=v8YEw6JaM3c")
 
     assert_match /iframe/, format
-    assert_match /http:\/\/youtube.com\/embed\/v8YEw6JaM3c/, format
+    assert_match /\/\/youtube.com\/embed\/v8YEw6JaM3c/, format
   end
 
   test "embeds youtube videos with short link" do
     format = format("http://youtu.be/v8YEw6JaM3c")
 
     assert_match /iframe/, format
-    assert_match /http:\/\/youtube.com\/embed\/v8YEw6JaM3c/, format
+    assert_match /\/\/youtube.com\/embed\/v8YEw6JaM3c/, format
   end
 
   test "does not embed youtube user pages" do
