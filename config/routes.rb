@@ -87,7 +87,6 @@ Hummingbird::Application.routes.draw do
   namespace :settings do
     # Backups
     get 'backup/:action', to: 'backup'
-    get 'backup/dropbox/cb', to: 'backup#dropbox_callback'
     delete 'backup/dropbox', to: 'backup#dropbox_disconnect'
   end
 
