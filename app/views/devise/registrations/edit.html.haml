@@ -82,6 +82,16 @@
                   = f.submit "Update", :class => "button padded expand"
 
       .large-12.columns.library-status-header{:style => "border-top: 1px solid #f1f1f1; margin-top: 20px;"}
+        %h5.status Backup your Library
+      .row
+        .large-12.columns#backup-library
+          .large-8.columns
+            %h3{style: "margin-top: -4px"} Download Backup
+          .large-4.columns
+            = link_to(controller: 'settings/backup', action: :download) do
+              .button.padded.expand Download
+
+      .large-12.columns.library-status-header{:style => "border-top: 1px solid #f1f1f1; margin-top: 20px;"}
         %h5.status Connection Settings
 
       .row
