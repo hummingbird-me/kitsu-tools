@@ -127,7 +127,7 @@ class User < ActiveRecord::Base
       thumb_small: '-quality 0',
       small: '-quality 0'
     },
-    default_url: "http://placekitten.com/g/190/190",
+    default_url: "https://placekitten.com/g/190/190",
     processors: [:thumbnail, :paperclip_optimizer]
 
   validates_attachment :avatar, content_type: {
@@ -139,7 +139,7 @@ class User < ActiveRecord::Base
   has_attached_file :cover_image,
     styles: {thumb: {geometry: "2800x660#", animated: false, format: :jpg}},
     convert_options: {thumb: '-interlace Plane -quality 0'},
-    default_url: "http://hummingbird.me/default_cover.png"
+    default_url: "https://hummingbird.me/default_cover.png"
 
   validates_attachment :cover_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]

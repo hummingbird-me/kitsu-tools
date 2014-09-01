@@ -11,7 +11,7 @@ Hummingbird.UserController = Ember.ObjectController.extend(Hummingbird.HasCurren
   }.property('model.id'),
 
   forumProfile: function () {
-    return "http://forums.hummingbird.me/users/" + this.get('model.username');
+    return "https://forums.hummingbird.me/users/" + this.get('model.username');
   }.property('model.username'),
 
   // Legacy URLs

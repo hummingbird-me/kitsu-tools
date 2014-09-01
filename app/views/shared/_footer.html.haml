@@ -16,7 +16,7 @@
                 %li.hide-for-small= link_to "About", "#"
                 %li= link_to "Explore", "/anime"
                 %li= link_to "Dashboard", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
-                %li= link_to "Community", "http://forums.hummingbird.me/"
+                %li= link_to "Community", "https://forums.hummingbird.me/"
 
             .large-12.columns
               %ul.inline-list{:style => "opacity: .5; font-size: 12px;"}
@@ -29,7 +29,7 @@
             .large-12.columns.hide-for-small
               %ul.inline-list.right
                 %li
-                  .fb-like{"data-href" => "http://www.facebook.com/pages/Hummingbird/460188747373182?ref=hl", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
+                  .fb-like{"data-href" => "https://www.facebook.com/pages/Hummingbird/460188747373182?ref=hl", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "true", "data-width" => "450"}
                 %li{:style => "background: none; width: 87px;"}
-                  %a.twitter-share-button{"data-text" => "Hummingbird is a new and easy way to find anime titles you'll love. #anime", "data-url" => "http://www.hummingbird.me", "data-via" => "Hummingbird_me", :href => "https://twitter.com/share"} Tweet
+                  %a.twitter-share-button{"data-text" => "Hummingbird is a new and easy way to find anime titles you'll love. #anime", "data-url" => "https://hummingbird.me", "data-via" => "Hummingbird_me", :href => "https://twitter.com/share"} Tweet
 

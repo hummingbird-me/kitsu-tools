@@ -28,7 +28,7 @@ Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
         if (topicInfo.pinned) continue;
 
         topic.title = topicInfo.title;
-        topic.url = "http://forums.hummingbird.me/t/" + topicInfo.slug + "/" + topicInfo.id;
+        topic.url = "https://forums.hummingbird.me/t/" + topicInfo.slug + "/" + topicInfo.id;
         if (topicInfo.last_read_post_number) {
           topic.url += "/" + topicInfo.last_read_post_number;
         }
@@ -41,7 +41,7 @@ Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
           topic.users.push({
             name: user.username,
             avatar: user.avatar_template.replace(/\.[a-zA-Z]+\?/, '.jpg?').replace("{size}", "small"),
-            url: "http://forums.hummingbird.me/users/" + user.username + "/activity"
+            url: "https://forums.hummingbird.me/users/" + user.username + "/activity"
           });
         });
 

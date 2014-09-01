@@ -78,7 +78,7 @@ class API_v1 < Grape::API
     def present_miniuser(user)
       {
         name: user.name,
-        url: "http://hummingbird.me/users/#{user.name}",
+        url: "https://hummingbird.me/users/#{user.name}",
         avatar: user.avatar.url(:thumb),
         avatar_small: user.avatar.url(:thumb_small),
         nb: user.ninja_banned?
@@ -91,7 +91,7 @@ class API_v1 < Grape::API
           id: anime.id,
           slug: anime.slug,
           status: anime.status,
-          url: "http://hummingbird.me/anime/#{anime.slug}",
+          url: "https://hummingbird.me/anime/#{anime.slug}",
           title: anime.canonical_title(title_language_preference),
           alternate_title: anime.alternate_title(title_language_preference),
           episode_count: anime.episode_count,
