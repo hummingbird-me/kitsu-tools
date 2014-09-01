@@ -70,12 +70,12 @@ class Manga < ActiveRecord::Base
 
   def poster_image_thumb
     if self.poster_image_file_name.nil?
-      "http://hummingbird.me/assets/missing-anime-cover.jpg"
+      "https://hummingbird.me/assets/missing-anime-cover.jpg"
     else
       # This disgusting fastpath brought to you by the following issue:
       # https://github.com/thoughtbot/paperclip/issues/909
       if Rails.env.production?
-        "http://static.hummingbird.me/manga/poster_images/#{"%03d" % (self.id/1000000 % 1000)}/#{"%03d" % (self.id/1000 % 1000)}/#{"%03d" % (self.id % 1000)}/large/#{self.poster_image_file_name}?#{self.poster_image_updated_at.to_i}"
+        "https://static.hummingbird.me/manga/poster_images/#{"%03d" % (self.id/1000000 % 1000)}/#{"%03d" % (self.id/1000 % 1000)}/#{"%03d" % (self.id % 1000)}/large/#{self.poster_image_file_name}?#{self.poster_image_updated_at.to_i}"
       else
         self.poster_image.url(:large)
       end
