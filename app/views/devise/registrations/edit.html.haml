@@ -82,19 +82,19 @@
                   = f.submit "Update", :class => "button padded expand"
 
       .large-12.columns.library-status-header{:style => "border-top: 1px solid #f1f1f1; margin-top: 20px;"}
-        %h5.status Backup your Library
+        %h5.status
+          Backup your Library
+          - if current_user.last_backup.nil?
+            (Never Backed Up)
+          - else
+            (Last Backup:
+            = time_ago_in_words current_user.last_backup
+            ago)
       .row
         .large-12.columns#backup-library
-          .large-12.columns.last-backup
-            - if current_user.last_backup.nil?
-              Never backed up
-            - else
-              Last backup was
-              = time_ago_in_words current_user.last_backup
-              ago
           .large-12.columns.download-backup
             .large-8.columns
-              %h3{style: "margin-top: -4px"} Download Backup
+              %h3{style: "margin-top: 4px"} Download Backup
             .large-4.columns
               = link_to(controller: 'settings/backup', action: :download) do
                 .button.padded.expand Download
