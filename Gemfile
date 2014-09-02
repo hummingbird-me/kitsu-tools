@@ -6,7 +6,6 @@ gem 'rails', '~> 4.0'
 gem 'annotate', require: false
 
 gem 'grape'
-gem 'grape-entity'
 gem 'active_model_serializers', '~> 0.8.0'
 
 gem 'fastclick-rails', "~> 1.0"

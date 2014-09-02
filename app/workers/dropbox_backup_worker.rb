@@ -2,6 +2,7 @@ class DropboxBackupWorker
   include Sidekiq::Worker
 
   DEBOUNCE_TIME = 2.minutes
+
   def self.perform_debounced(user_id)
     jid = $redis.get("dropbox_backup_jid:#{user_id}")
     if jid.nil? # Create job
@@ -12,6 +13,7 @@ class DropboxBackupWorker
     end
     $redis.set("dropbox_backup_jid:#{user_id}", jid, {ex: DEBOUNCE_TIME})
   end
+
   def perform(user_id)
     # Generate the backup
     user = User.find(user_id)
