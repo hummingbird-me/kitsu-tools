@@ -18,7 +18,7 @@ Hummingbird::Application.routes.draw do
 
   resource :chat, only: [:show, :create]
 
-  get '/sign-in' => 'auth#sign_in_action'
+  get '/sign-in' => 'home#static'
   post '/sign-out' => 'auth#sign_out_action'
 
   devise_for :users, controllers: {
