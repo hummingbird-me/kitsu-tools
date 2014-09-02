@@ -26,6 +26,7 @@ Hummingbird.Router.map(function() {
 
   this.route('search');
   this.route('sign-in');
+  this.route('settings');
   this.route('dashboard');
   this.route('development');
   this.route('notifications');

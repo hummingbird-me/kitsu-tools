@@ -85,6 +85,7 @@ Hummingbird::Application.routes.draw do
   end
 
   # Settings
+  get '/settings' => 'settings#index'
   namespace :settings do
     # Backups
     get 'backup/:action', to: 'backup'
