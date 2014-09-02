@@ -13,5 +13,7 @@ Hummingbird.FullAnime = Hummingbird.Anime.extend({
   franchises: DS.hasMany('franchise', { async: true }),
   featuredQuotes: DS.hasMany('quote'),
   trendingReviews: DS.hasMany('review'),
-  featuredCastings: DS.hasMany('casting')
+  featuredCastings: DS.hasMany('casting'),
+
+  hasTrailer: Ember.computed.bool('youtubeVideoId')
 });
