@@ -55,6 +55,7 @@
 #  to_follow                   :boolean          default(FALSE)
 #  dropbox_token               :string(255)
 #  dropbox_secret              :string(255)
+#  last_backup                 :datetime
 #
 
 class User < ActiveRecord::Base

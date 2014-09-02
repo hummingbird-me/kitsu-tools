@@ -21,11 +21,7 @@ class DropboxBackupWorker
     client = Dropbox::API::Client.new(token: user.dropbox_token, secret: user.dropbox_secret)
     client.upload('library-backup.json', backup.to_json)
 
-    # Clear any other dropbox-backup jobs queued for this user
-    # Oh yeah and if it errors out, who even cares?
-    Sidekiq::Queue.new.each { |j| j.delete if j.args[0] == user_id }
-    begin
-    rescue
-    end
+    # Update the last_backup timestamp
+    user.update(last_backup: DateTime.now)
   end
 end

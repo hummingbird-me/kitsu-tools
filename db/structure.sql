@@ -1359,7 +1359,8 @@ CREATE TABLE users (
     waifu_char_id character varying(255) DEFAULT '0000'::character varying,
     to_follow boolean DEFAULT false,
     dropbox_token character varying(255),
-    dropbox_secret character varying(255)
+    dropbox_secret character varying(255),
+    last_backup timestamp without time zone
 );
 
 
@@ -3158,4 +3159,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140813001044');
 INSERT INTO schema_migrations (version) VALUES ('20140820213008');
 
 INSERT INTO schema_migrations (version) VALUES ('20140901082201');
+
+INSERT INTO schema_migrations (version) VALUES ('20140902015226');
 

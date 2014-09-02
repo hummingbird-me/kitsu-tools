@@ -5,10 +5,12 @@ class Settings::BackupController < ApplicationController
     filename = DateTime.now.strftime('hummingbird-%F-%T.json')
     response.headers["Content-Disposition"] = "attachment; filename=\"#{filename}\""
 
+    current_user.update(last_backup: DateTime.now)
     render json: ListBackup.new(current_user)
   end
 
   def dropbox
+    current_user.update(last_backup: DateTime.now)
     DropboxBackupWorker.perform_async(current_user.id)
     redirect_to :back
   end

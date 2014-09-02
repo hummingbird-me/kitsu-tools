@@ -85,6 +85,13 @@
         %h5.status Backup your Library
       .row
         .large-12.columns#backup-library
+          .large-12.columns.last-backup
+            - if current_user.last_backup.nil?
+              Never backed up
+            - else
+              Last backup was
+              = time_ago_in_words current_user.last_backup
+              ago
           .large-12.columns.download-backup
             .large-8.columns
               %h3{style: "margin-top: -4px"} Download Backup
