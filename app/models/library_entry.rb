@@ -106,6 +106,8 @@ class LibraryEntry < ActiveRecord::Base
     TrendingAnime.vote self.anime_id
     # Update the user's `last_library_update` time.
     self.user.update_column :last_library_update, Time.now
+    # Queue a backup for the user
+    DropboxBackupWorker.perform_debounced(self.user_id) if self.user.has_dropbox?
   end
 
   after_create do

@@ -62,6 +62,8 @@ class MangaLibraryEntry < ActiveRecord::Base
   after_save do
     # Update users `last_library_update` field
     self.user.update_column :last_library_update, Time.now
+    # Queue a backup for the user
+    DropboxBackupWorker.perform_debounced(self.user_id) if self.user.has_dropbox?
   end
   
   private
