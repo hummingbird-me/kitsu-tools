@@ -1,8 +1,8 @@
-<div class="review-listing">
+<div class="user-review-listing">
   {{#each}}
-    <div class="col-xs-12 col-md-6">
+    <div class="review-columns">
       {{#link-to 'reviews.show' anime.id id}}
-        <div class="review rounded-block">
+        <div class="review">
           <h4 class="reviewer-name">{{anime.displayTitle}}</h4>
           <span class="review-stars">
             {{stars rating}}
