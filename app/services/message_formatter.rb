@@ -57,7 +57,7 @@ class MessageFormatter
       @processed += "<a href='#{link}' target='_blank'><img class='autoembed' src='#{link}' style='max-height: 500px; width: auto; max-width: 100%;' /></a>"
     elsif gfy = embeddable_gfy(link)
       delete_link(link)
-      @processed += "<div class='video-embed clearfix'><div class='video-wrapper'><iframe width='#{gfy[:width]}' height='#{gfy[:height]}' frameborder='0' class='autoembed' src='//gfycat.com/ifr/#{gfy[:code]}'></iframe></div></div>"
+      @processed += "<div class='video-embed clearfix'><div class='gfy-wrapper'><iframe width='#{gfy[:width]}' height='#{gfy[:height]}' frameborder='0' class='autoembed' src='//gfycat.com/ifr/#{gfy[:code]}'></iframe></div></div>"
     elsif code = embeddable_video_code(link)
       delete_link(link)
       @processed += "<div class='video-embed clearfix'><div class='video-wrapper'><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='https://youtube.com/embed/#{code}'></iframe></div></div>"
