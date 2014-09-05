@@ -1,0 +1,17 @@
+HTTP/1.1 200 OK
+Date: Fri, 05 Sep 2014 13:52:37 GMT
+Content-Type: application/json
+Content-Length: 753
+Connection: keep-alive
+Set-Cookie: __cfduid=d1f3daa13b0240739bfdf3346ed1d1ed11409925156766; expires=Mon, 23-Dec-2019 23:50:00 GMT; path=/; domain=.gfycat.com; HttpOnly
+Accept-Ranges: bytes
+Access-Control-Allow-Origin: *
+Age: 0
+Cache-Control: max-age=3600, public
+Via: 1.1 varnish
+X-Powered-By: PHP/5.3.28
+X-Varnish: 1077314912
+Server: cloudflare-nginx
+CF-RAY: 1652e885cb8b1129-SIN
+
+{"gfyItem":{"gfyId":"alertspicyblueandgoldmackaw","gfyName":"AlertSpicyBlueandgoldmackaw","gfyNumber":"454855306","userName":"anonymous","width":300,"height":226,"frameRate":20,"numFrames":114,"mp4Url":"http:\/\/zippy.gfycat.com\/AlertSpicyBlueandgoldmackaw.mp4","webmUrl":"http:\/\/zippy.gfycat.com\/AlertSpicyBlueandgoldmackaw.webm","gifUrl":"http:\/\/giant.gfycat.com\/AlertSpicyBlueandgoldmackaw.gif","gifSize":4751045,"mp4Size":292891,"webmSize":349868,"createDate":"1375680937","views":"15510","title":null,"extraLemmas":null,"md5":null,"tags":null,"nsfw":null,"sar":null,"url":null,"source":null,"dynamo":null,"subreddit":"YouShouldKnow","redditId":"1wdg8a","redditIdText":"ysk_that_you_can_speed_up_your_gif_watching_with","uploadGifName":null}}

@@ -3,7 +3,8 @@ require 'fakeweb_helper'
 
 fake({
   [:get, "http://i.imgur.com/CUjJQap.gif"] => "small_image",
-  [:get, "https://i.minus.com/iE02xvicOlrbF.gif"] => "large_image"
+  [:get, "https://i.minus.com/iE02xvicOlrbF.gif"] => "large_image",
+  [:get, "http://gfycat.com/cajax/get/AlertSpicyBlueandgoldmackaw"] => "gfy_details"
 })
 
 class MessageFormatterTest < ActiveSupport::TestCase
@@ -44,6 +45,10 @@ class MessageFormatterTest < ActiveSupport::TestCase
 
     assert_match /iframe/, format
     assert_match /\/\/youtube.com\/embed\/v8YEw6JaM3c/, format
+  end
+
+  test "embeds gfycat videos" do
+    assert_match /iframe/, format("http://gfycat.com/AlertSpicyBlueandgoldmackaw")
   end
 
   test "does not embed youtube user pages" do
