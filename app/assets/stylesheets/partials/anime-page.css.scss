@@ -52,19 +52,24 @@
   }
 
   .middle-column {
-     @extend .col-sm-7;
-     .series-title {
-       margin-top: 0;
+    @extend .col-sm-7;
 
-       a {
-         color: #eaeaea;
-       }
+    a:hover, a:focus {
+      color: #16a085;
+    }
 
-       .alternate-title {
-         display: inline-block;
-         color: #b3b3b3;
-       }
-     }
+    .series-title {
+     margin-top: 0;
+
+      a {
+        color: #eaeaea;
+      }
+
+      .alternate-title {
+        display: inline-block;
+        color: #b3b3b3;
+      }
+    }
     .synopsis {
       color: #e5e5e5;
       font-size: 18px;

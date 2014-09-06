@@ -3,10 +3,10 @@
   {{#link-to 'anime.index'}}
     <img class="series-poster" {{bind-attr src=posterImage}}>
   {{/link-to}}
-  <a class="trailer-link" {{action "openModal" "youtube" this}}>
+  <a {{bind-attr class=":trailer-link hasTrailer::hide"}} {{action "openModal" "youtube" this}}>
     <i {{bind-attr class=":fa :fa-youtube-play"}}></i>
     View Trailer
-</a>
+  </a>
 </div>
 
 <div class="middle-column">

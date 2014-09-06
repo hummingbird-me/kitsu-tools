@@ -66,9 +66,9 @@
   }
 
   .genre-list {
+    @extend .hidden-xs;
     @extend .inline-list;
     @extend .secondary;
-    @extend .hidden-xs;
     @extend .clearfix;
 
     font-size: 14px;
@@ -129,9 +129,10 @@
 
   .inline-list {
     li {
-      padding-right: 5px;
+      padding-right: 0;
       &:after {
-        content: " \00b7 ";
+        content: "\a0\00b7\a0";
+        padding: 0 3px;
       }
       &:last-child {
         &:after {
