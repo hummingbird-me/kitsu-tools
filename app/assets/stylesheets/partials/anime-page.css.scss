@@ -199,7 +199,6 @@
         .rounded-block {
           color: #e5e5e5;
           border: none;
-          border-bottom: 1px solid #838c9a;
           border-radius: 0;
           margin-bottom: 15px;
           padding-bottom: 15px;
@@ -220,11 +219,13 @@
             border: none;
             color: #fff;
             border: 1px solid #838c9a;
+            border-bottom: 1px solid #4b5360;
             &:hover {
               background: none;
               border: none;
               color: #fff;
               border: 1px solid #838c9a;
+              border-bottom: 1px solid #4b5360;
             }
           }
           &.open > a {
@@ -373,7 +374,7 @@
       .personal-rating {
         margin: 0px;
         border-top: 1px solid #000;
-        padding: 5px 0 5px 0;
+        padding: 5px 0;
         .icon-container .fa {
           transition: all .2s ease-in;
           &:hover {
@@ -550,7 +551,6 @@
     .review {
       @extend .col-xs-12;
       @extend .clearfix;
-      padding: 8px;
       padding: 15px;
       border-bottom: 1px solid #ccc;
       transition: .2s ease-in;
@@ -562,8 +562,7 @@
     .trending-review-empty {
       text-align: center;
       margin-bottom: 35px;
-      padding: 25px;
-      padding-bottom: 0;
+      padding: 25px 25px 0 25px;
       .empty-icon {
         font-size: 100px;
         color: #aaa;
