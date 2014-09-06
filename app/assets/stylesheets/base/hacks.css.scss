@@ -11,32 +11,22 @@ a {
   @include make-sm-column(12);
   @include clearfix();
 
-  .series-metadata li, p {
-    font-size: 0.9em;
-  }
+  .series-metadata li, p { font-size: 0.9em; }
 
-  p {
-    margin-top: 3px;
-  }
+  p { margin-top: 3px; }
 }
 
 
 /* Anime page social buttons. */
 .social-buttons {
-  .fb-like {
-    margin-right: 10px;
-  }
+  .fb-like { margin-right: 10px; }
 
-  .twitter-share-button {
-    margin: 0;
-  }
+  .twitter-share-button { margin: 0; }
 }
 
 
 /* Fix extra 2px of space at the bottom of the header. */
-a.navbar-brand {
-  padding: 14px;
-}
+a.navbar-brand { padding: 14px; }
 
 
 /* Blotter announcements below the header */
@@ -47,9 +37,7 @@ a.navbar-brand {
   padding-left: 40px;
   border-bottom: 1px solid transparentize($darkNavy, 0.7);
 
-  &:first-child {
-    border-top: 1px solid $darkNavy;
-  }
+  &:first-child { border-top: 1px solid $darkNavy; }
 
   i.fa-2x {
     color: $orange;
@@ -70,9 +58,7 @@ a.navbar-brand {
     }
   }
 
-  a {
-    margin-left: 10px;
-  }
+  a { margin-left: 10px; }
 
   a.btn {
     float: right;
@@ -114,9 +100,7 @@ a.navbar-brand {
     }
   }
 
-  small {
-    color: $darkEggshell;
-  }
+  small { color: $darkEggshell; }
 
   a.btn {
     margin-left: 5px;
@@ -136,14 +120,10 @@ a.navbar-brand {
 
   .panel-heading {
     padding: 16px 24px 12px;
-    h3 {
-      font-size: 1.2em;
-    }
+    h3 { font-size: 1.2em; }
   }
 
-  .panel {
-    @include clearfix();
-  }
+  .panel { @include clearfix(); }
 
   .panel-default, .user-about-panel, .anime-breakdown-panel, .photos-videos, .favorite-anime, .status-update-panel, .community-widget-panel, .story {
     margin-bottom: 10px;
@@ -168,9 +148,7 @@ a.navbar-brand {
     @include make-xs-column(7);
     color: $grey;
 
-    h4 {
-      margin: 0;
-    }
+    h4 { margin: 0; }
 
     p {
       font-size: 0.9em;
@@ -188,16 +166,12 @@ a.navbar-brand {
 /* JCrop Stuff */
 .jcrop {
   text-align: center;
-  .jcrop-holder {
-    display: inline-block;
-  }
+  .jcrop-holder { display: inline-block; }
 }
 
 
 /* Drop shadow on the actual image inside the crop. */
-.jcrop .jcrop-holder {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
+.jcrop .jcrop-holder { box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
 
 
 /* Transparent background for the header and footer. */
@@ -205,9 +179,7 @@ a.navbar-brand {
   transition: background 1s ease-in;
   border-color: rgba(255, 255, 255, 0.7);
 
-  .modal-footer, .modal-header {
-    background-color: rgba(255, 255, 255, 0.8);
-  }
+  .modal-footer, .modal-header { background-color: rgba(255, 255, 255, 0.8); }
 
   .modal-header {
     border-top-left-radius: 4px;
@@ -234,14 +206,12 @@ a.navbar-brand {
   background-color: #fff;
   opacity: 1 !important;
 
-  &.ord-n, &.ord-s, &.ord-w, &.ord-e {
-    display: none;
-  }
+  &.ord-n, &.ord-s, &.ord-w, &.ord-e { display: none; }
 }
 
 
 /* Typeahead interface */
- 
+
 /*
  * typehead.js-bootstrap3.less
  * @version 0.2.3
@@ -364,19 +334,13 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint {
   border-bottom-right-radius: 6px;
   border-top-right-radius: 6px;
 }
-.twitter-typeahead {
-  width: 100%;
-}
+.twitter-typeahead { width: 100%; }
 .input-group .twitter-typeahead {
   display: table-cell !important;
   float: left;
 }
-.twitter-typeahead .tt-hint {
-  color: #999999;
-}
-.twitter-typeahead .tt-input {
-  z-index: 2;
-}
+.twitter-typeahead .tt-hint { color: #999999; }
+.twitter-typeahead .tt-input { z-index: 2; }
 .twitter-typeahead .tt-input[disabled],
 .twitter-typeahead .tt-input[readonly],
 fieldset[disabled] .twitter-typeahead .tt-input {
@@ -418,9 +382,5 @@ fieldset[disabled] .twitter-typeahead .tt-input {
   background-color: #f5f5f5;
   color: #262626;
 }
-.tt-dropdown-menu .tt-suggestion.tt-cursor a {
-  color: #262626;
-}
-.tt-dropdown-menu .tt-suggestion p {
-  margin: 0;
-}
+.tt-dropdown-menu .tt-suggestion.tt-cursor a { color: #262626; }
+.tt-dropdown-menu .tt-suggestion p { margin: 0; }
