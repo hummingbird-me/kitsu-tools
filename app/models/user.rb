@@ -212,7 +212,7 @@ class User < ActiveRecord::Base
   end
 
   def has_dropbox?
-    dropbox_token && dropbox_secret
+    !!(dropbox_token && dropbox_secret)
   end
 
   # Public: Find a user corresponding to a Facebook account.
