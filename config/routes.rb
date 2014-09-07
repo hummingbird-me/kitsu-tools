@@ -86,6 +86,7 @@ Hummingbird::Application.routes.draw do
 
   # Settings
   get '/settings' => 'settings#index'
+  get '/current_users' => 'current_user#show'
   namespace :settings do
     # Backups
     get 'backup/:action', to: 'backup'
