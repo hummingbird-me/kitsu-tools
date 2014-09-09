@@ -34,7 +34,8 @@ class ApplicationController < ActionController::Base
       unless cookies[:auth_token] && current_user.authentication_token == cookies[:auth_token]
         sign_out :user
       end
-      preload_to_ember! current_user, serializer: CurrentUserSerializer
+      preload_to_ember! current_user, serializer: CurrentUserSerializer,
+                                      root: :current_users
       $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
     elsif cookies[:auth_token]
       user = User.find_by(authentication_token: cookies[:auth_token])
