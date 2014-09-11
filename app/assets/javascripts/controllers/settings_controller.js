@@ -1,17 +1,11 @@
 Hummingbird.SettingsController = Ember.Controller.extend(Hummingbird.HasCurrentUser, {
-  hasAdvancedRatings: Ember.computed.equal('ratingSystem', 'advanced'),
-  hasSimpleRatings: Ember.computed.equal('ratingSystem', 'simple'),
-  hideAdultContent: Ember.computed.not('showAdultContent'),
-
-  // These are here because I'm 2dumb for models
-  hasDropbox: false,
-  ratingSystem: 'advanced',
-  showAdultContent: true,
-
-  actions: {
-    setRatingSystem: function (system) {
-      console.log("ratingSystem", system);
-      this.set('ratingSystem', system);
-    }
-  }
+  titleChoices: [
+    {value: 'canonical', label: 'Canonical'},
+    {value: 'romanized', label: 'Romanized'},
+    {value: 'english', label: 'English'}
+  ],
+  isClean: Ember.computed.not('currentUser.isDirty'),
+  passwordMismatch: function () {
+    return this.get('password') != this.get('passwordConfirm');
+  }.property('password', 'passwordConfirm'),
 });

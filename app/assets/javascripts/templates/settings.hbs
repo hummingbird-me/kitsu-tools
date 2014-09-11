@@ -11,14 +11,14 @@
             <div class="form-group">
               <label class="control-label col-sm-4" for="username">Username</label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="username" {{bind-attr value=username}}>
+                {{input type="text" class="form-control" id="username" value=currentUser.username}}
                 <span class="help-block">Usernames can contain letters, numbers, and underscores</span>
               </div>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-4" for="email">Email</label>
               <div class="col-sm-8">
-                <input type="email" class="form-control" id="email" {{bind-attr value=email}}>
+                {{input type="email" class="form-control" id="email" value=currentUser.email}}
               </div>
             </div>
           </form>
@@ -28,16 +28,16 @@
         <div class="panel-heading"><h3 class="panel-title">Security</h3></div>
         <div class="panel-body">
           <form class="form-horizontal" role="form">
-            <div class="form-group">
+            <div {{bind-attr class="passwordMismatch:has-error :form-group"}}>
               <label class="control-label col-sm-4" for="password">New Password</label>
               <div class="col-sm-8">
-                <input type="password" class="form-control" id="password" {{bind-attr value=password}}>
+                {{input type="password" class="form-control" id="password" value=password}}
               </div>
             </div>
-            <div class="form-group">
+            <div {{bind-attr class="passwordMismatch:has-error :form-group"}}>
               <label class="control-label col-sm-4" for="password-confirm">Again</label>
               <div class="col-sm-8">
-                <input type="password" class="form-control" id="password-confirm" {{bind-attr value=passwordConfirm}}>
+                {{input type="password" class="form-control" id="password-confirm" value=passwordConfirm}}
               </div>
             </div>
           </form>
@@ -46,13 +46,13 @@
       <div class="panel panel-default" id="backup-settings">
         <div class="panel-heading">
           <h3 class="panel-title">Backup and Restore</h3>
-          <span class="last-backup">last backup: {{lastBackup}}</span>
+          <span class="last-backup">last backup: {{time-ago time=currentUser.lastBackup}}</span>
         </div>
         <div class="panel-body">
           <div class="row">
             <label class="control-label col-sm-6">Dropbox Backup</label>
             <div class="col-sm-6">
-              {{#if hasDropbox}}
+              {{#if currentUser.hasDropbox}}
                 <button type="button" class="col-sm-6 btn btn-success"><i class="fa fa-refresh"></i> Sync</button>
                 <button type="button" class="col-sm-6 btn btn-danger">Disconnect</button>
               {{else}}
@@ -83,34 +83,35 @@
             <label class="control-label col-sm-4" for="titles">Adult Content</label>
             <div class="col-sm-8">
               <label class="radio-inline">
-                <input type="radio" name="adult" id="show" value="1" {{bind-attr checked="showAdultContent"}}> Show
+                {{radio-button name="sfw-filter" value=false checked=currentUser.sfwFilter}}
+                Show
               </label>
               <label class="radio-inline">
-                <input type="radio" name="adult" id="hide" value="0" {{bind-attr checked="hideAdultContent"}}> Hide
+                {{radio-button name="sfw-filter" value=true checked=currentUser.sfwFilter}}
+                Hide
               </label>
               <span class="help-block">With adult content hidden, you will not see R18+ anime or manga in your feed, in libraries, or in search.</span>
             </div>
             <label class="control-label col-sm-4">Ratings</label>
             <div class="col-sm-8 ratings-picker">
               <label class="radio-inline">
-                <input type="radio" name="rating" id="advanced" value="advanced"
-                       {{bind-attr checked="hasAdvancedRatings"}} {{action "setRatingSystem" "advanced"}}>
+                {{radio-button name="rating-system" value="advanced" checked=currentUser.ratingType}}
                 {{awesome-rating type="advanced" rating="2.5"}}
               </label>
               <label class="radio-inline">
-                <input type="radio" name="rating" id="simple" value="simple"
-                       {{bind-attr checked="hasSimpleRatings"}} {{action "setRatingSystem" "simple"}}>
+                {{radio-button name="rating-system" value="simple" checked=currentUser.ratingType}}
                 {{awesome-rating type="simple"}}
               </label>
             </div>
             <div class="form-group">
               <label class="control-label col-sm-4" for="titles">Titles</label>
               <div class="col-sm-8">
-                <select class="form-control" id="titles">
-                  <option>Canonical</option>
-                  <option>Romanized</option>
-                  <option>English</option>
-                </select>
+                {{view "select"
+                       class="form-control"
+                       content=titleChoices
+                       optionValuePath="content.value"
+                       optionLabelPath="content.label"
+                       value=currentUser.titleLanguagePreference}}
                 <span class="help-block">You can still see the others: this is just the main one.</span>
               </div>
             </div>
@@ -125,8 +126,8 @@
       </div>
       <div class="panel panel-default settings-buttons">
         <div class="center-block panel-body">
-          <button class="btn btn-primary">Save</button>
-          <button class="btn btn-default">Cancel</button>
+          <button class="btn btn-primary" {{bind-attr disabled=isClean}}>Save</button>
+          <button class="btn btn-default" {{bind-attr disabled=isClean}} {{action "clean"}}>Cancel</button>
         </div>
       </div>
     </div>
