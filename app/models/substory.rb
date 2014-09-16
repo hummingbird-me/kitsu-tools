@@ -39,6 +39,7 @@ class Substory < ActiveRecord::Base
     if self.story and self.story.reload.substories.length == 0
       self.story.destroy
     end
+    self.story.set_last_update_time! self.story.reload.substories.max {|x| x.created_at.to_date }.created_at
   end
 
   before_save do
