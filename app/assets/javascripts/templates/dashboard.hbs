@@ -102,7 +102,7 @@
     <div class="user-feed">
       {{post-comment action="postComment"}}
 
-      {{each content itemController="story" itemViewClass="Hummingbird.StoryView"}}
+      {{each content itemController="story" itemViewClass="story"}}
 
       {{#if canLoadMore}}
         {{load-more classNames="light" action="loadNextPage"}}
