@@ -7,7 +7,7 @@ Ember.Application.initializer({
         controller = container.lookup('controller:currentUser');
     if (window.currentUserName) {
       user = store.find('currentUser', window.currentUserName);
-      controller.set('content', user);
+      controller.set('model', user);
     }
     container.injection('route', 'currentUser', 'controller:currentUser');
   }
