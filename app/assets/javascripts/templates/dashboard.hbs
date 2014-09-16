@@ -100,7 +100,7 @@
     </div>
 
     <div class="user-feed">
-      {{post-comment username=currentUser.username}}
+      {{post-comment action="postComment"}}
 
       {{each content itemController="story" itemViewClass="Hummingbird.StoryView"}}
 

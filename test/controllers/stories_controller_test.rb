@@ -6,6 +6,16 @@ class StoriesControllerTest < ActionController::TestCase
     assert_response 200
   end
 
+  test "can create new comment stories" do
+    sign_in users(:vikhyat)
+    post :create, format: :json, story: {user_id: 'vikhyat', comment: 'test!'}
+    response = JSON.parse(@response.body)["story"]
+
+    assert_response 200
+    assert_equal 'comment', response["type"]
+    assert_equal 'test!', response["comment"]
+  end
+
   test "can delete user feed stories" do
     sign_in users(:vikhyat)
 

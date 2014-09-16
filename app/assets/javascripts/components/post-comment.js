@@ -30,25 +30,9 @@ Hummingbird.PostCommentComponent = Ember.Component.extend({
 
   actions: {
     submitPost: function() {
-      var self = this,
-          newPost = this.get('newPost');
-
-      if (newPost.length > 0) {
-        this.set('inFlight', true);
-        ic.ajax({
-          url: "/users/" + self.get('username') + "/comment.json",
-          data: { comment: newPost },
-          type: "POST"
-        }).then(function() {
-          self.setProperties({
-            newPost: "",
-            inFlight: false
-          });
-          window.location.href = window.location.href;
-        }, function() {
-          alert("Failed to save comment");
-        });
-      }
+      var comment = this.get('newPost');
+      this.set('newPost', "");
+      this.sendAction('action', comment);
     }
   }
 });

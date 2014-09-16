@@ -26,5 +26,18 @@ Hummingbird.UserIndexRoute = Ember.Route.extend(Hummingbird.Paginated, {
   afterModel: function() {
     Ember.run.next(function() { window.scrollTo(0, 0); });
     return Hummingbird.TitleManager.setTitle(this.modelFor('user').get('username') + "'s Profile");
+  },
+
+  actions: {
+    postComment: function(comment) {
+      var story = this.store.createRecord('story', {
+        type: 'comment',
+        poster: this.get('currentUser.model.content'),
+        user: this.modelFor('user'),
+        comment: comment
+      });
+      this.currentModel.unshiftObject(story);
+      story.save();
+    }
   }
 });

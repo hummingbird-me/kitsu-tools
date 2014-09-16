@@ -29,6 +29,17 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
   actions: {
     goToDashboard: function() {
       this.refresh();
+    },
+
+    postComment: function(comment) {
+      var story = this.store.createRecord('story', {
+        type: 'comment',
+        poster: this.get('currentUser.model.content'),
+        user: this.get('currentUser.model.content'),
+        comment: comment
+      });
+      this.currentModel.unshiftObject(story);
+      story.save();
     }
   }
 });

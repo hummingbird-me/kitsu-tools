@@ -39,6 +39,10 @@
 .update-panel {
   @extend .panel-body;
 
+  &.is-new {
+    opacity: 0.4;
+  }
+
   .story-title {
     color: #999999;
     font-weight: 300;
