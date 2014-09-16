@@ -225,11 +225,13 @@
             border: none;
             color: #fff;
             border: 1px solid #838c9a;
+            border-bottom: 1px solid #4b5360;
             &:hover {
               background: none;
               border: none;
               color: #fff;
               border: 1px solid #838c9a;
+              border-bottom: 1px solid #4b5360;
             }
           }
           &.open > a {
@@ -636,4 +638,3 @@
     height: 150px;
   }
 }
-
