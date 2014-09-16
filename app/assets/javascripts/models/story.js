@@ -10,5 +10,9 @@ Hummingbird.Story = DS.Model.extend({
 
   coverImageStyle: function() {
     return "background-image: url(" + this.get('coverImageUrl') + ")";
-  }.property('coverImageUrl')
+  }.property('coverImageUrl'),
+
+  omittedSubstoryCount: function(){
+    return this.get('substoryCount') - 2;
+  }.property('substoryCount')
 });
