@@ -26,7 +26,13 @@
   </div>
   <div class="row">
     <div class="post-content clearfix">
-      <p {{bind-attr class=":comment-text isExpanded:full-post" }}>{{{comment}}}</p>
+      <p {{bind-attr class=":comment-text isExpanded:full-post" }}>
+        {{#if isNew}}
+          {{comment}}
+        {{else}}
+          {{{comment}}}
+        {{/if}}
+      </p>
     </div>
   </div>
   {{#if overflowing}}
@@ -72,7 +78,11 @@
             {{/link-to}}
           </span>
           <span class="comment">
-            {{{substory.reply}}}
+            {{#if substory.isNew}}
+              {{substory.reply}}
+            {{else}}
+              {{{substory.reply}}}
+            {{/if}}
           </span>
         </p>
         <div class="secondary">
