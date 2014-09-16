@@ -2,16 +2,15 @@
 #
 # Table name: substories
 #
-#  id                :integer          not null, primary key
-#  user_id           :integer
-#  substory_type_old :string(255)
-#  story_id          :integer
-#  target_id         :integer
-#  target_type       :string(255)
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  data              :hstore
-#  substory_type     :integer          default(0), not null
+#  id            :integer          not null, primary key
+#  user_id       :integer
+#  story_id      :integer
+#  target_id     :integer
+#  target_type   :string(255)
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  data          :hstore
+#  substory_type :integer          default(0), not null
 #
 
 class Substory < ActiveRecord::Base
