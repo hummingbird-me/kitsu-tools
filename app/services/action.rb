@@ -28,7 +28,7 @@ class Action
 
       substory = Substory.create(
         user: data[:poster],
-        substory_type: "comment",
+        substory_type: Substory.substory_types[:comment],
         story: story,
         data: {comment: data[:comment]}
       )

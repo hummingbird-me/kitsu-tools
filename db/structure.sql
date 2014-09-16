@@ -1273,13 +1273,14 @@ ALTER SEQUENCE streamers_id_seq OWNED BY streamers.id;
 CREATE TABLE substories (
     id integer NOT NULL,
     user_id integer,
-    substory_type character varying(255),
+    substory_type_old character varying(255),
     story_id integer,
     target_id integer,
     target_type character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    data hstore
+    data hstore,
+    substory_type integer DEFAULT 0 NOT NULL
 );
 
 
@@ -3161,4 +3162,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140820213008');
 INSERT INTO schema_migrations (version) VALUES ('20140901082201');
 
 INSERT INTO schema_migrations (version) VALUES ('20140902015226');
+
+INSERT INTO schema_migrations (version) VALUES ('20140916050726');
 

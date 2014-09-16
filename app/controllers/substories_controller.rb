@@ -4,7 +4,7 @@ class SubstoriesController < ApplicationController
     story = Story.for_user(current_user).find_by(id: params[:story_id])
     substories = story.try(:substories)
     if story && story.story_type == "comment"
-      substories = substories.where("substory_type <> 'comment'")
+      substories = substories.where("substory_type <> ?", Substory.substory_types[:comment])
     end
     render json: substories
   end
@@ -18,7 +18,7 @@ class SubstoriesController < ApplicationController
 
     substory = Substory.create(
       user: current_user,
-      substory_type: "reply",
+      substory_type: Substory.substory_types[:reply],
       story: story,
       data: {reply: MessageFormatter.format_message(params[:substory][:reply])}
     )

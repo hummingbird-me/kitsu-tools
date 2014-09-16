@@ -2,15 +2,16 @@
 #
 # Table name: substories
 #
-#  id            :integer          not null, primary key
-#  user_id       :integer
-#  substory_type :string(255)
-#  story_id      :integer
-#  target_id     :integer
-#  target_type   :string(255)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  data          :hstore
+#  id                :integer          not null, primary key
+#  user_id           :integer
+#  substory_type_old :string(255)
+#  story_id          :integer
+#  target_id         :integer
+#  target_type       :string(255)
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#  data              :hstore
+#  substory_type     :integer          default(0), not null
 #
 
 class Substory < ActiveRecord::Base
@@ -18,6 +19,9 @@ class Substory < ActiveRecord::Base
   belongs_to :target, polymorphic: true
   belongs_to :story
   validates :user, :substory_type, presence: true
+
+  enum substory_type: [:followed, :watchlist_status_update, :comment,
+                            :watched_episode, :reply]
 
   has_many :notifications, as: :source, dependent: :destroy
 
@@ -65,7 +69,7 @@ class Substory < ActiveRecord::Base
 
       substory = Substory.create({
         user: user,
-        substory_type: "followed",
+        substory_type: Substory.substory_types[:followed],
         target: followed_user,
         story: story
       })
@@ -74,7 +78,7 @@ class Substory < ActiveRecord::Base
 
       followed_user = User.find data[:followed_id]
 
-      Substory.where(user_id: user.id, substory_type: "followed", target_id: followed_user.id, target_type: "User").each {|x| x.destroy }
+      Substory.where(user_id: user.id, substory_type: Substory.substory_types[:followed], target_id: followed_user.id, target_type: "User").each {|x| x.destroy }
 
 
     elsif data[:action_type] == "watchlist_status_update"
@@ -84,7 +88,7 @@ class Substory < ActiveRecord::Base
 
       substory = Substory.create({
         user: user,
-        substory_type: "watchlist_status_update",
+        substory_type: Substory.substory_types[:watchlist_status_update],
         story: story,
         data: {
           old_status: data[:old_status],
@@ -103,7 +107,7 @@ class Substory < ActiveRecord::Base
 
       Substory.create({
         user: user,
-        substory_type: "watched_episode",
+        substory_type: Substory.substory_types[:watched_episode],
         story: story,
         data: {
           episode_number: data[:episode_number],
