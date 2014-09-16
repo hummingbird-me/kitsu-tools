@@ -128,7 +128,7 @@ class User < ActiveRecord::Base
       thumb_small: '-quality 0',
       small: '-quality 0'
     },
-    default_url: "https://placekitten.com/g/190/190",
+    default_url: "/default_avatar.jpg",
     processors: [:thumbnail, :paperclip_optimizer]
 
   validates_attachment :avatar, content_type: {
