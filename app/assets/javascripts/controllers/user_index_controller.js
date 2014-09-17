@@ -27,8 +27,8 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend(Hummingbird.HasCu
 
   sortProperties: ['createdAt'],
   sortAscending: false,
-  newPost: "",
-  inFlight: false,
+
+
   favorite_anime: [],
   favorite_anime_page: 1,
   isEditing: false,
