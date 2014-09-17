@@ -29,17 +29,20 @@ class Substory < ActiveRecord::Base
     self.user_id == user.id || self.story.can_be_deleted_by?(user)
   end
 
+  def update_story_last_update_time!
+    self.story.set_last_update_time! self.story.reload.substories.max {|x| x.created_at.to_date }.created_at
+  end
+
   after_create do
-    self.story.set_last_update_time! self.created_at
-    self.story.save
+    update_story_last_update_time!
     StoryFanoutWorker.perform_async(self.user_id, self.story_id)
   end
 
   after_destroy do
+    update_story_last_update_time!
     if self.story and self.story.reload.substories.length == 0
-      self.story.destroy
+      self.story.destroy!
     end
-    self.story.set_last_update_time! self.story.reload.substories.max {|x| x.created_at.to_date }.created_at
   end
 
   before_save do

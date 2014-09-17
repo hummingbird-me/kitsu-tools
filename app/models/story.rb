@@ -31,7 +31,7 @@ class Story < ActiveRecord::Base
       story = story[0]
       story.watchlist = watchlist
       story.adult = (not anime.sfw?)
-      story.save
+      story.save!
     else
       story = Story.create user: user, story_type: story_type, target: anime, watchlist: watchlist, adult: (not anime.sfw?)
     end
