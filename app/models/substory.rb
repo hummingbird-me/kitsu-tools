@@ -30,7 +30,10 @@ class Substory < ActiveRecord::Base
   end
 
   def update_story_last_update_time!
-    self.story.set_last_update_time! (self.story.reload.substories.max {|x| x.created_at.to_date }.created_at || Time.now)
+    substories = self.story.reload.substories
+    if substories && substories.length > 0
+      self.story.set_last_update_time! substories.map {|x| x.created_at.to_date }.max
+    end
   end
 
   after_create do
