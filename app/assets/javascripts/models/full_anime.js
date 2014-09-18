@@ -15,5 +15,8 @@ Hummingbird.FullAnime = Hummingbird.Anime.extend({
   trendingReviews: DS.hasMany('review'),
   featuredCastings: DS.hasMany('casting'),
 
-  hasTrailer: Ember.computed.bool('youtubeVideoId')
+  hasTrailer: Em.computed.bool('youtubeVideoId'),
+
+  episodeSortOrder: ['number'],
+  sortedEpisodes: Em.computed.sort('episodes', 'episodeSortOrder')
 });

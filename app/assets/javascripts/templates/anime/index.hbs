@@ -1,12 +1,11 @@
 {{#if showEpisodes}}
-<!-- Episodes on this page should start at either episode 1 or the most recent episode the user has seen -->
 <div class="episode-bar">
   <div class="container">
     <h2 class="grey-title">
-      <a href="#">
+      {{#link-to 'episodes'}}
         Episodes
         <i class="fa fa-angle-right"></i>
-      </a>
+      {{/link-to}}
     </h2>
     <div class="language-dropdown dropdown">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
@@ -18,75 +17,21 @@
       </ul>
     </div>
       <ul class="episode-thumbs block-grid-5">
-        <li class="block-grid-item">
-          <div class="thumbnail">
-            <a href="#">
-              <img src="http://ib1.huluim.com/video/60211296?size=220x124&amp;region=us">
-              <div class="description">
-                <div class="title">Episode 1</div>
-              </div>
-              <div class="play-icon">
-                <i class="fa fa-play"></i>
-              </div>
-            </a>
-          </div>
-        </li>
-
-        <li class="block-grid-item">
-          <div class="thumbnail">
-            <a href="#">
-              <img src="http://ib2.huluim.com/video/60211297?size=220x124&amp;region=us">
-              <div class="description">
-                <div class="title">Episode 2</div>
-              </div>
-              <div class="play-icon">
-                <i class="fa fa-play"></i>
-              </div>
-            </a>
-          </div>
-        </li>
-
-        <li class="block-grid-item">
-          <div class="thumbnail">
-            <a href="#">
-              <img src="http://ib3.huluim.com/video/60211298?size=220x124&amp;region=us">
-              <div class="description">
-                <div class="title">Episode 3</div>
-              </div>
-              <div class="play-icon">
-                <i class="fa fa-play"></i>
-              </div>
-            </a>
-          </div>
-        </li>
-
-        <li class="block-grid-item">
-          <div class="thumbnail">
-            <a href="#">
-              <img src="http://ib4.huluim.com/video/60211299?size=220x124&amp;region=us">
-              <div class="description">
-                <div class="title">Episode 4</div>
-              </div>
-              <div class="play-icon">
-                <i class="fa fa-play"></i>
-              </div>
-            </a>
-          </div>
-        </li>
-
-        <li class="block-grid-item">
-          <div class="thumbnail">
-            <a href="#">
-              <img src="http://ib3.huluim.com/video/60214794?size=220x124&amp;region=us">
-              <div class="description">
-                <div class="title">Episode 5</div>
-              </div>
-              <div class="play-icon">
-                <i class="fa fa-play"></i>
-              </div>
-            </a>
-          </div>
-        </li>
+        {{#each episodesPreview}}
+          <li class="block-grid-item">
+            <div class="thumbnail">
+              {{#link-to 'episodes.show' this}}
+                <img {{bind-attr src=thumbnail}}>
+                <div class="description">
+                  <div class="title">Episode {{number}}</div>
+                </div>
+                <div class="play-icon">
+                  <i class="fa fa-play"></i>
+                </div>
+              {{/link-to}}
+            </div>
+          </li>
+        {{/each}}
       </ul>
   </div>
 </div>
