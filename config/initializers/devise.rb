@@ -242,7 +242,6 @@ Devise.setup do |config|
 end
 
 Warden::Manager.after_authentication do |user, auth, opts|
-  p :after_set_user
   if (!opts.keys.include?(:store)) or opts[:store]
     auth.cookies["auth_token"] = {
       value: user.authentication_token,
