@@ -241,7 +241,8 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 end
 
-Warden::Manager.after_set_user do |user, auth, opts|
+Warden::Manager.after_authentication do |user, auth, opts|
+  p :after_set_user
   if (!opts.keys.include?(:store)) or opts[:store]
     auth.cookies["auth_token"] = {
       value: user.authentication_token,
