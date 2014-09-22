@@ -11,6 +11,7 @@ class SubstoriesControllerTest < ActionController::TestCase
 
     get :index, format: :json, story_id: story.id
     assert_response 200
+    assert_equal story.substories.first.created_at, story.updated_at
   end
 
   test "can destroy substories" do
