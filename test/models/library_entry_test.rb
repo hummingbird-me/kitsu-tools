@@ -28,7 +28,7 @@ class LibraryEntryTest < ActiveSupport::TestCase
   should validate_presence_of(:anime)
   should validate_presence_of(:status)
   should validate_uniqueness_of(:user_id).scoped_to(:anime_id)
-  should ensure_inclusion_of(:status).in_array(LibraryEntry::VALID_STATUSES)
+  should validate_inclusion_of(:status).in_array(LibraryEntry::VALID_STATUSES)
 
   test "should track number of users with library entry for a show" do
     anime = Anime.find('monster')

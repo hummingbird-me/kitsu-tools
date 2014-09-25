@@ -79,7 +79,7 @@ gem 'delayed_paperclip', "~> 2.8"
 gem 'aws-sdk', '~> 1.45'
 
 # Better URLs.
-gem 'friendly_id', github: 'joshfabian/friendly_id'
+gem 'friendly_id', '~> 5.0'
 
 # Authentication.
 gem 'devise', '~> 3.2'
