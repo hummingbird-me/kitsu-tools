@@ -74,15 +74,11 @@ FriendlyId.defaults do |config|
       true
     end
   }
+end
 
-  # FriendlyId uses Rails's `parameterize` method to generate slugs, but for
-  # languages that don't use the Roman alphabet, that's not usually suffient. Here
-  # we use the Babosa library to transliterate Russian Cyrillic slugs to ASCII. If
-  # you use this, don't forget to add "babosa" to your Gemfile.
-  #
-  # config.use Module.new {
-  #   def normalize_friendly_id(text)
-  #     text.to_slug.normalize! :transliterations => [:russian, :latin]
-  #   end
-  # }
+# Custom slug normalization
+FriendlyId::Slugged.class_eval do
+  def normalize_friendly_id(value)
+    value.to_s.gsub(/^(\d+)/) {|x| x.to_i.humanize }.to_url
+  end
 end

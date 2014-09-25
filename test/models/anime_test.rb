@@ -56,5 +56,4 @@ class AnimeTest < ActiveSupport::TestCase
     assert Anime.fuzzy_search_by_title("swodr atr onlien").include?(anime(:sword_art_online))
     assert Anime.simple_search_by_title("sword art").include?(anime(:sword_art_online))
   end
-
 end

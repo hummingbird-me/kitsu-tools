@@ -173,6 +173,7 @@ GEM
     hooloo (0.3.2)
       multi_json (~> 1.0)
     http_parser.rb (0.6.0)
+    humanize (1.1.0)
     i18n (0.6.11)
     ice_nine (0.11.0)
     image_optim (0.16.0)
@@ -393,6 +394,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    stringex (2.5.2)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -456,6 +458,7 @@ DEPENDENCIES
   haml-rails
   hiredis
   hooloo
+  humanize
   image_optim (~> 0.13)
   kaminari (~> 0.16)
   letter_opener
@@ -492,6 +495,7 @@ DEPENDENCIES
   simple_form
   sinatra
   sitemap_generator
+  stringex
   therubyracer
   timecop
   twitter-typeahead-rails
