@@ -81,7 +81,6 @@ gem 'aws-sdk', '~> 1.45'
 # Better URLs.
 gem 'friendly_id', '~> 5.0'
 gem 'humanize'
-gem 'stringex', require: 'stringex_lite'
 
 # Authentication.
 gem 'devise', '~> 3.2'

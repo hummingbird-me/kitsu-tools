@@ -79,6 +79,6 @@ end
 # Custom slug normalization
 FriendlyId::Slugged.class_eval do
   def normalize_friendly_id(value)
-    value.to_s.gsub(/^(\d+)/) {|x| x.to_i.humanize }.to_url
+    value.to_s.gsub(/^(\d+)/) {|x| x.to_i.humanize }.join(' ').parameterize
   end
 end
