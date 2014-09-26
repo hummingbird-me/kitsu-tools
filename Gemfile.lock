@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/hummingbird-me/paperclip-optimizer.git
+  revision: 16232c982e40c8cbd69af8f48eefc6c8d0aaa5a9
+  specs:
+    paperclip-optimizer (1.0.3)
+      image_optim (~> 0.9)
+      paperclip (>= 3.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -125,7 +133,7 @@ GEM
       rake
       rake-compiler
     fastclick-rails (1.0.1)
-    ffi (1.9.4)
+    ffi (1.9.5)
     flamegraph (0.0.5)
       fast_stack
     font-awesome-rails (4.2.0.0)
@@ -250,9 +258,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-    paperclip-optimizer (1.0.3)
-      image_optim (~> 0.9)
-      paperclip (>= 3.4)
     pg (0.17.1)
     pg_search (0.7.8)
       activerecord (>= 3.1)
@@ -470,7 +475,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook (~> 2.0)
   paperclip (~> 4.1)
-  paperclip-optimizer
+  paperclip-optimizer!
   pg (= 0.17.1)
   pg_search (~> 0.7)
   pghero

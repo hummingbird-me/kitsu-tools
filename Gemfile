@@ -74,7 +74,7 @@ gem 'rdiscount'
 
 # Attachments
 gem "paperclip", "~> 4.1"
-gem 'paperclip-optimizer'
+gem 'paperclip-optimizer', github: 'hummingbird-me/paperclip-optimizer'
 gem 'delayed_paperclip', "~> 2.8"
 gem 'aws-sdk', '~> 1.45'
 
