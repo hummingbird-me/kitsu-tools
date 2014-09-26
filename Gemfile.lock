@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/hummingbird-me/paperclip-optimizer.git
-  revision: 16232c982e40c8cbd69af8f48eefc6c8d0aaa5a9
+  revision: c9d38ef2f3fcc1fbd9f8278972e64ad5fdab5a77
   specs:
     paperclip-optimizer (1.0.3)
       image_optim (~> 0.9)
