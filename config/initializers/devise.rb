@@ -215,7 +215,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], scope: "publish_actions, email"
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], scope: "email"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -240,17 +240,25 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = "/my_engine/users/auth"
 end
 
-Warden::Manager.after_authentication do |user, auth, opts|
-  if (!opts.keys.include?(:store)) or opts[:store]
-    auth.cookies["auth_token"] = {
+Devise::Controllers::SignInOut.class_eval do
+
+  alias_method :devise_sign_in, :sign_in
+  alias_method :devise_sign_out, :sign_out
+
+  def sign_in(resource_or_scope, *args)
+    user = (resource_or_scope.is_a? Symbol) ? args.first : resource_or_scope
+    cookies["auth_token"] = {
       value: user.authentication_token,
       expires: 20.years.from_now,
       domain: :all,
       httponly: true
     }
+    devise_sign_in(user)
   end
-end
 
-Warden::Manager.before_logout do |user, auth, opts|
-  auth.cookies.delete("auth_token", domain: :all)
+  def sign_out(resource_or_scope=nil)
+    cookies.delete("auth_token", domain: :all)
+    devise_sign_out(resource_or_scope)
+  end
+
 end

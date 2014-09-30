@@ -19,16 +19,7 @@ end
 
 class ActionController::TestCase
   include Devise::TestHelpers
-
-  def sign_in(user)
-    cookies["auth_token"] = {
-      value: user.authentication_token,
-      expires: 20.years.from_now,
-      domain: :all,
-      httponly: true
-    }
-    super(user)
-  end
+  include Devise::Controllers::SignInOut
 
   def assert_preloaded(key)
     assert JSON.parse(assigns["preload"].to_json).map {|x| x.keys }.flatten.include?(key), "#{key} should be preloaded"

@@ -36,17 +36,11 @@ class LibraryEntriesControllerTest < ActionController::TestCase
     assert JSON.parse(@response.body)["library_entries"].any? {|x| x["anime_id"] == "sword-art-online" }
 
     anime.age_rating = "R18+"
-    anime.save
+    anime.save!
 
     get :index, format: :json, user_id: 'vikhyat'
     assert_response 200
     assert !JSON.parse(@response.body)["library_entries"].any? {|x| x["anime_id"] == "sword-art-online" }
-
-    sign_in users(:vikhyat)
-    get :index, format: :json, user_id: 'vikhyat'
-    assert_response 200
-    assert !JSON.parse(@response.body)["library_entries"].any? {|x| x["anime_id"] == "sword-art-online" }
-    sign_out :user
 
     sign_in users(:josh)
     get :index, format: :json, user_id: 'vikhyat'
