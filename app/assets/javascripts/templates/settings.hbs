@@ -3,7 +3,7 @@
     <h2>Settings</h2>
   </div>
   <div class="row">
-    <div class="secondary-info">
+    <div class="col-sm-6">
       <div class="panel panel-default" id="account-settings">
         <div class="panel-heading"><h3 class="panel-title">Account</h3></div>
         <div class="panel-body">
@@ -11,7 +11,7 @@
             <div class="form-group">
               <label class="control-label col-sm-4" for="username">Username</label>
               <div class="col-sm-8">
-                {{input type="text" class="form-control" id="username" value=currentUser.username}}
+                {{input type="text" class="form-control" id="username" value=currentUser.newUsername}}
                 <span class="help-block">Usernames can contain letters, numbers, and underscores</span>
               </div>
             </div>
@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-    <div class="secondary-info">
+    <div class="col-sm-6">
       <div class="panel panel-default" id="content-settings">
         <div class="panel-heading"><h3 class="panel-title">Content</h3></div>
         <div class="panel-body">
@@ -126,8 +126,8 @@
       </div>
       <div class="panel panel-default settings-buttons">
         <div class="center-block panel-body">
-          <button class="btn btn-primary" {{bind-attr disabled=isClean}}>Save</button>
-          <button class="btn btn-default" {{bind-attr disabled=isClean}} {{action "clean"}}>Cancel</button>
+          <button class="btn btn-primary" {{bind-attr disabled=isClean}} {{action "save" currentUser}}>Save</button>
+          <button class="btn btn-default" {{bind-attr disabled=isClean}} {{action "clean" currentUser}}>Cancel</button>
         </div>
       </div>
     </div>

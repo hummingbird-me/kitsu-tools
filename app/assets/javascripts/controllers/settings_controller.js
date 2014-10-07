@@ -8,4 +8,13 @@ Hummingbird.SettingsController = Ember.Controller.extend(Hummingbird.HasCurrentU
   passwordMismatch: function () {
     return this.get('password') != this.get('passwordConfirm');
   }.property('password', 'passwordConfirm'),
+  actions: {
+    save: function () {
+      this.get('currentUser.model.content').save();
+      // TODO: Update current_user's name after it's saved
+    },
+    clean: function () {
+      this.get('currentUser.model.content').rollback();
+    }
+  }
 });

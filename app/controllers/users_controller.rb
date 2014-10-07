@@ -214,18 +214,29 @@ class UsersController < ApplicationController
     authenticate_user!
 
     user = User.find(params[:id])
+    changes = params[:current_user] || params[:user]
 
     if current_user == user
-      user.about = params[:user][:about]
-      user.location = params[:user][:location]
-      user.waifu = params[:user][:waifu]
-      user.website = params[:user][:website]
-      user.waifu_or_husbando = params[:user][:waifu_or_husbando]
-      user.bio = params[:user][:mini_bio]
-      user.waifu_char_id = params[:user][:waifu_char_id]
+      user.about = changes[:about]
+      user.location = changes[:location]
+      user.waifu = changes[:waifu]
+      user.website = changes[:website]
+      user.waifu_or_husbando = changes[:waifu_or_husbando]
+      user.bio = changes[:mini_bio]
+      user.waifu_char_id = changes[:waifu_char_id]
 
-      if Rails.env.production? and params[:user][:cover_image_url] =~ /^data:image/
-        user.cover_image = params[:user][:cover_image_url]
+      if Rails.env.production? and changes[:cover_image_url] =~ /^data:image/
+        user.cover_image = changes[:cover_image_url]
+      end
+
+      # Settings page stuff
+      if params[:current_user]
+        user.about = changes[:email]
+        user.password = changes[:new_password] if changes[:new_password]
+        user.name = changes[:new_username] if changes[:new_username]
+        user.star_rating = (changes[:rating_type] == 'advanced')
+        user.sfw_filter = changes[:sfw_filter]
+        user.title_language_preference = changes[:title_language_preference]
       end
     end
 
