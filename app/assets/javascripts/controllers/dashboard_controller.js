@@ -1,4 +1,3 @@
-//Hummingbird.DashboardController = Ember.Controller.extend(Hummingbird.HasCurrentUser){
 Hummingbird.DashboardController = Ember.Controller.extend({
 
   currentTab: "dashboard",
@@ -16,7 +15,6 @@ Hummingbird.DashboardController = Ember.Controller.extend({
 
   postsOnly: function(){
     return this.get('content').filter(function(item, index, enumr){
-      console.log(item);
       return (item._data.type == "comment" || item._data.type == "followed");
     });
   }.property('content'),
