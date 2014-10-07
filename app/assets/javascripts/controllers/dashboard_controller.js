@@ -13,11 +13,9 @@ Hummingbird.DashboardController = Ember.Controller.extend({
     return this.get('content');
   }.property('currentTab', 'content'),
 
-  postsOnly: function(){
-    return this.get('content').filter(function(item, index, enumr){
-      return (item.get('type') == "comment" || item.get('type') == "followed");
-    });
-  }.property('content'),
+  postsOnly: Em.computed.filter('content', function(item){
+    return (item.get('type') == "comment" || item.get('type') == "followed");
+  }),
 
   mediaOnly: Em.computed.filterBy('content', 'type', "media_story"),
 
