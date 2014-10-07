@@ -1,3 +1,21 @@
+.user-feed-filter {
+  @extend .clearfix;
+  @extend .story;
+  padding: 20px;
+
+  .user-feed-tab {
+    display: block;
+    padding: 10px 0 5px 0;
+    width: 33%;
+    text-align: center;
+    float: left;
+
+    &.active-tab {
+      border-bottom: 2px solid $darkOrange;
+    }
+  }
+}
+
 .user-dashboard {
   @extend .container;
   margin-top: 21px;

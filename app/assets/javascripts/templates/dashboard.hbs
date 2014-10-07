@@ -102,7 +102,19 @@
     <div class="user-feed">
       {{post-comment action="postComment"}}
 
-      {{each content itemController="story" itemViewClass="story"}}
+      <div class="user-feed-filter">
+        <span {{bind-attr class=":user-feed-tab highlightDasboard:active-tab" }}>
+          <a {{action 'setCurrentTab' 'dashboard'}}>Timeline</a>
+        </span>
+        <span {{bind-attr class=":user-feed-tab highlightPosts:active-tab" }}>
+          <a {{action 'setCurrentTab' 'posts'}}>User Activity</a>
+        </span>
+        <span {{bind-attr class=":user-feed-tab highlightMedia:active-tab" }}>
+          <a {{action 'setCurrentTab' 'media'}}>Library Updates</a>
+        </span>
+      </div>
+
+      {{each actualContent itemController="story" itemViewClass="story"}}
 
       {{#if canLoadMore}}
         {{load-more classNames="light" action="loadNextPage"}}
