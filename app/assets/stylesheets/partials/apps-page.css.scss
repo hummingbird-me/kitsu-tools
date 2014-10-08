@@ -17,13 +17,26 @@
       @extend .clearfix;
       margin: 20px;
       background: #fff;
-      border-radius: 2px;
+      border-radius: 3px;
       border: 1px solid #ddd;
     }
     
+    .app-image {
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      width: 100%;
+    }
+
     .app-inner {
       padding: 20px;
 
+      .app-title {
+        margin-top: 0;
+        padding: 0;
+      }
+
+      .app-desc { text-align: justify; }
+      .app-link { text-align: right; }
     }
 
   }
