@@ -1,0 +1,30 @@
+.apps-page {
+  @extend .container;
+  padding-top: 20px;
+
+  .apps-page-title {
+    margin-top: 0;
+  }
+
+  .apps-page-desc {
+    text-align: justify;
+  }
+
+  .apps-page-card {
+    @extend .col-md-6;
+
+    .app-card {
+      @extend .clearfix;
+      margin: 20px;
+      background: #fff;
+      border-radius: 2px;
+      border: 1px solid #ddd;
+    }
+    
+    .app-inner {
+      padding: 20px;
+
+    }
+
+  }
+}

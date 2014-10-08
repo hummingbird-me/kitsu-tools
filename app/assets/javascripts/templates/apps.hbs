@@ -1,1 +1,32 @@
-<h1>This is the apps page.</h1>
+<div class="apps-page">
+  <div class="row">
+    <div class="apps-page-card">
+      <div class="app-card app-inner">
+        <h2 class="apps-page-title">Hummingbird Community Apps</h2>
+        <p class="apps-page-desc">
+          On this site, you can find a list of apps and tools for Hummingbird, 
+          developed and maintained by our community. Please note, that these
+          are all third party applications, for any requests or suggestions, 
+          please contact the developer of the respective application.
+        </p>
+      </div>
+    </div>
+
+    {{#each}}
+      <div class="apps-page-card">
+        <div class="app-card">
+          <img class="app-image pull-left" src="http://placekitten.com/g/300/150" />
+          <div class="app-inner pull-left">
+            <h3 class="app-title">Some title</h3>
+            <p>
+              This is a really cool application that has been around for quite a while
+            </p>
+            <p>
+              Homepage | Thread
+            </p>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
