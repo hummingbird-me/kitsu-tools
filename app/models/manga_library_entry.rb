@@ -85,4 +85,24 @@ class MangaLibraryEntry < ActiveRecord::Base
       errors.add(:volumes_read, "cannot exceed total number of volumes")
     end
   end
+
+  ALLOWED_IN_IMPORT = [:volumes_read, :chapters_read, :reread_count, :rereading, :notes, :status,
+                       :private, :rating, :last_read]
+
+  # Imports from any object which exposes the following interface:
+  #  * Mixes in the Enumerable module
+  #  * #each() yields a sym-keyed hash of fields to set, plus :media
+  #  * #media_type() returns a symbol of the media type of the import
+  def self.list_import(user, list)
+    raise 'Import type mismatch' unless list.media_type == :manga
+
+    list.each do |row|
+      entry = MangaLibraryEntry.where(user: user, manga: row[:media]).first_or_initialize
+
+      row[:chapters_read] = [row[:chapters_read], row[:media].try(:chapter_count)].compact.min
+      row[:volumes_read] = [row[:volumes_read], row[:media].try(:volume_count)].compact.min
+      entry.assign_attributes row.slice(*ALLOWED_IN_IMPORT)
+      entry.save!
+    end
+  end
 end

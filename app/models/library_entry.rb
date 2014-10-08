@@ -126,4 +126,23 @@ class LibraryEntry < ActiveRecord::Base
     # Update user's life spent on anime.
     self.user.update_life_spent_on_anime( - self.episodes_watched * (self.anime.episode_length || 0) )
   end
+
+  ALLOWED_IN_IMPORT = [:episodes_watched, :rewatch_count, :rewatching, :notes, :status, :private,
+                       :rating, :last_watched]
+
+  # Imports from any object which exposes the following interface:
+  #  * Mixes in the Enumerable module
+  #  * #each() yields a sym-keyed hash of fields to set, plus :media
+  #  * #media_type() returns a symbol of the media type of the import
+  def self.list_import(user, list)
+    raise 'Import type mismatch' unless list.media_type == :anime
+
+    list.each do |row|
+      entry = LibraryEntry.where(user: user, anime: row[:media]).first_or_initialize
+
+      row[:episodes_watched] = [row[:episodes_watched], row[:media].try(:episode_count)].compact.min
+      entry.assign_attributes row.slice(*ALLOWED_IN_IMPORT)
+      entry.save!
+    end
+  end
 end
