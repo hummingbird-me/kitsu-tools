@@ -15,20 +15,14 @@
     {{#each}}
       <div class="apps-page-card">
         <div class="app-card">
-          <img class="app-image" src="http://placekitten.com/g/300/150" />
+          <img class="app-image" {{bind-attr src=cover}} />
           <div class="app-inner">
-            <h3 class="app-title">Some title</h3>
-            <p class="app-desc">
-              This is a really cool application that has been around for quite a while.
-              It does not actually do anything but it has a picture of a kitten in the 
-              header so it has to be pretty awesome, right? Though, the picture resolution
-              sucks, it's a pretty neat app. Also, its description is clearly a work of
-              art, so you should definitely download it. (Run tehkitten.exe)
-            </p>
+            <h3 class="app-title">{{name}} <span class="app-type">{{type}}</span></h3>
+            <p class="app-desc">{{desc}}</p>
             <p class="app-link">
-              <a href="#">Homepage</a> &bull;
-              <a href="#">Source</a> &bull;
-              <a href="#">Thread</a>
+              {{#each links}}
+                <a {{bind-attr href=link}}>{{name}}</a> <span class="app-bull">&bull;</span>
+              {{/each}}
             </p>
           </div>
         </div>
