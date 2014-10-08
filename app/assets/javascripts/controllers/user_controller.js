@@ -24,14 +24,30 @@ Hummingbird.UserController = Ember.ObjectController.extend(Hummingbird.HasCurren
 
   actions: {
     coverSelected: function (file) {
-      var reader, that;
-      that = this;
-      reader = new FileReader();
+      var self = this;
+      var reader = new FileReader();
       reader.onload = function (e) {
-        that.set('coverUpload.originalImage', e.target.result);
-        return that.send('openModal', 'crop-cover', that.get('coverUpload'));
+        self.set('coverUpload.originalImage', e.target.result);
+        return self.send('openModal', 'crop-cover', self.get('coverUpload'));
       };
       return reader.readAsDataURL(file);
+    },
+    avatarSelected: function (file) {
+      var self = this;
+      var data = new FormData();
+      data.append('avatar', file);
+      return ic.ajax({
+        url: '/users/' + this.get('model.username') + '/avatar.json',
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'PUT'
+      }).then(function (response) {
+        // Update both the user and current_user, should kind of work
+        response['user'] = response['current_user'];
+        self.store.pushPayload(response);
+      });
     }
   }
 });

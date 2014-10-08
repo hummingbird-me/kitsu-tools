@@ -26,6 +26,13 @@
                 {{view Hummingbird.FileUpload action="coverSelected"
                                               id="cover-image"}}
               </li>
+              <li>
+                <label for="avatar-image">
+                  <i class="fa fa-upload"></i> Upload Avatar
+                </label>
+                {{view Hummingbird.FileUpload action="avatarSelected"
+                                              id="avatar-image"}}
+              </li>
             {{else}}
               <li>
                 {{#bootstrap-tooltip title="Coming soon!" placement="bottom"}}

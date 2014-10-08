@@ -148,13 +148,20 @@ class UsersController < ApplicationController
   end
 
   def update_avatar
-    @user = User.find(params[:user_id])
-    authorize! :update, @user
-    if params[:user] and params[:user][:avatar]
-      @user.avatar = params[:user][:avatar]
-      flash[:success] = "Avatar updated successfully." if @user.save
+    authenticate_user!
+
+    user = User.find(params[:user_id])
+    if user == current_user
+      user.avatar = params[:avatar] || params[:user][:avatar]
+      user.save!
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.json { render json: user,
+                             serializer: CurrentUserSerializer }
+      end
+    else
+      error! 403
     end
-    redirect_to :back
   end
 
   def disconnect_facebook
