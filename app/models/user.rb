@@ -215,6 +215,10 @@ class User < ActiveRecord::Base
     !!(dropbox_token && dropbox_secret)
   end
 
+  def has_facebook?
+    !facebook_id.blank?
+  end
+
   # Public: Find a user corresponding to a Facebook account.
   #
   # If there is an account associated with the Facebook ID, return it.

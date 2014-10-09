@@ -4,6 +4,9 @@ Hummingbird.SettingsController = Ember.Controller.extend(Hummingbird.HasCurrentU
     {value: 'romanized', label: 'Romanized'},
     {value: 'english', label: 'English'}
   ],
+  facebookDisconnectUrl: function () {
+    return '/users/' + this.get('currentUser.username') + '/disconnect/facebook';
+  }.property('currentUser.username'),
   canSubmit: function () {
     return !this.get('currentUser.isDirty') && !this.get('passwordMismatch');
   }.property('currentUser.isDirty', 'passwordMismatch'),

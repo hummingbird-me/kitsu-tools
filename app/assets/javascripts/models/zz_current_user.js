@@ -4,5 +4,6 @@ Hummingbird.CurrentUser = Hummingbird.User.extend({
   newPassword: DS.attr('string'),
   sfwFilter: DS.attr('boolean'),
   lastBackup: DS.attr('date'),
-  hasDropbox: DS.attr('boolean')
+  hasDropbox: DS.attr('boolean'),
+  hasFacebook: DS.attr('boolean')
 });

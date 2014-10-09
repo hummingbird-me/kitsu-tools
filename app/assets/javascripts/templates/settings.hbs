@@ -139,7 +139,11 @@
       <div class="panel panel-default" id="connections-settings">
         <div class="panel-heading"><h3 class="panel-title">Connections</h3></div>
         <div class="panel-body">
-          <button class="btn fb-connect">Facebook Connect</button>
+          {{#if currentUser.hasFacebook }}
+            <a {{bind-attr href=facebookDisconnectUrl}} class="btn btn-danger fb-connect">Disconnect from Facebook</a>
+          {{else}}
+            <a href="/users/auth/facebook" class="btn fb-connect">Connect to Facebook</a>
+          {{/if}}
         </div>
       </div>
       <div class="panel panel-default settings-buttons">
