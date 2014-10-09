@@ -4,6 +4,19 @@ a {
 }
 
 
+/* Remove default bootstrap border glow */
+input:focus, textarea:focus {
+  box-shadow: none !important;
+  outline: 0 !important;
+  border: none;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+  border: 1px solid $darkOrange;
+}
+
+
 /* Fix panel rounded corner artefacts. */
 .panel { border: none; }
 
