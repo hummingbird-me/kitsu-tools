@@ -82,7 +82,10 @@
           <div class="row">
             <label class="control-label col-sm-6">MAL Import</label>
             <div class="col-sm-6">
-              <button type="button" class="col-sm-6 col-sm-offset-6 btn btn-default">
+              <form action="/settings/import/hummingbird" method="post" id="malimport">
+                {{view Hummingbird.FileUpload action="importMal" name="animelist" id="mal-file"}}
+              </form>
+              <button type="button" class="col-sm-6 col-sm-offset-6 btn btn-default" {{action "pickMalFile"}}>
                 Upload
               </button>
             </div>

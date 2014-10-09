@@ -44,6 +44,18 @@ Hummingbird.SettingsController = Ember.Controller.extend(Hummingbird.HasCurrentU
         type: 'POST',
         dataType: 'json'
       });
+    },
+    pickMalFile: function () {
+      $('#mal-file').click();
+    },
+    pickHbFile: function () {
+      $('#hb-file').click();
+    },
+    restoreBackup: function (file) {
+      $('#backuprestore').submit();
+    },
+    importMal: function (file) {
+      $('#malimport').submit();
     }
   }
 });

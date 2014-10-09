@@ -96,12 +96,15 @@ Hummingbird::Application.routes.draw do
     get 'backup/dropbox' => 'backup#dropbox_connect'
     post 'backup/dropbox' => 'backup#dropbox'
     delete 'backup/dropbox' => 'backup#dropbox_disconnect'
+    # Imports
   end
 
   # Search
   get '/search' => 'search#basic', as: :search
 
   # Imports
+  # TODO: move this to a Settings subcontroller
+  post 'settings/import/myanimelist' => 'imports#new'
   post '/mal_import' => 'imports#new'
 
   # Random anime
