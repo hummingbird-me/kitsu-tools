@@ -12,7 +12,11 @@ class Settings::BackupController < ApplicationController
   def dropbox
     current_user.update(last_backup: DateTime.now)
     DropboxBackupWorker.perform_async(current_user.id)
-    redirect_to :back
+
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render json: current_user, serializer: CurrentUserSerializer }
+    end
   end
 
   def dropbox_connect
@@ -23,7 +27,7 @@ class Settings::BackupController < ApplicationController
       result = request_token.get_access_token(:oauth_verifier => params[:oauth_token])
 
       current_user.update(dropbox_token: result.token, dropbox_secret: result.secret)
-      redirect_to '/users/edit'
+      redirect_to '/settings'
     else # Redirect to Dropbox's OAuth2
       request_token = consumer.get_request_token
       session[:dropbox_request_token] = {
@@ -37,6 +41,9 @@ class Settings::BackupController < ApplicationController
   def dropbox_disconnect
     # Can we revoke ourselves and clear it out of their app list?
     current_user.update(dropbox_token: nil, dropbox_secret: nil)
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render json: current_user, serializer: CurrentUserSerializer }
+    end
   end
 end

@@ -87,8 +87,15 @@ Hummingbird::Application.routes.draw do
   # Settings
   get '/settings' => 'settings#index'
   namespace :settings do
-    # Backups
+    # Legacy routes
     get 'backup/:action', to: 'backup'
+    # New routes
+    # Download
+    get 'backup/download' => 'backup#download'
+    # Dropbox
+    get 'backup/dropbox' => 'backup#dropbox_connect'
+    post 'backup/dropbox' => 'backup#dropbox'
+    delete 'backup/dropbox' => 'backup#dropbox_disconnect'
   end
 
   # Search

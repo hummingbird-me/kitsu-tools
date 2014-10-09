@@ -28,18 +28,23 @@
         <div class="panel-heading"><h3 class="panel-title">Security</h3></div>
         <div class="panel-body">
           <form class="form-horizontal" role="form">
-            <div {{bind-attr class="passwordMismatch:has-error :form-group"}}>
+            <div class="form-group">
               <label class="control-label col-sm-4" for="password">New Password</label>
               <div class="col-sm-8">
-                {{input type="password" class="form-control" id="password" value=password}}
+                {{input type="password" class="form-control" id="password" value=currentUser.newPassword}}
               </div>
             </div>
-            <div {{bind-attr class="passwordMismatch:has-error :form-group"}}>
+            <div class="form-group">
               <label class="control-label col-sm-4" for="password-confirm">Again</label>
               <div class="col-sm-8">
                 {{input type="password" class="form-control" id="password-confirm" value=passwordConfirm}}
               </div>
             </div>
+            {{#if passwordMismatch}}
+              <div class="alert alert-danger">
+                <i class="fa fa-lg fa-warning"></i> Passwords do not match
+              </div>
+            {{/if}}
           </form>
         </div>
       </div>
@@ -53,23 +58,33 @@
             <label class="control-label col-sm-6">Dropbox Backup</label>
             <div class="col-sm-6">
               {{#if currentUser.hasDropbox}}
-                <button type="button" class="col-sm-6 btn btn-success"><i class="fa fa-refresh"></i> Sync</button>
-                <button type="button" class="col-sm-6 btn btn-danger">Disconnect</button>
+                <button class="col-sm-6 btn btn-success" {{action "dropboxSync"}}>
+                  <i class="fa fa-refresh"></i> Sync
+                </button>
+                <button class="col-sm-6 btn btn-danger" {{action "dropboxDisconnect"}}>
+                  Disconnect
+                </button>
               {{else}}
-                <button type="button" class="col-sm-6 col-sm-offset-6 btn btn-default"><i class="fa fa-dropbox"></i> Connect</button>
-                {{/if}}
+              <a class="col-sm-6 col-sm-offset-6 btn btn-default" href="/settings/backup/dropbox_connect">
+                <i class="fa fa-dropbox"></i> Connect
+              </a>
+              {{/if}}
               </div>
           </div>
           <div class="row">
-            <label class="control-label col-sm-9">Manual Backup</label>
-            <div class="col-sm-3">
-              <button type="button" class="col-sm-12 btn btn-default">Download</button>
+            <label class="control-label col-sm-6">Manual Backup</label>
+            <div class="col-sm-6">
+              <a class="col-sm-6 col-sm-offset-6 btn btn-default" href="/settings/backup/download">
+                Download
+              </a>
             </div>
           </div>
           <div class="row">
-            <label class="control-label col-sm-9">MAL Import</label>
-            <div class="col-sm-3">
-              <button type="button" class="col-sm-12 btn btn-default">Upload</button>
+            <label class="control-label col-sm-6">MAL Import</label>
+            <div class="col-sm-6">
+              <button type="button" class="col-sm-6 col-sm-offset-6 btn btn-default">
+                Upload
+              </button>
             </div>
           </div>
         </div>
@@ -126,8 +141,8 @@
       </div>
       <div class="panel panel-default settings-buttons">
         <div class="center-block panel-body">
-          <button class="btn btn-primary" {{bind-attr disabled=isClean}} {{action "save" currentUser}}>Save</button>
-          <button class="btn btn-default" {{bind-attr disabled=isClean}} {{action "clean" currentUser}}>Cancel</button>
+          <button class="btn btn-primary" {{bind-attr disabled=canSubmit}} {{action "save" currentUser}}>Save</button>
+          <button class="btn btn-default" {{bind-attr disabled=canSubmit}} {{action "clean" currentUser}}>Cancel</button>
         </div>
       </div>
     </div>
