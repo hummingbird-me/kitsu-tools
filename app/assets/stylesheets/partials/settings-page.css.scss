@@ -23,8 +23,20 @@
   .ratings-picker input[type="radio"] {
     margin-top: 10px;
   }
-  
+
   .settings-buttons {
     text-align: center;
+  }
+
+  #backup-settings {
+    .row {
+      margin-bottom: 10px;
+    }
+  }
+
+  #connections-settings {
+    .fb-connect {
+      color: #fff;
+    }
   }
 }
