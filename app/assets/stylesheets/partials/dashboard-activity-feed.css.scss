@@ -28,12 +28,12 @@
   border-radius: 3px;
   padding: 4px 5px;
   color: #999999;
-  line-height:20px;
-  font-size:12px;
+  line-height: 20px;
+  font-size: 12px;
   font-weight: 700;
   font-smoothing: antialiased;
-  text-align:center;
-  margin: 11px 11px;
+  text-align: center;
+  margin: 11px;
   transition: .1s ease-in-out;
   @media (max-width: 768px) {
     border-radius: none;
@@ -44,10 +44,10 @@
   }
 
   &.close-recent {
-    background:#dd6149;
+    background: #dd6149;
     color: #fff;
   }
-  
+
   &:hover {
     color: #fff;
   }

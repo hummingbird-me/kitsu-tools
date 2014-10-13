@@ -105,26 +105,20 @@
           color: $orange;
         }
       }
-      &:last-child {
-        margin-right: 0;
-      }
+      &:last-child { margin-right: 0; }
       a, label {
         display: inline;
         font-weight: normal;
         cursor: pointer;
         padding: 5px 10px 5px 10px;
         color: #fff;
-        &:hover {
-          text-decoration: none;
-        }
+        &:hover { text-decoration: none; }
       }
     }
   }
 
   .fa-exchange, .fa-heart-o, .fa-envelope-o {
-    @media (max-width: 400px) {
-      display: none;
-    }
+    @media (max-width: 400px) { display: none; }
   }
 
   .follow-button {
@@ -152,17 +146,11 @@
     top: 0;
     left: 0;
     right: 0;
-    .user-cover {
-      height: 150px;
-    }
-    .cover-overlay {
-      bottom: -45px;
-    }
+    .user-cover { height: 150px; }
+    .cover-overlay { bottom: -45px; }
   }
 
-  .container.relative {
-    height: 150px;
-  }
+  .container.relative { height: 150px; }
 
   .profile-navigation {
     position: absolute;
@@ -175,9 +163,7 @@
     .user-avatar {
       padding-left: 0;
       padding-right: 0;
-      @media (max-width: 990px) {
-        bottom: inherit;
-      }
+      @media (max-width: 990px) { bottom: inherit; }
     }
     .username {
       margin-top: 55px;
@@ -188,9 +174,7 @@
   .user-wrapper {
     width: 100%;
     .account-info {
-      @media (max-width: 990px) {
-        padding-left: 110px;
-      }
+      @media (max-width: 990px) { padding-left: 110px; }
     }
   }
 

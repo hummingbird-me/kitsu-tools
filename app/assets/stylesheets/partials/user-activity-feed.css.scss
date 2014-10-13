@@ -237,7 +237,7 @@
         display: inline-block;
         position: absolute;
         text-align: center;
-        margin-top: -0.8em;
+        margin-top: -.8em;
         width: 100%;
         left: 0;
         top: 50%;
@@ -254,13 +254,13 @@
     }
 
     .breakdown-infotext {
-      font-size: 0.89em;
+      font-size: .89em;
     }
   }
 
   .breakdown-genrelist {
     li {
-      padding: 7px 0 3px 0;
+      padding: 7px 0 3px;
       border-bottom: 1px solid #f2f2f2;
 
       &:last-of-type {

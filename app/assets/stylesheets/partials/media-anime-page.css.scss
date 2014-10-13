@@ -347,14 +347,11 @@
   }
 
   .tab-pane {
-    padding-top: 15px;
     border: 1px solid #838c9a;
-    margin-bottom: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 10px;
     border-radius: 3px;
     border-top-left-radius: 0;
+    margin-bottom: 15px;
+    padding: 15px 15px 10px;
 
     .rounded-block {
       border: none;
@@ -557,14 +554,11 @@
     .badge {
       background: #eee;
       border-radius: 3px;
-      padding-top: 5px;
       margin-bottom: 5px;
       margin-right: 6px;
+      padding: 5px 10px;
       font-size: 15px;
       font-weight: normal;
-      padding-bottom: 5px;
-      padding-left: 10px;
-      padding-right: 10px;
       font-family: $headerFontFamily;
 
       &:hover {

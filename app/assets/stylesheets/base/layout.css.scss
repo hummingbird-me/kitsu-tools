@@ -1,9 +1,7 @@
 html { overflow-y: scroll; }
 
 /* Development Styles */
-.profiler-results {
-  display: none;
-}
+.profiler-results { display: none; }
 
 /* Global Header */
 .navbar-temporary {
@@ -17,8 +15,8 @@ html { overflow-y: scroll; }
   line-height: 50px;
   text-align: center;
 
-  i { 
-    color: #999999; 
+  i {
+    color: #999999;
     font-size: 25px;
     position: relative;
     top: -4px;
@@ -49,22 +47,16 @@ html { overflow-y: scroll; }
   }
 }
 
-.navbar-nav.navbar-right:last-child {
-  margin-right: 0;
-}
+.navbar-nav.navbar-right:last-child { margin-right: 0; }
 
-.quick-update ~ .notifications {
-  top: 304px !important;
-}
+.quick-update ~ .notifications { top: 304px !important; }
 
 .hb-nav {
   background-color: $navy;
   border: none;
   @media (max-width: 768px) {
     .container { padding: 0; }
-    .navbar-header { 
-      padding: 0 15px;
-    }
+    .navbar-header { padding: 0 15px; }
 
     .navbar-visible,
     .navbar-temporary { display: block !important; }
@@ -96,9 +88,7 @@ html { overflow-y: scroll; }
         right: 0;
         width: 50px !important;
         display: inline-block;
-        .navbar-avatar {
-          text-align: left;
-        }
+        .navbar-avatar { text-align: left; }
       }
 
       .notifications {
@@ -133,7 +123,7 @@ html { overflow-y: scroll; }
       }
     }
   }
-  
+
   .user-area {
     .dropdown-menu {
       @extend .clearfix;
@@ -173,15 +163,12 @@ html { overflow-y: scroll; }
         width: 100% !important;
         padding: 15px !important;
 
-        &:hover {
-          color: #999999 !important;
-        }
+        &:hover { color: #999999 !important; }
       }
     }
 
-    &:before, &:after {
-      right: 67px !important;
-    }
+    &:before,
+    &:after { right: 67px !important;}
   }
 
   .dropdown {
@@ -189,13 +176,10 @@ html { overflow-y: scroll; }
     font-family: $headerFontFamily;
     font-size: 16px;
 
-    &:hover {
-      background-color: darken($darkNavy, 2);
-    }
+    &:hover { background-color: darken($darkNavy, 2); }
 
-    &.active .dropdown-toggle {
-      background-color: darken($darkNavy, 2);
-    }
+    &.active
+    .dropdown-toggle { background-color: darken($darkNavy, 2); }
   }
 
   .dropdown-menu {
@@ -215,9 +199,7 @@ html { overflow-y: scroll; }
       }
     }
 
-    .no-notifications {
-      padding: 10px 15px;
-    }
+    .no-notifications { padding: 10px 15px; }
 
     li:first-child a {
       border-top-right-radius: 4px;
@@ -253,23 +235,13 @@ html { overflow-y: scroll; }
     }
 
     &.left-nav-section {
-      &:after {
-        left: 25px;
-      }
-
-      &:before {
-        left: 25px;
-      }
+      &:after { left: 25px; }
+      &:before { left: 25px; }
     }
 
     &.right-nav-section {
-      &:after {
-        right: 25px;
-      }
-
-      &:before {
-        right: 25px;
-      }
+      &:after { right: 25px; }
+      &:before { right: 25px; }
     }
   }
 
@@ -277,9 +249,7 @@ html { overflow-y: scroll; }
     text-align: center;
     height: 50px;
 
-    &:hover {
-      background-color: darken($darkNavy, 2);
-    }
+    &:hover { background-color: darken($darkNavy, 2); }
 
     &.notifications {
       .notification-link {
@@ -289,13 +259,9 @@ html { overflow-y: scroll; }
       }
     }
 
-    .dropdown-menu {
-      min-width: 250px;
-    }
+    .dropdown-menu { min-width: 250px; }
 
-    .view-all {
-      text-align: center;
-    }
+    .view-all { text-align: center; }
   }
 
   .searchbar {
@@ -307,9 +273,7 @@ html { overflow-y: scroll; }
       text-align: right !important;
     }
 
-    form {
-      display: inline;
-    }
+    form { display: inline; }
 
     .search-link {
       display: inline-block;
@@ -361,9 +325,7 @@ html { overflow-y: scroll; }
           margin: 0;
           transition: .1s ease-in;
 
-          &:hover {
-           background: lighten($darkNavy, 5);
-          }
+          &:hover { background: lighten($darkNavy, 5); }
         }
 
         .search-result-thumb {
@@ -375,9 +337,7 @@ html { overflow-y: scroll; }
           margin-right: 10px;
           overflow: hidden;
 
-          img {
-            width: 100%;
-          }
+          img { width: 100%; }
         }
 
         .search-result-title {
@@ -401,9 +361,7 @@ html { overflow-y: scroll; }
           &.user  { background: #6959CD; }
         }
 
-        .search-result-break {
-          clear: both;
-        }
+        .search-result-break { clear: both; }
       }
 
       .show-more {
@@ -425,9 +383,7 @@ html { overflow-y: scroll; }
     .notification-element {
       @extend .clearfix;
 
-      a {
-        @extend .clearfix;
-      }
+      a { @extend .clearfix; }
 
       &.new {
         background: #f7edda;
@@ -452,9 +408,7 @@ html { overflow-y: scroll; }
         margin-top: 0;
         margin-bottom: 4px;
         padding-right: 30px;
-        .user-action {
-          color: $darkGrey;
-        }
+        .user-action { color: $darkGrey; }
       }
 
       .preview {
@@ -471,9 +425,7 @@ html { overflow-y: scroll; }
 
     .view-all {
       background: $eggshell;
-      &:hover {
-        color: $darkOrange;
-      }
+      &:hover { color: $darkOrange; }
     }
   }
 
@@ -490,9 +442,7 @@ html { overflow-y: scroll; }
       font-family: $headerFontFamily;
     }
 
-    &:focus {
-      outline: none;
-    }
+    &:focus { outline: none; }
   }
 
   .fa-search {
@@ -518,9 +468,7 @@ html { overflow-y: scroll; }
     position: relative;
     top: -2px;
 
-    .notification-count {
-      display: none;
-    }
+    .notification-count { display: none; }
 
     &.active {
       color: $orange;
@@ -549,9 +497,8 @@ html { overflow-y: scroll; }
     margin-bottom: 0px;
     margin-top: 0px;
 
-    .header-item, .user-area {
-      float: right;
-    }
+    .header-item,
+    .user-area { float: right; }
 
     .user-area {
       .dropdown-menu {
@@ -559,13 +506,8 @@ html { overflow-y: scroll; }
         left: inherit;
 
         &.right-nav-section {
-          &:after {
-            right: 15px !important;
-          }
-
-          &:before {
-            right: 14px !important;
-          }
+          &:after { right: 15px !important; }
+          &:before { right: 14px !important; }
         }
       }
     }

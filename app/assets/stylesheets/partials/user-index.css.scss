@@ -14,11 +14,9 @@
 
     .nav-link {
       float: none;
-      padding: 10px 0 10px 0;
+      padding: 10px 0;
       border-right: 1px solid #ddd;
-      &:first-child {
-        border-left: 1px solid #ddd;
-      }
+      &:first-child { border-left: 1px solid #ddd; }
 
       > a {
         padding: 20px;
@@ -29,13 +27,9 @@
         position: relative;
         transition: .2s ease-in;
 
-        &.active {
-          color: $darkOrange;
-        }
+        &.active { color: $darkOrange; }
 
-        &:hover {
-          color: $darkOrange;
-        }
+        &:hover { color: $darkOrange; }
       }
     }
 
@@ -53,20 +47,14 @@
     }
 
     .nav-link a:hover::before,
-    .nav-link a:focus::before {
-      max-width: 100%;
-    }
+    .nav-link a:focus::before { max-width: 100%; }
 
     // Hide less important links on mobile
     @media (max-width: 560px) {
-      .reviews-link, .lists-link {
-        display: none;
-      }
+      .reviews-link, .lists-link { display: none; }
 
       .nav-link {
-        a {
-          font-size: 15px;
-        }
+        a { font-size: 15px; }
       }
     }
   }
