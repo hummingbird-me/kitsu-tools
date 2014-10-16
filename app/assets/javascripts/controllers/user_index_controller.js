@@ -45,6 +45,19 @@ Hummingbird.UserIndexController = Ember.ArrayController.extend(Hummingbird.HasCu
     }
   }.property('favorite_anime_page', 'favorite_anime'),
 
+  linkedWebsites: function(){
+    var dataList = this.get('user.website').split(' '),
+        siteList = [],
+        actualLn = "";
+
+    dataList.forEach(function(link){
+      actualLn = (/[a-z]{4,}\:\/\//.test(link)) ? link.trim() : 'http://'+link.trim();
+      siteList.push({'link': actualLn, 'name': link.trim()});
+    });
+
+    return siteList;
+  }.property('user.website'),
+
   favorite_anime_list: function () {
     var animes = this.get('favorite_anime')
       , page = this.get('favorite_anime_page');
