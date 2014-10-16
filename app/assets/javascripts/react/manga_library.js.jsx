@@ -103,8 +103,8 @@
       Ember.run(function() {
         var notes = this.props.content.get('notes');
         if (notes) {
-          $(this.getDOMNode()).find(".fa-book").tooltip('destroy');
-          $(this.getDOMNode()).find(".fa-book").tooltip({
+          $(this.getDOMNode()).parent().find(".fa-book").tooltip('destroy');
+          $(this.getDOMNode()).parent().find(".fa-book").tooltip({
             title: notes,
             placement: "left"
           });
