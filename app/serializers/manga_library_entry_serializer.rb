@@ -5,6 +5,7 @@ class MangaLibraryEntrySerializer < ActiveModel::Serializer
              :status,
              :is_favorite,
              :rating,
+             :notes,
              :chapters_read,
              :volumes_read,
              :private,

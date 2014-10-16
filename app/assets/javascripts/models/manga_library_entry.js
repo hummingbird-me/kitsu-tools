@@ -9,6 +9,7 @@ Hummingbird.MangaLibraryEntry = DS.Model.extend({
   rereading: DS.attr('boolean'),
   rereadCount: DS.attr('number'),
   lastRead: DS.attr('date'),
+  notes: DS.attr('string'),
   
   positiveRating: function() {
     return (this.get('rating') >= 3.6);
