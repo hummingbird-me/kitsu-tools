@@ -7,7 +7,10 @@ Hummingbird.SettingsController = Ember.Controller.extend(Hummingbird.HasCurrentU
   facebookDisconnectUrl: function () {
     return '/users/' + this.get('currentUser.username') + '/disconnect/facebook';
   }.property('currentUser.username'),
-
+  // oh god I'm sorry
+  csrfToken: function () {
+    return $('meta[name="csrf-token"]').attr('content');
+  }.property(),
 
   // Validate Username
   usernameProblems: function () {
