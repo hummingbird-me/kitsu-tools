@@ -31,7 +31,8 @@ Hummingbird.User = DS.Model.extend({
   }.property('id'),
 
   websiteLink: function() {
-    if (this.get("website").search(/^http[s]?\:\/\//) == -1) {
+    if (this.get("website") &&
+      this.get("website").search(/^http[s]?\:\/\//) == -1) {
       return 'http://' + this.get("website");
     } else {
       return this.get("website");
