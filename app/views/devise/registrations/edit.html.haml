@@ -138,7 +138,7 @@
               %a(name="import")
                 %h3{:style => "margin-top: -4px; margin-bottom: 5px;"} MyAnimeList Import
               %p Due to recent restrictions on the MyAnimeList API, the only way to currently import your MAL account is by <a href="http://myanimelist.net/panel.php?go=export" target="_blank">exporting your anime list</a> and uploading it using the form below.
-              %form#malimport(action="/mal_import" method="post" enctype="multipart/form-data")
+              %form#malimport(action="/settings/import/myanimelist" method="post" enctype="multipart/form-data")
                 %input(type="file" name="animelist")
                 %input(type="hidden" name="authenticity_token"){value: form_authenticity_token}
               :javascript

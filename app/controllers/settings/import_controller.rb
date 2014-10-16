@@ -1,23 +1,21 @@
 require_dependency 'xml_cleaner'
 require_dependency 'my_anime_list_import'
 
-class ImportsController < ApplicationController
+class Settings::ImportsController < ApplicationController
   before_filter :authenticate_user!
 
-  def new
+  def myanimelist
     hide_cover_image
 
     if params[:animelist]
       begin
         if params[:animelist].content_type == "text/xml"
-          flash[:error] = "Please directly upload the file downloaded from MAL. There is no need to decompress it."
-          redirect_to "/users/edit"
-          return
+          xml = params[:animelist]
+        else
+          gz = Zlib::GzipReader.new(params[:animelist])
+          xml = gz.read
+          gz.close
         end
-
-        gz = Zlib::GzipReader.new(params[:animelist])
-        xml = gz.read
-        gz.close
 
         xml = XMLCleaner.clean(xml)
 
