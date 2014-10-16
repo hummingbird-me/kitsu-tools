@@ -81,6 +81,7 @@ class NewsFeed
     if add_story
       $redis.zadd @feed_key, story.updated_at.to_i, story.id
       $redis.zremrangebyrank(@feed_key, 0, -CACHE_SIZE) if rand < 0.2
+      @user.private_publish "/newsfeed", StorySerializer.new(story).as_json
     end
   end
 

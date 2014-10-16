@@ -13,7 +13,6 @@ class StoryFanoutWorker
     followers.each do |follower|
       feed = NewsFeed.new(follower)
       feed.add!(story) if feed.cached?
-      follower.private_publish "/newsfeed", story_json
     end
   end
 end
