@@ -16,16 +16,30 @@
   @extend .clearfix;
   @extend .story;
   padding: 20px;
+  background: none;
+  box-shadow: none;
+  text-align: center;
 
   .user-feed-tab {
-    display: block;
+    display: inline-block;
     padding: 10px 0 5px 0;
-    width: 33%;
-    text-align: center;
-    float: left;
+    margin-right: 30px;
+    a {
+      color: #aeaeae;
+      font-size: 1.2em;
+
+      &:hover {
+        color: darken(#aeaeae, 20);
+      }
+    }
 
     &.active-tab {
-      border-bottom: 2px solid $darkOrange;
+      a {
+        color: #333;
+      }
+    }
+    &:last-child {
+      margin-right: 0;
     }
   }
 }
