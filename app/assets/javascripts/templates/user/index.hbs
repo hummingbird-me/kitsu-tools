@@ -70,7 +70,11 @@
                 <li>
                   {{#if hasWebsite}}
                     <div class="interest-icon"> <i class="fa fa-link"></i></div>
-                    <div class="interest"> <a {{bind-attr href=user.websiteLink}}>{{user.website}}</a></div>
+                    <div class="interest">
+                      {{#each linkedWebsites}}
+                        <a {{bind-attr href=link}}>{{name}}</a><br />
+                      {{/each}}
+                    </div>
                   {{/if}}
                 </li>
               </ul>
