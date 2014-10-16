@@ -307,19 +307,16 @@ class User < ActiveRecord::Base
   end
 
   # How many minutes the user has spent watching anime.
-  def recompute_life_spent_on_anime
-    t = 0
-    self.watchlists.each do |w|
-      t += (w.anime.episode_length || 0) * (w.episodes_watched || 0)
-      t += (w.anime.episode_count || 0) * (w.anime.episode_length || 0) * (w.rewatch_count || 0)
-    end
-    self.life_spent_on_anime = t
-    self.save
+  def recompute_life_spent_on_anime!
+    time_spent = self.library_entries.joins(:anime).select('
+      COALESCE(episodes_watched, 0) * COALESCE(ainme.episode_length, 0) AS mins
+    ').map {|x| x.mins }.sum
+    self.update_attributes life_spent_on_anime: time_spent
   end
 
   def update_life_spent_on_anime(delta)
     if life_spent_on_anime.nil?
-      self.recompute_life_spent_on_anime
+      self.recompute_life_spent_on_anime!
     else
       self.update_column :life_spent_on_anime, self.life_spent_on_anime + delta
     end
