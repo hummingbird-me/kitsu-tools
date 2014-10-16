@@ -104,7 +104,7 @@
 
       {{#if newStories}}
         <div class="alert alert-info" style="cursor: pointer; text-align: center" {{action "showNewStories"}}>
-          {{newStories.length}} new stories.
+          {{newStories.length}} new {{pluralize newStories.length "story" "stories"}}.
         </div>
       {{/if}}
 

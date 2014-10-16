@@ -7,7 +7,7 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
     var self = this;
     MessageBus.privateSubscribe("/newsfeed", function(story) {
       self.store.pushPayload(story);
-      if (!self.get('controller.content').find(function(oldStory) { return parseInt(oldStory.get('id')) === story.story.id; })) {
+      if (!self.get('controller.content').find(function(oldStory) { return parseInt(oldStory.get('id')) === story.story.id; }) && !self.get('controller.newStories').find(function(oldStory) { return parseInt(oldStory.get('id')) === story.story.id; })) {
         self.get('controller.newStories').pushObject(self.store.find('story', story.story.id));
       }
     });
@@ -58,9 +58,24 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
 
     showNewStories: function() {
       var controller = this.get('controller');
-      controller.get('newStories').forEach(function(newStory) {
-        controller.get('content').unshiftObject(newStory.get('content'));
+      var storyIds = {};
+      var newContent = [];
+
+      controller.get('newStories').forEach(function(story) {
+        if (!storyIds[parseInt(story.get('id'))]) {
+          storyIds[parseInt(story.get('id'))] = true;
+          newContent.unshift(story.get('content'));
+        }
       });
+
+      controller.get('content').forEach(function(story) {
+        if (!storyIds[parseInt(story.get('id'))]) {
+          storyIds[parseInt(story.get('id'))] = true;
+          newContent.push(story);
+        }
+      });
+
+      this.set('controller.content', newContent);
       this.set('controller.newStories', []);
     }
   }
