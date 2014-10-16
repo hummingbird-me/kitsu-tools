@@ -125,6 +125,9 @@ class LibraryEntry < ActiveRecord::Base
 
     # Update user's life spent on anime.
     self.user.update_life_spent_on_anime( - self.episodes_watched * (self.anime.episode_length || 0) )
+    
+    # Update the user's `last_library_update` time.
+    self.user.update_column :last_library_update, Time.now
   end
 
   ALLOWED_IN_IMPORT = [:episodes_watched, :rewatch_count, :rewatching, :notes, :status, :private,
