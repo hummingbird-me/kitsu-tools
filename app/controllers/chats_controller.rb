@@ -7,10 +7,10 @@ class ChatsController < ApplicationController
 
   def create
     if params.has_key?(:message)
-      #publish "/chat", {
-      #  message: params[:message],
-      #  username: current_user.name
-      #}
+      MessageBus.publish "/chat", {
+        message: params[:message],
+        username: current_user.name
+      }
     end
 
     render json: true
