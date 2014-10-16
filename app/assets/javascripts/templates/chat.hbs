@@ -21,6 +21,9 @@
           <li>
             <div class="username">{{username}}</div>
             <div class="message">{{message}}</div>
+            {{#if delivered}}
+              <div class="delivered">delivered</div>
+            {{/if}}
           </li>
         {{/each}}
       </ul>

@@ -11,15 +11,39 @@ Hummingbird.ChatController = Ember.ArrayController.extend(Hummingbird.HasCurrent
 
       this.set('message', '');
 
+      var messageObj = {
+        id: "xxxxxxxxxxxxxxxxxxxxxx".replace(/[x]/g, function(c) { return (Math.random()*16|0).toString(16) }),
+        message: message,
+        username: this.get('currentUser.username')
+      }
+
       ic.ajax({
         url: "/chat",
         type: "POST",
-        data: {
-          message: message
-        }
+        data: messageObj
       }).then(Ember.K, function() {
         alert("Could not submit your message, something went wrong.");
       });
+
+      this.send("recvMessage", messageObj);
+    },
+
+    recvMessage: function(message) {
+      var self = this,
+          messageObj = Ember.Object.create(message),
+          newMessageFlag = true;
+
+      this.get('model').forEach(function(oldMessage) {
+        if (oldMessage.get('id') === messageObj.get('id')) {
+          oldMessage.set('delivered', messageObj.get('delivered'));
+          newMessageFlag = false;
+          return;
+        }
+      });
+
+      if (newMessageFlag) {
+        this.get('model').pushObject(messageObj);
+      }
     }
   }
 });
