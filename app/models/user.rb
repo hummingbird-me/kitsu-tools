@@ -395,4 +395,12 @@ class User < ActiveRecord::Base
   def avatar_template
     self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
   end
+
+  def private_channel
+    Digest::MD5.hexdigest(ENV['FORUM_SYNC_SECRET'] + self.authentication_token + self.name)
+  end
+
+  def private_publish(channel, message)
+    MessageBus.publish "/#{private_channel}#{channel}", message
+  end
 end
