@@ -1,4 +1,4 @@
-Hummingbird.DashboardController = Ember.Controller.extend({
+Hummingbird.DashboardController = Ember.ArrayController.extend({
 
   currentTab: "dashboard",
 
@@ -8,10 +8,10 @@ Hummingbird.DashboardController = Ember.Controller.extend({
 
   newStories: [],
 
-  actualContent: function(){
+  arrangedContent: function() {
     var tab = this.get('currentTab');
-    if(tab == "posts") return this.get('postsOnly');
-    if(tab == "media") return this.get('mediaOnly');
+    if (tab === "posts") return this.get('postsOnly');
+    if (tab === "media") return this.get('mediaOnly');
     return this.get('content');
   }.property('currentTab', 'content'),
 

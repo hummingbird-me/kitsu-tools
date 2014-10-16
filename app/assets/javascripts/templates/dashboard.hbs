@@ -120,7 +120,7 @@
         </span>
       </div>
 
-      {{each actualContent itemController="story" itemViewClass="story"}}
+      {{each itemController="story" itemViewClass="story"}}
 
       {{#if canLoadMore}}
         {{load-more classNames="light" action="loadNextPage"}}
