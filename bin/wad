@@ -3,6 +3,7 @@
 # Generated on: 18-05-2014 at 10:38
 
 require 'time'
+require 'timeout'
 require 'net/http'
 require 'net/https'
 require 'digest/md5'
@@ -392,7 +393,12 @@ class Wad
 
   def put
     zip
-    s3_write
+    begin
+      Timeout::timeout(30) do
+        s3_write
+      end
+    rescue Timeout::Error
+    end
   end
 
   def get
