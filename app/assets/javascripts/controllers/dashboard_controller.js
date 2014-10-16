@@ -6,6 +6,8 @@ Hummingbird.DashboardController = Ember.Controller.extend({
   highlightPosts: function() { return this.get('currentTab') == "posts" }.property('currentTab'),
   highlightMedia: function() { return this.get('currentTab') == "media" }.property('currentTab'),
 
+  newStories: [],
+
   actualContent: function(){
     var tab = this.get('currentTab');
     if(tab == "posts") return this.get('postsOnly');

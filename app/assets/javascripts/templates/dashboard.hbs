@@ -102,6 +102,12 @@
     <div class="user-feed">
       {{post-comment action="postComment"}}
 
+      {{#if newStories}}
+        <div class="alert alert-info" style="cursor: pointer; text-align: center" {{action "showNewStories"}}>
+          {{newStories.length}} new stories.
+        </div>
+      {{/if}}
+
       <div class="user-feed-filter">
         <span {{bind-attr class=":user-feed-tab highlightDasboard:active-tab" }}>
           <a {{action 'setCurrentTab' 'dashboard'}}>Timeline</a>

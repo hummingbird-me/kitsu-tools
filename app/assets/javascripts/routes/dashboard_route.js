@@ -3,6 +3,20 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
   preloadPath: "stories",
   preloadObject: "story",
 
+  activate: function() {
+    var self = this;
+    MessageBus.privateSubscribe("/newsfeed", function(story) {
+      self.store.pushPayload(story);
+      if (!self.get('controller.content').find(function(oldStory) { return parseInt(oldStory.get('id')) === story.story.id; })) {
+        self.get('controller.newStories').pushObject(self.store.find('story', story.story.id));
+      }
+    });
+  },
+
+  deactivate: function() {
+    MessageBus.privateUnsubscribe("/newsfeed");
+  },
+
   fetchPage: function(page) {
     return this.store.find('story', {
       news_feed: true,
@@ -40,6 +54,11 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
       });
       this.currentModel.unshiftObject(story);
       story.save();
+    },
+
+    showNewStories: function() {
+      this.set('controller.newStories', []);
+      this.refresh();
     }
   }
 });
