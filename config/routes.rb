@@ -43,7 +43,7 @@ Hummingbird::Application.routes.draw do
   end
 
   get '/apps' => 'home#static'
-  get '/privacy' => 'home#privacy'
+  get '/privacy' => 'home#static'
 
   # Recommendations
   get '/recommendations' => 'recommendations#index'
