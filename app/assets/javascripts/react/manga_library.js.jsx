@@ -26,6 +26,15 @@
       }.bind(this));
     },
 
+    changeMangaNotes: function(event) {
+      Ember.run(function() {
+        if (this.props.view.get('user.viewingSelf')) {
+          this.props.content.set('notes', event.target.value);
+          this.forceUpdate();
+        }
+      }.bind(this));
+    },
+
     toggleRereading: function(event) {
       Ember.run(function() {
         if (this.props.view.get('user.viewingSelf')) {
@@ -90,7 +99,21 @@
       }.bind(this));
     },
 
+    componentDidMount: function() {
+      Ember.run(function() {
+        var notes = this.props.content.get('notes');
+        if (notes) {
+          $(this.getDOMNode()).parent().find(".fa-book").tooltip('destroy');
+          $(this.getDOMNode()).parent().find(".fa-book").tooltip({
+            title: notes,
+            placement: "left"
+          });
+        }
+      }.bind(this));
+    },
+
     componentDidUpdate: function(prevProps, newProps) {
+      this.componentDidMount();
       Ember.run(function() {
         if (this.props.dropdownOpen) {
           if (this.props.view.get('user.viewingSelf')) {
@@ -127,6 +150,7 @@
 
       var saveButtonClass = React.addons.classSet({
         "btn": true,
+        "personal-notes-save": true,
         "btn-primary": this.props.content.get('isDirty')
       });
 
@@ -134,6 +158,14 @@
         return (
           <div className="library-dropdown">
             <div className="drop-arrow" />
+            { this.props.view.get('user.viewingSelf')
+              ?
+                <div className="col-md-12">
+                  <textarea className="personal-notes" placeholder={"Personal notes about " + content.get('manga.displayTitle')} value={this.props.content.get('notes')} onChange={this.changeMangaNotes} />
+                  <button className={saveButtonClass} onClick={this.saveMangaLibraryEntry}>Save</button>
+                </div>
+              : ''
+            }
             <div className="col-md-2 no-padding-right hidden-xs hidden-sm">
               <img className="drop-thumb" src={content.get('manga.posterImage')} />
             </div>
@@ -329,6 +361,10 @@
               }
               { content.get('rereading')
                 ? <span className="anime-label"><i className="fa fa-repeat" /></span>
+                : ''
+              }
+              { content.get('notes')
+                ? <span className="anime-label"><i className="fa fa-book" /></span>
                 : ''
               }
             </div>
