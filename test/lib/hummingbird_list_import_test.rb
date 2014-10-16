@@ -1,11 +1,9 @@
 require 'test_helper'
+require 'fixture_helper'
 
 require 'list_imports/hummingbird'
 
-HUMMINGBACKUP = open(File.realpath('../fixtures/hummingbird-backup.json', __dir__)).read
-# Match the fixture IDs because I'm too lazy to figure out the ERB shit lol
-HUMMINGBACKUP.gsub!('__SAO_ID__', ActiveRecord::FixtureSet.identify(:sword_art_online).to_s)
-HUMMINGBACKUP.gsub!('__MONSTER_ID__', ActiveRecord::FixtureSet.identify(:monster).to_s)
+HUMMINGBACKUP = read_fixture('hummingbird-backup.json')
 
 class HummingbirdListImportTest < ActiveSupport::TestCase
   test 'is an enumerable' do

@@ -10,7 +10,7 @@
 			"private": false,
 			"rating": "4.0",
 			"anime":{
-				"id": __SAO_ID__,
+				"id": <%= ActiveRecord::FixtureSet.identify(:sword_art_online) %>,
 				"slug": "sword-art-online",
 				"status": "Finished Airing",
 				"english_title": "",
@@ -32,7 +32,7 @@
 			"private": false,
 			"rating": "5.0",
 			"manga": {
-				"id": __MONSTER_ID__,
+				"id": <%= ActiveRecord::FixtureSet.identify(:monster) %>,
 				"slug": "monster",
 				"status": "Finished",
 				"english_title": null,
