@@ -7,10 +7,10 @@ HUMMINGBACKUP = read_fixture('hummingbird-backup.json')
 
 class HummingbirdListImportTest < ActiveSupport::TestCase
   test 'is an enumerable' do
-    assert HummingbirdListImport.included_modules.include?(Enumerable)
+    assert ListImport::Hummingbird.included_modules.include?(Enumerable)
   end
   test 'enumerates rows properly in anime mode' do
-    list = HummingbirdListImport.new(HUMMINGBACKUP, :anime)
+    list = ListImport::Hummingbird.new(HUMMINGBACKUP, :anime)
     list.each do |row|
       required_keys = %i{episodes_watched status media}
       # array subtraction, basically means required_keys - row.keys
@@ -19,7 +19,7 @@ class HummingbirdListImportTest < ActiveSupport::TestCase
     end
   end
   test 'enumerates rows properly in manga mode' do
-    list = HummingbirdListImport.new(HUMMINGBACKUP, :manga)
+    list = ListImport::Hummingbird.new(HUMMINGBACKUP, :manga)
     list.each do |row|
       required_keys = %i{chapters_read volumes_read status media}
       # array subtraction, basically means required_keys - row.keys

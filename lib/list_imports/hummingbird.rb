@@ -1,4 +1,5 @@
-class HummingbirdListImport
+module ListImport; end
+class ListImport::Hummingbird
   include Enumerable
 
   STATUS_MAP = {
@@ -10,7 +11,7 @@ class HummingbirdListImport
     'on_hold' => 'On Hold',
     'dropped' => 'Dropped'
   }
-    
+
 
   # Most ListImport systems shouldn't need a `list` parameter, since they separate manga and anime
   # exports.  We do, since our backups contain your whole library.
