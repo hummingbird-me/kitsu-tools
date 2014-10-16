@@ -34,3 +34,6 @@ aws_env
 
 # Ignore local files that cant be assume-unchanged
 sftp-config.json
+
+# rbenv specific ruby versions
+.ruby-version

@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :check_user_authentication, :preload_blotter
+  before_filter :check_user_authentication,
+    :preload_current_user, :preload_blotter
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # Send an object along with the initial HTML response that will be loaded into
@@ -31,18 +32,21 @@ class ApplicationController < ActionController::Base
   def check_user_authentication
     if user_signed_in?
       # Sign the user out if they have an incorrect auth token.
-      if cookies[:auth_token] && current_user.authentication_token == cookies[:auth_token]
-        preload_to_ember! current_user, serializer: CurrentUserSerializer,
-                                        root: :current_users
-        generic_preload! "private_channel", current_user.private_channel
-        $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
-      else
+      unless cookies[:auth_token] && current_user.authentication_token == cookies[:auth_token]
         sign_out :user
       end
     elsif cookies[:auth_token]
       user = User.find_by(authentication_token: cookies[:auth_token])
       sign_in(user) if user
     end
+  end
+
+  def preload_current_user
+    return unless user_signed_in?
+    preload_to_ember! current_user, serializer: CurrentUserSerializer,
+                                    root: :current_users
+    generic_preload! "private_channel", current_user.private_channel
+    $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
   end
 
   def preload_blotter
