@@ -7,7 +7,7 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
     var self = this;
     MessageBus.privateSubscribe("/newsfeed", function(story) {
       self.store.pushPayload(story);
-      if (!self.get('controller.content').find(function(oldStory) { return parseInt(oldStory.get('id')) === story.story.id; }) && !self.get('controller.newStories').find(function(oldStory) { return parseInt(oldStory.get('id')) === story.story.id; })) {
+      if (!self.get('controller.newStories').find(function(oldStory) { return parseInt(oldStory.get('id')) === story.story.id; })) {
         self.get('controller.newStories').pushObject(self.store.find('story', story.story.id));
       }
     });
