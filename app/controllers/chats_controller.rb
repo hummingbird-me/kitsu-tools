@@ -10,6 +10,7 @@ class ChatsController < ApplicationController
       MessageBus.publish "/chat", {
         id: params[:id],
         message: params[:message],
+        formatted_message: MessageFormatter.format_message(params[:message]),
         username: current_user.name,
         delivered: true
       }
