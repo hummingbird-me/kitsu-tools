@@ -40,6 +40,7 @@ gem 'bootstrap-sass', '~> 3.2'
 gem 'autoprefixer-rails', '~> 3.0'
 gem 'non-stupid-digest-assets'
 gem 'font-awesome-sass'
+gem 'twitter-typeahead-rails'
 
 # Gems to help with development.
 group :development do
@@ -126,4 +127,4 @@ gem 'mixpanel'
 # SEO
 gem 'sitemap_generator'
 
-gem 'twitter-typeahead-rails'
+gem 'message_bus'

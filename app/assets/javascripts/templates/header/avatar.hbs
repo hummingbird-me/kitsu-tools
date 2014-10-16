@@ -3,7 +3,7 @@
     {{avatar currentUser "thumb_small"}}
   </a>
   <ul class="dropdown-menu right-nav-section">
-    <li>{{#link-to 'user' currentUser}}<i class="fa fa-paper-plane"></i> View Profile{{/link-to}}</li>
+    <li>{{#link-to 'user' currentUser.id}}<i class="fa fa-paper-plane"></i> View Profile{{/link-to}}</li>
     <li><a href="/users/edit"><i class="fa fa-cog"></i> Account Settings</a></li>
     {{#if currentUser.isAdmin}}
       <li><a href="/kotodama"><i class="fa fa-rebel"></i> Kotodama</a></li>

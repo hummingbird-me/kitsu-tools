@@ -107,11 +107,11 @@ class UsersController < ApplicationController
         @user.followers.destroy current_user
         action_type = "unfollowed"
       else
-        if current_user.following_count < 5000
+        if current_user.following_count < 10000
           @user.followers.push current_user
           action_type = "followed"
         else
-          flash[:message] = "Wow! You're following 2,000 people?! You should unfollow a few people that no longer interest you before following any others."
+          flash[:message] = "Wow! You're following 10,000 people?! You should unfollow a few people that no longer interest you before following any others."
           action_type = nil
         end
       end

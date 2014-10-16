@@ -19,6 +19,13 @@
                 {{input type="email" class="form-control" id="email" value=currentUser.email}}
               </div>
             </div>
+            {{#unless usernameValid}}
+              <div class="alert alert-danger">
+                {{#each usernameProblems}}
+                  <p><i class="fa fa-warning"></i> {{this}}</p>
+                {{/each}}
+              </div>
+            {{/unless}}
           </form>
         </div>
       </div>
@@ -38,11 +45,13 @@
                 {{input type="password" class="form-control" id="password-confirm" value=passwordConfirm}}
               </div>
             </div>
-            {{#if passwordMismatch}}
+            {{#unless passwordValid}}
               <div class="alert alert-danger">
-                <i class="fa fa-lg fa-warning"></i> Passwords do not match
+                {{#each passwordProblems}}
+                  <p><i class="fa fa-warning"></i> {{this}}</p>
+                {{/each}}
               </div>
-            {{/if}}
+            {{/unless}}
           </form>
         </div>
       </div>
@@ -80,8 +89,9 @@
           <div class="row">
             <label class="control-label col-sm-6">MAL Import</label>
             <div class="col-sm-6">
-              <form action="/settings/import/hummingbird" method="post" id="malimport">
+              <form action="/settings/import/myanimelist" method="post" id="malimport" enctype="multipart/form-data">
                 {{view Hummingbird.FileUpload action="importMal" name="animelist" id="mal-file"}}
+                <input type="hidden" name="authenticity_token" {{bind-attr value=csrfToken}}>
               </form>
               <button type="button" class="col-sm-6 col-sm-offset-6 btn btn-default" {{action "pickMalFile"}}>
                 Upload
@@ -146,8 +156,8 @@
       </div>
       <div class="panel panel-default settings-buttons">
         <div class="center-block panel-body">
-          <button class="btn btn-primary" {{bind-attr disabled=canSubmit}} {{action "save" currentUser}}>Save</button>
-          <button class="btn btn-default" {{bind-attr disabled=canSubmit}} {{action "clean" currentUser}}>Cancel</button>
+          <button class="btn btn-primary" {{bind-attr disabled=submitDisabled}} {{action "save" currentUser}}>Save</button>
+          <button class="btn btn-default" {{bind-attr disabled=submitDisabled}} {{action "clean" currentUser}}>Cancel</button>
         </div>
       </div>
     </div>

@@ -66,6 +66,9 @@ module Hummingbird
       g.orm :active_record
     end
 
+    # Get rid of Rack::Lock
+    config.middleware.delete Rack::Lock
+
     # CORS configuration.
     config.middleware.use Rack::Cors do
       allow do

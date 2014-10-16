@@ -34,6 +34,7 @@ class ApplicationController < ActionController::Base
       if cookies[:auth_token] && current_user.authentication_token == cookies[:auth_token]
         preload_to_ember! current_user, serializer: CurrentUserSerializer,
                                         root: :current_users
+        generic_preload! "private_channel", current_user.private_channel
         $redis.hset("user_last_seen", current_user.id.to_s, Time.now.to_i)
       else
         sign_out :user

@@ -34,4 +34,5 @@ Hummingbird.Router.map(function() {
   this.route('chat');
 
   this.route('apps');
+  this.route('privacy');
 });

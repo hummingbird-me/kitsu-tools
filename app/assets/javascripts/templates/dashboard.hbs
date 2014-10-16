@@ -97,10 +97,26 @@
       <div class="feed-sidebar-advert">
         {{ad-unit adId="1298406" adClass="257f81e798bd68dd81e60f42838f361f"}}
       </div>
+      <div class="feed-sidebar-footer">
+        {{!--
+          {{#link-to 'about'}}About{{/link-to}} &bull;
+          {{#link-to 'terms'}}Terms{{/link-to}} &bull;
+        --}}
+        {{#link-to 'privacy'}}Privacy{{/link-to}} &bull;
+        {{#link-to 'apps'}}Apps{{/link-to}} &bull;
+        <a href="mailto:josh@hummingbird.me">Contact</a>
+        <br /> &copy; 2014 by Hummingbird Media Inc.
+      </div>
     </div>
 
     <div class="user-feed">
       {{post-comment action="postComment"}}
+
+      {{#if newStories}}
+        <div class="alert alert-info" style="cursor: pointer; text-align: center" {{action "showNewStories"}}>
+          {{pluralize newStories.length "new story" "new stories"}}.
+        </div>
+      {{/if}}
 
       <div class="user-feed-filter">
         <span {{bind-attr class=":user-feed-tab highlightDasboard:active-tab" }}>
@@ -114,7 +130,7 @@
         </span>
       </div>
 
-      {{each actualContent itemController="story" itemViewClass="story"}}
+      {{each itemController="story" itemViewClass="story"}}
 
       {{#if canLoadMore}}
         {{load-more classNames="light" action="loadNextPage"}}
