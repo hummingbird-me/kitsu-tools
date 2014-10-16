@@ -57,8 +57,11 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
     },
 
     showNewStories: function() {
+      var controller = this.get('controller');
+      controller.get('newStories').forEach(function(newStory) {
+        controller.get('content').unshiftObject(newStory.get('content'));
+      });
       this.set('controller.newStories', []);
-      this.refresh();
     }
   }
 });
