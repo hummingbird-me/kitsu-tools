@@ -29,7 +29,7 @@ before_fork do |server, worker|
   # the following is highly recomended for Rails + "preload_app true"
   # as there's no need for the master process to hold a connection
   ActiveRecord::Base.connection.disconnect!
-  $redis.quit
+  $redis.shutdown {|conn| conn.close }
 
   # For zero downtime deploys.
   old_pid = "#{server.config[:pid]}.oldbin"
@@ -50,6 +50,6 @@ after_fork do |server, worker|
   # the following is *required* for Rails + "preload_app true",
   ActiveRecord::Base.establish_connection
 
-  $redis = Redis.new(driver: :hiredis, host: ENV['REDIS_HOST'])
+  $redis = get_new_redis_pool
 end
 

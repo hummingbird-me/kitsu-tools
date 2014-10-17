@@ -17,6 +17,7 @@ gem 'pghero'
 gem 'hiredis'
 gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
+gem 'connection_pool'
 
 gem 'ember-rails', '~> 0.15'
 gem 'ember-source', '1.8.0.beta.1'

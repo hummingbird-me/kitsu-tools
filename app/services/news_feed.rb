@@ -71,7 +71,7 @@ class NewsFeed
   # Add a story to the user's news feed.
   def add!(story)
     add_story = false
-    if story.story_type == "comment" 
+    if story.story_type == "comment"
       if @user == story.target or @user.following.include?(story.target)
         add_story = true
       end
@@ -79,8 +79,10 @@ class NewsFeed
       add_story = true
     end
     if add_story
-      $redis.zadd @feed_key, story.updated_at.to_i, story.id
-      $redis.zremrangebyrank(@feed_key, 0, -CACHE_SIZE) if rand < 0.2
+      $redis.with do |conn|
+        conn.zadd @feed_key, story.updated_at.to_i, story.id
+        conn.zremrangebyrank(@feed_key, 0, -CACHE_SIZE) if rand < 0.2
+      end
       @user.private_publish "/newsfeed", StorySerializer.new(story).as_json
     end
   end
