@@ -1,5 +1,5 @@
 Hummingbird.ChatView = Ember.View.extend({
   scrollToBottom: function() {
-    // TODO
+    $('.chat-items').scrollTop($('.chat-items').prop('scrollHeight'));
   }.observes('controller.content.@each')
 });

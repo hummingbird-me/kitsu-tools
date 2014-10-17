@@ -2,15 +2,14 @@
   position: absolute;
   height: 100%;
   width: 100%;
-
-  .online-users, .chat-window {
-    height: 100%;
-  }
+  padding-top: 50px;
+  top: 0;
+  display: flex;
+  align-content: stretch;
 
   .online-users {
     width: 20%;
     border-right: 1px solid #999;
-    position: fixed;
 
     ul {
       li {
@@ -34,11 +33,12 @@
   }
 
   .chat-window {
-    margin-left: 20%;
     width: 80%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
     .chat-items {
-      padding-bottom: 50px;
       li {
         @extend .clearfix;
 
@@ -71,19 +71,19 @@
     .entry {
       border-top: 1px solid #999;
       height: 55px;
-      position: fixed;
-      bottom: 0px;
       width: 100%;
       background: #fff;
+      flex: 0;
 
       form {
         height: 100%;
-        width: 80%;
+        width: 100%;
+        display: flex;
       }
 
       input {
         height: 100%;
-        width: 89%;
+        width: 90%;
         padding-left: 10px;
       }
 
