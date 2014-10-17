@@ -75,7 +75,7 @@ class NewsFeed
       if @user == story.target or @user.following.include?(story.target)
         add_story = true
       end
-    else
+    elsif story.story_type != "followed"
       add_story = true
     end
     if add_story
