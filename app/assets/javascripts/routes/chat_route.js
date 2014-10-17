@@ -30,9 +30,9 @@ Hummingbird.ChatRoute = Ember.Route.extend({
 
   deactivate: function() {
     MessageBus.unsubscribe("/chat");
-    if (self.get('pingInterval')) {
-      clearInterval(self.get('pingInterval'));
-      self.set('pingInterval', null);
+    if (this.get('pingInterval')) {
+      clearInterval(this.get('pingInterval'));
+      this.set('pingInterval', null);
     }
   }
 });
