@@ -35,7 +35,7 @@
 
     <div class="entry">
       <form {{action "sendMessage" on="submit"}} >
-        {{input value=message placeholder="Say something..."}}
+        {{input value=message placeholder="Say something..." autocomplete="off"}}
         <button class="btn btn-primary" type="submit">Send</button>
       </form>
     </div>
