@@ -52,7 +52,7 @@
         padding-bottom: 5px;
 
         border-bottom: 1px solid #999;
-        .username, .message, .delivered {
+        .username, .message {
           float: left;
         }
         .username {
@@ -64,12 +64,9 @@
         }
         .message {
           width: 88%;
-        }
-        .delivered {
-          font-size: 0.6em;
-          width: 12%;
-          padding-right: 20px;
-          text-align: right;
+          &.pending {
+            opacity: 0.4;
+          }
         }
       }
     }
