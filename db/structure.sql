@@ -883,7 +883,7 @@ CREATE TABLE manga_library_entries (
     rating numeric(2,1),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    notes character varying(255),
+    notes text,
     imported boolean DEFAULT false NOT NULL
 );
 
@@ -3165,4 +3165,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140902015226');
 INSERT INTO schema_migrations (version) VALUES ('20140916050726');
 
 INSERT INTO schema_migrations (version) VALUES ('20140916053901');
+
+INSERT INTO schema_migrations (version) VALUES ('20141017205311');
+
+INSERT INTO schema_migrations (version) VALUES ('20141017210309');
 
