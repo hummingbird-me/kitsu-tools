@@ -1,5 +1,6 @@
 class StoryFanoutWorker
   include Sidekiq::Worker
+  sidekiq_options queue: :storyfanout
 
   def perform(user_id, story_id)
     story = Story.find_by_id story_id
