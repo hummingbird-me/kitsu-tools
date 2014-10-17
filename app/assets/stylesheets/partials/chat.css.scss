@@ -8,6 +8,9 @@
   align-content: stretch;
 
   .online-users {
+    height: 100%;
+    overflow-y: scroll;
+
     width: 20%;
     border-right: 1px solid #999;
 
@@ -40,7 +43,7 @@
 
     .chat-items {
       height: 100%;
-      overflow-y: auto;
+      overflow-y: scroll;
 
       li {
         @extend .clearfix;
