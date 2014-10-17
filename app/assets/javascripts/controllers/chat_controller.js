@@ -1,5 +1,6 @@
 Hummingbird.ChatController = Ember.ArrayController.extend(Hummingbird.HasCurrentUser, {
   message: "",
+  onlineUsers: [],
 
   actions: {
     sendMessage: function() {

@@ -16,7 +16,9 @@ Hummingbird::Application.routes.draw do
     post :vote
   end
 
-  resource :chat, only: [:show, :create]
+  resource :chat, only: [:show, :create] do
+    post :ping
+  end
 
   get '/sign-in' => 'home#static'
   post '/sign-out' => 'auth#sign_out_action'

@@ -2,15 +2,14 @@
   <div class="online-users">
     <ul>
       <li class="header">Online Users</li>
-      <li>
-        {{#link-to 'user' currentUser}}
-          {{avatar currentUser "thumb_small"}}
-          {{currentUser.username}}
-        {{/link-to}}
-      </li>
-      <li>
-        This is not implemented yet.
-      </li>
+      {{#each onlineUsers}}
+        <li>
+          {{#link-to 'user' username}}
+            <img {{bind-attr src=avatar}}>
+            {{username}}
+          {{/link-to}}
+        </li>
+      {{/each}}
     </ul>
   </div>
 
