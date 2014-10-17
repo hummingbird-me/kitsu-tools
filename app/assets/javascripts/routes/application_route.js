@@ -1,4 +1,11 @@
 Hummingbird.ApplicationRoute = Ember.Route.extend({
+  activate: function() {
+    var self = this;
+    MessageBus.subscribe("/site_update", function() {
+      self.send('openModal', 'site-update');
+    });
+  },
+
   actions: {
     goToDashboard: function() {
       if (this.get('currentUser.isSignedIn')) {
