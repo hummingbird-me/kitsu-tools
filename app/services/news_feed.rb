@@ -39,20 +39,23 @@ class NewsFeed
   end
 
   def cached?
-    $redis.exists @feed_key
+    $redis.with {|conn| conn.exists @feed_key }
   end
 
   # Fetch a page of stories from the user's timeline. Generate a timeline if 
   # the user's timeline doesn't already exist in memory.
   def fetch(page=nil)
     regenerate_feed! unless cached?
-    $redis.expire @feed_key, INACTIVE_DAYS * 24 * 60 * 60
 
     page ||= 1
     start_index = 30 * (page.to_i-1)
     stop_index = start_index + 30 - 1
 
-    story_ids = $redis.zrevrange(@feed_key, start_index, stop_index).collect(&:to_i)
+    story_ids = []
+    $redis.with do |conn|
+      conn.expire @feed_key, INACTIVE_DAYS * 24 * 60 * 60
+      story_ids = conn.zrevrange(@feed_key, start_index, stop_index).collect(&:to_i)
+    end
 
     stories = Story.where(id: story_ids, :target_type => 'Anime').for_user(@user).includes(:user, :substories, target: :genres, substories: :user)
     stories += Story.where(id: story_ids).where('target_type <> ?', 'Anime').for_user(@user).includes(:user, :substories, :target, substories: :user) if story_ids.length > stories.length

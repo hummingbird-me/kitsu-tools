@@ -11,7 +11,7 @@ Sidekiq::Testing.inline!
 
 require 'mocha/mini_test'
 
-$redis = MockRedis.new
+$redis = ConnectionPool.new { MockRedis.new }
 
 class ActiveSupport::TestCase
   fixtures :all

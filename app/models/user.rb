@@ -327,7 +327,7 @@ class User < ActiveRecord::Base
   end
 
   def last_seen
-    reply = $redis.hget("user_last_seen", id.to_s)
+    reply = $redis.with {|conn| conn.hget("user_last_seen", id.to_s) }
     if reply
       Time.at reply.to_i
     else

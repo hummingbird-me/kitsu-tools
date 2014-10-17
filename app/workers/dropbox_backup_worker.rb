@@ -4,14 +4,16 @@ class DropboxBackupWorker
   DEBOUNCE_TIME = 2.minutes
 
   def self.perform_debounced(user_id)
-    jid = $redis.get("dropbox_backup_jid:#{user_id}")
-    if jid.nil? # Create job
-      jid = perform_in(DEBOUNCE_TIME, user_id)
-    else # Reset timer
-      job = Sidekiq::ScheduledSet.new.find_job(jid)
-      job.reschedule(DEBOUNCE_TIME.from_now)
+    $redis.with do |conn|
+      jid = conn.get("dropbox_backup_jid:#{user_id}")
+      if jid.nil? # Create job
+        jid = perform_in(DEBOUNCE_TIME, user_id)
+      else # Reset timer
+        job = Sidekiq::ScheduledSet.new.find_job(jid)
+        job.reschedule(DEBOUNCE_TIME.from_now)
+      end
+      conn.set("dropbox_backup_jid:#{user_id}", jid, {ex: DEBOUNCE_TIME})
     end
-    $redis.set("dropbox_backup_jid:#{user_id}", jid, {ex: DEBOUNCE_TIME})
   end
 
   def perform(user_id)
