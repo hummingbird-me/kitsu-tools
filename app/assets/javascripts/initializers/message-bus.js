@@ -19,7 +19,6 @@ Ember.Application.initializer({
     }
 
     bus.callbackInterval = 500;
-    bus.enableLongPolling = true;
     bus.start();
   }
 });

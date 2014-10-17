@@ -49,7 +49,7 @@ end
 after_fork do |server, worker|
   # the following is *required* for Rails + "preload_app true",
   ActiveRecord::Base.establish_connection
-
   $redis = get_new_redis_pool
+  MessageBus.after_fork
 end
 
