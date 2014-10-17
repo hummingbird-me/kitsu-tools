@@ -18,7 +18,10 @@ class Story < ActiveRecord::Base
   belongs_to :watchlist
   belongs_to :user
   belongs_to :target, polymorphic: true
-  has_many :substories, dependent: :destroy
+
+  has_many :substories # This is not dependent: :destroy for performance reasons,
+                       # substories are deleted in a background worker triggered
+                       # in the after_destroy hook.
 
   has_many :notifications, as: :source, dependent: :destroy
 
@@ -66,5 +69,9 @@ class Story < ActiveRecord::Base
   def can_be_deleted_by?(user)
     return false if user.nil?
     user.admin? || user.id == self.user_id || user.id == self.target_id
+  end
+
+  after_destroy do
+    SubstoryReaperWorker.perform_async(self.id)
   end
 end

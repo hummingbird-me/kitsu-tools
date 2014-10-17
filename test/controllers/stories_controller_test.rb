@@ -26,8 +26,11 @@ class StoriesControllerTest < ActionController::TestCase
       comment: "Test"
     )
 
+    substory = story.substories.first
+
     delete :destroy, id: story.id
     assert_nil Story.find_by(id: story.id)
+    assert_nil Substory.find_by(id: substory.id)
   end
 
   test "cannot delete stories if not authorized" do

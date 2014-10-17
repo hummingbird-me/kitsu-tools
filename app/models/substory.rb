@@ -42,10 +42,12 @@ class Substory < ActiveRecord::Base
   end
 
   after_destroy do
-    if self.story and self.story.reload.substories.length == 0
-      self.story.destroy!
-    else
-      update_story_last_update_time!
+    unless self.story.nil?
+      if self.story and self.story.reload.substories.length == 0
+        self.story.destroy!
+      else
+        update_story_last_update_time!
+      end
     end
   end
 
