@@ -1,7 +1,9 @@
 <div class="chat-container">
   <div class="online-users">
     <ul>
-      <li class="header">Online Users</li>
+      <li class="header">
+        {{pluralize onlineUsers.length "Online User" "Online Users"}}
+      </li>
       {{#each onlineUsers}}
         <li>
           {{#link-to 'user' username}}
