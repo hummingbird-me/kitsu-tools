@@ -10,26 +10,34 @@
   .online-users {
     height: 100%;
     overflow-y: scroll;
-
     width: 20%;
-    border-right: 1px solid #999;
+    background: #4B5360;
+    @media (max-width: 768px) {
+      display: none;
+    }
 
     ul {
       li {
-        height: 50px;
-        border-bottom: 1px solid #999;
+        border-top: 1px solid #545C69;
+        border-bottom: 1px solid #404752;
+        padding: 10px;
+
+        a {
+          color: #eaeaea;
+        }
 
         img {
-          height: 50px;
-          width: 50px;
+          height: 25px;
+          width: 25px;
           margin-right: 10px;
-          border-radius: 0;
+          border-radius: 3px;
         }
 
         &.header {
           text-align: center;
           padding-top: 9px;
           height: 40px;
+          color: #f39c12;
         }
       }
     }
@@ -40,6 +48,11 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    padding-bottom: 54px;
+    @media (max-width: 768px) {
+      width: 100%;
+      padding-top: 50px;
+    }
 
     .chat-items {
       height: 100%;
@@ -47,23 +60,40 @@
 
       li {
         @extend .clearfix;
-
-        margin-bottom: 5px;
-        padding-bottom: 5px;
-
-        border-bottom: 1px solid #999;
+        border-bottom: 1px solid #BCBDC2;
+        background: #F4F4F6;
         .username, .message {
           float: left;
         }
         .username {
-          width: 12%;
-          text-align: right;
-          padding-right: 20px;
+          width: 15%;
+          text-align: left;
+          padding: 10px 20px;
           font-weight: bold;
           opacity: 0.8;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          @media (max-width: 768px) {
+            width: 35%;
+          }
         }
         .message {
-          width: 88%;
+          width: 85%;
+          background: #fff;
+          border-left: 1px solid #BCBDC2;
+          padding: 10px 15px;
+          @media (max-width: 768px) {
+            width: 65%;
+          }
+          .video-embed {
+            padding: 5px 0 10px 0;
+            .video-wrapper {
+              max-width: 500px;
+              padding-bottom: 32.8%;
+              padding-top: 0;
+            }
+          }
           &.pending {
             opacity: 0.4;
           }
@@ -77,6 +107,8 @@
       width: 100%;
       background: #fff;
       flex: 0;
+      bottom: 0;
+      position: fixed;
 
       form {
         height: 100%;
@@ -86,8 +118,9 @@
 
       input {
         height: 100%;
-        width: 90%;
+        width: 70%;
         padding-left: 10px;
+        border: none;
       }
 
       button {
@@ -95,6 +128,9 @@
         width: 10%;
         border-radius: 0;
         margin: 0;
+        @media (max-width: 768px) {
+          width: 30%;
+        }
       }
     }
   }
