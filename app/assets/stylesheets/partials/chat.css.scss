@@ -20,10 +20,14 @@
       li {
         border-top: 1px solid #545C69;
         border-bottom: 1px solid #404752;
-        padding: 10px;
 
         a {
           color: #eaeaea;
+          display: block;
+          padding: 10px;
+          &:hover {
+            background: lighten(#434A56, 2);
+          }
         }
 
         img {
@@ -93,6 +97,9 @@
               padding-bottom: 32.8%;
               padding-top: 0;
             }
+          }
+          .autoembed {
+            max-width: 500px;
           }
           &.pending {
             opacity: 0.4;
