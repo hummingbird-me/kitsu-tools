@@ -21,7 +21,7 @@ Hummingbird.ChatRoute = Ember.Route.extend({
 
   activate: function() {
     var self = this;
-    MessageBus.subscribe("/chat", function(message) {
+    MessageBus.subscribe("/chat/lobby", function(message) {
       self.get('controller').send("recvMessage", message);
     });
     self.getOnlineUsers();

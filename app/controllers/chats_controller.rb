@@ -7,7 +7,7 @@ class ChatsController < ApplicationController
 
   def create
     if params.has_key?(:message)
-      MessageBus.publish "/chat", {
+      MessageBus.publish "/chat/lobby", {
         id: params[:id],
         message: params[:message],
         formattedMessage: MessageFormatter.format_message(params[:message]),
