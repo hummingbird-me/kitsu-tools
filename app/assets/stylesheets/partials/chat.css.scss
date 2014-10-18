@@ -1,5 +1,5 @@
 .chat-container {
-  position: absolute;
+  position: fixed;
   height: 100%;
   width: 100%;
   padding-top: 50px;
@@ -39,7 +39,7 @@
     width: 80%;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(100% - 55px);
 
     .chat-items {
       height: 100%;
@@ -56,14 +56,14 @@
           float: left;
         }
         .username {
-          width: 12%;
+          width: 15%;
           text-align: right;
           padding-right: 20px;
           font-weight: bold;
           opacity: 0.8;
         }
         .message {
-          width: 88%;
+          width: 85%;
           &.pending {
             opacity: 0.4;
           }
