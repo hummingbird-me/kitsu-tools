@@ -5,7 +5,7 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
 
   activate: function() {
     var self = this;
-    MessageBus.privateSubscribe("/newsfeed", function(story) {
+    MessageBus.subscribe("/newsfeed", function(story) {
       self.store.pushPayload(story);
       if (!self.get('controller.newStories').find(function(oldStory) { return parseInt(oldStory.get('id')) === story.story.id; })) {
         self.get('controller.newStories').pushObject(self.store.find('story', story.story.id));
@@ -14,7 +14,7 @@ Hummingbird.DashboardRoute = Ember.Route.extend(Hummingbird.Paginated, {
   },
 
   deactivate: function() {
-    MessageBus.privateUnsubscribe("/newsfeed");
+    MessageBus.unsubscribe("/newsfeed");
   },
 
   fetchPage: function(page) {

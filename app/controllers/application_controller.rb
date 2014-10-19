@@ -45,7 +45,6 @@ class ApplicationController < ActionController::Base
     return unless user_signed_in?
     preload_to_ember! current_user, serializer: CurrentUserSerializer,
                                     root: :current_users
-    generic_preload! "private_channel", current_user.private_channel
     $redis.with {|conn| conn.hset("user_last_seen", current_user.id.to_s, Time.now.to_i) }
   end
 
