@@ -11,11 +11,12 @@ Hummingbird.ChatRoute = Ember.Route.extend({
 
   getOnlineUsers: function() {
     var self = this;
-    ic.ajax({
+    return ic.ajax({
       url: "/chat/ping",
       type: 'POST'
-    }).then(function(onlineUsers) {
-      self.set('controller.onlineUsers', onlineUsers);
+    }).then(function(pingResponse) {
+      console.log(pingResponse);
+      self.set('controller.onlineUsers', pingResponse["online_users"]);
     });
   },
 

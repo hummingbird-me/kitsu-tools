@@ -20,17 +20,19 @@ class ChatsController < ApplicationController
   end
 
   def ping
+    json = {}
     $redis.with do |conn|
       time = Time.now.to_i
       conn.zadd "chat_online", time, current_user.id
       active_user_ids = conn.zrangebyscore "chat_online", time-60, "+inf"
       active_users = User.where(id: active_user_ids).order(:id)
-      render json: (active_users.map do |user|
+      json[:online_users] = active_users.map do |user|
         {
           username: user.name,
           avatar: user.avatar.url(:thumb_small)
         }
-      end).to_json
+      end
     end
+    render json: json
   end
 end
