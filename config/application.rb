@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require_relative '../lib/log_before_timeout.rb'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -65,6 +66,9 @@ module Hummingbird
     config.generators do |g|
       g.orm :active_record
     end
+
+    # Add LogBeforeTimeout middleware
+    config.middleware.use LogBeforeTimeout
 
     # Get rid of Rack::Lock
     config.middleware.delete Rack::Lock
