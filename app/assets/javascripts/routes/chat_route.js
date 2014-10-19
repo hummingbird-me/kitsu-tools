@@ -15,7 +15,6 @@ Hummingbird.ChatRoute = Ember.Route.extend({
       url: "/chat/ping",
       type: 'POST'
     }).then(function(pingResponse) {
-      console.log(pingResponse);
       self.set('controller.onlineUsers', pingResponse["online_users"]);
     });
   },
