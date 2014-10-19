@@ -95,7 +95,9 @@ class API_v1 < Grape::API
           episode_count: anime.episode_count,
           cover_image: anime.poster_image_thumb,
           synopsis: anime.synopsis,
-          show_type: anime.show_type
+          show_type: anime.show_type,
+          started_airing: anime.started_airing_date,
+          finished_airing: anime.finished_airing_date
         }
         if include_genres
           json[:genres] = anime.genres.map {|x| {name: x.name} }
