@@ -9,23 +9,27 @@ Hummingbird.ChatRoute = Ember.Route.extend({
     Hummingbird.TitleManager.setTitle("Chat");
   },
 
-  getOnlineUsers: function() {
+  ping: function() {
     var self = this;
     return ic.ajax({
       url: "/chat/ping",
       type: 'POST'
     }).then(function(pingResponse) {
-      self.set('controller.onlineUsers', pingResponse["online_users"]);
+      self.set('controller.onlineUsers', pingResponse.online_users);
+      return pingResponse;
     });
   },
 
   activate: function() {
     var self = this;
-    MessageBus.subscribe("/chat/lobby", function(message) {
-      self.get('controller').send("recvMessage", message);
+    self.ping().then(function(pingResponse) {
+      var lastId = pingResponse.last_message_id - 20;
+      if (lastId < 0) lastId = 0;
+      MessageBus.subscribe("/chat/lobby", function(message) {
+        self.get('controller').send("recvMessage", message);
+      }, lastId);
     });
-    self.getOnlineUsers();
-    self.set('pingInterval', setInterval(self.getOnlineUsers.bind(self), 20000));
+    self.set('pingInterval', setInterval(self.ping.bind(self), 20000));
   },
 
   deactivate: function() {

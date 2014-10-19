@@ -21,6 +21,8 @@ class ChatsController < ApplicationController
 
   def ping
     json = {}
+
+    # Get online users.
     $redis.with do |conn|
       time = Time.now.to_i
       conn.zadd "chat_online", time, current_user.id
@@ -33,6 +35,10 @@ class ChatsController < ApplicationController
         }
       end
     end
+
+    # Get last chat message ID.
+    json[:last_message_id] = MessageBus.last_id("/chat/lobby")
+
     render json: json
   end
 end
