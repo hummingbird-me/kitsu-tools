@@ -6,7 +6,6 @@ Ember.Application.initializer({
     var bus = MessageBus,
         privateChannel = Hummingbird.PreloadStore.get("private_channel");
 
-    bus.callbackInterval = 500;
     bus.start();
   }
 });
