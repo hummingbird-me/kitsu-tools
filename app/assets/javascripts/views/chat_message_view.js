@@ -7,18 +7,9 @@ Hummingbird.ChatMessageView = Ember.View.extend({
         self.get('parentView').send('rescroll');
       });
     }
-  },
-
-  // didInsertElement is post-DOM, messageObserver is pre-DOM
-  // So they're separated like this
-  didInsertElement: function() {
-    this.messageHooks();
-  },
+  }.on('didInsertElement'),
 
   messageObserver: function() {
-    var self = this;
-    Em.run.next(function() {
-      self.messageHooks();
-    });
+    Em.run.scheduleOnce('afterRender', this, 'messageHooks');
   }.observes('content.formattedMessage'),
 });

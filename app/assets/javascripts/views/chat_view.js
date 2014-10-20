@@ -1,15 +1,12 @@
 Hummingbird.ChatView = Ember.View.extend({
   scrollToBottom: function() {
-    var self = this;
-    Em.run.next(function() {
-      self.send('rescroll');
-    });
+    var rescroll = function() { this.send('rescroll') };
+    Em.run.scheduleOnce('afterRender', this, rescroll);
   }.observes('controller.content.@each'),
 
   actions: {
     rescroll: function() {
       var chatItems = this.$('.chat-items');
-      if (!chatItems) return;
 
       // Distance between bottom of visible part and the bottom of the scrollable pane
       var stickyOffset = chatItems.prop('scrollHeight') - chatItems.innerHeight() * 0.5;
