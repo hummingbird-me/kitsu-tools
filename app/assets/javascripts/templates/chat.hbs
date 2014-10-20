@@ -19,7 +19,7 @@
   <div class="chat-window">
     <div class="chat-items">
       <ul>
-        {{#each}}
+        {{#each itemViewClass="chatMessage"}}
           <li>
             <div class="username">{{username}}</div>
             <div {{bind-attr class=":message delivered::pending"}}>

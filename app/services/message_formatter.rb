@@ -10,6 +10,7 @@ class MessageFormatter
     link_usernames
     process_newlines
     embed_media
+    spoilers
   end
 
   def format
@@ -62,6 +63,10 @@ class MessageFormatter
       delete_link(link)
       @processed += "<div class='video-embed clearfix'><div class='video-wrapper'><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='https://youtube.com/embed/#{code}'></iframe></div></div>"
     end
+  end
+
+  def spoilers
+    @processed.gsub!(/\[spoiler\](.*)\[\/spoiler\]/, '<span class="spoiler">\1</span>')
   end
 
   def embeddable_link?(link)

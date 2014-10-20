@@ -28,6 +28,7 @@ Hummingbird.StoryView = Ember.View.extend({
       this.$("img").load(function() {
         self.truncateLongComments();
       });
+      this.$(".spoiler").spoilerAlert();
     }
   }
 });
