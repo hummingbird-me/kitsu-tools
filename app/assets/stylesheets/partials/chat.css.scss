@@ -61,6 +61,8 @@
     .chat-items {
       height: 100%;
       overflow-y: scroll;
+      // to bring back inertial scrolling on iOS
+      -webkit-overflow-scrolling: touch;
 
       li {
         @extend .clearfix;
