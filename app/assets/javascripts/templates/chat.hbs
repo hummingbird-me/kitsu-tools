@@ -21,7 +21,7 @@
       <ul>
         {{#each itemViewClass="chatMessage"}}
           <li>
-            <div class="username">{{username}}</div>
+            <div class="username" {{action "replyUser" username}}>{{username}}</div>
             <div {{bind-attr class=":message delivered::pending"}}>
               {{#if formattedMessage}}
                 {{{formattedMessage}}}
