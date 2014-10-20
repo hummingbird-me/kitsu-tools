@@ -94,7 +94,7 @@ class LibraryEntryTest < ActiveSupport::TestCase
 
   test "removing library entry subtracts time from life spent on anime" do
     initial = users(:vikhyat).life_spent_on_anime
-    entry = LibraryEntry.first
+    entry = LibraryEntry.find(watchlists(:one).id)
     entry.episodes_watched += 1
     entry.save
     assert_equal initial+entry.anime.episode_length, User.find('vikhyat').reload.life_spent_on_anime
@@ -105,7 +105,7 @@ class LibraryEntryTest < ActiveSupport::TestCase
   test "rewatches count towards life spent on anime" do
     user = User.find('vikhyat')
 
-    entry = LibraryEntry.first
+    entry = LibraryEntry.find(watchlists(:one).id)
     entry.episodes_watched = entry.anime.episode_count
     entry.status = "Completed"
     entry.save

@@ -91,3 +91,34 @@ monster:
   finished_airing_date: 2005-09-28
   started_airing_date_known: true
 
+steins_gate:
+  title: Steins;Gate
+  alt_title: ''
+  slug: steins-gate
+  age_rating: R17+
+  episode_count: 24
+  episode_length: 24
+  synopsis: "Steins;Gate is set in the summer of 2010, approximately one year after
+    the events that took place in Chaos;Head, in Akihabara.\r\nSteins;Gate is about
+    a group of friends who have customized their microwave into a device that can
+    send text messages to the past. As they perform different experiments, an organization
+    named SERN, who has been doing their own research on time travel, tracks them
+    down and now the characters have to find a way to avoid being captured by them.\r\n(Sources:
+    VNDB, Wikipedia)"
+  youtube_video_id: m4en7ZkhX8c
+  mal_id: 9253
+  created_at: 2013-02-20 17:27:06.531911000 Z
+  updated_at: 2014-01-17 23:31:28.082500000 Z
+  cover_image_file_name: 11_1109steins_gate0204.jpg
+  cover_image_content_type: image/jpeg
+  cover_image_file_size: 70466
+  cover_image_updated_at: 2013-12-15 20:16:27.163377000 Z
+  bayesian_average: 4.64918008720729
+  user_count: 13408
+  thetvdb_series_id: '244061'
+  thetvdb_season_id: '453391'
+  english_canonical: false
+  age_rating_guide: Violence, Profanity
+  show_type: TV
+  started_airing_date: 2011-04-06
+  finished_airing_date: 2011-09-14

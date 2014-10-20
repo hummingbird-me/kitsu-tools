@@ -79,7 +79,7 @@ class UserTest < ActiveSupport::TestCase
       time += (l.anime.episode_count || 0) * (l.anime.episode_length || 0) * (l.rewatch_count || 0)
     end
     user.update_attributes life_spent_on_anime: 0
-    assert_equal 0, user.reload.life_spent_on_anime
+    assert_equal 0 , user.reload.life_spent_on_anime
     user.recompute_life_spent_on_anime!
     assert_equal time, user.reload.life_spent_on_anime
   end

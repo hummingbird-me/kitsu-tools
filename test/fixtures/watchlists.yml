@@ -22,3 +22,10 @@ one:
   user: vikhyat
   anime: sword_art_online
   status: Plan to Watch
+
+two:
+  user: vikhyat
+  anime: steins_gate
+  status: Completed
+  episodes_watched: 5
+  rewatch_count: 2
