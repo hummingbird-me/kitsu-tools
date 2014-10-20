@@ -20,5 +20,11 @@ Hummingbird.ChatMessageView = Ember.View.extend({
     Em.run.next(function() {
       self.messageHooks();
     });
-  }.observes('content.formattedMessage')
+  }.observes('content.formattedMessage'),
+
+  click: function(e) {
+    if ($(e.target).parents('a').length == 0) {
+      this.get('controller').send('replyUser', this.get('content.username'));
+    }
+  }
 });

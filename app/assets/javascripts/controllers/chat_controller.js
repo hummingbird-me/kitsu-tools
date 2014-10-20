@@ -46,6 +46,14 @@ Hummingbird.ChatController = Ember.ArrayController.extend(Hummingbird.HasCurrent
       if (newMessageFlag) {
         this.get('model').pushObject(messageObj);
       }
+    },
+
+    replyUser: function(username) {
+      var msg = this.get('message');
+
+      if (msg.length > 0) msg += ' ';
+      msg += '@' + username + ' ';
+      this.set('message', msg);
     }
   }
 });
