@@ -10,7 +10,7 @@ class Settings::ImportController < ApplicationController
     if params[:animelist]
       begin
         if params[:animelist].content_type == "text/xml"
-          xml = params[:animelist]
+          xml = params[:animelist].read
         else
           gz = Zlib::GzipReader.new(params[:animelist])
           xml = gz.read
