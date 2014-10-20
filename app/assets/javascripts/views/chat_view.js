@@ -5,6 +5,7 @@ Hummingbird.ChatView = Ember.View.extend({
       self.send('rescroll');
     });
   }.observes('controller.content.@each'),
+
   actions: {
     rescroll: function() {
       var chatItems = this.$('.chat-items');

@@ -11,6 +11,7 @@
 //= require jcrop
 //= require jquery.autosize
 //= require rgbaster
+//= require spoiler
 //= require chart.js
 //= require typeahead-bloodhound
 //= require jquery-ui-1.10.3.custom.min
