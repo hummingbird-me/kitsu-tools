@@ -1,4 +1,4 @@
-Hummingbird.UserIndexRoute = Ember.Route.extend(Hummingbird.Paginated, {
+Hummingbird.UserIndexRoute = Ember.Route.extend(Hummingbird.Paginated, Hummingbird.ResetScroll, {
   fetchPage: function(page) {
     return this.store.find('story', {
       user_id: this.modelFor('user').get('id'),
@@ -24,7 +24,6 @@ Hummingbird.UserIndexRoute = Ember.Route.extend(Hummingbird.Paginated, {
   },
 
   afterModel: function() {
-    Ember.run.next(function() { window.scrollTo(0, 0); });
     return Hummingbird.TitleManager.setTitle(this.modelFor('user').get('username') + "'s Profile");
   },
 
