@@ -61,7 +61,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  def test_can_search_by_name_and_email
+  test 'can search by name and email' do
     assert User.search('vik').include?(users(:vikhyat))
     assert User.search('vikhyat').include?(users(:vikhyat))
     assert !User.search('vikhyatsdaf').include?(users(:vikhyat))
@@ -69,5 +69,18 @@ class UserTest < ActiveSupport::TestCase
     assert User.search('c2@vikhyat.net').include?(users(:vikhyat))
     assert User.search('vikhYat').include?(users(:vikhyat)), "search should be case insensitive"
     assert User.search('c2@Vikhyat.net').include?(users(:vikhyat)), "search should be case insensitive"
+  end
+
+  test 'recompute life spent on anime' do
+    user = users(:vikhyat)
+    time = 0
+    user.library_entries.each do |l|
+      time += (l.anime.episode_length || 0) * (l.episodes_watched || 0)
+      time += (l.anime.episode_count || 0) * (l.anime.episode_length || 0) * (l.rewatch_count || 0)
+    end
+    user.update_attributes life_spent_on_anime: 0
+    assert_equal 0, user.reload.life_spent_on_anime
+    user.recompute_life_spent_on_anime!
+    assert_equal time, user.reload.life_spent_on_anime
   end
 end

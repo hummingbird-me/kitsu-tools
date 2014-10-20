@@ -315,7 +315,7 @@ class User < ActiveRecord::Base
   end
 
   def update_life_spent_on_anime(delta)
-    if life_spent_on_anime.nil?
+    if life_spent_on_anime == 0
       self.recompute_life_spent_on_anime!
     else
       self.update_column :life_spent_on_anime, self.life_spent_on_anime + delta
