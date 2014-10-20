@@ -4,9 +4,6 @@ Hummingbird.AnimeIndexRoute = Ember.Route.extend(Hummingbird.ResetScroll, {
   },
 
   afterModel: function(resolvedModel) {
-    Ember.run.next(function() {
-      return window.scrollTo(0, 0);
-    });
     return Hummingbird.TitleManager.setTitle(resolvedModel.get('displayTitle'));
   },
 
