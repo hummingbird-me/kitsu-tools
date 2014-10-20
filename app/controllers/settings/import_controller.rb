@@ -1,7 +1,7 @@
 require_dependency 'xml_cleaner'
 require_dependency 'my_anime_list_import'
 
-class Settings::ImportsController < ApplicationController
+class Settings::ImportController < ApplicationController
   before_filter :authenticate_user!
 
   def myanimelist

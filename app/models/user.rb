@@ -309,7 +309,7 @@ class User < ActiveRecord::Base
   # How many minutes the user has spent watching anime.
   def recompute_life_spent_on_anime!
     time_spent = self.library_entries.joins(:anime).select('
-      COALESCE(episodes_watched, 0) * COALESCE(ainme.episode_length, 0) AS mins
+      COALESCE(episodes_watched, 0) * COALESCE(anime.episode_length, 0) AS mins
     ').map {|x| x.mins }.sum
     self.update_attributes life_spent_on_anime: time_spent
   end
