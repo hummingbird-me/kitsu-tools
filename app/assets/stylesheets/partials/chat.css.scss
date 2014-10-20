@@ -93,6 +93,13 @@
           @media (max-width: 768px) {
             width: 65%;
           }
+          .time {
+            //@extend .label;
+            //@extend .label-default;
+            font-size: 0.8em;
+            opacity: 0.8;
+            float: right;
+          }
           .video-embed {
             padding: 5px 0 10px 0;
             .video-wrapper {

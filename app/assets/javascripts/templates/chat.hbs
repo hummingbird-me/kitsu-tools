@@ -22,9 +22,10 @@
         {{#each itemViewClass="chatMessage"}}
           <li>
             <div class="username" {{action "replyUser" username}}>{{username}}</div>
-            <div {{bind-attr class=":message delivered::pending"}}>
+            <div {{bind-attr class=":message time::pending"}}>
               {{#if formattedMessage}}
                 {{{formattedMessage}}}
+                <span class="time">{{format-time time "h:mm a"}}</span>
               {{else}}
                 {{message}}
               {{/if}}

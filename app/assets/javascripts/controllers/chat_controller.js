@@ -37,7 +37,7 @@ Hummingbird.ChatController = Ember.ArrayController.extend(Hummingbird.HasCurrent
       this.get('model').forEach(function(oldMessage) {
         if (oldMessage.get('id') === messageObj.get('id')) {
           oldMessage.set('formattedMessage', messageObj.get('formattedMessage'));
-          oldMessage.set('delivered', messageObj.get('delivered'));
+          oldMessage.set('time', messageObj.get('time'));
           newMessageFlag = false;
           return;
         }
