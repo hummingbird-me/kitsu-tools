@@ -54,6 +54,7 @@ Hummingbird.ChatController = Ember.ArrayController.extend(Hummingbird.HasCurrent
       if (msg.length > 0) msg += ' ';
       msg += '@' + username + ' ';
       this.set('message', msg);
+      $('#chat-input').focus();
     }
   }
 });
