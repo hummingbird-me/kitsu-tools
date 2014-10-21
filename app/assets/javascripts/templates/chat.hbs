@@ -21,7 +21,12 @@
       <ul>
         {{#each itemViewClass="chatMessage"}}
           <li>
-            <div class="username" {{action "replyUser" username}}>{{username}}</div>
+            <div {{bind-attr class=":username admin"}} {{action "replyUser" username}}>
+              {{username}}
+              {{#if admin}}
+                <i class="fa fa-shield" title="This user is an admin" alt="This user is an admin"></i>
+              {{/if}}
+            </div>
             <div {{bind-attr class=":message time::pending"}}>
               {{#if formattedMessage}}
                 {{{formattedMessage}}}

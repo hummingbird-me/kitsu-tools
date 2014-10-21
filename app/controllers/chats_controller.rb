@@ -12,7 +12,8 @@ class ChatsController < ApplicationController
         message: params[:message],
         formattedMessage: MessageFormatter.format_message(params[:message]),
         username: current_user.name,
-        time: Time.now.iso8601(0)
+        time: Time.now.iso8601(0),
+        admin: current_user.admin?
       }
     end
 
