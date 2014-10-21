@@ -25,7 +25,7 @@ RailsAdmin.config do |config|
   end
 
   # If you want to track changes on your models:
-  config.audit_with :history, 'User'
+  # config.audit_with :history, 'User'
 
   # Or with a PaperTrail: (you need to install it first)
   # config.audit_with :paper_trail, 'User'
@@ -40,13 +40,19 @@ RailsAdmin.config do |config|
   # config.excluded_models = ['Anime', 'Casting', 'Character', 'Genre', 'Person', 'Producer', 'Quote', 'Recommendation', 'Review', 'User', 'Watchlist']
 
   # Include specific models (exclude the others):
-  config.included_models = ['Anime', 'Casting', 'Character', 'Episode', 'Video', 'Franchise', 'GalleryImage', 'Genre', 'Person', 'Producer', 'Quote', 'Review', 'Story', 'Substory', 'User', 'Community::Forum', 'Community::Post', 'Community::Topic', 'Manga']
+  config.included_models = ['Anime', 'Casting', 'Character', 'Episode', 'Video', 'Franchise', 'GalleryImage', 'Genre', 'Person', 'Producer', 'Quote', 'Review', 'Story', 'Substory', 'User', 'Manga']
 
   # Label methods for model instances:
   # config.label_methods << :description # Default is [:name, :title]
 
 
   ################  Model configuration  ################
+  
+  config.model 'User' do
+    edit do
+      field :ninja_banned
+    end
+  end
 
   # Each model configuration can alternatively:
   #   - stay here in a `config.model 'ModelName' do ... end` block

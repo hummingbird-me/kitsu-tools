@@ -71,7 +71,6 @@ gem 'codeclimate-test-reporter', group: :test, require: nil
 
 gem 'haml', '~> 4.0'
 gem 'haml-rails'
-gem 'simple_form'
 gem 'rdiscount'
 
 # Attachments
