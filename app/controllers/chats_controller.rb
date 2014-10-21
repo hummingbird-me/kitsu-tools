@@ -6,7 +6,7 @@ class ChatsController < ApplicationController
   end
 
   def create
-    if params.has_key?(:message)
+    if params.has_key?(:message) && !current_user.ninja_banned?
       MessageBus.publish "/chat/lobby", {
         id: params[:id],
         message: params[:message],
