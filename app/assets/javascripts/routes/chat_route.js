@@ -21,7 +21,7 @@ Hummingbird.ChatRoute = Ember.Route.extend({
   },
 
   activate: function() {
-    Notification.requestPermission();
+    //Notification.requestPermission();
     var self = this;
     self.ping().then(function(pingResponse) {
       var lastId = pingResponse.last_message_id - 20;

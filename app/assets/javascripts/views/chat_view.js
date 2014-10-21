@@ -30,6 +30,15 @@ Hummingbird.ChatView = Ember.View.extend({
     }
   },
 
+  playSound: function() {
+    this.$("#chat-sound").html(
+      "<audio autoplay='autoplay'>"
+      + "<source src='/chat_beep.m4a' type='audio/mpeg'>"
+      + "<source src='/chat_beep.ogg' type='audio/ogg'>"
+      + "</audio>"
+    );
+  },
+
   scrollToBottom: function() {
     var rescroll = function() { this.send('rescroll') };
     Em.run.scheduleOnce('afterRender', this, rescroll);
@@ -44,6 +53,13 @@ Hummingbird.ChatView = Ember.View.extend({
           chatItems.scrollTop(chatItems.prop('scrollHeight'));
         }
       }
+    },
+
+    notifyUser: function(sender, message) {
+      //var notification = new Notification("You were mentioned by " + sender, {
+      //  body: message
+      //});
+      Em.run.debounce(this, this.playSound, 500);
     }
   }
 });
