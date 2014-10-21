@@ -24,7 +24,7 @@ Hummingbird.ChatRoute = Ember.Route.extend({
     //Notification.requestPermission();
     var self = this;
     self.ping().then(function(pingResponse) {
-      var lastId = pingResponse.last_message_id - 20;
+      var lastId = pingResponse.last_message_id - 40;
       if (lastId < 0) lastId = 0;
       MessageBus.subscribe("/chat/lobby", function(message) {
         self.get('controller').send("recvMessage", message);
