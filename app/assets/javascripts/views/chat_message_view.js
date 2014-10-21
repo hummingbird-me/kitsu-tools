@@ -19,10 +19,8 @@ Hummingbird.ChatMessageView = Ember.View.extend({
         message = this.get('content.message'),
         self = this;
 
-    Em.run.next(function() {
-      if (self.$("a").filter(function() { return this.innerHTML == "@" + myName; }).length > 0) {
-        self.get('parentView').send('notifyUser', "You were mentioned by " + sender, message);
-      }
-    });
-  }.observes('content.formattedMessage')
+    if (self.$("a").filter(function() { return this.innerHTML == "@" + myName; }).length > 0) {
+      self.get('parentView').send('notifyUser', "You were mentioned by " + sender, message);
+    }
+  }.on('didInsertElement')
 });
