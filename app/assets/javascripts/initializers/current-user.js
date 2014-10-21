@@ -10,5 +10,6 @@ Ember.Application.initializer({
       controller.set('model', user);
     }
     container.injection('route', 'currentUser', 'controller:currentUser');
+    container.injection('view', 'currentUser', 'controller:currentUser');
   }
 });
