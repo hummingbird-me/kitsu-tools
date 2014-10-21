@@ -52,7 +52,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding-bottom: 54px;
+    padding-bottom: 40px;
     @media (max-width: 768px) {
       width: 100%;
       padding-top: 50px;
@@ -67,29 +67,40 @@
 
       li {
         @extend .clearfix;
-        border-bottom: 1px solid #BCBDC2;
         background: #F4F4F6;
         .username, .message {
           float: left;
         }
         .username {
           width: 15%;
-          text-align: left;
-          padding: 10px 20px;
+          text-align: right;
+          padding: 5px 20px;
           font-weight: bold;
+          font-family: "klavika", Helvetica, Arial, sans-serif;
           opacity: 0.8;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          cursor: pointer;
+          .fa {
+            font-size: 12px;
+            padding-left: 3px;
+          }
           @media (max-width: 768px) {
             width: 35%;
+          }
+          &.admin {
+            color: #e74c3c;
+          }
+          &:hover {
+            opacity: .5;
           }
         }
         .message {
           width: 85%;
           background: #fff;
-          border-left: 1px solid #BCBDC2;
-          padding: 10px 15px;
+          border-left: 1px solid #E7E9EF;
+          padding: 5px 15px;
           @media (max-width: 768px) {
             width: 65%;
           }
@@ -109,7 +120,7 @@
             }
           }
           .autoembed {
-            max-width: 300px;
+            max-width: 300px !important; // Not sure where / how the inline styles are being embedded that were overwriting this. Temp-fix!
           }
           &.pending {
             opacity: 0.4;
@@ -120,7 +131,7 @@
 
     .entry {
       border-top: 1px solid #999;
-      height: 55px;
+      height: 40px;
       width: 100%;
       background: #fff;
       flex: 0;
