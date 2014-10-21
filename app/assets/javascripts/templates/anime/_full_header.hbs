@@ -76,4 +76,11 @@
       </div>
     {{/if}}
   </div>
+  {{#if currentUser.isAdmin}}
+    <div class="admin-buttons">
+      <button {{action "deleteAnime"}}>
+        <i class="fa fa-trash"></i> Delete
+      </button>
+    </div>
+  {{/if}}
 </div>

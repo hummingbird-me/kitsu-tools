@@ -53,6 +53,9 @@ Hummingbird.AnimeController = Ember.ObjectController.extend(Hummingbird.HasCurre
     setLanguage: function (language) {
       this.set('language', language);
       return this.send('switchTo', 'Cast');
+    },
+    deleteAnime: function () {
+      return this.get('model').destroyRecord();
     }
   },
 
