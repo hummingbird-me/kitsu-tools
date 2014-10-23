@@ -1,4 +1,4 @@
-HB.FullAnime = Hummingbird.Anime.extend({
+HB.FullAnime = HB.Anime.extend({
   alternateTitle: DS.attr('string'),
   coverImage: DS.attr('string'),
   coverImageTopOffset: DS.attr('number'),

@@ -21,7 +21,7 @@ HB.Anime = DS.Model.extend({
 
   displayTitle: function() {
     var currentUser, pref, title;
-    currentUser = Hummingbird.__container__.lookup('controller:currentUser');
+    currentUser = HB.__container__.lookup('controller:currentUser');
     title = this.get('canonicalTitle');
     if (currentUser.get('isSignedIn')) {
       pref = currentUser.get('titleLanguagePreference');

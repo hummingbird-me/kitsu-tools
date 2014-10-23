@@ -28,8 +28,6 @@ var HB = Ember.Application.create({
   utils: {}
 });
 
-var Hummingbird = HB;
-
 Ember.LinkView.reopen({
   attributeBindings: ['href', 'title', 'rel', 'data-hover']
 });
