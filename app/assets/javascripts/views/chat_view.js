@@ -31,10 +31,11 @@ HB.ChatView = Ember.View.extend({
   },
 
   playSound: function() {
+	var soundFile = ["loli.ogg", "boku.ogg", "TTGL.ogg", "shinji.ogg", "naruto.ogg"];
+	var soundPlay = soundFile[Math.floor(Math.random() * soundFile.length)];
     this.$("#chat-sound").html(
       "<audio autoplay='autoplay'>"
-      + "<source src='/chat_beep.m4a' type='audio/mpeg'>"
-      + "<source src='/chat_beep.ogg' type='audio/ogg'>"
+      + "<source src='/" + soundPlay + "' type='audio/ogg'>"
       + "</audio>"
     );
   },
