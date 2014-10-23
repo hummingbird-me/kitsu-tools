@@ -7,6 +7,9 @@ fake({
   [:get, "#{mal}/manga/25/*/characters"] => "mal_manga_25_characters",
   [:get, "#{mal}/anime/11757/"] => "mal_anime_11757_metadata",
   [:get, "#{mal}/anime/11757/*/characters"] => "mal_anime_11757_characters",
+  [:get, "#{mal}/character/11"] => "mal_character_11",
+  [:get, "#{mal}/character/36765"] => "mal_character_36765",
+  [:get, "#{mal}/character/43892"] => "mal_character_43892"
 })
 
 require 'mal_import'
@@ -36,6 +39,7 @@ class MALImportTest < ActiveSupport::TestCase
   test "can get manga character's info" do
     chars = MALImport.new(:manga, 25).characters
     ed = chars.select { |c| c[:name] == "Edward Elric" }[0]
+    assert_not ed[:description].empty?
     assert_equal ed[:name], "Edward Elric"
     assert_equal ed[:role], "Main"
     assert_equal ed[:external_id], 11
@@ -80,6 +84,7 @@ class MALImportTest < ActiveSupport::TestCase
     chars = MALImport.new(:anime, 11757).characters
     kirito = chars.select { |c| c[:name] == "Kazuto Kirigaya" }[0]
     assert_not_nil kirito
+    assert_not kirito[:description].empty?
     assert_equal "Kazuto Kirigaya", kirito[:name]
     assert_equal "Main", kirito[:role]
     assert_instance_of URI::HTTP, kirito[:image]

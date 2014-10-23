@@ -5,6 +5,17 @@ class MALImport
     Nokogiri::HTML open("http://myanimelist.net#{path}", 'User-Agent' => 'iMAL-iOS').read
   end
 
+  def get_character(id)
+    description = get("/character/#{id}").css('#content > table >tr > td:nth-child(2)').children.take_while { |x|
+      !x.text.include? 'Voice Actor'
+    }.reject { |x|
+      x['class'] == 'normal_header' || x['id'] == 'horiznav_nav'
+    }.map(&:to_html).join
+
+    # TODO: move all the character data grabbing into here
+    { description: description }
+  end
+
   def initialize (media, id, depth = :deep)
     @shallow = (depth == :shallow)
     @media = media
@@ -38,7 +49,9 @@ class MALImport
     end
   end
   def characters
-    featured_chars = @main_noko.css('table div.picSurround a[href*="character/"]').map {|x| x['href'].scan(/character\/(\d+)/) }.flatten.map(&:to_i)
+    featured_chars = @main_noko.css('table div.picSurround a[href*="character/"]').map {|x|
+      x['href'].scan(/character\/(\d+)/)
+    }.flatten.map(&:to_i)
 
     case @media
     when :anime
@@ -46,11 +59,13 @@ class MALImport
         x.name == 'table'
       }.map do |chara|
         external_id = chara.css('td:nth-child(2) > a')[0]['href'].scan(/character\/(\d+)\//).flatten[0].to_i
+        character = get_character(external_id)
         {
           external_id: external_id,
           name: nameflip(chara.css('td:nth-child(2) > a').text),
           image: person_image(chara.css("img")[0]['src']),
           role: chara.css('td:nth-child(2) small').text,
+          description: clean_desc(character[:description]),
           featured: featured_chars.include?(external_id),
           voice_actors: chara.css('td:nth-child(3) tr > td:nth-child(1)').map do |va|
             {
@@ -65,11 +80,13 @@ class MALImport
     when :manga
       @char_noko.css('h2:contains("Characters") ~ table').map do |chara|
         external_id = chara.css('td:nth-child(2) > a')[0]['href'].scan(/character\/(\d+)\//).flatten[0].to_i
+        character = get_character(external_id)
         {
           external_id: external_id,
           name: nameflip(chara.css('td:nth-child(2) > a').text),
           image: person_image(chara.css("img")[0]['src']),
           role: chara.css('td:nth-child(2) small').text,
+          description: clean_desc(character[:description]),
           featured: featured_chars.include?(external_id)
         }
       end
@@ -187,5 +204,39 @@ class MALImport
     else # date
       d == "?" ? nil : DateTime.parse(d).to_date
     end
+  end
+  def br_to_p(src)
+    src = '<p>' + src.gsub(/<br>\s*<br>/, '</p><p>') + '</p>'
+    doc = Nokogiri::HTML.fragment src
+    doc.traverse do |x|
+      next x.remove if x.name == 'br' && x.previous.nil?
+      next x.remove if x.name == 'br' && x.next.nil?
+      next x.remove if x.name == 'br' && x.next.name == 'p' && x.previous.name == 'p'
+      next x.remove if x.name == 'p' && x.content.blank?
+    end
+    doc.inner_html.gsub(/[\r\n\t]/, '')
+  end
+  def clean_desc(desc)
+    desc = Nokogiri::HTML.fragment br_to_p(desc)
+    desc.css('.spoiler').each do |x|
+      x.name = 'span'
+      x.inner_html = x.css('.spoiler_content').inner_html
+      x.css('input').remove
+    end
+    desc.css('.spoiler').wrap('<p></p>')
+    desc.xpath('descendant::comment()').remove
+    desc.css('b').each { |b| b.replace(b.content) }
+    desc.traverse do |node|
+      next unless node.text?
+      t = node.content.split(/: ?/).map { |x| x.split(' ') }
+      if t.length >= 2
+        if t[0].length <= 3 && t[1].length <= 20
+          node.remove
+        end
+      else
+        node.remove if /^\s+\*\s+.*/ =~ node.content
+      end
+    end
+    desc.inner_html
   end
 end
