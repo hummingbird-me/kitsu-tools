@@ -1,14 +1,22 @@
 require 'open-uri'
 
 class MALImport
-  def initialize (media, id)
+  def get(path)
+    Nokogiri::HTML open("http://myanimelist.net#{path}", 'User-Agent' => 'iMAL-iOS').read
+  end
+
+  def initialize (media, id, depth = :deep)
+    @shallow = (depth == :shallow)
     @media = media
     @mal_id = id
-    @main_noko = Nokogiri::HTML open("http://myanimelist.net/#{media.to_s}/#{id}/", 'User-Agent' => 'iMAL-iOS').read
-    char_page = Nokogiri::HTML open("http://myanimelist.net/#{media.to_s}/#{id}/a/characters", 'User-Agent' => 'iMAL-iOS').read
-    @char_noko = char_page.css('h2:contains("Characters")')[0].parent
+    @main_noko = get "/#{media.to_s}/#{id}/"
+    unless @shallow
+      char_page = get "/#{media.to_s}/#{id}/a/characters"
+      @char_noko = char_page.css('h2:contains("Characters")')[0].parent
+    end
     @sidebar = @main_noko.css('td.borderClass')[0]
   end
+
   def staff
     case @media
     when :anime
@@ -118,10 +126,14 @@ class MALImport
     return meta
   end
   def to_h
-    metadata.merge({
-      staff: staff,
-      characters: characters
-    })
+    if @shallow
+      metadata.merge({ staff: [], characters: [] })
+    else
+      metadata.merge({
+        staff: staff,
+        characters: characters
+      })
+    end
   end
 
   private

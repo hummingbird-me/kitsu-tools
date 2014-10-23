@@ -14,7 +14,7 @@ class AdminController < ApplicationController
 
   def find_or_create_by_mal
     media = params[:media].to_sym
-    mal = MALImport.new(media, params[:mal_id].to_i)
+    mal = MALImport.new(media, params[:mal_id].to_i, :shallow)
     @thing = case media
     when :anime
       Anime.create_or_update_from_hash mal.to_h
@@ -22,6 +22,7 @@ class AdminController < ApplicationController
       Manga.create_or_update_from_hash mal.to_h
     end
     redirect_to @thing
+    MyAnimeListScrapeWorker.perform_async(media, params[:mal_id].to_i)
   end
 
   def index

@@ -119,4 +119,9 @@ class MALImportTest < ActiveSupport::TestCase
     assert_equal "Producer", somedude[:role]
     assert_equal 14031, somedude[:external_id]
   end
+  test "omits staff and characters in shallow mode" do
+    malware = MALImport.new(:anime, 11757, :shallow).to_h
+    assert_empty malware[:staff]
+    assert_empty malware[:characters]
+  end
 end
