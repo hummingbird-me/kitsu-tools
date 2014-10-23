@@ -1,4 +1,4 @@
-Hummingbird.MangaLibraryEntry = DS.Model.extend({
+HB.MangaLibraryEntry = DS.Model.extend({
   manga: DS.belongsTo('manga'),
   status: DS.attr('string'),
   isFavorite: DS.attr('boolean'),

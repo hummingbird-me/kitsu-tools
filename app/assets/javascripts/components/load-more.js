@@ -1,4 +1,4 @@
-Hummingbird.LoadMoreComponent = Ember.Component.extend({
+HB.LoadMoreComponent = Ember.Component.extend({
   checkInView: function() {
     var elementBottom = this.$().offset().top + this.$().height(),
         windowBottom = window.pageYOffset + Ember.$(window).height();

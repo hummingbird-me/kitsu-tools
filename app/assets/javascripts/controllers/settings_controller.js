@@ -1,4 +1,4 @@
-Hummingbird.SettingsController = Ember.Controller.extend(Hummingbird.HasCurrentUser, {
+HB.SettingsController = Ember.Controller.extend(HB.HasCurrentUser, {
   titleChoices: [
     {value: 'canonical', label: 'Canonical'},
     {value: 'romanized', label: 'Romanized'},

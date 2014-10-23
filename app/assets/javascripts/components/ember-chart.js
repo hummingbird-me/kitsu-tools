@@ -1,4 +1,4 @@
-Hummingbird.EmberChartComponent = Ember.Component.extend({
+HB.EmberChartComponent = Ember.Component.extend({
   tagName: 'canvas',
   setup: false,
 

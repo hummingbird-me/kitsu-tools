@@ -1,4 +1,4 @@
-Hummingbird.Session = {
+HB.Session = {
   getAuthToken: function() {
     var parts = document.cookie.split("auth_token=");
     if (parts.length === 2) {
@@ -33,10 +33,10 @@ Hummingbird.Session = {
     });
   },
   signIn: function(email, password) {
-    return Hummingbird.Session.signInWithOptionalRedirect(email, password, true);
+    return HB.Session.signInWithOptionalRedirect(email, password, true);
   },
   signInWithoutRedirect: function(email, password) {
-    return Hummingbird.Session.signInWithOptionalRedirect(email, password, false);
+    return HB.Session.signInWithOptionalRedirect(email, password, false);
   },
   signOut: function() {
     return ic.ajax({

@@ -1,4 +1,4 @@
-Hummingbird.UserMangaLibraryController = Ember.ArrayController.extend({
+HB.UserMangaLibraryController = Ember.ArrayController.extend({
   needs: "user",
   user: Ember.computed.alias('controllers.user'),
   reactComponent: null,

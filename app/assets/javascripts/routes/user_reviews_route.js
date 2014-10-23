@@ -1,4 +1,4 @@
-Hummingbird.UserReviewsRoute = Ember.Route.extend(Hummingbird.Paginated, {
+HB.UserReviewsRoute = Ember.Route.extend(HB.Paginated, {
   fetchPage: function(page) {
     return this.store.find('review', {
       user_id: this.modelFor('user').get('id'),
@@ -7,6 +7,6 @@ Hummingbird.UserReviewsRoute = Ember.Route.extend(Hummingbird.Paginated, {
   },
   
   afterModel: function() {
-    return Hummingbird.TitleManager.setTitle(this.modelFor('user').get('username') + "'s Reviews");
+    return HB.TitleManager.setTitle(this.modelFor('user').get('username') + "'s Reviews");
   }
 });

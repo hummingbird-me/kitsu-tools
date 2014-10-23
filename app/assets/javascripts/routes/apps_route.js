@@ -1,4 +1,4 @@
-Hummingbird.AppsRoute = Ember.Route.extend({
+HB.AppsRoute = Ember.Route.extend({
   
   model: function(){
 

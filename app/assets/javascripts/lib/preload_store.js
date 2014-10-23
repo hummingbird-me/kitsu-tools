@@ -1,4 +1,4 @@
-Hummingbird.PreloadStore = {
+HB.PreloadStore = {
   get: function(key, fetch) {
     if (typeof window.genericPreload[key] !== "undefined") {
       return window.genericPreload[key];
@@ -8,13 +8,13 @@ Hummingbird.PreloadStore = {
   },
 
   pop: function(key, fetch) {
-    var value = Hummingbird.PreloadStore.get(key, fetch);
+    var value = HB.PreloadStore.get(key, fetch);
     delete window.genericPreload[key];
     return value;
   },
 
   popEmberData: function(key, path, object, store, edQuery) {
-    var data = Hummingbird.PreloadStore.pop(key);
+    var data = HB.PreloadStore.pop(key);
     if (typeof data === "undefined" || data === null) {
       if (typeof edQuery !== "undefined") {
         return edQuery();

@@ -1,4 +1,4 @@
-Hummingbird.ChatController = Ember.ArrayController.extend(Hummingbird.HasCurrentUser, {
+HB.ChatController = Ember.ArrayController.extend(HB.HasCurrentUser, {
   message: "",
   onlineUsers: [],
 

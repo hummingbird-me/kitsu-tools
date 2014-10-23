@@ -1,4 +1,4 @@
-Hummingbird.TitleManager = Ember.Object.extend({
+HB.TitleManager = Ember.Object.extend({
   title: null,
 
   // Public interface for setting page titles.

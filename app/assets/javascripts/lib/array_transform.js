@@ -1,4 +1,4 @@
-Hummingbird.ArrayTransform = DS.Transform.extend({
+HB.ArrayTransform = DS.Transform.extend({
   serialize: function(value) {
     if (Em.typeOf(value) === 'array') {
       return value;

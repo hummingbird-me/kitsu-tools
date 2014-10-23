@@ -1,4 +1,4 @@
-Hummingbird.Paginated = Ember.Mixin.create({
+HB.Paginated = Ember.Mixin.create({
   // Return an empty array immediately from the model hook.
   model: function() {
     if (this.get('preloadKey')) {
@@ -9,8 +9,8 @@ Hummingbird.Paginated = Ember.Mixin.create({
           path = this.get('preloadPath'),
           object = this.get('preloadObject');
 
-      return Hummingbird.PreloadStore.popEmberData(key, path, object, store,
-                                                   function() { return []; });
+      return HB.PreloadStore.popEmberData(key, path, object, store,
+                                          function() { return []; });
     } else {
       this.set('cursor', null);
       return [];

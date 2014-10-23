@@ -1,4 +1,4 @@
-Hummingbird.MangaController = Ember.ObjectController.extend(Hummingbird.HasCurrentUser, {
+HB.MangaController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   title: Ember.computed.any('model.romajiTitle', 'model.englishTitle'),
 
   coverImageStyle: function () {

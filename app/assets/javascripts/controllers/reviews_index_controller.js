@@ -1,4 +1,4 @@
-Hummingbird.ReviewsIndexController = Ember.ArrayController.extend({
+HB.ReviewsIndexController = Ember.ArrayController.extend({
   needs: "anime",
   anime: Ember.computed.alias('controllers.anime'),
   sortProperties: ['wilsonScore'],

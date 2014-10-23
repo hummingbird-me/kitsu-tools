@@ -1,4 +1,4 @@
-Hummingbird.UserLibraryController = Ember.ArrayController.extend({
+HB.UserLibraryController = Ember.ArrayController.extend({
   needs: "user",
   user: Ember.computed.alias('controllers.user'),
   reactComponent: null,

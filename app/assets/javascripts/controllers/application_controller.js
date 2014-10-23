@@ -1,4 +1,4 @@
-Hummingbird.ApplicationController = Ember.Controller.extend(Hummingbird.HasCurrentUser, {
+HB.ApplicationController = Ember.Controller.extend(HB.HasCurrentUser, {
   needs: ['header'],
 
   routeChanged: function () {
@@ -18,7 +18,7 @@ Hummingbird.ApplicationController = Ember.Controller.extend(Hummingbird.HasCurre
 
   actions: {
     signOut: function () {
-      Hummingbird.Session.signOut();
+      HB.Session.signOut();
     }
   }
 });

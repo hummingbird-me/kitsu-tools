@@ -1,4 +1,4 @@
-Hummingbird.ApplicationRoute = Ember.Route.extend({
+HB.ApplicationRoute = Ember.Route.extend({
   activate: function() {
     var self = this;
     MessageBus.subscribe("/site_update", function() {

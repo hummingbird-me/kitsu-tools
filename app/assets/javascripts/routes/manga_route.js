@@ -1,4 +1,4 @@
-Hummingbird.MangaRoute = Ember.Route.extend({
+HB.MangaRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('fullManga', params.id);
   },

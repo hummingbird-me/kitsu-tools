@@ -1,3 +1,3 @@
-Hummingbird.Franchise = DS.Model.extend({
+HB.Franchise = DS.Model.extend({
   anime: DS.hasMany('anime')
 });

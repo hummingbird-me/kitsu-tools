@@ -1,4 +1,4 @@
-Hummingbird.Notification = DS.Model.extend({
+HB.Notification = DS.Model.extend({
   sourceType: DS.attr('string'),
   sourceUser: DS.attr('string'),
   sourceAvatar: DS.attr('string'),

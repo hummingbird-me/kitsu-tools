@@ -1,4 +1,4 @@
-Hummingbird.UserMangaLibraryView = Ember.View.extend({
+HB.UserMangaLibraryView = Ember.View.extend({
   user: Ember.computed.alias('controller.user'),
   sections: Ember.computed.alias('controller.sections'),
   reactComponent: Ember.computed.alias('controller.reactComponent'),

@@ -1,4 +1,4 @@
-Hummingbird.ReviewsIndexRoute = Ember.Route.extend(Hummingbird.Paginated, Hummingbird.ResetScroll, {
+HB.ReviewsIndexRoute = Ember.Route.extend(HB.Paginated, HB.ResetScroll, {
   fetchPage: function(page) {
     return this.store.find('review', {
       anime_id: this.modelFor('anime').get('id'),
@@ -8,6 +8,6 @@ Hummingbird.ReviewsIndexRoute = Ember.Route.extend(Hummingbird.Paginated, Hummin
 
   afterModel: function(resolvedModel) {
     var anime = this.modelFor('anime');
-    return Hummingbird.TitleManager.setTitle(anime.get('canonicalTitle') + " Reviews");
+    return HB.TitleManager.setTitle(anime.get('canonicalTitle') + " Reviews");
   }
 });

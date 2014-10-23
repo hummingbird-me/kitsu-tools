@@ -1,11 +1,11 @@
-Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurrentUser, {
+HB.StoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   commentStory: Ember.computed.equal('model.type', 'comment'),
   mediaStory: Ember.computed.equal('model.type', 'media_story'),
   followedStory: Ember.computed.equal('model.type', 'followed'),
   knownStory: Ember.computed.any('commentStory', 'mediaStory', 'followedStory'),
   unknownStory: Ember.computed.not('knownStory'),
   substories: Ember.computed.any('allSubstories', 'model.substories'),
-  selfPost: Hummingbird.computed.propertyEqual('model.poster.id', 'model.user.id'),
+  selfPost: HB.computed.propertyEqual('model.poster.id', 'model.user.id'),
   moreThanTwoSubstories: Em.computed.gt('model.substoryCount', 2),
   isExpanded: false,
   overflowing: false,
@@ -13,7 +13,7 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
 
   showAll: false,
   loadingAll: false,
-  loadedAll: Hummingbird.computed.propertyEqual('substories.length', 'model.substoryCount'),
+  loadedAll: HB.computed.propertyEqual('substories.length', 'model.substoryCount'),
 
   belongsToUser: function () {
     var loggedInUser = this.get('currentUser');
@@ -25,7 +25,7 @@ Hummingbird.StoryController = Ember.ObjectController.extend(Hummingbird.HasCurre
   }.property('isNew', 'belongsToUser', 'currentUser.isAdmin'),
 
   mediaRoute: function () {
-    if (this.get('mediaStory') && this.get('model.media').constructor.toString() === "Hummingbird.Anime") {
+    if (this.get('mediaStory') && this.get('model.media').constructor.toString() === "HB.Anime") {
       return 'anime';
     }
   }.property('model.media'),

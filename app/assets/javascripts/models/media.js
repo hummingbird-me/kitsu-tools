@@ -1,1 +1,1 @@
-Hummingbird.Media = DS.Model.extend({});
+HB.Media = DS.Model.extend({});

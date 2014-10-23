@@ -1,4 +1,4 @@
-Hummingbird.ChatRoute = Ember.Route.extend({
+HB.ChatRoute = Ember.Route.extend({
   pingInterval: null,
 
   model: function() {
@@ -6,7 +6,7 @@ Hummingbird.ChatRoute = Ember.Route.extend({
   },
 
   afterModel: function() {
-    Hummingbird.TitleManager.setTitle("Chat");
+    HB.TitleManager.setTitle("Chat");
   },
 
   ping: function() {

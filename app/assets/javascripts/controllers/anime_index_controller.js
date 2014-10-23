@@ -1,4 +1,4 @@
-Hummingbird.AnimeIndexController = Ember.ObjectController.extend(Hummingbird.HasCurrentUser, {
+HB.AnimeIndexController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   showEpisodes: function() {
     return this.get('currentUser.isAdmin') && this.get('model.episodes.length')>0;
   }.property('currentUser.isAdmin', 'model.episodes.length'),

@@ -1,4 +1,4 @@
-Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUser, {
+HB.HeaderController = Ember.Controller.extend(HB.HasCurrentUser, {
   needs: ['application'],
 
   showUpdater: false,
@@ -14,7 +14,7 @@ Hummingbird.HeaderController = Ember.Controller.extend(Hummingbird.HasCurrentUse
   }.property('unreadNotifications'),
   limitedNotifications: [],
 
-  blotter: Hummingbird.PreloadStore.get('blotter'),
+  blotter: HB.PreloadStore.get('blotter'),
   showBlotter: function () {
     return this.get('blotter.message') && (window.localStorage.dismissedBlotter != this.get('blotter.message'));
   }.property('blotter.message'),

@@ -1,4 +1,4 @@
-Hummingbird.StoryView = Ember.View.extend({
+HB.StoryView = Ember.View.extend({
   classNames: ["story"],
 
   templateName: function() {

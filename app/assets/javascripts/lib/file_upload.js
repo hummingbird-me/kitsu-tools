@@ -1,4 +1,4 @@
-Hummingbird.FileUpload = Ember.TextField.extend({
+HB.FileUpload = Ember.TextField.extend({
   type: 'file',
   attributeBindings: ['name'],
   classNames: ['hidden'],

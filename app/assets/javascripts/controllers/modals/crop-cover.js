@@ -1,4 +1,4 @@
-Hummingbird.ModalsCropCoverController = Ember.ObjectController.extend(Hummingbird.ModalControllerMixin, {
+HB.ModalsCropCoverController = Ember.ObjectController.extend(HB.ModalControllerMixin, {
   actions: {
     upload: function () {
       this.send("uploadCover", this.get('model.croppedImage'));

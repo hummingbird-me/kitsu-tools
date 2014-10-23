@@ -1,4 +1,4 @@
-Hummingbird.UserIndexController = Ember.ArrayController.extend(Hummingbird.HasCurrentUser, {
+HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
   needs: "user",
   user: Ember.computed.alias('controllers.user'),
   waifu_slug: Ember.computed.any('user.waifuSlug'),

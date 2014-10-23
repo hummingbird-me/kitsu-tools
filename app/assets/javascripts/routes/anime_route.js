@@ -1,4 +1,4 @@
-Hummingbird.AnimeRoute = Ember.Route.extend({
+HB.AnimeRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('fullAnime', params.id);
   },

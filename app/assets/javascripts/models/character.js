@@ -1,4 +1,4 @@
-Hummingbird.Character = DS.Model.extend({
+HB.Character = DS.Model.extend({
   name: DS.attr('string'),
   image: DS.attr('string')
 });

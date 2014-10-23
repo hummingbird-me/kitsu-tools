@@ -1,4 +1,4 @@
-Hummingbird.NotificationsController = Ember.ArrayController.extend({
+HB.NotificationsController = Ember.ArrayController.extend({
   sortProperties: ['created_at'],
   sortAscending: false
 });

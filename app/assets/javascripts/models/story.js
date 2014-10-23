@@ -1,4 +1,4 @@
-Hummingbird.Story = DS.Model.extend({
+HB.Story = DS.Model.extend({
   type: DS.attr('string'),
   user: DS.belongsTo('user'),
   poster: DS.belongsTo('user'),

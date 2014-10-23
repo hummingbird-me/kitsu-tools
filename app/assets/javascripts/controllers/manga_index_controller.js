@@ -1,4 +1,4 @@
-Hummingbird.MangaIndexController = Ember.ObjectController.extend({
+HB.MangaIndexController = Ember.ObjectController.extend({
   activeTab: "Genres",
 
   showGenres: Ember.computed.equal('activeTab', 'Genres'),

@@ -1,4 +1,4 @@
-Hummingbird.SortableMixin = Em.Mixin.create(JQ.Widget,{
+HB.SortableMixin = Em.Mixin.create(JQ.Widget,{
   uiType: 'sortable',
   uiOptions: ['disabled', 'appendTo', 'axis', 'cancel', 'helper',
             'containment', 'cursor', 'delay', 'revert', 'tolerance',

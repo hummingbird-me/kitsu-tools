@@ -1,4 +1,4 @@
-Hummingbird.AnimeFranchisesController = Ember.ArrayController.extend({
+HB.AnimeFranchisesController = Ember.ArrayController.extend({
   // A show can belong to multiple franchises, this property will return a list
   // of all of the shows from the set of franchises.
   franchiseAnime: function () {

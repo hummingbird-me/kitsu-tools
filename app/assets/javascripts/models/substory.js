@@ -1,4 +1,4 @@
-Hummingbird.Substory = DS.Model.extend({
+HB.Substory = DS.Model.extend({
   type: DS.attr('string'),
   createdAt: DS.attr('date'),
   newStatus: DS.attr('string'),

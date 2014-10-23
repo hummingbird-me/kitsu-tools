@@ -1,4 +1,4 @@
-Hummingbird.UserController = Ember.ObjectController.extend(Hummingbird.HasCurrentUser, {
+HB.UserController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   coverUpload: Ember.Object.create(),
   coverUrl: Ember.computed.any('coverUpload.croppedImage', 'model.coverImageUrl'),
   coverImageStyle: function () {

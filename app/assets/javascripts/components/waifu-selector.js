@@ -1,4 +1,4 @@
-Hummingbird.WaifuSelectorComponent = Em.Component.extend({
+HB.WaifuSelectorComponent = Em.Component.extend({
   selectedChar: null,
   searchText: null,
   tagName: 'input',

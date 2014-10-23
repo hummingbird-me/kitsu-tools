@@ -1,11 +1,11 @@
-Hummingbird.ReviewsShowRoute = Ember.Route.extend(Hummingbird.ResetScroll, {
+HB.ReviewsShowRoute = Ember.Route.extend(HB.ResetScroll, {
 
   model: function(params) {
     return this.store.find('review', params.review_id);
   },
 
   afterModel: function(resolvedModel) {
-    return Hummingbird.TitleManager.setTitle(this.modelFor('anime').get('displayTitle') + " Review by " + resolvedModel.get('user.username'));
+    return HB.TitleManager.setTitle(this.modelFor('anime').get('displayTitle') + " Review by " + resolvedModel.get('user.username'));
   },
 
   actions: {

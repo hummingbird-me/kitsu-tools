@@ -1,7 +1,7 @@
-Hummingbird.QuickUpdateItemController = Ember.ObjectController.extend({
+HB.QuickUpdateItemController = Ember.ObjectController.extend({
   loading: false,
 
-  isComplete: Hummingbird.computed.propertyEqual('episodesWatched', "anime.episodeCount"),
+  isComplete: HB.computed.propertyEqual('episodesWatched', "anime.episodeCount"),
   isPTW: Em.computed.equal('status', "Plan to Watch"),
 
   percentComplete: function() {

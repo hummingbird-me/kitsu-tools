@@ -1,4 +1,4 @@
-Hummingbird.AdUnitComponent = Ember.Component.extend({
+HB.AdUnitComponent = Ember.Component.extend({
   classNames: ['ad-unit'],
   adClass: null,
   adId: null,

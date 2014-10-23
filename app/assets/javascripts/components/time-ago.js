@@ -1,4 +1,4 @@
-Hummingbird.TimeAgoComponent = Ember.Component.extend({
+HB.TimeAgoComponent = Ember.Component.extend({
   tagName: "span",
   time: null,
   interval: null,

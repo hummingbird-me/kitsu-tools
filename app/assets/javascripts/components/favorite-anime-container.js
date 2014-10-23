@@ -1,4 +1,4 @@
-Hummingbird.FavoriteAnimeContainerComponent = Em.Component.extend(Hummingbird.SortableMixin, Ember.SortableMixin, {
+HB.FavoriteAnimeContainerComponent = Em.Component.extend(HB.SortableMixin, Ember.SortableMixin, {
   tagName: 'ul',
   classNames: 'media-grid',
   connectWith: '.grid-thumb',

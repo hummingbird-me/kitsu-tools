@@ -1,10 +1,10 @@
-Hummingbird.AnimeIndexRoute = Ember.Route.extend(Hummingbird.ResetScroll, {
+HB.AnimeIndexRoute = Ember.Route.extend(HB.ResetScroll, {
   model: function() {
     return this.modelFor('anime');
   },
 
   afterModel: function(resolvedModel) {
-    return Hummingbird.TitleManager.setTitle(resolvedModel.get('displayTitle'));
+    return HB.TitleManager.setTitle(resolvedModel.get('displayTitle'));
   },
 
   actions: {

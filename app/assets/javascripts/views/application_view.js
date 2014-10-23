@@ -1,3 +1,3 @@
-Hummingbird.ApplicationView = Ember.View.extend({
+HB.ApplicationView = Ember.View.extend({
   templateName: "application"
 });

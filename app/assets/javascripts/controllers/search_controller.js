@@ -1,4 +1,4 @@
-Hummingbird.SearchController = Ember.Controller.extend({
+HB.SearchController = Ember.Controller.extend({
   filters: ["Everything", "Anime", "Manga", "User"],
   queryParams: ['query', 'filter'],
   performingSearch: false,

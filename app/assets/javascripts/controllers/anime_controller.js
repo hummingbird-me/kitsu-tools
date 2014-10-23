@@ -1,4 +1,4 @@
-Hummingbird.AnimeController = Ember.ObjectController.extend(Hummingbird.HasCurrentUser, {
+HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   needs: ['application'],
 
   isIndex: function() {

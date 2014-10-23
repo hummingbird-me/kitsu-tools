@@ -1,4 +1,4 @@
-Hummingbird.Video = DS.Model.extend({
+HB.Video = DS.Model.extend({
   embed: DS.attr('string'),
   episode: DS.belongsTo('episode')
 });

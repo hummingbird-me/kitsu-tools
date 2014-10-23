@@ -1,4 +1,4 @@
-Hummingbird.BootstrapTooltipComponent = Ember.Component.extend({
+HB.BootstrapTooltipComponent = Ember.Component.extend({
   tagName: 'a',
 
   initializeTooltip: function() {

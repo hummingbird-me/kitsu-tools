@@ -1,4 +1,4 @@
-Hummingbird.EpisodesIndexRoute = Ember.Route.extend(Hummingbird.Paginated, {
+HB.EpisodesIndexRoute = Ember.Route.extend(HB.Paginated, {
   fetchPage: function(page) {
     return this.store.find('episode', {
       anime_id: this.modelFor('anime').get('id'),
@@ -8,6 +8,6 @@ Hummingbird.EpisodesIndexRoute = Ember.Route.extend(Hummingbird.Paginated, {
 
   afterModel: function(resolvedModel) {
     var anime = this.modelFor('anime');
-    return Hummingbird.TitleManager.setTitle(anime.get('canonicalTitle') + " Episodes");
+    return HB.TitleManager.setTitle(anime.get('canonicalTitle') + " Episodes");
   }
 });

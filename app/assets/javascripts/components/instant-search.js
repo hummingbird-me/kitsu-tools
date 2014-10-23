@@ -1,4 +1,4 @@
-Hummingbird.InstantSearchComponent = Ember.Component.extend({
+HB.InstantSearchComponent = Ember.Component.extend({
   query: "",
   searchResults: [],
 

@@ -1,4 +1,4 @@
-Hummingbird.ExpandingTextareaComponent = Ember.TextArea.extend({
+HB.ExpandingTextareaComponent = Ember.TextArea.extend({
   registerAutosize: function() {
     this.$().autosize();
   }.on('didInsertElement'),

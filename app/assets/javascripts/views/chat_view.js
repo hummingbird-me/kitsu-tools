@@ -1,4 +1,4 @@
-Hummingbird.ChatView = Ember.View.extend({
+HB.ChatView = Ember.View.extend({
   shouldScrollToBottom: true,
   ignoreNextScroll: false,
 

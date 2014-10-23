@@ -1,8 +1,8 @@
-Hummingbird.Router.reopen({
+HB.Router.reopen({
   location: 'history'
 });
 
-Hummingbird.Router.map(function() {
+HB.Router.map(function() {
   this.resource('anime', {path: '/anime/:id'}, function() {
     this.resource('episodes', {path: '/episodes'}, function () {
        this.route('show', {path: '/:episode_id'});

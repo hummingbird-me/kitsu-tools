@@ -1,4 +1,4 @@
-Hummingbird.RadioButtonComponent = Ember.Component.extend({
+HB.RadioButtonComponent = Ember.Component.extend({
   tagName: 'input',
   type: 'radio',
   attributeBindings: ['type', 'htmlChecked:checked', 'value', 'name'],

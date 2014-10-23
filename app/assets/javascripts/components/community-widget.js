@@ -1,4 +1,4 @@
-Hummingbird.CommunityWidgetComponent = Ember.Component.extend({
+HB.CommunityWidgetComponent = Ember.Component.extend({
   classNames: ["community-widget-panel"],
   topics: [],
 

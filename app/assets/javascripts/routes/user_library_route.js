@@ -1,4 +1,4 @@
-Hummingbird.UserLibraryRoute = Ember.Route.extend({
+HB.UserLibraryRoute = Ember.Route.extend({
   model: function(params) {
     var user_id = this.modelFor('user').get('id');
     return this.store.find('libraryEntry', {
@@ -26,6 +26,6 @@ Hummingbird.UserLibraryRoute = Ember.Route.extend({
   },
 
   afterModel: function() {
-    return Hummingbird.TitleManager.setTitle(this.modelFor('user').get('id') + "'s Library");
+    return HB.TitleManager.setTitle(this.modelFor('user').get('id') + "'s Library");
   }
 });

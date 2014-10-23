@@ -1,4 +1,4 @@
-Hummingbird.TruncateTextComponent = Ember.Component.extend({
+HB.TruncateTextComponent = Ember.Component.extend({
   expanded: false,
 
 

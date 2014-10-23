@@ -1,4 +1,4 @@
-Hummingbird.QuickUpdateComponent = Ember.Component.extend({
+HB.QuickUpdateComponent = Ember.Component.extend({
   loading: true,
   page: 1,
   libraryEntries: [],
@@ -14,7 +14,7 @@ Hummingbird.QuickUpdateComponent = Ember.Component.extend({
     this.set('page', page);
     this.set('loading', true);
 
-    Hummingbird.PreloadStore.popEmberData("recent_library_entries", "library_entries", "libraryEntry", store, function() {
+    HB.PreloadStore.popEmberData("recent_library_entries", "library_entries", "libraryEntry", store, function() {
       return store.find('libraryEntry', {recent: true, page: page});
     }).then(function(entries) {
       self.set('libraryEntries', entries);

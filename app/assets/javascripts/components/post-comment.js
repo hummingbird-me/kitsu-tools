@@ -1,4 +1,4 @@
-Hummingbird.PostCommentComponent = Ember.Component.extend({
+HB.PostCommentComponent = Ember.Component.extend({
   classNames: ["status-update-panel"],
 
   didInsertElement: function() {

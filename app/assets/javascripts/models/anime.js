@@ -1,4 +1,4 @@
-Hummingbird.Anime = DS.Model.extend({
+HB.Anime = DS.Model.extend({
   canonicalTitle: DS.attr('string'),
   englishTitle: DS.attr('string'),
   romajiTitle: DS.attr('string'),

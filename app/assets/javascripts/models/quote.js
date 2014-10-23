@@ -1,4 +1,4 @@
-Hummingbird.Quote = DS.Model.extend({
+HB.Quote = DS.Model.extend({
   characterName: DS.attr('string'),
   content: DS.attr('string'),
   username: DS.attr('string'),

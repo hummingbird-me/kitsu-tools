@@ -1,3 +1,3 @@
-Hummingbird.Producer = DS.Model.extend({
+HB.Producer = DS.Model.extend({
   name: DS.attr('string')
 });

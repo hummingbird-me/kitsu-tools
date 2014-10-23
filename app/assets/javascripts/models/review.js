@@ -1,4 +1,4 @@
-Hummingbird.Review = DS.Model.extend({
+HB.Review = DS.Model.extend({
   summary: DS.attr('string'),
   user: DS.belongsTo('user'),
   anime: DS.belongsTo('anime', { async: true }),
@@ -16,6 +16,6 @@ Hummingbird.Review = DS.Model.extend({
 
 
   wilsonScore: function() {
-    return Hummingbird.utils.wilsonScore(this.get('positiveVotes'), this.get('totalVotes'));
+    return HB.utils.wilsonScore(this.get('positiveVotes'), this.get('totalVotes'));
   }.property('positiveVotes', 'totalVotes')
 });

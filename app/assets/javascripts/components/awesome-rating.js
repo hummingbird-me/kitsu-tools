@@ -1,4 +1,4 @@
-Hummingbird.AwesomeRatingComponent = Ember.Component.extend({
+HB.AwesomeRatingComponent = Ember.Component.extend({
   classNames: ["awesome-rating-widget"],
   type: "advanced",
   editable: false,

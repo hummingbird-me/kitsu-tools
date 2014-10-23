@@ -1,4 +1,4 @@
-Hummingbird.User = DS.Model.extend({
+HB.User = DS.Model.extend({
   username: Ember.computed.alias('id'),
   coverImageUrl: DS.attr('string'),
   avatarTemplate: DS.attr('string'),

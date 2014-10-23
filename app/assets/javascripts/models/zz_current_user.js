@@ -1,4 +1,4 @@
-Hummingbird.CurrentUser = Hummingbird.User.extend({
+HB.CurrentUser = HB.User.extend({
   newUsername: DS.attr('string'),
   email: DS.attr('string'),
   newPassword: DS.attr('string'),

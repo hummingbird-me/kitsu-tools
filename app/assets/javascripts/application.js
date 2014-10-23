@@ -23,10 +23,12 @@ if (!window.location.href.match('/sign-in')) {
 
 $("#ember-root").html("");
 
-var Hummingbird = Ember.Application.create({
+var HB = Ember.Application.create({
   rootElement: "#ember-root",
   utils: {}
 });
+
+var Hummingbird = HB;
 
 Ember.LinkView.reopen({
   attributeBindings: ['href', 'title', 'rel', 'data-hover']

@@ -1,4 +1,4 @@
-Hummingbird.UserFollowersRoute = Ember.Route.extend(Hummingbird.Paginated, {
+HB.UserFollowersRoute = Ember.Route.extend(HB.Paginated, {
   fetchPage: function(page) {
     return this.store.find('user', {
       followers_of: this.modelFor('user').get('id'),
@@ -7,6 +7,6 @@ Hummingbird.UserFollowersRoute = Ember.Route.extend(Hummingbird.Paginated, {
   },
   
   afterModel: function() {
-    return Hummingbird.TitleManager.setTitle(this.modelFor('user').get('username') + "'s Followers");
+    return HB.TitleManager.setTitle(this.modelFor('user').get('username') + "'s Followers");
   }
 });

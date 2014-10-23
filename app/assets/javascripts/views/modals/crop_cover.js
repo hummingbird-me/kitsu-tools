@@ -1,4 +1,4 @@
-Hummingbird.ModalsCropCoverView = Ember.View.extend({
+HB.ModalsCropCoverView = Ember.View.extend({
   cropImage: function(c) {
     var self = this,
         element = this.get('element'),

@@ -1,4 +1,4 @@
-Hummingbird.DashboardController = Ember.ArrayController.extend({
+HB.DashboardController = Ember.ArrayController.extend({
 
   currentTab: "dashboard",
 

@@ -1,6 +1,6 @@
-Hummingbird.SettingsRoute = Ember.Route.extend({
+HB.SettingsRoute = Ember.Route.extend({
   afterModel: function(resolvedModel) {
-    return Hummingbird.TitleManager.setTitle('Settings');
+    return HB.TitleManager.setTitle('Settings');
   },
   actions: {
     willTransition: function(transition) {
