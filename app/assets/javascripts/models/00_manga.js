@@ -14,7 +14,7 @@ HB.Manga = DS.Model.extend({
     currentUser = void 0;
     pref = void 0;
     title = void 0;
-    currentUser = Hummingbird.__container__.lookup("controller:currentUser");
+    currentUser = HB.__container__.lookup("controller:currentUser");
     title = this.get("romajiTitle");
     if (title === null) {
       title = this.get("englishTitle");
