@@ -19,6 +19,14 @@ HB.StoryView = Ember.View.extend({
     }
   },
 
+  hideSpoilers: function() {
+    if (this.get('content.type') === "comment") {
+      Em.run.scheduleOnce('afterRender', this, function() {
+        this.$(".spoiler").spoilerAlert();
+      });
+    }
+  }.on('didInsertElement').observes('content.showAll', 'content.loadingAll'),
+
   didInsertElement: function() {
     var storyType = this.get('content.type'),
         self = this;
@@ -28,7 +36,6 @@ HB.StoryView = Ember.View.extend({
       this.$("img").load(function() {
         self.truncateLongComments();
       });
-      this.$(".spoiler").spoilerAlert();
     }
   }
 });
