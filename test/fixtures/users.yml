@@ -104,7 +104,7 @@ vikhyat:
   mal_import_in_progress: false
 
 josh:
-  email: josh@hummingbird.ly
+  email: josh@hummingbird.me
   name: Josh
   encrypted_password: $2a$10$I9j/S6n18lj20w2pExihRuvmR2o60AaNOfbSRmbYZGeklnv402pxO
   reset_password_token:

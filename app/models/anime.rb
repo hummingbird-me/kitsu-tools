@@ -231,12 +231,14 @@ class Anime < ActiveRecord::Base
     }.compact)
     anime.save!
     # Staff castings
+    hash[:staff] ||= []
     hash[:staff].each do |staff|
       Casting.create_or_update_from_hash staff.merge({
         castable: anime
       })
     end
     # VA castings
+    hash[:characters] ||= []
     hash[:characters].each do |ch|
       character = Character.create_or_update_from_hash ch
       if ch[:voice_actors].length > 0

@@ -34,12 +34,12 @@ class StoriesControllerTest < ActionController::TestCase
   end
 
   test "cannot delete stories if not authorized" do
-    sign_in users(:josh)
+    sign_in users(:vikhyat)
 
     story = Action.broadcast(
       action_type: "created_profile_comment",
-      user: users(:vikhyat),
-      poster: users(:vikhyat),
+      user: users(:josh),
+      poster: users(:josh),
       comment: "Test"
     )
 
