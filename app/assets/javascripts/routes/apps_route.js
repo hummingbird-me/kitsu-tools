@@ -7,8 +7,9 @@ HB.AppsRoute = Ember.Route.extend({
     return [
       {
         "name": "Tenpenchii",
-        "type": "Android",
-        "cover": "",
+        "form": "Mobile",
+        "platform": "Android",
+        "screenshots": [""],
         "desc": "Tenpenchii is a Hummingbird client for Android devices with \
               a modern user interface and amazing functionality.",
         "links": [
@@ -18,8 +19,9 @@ HB.AppsRoute = Ember.Route.extend({
       },
       {
         "name": "Taiga",
-        "type": "Windows",
-        "cover": "",
+        "form": "Desktop",
+        "platform": "Windows",
+        "screenshots": [""],
         "desc": "Taiga helps you manage your list, discover new series, share watched episodes \
               and download new ones.",
         "links": [
@@ -29,8 +31,9 @@ HB.AppsRoute = Ember.Route.extend({
       },
       {
         "name": "HAPU",
-        "type": "Mac",
-        "cover": "",
+        "form": "Desktop",
+        "platform": "Mac",
+        "screenshots": [""],
         "desc": "HAPU is a mac menubar app that allows you to interact with Hummingbird \
               and automatically update your anime progress.",
         "links": [
@@ -40,18 +43,20 @@ HB.AppsRoute = Ember.Route.extend({
       },
       {
         "name": "Anitro Mobile",
-        "type": "Windows Phone",
-        "cover": "",
+        "form": "Mobile",
+        "platform": "Windows Phone",
+        "screenshots": [""],
         "desc": "Anitro is an application for Windows Phone 8.1 that allows you to View and Manage your entire profile.",
         "links": [
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/anitro-windows-8-1-windows-phone-8-1/3824" },
           { "name": "Download", "link": "http://www.windowsphone.com/en-us/store/app/anitro/6377b104-7df2-4d29-8ebb-88527728e673" },
         ]
       },
-       {
+      {
         "name": "Anitro",
-        "type": "Windows ",
-        "cover": "",
+        "form": "Desktop",
+        "platform": "Windows",
+        "screenshots": [""],
         "desc": "Anitro is an application for Windows 8.1 that allows you to View and Manage your entire profile.",
         "links": [
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/anitro-windows-8-1-windows-phone-8-1/3824" },
@@ -60,8 +65,9 @@ HB.AppsRoute = Ember.Route.extend({
       },
       {
         "name": "Zenbu",
-        "type": "Cross Platform",
-        "cover": "",
+        "form": "Desktop",
+        "platform": "Cross Platform",
+        "screenshots": [""],
         "desc": "Zenbu is a cross-platform, multi functional, anime and manga desktop \
               management application with exceptional features.",
         "links": [
