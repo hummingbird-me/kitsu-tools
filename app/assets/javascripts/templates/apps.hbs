@@ -1,31 +1,68 @@
+<div class="apps-header">
+  <div class="container">
+    <h1>Applications</h1>
+    <p>The Hummingbird developer community is incredibly talented <br> and has created a variety of useful apps with <a href="#">our API.</a></p>
+    <p>Are you a developer? <a href="#">We’re open-source!</a></p>
+  </div>
+</div>
 <div class="apps-page">
-  <div class="row">
-    <div class="apps-page-card">
-      <div class="app-card app-inner">
-        <h2 class="apps-page-title">Hummingbird Community Apps</h2>
-        <p class="apps-page-desc">
-          On this site, you can find a list of apps and tools for Hummingbird, 
-          developed and maintained by our community. Please note, that these
-          are all third party applications, for any requests or suggestions, 
-          please contact the developer of the respective application.
-        </p>
-      </div>
-    </div>
-
+  <h2>Mobile Apps</h2>
+  <div class="block-grid-md-2 block-grid-sm-1">
     {{#each}}
-      <div class="apps-page-card">
+      <div class="block-grid-item">
         <div class="app-card">
           {{!--
             <img class="app-image" {{bind-attr src=cover}} />
           --}}
           <div class="app-inner">
             <h3 class="app-title">{{name}} <span class="app-type">{{type}}</span></h3>
+            <small class="app-author">by <a href="#">Tempest</a></small>
+            <hr>
             <p class="app-desc">{{desc}}</p>
-            <p class="app-link">
+
+            <div class="app-link">
               {{#each links}}
-                <a {{bind-attr href=link}}>{{name}}</a> <span class="app-bull">&bull;</span>
+                <a {{bind-attr href=link}}>{{name}}</a>
               {{/each}}
-            </p>
+            </div>
+            <div class="app-screens block-grid-md-2 block-grid-sm-1">
+              <div class="block-grid-item">
+                <img src="http://www.placehold.it/500/500">
+              </div>
+              <div class="block-grid-item">
+                <img src="http://www.placehold.it/500/500">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  
+  <h2>Desktop Apps</h2>
+  <div class="block-grid-md-2 block-grid-sm-1">
+    {{#each}}
+      <div class="block-grid-item">
+        <div class="app-card">
+          {{!--
+            <img class="app-image" {{bind-attr src=cover}} />
+          --}}
+          <div class="app-inner">
+            <h3 class="app-title">{{name}} <span class="app-type">{{type}}</span></h3>
+            <small class="app-author">by <a href="#">Tempest</a></small>
+            <hr>
+            <p class="app-desc">{{desc}}</p>
+
+            <div class="app-link">
+              {{#each links}}
+                <a {{bind-attr href=link}}>{{name}}</a>
+              {{/each}}
+            </div>
+            <div class="app-screens block-grid-sm-1">
+              <div class="block-grid-item">
+                <img src="http://www.placekitten.com/1000/500">
+              </div>
+            </div>
           </div>
         </div>
       </div>
