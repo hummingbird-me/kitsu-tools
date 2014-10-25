@@ -9,12 +9,23 @@ HB.AppsRoute = Ember.Route.extend({
         "name": "Tenpenchii",
         "form": "Mobile",
         "platform": "Android",
-        "screenshots": [""],
+        "screenshots": ["http://cl.ly/image/0U2x340A1A3y/tenpenchii-1.jpg", "http://cl.ly/image/3R0O0f441m0H/tenpenchii-2.jpg"],
         "desc": "Tenpenchii is a Hummingbird client for Android devices with \
               a modern user interface and amazing functionality.",
         "links": [
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/android-tenpenchii/582" },
           { "name": "Download", "link": "https://play.google.com/store/apps/details?id=com.fractalemagic" },
+        ]
+      },
+      {
+        "name": "HummingList",
+        "form": "Mobile",
+        "platform": "iOS",
+        "screenshots": [""],
+        "desc": "Manage your Hummingbird library on the go from your iPhone, iPad or iPod touch.",
+        "links": [
+          { "name": "Discuss", "link": "https://forums.hummingbird.me/t/humminglist-ios-app/17003" },
+          { "name": "Download", "link": "https://itunes.apple.com/us/app/humminglist/id866713967?mt=8" },
         ]
       },
       {

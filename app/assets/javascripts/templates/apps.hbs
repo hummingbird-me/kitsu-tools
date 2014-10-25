@@ -26,12 +26,11 @@
               {{/each}}
             </div>
             <div class="app-screens block-grid-md-2 block-grid-sm-1">
-              <div class="block-grid-item">
-                <img src="http://www.placehold.it/500/500">
-              </div>
-              <div class="block-grid-item">
-                <img src="http://www.placehold.it/500/500">
-              </div>
+              {{#each screenshots}}
+                <div class="block-grid-item">
+                  <img {{bind-attr src=this}}>
+                </div>
+              {{/each}}
             </div>
           </div>
         </div>
