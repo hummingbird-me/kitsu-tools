@@ -6,7 +6,7 @@ env:
     - secure: JN2mfVHbKBmqYSWCUanSyKS4TfDxRdBIkkdKgww58uvUVrgnYKzGlV+T0KQrx8GoAG32H/S3C9gFwOYs7Zh/M7a74IPNaXiQmPvON4Ao1xYSpgNpVeFai4EK1342shLCLxu5v9xdKnddBFQ15m6xH0TCByTqcEz66fgkjFzhi9A=
     - secure: cjx/dR9jqO9mkaFMK/5I3A2cD7DU/PebidQDJMjukAKRoRIM7YvL7oneFJCuYXj0XfuXSi1k+92A++msLEyZnI0cTuQ8HcDMoZQI89m88mvkxwxADy57M2w3DdQfrLtWMBVT6xxykHpddltKM4ABYW1/zOy9A0t3ABFbrLjgKYQ=
 rvm:
-  - 2.1.2
+  - 2.1.3
 install: "travis_retry bin/wad"
 before_script:
   - bundle exec rake db:create db:structure:load
