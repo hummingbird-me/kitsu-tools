@@ -85,7 +85,10 @@ class AdminController < ApplicationController
   end
 
   def deploy
-    system "/var/hummingbird/deploy.sh" if Rails.env.production?
-    redirect_to '/kotodama'
+    if Rails.env.production?
+      render text: `/var/hummingbird/deploy.sh`
+    else
+      render text: "Can only deploy in production."
+    end
   end
 end
