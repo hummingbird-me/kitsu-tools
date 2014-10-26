@@ -2,6 +2,9 @@ HB.AppsRoute = Ember.Route.extend({
   
   model: function(){
 
+    // Screenshot base asset directory
+    var sb = "/assets/app-screens/";
+
     // The apps page only lists actively supported, community made apps.
     // Since this list is mostly static, it will be hardcoded as a model.
     return [
@@ -12,7 +15,7 @@ HB.AppsRoute = Ember.Route.extend({
         ],
         "form": "Mobile",
         "platform": "Android", 
-        "screenshots": ["http://cl.ly/image/0U2x340A1A3y/tenpenchii-1.jpg", "http://cl.ly/image/3R0O0f441m0H/tenpenchii-2.jpg"],
+        "screenshots": [sb+"tenpenchii/tenpenchii-1.jpg", sb+"tenpenchii/tenpenchii-2.jpg"],
         "desc": "Tenpenchii is a Hummingbird client for Android devices with \
               a modern user interface and amazing functionality.",
         "links": [
@@ -27,7 +30,7 @@ HB.AppsRoute = Ember.Route.extend({
         ],
         "form": "Mobile",
         "platform": "iOS",
-        "screenshots": ["http://cl.ly/image/2m080a251j26/humminglist-1.jpg", "http://cl.ly/image/0O391e30192u/humminglist-2.jpg"],
+        "screenshots": [sb+"humminglist/humminglist-1.jpg", sb+"humminglist/humminglist-2.jpg"],
         "desc": "Manage your Hummingbird library on the go from your iPhone, iPad or iPod touch.",
         "links": [
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/humminglist-ios-app/17003" },
@@ -41,7 +44,7 @@ HB.AppsRoute = Ember.Route.extend({
         ],
         "form": "Desktop",
         "platform": "Windows",
-        "screenshots": ["http://cl.ly/image/1N3P0Q153Y0r/taiga-1.jpg"],
+        "screenshots": [sb+"taiga/taiga-1.jpg"],
         "desc": "Taiga helps you manage your list, discover new series, share watched episodes \
               and download new ones.",
         "links": [
@@ -56,7 +59,7 @@ HB.AppsRoute = Ember.Route.extend({
         ],
         "form": "Desktop",
         "platform": "Mac",
-        "screenshots": ["http://cl.ly/image/2H3C0g1I2M0g/hapu-1.jpg"],
+        "screenshots": [sb+"hapu/hapu-1.jpg"],
         "desc": "HAPU is a mac menubar app that allows you to interact with Hummingbird \
               and automatically update your anime progress.",
         "links": [
@@ -71,7 +74,7 @@ HB.AppsRoute = Ember.Route.extend({
         ],
         "form": "Mobile",
         "platform": "Windows Phone",
-        "screenshots": ["http://cl.ly/image/2F2i0o1c0h27/anitro-mobile-1.jpg", "http://cl.ly/image/462c3N2f0u0F/anitro-mobile-2.jpg"],
+        "screenshots": [sb+"anitro-mobile/anitro-mobile-1.jpg", sb+"anitro-mobile/anitro-mobile-1.jpg"],
         "desc": "Anitro is an application for Windows Phone 8.1 that allows you to View and Manage your entire profile.",
         "links": [
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/anitro-windows-8-1-windows-phone-8-1/3824" },
@@ -85,7 +88,7 @@ HB.AppsRoute = Ember.Route.extend({
         ],
         "form": "Desktop",
         "platform": "Windows",
-        "screenshots": ["http://cl.ly/image/1j113b3v1d3r/anitro-1.jpg"],
+        "screenshots": [sb+"anitro/anitro-1.jpg"],
         "desc": "Anitro is an application for Windows 8.1 that allows you to View and Manage your entire profile.",
         "links": [
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/anitro-windows-8-1-windows-phone-8-1/3824" },
@@ -99,7 +102,7 @@ HB.AppsRoute = Ember.Route.extend({
         ],
         "form": "Desktop",
         "platform": "Cross Platform",
-        "screenshots": ["http://cl.ly/image/2c0W3b441x38/zenbu-1.jpg"],
+        "screenshots": [sb+"zenbu/zenbu-1.jpg"],
         "desc": "Zenbu is a cross-platform, multi functional, anime and manga desktop \
               management application with exceptional features.",
         "links": [
