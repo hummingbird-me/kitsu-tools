@@ -20,6 +20,12 @@
   @extend .container;
   padding-top: 20px;
 
+  hr {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    border-top: 1px solid #D5D5D5;
+  }
+
   .apps-page-title {
     margin-top: 0;
   }

@@ -16,7 +16,9 @@
           --}}
           <div class="app-inner">
             <h3 class="app-title">{{name}} <span class="app-type">{{platform}}</span></h3>
-            <small class="app-author">by <a href="#">Tempest</a></small>
+            {{#each author}}
+              <small class="app-author">by  <a {{bind-attr href=link}}>{{name}}</a></small>
+            {{/each}}
             <hr>
             <p class="app-desc">{{desc}}</p>
 
@@ -28,7 +30,7 @@
             <div class="app-screens block-grid-md-2 block-grid-sm-1">
               {{#each screenshots}}
                 <div class="block-grid-item">
-                  <img {{bind-attr src=this}}>
+                  <img src="{{unbound this}}">
                 </div>
               {{/each}}
             </div>
@@ -37,7 +39,7 @@
       </div>
     {{/each}}
   </div>
-  
+  <hr>  
   <h2>Desktop Apps</h2>
   <div class="block-grid-md-2 block-grid-sm-1">
     {{#each desktopApps}}
@@ -48,7 +50,9 @@
           --}}
           <div class="app-inner">
             <h3 class="app-title">{{name}} <span class="app-type">{{platform}}</span></h3>
-            <small class="app-author">by <a href="#">Tempest</a></small>
+            {{#each author}}
+              <small class="app-author">by  <a {{bind-attr href=link}}>{{name}}</a></small>
+            {{/each}}
             <hr>
             <p class="app-desc">{{desc}}</p>
 
@@ -58,9 +62,11 @@
               {{/each}}
             </div>
             <div class="app-screens block-grid-sm-1">
-              <div class="block-grid-item">
-                <img src="http://www.placekitten.com/1000/500">
-              </div>
+              {{#each screenshots}}
+                <div class="block-grid-item">
+                  <img src="{{unbound this}}">
+                </div>
+              {{/each}}
             </div>
           </div>
         </div>
