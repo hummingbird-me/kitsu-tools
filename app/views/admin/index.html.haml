@@ -40,13 +40,10 @@
                 %input.button.small.prefix(type="submit" value="Set")
               .large-2.columns
         .panel
-          %h5 Users To Follow
-          %form(method="GET" action="/kotodama/users_to_follow_submit")
+          %h5 Deploy
+          = form_tag "/kotodama/deploy", method: 'post'
             .row.collapse
-              .large-8.columns
-                %input(type="text" placeholder="Username" class="username_input" name="user_id") 
-              .large-4.columnsi
-                %input(type="hidden" name="to_follow" value="true")
+              .large-12.columns
                 %input.button.small.prefix(type="submit" value="Submit")
         .panel
           %h5 Recommended Users

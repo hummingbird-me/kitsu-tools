@@ -1,8 +1,8 @@
 require_dependency 'mal_import'
 
 class AdminController < ApplicationController
-
   before_filter :allow_only_admins
+
   def allow_only_admins
     # This shouldn't be needed becuse we also check for admin-ness in the 
     # routes. Still doing this just to be safe. 
@@ -67,7 +67,7 @@ class AdminController < ApplicationController
     to_follow = params[:to_follow]
     user.to_follow = to_follow
     user.save
-    redirect_to '/kotodama' 
+    redirect_to '/kotodama'
   end
 
   def blotter_set
@@ -78,9 +78,17 @@ class AdminController < ApplicationController
     })
     redirect_to '/kotodama'
   end
+
   def blotter_clear
     Blotter.clear
     redirect_to '/kotodama'
   end
 
+  def deploy
+    if Rails.env.production?
+      render text: `/var/hummingbird/deploy.sh`
+    else
+      render text: "Can only deploy in production."
+    end
+  end
 end
