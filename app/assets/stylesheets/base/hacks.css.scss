@@ -437,10 +437,3 @@ fieldset[disabled] .twitter-typeahead .tt-input {
 .tt-dropdown-menu .tt-suggestion p {
   margin: 0;
 }
-
-/* Unicorn cursor! Class should be applied to body. */
-.unicorn-cursor {
-  &, a, a:hover {
-    cursor: url('/public/unicorn.gif'), auto;
-  }
-}
