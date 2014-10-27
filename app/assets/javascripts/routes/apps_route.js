@@ -94,21 +94,6 @@ HB.AppsRoute = Ember.Route.extend({
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/anitro-windows-8-1-windows-phone-8-1/3824" },
           { "name": "Download", "link": "http://apps.microsoft.com/windows/en-us/app/anitro/665e06bf-b4de-4cde-8ae3-c20c1a98b12b" },
         ]
-      },
-      {
-        "name": "Zenbu",
-        "author": [
-          { "name": "Ippytraxx", "link": "http://hummingbird.me/users/Ippytraxx" },
-        ],
-        "form": "Desktop",
-        "platform": "Cross Platform",
-        "screenshots": [sb+"zenbu/zenbu-1.jpg"],
-        "desc": "Zenbu is a cross-platform, multi functional, anime and manga desktop \
-              management application with exceptional features.",
-        "links": [
-          { "name": "Discuss", "link": "https://forums.hummingbird.me/t/zenbu-development-log-new-installer-in-development/1583" },
-          { "name": "Download", "link": "https://bitbucket.org/Ippytraxx/zenbu/downloads" },
-        ]
       }
     ]
 
