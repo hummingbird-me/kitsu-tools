@@ -5,5 +5,6 @@ HB.CurrentUser = HB.User.extend({
   sfwFilter: DS.attr('boolean'),
   lastBackup: DS.attr('date'),
   hasDropbox: DS.attr('boolean'),
-  hasFacebook: DS.attr('boolean')
+  hasFacebook: DS.attr('boolean'),
+  confirmed: DS.attr('boolean')
 });

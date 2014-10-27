@@ -4,7 +4,8 @@ class CurrentUserSerializer < UserSerializer
              :sfw_filter,
              :last_backup,
              :has_dropbox?,
-             :has_facebook?
+             :has_facebook?,
+             :confirmed?
   def newUsername
     object.name
   end

@@ -87,3 +87,13 @@
     <a class="btn btn-xs" {{action 'dismissBlotter'}}>Okay, got it!</a>
   </div>
 {{/if}}
+
+{{#unless currentUser.confirmed}}
+  <div class="blotter">
+    <i class="fa fa-2x fa-exclamation-circle"></i>
+    <p>Uh oh, it looks like you still haven't confirmed your email!</p>
+    <a class="btn btn-xs" {{action 'resendEmail'}}>
+      {{#if resentEmail}}Sent!{{else}}Resend{{/if}}
+    </a>
+  </div>
+{{/unless}}
