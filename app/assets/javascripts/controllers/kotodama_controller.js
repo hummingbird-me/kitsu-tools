@@ -62,8 +62,13 @@ HB.KotodamaController = Ember.ObjectController.extend({
     },
 
     clearBlotter: function(){
+      var self = this;
       $.get("/kotodama/blotter_clear", function(payload){
-        console.log('cleared blotter');
+        self.setProperties({
+          hasBlotter: false,
+          blotterMesg: "",
+          blotterLink: ""
+        });
       });
     }
   }
