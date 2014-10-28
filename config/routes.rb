@@ -89,6 +89,8 @@ Hummingbird::Application.routes.draw do
   # Settings
   get '/settings' => 'settings#index'
   namespace :settings do
+    post :resend_confirmation
+
     # Legacy routes
     get 'backup/:action', to: 'backup'
     # New routes

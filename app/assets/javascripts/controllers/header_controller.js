@@ -4,6 +4,7 @@ HB.HeaderController = Ember.Controller.extend(HB.HasCurrentUser, {
   showUpdater: false,
   showMenu: false,
   unreadNotifications: 0,
+  resentEmail: false,
 
   allowQuickUpdate: function() {
     return this.get('currentUser.isSignedIn') && this.get('controllers.application.currentRouteName') !== "dashboard";
@@ -50,6 +51,16 @@ HB.HeaderController = Ember.Controller.extend(HB.HasCurrentUser, {
     dismissBlotter: function () {
       window.localStorage.dismissedBlotter = this.get('blotter.message');
       this.notifyPropertyChange('showBlotter');
+    },
+    resendEmail: function () {
+      var self = this;
+      this.set('resentEmail', false);
+      ic.ajax({
+        url: '/settings/resend_confirmation',
+        type: 'POST'
+      }).then(function() {
+        self.set('resentEmail', true);
+      });
     }
   }
 });

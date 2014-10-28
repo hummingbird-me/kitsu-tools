@@ -46,6 +46,9 @@ HB.StoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
 
   actions: {
     submitReply: function() {
+      if (this.get('reply').replace(/\s/g, '').replace(/\[[a-z]+\](.?)\[\/[a-z]+\]/i, '$1').length === 0)
+        return;
+
       var self = this;
       this.store.find('user', this.get('currentUser.id')).then(function(user) {
         var reply = self.store.createRecord('substory', {

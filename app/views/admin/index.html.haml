@@ -41,7 +41,7 @@
               .large-2.columns
         .panel
           %h5 Deploy
-          = form_tag "/kotodama/deploy", method: 'post'
+          = form_tag("/kotodama/deploy", method: 'post') do
             .row.collapse
               .large-12.columns
                 %input.button.small.prefix(type="submit" value="Submit")

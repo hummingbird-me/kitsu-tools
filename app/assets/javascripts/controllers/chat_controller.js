@@ -6,9 +6,8 @@ HB.ChatController = Ember.ArrayController.extend(HB.HasCurrentUser, {
     sendMessage: function() {
       var message = this.get('message');
 
-      if (message.replace(/\s/g, '').length === 0) {
+      if (message.replace(/\s/g, '').replace(/\[[a-z]+\](.?)\[\/[a-z]+\]/i, '$1').length === 0)
         return;
-      }
 
       this.set('message', '');
 

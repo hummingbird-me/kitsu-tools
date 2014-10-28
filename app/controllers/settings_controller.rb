@@ -4,4 +4,9 @@ class SettingsController < ApplicationController
   def index
     render layout: 'redesign'
   end
+
+  def resend_confirmation
+    current_user.resend_confirmation_instructions
+    render json: true
+  end
 end
