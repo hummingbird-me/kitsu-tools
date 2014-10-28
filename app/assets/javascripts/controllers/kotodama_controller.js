@@ -1,5 +1,25 @@
 HB.KotodamaController = Ember.ObjectController.extend({
 
+  nonMalAnime: window.genericPreload.nonmal_anime,
+  blotter: window.genericPreload.blotter,
+  blotterMesg: "",
+  blotterLink: "",
+
+  hasBlotter: Ember.computed.notEmpty('blotter'),
+
+
+  init: function(){
+    var blotter = this.get('blotter');
+    if(blotter){
+      this.setProperties({
+        'blotterMesg': blotter.message,
+        'blotterLink': blotter.link
+      });
+    }
+
+    this._super();
+  },
+
   graphOptions: [],
   graphData: function(){
     var data = this.get('content'),
@@ -31,6 +51,21 @@ HB.KotodamaController = Ember.ObjectController.extend({
         }
       ]
     }
-  }.property('content')
+  }.property('content'),
+
+
+  actions: {
+    deploy: function(){
+      $.post("/kotodama/deploy", function(payload){
+        console.log('deploying...');
+      });
+    },
+
+    clearBlotter: function(){
+      $.get("/kotodama/blotter_clear", function(payload){
+        console.log('cleared blotter');
+      });
+    }
+  }
 
 });

@@ -31,6 +31,11 @@ class AdminController < ApplicationController
     @blotter = Blotter.get
     @hide_cover_image = true
     @hide_footer_ad = true
+
+    generic_preload! 'nonmal_anime', @anime_without_mal_id
+    generic_preload! 'blotter', @blotter
+
+    render_ember
   end
 
   def login_as_user

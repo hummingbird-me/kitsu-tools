@@ -1,0 +1,92 @@
+<div class="container">
+  <h1>Admin Panel</h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul>
+            <li><a class="btn" href="/kotodama/rails_admin">Biribiri Admin</a>
+            <li><a class="btn" href="/kotodama/sidekiq">Sidekiq Dashboard</a>
+            <li><a class="btn" href="/kotodama/pghero">PG Hero</a>
+          </ul>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Registrations over the last week</div>
+        <div class="panel-body">
+          {{ember-chart type="Line" data=graphData options=graphOptions}}
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Deploy Hummingbird</div>
+        <div class="panel-body">
+          <button class="form-control btn status-button" {{action 'deploy'}}>Good Luck!</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">Set Hummingbird Blotter</div>
+        <div class="panel-body">
+          {{#if hasBlotter}}
+            <div class="row">
+              <div class="col-md-8 col-xs-8">
+                <blockquote>
+                  {{blotterMesg}}
+                </blockquote>
+              </div>
+              <div class="col-md-4 col-xs-4">
+                <button class="form-control btn status-button" {{action 'clearBlotter'}}>
+                  <i class="fa fa-trash"></i> Clear
+                </button>
+              </div>
+            </div>
+          {{/if}}
+          <form method="get" action="/kotodama/blotter_set">
+            <input type="hidden" name="icon" value="fa-exclamation-circle" />
+            <div class="row">
+              <div class="col-md-4">
+                {{input type="text" value=blotterMesg name="message" class="form-control" placeholder="Blotter Message"}}
+              </div>
+              <div class="col-md-4">
+                {{input type="url" value=blotterLink name="link" class="form-control" placeholder="Blotter Link"}}
+              </div>
+              <div class="col-md-4">
+                <input type="submit" value="Set Blotter" class="form-control btn status-button" />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Import from MAL</div>
+        <div class="panel-body">
+          <form method="get" action="/kotodama/find_or_create_by_mal">
+            <div class="row">
+              <div class="col-md-4">
+                <select name="media" size="1" class="form-control">
+                  <option value="anime">Anime</option>
+                  <option value="manga">Manga</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <input type="number" name="mal_id" class="form-control" placeholder="MAL ID" />
+              </div>
+              <div class="col-md-4">
+                <input type="submit" value="Import" class="form-control btn status-button" />
+              </div>
+            </div>
+          </form>
+          <h3>Anime without MAL ID</h3>
+          {{#each nonMalAnime}}
+            [anime title]
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
