@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4 col-sm-4">
       <div class="panel panel-default">
         <div class="panel-body">
           <ul>
@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-8 col-sm-8">
       <div class="panel panel-default">
         <div class="panel-heading">Set Hummingbird Blotter</div>
         <div class="panel-body">
@@ -48,13 +48,13 @@
           <form method="get" action="/kotodama/blotter_set">
             <input type="hidden" name="icon" value="fa-exclamation-circle" />
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-4 col-xs-4">
                 {{input type="text" value=blotterMesg name="message" class="form-control" placeholder="Blotter Message"}}
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 col-xs-4">
                 {{input type="url" value=blotterLink name="link" class="form-control" placeholder="Blotter Link"}}
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 col-xs-4">
                 <input type="submit" value="Set Blotter" class="form-control btn status-button" />
               </div>
             </div>
@@ -67,16 +67,16 @@
         <div class="panel-body">
           <form method="get" action="/kotodama/find_or_create_by_mal">
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-4 col-xs-4">
                 <select name="media" size="1" class="form-control">
                   <option value="anime">Anime</option>
                   <option value="manga">Manga</option>
                 </select>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 col-xs-4">
                 <input type="number" name="mal_id" class="form-control" placeholder="MAL ID" />
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4 col-xs-4">
                 <input type="submit" value="Import" class="form-control btn status-button" />
               </div>
             </div>
