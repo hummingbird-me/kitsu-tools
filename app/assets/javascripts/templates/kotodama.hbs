@@ -82,11 +82,13 @@
             </div>
           </form>
           <h5>Anime without MAL ID</h5>
+          <ul>
           {{#each nonMalAnime}}
-            [anime title]
+            <li>{{#link-to 'anime' slug}}{{title}}{{/link-to}}</li>
           {{else}}
-            Nothing found.
+            <li>Nothing found.</li>
           {{/each}}
+          </ul>
         </div>
       </div>
     </div>
