@@ -24,15 +24,15 @@ HB.Router.map(function() {
     this.route('followers');
   });
 
-  this.route('search');
   this.route('sign-in');
   this.route('settings');
   this.route('dashboard');
-  this.route('development');
   this.route('notifications');
 
   this.route('chat');
-
   this.route('apps');
+  this.route('search');
+
   this.route('privacy');
+  this.route('kotodama');
 });
