@@ -6,7 +6,7 @@ HB.KotodamaController = Ember.ObjectController.extend({
   blotterLink: "",
 
   hasBlotter: Ember.computed.notEmpty('blotter'),
-
+  hasDeployed: false,
 
   init: function(){
     var blotter = this.get('blotter');
@@ -56,9 +56,14 @@ HB.KotodamaController = Ember.ObjectController.extend({
 
   actions: {
     deploy: function(){
+      this.set('hasDeployed', false);
       $.post("/kotodama/deploy", function(payload){
-        console.log('deploying...');
+        this.set('hasDeployed', true);
       });
+    },
+
+    reload: function(){
+      window.location.reload();
     },
 
     clearBlotter: function(){

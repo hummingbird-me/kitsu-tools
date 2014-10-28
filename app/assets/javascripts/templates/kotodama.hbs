@@ -24,6 +24,9 @@
         <div class="panel-heading">Deploy Hummingbird</div>
         <div class="panel-body">
           <button class="form-control btn status-button" {{action 'deploy'}}>Good Luck!</button>
+          {{#if hasDeployed}}
+            <button class="btn btn-success form-control" {{action 'reload'}}>Deployment successful!</button>
+          {{/if}}
         </div>
       </div>
     </div>
