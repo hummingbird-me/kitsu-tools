@@ -29,6 +29,9 @@ HB.UserIndexRoute = Ember.Route.extend(HB.Paginated, HB.ResetScroll, {
 
   actions: {
     postComment: function(comment) {
+      if (comment.replace(/\s/g, '').replace(/\[[a-z]+\](.?)\[\/[a-z]+\]/i, '$1').length === 0)
+        return;
+
       var story = this.store.createRecord('story', {
         type: 'comment',
         poster: this.get('currentUser.model.content'),
