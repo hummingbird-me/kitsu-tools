@@ -2,6 +2,7 @@ HB.KotodamaController = Ember.ObjectController.extend({
 
   nonMalAnime: window.genericPreload.nonmal_anime,
   blotter: window.genericPreload.blotter,
+  blotterMesgFix: "",
   blotterMesg: "",
   blotterLink: "",
 
@@ -13,7 +14,8 @@ HB.KotodamaController = Ember.ObjectController.extend({
     if(blotter){
       this.setProperties({
         'blotterMesg': blotter.message,
-        'blotterLink': blotter.link
+        'blotterLink': blotter.link,
+        'blotterMesgFix': blotter.message
       });
     }
 
@@ -64,6 +66,21 @@ HB.KotodamaController = Ember.ObjectController.extend({
 
     reload: function(){
       window.location.reload();
+    },
+
+    saveBlotter: function(){
+      var self = this,
+          query = "?icon=fa-exclamation-circle";
+
+      query += "&message="+encodeURIComponent(this.get('blotterMesg'));
+      query += "&link="+encodeURIComponent(this.get('blotterLink'));
+
+      $.get("/kotodama/blotter_set"+query, function(payload){
+        self.setProperties({
+          hasBlotter: true,
+          blotterMesgFix: self.get('blotterMesg')
+        });
+      });
     },
 
     clearBlotter: function(){

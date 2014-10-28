@@ -38,7 +38,7 @@
             <div class="row">
               <div class="col-md-8 col-xs-8">
                 <blockquote>
-                  {{blotterMesg}}
+                  {{blotterMesgFix}}
                 </blockquote>
               </div>
               <div class="col-md-4 col-xs-4">
@@ -48,20 +48,17 @@
               </div>
             </div>
           {{/if}}
-          <form method="get" action="/kotodama/blotter_set">
-            <input type="hidden" name="icon" value="fa-exclamation-circle" />
-            <div class="row">
-              <div class="col-md-4 col-xs-4">
-                {{input type="text" value=blotterMesg name="message" class="form-control" placeholder="Blotter Message"}}
-              </div>
-              <div class="col-md-4 col-xs-4">
-                {{input type="url" value=blotterLink name="link" class="form-control" placeholder="Blotter Link"}}
-              </div>
-              <div class="col-md-4 col-xs-4">
-                <input type="submit" value="Set Blotter" class="form-control btn status-button" />
-              </div>
+          <div class="row">
+            <div class="col-md-4 col-xs-4">
+              {{input type="text" value=blotterMesg class="form-control" placeholder="Blotter Message"}}
             </div>
-          </form>
+            <div class="col-md-4 col-xs-4">
+              {{input type="url" value=blotterLink class="form-control" placeholder="Blotter Link"}}
+            </div>
+            <div class="col-md-4 col-xs-4">
+              <button class="form-control btn status-button" {{action 'saveBlotter'}}>Save</button>
+            </div>
+          </div>
         </div>
       </div>
 
