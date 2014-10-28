@@ -32,10 +32,12 @@ class AdminController < ApplicationController
     @hide_cover_image = true
     @hide_footer_ad = true
 
-    generic_preload! 'nonmal_anime', @anime_without_mal_id
-    generic_preload! 'blotter', @blotter
+    if params[:old_kotodama].nil?
+      generic_preload! 'nonmal_anime', @anime_without_mal_id
+      generic_preload! 'blotter', @blotter
 
-    render_ember
+      render_ember
+    end
   end
 
   def login_as_user
