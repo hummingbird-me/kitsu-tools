@@ -70,6 +70,7 @@
         background: #F4F4F6;
         .username, .message {
           float: left;
+          line-height: 28px;
         }
         .username {
           width: 15%;
@@ -161,15 +162,32 @@
         width: 70%;
         padding-left: 10px;
         border: none;
+        font-family: "klavika", Helvetica, Arial, sans-serif;
+        font-size: 16px;
       }
 
       button {
-        height: 100%;
-        width: 10%;
-        border-radius: 0;
         margin: 0;
+        width: 10%;
+        height: 100%;
+        border-radius: 0;
+        background-color: #4B5360;
+        color: #AAAAAB;
+        font-size: 16px;
+        line-height: 32px;
+        font-family: "klavika", Helvetica, Arial, sans-serif;
+        transition: color .2s ease-in;
         @media (max-width: 768px) {
           width: 30%;
+        }
+        &:hover {
+          color: white;
+        }
+        &:before {
+          content: "\f0a9  ";
+          font: normal normal normal 16px/1 FontAwesome;
+          line-height: 32px;
+          -webkit-font-smoothing: antialiased;
         }
       }
     }
