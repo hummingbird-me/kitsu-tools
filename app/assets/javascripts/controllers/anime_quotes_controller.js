@@ -25,6 +25,9 @@ HB.AnimeQuotesController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     },
     
     submitQuote: function(){
+      if(this.get('quoteChar').length < 3) return;
+      if(this.get('quoteText').length < 10) return;
+
       var self = this,
           quote = this.store.createRecord('quote', {
             anime_id: self.get('content'),
