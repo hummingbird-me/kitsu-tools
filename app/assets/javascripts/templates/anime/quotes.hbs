@@ -3,7 +3,7 @@
     <div class="col-xs-6 col-md-offset-3">
       
       {{#each animeQuotes}}
-        <div class="rounded-block col-sm-12 clearfix no-padding">
+        <div class="rounded-block col-sm-12 clearfix quote-container">
           <p><strong>{{characterName}}:</strong> {{content}}</p>
           <span class="favorited-by">
             <span class="favorite-count">Favorited by {{pluralize favoriteCount "user" "users"}} - </span>
@@ -18,11 +18,34 @@
           <span class="report-quote"><a href="#">Report Quote</a></span>
         </div>
       {{else}}
-        <div class="rounded-block col-sm-12 clearfix">
+        <div class="rounded-block col-sm-12 clearfix quote-container">
           <p>No quotes listed yet, be the first one to submit a quote.</p>
         </div>
       {{/each}}
 
+      <div class="quote-spacer">&nbsp;</div>
+
+      {{#if showCreate}}
+        <div class="rounded-block col-sm-12 clearfix quote-container">
+          <div class="row quote-input">
+            <div class="col-md-4 col-xs-4">Quote</div>
+            <div class="col-md-8 col-xs-8">
+              {{textarea value=quoteText class="form-control"}}
+            </div>
+          </div>
+          <div class="row quote-input">
+            <div class="col-md-4 col-xs-4">
+              Character
+            </div>
+            <div class="col-md-8 col-xs-8">
+              {{input type="text" value=quoteChar class="form-control"}}
+            </div>
+          </div>
+          <button class="btn status-button pull-right" {{action 'submitQuote'}}>Submit</button>
+        </div>
+      {{else}}
+        <button class="btn status-button pull-right" {{action 'toggleQuoteCreate'}}>Submit new quote</button>
+      {{/if}}
 
     </div>
   </div>
