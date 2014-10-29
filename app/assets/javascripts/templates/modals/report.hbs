@@ -1,0 +1,20 @@
+{{#bootstrap-modal action="close"}}
+  <div class="modal-header">
+    <h4 class="modal-title"> Report something evil</h4>
+  </div>
+  <div class="modal-body clearfix">
+    <div class="row form-block-item">
+      <div class="col-md-4 col-xs-4"><span>Report</span></div>
+      <div class="col-md-8 col-xs-8">
+        {{input type="text" value=reportItem class="form-control" disabled="true"}}
+      </div>
+    </div>
+    <div class="row form-block-item">
+      <div class="col-md-4 col-xs-4"><span>Reason</span></div>
+      <div class="col-md-8 col-xs-8">
+        {{textarea value=reportReason class="form-control"}}
+      </div>
+    </div>
+    <button class="btn status-button pull-right" {{action 'sendReport'}}>Send report</button>
+  </div>
+{{/bootstrap-modal}}
