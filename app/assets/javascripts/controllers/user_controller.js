@@ -5,6 +5,7 @@ HB.UserController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     return "background-image: url(" + this.get('coverUrl') + ")";
   }.property('coverUrl'),
 
+  showEditMenu: false,
 
   viewingSelf: function () {
     return this.get('model.id') === this.get('currentUser.id');
@@ -23,6 +24,10 @@ HB.UserController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   }.property('model.username'),
 
   actions: {
+    toggleEditMenu: function(){
+      this.toggleProperty('showEditMenu');
+    },
+
     coverSelected: function (file) {
       var self = this;
       var reader = new FileReader();
@@ -32,6 +37,7 @@ HB.UserController = Ember.ObjectController.extend(HB.HasCurrentUser, {
       };
       return reader.readAsDataURL(file);
     },
+
     avatarSelected: function (file) {
       var self = this;
       var data = new FormData();
