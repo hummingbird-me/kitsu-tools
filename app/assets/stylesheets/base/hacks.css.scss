@@ -17,6 +17,12 @@ input:focus, textarea:focus {
 }
 
 
+/* Simple padding container for forms */
+.form-block-item {
+  margin: 10px 0;
+}
+
+
 /* Fix panel rounded corner artefacts. */
 .panel { border: none; }
 
