@@ -17,9 +17,9 @@ HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
       newString = "";
     }
     newLength = newString.length;
-    remLength = 160 - newLength;
+    remLength = 140 - newLength;
     if (remLength <= 0) {
-      this.set('user.miniBio', newString.slice(0, 160));
+      this.set('user.miniBio', newString.slice(0, 140));
       remLength = 0;
     }
     return remLength;
