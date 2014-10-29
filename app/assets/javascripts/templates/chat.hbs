@@ -19,20 +19,25 @@
   <div class="chat-window">
     <div class="chat-items">
       <ul>
-        {{#each itemViewClass="chatMessage"}}
-          <li>
-            <div {{bind-attr class=":username admin"}} {{action "replyUser" username}}>
-              {{username}}
-              {{#if admin}}
+        {{#each msg in this itemViewClass="chatMessage"}}
+          <li {{bind-attr class=msg.classes}}>
+            <div {{bind-attr class=":username msg.admin"}} {{action "replyUser" msg.username}}>
+              {{msg.username}}
+              {{#if msg.admin}}
                 <i class="fa fa-shield" title="This user is an admin" alt="This user is an admin"></i>
               {{/if}}
             </div>
-            <div {{bind-attr class=":message time::pending"}}>
-              {{#if formattedMessage}}
-                {{{formattedMessage}}}
-                <span class="time">{{format-time time "h:mm a"}}</span>
+            <div {{bind-attr class=":message msg.time::pending"}}>
+              {{#if msg.formattedMessage}}
+                {{{msg.formattedMessage}}}
+                <span class="time">{{format-time msg.time "h:mm a"}}</span>
+                {{#if controller.currentUser.isAdmin}}
+                  <span class="mod-actions">
+                    <a {{action "deleteMessage" msg.id}}><i class="fa fa-trash-o"></i></a>
+                  </span>
+                {{/if}}
               {{else}}
-                {{message}}
+                {{msg.message}}
               {{/if}}
             </div>
           </li>

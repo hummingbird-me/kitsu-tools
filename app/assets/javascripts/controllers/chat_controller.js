@@ -28,23 +28,42 @@ HB.ChatController = Ember.ArrayController.extend(HB.HasCurrentUser, {
       this.send("recvMessage", messageObj);
     },
 
+    deleteMessage: function(id) {
+      ic.ajax({
+        url: "/chat",
+        type: "DELETE",
+        data: { id: id }
+      }).then(Ember.K, function() {
+        alert("Could not delete this message, something went wrong.");
+      });
+    },
+
     recvMessage: function(message) {
       var self = this,
           messageObj = Ember.Object.create(message),
           newMessageFlag = true;
 
-      this.get('model').forEach(function(oldMessage) {
-        if (oldMessage.get('id') === messageObj.get('id')) {
-          oldMessage.set('formattedMessage', messageObj.get('formattedMessage'));
-          oldMessage.set('time', messageObj.get('time'));
-          oldMessage.set('admin', messageObj.get('admin'));
-          newMessageFlag = false;
-          return;
+      switch (messageObj.get('type')) {
+      case 'message':
+        this.get('model').forEach(function(oldMessage) {
+          if (oldMessage.get('id') === messageObj.get('id')) {
+            oldMessage.set('formattedMessage', messageObj.get('formattedMessage'));
+            oldMessage.set('time', messageObj.get('time'));
+            oldMessage.set('admin', messageObj.get('admin'));
+            newMessageFlag = false;
+            return;
+          }
+        });
+        if (newMessageFlag) {
+          this.get('model').pushObject(messageObj);
         }
-      });
-
-      if (newMessageFlag) {
-        this.get('model').pushObject(messageObj);
+        break;
+      case 'delete':
+        this.get('model').forEach(function(oldMessage) {
+          if (oldMessage.get('id') === messageObj.get('id')) {
+            self.get('model').removeObject(oldMessage);
+          }
+        });
       }
     },
 

@@ -16,7 +16,7 @@ Hummingbird::Application.routes.draw do
     post :vote
   end
 
-  resource :chat, only: [:show, :create] do
+  resource :chat, only: [:show, :create, :destroy] do
     post :ping
   end
 

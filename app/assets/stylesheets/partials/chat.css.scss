@@ -111,6 +111,18 @@
             opacity: 0.8;
             float: right;
           }
+          .mod-actions {
+            float: right;
+            padding-right: 4px;
+            font-size: 0.9em;
+            a {
+              color: inherit;
+              opacity: 0.3;
+              &:hover {
+                opacity: 0.8;
+              }
+            }
+          }
           .video-embed {
             padding: 5px 0 10px 0;
             .video-wrapper {

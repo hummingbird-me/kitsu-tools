@@ -20,6 +20,19 @@ class ChatsController < ApplicationController
     render json: true
   end
 
+  def destroy
+    return error! "Not administrator", 403 unless current_user.admin?
+    return error! "Needs id to delete", 400 unless params.has_key?(:id)
+
+    MessageBus.publish "/chat/lobby", {
+      type: "delete",
+      id: params[:id],
+      username: current_user.name,
+      time: Time.now.iso8601(0)
+    }
+    render json: true
+  end
+
   def ping
     json = {}
 
