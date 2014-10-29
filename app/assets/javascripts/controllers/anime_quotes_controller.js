@@ -27,7 +27,7 @@ HB.AnimeQuotesController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     submitQuote: function(){
       var self = this,
           quote = this.store.createRecord('quote', {
-            anime_id: self.content,
+            anime_id: self.get('content'),
             characterName: self.get('quoteChar'),
             content: self.get('quoteText'),
             username: self.get('currentUser.username'),
@@ -36,7 +36,11 @@ HB.AnimeQuotesController = Ember.ObjectController.extend(HB.HasCurrentUser, {
           });
 
       quote.save();
-      this.set('showCreate', false);
+      this.setProperties({
+        'showCreate': false,
+        'quoteText': "",
+        'quoteChar': ""
+      });
     }
   }
   

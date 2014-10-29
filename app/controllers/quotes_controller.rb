@@ -10,7 +10,7 @@ class QuotesController < ApplicationController
 
   def create
     authenticate_user!
-    @anime = Anime.find(params[:anime_id])
+    @anime = Anime.find(params["quote"]["anime_id"])
     @quote = Quote.new
     @quote.content = params["quote"]["content"]
     @quote.character_name = params["quote"]["character_name"]
