@@ -14,7 +14,8 @@ HB.ChatController = Ember.ArrayController.extend(HB.HasCurrentUser, {
       var messageObj = {
         id: "xxxxxxxxxxxxxxxxxxxxxx".replace(/[x]/g, function(c) { return (Math.random()*16|0).toString(16) }),
         message: message,
-        username: this.get('currentUser.username')
+        username: this.get('currentUser.username'),
+        type: 'message'
       }
 
       ic.ajax({
@@ -44,7 +45,14 @@ HB.ChatController = Ember.ArrayController.extend(HB.HasCurrentUser, {
           newMessageFlag = true;
 
       switch (messageObj.get('type')) {
-      case 'message':
+      case 'delete':
+        this.get('model').forEach(function(oldMessage) {
+          if (oldMessage.get('id') === messageObj.get('id')) {
+            self.get('model').removeObject(oldMessage);
+          }
+        });
+        break;
+      default:
         this.get('model').forEach(function(oldMessage) {
           if (oldMessage.get('id') === messageObj.get('id')) {
             oldMessage.set('formattedMessage', messageObj.get('formattedMessage'));
@@ -57,13 +65,6 @@ HB.ChatController = Ember.ArrayController.extend(HB.HasCurrentUser, {
         if (newMessageFlag) {
           this.get('model').pushObject(messageObj);
         }
-        break;
-      case 'delete':
-        this.get('model').forEach(function(oldMessage) {
-          if (oldMessage.get('id') === messageObj.get('id')) {
-            self.get('model').removeObject(oldMessage);
-          }
-        });
       }
     },
 
