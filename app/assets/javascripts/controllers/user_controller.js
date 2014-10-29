@@ -26,6 +26,9 @@ HB.UserController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   actions: {
     toggleEditMenu: function(){
       this.toggleProperty('showEditMenu');
+    },
+    saveEditMenu: function(){
+      this.toggleProperty('showEditMenu');
       this.get('content').save();
     },
 
