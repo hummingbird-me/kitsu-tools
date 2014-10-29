@@ -6,7 +6,7 @@
   .cover-photo {
     background-size: cover;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-position: center;
     height: 360px;
     width: 100%;
     position: relative;
@@ -63,6 +63,7 @@
     bottom: 0;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     height: 360px;
     width: 100%;
     filter: blur(3px);
