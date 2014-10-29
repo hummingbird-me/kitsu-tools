@@ -79,9 +79,13 @@ HB.SettingsController = Ember.Controller.extend(HB.HasCurrentUser, {
     save: function () {
       var self = this;
       this.get('currentUser.model.content').save().then(function () {
-        self.set('currentUser.username', self.get('currentUser.newUsername'));
-        self.set('currentUser.newPassword', '');
-        self.get('currentUser.model.content').save();
+        if (self.get('currentUser.username') !== self.get('currentUser.newUsername')) {
+          location.reload();
+        } else {
+          self.set('currentUser.newPassword', '');
+          // Hack to make Ember understand that the model is clean now
+          self.get('currentUser.model.content').save();
+        }
       });
     },
     clean: function () {
