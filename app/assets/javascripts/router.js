@@ -10,6 +10,7 @@ HB.Router.map(function() {
     this.resource('reviews', {path: '/reviews'}, function() {
       this.route('show', {path: '/:review_id'});
     });
+    this.route('quotes');
   });
 
   this.resource('manga', {path: '/manga/:id'}, function() {

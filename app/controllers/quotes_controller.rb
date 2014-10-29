@@ -1,16 +1,11 @@
 class QuotesController < ApplicationController
   def index
     @anime = Anime.find(params[:anime_id])
-    @watchlist = current_user.watchlists.where(anime_id: @anime).first if user_signed_in?
-    @gallery = @anime.gallery_images.limit(4)
     @quotes = @anime.quotes.includes(:user).order('positive_votes DESC')
-  end
 
-  def new
-    authenticate_user!
-    @anime = Anime.find(params[:anime_id])
-    @quote = Quote.new
-    @quote.anime = @anime
+    preload_to_ember! @quotes
+
+    render_ember
   end
 
   def create
