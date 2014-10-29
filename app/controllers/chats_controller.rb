@@ -7,7 +7,7 @@ class ChatsController < ApplicationController
 
   def create
     if params.has_key?(:message) && !current_user.ninja_banned?
-      #Note: MessageBus.backlog("/chat/lobby", params[:id])[0]["data"]["username"] = User who wrote the message originally
+      #Note: msg["data"]["username"] = User who wrote the message originally
       #This doesn't seem very efficient. Please change this if you have a better idea
       msgs = MessageBus.backlog("/chat/lobby", MessageBus.last_id("/chat/lobby")-40)
       msgs.each { |msg| return error! "Message id already used", 403 unless msg["data"]["id"]!=params[:id] }
