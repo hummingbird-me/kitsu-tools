@@ -28,17 +28,33 @@
           </div>
           <ul class="follow-widgets inline-list">
             <li>
-              <small class="follow-title">following</small>
-              <h2 class="follow-count">423</h2>
+              {{#link-to 'user.following'}}
+                <small class="follow-title">following</small>
+                <h2 class="follow-count">{{followingCount}}</h2>
+              {{/link-to}}
             </li>
             <li>
-              <small class="follow-title">followers</small>
-              <h2 class="follow-count">1423</h2>
+              {{#link-to 'user.followers'}}
+                <small class="follow-title">followers</small>
+                <h2 class="follow-count">{{followerCount}}</h2>
+              {{/link-to}}
             </li>
             <li>
-              <button class="btn btn-default btn-lg follow-button" data-ember-action="2108">
-                <i class="fa fa-plus"></i> Follow
-              </button>
+              {{#if viewingSelf}}
+                <button class="btn btn-default btn-lg follow-button" {{action "toggleFollow" this}}>
+                  <i class="fa fa-pencil"></i> Edit
+                </button>
+              {{else}}
+                {{#if isFollowed}}
+                  <button class="btn btn-default btn-lg follow-button unfollow" {{action "toggleFollow" this}}>
+                    Unfollow
+                  </button>
+                {{else}}
+                  <button class="btn btn-default btn-lg follow-button" {{action "toggleFollow" this}}>
+                    <i class="fa fa-plus"></i> Follow
+                  </button>
+                {{/if}}
+              {{/if}}
             </li>
           </ul>
           {{!-- <ul class="inline-list clearfix">
@@ -100,12 +116,6 @@
         </li>
         <li class="nav-link">
           {{#link-to 'user.reviews'}}Reviews{{/link-to}}
-        </li>
-        <li class="nav-link">
-          {{#link-to 'user.following'}}Following · {{followingCount}}{{/link-to}}
-        </li>
-        <li class="nav-link">
-          {{#link-to 'user.followers'}}Followers · {{followerCount}}{{/link-to}}
         </li>
         <li class="nav-link">
           <a {{bind-attr href=forumProfile}}>Forums</a>

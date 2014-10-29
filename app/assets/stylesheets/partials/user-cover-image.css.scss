@@ -65,8 +65,20 @@
       padding: 5px;
       float: left;
       @media (max-width: 1200px) { padding-left: 30px; }
-      @media (max-width: 990px) { padding-left: 160px; }
+      @media (max-width: 990px) { padding-left: 15px; }
+      @media (max-width: 850px) and (min-width: 694px) {
+        position: relative;
+        top: 30px;
+        overflow: auto;
+        height: 110px;
+        .username {
+          margin-top: 10px;
+        }
+      }
       @media (max-width: 768px) { padding-left: 15px; }
+      @media (max-width: 694px) {
+        width: 100%;
+      }
     }
   }
 
@@ -75,6 +87,12 @@
     display: inline-block;
     position: relative;
     top: 60px;
+    @media (max-width: 694px) {
+      width: 100%;
+      top: 0;
+      float: left;
+      padding-left: 15px;
+    }
     li {
       text-align: center;
       margin-right: 20px;
@@ -87,9 +105,11 @@
       font-family: $headerFontFamily;
       font-weight: normal;
       opacity: .6;
+      color: #fff;
     }
     .follow-count {
       margin-top: 5px;
+      color: #fff;
     }
   }
   
@@ -97,20 +117,25 @@
   .large-avatar {
     position: relative;
     float: left;
-    top: 46px;
+    @media (max-width: 990px) {
+      float: none;
+    }
 
-    @media (max-width: 768px) { max-width: 130px; }
     img { 
       border-radius: 3px; 
       box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+      max-width: 120px;
     }
   }
 
   .user-avatar {
     width: 9.666667%;
+    top: 46px;
     @media (max-width: 990px) {
       position: absolute;
-      bottom: 4px;
+      width: 100%;
+      top: -70px;
+      text-align: center;
     }
     @media (max-width: 768px) {
       top: -115px;
@@ -121,10 +146,28 @@
 
   .account-wrapper {
     width: 90.333333%;
+    @media (max-width: 990px) {
+      width: 100%;
+    }
+    @media (max-width: 694px) {
+      height: 110px;
+      overflow: auto;
+      position: relative;
+      top: 30px;
+      .username {
+        margin-top: 10px;
+      }
+    }
   }
 
   .user-bio {
     max-width: 460px;
+    @media (max-width: 850px) {
+      max-width: 350px;
+    }
+    @media (max-width: 694px) {
+      width: 100%;
+    }
   }
 
 
@@ -151,9 +194,21 @@
     padding: 8px 25px;
     position: relative;
     top: 15px;
+    transition: .2s ease-in;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     .fa {
       margin-right: 5px;
       font-size: 12px;
+    }
+    &:hover {
+      background: darken(#fff, 10);
+    }
+    &.unfollow {
+      background: #E2E2E2;
+      color: #737373;
+      &:hover {
+        background: darken(#E2E2E2, 10);
+      }
     }
   }
 }
@@ -186,13 +241,6 @@
 
   .user-cover-options {
     top: 35px;
-    .user-avatar {
-      padding-left: 0;
-      padding-right: 0;
-      @media (max-width: 990px) {
-        bottom: inherit;
-      }
-    }
     .username {
       margin-top: 55px;
       margin-left: 15px;
