@@ -10,6 +10,34 @@
     height: 360px;
     width: 100%;
     position: relative;
+    .edit-cover {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      line-height: 95px;
+      text-align: center;
+      height: 100px;
+      color: #fff;
+      background: rgba(0,0,0,.7);
+      transition: .2s ease-in;
+      display: none;
+      &:hover {
+        background: rgba(0,0,0,.8);
+      }
+      label {
+        width: 100%;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  &.edit-menu {
+    .edit-cover {
+      display: block;
+    }
   }
 
   .cover-overlay-wrapper {
@@ -58,12 +86,53 @@
   top: -145px;
   z-index: 2;
 
+  .edit-avatar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.7);
+    border-radius: 3px;
+    text-align: center;
+    transition: .2s ease-in;
+    display: none;
+    &:hover {
+      background: rgba(0,0,0,.8);
+    }
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding-top: 12px;
+      cursor: pointer;
+      .fa {
+        display: block;
+      }
+    }
+  }
+
+  &.edit-menu {
+    .edit-cover, .edit-avatar {
+      display: block;
+    }
+  }
+
   .user-wrapper {
     padding-left: 0;
 
     .account-info {
       padding: 5px;
       float: left;
+      textarea {
+        border: none;
+        color: #333;
+        width: 470px;
+        background: rgba(255,255,255,.8);
+        padding: 0 10px;
+      }
       @media (max-width: 1200px) { padding-left: 30px; }
       @media (max-width: 990px) { padding-left: 15px; }
       @media (max-width: 850px) and (min-width: 694px) {
@@ -208,6 +277,13 @@
       color: #737373;
       &:hover {
         background: darken(#E2E2E2, 10);
+      }
+    }
+    &.save {
+      background: #f89774;
+      color: #fff;
+      &:hover {
+        background: darken(#f89774, 10);
       }
     }
   }

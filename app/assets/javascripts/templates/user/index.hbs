@@ -21,11 +21,11 @@
 
         <div class="panel-body">
           {{#if isEditing}}
-            <div {{bind-attr class=":edit-bio-chars bioCharsLeft:hasleft:noleft"}}>
+            {{!-- <div {{bind-attr class=":edit-bio-chars bioCharsLeft:hasleft:noleft"}}>
               {{bioCharCounter}} left
             </div>
 
-            {{{textarea class="edit-bio" rows="4" placeholder="Tell us about yourself  :3" value=user.miniBio}}}
+            {{{textarea class="edit-bio" rows="4" placeholder="Tell us about yourself  :3" value=user.miniBio}}} --}}
             <div class="user-interests">
               <ul>
                 <li>
@@ -49,7 +49,7 @@
               </ul>
             </div>
           {{else}}
-            <p class="about"> {{user.miniBio}}</p>
+            {{!-- <p class="about"> {{user.miniBio}}</p> --}}
             <div class="user-interests">
               <ul>
                 <li>

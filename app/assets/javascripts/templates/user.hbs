@@ -1,8 +1,17 @@
 <filter id="blur">
   <feGaussianBlur stdDeviation="3"/>
 </filter>
-<div class="user-cover">
+<div {{bind-attr class=":user-cover showEditMenu:edit-menu:no-edit"}}>
   <div class="cover-photo" {{bind-attr style=coverImageStyle}}>
+    {{#if viewingSelf}}
+      <div class="edit-cover">
+        <label for="cover-image">
+          <i class="fa fa-camera"></i> Edit Cover
+        </label>
+        {{view HB.FileUpload action="coverSelected"
+                             id="cover-image"}}
+      {{/if}}
+    </div>
     <div class="cover-overlay-wrapper">
       <div class="dark-overlay"></div>
       <div class="cover-overlay" {{bind-attr style=coverImageStyle}}></div>
@@ -12,19 +21,32 @@
 
 <div class="container relative">
   <div class="row">
-    <div class="user-cover-options">
+    <div {{bind-attr class=":user-cover-options showEditMenu:edit-menu:no-edit"}}>
       <div class="col-sm-12 user-wrapper">
         <div class="col-sm-2 col-md-2 user-avatar clearfix">
           <div class="large-avatar">
             {{avatar model 'thumb'}}
+            <div class="edit-avatar">
+              <label for="avatar-image">
+                <i class="fa fa-camera"></i> Edit Avatar
+              </label>
+              {{view HB.FileUpload action="avatarSelected" id="avatar-image"}}
+            </div>
           </div>
         </div>
         <div class="col-sm-12 col-md-10 no-padding account-wrapper">
           <div class="account-info">
             <h2 class="username"> {{username}}</h1>
-            <p class="user-bio">
-              {{miniBio}}
-            </p>
+            {{#if showEditMenu}}
+              {{!-- <div {{bind-attr class=":edit-bio-chars bioCharsLeft:hasleft:noleft"}}>
+                {{bioCharCounter}} left
+              </div> --}}
+              {{{textarea class="edit-bio" rows="2" maxlength="140" placeholder="Briefly tell us about yourself..." value=miniBio}}}
+            {{else}}
+              <p class="user-bio">
+                {{truncate-text text=miniBio length=140}}
+              </p>
+            {{/if}}
           </div>
           <ul class="follow-widgets inline-list">
             <li>
@@ -42,7 +64,9 @@
             <li>
               {{#if viewingSelf}}
                 {{#if showEditMenu}}
-                  theEditMenuHere
+                  <button class="btn btn-default btn-lg follow-button save" {{action "toggleEditMenu" this}}>
+                    <i class="fa fa-pencil"></i> Save
+                  </button>
                 {{else}}
                   <button class="btn btn-default btn-lg follow-button" {{action "toggleEditMenu" this}}>
                     <i class="fa fa-pencil"></i> Edit
@@ -61,8 +85,8 @@
               {{/if}}
             </li>
           </ul>
-          {{!-- <ul class="inline-list clearfix">
-            {{#if viewingSelf}}
+          <ul class="inline-list clearfix">
+            {{!-- {{#if viewingSelf}}
               <li>
                 <label for="cover-image">
                   <i class="fa fa-upload"></i> Upload Cover
@@ -88,8 +112,8 @@
                   <i class="fa fa-envelope-o"></i> Message
                 {{/bootstrap-tooltip}}
               </li>
-            {{/if}}
-          </ul> --}}
+            {{/if}} --}}
+          </ul>
         </div>
       </div>
       {{#if viewingSelf}}
