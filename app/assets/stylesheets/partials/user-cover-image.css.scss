@@ -6,16 +6,45 @@
   .cover-photo {
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
-    height: 100%;
+    background-size: cover;
+    height: 330px;
+    width: 100%;
+    position: relative;
   }
 
-  .cover-overlay {
-    background: url("cover-overlay.png") bottom left repeat-x;
+  .cover-overlay-wrapper {
+    position: absolute;
+    bottom: 0;
+    height: 150px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .dark-overlay {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 243px;
+    height: 150px;
+    background: #000;
+    background: rgba(0,0,0,.3);
+    z-index: 2;
+  }
+
+  .cover-overlay {
+    position: absolute;
+    bottom: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 330px;
+    width: 100%;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: url("data:image/svg+xml;utf9,  <svg%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'><filter%20id='blur'><feGaussianBlur%20stdDeviation='3'%20/></filter></svg>#blur");
+   filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3');
+    z-index: 1;
   }
 }
 
@@ -26,6 +55,7 @@
   position: absolute;
   width: 100%;
   top: -145px;
+  z-index: 2;
 
   .user-wrapper {
     padding-left: 0;
