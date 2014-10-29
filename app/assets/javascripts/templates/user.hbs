@@ -44,7 +44,7 @@
               {{{textarea class="edit-bio" rows="2" maxlength="140" placeholder="Briefly tell us about yourself..." value=miniBio}}}
             {{else}}
               <p class="user-bio">
-                {{truncate-text text=miniBio length=140}}
+                {{miniBio}}
               </p>
             {{/if}}
           </div>
