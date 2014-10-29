@@ -13,20 +13,34 @@
 <div class="container relative">
   <div class="row">
     <div class="user-cover-options">
-      <div class="col-md-10 user-wrapper">
+      <div class="col-sm-12 user-wrapper">
         <div class="col-sm-2 col-md-2 user-avatar clearfix">
           <div class="large-avatar">
             {{avatar model 'thumb'}}
-            <div class="online-box">
-              <div {{bind-attr class=":online-indicator online:online:offline"}}></div>
-            </div>
           </div>
         </div>
-        <div class="col-sm-12 col-md-10 account-info">
-          <h1 class="username"> {{username}}</h1>
-          <p class="user-bio">
-            {{user.miniBio}}
-          </p>
+        <div class="col-sm-12 col-md-10 no-padding account-wrapper">
+          <div class="account-info">
+            <h2 class="username"> {{username}}</h1>
+            <p class="user-bio">
+              {{miniBio}}
+            </p>
+          </div>
+          <ul class="follow-widgets inline-list">
+            <li>
+              <small class="follow-title">following</small>
+              <h2 class="follow-count">423</h2>
+            </li>
+            <li>
+              <small class="follow-title">followers</small>
+              <h2 class="follow-count">1423</h2>
+            </li>
+            <li>
+              <button class="btn btn-default btn-lg follow-button" data-ember-action="2108">
+                <i class="fa fa-plus"></i> Follow
+              </button>
+            </li>
+          </ul>
           {{!-- <ul class="inline-list clearfix">
             {{#if viewingSelf}}
               <li>

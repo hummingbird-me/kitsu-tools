@@ -1,5 +1,5 @@
 .user-cover {
-  height: 330px;
+  height: 360px;
   overflow: hidden;
   position: relative;
 
@@ -7,7 +7,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 330px;
+    height: 360px;
     width: 100%;
     position: relative;
   }
@@ -15,7 +15,7 @@
   .cover-overlay-wrapper {
     position: absolute;
     bottom: 0;
-    height: 150px;
+    height: 115px;
     width: 100%;
     overflow: hidden;
   }
@@ -24,9 +24,9 @@
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 150px;
+    height: 115px;
     background: #000;
-    background: rgba(0,0,0,.3);
+    background: rgba(0,0,0,.35);
     z-index: 2;
   }
 
@@ -35,7 +35,7 @@
     bottom: 0;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 330px;
+    height: 360px;
     width: 100%;
     filter: blur(3px);
     -webkit-filter: blur(3px);
@@ -47,6 +47,7 @@
     z-index: 1;
   }
 }
+
 
 
 /* User Cover Options */
@@ -62,13 +63,51 @@
 
     .account-info {
       padding: 5px;
+      float: left;
       @media (max-width: 1200px) { padding-left: 30px; }
       @media (max-width: 990px) { padding-left: 160px; }
       @media (max-width: 768px) { padding-left: 15px; }
     }
   }
 
+  .follow-widgets {
+    float: right;
+    display: inline-block;
+    position: relative;
+    top: 60px;
+    li {
+      text-align: center;
+      margin-right: 20px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    .follow-title {
+      text-transform: uppercase;
+      font-family: $headerFontFamily;
+      font-weight: normal;
+      opacity: .6;
+    }
+    .follow-count {
+      margin-top: 5px;
+    }
+  }
+  
+
+  .large-avatar {
+    position: relative;
+    float: left;
+    top: 46px;
+
+    @media (max-width: 768px) { max-width: 130px; }
+    img { 
+      border-radius: 3px; 
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+  }
+
   .user-avatar {
+    width: 9.666667%;
     @media (max-width: 990px) {
       position: absolute;
       bottom: 4px;
@@ -80,36 +119,12 @@
     }
   }
 
-  .large-avatar {
-    position: relative;
-    float: left;
-    @media (max-width: 768px) { max-width: 130px; }
-    img { border-radius: 3px; }
+  .account-wrapper {
+    width: 90.333333%;
+  }
 
-    .online-box {
-      background: rgba(0,0,0,.3);
-      width: 20px;
-      height: 20px;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      border-top-left-radius: 3px;
-      border-bottom-right-radius: 3px;
-
-      .online-indicator {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        border-radius: 100px;
-        bottom: 4px;
-        right: 5px;
-        border: 1px solid #333;
-        z-index: 1;
-
-        &.online { background: #58e08e; }
-        &.offline { background: #afafaf; }
-      }
-    }
+  .user-bio {
+    max-width: 460px;
   }
 
 
@@ -119,36 +134,7 @@
   }
 
   .username {
-    margin-top: 43px;
-  }
-
-  .inline-list {
-    margin-bottom: 0;
-    li {
-      padding: 5px 0px 5px 0px;
-      border: 1px solid;
-      border-radius: 3px;
-      margin-right: 10px;
-      &:hover {
-        border-color: $orange;
-        a, label {
-          color: $orange;
-        }
-      }
-      &:last-child {
-        margin-right: 0;
-      }
-      a, label {
-        display: inline;
-        font-weight: normal;
-        cursor: pointer;
-        padding: 5px 10px 5px 10px;
-        color: #fff;
-        &:hover {
-          text-decoration: none;
-        }
-      }
-    }
+    margin-top: 39px;
   }
 
   .fa-exchange, .fa-heart-o, .fa-envelope-o {
@@ -158,18 +144,16 @@
   }
 
   .follow-button {
-    position: absolute;
-    right: 15px;
-    top: 87px;
-    padding-right: 40px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 40px;
-    @media (max-width: 630px) {
-      right: 13px;
-      top: -25px;
-      padding-right: 35px;
-      padding-left: 35px;
+    background: #fff;
+    color: #333;
+    font-size: 15px;
+    padding: 10px 25px;
+    padding: 8px 25px;
+    position: relative;
+    top: 15px;
+    .fa {
+      margin-right: 5px;
+      font-size: 12px;
     }
   }
 }
@@ -218,6 +202,7 @@
   .user-wrapper {
     width: 100%;
     .account-info {
+      float: left;
       @media (max-width: 990px) {
         padding-left: 110px;
       }
