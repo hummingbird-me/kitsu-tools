@@ -116,18 +116,6 @@
           </ul>
         </div>
       </div>
-      {{#if viewingSelf}}
-      {{else}}
-        {{#if isFollowed}}
-          <button class="btn btn-default btn-lg follow-button unfollow" {{action "toggleFollow" this}}>
-            Unfollow
-          </button>
-        {{else}}
-          <button class="btn btn-default btn-lg follow-button" {{action "toggleFollow" this}}>
-            Follow
-          </button>
-        {{/if}}
-      {{/if}}
     </div>
   </div>
 </div>
