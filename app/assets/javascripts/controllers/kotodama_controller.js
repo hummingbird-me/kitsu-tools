@@ -64,6 +64,10 @@ HB.KotodamaController = Ember.ObjectController.extend({
       });
     },
 
+    publishUpdate: function(){
+      $.post("/kotodama/publish_update");
+    },
+
     reload: function(){
       window.location.reload();
     },

@@ -96,4 +96,8 @@ class AdminController < ApplicationController
       render text: "Can only deploy in production."
     end
   end
+
+  def publish_update
+    MessageBus.publish '/site_update', {}
+  end
 end
