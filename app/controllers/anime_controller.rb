@@ -72,6 +72,96 @@ class AnimeController < ApplicationController
   end
 
   def filter
+    if params[:new_filter].nil?
+      filter_old()
+    else
+      filter_new()
+    end
+  end
+
+  def filter_old
+    hide_cover_image
+    @filter_years = ["Upcoming", "2010s", "2000s", "1990s", "1980s", "1970s", "Older"]
+
+    if params[:g]
+      @genres = Genre.where(slug: params[:g])
+    else
+      @genres = Genre.default_filterable(current_user)
+    end
+
+    if params[:y]
+      @years = params[:y]
+    else
+      @years = @filter_years
+    end
+
+    if params[:sort]
+      @sort = params[:sort]
+    else
+      @sort = "all"
+    end
+
+    @anime = Anime.accessible_by(current_ability).references(:genres).page(params[:page]).per(36)
+
+    # Apply genre filter.
+    if @genres.length > 10
+      @anime = @anime.exclude_genres(Genre.all - @genres)
+    else
+      @anime = @anime.include_genres(@genres)
+    end
+
+    # Apply sort option.
+    if @sort == "newest"
+      @anime = @anime.order("started_airing_date DESC")
+    elsif @sort == "oldest"
+      @anime = @anime.order("started_airing_date")
+    elsif @sort == "popular"
+      @anime = @anime.order("user_count DESC NULLS LAST")
+    else
+      @sort = "rating"
+      @anime = @anime.order_by_rating
+    end
+
+    # TODO Apply year filter.
+    if @years.length != @filter_years.length
+      filter_year_ranges = {
+        "2010s" => Date.new(2010, 1, 1)..Date.new(2020, 1, 1),
+        "2000s" => Date.new(2000, 1, 1)..Date.new(2010, 1, 1),
+        "1990s" => Date.new(1990, 1, 1)..Date.new(2000, 1, 1),
+        "1980s" => Date.new(1980, 1, 1)..Date.new(1990, 1, 1),
+        "1970s" => Date.new(1970, 1, 1)..Date.new(1980, 1, 1),
+        "Older" => Date.new(1800, 1, 1)..Date.new(1970, 1, 1)
+      }
+      arel = Anime.arel_table
+      ranges = @years.map {|x| filter_year_ranges[x] }.compact
+      query = ranges.inject(arel) do |sum, range|
+        condition = arel[:started_airing_date].in(range).or(arel[:finished_airing_date].in(range))
+        sum.class == Arel::Table ? condition : sum.or(condition)
+      end
+      if @years.include? "Upcoming"
+        condition = arel[:started_airing_date].gt(Time.now.to_date).or(arel[:started_airing_date].eq(nil))
+        if query.class == Arel::Table
+          query = condition
+        else
+          query = query.or(condition)
+        end
+      end
+      @anime = @anime.where(query)
+    end
+
+    # Load library entries for the user.
+    # NOTE When the seen/unseen filter is added use a join or something.
+    @library_entries = {}
+    if user_signed_in?
+      @library_entries = LibraryEntry.where(anime_id: @anime.map {|x| x.id},
+                                            user_id: current_user.id)
+                                     .index_by(&:anime_id)
+    end
+
+    render :explore_filter
+  end
+
+  def filter_new
     @filter_years = ["Upcoming", "2010s", "2000s", "1990s", "1980s", "1970s", "Older"]
 
     respond_to do |format|
