@@ -12,10 +12,9 @@ class ChatsController < ApplicationController
     return error! "User is banned", 403 if current_user.ninja_banned?
 
     MessageBus.publish "/chat/lobby", {
-      type: "message",
       id: params[:id],
       message: params[:message],
-      type: params[:type],
+      type: params[:type] || 'message',
       formattedMessage: MessageFormatter.format_message(params[:message]),
       username: current_user.name,
       time: Time.now.iso8601(0),
