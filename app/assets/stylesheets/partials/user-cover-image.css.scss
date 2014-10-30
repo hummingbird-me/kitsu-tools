@@ -1,3 +1,4 @@
+/* autoprefixer: off */
 .user-cover {
   height: 360px;
   overflow: hidden;
@@ -63,14 +64,17 @@
     position: absolute;
     bottom: 0;
     background-size: cover;
-    background-repeat: no-repeat;
     background-position: center;
     height: 360px;
     width: 100%;
-    filter: blur(3px);
+    -webkit-mask: -webkit-linear-gradient(black, transparent, black);
+    -webkit-mask: linear-gradient(black, transparent, black);
+    -webkit-filter: blur(3px);
+    -moz-mask: -moz-linear-gradient(black, transparent, black);
+    -moz-mask: linear-gradient(black, transparent, black);
+    -moz-filter: blur(3px);
     mask: url('#mask-linear');
     filter: url('#filtre');
-    z-index: 1;
   }
 }
 
@@ -196,8 +200,8 @@
   }
 
   .user-avatar {
-    width: 12.666667%;
-    top: 11px;
+    width: 11.666667%;
+  top: 25px;
     @media (max-width: 990px) {
       position: absolute;
       width: 100%;
