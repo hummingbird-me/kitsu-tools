@@ -32,7 +32,8 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
 
 
   encodeQuery: function(){
-    var query = "?page=" + this.get('showPage');
+    var query  = "?page=" + this.get('showPage');
+        query += "&sort=" + this.get('selectSort');
 
     $.each(this.get('selectTime'), function(key, val){
       if(val) query += "&y[]=" + key;
