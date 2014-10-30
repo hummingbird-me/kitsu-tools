@@ -29,6 +29,7 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
   selectSort: "rating",
   selectTime: {},
   selectGenre: {},
+  hasManuallySet: false,
 
 
   encodeQuery: function(){
@@ -43,12 +44,42 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
       if(val) query += "&g[]=" + key;
     });
 
-    this.set('query', query);
+    this.setProperties({
+      'query': query,
+      'hasManuallySet': true
+    });
   },
 
   decodeQuery: function(){
+    if(!this.get('hasManuallySet')){
+      var query = this.get('query'),
+          findg = query.match(/\&g\[\]\=([ A-z]+)/g);
+          findy = query.match(/\&y\[\]\=([0-9A-z]+)/g);
+          tempg = {},
+          tempy = {};
 
-  },
+      if(findg && findg.length > 0){
+        $.each(findg, function(key, val){
+          var form = val.substring(5, val.length);
+          tempg[form] = true;
+        });
+      }
+
+      if(findy && findy.length > 0){
+        $.each(findy, function(key, val){
+          var form = val.substring(5, val.length);
+          tempy[form] = true;
+        });
+      }
+
+      this.setProperties({
+        'showPage': parseInt(/\?page\=([0-9]{1,4})/.exec(query)[1]),
+        'selectSort': /\&sort\=([a-z]{6,7})/.exec(query)[1],
+        'selectGenre': tempg,
+        'selectTime': tempy
+      });
+    }
+  }.observes('query'),
 
   updateItem: function(item, state){
     if(state) $('#'+item).addClass('active');
