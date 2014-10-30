@@ -11,12 +11,14 @@ HB.Router.map(function() {
       this.route('show', {path: '/:review_id'});
     });
     this.route('quotes');
-    this.route('filter');
   });
 
   this.resource('manga', {path: '/manga/:id'}, function() {
     this.route('reviews');
   });
+
+  this.route('filterAnime', {path: '/anime/filter'});
+  this.route('filterManga', {path: '/manga/filter'});
 
   this.resource('user', {path: '/users/:id'}, function() {
     this.route('library');
