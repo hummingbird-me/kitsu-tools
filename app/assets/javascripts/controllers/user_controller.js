@@ -5,6 +5,10 @@ HB.UserController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     return "background-image: url(" + this.get('coverUrl') + ")";
   }.property('coverUrl'),
 
+  coverImageOverlayStyle: function () {
+    return "background-image: url(" + this.get('coverUrl') + "); mask: url(#blur-fade); filter: url(#blur)";
+  }.property('coverUrl'),
+
   showEditMenu: false,
 
   viewingSelf: function () {
