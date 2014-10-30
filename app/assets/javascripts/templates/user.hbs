@@ -1,6 +1,17 @@
-<filter id="blur">
-  <feGaussianBlur stdDeviation="3"/>
-</filter>
+<svg height="0">
+<defs>
+  <mask id="mask-linear">
+    <rect width="400" height="300"></rect>
+    <linearGradient id="l1" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="black" offset="0%"></stop>
+      <stop stop-color="white" offset="100%"></stop>
+    </linearGradient>
+  </mask>
+  <filter id="filtre">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3"></feGaussianBlur>
+  </filter>
+</defs>
+</svg>
 <div {{bind-attr class=":user-cover showEditMenu:edit-menu:no-edit"}}>
   <div class="cover-photo" {{bind-attr style=coverImageStyle}}>
     {{#if viewingSelf}}
