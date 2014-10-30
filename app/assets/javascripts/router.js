@@ -17,6 +17,9 @@ HB.Router.map(function() {
     this.route('reviews');
   });
 
+  this.route('filterAnime', {path: '/anime/filter'});
+  this.route('filterManga', {path: '/manga/filter'});
+
   this.resource('user', {path: '/users/:id'}, function() {
     this.route('library');
     this.route('manga_library', {path: 'library/manga/'});
