@@ -92,7 +92,6 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
       if(newPage < 1) return; 
       // Add check for max page
 
-      console.log(this.get('selectSort'));
       this.set('showPage', newPage);
       this.send('applyFilter');
     },
