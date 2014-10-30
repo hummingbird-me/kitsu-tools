@@ -33,14 +33,16 @@
   <div class="filter-page">
     <div class="row">
       {{#each animeList}}
-        <div class="col-md-2 col-sm-3">
-          <div class="filter-page-card">
-            <img class="filter-page-poster" {{bind-attr src=posterImage}} />
-            <span class="filter-page-name">
-              {{canonicalTitle}}
-            </span>
+        {{#link-to 'anime' this}}
+          <div class="col-md-2 col-sm-3">
+            <div class="filter-page-card">
+              <img class="filter-page-poster" {{bind-attr src=posterImage}} />
+              <span class="filter-page-name">
+                {{canonicalTitle}}
+              </span>
+            </div>
           </div>
-        </div>
+        {{/link-to}}
       {{/each}}
     </div>
   </div>

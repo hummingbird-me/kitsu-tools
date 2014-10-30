@@ -44,3 +44,25 @@
     background: darken(#16a085, 5);
   }
 }
+
+.filter-page {
+  padding-top: 20px;
+  padding-bottom: 15px;
+
+.filter-page-card {
+  margin: 7px 0;
+  background: #fff;
+  border-radius: 3px;
+
+  .filter-page-poster {
+    width: 100%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .filter-page-name {
+    display: block;
+    padding: 4px 10px;
+  }
+}
+}
