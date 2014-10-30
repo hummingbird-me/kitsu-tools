@@ -68,12 +68,6 @@
     height: 360px;
     width: 100%;
     filter: blur(3px);
-    /*-webkit-mask: -webkit-linear-gradient(black, transparent, black);
-    -webkit-mask: linear-gradient(black, transparent, black);
-    -webkit-filter: blur(3px);
-    -moz-mask: -moz-linear-gradient(black, transparent, black);
-    -moz-mask: linear-gradient(black, transparent, black);
-    -moz-filter: blur(3px);*/
     mask: url('#mask-linear');
     filter: url('#filtre');
     z-index: 1;
