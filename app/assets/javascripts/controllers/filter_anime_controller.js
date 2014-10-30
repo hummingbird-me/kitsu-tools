@@ -26,6 +26,7 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
   showPage: 1,
   isLoading: false,
   animeList: [],
+  selectSort: "rating",
   selectTime: {},
   selectGenre: {},
 
@@ -59,6 +60,7 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
       if(newPage < 1) return; 
       // Add check for max page
 
+      console.log(this.get('selectSort'));
       this.set('showPage', newPage);
       this.send('applyFilter');
     },
@@ -80,6 +82,7 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
           requrl = decodeURIComponent(this.get('query'));
           requrl = requrl.replace(/\[/,'%5B');
           requrl = requrl.replace(/\]/,'%5D');
+          requrl += "&new_filter=true" // TEMPORARY!!
           // ^ Hacky solution to allow us to store
           //   query as an ember query param
 
