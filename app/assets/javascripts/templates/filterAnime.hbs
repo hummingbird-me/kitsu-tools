@@ -26,6 +26,11 @@
       {{#if isLoading}}<i class="fa fa-spinner"></i>{{/if}}
       Apply Filter
     </button>
+
+    {{view "select" class="pull-right form-control filter-page-sort"
+       content=filterSorts
+       optionValuePath="content.value"
+       optionLabelPath="content.name"}}
   </div>
 </div>
 
@@ -46,4 +51,14 @@
       {{/each}}
     </div>
   </div>
+</div>
+
+<div class="container filter-page text-center">
+  <button class="btn status-button" {{action 'switchPage' -1}}>
+    <i class="fa fa-angle-left"></i>
+  </button>
+  <button class="btn btn-default">{{showPage}}</button>
+  <button class="btn status-button" {{action 'switchPage' 1}}>
+    <i class="fa fa-angle-right"></i>
+  </button>
 </div>

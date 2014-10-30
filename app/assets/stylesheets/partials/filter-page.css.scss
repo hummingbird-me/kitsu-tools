@@ -7,6 +7,11 @@
     padding: 0;
   }
 
+  .filter-page-sort {
+    margin: 0 10px;
+    width: auto !important;
+  }
+
   .filter-page-option {
     display: block;
     padding: 3px 5px;
@@ -49,20 +54,24 @@
   padding-top: 20px;
   padding-bottom: 15px;
 
-.filter-page-card {
-  margin: 7px 0;
-  background: #fff;
-  border-radius: 3px;
+  .filter-page-card {
+    margin: 7px 0;
+    background: #fff;
+    border-radius: 3px;
 
-  .filter-page-poster {
-    width: 100%;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    .filter-page-poster {
+      width: 100%;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+    }
+
+    .filter-page-name {
+      display: block;
+      padding: 4px 10px;
+    }
   }
 
-  .filter-page-name {
-    display: block;
-    padding: 4px 10px;
+  .status-button {
+    float: none !important;
   }
-}
 }

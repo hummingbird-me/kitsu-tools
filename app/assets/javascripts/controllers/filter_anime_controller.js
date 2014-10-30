@@ -1,6 +1,13 @@
 HB.FilterAnimeController = Ember.ObjectController.extend({
   queryParams: ['query'],
 
+  filterSorts: [
+    {name: "Highest Rated", value: "rating"},
+    {name: "Most Popular", value: "popular"},
+    {name: "Newest", value: "newest"},
+    {name: "Oldest", value: "oldest"}
+  ],
+
   filterTimes: [
     "Upcoming",
     "2010s",
@@ -47,6 +54,15 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
   },
 
   actions: {
+    switchPage: function(mod){
+      var newPage = this.get('showPage') + mod;
+      if(newPage < 1) return; 
+      // Add check for max page
+
+      this.set('showPage', newPage);
+      this.send('applyFilter');
+    },
+
     toggleFilterTime: function(item){
       this.set('selectTime.'+item, !this.get('selectTime.'+item));
       this.updateItem(item, this.get('selectTime.'+item));
@@ -59,7 +75,7 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
 
     applyFilter: function(){
       this.encodeQuery();
-      
+
       var self = this,
           requrl = decodeURIComponent(this.get('query'));
           requrl = requrl.replace(/\[/,'%5B');
