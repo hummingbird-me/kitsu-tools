@@ -232,6 +232,7 @@
 
   .user-bio {
     max-width: 500px;
+    word-break: break-word;
     @media (max-width: 850px) {
       max-width: 350px;
     }
