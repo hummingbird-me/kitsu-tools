@@ -1,4 +1,4 @@
-HB.Anime = DS.Model.extend({
+HB.Anime = HB.Media.extend({
   canonicalTitle: DS.attr('string'),
   englishTitle: DS.attr('string'),
   romajiTitle: DS.attr('string'),

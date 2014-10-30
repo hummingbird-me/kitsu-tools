@@ -1,4 +1,4 @@
-HB.Manga = DS.Model.extend({
+HB.Manga = HB.Media.extend({
   romajiTitle: DS.attr("string"),
   englishTitle: DS.attr("string"),
   posterImage: DS.attr("string"),

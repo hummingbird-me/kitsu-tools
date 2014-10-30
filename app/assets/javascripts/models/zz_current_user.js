@@ -8,3 +8,9 @@ HB.CurrentUser = HB.User.extend({
   hasFacebook: DS.attr('boolean'),
   confirmed: DS.attr('boolean')
 });
+
+HB.CurrentUserAdapter = DS.ActiveModelAdapter.extend({
+  pathForType: function(type) {
+    return 'users';
+  }
+});

@@ -15,10 +15,10 @@ HB.StoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   loadingAll: false,
   loadedAll: HB.computed.propertyEqual('substories.length', 'model.substoryCount'),
 
-  belongsToUser: function () {
-    var loggedInUser = this.get('currentUser');
-    return loggedInUser.get('id') === this.get('model.poster.id') || loggedInUser.get('id') === this.get('model.user.id');
-  }.property('model.poster', 'model.user'),
+  belongsToUser: function() {
+    var currentUserId = this.get('currentUser.id');
+    return currentUserId === this.get('model.poster.id') || currentUserId === this.get('model.user.id');
+  }.property('model.poster.id', 'model.user.id'),
 
   canDeleteStory: function() {
     return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.isAdmin'));
