@@ -1,5 +1,6 @@
 HB.FilterAnimeController = Ember.ObjectController.extend({
-  
+  queryParams: ['query'],
+
   filterTimes: [
     "Upcoming",
     "2010s",
@@ -15,25 +16,25 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
   }.property('@each.genres'),
   
   query: "",
+  showPage: 1,
+  isLoading: false,
+  animeList: [],
   selectTime: {},
   selectGenre: {},
 
-  istrue: true,
 
   encodeQuery: function(){
-    var query = "";
+    var query = "?page=" + this.get('showPage');
 
     $.each(this.get('selectTime'), function(key, val){
-      if(val) query += key+",";
+      if(val) query += "&y[]=" + key;
     });
 
-    query = query.substring(0, query.length -1) + ";";
     $.each(this.get('selectGenre'), function(key, val){
-      if(val) query += key+",";
+      if(val) query += "&g[]=" + key;
     });
 
-    this.set('query', query.substring(0, query.length -1));
-    console.log(query);
+    this.set('query', query);
   },
 
   decodeQuery: function(){
@@ -58,6 +59,20 @@ HB.FilterAnimeController = Ember.ObjectController.extend({
 
     applyFilter: function(){
       this.encodeQuery();
+      
+      var self = this,
+          requrl = decodeURIComponent(this.get('query'));
+          requrl = requrl.replace(/\[/,'%5B');
+          requrl = requrl.replace(/\]/,'%5D');
+          // ^ Hacky solution to allow us to store
+          //   query as an ember query param
+
+      this.set('isLoading', true);
+      $.getJSON('/anime/filter.json' + requrl, function(payload){
+        self.set('isLoading', false);
+        self.store.pushPayload(payload);
+        self.set('animeList', payload.anime);
+      });
     }
   }
 });

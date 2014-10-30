@@ -1,4 +1,4 @@
-<div class="series-header">
+<div class="series-header clearfix">
   <div class="row filter-page-filter">
     <div class="col-md-2">
       <h2 class="grey-title">Timespan</h2>
@@ -21,13 +21,27 @@
       </div>
     </div>
   </div>
-  <div class="row">
-    <button class="top-button pull-right" {{action 'applyFilter'}}>Apply Filter</button>
+  <div class="row filter-page-filter">
+    <button class="top-button pull-right" {{action 'applyFilter'}}>
+      {{#if isLoading}}<i class="fa fa-spinner"></i>{{/if}}
+      Apply Filter
+    </button>
   </div>
 </div>
 
 <div class="container filter-page">
   <div class="filter-page">
-    sdsd
+    <div class="row">
+      {{#each animeList}}
+        <div class="col-md-2 col-sm-3">
+          <div class="filter-page-card">
+            <img class="filter-page-poster" {{bind-attr src=posterImage}} />
+            <span class="filter-page-name">
+              {{canonicalTitle}}
+            </span>
+          </div>
+        </div>
+      {{/each}}
+    </div>
   </div>
 </div>
