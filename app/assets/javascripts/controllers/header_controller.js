@@ -20,7 +20,7 @@ HB.HeaderController = Ember.Controller.extend(HB.HasCurrentUser, {
     return this.get('blotter.message') && (window.localStorage.dismissedBlotter != this.get('blotter.message'));
   }.property('blotter.message'),
 
-  unconfirmed: Ember.computed.equal('currentUser.confirmed', true),
+  unconfirmed: Ember.computed.equal('currentUser.confirmed', false),
 
   init: function () {
     var _this = this;
