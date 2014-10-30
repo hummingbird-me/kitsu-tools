@@ -150,6 +150,8 @@ class AnimeController < ApplicationController
                                      .index_by(&:anime_id)
     end
 
+    preload_to_ember! Genre.all, each_serializer: GenreSerializer
+
     render_ember
   end
 
