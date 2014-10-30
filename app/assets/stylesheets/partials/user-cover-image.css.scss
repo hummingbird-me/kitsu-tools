@@ -1,6 +1,6 @@
 /* autoprefixer: off */
 .user-cover {
-  height: 360px;
+  height: 330px;
   overflow: hidden;
   position: relative;
 
@@ -8,7 +8,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 360px;
+    height: 330px;
     width: 100%;
     position: relative;
     .edit-cover {
@@ -65,7 +65,7 @@
     bottom: 0;
     background-size: cover;
     background-position: center;
-    height: 360px;
+    height: 330px;
     width: 100%;
     -webkit-mask: -webkit-linear-gradient(black, transparent, black);
     -webkit-mask: linear-gradient(black, transparent, black);

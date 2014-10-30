@@ -10,7 +10,7 @@ HB.ModalsCropCoverView = Ember.View.extend({
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     imageObj.onload = function() {
-      context.drawImage(this, c.x, c.y, c.w, c.h, 0, 0, 2800, 720);
+      context.drawImage(this, c.x, c.y, c.w, c.h, 0, 0, 2800, 640);
       var canvasDataURL = canvas.toDataURL('image/jpeg');
       RGBaster.colors(canvasDataURL, function(payload) {
         return element.querySelector('.modal-content').style.background = payload.dominant;
@@ -27,14 +27,14 @@ HB.ModalsCropCoverView = Ember.View.extend({
           imageWidth = this.$("#preview").width(),
           initialSelect = null;
 
-      if (imageWidth / imageHeight === 1400 / 360) {
+      if (imageWidth / imageHeight === 1400 / 330) {
         initialSelect = [0, 0, imageWidth, imageHeight];
-      } else if (imageWidth / imageHeight > 1400 / 360) {
+      } else if (imageWidth / imageHeight > 1400 / 330) {
         y = imageHeight;
         x = 1400 * y / 360;
         a = (imageWidth - x) / 2;
         initialSelect = [a, 0, a + x, y];
-      } else if (imageWidth / imageHeight < 1400 / 360) {
+      } else if (imageWidth / imageHeight < 1400 / 330) {
         x = imageWidth;
         y = 360 * x / 1400;
         b = (imageHeight - y) / 2;
@@ -42,7 +42,7 @@ HB.ModalsCropCoverView = Ember.View.extend({
       }
 
       return this.$("#preview").Jcrop({
-        aspectRatio: 1400 / 360,
+        aspectRatio: 1400 / 330,
         boxWidth: 500,
         bgColor: 'black',
         setSelect: initialSelect,
