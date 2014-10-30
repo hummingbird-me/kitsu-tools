@@ -11,6 +11,7 @@ HB.Router.map(function() {
       this.route('show', {path: '/:review_id'});
     });
     this.route('quotes');
+    this.route('filter');
   });
 
   this.resource('manga', {path: '/manga/:id'}, function() {

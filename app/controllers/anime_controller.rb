@@ -150,7 +150,7 @@ class AnimeController < ApplicationController
                                      .index_by(&:anime_id)
     end
 
-    render :explore_filter
+    render_ember
   end
 
   def index
