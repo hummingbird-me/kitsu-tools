@@ -10,6 +10,9 @@
           {{#link-to 'user' username}}
             <img {{bind-attr src=avatar}}>
             {{username}}
+            {{#if admin}}
+              <i class="fa fa-shield" title="This user is an admin" alt="This user is an admin"></i>
+            {{/if}}
           {{/link-to}}
         </li>
       {{/each}}
@@ -20,7 +23,7 @@
     <div class="chat-items">
       <ul>
         {{#each msg in this itemViewClass="chatMessage"}}
-          <li {{bind-attr class=msg.classes}}>
+          <li {{bind-attr class=msg.type}}>
             <div {{bind-attr class=":username msg.admin"}} {{action "replyUser" msg.username}}>
               {{msg.username}}
               {{#if msg.admin}}

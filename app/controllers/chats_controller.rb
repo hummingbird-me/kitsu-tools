@@ -6,16 +6,21 @@ class ChatsController < ApplicationController
   end
 
   def create
-    if params.has_key?(:message) && !current_user.ninja_banned?
-      MessageBus.publish "/chat/lobby", {
-        id: params[:id],
-        message: params[:message],
-        formattedMessage: MessageFormatter.format_message(params[:message]),
-        username: current_user.name,
-        time: Time.now.iso8601(0),
-        admin: current_user.admin?
-      }
-    end
+    return error! "Invalid message type", 400 unless params[:type].in?(%w[message action notice])
+    return error! "Message is required", 400 unless params.has_key?(:message)
+    return error! "Not an administrator", 403 if params[:type] == 'notice' && !current_user.admin?
+    return error! "User is banned", 403 if current_user.ninja_banned?
+
+    MessageBus.publish "/chat/lobby", {
+      type: "message",
+      id: params[:id],
+      message: params[:message],
+      type: params[:type],
+      formattedMessage: MessageFormatter.format_message(params[:message]),
+      username: current_user.name,
+      time: Time.now.iso8601(0),
+      admin: current_user.admin?
+    }
 
     render json: true
   end
@@ -45,7 +50,8 @@ class ChatsController < ApplicationController
       json[:online_users] = active_users.map do |user|
         {
           username: user.name,
-          avatar: user.avatar.url(:thumb_small)
+          avatar: user.avatar.url(:thumb_small),
+          admin: user.admin?
         }
       end
     end

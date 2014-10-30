@@ -2,20 +2,42 @@ HB.ChatController = Ember.ArrayController.extend(HB.HasCurrentUser, {
   message: "",
   onlineUsers: [],
 
+  command: function() {
+    var msg = this.get('message');
+
+    if (msg.indexOf('/') === 0) {
+      var cmd = msg.slice(1, msg.indexOf(' '));
+      if (['me', 'notice'].indexOf(cmd) !== -1) {
+        return cmd;
+      }
+    }
+  }.property('message'),
+
+  commandMessage: function() {
+    var msg = this.get('message');
+
+    if (!this.get('command')) return msg;
+    return msg.slice(msg.indexOf(' ')+1);
+  }.property('command', 'message'),
+
   actions: {
     sendMessage: function() {
-      var message = this.get('message');
+      var command = this.get('command');
+      var message = this.get('commandMessage');
 
       if (message.replace(/\s/g, '').replace(/\[[a-z]+\](.?)\[\/[a-z]+\]/i, '$1').length === 0)
         return;
 
       this.set('message', '');
 
+      var type = ({'me': 'action', 'notice': 'notice'})[command];
+      type = type || 'message';
+
       var messageObj = {
         id: "xxxxxxxxxxxxxxxxxxxxxx".replace(/[x]/g, function(c) { return (Math.random()*16|0).toString(16) }),
         message: message,
         username: this.get('currentUser.username'),
-        type: 'message'
+        type: type
       }
 
       ic.ajax({
@@ -58,6 +80,7 @@ HB.ChatController = Ember.ArrayController.extend(HB.HasCurrentUser, {
             oldMessage.set('formattedMessage', messageObj.get('formattedMessage'));
             oldMessage.set('time', messageObj.get('time'));
             oldMessage.set('admin', messageObj.get('admin'));
+            oldMessage.set('type', messageObj.get('type'));
             newMessageFlag = false;
             return;
           }
