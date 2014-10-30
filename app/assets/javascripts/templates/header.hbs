@@ -88,7 +88,7 @@
   </div>
 {{/if}}
 
-{{#unless currentUser.confirmed}}
+{{#if unconfirmed}}
   <div class="blotter">
     <i class="fa fa-2x fa-exclamation-circle"></i>
     <p>Uh oh, it looks like you still haven't confirmed your email!</p>
@@ -96,4 +96,4 @@
       {{#if resentEmail}}Sent!{{else}}Resend{{/if}}
     </a>
   </div>
-{{/unless}}
+{{/if}}
