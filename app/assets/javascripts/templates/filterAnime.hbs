@@ -1,0 +1,33 @@
+<div class="series-header">
+  <div class="row filter-page-filter">
+    <div class="col-md-2">
+      <h2 class="grey-title">Timespan</h2>
+      {{#each filterTimes}}
+        <div {{bind-attr id=this}} class="filter-page-option" {{action 'toggleFilterTime' this}}>
+          {{this}}
+        </div>
+      {{/each}}
+    </div>
+    <div class="col-md-10">
+      <h2 class="grey-title">Genre</h2>
+      <div class="row">
+        {{#each filterGenres}}
+          <div class="col-md-2 col-sm-4">
+            <div {{bind-attr id=this.slug}} class="filter-page-option" {{action 'toggleFilterGenre' this.slug}}>
+              {{name}}
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <button class="top-button pull-right" {{action 'applyFilter'}}>Apply Filter</button>
+  </div>
+</div>
+
+<div class="container filter-page">
+  <div class="filter-page">
+    sdsd
+  </div>
+</div>

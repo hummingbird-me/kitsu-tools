@@ -1,0 +1,45 @@
+.filter-page-filter {
+  padding: 10px 20px;
+
+  .grey-title {
+    margin-top: 0;
+    padding: 0;
+  }
+
+  .filter-page-option {
+    display: block;
+    padding: 3px 5px;
+    margin: 0 0 4px 0;
+    border: 1px solid #666;
+    border-radius: 3px;
+    text-align: center;
+    color: #999;
+    transition: color 0.3s ease-in-out, border 0.3s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.active {
+      color: #ccc;
+      border: 1px solid #169E83;
+      transition: color 0.3s ease-in-out, border 0.3s ease-in-out;
+    }
+  }
+}
+
+.top-button {
+  @extend .btn;
+  @extend .btn-default;
+
+  border: none;
+  background: #2f333b;
+  color: #fff;
+  font-family: $headerFontFamily;
+  font-size: 16px;
+  transition: background .2s ease-in;
+  border-radius: 4px;
+  &:hover {
+    background: darken(#16a085, 5);
+  }
+}
