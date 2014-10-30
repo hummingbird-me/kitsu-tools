@@ -6,7 +6,7 @@ class ChatsController < ApplicationController
   end
 
   def create
-    return error! "Invalid message type", 400 unless params[:type].in?(%w[message action notice])
+    return error! "Invalid message type", 400 unless params[:type].in?(['message', 'action', 'notice', nil])
     return error! "Message is required", 400 unless params.has_key?(:message)
     return error! "Not an administrator", 403 if params[:type] == 'notice' && !current_user.admin?
     return error! "User is banned", 403 if current_user.ninja_banned?
