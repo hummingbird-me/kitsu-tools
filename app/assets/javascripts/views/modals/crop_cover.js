@@ -31,7 +31,7 @@ HB.ModalsCropCoverView = Ember.View.extend({
         initialSelect = [0, 0, imageWidth, imageHeight];
       } else if (imageWidth / imageHeight > 1400 / 330) {
         y = imageHeight;
-        x = 1400 * y / 360;
+        x = 1400 * y / 330;
         a = (imageWidth - x) / 2;
         initialSelect = [a, 0, a + x, y];
       } else if (imageWidth / imageHeight < 1400 / 330) {
