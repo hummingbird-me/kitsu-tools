@@ -14,18 +14,16 @@
       <div class="cover-overlay" {{bind-attr style=coverImageStyle}}></div>
     </div>
     <svg height="0">
-    <defs>
-      <mask id="mask-linear">
-        <rect width="400" height="300"></rect>
-        <linearGradient id="l1" x1="0" y1="0" x2="0" y2="1">
-          <stop stop-color="black" offset="0%"></stop>
-          <stop stop-color="white" offset="100%"></stop>
-        </linearGradient>
-      </mask>
-      <filter id="filtre">
-        <feGaussianBlur in="SourceGraphic" stdDeviation="3"></feGaussianBlur>
+      <filter id="blur">
+        <feGaussianBlur stdDeviation="3"/>
       </filter>
-    </defs>
+      <mask id="blur-fade" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+        <linearGradient id="blur-gradient" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
+          <stop stop-color="white" stop-opacity="0" offset="0.5"></stop>
+          <stop stop-color="white" stop-opacity="1" offset="1"></stop>
+        </linearGradient>
+        <rect x="0" y="0" width="1" height="1" fill="url(#blur-gradient)"></rect>
+      </mask>
     </svg>
   </div>
 </div>

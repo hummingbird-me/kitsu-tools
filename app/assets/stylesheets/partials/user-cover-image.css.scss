@@ -67,14 +67,11 @@
     background-position: center;
     height: 330px;
     width: 100%;
-    -webkit-mask: -webkit-linear-gradient(black, transparent, black);
-    -webkit-mask: linear-gradient(black, transparent, black);
+    -webkit-mask: -webkit-linear-gradient(black, transparent 30%, black);
+    -webkit-mask: linear-gradient(black, transparent 30%, black);
     -webkit-filter: blur(3px);
-    -moz-mask: -moz-linear-gradient(black, transparent, black);
-    -moz-mask: linear-gradient(black, transparent, black);
-    -moz-filter: blur(3px);
-    mask: url('#mask-linear');
-    filter: url('#filtre');
+    mask: url(#blur-fade);
+    filter: url("#blur");
   }
 }
 
