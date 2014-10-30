@@ -50,7 +50,8 @@ class ChatsController < ApplicationController
       json[:online_users] = active_users.map do |user|
         {
           username: user.name,
-          avatar: user.avatar.url(:thumb_small)
+          avatar: user.avatar.url(:thumb_small),
+          admin: user.admin?
         }
       end
     end
