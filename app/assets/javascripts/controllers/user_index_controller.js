@@ -7,10 +7,6 @@ HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
   hasWebsite: Ember.computed.any('user.website'),
   unselectingWaifu: false,
 
-  miniBio140: function () {
-    if (this.get('user.miniBio').length <= 140) return this.get('user.miniBio');
-    return this.get('user.miniBio').slice(0,137) + '...';
-  }.property('user.miniBio'),
   bioCharsLeft: function () {
     return this.get('bioCharCounter') !== 0;
   }.property('bioCharCounter'),
