@@ -29,9 +29,15 @@ input:focus, textarea:focus {
 
 
 /* some table stuff */
+.table-striped {
+  margin-bottom: 0;
+}
+
 .table-striped tbody td {
   border-top: none !important; 
 }
+
+.small-content { font-size: 0.8em; }
 
 
 /* Fix panel rounded corner artefacts. */

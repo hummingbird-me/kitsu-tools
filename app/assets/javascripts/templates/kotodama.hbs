@@ -21,6 +21,20 @@
           {{ember-chart type="Line" data=graphData options=graphOptions}}
         </div>
       </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">Daily stats</div>
+        <div class="panel-body no-padding no-vpadding">
+          <table class="table table-striped small-content">
+            <tbody>
+              <tr><td>Registrations</td><td>{{accountsNew}}</td></tr>
+              <tr><td>Confirmed Accounts</td><td>{{accountsCnf}}</td></tr>
+              <tr><td>Active Accounts</td><td>{{activeaccs}}</td></tr>
+              <tr><td>Feed posts</td><td>{{feedposts}}</td></tr>
+              <tr><td>Feed updates</td><td>{{feedcomments}}</td></tr>
+          </table>
+        </div>
+      </div>
 
       <div class="panel panel-default">
         <div class="panel-heading">Deploy Hummingbird</div>
@@ -103,10 +117,11 @@
         </div>
       </div>
 
+      {{!--
       <div class="panel panel-default">
         <div class="panel-heading">Reported content</div>
-        <div class="panel-body no-padding">
-          <table class="table table-striped no-padding no-vpadding">
+        <div class="panel-body no-padding no-vpadding">
+          <table class="table table-striped">
             <tbody>
               {{#each reportedContent}}
                 <tr>
@@ -122,6 +137,7 @@
           </table>
         </div>
       </div>
+      --}}
     </div>
   </div>
 </div>

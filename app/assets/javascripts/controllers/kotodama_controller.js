@@ -13,6 +13,16 @@ HB.KotodamaController = Ember.ObjectController.extend({
 
   reportedContent: ["quote:39248348", "comment:3948348"],
 
+  accountsNew: function(){
+    var statsObject = this.get('content.registrations.total');
+    return statsObject[Object.keys(statsObject)[Object.keys(statsObject).length - 1]]
+  }.property('content.registrations'),
+
+  accountsCnf: function(){
+    var statsObject = this.get('content.registrations.confirmed');
+    return statsObject[Object.keys(statsObject)[Object.keys(statsObject).length - 1]]
+  }.property('content.registrations'),
+
   init: function(){
     var blotter = this.get('blotter');
     if(blotter){
