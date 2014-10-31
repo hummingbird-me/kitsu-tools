@@ -14,12 +14,14 @@
           </ul>
         </div>
       </div>
+      
       <div class="panel panel-default">
         <div class="panel-heading">Registrations over the last week</div>
         <div class="panel-body">
           {{ember-chart type="Line" data=graphData options=graphOptions}}
         </div>
       </div>
+
       <div class="panel panel-default">
         <div class="panel-heading">Deploy Hummingbird</div>
         <div class="panel-body">
@@ -31,6 +33,8 @@
         </div>
       </div>
     </div>
+
+
     <div class="col-md-8 col-sm-8">
       <div class="panel panel-default">
         <div class="panel-heading">Set Hummingbird Blotter</div>
@@ -50,13 +54,13 @@
             </div>
           {{/if}}
           <div class="row">
-            <div class="col-md-4 col-xs-4">
+            <div class="col-md-6 col-xs-6">
               {{input type="text" value=blotterMesg class="form-control" placeholder="Blotter Message"}}
             </div>
-            <div class="col-md-4 col-xs-4">
+            <div class="col-md-3 col-xs-3">
               {{input type="url" value=blotterLink class="form-control" placeholder="Blotter Link"}}
             </div>
-            <div class="col-md-4 col-xs-4">
+            <div class="col-md-3 col-xs-3">
               <button class="form-control btn status-button" {{action 'saveBlotter'}}>Save</button>
             </div>
           </div>
@@ -68,28 +72,54 @@
         <div class="panel-body">
           <form method="get" action="/kotodama/find_or_create_by_mal">
             <div class="row">
-              <div class="col-md-4 col-xs-4">
+              <div class="col-md-3 col-xs-3">
                 <select name="media" size="1" class="form-control">
                   <option value="anime">Anime</option>
                   <option value="manga">Manga</option>
                 </select>
               </div>
-              <div class="col-md-4 col-xs-4">
+              <div class="col-md-3 col-xs-3">
                 <input type="number" name="mal_id" class="form-control" placeholder="MAL ID" />
               </div>
-              <div class="col-md-4 col-xs-4">
+              <div class="col-md-3 col-xs-3">
                 <input type="submit" value="Import" class="form-control btn status-button" />
+              </div>
+              <div class="col-md-3 col-xs-3">
+                {{#if nonMalAnime}}
+                  <button class="form-control btn btn-default" {{action 'toggleNonMal'}}>No MAL-ID Anime</button>
+                {{/if}}
               </div>
             </div>
           </form>
-          <h5>Anime without MAL ID</h5>
-          <ul>
-          {{#each nonMalAnime}}
-            <li>{{#link-to 'anime' slug}}{{title}}{{/link-to}}</li>
-          {{else}}
-            <li>Nothing found.</li>
-          {{/each}}
-          </ul>
+          {{#if showNonMal}}
+            <table class="table table-striped">
+              <tbody>
+                {{#each nonMalAnime}}
+                  <tr><td>{{#link-to 'anime' slug}}{{title}}{{/link-to}}</td></tr>
+                {{/each}}
+              </tbody>
+            </table>
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Reported content</div>
+        <div class="panel-body no-padding">
+          <table class="table table-striped no-padding no-vpadding">
+            <tbody>
+              {{#each reportedContent}}
+                <tr>
+                  <td>{{this}}</td>
+                  <td>cybrox</td>
+                  <td>
+                    {{#link-to 'index'}}<i class="fa fa-eye"></i>{{/link-to}}
+                    {{#link-to 'index'}}<i class="fa fa-pencil"></i>{{/link-to}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

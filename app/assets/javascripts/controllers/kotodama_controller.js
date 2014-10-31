@@ -8,6 +8,10 @@ HB.KotodamaController = Ember.ObjectController.extend({
 
   hasBlotter: Ember.computed.notEmpty('blotter'),
   hasDeployed: false,
+  showReports: false,
+  showNonMal: false,
+
+  reportedContent: ["quote:39248348", "comment:3948348"],
 
   init: function(){
     var blotter = this.get('blotter');
@@ -96,6 +100,10 @@ HB.KotodamaController = Ember.ObjectController.extend({
           blotterLink: ""
         });
       });
+    },
+
+    toggleNonMal: function(){
+      this.toggleProperty('showNonMal');
     }
   }
 

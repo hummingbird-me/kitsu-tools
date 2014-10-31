@@ -22,6 +22,17 @@ input:focus, textarea:focus {
   margin: 10px 0;
 }
 
+.no-vpadding {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+
+/* some table stuff */
+.table-striped tbody td {
+  border-top: none !important; 
+}
+
 
 /* Fix panel rounded corner artefacts. */
 .panel { border: none; }
