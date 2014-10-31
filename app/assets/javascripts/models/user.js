@@ -37,5 +37,11 @@ HB.User = DS.Model.extend({
     } else {
       return this.get("website");
     }
-  }.property('website')
+  }.property('website'),
+
+  truncatedBio: function () {
+    if(!this.get('miniBio')) return "";
+    if (this.get('miniBio').length <= 140) return this.get('miniBio');
+    return this.get('miniBio').slice(0,137) + '...';
+  }.property('miniBio')
 });

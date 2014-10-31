@@ -27,12 +27,6 @@ HB.UserController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     return "/users/" + this.get('model.username') + "/watchlist";
   }.property('model.username'),
 
-  truncatedBio: function () {
-    if(!this.get('model.miniBio')) return "";
-    if (this.get('model.miniBio').length <= 140) return this.get('model.miniBio');
-    return this.get('model.miniBio').slice(0,137) + '...';
-  }.property('model.miniBio'),
-
   actions: {
     toggleEditMenu: function(){
       this.toggleProperty('showEditMenu');
