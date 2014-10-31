@@ -46,6 +46,10 @@ class AdminController < ApplicationController
   def stats
     stats = {}
 
+    stats[:activeaccs] = User.where('last_library_update >= ?', 1.day.ago).count
+    stats[:feedposts] = Story.where('created_at >= ?', 1.day.ago).count
+    stats[:feedcomments] = Substory.where('created_at >= ?', 1.day.ago).count
+
     stats[:registrations] = {total: {}, confirmed: {}}
     User.where('created_at >= ?', 1.week.ago).find_each do |user|
       daysago = user.created_at.strftime("%b %d")
