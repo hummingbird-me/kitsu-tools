@@ -10,7 +10,7 @@ HB.ModalsCropCoverView = Ember.View.extend({
     context.fillRect(0, 0, canvas.width, canvas.height);
 
     imageObj.onload = function() {
-      context.drawImage(this, c.x, c.y, c.w, c.h, 0, 0, 2800, 640);
+      context.drawImage(this, c.x, c.y, c.w, c.h, 0, 0, 2800, 660);
       var canvasDataURL = canvas.toDataURL('image/jpeg');
       RGBaster.colors(canvasDataURL, function(payload) {
         return element.querySelector('.modal-content').style.background = payload.dominant;
@@ -36,7 +36,7 @@ HB.ModalsCropCoverView = Ember.View.extend({
         initialSelect = [a, 0, a + x, y];
       } else if (imageWidth / imageHeight < 1400 / 330) {
         x = imageWidth;
-        y = 360 * x / 1400;
+        y = 330 * x / 1400;
         b = (imageHeight - y) / 2;
         initialSelect = [0, b, x, b + y];
       }
