@@ -25,7 +25,7 @@
               {{bioCharCounter}} left
             </div>
 
-            {{{textarea class="edit-bio" rows="4" placeholder="Tell us about yourself  :3" value=user.miniBio}}} --}}
+            {{{textarea class="edit-bio" rows="4" placeholder="Tell us about yourself  :3" value=user.miniBio140}}} --}}
             <div class="user-interests">
               <ul>
                 <li>
@@ -49,14 +49,14 @@
               </ul>
             </div>
           {{else}}
-            {{!-- <p class="about"> {{user.miniBio}}</p> --}}
+            {{!-- <p class="about"> {{user.miniBio140}}</p> --}}
             <div class="user-interests">
               <ul>
                 <li>
                   {{#if hasWaifu}}
                     <div class="interest-icon"> <i class="fa fa-heart"></i></div>
                     <div class="interest">
-                      {{user.waifuOrHusbando}} is 
+                      {{user.waifuOrHusbando}} is
                       {{#link-to 'anime' waifu_slug}} {{user.waifu}}{{/link-to}}
                     </div>
                   {{/if}}

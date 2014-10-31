@@ -62,7 +62,7 @@ HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
     var animes = this.get('favorite_anime')
       , page = this.get('favorite_anime_page');
 
-    // if using the goPrev and goNext page style, slice the array into a chunk 
+    // if using the goPrev and goNext page style, slice the array into a chunk
     // animes = animes.slice( (page - 1) * 6, page * 6);
 
     // if using loadMoreFavorite_animes, slice the array from [0] to the page

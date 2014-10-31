@@ -115,7 +115,7 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
-    ember-data-source (1.0.0.beta.9)
+    ember-data-source (1.0.0.beta.11)
       ember-source
     ember-rails (0.15.0)
       active_model_serializers
@@ -126,7 +126,7 @@ GEM
       handlebars-source (> 1.0.0)
       jquery-rails (>= 1.0.17)
       railties (>= 3.1)
-    ember-source (1.8.0.beta.1)
+    ember-source (1.8.0)
       handlebars-source (~> 1.0)
     equalizer (0.0.9)
     erubis (2.7.0)
@@ -453,9 +453,9 @@ DEPENDENCIES
   devise-async
   dotenv-rails
   dropbox-api
-  ember-data-source (= 1.0.0.beta.9)
+  ember-data-source (= 1.0.0.beta.11)
   ember-rails (~> 0.15)
-  ember-source (= 1.8.0.beta.1)
+  ember-source (= 1.8.0)
   fakeweb
   fast_blank
   fastclick-rails (~> 1.0)

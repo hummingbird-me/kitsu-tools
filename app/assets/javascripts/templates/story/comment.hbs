@@ -63,33 +63,33 @@
       {{/if}}
     </div>
   {{/if}}
-  {{#each substory in reversedDisplaySubstories}}
-    <div {{bind-attr class=":reply substory.isNew"}}>
+  {{#each reversedDisplaySubstories itemController="substory"}}
+    <div {{bind-attr class=":reply isNew"}}>
       <div class="user-avatar">
-        {{#link-to 'user' substory.user}}
-          {{avatar substory.user 'thumb_small'}}
+        {{#link-to 'user' user}}
+          {{avatar user 'thumb_small'}}
         {{/link-to}}
       </div>
       <div class="content">
         <p>
           <span class="username">
-            {{#link-to 'user' substory.user}}
-              {{substory.user.username}}
+            {{#link-to 'user' user}}
+              {{user.username}}
             {{/link-to}}
           </span>
           <span class="comment">
-            {{#if substory.isNew}}
-              {{substory.reply}}
+            {{#if isNew}}
+              {{reply}}
             {{else}}
-              {{{substory.reply}}}
+              {{{reply}}}
             {{/if}}
           </span>
         </p>
         <div class="secondary">
-          {{time-ago time=substory.createdAt}}
-          {{#if canDeleteStory}}
+          {{time-ago time=createdAt}}
+          {{#if canDeleteSubstory}}
             ·
-            <a class="remove-post" {{action deleteSubstory substory}}>remove</a>
+            <a class="remove-post" {{action deleteSubstory this}}>remove</a>
           {{/if}}
         </div>
       </div>
