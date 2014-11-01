@@ -3,7 +3,7 @@ HB.AnimeFranchisesController = Ember.ArrayController.extend({
   // of all of the shows from the set of franchises.
   franchiseAnime: function () {
     var anime = [];
-    this.get('content.@each.anime').forEach(function(animeSet) {
+    this.getEach("anime").forEach(function(animeSet) {
       anime = anime.concat(animeSet.toArray());
     });
 
