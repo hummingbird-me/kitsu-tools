@@ -19653,6 +19653,7 @@ body .ui-tooltip {
   padding: 0;
   -o-border-radius: 2px;
   border-radius: 2px;
+  webkit-appearance: none;
 }
 
 .login-register-card .login-button:hover,.login-register-card .fb-button:hover {
@@ -19677,7 +19678,7 @@ body .ui-tooltip {
 
 .login-register-card .password-reset {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 30px 0;
 }
 
 .login-register-card .social-buttons {
