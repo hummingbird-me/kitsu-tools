@@ -19653,6 +19653,7 @@ body .ui-tooltip {
   padding: 0;
   -o-border-radius: 2px;
   border-radius: 2px;
+  webkit-appearance: none;
 }
 
 .login-register-card .login-button:hover,.login-register-card .fb-button:hover {
