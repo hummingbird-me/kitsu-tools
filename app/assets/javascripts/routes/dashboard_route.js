@@ -78,7 +78,7 @@ HB.DashboardRoute = Ember.Route.extend(HB.Paginated, {
         }
       });
 
-      this.set('controller.content', newContent);
+      this.currentModel.setObjects(newContent);
       this.set('controller.newStories', []);
     }
   }
