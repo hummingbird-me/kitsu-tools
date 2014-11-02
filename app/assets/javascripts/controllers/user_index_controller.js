@@ -46,6 +46,9 @@ HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
   }.property('favorite_anime_page', 'favorite_anime'),
 
   linkedWebsites: function(){
+    if (!this.get("hasWebsite"))
+      return;
+
     var dataList = this.get('user.website').split(' '),
         siteList = [],
         actualLn = "";
