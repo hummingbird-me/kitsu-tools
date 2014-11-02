@@ -18,7 +18,7 @@ HB.UserIndexRoute = Ember.Route.extend(HB.Paginated, HB.ResetScroll, {
 
     this.setCanLoadMore(true);
     controller.set('canLoadMore', true);
-    controller.set('model', []);
+    controller.set('model', model);
 
     this.loadNextPage();
   },
