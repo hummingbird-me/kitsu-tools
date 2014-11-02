@@ -19678,7 +19678,7 @@ body .ui-tooltip {
 
 .login-register-card .password-reset {
   text-align: center;
-  margin-bottom: 30px;
+  margin: 30px 0;
 }
 
 .login-register-card .social-buttons {
