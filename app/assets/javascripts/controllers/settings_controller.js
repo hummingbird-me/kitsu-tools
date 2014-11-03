@@ -30,8 +30,11 @@ HB.SettingsController = Ember.Controller.extend(HB.HasCurrentUser, {
       test: function (u) { return !~blacklist.indexOf(u.toLowerCase()); },
       message: 'Username is reserved'
     }, {
-      test: function (u) { return !/^[0-9]$/.test(u.charAt(0)); },
-      message: 'Username must not start with a number'
+      test: function (u) { return /^[a-zA-Z0-9]$/.test(u.charAt(0)); },
+      message: 'Username must start with a letter or number'
+    }, {
+      test: function (u) { return !/^[0-9]+$/.test(u); },
+      message: 'Username must not be entirely numbers'
     }];
     validators.forEach(function (v) {
       if (!v.test(username)) {
