@@ -59,9 +59,17 @@ class MessageFormatter
     elsif gfy = embeddable_gfy(link)
       delete_link(link)
       @processed += "<div class='video-embed clearfix'><div class='gfy-wrapper'><iframe width='#{gfy[:width]}' height='#{gfy[:height]}' frameborder='0' class='autoembed' src='//gfycat.com/ifr/#{gfy[:code]}'></iframe></div></div>"
-    elsif code = embeddable_video_code(link)
+    elsif data = embeddable_video_code(link)
       delete_link(link)
-      @processed += "<div class='video-embed clearfix'><div class='video-wrapper'><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='https://youtube.com/embed/#{code}'></iframe></div></div>"
+      code, time = data
+      # time needs to be converted to seconds
+      match_data = /(?:(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s))/.match(time)
+      time = if match_data
+        (match_data[1].to_i * (60 * 60)) + (match_data[2].to_i * 60) + match_data[3].to_i
+      else
+        0
+      end
+      @processed += "<div class='video-embed clearfix'><div class='video-wrapper'><iframe width='350' height='240' frameborder='0' class='autoembed' allowfullscreen src='https://youtube.com/embed/#{code}?start=#{time}'></iframe></div></div>"
     end
   end
 
@@ -78,8 +86,8 @@ class MessageFormatter
   end
 
   def embeddable_video_code(link)
-    return unless match_data = /^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?([\w-]+)$/.match(link)
-    match_data[1]
+    return unless match_data = /(?:youtube\.com\/(?:v\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})(?:\S*[?&]t=(\w*))?/.match(link)
+    [match_data[1], match_data[2]]
   rescue
     nil
   end
