@@ -1,4 +1,4 @@
-HB.FileUpload = Ember.TextField.extend({
+HB.FileUploadView = Ember.TextField.extend({
   type: 'file',
   attributeBindings: ['name'],
   classNames: ['hidden'],
