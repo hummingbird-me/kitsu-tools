@@ -5,7 +5,7 @@
         <label for="cover-image">
           <i class="fa fa-camera"></i> Edit Cover (1400w x 330h)
         </label>
-        {{view HB.FileUpload action="coverSelected"
+        {{view "fileUpload" action="coverSelected"
                              id="cover-image"}}
       {{/if}}
     </div>
@@ -39,7 +39,7 @@
               <label for="avatar-image">
                 <i class="fa fa-camera"></i> Edit Avatar
               </label>
-              {{view HB.FileUpload action="avatarSelected" id="avatar-image"}}
+              {{view "fileUpload" action="avatarSelected" id="avatar-image"}}
             </div>
           </div>
         </div>
@@ -100,14 +100,14 @@
                 <label for="cover-image">
                   <i class="fa fa-upload"></i> Upload Cover
                 </label>
-                {{view HB.FileUpload action="coverSelected"
+                {{view "fileUpload" action="coverSelected"
                                      id="cover-image"}}
               </li>
               <li>
                 <label for="avatar-image">
                   <i class="fa fa-upload"></i> Upload Avatar
                 </label>
-                {{view HB.FileUpload action="avatarSelected"
+                {{view "fileUpload" action="avatarSelected"
                                      id="avatar-image"}}
               </li>
             {{else}}

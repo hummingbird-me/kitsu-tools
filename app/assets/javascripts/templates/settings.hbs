@@ -90,7 +90,7 @@
             <label class="control-label col-sm-6">MAL Import</label>
             <div class="col-sm-6">
               <form action="/settings/import/myanimelist" method="post" id="malimport" enctype="multipart/form-data">
-                {{view HB.FileUpload action="importMal" name="animelist" id="mal-file"}}
+                {{view "fileUpload" action="importMal" name="animelist" id="mal-file"}}
                 <input type="hidden" name="authenticity_token" {{bind-attr value=csrfToken}}>
               </form>
               <button type="button" class="col-sm-6 col-sm-offset-6 btn btn-default" {{action "pickMalFile"}}>
