@@ -6,7 +6,6 @@ class UserSerializer < ActiveModel::Serializer
              :mini_bio,
              :is_followed,
              :title_language_preference,
-             :online,
              :location,
              :website,
              :waifu,
@@ -41,10 +40,6 @@ class UserSerializer < ActiveModel::Serializer
 
   def include_title_language_preference?
     scope == object
-  end
-
-  def online
-    object.online?
   end
 
   def is_admin

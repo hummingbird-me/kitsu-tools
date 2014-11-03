@@ -329,15 +329,6 @@ class User < ActiveRecord::Base
     followers_count_hack
   end
 
-  def last_seen
-    reply = $redis.with {|conn| conn.hget("user_last_seen", id.to_s) }
-    if reply
-      Time.at reply.to_i
-    else
-      nil
-    end
-  end
-
   def compute_watchlist_hash
     watchlists = self.watchlists.order(:id).map {|x| [x.id, x.status, x.rating] }
     Digest::MD5.hexdigest( watchlists.inspect )
@@ -385,11 +376,6 @@ class User < ActiveRecord::Base
   # Return encrypted email.
   def encrypted_email
     Digest::MD5.hexdigest(ENV['FORUM_SYNC_SECRET'] + self.email)
-  end
-
-  def online?
-    return false unless self.last_seen
-    self.last_seen > 5.minutes.ago
   end
 
   def avatar_template

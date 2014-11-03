@@ -235,7 +235,6 @@ class API_v1 < Grape::API
         show_adult_content: !user.sfw_filter?,
         title_language_preference: user.title_language_preference,
         last_library_update: user.last_library_update,
-        online: user.online?,
         following: (user_signed_in? and user.followers.include?(current_user)),
         favorites: user.favorites
       }
