@@ -3,8 +3,13 @@
     {{#if viewingSelf}}
       <div class="edit-cover">
         <label for="cover-image">
-          <i class="fa fa-camera"></i> Edit Cover (1400w x 330h)
+          <i class="fa fa-camera"></i> Edit Cover (1440w x 400h)
         </label>
+        <div class="container">
+          <p>
+            Hummingbird is fully responsive and will stretch and shrink based on the width of the device that you are viewing. <br> On smaller devices and window sizes, your cover image will be cut off on the left side depending on the size of the screen.
+          </p>
+        </div>
         {{view "fileUpload" action="coverSelected"
                              id="cover-image"}}
       {{/if}}

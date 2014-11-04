@@ -6,7 +6,7 @@
   .cover-photo {
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: right;
     height: 400px;
     width: 100%;
     position: relative;
@@ -15,18 +15,24 @@
       top: 0;
       right: 0;
       left: 0;
-      line-height: 95px;
       text-align: center;
-      height: 100px;
+      height: 150px;
       color: #fff;
       background: rgba(0,0,0,.7);
       transition: .2s ease-in;
       display: none;
+      padding-top: 70px;
       &:hover {
         background: rgba(0,0,0,.8);
       }
       label {
         width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 150px;
+        padding-top: 30px;
         &:hover {
           cursor: pointer;
         }
@@ -92,6 +98,7 @@
       bottom: 0;
       padding-top: 12px;
       cursor: pointer;
+      margin-top: 25px;
       .fa {
         display: block;
       }
