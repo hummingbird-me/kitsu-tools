@@ -138,7 +138,7 @@ class User < ActiveRecord::Base
   process_in_background :avatar, processing_image_url: '/assets/processing-avatar.jpg'
 
   has_attached_file :cover_image,
-    styles: {thumb: {geometry: "2800x660#", animated: false, format: :jpg}},
+    styles: {thumb: {geometry: "2880x800#", animated: false, format: :jpg}},
     convert_options: {thumb: '-interlace Plane -quality 0'},
     default_url: "https://hummingbird.me/default_cover.png"
 
