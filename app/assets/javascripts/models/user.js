@@ -3,7 +3,7 @@ HB.User = DS.Model.extend({
   coverImageUrl: DS.attr('string'),
   avatarTemplate: DS.attr('string'),
   miniBio: DS.attr('string'),
-  bio: DS.attr('string'),
+  about: DS.attr('string'),
   location: DS.attr('string'),
   website: DS.attr('string'),
   waifu: DS.attr('string'),

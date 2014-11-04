@@ -4,6 +4,7 @@ class UserSerializer < ActiveModel::Serializer
              :avatar_template,
              :rating_type,
              :mini_bio,
+             :about,
              :is_followed,
              :title_language_preference,
              :location,
