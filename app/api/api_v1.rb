@@ -93,11 +93,14 @@ class API_v1 < Grape::API
           title: anime.canonical_title(title_language_preference),
           alternate_title: anime.alternate_title(title_language_preference),
           episode_count: anime.episode_count,
+          episode_length: anime.episode_length,
           cover_image: anime.poster_image_thumb,
           synopsis: anime.synopsis,
           show_type: anime.show_type,
           started_airing: anime.started_airing_date,
-          finished_airing: anime.finished_airing_date
+          finished_airing: anime.finished_airing_date,
+          community_rating: anime.bayesian_average,
+          age_rating: anime.age_rating.blank? ? nil : anime.age_rating
         }
         if include_genres
           json[:genres] = anime.genres.map {|x| {name: x.name} }
