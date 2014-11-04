@@ -43,7 +43,7 @@ HB.ModalsCropCoverView = Ember.View.extend({
       }
 
       return this.$("#preview").Jcrop({
-        aspectRatio: 1400 / 400,
+        aspectRatio: 1440 / 400,
         boxWidth: 500,
         bgColor: 'black',
         setSelect: initialSelect,
