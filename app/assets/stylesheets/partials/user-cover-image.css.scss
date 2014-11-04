@@ -46,19 +46,11 @@
     }
   }
 
-  .cover-overlay-wrapper {
-    position: absolute;
-    bottom: 0;
-    height: 270px;
-    width: 100%;
-    overflow: hidden;
-  }
-
   .dark-overlay {
     position: absolute;
-    bottom: 60px;
+    bottom: 0;
+    top: 0;
     width: 100%;
-    height: 200px;
     background: #000;
     background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
@@ -73,7 +65,7 @@
   color: #fff;
   position: absolute;
   width: 100%;
-  top: -205px;
+  top: -195px;
   z-index: 4;
 
   .edit-avatar {
@@ -117,6 +109,10 @@
     .account-info {
       padding: 5px;
       float: left;
+      height: 110px;
+      position: relative;
+      top: 25px;
+      width: 500px;
       textarea {
         border: none;
         color: #333;
@@ -128,9 +124,9 @@
       @media (max-width: 990px) { padding-left: 15px; }
       @media (max-width: 850px) and (min-width: 694px) {
         position: relative;
-        top: 30px;
+        top: 0;
+        width: 100%;
         overflow: auto;
-        height: 110px;
         .username {
           margin-top: 10px;
         }
@@ -139,6 +135,14 @@
       @media (max-width: 694px) {
         width: 100%;
       }
+    }
+  }
+
+  .bio-wrapper {
+    position: absolute;
+    bottom: 0;
+    p {
+      margin-bottom: 0;
     }
   }
 
@@ -251,7 +255,7 @@
     background: #1abc9c;
     position: absolute;
     right: 0;
-    bottom: -60px;
+    bottom: -65px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     .fa {
       margin-right: 5px;

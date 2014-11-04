@@ -8,13 +8,14 @@
   margin-bottom: 20px;
   margin-top: -60px;
   position: relative;
-  background: rgba(0,0,0,0.7);
   z-index: 3;
 
   .inline-list {
     text-align: left;
     padding-left: 15px;
     margin-bottom: 0;
+    position: relative;
+    top: 8px;
 
     .nav-link {
       float: none;

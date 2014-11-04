@@ -14,9 +14,7 @@
                              id="cover-image"}}
       {{/if}}
     </div>
-    <div class="cover-overlay-wrapper">
-      <div class="dark-overlay"></div>
-    </div>
+    <div class="dark-overlay"></div>
   </div>
 </div>
 
@@ -37,17 +35,19 @@
         </div>
         <div class="col-sm-12 col-md-10 no-padding account-wrapper">
           <div class="account-info">
-            <h2 class="username"> {{username}}</h1>
-            {{#if showEditMenu}}
-              {{!-- <div {{bind-attr class=":edit-bio-chars bioCharsLeft:hasleft:noleft"}}>
-                {{bioCharCounter}} left
-              </div> --}}
-              {{{textarea class="edit-bio" rows="2" maxlength="140" placeholder="Briefly tell us about yourself..." value=truncatedBio}}}
-            {{else}}
-              <p class="user-bio">
-                {{truncatedBio}}
-              </p>
-            {{/if}}
+            <div class="bio-wrapper">
+              <h2 class="username"> {{username}}</h1>
+              {{#if showEditMenu}}
+                {{!-- <div {{bind-attr class=":edit-bio-chars bioCharsLeft:hasleft:noleft"}}>
+                  {{bioCharCounter}} left
+                </div> --}}
+                {{{textarea class="edit-bio" rows="2" maxlength="140" placeholder="Briefly tell us about yourself..." value=truncatedBio}}}
+              {{else}}
+                <p class="user-bio">
+                  {{truncatedBio}}
+                </p>
+              {{/if}}
+            </div>
           </div>
           <div class="follow-widgets">
             {{#if viewingSelf}}
