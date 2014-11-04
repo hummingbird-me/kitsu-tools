@@ -28,7 +28,16 @@ HB.Router.map(function() {
     this.route('followers');
   });
 
+  this.route('onboarding', function() {
+    this.route('start');
+    this.route('rating-system');
+    this.route('categories');
+    this.route('library');
+    this.route('finish');
+  });
+
   this.route('sign-in');
+  this.route('sign-up');
   this.route('settings');
   this.route('dashboard');
   this.route('notifications');
