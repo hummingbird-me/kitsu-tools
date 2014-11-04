@@ -11,20 +11,7 @@
     </div>
     <div class="cover-overlay-wrapper">
       <div class="dark-overlay"></div>
-      <div class="cover-overlay" {{bind-attr style=coverImageOverlayStyle}}></div>
     </div>
-    <svg height="0">
-      <filter id="blur">
-        <feGaussianBlur stdDeviation="3"/>
-      </filter>
-      <mask id="blur-fade" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
-        <linearGradient id="blur-gradient" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="0" y2="1">
-          <stop stop-color="white" stop-opacity="0" offset="0.5"></stop>
-          <stop stop-color="white" stop-opacity="1" offset="1"></stop>
-        </linearGradient>
-        <rect x="0" y="0" width="1" height="1" fill="url(#blur-gradient)"></rect>
-      </mask>
-    </svg>
   </div>
 </div>
 
@@ -57,78 +44,34 @@
               </p>
             {{/if}}
           </div>
-          <ul class="follow-widgets inline-list">
-            <li>
-              {{#link-to 'user.following'}}
-                <small class="follow-title">following</small>
-                <h2 class="follow-count">{{followingCount}}</h2>
-              {{/link-to}}
-            </li>
-            <li>
-              {{#link-to 'user.followers'}}
-                <small class="follow-title">followers</small>
-                <h2 class="follow-count">{{followerCount}}</h2>
-              {{/link-to}}
-            </li>
-            <li>
-              {{#if viewingSelf}}
-                {{#if showEditMenu}}
-                  <button class="btn btn-default btn-lg follow-button save" {{action 'saveEditMenu'}}>
-                    <i class="fa fa-pencil"></i> Save
-                  </button>
-                {{else}}
-                  <button class="btn btn-default btn-lg follow-button" {{action "toggleEditMenu" this}}>
-                    <i class="fa fa-pencil"></i> Edit
-                  </button>
-                {{/if}}
+          <div class="follow-widgets">
+            {{#if viewingSelf}}
+              {{#if showEditMenu}}
+                <button class="btn btn-default btn-lg follow-button save" {{action 'saveEditMenu'}}>
+                  <i class="fa fa-pencil"></i> Save
+                </button>
               {{else}}
-                {{#if isFollowed}}
-                  <button class="btn btn-default btn-lg follow-button unfollow" {{action "toggleFollow" this}}>
-                    Unfollow
-                  </button>
-                {{else}}
-                  <button class="btn btn-default btn-lg follow-button" {{action "toggleFollow" this}}>
-                    <i class="fa fa-plus"></i> Follow
-                  </button>
-                {{/if}}
+                <button class="btn btn-default btn-lg follow-button edit" {{action "toggleEditMenu" this}}>
+                  <i class="fa fa-pencil"></i> Edit
+                </button>
               {{/if}}
-            </li>
-          </ul>
-          <ul class="inline-list clearfix">
-            {{!-- {{#if viewingSelf}}
-              <li>
-                <label for="cover-image">
-                  <i class="fa fa-upload"></i> Upload Cover
-                </label>
-                {{view "fileUpload" action="coverSelected"
-                                     id="cover-image"}}
-              </li>
-              <li>
-                <label for="avatar-image">
-                  <i class="fa fa-upload"></i> Upload Avatar
-                </label>
-                {{view "fileUpload" action="avatarSelected"
-                                     id="avatar-image"}}
-              </li>
             {{else}}
-              <li>
-                {{#bootstrap-tooltip title="Coming soon!" placement="bottom"}}
-                  <i class="fa fa-exchange"></i> Compare
-                {{/bootstrap-tooltip}}
-              </li>
-              <li>
-                {{#bootstrap-tooltip title="Coming soon!" placement="bottom"}}
-                  <i class="fa fa-envelope-o"></i> Message
-                {{/bootstrap-tooltip}}
-              </li>
-            {{/if}} --}}
-          </ul>
+              {{#if isFollowed}}
+                <button class="btn btn-default btn-lg follow-button unfollow" {{action "toggleFollow" this}}>
+                  Unfollow
+                </button>
+              {{else}}
+                <button class="btn btn-default btn-lg follow-button" {{action "toggleFollow" this}}>
+                  <i class="fa fa-plus"></i> Follow
+                </button>
+              {{/if}}
+            {{/if}}
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="profile-navigation">
   <div class="container">
     <div class="row">
@@ -141,6 +84,12 @@
         </li>
         <li class="nav-link">
           {{#link-to 'user.reviews'}}Reviews{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'user.following'}}Following · {{followingCount}}{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'user.followers'}}Followers · {{followerCount}}{{/link-to}}
         </li>
         <li class="nav-link">
           <a {{bind-attr href=forumProfile}}>Forums</a>

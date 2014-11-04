@@ -1,6 +1,5 @@
-/* autoprefixer: off */
 .user-cover {
-  height: 330px;
+  height: 400px;
   overflow: hidden;
   position: relative;
 
@@ -8,7 +7,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: 330px;
+    height: 400px;
     width: 100%;
     position: relative;
     .edit-cover {
@@ -44,32 +43,20 @@
   .cover-overlay-wrapper {
     position: absolute;
     bottom: 0;
-    height: 150px;
+    height: 270px;
     width: 100%;
     overflow: hidden;
   }
 
   .dark-overlay {
     position: absolute;
-    bottom: 0;
+    bottom: 60px;
     width: 100%;
-    height: 150px;
+    height: 200px;
     background: #000;
-    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.7) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#a6000000',GradientType=0 );
     z-index: 2;
-  }
-
-  .cover-overlay {
-    position: absolute;
-    bottom: 0;
-    background-size: cover;
-    background-position: center;
-    height: 330px;
-    width: 100%;
-    -webkit-mask: -webkit-linear-gradient(black, transparent 30%, black);
-    -webkit-mask: linear-gradient(black, transparent 30%, black);
-    -webkit-filter: blur(3px);
   }
 }
 
@@ -80,8 +67,8 @@
   color: #fff;
   position: absolute;
   width: 100%;
-  top: -145px;
-  z-index: 2;
+  top: -205px;
+  z-index: 4;
 
   .edit-avatar {
     position: absolute;
@@ -151,8 +138,6 @@
   .follow-widgets {
     float: right;
     display: inline-block;
-    position: relative;
-    top: 60px;
     @media (max-width: 694px) {
       width: 100%;
       top: 0;
@@ -195,8 +180,8 @@
   }
 
   .user-avatar {
-    width: 11.666667%;
-  top: 25px;
+    top: 25px;
+    width: 12%;
     @media (max-width: 990px) {
       position: absolute;
       width: 100%;
@@ -211,7 +196,7 @@
   }
 
   .account-wrapper {
-    width: 87.333333%;
+    width: 88%;
     @media (max-width: 990px) {
       width: 100%;
     }
@@ -244,7 +229,7 @@
   }
 
   .username {
-    margin-top: 39px;
+    margin-top: 17px;
   }
 
   .fa-exchange, .fa-heart-o, .fa-envelope-o {
@@ -254,21 +239,19 @@
   }
 
   .follow-button {
-    background: #fff;
-    color: #333;
-    font-size: 15px;
-    padding: 10px 25px;
-    padding: 8px 25px;
-    position: relative;
-    top: 15px;
-    transition: .2s ease-in;
+    font-size: 16px;
+    padding: 7px 50px;
+    background: #1abc9c;
+    position: absolute;
+    right: 0;
+    bottom: -60px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
     .fa {
       margin-right: 5px;
       font-size: 12px;
     }
     &:hover {
-      background: darken(#fff, 10);
+      background: darken(#1abc9c, 10);
     }
     &.unfollow {
       background: #E2E2E2;
@@ -282,6 +265,14 @@
       color: #fff;
       &:hover {
         background: darken(#f89774, 10);
+      }
+    }
+    &.edit {
+      background: #fff;
+      background: rgba(255,255,255,.2);
+      color: #fff;
+      &:hover {
+        background: rgba(255,255,255,.3);
       }
     }
   }
