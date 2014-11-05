@@ -224,12 +224,12 @@ class UsersController < ApplicationController
     changes = params[:current_user] || params[:user]
 
     if current_user == user
-      user.about = changes[:about]
+      user.about = changes[:about] || ""
       user.location = changes[:location]
       user.waifu = changes[:waifu]
       user.website = changes[:website]
       user.waifu_or_husbando = changes[:waifu_or_husbando]
-      user.bio = changes[:mini_bio]
+      user.bio = changes[:mini_bio] || ""
       user.waifu_char_id = changes[:waifu_char_id]
 
       if Rails.env.production? and changes[:cover_image_url] =~ /^data:image/
