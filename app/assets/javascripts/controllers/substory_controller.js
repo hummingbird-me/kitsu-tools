@@ -1,6 +1,5 @@
 HB.SubstoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
-  needs: "story",
-  story: Em.computed.alias('controllers.story'),
+  story: Em.computed.alias('parentController'),
 
   belongsToUser: function() {
     return this.get('currentUser.id') === this.get('model.user.id');
