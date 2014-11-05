@@ -815,6 +815,69 @@ CREATE TABLE genres_manga (
 
 
 --
+-- Name: list_items; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE list_items (
+    id integer NOT NULL,
+    list_id integer NOT NULL,
+    "order" integer NOT NULL,
+    media_id integer NOT NULL,
+    notes character varying(255) DEFAULT ''::character varying NOT NULL
+);
+
+
+--
+-- Name: list_items_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE list_items_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: list_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE list_items_id_seq OWNED BY list_items.id;
+
+
+--
+-- Name: lists; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE lists (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    list_name character varying(255) NOT NULL,
+    media_type character varying(255) NOT NULL
+);
+
+
+--
+-- Name: lists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE lists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE lists_id_seq OWNED BY lists.id;
+
+
+--
 -- Name: manga; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1639,6 +1702,20 @@ ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY list_items ALTER COLUMN id SET DEFAULT nextval('list_items_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY lists ALTER COLUMN id SET DEFAULT nextval('lists_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY manga ALTER COLUMN id SET DEFAULT nextval('manga_id_seq'::regclass);
 
 
@@ -1912,6 +1989,22 @@ ALTER TABLE ONLY gallery_images
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: list_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY list_items
+    ADD CONSTRAINT list_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lists_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY lists
+    ADD CONSTRAINT lists_pkey PRIMARY KEY (id);
 
 
 --
@@ -2307,6 +2400,27 @@ CREATE INDEX index_gallery_images_on_anime_id ON gallery_images USING btree (ani
 --
 
 CREATE INDEX index_genres_manga_on_manga_id ON genres_manga USING btree (manga_id);
+
+
+--
+-- Name: index_list_items_on_list_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_list_items_on_list_id ON list_items USING btree (list_id);
+
+
+--
+-- Name: index_list_items_on_list_id_and_media_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_list_items_on_list_id_and_media_id ON list_items USING btree (list_id, media_id);
+
+
+--
+-- Name: index_lists_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_lists_on_user_id ON lists USING btree (user_id);
 
 
 --
@@ -3169,4 +3283,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140916053901');
 INSERT INTO schema_migrations (version) VALUES ('20141017210309');
 
 INSERT INTO schema_migrations (version) VALUES ('20141105063427');
+
+INSERT INTO schema_migrations (version) VALUES ('20141105134140');
 
