@@ -17,8 +17,8 @@ html { overflow-y: auto; }
   line-height: 50px;
   text-align: center;
 
-  i { 
-    color: #999999; 
+  i {
+    color: #999999;
     font-size: 25px;
     position: relative;
     top: -4px;
@@ -62,7 +62,7 @@ html { overflow-y: auto; }
   border: none;
   @media (max-width: 768px) {
     .container { padding: 0; }
-    .navbar-header { 
+    .navbar-header {
       padding: 0 15px;
     }
 
@@ -133,7 +133,7 @@ html { overflow-y: auto; }
       }
     }
   }
-  
+
   .user-area {
     .dropdown-menu {
       @extend .clearfix;
@@ -656,6 +656,11 @@ html { overflow-y: auto; }
       height: 100px;
     }
   }
+
+  .mini-cover {
+      @extend .user-cover;
+      @extend .cover-photo;
+    }
 
   .user-avatar {
     padding-left: 10px;
