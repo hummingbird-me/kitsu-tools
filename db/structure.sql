@@ -1327,12 +1327,12 @@ CREATE TABLE users (
     avatar_file_size integer,
     avatar_updated_at timestamp without time zone,
     facebook_id character varying(255),
-    bio text,
+    bio character varying(140) DEFAULT ''::character varying NOT NULL,
     sfw_filter boolean DEFAULT true,
     star_rating boolean DEFAULT false,
     mal_username character varying(255),
     life_spent_on_anime integer DEFAULT 0 NOT NULL,
-    about text,
+    about character varying(500) DEFAULT ''::character varying NOT NULL,
     confirmation_token character varying(255),
     confirmed_at timestamp without time zone,
     confirmation_sent_at timestamp without time zone,
@@ -3167,4 +3167,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140916050726');
 INSERT INTO schema_migrations (version) VALUES ('20140916053901');
 
 INSERT INTO schema_migrations (version) VALUES ('20141017210309');
+
+INSERT INTO schema_migrations (version) VALUES ('20141105063427');
 

@@ -38,9 +38,23 @@ HB.User = DS.Model.extend({
     }
   }.property('website'),
 
-  truncatedBio: function () {
-    if(!this.get('miniBio')) return "";
-    if (this.get('miniBio').length <= 140) return this.get('miniBio');
-    return this.get('miniBio').slice(0,137) + '...';
-  }.property('miniBio')
+  truncatedBio: function(key, value, previousValue) {
+    // setter
+    if (arguments.length > 1) {
+      this.set('miniBio', value.slice(0, 140));
+    }
+
+    // getter
+    return this.get('miniBio') || "";
+  }.property('miniBio'),
+
+  truncatedAbout: function(key, value, previousValue) {
+    // setter
+    if (arguments.length > 1) {
+      this.set('about', value.slice(0, 500));
+    }
+
+    // getter
+    return this.get('about') || "";
+  }.property('about')
 });

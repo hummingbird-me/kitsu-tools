@@ -21,14 +21,17 @@
 
         <div class="panel-body">
           {{#if isEditing}}
-            {{textarea class="edit-bio" rows="4" placeholder="Tell us about yourself. :3" value=user.about}}
+            <div {{bind-attr class=":edit-bio-chars aboutCharactersLeft:hasleft:noleft"}}>
+              {{aboutCharacterCount}} left
+            </div>
+            {{textarea class="edit-bio" rows="4" placeholder="Tell us about yourself. :3" value=user.truncatedAbout}}
 
             <div class="user-interests">
               <ul>
                 <li>
                   <div class="interest-icon"> <i class="fa fa-heart"></i></div>
                   <div class="interest">
-                    {{{view Ember.Select content=selectChoices selection=user.waifuOrHusbando}}}
+                    {{{view "select" content=selectChoices selection=user.waifuOrHusbando}}}
                     {{#if user.waifu}}
                       <a class="remove-waifu" {{action "unselectWaifu"}}> Remove</a>
                     {{/if}}

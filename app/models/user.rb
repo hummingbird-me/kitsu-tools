@@ -22,12 +22,12 @@
 #  avatar_file_size            :integer
 #  avatar_updated_at           :datetime
 #  facebook_id                 :string(255)
-#  bio                         :text
+#  bio                         :string(140)      default(""), not null
 #  sfw_filter                  :boolean          default(TRUE)
 #  star_rating                 :boolean          default(FALSE)
 #  mal_username                :string(255)
 #  life_spent_on_anime         :integer          default(0), not null
-#  about                       :text
+#  about                       :string(500)      default(""), not null
 #  confirmation_token          :string(255)
 #  confirmed_at                :datetime
 #  confirmation_sent_at        :datetime

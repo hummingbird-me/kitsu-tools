@@ -7,27 +7,14 @@ HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
   hasWebsite: Ember.computed.any('user.website'),
   unselectingWaifu: false,
 
-  bioCharsLeft: function () {
-    return this.get('bioCharCounter') !== 0;
-  }.property('bioCharCounter'),
-  bioCharCounter: function () {
-    var newLength, newString, remLength;
-    newString = this.get('user.miniBio');
-    if (newString === null || newString === void 0) {
-      newString = "";
-    }
-    newLength = newString.length;
-    remLength = 140 - newLength;
-    if (remLength <= 0) {
-      this.set('user.miniBio', newString.slice(0, 140));
-      remLength = 0;
-    }
-    return remLength;
-  }.property('user.miniBio'),
+  aboutCharacterCount: function() {
+    return 500 - this.get('user.about').length;
+  }.property('user.about'),
+
+  aboutCharactersLeft: Em.computed.gt('aboutCharacterCount', 0),
 
   sortProperties: ['createdAt'],
   sortAscending: false,
-
 
   favorite_anime: [],
   favorite_anime_page: 1,
