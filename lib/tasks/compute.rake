@@ -47,7 +47,7 @@ namespace :compute do
         r = anime_total_ratings[anime.id] * 1.0 / v
         anime.bayesian_average = (r * v + c * m) / (v + m)
       else
-        anime.bayesian_average = nil
+        anime.bayesian_average = 0
       end
       anime.save
       STDERR.puts "Pass 2: #{anime.id}"
