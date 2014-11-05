@@ -19,7 +19,7 @@ HB.AnimeRoute = Ember.Route.extend({
         alert('Need to be signed in');
         return;
       }
-      
+
       var libraryEntry = this.currentModel.get('libraryEntry');
       libraryEntry.set('isFavorite', !libraryEntry.get('isFavorite'));
       return this.saveLibraryEntry(libraryEntry);

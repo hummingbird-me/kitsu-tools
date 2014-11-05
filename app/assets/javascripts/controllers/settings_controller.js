@@ -4,9 +4,11 @@ HB.SettingsController = Ember.Controller.extend(HB.HasCurrentUser, {
     {value: 'romanized', label: 'Romanized'},
     {value: 'english', label: 'English'}
   ],
+
   facebookDisconnectUrl: function () {
     return '/users/' + this.get('currentUser.username') + '/disconnect/facebook';
   }.property('currentUser.username'),
+
   // oh god I'm sorry
   csrfToken: function () {
     return $('meta[name="csrf-token"]').attr('content');
@@ -43,6 +45,7 @@ HB.SettingsController = Ember.Controller.extend(HB.HasCurrentUser, {
     });
     return messages;
   }.property('currentUser.newUsername'),
+
   usernameValid: function () {
     return this.get('usernameProblems').length === 0;
   }.property('usernameProblems'),
@@ -66,11 +69,11 @@ HB.SettingsController = Ember.Controller.extend(HB.HasCurrentUser, {
     });
     return messages;
   }.property('currentUser.newPassword', 'passwordConfirm'),
+
   passwordValid: function () {
     if (!this.get('currentUser.newPassword')) return true;
     return this.get('passwordProblems').length === 0;
   }.property('currentUser.newPassword', 'passwordProblems'),
-
 
   submitDisabled: function () {
     return !this.get('currentUser.isDirty')
