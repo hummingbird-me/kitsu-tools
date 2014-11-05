@@ -658,9 +658,9 @@ html { overflow-y: auto; }
   }
 
   .follow-cover {
-      @extend .user-cover;
-      @extend .cover-photo;
-    }
+    @extend .user-cover;
+    @extend .cover-photo;
+  }
 
   .user-avatar {
     padding-left: 10px;
