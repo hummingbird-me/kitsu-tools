@@ -647,19 +647,11 @@ html { overflow-y: auto; }
   overflow: hidden;
   text-overflow: ellipsis;
 
-  .user-cover {
+  .follow-cover {
     height: 100px;
     background: #ddd;
-    .cover-photo {
-      background-size: cover;
-      background-position: center center;
-      height: 100px;
-    }
-  }
-
-  .follow-cover {
-    @extend .user-cover;
-    @extend .cover-photo;
+    background-size: cover;
+    background-position: center center;
   }
 
   .user-avatar {
