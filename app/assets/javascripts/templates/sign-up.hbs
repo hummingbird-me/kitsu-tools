@@ -1,26 +1,38 @@
 <div class="bg-image-wrapper login clearfix">
   <div class="col-md-8 col-md-offset-2 panel panel-default account-panel">
     <div class="panel-heading">
-      <h3>B-Baka! It's not like we missed you...</h3>
+      <h3>It's not like we like you, or anything ... S-stupid!</h3>
     </div>
     <div class="panel-body">
-      <form class="account-form col-md-6" {{action "signIn" on="submit"}}>
-        <h3>Sign in to your account</h3>
-        {{input type="text" class="form-control" name="email" value=email placeholder="Email address"}}
-        {{input type="password" class="form-control" name="password" value=password placeholder="Password"}}
-        <p class="forgot-password">
-          <a href="/users/password/new">forgot password?</a>
-        </p>
+      <form class="account-form col-md-6" {{action "signUp" on="submit"}}>
+        <h3>Create an account</h3>
+        {{input type="text" class="form-control" value=username placeholder="Username"}}
+        {{#unless usernameValid}}
+          <div class="alert alert-danger">
+            {{#each usernameProblems}}
+              <p><i class="fa fa-warning"></i> {{this}}</p>
+            {{/each}}
+          </div>
+        {{/unless}}
+        {{input type="email" class="form-control" value=email placeholder="Email address"}}
+        {{input type="password" class="form-control" value=password placeholder="Password"}}
+        {{#unless passwordValid}}
+          <div class="alert alert-danger">
+            {{#each passwordProblems}}
+              <p><i class="fa fa-warning"></i> {{this}}</p>
+            {{/each}}
+          </div>
+        {{/unless}}
         {{#if errorMessage}}
           <div class="alert alert-danger">
             <p><i class="fa fa-warning"></i> {{errorMessage}}</p>
           </div>
         {{/if}}
-        <button type="submit">Sign in</button>
+        <button type="submit" {{bind-attr disabled=submitDisabled}}>Create</button>
 
         <p class="switch-form-link">
-          Don't have an account? 
-          {{#link-to 'sign-up'}}Create one.{{/link-to}}
+          Already have an account? 
+          {{#link-to 'sign-in'}}Sign in.{{/link-to}}
         </p>
       </form>
 

@@ -10,7 +10,7 @@
   &.login {
     width: 100%;
     background: image-url("tsundere.jpg");
-    height: 625px;
+    min-height: 625px;
     background-size: cover;
     padding-top: 150px;
     .account-panel {
