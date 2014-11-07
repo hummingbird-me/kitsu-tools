@@ -94,9 +94,23 @@ HB.AppsRoute = Ember.Route.extend({
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/anitro-windows-8-1-windows-phone-8-1/3824" },
           { "name": "Download", "link": "http://apps.microsoft.com/windows/en-us/app/anitro/665e06bf-b4de-4cde-8ae3-c20c1a98b12b" },
         ]
+      },
+      {
+        "name": "Hummingbird Updater",
+        "author": [
+          { "name": "Dennis", "link": "http://hummingbird.me/users/Dennis" },
+        ],
+        "form": "Desktop",
+        "platform": "Windows",
+        "screenshots": [sb+"hb-updater/hb-updater-1.jpg", sb+"hb-updater/hb-updater-2.jpg"],
+        "desc": "Hummingbird Updater is a tiny Hummingbird scrobbler that automatically updates your list whenever VLC/MPC is playing your favorite show.",
+        "links": [
+          { "name": "Discuss", "link": "https://forums.hummingbird.me/t/windows-hummingbird-updater-scrobbler-by-dennis/17333" },
+          { "name": "Download", "link": "https://github.com/Desuvader/Hummingbird-Updater/releases/latest" },
+        ]
       }
     ]
-
+        
   }
 
 });
