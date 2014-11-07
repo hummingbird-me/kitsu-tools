@@ -93,7 +93,7 @@
     margin-top: 10px;
     margin-bottom: 15px;
   }
-  &.rating-system, &.library {
+  &.rating-system, &.library, &.finish {
     animation-delay: 3s;
   }
   &.categories {
@@ -300,5 +300,22 @@
   text-indent: 25px;
   &:focus {
     border: 1px solid #ddd;
+  }
+}
+
+// Step 5 - Finish
+.featured-user-wrapper {
+  @extend .animated;
+  @extend .fadeInUp;
+  animation-delay: 2s;
+  @extend .clearfix;
+  margin-top: 80px;
+  padding: 0 5px;
+  .follow-panel-wrapper {
+    width: 33.3333%;
+    .follow-panel {
+      box-shadow: none;
+      border: 1px solid #EFEFEF;
+    }
   }
 }
