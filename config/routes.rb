@@ -21,6 +21,10 @@ Hummingbird::Application.routes.draw do
   end
 
   get '/sign-in' => 'home#static'
+  get '/sign-up' => 'home#static'
+
+  post '/sign-in' => 'auth#sign_in_action'
+  post '/sign-up' => 'auth#sign_up_action'
   post '/sign-out' => 'auth#sign_out_action'
 
   devise_for :users, controllers: {
