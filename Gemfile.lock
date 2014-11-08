@@ -126,7 +126,7 @@ GEM
       handlebars-source (> 1.0.0)
       jquery-rails (>= 1.0.17)
       railties (>= 3.1)
-    ember-source (1.8.0)
+    ember-source (1.8.1)
       handlebars-source (~> 1.0)
     equalizer (0.0.9)
     erubis (2.7.0)
@@ -455,7 +455,7 @@ DEPENDENCIES
   dropbox-api
   ember-data-source (= 1.0.0.beta.11)
   ember-rails (~> 0.15)
-  ember-source (= 1.8.0)
+  ember-source (= 1.8.1)
   fakeweb
   fast_blank
   fastclick-rails (~> 1.0)

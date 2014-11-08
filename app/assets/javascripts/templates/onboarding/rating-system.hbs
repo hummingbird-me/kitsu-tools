@@ -5,19 +5,18 @@
   </div>
   <div class="next-step col-sm-5">
     {{#link-to 'onboarding.categories' class='btn btn-primary continue-button rating-system'}}Continue{{/link-to}}
-    {{!-- {{#link-to 'onboarding.categories' class='btn btn-primary continue-button no-continue'}}Select Rating System{{/link-to}} --}}
   </div>
 </div>
 
 <div class="rating-wrapper">
   <div class='col-xs-12'>
-    <button {{bind-attr class=":simple-rating simpleRating:active"}} {{action "setRatingType" "simple"}}>
+    <button {{bind-attr class=":simple-rating simpleRating:active saving"}} {{action "setRatingType" "simple"}}>
       <i class="fa fa-smile-o"></i>
       <i class="fa fa-smile-o"></i>
       <i class="fa fa-smile-o"></i>
     </button>
     <span class="rating-divider">or</span>
-    <button {{bind-attr class=":advanced-rating advancedRating:active"}} {{action "setRatingType" "advanced"}}>
+    <button {{bind-attr class=":advanced-rating advancedRating:active saving"}} {{action "setRatingType" "advanced"}}>
       <i class="fa fa-star"></i>
       <i class="fa fa-star"></i>
       <i class="fa fa-star"></i>
