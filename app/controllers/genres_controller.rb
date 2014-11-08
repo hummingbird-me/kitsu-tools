@@ -26,7 +26,7 @@ class GenresController < ApplicationController
 
   def add_to_favorites
     authenticate_user!
-    @genre = Genre.find params[:id]
+    @genre = Genre.find params[:genre_id]
     unless current_user.favorite_genres.include? @genre
       current_user.favorite_genres.push @genre
       current_user.update_column :last_library_update, Time.now
@@ -36,7 +36,7 @@ class GenresController < ApplicationController
 
   def remove_from_favorites
     authenticate_user!
-    @genre = Genre.find params[:id]
+    @genre = Genre.find params[:genre_id]
     if current_user.favorite_genres.include? @genre
       current_user.favorite_genres.delete @genre
       current_user.update_column :last_library_update, Time.now
