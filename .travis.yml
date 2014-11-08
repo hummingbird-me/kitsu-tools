@@ -1,19 +1,20 @@
 language: ruby
-env:
-  global:
-    - WAD_S3_BUCKET_NAME=travis-wad
-    - WAD_S3_REGION=us-west-2
-    - secure: JN2mfVHbKBmqYSWCUanSyKS4TfDxRdBIkkdKgww58uvUVrgnYKzGlV+T0KQrx8GoAG32H/S3C9gFwOYs7Zh/M7a74IPNaXiQmPvON4Ao1xYSpgNpVeFai4EK1342shLCLxu5v9xdKnddBFQ15m6xH0TCByTqcEz66fgkjFzhi9A=
-    - secure: cjx/dR9jqO9mkaFMK/5I3A2cD7DU/PebidQDJMjukAKRoRIM7YvL7oneFJCuYXj0XfuXSi1k+92A++msLEyZnI0cTuQ8HcDMoZQI89m88mvkxwxADy57M2w3DdQfrLtWMBVT6xxykHpddltKM4ABYW1/zOy9A0t3ABFbrLjgKYQ=
-rvm:
-  - 2.1.3
-install: "travis_retry bin/wad"
+
+cache: bundler
+
+rvm: 2.1.3
+
+sudo: false
+
 before_script:
   - bundle exec rake db:create db:structure:load
+
 script: bundle exec rake test:all
+
 #after_success:
 #  - 'echo -e "Host 107.170.189.56\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config'
 #  - ssh root@107.170.189.56 "/var/hummingbird/deploy.sh"
+
 notifications:
   hipchat:
     rooms:
