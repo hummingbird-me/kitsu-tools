@@ -19,13 +19,6 @@
 
         = image_tag @user.avatar_url, class: "avatar-image", style: 'height: 190px; width: 190px'
 
-        - if @user.last_seen
-          %p.last-seen
-            Last Seen -
-            %span.time-ago
-              = short_time_ago @user.last_seen
-              ago
-
       .large-12.columns.user-block
         %h4.username= @user.name
         %span.waifu.hide
