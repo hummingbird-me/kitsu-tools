@@ -174,10 +174,7 @@
 }
 // Step 3 - Categories
 .genre-panel-wrapper {
-  @extend .animated;
-  @extend .fadeInUp;
   @extend .clearfix;
-  animation-delay: 1s;
   padding: 0 10px;
 }
 .genre-panel {
@@ -208,9 +205,6 @@
 
 // Step 4 - Library
 .library-thumbs {
-  @extend .animated;
-  @extend .fadeInUp;
-  animation-delay: 2s;
   @include block-grid(4);
   @extend .clearfix;
   .block-grid-item {
@@ -246,9 +240,6 @@
 
 .library-tabs {
   @extend .clearfix;
-  @extend .animated;
-  @extend .fadeInLeft;
-  animation-delay: 1s;
   .anime-tab, .manga-tab {
     display: inline-block;
     padding: 6px 18px;
@@ -276,9 +267,6 @@
 }
 .search-section {
   padding-right: 10px;
-  @extend .animated;
-  @extend .fadeInRight;
-  animation-delay: 1.5s;
   z-index: 1;
 }
 .library-search-widget {
@@ -295,9 +283,6 @@
 
 // Step 5 - Finish
 .featured-user-wrapper {
-  @extend .animated;
-  @extend .fadeInUp;
-  animation-delay: 2s;
   @extend .clearfix;
   margin-top: 80px;
   padding: 0 5px;
