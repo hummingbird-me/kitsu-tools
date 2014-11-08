@@ -102,7 +102,7 @@ HB.AppsRoute = Ember.Route.extend({
         ],
         "form": "Desktop",
         "platform": "Windows",
-        "screenshots": [sb+"hb-updater/hb-updater-1.jpg", sb+"hb-updater/hb-updater-2.jpg"],
+        "screenshots": [sb+"hb-updater/topkek.jpg"],
         "desc": "Hummingbird Updater is a tiny Hummingbird scrobbler that automatically updates your list whenever VLC/MPC is playing your favorite show.",
         "links": [
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/windows-hummingbird-updater-scrobbler-by-dennis/17333" },
