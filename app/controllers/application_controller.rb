@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :check_user_authentication,
-    :preload_current_user, :preload_blotter
+  before_filter :check_user_authentication, :preload_current_user,
+                :preload_blotter
+
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # Send an object along with the initial HTML response that will be loaded into
@@ -37,6 +38,11 @@ class ApplicationController < ActionController::Base
       end
     elsif cookies[:auth_token]
       user = User.find_by(authentication_token: cookies[:auth_token])
+      if user.current_sign_in_ip != request.remote_ip
+        user.last_sign_in_ip = user.current_sign_in_ip
+        user.current_sign_in_ip = request.remote_ip
+        user.save!
+      end
       sign_in(user) if user
     end
   end
