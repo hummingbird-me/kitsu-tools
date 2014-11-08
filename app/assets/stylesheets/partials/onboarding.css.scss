@@ -133,6 +133,9 @@
   @extend .clearfix;
   text-align: center;
   margin-bottom: 20px;
+  .saving {
+    opacity: 0.5;
+  }
   .simple-rating, .advanced-rating {
     background: none;
     border: 2px dashed #ddd;
