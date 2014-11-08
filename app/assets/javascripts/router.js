@@ -42,7 +42,6 @@ HB.Router.map(function() {
   this.route('dashboard');
   this.route('notifications');
 
-  this.route('chat');
   this.route('apps');
   this.route('search');
 
