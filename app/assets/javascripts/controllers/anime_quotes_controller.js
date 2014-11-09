@@ -4,13 +4,16 @@ HB.AnimeQuotesController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   quoteText: "",
   quoteChar: "",
 
+  textCorrectLength: Ember.computed.gte('quoteText.length', 10),
+  charCorrectLength: Ember.computed.gte('quoteChar.length', 3),
+  isFormCorrect: Ember.computed.and('textCorrectLength', 'charCorrectLength'),
+
   animeQuotes: function(){
     var self = this;
     return this.store.filter('quote', function(quote){
       return (self.content == quote.anime_id);
     });
   }.property('@each.quote'),
-
 
   actions: {
     toggleQuoteCreate: function(){
@@ -25,8 +28,7 @@ HB.AnimeQuotesController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     },
     
     submitQuote: function(){
-      if(this.get('quoteChar').length < 3) return;
-      if(this.get('quoteText').length < 10) return;
+      if (!(this.get('isFormCorrect'))) return;
 
       var self = this,
           quote = this.store.createRecord('quote', {

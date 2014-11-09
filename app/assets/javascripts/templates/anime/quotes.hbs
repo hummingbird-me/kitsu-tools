@@ -33,6 +33,9 @@
             <div class="col-md-4 col-xs-4">Quote</div>
             <div class="col-md-8 col-xs-8">
               {{textarea value=quoteText class="form-control"}}
+              {{#unless textCorrectLength}}
+                <small class="text-danger">Quote must be atleast 10 characters.</p>
+              {{/unless}}
             </div>
           </div>
           <div class="row quote-input">
@@ -41,9 +44,13 @@
             </div>
             <div class="col-md-8 col-xs-8">
               {{input type="text" value=quoteChar class="form-control"}}
+              {{#unless charCorrectLength}}
+                <small class="text-danger">Character name must be atleast 3 characters.</p>
+              {{/unless}}
             </div>
           </div>
-          <button class="btn status-button pull-right" {{action 'submitQuote'}}>Submit</button>
+          <button class="btn status-button pull-right disabled"
+                  {{bind-attr class="isFormCorrect:enabled:disabled"}} {{action 'submitQuote'}}>Submit</button>
         </div>
       {{else}}
         <button class="btn status-button pull-right" {{action 'toggleQuoteCreate'}}>Submit new quote</button>
