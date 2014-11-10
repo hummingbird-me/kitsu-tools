@@ -238,7 +238,7 @@ class UsersController < ApplicationController
 
       # Settings page stuff
       if params[:current_user]
-        user.about = changes[:email]
+        user.email = changes[:email]
         user.password = changes[:new_password] unless changes[:new_password].blank?
         user.name = changes[:new_username] unless changes[:new_username].blank?
         user.star_rating = (changes[:rating_type] == 'advanced')
