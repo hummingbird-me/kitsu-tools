@@ -82,7 +82,7 @@ HB.SettingsController = Ember.Controller.extend(HB.HasCurrentUser, {
   }.property('currentUser.isDirty', 'passwordValid', 'usernameValid'),
 
   actions: {
-    save: function () {
+    save: function() {
       var self = this;
       this.get('currentUser.model.content').save().then(function () {
         if (self.get('currentUser.username') !== self.get('currentUser.newUsername')) {
