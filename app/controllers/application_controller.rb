@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  force_ssl
+  force_ssl if: -> { Rails.env.production? }
   protect_from_forgery
 
   before_filter :check_user_authentication, :preload_current_user,
