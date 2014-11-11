@@ -25,3 +25,8 @@ class ActionController::TestCase
     assert JSON.parse(assigns["preload"].to_json).map {|x| x.keys }.flatten.include?(key), "#{key} should be preloaded"
   end
 end
+
+# Don't want SSL redirects in the test suite
+module ActionController::ForceSSL::ClassMethods
+  def force_ssl(options={}); end
+end
