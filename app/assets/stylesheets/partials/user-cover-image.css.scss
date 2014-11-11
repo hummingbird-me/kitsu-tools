@@ -16,26 +16,27 @@
       right: 0;
       left: 0;
       text-align: center;
-      height: 150px;
+      height: 100%;
       color: #fff;
       background: rgba(0,0,0,.7);
       transition: .2s ease-in;
       display: none;
-      padding-top: 70px;
-      z-index: 9;
+      z-index: 3;
       &:hover {
         background: rgba(0,0,0,.8);
       }
       label {
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 150px;
-        padding-top: 30px;
+        margin: 40px 0;
+        padding: 17px 50px;
+        color: #fff;
+        background: transparent;
+        border: 1px solid #fff;
+        font-family: "klavika", Helvetica, Arial, sans-serif;
         &:hover {
           cursor: pointer;
+        }
+        .fa {
+          margin-right: 5px;
         }
       }
     }
