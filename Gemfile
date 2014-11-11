@@ -125,6 +125,7 @@ gem 'image_optim', '~> 0.13', require: false
 gem 'mixpanel'
 
 # SEO
+gem 'indexable'
 gem 'sitemap_generator'
 
 gem 'message_bus', github: 'vikhyat/message_bus'
