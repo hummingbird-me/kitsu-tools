@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  force_ssl
   protect_from_forgery
 
   before_filter :check_user_authentication, :preload_current_user,
