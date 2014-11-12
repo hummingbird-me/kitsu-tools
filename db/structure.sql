@@ -1447,6 +1447,42 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 
 
 --
+-- Name: versions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE versions (
+    id integer NOT NULL,
+    item_id integer NOT NULL,
+    item_type character varying(255) NOT NULL,
+    user_id integer,
+    object json NOT NULL,
+    object_changes json NOT NULL,
+    state integer DEFAULT 0,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: versions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE versions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: versions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE versions_id_seq OWNED BY versions.id;
+
+
+--
 -- Name: videos; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1814,6 +1850,13 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY versions ALTER COLUMN id SET DEFAULT nextval('versions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY videos ALTER COLUMN id SET DEFAULT nextval('videos_id_seq'::regclass);
 
 
@@ -2117,6 +2160,14 @@ ALTER TABLE ONLY substories
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: versions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY versions
+    ADD CONSTRAINT versions_pkey PRIMARY KEY (id);
 
 
 --
@@ -2568,6 +2619,20 @@ CREATE INDEX index_users_on_waifu_or_husbando ON users USING btree (waifu_or_hus
 --
 
 CREATE INDEX index_users_on_waifu_slug ON users USING btree (waifu_slug);
+
+
+--
+-- Name: index_versions_on_item_type_and_item_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_versions_on_item_type_and_item_id ON versions USING btree (item_type, item_id);
+
+
+--
+-- Name: index_versions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_versions_on_user_id ON versions USING btree (user_id);
 
 
 --
@@ -3285,4 +3350,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141017210309');
 INSERT INTO schema_migrations (version) VALUES ('20141105063427');
 
 INSERT INTO schema_migrations (version) VALUES ('20141105134140');
+
+INSERT INTO schema_migrations (version) VALUES ('20141112132716');
 
