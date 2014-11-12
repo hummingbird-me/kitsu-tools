@@ -1,18 +1,18 @@
 var REQUIRED_RATING_COUNT = 5;
 
 
-HB.OnboardingLibraryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
+HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
 
   showManga: false,
   animeData: function(){
     if(this.get('hasSearchTerm')) return this.get('searchResults');
     return this.get('content.anime');
-  }.property('hasSearchTerm', 'searchResults'),
+  }.property('content.anime', 'hasSearchTerm', 'searchResults'),
 
   mangaData: function(){
     if(this.get('hasSearchTerm')) return this.get('searchResults');
     return this.get('content.manga');
-  }.property('hasSearchTerm', 'searchResults'),
+  }.property('content.manga', 'hasSearchTerm', 'searchResults'),
 
   canContinue: Em.computed.gte('totalRatings', REQUIRED_RATING_COUNT),
   totalRatings: function(){
@@ -27,10 +27,9 @@ HB.OnboardingLibraryController = Ember.ObjectController.extend(HB.HasCurrentUser
   hasSearchTerm: Em.computed.gt('searchTerm.length', 2),
   searchTerm: "",
   searchResults: [],
-  performingSearch: false,
   performedSearch: false,
   performSearch: function() {
-    if (this.get('performingSearch')) {
+    if (this.get('loading')) {
       Ember.run.later(this, this.performSearch, 100);
       return;
     }
@@ -46,7 +45,7 @@ HB.OnboardingLibraryController = Ember.ObjectController.extend(HB.HasCurrentUser
       return;
     }
 
-    this.set('performingSearch', true);
+    this.set('loading', true);
     ic.ajax({
       url: '/search.json?type=element&datatype='+dtpe+'&query=' + this.get('searchTerm'),
       type: "GET"
@@ -54,7 +53,7 @@ HB.OnboardingLibraryController = Ember.ObjectController.extend(HB.HasCurrentUser
       self.setProperties({
         'searchResults': payload.search,
         'performedSearch': true,
-        'performingSearch': false
+        'loading': false
       });
 
       var formatted = {}
