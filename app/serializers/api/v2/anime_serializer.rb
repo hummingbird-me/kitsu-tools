@@ -1,7 +1,5 @@
 module Api::V2
   class AnimeSerializer < Serializer
-    title :anime
-
     field(:titles) do |a|
       {
         canonical: a.canonical_title,
@@ -17,7 +15,6 @@ module Api::V2
     field(:poster_image) {|a| a.poster_image_thumb }
     field(:community_rating) {|a| a.bayesian_average }
     field(:genres) {|a| a.genres.map {|x| x.name } }
-    field(:screencaps) {|a| a.gallery_images.map {|x| x.image.url(:thumb) } }
 
     has_many :gallery_images, serializer: GalleryImageSerializer
   end

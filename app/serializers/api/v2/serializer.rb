@@ -12,37 +12,28 @@ module Api::V2
       end
     end
 
-    def title
-      opts[:title] || self.class.instance_variable_get('@title')
+    def identifier
+      block = fields[:id]
+      if @object.respond_to?(:to_ary)
+        @object.map {|o| block.nil? ? o.send(:id) : block.call(o) }
+      else
+        block.nil? ? @object.send(:id) : block.call(@object)
+      end
     end
 
     def fields
-      self.class.instance_variable_get('@fields')
+      self.class.instance_variable_get('@fields') || {}
     end
 
     def associations
-      self.class.instance_variable_get('@associations')
-    end
-
-    def resource_fields
-      @strategy.resource_fields
-    end
-
-    def associations
-      @strategy.associations
+      self.class.instance_variable_get('@associations') || {}
     end
 
     def as_json
-      json = {}
-      json[@strategy.title] = resource_fields
-      json
+      @strategy.as_json
     end
 
     class << self
-      def title(title)
-        @title = title
-      end
-
       def fields(*names)
         @fields ||= {id: nil}
         names.each do |name|
