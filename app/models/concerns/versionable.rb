@@ -13,4 +13,13 @@ module Versionable
     version.state = :pending
     version.save
   end
+
+  def update_from_pending(version)
+    attrs = self.attributes
+    self.update_attributes(version.object)
+
+    version.object = attrs
+    version.state = :history
+    version.save
+  end
 end

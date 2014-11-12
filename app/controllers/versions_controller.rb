@@ -22,4 +22,15 @@ class VersionsController < ApplicationController
       format.json { render json: version, serializer: VersionSerializer }
     end
   end
+
+  def update
+    version = Version.find(params[:id])
+    version.item.update_from_pending(version)
+    render json: true
+  end
+
+  def destroy
+    Version.find(params[:id]).destroy
+    render json: true
+  end
 end

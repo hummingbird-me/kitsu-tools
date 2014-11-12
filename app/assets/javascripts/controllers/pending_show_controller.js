@@ -6,11 +6,17 @@ HB.PendingShowController = Ember.Controller.extend({
 
   actions: {
     approveEdit: function() {
-      // todo
+      this.get('model').save().then(function() {
+        this.transitionToRoute('pending.index');
+        Messenger().post('Edit was approved!');
+      }.bind(this));
     },
 
     rejectEdit: function() {
-      // todo
+      this.get('model').destroyRecord().then(function() {
+        this.transitionToRoute('pending.index');
+        Messenger().post('Edit was rejected.');
+      }.bind(this));
     }
   }
 });
