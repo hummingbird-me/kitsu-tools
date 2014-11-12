@@ -144,6 +144,7 @@ Hummingbird::Application.routes.draw do
   # Versions
   resources :versions, except: [:new, :create]
   get '/pending' => 'versions#index'
+  get '/pending/:id' => 'versions#show'
 
   # Admin Panel
   authenticated :user, lambda {|u| u.admin? } do

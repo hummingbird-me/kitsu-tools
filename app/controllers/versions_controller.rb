@@ -13,4 +13,13 @@ class VersionsController < ApplicationController
       }
     end
   end
+
+  def show
+    # todo: preload ember
+    version = Version.find(params[:id])
+    respond_to do |format|
+      format.html { render_ember }
+      format.json { render json: version, serializer: VersionSerializer }
+    end
+  end
 end
