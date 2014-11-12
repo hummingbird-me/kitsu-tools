@@ -141,6 +141,10 @@ Hummingbird::Application.routes.draw do
   resources :producers
   resources :characters, only: [:show]
 
+  # Versions
+  resources :versions, except: [:new, :create]
+  get '/pending' => 'versions#index'
+
   # Admin Panel
   authenticated :user, lambda {|u| u.admin? } do
     get '/kotodama' => 'admin#index', as: :admin_panel
