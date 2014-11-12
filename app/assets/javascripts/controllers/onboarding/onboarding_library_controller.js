@@ -56,6 +56,10 @@ HB.OnboardingLibraryController = Ember.ObjectController.extend(HB.HasCurrentUser
         'performedSearch': true,
         'performingSearch': false
       });
+
+      var formatted = {}
+      formatted[dtpe] = payload.search;
+      self.store.pushPayload(formatted);
     });
   }.observes('searchTerm'),
 
