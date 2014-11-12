@@ -19,15 +19,9 @@ class MangaController < ApplicationController
   def index
     respond_to do |format|
       format.json do
-        unless params[:sort_by].nil?
-          manga = Manga.all.order(params[:sort_by]).page(params[:page]).per(40)
-          unless params[:sort_reverse].nil?
-            manga = Manga.all.order(params[:sort_by] + ' DESC').page(params[:page]).per(40)
-          end
-        else 
-          manga = Manga.where(slug: params[:ids])
-        end
-
+        manga = Manga.page(params[:page]).per(40)
+        manga = Manga.where(slug: params[:ids]) if params[:ids]
+        manga = Manga.order(params[:sort_by] + (params[:sort_reverse].nil? ? "" : " DESC")) if params[:sort_by]
         render json: manga
       end
     end
