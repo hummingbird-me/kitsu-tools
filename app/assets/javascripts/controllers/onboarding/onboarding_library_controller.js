@@ -84,6 +84,19 @@ HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
       });
     },
 
+    importLibrary: function(){
+      var self = this;
+      ic.ajax({
+        url: '/settings/import/myanimelist',
+        type: 'POST'
+      }).then(function() {
+        self.set('importFromMal', true);
+        Ember.run.later(function(){
+          self.transitionToRoute('onboarding.finish');
+        }, 1000);
+      });
+    },
+
     setLibraryRating: function(userRating, media){
 
       if(media.get('libraryEntry') != null){

@@ -10,6 +10,13 @@
       Rate <strong>{{remainingRatings}} more</strong> to continue</strong>
     </a>
   {{/if}}
+  <a href="#" {{action 'importLibrary'}}>
+    {{#if importFromMal}}
+      <i class="fa fa-spinner"></i>Importing your library...
+    {{else}}
+      Or import library from MAL
+    {{/if}}
+  </a>
 </div>
 
 <div class="library-tab-wrapper col-sm-8">

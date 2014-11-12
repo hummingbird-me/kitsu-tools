@@ -13,6 +13,7 @@ HB.OnboardingLibraryRoute = Ember.Route.extend({
     Ember.RSVP.hash(promises).then(function(hash){
       controller.setProperties({
         'content': hash,
+        'importFromMal': false,
         'totalRatings': (parseInt(hash.libraryEntries.get('length')) + parseInt(hash.mangaLibraryEntries.get('length'))),
         'loading': false
       });
