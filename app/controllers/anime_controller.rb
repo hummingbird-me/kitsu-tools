@@ -266,10 +266,10 @@ class AnimeController < ApplicationController
       end
 
       format.json do
-        anime = Anime.page(params[:page]).per(40)
+        anime = Anime
         anime = Anime.where(slug: params[:ids]) if params[:ids]
         anime = Anime.order(params[:sort_by] + (params[:sort_reverse].nil? ? "" : " DESC")) if params[:sort_by]
-        render json: anime
+        render json: anime.includes(:genres).page(params[:page]).per(40)
       end
     end
   end
