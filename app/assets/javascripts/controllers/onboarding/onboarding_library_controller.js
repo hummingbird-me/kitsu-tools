@@ -19,7 +19,7 @@ HB.OnboardingLibraryController = Ember.ObjectController.extend(HB.HasCurrentUser
     var ae = this.store.all('libraryEntry').get('length');
     var me = this.store.all('mangaLibraryEntry').get('length');
     return (ae + me);
-  }.property('@each.libraryEntry', '@each.mangaLibraryEntry'),
+  }.property('libraryEntry.@each', 'mangaLibraryEntry.@each'),
   remainingRatings: function(){
     return REQUIRED_RATING_COUNT - this.get('totalRatings');
   }.property('totalRatings'),
@@ -117,6 +117,7 @@ HB.OnboardingLibraryController = Ember.ObjectController.extend(HB.HasCurrentUser
       }
 
       libraryEntry.save();
+      this.notifyPropertyChange('totalRatings');
     }
   }
 
