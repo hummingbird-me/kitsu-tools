@@ -43,6 +43,8 @@
           {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=libraryEntry.rating}}
         </div>
       </li>
+    {{else}}
+      No search results ...
     {{/each}}
   {{else}}
     {{#each animeData}}
@@ -56,6 +58,8 @@
           {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=libraryEntry.rating}}
         </div>
       </li>
+    {{else}}
+      No search results ...
     {{/each}}
   {{/if}}
 </ul>
