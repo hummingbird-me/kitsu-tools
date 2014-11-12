@@ -1,5 +1,5 @@
 module Api::V2
-  class AnimeSerializer < ObjectSerializer
+  class AnimeSerializer < Serializer
     title :anime
 
     fields :id, :slug, :canonical_title, :synopsis, :started_airing_date,
