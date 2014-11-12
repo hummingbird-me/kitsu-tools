@@ -1,4 +1,6 @@
 class VersionsController < ApplicationController
+  before_action :limit_to_staff
+
   def index
     state = params[:state] || :pending
     versions = Version.where('state = ?', Version.states[state])
@@ -32,5 +34,15 @@ class VersionsController < ApplicationController
   def destroy
     Version.find(params[:id]).destroy
     render json: true
+  end
+
+  private
+
+  # limit to staff members until user trust is implemented
+  def limit_to_staff
+    authenticate_user!
+    unless current_user.admin?
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 end
