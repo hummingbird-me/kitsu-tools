@@ -38,6 +38,8 @@
 #
 
 class Anime < ActiveRecord::Base
+  include Versionable
+
   include PgSearch
   pg_search_scope :fuzzy_search_by_title, against: [:title, :alt_title],
     using: {trigram: {threshold: 0.1}}, ranked_by: ":trigram"
@@ -97,7 +99,7 @@ class Anime < ActiveRecord::Base
   has_and_belongs_to_many :franchises
 
   has_many :watchlists, dependent: :destroy
-  # has_many :consumings, as: :item TODO: this will be used once we decide to unify library stuff 
+  # has_many :consumings, as: :item TODO: this will be used once we decide to unify library stuff
   validates :title, :presence => true, :uniqueness => true
 
   # Filter out hentai if `filterp` is true or nil.
@@ -133,7 +135,7 @@ class Anime < ActiveRecord::Base
     end
   end
 
-  # Use this function to get the alt title instead of directly accessing the 
+  # Use this function to get the alt title instead of directly accessing the
   # alt_title.
   def alternate_title(title_language_preference=nil)
     if title_language_preference and title_language_preference.class == User
@@ -295,7 +297,7 @@ class Anime < ActiveRecord::Base
 
   before_save do
     # If episode_count has increased, create new episodes.
-    if self.episode_count and self.episodes.length < self.episode_count and (self.episodes.length == 0 or self.thetvdb_series_id.nil? or self.thetvdb_series_id.length == 0) 
+    if self.episode_count and self.episodes.length < self.episode_count and (self.episodes.length == 0 or self.thetvdb_series_id.nil? or self.thetvdb_series_id.length == 0)
       (self.episodes.length+1).upto(self.episode_count) do |n|
         Episode.create(anime_id: self.id, number: n)
       end
@@ -326,5 +328,21 @@ class Anime < ActiveRecord::Base
     end
 
     similar_anime
+  end
+
+  # Versionable overrides
+  def create_pending(author, object = {})
+    # default attachment URLs in development are relative and cause issues
+    # I'm sure the final version here will allow direct file upload
+    # rather than just URLs
+    if Rails.env.development?
+      if object[:poster_image] =~ /^(\/uploads\/\S+)/
+        object.delete(:poster_image)
+      end
+      if object[:cover_image] =~ /^(\/uploads\/\S+)/
+        object.delete(:cover_image)
+      end
+    end
+    super
   end
 end

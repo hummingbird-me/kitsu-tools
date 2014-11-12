@@ -78,6 +78,10 @@
   </div>
   {{#if currentUser.isAdmin}}
     <div class="admin-buttons">
+      {{! Move out of admin area when publically released }}
+      <button {{action "openModal" "edit-anime" this}}>
+        <i class="fa fa-pencil"></i> Edit
+      </button>
       <button {{action "deleteAnime"}}>
         <i class="fa fa-trash"></i> Delete
       </button>
