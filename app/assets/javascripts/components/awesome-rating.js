@@ -6,14 +6,14 @@ HB.AwesomeRatingComponent = Ember.Component.extend({
 
 
   applyAwesomeRating: function() {
-    var _this = this;
-    return this.$().AwesomeRating({
+    var self = this;
+    this.$().AwesomeRating({
       rating: this.get('rating'),
       type: this.get('type'),
       editable: this.get('editable'),
       update: function(newRating) {
-        _this.sendAction('action', newRating);
-        return _this.set('rating', newRating);
+        self.sendAction('action', newRating, self.get('origContext'));
+        self.set('rating', newRating);
       }
     });
   }.on('didInsertElement').observes('rating')
