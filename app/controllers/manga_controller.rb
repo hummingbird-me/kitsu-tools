@@ -15,4 +15,21 @@ class MangaController < ApplicationController
       end
     end
   end
+
+  def index
+    respond_to do |format|
+      format.json do
+        unless params[:sort_by].nil?
+          manga = Manga.all.order(params[:sort_by]).page(params[:page]).per(40)
+          unless params[:sort_reverse].nil?
+            manga = Manga.all.order(params[:sort_by] + ' DESC').page(params[:page]).per(40)
+          end
+        else 
+          manga = Manga.where(slug: params[:ids])
+        end
+
+        render json: manga
+      end
+    end
+  end
 end
