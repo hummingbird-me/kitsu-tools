@@ -5,12 +5,22 @@ HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
 
   showManga: false,
   animeData: function(){
-    if(this.get('hasSearchTerm')) return this.get('searchResults');
+    if(this.get('hasSearchTerm')){
+      var self = this;
+      return this.store.all('anime').filter(function(anime){
+        return self.get('searchResults').contains(anime.get('id'));
+      });
+    }
     return this.get('content.anime');
   }.property('content.anime', 'hasSearchTerm', 'searchResults'),
 
   mangaData: function(){
-    if(this.get('hasSearchTerm')) return this.get('searchResults');
+    if(this.get('hasSearchTerm')){
+      var self = this;
+      return this.store.all('manga').filter(function(manga){
+        return self.get('searchResults').contains(manga.get('id'));
+      });
+    }
     return this.get('content.manga');
   }.property('content.manga', 'hasSearchTerm', 'searchResults'),
 
@@ -47,7 +57,7 @@ HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
       type: "GET"
     }).then(function(payload) {
       self.setProperties({
-        'searchResults': payload.search,
+        'searchResults': payload.search.map(function(x){ return x.id }),
         'performedSearch': true,
         'loading': false
       });
