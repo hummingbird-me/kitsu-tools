@@ -3,18 +3,22 @@
     <h3>Tell us what you've seen and read</h3>
     <p>Hummingbird learns from your ratings to improve your recommendations.</p>
   </div>
-  <div class="next-step col-sm-6">
-    {{#link-to 'onboarding.finish' class='btn btn-primary continue-button no-continue library'}}Rate <strong>5 more</strong> to continue{{/link-to}}
-  </div>
+  {{#if canContinue}}
+    {{#link-to 'onboarding.library' class='btn btn-primary continue-button categories'}}Continue{{/link-to}}
+  {{else}}
+    <a class='btn btn-primary continue-button no-continue'>
+      Rate <strong>{{remainingRatings}} more</strong> to continue</strong>
+    </a>
+  {{/if}}
 </div>
 
 <div class="library-tab-wrapper col-sm-8">
   <ul class="library-tabs inline-list">
     <li>
-      <a href="#" class="anime-tab active">Anime</a>
+      <a {{action 'mangaTab' false}} {{bind-attr class=":anime-tab showManga::active"}}>Anime</a>
     </li>
     <li>
-      <a href="#" class="manga-tab">Manga</a>
+      <a {{action 'mangaTab' true}} {{bind-attr class=":manga-tab showManga:active"}}>Manga</a>
     </li>
   </ul>
 </div>
@@ -22,147 +26,40 @@
 <div class="search-section col-sm-4">
   <div class="search-wrapper">
     <i class="fa fa-search"></i>
-    <input class="library-search-widget" type="text" placeholder="Search by title...">
+    {{input value=searchTerm class="library-search-widget" type="text" placeholder="Search by title..."}}
   </div>
 </div>
 
 <ul class="library-thumbs">
-  <li class="block-grid-item">
-    <div class="thumbnail">
-      <img src="https://static.hummingbird.me/anime/poster_images/000/003/936/large/420501.jpg?1408451107">
-    </div>
-    <span class="library-title">Fullmetal Alchemist: Brotherhood</span>
-    <div class="awesome-rating-widget" style="cursor: pointer;">
-      <span class="icon-container" data-rating="1">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="2">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="3">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="4">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="5">
-        <i class="fa fa-star-o"></i>
-      </span>
-    </div>
-  </li>
-  <li class="block-grid-item">
-    <div class="thumbnail">
-      <img src="https://static.hummingbird.me/anime/poster_images/000/006/711/large/6711.jpg?1408459191">
-    </div>
-    <span class="library-title">Wolf Children</span>
-    <div class="awesome-rating-widget" style="cursor: pointer;">
-      <span class="icon-container" data-rating="1">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="2">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="3">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="4">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="5">
-        <i class="fa fa-star-o"></i>
-      </span>
-    </div>
-  </li>
-  <li class="block-grid-item">
-    <div class="thumbnail">
-      <img src="https://static.hummingbird.me/anime/poster_images/000/007/658/large/7658.jpg?1408462002">
-    </div>
-    <span class="library-title">Fate/Zero 2nd Season</span>
-    <div class="awesome-rating-widget" style="cursor: pointer;">
-      <span class="icon-container" data-rating="1">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="2">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="3">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="4">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="5">
-        <i class="fa fa-star-o"></i>
-      </span>
-    </div>
-  </li>
-  <li class="block-grid-item">
-    <div class="thumbnail">
-      <img src="https://static.hummingbird.me/anime/poster_images/000/006/448/large/hunterhunter_2.jpg?1408458438">
-    </div>
-    <span class="library-title">Hunter x Hunter (2011)</span>
-    <div class="awesome-rating-widget" style="cursor: pointer;">
-      <span class="icon-container" data-rating="1">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="2">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="3">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="4">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="5">
-        <i class="fa fa-star-o"></i>
-      </span>
-    </div>
-  </li>
-  <li class="block-grid-item">
-    <div class="thumbnail">
-      <img src="https://static.hummingbird.me/anime/poster_images/000/005/646/large/iJvXXwfdhJHaG.jpg?1409434134">
-    </div>
-    <span class="library-title">Steins;Gate</span>
-    <div class="awesome-rating-widget" style="cursor: pointer;">
-      <span class="icon-container" data-rating="1">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="2">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="3">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="4">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="5">
-        <i class="fa fa-star-o"></i>
-      </span>
-    </div>
-  </li>
-  <li class="block-grid-item">
-    <div class="thumbnail">
-      <img src="https://static.hummingbird.me/anime/poster_images/000/003/936/large/420501.jpg?1408451107">
-    </div>
-    <span class="library-title">Fullmetal Alchemist: Brotherhood</span>
-    <div class="awesome-rating-widget" style="cursor: pointer;">
-      <span class="icon-container" data-rating="1">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="2">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="3">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="4">
-        <i class="fa fa-star-o"></i>
-      </span>
-      <span class="icon-container" data-rating="5">
-        <i class="fa fa-star-o"></i>
-      </span>
-    </div>
-  </li>
+  {{#if showManga}}
+    {{#each mangaData}}
+      <li class="block-grid-item">
+        <div class="thumbnail">
+          <img {{bind-attr src=posterImage}} />
+        </div>
+        <span class="library-title">{{englishTitle}}</span>
+        <div class="awesome-rating-widget">
+          <h5 class="sidebar-title text-center">Your Rating</h5>
+          {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=libraryEntry.rating}}
+        </div>
+      </li>
+    {{/each}}
+  {{else}}
+    {{#each animeData}}
+      <li class="block-grid-item">
+        <div class="thumbnail">
+          <img {{bind-attr src=posterImage}} />
+        </div>
+        <span class="library-title">{{canonicalTitle}}</span>
+        <div class="awesome-rating-widget">
+          <h5 class="sidebar-title text-center">Your Rating</h5>
+          {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=libraryEntry.rating}}
+        </div>
+      </li>
+    {{/each}}
+  {{/if}}
 </ul>
+
+<div class="pull-right">
+{{#link-to 'onboarding.library'}}Skip{{/link-to}}
+</div>
