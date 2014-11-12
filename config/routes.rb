@@ -131,7 +131,7 @@ Hummingbird::Application.routes.draw do
     resources :episodes
   end
 
-  resources :manga, only: [:show]
+  resources :manga, only: [:index, :show]
 
   resources :genres, only: [:index, :show] do
     post :add_to_favorites
