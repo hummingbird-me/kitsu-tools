@@ -256,7 +256,7 @@ class UsersController < ApplicationController
 
   def to_follow
     fixedUserList = [
-      'cybrox', 'Holden', 'JeanP',
+      'Gigguk', 'Holden', 'JeanP',
       'Arkada', 'HappiLeeErin', 'DoctorDazza',
       'Yokurama', 'dexbonus', 'DEMOLITION_D'
     ]
