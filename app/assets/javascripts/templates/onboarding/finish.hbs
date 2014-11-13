@@ -16,219 +16,40 @@
   </ul>
 </div>
 
-<div class="search-section col-sm-4">
-  <div class="search-wrapper">
-    <i class="fa fa-search"></i>
-    <input class="library-search-widget" type="text" placeholder="Search by username...">
+{{!-- 
+  <div class="search-section col-sm-4">
+    <div class="search-wrapper">
+      <i class="fa fa-search"></i>
+      <input class="library-search-widget" type="text" placeholder="Search by username...">
+    </div>
   </div>
-</div>
+--}}
 
 <div class="featured-user-wrapper">
-  <div class="follow-panel-wrapper">
-    <div class="follow-panel">
-      <a id="ember2080" class="ember-view" href="/users/Gigguk">
-        <div class="follow-cover" style="background-image: url(https://static.hummingbird.me/users/cover_images/000/000/021/thumb/21-kara_no_kyoukai_wallpaper_3-wide.jpg?1389984439)" data-bindattr-2086="2086"></div>
-      </a>
-      <div class="user-avatar">
-        <a href="/users/Gigguk" data-bindattr-2081="2081">
-          <img class="responsive-image" src="https://static.hummingbird.me/users/avatars/000/000/021/thumb/Untitled.png?1392763076" alt="Gigguk">
-        </a>
-        
-          <a class="btn follow-button unfollow" data-ember-action="2087"> Unfollow</a>
-        
-      </div>
-      <div class="user-info">
-        <h4><a id="ember2083" class="ember-view" href="/users/Gigguk">Gigguk</a></h4>
-        <p class="mini-bio">
-          I'm that guy on the internet who talks about anime and stuff. Oh, and occasionally I make an Evangelion spoof
-          
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="follow-panel-wrapper">
-    <div class="follow-panel">
-      <a id="ember3017" class="ember-view" href="/users/Holden">
-        <div class="follow-cover" style="background-image: url(https://static.hummingbird.me/users/cover_images/000/000/447/thumb/Bn7RlCECYAEVNSt.jpg?1400514857)" data-bindattr-3023="3023"></div>
-      </a>
-      <div class="user-avatar">
-        <a href="/users/Holden" data-bindattr-3018="3018">
-          <img class="responsive-image" src="https://static.hummingbird.me/users/avatars/000/000/447/thumb/4WENAg8.jpg?1392914390" alt="Holden">
-        </a>
-        
-          <a class="btn follow-button unfollow" data-ember-action="3024"> Unfollow</a>
-        
-      </div>
-      <div class="user-info">
-        <h4><a id="ember3020" class="ember-view" href="/users/Holden">Holden</a></h4>
-        <p class="mini-bio">
-          A devilishly handsome blonde haired casanova who reviews anime with info and some humor. I also do weddings.
-          
-        </p>
+  {{#each userList}}
+    <div class="follow-panel-wrapper">
+      <div class="follow-panel">
+        {{#link-to 'user' username}}
+          <div class="follow-cover" {{bind-attr style=coverImageStyle}}></div>
+        {{/link-to}}
+        <div class="user-avatar">
+          <a {{bind-attr href=userLink}}>
+            {{avatar this 'thumb'}}
+          </a>
+          {{#if isFollowed}}
+            <a class="btn follow-button unfollow" {{action "toggleFollow" this}}> Unfollow</a>
+          {{else}}
+            <a class="btn follow-button" {{action "toggleFollow" this}}> Follow</a>
+          {{/if}}
+        </div>
+        <div class="user-info">
+          <h4>{{#link-to 'user' username}}{{username}}{{/link-to}}</h4>
+          <p class="mini-bio">
+            {{truncatedBio}}
+            {{controller.followerCoverUrl}}
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="follow-panel-wrapper">
-    <div class="follow-panel">
-      <a id="ember2044" class="ember-view" href="/users/JeanP">
-        <div class="follow-cover" style="background-image: url(https://static.hummingbird.me/users/cover_images/000/010/654/thumb/10654-anime_appraisalbannerplz.jpg?1389995342)" data-bindattr-2050="2050"></div>
-      </a>
-      <div class="user-avatar">
-        <a href="/users/JeanP" data-bindattr-2045="2045">
-          <img class="responsive-image" src="https://static.hummingbird.me/users/avatars/000/010/654/thumb/deT28OjP_400x400.jpeg?1400817125" alt="JeanP">
-        </a>
-        
-          <a class="btn follow-button unfollow" data-ember-action="2051"> Unfollow</a>
-        
-      </div>
-      <div class="user-info">
-        <h4><a id="ember2047" class="ember-view" href="/users/JeanP">JeanP</a></h4>
-        <p class="mini-bio">
-          Hello there, you can call me Jean.
-  I'm just your typical Nerd that likes watching anime, reading manga, and has a big obsession with glas...
-          
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="follow-panel-wrapper">
-    <div class="follow-panel">
-      <a id="ember5478" class="ember-view" href="/users/Arkada">
-        <div class="follow-cover" style="background-image: url(https://static.hummingbird.me/users/cover_images/000/000/022/thumb/22-HummingBirdBannar.jpg?1389984442)" data-bindattr-5484="5484"></div>
-      </a>
-      <div class="user-avatar">
-        <a href="/users/Arkada" data-bindattr-5479="5479">
-          <img class="responsive-image" src="https://static.hummingbird.me/users/avatars/000/000/022/thumb/22-ArkPortrait.jpg?1392763073" alt="Arkada">
-        </a>
-        
-          <a class="btn follow-button unfollow" data-ember-action="5485"> Unfollow</a>
-        
-      </div>
-      <div class="user-info">
-        <h4><a id="ember5481" class="ember-view" href="/users/Arkada">Arkada</a></h4>
-        <p class="mini-bio">
-          
-          
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="follow-panel-wrapper">
-    <div class="follow-panel">
-      <a id="ember4132" class="ember-view" href="/users/HappiLeeErin">
-        <div class="follow-cover" style="background-image: url(https://static.hummingbird.me/users/cover_images/000/015/505/thumb/data.jpg?1402861011)" data-bindattr-4138="4138"></div>
-      </a>
-      <div class="user-avatar">
-        <a href="/users/HappiLeeErin" data-bindattr-4133="4133">
-          <img class="responsive-image" src="https://static.hummingbird.me/users/avatars/000/015/505/thumb/nKJr2VZ.png?1392794779" alt="HappiLeeErin">
-        </a>
-        
-          <a class="btn follow-button unfollow" data-ember-action="4139"> Unfollow</a>
-        
-      </div>
-      <div class="user-info">
-        <h4><a id="ember4135" class="ember-view" href="/users/HappiLeeErin">HappiLeeErin</a></h4>
-        <p class="mini-bio">
-          Anime/manga lover and reviewer, though mostly I just barf feels. I've made it my personal mission to make Kuroko no Basuke the most popul...
-          
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="follow-panel-wrapper">
-    <div class="follow-panel">
-      <a id="ember4141" class="ember-view" href="/users/DoctorDazza">
-        <div class="follow-cover" style="background-image: url(https://static.hummingbird.me/users/cover_images/000/000/643/thumb/Hummingbird.jpg?1389984721)" data-bindattr-4147="4147"></div>
-      </a>
-      <div class="user-avatar">
-        <a href="/users/DoctorDazza" data-bindattr-4142="4142">
-          <img class="responsive-image" src="https://static.hummingbird.me/users/avatars/000/000/643/thumb/643-4-up_on_2011-02-14_at_15.45_(1).jpg?1392828867" alt="DoctorDazza">
-        </a>
-        
-          <a class="btn follow-button unfollow" data-ember-action="4148"> Unfollow</a>
-        
-      </div>
-      <div class="user-info">
-        <h4><a id="ember4144" class="ember-view" href="/users/DoctorDazza">DoctorDazza</a></h4>
-        <p class="mini-bio">
-          Hi, I'm the DoctorDazza from FightingforNippon! I make anime videos on YouTube! 
-          
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="follow-panel-wrapper">
-    <div class="follow-panel">
-      <a id="ember5183" class="ember-view" href="/users/Yokurama">
-        <div class="follow-cover" style="background-image: url(https://static.hummingbird.me/users/cover_images/000/015/495/thumb/Yoku_Banner.jpg?1390000020)" data-bindattr-5189="5189"></div>
-      </a>
-      <div class="user-avatar">
-        <a href="/users/Yokurama" data-bindattr-5184="5184">
-          <img class="responsive-image" src="https://static.hummingbird.me/users/avatars/000/015/495/thumb/tumblr_m9u3girOPF1reid4ho1_r1_400.gif?1393178814" alt="Yokurama">
-        </a>
-        
-          <a class="btn follow-button unfollow" data-ember-action="5190"> Unfollow</a>
-        
-      </div>
-      <div class="user-info">
-        <h4><a id="ember5186" class="ember-view" href="/users/Yokurama">Yokurama</a></h4>
-        <p class="mini-bio">
-          
-          
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="follow-panel-wrapper">
-    <div class="follow-panel">
-      <a id="ember5120" class="ember-view" href="/users/dexbonus">
-        <div class="follow-cover" style="background-image: url(https://static.hummingbird.me/users/cover_images/000/018/271/thumb/poptarts_are_food_by_silentreaper-d4q10nq.jpg?1390002506)" data-bindattr-5126="5126"></div>
-      </a>
-      <div class="user-avatar">
-        <a href="/users/dexbonus" data-bindattr-5121="5121">
-          <img class="responsive-image" src="https://static.hummingbird.me/users/avatars/000/018/271/thumb/dodger_leigh_render_by_wonderchrissie__by_wonderchrissie-d77izs8.png?1393971858" alt="dexbonus">
-        </a>
-        
-          <a class="btn follow-button unfollow" data-ember-action="5127"> Unfollow</a>
-        
-      </div>
-      <div class="user-info">
-        <h4><a id="ember5123" class="ember-view" href="/users/dexbonus">dexbonus</a></h4>
-        <p class="mini-bio">
-          I'm a YouTuber with a caffeine problem.
-          
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <div class="follow-panel-wrapper">
-    <div class="follow-panel">
-      <a id="ember2954" class="ember-view" href="/users/DEMOLITION_D">
-        <div class="follow-cover" style="background-image: url(https://static.hummingbird.me/users/cover_images/000/015/424/thumb/Sarah_Katherine_lamia_headlock_ver_2.jpg?1395460321)" data-bindattr-2960="2960"></div>
-      </a>
-      <div class="user-avatar">
-        <a href="/users/DEMOLITION_D" data-bindattr-2955="2955">
-          <img class="responsive-image" src="https://static.hummingbird.me/users/avatars/000/015/424/thumb/kyouko.jpg?1392892966" alt="DEMOLITION_D">
-        </a>
-        
-          <a class="btn follow-button unfollow" data-ember-action="2961"> Unfollow</a>
-        
-      </div>
-      <div class="user-info">
-        <h4><a id="ember2957" class="ember-view" href="/users/DEMOLITION_D">DEMOLITION_D</a></h4>
-        <p class="mini-bio">
-          I'm that anime review guy who wants to be more than just friends.
-          
-        </p>
-      </div>
-    </div>
-  </div>
+  {{/each}}
 </div>
