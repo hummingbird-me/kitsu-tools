@@ -253,4 +253,14 @@ class UsersController < ApplicationController
       return error!(user.errors.full_messages * ', ', 500)
     end
   end
+
+  def to_follow
+    fixedUserList = [
+      'cybrox', 'Holden', 'JeanP',
+      'Arkada', 'HappiLeeErin', 'DoctorDazza',
+      'Yokurama', 'dexbonus', 'DEMOLITION_D'
+    ]
+    @users = User.where(:name => fixedUserList)
+    render json: @users, each_serializer: UserSerializer
+  end
 end
