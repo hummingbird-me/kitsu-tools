@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Pending Edit</h1>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Pending Edit by {{model.user.username}}
+
+          <div class="pull-right">
+            <a class="btn" style="color:green;" {{action 'approveEdit'}}>
+              <i class="fa fa-check"></i> Approve
+            </a>
+            <a class="btn" style="color:red;" {{action 'rejectEdit'}}>
+              <i class="fa fa-check"></i> Reject
+            </a>
+          </div>
+        </div>
+        <div class="panel-body">
+          {{changes}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

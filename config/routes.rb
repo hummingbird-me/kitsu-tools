@@ -4,7 +4,7 @@ Hummingbird::Application.routes.draw do
   resources :library_entries, except: [:new, :edit]
   resources :manga_library_entries, except: [:new, :edit]
   resources :franchises, only: [:index, :show]
-  resources :full_anime, only: [:show, :destroy]
+  resources :full_anime, only: [:show, :update, :destroy]
   resources :full_manga, only: [:show]
   resources :news_feeds, only: [:index]
   resources :quotes
@@ -141,6 +141,11 @@ Hummingbird::Application.routes.draw do
 
   resources :producers
   resources :characters, only: [:show]
+
+  # Versions
+  resources :versions, except: [:new, :create]
+  get '/edits' => 'versions#index'
+  get '/edits/:id' => 'versions#show'
 
   # Admin Panel
   authenticated :user, lambda {|u| u.admin? } do

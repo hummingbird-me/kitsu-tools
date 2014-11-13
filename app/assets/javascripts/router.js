@@ -45,6 +45,10 @@ HB.Router.map(function() {
   this.route('apps');
   this.route('search');
 
+  this.resource('edits', function() {
+    this.route('show', { path: '/:id' });
+  });
+
   this.route('privacy');
   this.route('kotodama');
 });

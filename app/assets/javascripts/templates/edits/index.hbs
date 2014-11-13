@@ -1,0 +1,60 @@
+<div class="container">
+  <h1>Pending Edits</h1>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Anime
+        </div>
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Anime</th>
+                <th>Author</th>
+                <th>When</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each pendingAnime}}
+                <tr>
+                  <td>
+                    {{#link-to 'anime' item.id}}
+                      {{item.id}}
+                    {{/link-to}}
+                  </td>
+                  <td>
+                    {{#link-to 'user' user}}
+                      {{user.username}}
+                    {{/link-to}}
+                  </td>
+                  <td>{{createdAt}}</td>
+                  <td>
+                    {{#link-to 'edits.show' id}}
+                      <i class="fa fa-list"></i> View
+                    {{/link-to}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Manga
+        </div>
+        <div class="panel-body">
+          {{! todo }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

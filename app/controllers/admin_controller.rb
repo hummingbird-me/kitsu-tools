@@ -4,8 +4,8 @@ class AdminController < ApplicationController
   before_filter :allow_only_admins
 
   def allow_only_admins
-    # This shouldn't be needed becuse we also check for admin-ness in the 
-    # routes. Still doing this just to be safe. 
+    # This shouldn't be needed becuse we also check for admin-ness in the
+    # routes. Still doing this just to be safe.
     authenticate_user!
     if not current_user.admin?
       raise ActionController::RoutingError.new('Not Found')
@@ -49,6 +49,7 @@ class AdminController < ApplicationController
     stats[:activeaccs] = User.where('last_library_update >= ?', 1.day.ago).count
     stats[:feedposts] = Story.where('created_at >= ?', 1.day.ago).count
     stats[:feedcomments] = Substory.where('created_at >= ?', 1.day.ago).count
+    stats[:pending_count] = Version.pending.count
 
     stats[:registrations] = {total: {}, confirmed: {}}
     User.where('created_at >= ?', 1.week.ago).find_each do |user|

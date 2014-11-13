@@ -8,20 +8,25 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <ul>
-            <li><a class="btn" href="/kotodama/rails_admin">Biribiri Admin</a>
-            <li><a class="btn" href="/kotodama/sidekiq">Sidekiq Dashboard</a>
-            <li><a class="btn" href="/kotodama/pghero">PG Hero</a>
+            <li><a class="btn" href="/kotodama/rails_admin">Biribiri Admin</a></li>
+            <li><a class="btn" href="/kotodama/sidekiq">Sidekiq Dashboard</a></li>
+            <li><a class="btn" href="/kotodama/pghero">PG Hero</a></li>
+            <li>
+              {{#link-to 'edits' class="btn"}}
+                {{pluralize pending_count "Pending Edit" "Pending Edits"}}
+              {{/link-to}}
+            </li>
           </ul>
         </div>
       </div>
-      
+
       <div class="panel panel-default">
         <div class="panel-heading">Registrations over the last week</div>
         <div class="panel-body">
           {{ember-chart type="Line" data=graphData options=graphOptions}}
         </div>
       </div>
-      
+
       <div class="panel panel-default">
         <div class="panel-heading">Daily stats</div>
         <div class="panel-body no-padding no-vpadding">
