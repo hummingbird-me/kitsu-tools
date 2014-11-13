@@ -1,4 +1,4 @@
-HB.PendingIndexRoute = Ember.Route.extend({
+HB.EditsIndexRoute = Ember.Route.extend({
   model: function() {
     return this.store.find('version', {
       state: 'pending'

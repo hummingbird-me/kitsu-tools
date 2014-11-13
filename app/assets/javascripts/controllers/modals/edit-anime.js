@@ -1,8 +1,5 @@
 HB.ModalsEditAnimeController = Ember.ObjectController.extend(HB.ModalControllerMixin, {
-  canSave: function() {
-    return !this.get('isDirty');
-  }.property('isDirty'),
-
+  canSave: Ember.computed.not('isDirty'),
   actions: {
     save: function () {
       Messenger().expectPromise(function() {

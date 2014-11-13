@@ -1,4 +1,4 @@
-HB.PendingShowController = Ember.Controller.extend({
+HB.EditsShowController = Ember.Controller.extend({
   changes: function() {
     // todo: show html diff?
     return JSON.stringify(this.get('model.objectChanges'));
@@ -7,14 +7,14 @@ HB.PendingShowController = Ember.Controller.extend({
   actions: {
     approveEdit: function() {
       this.get('model').save().then(function() {
-        this.transitionToRoute('pending.index');
+        this.transitionToRoute('edits.index');
         Messenger().post('Edit was approved!');
       }.bind(this));
     },
 
     rejectEdit: function() {
       this.get('model').destroyRecord().then(function() {
-        this.transitionToRoute('pending.index');
+        this.transitionToRoute('edits.index');
         Messenger().post('Edit was rejected.');
       }.bind(this));
     }

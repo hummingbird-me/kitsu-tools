@@ -45,7 +45,7 @@ HB.Router.map(function() {
   this.route('apps');
   this.route('search');
 
-  this.resource('pending', function() {
+  this.resource('edits', function() {
     this.route('show', { path: '/:id' });
   });
 
