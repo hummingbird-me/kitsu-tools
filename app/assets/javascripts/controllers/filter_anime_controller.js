@@ -39,6 +39,8 @@ HB.FilterAnimeController = Ember.Controller.extend({
     var query = this.encodeQuery(),
         self = this;
 
+    query += "&new_filter=true";
+
     this.set('loading', true);
     ic.ajax({
       url: '/anime/filter.json' + query,
