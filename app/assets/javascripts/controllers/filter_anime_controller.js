@@ -79,7 +79,7 @@ HB.FilterAnimeController = Ember.Controller.extend({
         'loading': false
       });
     });
-  }.observes('selectedItems.length'),
+  }.observes('selectedItems.length', 'selectedSort'),
 
 
   actions: {
