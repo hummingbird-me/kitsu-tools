@@ -269,6 +269,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    parallel (1.3.3)
     pg (0.17.1)
     pg_search (0.7.8)
       activerecord (>= 3.1)
@@ -364,6 +365,7 @@ GEM
     ref (1.0.5)
     remotipart (1.2.1)
     rinku (1.7.3)
+    ruby-progressbar (1.7.0)
     rubyfish (0.0.6)
     safe_yaml (1.0.4)
     sanitize (2.1.0)
@@ -487,6 +489,7 @@ DEPENDENCIES
   omniauth-facebook (~> 2.0)
   paperclip (~> 4.1)
   paperclip-optimizer!
+  parallel
   pg (= 0.17.1)
   pg_search (~> 0.7)
   pghero
@@ -502,6 +505,7 @@ DEPENDENCIES
   redis
   redis-rails
   rinku
+  ruby-progressbar
   rubyfish
   sanitize (~> 2.1)
   sass-rails (~> 4.0)

@@ -118,6 +118,10 @@ gem 'nokogiri', require: false
 gem 'hooloo', require: false
 gem 'rubyfish' # String matching
 
+# TEMPORARY: Remove these when we get rid of TVDB import
+gem 'ruby-progressbar'
+gem 'parallel'
+
 # Image optimization
 gem 'image_optim', '~> 0.13', require: false
 
