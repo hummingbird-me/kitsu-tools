@@ -3,8 +3,8 @@
     <div class="col-md-2">
       <h2 class="grey-title">Timespan</h2>
       {{#each filterTimes}}
-        <div {{bind-attr id=this}} class="filter-page-option" {{action 'toggleFilterTime' this}}>
-          {{this}}
+        <div {{bind-attr class=":filter-page-option selected:active"}} {{action 'selectItem' this}}>
+          {{fval}}
         </div>
       {{/each}}
     </div>
@@ -13,8 +13,8 @@
       <div class="row">
         {{#each filterGenres}}
           <div class="col-md-2 col-sm-4">
-            <div {{bind-attr id=this.slug}} class="filter-page-option" {{action 'toggleFilterGenre' this.slug}}>
-              {{name}}
+            <div {{bind-attr class=":filter-page-option selected:active"}} {{action 'selectItem' this}}>
+              {{model.name}}
             </div>
           </div>
         {{/each}}
@@ -28,7 +28,7 @@
     </button>
 
     {{view "select" class="pull-right form-control filter-page-sort"
-       value=selectSort
+       value=selectedSort
        content=filterSorts
        optionValuePath="content.value"
        optionLabelPath="content.name"}}
