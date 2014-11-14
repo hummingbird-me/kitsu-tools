@@ -1,4 +1,4 @@
-{{#if showEpisodes}}
+{{!-- {{#if showEpisodes}}
 <div class="episode-bar">
   <div class="container">
     <h2 class="grey-title">
@@ -68,3 +68,251 @@
   </div>
 </div>
 
+ --}}
+
+
+<div class="container">
+  <div class="series-column">
+    <div class="series-panel">
+
+      <div class="poster-container">
+        <img class="series-poster" {{bind-attr src=posterImage}}>
+        <a {{bind-attr class=":trailer-link hasTrailer::hide"}} {{action "openModal" "youtube" this}}>
+          <i {{bind-attr class=":fa :fa-youtube-play"}}></i>
+        </a>
+      </div>
+
+      <div class="series-info">
+
+        <h3 class="series-title">
+          {{canonicalTitle}}
+          {{#if alternateTitle}}
+            <small class="alternate-title">
+              {{alternateTitle}}
+            </small>
+          {{/if}}
+        </h3>
+
+        <div class="series-infobar">{{partial "anime/infobar"}}</div>
+
+        <div class="synopsis">
+          <p>{{{truncate-text text=synopsis length=200 breakLines=true}}}</p>
+        </div>
+
+        <div class="genres">
+          <h5 class="small-label">Genres:</h5>
+          <ul class="inline-list">
+            <li>Action</li>
+            <li>Adventure</li>
+            <li>Drama</li>
+            <li>Fantasy</li>
+            <li>Magic</li>
+            <li>Military</li>
+          </ul>
+        </div>
+
+        <div class="studios">
+          <h5 class="small-label">Studios:</h5>
+          <ul class="inline-list">
+            <li>Bones</li>
+            <li>Aniplex</li>
+            <li>Square Enix</li>
+            <li>FUNimation Entertainment</li>
+            <li>Mainchi Broadcasting</li>
+          </ul>
+        </div>
+
+        <div {{bind-attr class=":user-actions libraryEntryExists::no-entry"}}>
+          <div class="btn-group">
+
+            <button {{bind-attr class=":library-button :library-entry :dropdown-toggle libraryStatus:active"}} type="button" data-toggle="dropdown">
+              {{#if libraryEntryExists}}
+                {{libraryEntry.status}}&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
+              {{else}}
+                Add to Library&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
+              {{/if}}
+            </button>
+
+            <ul class="dropdown-menu">
+              <li><a {{action "setLibraryStatus" "Currently Watching"}}>Currently Watching</a></li>
+              <li><a {{action "setLibraryStatus" "Plan to Watch"}}>Plan to Watch</a></li>
+              <li><a {{action "setLibraryStatus" "Completed"}}>Completed</a></li>
+              <li><a {{action "setLibraryStatus" "On Hold"}}>On Hold</a></li>
+              <li><a {{action "setLibraryStatus" "Dropped"}}>Dropped</a></li>
+              <li><a {{action "removeFromLibrary"}}>Remove from Library</a></li>
+            </ul>
+          </div>
+          {{#if currentUser.isSignedIn}}
+            {{#if libraryEntryExists}}
+              <div class="personal-rating active">
+                {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=libraryEntry.rating}}
+              </div>
+            {{/if}}
+          {{/if}}
+        </div>
+      
+      </div>
+    </div>
+    <!-- End series panel -->
+
+    <div class="series-panel">
+      <div class="panel-title has-button">
+        <h4>Cast</h4>
+        <div class="cast-language">
+          <div class="btn-group">
+            <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              Japanese
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">English</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="series-cast">
+        <ul class="cast">
+          <li class="character-wrapper">
+            <div class="cast-image">
+              <image class="actor" src="https://static.hummingbird.me/people/images/000/006/487/original/6487.jpg?1375226712">
+              <image class="character" src="https://static.hummingbird.me/characters/images/000/038/505/original/38505.jpg?1375262333">
+            </div>
+            <div class="cast-name">
+              <h4>Yui Ishikawa</h4>
+              <small>as Mikasa Ackerman</small>
+            </div>
+          </li>
+          <li class="character-wrapper">
+            <div class="cast-image">
+              <image class="actor" src="https://static.hummingbird.me/people/images/000/001/550/original/1550.jpg?1375224120">
+              <image class="character" src="https://static.hummingbird.me/characters/images/000/038/506/original/38506.jpg?1375262334">
+            </div>
+            <div class="cast-name">
+              <h4>Marina Inoue</h4>
+              <small>as Armin Arelet</small>
+            </div>
+          </li>
+          <li class="character-wrapper">
+            <div class="cast-image">
+              <image class="actor" src="https://static.hummingbird.me/people/images/000/006/097/original/6097.jpg?1375226496">
+              <image class="character" src="https://static.hummingbird.me/characters/images/000/038/507/original/38507.jpg?1375262335">
+            </div>
+            <div class="cast-name">
+              <h4>Yuki Kaji</h4>
+              <small>as Eren Jäger</small>
+            </div>
+          </li>
+          <li class="character-wrapper">
+            <div class="cast-image">
+              <image class="actor" src="https://static.hummingbird.me/people/images/000/008/141/original/8141.jpg?1375227516">
+              <image class="character" src="https://static.hummingbird.me/characters/images/000/038/508/original/38508.jpg?1375262336">
+            </div>
+            <div class="cast-name">
+              <h4>Ryota Ohsaka</h4>
+              <small>as Marco Bodt</small>
+            </div>
+          </li>
+          <li class="character-wrapper">
+            <div class="cast-image">
+              <image class="actor" src="https://static.hummingbird.me/people/images/000/000/195/original/195.jpg?1375223340">
+              <image class="character" src="https://static.hummingbird.me/characters/images/000/039/556/original/39556.jpg?1375263081">
+            </div>
+            <div class="cast-name">
+              <h4>Hiroshi Kamiya</h4>
+              <small>as Mikasa Ackerman</small>
+            </div>
+          </li>
+          <li class="character-wrapper">
+            <div class="cast-image">
+              <image class="actor" src="https://static.hummingbird.me/people/images/000/006/487/original/6487.jpg?1375226712">
+              <image class="character" src="https://static.hummingbird.me/characters/images/000/038/505/original/38505.jpg?1375262333">
+            </div>
+            <div class="cast-name">
+              <h4>Yui Ishikawa</h4>
+              <small>as Levi</small>
+            </div>
+          </li>
+        </ul>
+        <div class="view-more">
+          <a href="#">View More Cast</a>
+        </div>
+      </div>
+    </div>
+    <!-- End cast -->
+    <div class="series-panel">
+      <div class="panel-title has-button">
+        <h4>Quotes</h4>
+        <div class="cast-language">
+          <div class="btn-group">
+            <a class="btn btn-default" type="button">
+              Add Quote
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote">
+        <p>"I want to see and understand the world outside. I don't want to die inside these walls without knowing what's out there!"</p>
+        <span class="quote-author">- Eren Jaeger</span>
+        <div class="quote-like-box">
+          <span class="like-button">
+            <a href="#"><i class="fa fa-heart"></i> Like?</i></a>
+            {{!-- <a href="#"><i class="fa fa-heart active"></i> Liked!</i></a> --}}
+          </span>
+          <span class="quote-divider"></span>       
+          <span class="total-likes">
+            143 Likes
+          </span>
+        </div>
+      </div>
+      <div class="quote">
+        <p>"I want to see and understand the world outside. I don't want to die inside these walls without knowing what's out there!"</p>
+        <span class="quote-author">- Eren Jaeger</span>
+        <div class="quote-like-box">
+          <span class="like-button">
+            <a href="#"><i class="fa fa-heart"></i> Like?</i></a>
+            {{!-- <a href="#"><i class="fa fa-heart active"></i> Liked!</i></a> --}}
+          </span>
+          <span class="quote-divider"></span>       
+          <span class="total-likes">
+            143 Likes
+          </span>
+        </div>
+      </div>
+      <div class="quote">
+        <p>"I want to see and understand the world outside. I don't want to die inside these walls without knowing what's out there!"</p>
+        <span class="quote-author">- Eren Jaeger</span>
+        <div class="quote-like-box">
+          <span class="like-button">
+            <a href="#"><i class="fa fa-heart"></i> Like?</i></a>
+            {{!-- <a href="#"><i class="fa fa-heart active"></i> Liked!</i></a> --}}
+          </span>
+          <span class="quote-divider"></span>       
+          <span class="total-likes">
+            143 Likes
+          </span>
+        </div>
+      </div>
+      <div class="view-more">
+        <a href="#">View More Quotes</a>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- Left Side of Page -->
+  <div class="community-column">
+    <div class="reviews">
+      {{#each trendingReviews}}
+        {{partial "media/review_summary"}}
+      {{else}}
+        <div class="trending-review-empty">
+          <i class="empty-icon fa fa-meh-o"></i>
+          <p>You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.</p>
+          <a class="btn btn-default" {{bind-attr href=newReviewURL}}>Write the first review</a>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

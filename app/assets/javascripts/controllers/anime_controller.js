@@ -17,10 +17,6 @@ HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     }
   }.property('model.bayesianRating'),
 
-  libraryEntryExists: function() {
-    return (!Ember.isNone(this.get('model.libraryEntry'))) && (!this.get('model.libraryEntry.isDeleted'));
-  }.property('model.libraryEntry', 'model.libraryEntry.isDeleted'),
-
   recentlyStartedAiring: function() {
     if (this.get('model.airingStatus') === "Finished Airing") { return false; }
     // Used to hide "First Impressions" from long-term ongoing shows like

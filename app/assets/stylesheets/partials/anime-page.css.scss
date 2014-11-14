@@ -1,494 +1,325 @@
 @import 'mixins/block-grid';
 
+
 .series-header {
   background: #4b5360;
-  position: relative;
-  padding: 30px 0;
+  background-size: cover;
+  margin-bottom: 30px;
+  @media (max-width: 1050px) {
+    background-position: inherit !important;
+  }
   .container {
-    padding-right: 0;
-    @media (max-width: 768px) {
-      padding-left: 0;
+    position: relative;
+    height: 350px;
+    @media (max-width: 820px) {
+      height: 200px;
     }
   }
-  &.episode-show {
-    .container {
-      padding-right: 15px;
-      @media (max-width: 768px) {
-        padding-left: 0;
-        padding-right: 0;
+  .header-buttons {
+    position: absolute;
+    bottom: 25px;
+    left: 15px;
+    @media (max-width: 820px) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .edit-button {
+    a {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      border-radius: 3px;
+      padding: 10px 15px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+      &:hover {
+        background: rgba(255,255,255,0.3);
       }
     }
   }
-  .poster-container {
-    @extend .col-sm-2;
-    padding: 0;
-    width: 21%;
-    @media (max-width: 1000px) {
-      width: 16%;
+  .facebook-share, .twitter-share {
+    opacity: .8;
+    margin-left: 10px;
+    &:hover {
+      opacity: 1;
     }
-    @media (max-width: 768px) {
+  }
+  .twitter-share {
+    position: relative;
+    top: 5px;
+  }
+  .featured-quote {
+    display: inline-block;
+    color: #fff;
+    padding: 15px;
+    max-width: 500px;
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    background: rgba(0,0,0,.5);
+    @media (max-width: 820px) {
       display: none;
     }
-    .series-poster {
-      width: 100%;
-      border-radius: 5px;
+    .quote-text {
+      margin-bottom: 10px;
     }
-    .trailer-link {
-      color: #fff;
-      border: 1px solid #838c9a;
-      border-radius: 3px;
-      display: block;
-      text-align: center;
-      padding: 5px 0 7px;
-      margin-top: 15px;
-      .fa {
-        margin-right: 5px;
-      }
-      &:hover {
-        border-color: #fff;
-      }
+    .quote-author {
+      margin-bottom: 5px;
+      font-weight: bold;
     }
   }
+}
 
-  .middle-column {
-    @extend .col-sm-7;
 
-    a:hover, a:focus {
-      color: #16a085;
-    }
+.series-column {
+  width: 69%;
+  float: left;
+}
 
-    .series-title {
-     margin-top: 0;
-
-      a {
-        color: #eaeaea;
-      }
-
-      .alternate-title {
-        display: inline-block;
-        color: #b3b3b3;
-      }
-    }
-    .synopsis {
-      color: #e5e5e5;
-      font-size: 18px;
-    }
-    .series-metadata {
-      color: #b3b3b3;
-      font-size: 14px;
-      li {
-        display: inline;
-        &:after {
-          content: " · ";
-        }
-        &:last-child {
-          &:after {
-            content: "";
-          }
-        }
-      }
-    }
-    .genre-tab {
-      @extend .clearfix;
-    }
-    .franchise-show {
-      padding: 0;
-      color: #e5e5e5;
-      .series-poster {
-        width: 100%;
-        border-radius: 3px;
-      }
-    }
-    .info-tabs {
-      @extend .col-xs-12;
-      margin-top: 15px;
-      padding: 0;
-      .slider {
-        @extend .clearfix;
-        margin-bottom: -5px;
-        .btn {
-          background-color: #e5e5e5;
-          border: none;
-          margin-bottom: 10px;
-          float: right;
-        }
-        .favorite-count {
-          color: #b3b3b3;
-        }
-        .report-quote a {
-          color: #e74c3c;
-          opacity: 1;
-        }
-        .badge {
-          background: #838c9a;
-          border-radius: 3px;
-          padding: 7px 5px;
-          margin-right: 10px;
-          margin-bottom: 10px;
-          a {
-            color: #fff;
-            font-weight: normal;
-            padding: 7px 5px;
-            letter-spacing: 1px;
-          }
-        }
-        .studios-header {
-          color: #eaeaea;
-        }
-        .cast {
-          overflow: hidden;
-        }
-        .casting {
-          margin-top: 5px;
-        }
-        .character {
-          background: #fff;
-          padding: 16px 0;
-          padding-right: 5px;
-          color: #222;
-        }
-
-        .voice-actor {
-          background: #fff;
-          padding: 16px 0;
-          padding-left: 5px;
-        }
-
-        img {
-          vertical-align: middle;
-          margin-right: 5px;
-          width: 30px;
-          height: 39px;
-        }
-
-        .va {
-          float: right;
-          img {
-            margin-right: 0px;
-            margin-left: 5px;
-          }
-        }
-
-        .actor {
-          &:before {
-            float: left;
-            width: 0;
-            margin-top: 11px;
-            white-space: nowrap;
-            content: ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . " ". . . . . . . . . . . . . . . . . . . . . . . . . ";
-          }
-        }
-        .actor:before {
-          color:  #838c9a;
-          margin-top: 7px;
-        }
-        .character, .voice-actor {
-          background: #4b5360;
-          color: #fff;
-        }
-        .character {
-          padding-left: 0;
-        }
-      }
-      .tab-pane {
-        padding-top: 15px;
-        border: 1px solid #838c9a;
-        margin-bottom: 15px;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-bottom: 10px;
-        border-radius: 3px;
-        border-top-left-radius: 0;
-
-        .rounded-block {
-          color: #e5e5e5;
-          border: none;
-          border-bottom: 1px solid #838c9a;
-          border-radius: 0;
-          margin-bottom: 15px;
-          padding-bottom: 15px;
-          border-bottom: 1px solid #838c9a;
-          &:first-child {
-            padding-top: 0;
-          }
-          &:last-child {
-            border-bottom: none;
-          }
-        }
-      }
-      .nav-tabs {
-        border-bottom: none;
-        li {
-          &.active > a {
-            background: none;
-            border: none;
-            color: #fff;
-            border: 1px solid #838c9a;
-            &:hover {
-              background: none;
-              border: none;
-              color: #fff;
-              border: 1px solid #838c9a;
-            }
-          }
-          &.open > a {
-            background: #838c9a;
-            color: #fff;
-            border: 1px solid #838c9a;
-            &:hover {
-              background: #838c9a;
-            }
-          }
-          &.open .dropdown-menu {
-            background: #4b5360;
-          }
-          & > a {
-            color: darken(#fff, 30);
-            font-family: "klavika", Helvetica, Arial, sans-serif;
-            &:hover {
-              background: #838c9a;
-              color: #fff;
-              border: 1px solid #838c9a;
-            }
-          }
-        }
-      }
-      li > a {
-        padding: 5px 15px;
-      }
-      hr {
-        margin-top: 10px;
-        border-color: #ddd;
-      }
-    }
-  }
-  .right-column {
-    @extend .col-sm-3;
-
-    background: rgba(47, 52, 59, .7);
-    border-radius: 3px;
-    padding: 0;
-    width: 20%;
-    float: right;
-
-    @media (max-width: 1000px) {
-      width: 25%;
-    }
-
-    @media (max-width: 768px) {
-      width: 100%;
-      padding: 15px;
-    }
-
-    .top-buttons {
+.community-column {
+  width: 31%;
+  padding-left: 15px;
+  float: left;
+}
+.series-panel {
+  @extend .clearfix;
+  @extend .panel;
+  @extend .rounded-panel;
+  padding: 10px;
+  .panel-title {
+    @extend .clearfix;
+    border-bottom: 1px solid #ddd;
+    h4 {
+      margin-top: 0;
+      font-weight: normal;
+      display: inline-block;
       float: left;
-      width: 100%;
-      padding: 15px;
-      .btn-group {
-        width: 100%;
-        .top-button {
-          width: 100%;
-          background: #16a085;
-          padding: 8px 0 6px 0;
-          font-size: 17px;
-
-          &.library-entry {
-          margin-left: 0;
-          }
-        }
-        &.open {
-          .btn {
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-            box-shadow: none;
-          }
-          .dropdown-menu {
-            left: 0;
-            right: 0;
-            border-top-right-radius: 0;
-            border-top-left-radius: 0;
-            margin-top: 0;
-            border: none;
-            background: darken(#16a085, 10);
-            padding: 0;
-            li {
-              a {
-                border-bottom: 1px solid darken(#16a085, 15);
-                padding: 10px;
-                color: #fff;
-                &:hover {
-                  background: lighten(#107360, 5);
-                }
-              }
-              &:last-child {
-                a {
-                  border-bottom: none;
-                }
-              }
-            }
-          }
-        }
-      }
-      .top-button {
-        @extend .btn;
-        @extend .btn-default;
-
-        border: none;
-        background: #2f333b;
-        color: #fff;
-        font-family: $headerFontFamily;
-        font-size: 16px;
-        transition: background .2s ease-in;
-        border-radius: 4px;
-        &:hover {
-          background: darken(#16a085, 5);
-        }
-        &.heart {
-          font-size: 17px;
-          padding-bottom: 1px;
-          padding: 8px 0 6px 0;
-          margin-bottom: 10px;
-          background: #F76F61;
-          border-radius: 4px !important; // This is very hacky
-          &:hover {
-            background: darken(#F76F61, 5);
-          }
-          &.active {
-            background: #95a5a6;
-            color: #2c3e50;
-            box-shadow: none;
-          }
-        }
-        &.active {
-          background: #f77d70;
-          color: #9f554e;
-        }
-      }
-      .left-buttons {
-        display: inline-block;
-        li {
-          display: inline;
-        }
-      }
     }
-    .series-ratings {
-      @extend .clearfix;
-
-      .personal-rating {
-        margin: 0px;
-        border-top: 1px solid #000;
-        padding: 5px 0 5px 0;
-        .icon-container .fa {
-          transition: all .2s ease-in;
-          &:hover {
-            color: #fff;
-          }
-          &.active {
-            &:hover {
-              color: $orange;
-            }
-          }
-        }
+    &.has-button {
+      h4 {
+        margin-top: 10px;
       }
     }
   }
-}
-
-.episode-bar {
-  .grey-title {
-    float: left;
-  }
-  .language-dropdown, .season-dropdown {
+  .btn-group {
     float: right;
-    margin-top: 20px;
-  }
-  .season-dropdown {
-    margin-right: 10px;
   }
 }
 
-.episode-thumbs {
-  @include block-grid(5);
-  .thumbnail {
-    position: relative;
-    top: 0;
-    a {
-      position: relative;
-      display: block;
-    }
-    img {
-      height: 124px;
-      width: 220px;
-    }
-    .description {
-      position: absolute;
-      bottom: 0;
-      background: #333;
-      background: rgba(0,0,0,.5);
-      padding: 5px 10px;
-      width: 100%;
-      color: #fff;
-    }
-    .play-icon {
-      position: absolute;
-      bottom: 50px;
-      width: 100%;
-      text-align: center;
-      .fa-play {
-        background: #333;
-        background: rgba(0,0,0,.7);
-        padding: 14px 12px 12px 16px;
-        color: #fff;
-        border-radius: 50%;
-        opacity: 0;
-        transition: .2s ease-in;
-      }
-    }
-    &:hover {
-      top: -2px;
-      .fa-play {
-        opacity: 1;
-        transition: .2s ease-in;
-      }
-    }
-  }
-}
-
-.episode-list {
-  .thumbnail {
-    margin-bottom: 0;
-  }
-}
-
-.episode-wrapper {
+.poster-container {
+  padding-right: 15px;
   position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 25px;
-  height: 0;
-  margin-top: -30px;
-  margin-bottom: -30px;
-  box-shadow: 0 0 22px 10px rgba(0,0,0,.2);
-  iframe {
+  float: left;
+  width: 30%;
+  @media (max-width: 620px) {
+    display: none;
+  }
+  .series-poster {
+    max-width: 100%;
+    border-radius: 3px;
+  }
+  .trailer-link {
     position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
+    left: 50%;
+    top: 50%;
+    margin-top: -27px;
+    background: #000;
+    padding: 16px 19px;
+    border-radius: 50%;
+    color: #fff;
+    margin-left: -27px;
+    opacity: .6;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.series-info {
+  float: left;
+  width: 70%;
+  @media (max-width: 620px) {
     width: 100%;
   }
-}
-
-.episode-summary {
-  background: #fff;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: 3px;
-  padding: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
-  .episode-title {
-    font-weight: normal;
-    color: #707985;
+  .series-title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: #050609;
+    .alternate-title {
+      color: #BBBBBB;
+    }
+  }
+  .series-metadata {
+    color: #767676;
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-family: $headerFontFamily;
+    li {
+      display: inline;
+      &:after {
+        content: " · ";
+      }
+      &:last-child {
+        &:after {
+          content: "";
+        }
+      }
+    }
+  }
+  .synopsis {
+    max-width: 580px;
+    color: #838a91;
+  }
+  .small-label {
+    float: left;
+    margin: 5px 10px 5px 0;
+    @media (max-width: 960px) {
+      width: 100%;
+    }
+  }
+  .genres, .studios {
+    @extend .clearfix;
+    display: block;
+    li {
+      text-decoration: underline;
+      font-size: 15px;
+      position: relative;
+      color: #838a91;
+    }
   }
 }
+
+.user-actions {
+  border: 2px solid #eee;
+  border-radius: 3px;
+  padding: 15px;
+  display: inline-block;
+  margin-top: 15px;
+  .btn-group {
+    float: left;
+  }
+  .library-button {
+    background: #16a085;
+    padding: 10px 30px;
+    font-size: 17px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    min-width: 200px;
+  }
+  .personal-rating {
+    width: auto;
+    border: none;
+    padding: 0;
+    float: left;
+    margin: 0;
+    margin-left: 15px;
+    position: relative;
+    top: 2px;
+  }
+}
+
+// Cast Panel
+
+.series-cast {
+  .cast-image {
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    text-align: left;
+    .actor, .character {
+      width: 100%;
+      position: absolute;
+      top: -10px;
+    }
+    .character {
+      opacity: 0;
+      transition: .2s ease-in;
+    }
+  }
+  .cast-name {
+    float: left;
+    padding-left: 10px;
+    text-align: left;
+    h4 {
+      margin-bottom: 0;
+    }
+    small {
+      font-family: $headerFontFamily;
+      color: #737373;
+      font-size: 15px;
+    }
+  }
+  .character-wrapper {
+    padding-left: 0;
+    display: inline-block;
+    min-width: 250px;
+    margin-top: 10px;
+    @media (max-width: 1160px) {
+      width: 49%;
+    }
+    @media (max-width: 790px) {
+      width: 100%;
+    }
+
+    &:hover {
+      .character {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.view-more {
+  text-align: center;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+// Quotes
+
+.quote {
+  @extend .clearfix;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.quote-author {
+  float: left;
+  font-weight: 400;
+}
+
+.quote-like-box {
+  float: right;
+  position: relative;
+  font-size: 14px;
+  margin-top: 2px;
+  .like-button {
+    padding-right: 5px;
+    a {
+      color: #979797;
+    }
+    &.active, &:hover {
+      a {
+        color: #ec7c73;
+      }
+    }
+  }
+  .quote-divider {
+    position: absolute;
+    width: 1px;
+    background: #ddd;
+    top: 0;
+    bottom: -10px;
+  }
+  .total-likes {
+    padding-left: 10px;
+    color: #b4b4b4;
+  }
+}
+
 
 /* Condensed header shown on non-index anime pages. */
 .series-header .condensed {
@@ -637,6 +468,82 @@
   img {
     width: 100%;
     height: 150px;
+  }
+}
+
+
+// Review bubbles
+.quote-bubble {
+  width: 100%;
+  max-width: 400px;
+  margin-top: 15px;
+  .review-quote {
+    position: relative;
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    background: #FFFFFF;
+    border-radius: 3px;
+    border: solid #fff 2px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    &:before {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 1px 26px 28px 1px;
+      border-color: transparent rgba(0, 0, 0, 0.02) transparent transparent;
+      display: block;
+      width: 0;
+      z-index: 0;
+      bottom: -29px;
+      left: 39px;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      border-style: solid;
+      border-width: 0 25px 25px 0;
+      border-color: transparent #FFFFFF transparent transparent;
+      display: block;
+      width: 0;
+      z-index: 1;
+      bottom: -25px;
+      left: 40px;
+    }
+  }
+}
+
+.reviewer-avatar {
+  width: 40px;
+}
+
+.quick-rating {
+  float: left;
+  margin-right: 10px;
+  width: 24px;
+  height: 24px;
+  .fa {
+    font-size: 24px;
+    &.fa-smile-o {
+      color: #16a085;
+    }
+    &.fa-frown-o {
+      color: #c0392b;
+    }
+  }
+}
+
+.full-review {
+  font-size: 12px;
+  text-align: right;
+}
+
+.review-source {
+  margin-left: 78px;
+  margin-top: 10px;
+  .reviewer-avatar {
+    float: left;
+    margin-right: 10px;
   }
 }
 
