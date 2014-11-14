@@ -1,4 +1,4 @@
-<div class="series-header">
+{{!-- <div class="series-header">
   <div class="bg-image-wrapper series" {{bind-attr style=coverImageStyle}}></div>
   <div class="container">
     {{#if isIndex}}
@@ -14,6 +14,30 @@
 <div class="container">
   <div class="anime-page-advert">
     {{ad-unit adId="1293413" adClass="257f81e798bd68dd81e60f42838f361f"}}
+  </div>
+</div> --}}
+
+<div class="series-header" {{bind-attr style=coverImageStyle}}>
+  <div class="container">
+    <div class="header-buttons">
+      <span class="edit-button">
+        <a {{action "openModal" "edit-anime" this}}>Edit this page</a>
+      </span>
+      <span class="facebook-share">
+        <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+      </span>
+      <span class="twitter-share">
+        <a class="twitter-share-button" href="https://twitter.com/share"> Tweet </a>
+        <script type="text/javascript">
+        window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+        </script>
+      </span>
+    </div>
+    <div class="featured-quote">
+      {{! Long quote to make sure it works at max size with responsive shit --}}
+      <div class="quote-text">"There’s no such thing as a painless lesson. They just don’t exist. Sacrifices are necessary. You can’t gain anything without losing something first. Although, if you can endure that pain and walk away from it, you’ll find that you now have a heart strong enough to overcome any obstacle. Yeah, a heart made of fullmetal."</div>
+      <div class="quote-author">- Roy Mustang</div>
+    </div>
   </div>
 </div>
 

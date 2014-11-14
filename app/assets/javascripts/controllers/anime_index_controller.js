@@ -12,6 +12,10 @@ HB.AnimeIndexController = Ember.ObjectController.extend(HB.HasCurrentUser, {
       return this.get('model.sortedEpisodes');
     }
   }.property('model.episodes.@each'),
+  
+  libraryEntryExists: function() {
+    return (!Ember.isNone(this.get('model.libraryEntry'))) && (!this.get('model.libraryEntry.isDeleted'));
+  }.property('model.libraryEntry', 'model.libraryEntry.isDeleted'),
 
   // Legacy -- remove after Ember transition is complete.
   newReviewURL: function() {
