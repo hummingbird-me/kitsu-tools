@@ -1,20 +1,20 @@
 HB.FilterAnimeController = Ember.Controller.extend({
   queryParams: ['query'],
 
-  query: "",
-  showPage: 1,
-  isLoading: false,
   animeList: [],
-  selectTime: {},
-  selectGenre: {},
   hasManuallySet: false,
+
+
+  page: 1,
+  query: "",
+  loading: false,
 
   selectedSort: "rating",
   selectedItems: [],
 
 
   encodeQuery: function(){
-    var query  = "?page=" + this.get('showPage');
+    var query  = "?page=" + this.get('page');
         query += "&sort=" + this.get('selectedSort');
 
     this.get('selectedItems').forEach(function(item){
@@ -22,70 +22,44 @@ HB.FilterAnimeController = Ember.Controller.extend({
     });
 
     this.set('query', query);
+    return query;
   },
 
   decodeQuery: function(){
-    if(!this.get('hasManuallySet')){
-      var query = this.get('query'),
-          findg = query.match(/\&g\[\]\=([ A-z]+)/g);
-          findy = query.match(/\&y\[\]\=([0-9A-z]+)/g);
-          tempg = {},
-          tempy = {};
+    var query = this.get('query');
 
-      if(findg && findg.length > 0){
-        $.each(findg, function(key, val){
-          var form = val.substring(5, val.length);
-          tempg[form] = true;
-        });
-      }
-
-      if(findy && findy.length > 0){
-        $.each(findy, function(key, val){
-          var form = val.substring(5, val.length);
-          tempy[form] = true;
-        });
-      }
-
-      this.setProperties({
-        'showPage': parseInt(/\?page\=([0-9]{1,4})/.exec(query)[1]),
-        'selectedSort': /\&sort\=([a-z]{6,7})/.exec(query)[1],
-        'selectGenre': tempg,
-        'selectTime': tempy
-      });
-    }
-  }.observes('query'),
+  },
 
   applyFilter: function(){
-    this.encodeQuery();
+    if (this.get('loading')) {
+      Ember.run.later(this, this.performSearch, 100);
+      return;
+    }
 
-    console.log(this.get('query'));
-    /*
+    var query = this.encodeQuery(),
+        self = this;
 
-    var self = this,
-        requrl = decodeURIComponent(this.get('query'));
-        requrl = requrl.replace(/\[/,'%5B');
-        requrl = requrl.replace(/\]/,'%5D');
-        requrl += "&new_filter=true" // TEMPORARY!!
-        // ^ Hacky solution to allow us to store
-        //   query as an ember query param
-
-    this.set('isLoading', true);
-    $.getJSON('/anime/filter.json' + requrl, function(payload){
-      self.set('isLoading', false);
+    this.set('loading', true);
+    ic.ajax({
+      url: '/anime/filter.json' + query,
+      type: "GET"
+    }).then(function(payload) {
       self.store.pushPayload(payload);
-      self.set('animeList', payload.anime);
+      self.setProperties({
+        'animeList': payload.anime,
+        'loading': false
+      });
     });
-    */
   }.observes('selectedItems.length'),
 
 
   actions: {
     switchPage: function(mod){
-      var newPage = this.get('showPage') + mod;
+      var newPage = this.get('page') + mod;
       if(newPage < 1) return; 
       // Add check for max page
 
-      this.set('showPage', newPage);
+      this.set('page', newPage);
       this.send('applyFilter');
     },
 
