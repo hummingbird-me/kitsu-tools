@@ -1,16 +1,20 @@
 HB.FilterAnimeController = Ember.Controller.extend({
   queryParams: ['query'],
 
-  animeList: [],
-  hasManuallySet: false,
 
+  filterUserCount: [],
+  filterStudios: [],
+  filterRating: [],
+  filterGenres: [],
+  filterTimes: [],
+
+  selectedSort: "rating",
+  selectedItems: [],
+  filterResults: [],
 
   page: 1,
   query: "",
   loading: false,
-
-  selectedSort: "rating",
-  selectedItems: [],
 
 
   encodeQuery: function(){
@@ -26,9 +30,31 @@ HB.FilterAnimeController = Ember.Controller.extend({
   },
 
   decodeQuery: function(){
-    var query = this.get('query');
+    var query = this.get('query'),
+        self = this,
+        keymap = {
+          'page': { single: true,  name: 'page' },
+          'sort': { single: true,  name: 'selectedSort' },
+          'g':    { single: false, name: 'filterGenres' },
+          'y':    { single: false, name: 'filterTimes' }
+        };
 
-  },
+    query = query.substring(1);
+    query.split('&').forEach(function(param){
+      var data = param.split('='),
+          ckey = keymap[data[0].replace('[]', '')];
+
+      if(ckey != undefined) {
+        if(ckey.single) self.set(ckey.name, data[1]);
+        else {
+          var item = self.get(ckey.name).findBy('fval', data[1]);
+          if(item == undefined) return;
+          item.set('selected', true);
+          self.get('selectedItems').pushObject(item);
+        } 
+      }
+    });
+  }.observes('filterGenres'), // <- Async loaded selections
 
   applyFilter: function(){
     if (this.get('loading')) {
@@ -39,6 +65,7 @@ HB.FilterAnimeController = Ember.Controller.extend({
     var query = this.encodeQuery(),
         self = this;
 
+    if((query.match(/\&/g) || []).length < 2) return;
     query += "&new_filter=true";
 
     this.set('loading', true);
@@ -48,7 +75,7 @@ HB.FilterAnimeController = Ember.Controller.extend({
     }).then(function(payload) {
       self.store.pushPayload(payload);
       self.setProperties({
-        'animeList': payload.anime,
+        'filterResults': payload.anime,
         'loading': false
       });
     });

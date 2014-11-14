@@ -37,9 +37,14 @@ HB.FilterAnimeRoute = Ember.Route.extend({
         { name: "Most Popular", value: "popular" },
         { name: "Newest", value: "newest" },
         { name: "Oldest", value: "oldest" }
-      ]
+      ],
+
+      manuallyTriggered: false
     });
 
+    if(controller.get('query.length') > 10){
+      controller.decodeQuery();
+    }
   }
 
 });
