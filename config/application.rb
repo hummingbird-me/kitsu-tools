@@ -70,6 +70,9 @@ module Hummingbird
     # Add LogBeforeTimeout middleware
     config.middleware.use LogBeforeTimeout
 
+    # Add Rack::Attack
+    config.middleware.use Rack::Attack
+
     # Get rid of Rack::Lock
     config.middleware.delete Rack::Lock
 

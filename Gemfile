@@ -133,3 +133,5 @@ gem 'indexable'
 gem 'sitemap_generator'
 
 gem 'message_bus', github: 'vikhyat/message_bus'
+
+gem 'rack-attack'
