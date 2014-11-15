@@ -607,6 +607,7 @@ html { overflow-y: auto; }
 
 // Footer 
 .footer-shadow {
+  @extend .clearfix;
   background: #E6E6E6;
   width: 100%;
   z-index: 3;
@@ -642,26 +643,26 @@ html { overflow-y: auto; }
       }
     }
   }
-  .footer-logo {
-    position: absolute;
-    top: 5px;
-    left: 50%;
-    height: 200px;
-    width: 200px;
-    margin-left: -100px;
-    font-size: 24px;
-    color: #ccc;
-    background: url("https://hummingbird.me/footer-logo.png");
-    background-size: cover;
-    opacity: .5;
-    transition: .2s ease-in;
-    &:hover {
-      opacity: 1;
-    }
-  }
+  // .footer-logo {
+  //   position: absolute;
+  //   top: 5px;
+  //   left: 50%;
+  //   height: 200px;
+  //   width: 200px;
+  //   margin-left: -100px;
+  //   font-size: 24px;
+  //   color: #ccc;
+  //   background: url("https://hummingbird.me/footer-logo.png");
+  //   background-size: cover;
+  //   opacity: .5;
+  //   transition: .2s ease-in;
+  //   &:hover {
+  //     opacity: 1;
+  //   }
+  // }
   .right {
     float: right;
-    top: 60px;
+    top: 58px;
   }
 }
 
@@ -698,7 +699,7 @@ html { overflow-y: auto; }
 }
 
 .hb-luvs {
-  background: url(https://hummingbird.me/footer-logo.png);
+  background: url(http://cl.ly/image/0z2d3w0q462x/footer-logo.png);
   background-size: cover;
   width: 30px;
   height: 30px;
