@@ -4,12 +4,15 @@
       <ul class="site-footer-links right">
         <li>
           <span class="hb-luvs"></span>
-          <span class="footer-heart">
-            <i class="fa fa-heart"></i>
-          </span>
-          <span class="footer-avatar">
-            {{avatar currentUser "thumb_small"}}
-          </span>
+          {{#if currentUser.isSignedIn}}
+            <span class="footer-heart">
+              <i class="fa fa-heart"></i>
+            </span>
+
+            <span class="footer-avatar">
+              {{avatar currentUser "thumb_small"}}
+            </span>
+          {{/if}}
         </li>
           
       </ul>
