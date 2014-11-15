@@ -89,6 +89,17 @@
   }
 }
 
+.import-panel {
+  width: 100%;
+  background: #eee;
+  border-radius: 3px;
+  padding: 10px;
+  .import-help {
+    float: right;
+    color: #8E8E8E;
+  }
+}
+
 
 // Step 1 - Start
 .moe-wrapper {
