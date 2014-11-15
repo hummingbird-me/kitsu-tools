@@ -4,6 +4,9 @@ HB.ApplicationRoute = Ember.Route.extend({
     MessageBus.subscribe("/site_update", function() {
       self.send('openModal', 'site-update');
     });
+    MessageBus.subscribe('/notifications', function (message) {
+      self.store.pushPayload(message);
+    });
   },
 
   actions: {

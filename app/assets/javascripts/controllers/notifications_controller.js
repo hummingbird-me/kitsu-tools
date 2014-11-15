@@ -1,4 +1,4 @@
 HB.NotificationsController = Ember.ArrayController.extend({
-  sortProperties: ['created_at'],
+  sortProperties: ['createdAt'],
   sortAscending: false
 });
