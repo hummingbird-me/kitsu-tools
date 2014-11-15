@@ -1,0 +1,25 @@
+.pending-edit {
+  .approve, .reject { margin: { left: 10px; right: 10px; }; }
+  .approve { color: green; }
+  .reject { color: red; }
+}
+
+.diff {
+  .diff-type, .diff-body { margin-bottom: 10px; }
+  .diff-body {
+    margin-left: 20px;
+    ins, del { text-decoration: none; }
+    ins { background-color: rgba(0, 255, 0, 0.4); }
+    del { background-color: rgba(255, 0, 0, 0.4); }
+
+    .poster_image {
+      width: 200px;
+      height: 300px;
+    }
+
+    .cover_image {
+      width: 400px;
+      height: 200px;
+    }
+  }
+}

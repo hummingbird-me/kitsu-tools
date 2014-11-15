@@ -7,7 +7,7 @@ module Versionable
     version = Version.new(
       item: self,
       user: author,
-      object: self.attributes.merge(object),
+      object: object,
       object_changes: self.changes
     )
     version.state = :pending
@@ -15,7 +15,7 @@ module Versionable
   end
 
   def update_from_pending(version)
-    attrs = self.attributes
+    attrs = self.attributes.except(:id)
     self.update_attributes(version.object)
 
     version.object = attrs
