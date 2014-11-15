@@ -1,12 +1,24 @@
 // Global Onboarding
 .onboarding-nav {
   display: block !important;
+  .navbar-header {
+    @media (max-width: 800px) {
+      float: left;
+    }
+  }
   .container {
     width: 800px;
     padding: 0;
+    @media (max-width: 800px) {
+      width: 100%;
+      padding: 0 10px;
+    }
   }
   .nav-steps {
     float: right;
+    @media (max-width: 800px) {
+      padding-right: 15px;
+    }
     h5 {
       color: #fff;
       margin: 0;
@@ -22,6 +34,10 @@
   animation-delay: .5s;
   width: 800px;
   margin: 100px auto 30px auto;
+  @media (max-width: 800px) {
+    width: 100%;
+    padding: 0 10px;
+  }
   .panel {
     overflow: hidden;
     margin-bottom: 0;
@@ -37,6 +53,9 @@
   text-align: center;
   color: #5A5656;
   z-index: -1;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
   .facebook-button {
     display: inline-block;
     margin-left: 10px;
@@ -94,6 +113,9 @@
   background: #eee;
   border-radius: 3px;
   padding: 10px;
+  @media (max-width: 768px) {
+    display: none;
+  }
   .import-help {
     float: right;
     color: #8E8E8E;
@@ -102,9 +124,20 @@
 
 
 // Step 1 - Start
+.start-wrapper {
+  padding-left: 35px; 
+  padding-right: 0;
+  margin-top: 20px;
+  @media (max-width: 800px) {
+    padding: 0 20px;
+  }
+}
 .moe-wrapper {
   position: relative;
   bottom: -15px;
+  @media (max-width: 800px) {
+    display: none;
+  }
   .onboarding-moe {
     @extend .animated;
     @extend .fadeInRight;
@@ -145,6 +178,9 @@
     font-size: 45px;
     color: #A0A0A0;
     transition: .2s ease-in;
+    @media (max-width: 800px) {
+      width: 100%;
+    }
     &:hover {
       color: #514C4C;
     }
@@ -162,6 +198,9 @@
     @extend .animated;
     @extend .fadeInLeft;
     float: left;
+    @media (max-width: 800px) {
+      margin-bottom: 20px;
+    }
   }
 
   .rating-divider {
@@ -172,6 +211,9 @@
     color: #ADA9A9;
     position: relative;
     top: 25px;
+    @media (max-width: 800px) {
+      display: none;
+    }
   }
 
   .advanced-rating {
@@ -189,8 +231,19 @@
   padding: 0 10px;
 }
 .genre-panel {
+  @extend .col-sm-4;
+  @extend .col-xs-3;
   padding: 5px;
   float: left !important;
+  @media (max-width: 515px) {
+    width: 33.3%;
+  }
+  @media (max-width: 400px) {
+    width: 50%;
+  }
+  @media (max-width: 360px) {
+    width: 100%;
+  }
 }
 
 .genre {
@@ -221,6 +274,12 @@
   .block-grid-item {
     padding: 10px 15px;
     text-align: center;
+    @media(max-width: 660px) {
+      width: 33.3%;
+    }
+    @media (max-width: 460px) {
+      width: 50%;
+    }
   }
   .thumbnail {
     padding: 0;
@@ -295,10 +354,16 @@
 // Step 5 - Finish
 .featured-user-wrapper {
   @extend .clearfix;
-  margin-top: 80px;
   padding: 0 5px;
   .follow-panel-wrapper {
     width: 33.3333%;
+    float: left;
+    @media (max-width: 620px) {
+      width: 50%;
+    }
+    @media (max-width: 415px) {
+      width: 100%;
+    }
     .follow-panel {
       box-shadow: none;
       border: 1px solid #EFEFEF;

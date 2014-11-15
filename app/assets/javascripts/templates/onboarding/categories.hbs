@@ -19,7 +19,7 @@
     {{loading-indicator}}
   {{else}}
     {{#each genres}}
-      <div class="col-sm-3 genre-panel">
+      <div class="genre-panel">
         <div {{bind-attr class=":genre favorite:active"}} {{action "toggleFavorite" this}}>
           <span>{{model.name}}</span>
         </div>
