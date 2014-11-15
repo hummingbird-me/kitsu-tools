@@ -13,13 +13,17 @@
     del { background-color: rgba(255, 0, 0, 0.4); }
 
     .poster_image {
+      &:first-child { margin-right: 10px; }
       width: 200px;
       height: 300px;
     }
 
     .cover_image {
+      &:first-child { margin-right: 10px; }
       width: 400px;
       height: 200px;
     }
+
+    iframe:first-child { margin-right: 10px; }
   }
 }

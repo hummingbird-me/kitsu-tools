@@ -27,13 +27,26 @@ HB.EditsShowController = Ember.Controller.extend({
       // show attachment previews
       if (this.get('attachmentProps').contains(key)) {
         var stripped = key.substr(0, key.indexOf('_updated_at'));
-        var code = '<img class="' + stripped + '" src="' + this.get('model.object')[stripped] + '"/>';
+        var code = '';
+        // include previous attachment if it exists
+        if (objectChanges[key][0] !== null) {
+          code += '<img class="' + stripped + '" src="' +
+            this.get('model.item').get(stripped.camelize()) + '"/>';
+        }
+
+        code += '<img class="' + stripped + '" src="' + this.get('model.object')[stripped] + '"/>';
         html.push([stripped, new Handlebars.SafeString(code)]);
       }
 
       // embed youtube video, if exists
       if (key === 'youtube_video_id') {
-        html.push([key, new Handlebars.SafeString(this.get('youtubeEmbed'))]);
+        // include previous video if it exists
+        code = '';
+        if (objectChanges[key][0] !== null) {
+          code += this.youtubeEmbed(this.get('model.item.youtubeVideoId'));
+        }
+        code += this.youtubeEmbed(this.get('model.object')['youtube_video_id']);
+        html.push([key, new Handlebars.SafeString(code)]);
       }
 
       // skip ignored properties
@@ -50,11 +63,11 @@ HB.EditsShowController = Ember.Controller.extend({
     return html;
   }.property('model.objectChanges'),
 
-  youtubeEmbed: function() {
+  youtubeEmbed: function(id) {
     return "<iframe width='400' height='300' frameborder='0'" +
       "class='autoembed' allowfullscreen src='https://youtube.com/embed/" +
-      this.get('model.object')['youtube_video_id'] + "'></iframe>";
-  }.property(),
+      id + "'></iframe>";
+  },
 
   actions: {
     approveEdit: function() {
