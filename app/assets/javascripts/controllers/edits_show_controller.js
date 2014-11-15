@@ -71,19 +71,29 @@ HB.EditsShowController = Ember.Controller.extend({
 
   actions: {
     approveEdit: function() {
-      this.get('model').save().then(function() {
-        this.transitionToRoute('edits.index');
-        Messenger().post('Edit was approved!');
-      }.bind(this));
+      Messenger().expectPromise(function() {
+        return this.get('model').save();
+      }.bind(this), {
+        progressMessage: 'Contacting server...',
+        successMessage: function() {
+          this.transitionToRoute('edits.index');
+          return 'Edit was approved!';
+        }.bind(this)
+      });
     },
 
     rejectEdit: function() {
       var res = window.confirm("Are you sure you want to reject this edit?");
       if (!res) { return; }
-      this.get('model').destroyRecord().then(function() {
-        this.transitionToRoute('edits.index');
-        Messenger().post('Edit was rejected.');
-      }.bind(this));
+      Messenger().expectPromise(function() {
+        return this.get('model').destroyRecord();
+      }.bind(this), {
+        progressMessage: 'Contacting server...',
+        successMessage: function() {
+          this.transitionToRoute('edits.index');
+          return 'Edit was rejected.';
+        }.bind(this)
+      });
     }
   }
 });
