@@ -7,6 +7,8 @@ HB.EditsShowController = Ember.Controller.extend({
     'youtube_video_id'
   ],
 
+  // use `updated_at` here as `poster_image`, and `cover_image`
+  // are methods defined by paperclip, and not attributes on the model
   attachmentProps: [
     'poster_image_updated_at',
     'cover_image_updated_at'
