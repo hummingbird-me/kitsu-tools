@@ -23,6 +23,14 @@
           </div>
         </div>
         <div class="panel-body diff">
+          {{#if outdated}}
+            <div class="alert alert-danger">
+              {{#link-to 'anime' model.item.id}}
+                {{model.item.displayTitle}}
+              {{/link-to}}
+              has been updated since this edit was created.
+            </div>
+          {{/if}}
           <dl>
             {{#each changes}}
               <dt class="diff-type">{{this.[0]}}</dt>

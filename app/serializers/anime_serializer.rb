@@ -15,7 +15,8 @@ class AnimeSerializer < ActiveModel::Serializer
              :started_airing,
              :started_airing_date_known,
              :finished_airing,
-             :genres
+             :genres,
+             :updated_at
 
   def id
     object.slug

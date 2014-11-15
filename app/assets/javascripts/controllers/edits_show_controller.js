@@ -10,6 +10,12 @@ HB.EditsShowController = Ember.Controller.extend({
     'cover_image_updated_at'
   ],
 
+  outdated: function() {
+    var a = new Date(this.get('model.createdAt'));
+    var b = new Date(this.get('model.item.updatedAt'));
+    return a < b;
+  }.property('model.createdAt', 'model.item.updatedAt'),
+
   changes: function() {
     var html = [];
     var objectChanges = this.get('model.objectChanges');
