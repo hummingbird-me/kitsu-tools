@@ -163,6 +163,7 @@ Hummingbird::Application.routes.draw do
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'
     mount PgHero::Engine => '/kotodama/pghero'
+    mount Kibana::Rack::Web => '/kotodama/kibana'
   end
 
   mount API => '/'

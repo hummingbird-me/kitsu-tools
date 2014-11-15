@@ -127,6 +127,7 @@ gem 'image_optim', '~> 0.13', require: false
 
 # Metrics
 gem 'mixpanel'
+gem 'kibana-rack'
 
 # SEO
 gem 'indexable'
