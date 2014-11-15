@@ -22,7 +22,7 @@
                 <tr>
                   <td>
                     {{#link-to 'anime' item.id}}
-                      {{item.id}}
+                      {{item.displayTitle}}
                     {{/link-to}}
                   </td>
                   <td>
@@ -30,7 +30,7 @@
                       {{user.username}}
                     {{/link-to}}
                   </td>
-                  <td>{{createdAt}}</td>
+                  <td>{{format-time createdAt 'MMM Do YYYY, h:mm:ss a'}}</td>
                   <td>
                     {{#link-to 'edits.show' id}}
                       <i class="fa fa-list"></i> View
