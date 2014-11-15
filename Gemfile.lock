@@ -287,6 +287,8 @@ GEM
     rack (1.5.2)
     rack-accept (0.4.5)
       rack (>= 0.4)
+    rack-attack (4.2.0)
+      rack
     rack-cors (0.2.9)
     rack-livereload (0.3.15)
       rack
@@ -494,6 +496,7 @@ DEPENDENCIES
   pg_search (~> 0.7)
   pghero
   qunit-rails
+  rack-attack
   rack-cors
   rack-livereload
   rack-mini-profiler
