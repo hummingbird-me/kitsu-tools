@@ -1,14 +1,16 @@
 {{render "header"}}
+<div class="footer-shadow">
+  {{#unless currentUser.isSignedIn}}
+  <div class="signup-cta hidden-xs">
+    <p>
+      Hummingbird is the easiest way to track, share and discover new anime.
+      <small>Join now, for free!</small>
+      <a class="btn btn-xs" href="/users/sign_up">Get Started</a>
+    </p>
+  </div>
+  {{/unless}}
 
-{{#unless currentUser.isSignedIn}}
-<div class="signup-cta hidden-xs">
-  <p>
-    Hummingbird is the easiest way to track, share and discover new anime.
-    <small>Join now, for free!</small>
-    <a class="btn btn-xs" href="/users/sign_up">Get Started</a>
-  </p>
+  {{outlet}}
 </div>
-{{/unless}}
-
-{{outlet}}
+{{render "footer"}}
 {{outlet modal}}

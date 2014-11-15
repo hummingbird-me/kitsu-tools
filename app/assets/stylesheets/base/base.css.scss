@@ -3,6 +3,7 @@ body {
   font-family: $bodyFontFamily;
   font-size: 16px;
   margin-top: 48px;
+  overflow: hidden;
   @media (max-width: 768px) {
     margin-top: 101px;
   }

@@ -1,4 +1,5 @@
 @import 'mixins/block-grid';
+@import 'modules/tooltip';
 
 
 .series-header {
@@ -73,13 +74,20 @@
 .series-column {
   width: 69%;
   float: left;
+  @media (max-width: 860px) {
+    width: 100%;
+  }
 }
 
 .community-column {
   width: 31%;
   padding-left: 15px;
   float: left;
+  @media (max-width: 860px) {
+    width: 100%;
+  }
 }
+
 .series-panel {
   @extend .clearfix;
   @extend .panel;
@@ -140,31 +148,6 @@
   @media (max-width: 620px) {
     width: 100%;
   }
-  .series-title {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    color: #050609;
-    .alternate-title {
-      color: #BBBBBB;
-    }
-  }
-  .series-metadata {
-    color: #767676;
-    font-size: 14px;
-    margin-bottom: 5px;
-    font-family: $headerFontFamily;
-    li {
-      display: inline;
-      &:after {
-        content: " · ";
-      }
-      &:last-child {
-        &:after {
-          content: "";
-        }
-      }
-    }
-  }
   .synopsis {
     max-width: 580px;
     color: #838a91;
@@ -184,6 +167,33 @@
       font-size: 15px;
       position: relative;
       color: #838a91;
+    }
+  }
+}
+
+.series-title {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: #050609;
+  .alternate-title {
+    color: #BBBBBB;
+  }
+}
+
+.series-metadata {
+  color: #767676;
+  font-size: 14px;
+  margin-bottom: 5px;
+  font-family: $headerFontFamily;
+  li {
+    display: inline;
+    &:after {
+      content: " · ";
+    }
+    &:last-child {
+      &:after {
+        content: "";
+      }
     }
   }
 }
@@ -274,7 +284,7 @@
 .view-more {
   text-align: center;
   font-size: 12px;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 // Quotes
@@ -317,6 +327,31 @@
   .total-likes {
     padding-left: 10px;
     color: #b4b4b4;
+  }
+}
+
+// Franchises
+.franchise-show {
+  @extend .clearfix;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  &:last-child {
+    margin-bottom: 10px;
+  }
+  .franchise-poster {
+    width: 12%;
+    float: left;
+    padding: 0;
+    img {
+      max-width: 100%;
+      border-radius: 3px;
+    }
+  }
+  .franchise-info {
+    width: 88%;
+    padding-left: 10px;
+    float: left;
   }
 }
 
@@ -544,6 +579,11 @@
   .reviewer-avatar {
     float: left;
     margin-right: 10px;
+  }
+  .reviewer-name {
+    color: #7f7f7f;
+    font-weight: 400;
+    line-height: 38px;
   }
 }
 

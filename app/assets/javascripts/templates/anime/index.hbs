@@ -72,6 +72,7 @@
 
 
 <div class="container">
+  <!-- Left side start -->
   <div class="series-column">
     <div class="series-panel">
 
@@ -296,13 +297,101 @@
       <div class="view-more">
         <a href="#">View More Quotes</a>
       </div>
-
-
     </div>
-  </div>
+    <!-- quotes end -->
 
-  <!-- Left Side of Page -->
+
+    <div class="series-panel">
+      <div class="panel-title">
+        <h4>Franchise</h4>
+      </div>
+      <div class="franchise-show">
+        <div class="franchise-poster">
+          <img class="series-poster" src="https://static.hummingbird.me/anime/poster_images/000/007/442/large/7442.jpg?1408461368" data-bindattr-1303="1303">
+        </div>
+        <div class="franchise-info">
+          <h4 class="series-title">
+            <a id="ember1304" class="ember-view active" href="/anime/attack-on-titan">Attack on Titan</a>
+          </h4>
+          <ul class="series-metadata">
+            <li>TV</li>
+            <li title="Violence, Profanity" data-bindattr-1306="1306">R17+</li>
+            <li>
+              25 episodes
+            </li>
+            <li>
+                24
+              min
+            </li>
+            <li>Aired from 7 Apr 2013 to 28 Sep 2013</li>
+          </ul>
+          <div>Several hundred years ago, humans were nearly exterminated by giants. Giants are typically several stories tall, seem to have no intelligence, devour human beings and, worst of all, seem to do it for…
+            <a data-ember-action="1314" href="javascript:void(0)" style="font-size: 0.8em">
+                show more
+            </a>
+          </div>
+        </div>
+      </div>  
+
+      <div class="franchise-show">
+        <div class="franchise-poster">
+          <img class="series-poster" src="https://static.hummingbird.me/anime/poster_images/000/007/442/large/7442.jpg?1408461368" data-bindattr-1303="1303">
+        </div>
+        <div class="franchise-info">
+          <h4 class="series-title">
+            <a id="ember1304" class="ember-view active" href="/anime/attack-on-titan">Attack on Titan</a>
+          </h4>
+          <ul class="series-metadata">
+            <li>TV</li>
+            <li title="Violence, Profanity" data-bindattr-1306="1306">R17+</li>
+            <li>
+              25 episodes
+            </li>
+            <li>
+                24
+              min
+            </li>
+            <li>Aired from 7 Apr 2013 to 28 Sep 2013</li>
+          </ul>
+          <div>Several hundred years ago, humans were nearly exterminated by giants. Giants are typically several stories tall, seem to have no intelligence, devour human beings and, worst of all, seem to do it for…
+            <a data-ember-action="1314" href="javascript:void(0)" style="font-size: 0.8em">
+                show more
+            </a>
+          </div>
+        </div>
+      </div>  
+  
+
+      <div class="view-more">
+        <a href="#">View More in Franchise</a>
+      </div>
+    </div>
+    <!-- Franchise end -->
+  </div>
+  <!-- Left side End -->
+
+  <!-- Right Side Start -->
   <div class="community-column">
+    <div class="hb-score">
+      <h3>Hummingbird Score: <span class="highlight">4.67</span></h3>
+    </div>
+    <div class="histogram">
+      {{community-rating communityRatings}}
+      <div class="rating-legend">
+        <span class="lowest-rating">
+          <i class="fa fa-star-half-o"></i>
+          <i class="fa fa-long-arrow-right"></i>
+        </span>
+        <span class="highest-rating">
+          <i class="fa fa-long-arrow-left"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </span>
+      </div>
+    </div>
     <div class="reviews">
       {{#each trendingReviews}}
         {{partial "media/review_summary"}}

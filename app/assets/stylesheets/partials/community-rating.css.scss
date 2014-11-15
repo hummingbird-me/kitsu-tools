@@ -60,11 +60,6 @@
   }
 }
 
-.affiliate-button {
-  @media (max-width: 768px) {
-    padding: 10px;
-  }
-}
 
 .community-rating {
   @extend .col-xs-12;
@@ -78,28 +73,32 @@
 
 .community-rating-wrapper {
   position: relative;
-  height: 40px;
+  height: 70px;
   text-align: center;
 
   li {
     display: inline-block;
-    margin-right: 4px;
-    @media (min-width: 768px) and (max-width: 1200px) {
-      margin-right: 3px;
+    padding-right: 4px;
+    width: 10%;
+    position: relative;
+    &:last-child {
+      padding-right: 0;
+    }
+    &:hover {
+      .rating-value {
+        background: #16a085;
+      }
     }
   }
 }
 
 .rating-column {
   bottom: 0;
-  width: 14px;
-  height: 40px;
-  background: lighten(#2f343b, 10);
+  height: 70px;
+  position: inherit;
+  background: #CFCFCF;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  @media (min-width: 768px) and (max-width: 1200px) {
-    width: 10px;
-  }
 
   &.last {
     margin-right: 0;
@@ -109,11 +108,34 @@
 .rating-value {
   position: absolute;
   bottom: 0;
-  width: 14px;
-  background: lighten(#4b5360, 15);
+  width: 100%;
+  background: #737373;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
-  @media (min-width: 768px) and (max-width: 1200px) {
-    width: 10px;
+  transition: .2s ease-in;
+}
+
+.hb-score {
+  text-align: center;
+  border-bottom: 1px solid #C0C0C0;
+  margin-bottom: 15px;
+  color: #737373;
+  h3 {
+    font-weight: normal;
+    margin-top: 0;
+  }
+  .highlight {
+    color: #16a085;
+    font-weight: 400;
+  }
+}
+
+.rating-legend {
+  .lowest-rating, .highest-rating {
+    color: #8e8e8e;
+    font-size: 13px;
+  }
+  .highest-rating {
+    float: right;
   }
 }
