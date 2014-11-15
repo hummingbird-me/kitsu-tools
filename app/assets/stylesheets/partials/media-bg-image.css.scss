@@ -9,10 +9,12 @@
 .bg-image-wrapper {
   &.login {
     width: 100%;
-    background: image-url("tsundere.jpg");
+    height: 100vh;
+    background: image-url("tsundere.png");
     min-height: 625px;
     background-size: cover;
     padding-top: 150px;
+    
     .account-panel {
       margin-top: 150px;
     }
