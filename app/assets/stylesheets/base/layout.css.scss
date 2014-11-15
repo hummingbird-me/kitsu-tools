@@ -605,6 +605,108 @@ html { overflow-y: auto; }
   }
 }
 
+// Footer 
+.footer-shadow {
+  background: #E6E6E6;
+  width: 100%;
+  z-index: 3;
+  position: relative;
+  box-shadow: 0 0 25px 10px rgba(20,20,30,0.2);
+}
+
+.global-footer {
+  background: #4B5360;
+  width: 100%;
+  clear: both;
+  padding-bottom: 80px;
+  .footer-contents {
+    padding-bottom: 80px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  .site-footer-links {
+    margin: 0;
+    list-style: none;
+    color: #9aa4b4;
+    font-size: 14px;
+    position: relative;
+    top: 74px;
+    li {
+      display: inline-block;
+      line-height: 16px;
+      a {
+        color: #cfd6e2;
+      }
+    }
+  }
+  .footer-logo {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    height: 200px;
+    width: 200px;
+    margin-left: -100px;
+    font-size: 24px;
+    color: #ccc;
+    background: url("https://hummingbird.me/footer-logo.png");
+    background-size: cover;
+    opacity: .5;
+    transition: .2s ease-in;
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .right {
+    float: right;
+    top: 60px;
+  }
+}
+
+.footer-avatar {
+  img {
+    width: 30px;
+    border-radius: 50%;
+  }
+}
+.footer-heart {
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative;
+  .fa-heart {
+    color: #dc6767;
+    position: absolute;
+    padding: 0px 5px;
+    top: 0px;
+    left: -6px;
+    -moz-animation-duration: 3s;
+    -webkit-animation-duration: 2s;
+    -moz-animation-name: wave;
+    -webkit-animation-name: wave;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-font-smoothing: antialiased;
+    
+    /* Boost hardware acceleration where possible */
+    -webkit-transform: scale(1) translate3d(0px,0px,0px);
+    -moz-transform: scale(1) translate3d(0px,0px,0px);
+    -o-transform: scale(1) translate3d(0px,0px,0px);
+    transform: scale(1) translate3d(0px,0px,0px);
+  }
+}
+
+.hb-luvs {
+  background: url(https://hummingbird.me/footer-logo.png);
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 9px;
+  display: inline-block;
+}
+
 .demo-ad {
   width: 160px;
   height: 600px;
@@ -744,6 +846,48 @@ html { overflow-y: auto; }
   90% { transform: translate(-1px, -2px) rotate(-1deg); }
   100% { transform: translate(2px, 1px) rotate(0deg); }
 }
+
+@-moz-keyframes wave {
+    from {
+      font-size: 20px;
+    }
+    10%{
+      font-size: 22px;
+    }
+    15%{
+      font-size: 20px;
+    }
+    20% {
+      font-size: 24px;
+    }
+    50% {
+      font-size: 20px;
+    }
+    to {
+      font-size: 20px;
+    }
+  }
+
+  @-webkit-keyframes wave {
+    from {
+      font-size: 20px;
+    }
+    10%{
+      font-size: 22px;
+    }
+    15%{
+      font-size: 20px;
+    }
+    20% {
+      font-size: 24px;
+    }
+    50% {
+      font-size: 20px;
+    }
+    to {
+      font-size: 20px;
+    }
+  }
 
 .shake {
   animation-name: spaceboots;

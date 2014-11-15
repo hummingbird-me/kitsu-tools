@@ -15,9 +15,11 @@ Ember.Handlebars.registerBoundHelper('community-rating', function(ratings) {
   for (i = 0; i < ratings.length; i++) {
     var rating = ratings[i];
     var height = rating * 100.0 / maxRating;
-    html += '<li class="rating-column" title="' + rating + ' users rated ' + currentRatingValue + '">';
+    html += '<li title="' + rating + ' users rated ' + currentRatingValue + '" data-tooltip="' + rating + ' users rated ' + currentRatingValue + '">';
     currentRatingValue += 0.5;
+    html += '<div class="rating-column" >';
     html += '<div class="rating-value" style="height: ' + height + '%;"></div>';
+    html += '</div>';
     html += '</li>';
   }
   html += '</ul>';

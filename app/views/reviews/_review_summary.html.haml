@@ -8,20 +8,3 @@
 /         = (review.summary || truncate(strip_tags(review.content), length: 500, omission: '...')).gsub("&nbsp;", " ")
 /         %br
 /         = link_to "Read more", anime_review_path(review.anime, review)
-
-
-.quote-bubble.pull-left.cl
-  .review-quote
-    .media
-      .quick-rating
-        %span.media-img.icon.small.rotten
-      .media-body
-        %p= (review.summary || truncate(strip_tags(review.content), length: 500, omission: '...')).gsub("&nbsp;", " ")
-        .smaller
-          = link_to "Read more", anime_review_path(review.anime, review)
-  .review-source.media
-    .reviewer-avatar
-      = link_to image_tag(review.anime.poster_image.url(:medium)), anime_review_path(review.anime, review)
-    .media-body
-      %div
-        %a.unstyled.articleLink{:href => "/critic/gary-goldstein/"} Gary Goldstein
