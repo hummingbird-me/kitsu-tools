@@ -7,7 +7,7 @@ class AuthController < ApplicationController
   def sign_in_action
     return error! "Missing parameters", 400 unless [:email, :password].none? { |x| params[x].blank? }
 
-    key = params[:email].include?('@') ? :email : :username
+    key = params[:email].include?('@') ? :email : :name
     user = User.where(key => params[:email]).first
 
     if user.valid_password?(params[:password])
