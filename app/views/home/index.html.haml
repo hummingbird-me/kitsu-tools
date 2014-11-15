@@ -17,10 +17,10 @@
         .large-7.columns
           %a.button.padded.facebook-guest{:href => omniauth_authorize_path(User, :facebook)} <i class="fa fa-facebook-square"></i> Sign up with Facebook
         .large-5.columns
-          %a.button.email-button.padded.secondary{:href => new_registration_path(User)} Sign up with email
+          %a.button.email-button.padded.secondary{:href => "/sign-up"} Sign up with email
       %p.existing-user.animated.fadeInDown 
         Already have an account? 
-        = link_to "Log in now", new_session_path(resource_name)
+        %a{:href => "/sign-in"} Log in now
       .social-buttons.animated.fadeInSlower
         .fb-like{"data-href" => "https://www.facebook.com/pages/Hummingbird/460188747373182", "data-layout" => "button_count", "data-send" => "false", "data-show-faces" => "false", "data-width" => "450"}
         %a.twitter-share-button{"data-text" => "I just joined Hummingbird to track, share and discover new anime!", "data-url" => "http://www.hummingbird.me", "data-via" => "hummingbird_me", :href => "https://twitter.com/share"} Tweet

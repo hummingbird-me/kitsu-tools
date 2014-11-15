@@ -1,12 +1,12 @@
 - if controller_name != 'sessions'
   %p
     Already Registered?
-    = link_to "Login now", new_session_path(resource_name)
+    = link_to "Login now", "/sign-in"
 
 - if controller_name != 'registrations' and devise_mapping.registerable?
   %p
     Don't have an account?
-    = link_to "Create one now", new_registration_path(resource_name)
+    = link_to "Create one now", "/sign-up"
 
 - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
   %p= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name)

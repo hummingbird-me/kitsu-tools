@@ -12,12 +12,12 @@
           / Left Nav Section
           %ul.left.topnav-links
             %li.has-dropdown
-              = link_to "Dashboard", user_signed_in? ? "/" : "/users/sign_in"
+              = link_to "Dashboard", user_signed_in? ? "/" : "/sign-in"
               %ul.dropdown.rounded-panel
                 %li
-                  = link_to "Profile", user_signed_in? ? main_app.user_path(current_user) : "/users/sign_in"
+                  = link_to "Profile", user_signed_in? ? main_app.user_path(current_user) : "/sign-in"
                 %li
-                  = link_to "Library", user_signed_in? ? main_app.user_library_path(current_user) : "/users/sign_in"
+                  = link_to "Library", user_signed_in? ? main_app.user_library_path(current_user) : "/sign-in"
                 %li
                   = link_to "Recommendations", '/recommendations'
             %li.has-dropdown
@@ -65,14 +65,14 @@
             - else
               %li.guest-block
                 %span 
-                  %a{:href => main_app.new_user_session_path, :"data-reveal-id" => "signInModal"} Login
+                  %a{href: "/sign-in"} Sign In
                   or 
-                  %a{href: main_app.new_user_registration_path} Register
+                  %a{href: "/sign-up"} Create an Account
 
     - if not user_signed_in?
       .guest-banner.hide-for-small
         .large-12.columns
-          = link_to "Hummingbird is the easiest way to track, share and discover new anime. Request your invite now - Free.", main_app.new_user_registration_path
+          = link_to "Hummingbird is the easiest way to track, share and discover new anime. Create an Account - Free.", "/sign-up"
           %span.guest-button= link_to "Request Invite", main_app.new_user_registration_path
 
     - if user_signed_in? and not current_user.confirmed?
