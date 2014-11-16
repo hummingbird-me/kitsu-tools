@@ -27,6 +27,8 @@ GEM
       activesupport (= 4.1.7)
       rack (~> 1.5.2)
       rack-test (~> 0.6.2)
+    actionpack-action_caching (1.1.1)
+      actionpack (>= 4.0.0, < 5.0)
     actionview (4.1.7)
       activesupport (= 4.1.7)
       builder (~> 3.1)
@@ -458,6 +460,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack-action_caching
   active_model_serializers (~> 0.8.0)
   annotate
   autoprefixer-rails (~> 3.0)
