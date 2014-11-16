@@ -35,6 +35,7 @@
 #  cover_image_top_offset    :integer          default(0), not null
 #  ann_id                    :integer
 #  started_airing_date_known :boolean          default(TRUE), not null
+#  jp_title                  :text
 #
 
 require 'test_helper'

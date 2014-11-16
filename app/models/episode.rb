@@ -14,6 +14,8 @@
 #  thumbnail_content_type :string(255)
 #  thumbnail_file_size    :integer
 #  thumbnail_updated_at   :datetime
+#  jp_title               :text
+#  airdate                :date
 #
 
 class Episode < ActiveRecord::Base

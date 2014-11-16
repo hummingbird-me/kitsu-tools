@@ -94,7 +94,8 @@ CREATE TABLE anime (
     poster_image_updated_at timestamp without time zone,
     cover_image_top_offset integer DEFAULT 0 NOT NULL,
     ann_id integer,
-    started_airing_date_known boolean DEFAULT true NOT NULL
+    started_airing_date_known boolean DEFAULT true NOT NULL,
+    jp_title text
 );
 
 
@@ -274,7 +275,9 @@ CREATE TABLE episodes (
     thumbnail_file_name character varying(255),
     thumbnail_content_type character varying(255),
     thumbnail_file_size integer,
-    thumbnail_updated_at timestamp without time zone
+    thumbnail_updated_at timestamp without time zone,
+    jp_title text,
+    airdate date
 );
 
 
@@ -3361,4 +3364,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141105134140');
 INSERT INTO schema_migrations (version) VALUES ('20141112132716');
 
 INSERT INTO schema_migrations (version) VALUES ('20141116071336');
+
+INSERT INTO schema_migrations (version) VALUES ('20141116073430');
 
