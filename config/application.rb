@@ -68,7 +68,7 @@ module Hummingbird
     end
 
     # Add LogBeforeTimeout middleware
-    config.middleware.use LogBeforeTimeout
+    config.middleware.insert_before Rack::Sendfile, LogBeforeTimeout
 
     # Add Rack::Attack
     config.middleware.use Rack::Attack
