@@ -610,6 +610,7 @@ html { overflow-y: auto; }
   @extend .clearfix;
   background: #E6E6E6;
   width: 100%;
+  min-height: 100vh;
   z-index: 3;
   position: relative;
   box-shadow: 0 0 25px 10px rgba(20,20,30,0.2);
