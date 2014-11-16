@@ -372,9 +372,11 @@
 
   <!-- Right Side Start -->
   <div class="community-column">
-    <div class="hb-score">
-      <h3>Hummingbird Score: <span class="highlight">4.67</span></h3>
-    </div>
+    {{#if roundedBayesianRating}}
+      <div class="hb-score">
+        <h3>Hummingbird Score: <span class="highlight">{{roundedBayesianRating}}</span></h3>
+      </div>
+    {{/if}}
     <div class="histogram">
       {{community-rating communityRatings}}
       <div class="rating-legend">
@@ -393,7 +395,7 @@
       </div>
     </div>
     <div class="reviews">
-      {{#each trendingReviews}}
+      {{#each trendingReviews itemController="review"}}
         {{partial "media/review_summary"}}
       {{else}}
         <div class="trending-review-empty">

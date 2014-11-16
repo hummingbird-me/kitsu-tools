@@ -23,7 +23,7 @@
   <div class="review-quote">
     <div class="media">
       <div class="quick-rating">
-        <i class="fa fa-smile-o"></i>
+        <i {{bind-attr class=":fa positive:fa-smile-o:fa-frown-o"}}></i>
       </div>
       <div class="media-body">
         <p>"{{summary}}"</p>
@@ -41,7 +41,7 @@
     <div class="reviewer-name">
       <div>
         {{user.username}}
-      </div>                    
+      </div>
     </div>
   </div>
 </div>

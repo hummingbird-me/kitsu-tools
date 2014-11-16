@@ -1,4 +1,12 @@
 HB.AnimeIndexController = Ember.ObjectController.extend(HB.HasCurrentUser, {
+  roundedBayesianRating: function() {
+    if (this.get('model.bayesianRating') && this.get('model.bayesianRating') > 0) {
+      return this.get('model.bayesianRating').toFixed(2);
+    } else {
+      return null;
+    }
+  }.property('model.bayesianRating'),
+
   showEpisodes: function() {
     return this.get('currentUser.isAdmin') && this.get('model.episodes.length')>0;
   }.property('currentUser.isAdmin', 'model.episodes.length'),
@@ -12,7 +20,7 @@ HB.AnimeIndexController = Ember.ObjectController.extend(HB.HasCurrentUser, {
       return this.get('model.sortedEpisodes');
     }
   }.property('model.episodes.@each'),
-  
+
   libraryEntryExists: function() {
     return (!Ember.isNone(this.get('model.libraryEntry'))) && (!this.get('model.libraryEntry.isDeleted'));
   }.property('model.libraryEntry', 'model.libraryEntry.isDeleted'),

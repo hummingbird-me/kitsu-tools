@@ -1,10 +1,4 @@
 HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
-  needs: ['application'],
-
-  isIndex: function() {
-    return this.get('controllers.application.currentRouteName') === "anime.index";
-  }.property('controllers.application.currentRouteName'),
-
   coverImageStyle: function() {
     return "background-image: url('" + this.get('model.coverImage') + "'); background-position: 50% -" + this.get('model.coverImageTopOffset') + "px;";
   }.property('model.coverImage', 'model.coverImageTopOffset'),
@@ -16,24 +10,7 @@ HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     return this.get('model.featuredQuotes.content')[index];
   }.property('model.featuredQuotes'),
 
-  roundedBayesianRating: function() {
-    if (this.get('model.bayesianRating')) {
-      return this.get('model.bayesianRating').toFixed(2);
-    } else {
-      return null;
-    }
-  }.property('model.bayesianRating'),
-
-  recentlyStartedAiring: function() {
-    if (this.get('model.airingStatus') === "Finished Airing") { return false; }
-    // Used to hide "First Impressions" from long-term ongoing shows like
-    // Naruto Shippuden. Checks if show started airing in past 10 weeks
-    // (6048000000 ms)
-    var startedAiring = this.get('model.startedAiring');
-    return startedAiring && Date.now() - startedAiring < 6048000000;
-  }.property('model.startedAiring'),
-
-  activeTab: "Genres",
+  /*activeTab: "Genres",
   language: null,
 
   showGenres: Ember.computed.equal('activeTab', 'Genres'),
@@ -44,7 +21,7 @@ HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
 
   filteredCast: function () {
     return this.get('model.featuredCastings').filterBy('language', this.get('language'));
-  }.property('model.featuredCastings', 'language'),
+  }.property('model.featuredCastings', 'language'),*/
 
   actions: {
     switchTo: function (newTab) {
