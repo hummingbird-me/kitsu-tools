@@ -151,7 +151,6 @@
             {{/if}}
           {{/if}}
         </div>
-      
       </div>
     </div>
     <!-- End series panel -->
@@ -161,79 +160,27 @@
         <h4>Cast</h4>
         <div class="cast-language">
           <div class="btn-group">
-            <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-              Japanese
+            <a class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+              {{language}}
               <span class="caret"></span>
             </a>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">English</a></li>
+            <ul class="dropdown-menu">
+              {{#each language in languages}}
+                <li role="presentation">
+                  <a role="menuitem" {{action "setLanguage" language}}>
+                    {{language}}
+                  </a>
+                </li>
+              {{/each}}
             </ul>
           </div>
         </div>
       </div>
       <div class="series-cast">
         <ul class="cast">
-          <li class="character-wrapper">
-            <div class="cast-image">
-              <image class="actor" src="https://static.hummingbird.me/people/images/000/006/487/original/6487.jpg?1375226712">
-              <image class="character" src="https://static.hummingbird.me/characters/images/000/038/505/original/38505.jpg?1375262333">
-            </div>
-            <div class="cast-name">
-              <h4>Yui Ishikawa</h4>
-              <small>as Mikasa Ackerman</small>
-            </div>
-          </li>
-          <li class="character-wrapper">
-            <div class="cast-image">
-              <image class="actor" src="https://static.hummingbird.me/people/images/000/001/550/original/1550.jpg?1375224120">
-              <image class="character" src="https://static.hummingbird.me/characters/images/000/038/506/original/38506.jpg?1375262334">
-            </div>
-            <div class="cast-name">
-              <h4>Marina Inoue</h4>
-              <small>as Armin Arelet</small>
-            </div>
-          </li>
-          <li class="character-wrapper">
-            <div class="cast-image">
-              <image class="actor" src="https://static.hummingbird.me/people/images/000/006/097/original/6097.jpg?1375226496">
-              <image class="character" src="https://static.hummingbird.me/characters/images/000/038/507/original/38507.jpg?1375262335">
-            </div>
-            <div class="cast-name">
-              <h4>Yuki Kaji</h4>
-              <small>as Eren Jäger</small>
-            </div>
-          </li>
-          <li class="character-wrapper">
-            <div class="cast-image">
-              <image class="actor" src="https://static.hummingbird.me/people/images/000/008/141/original/8141.jpg?1375227516">
-              <image class="character" src="https://static.hummingbird.me/characters/images/000/038/508/original/38508.jpg?1375262336">
-            </div>
-            <div class="cast-name">
-              <h4>Ryota Ohsaka</h4>
-              <small>as Marco Bodt</small>
-            </div>
-          </li>
-          <li class="character-wrapper">
-            <div class="cast-image">
-              <image class="actor" src="https://static.hummingbird.me/people/images/000/000/195/original/195.jpg?1375223340">
-              <image class="character" src="https://static.hummingbird.me/characters/images/000/039/556/original/39556.jpg?1375263081">
-            </div>
-            <div class="cast-name">
-              <h4>Hiroshi Kamiya</h4>
-              <small>as Mikasa Ackerman</small>
-            </div>
-          </li>
-          <li class="character-wrapper">
-            <div class="cast-image">
-              <image class="actor" src="https://static.hummingbird.me/people/images/000/006/487/original/6487.jpg?1375226712">
-              <image class="character" src="https://static.hummingbird.me/characters/images/000/038/505/original/38505.jpg?1375262333">
-            </div>
-            <div class="cast-name">
-              <h4>Yui Ishikawa</h4>
-              <small>as Levi</small>
-            </div>
-          </li>
+          {{partial "anime/cast"}}
         </ul>
+
         <div class="view-more">
           <a href="#">View More Cast</a>
         </div>

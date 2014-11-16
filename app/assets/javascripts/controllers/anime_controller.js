@@ -10,29 +10,12 @@ HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     return this.get('model.featuredQuotes.content')[index];
   }.property('model.featuredQuotes'),
 
-  /*activeTab: "Genres",
-  language: null,
-
-  showGenres: Ember.computed.equal('activeTab', 'Genres'),
-  showFranchise: Ember.computed.equal('activeTab', 'Franchise'),
-  showQuotes: Ember.computed.equal('activeTab', 'Quotes'),
-  showStudios: Ember.computed.equal('activeTab', 'Studios'),
-  showCast: Ember.computed.equal('activeTab', 'Cast'),
-
-  filteredCast: function () {
-    return this.get('model.featuredCastings').filterBy('language', this.get('language'));
-  }.property('model.featuredCastings', 'language'),*/
-
   actions: {
     switchTo: function (newTab) {
       this.set('activeTab', newTab);
       if (newTab === "Franchise") {
         return this.get('model.franchise');
       }
-    },
-    setLanguage: function (language) {
-      this.set('language', language);
-      return this.send('switchTo', 'Cast');
     },
     deleteAnime: function () {
       return this.get('model').destroyRecord();

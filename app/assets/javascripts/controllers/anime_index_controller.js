@@ -1,4 +1,11 @@
 HB.AnimeIndexController = Ember.ObjectController.extend(HB.HasCurrentUser, {
+  language: null,
+
+  filteredCast: function () {
+    var language = this.get('language');
+    return this.get('model.featuredCastings').filterBy('language', language);
+  }.property('model.featuredCastings', 'language'),
+
   roundedBayesianRating: function() {
     if (this.get('model.bayesianRating') && this.get('model.bayesianRating') > 0) {
       return this.get('model.bayesianRating').toFixed(2);
@@ -33,4 +40,10 @@ HB.AnimeIndexController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     return "/anime/" + this.get('model.id') + "/reviews";
   }.property('model.id'),
   // End Legacy
+
+  actions: {
+    setLanguage: function (language) {
+      this.set('language', language);
+    }
+  }
 });
