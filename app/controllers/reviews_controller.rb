@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       format.html do
         @anime = Anime.find(params[:anime_id])
-        preload_to_ember! @anime
+        preload_to_ember! @anime, serializer: FullAnimeSerializer, root: "full_anime"
         render "anime/show", layout: "redesign"
       end
       format.json do
@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
           return redirect_to anime_review_path(@anime, @review), status: :moved_permanently
         end
 
-        preload_to_ember! @anime, serializer: FullAnimeSerializer
+        preload_to_ember! @anime, serializer: FullAnimeSerializer, root: "full_anime_serializer"
         preload_to_ember! @review
 
         render "anime/show", layout: 'redesign'

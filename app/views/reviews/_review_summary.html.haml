@@ -1,12 +1,10 @@
-.large-6.columns
-  .panel.review-block
-    .large-12.columns
-      .large-3.columns.review-thumbnail
-        = link_to image_tag(review.anime.poster_image.url(:medium)), anime_review_path(review.anime, review)
-      %h3= link_to truncate(review.anime.canonical_title(current_user), length: 25, omission: '...'), anime_review_path(review.anime, review)
-      %p
-        = (review.summary || truncate(strip_tags(review.content), length: 500, omission: '...')).gsub("&nbsp;", " ")
-        %br
-        = link_to "Read more", anime_review_path(review.anime, review)
-
-
+/ .large-6.columns
+/   .panel.review-block
+/     .large-12.columns
+/       .large-3.columns.review-thumbnail
+/         = link_to image_tag(review.anime.poster_image.url(:medium)), anime_review_path(review.anime, review)
+/       %h3= link_to truncate(review.anime.canonical_title(current_user), length: 25, omission: '...'), anime_review_path(review.anime, review)
+/       %p
+/         = (review.summary || truncate(strip_tags(review.content), length: 500, omission: '...')).gsub("&nbsp;", " ")
+/         %br
+/         = link_to "Read more", anime_review_path(review.anime, review)

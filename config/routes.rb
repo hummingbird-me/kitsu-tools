@@ -123,11 +123,10 @@ Hummingbird::Application.routes.draw do
   get '/anime/upcoming(/:season)' => 'anime#upcoming', as: :anime_season
   get '/anime/filter(/:sort)' => 'anime#filter', as: :anime_filter
 
+  resources :castings, only: [:index]
+
   resources :anime, only: [:show, :index, :update] do
-    resources :casts, only: [:index]
-    resources :quotes do
-      member { post :vote }
-    end
+    resources :quotes
     resources :reviews
     resources :episodes
   end

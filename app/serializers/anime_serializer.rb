@@ -1,22 +1,10 @@
 class AnimeSerializer < ActiveModel::Serializer
   embed :ids
 
-  attributes :id,
-             :canonical_title,
-             :english_title,
-             :romaji_title,
-             :synopsis,
-             :poster_image,
-             :show_type,
-             :age_rating,
-             :age_rating_guide,
-             :episode_count,
-             :episode_length,
-             :started_airing,
-             :started_airing_date_known,
-             :finished_airing,
-             :genres,
-             :updated_at
+  attributes :id, :canonical_title, :english_title, :romaji_title, :synopsis,
+    :poster_image, :show_type, :age_rating, :age_rating_guide, :episode_count,
+    :episode_length, :started_airing, :started_airing_date_known,
+    :finished_airing, :genres, :updated_at
 
   def id
     object.slug

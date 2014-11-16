@@ -1,11 +1,83 @@
-.back-to-anime {
-  @extend .col-md-12;
 
-  margin-top: 55px;
+.back-to-anime {
+  margin-bottom: 10px;
+  a {
+    color: #333;
+    margin-right: 20px;
+  }
+}
+.review-wrapper {
+  @extend .col-sm-9;
   padding-left: 0;
-  padding-right: 0;
-  @media (max-width: 464px) {
-    margin-top: 95px;
+}
+
+.review-sidebar {
+  @extend .col-sm-3;
+  padding: 0;
+  h4 {
+    text-align: center;
+    font-weight: normal;
+  }
+  .recommend {
+    display: inline-block;
+    width: 60%;
+    text-align: center;
+    a {
+      padding: 10px 5px;
+      background: #16a085;
+      color: #fff;
+      border-radius: 3px;
+      width: 100%;
+      display: block;
+      &:hover {
+        background: darken(#16a085, 5);
+      }
+      &.active {
+        background: #898989;
+      }
+    }
+  }
+  .dislike {
+    display: inline-block;
+    width: 35%;
+    text-align: center;
+    float: right;
+    a {
+      display: block;
+      background: #BBBBBB;
+      color: #676767;
+      padding: 10px;
+      border-radius: 3px;
+      &:hover {
+        background: darken(#bbb, 5);
+      }
+      &.active {
+        background: darken(#bbb, 10);
+        color: #333;
+      }
+    }
+  }
+}
+
+.review-avatar {
+  width: 28%;
+  display: inline-block;
+  float: left;
+  img {
+    width: 100%;
+  }
+}
+.reviewer-information {
+  width: 72%;
+  float: left;
+  padding-left: 10px;
+  h5 {
+    margin-top: 0;
+    font-size: 20px;
+  }
+  .follow-button {
+    width: 100%;
+    font-size: 15px;
   }
 }
 
@@ -327,7 +399,7 @@
 .summary-block {
   @extend .col-xs-12;
 
-  background: #cdcdcd;
+  background: #eee;
   color: #666666;
   float: left;
   padding: 10px;

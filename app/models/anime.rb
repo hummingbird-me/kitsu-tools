@@ -52,7 +52,7 @@ class Anime < ActiveRecord::Base
 
   has_attached_file :cover_image,
     styles: {thumb: ["1400x900>", :jpg]},
-    convert_options: {thumb: "-quality 70 -colorspace Gray"}
+    convert_options: {thumb: "-quality 70"}
 
   validates_attachment :cover_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]

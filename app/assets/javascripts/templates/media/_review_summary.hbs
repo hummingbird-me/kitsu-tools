@@ -1,4 +1,4 @@
-{{#link-to 'reviews.show' id}}
+{{!-- {{#link-to 'reviews.show' id}}
   <div class="review rounded-block">
     <div class="reviewer-thumb-wrapper hidden-xs">
       {{avatar user 'thumb'}}
@@ -17,4 +17,31 @@
       </p>
     </div>
   </div>
-{{/link-to}}
+{{/link-to}} --}}
+
+<div class="quote-bubble pull-left cl">
+  <div class="review-quote">
+    <div class="media">
+      <div class="quick-rating">
+        <i {{bind-attr class=":fa positive:fa-smile-o:fa-frown-o"}}></i>
+      </div>
+      <div class="media-body">
+        <p>"{{summary}}"</p>
+          <div class="full-review">
+            {{#link-to 'reviews.show' id}}Full Review…{{/link-to}}
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="review-source media">
+    <div class="reviewer-avatar">
+      {{avatar user 'thumb'}}
+    </div>
+    <div class="reviewer-name">
+      <div>
+        {{user.username}}
+      </div>
+    </div>
+  </div>
+</div>

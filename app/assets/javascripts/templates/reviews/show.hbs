@@ -1,85 +1,105 @@
-<div class="col-sm-6 col-sm-offset-3">
+<div class="container">
+  <div class="back-to-anime">
+    <span>
+      {{#link-to 'anime.index'}} 
+        <i class="fa fa-caret-left"></i> Back to anime page
+      {{/link-to}}
+    </span>
+    <span>
+      {{#if writtenBySelf}}
+        <a {{bind-attr href=editPath}}>
+          <i class="fa fa-pencil"></i> edit review
+        </a>
+      {{/if}}
+    </span>
+  </div>
 
-<div class="back-to-anime">
-  <div class="col-xs-6">
-    {{#link-to 'anime.index'}} Back to anime page{{/link-to}}
-  </div>
-  <div class="col-xs-6">
-    {{#if writtenBySelf}}
-      <a {{bind-attr href=editPath}} class="edit-review"> edit review</a>
-    {{/if}}
-  </div>
-</div>
+  <!-- Left Side -->
+  <div class="review-wrapper">
+    <div class="series-panel">
+      <div class="review-content">
+        <h1 class="review-title"> {{anime.displayTitle}} Review</h1>
+        <div class="spoiler-block" style="display:none"> Tread carefully! This review contains spoilers!!</div>
+        <div class="progress-block" style="display:none"> This is a review up until episode 17!</div>
+        {{{formattedContent}}}
+      </div>
 
-<div class="review-content">
-  <h1 class="review-title"> {{anime.displayTitle}} Review</h1>
-  <div class="spoiler-block" style="display:none"> Tread carefully! This review contains spoilers!!</div>
-  <div class="progress-block" style="display:none"> This is a review up until episode 17!</div>
-  {{{formattedContent}}}
-</div>
-
-<div class="reader-actions">
-  <div class="reader-vote">
-    <div class="recommend">
-      <a {{action "upvote"}} {{bind-attr class="upvoted:active"}}>
-        <i class="fa fa-thumbs-o-up"></i>
-        {{#if upvoted}}
-          Recommended
-        {{else}}
-          Recommend
-        {{/if}}
-      </a>
-    </div>
-    <div class="dislike">
-      <a {{action "downvote"}} {{bind-attr class="downvoted:active"}}>
-        <i class="fa fa-thumbs-o-down"></i>
-      </a>
-    </div>
-  </div>
-  <div class="reader-share" style="display: none">
-    <div class="share-icons">
-      <div class="twitter"><a href="#"><i class="fa fa-twitter"></i></a> </div>
-      <div class="facebook"><a href="#"><i class="fa fa-facebook"></i></a> </div>
-      <div class="flag-review"><a href="#"><i class="fa fa-flag"></i></a> </div>
-    </div>
-  </div>
-</div>
-
-<div class="review-breakdown">
-  <div class="breakdown-header">
-    <div class="verdict-title">
-      <h4> Verdict</h4>
-    </div>
-    <div class="breakdown-title">
-      <h4> Breakdown</h4>
-    </div>
-  </div>
-  <div class="breakdown-content">
-    <div class="score-block">
-      <h1 class="score"> {{ratingFirstDigit}}</h1>
-      <h5 class="decimal-score"> {{ratingDecimalPart}}</h5>
-    </div>
-    <div class="breakdown-block">
-      <div class="breakdown-content">
-        <ul>
-          {{#each breakdown}}
-            <li class="clearfix">
-              <div class="col-xs-9">
-                <i {{bind-attr class=":fa positive:fa-plus-circle:fa-minus-circle"}}></i>
-                &nbsp; {{title}}...
-              </div>
-              <div class="dec-score">
-                <strong>{{rating}}</strong>
-              </div>
-            </li>
-          {{/each}}
-        </ul>
+      <div class="review-breakdown">
+        <div class="breakdown-header">
+          <div class="verdict-title">
+            <h4> Verdict</h4>
+          </div>
+          <div class="breakdown-title">
+            <h4> Breakdown</h4>
+          </div>
+        </div>
+        <div class="breakdown-content">
+          <div class="score-block">
+            <h1 class="score"> {{ratingFirstDigit}}</h1>
+            <h5 class="decimal-score"> {{ratingDecimalPart}}</h5>
+          </div>
+          <div class="breakdown-block">
+            <div class="breakdown-content">
+              <ul>
+                {{#each breakdown}}
+                  <li class="clearfix">
+                    <div class="col-xs-9">
+                      <i {{bind-attr class=":fa positive:fa-plus-circle:fa-minus-circle"}}></i>
+                      &nbsp; {{title}}...
+                    </div>
+                    <div class="dec-score">
+                      <strong>{{rating}}</strong>
+                    </div>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="summary-block">
+          <p>{{summary}}</p>
+        </div>
       </div>
     </div>
   </div>
-  <div class="summary-block">
-    <p>{{summary}}</p>
+  <!-- End Left Side -->
+
+  <!-- Right Side -->
+  <div class="review-sidebar">
+    <div class="series-panel">
+      <div class="review-avatar">
+        {{avatar user 'thumb'}}
+      </div>
+      <div class="reviewer-information">
+        <h5>{{user.username}}</h5>
+        {{#if user.isFollowed}}
+          <button class="btn btn-default btn-lg follow-button unfollow" {{action "toggleFollow" user}}>Unfollow</button>
+        {{else}}
+          <button class="btn btn-default btn-lg follow-button" {{action "toggleFollow" user}}>Follow</button>
+        {{/if}}
+      </div>
+    </div>
+    <div class="series-panel">
+      <h4>Was this review well-written?</h4>
+        <div class="recommend">
+          <a {{action "upvote"}} {{bind-attr class="upvoted:active"}}>
+            {{#if upvoted}}
+              Liked!
+            {{else}}
+              Like this review
+            {{/if}}
+          </a>
+        </div>
+        <div class="dislike">
+          <a {{action "downvote"}} {{bind-attr class="downvoted:active"}}>
+            <i class="fa fa-thumbs-o-down"></i>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
+  <!-- End Right Side -->
+
 </div>
 
 {{!--

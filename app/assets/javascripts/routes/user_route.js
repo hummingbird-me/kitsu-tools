@@ -8,7 +8,7 @@ HB.UserRoute = Ember.Route.extend({
       this.controllerFor("user").set('coverUpload', Ember.Object.create());
       return true;
     },
-    
+
     uploadCover: function(image) {
       this.currentModel.set('coverImageUrl', image);
       return Messenger().expectPromise((function() {

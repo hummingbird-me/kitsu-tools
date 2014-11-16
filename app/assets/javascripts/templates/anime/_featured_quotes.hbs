@@ -1,20 +1,20 @@
 {{#each featuredQuotes}}
-  <div class="rounded-block col-sm-12 clearfix no-padding">
-    <p><strong>{{characterName}}:</strong> {{content}}</p>
-    <span class="favorited-by">
-      <span class="favorite-count">Favorited by {{pluralize favoriteCount "user" "users"}} - </span>
-      <a {{action "toggleQuoteFavorite" this}}>
-        {{#if isFavorite}}
-          Unfavorite this quote
-        {{else}}
-          Favorite this quote
-        {{/if}}
-      </a>
-    </span>
-    {{!--
-      <span class="report-quote"><a href="#">Report Quote</a></span>
-    --}}
+  <div class="quote">
+    <p>"{{content}}"</p>
+    <span class="quote-author">- {{characterName}}</span>
+    <div class="quote-like-box">
+      <span class="like-button">
+        <a {{action "toggleQuoteFavorite" this}}>
+          {{#if isFavorite}}
+            <i class="fa fa-heart active"></i> Liked!</i></a>
+          {{else}}
+            <i class="fa fa-heart"></i> Like?</i></a>
+          {{/if}}
+      </span>
+      <span class="quote-divider"></span>
+      <span class="total-likes">
+        {{pluralize favoriteCount "Like" "Likes"}}
+      </span>
+    </div>
   </div>
 {{/each}}
-
-<a {{bind-attr href=fullQuotesURL}} class="btn btn-default">view all</a>

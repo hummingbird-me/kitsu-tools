@@ -1,0 +1,27 @@
+<footer class="global-footer">
+  <div class="footer-contents">
+    <div class="container">
+      <ul class="site-footer-links right">
+        <li>
+          <span class="hb-luvs"></span>
+          {{#if currentUser.isSignedIn}}
+            <span class="footer-heart">
+              <i class="fa fa-heart"></i>
+            </span>
+
+            <span class="footer-avatar">
+              {{avatar currentUser "thumb_small"}}
+            </span>
+          {{/if}}
+        </li>
+          
+      </ul>
+
+      <ul class="site-footer-links">
+        <li>© 2014 Hummingbird Media, Inc.</li>
+        <li><a href="https://hummingbird.me/privacy">Privacy</a></li>
+        <li><a href="mailto:josh@hummingbird.me">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>

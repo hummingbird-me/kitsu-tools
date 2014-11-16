@@ -1,8 +1,16 @@
 <div class="container">
+  <div class="back-to-anime">
+    <span>
+      {{#link-to 'anime.index' anime}}
+        <i class="fa fa-caret-left"></i> Back to anime page
+      {{/link-to}}
+    </span>
+  </div>
+
   <div class="row row-centered">
     <div class="col-xs-6 col-md-offset-3">
-      
-      {{#each animeQuotes}}
+
+      {{#each}}
         <div class="rounded-block col-sm-12 clearfix quote-container">
           <p><strong>{{characterName}}:</strong> {{content}}</p>
           <span class="favorited-by">
@@ -15,9 +23,6 @@
               {{/if}}
             </a>
           </span>
-          {{!--
-            <span class="report-quote"><a href="#">Report Quote</a></span>
-          --}}
         </div>
       {{else}}
         <div class="rounded-block col-sm-12 clearfix quote-container">
