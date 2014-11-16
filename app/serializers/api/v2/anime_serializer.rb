@@ -1,5 +1,7 @@
 module Api::V2
   class AnimeSerializer < Serializer
+    title :anime
+
     field(:titles) do |a|
       {
         canonical: a.canonical_title,

@@ -1,6 +1,6 @@
 module Api::V2
   class Serializer
-    attr_reader :object, :opts
+    attr_reader :object, :opts, :strategy
 
     def initialize(object, opts={})
       @object = object
@@ -12,13 +12,9 @@ module Api::V2
       end
     end
 
-    def identifier
-      block = fields[:id]
-      if @object.respond_to?(:to_ary)
-        @object.map {|o| block.nil? ? o.send(:id) : block.call(o) }
-      else
-        block.nil? ? @object.send(:id) : block.call(@object)
-      end
+    def title
+      self.class.instance_variable_get('@title') ||
+        raise("title was not set on #{self.class}")
     end
 
     def fields
@@ -34,11 +30,13 @@ module Api::V2
     end
 
     class << self
+      def title(title)
+        @title = title
+      end
+
       def fields(*names)
         @fields ||= {id: nil}
-        names.each do |name|
-          @fields[name] = nil
-        end
+        names.each {|name| @fields[name] = nil }
       end
 
       def field(name, &block)

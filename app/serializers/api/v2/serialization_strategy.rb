@@ -4,11 +4,19 @@ module Api::V2
       @serializer = serializer
     end
 
-    private
-
     def title
-      @serializer.title
+      raise NotImplementedError
     end
+
+    def identifier
+      raise NotImplementedError
+    end
+
+    def as_json
+      raise NotImplementedError
+    end
+
+    private
 
     def object
       @serializer.object
