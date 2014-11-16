@@ -17,5 +17,5 @@ HB.LibraryEntry = DS.Model.extend({
     return (this.get('rating') > 2.4 && this.get('rating') < 3.6);
   }.property('rating'),
 
-  isComplete: Em.computed.eq('status', "Completed")
+  isComplete: Em.computed.equal('status', "Completed")
 });
