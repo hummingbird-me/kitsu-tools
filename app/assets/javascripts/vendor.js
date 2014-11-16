@@ -18,3 +18,4 @@
 //= require react
 //= require twitter/typeahead
 //= require message-bus
+//= require htmldiff

@@ -1,23 +1,42 @@
 <div class="container">
-  <h1>Pending Edit</h1>
+  <h1>
+    {{#link-to 'anime' model.item.id}}
+      {{model.item.displayTitle}}
+    {{/link-to}}</h1>
 
   <div class="row">
     <div class="col-md-12">
-      <div class="panel panel-default">
+      <div class="panel panel-default pending-edit">
         <div class="panel-heading">
-          Pending Edit by {{model.user.username}}
+          Edited by
+          {{#link-to 'user' model.user}}
+            {{model.user.username}}
+          {{/link-to}}
 
           <div class="pull-right">
-            <a class="btn" style="color:green;" {{action 'approveEdit'}}>
+            <a class="approve" {{action 'approveEdit'}}>
               <i class="fa fa-check"></i> Approve
             </a>
-            <a class="btn" style="color:red;" {{action 'rejectEdit'}}>
-              <i class="fa fa-check"></i> Reject
+            <a class="reject" {{action 'rejectEdit'}}>
+              <i class="fa fa-close"></i> Reject
             </a>
           </div>
         </div>
-        <div class="panel-body">
-          {{changes}}
+        <div class="panel-body diff">
+          {{#if outdated}}
+            <div class="alert alert-danger">
+              {{#link-to 'anime' model.item.id}}
+                {{model.item.displayTitle}}
+              {{/link-to}}
+              has been updated since this edit was created.
+            </div>
+          {{/if}}
+          <dl>
+            {{#each changes}}
+              <dt class="diff-type">{{this.[0]}}</dt>
+              <dd class="diff-body">{{this.[1]}}</dd>
+            {{/each}}
+          </dl>
         </div>
       </div>
     </div>

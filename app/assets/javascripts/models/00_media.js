@@ -1,1 +1,3 @@
-HB.Media = DS.Model.extend({});
+HB.Media = DS.Model.extend({
+  updatedAt: DS.attr('date')
+});

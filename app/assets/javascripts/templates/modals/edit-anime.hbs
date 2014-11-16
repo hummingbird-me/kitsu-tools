@@ -1,35 +1,44 @@
-{{! this need a lot of work }}
 {{#bootstrap-modal action="close"}}
   <div class="modal-header">
     <h4 class="modal-title">Edit Anime</h4>
   </div>
   <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label>Synopsis</label>
-        {{textarea value=synopsis rows=3 class="form-control"}}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Synopsis</label>
+          {{textarea value=synopsis rows=3 class="form-control"}}
+        </div>
       </div>
-      <div class="form-group">
-        <label>Episode Count</label>
-        {{input type="number" value=episodeCount class="form-control"}}
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Episode Count</label>
+          {{input type="number" value=episodeCount class="form-control"}}
+        </div>
+        <div class="form-group">
+          <label>Episode Length</label>
+          {{input type="number" value=episodeLength class="form-control"}}
+        </div>
+        <div class="form-group">
+          <label>YouTube Video Id</label>
+          {{input value=youtubeVideoId class="form-control"}}
+        </div>
       </div>
-      <div class="form-group">
-        <label>Episode Length</label>
-        {{input type="number" value=episodeLength class="form-control"}}
+      <div class="col-md-6">
+        <div class="form-group">
+          <label>Poster Image URL</label>
+          {{input value=posterImage class="form-control"}}
+        </div>
+        <div class="form-group">
+          <label>Cover Image URL</label>
+          {{input value=coverImage class="form-control"}}
+        </div>
+        <div class="form-group">
+          <label>Cover Image Top Offset</label>
+          {{input value=coverImageTopOffset class="form-control"}}
+        </div>
       </div>
-      <div class="form-group">
-        <label>Poster Image URL</label>
-        {{input value=posterImage class="form-control"}}
-      </div>
-      <div class="form-group">
-        <label>Cover Image URL</label>
-        {{input value=coverImage class="form-control"}}
-      </div>
-      <div class="form-group">
-        <label>Cover Image Top Offset</label>
-        {{input value=coverImageTopOffset class="form-control"}}
-      </div>
-    </form>
+    </div>
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" {{action "save"}} {{bind-attr disabled=canSave}}>

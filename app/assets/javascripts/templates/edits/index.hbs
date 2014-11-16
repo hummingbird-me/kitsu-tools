@@ -8,38 +8,42 @@
           Anime
         </div>
         <div class="panel-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Anime</th>
-                <th>Author</th>
-                <th>When</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {{#each pendingAnime}}
+          {{#if pendingAnime}}
+            <table class="table">
+              <thead>
                 <tr>
-                  <td>
-                    {{#link-to 'anime' item.id}}
-                      {{item.id}}
-                    {{/link-to}}
-                  </td>
-                  <td>
-                    {{#link-to 'user' user}}
-                      {{user.username}}
-                    {{/link-to}}
-                  </td>
-                  <td>{{createdAt}}</td>
-                  <td>
-                    {{#link-to 'edits.show' id}}
-                      <i class="fa fa-list"></i> View
-                    {{/link-to}}
-                  </td>
+                  <th>Anime</th>
+                  <th>Author</th>
+                  <th>When</th>
+                  <th>Actions</th>
                 </tr>
-              {{/each}}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {{#each pendingAnime}}
+                  <tr>
+                    <td>
+                      {{#link-to 'anime' item.id}}
+                        {{item.displayTitle}}
+                      {{/link-to}}
+                    </td>
+                    <td>
+                      {{#link-to 'user' user}}
+                        {{user.username}}
+                      {{/link-to}}
+                    </td>
+                    <td>{{format-time createdAt 'MMM Do YYYY, h:mm:ss a'}}</td>
+                    <td>
+                      {{#link-to 'edits.show' id}}
+                        <i class="fa fa-list"></i> View
+                      {{/link-to}}
+                    </td>
+                  </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          {{else}}
+            <p>There aren't any pending anime changes.</p>
+          {{/if}}
         </div>
       </div>
     </div>
