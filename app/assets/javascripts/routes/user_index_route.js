@@ -1,4 +1,4 @@
-HB.UserIndexRoute = Ember.Route.extend(HB.Paginated, HB.ResetScroll, {
+HB.UserIndexRoute = Ember.Route.extend(HB.Paginated, {
   fetchPage: function(page) {
     return this.store.find('story', {
       user_id: this.modelFor('user').get('id'),

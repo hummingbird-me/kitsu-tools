@@ -3,9 +3,15 @@ class QuotesController < ApplicationController
     @anime = Anime.find(params[:anime_id])
     @quotes = @anime.quotes.includes(:user).order('positive_votes DESC')
 
-    preload_to_ember! @quotes
-
-    render_ember
+    respond_to do |format|
+      format.html do
+        preload_to_ember! @anime, serializer: FullAnimeSerializer, root: "full_anime"
+        render_ember
+      end
+      format.json do
+        render json: @quotes
+      end
+    end
   end
 
   def create
@@ -19,30 +25,6 @@ class QuotesController < ApplicationController
     @quote.save
 
     redirect_to anime_quotes_path(@anime)
-  end
-
-  def vote
-    authenticate_user!
-    @quote = Quote.find(params[:id])
-    if params[:type] == "up"
-      vote = Vote.for(current_user, @quote)
-      if vote.nil?
-        Vote.create(user: current_user, target: @quote)
-      end
-    else
-      vote = Vote.for(current_user, @quote)
-      unless vote.nil?
-        vote.destroy
-      end
-    end
-
-    respond_to do |format|
-      if request.xhr?
-        @quote = @quote.reload
-        format.js { render "replace_votes" }
-      end
-      format.html { redirect_to :back }
-    end
   end
 
   def update

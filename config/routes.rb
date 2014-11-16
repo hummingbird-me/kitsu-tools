@@ -125,9 +125,7 @@ Hummingbird::Application.routes.draw do
 
   resources :anime, only: [:show, :index, :update] do
     resources :casts, only: [:index]
-    resources :quotes do
-      member { post :vote }
-    end
+    resources :quotes
     resources :reviews
     resources :episodes
   end

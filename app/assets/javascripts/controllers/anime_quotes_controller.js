@@ -1,5 +1,5 @@
-HB.AnimeQuotesController = Ember.ObjectController.extend(HB.HasCurrentUser, {
-
+HB.AnimeQuotesController = Ember.ArrayController.extend(HB.HasCurrentUser, {
+  anime: null,
   showCreate: false,
   quoteText: "",
   quoteChar: "",
@@ -26,7 +26,7 @@ HB.AnimeQuotesController = Ember.ObjectController.extend(HB.HasCurrentUser, {
         return quote.rollback();
       });
     },
-    
+
     submitQuote: function(){
       if (!(this.get('isFormCorrect'))) return;
 

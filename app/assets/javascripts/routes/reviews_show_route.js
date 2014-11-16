@@ -1,4 +1,4 @@
-HB.ReviewsShowRoute = Ember.Route.extend(HB.ResetScroll, {
+HB.ReviewsShowRoute = Ember.Route.extend({
 
   model: function(params) {
     return this.store.find('review', params.review_id);

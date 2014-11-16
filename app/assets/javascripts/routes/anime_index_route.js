@@ -1,4 +1,4 @@
-HB.AnimeIndexRoute = Ember.Route.extend(HB.ResetScroll, {
+HB.AnimeIndexRoute = Ember.Route.extend({
   model: function() {
     return this.modelFor('anime');
   },

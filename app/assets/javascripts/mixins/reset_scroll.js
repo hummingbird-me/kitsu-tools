@@ -4,3 +4,6 @@ HB.ResetScroll = Ember.Mixin.create({
     window.scrollTo(0, 0);
   }
 });
+
+// Mix into all routes.
+Ember.Route.reopen(HB.ResetScroll);
