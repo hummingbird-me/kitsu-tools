@@ -268,7 +268,7 @@ class AnimeController < ApplicationController
       format.json do
         anime = Anime
         anime = Anime.where(slug: params[:ids]) if params[:ids]
-        anime = Anime.order(params[:sort_by] + (params[:sort_reverse].nil? ? "" : " DESC")) if params[:sort_by]
+        anime = Anime.order(params[:sort_by] + (params[:sort_reverse].nil? ? "" : " DESC NULLS LAST")) if params[:sort_by]
         render json: anime.sfw_filter(current_user).includes(:genres).page(params[:page]).per(40)
       end
     end
