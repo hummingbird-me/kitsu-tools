@@ -289,6 +289,7 @@
       </div>
     </div>
     <div class="reviews">
+      Reviews: <a {{bind-attr href=fullReviewsURL}}>View All</a> <a {{bind-attr href=newReviewURL}}>Write One</a>
       {{#each trendingReviews itemController="review"}}
         {{partial "media/review_summary"}}
       {{else}}
