@@ -103,23 +103,18 @@
         <div class="genres">
           <h5 class="small-label">Genres:</h5>
           <ul class="inline-list">
-            <li>Action</li>
-            <li>Adventure</li>
-            <li>Drama</li>
-            <li>Fantasy</li>
-            <li>Magic</li>
-            <li>Military</li>
+            {{#each genre in genres}}
+              <li>{{genre}}</li>
+            {{/each}}
           </ul>
         </div>
 
         <div class="studios">
           <h5 class="small-label">Studios:</h5>
           <ul class="inline-list">
-            <li>Bones</li>
-            <li>Aniplex</li>
-            <li>Square Enix</li>
-            <li>FUNimation Entertainment</li>
-            <li>Mainchi Broadcasting</li>
+            {{#each producers}}
+              <li>{{name}}</li>
+            {{/each}}
           </ul>
         </div>
 

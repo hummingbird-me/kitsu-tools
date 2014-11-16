@@ -40,18 +40,9 @@
 
   <div class="tab-content">
     <div class="tab-pane active genre-tab">
-      <div {{bind-attr class=":slider showGenres::hidden"}}>
-        {{partial "media/genres"}}
-      </div>
       {{#if showFranchise}}
         {{partial "anime/franchise"}}
       {{/if}}
-      <div {{bind-attr class=":slider showQuotes::hidden"}}>
-        {{partial "anime/featured_quotes"}}
-      </div>
-      <div {{bind-attr class=":slider showCast::hidden"}}>
-        {{partial "anime/cast"}}
-      </div>
       <div {{bind-attr class=":slider showStudios::hidden"}}>
         {{partial "anime/studios"}}
       </div>
