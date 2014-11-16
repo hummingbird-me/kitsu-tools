@@ -1,4 +1,6 @@
 HB.AnimeFranchisesController = Ember.ArrayController.extend({
+  showAll: false,
+
   // A show can belong to multiple franchises, this property will return a list
   // of all of the shows from the set of franchises.
   franchiseAnime: function () {
@@ -6,8 +8,10 @@ HB.AnimeFranchisesController = Ember.ArrayController.extend({
     this.getEach("anime").forEach(function(animeSet) {
       anime = anime.concat(animeSet.toArray());
     });
+    anime = anime.uniq();
 
-    return Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
+    // Sort anime. TODO Simplify, don't use ArrayProxy.
+    anime = Ember.ArrayProxy.createWithMixins(Ember.SortableMixin, {
       content: anime.uniq(),
       sortProperties: ['startedAiring', 'finishedAiring'],
       sortFunction: function(x, y) {
@@ -21,6 +25,18 @@ HB.AnimeFranchisesController = Ember.ArrayController.extend({
           return Ember.compare(x, y);
         }
       }
-    });
-  }.property('@each.anime')
+    }).get('content');
+
+    if (!this.get('showAll') && anime.length > 2) {
+      anime = anime.slice(0, 2);
+    }
+
+    return anime;
+  }.property('@each.anime', 'showAll'),
+
+  actions: {
+    toggleShowAll: function() {
+      this.toggleProperty('showAll');
+    }
+  }
 });
