@@ -6,7 +6,8 @@ module Api::V2
       {
         canonical: a.canonical_title,
         english: a.alt_title,
-        romaji: a.title
+        romaji: a.title,
+        japanese: a.jp_title
       }
     end
 
@@ -15,9 +16,12 @@ module Api::V2
       :show_type
 
     field(:poster_image) {|a| a.poster_image_thumb }
+    field(:cover_image) {|a| a.cover_image.url(:thumb) }
     field(:community_rating) {|a| a.bayesian_average }
     field(:genres) {|a| a.genres.map {|x| x.name } }
+    field(:bayesian_rating) {|a| a.bayesian_average }
 
     has_many :gallery_images, serializer: GalleryImageSerializer
+    has_many :episodes, serializer: EpisodeSerializer
   end
 end
