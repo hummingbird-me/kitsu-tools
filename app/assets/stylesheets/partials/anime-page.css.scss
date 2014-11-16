@@ -115,17 +115,19 @@
 
 .poster-container {
   padding-right: 15px;
-  position: relative;
   float: left;
   width: 30%;
   @media (max-width: 620px) {
     display: none;
   }
+  .poster-actions {
+    position: relative;
+  }
   .series-poster {
     max-width: 100%;
     border-radius: 3px;
   }
-  .trailer-link {
+  .trailer-link, .favorite-link {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -138,6 +140,16 @@
     opacity: .6;
     &:hover {
       opacity: 1;
+    }
+  }
+  .favorite-link {
+    top: 35px;
+    left: inherit;
+    right: 10px;
+    border-radius: 3px;
+    padding: 5px 10px;
+    .fa-heart {
+      color: #dc6767;
     }
   }
 }
@@ -407,6 +419,67 @@
 .reviews-index {
   h1 {
     margin-left: 5px;
+  }
+}
+
+.reviews {
+  h4 {
+    float: left;
+    margin-bottom: 0;
+  }
+}
+.review-links {
+  float: right;
+  margin-top: 10px;
+}
+
+.review-nag {
+  @extend .col-sm-12;
+  @extend .clearfix;
+  border: 1px solid #B8B8B8;
+  background: #ddd;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  padding: 10px 15px;
+  color: #777;
+  margin-top: -30px;
+  margin-bottom: 30px;
+  .nag-text {
+    line-height: 32px;
+    font-weight: 400;
+    @media (max-width: 760px) {
+      .extended-nag {
+        display: none;
+      }
+    }
+  }
+  a {
+    background: #16a085;
+    color: #fff;
+    padding: 5px 15px;
+    border-radius: 3px;
+    margin-left: 10px;
+    float: right;
+    &:hover {
+      background: darken(#16a085, 5);
+    }
+  }
+  @media (max-width: 450px) {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    .nag-text {
+      width: 100%;
+      display: block;
+      margin-bottom: 10px;
+    }
+    a {
+      display: block;
+      margin-bottom: 5px;
+      margin-left: 0;
+      width: 100%;
+    }
   }
 }
 

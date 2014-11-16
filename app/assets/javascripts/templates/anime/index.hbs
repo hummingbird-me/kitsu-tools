@@ -72,15 +72,35 @@
 
 
 <div class="container">
+  {{#if libraryEntry.isComplete}}
+    <!-- Review Nag -->
+    <div class="review-nag">
+      <span class="nag-text">
+        <span class="extended-nag">Wow, you've already finished this anime!</span> Have you considered writing a review?</span> <a {{bind-attr href=newReviewURL}}>Write One</a>
+    </div>
+  {{/if}}
   <!-- Left side start -->
   <div class="series-column">
     <div class="series-panel">
 
       <div class="poster-container">
-        <img class="series-poster" {{bind-attr src=posterImage}}>
-        <a {{bind-attr class=":trailer-link hasTrailer::hide"}} {{action "openModal" "youtube" this}}>
-          <i {{bind-attr class=":fa :fa-youtube-play"}}></i>
-        </a>
+        <div class="poster-actions">
+          <img class="series-poster" {{bind-attr src=posterImage}}>
+          <a data-tooltip="Watch Trailer"{{bind-attr class=":trailer-link hasTrailer::hide"}} {{action "openModal" "youtube" this}}>
+            <i {{bind-attr class=":fa :fa-youtube-play"}}></i>
+          </a>
+          {{#if libraryEntryExists}}
+            {{#if libraryEntry.isFavorite}}
+              <a data-tooltip="You favorited this!" {{bind-attr class=":favorite-link"}} {{action "toggleFavorite"}}>
+                <i {{bind-attr class=":fa :fa-heart"}}></i>
+              </a>
+            {{else}}
+              <a data-tooltip="Favorite this?"{{bind-attr class=":favorite-link"}} {{action "toggleFavorite"}}>
+                <i {{bind-attr class=":fa :fa-heart-o"}}></i>
+              </a>
+            {{/if}}
+          {{/if}}
+        </div>
       </div>
 
       <div class="series-info">
@@ -237,7 +257,10 @@
       </div>
     </div>
     <div class="reviews">
-      Reviews: <a {{bind-attr href=fullReviewsURL}}>View All</a> <a {{bind-attr href=newReviewURL}}>Write One</a>
+      <h4> Reviews:</h4>
+      <div class="review links">
+        <a {{bind-attr href=fullReviewsURL}}>View All</a> · <a {{bind-attr href=newReviewURL}}>Write One</a>
+      </div>
       {{#each trendingReviews itemController="review"}}
         {{partial "media/review_summary"}}
       {{else}}
