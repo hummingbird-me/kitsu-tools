@@ -56,6 +56,13 @@ HB.AnimeRoute = Ember.Route.extend({
       var libraryEntry = this.currentModel.get('libraryEntry');
       libraryEntry.set('rating', newRating);
       return this.saveLibraryEntry(libraryEntry);
+    },
+
+    toggleQuoteFavorite: function(quote) {
+      quote.set('isFavorite', !quote.get('isFavorite'));
+      return quote.save().then(Ember.K, function() {
+        return quote.rollback();
+      });
     }
   }
 });

@@ -20,11 +20,5 @@ HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     deleteAnime: function () {
       return this.get('model').destroyRecord();
     }
-  },
-
-  // Legacy
-  fullQuotesURL: function () {
-    return "/anime/" + this.get('model.id') + "/quotes";
-  }.property('model.id'),
-  // End Legacy
+  }
 });

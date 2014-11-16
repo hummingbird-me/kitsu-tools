@@ -20,13 +20,6 @@ HB.AnimeQuotesController = Ember.ArrayController.extend(HB.HasCurrentUser, {
       this.toggleProperty('showCreate');
     },
 
-    toggleQuoteFavorite: function(quote) {
-      quote.set('isFavorite', !quote.get('isFavorite'));
-      return quote.save().then(Ember.K, function() {
-        return quote.rollback();
-      });
-    },
-
     submitQuote: function(){
       if (!(this.get('isFormCorrect'))) return;
 

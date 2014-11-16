@@ -187,66 +187,18 @@
       </div>
     </div>
     <!-- End cast -->
+
     <div class="series-panel">
       <div class="panel-title has-button">
         <h4>Quotes</h4>
-        <div class="cast-language">
-          <div class="btn-group">
-            <a class="btn btn-default" type="button">
-              Add Quote
-            </a>
-          </div>
-        </div>
       </div>
 
-      <div class="quote">
-        <p>"I want to see and understand the world outside. I don't want to die inside these walls without knowing what's out there!"</p>
-        <span class="quote-author">- Eren Jaeger</span>
-        <div class="quote-like-box">
-          <span class="like-button">
-            <a href="#"><i class="fa fa-heart"></i> Like?</i></a>
-            {{!-- <a href="#"><i class="fa fa-heart active"></i> Liked!</i></a> --}}
-          </span>
-          <span class="quote-divider"></span>       
-          <span class="total-likes">
-            143 Likes
-          </span>
-        </div>
-      </div>
-      <div class="quote">
-        <p>"I want to see and understand the world outside. I don't want to die inside these walls without knowing what's out there!"</p>
-        <span class="quote-author">- Eren Jaeger</span>
-        <div class="quote-like-box">
-          <span class="like-button">
-            <a href="#"><i class="fa fa-heart"></i> Like?</i></a>
-            {{!-- <a href="#"><i class="fa fa-heart active"></i> Liked!</i></a> --}}
-          </span>
-          <span class="quote-divider"></span>       
-          <span class="total-likes">
-            143 Likes
-          </span>
-        </div>
-      </div>
-      <div class="quote">
-        <p>"I want to see and understand the world outside. I don't want to die inside these walls without knowing what's out there!"</p>
-        <span class="quote-author">- Eren Jaeger</span>
-        <div class="quote-like-box">
-          <span class="like-button">
-            <a href="#"><i class="fa fa-heart"></i> Like?</i></a>
-            {{!-- <a href="#"><i class="fa fa-heart active"></i> Liked!</i></a> --}}
-          </span>
-          <span class="quote-divider"></span>       
-          <span class="total-likes">
-            143 Likes
-          </span>
-        </div>
-      </div>
+      {{partial "anime/featured_quotes"}}
+
       <div class="view-more">
         {{#link-to 'anime.quotes'}}View More Quotes{{/link-to}}
       </div>
     </div>
-    <!-- quotes end -->
-
 
     <div class="series-panel">
       <div class="panel-title">
