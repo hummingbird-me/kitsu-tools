@@ -1,7 +1,6 @@
 {{#if franchises.isFulfilled}}
   {{#with franchises controller='animeFranchises'}}
     {{#each franchiseAnime}}
-      {{log this}}
       <div class="franchise-show">
         <div class="franchise-poster">
           <img class="series-poster" {{bind-attr src=posterImage}} />

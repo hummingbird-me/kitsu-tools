@@ -13,5 +13,14 @@ HB.AnimeIndexRoute = Ember.Route.extend({
 
   afterModel: function(resolvedModel) {
     return HB.TitleManager.setTitle(resolvedModel.get('displayTitle'));
+  },
+
+  actions: {
+    loadFullCast: function() {
+      var self = this;
+      this.store.find('casting', {anime_id: this.currentModel.get('id')}).then(function(castings) {
+        self.controllerFor('animeIndex').set('fullCast', castings);
+      });
+    }
   }
 });

@@ -1,10 +1,21 @@
 HB.AnimeIndexController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   language: null,
 
+  showFullCast: null,
+  fullCast: null,
+
+  displayCast: function() {
+    if (this.get('showFullCast') && this.get('fullCast')) {
+      return this.get('fullCast');
+    } else {
+      return this.get('model.featuredCastings');
+    }
+  }.property('model.featuredCastings', 'fullCast', 'showFullCast'),
+
   filteredCast: function () {
     var language = this.get('language');
-    return this.get('model.featuredCastings').filterBy('language', language);
-  }.property('model.featuredCastings', 'language'),
+    return this.get('displayCast').filterBy('language', language);
+  }.property('displayCast', 'language'),
 
   roundedBayesianRating: function() {
     if (this.get('model.bayesianRating') && this.get('model.bayesianRating') > 0) {
@@ -44,6 +55,15 @@ HB.AnimeIndexController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   actions: {
     setLanguage: function (language) {
       this.set('language', language);
+    },
+
+    showMoreCast: function() {
+      this.set('showFullCast', true);
+      this.send('loadFullCast');
+    },
+
+    showLessCast: function() {
+      this.set('showFullCast', false);
     }
   }
 });

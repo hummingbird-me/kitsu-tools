@@ -177,7 +177,15 @@
         </ul>
 
         <div class="view-more">
-          <a href="#">View More Cast</a>
+          {{#if showFullCast}}
+            {{#if fullCast}}
+              <a {{action "showLessCast"}}>View Less Cast</a>
+            {{else}}
+              <i class="fa fa-spinner fa-spin"></i> Loading...
+            {{/if}}
+          {{else}}
+            <a {{action "showMoreCast"}}>View More Cast</a>
+          {{/if}}
         </div>
       </div>
     </div>
