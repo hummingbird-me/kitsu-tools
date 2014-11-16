@@ -1,6 +1,9 @@
 HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   coverImageStyle: function() {
-    return "background-image: url('" + this.get('model.coverImage') + "'); background-position: 50% -" + this.get('model.coverImageTopOffset') + "px;";
+    var coverImage = this.get('model.coverImage');
+    if (!coverImage) { return false; }
+    var coverImageTopOffset = this.get('model.coverImageTopOffset');
+    return "background-image: url('" + coverImage + "'); background-position: 50% -" + coverImageTopOffset + "px;";
   }.property('model.coverImage', 'model.coverImageTopOffset'),
 
   randomQuote: function() {
