@@ -1,22 +1,3 @@
-{{!-- <div class="series-header">
-  <div class="bg-image-wrapper series" {{bind-attr style=coverImageStyle}}></div>
-  <div class="container">
-    {{#if isIndex}}
-      {{partial "anime/full_header"}}
-    {{else}}
-      <div class="condensed">
-        {{partial "anime/full_header"}}
-      </div>
-    {{/if}}
-  </div>
-</div>
-
-<div class="container">
-  <div class="anime-page-advert">
-    {{ad-unit adId="1293413" adClass="257f81e798bd68dd81e60f42838f361f"}}
-  </div>
-</div> --}}
-
 <div class="series-header" {{bind-attr style=coverImageStyle}}>
   <div class="container">
     <div class="header-buttons">
@@ -33,11 +14,12 @@
         </script>
       </span>
     </div>
-    <div class="featured-quote">
-      {{! Long quote to make sure it works at max size with responsive shit --}}
-      <div class="quote-text">"There’s no such thing as a painless lesson. They just don’t exist. Sacrifices are necessary. You can’t gain anything without losing something first. Although, if you can endure that pain and walk away from it, you’ll find that you now have a heart strong enough to overcome any obstacle. Yeah, a heart made of fullmetal."</div>
-      <div class="quote-author">- Roy Mustang</div>
-    </div>
+    {{#if randomQuote}}
+      <div class="featured-quote">
+        <div class="quote-text">"{{randomQuote.content}}"</div>
+        <div class="quote-author">- {{randomQuote.characterName}}</div>
+      </div>
+    {{/if}}
   </div>
 </div>
 

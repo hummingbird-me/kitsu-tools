@@ -9,6 +9,13 @@ HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     return "background-image: url('" + this.get('model.coverImage') + "'); background-position: 50% -" + this.get('model.coverImageTopOffset') + "px;";
   }.property('model.coverImage', 'model.coverImageTopOffset'),
 
+  randomQuote: function() {
+    var quoteCount = this.get('model.featuredQuotes.length');
+    if (quoteCount === 0) { return null; }
+    var index = Math.floor(Math.random() * quoteCount);
+    return this.get('model.featuredQuotes.content')[index];
+  }.property('model.featuredQuotes'),
+
   roundedBayesianRating: function() {
     if (this.get('model.bayesianRating')) {
       return this.get('model.bayesianRating').toFixed(2);
