@@ -131,7 +131,7 @@ gem 'mixpanel'
 gem 'kibana-rack'
 
 # SEO
-gem 'indexable'
+#gem 'indexable'
 gem 'sitemap_generator'
 
 gem 'message_bus', github: 'vikhyat/message_bus'
