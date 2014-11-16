@@ -2265,6 +2265,13 @@ CREATE UNIQUE INDEX index_anime_on_slug ON anime USING btree (slug);
 
 
 --
+-- Name: index_anime_on_user_count; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_anime_on_user_count ON anime USING btree (user_count);
+
+
+--
 -- Name: index_anime_on_wilson_ci; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3352,4 +3359,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141105063427');
 INSERT INTO schema_migrations (version) VALUES ('20141105134140');
 
 INSERT INTO schema_migrations (version) VALUES ('20141112132716');
+
+INSERT INTO schema_migrations (version) VALUES ('20141116071336');
 

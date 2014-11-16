@@ -15,7 +15,7 @@
 #  rating        :decimal(2, 1)
 #  created_at    :datetime
 #  updated_at    :datetime
-#  notes         :text
+#  notes         :string(255)
 #  imported      :boolean          default(FALSE), not null
 #
 
