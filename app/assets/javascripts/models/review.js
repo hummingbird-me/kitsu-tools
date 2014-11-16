@@ -14,7 +14,6 @@ HB.Review = DS.Model.extend({
   positiveVotes: DS.attr('number'),
   totalVotes: DS.attr('number'),
 
-
   wilsonScore: function() {
     return HB.utils.wilsonScore(this.get('positiveVotes'), this.get('totalVotes'));
   }.property('positiveVotes', 'totalVotes')
