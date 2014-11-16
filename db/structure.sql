@@ -149,6 +149,38 @@ CREATE TABLE anime_producers (
 
 
 --
+-- Name: apps; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE apps (
+    id integer NOT NULL,
+    creator_id integer NOT NULL,
+    key character varying(255) NOT NULL,
+    secret character varying(255) NOT NULL,
+    name character varying(255) NOT NULL
+);
+
+
+--
+-- Name: apps_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE apps_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: apps_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE apps_id_seq OWNED BY apps.id;
+
+
+--
 -- Name: beta_invites; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1610,6 +1642,13 @@ ALTER TABLE ONLY anime ALTER COLUMN id SET DEFAULT nextval('anime_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY apps ALTER COLUMN id SET DEFAULT nextval('apps_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY beta_invites ALTER COLUMN id SET DEFAULT nextval('beta_invites_id_seq'::regclass);
 
 
@@ -1885,6 +1924,14 @@ ALTER TABLE ONLY watchlists ALTER COLUMN id SET DEFAULT nextval('watchlists_id_s
 
 ALTER TABLE ONLY anime
     ADD CONSTRAINT anime_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: apps_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY apps
+    ADD CONSTRAINT apps_pkey PRIMARY KEY (id);
 
 
 --
@@ -2295,6 +2342,27 @@ CREATE INDEX index_anime_producers_on_anime_id ON anime_producers USING btree (a
 --
 
 CREATE INDEX index_anime_producers_on_producer_id ON anime_producers USING btree (producer_id);
+
+
+--
+-- Name: index_apps_on_creator_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_apps_on_creator_id ON apps USING btree (creator_id);
+
+
+--
+-- Name: index_apps_on_key; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_apps_on_key ON apps USING btree (key);
+
+
+--
+-- Name: index_apps_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_apps_on_name ON apps USING btree (name);
 
 
 --
@@ -3370,4 +3438,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141116071336');
 INSERT INTO schema_migrations (version) VALUES ('20141116073430');
 
 INSERT INTO schema_migrations (version) VALUES ('20141117044111');
+
+INSERT INTO schema_migrations (version) VALUES ('20141116204731');
 
