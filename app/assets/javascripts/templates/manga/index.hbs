@@ -30,7 +30,9 @@
   <div class="tab-content">
     <div class="tab-pane active genre-tab">
       <div {{bind-attr class=":slider showGenres::hidden"}}>
-        {{partial "media/genres"}}
+        {{#each genre in genres}}
+          <span class="badge">{{genre}}</span>
+        {{/each}}
       </div>
       <div {{bind-attr class=":slider showCharacters::hidden"}}>
         {{partial "manga/characters"}}
