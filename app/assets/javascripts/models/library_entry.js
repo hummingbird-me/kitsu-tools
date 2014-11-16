@@ -4,7 +4,7 @@ HB.LibraryEntry = DS.Model.extend({
   isFavorite: DS.attr('boolean'),
   rating: DS.attr('number'),
   episodesWatched: DS.attr('number'),
-  "private": DS.attr('boolean'),
+  private: DS.attr('boolean'),
   rewatching: DS.attr('boolean'),
   rewatchCount: DS.attr('number'),
   notes: DS.attr('string'),
@@ -15,5 +15,7 @@ HB.LibraryEntry = DS.Model.extend({
   negativeRating: Em.computed.lte('rating', 2.4),
   neutralRating: function() {
     return (this.get('rating') > 2.4 && this.get('rating') < 3.6);
-  }.property('rating')
+  }.property('rating'),
+
+  isComplete: Em.computed.eq('status', "Completed")
 });
