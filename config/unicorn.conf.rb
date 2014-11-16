@@ -4,8 +4,8 @@ worker_processes ENV["UNICORN_WORKERS"].to_i
 working_directory hummingbird_path
 listen 3000
 
-# Nuke workers after 15 seconds.
-timeout 15
+# Nuke workers after 20 seconds.
+timeout 20
 
 # Reduces memory usage in Ruby 2.0+.
 preload_app true

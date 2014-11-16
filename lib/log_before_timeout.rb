@@ -5,7 +5,7 @@ class LogBeforeTimeout
 
   def call(env)
     thr = Thread.new do
-      sleep(10)
+      sleep(17)
 
       path = env["PATH_INFO"]
       qs = env["QUERY_STRING"] and path = "#{path}?#{qs}"
