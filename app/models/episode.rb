@@ -61,6 +61,8 @@ class Episode < ActiveRecord::Base
     ).first_or_initialize
     episode.assign_attributes({
       title: (hash[:title] if episode.title.blank?),
+      jp_title: (hash[:jp_title] if episode.jp_title.blank?),
+      airdate: (hash[:airdate] if episode.airdate.blank?),
       synopsis: (hash[:synopsis] if episode.synopsis.blank?),
       thumbnail: (hash[:thumbnail] if episode.thumbnail.blank?)
     }.compact)

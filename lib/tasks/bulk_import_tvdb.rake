@@ -29,8 +29,8 @@ task :bulk_import_tvdb, [] => [:environment] do |t, args|
       return nil
     end
   end
-  def tvdb_series(id)
-    tvdb("series/#{id}/all/")
+  def tvdb_series(id, lang='en')
+    tvdb("series/#{id}/all/#{lang}.xml")
   end
   def failed(title, msg="")
     $stderr.puts "Failed: [#{title}] #{msg}"
@@ -40,17 +40,20 @@ task :bulk_import_tvdb, [] => [:environment] do |t, args|
     $results[:skipped] += 1
   end
 
-  shows = Anime.select(:id, :title, :alt_title, :thetvdb_series_id, :thetvdb_season_id, :episode_count)
-               .where.not(thetvdb_series_id: "").limit(500)
+  shows = Anime.select(:id, :title, :thetvdb_series_id, :thetvdb_season_id, :episode_count)
+               .where.not(thetvdb_series_id: "")
 
   Parallel.each(shows, in_threads: 8, progress: 'Importing') do |anime|
     begin
       next skipped if anime.thetvdb_series_id == "-1"
       tvdb_anime = tvdb_series(anime.thetvdb_series_id)
+      tvdb_anime_jp = tvdb_series(anime.thetvdb_series_id, 'ja') || {}
       season_id = anime.thetvdb_season_id
       next failed(anime.title, "404 Error for SeriesID=#{anime.thetvdb_series_id}") if tvdb_anime.nil?
-      next skipped if season_id.downcase == 'nuck'
+      next skipped if season_id.try(:downcase) == 'nuck'
       next failed(anime.title, "No episodes found for SeriesID=#{anime.thetvdb_series_id}") if tvdb_anime[:episode].blank?
+
+      anime.update_column :jp_title, tvdb_anime_jp[:series][:series_name] unless tvdb_anime_jp[:series][:series_name] == tvdb_anime[:series][:series_name]
 
       tvdb_season = tvdb_anime[:episode].select do |ep|
         if ep.is_a? Hash
@@ -61,7 +64,11 @@ task :bulk_import_tvdb, [] => [:environment] do |t, args|
           end
         end
       end
-      next failed(anime.title, "No seasons found for SeriesID=#{anime.thetvdb_series_id}") if tvdb_season.count == 0
+      if tvdb_season.count == 0
+        tvdb_season = tvdb_anime[:episode]
+      end
+
+      jp_titles = Hash[tvdb_anime_jp[:episode].map { |ep| [ep[:id], ep[:episode_name]] if ep.is_a? Hash }]
 
       # We don't wanna fuck with the episode count too much
       if ((anime.episode_count || 0) - tvdb_season.count).abs > 5 && anime.episode_count != 0 && anime.thetvdb_season_id != 'ALL'
@@ -79,14 +86,18 @@ task :bulk_import_tvdb, [] => [:environment] do |t, args|
 
       # truncate if we're not doing ALL or have 0/nil episodes
       tvdb_season = tvdb_season[0..anime.episode_count] if season_id != 'ALL' || anime.episode_count != 0 || !anime.episode_count.nil?
+      next $stderr.printf "Nil season: %s (SeriesID=%s, SeasonID=%s)\n", anime.title, anime.thetvdb_series_id, anime.thetvdb_season_id if tvdb_season.nil?
       tvdb_season.each do |ep|
         thumb_url = URI("http://thetvdb.com/banners/#{ep[:filename]}")
         thumb_type = Net::HTTP.start(thumb_url.host, thumb_url.port).head(thumb_url)['Content-Type']
+        jp_title = jp_titles[ep[:id]]
         Episode.create_or_update_from_hash({
           anime: anime,
           episode: ep[:episode_number],
-          season: ep[:season_number],
+          airdate: ep[:first_aired],
+          season: ep[:season_number] || 1,
           title: ep[:episode_name],
+          jp_title: (jp_title unless ep[:episode_name] == jp_title),
           synopsis: ep[:description],
           thumbnail: (thumb_url if thumb_type.starts_with? 'image/')
         })
