@@ -28,11 +28,13 @@ class VersionsController < ApplicationController
   def update
     version = Version.find(params[:id])
     version.item.update_from_pending(version)
+    version.user.increment!(:approved_edit_count)
     render json: true
   end
 
   def destroy
-    Version.find(params[:id]).destroy
+    version = Version.find(params[:id]).destroy
+    version.user.increment!(:rejected_edit_count)
     render json: true
   end
 
