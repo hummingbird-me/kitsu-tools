@@ -19,7 +19,7 @@ HB.AnimeIndexRoute = Ember.Route.extend({
     loadFullCast: function() {
       var self = this;
       this.store.find('casting', {anime_id: this.currentModel.get('id')}).then(function(castings) {
-        self.controllerFor('animeIndex').set('fullCast', castings);
+        self.controller.set('fullCast', castings);
       });
     }
   }

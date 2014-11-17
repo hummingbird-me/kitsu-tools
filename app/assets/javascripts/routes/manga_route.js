@@ -2,7 +2,7 @@ HB.MangaRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('fullManga', params.id);
   },
-  
+
   saveMangaLibraryEntry: function(mangaLibraryEntry) {
     var manga = this.currentModel;
     return Messenger().expectPromise((function() {
@@ -12,19 +12,19 @@ HB.MangaRoute = Ember.Route.extend({
       successMessage: "Saved " + manga.get('romajiTitle') + "!"
     });
   },
-  
+
   actions: {
     toggleFavorite: function() {
       if (!this.get('currentUser.isSignedIn')) {
         alert('Need to be signed in');
         return;
       }
-      
+
       var mangaLibraryEntry = this.currentModel.get('mangaLibraryEntry');
       mangaLibraryEntry.set('isFavorite', !mangaLibraryEntry.get('isFavorite'));
       return this.saveMangaLibraryEntry(mangaLibraryEntry);
     },
-    
+
     removeFromLibrary: function() {
       var manga = this.currentModel,
           mangaLibraryEntry = manga.get('mangaLibraryEntry');
@@ -35,10 +35,10 @@ HB.MangaRoute = Ember.Route.extend({
         successMessage: "Removed " + manga.get('romajiTitle') + " from your library!"
       });
     },
-    
+
     setLibraryStatus: function(newStatus) {
       var mangaLibraryEntry = this.currentModel.get('mangaLibraryEntry');
-      if (this.controllerFor('manga').get('mangaLibraryEntryExists')) {
+      if (this.controller.get('mangaLibraryEntryExists')) {
         mangaLibraryEntry.set('status', newStatus);
       } else {
         mangaLibraryEntry = this.store.createRecord('mangaLibraryEntry', {
@@ -52,7 +52,7 @@ HB.MangaRoute = Ember.Route.extend({
       }
       return this.saveMangaLibraryEntry(mangaLibraryEntry);
     },
-    
+
     setLibraryRating: function(newRating) {
       var mangaLibraryEntry = this.currentModel.get('mangaLibraryEntry');
       mangaLibraryEntry.set('rating', newRating);

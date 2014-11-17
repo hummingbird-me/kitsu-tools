@@ -38,7 +38,7 @@ HB.AnimeRoute = Ember.Route.extend({
 
     setLibraryStatus: function(newStatus) {
       var libraryEntry = this.currentModel.get('libraryEntry');
-      if (this.controllerFor('anime').get('libraryEntryExists')) {
+      if (this.controller.get('libraryEntryExists')) {
         libraryEntry.set('status', newStatus);
       } else {
         libraryEntry = this.store.createRecord('libraryEntry', {

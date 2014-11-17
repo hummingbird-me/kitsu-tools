@@ -5,7 +5,7 @@ HB.UserRoute = Ember.Route.extend({
 
   actions: {
     closeModal: function() {
-      this.controllerFor("user").set('coverUpload', Ember.Object.create());
+      this.controller.set('coverUpload', Ember.Object.create());
       return true;
     },
 
