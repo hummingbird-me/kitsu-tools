@@ -4,24 +4,17 @@ class VersionsController < ApplicationController
   def index
     state = params[:state] || :pending
     versions = Version.where('state = ?', Version.states[state])
+      .page(params[:page]).per(10)
 
     respond_to do |format|
       format.html {
-        # todo: preload ember
+        generic_preload! "versions", ed_serialize(versions)
         render_ember
       }
       format.json {
-        render json: versions, each_serializer: VersionSerializer
+        render json: versions, each_serializer: VersionSerializer,
+          meta: { cursor: 1 + (params[:page] || 1).to_i }
       }
-    end
-  end
-
-  def show
-    # todo: preload ember
-    version = Version.find(params[:id])
-    respond_to do |format|
-      format.html { render_ember }
-      format.json { render json: version, serializer: VersionSerializer }
     end
   end
 

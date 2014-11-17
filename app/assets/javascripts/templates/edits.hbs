@@ -58,6 +58,10 @@
                   </div>
                 {{/if}}
               {{/each}}
+
+              {{#if canLoadMore}}
+                {{load-more classNames="light" action="loadNextPage"}}
+              {{/if}}
             </div>
           {{else}}
             <p class="edits-none">There aren't any pending anime changes.</p>
