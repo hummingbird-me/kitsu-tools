@@ -1,4 +1,8 @@
 HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
+  noCoverImage: function() {
+    return !this.get('model.coverImage');
+  }.property('model.coverImage'),
+
   coverImageStyle: function() {
     var coverImage = this.get('model.coverImage');
     if (!coverImage) { return false; }

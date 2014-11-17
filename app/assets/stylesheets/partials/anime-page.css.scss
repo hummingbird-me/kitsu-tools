@@ -368,6 +368,16 @@
 }
 
 
+.series-header .no-cover-image {
+  .container {
+    height: 200px;
+    @media (max-width: 820px) {
+      height: 100px;
+    }
+  }
+}
+
+
 /* Condensed header shown on non-index anime pages. */
 .series-header .condensed {
   .series-title {
