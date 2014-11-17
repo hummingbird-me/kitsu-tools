@@ -19,7 +19,7 @@ class VersionsController < ApplicationController
   end
 
   def update
-    version = Version.find(params[:id])
+    version = Version.pending.find(params[:id])
     # update state to history outside of the background job
     version.update_attribute(:state, :history)
     VersionWorker.perform_async(version.id)
@@ -29,7 +29,7 @@ class VersionsController < ApplicationController
   end
 
   def destroy
-    version = Version.find(params[:id]).destroy
+    version = Version.pending.find(params[:id]).destroy
     User.increment_counter(:rejected_edit_count, version.user_id)
     render json: true
   end
