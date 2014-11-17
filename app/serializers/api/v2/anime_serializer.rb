@@ -19,6 +19,7 @@ module Api::V2
     field(:cover_image) {|a| a.cover_image.url(:thumb) }
     field(:community_rating) {|a| a.bayesian_average }
     field(:genres) {|a| a.genres.map {|x| x.name } }
+    field(:producers) {|a| a.producers.map {|x| x.name } }
     field(:bayesian_rating) {|a| a.bayesian_average }
 
     has_many :gallery_images, serializer: GalleryImageSerializer
