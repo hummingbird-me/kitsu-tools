@@ -4,7 +4,7 @@ class VersionsController < ApplicationController
   def index
     state = params[:state] || :pending
     versions = Version.where('state = ?', Version.states[state])
-      .page(params[:page]).per(10)
+      .page(params[:page]).per(25)
 
     respond_to do |format|
       format.html {
