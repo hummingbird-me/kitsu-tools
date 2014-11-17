@@ -7,7 +7,13 @@ class FullAnimeController < ApplicationController
   end
 
   def update
-    Anime.find(params[:id]).create_pending(current_user, full_anime_params)
+    anime = Anime.find(params[:id])
+    # if this user is admin, just update
+    if current_user.admin?
+      anime.update_attributes(full_anime_params)
+    else
+      anime.create_pending(current_user, full_anime_params)
+    end
     render json: true
   end
 
