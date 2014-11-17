@@ -1,4 +1,4 @@
-HB.AppsRoute = Ember.Route.extend({
+HB.AppsIndexRoute = Ember.Route.extend({
   
   model: function(){
 

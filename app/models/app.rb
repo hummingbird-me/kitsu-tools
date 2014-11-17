@@ -14,8 +14,7 @@ class App < ActiveRecord::Base
 
   validates :creator, presence: true
   validates :name, presence: true, uniqueness: true
-  validates :key, presence: true, uniqueness: true
-  validates :secret, presence: true
+  validates :key, uniqueness: true
 
   before_create do
     self.key = SecureRandom.hex(10)

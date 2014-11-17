@@ -1,4 +1,7 @@
-HB.AppsController = Ember.Controller.extend({
-  mobileApps: Ember.computed.filterBy('model', 'form', 'Mobile'),
-  desktopApps: Ember.computed.filterBy('model', 'form', 'Desktop')
+HB.AppsController = Ember.Controller.extend(HB.HasCurrentUser, {
+  needs: ['application'],
+
+  isIndex: function() {
+    return this.get('controllers.application.currentRouteName') === "apps.index";
+  }.property('controllers.application.currentRouteName'),
 });

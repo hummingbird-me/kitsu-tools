@@ -15,6 +15,10 @@
   a {
     color: #ebab67;
   }
+  &.condensed {
+    height: 200px;
+    padding-top: 20px;
+  }
 }
 .apps-page {
   @extend .container;
@@ -99,6 +103,13 @@
             background: darken(#e67e22,10);
           }
         }
+      }
+    }
+    .app-token {
+      font-family: monospace;
+      &:before,
+      &:after {
+        content: '"';
       }
     }
     .app-screens {

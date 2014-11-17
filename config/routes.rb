@@ -16,6 +16,9 @@ Hummingbird::Application.routes.draw do
     post :vote
   end
 
+  get '/apps/mine' => 'apps#mine'
+  resources :apps
+
   resource :chat, only: [:show, :create, :destroy] do
     post :ping
   end
@@ -48,7 +51,6 @@ Hummingbird::Application.routes.draw do
     end
   end
 
-  get '/apps' => 'home#static'
   get '/privacy' => 'home#static'
 
   # Recommendations

@@ -42,7 +42,10 @@ HB.Router.map(function() {
   this.route('dashboard');
   this.route('notifications');
 
-  this.route('apps');
+  this.resource('apps', function () {
+    this.route('new');
+    this.route('mine');
+  });
   this.route('search');
 
   this.route('edits');

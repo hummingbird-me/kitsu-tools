@@ -1,0 +1,27 @@
+<h2>My Apps</h2>
+<div class="block-grid-md-2 blog-grid-sm-1">
+  {{#each}}
+    <div class="block-grid-item">
+      <div class="app-card">
+        <div class="app-inner">
+          <h3 class="app-title">{{name}}</h3>
+          <dl>
+            <dt>Key</dt>
+            <dd class="app-token">{{key}}</dd>
+            <dt>Secret</dt>
+            <dd class="app-token">{{secret}}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+  <div class="block-grid-item">
+    <div class="app-card">
+      <div class="app-inner">
+        <h3 class="app-title">New App</h3>
+        {{input type="text" class="form-control" name="name" value=newAppName placeholder="Application Name"}}
+        <button class="btn" {{action "createApp"}}>Create</button>
+      </div>
+    </div>
+  </div>
+</div>
