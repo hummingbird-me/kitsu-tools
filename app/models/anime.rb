@@ -337,16 +337,14 @@ class Anime < ActiveRecord::Base
 
   # Versionable overrides
   def create_pending(author, object = {})
-    # default attachment URLs in development are relative and cause issues
-    # I'm sure the final version here will allow direct file upload
-    # rather than just URLs
-    if Rails.env.development?
-      if object[:poster_image] =~ /^(\/uploads\/\S+)/
-        object.delete(:poster_image)
-      end
-      if object[:cover_image] =~ /^(\/uploads\/\S+)/
-        object.delete(:cover_image)
-      end
+    # check if URL is the same, otherwise paperclip will determine
+    # that it is a new image based on `original` filesize compared to
+    # the linked thumbnail filesize.
+    if object[:poster_image] == self.poster_image_thumb
+      object.delete(:poster_image)
+    end
+    if object[:cover_image] == self.cover_image.url(:thumb)
+      object.delete(:cover_image)
     end
     super
   end
