@@ -1,4 +1,6 @@
-HB.EditsShowController = Ember.Controller.extend({
+HB.EditItemController = Ember.ObjectController.extend({
+  isDiffShown: false,
+
   ignoredProps: [
     'poster_image_updated_at',
     'poster_image_content_type',
@@ -70,13 +72,17 @@ HB.EditsShowController = Ember.Controller.extend({
   },
 
   actions: {
-    approveEdit: function() {
+    toggleDiff: function() {
+      this.set('isDiffShown', !this.get('isDiffShown'));
+    },
+
+     approveEdit: function() {
       Messenger().expectPromise(function() {
         return this.get('model').save();
       }.bind(this), {
         progressMessage: 'Contacting server...',
         successMessage: function() {
-          this.transitionToRoute('edits.index');
+          this.get('model').deleteRecord();
           return 'Edit was approved!';
         }.bind(this)
       });
@@ -89,10 +95,7 @@ HB.EditsShowController = Ember.Controller.extend({
         return this.get('model').destroyRecord();
       }.bind(this), {
         progressMessage: 'Contacting server...',
-        successMessage: function() {
-          this.transitionToRoute('edits.index');
-          return 'Edit was rejected.';
-        }.bind(this)
+        successMessage: 'Edit was rejected.'
       });
     }
   }

@@ -1,0 +1,69 @@
+<div class="container">
+  <h1>Pending Edits</h1>
+
+  <div class="row">
+    <div class="col-md-12 edits">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Anime
+        </div>
+        <div class="panel-body">
+          {{#if pendingAnime}}
+            <div class="edit-list">
+              {{#each pendingAnime itemController="editItem"}}
+                <div class="edit-entry">
+                  <span class="edit-entry-left">
+                    {{#link-to 'anime' item}}
+                      {{item.displayTitle}}
+                    {{/link-to}}
+                  </span>
+                  <span class="edit-entry-right">
+                    <span class="edit-entry-user">
+                      {{#link-to 'user' user}}
+                        {{user.username}}
+                      {{/link-to}}
+                    </span>
+                    <span class="edit-entry-time">
+                      {{format-time createdAt 'MM MMM YY, HH:mm a'}}
+                    </span>
+                    <span class="edit-entry-actions">
+                      <a href="#" {{action 'toggleDiff'}}>
+                        <i class="fa fa-arrow-down"></i> View
+                      </a>
+                    </span>
+                  </span>
+                </div>
+
+                {{#if isDiffShown}}
+                  <div class="edit-entry-diff">
+                    {{#if outdated}}
+                      <div class="alert alert-danger">
+                        {{model.item.displayTitle}} has been updated since this edit was created.
+                      </div>
+                    {{/if}}
+                    <dl>
+                      {{#each changes}}
+                        <dt class="diff-type">{{this.[0]}}</dt>
+                        <dd class="diff-body">{{this.[1]}}</dd>
+                      {{/each}}
+                    </dl>
+                    <div class="diff-actions">
+                      <a class="btn btn-success" {{action "approveEdit"}}>
+                        <i class="fa fa-check"></i> Approve
+                      </a>
+                      <a class="btn btn-danger" {{action "rejectEdit"}}>
+                        <i class="fa fa-close"></i> Reject
+                      </a>
+                    </div>
+                  </div>
+                {{/if}}
+              {{/each}}
+            </div>
+          {{else}}
+            <p class="edits-none">There aren't any pending anime changes.</p>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
