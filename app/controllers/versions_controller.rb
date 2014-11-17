@@ -4,7 +4,7 @@ class VersionsController < ApplicationController
   def index
     state = params[:state] || :pending
     versions = Version.where('state = ?', Version.states[state])
-      .page(params[:page]).per(10)
+      .page(params[:page]).per(25)
 
     respond_to do |format|
       format.html {
@@ -19,14 +19,17 @@ class VersionsController < ApplicationController
   end
 
   def update
-    version = Version.find(params[:id])
-    version.item.update_from_pending(version)
+    version = Version.pending.find(params[:id])
+    # update state to history outside of the background job
+    version.update_attribute(:state, :history)
+    VersionWorker.perform_async(version.id)
+
     User.increment_counter(:approved_edit_count, version.user_id)
     render json: true
   end
 
   def destroy
-    version = Version.find(params[:id]).destroy
+    version = Version.pending.find(params[:id]).destroy
     User.increment_counter(:rejected_edit_count, version.user_id)
     render json: true
   end

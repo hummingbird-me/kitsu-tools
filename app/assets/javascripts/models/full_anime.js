@@ -14,6 +14,7 @@ HB.FullAnime = HB.Anime.extend({
   featuredQuotes: DS.hasMany('quote'),
   trendingReviews: DS.hasMany('review'),
   featuredCastings: DS.hasMany('casting'),
+  pendingEdits: DS.attr('number'),
 
   hasTrailer: Em.computed.bool('youtubeVideoId'),
 

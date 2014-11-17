@@ -103,6 +103,10 @@ class Anime < ActiveRecord::Base
   # has_many :consumings, as: :item TODO: this will be used once we decide to unify library stuff
   validates :title, :presence => true, :uniqueness => true
 
+  before_validation do
+    self.cover_image_top_offset = 0 if self.cover_image_top_offset.nil?
+  end
+
   # Filter out hentai if `filterp` is true or nil.
   def self.sfw_filter(current_user)
     if current_user && !current_user.sfw_filter
@@ -333,16 +337,14 @@ class Anime < ActiveRecord::Base
 
   # Versionable overrides
   def create_pending(author, object = {})
-    # default attachment URLs in development are relative and cause issues
-    # I'm sure the final version here will allow direct file upload
-    # rather than just URLs
-    if Rails.env.development?
-      if object[:poster_image] =~ /^(\/uploads\/\S+)/
-        object.delete(:poster_image)
-      end
-      if object[:cover_image] =~ /^(\/uploads\/\S+)/
-        object.delete(:cover_image)
-      end
+    # check if URL is the same, otherwise paperclip will determine
+    # that it is a new image based on `original` filesize compared to
+    # the linked thumbnail filesize.
+    if object[:poster_image] == self.poster_image_thumb
+      object.delete(:poster_image)
+    end
+    if object[:cover_image] == self.cover_image.url(:thumb)
+      object.delete(:cover_image)
     end
     super
   end
