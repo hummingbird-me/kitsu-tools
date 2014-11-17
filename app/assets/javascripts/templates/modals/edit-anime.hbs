@@ -4,6 +4,16 @@
   </div>
   <div class="modal-body">
     <div class="row">
+      {{#if pendingEdits}}
+        <div class="col-md-12">
+          <div class="alert alert-info">
+            You have
+            {{pluralize pendingEdits "pending edit" "pending edits"}}
+            for this anime.
+          </div>
+        </div>
+      {{/if}}
+
       <div class="col-md-12">
         <div class="form-group">
           <label>Synopsis</label>

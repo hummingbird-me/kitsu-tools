@@ -8,7 +8,8 @@ class FullAnimeSerializer < AnimeSerializer
              :languages,
              :community_ratings,
              :youtube_video_id,
-             :bayesian_rating
+             :bayesian_rating,
+             :pending_edits
 
   has_many :featured_quotes, root: :quotes
   has_many :trending_reviews, root: :reviews
@@ -73,4 +74,7 @@ class FullAnimeSerializer < AnimeSerializer
     object.bayesian_average
   end
 
+  def pending_edits
+    scope && Version.pending.where(user: scope, item: object).count
+  end
 end
