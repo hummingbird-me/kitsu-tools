@@ -103,6 +103,10 @@ class Anime < ActiveRecord::Base
   # has_many :consumings, as: :item TODO: this will be used once we decide to unify library stuff
   validates :title, :presence => true, :uniqueness => true
 
+  before_validation do
+    self.cover_image_top_offset = 0 if self.cover_image_top_offset.nil?
+  end
+
   # Filter out hentai if `filterp` is true or nil.
   def self.sfw_filter(current_user)
     if current_user && !current_user.sfw_filter
