@@ -1426,7 +1426,9 @@ CREATE TABLE users (
     to_follow boolean DEFAULT false,
     dropbox_token character varying(255),
     dropbox_secret character varying(255),
-    last_backup timestamp without time zone
+    last_backup timestamp without time zone,
+    approved_edit_count integer DEFAULT 0,
+    rejected_edit_count integer DEFAULT 0
 );
 
 
@@ -3366,4 +3368,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141112132716');
 INSERT INTO schema_migrations (version) VALUES ('20141116071336');
 
 INSERT INTO schema_migrations (version) VALUES ('20141116073430');
+
+INSERT INTO schema_migrations (version) VALUES ('20141117044111');
 

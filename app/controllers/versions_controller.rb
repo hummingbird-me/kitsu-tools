@@ -4,35 +4,30 @@ class VersionsController < ApplicationController
   def index
     state = params[:state] || :pending
     versions = Version.where('state = ?', Version.states[state])
+      .page(params[:page]).per(10)
 
     respond_to do |format|
       format.html {
-        # todo: preload ember
+        generic_preload! "versions", ed_serialize(versions)
         render_ember
       }
       format.json {
-        render json: versions, each_serializer: VersionSerializer
+        render json: versions, each_serializer: VersionSerializer,
+          meta: { cursor: 1 + (params[:page] || 1).to_i }
       }
-    end
-  end
-
-  def show
-    # todo: preload ember
-    version = Version.find(params[:id])
-    respond_to do |format|
-      format.html { render_ember }
-      format.json { render json: version, serializer: VersionSerializer }
     end
   end
 
   def update
     version = Version.find(params[:id])
     version.item.update_from_pending(version)
+    User.increment_counter(:approved_edit_count, version.user_id)
     render json: true
   end
 
   def destroy
-    Version.find(params[:id]).destroy
+    version = Version.find(params[:id]).destroy
+    User.increment_counter(:rejected_edit_count, version.user_id)
     render json: true
   end
 

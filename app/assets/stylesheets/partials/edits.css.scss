@@ -1,10 +1,46 @@
-.pending-edit {
-  .approve, .reject { margin: { left: 10px; right: 10px; }; }
-  .approve { color: green; }
-  .reject { color: red; }
+/* edit index view */
+.edits {
+  .panel-body { padding: 0; }
+  .edits-none { padding: 10px 20px; }
 }
 
-.diff {
+.edit-list {
+  .edit-entry {
+    @extend .clearfix;
+    padding: 10px 20px;
+
+    .edit-entry-left {
+      @extend .col-xs-12;
+      @extend .col-sm-7;
+      @extend .col-md-7;
+      @extend .col-lg-8;
+
+      padding: { left: 0; right: 0; };
+    }
+
+    .edit-entry-right {
+      @extend .col-xs-12;
+      @extend .col-sm-5;
+      @extend .col-md-5;
+      @extend .col-lg-4;
+
+      padding: { left: 0; right: 0; };
+      text-align: right;
+
+      .edit-entry-user, .edit-entry-time {
+        margin-right: 25px;
+      }
+    }
+  }
+}
+
+
+/* diff view */
+.edit-entry-diff {
+  background-color: #f7f7f7;
+  padding: 10px 20px;
+  padding-left: 40px;
+
   .diff-type, .diff-body { margin-bottom: 10px; }
   .diff-body {
     margin-left: 20px;

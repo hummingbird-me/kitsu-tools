@@ -36,17 +36,10 @@ class VersionsControllerTest < ActionController::TestCase
     assert_equal "history", data["versions"][1]["state"]
   end
 
-  test "can get specific version" do
-    get :show, format: :json, id: versions(:one).id
-    assert_response 200
-
-    data = VersionSerializer.new(versions(:one), scope: users(:josh))
-    assert_equal data.to_json, @response.body
-  end
-
   test "can approve a version" do
     old_version = versions(:one)
     assert_equal 1, old_version["state"] # pending
+    assert_equal 0, User.find(users(:josh).id).approved_edit_count
 
     put :update, format: :json, id: old_version.id
     assert_response 200
@@ -54,13 +47,17 @@ class VersionsControllerTest < ActionController::TestCase
     version = Version.first
     assert_equal "history", version.state
     assert_equal old_version.object["synopsis"], anime(:sword_art_online)["synopsis"]
+
+    assert_equal 1, User.find(users(:josh).id).approved_edit_count
   end
 
   test "can reject a version" do
     assert_equal 3, Version.count
+    assert_equal 0, User.find(users(:josh).id).rejected_edit_count
     delete :destroy, format: :json, id: versions(:one).id
     assert_response 200
     assert_equal 2, Version.count
+    assert_equal 1, User.find(users(:josh).id).rejected_edit_count
   end
 
   test "hidden endpoint if not staff" do
