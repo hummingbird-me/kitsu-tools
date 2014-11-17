@@ -104,6 +104,8 @@ vikhyat:
   avatar_processing: false
   subscribed_to_newsletter: true
   mal_import_in_progress: false
+  approved_edit_count: 0
+  rejected_edit_count: 0
 
 josh:
   email: josh@hummingbird.me
@@ -148,3 +150,5 @@ josh:
   avatar_processing: false
   subscribed_to_newsletter: true
   mal_import_in_progress:
+  approved_edit_count: 0
+  rejected_edit_count: 0

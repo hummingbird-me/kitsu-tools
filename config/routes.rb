@@ -142,7 +142,7 @@ Hummingbird::Application.routes.draw do
   resources :characters, only: [:show]
 
   # Versions
-  resources :versions, except: [:new, :create]
+  resources :versions, except: [:new, :create, :show]
   get '/edits' => 'versions#index'
 
   # Admin Panel
