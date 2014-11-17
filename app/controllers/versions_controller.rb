@@ -20,7 +20,10 @@ class VersionsController < ApplicationController
 
   def update
     version = Version.find(params[:id])
-    version.item.update_from_pending(version)
+    # update state to history outside of the background job
+    version.update_attribute(:state, :history)
+    VersionWorker.perform_async(version.id)
+
     User.increment_counter(:approved_edit_count, version.user_id)
     render json: true
   end
