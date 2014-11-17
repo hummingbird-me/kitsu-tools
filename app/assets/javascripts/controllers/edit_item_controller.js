@@ -44,7 +44,7 @@ HB.EditItemController = Ember.ObjectController.extend({
       if (key === 'youtube_video_id') {
         // include previous video if it exists
         code = '';
-        if (objectChanges[key][0] !== null) {
+        if (objectChanges[key][0] !== null && objectChanges[key][0] !== "") {
           code += this.youtubeEmbed(this.get('model.item.youtubeVideoId'));
         }
         code += this.youtubeEmbed(this.get('model.object')['youtube_video_id']);
