@@ -10,7 +10,7 @@ class AuthController < ApplicationController
     key = params[:email].include?('@') ? :email : :name
     user = User.where(key => params[:email]).first
 
-    if user.valid_password?(params[:password])
+    if user && user.valid_password?(params[:password])
       sign_in :user, user
       render json: true
     else
