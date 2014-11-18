@@ -59,6 +59,7 @@ class Episode < ActiveRecord::Base
     episode ||= Episode.new(anime: hash[:anime], number: hash[:episode], season_number: hash[:season])
 
     episode.assign_attributes({
+      season_number: (hash[:season] if episode.season_number.blank?),
       title: (hash[:title] if episode.read_attribute(:title).blank?),
       jp_title: (hash[:jp_title] if episode.jp_title.blank?),
       airdate: (hash[:airdate] if episode.airdate.blank?),
