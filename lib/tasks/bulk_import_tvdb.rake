@@ -98,7 +98,7 @@ task :bulk_import_tvdb, [] => [:environment] do |t, args|
           season: ep[:season_number] || 1,
           title: ep[:episode_name],
           jp_title: (jp_title unless ep[:episode_name] == jp_title),
-          synopsis: ep[:description],
+          synopsis: ep[:overview],
           thumbnail: (thumb_url if thumb_type.starts_with? 'image/')
         })
       end
