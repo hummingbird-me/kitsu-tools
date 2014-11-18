@@ -12,6 +12,7 @@ module Versionable
     )
     version.state = :pending
     version.save
+    version
   end
 
   def update_from_pending(version)
