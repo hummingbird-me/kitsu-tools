@@ -52,6 +52,7 @@ HB.Router.map(function() {
 
   this.route('edits');
 
+  this.route('branding');
   this.route('privacy');
   this.route('kotodama');
 });
