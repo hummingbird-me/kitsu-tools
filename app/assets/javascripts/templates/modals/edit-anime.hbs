@@ -1,59 +1,65 @@
-{{#bootstrap-modal action="close"}}
-  <div class="modal-header">
-    <h4 class="modal-title">Edit Anime</h4>
-  </div>
-  <div class="modal-body">
-    <div class="row">
-      {{#if pendingEdits}}
-        <div class="col-md-12">
-          <div class="alert alert-info">
-            You have
-            {{pluralize pendingEdits "pending edit" "pending edits"}}
-            for this anime.
+<div class="edit-series-modal">
+  {{#bootstrap-modal action="close"}}
+    <div class="modal-header">
+      <h4 class="modal-title">Edit Anime</h4>
+      <button class="btn btn-primary" {{action "save"}} {{bind-attr disabled=canSave}}>
+        {{#if isSaving}}<i class="fa fa-spin fa-spinner"></i>{{/if}}
+        Request Edits
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        {{#if pendingEdits}}
+          <div class="col-sm-12">
+            <div class="alert alert-info">
+              You have
+              {{pluralize pendingEdits "pending edit" "pending edits"}}
+              for this anime.
+            </div>
+          </div>
+        {{/if}}
+
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Synopsis</label>
+            {{textarea value=synopsis rows=3 class="form-control"}}
           </div>
         </div>
-      {{/if}}
-
-      <div class="col-md-12">
-        <div class="form-group">
-          <label>Synopsis</label>
-          {{textarea value=synopsis rows=3 class="form-control"}}
+        <div class="form-row">
+          <div class="col-sm-6">
+            <label data-tooltip="Direct link to your replacement image.">
+              Poster Image URL
+              <i class="fa fa-question-circle"></i>
+            </label>
+            {{input value=posterImage class="form-control"}}
+          </div>
+          <div class="col-sm-6">
+            <label data-tooltip="Direct link to your replacement image. Preferable images are desktop wallpapers at least 1500px wide.">Cover Image URL</label>
+            <i class="fa fa-question-circle"></i>
+            {{input value=coverImage class="form-control"}}
+          </div>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Episode Count</label>
-          {{input type="number" value=episodeCount class="form-control"}}
-        </div>
-        <div class="form-group">
-          <label>Episode Length</label>
-          {{input type="number" value=episodeLength class="form-control"}}
-        </div>
-        <div class="form-group">
-          <label>YouTube Video Id</label>
-          {{input value=youtubeVideoId class="form-control"}}
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Poster Image URL</label>
-          {{input value=posterImage class="form-control"}}
-        </div>
-        <div class="form-group">
-          <label>Cover Image URL</label>
-          {{input value=coverImage class="form-control"}}
-        </div>
-        <div class="form-group">
-          <label>Cover Image Top Offset</label>
-          {{input type="number" value=coverImageTopOffset class="form-control"}}
+        <div class="form-row">
+          <div class="col-sm-3">
+            <label>Episode Count</label>
+            {{input type="number" value=episodeCount class="form-control"}}
+          </div>
+          <div class="col-sm-3">
+            <label>Episode Length</label>
+            {{input type="number" value=episodeLength class="form-control"}}
+          </div>
+          <div class="col-sm-3">
+            <label data-tooltip="The video ID is the part between v= and & of the video's page URL.">YouTube Trailer Id</label>
+            <i class="fa fa-question-circle"></i>
+            {{input value=youtubeVideoId class="form-control"}}
+          </div>
+          <div class="col-sm-3">
+            <label data-tooltip="Distance in pixels that you want to move the visible part of the cover photo up.">Cover Image Top Offset</label>
+            <i class="fa fa-question-circle"></i>
+            {{input type="number" value=coverImageTopOffset class="form-control"}}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <button class="btn btn-primary" {{action "save"}} {{bind-attr disabled=canSave}}>
-      {{#if isSaving}}<i class="fa fa-spin fa-spinner"></i>{{/if}}
-      Submit
-    </button>
-  </div>
-{{/bootstrap-modal}}
+  {{/bootstrap-modal}}
+</div>
