@@ -1246,6 +1246,42 @@ ALTER SEQUENCE recommendations_id_seq OWNED BY recommendations.id;
 
 
 --
+-- Name: reports; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE reports (
+    id integer NOT NULL,
+    reportable_id integer NOT NULL,
+    reportable_type character varying(255) NOT NULL,
+    reason integer NOT NULL,
+    comments text,
+    reporter_id integer NOT NULL,
+    status integer DEFAULT 0 NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: reports_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE reports_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: reports_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE reports_id_seq OWNED BY reports.id;
+
+
+--
 -- Name: reviews; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1859,6 +1895,13 @@ ALTER TABLE ONLY recommendations ALTER COLUMN id SET DEFAULT nextval('recommenda
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY reports ALTER COLUMN id SET DEFAULT nextval('reports_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY reviews ALTER COLUMN id SET DEFAULT nextval('reviews_id_seq'::regclass);
 
 
@@ -2172,6 +2215,14 @@ ALTER TABLE ONLY rails_admin_histories
 
 ALTER TABLE ONLY recommendations
     ADD CONSTRAINT recommendations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: reports_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY reports
+    ADD CONSTRAINT reports_pkey PRIMARY KEY (id);
 
 
 --
@@ -3426,6 +3477,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140916050726');
 INSERT INTO schema_migrations (version) VALUES ('20140916053901');
 
 INSERT INTO schema_migrations (version) VALUES ('20141017210309');
+
+INSERT INTO schema_migrations (version) VALUES ('20141101044012');
 
 INSERT INTO schema_migrations (version) VALUES ('20141105063427');
 
