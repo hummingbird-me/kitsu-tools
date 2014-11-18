@@ -15,6 +15,7 @@ Hummingbird::Application.routes.draw do
   resources :reviews do
     post :vote
   end
+  resources :reports, only: [:index, :create]
 
   get '/apps/mine' => 'apps#mine'
   resources :apps
