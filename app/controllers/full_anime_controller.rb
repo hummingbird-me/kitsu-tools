@@ -8,11 +8,11 @@ class FullAnimeController < ApplicationController
 
   def update
     anime = Anime.find(params[:id])
-    # if this user is admin, just update
+    version = anime.create_pending(current_user, full_anime_params)
+    # if this user is admin, apply the changes
+    # without review, but still create a history version
     if current_user.admin?
-      anime.update_attributes(full_anime_params)
-    else
-      anime.create_pending(current_user, full_anime_params)
+      anime.update_from_pending(version)
     end
     render json: true
   end

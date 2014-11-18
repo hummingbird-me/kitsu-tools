@@ -12,11 +12,12 @@ module Versionable
     )
     version.state = :pending
     version.save
+    version
   end
 
   def update_from_pending(version)
     attrs = self.attributes.except(:id)
-    self.update_attributes(version.object)
+    self.update_attributes!(version.object)
 
     version.object = attrs
     version.state = :history

@@ -17,7 +17,9 @@ class FullAnimeControllerTest < ActionController::TestCase
 
     put :update, format: :json, id: 'sword-art-online', full_anime: data
     assert_response 200
-    assert_equal 3, Version.count # 3 fixtures
+    assert_equal 4, Version.count # 3 fixtures + new
+
+    assert_equal "history", Version.last.state
 
     anime = Anime.last
     assert_equal data[:synopsis], anime.synopsis
@@ -37,6 +39,7 @@ class FullAnimeControllerTest < ActionController::TestCase
     assert_equal 4, Version.count # 3 fixtures + new
 
     version = Version.last
+    assert_equal "pending", version.state
     assert_equal data[:synopsis], version.object['synopsis']
     assert_equal data[:episode_count], version.object['episode_count']
   end
