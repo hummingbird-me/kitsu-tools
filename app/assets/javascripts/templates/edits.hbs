@@ -24,7 +24,7 @@
                       {{/link-to}}
                     </span>
                     <span class="edit-entry-time">
-                      {{format-time createdAt 'MM MMM YY, HH:mm a'}}
+                      {{time-ago time=createdAt}}
                     </span>
                     <span class="edit-entry-actions">
                       <a href="#" {{action 'toggleDiff'}}>

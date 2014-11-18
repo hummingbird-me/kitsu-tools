@@ -5,7 +5,7 @@ HB.ModalsEditAnimeController = Ember.ObjectController.extend(HB.ModalControllerM
       Messenger().expectPromise(function() {
         return this.get('content').save();
       }.bind(this), {
-        pendingMessage: 'Contacting server...',
+        progressMessage: 'Contacting server...',
         successMessage: function() {
           // reset data back to its 'real' state rather than its dirty state.
           this.get('content').reload();
