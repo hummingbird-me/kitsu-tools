@@ -1,8 +1,8 @@
 class AddSlugToCharacters < ActiveRecord::Migration
   def change
     change_table :characters do |t|
-      t.string :slug, null: false
-      t.index :slug, unique: true
+      # TODO: switch this to non-null, add unique index
+      t.string :slug
     end
   end
 end

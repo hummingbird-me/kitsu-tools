@@ -269,7 +269,7 @@ CREATE TABLE characters (
     image_content_type character varying(255),
     image_file_size integer,
     image_updated_at timestamp without time zone,
-    slug character varying(255) NOT NULL
+    slug character varying(255)
 );
 
 
@@ -2392,13 +2392,6 @@ CREATE INDEX index_castings_on_person_id ON castings USING btree (person_id);
 --
 
 CREATE UNIQUE INDEX index_characters_on_mal_id ON characters USING btree (mal_id);
-
-
---
--- Name: index_characters_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_characters_on_slug ON characters USING btree (slug);
 
 
 --
