@@ -230,6 +230,41 @@
   }
 }
 
+.story-actions {
+  @extend .clearfix;
+  .like {
+    color: #7E7E7E;
+    padding: 0 15px 10px;
+    display: inline-block;
+    font-size: 14px;
+    &:hover {
+      color: #F87270;
+    }
+  }
+  .active-users {
+    float: right;
+    padding-right: 20px;
+    li {
+      width: 30px;
+      padding-left: 10px;
+      float: left;
+      img {
+        width: 100%;
+        border-radius: 3px;
+      }
+    }
+    .more-users {
+      background: #eee;
+      border-radius: 3px;
+      font-size: 12px;
+      color: #737373;
+      padding: 2px 9px 3px;
+      &:hover {
+        background: darken(#eee, 5);
+      }
+    }
+  }
+}
 .comment-replies {
   @extend .panel-footer;
 
