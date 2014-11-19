@@ -19,7 +19,7 @@ HB.Router.map(function() {
 
   this.resource('character', {path: '/character/:id'});
 
-  this.resource('stories', {path: '/stories/:id'});
+  this.resource('story.show', {path: '/stories/:id'});
 
   this.route('filterAnime', {path: '/anime/filter'});
   this.route('filterManga', {path: '/manga/filter'});

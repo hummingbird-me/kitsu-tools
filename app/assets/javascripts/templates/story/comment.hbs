@@ -15,7 +15,7 @@
           {{/unless}}
         </h4>
         <p class="secondary">
-          {{time-ago time=createdAt}}
+          {{#link-to 'story.show' this class="permalink"}}{{time-ago time=createdAt}}{{/link-to}}
           {{#if canDeleteStory}}
             ·
             <a class="remove-post" {{action "deleteStory"}}>remove</a>

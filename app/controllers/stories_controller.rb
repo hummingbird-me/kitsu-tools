@@ -15,10 +15,10 @@ class StoriesController < ApplicationController
     story = Story.find(params[:id])
     respond_to do |format|
       format.json { render json: story }
-      format.html {
+      format.html do
         preload_to_ember! story
         render_ember
-      }
+      end
     end
   end
 

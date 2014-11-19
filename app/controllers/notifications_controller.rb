@@ -4,7 +4,7 @@ class NotificationsController < ApplicationController
   def index
     hide_cover_image
     @notifications = Notification.where(user_id: current_user).order("created_at DESC").includes(:source, source: :target).limit(10)
-    
+
     respond_to do |format|
       format.json { render json: @notifications, each_serializer: NotificationSerializer }
       format.html { render_ember }
@@ -23,10 +23,8 @@ class NotificationsController < ApplicationController
     else
       notification.update_attributes(seen: true)
       Notification.uncache_notification_cache(current_user.id)
-      if notification.notification_type == "profile_comment"
-        redirect_to user_path(current_user)
-      elsif notification.notification_type == "comment_reply"
-        redirect_to user_path(notification.source.story.user)
+      if notification.notification_type.in? %w[profile_comment comment_reply]
+        redirect_to story_path(notification.source)
       end
     end
   end

@@ -122,6 +122,14 @@
       font-size: 14px;
     }
 
+    .permalink {
+      color: #999;
+      transition: ease-in .2s;
+      &:hover {
+        color: $darkOrange;
+      }
+    }
+
     .remove-post {
       color: #999;
       transition: ease-in .2s;
