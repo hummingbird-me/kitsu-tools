@@ -25,16 +25,13 @@ class StoryQuery
     users = users.uniq
     if current_user
       users = users.index_by(&:id)
-      User.where(id: users.keys).includes(:follower_items).each do |u|
-        assoc = users[u.id].association(:follower_items)
-        assoc.loaded!
-        assoc.target.concat(u.follower_items)
-        u.follower_items.each {|f| assoc.set_inverse_instance(f) }
+      Follow.where(follower_id: current_user.id, followed_id: users.keys)
+            .select(:followed_id).each do |follow|
+        users[follow.followed_id].instance_variable_set('@is_followed', true)
       end
     else
       users.each do |user|
-        assoc = user.association(:follower_items)
-        assoc.loaded!
+        user.instance_variable_set('@is_followed', false)
       end
     end
 

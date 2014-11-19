@@ -61,6 +61,8 @@
 #
 
 class User < ActiveRecord::Base
+  attr_reader :is_followed
+
   # Friendly ID.
   def to_param
     name
