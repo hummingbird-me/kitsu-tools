@@ -11,6 +11,17 @@ class StoriesController < ApplicationController
     render json: stories, meta: {cursor: 1 + (params[:page] || 1).to_i}
   end
 
+  def show
+    story = Story.find(params[:id])
+    respond_to do |format|
+      format.json { render json: story }
+      format.html {
+        preload_to_ember! story
+        render_ember
+      }
+    end
+  end
+
   def create
     authenticate_user!
     params.require(:story).permit(:user_id, :comment)
