@@ -240,6 +240,14 @@
     &:hover {
       color: #F87270;
     }
+    &.active {
+      color: #F87270;
+      .fa-heart {
+        &:before {
+          content: "\f004";
+        }
+      }
+    }
   }
   .active-users {
     float: right;
