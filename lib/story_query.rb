@@ -18,19 +18,11 @@ class StoryQuery
       a.genres.each {|genre| assoc.set_inverse_instance(genre) }
     end
 
-    # Preload user is_followed? value
-    users = stories.map(&:user)
-    users += stories.select {|x| x.target_type == "User" }.map(&:target)
-    substories = stories.map(&:substories).flatten
-    users += substories.map(&:user)
-    users += substories.select {|x| x.target_type == "User" }.map(&:target)
-    users = users.uniq
-    UserQuery.load_is_followed(users, current_user)
+    comment_stories = stories.select {|x| x.story_type == "comment" }
+    comment_index = comment_stories.index_by(&:id)
 
     # Load is_liked for comment stories.
-    comment_stories = stories.select {|x| x.story_type == "comment" }
     if current_user
-      comment_index = comment_stories.index_by(&:id)
       Vote.where(user_id: current_user.id, target_type: "Story",
                  target_id: comment_index.keys).select(:target_id).each do |vote|
         comment_index[vote.target_id].set_is_liked! true
@@ -39,6 +31,46 @@ class StoryQuery
     comment_stories.select {|x| x.is_liked.nil? }.each do |story|
       story.set_is_liked! false
     end
+
+    # Load recent likers for comment stories.
+    sql = ActiveRecord::Base.send(:sanitize_sql_array, [
+      "SELECT a.id AS story_id, d.user_id AS user_id
+       FROM stories a
+       JOIN
+         (
+           SELECT id, user_id, target_id
+           FROM votes b
+           WHERE target_id IN (
+             SELECT target_id
+             FROM votes c
+             WHERE c.target_id = b.target_id
+             ORDER BY created_at DESC
+             LIMIT 4
+           )
+           AND target_type = 'Story'
+         ) d
+       ON (a.id=d.target_id)
+       WHERE a.id IN (?)",
+       comment_stories.map(&:id)
+    ])
+    recent_likers = ActiveRecord::Base.connection.execute(sql)
+    recent_users = User.where(id: recent_likers.map {|x| x["user_id"].to_i })
+                       .index_by(&:id)
+    recent_likers.each do |x|
+      comment = comment_index[x["story_id"].to_i]
+      comment.recent_likers ||= []
+      comment.recent_likers << recent_users[x["user_id"].to_i]
+    end
+
+    # Preload user is_followed? value
+    users = stories.map(&:user)
+    users += stories.select {|x| x.target_type == "User" }.map(&:target)
+    substories = stories.map(&:substories).flatten
+    users += substories.map(&:user)
+    users += substories.select {|x| x.target_type == "User" }.map(&:target)
+    users += recent_users.values
+    users = users.uniq
+    UserQuery.load_is_followed(users, current_user)
 
     # Return stories in the same order as the IDs.
     stories.sort_by {|s| story_ids.find_index s.id }

@@ -8,6 +8,7 @@ class StorySerializer < ActiveModel::Serializer
   has_one :media, polymorphic: true, embed_key: :slug
   has_one :poster, embed_key: :name, root: :users
   has_many :substories
+  has_many :recent_likers, embed_key: :name, root: :users
 
   def type
     object.story_type
@@ -56,5 +57,9 @@ class StorySerializer < ActiveModel::Serializer
   def substories
     object.substories.reject {|x| x.substory_type == "comment" }
                      .sort_by {|x| x.created_at }.reverse.take(2)
+  end
+
+  def include_recent_likers?
+    !object.recent_likers.nil?
   end
 end

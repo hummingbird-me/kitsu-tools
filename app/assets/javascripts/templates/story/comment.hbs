@@ -47,6 +47,13 @@
     <i class="fa fa-heart-o"></i> {{totalVotes}}
   </a>
   <ul class="active-users">
+    {{#each recentLikers}}
+      <li {{bind-attr data-tooltip=username}}>
+        {{#link-to 'user'}}
+          {{avatar this "thumb_small"}}
+        {{/link-to}}
+      </li>
+    {{/each}}
     {{!--
     <!-- Four most recent likes / reposts -->
     <li data-tooltip="Username"><a href="#"><img src="https://static.hummingbird.me/users/avatars/000/019/825/thumb/Untitled-1.png?1416356775"></a></li>

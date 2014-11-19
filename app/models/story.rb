@@ -16,6 +16,7 @@
 
 class Story < ActiveRecord::Base
   attr_reader :is_liked
+  attr_accessor :recent_likers
 
   belongs_to :watchlist
   belongs_to :user
