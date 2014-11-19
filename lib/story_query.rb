@@ -1,3 +1,5 @@
+require_dependency 'user_query'
+
 class StoryQuery
 
   # Returns a list of stories having the given IDs.
@@ -23,18 +25,9 @@ class StoryQuery
     users += substories.map(&:user)
     users += substories.select {|x| x.target_type == "User" }.map(&:target)
     users = users.uniq
-    if current_user
-      users = users.index_by(&:id)
-      Follow.where(follower_id: current_user.id, followed_id: users.keys)
-            .select(:followed_id).each do |follow|
-        users[follow.followed_id].instance_variable_set('@is_followed', true)
-      end
-    else
-      users.each do |user|
-        user.instance_variable_set('@is_followed', false)
-      end
-    end
+    UserQuery.load_is_followed(users, current_user)
 
+    # Return stories in the same order as the IDs.
     stories.sort_by {|s| story_ids.find_index s.id }
   end
 

@@ -61,8 +61,6 @@
 #
 
 class User < ActiveRecord::Base
-  attr_reader :is_followed
-
   # Friendly ID.
   def to_param
     name
@@ -387,11 +385,8 @@ class User < ActiveRecord::Base
     self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
   end
 
-  def private_channel
-    Digest::MD5.hexdigest(ENV['FORUM_SYNC_SECRET'] + self.authentication_token + self.name)
-  end
-
-  def private_publish(channel, message)
-    MessageBus.publish "/#{private_channel}#{channel}", message
+  attr_reader :is_followed
+  def set_is_followed!(v)
+    @is_followed = v
   end
 end

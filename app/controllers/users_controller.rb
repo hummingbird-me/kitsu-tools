@@ -1,3 +1,5 @@
+require_dependency 'user_query'
+
 class UsersController < ApplicationController
   before_filter :hide_cover_image
 
@@ -10,9 +12,7 @@ class UsersController < ApplicationController
         users = User.find(params[:followers_of]).followers
       end
       users = users.page(params[:page]).per(20)
-      if current_user
-        users = users.includes(:follower_items)
-      end
+      UserQuery.load_is_followed(users, current_user)
 
       render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
 
