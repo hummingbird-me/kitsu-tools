@@ -27,8 +27,26 @@ class StoryQuery
     users = users.uniq
     UserQuery.load_is_followed(users, current_user)
 
+    # Load is_liked for comment stories.
+    comment_stories = stories.select {|x| x.story_type == "comment" }
+    if current_user
+      comment_index = comment_stories.index_by(&:id)
+      Vote.where(user_id: current_user.id, target_type: "Story",
+                 target_id: comment_index.keys).select(:target_id).each do |vote|
+        comment_index[vote.target_id].set_is_liked! true
+      end
+    end
+    comment_stories.select {|x| x.is_liked.nil? }.each do |story|
+      story.set_is_liked! false
+    end
+
     # Return stories in the same order as the IDs.
     stories.sort_by {|s| story_ids.find_index s.id }
+  end
+
+  # Find the story having a particular ID.
+  def self.find_by_id(story_id, current_user)
+    StoryQuery.find_by_ids([story_id], current_user).first || raise(ActiveRecord::RecordNotFound)
   end
 
   # Return `limit` stories for the given user.

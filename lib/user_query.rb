@@ -7,10 +7,8 @@ class UserQuery
             .select(:followed_id).each do |f|
         user_index[f.followed_id].set_is_followed! true
       end
-      users.select {|u| u.is_followed.nil? }.each {|u| u.set_is_followed! true }
-    else
-      users.each {|u| u.set_is_followed! false }
     end
+    users.select {|u| u.is_followed.nil? }.each {|u| u.set_is_followed! true }
   end
 
 end

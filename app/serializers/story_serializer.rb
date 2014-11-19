@@ -1,7 +1,8 @@
 class StorySerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :type, :created_at, :comment, :substory_count
+  attributes :id, :type, :created_at, :comment, :substory_count, :total_votes,
+    :is_liked
 
   has_one :user, embed_key: :name
   has_one :media, polymorphic: true, embed_key: :slug
@@ -10,6 +11,17 @@ class StorySerializer < ActiveModel::Serializer
 
   def type
     object.story_type
+  end
+
+  def is_liked
+    if object.is_liked.nil?
+      raise "is_liked was not set for Story"
+    else
+      object.is_liked
+    end
+  end
+  def include_is_liked?
+    object.story_type == "comment"
   end
 
   def poster

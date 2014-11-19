@@ -15,6 +15,8 @@
 #
 
 class Story < ActiveRecord::Base
+  attr_reader :is_liked
+
   belongs_to :watchlist
   belongs_to :user
   belongs_to :target, polymorphic: true
@@ -69,6 +71,10 @@ class Story < ActiveRecord::Base
   def can_be_deleted_by?(user)
     return false if user.nil?
     user.admin? || user.id == self.user_id || user.id == self.target_id
+  end
+
+  def set_is_liked!(v)
+    @is_liked = v
   end
 
   after_destroy do

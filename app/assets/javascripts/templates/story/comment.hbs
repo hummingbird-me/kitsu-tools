@@ -43,10 +43,11 @@
 </div>
 
 <div class="story-actions">
-  <a class="like">
-    <i class="fa fa-heart-o"></i> 18
+  <a {{bind-attr class=":like isLiked:active"}} {{action "toggleLike"}}>
+    <i class="fa fa-heart-o"></i> {{totalVotes}}
   </a>
   <ul class="active-users">
+    {{!--
     <!-- Four most recent likes / reposts -->
     <li data-tooltip="Username"><a href="#"><img src="https://static.hummingbird.me/users/avatars/000/019/825/thumb/Untitled-1.png?1416356775"></a></li>
     <li data-tooltip="Username"><a href="#"><img src="https://static.hummingbird.me/users/avatars/000/019/825/thumb/Untitled-1.png?1416356775"></a></li>
@@ -54,9 +55,10 @@
     <li data-tooltip="Username"><a href="#"><img src="https://static.hummingbird.me/users/avatars/000/019/825/thumb/Untitled-1.png?1416356775"></a></li>
     <li>
       <a href="#"> <!-- Show total count if more than four. pop modal with user avatars of people who liked or shared this story -->
-        <span class="more-users">16</span>
+        <span class="more-users">{{totalVotes}}</span>
       </a>
     </li>
+    --}}
   </ul>
 </div>
 <div class="comment-replies">

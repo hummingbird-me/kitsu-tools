@@ -8,12 +8,15 @@ Hummingbird::Application.routes.draw do
   resources :full_manga, only: [:show]
   resources :news_feeds, only: [:index]
   resources :quotes
-  resources :stories, only: [:index, :show, :create, :destroy]
   resources :substories, only: [:index, :create, :destroy]
   resources :user_infos, only: [:show]
   resources :changelogs, only: [:index]
   resources :reviews do
     post :vote
+  end
+
+  resources :stories, only: [:index, :show, :create, :destroy] do
+    post :like
   end
 
   get '/apps/mine' => 'apps#mine'

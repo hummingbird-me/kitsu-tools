@@ -33,15 +33,14 @@ class QuotesController < ApplicationController
     quote = Quote.find(params[:id])
 
     # Update favorite status.
+    vote = Vote.for(current_user, quote)
     if params[:quote]["is_favorite"]
-      vote = Vote.for(current_user, quote)
       if vote.nil?
         Vote.create(user: current_user, target: quote)
       end
     else
-      vote = Vote.for(current_user, quote)
       unless vote.nil?
-        vote.destroy
+        vote.destroy!
       end
     end
 

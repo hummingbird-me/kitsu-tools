@@ -15,7 +15,7 @@ class StoriesController < ApplicationController
   end
 
   def show
-    story = Story.find(params[:id])
+    story = StoryQuery.find_by_id(params[:id], current_user)
     respond_to do |format|
       format.json { render json: story }
       format.html do
@@ -43,7 +43,7 @@ class StoriesController < ApplicationController
   def destroy
     authenticate_user!
     params.require(:id)
-    story = Story.find_by(id: params[:id])
+    story = Story.find_by(id: params[:story_id])
 
     if story.nil?
       # Story has already been deleted.
@@ -57,5 +57,23 @@ class StoriesController < ApplicationController
     else
       render json: false
     end
+  end
+
+  def like
+    authenticate_user!
+
+    story = Story.find_by(id: params[:story_id])
+    vote = Vote.for(current_user, story)
+    if params[:like]
+      if vote.nil?
+        Vote.create(user: current_user, target: story)
+      end
+    else
+      unless vote.nil?
+        vote.destroy!
+      end
+    end
+
+    render json: true
   end
 end

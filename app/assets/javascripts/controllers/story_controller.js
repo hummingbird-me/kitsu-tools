@@ -98,6 +98,49 @@ HB.StoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
         this.set('showMoreText', 'Show Less');
       else
         this.set('showMoreText', 'Show More');
+    },
+
+    toggleLike: function() {
+      var self = this;
+
+      this.toggleProperty('isLiked');
+
+      Messenger().expectPromise(function() {
+        return ic.ajax({
+          url: "/stories/" + self.get('id') + "/like",
+          type: 'POST',
+          data: {
+            like: self.get('isLiked')
+          }
+        }).then(function() {
+          // success
+          if (self.get('isLiked')) {
+            self.incrementProperty('totalVotes');
+          } else {
+            self.decrementProperty('totalVotes');
+          }
+        }, function(err) {
+          // failure
+          self.toggleProperty('isLiked');
+          throw err;
+        });
+      }, {
+        progressMessage: function() {
+          if (self.get('isLiked')) {
+            return "Liking post...";
+          } else {
+            return "Unliking post...";
+          }
+        },
+        successMessage: function() {
+          if (self.get('isLiked')) {
+            return "Liked!";
+          } else {
+            return "Unliked.";
+          }
+        },
+        errorMessage: "Something went wrong."
+      });
     }
   }
 });

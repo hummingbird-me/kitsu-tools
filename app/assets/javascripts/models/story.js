@@ -7,6 +7,8 @@ HB.Story = DS.Model.extend({
   media: DS.belongsTo('media', { polymorphic: true }),
   substories: DS.hasMany('substory'),
   substoryCount: DS.attr('number'),
+  totalVotes: DS.attr('number'),
+  isLiked: DS.attr('boolean'),
 
   coverImageStyle: function() {
     return "background-image: url(" + this.get('coverImageUrl') + ")";
