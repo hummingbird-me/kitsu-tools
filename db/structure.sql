@@ -268,7 +268,8 @@ CREATE TABLE characters (
     image_file_name character varying(255),
     image_content_type character varying(255),
     image_file_size integer,
-    image_updated_at timestamp without time zone
+    image_updated_at timestamp without time zone,
+    slug character varying(255) NOT NULL
 );
 
 
@@ -2394,6 +2395,13 @@ CREATE UNIQUE INDEX index_characters_on_mal_id ON characters USING btree (mal_id
 
 
 --
+-- Name: index_characters_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_characters_on_slug ON characters USING btree (slug);
+
+
+--
 -- Name: index_episodes_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3440,4 +3448,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141116073430');
 INSERT INTO schema_migrations (version) VALUES ('20141117044111');
 
 INSERT INTO schema_migrations (version) VALUES ('20141116204731');
+
+INSERT INTO schema_migrations (version) VALUES ('20141119061218');
 
