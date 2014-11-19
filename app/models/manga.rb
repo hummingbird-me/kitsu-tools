@@ -68,7 +68,9 @@ class Manga < ActiveRecord::Base
   has_and_belongs_to_many :genres
   has_many :manga_library_entries, dependent: :destroy
 
-  alias_method :canonical_title, :romaji_title
+  def canonical_title
+    romaji_title
+  end
 
   def poster_image_thumb
     if self.poster_image_file_name.nil?
