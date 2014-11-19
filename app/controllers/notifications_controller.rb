@@ -23,7 +23,7 @@ class NotificationsController < ApplicationController
     else
       notification.update_attributes(seen: true)
       Notification.uncache_notification_cache(current_user.id)
-      if notification.notification_type.in? %w[profile_comment comment_reply]
+      if notification.source.is_a?(Story)
         redirect_to story_path(notification.source)
       end
     end
