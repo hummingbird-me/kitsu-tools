@@ -3,7 +3,8 @@ class StoryQuery
   # Returns a list of stories having the given IDs.
   def self.find_by_ids(story_ids, current_user)
     stories = Story.where(id: story_ids).for_user(current_user)
-                   .includes(:user, :substories, :target, substories: :user)
+                   .includes(:user, :substories, :target,
+                             substories: [:user, :target])
 
     # Preload genres for anime stories.
     anime_stories = stories.select {|s| s.target_type == "Anime" }.map(&:target)
@@ -13,6 +14,28 @@ class StoryQuery
       assoc.loaded!
       assoc.target.concat(a.genres)
       a.genres.each {|genre| assoc.set_inverse_instance(genre) }
+    end
+
+    # Preload user is_followed? value
+    users = stories.map(&:user)
+    users += stories.select {|x| x.target_type == "User" }.map(&:target)
+    substories = stories.map(&:substories).flatten
+    users += substories.map(&:user)
+    users += substories.select {|x| x.target_type == "User" }.map(&:target)
+    users = users.uniq
+    if current_user
+      users = users.index_by(&:id)
+      User.where(id: users.keys).includes(:follower_items).each do |u|
+        assoc = users[u.id].association(:follower_items)
+        assoc.loaded!
+        assoc.target.concat(u.follower_items)
+        u.follower_items.each {|f| assoc.set_inverse_instance(f) }
+      end
+    else
+      users.each do |user|
+        assoc = user.association(:follower_items)
+        assoc.loaded!
+      end
     end
 
     stories.sort_by {|s| story_ids.find_index s.id }
