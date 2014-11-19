@@ -1,3 +1,5 @@
+require_dependency 'story_query'
+
 # Implementation of the timeline shown on user homepages.
 #
 # Definitions:
@@ -57,10 +59,7 @@ class NewsFeed
       story_ids = conn.zrevrange(@feed_key, start_index, stop_index).collect(&:to_i)
     end
 
-    stories = Story.where(id: story_ids, :target_type => 'Anime').for_user(@user).includes(:user, :substories, target: :genres, substories: :user)
-    stories += Story.where(id: story_ids).where('target_type <> ?', 'Anime').for_user(@user).includes(:user, :substories, :target, substories: :user) if story_ids.length > stories.length
-
-    stories.sort_by {|s| story_ids.find_index s.id }
+    StoryQuery.find_by_ids(story_ids, @user)
   end
 
   # Regenerate the user's feed from scratch.

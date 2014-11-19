@@ -1,9 +1,12 @@
+require_dependency 'story_query'
+
 class StoriesController < ApplicationController
   def index
     params.permit(:user_id, :news_feed, :page)
 
     if params[:user_id]
-      stories = User.find(params[:user_id]).stories.for_user(current_user).order('updated_at DESC').includes(:user, :target, substories: :user).page(params[:page]).per(30)
+      user = User.find(params[:user_id])
+      stories = StoryQuery.find_for_user(user, current_user, params[:page], 30)
     elsif params[:news_feed]
       stories = NewsFeed.new(current_user).fetch(params[:page] || 1)
     end
