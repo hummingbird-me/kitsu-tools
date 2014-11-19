@@ -21,6 +21,15 @@ class Character < ActiveRecord::Base
   pg_search_scope :simple_search_by_name, against: [:name],
     using: {tsearch: {normalization: 10, dictionary: "english"}}, ranked_by: ":tsearch"
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :history]
+  def slug_candidates
+    [
+      :name,
+      lambda { [:name, self.primary_media.canonical_title] }
+    ]
+  end
+
   class << self
     alias_method :simple_search_by_title, :simple_search_by_name
     alias_method :fuzzy_search_by_title, :fuzzy_search_by_name
@@ -37,6 +46,10 @@ class Character < ActiveRecord::Base
   validates_attachment :image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
+
+  def primary_media
+    self.castings.first.media
+  end
 
   def self.create_or_update_from_hash(hash)
     character = Character.find_by(mal_id: hash[:external_id])
