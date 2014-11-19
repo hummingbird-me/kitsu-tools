@@ -52,6 +52,7 @@ Hummingbird::Application.routes.draw do
   end
 
   get '/privacy' => 'home#static'
+  get '/branding' => 'home#static'
 
   # Recommendations
   get '/recommendations' => 'recommendations#index'
