@@ -8,7 +8,7 @@ class UserQuery
         user_index[f.followed_id].set_is_followed! true
       end
     end
-    users.select {|u| u.is_followed.nil? }.each {|u| u.set_is_followed! true }
+    users.select {|u| u.is_followed.nil? }.each {|u| u.set_is_followed! false }
   end
 
 end
