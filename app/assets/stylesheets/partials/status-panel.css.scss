@@ -237,12 +237,17 @@
     padding: 0 15px 10px;
     display: inline-block;
     font-size: 14px;
+    .fa-heart-o {
+      padding-left: 1px;
+    }
     &:hover {
       color: #F87270;
     }
     &.active {
       color: #F87270;
       .fa-heart-o {
+        @extend .animated;
+        @extend .rubberBand;
         &:before {
           content: "\f004";
         }
@@ -299,6 +304,50 @@
           border-radius: 3px;
         }
       }
+    }
+  }
+}
+
+.permalink-wrapper {
+  margin-top: 60px;
+  .follow-panel {
+    .user-avatar {
+      top: 100px;
+      left: 20px;
+      right: 10px;
+      width: inherit;
+      img {
+        width: 90px;
+        top: -40px;
+      }
+      .follow-button {
+        padding: 5px 40px;
+        margin-top: 18px;
+      }
+    }
+    .user-info {
+      margin-top: 65px;
+      padding: 0 15px; 
+      h4 {
+        font-size: 24px;
+      }
+    }
+    .mini-bio {
+      height: inherit;
+      margin-bottom: 0;
+    }
+  }
+  .guest-cta {
+    background: #DDDDDD;
+    padding: 15px;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    border-radius: 3px;
+    color: #626262;
+    .follow-button {
+      width: 100%;
+      background: #16a085;
+      padding: 10px;
     }
   }
 }

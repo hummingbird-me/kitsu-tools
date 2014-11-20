@@ -1,7 +1,42 @@
 <div class="container">
-  <div class="row">
-    <div class="user-feed col-sm-offset-2">
+  <div class="permalink-wrapper">
+    <div class="user-feed">
       {{view "story" content=this}}
+    </div>
+    <div class="col-sm-5">
+      <div class="follow-panel">
+        {{#link-to 'user' user}}
+          <div class="follow-cover" {{bind-attr style=user.coverImageStyle}}></div>
+        {{/link-to}}
+        <div class="user-avatar">
+          {{#link-to 'user' user}}
+            {{avatar user 'thumb'}}
+          {{/link-to}}
+          
+          {{#if user.isFollowed}}
+            <a class="btn follow-button unfollow" {{action "toggleFollow" user}}> Unfollow</a>
+          {{else}}
+            <a class="btn follow-button" {{action "toggleFollow" user}}> Follow</a>
+          {{/if}}
+          
+        </div>
+        <div class="user-info">
+          <h4>
+            {{#link-to 'user' user}}
+              {{user.username}}
+            {{/link-to}}
+          </h4>
+          <p class="mini-bio">
+            {{user.truncatedBio}}
+          </p>
+        </div>
+      </div>
+
+      <div class="guest-cta">
+        <p>{{user.username}} is using Hummingbird to track, discover and discuss anime and manga with friends. Don't miss any of {{user.username}}'s updates.</p>
+        <a class="btn follow-button"> Create an Account</a>
+            
+      </div>
     </div>
   </div>
 </div>
