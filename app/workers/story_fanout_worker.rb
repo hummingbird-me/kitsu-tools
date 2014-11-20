@@ -9,8 +9,6 @@ class StoryFanoutWorker
     followers = User.where(id: [user_id, story.user_id]) + story.user.followers
     followers = followers.uniq
 
-    story_json = StorySerializer.new(story).as_json
-
     followers.each do |follower|
       feed = NewsFeed.new(follower)
       feed.add!(story) if feed.cached?

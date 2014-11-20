@@ -46,4 +46,21 @@ class StoriesControllerTest < ActionController::TestCase
     delete :destroy, id: story.id
     assert_not_nil Story.find_by(id: story.id)
   end
+
+  test "can like stories" do
+    sign_in users(:vikhyat)
+
+    story = Action.broadcast(
+      action_type: "created_profile_comment",
+      user: users(:vikhyat),
+      poster: users(:vikhyat),
+      comment: "Test"
+    )
+
+    assert_equal 0, story.reload.total_votes
+    put :update, id: story.id, story: {is_liked: true}
+    assert_equal 1, story.reload.total_votes
+    put :update, id: story.id, story: {is_liked: false}
+    assert_equal 0, story.reload.total_votes
+  end
 end

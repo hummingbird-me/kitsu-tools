@@ -37,13 +37,13 @@ class StoriesController < ApplicationController
       comment: params[:story][:comment]
     )
 
-    render json: story
+    render json: StoryQuery.find_by_id(story.id, current_user)
   end
 
   def destroy
     authenticate_user!
     params.require(:id)
-    story = Story.find_by(id: params[:story_id])
+    story = Story.find_by(id: params[:id])
 
     if story.nil?
       # Story has already been deleted.
@@ -64,7 +64,7 @@ class StoriesController < ApplicationController
 
     params.require(:story).permit(:is_liked)
 
-    story = Story.find_by(id: params[:id])
+    story = Story.find_by_id(params[:id])
     vote = Vote.for(current_user, story)
     if params[:story][:is_liked]
       if vote.nil?
