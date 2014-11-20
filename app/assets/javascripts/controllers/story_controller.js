@@ -1,5 +1,3 @@
-var RECENT_LIKERS_LIMIT = 4;
-
 HB.StoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   commentStory: Ember.computed.equal('model.type', 'comment'),
   mediaStory: Ember.computed.equal('model.type', 'media_story'),
@@ -18,8 +16,8 @@ HB.StoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   loadedAll: HB.computed.propertyEqual('substories.length', 'model.substoryCount'),
 
   extraLikers: function() {
-    return this.get('recentLikers.length') - RECENT_LIKERS_LIMIT;
-  }.property('recentLikers.length'),
+    return this.get('totalVotes') - this.get('recentLikers.length');
+  }.property('totalVotes', 'recentLikers.length'),
   showExtraLikers: Em.computed.gt('extraLikers', 0),
 
   belongsToUser: function() {
