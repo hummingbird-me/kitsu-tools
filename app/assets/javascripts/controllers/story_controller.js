@@ -1,4 +1,4 @@
-var RECENT_LIKERS_LIMIT = 4;
+var RECENT_LIKERS_LIMIT = 1;
 
 HB.StoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   commentStory: Ember.computed.equal('model.type', 'comment'),
