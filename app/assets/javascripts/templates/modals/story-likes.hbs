@@ -5,12 +5,12 @@
       <hr>
       <div class="all-likes">
         <div class="section-label">
-          <i class="fa fa-heart"></i> 25
+          <i class="fa fa-heart"></i> {{totalVotes}}
         </div>
         <ul>
           {{#each likers}}
             <li {{bind-attr data-tooltip=username}}>
-              {{#link-to 'user' id}}
+              {{#link-to 'user' username}}
                 <img {{bind-attr src=avatar}}>
               {{/link-to}}
             </li>
