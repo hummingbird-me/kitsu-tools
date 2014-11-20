@@ -59,12 +59,14 @@ class StoriesController < ApplicationController
     end
   end
 
-  def like
+  def update
     authenticate_user!
 
-    story = Story.find_by(id: params[:story_id])
+    params.require(:story).permit(:is_liked)
+
+    story = Story.find_by(id: params[:id])
     vote = Vote.for(current_user, story)
-    if params[:like]
+    if params[:story][:is_liked]
       if vote.nil?
         Vote.create(user: current_user, target: story)
       end
@@ -74,6 +76,16 @@ class StoriesController < ApplicationController
       end
     end
 
-    render json: true
+    render json: StoryQuery.find_by_id(story.id, current_user)
+  end
+
+  def likers
+    story = StoryQuery.find_by_id(params[:story_id], current_user)
+    votes = Vote.where(target: story).order('created_at DESC').includes(:user)
+                .page(params[:page]).per(40)
+    users = votes.map {|x| x.user }.map do |user|
+      {username: user.name, avatar: user.avatar.url(:thumb)}
+    end
+    render json: users, root: false
   end
 end

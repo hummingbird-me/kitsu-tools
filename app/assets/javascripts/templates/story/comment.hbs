@@ -49,25 +49,21 @@
   <ul class="active-users">
     {{#each recentLikers}}
       <li {{bind-attr data-tooltip=username}}>
-        {{#link-to 'user'}}
+        {{#link-to 'user' id}}
           {{avatar this "thumb_small"}}
         {{/link-to}}
       </li>
     {{/each}}
-    {{!--
-    <!-- Four most recent likes / reposts -->
-    <li data-tooltip="Username"><a href="#"><img src="https://static.hummingbird.me/users/avatars/000/019/825/thumb/Untitled-1.png?1416356775"></a></li>
-    <li data-tooltip="Username"><a href="#"><img src="https://static.hummingbird.me/users/avatars/000/019/825/thumb/Untitled-1.png?1416356775"></a></li>
-    <li data-tooltip="Username"><a href="#"><img src="https://static.hummingbird.me/users/avatars/000/019/825/thumb/Untitled-1.png?1416356775"></a></li>
-    <li data-tooltip="Username"><a href="#"><img src="https://static.hummingbird.me/users/avatars/000/019/825/thumb/Untitled-1.png?1416356775"></a></li>
-    <li>
-      <a href="#"> <!-- Show total count if more than four. pop modal with user avatars of people who liked or shared this story -->
-        <span class="more-users">{{totalVotes}}</span>
-      </a>
-    </li>
-    --}}
+    {{#if showExtraLikers}}
+      <li>
+        <a {{action "openModal" "story-likes" this}}>
+          <span class="more-users">{{extraLikers}}</span>
+        </a>
+      </li>
+    {{/if}}
   </ul>
 </div>
+
 <div class="comment-replies">
   {{#if moreThanTwoSubstories}}
     <div class="view-more">

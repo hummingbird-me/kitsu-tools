@@ -1,0 +1,17 @@
+{{#bootstrap-modal action="close"}}
+  <div class="modal-body">
+    <ul>
+      {{#each likers}}
+        <li>
+          {{username}}
+          <img {{bind-attr src=avatar}}>
+        </li>
+      {{/each}}
+    </ul>
+    {{#if canLoadMore}}
+      {{load-more action="loadNextPage"}}
+    {{/if}}
+  </div>
+{{/bootstrap-modal}}
+
+

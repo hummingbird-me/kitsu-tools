@@ -1,3 +1,5 @@
+var RECENT_LIKERS_LIMIT = 4;
+
 HB.StoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   commentStory: Ember.computed.equal('model.type', 'comment'),
   mediaStory: Ember.computed.equal('model.type', 'media_story'),
@@ -14,6 +16,11 @@ HB.StoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
   showAll: false,
   loadingAll: false,
   loadedAll: HB.computed.propertyEqual('substories.length', 'model.substoryCount'),
+
+  extraLikers: function() {
+    return this.get('recentLikers.length') - RECENT_LIKERS_LIMIT;
+  }.property('recentLikers.length'),
+  showExtraLikers: Em.computed.gt('extraLikers', 0),
 
   belongsToUser: function() {
     var currentUserId = this.get('currentUser.id');
@@ -102,28 +109,10 @@ HB.StoryController = Ember.ObjectController.extend(HB.HasCurrentUser, {
 
     toggleLike: function() {
       var self = this;
-
       this.toggleProperty('isLiked');
 
       Messenger().expectPromise(function() {
-        return ic.ajax({
-          url: "/stories/" + self.get('id') + "/like",
-          type: 'POST',
-          data: {
-            like: self.get('isLiked')
-          }
-        }).then(function() {
-          // success
-          if (self.get('isLiked')) {
-            self.incrementProperty('totalVotes');
-          } else {
-            self.decrementProperty('totalVotes');
-          }
-        }, function(err) {
-          // failure
-          self.toggleProperty('isLiked');
-          throw err;
-        });
+        return self.get('content').save();
       }, {
         progressMessage: function() {
           if (self.get('isLiked')) {
