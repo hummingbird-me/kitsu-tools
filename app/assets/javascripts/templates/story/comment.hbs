@@ -15,11 +15,16 @@
           {{/unless}}
         </h4>
         <p class="secondary">
-          {{#link-to 'story.show' this class="permalink"}}{{time-ago time=createdAt}}{{/link-to}}
+          {{time-ago time=createdAt}}
+          ·
+          {{#link-to 'story.show' this class="permalink"}}
+            Permalink
+          {{/link-to}}
           {{#if canDeleteStory}}
             ·
             <a class="remove-post" {{action "deleteStory"}}>remove</a>
           {{/if}}
+
         </p>
       </div>
     </div>
