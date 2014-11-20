@@ -4,7 +4,8 @@ module Api::V2
 
     def show
       if params[:id].start_with? "myanimelist:"
-        anime = Anime.find_by(mal_id: params[:id].split(':')[1])
+        anime = Anime.find_by(mal_id: params[:id].split(':')[1]) ||
+          raise(ActiveRecord::RecordNotFound)
       else
         anime = Anime.find(params[:id])
       end

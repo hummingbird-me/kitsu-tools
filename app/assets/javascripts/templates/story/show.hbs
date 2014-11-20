@@ -12,13 +12,13 @@
           {{#link-to 'user' user}}
             {{avatar user 'thumb'}}
           {{/link-to}}
-          
+
           {{#if user.isFollowed}}
             <a class="btn follow-button unfollow" {{action "toggleFollow" user}}> Unfollow</a>
           {{else}}
             <a class="btn follow-button" {{action "toggleFollow" user}}> Follow</a>
           {{/if}}
-          
+
         </div>
         <div class="user-info">
           <h4>
@@ -31,6 +31,10 @@
           </p>
         </div>
       </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> b44b22462b8343947b0b6be46fc519e57e327450
       {{#unless currentUser.isSignedIn}}
         <div class="guest-cta">
           <p>{{user.username}} is using Hummingbird to track, discover and discuss anime and manga with friends. Don't miss any of {{user.username}}'s updates.</p>
