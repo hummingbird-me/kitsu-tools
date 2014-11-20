@@ -242,7 +242,7 @@
     }
     &.active {
       color: #F87270;
-      .fa-heart {
+      .fa-heart-o {
         &:before {
           content: "\f004";
         }
@@ -251,13 +251,12 @@
   }
   .active-users {
     float: right;
-    padding-right: 20px;
+    padding-right: 10px;
     li {
-      width: 30px;
       padding-left: 10px;
       float: left;
       img {
-        width: 100%;
+        width: 20px;
         border-radius: 3px;
       }
     }
