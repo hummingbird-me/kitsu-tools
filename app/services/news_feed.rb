@@ -85,7 +85,9 @@ class NewsFeed
         conn.zadd @feed_key, story.updated_at.to_i, story.id
         conn.zremrangebyrank(@feed_key, 0, -CACHE_SIZE) if rand < 0.2
       end
-      MessageBus.publish "/newsfeed", StorySerializer.new(story).as_json, user_ids: [@user.id]
+      MessageBus.publish "/newsfeed", StorySerializer.new(
+        StoryQuery.find_by_id(story.id, @user)
+      ).as_json, user_ids: [@user.id]
     end
   end
 
