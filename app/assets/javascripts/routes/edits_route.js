@@ -12,5 +12,14 @@ HB.EditsRoute = Ember.Route.extend(HB.Paginated, {
 
   afterModel: function(resolvedModel) {
     HB.TitleManager.setTitle('Pending Edits');
+  },
+
+  setupController: function(controller, model) {
+    this.setCanLoadMore(true);
+    controller.set('model', model);
+    if (model.get('length') === 0) {
+      this.set('cursor', null);
+      this.loadNextPage();
+    }
   }
 })
