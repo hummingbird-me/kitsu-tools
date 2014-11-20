@@ -1,16 +1,8 @@
 HB.ModalsEditAnimeController = Ember.ObjectController.extend(HB.ModalControllerMixin, {
   canSave: Ember.computed.not('isDirty'),
 
-  escapeURIs: function() {
-    this.get('content').setProperties({
-      'posterImage': encodeURI(this.get('content.posterImage')),
-      'coverImage': encodeURI(this.get('content.coverImage'))
-    });
-  },
-
   actions: {
     save: function () {
-      this.escapeURIs();
       Messenger().expectPromise(function() {
         return this.get('content').save();
       }.bind(this), {
