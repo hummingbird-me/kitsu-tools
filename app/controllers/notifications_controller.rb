@@ -25,6 +25,8 @@ class NotificationsController < ApplicationController
       Notification.uncache_notification_cache(current_user.id)
       if notification.source.is_a?(Story)
         redirect_to story_path(notification.source)
+      elsif notification.source.is_a?(Substory)
+        redirect_to story_path(notification.source.story)
       end
     end
   end
