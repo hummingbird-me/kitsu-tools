@@ -31,12 +31,12 @@
           </p>
         </div>
       </div>
-
-      <div class="guest-cta">
-        <p>{{user.username}} is using Hummingbird to track, discover and discuss anime and manga with friends. Don't miss any of {{user.username}}'s updates.</p>
-        <a class="btn follow-button"> Create an Account</a>
-            
-      </div>
+      {{#unless currentUser.isSignedIn}}
+        <div class="guest-cta">
+          <p>{{user.username}} is using Hummingbird to track, discover and discuss anime and manga with friends. Don't miss any of {{user.username}}'s updates.</p>
+          <a class="btn follow-button"> Create an Account</a>
+        </div>
+      {{/unless}}
     </div>
   </div>
 </div>

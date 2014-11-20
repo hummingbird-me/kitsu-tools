@@ -348,6 +348,9 @@
       width: 100%;
       background: #16a085;
       padding: 10px;
+      &:hover {
+        background: darken(#16a085, 5);
+      }
     }
   }
 }
