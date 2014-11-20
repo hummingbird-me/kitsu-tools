@@ -82,7 +82,7 @@ class StoriesController < ApplicationController
   def likers
     story = StoryQuery.find_by_id(params[:story_id], current_user)
     votes = Vote.where(target: story).order('created_at DESC').includes(:user)
-                .page(params[:page]).per(40)
+                .page(params[:page]).per(100)
     users = votes.map {|x| x.user }.map do |user|
       {username: user.name, avatar: user.avatar.url(:thumb)}
     end

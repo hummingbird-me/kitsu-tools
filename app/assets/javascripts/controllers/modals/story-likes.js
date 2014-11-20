@@ -13,11 +13,10 @@ HB.ModalsStoryLikesController = Ember.ObjectController.extend(HB.ModalController
       ic.ajax({
         url: "/stories/" + this.get('id') + "/likers?page=" + this.get('page')
       }).then(function(users) {
-        if (users.length === 0) {
+        if (users.length < 100) {
           self.set('canLoadMore', false);
-        } else {
-          self.get('likers').pushObjects(users);
         }
+        self.get('likers').pushObjects(users);
       });
     }
   }
