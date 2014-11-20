@@ -49,6 +49,7 @@ class AdminController < ApplicationController
     stats[:activeaccs] = User.where('last_library_update >= ?', 1.day.ago).count
     stats[:feedposts] = Story.where('created_at >= ?', 1.day.ago).count
     stats[:feedcomments] = Substory.where('created_at >= ?', 1.day.ago).count
+    stats[:feedlikes] = Vote.where(target_type: 'Story').where('created_at >= ?', 1.day.ago).count
     stats[:pending_count] = Version.pending.count
 
     stats[:registrations] = {total: {}, confirmed: {}}
