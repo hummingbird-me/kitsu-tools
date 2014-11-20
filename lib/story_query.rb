@@ -40,8 +40,8 @@ class StoryQuery
          (
            SELECT id, user_id, target_id
            FROM votes b
-           WHERE target_id IN (
-             SELECT target_id
+           WHERE id IN (
+             SELECT id
              FROM votes c
              WHERE c.target_id = b.target_id
              ORDER BY created_at DESC
