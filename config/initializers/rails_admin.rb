@@ -50,6 +50,7 @@ RailsAdmin.config do |config|
   
   config.model 'User' do
     edit do
+      field :email
       field :ninja_banned
     end
   end
