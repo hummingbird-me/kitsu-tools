@@ -93,7 +93,8 @@ class StoryQuery
   # Return popular stories.
   def self.find_popular(current_user, page, per_page)
     story_ids = Story.where('created_at > ?', 24.hours.ago)
-                     .order('total_votes DESC').select(:id).map(&:id)
+                     .order('total_votes DESC').page(page).per(per_page)
+                     .select(:id).map(&:id)
 
     StoryQuery.find_by_ids(story_ids, current_user)
   end
