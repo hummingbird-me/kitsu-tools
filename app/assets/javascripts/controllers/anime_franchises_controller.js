@@ -3,7 +3,7 @@ HB.AnimeFranchisesController = Ember.ArrayController.extend({
 
   // A show can belong to multiple franchises, this property will return a list
   // of all of the shows from the set of franchises.
-  franchiseAnime: function () {
+  franchiseAnime: function() {
     var anime = [];
     this.getEach("anime").forEach(function(animeSet) {
       anime = anime.concat(animeSet.toArray());
@@ -25,7 +25,7 @@ HB.AnimeFranchisesController = Ember.ArrayController.extend({
           return Ember.compare(x, y);
         }
       }
-    }).get('content');
+    }).get('arrangedContent');
 
     if (!this.get('showAll') && anime.length > 2) {
       anime = anime.slice(0, 2);
