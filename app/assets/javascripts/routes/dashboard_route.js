@@ -6,6 +6,8 @@ HB.DashboardRoute = Ember.Route.extend(HB.Paginated, {
   activate: function() {
     var self = this;
     MessageBus.subscribe("/newsfeed", function(story) {
+      story = JSON.parse(story);
+      console.log(story);
       self.store.pushPayload(story);
       if (!self.get('controller.newStories').find(function(oldStory) { return parseInt(oldStory.get('id')) === story.story.id; })) {
         self.get('controller.newStories').pushObject(self.store.find('story', story.story.id));

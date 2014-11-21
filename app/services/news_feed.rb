@@ -87,7 +87,7 @@ class NewsFeed
       end
       MessageBus.publish "/newsfeed", StorySerializer.new(
         StoryQuery.find_by_id(story.id, @user)
-      ).as_json, user_ids: [@user.id]
+      ).as_json.to_json, user_ids: [@user.id]
     end
   end
 
