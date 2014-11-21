@@ -17,6 +17,8 @@ HB.Router.map(function() {
     this.route('reviews');
   });
 
+  this.route('popular');
+
   this.resource('character', {path: '/character/:id'});
 
   this.resource('story.show', {path: '/stories/:id'});

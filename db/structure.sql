@@ -2606,6 +2606,13 @@ CREATE INDEX index_quotes_on_anime_id ON quotes USING btree (anime_id);
 
 
 --
+-- Name: index_stories_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_stories_on_created_at ON stories USING btree (created_at);
+
+
+--
 -- Name: index_stories_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3446,4 +3453,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141117044111');
 INSERT INTO schema_migrations (version) VALUES ('20141119061218');
 
 INSERT INTO schema_migrations (version) VALUES ('20141119211556');
+
+INSERT INTO schema_migrations (version) VALUES ('20141121171716');
 
