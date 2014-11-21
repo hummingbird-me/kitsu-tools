@@ -40,6 +40,8 @@ task :bulk_import_hulu, [:shows] => [:environment] do |t, args|
     end
     print "\n"
     $stderr.printf "???? %s --> %s (via %s)\n", show.name, [anime.title, anime.alt_title].compact.delete_if(&:empty?).join(', '), how.to_s if uncertain
+  rescue
+    $stderr.puts "Something went wrong."
   end
   def best_magic(options, min_or_max, &block)
     sorted = options.compact.map do |anime|
