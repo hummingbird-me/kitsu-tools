@@ -4,9 +4,9 @@
     {{#if isIndex}}
       <p>The Hummingbird developer community is incredibly talented <br> and has created a variety of useful apps with <a href="https://github.com/hummingbird-me/hummingbird/wiki/API-Reference">our API.</a></p>
       <p>Are you a developer? <a href="https://github.com/hummingbird-me/hummingbird">We’re open-source!</a></p>
-    {{/if}}
-    {{#if currentUser.isSignedIn}}
-      {{#link-to 'apps.mine' class="btn btn-default pull-right"}}<i class="fa fa-cog"></i> Manage Apps{{/link-to}}
+      {{#if currentUser.isSignedIn}}
+        {{#link-to 'apps.mine' class="btn btn-default pull-right"}}<i class="fa fa-cog"></i> Manage Apps{{/link-to}}
+      {{/if}}
     {{/if}}
   </div>
 </div>
