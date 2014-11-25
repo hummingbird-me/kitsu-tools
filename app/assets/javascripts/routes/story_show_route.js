@@ -7,6 +7,7 @@ HB.StoryShowRoute = Ember.Route.extend({
 
   setupController: function(controller, model) {
     controller.set('model', model);
+    controller.set('isExpanded', true);
     controller.send('toggleShowAll');
   }
 });
