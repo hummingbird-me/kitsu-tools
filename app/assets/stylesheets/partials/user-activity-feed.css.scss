@@ -322,11 +322,67 @@
 
   .panel-footer {
     @extend .clearfix;
+    padding: 0;
     display: none;
     background: transparent;
     border: none;
-    padding-top: 0;
-    margin-top: -25px;
+    margin-top: -10px;
+  }
+
+  .embed-series {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    .fa-link {
+      position: absolute;
+      top: 13px;
+      left: 10px;
+      font-size: 13px;
+      color: #C0C0C0;
+      padding: 1px;
+    }
+    input {
+      width: 100%;
+      box-shadow: none;
+      border: none;
+      padding: 10px;
+      font-size: 13px;
+      text-indent: 20px;
+    }
+  }
+  .submit-status {
+    @extend .clearfix;
+    padding: 10px;
+  }
+
+  .embed-help-text {
+    font-size: 10px;
+    font-weight: 500;
+    font-style: italic;
+    color: #8E8E8E;
+    position: relative;
+    top: 3px;
+    display: inline-block;
+    @media (max-width: 525px) {
+      display: none;
+    }
+  }
+
+  .nsfw-tag {
+    float: right;
+    margin-right: 15px;
+    position: relative;
+    top: 4px;
+    padding: 1px;
+    color: #5C5C5C;
+    position: relative;
+    top: 3px;
+    label {
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: 500;
+      margin-left: 3px;
+    }
   }
 }
 

@@ -2,5 +2,18 @@
   {{textarea class="status-form" placeholder="Write something..." rows="1" valueBinding="newPost"}}
 </div>
 <div class="panel-footer">
-  <button class="btn status-button" {{action "submitPost"}}>Post</button>
+  <div class="embed-series">
+    <i class="fa fa-link"></i>
+    <input type="text" placeholder="Talking about an anime or manga?">
+  </div>
+  <div class="submit-status">
+    <span class="embed-help-text">
+      To post images and videos, paste their link within your post.
+    </span>
+    <button class="btn status-button" {{action "submitPost"}}>Post it!</button>
+    <span class="nsfw-tag">
+      <input id="checkbox1" type="checkbox">
+      <label for="checkbox1">Tag as NSFW</label>
+    </span>
+  </div>
 </div>
