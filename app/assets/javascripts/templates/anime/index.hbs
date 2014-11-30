@@ -55,7 +55,7 @@
   </div>
 
   <div class="series-gallery">
-    <h2 class="grey-title"> 
+    <h2 class="grey-title">
       Screencaps
     </h1>
     <div class="gallery">
@@ -261,15 +261,7 @@
       <div class="review-links">
         <a {{bind-attr href=fullReviewsURL}}>View All</a> · <a {{bind-attr href=newReviewURL}}>Write One</a>
       </div>
-      {{#each trendingReviews itemController="review"}}
-        {{partial "media/review_summary"}}
-      {{else}}
-        <div class="trending-review-empty">
-          <i class="empty-icon fa fa-meh-o"></i>
-          <p>You came to us for reviews and it seems nobody has written one yet. We're going to take a cold shower to wash away the shame. In the meantime, maybe you could write the first review? The fortune and fame are yours for the taking.</p>
-          <a class="btn btn-default" {{bind-attr href=newReviewURL}}>Write the first review</a>
-        </div>
-      {{/each}}
+      {{partial "anime/trending_reviews"}}
     </div>
   </div>
 </div>
