@@ -181,41 +181,6 @@ ALTER SEQUENCE apps_id_seq OWNED BY apps.id;
 
 
 --
--- Name: beta_invites; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE beta_invites (
-    id integer NOT NULL,
-    email character varying(255),
-    token character varying(255),
-    invited boolean DEFAULT false,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    subscribed boolean DEFAULT true,
-    encrypted_email character varying(255)
-);
-
-
---
--- Name: beta_invites_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE beta_invites_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: beta_invites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE beta_invites_id_seq OWNED BY beta_invites.id;
-
-
---
 -- Name: castings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1651,13 +1616,6 @@ ALTER TABLE ONLY apps ALTER COLUMN id SET DEFAULT nextval('apps_id_seq'::regclas
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY beta_invites ALTER COLUMN id SET DEFAULT nextval('beta_invites_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY castings ALTER COLUMN id SET DEFAULT nextval('castings_id_seq'::regclass);
 
 
@@ -1934,14 +1892,6 @@ ALTER TABLE ONLY anime
 
 ALTER TABLE ONLY apps
     ADD CONSTRAINT apps_pkey PRIMARY KEY (id);
-
-
---
--- Name: beta_invites_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY beta_invites
-    ADD CONSTRAINT beta_invites_pkey PRIMARY KEY (id);
 
 
 --
@@ -3455,4 +3405,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141119061218');
 INSERT INTO schema_migrations (version) VALUES ('20141119211556');
 
 INSERT INTO schema_migrations (version) VALUES ('20141121171716');
+
+INSERT INTO schema_migrations (version) VALUES ('20141206143111');
 
