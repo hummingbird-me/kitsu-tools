@@ -12,7 +12,7 @@ HB.TruncateTextComponent = Ember.Component.extend({
       text = jQuery.trim(text).substring(0, this.get('length')).trim(this) + "…";
     }
     if (this.get('breakLines')) {
-      text = escapeHTML(text).replace("\n", "<br>").htmlSafe();
+      text = escapeHTML(text).replace(/\n/g, "<br>").htmlSafe();
     }
     return text;
   }.property('text', 'length', 'expanded', 'breakLines'),
