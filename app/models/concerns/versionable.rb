@@ -2,13 +2,15 @@ module Versionable
   extend ActiveSupport::Concern
 
   def create_pending(author, object = {})
+    comment = object.delete(:edit_comment)
     # temp assign attributes
     self.assign_attributes(object)
     version = Version.new(
       item: self,
       user: author,
       object: object,
-      object_changes: self.changes
+      object_changes: self.changes,
+      comment: comment
     )
     version.state = :pending
     version.save

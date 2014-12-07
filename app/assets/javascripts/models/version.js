@@ -7,6 +7,7 @@ HB.Version = DS.Model.extend({
   object: DS.attr(),
   objectChanges: DS.attr(),
   state: DS.attr('string'),
+  comment: DS.attr('string'),
   createdAt: DS.attr('date'),
 
   item: function() {

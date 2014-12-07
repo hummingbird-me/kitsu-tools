@@ -12,7 +12,8 @@ class FullAnimeControllerTest < ActionController::TestCase
 
     data = {
       synopsis: "Hello, World!",
-      episode_count: 32
+      episode_count: 32,
+      edit_comment: "Goodbye, World!"
     }
 
     put :update, format: :json, id: 'sword-art-online', full_anime: data
@@ -20,6 +21,7 @@ class FullAnimeControllerTest < ActionController::TestCase
     assert_equal 4, Version.count # 3 fixtures + new
 
     assert_equal "history", Version.last.state
+    assert_equal data[:edit_comment], Version.last.comment
 
     anime = Anime.last
     assert_equal data[:synopsis], anime.synopsis
@@ -31,7 +33,8 @@ class FullAnimeControllerTest < ActionController::TestCase
 
     data = {
       synopsis: "Hello, World!",
-      episode_count: 32
+      episode_count: 32,
+      edit_comment: "Goodbye, World!"
     }
 
     put :update, format: :json, id: 'sword-art-online', full_anime: data
@@ -42,5 +45,6 @@ class FullAnimeControllerTest < ActionController::TestCase
     assert_equal "pending", version.state
     assert_equal data[:synopsis], version.object['synopsis']
     assert_equal data[:episode_count], version.object['episode_count']
+    assert_equal data[:edit_comment], version.comment
   end
 end

@@ -41,6 +41,12 @@
                         {{model.item.displayTitle}} has been updated since this edit was created.
                       </div>
                     {{/if}}
+                    {{#if comment}}
+                      <div class="alert alert-info">
+                        <h4>{{user.username}} left you a comment!</h4>
+                        {{comment}}
+                      </div>
+                    {{/if}}
                     <dl>
                       {{#each changes}}
                         <dt class="diff-type">{{this.[0]}}</dt>

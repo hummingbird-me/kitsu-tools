@@ -1,7 +1,7 @@
 class VersionSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :state, :object_type, :object_changes, :created_at
+  attributes :id, :state, :object_type, :object_changes, :comment, :created_at
   has_one :user, embed_key: :name
 
   has_one :anime, serializer: FullAnimeSerializer,

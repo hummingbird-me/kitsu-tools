@@ -1463,7 +1463,8 @@ CREATE TABLE versions (
     object_changes json NOT NULL,
     state integer DEFAULT 0,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    comment character varying(255)
 );
 
 
@@ -3407,4 +3408,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141119211556');
 INSERT INTO schema_migrations (version) VALUES ('20141121171716');
 
 INSERT INTO schema_migrations (version) VALUES ('20141206143111');
+
+INSERT INTO schema_migrations (version) VALUES ('20141207232105');
 

@@ -59,6 +59,15 @@
             {{input type="number" value=coverImageTopOffset class="form-control"}}
           </div>
         </div>
+
+        {{! Comment area }}
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label data-tooltip="Let the reviewer know why this edit is awesome">Leave a comment</label>
+            <i class="fa fa-question-circle"></i>
+            {{textarea value=comment rows=3 maxlength="255" class="form-control"}}
+          </div>
+        </div>
       </div>
     </div>
   {{/bootstrap-modal}}
