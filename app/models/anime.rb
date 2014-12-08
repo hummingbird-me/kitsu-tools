@@ -346,6 +346,9 @@ class Anime < ActiveRecord::Base
     if object[:cover_image] == self.cover_image.url(:thumb)
       object.delete(:cover_image)
     end
+
+    object[:started_airing_date] = object.delete(:started_airing)
+    object[:finished_airing_date] = object.delete(:finished_airing)
     super
   end
 end

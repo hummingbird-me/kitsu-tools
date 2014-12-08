@@ -34,7 +34,7 @@ class FullAnimeController < ApplicationController
       :cover_image, :cover_image_top_offset, :youtube_video_id,
 
       # versionable specific
-      :edit_comment
+      :started_airing, :finished_airing, :edit_comment
     )
   end
 end

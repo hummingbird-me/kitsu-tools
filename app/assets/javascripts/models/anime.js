@@ -9,9 +9,9 @@ HB.Anime = HB.Media.extend({
   ageRatingGuide: DS.attr('string'),
   episodeCount: DS.attr('number'),
   episodeLength: DS.attr('number'),
-  startedAiring: DS.attr('date'),
+  startedAiring: DS.attr('isodate'),
   startedAiringDateKnown: DS.attr('boolean'),
-  finishedAiring: DS.attr('date'),
+  finishedAiring: DS.attr('isodate'),
   genres: DS.attr('array'),
   libraryEntry: DS.belongsTo('libraryEntry'),
 
@@ -67,12 +67,12 @@ HB.Anime = HB.Media.extend({
 
     if (this.get('startedAiring')) {
       format = this.get('startedAiringDateKnown') ? "D MMM YYYY" : "MMM YYYY";
-      formattedStartedAiring = moment(this.get('startedAiring')).utc().format(format);
+      formattedStartedAiring = moment(this.get('startedAiring')).format(format);
     } else {
       formattedStartedAiring = "?";
     }
     if (this.get('finishedAiring')) {
-      formattedFinishedAiring = moment(this.get('finishedAiring')).utc().format("D MMM YYYY");
+      formattedFinishedAiring = moment(this.get('finishedAiring')).format("D MMM YYYY");
     } else {
       formattedFinishedAiring = "?";
     }
