@@ -23,7 +23,7 @@ class FullAnimeControllerTest < ActionController::TestCase
     assert_equal "history", Version.last.state
     assert_equal data[:edit_comment], Version.last.comment
 
-    anime = Anime.last
+    anime = anime(:sword_art_online)
     assert_equal data[:synopsis], anime.synopsis
     assert_equal data[:episode_count], anime.episode_count
   end

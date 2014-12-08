@@ -76,7 +76,7 @@ HB.EditItemController = Ember.ObjectController.extend({
       this.set('isDiffShown', !this.get('isDiffShown'));
     },
 
-     approveEdit: function() {
+    approveEdit: function() {
       Messenger().expectPromise(function() {
         return this.get('model').save();
       }.bind(this), {

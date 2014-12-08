@@ -29,6 +29,8 @@
 #
 
 class Manga < ActiveRecord::Base
+  include Versionable
+
   include PgSearch
   pg_search_scope :fuzzy_search_by_title, against: [:romaji_title, :english_title],
     using: {trigram: {threshold: 0.1}}, ranked_by: ":trigram"
@@ -134,5 +136,19 @@ class Manga < ActiveRecord::Base
     end
     manga.save!
     manga
+  end
+
+  # Versionable overrides
+  def create_pending(author, object = {})
+    # check if URL is the same, otherwise paperclip will determine
+    # that it is a new image based on `original` filesize compared to
+    # the linked thumbnail filesize.
+    if object[:poster_image] == self.poster_image.url(:large)
+      object.delete(:poster_image)
+    end
+    if object[:cover_image] == self.cover_image.url(:thumb)
+      object.delete(:cover_image)
+    end
+    super
   end
 end
