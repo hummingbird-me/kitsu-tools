@@ -52,14 +52,16 @@ class Manga < ActiveRecord::Base
 
   has_attached_file :cover_image,
     styles: {thumb: ["1400x900>", :jpg]},
-    convert_options: {thumb: "-quality 70 -colorspace Gray"}
+    convert_options: {thumb: "-quality 70 -colorspace Gray"},
+    keep_old_files: true
 
   validates_attachment :cover_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
 
   has_attached_file :poster_image, default_url: "/assets/missing-anime-cover.jpg",
-    styles: {large: "200x290!", medium: "100x150!"}
+    styles: {large: "200x290!", medium: "100x150!"},
+    keep_old_files: true
 
   validates_attachment :poster_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]

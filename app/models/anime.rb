@@ -52,7 +52,8 @@ class Anime < ActiveRecord::Base
 
   has_attached_file :cover_image,
     styles: {thumb: ["1400x900>", :jpg]},
-    convert_options: {thumb: "-quality 90"}
+    convert_options: {thumb: "-quality 90"},
+    keep_old_files: true
 
   validates_attachment :cover_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -66,7 +67,8 @@ class Anime < ActiveRecord::Base
     convert_options: {
       large: '-quality 0'
     },
-    default_url: '/assets/missing-anime-cover.jpg'
+    default_url: '/assets/missing-anime-cover.jpg',
+    keep_old_files: true
 
   validates_attachment :poster_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
