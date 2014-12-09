@@ -18,6 +18,7 @@ HB.Router.map(function() {
   });
 
   this.route('popular');
+  this.route('radio');
 
   this.resource('character', {path: '/character/:id'});
 

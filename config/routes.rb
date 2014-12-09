@@ -22,6 +22,7 @@ Hummingbird::Application.routes.draw do
   end
 
   get '/popular' => 'home#static'
+  get '/radio' => 'home#static'
 
   get '/apps/mine' => 'apps#mine'
   resources :apps
