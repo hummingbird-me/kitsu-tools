@@ -60,6 +60,7 @@ HB.EditItemController = Ember.ObjectController.extend({
       change[1] = change[1] || "";
 
       var diff = htmldiff(change[0].toString(), change[1].toString());
+      diff = diff.replace(/\n/g, "<br>");
       html.push([key, new Handlebars.SafeString(diff)]);
     }
     return html;
