@@ -50,7 +50,6 @@ task :bulk_import_tvdb, [] => [:environment] do |t, args|
       tvdb_anime_jp = tvdb_series(anime.thetvdb_series_id, 'ja') || {}
       season_id = anime.thetvdb_season_id
       next failed(anime.title, "404 Error for SeriesID=#{anime.thetvdb_series_id}") if tvdb_anime.nil?
-      next skipped if season_id.try(:downcase) == 'nuck'
       next failed(anime.title, "No episodes found for SeriesID=#{anime.thetvdb_series_id}") if tvdb_anime[:episode].blank?
 
       anime.update_column :jp_title, tvdb_anime_jp[:series][:series_name] unless tvdb_anime_jp[:series][:series_name] == tvdb_anime[:series][:series_name]

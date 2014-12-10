@@ -14,7 +14,6 @@
 #  thumbnail_content_type :string(255)
 #  thumbnail_file_size    :integer
 #  thumbnail_updated_at   :datetime
-#  jp_title               :text
 #  airdate                :date
 #
 
@@ -47,12 +46,7 @@ class Episode < ActiveRecord::Base
   def length
     anime.episode_length
   end
-  
-  # S01E01
-  def format_season_episode
-    s = season_number ? "s#{"%02d" % season_number}" : ""
-    "#{s}e#{"%02d" % episode_number}"
-  end
+
   def self.create_or_update_from_hash(hash)
     episode   = Episode.find_by(anime: hash[:anime], number: hash[:episode], season_number: hash[:season])
     episode ||= Episode.find_by(anime: hash[:anime], number: hash[:episode], season_number: nil)
@@ -61,7 +55,6 @@ class Episode < ActiveRecord::Base
     episode.assign_attributes({
       season_number: (hash[:season] if episode.season_number.blank?),
       title: (hash[:title] if episode.read_attribute(:title).blank?),
-      jp_title: (hash[:jp_title] if episode.jp_title.blank?),
       airdate: (hash[:airdate] if episode.airdate.blank?),
       synopsis: (hash[:synopsis] if episode.synopsis.blank?),
       thumbnail: (hash[:thumbnail] if episode.thumbnail.blank?)

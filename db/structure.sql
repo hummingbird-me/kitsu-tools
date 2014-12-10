@@ -80,8 +80,8 @@ CREATE TABLE anime (
     cover_image_updated_at timestamp without time zone,
     bayesian_average double precision DEFAULT 0 NOT NULL,
     user_count integer DEFAULT 0 NOT NULL,
-    thetvdb_series_id character varying(255),
-    thetvdb_season_id character varying(255),
+    thetvdb_series_id integer,
+    thetvdb_season_id integer,
     english_canonical boolean DEFAULT false,
     age_rating_guide character varying(255),
     show_type character varying(255),
@@ -274,7 +274,6 @@ CREATE TABLE episodes (
     thumbnail_content_type character varying(255),
     thumbnail_file_size integer,
     thumbnail_updated_at timestamp without time zone,
-    jp_title text,
     airdate date
 );
 
@@ -3410,4 +3409,8 @@ INSERT INTO schema_migrations (version) VALUES ('20141121171716');
 INSERT INTO schema_migrations (version) VALUES ('20141206143111');
 
 INSERT INTO schema_migrations (version) VALUES ('20141207232105');
+
+INSERT INTO schema_migrations (version) VALUES ('20141210204258');
+
+INSERT INTO schema_migrations (version) VALUES ('20141210212700');
 
