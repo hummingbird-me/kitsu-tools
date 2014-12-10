@@ -19,3 +19,4 @@
 //= require twitter/typeahead
 //= require message-bus
 //= require htmldiff
+//= require pace
