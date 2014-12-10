@@ -1,21 +1,30 @@
 <div class="container">
-  <h1>Pending Edits</h1>
-
   <div class="row">
-    <div class="col-md-12 edits">
+    <div class="col-md-12 edits" style="margin-top: 40px;">
       <div class="panel panel-default">
         <div class="panel-heading">
-          Anime
+          Pending Edits
         </div>
         <div class="panel-body">
-          {{#if pendingAnime}}
+          {{#if content}}
             <div class="edit-list">
-              {{#each pendingAnime itemController="editItem"}}
+              {{#each content itemController="editItem"}}
                 <div class="edit-entry">
                   <span class="edit-entry-left">
-                    {{#link-to 'anime' item}}
-                      {{item.displayTitle}}
-                    {{/link-to}}
+                    <span class="edit-type">
+                      {{objectType}}
+                    </span>
+                    {{! link to content }}
+                    {{#if anime}}
+                      {{#link-to 'anime' item}}
+                        {{item.displayTitle}}
+                      {{/link-to}}
+                    {{/if}}
+                    {{#if manga}}
+                      {{#link-to 'manga' item}}
+                        {{item.displayTitle}}
+                      {{/link-to}}
+                    {{/if}}
                   </span>
                   <span class="edit-entry-right">
                     <span class="edit-entry-user">
@@ -28,7 +37,7 @@
                     </span>
                     <span class="edit-entry-actions">
                       <a href="#" {{action 'toggleDiff'}}>
-                        <i class="fa fa-arrow-down"></i> View
+                        <i {{bind-attr class=":fa isDiffShown:fa-arrow-up:fa-arrow-down"}}></i> View
                       </a>
                     </span>
                   </span>
@@ -39,6 +48,12 @@
                     {{#if outdated}}
                       <div class="alert alert-danger">
                         {{model.item.displayTitle}} has been updated since this edit was created.
+                      </div>
+                    {{/if}}
+                    {{#if comment}}
+                      <div class="alert alert-info">
+                        <h4>{{user.username}} left you a comment!</h4>
+                        {{comment}}
                       </div>
                     {{/if}}
                     <dl>

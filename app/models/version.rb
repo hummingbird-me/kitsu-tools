@@ -11,6 +11,7 @@
 #  state          :integer          default(0)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  comment        :string(255)
 #
 
 class Version < ActiveRecord::Base

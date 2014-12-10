@@ -16,6 +16,12 @@
       @extend .col-lg-8;
 
       padding: { left: 0; right: 0; };
+
+      .edit-type {
+        display: inline-block;
+        width: 10%;
+        text-transform: capitalize;
+      }
     }
 
     .edit-entry-right {
@@ -29,7 +35,7 @@
 
       .edit-entry-time {
         display: inline-block;
-        width: 40%;
+        width: 50%;
         text-align: center;
       }
     }

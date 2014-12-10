@@ -29,6 +29,8 @@
 #
 
 class Manga < ActiveRecord::Base
+  include Versionable
+
   include PgSearch
   pg_search_scope :fuzzy_search_by_title, against: [:romaji_title, :english_title],
     using: {trigram: {threshold: 0.1}}, ranked_by: ":trigram"
@@ -50,14 +52,16 @@ class Manga < ActiveRecord::Base
 
   has_attached_file :cover_image,
     styles: {thumb: ["1400x900>", :jpg]},
-    convert_options: {thumb: "-quality 70 -colorspace Gray"}
+    convert_options: {thumb: "-quality 70 -colorspace Gray"},
+    keep_old_files: true
 
   validates_attachment :cover_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
 
   has_attached_file :poster_image, default_url: "/assets/missing-anime-cover.jpg",
-    styles: {large: "200x290!", medium: "100x150!"}
+    styles: {large: "200x290!", medium: "100x150!"},
+    keep_old_files: true
 
   validates_attachment :poster_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -134,5 +138,19 @@ class Manga < ActiveRecord::Base
     end
     manga.save!
     manga
+  end
+
+  # Versionable overrides
+  def create_pending(author, object = {})
+    # check if URL is the same, otherwise paperclip will determine
+    # that it is a new image based on `original` filesize compared to
+    # the linked thumbnail filesize.
+    if object[:poster_image] == self.poster_image.url(:large)
+      object.delete(:poster_image)
+    end
+    if object[:cover_image] == self.cover_image.url(:thumb)
+      object.delete(:cover_image)
+    end
+    super
   end
 end

@@ -1,7 +1,7 @@
 <div class="edit-series-modal">
   {{#bootstrap-modal action="close"}}
     <div class="modal-header">
-      <h4 class="modal-title">Edit Anime</h4>
+      <h4 class="modal-title">Edit Manga</h4>
       <button class="btn btn-primary" {{action "save"}} {{bind-attr disabled=canSave}}>
         {{#if isSaving}}<i class="fa fa-spin fa-spinner"></i>{{/if}}
         Request Edits
@@ -14,7 +14,7 @@
             <div class="alert alert-info">
               You have
               {{pluralize pendingEdits "pending edit" "pending edits"}}
-              for this anime.
+              for this manga.
             </div>
           </div>
         {{/if}}
@@ -41,32 +41,17 @@
         </div>
         <div class="form-row">
           <div class="col-sm-3">
-            <label>Episode Count</label>
-            {{input type="number" value=episodeCount class="form-control"}}
+            <label>Chapter Count</label>
+            {{input type="number" value=chapterCount class="form-control"}}
           </div>
           <div class="col-sm-3">
-            <label>Episode Length</label>
-            {{input type="number" value=episodeLength class="form-control"}}
-          </div>
-          <div class="col-sm-3">
-            <label data-tooltip="The video ID is the part between v= and & of the video's page URL.">YouTube Trailer Id</label>
-            <i class="fa fa-question-circle"></i>
-            {{input value=youtubeVideoId class="form-control"}}
+            <label>Volume Count</label>
+            {{input type="number" value=volumeCount class="form-control"}}
           </div>
           <div class="col-sm-3">
             <label data-tooltip="Distance in pixels that you want to move the visible part of the cover photo up.">Cover Image Top Offset</label>
             <i class="fa fa-question-circle"></i>
             {{input type="number" value=coverImageTopOffset class="form-control"}}
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="col-sm-3">
-            <label>Started Airing</label>
-            {{input value=startedAiring class="form-control" placeholder="YYYY-MM-DD"}}
-          </div>
-          <div class="col-sm-3">
-            <label>Finished Airing</label>
-            {{input value=finishedAiring class="form-control" placeholder="YYYY-MM-DD"}}
           </div>
         </div>
 

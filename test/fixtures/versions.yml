@@ -11,8 +11,8 @@
 #  state          :integer          default(0)
 #  created_at     :datetime
 #  updated_at     :datetime
+#  comment        :string(255)
 #
-
 
 one:
   item: sword_art_online (Anime)
@@ -24,7 +24,7 @@ one:
 two:
   item: sword_art_online (Anime)
   user: josh
-  object: {}
+  object: { "synopsis": "Hello, World!" }
   object_changes: {}
   state: 0
 

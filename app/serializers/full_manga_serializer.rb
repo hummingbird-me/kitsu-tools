@@ -2,7 +2,8 @@ class FullMangaSerializer < MangaSerializer
   embed :ids, include: true
 
   attributes :cover_image,
-             :cover_image_top_offset
+             :cover_image_top_offset,
+             :pending_edits
 
   has_one :manga_library_entry
   has_many :featured_castings, root: :castings
@@ -17,6 +18,10 @@ class FullMangaSerializer < MangaSerializer
 
   def cover_image_top_offset
     object.cover_image_top_offset || 0
+  end
+
+  def pending_edits
+    scope && Version.pending.where(user: scope, item: object).count
   end
 
   def featured_castings

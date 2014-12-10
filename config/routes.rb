@@ -5,7 +5,7 @@ Hummingbird::Application.routes.draw do
   resources :manga_library_entries, except: [:new, :edit]
   resources :franchises, only: [:index, :show]
   resources :full_anime, only: [:show, :update, :destroy]
-  resources :full_manga, only: [:show]
+  resources :full_manga, only: [:show, :update]
   resources :news_feeds, only: [:index]
   resources :quotes
 

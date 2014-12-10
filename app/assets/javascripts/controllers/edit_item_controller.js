@@ -60,6 +60,7 @@ HB.EditItemController = Ember.ObjectController.extend({
       change[1] = change[1] || "";
 
       var diff = htmldiff(change[0].toString(), change[1].toString());
+      diff = diff.replace(/\n/g, "<br>");
       html.push([key, new Handlebars.SafeString(diff)]);
     }
     return html;
@@ -76,7 +77,7 @@ HB.EditItemController = Ember.ObjectController.extend({
       this.set('isDiffShown', !this.get('isDiffShown'));
     },
 
-     approveEdit: function() {
+    approveEdit: function() {
       Messenger().expectPromise(function() {
         return this.get('model').save();
       }.bind(this), {

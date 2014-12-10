@@ -31,7 +31,10 @@ class FullAnimeController < ApplicationController
   def full_anime_params
     params.require(:full_anime).permit(
       :synopsis, :episode_length, :episode_count, :poster_image,
-      :cover_image, :cover_image_top_offset, :youtube_video_id
+      :cover_image, :cover_image_top_offset, :youtube_video_id,
+
+      # versionable specific
+      :started_airing, :finished_airing, :edit_comment
     )
   end
 end
