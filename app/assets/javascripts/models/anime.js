@@ -9,9 +9,9 @@ HB.Anime = HB.Media.extend({
   ageRatingGuide: DS.attr('string'),
   episodeCount: DS.attr('number'),
   episodeLength: DS.attr('number'),
-  startedAiring: DS.attr('isodate'),
+  startedAiring: DS.attr('date'),
   startedAiringDateKnown: DS.attr('boolean'),
-  finishedAiring: DS.attr('isodate'),
+  finishedAiring: DS.attr('date'),
   genres: DS.attr('array'),
   libraryEntry: DS.belongsTo('libraryEntry'),
 
