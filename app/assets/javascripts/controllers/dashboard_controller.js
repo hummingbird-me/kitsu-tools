@@ -1,5 +1,4 @@
 HB.DashboardController = Ember.ArrayController.extend({
-
   currentTab: "dashboard",
 
   highlightDasboard: function() { return this.get('currentTab') == "dashboard" }.property('currentTab'),
@@ -8,6 +7,11 @@ HB.DashboardController = Ember.ArrayController.extend({
 
   newStories: [],
 
+  postsOnly: Em.computed.filter('content', function(item){
+    return item.get('type') === "comment";
+  }),
+  mediaOnly: Em.computed.filterBy('content', 'type', "media_story"),
+
   arrangedContent: function() {
     var tab = this.get('currentTab');
     if (tab === "posts") return this.get('postsOnly');
@@ -15,17 +19,9 @@ HB.DashboardController = Ember.ArrayController.extend({
     return this.get('content');
   }.property('currentTab', 'content'),
 
-  postsOnly: Em.computed.filter('content', function(item){
-    return (item.get('type') == "comment" || item.get('type') == "followed");
-  }),
-
-  mediaOnly: Em.computed.filterBy('content', 'type', "media_story"),
-
-
   actions: {
     setCurrentTab: function(newTab){
       this.set('currentTab', newTab);
     }
   }
-
 });
