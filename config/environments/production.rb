@@ -90,7 +90,6 @@ Hummingbird::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.ember.variant = :production
   config.react.variant = :production
   config.react.addons = true
 end

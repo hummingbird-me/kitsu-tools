@@ -20,9 +20,7 @@ gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
 gem 'connection_pool'
 
-gem 'ember-rails', '~> 0.15'
-gem 'ember-source', '1.8.1'
-gem 'ember-data-source', '1.0.0.beta.11'
+gem 'ember-cli-rails', github: 'vikhyat/ember-cli-rails'
 
 gem 'react-rails', '~> 0.10.0.0'
 
