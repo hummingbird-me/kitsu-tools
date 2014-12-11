@@ -1,0 +1,67 @@
+<h2>Mobile Apps</h2>
+<div class="block-grid-md-2 block-grid-sm-1">
+  {{#each mobileApps}}
+    <div class="block-grid-item">
+      <div class="app-card">
+        {{!--
+          <img class="app-image" {{bind-attr src=cover}} />
+        --}}
+        <div class="app-inner">
+          <h3 class="app-title">{{name}} <span class="app-type">{{platform}}</span></h3>
+          {{#each author}}
+            <small class="app-author">by  <a {{bind-attr href=link}}>{{name}}</a></small>
+          {{/each}}
+          <hr>
+          <p class="app-desc">{{desc}}</p>
+
+          <div class="app-link">
+            {{#each links}}
+              <a {{bind-attr href=link}}>{{name}}</a>
+            {{/each}}
+          </div>
+          <div class="app-screens block-grid-md-2 block-grid-sm-1">
+            {{#each screenshots}}
+              <div class="block-grid-item">
+                <img src="{{unbound this}}">
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+<hr>
+<h2>Desktop Apps</h2>
+<div class="block-grid-md-2 block-grid-sm-1">
+  {{#each desktopApps}}
+    <div class="block-grid-item">
+      <div class="app-card">
+        {{!--
+          <img class="app-image" {{bind-attr src=cover}} />
+        --}}
+        <div class="app-inner">
+          <h3 class="app-title">{{name}} <span class="app-type">{{platform}}</span></h3>
+          {{#each author}}
+            <small class="app-author">by  <a {{bind-attr href=link}}>{{name}}</a></small>
+          {{/each}}
+          <hr>
+          <p class="app-desc">{{desc}}</p>
+
+          <div class="app-link">
+            {{#each links}}
+              <a {{bind-attr href=link}}>{{name}}</a>
+            {{/each}}
+          </div>
+          <div class="app-screens block-grid-sm-1">
+            {{#each screenshots}}
+              <div class="block-grid-item">
+                <img src="{{unbound this}}">
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>

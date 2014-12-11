@@ -14,7 +14,7 @@
   "forin": false,
   "immed": false,
   "laxbreak": false,
-  "newcap": true,
+  "newcap": false,
   "noarg": true,
   "noempty": false,
   "nonew": false,
