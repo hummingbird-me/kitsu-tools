@@ -51,9 +51,6 @@
 
     #fb-root
 
-    / Content
-    #ember-root
-
     / Preload Models
     :javascript
       window.currentUserName = #{(user_signed_in? ? current_user.name : nil).to_json};
