@@ -1,6 +1,9 @@
 language: ruby
 
-cache: bundler
+cache:
+  directories:
+    - vendor/bundle
+    - app/frontend/node_modules
 
 rvm: 2.1.3
 
@@ -9,10 +12,22 @@ addons:
 
 sudo: false
 
+before_install:
+  - "npm config set spin false"
+  - "travis_retry npm install -g npm@^2"
+
+install:
+  - bundle install --deployment --jobs=3 --retry=3
+  - travis_retry npm install -g bower
+  - (cd app/frontend; travis_retry npm install)
+  - (cd app/frontend; travis_retry bower install)
+
 before_script:
   - bundle exec rake db:create db:structure:load
 
-script: bundle exec rake test:all
+script:
+  - bundle exec rake test:all
+  - (cd app/frontend; npm test)
 
 #after_success:
 #  - 'echo -e "Host 107.170.189.56\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config'
