@@ -1,9 +1,11 @@
-HB.WaifuSelectorComponent = Em.Component.extend({
+import Ember from 'ember';
+/* global Bloodhound */
+
+export default Ember.Component.extend({
   selectedChar: null,
   searchText: null,
   tagName: 'input',
   className: 'typeahead',
-
 
   waifuClearObserver: function() {
     var shouldClear = this.get('clearInput');

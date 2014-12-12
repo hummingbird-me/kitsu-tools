@@ -1,4 +1,7 @@
-HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
+import Ember from 'ember';
+import HasCurrentUser from '../../mixins/has-current-user';
+
+export default Ember.ArrayController.extend(HasCurrentUser, {
   needs: "user",
   user: Ember.computed.alias('controllers.user'),
   waifu_slug: Ember.computed.any('user.waifuSlug'),
@@ -11,7 +14,7 @@ HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
     return 500 - this.get('user.about').length;
   }.property('user.about'),
 
-  aboutCharactersLeft: Em.computed.gt('aboutCharacterCount', 0),
+  aboutCharactersLeft: Ember.computed.gt('aboutCharacterCount', 0),
 
   sortProperties: ['createdAt'],
   sortAscending: false,
@@ -33,8 +36,9 @@ HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
   }.property('favorite_anime_page', 'favorite_anime'),
 
   linkedWebsites: function(){
-    if (!this.get("hasWebsite"))
+    if (!this.get("hasWebsite")) {
       return;
+    }
 
     var dataList = this.get('user.website').split(' '),
         siteList = [],
@@ -48,9 +52,9 @@ HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
     return siteList;
   }.property('user.website'),
 
-  favorite_anime_list: function () {
-    var animes = this.get('favorite_anime')
-      , page = this.get('favorite_anime_page');
+  favorite_anime_list: function() {
+    var animes = this.get('favorite_anime'),
+        page = this.get('favorite_anime_page');
 
     // if using the goPrev and goNext page style, slice the array into a chunk
     // animes = animes.slice( (page - 1) * 6, page * 6);
@@ -158,15 +162,14 @@ HB.UserIndexController = Ember.ArrayController.extend(HB.HasCurrentUser, {
       segmentShowStroke : false,
       segmentStrokeWidth : 0,
       animation : false
-    }
+    };
   }.property(),
 
   lifeSpentOnAnimeFmt: function () {
     var days, hours, minutes, months, str, years;
     minutes = this.get('userInfo.lifeSpentOnAnime');
 
-    if (minutes === 0)
-      return "0 minutes";
+    if (minutes === 0) { return "0 minutes"; }
 
     years = months = days = hours = 0;
     hours = Math.floor(minutes / 60);

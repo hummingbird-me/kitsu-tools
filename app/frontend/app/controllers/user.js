@@ -1,4 +1,8 @@
-HB.UserController = Ember.ObjectController.extend(HB.HasCurrentUser, {
+import Ember from 'ember';
+import HasCurrentUser from '../mixins/has-current-user';
+import ajax from 'ic-ajax';
+
+export default Ember.ObjectController.extend(HasCurrentUser, {
   coverUpload: Ember.Object.create(),
   coverUrl: Ember.computed.any('coverUpload.croppedImage', 'model.coverImageUrl'),
   coverImageStyle: function () {
@@ -48,7 +52,7 @@ HB.UserController = Ember.ObjectController.extend(HB.HasCurrentUser, {
       var self = this;
       var data = new FormData();
       data.append('avatar', file);
-      return ic.ajax({
+      return ajax({
         url: '/users/' + this.get('model.username') + '/avatar.json',
         data: data,
         cache: false,

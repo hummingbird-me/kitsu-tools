@@ -66,6 +66,9 @@ Router.map(function() {
   this.route('loading');
   this.route('story/permalink');
   this.route('anime/quotes');
+  this.route('user/reviews');
+  this.route('user/followers');
+  this.route('user/following');
 });
 
 export default Router;

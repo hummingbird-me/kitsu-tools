@@ -1,4 +1,9 @@
-HB.UserIndexRoute = Ember.Route.extend(HB.Paginated, {
+import Ember from 'ember';
+import Paginated from '../../mixins/paginated';
+import ajax from 'ic-ajax';
+import setTitle from '../../utils/set-title';
+
+export default Ember.Route.extend(Paginated, {
   fetchPage: function(page) {
     return this.store.find('story', {
       user_id: this.modelFor('user').get('id'),
@@ -9,7 +14,7 @@ HB.UserIndexRoute = Ember.Route.extend(HB.Paginated, {
   setupController: function(controller, model) {
     controller.set('userInfo', this.store.find('userInfo', this.modelFor('user').get('id')));
 
-    ic.ajax({
+    ajax({
       url: '/api/v1/users/'+this.modelFor('user').get('id')+'/favorite_anime',
       type: 'GET'
     }).then(function(favoriteAnime) {
@@ -24,13 +29,14 @@ HB.UserIndexRoute = Ember.Route.extend(HB.Paginated, {
   },
 
   afterModel: function() {
-    return HB.TitleManager.setTitle(this.modelFor('user').get('username') + "'s Profile");
+    return setTitle(this.modelFor('user').get('username') + "'s Profile");
   },
 
   actions: {
     postComment: function(comment) {
-      if (comment.replace(/\s/g, '').replace(/\[[a-z]+\](.?)\[\/[a-z]+\]/i, '$1').length === 0)
+      if (comment.replace(/\s/g, '').replace(/\[[a-z]+\](.?)\[\/[a-z]+\]/i, '$1').length === 0) {
         return;
+      }
 
       var story = this.store.createRecord('story', {
         type: 'comment',

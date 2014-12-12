@@ -17,6 +17,7 @@
     "bootstrap": "~3.3.1",
     "jquery-autosize": "~1.18.17",
     "pace": "~1.0.2",
-    "Chart.js": "~0.2.0"
+    "Chart.js": "~0.2.0",
+    "typeahead.js": "~0.10.5"
   }
 }

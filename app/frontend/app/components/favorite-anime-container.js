@@ -1,16 +1,18 @@
-HB.FavoriteAnimeContainerComponent = Em.Component.extend(HB.SortableMixin, Ember.SortableMixin, {
+import Ember from 'ember';
+
+// TODO HB.SortableMixin
+export default Ember.Component.extend(Ember.SortableMixin, {
   tagName: 'ul',
   classNames: 'media-grid',
   connectWith: '.grid-thumb',
   tolerance: 'pointer',
   containment: '.favorite-anime',
 
-
   disabled: function() {
     return !this.get('isEditing');
-  }.property('isEditing'),
+  }.property('isEditing')
 
-  updateSortOrder: function(indexes) {
+  /* updateSortOrder: function(indexes) {
     var list = this.get("favorite_anime_list"),
         _this = this;
     return list.forEach(function(item) {
@@ -26,5 +28,5 @@ HB.FavoriteAnimeContainerComponent = Em.Component.extend(HB.SortableMixin, Ember
       return indexes[$(this).data('id')] = index;
     });
     return _this.updateSortOrder(indexes);
-  }
+  } */
 });

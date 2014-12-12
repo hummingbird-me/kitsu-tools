@@ -28,6 +28,7 @@ app.import('vendor/messenger/messenger-theme-flat.js');
 app.import('bower_components/moment/moment.js');
 app.import('bower_components/jquery-autosize/jquery.autosize.js');
 app.import('bower_components/pace/pace.js');
+app.import('bower_components/typeahead.js/dist/typeahead.bundle.js');
 app.import('bower_components/Chart.js/Chart.js');
 
 // bootstrap js
