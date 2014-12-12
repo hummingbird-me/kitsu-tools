@@ -1,4 +1,7 @@
-HB.SearchController = Ember.Controller.extend({
+import Ember from 'ember';
+import ajax from 'ic-ajax';
+
+export default Ember.Controller.extend({
   filters: ["Everything", "Anime", "Manga", "User"],
   queryParams: ['query', 'filter'],
   performingSearch: false,
@@ -40,7 +43,7 @@ HB.SearchController = Ember.Controller.extend({
     }
 
     this.set('performingSearch', true);
-    ic.ajax({
+    ajax({
       url: '/search.json?type=full&query=' + this.get('query'),
       type: "GET"
     }).then(function(payload) {

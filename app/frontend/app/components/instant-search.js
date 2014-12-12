@@ -1,4 +1,7 @@
-HB.InstantSearchComponent = Ember.Component.extend({
+import Ember from 'ember';
+/* global Bloodhound */
+
+export default Ember.Component.extend({
   query: "",
   searchResults: [],
 
@@ -14,13 +17,13 @@ HB.InstantSearchComponent = Ember.Component.extend({
         filter: function(results) {
           return Ember.$.map(results.search, function (r) {
             // There actually has to be a way to send the img params to the thumb generator in the request, this is just a temp. solution
-            if (r.type=="user") {
+            if (r.type === "user") {
               r.image = r.image.replace(/(\.[a-zA-Z]+)?\?/, ".jpg?");
             }
             return {
               title: r.title,
               type: r.type,
-              image: r.image.replace((r.type=="user"?"{size}":"large"), (r.type=="user"?"small":"medium")),
+              image: r.image.replace((r.type==="user"?"{size}":"large"), (r.type==="user"?"small":"medium")),
               link: r.link
             };
           });
