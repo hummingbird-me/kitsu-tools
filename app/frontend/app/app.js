@@ -15,10 +15,6 @@ if (!window.location.href.match('/sign-in')) {
   window.lastVisitedURL = window.location.href;
 }
 
-Ember.LinkView.reopen({
-  attributeBindings: ['href', 'title', 'rel', 'data-hover']
-});
-
 Ember.Route.reopen({
   resetScroll: function() {
     window.scrollTo(0, 0);

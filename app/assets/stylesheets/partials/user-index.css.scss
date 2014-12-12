@@ -43,24 +43,6 @@
       }
     }
 
-    .nav-link a::before {
-      position: absolute;
-      top: 8px;
-      left: 20px;
-      overflow: hidden;
-      padding: 10px 0;
-      max-width: 0;
-      border-bottom: 1px solid $darkOrange;
-      color: $darkOrange;
-      content: attr(data-hover);
-      transition: max-width 0.5s;
-    }
-
-    .nav-link a:hover::before,
-    .nav-link a:focus::before {
-      max-width: 100%;
-    }
-
     // Hide less important links on mobile
     @media (max-width: 560px) {
       .reviews-link, .lists-link {
