@@ -66,11 +66,11 @@ export default Ember.Route.extend(Paginated, {
     },
 
     showNewStories: function() {
-      var controller = this.get('controller');
+      var content = this.get('controller.content'),
+          newStories = this.get('controller.newStories').uniq().reverseObjects();
 
-      controller.get('content').removeObjects(controller.get('newStories'));
-      controller.get('content').unshiftObjects(controller.get('newStories')
-                                                         .reverseObjects());
+      content.removeObjects(newStories);
+      content.unshiftObjects(newStories);
 
       this.set('controller.newStories', []);
     }
