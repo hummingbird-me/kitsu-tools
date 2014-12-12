@@ -19,13 +19,13 @@ then
   cd $DIR && bundle install --deployment --without test
   cd $DIR && cd app/frontend && npm install
   cd $DIR && cd app/frontend && bower install
-  cd $DIR && bundle exec rake assets:precompile
+  cd $DIR && bundle exec rake assets:precompile EMBERCLI_COMPILE=1
   cd $DIR && bundle exec rake db:migrate
 else
   su - hummingbird -c "cd $DIR && bundle install --deployment --without test"
   su - hummingbird -c "cd $DIR && cd app/frontend && npm install"
   su - hummingbird -c "cd $DIR && cd app/frontend && bower install"
-  su - hummingbird -c "cd $DIR && bundle exec rake assets:precompile"
+  su - hummingbird -c "cd $DIR && bundle exec rake assets:precompile EMBERCLI_COMPILE=1"
   su - hummingbird -c "cd $DIR && bundle exec rake db:migrate"
 fi
 
