@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.TextArea.extend({
   registerAutosize: function() {
-    this.$().autosize();
+    this.$().autosize({append: false});
   }.on('didInsertElement'),
 
   clearAutosize: function() {
