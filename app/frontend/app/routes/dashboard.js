@@ -67,24 +67,11 @@ export default Ember.Route.extend(Paginated, {
 
     showNewStories: function() {
       var controller = this.get('controller');
-      var storyIds = {};
-      var newContent = [];
 
-      controller.get('newStories').forEach(function(story) {
-        if (!storyIds[parseInt(story.get('id'))]) {
-          storyIds[parseInt(story.get('id'))] = true;
-          newContent.unshift(story.get('content'));
-        }
-      });
+      controller.get('content').removeObjects(controller.get('newStories'));
+      controller.get('content').unshiftObjects(controller.get('newStories')
+                                                         .reverseObjects());
 
-      controller.get('content').forEach(function(story) {
-        if (!storyIds[parseInt(story.get('id'))]) {
-          storyIds[parseInt(story.get('id'))] = true;
-          newContent.push(story);
-        }
-      });
-
-      this.currentModel.setObjects(newContent);
       this.set('controller.newStories', []);
     }
   }
