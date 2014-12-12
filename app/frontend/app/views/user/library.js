@@ -1,4 +1,8 @@
-HB.UserLibraryView = Ember.View.extend({
+import Ember from 'ember';
+/* global React */
+/* global LibrarySectionsReactComponent */
+
+export default Ember.View.extend({
   user: Ember.computed.alias('controller.user'),
   sections: Ember.computed.alias('controller.sections'),
   reactComponent: Ember.computed.alias('controller.reactComponent'),
