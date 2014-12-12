@@ -3,7 +3,7 @@ import ModalMixin from '../../mixins/modals/controller';
 import VersionableMixin from '../../mixins/modals/versionable';
 /* global moment */
 
-export default Ember.Controller.extend(ModalMixin, VersionableMixin, {
+export default Ember.ObjectController.extend(ModalMixin, VersionableMixin, {
   startingDate: Ember.computed('startedAiring', function(k, v) {
     if (v !== undefined) {
       var date = new Date(v);
