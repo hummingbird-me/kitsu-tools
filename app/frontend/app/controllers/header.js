@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import PreloadStore from '../utils/preload-store';
 import HasCurrentUser from '../mixins/has-current-user';
-import ic from 'ic-ajax';
+import ajax from 'ic-ajax';
 
 export default Ember.Controller.extend(HasCurrentUser, {
   needs: ['application', 'notifications'],
@@ -48,7 +48,7 @@ export default Ember.Controller.extend(HasCurrentUser, {
     resendEmail: function () {
       var self = this;
       this.set('resentEmail', false);
-      ic.ajax({
+      ajax({
         url: '/settings/resend_confirmation',
         type: 'POST'
       }).then(function() {
