@@ -26,7 +26,7 @@ else
   su - hummingbird -c "cd $DIR && bundle exec rake assets:precompile"
   su - hummingbird -c "cd $DIR && bundle exec rake db:migrate"
   su - hummingbird -c "cd $DIR && cd app/frontend && npm install"
-  su - hummingbird -c "cd $DIR && cd app/frontned && bower install"
+  su - hummingbird -c "cd $DIR && cd app/frontend && bower install"
 fi
 
 # restart sidekiq
