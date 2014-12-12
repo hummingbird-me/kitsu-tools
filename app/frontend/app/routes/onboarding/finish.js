@@ -1,5 +1,6 @@
-HB.OnboardingFinishRoute = Ember.Route.extend({
+import Ember from 'ember';
 
+export default Ember.Route.extend({
   setupController: function(controller) {
     controller.set('loading', true);
 
@@ -8,5 +9,4 @@ HB.OnboardingFinishRoute = Ember.Route.extend({
       controller.set('loading', false);
     });
   }
-  
 });

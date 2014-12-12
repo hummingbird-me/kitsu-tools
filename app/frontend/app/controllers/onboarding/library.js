@@ -1,8 +1,10 @@
+import Ember from 'ember';
+import HasCurrentUser from '../../mixins/has-current-user';
+import ajax from 'ic-ajax';
+
 var REQUIRED_RATING_COUNT = 5;
 
-
-HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
-
+export default Ember.Controller.extend(HasCurrentUser, {
   showManga: false,
   animeData: function(){
     if(this.get('hasSearchTerm')){
@@ -24,13 +26,13 @@ HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
     return this.get('content.manga');
   }.property('content.manga', 'hasSearchTerm', 'searchResults'),
 
-  canContinue: Em.computed.gte('totalRatings', REQUIRED_RATING_COUNT),
+  canContinue: Ember.computed.gte('totalRatings', REQUIRED_RATING_COUNT),
   totalRatings: 0,
   remainingRatings: function(){
     return REQUIRED_RATING_COUNT - this.get('totalRatings');
   }.property('totalRatings'),
 
-  hasSearchTerm: Em.computed.gt('searchTerm.length', 2),
+  hasSearchTerm: Ember.computed.gt('searchTerm.length', 2),
   searchTerm: "",
   searchResults: [],
   performedSearch: false,
@@ -52,17 +54,17 @@ HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
     }
 
     this.set('loading', true);
-    ic.ajax({
+    ajax({
       url: '/search.json?type=element&datatype='+dtpe+'&query=' + this.get('searchTerm'),
       type: "GET"
     }).then(function(payload) {
       self.setProperties({
-        'searchResults': payload.search.map(function(x){ return x.id }),
+        'searchResults': payload.search.map(function(x) { return x.id; }),
         'performedSearch': true,
         'loading': false
       });
 
-      var formatted = {}
+      var formatted = {};
       formatted[dtpe] = payload.search;
       self.store.pushPayload(formatted);
     });
@@ -86,7 +88,7 @@ HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
 
     importLibrary: function(){
       var self = this;
-      ic.ajax({
+      ajax({
         url: '/settings/import/myanimelist',
         type: 'POST'
       }).then(function() {
@@ -104,10 +106,12 @@ HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
         return;
       }
 
+      var libraryEntry;
+
       // Anime and Manga library entries are using
       // different models in ember data!
-      if(media.constructor.typeKey == 'anime') {
-        var libraryEntry = this.store.createRecord('LibraryEntry', {
+      if(media.constructor.typeKey === 'anime') {
+        libraryEntry = this.store.createRecord('LibraryEntry', {
           anime: media,
           status: "Completed",
           isFavorite: false,
@@ -120,7 +124,7 @@ HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
           fav_rank: 9999
         });
       } else {
-        var libraryEntry = this.store.createRecord('MangaLibraryEntry', {
+        libraryEntry = this.store.createRecord('MangaLibraryEntry', {
           manga: media,
           status: "Completed",
           isFavorite: false,
@@ -138,5 +142,4 @@ HB.OnboardingLibraryController = Ember.Controller.extend(HB.HasCurrentUser, {
       this.incrementProperty('totalRatings');
     }
   }
-
 });

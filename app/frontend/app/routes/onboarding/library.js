@@ -1,5 +1,6 @@
-HB.OnboardingLibraryRoute = Ember.Route.extend({
+import Ember from 'ember';
 
+export default Ember.Route.extend({
   setupController: function(controller) {
     controller.set('loading', true);
 
@@ -8,7 +9,7 @@ HB.OnboardingLibraryRoute = Ember.Route.extend({
       manga: this.store.find('manga', { 'sort_by': 'created_at', 'sort_reverse': true }),
       libraryEntries: this.store.find('library_entry', { 'user_id': this.get('currentUser.id') }),
       mangaLibraryEntries: this.store.find('manga_library_entry', { 'user_id': this.get('currentUser.id') })
-    }
+    };
 
     Ember.RSVP.hash(promises).then(function(hash){
       controller.setProperties({
@@ -19,5 +20,4 @@ HB.OnboardingLibraryRoute = Ember.Route.extend({
       });
     });
   }
-
 });

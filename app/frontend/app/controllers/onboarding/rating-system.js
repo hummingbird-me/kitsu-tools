@@ -1,6 +1,9 @@
-HB.OnboardingRatingSystemController = Em.Controller.extend(HB.HasCurrentUser, {
-  advancedRating: Em.computed.equal('currentUser.ratingType', "advanced"),
-  simpleRating: Em.computed.not('advancedRating'),
+import Ember from 'ember';
+import HasCurrentUser from '../../mixins/has-current-user';
+
+export default Ember.Controller.extend(HasCurrentUser, {
+  advancedRating: Ember.computed.equal('currentUser.ratingType', "advanced"),
+  simpleRating: Ember.computed.not('advancedRating'),
   saving: false,
 
   actions: {

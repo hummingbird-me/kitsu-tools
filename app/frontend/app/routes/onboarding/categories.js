@@ -1,6 +1,8 @@
-HB.OnboardingCategoriesRoute = Ember.Route.extend({
+import Ember from 'ember';
+
+export default Ember.Route.extend({
   setupController: function(controller) {
-    if(controller.get('genres') != undefined) return;
+    if (controller.get('genres') !== undefined) { return; }
 
     controller.set('loading', true);
     this.store.find('genre').then(function(genres) {

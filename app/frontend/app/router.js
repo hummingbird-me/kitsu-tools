@@ -67,6 +67,9 @@ Router.map(function() {
   this.route('user/reviews');
   this.route('user/followers');
   this.route('user/following');
+  this.route('onboarding/categories');
+  this.route('onboarding/library');
+  this.route('onboarding/finish');
 });
 
 export default Router;

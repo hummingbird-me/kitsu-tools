@@ -1,20 +1,24 @@
+import Ember from 'ember';
+import ajax from 'ic-ajax';
+/* global Messenger */
+
 var REQUIRED_FAVORITE_COUNT = 2;
 
-HB.OnboardingCategoriesController = Ember.Controller.extend({
+export default Ember.Controller.extend({
   totalFavorites: 0,
 
   remainingFavorites: function() {
     return REQUIRED_FAVORITE_COUNT - this.get('totalFavorites');
   }.property('totalFavorites'),
 
-  canContinue: Em.computed.gte('totalFavorites', REQUIRED_FAVORITE_COUNT),
+  canContinue: Ember.computed.gte('totalFavorites', REQUIRED_FAVORITE_COUNT),
 
   actions: {
     toggleFavorite: function(genre) {
       var self = this;
       if (genre.get('favorite')) {
         genre.set('favorite', false);
-        ic.ajax({
+        ajax({
           url: "/genres/" + genre.get('model.id') + "/remove_from_favorites",
           type: 'POST'
         }).then(function() {
@@ -25,7 +29,7 @@ HB.OnboardingCategoriesController = Ember.Controller.extend({
         });
       } else {
         genre.set('favorite', true);
-        ic.ajax({
+        ajax({
           url: "/genres/" + genre.get('model.id') + "/add_to_favorites",
           type: 'POST'
         }).then(function() {
