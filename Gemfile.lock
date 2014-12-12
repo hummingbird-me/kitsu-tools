@@ -7,14 +7,6 @@ GIT
       paperclip (>= 3.4)
 
 GIT
-  remote: git://github.com/vikhyat/ember-cli-rails.git
-  revision: 75c84646dd706db321208c92d42a988ebedfd323
-  specs:
-    ember-cli-rails (0.0.7)
-      railties (~> 4.0)
-      sprockets-rails (~> 2.0)
-
-GIT
   remote: git://github.com/vikhyat/message_bus.git
   revision: 2d657240c33de86ecd900e1d1c4ab8fd045bf09c
   specs:
@@ -122,6 +114,9 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
+    ember-cli-rails (0.0.8)
+      railties (~> 4.0)
+      sprockets-rails (~> 2.0)
     equalizer (0.0.9)
     erubis (2.7.0)
     escape (0.0.4)
@@ -409,7 +404,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.2.0)
+    sprockets-rails (2.2.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
@@ -462,7 +457,7 @@ DEPENDENCIES
   devise-async
   dotenv-rails
   dropbox-api
-  ember-cli-rails!
+  ember-cli-rails
   fakeweb
   fast_blank
   fastclick-rails (~> 1.0)
