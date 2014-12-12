@@ -19,10 +19,14 @@ then
   cd $DIR && bundle install --deployment --without test
   cd $DIR && bundle exec rake assets:precompile
   cd $DIR && bundle exec rake db:migrate
+  cd $DIR && cd app/frontend && npm install
+  cd $DIR && cd app/frontend && bower install
 else
   su - hummingbird -c "cd $DIR && bundle install --deployment --without test"
   su - hummingbird -c "cd $DIR && bundle exec rake assets:precompile"
   su - hummingbird -c "cd $DIR && bundle exec rake db:migrate"
+  su - hummingbird -c "cd $DIR && cd app/frontend && npm install"
+  su - hummingbird -c "cd $DIR && cd app/frontned && bower install"
 fi
 
 # restart sidekiq

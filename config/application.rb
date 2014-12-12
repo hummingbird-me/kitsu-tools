@@ -61,7 +61,7 @@ module Hummingbird
 
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
 
-    config.assets.precompile += ['vendor.js']
+    config.assets.precompile += ['frontend/vendor.js', 'frontend/application.js']
 
     config.generators do |g|
       g.orm :active_record
