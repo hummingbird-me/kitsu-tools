@@ -1,7 +1,8 @@
-HB.MangaController = Ember.ObjectController.extend(HB.HasCurrentUser, {
-  title: Ember.computed.any('model.romajiTitle', 'model.englishTitle'),
+import Ember from 'ember';
+import HasCurrentUser from '../mixins/has-current-user';
 
-  coverImageStyle: function () {
+export default Ember.ObjectController.extend(HasCurrentUser, {
+  coverImageStyle: function() {
     return "background-image: url('" + this.get('model.coverImage') + "'); background-position: 50% -" + this.get('model.coverImageTopOffset') + "px;";
   }.property('model.coverImage', 'model.coverImageTopOffset'),
 

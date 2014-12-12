@@ -1,4 +1,6 @@
-HB.MangaIndexController = Ember.ObjectController.extend({
+import Ember from 'ember';
+
+export default Ember.ObjectController.extend({
   activeTab: "Genres",
 
   showGenres: Ember.computed.equal('activeTab', 'Genres'),
