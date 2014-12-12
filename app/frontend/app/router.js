@@ -71,6 +71,8 @@ Router.map(function() {
   this.route('onboarding/library');
   this.route('onboarding/finish');
   this.route('reviews/show');
+  this.route('user/library');
+  this.route('user/manga-library');
 });
 
 export default Router;

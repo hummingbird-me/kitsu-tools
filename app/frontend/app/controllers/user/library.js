@@ -1,14 +1,17 @@
-HB.UserMangaLibraryController = Ember.ArrayController.extend({
+import Ember from 'ember';
+/* global Messenger */
+
+export default Ember.ArrayController.extend({
   needs: "user",
   user: Ember.computed.alias('controllers.user'),
   reactComponent: null,
 
   filter: "",
-  sortBy: JSON.parse(localStorage.getItem('mangaLibrarySortBy')) || "lastRead",
-  sortAsc: JSON.parse(localStorage.getItem('mangaLibrarySortAsc')) || false,
+  sortBy: JSON.parse(localStorage.getItem('librarySortBy')) || "lastWatched",
+  sortAsc: JSON.parse(localStorage.getItem('librarySortAsc')) || false,
+  sectionNames: ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"],
+  showSection: "Currently Watching",
 
-  sectionNames: ["Currently Reading", "Plan to Read", "Completed", "On Hold", "Dropped"],
-  showSection: "Currently Reading",
   showAll: function () {
     return this.get('showSection') === "View All" || this.get('filter').length > 0;
   }.property('showSection', 'filter'),
@@ -51,7 +54,7 @@ HB.UserMangaLibraryController = Ember.ArrayController.extend({
     });
 
     this.get('content').forEach(function (item) {
-      if ((filter.length === 0) || (item.get('manga.searchString').indexOf(filter) >= 0)) {
+      if ((filter.length === 0) || (item.get('anime.searchString').indexOf(filter) >= 0)) {
         return agg[item.get('status')].push(item);
       }
     });
@@ -83,21 +86,23 @@ HB.UserMangaLibraryController = Ember.ArrayController.extend({
   notifyReactComponent: function () {
     return Ember.run.once(this, 'actuallyNotifyReactComponent');
   }.observes('filter', 'showSection', 'sortBy', 'sortAsc',
-             'content.@each.chaptersRead',
+             'content.@each.episodesWatched',
              'content.@each.status',
              'content.@each.rating',
              'content.@each.private',
-             'content.@each.rereadCount',
-             'content.@each.rereading'),
+             'content.@each.episodesWatched',
+             'content.@each.notes',
+             'content.@each.rewatchCount',
+             'content.@each.rewatching'),
 
   persistSort: function () {
-    localStorage.setItem('mangaLibrarySortBy', JSON.stringify(this.get('sortBy')));
-    return localStorage.setItem('mangaLibrarySortAsc', JSON.stringify(this.get('sortAsc')));
+    localStorage.setItem('librarySortBy', JSON.stringify(this.get('sortBy')));
+    return localStorage.setItem('librarySortAsc', JSON.stringify(this.get('sortAsc')));
   }.observes('sortBy', 'sortAsc'),
 
-  saveMangaLibraryEntry: function (libraryEntry) {
+  saveLibraryEntry: function (libraryEntry) {
     var title;
-    title = libraryEntry.get('manga.romajiTitle');
+    title = libraryEntry.get('anime.canonicalTitle');
     return Messenger().expectPromise((function () {
       return libraryEntry.save();
     }), {
@@ -112,7 +117,7 @@ HB.UserMangaLibraryController = Ember.ArrayController.extend({
         if (this.get('sortAsc')) {
           return this.set('sortAsc', false);
         } else {
-          return this.set('sortBy', 'lastRead');
+          return this.set('sortBy', 'lastWatched');
         }
       } else {
         this.set('sortBy', newSort);
@@ -131,33 +136,28 @@ HB.UserMangaLibraryController = Ember.ArrayController.extend({
     setStatus: function (libraryEntry, newStatus) {
       libraryEntry.set('status', newStatus);
 
-      if (newStatus === "Completed" && libraryEntry.get('manga.chapterCount') && libraryEntry.get('chaptersRead') !== libraryEntry.get('manga.chapterCount')) {
-        libraryEntry.set('chaptersRead', libraryEntry.get('manga.chapterCount'));
-        Messenger().post("Marked all chapters as Read.");
+      if (newStatus === "Completed" && libraryEntry.get('anime.episodeCount') && libraryEntry.get('episodesWatched') !== libraryEntry.get('anime.episodeCount')) {
+        libraryEntry.set('episodesWatched', libraryEntry.get('anime.episodeCount'));
+        Messenger().post("Marked all episodes as watched.");
       }
 
-      return this.saveMangaLibraryEntry(libraryEntry);
+      return this.saveLibraryEntry(libraryEntry);
     },
 
-    removeFromMangaLibrary: function (libraryEntry) {
-      var manga;
-      manga = libraryEntry.get('manga');
+    removeFromLibrary: function (libraryEntry) {
+      var anime;
+      anime = libraryEntry.get('anime');
       return Messenger().expectPromise((function () {
         return libraryEntry.destroyRecord();
       }), {
-        progressMessage: "Removing " + manga.get('displayTitle') + " from your library...",
-        successMessage: "Removed " + manga.get('displayTitle') + " from your library!"
+        progressMessage: "Removing " + anime.get('canonicalTitle') + " from your library...",
+        successMessage: "Removed " + anime.get('canonicalTitle') + " from your library!"
       });
-    },
-
-    setVolumesRead: function(libraryEntry, newValue) {
-      libraryEntry.set('volumesRead', newValue);
-      return this.saveMangaLibraryEntry(libraryEntry);
     },
 
     setPrivate: function (libraryEntry, newPrivate) {
       libraryEntry.set('private', newPrivate);
-      return this.saveMangaLibraryEntry(libraryEntry);
+      return this.saveLibraryEntry(libraryEntry);
     },
 
     setRating: function (libraryEntry, newRating) {
@@ -165,37 +165,37 @@ HB.UserMangaLibraryController = Ember.ArrayController.extend({
         newRating = null;
       }
       libraryEntry.set('rating', newRating);
-      return this.saveMangaLibraryEntry(libraryEntry);
+      return this.saveLibraryEntry(libraryEntry);
     },
 
-    toggleRereading: function (libraryEntry) {
+    toggleRewatching: function (libraryEntry) {
       var currentState;
-      currentState = libraryEntry.get('rereading');
+      currentState = libraryEntry.get('rewatching');
       if (currentState) {
-        libraryEntry.set('rereading', false);
+        libraryEntry.set('rewatching', false);
       } else {
-        libraryEntry.set('rereading', true);
-        if (libraryEntry.get('status') !== "Currently Reading") {
-          libraryEntry.set('status', "Currently Reading");
-          libraryEntry.set('chaptersRead', 0);
-          Messenger().post("Moved " + libraryEntry.get('manga.displayTitle') + " to Currently Reading.");
+        libraryEntry.set('rewatching', true);
+        if (libraryEntry.get('status') !== "Currently Watching") {
+          libraryEntry.set('status', "Currently Watching");
+          libraryEntry.set('episodesWatched', 0);
+          Messenger().post("Moved " + libraryEntry.get('anime.canonicalTitle') + " to Currently Watching.");
         }
       }
-      return this.saveMangaLibraryEntry(libraryEntry);
+      return this.saveLibraryEntry(libraryEntry);
     },
 
-    saveMangaLibraryEntry: function (libraryEntry) {
-      return this.saveMangaLibraryEntry(libraryEntry);
+    saveLibraryEntry: function (libraryEntry) {
+      return this.saveLibraryEntry(libraryEntry);
     },
 
-    saveChaptersRead: function (libraryEntry) {
-      if (libraryEntry.get('manga.chapterCount') && libraryEntry.get('chaptersRead') === libraryEntry.get('manga.chapterCount')) {
+    saveEpisodesWatched: function (libraryEntry) {
+      if (libraryEntry.get('anime.episodeCount') && libraryEntry.get('episodesWatched') === libraryEntry.get('anime.episodeCount')) {
         if (libraryEntry.get('status') !== "Completed") {
-          Messenger().post("Marked " + libraryEntry.get('manga.displayTitle') + " as complete.");
+          Messenger().post("Marked " + libraryEntry.get('anime.canonicalTitle') + " as complete.");
           libraryEntry.set('status', "Completed");
         }
       }
-      return this.saveMangaLibraryEntry(libraryEntry);
+      return this.saveLibraryEntry(libraryEntry);
     }
   }
 });

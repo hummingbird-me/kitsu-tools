@@ -1,9 +1,12 @@
-HB.UserLibraryRoute = Ember.Route.extend({
-  model: function(params) {
+import Ember from 'ember';
+import setTitle from '../../utils/set-title';
+
+export default Ember.Route.extend({
+  model: function() {
     var user_id = this.modelFor('user').get('id');
-    return this.store.find('libraryEntry', {
+    return this.store.find('mangaLibraryEntry', {
       user_id: user_id,
-      status: "Currently Watching"
+      status: "Currently Reading"
     });
   },
 
@@ -11,11 +14,11 @@ HB.UserLibraryRoute = Ember.Route.extend({
     var user_id = this.modelFor('user').get('id');
     controller.set('model', model);
     controller.set('loadingRemaining', true);
-    return this.store.find('libraryEntry', {
+    return this.store.find('mangaLibraryEntry', {
       user_id: user_id
     }).then(function(entries) {
       controller.get('content').addObjects(entries.filter(function(l) {
-        return l.get('status') !== "Currently Watching";
+        return l.get('status') !== "Currently Reading";
       }));
       return controller.set('loadingRemaining', false);
     });
@@ -26,6 +29,6 @@ HB.UserLibraryRoute = Ember.Route.extend({
   },
 
   afterModel: function() {
-    return HB.TitleManager.setTitle(this.modelFor('user').get('id') + "'s Library");
+    return setTitle(this.modelFor('user').get('id') + "'s Library");
   }
 });
