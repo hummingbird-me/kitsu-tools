@@ -1,4 +1,8 @@
-HB.ModalsStoryLikesController = Ember.ObjectController.extend(HB.ModalControllerMixin, {
+import Ember from 'ember';
+import ModalMixin from '../../mixins/modals/controller';
+import ajax from 'ic-ajax';
+
+export default Ember.Controller.extend(ModalMixin, {
   likers: [],
   page: 0,
   canLoadMore: true,
@@ -16,11 +20,11 @@ HB.ModalsStoryLikesController = Ember.ObjectController.extend(HB.ModalController
   actions: {
     loadNextPage: function() {
       var self = this;
-      if (!this.get('canLoadMore')) return;
+      if (!this.get('canLoadMore')) { return; }
 
       this.incrementProperty('page');
 
-      ic.ajax({
+      ajax({
         url: "/stories/" + this.get('id') + "/likers?page=" + this.get('page')
       }).then(function(users) {
         if (users.length < 100) {

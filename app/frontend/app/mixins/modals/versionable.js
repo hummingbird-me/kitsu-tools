@@ -1,4 +1,8 @@
-HB.ModalVersionableMixin = Ember.Mixin.create({
+import Ember from 'ember';
+import ajax from 'ic-ajax';
+/* global Messenger */
+
+export default Ember.Mixin.create({
   canSave: Ember.computed.not('isDirty'),
   comment: null,
 
@@ -21,7 +25,7 @@ HB.ModalVersionableMixin = Ember.Mixin.create({
       hash[root]['edit_comment'] = this.get('comment');
 
       Messenger().expectPromise(function() {
-        return ic.ajax({
+        return ajax({
           type: 'PUT',
           // ex: /full_anime/steins-gate
           //     /full_manga/naruto

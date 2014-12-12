@@ -1,4 +1,6 @@
-HB.BootstrapTooltipComponent = Ember.Component.extend({
+import Ember from 'ember';
+
+export default Ember.Component.extend({
   tagName: 'a',
 
   initializeTooltip: function() {

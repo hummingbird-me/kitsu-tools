@@ -1,5 +1,6 @@
+import Ember from 'ember';
 
-HB.ModalsCropCoverView = Ember.View.extend({
+export default Ember.View.extend({
   cropImage: function(c) {
     var self = this,
         element = this.get('element'),
@@ -13,9 +14,6 @@ HB.ModalsCropCoverView = Ember.View.extend({
     imageObj.onload = function() {
       context.drawImage(this, c.x, c.y, c.w, c.h, 0, 0, 2880, 800);
       var canvasDataURL = canvas.toDataURL('image/jpeg');
-      RGBaster.colors(canvasDataURL, function(payload) {
-        return element.querySelector('.modal-content').style.background = payload.dominant;
-      });
       return self.set('controller.model.croppedImage', canvasDataURL);
     };
     return imageObj.src = this.get('controller.model.originalImage');

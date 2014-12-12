@@ -22,8 +22,6 @@ Router.map(function() {
 
   this.route('radio');
 
-  this.resource('character', {path: '/character/:id'});
-
   this.resource('story.permalink', {path: '/stories/:id'});
 
   this.route('filter-anime', {path: '/anime/filter'});
