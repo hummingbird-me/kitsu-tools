@@ -1,8 +1,8 @@
-import ic from 'ic-ajax';
+import ajax from 'ic-ajax';
 
 export default {
   signIn: function(email, password) {
-    return ic.ajax({
+    return ajax({
       url: "/sign-in",
       type: "POST",
       data: {
@@ -13,7 +13,7 @@ export default {
   },
 
   signOut: function() {
-    return ic.ajax({
+    return ajax({
       url: "/sign-out",
       type: "POST"
     }).then(function() {
