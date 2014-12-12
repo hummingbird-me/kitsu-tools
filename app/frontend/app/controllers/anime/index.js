@@ -1,4 +1,7 @@
-HB.AnimeIndexController = Ember.ObjectController.extend(HB.HasCurrentUser, {
+import Ember from 'ember';
+import HasCurrentUser from '../../mixins/has-current-user';
+
+export default Ember.ObjectController.extend(HasCurrentUser, {
   language: null,
 
   showFullCast: null,

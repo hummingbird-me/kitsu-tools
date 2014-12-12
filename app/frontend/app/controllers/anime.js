@@ -1,4 +1,7 @@
-HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
+import Ember from 'ember';
+import HasCurrentUser from '../mixins/has-current-user';
+
+export default Ember.ObjectController.extend(HasCurrentUser, {
   noCoverImage: function() {
     return !this.get('model.coverImage');
   }.property('model.coverImage'),
@@ -15,17 +18,5 @@ HB.AnimeController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     if (quoteCount === 0) { return null; }
     var index = Math.floor(Math.random() * quoteCount);
     return this.get('model.featuredQuotes.content')[index];
-  }.property('model.featuredQuotes'),
-
-  actions: {
-    switchTo: function (newTab) {
-      this.set('activeTab', newTab);
-      if (newTab === "Franchise") {
-        return this.get('model.franchise');
-      }
-    },
-    deleteAnime: function () {
-      return this.get('model').destroyRecord();
-    }
-  }
+  }.property('model.featuredQuotes')
 });

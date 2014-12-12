@@ -1,4 +1,6 @@
-HB.AnimeQuotesRoute = Ember.Route.extend({
+import Ember from 'ember';
+
+export default Ember.Route.extend({
   model: function(){
     var anime = this.modelFor('anime');
     return this.store.find('quote', {anime_id: anime.get('id')});

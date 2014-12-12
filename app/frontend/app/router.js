@@ -65,6 +65,7 @@ Router.map(function() {
   this.route('apps/mine');
   this.route('loading');
   this.route('story/permalink');
+  this.route('anime/quotes');
 });
 
 export default Router;

@@ -1,4 +1,7 @@
-HB.TruncateTextComponent = Ember.Component.extend({
+import Ember from 'ember';
+import escapeHtml from '../utils/escape-html';
+
+export default Ember.Component.extend({
   expanded: false,
   breakLines: false,
 
@@ -9,10 +12,10 @@ HB.TruncateTextComponent = Ember.Component.extend({
   truncatedText: function() {
     var text = this.get('text');
     if (this.get('isTruncated') && !this.get('expanded')) {
-      text = jQuery.trim(text).substring(0, this.get('length')).trim(this) + "…";
+      text = Ember.$.trim(text).substring(0, this.get('length')).trim(this) + "…";
     }
     if (this.get('breakLines')) {
-      text = escapeHTML(text).replace(/\n/g, "<br>").htmlSafe();
+      text = escapeHtml(text).replace(/\n/g, "<br>").htmlSafe();
     }
     return text;
   }.property('text', 'length', 'expanded', 'breakLines'),

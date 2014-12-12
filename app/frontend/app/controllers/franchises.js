@@ -1,4 +1,6 @@
-HB.AnimeFranchisesController = Ember.ArrayController.extend({
+import Ember from 'ember';
+
+export default Ember.ArrayController.extend({
   showAll: false,
 
   // A show can belong to multiple franchises, this property will return a list

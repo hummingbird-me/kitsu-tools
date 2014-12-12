@@ -1,4 +1,8 @@
-HB.AnimeIndexRoute = Ember.Route.extend({
+import Ember from 'ember';
+import setTitle from '../../utils/set-title';
+/* global Messenger */
+
+export default Ember.Route.extend({
   model: function() {
     return this.modelFor('anime');
   },
@@ -12,7 +16,7 @@ HB.AnimeIndexRoute = Ember.Route.extend({
   },
 
   afterModel: function(resolvedModel) {
-    return HB.TitleManager.setTitle(resolvedModel.get('displayTitle'));
+    return setTitle(resolvedModel.get('displayTitle'));
   },
 
   saveLibraryEntry: function(libraryEntry) {

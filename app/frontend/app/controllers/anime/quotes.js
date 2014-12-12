@@ -1,4 +1,7 @@
-HB.AnimeQuotesController = Ember.ArrayController.extend(HB.HasCurrentUser, {
+import Ember from 'ember';
+import HasCurrentUser from '../../mixins/has-current-user';
+
+export default Ember.ArrayController.extend(HasCurrentUser, {
   anime: null,
   showCreate: false,
   quoteText: "",
@@ -11,7 +14,7 @@ HB.AnimeQuotesController = Ember.ArrayController.extend(HB.HasCurrentUser, {
   animeQuotes: function(){
     var self = this;
     return this.store.filter('quote', function(quote){
-      return (self.content == quote.anime_id);
+      return (self.content === quote.anime_id);
     });
   }.property('@each.quote'),
 
@@ -21,7 +24,7 @@ HB.AnimeQuotesController = Ember.ArrayController.extend(HB.HasCurrentUser, {
     },
 
     submitQuote: function(){
-      if (!(this.get('isFormCorrect'))) return;
+      if (!(this.get('isFormCorrect'))) { return; }
 
       var self = this,
           quote = this.store.createRecord('quote', {
@@ -41,5 +44,4 @@ HB.AnimeQuotesController = Ember.ArrayController.extend(HB.HasCurrentUser, {
       });
     }
   }
-  
 });

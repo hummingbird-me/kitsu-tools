@@ -34,12 +34,9 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
     return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.isAdmin'));
   }.property('isNew', 'belongsToUser', 'currentUser.isAdmin'),
 
-  mediaRoute: function () {
-    if (this.get('mediaStory') && this.get('model.media').constructor.toString() === "HB.Anime") {
-      return 'anime';
-    }
+  mediaRoute: function() {
+    return this.get('model.media').constructor.typeKey;
   }.property('model.media'),
-
 
   displaySubstories: function () {
     var sorted = this.get('substories').sortBy('createdAt').reverse();

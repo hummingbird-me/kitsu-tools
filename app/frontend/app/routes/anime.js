@@ -1,6 +1,8 @@
-HB.AnimeRoute = Ember.Route.extend({
+import Ember from 'ember';
+
+export default Ember.Route.extend({
   model: function(params) {
-    return this.store.find('fullAnime', params.id);
+    return this.store.find('full-anime', params.id);
   },
 
   actions: {
