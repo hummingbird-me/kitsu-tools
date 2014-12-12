@@ -3,15 +3,15 @@
     <div class="user-info-bar">
       <div class="user-image">
         {{#link-to 'user' poster}}
-          {{avatar poster "thumb_small"}}
+          {{unbound avatar poster "thumb_small"}}
         {{/link-to}}
       </div>
       <div class="comment-content">
         <h4 class="story-title">
-          {{#link-to 'user' poster}}{{poster.username}}{{/link-to}}
+          {{#link-to 'user' poster}}{{unbound poster.username}}{{/link-to}}
           {{#unless selfPost}}
             <i class="fa fa-share reply-icon"></i>
-            {{#link-to 'user' user}}{{user.username}}{{/link-to}}
+            {{#link-to 'user' user}}{{unbound user.username}}{{/link-to}}
           {{/unless}}
         </h4>
         <p class="secondary">
@@ -33,9 +33,9 @@
     <div class="post-content clearfix">
       <p {{bind-attr class=":comment-text isExpanded:full-post" }}>
         {{#if isNew}}
-          {{comment}}
+          {{unbound comment}}
         {{else}}
-          {{{comment}}}
+          {{{unbound comment}}}
         {{/if}}
       </p>
     </div>
@@ -55,7 +55,7 @@
     {{#each recentLikers}}
       <li {{bind-attr data-tooltip=username}}>
         {{#link-to 'user' id}}
-          {{avatar this "thumb_small"}}
+          {{unbound avatar this "thumb_small"}}
         {{/link-to}}
       </li>
     {{/each}}
@@ -89,21 +89,21 @@
     <div {{bind-attr class=":reply isNew"}}>
       <div class="user-avatar">
         {{#link-to 'user' user}}
-          {{avatar user 'thumb_small'}}
+          {{unbound avatar user 'thumb_small'}}
         {{/link-to}}
       </div>
       <div class="content">
         <p>
           <span class="username">
             {{#link-to 'user' user}}
-              {{user.username}}
+              {{unbound user.username}}
             {{/link-to}}
           </span>
           <span class="comment">
             {{#if isNew}}
-              {{reply}}
+              {{unbound reply}}
             {{else}}
-              {{{reply}}}
+              {{{unbound reply}}}
             {{/if}}
           </span>
         </p>
