@@ -1,11 +1,14 @@
-HB.ReviewsShowRoute = Ember.Route.extend({
+import Ember from 'ember';
+import ajax from 'ic-ajax';
+import setTitle from '../../utils/set-title';
 
+export default Ember.Route.extend({
   model: function(params) {
     return this.store.find('review', params.review_id);
   },
 
   afterModel: function(resolvedModel) {
-    return HB.TitleManager.setTitle(this.modelFor('anime').get('displayTitle') + " Review by " + resolvedModel.get('user.username'));
+    return setTitle(this.modelFor('anime').get('displayTitle') + " Review by " + resolvedModel.get('user.username'));
   },
 
   actions: {
@@ -15,7 +18,7 @@ HB.ReviewsShowRoute = Ember.Route.extend({
         return;
       }
       this.currentModel.set('liked', "true");
-      return ic.ajax({
+      return ajax({
         url: "/reviews/" + this.currentModel.get('id') + "/vote",
         type: "POST",
         data: {
@@ -32,7 +35,7 @@ HB.ReviewsShowRoute = Ember.Route.extend({
         return;
       }
       this.currentModel.set('liked', "false");
-      return ic.ajax({
+      return ajax({
         url: "/reviews/" + this.currentModel.get('id') + "/vote",
         type: "POST",
         data: {
@@ -42,10 +45,10 @@ HB.ReviewsShowRoute = Ember.Route.extend({
         return alert("Couldn't downvote review, something went wrong.");
       });
     },
-    
+
     unvote: function() {
       this.currentModel.set('liked', null);
-      return ic.ajax({
+      return ajax({
         url: "/reviews/" + this.currentModel.get('id') + "/vote",
         type: "POST",
         data: {

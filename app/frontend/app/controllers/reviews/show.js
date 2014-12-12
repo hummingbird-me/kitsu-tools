@@ -1,4 +1,7 @@
-HB.ReviewsShowController = Ember.ObjectController.extend(HB.HasCurrentUser, {
+import Ember from 'ember';
+import HasCurrentUser from '../../mixins/has-current-user';
+
+export default Ember.ObjectController.extend(HasCurrentUser, {
   coverImageStyle: function () {
     return "background-image: url(" + this.get('user.coverImageUrl') + ")";
   }.property('user.coverUrl'),
@@ -12,8 +15,8 @@ HB.ReviewsShowController = Ember.ObjectController.extend(HB.HasCurrentUser, {
     return "." + (Math.floor((this.get('model.rating') - this.get('ratingFirstDigit')) * 10));
   }.property('model.rating'),
   breakdown: function () {
-    var self = this
-      , breakdown = [];
+    var self = this,
+        breakdown = [];
     ['model.ratingStory', 'model.ratingAnimation', 'model.ratingSound', 'model.ratingCharacters', 'model.ratingEnjoyment'].forEach(function (property) {
       return breakdown.push(Ember.Object.create({
         title: property.substr(12),

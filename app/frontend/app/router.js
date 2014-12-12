@@ -70,6 +70,7 @@ Router.map(function() {
   this.route('onboarding/categories');
   this.route('onboarding/library');
   this.route('onboarding/finish');
+  this.route('reviews/show');
 });
 
 export default Router;

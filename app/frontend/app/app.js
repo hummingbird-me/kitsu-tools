@@ -19,6 +19,12 @@ Ember.LinkView.reopen({
   attributeBindings: ['href', 'title', 'rel', 'data-hover']
 });
 
+Ember.Route.reopen({
+  resetScroll: function() {
+    window.scrollTo(0, 0);
+  }.on('activate')
+});
+
 // Set to false because it breaks polymorphic associations.
 // See: https://gist.github.com/jlauemoeller/35a0bd6e0eb8441ee451
 Ember.MODEL_FACTORY_INJECTIONS = false;
