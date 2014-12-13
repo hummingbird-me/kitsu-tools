@@ -31,6 +31,18 @@ class ApplicationController < ActionController::Base
     @generic_preload[key] = value
   end
 
+  def preload_current_user
+    return unless user_signed_in?
+    preload_to_ember! current_user, serializer: CurrentUserSerializer,
+                                    root: :current_users
+  end
+
+  def preload_blotter
+    if user_signed_in?
+      generic_preload! "blotter", Blotter.get
+    end
+  end
+
   # Upgrade from auth_token to token by signing them in again
   def upgrade_token!
     if user_signed_in?
@@ -39,19 +51,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def token_payload
-    JWT.decode(cookies[:token], ENV["JWT_SECRET"])[0]
+  def token
+    token = cookies[:token]
+    token ||= params[:token] unless request.get?
+    Token.new(token)
   end
 
-  # Override the Devise junk if the user has already been upgraded
   def current_user
-    if cookies[:token]
-      User.find(token_payload['user'])
+    if cookies[:token] && token.valid?
+      token.user
     else
       super
     end
-  rescue JWT::DecodeError, JWT::ExpiredSignature
-    nil
   end
 
   def user_signed_in?
@@ -65,7 +76,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     if cookies[:token]
       unless user_signed_in?
-        error! 'Not authenticated', 403
+        render json: {error: 'Not authenticated'}, status: 403
       end
     else
       super
@@ -79,13 +90,14 @@ class ApplicationController < ActionController::Base
         sign_out :user
       else
         # refresh the token if it's gonna expire in less than a month
-        sign_in current_user if token_payload['exp'] - Time.now.to_i > 1.month
+        sign_in current_user if token.expires_in < 1.month
 
         # Update the ip addresses
-        if current_user.current_sign_in_ip != request.remote_ip
-          current_user.update_attributes!(
+        user = current_user
+        if user.current_sign_in_ip != request.remote_ip
+          user.update_attributes!(
             current_sign_in_ip: request.remote_ip,
-            last_sign_in_ip: current_user.current_sign_in_ip
+            last_sign_in_ip: user.current_sign_in_ip
           )
         end
       end
@@ -95,18 +107,6 @@ class ApplicationController < ActionController::Base
         user.update_column :last_sign_in_ip, user.current_sign_in_ip
         user.update_column :current_sign_in_ip, request.remote_ip
       end
-    end
-  end
-
-  def preload_current_user
-    return unless user_signed_in?
-    preload_to_ember! current_user, serializer: CurrentUserSerializer,
-                                    root: :current_users
-  end
-
-  def preload_blotter
-    if user_signed_in?
-      generic_preload! "blotter", Blotter.get
     end
   end
 
