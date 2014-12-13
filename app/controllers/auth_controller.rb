@@ -8,7 +8,7 @@ class AuthController < ApplicationController
     return error! "Missing parameters", 400 unless [:email, :password].none? { |x| params[x].blank? }
 
     key = params[:email].include?('@') ? :email : :name
-    user = User.where(key => params[:email]).first
+    user = User.where("lower(#{key}) = ?", params[:email].downcase).first
 
     if user && user.valid_password?(params[:password])
       sign_in :user, user
@@ -20,8 +20,8 @@ class AuthController < ApplicationController
 
   def sign_up_action
     return error! "Missing parameters", 400 unless [:username, :email, :password].none? { |x| params[x].blank? }
-    return error! "User with that email already exists", 409 if User.exists?(email: params[:email])
-    return error! "User with that name already exists", 409 if User.exists?(name: params[:username])
+    return error! "User with that email already exists", 409 if User.exists?(['lower(email) = ?', params[:email].downcase])
+    return error! "User with that name already exists", 409 if User.exists?(['lower(name) = ?', params[:username].downcase])
 
     user = User.new({
       name: params[:username],
