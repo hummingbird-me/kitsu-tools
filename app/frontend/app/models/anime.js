@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import Media from '../models/media';
+import ModelCurrentUser from '../mixins/model-current-user';
 /* global moment */
 
-export default Media.extend({
+export default Media.extend(ModelCurrentUser, {
   canonicalTitle: DS.attr('string'),
   englishTitle: DS.attr('string'),
   romajiTitle: DS.attr('string'),
@@ -26,8 +27,7 @@ export default Media.extend({
 
   displayTitle: function() {
     var currentUser, pref, title;
-    // HACK! since we can't inject current-user into models.
-    currentUser = this.container.lookup('controller:current-user');
+    currentUser = this.get('currentUser');
     title = this.get('canonicalTitle');
     if (currentUser.get('isSignedIn')) {
       pref = currentUser.get('titleLanguagePreference');

@@ -1,6 +1,9 @@
+import Ember from 'ember';
 import DS from 'ember-data';
+import ModelCurrentUser from '../mixins/model-current-user';
+import propertyEqual from '../utils/computed/property-equal';
 
-export default DS.Model.extend({
+export default DS.Model.extend(ModelCurrentUser, {
   type: DS.attr('string'),
   createdAt: DS.attr('date'),
   newStatus: DS.attr('string'),
@@ -23,5 +26,8 @@ export default DS.Model.extend({
     } else {
       return "&lt;unknown type encountered:" + this.get('type') + ">";
     }
-  }.property('type', 'newStatus', 'episodeNumber')
+  }.property('type', 'newStatus', 'episodeNumber'),
+
+  belongsToUser: propertyEqual('user.id', 'currentUser.id'),
+  canDeleteSubstory: Ember.computed.or('story.canDeleteStory', 'belongsToUser')
 });
