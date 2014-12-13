@@ -5,7 +5,7 @@ class RecommendingWorker
 
   # Maximum number of recommendations to save in each category.
   ITEM_LIMIT = 10
-  
+
   def perform(user_id)
     user = User.find(user_id)
 
@@ -20,7 +20,7 @@ class RecommendingWorker
     anime = {}
     user_watchlists.each do |watchlist|
       similarities[watchlist.anime_id] ||= {}
-      JSON.load( open("http://app.vikhyat.net/anime_graph/related/#{watchlist.anime.id}") ).each do |similar|
+      get_similar(watchlist.anime).each do |similar|
         similar_anime = Anime.find_by_id(similar["id"])
         if similar_anime and ["OVA", "ONA", "Movie", "TV"].include? similar_anime.show_type
           anime[similar_anime.id] = similar_anime
@@ -138,8 +138,20 @@ class RecommendingWorker
     recommendation.recommendations["by_genre"] = recommendations[:by_genre].to_json
 
     recommendation.save
-    
+
     user.update_column :recommendations_up_to_date, true
     user.update_column :last_recommendations_update, last_recommendations_update
+  end
+
+  private
+
+  def get_similar(anime)
+    Rails.cache.fetch("similar_shows:#{anime.id}", expires_in: 1.day) do
+      load_similar(anime)
+    end
+  end
+
+  def load_similar(anime)
+    JSON.load open("http://app.vikhyat.net/anime_graph/related/#{anime.id}")
   end
 end
