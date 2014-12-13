@@ -18,6 +18,7 @@ export default Anime.extend({
   trendingReviews: DS.hasMany('review'),
   featuredCastings: DS.hasMany('casting'),
   pendingEdits: DS.attr('number'),
+  hasReviewed: DS.attr('boolean'),
 
   hasTrailer: Em.computed.bool('youtubeVideoId'),
 

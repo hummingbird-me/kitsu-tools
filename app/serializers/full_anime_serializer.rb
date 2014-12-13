@@ -9,7 +9,8 @@ class FullAnimeSerializer < AnimeSerializer
              :community_ratings,
              :youtube_video_id,
              :bayesian_rating,
-             :pending_edits
+             :pending_edits,
+             :has_reviewed
 
   has_many :featured_quotes, root: :quotes
   has_many :trending_reviews, root: :reviews
@@ -18,6 +19,10 @@ class FullAnimeSerializer < AnimeSerializer
   has_many :franchises, include: false
   has_many :episodes
   has_one :library_entry
+
+  def has_reviewed
+    scope && Review.exists?(user_id: scope.id, anime_id: object.id)
+  end
 
   def library_entry
     scope && LibraryEntry.where(user_id: scope.id, anime_id: object.id).first
