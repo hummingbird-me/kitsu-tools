@@ -195,7 +195,7 @@ GEM
     jquery-ui-rails (5.0.2)
       railties (>= 3.2.16)
     json (1.8.1)
-    jwt (1.0.0)
+    jwt (1.2.0)
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -473,6 +473,7 @@ DEPENDENCIES
   hooloo
   humanize
   image_optim (~> 0.13)
+  jwt (~> 1.2)
   kaminari (~> 0.16)
   kibana-rack
   letter_opener

@@ -31,11 +31,63 @@ class ApplicationController < ActionController::Base
     @generic_preload[key] = value
   end
 
-  def check_user_authentication
+  # Upgrade from auth_token to token by signing them in again
+  def upgrade_token!
     if user_signed_in?
-      # Sign the user out if they have an incorrect auth token.
-      unless cookies[:auth_token] && current_user.authentication_token == cookies[:auth_token]
+      user = User.find_by(authentication_token: cookies[:auth_token])
+      sign_in user
+    end
+  end
+
+  def token_payload
+    JWT.decode(cookies[:token], ENV["JWT_SECRET"])[0]
+  end
+
+  # Override the Devise junk if the user has already been upgraded
+  def current_user
+    if cookies[:token]
+      User.find(token_payload['user'])
+    else
+      super
+    end
+  rescue JWT::DecodeError, JWT::ExpiredSignature
+    nil
+  end
+
+  def user_signed_in?
+    if cookies[:token]
+      !!current_user
+    else
+      super
+    end
+  end
+
+  def authenticate_user!
+    if cookies[:token]
+      unless user_signed_in?
+        error! 'Not authenticated', 403
+      end
+    else
+      super
+    end
+  end
+
+  # Upgrades the token, refreshes it, and clears invalid ones
+  def check_user_authentication
+    if cookies[:token]
+      if !user_signed_in?
         sign_out :user
+      else
+        # refresh the token if it's gonna expire in less than a month
+        sign_in current_user if token_payload['exp'] - Time.now.to_i > 1.month
+
+        # Update the ip addresses
+        if current_user.current_sign_in_ip != request.remote_ip
+          current_user.update_attributes!(
+            current_sign_in_ip: request.remote_ip,
+            last_sign_in_ip: current_user.current_sign_in_ip
+          )
+        end
       end
     elsif cookies[:auth_token]
       user = User.find_by(authentication_token: cookies[:auth_token])
@@ -43,7 +95,6 @@ class ApplicationController < ActionController::Base
         user.update_column :last_sign_in_ip, user.current_sign_in_ip
         user.update_column :current_sign_in_ip, request.remote_ip
       end
-      sign_in(user) if user
     end
   end
 

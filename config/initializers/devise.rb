@@ -247,9 +247,12 @@ Devise::Controllers::SignInOut.class_eval do
 
   def sign_in(resource_or_scope, *args)
     user = (resource_or_scope.is_a? Symbol) ? args.first : resource_or_scope
-    cookies["auth_token"] = {
-      value: user.authentication_token,
-      expires: 20.years.from_now,
+
+    expires = 12.months.from_now
+    new_token = JWT.encode({user: user.id, exp: expires.to_i}, ENV["JWT_SECRET"])
+    cookies["token"] = {
+      value: new_token,
+      expires: expires,
       domain: :all,
       httponly: true
     }
@@ -258,6 +261,7 @@ Devise::Controllers::SignInOut.class_eval do
 
   def sign_out(resource_or_scope=nil)
     cookies.delete("auth_token", domain: :all)
+    cookies.delete("token", domain: :all)
     devise_sign_out(resource_or_scope)
   end
 
