@@ -118,7 +118,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable, :trackable, :rememberable.
   devise :database_authenticatable, :registerable, :recoverable,
          :validatable, :omniauthable, :confirmable, :async,
-         allow_unconfirmed_access_for: 3.days
+         allow_unconfirmed_access_for: nil
 
   has_attached_file :avatar,
     styles: {
