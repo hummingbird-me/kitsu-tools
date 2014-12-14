@@ -25,15 +25,6 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
   }.property('totalVotes', 'recentLikers.length'),
   showExtraLikers: Ember.computed.gt('extraLikers', 0),
 
-  belongsToUser: function() {
-    var currentUserId = this.get('currentUser.id');
-    return currentUserId === this.get('model.poster.id') || currentUserId === this.get('model.user.id');
-  }.property('model.poster.id', 'model.user.id'),
-
-  canDeleteStory: function() {
-    return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.isAdmin'));
-  }.property('isNew', 'belongsToUser', 'currentUser.isAdmin'),
-
   mediaRoute: function() {
     return this.get('model.media').constructor.typeKey;
   }.property('model.media'),

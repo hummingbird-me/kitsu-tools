@@ -1,6 +1,8 @@
 import DS from 'ember-data';
+import ModelCurrentUser from '../mixins/model-current-user';
+import propertyEqual from '../utils/computed/property-equal';
 
-export default DS.Model.extend({
+export default DS.Model.extend(ModelCurrentUser, {
   type: DS.attr('string'),
   user: DS.belongsTo('user'),
   poster: DS.belongsTo('user'),
@@ -19,5 +21,14 @@ export default DS.Model.extend({
 
   omittedSubstoryCount: function(){
     return this.get('substoryCount') - 2;
-  }.property('substoryCount')
+  }.property('substoryCount'),
+
+  belongsToUser: function() {
+    var currentUserId = this.get('currentUser.id');
+    return currentUserId === this.get('model.poster.id') || currentUserId === this.get('model.user.id');
+  }.property('model.poster.id', 'model.user.id'),
+
+  canDeleteStory: function() {
+    return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.isAdmin'));
+  }.property('isNew', 'belongsToUser', 'currentUser.isAdmin'),
 });
