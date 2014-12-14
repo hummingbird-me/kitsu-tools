@@ -2,7 +2,7 @@ import Ember from 'ember';
 import ModalMixin from '../../mixins/modals/controller';
 import ajax from 'ic-ajax';
 
-export default Ember.Controller.extend(ModalMixin, {
+export default Ember.ObjectController.extend(ModalMixin, {
   likers: [],
   page: 0,
   canLoadMore: true,
