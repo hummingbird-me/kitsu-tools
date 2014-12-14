@@ -28,6 +28,12 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
     }
   }.property('model.bayesianRating'),
 
+  showReviewNag: function() {
+    return this.get('libraryEntryExists') &&
+      this.get('model.libraryEntry.isComplete') &&
+      !this.get('model.hasReviewed');
+  }.property('libraryEntryExists', 'model.libraryEntry.isComplete', 'model.hasReviewed'),
+
   showEpisodes: function() {
     return this.get('currentUser.isAdmin') && this.get('model.episodes.length')>0;
   }.property('currentUser.isAdmin', 'model.episodes.length'),
