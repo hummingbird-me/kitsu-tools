@@ -24,8 +24,8 @@ export default DS.Model.extend(ModelCurrentUser, {
 
   belongsToUser: function() {
     var currentUserId = this.get('currentUser.id');
-    return currentUserId === this.get('model.poster.id') || currentUserId === this.get('model.user.id');
-  }.property('model.poster.id', 'model.user.id'),
+    return currentUserId === this.get('poster.id') || currentUserId === this.get('user.id');
+  }.property('poster.id', 'user.id'),
 
   canDeleteStory: function() {
     return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.isAdmin'));
