@@ -40,9 +40,8 @@ class ApplicationController < ActionController::Base
     elsif cookies[:auth_token]
       user = User.find_by(authentication_token: cookies[:auth_token])
       if user && user.current_sign_in_ip != request.remote_ip
-        user.last_sign_in_ip = user.current_sign_in_ip
-        user.current_sign_in_ip = request.remote_ip
-        user.save!
+        user.update_column :last_sign_in_ip, user.current_sign_in_ip
+        user.update_column :current_sign_in_ip, request.remote_ip
       end
       sign_in(user) if user
     end
