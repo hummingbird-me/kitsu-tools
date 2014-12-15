@@ -85,4 +85,13 @@ class UserTest < ActiveSupport::TestCase
     user.recompute_life_spent_on_anime!
     assert_equal time, user.reload.life_spent_on_anime
   end
+
+  test 'update ip address' do
+    user = users(:vikhyat)
+    user.update_ip! '127.0.0.1'
+    assert_equal '127.0.0.1', user.current_sign_in_ip
+    user.update_ip! '::1'
+    assert_equal '::1', user.current_sign_in_ip
+    assert_equal '127.0.0.1', user.last_sign_in_ip
+  end
 end
