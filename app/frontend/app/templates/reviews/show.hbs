@@ -68,10 +68,12 @@
   <div class="review-sidebar">
     <div class="series-panel">
       <div class="review-avatar">
-        {{avatar user 'thumb'}}
+        {{#link-to 'user' user}}
+          {{avatar user 'thumb'}}
+        {{/link-to}}
       </div>
       <div class="reviewer-information">
-        <h5>{{user.username}}</h5>
+        <h5>{{#link-to 'user' user}}{{user.username}}{{/link-to}}</h5>
         {{#if user.isFollowed}}
         <button class="btn btn-default btn-lg follow-button unfollow" {{action "toggleFollow" user}}>Unfollow</button>
         {{else}}
