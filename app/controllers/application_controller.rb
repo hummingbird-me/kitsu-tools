@@ -1,3 +1,5 @@
+require_dependency 'auth_helpers'
+
 class ApplicationController < ActionController::Base
   force_ssl if Rails.env.production?
   protect_from_forgery
@@ -6,6 +8,8 @@ class ApplicationController < ActionController::Base
                 :preload_blotter
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  include AuthHelpers
 
   # Send an object along with the initial HTML response that will be loaded into
   # Ember Data's cache.
@@ -40,73 +44,6 @@ class ApplicationController < ActionController::Base
   def preload_blotter
     if user_signed_in?
       generic_preload! "blotter", Blotter.get
-    end
-  end
-
-  # Upgrade from auth_token to token by signing them in again
-  def upgrade_token!
-    if user_signed_in?
-      user = User.find_by(authentication_token: cookies[:auth_token])
-      sign_in user
-    end
-  end
-
-  def token
-    token = cookies[:token]
-    token ||= params[:token] unless request.get?
-    Token.new(token)
-  end
-
-  def current_user
-    if cookies[:token] && token.valid?
-      token.user
-    else
-      super
-    end
-  end
-
-  def user_signed_in?
-    if cookies[:token]
-      !!current_user
-    else
-      super
-    end
-  end
-
-  def authenticate_user!
-    if cookies[:token]
-      unless user_signed_in?
-        render json: {error: 'Not authenticated'}, status: 403
-      end
-    else
-      super
-    end
-  end
-
-  # Upgrades the token, refreshes it, and clears invalid ones
-  def check_user_authentication
-    if cookies[:token]
-      if !user_signed_in?
-        sign_out :user
-      else
-        # refresh the token if it's gonna expire in less than a month
-        sign_in current_user if token.expires_in < 1.month
-
-        # Update the ip addresses
-        user = current_user
-        if user.current_sign_in_ip != request.remote_ip
-          user.update_attributes!(
-            current_sign_in_ip: request.remote_ip,
-            last_sign_in_ip: user.current_sign_in_ip
-          )
-        end
-      end
-    elsif cookies[:auth_token]
-      user = User.find_by(authentication_token: cookies[:auth_token])
-      if user && user.current_sign_in_ip != request.remote_ip
-        user.update_column :last_sign_in_ip, user.current_sign_in_ip
-        user.update_column :current_sign_in_ip, request.remote_ip
-      end
     end
   end
 
