@@ -13,6 +13,7 @@ class Token
         'jti' => SecureRandom.uuid,
         'scope' => [],
         'sub' => string_or_user,
+        'iss' => Time.now.to_i,
         'exp' => TTL.from_now.to_i
       }.merge(opts.stringify_keys)
     end
