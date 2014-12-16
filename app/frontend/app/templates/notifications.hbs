@@ -1,20 +1,11 @@
 <div class="container">
-  <div class="row notification-panel-wrapper">
-    <div class="col-md-6">
-      {{#each}}
-        <div class="notification-panel">
-          <img {{bind-attr src=sourceAvatar}} />
-          {{#if isProfileComment}}
-            <strong>{{sourceUser}}</strong> wrote a comment on your profile.
-          {{/if}}
-          {{#if isCommentReply}}
-            <strong>{{sourceUser}}</strong> wrote a reply to your comment.
-          {{/if}}
-          <p class="time-ago">
-            {{time-ago time=createdAt}}
-          </p>
-        </div>
-      {{/each}}
+  <div class="row" style="margin-top: 50px">
+    <div class="col-md-6 col-md-offset-3">
+      <ul class="all-notifications">
+        {{#each}}
+          {{partial "notification"}}
+        {{/each}}
+      </ul>
     </div>
   </div>
 </div>

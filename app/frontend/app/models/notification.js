@@ -2,9 +2,7 @@ import Em from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  sourceType: DS.attr('string'),
-  sourceUser: DS.attr('string'),
-  sourceAvatar: DS.attr('string'),
+  source: DS.belongsTo('model', {polymorphic: true}),
   createdAt: DS.attr('date'),
   notificationType: DS.attr('string'),
   seen: DS.attr('boolean'),
@@ -14,5 +12,7 @@ export default DS.Model.extend({
 
   link: function() {
     return "/notifications/" + this.get('id');
-  }.property('id')
+  }.property('id'),
+
+  sourceUser: Em.computed.any('source.poster', 'source.user')
 });

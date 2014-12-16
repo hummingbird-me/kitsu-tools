@@ -1,7 +1,8 @@
 import DS from 'ember-data';
+import Model from '../models/model';
 import ModelCurrentUser from '../mixins/model-current-user';
 
-export default DS.Model.extend(ModelCurrentUser, {
+export default Model.extend(ModelCurrentUser, {
   type: DS.attr('string'),
   user: DS.belongsTo('user'),
   poster: DS.belongsTo('user'),

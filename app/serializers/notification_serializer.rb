@@ -1,12 +1,17 @@
+require_dependency 'story_query'
+
 class NotificationSerializer < ActiveModel::Serializer
+  embed :ids, include: true
 
-  attributes :id, :source_type, :source_avatar, :source_user, :created_at, :notification_type, :seen
+  attributes :id, :created_at, :notification_type, :seen
 
-  def source_user
-    object.source_user.name
-  end
+  has_one :source, polymorphic: true
 
-  def source_avatar
-    object.source_user.avatar.url(:thumb_small)
+  def source
+    if object.source_type == "Story"
+      StoryQuery.find_by_id(object.source_id, scope)
+    else
+      object.source
+    end
   end
 end

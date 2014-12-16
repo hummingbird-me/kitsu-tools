@@ -1,0 +1,49 @@
+.notification {
+  @extend .row;
+
+  padding-right: 30px;
+  border-bottom: 1px solid #eee;
+  margin-left: 0;
+  background: #fff;
+
+  &.new {
+    background: #f7edda !important;
+    border-bottom: 1px solid #e5d6b8;
+  }
+
+  a {
+    @extend .clearfix;
+    border-bottom: none !important;
+    background: none !important;
+    color: #000;
+  }
+
+  .avatar {
+    @extend .col-xs-1;
+    padding: 0;
+  }
+
+  .content {
+    @extend .col-xs-11;
+
+    .who {
+      font-weight: bold;
+    }
+
+    .time {
+      font-size: 0.8em;
+      color: $medGrey;
+    }
+  }
+
+  .view-all {
+    background: $eggshell;
+  }
+}
+
+.all-notifications {
+  .notification {
+    margin: 10px;
+    padding: 10px;
+  }
+}

@@ -215,10 +215,6 @@ html { overflow-y: auto; }
       }
     }
 
-    .no-notifications {
-      padding: 10px 15px;
-    }
-
     li:first-child a {
       border-top-right-radius: 4px;
       border-top-left-radius: 4px;
@@ -417,62 +413,6 @@ html { overflow-y: auto; }
           opacity: 0.8;
           letter-spacing: 1px;
         }
-      }
-    }
-  }
-
-  .notification-dropdown {
-    .notification-element {
-      @extend .clearfix;
-
-      a {
-        @extend .clearfix;
-      }
-
-      &.new {
-        background: #f7edda;
-        border-bottom: 1px solid #e5d6b8;
-      }
-    }
-
-    .user-avatar {
-      padding: 0;
-      img {
-        width: 100%;
-        border-radius: 3px;
-      }
-    }
-
-    .user-info {
-      text-align: left;
-      padding-left: 10px;
-      .username {
-        font-family: $headerFontFamily;
-        font-size: 18px;
-        margin-top: 0;
-        margin-bottom: 4px;
-        padding-right: 30px;
-        .user-action {
-          color: $darkGrey;
-        }
-      }
-
-      .preview {
-        margin-bottom: 0;
-        font-family: $bodyFontFamily;
-      }
-
-      small {
-        color: $medGrey;
-        font-family: $bodyFontFamily;
-        font-weight: 300;
-      }
-    }
-
-    .view-all {
-      background: $eggshell;
-      &:hover {
-        color: $darkOrange;
       }
     }
   }

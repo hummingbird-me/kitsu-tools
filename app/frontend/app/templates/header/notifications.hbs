@@ -8,31 +8,13 @@
   </a>
   <ul class='dropdown-menu notification-dropdown right-nav-section'>
     {{#each limitedNotifications}}
-      <li {{bind-attr class=":notification-element seen:nonew:new"}}>
-        <a {{bind-attr href=link}}>
-          <div class='col-xs-1 col-sm-1 col-md-1 user-avatar'>
-            <img {{bind-attr src="sourceAvatar"}}>
-          </div>
-          <div class='col-xs-11 col-sm-11 col-md-11 user-info'>
-            <h5 class='username'>
-              {{sourceUser}}
-              {{#if isProfileComment}}
-                <small class='user-action'>wrote a comment on your profile.</small>
-              {{/if}}
-              {{#if isCommentReply}}
-                <small class='user-action'>wrote a reply to your comment.</small>
-              {{/if}}
-            </h5>
-            <small>{{time-ago time=createdAt}}</small>
-          </div>
-        </a>
-      </li>
+      {{partial "notification"}}
     {{else}}
       <li class="no-notifications">
         <span>You don't have any notifications yet.</span>
       </li>
     {{/each}}
-    <li class="view-all">
+    <li class="notification view-all">
       {{#link-to 'notifications'}}View All Notifications{{/link-to}}
     </li>
   </ul>

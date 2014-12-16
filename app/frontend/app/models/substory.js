@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import Model from '../models/model';
 import ModelCurrentUser from '../mixins/model-current-user';
 import propertyEqual from '../utils/computed/property-equal';
 
-export default DS.Model.extend(ModelCurrentUser, {
+export default Model.extend(ModelCurrentUser, {
   type: DS.attr('string'),
   createdAt: DS.attr('date'),
   newStatus: DS.attr('string'),
