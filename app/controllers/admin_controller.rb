@@ -51,6 +51,7 @@ class AdminController < ApplicationController
     stats[:feedcomments] = Substory.where('created_at >= ?', 1.day.ago).count
     stats[:feedlikes] = Vote.where(target_type: 'Story').where('created_at >= ?', 1.day.ago).count
     stats[:pending_count] = Version.pending.count
+    stats[:sha_hash] = `git log --pretty=format:'%h' -n 1`
 
     stats[:registrations] = {total: {}, confirmed: {}}
     User.where('created_at >= ?', 1.week.ago).find_each do |user|
