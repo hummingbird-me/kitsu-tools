@@ -20,8 +20,8 @@
 #  cover_image_updated_at    :datetime
 #  bayesian_average          :float            default(0.0), not null
 #  user_count                :integer          default(0), not null
-#  thetvdb_series_id         :string(255)
-#  thetvdb_season_id         :string(255)
+#  thetvdb_series_id         :integer
+#  thetvdb_season_id         :integer
 #  english_canonical         :boolean          default(FALSE)
 #  age_rating_guide          :string(255)
 #  show_type                 :string(255)
