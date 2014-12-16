@@ -288,6 +288,18 @@ class User < ActiveRecord::Base
     self.save
   end
 
+  def update_ip!(new_ip)
+    if self.current_sign_in_ip != new_ip
+      self.attributes = {
+        current_sign_in_ip: new_ip,
+        last_sign_in_ip: self.current_sign_in_ip
+      }
+
+      # Avoid validating because some users apparently don't pass validation
+      self.save(validate: false)
+    end
+  end
+
   # Return the top 5 genres the user has completed, along with
   # the number of anime watched that contain each of those genres.
   def top_genres

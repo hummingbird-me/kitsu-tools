@@ -1,3 +1,5 @@
+require_dependency 'auth_helpers'
+
 class ApplicationController < ActionController::Base
   force_ssl if Rails.env.production?
   protect_from_forgery
@@ -6,6 +8,8 @@ class ApplicationController < ActionController::Base
                 :preload_blotter
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+
+  include AuthHelpers
 
   # Send an object along with the initial HTML response that will be loaded into
   # Ember Data's cache.
@@ -29,22 +33,6 @@ class ApplicationController < ActionController::Base
   def generic_preload!(key, value)
     @generic_preload ||= {}
     @generic_preload[key] = value
-  end
-
-  def check_user_authentication
-    if user_signed_in?
-      # Sign the user out if they have an incorrect auth token.
-      unless cookies[:auth_token] && current_user.authentication_token == cookies[:auth_token]
-        sign_out :user
-      end
-    elsif cookies[:auth_token]
-      user = User.find_by(authentication_token: cookies[:auth_token])
-      if user && user.current_sign_in_ip != request.remote_ip
-        user.update_column :last_sign_in_ip, user.current_sign_in_ip
-        user.update_column :current_sign_in_ip, request.remote_ip
-      end
-      sign_in(user) if user
-    end
   end
 
   def preload_current_user
