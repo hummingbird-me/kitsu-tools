@@ -1,5 +1,3 @@
-require_dependency 'auth/current_user_provider'
-
 class API_v1 < Grape::API
   version 'v1', using: :path, format: :json, vendor: 'hummingbird'
   formatter :json, lambda {|object, env| MultiJson.dump(object) }
