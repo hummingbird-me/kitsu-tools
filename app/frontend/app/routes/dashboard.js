@@ -66,11 +66,23 @@ export default Ember.Route.extend(Paginated, {
     },
 
     showNewStories: function() {
-      var content = this.get('controller.content'),
-          newStories = this.get('controller.newStories').uniq().reverseObjects();
+      // newStories is an array of Promises so grab the content
+      var newStories = this.get('controller.newStories').mapBy('content').reverseObjects(),
+          content = this.get('controller.content'),
+          contentIds = content.mapBy('id');
 
-      content.removeObjects(newStories);
-      content.unshiftObjects(newStories);
+
+      // remove duplicate objects from newStories rather than content.
+      var objectsToRemove = [];
+      newStories.mapBy('id').forEach(function(id, index) {
+        if (contentIds.contains(id)) {
+          objectsToRemove.push(newStories.objectAt(index));
+        }
+      });
+      newStories.removeObjects(objectsToRemove);
+      if (newStories.length > 0) {
+        content.unshiftObjects(newStories);
+      }
 
       this.set('controller.newStories', []);
     }
