@@ -80,9 +80,7 @@ export default Ember.Route.extend(Paginated, {
         }
       });
       newStories.removeObjects(objectsToRemove);
-      if (newStories.length > 0) {
-        content.unshiftObjects(newStories);
-      }
+      content.unshiftObjects(newStories);
 
       this.set('controller.newStories', []);
     }
