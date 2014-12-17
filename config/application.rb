@@ -67,10 +67,6 @@ module Hummingbird
       g.orm :active_record
     end
 
-    config.action_dispatch.rescue_responses.merge!(
-      'Auth::UnauthorizedException' => :unauthorized
-    )
-
     # Add LogBeforeTimeout middleware
     config.middleware.insert_before Rack::Sendfile, LogBeforeTimeout
 

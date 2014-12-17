@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   include Auth::Helpers
 
+  rescue_from 'Auth::UnauthorizedException' do
+    render json: {error: "Not authenticated"}, status: 403
+  end
+
   # Send an object along with the initial HTML response that will be loaded into
   # Ember Data's cache.
   def preload_to_ember!(data, options={})
@@ -77,6 +81,7 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
