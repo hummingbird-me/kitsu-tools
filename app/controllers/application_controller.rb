@@ -1,4 +1,4 @@
-require_dependency 'auth_helpers'
+require_dependency 'auth/helpers'
 
 class ApplicationController < ActionController::Base
   force_ssl if Rails.env.production?
@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
-  include AuthHelpers
+  include Auth::Helpers
 
   # Send an object along with the initial HTML response that will be loaded into
   # Ember Data's cache.

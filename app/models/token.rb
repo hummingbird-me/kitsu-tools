@@ -6,7 +6,7 @@ class Token
 
   def initialize(string_or_user, opts={})
     if string_or_user.is_a? String
-      @payload = JWT.decode(string_or_user, secret)[0]
+      @payload = JWT.decode(string_or_user, self.secret)[0]
     else
       string_or_user = string_or_user.id if string_or_user.is_a? User
       @payload = {

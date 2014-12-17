@@ -1,6 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+
+# require_dependency doesn't work here for some reason.
 require_relative '../lib/log_before_timeout.rb'
 
 if defined?(Bundler)
@@ -64,6 +66,10 @@ module Hummingbird
     config.generators do |g|
       g.orm :active_record
     end
+
+    config.action_dispatch.rescue_responses.merge!(
+      'Auth::UnauthorizedException' => :unauthorized
+    )
 
     # Add LogBeforeTimeout middleware
     config.middleware.insert_before Rack::Sendfile, LogBeforeTimeout

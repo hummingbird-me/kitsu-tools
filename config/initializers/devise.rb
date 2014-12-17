@@ -260,7 +260,6 @@ Devise::Controllers::SignInOut.class_eval do
   end
 
   def sign_out(resource_or_scope=nil)
-    cookies.delete("auth_token", domain: :all)
     cookies.delete("token", domain: :all)
     devise_sign_out(resource_or_scope)
   end
