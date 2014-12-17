@@ -73,6 +73,7 @@ Router.map(function() {
   this.route('reviews/show');
   this.route('user/library');
   this.route('user/manga-library');
+  this.route('pro');
 });
 
 export default Router;
