@@ -1,27 +1,23 @@
+require_dependency 'auth/current_user_provider'
+
 class API_v1 < Grape::API
   version 'v1', using: :path, format: :json, vendor: 'hummingbird'
   formatter :json, lambda {|object, env| MultiJson.dump(object) }
   rescue_from ActiveRecord::RecordNotFound
 
   helpers do
-    def warden; env['warden']; end
-
     def current_user
-      return env['current_user'] if env['current_user']
+      return env['current_user'] if env.has_key?('current_user')
 
       if params[:auth_token] || cookies[:auth_token]
-        user = User.find_by(authentication_token: params[:auth_token] || cookies[:auth_token])
-        error! "Invalid authentication token", 401 if user.nil?
-
-        env['current_user'] = user
-      elsif params[:token] || cookies[:token]
-        token = Token.new(params[:token] || cookies[:token])
+        token = Token.new(params[:auth_token] || cookies[:auth_token])
         error! "Invalid authentication token", 401 if token.invalid?
-
         env['current_user'] = token.user
       else
-        nil
+        env['current_user'] = nil
       end
+
+      env['current_user']
     end
 
     def user_signed_in?
@@ -211,7 +207,6 @@ class API_v1 < Grape::API
       optional :username, type: String
       optional :email, type: String
       requires :password, type: String
-      optional :new_token, type: Boolean
     end
     post '/authenticate' do
       user = nil
@@ -224,14 +219,7 @@ class API_v1 < Grape::API
         error! "Invalid credentials", 401
       end
 
-      if params[:new_token]
-        {
-          old_token: user.authentication_token,
-          new_token: Token.new(user.id, scope: ['all']).encode
-        }
-      else
-        user.authentication_token
-      end
+      Token.new(user.id, scope: ['all']).encode
     end
 
     desc "Return the current user."
