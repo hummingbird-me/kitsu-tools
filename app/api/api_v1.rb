@@ -223,6 +223,7 @@ class API_v1 < Grape::API
     desc "Return the current user."
     params do
       requires :username, type: String
+      optional :secret, type: String
     end
     get ':username' do
       user = find_user(params[:username])
@@ -246,7 +247,7 @@ class API_v1 < Grape::API
         following: (user_signed_in? and user.followers.include?(current_user)),
         favorites: user.favorites
       }
-      if user == current_user
+      if user == current_user || params[:secret] == ENV['FORUM_SYNC_SECRET']
         json["email"] = user.email
       end
       json
