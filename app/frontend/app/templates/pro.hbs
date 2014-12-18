@@ -7,69 +7,73 @@
       <div class="purchase-block">
         <div class="btn-group" role="group" aria-label="...">
           <!-- Currently selected tab should have the class '.active' -->
-          <button type="button" class="btn btn-default active">Subscription</button>
-          <button type="button" class="btn btn-default">One-time / Gift</button>
+          <button type="button" {{bind-attr class=":btn :btn-default subscriptionActive:active"}} {{action "setCurrentTab" "subscription"}}>Subscription</button>
+          <button type="button" {{bind-attr class=":btn :btn-default onetimeActive:active"}} {{action "setCurrentTab" "onetime"}}>One-time / Gift</button>
         </div>
 
         <!-- Subscription option -->
         <!-- This form should only be shown if the 'Subscription' button above is clicked -->
-        <div class="payment-wrapper">
-          <p>What type of subscription would you like?</p>
-          <ul>
-            <li>
-              <input name="period" type="radio" id="period_monthly" value="monthly" class="nomargin">
-              <label for="period_monthly">monthly - $4.99</label>
-            </li>
-            <li>
-              <input name="period" type="radio" id="period_yearly" value="yearly" class="nomargin" checked="checked">
-              <label for="period_yearly">yearly - $39.99 (~$3.50/month)</label>
-            </li>
-          </ul>
-          <button class="pro-button" type="button">Purchase PRO</button>
-        </div>
+        {{#if subscriptionActive}}
+          <div class="payment-wrapper">
+            <p>What type of subscription would you like?</p>
+            <ul>
+              <li>
+                <input name="period" type="radio" id="period_monthly" value="monthly" class="nomargin">
+                <label for="period_monthly">monthly - $4.99</label>
+              </li>
+              <li>
+                <input name="period" type="radio" id="period_yearly" value="yearly" class="nomargin" checked="checked">
+                <label for="period_yearly">yearly - $39.99 (~$3.50/month)</label>
+              </li>
+            </ul>
+            <button class="pro-button" type="button">Purchase PRO</button>
+          </div>
+        {{/if}}
         <!-- End Subscription option -->
 
         <!-- One-time option -->
         <!-- This form should only be shown if the 'One-time / Gift' button above is clicked -->
-        <div class="payment-wrapper">
-          <p>How many months?</p>
-          <select id="months" name="months" class="pro-dropdown">
-            <option value="1">1 month: $3.99</option>
-            <option value="3">3 months: $11.97</option>
-            <option value="12" selected="">12 months   (special price!): $29.99</option>
-            <option value="24">24 months   (special price!): $59.98</option>
-            <option value="36">36 months   (special price!): $89.97</option>
-          </select>
-          <ul>
-            <li>
-              <input type="radio" id="notgift" name="gift" value="0">
-              <label for="notgift">purchase for myself</label>
-            </li>
-            <li>
-              <input type="radio" id="gift" name="gift" value="1" checked="">
-              <label for="gift">purchase as a gift</label>
-              <!-- Gift Details should only be shown if the #gift radio is checked -->
-              <div class="gift-details">
-                <label>
-                  who should receive this gold?
-                  <input id="recipient" type="text" name="recipient" value="" placeholder="Enter a username..." size="13" maxlength="20" class="inline">
-                </label>
-                <ul class="indent">
-                  <li>
-                    <label>
-                      <input type="checkbox" id="message" name="message" value="message">
-                      include a message?
-                    </label>
-                  </li>
-                  <li>
-                    <textarea rows="3" name="giftmessage" id="giftmessage" placeholder="Go ahead, say something clever..." class="giftmessage"></textarea>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </ul>
-          <button class="pro-button">Purchase PRO</button>
-        </div>
+        {{#if onetimeActive}}
+          <div class="payment-wrapper">
+            <p>How many months?</p>
+            <select id="months" name="months" class="pro-dropdown">
+              <option value="1">1 month: $3.99</option>
+              <option value="3">3 months: $11.97</option>
+              <option value="12" selected="">12 months   (special price!): $29.99</option>
+              <option value="24">24 months   (special price!): $59.98</option>
+              <option value="36">36 months   (special price!): $89.97</option>
+            </select>
+            <ul>
+              <li>
+                <input type="radio" id="notgift" name="gift" value="0">
+                <label for="notgift">purchase for myself</label>
+              </li>
+              <li>
+                <input type="radio" id="gift" name="gift" value="1" checked="">
+                <label for="gift">purchase as a gift</label>
+                <!-- Gift Details should only be shown if the #gift radio is checked -->
+                <div class="gift-details">
+                  <label>
+                    who should receive this gold?
+                    <input id="recipient" type="text" name="recipient" value="" placeholder="Enter a username..." size="13" maxlength="20" class="inline">
+                  </label>
+                  <ul class="indent">
+                    <li>
+                      <label>
+                        <input type="checkbox" id="message" name="message" value="message">
+                        include a message?
+                      </label>
+                    </li>
+                    <li>
+                      <textarea rows="3" name="giftmessage" id="giftmessage" placeholder="Go ahead, say something clever..." class="giftmessage"></textarea>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <button class="pro-button">Purchase PRO</button>
+          </div>
+        {{/if}}
         <!-- End One-time option -->
 
 
