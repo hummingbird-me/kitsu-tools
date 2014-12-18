@@ -1,3 +1,5 @@
+require_dependency 'auth/helpers'
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -242,26 +244,17 @@ end
 
 Devise::Controllers::SignInOut.class_eval do
 
-  alias_method :devise_sign_in, :sign_in
-  alias_method :devise_sign_out, :sign_out
+  include Auth::Helpers
 
   def sign_in(resource_or_scope, *args)
+    check_user_authentication
     user = (resource_or_scope.is_a? Symbol) ? args.first : resource_or_scope
-
-    token = Token.new(user.id, scope: ['all'])
-
-    cookies["token"] = {
-      value: token.encode,
-      expires: token.expires_at,
-      domain: :all,
-      httponly: true
-    }
-    devise_sign_in(user)
+    env["_CURRENT_USER_PROVIDER".freeze].log_on_user(user, cookies)
   end
 
   def sign_out(resource_or_scope=nil)
-    cookies.delete("token", domain: :all)
-    devise_sign_out(resource_or_scope)
+    check_user_authentication
+    env["_CURRENT_USER_PROVIDER".freeze].log_off_user(cookies)
   end
 
 end

@@ -33,6 +33,22 @@ module Auth
       end
     end
 
+    def log_on_user(user, cookies)
+      new_token = Token.new(user.id, scope: ['all'])
+      cookies[TOKEN_FIELD] = {
+        value: new_token.encode,
+        expires: new_token.expires_at,
+        domain: :all,
+        httponly: true
+      }
+      @env[CURRENT_USER_KEY] = user
+    end
+
+    def log_off_user(cookies)
+      cookies.delete(TOKEN_FIELD, domain: :all)
+      @env[CURRENT_USER_KEY] = nil
+    end
+
     def token
       Token.new(@request.cookies[TOKEN_FIELD])
     end

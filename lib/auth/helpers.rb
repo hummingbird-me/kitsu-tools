@@ -26,8 +26,8 @@ module Auth
         sign_in(user) if user
       end
 
-      current_user_provider = Auth::CurrentUserProvider.new(env)
-      env[CURRENT_USER_PROVIDER_KEY] = current_user_provider
+      env[CURRENT_USER_PROVIDER_KEY] ||= Auth::CurrentUserProvider.new(env)
+      current_user_provider = env[CURRENT_USER_PROVIDER_KEY]
 
       if user_signed_in?
         sign_in(current_user) if current_user_provider.token.expires_in < 1.month
