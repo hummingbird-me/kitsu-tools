@@ -6,11 +6,13 @@
 
       <div class="purchase-block">
         <div class="btn-group" role="group" aria-label="...">
+          <!-- Currently selected tab should have the class '.active' -->
           <button type="button" class="btn btn-default active">Subscription</button>
           <button type="button" class="btn btn-default">One-time / Gift</button>
         </div>
 
         <!-- Subscription option -->
+        <!-- This form should only be shown if the 'Subscription' button above is clicked -->
         <div class="payment-wrapper">
           <p>What type of subscription would you like?</p>
           <ul>
@@ -28,7 +30,8 @@
         <!-- End Subscription option -->
 
         <!-- One-time option -->
-        {{!-- <div class="payment-wrapper">
+        <!-- This form should only be shown if the 'One-time / Gift' button above is clicked -->
+        <div class="payment-wrapper">
           <p>How many months?</p>
           <select id="months" name="months" class="pro-dropdown">
             <option value="1">1 month: $3.99</option>
@@ -45,6 +48,7 @@
             <li>
               <input type="radio" id="gift" name="gift" value="1" checked="">
               <label for="gift">purchase as a gift</label>
+              <!-- Gift Details should only be shown if the #gift radio is checked -->
               <div class="gift-details">
                 <label>
                   who should receive this gold?
@@ -65,7 +69,7 @@
             </li>
           </ul>
           <button class="pro-button">Purchase PRO</button>
-        </div> --}}
+        </div>
         <!-- End One-time option -->
 
 
