@@ -1,0 +1,80 @@
+.pro-card {
+  @extend .animated;
+  @extend .fadeInUp;
+  animation-delay: .5s;
+  width: 800px;
+  margin: 100px auto 30px auto;
+  @media (max-width: 800px) {
+    width: 100%;
+    padding: 0 10px;
+  }
+  .panel {
+    overflow: hidden;
+    margin-bottom: 0;
+  }
+}
+
+.pro-panel {
+  padding: 10px 30px;
+  h1 {
+    text-align: center;
+  }
+  p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+.purchase-block {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 15px;
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+  label {
+    margin-left: 5px;
+  }
+  .payment-wrapper {
+    text-align: left;
+    max-width: 320px;
+    margin: 30px auto 0px auto;
+    select {
+      margin-bottom: 15px;
+    }
+  }
+  .pro-button {
+    background: #16a085;
+    padding: 10px 30px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    min-width: 200px;
+    margin: 15px 0;
+  }
+  .gift-details {
+    padding-left: 24px;
+    margin-top: 5px;
+    label {
+      margin: 0;
+      font-weight: normal;
+    }
+    input {
+      border-radius: 3px;
+      box-shadow: none;
+      border: 1px solid #ddd;
+      padding: 10px;
+      min-width: 280px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+    textarea {
+      border-radius: 3px;
+      box-shadow: none;
+      border: 1px solid #ddd;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+}
