@@ -1040,6 +1040,70 @@ ALTER SEQUENCE notifications_id_seq OWNED BY notifications.id;
 
 
 --
+-- Name: partner_codes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE partner_codes (
+    id integer NOT NULL,
+    partner_deal_id integer NOT NULL,
+    code character varying(255) NOT NULL,
+    user_id integer NOT NULL,
+    expires_at timestamp without time zone,
+    claimed_at timestamp without time zone
+);
+
+
+--
+-- Name: partner_codes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE partner_codes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: partner_codes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE partner_codes_id_seq OWNED BY partner_codes.id;
+
+
+--
+-- Name: partner_deals; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE partner_deals (
+    id integer NOT NULL,
+    deal_title character varying(255) NOT NULL,
+    partner_name character varying(255) NOT NULL,
+    valid_countries character varying(255)[] NOT NULL
+);
+
+
+--
+-- Name: partner_deals_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE partner_deals_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: partner_deals_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE partner_deals_id_seq OWNED BY partner_deals.id;
+
+
+--
 -- Name: people; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1785,6 +1849,20 @@ ALTER TABLE ONLY notifications ALTER COLUMN id SET DEFAULT nextval('notification
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY partner_codes ALTER COLUMN id SET DEFAULT nextval('partner_codes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY partner_deals ALTER COLUMN id SET DEFAULT nextval('partner_deals_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY people ALTER COLUMN id SET DEFAULT nextval('people_id_seq'::regclass);
 
 
@@ -2085,6 +2163,22 @@ ALTER TABLE ONLY not_interesteds
 
 ALTER TABLE ONLY notifications
     ADD CONSTRAINT notifications_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: partner_codes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY partner_codes
+    ADD CONSTRAINT partner_codes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: partner_deals_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY partner_deals
+    ADD CONSTRAINT partner_deals_pkey PRIMARY KEY (id);
 
 
 --
@@ -2540,6 +2634,20 @@ CREATE INDEX index_notifications_on_source_id ON notifications USING btree (sour
 --
 
 CREATE INDEX index_notifications_on_user_id ON notifications USING btree (user_id);
+
+
+--
+-- Name: index_partner_codes_on_partner_deal_id_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_partner_codes_on_partner_deal_id_and_user_id ON partner_codes USING btree (partner_deal_id, user_id);
+
+
+--
+-- Name: index_partner_deals_on_valid_countries; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_partner_deals_on_valid_countries ON partner_deals USING gin (valid_countries);
 
 
 --
@@ -3416,4 +3524,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141210204258');
 INSERT INTO schema_migrations (version) VALUES ('20141210212700');
 
 INSERT INTO schema_migrations (version) VALUES ('20141219002102');
+
+INSERT INTO schema_migrations (version) VALUES ('20141219075153');
 
