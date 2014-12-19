@@ -13,7 +13,9 @@
             <i class="fa fa-share reply-icon"></i>
             {{#link-to 'user' user}}{{unbound user.username}}{{/link-to}}
           {{else}}
-            <a href="#"><span class="mini-badge">pro</span></a>
+            {{#if user.isPro}}
+              <a href="#"><span class="mini-badge">pro</span></a>
+            {{/if}}
           {{/unless}}
         </h4>
         <p class="secondary">

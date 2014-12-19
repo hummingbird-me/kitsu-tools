@@ -39,7 +39,9 @@
             <div class="bio-wrapper">
               <h2 class="username">
                 {{username}}
-                <a href="#"><span class="profile-badge">pro</span></a>
+                {{#if user.isPro}}
+                  <a href="#"><span class="profile-badge">pro</span></a>
+                {{/if}}
               </h2>
               {{#if showEditMenu}}
                 {{{textarea class="edit-bio" rows="2" maxlength="140" placeholder="Briefly tell us about yourself..." value=truncatedBio}}}
