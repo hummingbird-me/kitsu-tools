@@ -30,7 +30,7 @@
   text-align: center;
   margin-bottom: 20px;
   label {
-    margin-left: 5px;
+    margin-left: 10px;
   }
   .payment-wrapper {
     text-align: left;
@@ -131,6 +131,36 @@
   }
 }
 
+.redeem-button {
+  background: #16A085;
+  border-radius: 3px;
+  padding: 5px 15px;
+  display: inline-block;
+  margin-top: 10px;
+  color: #fff;
+  &:hover {
+    background: darken(#16A085, 5);
+    color: #fff;
+  }
+}
+
+.offer-clipping {
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px dashed #ddd;
+  padding: 10px;
+  border-radius: 3px;
+  background: #fafafa;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+p.redemption-instructions {
+  font-style: italic;
+  color: #949393;
+  margin-top: 10px;
+  font-size: 13px;
+}
 // Badge styles
 
 .mini-badge, .profile-badge {

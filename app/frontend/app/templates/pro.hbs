@@ -1,13 +1,14 @@
 <div class="pro-card">
   <div class="panel panel-default">
     <div class="panel-body pro-panel">
-      <!-- If subbed -->
+
+      {{#if currentUser.isPro}}
         <h1>You're PRO all day, every day.</h1>
         <!-- If one-time -->
         {{!-- <h1>You're PRO as it gets for 28 more days.</h1> --}}
-        <p>Thanks for giving us your greasy, dirty money. We promise to use it to buy solid gold chairs and evil, hairless cats. With the money that's left over, we'll be putting it back into Hummingbird so that we can build out features faster, afford more reliable servers and grow our community.</p>
-      {{!-- {{#if currentUser.isPro}}
 
+        <p>Thanks for giving us your greasy, dirty money. We promise to use it to buy solid gold chairs and evil, hairless cats. With the money that's left over, we'll be putting it back into Hummingbird so that we can build out features faster, afford more reliable servers and grow our community.</p>
+        <a href="#">I'd like to cancel my PRO subscription</a>
       {{else}}
         <h1>Let's take our relationship to the next level.</h1>
         <p><strong>Hummingbird PRO</strong> is our premium membership. It upgrades your account with some neat extras, you’ll receive special benefits from our PRO partners and most importantly you’ll be directly supporting us to continue making magic happen. We’re talking about love, baby.</p>
@@ -18,7 +19,6 @@
             <button type="button" {{bind-attr class=":btn :btn-default subscriptionActive:active"}} {{action "setCurrentTab" "subscription"}}>Subscription</button>
             <button type="button" {{bind-attr class=":btn :btn-default onetimeActive:active"}} {{action "setCurrentTab" "onetime"}}>One-time / Gift</button>
           </div>
-      {{/if}} --}}
 
         <!-- Subscription option -->
         <!-- This form should only be shown if the 'Subscription' button above is clicked -->
@@ -84,10 +84,10 @@
           </div>
         {{/if}}
         <!-- End One-time option -->
-
-
+      {{/if}}
       </div>
     </div>
+  </div>
 </div>
 
 <div class="pro-card">
@@ -109,6 +109,13 @@
           <div class="partner-deal">
             <h4>One Year of Rightstuf 'Got Anime' Membership</h4>
             <p>Receive special offers and discounts on purchases, including an additional 10% off their already low prices!</p>
+            {{#if currentUser.isPro}}
+              <!-- This should be shown be default -->
+              <a class="redeem-button">Redeem Offer</a>
+              <!-- Offer clipping and instructions should only be shown AFTER the offer has been redeemed -->
+              {{!-- <div class="offer-clipping">humlzhz83q</div>
+              <p class="redemption-instructions">Claim your code above, then use it during Rightstuf checkout with the Got Anime? membership in your cart.</p> --}}
+            {{/if}}
           </div>
         </li>
       </ul>
