@@ -88,6 +88,9 @@ gem 'devise-async' # Async email for Devise
 gem 'omniauth'
 gem 'omniauth-facebook', '~> 2.0'
 
+# JSON Web Tokens
+gem 'jwt', '~> 1.2'
+
 # Authorization.
 gem 'cancan', "~> 1.6"
 
@@ -135,3 +138,5 @@ gem 'sitemap_generator'
 gem 'message_bus', github: 'vikhyat/message_bus'
 
 gem 'rack-attack'
+
+gem 'onebox'

@@ -17,9 +17,14 @@ class ActiveSupport::TestCase
   fixtures :all
 end
 
+require_dependency 'auth/current_user_provider'
+
 class ActionController::TestCase
   include Devise::TestHelpers
-  include Devise::Controllers::SignInOut
+
+  def sign_in(user)
+    @controller.env["_CURRENT_USER"] = user
+  end
 
   def assert_preloaded(key)
     assert JSON.parse(assigns["preload"].to_json).map {|x| x.keys }.flatten.include?(key), "#{key} should be preloaded"

@@ -4,22 +4,24 @@ class API_v1 < Grape::API
   rescue_from ActiveRecord::RecordNotFound
 
   helpers do
-    def warden; env['warden']; end
     def current_user
-      return env['current_user'] if env['current_user']
-      if params[:auth_token] or cookies[:auth_token]
-        user = User.find_by_authentication_token(params[:auth_token] || cookies[:auth_token])
-        if user.nil?
-          error!("Invalid authentication token", 401)
-        end
-        env['current_user'] = user
+      return env['current_user'] if env.has_key?('current_user')
+
+      if params[:auth_token] || cookies[:auth_token]
+        token = Token.new(params[:auth_token] || cookies[:auth_token])
+        error! "Invalid authentication token", 401 if token.invalid?
+        env['current_user'] = token.user
       else
-        nil
+        env['current_user'] = nil
       end
+
+      env['current_user']
     end
+
     def user_signed_in?
-      not current_user.nil?
+      !current_user.nil?
     end
+
     def authenticate_user!
       if user_signed_in?
         return true
@@ -27,9 +29,11 @@ class API_v1 < Grape::API
         error!("401 Unauthenticated", 401)
       end
     end
+
     def current_ability
       @current_ability ||= Ability.new(current_user)
     end
+
     def find_user(id)
       begin
         if id == "me" and user_signed_in?
@@ -209,15 +213,17 @@ class API_v1 < Grape::API
       elsif params[:email]
         user = User.where("LOWER(email) = ?", params[:email].downcase).first
       end
-      if user.nil? or (not user.valid_password? params[:password])
-        error!("Invalid credentials", 401)
+      if user.nil? || !user.valid_password?(params[:password])
+        error! "Invalid credentials", 401
       end
-      return user.authentication_token
+
+      Token.new(user.id, scope: ['all']).encode
     end
 
     desc "Return the current user."
     params do
       requires :username, type: String
+      optional :secret, type: String
     end
     get ':username' do
       user = find_user(params[:username])
@@ -241,7 +247,7 @@ class API_v1 < Grape::API
         following: (user_signed_in? and user.followers.include?(current_user)),
         favorites: user.favorites
       }
-      if user == current_user
+      if user == current_user || params[:secret] == ENV['FORUM_SYNC_SECRET']
         json["email"] = user.email
       end
       json
