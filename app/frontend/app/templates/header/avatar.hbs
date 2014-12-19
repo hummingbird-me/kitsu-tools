@@ -6,7 +6,7 @@
     <li>{{#link-to 'user' currentUser.id}}<i class="fa fa-paper-plane"></i> View Profile{{/link-to}}</li>
     <li>{{#link-to 'settings'}}<i class="fa fa-cog"></i> Account Settings{{/link-to}}</li>
     <li>
-      {{#if user.isPro}}
+      {{#if currentUser.isPro}}
         {{#link-to 'pro'}}<i class="fa fa-thumbs-o-up"></i> Upgrade to PRO{{/link-to}}
       {{#else}}
         {{#link-to 'pro'}}<i class="fa fa-thumbs-o-up"></i> View PRO{{/link-to}}
