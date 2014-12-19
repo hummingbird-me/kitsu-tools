@@ -130,3 +130,35 @@
     }
   }
 }
+
+// Badge styles
+
+.mini-badge, .profile-badge {
+  background: #bdbcbc;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 10px;
+  padding: 4px 10px 3px 10px;
+  position: relative;
+  top: -3px;
+  margin-left: 3px;
+  transition: .2s ease-in;
+  &:hover {
+    background: #ec8661;
+  }
+}
+
+.profile-badge {
+  @extend .animated;
+  @extend .fadeIn;
+  animation-delay: .5s;
+  background: #ec8661;
+  font-size: 12px;
+  top: -5px;
+  margin-left: 5px;
+  &:hover {
+    background: darken(#ec8661, 10);
+  }
+}

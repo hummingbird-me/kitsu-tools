@@ -37,7 +37,10 @@
         <div class="col-sm-12 col-md-10 no-padding account-wrapper">
           <div class="account-info">
             <div class="bio-wrapper">
-              <h2 class="username">{{username}}</h2>
+              <h2 class="username">
+                {{username}}
+                <a href="#"><span class="profile-badge">pro</span></a>
+              </h2>
               {{#if showEditMenu}}
                 {{{textarea class="edit-bio" rows="2" maxlength="140" placeholder="Briefly tell us about yourself..." value=truncatedBio}}}
               {{else}}
