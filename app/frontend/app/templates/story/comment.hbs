@@ -14,7 +14,7 @@
             {{#link-to 'user' user}}{{unbound user.username}}{{/link-to}}
           {{else}}
             {{#if user.isPro}}
-              <a href="#"><span class="mini-badge">pro</span></a>
+              {{#link-to 'pro'}}<span class="mini-badge">pro</span>{{/link-to}}
             {{/if}}
           {{/unless}}
         </h4>
