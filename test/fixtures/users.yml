@@ -58,6 +58,7 @@
 #  last_backup                 :datetime
 #  approved_edit_count         :integer          default(0)
 #  rejected_edit_count         :integer          default(0)
+#  pro_expires_at              :datetime
 #
 
 vikhyat:

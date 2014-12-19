@@ -58,6 +58,7 @@
 #  last_backup                 :datetime
 #  approved_edit_count         :integer          default(0)
 #  rejected_edit_count         :integer          default(0)
+#  pro_expires_at              :datetime
 #
 
 class User < ActiveRecord::Base
@@ -212,6 +213,11 @@ class User < ActiveRecord::Base
      "peter.lejeck@gmail.com", # Nuck
      "hello@vevix.net" # Vevix
     ].include? email
+  end
+
+  # Does the user have active PRO membership?
+  def pro?
+    pro_expires_at && pro_expires_at > Time.now
   end
 
   def has_dropbox?

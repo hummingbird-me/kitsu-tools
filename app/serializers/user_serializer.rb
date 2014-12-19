@@ -1,23 +1,8 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id,
-             :cover_image_url,
-             :avatar_template,
-             :rating_type,
-             :mini_bio,
-             :about,
-             :is_followed,
-             :title_language_preference,
-             :location,
-             :website,
-             :waifu,
-             :waifu_or_husbando,
-             :waifu_slug,
-             :waifu_char_id,
-             :last_sign_in_at,
-             :current_sign_in_at,
-             :is_admin,
-             :following_count,
-             :follower_count
+  attributes :id, :cover_image_url, :avatar_template, :rating_type, :mini_bio,
+    :about, :is_followed, :title_language_preference, :location, :website,
+    :waifu, :waifu_or_husbando, :waifu_slug, :waifu_char_id, :last_sign_in_at,
+    :current_sign_in_at, :is_admin, :following_count, :follower_count, :is_pro
 
   def id
     object.name
@@ -49,6 +34,10 @@ class UserSerializer < ActiveModel::Serializer
 
   def is_admin
     object.admin?
+  end
+
+  def is_pro
+    object.pro?
   end
 
   def follower_count
