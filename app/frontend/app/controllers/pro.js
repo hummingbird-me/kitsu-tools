@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import HasCurrentUser from '../mixins/has-current-user';
 import loadScript from '../utils/load-script';
+import ajax from 'ic-ajax';
 
 export default Ember.ArrayController.extend(HasCurrentUser, {
   showSubscriptions: true,
@@ -52,13 +53,26 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     purchasePro: function() {
       if (this.get('disablePurchase')) { return; }
 
+      var self = this;
+      var tokenCallback = function(res) {
+        ajax({
+          url: "/pro_memberships",
+          type: "POST",
+          data: {
+            token: res.id,
+            plan_id: self.get('selectedPlanId')
+          }
+        }).then(function(response) {
+          console.log(response);
+        }, function() {
+        });
+      };
+
       StripeCheckout.open({
         key: 'pk_test_aQbfVWeOwvtES5FRSY7iIjk9',
         name: "Hummingbird PRO",
         description: this.get('selectedPlan.name'),
-        token: function(res) {
-          console.log(res);
-        }
+        token: tokenCallback
       });
     }
   }
