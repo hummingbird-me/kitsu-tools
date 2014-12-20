@@ -1,12 +1,23 @@
 import Ember from 'ember';
+import HasCurrentUser from '../mixins/has-current-user';
+import loadScript from '../utils/load-script';
 
-export default Ember.ArrayController.extend({
+export default Ember.ArrayController.extend(HasCurrentUser, {
   showSubscriptions: true,
   showOneTime: Ember.computed.not('showSubscriptions'),
   selectedPlanId: "1",
 
   giftValue: "notgift",
   isGift: Ember.computed.equal("giftValue", "gift"),
+
+  // Disable the buy button until stripe is loaded.
+  disablePurchase: true,
+  loadStripe: function() {
+    var self = this;
+    loadScript("https://checkout.stripe.com/v2/checkout.js").then(function() {
+      self.set('disablePurchase', false);
+    });
+  }.on('init'),
 
   arrangedContent: function() {
     if (this.get('showSubscriptions')) {

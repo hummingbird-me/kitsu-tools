@@ -74,7 +74,15 @@
               </ul>
             {{/if}}
 
-            <button class="pro-button" type="button">Purchase PRO</button>
+            {{#if currentUser.isSignedIn}}
+              <button class="pro-button" type="button" {{bind-attr disabled=disablePurchase}}>Purchase PRO</button>
+            {{else}}
+              <div style="margin: 30px 0">
+                {{#link-to 'sign-in' class="pro-button"}}
+                  Sign in to purchase PRO
+                {{/link-to}}
+              </div>
+            {{/if}}
           </div>
         {{/if}}
       </div>
