@@ -10,8 +10,6 @@ class PartnerDealsController < ApplicationController
 
   # redeem a code
   def update
-    params.permit(:user_id)
-
     unless current_user.pro?
       return head :unauthorized
     end
