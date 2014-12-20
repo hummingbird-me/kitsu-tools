@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Model.extend({
@@ -9,5 +10,7 @@ export default DS.Model.extend({
   redemptionInfo: DS.attr('string'),
   recurring: DS.attr('boolean'),
   active: DS.attr('boolean'),
-  codesRemaining: DS.attr('number')
+  codesRemaining: DS.attr('number'),
+
+  hasCodes: Ember.computed.gt('codesRemaining', 0)
 });

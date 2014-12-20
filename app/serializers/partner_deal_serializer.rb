@@ -5,8 +5,4 @@ class PartnerDealSerializer < ActiveModel::Serializer
   def codes_remaining
     object.codes.unclaimed.count
   end
-
-  def include_codes_remaining?
-    scope.admin? if scope
-  end
 end

@@ -3,10 +3,7 @@ class PartnerDealsController < ApplicationController
 
   def index
     # todo: return only deals available in users country
-    render json: PartnerDeal.joins(:codes)
-      .where(active: true)
-      .having('count(partner_codes.id) > 0')
-      .group('partner_deals.id'),
+    render json: PartnerDeal.where(active: true),
       each_serializer: PartnerDealSerializer
   end
 

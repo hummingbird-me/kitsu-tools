@@ -11,19 +11,18 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
     redeemDeal: function() {
       if (this.get('isRedeeming')) { return; }
 
-      var self = this;
       this.set('isRedeeming', true);
       ajax({
         url: "/partner_deals/" + this.get('model.id'),
         type: "PUT"
-      }).then(function(response) {
-        self.setProperties({
+      }).then((response) => {
+        this.setProperties({
           code: response,
           hasRedeemed: true,
           isRedeeming: false
         });
-      }, function() {
-        self.set('isRedeeming', false);
+      }, () => {
+        this.set('isRedeeming', false);
       });
     }
   }

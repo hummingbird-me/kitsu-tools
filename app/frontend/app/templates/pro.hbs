@@ -131,17 +131,22 @@
                   <h4>{{dealTitle}}</h4>
                   <p>{{dealDescription}}</p>
                   {{#if currentUser.isPro}}
-                    {{#if hasRedeemed}}
-                      <div class="offer-clipping">{{code}}</div>
-                      <p class="redemption-instructions">{{redemptionInfo}}</p>
+                    {{#if hasCodes}}
+                      {{#if hasRedeemed}}
+                        <div class="offer-clipping">{{code}}</div>
+                        <p class="redemption-instructions">{{redemptionInfo}}</p>
+                      {{else}}
+                        <a class="redeem-button" {{action "redeemDeal"}}>
+                          {{#if isRedeeming}}
+                            <i class="fa fa-spin fa-spinner"></i> Redeeming Offer
+                          {{else}}
+                            Redeem Offer
+                          {{/if}}
+                        </a>
+                      {{/if}}
                     {{else}}
-                      <a class="redeem-button" {{action "redeemDeal"}}>
-                        {{#if isRedeeming}}
-                          <i class="fa fa-spin fa-spinner"></i> Redeeming Offer
-                        {{else}}
-                          Redeem Offer
-                        {{/if}}
-                      </a>
+                      {{! TODO: CSS/update this note @josh }}
+                      <p>We've run out of codes temporarily, watch this space!</p>
                     {{/if}}
                   {{/if}}
                 </div>
