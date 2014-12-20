@@ -5,7 +5,13 @@ import ajax from 'ic-ajax';
 export default Ember.ObjectController.extend(HasCurrentUser, {
   isRedeeming: false,
   hasRedeemed: false,
-  code: null,
+
+  // if the user has a redeemed code, just show it
+  showOnLoad: function() {
+    if (this.get('model.code') !== null) {
+      this.set('hasRedeemed', true);
+    }
+  }.on('init'),
 
   actions: {
     redeemDeal: function() {
@@ -16,8 +22,8 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
         url: "/partner_deals/" + this.get('model.id'),
         type: "PUT"
       }).then((response) => {
+        this.set('model.code', response);
         this.setProperties({
-          code: response,
           hasRedeemed: true,
           isRedeeming: false
         });
