@@ -156,7 +156,10 @@ Hummingbird::Application.routes.draw do
   get '/edits' => 'versions#index'
 
   # Admin Panel
-  authenticated :user, lambda {|u| u.admin? } do
+  constraints(lambda do |req|
+    user = Auth::CurrentUserProvider.new(req.env).current_user
+    user && user.admin?
+  end) do
     get '/kotodama' => 'admin#index', as: :admin_panel
     get '/kotodama/stats' => 'admin#stats'
     get '/kotodama/login_as' => 'admin#login_as_user'
