@@ -6,7 +6,6 @@ class AdminControllerTest < ActionController::TestCase
   end
 
   test "can request a MAL scrape" do
-    FakeWeb.allow_net_connect = %r{^https?://cdn.myanimelist.net}
     get :find_or_create_by_mal, mal_id: 11757, media: 'anime'
     assert_instance_of Anime, assigns(:thing)
     assert_redirected_to assigns(:thing)
