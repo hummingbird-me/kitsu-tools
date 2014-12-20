@@ -23,6 +23,21 @@
       </div>
 
       <div class="payment-wrapper">
+        <!-- Show when loading stripe modal -->
+        {{!-- <div class="loading-state">
+          <div class="state-content">
+            <i class="fa fa-refresh fa-spin"></i>
+            <div>Processing...</div>
+          </div>
+        </div> --}}
+
+        <!-- Show after closing stripe modal, before refreshing page -->
+        {{!-- <div class="success-state">
+          <div class="state-content">
+            <i class="fa fa-check-circle"></i>
+            <div>Congrats, you're PRO!</div>
+          </div>
+        </div> --}}
         {{#if showSubscriptions}}
           <p>What type of subscription would you like?</p>
           <ul>

@@ -38,6 +38,12 @@
   color: #d7dee5;
   bottom: -150px;
   right: 15px;
+  @media (max-width: 768px) {
+    bottom: 20px;
+  }
+  @media (max-width: 470px) {
+    bottom: 40px;
+  }
 }
 
 
@@ -134,6 +140,29 @@
     margin: 30px auto 0px auto;
     select {
       margin-bottom: 15px;
+    }
+    .loading-state, .success-state {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #fff;
+      z-index: 2;
+      text-align: center;
+    }
+    .state-content {
+      font-size: 20px;
+      position: relative;
+      top: 70px;
+      color: #A1A1A1;
+      .fa {
+        font-size: 60px;
+        margin-bottom: 20px;
+      }
+    }
+    .success-state .state-content {
+      color: #16a388;
     }
   }
   .pro-button {
