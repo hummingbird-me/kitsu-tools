@@ -2,6 +2,12 @@
   <div class="container">
     {{#if currentUser.isPro}}
       <h2>You're <span class="big-badge">PRO</span> and we love you for it.</h2>
+      <span class="pro-period">
+        <!-- If gifted / one-time -->
+        You have 28 days of PRO remaining.
+        <!-- If subbed -->
+        {{!-- You're subscribed to PRO. <a href="#">Cancel?</a> --}}
+      </span>
     {{else}}
       <h2>You should be <span class="big-badge">PRO</span></h2>
     {{/if}}
@@ -88,8 +94,14 @@
       <div class="panel panel-default">
         <div class="panel-body pro-panel">
           <div class="perks-header">
-            <h3 class="perks-greeting">Show support for our growing community by going PRO.</h3>
-            <small>As our way of saying <i>Arigatō</i>, we’re throwing in a few cool perks.</small>
+            {{#if currentUser.isPro}}
+              <h3 class="perks-greeting">Thanks for helping us make Hummingbird a better place.</h3>
+              <small>Enjoy the perks below, you deserve them!</small>
+            {{else}}
+              <h3 class="perks-greeting">Show support for our growing community by going PRO.</h3>
+              <small>As our way of saying <i>Arigatō</i>, we’re throwing in a few cool perks.</small>
+            {{/if}}
+            
           </div>
           <ul class="perks-body">
             <li class="perk">

@@ -1,6 +1,7 @@
 .pro-hero {
   background: #4b5360;
   height: 255px;
+  position: relative;
   h2 {
     color: #d7dee5;
     font-weight: normal;
@@ -16,6 +17,9 @@
     padding: 10px 25px;
     border-radius: 3px;
   }
+  .container {
+    position: relative;
+  }
   @media (max-width: 768px) {
     height: 150px;
     h2 {
@@ -27,6 +31,13 @@
       top: -3px;
     }
   }
+}
+
+.pro-period {
+  position: absolute;
+  color: #d7dee5;
+  bottom: -150px;
+  right: 15px;
 }
 
 
