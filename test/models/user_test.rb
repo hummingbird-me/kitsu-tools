@@ -59,6 +59,8 @@
 #  approved_edit_count         :integer          default(0)
 #  rejected_edit_count         :integer          default(0)
 #  pro_expires_at              :datetime
+#  stripe_token                :string(255)
+#  pro_membership_plan_id      :integer
 #
 
 require 'test_helper'

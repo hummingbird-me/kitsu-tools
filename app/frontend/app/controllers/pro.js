@@ -64,8 +64,9 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
             plan_id: self.get('selectedPlanId')
           }
         }).then(function(response) {
-          console.log(response);
+          window.location.reload();
         }, function() {
+          alert("Something went wrong, try again later");
         });
       };
 

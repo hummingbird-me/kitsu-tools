@@ -59,6 +59,8 @@
 #  approved_edit_count         :integer          default(0)
 #  rejected_edit_count         :integer          default(0)
 #  pro_expires_at              :datetime
+#  stripe_token                :string(255)
+#  pro_membership_plan_id      :integer
 #
 
 class User < ActiveRecord::Base
@@ -218,6 +220,11 @@ class User < ActiveRecord::Base
   # Does the user have active PRO membership?
   def pro?
     pro_expires_at && pro_expires_at > Time.now
+  end
+
+  def pro_membership_plan
+    return nil if pro_membership_plan_id.nil?
+    ProMembershipPlan.find(pro_membership_plan_id)
   end
 
   def has_dropbox?
