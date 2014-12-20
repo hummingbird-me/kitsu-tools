@@ -10,7 +10,8 @@ export default Ember.Route.extend({
     setTitle("Hummingbird PRO");
   },
 
-  setupController: function(controller) {
+  setupController: function(controller, model) {
+    controller.set('model', model);
     controller.set('partnerDeals', this.store.find('partner-deal'));
   }
 });

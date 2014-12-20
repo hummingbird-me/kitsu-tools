@@ -9,10 +9,12 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
 
   actions: {
     redeemDeal: function() {
+      if (this.get('isRedeeming')) { return; }
+
       var self = this;
       this.set('isRedeeming', true);
       ajax({
-        url: "/partner_deals/" + self.get('model.id'),
+        url: "/partner_deals/" + this.get('model.id'),
         type: "PUT"
       }).then(function(response) {
         self.setProperties({

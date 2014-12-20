@@ -3,7 +3,7 @@ class PartnerDealSerializer < ActiveModel::Serializer
     :deal_description, :redemption_info, :recurring, :active, :codes_remaining
 
   def codes_remaining
-    object.codes.count
+    object.codes.unclaimed.count
   end
 
   def include_codes_remaining?
