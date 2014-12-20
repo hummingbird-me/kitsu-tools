@@ -4,9 +4,7 @@ require 'fakeweb_helper'
 fake({
   [:get, "http://i.imgur.com/CUjJQap.gif"] => "small_image",
   [:get, "https://i.minus.com/iE02xvicOlrbF.gif"] => "large_image",
-  [:get, "https://www.youtube.com/user/numberphile"] => "youtube_user",
-  [:get, "http://gfycat.com/AlertSpicyBlueandgoldmackaw"] => "gfy_details",
-  [:get, "http://gfycat.com/cajax/oembed/AlertSpicyBlueandgoldmackaw"] => "gfy_oembed"
+  [:get, "http://gfycat.com/cajax/get/AlertSpicyBlueandgoldmackaw"] => "gfy_details"
 })
 
 class MessageFormatterTest < ActiveSupport::TestCase
@@ -39,14 +37,14 @@ class MessageFormatterTest < ActiveSupport::TestCase
     format = format("https://www.youtube.com/watch?v=v8YEw6JaM3c")
 
     assert_match /iframe/, format
-    assert_match /youtube.com\/embed\/v8YEw6JaM3c/, format
+    assert_match /\/\/youtube.com\/embed\/v8YEw6JaM3c/, format
   end
 
   test "embeds youtube videos with short link" do
     format = format("http://youtu.be/v8YEw6JaM3c")
 
     assert_match /iframe/, format
-    assert_match /youtube.com\/embed\/v8YEw6JaM3c/, format
+    assert_match /\/\/youtube.com\/embed\/v8YEw6JaM3c/, format
   end
 
   test "embeds gfycat videos" do
