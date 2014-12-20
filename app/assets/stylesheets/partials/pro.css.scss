@@ -17,6 +17,17 @@
     border-radius: 3px;
     margin-left: 10px;
   }
+  @media (max-width: 768px) {
+    height: 150px;
+    h2 {
+      font-size: 30px;
+    }
+    .big-badge {
+      font-size: 20px;
+      position: relative;
+      top: -3px;
+    }
+  }
 }
 
 
@@ -24,6 +35,11 @@
   margin-right: 365px;
   position: relative;
   top: -85px;
+  @media (max-width: 768px) {
+    margin-right: 0;
+    top: 0;
+    float: left;
+  }
 }
 
 .perks-header {
@@ -79,6 +95,12 @@
   margin-right: -20px;
   text-align: center;
   width: 360px;
+  @media (max-width: 768px) {
+    margin-right: 0;
+    text-align: center;
+    width: 100%;
+    float: left;
+  }
 }
 
 .purchase-block {
@@ -91,6 +113,10 @@
   position: fixed;
   label {
     margin-left: 10px;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    position: relative;
   }
   .payment-wrapper {
     text-align: left;
@@ -109,6 +135,7 @@
     border-radius: 3px;
     width: 100%;
     margin-top: 20px;
+    margin-bottom: 10px;
     &:hover {
       background: darken(#16a085, 5);
     }
@@ -163,6 +190,17 @@
       position: relative;
       top: 5px;
     }
+    @media (max-width: 900px) {
+      height: auto;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 20px;
+      img {
+        top: 0;
+        max-width: 250px;
+      }
+    }
   }
   .partner-deal {
     width: 80%;
@@ -174,6 +212,10 @@
     }
     p {
       margin-bottom: 0;
+    }
+    @media (max-width: 900px) {
+      width: 100%;
+      padding-top: 0;
     }
   }
 }
@@ -210,7 +252,7 @@ p.redemption-instructions {
 }
 
 
-// // Badge styles
+// Badge styles
 
 .mini-badge, .profile-badge {
   background: #bdbcbc;
