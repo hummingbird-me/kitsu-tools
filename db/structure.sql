@@ -1080,7 +1080,16 @@ CREATE TABLE partner_deals (
     id integer NOT NULL,
     deal_title character varying(255) NOT NULL,
     partner_name character varying(255) NOT NULL,
-    valid_countries character varying(255)[] NOT NULL
+    valid_countries character varying(255)[] NOT NULL,
+    partner_logo_file_name character varying(255),
+    partner_logo_content_type character varying(255),
+    partner_logo_file_size integer,
+    partner_logo_updated_at timestamp without time zone,
+    deal_url text NOT NULL,
+    deal_description text NOT NULL,
+    redemption_info text NOT NULL,
+    recurring boolean DEFAULT false NOT NULL,
+    active boolean DEFAULT true NOT NULL
 );
 
 
@@ -3525,4 +3534,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141210212700');
 INSERT INTO schema_migrations (version) VALUES ('20141219002102');
 
 INSERT INTO schema_migrations (version) VALUES ('20141219075153');
+
+INSERT INTO schema_migrations (version) VALUES ('20141220080310');
 
