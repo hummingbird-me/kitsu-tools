@@ -1,6 +1,10 @@
 <div class="pro-hero">
   <div class="container">
-    <h2>You should be <span class="big-badge">PRO</span></h2>
+    {{#if currentUser.isPro}}
+      <h2>You're <span class="big-badge">PRO</span> and we love you for it.</h2>
+    {{else}}
+      <h2>You should be <span class="big-badge">PRO</span></h2>
+    {{/if}}
   </div>
 </div>
 
@@ -30,7 +34,6 @@
         {{/if}}
 
         {{#if showOneTime}}
-          <p>How many months?</p>
           {{view "select" content=arrangedContent
                           value=selectedPlanId
                           optionValuePath="content.id"
