@@ -64,6 +64,7 @@ group :test do
   gem 'mock_redis'
   gem 'mocha'
   gem 'fakeweb'
+  gem 'stripe-ruby-mock'
 end
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
@@ -76,6 +77,7 @@ gem 'rdiscount'
 gem "paperclip", "~> 4.1"
 gem 'paperclip-optimizer', github: 'hummingbird-me/paperclip-optimizer'
 gem 'delayed_paperclip', "~> 2.8"
+gem 'image_optim', '~> 0.13', require: false
 gem 'aws-sdk', '~> 1.45'
 
 # Better URLs.
@@ -94,15 +96,8 @@ gem 'jwt', '~> 1.2'
 # Authorization.
 gem 'cancan', "~> 1.6"
 
-# For pagination.
-gem 'kaminari', '~> 0.16'
-
 # Background jobs
 gem 'sidekiq', '~> 3.1'
-
-gem 'sinatra', :require => nil
-
-gem 'pg_search', '~> 0.7'
 
 # Admin panel
 gem "rails_admin"
@@ -124,9 +119,6 @@ gem 'rubyfish' # String matching
 gem 'ruby-progressbar'
 gem 'parallel'
 
-# Image optimization
-gem 'image_optim', '~> 0.13', require: false
-
 # Metrics
 gem 'mixpanel'
 gem 'kibana-rack'
@@ -135,6 +127,9 @@ gem 'kibana-rack'
 # gem 'indexable'
 gem 'sitemap_generator'
 
+# Misc
 gem 'message_bus', github: 'vikhyat/message_bus'
-
 gem 'rack-attack'
+gem 'stripe', github: 'stripe/stripe-ruby'
+gem 'pg_search', '~> 0.7'
+gem 'kaminari', '~> 0.16'

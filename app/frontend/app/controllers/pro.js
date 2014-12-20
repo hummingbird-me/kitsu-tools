@@ -2,6 +2,7 @@ import Ember from 'ember';
 import HasCurrentUser from '../mixins/has-current-user';
 import loadScript from '../utils/load-script';
 import ajax from 'ic-ajax';
+/* global StripeCheckout */
 
 export default Ember.ArrayController.extend(HasCurrentUser, {
   showSubscriptions: true,
