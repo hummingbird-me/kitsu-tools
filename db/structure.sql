@@ -1490,8 +1490,7 @@ CREATE TABLE users (
     dropbox_secret character varying(255),
     last_backup timestamp without time zone,
     approved_edit_count integer DEFAULT 0,
-    rejected_edit_count integer DEFAULT 0,
-    pro_expires_at timestamp without time zone
+    rejected_edit_count integer DEFAULT 0
 );
 
 

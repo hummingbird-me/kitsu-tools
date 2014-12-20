@@ -78,6 +78,7 @@ Hummingbird::Application.routes.draw do
   get '/onboarding(/:id)' => 'home#static'
 
   get '/pro' => 'home#static'
+  resources :pro_membership_plans, only: [:index]
 
   get '/users/:id/watchlist' => redirect {|params, request| "/users/#{params[:id]}/library" }
   get '/u/:id' => redirect {|params, request| "/users/#{params[:id]}" }
