@@ -38,4 +38,18 @@ class PartnerDeal < ActiveRecord::Base
   before_save do
     valid_countries.map!(&:upcase)
   end
+
+  rails_admin do
+    edit do
+      field :partner_name
+      field :partner_logo
+      field :deal_title
+      field :deal_url, :string
+      field :deal_description
+      field :redemption_info
+      field :recurring
+      field :active
+      field :valid_countries, :pg_string_array
+    end
+  end
 end
