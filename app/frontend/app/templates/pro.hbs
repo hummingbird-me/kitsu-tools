@@ -1,124 +1,149 @@
-<div class="pro-card">
-  <div class="panel panel-default">
-    <div class="panel-body pro-panel">
+<div class="pro-hero">
+  <div class="container">
+    <h2>You should be <span class="big-badge">PRO</span></h2>
+  </div>
+</div>
 
-      {{#if currentUser.isPro}}
-        <h1>You're PRO all day, every day.</h1>
-        <!-- If one-time -->
-        {{!-- <h1>You're PRO as it gets for 28 more days.</h1> --}}
+<div class="container">
+  <div class="pro-right">
+    <div class="purchase-block panel">
+      <div class="btn-group" role="group">
+        <button type="button" {{bind-attr class=":btn :btn-default showSubscriptions:active"}} {{action "selectSubscriptions"}}>Subscription</button>
+        <button type="button" {{bind-attr class=":btn :btn-default showOneTime:active"}} {{action "selectOneTime"}}>One-time / Gift</button>
+      </div>
 
-        <p>Thanks for giving us your greasy, dirty money. We promise to use it to buy solid gold chairs and evil, hairless cats. With the money that's left over, we'll be putting it back into Hummingbird so that we can build out features faster, afford more reliable servers and grow our community.</p>
-        <a href="#">I'd like to cancel my PRO subscription</a>
-      {{else}}
-        <h1>Let's take our relationship to the next level.</h1>
-        <p><strong>Hummingbird PRO</strong> is our premium membership. It upgrades your account with some neat extras, you’ll receive special benefits from our PRO partners and most importantly you’ll be directly supporting us to continue making magic happen. We’re talking about love, baby.</p>
+      <div class="payment-wrapper">
+        {{#if showSubscriptions}}
+          <p>What type of subscription would you like?</p>
+          <ul>
+            {{#each plan in arrangedContent}}
+              <li>
+                {{radio-button name="plan"
+                               class="nomargin"
+                               id=plan.id
+                               value=plan.id
+                               checked=selectedPlanId}}
+                <label {{bind-attr for=id}}>{{plan.name}}</label>
+              </li>
+            {{/each}}
+          </ul>
+        {{/if}}
 
-        <div class="purchase-block">
-          <div class="btn-group" role="group">
-            <button type="button" {{bind-attr class=":btn :btn-default showSubscriptions:active"}} {{action "selectSubscriptions"}}>Subscription</button>
-            <button type="button" {{bind-attr class=":btn :btn-default showOneTime:active"}} {{action "selectOneTime"}}>One-time / Gift</button>
-          </div>
+        {{#if showOneTime}}
+          <p>How many months?</p>
+          {{view "select" content=arrangedContent
+                          value=selectedPlanId
+                          optionValuePath="content.id"
+                          optionLabelPath="content.name"}}
+          <ul>
+            <li>
+              {{radio-button id="notgift" value="notgift" checked=giftValue}}
+              <label for="notgift">purchase for myself</label>
+            </li>
+            <li>
+              {{radio-button id="gift" value="gift" checked=giftValue}}
+              <label for="gift">purchase as a gift</label>
 
-          <div class="payment-wrapper">
-            {{#if showSubscriptions}}
-              <p>What type of subscription would you like?</p>
-              <ul>
-                {{#each plan in arrangedContent}}
-                  <li>
-                    {{radio-button name="plan"
-                                   class="nomargin"
-                                   id=plan.id
-                                   value=plan.id
-                                   checked=selectedPlanId}}
-                    <label {{bind-attr for=id}}>{{plan.name}}</label>
-                  </li>
-                {{/each}}
-              </ul>
-            {{/if}}
+              {{#if isGift}}
+                <div class="gift-details">
+                  <label>
+                    who should receive this gold?
+                    <input id="recipient" type="text" name="recipient" value="" placeholder="Enter a username..." size="13" maxlength="20" class="inline">
+                  </label>
+                  <ul class="indent">
+                    <li>
+                    <label>
+                      <input type="checkbox" id="message" name="message" value="message">
+                      include a message?
+                    </label>
+                    </li>
+                    <li>
+                    <textarea rows="3" name="giftmessage" id="giftmessage" placeholder="Go ahead, say something clever..." class="giftmessage"></textarea>
+                    </li>
+                  </ul>
+                </div>
+              {{/if}}
+            </li>
+          </ul>
+        {{/if}}
 
-            {{#if showOneTime}}
-              <p>How many months?</p>
-              {{view "select" content=arrangedContent
-                              value=selectedPlanId
-                              optionValuePath="content.id"
-                              optionLabelPath="content.name"}}
-              <ul>
-                <li>
-                  {{radio-button id="notgift" value="notgift" checked=giftValue}}
-                  <label for="notgift">purchase for myself</label>
-                </li>
-                <li>
-                  {{radio-button id="gift" value="gift" checked=giftValue}}
-                  <label for="gift">purchase as a gift</label>
-
-                  {{#if isGift}}
-                    <div class="gift-details">
-                      <label>
-                        who should receive this gold?
-                        <input id="recipient" type="text" name="recipient" value="" placeholder="Enter a username..." size="13" maxlength="20" class="inline">
-                      </label>
-                      <ul class="indent">
-                        <li>
-                        <label>
-                          <input type="checkbox" id="message" name="message" value="message">
-                          include a message?
-                        </label>
-                        </li>
-                        <li>
-                        <textarea rows="3" name="giftmessage" id="giftmessage" placeholder="Go ahead, say something clever..." class="giftmessage"></textarea>
-                        </li>
-                      </ul>
-                    </div>
-                  {{/if}}
-                </li>
-              </ul>
-            {{/if}}
-
-            {{#if currentUser.isSignedIn}}
-              <button class="pro-button" type="button" {{bind-attr disabled=disablePurchase}} {{action "purchasePro"}}>Purchase PRO</button>
-            {{else}}
-              <div style="margin: 30px 0">
-                {{#link-to 'sign-in' class="pro-button"}}
-                  Sign in to purchase PRO
-                {{/link-to}}
-              </div>
-            {{/if}}
+        {{#if currentUser.isSignedIn}}
+          <button class="pro-button" type="button" {{bind-attr disabled=disablePurchase}} {{action "purchasePro"}}>Purchase PRO</button>
+        {{else}}
+          <div style="margin: 30px 0">
+            {{#link-to 'sign-in' class="pro-button"}}
+              Sign in to purchase PRO
+            {{/link-to}}
           </div>
         {{/if}}
       </div>
     </div>
   </div>
-</div>
 
-<div class="pro-card">
-  <div class="panel panel-default">
-    <div class="panel-body pro-panel">
-      <h1>What you get.</h1>
-      <ul class="perks">
-        <li><span>Ad-free browsing experience</span></li>
-        <li><span>Exclusive PRO badge beside your name</span></li>
-        <li><span>Early Access to New Features</span></li>
-        <li><span>Special benefits from our PRO partners</span></li>
-      </ul>
-      <ul class="pro-partners">
-        <h1>From our PRO partners.</h1>
-        <li>
-        <div class="partner-logo">
-          <img src="http://media.animevice.com/uploads/0/4/4994-trsi_large.png">
+
+  <div class="pro-left">
+    <div class="pro-card">
+      <div class="panel panel-default">
+        <div class="panel-body pro-panel">
+          <div class="perks-header">
+            <h3 class="perks-greeting">Show support for our growing community by going PRO.</h3>
+            <small>As our way of saying <i>Arigatō</i>, we’re throwing in a few cool perks.</small>
+          </div>
+          <ul class="perks-body">
+            <li class="perk">
+              <i class="fa fa-ban"></i>
+              <h3>The Adblock of Legends</h3>
+              <p>Sure, you could just use adblock but dammit, you realize that ads are a necessary deal with the devil if we want to pay the bills to keep the site online. PRO will send those ads back to the hell they crawled out of.</p>
+            </li>
+            <li class="perk">
+              <i class="fa fa-certificate"></i>
+              <h3>The One Badge to Rule Them All</h3>
+              <p>Showing off your power level amongst an almost never-ending horde of weebs is no trivial matter. What you need is an arbitrary badge beside your name that says nothing and everything all at once.</p>
+            </li>
+            <li class="perk">
+              <i class="fa fa-calendar"></i>
+              <h3>The Phone Microwave</h3>
+              <p>Early access to new features. When we deploy something new, you’ll be the first to get your hands on it. Sure, it’ll be buggy but what really matters is that you were using it before it was cool.</p>
+            </li>
+            <li class="perk">
+              <i class="fa fa-gift"></i>
+              <h3>The PRO Partners</h3>
+              <p>Special benefits from exceptional products and services related to our industry. We don’t charge PRO partners for being in this program. We ask that they give all the benefits to you lovely guys and gals.</p>
+            </li>
+          </ul>
         </div>
-        <div class="partner-deal">
-          <h4>One Year of Rightstuf 'Got Anime' Membership</h4>
-          <p>Receive special offers and discounts on purchases, including an additional 10% off their already low prices!</p>
-          {{#if currentUser.isPro}}
-          <!-- This should be shown be default -->
-          <a class="redeem-button">Redeem Offer</a>
-          <!-- Offer clipping and instructions should only be shown AFTER the offer has been redeemed -->
-          {{!-- <div class="offer-clipping">humlzhz83q</div>
-          <p class="redemption-instructions">Claim your code above, then use it during Rightstuf checkout with the Got Anime? membership in your cart.</p> --}}
-          {{/if}}
-        </div>
-        </li>
-      </ul>
+      </div>
     </div>
+
+    <div class="pro-card">
+      <div class="panel panel-default">
+        <div class="panel-body pro-panel">
+        <div class="perks-header">
+            <h3 class="perks-greeting">Awesome stuff from our PRO partners.</h3>
+            <small>Want your company to be a PRO partner? <a href="#">Apply here.</a></small>
+          </div>
+          <ul class="pro-partners">
+            <li>
+            <div class="partner-logo">
+              <img src="http://media.animevice.com/uploads/0/4/4994-trsi_large.png">
+            </div>
+            <div class="partner-deal">
+              <h4>One Year of Rightstuf 'Got Anime' Membership</h4>
+              <p>Receive special offers and discounts on purchases, including an additional 10% off their already low prices!</p>
+              {{#if currentUser.isPro}}
+              <!-- This should be shown be default -->
+              <a class="redeem-button">Redeem Offer</a>
+              <!-- Offer clipping and instructions should only be shown AFTER the offer has been redeemed -->
+              {{!-- <div class="offer-clipping">humlzhz83q</div>
+              <p class="redemption-instructions">Claim your code above, then use it during Rightstuf checkout with the Got Anime? membership in your cart.</p> --}}
+              {{/if}}
+            </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>

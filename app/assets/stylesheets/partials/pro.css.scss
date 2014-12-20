@@ -1,34 +1,94 @@
-.pro-card {
-  width: 800px;
-  margin: 50px auto 30px auto;
-  @media (max-width: 800px) {
-    width: 100%;
-    padding: 0 10px;
+.pro-hero {
+  background: #4b5360;
+  height: 255px;
+  h2 {
+    color: #d7dee5;
+    font-weight: normal;
+    font-size: 50px;
+    position: relative;
+    top: 60px;
   }
-  .panel {
-    overflow: hidden;
-    margin-bottom: 0;
+  .big-badge {
+    background: #ec8661;
+    color: #fff;
+    font-size: 40px;
+    font-weight: 600;
+    padding: 10px 25px;
+    border-radius: 3px;
+    margin-left: 10px;
   }
 }
 
-.pro-panel {
-  padding: 10px 30px;
-  h1 {
-    text-align: center;
+
+.pro-left {
+  margin-right: 365px;
+  position: relative;
+  top: -85px;
+}
+
+.perks-header {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  .perks-greeting {
+    color: #585858;
+    font-size: 1.6em;
+    font-family: $bodyFontFamily;
+    margin-top: 0;
+  }
+  small {
+    color: #909090;
+    font-size: 1.3em;
+    display: block;
+  }
+}
+
+.perks-body {
+  padding: 0 30px;
+}
+
+.perk {
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+  .fa {
+    font-size: 45px;
+    float: left;
+    color: #424242;
+  }
+  h3, p {
+    margin-left: 55px;
+  }
+  h3 {
+    font-size: 23px;
+    color: #424242;
+    margin-bottom: 5px;
   }
   p {
     font-size: 16px;
-    line-height: 24px;
+    color: #989898;
   }
 }
 
+.pro-right {
+  float: right;
+  margin-right: -20px;
+  text-align: center;
+  width: 360px;
+}
+
 .purchase-block {
-  border: 1px solid #ddd;
   border-radius: 3px;
   padding: 15px;
   margin-top: 30px;
   text-align: center;
   margin-bottom: 20px;
+  width: 340px;
+  position: fixed;
   label {
     margin-left: 10px;
   }
@@ -47,9 +107,11 @@
     color: #fff;
     border: none;
     border-radius: 3px;
-    min-width: 200px;
-    margin: 15px 0;
-
+    width: 100%;
+    margin-top: 20px;
+    &:hover {
+      background: darken(#16a085, 5);
+    }
     &[disabled] {
       opacity: 0.6;
       cursor: wait;
@@ -81,27 +143,7 @@
   }
 }
 
-.perks {
-  @extend .clearfix;
-  li {
-    @extend .col-sm-6;
-    @extend .col-xs-12;
-    padding: 5px;
-    border-radius: 3px;
-    text-align: center;
-  }
-  span {
-    display: block;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-  }
-}
-
 .pro-partners {
-  border-top: 1px dashed #ddd;
-  margin-top: 40px;
-  margin-bottom: 20px;
   h1 {
     margin: 30px 0;
   }
@@ -166,7 +208,9 @@ p.redemption-instructions {
   margin-top: 10px;
   font-size: 13px;
 }
-// Badge styles
+
+
+// // Badge styles
 
 .mini-badge, .profile-badge {
   background: #bdbcbc;
