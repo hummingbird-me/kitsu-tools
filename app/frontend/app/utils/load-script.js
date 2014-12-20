@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 export default function loadScript(scriptUrl) {
   var firstScriptTag = document.getElementsByTagName("script")[0],
       s = document.createElement("script"),
@@ -12,7 +14,7 @@ export default function loadScript(scriptUrl) {
         resolved = true;
         resolve();
       }
-    }
+    };
     s.onerror = s.onabord = reject;
     firstScriptTag.parentNode.insertBefore(s, firstScriptTag);
   });

@@ -5,6 +5,9 @@ export default Ember.ArrayController.extend({
   showOneTime: Ember.computed.not('showSubscriptions'),
   selectedPlanId: "1",
 
+  giftValue: "notgift",
+  isGift: Ember.computed.equal("giftValue", "gift"),
+
   arrangedContent: function() {
     if (this.get('showSubscriptions')) {
       return this.get('content').filter(function(plan) {

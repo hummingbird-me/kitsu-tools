@@ -44,31 +44,32 @@
                               optionLabelPath="content.name"}}
               <ul>
                 <li>
-                  <input type="radio" id="notgift" name="gift" value="0">
+                  {{radio-button id="notgift" value="notgift" checked=giftValue}}
                   <label for="notgift">purchase for myself</label>
                 </li>
                 <li>
-                  <input type="radio" id="gift" name="gift" value="1" checked="">
+                  {{radio-button id="gift" value="gift" checked=giftValue}}
                   <label for="gift">purchase as a gift</label>
 
-                  {{! show only when ^^ is selected }}
-                  <div class="gift-details">
-                    <label>
-                      who should receive this gold?
-                      <input id="recipient" type="text" name="recipient" value="" placeholder="Enter a username..." size="13" maxlength="20" class="inline">
-                    </label>
-                    <ul class="indent">
-                      <li>
+                  {{#if isGift}}
+                    <div class="gift-details">
                       <label>
-                        <input type="checkbox" id="message" name="message" value="message">
-                        include a message?
+                        who should receive this gold?
+                        <input id="recipient" type="text" name="recipient" value="" placeholder="Enter a username..." size="13" maxlength="20" class="inline">
                       </label>
-                      </li>
-                      <li>
-                      <textarea rows="3" name="giftmessage" id="giftmessage" placeholder="Go ahead, say something clever..." class="giftmessage"></textarea>
-                      </li>
-                    </ul>
-                  </div>
+                      <ul class="indent">
+                        <li>
+                        <label>
+                          <input type="checkbox" id="message" name="message" value="message">
+                          include a message?
+                        </label>
+                        </li>
+                        <li>
+                        <textarea rows="3" name="giftmessage" id="giftmessage" placeholder="Go ahead, say something clever..." class="giftmessage"></textarea>
+                        </li>
+                      </ul>
+                    </div>
+                  {{/if}}
                 </li>
               </ul>
             {{/if}}
