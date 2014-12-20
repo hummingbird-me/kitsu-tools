@@ -7,6 +7,13 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   showOneTime: Ember.computed.not('showSubscriptions'),
   selectedPlanId: "1",
 
+  selectedPlan: function() {
+    var selectedPlanId = parseInt(this.get('selectedPlanId'));
+    return this.get('content').find(function(x) {
+      return parseInt(x.get('id')) === selectedPlanId;
+    });
+  }.property('selectedPlanId'),
+
   giftValue: "notgift",
   isGift: Ember.computed.equal("giftValue", "gift"),
 
@@ -36,9 +43,23 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
       this.set('showSubscriptions', true);
       this.set('selectedPlanId', "1");
     },
+
     selectOneTime: function() {
       this.set('showSubscriptions', false);
       this.set('selectedPlanId', "5");
+    },
+
+    purchasePro: function() {
+      if (this.get('disablePurchase')) { return; }
+
+      StripeCheckout.open({
+        key: 'pk_test_aQbfVWeOwvtES5FRSY7iIjk9',
+        name: "Hummingbird PRO",
+        description: this.get('selectedPlan.name'),
+        token: function(res) {
+          console.log(res);
+        }
+      });
     }
   }
 });

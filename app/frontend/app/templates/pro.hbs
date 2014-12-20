@@ -75,7 +75,7 @@
             {{/if}}
 
             {{#if currentUser.isSignedIn}}
-              <button class="pro-button" type="button" {{bind-attr disabled=disablePurchase}}>Purchase PRO</button>
+              <button class="pro-button" type="button" {{bind-attr disabled=disablePurchase}} {{action "purchasePro"}}>Purchase PRO</button>
             {{else}}
               <div style="margin: 30px 0">
                 {{#link-to 'sign-in' class="pro-button"}}
