@@ -1047,7 +1047,7 @@ CREATE TABLE partner_codes (
     id integer NOT NULL,
     partner_deal_id integer NOT NULL,
     code character varying(255) NOT NULL,
-    user_id integer NOT NULL,
+    user_id integer,
     expires_at timestamp without time zone,
     claimed_at timestamp without time zone
 );
@@ -3541,4 +3541,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141219075153');
 INSERT INTO schema_migrations (version) VALUES ('20141220080310');
 
 INSERT INTO schema_migrations (version) VALUES ('20141220090229');
+
+INSERT INTO schema_migrations (version) VALUES ('20141220111220');
 

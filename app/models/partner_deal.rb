@@ -32,8 +32,7 @@ class PartnerDeal < ActiveRecord::Base
   validates :partner_name, presence: true
   validates :deal_url, presence: true
   validates :deal_description, presence: true
-  validates :redeption_info, presence: true
-  validates :recurring, presence: true
+  validates :redemption_info, presence: true
 
   # Force all valid countries to uppercase for storage
   before_save do

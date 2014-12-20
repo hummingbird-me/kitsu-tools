@@ -19,6 +19,9 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   giftValue: "notgift",
   isGift: Ember.computed.equal("giftValue", "gift"),
 
+  // List of partner deals that pro uses can redeem
+  partnerDeals: null,
+
   // Disable the buy button until stripe is loaded.
   disablePurchase: true,
   loadStripe: function() {

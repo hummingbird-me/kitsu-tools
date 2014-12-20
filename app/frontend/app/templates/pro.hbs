@@ -80,7 +80,6 @@
     </div>
   </div>
 
-
   <div class="pro-left">
     <div class="pro-card">
       <div class="panel panel-default">
@@ -123,27 +122,34 @@
             <small>Want your company to be a PRO partner? <a href="#">Apply here.</a></small>
           </div>
           <ul class="pro-partners">
-            <li>
-            <div class="partner-logo">
-              <img src="http://media.animevice.com/uploads/0/4/4994-trsi_large.png">
-            </div>
-            <div class="partner-deal">
-              <h4>One Year of Rightstuf 'Got Anime' Membership</h4>
-              <p>Receive special offers and discounts on purchases, including an additional 10% off their already low prices!</p>
-              {{#if currentUser.isPro}}
-              <!-- This should be shown be default -->
-              <a class="redeem-button">Redeem Offer</a>
-              <!-- Offer clipping and instructions should only be shown AFTER the offer has been redeemed -->
-              {{!-- <div class="offer-clipping">humlzhz83q</div>
-              <p class="redemption-instructions">Claim your code above, then use it during Rightstuf checkout with the Got Anime? membership in your cart.</p> --}}
-              {{/if}}
-            </div>
-            </li>
+            {{#each partnerDeals itemController="partner-deal"}}
+              <li>
+                <div class="partner-logo">
+                  <img {{bind-attr src=partnerLogo}}>
+                </div>
+                <div class="partner-deal">
+                  <h4>{{dealTitle}}</h4>
+                  <p>{{dealDescription}}</p>
+                  {{#if currentUser.isPro}}
+                    {{#if hasRedeemed}}
+                      <div class="offer-clipping">{{code}}</div>
+                      <p class="redemption-instructions">{{redemptionInfo}}</p>
+                    {{else}}
+                      <a class="redeem-button" {{action "redeemDeal"}}>
+                        {{#if isRedeeming}}
+                          <i class="fa fa-spin fa-spinner"></i> Redeeming Offer
+                        {{else}}
+                          Redeem Offer
+                        {{/if}}
+                      </a>
+                    {{/if}}
+                  {{/if}}
+                </div>
+              </li>
+            {{/each}}
           </ul>
         </div>
       </div>
     </div>
-
-
   </div>
 </div>

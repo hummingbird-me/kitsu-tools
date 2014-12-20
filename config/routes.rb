@@ -80,6 +80,7 @@ Hummingbird::Application.routes.draw do
   get '/pro' => 'home#static'
   resources :pro_membership_plans, only: [:index]
   resources :pro_memberships, only: [:create]
+  resources :partner_deals, only: [:index, :update]
 
   get '/users/:id/watchlist' => redirect {|params, request| "/users/#{params[:id]}/library" }
   get '/u/:id' => redirect {|params, request| "/users/#{params[:id]}" }

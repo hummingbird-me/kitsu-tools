@@ -14,4 +14,5 @@ class PartnerCode < ActiveRecord::Base
   scope :unclaimed, -> { where(user: nil) }
 
   belongs_to :partner_deal
+  belongs_to :user
 end

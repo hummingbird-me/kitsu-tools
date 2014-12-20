@@ -1,0 +1,11 @@
+one:
+  partner_name: Amazon
+  deal_title: One Month Amazon Prime
+  deal_description: Getting all the amazons
+  redemption_info: Goto Amazon, redeem.
+  partner_logo_file_name: 6589.jpeg
+  partner_logo_content_type: image/jpeg
+  partner_logo_file_size: 100369
+  partner_logo_updated_at: 2013-07-31 02:37:51.625479000 Z
+  deal_url: https://amazon.com
+  valid_countries: ["US"]
