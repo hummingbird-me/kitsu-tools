@@ -3,8 +3,10 @@ class PartnerDealsController < ApplicationController
 
   def index
     # todo: return only deals available in users country
-    # todo: return deals with codes available
-    render json: PartnerDeal.where(active: true),
+    render json: PartnerDeal.joins(:codes)
+      .where(active: true)
+      .having('count(partner_codes.id) > 0')
+      .group('partner_deals.id'),
       each_serializer: PartnerDealSerializer
   end
 
@@ -16,13 +18,13 @@ class PartnerDealsController < ApplicationController
 
     deal = PartnerDeal.find(params[:id])
     # has this user redeemed a code?
-    code = deal.codes.find_by(user: current_user)
+    code = deal.codes.where(user: current_user).last
     if code.nil?
       # todo: deal with potential race condition
       code = deal.codes.unclaimed.first
       code.update_attributes!(user: current_user, claimed_at: DateTime.now)
-    else
-      # todo: deal with monthly based codes
+    elsif deal.recurring?
+      # todo: re-issue another coupon if claim is over a month old
     end
 
     # output the redeemed code
