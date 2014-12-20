@@ -4,6 +4,7 @@ import PreloadStore from '../utils/preload-store';
 export default Ember.ObjectController.extend({
   nonMalAnime: PreloadStore.get('nonmal_anime'),
   blotter: PreloadStore.get('blotter'),
+  partnerDeals: PreloadStore.get('deals_to_refill'),
   blotterMesgFix: "",
   blotterMesg: "",
   blotterLink: "",

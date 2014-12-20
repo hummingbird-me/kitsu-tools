@@ -175,6 +175,7 @@ Hummingbird::Application.routes.draw do
     get '/kotodama/blotter_clear' => 'admin#blotter_clear'
     post '/kotodama/deploy' => 'admin#deploy'
     post '/kotodama/publish_update' => 'admin#publish_update'
+    post '/kotodama/refill_codes' => 'admin#refill_codes'
 
     mount Sidekiq::Web => '/kotodama/sidekiq'
     mount RailsAdmin::Engine => '/kotodama/rails_admin', as: 'rails_admin'

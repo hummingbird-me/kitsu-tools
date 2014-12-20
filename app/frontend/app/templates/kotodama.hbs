@@ -125,6 +125,42 @@
         </div>
       </div>
 
+      <div class="panel panel-default">
+        <div class="panel-heading">PRO Deals Needing Refill</div>
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <th>Partner</th>
+              <th>Deal</th>
+              <th colspan="2">Codes Remaining</th>
+            </thead>
+            <tbody>
+              {{#each deal in partnerDeals itemController="kotodama.partner-deal"}}
+                <tr>
+                  <td>{{deal.partner_name}}</td>
+                  <td>{{deal.deal_title}}</td>
+                  <td>{{deal.codes_remaining}}</td>
+                  <td>
+                    {{#if deal.isRefilling}}
+                      Refilling...
+                    {{else}}
+                      {{#if deal.hasRefilled}}
+                        Refilled!
+                      {{else}}
+                        <label>
+                          {{view "file-upload" action="uploadCodesFile"}}
+                          <i class="fa fa-upload"></i> Refill
+                        </label>
+                      {{/if}}
+                    {{/if}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       {{!--
       <div class="panel panel-default">
         <div class="panel-heading">Reported content</div>

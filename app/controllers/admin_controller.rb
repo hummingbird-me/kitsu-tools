@@ -27,11 +27,18 @@ class AdminController < ApplicationController
 
   def index
     @anime_without_mal_id = Anime.where(mal_id: nil).where(%{"anime"."id" NOT IN (SELECT "anime_genres"."anime_id" FROM "anime_genres" INNER JOIN "genres" ON "genres"."id" = "anime_genres"."genre_id" AND "genres"."name" = 'Anime Influenced')})
+    # Sort by partner code count (ascending) where there's less than 20 left
+    @deals = PartnerDeal.joins('left join partner_codes on partner_codes.partner_deal_id = partner_deals.id').
+      select('partner_deals.*, count(partner_codes.id) as codes_remaining').
+      group('partner_deals.id').
+      having('count(partner_codes.id) < 20').
+      order('count(partner_codes.id) asc')
     @blotter = Blotter.get
 
     if params[:old_kotodama].nil?
       generic_preload! 'nonmal_anime', @anime_without_mal_id
       generic_preload! 'blotter', @blotter
+      generic_preload! 'deals_to_refill', @deals
 
       render_ember
     end
@@ -106,5 +113,21 @@ class AdminController < ApplicationController
 
   def publish_update
     MessageBus.publish '/site_update', {}
+  end
+
+  def refill_codes
+    if params[:codes] && params[:deal_id]
+      ActiveRecord::Base.transaction do
+        params[:codes].tempfile.each_line do |line|
+          PartnerCode.create!(
+            partner_deal_id: params[:deal_id],
+            code: line.strip
+          )
+        end
+      end
+      render json: true
+    else
+      render json: false
+    end
   end
 end
