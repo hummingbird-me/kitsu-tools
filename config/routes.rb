@@ -77,10 +77,15 @@ Hummingbird::Application.routes.draw do
 
   get '/onboarding(/:id)' => 'home#static'
 
-  get '/pro' => 'home#static'
-  resources :pro_membership_plans, only: [:index]
-  resources :pro_memberships, only: [:create, :destroy]
-  resources :partner_deals, only: [:index, :update]
+  constraints(lambda do |req|
+    user = Auth::CurrentUserProvider.new(req.env).current_user
+    user && user.admin?
+  end) do
+    get '/pro' => 'home#static'
+    resources :pro_membership_plans, only: [:index]
+    resources :pro_memberships, only: [:create, :destroy]
+    resources :partner_deals, only: [:index, :update]
+  end
 
   get '/users/:id/watchlist' => redirect {|params, request| "/users/#{params[:id]}/library" }
   get '/u/:id' => redirect {|params, request| "/users/#{params[:id]}" }
