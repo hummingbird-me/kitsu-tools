@@ -77,7 +77,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
         };
         if (self.get('isGift')) {
           data.gift = true;
-          data.gifted_to = self.get('giftTo');
+          data.gift_to = self.get('giftTo');
           data.gift_message = self.get('giftMessage');
         }
         ajax({

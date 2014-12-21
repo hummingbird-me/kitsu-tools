@@ -75,7 +75,7 @@ class ProMembershipManagerTest < ActiveSupport::TestCase
     plan = ProMembershipPlan.find(5)
     token = @stripe.generate_card_token
 
-    @manager.gift! token, plan, gift_to, "hi"
+    @manager.gift! plan, token, gift_to, "hi"
 
     assert gift_to.pro?
     assert_nil gift_to.stripe_customer_id
@@ -88,7 +88,7 @@ class ProMembershipManagerTest < ActiveSupport::TestCase
     token = @stripe.generate_card_token
 
     assert_raises RuntimeError do
-      @manager.gift! token, plan, gift_to, "hi"
+      @manager.gift! plan, token, gift_to, "hi"
     end
   end
 

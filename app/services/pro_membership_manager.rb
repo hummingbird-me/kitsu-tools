@@ -20,7 +20,9 @@ class ProMembershipManager
     @user.save!
   end
 
-  def gift!(token, plan, gift_to, gift_message)
+  # Charge the user, then add the resulting PRO duration to a different user to
+  # whom the PRO is being gifted.
+  def gift!(plan, token, gift_to, gift_message)
     if plan.recurring?
       raise "Recurring subscriptions cannot be gifted"
     end

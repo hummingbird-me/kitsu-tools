@@ -23,9 +23,11 @@ class ProMembershipsController < ApplicationController
 
     begin
       if params[:gift]
-        # TODO gift stuff.
+        gift_to = User.find(params[:gift_to])
+        manager.gift! plan, token, gift_to, params[:gift_message]
+      else
+        manager.subscribe! plan, token
       end
-      manager.subscribe!(plan, token)
     rescue
       return render(text: "Couldn't charge your credit card", status: 400)
     end
