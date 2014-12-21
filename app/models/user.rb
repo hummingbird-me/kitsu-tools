@@ -70,7 +70,11 @@ class User < ActiveRecord::Base
   end
 
   def self.find(id)
-    User.find_by_username(id) || super
+    user = nil
+    if id.is_a? String
+      user = User.find_by_username(id)
+    end
+    user || super
   end
 
   def self.find_by_username(username)

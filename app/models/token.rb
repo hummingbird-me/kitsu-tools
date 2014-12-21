@@ -64,7 +64,7 @@ class Token
   end
 
   def user
-    User.find(@payload['sub']) if valid?
+    User.find_by(id: @payload['sub']) if valid?
   end
 
   def id
