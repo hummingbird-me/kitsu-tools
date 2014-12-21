@@ -38,7 +38,7 @@ class ProMembershipManager
   def cancel!
     @user.pro_membership_plan_id = nil
     @user.save!
-    ProMailer.delay.cancel_email(gift_to, @user, gift_message)
+    ProMailer.delay.cancel_email(@user)
   end
 
   # Renew the user's pro membership. Make sure the plan they are on is recurring
