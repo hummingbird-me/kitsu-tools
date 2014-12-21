@@ -13,6 +13,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   state: "start",
   isLoading: Ember.computed.equal('state', 'loading'),
   isComplete: Ember.computed.equal('state', 'complete'),
+  isError: Ember.computed.equal('state', 'error'),
 
   selectedPlan: function() {
     var selectedPlanId = parseInt(this.get('selectedPlanId'));
@@ -78,8 +79,9 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
         }).then(function() {
           self.set('state', 'complete');
           window.location.reload();
-        }, function() {
-          alert("Something went wrong, try again later");
+        }, function(error) {
+          self.set('state', 'error');
+          self.set('errorMessage', error);
         });
       };
 

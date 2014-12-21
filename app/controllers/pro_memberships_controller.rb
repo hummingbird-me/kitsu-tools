@@ -5,8 +5,12 @@ class ProMembershipsController < ApplicationController
   def create
     params.permit(:token, :plan_id)
 
-    if params[:token].blank? || params[:plan_id].blank?
-      return render(text: "token/plan_id missing", status: 400)
+    if params[:token].blank?
+      return render(text: "Didn't get credit card details from Stripe", status: 400)
+    end
+
+    if params[:plan_id].blank?
+      return render(text: "No membership plan was selected", status: 400)
     end
 
     token, plan_id = params[:token], params[:plan_id].to_i
@@ -14,13 +18,13 @@ class ProMembershipsController < ApplicationController
     begin
       plan = ProMembershipPlan.find(plan_id)
     rescue ActiveRecord::RecordNotFound
-      return render(text: "plan_id invalid", status: 400)
+      return render(text: "No such membership plan exists", status: 400)
     end
 
     begin
       ProMembershipManager.new(current_user).subscribe!(plan, token)
     rescue
-      return render(text: "subscription error", status: 400)
+      return render(text: "Couldn't charge your credit card", status: 400)
     end
 
     render text: "subscription successful"

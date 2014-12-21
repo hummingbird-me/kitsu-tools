@@ -42,6 +42,15 @@
           </div>
         {{/if}}
 
+        {{#if isError}}
+          <div class="error-state">
+            <div class="state-content">
+              <i class="fa fa-warning"></i>
+              <div>Something went wrong: {{errorMessage}}. Please try again later.</div>
+            </div>
+          </div>
+        {{/if}}
+
         {{#if showSubscriptions}}
           <p>What type of subscription would you like?</p>
           <ul>
