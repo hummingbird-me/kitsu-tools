@@ -141,7 +141,7 @@
     select {
       margin-bottom: 15px;
     }
-    .loading-state, .success-state {
+    .loading-state, .success-state, .error-state {
       position: absolute;
       top: 0;
       left: 0;
@@ -163,6 +163,10 @@
     }
     .success-state .state-content {
       color: #16a388;
+    }
+    .error-state .state-content {
+      color: #e74c3c;
+      top: 60px;
     }
   }
   .pro-button {
