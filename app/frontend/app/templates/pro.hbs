@@ -71,12 +71,14 @@
           <ul>
             {{#each plan in arrangedContent}}
               <li>
-                {{radio-button name="plan"
-                               class="nomargin"
-                               id=plan.id
-                               value=plan.id
-                               checked=selectedPlanId}}
-                <label {{bind-attr for=id}}>{{plan.name}}</label>
+                <label>
+                  {{radio-button name="plan"
+                                 class="nomargin"
+                                 id=plan.id
+                                 value=plan.id
+                                 checked=selectedPlanId}}
+                  {{plan.name}}
+                </label>
               </li>
             {{/each}}
           </ul>
@@ -93,12 +95,16 @@
                           optionLabelPath="content.name"}}
           <ul>
             <li>
-              {{radio-button id="notgift" value="notgift" checked=giftValue}}
-              <label for="notgift">purchase for myself</label>
+              <label>
+                {{radio-button id="notgift" value="notgift" checked=giftValue}}
+                purchase for myself
+              </label>
             </li>
             <li>
-              {{radio-button id="gift" value="gift" checked=giftValue}}
-              <label for="gift">purchase as a gift</label>
+              <label>
+                {{radio-button id="gift" value="gift" checked=giftValue}}
+                purchase as a gift
+              </label>
 
               {{#if isGift}}
                 <div class="gift-details">
