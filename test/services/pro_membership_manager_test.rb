@@ -70,6 +70,28 @@ class ProMembershipManagerTest < ActiveSupport::TestCase
     assert @user.pro_expires_at > Time.now + 2.days
   end
 
+  test "gift! works correctly for the normal case" do
+    gift_to = users(:josh)
+    plan = ProMembershipPlan.find(5)
+    token = @stripe.generate_card_token
+
+    @manager.gift! token, plan, gift_to, "hi"
+
+    assert gift_to.pro?
+    assert_nil gift_to.stripe_customer_id
+    assert_nil gift_to.pro_membership_plan
+  end
+
+  test "gift! raises an error if we try to gift a recurring plan" do
+    gift_to = users(:josh)
+    plan = ProMembershipPlan.find(1)
+    token = @stripe.generate_card_token
+
+    assert_raises RuntimeError do
+      @manager.gift! token, plan, gift_to, "hi"
+    end
+  end
+
   test "cancel! unsets the user's plan" do
     @user.pro_expires_at = Time.now + 1.day
     @user.pro_membership_plan_id = 1

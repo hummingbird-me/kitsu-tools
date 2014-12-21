@@ -20,10 +20,25 @@ class ProMembershipManager
       if @user.pro_expires_at.nil? || @user.pro_expires_at < Time.now
         @user.pro_expires_at = Time.now
       end
-      @user.pro_expires_at += 1.month
+      @user.pro_expires_at += plan.duration.months
     end
 
     @user.save!
+  end
+
+  def gift!(token, plan, gift_to, gift_message)
+    if plan.recurring?
+      raise "Recurring subscriptions cannot be gifted"
+    end
+
+    charge_user! token, (plan.amount * 100).to_i
+
+    if gift_to.pro_expires_at.nil? || gift_to.pro_expires_at < Time.now
+      gift_to.pro_expires_at = Time.now
+    end
+    gift_to.pro_expires_at += plan.duration.months
+
+    gift_to.save!
   end
 
   # Unset the user's plan, but allow their current membership to continue. Only
