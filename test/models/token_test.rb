@@ -1,6 +1,6 @@
 require 'test_helper'
 
-Token.secret = 'TEST'
+Hummingbird::Application.config.jwt_secret = 'TEST'
 
 class TokenTest < ActiveSupport::TestCase
   def setup
@@ -8,9 +8,10 @@ class TokenTest < ActiveSupport::TestCase
   end
 
   test "should notice and nil users and scopes when it's invalid" do
-    token = Token.new(@@josh)
-    token.secret = 'shut up'
-    token = Token.new(token.encode)
+    token = Token.new(@@josh).encode
+    Hummingbird::Application.config.jwt_secret = 'shut up'
+    token = Token.new(token)
+    Hummingbird::Application.config.jwt_secret = 'TEST'
 
     refute token.valid?, "Should not be valid"
     assert_nil token.has_scope?('badgers'), "Scopes should be nil"

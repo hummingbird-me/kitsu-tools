@@ -3,6 +3,7 @@ require 'fakeweb_helper'
 
 mal = "http://myanimelist.net"
 fake({
+  [:get, %r|http://cdn.myanimelist.net/images/.*|] => "blank_png",
   [:get, "#{mal}/manga/25/"] => "mal_manga_25_metadata",
   [:get, "#{mal}/manga/25/*/characters"] => "mal_manga_25_characters",
   [:get, "#{mal}/anime/11757/"] => "mal_anime_11757_metadata",

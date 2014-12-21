@@ -3,7 +3,7 @@ class Token
   PREFIX = 'REVOKED:'
 
   def self.secret
-    ENV['JWT_SECRET']
+    Hummingbird::Application.config.jwt_secret
   end
 
   def initialize(string_or_user, opts={})
@@ -74,7 +74,7 @@ class Token
   end
 
   def encode
-    JWT.encode(@payload, secret)
+    JWT.encode(@payload, Token.secret)
   end
   alias_method :to_s, :encode
 end
