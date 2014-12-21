@@ -3,7 +3,7 @@ class ProMembershipsController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    params.permit(:token, :plan_id, :gift, :gifted_to, :gift_message)
+    params.permit(:token, :plan_id, :gift, :gift_to, :gift_message)
 
     if params[:token].blank?
       return render(text: "Didn't get credit card details from Stripe", status: 400)
@@ -23,13 +23,18 @@ class ProMembershipsController < ApplicationController
 
     begin
       if params[:gift]
-        gift_to = User.find(params[:gift_to])
+        gift_to = nil
+        begin
+          gift_to = User.find(params[:gift_to])
+        rescue
+          return render(text: "Couldn't find user: #{params[:gift_to]}", status: 400)
+        end
         manager.gift! plan, token, gift_to, params[:gift_message]
       else
         manager.subscribe! plan, token
       end
-    rescue
-      return render(text: "Couldn't charge your credit card", status: 400)
+    rescue Exception => e
+      return render(text: "Unknown error: #{e.message}", status: 400)
     end
 
     render text: "subscription successful"

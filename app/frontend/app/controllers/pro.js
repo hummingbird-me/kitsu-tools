@@ -13,6 +13,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   state: "start",
   isLoading: Ember.computed.equal('state', 'loading'),
   isComplete: Ember.computed.equal('state', 'complete'),
+  isGifted: Ember.computed.equal('state', 'gifted'),
   isError: Ember.computed.equal('state', 'error'),
 
   selectedPlan: function() {
@@ -85,11 +86,15 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
           type: "POST",
           data: data
         }).then(function() {
-          self.set('state', 'complete');
+          if (self.get('isGift')) {
+            self.set('state', 'gifted');
+          } else {
+            self.set('state', 'complete');
+          }
           window.location.reload();
         }, function(error) {
           self.set('state', 'error');
-          self.set('errorMessage', error);
+          self.set('errorMessage', error.jqXHR.responseText);
         });
       };
 

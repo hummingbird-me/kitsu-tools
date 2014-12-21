@@ -42,6 +42,15 @@
           </div>
         {{/if}}
 
+        {{#if isGifted}}
+          <div class="gifted-state">
+            <div class="state-content">
+              <i class="fa fa-check-circle"></i>
+              <div>Your gift is on its way</div>
+            </div>
+          </div>
+        {{/if}}
+
         {{#if isError}}
           <div class="error-state">
             <div class="state-content">
@@ -93,9 +102,7 @@
 
               {{#if isGift}}
                 <div class="gift-details">
-                  <label>
-                    <input class="gift-input" type="text" value="" placeholder="Enter a username..." size="13" maxlength="20" class="inline" {{bind-attr value=giftTo}}>
-                  </label>
+                  {{input type="text" class="gift-input inline" placeholder="Enter a username..." size="13" maxlength="20" value=giftTo}}
                   <ul class="indent">
                     <li>
                       <textarea rows="2" placeholder="Go ahead, say something clever..." class="giftmessage gift-input" {{bind-attr value=giftMessage}}></textarea>

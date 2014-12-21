@@ -64,7 +64,6 @@ class ProMembershipManager
         customer = Stripe::Customer.retrieve(@user.stripe_customer_id)
       rescue
       end
-      customer = nil if customer.deleted?
     end
     if customer.nil?
       customer = Stripe::Customer.create(email: @user.email, card: token)
