@@ -53,7 +53,12 @@
         {{/if}}
 
         {{#if showSubscriptions}}
-          <p>What type of subscription would you like?</p>
+          {{#if currentUser.proMembershipPlan.recurring}}
+            <p>You are currently on the <strong>{{currentUser.proMembershipPlan.name}}</strong> plan. Do you want to switch to a different plan?</p>
+          {{else}}
+            <p>What type of subscription would you like?</p>
+          {{/if}}
+
           <ul>
             {{#each plan in arrangedContent}}
               <li>
@@ -66,6 +71,10 @@
               </li>
             {{/each}}
           </ul>
+
+          {{#if currentUser.proMembershipPlan.recurring}}
+            <small style="opacity:0.5">* You will only be charged when your subscription runs out in {{daysRemaining}} days.</small>
+          {{/if}}
         {{/if}}
 
         {{#if showOneTime}}
