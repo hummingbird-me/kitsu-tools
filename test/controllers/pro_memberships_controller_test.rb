@@ -50,20 +50,26 @@ class ProMembershipsControllerTest < ActionController::TestCase
 
     test "regular gifting works" do
       token = @stripe.generate_card_token
+      gift_to = users(:josh)
+      gift_to.update_attributes! pro_expires_at: Time.now - 10.days
+      assert !gift_to.pro?
       post :create, {token: token, plan_id: 5, gift: true,
-                     gift_to: users(:josh).id, gift_message: ""}
+                     gift_to: gift_to.id, gift_message: ""}
 
       assert_response 200
-      assert users(:josh).pro?
+      assert gift_to.reload.pro?
     end
 
     test "cannot gift recurring plans" do
       token = @stripe.generate_card_token
+      gift_to = users(:josh)
+      gift_to.update_attributes! pro_expires_at: Time.now - 10.days
+      assert !gift_to.pro?
       post :create, {token: token, plan_id: 1, gift: true,
-                     gift_to: users(:josh).id, gift_message: ""}
+                     gift_to: gift_to.id, gift_message: ""}
 
       assert_response 400
-      assert !users(:josh).pro?
+      assert !gift_to.reload.pro?
     end
   end
 end
