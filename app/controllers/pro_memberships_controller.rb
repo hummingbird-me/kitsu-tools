@@ -3,7 +3,7 @@ class ProMembershipsController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    params.permit(:token, :plan_id)
+    params.permit(:token, :plan_id, :gift, :gifted_to, :gift_message)
 
     if params[:token].blank?
       return render(text: "Didn't get credit card details from Stripe", status: 400)
@@ -22,6 +22,9 @@ class ProMembershipsController < ApplicationController
     end
 
     begin
+      if params[:gift]
+        # TODO gift stuff.
+      end
       manager.subscribe!(plan, token)
     rescue
       return render(text: "Couldn't charge your credit card", status: 400)

@@ -94,17 +94,11 @@
               {{#if isGift}}
                 <div class="gift-details">
                   <label>
-                    <input class="gift-input" id="recipient" type="text" name="recipient" value="" placeholder="Enter a username..." size="13" maxlength="20" class="inline">
+                    <input class="gift-input" type="text" value="" placeholder="Enter a username..." size="13" maxlength="20" class="inline" {{bind-attr value=giftTo}}>
                   </label>
                   <ul class="indent">
                     <li>
-                    <label>
-                      <input type="checkbox" id="message" name="message" value="message">
-                      include a message?
-                    </label>
-                    </li>
-                    <li>
-                    <textarea rows="1" name="giftmessage" id="giftmessage" placeholder="Go ahead, say something clever..." class="giftmessage gift-input"></textarea>
+                      <textarea rows="2" placeholder="Go ahead, say something clever..." class="giftmessage gift-input" {{bind-attr value=giftMessage}}></textarea>
                     </li>
                   </ul>
                 </div>

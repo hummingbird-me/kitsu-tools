@@ -24,6 +24,8 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
 
   giftValue: "notgift",
   isGift: Ember.computed.equal("giftValue", "gift"),
+  giftMessage: "",
+  giftTo: "",
 
   // List of partner deals that pro uses can redeem
   partnerDeals: null,
@@ -69,13 +71,19 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
 
       var self = this;
       var tokenCallback = function(res) {
+        var data = {
+          token: res.id,
+          plan_id: self.get('selectedPlanId')
+        };
+        if (self.get('isGift')) {
+          data.gift = true;
+          data.gifted_to = self.get('giftTo');
+          data.gift_message = self.get('giftMessage');
+        }
         ajax({
           url: "/pro_memberships",
           type: "POST",
-          data: {
-            token: res.id,
-            plan_id: self.get('selectedPlanId')
-          }
+          data: data
         }).then(function() {
           self.set('state', 'complete');
           window.location.reload();
