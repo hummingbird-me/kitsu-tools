@@ -31,14 +31,14 @@ class ProMembershipsController < ApplicationController
         end
         manager.gift! plan, token, gift_to, params[:gift_message]
         mixpanel.track "PRO gifted", {
-          gifted_to: gift_to.username,
-          gifted_by: current_user.username,
+          gifted_to: gift_to.name,
+          gifted_by: current_user.name,
           plan: plan.name
         }
       else
         manager.subscribe! plan, token
         mixpanel.track "PRO subscription", {
-          username: current_user.username,
+          username: current_user.name,
           plan: plan.name
         }
       end
