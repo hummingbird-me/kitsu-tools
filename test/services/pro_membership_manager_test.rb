@@ -21,6 +21,7 @@ class ProMembershipManagerTest < ActiveSupport::TestCase
     assert @user.pro?
     assert_equal token, @user.stripe_token
     assert_equal plan.id, @user.pro_membership_plan.id
+    assert_not_nil @user.stripe_customer_id
   end
 
   test "subscribe! doesn't add from a previous pro_expires_at date" do

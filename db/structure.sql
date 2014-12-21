@@ -1502,7 +1502,8 @@ CREATE TABLE users (
     rejected_edit_count integer DEFAULT 0,
     pro_expires_at timestamp without time zone,
     stripe_token character varying(255),
-    pro_membership_plan_id integer
+    pro_membership_plan_id integer,
+    stripe_customer_id character varying(255)
 );
 
 
@@ -3543,4 +3544,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141220080310');
 INSERT INTO schema_migrations (version) VALUES ('20141220090229');
 
 INSERT INTO schema_migrations (version) VALUES ('20141220111220');
+
+INSERT INTO schema_migrations (version) VALUES ('20141221065230');
 
