@@ -69,7 +69,9 @@ class ProMembershipManager
       end
     end
     if customer.nil?
-      customer = Stripe::Customer.create(email: @user.email, card: token)
+      customer = Stripe::Customer.create(email: @user.email,
+                                         card: token,
+                                         description: @user.name)
       @user.update_attributes! stripe_customer_id: customer.id
     end
     customer
