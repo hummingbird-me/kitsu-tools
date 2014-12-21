@@ -28,6 +28,10 @@ class ProMembershipPlan
     @recurring = hash[:recurring]
   end
 
+  def recurring?
+    recurring
+  end
+
   def self.find(id)
     plan = PLANS.find {|x| x[:id] == id }
     raise ActiveRecord::RecordNotFound.new if plan.nil?

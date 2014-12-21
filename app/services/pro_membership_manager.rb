@@ -9,16 +9,20 @@ class ProMembershipManager
   # charge them when their current subscription runs out, i.e. don't charge them
   # right now.
   def subscribe!(plan, token)
-    # Charge the credit card.
-    charge_user! token, (plan.amount * 100).to_i
-
-    # Update the user's subscription.
-    if @user.pro_expires_at.nil? || @user.pro_expires_at < Time.now
-      @user.pro_expires_at = Time.now
-    end
-    @user.pro_expires_at += 1.month
     @user.pro_membership_plan_id = plan.id
     @user.stripe_token = token
+
+    unless @user.pro? && plan.recurring?
+      # Charge the credit card.
+      charge_user! token, (plan.amount * 100).to_i
+
+      # Update the user's subscription.
+      if @user.pro_expires_at.nil? || @user.pro_expires_at < Time.now
+        @user.pro_expires_at = Time.now
+      end
+      @user.pro_expires_at += 1.month
+    end
+
     @user.save!
   end
 

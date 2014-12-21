@@ -45,6 +45,30 @@ class ProMembershipManagerTest < ActiveSupport::TestCase
     assert !@user.pro?
   end
 
+  test "subscribe! to a recurring plan does not immediately charge pro users for a recurring subscription" do
+    StripeMock.prepare_card_error(:card_declined)
+    @user.pro_expires_at = Time.now + 1.day
+    @user.pro_membership_plan_id = 1
+    @user.save!
+    plan = ProMembershipPlan.find(2)
+    token = @stripe.generate_card_token
+
+    @manager.subscribe! plan, token
+    assert @user.pro_expires_at < Time.now + 2.days
+    assert_equal 2, @user.pro_membership_plan.id
+  end
+
+  test "subscribe! to a non-recurring plan does charge pro users for a one-time subscription" do
+    @user.pro_expires_at = Time.now + 1.day
+    @user.pro_membership_plan_id = 1
+    @user.save!
+    plan = ProMembershipPlan.find(5)
+    token = @stripe.generate_card_token
+
+    @manager.subscribe! plan, token
+    assert @user.pro_expires_at > Time.now + 2.days
+  end
+
   test "cancel! unsets the user's plan" do
     @user.pro_expires_at = Time.now + 1.day
     @user.pro_membership_plan_id = 1
