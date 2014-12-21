@@ -65,7 +65,13 @@ class ApplicationController < ActionController::Base
   end
 
   def mixpanel
-    @mixpanel ||= Mixpanel::Tracker.new '92b66301c752642b40ca39e718517d94', { :async => true, :env => request.env }
+    if Rails.env.production?
+      @mixpanel ||= Mixpanel::Tracker.new '92b66301c752642b40ca39e718517d94', { :async => true, :env => request.env }
+    else
+      require_dependency 'dummy_mixpanel'
+      @mixpanel ||= DummyMixpanel.new
+    end
+    @mixpanel
   end
 
   def after_sign_in_path_for(resource)
