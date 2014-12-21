@@ -2,6 +2,7 @@ import Ember from 'ember';
 import HasCurrentUser from '../mixins/has-current-user';
 import loadScript from '../utils/load-script';
 import ajax from 'ic-ajax';
+import PreloadStore from '../utils/preload-store';
 /* global StripeCheckout */
 /* global moment */
 
@@ -100,7 +101,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
 
       this.set('state', 'loading');
       StripeCheckout.open({
-        key: 'pk_test_aQbfVWeOwvtES5FRSY7iIjk9',
+        key: PreloadStore.get('stripe_key'),
         name: "Hummingbird PRO",
         description: this.get('selectedPlan.name'),
         token: tokenCallback

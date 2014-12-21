@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   force_ssl if Rails.env.production?
   protect_from_forgery
 
-  before_filter :check_user_authentication, :preload_current_user,
-                :preload_blotter
+  before_filter :check_user_authentication, :preload_objects,
+    :preload_blotter
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
@@ -39,16 +39,18 @@ class ApplicationController < ActionController::Base
     @generic_preload[key] = value
   end
 
-  def preload_current_user
-    return unless user_signed_in?
-    preload_to_ember! current_user, serializer: CurrentUserSerializer,
-                                    root: :current_users
-  end
-
-  def preload_blotter
+  def preload_objects
+    # Preload current user.
     if user_signed_in?
-      generic_preload! "blotter", Blotter.get
+      preload_to_ember! current_user, serializer: CurrentUserSerializer,
+                                      root: :current_users
     end
+
+    # Preload blotter.
+    generic_preload! "blotter", Blotter.get
+
+    # Preload stripe publishable key.
+    generic_preload! "stripe_key", Rails.configuration.stripe[:publishable_key]
   end
 
   def render_ember
