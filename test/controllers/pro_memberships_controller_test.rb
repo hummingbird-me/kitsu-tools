@@ -49,7 +49,7 @@ class ProMembershipsControllerTest < ActionController::TestCase
     end
 
     test "regular gifting works" do
-      token = @strip.generate_card_token
+      token = @stripe.generate_card_token
       post :create, {token: token, plan_id: 5, gift: true,
                      gift_to: users(:josh).id, gift_message: ""}
 
@@ -58,7 +58,7 @@ class ProMembershipsControllerTest < ActionController::TestCase
     end
 
     test "cannot gift recurring plans" do
-      token = @strip.generate_card_token
+      token = @stripe.generate_card_token
       post :create, {token: token, plan_id: 1, gift: true,
                      gift_to: users(:josh).id, gift_message: ""}
 
