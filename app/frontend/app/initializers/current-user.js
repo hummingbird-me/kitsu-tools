@@ -7,6 +7,7 @@ export function initialize(container) {
   }
   container.injection('route', 'currentUser', 'controller:current-user');
   container.injection('view', 'currentUser', 'controller:current-user');
+  container.injection('component', 'currentUser', 'controller:current-user');
 }
 
 export default {

@@ -25,7 +25,9 @@ export default Ember.Component.extend({
   }.property('adClass'),
 
   didInsertElement: function() {
-    if (typeof _bsap !== "undefined") {
+    if (this.get('currentUser.isPro')) {
+      this.$().parent().hide();
+    } else if (typeof _bsap !== "undefined") {
       return _bsap.exec();
     }
   }
