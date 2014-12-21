@@ -13,14 +13,8 @@ class ProMembershipManager
     @user.stripe_token = token
 
     unless @user.pro? && plan.recurring?
-      # Charge the credit card.
       charge_user! token, (plan.amount * 100).to_i
-
-      # Update the user's subscription.
-      if @user.pro_expires_at.nil? || @user.pro_expires_at < Time.now
-        @user.pro_expires_at = Time.now
-      end
-      @user.pro_expires_at += plan.duration.months
+      give_pro! @user, plan.duration.months
     end
 
     @user.save!
@@ -32,13 +26,7 @@ class ProMembershipManager
     end
 
     charge_user! token, (plan.amount * 100).to_i
-
-    if gift_to.pro_expires_at.nil? || gift_to.pro_expires_at < Time.now
-      gift_to.pro_expires_at = Time.now
-    end
-    gift_to.pro_expires_at += plan.duration.months
-
-    gift_to.save!
+    give_pro! gift_to, plan.duration.months
   end
 
   # Unset the user's plan, but allow their current membership to continue. Only
@@ -81,5 +69,13 @@ class ProMembershipManager
       @user.update_attributes! stripe_customer_id: customer.id
     end
     customer
+  end
+
+  def give_pro!(user, duration)
+    if user.pro_expires_at.nil? || user.pro_expires_at < Time.now
+      user.pro_expires_at = Time.now
+    end
+    user.pro_expires_at += duration
+    user.save!
   end
 end
