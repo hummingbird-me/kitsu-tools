@@ -22,12 +22,23 @@ class ProMembershipsController < ApplicationController
     end
 
     begin
-      ProMembershipManager.new(current_user).subscribe!(plan, token)
+      manager.subscribe!(plan, token)
     rescue
       return render(text: "Couldn't charge your credit card", status: 400)
     end
 
     render text: "subscription successful"
+  end
+
+  def destroy
+    manager.cancel!
+    render text: "unsubscribed"
+  end
+
+  private
+
+  def manager
+    ProMembershipManager.new(current_user)
   end
 
 end

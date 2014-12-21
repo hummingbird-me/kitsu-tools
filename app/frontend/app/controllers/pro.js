@@ -92,6 +92,21 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
         description: this.get('selectedPlan.name'),
         token: tokenCallback
       });
+    },
+
+    cancelPro: function() {
+      if (!confirm("Are you sure you want to cancel your PRO subscription?")) {
+        return;
+      }
+
+      ajax({
+        url: "/pro_memberships/1",
+        type: "DELETE"
+      }).then(function() {
+        window.location.reload();
+      }, function() {
+        alert("Something went wrong while trying to cancel your membership. Please contact josh@hummingbird.me");
+      });
     }
   }
 });

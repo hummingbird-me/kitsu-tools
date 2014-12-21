@@ -4,7 +4,7 @@
       <h2>You're <span class="big-badge">PRO</span> and we love you for it.</h2>
       <span class="pro-period">
         {{#if currentUser.proMembershipPlan.recurring}}
-          You are subscribed to PRO. <a href="#">Cancel?</a>
+          You are subscribed to PRO. <a {{action "cancelPro"}}>Cancel?</a>
         {{else}}
           You have {{daysRemaining}} days of PRO remaining.
         {{/if}}
