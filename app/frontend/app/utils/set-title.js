@@ -3,7 +3,7 @@ import Ember from "ember";
 export default function setTitle(title) {
   var actualTitle = 'Hummingbird';
 
-  if (typeof title === 'string' && title.length > 0) {
+  if (typeof title === 'string' && title.length > 0 && title.indexOf('Hummingbird') < 0) {
     actualTitle = title + " | Hummingbird";
   }
 

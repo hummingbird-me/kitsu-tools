@@ -44,6 +44,15 @@ class ProMembershipManager
 
   # Charge the user's card the given amount in cents.
   def charge_user!(token, amount)
+    Stripe::Charge.create(
+      customer: stripe_customer(token).id,
+      amount: amount,
+      description: "Hummingbird PRO",
+      currency: 'usd'
+    )
+  end
+
+  def stripe_customer(token)
     customer = nil
     unless @user.stripe_customer_id.blank?
       begin
@@ -52,15 +61,10 @@ class ProMembershipManager
       end
       customer = nil if customer.deleted?
     end
-    customer ||= Stripe::Customer.create(
-      email: @user.email,
-      card: token
-    )
-    Stripe::Charge.create(
-      customer: customer.id,
-      amount: amount,
-      description: "Hummingbird PRO",
-      currency: 'usd'
-    )
+    if customer.nil?
+      customer = Stripe::Customer.create(email: @user.email, card: token)
+      @user.update_attributes! stripe_customer_id: customer.id
+    end
+    customer
   end
 end
