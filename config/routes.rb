@@ -79,7 +79,7 @@ Hummingbird::Application.routes.draw do
 
   constraints(lambda do |req|
     user = Auth::CurrentUserProvider.new(req.env).current_user
-    user && user.admin?
+    user && (user.name == "KomariKamikita" || user.admin?)
   end) do
     get '/pro' => 'home#static'
     resources :pro_membership_plans, only: [:index]
