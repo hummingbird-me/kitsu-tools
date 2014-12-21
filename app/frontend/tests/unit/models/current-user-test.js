@@ -5,7 +5,7 @@ import {
 
 moduleForModel('current-user', 'CurrentUser', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:pro-membership-plan']
 });
 
 test('it exists', function() {

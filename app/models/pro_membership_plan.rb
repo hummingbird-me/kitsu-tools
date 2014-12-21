@@ -2,6 +2,8 @@ require 'bigdecimal'
 
 class ProMembershipPlan
 
+  include ActiveModel::SerializerSupport
+
   attr_reader :id,
               :name, # plan name
               :amount, # how much the plan costs, in USD

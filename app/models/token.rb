@@ -2,11 +2,13 @@ class Token
   TTL = 3.months
   PREFIX = 'REVOKED:'
 
-  class_attribute :secret
+  def self.secret
+    ENV['JWT_SECRET']
+  end
 
   def initialize(string_or_user, opts={})
     if string_or_user.is_a? String
-      @payload = JWT.decode(string_or_user, self.secret)[0]
+      @payload = JWT.decode(string_or_user, Token.secret)[0]
     else
       string_or_user = string_or_user.id if string_or_user.is_a? User
       @payload = {

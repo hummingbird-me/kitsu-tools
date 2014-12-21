@@ -9,5 +9,7 @@ export default User.extend({
   lastBackup: DS.attr('date'),
   hasDropbox: DS.attr('boolean'),
   hasFacebook: DS.attr('boolean'),
-  confirmed: DS.attr('boolean')
+  confirmed: DS.attr('boolean'),
+  proExpiresAt: DS.attr('date'),
+  proMembershipPlan: DS.belongsTo('pro-membership-plan')
 });

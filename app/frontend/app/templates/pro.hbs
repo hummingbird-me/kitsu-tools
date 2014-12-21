@@ -3,10 +3,11 @@
     {{#if currentUser.isPro}}
       <h2>You're <span class="big-badge">PRO</span> and we love you for it.</h2>
       <span class="pro-period">
-        <!-- If gifted / one-time -->
-        You have 28 days of PRO remaining.
-        <!-- If subbed -->
-        {{!-- You're subscribed to PRO. <a href="#">Cancel?</a> --}}
+        {{#if currentUser.proMembershipPlan.recurring}}
+          You are subscribed to PRO. <a href="#">Cancel?</a>
+        {{else}}
+          You have {{daysRemaining}} days of PRO remaining.
+        {{/if}}
       </span>
     {{else}}
       <h2>You should be <span class="big-badge">PRO</span></h2>
@@ -23,21 +24,24 @@
       </div>
 
       <div class="payment-wrapper">
-        <!-- Show when loading stripe modal -->
-        {{!-- <div class="loading-state">
-          <div class="state-content">
-            <i class="fa fa-refresh fa-spin"></i>
-            <div>Processing...</div>
+        {{#if isLoading}}
+          <div class="loading-state">
+            <div class="state-content">
+              <i class="fa fa-refresh fa-spin"></i>
+              <div>Processing...</div>
+            </div>
           </div>
-        </div> --}}
+        {{/if}}
 
-        <!-- Show after closing stripe modal, before refreshing page -->
-        {{!-- <div class="success-state">
-          <div class="state-content">
-            <i class="fa fa-check-circle"></i>
-            <div>Congrats, you're PRO!</div>
+        {{#if isComplete}}
+          <div class="success-state">
+            <div class="state-content">
+              <i class="fa fa-check-circle"></i>
+              <div>Congrats, you are PRO!</div>
+            </div>
           </div>
-        </div> --}}
+        {{/if}}
+
         {{#if showSubscriptions}}
           <p>What type of subscription would you like?</p>
           <ul>
