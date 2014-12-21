@@ -9,15 +9,15 @@ class ProMembershipManager
   # charge them when their current subscription runs out, i.e. don't charge them
   # right now.
   def subscribe!(plan, token)
-    @user.pro_membership_plan_id = plan.id
-    @user.stripe_token = token
+    @user.update_attributes! pro_membership_plan_id: plan.id,
+                             stripe_token: token
 
     unless @user.pro? && plan.recurring?
       charge_user! token, (plan.amount * 100).to_i
       give_pro! @user, plan.duration.months
     end
 
-    @user.save!
+    ProMailer.delay.welcome_email(@user)
   end
 
   # Charge the user, then add the resulting PRO duration to a different user to
@@ -29,6 +29,8 @@ class ProMembershipManager
 
     charge_user! token, (plan.amount * 100).to_i
     give_pro! gift_to, plan.duration.months
+
+    ProMailer.delay.gift_email(gift_to, @user, gift_message)
   end
 
   # Unset the user's plan, but allow their current membership to continue. Only
@@ -36,6 +38,7 @@ class ProMembershipManager
   def cancel!
     @user.pro_membership_plan_id = nil
     @user.save!
+    ProMailer.delay.cancel_email(gift_to, @user, gift_message)
   end
 
   # Renew the user's pro membership. Make sure the plan they are on is recurring

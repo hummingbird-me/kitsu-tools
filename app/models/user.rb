@@ -137,7 +137,7 @@ class User < ActiveRecord::Base
       thumb_small: '-quality 0',
       small: '-quality 0'
     },
-    default_url: "/default_avatar.jpg",
+    default_url: "https://hummingbird.me/default_avatar.jpg",
     processors: [:thumbnail, :paperclip_optimizer]
 
   validates_attachment :avatar, content_type: {
