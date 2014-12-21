@@ -5,14 +5,14 @@
   h2 {
     color: #d7dee5;
     font-weight: normal;
-    font-size: 50px;
+    font-size: 40px;
     position: relative;
     top: 60px;
   }
   .big-badge {
     background: #ec8661;
     color: #fff;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 600;
     padding: 10px 25px;
     border-radius: 3px;
@@ -141,7 +141,7 @@
     select {
       margin-bottom: 15px;
     }
-    .loading-state, .success-state, .error-state {
+    .loading-state, .success-state, .error-state, .gifted-state {
       position: absolute;
       top: 0;
       left: 0;
@@ -161,8 +161,10 @@
         margin-bottom: 20px;
       }
     }
-    .success-state .state-content {
-      color: #16a388;
+    .success-state, .gifted-state {
+      .state-content {
+        color: #16a388;
+      }
     }
     .error-state .state-content {
       color: #e74c3c;
