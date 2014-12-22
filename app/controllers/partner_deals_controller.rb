@@ -2,9 +2,8 @@ class PartnerDealsController < ApplicationController
   before_action :authenticate_user!, only: [:update]
 
   def index
-    # todo: return only deals available in users country
-    render json: PartnerDeal.where(active: true),
-      each_serializer: PartnerDealSerializer
+    deals = PartnerDeal.where(active: true).available_in(get_request_country)
+    render json: deals, each_serializer: PartnerDealSerializer
   end
 
   # redeem a code
@@ -26,5 +25,11 @@ class PartnerDealsController < ApplicationController
 
     # output the redeemed code
     render text: code.code unless code.nil?
+  end
+
+  private
+
+  def get_request_country
+    request.headers['CF-IPCountry']
   end
 end
