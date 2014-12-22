@@ -108,7 +108,7 @@ class MyAnimeListImport
         end
         entry.status = mal_entry[:status]
         entry.updated_at = Time.now
-        entry.notes = mal_entry[:notes]
+        entry.notes = mal_entry[:notes] unless mal_entry[:notes].blank?
         entry.imported = true
         entry.rating = mal_entry[:rating].to_f / 2
         entry.rating = nil if entry.rating == 0
