@@ -11,7 +11,11 @@ export default Model.extend(ModelCurrentUser, {
   episodeNumber: DS.attr('number'),
   reply: DS.attr('string'),
   user: DS.belongsTo('user'),
-  story: DS.belongsTo('story'),
+  storyId: DS.attr('number'),
+
+  story: function() {
+    return this.store.find('story', this.get('storyId'));
+  }.property('storyId'),
 
   html: function() {
     if (this.get('type') === "watchlist_status_update") {

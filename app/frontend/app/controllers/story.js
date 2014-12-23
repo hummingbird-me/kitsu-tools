@@ -51,7 +51,7 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
       var self = this;
       this.store.find('user', this.get('currentUser.id')).then(function(user) {
         var reply = self.store.createRecord('substory', {
-          story: self.get('model'),
+          storyId: self.get('model.id'),
           user: user,
           type: "reply",
           reply: self.get('reply'),
