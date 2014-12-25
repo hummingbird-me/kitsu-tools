@@ -15,16 +15,12 @@ class PartnerDealsController < ApplicationController
     deal = PartnerDeal.find(params[:id])
     # has this user redeemed a code?
     code = deal.codes.where(user: current_user).last
-    if code.nil?
-      # todo: deal with potential race condition
+    if code.nil? || (deal.recurring? && Time.now > 1.month.since(code.claimed_at))
       code = deal.codes.unclaimed.first
-      code.update_attributes!(user: current_user, claimed_at: DateTime.now)
-    elsif deal.recurring?
-      # todo: re-issue another coupon if claim is over a month old
+      code.update_attributes!(user: current_user, claimed_at: Time.now)
     end
 
-    # output the redeemed code
-    render text: code.code unless code.nil?
+    render json: deal, serializer: PartnerDealSerializer
   end
 
   private

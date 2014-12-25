@@ -20,12 +20,29 @@ class PartnerDealsControllerTest < ActionController::TestCase
 
     put :update, id: partner_deals(:one).id
     assert_response 200
-    assert_equal "abcdefg", @response.body
+    assert_equal "hijklmn", JSON.parse(@response.body)["partner_deal"]["code"]
 
     # doing another redeem returns the same code
     put :update, id: partner_deals(:one).id
     assert_response 200
-    assert_equal "abcdefg", @response.body
+    assert_equal "hijklmn", JSON.parse(@response.body)["partner_deal"]["code"]
+  end
+
+  test "can redeem every month if deal is recurring" do
+    sign_in users(:josh)
+
+    put :update, id: partner_deals(:one).id
+    assert_response 200
+    assert_equal "hijklmn", JSON.parse(@response.body)["partner_deal"]["code"]
+
+    # update claimed_at to be a month old
+    code = PartnerCode.where(user: users(:josh), partner_deal: partner_deals(:one)).last
+    code.update_attribute(:claimed_at, 1.month.ago)
+
+    # user will receive a new code now
+    put :update, id: partner_deals(:one).id
+    assert_response 200
+    assert_equal "abcdefg", JSON.parse(@response.body)["partner_deal"]["code"]
   end
 
   test "limits deals by requestors country" do

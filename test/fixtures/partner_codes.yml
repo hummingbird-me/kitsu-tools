@@ -13,3 +13,7 @@
 one:
   partner_deal: one
   code: abcdefg
+
+two:
+  partner_deal: one
+  code: hijklmn

@@ -2798,7 +2798,7 @@ CREATE INDEX index_notifications_on_user_id ON notifications USING btree (user_i
 -- Name: index_partner_codes_on_partner_deal_id_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_partner_codes_on_partner_deal_id_and_user_id ON partner_codes USING btree (partner_deal_id, user_id);
+CREATE INDEX index_partner_codes_on_partner_deal_id_and_user_id ON partner_codes USING btree (partner_deal_id, user_id);
 
 
 --
@@ -3702,6 +3702,8 @@ INSERT INTO schema_migrations (version) VALUES ('20141221065230');
 
 INSERT INTO schema_migrations (version) VALUES ('20141222013645');
 
+INSERT INTO schema_migrations (version) VALUES ('20141225215347');
+
 INSERT INTO schema_migrations (version) VALUES ('20141230222400');
 
 INSERT INTO schema_migrations (version) VALUES ('20141230222755');
@@ -3719,4 +3721,3 @@ INSERT INTO schema_migrations (version) VALUES ('20150206031907');
 INSERT INTO schema_migrations (version) VALUES ('20150220014905');
 
 INSERT INTO schema_migrations (version) VALUES ('20150305204429');
-
