@@ -223,6 +223,10 @@
     border: 1px solid #ddd;
     padding: 15px;
     border-radius: 3px;
+    margin-bottom: 10px;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   .partner-logo {
     float: left;
