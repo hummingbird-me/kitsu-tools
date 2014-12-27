@@ -1080,7 +1080,7 @@ CREATE TABLE partner_deals (
     id integer NOT NULL,
     deal_title character varying(255) NOT NULL,
     partner_name character varying(255) NOT NULL,
-    valid_countries character varying(255)[] NOT NULL,
+    valid_countries character varying(255)[] DEFAULT '{}'::character varying[] NOT NULL,
     partner_logo_file_name character varying(255),
     partner_logo_content_type character varying(255),
     partner_logo_file_size integer,
@@ -3546,4 +3546,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141220090229');
 INSERT INTO schema_migrations (version) VALUES ('20141220111220');
 
 INSERT INTO schema_migrations (version) VALUES ('20141221065230');
+
+INSERT INTO schema_migrations (version) VALUES ('20141222013645');
 
