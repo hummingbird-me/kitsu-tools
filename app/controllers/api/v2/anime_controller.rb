@@ -3,13 +3,23 @@ module Api::V2
     caches_action :show, expires_in: 1.hour
 
     def show
-      if params[:id].start_with? "myanimelist:"
-        anime = Anime.find_by(mal_id: params[:id].split(':')[1]) ||
+      if params[:id].include? ','
+        anime = params[:id].split(',').map {|id| find_anime(id) }
+      else
+        anime = find_anime(params[:id])
+      end
+      render json: Api::V2::AnimeSerializer.new(anime).as_json
+    end
+
+    private
+
+    def find_anime(id)
+      if id.respond_to?(:start_with?) && id.start_with?("myanimelist:")
+        Anime.find_by(mal_id: id.split(':')[1]) ||
           raise(ActiveRecord::RecordNotFound)
       else
-        anime = Anime.find(params[:id])
+        Anime.find(id)
       end
-      render json: AnimeSerializer.new(anime).as_json
     end
   end
 end
