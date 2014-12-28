@@ -8,7 +8,7 @@ module Api::V2
       else
         anime = find_anime(params[:id])
       end
-      render json: AnimeSerializer.new(anime).as_json
+      render json: Api::V2::AnimeSerializer.new(anime).as_json
     end
 
     private
