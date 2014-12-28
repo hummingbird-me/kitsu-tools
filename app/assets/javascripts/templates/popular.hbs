@@ -1,0 +1,7 @@
+<div class="user-feed">
+  {{each itemController="story" itemViewClass="story"}}
+
+  {{#if canLoadMore}}
+    {{load-more classNames="light" action="loadNextPage"}}
+  {{/if}}
+</div>

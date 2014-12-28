@@ -21,6 +21,7 @@ Hummingbird::Application.routes.draw do
     post :vote
   end
 
+  get '/popular' => 'home#static'
   get '/radio' => 'home#static'
 
   get '/apps/mine' => 'apps#mine'

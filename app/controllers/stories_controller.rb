@@ -7,6 +7,8 @@ class StoriesController < ApplicationController
     if params[:user_id]
       user = User.find(params[:user_id])
       stories = StoryQuery.find_for_user(user, current_user, params[:page], 30)
+    elsif params[:popular]
+      stories = StoryQuery.find_popular(current_user, params[:page], 30)
     elsif params[:news_feed]
       stories = NewsFeed.new(current_user).fetch(params[:page] || 1)
     end

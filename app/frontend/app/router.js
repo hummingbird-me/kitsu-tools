@@ -20,6 +20,7 @@ Router.map(function() {
     this.route('reviews');
   });
 
+  this.route('popular');
   this.route('radio');
 
   this.resource('story.permalink', {path: '/stories/:id'});
