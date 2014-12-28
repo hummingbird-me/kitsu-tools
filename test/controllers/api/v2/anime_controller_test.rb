@@ -16,4 +16,11 @@ class Api::V2::AnimeControllerTest < ActionController::TestCase
     assert JSON.parse(@response.body)["anime"].is_a? Array
     assert_equal 2, JSON.parse(@response.body)["anime"].length
   end
+
+  test "multi-get ignores not found errors" do
+    get :show, id: [anime(:sword_art_online).id, "fake-id"].join(',')
+    assert_response 200
+    assert JSON.parse(@response.body)["anime"].is_a? Array
+    assert_equal 1, JSON.parse(@response.body)["anime"].length
+  end
 end
