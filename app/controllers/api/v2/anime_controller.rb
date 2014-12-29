@@ -4,7 +4,7 @@ module Api::V2
 
     def show
       if params[:id].include? ','
-        anime = params[:id].split(',').map {|id| find_anime(id) }
+        anime = params[:id].split(',').map {|id| find_anime(id) rescue nil }.compact
       else
         anime = find_anime(params[:id])
       end
