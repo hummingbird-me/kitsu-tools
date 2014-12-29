@@ -7,7 +7,7 @@
         </div>
         <div class="franchise-info">
           <h4 class="series-title">
-            {{#link-to 'anime' id}}{{canonicalTitle}}{{/link-to}}
+            {{#link-to 'anime' id}}{{displayTitle}}{{/link-to}}
           </h4>
           {{partial "anime/infobar"}}
           <div>{{truncate-text text=synopsis length=200}}</div>
