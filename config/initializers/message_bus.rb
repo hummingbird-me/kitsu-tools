@@ -7,11 +7,10 @@ MessageBus.redis_config = {
 
 MessageBus.user_id_lookup do |env|
   token = Rack::Request.new(env).cookies["token"]
-  return nil unless token
 
-  token = Token.new(token)
-  if token.valid?
-    token.user.try(:id)
+  if token
+    t = Token.new(token)
+    t.valid? ? t.user.try(:id) : nil
   else
     nil
   end
