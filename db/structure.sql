@@ -815,6 +815,83 @@ CREATE TABLE genres_manga (
 
 
 --
+-- Name: group_members; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE group_members (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    group_id integer NOT NULL,
+    admin boolean DEFAULT false NOT NULL,
+    pending boolean DEFAULT true NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: group_members_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE group_members_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: group_members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE group_members_id_seq OWNED BY group_members.id;
+
+
+--
+-- Name: groups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE groups (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    slug character varying(255) NOT NULL,
+    bio character varying(255) DEFAULT ''::character varying NOT NULL,
+    about text DEFAULT ''::text NOT NULL,
+    avatar_file_name character varying(255),
+    avatar_content_type character varying(255),
+    avatar_file_size integer,
+    avatar_updated_at timestamp without time zone,
+    cover_image_file_name character varying(255),
+    cover_image_content_type character varying(255),
+    cover_image_file_size integer,
+    cover_image_updated_at timestamp without time zone,
+    confirmed_members_count integer DEFAULT 0,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: groups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
+
+
+--
 -- Name: list_items; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1819,6 +1896,20 @@ ALTER TABLE ONLY genres ALTER COLUMN id SET DEFAULT nextval('genres_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY group_members ALTER COLUMN id SET DEFAULT nextval('group_members_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY list_items ALTER COLUMN id SET DEFAULT nextval('list_items_id_seq'::regclass);
 
 
@@ -2127,6 +2218,22 @@ ALTER TABLE ONLY gallery_images
 
 ALTER TABLE ONLY genres
     ADD CONSTRAINT genres_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: group_members_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY group_members
+    ADD CONSTRAINT group_members_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: groups_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY groups
+    ADD CONSTRAINT groups_pkey PRIMARY KEY (id);
 
 
 --
@@ -2590,6 +2697,27 @@ CREATE INDEX index_gallery_images_on_anime_id ON gallery_images USING btree (ani
 --
 
 CREATE INDEX index_genres_manga_on_manga_id ON genres_manga USING btree (manga_id);
+
+
+--
+-- Name: index_group_members_on_group_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_group_members_on_group_id ON group_members USING btree (group_id);
+
+
+--
+-- Name: index_group_members_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_group_members_on_user_id ON group_members USING btree (user_id);
+
+
+--
+-- Name: index_group_members_on_user_id_and_group_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_group_members_on_user_id_and_group_id ON group_members USING btree (user_id, group_id);
 
 
 --
@@ -3548,4 +3676,8 @@ INSERT INTO schema_migrations (version) VALUES ('20141220111220');
 INSERT INTO schema_migrations (version) VALUES ('20141221065230');
 
 INSERT INTO schema_migrations (version) VALUES ('20141222013645');
+
+INSERT INTO schema_migrations (version) VALUES ('20141230222400');
+
+INSERT INTO schema_migrations (version) VALUES ('20141230222755');
 
