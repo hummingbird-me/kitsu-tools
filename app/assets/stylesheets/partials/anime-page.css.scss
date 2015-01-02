@@ -634,7 +634,7 @@
     .quote-bubble {
       max-width: 49%;
       &:nth-of-type(odd) {
-        float: right;
+        float: right !important;
       }
     }
     .media-body > p {
