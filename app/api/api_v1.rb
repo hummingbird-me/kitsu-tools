@@ -377,6 +377,7 @@ class API_v1 < Grape::API
       optional :increment_episodes, type: String
       optional :rewatching, type: String
       optional :include_mal_id, type: String
+      optional :title_language_preference, type: String
     end
     post ':anime_slug' do
       authenticate_user!
@@ -530,6 +531,7 @@ class API_v1 < Grape::API
   desc "Anime search API endpoint"
   params do
     requires :query, type: String, desc: "query string"
+    optional :title_language_preference, type: String
   end
   get '/search/anime' do
     anime = Anime.accessible_by(current_ability).includes(:genres)
@@ -538,7 +540,11 @@ class API_v1 < Grape::API
       results = anime.fuzzy_search_by_title(params[:query]).limit(5)
     end
 
-    title_language_preference = current_user.try(:title_language_preference) || "canonical"
+    title_language_preference = params[:title_language_preference]
+    if title_language_preference.nil? and current_user
+      title_language_preference = current_user.title_language_preference
+    end
+    title_language_preference ||= "canonical"
 
     results.map {|x| present_anime(x, title_language_preference, false) }
   end
