@@ -233,6 +233,7 @@
   <!-- Left side End -->
 
   <!-- Right Side Start -->
+  {{#unless notYetAired}}
   <div class="community-column">
     {{#if roundedBayesianRating}}
       <div class="hb-score">
@@ -264,4 +265,5 @@
       {{partial "anime/trending_reviews"}}
     </div>
   </div>
+  {{/unless}}
 </div>
