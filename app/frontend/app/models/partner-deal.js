@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 /* global moment */
 
@@ -8,20 +9,22 @@ export default DS.Model.extend({
   dealUrl: DS.attr('string'),
   dealDescription: DS.attr('string'),
   redemptionInfo: DS.attr('string'),
-  recurring: DS.attr('boolean'),
+  recurring: DS.attr('number'),
   hasCodes: DS.attr('boolean'),
   code: DS.attr('string'),
   claimedAt: DS.attr('date'),
 
+  isRecurring: Ember.computed.gt('recurring', 0),
+
   canRedeemAgain: function() {
     var date = new Date(this.get('claimedAt'));
-    date.setMonth(date.getMonth() + 1);
-    return this.get('recurring') && Date.now() > date;
-  }.property('claimedAt', 'recurring'),
+    date.setSeconds(date.getSeconds() + this.get('recurring'));
+    return this.get('isRecurring') && Date.now() > date;
+  }.property('claimedAt', 'recurring', 'isRecurring'),
 
   daysUntilRedeem: function() {
     var date = new Date(this.get('claimedAt'));
-    date.setMonth(date.getMonth() + 1);
+    date.setSeconds(date.getSeconds() + this.get('recurring'));
     return moment(date).diff(moment(), 'days');
-  }.property('claimedAt')
+  }.property('claimedAt', 'recurring')
 });

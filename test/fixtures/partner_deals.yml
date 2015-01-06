@@ -28,7 +28,7 @@ one:
   partner_logo_updated_at: 2013-07-31 02:37:51.625479000 Z
   deal_url: https://amazon.com
   valid_countries: ["US", "AU"]
-  recurring: true
+  recurring: 2592000 # 1 month
 
 two:
   partner_name: Chrucyroll

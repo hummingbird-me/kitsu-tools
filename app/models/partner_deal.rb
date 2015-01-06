@@ -54,4 +54,8 @@ class PartnerDeal < ActiveRecord::Base
       field :valid_countries, :pg_string_array
     end
   end
+
+  def recurring?
+    recurring > 0
+  end
 end

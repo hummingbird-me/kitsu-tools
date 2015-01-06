@@ -1167,8 +1167,8 @@ CREATE TABLE partner_deals (
     deal_url text NOT NULL,
     deal_description text NOT NULL,
     redemption_info text NOT NULL,
-    recurring boolean DEFAULT false NOT NULL,
-    active boolean DEFAULT true NOT NULL
+    active boolean DEFAULT true NOT NULL,
+    recurring integer DEFAULT 0
 );
 
 
@@ -3709,6 +3709,8 @@ INSERT INTO schema_migrations (version) VALUES ('20141230222400');
 INSERT INTO schema_migrations (version) VALUES ('20141230222755');
 
 INSERT INTO schema_migrations (version) VALUES ('20150102054529');
+
+INSERT INTO schema_migrations (version) VALUES ('20150106191643');
 
 INSERT INTO schema_migrations (version) VALUES ('20150111182814');
 
