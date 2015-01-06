@@ -233,35 +233,37 @@
   <!-- Left side End -->
 
   <!-- Right Side Start -->
-  <div class="community-column">
-    {{#if roundedBayesianRating}}
-      <div class="hb-score">
-        <h3>Hummingbird Score: <span class="highlight">{{roundedBayesianRating}}</span></h3>
+  {{#unless notYetAired}}
+    <div class="community-column">
+      {{#if roundedBayesianRating}}
+        <div class="hb-score">
+          <h3>Hummingbird Score: <span class="highlight">{{roundedBayesianRating}}</span></h3>
+        </div>
+      {{/if}}
+      <div class="histogram">
+        {{community-rating communityRatings}}
+        <div class="rating-legend">
+          <span class="lowest-rating">
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-long-arrow-right"></i>
+          </span>
+          <span class="highest-rating">
+            <i class="fa fa-long-arrow-left"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </span>
+        </div>
       </div>
-    {{/if}}
-    <div class="histogram">
-      {{community-rating communityRatings}}
-      <div class="rating-legend">
-        <span class="lowest-rating">
-          <i class="fa fa-star-half-o"></i>
-          <i class="fa fa-long-arrow-right"></i>
-        </span>
-        <span class="highest-rating">
-          <i class="fa fa-long-arrow-left"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </span>
+      <div class="reviews">
+        <h4> Reviews:</h4>
+        <div class="review-links">
+          <a {{bind-attr href=fullReviewsURL}}>View All</a> · <a {{bind-attr href=newReviewURL}}>Write One</a>
+        </div>
+        {{partial "anime/trending_reviews"}}
       </div>
     </div>
-    <div class="reviews">
-      <h4> Reviews:</h4>
-      <div class="review-links">
-        <a {{bind-attr href=fullReviewsURL}}>View All</a> · <a {{bind-attr href=newReviewURL}}>Write One</a>
-      </div>
-      {{partial "anime/trending_reviews"}}
-    </div>
-  </div>
+  {{/unless}}
 </div>
