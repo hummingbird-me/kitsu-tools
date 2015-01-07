@@ -69,4 +69,13 @@ class Group < ActiveRecord::Base
   def at_least_one_admin
     members.where(admin: true).count >= 1
   end
+
+  def self.new_with_admin(params, admin)
+    group = Group.new(params)
+    group.members.build(
+      user: admin,
+      admin: true
+    )
+    group
+  end
 end

@@ -25,4 +25,12 @@ require 'test_helper'
 class GroupTest < ActiveSupport::TestCase
   should validate_uniqueness_of(:name).case_insensitive
   should validate_presence_of(:name)
+
+  test "creating new with admin" do
+    group = Group.new_with_admin({name: 'Jerks'}, users(:josh))
+
+    assert_equal true, group.valid?, "Group should be valid"
+    assert_equal true, group.save, "Group should save properly"
+    assert_equal users(:josh).id, group.members.first.user.id, "User should be admin"
+  end
 end
