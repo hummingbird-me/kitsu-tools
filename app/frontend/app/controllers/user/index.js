@@ -8,6 +8,14 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   hasWaifu: Ember.computed.any('user.waifu'),
   hasLocation: Ember.computed.any('user.location'),
   hasWebsite: Ember.computed.any('user.website'),
+  hasAboutText: Ember.computed.any('user.about'),
+  hasAboutSection: Ember.computed.or(
+    'hasWaifu',
+    'hasLocation',
+    'hasWebsite',
+    'hasAboutText'
+  ),
+
   unselectingWaifu: false,
 
   aboutCharacterCount: function() {
