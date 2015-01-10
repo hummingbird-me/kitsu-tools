@@ -6,5 +6,5 @@ export default DS.Model.extend({
   about: DS.attr('string'),
   coverImage: DS.attr('string'),
   avatar: DS.attr('string'),
-  members: DS.hasMany('groupMember')
+  members: DS.hasMany('group-member')
 });
