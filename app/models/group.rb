@@ -18,6 +18,7 @@
 #  confirmed_members_count  :integer          default(0)
 #  created_at               :datetime
 #  updated_at               :datetime
+#  closed                   :boolean          default(FALSE), not null
 #
 
 class Group < ActiveRecord::Base
@@ -68,12 +69,12 @@ class Group < ActiveRecord::Base
   end
 
   def close!
-    self.closed = true
+    update_attribute(:closed, true)
     # TODO: add Sidetiq job to fully delete in 14 days
   end
 
   def open!
-    self.closed = false
+    update_attribute(:closed, false)
     # TODO: cancel any queued Sidetiq jobs
   end
 

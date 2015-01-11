@@ -868,7 +868,8 @@ CREATE TABLE groups (
     cover_image_updated_at timestamp without time zone,
     confirmed_members_count integer DEFAULT 0,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    closed boolean DEFAULT false NOT NULL
 );
 
 
@@ -3680,4 +3681,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141222013645');
 INSERT INTO schema_migrations (version) VALUES ('20141230222400');
 
 INSERT INTO schema_migrations (version) VALUES ('20141230222755');
+
+INSERT INTO schema_migrations (version) VALUES ('20150111182814');
 
