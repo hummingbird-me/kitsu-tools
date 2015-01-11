@@ -119,6 +119,9 @@ gem 'rubyfish' # String matching
 gem 'ruby-progressbar'
 gem 'parallel'
 
+# Pry
+gem 'pry-rails', :group => :development
+
 # Metrics
 gem 'mixpanel'
 gem 'kibana-rack'
