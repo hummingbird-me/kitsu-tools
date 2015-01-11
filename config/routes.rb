@@ -112,6 +112,10 @@ Hummingbird::Application.routes.draw do
   resources :favorites
   post '/favorites/update_all' => 'favorites#update_all'
 
+  resources :groups do
+    get 'members' => 'groups#show_members'
+  end
+
   # Settings
   get '/settings' => 'settings#index'
   namespace :settings do

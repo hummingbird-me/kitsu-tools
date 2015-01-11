@@ -15,8 +15,10 @@ vikhyat_gumi:
   user: vikhyat
   group: gumi
   admin: true
+  pending: false
 
 josh_gumi:
   user: josh
   group: gumi
   admin: false
+  pending: true

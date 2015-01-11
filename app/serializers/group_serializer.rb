@@ -3,7 +3,7 @@ class GroupSerializer < ActiveModel::Serializer
 
   attributes :id, :name, :avatar, :cover_image, :bio, :about
 
-  has_many :members, root: :users, embed_key: :name
+  has_many :members, root: :group_members
 
   def id
     object.slug
