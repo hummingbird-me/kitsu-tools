@@ -15,6 +15,9 @@ class GroupMember < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
 
+  scope :pending, -> { where(pending: true) }
+  scope :accepted, -> { where(pending: false) }
+
   validates_associated :group
   validates :user_id, uniqueness: {scope: :group_id}
 

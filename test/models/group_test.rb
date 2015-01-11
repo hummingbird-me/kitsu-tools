@@ -32,5 +32,6 @@ class GroupTest < ActiveSupport::TestCase
     assert_equal true, group.valid?, "Group should be valid"
     assert_equal true, group.save, "Group should save properly"
     assert_equal users(:josh).id, group.members.first.user.id, "User should be admin"
+    assert_equal false, group.members.first.pending, "Membership should not be pending"
   end
 end

@@ -26,11 +26,8 @@ class Group < ActiveRecord::Base
 
   # We don't need to callback if we're killing the group off, just delete all
   # memberships.
-  has_many :group_member_relations, dependent: :delete_all
-  has_many :pending_members, -> { where(pending: true) },
-    foreign_key: :group_id, class_name: 'GroupMember'
-  has_many :members, -> { where(pending: false) },
-    foreign_key: :group_id, class_name: 'GroupMember'
+  has_many :members, foreign_key: :group_id,
+    class_name: 'GroupMember', dependent: :delete_all
 
   has_attached_file :avatar,
     styles: {
@@ -70,11 +67,26 @@ class Group < ActiveRecord::Base
     members.where(admin: true).count >= 1
   end
 
+  def close!
+    self.closed = true
+    # TODO: add Sidetiq job to fully delete in 14 days
+  end
+
+  def open!
+    self.closed = false
+    # TODO: cancel any queued Sidetiq jobs
+  end
+
+  def has_admin?(user)
+    GroupMember.exists?(user_id: user.id, group_id: self.id, admin: true)
+  end
+
   def self.new_with_admin(params, admin)
     group = Group.new(params)
     group.members.build(
       user: admin,
-      admin: true
+      admin: true,
+      pending: false
     )
     group
   end
