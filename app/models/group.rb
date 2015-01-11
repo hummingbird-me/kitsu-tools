@@ -78,4 +78,8 @@ class Group < ActiveRecord::Base
     )
     group
   end
+
+  def self.trending(count = 10)
+    TrendingGroups.list(count)
+  end
 end

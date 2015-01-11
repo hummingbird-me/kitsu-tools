@@ -19,6 +19,7 @@ class GroupMember < ActiveRecord::Base
   validates :user_id, uniqueness: {scope: :group_id}
 
   after_save do
+    update_group_scores!
     update_counter_cache!
   end
 
@@ -29,5 +30,11 @@ class GroupMember < ActiveRecord::Base
   def update_counter_cache!
     self.group.update_attribute :confirmed_members_count,
                                 GroupMember.where(pending: false, group: group).count
+  end
+
+  def update_group_scores!
+    if self.pending_changed? && self.pending == false
+      TrendingGroups.vote(self.group_id)
+    end
   end
 end
