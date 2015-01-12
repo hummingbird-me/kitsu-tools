@@ -822,10 +822,10 @@ CREATE TABLE group_members (
     id integer NOT NULL,
     user_id integer NOT NULL,
     group_id integer NOT NULL,
-    admin boolean DEFAULT false NOT NULL,
     pending boolean DEFAULT true NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    rank integer DEFAULT 0 NOT NULL
 );
 
 
@@ -3683,4 +3683,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141230222400');
 INSERT INTO schema_migrations (version) VALUES ('20141230222755');
 
 INSERT INTO schema_migrations (version) VALUES ('20150111182814');
+
+INSERT INTO schema_migrations (version) VALUES ('20150112071159');
 

@@ -57,7 +57,7 @@ class GroupsController < ApplicationController
     group = Group.find(params[:id])
     group_hash = params.require(:group).permit(:bio, :about).to_h
 
-    if group.has_admin?(current_user)
+    if group.member(current_user).admin?
       group.attributes = group_hash
       group.save!
       render json: group
@@ -70,7 +70,7 @@ class GroupsController < ApplicationController
     authenticate_user!
     group = Group.find(params[:id])
 
-    if group.has_admin?(current_user)
+    if group.member(current_user).admin?
       group.close!
       render json: {}
     else

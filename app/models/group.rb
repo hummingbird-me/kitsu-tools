@@ -78,14 +78,18 @@ class Group < ActiveRecord::Base
   end
 
   def can_admin_resign?
-    members.where(admin: true).count > 1
+    members.admin.count > 1
+  end
+
+  def member(user)
+    members.where(user: user).first
   end
 
   def self.new_with_admin(params, admin)
     group = Group.new(params)
     group.members.build(
       user: admin,
-      admin: true,
+      rank: :admin,
       pending: false
     )
     group

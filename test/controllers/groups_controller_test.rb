@@ -27,14 +27,14 @@ class GroupsControllerTest < ActionController::TestCase
 
   test "can create new group" do
     sign_in users(:josh)
-    post :create, group: {name: 'Jerks'}
+    post :create, group: {name: 'Sugar Water'}
     assert_response :created
   end
 
   test "cannot create two groups with the same name" do
     sign_in users(:josh)
-    post :create, group: {name: 'Jerks'}
-    post :create, group: {name: 'Jerks'}
+    post :create, group: {name: 'Sugar Water'}
+    post :create, group: {name: 'Sugar Water'}
     assert_response :conflict
   end
 

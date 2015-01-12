@@ -28,7 +28,7 @@ class GroupTest < ActiveSupport::TestCase
   should validate_presence_of(:name)
 
   test "creating new with admin" do
-    group = Group.new_with_admin({name: 'Jerks'}, users(:josh))
+    group = Group.new_with_admin({name: 'Sugar Water'}, users(:josh))
 
     assert_equal true, group.valid?, "Group should be valid"
     assert_equal true, group.save, "Group should save properly"

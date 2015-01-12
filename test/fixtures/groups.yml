@@ -27,3 +27,9 @@ gumi:
   bio: Gumi Best Vocaloid
   about: Gumi Goes In All Fields
   closed: false
+
+jerks:
+  name: Jerks
+  slug: jerks
+  bio: Shut up.
+  closed: false
