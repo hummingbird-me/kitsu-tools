@@ -35,4 +35,10 @@ class GroupTest < ActiveSupport::TestCase
     assert_equal users(:josh).id, group.members.first.user.id, "User should be admin"
     assert_equal false, group.members.first.pending, "Membership should not be pending"
   end
+
+  test "admin cannot resign if there are no other admins" do
+    group = groups(:gumi)
+
+    assert_equal false, group.can_admin_resign?
+  end
 end

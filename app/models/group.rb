@@ -63,11 +63,6 @@ class Group < ActiveRecord::Base
     uniqueness: {case_sensitive: false},
     length: {minimum: 3, maximum: 30}
 
-  validate :at_least_one_admin
-  def at_least_one_admin
-    members.where(admin: true).count >= 1
-  end
-
   def close!
     update_attribute(:closed, true)
     # TODO: add Sidetiq job to fully delete in 14 days
@@ -80,6 +75,10 @@ class Group < ActiveRecord::Base
 
   def has_admin?(user)
     GroupMember.exists?(user_id: user.id, group_id: self.id, admin: true)
+  end
+
+  def can_admin_resign?
+    members.where(admin: true).count > 1
   end
 
   def self.new_with_admin(params, admin)
