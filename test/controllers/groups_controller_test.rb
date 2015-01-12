@@ -27,14 +27,14 @@ class GroupsControllerTest < ActionController::TestCase
 
   test "can create new group" do
     sign_in users(:josh)
-    post :create, groups: [{name: 'Jerks'}]
+    post :create, group: {name: 'Jerks'}
     assert_response :created
   end
 
   test "cannot create two groups with the same name" do
     sign_in users(:josh)
-    post :create, groups: [{name: 'Jerks'}]
-    post :create, groups: [{name: 'Jerks'}]
+    post :create, group: {name: 'Jerks'}
+    post :create, group: {name: 'Jerks'}
     assert_response :conflict
   end
 
@@ -48,5 +48,14 @@ class GroupsControllerTest < ActionController::TestCase
     sign_in users(:josh)
     delete :destroy, id: 'gumi-appreciation-group'
     assert_response 403
+  end
+
+  test "can edit a group if admin" do
+    sign_in users(:vikhyat)
+    put :update, id: 'gumi-appreciation-group', group: {
+      bio: 'Mini bio',
+      about: 'Longer about section'
+    }
+    assert_response :ok
   end
 end

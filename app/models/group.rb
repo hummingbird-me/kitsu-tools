@@ -61,7 +61,7 @@ class Group < ActiveRecord::Base
   validates :name,
     presence: true,
     uniqueness: {case_sensitive: false},
-    length: {minimum: 3, maximum: 20}
+    length: {minimum: 3, maximum: 30}
 
   validate :at_least_one_admin
   def at_least_one_admin

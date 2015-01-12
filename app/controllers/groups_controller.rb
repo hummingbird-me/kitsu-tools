@@ -44,13 +44,26 @@ class GroupsController < ApplicationController
   def create
     authenticate_user!
 
-    # I think this is how our ED adapter serializes it... may be wrong
-    name = params[:groups][0][:name]
+    group_hash = params.require(:group).permit(:name).to_h
 
-    return error! "Group with that name already exists", 409 if Group.exists?(name: name)
-    group = Group.new_with_admin({name: name}, current_user)
+    return error! "Group with that name already exists", 409 if Group.exists?(['lower(name) = ?', group_hash['name'].downcase])
+    group = Group.new_with_admin(group_hash, current_user)
     group.save!
     render json: group, status: :created
+  end
+
+  def update
+    authenticate_user!
+    group = Group.find(params[:id])
+    group_hash = params.require(:group).permit(:bio, :about).to_h
+
+    if group.has_admin?(current_user)
+      group.attributes = group_hash
+      group.save!
+      render json: group
+    else
+      return error! "Only admins can edit the group", 403
+    end
   end
 
   def destroy
