@@ -64,15 +64,7 @@
                 </button>
               {{/if}}
             {{else}}
-              {{#if isFollowed}}
-                <button class="btn btn-default btn-lg follow-button unfollow" {{action "toggleFollow" this}}>
-                  Unfollow
-                </button>
-              {{else}}
-                <button class="btn btn-default btn-lg follow-button" {{action "toggleFollow" this}}>
-                  <i class="fa fa-plus"></i> Follow
-                </button>
-              {{/if}}
+              {{follow-button user=this}}
             {{/if}}
           </div>
         </div>

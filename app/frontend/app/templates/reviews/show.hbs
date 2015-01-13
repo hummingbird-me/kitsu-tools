@@ -74,11 +74,7 @@
       </div>
       <div class="reviewer-information">
         <h5>{{#link-to 'user' user}}{{user.username}}{{/link-to}}</h5>
-        {{#if user.isFollowed}}
-        <button class="btn btn-default btn-lg follow-button unfollow" {{action "toggleFollow" user}}>Unfollow</button>
-        {{else}}
-        <button class="btn btn-default btn-lg follow-button" {{action "toggleFollow" user}}>Follow</button>
-        {{/if}}
+        {{follow-button user=user}}
       </div>
     </div>
     <div class="series-panel">
