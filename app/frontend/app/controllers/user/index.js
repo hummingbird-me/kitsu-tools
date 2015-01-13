@@ -73,6 +73,23 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     return animes;
   }.property('favorite_anime', 'favorite_anime_page'),
 
+  favorite_anime_data: function(){
+    return this.favorite_data("Anime");
+  }.property(),
+
+  favorite_manga_data: function(){
+    return this.favorite_data("Manga");
+  }.property(),
+
+  favorite_data: function(item_type){
+    var self = this;
+
+    return this.store.find('favorite', {
+      user_id: self.get('user.id'),
+      type: item_type
+    })
+  },
+
 
   actions: {
     unselectWaifu: function () {
