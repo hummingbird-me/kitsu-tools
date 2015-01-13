@@ -35,7 +35,7 @@ export default Ember.Component.extend({
   actions: {
     deleteFavorite: function(fav){
       this.get('targetObject.store').find('favorite', fav.id).then(function(item){
-        item.deleteRecord();
+        item.destroyRecord();
       });
     }
   }

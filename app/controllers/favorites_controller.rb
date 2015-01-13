@@ -8,7 +8,24 @@ class FavoritesController < ApplicationController
     render json: @favs, each_serializer: FavoriteSerializer
   end
 
-  def update
+  def create
+
+    # Switch creating favorites to this endpoint
+    # for the future?
+
+    render json: false
+  end
+
+  def destroy
+    authenticate_user!
+    params.require(:id)
+
+    Favorite.find(params[:id]).destroy!
+
+    render json: true
+  end
+
+  def update_all
   end
 
 end
