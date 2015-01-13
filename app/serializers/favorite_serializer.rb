@@ -3,14 +3,16 @@ class FavoriteSerializer < ActiveModel::Serializer
 
   attributes :id,
              :user_id,
-             :item_id,
-             :item_type,
              :fav_rank
 
-  
-  def user_id
-    object.user.name
+  def item_id
+    object.item.slug
   end
 
-  has_one :item, polymorphic: true
+  def item_type
+    object.item_type.downcase
+  end
+
+  has_one :item, polymorphic: true, embed_key: :slug
+  has_one :user, embed_key: :name
 end

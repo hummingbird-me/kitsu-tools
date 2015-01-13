@@ -20,7 +20,6 @@ export default DS.Model.extend({
   isPro: DS.attr('boolean'),
   followerCount: DS.attr('number'),
   followingCount: DS.attr('number'),
-  favorites: DS.hasMany('favorite', { async: true }),
 
   avatarUrl: function() {
     return this.get("avatarTemplate").replace('{size}', 'thumb');
