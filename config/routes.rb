@@ -109,8 +109,8 @@ Hummingbird::Application.routes.draw do
   end
 
   # Favorite media
-  get '/favorites/:user_id' => 'favorites#index'
-  post '/favorites/:user_id' => 'favorites#update'
+  get '/favorites' => 'favorites#index'
+  post '/favorites' => 'favorites#update'
 
   # Settings
   get '/settings' => 'settings#index'
