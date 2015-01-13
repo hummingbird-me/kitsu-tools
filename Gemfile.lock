@@ -289,6 +289,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
     qunit-rails (0.0.7)
       railties
     rack (1.5.2)
@@ -516,6 +518,7 @@ DEPENDENCIES
   pg (= 0.17.1)
   pg_search (~> 0.7)
   pghero
+  pry-rails
   qunit-rails
   rack-attack
   rack-cors
