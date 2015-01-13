@@ -13,11 +13,7 @@
             {{avatar user 'thumb'}}
           {{/link-to}}
 
-          {{#if user.isFollowed}}
-            <a class="btn follow-button unfollow" {{action "toggleFollow" user}}> Unfollow</a>
-          {{else}}
-            <a class="btn follow-button" {{action "toggleFollow" user}}> Follow</a>
-          {{/if}}
+          {{follow-button user=user}}
 
         </div>
         <div class="user-info">
