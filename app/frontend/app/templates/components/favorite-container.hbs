@@ -1,0 +1,34 @@
+{{#if favorites}}
+  {{#each favorite in favorites}}
+    <li class="grid-thumb" {{bind-attr data-id=favorite.id}}>
+      {{#if isEditing}}
+        <div class="thumbnail">
+          <div class="move-overlay editing">
+            <i class="fa fa-arrows"></i>
+          </div>
+          <img {{bind-attr src=favorite.item.posterImage}} />
+        </div>
+      {{else}}
+        {{#link-to 'anime' favorite.item.id}}
+          <div class="thumbnail">
+            <div class="move-overlay">
+              <i class="fa fa-arrows">
+              </i>
+            </div>
+            <img {{bind-attr src=favorite.item.posterImage}} />
+          </div>
+        {{/link-to}}
+      {{/if}}
+    </li>
+  {{/each}}
+{{else}}
+    <div class="no-favorites text-center">
+      {{#if viewingSelf}}
+        <h3>You have no favorites.</h3>
+        <a href="https://forums.hummingbird.me/t/how-to-adding-an-anime-to-your-favorites"> How to add Favorites</a>
+      {{else}}
+        <h3>{{user.username}} has no favorites.</h3>
+        <p>Clearly they're an individual of fine, discerning tastes.</p>
+      {{/if}}
+    </div>
+{{/if}}
