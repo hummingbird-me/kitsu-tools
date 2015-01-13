@@ -98,6 +98,7 @@ gem 'cancan', "~> 1.6"
 
 # Background jobs
 gem 'sidekiq', '~> 3.1'
+gem 'sidetiq'
 
 # Admin panel
 gem "rails_admin"
