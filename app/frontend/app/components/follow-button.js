@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ajax from 'ic-ajax';
 import HasCurrentUser from '../mixins/has-current-user';
 
 export default Ember.Component.extend(HasCurrentUser, {
@@ -6,7 +7,7 @@ export default Ember.Component.extend(HasCurrentUser, {
   targetObject: Em.computed.alias('parentView'),  
 
   isOwnButton: function(){
-    return this.get('user.id') == this.get('currentUser.id');
+    return this.get('user.id') === this.get('currentUser.id');
   }.property('user.id', 'currentUser.id'),
 
 
@@ -19,7 +20,7 @@ export default Ember.Component.extend(HasCurrentUser, {
 
       var originalState = user.get('isFollowed');
       user.set('isFollowed', !originalState);
-      return $.ajax({
+      return ajax({
         url: "/users/" + user.get('id') + "/follow",
         type: "POST",
         dataType: "json"

@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ajax from 'ic-ajax';
 /* global MessageBus */
 
 export default Ember.Route.extend({
