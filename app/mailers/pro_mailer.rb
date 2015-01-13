@@ -15,15 +15,17 @@ class ProMailer < ActionMailer::Base
     mail(to: user, subject: "Your PRO account has been canceled")
   end
 
-  def renew_failed_email(user)
-    mail(to: user, subject: "Your PRO account has failed to renew")
-  end
-
   def expiring_email(user)
     mail(to: user, subject: "Your PRO account is about to expire")
   end
 
-  def renew_succeeded_email(user)
-    mail(to: user, subject: "Your PRO account is about to expire")
+  def renew_succeeded_email(user, attempt)
+    @attempt = attempt
+    mail(to: user, subject: "Your PRO account successfully renewed")
+  end
+
+  def renew_failed_email(user, attempt)
+    @attempt = attempt
+    mail(to: user, subject: "Your PRO account has failed to renew")
   end
 end
