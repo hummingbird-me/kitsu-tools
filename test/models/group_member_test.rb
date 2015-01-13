@@ -5,10 +5,10 @@
 #  id         :integer          not null, primary key
 #  user_id    :integer          not null
 #  group_id   :integer          not null
-#  admin      :boolean          default(FALSE), not null
 #  pending    :boolean          default(TRUE), not null
 #  created_at :datetime
 #  updated_at :datetime
+#  rank       :integer          default(0), not null
 #
 
 require 'test_helper'

@@ -20,10 +20,6 @@ class GroupMember < ActiveRecord::Base
 
   enum rank: [:pleb, :mod, :admin]
 
-  def mod?
-    rank == 'mod' || admin?
-  end
-
   validates :user_id, uniqueness: {scope: :group_id}
 
   after_save do

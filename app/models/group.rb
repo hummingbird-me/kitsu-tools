@@ -73,10 +73,6 @@ class Group < ActiveRecord::Base
     # TODO: cancel any queued Sidetiq jobs
   end
 
-  def has_admin?(user)
-    GroupMember.exists?(user_id: user.id, group_id: self.id, admin: true)
-  end
-
   def can_admin_resign?
     members.admin.count > 1
   end

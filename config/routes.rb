@@ -116,6 +116,8 @@ Hummingbird::Application.routes.draw do
     get 'members' => 'groups#show_members'
   end
 
+  resources :group_members
+
   # Settings
   get '/settings' => 'settings#index'
   namespace :settings do
