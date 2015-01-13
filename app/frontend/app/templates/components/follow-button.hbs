@@ -1,0 +1,7 @@
+{{#unless isOwnButton}}
+  {{#if user.isFollowed}}
+    <a class="btn follow-button unfollow" {{action "toggleFollow" user}}> Unfollow</a>
+  {{else}}
+    <a class="btn follow-button" {{action "toggleFollow" user}}> Follow</a>
+  {{/if}}
+{{/unless}}
