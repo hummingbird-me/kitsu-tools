@@ -1,14 +1,14 @@
 {{#if favorites}}
   {{#each favorite in favorites}}
-    <li class="grid-thumb" {{bind-attr data-id=favorite.id}}>
-      {{#if isEditing}}
-        <div class="thumbnail">
-          <div class="move-overlay editing">
-            <i class="fa fa-arrows"></i>
-          </div>
-          <img {{bind-attr src=favorite.item.posterImage}} />
-        </div>
-      {{else}}
+    {{#if isEditing}}
+      <li class="grid-list clearfix" {{bind-attr data-id=favorite.id}}>
+        <span class="grid-position">{{favorite.favRank}}</span>
+        <img class="grid-list-thumb" {{bind-attr src=favorite.item.posterImage}} />
+        <span class="grid-list-title">{{favorite.item.canonicalTitle}}</span>
+        <span class="grid-list-title" {{action 'deleteFavorite' favorite}}>(x)</span>
+      </li>
+    {{else}}
+      <li class="grid-thumb" {{bind-attr data-id=favorite.id}}>
         {{#link-to 'anime' favorite.item.id}}
           <div class="thumbnail">
             <div class="move-overlay">
@@ -18,8 +18,8 @@
             <img {{bind-attr src=favorite.item.posterImage}} />
           </div>
         {{/link-to}}
-      {{/if}}
-    </li>
+      </li>
+    {{/if}}
   {{/each}}
 {{else}}
     <div class="no-favorites text-center">
