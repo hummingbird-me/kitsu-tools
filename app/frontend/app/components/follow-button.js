@@ -4,7 +4,6 @@ import HasCurrentUser from '../mixins/has-current-user';
 
 export default Ember.Component.extend(HasCurrentUser, {
   tagName: 'span',
-  targetObject: Em.computed.alias('parentView'),  
 
   isOwnButton: function(){
     return this.get('user.id') === this.get('currentUser.id');
