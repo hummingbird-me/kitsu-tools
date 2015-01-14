@@ -8,8 +8,6 @@ export default Ember.ObjectController.extend({
   blotterMesgFix: "",
   blotterMesg: "",
   blotterLink: "",
-  userToFollow: "",
-  userToFollowSubmit: false,
 
   hasBlotter: Ember.computed.notEmpty('blotter'),
   hasDeployed: false,
@@ -18,25 +16,25 @@ export default Ember.ObjectController.extend({
 
   reportedContent: ["quote:39248348", "comment:3948348"],
 
-  usersToFollow: function(){
+  usersToFollow: function() {
     return this.store.find('user', {
       to_follow: true
     });
   }.property('userToFollowSubmit'),
 
-  accountsNew: function(){
+  accountsNew: function() {
     var statsObject = this.get('content.registrations.total');
     return statsObject[Object.keys(statsObject)[Object.keys(statsObject).length - 1]];
   }.property('content.registrations'),
 
-  accountsCnf: function(){
+  accountsCnf: function() {
     var statsObject = this.get('content.registrations.confirmed');
     return statsObject[Object.keys(statsObject)[Object.keys(statsObject).length - 1]];
   }.property('content.registrations'),
 
-  init: function(){
+  init: function() {
     var blotter = this.get('blotter');
-    if(blotter){
+    if(blotter) {
       this.setProperties({
         'blotterMesg': blotter.message,
         'blotterLink': blotter.link,
@@ -48,13 +46,13 @@ export default Ember.ObjectController.extend({
   },
 
   graphOptions: [],
-  graphData: function(){
+  graphData: function() {
     var data = this.get('content'),
         labels = Object.keys(data["registrations"]["total"]),
         confirmed = [],
         total = [];
 
-    labels.forEach(function(key){
+    labels.forEach(function(key) {
       confirmed.push(data["registrations"]["confirmed"][key]);
       total.push(data["registrations"]["total"][key]);
     });
@@ -82,22 +80,22 @@ export default Ember.ObjectController.extend({
 
 
   actions: {
-    deploy: function(){
+    deploy: function() {
       this.set('hasDeployed', false);
       Ember.$.post("/kotodama/deploy", function() {
         this.set('hasDeployed', true);
       });
     },
 
-    publishUpdate: function(){
+    publishUpdate: function() {
       Ember.$.post("/kotodama/publish_update");
     },
 
-    reload: function(){
+    reload: function() {
       window.location.reload();
     },
 
-    saveBlotter: function(){
+    saveBlotter: function() {
       var self = this,
           query = "?icon=fa-exclamation-circle";
 
@@ -112,7 +110,7 @@ export default Ember.ObjectController.extend({
       });
     },
 
-    clearBlotter: function(){
+    clearBlotter: function() {
       var self = this;
       Ember.$.get("/kotodama/blotter_clear", function() {
         self.setProperties({
@@ -125,30 +123,6 @@ export default Ember.ObjectController.extend({
 
     toggleNonMal: function() {
       this.toggleProperty('showNonMal');
-    },
-
-    addUserToFollow: function(){
-      var username = this.get('userToFollow'),
-          self = this;
-
-      this.store.find('user', username).then(function(user){
-        if(user.length === 0){ return; }
-        user.set('toFollow', true);
-
-        self.set('userToFollow', "");
-        user.save().then(function(){
-          self.toggleProperty('userToFollowSubmit');
-        });
-      });
-    },
-
-    removeUserToFollow: function(user){
-      var self = this;
-
-      user.set('toFollow', false);
-      user.save().then(function(){
-        self.toggleProperty('userToFollowSubmit');
-      });
     }
   }
 });

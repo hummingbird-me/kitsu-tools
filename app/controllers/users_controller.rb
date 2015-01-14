@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
 
     elsif params[:to_follow]
-      render json: User.where(:to_follow => true), each_serializer: UserSerializer
+      render json: User.where(to_follow: true), each_serializer: UserSerializer
 
     else
       ### OLD CODE PATH BELOW. Used only by the recommendations page.
@@ -234,10 +234,6 @@ class UsersController < ApplicationController
       user.waifu_or_husbando = changes[:waifu_or_husbando]
       user.bio = changes[:mini_bio] || ""
       user.waifu_char_id = changes[:waifu_char_id]
-
-      if current_user.admin?
-        user.to_follow = changes[:to_follow]
-      end
 
       if Rails.env.production? and changes[:cover_image_url] =~ /^data:image/
         user.cover_image = changes[:cover_image_url]
