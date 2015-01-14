@@ -90,7 +90,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     return this.store.find('favorite', {
       user_id: self.get('user.id'),
       type: item_type
-    })
+    });
   },
 
 
@@ -120,13 +120,15 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
       this.store.filter('favorite', function(fav){
         return fav.get('isDirty') === true;
       }).then(function(updatedFavs){
-        if(updatedFavs.get('length') == 0) return;
+        if(updatedFavs.get('length') === 0){
+          return;
+        }
 
         var postData = updatedFavs.map(function(fav){
           return {
             id: fav.get('id'),
             rank: fav.get('favRank')
-          }
+          };
         });
 
         return ajax({

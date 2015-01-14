@@ -23,15 +23,19 @@ export default Ember.Component.extend({
       this.$().dragsort({
         dragEnd: function(){
           self.$().children('li').each(function(i, fav){
-            var id = $(fav).attr('data-id');
+            var id = self.$(fav).attr('data-id');
             self.get('targetObject.store').find('favorite', id).then(function(item){
               item.set('favRank', i);
             });
-          })
+          });
         }
       });
     } else {
-      this.$().dragsort('destroy');
+      // Manual workaround for broken part in vendor script
+      // this.$().dragsort('destroy');
+      this.$().unbind("mousedown")
+              .children().unbind("mousedown")
+                         .unbind("dragsort-uninit");
     }
   }.observes('isEditing'),
 
