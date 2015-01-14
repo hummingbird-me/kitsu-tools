@@ -2,6 +2,8 @@ import Ember from 'ember';
 import ajax from 'ic-ajax';
 import HasCurrentUser from '../../mixins/has-current-user';
 
+var FAVS_PER_PAGE = 6;
+
 export default Ember.ArrayController.extend(HasCurrentUser, {
   needs: "user",
   user: Ember.computed.alias('controllers.user'),
@@ -56,24 +58,24 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     var anime = this.get('favorite_anime_data'),
         page  = this.get('favorite_anime_page');
 
-    return anime.slice(0, page * 6);
+    return anime.slice(0, page * FAVS_PER_PAGE);
   }.property('favorite_anime_data.length', 'favorite_anime_page'),
 
   favorite_manga_list: function() {
     var manga = this.get('favorite_manga_data'),
         page  = this.get('favorite_manga_page');
 
-    return manga.slice(0, page * 6);
+    return manga.slice(0, page * FAVS_PER_PAGE);
   }.property('favorite_manga_data.length', 'favorite_manga_page'),
 
   favorite_anime_load_more: function () {
     var page = this.get('favorite_anime_page');
-    return (page * 6 + 1 <= this.get('favorite_anime_data.length'));
+    return (page * FAVS_PER_PAGE + 1 <= this.get('favorite_anime_data.length'));
   }.property('favorite_anime_data.length', 'favorite_anime_page'),
 
   favorite_manga_load_more: function () {
     var page = this.get('favorite_manga_page');
-    return (page * 6 + 1 <= this.get('favorite_manga_data.length'));
+    return (page * FAVS_PER_PAGE + 1 <= this.get('favorite_manga_data.length'));
   }.property('favorite_manga_data.length', 'favorite_manga_page'),
 
   favorite_anime_data: function(){
@@ -151,7 +153,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
 
     favoriteAnimeLoadMore: function () {
       var page = this.get('favorite_anime_page');
-      if (page * 6 + 1 <= this.get('favorite_anime').length) {
+      if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_anime').length) {
         ++page;
         return this.set('favorite_anime_page', page);
       }
@@ -159,7 +161,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
 
     favoriteMangaLoadMore: function () {
       var page = this.get('favorite_manga_page');
-      if (page * 6 + 1 <= this.get('favorite_manga').length) {
+      if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_manga').length) {
         ++page;
         return this.set('favorite_manga_page', page);
       }
@@ -177,7 +179,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     goNextPage: function () {
       var page;
       page = this.get('favorite_anime_page');
-      if (page * 6 + 1 <= this.get('favorite_anime').length) {
+      if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_anime').length) {
         ++page;
         return this.set('favorite_anime_page', page);
       }
