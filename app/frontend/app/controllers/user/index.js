@@ -34,10 +34,10 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   editingFavorites: false,
   selectChoices: ["Waifu", "Husbando"],
   selectedWaifu: null,
-  favorite_anime_page: 1,
-  favorite_manga_page: 1,
+  favoriteAnimePage: 1,
+  favoriteMangaPage: 1,
 
-  linkedWebsites: function(){
+  linkedWebsites: function() {
     if (!this.get("hasWebsite")) {
       return;
     }
@@ -46,7 +46,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
         siteList = [],
         actualLn = "";
 
-    dataList.forEach(function(link){
+    dataList.forEach(function(link) {
       actualLn = (/[a-z]{4,}\:\/\//.test(link)) ? link.trim() : 'http://'+link.trim();
       siteList.push({'link': actualLn, 'name': link.trim()});
     });
@@ -54,39 +54,39 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     return siteList;
   }.property('user.website'),
 
-  favorite_anime_list: function() {
-    var anime = this.get('favorite_anime_data'),
-        page  = this.get('favorite_anime_page');
+  favoriteAnimeList: function() {
+    var anime = this.get('favoriteAnimeData'),
+        page  = this.get('favoriteAnimePage');
 
     return anime.slice(0, page * FAVS_PER_PAGE);
-  }.property('favorite_anime_data.length', 'favorite_anime_page'),
+  }.property('favoriteAnimeData.length', 'favoriteAnimePage'),
 
-  favorite_manga_list: function() {
-    var manga = this.get('favorite_manga_data'),
-        page  = this.get('favorite_manga_page');
+  favoriteMangaList: function() {
+    var manga = this.get('favoriteMangaData'),
+        page  = this.get('favoriteMangaPage');
 
     return manga.slice(0, page * FAVS_PER_PAGE);
-  }.property('favorite_manga_data.length', 'favorite_manga_page'),
+  }.property('favoriteMangaData.length', 'favoriteMangaPage'),
 
-  favorite_anime_load_more: function () {
-    var page = this.get('favorite_anime_page');
-    return (page * FAVS_PER_PAGE + 1 <= this.get('favorite_anime_data.length'));
-  }.property('favorite_anime_data.length', 'favorite_anime_page'),
+  favoriteAnimeLoadMore: function () {
+    var page = this.get('favoriteAnimePage');
+    return (page * FAVS_PER_PAGE + 1 <= this.get('favoriteAnimeData.length'));
+  }.property('favoriteAnimeData.length', 'favoriteAnimePage'),
 
-  favorite_manga_load_more: function () {
-    var page = this.get('favorite_manga_page');
-    return (page * FAVS_PER_PAGE + 1 <= this.get('favorite_manga_data.length'));
-  }.property('favorite_manga_data.length', 'favorite_manga_page'),
+  favoriteMangaLoadMore: function () {
+    var page = this.get('favoriteMangaPage');
+    return (page * FAVS_PER_PAGE + 1 <= this.get('favoriteMangaData.length'));
+  }.property('favoriteMangaData.length', 'favoriteMangaPage'),
 
-  favorite_anime_data: function(){
-    return this.favorite_data("Anime");
+  favoriteAnimeData: function() {
+    return this.favoriteData("Anime");
   }.property(),
 
-  favorite_manga_data: function(){
-    return this.favorite_data("Manga");
+  favoriteMangaData: function() {
+    return this.favoriteData("Manga");
   }.property(),
 
-  favorite_data: function(item_type){
+  favoriteData: function(item_type) {
     var self = this;
 
     return this.store.find('favorite', {
@@ -119,14 +119,14 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     doneEditingFav: function () {
       this.set('editingFavorites', false);
 
-      this.store.filter('favorite', function(fav){
+      this.store.filter('favorite', function(fav) {
         return fav.get('isDirty') === true;
-      }).then(function(updatedFavs){
-        if(updatedFavs.get('length') === 0){
+      }).then(function(updatedFavs) {
+        if(updatedFavs.get('length') === 0) {
           return;
         }
 
-        var postData = updatedFavs.map(function(fav){
+        var postData = updatedFavs.map(function(fav) {
           return {
             id: fav.get('id'),
             rank: fav.get('favRank')
@@ -151,42 +151,42 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
       return this.get('user').set('waifuCharId', character.char_id);
     },
 
-    favoriteAnimeLoadMore: function () {
-      var page = this.get('favorite_anime_page');
+    loadMoreFavoriteAnime: function () {
+      var page = this.get('favoriteAnimePage');
       if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_anime').length) {
         ++page;
-        return this.set('favorite_anime_page', page);
+        return this.set('favoriteAnimePage', page);
       }
     },
 
-    favoriteMangaLoadMore: function () {
-      var page = this.get('favorite_manga_page');
+    loadMoreFavoriteManga: function () {
+      var page = this.get('favoriteMangaPage');
       if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_manga').length) {
         ++page;
-        return this.set('favorite_manga_page', page);
+        return this.set('favoriteMangaPage', page);
       }
     },
 
     goPrevPage: function () {
       var page;
-      page = this.get('favorite_anime_page');
+      page = this.get('favoriteAnimePage');
       if (page > 1) {
         --page;
-        return this.set('favorite_anime_page', page);
+        return this.set('favoriteAnimePage', page);
       }
     },
 
     goNextPage: function () {
       var page;
-      page = this.get('favorite_anime_page');
+      page = this.get('favoriteAnimePage');
       if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_anime').length) {
         ++page;
-        return this.set('favorite_anime_page', page);
+        return this.set('favoriteAnimePage', page);
       }
     },
   },
 
-  animeBreakdown: function(){
+  animeBreakdown: function() {
     var topGenres = this.get('userInfo.topGenres');
 
     if (topGenres && topGenres.length > 0) {
@@ -199,7 +199,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     }
   }.property('userInfo.topGenres'),
 
-  animeOptions: function(){
+  animeOptions: function() {
     return {
       percentageInnerCutout : 75,
       segmentShowStroke : false,

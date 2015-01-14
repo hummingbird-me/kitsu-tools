@@ -205,10 +205,10 @@
           {{/if}}
         </div>
         <div class="panel-body">
-          {{favorite-container favorites=favorite_anime_list currentUser=currentUser isEditing=editingFavorites user=user}}
-          {{#if favorite_anime_load_more}}
+          {{favorite-container favorites=favoriteAnimeList currentUser=currentUser isEditing=editingFavorites user=user}}
+          {{#if favoriteAnimeLoadMore}}
             <div class="more-wrapper">
-              <a class="view-more-button" {{action "favoriteAnimeLoadMore"}}> View More</a>
+              <a class="view-more-button" {{action "loadMoreFavoriteAnime"}}> View More</a>
             </div>
           {{/if}}
         </div>
