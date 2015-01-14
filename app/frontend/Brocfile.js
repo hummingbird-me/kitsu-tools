@@ -24,6 +24,7 @@ app.import('vendor/awesome-rating.js');
 app.import('vendor/message-bus.js');
 app.import('vendor/spoiler.js');
 app.import('vendor/htmldiff.js');
+app.import('vendor/dragsort.js');
 app.import('vendor/react-library.js');
 app.import('vendor/messenger/messenger.js');
 app.import('vendor/messenger/messenger-theme-flat.js');

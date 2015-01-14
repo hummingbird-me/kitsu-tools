@@ -64,10 +64,10 @@ class SearchController < ApplicationController
     users = User.search(@query).page(1).per(20) if users.length == 0
 
     formattedAnime = anime.map { |x|
-      {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
+      {:type => 'anime', :slug => x.slug, :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
     }.flatten
     formattedManga = manga.map { |x|
-      {:type => 'manga', :title => x.romaji_title, :image => x.poster_image_thumb, :link => "/manga/#{x.slug}" }
+      {:type => 'manga', :slug => x.slug, :title => x.romaji_title, :image => x.poster_image_thumb, :link => "/manga/#{x.slug}" }
     }.flatten
     formattedUsers = users.map { |x|
       {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" }
