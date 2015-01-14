@@ -13,6 +13,7 @@ export default Model.extend(ModelCurrentUser, {
   substoryCount: DS.attr('number'),
   totalVotes: DS.attr('number'),
   isLiked: DS.attr('boolean'),
+  adult: DS.attr('boolean'),
   recentLikers: DS.hasMany('user'),
 
   coverImageStyle: function() {
@@ -29,6 +30,6 @@ export default Model.extend(ModelCurrentUser, {
   }.property('poster.id', 'user.id'),
 
   canDeleteStory: function() {
-    return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.isAdmin'));
+    return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.is§min'));
   }.property('isNew', 'belongsToUser', 'currentUser.isAdmin'),
 });
