@@ -8,6 +8,8 @@ export default Ember.ObjectController.extend({
   blotterMesgFix: "",
   blotterMesg: "",
   blotterLink: "",
+  userToFollow: "",
+  userToFollowSubmit: false,
 
   hasBlotter: Ember.computed.notEmpty('blotter'),
   hasDeployed: false,
@@ -15,6 +17,12 @@ export default Ember.ObjectController.extend({
   showNonMal: false,
 
   reportedContent: ["quote:39248348", "comment:3948348"],
+
+  usersToFollow: function(){
+    return this.store.find('user', {
+      to_follow: true
+    });
+  }.property('userToFollowSubmit'),
 
   accountsNew: function(){
     var statsObject = this.get('content.registrations.total');
@@ -117,6 +125,30 @@ export default Ember.ObjectController.extend({
 
     toggleNonMal: function() {
       this.toggleProperty('showNonMal');
+    },
+
+    addUserToFollow: function(){
+      var username = this.get('userToFollow'),
+          self = this;
+
+      this.store.find('user', username).then(function(user){
+        if(user.length === 0){ return; }
+        user.set('toFollow', true);
+
+        self.set('userToFollow', "");
+        user.save().then(function(){
+          self.toggleProperty('userToFollowSubmit');
+        });
+      });
+    },
+
+    removeUserToFollow: function(user){
+      var self = this;
+
+      user.set('toFollow', false);
+      user.save().then(function(){
+        self.toggleProperty('userToFollowSubmit');
+      });
     }
   }
 });

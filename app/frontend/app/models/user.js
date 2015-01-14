@@ -18,6 +18,7 @@ export default DS.Model.extend({
   titleLanguagePreference: DS.attr('string'),
   isAdmin: DS.attr('boolean'),
   isPro: DS.attr('boolean'),
+  toFollow: DS.attr('boolean'),
   followerCount: DS.attr('number'),
   followingCount: DS.attr('number'),
 

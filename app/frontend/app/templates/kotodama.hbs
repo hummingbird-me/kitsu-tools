@@ -90,6 +90,34 @@
       </div>
 
       <div class="panel panel-default">
+        <div class="panel-heading">Users to follow</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-8">
+              {{input type="text" class="form-control" value=userToFollow placeholder="Enter exact user name"}}
+            </div>
+            <div class="col-md-4">
+              <button class="btn status-button form-control" {{action 'addUserToFollow'}}>
+                <i class="fa fa-plus"></i> Add
+              </button>
+            </div>
+          </div>
+          <table class="table table-striped">
+            <tbody>
+              {{#each user in usersToFollow}}
+                <tr><td>
+                  <span class="pull-right delete">
+                    <i class="fa fa-minus-square-o" {{action 'removeUserToFollow' user}}></i>
+                  </span>
+                  {{#link-to 'user' user.id}}{{user.id}}{{/link-to}}
+                </td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
         <div class="panel-heading">Import from MAL</div>
         <div class="panel-body">
           <form method="get" action="/kotodama/find_or_create_by_mal">
