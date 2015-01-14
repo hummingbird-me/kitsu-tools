@@ -8,6 +8,10 @@ export default Ember.Component.extend({
   tolerance: 'pointer',
   containment: '.favorite-anime',
 
+  favoriteList: function(){
+    return this.get('favorites').sortBy('favRank');
+  }.property('favorites' ,'isEditing'),
+
   disabled: function() {
     return !this.get('isEditing');
   }.property('isEditing'),

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import ajax from 'ic-ajax';
 import HasCurrentUser from '../../mixins/has-current-user';
 
 export default Ember.ArrayController.extend(HasCurrentUser, {
@@ -114,31 +115,29 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     },
 
     doneEditingFav: function () {
-      var data, list, url, _this;
       this.set('editingFavorites', false);
-      url = "/api/v1/users/" + this.get('currentUser.id') + '/favorite_anime/update';
-      list = this.get('favorite_anime_list');
-      _this = this;
-      data = {};
 
-      list.forEach(function (item) {
-        return data[item.fav_id] = {
-          id: item.fav_id,
-          user_id: _this.get('currentUser.id'),
-          fav_rank: item.fav_rank
-        };
-      });
+      this.store.filter('favorite', function(fav){
+        return fav.get('isDirty') === true;
+      }).then(function(updatedFavs){
+        if(updatedFavs.get('length') == 0) return;
 
-      // FIXME this should be using ember-data
-      return Ember.$.ajax({
-        url: url,
-        data: {
-          data: data
-        },
-        method: 'POST',
-        error: function () {
-          return console.log("Failed to Update Favorites Ranks");
-        }
+        var postData = updatedFavs.map(function(fav){
+          return {
+            id: fav.get('id'),
+            rank: fav.get('favRank')
+          }
+        });
+
+        return ajax({
+          type: 'POST',
+          url: "/favorites/update_all",
+          data: { favorites: JSON.stringify(postData) },
+          dataType: 'json'
+        }).then(Ember.K, function() {
+          alert("Something went wrong.");
+        });
+
       });
     },
 

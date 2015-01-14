@@ -109,9 +109,8 @@ Hummingbird::Application.routes.draw do
   end
 
   # Favorite media
-  resources :favorites do 
-    post :update_all
-  end
+  resources :favorites
+  post '/favorites/update_all' => 'favorites#update_all'
 
   # Settings
   get '/settings' => 'settings#index'

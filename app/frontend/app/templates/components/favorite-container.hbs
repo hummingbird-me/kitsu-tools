@@ -1,5 +1,5 @@
-{{#if favorites}}
-  {{#each favorite in favorites}}
+{{#if favoriteList}}
+  {{#each favorite in favoriteList}}
     {{#if isEditing}}
       <li class="grid-list clearfix" {{bind-attr data-id=favorite.id}}>
         <span class="grid-position">{{favorite.favRank}}</span>
