@@ -21,6 +21,7 @@ export default Ember.Component.extend({
 
     if(this.get('isEditing')){
       this.$().dragsort({
+        dragSelector: ".grid-draggable",
         dragEnd: function(){
           self.$().children('li').each(function(i, fav){
             var id = self.$(fav).attr('data-id');

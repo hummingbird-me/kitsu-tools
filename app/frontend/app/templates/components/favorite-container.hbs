@@ -1,11 +1,11 @@
 {{#if favoriteList}}
   {{#each favorite in favoriteList}}
     {{#if isEditing}}
-      <li class="grid-list clearfix" {{bind-attr data-id=favorite.id}}>
+      <li class="grid-list grid-draggable clearfix" {{bind-attr data-id=favorite.id}}>
         <span class="grid-position">{{favorite.favRank}}</span>
         <img class="grid-list-thumb" {{bind-attr src=favorite.item.posterImage}} />
         <span class="grid-list-title">{{favorite.item.canonicalTitle}}</span>
-        <span class="grid-list-title" {{action 'deleteFavorite' favorite}}>(x)</span>
+        <span class="grid-position" {{action 'deleteFavorite' favorite}}>(x)</span>
       </li>
     {{else}}
       <li class="grid-thumb" {{bind-attr data-id=favorite.id}}>
@@ -21,6 +21,11 @@
       </li>
     {{/if}}
   {{/each}}
+  {{#if isEditing}}
+    <div class="grid-list clearfix">
+      {{favorite-search action="submitSearch" currentUser=currentUser}}
+    </div>
+  {{/if}}
 {{else}}
     <div class="no-favorites text-center">
       {{#if viewingSelf}}
