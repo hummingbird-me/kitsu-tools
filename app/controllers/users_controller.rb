@@ -234,7 +234,10 @@ class UsersController < ApplicationController
       user.waifu_or_husbando = changes[:waifu_or_husbando]
       user.bio = changes[:mini_bio] || ""
       user.waifu_char_id = changes[:waifu_char_id]
-      user.to_follow = changes[:to_follow]
+
+      if current_user.admin?
+        user.to_follow = changes[:to_follow]
+      end
 
       if Rails.env.production? and changes[:cover_image_url] =~ /^data:image/
         user.cover_image = changes[:cover_image_url]
