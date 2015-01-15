@@ -16,6 +16,9 @@ export default Ember.Component.extend({
         self.handleFormState();
       }
     });
+    this.$("#status-box-text").click(function(){
+      self.toggleProperty('newPostAdult');
+    });
   },
 
   handleFormState: function(){
