@@ -30,6 +30,6 @@ export default Model.extend(ModelCurrentUser, {
   }.property('poster.id', 'user.id'),
 
   canDeleteStory: function() {
-    return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.is§min'));
+    return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.isAdmin'));
   }.property('isNew', 'belongsToUser', 'currentUser.isAdmin'),
 });

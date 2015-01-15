@@ -58,7 +58,7 @@ export default Ember.Route.extend(Paginated, {
       var story = this.store.createRecord('story', {
         type: 'comment',
         poster: this.get('currentUser.model.content'),
-        user: this.modelFor('user'),
+        user: this.get('currentUser.model.content'),
         comment: post.comment,
         adult: post.isAdult
       });

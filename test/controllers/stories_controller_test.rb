@@ -8,7 +8,7 @@ class StoriesControllerTest < ActionController::TestCase
 
   test "can create new comment stories" do
     sign_in users(:vikhyat)
-    post :create, format: :json, story: {user_id: 'vikhyat', comment: 'test!'}
+    post :create, format: :json, story: {user_id: 'vikhyat', comment: 'test!', adult: false}
     response = JSON.parse(@response.body)["story"]
 
     assert_response 200
@@ -54,7 +54,8 @@ class StoriesControllerTest < ActionController::TestCase
       action_type: "created_profile_comment",
       user: users(:vikhyat),
       poster: users(:vikhyat),
-      comment: "Test"
+      comment: "Test",
+      adult: false
     )
 
     assert_equal 0, story.reload.total_votes

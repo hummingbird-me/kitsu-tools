@@ -16,16 +16,16 @@ export default Ember.Component.extend({
         self.handleFormState();
       }
     });
-    this.$("#status-box-text").click(function(){
+    this.$("#status-box-text").click(function() {
       self.toggleProperty('newPostAdult');
     });
   },
 
-  handleFormState: function(){
+  handleFormState: function() {
     var self = this;
 
-    setTimeout(function(){
-      if(self.get('formIsOpen')){
+    setTimeout(function() {
+      if(self.get('formIsOpen')) {
         self.$(".status-form").autosize({append: "\n"});
         self.$(".panel-footer").slideDown(200);
       } else {
