@@ -54,6 +54,21 @@
           <button class="form-control btn btn-danger" {{action 'publishUpdate'}}>Make 'em Reload!</button>
         </div>
       </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">Users to follow</div>
+        <div class="panel-body no-padding no-vpadding">
+          <table class="table table-striped">
+            <tbody>
+              {{#each user in usersToFollow}}
+                <tr><td>
+                  {{#link-to 'user' user}}{{user.username}}{{/link-to}}
+                </td></tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
 

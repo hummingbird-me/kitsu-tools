@@ -16,6 +16,9 @@ class UsersController < ApplicationController
 
       render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
 
+    elsif params[:to_follow]
+      render json: User.where(to_follow: true), each_serializer: UserSerializer
+
     else
       ### OLD CODE PATH BELOW. Used only by the recommendations page.
       authenticate_user!
