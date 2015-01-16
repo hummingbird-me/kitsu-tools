@@ -9,11 +9,22 @@ class FavoritesController < ApplicationController
   end
 
   def create
+    authenticate_user!
+    params.require(:favorite)
 
-    # Switch creating favorites to this endpoint
-    # for the future?
+    if params[:favorite][:item_type] == "Anime"
+      item = Anime.find(params[:favorite][:item_id])
+    else
+      item = Manga.find(params[:favorite][:item_id])
+    end
 
-    render json: false
+    fav = Favorite.create(
+      user: current_user,
+      item: item,
+      fav_rank: 9999
+    )
+
+    render json: fav
   end
 
   def destroy
@@ -24,7 +35,8 @@ class FavoritesController < ApplicationController
     if favorite.user == current_user
       favorite.destroy!
     else
-        error!("Unauthorized", 403)
+      error!("Unauthorized", 403)
+      return
     end
 
     render json: true
