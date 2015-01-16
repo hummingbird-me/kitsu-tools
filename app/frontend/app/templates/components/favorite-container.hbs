@@ -23,10 +23,15 @@
   {{/each}}
   {{#if isEditing}}
     <div class="grid-list clearfix">
-      {{favorite-search action="submitSearch" currentUser=currentUser}}
+      {{favorite-search action="pushFavorite" currentUser=currentUser}}
     </div>
   {{/if}}
 {{else}}
+  {{#if isEditing}}
+    <div class="grid-list clearfix">
+      {{favorite-search action="pushFavorite" currentUser=currentUser}}
+    </div>
+  {{else}}
     <div class="no-favorites text-center">
       {{#if viewingSelf}}
         <h3>You have no favorites.</h3>
@@ -36,4 +41,5 @@
         <p>Clearly they're an individual of fine, discerning tastes.</p>
       {{/if}}
     </div>
+  {{/if}}
 {{/if}}

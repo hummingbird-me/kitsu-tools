@@ -50,8 +50,9 @@ export default Ember.Component.extend({
   actions: {
     addMediaToFavorites: function(media){
       var cuser = this.get('currentUser'),
-          store = this.get('targetObject.targetObject.store');
-      
+          store = this.get('targetObject.targetObject.store'),
+          self = this;
+
       var newFav = store.createRecord('favorite', {
         'favRank': 9999
       });
@@ -62,6 +63,7 @@ export default Ember.Component.extend({
         store.find(media.type, media.slug).then(function(item){
           newFav.set('item', item);
           newFav.save();
+          self.sendAction('action', newFav);
         });
       });
     }
