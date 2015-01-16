@@ -1,0 +1,40 @@
+# == Schema Information
+#
+# Table name: favorites
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  item_id    :integer
+#  item_type  :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  fav_rank   :integer          default(9999)
+#
+
+one:
+  id: 1
+  user: vikhyat
+  item_id: 1
+  item_type: Anime
+  fav_rank: 1
+
+two:
+  id: 2
+  user: vikhyat
+  item_id: 2
+  item_type: Anime
+  fav_rank: 2
+
+three:
+  id: 3
+  user: vikhyat
+  item_id: 3
+  item_type: Anime
+  fav_rank: 3
+
+four:
+  id: 4
+  user: vikhyat
+  item_id: 4
+  item_type: Anime
+  fav_rank: 4
