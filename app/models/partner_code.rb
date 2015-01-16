@@ -5,7 +5,7 @@
 #  id              :integer          not null, primary key
 #  partner_deal_id :integer          not null
 #  code            :string(255)      not null
-#  user_id         :integer          not null
+#  user_id         :integer
 #  expires_at      :datetime
 #  claimed_at      :datetime
 #

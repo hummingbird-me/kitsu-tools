@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: partner_codes
+#
+#  id              :integer          not null, primary key
+#  partner_deal_id :integer          not null
+#  code            :string(255)      not null
+#  user_id         :integer
+#  expires_at      :datetime
+#  claimed_at      :datetime
+#
+
 one:
   partner_deal: one
   code: abcdefg
