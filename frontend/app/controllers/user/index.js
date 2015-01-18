@@ -4,7 +4,6 @@ import HasCurrentUser from '../../mixins/has-current-user';
 export default Ember.ArrayController.extend(HasCurrentUser, {
   needs: "user",
   user: Ember.computed.alias('controllers.user'),
-  waifu_slug: Ember.computed.any('user.waifuSlug'),
   hasWaifu: Ember.computed.any('user.waifu'),
   hasLocation: Ember.computed.any('user.location'),
   hasWebsite: Ember.computed.any('user.website'),
@@ -85,8 +84,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
 
     didSelectWaifu: function (character) {
       this.set('selectedWaifu', character);
-      this.get('user').set('waifu', character.value);
-      return this.get('user').set('waifuCharId', character.char_id);
+      return this.get('user').set('waifu', character.char_id);
     }
   },
 

@@ -241,7 +241,6 @@ class UsersController < ApplicationController
       user.website = changes[:website]
       user.waifu_or_husbando = changes[:waifu_or_husbando]
       user.bio = changes[:bio] || ""
-      user.waifu_char_id = changes[:waifu_char_id]
 
       if changes[:cover_image_url] =~ /^data:image/
         user.cover_image = changes[:cover_image_url]
