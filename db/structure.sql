@@ -234,7 +234,9 @@ CREATE TABLE characters (
     image_content_type character varying(255),
     image_file_size integer,
     image_updated_at timestamp without time zone,
-    slug character varying(255)
+    slug character varying(255),
+    primary_media_id integer,
+    primary_media_type character varying(255)
 );
 
 
@@ -3780,4 +3782,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150305204429');
 INSERT INTO schema_migrations (version) VALUES ('20150317215112');
 
 INSERT INTO schema_migrations (version) VALUES ('20150401033305');
+
+INSERT INTO schema_migrations (version) VALUES ('20150118071809');
 

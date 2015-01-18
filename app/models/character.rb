@@ -40,6 +40,7 @@ class Character < ActiveRecord::Base
 
   validates :name, :presence => true
   has_many :castings, dependent: :destroy
+  belongs_to :primary_media, polymorphic: true
 
   has_attached_file :image,
     styles: {thumb_small: "60x60#"},
@@ -55,10 +56,6 @@ class Character < ActiveRecord::Base
     self.castings.preload(:castable).map(&:castable).uniq.sort { |a|
       a.try(:started_airing_date) or a.try(:start_date) or Date.today
     }
-  end
-
-  def primary_media
-    appearances.first
   end
 
   def self.create_or_update_from_hash(hash)
