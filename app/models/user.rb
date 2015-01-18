@@ -46,12 +46,10 @@
 #  avatar_processing           :boolean
 #  subscribed_to_newsletter    :boolean          default(TRUE)
 #  mal_import_in_progress      :boolean
-#  waifu                       :string(255)
 #  location                    :string(255)
 #  website                     :string(255)
 #  waifu_or_husbando           :string(255)
-#  waifu_slug                  :string(255)      default("#")
-#  waifu_char_id               :string(255)      default("0000")
+#  waifu_id                    :integer
 #  to_follow                   :boolean          default(FALSE)
 #  dropbox_token               :string(255)
 #  dropbox_secret              :string(255)
@@ -139,7 +137,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :favorite_genres, -> { uniq }, class_name: "Genre", join_table: "favorite_genres_users"
 
-  belongs_to :waifu_character, foreign_key: :waifu_char_id, class_name: 'Casting', primary_key: :character_id
+  belongs_to :waifu, class_name: 'Character'
 
   # Include devise modules. Others available are:
   # :lockable, :timeoutable, :trackable, :rememberable.
@@ -405,10 +403,6 @@ class User < ActiveRecord::Base
 
     if about_changed?
       self.about_formatted = MessageFormatter.format_message about
-    end
-
-    if waifu_char_id != '0000' and changed_attributes['waifu_char_id']
-      self.waifu_slug = waifu_character ? waifu_character.castable.slug : '#'
     end
   end
 

@@ -50,8 +50,15 @@ class Character < ActiveRecord::Base
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
 
+  def appearances
+    # Kind of a shitty solution, but required to support both manga and anime
+    self.castings.preload(:castable).map(&:castable).uniq.sort { |a|
+      a.try(:started_airing_date) or a.try(:start_date) or Date.today
+    }
+  end
+
   def primary_media
-    self.castings.first.media
+    appearances.first
   end
 
   def self.create_or_update_from_hash(hash)

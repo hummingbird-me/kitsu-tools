@@ -62,7 +62,7 @@
                       <div class="interest-icon"> <i class="fa fa-heart"></i></div>
                       <div class="interest">
                         {{user.waifuOrHusbando}} is
-                        {{#link-to 'anime' waifu_slug}} {{user.waifu}}{{/link-to}}
+                        {{#link-to user.waifu_primary_media_type user.waifu.primary_media_id}} {{user.waifu.name}}{{/link-to}}
                       </div>
                     {{/if}}
                   </li>

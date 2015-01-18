@@ -1634,12 +1634,10 @@ CREATE TABLE users (
     avatar_processing boolean,
     subscribed_to_newsletter boolean DEFAULT true,
     mal_import_in_progress boolean,
-    waifu character varying(255),
     location character varying(255),
     website character varying(255),
     waifu_or_husbando character varying(255),
-    waifu_slug character varying(255) DEFAULT '#'::character varying,
-    waifu_char_id character varying(255) DEFAULT '0000'::character varying,
+    waifu_id integer,
     to_follow boolean DEFAULT false,
     dropbox_token character varying(255),
     dropbox_secret character varying(255),
@@ -2974,17 +2972,10 @@ CREATE INDEX index_users_on_to_follow ON users USING btree (to_follow);
 
 
 --
--- Name: index_users_on_waifu; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_waifu_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_users_on_waifu ON users USING btree (waifu);
-
-
---
--- Name: index_users_on_waifu_char_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_users_on_waifu_char_id ON users USING btree (waifu_char_id);
+CREATE INDEX index_users_on_waifu_id ON users USING btree (waifu_id);
 
 
 --
@@ -2992,13 +2983,6 @@ CREATE INDEX index_users_on_waifu_char_id ON users USING btree (waifu_char_id);
 --
 
 CREATE INDEX index_users_on_waifu_or_husbando ON users USING btree (waifu_or_husbando);
-
-
---
--- Name: index_users_on_waifu_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_users_on_waifu_slug ON users USING btree (waifu_slug);
 
 
 --
@@ -3710,6 +3694,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140714064353');
 INSERT INTO schema_migrations (version) VALUES ('20140714072239');
 
 INSERT INTO schema_migrations (version) VALUES ('20140714111212');
+
+INSERT INTO schema_migrations (version) VALUES ('20140725195609');
 
 INSERT INTO schema_migrations (version) VALUES ('20140731164542');
 

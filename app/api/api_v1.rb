@@ -229,10 +229,10 @@ class API_v1 < Grape::API
       user = find_user(params[:username])
       json = {
         name: user.name,
-        waifu: user.waifu,
+        waifu: user.waifu.name,
         waifu_or_husbando: user.waifu_or_husbando,
-        waifu_slug: user.waifu_slug,
-        waifu_char_id: user.waifu_char_id,
+        waifu_slug: user.waifu.primary_media.slug,
+        waifu_char_id: user.waifu.id,
         location: user.location,
         website: user.website,
         avatar: user.avatar.url(:thumb),
