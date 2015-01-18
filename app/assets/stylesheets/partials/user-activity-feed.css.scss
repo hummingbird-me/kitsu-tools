@@ -267,9 +267,11 @@
   .fav-search {
     height: auto;
     padding: 10px;
+    cursor: initial !important;
     input {
       border: none;
       color: #e67e22;
+      width: 100%;
     }
     .badge {
       display: none;
