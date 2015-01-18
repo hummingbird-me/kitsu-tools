@@ -1,0 +1,88 @@
+{{! Cover Image }}
+<div class="user-cover">
+  <div class="cover-photo" {{bind-attr style=coverImageStyle}}>
+    <div class="dark-overlay"></div>
+  </div>
+</div>
+
+<div class="container relative">
+  <div class="row">
+    <div class="user-cover-options">
+      <div class="col-sm-12 user-wrapper">
+        {{! Group Avatar }}
+        <div class="col-sm-2 col-md-2 user-avatar clearfix">
+          <div class="large-avatar">
+            <img class="responsive-image" {{bind-attr src=model.avatar alt=model.name}}>
+          </div>
+        </div>
+
+        {{! Group Info }}
+        <div class="col-sm-12 col-md-10 no-padding account-wrapper">
+          <div class="account-info">
+            <div class="bio-wrapper">
+              <h2 class="name">
+                {{model.name}}
+              </h2>
+              <p class="user-bio">
+                {{model.bio}}
+              </p>
+            </div>
+          </div>
+
+
+          {{! Join/Leave Group Button }}
+          <div class="follow-widgets">
+            {{#if currentMember}}
+              {{#if currentMember.pending}}
+                <button class="btn btn-default btn-lg follow-button">
+                  Pending...
+                </button>
+              {{else}}
+                <button class="btn btn-default btn-lg follow-button">
+                  Leave Group
+                </button>
+              {{/if}}
+            {{else}}
+              <button class="btn btn-default btn-lg follow-button">
+                Join Group
+              </button>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{! Nav Bubbles }}
+<div class="profile-navigation">
+  <div class="container">
+    <div class="row">
+      <ul class="inline-list clearfix">
+        <li class="nav-link">
+          {{#link-to 'group.index'}}Feed{{/link-to}}
+        </li>
+        <li class="nav-link">
+          {{#link-to 'group.members'}}Members{{/link-to}}
+        </li>
+        {{#if isAdmin}}
+          <li class="nav-link">
+            {{#link-to 'group.manage'}}Manage{{/link-to}}
+          </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{{! Ad Banner }}
+<div class="container">
+  <div class="feed-head-advert">
+    {{ad-unit adId="1293413" adClass="257f81e798bd68dd81e60f42838f361f"}}
+  </div>
+</div>
+
+{{! Content }}
+<div class="min-height-wrapper">
+  {{outlet}}
+</div>

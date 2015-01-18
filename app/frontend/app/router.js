@@ -35,6 +35,11 @@ Router.map(function() {
     this.route('followers');
   });
 
+  this.resource('group', {path: '/groups/:id'}, function() {
+    this.route('members');
+    this.route('manage');
+  });
+
   this.route('onboarding', function() {
     this.route('start');
     this.route('rating-system');

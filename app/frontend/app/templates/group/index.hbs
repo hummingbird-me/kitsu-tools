@@ -1,0 +1,69 @@
+<div class="group-content">
+  <div class="row">
+    <div class="secondary-info">
+
+      {{! Group Details }}
+      <div class="group-about-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Group Details</h3>
+        </div>
+        <div class="panel-body">
+          <p class="about">{{model.about}}</p>
+        </div>
+      </div>
+
+      {{! Ad unit }}
+      <div class="feed-sm-sidebar-advert">
+        {{ad-unit adId="1298407" adClass="257f81e798bd68dd81e60f42838f361f"}}
+      </div>
+
+      {{! Group Members }}
+      <div class="group-members-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Group Members</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            {{#each model.recentMembers}}
+              <li {{bind-attr data-tooltip=user.username}}>
+                {{#link-to 'user' user.username}}
+                  {{avatar user 'thumb'}}
+                {{/link-to}}
+              </li>
+            {{/each}}
+          </ul>
+          <div class="more-wrapper">
+            {{#link-to 'group.members' class='view-more-button'}}
+              View All ({{model.memberCount}})
+            {{/link-to}}
+          </div>
+        </div>
+      </div>
+
+      {{! Suggested Groups }}
+      <div class="group-suggestions-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Suggested Groups</h3>
+        </div>
+        <div class="panel-body">
+          TODO
+        </div>
+      </div>
+
+      {{! Ad unit }}
+      <div class="feed-sidebar-advert">
+        {{ad-unit adId="1298406" adClass="257f81e798bd68dd81e60f42838f361f"}}
+      </div>
+    </div>
+  </div>
+
+  {{!-- TODO: Group Feed
+  <div class="user-feed">
+    {{post-comment action="postComment"}}
+    {{each content itemController="story" itemViewClass="story"}}
+    {{#if canLoadMore}}
+      {{load-more classNames="light" action="loadNextPage"}}
+    {{/if}}
+  </div>
+  --}}
+</div>

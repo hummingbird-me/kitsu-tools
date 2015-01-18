@@ -6,5 +6,12 @@ export default DS.Model.extend({
   about: DS.attr('string'),
   coverImage: DS.attr('string'),
   avatar: DS.attr('string'),
-  members: DS.hasMany('group-member')
+  memberCount: DS.attr('number'),
+  members: DS.hasMany('group-member'),
+
+  // Fixes the fact that viewing all members adds to the members
+  // association.
+  recentMembers: function() {
+    return this.get('members').slice(0, 14);
+  }.property('members')
 });

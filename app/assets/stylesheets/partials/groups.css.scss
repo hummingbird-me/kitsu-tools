@@ -1,0 +1,29 @@
+.group-content {
+  @extend .profile-content;
+}
+
+.group-about-panel {
+  @extend .user-about-panel;
+}
+
+.group-members-panel, .group-suggestions-panel {
+  @extend .panel;
+  @extend .panel-default;
+  float: left;
+  width: 100%;
+}
+
+.group-members-panel {
+  ul {
+    li {
+      display: inline-block;
+      width: 50px;
+      margin-left: 8px;
+      margin-bottom: 8px;
+      img {
+        width: 100%;
+        border-radius: 3px;
+      }
+    }
+  }
+}
