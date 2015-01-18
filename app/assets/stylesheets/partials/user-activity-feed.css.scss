@@ -237,6 +237,56 @@
     @extend .col-xs-4;
     @extend .col-sm-4;
   }
+  .grid-list {
+    padding: 0;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  .grid-list-title {
+    position: relative;
+    top: -6px;
+    max-width: 60%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .grid-position {
+    padding: 11px;
+    .fa {
+      cursor: pointer;
+      opacity: .6;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  .fav-search {
+    height: auto;
+    padding: 10px;
+    input {
+      border: none;
+      color: #e67e22;
+    }
+    .badge {
+      display: none;
+    }
+    .fa {
+      cursor: pointer;
+      opacity: 1;
+      color: #1abc9c;
+      &:hover {
+        opacity: 1;
+        color: darken(#1abc9c, 10);
+      }
+    }
+  }
+  .search-result {
+    cursor: initial !important;
+  }
 }
 
 .no-favorites {

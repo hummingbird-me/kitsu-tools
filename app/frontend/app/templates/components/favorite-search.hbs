@@ -7,12 +7,12 @@
       <li class="search-result grid-list">
           <div class="grid-position">
             <a {{action 'addMediaToFavorites' result}}>
-              (+)
+              <i class="fa fa-plus-circle"></i>
             </a>
           </div>
           <img class="grid-list-thumb" {{bind-attr src="result.image"}} />
           <div class="grid-list-title">{{result.title}}</div>
-          <span {{bind-attr class=":search-result-badge :badge result.type"}}>{{result.type}}</span>
+          {{!-- <span {{bind-attr class=":search-result-badge :badge result.type"}}>{{result.type}}</span> --}}
       </li>
     {{/each}}
   </ul>
