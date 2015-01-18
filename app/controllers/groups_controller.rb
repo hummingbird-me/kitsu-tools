@@ -25,15 +25,8 @@ class GroupsController < ApplicationController
 
   def show_members
     group = Group.find(params[:group_id])
-    members = current_user && group.has_admin?(current_user) ? group.members : group.members.accepted
-
-    respond_to do |format|
-      format.json { render json: members }
-      format.html do
-        preload_to_ember! members
-        render_ember
-      end
-    end
+    preload_to_ember! group
+    render_ember
   end
 
   def new

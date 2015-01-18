@@ -1,6 +1,14 @@
 class GroupMembersController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    group = Group.find(params[:group_id])
+    members = current_user && group.is_admin?(current_user) ?
+      group.members : group.members.accepted
+    members = members.page(params[:page]).per(20)
+    render json: members, meta: {cursor: 1 + (params[:page] || 1).to_i}
+  end
+
   def create
     membership_hash = params.require(:group_member).permit(:group_id, :user_id).to_h
 
@@ -40,8 +48,8 @@ class GroupMembersController < ApplicationController
     render json: {}
   end
 
-
   private
+
   def current_member
     group.member(current_user)
   end

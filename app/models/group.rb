@@ -81,6 +81,10 @@ class Group < ActiveRecord::Base
     members.where(user: user).first
   end
 
+  def is_admin?(user)
+    member(user).try(:admin?)
+  end
+
   def self.new_with_admin(params, admin)
     group = Group.new(params)
     group.members.build(

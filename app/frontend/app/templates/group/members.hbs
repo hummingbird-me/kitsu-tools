@@ -1,0 +1,9 @@
+<h1>No Design Yet</h1>
+
+{{#each}}
+  <p>I'm {{user.username}}</p>
+{{/each}}
+
+{{#if canLoadMore}}
+  {{load-more classNames="light" action="loadNextPage"}}
+{{/if}}
