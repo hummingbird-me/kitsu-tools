@@ -259,9 +259,11 @@
       </div>
       <div class="reviews">
         <h4> Reviews:</h4>
-        <div class="review-links">
-          <a {{bind-attr href=fullReviewsURL}}>View All</a> · <a {{bind-attr href=newReviewURL}}>Write One</a>
-        </div>
+        {{#if trendingReviews}}
+          <div class="review-links">
+            <a {{bind-attr href=fullReviewsURL}}>View All</a> · <a {{bind-attr href=newReviewURL}}>Write One</a>
+          </div>
+        {{/if}}
         {{partial "anime/trending_reviews"}}
       </div>
     </div>
