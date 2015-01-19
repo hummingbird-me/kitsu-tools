@@ -51,6 +51,7 @@ RailsAdmin.config do |config|
   config.model 'User' do
     edit do
       field :email
+      field :to_follow
       field :ninja_banned
     end
   end

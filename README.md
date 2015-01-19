@@ -1,6 +1,6 @@
 # Hummingbird
 
-[![Build Status](https://secure.travis-ci.org/hummingbird-me/hummingbird.png?branch=master)](http://travis-ci.org/hummingbird-me/hummingbird) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird.png)](https://codeclimate.com/github/hummingbird-me/hummingbird) [![Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird/coverage.png)](https://codeclimate.com/github/hummingbird-me/hummingbird) [![Dependency Status](https://gemnasium.com/hummingbird-me/hummingbird.svg)](https://gemnasium.com/hummingbird-me/hummingbird)
+[![Build Status](https://secure.travis-ci.org/hummingbird-me/hummingbird.png?branch=master)](http://travis-ci.org/hummingbird-me/hummingbird) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird.png)](https://codeclimate.com/github/hummingbird-me/hummingbird) [![Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird/coverage.png)](https://codeclimate.com/github/hummingbird-me/hummingbird)
 
 [![Hummingbird is now Open Source](http://hummingbird-forum.s3.amazonaws.com/86407dbb64dbecfee0cbd74b759a4b33f70657b74c29.jpg)](http://forums.hummingbird.me/t/hummingbird-is-now-open-source/9870)
 
@@ -14,7 +14,7 @@ The backend uses Rails, Postgres and Redis. The front-end is mostly a client-sid
 
 To get started have a look at the [development environment setup instructions](https://github.com/hummingbird-me/hummingbird/wiki/Setting-up-a-development-environment) and this [topic with ideas for helping out with Hummingbird](http://forums.hummingbird.me/t/how-to-help-out-with-hummingbird/9390). Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/master/CONTRIBUTING.md).
 
-If you have any questions don't hesitate to contact us! Feel free to drop by the [development Hipchat room](https://www.hipchat.com/gIQZzCGPS) or create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev).
+If you have any questions don't hesitate to contact us! Feel free to create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev) or [email Josh](mailto:josh@hummingbird.me) to get access to our Slack.
 
 Please don't use Github issues for feature requests, instead create a topic in the [forum feedback category](http://forums.hummingbird.me/category/feedback).
 

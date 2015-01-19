@@ -30,8 +30,17 @@ class ProMembershipsController < ApplicationController
           return render(text: "Couldn't find user: #{params[:gift_to]}", status: 400)
         end
         manager.gift! plan, token, gift_to, params[:gift_message]
+        mixpanel.track "PRO gifted", {
+          gifted_to: gift_to.name,
+          gifted_by: current_user.name,
+          plan: plan.name
+        }
       else
         manager.subscribe! plan, token
+        mixpanel.track "PRO subscription", {
+          username: current_user.name,
+          plan: plan.name
+        }
       end
     rescue Exception => e
       return render(text: "Unknown error: #{e.message}", status: 400)

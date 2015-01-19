@@ -5,6 +5,7 @@ class PartnerDealsControllerTest < ActionController::TestCase
     get :index
     assert_response 200
     assert_includes JSON.parse(@response.body), "partner_deals"
+    assert_equal 2, JSON.parse(@response.body)["partner_deals"].length
   end
 
   test "must be a pro user to redeem" do
@@ -25,5 +26,20 @@ class PartnerDealsControllerTest < ActionController::TestCase
     put :update, id: partner_deals(:one).id
     assert_response 200
     assert_equal "abcdefg", @response.body
+  end
+
+  test "limits deals by requestors country" do
+    @request.env["HTTP_CF_IPCOUNTRY"] = "US"
+    get :index
+    assert_response 200
+    assert_includes JSON.parse(@response.body), "partner_deals"
+    assert_equal 2, JSON.parse(@response.body)["partner_deals"].length
+
+    # deal only includes ["US", "AU"]
+    @request.env["HTTP_CF_IPCOUNTRY"] = "NZ"
+    get :index
+    assert_response 200
+    assert_includes JSON.parse(@response.body), "partner_deals"
+    assert_equal 1, JSON.parse(@response.body)["partner_deals"].length
   end
 end

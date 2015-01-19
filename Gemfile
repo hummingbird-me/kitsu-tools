@@ -20,7 +20,7 @@ gem 'redis', require: ['redis', 'redis/connection/hiredis']
 gem 'redis-rails'
 gem 'connection_pool'
 
-gem 'ember-cli-rails'
+gem 'ember-cli-rails', '0.0.18'
 
 gem 'react-rails', '~> 0.10.0.0'
 
@@ -119,6 +119,9 @@ gem 'rubyfish' # String matching
 # TEMPORARY: Remove these when we get rid of TVDB import
 gem 'ruby-progressbar'
 gem 'parallel'
+
+# Pry
+gem 'pry-rails', :group => :development
 
 # Metrics
 gem 'mixpanel'

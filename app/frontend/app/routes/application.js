@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ajax from 'ic-ajax';
 /* global MessageBus */
 
 export default Ember.Route.extend({
@@ -20,24 +19,6 @@ export default Ember.Route.extend({
       } else {
         window.location.href = '/';
       }
-    },
-
-    toggleFollow: function(user) {
-      if (!this.get('currentUser.isSignedIn')) {
-        alert("Need to be signed in!");
-        return;
-      }
-
-      var originalState = user.get('isFollowed');
-      user.set('isFollowed', !originalState);
-      return ajax({
-        url: "/users/" + user.get('id') + "/follow",
-        type: "POST",
-        dataType: "json"
-      }).then(Ember.K, function() {
-        alert("Something went wrong.");
-        return user.set('isFollowed', originalState);
-      });
     },
 
     openModal: function(modalName, model) {

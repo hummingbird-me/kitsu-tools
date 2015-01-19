@@ -138,34 +138,34 @@
           </ul>
         </div>
 
-        <div {{bind-attr class=":user-actions libraryEntryExists::no-entry"}}>
-          <div class="btn-group">
+        {{#if currentUser.isSignedIn}}
+          <div {{bind-attr class=":user-actions libraryEntryExists::no-entry"}}>
+            <div class="btn-group">
 
-            <button {{bind-attr class=":library-button :library-entry :dropdown-toggle libraryStatus:active"}} type="button" data-toggle="dropdown">
-              {{#if libraryEntryExists}}
-                {{libraryEntry.status}}&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
-              {{else}}
-                Add to Library&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
-              {{/if}}
-            </button>
+              <button {{bind-attr class=":library-button :library-entry :dropdown-toggle libraryStatus:active"}} type="button" data-toggle="dropdown">
+                {{#if libraryEntryExists}}
+                  {{libraryEntry.status}}&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
+                {{else}}
+                  Add to Library&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
+                {{/if}}
+              </button>
 
-            <ul class="dropdown-menu">
-              <li><a {{action "setLibraryStatus" "Currently Watching"}}>Currently Watching</a></li>
-              <li><a {{action "setLibraryStatus" "Plan to Watch"}}>Plan to Watch</a></li>
-              <li><a {{action "setLibraryStatus" "Completed"}}>Completed</a></li>
-              <li><a {{action "setLibraryStatus" "On Hold"}}>On Hold</a></li>
-              <li><a {{action "setLibraryStatus" "Dropped"}}>Dropped</a></li>
-              <li><a {{action "removeFromLibrary"}}>Remove from Library</a></li>
-            </ul>
-          </div>
-          {{#if currentUser.isSignedIn}}
+              <ul class="dropdown-menu">
+                <li><a {{action "setLibraryStatus" "Currently Watching"}}>Currently Watching</a></li>
+                <li><a {{action "setLibraryStatus" "Plan to Watch"}}>Plan to Watch</a></li>
+                <li><a {{action "setLibraryStatus" "Completed"}}>Completed</a></li>
+                <li><a {{action "setLibraryStatus" "On Hold"}}>On Hold</a></li>
+                <li><a {{action "setLibraryStatus" "Dropped"}}>Dropped</a></li>
+                <li><a {{action "removeFromLibrary"}}>Remove from Library</a></li>
+              </ul>
+            </div>
             {{#if libraryEntryExists}}
               <div class="personal-rating active">
                 {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=libraryEntry.rating}}
               </div>
             {{/if}}
-          {{/if}}
-        </div>
+          </div>
+        {{/if}}
       </div>
     </div>
     <!-- End series panel -->
@@ -233,35 +233,37 @@
   <!-- Left side End -->
 
   <!-- Right Side Start -->
-  <div class="community-column">
-    {{#if roundedBayesianRating}}
-      <div class="hb-score">
-        <h3>Hummingbird Score: <span class="highlight">{{roundedBayesianRating}}</span></h3>
+  {{#unless notYetAired}}
+    <div class="community-column">
+      {{#if roundedBayesianRating}}
+        <div class="hb-score">
+          <h3>Hummingbird Score: <span class="highlight">{{roundedBayesianRating}}</span></h3>
+        </div>
+      {{/if}}
+      <div class="histogram">
+        {{community-rating communityRatings}}
+        <div class="rating-legend">
+          <span class="lowest-rating">
+            <i class="fa fa-star-half-o"></i>
+            <i class="fa fa-long-arrow-right"></i>
+          </span>
+          <span class="highest-rating">
+            <i class="fa fa-long-arrow-left"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </span>
+        </div>
       </div>
-    {{/if}}
-    <div class="histogram">
-      {{community-rating communityRatings}}
-      <div class="rating-legend">
-        <span class="lowest-rating">
-          <i class="fa fa-star-half-o"></i>
-          <i class="fa fa-long-arrow-right"></i>
-        </span>
-        <span class="highest-rating">
-          <i class="fa fa-long-arrow-left"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-        </span>
+      <div class="reviews">
+        <h4> Reviews:</h4>
+        <div class="review-links">
+          <a {{bind-attr href=fullReviewsURL}}>View All</a> · <a {{bind-attr href=newReviewURL}}>Write One</a>
+        </div>
+        {{partial "anime/trending_reviews"}}
       </div>
     </div>
-    <div class="reviews">
-      <h4> Reviews:</h4>
-      <div class="review-links">
-        <a {{bind-attr href=fullReviewsURL}}>View All</a> · <a {{bind-attr href=newReviewURL}}>Write One</a>
-      </div>
-      {{partial "anime/trending_reviews"}}
-    </div>
-  </div>
+  {{/unless}}
 </div>

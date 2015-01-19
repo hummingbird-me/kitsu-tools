@@ -9,6 +9,11 @@
   }
 }
 
+.ad-unit {
+  position: relative;
+  z-index: 1;
+}
+
 .feed-head-advert, .feed-sidebar-advert, .feed-sm-sidebar-advert, .anime-page-advert {
   @extend .col-xs-12;
   background: #d6d6d6;
@@ -24,11 +29,22 @@
 }
 
 .feed-head-advert {
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
   margin-bottom: 15px;
+  height: 110px;
 }
 
 .feed-sidebar-advert, .feed-sm-sidebar-advert {
   margin-bottom: 20px;
+}
+
+.ad-background {
+  position: absolute;
+  width: 100%;
+  top: 30px;
+  z-index: 0;
+  img {
+    width: 728px;
+    position: relative;
+    top: -3px;
+  }
 }

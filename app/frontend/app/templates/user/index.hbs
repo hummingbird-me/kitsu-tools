@@ -49,36 +49,44 @@
               </ul>
             </div>
           {{else}}
-            <p class="about"> {{user.about}}</p>
-            <div class="user-interests">
-              <ul>
-                <li>
-                  {{#if hasWaifu}}
-                    <div class="interest-icon"> <i class="fa fa-heart"></i></div>
-                    <div class="interest">
-                      {{user.waifuOrHusbando}} is
-                      {{#link-to 'anime' waifu_slug}} {{user.waifu}}{{/link-to}}
-                    </div>
-                  {{/if}}
-                </li>
-                <li>
-                  {{#if hasLocation}}
-                    <div class="interest-icon"> <i class="fa fa-home"></i></div>
-                    <div class="interest"> Lives in <strong>{{user.location}}</strong></div>
-                  {{/if}}
-                </li>
-                <li>
-                  {{#if hasWebsite}}
-                    <div class="interest-icon"> <i class="fa fa-link"></i></div>
-                    <div class="interest">
-                      {{#each linkedWebsites}}
-                        <a {{bind-attr href=link}}>{{name}}</a><br />
-                      {{/each}}
-                    </div>
-                  {{/if}}
-                </li>
-              </ul>
-            </div>
+            {{#if hasAboutSection}}
+              <p class="about"> {{user.about}}</p>
+              <div class="user-interests">
+                <ul>
+                  <li>
+                    {{#if hasWaifu}}
+                      <div class="interest-icon"> <i class="fa fa-heart"></i></div>
+                      <div class="interest">
+                        {{user.waifuOrHusbando}} is
+                        {{#link-to 'anime' waifu_slug}} {{user.waifu}}{{/link-to}}
+                      </div>
+                    {{/if}}
+                  </li>
+                  <li>
+                    {{#if hasLocation}}
+                      <div class="interest-icon"> <i class="fa fa-home"></i></div>
+                      <div class="interest"> Lives in <strong>{{user.location}}</strong></div>
+                    {{/if}}
+                  </li>
+                  <li>
+                    {{#if hasWebsite}}
+                      <div class="interest-icon"> <i class="fa fa-link"></i></div>
+                      <div class="interest">
+                        {{#each linkedWebsites}}
+                          <a {{bind-attr href=link}}>{{name}}</a><br />
+                        {{/each}}
+                      </div>
+                    {{/if}}
+                  </li>
+                </ul>
+              </div>
+            {{else}}
+              {{#if viewingSelf}}
+                <span class="about-none">Tell us about yourself :3</span>
+              {{else}}
+                <span class="about-none">This user has not set any profile details.</span>
+              {{/if}}
+            {{/if}}
           {{/if}}
         </div>
       </div>

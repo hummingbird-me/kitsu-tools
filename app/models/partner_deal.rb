@@ -18,7 +18,9 @@
 #
 
 class PartnerDeal < ActiveRecord::Base
-  scope :available_in, -> country { where('? = ANY(valid_countries)', country.upcase) }
+  scope :available_in, -> country {
+    where('CASE WHEN array_length(valid_countries, 1) > 0 THEN ? = ANY(valid_countries) ELSE true END', country.upcase) unless country.nil?
+  }
 
   # Field Macros
   has_many :codes, class_name: 'PartnerCode'

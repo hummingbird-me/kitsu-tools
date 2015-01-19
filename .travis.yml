@@ -34,8 +34,5 @@ script:
 #  - ssh root@107.170.189.56 "/var/hummingbird/deploy.sh"
 
 notifications:
-  hipchat:
-    rooms:
-      secure: aXpt7vF8j08UA48UltX9BOd5PjaSp8EG6lcKtjM6oi2K0EF+NlJq3RZRKgrYbNTISbOjJUJlFdbGG8oUBi0ilZV0kvF2JYlB16HZgUEcsSeTInUEmPZoy+VvgTve/L+b4+2cgC0pyxC6kzCk9PAYQ3ZCsqSbwISZmHV4cG1k9tg=
-    template:
-      - 'Build #%{build_number} (%{branch} - %{commit} : %{author}): %{message} %{build_url}'
+  slack:
+    secure: mWUt5kViIa34qIR3BcQwUmTZ/1+eqv3WSk4ZRdOFDqidn8kFtmhAb/xgXknuqQc0i/eS427bbxvREogmInXyKgvuMzj1WONcZv2lA/rvEm2/gMJ6x2YnDCUHtuQnLrPpcESKRmC396qPf+Uuw76A6q33TyWxmc7aRP1hG2J14+Y=

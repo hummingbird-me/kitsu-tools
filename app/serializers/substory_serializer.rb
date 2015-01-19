@@ -1,7 +1,8 @@
 class SubstorySerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :type, :created_at, :new_status, :episode_number, :reply
+  attributes :id, :type, :created_at, :new_status, :episode_number,
+    :reply, :story_id
 
   has_one :user, embed_key: :name
 

@@ -81,6 +81,12 @@
     word-wrap: break-word;
   }
 
+  .about-none {
+    display: block;
+    text-align: center;
+    color: #999999;
+  }
+
   .user-interests {
     @extend .col-xs-12;
     margin: 10px 10px 0 -8px;

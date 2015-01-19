@@ -11,7 +11,14 @@ export default Model.extend(ModelCurrentUser, {
   episodeNumber: DS.attr('number'),
   reply: DS.attr('string'),
   user: DS.belongsTo('user'),
-  story: DS.belongsTo('story'),
+  storyId: DS.attr('number'),
+
+  // Using a computed property over a relationship here as
+  // we only serialize 2 substories with a parent story. This method
+  // allows us to link a substory to a story without any issues.
+  story: function() {
+    return this.store.find('story', this.get('storyId'));
+  }.property('storyId'),
 
   html: function() {
     if (this.get('type') === "watchlist_status_update") {
