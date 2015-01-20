@@ -50,8 +50,8 @@ export default Ember.Route.extend(Paginated, {
       this.refresh();
     },
 
-    postComment: function(comment) {
-      if (comment.replace(/\s/g, '').replace(/\[[a-z]+\](.?)\[\/[a-z]+\]/i, '$1').length === 0) {
+    postComment: function(post) {
+      if (post.comment.replace(/\s/g, '').replace(/\[[a-z]+\](.?)\[\/[a-z]+\]/i, '$1').length === 0) {
         return;
       }
 
@@ -59,7 +59,8 @@ export default Ember.Route.extend(Paginated, {
         type: 'comment',
         poster: this.get('currentUser.model.content'),
         user: this.get('currentUser.model.content'),
-        comment: comment
+        comment: post.comment,
+        adult: post.isAdult
       });
       this.currentModel.unshiftObject(story);
       story.save();

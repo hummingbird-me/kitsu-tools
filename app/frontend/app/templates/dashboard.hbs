@@ -116,7 +116,7 @@
     </div>
 
     <div class="user-feed">
-      {{post-comment action="postComment"}}
+      {{post-comment action="postComment" currentUser=currentUser}}
 
       {{#if newStories}}
         <div class="alert alert-info" style="cursor: pointer; text-align: center" {{action "showNewStories"}}>

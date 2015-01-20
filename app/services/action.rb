@@ -23,7 +23,8 @@ class Action
       story = Story.create(
         story_type: "comment",
         user: data[:user],
-        target: data[:poster]
+        target: data[:poster],
+        adult: data[:adult]
       )
 
       substory = Substory.create(

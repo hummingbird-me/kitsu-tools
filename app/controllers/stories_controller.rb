@@ -34,7 +34,8 @@ class StoriesController < ApplicationController
       action_type: "created_profile_comment",
       user: user,
       poster: current_user,
-      comment: params[:story][:comment]
+      comment: params[:story][:comment],
+      adult: params[:story][:adult]
     )
 
     render json: StoryQuery.find_by_id(story.id, current_user)

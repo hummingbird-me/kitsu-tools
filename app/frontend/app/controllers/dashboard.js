@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import HasCurrentUser from '../mixins/has-current-user';
 
-export default Ember.ArrayController.extend({
+export default Ember.ArrayController.extend(HasCurrentUser, {
   currentTab: "dashboard",
 
   highlightDasboard: function() { return this.get('currentTab') === "dashboard"; }.property('currentTab'),

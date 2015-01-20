@@ -52,6 +52,11 @@
 </div>
 
 <div class="story-actions">
+  {{#if adult}}
+    <span class="nsfw-indicator" data-tooltip="This post has been marked as nsfw!">
+      <i class="fa fa-warning"></i>
+    </span>
+  {{/if}}
   <a {{bind-attr class=":like isLiked:active"}} {{action "toggleLike"}}>
     <i class="fa fa-heart-o"></i> {{totalVotes}}
   </a>
