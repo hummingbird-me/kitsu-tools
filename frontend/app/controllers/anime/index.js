@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import HasCurrentUser from '../../mixins/has-current-user';
 
-export default Ember.ObjectController.extend(HasCurrentUser, {
+export default Ember.ObjectController.extend({
   language: null,
 
   showFullCast: null,

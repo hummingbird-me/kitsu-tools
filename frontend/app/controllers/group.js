@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import HasCurrentUser from '../mixins/has-current-user';
 import HasCoverUpload from '../mixins/has-cover-upload';
 /* global Messenger */
 
-export default Ember.Controller.extend(HasCurrentUser, HasCoverUpload, {
+export default Ember.Controller.extend(HasCoverUpload, {
   // this flag is used so that the "Leave Group" button doesn't switch
   // to "Join Group" when waiting for the server to respond.
   loading: false,

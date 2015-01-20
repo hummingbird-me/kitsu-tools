@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import Session from '../utils/session';
-import HasCurrentUser from '../mixins/has-current-user';
 
-export default Ember.Controller.extend(HasCurrentUser, {
+export default Ember.Controller.extend({
   needs: ['header'],
 
   // use location here as currentPath will have

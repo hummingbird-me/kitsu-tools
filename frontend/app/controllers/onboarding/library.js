@@ -1,10 +1,9 @@
 import Ember from 'ember';
-import HasCurrentUser from '../../mixins/has-current-user';
 import ajax from 'ic-ajax';
 
 var REQUIRED_RATING_COUNT = 5;
 
-export default Ember.Controller.extend(HasCurrentUser, {
+export default Ember.Controller.extend({
   showManga: false,
   animeData: function(){
     if(this.get('hasSearchTerm')){

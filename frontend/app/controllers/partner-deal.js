@@ -1,8 +1,7 @@
 import Ember from 'ember';
-import HasCurrentUser from '../mixins/has-current-user';
 import ajax from 'ic-ajax';
 
-export default Ember.ObjectController.extend(HasCurrentUser, {
+export default Ember.ObjectController.extend({
   isRedeeming: false,
   hasRedeemed: false,
 

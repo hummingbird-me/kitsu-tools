@@ -5,7 +5,7 @@ import {
 
 moduleFor('controller:apps', 'AppsController', {
   // Specify the other units that are required for this test.
-  needs: ['controller:application', 'controller:current-user']
+  needs: ['controller:application']
 });
 
 // Replace this with your real tests.

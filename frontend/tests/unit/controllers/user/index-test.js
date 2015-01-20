@@ -5,7 +5,7 @@ import {
 
 moduleFor('controller:user/index', 'UserIndexController', {
   // Specify the other units that are required for this test.
-  needs: ['controller:current-user', 'controller:user']
+  needs: ['controller:user']
 });
 
 // Replace this with your real tests.

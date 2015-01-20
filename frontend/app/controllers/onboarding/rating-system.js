@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import HasCurrentUser from '../../mixins/has-current-user';
 
-export default Ember.Controller.extend(HasCurrentUser, {
+export default Ember.Controller.extend({
   advancedRating: Ember.computed.equal('currentUser.ratingType', "advanced"),
   simpleRating: Ember.computed.not('advancedRating'),
   saving: false,

@@ -1,8 +1,7 @@
 import Ember from 'ember';
-import HasCurrentUser from '../../mixins/has-current-user';
 import ajax from 'ic-ajax';
 
-export default Ember.ArrayController.extend(HasCurrentUser, {
+export default Ember.ArrayController.extend({
   newAppName: '',
   actions: {
     createApp: function() {
