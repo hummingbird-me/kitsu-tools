@@ -6,6 +6,11 @@ class StoriesControllerTest < ActionController::TestCase
     assert_response 200
   end
 
+  test "can get group feed stories" do
+    get :index, format: :json, group_id: 'jerks'
+    assert_response 200
+  end
+
   test "can create new comment stories" do
     sign_in users(:vikhyat)
     post :create, format: :json, story: {user_id: 'vikhyat', comment: 'test!', adult: false}

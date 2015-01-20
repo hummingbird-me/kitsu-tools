@@ -34,6 +34,7 @@ class NewsFeed
   USER_FOLLOWERS_PREFIX         = "user_followers:"
   USER_FOLLOWING_PREFIX         = "user_following:"
   ACTIVE_FOLLOWED_USERS_PREFIX  = "active_followed_users:"
+  ACTIVE_FOLLOWED_GROUPS        = "active_followed_groups:"
 
   def initialize(user)
     @user = user
@@ -65,8 +66,13 @@ class NewsFeed
   # Regenerate the user's feed from scratch.
   def regenerate_feed!
     user_set = active_followed_users + [@user.id]
+    group_set = active_followed_groups
 
-    stories = Story.for_user(@user).order('updated_at DESC').where(user_id: user_set).includes(:user, :target, :substories).limit(FRESH_FETCH_SIZE)
+    stories = Story.for_user(@user)
+                   .order('updated_at DESC')
+                   .where('user_id IN (?) OR group_id IN (?)', user_set, group_set)
+                   .includes(:user, :target, :substories)
+                   .limit(FRESH_FETCH_SIZE)
     stories.each {|story| add! story }
   end
 
@@ -97,5 +103,11 @@ class NewsFeed
   # recently active. Limited to FRESH_FETCH_SIZE users.
   def active_followed_users
     @user.following.limit(FRESH_FETCH_SIZE)
+  end
+
+  # Return the set of active group IDs which our user is part of, which
+  # were most recently active.  Limited to FRESH_FETCH_SIZE groups.
+  def active_joined_groups
+    @user.groups.limit(FRESH_FETCH_SIZE)
   end
 end

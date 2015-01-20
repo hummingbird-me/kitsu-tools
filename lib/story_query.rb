@@ -90,6 +90,15 @@ class StoryQuery
     StoryQuery.find_by_ids(story_ids, current_user)
   end
 
+  # Return `limit` stories for the given group.
+  def self.find_for_group(group, current_user, page, per_page)
+    story_ids = group.stories.for_user(current_user)
+                     .order('stories.updated_at DESC').select(:id)
+                     .page(page).per(per_page).map(&:id)
+
+    StoryQuery.find_by_ids(story_ids, current_user)
+  end
+
   # Return popular stories.
   def self.find_popular(current_user, page, per_page)
     story_ids = Story.where('created_at > ?', 24.hours.ago)

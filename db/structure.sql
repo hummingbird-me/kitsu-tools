@@ -1429,7 +1429,8 @@ CREATE TABLE stories (
     target_type character varying(255),
     watchlist_id integer,
     adult boolean DEFAULT false,
-    total_votes integer DEFAULT 0 NOT NULL
+    total_votes integer DEFAULT 0 NOT NULL,
+    group_id integer
 );
 
 
@@ -2810,6 +2811,13 @@ CREATE INDEX index_quotes_on_anime_id ON quotes USING btree (anime_id);
 --
 
 CREATE INDEX index_stories_on_created_at ON stories USING btree (created_at);
+
+
+--
+-- Name: index_stories_on_group_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_stories_on_group_id ON stories USING btree (group_id);
 
 
 --

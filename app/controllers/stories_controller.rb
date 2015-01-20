@@ -2,11 +2,14 @@ require_dependency 'story_query'
 
 class StoriesController < ApplicationController
   def index
-    params.permit(:user_id, :news_feed, :page)
+    params.permit(:user_id, :group_id, :news_feed, :page)
 
     if params[:user_id]
       user = User.find(params[:user_id])
       stories = StoryQuery.find_for_user(user, current_user, params[:page], 30)
+    elsif params[:group_id]
+      group = Group.find(params[:group_id])
+      stories = StoryQuery.find_for_group(group, current_user, params[:page], 30)
     elsif params[:news_feed]
       stories = NewsFeed.new(current_user).fetch(params[:page] || 1)
     end

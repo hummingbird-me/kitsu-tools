@@ -6,8 +6,13 @@ class StoryFanoutWorker
     story = Story.find_by_id story_id
     return if story.nil?
 
-    followers = User.where(id: [user_id, story.user_id]) + story.user.followers
-    followers = followers.uniq
+    if story.group_id
+      followers = User.where(id: [user_id, story.user_id] + story.group.members.map(&:user_id))
+      followers = followers.uniq
+    else
+      followers = User.where(id: [user_id, story.user_id]) + story.user.followers
+      followers = followers.uniq
+    end
 
     followers.each do |follower|
       feed = NewsFeed.new(follower)

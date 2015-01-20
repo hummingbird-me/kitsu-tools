@@ -29,6 +29,7 @@ class Group < ActiveRecord::Base
   # memberships.
   has_many :members, foreign_key: :group_id,
     class_name: 'GroupMember', dependent: :delete_all
+  has_many :stories
 
   has_attached_file :avatar,
     styles: {
