@@ -196,8 +196,8 @@
           <h3 class="panel-title"> Favorite Anime</h3>
           {{#if viewingSelf}}
             <span class="edit-panel">
-              {{#unless editingFavorites}}
-                <a {{action "editFav"}}><i class="fa fa-pencil"></i></a>
+              {{#unless editingAnimeFavorites}}
+                <a {{action "editFavAnime"}}><i class="fa fa-pencil"></i></a>
               {{else}}
                 <a class="btn btn-xs btn-default" {{action "doneEditingFav"}}> Save</a>
               {{/unless}}
@@ -205,7 +205,7 @@
           {{/if}}
         </div>
         <div class="panel-body">
-          {{favorite-container favorites=favoriteAnimeList currentUser=currentUser isEditing=editingFavorites user=user}}
+          {{favorite-container favorites=favoriteAnimeList containerType="anime" currentUser=currentUser isEditing=editingAnimeFavorites user=user}}
           {{#if favoriteAnimeLoadMore}}
             <div class="more-wrapper">
               <a class="view-more-button" {{action "loadMoreFavoriteAnime"}}> View More</a>
@@ -216,6 +216,34 @@
       <div class="feed-sidebar-advert">
         {{ad-unit adId="1298406" adClass="257f81e798bd68dd81e60f42838f361f"}}
       </div>
+
+      {{! {{#if currentUser.isPro}}
+        <div class="favorite-anime">
+          <div class="panel-heading">
+            <h3 class="panel-title"> Favorite Manga</h3>
+            {{#if viewingSelf}}
+              <span class="edit-panel">
+                {{#unless editingMangaFavorites}}
+                  <a {{action "editFavManga"}}><i class="fa fa-pencil"></i></a>
+                {{else}}
+                  <a class="btn btn-xs btn-default" {{action "doneEditingFav"}}> Save</a>
+                {{/unless}}
+              </span>
+            {{/if}}
+          </div>
+          <div class="panel-body">
+            {{favorite-container favorites=favoriteMangaList containerType="manga" currentUser=currentUser isEditing=editingMangaFavorites user=user}}
+            {{#if favoriteAnimeLoadMore}}
+              <div class="more-wrapper">
+                <a class="view-more-button" {{action "loadMoreFavoriteManga"}}> View More</a>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="feed-sidebar-advert">
+          {{ad-unit adId="1298406" adClass="257f81e798bd68dd81e60f42838f361f"}}
+        </div>
+      {{! {{/if}}
     </div>
 
 

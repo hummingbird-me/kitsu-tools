@@ -31,7 +31,8 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   sortAscending: false,
 
   isEditing: false,
-  editingFavorites: false,
+  editingAnimeFavorites: false,
+  editingMangaFavorites: false,
   selectChoices: ["Waifu", "Husbando"],
   selectedWaifu: null,
   favoriteAnimePage: 1,
@@ -112,12 +113,19 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
       return this.set('isEditing', false);
     },
 
-    editFav: function () {
-      return this.set('editingFavorites', true);
+    editFavAnime: function () {
+      return this.set('editingAnimeFavorites', true);
+    },
+
+    editFavManga: function () {
+      return this.set('editingMangaFavorites', true);
     },
 
     doneEditingFav: function () {
-      this.set('editingFavorites', false);
+      this.setProperties({
+        editingAnimeFavorites: false,
+        editingMangaFavorites: false
+      });
 
       this.store.filter('favorite', function(fav) {
         return fav.get('isDirty') === true;

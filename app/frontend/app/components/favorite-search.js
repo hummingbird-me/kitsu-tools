@@ -11,7 +11,7 @@ export default Ember.Component.extend({
         return Bloodhound.tokenizers.whitespace(d.value);
       },
       queryTokenizer: Bloodhound.tokenizers.whitespace,
-      limit: 8,
+      limit: 10,
       remote: {
         url: '/search.json?query=%QUERY&type=mixed',
         filter: function(results) {
@@ -33,6 +33,20 @@ export default Ember.Component.extend({
     bloodhound.initialize();
     return bloodhound;
   }.property(),
+
+  filteredSearchResults: function() {
+    var self = this;
+    return this.get('searchResults').filter(function(item){
+      var favs = self.get('favorites').map(function(x){
+        return x.get('item.id');
+      });
+
+      var isInFavs = favs.contains(item.slug);
+      var isTypeOk = ( item.type === self.get('type') );
+      
+      return ( !isInFavs && isTypeOk ); 
+    });
+  }.property('searchResults.@each'),
 
   updateSearchResults: function() {
     var self = this;

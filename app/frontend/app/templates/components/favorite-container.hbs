@@ -4,32 +4,40 @@
       <li class="grid-list grid-draggable clearfix" {{bind-attr data-id=favorite.id}}>
         {{!-- <span class="grid-position">{{favorite.favRank}}</span> --}}
         <img class="grid-list-thumb" {{bind-attr src=favorite.item.posterImage}} />
-        <span class="grid-list-title">{{favorite.item.canonicalTitle}}</span>
+
+        {{!-- This is needed since we don't have canonical titles for manga --}}
+        {{#if isAnimeContainer}}<span class="grid-list-title">{{favorite.item.canonicalTitle}}</span>
+        {{else}}<span class="grid-list-title">{{favorite.item.englishTitle}}</span>{{/if}}
+
         <span class="grid-position" {{action 'deleteFavorite' favorite}}><i class="fa fa-times-circle"></i></span>
       </li>
     {{else}}
       <li class="grid-thumb" {{bind-attr data-id=favorite.id}}>
-        {{#link-to 'anime' favorite.item.id}}
-          <div class="thumbnail">
-            <div class="move-overlay">
-              <i class="fa fa-arrows">
-              </i>
+        {{#if isAnimeContainer}}
+          {{#link-to 'anime' favorite.item}}
+            <div class="thumbnail">
+              <img {{bind-attr src=favorite.item.posterImage}} />
             </div>
-            <img {{bind-attr src=favorite.item.posterImage}} />
-          </div>
-        {{/link-to}}
+          {{/link-to}}
+        {{else}}
+          {{#link-to 'manga' favorite.item}}
+            <div class="thumbnail">
+              <img {{bind-attr src=favorite.item.posterImage}} />
+            </div>
+          {{/link-to}}
+        {{/if}}
       </li>
     {{/if}}
   {{/each}}
   {{#if isEditing}}
     <div class="grid-list fav-search clearfix">
-      {{favorite-search action="pushFavorite" currentUser=currentUser}}
+      {{favorite-search action="pushFavorite" favorites=favoriteList type=containerType currentUser=currentUser}}
     </div>
   {{/if}}
 {{else}}
   {{#if isEditing}}
-    <div class="grid-list clearfix">
-      {{favorite-search action="pushFavorite" currentUser=currentUser}}
+    <div class="grid-list fav-search clearfix">
+      {{favorite-search action="pushFavorite" favorites=favoriteList type=containerType currentUser=currentUser}}
     </div>
   {{else}}
     <div class="no-favorites text-center">
