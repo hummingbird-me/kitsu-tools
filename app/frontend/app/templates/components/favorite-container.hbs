@@ -7,7 +7,7 @@
 
         {{!-- This is needed since we don't have canonical titles for manga --}}
         {{#if isAnimeContainer}}<span class="grid-list-title">{{favorite.item.canonicalTitle}}</span>
-        {{else}}<span class="grid-list-title">{{favorite.item.englishTitle}}</span>{{/if}}
+        {{else}}<span class="grid-list-title">{{favorite.item.romajiTitle}}</span>{{/if}}
 
         <span class="grid-position" {{action 'deleteFavorite' favorite}}><i class="fa fa-times-circle"></i></span>
       </li>
