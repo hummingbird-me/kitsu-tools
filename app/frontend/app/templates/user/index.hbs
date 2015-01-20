@@ -199,7 +199,7 @@
               {{#unless editingAnimeFavorites}}
                 <a {{action "editFavAnime"}}><i class="fa fa-pencil"></i></a>
               {{else}}
-                <a class="btn btn-xs btn-default" {{action "doneEditingFav"}}> Save</a>
+                <a class="btn btn-xs btn-default" {{action "doneEditingFav" "anime"}}> Save</a>
               {{/unless}}
             </span>
           {{/if}}
@@ -226,7 +226,7 @@
                 {{#unless editingMangaFavorites}}
                   <a {{action "editFavManga"}}><i class="fa fa-pencil"></i></a>
                 {{else}}
-                  <a class="btn btn-xs btn-default" {{action "doneEditingFav"}}> Save</a>
+                  <a class="btn btn-xs btn-default" {{action "doneEditingFav" "manga"}}> Save</a>
                 {{/unless}}
               </span>
             {{/if}}

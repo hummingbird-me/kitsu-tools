@@ -4,11 +4,7 @@
       <li class="grid-list grid-draggable clearfix" {{bind-attr data-id=favorite.id}}>
         {{!-- <span class="grid-position">{{favorite.favRank}}</span> --}}
         <img class="grid-list-thumb" {{bind-attr src=favorite.item.posterImage}} />
-
-        {{!-- This is needed since we don't have canonical titles for manga --}}
-        {{#if isAnimeContainer}}<span class="grid-list-title">{{favorite.item.canonicalTitle}}</span>
-        {{else}}<span class="grid-list-title">{{favorite.item.romajiTitle}}</span>{{/if}}
-
+        <span class="grid-list-title">{{favorite.item.displayTitle}}</span>
         <span class="grid-position" {{action 'deleteFavorite' favorite}}><i class="fa fa-times-circle"></i></span>
       </li>
     {{else}}

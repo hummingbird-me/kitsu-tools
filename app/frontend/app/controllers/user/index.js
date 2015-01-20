@@ -121,11 +121,9 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
       return this.set('editingMangaFavorites', true);
     },
 
-    doneEditingFav: function () {
-      this.setProperties({
-        editingAnimeFavorites: false,
-        editingMangaFavorites: false
-      });
+    doneEditingFav: function (type) {
+      if(type === 'anime') { this.set('editingAnimeFavorites', false); }
+      if(type === 'manga') { this.set('editingMangaFavorites', false); }
 
       this.store.filter('favorite', function(fav) {
         return fav.get('isDirty') === true;
