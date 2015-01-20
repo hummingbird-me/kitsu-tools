@@ -24,6 +24,8 @@ export default Ember.Component.extend({
   handleFormState: function() {
     var self = this;
 
+    // Delay to allow the user to check the nsfw checkbox
+    // before writing a message withouth the form closing
     setTimeout(function() {
       if(self.get('formIsOpen')) {
         self.$(".status-form").autosize({append: "\n"});
@@ -54,8 +56,8 @@ export default Ember.Component.extend({
           isAdult = this.get('newPostAdult');
 
       this.setProperties({
-        'newPost': "",
-        'newPostAdult': false
+        newPost: "",
+        newPostAdult: false
       });
 
       this.sendAction('action', {
