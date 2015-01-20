@@ -14,7 +14,7 @@ class ProRenewRetryWorker
     tries[2] = User.where(pro_membership_id: recurring_plans,
                           pro_expires_at: (6.days.ago)..(5.day.ago))
 
-    tries.with_index.each do |users, index|
+    tries.each.with_index do |users, index|
       users.all.each do |user|
         manager = ProMembershipManager.new(user)
         manager.renew! attempt: index+1
