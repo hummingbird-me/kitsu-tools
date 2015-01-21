@@ -6,7 +6,7 @@ class ProRenewWorker
 
   def perform(last, current)
     # Anything which wasn't caught in the last run, up until 1 hour from now
-    users = User.where(pro_membership_id: ProMembershipPlan.recurring_plans.map(&:id),
+    users = User.where(pro_membership_plan_id: ProMembershipPlan.recurring_plans.map(&:id),
                        pro_expires_at: (last + 1.hour)..(1.hour.from_now.to_i))
 
     users.all.each do |user|
