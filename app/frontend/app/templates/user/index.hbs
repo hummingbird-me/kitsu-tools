@@ -233,7 +233,7 @@
           </div>
           <div class="panel-body">
             {{favorite-container favorites=favoriteMangaList containerType="manga" currentUser=currentUser isEditing=editingMangaFavorites user=user}}
-            {{#if favoriteAnimeLoadMore}}
+            {{#if favoriteMangaLoadMore}}
               <div class="more-wrapper">
                 <a class="view-more-button" {{action "loadMoreFavoriteManga"}}> View More</a>
               </div>
@@ -243,7 +243,7 @@
         <div class="feed-sidebar-advert">
           {{ad-unit adId="1298406" adClass="257f81e798bd68dd81e60f42838f361f"}}
         </div>
-      {{/if}}
+      {{! {{/if}}
     </div>
 
 
