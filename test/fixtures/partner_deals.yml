@@ -1,3 +1,22 @@
+# == Schema Information
+#
+# Table name: partner_deals
+#
+#  id                        :integer          not null, primary key
+#  deal_title                :string(255)      not null
+#  partner_name              :string(255)      not null
+#  valid_countries           :string(255)      default([]), not null, is an Array
+#  partner_logo_file_name    :string(255)
+#  partner_logo_content_type :string(255)
+#  partner_logo_file_size    :integer
+#  partner_logo_updated_at   :datetime
+#  deal_url                  :text             not null
+#  deal_description          :text             not null
+#  redemption_info           :text             not null
+#  recurring                 :boolean          default(FALSE), not null
+#  active                    :boolean          default(TRUE), not null
+#
+
 one:
   partner_name: Amazon
   deal_title: One Month Amazon Prime

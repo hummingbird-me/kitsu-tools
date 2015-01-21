@@ -61,6 +61,7 @@
 #  pro_expires_at              :datetime
 #  stripe_token                :string(255)
 #  pro_membership_plan_id      :integer
+#  stripe_customer_id          :string(255)
 #
 
 require 'test_helper'

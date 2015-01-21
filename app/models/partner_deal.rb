@@ -5,7 +5,7 @@
 #  id                        :integer          not null, primary key
 #  deal_title                :string(255)      not null
 #  partner_name              :string(255)      not null
-#  valid_countries           :string(255)      not null, is an Array
+#  valid_countries           :string(255)      default([]), not null, is an Array
 #  partner_logo_file_name    :string(255)
 #  partner_logo_content_type :string(255)
 #  partner_logo_file_size    :integer

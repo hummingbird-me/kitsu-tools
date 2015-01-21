@@ -108,6 +108,10 @@ Hummingbird::Application.routes.draw do
       as: :disconnect_facebook
   end
 
+  # Favorite media
+  resources :favorites
+  post '/favorites/update_all' => 'favorites#update_all'
+
   # Settings
   get '/settings' => 'settings#index'
   namespace :settings do

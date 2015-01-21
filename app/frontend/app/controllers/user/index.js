@@ -1,5 +1,8 @@
 import Ember from 'ember';
+import ajax from 'ic-ajax';
 import HasCurrentUser from '../../mixins/has-current-user';
+
+var FAVS_PER_PAGE = 6;
 
 export default Ember.ArrayController.extend(HasCurrentUser, {
   needs: "user",
@@ -27,23 +30,15 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   sortProperties: ['createdAt'],
   sortAscending: false,
 
-  favorite_anime: [],
-  favorite_anime_page: 1,
   isEditing: false,
-  editingFavorites: false,
+  editingAnimeFavorites: false,
+  editingMangaFavorites: false,
   selectChoices: ["Waifu", "Husbando"],
   selectedWaifu: null,
-  can_load_more: function () {
-    var page;
-    page = this.get('favorite_anime_page');
-    if (page * 6 + 1 <= this.get('favorite_anime').length) {
-      return true;
-    } else {
-      return false;
-    }
-  }.property('favorite_anime_page', 'favorite_anime'),
+  favoriteAnimePage: 1,
+  favoriteMangaPage: 1,
 
-  linkedWebsites: function(){
+  linkedWebsites: function() {
     if (!this.get("hasWebsite")) {
       return;
     }
@@ -52,7 +47,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
         siteList = [],
         actualLn = "";
 
-    dataList.forEach(function(link){
+    dataList.forEach(function(link) {
       actualLn = (/[a-z]{4,}\:\/\//.test(link)) ? link.trim() : 'http://'+link.trim();
       siteList.push({'link': actualLn, 'name': link.trim()});
     });
@@ -60,18 +55,46 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     return siteList;
   }.property('user.website'),
 
-  favorite_anime_list: function() {
-    var animes = this.get('favorite_anime'),
-        page = this.get('favorite_anime_page');
+  favoriteAnimeList: function() {
+    var anime = this.get('favoriteAnimeData'),
+        page  = this.get('favoriteAnimePage');
 
-    // if using the goPrev and goNext page style, slice the array into a chunk
-    // animes = animes.slice( (page - 1) * 6, page * 6);
+    return anime.slice(0, page * FAVS_PER_PAGE);
+  }.property('favoriteAnimeData.length', 'favoriteAnimePage'),
 
-    // if using loadMoreFavorite_animes, slice the array from [0] to the page
-    animes = animes.slice(0, page * 6);
+  favoriteMangaList: function() {
+    var manga = this.get('favoriteMangaData'),
+        page  = this.get('favoriteMangaPage');
 
-    return animes;
-  }.property('favorite_anime', 'favorite_anime_page'),
+    return manga.slice(0, page * FAVS_PER_PAGE);
+  }.property('favoriteMangaData.length', 'favoriteMangaPage'),
+
+  favoriteAnimeLoadMore: function () {
+    var page = this.get('favoriteAnimePage');
+    return (page * FAVS_PER_PAGE + 1 <= this.get('favoriteAnimeData.length'));
+  }.property('favoriteAnimeData.length', 'favoriteAnimePage'),
+
+  favoriteMangaLoadMore: function () {
+    var page = this.get('favoriteMangaPage');
+    return (page * FAVS_PER_PAGE + 1 <= this.get('favoriteMangaData.length'));
+  }.property('favoriteMangaData.length', 'favoriteMangaPage'),
+
+  favoriteAnimeData: function() {
+    return this.favoriteData("Anime");
+  }.property(),
+
+  favoriteMangaData: function() {
+    return this.favoriteData("Manga");
+  }.property(),
+
+  favoriteData: function(item_type) {
+    var self = this;
+
+    return this.store.find('favorite', {
+      user_id: self.get('user.id'),
+      type: item_type
+    });
+  },
 
 
   actions: {
@@ -79,43 +102,52 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
       this.set('unselectingWaifu', true);
       return this.set('user.waifu', null);
     },
+
     editUserInfo: function () {
       return this.set('isEditing', true);
     },
+
     saveUserInfo: function () {
       this.set('unselectingWaifu', false);
       this.get('user.content').save();
       return this.set('isEditing', false);
     },
-    editFav: function () {
-      return this.set('editingFavorites', true);
+
+    editFavAnime: function () {
+      return this.set('editingAnimeFavorites', true);
     },
-    doneEditingFav: function () {
-      var data, list, url, _this;
-      this.set('editingFavorites', false);
-      url = "/api/v1/users/" + this.get('currentUser.id') + '/favorite_anime/update';
-      list = this.get('favorite_anime_list');
-      _this = this;
-      data = {};
 
-      list.forEach(function (item) {
-        return data[item.fav_id] = {
-          id: item.fav_id,
-          user_id: _this.get('currentUser.id'),
-          fav_rank: item.fav_rank
-        };
-      });
+    editFavManga: function () {
+      return this.set('editingMangaFavorites', true);
+    },
 
-      // FIXME this should be using ember-data
-      return Ember.$.ajax({
-        url: url,
-        data: {
-          data: data
-        },
-        method: 'POST',
-        error: function () {
-          return console.log("Failed to Update Favorites Ranks");
+    doneEditingFav: function (type) {
+      if(type === 'anime') { this.set('editingAnimeFavorites', false); }
+      if(type === 'manga') { this.set('editingMangaFavorites', false); }
+
+      this.store.filter('favorite', function(fav) {
+        return fav.get('isDirty') === true;
+      }).then(function(updatedFavs) {
+        if(updatedFavs.get('length') === 0) {
+          return;
         }
+
+        var postData = updatedFavs.map(function(fav) {
+          return {
+            id: fav.get('id'),
+            rank: fav.get('favRank')
+          };
+        });
+
+        return ajax({
+          type: 'POST',
+          url: "/favorites/update_all",
+          data: { favorites: JSON.stringify(postData) },
+          dataType: 'json'
+        }).then(Ember.K, function() {
+          alert("Something went wrong.");
+        });
+
       });
     },
 
@@ -124,34 +156,43 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
       this.get('user').set('waifu', character.value);
       return this.get('user').set('waifuCharId', character.char_id);
     },
-    loadMoreFavorite_animes: function () {
-      var page;
-      page = this.get('favorite_anime_page');
-      if (page * 6 + 1 <= this.get('favorite_anime').length) {
+
+    loadMoreFavoriteAnime: function () {
+      var page = this.get('favoriteAnimePage');
+      if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_anime').length) {
         ++page;
-        return this.set('favorite_anime_page', page);
+        return this.set('favoriteAnimePage', page);
+      }
+    },
+
+    loadMoreFavoriteManga: function () {
+      var page = this.get('favoriteMangaPage');
+      if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_manga').length) {
+        ++page;
+        return this.set('favoriteMangaPage', page);
       }
     },
 
     goPrevPage: function () {
       var page;
-      page = this.get('favorite_anime_page');
+      page = this.get('favoriteAnimePage');
       if (page > 1) {
         --page;
-        return this.set('favorite_anime_page', page);
+        return this.set('favoriteAnimePage', page);
       }
     },
+
     goNextPage: function () {
       var page;
-      page = this.get('favorite_anime_page');
-      if (page * 6 + 1 <= this.get('favorite_anime').length) {
+      page = this.get('favoriteAnimePage');
+      if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_anime').length) {
         ++page;
-        return this.set('favorite_anime_page', page);
+        return this.set('favoriteAnimePage', page);
       }
     },
   },
 
-  animeBreakdown: function(){
+  animeBreakdown: function() {
     var topGenres = this.get('userInfo.topGenres');
 
     if (topGenres && topGenres.length > 0) {
@@ -164,7 +205,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     }
   }.property('userInfo.topGenres'),
 
-  animeOptions: function(){
+  animeOptions: function() {
     return {
       percentageInnerCutout : 75,
       segmentShowStroke : false,

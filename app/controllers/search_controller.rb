@@ -63,15 +63,28 @@ class SearchController < ApplicationController
     users = User.match(@query)
     users = User.search(@query).page(1).per(20) if users.length == 0
 
-    formattedAnime = anime.map { |x|
-      {:type => 'anime', :title => x.title, :image => x.poster_image_thumb, :link => "/anime/#{x.slug}" }
-    }.flatten
-    formattedManga = manga.map { |x|
-      {:type => 'manga', :title => x.romaji_title, :image => x.poster_image_thumb, :link => "/manga/#{x.slug}" }
-    }.flatten
-    formattedUsers = users.map { |x|
-      {:type => 'user', :title => x.name, :image => x.avatar_template, :link => "/users/#{x.name}" }
-    }.flatten
+    formattedAnime = anime.map { |x| {
+        type: 'anime',
+        slug: x.slug,
+        title: x.title,
+        image: x.poster_image_thumb,
+        link: "/anime/#{x.slug}" 
+    }}.flatten
+
+    formattedManga = manga.map { |x| {
+        type: 'manga', 
+        slug: x.slug, 
+        title: x.romaji_title, 
+        image: x.poster_image_thumb, 
+        link: "/manga/#{x.slug}"
+    }}.flatten
+
+    formattedUsers = users.map { |x| {
+      type: 'user', 
+      title: x.name, 
+      image: x.avatar_template, 
+      link: "/users/#{x.name}"
+    }}.flatten
 
     @results = [formattedAnime.take(3), formattedManga.take(3), formattedUsers.take(2)].flatten
     render json: @results
@@ -83,36 +96,36 @@ class SearchController < ApplicationController
     users = User.search(@query).page(1).per(20)
 
     formattedAnime = anime.map do |x| {
-      :type => 'anime',
-      :title => x.title,
-      :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
-      :image => x.poster_image_thumb,
-      :link => x.slug,
-      :badges => [
-        {:class => 'anime', :content => "Anime"},
-        {:class => 'episodes', :content => "#{x.episode_count}ep &bull; #{x.episode_length}min"},
-        {:class => 'episodes', :content => "#{x.show_type} &bull; #{x.age_rating}"}
+      type: 'anime',
+      title: x.title,
+      desc: "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
+      image: x.poster_image_thumb,
+      link: x.slug,
+      badges: [
+        { class: 'anime', content: "Anime" },
+        { class: 'episodes', content: "#{x.episode_count}ep &bull; #{x.episode_length}min" },
+        { class: 'episodes', content: "#{x.show_type} &bull; #{x.age_rating}" }
       ]}
     end
     formattedManga = manga.map do |x| {
-      :type => 'manga',
-      :title => x.romaji_title,
-      :desc => "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
-      :image => x.poster_image_thumb,
-      :link => x.slug,
-      :badges => [
-        {:class => 'manga', :content => "Manga"},
-        {:class => 'episodes', :content => "#{x.volume_count || "?"}vol &bull; #{x.chapter_count || "?"}chap"}
+      type: 'manga',
+      title: x.romaji_title,
+      desc: "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
+      image: x.poster_image_thumb,
+      link: x.slug,
+      badges: [
+        { class: 'manga', content: "Manga" },
+        { class: 'episodes', content: "#{x.volume_count || "?"}vol &bull; #{x.chapter_count || "?"}chap" }
       ]}
     end
     formattedUsers = users.map do |x| {
-      :type => 'user',
-      :title => x.name,
-      :desc => x.bio,
-      :image => x.avatar_url,
-      :link => x.name,
-      :badges => [
-        {:class => 'user', :content => "User"}
+      type: 'user',
+      title: x.name,
+      desc: x.bio,
+      image: x.avatar_url,
+      link: x.name,
+      badges: [
+        { class: 'user', content: "User" }
       ]}
     end
 
