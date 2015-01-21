@@ -60,41 +60,27 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
         page  = this.get('favoriteAnimePage');
 
     return anime.slice(0, page * FAVS_PER_PAGE);
-  }.property('favoriteAnimeData.length', 'favoriteAnimePage'),
+  }.property('favoriteAnimeData.@each', 'favoriteAnimePage'),
 
   favoriteMangaList: function() {
     var manga = this.get('favoriteMangaData'),
         page  = this.get('favoriteMangaPage');
 
     return manga.slice(0, page * FAVS_PER_PAGE);
-  }.property('favoriteMangaData.length', 'favoriteMangaPage'),
+  }.property('favoriteMangaData.@each', 'favoriteMangaPage'),
 
   favoriteAnimeLoadMore: function () {
     var page = this.get('favoriteAnimePage');
     return (page * FAVS_PER_PAGE + 1 <= this.get('favoriteAnimeData.length'));
-  }.property('favoriteAnimeData.length', 'favoriteAnimePage'),
+  }.property('favoriteAnimeData.@each', 'favoriteAnimePage'),
 
   favoriteMangaLoadMore: function () {
     var page = this.get('favoriteMangaPage');
     return (page * FAVS_PER_PAGE + 1 <= this.get('favoriteMangaData.length'));
-  }.property('favoriteMangaData.length', 'favoriteMangaPage'),
+  }.property('favoriteMangaData.@each', 'favoriteMangaPage'),
 
-  favoriteAnimeData: function() {
-    return this.favoriteData("Anime");
-  }.property(),
-
-  favoriteMangaData: function() {
-    return this.favoriteData("Manga");
-  }.property(),
-
-  favoriteData: function(item_type) {
-    var self = this;
-
-    return this.store.find('favorite', {
-      user_id: self.get('user.id'),
-      type: item_type
-    });
-  },
+  favoriteAnimeData: [],
+  favoriteMangaData: [],
 
 
   actions: {
@@ -159,7 +145,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
 
     loadMoreFavoriteAnime: function () {
       var page = this.get('favoriteAnimePage');
-      if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_anime').length) {
+      if (page * FAVS_PER_PAGE + 1 <= this.get('favoriteAnimeData').length) {
         ++page;
         return this.set('favoriteAnimePage', page);
       }
@@ -167,27 +153,9 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
 
     loadMoreFavoriteManga: function () {
       var page = this.get('favoriteMangaPage');
-      if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_manga').length) {
+      if (page * FAVS_PER_PAGE + 1 <= this.get('favoriteMangaData').length) {
         ++page;
         return this.set('favoriteMangaPage', page);
-      }
-    },
-
-    goPrevPage: function () {
-      var page;
-      page = this.get('favoriteAnimePage');
-      if (page > 1) {
-        --page;
-        return this.set('favoriteAnimePage', page);
-      }
-    },
-
-    goNextPage: function () {
-      var page;
-      page = this.get('favoriteAnimePage');
-      if (page * FAVS_PER_PAGE + 1 <= this.get('favorite_anime').length) {
-        ++page;
-        return this.set('favoriteAnimePage', page);
       }
     },
   },

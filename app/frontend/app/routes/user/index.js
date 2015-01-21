@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import Paginated from '../../mixins/paginated';
-import ajax from 'ic-ajax';
 import setTitle from '../../utils/set-title';
 
 export default Ember.Route.extend(Paginated, {
@@ -12,16 +11,23 @@ export default Ember.Route.extend(Paginated, {
   },
 
   setupController: function(controller, model) {
-    controller.set('userInfo', this.store.find('userInfo', this.modelFor('user').get('id')));
+    var thisUserId = this.modelFor('user').get('id');
+    controller.set('userInfo', this.store.find('userInfo', thisUserId));
 
-    ajax({
-      url: '/api/v1/users/'+this.modelFor('user').get('id')+'/favorite_anime',
-      type: 'GET'
-    }).then(function(favoriteAnime) {
-        controller.set('favorite_anime', favoriteAnime);
+    this.store.find('favorite', {
+      user_id: thisUserId,
+      type: 'Anime'
+    }).then(function(animeLoad){
+      controller.set('favoriteAnimeData', animeLoad);
     });
 
-    this.setCanLoadMore(true);
+    this.store.find('favorite', {
+      user_id: thisUserId,
+      type: 'Manga'
+    }).then(function(mangaLoad){
+      controller.set('favoriteMangaData', mangaLoad);
+    });
+
     controller.set('canLoadMore', true);
     controller.set('model', model);
 
