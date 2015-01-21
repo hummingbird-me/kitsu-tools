@@ -12,7 +12,12 @@ export default Ember.Route.extend({
       return mangaLibraryEntry.save();
     }), {
       progressMessage: "Saving " + manga.get('romajiTitle') + "...",
-      successMessage: "Saved " + manga.get('romajiTitle') + "!"
+      successMessage: function() {
+        // update the 'full-manga' relationship since it seems
+        // to disappear into the void
+        manga.set('mangaLibraryEntry', mangaLibraryEntry);
+        return "Saved " + manga.get('romajiTitle') + "!";
+      }
     });
   },
 
