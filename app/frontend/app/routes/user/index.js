@@ -28,6 +28,7 @@ export default Ember.Route.extend(Paginated, {
       controller.set('favoriteMangaData', mangaLoad);
     });
 
+    this.setCanLoadMore(true);
     controller.set('canLoadMore', true);
     controller.set('model', model);
 
