@@ -1,6 +1,21 @@
 require 'test_helper'
 
 class GroupMembersControllerTest < ActionController::TestCase
+  test "can get members of a group" do
+    sign_in users(:josh)
+    get :index, group_id: 'gumi-appreciation-group', page: 1
+    assert_response :ok
+    assert_includes JSON.parse(@response.body), "group_members"
+    assert_equal 1, JSON.parse(@response.body)["group_members"].length
+
+    # admins of the group should see pending users
+    sign_in users(:vikhyat)
+    get :index, group_id: 'gumi-appreciation-group', page: 1
+    assert_response :ok
+    assert_includes JSON.parse(@response.body), "group_members"
+    assert_equal 2, JSON.parse(@response.body)["group_members"].length
+  end
+
   test "can join a group" do
     group_members(:gumi_pleb).destroy
     sign_in users(:josh)
@@ -17,6 +32,7 @@ class GroupMembersControllerTest < ActionController::TestCase
     delete :destroy, id: pleb.id
     assert_response :ok
   end
+
   test "mod ranked users can leave a group freely" do
     mod = group_members(:jerks_moderator)
     sign_in mod.user

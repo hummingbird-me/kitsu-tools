@@ -18,13 +18,6 @@ class GroupsControllerTest < ActionController::TestCase
     assert_equal GroupSerializer.new(groups(:gumi)).to_json, @response.body
   end
 
-  test "can get members" do
-    get :show_members, group_id: 'gumi-appreciation-group'
-    assert_response :ok
-    assert_preloaded 'groups'
-    assert_preloaded 'group_members'
-  end
-
   test "can create new group" do
     sign_in users(:josh)
     post :create, group: {name: 'Sugar Water'}

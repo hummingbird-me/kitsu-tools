@@ -19,11 +19,12 @@ class GroupSerializer < ActiveModel::Serializer
   # Includes the 14 most recent GroupMembers, and the current users
   # GroupMember record, if it exists.
   def members
-    (object.members.where(pending: false).order('created_at DESC').take(14) +
-      [object.member(scope)]).uniq
+    user = scope && object.member(scope)
+    members = object.members.accepted.order('created_at DESC').take(14)
+    (members + (user ? [user] : [])).uniq
   end
 
   def member_count
-    object.members.count
+    object.members.accepted.count
   end
 end
