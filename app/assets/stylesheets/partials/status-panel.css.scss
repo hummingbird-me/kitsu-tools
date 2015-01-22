@@ -19,6 +19,13 @@
   }
 }
 
+.status-update-panel {
+  .status-box-wrapper {
+    display: inline-block;
+    padding-top: 6px;
+  }
+}
+
 .story {
   @extend .panel;
   @extend .panel-default;
@@ -253,6 +260,12 @@
         }
       }
     }
+  }
+  .nsfw-indicator {
+    color: #F87270;
+    display: inline-block;
+    padding: 0 0 10px 15px;
+    font-size: 14px;
   }
   .active-users {
     float: right;

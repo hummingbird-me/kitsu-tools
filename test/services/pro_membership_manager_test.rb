@@ -92,6 +92,32 @@ class ProMembershipManagerTest < ActiveSupport::TestCase
     end
   end
 
+  test "renew! works correctly for the normal case" do
+    @user.pro_expires_at = 1.hour.from_now
+    @user.pro_membership_plan_id = 1
+    @user.stripe_token = @stripe.generate_card_token
+    @user.save!
+
+    assert_difference ->{ @user.pro_expires_at }, 1.month do
+      @manager.renew!
+    end
+  end
+
+  test "renew! should fire off a failure email when charging the card fails" do
+    StripeMock.prepare_card_error(:card_declined)
+    @user.pro_expires_at = 1.hour.from_now
+    @user.pro_membership_plan_id = 1
+    @user.stripe_token = @stripe.generate_card_token
+
+    assert_no_difference ->{ @user.pro_expires_at } do
+      assert_difference ->{ ActionMailer::Base.deliveries.count } do
+        @manager.renew!
+      end
+    end
+    fail_email = ActionMailer::Base.deliveries.last
+    assert_match(/failed/, fail_email.subject.to_s)
+  end
+
   test "cancel! unsets the user's plan" do
     @user.pro_expires_at = Time.now + 1.day
     @user.pro_membership_plan_id = 1

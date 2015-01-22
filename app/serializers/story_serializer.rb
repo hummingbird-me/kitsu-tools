@@ -2,7 +2,7 @@ class StorySerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id, :type, :created_at, :comment, :substory_count, :total_votes,
-    :is_liked
+    :is_liked, :adult
 
   has_one :user, embed_key: :name
   has_one :media, polymorphic: true, embed_key: :slug

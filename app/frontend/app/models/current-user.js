@@ -1,5 +1,6 @@
-import User from '../models/user';
+import Ember from 'ember';
 import DS from 'ember-data';
+import User from '../models/user';
 
 export default User.extend({
   newUsername: DS.attr('string'),
@@ -11,5 +12,8 @@ export default User.extend({
   hasFacebook: DS.attr('boolean'),
   confirmed: DS.attr('boolean'),
   proExpiresAt: DS.attr('date'),
-  proMembershipPlan: DS.belongsTo('pro-membership-plan')
+  proMembershipPlan: DS.belongsTo('pro-membership-plan'),
+
+  // Temporary solution for beta indicator
+  betaAccess: Ember.computed.or('isAdmin', 'isPro')
 });

@@ -535,9 +535,9 @@ class API_v1 < Grape::API
   end
   get '/search/anime' do
     anime = Anime.accessible_by(current_ability).includes(:genres)
-    results = anime.simple_search_by_title(params[:query]).limit(5)
+    results = anime.simple_search_by_title(params[:query]).limit(20)
     if results.length == 0
-      results = anime.fuzzy_search_by_title(params[:query]).limit(5)
+      results = anime.fuzzy_search_by_title(params[:query]).limit(20)
     end
 
     title_language_preference = params[:title_language_preference]

@@ -13,6 +13,7 @@ export default Model.extend(ModelCurrentUser, {
   substoryCount: DS.attr('number'),
   totalVotes: DS.attr('number'),
   isLiked: DS.attr('boolean'),
+  adult: DS.attr('boolean'),
   recentLikers: DS.hasMany('user'),
 
   coverImageStyle: function() {

@@ -44,8 +44,23 @@ class ProMembershipManager
   # Renew the user's pro membership. Make sure the plan they are on is recurring
   # first. If we don't succeed in charging the user then send a dunning email
   # and let their membership expire.
-  def renew!
-    # TODO we don't actually need this until one month after we launch PRO.
+  def renew!(attempt_number: 0)
+    token = @user.stripe_token
+    plan = @user.pro_membership_plan
+
+    unless plan.recurring?
+      raise "Cannot renew non-recurring plan"
+    end
+
+    charge_user! token, (plan.amount * 100).to_i
+    give_pro! @user, plan.duration.months
+
+    # if this is a retry, tell the user it worked
+    if attempt_number > 0
+      ProMailer.delay.renew_succeeded_email(@user, attempt_number)
+    end
+  rescue Stripe::CardError
+    ProMailer.delay.renew_failed_email(@user, attempt_number)
   end
 
   private

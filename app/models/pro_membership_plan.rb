@@ -42,4 +42,12 @@ class ProMembershipPlan
     PLANS.map {|plan| self.new(plan) }
   end
 
+  def self.recurring_plans
+    self.all.select {|plan| plan.recurring? }
+  end
+
+  def self.nonrecurring_plans
+    self.all.reject {|plan| plan.recurring? }
+  end
+
 end
