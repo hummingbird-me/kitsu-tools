@@ -1,5 +1,7 @@
 class MyAnimeListImportApplyWorker
   include Sidekiq::Worker
+  # TODO: actually fix the bug
+  sidekiq_options retry: false
 
   def perform(user_id, xml)
     user = User.find(user_id)
