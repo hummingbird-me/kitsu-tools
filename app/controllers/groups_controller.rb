@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
   def index
-    groups = Group.trending
+    groups = if params[:limit].present?
+      Group.trending.take(params[:limit])
+    else
+      Group.trending # todo: paginate
+    end
 
     respond_to do |format|
       format.json { render json: groups }
@@ -41,6 +45,7 @@ class GroupsController < ApplicationController
 
     return error! "Group with that name already exists", 409 if Group.exists?(['lower(name) = ?', group_hash['name'].downcase])
     group = Group.new_with_admin(group_hash, current_user)
+
     group.save!
     render json: group, status: :created
   end
@@ -58,6 +63,7 @@ class GroupsController < ApplicationController
       return error! "Only admins can edit the group", 403
     end
   end
+
 
   def destroy
     authenticate_user!

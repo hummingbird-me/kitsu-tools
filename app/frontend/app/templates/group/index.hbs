@@ -46,7 +46,11 @@
           <h3 class="panel-title">Suggested Groups</h3>
         </div>
         <div class="panel-body">
-          TODO
+          <ul>
+            {{#each group in suggestedGroups}}
+              <li>Name: {{group.name}} - Members: {{group.memberCount}}<li>
+            {{/each}}
+          </ul>
         </div>
       </div>
 
