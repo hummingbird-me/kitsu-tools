@@ -14,20 +14,6 @@ export default Ember.Route.extend(Paginated, {
     var thisUserId = this.modelFor('user').get('id');
     controller.set('userInfo', this.store.find('userInfo', thisUserId));
 
-    this.store.find('favorite', {
-      user_id: thisUserId,
-      type: 'Anime'
-    }).then(function(animeLoad){
-      controller.set('favoriteAnimeData', animeLoad);
-    });
-
-    this.store.find('favorite', {
-      user_id: thisUserId,
-      type: 'Manga'
-    }).then(function(mangaLoad){
-      controller.set('favoriteMangaData', mangaLoad);
-    });
-
     this.setCanLoadMore(true);
     controller.set('canLoadMore', true);
     controller.set('model', model);

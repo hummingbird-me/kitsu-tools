@@ -79,8 +79,21 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     return (page * FAVS_PER_PAGE + 1 <= this.get('favoriteMangaData.length'));
   }.property('favoriteMangaData.@each', 'favoriteMangaPage'),
 
-  favoriteAnimeData: [],
-  favoriteMangaData: [],
+  favoriteAnimeData: function() {
+    if(this.get('userInfo.favorites') === undefined) { return []; }
+
+    return this.get('userInfo.favorites').filter(function(fav){
+      return ( fav.get('item').constructor.typeKey === 'anime');
+    });
+  }.property('userInfo.favorites.@each'),
+
+  favoriteMangaData: function() {
+    if(this.get('userInfo.favorites') === undefined) { return []; }
+
+    return this.get('userInfo.favorites').filter(function(fav){
+      return ( fav.get('item').constructor.typeKey === 'manga');
+    });
+  }.property('userInfo.favorites.@each'),
 
 
   actions: {
