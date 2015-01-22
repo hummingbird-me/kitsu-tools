@@ -34,16 +34,16 @@
           <div class="follow-widgets">
             {{#if currentMember}}
               {{#if currentMember.pending}}
-                <button class="btn btn-default btn-lg follow-button">
+                <button class="btn btn-default btn-lg follow-button" disabled="disabled">
                   Pending...
                 </button>
               {{else}}
-                <button class="btn btn-default btn-lg follow-button">
+                <button class="btn btn-default btn-lg follow-button" {{action "leaveGroup"}}>
                   Leave Group
                 </button>
               {{/if}}
             {{else}}
-              <button class="btn btn-default btn-lg follow-button">
+              <button class="btn btn-default btn-lg follow-button" {{action "joinGroup" model}}>
                 Join Group
               </button>
             {{/if}}

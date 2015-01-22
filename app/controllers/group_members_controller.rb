@@ -11,11 +11,15 @@ class GroupMembersController < ApplicationController
 
   def create
     membership_hash = params.require(:group_member).permit(:group_id, :user_id).to_h
+    user = User.find(membership_hash['user_id'])
 
-    return error! "Wrong user", 403 if current_user.id != membership_hash['user_id'].to_i
+    return error! "Wrong user", 403 if user.nil? || current_user != user
     return error! "Already in group", :conflict if GroupMember.exists?(membership_hash.slice('user_id', 'group_id'))
 
-    membership = GroupMember.create!(membership_hash)
+    membership = GroupMember.create!(
+      group: Group.find(membership_hash['group_id']),
+      user: user
+    )
     render json: membership, status: :created
   end
 
@@ -40,8 +44,8 @@ class GroupMembersController < ApplicationController
   end
 
   def destroy
-    return error! "Last admin cannot leave group", 400 if membership.admin? && !group.can_admin_resign?
-    return error! "Mods can only boot plebs", 403 if current_member.mod? && current_user.id != membership.user_id && !membership.pleb?
+    return error! "You must promote another admin before leaving", 400 if membership.admin? && !group.can_admin_resign?
+    return error! "Mods can only remove regular users from the group", 403 if current_member.mod? && current_user.id != membership.user_id && !membership.pleb?
     return error! "Wrong user", 403 if current_member.pleb? && current_user.id != membership.user_id
 
     membership.destroy

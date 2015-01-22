@@ -1,7 +1,7 @@
 <h1>No Design Yet</h1>
 
-{{#each}}
-  <p>I'm {{user.username}}</p>
+{{#each member in allMembers}}
+  <p>I'm {{member.user.username}}</p>
 {{/each}}
 
 {{#if canLoadMore}}
