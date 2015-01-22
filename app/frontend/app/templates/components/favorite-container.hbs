@@ -36,14 +36,18 @@
       {{favorite-search action="pushFavorite" favorites=favoriteList type=containerType currentUser=currentUser}}
     </div>
   {{else}}
-    <div class="no-favorites text-center">
-      {{#if viewingSelf}}
-        <h3>You have no favorites.</h3>
-        <a href="https://forums.hummingbird.me/t/how-to-adding-an-anime-to-your-favorites">How to add Favorites</a>
-      {{else}}
-        <h3>{{user.username}} has no favorites.</h3>
-        <p>Clearly they're an individual of fine, discerning tastes.</p>
-      {{/if}}
-    </div>
+    {{#if isLoading}}
+      {{loading-indicator}}
+    {{else}}
+      <div class="no-favorites text-center">
+        {{#if viewingSelf}}
+          <h3>You have no favorites.</h3>
+          <a href="https://forums.hummingbird.me/t/how-to-adding-an-anime-to-your-favorites">How to add Favorites</a>
+        {{else}}
+          <h3>{{user.username}} has no favorites.</h3>
+          <p>Clearly they're an individual of fine, discerning tastes.</p>
+        {{/if}}
+      </div>
+    {{/if}}
   {{/if}}
 {{/if}}
