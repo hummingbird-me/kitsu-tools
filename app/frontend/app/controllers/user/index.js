@@ -145,7 +145,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
 
     loadMoreFavoriteAnime: function () {
       var page = this.get('favoriteAnimePage');
-      if (page * FAVS_PER_PAGE + 1 <= this.get('favoriteAnimeData').length) {
+      if (page * FAVS_PER_PAGE + 1 <= this.get('favoriteAnimeData.length')) {
         ++page;
         return this.set('favoriteAnimePage', page);
       }
@@ -153,7 +153,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
 
     loadMoreFavoriteManga: function () {
       var page = this.get('favoriteMangaPage');
-      if (page * FAVS_PER_PAGE + 1 <= this.get('favoriteMangaData').length) {
+      if (page * FAVS_PER_PAGE + 1 <= this.get('favoriteMangaData.length')) {
         ++page;
         return this.set('favoriteMangaPage', page);
       }
