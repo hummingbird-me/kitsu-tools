@@ -5,7 +5,7 @@ import {
 
 moduleForModel('user-info', 'UserInfo', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:favorite', 'model:user', 'model:media']
 });
 
 test('it exists', function() {

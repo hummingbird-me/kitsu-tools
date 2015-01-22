@@ -37,6 +37,8 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   selectedWaifu: null,
   favoriteAnimePage: 1,
   favoriteMangaPage: 1,
+  favoriteAnimeLoading: true,
+  favoriteMangaLoading: true,
 
   linkedWebsites: function() {
     if (!this.get("hasWebsite")) {
@@ -82,6 +84,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   favoriteAnimeData: function() {
     if(this.get('userInfo.favorites') === undefined) { return []; }
 
+    this.set('favoriteAnimeLoading', false);
     return this.get('userInfo.favorites').filter(function(fav){
       return ( fav.get('item').constructor.typeKey === 'anime');
     });
@@ -90,6 +93,7 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   favoriteMangaData: function() {
     if(this.get('userInfo.favorites') === undefined) { return []; }
 
+    this.set('favoriteMangaLoading', false);
     return this.get('userInfo.favorites').filter(function(fav){
       return ( fav.get('item').constructor.typeKey === 'manga');
     });
