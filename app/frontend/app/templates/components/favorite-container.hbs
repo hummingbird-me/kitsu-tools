@@ -27,13 +27,13 @@
           {{else}}
             <li class="grid-thumb" {{bind-attr data-id=favorite.id}}>
               {{#if isAnimeContainer}}
-                {{#link-to 'anime' favorite.item}}
+                {{#link-to 'anime' favorite.item.id}}
                   <div class="thumbnail">
                     <img {{bind-attr src=favorite.item.posterImage}} />
                   </div>
                 {{/link-to}}
               {{else}}
-                {{#link-to 'manga' favorite.item}}
+                {{#link-to 'manga' favorite.item.id}}
                   <div class="thumbnail">
                     <img {{bind-attr src=favorite.item.posterImage}} />
                   </div>
