@@ -12,11 +12,12 @@ export default DS.Model.extend({
   // Fixes the fact that viewing all members adds to the members
   // association.
   recentMembers: function() {
-    return this.get('members').slice(0, 14);
-  }.property('members'),
+    var members = this.get('members');
+    return members.filterBy('pending', false).slice(0, 14);
+  }.property('members.@each'),
 
   isMember: function(user) {
-    var member = this.get('members').findBy('user.id', user.get('id'));
-    return member && member.get('pending') === false;
+    return this.get('members').filterBy('pending', false)
+      .findBy('user.id', user.get('id'));
   }
 });

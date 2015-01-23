@@ -9,7 +9,7 @@ export default Ember.Controller.extend(HasCurrentUser, {
 
   currentMember: function() {
     return this.get('model.members').findBy('user.id', this.get('currentUser.id'));
-  }.property('model.members'),
+  }.property('model.members.@each'),
 
   isAdmin: function() {
     return this.get('currentMember') && this.get('currentMember.isAdmin');
@@ -44,6 +44,7 @@ export default Ember.Controller.extend(HasCurrentUser, {
       }, {
         progressMessage: 'Contacting server...',
         successMessage: () => {
+          this.decrementProperty('model.memberCount');
           return 'You left ' + this.get('model.name') + '.';
         },
         errorMessage: function(type, xhr) {
