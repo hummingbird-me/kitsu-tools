@@ -5,6 +5,7 @@ class ProRenewRetryWorker
   recurrence { daily }
 
   def perform(last, current)
+    last, current = Time.at(last), Time.at(current)
     recurring_plans = ProMembershipPlan.recurring_plans.map(&:id)
     tries = Array.new(3)
     tries[0] = User.where(pro_membership_plan_id: recurring_plans,
