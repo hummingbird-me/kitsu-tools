@@ -27,3 +27,7 @@
     }
   }
 }
+
+.group-feed {
+  @extend .user-feed;
+}

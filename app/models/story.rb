@@ -22,6 +22,7 @@ class Story < ActiveRecord::Base
   belongs_to :watchlist
   belongs_to :user
   belongs_to :target, polymorphic: true
+  belongs_to :group
 
   has_many :substories # This is not dependent: :destroy for performance reasons,
                        # substories are deleted in a background worker triggered
@@ -30,6 +31,7 @@ class Story < ActiveRecord::Base
   has_many :notifications, as: :source, dependent: :destroy
 
   validates :user, :story_type, presence: true
+  validates :group, presence: true, if: Proc.new {|s| s.group_id.present? }
 
   def self.for_user_and_anime(user, anime, story_type="media_story")
     story = user.stories.where(story_type: story_type, target_id: anime.id, target_type: "Anime")

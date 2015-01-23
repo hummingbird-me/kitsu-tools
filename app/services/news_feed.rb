@@ -4,7 +4,7 @@ require_dependency 'story_query'
 #
 # Definitions:
 #
-# * For the purposes of the user timeline, an active user is defined as a user 
+# * For the purposes of the user timeline, an active user is defined as a user
 #   who has generated a story in the last INACTIVE_DAYS days.
 #
 # Parameters:
@@ -34,7 +34,7 @@ class NewsFeed
   USER_FOLLOWERS_PREFIX         = "user_followers:"
   USER_FOLLOWING_PREFIX         = "user_following:"
   ACTIVE_FOLLOWED_USERS_PREFIX  = "active_followed_users:"
-  ACTIVE_FOLLOWED_GROUPS        = "active_followed_groups:"
+  ACTIVE_JOINED_GROUPS_PREFIX   = "active_joined_groups:"
 
   def initialize(user)
     @user = user
@@ -45,7 +45,7 @@ class NewsFeed
     $redis.with {|conn| conn.exists @feed_key }
   end
 
-  # Fetch a page of stories from the user's timeline. Generate a timeline if 
+  # Fetch a page of stories from the user's timeline. Generate a timeline if
   # the user's timeline doesn't already exist in memory.
   def fetch(page=nil)
     regenerate_feed! unless cached?
@@ -66,11 +66,11 @@ class NewsFeed
   # Regenerate the user's feed from scratch.
   def regenerate_feed!
     user_set = active_followed_users + [@user.id]
-    group_set = active_followed_groups
+    group_set = active_joined_groups.to_a
 
     stories = Story.for_user(@user)
                    .order('updated_at DESC')
-                   .where('user_id IN (?) OR group_id IN (?)', user_set, group_set)
+                   .where('stories.user_id IN (?) OR stories.group_id IN (?)', user_set, group_set)
                    .includes(:user, :target, :substories)
                    .limit(FRESH_FETCH_SIZE)
     stories.each {|story| add! story }

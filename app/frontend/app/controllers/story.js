@@ -51,6 +51,14 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
 
       var self = this;
       this.store.find('user', this.get('currentUser.id')).then(function(user) {
+        // group permission check
+        var group = self.get('model.group');
+        if (group && !group.isMember(user)) {
+          self.set('reply', '');
+          Messenger().error("You must be a member of the group.");
+          return;
+        }
+
         var reply = self.store.createRecord('substory', {
           storyId: self.get('model.id'),
           user: user,

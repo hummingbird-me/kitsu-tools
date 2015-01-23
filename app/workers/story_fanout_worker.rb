@@ -7,7 +7,7 @@ class StoryFanoutWorker
     return if story.nil?
 
     if story.group_id
-      followers = User.where(id: [user_id, story.user_id] + story.group.members.map(&:user_id))
+      followers = User.where(id: [user_id, story.user_id] + story.group.members.accepted.map(&:user_id))
       followers = followers.uniq
     else
       followers = User.where(id: [user_id, story.user_id]) + story.user.followers

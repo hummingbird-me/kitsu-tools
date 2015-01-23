@@ -16,6 +16,10 @@
             {{#if user.isPro}}
               {{#link-to 'pro'}}<span class="mini-badge">pro</span>{{/link-to}}
             {{/if}}
+            {{#if group}}
+              posted to
+              {{#link-to 'group' group}}{{unbound group.name}}{{/link-to}}
+            {{/if}}
           {{/unless}}
         </h4>
         <p class="secondary">

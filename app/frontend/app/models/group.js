@@ -13,5 +13,10 @@ export default DS.Model.extend({
   // association.
   recentMembers: function() {
     return this.get('members').slice(0, 14);
-  }.property('members')
+  }.property('members'),
+
+  isMember: function(user) {
+    var member = this.get('members').findBy('user.id', user.get('id'));
+    return member && member.get('pending') === false;
+  }
 });

@@ -5,7 +5,7 @@ import {
 
 moduleFor('controller:group/index', 'GroupIndexController', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['controller:group']
 });
 
 // Replace this with your real tests.

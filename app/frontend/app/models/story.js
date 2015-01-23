@@ -6,6 +6,7 @@ export default Model.extend(ModelCurrentUser, {
   type: DS.attr('string'),
   user: DS.belongsTo('user'),
   poster: DS.belongsTo('user'),
+  group: DS.belongsTo('group'),
   createdAt: DS.attr('date'),
   comment: DS.attr('string'),
   media: DS.belongsTo('media', { polymorphic: true }),
