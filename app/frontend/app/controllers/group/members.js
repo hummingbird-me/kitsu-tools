@@ -2,10 +2,6 @@ import Ember from 'ember';
 import HasCurrentUser from '../../mixins/has-current-user';
 
 export default Ember.Controller.extend(HasCurrentUser, {
-  notSelf: function() {
-    return this.get('model')
-  },
-
   allMembers: function() {
     // remove the current users record from the data if
     // they are still in the pending state

@@ -70,7 +70,7 @@ class NewsFeed
 
     stories = Story.for_user(@user)
                    .order('updated_at DESC')
-                   .where('stories.user_id IN (?) OR stories.group_id IN (?)', user_set, group_set)
+                   .where('(stories.user_id IN (?) AND stories.group_id IS NULL) OR stories.group_id IN (?)', user_set, group_set)
                    .includes(:user, :target, :substories)
                    .limit(FRESH_FETCH_SIZE)
     stories.each {|story| add! story }

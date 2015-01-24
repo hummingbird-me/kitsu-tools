@@ -43,7 +43,7 @@ export default Ember.Controller.extend(HasCurrentUser, {
     },
 
     leaveGroup: function() {
-      this.set('loading', true)
+      this.set('loading', true);
       var member = this.get('currentMember');
       Messenger().expectPromise(function() {
         return member.destroyRecord();
