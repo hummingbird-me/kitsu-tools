@@ -39,6 +39,13 @@
 #
 
 class Anime < ActiveRecord::Base
+  SEASON_MONTHS = {
+    'winter' => [12, 1, 2],
+    'spring' => [3, 4, 5],
+    'summer' => [6, 7, 8],
+    'fall'   => [9, 10, 11]
+  }
+
   include Versionable
 
   include PgSearch
@@ -177,6 +184,26 @@ class Anime < ActiveRecord::Base
               AND   ag.genre_id = g.id
             )
           )', genres.map(&:id))
+  end
+
+  # Filter to return only anime from the given season.
+  #
+  # Winter is a little tricky, the year passed in should be the new year. For
+  # example, anime in [Dec2013, Jan2014, Feb2014] will be returned for the
+  # season Winter 2014.
+  def self.in_season(name, year=nil)
+    if name == 'tba'
+      return where('started_airing_date IS NULL')
+    end
+
+    raise ArgumentError.new("invalid season #{name}") if SEASON_MONTHS[name].nil?
+    raise ArgumentError.new("missing year") if year.nil?
+
+    start_date = Date.new(year, SEASON_MONTHS[name].first, 1)
+    start_date -= 1.year if name == 'winter'
+    end_date = Date.new(year, SEASON_MONTHS[name].last, 1).end_of_month
+
+    where('started_airing_date > ? AND started_airing_date < ?', start_date, end_date)
   end
 
   def self.create_or_update_from_hash(hash)
