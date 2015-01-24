@@ -28,20 +28,23 @@
             ·
             <a class="remove-post" {{action "deleteStory"}}>remove</a>
           {{/if}}
-
         </p>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="post-content clearfix">
-      <p {{bind-attr class=":comment-text isExpanded:full-post" }}>
-        {{#if isNew}}
-          {{unbound comment}}
-        {{else}}
-          {{{unbound comment}}}
-        {{/if}}
-      </p>
+      {{#if collapsed}}  
+        <a {{action "showCollapsedPost"}}>Show NSFW Content</a>
+      {{else}}
+        <p {{bind-attr class=":comment-text isExpanded:full-post" }}>
+          {{#if isNew}}
+            {{unbound comment}}
+          {{else}}
+            {{{unbound comment}}}
+          {{/if}}
+        </p>
+      {{/if}}
     </div>
   </div>
   {{#if overflowing}}
@@ -79,58 +82,62 @@
 </div>
 
 <div class="comment-replies">
-  {{#if moreThanTwoSubstories}}
-    <div class="view-more">
-      {{#if loadingAll}}
-        <i class="fa fa-spin fa-spinner"></i>
-      {{else}}
-        <a {{action "toggleShowAll"}}>
-          {{#if showAll}}
-            Show Less
-          {{else}}
-            Show {{pluralize omittedSubstoryCount "more reply" "more replies"}}
-          {{/if}}
-        </a>
-      {{/if}}
-    </div>
-  {{/if}}
-  {{#each reversedDisplaySubstories}}
-    <div {{bind-attr class=":reply isNew"}}>
-      <div class="user-avatar">
-        {{#link-to 'user' user}}
-          {{unbound avatar user 'thumb_small'}}
-        {{/link-to}}
-      </div>
-      <div class="content">
-        <p>
-          <span class="username">
-            {{#link-to 'user' user}}
-              {{unbound user.username}}
-            {{/link-to}}
-          </span>
-          <span class="comment">
-            {{#if isNew}}
-              {{unbound reply}}
+  {{#if collapsed}}
+    <div class="view-more">Comments Hidden</div>
+  {{else}}
+    {{#if moreThanTwoSubstories}}
+      <div class="view-more">
+        {{#if loadingAll}}
+          <i class="fa fa-spin fa-spinner"></i>
+        {{else}}
+          <a {{action "toggleShowAll"}}>
+            {{#if showAll}}
+              Show Less
             {{else}}
-              {{{unbound reply}}}
+              Show {{pluralize omittedSubstoryCount "more reply" "more replies"}}
             {{/if}}
-          </span>
-        </p>
-        <div class="secondary">
-          {{time-ago time=createdAt}}
-          {{#if canDeleteSubstory}}
-            ·
-            <a class="remove-post" {{action "deleteSubstory" this}}>remove</a>
-          {{/if}}
-        </div>
+          </a>
+        {{/if}}
       </div>
+    {{/if}}
+    {{#each reversedDisplaySubstories}}
+      <div {{bind-attr class=":reply isNew"}}>
+        <div class="user-avatar">
+          {{#link-to 'user' user}}
+            {{unbound avatar user 'thumb_small'}}
+          {{/link-to}}
+        </div>
+        <div class="content">
+          <p>
+            <span class="username">
+              {{#link-to 'user' user}}
+                {{unbound user.username}}
+              {{/link-to}}
+            </span>
+            <span class="comment">
+              {{#if isNew}}
+                {{unbound reply}}
+              {{else}}
+                {{{unbound reply}}}
+              {{/if}}
+            </span>
+          </p>
+          <div class="secondary">
+            {{time-ago time=createdAt}}
+            {{#if canDeleteSubstory}}
+              ·
+              <a class="remove-post" {{action "deleteSubstory" this}}>remove</a>
+            {{/if}}
+          </div>
+        </div>
 
 
-    </div>
-  {{/each}}
-  {{#if currentUser.isSignedIn}}
-    <div class="reply-form">
-      {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
-    </div>
+      </div>
+    {{/each}}
+    {{#if currentUser.isSignedIn}}
+      <div class="reply-form">
+        {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
+      </div>
+    {{/if}}
   {{/if}}
 </div>

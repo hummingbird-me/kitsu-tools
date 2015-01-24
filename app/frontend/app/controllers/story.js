@@ -16,6 +16,7 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
   overflowing: false,
   showMoreText: 'Show More',
 
+  collapsed: Ember.computed.equal('model.adult', true),
   showAll: false,
   loadingAll: false,
   loadedAll: propertyEqual('substories.length', 'model.substoryCount'),
@@ -95,6 +96,10 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
       this.set('isExpanded', !this.get('isExpanded'));
       if (this.get('isExpanded')) { this.set('showMoreText', 'Show Less'); }
       else { this.set('showMoreText', 'Show More'); }
+    },
+
+    showCollapsedPost: function() {
+      this.set('collapsed', false);
     },
 
     toggleLike: function() {
