@@ -3,6 +3,10 @@ import HasCurrentUser from '../mixins/has-current-user';
 /* global Messenger */
 
 export default Ember.Controller.extend(HasCurrentUser, {
+  // this flag is used so that the "Leave Group" button doesn't switch
+  // to "Join Group" when waiting for the server to respond.
+  loading: false,
+
   coverImageStyle: function() {
     return "background-image: url(" + this.get('model.coverImage') + ")";
   }.property('model.coverImage'),
@@ -39,15 +43,20 @@ export default Ember.Controller.extend(HasCurrentUser, {
     },
 
     leaveGroup: function() {
-      Messenger().expectPromise(() => {
-        return this.get('currentMember').destroyRecord();
+      this.set('loading', true)
+      var member = this.get('currentMember');
+      Messenger().expectPromise(function() {
+        return member.destroyRecord();
       }, {
         progressMessage: 'Contacting server...',
         successMessage: () => {
+          this.set('loading', false);
           this.decrementProperty('model.memberCount');
           return 'You left ' + this.get('model.name') + '.';
         },
-        errorMessage: function(type, xhr) {
+        errorMessage: (type, xhr) => {
+          member.rollback();
+          this.set('loading', false);
           if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
             return xhr.responseJSON.error + '.';
           }

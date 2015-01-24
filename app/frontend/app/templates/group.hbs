@@ -32,20 +32,26 @@
 
           {{! Join/Leave Group Button }}
           <div class="follow-widgets">
-            {{#if currentMember}}
-              {{#if currentMember.pending}}
-                <button class="btn btn-default btn-lg follow-button" disabled="disabled">
-                  Pending...
-                </button>
+            {{#if loading}}
+              <button class="btn btn-default btn-lg follow-button" disabled="disabled">
+                Loading... <i class="fa fa-spin fa-spinner"></i>
+              </button>
+            {{else}}
+              {{#if currentMember}}
+                {{#if currentMember.pending}}
+                  <button class="btn btn-default btn-lg follow-button" disabled="disabled">
+                    Pending...
+                  </button>
+                {{else}}
+                  <button class="btn btn-default btn-lg follow-button" {{action "leaveGroup"}}>
+                    Leave Group
+                  </button>
+                {{/if}}
               {{else}}
-                <button class="btn btn-default btn-lg follow-button" {{action "leaveGroup"}}>
-                  Leave Group
+                <button class="btn btn-default btn-lg follow-button" {{action "joinGroup" model}}>
+                  Join Group
                 </button>
               {{/if}}
-            {{else}}
-              <button class="btn btn-default btn-lg follow-button" {{action "joinGroup" model}}>
-                Join Group
-              </button>
             {{/if}}
           </div>
         </div>

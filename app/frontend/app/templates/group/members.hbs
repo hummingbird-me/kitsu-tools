@@ -1,8 +1,28 @@
-<h1>No Design Yet</h1>
-
-{{#each member in allMembers}}
-  <p>I'm {{member.user.username}}</p>
-{{/each}}
+<div class="container">
+  {{#each member in allMembers}}
+    <div class="follow-panel-wrapper">
+      <div class="follow-panel">
+        {{#link-to 'user' member.user}}
+          <div class="follow-cover" {{bind-attr style=member.user.coverImageStyle}}></div>
+        {{/link-to}}
+        <div class="user-avatar">
+          <a {{bind-attr href=member.user.userLink}}>
+            {{avatar member.user 'thumb'}}
+          </a>
+          {{#if canKickUser}}
+            
+          {{/if}}
+        </div>
+        <div class="user-info">
+          <h4>{{#link-to 'user' member.user}}{{member.user.username}}{{/link-to}}</h4>
+          <p class="mini-bio">
+            {{member.user.truncatedBio}}
+          </p>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
 
 {{#if canLoadMore}}
   {{load-more classNames="light" action="loadNextPage"}}
