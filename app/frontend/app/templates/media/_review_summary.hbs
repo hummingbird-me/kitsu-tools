@@ -13,7 +13,6 @@
       </span>
       <p class="review-summary">{{summary}}</p>
       <p class="review-likes">
-        {{positiveVotes}} out of {{totalVotes}} users found this review helpful.
       </p>
     </div>
   </div>
@@ -27,21 +26,28 @@
       </div>
       <div class="media-body">
         <p>"{{summary}}"</p>
+        <div class="review-details">
+          <div class="review-likes">
+            {{positiveVotes}} out of {{totalVotes}} users found this review helpful.
+          </div>
           <div class="full-review">
             {{#link-to 'reviews.show' id}}Full Review…{{/link-to}}
           </div>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="review-source media">
-    <div class="reviewer-avatar">
-      {{avatar user 'thumb'}}
-    </div>
-    <div class="reviewer-name">
-      <div>
-        {{user.username}}
+    {{#link-to 'user' user}}
+      <div class="reviewer-avatar">
+        {{avatar user 'thumb'}}
       </div>
-    </div>
+      <div class="reviewer-name">
+        <div>
+          {{user.username}}
+        </div>
+      </div>
+    {{/link-to}}
   </div>
 </div>

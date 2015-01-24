@@ -663,9 +663,19 @@
   }
 }
 
-.full-review {
+.review-details {
+  @extend .clearfix;
+
   font-size: 12px;
   text-align: right;
+
+  .review-likes {
+    float: left;
+  }
+
+  .full-review {
+    float: right;
+  }
 }
 
 .review-source {
