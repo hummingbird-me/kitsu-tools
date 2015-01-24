@@ -41,18 +41,21 @@ class ReviewsController < ApplicationController
   def vote
     authenticate_user!
 
-    @review = Review.find(params[:review_id])
+    review = Review.find(params[:review_id])
 
     if params[:type] == "remove"
-      Vote.for(current_user, @review).try(:destroy)
+      Vote.for(current_user, review).try(:destroy)
     else
-      vote = Vote.for(current_user, @review) || Vote.new(user: current_user, target: @review)
+      vote = Vote.for(current_user, review) || Vote.new(user: current_user, target: review)
       vote.positive = params[:type] == "up"
-      vote.save
+      vote.save!
     end
-    @review.reload.update_wilson_score!
+    review.reload.update_wilson_score!
 
-    render json: true
+    render json: {
+      positive_votes: review.positive_votes,
+      total_votes: review.total_votes
+    }
   end
 
   def new
