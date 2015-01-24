@@ -25,7 +25,12 @@ export default Ember.Route.extend({
       return libraryEntry.save();
     }), {
       progressMessage: "Saving " + anime.get('canonicalTitle') + "...",
-      successMessage: "Saved " + anime.get('canonicalTitle') + "!"
+      successMessage: function() {
+        // update the 'full-anime' relationship, since it seems to
+        // disappear into the void
+        anime.set('libraryEntry', libraryEntry);
+        return "Saved " + anime.get('canonicalTitle') + "!";
+      }
     });
   },
 
@@ -52,7 +57,7 @@ export default Ember.Route.extend({
       }
       return this.saveLibraryEntry(libraryEntry);
     },
-    
+
     toggleFavorite: function() {
       if (!this.get('currentUser.isSignedIn')){
         alert('Need to be signed in');
