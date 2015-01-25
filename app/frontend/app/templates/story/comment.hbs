@@ -83,7 +83,7 @@
 
 <div class="comment-replies">
   {{#if collapsed}}
-    <div class="view-more">Comments Hidden</div>
+    <div class="view-more">{{pluralize omittedSubstoryCount "Comment" "Comments"}} Hidden</div>
   {{else}}
     {{#if moreThanTwoSubstories}}
       <div class="view-more">
