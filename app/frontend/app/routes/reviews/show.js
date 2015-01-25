@@ -2,6 +2,13 @@ import Ember from 'ember';
 import ajax from 'ic-ajax';
 import setTitle from '../../utils/set-title';
 
+function updateVotes(model) {
+  return function(response) {
+    model.set('positiveVotes', response.positive_votes);
+    model.set('totalVotes', response.total_votes);
+  };
+}
+
 export default Ember.Route.extend({
   model: function(params) {
     return this.store.find('review', params.review_id);
@@ -18,14 +25,14 @@ export default Ember.Route.extend({
         return;
       }
       this.currentModel.set('liked', "true");
-      return ajax({
+      ajax({
         url: "/reviews/" + this.currentModel.get('id') + "/vote",
         type: "POST",
         data: {
           type: "up"
         }
-      }).then(Ember.K, function() {
-        return alert("Couldn't recommend review, something went wrong.");
+      }).then(updateVotes(this.currentModel), function() {
+        alert("Couldn't recommend review, something went wrong.");
       });
     },
 
@@ -35,27 +42,27 @@ export default Ember.Route.extend({
         return;
       }
       this.currentModel.set('liked', "false");
-      return ajax({
+      ajax({
         url: "/reviews/" + this.currentModel.get('id') + "/vote",
         type: "POST",
         data: {
           type: "down"
         }
-      }).then(Ember.K, function() {
-        return alert("Couldn't downvote review, something went wrong.");
+      }).then(updateVotes(this.currentModel), function() {
+        alert("Couldn't downvote review, something went wrong.");
       });
     },
 
     unvote: function() {
       this.currentModel.set('liked', null);
-      return ajax({
+      ajax({
         url: "/reviews/" + this.currentModel.get('id') + "/vote",
         type: "POST",
         data: {
           type: "remove"
         }
-      }).then(Ember.K, function() {
-        return alert("Couldn't vote on review, something went wrong.");
+      }).then(updateVotes(this.currentModel), function() {
+        alert("Couldn't vote on review, something went wrong.");
       });
     }
   }
