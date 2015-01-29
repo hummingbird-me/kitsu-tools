@@ -4,11 +4,9 @@
 <div class="panel-footer">
   <button class="btn status-button" {{action "submitPost"}}>Post</button>
   {{#unless currentUser.sfwFilter}}
-    {{#if currentUser.betaAccess}}
-      <span class="status-box-wrapper">
-        {{input class="status-box" type="checkbox" name="nsfw" checked=newPostAdult}}
-        <span id="status-box-text">nsfw</span>
-      </span>
-    {{/if}}
+    <span class="status-box-wrapper">
+      {{input class="status-box" type="checkbox" name="nsfw" checked=newPostAdult}}
+      <span id="status-box-text">nsfw</span>
+    </span>
   {{/unless}}
 </div>
