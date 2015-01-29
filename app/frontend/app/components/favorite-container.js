@@ -13,6 +13,8 @@ export default Ember.Component.extend({
   isLoading: true,
   showPages: 1,
 
+  showAnimeFavorites: Ember.computed.or('viewingSelf', 'favoriteListCapped.length', 'isAnimeContainer'),
+
 
   favoriteList: function() {
     this.set('isLoading', false);
