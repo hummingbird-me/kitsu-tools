@@ -31,3 +31,11 @@
 .group-feed {
   @extend .user-feed;
 }
+
+.group-cover {
+  @extend .user-cover;
+}
+
+.group-bio {
+  @extend .user-bio;
+}

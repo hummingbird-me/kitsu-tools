@@ -6,9 +6,27 @@
       <div class="group-about-panel">
         <div class="panel-heading">
           <h3 class="panel-title">Group Details</h3>
+          <span class="edit-panel">
+            {{#if controllers.group.isAdmin}}
+              {{#if isEditing}}
+                <button class="btn btn-default btn-xs" {{action "saveGroupDetails"}}> Save</button>
+              {{else}}
+                <a {{action "editGroupDetails"}}>
+                  <i class="fa fa-pencil"></i>
+                </a>
+              {{/if}}
+            {{/if}}
+          </span>
         </div>
         <div class="panel-body">
-          <p class="about">{{group.about}}</p>
+          {{#if isEditing}}
+            <div {{bind-attr class=":edit-bio-chars aboutCharactersLeft:hasleft:noleft"}}>
+              {{aboutCharacterCount}} left
+            </div>
+            {{textarea class="edit-bio" rows="3" placeholder="Tell us about your group." value=group.truncatedAbout}}
+          {{else}}
+            <p class="about">{{group.about}}</p>
+          {{/if}}
         </div>
       </div>
 
@@ -52,9 +70,9 @@
             {{/each}}
           </ul>
           <div class="more-wrapper">
-            <a href="#" class="view-more-button">
+            {{#link-to 'groups' class='view-more-button'}}
               View All
-            </a>
+            {{/link-to}}
           </div>
         </div>
       </div>

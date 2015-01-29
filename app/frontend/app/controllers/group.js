@@ -7,9 +7,11 @@ export default Ember.Controller.extend(HasCurrentUser, {
   // to "Join Group" when waiting for the server to respond.
   loading: false,
 
+  coverUpload: Ember.Object.create(),
+  coverUrl: Ember.computed.any('coverUpload.croppedImage', 'model.coverImage'),
   coverImageStyle: function() {
-    return "background-image: url(" + this.get('model.coverImage') + ")";
-  }.property('model.coverImage'),
+    return "background-image: url(" + this.get('coverUrl') + ")";
+  }.property('coverUrl'),
 
   currentMember: function() {
     return this.get('model.members').findBy('user.id', this.get('currentUser.id'));
@@ -18,6 +20,8 @@ export default Ember.Controller.extend(HasCurrentUser, {
   isAdmin: function() {
     return this.get('currentMember') && this.get('currentMember.isAdmin');
   }.property('currentMember'),
+
+  showEditMenu: false,
 
   actions: {
     joinGroup: function(group) {
@@ -63,6 +67,32 @@ export default Ember.Controller.extend(HasCurrentUser, {
           return 'There was an unknown error.';
         }
       });
+    },
+
+    toggleEditMenu: function() {
+      this.toggleProperty('showEditMenu');
+    },
+
+    saveEditMenu: function() {
+      this.toggleProperty('showEditMenu');
+      this.get('model').save();
+    },
+
+    coverSelected: function(file) {
+      var reader = new FileReader();
+      reader.onload = (e) => {
+        this.set('coverUpload.originalImage', e.target.result);
+        this.send('openModal', 'crop-cover', this.get('coverUpload'));
+      };
+      reader.readAsDataURL(file);
+    },
+
+    avatarSelected: function(file) {
+      var reader = new FileReader();
+      reader.onload = (e) => {
+        this.set('model.avatar', e.target.result);
+      };
+      reader.readAsDataURL(file);
     }
   }
 });

@@ -2,7 +2,7 @@ class GroupsController < ApplicationController
   def index
     # currently also using this endpoint to pull down suggested groups
     groups = if params[:limit].present?
-      Group.trending(params[:limit])
+      Group.trending(params[:limit].to_i)
     else
       Group.where(closed: false).page(params[:page]).per(20)
         .order('updated_at DESC')
@@ -57,9 +57,13 @@ class GroupsController < ApplicationController
   def update
     authenticate_user!
     group = Group.find(params[:id])
-    group_hash = params.require(:group).permit(:bio, :about).to_h
+    group_hash = params.require(:group).permit(:bio, :about, :cover_image, :avatar).to_h
 
     if group.member(current_user).admin?
+      # cleanup image uploads if they are bad
+      group_hash.delete('cover_image') unless group_hash['cover_image'] =~ /^data:image/
+      group_hash.delete('avatar') unless group_hash['avatar'] =~ /^data:image/
+
       group.attributes = group_hash
       group.save!
       render json: group

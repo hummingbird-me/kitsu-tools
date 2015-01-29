@@ -1,18 +1,39 @@
-{{! Cover Image }}
-<div class="user-cover">
+{{! Cover image }}
+<div {{bind-attr class=":group-cover showEditMenu:edit-menu:no-edit"}}>
   <div class="cover-photo" {{bind-attr style=coverImageStyle}}>
+    {{#if isAdmin}}
+      <div class="edit-cover">
+        <label for="cover-image">
+          <i class="fa fa-camera"></i> Edit Cover (1440w x 400h)
+        </label>
+        <div class="container">
+          <p>
+            Cover images expand and shrink based on your device's width.
+            <br>
+            On smaller devices your cover will be cut off equally on both sides.
+          </p>
+        </div>
+        {{view "file-upload" action="coverSelected" id="cover-image"}}
+      </div>
+    {{/if}}
     <div class="dark-overlay"></div>
   </div>
 </div>
 
 <div class="container relative">
   <div class="row">
-    <div class="user-cover-options">
+    <div {{bind-attr class=":user-cover-options showEditMenu:edit-menu:no-edit"}}>
       <div class="col-sm-12 user-wrapper">
         {{! Group Avatar }}
         <div class="col-sm-2 col-md-2 user-avatar clearfix">
           <div class="large-avatar">
             <img class="responsive-image" {{bind-attr src=model.avatar alt=model.name}}>
+            <div class="edit-avatar">
+              <label for="avatar-image">
+                <i class="fa fa-camera"></i> Edit Avatar
+              </label>
+              {{view "file-upload" action="avatarSelected" id="avatar-image"}}
+            </div>
           </div>
         </div>
 
@@ -23,12 +44,15 @@
               <h2 class="name">
                 {{model.name}}
               </h2>
-              <p class="user-bio">
-                {{model.bio}}
-              </p>
+              {{#if showEditMenu}}
+                {{{textarea class="edit-bio" rows="2" maxlength="140" placeholder="Briefly tell us about yourself..." value=model.truncatedBio}}}
+              {{else}}
+                <p class="group-bio">
+                  {{model.truncatedBio}}
+                </p>
+              {{/if}}
             </div>
           </div>
-
 
           {{! Join/Leave Group Button }}
           <div class="follow-widgets">
@@ -52,6 +76,20 @@
                   Join Group
                 </button>
               {{/if}}
+            {{/if}}
+
+            {{#if isAdmin}}
+              <div class="edit">
+                {{#if showEditMenu}}
+                  <button class="btn btn-default btn-lg save" {{action "saveEditMenu"}}>
+                    <i class="fa fa-pencil"></i> Save
+                  </button>
+                {{else}}
+                  <button class="btn btn-default btn-lg edit" {{action "toggleEditMenu"}}>
+                    <i class="fa fa-pencil"></i> Edit
+                  </button>
+                {{/if}}
+              </div>
             {{/if}}
           </div>
         </div>
