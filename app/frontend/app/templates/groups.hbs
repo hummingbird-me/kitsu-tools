@@ -1,0 +1,11 @@
+<div class="container">
+  <h1>All the Groups!</h1>
+  <div class="pull-right">
+    <a href="#" class="btn btn-primary" {{action "openModal" "create-group" group}}>Create Group</a>
+  </div>
+  {{#each group in model}}
+    <div class="group-block">
+      <b>{{group.name}}</b>
+    </div>
+  {{/each}}
+</div>

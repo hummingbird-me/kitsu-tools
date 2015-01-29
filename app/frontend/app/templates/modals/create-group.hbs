@@ -1,0 +1,27 @@
+{{#bootstrap-modal action="close"}}
+  <div class="modal-header">
+    <h4 class="modal-title">Create Group</h4>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label>Group Name</label>
+          {{input value=name class="form-control" placeholder="The name of your group!"}}
+        </div>
+        <div class="form-group">
+          <label>Group Bio</label>
+          {{textarea value=bio rows="3" class="form-control" maxlength="255" placeholder="Short bio about your group!"}}
+        </div>
+        <div class="form-group">
+          <label>About the Group</label>
+          {{textarea value=about rows="3" class="form-control" placeholder="Tell us about your group!"}}
+        </div>
+        <button class="btn btn-primary pull-right" {{action "create"}} {{bind-attr disabled=isDisabled}}>
+          {{#if isSaving}}<i class="fa fa-spin fa-spinner"></i>{{/if}}
+          Create Group
+        </button>
+      </div>
+    </div>
+  </div>
+{{/bootstrap-modal}}

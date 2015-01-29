@@ -1,15 +1,19 @@
 class GroupsController < ApplicationController
   def index
+    # currently also using this endpoint to pull down suggested groups
     groups = if params[:limit].present?
-      Group.trending.take(params[:limit])
+      Group.trending(params[:limit])
     else
-      Group.trending # todo: paginate
+      Group.where(closed: false).page(params[:page]).per(20)
+        .order('updated_at DESC')
     end
 
     respond_to do |format|
-      format.json { render json: groups }
+      format.json do
+        render json: groups, meta: {cursor: 1 + (params[:page] || 1).to_i}
+      end
       format.html do
-        preload_to_ember! groups
+        generic_preload! "groups", ed_serialize(groups)
         render_ember
       end
     end

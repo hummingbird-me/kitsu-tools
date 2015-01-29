@@ -35,6 +35,7 @@ Router.map(function() {
     this.route('followers');
   });
 
+  this.route('groups');
   this.resource('group', {path: '/groups/:id'}, function() {
     this.route('members');
     this.route('manage');
