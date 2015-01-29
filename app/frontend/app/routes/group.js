@@ -1,4 +1,5 @@
 import Ember from 'ember';
+/* global Messenger */
 
 export default Ember.Route.extend({
   model: function(params) {
