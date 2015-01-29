@@ -45,7 +45,7 @@ class GroupsController < ApplicationController
   def create
     authenticate_user!
 
-    group_hash = params.require(:group).permit(:name).to_h
+    group_hash = params.require(:group).permit(:name, :bio, :about).to_h
 
     return error! "Group with that name already exists", 409 if Group.exists?(['lower(name) = ?', group_hash['name'].downcase])
     group = Group.new_with_admin(group_hash, current_user)
