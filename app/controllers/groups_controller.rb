@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  def show_members
+  def static
     group = Group.find(params[:group_id])
     preload_to_ember! group
     render_ember

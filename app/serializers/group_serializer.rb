@@ -1,7 +1,8 @@
 class GroupSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :name, :avatar, :cover_image, :bio, :about, :member_count
+  attributes :id, :name, :avatar, :cover_image, :bio, :about, :member_count,
+    :closed
   has_many :members, root: :group_members
 
   def id

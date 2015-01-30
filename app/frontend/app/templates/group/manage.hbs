@@ -1,1 +1,20 @@
-<p>I'm going to manage things</p>
+<div class="container">
+  <div class="col-sm-12">
+    {{#if currentMember.isAdmin}}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Group Settings
+          </div>
+          <div class="panel-body">
+            {{#if model.closed}}
+              Your group is closed! You'll need to contact a staff member to re-open it.
+            {{else}}
+              <button class="btn btn-danger" {{action "closeGroup"}}>
+                Close Group
+              </button>
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
+  </div>
+</div>

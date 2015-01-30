@@ -8,6 +8,7 @@ export default DS.Model.extend({
   avatar: DS.attr('string'),
   memberCount: DS.attr('number'),
   members: DS.hasMany('group-member'),
+  closed: DS.attr('boolean'),
 
   // Fixes the fact that viewing all members adds to the members
   // association.
