@@ -3,8 +3,10 @@ class GroupMembersController < ApplicationController
 
   def index
     group = Group.find(params[:group_id])
-    members = current_user && group.is_admin?(current_user) ?
-      group.members : group.members.accepted
+
+    res = current_user &&
+      (group.is_admin?(current_user) || group.is_mod?(current_user))
+    members = res ? group.members : group.members.accepted
     members = members.page(params[:page]).per(20)
     render json: members, meta: {cursor: 1 + (params[:page] || 1).to_i}
   end
@@ -25,18 +27,20 @@ class GroupMembersController < ApplicationController
 
   def update
     if current_member.admin?
-      membership_hash = params.require(:group_member).permit(:rank, :pending).to_h
+      membership_hash = params.require(:group_member).permit(:pending, :rank).to_h
     elsif current_member.mod?
       membership_hash = params.require(:group_member).permit(:pending).to_h
     else
       return error! "Only admins and mods can do that", 403
     end
 
+    # won't apply attributes if we just refer to `membership` private method
+    membership = GroupMember.find(params[:id])
     membership.attributes = membership_hash
 
     # If they were an admin and their rank is being changed, check that they're not the last admin
     if membership.rank_changed? && membership.rank_was == 'admin' && !group.can_admin_resign?
-      return error! "Last admin cannot resign", 400
+      return error! "Last admin of the group cannot resign", 400
     else
       membership.save!
       render json: membership
@@ -44,8 +48,8 @@ class GroupMembersController < ApplicationController
   end
 
   def destroy
-    return error! "You must promote another admin before leaving", 400 if membership.admin? && !group.can_admin_resign?
     return error! "Mods can only remove regular users from the group", 403 if current_member.mod? && current_user.id != membership.user_id && !membership.pleb?
+    return error! "You must promote another admin", 400 if membership.admin? && !group.can_admin_resign?
     return error! "Wrong user", 403 if current_member.pleb? && current_user.id != membership.user_id
 
     membership.destroy

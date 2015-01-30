@@ -66,12 +66,10 @@ class Group < ActiveRecord::Base
 
   def close!
     update_attribute(:closed, true)
-    # TODO: add Sidetiq job to fully delete in 14 days
   end
 
   def open!
     update_attribute(:closed, false)
-    # TODO: cancel any queued Sidetiq jobs
   end
 
   def can_admin_resign?
@@ -84,6 +82,10 @@ class Group < ActiveRecord::Base
 
   def is_admin?(user)
     member(user).try(:admin?)
+  end
+
+  def is_mod?(user)
+    member(user).try(:mod?)
   end
 
   def self.new_with_admin(params, admin)

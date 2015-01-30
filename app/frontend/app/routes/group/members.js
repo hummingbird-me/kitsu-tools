@@ -7,7 +7,9 @@ export default Ember.Route.extend(Paginated, {
   model: function() {
     // keep `cursor` at 1, as first visit we only have at most 15 members
     // and pages are per 20.
-    return this.modelFor('group').get('members');
+    return this.store.filter('group-member', (member) => {
+      return member.get('groupId') === this.modelFor('group').get('id');
+    });
   },
 
   fetchPage: function(page) {

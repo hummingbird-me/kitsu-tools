@@ -7,10 +7,11 @@ export default Ember.Controller.extend(ModalMixin, {
   bio: null,
   about: null,
 
-  // only name is required to create a group
   isDisabled: function() {
-    return this.get('name') === null || this.get('name').length === 0;
-  }.property('name'),
+    return (this.get('name') === null || this.get('name').length === 0) ||
+      (this.get('bio') === null || this.get('bio').length === 0) ||
+      (this.get('about') === null || this.get('about').length === 0);
+  }.property('name', 'bio', 'about'),
 
   actions: {
     create: function() {

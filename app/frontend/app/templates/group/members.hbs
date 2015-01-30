@@ -9,16 +9,48 @@
           <a {{bind-attr href=member.user.userLink}}>
             {{avatar member.user 'thumb'}}
           </a>
-          {{#if canKickUser}}
-            
-          {{/if}}
         </div>
         <div class="user-info">
-          <h4>{{#link-to 'user' member.user}}{{member.user.username}}{{/link-to}}</h4>
+          <h4>
+            {{#link-to 'user' member.user}}{{member.user.username}}{{/link-to}}
+            <span class="mini-badge">{{member.rank}}</span>
+          </h4>
           <p class="mini-bio">
             {{member.user.truncatedBio}}
           </p>
         </div>
+
+        {{#if currentMember.isNotPleb}}
+          <div class="group-actions pull-right">
+            {{! kick member out of group }}
+            {{#unless member.pending}}
+              {{#if currentMember.canKickMember}}
+                <button class="btn btn-primary" {{action "kickMember" member}}>
+                  Kick
+                </button>
+              {{/if}}
+            {{/unless}}
+
+            {{! change members rank }}
+            {{#if currentMember.canChangeRank}}
+              {{#if member.pending}}
+                {{! approve/reject application }}
+                <button class="btn btn-success" {{action "approveMember" member}}>
+                  Approve
+                </button>
+                <button class="btn btn-danger" {{action "rejectMember" member}}>
+                  Reject
+                </button>
+              {{else}}
+                {{! change the members rank }}
+                {{view "select"
+                  content=ranks
+                  value=member.rank
+                }}
+              {{/if}}
+            {{/if}}
+          </div>
+        {{/if}}
       </div>
     </div>
   {{/each}}

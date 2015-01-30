@@ -54,6 +54,7 @@ class GroupMembersControllerTest < ActionController::TestCase
       rank: 'admin'
     }
     assert_response :ok
+    assert_equal "admin", GroupMember.find(membership.id).rank
   end
 
   test "last admin cannot resign" do
@@ -61,5 +62,15 @@ class GroupMembersControllerTest < ActionController::TestCase
     admin = group_members(:gumi_admin)
     delete :destroy, id: admin.id
     assert_response 400
+  end
+
+  test "mods and admins can approve a pending member" do
+    sign_in group_members(:gumi_admin).user
+    membership = group_members(:gumi_pleb)
+    put :update, id: membership.id, group_member: {
+      pending: false
+    }
+    assert_response :ok
+    assert_equal false, GroupMember.find(membership.id).pending
   end
 end

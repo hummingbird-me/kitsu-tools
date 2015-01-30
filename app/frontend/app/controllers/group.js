@@ -26,7 +26,7 @@ export default Ember.Controller.extend(HasCurrentUser, {
   actions: {
     joinGroup: function(group) {
       var member = this.store.createRecord('group-member', {
-        group: group,
+        groupId: group.get('id'),
         user: this.get('currentUser.model.content'),
         pending: true
       });
@@ -35,6 +35,7 @@ export default Ember.Controller.extend(HasCurrentUser, {
       }, {
         progressMessage: 'Contacting server...',
         successMessage: () => {
+          this.get('model.members').addObject(member);
           return 'You have requested to join ' + this.get('model.name') + '.';
         },
         errorMessage: function(type, xhr) {
