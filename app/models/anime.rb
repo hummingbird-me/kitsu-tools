@@ -39,6 +39,13 @@
 #
 
 class Anime < ActiveRecord::Base
+  SEASON_MONTHS = {
+    'winter' => [12, 1, 2],
+    'spring' => [3, 4, 5],
+    'summer' => [6, 7, 8],
+    'fall'   => [9, 10, 11]
+  }
+
   include Versionable
 
   include PgSearch
@@ -109,7 +116,8 @@ class Anime < ActiveRecord::Base
     self.cover_image_top_offset = 0 if self.cover_image_top_offset.nil?
   end
 
-  # Filter out hentai if `filterp` is true or nil.
+  # Filter out 18+ content if the current user has chosen to filter out NSFW
+  # content.
   def self.sfw_filter(current_user)
     if current_user && !current_user.sfw_filter
       self
@@ -178,35 +186,24 @@ class Anime < ActiveRecord::Base
           )', genres.map(&:id))
   end
 
-  def title_distance(title)
-    titles = [self.title, self.alt_title].compact
-    # Damerau-Levenshtein Distance
-    levenshtein = titles.map { |t| RubyFish::DamerauLevenshtein.distance(t, title) }.min
+  # Filter to return only anime from the given season.
+  #
+  # Winter is a little tricky, the year passed in should be the new year. For
+  # example, anime in [Dec2013, Jan2014, Feb2014] will be returned for the
+  # season Winter 2014.
+  def self.in_season(name, year=nil)
+    if name == 'tba'
+      return where('started_airing_date IS NULL')
+    end
 
-    # Longest Common Subsequence (Normalized
-    subsequence = titles.map { |t| [t, RubyFish::LongestSubsequence.distance(t, title)] }
-                        .map { |t| [t[0].length, title.length].max - t[1] }.min
+    raise ArgumentError.new("invalid season #{name}") if SEASON_MONTHS[name].nil?
+    raise ArgumentError.new("missing year") if year.nil?
 
-    # Average and square to determine cost
-    [levenshtein, subsequence].flatten.map { |x| x ** 2 }.instance_eval { sum.to_f / size }
-  end
+    start_date = Date.new(year, SEASON_MONTHS[name].first, 1)
+    start_date -= 1.year if name == 'winter'
+    end_date = Date.new(year, SEASON_MONTHS[name].last, 1).end_of_month
 
-  def self.fuzzy_find(title)
-    # Exact
-    anime = Anime.where("lower(title) = :title OR lower(alt_title) = :title", title: title.downcase).first
-    return anime unless anime.nil?
-
-    # Trigram
-    options = Anime.fuzzy_search_by_title(title).first(10)
-    anime = options.first
-    return anime if !anime.nil? && anime.pg_search_rank > 0.7
-
-    # Sort by distance, ascending
-    anime = options.map do |a|
-      { anime: a, distance: a.title_distance(title) }
-    end.sort { |a, b| a[:distance] <=> b[:distance] }
-
-    anime.first[:anime] if anime.first[:distance] < 80
+    where('started_airing_date > ? AND started_airing_date < ?', start_date, end_date)
   end
 
   def self.create_or_update_from_hash(hash)

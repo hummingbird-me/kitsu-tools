@@ -41,6 +41,7 @@
 require 'test_helper'
 
 class AnimeTest < ActiveSupport::TestCase
+
   should have_many(:quotes).dependent(:destroy)
   should have_many(:castings).dependent(:destroy)
   should have_many(:reviews).dependent(:destroy)
@@ -57,4 +58,17 @@ class AnimeTest < ActiveSupport::TestCase
     assert Anime.fuzzy_search_by_title("swodr atr onlien").include?(anime(:sword_art_online))
     assert Anime.simple_search_by_title("sword art").include?(anime(:sword_art_online))
   end
+
+  test "#in_season raises ArgumentError for invalid season name" do
+    assert_raises ArgumentError do
+      Anime.in_season('monsoon', 2013)
+    end
+  end
+
+  test "#in_reason raises ArgumentError if year is needed but not provided" do
+    assert_raises ArgumentError do
+      Anime.in_season('fall')
+    end
+  end
+
 end

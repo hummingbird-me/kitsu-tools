@@ -29,14 +29,8 @@ class AnimeController < ApplicationController
   def upcoming
     hide_cover_image
 
-    season_months = {
-      'winter' => [12, 1, 2],
-      'spring' => [3, 4, 5],
-      'summer' => [6, 7, 8],
-      'fall'   => [9, 10, 11]
-    }
-
-    @seasons = ['winter', 'spring', 'summer', 'fall']
+    season_months = Anime::SEASON_MONTHS
+    @seasons = season_months.keys
     @seasons.rotate! until season_months[@seasons[0]].include? Time.now.month
     current_season = @seasons[0]
     @season = [@seasons, 'tba'].flatten.include?(params[:season]) ? params[:season] : current_season
@@ -58,14 +52,10 @@ class AnimeController < ApplicationController
 
     @anime = Anime.accessible_by(current_ability)
 
-    if @season != 'tba'
-      start_date = Date.new(@season_years[@season], season_months[@season][0], 1)
-      start_date -= 1.year if @season == 'winter'
-      end_date = Date.new(@season_years[@season], season_months[@season][-1], 1).end_of_month
-
-      @anime = @anime.where('started_airing_date > ? AND started_airing_date < ?', start_date, end_date)
+    if @season == 'tba'
+      @anime = @anime.in_season('tba')
     else
-      @anime = @anime.where('started_airing_date IS NULL')
+      @anime = @anime.in_season(@season, @season_years[@season])
     end
 
     @anime = @anime.order_by_rating.group_by {|anime| anime.show_type }
