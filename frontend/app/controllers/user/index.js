@@ -16,6 +16,9 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   ),
 
   unselectingWaifu: false,
+  waifuPath: function() {
+    return '/characters/' + this.get('user.waifu.id');
+  }.property('user.waifu.id'),
 
   aboutCharacterCount: function() {
     return 500 - this.get('user.about').length;
