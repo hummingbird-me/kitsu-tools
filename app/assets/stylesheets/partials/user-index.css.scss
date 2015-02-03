@@ -44,6 +44,15 @@
       }
     }
 
+    @media (max-width: 661px) {
+      .container {
+        .row {
+          position: relative;
+          bottom: 40px;
+        }
+      }
+    }
+
     // Hide less important links on mobile
     @media (max-width: 560px) {
       .reviews-link, .lists-link {
