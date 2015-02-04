@@ -5,41 +5,35 @@ class Settings::ImportController < ApplicationController
   before_filter :authenticate_user!
 
   def myanimelist
-    hide_cover_image
+    params.require(:file)
 
-    if params[:animelist]
-      file = params[:animelist]
-      begin
-        # Check the magic number for gzip because some browsers are stupid
-        # Many users are uploading zipped-up lists with a text/xml MIME
-        if file.readpartial(3) == 0x1F_8B_08
-          gz = Zlib::GzipReader.new(file)
-          xml = gz.read
-          gz.close
-        elsif file.content_type.include?('xml')
-          xml = file.read
-        else
-          raise "Unknown format"
-        end
-
-        xml = XMLCleaner.clean(xml)
-
-        raise "Blank file" if xml.blank?
-
-        current_user.update_column :mal_import_in_progress, true
-        MyAnimeListImportApplyWorker.perform_async(current_user.id, xml)
-
-        mixpanel.track "Imported from MyAnimeList", {email: current_user.email} if Rails.env.production?
-      rescue Exception => e
-        flash[:error] = "There was a problem importing your anime list (#{e.message}).  Please send an email to <a href='mailto:vikhyat@hummingbird.me'>vikhyat@hummingbird.me</a> with the file you are trying to import.".html_safe
-        redirect_to "/users/edit"
-        return
-      end
+    # Prepare the file
+    # Check the magic number for gzip because some browsers are stupid
+    # Many users are uploading zipped-up lists with a text/xml MIME
+    if file.readpartial(3) == 0x1F_8B_08
+      gz = Zlib::GzipReader.new(file)
+      xml = gz.read
+      gz.close
+    elsif file.content_type.include?('xml')
+      xml = file.read
+    else
+      return error!(400, "Unknown format")
     end
+    xml = XMLCleaner.clean(xml)
 
-    unless current_user.mal_import_in_progress?
-      flash[:success] = "Import completed successfully."
-      redirect_to user_path(current_user)
-    end
+    return error!(422, "Blank file") if xml.blank?
+
+    # Queue the import
+    current_user.update_columns import_status: :queued,
+                                import_from: 'myanimelist'
+    MyAnimeListImportApplyWorker.perform_async(current_user.id, xml)
+
+    render json: current_user
+
+    mixpanel.track "Imported from MyAnimeList", {email: current_user.email} if Rails.env.production?
+  rescue Exception
+    error! 500, "There was a problem importing your anime list.  Please send an
+                 email to vikhyat@hummingbird.me with the file you are trying
+                 to import."
   end
 end

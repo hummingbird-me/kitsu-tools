@@ -45,7 +45,6 @@
 #  authentication_token        :string(255)
 #  avatar_processing           :boolean
 #  subscribed_to_newsletter    :boolean          default(TRUE)
-#  mal_import_in_progress      :boolean
 #  waifu                       :string(255)
 #  location                    :string(255)
 #  website                     :string(255)
@@ -63,6 +62,9 @@
 #  pro_membership_plan_id      :integer
 #  stripe_customer_id          :string(255)
 #  about_formatted             :text
+#  import_status               :integer
+#  import_from                 :string(255)
+#  import_error                :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -213,6 +215,8 @@ class User < ActiveRecord::Base
 
   validates :title_language_preference, inclusion: {in: %w[canonical english romanized]}
 
+  enum import_status: {queued: 1, running: 2, complete: 3, error: 4}
+
   def to_s
     name
   end
@@ -316,7 +320,7 @@ class User < ActiveRecord::Base
     user.confirm!
     return user
   end
-  
+
   # Set this user's facebook_id to the passed in `uid`.
   #
   # Returns nothing.
