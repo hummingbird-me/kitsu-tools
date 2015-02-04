@@ -16,15 +16,18 @@ class QuotesController < ApplicationController
 
   def create
     authenticate_user!
-    @anime = Anime.find(params["quote"]["anime_id"])
-    @quote = Quote.new
-    @quote.content = params["quote"]["content"]
-    @quote.character_name = params["quote"]["character_name"]
-    @quote.anime = @anime
-    @quote.user = current_user
-    @quote.save
 
-    redirect_to anime_quotes_path(@anime)
+    quote_params = params.require(:quote).permit(:anime_id, :character_name, :content)
+
+    anime = Anime.find(quote_params[:anime_id])
+    quote = Quote.create(
+      character_name: quote_params[:character_name],
+      content: quote_params[:content],
+      anime: anime,
+      user: current_user
+    )
+
+    render json: quote
   end
 
   def update

@@ -10,13 +10,13 @@
   <div class="row row-centered">
     <div class="col-xs-6 col-md-offset-3">
 
-      {{#each}}
+      {{#each quote in content}}
         <div class="rounded-block col-sm-12 clearfix quote-container">
-          <p><strong>{{characterName}}:</strong> {{content}}</p>
+          <p><strong>{{quote.characterName}}:</strong> {{quote.content}}</p>
           <span class="favorited-by">
-            <span class="favorite-count">Favorited by {{pluralize favoriteCount "user" "users"}} - </span>
-            <a {{action "toggleQuoteFavorite" this}}>
-              {{#if isFavorite}}
+            <span class="favorite-count">Favorited by {{pluralize quote.favoriteCount "user" "users"}} - </span>
+            <a {{action "toggleQuoteFavorite" quote}}>
+              {{#if quote.isFavorite}}
                 Unfavorite this quote
               {{else}}
                 Favorite this quote
