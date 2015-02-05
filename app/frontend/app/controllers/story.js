@@ -57,6 +57,10 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
           self.set('reply', '');
           Messenger().error("You must be a member of the group.");
           return;
+        } else if (group && group.get('closed')) {
+          self.set('reply', '');
+          Messenger().error("This group is closed.");
+          return;
         }
 
         var reply = self.store.createRecord('substory', {
