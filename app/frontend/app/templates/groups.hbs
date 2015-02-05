@@ -7,25 +7,9 @@
     {{/if}}
   </div>
   <div class="row">
-    {{#each group in model}}
+    {{#each group in recentGroups}}
       <div class="col-sm-4">
-        <div class="group-wrapper" style="background: url(http://freedwallpaper.com/wp-content/uploads/2014/12/anime-girl-background-hd-desktop-wallpaper.jpg) center;">
-          <div class="group-widget-top">
-            <div class="group-avatar">
-              <img src="http://media.animevice.com/uploads/0/9459/351731-_animepaper.net_avatar_standard_anime_kobato_kari_kobato__magic_bubbles__187987_yamaro_preview_076630ac_super.jpg">
-            </div>
-            <div class="group-info">
-              <h4>Test Group</h4>
-              <small>1 members</small>
-            </div>
-          </div>
-          <div class="group-cta">
-            <button class="btn btn-default suggestion-button">
-              Join Group
-            </button>
-          </div>
-          <div class="overlay"></div>
-        </div>
+        {{group-box group=group}}
       </div>
     {{/each}}
   </div>
@@ -37,24 +21,12 @@
   <div class="row">
     {{#each group in model}}
       <div class="col-sm-4">
-        <div class="group-wrapper" style="background: url(http://freedwallpaper.com/wp-content/uploads/2014/12/anime-girl-background-hd-desktop-wallpaper.jpg) center;">
-          <div class="group-widget-top">
-            <div class="group-avatar">
-              <img src="http://media.animevice.com/uploads/0/9459/351731-_animepaper.net_avatar_standard_anime_kobato_kari_kobato__magic_bubbles__187987_yamaro_preview_076630ac_super.jpg">
-            </div>
-            <div class="group-info">
-              <h4>Test Group</h4>
-              <small>1 members</small>
-            </div>
-          </div>
-          <div class="group-cta">
-            <button class="btn btn-default suggestion-button">
-              Join Group
-            </button>
-          </div>
-          <div class="overlay"></div>
-        </div>
+        {{group-box group=group}}
       </div>
     {{/each}}
   </div>
+
+  {{#if canLoadMore}}
+    {{load-more classNames="light" action="loadNextPage"}}
+  {{/if}}
 </div>
