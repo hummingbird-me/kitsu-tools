@@ -94,6 +94,12 @@ class UsersController < ApplicationController
     render_ember
   end
 
+  def groups
+    user = User.find(params[:user_id])
+    preload_to_ember! user
+    render_ember
+  end
+
   def manga_library
     @user = User.find(params[:user_id])
 

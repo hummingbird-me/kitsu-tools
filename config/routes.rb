@@ -90,6 +90,7 @@ Hummingbird::Application.routes.draw do
   resources :users, only: [:index, :show, :update] do
     get 'library/manga' => 'users#manga_library'
     get :library
+    get :groups
     get :reviews
     get :followers
     get :following
