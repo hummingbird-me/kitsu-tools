@@ -8,6 +8,10 @@ class GroupsController < ApplicationController
         .order('updated_at DESC')
     end
 
+    if params[:user_id].present?
+      groups = User.find(params[:user_id]).groups.page(params[:page]).per(20)
+    end
+
     respond_to do |format|
       format.json do
         render json: groups, meta: {cursor: 1 + (params[:page] || 1).to_i}

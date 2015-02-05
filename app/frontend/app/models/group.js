@@ -10,6 +10,10 @@ export default DS.Model.extend({
   members: DS.hasMany('group-member'),
   closed: DS.attr('boolean'),
 
+  coverImageStyle: function() {
+    return "background: url(" + this.get('coverImage') + ") center;";
+  }.property('coverImage'),
+
   // Fixes the fact that viewing all members adds to the members
   // association.
   recentMembers: function() {
