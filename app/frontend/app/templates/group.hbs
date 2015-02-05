@@ -61,13 +61,25 @@
                 Loading... <i class="fa fa-spin fa-spinner"></i>
               </button>
             {{else}}
+              {{! edit button }}
+              {{#if isAdmin}}
+                {{#if showEditMenu}}
+                  <button class="btn btn-default btn-lg save edit-group" {{action "saveEditMenu"}}>
+                    <i class="fa fa-pencil"></i> Save
+                  </button>
+                {{else}}
+                  <button class="btn btn-default btn-lg follow-button edit edit-group" {{action "toggleEditMenu"}}>
+                    Edit Group
+                  </button>
+                {{/if}}
+              {{/if}}
               {{#if currentMember}}
                 {{#if currentMember.pending}}
                   <button class="btn btn-default btn-lg follow-button" disabled="disabled">
-                    Pending...
+                    Approval Pending...
                   </button>
                 {{else}}
-                  <button class="btn btn-default btn-lg follow-button" {{action "leaveGroup"}}>
+                  <button class="btn btn-default btn-lg follow-button edit" {{action "leaveGroup"}}>
                     Leave Group
                   </button>
                 {{/if}}
@@ -80,20 +92,6 @@
               {{/if}}
             {{/if}}
 
-            {{! edit button }}
-            {{#if isAdmin}}
-              <div class="edit">
-                {{#if showEditMenu}}
-                  <button class="btn btn-default btn-lg save" {{action "saveEditMenu"}}>
-                    <i class="fa fa-pencil"></i> Save
-                  </button>
-                {{else}}
-                  <button class="btn btn-default btn-lg edit" {{action "toggleEditMenu"}}>
-                    <i class="fa fa-pencil"></i> Edit
-                  </button>
-                {{/if}}
-              </div>
-            {{/if}}
           </div>
         </div>
       </div>
@@ -112,11 +110,11 @@
         <li class="nav-link">
           {{#link-to 'group.members'}}Members{{/link-to}}
         </li>
-        {{#if isAdmin}}
+        {{!-- {{#if isAdmin}}
           <li class="nav-link">
             {{#link-to 'group.manage'}}Manage{{/link-to}}
           </li>
-        {{/if}}
+        {{/if}} --}}
       </ul>
     </div>
   </div>

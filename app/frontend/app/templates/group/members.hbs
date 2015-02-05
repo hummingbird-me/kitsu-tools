@@ -1,59 +1,179 @@
 <div class="container">
-  {{#each member in allMembers}}
-    <div class="follow-panel-wrapper">
-      <div class="follow-panel">
-        {{#link-to 'user' member.user}}
-          <div class="follow-cover" {{bind-attr style=member.user.coverImageStyle}}></div>
-        {{/link-to}}
-        <div class="user-avatar">
-          <a {{bind-attr href=member.user.userLink}}>
-            {{avatar member.user 'thumb'}}
-          </a>
-        </div>
-        <div class="user-info">
-          <h4>
-            {{#link-to 'user' member.user}}{{member.user.username}}{{/link-to}}
-            <span class="mini-badge">{{member.rank}}</span>
-          </h4>
-          <p class="mini-bio">
-            {{member.user.truncatedBio}}
-          </p>
-        </div>
 
-        {{#if currentMember.isNotPleb}}
-          <div class="group-actions pull-right">
-            {{! kick member out of group }}
-            {{#unless member.pending}}
-              {{#if currentMember.canKickMember}}
-                <button class="btn btn-primary" {{action "kickMember" member}}>
-                  Kick
-                </button>
-              {{/if}}
-            {{/unless}}
-
-            {{! change members rank }}
-            {{#if currentMember.canChangeRank}}
-              {{#if member.pending}}
-                {{! approve/reject application }}
-                <button class="btn btn-success" {{action "approveMember" member}}>
-                  Approve
-                </button>
-                <button class="btn btn-danger" {{action "rejectMember" member}}>
-                  Reject
-                </button>
-              {{else}}
-                {{! change the members rank }}
-                {{view "select"
-                  content=ranks
-                  value=member.rank
-                }}
-              {{/if}}
-            {{/if}}
+  <!-- Only show pending section if there are pending members -->
+  <div class="group-pending">
+    <h3>Pending Members</h3>
+    {{#each member in allMembers}}
+      <div class="follow-panel-wrapper">
+        <div class="follow-panel">
+          {{#link-to 'user' member.user}}
+            <div class="follow-cover" {{bind-attr style=member.user.coverImageStyle}}></div>
+          {{/link-to}}
+          <div class="user-avatar">
+            <a {{bind-attr href=member.user.userLink}}>
+              {{avatar member.user 'thumb'}}
+            </a>
           </div>
-        {{/if}}
+          <div class="user-info">
+            <h4>
+              {{#link-to 'user' member.user}}{{member.user.username}}{{/link-to}}
+            </h4>
+            <p class="mini-bio">
+              {{member.user.truncatedBio}}
+            </p>
+          </div>
+
+          {{#if currentMember.isNotPleb}}
+            <div class="group-actions">
+              {{! kick member out of group }}
+              {{#unless member.pending}}
+                {{#if currentMember.canKickMember}}
+                  <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
+                    Kick
+                  </button>
+                {{/if}}
+              {{/unless}}
+
+              {{! change members rank }}
+              {{#if currentMember.canChangeRank}}
+                {{#if member.pending}}
+                  {{! approve/reject application }}
+                  <button class="btn btn-primary group-approve" {{action "approveMember" member}}>
+                    Approve
+                  </button>
+                  <button class="btn btn-primary group-reject" {{action "rejectMember" member}}>
+                    Reject
+                  </button>
+                {{else}}
+                  {{! change the members rank }}
+                  {{view "select"
+                    content=ranks
+                    value=member.rank
+                  }}
+                {{/if}}
+              {{/if}}
+            </div>
+          {{/if}}
+        </div>
       </div>
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
+
+  <div class="group-staff">
+    <h3>Group Staff</h3>
+    {{#each member in allMembers}}
+      <div class="follow-panel-wrapper">
+        <div class="follow-panel">
+          {{#link-to 'user' member.user}}
+            <div class="follow-cover" {{bind-attr style=member.user.coverImageStyle}}></div>
+          {{/link-to}}
+          <div class="user-avatar">
+            <a {{bind-attr href=member.user.userLink}}>
+              {{avatar member.user 'thumb'}}
+            </a>
+          </div>
+          <div class="user-info">
+            <h4>
+              {{#link-to 'user' member.user}}{{member.user.username}}{{/link-to}}
+            </h4>
+            <p class="mini-bio">
+              {{member.user.truncatedBio}}
+            </p>
+          </div>
+
+          {{#if currentMember.isNotPleb}}
+            <div class="group-actions">
+              {{! kick member out of group }}
+              {{#unless member.pending}}
+                {{#if currentMember.canKickMember}}
+                  <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
+                    Kick
+                  </button>
+                {{/if}}
+              {{/unless}}
+
+              {{! change members rank }}
+              {{#if currentMember.canChangeRank}}
+                {{#if member.pending}}
+                  {{! approve/reject application }}
+                  <button class="btn btn-primary group-approve" {{action "approveMember" member}}>
+                    Approve
+                  </button>
+                  <button class="btn btn-primary group-reject" {{action "rejectMember" member}}>
+                    Reject
+                  </button>
+                {{else}}
+                  {{! change the members rank }}
+                  {{view "select"
+                    content=ranks
+                    value=member.rank
+                  }}
+                {{/if}}
+              {{/if}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="group-members">
+    <h3>Group Members</h3>
+    {{#each member in allMembers}}
+      <div class="follow-panel-wrapper">
+        <div class="follow-panel">
+          {{#link-to 'user' member.user}}
+            <div class="follow-cover" {{bind-attr style=member.user.coverImageStyle}}></div>
+          {{/link-to}}
+          <div class="user-avatar">
+            <a {{bind-attr href=member.user.userLink}}>
+              {{avatar member.user 'thumb'}}
+            </a>
+          </div>
+          <div class="user-info">
+            <h4>
+              {{#link-to 'user' member.user}}{{member.user.username}}{{/link-to}}
+            </h4>
+            <p class="mini-bio">
+              {{member.user.truncatedBio}}
+            </p>
+          </div>
+
+          {{#if currentMember.isNotPleb}}
+            <div class="group-actions">
+              {{! kick member out of group }}
+              {{#unless member.pending}}
+                {{#if currentMember.canKickMember}}
+                  <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
+                    Kick
+                  </button>
+                {{/if}}
+              {{/unless}}
+
+              {{! change members rank }}
+              {{#if currentMember.canChangeRank}}
+                {{#if member.pending}}
+                  {{! approve/reject application }}
+                  <button class="btn btn-primary group-approve" {{action "approveMember" member}}>
+                    Approve
+                  </button>
+                  <button class="btn btn-primary group-reject" {{action "rejectMember" member}}>
+                    Reject
+                  </button>
+                {{else}}
+                  {{! change the members rank }}
+                  {{view "select"
+                    content=ranks
+                    value=member.rank
+                  }}
+                {{/if}}
+              {{/if}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
 </div>
 
 {{#if canLoadMore}}

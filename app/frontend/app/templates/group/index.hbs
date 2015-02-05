@@ -66,7 +66,25 @@
         <div class="panel-body">
           <ul>
             {{#each group in suggestedGroups}}
-              <li>Name: {{group.name}} - Members: {{group.memberCount}}<li>
+              <li>
+                <div class="group-wrapper" style="background: url(http://freedwallpaper.com/wp-content/uploads/2014/12/anime-girl-background-hd-desktop-wallpaper.jpg) center;">
+                  <div class="group-widget-top">
+                    <div class="group-avatar">
+                      <img src="http://media.animevice.com/uploads/0/9459/351731-_animepaper.net_avatar_standard_anime_kobato_kari_kobato__magic_bubbles__187987_yamaro_preview_076630ac_super.jpg">
+                    </div>
+                    <div class="group-info">
+                      <h4>{{group.name}}</h4>
+                      <small>{{group.memberCount}} members</small>
+                    </div>
+                  </div>
+                  <div class="group-cta">
+                    <button class="btn btn-default suggestion-button">
+                      Join Group
+                    </button>
+                  </div>
+                  <div class="overlay"></div>
+                </div>
+              <li>
             {{/each}}
           </ul>
           <div class="more-wrapper">

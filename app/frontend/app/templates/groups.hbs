@@ -1,13 +1,60 @@
 <div class="container">
-  <h1>All the Groups!</h1>
-  {{#if currentUser}}
-    <div class="pull-right">
-      <a href="#" class="btn btn-primary" {{action "openModal" "create-group" group}}>Create Group</a>
-    </div>
-  {{/if}}
-  {{#each group in model}}
-    <div class="group-block">
-      <b>{{group.name}}</b>
-    </div>
-  {{/each}}
+  <!-- Show 6 most recent groups -->
+  <div class="group-page-title">
+    <h3>New Groups</h3>
+    {{#if currentUser}}
+      <a href="#" class="btn btn-primary join-group" {{action "openModal" "create-group" group}}>Create a Group</a>
+    {{/if}}
+  </div>
+  <div class="row">
+    {{#each group in model}}
+      <div class="col-sm-4">
+        <div class="group-wrapper" style="background: url(http://freedwallpaper.com/wp-content/uploads/2014/12/anime-girl-background-hd-desktop-wallpaper.jpg) center;">
+          <div class="group-widget-top">
+            <div class="group-avatar">
+              <img src="http://media.animevice.com/uploads/0/9459/351731-_animepaper.net_avatar_standard_anime_kobato_kari_kobato__magic_bubbles__187987_yamaro_preview_076630ac_super.jpg">
+            </div>
+            <div class="group-info">
+              <h4>Test Group</h4>
+              <small>1 members</small>
+            </div>
+          </div>
+          <div class="group-cta">
+            <button class="btn btn-default suggestion-button">
+              Join Group
+            </button>
+          </div>
+          <div class="overlay"></div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <!-- Infinite scroll trending groups -->
+  <div class="group-page-title">
+    <h3>Trending Groups</h3>
+  </div>
+  <div class="row">
+    {{#each group in model}}
+      <div class="col-sm-4">
+        <div class="group-wrapper" style="background: url(http://freedwallpaper.com/wp-content/uploads/2014/12/anime-girl-background-hd-desktop-wallpaper.jpg) center;">
+          <div class="group-widget-top">
+            <div class="group-avatar">
+              <img src="http://media.animevice.com/uploads/0/9459/351731-_animepaper.net_avatar_standard_anime_kobato_kari_kobato__magic_bubbles__187987_yamaro_preview_076630ac_super.jpg">
+            </div>
+            <div class="group-info">
+              <h4>Test Group</h4>
+              <small>1 members</small>
+            </div>
+          </div>
+          <div class="group-cta">
+            <button class="btn btn-default suggestion-button">
+              Join Group
+            </button>
+          </div>
+          <div class="overlay"></div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
 </div>
