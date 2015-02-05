@@ -26,6 +26,6 @@ class GroupSerializer < ActiveModel::Serializer
   end
 
   def member_count
-    object.members.accepted.count
+    object.confirmed_members_count
   end
 end

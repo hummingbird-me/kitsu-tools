@@ -50,11 +50,13 @@
               </li>
             {{/each}}
           </ul>
-          <div class="more-wrapper">
-            {{#link-to 'group.members' class='view-more-button'}}
-              View All ({{group.memberCount}})
-            {{/link-to}}
-          </div>
+          {{#if shouldViewAllMembers}}
+            <div class="more-wrapper">
+              {{#link-to 'group.members' class='view-more-button'}}
+                View All ({{group.memberCount}})
+              {{/link-to}}
+            </div>
+          {{/if}}
         </div>
       </div>
 
