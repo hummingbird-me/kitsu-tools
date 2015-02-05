@@ -32,19 +32,26 @@ export default Ember.Controller.extend({
       });
   }.observes('model.@each.rank'),
 
-  allMembers: function() {
-    // sort the members array by pending users (only admin will see these)
-    var arr = this.get('model').sortBy('pending', 'isAdmin', 'isMod').reverse();
+  // filter members by rank
+  staff: function() {
+    return this.get('model').filterBy('isNotPleb', true);
+  }.property('model.@each.isNotPleb'),
+  pending: function() {
+    return this.get('model').filterBy('pending', true);
+  }.property('model.@each.pending'),
+  plebs: function() {
+    return this.get('model').filter(function(member) {
+      return member.get('isPleb') && member.get('pending') === false;
+    });
+  }.property('model.@each.isPleb', 'model.@each.pending'),
 
-    // remove the current users record from the data if
-    // they are still in the pending state
-    var record = arr.findBy('user.id', this.get('currentUser.id'));
-    if (record && record.get('pending') === true) {
-      arr = arr.without(record);
-    }
-
-    return arr;
-  }.property('model.@each'),
+  // determine if we have any members in each category
+  hasStaff: Ember.computed.gt('staff.length', 0),
+  hasPlebs: Ember.computed.gt('plebs.length', 0),
+  hasPendings: function() {
+    return this.get('pending.length') > 0 &&
+      (this.get('currentMember') && this.get('currentMember.isNotPleb'));
+  }.property('pending.length'),
 
   actions: {
     kickMember: function(member) {
