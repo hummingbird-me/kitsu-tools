@@ -17,8 +17,11 @@
               {{#link-to 'pro'}}<span class="mini-badge">pro</span>{{/link-to}}
             {{/if}}
             {{#if group}}
-              posted to
-              {{#link-to 'group' group}}{{unbound group.name}}{{/link-to}}
+              {{! don't show this if we are actually on the group page }}
+              {{#unless isOnGroupPage}}
+                posted to
+                {{#link-to 'group' group}}{{unbound group.name}}{{/link-to}}
+              {{/unless}}
             {{/if}}
           {{/unless}}
         </h4>
