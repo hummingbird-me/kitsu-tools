@@ -9,9 +9,11 @@
     </div>
   </div>
   <div class="group-cta">
-    <button class="btn btn-default suggestion-button">
-      Join Group
-    </button>
+    {{#unless userIsMemberOfGroup}}
+      <button class="btn btn-default suggestion-button">
+        Join Group
+      </button> 
+    {{/unless}}
   </div>
   <div class="overlay"></div>
 </div>
