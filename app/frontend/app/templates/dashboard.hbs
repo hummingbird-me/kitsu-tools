@@ -93,34 +93,20 @@
         </div>
       </div>
       }}
+
       <div class="community-widget-panel trending-group-panel">
         <div class="panel-heading">
-          <h3 class="panel-title">Trending Groups</h3>
+          <h3 class="panel-title">Trending groups</h3>
         </div>
-
         <div class="panel-body">
           <ul class="latest-post-list">
-            <li>
-              <div class="group-wrapper" style="background: url(http://freedwallpaper.com/wp-content/uploads/2014/12/anime-girl-background-hd-desktop-wallpaper.jpg) center;">
-                <div class="group-widget-top">
-                  <div class="group-avatar">
-                    <img src="http://media.animevice.com/uploads/0/9459/351731-_animepaper.net_avatar_standard_anime_kobato_kari_kobato__magic_bubbles__187987_yamaro_preview_076630ac_super.jpg">
-                  </div>
-                  <div class="group-info">
-                    <h4>Test Group</h4>
-                    <small>1 members</small>
-                  </div>
-                </div>
-                <div class="group-cta">
-                  <button class="btn btn-default suggestion-button">
-                    Join Group
-                  </button>
-                </div>
-                <div class="overlay"></div>
-              </div>
-            </li>
+            {{#each group in trendingGroups}}
+              <li class="clearfix">
+                {{group-box group=group}}
+              </li>
+            {{/each}}
             <li class="latest-post-more">
-              <a href="https://forums.hummingbird.me/c/industry-news" data-bindattr-1973="1973">Show more</a>
+              {{#link-to 'groups'}}Show all{{/link-to}}
             </li>
           </ul>
         </div>
@@ -134,6 +120,7 @@
       <div class="feed-sidebar-advert">
         {{ad-unit adId="1298406" adClass="257f81e798bd68dd81e60f42838f361f"}}
       </div>
+
       <div class="feed-sidebar-footer">
         {{!--
           {{#link-to 'about'}}About{{/link-to}} &bull;

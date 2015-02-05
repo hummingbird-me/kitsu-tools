@@ -31,7 +31,10 @@ export default Ember.Route.extend(Paginated, {
   },
 
   setupController: function(controller, model) {
-    controller.set('userInfo', this.store.find('userInfo', this.get('currentUser.id')));
+    controller.setProperties({
+      'userInfo': this.store.find('userInfo', this.get('currentUser.id')),
+      'trendingGroups': this.store.find('group', { limit: 3 })
+    });
     setTitle("Dashboard");
     this.setCanLoadMore(true);
     controller.set('canLoadMore', true);
