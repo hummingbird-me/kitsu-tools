@@ -8,6 +8,32 @@ export default Ember.Component.extend({
     });
 
     return users.contains(this.get('currentUser.id'));
-  }.property('currentUser', 'group')
+  }.property('currentUser', 'group'),
+
+
+  actions: {
+    joinGroup: function(){
+      var member = this.get('targetObject.store').createRecord('group-member', {
+        groupId: this.get('group.id'),
+        user: this.get('currentUser.model.content'),
+        pending: true
+      });
+      Messenger().expectPromise(function() {
+        return member.save();
+      }, {
+        progressMessage: 'Contacting server...',
+        successMessage: () => {
+          this.get('group.members').addObject(member);
+          return 'You have requested to join ' + this.get('group.name') + '.';
+        },
+        errorMessage: function(type, xhr) {
+          if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
+            return xhr.responseJSON.error + '.';
+          }
+          return 'There was an unknown error.';
+        }
+      });
+    }
+  }
 
 });
