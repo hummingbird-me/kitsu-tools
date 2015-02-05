@@ -1,4 +1,5 @@
 import Ember from 'ember';
+/* global Messenger */
 
 export default Ember.Component.extend({
 
@@ -8,7 +9,7 @@ export default Ember.Component.extend({
     });
 
     return users.contains(this.get('currentUser.id'));
-  }.property('currentUser', 'group'),
+  }.property('currentUser', 'group.members.@each'),
 
 
   actions: {
