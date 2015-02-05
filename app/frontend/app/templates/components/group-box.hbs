@@ -1,0 +1,17 @@
+<div class="group-wrapper" {{bind-attr style=group.coverImageStyle}}>
+  <div class="group-widget-top">
+    <div class="group-avatar">
+      <img {{bind-attr src=group.avatar}}>
+    </div>
+    <div class="group-info">
+      <h4>{{#link-to 'group.index' group}}{{group.name}}{{/link-to}}</h4>
+      <small>{{pluralize group.memberCount "member" "members"}}</small>
+    </div>
+  </div>
+  <div class="group-cta">
+    <button class="btn btn-default suggestion-button">
+      Join Group
+    </button>
+  </div>
+  <div class="overlay"></div>
+</div>
