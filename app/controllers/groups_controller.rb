@@ -8,7 +8,7 @@ class GroupsController < ApplicationController
     elsif params[:user_id].present? # Get user groups
       User.find(params[:user_id]).groups.page(params[:page]).per(20)
     else # Get recent groups
-      Group.where(closed: false).order('created_at DESC').take(6)
+      Group.order('created_at DESC').take(6)
     end
 
     respond_to do |format|
@@ -32,12 +32,6 @@ class GroupsController < ApplicationController
         render_ember
       end
     end
-  end
-
-  def static
-    group = Group.find(params[:group_id])
-    preload_to_ember! group
-    render_ember
   end
 
   def new
@@ -75,16 +69,17 @@ class GroupsController < ApplicationController
     end
   end
 
-
   def destroy
     authenticate_user!
-    group = Group.find(params[:id])
 
-    if group.member(current_user).admin?
-      group.close!
+    # Only site admins should be able to delete
+    # Sorry users, once you make a group it's part of the commons.
+    if current_user.admin?
+      group = Group.find(params[:id])
+      group.delay.destroy
       render json: {}
     else
-      return error! "Only group admins can close the group", 403
+      return error! "Only hummingbird admininistrators can delete groups", 403
     end
   end
 end

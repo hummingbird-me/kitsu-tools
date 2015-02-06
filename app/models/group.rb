@@ -64,14 +64,6 @@ class Group < ActiveRecord::Base
     uniqueness: {case_sensitive: false},
     length: {minimum: 3, maximum: 30}
 
-  def close!
-    update_attribute(:closed, true)
-  end
-
-  def open!
-    update_attribute(:closed, false)
-  end
-
   def can_admin_resign?
     members.admin.count > 1
   end

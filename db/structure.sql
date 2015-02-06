@@ -869,7 +869,6 @@ CREATE TABLE groups (
     confirmed_members_count integer DEFAULT 0,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    closed boolean DEFAULT false NOT NULL,
     avatar_processing boolean
 );
 
@@ -3698,4 +3697,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150111182814');
 INSERT INTO schema_migrations (version) VALUES ('20150112071159');
 
 INSERT INTO schema_migrations (version) VALUES ('20150129101801');
+
+INSERT INTO schema_migrations (version) VALUES ('20150206031907');
 

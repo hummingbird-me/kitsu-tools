@@ -35,9 +35,6 @@ export default Ember.Route.extend(Paginated, {
       if (!this.modelFor('group').isMember(this.get('currentUser'))) {
         Messenger().error("You must be a member of the group.");
         return;
-      } else if (this.modelFor('group').get('closed')) {
-        Messenger().error("This group is closed.");
-        return;
       }
 
       var story = this.store.createRecord('story', {
