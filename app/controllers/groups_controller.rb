@@ -56,7 +56,7 @@ class GroupsController < ApplicationController
     group = Group.find(params[:id])
     group_hash = params.require(:group).permit(:bio, :about, :cover_image, :avatar).to_h
 
-    if group.member(current_user).admin?
+    if current_user.admin? || group.member(current_user).admin?
       # cleanup image uploads if they are bad
       group_hash.delete('cover_image') unless group_hash['cover_image'] =~ /^data:image/
       group_hash.delete('avatar') unless group_hash['avatar'] =~ /^data:image/

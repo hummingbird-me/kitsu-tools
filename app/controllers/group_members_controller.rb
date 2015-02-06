@@ -26,7 +26,7 @@ class GroupMembersController < ApplicationController
   end
 
   def update
-    if current_member.admin?
+    if current_user.admin? || current_member.admin?
       membership_hash = params.require(:group_member).permit(:pending, :rank).to_h
     elsif current_member.mod?
       membership_hash = params.require(:group_member).permit(:pending).to_h
@@ -48,7 +48,7 @@ class GroupMembersController < ApplicationController
   end
 
   def destroy
-    return error! "Mods can only remove regular users from the group", 403 if current_member.mod? && current_user.id != membership.user_id && !membership.pleb?
+    return error! "Mods can only remove regular users from the group", 403 if current_user.admin? || (current_member.mod? && current_user.id != membership.user_id && !membership.pleb?)
     return error! "You must promote another admin", 400 if membership.admin? && !group.can_admin_resign?
     return error! "Wrong user", 403 if current_member.pleb? && current_user.id != membership.user_id
 
