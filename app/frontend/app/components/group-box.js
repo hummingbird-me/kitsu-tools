@@ -11,6 +11,17 @@ export default Ember.Component.extend({
     return users.contains(this.get('currentUser.id'));
   }.property('currentUser', 'group.members.@each'),
 
+  userMembershipIsPending: function(){
+    if(!this.get('userIsMemberOfGroup')) { return false; }
+
+    var user = this.get('group.members').filter((member) => {
+      return member.get('user.id') === this.get('currentUser.id');
+    });
+
+    if(user.length !== 1) { return false; }
+    return user[0].get('pending');
+  }.property('userIsMemberOfGroup'),
+
 
   actions: {
     joinGroup: function(){

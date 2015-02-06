@@ -9,11 +9,19 @@
     </div>
   </div>
   <div class="group-cta">
-    {{#unless userIsMemberOfGroup}}
+    {{#if userIsMemberOfGroup}}
+      {{#link-to 'group.index' group classNames="btn btn-default suggestion-button" tagName="button"}}
+        {{#if userMembershipIsPending}}
+            Aproval Pending...
+        {{else}}
+            Visit Group
+        {{/if}}
+      {{/link-to}}
+    {{else}}
       <button class="btn btn-default suggestion-button" {{action 'joinGroup'}}>
         Join Group
       </button>
-    {{/unless}}
+    {{/if}}
   </div>
   <div class="overlay"></div>
 </div>
