@@ -18,7 +18,7 @@
 #  confirmed_members_count  :integer          default(0)
 #  created_at               :datetime
 #  updated_at               :datetime
-#  closed                   :boolean          default(FALSE), not null
+#  avatar_processing        :boolean
 #
 
 gumi:
@@ -26,10 +26,8 @@ gumi:
   slug: gumi-appreciation-group
   bio: Gumi Best Vocaloid
   about: Gumi Goes In All Fields
-  closed: false
 
 jerks:
   name: Jerks
   slug: jerks
   bio: Shut up.
-  closed: false

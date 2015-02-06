@@ -1,5 +1,4 @@
 import Ember from 'ember';
-/* global Messenger */
 
 export default Ember.Controller.extend({
   needs: ['group'],

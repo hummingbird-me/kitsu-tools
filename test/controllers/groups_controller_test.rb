@@ -31,14 +31,14 @@ class GroupsControllerTest < ActionController::TestCase
     assert_response :conflict
   end
 
-  test "can delete a group" do
-    sign_in users(:vikhyat)
+  test "can delete a group if site admin" do
+    sign_in users(:josh)
     delete :destroy, id: 'gumi-appreciation-group'
     assert_response :ok
   end
 
-  test "cannot delete a group if not admin" do
-    sign_in users(:josh)
+  test "cannot delete a group if not site admin" do
+    sign_in users(:vikhyat)
     delete :destroy, id: 'gumi-appreciation-group'
     assert_response 403
   end

@@ -13,6 +13,7 @@
 #  watchlist_id :integer
 #  adult        :boolean          default(FALSE)
 #  total_votes  :integer          default(0), not null
+#  group_id     :integer
 #
 
 class Story < ActiveRecord::Base

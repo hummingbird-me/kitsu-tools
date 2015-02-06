@@ -18,7 +18,7 @@
 #  confirmed_members_count  :integer          default(0)
 #  created_at               :datetime
 #  updated_at               :datetime
-#  closed                   :boolean          default(FALSE), not null
+#  avatar_processing        :boolean
 #
 
 class Group < ActiveRecord::Base
