@@ -17,7 +17,7 @@ export default Ember.Route.extend(Paginated, {
   setupController: function(controller, model) {
     this.setCanLoadMore(true);
     controller.set('model', model);
-    controller.set('recentGroups', this.store.find('group'));
+    controller.set('recentGroups', this.store.find('group', {}));
     if (model.get('length') === 0) {
       this.set('cursor', null);
       this.loadNextPage();
