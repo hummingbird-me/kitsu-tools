@@ -4,6 +4,12 @@
   background-size: cover;
   color: #fff;
   padding-top: 50px;
+  .container {
+    @media (max-width: 624px) {
+    position: relative;
+    bottom: 55px;
+    }
+  }
   h1 {
     font-size: 50px;
     margin-bottom: 30px;
