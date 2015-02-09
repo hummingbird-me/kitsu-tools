@@ -4,9 +4,10 @@ class GroupMembersController < ApplicationController
   def index
     group = Group.find(params[:group_id])
 
-    res = current_user &&
+    userHasModPermissions = current_user &&
       (group.is_admin?(current_user) || group.is_mod?(current_user))
-    members = res ? group.members : group.members.accepted
+      
+    members = userHasModPermissions ? group.members : group.members.accepted
     members = members.page(params[:page]).per(20)
     render json: members, meta: {cursor: 1 + (params[:page] || 1).to_i}
   end
