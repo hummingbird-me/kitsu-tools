@@ -17,7 +17,7 @@
           <label>About the Group</label>
           {{textarea value=about rows="3" class="form-control" maxlength="500" placeholder="Tell us about your group!"}}
         </div>
-        <button class="btn btn-primary pull-right" {{action "create"}} {{bind-attr disabled=isDisabled}}>
+        <button class="btn btn-primary pull-right" {{action "create"}} {{bind-attr disabled=buttonIsDisabled}}>
           {{#if isSaving}}<i class="fa fa-spin fa-spinner"></i>{{/if}}
           Create Group
         </button>

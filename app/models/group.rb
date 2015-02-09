@@ -69,7 +69,7 @@ class Group < ActiveRecord::Base
   end
 
   def member(user)
-    members.where(user: user).first
+    members.find_by(user_id: user.id)
   end
 
   def is_admin?(user)

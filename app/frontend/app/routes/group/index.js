@@ -20,8 +20,10 @@ export default Ember.Route.extend(Paginated, {
     controller.set('suggestedGroups', groups);
 
     this.setCanLoadMore(true);
-    controller.set('canLoadMore', true);
-    controller.set('model', model);
+    controller.setProperties({
+      'canLoadMore': true,
+      'model': model
+    });
     this.loadNextPage();
   },
 

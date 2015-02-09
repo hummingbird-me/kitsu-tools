@@ -7,10 +7,8 @@ export default Ember.Controller.extend(ModalMixin, {
   bio: null,
   about: null,
 
-  isDisabled: function() {
-    return (this.get('name') === null || this.get('name').length === 0) ||
-      (this.get('bio') === null || this.get('bio').length === 0) ||
-      (this.get('about') === null || this.get('about').length === 0);
+  buttonIsDisabled: function() {
+    return (Ember.isBlank(this.get('name')) || Ember.isBlank(this.get('bio')) || Ember.isBlank(this.get('about')));
   }.property('name', 'bio', 'about'),
 
   actions: {
@@ -26,6 +24,11 @@ export default Ember.Controller.extend(ModalMixin, {
       }, {
         progressMessage: 'Contacting server...',
         successMessage: () => {
+          this.setProperties({
+            name: "",
+            bio: "",
+            about: ""
+          });
           this.transitionTo('group', group.get('id'));
           return 'You created the group "' + this.get('name') + '"!';
         },
