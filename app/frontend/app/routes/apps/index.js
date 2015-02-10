@@ -14,7 +14,7 @@ export default Ember.Route.extend({
           { "name": "Tempest", "link": "http://hummingbird.me/users/Tempest" },
         ],
         "form": "Mobile",
-        "platform": "Android", 
+        "platform": "Android",
         "screenshots": [sb+"tenpenchii/tenpenchii-1.jpg", sb+"tenpenchii/tenpenchii-2.jpg"],
         "desc": "Tenpenchii is a Hummingbird client for Android devices with a modern user interface and amazing functionality.",
         "links": [
@@ -53,7 +53,7 @@ export default Ember.Route.extend({
       {
         "name": "HAPU",
         "author": [
-          { "name": "Inket", "link": "http://hummingbird.me/users/Inket" },
+          { "name": "inket", "link": "http://hummingbird.me/users/inket" },
         ],
         "form": "Desktop",
         "platform": "Mac",
@@ -61,7 +61,7 @@ export default Ember.Route.extend({
         "desc": "HAPU is a mac menubar app that allows you to interact with Hummingbird and automatically update your anime progress.",
         "links": [
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/mac-hapu-scrobbler-app/56" },
-          { "name": "Download", "link": "https://dl.dropboxusercontent.com/u/2439981/HAPU/Sparkle/HAPU-latest.zip" },
+          { "name": "Download", "link": "http://tars.mahdi.jp/squirrel/hapu.zip" },
         ]
       },
       {
@@ -112,7 +112,7 @@ export default Ember.Route.extend({
           { "name": "Jigglyslime", "link": "https://hummingbird.me/users/Jigglyslime" },
         ],
         "form": "Mobile",
-        "platform": "iOS", 
+        "platform": "iOS",
         "screenshots": [sb+"deadman/deadman-1.jpg", sb+"deadman/deadman-2.jpg"],
         "desc": "It's like Hummingbird, but iOS.  And native.  Makes love to your face. Enjoy.",
         "links": [
