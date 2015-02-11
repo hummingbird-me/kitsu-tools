@@ -45,17 +45,6 @@
       </div>
 
       <div class="panel panel-default">
-        <div class="panel-heading">Deploy Hummingbird [Current: {{sha_hash}}]</div>
-        <div class="panel-body">
-          <button class="form-control btn status-button" {{action 'deploy'}}>Good Luck!</button>
-          {{#if hasDeployed}}
-            <button class="btn btn-success form-control" {{action 'reload'}}>Deployment successful!</button>
-          {{/if}}
-          <button class="form-control btn btn-danger" {{action 'publishUpdate'}}>Make 'em Reload!</button>
-        </div>
-      </div>
-
-      <div class="panel panel-default">
         <div class="panel-heading">Users to follow</div>
         <div class="panel-body no-padding no-vpadding">
           <table class="table table-striped">
