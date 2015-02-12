@@ -119,6 +119,20 @@ export default Ember.Route.extend({
           { "name": "Discuss", "link": "https://forums.hummingbird.me/t/ios-deadman/20315" },
           { "name": "Download", "link": "https://itunes.apple.com/us/app/deadman-for-hummingbird/id943835088?ls=1&mt=8" },
         ]
+      },
+      {
+  	    "name": "Hachidori",
+  	    "author": [
+  	      { "name": "chikorita157", "link": "https://hummingbird.me/users/chikorita157" },
+  	    ],
+  	    "form": "Desktop",
+  	    "platform": "Mac",
+  	    "screenshots": [sb+"hachidori/hachidori.jpg"],
+  	    "desc": "Hachidori is a lightweight and fast Hummingbird scrobbler that automatically updates your list from popular media players (Mplayer, VLC, Mpv), legal streaming sites and Plex Media Server.",
+  	    "links": [
+  	      { "name": "Discuss", "link": "https://forums.hummingbird.me/t/mac-hachidori-open-source-hummingbird-scrobbler-for-os-x/16952" },
+  	      { "name": "Download", "link": "http://hachidori.ateliershiori.moe/download.php" },
+  	    ]
       }
     ];
   }
