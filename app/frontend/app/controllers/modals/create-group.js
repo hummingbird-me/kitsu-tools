@@ -30,7 +30,7 @@ export default Ember.Controller.extend(ModalMixin, {
             about: ""
           });
           this.transitionTo('group', group.get('id'));
-          return 'You created the group "' + this.get('name') + '"!';
+          return 'You created the group "' + group.get('name') + '"!';
         },
         errorMessage: function(type, xhr) {
           if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
