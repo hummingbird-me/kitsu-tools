@@ -72,11 +72,11 @@ class Group < ActiveRecord::Base
     members.find_by(user_id: user.id)
   end
 
-  def is_admin?(user)
+  def has_admin?(user)
     member(user).try(:admin?)
   end
 
-  def is_mod?(user)
+  def has_mod?(user)
     member(user).try(:mod?)
   end
 
