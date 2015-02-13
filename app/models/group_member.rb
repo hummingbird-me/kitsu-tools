@@ -35,7 +35,7 @@ class GroupMember < ActiveRecord::Base
 
   def update_counter_cache!(diff)
     # Atomically incr/decr the counter
-    GroupMember.update_counters(self.group_id, confirmed_members_count: diff)
+    Group.update_counters(self.group_id, confirmed_members_count: diff)
   end
 
   def update_group_scores!
