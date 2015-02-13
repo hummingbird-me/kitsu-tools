@@ -70,6 +70,28 @@ export default Ember.Controller.extend(HasCurrentUser, {
       });
     },
 
+    deleteGroup: function() {
+      var response = window.confirm("Are you sure you want to delete this group?");
+      if (!response) { return; }
+      var group = this.get('model');
+      Messenger().expectPromise(function() {
+        return group.destroyRecord();
+      }, {
+        progressMessage: 'Contacting server...',
+        successMessage: () => {
+          this.transitionTo('groups');
+          return 'You deleted ' + this.get('model.name') + '.';
+        },
+        errorMessage: (type, xhr) => {
+          group.rollback();
+          if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
+            return xhr.responseJSON.error + '.';
+          }
+          return 'There was an unknown error.';
+        }
+      });
+    },
+
     toggleEditMenu: function() {
       this.toggleProperty('showEditMenu');
     },

@@ -55,6 +55,13 @@
           </div>
 
           <div class="follow-widgets">
+            {{! staff delete button }}
+            {{#if currentUser.isAdmin}}
+              <button class="btn btn-default btn-lg follow-button edit delete-group" {{action "deleteGroup"}}>
+                Delete Group
+              </button>
+            {{/if}}
+
             {{! Join/Leave Group Button }}
             {{#if loading}}
               <button class="btn btn-default btn-lg follow-button" disabled="disabled">
@@ -89,7 +96,6 @@
                 </button>
               {{/if}}
             {{/if}}
-
           </div>
         </div>
       </div>

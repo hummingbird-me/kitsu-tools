@@ -31,7 +31,7 @@
 .group-wrapper {
   border-radius: 3px;
   background-size: cover !important;
-  background-position: center; 
+  background-position: center;
   position: relative;
   overflow: hidden;
   margin-bottom: 15px;
@@ -91,6 +91,10 @@
 
 .user-cover-options .follow-button.edit-group {
   right: 190px;
+}
+
+.user-cover-options .follow-button.delete-group {
+  right: 368px;
 }
 
 // members page

@@ -79,7 +79,7 @@ class GroupsController < ApplicationController
       group.delay.destroy
       render json: {}
     else
-      return error! "Only hummingbird admininistrators can delete groups", 403
+      return error! "Only Hummingbird administrators can delete groups", 403
     end
   end
 end
