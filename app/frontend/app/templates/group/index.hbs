@@ -89,7 +89,11 @@
 
     {{! Group Feed }}
     <div class="group-feed">
-      {{post-comment action="postComment"}}
+      {{#if group.currentMember}}
+        {{#unless group.currentMember.pending}}
+            {{post-comment action="postComment"}}
+        {{/unless}}
+      {{/if}}
       {{each content itemController="story" itemViewClass="story"}}
       {{#if canLoadMore}}
         {{load-more classNames="light" action="loadNextPage"}}

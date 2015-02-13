@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import Paginated from '../../mixins/paginated';
 import setTitle from '../../utils/set-title';
-/* global Messenger */
 
 export default Ember.Route.extend(Paginated, {
   fetchPage: function(page) {
@@ -30,12 +29,6 @@ export default Ember.Route.extend(Paginated, {
   actions: {
     postComment: function(post) {
       if (post.comment.replace(/\s/g, '').replace(/\[[a-z]+\](.?)\[\/[a-z]+\]/i, '$1').length === 0) {
-        return;
-      }
-
-      // permission check
-      if (!this.modelFor('group').get('currentMember')) {
-        Messenger().error("You must be a member of the group.");
         return;
       }
 
