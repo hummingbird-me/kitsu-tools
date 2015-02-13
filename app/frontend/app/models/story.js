@@ -31,8 +31,11 @@ export default Model.extend(ModelCurrentUser, {
   }.property('poster.id', 'user.id'),
 
   canDeleteStory: function() {
-    var groupMember = this.get('group') && this.get('group.isMember');
-    return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.isAdmin') ||
-      (groupMember && (groupMember.get('isAdmin') || groupMember.get('isMod'))));
+    if (this.get('isNew')) { return false; }
+
+    var currentMember = this.get('group') && this.get('group.currentMember');
+    var canDeleteViaGroupRank = currentMember && currentMember.get('isAdmin') || currentMember.get('isMod');
+
+    return this.get('belongsToUser') || this.get('currentUser.isAdmin') || canDeleteViaGroupRank;
   }.property('isNew', 'belongsToUser', 'currentUser.isAdmin', 'group'),
 });
