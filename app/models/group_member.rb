@@ -24,16 +24,18 @@ class GroupMember < ActiveRecord::Base
 
   after_save do
     update_group_scores!
-    update_counter_cache!
+    if pending_changed? && pending == false
+      update_counter_cache! +1
+    end
   end
 
   after_destroy do
-    update_counter_cache!
+    update_counter_cache! -1
   end
 
-  def update_counter_cache!
-    self.group.update_attribute :confirmed_members_count,
-                                GroupMember.where(pending: false, group: group).count
+  def update_counter_cache!(diff)
+    # Atomically incr/decr the counter
+    GroupMember.update_counters(self.group_id, confirmed_members_count: diff)
   end
 
   def update_group_scores!
