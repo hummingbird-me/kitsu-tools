@@ -54,12 +54,15 @@ class GroupsController < ApplicationController
   def update
     authenticate_user!
     group = Group.find(params[:id])
-    group_hash = params.require(:group).permit(:bio, :about, :cover_image, :avatar).to_h
+    group_hash = params.require(:group).permit(:bio, :about, :cover_image_url, :avatar_url).to_h
 
     if current_user.admin? || group.member(current_user).admin?
       # cleanup image uploads if they are bad
+      group_hash['cover_image'] = group_hash.delete('cover_image_url')
       group_hash.delete('cover_image') unless group_hash['cover_image'] =~ /^data:image/
+      group_hash['avatar'] = group_hash.delete('avatar_url')
       group_hash.delete('avatar') unless group_hash['avatar'] =~ /^data:image/
+
 
       group.attributes = group_hash
       group.save!

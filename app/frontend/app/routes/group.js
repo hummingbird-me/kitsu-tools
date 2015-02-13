@@ -13,7 +13,7 @@ export default Ember.Route.extend({
     },
 
     uploadCover: function(image) {
-      this.currentModel.set('coverImage', image);
+      this.currentModel.set('coverImageUrl', image);
       return Messenger().expectPromise(() => {
         return this.currentModel.save();
       }, {

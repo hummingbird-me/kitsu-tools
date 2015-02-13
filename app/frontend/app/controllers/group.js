@@ -1,17 +1,12 @@
 import Ember from 'ember';
 import HasCurrentUser from '../mixins/has-current-user';
+import HasCoverUpload from '../mixins/has-cover-upload';
 /* global Messenger */
 
-export default Ember.Controller.extend(HasCurrentUser, {
+export default Ember.Controller.extend(HasCurrentUser, HasCoverUpload, {
   // this flag is used so that the "Leave Group" button doesn't switch
   // to "Join Group" when waiting for the server to respond.
   loading: false,
-
-  coverUpload: Ember.Object.create(),
-  coverUrl: Ember.computed.any('coverUpload.croppedImage', 'model.coverImage'),
-  coverImageStyle: function() {
-    return "background-image: url(" + this.get('coverUrl') + ")";
-  }.property('coverUrl'),
 
   currentMember: function() {
     return this.get('model.members').findBy('user.id', this.get('currentUser.id'));
@@ -101,19 +96,10 @@ export default Ember.Controller.extend(HasCurrentUser, {
       this.get('model').save();
     },
 
-    coverSelected: function(file) {
-      var reader = new FileReader();
-      reader.onload = (e) => {
-        this.set('coverUpload.originalImage', e.target.result);
-        this.send('openModal', 'crop-cover', this.get('coverUpload'));
-      };
-      reader.readAsDataURL(file);
-    },
-
     avatarSelected: function(file) {
       var reader = new FileReader();
       reader.onload = (e) => {
-        this.set('model.avatar', e.target.result);
+        this.set('model.avatarUrl', e.target.result);
       };
       reader.readAsDataURL(file);
     }

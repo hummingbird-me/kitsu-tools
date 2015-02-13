@@ -1,18 +1,18 @@
 class GroupSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
-  attributes :id, :name, :avatar, :cover_image, :bio, :about, :member_count
+  attributes :id, :name, :avatar_url, :cover_image_url, :bio, :about, :member_count
   has_many :members, root: :group_members
 
   def id
     object.slug
   end
 
-  def avatar
+  def avatar_url
     object.avatar.url(:thumb)
   end
 
-  def cover_image
+  def cover_image_url
     object.cover_image.url(:thumb)
   end
 

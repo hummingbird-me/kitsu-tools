@@ -4,14 +4,14 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   bio: DS.attr('string'),
   about: DS.attr('string'),
-  coverImage: DS.attr('string'),
-  avatar: DS.attr('string'),
+  coverImageUrl: DS.attr('string'),
+  avatarUrl: DS.attr('string'),
   memberCount: DS.attr('number'),
   members: DS.hasMany('group-member'),
 
   coverImageStyle: function() {
-    return "background: url(" + this.get('coverImage') + ") center;";
-  }.property('coverImage'),
+    return "background: url(" + this.get('coverImageUrl') + ") center;";
+  }.property('coverImageUrl'),
 
   // Fixes the fact that viewing all members adds to the members
   // association.
