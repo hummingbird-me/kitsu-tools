@@ -114,8 +114,7 @@ Hummingbird::Application.routes.draw do
   post '/favorites/update_all' => 'favorites#update_all'
 
   resources :groups do
-    get 'members' => 'groups#static'
-    get 'manage' => 'groups#static'
+    get 'members' => 'groups#show', on: :member
   end
 
   resources :group_members

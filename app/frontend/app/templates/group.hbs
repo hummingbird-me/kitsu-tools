@@ -84,11 +84,9 @@
                   </button>
                 {{/if}}
               {{else}}
-                {{#unless model.closed}}
-                  <button class="btn btn-default btn-lg follow-button" {{action "joinGroup" model}}>
-                    Join Group
-                  </button>
-                {{/unless}}
+                <button class="btn btn-default btn-lg follow-button" {{action "joinGroup" model}}>
+                  Join Group
+                </button>
               {{/if}}
             {{/if}}
 
@@ -110,11 +108,6 @@
         <li class="nav-link">
           {{#link-to 'group.members'}}Members{{/link-to}}
         </li>
-        {{!-- {{#if isAdmin}}
-          <li class="nav-link">
-            {{#link-to 'group.manage'}}Manage{{/link-to}}
-          </li>
-        {{/if}} --}}
       </ul>
     </div>
   </div>
@@ -129,18 +122,5 @@
 
 {{! Content }}
 <div class="min-height-wrapper">
-  {{#if model.closed}}
-    <div class="container">
-      <div class="review-nag">
-        <span class="nag-text">
-          <i class="fa fa-close" style="color: red;"></i>
-          <span class="extended-nag">
-            This group has been closed.
-          </span>
-        </span>
-      </div>
-    </div>
-  {{/if}}
-  
   {{outlet}}
 </div>

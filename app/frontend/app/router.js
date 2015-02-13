@@ -39,7 +39,6 @@ Router.map(function() {
   this.route('groups');
   this.resource('group', {path: '/groups/:id'}, function() {
     this.route('members');
-    this.route('manage');
   });
 
   this.route('onboarding', function() {
