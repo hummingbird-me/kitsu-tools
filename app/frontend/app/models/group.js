@@ -9,6 +9,7 @@ export default DS.Model.extend(ModelTruncatedDetails, {
   avatarUrl: DS.attr('string'),
   memberCount: DS.attr('number'),
   members: DS.hasMany('group-member'),
+  currentMember: DS.belongsTo('group-member'),
 
   coverImageStyle: function() {
     return "background: url(" + this.get('coverImageUrl') + ") center;";
@@ -21,8 +22,9 @@ export default DS.Model.extend(ModelTruncatedDetails, {
     return members.filterBy('pending', false).slice(0, 14);
   }.property('members.@each'),
 
-  isMember: function(user) {
-    return this.get('members').filterBy('pending', false)
-      .findBy('user.id', user.get('id'));
+  getMember: function(user, includePending = false) {
+    var members = this.get('members');
+    if (!includePending) { members = members.filterBy('pending', false); }
+    return members.findBy('user.id', user.get('id'));
   }
 });

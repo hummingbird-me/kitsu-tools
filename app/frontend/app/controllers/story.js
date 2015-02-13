@@ -61,7 +61,7 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
       this.store.find('user', this.get('currentUser.id')).then(function(user) {
         // group permission check
         var group = self.get('model.group');
-        if (group && !group.isMember(user)) {
+        if (group && !group.getMember(user)) {
           self.set('reply', '');
           Messenger().error("You must be a member of the group.");
           return;

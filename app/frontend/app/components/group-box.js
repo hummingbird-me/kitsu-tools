@@ -2,24 +2,11 @@ import Ember from 'ember';
 /* global Messenger */
 
 export default Ember.Component.extend({
-
-  userIsMemberOfGroup: function(){
-    var users = this.get('group.members').map(function(member){
-      return member.get('user.id');
-    });
-
-    return users.contains(this.get('currentUser.id'));
-  }.property('currentUser', 'group.members.@each'),
+  userIsMemberOfGroup: Ember.computed.notEmpty('group.currentMember'),
 
   userMembershipIsPending: function(){
-    if(!this.get('userIsMemberOfGroup')) { return false; }
-
-    var user = this.get('group.members').filter((member) => {
-      return member.get('user.id') === this.get('currentUser.id');
-    });
-
-    if(user.length !== 1) { return false; }
-    return user[0].get('pending');
+    if (!this.get('userIsMemberOfGroup')) { return false; }
+    return this.get('group.currentMember.pending');
   }.property('userIsMemberOfGroup'),
 
 
@@ -36,6 +23,7 @@ export default Ember.Component.extend({
         progressMessage: 'Contacting server...',
         successMessage: () => {
           this.get('group.members').addObject(member);
+          this.get('group').set('currentMember', member);
           return 'You have requested to join ' + this.get('group.name') + '.';
         },
         errorMessage: function(type, xhr) {

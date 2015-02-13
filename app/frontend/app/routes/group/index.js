@@ -34,7 +34,7 @@ export default Ember.Route.extend(Paginated, {
       }
 
       // permission check
-      if (!this.modelFor('group').isMember(this.get('currentUser'))) {
+      if (!this.modelFor('group').get('currentMember')) {
         Messenger().error("You must be a member of the group.");
         return;
       }

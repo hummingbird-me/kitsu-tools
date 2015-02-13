@@ -80,8 +80,8 @@
                   </button>
                 {{/if}}
               {{/if}}
-              {{#if currentMember}}
-                {{#if currentMember.pending}}
+              {{#if model.currentMember}}
+                {{#if model.currentMember.pending}}
                   <button class="btn btn-default btn-lg follow-button" disabled="disabled">
                     Approval Pending...
                   </button>

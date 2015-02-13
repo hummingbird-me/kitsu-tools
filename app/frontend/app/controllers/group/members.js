@@ -3,7 +3,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   needs: ['group'],
-  currentMember: Ember.computed.alias('controllers.group.currentMember'),
+  currentMember: Ember.computed.alias('controllers.group.model.currentMember'),
   currentUser: Ember.computed.alias('controllers.group.currentUser'),
 
   ranks: ['pleb', 'mod', 'admin'],

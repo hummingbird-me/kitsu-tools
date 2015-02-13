@@ -31,7 +31,7 @@ export default Model.extend(ModelCurrentUser, {
   }.property('poster.id', 'user.id'),
 
   canDeleteStory: function() {
-    var groupMember = this.get('group') && this.get('group').isMember(this.get('currentUser'));
+    var groupMember = this.get('group') && this.get('group.isMember');
     return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.isAdmin') ||
       (groupMember && (groupMember.get('isAdmin') || groupMember.get('isMod'))));
   }.property('isNew', 'belongsToUser', 'currentUser.isAdmin', 'group'),

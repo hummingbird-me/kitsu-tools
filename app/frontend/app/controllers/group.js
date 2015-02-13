@@ -8,13 +8,9 @@ export default Ember.Controller.extend(HasCurrentUser, HasCoverUpload, {
   // to "Join Group" when waiting for the server to respond.
   loading: false,
 
-  currentMember: function() {
-    return this.get('model.members').findBy('user.id', this.get('currentUser.id'));
-  }.property('model.members.@each'),
-
   isAdmin: function() {
-    return this.get('currentMember') && this.get('currentMember.isAdmin');
-  }.property('currentMember'),
+    return this.get('model.currentMember') && this.get('model.currentMember.isAdmin');
+  }.property('model.currentMember'),
 
   showEditMenu: false,
 
@@ -31,6 +27,7 @@ export default Ember.Controller.extend(HasCurrentUser, HasCoverUpload, {
         progressMessage: 'Contacting server...',
         successMessage: () => {
           this.get('model.members').addObject(member);
+          this.get('model').set('currentMember', member);
           return 'You have requested to join ' + this.get('model.name') + '.';
         },
         errorMessage: function(type, xhr) {
@@ -44,7 +41,7 @@ export default Ember.Controller.extend(HasCurrentUser, HasCoverUpload, {
 
     leaveGroup: function() {
       this.set('loading', true);
-      var member = this.get('currentMember');
+      var member = this.get('model.currentMember');
       Messenger().expectPromise(function() {
         return member.destroyRecord();
       }, {
