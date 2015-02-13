@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :cover_image_url, :avatar_template, :rating_type, :mini_bio,
+  attributes :id, :cover_image_url, :avatar_template, :rating_type, :bio,
     :about, :is_followed, :title_language_preference, :location, :website,
     :waifu, :waifu_or_husbando, :waifu_slug, :waifu_char_id, :last_sign_in_at,
     :current_sign_in_at, :is_admin, :following_count, :follower_count, :is_pro
@@ -14,10 +14,6 @@ class UserSerializer < ActiveModel::Serializer
 
   def rating_type
     object.star_rating? ? "advanced" : "simple"
-  end
-
-  def mini_bio
-    object.bio
   end
 
   def is_followed

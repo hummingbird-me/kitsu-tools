@@ -29,7 +29,6 @@ export default Ember.ObjectController.extend(HasCurrentUser, HasCoverUpload, {
 
     saveEditMenu: function(){
       this.toggleProperty('showEditMenu');
-      this.get('model').set('miniBio', this.get('truncatedBio'));
       this.get('content').save();
     },
 
