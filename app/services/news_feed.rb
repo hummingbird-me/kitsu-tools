@@ -30,11 +30,7 @@ class NewsFeed
   FRESH_FETCH_SIZE  = 60
 
   # Redis key names and prefixes.
-  FEED_PREFIX                   = "user_newsfeed:"
-  USER_FOLLOWERS_PREFIX         = "user_followers:"
-  USER_FOLLOWING_PREFIX         = "user_following:"
-  ACTIVE_FOLLOWED_USERS_PREFIX  = "active_followed_users:"
-  ACTIVE_JOINED_GROUPS_PREFIX   = "active_joined_groups:"
+  FEED_PREFIX = "user_newsfeed:"
 
   def initialize(user)
     @user = user
