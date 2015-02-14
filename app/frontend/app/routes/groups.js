@@ -3,7 +3,10 @@ import Paginated from '../mixins/paginated';
 import setTitle from '../utils/set-title';
 
 export default Ember.Route.extend(Paginated, {
-  beforeModel: function() {
+  beforeModel: function(transition) {
+    if (!this.get('currentUser.betaAccess')) {
+      return transition.abort();
+    }
     setTitle('Groups');
   },
 

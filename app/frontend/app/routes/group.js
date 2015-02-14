@@ -2,6 +2,11 @@ import Ember from 'ember';
 /* global Messenger */
 
 export default Ember.Route.extend({
+  beforeModel: function(transition) {
+    if (!this.get('currentUser.betaAccess')) {
+      return transition.abort();
+    }
+  },
   model: function(params) {
     return this.store.find('group', params.id);
   },
