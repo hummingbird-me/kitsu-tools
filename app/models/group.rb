@@ -41,7 +41,7 @@ class Group < ActiveRecord::Base
       thumb_small: '-quality 0',
       small: '-quality 0'
     },
-    path: "/:class/:attachment/:id/:style.:extension",
+    path: "/:class/:attachment/:id/:style.:content_type_extension",
     default_url: "https://hummingbird.me/default_avatar.jpg",
     processors: [:thumbnail, :paperclip_optimizer]
 
@@ -54,7 +54,7 @@ class Group < ActiveRecord::Base
   has_attached_file :cover_image,
     styles: {thumb: {geometry: "2880x800#", animated: false, format: :jpg}},
     convert_options: {thumb: '-interlace Plane -quality 0'},
-    path: "/:class/:attachment/:id/:style.:extension",
+    path: "/:class/:attachment/:id/:style.:content_type_extension",
     default_url: "https://hummingbird.me/default_cover.png"
 
   validates_attachment :cover_image, content_type: {
