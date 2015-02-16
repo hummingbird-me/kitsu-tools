@@ -57,7 +57,7 @@
           <div class="follow-widgets">
             {{! staff delete button }}
             {{#if currentUser.isAdmin}}
-              <button class="btn btn-default btn-lg follow-button edit delete-group" {{action "deleteGroup"}}>
+              <button class="btn btn-default btn-lg follow-button edit delete-group" {{action "deleteGroup"}} {{bind-attr class="showEditMenu:hide"}}>
                 Delete Group
               </button>
             {{/if}}
@@ -86,7 +86,7 @@
                     Approval Pending...
                   </button>
                 {{else}}
-                  <button class="btn btn-default btn-lg follow-button edit" {{action "leaveGroup"}}>
+                  <button class="btn btn-default btn-lg follow-button edit" {{action "leaveGroup"}}  {{bind-attr class="showEditMenu:hide"}}>
                     Leave Group
                   </button>
                 {{/if}}
