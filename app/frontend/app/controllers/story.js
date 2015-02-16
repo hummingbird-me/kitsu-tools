@@ -21,13 +21,10 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
   loadingAll: false,
   loadedAll: propertyEqual('substories.length', 'model.substoryCount'),
 
-  // Determine if we are on the stories group page
-  // this is really hacky
+  // Determine if we are on a group page
   isOnGroupPage: function() {
-    // 8 == /groups/
-    return this.get('model.group') &&
-      (this.get('target.target.url').substr(8) === this.get('model.group.id'));
-  }.property('model.group', 'target.target'),
+    return window.location.href.indexOf('/groups/') !== -1;
+  }.property(),
 
   extraLikers: function() {
     return this.get('totalVotes') - this.get('recentLikers.length');
