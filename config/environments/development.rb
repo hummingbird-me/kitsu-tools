@@ -5,7 +5,7 @@ Hummingbird::Application.configure do
   config.paperclip_defaults = {
     storage: :filesystem,
     url: '/uploads/:class/:attachment/:id_partition/:style/:filename',
-    path: "#{Rails.root}/public/uploads/:class/:attachment/:id_partition/:style/:filename"
+    path: ":rails_root/public:url"
   }
 
   # In the development environment your application's code is reloaded on
@@ -49,4 +49,3 @@ Hummingbird::Application.configure do
   config.react.variant = :development
   config.react.addons = true
 end
-
