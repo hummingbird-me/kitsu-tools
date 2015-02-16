@@ -34,7 +34,7 @@ export default Model.extend(ModelCurrentUser, {
     if (this.get('isNew')) { return false; }
 
     var currentMember = this.get('group') && this.get('group.currentMember');
-    var canDeleteViaGroupRank = currentMember && currentMember.get('isAdmin') || currentMember.get('isMod');
+    var canDeleteViaGroupRank = currentMember && (currentMember.get('isAdmin') || currentMember.get('isMod'));
 
     return this.get('belongsToUser') || this.get('currentUser.isAdmin') || canDeleteViaGroupRank;
   }.property('isNew', 'belongsToUser', 'currentUser.isAdmin', 'group'),
