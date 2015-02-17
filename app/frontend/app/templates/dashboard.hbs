@@ -94,6 +94,26 @@
       </div>
       }}
 
+      {{#if currentUser.betaAccess}}
+      <div class="community-widget-panel trending-group-panel">
+        <div class="panel-heading">
+          <h3 class="panel-title">Trending groups</h3>
+        </div>
+        <div class="panel-body">
+          <ul class="latest-post-list">
+            {{#each group in trendingGroups}}
+              <li class="clearfix">
+                {{group-box group=group}}
+              </li>
+            {{/each}}
+            <li class="latest-post-more">
+              {{#link-to 'groups'}}Show all{{/link-to}}
+            </li>
+          </ul>
+        </div>
+      </div>
+      {{/if}}
+
       {{community-widget title="Industry news" showMoreURL="https://forums.hummingbird.me/c/industry-news" apiCall="https://forums.hummingbird.me/c/industry-news.json"}}
       <div class="feed-sm-sidebar-advert">
         {{ad-unit adId="1298407" adClass="257f81e798bd68dd81e60f42838f361f"}}
@@ -102,6 +122,7 @@
       <div class="feed-sidebar-advert">
         {{ad-unit adId="1298406" adClass="257f81e798bd68dd81e60f42838f361f"}}
       </div>
+
       <div class="feed-sidebar-footer">
         {{!--
           {{#link-to 'about'}}About{{/link-to}} &bull;

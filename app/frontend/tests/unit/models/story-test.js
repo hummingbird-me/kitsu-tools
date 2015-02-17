@@ -5,7 +5,8 @@ import {
 
 moduleForModel('story', 'Story', {
   // Specify the other units that are required for this test.
-  needs: ['model:user', 'model:media', 'model:substory']
+  needs: ['model:group', 'model:group-member',
+    'model:user', 'model:media', 'model:substory']
 });
 
 test('it exists', function() {

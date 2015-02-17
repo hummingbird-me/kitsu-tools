@@ -109,6 +109,10 @@ class User < ActiveRecord::Base
   has_many :following_relations, dependent: :destroy, foreign_key: :follower_id, class_name: 'Follow'
   has_many :following, -> { order('follows.created_at DESC') }, through: :following_relations, source: :followed, class_name: 'User'
 
+  # Groups stuff.
+  has_many :group_relations, dependent: :destroy, foreign_key: :user_id, class_name: 'GroupMember'
+  has_many :groups, through: :group_relations
+
   has_many :stories
   has_many :substories
   has_many :notifications

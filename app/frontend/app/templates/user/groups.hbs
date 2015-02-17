@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    {{#each group in model}}
+      <div class="col-sm-4">
+        {{group-box group=group}}
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+{{#if canLoadMore}}
+  {{load-more action="loadNextPage"}}
+{{/if}}

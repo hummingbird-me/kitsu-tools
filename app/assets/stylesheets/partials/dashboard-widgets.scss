@@ -1,4 +1,4 @@
-.community-widget-panel {
+.community-widget-panel, .trending-group-panel {
   @extend .panel;
   @extend .panel-default;
   @extend .clearfix;
@@ -177,4 +177,18 @@
 @keyframes placeHolderShimmer{
   0% { background-position: -468px 0; }
   100% { background-position: 468px 0; }
+}
+
+.trending-group-panel {
+  .panel-body .latest-post-list {
+    margin-top: 15px;
+    li {
+      padding: 0 10px;
+      &:last-child {
+        border-top: 1px solid #ddd;
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+  }
 }

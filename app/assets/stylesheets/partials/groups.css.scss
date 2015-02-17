@@ -1,0 +1,141 @@
+.group-content {
+  @extend .profile-content;
+}
+
+.group-about-panel {
+  @extend .user-about-panel;
+}
+
+.group-members-panel, .group-suggestions-panel {
+  @extend .panel;
+  @extend .panel-default;
+  float: left;
+  width: 100%;
+}
+
+.group-members-panel {
+  ul {
+    li {
+      display: inline-block;
+      width: 50px;
+      margin-left: 8px;
+      margin-bottom: 8px;
+      img {
+        width: 100%;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+.group-wrapper {
+  border-radius: 3px;
+  background-size: cover !important;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 15px;
+  padding: 10px;
+  color: #fff;
+  .overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+  }
+}
+
+.group-avatar {
+  float: left;
+  width: 50px;
+  border-radius: 3px;
+  position: relative;
+  z-index: 1;
+  margin-right: 15px;
+  img {
+    width: 100%;
+    border-radius: 3px;
+  }
+}
+.group-info {
+  position: relative;
+  color: #fff;
+  z-index: 1;
+  h4 {
+    margin-bottom: 0;
+    margin-top: 7px;
+  }
+}
+
+.suggestion-button {
+  position: relative;
+  z-index: 1;
+  border: none;
+  padding: 5px 25px;
+  font-size: 13px;
+}
+
+.group-feed {
+  @extend .user-feed;
+}
+
+.group-cover {
+  @extend .user-cover;
+}
+
+.group-bio {
+  @extend .user-bio;
+}
+
+.user-cover-options .follow-button.edit-group {
+  right: 190px;
+}
+
+.user-cover-options .follow-button.delete-group {
+  right: 368px;
+}
+
+// members page
+.group-staff, .group-members, .group-pending {
+  @extend .clearfix;
+}
+
+.group-widget-top {
+  @extend .clearfix;
+  margin-bottom: 10px;
+}
+
+.group-actions {
+  padding: 0 10px;
+}
+
+.group-approve {
+  padding: 5px 15px;
+  font-size: 12px;
+  background: #16a085;
+  border: none;
+}
+
+.group-kick, .group-reject {
+  padding: 5px 15px;
+  font-size: 12px;
+  background: #c0392b;
+  border: none;
+}
+
+.group-page-title {
+  h3 {
+    display: inline-block;
+  }
+  a {
+    float: right;
+  }
+  .join-group {
+    position: relative;
+    top: 20px;
+    background: #16a085;
+    border: none;
+  }
+}

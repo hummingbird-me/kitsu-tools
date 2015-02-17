@@ -16,6 +16,13 @@
             {{#if user.isPro}}
               {{#link-to 'pro'}}<span class="mini-badge">pro</span>{{/link-to}}
             {{/if}}
+            {{#if group}}
+              {{! don't show this if we are actually on the group page }}
+              {{#unless isOnGroupPage}}
+                posted to
+                {{#link-to 'group' group}}{{unbound group.name}}{{/link-to}}
+              {{/unless}}
+            {{/if}}
           {{/unless}}
         </h4>
         <p class="secondary">
@@ -34,7 +41,7 @@
   </div>
   <div class="row">
     <div class="post-content clearfix">
-      {{#if collapsed}}  
+      {{#if collapsed}}
         <a {{action "showCollapsedPost"}}>Show NSFW Content</a>
       {{else}}
         <p {{bind-attr class=":comment-text isExpanded:full-post" }}>
@@ -135,9 +142,19 @@
       </div>
     {{/each}}
     {{#if currentUser.isSignedIn}}
-      <div class="reply-form">
-        {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
-      </div>
+      {{#if group}}
+        {{#if group.currentMember}}
+          {{#unless group.currentMember.pending}}
+            <div class="reply-form">
+              {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
+            </div>
+          {{/unless}}
+        {{/if}}
+      {{else}}
+        <div class="reply-form">
+          {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
+        </div>
+      {{/if}}
     {{/if}}
   {{/if}}
 </div>

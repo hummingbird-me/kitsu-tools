@@ -29,10 +29,16 @@ Router.map(function() {
 
   this.resource('user', {path: '/users/:id'}, function() {
     this.route('library');
+    this.route('groups');
     this.route('manga_library', {path: 'library/manga/'});
     this.route('reviews');
     this.route('following');
     this.route('followers');
+  });
+
+  this.route('groups');
+  this.resource('group', {path: '/groups/:id'}, function() {
+    this.route('members');
   });
 
   this.route('onboarding', function() {

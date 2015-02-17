@@ -94,6 +94,12 @@ class UsersController < ApplicationController
     render_ember
   end
 
+  def groups
+    user = User.find(params[:user_id])
+    preload_to_ember! user
+    render_ember
+  end
+
   def manga_library
     @user = User.find(params[:user_id])
 
@@ -232,7 +238,7 @@ class UsersController < ApplicationController
       user.waifu = changes[:waifu]
       user.website = changes[:website]
       user.waifu_or_husbando = changes[:waifu_or_husbando]
-      user.bio = changes[:mini_bio] || ""
+      user.bio = changes[:bio] || ""
       user.waifu_char_id = changes[:waifu_char_id]
 
       if Rails.env.production? and changes[:cover_image_url] =~ /^data:image/

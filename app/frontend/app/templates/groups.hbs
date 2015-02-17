@@ -1,0 +1,32 @@
+<div class="container">
+  <!-- Show 6 most recent groups -->
+  <div class="group-page-title">
+    <h3>New Groups</h3>
+    {{#if currentUser}}
+      <a href="#" class="btn btn-primary join-group" {{action "openModal" "create-group" group}}>Create a Group</a>
+    {{/if}}
+  </div>
+  <div class="row">
+    {{#each group in recentGroups}}
+      <div class="col-sm-4">
+        {{group-box group=group}}
+      </div>
+    {{/each}}
+  </div>
+
+  <!-- Infinite scroll trending groups -->
+  <div class="group-page-title">
+    <h3>Trending Groups</h3>
+  </div>
+  <div class="row">
+    {{#each group in model}}
+      <div class="col-sm-4">
+        {{group-box group=group}}
+      </div>
+    {{/each}}
+  </div>
+
+  {{#if canLoadMore}}
+    {{load-more classNames="light" action="loadNextPage"}}
+  {{/if}}
+</div>

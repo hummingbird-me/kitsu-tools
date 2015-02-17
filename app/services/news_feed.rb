@@ -4,7 +4,7 @@ require_dependency 'story_query'
 #
 # Definitions:
 #
-# * For the purposes of the user timeline, an active user is defined as a user 
+# * For the purposes of the user timeline, an active user is defined as a user
 #   who has generated a story in the last INACTIVE_DAYS days.
 #
 # Parameters:
@@ -30,10 +30,7 @@ class NewsFeed
   FRESH_FETCH_SIZE  = 60
 
   # Redis key names and prefixes.
-  FEED_PREFIX                   = "user_newsfeed:"
-  USER_FOLLOWERS_PREFIX         = "user_followers:"
-  USER_FOLLOWING_PREFIX         = "user_following:"
-  ACTIVE_FOLLOWED_USERS_PREFIX  = "active_followed_users:"
+  FEED_PREFIX = "user_newsfeed:"
 
   def initialize(user)
     @user = user
@@ -44,7 +41,7 @@ class NewsFeed
     $redis.with {|conn| conn.exists @feed_key }
   end
 
-  # Fetch a page of stories from the user's timeline. Generate a timeline if 
+  # Fetch a page of stories from the user's timeline. Generate a timeline if
   # the user's timeline doesn't already exist in memory.
   def fetch(page=nil)
     regenerate_feed! unless cached?
@@ -65,8 +62,13 @@ class NewsFeed
   # Regenerate the user's feed from scratch.
   def regenerate_feed!
     user_set = active_followed_users + [@user.id]
+    group_set = active_joined_groups.to_a
 
-    stories = Story.for_user(@user).order('updated_at DESC').where(user_id: user_set).includes(:user, :target, :substories).limit(FRESH_FETCH_SIZE)
+    stories = Story.for_user(@user)
+                   .order('updated_at DESC')
+                   .where('(stories.user_id IN (?) AND stories.group_id IS NULL) OR stories.group_id IN (?)', user_set, group_set)
+                   .includes(:user, :target, :substories)
+                   .limit(FRESH_FETCH_SIZE)
     stories.each {|story| add! story }
   end
 
@@ -97,5 +99,11 @@ class NewsFeed
   # recently active. Limited to FRESH_FETCH_SIZE users.
   def active_followed_users
     @user.following.limit(FRESH_FETCH_SIZE)
+  end
+
+  # Return the set of active group IDs which our user is part of, which
+  # were most recently active.  Limited to FRESH_FETCH_SIZE groups.
+  def active_joined_groups
+    @user.groups.limit(FRESH_FETCH_SIZE)
   end
 end

@@ -1,0 +1,36 @@
+# == Schema Information
+#
+# Table name: group_members
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer          not null
+#  group_id   :integer          not null
+#  pending    :boolean          default(TRUE), not null
+#  created_at :datetime
+#  updated_at :datetime
+#  rank       :integer          default(0), not null
+#
+
+gumi_admin:
+  user: vikhyat
+  group: gumi
+  rank: 2
+  pending: false
+
+gumi_pleb:
+  user: josh
+  group: gumi
+  rank: 0
+  pending: true
+
+jerks_admin:
+  user: josh
+  group: jerks
+  rank: 2
+  pending: false
+
+jerks_moderator:
+  user: vikhyat
+  group: jerks
+  rank: 1
+  pending: false

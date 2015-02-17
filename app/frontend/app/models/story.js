@@ -6,6 +6,7 @@ export default Model.extend(ModelCurrentUser, {
   type: DS.attr('string'),
   user: DS.belongsTo('user'),
   poster: DS.belongsTo('user'),
+  group: DS.belongsTo('group'),
   createdAt: DS.attr('date'),
   comment: DS.attr('string'),
   media: DS.belongsTo('media', { polymorphic: true }),
@@ -30,6 +31,11 @@ export default Model.extend(ModelCurrentUser, {
   }.property('poster.id', 'user.id'),
 
   canDeleteStory: function() {
-    return (!this.get('isNew')) && (this.get('belongsToUser') || this.get('currentUser.isAdmin'));
-  }.property('isNew', 'belongsToUser', 'currentUser.isAdmin'),
+    if (this.get('isNew')) { return false; }
+
+    var currentMember = this.get('group') && this.get('group.currentMember');
+    var canDeleteViaGroupRank = currentMember && (currentMember.get('isAdmin') || currentMember.get('isMod'));
+
+    return this.get('belongsToUser') || this.get('currentUser.isAdmin') || canDeleteViaGroupRank;
+  }.property('isNew', 'belongsToUser', 'currentUser.isAdmin', 'group'),
 });

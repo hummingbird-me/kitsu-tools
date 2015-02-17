@@ -6,7 +6,7 @@
 class Action
   def self.broadcast(data)
     if data[:action_type] == "created_profile_comment"
-      # Create the story and substory for this action, 
+      # Create the story and substory for this action,
       # TODO: generate notifications
       # and return the story.
       #
@@ -43,6 +43,23 @@ class Action
           )
         end
       end
+
+      return story
+    elsif data[:action_type] == "created_group_comment"
+      story = Story.create(
+        story_type: "comment",
+        user: data[:user],
+        group: data[:group],
+        target: data[:poster],
+        adult: data[:adult] || false
+      )
+
+      substory = Substory.create(
+        user: data[:poster],
+        substory_type: Substory.substory_types[:comment],
+        story: story,
+        data: {comment: data[:comment]}
+      )
 
       return story
     end

@@ -1,14 +1,9 @@
 import Ember from 'ember';
 import HasCurrentUser from '../mixins/has-current-user';
+import HasCoverUpload from '../mixins/has-cover-upload';
 import ajax from 'ic-ajax';
 
-export default Ember.ObjectController.extend(HasCurrentUser, {
-  coverUpload: Ember.Object.create(),
-  coverUrl: Ember.computed.any('coverUpload.croppedImage', 'model.coverImageUrl'),
-  coverImageStyle: function () {
-    return "background-image: url(" + this.get('coverUrl') + ")";
-  }.property('coverUrl'),
-
+export default Ember.ObjectController.extend(HasCurrentUser, HasCoverUpload, {
   showEditMenu: false,
 
   viewingSelf: function () {
@@ -34,18 +29,7 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
 
     saveEditMenu: function(){
       this.toggleProperty('showEditMenu');
-      this.get('model').set('miniBio', this.get('truncatedBio'));
       this.get('content').save();
-    },
-
-    coverSelected: function (file) {
-      var self = this;
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        self.set('coverUpload.originalImage', e.target.result);
-        return self.send('openModal', 'crop-cover', self.get('coverUpload'));
-      };
-      return reader.readAsDataURL(file);
     },
 
     avatarSelected: function (file) {

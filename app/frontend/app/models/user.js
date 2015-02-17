@@ -1,11 +1,12 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import ModelTruncatedDetails from '../mixins/model-truncated-details';
 
-export default DS.Model.extend({
+export default DS.Model.extend(ModelTruncatedDetails, {
   username: Ember.computed.alias('id'),
   coverImageUrl: DS.attr('string'),
   avatarTemplate: DS.attr('string'),
-  miniBio: DS.attr('string'),
+  bio: DS.attr('string'),
   about: DS.attr('string'),
   location: DS.attr('string'),
   website: DS.attr('string'),
@@ -40,25 +41,5 @@ export default DS.Model.extend({
     } else {
       return this.get("website");
     }
-  }.property('website'),
-
-  truncatedBio: function(key, value) {
-    // setter
-    if (arguments.length > 1) {
-      this.set('miniBio', value.slice(0, 140));
-    }
-
-    // getter
-    return this.get('miniBio') || "";
-  }.property('miniBio'),
-
-  truncatedAbout: function(key, value) {
-    // setter
-    if (arguments.length > 1) {
-      this.set('about', value.slice(0, 500));
-    }
-
-    // getter
-    return this.get('about') || "";
-  }.property('about')
+  }.property('website')
 });

@@ -2,11 +2,14 @@ require_dependency 'story_query'
 
 class StoriesController < ApplicationController
   def index
-    params.permit(:user_id, :news_feed, :page)
+    params.permit(:user_id, :group_id, :news_feed, :page)
 
     if params[:user_id]
       user = User.find(params[:user_id])
       stories = StoryQuery.find_for_user(user, current_user, params[:page], 30)
+    elsif params[:group_id]
+      group = Group.find(params[:group_id])
+      stories = StoryQuery.find_for_group(group, current_user, params[:page], 30)
     elsif params[:news_feed]
       stories = NewsFeed.new(current_user).fetch(params[:page] || 1)
     end
@@ -27,16 +30,28 @@ class StoriesController < ApplicationController
 
   def create
     authenticate_user!
-    params.require(:story).permit(:user_id, :comment)
+    params.require(:story).permit(:user_id, :group_id, :comment)
 
-    user = User.find(params[:story][:user_id])
-    story = Action.broadcast(
-      action_type: "created_profile_comment",
-      user: user,
-      poster: current_user,
-      comment: params[:story][:comment],
-      adult: params[:story][:adult]
-    )
+    if params[:story][:group_id].present?
+      group = Group.find(params[:story][:group_id])
+      story = Action.broadcast(
+        action_type: "created_group_comment",
+        group: group,
+        user: current_user,
+        poster: current_user,
+        comment: params[:story][:comment],
+        adult: params[:story][:adult]
+      )
+    else
+      user = User.find(params[:story][:user_id])
+      story = Action.broadcast(
+        action_type: "created_profile_comment",
+        user: user,
+        poster: current_user,
+        comment: params[:story][:comment],
+        adult: params[:story][:adult]
+      )
+    end
 
     render json: StoryQuery.find_by_id(story.id, current_user)
   end

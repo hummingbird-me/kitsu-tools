@@ -5,6 +5,7 @@ class StorySerializer < ActiveModel::Serializer
     :is_liked, :adult
 
   has_one :user, embed_key: :name
+  has_one :group, embed_key: :slug
   has_one :media, polymorphic: true, embed_key: :slug
   has_one :poster, embed_key: :name, root: :users
   has_many :substories

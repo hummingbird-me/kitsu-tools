@@ -21,6 +21,11 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
   loadingAll: false,
   loadedAll: propertyEqual('substories.length', 'model.substoryCount'),
 
+  // Determine if we are on a group page
+  isOnGroupPage: function() {
+    return window.location.href.indexOf('/groups/') !== -1;
+  }.property(),
+
   extraLikers: function() {
     return this.get('totalVotes') - this.get('recentLikers.length');
   }.property('totalVotes', 'recentLikers.length'),

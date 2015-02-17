@@ -12,7 +12,9 @@ export default Ember.Controller.extend(HasCurrentUser, {
     }
 
     // Track page view
-    window.analytics.page();
+    if (window.analytics !== undefined) {
+      window.analytics.page();
+    }
   }.observes('currentPath'),
 
   // Close the quick update panel on page transition.
