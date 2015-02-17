@@ -1,9 +1,9 @@
 class Rack::Attack
-  throttle 'signins/ip', limit: 5, period: 20.seconds do |req|
-    if req.path == '/sign-in' && req.post?
-      req.ip
-    end
-  end
+  #throttle 'signins/ip', limit: 5, period: 20.seconds do |req|
+  #  if req.path == '/sign-in' && req.post?
+  #    req.ip
+  #  end
+  #end
 
   # Long-period throttles allow bursting but not brute force attacks
   # I'm being really generous here, the limits could probably go even lower
@@ -14,11 +14,11 @@ class Rack::Attack
     end
   end
 
-  throttle 'signups/ip', limit: 20, period: 60.minutes do |req|
-    if req.path == '/sign-up' && req.post?
-      req.ip
-    end
-  end
+  #throttle 'signups/ip', limit: 20, period: 60.minutes do |req|
+  #  if req.path == '/sign-up' && req.post?
+  #    req.ip
+  #  end
+  #end
 
   self.throttled_response = lambda do |env|
     [429, {}, {
