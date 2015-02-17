@@ -177,6 +177,7 @@ Hummingbird::Application.routes.draw do
     get '/kotodama/users_to_follow_submit' => 'admin#users_to_follow_submit'
     get '/kotodama/blotter_set' => 'admin#blotter_set'
     get '/kotodama/blotter_clear' => 'admin#blotter_clear'
+    post '/kotodama/deploy' => 'admin#deploy'
     post '/kotodama/publish_update' => 'admin#publish_update'
     post '/kotodama/refill_codes' => 'admin#refill_codes'
 
