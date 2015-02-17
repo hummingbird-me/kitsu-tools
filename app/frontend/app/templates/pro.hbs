@@ -145,7 +145,7 @@
               <h3 class="perks-greeting">Show support for our growing community by going PRO.</h3>
               <small>As our way of saying <i>Arigatō</i>, we’re throwing in a few cool perks.</small>
             {{/if}}
-            
+
           </div>
           <ul class="perks-body">
             <li class="perk">
@@ -190,11 +190,11 @@
                   <h4>{{dealTitle}}</h4>
                   <p>{{dealDescription}}</p>
                   {{#if currentUser.isPro}}
-                    {{#if hasCodes}}
-                      {{#if hasRedeemed}}
-                        <div class="offer-clipping">{{code}}</div>
-                        <p class="redemption-instructions">{{redemptionInfo}}</p>
-                      {{else}}
+                    {{#if hasRedeemed}}
+                      <div class="offer-clipping">{{code}}</div>
+                      <p class="redemption-instructions">{{redemptionInfo}}</p>
+                    {{else}}
+                      {{#if hasCodes}}
                         <a class="redeem-button" {{action "redeemDeal"}}>
                           {{#if isRedeeming}}
                             <i class="fa fa-spin fa-spinner"></i> Redeeming Offer
@@ -202,10 +202,9 @@
                             Redeem Offer
                           {{/if}}
                         </a>
+                      {{else}}
+                        <p>We've run out of codes temporarily, watch this space!</p>
                       {{/if}}
-                    {{else}}
-                      {{! TODO: CSS/update this note @josh }}
-                      <p>We've run out of codes temporarily, watch this space!</p>
                     {{/if}}
                   {{/if}}
                 </div>
