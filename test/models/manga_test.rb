@@ -35,7 +35,7 @@ class MangaTest < ActiveSupport::TestCase
   should have_and_belong_to_many(:genres)
 
   test "should implement search scopes" do
-    assert Manga.fuzzy_search_by_title("monstre").include?(manga(:monster)), "manga fuzzy search"
-    assert Manga.simple_search_by_title("monster").include?(manga(:monster)), "manga simple search"
+    assert Manga.full_search("monstre").include?(manga(:monster)), "manga fuzzy search"
+    assert Manga.instant_search("monster").include?(manga(:monster)), "manga simple search"
   end
 end

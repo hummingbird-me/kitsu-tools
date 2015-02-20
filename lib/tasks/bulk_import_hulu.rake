@@ -79,7 +79,7 @@ task :bulk_import_hulu, [:shows] => [:environment] do |t, args|
     next import_episodes(anime, show, :exact) unless anime.nil?
 
     ## Trigram
-    options << anime = Anime.fuzzy_search_by_title(show.name).first
+    options << anime = Anime.full_search(show.name).first
     next import_episodes(anime, show, :trigram, anime.pg_search_rank < 0.75) if !anime.nil? && anime.pg_search_rank > 0.66
 
     ## Prefix

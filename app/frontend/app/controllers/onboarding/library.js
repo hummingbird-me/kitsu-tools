@@ -55,7 +55,7 @@ export default Ember.Controller.extend(HasCurrentUser, {
 
     this.set('loading', true);
     ajax({
-      url: '/search.json?type=element&datatype='+dtpe+'&query=' + this.get('searchTerm'),
+      url: '/search.json?depth=element&scope='+dtpe+'&query=' + this.get('searchTerm'),
       type: "GET"
     }).then(function(payload) {
       self.setProperties({

@@ -13,20 +13,9 @@ export default Ember.Component.extend({
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       limit: 10,
       remote: {
-        url: '/search.json?query=%QUERY&type=mixed',
+        url: '/search.json?scope=all&depth=instant&query=%QUERY',
         filter: function(results) {
-          return Ember.$.map(results.search, function (r) {
-            // There actually has to be a way to send the img params to the thumb generator in the request, this is just a temp. solution
-            if (r.type === "user") {
-              r.image = r.image.replace(/(\.[a-zA-Z]+)?\?/, ".jpg?");
-            }
-            return {
-              title: r.title,
-              type: r.type,
-              image: r.image.replace((r.type==="user"?"{size}":"large"), (r.type==="user"?"small":"medium")),
-              slug: r.slug
-            };
-          });
+          return results.search;
         }
       }
     });

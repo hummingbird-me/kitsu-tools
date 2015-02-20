@@ -54,7 +54,7 @@ class AnimeTest < ActiveSupport::TestCase
   should validate_uniqueness_of(:title)
 
   test "should implement search scopes" do
-    assert Anime.fuzzy_search_by_title("swodr atr onlien").include?(anime(:sword_art_online))
-    assert Anime.simple_search_by_title("sword art").include?(anime(:sword_art_online))
+    assert Anime.full_search("swodr atr onlien").include?(anime(:sword_art_online))
+    assert Anime.instant_search("sword art").include?(anime(:sword_art_online))
   end
 end

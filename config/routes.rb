@@ -145,7 +145,7 @@ Hummingbird::Application.routes.draw do
   end
 
   # Search
-  get '/search' => 'search#basic', as: :search
+  get '/search' => 'search#search'
 
   # Imports
   post '/mal_import', to: redirect('/settings/import/myanimelist')

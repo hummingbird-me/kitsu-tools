@@ -8,7 +8,11 @@
         {{input value=query class="form-control" placeholder="I'm sure there's something interesting to find here!"}}
       </div>
       <div class="col-md-3">
-        {{view "select" class="form-control" content=filters selectionBinding=filter}}
+        {{view "select" class="form-control"
+                        content=scopes
+                        optionValuePath="content.value"
+                        optionLabelPath="content.label"
+                        value=scope}}
       </div>
     </form>
     <hr />
@@ -16,7 +20,7 @@
       {{#if performingSearch}}
         <li>{{loading-indicator}}</li>
       {{else}}
-        {{#each result in filteredSearchResults}}
+        {{#each result in searchResults}}
           <li class="search-result clearfix">
           {{!-- == TODO: For 2 col layout with library feature later ==
             <li class="search-result row">

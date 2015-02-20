@@ -17,10 +17,17 @@
 
 class Character < ActiveRecord::Base
   include PgSearch
-  pg_search_scope :fuzzy_search_by_name, against: [:name],
-    using: {trigram: {threshold: 0.1}}, ranked_by: ":trigram"
-  pg_search_scope :simple_search_by_name, against: [:name],
-    using: {tsearch: {normalization: 10, dictionary: "english"}}, ranked_by: ":tsearch"
+  pg_search_scope :instant_search,
+    against: [ :name ],
+    using: { tsearch: { normalization: 42, dictionary: 'english' } },
+    ranked_by: ':tsearch'
+  pg_search_scope :full_search,
+    against: [ :name ],
+    using: {
+      tsearch: { normalization: 42, dictionary: 'english' },
+      trigram: { threshold: 0.1 }
+    },
+    ranked_by: ':tsearch + :trigram'
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
@@ -29,11 +36,6 @@ class Character < ActiveRecord::Base
       :name,
       lambda { [:name, self.primary_media.canonical_title] }
     ]
-  end
-
-  class << self
-    alias_method :simple_search_by_title, :simple_search_by_name
-    alias_method :fuzzy_search_by_title, :fuzzy_search_by_name
   end
 
   validates :name, :presence => true

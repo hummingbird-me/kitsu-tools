@@ -31,6 +31,32 @@ class Group < ActiveRecord::Base
     class_name: 'GroupMember', dependent: :delete_all
   has_many :stories
 
+  include PgSearch
+  pg_search_scope :instant_search,
+    against: [:name, :bio],
+    using: {
+      tsearch: {
+        prefix: true,
+        normalization: 42,
+        dictionary: 'english'
+      }
+    }
+  pg_search_scope :full_search,
+    # Weight name > bio > about
+    against: { name: 'A', bio: 'B', about: 'C' },
+    using: {
+      tsearch: {
+        prefix: true,
+        normalization: 42,
+        dictionary: 'english'
+      },
+      trigram: {
+        only: [:name, :bio]
+      }
+    },
+    # Combine trigram and tsearch values
+    ranked_by: ':trigram + :tsearch'
+
   has_attached_file :avatar,
     styles: {
       thumb: '190x190#',

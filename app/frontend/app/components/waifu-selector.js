@@ -24,12 +24,12 @@ export default Ember.Component.extend({
       },
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       remote: {
-        url: '/search.json?query=%QUERY&type=character',
+        url: '/search.json?scope=character&depth=instant&query=%QUERY',
         filter: function(characters) {
           return Ember.$.map(characters.search, function(character) {
             return {
               value: character.name,
-              char_id: character.id
+              char_id: character.link
             };
           });
         }
