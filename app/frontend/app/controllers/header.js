@@ -32,8 +32,10 @@ export default Ember.Controller.extend(HasCurrentUser, {
   unconfirmed: Ember.computed.equal('currentUser.confirmed', false),
 
   actions: {
-    submitSearch: function () {
-      return window.location.replace("/search?query=" + this.get('searchTerm'));
+    submitSearch: function (query) {
+      return this.transitionToRoute('search', {
+        queryParams: {query}
+      });
     },
     toggleUpdater: function () {
       this.toggleProperty('showUpdater');

@@ -7,14 +7,14 @@
     <ul class="search-dropdown">
       {{#each result in searchResults}}
         <li class="search-result">
-          <a {{bind-attr href="result.link" title="result.title"}}>
+          {{#link-to result.type result.link title="result.title"}}
             <div class="search-result-thumb">
               <img {{bind-attr src="result.image"}} />
             </div>
             <div class="search-result-title">{{result.title}}</div>
             <span {{bind-attr class=":search-result-badge :badge result.type"}}>{{result.type}}</span>
             <div class="search-result-break"></div>
-          </a>
+          {{/link-to}}
         </li>
       {{/each}}
       <li class="search-result show-more">

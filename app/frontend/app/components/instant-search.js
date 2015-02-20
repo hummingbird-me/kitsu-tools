@@ -61,7 +61,7 @@ export default Ember.Component.extend({
     },
 
     submitQuery: function() {
-      window.location.href = "/search?query=" + this.get('query');
+      this.sendAction('action', this.get('query'));
     }
   }
 });

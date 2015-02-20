@@ -16,10 +16,7 @@ class SearchController < ApplicationController
         query = params.require(:query)
 
         # The cheap price of supporting Tenpenchii and Deadman
-        if params[:type] == 'mixed'
-          scope = 'all'
-          depth = 'instant'
-        elsif params[:type] == 'full'
+        if params[:type] == 'full'
           scope = 'all'
           depth = 'instant'
         else
@@ -28,7 +25,10 @@ class SearchController < ApplicationController
         end
 
         return error! "Invalid scope", 422 unless SEARCH_SCOPES.include?(scope)
-        return error! "Invalid depth", 422 unless ['instant', 'full'].include?(depth)
+        return error! "Invalid depth", 422 unless %w[instant full element].include?(depth)
+
+        # Hacky bailout for element search so I don't have to refactor that more
+        return element_search(scope, query) if depth == 'element'
 
         search_method = (depth + '_search').to_sym
         scopes = SEARCH_SCOPES[scope]
@@ -43,11 +43,23 @@ class SearchController < ApplicationController
           results.map! { |x| x[:image] = x[:image].url(:small) }
         end
 
+        return error "No results", 404 if results.count == 0
+
         render json: results.as_json
       end
       format.html do
         render_ember
       end
+    end
+  end
+
+  def element_search(scope, query)
+    if scope == "anime"
+      results = instant_search([Anime], query)
+      render json: results, each_serializer: AnimeSerializer
+    else
+      results = instant_search([Manga], query)
+      render json: results, each_serializer: MangaSerializer
     end
   end
 
