@@ -2415,17 +2415,17 @@ ALTER TABLE ONLY watchlists
 
 
 --
--- Name: anime_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: anime_text_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX anime_search_index ON anime USING gin ((((COALESCE((title)::text, ''::text) || ' '::text) || COALESCE((alt_title)::text, ''::text))) gin_trgm_ops);
+CREATE INDEX anime_text_search_index ON anime USING gin (((to_tsvector('english'::regconfig, COALESCE((title)::text, ''::text)) || to_tsvector('english'::regconfig, COALESCE((alt_title)::text, ''::text)))));
 
 
 --
--- Name: anime_simple_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: anime_trigram_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX anime_simple_search_index ON anime USING gin (((to_tsvector('simple'::regconfig, COALESCE((title)::text, ''::text)) || to_tsvector('simple'::regconfig, COALESCE((alt_title)::text, ''::text)))));
+CREATE INDEX anime_trigram_search_index ON anime USING gin ((((COALESCE((title)::text, ''::text) || ' '::text) || COALESCE((alt_title)::text, ''::text))) gin_trgm_ops);
 
 
 --
@@ -2433,6 +2433,20 @@ CREATE INDEX anime_simple_search_index ON anime USING gin (((to_tsvector('simple
 --
 
 CREATE UNIQUE INDEX character_mal_id ON characters USING btree (mal_id);
+
+
+--
+-- Name: groups_text_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX groups_text_search_index ON groups USING gin ((((setweight(to_tsvector('english'::regconfig, COALESCE((name)::text, ''::text)), 'A'::"char") || setweight(to_tsvector('english'::regconfig, COALESCE((bio)::text, ''::text)), 'B'::"char")) || setweight(to_tsvector('english'::regconfig, COALESCE(about, ''::text)), 'C'::"char"))));
+
+
+--
+-- Name: groups_trigram_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX groups_trigram_search_index ON groups USING gin ((((COALESCE((name)::text, ''::text) || ' '::text) || COALESCE((bio)::text, ''::text))) gin_trgm_ops);
 
 
 --
@@ -2975,17 +2989,17 @@ CREATE INDEX index_watchlists_on_user_id_and_status ON watchlists USING btree (u
 
 
 --
--- Name: manga_fuzzy_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: manga_text_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX manga_fuzzy_search_index ON manga USING gin ((((COALESCE((romaji_title)::text, ''::text) || ' '::text) || COALESCE((english_title)::text, ''::text))) gin_trgm_ops);
+CREATE INDEX manga_text_search_index ON manga USING gin (((to_tsvector('english'::regconfig, COALESCE((romaji_title)::text, ''::text)) || to_tsvector('english'::regconfig, COALESCE((english_title)::text, ''::text)))));
 
 
 --
--- Name: manga_simple_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: manga_trigram_search_index; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX manga_simple_search_index ON manga USING gin (((to_tsvector('simple'::regconfig, COALESCE((romaji_title)::text, ''::text)) || to_tsvector('simple'::regconfig, COALESCE((english_title)::text, ''::text)))));
+CREATE INDEX manga_trigram_search_index ON manga USING gin ((((COALESCE((romaji_title)::text, ''::text) || ' '::text) || COALESCE((english_title)::text, ''::text))) gin_trgm_ops);
 
 
 --
@@ -3699,4 +3713,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150112071159');
 INSERT INTO schema_migrations (version) VALUES ('20150129101801');
 
 INSERT INTO schema_migrations (version) VALUES ('20150206031907');
+
+INSERT INTO schema_migrations (version) VALUES ('20150220014905');
 
