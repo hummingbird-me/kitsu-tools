@@ -1,150 +1,146 @@
 class SearchController < ApplicationController
   STOP_WORDS = /season/i
+  SEARCH_SCOPES = {
+    'all' => [Anime, Manga, Group, User],
+    'anime' => [Anime],
+    'manga' => [Manga],
+    'groups' => [Group],
+    'users' => [User],
+    # Not used yet
+    'characters' => [Character]
+  }
 
-  def search_database(type, query, page, perpage = 20)
-    return [] if query.length < 3
-    model = case type
-      when "anime" then Anime.page(page).per(perpage).sfw_filter(current_user)
-      when "manga" then Manga.page(page).per(perpage)
-      when "character" then Character.page(page).per(perpage)
-    end
-    list = model.simple_search_by_title(query)
-    list = model.fuzzy_search_by_title(query) if list.length == 0
-    list
-  end
-
-  def basic
-    @stype = params[:type] || "anime"
-    @query = params[:query] || ""
-    @page  = params[:page]
-
+  def search
     respond_to do |format|
-      format.html { render_ember }
       format.json do
-        if self.methods.to_s.include? 'search_'+@stype
-          self.send('search_'+@stype)
+        query = params.require(:query)
+
+        # The cheap price of supporting Tenpenchii and Deadman
+        if params[:type] == 'mixed'
+          scope = 'all'
+          depth = 'instant'
+        elsif params[:type] == 'full'
+          scope = 'all'
+          depth = 'instant'
         else
-          not_found!
+          scope = params.require(:scope)
+          depth = params.require(:depth)
         end
+
+        return error! "Invalid scope", 422 unless SEARCH_SCOPES.include?(scope)
+        return error! "Invalid depth", 422 unless ['instant', 'full'].include?(depth)
+
+        search_method = (depth + '_search').to_sym
+        scopes = SEARCH_SCOPES[scope]
+
+        results = self.send(search_method, scopes, query)
+        results = results.map do |x|
+          presenter = ('present_' + x.class.name.downcase).to_sym
+          self.send(presenter, x)
+        end
+
+        if depth == :instant
+          results.map! { |x| x[:image] = x[:image].url(:small) }
+        end
+
+        render json: results.as_json
+      end
+      format.html do
+        render_ember
       end
     end
   end
 
-  def search_anime
-    query = (@query || "").gsub(STOP_WORDS, '')
-    found = search_database 'anime', query, @page
-    @results = found.map {|x| [x.title, x.alt_title] }.flatten.compact
-    render json: @results
-  end
+  private
+  def instant_search(scopes, query)
+    query.gsub!(STOP_WORDS, '')
+    results = scopes.map { |k| k.instant_search(query).limit(3) }.flatten
+      .sort { |a, b| b.pg_search_rank <=> a.pg_search_rank }
 
-  def search_manga
-    query = (query || "").gsub(STOP_WORDS, '')
-    @results = search_database 'manga', query, @page
-    render json: @results
-  end
-
-  def search_users
-    @results = User.search(@query).page(@page).per(20)
-    render json: @results
-  end
-
-  def search_users_to_follow
-    search_users
-  end
-
-  def search_character
-    @results = search_database 'character', @query, @page
-    render json: @results
-  end
-
-  def search_mixed
-    anime = search_database 'anime', @query, @page
-    manga = search_database 'manga', @query, @page
-    users = User.match(@query)
-    users = User.search(@query).page(1).per(20) if users.length == 0
-
-    formattedAnime = anime.map { |x| {
-        type: 'anime',
-        slug: x.slug,
-        title: x.title,
-        image: x.poster_image_thumb,
-        link: "/anime/#{x.slug}" 
-    }}.flatten
-
-    formattedManga = manga.map { |x| {
-        type: 'manga', 
-        slug: x.slug, 
-        title: x.romaji_title, 
-        image: x.poster_image_thumb, 
-        link: "/manga/#{x.slug}"
-    }}.flatten
-
-    formattedUsers = users.map { |x| {
-      type: 'user', 
-      title: x.name, 
-      image: x.avatar_template, 
-      link: "/users/#{x.name}"
-    }}.flatten
-
-    @results = [formattedAnime.take(3), formattedManga.take(3), formattedUsers.take(2)].flatten
-    render json: @results
-  end
-
-  def search_full
-    anime = search_database 'anime', @query, @page, 30
-    manga = search_database 'manga', @query, @page, 30
-    users = User.search(@query).page(1).per(20)
-
-    formattedAnime = anime.map do |x| {
-      type: 'anime',
-      title: x.title,
-      desc: "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
-      image: x.poster_image_thumb,
-      link: x.slug,
-      badges: [
-        { class: 'anime', content: "Anime" },
-        { class: 'episodes', content: "#{x.episode_count}ep &bull; #{x.episode_length}min" },
-        { class: 'episodes', content: "#{x.show_type} &bull; #{x.age_rating}" }
-      ]}
+    if results.length > 0
+      results
+    else
+      full_search(scopes, query)
     end
-    formattedManga = manga.map do |x| {
+  end
+
+  def full_search(scopes, query)
+    query.gsub!(STOP_WORDS, '')
+    scopes.map { |k| k.full_search(query).limit(3) }.flatten
+      .sort { |a, b| b.pg_search_rank <=> a.pg_search_rank }
+  end
+
+  # Presenters
+  def present_manga(manga, depth=:full)
+    {
       type: 'manga',
-      title: x.romaji_title,
-      desc: "#{x.synopsis[0..300].split(" ").to_a[0..-2].join(" ")}...",
-      image: x.poster_image_thumb,
-      link: x.slug,
+      title: manga.title,
+      desc: manga.synopsis,
+      image: manga.poster_image,
+      link: manga.slug,
+      rank: manga.pg_search_rank,
       badges: [
         { class: 'manga', content: "Manga" },
         { class: 'episodes', content: "#{x.volume_count || "?"}vol &bull; #{x.chapter_count || "?"}chap" }
-      ]}
-    end
-    formattedUsers = users.map do |x| {
-      type: 'user',
-      title: x.name,
-      desc: x.bio,
-      image: x.avatar_url,
-      link: x.name,
-      badges: [
-        { class: 'user', content: "User" }
-      ]}
-    end
-
-    @results = [formattedAnime, formattedManga, formattedUsers].flatten
-    render json: @results
+      ]
+    }
   end
 
-  def search_element
-    unless params[:datatype].nil?
-      @type = params[:datatype]
-      if @type == "anime"
-        @results = search_database 'anime', @query, 1, 20
-        render json: @results, each_serializer: AnimeSerializer
-      else
-        @results = search_database 'manga', @query, 1, 20
-        render json: @results, each_serializer: MangaSerializer
-      end
-    else
-      not_found!
-    end
+  def present_anime(anime)
+    {
+      type: 'anime',
+      title: anime.canonical_title(current_user),
+      desc: anime.synopsis,
+      image: anime.poster_image,
+      link: anime.slug,
+      rank: anime.pg_search_rank,
+      badges: [
+        { class: 'anime', content: "Anime" },
+        { class: 'episodes', content: "#{anime.episode_count}ep &bull; #{anime.episode_length}min" },
+        { class: 'episodes', content: "#{anime.show_type} &bull; #{anime.age_rating}" }
+      ]
+    }
+  end
+
+  def present_character(character)
+    {
+      type: 'character',
+      title: character.name,
+      desc: character.description,
+      image: character.image,
+      link: character.id,
+      rank: character.pg_search_rank,
+      badges: [
+        { class: 'character', content: "Character" },
+      ]
+    }
+  end
+
+  def present_group(group)
+    {
+      type: 'group',
+      title: group.name,
+      desc: group.bio,
+      image: group.avatar,
+      link: group.slug,
+      rank: group.pg_search_rank,
+      badges: [
+        { class: 'group', content: "Group" }
+      ]
+    }
+  end
+
+  def present_user(user)
+    {
+      type: 'user',
+      title: user.name,
+      desc: user.bio,
+      image: user.avatar,
+      link: user.name,
+      rank: user.pg_search_rank,
+      badges: [
+        { class: 'user', content: "User" }
+      ]
+    }
   end
 end

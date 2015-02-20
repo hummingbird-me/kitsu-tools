@@ -42,10 +42,17 @@ class Anime < ActiveRecord::Base
   include Versionable
 
   include PgSearch
-  pg_search_scope :fuzzy_search_by_title, against: [:title, :alt_title],
-    using: {trigram: {threshold: 0.1}}, ranked_by: ":trigram"
-  pg_search_scope :simple_search_by_title, against: [:title, :alt_title],
-    using: {tsearch: {normalization: 10, dictionary: "english"}}, ranked_by: ":tsearch"
+  pg_search_scope :instant_search,
+    against: [ :title, :alt_title ],
+    using: { tsearch: { normalization: 42, prefix: true, dictionary: 'english' } }
+  pg_search_scope :full_search,
+    against: [ :title, :alt_title ],
+    using: {
+      tsearch: { normalization: 42, dictionary: 'english' },
+      trigram: { threshold: 0.1 }
+    },
+    # Combine trigram and tsearch values
+    ranked_by: ':tsearch + :trigram'
 
   extend FriendlyId
   friendly_id :canonical_title, :use => [:slugged, :history]
@@ -197,7 +204,7 @@ class Anime < ActiveRecord::Base
     return anime unless anime.nil?
 
     # Trigram
-    options = Anime.fuzzy_search_by_title(title).first(10)
+    options = Anime.full_search(title).first(10)
     anime = options.first
     return anime if !anime.nil? && anime.pg_search_rank > 0.7
 

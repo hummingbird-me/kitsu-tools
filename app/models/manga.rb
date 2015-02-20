@@ -32,10 +32,17 @@ class Manga < ActiveRecord::Base
   include Versionable
 
   include PgSearch
-  pg_search_scope :fuzzy_search_by_title, against: [:romaji_title, :english_title],
-    using: {trigram: {threshold: 0.1}}, ranked_by: ":trigram"
-  pg_search_scope :simple_search_by_title, against: [:romaji_title, :english_title],
-    using: {tsearch: {normalization: 10, dictionary: "english"}}, ranked_by: ":tsearch"
+  pg_search_scope :instant_search,
+    against: [ :romaji_title, :english_title ],
+    using: { tsearch: { normalization: 42, dictionary: 'english' } },
+    ranked_by: ':tsearch'
+  pg_search_scope :full_search,
+    against: [ :romaji_title, :english_title ],
+    using: {
+      tsearch: { normalization: 42, dictionary: 'english' },
+      trigram: { threshold: 0.1 }
+    },
+    ranked_by: ':tsearch + :trigram'
 
   extend FriendlyId
   friendly_id :romaji_title, use: [:slugged, :history]

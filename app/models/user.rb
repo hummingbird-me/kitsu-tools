@@ -87,7 +87,21 @@ class User < ActiveRecord::Base
   end
 
   def self.search(query)
-    where('LOWER(name) LIKE :query OR LOWER(email) LIKE :query', query: "#{query.downcase}%")
+    # Gnarly hack to provide a search rank
+    # TODO: switch properly to pg_search (this is harder for User because of
+    # maintaining the email search, unless we remove that)
+    select(
+      sanitize_sql_array([
+        'users.*, GREATEST(
+          similarity(users.name, :query),
+          CASE WHEN users.email = :query THEN 1.0 ELSE 0.0 END
+        ) AS pg_search_rank',
+      query: query.downcase])
+    ).where('LOWER(name) LIKE :query OR LOWER(email) LIKE :query', query: "#{query.downcase}%")
+  end
+  class << self
+    alias_method :instant_search, :search
+    alias_method :full_search, :instant_search
   end
 
   has_many :favorites
