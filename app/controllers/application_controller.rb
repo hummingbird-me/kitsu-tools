@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   rescue_from 'Auth::UnauthorizedException' do
     respond_to do |format|
       format.json { render json: {error: "Not authenticated"}, status: 403 }
-      format.html { redirect_to(sign_in_path) }
+      format.html { redirect_to(new_user_session_path) }
     end
   end
 

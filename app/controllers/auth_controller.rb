@@ -1,7 +1,10 @@
 class AuthController < ApplicationController
   def sign_out_action
     sign_out :user
-    render json: true
+    respond_to do |format|
+      format.json { render json: true }
+      format.html { redirect_to(root_url) }
+    end
   end
 
   def sign_in_action

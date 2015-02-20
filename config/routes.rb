@@ -30,18 +30,24 @@ Hummingbird::Application.routes.draw do
     post :ping
   end
 
-  get '/sign-in' => 'home#static'
-  get '/sign-up' => 'home#static'
-
-  post '/sign-in' => 'auth#sign_in_action'
-  post '/sign-up' => 'auth#sign_up_action'
-  post '/sign-out' => 'auth#sign_out_action'
-
-  devise_for :users, controllers: {
-    omniauth_callbacks: "users/omniauth_callbacks",
-    sessions: "users/sessions",
-    registrations: "users/registrations"
+  devise_for :users, skip: [:sessions, :registrations], controllers: {
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
+
+  # sessions
+  get '/sign-in' => 'home#static', as: :new_user_session
+  post '/sign-in' => 'auth#sign_in_action', as: :user_session
+  match '/sign-out' => 'auth#sign_out_action', as: :destroy_user_session,
+    via: [:post, :delete]
+
+  # registrations
+  get '/sign-up' => 'home#static', as: :new_user_registration
+  post '/sign-up' => 'auth#sign_up_action', as: :user_registration
+  get '/users/edit', to: redirect('/settings'), as: :edit_user_registration
+
+  # redirects if there happens to be any outdated links around the web
+  get '/users/sign_in', to: redirect('/sign-in')
+  get '/users/sign_up', to: redirect('/sign-up')
 
   resources :notifications, only: [:index, :show]
 
