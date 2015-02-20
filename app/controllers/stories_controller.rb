@@ -11,6 +11,7 @@ class StoriesController < ApplicationController
       group = Group.find(params[:group_id])
       stories = StoryQuery.find_for_group(group, current_user, params[:page], 30)
     elsif params[:news_feed]
+      authenticate_user!
       stories = NewsFeed.new(current_user).fetch(params[:page] || 1)
     end
 
