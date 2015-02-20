@@ -3,7 +3,7 @@ require_dependency 'auth/helpers'
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-   config.secret_key = ENV['DEVISE_SECRET']
+  config.secret_key = ENV['DEVISE_SECRET']
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -243,8 +243,11 @@ Devise.setup do |config|
 end
 
 Devise::Controllers::SignInOut.class_eval do
-
   include Auth::Helpers
+
+  def signed_in?(scope)
+    user_signed_in?
+  end
 
   def sign_in(resource_or_scope, *args)
     check_user_authentication

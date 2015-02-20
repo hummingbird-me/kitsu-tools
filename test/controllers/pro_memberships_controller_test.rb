@@ -3,7 +3,7 @@ require 'stripe_mock'
 
 class ProMembershipsControllerTest < ActionController::TestCase
   test "must be signed in" do
-    post :create
+    post :create, format: :json
     assert_response 403
   end
 

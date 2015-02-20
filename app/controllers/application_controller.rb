@@ -10,7 +10,10 @@ class ApplicationController < ActionController::Base
   include Auth::Helpers
 
   rescue_from 'Auth::UnauthorizedException' do
-    render json: {error: "Not authenticated"}, status: 403
+    respond_to do |format|
+      format.json { render json: {error: "Not authenticated"}, status: 403 }
+      format.html { redirect_to(sign_in_path) }
+    end
   end
 
   # Send an object along with the initial HTML response that will be loaded into
