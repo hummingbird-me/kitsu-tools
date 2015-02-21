@@ -43,7 +43,7 @@ class SearchController < ApplicationController
           results.map! { |x| x[:image] = x[:image].url(:small) }
         end
 
-        return error "No results", 404 if results.count == 0
+        return error! "No results", 404 if results.count == 0
 
         render json: results.as_json
       end
@@ -86,7 +86,7 @@ class SearchController < ApplicationController
   def present_manga(manga, depth=:full)
     {
       type: 'manga',
-      title: manga.title,
+      title: manga.canonical_title,
       desc: manga.synopsis,
       image: manga.poster_image,
       link: manga.slug,
