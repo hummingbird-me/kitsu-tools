@@ -133,6 +133,20 @@ export default Ember.Route.extend({
   	      { "name": "Discuss", "link": "https://forums.hummingbird.me/t/mac-hachidori-open-source-hummingbird-scrobbler-for-os-x/16952" },
   	      { "name": "Download", "link": "http://hachidori.ateliershiori.moe/download.php" },
   	    ]
+      },
+      {
+  	    "name": "",
+  	    "author": [
+  	      { "name": "z411", "link": "https://hummingbird.me/users/z411" },
+  	    ],
+  	    "form": "Desktop",
+  	    "platform": "Linux",
+  	    "screenshots": [sb+"trackma/trackma.jpg"],
+  	    "desc": "Trackma aims to be a lightweight and simple but feature-rich program for Unix based systems for fetching, updating and using data from personal lists hosted in several media tracking websites.",
+  	    "links": [
+  	      { "name": "Discuss", "link": "https://forums.hummingbird.me/t/linux-trackma/19212" },
+  	      { "name": "Download", "link": "https://z411.github.io/trackma/" },
+  	    ]
       }
     ];
   }
