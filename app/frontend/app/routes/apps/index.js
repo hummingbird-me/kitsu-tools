@@ -135,7 +135,7 @@ export default Ember.Route.extend({
   	    ]
       },
       {
-  	    "name": "",
+  	    "name": "Trackma",
   	    "author": [
   	      { "name": "z411", "link": "https://hummingbird.me/users/z411" },
   	    ],
