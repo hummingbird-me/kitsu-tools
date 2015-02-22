@@ -83,7 +83,7 @@ class SearchController < ApplicationController
   end
 
   # Presenters
-  def present_manga(manga, depth=:full)
+  def present_manga(manga)
     {
       type: 'manga',
       title: manga.canonical_title,
@@ -93,7 +93,7 @@ class SearchController < ApplicationController
       rank: manga.pg_search_rank,
       badges: [
         { class: 'manga', content: "Manga" },
-        { class: 'episodes', content: "#{x.volume_count || "?"}vol &bull; #{x.chapter_count || "?"}chap" }
+        { class: 'episodes', content: "#{manga.volume_count || "?"}vol &bull; #{manga.chapter_count || "?"}chap" }
       ]
     }
   end
@@ -120,7 +120,7 @@ class SearchController < ApplicationController
       title: character.name,
       desc: character.description,
       image: character.image,
-      link: character.id,
+      link: character.id.to_s,
       rank: character.pg_search_rank,
       badges: [
         { class: 'character', content: "Character" },
