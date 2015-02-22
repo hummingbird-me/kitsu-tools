@@ -6,7 +6,6 @@ class SearchController < ApplicationController
     'manga' => [Manga],
     'groups' => [Group],
     'users' => [User],
-    # Not used yet
     'characters' => [Character]
   }
 
@@ -39,8 +38,8 @@ class SearchController < ApplicationController
           self.send(presenter, x)
         end
 
-        if depth == :instant
-          results.map! { |x| x[:image] = x[:image].url(:small) }
+        if depth == 'instant'
+          results.each { |x| x[:image] = x[:image].url(:small) }
         end
 
         return error! "No results", 404 if results.count == 0
