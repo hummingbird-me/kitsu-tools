@@ -28,7 +28,7 @@ export default Ember.Component.extend({
         filter: function(characters) {
           return Ember.$.map(characters.search, function(character) {
             return {
-              value: character.name,
+              value: character.title,
               char_id: character.link
             };
           });
