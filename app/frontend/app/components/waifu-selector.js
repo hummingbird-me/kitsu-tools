@@ -24,7 +24,7 @@ export default Ember.Component.extend({
       },
       queryTokenizer: Bloodhound.tokenizers.whitespace,
       remote: {
-        url: '/search.json?scope=character&depth=instant&query=%QUERY',
+        url: '/search.json?scope=characters&depth=instant&query=%QUERY',
         filter: function(characters) {
           return Ember.$.map(characters.search, function(character) {
             return {
