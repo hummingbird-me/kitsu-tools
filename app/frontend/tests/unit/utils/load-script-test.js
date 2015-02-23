@@ -4,6 +4,8 @@ module('loadScript');
 
 // Replace this with your real tests.
 test('it works', function() {
-  var result = loadScript();
-  ok(result);
+  expect(1);
+  
+  loadScript("https://www.example.com/app.js");
+  equal(find('script[src="https://www.example.com/app.js"]', document.body).length, 1);
 });
