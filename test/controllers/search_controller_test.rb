@@ -5,6 +5,35 @@ class SearchControllerTest < ActionController::TestCase
     @controller = SearchController.new
   end
 
+  test "scoped search works" do
+    get :search, format: :json, scope: 'anime', depth: 'full', query: 'sword art online'
+    assert_response :ok
+
+    results = JSON.parse(@response.body)['search']
+    assert_equal "Sword Art Online", results[0]['title']
+  end
+
+  test "deprecated type=full search works" do
+    get :search, format: :json, type: 'full', query: 'sword art online'
+    assert_response :ok
+
+    results = JSON.parse(@response.body)['search']
+    assert_equal "Sword Art Online", results[0]['title']
+  end
+
+  test "element search works" do
+    get :search, format: :json, scope: 'anime', depth: 'element', query: 'sword art online'
+    assert_response :ok
+
+    results = JSON.parse(@response.body)
+    assert_equal "Sword Art Online", results.values.first.first['canonical_title']
+  end
+
+  test "element search for unimplemented scopes fails" do
+    get :search, format: :json, scope: 'characters', depth: 'element', query: 'sword art online'
+    assert_response :not_implemented
+  end
+
   test "can present manga" do
     manga = manga(:monster)
     manga.define_singleton_method(:pg_search_rank) { 0.9 }

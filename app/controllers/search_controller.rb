@@ -26,13 +26,24 @@ class SearchController < ApplicationController
         return error! "Invalid scope", 422 unless SEARCH_SCOPES.include?(scope)
         return error! "Invalid depth", 422 unless %w[instant full element].include?(depth)
 
-        # Hacky bailout for element search so I don't have to refactor that more
-        return element_search(scope, query) if depth == 'element'
-
         search_method = (depth + '_search').to_sym
         scopes = SEARCH_SCOPES[scope]
 
         results = self.send(search_method, scopes, query)
+
+        # Alternate Ending
+        # TODO: unify this stuff with the normal search stuff somehow
+        if depth == 'element'
+          if scope == 'anime'
+            render json: results, each_serializer: AnimeSerializer
+          elsif scope == 'manga'
+            render json: results, each_serializer: MangaSerializer
+          else
+            error! "Scope isn't implemented for element search", 501
+          end
+          return
+        end
+
         results = results.map do |x|
           presenter = ('present_' + x.class.name.downcase).to_sym
           self.send(presenter, x)
@@ -52,16 +63,6 @@ class SearchController < ApplicationController
     end
   end
 
-  def element_search(scope, query)
-    if scope == "anime"
-      results = instant_search([Anime], query)
-      render json: results, each_serializer: AnimeSerializer
-    else
-      results = instant_search([Manga], query)
-      render json: results, each_serializer: MangaSerializer
-    end
-  end
-
   private
   def instant_search(scopes, query)
     query.gsub!(STOP_WORDS, '')
@@ -74,6 +75,7 @@ class SearchController < ApplicationController
       full_search(scopes, query)
     end
   end
+  alias_method :element_search, :instant_search
 
   def full_search(scopes, query)
     query.gsub!(STOP_WORDS, '')
