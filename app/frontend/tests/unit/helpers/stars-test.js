@@ -1,11 +1,14 @@
 import {
   stars
 } from 'frontend/helpers/stars';
+import Ember from 'ember';
 
 module('StarsHelper');
 
-// Replace this with your real tests.
 test('it works', function() {
-  var result = stars(42);
+  expect(2);
+  var result = stars(5);
+  
   ok(result);
+  ok(result instanceof Ember.Handlebars.SafeString);
 });
