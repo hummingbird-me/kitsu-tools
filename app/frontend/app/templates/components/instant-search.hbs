@@ -7,7 +7,7 @@
     <ul class="search-dropdown">
       {{#each result in searchResults}}
         <li class="search-result">
-          {{#link-to result.type result.link title="result.title"}}
+          {{#link-to result.type result.link title=result.title}}
             <div class="search-result-thumb">
               <img {{bind-attr src="result.image"}} />
             </div>
