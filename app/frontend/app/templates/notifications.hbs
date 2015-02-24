@@ -17,17 +17,21 @@
               </div>
             </div>
             <div class="notification-options">
-              <div class="mark-read pull-right btn btn-default btn-xs" {{action 'markAsRead' notification}}>
-                <i class="fa fa-check"></i>
-              </div>
+              {{#unless notification.seen}}
+                <div class="mark-read pull-right btn btn-default btn-xs" {{action 'markAsRead' notification}}>
+                  <i class="fa fa-check"></i>
+                </div>
+              {{/unless}}
               <div class="time">{{time-ago time=createdAt}}</div>
             </div>
           </div>
         {{/each}}
       </ul>
-      <div class="mark-read-all pull-right btn btn-default" {{action 'markAllAsRead'}}>
-        <i class="fa fa-check"></i> Mark all as read
-      </div>
+      {{#if hasUnreadNotifications}}
+        <div class="mark-read-all pull-right btn btn-default" {{action 'markAllAsRead'}}>
+          <i class="fa fa-check"></i> Mark all as read
+        </div>
+      {{/if}}
     </div>
   </div>
 </div>

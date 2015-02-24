@@ -9,6 +9,9 @@ export default Ember.ArrayController.extend({
   sortProperties: ['createdAt'],
   sortAscending: false,
 
+  unreadNotifications: Ember.computed.filterBy('content', 'seen', false),
+  hasUnreadNotifications: Ember.computed.gte('unreadNotifications.length', 1),
+
 
   actions: {
     markAsRead: function(notif){
