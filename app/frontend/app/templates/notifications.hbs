@@ -5,16 +5,14 @@
         {{#each notification in model}}
           <div {{bind-attr class=":notification-item notification.seen::new"}}>
             <div class="notification-title">
-              <div class="avatar">
-                {{avatar notification.sourceUser 'thumb_small'}}
-              </div>
-              <div class="content">
-                <span class="who">
-                  {{notification.sourceUser.username}}
-                </span>
-
-                is awesome.
-              </div>
+              <a {{bind-attr href=notification.link}}>
+                <div class="avatar">
+                  {{avatar notification.sourceUser 'thumb_small'}}
+                </div>
+                <div class="content">
+                  {{notification-message notification}}
+                </div>
+              </a>
             </div>
             <div class="notification-options">
               {{#unless notification.seen}}
