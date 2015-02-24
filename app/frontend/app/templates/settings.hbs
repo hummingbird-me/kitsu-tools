@@ -148,7 +148,9 @@
         <div class="panel-heading"><h3 class="panel-title">Connections</h3></div>
         <div class="panel-body">
           {{#if currentUser.hasFacebook }}
-            <a {{bind-attr href=facebookDisconnectUrl}} class="btn btn-danger fb-connect">Disconnect from Facebook</a>
+            <form method="POST" {{bind-attr action=facebookDisconnectUrl}}>
+              <button type="submit" class="btn fb-connect">Disconnect from Facebook</button>
+            </form>
           {{else}}
             <a href="/users/auth/facebook" class="btn fb-connect">Connect to Facebook</a>
           {{/if}}
