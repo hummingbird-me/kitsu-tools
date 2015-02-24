@@ -49,7 +49,7 @@ Hummingbird::Application.routes.draw do
   get '/users/sign_in', to: redirect('/sign-in')
   get '/users/sign_up', to: redirect('/sign-up')
 
-  get '/notifications/mark_read(/:notification_id)' => 'notifications#mark_read'
+  post '/notifications/mark_read(/:notification_id)' => 'notifications#mark_read'
   resources :notifications, only: [:index, :show]
 
   namespace :community do

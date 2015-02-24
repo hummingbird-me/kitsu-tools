@@ -14,10 +14,10 @@ export function notificationMessage(notificationObject) {
     feed_post_comment:  '<user> wrote a comment to your feed post.',
     feed_post_reply:    '<user> commented on a feed post you commented on.',
     feed_post_like:     '<user> liked your feed post.',
-    user_follow:        '<user> followed you.' 
-  }
+    user_follow:        '<user> followed you.'
+  };
 
-  if(messageStore[messageType] === undefined) { return "A cat probably ate this notification!" }
+  if(messageStore[messageType] === undefined) { return "A cat probably ate this notification!"; }
   var msg = messageStore[messageType].replace('<user>',
     '<span class="who">'+notificationObject.get('source.user.username')+'</span>');
 
