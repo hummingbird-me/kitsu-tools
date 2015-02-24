@@ -3,7 +3,7 @@
     <div class="col-md-10 col-md-offset-1">
       <ul class="all-notifications">
         {{#each notification in model}}
-          <div {{bind-attr class=":notification-item notification.read::new"}}>
+          <div {{bind-attr class=":notification-item notification.seen::new"}}>
             <div class="notification-title">
               <div class="avatar">
                 {{avatar notification.sourceUser 'thumb_small'}}
@@ -17,7 +17,7 @@
               </div>
             </div>
             <div class="notification-options">
-              <div class="mark-read pull-right btn btn-default btn-xs" {{action 'markAsRead' notification.id}}>
+              <div class="mark-read pull-right btn btn-default btn-xs" {{action 'markAsRead' notification}}>
                 <i class="fa fa-check"></i>
               </div>
               <div class="time">{{time-ago time=createdAt}}</div>

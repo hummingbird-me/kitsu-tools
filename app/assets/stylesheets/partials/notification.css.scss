@@ -44,7 +44,7 @@
 .all-notifications {
   .notification-item {
     @extend .row;
-    padding: 10px 0;
+    padding: 10px 0 10px 10px;
     border-bottom: 1px solid #ddd;
 
     .content, .time {
@@ -79,7 +79,7 @@
 
     &.new {
       border-left: 10px solid #f7edda;
-      margin-left: -10px;
+      padding-left: 0px;
     }
 
     &:hover {

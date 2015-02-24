@@ -29,4 +29,14 @@ class NotificationsController < ApplicationController
       end
     end
   end
+
+  def mark_read
+    if params[:notification_id].nil?
+      Notification.where(user_id: current_user).update_all seen: true
+    else
+      Notification.where(id: params[:notification_id], user_id: current_user).update_all seen: true
+    end
+
+    render json: { success: true }
+  end
 end
