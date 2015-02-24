@@ -21,7 +21,7 @@
             {{#if isEditing}}
               <li class="grid-list grid-draggable clearfix" {{bind-attr data-id=favorite.id}}>
                 {{!-- <span class="grid-position">{{favorite.favRank}}</span> --}}
-                <img class="grid-list-thumb" {{bind-attr src=favorite.item.posterImage}} />
+                <img class="grid-list-thumb" {{bind-attr src=favorite.item.posterImageThumb}} />
                 <span class="grid-list-title">{{favorite.item.displayTitle}}</span>
                 <span class="grid-position" {{action 'deleteFavorite' favorite}}><i class="fa fa-times-circle"></i></span>
               </li>

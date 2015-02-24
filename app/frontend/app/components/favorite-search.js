@@ -30,10 +30,10 @@ export default Ember.Component.extend({
         return x.get('item.id');
       });
 
-      var isInFavs = favs.contains(item.slug);
+      var isInFavs = favs.contains(item.link);
       var isTypeOk = ( item.type === self.get('type') );
       
-      return ( !isInFavs && isTypeOk ); 
+      return ( !isInFavs && isTypeOk );
     });
   }.property('searchResults.@each'),
 
@@ -63,7 +63,7 @@ export default Ember.Component.extend({
       store.find('user', cuser.get('id')).then(function(user){
         newFav.set('user', user);
 
-        store.find(media.type, media.slug).then(function(item){
+        store.find(media.type, media.link).then(function(item){
           newFav.set('item', item);
           newFav.save();
           self.sendAction('action', newFav);

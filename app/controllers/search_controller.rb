@@ -50,7 +50,7 @@ class SearchController < ApplicationController
         end
 
         if depth == 'instant'
-          results.each { |x| x[:image] = x[:image].url(:small) }
+          results.each { |x| x[:image] = x[:image].url(:medium) }
         end
 
         return error! "No results", 404 if results.count == 0

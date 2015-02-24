@@ -25,6 +25,10 @@ export default Media.extend(ModelCurrentUser, {
     return this.get('ageRating') === "R18+" || this.get('ageRating') === "R17+";
   }.property('ageRating'),
 
+  posterImageThumb: function(){
+    return this.get('posterImage').replace("/large/", "/medium/");
+  }.property('posterImage'),
+
   displayTitle: function() {
     var currentUser, pref, title;
     currentUser = this.get('currentUser');
