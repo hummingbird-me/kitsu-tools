@@ -42,8 +42,57 @@
 }
 
 .all-notifications {
-  .notification {
-    margin: 10px;
-    padding: 10px;
+  .notification-item {
+    @extend .row;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+
+    .content, .time {
+      line-height: 46px;
+    }
+
+    .notification-title {
+      @extend .col-xs-8;
+      .avatar {
+        @extend .col-xs-1;
+        padding: 0;
+      }
+
+      .content {
+        @extend .col-xs-11;
+
+        .who {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .notification-options {
+      @extend .col-xs-4;
+
+      .mark-read {
+        opacity: 0;
+        margin-top: 10px;
+        transition: opacity 0.3s ease-in-out;
+      }
+    }
+
+    &.new {
+      border-left: 10px solid #f7edda;
+      margin-left: -10px;
+    }
+
+    &:hover {
+      .mark-read {
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+      }
+    }
   }
+
 }
+
+.mark-read-all {
+  margin-top: 15px;
+}
+

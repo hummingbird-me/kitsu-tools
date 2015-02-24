@@ -7,5 +7,16 @@ export default Ember.ArrayController.extend({
   },
 
   sortProperties: ['createdAt'],
-  sortAscending: false
+  sortAscending: false,
+
+
+  actions: {
+    markAsRead: function(notifId){
+
+    },
+
+    markAllAsRead: function(){
+      
+    }
+  }
 });

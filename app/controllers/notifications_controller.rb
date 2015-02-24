@@ -9,7 +9,6 @@ class NotificationsController < ApplicationController
       format.json { render json: @notifications, each_serializer: NotificationSerializer }
       format.html { render_ember }
     end
-    @notifications.where(seen: false).each {|x| x.update_column :seen, true }
     if @notifications.count > 20
       Notification.where(user_id: current_user, seen: true).order("created_at").limit(@notifications.count - 20).each {|x| x.destroy }
     end
