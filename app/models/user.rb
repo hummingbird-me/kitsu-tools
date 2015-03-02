@@ -236,7 +236,9 @@ class User < ActiveRecord::Base
      "lazypanda39@gmail.com", # Cai
      "svengehring@cybrox.eu", # Cybrox
      "peter.lejeck@gmail.com", # Nuck
-     "hello@vevix.net" # Vevix
+     "hello@vevix.net", # Vevix
+     "jimm4a1@hotmail.com", #Jim
+     "jojovonjo@yahoo.com" #JoJo
     ].include? email
   end
 
