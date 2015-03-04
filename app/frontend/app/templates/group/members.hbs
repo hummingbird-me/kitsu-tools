@@ -26,7 +26,7 @@
 
             <div class="group-actions">
               {{! change members rank }}
-              {{#if currentMember.canChangeRank}}
+              {{#if currentMember.canApproveMembers}}
                 {{! approve/reject application }}
                 <button class="btn btn-primary group-approve" {{action "approveMember" member}}>
                   Approve

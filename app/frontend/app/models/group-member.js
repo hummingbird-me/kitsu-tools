@@ -21,5 +21,6 @@ export default DS.Model.extend({
 
   // ability properties
   canKickMember: Ember.computed.or('isAdmin', 'isMod'),
+  canApproveMembers: Ember.computed.alias('canKickMember'),
   canChangeRank: Ember.computed.alias('isAdmin')
 });
