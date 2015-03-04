@@ -65,24 +65,24 @@
               </p>
             </div>
 
-            {{#if currentMember.isNotPleb}}
-              <div class="group-actions">
-                {{! kick member out of group }}
-                {{#if currentMember.canKickMember}}
-                  <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
-                    Kick
-                  </button>
-                {{/if}}
+            <div class="group-actions">
+              {{! kick member out of group }}
+              {{#if currentMember.canKickMember}}
+                <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
+                  Kick
+                </button>
+              {{/if}}
 
-                {{! change members rank }}
-                {{#if currentMember.canChangeRank}}
-                  {{view "select"
-                    content=ranks
-                    value=member.rank
-                  }}
-                {{/if}}
-              </div>
-            {{/if}}
+              {{! change members rank }}
+              {{#if currentMember.canChangeRank}}
+                {{view "select"
+                  content=ranks
+                  value=member.rank
+                }}
+              {{else}}
+                <span class="mini-badge">{{member.rank}}</span>
+              {{/if}}
+            </div>
           </div>
         </div>
       {{/each}}
@@ -112,24 +112,24 @@
               </p>
             </div>
 
-            {{#if currentMember.isNotPleb}}
-              <div class="group-actions">
-                {{! kick member out of group }}
-                {{#if currentMember.canKickMember}}
-                  <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
-                    Kick
-                  </button>
-                {{/if}}
+            <div class="group-actions">
+              {{! kick member out of group }}
+              {{#if currentMember.canKickMember}}
+                <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
+                  Kick
+                </button>
+              {{/if}}
 
-                {{! change members rank }}
-                {{#if currentMember.canChangeRank}}
-                  {{view "select"
-                    content=ranks
-                    value=member.rank
-                  }}
-                {{/if}}
-              </div>
-            {{/if}}
+              {{! change members rank }}
+              {{#if currentMember.canChangeRank}}
+                {{view "select"
+                  content=ranks
+                  value=member.rank
+                }}
+              {{else}}
+                <span class="mini-badge">{{member.rank}}</span>
+              {{/if}}
+            </div>
           </div>
         </div>
       {{/each}}
