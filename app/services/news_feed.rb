@@ -76,7 +76,7 @@ class NewsFeed
   def add!(story)
     add_story = false
     if story.story_type == "comment"
-      if @user == story.target or @user.following.include?(story.target)
+      if story.group.present? || @user == story.target || @user.following.include?(story.target)
         add_story = true
       end
     elsif story.story_type != "followed"
