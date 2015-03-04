@@ -152,6 +152,9 @@
         <span {{bind-attr class=":user-feed-tab highlightPosts:active-tab" }}>
           <a {{action 'setCurrentTab' 'posts'}}>User Activity</a>
         </span>
+        <span {{bind-attr class=":user-feed-tab highlightGroups:active-tab"}}>
+          <a {{action 'setCurrentTab' 'groups'}}>Group Activity</a>
+        </span>
         <span {{bind-attr class=":user-feed-tab highlightMedia:active-tab" }}>
           <a {{action 'setCurrentTab' 'media'}}>Library Updates</a>
         </span>
