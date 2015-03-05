@@ -108,8 +108,8 @@ class Group < ActiveRecord::Base
     member(user).try(:mod?)
   end
 
-  def can_delete_story?(user)
-    has_admin?(user) || has_mod?(user)
+  def is_staff?(user)
+    !!(has_admin?(user) || has_mod?(user))
   end
 
   def self.new_with_admin(params, admin)

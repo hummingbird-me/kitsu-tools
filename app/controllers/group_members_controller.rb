@@ -4,11 +4,9 @@ class GroupMembersController < ApplicationController
   def index
     group = Group.find(params[:group_id])
 
-    userHasModPermissions = current_user &&
-      (group.has_admin?(current_user) || group.has_mod?(current_user))
-
-    members = userHasModPermissions ? group.members : group.members.accepted
-    members = members.page(params[:page]).per(20)
+    is_staff = current_user && group.is_staff?(current_user)
+    members = is_staff ? group.members : group.members.accepted
+    members = members.order(pending: :desc, rank: :desc).page(params[:page]).per(20)
     render json: members, meta: {cursor: 1 + (params[:page] || 1).to_i}
   end
 
