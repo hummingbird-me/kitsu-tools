@@ -66,8 +66,8 @@
             </div>
 
             <div class="group-actions">
-              {{! kick member out of group }}
-              {{#if currentMember.canKickMember}}
+              {{! kick member out of group, staff section is admin only }}
+              {{#if currentMember.isAdmin}}
                 <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
                   Kick
                 </button>
