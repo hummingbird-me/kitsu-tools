@@ -6,7 +6,11 @@ export default Ember.Controller.extend({
   currentMember: Ember.computed.alias('controllers.group.model.currentMember'),
   currentUser: Ember.computed.alias('controllers.group.currentUser'),
 
-  ranks: ['pleb', 'mod', 'admin'],
+  ranks: [
+    { label: 'Member', value: 'pleb' },
+    { label: 'Moderator', value: 'mod' },
+    { label: 'Admin', value: 'admin' }
+  ],
 
   // update the ranks of members when it is changed in the select view
   // this kinda sucks...

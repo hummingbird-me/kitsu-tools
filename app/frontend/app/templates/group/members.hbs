@@ -77,10 +77,12 @@
               {{#if currentMember.canChangeRank}}
                 {{view "select"
                   content=ranks
+                  optionValuePath="content.value"
+                  optionLabelPath="content.label"
                   value=member.rank
                 }}
               {{else}}
-                <span class="mini-badge">{{member.rank}}</span>
+                <span class="mini-badge">{{member.displayRank}}</span>
               {{/if}}
             </div>
           </div>
@@ -124,10 +126,12 @@
               {{#if currentMember.canChangeRank}}
                 {{view "select"
                   content=ranks
+                  optionValuePath="content.value"
+                  optionLabelPath="content.label"
                   value=member.rank
                 }}
               {{else}}
-                <span class="mini-badge">{{member.rank}}</span>
+                <span class="mini-badge">{{member.displayRank}}</span>
               {{/if}}
             </div>
           </div>
