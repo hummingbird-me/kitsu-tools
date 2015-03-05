@@ -62,6 +62,7 @@
 #  stripe_token                :string(255)
 #  pro_membership_plan_id      :integer
 #  stripe_customer_id          :string(255)
+#  about_formatted             :text
 #
 
 vikhyat:

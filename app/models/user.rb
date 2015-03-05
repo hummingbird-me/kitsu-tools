@@ -62,6 +62,7 @@
 #  stripe_token                :string(255)
 #  pro_membership_plan_id      :integer
 #  stripe_customer_id          :string(255)
+#  about_formatted             :text
 #
 
 class User < ActiveRecord::Base
@@ -400,6 +401,10 @@ class User < ActiveRecord::Base
         break unless User.where(authentication_token: token).first
       end
       self.authentication_token = token
+    end
+
+    if about_changed?
+      self.about_formatted = MessageFormatter.format_message about
     end
 
     if waifu_char_id != '0000' and changed_attributes['waifu_char_id']
