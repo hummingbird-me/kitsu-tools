@@ -112,6 +112,10 @@ class Group < ActiveRecord::Base
     has_admin?(user) || has_mod?(user)
   end
 
+  def public?
+    true
+  end
+
   def self.new_with_admin(params, admin)
     group = Group.new(params)
     group.members.build(
