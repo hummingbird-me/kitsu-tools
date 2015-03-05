@@ -19,8 +19,11 @@ class GroupMembersController < ApplicationController
     return error! "Wrong user", 403 if user.nil? || current_user != user
     return error! "Already in group", :conflict if GroupMember.exists?(membership_hash.slice('user_id', 'group_id'))
 
+    group = Group.find(membership_hash['group_id'])
+
     membership = GroupMember.create!(
-      group: Group.find(membership_hash['group_id']),
+      group: group,
+      pending: !group.public?,
       user: user
     )
     render json: membership, status: :created
