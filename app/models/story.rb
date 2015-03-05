@@ -76,7 +76,7 @@ class Story < ActiveRecord::Base
   def can_be_deleted_by?(user)
     return false if user.nil?
     user.admin? || user.id == self.user_id || user.id == self.target_id ||
-      (self.group.present? && self.group.can_delete_story?(user))
+      (self.group.present? && self.group.is_staff?(user))
   end
 
   def set_is_liked!(v)
