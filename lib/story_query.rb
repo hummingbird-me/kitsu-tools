@@ -84,6 +84,7 @@ class StoryQuery
   # Return `limit` stories for the given user.
   def self.find_for_user(user, current_user, page, per_page)
     story_ids = user.stories.for_user(current_user)
+                    .where('stories.group_id IS NULL')
                     .order('stories.updated_at DESC').select(:id)
                     .page(page).per(per_page).map(&:id)
 

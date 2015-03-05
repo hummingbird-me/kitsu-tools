@@ -49,8 +49,11 @@ class GroupsController < ApplicationController
     return error! "Group with that name already exists", 409 if Group.exists?(['lower(name) = ?', group_hash['name'].downcase])
     group = Group.new_with_admin(group_hash, current_user)
 
-    group.save!
-    render json: group, status: :created
+    if group.save
+      render json: group, status: :created
+    else
+      return error! group.errors.full_messages, 400
+    end
   end
 
   def update

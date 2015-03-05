@@ -7,6 +7,10 @@ export default DS.Model.extend({
   pending: DS.attr('boolean'),
   groupId: DS.attr('string'),
 
+  displayRank: function() {
+    return this.get('rank') === 'pleb' ? 'member' : this.get('rank');
+  }.property('rank'),
+
   // This suffers the same problem as `substories`, where the
   // relationship only serializes a subset of `group-members`,
   // rather than all and ember will destroy the relationship.
@@ -21,5 +25,6 @@ export default DS.Model.extend({
 
   // ability properties
   canKickMember: Ember.computed.or('isAdmin', 'isMod'),
+  canApproveMembers: Ember.computed.alias('canKickMember'),
   canChangeRank: Ember.computed.alias('isAdmin')
 });

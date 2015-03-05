@@ -26,7 +26,7 @@
 
             <div class="group-actions">
               {{! change members rank }}
-              {{#if currentMember.canChangeRank}}
+              {{#if currentMember.canApproveMembers}}
                 {{! approve/reject application }}
                 <button class="btn btn-primary group-approve" {{action "approveMember" member}}>
                   Approve
@@ -65,24 +65,26 @@
               </p>
             </div>
 
-            {{#if currentMember.isNotPleb}}
-              <div class="group-actions">
-                {{! kick member out of group }}
-                {{#if currentMember.canKickMember}}
-                  <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
-                    Kick
-                  </button>
-                {{/if}}
+            <div class="group-actions">
+              {{! kick member out of group, staff section is admin only }}
+              {{#if currentMember.isAdmin}}
+                <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
+                  Kick
+                </button>
+              {{/if}}
 
-                {{! change members rank }}
-                {{#if currentMember.canChangeRank}}
-                  {{view "select"
-                    content=ranks
-                    value=member.rank
-                  }}
-                {{/if}}
-              </div>
-            {{/if}}
+              {{! change members rank }}
+              {{#if currentMember.canChangeRank}}
+                {{view "select"
+                  content=ranks
+                  optionValuePath="content.value"
+                  optionLabelPath="content.label"
+                  value=member.rank
+                }}
+              {{else}}
+                <span class="mini-badge">{{member.displayRank}}</span>
+              {{/if}}
+            </div>
           </div>
         </div>
       {{/each}}
@@ -112,24 +114,26 @@
               </p>
             </div>
 
-            {{#if currentMember.isNotPleb}}
-              <div class="group-actions">
-                {{! kick member out of group }}
-                {{#if currentMember.canKickMember}}
-                  <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
-                    Kick
-                  </button>
-                {{/if}}
+            <div class="group-actions">
+              {{! kick member out of group }}
+              {{#if currentMember.canKickMember}}
+                <button class="btn btn-primary group-kick" {{action "kickMember" member}}>
+                  Kick
+                </button>
+              {{/if}}
 
-                {{! change members rank }}
-                {{#if currentMember.canChangeRank}}
-                  {{view "select"
-                    content=ranks
-                    value=member.rank
-                  }}
-                {{/if}}
-              </div>
-            {{/if}}
+              {{! change members rank }}
+              {{#if currentMember.canChangeRank}}
+                {{view "select"
+                  content=ranks
+                  optionValuePath="content.value"
+                  optionLabelPath="content.label"
+                  value=member.rank
+                }}
+              {{else}}
+                <span class="mini-badge">{{member.displayRank}}</span>
+              {{/if}}
+            </div>
           </div>
         </div>
       {{/each}}
