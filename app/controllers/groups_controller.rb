@@ -2,9 +2,9 @@ class GroupsController < ApplicationController
   def index
     # currently also using this endpoint to pull down suggested groups
     groups = if params[:limit].present? # Get a specific amount of trending
-      Group.trending(params[:limit].to_i)
+      Group.trending(page: 1, per: params[:limit].to_i)
     elsif params[:trending].present? # Get all trending groups, paginated
-      Group.trending(0).page(params[:page]).per(20)
+      Group.trending(page: params[:page].to_i, per: 20)
     elsif params[:user_id].present? # Get user groups
       User.find(params[:user_id]).groups.page(params[:page]).per(20)
     else # Get recent groups

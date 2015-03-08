@@ -10,9 +10,9 @@ class TrendingGroups
     trim(STREAM_KEY, 500) if rand < 0.1
   end
 
-  def self.get(limit = 10)
+  def self.get(page: 1, per: 10)
     $redis.with do |conn|
-      conn.zrevrange(STREAM_KEY, 0, limit-1).map {|x| x.to_i }
+      conn.zrevrange(STREAM_KEY, (page - 1) * per, (page * per) - 1).map {|x| x.to_i }
     end
   end
 
@@ -20,7 +20,8 @@ class TrendingGroups
     $redis.with {|conn| conn.zremrangebyrank(key, 0, -n) }
   end
 
-  def self.list(count = 10)
-    Group.where(id: get(count))
+  def self.list(page: 1, per: 10)
+    ids = get(page: page, per: per)
+    Group.find(ids).index_by(&:id).slice(*ids).values
   end
 end

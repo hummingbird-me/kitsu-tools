@@ -122,7 +122,7 @@ class Group < ActiveRecord::Base
     group
   end
 
-  def self.trending(count = 10)
-    TrendingGroups.list(count)
+  def self.trending(page: 1, per: 10)
+    TrendingGroups.list(page: page, per: per)
   end
 end
