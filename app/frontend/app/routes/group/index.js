@@ -14,6 +14,7 @@ export default Ember.Route.extend(Paginated, {
     setTitle(controller.get('group.name'));
 
     var groups = this.store.find('group', {
+      trending: true,
       limit: 3
     });
     controller.set('suggestedGroups', groups);
