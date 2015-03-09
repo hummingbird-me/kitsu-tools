@@ -9,7 +9,6 @@ export default Ember.Component.extend({
     return this.get('group.currentMember.pending');
   }.property('userIsMemberOfGroup'),
 
-
   actions: {
     joinGroup: function(){
       var member = this.get('targetObject.store').createRecord('group-member', {
