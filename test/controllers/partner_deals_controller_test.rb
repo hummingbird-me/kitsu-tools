@@ -37,7 +37,7 @@ class PartnerDealsControllerTest < ActionController::TestCase
 
     # update claimed_at to be a month old
     code = PartnerCode.where(user: users(:josh), partner_deal: partner_deals(:one)).last
-    code.update_attribute(:claimed_at, 1.month.ago)
+    code.update_attribute(:claimed_at, 2.month.ago)
 
     # user will receive a new code now
     put :update, id: partner_deals(:one).id

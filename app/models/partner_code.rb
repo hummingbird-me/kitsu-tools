@@ -15,9 +15,4 @@ class PartnerCode < ActiveRecord::Base
 
   belongs_to :partner_deal
   belongs_to :user
-
-  before_save do
-    # don't allow overwriting of a record if it has been claimed
-    false if user_id_changed? && !user_id_was.nil?
-  end
 end
