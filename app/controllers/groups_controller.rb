@@ -46,7 +46,6 @@ class GroupsController < ApplicationController
     group_hash = params.require(:group).permit(:name, :bio, :about).to_h
 
     # Remove this once out of beta
-    return error! "Users are limited to one group during beta", 400 if Rails.env.production? && GroupMember.admin.where(user: current_user).count > 0
     return error! "Group with that name already exists", 409 if Group.exists?(['lower(name) = ?', group_hash['name'].downcase])
     group = Group.new_with_admin(group_hash, current_user)
 
