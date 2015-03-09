@@ -90,7 +90,7 @@ class NewsFeed
       # Dashboard live update
       story = StoryQuery.find_by_id(story.id, @user) rescue nil
       if story
-        MessageBus.publish "/newsfeed", StorySerializer.new(story).as_json.to_json, user_ids: [@user.id]
+        MessageBus.publish "/newsfeed", StorySerializer.new(story, scope: @user).as_json.to_json, user_ids: [@user.id]
       end
     end
   end
