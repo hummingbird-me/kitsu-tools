@@ -19,8 +19,19 @@ export default Ember.Route.extend(Paginated, {
 
   setupController: function(controller, model) {
     this.setCanLoadMore(true);
+
+    // only execute query if there is actually a user
+    let userGroups = null;
+    if (controller.get('currentUser.isSignedIn')) {
+      userGroups = this.store.find('group', {
+        user_id: controller.get('currentUser.id'),
+        limit: 6
+      });
+    }
+
     controller.setProperties({
-      'recentGroups': this.store.find('group', {}),
+      'userGroups': userGroups,
+      'recentGroups': this.store.find('group', { limit: 6 }),
       'model': model
     });
 

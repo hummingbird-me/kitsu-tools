@@ -9,7 +9,6 @@ export default Ember.Component.extend({
     return this.get('group.currentMember.pending');
   }.property('userIsMemberOfGroup'),
 
-
   actions: {
     joinGroup: function(){
       var member = this.get('targetObject.store').createRecord('group-member', {
@@ -24,7 +23,7 @@ export default Ember.Component.extend({
         successMessage: () => {
           this.get('group.members').addObject(member);
           this.get('group').set('currentMember', member);
-          return 'You have requested to join ' + this.get('group.name') + '.';
+          return 'You have joined ' + this.get('group.name') + '.';
         },
         errorMessage: function(type, xhr) {
           if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
