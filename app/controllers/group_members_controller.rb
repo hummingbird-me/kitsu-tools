@@ -3,10 +3,14 @@ class GroupMembersController < ApplicationController
 
   def index
     group = Group.find(params[:group_id])
+    members = if params[:recent].present?
+      group.members.accepted.order('created_at DESC').limit(14)
+    else
+      is_staff = current_user && group.is_staff?(current_user)
+      members = is_staff ? group.members : group.members.accepted
+      members.order(pending: :desc, rank: :desc).page(params[:page]).per(20)
+    end
 
-    is_staff = current_user && group.is_staff?(current_user)
-    members = is_staff ? group.members : group.members.accepted
-    members = members.order(pending: :desc, rank: :desc).page(params[:page]).per(20)
     render json: members, meta: {cursor: 1 + (params[:page] || 1).to_i}
   end
 

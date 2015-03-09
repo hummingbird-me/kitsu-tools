@@ -17,13 +17,19 @@ export default Ember.Route.extend(Paginated, {
       trending: true,
       limit: 3
     });
-    controller.set('suggestedGroups', groups);
+    var users = this.store.find('group-member', {
+      group_id: this.modelFor('group').get('id'),
+      recent: true
+    });
 
     this.setCanLoadMore(true);
     controller.setProperties({
+      'suggestedGroups': groups,
+      'recentMembers': users,
       'canLoadMore': true,
       'model': model
     });
+
     this.loadNextPage();
   },
 
