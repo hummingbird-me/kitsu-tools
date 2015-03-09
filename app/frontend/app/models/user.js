@@ -8,6 +8,7 @@ export default DS.Model.extend(ModelTruncatedDetails, {
   avatarTemplate: DS.attr('string'),
   bio: DS.attr('string'),
   about: DS.attr('string'),
+  aboutFormatted: DS.attr('string'),
   location: DS.attr('string'),
   website: DS.attr('string'),
   waifu: DS.attr('string'),
@@ -21,6 +22,8 @@ export default DS.Model.extend(ModelTruncatedDetails, {
   isPro: DS.attr('boolean'),
   followerCount: DS.attr('number'),
   followingCount: DS.attr('number'),
+
+  aboutDisplay: Ember.computed.any('aboutFormatted', 'about'),
 
   avatarUrl: function() {
     return this.get("avatarTemplate").replace('{size}', 'thumb');

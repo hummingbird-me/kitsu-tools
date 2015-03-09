@@ -19,6 +19,7 @@
 #  created_at               :datetime
 #  updated_at               :datetime
 #  avatar_processing        :boolean
+#  about_formatted          :text
 #
 
 require 'test_helper'

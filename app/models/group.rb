@@ -19,6 +19,7 @@
 #  created_at               :datetime
 #  updated_at               :datetime
 #  avatar_processing        :boolean
+#  about_formatted          :text
 #
 
 class Group < ActiveRecord::Base
@@ -129,5 +130,11 @@ class Group < ActiveRecord::Base
 
   def self.trending(page: 1, per: 10)
     TrendingGroups.list(page: page, per: per)
+  end
+
+  before_save do
+    if about_changed?
+      self.about_formatted = MessageFormatter.format_message about
+    end
   end
 end

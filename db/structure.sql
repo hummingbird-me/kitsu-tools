@@ -869,7 +869,8 @@ CREATE TABLE groups (
     confirmed_members_count integer DEFAULT 0,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    avatar_processing boolean
+    avatar_processing boolean,
+    about_formatted text
 );
 
 
@@ -1582,7 +1583,8 @@ CREATE TABLE users (
     pro_expires_at timestamp without time zone,
     stripe_token character varying(255),
     pro_membership_plan_id integer,
-    stripe_customer_id character varying(255)
+    stripe_customer_id character varying(255),
+    about_formatted text
 );
 
 
@@ -3715,4 +3717,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150129101801');
 INSERT INTO schema_migrations (version) VALUES ('20150206031907');
 
 INSERT INTO schema_migrations (version) VALUES ('20150220014905');
+
+INSERT INTO schema_migrations (version) VALUES ('20150305204429');
 

@@ -2,7 +2,7 @@ class GroupSerializer < ActiveModel::Serializer
   embed :ids, include: true
 
   attributes :id, :name, :avatar_url, :cover_image_url, :bio,
-    :about, :member_count
+    :about, :member_count, :about_formatted
 
   has_one :current_member, root: :group_members
   has_many :members, root: :group_members
