@@ -16,6 +16,8 @@ To get started have a look at the [development environment setup instructions](h
 
 If you have any questions don't hesitate to contact us! Feel free to create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev) or [email Josh](mailto:josh@hummingbird.me) to get access to our Slack.
 
+For ideas of things to do, see the [Pivotal board](https://www.pivotaltracker.com/n/projects/1242706) or surf through our GitHub issues — check out the issues tagged "easy" for a good starting place!
+
 Please don't use Github issues for feature requests, instead create a topic in the [forum feedback category](http://forums.hummingbird.me/category/feedback).
 
 ### Screenshots
