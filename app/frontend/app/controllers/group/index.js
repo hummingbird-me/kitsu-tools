@@ -4,7 +4,8 @@ export default Ember.Controller.extend({
   needs: ['group'],
   group: Ember.computed.alias('controllers.group.model'),
   suggestedGroups: null,
-  
+  recentMembers: null,
+
   // Determines if the "View All" button should show for members
   shouldViewAllMembers: Ember.computed.gt('group.memberCount', 14),
 

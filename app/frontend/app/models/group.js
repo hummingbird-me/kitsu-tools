@@ -10,24 +10,10 @@ export default DS.Model.extend(ModelTruncatedDetails, {
   coverImageUrl: DS.attr('string'),
   avatarUrl: DS.attr('string'),
   memberCount: DS.attr('number'),
-  members: DS.hasMany('group-member'),
   currentMember: DS.belongsTo('group-member'),
 
   aboutDisplay: Ember.computed.any('aboutFormatted', 'about'),
   coverImageStyle: function() {
     return "background: url(" + this.get('coverImageUrl') + ") center;";
-  }.property('coverImageUrl'),
-
-  // Fixes the fact that viewing all members adds to the members
-  // association.
-  recentMembers: function() {
-    var members = this.get('members');
-    return members.filterBy('pending', false).slice(0, 14);
-  }.property('members.@each'),
-
-  getMember: function(user, includePending = false) {
-    var members = this.get('members');
-    if (!includePending) { members = members.filterBy('pending', false); }
-    return members.findBy('user.id', user.get('id'));
-  }
+  }.property('coverImageUrl')
 });

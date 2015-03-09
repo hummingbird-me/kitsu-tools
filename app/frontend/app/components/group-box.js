@@ -21,7 +21,6 @@ export default Ember.Component.extend({
       }, {
         progressMessage: 'Contacting server...',
         successMessage: () => {
-          this.get('group.members').addObject(member);
           this.get('group').set('currentMember', member);
           return 'You have joined ' + this.get('group.name') + '.';
         },

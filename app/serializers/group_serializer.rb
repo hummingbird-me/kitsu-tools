@@ -19,11 +19,6 @@ class GroupSerializer < ActiveModel::Serializer
     object.cover_image.url(:thumb)
   end
 
-  # Includes the 14 most recent GroupMembers
-  def members
-    object.members.accepted.order('created_at DESC').take(14)
-  end
-
   def member_count
     object.confirmed_members_count
   end

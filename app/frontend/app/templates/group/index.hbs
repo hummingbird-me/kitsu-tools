@@ -42,7 +42,7 @@
         </div>
         <div class="panel-body">
           <ul>
-            {{#each member in group.recentMembers}}
+            {{#each member in recentMembers}}
               <li {{bind-attr data-tooltip=member.user.username}}>
                 {{#link-to 'user' member.user.username}}
                   {{avatar member.user 'thumb'}}
