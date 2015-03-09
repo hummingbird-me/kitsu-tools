@@ -1,10 +1,26 @@
 <div class="container">
-  <!-- Show 6 most recent groups -->
+  <!-- The users' groups -->
+  {{#if currentUser.isSignedIn}}
+    <div class="group-page-title">
+      <h3>Your Groups</h3>
+      <a href="#" class="btn btn-primary join-group" {{action "openModal" "create-group" group}}>Create a Group</a>
+    </div>
+    <div class="row">
+      {{#if userGroups}}
+        {{#each group in userGroups}}
+          <div class="col-sm-4">
+            {{group-box group=group}}
+          </div>
+        {{/each}}
+      {{else}}
+        <p class="text-center">You aren't a member of any groups yet :'(</p>
+      {{/if}}
+    </div>
+  {{/if}}
+
+  <!-- New/Recent Groups -->
   <div class="group-page-title">
     <h3>New Groups</h3>
-    {{#if currentUser}}
-      <a href="#" class="btn btn-primary join-group" {{action "openModal" "create-group" group}}>Create a Group</a>
-    {{/if}}
   </div>
   <div class="row">
     {{#each group in recentGroups}}
