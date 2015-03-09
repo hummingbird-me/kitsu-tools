@@ -28,7 +28,7 @@ export default Ember.Controller.extend(HasCurrentUser, HasCoverUpload, {
         successMessage: () => {
           this.get('model.members').addObject(member);
           this.get('model').set('currentMember', member);
-          return 'You have requested to join ' + this.get('model.name') + '.';
+          return 'You have joined ' + this.get('model.name') + '.';
         },
         errorMessage: function(type, xhr) {
           if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
