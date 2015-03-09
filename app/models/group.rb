@@ -90,7 +90,8 @@ class Group < ActiveRecord::Base
   validates :name,
     presence: true,
     uniqueness: {case_sensitive: false},
-    length: {minimum: 3, maximum: 30}
+    length: {minimum: 3, maximum: 30},
+    format: {with: /[a-zA-Z]/}
 
   def can_admin_resign?
     members.admin.count > 1
