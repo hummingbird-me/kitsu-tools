@@ -57,6 +57,7 @@ class AdminController < ApplicationController
     stats[:feedposts] = Story.where('created_at >= ?', 1.day.ago).count
     stats[:feedcomments] = Substory.where('created_at >= ?', 1.day.ago).count
     stats[:feedlikes] = Vote.where(target_type: 'Story').where('created_at >= ?', 1.day.ago).count
+    stats[:groupjoins] = GroupMember.accepted.where('created_at >= ?', 1.day.ago).count
     stats[:pending_count] = Version.pending.count
     stats[:sha_hash] = `git log --pretty=format:'%h' -n 1`
 
