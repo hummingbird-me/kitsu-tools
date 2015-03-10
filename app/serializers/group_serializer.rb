@@ -5,7 +5,6 @@ class GroupSerializer < ActiveModel::Serializer
     :about, :member_count, :about_formatted
 
   has_one :current_member, root: :group_members
-  has_many :members, root: :group_members
 
   def id
     object.slug
