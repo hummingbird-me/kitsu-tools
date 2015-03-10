@@ -55,6 +55,9 @@
 
     // Hide less important links on mobile
     @media (max-width: 560px) {
+      white-space: nowrap;
+      overflow: auto;
+
       .reviews-link, .lists-link {
         display: none;
       }
