@@ -193,6 +193,9 @@
                     {{#if hasRedeemed}}
                       <div class="offer-clipping">{{code}}</div>
                       <p class="redemption-instructions">{{redemptionInfo}}</p>
+                      {{#if recurring}}
+                        <p>You'll be able to redeem another code in {{pluralize daysUntilRedeem "day." "days."}}
+                      {{/if}}
                     {{else}}
                       {{#if hasCodes}}
                         <a class="redeem-button" {{action "redeemDeal"}}>

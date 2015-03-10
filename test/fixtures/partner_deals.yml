@@ -13,8 +13,8 @@
 #  deal_url                  :text             not null
 #  deal_description          :text             not null
 #  redemption_info           :text             not null
-#  recurring                 :boolean          default(FALSE), not null
 #  active                    :boolean          default(TRUE), not null
+#  recurring                 :integer          default(0)
 #
 
 one:
@@ -28,6 +28,7 @@ one:
   partner_logo_updated_at: 2013-07-31 02:37:51.625479000 Z
   deal_url: https://amazon.com
   valid_countries: ["US", "AU"]
+  recurring: 2592000 # 1 month
 
 two:
   partner_name: Chrucyroll

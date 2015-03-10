@@ -8,7 +8,7 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
 
   // if the user has a redeemed code, just show it
   showOnLoad: function() {
-    if (this.get('model.code') !== null) {
+    if (this.get('model.code') !== null && !this.get('model.canRedeemAgain')) {
       this.set('hasRedeemed', true);
     }
   }.on('init'),
@@ -22,7 +22,7 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
         url: "/partner_deals/" + this.get('model.id'),
         type: "PUT"
       }).then((response) => {
-        this.set('model.code', response);
+        this.store.pushPayload(response);
         this.setProperties({
           hasRedeemed: true,
           isRedeeming: false

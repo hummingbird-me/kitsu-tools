@@ -13,8 +13,8 @@
 #  deal_url                  :text             not null
 #  deal_description          :text             not null
 #  redemption_info           :text             not null
-#  recurring                 :boolean          default(FALSE), not null
 #  active                    :boolean          default(TRUE), not null
+#  recurring                 :integer          default(0)
 #
 
 class PartnerDeal < ActiveRecord::Base
@@ -53,5 +53,9 @@ class PartnerDeal < ActiveRecord::Base
       field :active
       field :valid_countries, :pg_string_array
     end
+  end
+
+  def recurring?
+    recurring > 0
   end
 end
