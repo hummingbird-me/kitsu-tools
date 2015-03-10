@@ -289,6 +289,11 @@
         background: rgba(255,255,255,.3);
       }
     }
+    @media (max-width: 694px) {
+      padding: 7px 20px;
+      overflow: auto;
+      bottom: 0;
+    }
   }
 }
 
