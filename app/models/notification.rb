@@ -51,6 +51,6 @@ class Notification < ActiveRecord::Base
 
   after_create do
     Notification.uncache_notification_cache(self.user_id)
-    MessageBus.publish "/notifications", NotificationSerializer.new(self).as_json.as_json, user_ids: [self.user_id]
+    #MessageBus.publish "/notifications", NotificationSerializer.new(self).as_json.as_json, user_ids: [self.user_id]
   end
 end
