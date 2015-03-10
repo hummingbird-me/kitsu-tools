@@ -26,6 +26,9 @@
             {{user.truncatedBio}}
           </p>
         </div>
+        {{#if group}}
+          {{group-box group=group}}
+        {{/if}}
       </div>
 
       {{#unless currentUser.isSignedIn}}
