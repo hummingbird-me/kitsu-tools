@@ -35,9 +35,8 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
   // Disable the buy button until stripe is loaded.
   disablePurchase: true,
   loadStripe: function() {
-    var self = this;
-    loadScript("https://checkout.stripe.com/v2/checkout.js").then(function() {
-      self.set('disablePurchase', false);
+    loadScript("https://checkout.stripe.com/v2/checkout.js").then(() => {
+      this.set('disablePurchase', false);
     });
   }.on('init'),
 
@@ -104,7 +103,9 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
         key: PreloadStore.get('stripe_key'),
         name: "Hummingbird PRO",
         description: this.get('selectedPlan.name'),
-        token: tokenCallback
+        token: tokenCallback,
+        amount: this.get('selectedPlan.amount') * 100,
+        bitcoin: true
       });
     },
 
