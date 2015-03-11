@@ -26,7 +26,7 @@ module Onebox
             <img src='#{anime["cover_image"]}' class='thumbnail'>
             <h4><a href='#{@url}' target='_blank'>#{anime["title"]}</a></h4>
             <h4>#{anime["genres"].map {|x| x["name"] } * ", "}</h4>
-            #{anime["synopsis"]}
+            #{anime["synopsis"][0..199]}...
           </div>
           <div class='clearfix'></div>
         </div>
