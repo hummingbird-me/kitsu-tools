@@ -166,8 +166,7 @@
     @extend .col-xs-12;
 
     font-size: 16px;
-    padding-bottom: 0;
-    padding-left: 0;
+    padding: 0;
     margin-bottom: 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -176,6 +175,15 @@
     a {
       white-space: nowrap;
       overflow: hidden;
+    }
+
+    .onebox a {
+      white-space: normal;
+    }
+
+    iframe {
+      width: 100%;
+      min-height: 380px;
     }
 
     &.full-post {
@@ -505,4 +513,43 @@
       }
     }
   }
+}
+
+// Onebox 
+.onebox {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  padding: 15px;
+  .source {
+    display: inline-block;
+    background: #ddd;
+    border-bottom-right-radius: 3px;
+    padding: 5px 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    a {
+      color: #999;
+    }
+  }
+}
+
+.onebox-body {
+  img {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    max-width: 200px;
+  }
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.vine-embed {
+  width: 100%;
 }
