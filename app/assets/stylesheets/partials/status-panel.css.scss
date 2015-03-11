@@ -172,6 +172,10 @@
     text-overflow: ellipsis;
     max-height: 500px;
 
+    img {
+      max-width: 100%;
+    }
+
     a {
       white-space: nowrap;
       overflow: hidden;
