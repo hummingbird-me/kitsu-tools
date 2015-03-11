@@ -14,7 +14,7 @@ module Onebox
       def to_html
         anime = raw
         "
-        <div class='onebox-result'>
+        <div class='onebox'>
           <div class='source'>
             <div class='info'>
               <a href='#{@url}' class='track-link' target='_blank'>
@@ -22,9 +22,9 @@ module Onebox
               </a>
             </div>
           </div>
-          <div class='onebox-result-body'>
+          <div class='onebox-body anime-embed'>
             <img src='#{anime["cover_image"]}' class='thumbnail'>
-            <h3><a href='#{@url}' target='_blank'>#{anime["title"]}</a></h3>
+            <h4><a href='#{@url}' target='_blank'>#{anime["title"]}</a></h4>
             <h4>#{anime["genres"].map {|x| x["name"] } * ", "}</h4>
             #{anime["synopsis"]}
           </div>

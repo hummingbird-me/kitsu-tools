@@ -548,6 +548,17 @@
   p:last-child {
     margin-bottom: 0;
   }
+  &.anime-embed {
+    img {
+      max-width: 100px;
+    }
+    h4 {
+      font-size: 16px;
+      margin-top: -9px;
+      font-weight: normal;
+      color: #999999;
+    }
+  }
 }
 
 .vine-embed {
