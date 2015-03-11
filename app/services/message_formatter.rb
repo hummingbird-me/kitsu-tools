@@ -12,6 +12,7 @@ class MessageFormatter
     link_usernames
     process_newlines
     embed_media
+    embed_emoji
     spoilers
   end
 
@@ -58,6 +59,10 @@ class MessageFormatter
     end
 
     @processed = html.to_s
+  end
+
+  def embed_emoji
+    @processed = Twemoji.parse(@processed, image_size: "36x36")
   end
 
   def spoilers

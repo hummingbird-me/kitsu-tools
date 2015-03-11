@@ -34,7 +34,7 @@ input:focus, textarea:focus {
 }
 
 .table-striped tbody td {
-  border-top: none !important; 
+  border-top: none !important;
 }
 
 .small-content { font-size: 0.8em; }
@@ -263,7 +263,7 @@ a.navbar-brand {
 
 
 /* Typeahead interface */
- 
+
 /*
  * typehead.js-bootstrap3.less
  * @version 0.2.3
@@ -445,4 +445,9 @@ fieldset[disabled] .twitter-typeahead .tt-input {
 }
 .tt-dropdown-menu .tt-suggestion p {
   margin: 0;
+}
+
+.emoji {
+  width: 20px;
+  height: 20px;
 }

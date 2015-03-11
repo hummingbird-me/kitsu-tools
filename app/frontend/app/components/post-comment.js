@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Suggester from '../utils/suggester';
 
 export default Ember.Component.extend({
   classNames: ["status-update-panel"],
@@ -19,6 +20,7 @@ export default Ember.Component.extend({
     this.$("#status-box-text").click(function() {
       self.toggleProperty('newPostAdult');
     });
+    Suggester(this.$(".status-form"));
   },
 
   handleFormState: function() {

@@ -35,6 +35,7 @@ app.import('bower_components/typeahead.js/dist/typeahead.bundle.js');
 app.import('bower_components/Chart.js/Chart.js');
 app.import('bower_components/Chart.js/Chart.js');
 app.import('bower_components/Jcrop/js/jquery.Jcrop.js');
+app.import('bower_components/jquery-textcomplete/dist/jquery.textcomplete.js')
 
 // bootstrap js
 app.import('bower_components/bootstrap/js/transition.js');

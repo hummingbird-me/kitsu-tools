@@ -16,6 +16,13 @@ GIT
       rest-client (~> 1.4)
 
 GIT
+  remote: git://github.com/vevix/twemoji.git
+  revision: 8acb835316b01ae8d8b8903ccfcb82816bc6631c
+  specs:
+    twemoji (1.1.0)
+      nokogiri (>= 1.4, <= 1.6.5)
+
+GIT
   remote: git://github.com/vikhyat/message_bus.git
   revision: 2d657240c33de86ecd900e1d1c4ab8fd045bf09c
   specs:
@@ -557,6 +564,7 @@ DEPENDENCIES
   stripe-ruby-mock
   therubyracer
   timecop
+  twemoji!
   twitter-typeahead-rails
   uglifier (>= 1.0.3)
   unicorn (~> 4.8)
