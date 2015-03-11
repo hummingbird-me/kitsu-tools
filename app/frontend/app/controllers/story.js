@@ -90,10 +90,9 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
     },
 
     deleteSubstory: function(substory) {
-      var self = this;
-      substory.destroyRecord().then(function() {
-        self.get('model.substories').removeObject(substory);
-        self.decrementProperty('substoryCount');
+      substory.destroyRecord().then(() => {
+        this.get('substories').removeObject(substory);
+        this.decrementProperty('substoryCount');
       });
     },
 
