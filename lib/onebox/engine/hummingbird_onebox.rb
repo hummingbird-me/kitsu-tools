@@ -2,35 +2,57 @@ module Onebox
   module Engine
     class HummingbirdOnebox
       include Engine
-      include JSON
 
-      matches_regexp /https?:\/\/(?:www\.)?hummingbird\.me\/anime\/.+/
-
-      def url
-        slug = @url.match(/https?:\/\/(?:www\.)?hummingbird\.me\/anime\/(.+)/)[1]
-        "https://hummingbird.me/api/v1/anime/#{slug}"
-      end
+      matches_regexp /https?:\/\/(?:www\.)?hummingbird\.me\/(?<type>anime|manga)\/(?<slug>.+)/
 
       def to_html
-        anime = raw
-        "
-        <div class='onebox'>
-          <div class='source'>
-            <div class='info'>
-              <a href='#{@url}' class='track-link' target='_blank'>
-                Anime (#{anime["show_type"]})
-              </a>
+        return "<a href=\"#{@url}\">#{@url}</a>" if media.nil?
+        <<-HTML
+          <div class="onebox">
+            <div class="source">
+              <div class="info">
+                <a href="#{@url}" class="track-link" target="_blank">
+                  #{media.class.to_s} (#{media_type})
+                </a>
+              </div>
             </div>
+            <div class="onebox-body media-embed">
+              <img src="#{media.poster_image_thumb}" class="thumbnail">
+              <h4><a href="#{@url}" target="_blank">#{media.canonical_title}</a></h4>
+              <h4>#{media.genres.map {|x| x.name }.sort * ", "}</h4>
+              #{media.synopsis[0..199]}...
+            </div>
+            <div class="clearfix"></div>
           </div>
-          <div class='onebox-body anime-embed'>
-            <img src='#{anime["cover_image"]}' class='thumbnail'>
-            <h4><a href='#{@url}' target='_blank'>#{anime["title"]}</a></h4>
-            <h4>#{anime["genres"].map {|x| x["name"] } * ", "}</h4>
-            #{anime["synopsis"][0..199]}...
-          </div>
-          <div class='clearfix'></div>
-        </div>
-        "
+        HTML
+      end
+
+      private
+
+      def type
+        @@matcher.match(@url)["type"]
+      end
+
+      def slug
+        @@matcher.match(@url)["slug"]
+      end
+
+      def media
+        @_media ||= type.classify.constantize.find(slug)
+      rescue
+        nil
+      end
+
+      def media_type
+        if media.is_a?(Anime)
+          media.show_type
+        elsif media.is_a?(Manga)
+          media.manga_type
+        end
+      end
+
+      def uri
+        @_uri ||= URI(@url)
       end
     end
   end

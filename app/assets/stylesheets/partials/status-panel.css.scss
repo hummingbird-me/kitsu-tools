@@ -351,7 +351,7 @@
     }
     .user-info {
       margin-top: 65px;
-      padding: 0 15px; 
+      padding: 0 15px;
       h4 {
         font-size: 24px;
       }
@@ -506,7 +506,7 @@
       margin-top: 5px;
       margin-bottom: 5px;
     }
-    
+
     .comment-content {
       @media (max-width: 991px) {
         padding-left: 0;
@@ -515,7 +515,7 @@
   }
 }
 
-// Onebox 
+// Onebox
 .onebox {
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -548,7 +548,7 @@
   p:last-child {
     margin-bottom: 0;
   }
-  &.anime-embed {
+  &.media-embed {
     img {
       max-width: 100px;
     }
