@@ -26,10 +26,11 @@
             {{user.truncatedBio}}
           </p>
         </div>
-        {{#if group}}
-          {{group-box group=group}}
-        {{/if}}
       </div>
+
+      {{#if group}}
+        {{group-box group=group}}
+      {{/if}}
 
       {{#unless currentUser.isSignedIn}}
         <div class="guest-cta">
