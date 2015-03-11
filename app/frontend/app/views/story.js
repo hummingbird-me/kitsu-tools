@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Suggester from '../utils/suggester';
 
 export default Ember.View.extend({
   classNames: ["story"],
@@ -30,14 +31,14 @@ export default Ember.View.extend({
   }.on('didInsertElement').observes('content.showAll', 'content.loadingAll'),
 
   didInsertElement: function() {
-    var storyType = this.get('content.type'),
-        self = this;
-
+    var storyType = this.get('content.type');
     if (storyType === "comment") {
       this.truncateLongComments();
-      this.$("img").load(function() {
-        self.truncateLongComments();
+      this.$("img").load(() => {
+        this.truncateLongComments();
       });
+
+      Suggester(this.$('textarea'));
     }
   }
 });

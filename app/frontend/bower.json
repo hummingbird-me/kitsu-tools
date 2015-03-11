@@ -19,6 +19,7 @@
     "pace": "~1.0.2",
     "Chart.js": "~0.2.0",
     "typeahead.js": "~0.10.5",
-    "Jcrop": "~0.9.12"
+    "Jcrop": "~0.9.12",
+    "jquery-textcomplete": "vevix/jquery-textcomplete#master"
   }
 }

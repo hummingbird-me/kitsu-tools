@@ -52,6 +52,9 @@ class ApplicationController < ActionController::Base
 
     # Preload stripe publishable key.
     generic_preload! "stripe_key", Rails.configuration.stripe[:publishable_key]
+
+    # Preload supported emoji
+    generic_preload! "emoji", Twemoji::CODES
   end
 
   def render_ember

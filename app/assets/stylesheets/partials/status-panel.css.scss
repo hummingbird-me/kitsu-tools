@@ -451,7 +451,7 @@
       font-size: 14px;
       padding-left: 0;
 
-      img {
+      img:not(.emoji) {
         display: block;
       }
     }
