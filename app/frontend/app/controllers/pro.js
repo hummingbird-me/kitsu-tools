@@ -99,14 +99,17 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
       };
 
       this.set('state', 'loading');
-      StripeCheckout.open({
+      let data = {
         key: PreloadStore.get('stripe_key'),
         name: "Hummingbird PRO",
         description: this.get('selectedPlan.name'),
         token: tokenCallback,
-        amount: this.get('selectedPlan.amount') * 100,
-        bitcoin: true
-      });
+        amount: this.get('selectedPlan.amount') * 100
+      };
+      if (!this.get('selectedPlan.recurring')) {
+        data['bitcoin'] = true;
+      }
+      StripeCheckout.open(data);
     },
 
     cancelPro: function() {
