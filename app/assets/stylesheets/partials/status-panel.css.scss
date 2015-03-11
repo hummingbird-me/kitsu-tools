@@ -184,6 +184,7 @@
     iframe {
       width: 100%;
       min-height: 380px;
+      border: none;
     }
 
     &.full-post {
@@ -520,6 +521,7 @@
   border: 1px solid #ddd;
   border-radius: 3px;
   padding: 15px;
+  position: relative;
   .source {
     display: inline-block;
     background: #ddd;
