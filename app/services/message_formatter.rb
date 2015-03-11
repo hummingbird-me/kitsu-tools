@@ -45,6 +45,7 @@ class MessageFormatter
   end
 
   def embed_media
+    # Next verson of onebox will have gfycat support by default.
     Onebox::Engine::WhitelistedGenericOnebox.whitelist << "gfycat.com"
 
     html = Nokogiri::HTML.fragment(@processed)
