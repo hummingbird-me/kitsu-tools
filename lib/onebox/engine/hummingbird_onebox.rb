@@ -4,10 +4,10 @@ module Onebox
       include Engine
       include JSON
 
-      matches_regexp /https?:\/\/hummingbird\.me\/anime\/.+/
+      matches_regexp /https?:\/\/(?:www\.)?hummingbird\.me\/anime\/.+/
 
       def url
-        slug = @url.match(/https?:\/\/hummingbird\.me\/anime\/(.+)/)[1]
+        slug = @url.match(/https?:\/\/(?:www\.)?hummingbird\.me\/anime\/(.+)/)[1]
         "https://hummingbird.me/api/v1/anime/#{slug}"
       end
 
