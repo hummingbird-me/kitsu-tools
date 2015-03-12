@@ -25,6 +25,10 @@ export default Ember.ArrayController.extend(HasCurrentUser, {
     return this.get('content');
   }.property('currentTab', 'content'),
 
+  showBreakCounter: function(){
+    return window.genericPreload.break_counter !== undefined;
+  }.property(),
+
   actions: {
     setCurrentTab: function(newTab){
       this.set('currentTab', newTab);

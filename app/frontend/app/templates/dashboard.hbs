@@ -122,6 +122,10 @@
       </div>
 
       <div class="feed-sidebar-footer">
+        {{#if showBreakCounter}}
+          We've gone <strong>{{breakCounter}}</strong> since
+          the last significant site feature broke.<br /><br />
+        {{/if}}
         {{!--
           {{#link-to 'about'}}About{{/link-to}} &bull;
           {{#link-to 'terms'}}Terms{{/link-to}} &bull;
@@ -130,7 +134,12 @@
         {{#link-to 'apps'}}Apps{{/link-to}} &middot;
         <a href="mailto:josh@hummingbird.me">Contact</a> &middot;
         <a href="https://github.com/hummingbird-me/hummingbird">GitHub</a>
-        <br />Except where otherwise noted, content on this site is licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.
+
+        {{!--
+          <br /><br />
+          Except where otherwise noted, content on this site is licensed under
+          <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.
+        --}}
       </div>
     </div>
 

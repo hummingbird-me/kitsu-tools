@@ -116,6 +116,11 @@ class AdminController < ApplicationController
     MessageBus.publish '/site_update', {}
   end
 
+  def reset_break_counter
+    $redis.with {|conn| conn.set("break_counter", Time.now.to_i) }
+    render json: true
+  end
+
   def refill_codes
     if params[:codes] && params[:deal_id]
       ActiveRecord::Base.transaction do

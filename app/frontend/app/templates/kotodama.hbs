@@ -52,7 +52,14 @@
           {{#if hasDeployed}}
             <button class="btn btn-success form-control" {{action 'reload'}}>Deployment successful!</button>
           {{/if}}
-          <button class="form-control btn btn-danger" {{action 'publishUpdate'}}>Make 'em Reload!</button>
+          <div class="row">
+            <div class="col-md-6">
+              <button class="form-control btn btn-danger" {{action 'publishUpdate'}}>Make 'em Reload!</button>
+            </div>
+            <div class="col-md-6">
+              <button class="form-control btn btn-danger" {{action 'resetBreakCounter'}}>I broke it!</button>
+            </div>
+          </div>
         </div>
       </div>
 

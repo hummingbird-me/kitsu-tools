@@ -91,6 +91,10 @@ export default Ember.ObjectController.extend({
       Ember.$.post("/kotodama/publish_update");
     },
 
+    resetBreakCounter: function() {
+      Ember.$.post("/kotodama/reset_break_counter");
+    },
+
     reload: function() {
       window.location.reload();
     },
