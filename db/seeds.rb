@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+GENRES = [ 'Action', 'Adventure', 'Comedy', 'Drama', 'Sci-Fi', 'Space',
+           'Mystery', 'Magic', 'Supernatural', 'Police', 'Fantasy', 'Sports',
+           'Romance', 'Slice of Life', 'Cars', 'Horror', 'Psychological',
+           'Thriller', 'Martial Arts', 'Super Power', 'School', 'Ecchi',
+           'Vampire', 'Historical', 'Military', 'Dementia', 'Mecha', 'Demons',
+           'Samurai', 'Harem', 'Music', 'Parody', 'Shoujo Ai', 'Game',
+           'Shounen Ai', 'Kids', 'Hentai', 'Yuri', 'Yaoi', 'Anime Influenced' ]
+GENRES.each { |g| Genre.create(name: g) }
