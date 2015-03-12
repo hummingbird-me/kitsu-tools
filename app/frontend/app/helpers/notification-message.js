@@ -19,7 +19,7 @@ export function notificationMessage(notificationObject) {
 
   if(messageStore[messageType] === undefined) { return "A cat probably ate this notification!"; }
   var msg = messageStore[messageType].replace('<user>',
-    '<span class="who">'+notificationObject.get('source.user.username')+'</span>');
+    '<span class="who">'+notificationObject.get('sourceUser.username')+'</span>');
 
   return new Ember.Handlebars.SafeString(msg);
 }

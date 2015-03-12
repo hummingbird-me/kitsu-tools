@@ -22,7 +22,6 @@ class StoriesController < ApplicationController
 
     if user_signed_in? and current_user == story.user
       Notification.where(user: story.user, notification_type: "profile_comment", seen: false, source_id: story.id).update_all seen: true
-      # TODO: Mark post replies as read as well, when opening the permalink!
     end
 
     respond_to do |format|
