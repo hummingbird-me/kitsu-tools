@@ -122,8 +122,10 @@
       </div>
 
       <div class="feed-sidebar-footer">
-        We've gone <strong>{{breakCounter}}</strong> since
-        the last significant site feature broke.<br /><br />
+        {{#if showBreakCounter}}
+          We've gone <strong>{{breakCounter}}</strong> since
+          the last significant site feature broke.<br /><br />
+        {{/if}}
         {{!--
           {{#link-to 'about'}}About{{/link-to}} &bull;
           {{#link-to 'terms'}}Terms{{/link-to}} &bull;

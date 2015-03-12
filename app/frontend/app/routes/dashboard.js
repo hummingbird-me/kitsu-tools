@@ -2,6 +2,7 @@ import Ember from 'ember';
 import Paginated from '../mixins/paginated';
 import setTitle from '../utils/set-title';
 /* global MessageBus */
+/* global moment */
 
 export default Ember.Route.extend(Paginated, {
   preloadKey: "dashboard_timeline",
