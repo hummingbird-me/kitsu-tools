@@ -192,6 +192,7 @@ Hummingbird::Application.routes.draw do
     get '/kotodama/blotter_clear' => 'admin#blotter_clear'
     post '/kotodama/deploy' => 'admin#deploy'
     post '/kotodama/publish_update' => 'admin#publish_update'
+    post '/kotodama/reset_break_counter' => 'admin#reset_break_counter'
     post '/kotodama/refill_codes' => 'admin#refill_codes'
 
     mount Sidekiq::Web => '/kotodama/sidekiq'

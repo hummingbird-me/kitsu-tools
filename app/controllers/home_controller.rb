@@ -29,6 +29,9 @@ class HomeController < ApplicationController
     stories = NewsFeed.new(current_user).fetch(1)
     generic_preload! "dashboard_timeline", ed_serialize(stories)
 
+    break_counter = $redis.with {|conn| conn.get("break_counter") } || 0
+    generic_preload! "break_counter", break_counter
+      
     render_ember
   end
 
