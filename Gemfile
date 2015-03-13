@@ -50,6 +50,7 @@ group :development do
   gem 'rack-livereload'
   gem 'rb-fsevent', require: false
   gem 'qunit-rails'
+  gem 'spring'
 end
 
 gem 'dotenv-rails', groups: [:development, :test]
