@@ -11,7 +11,7 @@ def fake(routes)
     end
     [k, v]
   }.each do |url, filename|
-    file = File.join("test", "fixtures", "#{filename}.response")
+    file = File.join("test", "fixtures", "fakeweb", "#{filename}.response")
     FakeWeb.register_uri(url[0], url[1], :response => file)
   end
 end
