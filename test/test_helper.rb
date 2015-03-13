@@ -10,6 +10,9 @@ require 'minitest/rails'
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
 
+require 'webmock/minitest'
+require 'webmock_helper'
+
 require 'mocha/mini_test'
 
 $redis = ConnectionPool.new { MockRedis.new }

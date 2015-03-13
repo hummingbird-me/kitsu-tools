@@ -63,7 +63,7 @@ group :test do
   gem 'timecop'
   gem 'mock_redis'
   gem 'mocha'
-  gem 'fakeweb'
+  gem 'webmock'
   gem 'stripe-ruby-mock'
   gem 'minitest-rails'
   gem 'json_expressions'
