@@ -65,6 +65,9 @@ group :test do
   gem 'mocha'
   gem 'fakeweb'
   gem 'stripe-ruby-mock'
+  gem 'minitest-rails'
+  gem 'json_expressions'
+  gem 'factory_girl_rails'
 end
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
