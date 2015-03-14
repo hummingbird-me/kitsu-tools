@@ -520,6 +520,12 @@
   }
 }
 
+.comment {
+  img {
+    display: block;
+  }
+}
+
 // Onebox
 .onebox {
   border: 1px solid #ddd;
@@ -574,5 +580,9 @@
 }
 
 .vine-embed {
+  width: 100%;
+}
+
+.gfyVidIframe {
   width: 100%;
 }
