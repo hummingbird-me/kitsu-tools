@@ -5,9 +5,13 @@ ENV["RAILS_ENV"] = "test"
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'minitest/rails'
 
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
+
+require 'webmock/minitest'
+require 'webmock_helper'
 
 require 'mocha/mini_test'
 

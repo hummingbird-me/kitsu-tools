@@ -50,6 +50,7 @@ group :development do
   gem 'rack-livereload'
   gem 'rb-fsevent', require: false
   gem 'qunit-rails'
+  gem 'spring'
 end
 
 gem 'dotenv-rails', groups: [:development, :test]
@@ -63,8 +64,11 @@ group :test do
   gem 'timecop'
   gem 'mock_redis'
   gem 'mocha'
-  gem 'fakeweb'
+  gem 'webmock'
   gem 'stripe-ruby-mock'
+  gem 'minitest-rails'
+  gem 'json_expressions'
+  gem 'factory_girl_rails'
 end
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
