@@ -8,12 +8,12 @@ class ProMembershipManager
   # switching plans then update their token, move them to the new plan and only
   # charge them when their current subscription runs out, i.e. don't charge them
   # right now.
-  def subscribe!(plan, token)
-    @user.update_attributes! pro_membership_plan_id: plan.id,
-                             stripe_token: token
+  def subscribe!(plan)
+    @user.update_attributes! pro_membership_plan_id: plan.id
 
+    # Unless user is already pro and switching to a recurring plan
     unless @user.pro? && plan.recurring?
-      charge_user! token, (plan.amount * 100).to_i
+      billing_method.charge! @user, plan.amount
       give_pro! @user, plan.duration.months
     end
 
@@ -22,12 +22,10 @@ class ProMembershipManager
 
   # Charge the user, then add the resulting PRO duration to a different user to
   # whom the PRO is being gifted.
-  def gift!(plan, token, gift_to, gift_message)
-    if plan.recurring?
-      raise "Recurring subscriptions cannot be gifted"
-    end
+  def gift!(plan, gift_to, gift_message)
+    raise "Recurring subscriptions cannot be gifted" if plan.recurring?
 
-    charge_user! token, (plan.amount * 100).to_i
+    billing_method.charge! @user, plan.amount
     give_pro! gift_to, plan.duration.months
 
     ProMailer.delay.gift_email(gift_to, @user, gift_message)
@@ -45,14 +43,11 @@ class ProMembershipManager
   # first. If we don't succeed in charging the user then send a dunning email
   # and let their membership expire.
   def renew!(attempt_number: 0)
-    token = @user.stripe_token
     plan = @user.pro_membership_plan
 
-    unless plan.recurring?
-      raise "Cannot renew non-recurring plan"
-    end
+    raise "Cannot renew non-recurring plan" unless plan.recurring?
 
-    charge_user! token, (plan.amount * 100).to_i
+    billing_method.charge! @user, plan.amount
     give_pro! @user, plan.duration.months
 
     # if this is a retry, tell the user it worked
@@ -64,32 +59,8 @@ class ProMembershipManager
   end
 
   private
-
-  # Charge the user's card the given amount in cents.
-  def charge_user!(token, amount)
-    Stripe::Charge.create(
-      customer: stripe_customer(token).id,
-      amount: amount,
-      description: "Hummingbird PRO",
-      currency: 'usd'
-    )
-  end
-
-  def stripe_customer(token)
-    customer = nil
-    unless @user.stripe_customer_id.blank?
-      begin
-        customer = Stripe::Customer.retrieve(@user.stripe_customer_id)
-      rescue
-      end
-    end
-    if customer.nil?
-      customer = Stripe::Customer.create(email: @user.email,
-                                         card: token,
-                                         description: @user.name)
-      @user.update_attributes! stripe_customer_id: customer.id
-    end
-    customer
+  def billing_method
+    @payment_method ||= PaymentMethod.lookup(@user.billing_method)
   end
 
   def give_pro!(user, duration)

@@ -2,131 +2,162 @@ require 'test_helper'
 require 'stripe_mock'
 
 class ProMembershipManagerTest < ActiveSupport::TestCase
-  setup do
-    @user = users(:vikhyat)
-    @manager = ProMembershipManager.new(@user)
-    @stripe = StripeMock.create_test_helper
-    StripeMock.start
-  end
+  before { StripeMock.start }
+  after { StripeMock.stop }
 
-  teardown do
-    StripeMock.stop
-  end
+  let(:user) { build(:user, :with_stripe) }
+  let(:manager) { ProMembershipManager.new user }
+  let(:stripe_helper) { StripeMock.create_test_helper }
 
-  test "subscribe! works for the normal case" do
+  test "#subscribe! works for the normal case" do
     plan = ProMembershipPlan.find(1)
-    token = @stripe.generate_card_token
-    @manager.subscribe! plan, token
 
-    assert @user.pro?
-    assert_equal token, @user.stripe_token
-    assert_equal plan.id, @user.pro_membership_plan.id
-    assert_not_nil @user.stripe_customer_id
-  end
+    PaymentMethod::StripeProvider.expects(:charge!).with(user, plan.amount)
+    manager.expects(:give_pro!).with(user, plan.duration.months)
 
-  test "subscribe! doesn't add from a previous pro_expires_at date" do
-    @user.update_attributes pro_expires_at: Time.now-10.years
-    plan = ProMembershipPlan.find(1)
-    token = @stripe.generate_card_token
-    Timecop.freeze do
-      @manager.subscribe! plan, token
-      assert_equal Time.now+plan.duration.months, @user.pro_expires_at
+    assert_difference -> {ActionMailer::Base.deliveries.size }, +1 do
+      manager.subscribe! plan
     end
+
+    user.pro_membership_plan.id.must_equal plan.id
+    user.billing_id.wont_be_nil
   end
 
   test "subscribe! raises an error when charging the card fails" do
     StripeMock.prepare_card_error(:card_declined)
     plan = ProMembershipPlan.find(1)
-    token = @stripe.generate_card_token
+
+    manager.expects(:give_pro!).never
 
     assert_raises Stripe::CardError do
-      @manager.subscribe! plan, token
+      manager.subscribe! plan
     end
+  end
+  
+  test "subscribe! to a recurring plan does not charge pro users immediately" do
+    Timecop.freeze do
+      user = build(:user, :with_stripe, pro_expires_at: 10.years.from_now)
+      manager = ProMembershipManager.new(user)
+      plan = ProMembershipPlan.find(1)
 
-    assert !@user.pro?
+      manager.expects(:give_pro!).never
+      PaymentMethod::StripeProvider.expects(:charge!).never
+
+      manager.subscribe! plan
+    end
   end
 
-  test "subscribe! to a recurring plan does not immediately charge pro users for a recurring subscription" do
-    StripeMock.prepare_card_error(:card_declined)
-    @user.pro_expires_at = Time.now + 1.day
-    @user.pro_membership_plan_id = 1
-    @user.save!
-    plan = ProMembershipPlan.find(2)
-    token = @stripe.generate_card_token
-
-    @manager.subscribe! plan, token
-    assert @user.pro_expires_at < Time.now + 2.days
-    assert_equal 2, @user.pro_membership_plan.id
-  end
-
-  test "subscribe! to a non-recurring plan does charge pro users for a one-time subscription" do
-    @user.pro_expires_at = Time.now + 1.day
-    @user.pro_membership_plan_id = 1
-    @user.save!
+  test "subscribe! to a non-recurring plan does charge pro users immediately" do
+    user = build(:user, :with_stripe, pro_expires_at: 1.day.from_now,
+                                      pro_membership_plan_id: 1)
+    manager = ProMembershipManager.new(user)
     plan = ProMembershipPlan.find(5)
-    token = @stripe.generate_card_token
 
-    @manager.subscribe! plan, token
-    assert @user.pro_expires_at > Time.now + 2.days
+    manager.subscribe! plan
   end
 
   test "gift! works correctly for the normal case" do
-    gift_to = users(:josh)
+    gift_to = build(:user)
     plan = ProMembershipPlan.find(5)
-    token = @stripe.generate_card_token
 
-    @manager.gift! plan, token, gift_to, "hi"
+    PaymentMethod::StripeProvider.expects(:charge!).with(user, plan.amount)
+    manager.expects(:give_pro!).with(gift_to, plan.duration.months)
 
-    assert gift_to.pro?
-    assert_nil gift_to.stripe_customer_id
-    assert_nil gift_to.pro_membership_plan
+    assert_difference -> {ActionMailer::Base.deliveries.size }, +1 do
+      manager.gift! plan, gift_to, "hi"
+    end
+
+    gift_to.billing_id.must_be_nil
+    gift_to.pro_membership_plan.must_be_nil
   end
 
   test "gift! raises an error if we try to gift a recurring plan" do
-    gift_to = users(:josh)
+    gift_to = build(:user)
     plan = ProMembershipPlan.find(1)
-    token = @stripe.generate_card_token
+
+    PaymentMethod::StripeProvider.expects(:charge!).never
+    manager.expects(:give_pro!).never
 
     assert_raises RuntimeError do
-      @manager.gift! plan, token, gift_to, "hi"
+      manager.gift! plan, gift_to, "hi"
     end
   end
 
   test "renew! works correctly for the normal case" do
-    @user.pro_expires_at = 1.hour.from_now
-    @user.pro_membership_plan_id = 1
-    @user.stripe_token = @stripe.generate_card_token
-    @user.save!
+    user = create(:user, :with_stripe, pro_expires_at: 1.hour.from_now,
+                                       pro_membership_plan_id: 1)
+    manager = ProMembershipManager.new(user)
+    plan = ProMembershipPlan.find(1)
 
-    assert_difference ->{ @user.pro_expires_at }, 1.month do
-      @manager.renew!
-    end
+    PaymentMethod::StripeProvider.expects(:charge!).with(user, plan.amount)
+    manager.expects(:give_pro!).with(user, plan.duration.months)
+
+    manager.renew!
   end
 
   test "renew! should fire off a failure email when charging the card fails" do
     StripeMock.prepare_card_error(:card_declined)
-    @user.pro_expires_at = 1.hour.from_now
-    @user.pro_membership_plan_id = 1
-    @user.stripe_token = @stripe.generate_card_token
+    user = build(:user, :with_stripe, pro_expires_at: 1.day.from_now,
+                                      pro_membership_plan_id: 1)
+    manager = ProMembershipManager.new(user)
 
-    assert_no_difference ->{ @user.pro_expires_at } do
-      assert_difference ->{ ActionMailer::Base.deliveries.count } do
-        @manager.renew!
+    assert_no_difference ->{ user.pro_expires_at } do
+      assert_difference ->{ ActionMailer::Base.deliveries.count }, +1 do
+        manager.renew!
       end
     end
-    fail_email = ActionMailer::Base.deliveries.last
-    assert_match(/failed/, fail_email.subject.to_s)
+  end
+
+  test "renew! should fire off a success email when charging the card works in a retry" do
+    user = build(:user, :with_stripe, pro_expires_at: 1.day.from_now,
+                                      pro_membership_plan_id: 1)
+    manager = ProMembershipManager.new(user)
+
+    assert_difference ->{ ActionMailer::Base.deliveries.count }, +1 do
+      manager.renew! attempt_number: 2
+    end
   end
 
   test "cancel! unsets the user's plan" do
-    @user.pro_expires_at = Time.now + 1.day
-    @user.pro_membership_plan_id = 1
-    @user.save!
-    assert @user.pro?
+    user = build(:user, pro_expires_at: 1.day.from_now,
+                        pro_membership_plan_id: 1)
+    manager = ProMembershipManager.new(user)
 
-    @manager.cancel!
+    assert_difference ->{ ActionMailer::Base.deliveries.count }, +1 do
+      manager.cancel!
+    end
 
-    assert @user.pro?
-    assert @user.pro_membership_plan_id.nil?
+    user.pro_membership_plan_id.must_be_nil
+  end
+
+  test "give_pro! should add time from now if the user lacks pro" do
+    Timecop.freeze do
+      user = build(:user, pro_expires_at: nil)
+      manager = ProMembershipManager.new(user)
+      manager.send(:give_pro!, user, 1.month)
+
+      user.pro_expires_at.must_equal 1.month.from_now
+    end
+  end
+
+  test "give_pro! should add time from now if the user's pro is expired" do
+    Timecop.freeze do
+      user = build(:user, pro_expires_at: 1.day.ago)
+      manager = ProMembershipManager.new(user)
+      manager.send(:give_pro!, user, 1.month)
+
+      user.pro_expires_at.must_equal 1.month.from_now
+    end
+  end
+
+  test "give_pro! should add time to expiration if the user has pro" do
+    Timecop.freeze do
+      user = build(:user, pro_expires_at: 1.month.from_now)
+      manager = ProMembershipManager.new(user)
+
+      assert_difference ->{ user.pro_expires_at }, 1.month do
+        manager.send(:give_pro!, user, 1.month)
+      end
+    end
   end
 end

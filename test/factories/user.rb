@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
-    name { Faker::Internet.user_name }
+    name { Faker::Internet.user_name(nil, ['_']) }
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     avatar { Faker::Avatar.image }
@@ -10,6 +10,7 @@ FactoryGirl.define do
         email: email,
         card: StripeMock.create_test_helper.generate_card_token
       }).id }
+      billing_method :stripe
     end
   end
 end
