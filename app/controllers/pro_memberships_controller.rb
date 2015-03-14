@@ -22,7 +22,7 @@ class ProMembershipsController < ApplicationController
     end
 
     begin
-      update_billing current_user, token
+      update_billing token
 
       if params[:gift]
         gift_to = nil
@@ -57,10 +57,10 @@ class ProMembershipsController < ApplicationController
   end
 
   private
-  def update_billing(user, token)
-    customer = payment_method.exchange_token(token)
-    user.update_attributes! billing_method: :stripe,
-                            billing_id: customer.id
+  def update_billing(token)
+    customer = payment_method.exchange_token(current_user, token)
+    current_user.update_attributes! billing_method: :stripe,
+                                    billing_id: customer.id
   end
 
   def manager

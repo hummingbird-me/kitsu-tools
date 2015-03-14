@@ -53,6 +53,9 @@ class ProMembershipManagerTest < ActiveSupport::TestCase
     manager = ProMembershipManager.new(user)
     plan = ProMembershipPlan.find(5)
 
+    manager.expects(:give_pro!).with(user, plan.duration.months)
+    PaymentMethod::StripeProvider.expects(:charge!).with(user, plan.amount)
+
     manager.subscribe! plan
   end
 
