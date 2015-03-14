@@ -27,6 +27,10 @@ html { overflow-y: auto; }
   &:hover { i { color: white; }}
 }
 
+img, iframe {
+  max-width: 100%;
+}
+
 
 .navbar-brand {
   background-image: url("/assets/logo-sprite.png");
