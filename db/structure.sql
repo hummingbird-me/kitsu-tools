@@ -1581,10 +1581,10 @@ CREATE TABLE users (
     approved_edit_count integer DEFAULT 0,
     rejected_edit_count integer DEFAULT 0,
     pro_expires_at timestamp without time zone,
-    stripe_token character varying(255),
     pro_membership_plan_id integer,
-    stripe_customer_id character varying(255),
-    about_formatted text
+    billing_id character varying(255),
+    about_formatted text,
+    billing_method integer
 );
 
 
@@ -3723,3 +3723,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150206031907');
 INSERT INTO schema_migrations (version) VALUES ('20150220014905');
 
 INSERT INTO schema_migrations (version) VALUES ('20150305204429');
+
+INSERT INTO schema_migrations (version) VALUES ('20150312013116');
+
