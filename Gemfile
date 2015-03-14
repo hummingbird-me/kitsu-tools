@@ -69,6 +69,7 @@ group :test do
   gem 'minitest-rails'
   gem 'json_expressions'
   gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
