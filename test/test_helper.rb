@@ -15,10 +15,13 @@ require 'webmock_helper'
 
 require 'mocha/mini_test'
 
+require 'stripe_mock'
+
 $redis = ConnectionPool.new { MockRedis.new }
 
 class ActiveSupport::TestCase
   fixtures :all
+  include FactoryGirl::Syntax::Methods
 end
 
 require_dependency 'auth/current_user_provider'
