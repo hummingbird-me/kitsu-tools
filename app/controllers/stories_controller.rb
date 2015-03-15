@@ -19,6 +19,11 @@ class StoriesController < ApplicationController
 
   def show
     story = StoryQuery.find_by_id(params[:id], current_user)
+
+    if user_signed_in? and current_user == story.user
+      Notification.where(user: story.user, notification_type: "profile_comment", seen: false, source_id: story.id).update_all seen: true
+    end
+
     respond_to do |format|
       format.json { render json: story }
       format.html do

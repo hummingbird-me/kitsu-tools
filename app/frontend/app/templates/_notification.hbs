@@ -4,16 +4,7 @@
       {{avatar sourceUser 'thumb_small'}}
     </div>
     <div class="content">
-      <span class="who">
-        {{sourceUser.username}}
-      </span>
-
-      {{#if isProfileComment}}
-        wrote a comment on your profile.
-      {{/if}}
-      {{#if isCommentReply}}
-        wrote a reply to your comment.
-      {{/if}}
+      {{notification-message this}}
 
       <div class="time">{{time-ago time=createdAt}}</div>
     </div>

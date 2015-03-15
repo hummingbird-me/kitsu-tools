@@ -20,7 +20,7 @@ export default Ember.Controller.extend(HasCurrentUser, {
   unreadNotificationsCount: Ember.computed.alias('unreadNotifications.length'),
   hasUnreadNotifications: Ember.computed.notEmpty('unreadNotifications'),
   limitedNotifications: function () {
-    return this.get('notifications').slice(0, 3);
+    return this.get('notifications').slice(0, 6);
   }.property('notifications.@each'),
 
   blotter: PreloadStore.get('blotter'),

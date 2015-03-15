@@ -1,11 +1,35 @@
 <div class="container">
   <div class="row" style="margin-top: 50px">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-10 col-md-offset-1">
       <ul class="all-notifications">
-        {{#each}}
-          {{partial "notification"}}
+        {{#each notification in model}}
+          <div {{bind-attr class=":notification-item notification.seen::new"}}>
+            <div class="notification-title">
+              <a {{bind-attr href=notification.link}}>
+                <div class="avatar">
+                  {{avatar notification.sourceUser 'thumb_small'}}
+                </div>
+                <div class="content">
+                  {{notification-message notification}}
+                </div>
+              </a>
+            </div>
+            <div class="notification-options">
+              {{#unless notification.seen}}
+                <div class="mark-read pull-right btn btn-default btn-xs" {{action 'markAsRead' notification}}>
+                  <i class="fa fa-check"></i>
+                </div>
+              {{/unless}}
+              <div class="time">{{time-ago time=createdAt}}</div>
+            </div>
+          </div>
         {{/each}}
       </ul>
+      {{#if hasUnreadNotifications}}
+        <div class="mark-read-all pull-right btn btn-default" {{action 'markAllAsRead'}}>
+          <i class="fa fa-check"></i> Mark all as read
+        </div>
+      {{/if}}
     </div>
   </div>
 </div>
