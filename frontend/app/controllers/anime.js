@@ -17,6 +17,6 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
     var quoteCount = this.get('model.featuredQuotes.length');
     if (quoteCount === 0) { return null; }
     var index = Math.floor(Math.random() * quoteCount);
-    return this.get('model.featuredQuotes.content')[index];
+    return this.get('model.featuredQuotes').objectAt(index);
   }.property('model.featuredQuotes')
 });
