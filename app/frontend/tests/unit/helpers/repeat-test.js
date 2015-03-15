@@ -4,7 +4,10 @@ import {
 
 module('RepeatHelper');
 
-// Replace this with your real tests.
 test('it works', function() {
-  ok(true);
+  expect(1);
+  var times = null;
+
+  repeat(5, { fn: function() { times += 1; } });
+  equal(times, 5);
 });

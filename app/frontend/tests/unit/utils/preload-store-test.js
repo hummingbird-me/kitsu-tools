@@ -3,6 +3,8 @@ import PreloadStore from 'frontend/utils/preload-store';
 module('preloadStore');
 
 test('#get', function() {
+  expect(3);
+
   window.genericPreload = {
     "foo": "bar"
   };
@@ -15,6 +17,8 @@ test('#get', function() {
 });
 
 test('#pop', function() {
+  expect(4);
+  
   window.genericPreload = {
     "foo": "bar"
   };
