@@ -241,7 +241,7 @@ class UsersController < ApplicationController
       user.bio = changes[:bio] || ""
       user.waifu_char_id = changes[:waifu_char_id]
 
-      if Rails.env.production? and changes[:cover_image_url] =~ /^data:image/
+      if changes[:cover_image_url] =~ /^data:image/
         user.cover_image = changes[:cover_image_url]
       end
 

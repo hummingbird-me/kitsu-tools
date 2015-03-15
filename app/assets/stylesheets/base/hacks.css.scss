@@ -210,6 +210,11 @@ a.navbar-brand {
 /* JCrop Stuff */
 .jcrop {
   text-align: center;
+
+  img {
+    max-width: none;
+  }
+
   .jcrop-holder {
     display: inline-block;
   }
