@@ -10,7 +10,7 @@ export default Ember.Route.extend({
   setupController: function(controller, model) {
     if (model.get('featuredCastings.length') > 0) {
       // TODO Give English, Japanese preference here.
-      controller.set('language', model.get('featuredCastings.content')[0].get('language'));
+      controller.set('language', model.get('featuredCastings.firstObject').get('language'));
     }
     controller.set('model', model);
   },
