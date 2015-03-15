@@ -3,7 +3,7 @@ language: ruby
 cache:
   directories:
     - vendor/bundle
-    - app/frontend/node_modules
+    - frontend/node_modules
 
 rvm: 2.1.3
 
@@ -19,15 +19,15 @@ before_install:
 install:
   - bundle install --deployment --jobs=3 --retry=3
   - travis_retry npm install -g bower
-  - (cd app/frontend; travis_retry npm install)
-  - (cd app/frontend; travis_retry bower install)
+  - (cd frontend; travis_retry npm install)
+  - (cd frontend; travis_retry bower install)
 
 before_script:
   - bundle exec rake db:create db:structure:load
 
 script:
   - bundle exec rake test:all
-  - (cd app/frontend; npm test)
+  - (cd frontend; npm test)
 
 #after_success:
 #  - 'echo -e "Host 107.170.189.56\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config'
