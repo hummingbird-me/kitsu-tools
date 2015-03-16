@@ -22,6 +22,8 @@ class ProMembershipsController < ApplicationController
     end
 
     begin
+      update_billing token
+
       if params[:gift]
         gift_to = nil
         begin
@@ -29,14 +31,14 @@ class ProMembershipsController < ApplicationController
         rescue
           return render(text: "Couldn't find user: #{params[:gift_to]}", status: 400)
         end
-        manager.gift! plan, token, gift_to, params[:gift_message]
+        manager.gift! plan, gift_to, params[:gift_message]
         mixpanel.track "PRO gifted", {
           gifted_to: gift_to.name,
           gifted_by: current_user.name,
           plan: plan.name
         }
       else
-        manager.subscribe! plan, token
+        manager.subscribe! plan
         mixpanel.track "PRO subscription", {
           username: current_user.name,
           plan: plan.name
@@ -55,9 +57,17 @@ class ProMembershipsController < ApplicationController
   end
 
   private
-
-  def manager
-    ProMembershipManager.new(current_user)
+  def update_billing(token)
+    customer = payment_method.exchange_token(current_user, token)
+    current_user.update_attributes! billing_method: :stripe,
+                                    billing_id: customer.id
   end
 
+  def manager
+    @manager ||= ProMembershipManager.new(current_user)
+  end
+
+  def payment_method
+    @method ||= PaymentMethod.lookup('stripe')
+  end
 end

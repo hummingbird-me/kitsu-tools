@@ -59,10 +59,10 @@
 #  approved_edit_count         :integer          default(0)
 #  rejected_edit_count         :integer          default(0)
 #  pro_expires_at              :datetime
-#  stripe_token                :string(255)
 #  pro_membership_plan_id      :integer
-#  stripe_customer_id          :string(255)
+#  billing_id                  :string(255)
 #  about_formatted             :text
+#  billing_method              :integer
 #
 
 class User < ActiveRecord::Base
@@ -174,6 +174,8 @@ class User < ActiveRecord::Base
   validates_attachment :cover_image, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
+
+  enum billing_method: [:stripe]
 
   has_many :watchlists
   has_many :library_entries, dependent: :destroy
