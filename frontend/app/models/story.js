@@ -30,6 +30,10 @@ export default Model.extend(ModelCurrentUser, {
     return currentUserId === this.get('poster.id') || currentUserId === this.get('user.id');
   }.property('poster.id', 'user.id'),
 
+  userClass: function() {
+    return 'user-' + this.get('poster.username');
+  }.property('poster.username'),
+
   canDeleteStory: function() {
     if (this.get('isNew')) { return false; }
 

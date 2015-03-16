@@ -1,160 +1,162 @@
-<div {{bind-attr class=":update-panel isNew"}}>
-  <div class="row">
-    <div class="user-info-bar">
-      <div class="user-image">
-        {{#link-to 'user' poster}}
-          {{unbound avatar poster "thumb_small"}}
-        {{/link-to}}
-      </div>
-      <div class="comment-content">
-        <h4 class="story-title">
-          {{#link-to 'user' poster}}{{unbound poster.username}}{{/link-to}}
-          {{#unless selfPost}}
-            <i class="fa fa-share reply-icon"></i>
-            {{#link-to 'user' user}}{{unbound user.username}}{{/link-to}}
-          {{else}}
-            {{#if user.isPro}}
-              {{#link-to 'pro'}}<span class="mini-badge">pro</span>{{/link-to}}
-            {{/if}}
-            {{#if group}}
-              {{! don't show this if we are actually on the group page }}
-              {{#unless isOnGroupPage}}
-                posted to
-                {{#link-to 'group' group}}{{unbound group.name}}{{/link-to}}
-              {{/unless}}
-            {{/if}}
-          {{/unless}}
-        </h4>
-        <p class="secondary">
-          {{time-ago time=createdAt}}
-          ·
-          {{#link-to 'story.permalink' this class="permalink"}}
-            permalink
+<div {{bind-attr class="userClass"}}>
+  <div {{bind-attr class=":update-panel isNew"}}>
+    <div class="row">
+      <div class="user-info-bar">
+        <div class="user-image">
+          {{#link-to 'user' poster}}
+            {{unbound avatar poster "thumb_small"}}
           {{/link-to}}
-          {{#if canDeleteStory}}
-            ·
-            <a class="remove-post" {{action "deleteStory"}}>remove</a>
-          {{/if}}
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="post-content clearfix">
-      {{#if collapsed}}
-        <a {{action "showCollapsedPost"}}>Show NSFW Content</a>
-      {{else}}
-        <p {{bind-attr class=":comment-text isExpanded:full-post" }}>
-          {{#if isNew}}
-            {{unbound comment}}
-          {{else}}
-            {{{unbound comment}}}
-          {{/if}}
-        </p>
-      {{/if}}
-    </div>
-  </div>
-  {{#if overflowing}}
-    <div class="row view-more">
-      <a {{action "toggleFullPost"}}>{{showMoreText}}</a>
-    </div>
-  {{/if}}
-</div>
-
-<div class="story-actions">
-  {{#if adult}}
-    <span class="nsfw-indicator" data-tooltip="This post has been marked as nsfw!">
-      <i class="fa fa-warning"></i>
-    </span>
-  {{/if}}
-  <a {{bind-attr class=":like isLiked:active"}} {{action "toggleLike"}}>
-    <i class="fa fa-heart-o"></i> {{totalVotes}}
-  </a>
-  <ul class="active-users">
-    {{#each recentLikers}}
-      <li {{bind-attr data-tooltip=username}}>
-        {{#link-to 'user' id}}
-          {{unbound avatar this "thumb_small"}}
-        {{/link-to}}
-      </li>
-    {{/each}}
-    {{#if showExtraLikers}}
-      <li>
-        <a {{action "openModal" "story-likes" this}}>
-          <span class="more-users">{{extraLikers}}</span>
-        </a>
-      </li>
-    {{/if}}
-  </ul>
-</div>
-
-<div class="comment-replies">
-  {{#if collapsed}}
-    <div class="view-more">Comments Hidden</div>
-  {{else}}
-    {{#if moreThanTwoSubstories}}
-      <div class="view-more">
-        {{#if loadingAll}}
-          <i class="fa fa-spin fa-spinner"></i>
-        {{else}}
-          <a {{action "toggleShowAll"}}>
-            {{#if showAll}}
-              Show Less
+        </div>
+        <div class="comment-content">
+          <h4 class="story-title">
+            {{#link-to 'user' poster}}{{unbound poster.username}}{{/link-to}}
+            {{#unless selfPost}}
+              <i class="fa fa-share reply-icon"></i>
+              {{#link-to 'user' user}}{{unbound user.username}}{{/link-to}}
             {{else}}
-              Show {{pluralize omittedSubstoryCount "more reply" "more replies"}}
+              {{#if user.isPro}}
+                {{#link-to 'pro'}}<span class="mini-badge">pro</span>{{/link-to}}
+              {{/if}}
+              {{#if group}}
+                {{! don't show this if we are actually on the group page }}
+                {{#unless isOnGroupPage}}
+                  posted to
+                  {{#link-to 'group' group}}{{unbound group.name}}{{/link-to}}
+                {{/unless}}
+              {{/if}}
+            {{/unless}}
+          </h4>
+          <p class="secondary">
+            {{time-ago time=createdAt}}
+            ·
+            {{#link-to 'story.permalink' this class="permalink"}}
+              permalink
+            {{/link-to}}
+            {{#if canDeleteStory}}
+              ·
+              <a class="remove-post" {{action "deleteStory"}}>remove</a>
             {{/if}}
-          </a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="post-content clearfix">
+        {{#if collapsed}}
+          <a {{action "showCollapsedPost"}}>Show NSFW Content</a>
+        {{else}}
+          <p {{bind-attr class=":comment-text isExpanded:full-post" }}>
+            {{#if isNew}}
+              {{unbound comment}}
+            {{else}}
+              {{{unbound comment}}}
+            {{/if}}
+          </p>
         {{/if}}
+      </div>
+    </div>
+    {{#if overflowing}}
+      <div class="row view-more">
+        <a {{action "toggleFullPost"}}>{{showMoreText}}</a>
       </div>
     {{/if}}
-    {{#each reversedDisplaySubstories}}
-      <div {{bind-attr class=":reply isNew"}}>
-        <div class="user-avatar">
-          {{#link-to 'user' user}}
-            {{unbound avatar user 'thumb_small'}}
+  </div>
+
+  <div class="story-actions">
+    {{#if adult}}
+      <span class="nsfw-indicator" data-tooltip="This post has been marked as nsfw!">
+        <i class="fa fa-warning"></i>
+      </span>
+    {{/if}}
+    <a {{bind-attr class=":like isLiked:active"}} {{action "toggleLike"}}>
+      <i class="fa fa-heart-o"></i> {{totalVotes}}
+    </a>
+    <ul class="active-users">
+      {{#each recentLikers}}
+        <li {{bind-attr data-tooltip=username}}>
+          {{#link-to 'user' id}}
+            {{unbound avatar this "thumb_small"}}
           {{/link-to}}
-        </div>
-        <div class="content">
-          <p>
-            <span class="username">
-              {{#link-to 'user' user}}
-                {{unbound user.username}}
-              {{/link-to}}
-            </span>
-            <span class="comment">
-              {{#if isNew}}
-                {{unbound reply}}
+        </li>
+      {{/each}}
+      {{#if showExtraLikers}}
+        <li>
+          <a {{action "openModal" "story-likes" this}}>
+            <span class="more-users">{{extraLikers}}</span>
+          </a>
+        </li>
+      {{/if}}
+    </ul>
+  </div>
+
+  <div class="comment-replies">
+    {{#if collapsed}}
+      <div class="view-more">Comments Hidden</div>
+    {{else}}
+      {{#if moreThanTwoSubstories}}
+        <div class="view-more">
+          {{#if loadingAll}}
+            <i class="fa fa-spin fa-spinner"></i>
+          {{else}}
+            <a {{action "toggleShowAll"}}>
+              {{#if showAll}}
+                Show Less
               {{else}}
-                {{{unbound reply}}}
+                Show {{pluralize omittedSubstoryCount "more reply" "more replies"}}
               {{/if}}
-            </span>
-          </p>
-          <div class="secondary">
-            {{time-ago time=createdAt}}
-            {{#if canDeleteSubstory}}
-              ·
-              <a class="remove-post" {{action "deleteSubstory" this}}>remove</a>
-            {{/if}}
-          </div>
-        </div>
-
-
-      </div>
-    {{/each}}
-    {{#if currentUser.isSignedIn}}
-      {{#if group}}
-        {{#if group.currentMember}}
-          {{#unless group.currentMember.pending}}
-            <div class="reply-form">
-              {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
-            </div>
-          {{/unless}}
-        {{/if}}
-      {{else}}
-        <div class="reply-form">
-          {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
+            </a>
+          {{/if}}
         </div>
       {{/if}}
+      {{#each reversedDisplaySubstories}}
+        <div {{bind-attr class=":reply isNew"}}>
+          <div class="user-avatar">
+            {{#link-to 'user' user}}
+              {{unbound avatar user 'thumb_small'}}
+            {{/link-to}}
+          </div>
+          <div class="content">
+            <p>
+              <span class="username">
+                {{#link-to 'user' user}}
+                  {{unbound user.username}}
+                {{/link-to}}
+              </span>
+              <span class="comment">
+                {{#if isNew}}
+                  {{unbound reply}}
+                {{else}}
+                  {{{unbound reply}}}
+                {{/if}}
+              </span>
+            </p>
+            <div class="secondary">
+              {{time-ago time=createdAt}}
+              {{#if canDeleteSubstory}}
+                ·
+                <a class="remove-post" {{action "deleteSubstory" this}}>remove</a>
+              {{/if}}
+            </div>
+          </div>
+
+
+        </div>
+      {{/each}}
+      {{#if currentUser.isSignedIn}}
+        {{#if group}}
+          {{#if group.currentMember}}
+            {{#unless group.currentMember.pending}}
+              <div class="reply-form">
+                {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
+              </div>
+            {{/unless}}
+          {{/if}}
+        {{else}}
+          <div class="reply-form">
+            {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
+          </div>
+        {{/if}}
+      {{/if}}
     {{/if}}
-  {{/if}}
+  </div>
 </div>
