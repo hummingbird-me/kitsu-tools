@@ -60,7 +60,7 @@ class StorySerializer < ActiveModel::Serializer
                      .sort_by {|x| x.created_at }.reverse.take(2)
   end
 
-  def include_recent_likers?
-    !object.recent_likers.nil?
+  def recent_likers
+    object.recent_likers || []
   end
 end
