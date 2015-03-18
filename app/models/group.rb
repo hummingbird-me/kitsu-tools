@@ -128,8 +128,12 @@ class Group < ActiveRecord::Base
     group
   end
 
-  def self.trending(page: 1, per: 10)
-    TrendingGroups.list(page: page, per: per)
+  def self.trending(user=nil)
+    if user
+      TrendingGroup.not_joined_by_user(user)
+    else
+      TrendingGroup.all
+    end
   end
 
   before_save do
