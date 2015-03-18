@@ -19,7 +19,7 @@ FROM ( -- Buckets infilled with zeroes
 LEFT OUTER JOIN (
   SELECT count(*) AS cnt, group_id, date_trunc('hour', created_at) AS created_at
   FROM group_members
-  WHERE created_at > (now() - interval '30 days')
+  WHERE created_at > (timezone('utc', now()) - interval '30 days')
   GROUP BY group_id, date_trunc('hour', created_at)
 ) AS counts
 ON counts.created_at = fills.created_at
@@ -54,17 +54,17 @@ JOIN (
   FROM ( -- Get the sum, deviation, and average for the hourly data of the past 7 days
     SELECT group_id, count(cnt) AS cnt, sum(cnt) AS sum, stddev_pop(cnt) AS dev, avg(cnt) AS avg
     FROM group_members_histogram
-    WHERE created_at >= (date_trunc('hour', now()) - interval '7 days')
+    WHERE created_at >= (date_trunc('hour', timezone('utc', now())) - interval '7 days')
     -- This is to prevent groups from showing up until there's reasonable data
-    AND founded < (date_trunc('hour', now()) - interval '6 hours')
+    AND founded < (date_trunc('hour', timezone('utc', now())) - interval '6 hours')
     GROUP BY group_id
   ) AS long_term
   JOIN ( -- Get the sum and average for the hourly data of the past 6 hours
     SELECT group_id, count(cnt) AS cnt, sum(cnt) AS sum, avg(cnt) AS avg
     FROM group_members_histogram
-    WHERE created_at >= (date_trunc('hour', now()) - interval '6 hours')
+    WHERE created_at >= (date_trunc('hour', timezone('utc', now())) - interval '6 hours')
     -- This is to prevent groups from showing up until there's reasonable data
-    AND founded < (date_trunc('hour', now()) - interval '6 hours')
+    AND founded < (date_trunc('hour', timezone('utc', now())) - interval '6 hours')
     GROUP BY group_id
   ) AS short_term
   ON short_term.group_id = long_term.group_id

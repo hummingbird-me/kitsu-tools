@@ -9,7 +9,7 @@ class TrendingGroup < ActiveRecord::Base
   def self.not_joined_by_user(user)
     user = user.id if user.is_a?(User)
     TrendingGroup.where.not(
-      group: GroupMember.where(user_id: 2).select(:group_id)
+      group: GroupMember.where(user_id: user).select(:group_id)
     )
   end
 

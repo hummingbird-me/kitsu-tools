@@ -877,7 +877,7 @@ CREATE VIEW group_members_histogram AS
             group_members.group_id,
             date_trunc('hour'::text, group_members.created_at) AS created_at
            FROM group_members
-          WHERE (group_members.created_at > (now() - '30 days'::interval))
+          WHERE (group_members.created_at > (timezone('utc'::text, now()) - '30 days'::interval))
           GROUP BY group_members.group_id, date_trunc('hour'::text, group_members.created_at)) counts ON (((counts.created_at = fills.created_at) AND (counts.group_id = fills.group_id))));
 
 
@@ -1571,14 +1571,14 @@ CREATE MATERIALIZED VIEW trending_groups AS
                     stddev_pop(group_members_histogram.cnt) AS dev,
                     avg(group_members_histogram.cnt) AS avg
                    FROM group_members_histogram
-                  WHERE ((group_members_histogram.created_at >= (date_trunc('hour'::text, now()) - '7 days'::interval)) AND (group_members_histogram.founded < (date_trunc('hour'::text, now()) - '06:00:00'::interval)))
+                  WHERE ((group_members_histogram.created_at >= (date_trunc('hour'::text, timezone('utc'::text, now())) - '7 days'::interval)) AND (group_members_histogram.founded < (date_trunc('hour'::text, timezone('utc'::text, now())) - '06:00:00'::interval)))
                   GROUP BY group_members_histogram.group_id) long_term
              JOIN ( SELECT group_members_histogram.group_id,
                     count(group_members_histogram.cnt) AS cnt,
                     sum(group_members_histogram.cnt) AS sum,
                     avg(group_members_histogram.cnt) AS avg
                    FROM group_members_histogram
-                  WHERE ((group_members_histogram.created_at >= (date_trunc('hour'::text, now()) - '06:00:00'::interval)) AND (group_members_histogram.founded < (date_trunc('hour'::text, now()) - '06:00:00'::interval)))
+                  WHERE ((group_members_histogram.created_at >= (date_trunc('hour'::text, timezone('utc'::text, now())) - '06:00:00'::interval)) AND (group_members_histogram.founded < (date_trunc('hour'::text, timezone('utc'::text, now())) - '06:00:00'::interval)))
                   GROUP BY group_members_histogram.group_id) short_term ON ((short_term.group_id = long_term.group_id)))) trending ON ((trending.group_id = groups.id)))
   WHERE ((trending.score IS NOT NULL) AND (groups.confirmed_members_count > 5))
   ORDER BY trending.score DESC
