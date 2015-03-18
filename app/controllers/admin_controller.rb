@@ -105,7 +105,7 @@ class AdminController < ApplicationController
 
   def deploy
     if Rails.env.production?
-      Thread.new { system "/var/hummingbird/deploy.sh" }
+      Thread.new { system "/var/hummingbird/deploy.sh", current_user.name, current_user.avatar.to_s(:small) }
       render text: "Deployed maybe"
     else
       render text: "Can only deploy in production."
