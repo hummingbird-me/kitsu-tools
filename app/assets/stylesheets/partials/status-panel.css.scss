@@ -81,12 +81,15 @@
     @extend .inline-list;
     @extend .secondary;
     @extend .clearfix;
-
+    
     font-size: 14px;
-
-    /* because metamorphs */
-    li:last-of-type:after {
-      content: "";
+    
+    li {
+      padding-right: 0;
+      /* because metamorphs */
+      &:last-of-type:after {
+        content: "";
+      }
     }
   }
 
