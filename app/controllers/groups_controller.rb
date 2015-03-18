@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
     page = (params[:page] || 1).to_i
 
     groups = if params[:trending].present?
-      Group.trending(page: page, per: limit)
+      Group.trending(current_user).page(page).per(limit).groups
     elsif params[:user_id].present?
       User.find(params[:user_id]).groups.order('id ASC').page(page).per(limit)
     else
