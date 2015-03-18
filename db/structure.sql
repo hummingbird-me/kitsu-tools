@@ -830,25 +830,6 @@ CREATE TABLE group_members (
 
 
 --
--- Name: group_members_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE group_members_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: group_members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE group_members_id_seq OWNED BY group_members.id;
-
-
---
 -- Name: groups; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -872,6 +853,51 @@ CREATE TABLE groups (
     avatar_processing boolean,
     about_formatted text
 );
+
+
+--
+-- Name: group_members_histogram; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW group_members_histogram AS
+ SELECT COALESCE(counts.cnt, (0)::bigint) AS cnt,
+    fills.group_id,
+    fills.founded,
+    fills.created_at
+   FROM (( SELECT buckets.group_id,
+            buckets.founded,
+            buckets.created_at
+           FROM ( SELECT groups.id AS group_id,
+                    groups.created_at AS founded,
+                    generate_series.generate_series AS created_at
+                   FROM (groups
+                     CROSS JOIN generate_series((date_trunc('hour'::text, timezone('utc'::text, now())) - '30 days'::interval), (timezone('utc'::text, now()) + '01:00:00'::interval), '01:00:00'::interval) generate_series(generate_series))) buckets
+          WHERE (buckets.created_at >= date_trunc('hour'::text, buckets.founded))) fills
+     LEFT JOIN ( SELECT count(*) AS cnt,
+            group_members.group_id,
+            date_trunc('hour'::text, group_members.created_at) AS created_at
+           FROM group_members
+          WHERE (group_members.created_at > (now() - '30 days'::interval))
+          GROUP BY group_members.group_id, date_trunc('hour'::text, group_members.created_at)) counts ON (((counts.created_at = fills.created_at) AND (counts.group_id = fills.group_id))));
+
+
+--
+-- Name: group_members_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE group_members_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: group_members_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE group_members_id_seq OWNED BY group_members.id;
 
 
 --
@@ -1517,6 +1543,46 @@ CREATE SEQUENCE substories_id_seq
 --
 
 ALTER SEQUENCE substories_id_seq OWNED BY substories.id;
+
+
+--
+-- Name: trending_groups; Type: MATERIALIZED VIEW; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE MATERIALIZED VIEW trending_groups AS
+ SELECT groups.id AS group_id,
+    trending.short_avg,
+    trending.short_sum,
+    trending.long_avg,
+    trending.long_sum,
+    trending.deviation,
+    trending.score
+   FROM (groups
+     JOIN ( SELECT long_term.group_id,
+            short_term.avg AS short_avg,
+            short_term.sum AS short_sum,
+            long_term.avg AS long_avg,
+            long_term.sum AS long_sum,
+            long_term.dev AS deviation,
+            ((short_term.avg - long_term.avg) / (long_term.dev + 0.0000000001)) AS score
+           FROM (( SELECT group_members_histogram.group_id,
+                    count(group_members_histogram.cnt) AS cnt,
+                    sum(group_members_histogram.cnt) AS sum,
+                    stddev_pop(group_members_histogram.cnt) AS dev,
+                    avg(group_members_histogram.cnt) AS avg
+                   FROM group_members_histogram
+                  WHERE ((group_members_histogram.created_at >= (date_trunc('hour'::text, now()) - '7 days'::interval)) AND (group_members_histogram.founded < (date_trunc('hour'::text, now()) - '06:00:00'::interval)))
+                  GROUP BY group_members_histogram.group_id) long_term
+             JOIN ( SELECT group_members_histogram.group_id,
+                    count(group_members_histogram.cnt) AS cnt,
+                    sum(group_members_histogram.cnt) AS sum,
+                    avg(group_members_histogram.cnt) AS avg
+                   FROM group_members_histogram
+                  WHERE ((group_members_histogram.created_at >= (date_trunc('hour'::text, now()) - '06:00:00'::interval)) AND (group_members_histogram.founded < (date_trunc('hour'::text, now()) - '06:00:00'::interval)))
+                  GROUP BY group_members_histogram.group_id) short_term ON ((short_term.group_id = long_term.group_id)))) trending ON ((trending.group_id = groups.id)))
+  WHERE ((trending.score IS NOT NULL) AND (groups.confirmed_members_count > 5))
+  ORDER BY trending.score DESC
+  WITH NO DATA;
 
 
 --
@@ -3723,3 +3789,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150206031907');
 INSERT INTO schema_migrations (version) VALUES ('20150220014905');
 
 INSERT INTO schema_migrations (version) VALUES ('20150305204429');
+
+INSERT INTO schema_migrations (version) VALUES ('20150317215112');
+
