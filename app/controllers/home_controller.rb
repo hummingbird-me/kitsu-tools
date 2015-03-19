@@ -7,8 +7,7 @@ class HomeController < ApplicationController
     if user_signed_in?
       redirect_to "/dashboard"
     else
-      @hide_footer_ad = true
-      render :index
+      render_ember
     end
   end
 
@@ -31,7 +30,7 @@ class HomeController < ApplicationController
 
     break_counter = $redis.with {|conn| conn.get("break_counter") } || 0
     generic_preload! "break_counter", break_counter
-      
+
     render_ember
   end
 
