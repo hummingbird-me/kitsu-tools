@@ -12,6 +12,8 @@ class StoriesController < ApplicationController
       stories = StoryQuery.find_for_group(group, current_user, params[:page], 30)
     elsif params[:news_feed]
       stories = NewsFeed.new(current_user).fetch(params[:page] || 1)
+    elsif params[:landing]
+      stories = StoryQuery.find_for_landing
     end
 
     render json: stories, meta: {cursor: 1 + (params[:page] || 1).to_i}
