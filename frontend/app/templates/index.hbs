@@ -16,8 +16,16 @@
           <li class="hidden-sm hidden-xs"><a class="use" href="https://hummingbird.me/manga">Browse Manga</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="btn btn-register" href="#" id="countdown" rel="nofollow" role="menuitem" tabindex="-1">Login</a></li>
-          <li><a class="btn btn-register" href="#" rel="nofollow" role="menuitem" tabindex="-1">Register</a></li>
+          <li>
+            {{#link-to 'sign-in' class="btn btn-register" id="countdown" rel="nofollow" role="menuitem" tabindex="-1"}}
+              Login
+            {{/link-to}}
+          </li>
+          <li>
+            {{#link-to 'sign-up' class="btn btn-register" rel="nofollow" role="menuitem" tabindex="-1"}}
+              Register
+            {{/link-to}}
+          </li>
         </ul>
       </div>
     </div>
@@ -35,11 +43,11 @@
     <div class="introduction vertical-align text-center fade in" style="margin-top: -97.5px;">
       <div class="hero-wordmark"><img src="/hero-wordmark.png"></div>
       <p>Share anime and manga experiences, get recommendations and see what friends are watching or reading.</p>
-      <a class="hero-facebook" href="#">
+      <a class="hero-facebook" href="/users/auth/facebook">
         <i class="fa fa-facebook-square"></i>
         Login with Facebook
       </a>
-      <p class="hero-email">or <a href="#">register with your email</a></p>
+      <p class="hero-email">or {{#link-to 'sign-up'}}register with your email{{/link-to}}</p>
     </div>
     <div class="learn-more">
       <img alt="Learn more" class="image-svg arrow-down" src="/arrow-down.svg">
@@ -358,8 +366,8 @@
       <div class="copy-wrapper">
         <h1>Ready to get started?</h1>
         <p class="subtitle">We're glad you've finally noticed us, senpai ...uguu.</p>
-        <a class="footer-email" href="#">Register with Email</a>
-        <a class="footer-facebook" href="#">Login with Facebook</a>
+        {{#link-to 'sign-up' class="footer-email"}}Register with Email{{/link-to}}
+        <a class="footer-facebook" href="/users/auth/facebook">Login with Facebook</a>
       </div>
     </div>
   </div>
