@@ -33,12 +33,14 @@
 
   <div class="hero-section">
     <div class="no-hero-vid"></div>
-    <div class="hero-media">
-      <video preload="" webkit-playsinline="webkit-playsinline" autoplay="autoplay" loop="" class="video-background" poster="/preload.jpg">
-        <source src="/hero-vid.mp4" type="video/mp4">
-        <source src="/hero-vid.webm" type="video/webm">
-      </video>
-    </div>
+    {{#unless hideOnMobile}}
+      <div class="hero-media">
+        <video preload="" webkit-playsinline="webkit-playsinline" autoplay="autoplay" loop="" class="video-background" poster="/preload.jpg">
+          <source src="/hero-vid.mp4" type="video/mp4">
+          <source src="/hero-vid.webm" type="video/webm">
+        </video>
+      </div>
+    {{/unless}}
     <div class="hero-overlay"></div>
     <div class="introduction vertical-align text-center fade in" style="margin-top: -97.5px;">
       <div class="hero-wordmark"><img src="/hero-wordmark.png"></div>

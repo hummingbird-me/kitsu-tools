@@ -14,5 +14,9 @@ export default Ember.Controller.extend({
     } else if (this.get('isScrolling') && window.scrollY === 0) {
       this.set('isScrolling', false);
     }
-  }
+  },
+
+  hideOnMobile: function() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }.property()
 });
