@@ -253,25 +253,16 @@
     margin-bottom: 30px;
     color: #484848;
   }
-  // .recent-stories {
-  //   text-align: left;
-  //   -moz-column-count: 2;
-  //   -moz-column-gap: 10px;
-  //   -webkit-column-count: 2;
-  //   -webkit-column-gap: 10px;
-  //   column-count: 2;
-  //   column-gap: 10px;
-  //   width: 100%;
-  //   @media (max-width: 685px) {
-  //     -webkit-column-count: 1;
-  //     -moz-column-count: 1;
-  //     column-count: 1;
-  //   }
-  // }
-  // .recent-story {
-  //   display: inline-block;
-  //   width: 100%;
-  // }
+  .recent-stories {
+    text-align: left;
+    width: 100%;
+  }
+  .recent-story {
+    width: 49%;
+    @media (max-width: 530px) {
+      width: 100%;
+    }
+  }
 }
 
 .footer-section {
