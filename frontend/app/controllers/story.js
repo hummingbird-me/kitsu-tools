@@ -107,21 +107,21 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
     },
 
     toggleLike: function() {
-      var self = this;
-      this.toggleProperty('isLiked');
+      if (!this.get('currentUser.isSignedIn')) {
+        return this.transitionTo('sign-up');
+      }
 
-      Messenger().expectPromise(function() {
-        return self.get('content').save();
-      }, {
-        progressMessage: function() {
-          if (self.get('isLiked')) {
+      this.toggleProperty('isLiked');
+      Messenger().expectPromise(() => this.get('content').save(), {
+        progressMessage: () => {
+          if (this.get('isLiked')) {
             return "Liking post...";
           } else {
             return "Unliking post...";
           }
         },
-        successMessage: function() {
-          if (self.get('isLiked')) {
+        successMessage: () => {
+          if (this.get('isLiked')) {
             return "Liked!";
           } else {
             return "Unliked.";
