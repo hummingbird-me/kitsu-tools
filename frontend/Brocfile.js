@@ -28,6 +28,7 @@ app.import('vendor/dragsort.js');
 app.import('vendor/react-library.js');
 app.import('vendor/messenger/messenger.js');
 app.import('vendor/messenger/messenger-theme-flat.js');
+app.import('vendor/scroll-on-page.js');
 app.import('bower_components/moment/moment.js');
 app.import('bower_components/jquery-autosize/jquery.autosize.js');
 app.import('bower_components/pace/pace.js');

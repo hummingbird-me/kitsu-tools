@@ -52,14 +52,16 @@
       <p class="hero-email">or {{#link-to 'sign-up'}}register with your email{{/link-to}}</p>
     </div>
     <div class="learn-more">
-      <img alt="Learn more" class="image-svg arrow-down" src="/arrow-down.svg">
+      <a class="scroll-on-page-link" href="#kawaii">
+        <img alt="Learn more" class="image-svg arrow-down" src="/arrow-down.svg">
+      </a>
     </div>
   </div>
 
   <div class="about-section landing-section">
     <div class="container">
       <div class="copy-wrapper">
-        <h1>Hummingbird is kawaii, baka gaijin.</h1>
+        <h1 id="kawaii">Hummingbird is kawaii, baka gaijin.</h1>
         <p class="subtitle">Our obnoxious use of worn out japanese phrases lets you know we’re the real deal.</p>
         <p class="section-description">Your personal activity feed allows you to share your experiences, news, videos, images and music with other anime and manga fans that are following you.</p>
         <div class="screenshot-wrapper">
@@ -73,9 +75,11 @@
     <div class="container">
       <h2> Recent Posts on Hummingbird</h2>
       <div class="recent-stories">
-        {{#each model itemController="story"}}
+        {{#each story in model itemController="story"}}
           <div class="recent-story">
-            {{view "story" content=this}}
+            {{#with story}}
+              {{view "story" content=this}}
+            {{/with}}
           </div>
         {{/each}}
       </div>
