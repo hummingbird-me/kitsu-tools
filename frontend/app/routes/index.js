@@ -16,7 +16,7 @@ export default Ember.Route.extend({
       jQuery.mark.jump({
         offset: -120
       });
-      var container = Ember.$('.recent-stories');
+      var container = document.querySelector('.recent-stories');
       var msnry = new Masonry( container, {
         // options
         "itemSelector": '.recent-story',
