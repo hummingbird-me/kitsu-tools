@@ -78,18 +78,21 @@ class StoriesController < ApplicationController
   def update
     authenticate_user!
 
-    params.require(:story).permit(:is_liked)
+    params.require(:story).permit(:is_liked, :adult)
 
     story = Story.find_by_id(params[:id])
+
+    # limit adult updates to admins
+    if current_user.admin?
+      story.update_attribute(:adult, params[:story][:adult])
+    end
+
+    # handle likes
     vote = Vote.for(current_user, story)
     if params[:story][:is_liked]
-      if vote.nil?
-        Vote.create(user: current_user, target: story)
-      end
+      Vote.create(user: current_user, target: story) if vote.nil?
     else
-      unless vote.nil?
-        vote.destroy!
-      end
+      vote.destroy! unless vote.nil?
     end
 
     render json: StoryQuery.find_by_id(story.id, current_user)

@@ -129,6 +129,11 @@ export default Ember.ObjectController.extend(HasCurrentUser, {
         },
         errorMessage: "Something went wrong."
       });
+    },
+
+    toggleNSFW: function() {
+      this.get('model').toggleProperty('adult');
+      this.get('model').save();
     }
   }
 });
