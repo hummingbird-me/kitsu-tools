@@ -16,13 +16,14 @@ export default Ember.Route.extend({
       jQuery.mark.jump({
         offset: -120
       });
-      var msnry = new Masonry( '.recent-stories', {
+      var container = Ember.$('.recent-stories');
+      var msnry = new Masonry( container, {
         // options
         "itemSelector": '.recent-story',
         "gutter": 10
       });
       // layout Masonry again after all images have loaded
-      imagesLoaded( container, function() {
+      window.imagesLoaded(container, function() {
         msnry.layout();
       });
     });
