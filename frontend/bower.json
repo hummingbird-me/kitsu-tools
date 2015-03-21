@@ -20,6 +20,8 @@
     "Chart.js": "~0.2.0",
     "typeahead.js": "~0.10.5",
     "Jcrop": "~0.9.12",
-    "jquery-textcomplete": "vevix/jquery-textcomplete#master"
+    "jquery-textcomplete": "vevix/jquery-textcomplete#master",
+    "masonry": "~3.2.2",
+    "outlayer": "~1.3.0"
   }
 }

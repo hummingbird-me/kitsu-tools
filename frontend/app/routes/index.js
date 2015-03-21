@@ -14,6 +14,12 @@ export default Ember.Route.extend({
       jQuery.mark.jump({
         offset: -120
       });
+      var container = document.querySelector('.recent-stories');
+      var msnry = new Masonry( container, {
+        // options
+        columnWidth: 200,
+        itemSelector: '.recent-story'
+      });
     });
   }
 });

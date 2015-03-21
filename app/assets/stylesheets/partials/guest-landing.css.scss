@@ -253,30 +253,25 @@
     margin-bottom: 30px;
     color: #484848;
   }
-  .recent-stories {
-    text-align: left;
-    -webkit-column-count: 2;
-    -webkit-column-gap: 10px;
-    -webkit-column-fill: auto;
-    -moz-column-count: 2;
-    -moz-column-gap: 10px;
-    -moz-column-fill: inherit !important;
-    column-count: 2;
-    column-gap: 15px;
-    column-fill: auto;
-    @media (max-width: 685px) {
-      -webkit-column-count: 1;
-      -moz-column-count: 1;
-      column-count: 1;
-    }
-  }
-  .recent-story {
-    display: inline-block;
-    width: 100%;
-    -webkit-column-break-inside: avoid;
-    -moz-column-break-inside: avoid;
-    column-break-inside: avoid;
-  }
+  // .recent-stories {
+  //   text-align: left;
+  //   -moz-column-count: 2;
+  //   -moz-column-gap: 10px;
+  //   -webkit-column-count: 2;
+  //   -webkit-column-gap: 10px;
+  //   column-count: 2;
+  //   column-gap: 10px;
+  //   width: 100%;
+  //   @media (max-width: 685px) {
+  //     -webkit-column-count: 1;
+  //     -moz-column-count: 1;
+  //     column-count: 1;
+  //   }
+  // }
+  // .recent-story {
+  //   display: inline-block;
+  //   width: 100%;
+  // }
 }
 
 .footer-section {
