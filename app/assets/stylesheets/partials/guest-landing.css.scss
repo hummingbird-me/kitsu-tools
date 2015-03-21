@@ -1,0 +1,305 @@
+.guest-landing {
+  .navbar-inverse {
+    @extend .animated;
+    @extend .fadeInDown;
+    animation-delay: 1s;
+    background-color: transparent;
+    border-color: rgba(255,255,255,0.25);
+    height: 80px;
+    padding-top: 13px;
+    @media (max-width: 768px) { 
+      padding-top: 0;
+    }
+  }
+  .navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+    &:hover {
+      opacity: .6;
+    }
+  }
+  .navbar-brand {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    position: absolute;
+    left: 50%;
+    top: 15px;
+    margin-left: -13px !important;
+    background: transparent url("/hero-logo.png") center center no-repeat;
+    background-size: cover;
+    @media (max-width: 990px) {
+      left: 15px;
+      margin-left: 0 !important;
+    }
+  }
+  .navbar-right {
+    @media (max-width: 768px) {
+      li {
+        display: inline-block;
+        float: right;
+      }
+    }
+  }
+  .btn-register {
+    font-size: 14px;
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid #fff;
+    position: relative;
+    top: 5px;
+    &:last-child {
+      margin-left: 15px;
+    }
+  }
+  &.is-scrolled {
+    .navbar-brand {
+      background: transparent url("/hero-logo-dark.png") center center no-repeat;
+      background-size: cover;
+    }
+    .navbar-inverse {
+      background: #fff;
+      background: rgba(255,255,255,.9);
+    }
+    .navbar-inverse .navbar-nav > li > a {
+      color: #333;
+      &:hover {
+        opacity: .6;
+      }
+    }
+    .btn-register { 
+      color: #333;
+      border-color: #333;
+    }
+  }
+}
+
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  height:100vh;
+  @media (max-width: 768px) {
+    // vh is buggy in iOS7 and lower, have to used fixed height for the time being.
+    height: 500px;
+  }
+
+  .video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+  .hero-overlay {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      background-color: rgba(0,0,0,.5);
+      background-image: url("/video-grid.png");
+  }
+  .introduction {
+    width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+  }
+  .hero-media { // Temporary!
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  .no-hero-vid {
+    background-image: url(/no-hero.jpg);
+    background-position: center top;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.9;
+  }
+  .introduction {
+    width: 600px;
+    left: 50%;
+    margin-left: -300px;
+    @media (max-width: 485px) {
+      width: 100%;
+      margin-left: 0;
+      left: initial;
+    }
+    p {
+      @extend .animated;
+      @extend .fadeInDown;
+      animation-delay: 2s;
+      color: #fff;
+      margin-bottom: 15px;
+      font-size: 19px;
+      @media (max-width: 485px) {
+        font-size: 16px;
+      }
+    }
+  }
+  .hero-wordmark img {
+    @extend .animated;
+    @extend .fadeInDown;
+    animation-delay: 1.5s;
+    width: 260px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .hero-facebook {
+    @extend .animated;
+    @extend .fadeInDown;
+    animation-delay: 2.5s;
+    background-color: #3b5998;
+    border-radius: 3px;
+    color: #fff;
+    display: block;
+    padding: 10px 30px;
+    max-width: 300px;
+    margin: 0 auto;
+    font-size: 18px;
+    .fa {
+      margin-right: 5px;
+    }
+    &:hover {
+      background-color: darken(#3b5998,10);
+    }
+  }
+  .hero-email {
+    @extend .animated;
+    @extend .fadeInDown;
+    animation-delay: 3s;
+    margin-top: 15px;
+    a {
+      color: #fff;
+      border-bottom: 1px solid;
+      &:hover {
+        opacity: .6;
+      }
+    }
+  }
+  .learn-more {
+    @extend .animated;
+    @extend .bounceInUp;
+    animation-delay: 3.5s;
+    bottom: 0;
+    padding-top: 0;
+    height: 90px;
+    left: 50%;
+    margin-left: -25px;
+    width: 50px;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1000;
+  }
+}
+
+
+.landing-section {
+  background: #fff;
+  text-align: center;
+  padding-top: 30px;
+  .copy-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-weight: normal;
+    color: #484848;
+  }
+  .subtitle {
+    font-weight: bold;
+    color: #545353;
+  }
+  .section-description {
+    color: #707070;
+    font-size: 20px;
+    margin: 30px 0;
+  }
+}
+
+.posts-section {
+  background-color: #f0f0f0;
+  max-height: 650px;
+  overflow: hidden;
+  position: relative;
+  &:after {
+    /* autoprefixer: off */
+    content: "";
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 20%;
+    background-image: -webkit-gradient(linear,50% 0,50% 100%,color-stop(0,rgba(240, 240, 240,0)),color-stop(100%,#F0F0F0));
+    background-image: -webkit-linear-gradient(top,rgba(240, 240, 240,0) 0,#F0F0F0 100%);
+    background-image: -o-linear-gradient(top,rgba(240, 240, 240,0) 0,#F0F0F0 100%);
+    background-image: -moz-linear-gradient(center top , rgba(240, 240, 240, 0) 0px, #F0F0F0 100%);
+    background-image: linear-gradient(top,rgba(240, 240, 240,0) 0,#F0F0F0 100%);
+  }
+  h2 {
+    font-weight: normal;
+    margin-bottom: 30px;
+    color: #484848;
+  }
+  .recent-stories {
+    text-align: left;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 10px;
+    -webkit-column-fill: auto;
+    -moz-column-count: 2;
+    -moz-column-gap: 10px;
+    -moz-column-fill: inherit !important;
+    column-count: 2;
+    column-gap: 15px;
+    column-fill: auto;
+    @media (max-width: 685px) {
+      -webkit-column-count: 1;
+      -moz-column-count: 1;
+      column-count: 1;
+    }
+  }
+  .recent-story {
+    display: inline-block;
+    width: 100%;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+  }
+}
+
+.footer-section {
+  background-color: #f0f0f0;
+  padding-bottom: 70px;
+  .subtitle {
+    margin-bottom: 40px;
+  }
+  .footer-email, .footer-facebook {
+    border-radius: 3px;
+    border: 1px solid #BABABA;
+    padding: 10px 30px;
+    color: #777;
+    margin-right: 10px;
+    @media (max-width: 500px) {
+      width: 100%;
+      display: block;
+      margin-bottom: 15px;
+    }
+  }
+  .footer-facebook {
+    color: #fff;
+    border: 1px solid #3A5897;
+    background: #3A5897;
+  }
+}
