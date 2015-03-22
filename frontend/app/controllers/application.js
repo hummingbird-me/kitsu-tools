@@ -5,6 +5,16 @@ import HasCurrentUser from '../mixins/has-current-user';
 export default Ember.Controller.extend(HasCurrentUser, {
   needs: ['header'],
 
+  // use location here as currentPath will have
+  // multiple values before hitting 'index'
+  landingPage: function() {
+    return window.location.pathname === '/';
+  }.property('currentPath'),
+  
+  showSignUpCta: function() {
+    return !this.get('landingPage') && !this.get('currentUser.isSignedIn');
+  }.property('landingPage', 'currentUser.isSignedIn'),
+
   routeChanged: function() {
     // Track the last visited URL for redirection on sign in.
     if (!window.location.href.match('/sign-in')) {
