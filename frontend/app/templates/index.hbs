@@ -22,9 +22,9 @@
             {{/link-to}}
           </li>
           <li>
-            {{#link-to 'sign-up' class="btn btn-register" rel="nofollow" role="menuitem" tabindex="-1"}}
+            <a class="btn btn-register" rel="nofollow" role="menuitem" tabindex="-1" {{action 'emailSignupClick'}}>
               Register
-            {{/link-to}}
+            </a>
           </li>
         </ul>
       </div>
@@ -45,11 +45,11 @@
     <div class="introduction vertical-align text-center fade in" style="margin-top: -97.5px;">
       <div class="hero-wordmark"><img src="/hero-wordmark.png"></div>
       <p>Share anime and manga experiences, get recommendations and see what friends are watching or reading.</p>
-      <a class="hero-facebook" href="/users/auth/facebook">
+      <a class="hero-facebook" {{action 'facebookSignupClick'}}>
         <i class="fa fa-facebook-square"></i>
         Login with Facebook
       </a>
-      <p class="hero-email">or {{#link-to 'sign-up'}}register with your email{{/link-to}}</p>
+      <p class="hero-email">or <a {{action 'emailSignupClick'}}>register with your email</a></p>
     </div>
     <div class="learn-more">
       <a class="scroll-on-page-link" href="#kawaii">
@@ -102,8 +102,8 @@
       <div class="copy-wrapper">
         <h1>Ready to get started?</h1>
         <p class="subtitle">We're glad you've finally noticed us, senpai ...uguu.</p>
-        {{#link-to 'sign-up' class="footer-email"}}Register with Email{{/link-to}}
-        <a class="footer-facebook" href="/users/auth/facebook">Login with Facebook</a>
+        <a class="footer-email" {{action 'emailSignupClick'}}>Register with Email</a>
+        <a class="footer-facebook" {{action 'facebookSignupClick'}}>Login with Facebook</a>
       </div>
     </div>
   </div>
