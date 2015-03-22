@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import jQuery from 'jquery';
 
 export default Ember.Route.extend({
   model: function() {
@@ -8,17 +7,19 @@ export default Ember.Route.extend({
     });
   },
 
- setupController: function(controller, model) {
+  setupController: function(controller, model) {
     this._super(controller, model);
     Ember.run.scheduleOnce('afterRender', () => {
-      jQuery.mark.jump({
+      // Offset the scroll position so that the header doesn't
+      // cover the text
+      Ember.$.mark.jump({
         offset: -120
       });
 
-      var container = Ember.$('.recent-stories');
+      let container = Ember.$('.recent-stories');
       container.masonry({
-        "itemSelector": '.recent-story',
-        "gutter": 10
+        'itemSelector': '.recent-story',
+        'gutter': 10
       });
 
       // layout Masonry again after all images have loaded
