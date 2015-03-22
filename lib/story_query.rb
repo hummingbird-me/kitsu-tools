@@ -109,4 +109,12 @@ class StoryQuery
     StoryQuery.find_by_ids(story_ids, current_user)
   end
 
+  def self.find_for_landing
+    story_ids = Story.where(target_type: 'User').where('target_id = user_id')
+      .where('group_id IS NULL')
+      .order('created_at DESC').limit(6)
+      .select(:id).map(&:id)
+
+    StoryQuery.find_by_ids(story_ids, nil)
+  end
 end

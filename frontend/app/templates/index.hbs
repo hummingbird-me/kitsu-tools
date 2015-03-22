@@ -1,0 +1,110 @@
+<style>
+  body { margin-top: 0; }
+  .comment-replies { display: none; }
+</style>
+
+<div {{bind-attr class=":guest-landing isScrolling:is-scrolled"}}>
+
+  <nav class="navbar navbar-default fade navbar-fixed-top in navbar-inverse" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="https://hummingbird.me"><span class="logo"></span></a>
+      </div>
+      <div class="navbar-collapse" id="navbar-collapse" role="navigation" aria-expanded="false">
+        <ul class="nav navbar-nav">
+          <li class="hidden-sm hidden-xs"><a class="how" href="https://hummingbird.me/anime">Browse Anime</a></li>
+          {{!-- <li class="hidden-sm hidden-xs"><a class="use" href="https://hummingbird.me/manga">Browse Manga</a></li> --}}
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            {{#link-to 'sign-in' class="btn btn-register" id="countdown" rel="nofollow" role="menuitem" tabindex="-1"}}
+              Login
+            {{/link-to}}
+          </li>
+          <li>
+            {{#link-to 'sign-up' class="btn btn-register" rel="nofollow" role="menuitem" tabindex="-1"}}
+              Register
+            {{/link-to}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero-section">
+    <div class="no-hero-vid"></div>
+    {{#unless hideOnMobile}}
+      <div class="hero-media">
+        <video preload="" webkit-playsinline="webkit-playsinline" autoplay="autoplay" loop="" class="video-background" poster="/preload.jpg">
+          <source src="/hero-vid.mp4" type="video/mp4">
+          <source src="/hero-vid.webm" type="video/webm">
+        </video>
+      </div>
+    {{/unless}}
+    <div class="hero-overlay"></div>
+    <div class="introduction vertical-align text-center fade in" style="margin-top: -97.5px;">
+      <div class="hero-wordmark"><img src="/hero-wordmark.png"></div>
+      <p>Share anime and manga experiences, get recommendations and see what friends are watching or reading.</p>
+      <a class="hero-facebook" href="/users/auth/facebook">
+        <i class="fa fa-facebook-square"></i>
+        Login with Facebook
+      </a>
+      <p class="hero-email">or {{#link-to 'sign-up'}}register with your email{{/link-to}}</p>
+    </div>
+    <div class="learn-more">
+      <a class="scroll-on-page-link" href="#kawaii">
+        <img alt="Learn more" class="image-svg arrow-down" src="/arrow-down.svg">
+      </a>
+    </div>
+  </div>
+
+  <div class="about-section landing-section">
+    <div class="container">
+      <div class="copy-wrapper">
+        <h1 id="kawaii">Hummingbird is kawaii, baka gaijin.</h1>
+        <p class="subtitle">Our obnoxious use of worn out japanese phrases lets you know we’re the real deal.</p>
+        <p class="section-description">Your personal activity feed allows you to share your experiences, news, videos, images and music with other anime and manga fans that are following you.</p>
+        <div class="screenshot-wrapper">
+          <img src="/about-section.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="posts-section landing-section">
+    <div class="container">
+      <h2> Recent Posts on Hummingbird</h2>
+      <div class="recent-stories">
+        {{#each story in model itemController="story"}}
+          <div class="recent-story">
+            {{#with story}}
+              {{view "story" content=this}}
+            {{/with}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  <div class="about-section landing-section">
+    <div class="container">
+      <div class="copy-wrapper">
+        <h1>Find your favorites, build your collection.</h1>
+        <p class="subtitle">Your favorite anime is shit, but we won’t hold that against you.</p>
+        <p class="section-description">Keep track of what you’ve seen, read, and look forward to. <br> We’ll even tell you how much of your life you’ve spent watching anime.</p>
+        <div class="screenshot-wrapper">
+          <img src="/library-section.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-section landing-section">
+    <div class="container">
+      <div class="copy-wrapper">
+        <h1>Ready to get started?</h1>
+        <p class="subtitle">We're glad you've finally noticed us, senpai ...uguu.</p>
+        {{#link-to 'sign-up' class="footer-email"}}Register with Email{{/link-to}}
+        <a class="footer-facebook" href="/users/auth/facebook">Login with Facebook</a>
+      </div>
+    </div>
+  </div>
+</div>
