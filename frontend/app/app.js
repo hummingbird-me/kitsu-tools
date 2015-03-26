@@ -15,10 +15,47 @@ if (!window.location.href.match('/sign-in')) {
   window.lastVisitedURL = window.location.href;
 }
 
+if (document.createEvent) {
+  window.XContentReadyEvent = document.createEvent('Event');
+  window.XContentReadyEvent.initEvent('XContentReady', false, false);
+
+  window.XPushStateEvent = document.createEvent('Event');
+  window.XPushStateEvent.initEvent('XPushState', false, false);
+
+  document.addEventListener('XPushState', function(e) {
+    let router = App.__container__.lookup('router:main');
+    Ember.run(function() {
+      router.replaceWith(e.url).then(function(route) {
+        if (route.handlerInfos) {
+          // The route was already loaded
+          document.dispatchEvent(window.XContentReadyEvent);
+        }
+      });
+    });
+  });
+}
+
 Ember.Route.reopen({
+  willComplete: function() {
+    Ember.RSVP.resolve();
+  },
+
   resetScroll: function() {
     window.scrollTo(0, 0);
-  }.on('activate')
+  }.on('activate'),
+
+  actions: {
+    didTransition: function() {
+      this._super();
+      let promises = [];
+      this.router.router.currentHandlerInfos.forEach((handler) => {
+        if (handler.handler.willComplete) {
+          promises.push(handler.handler.willComplete());
+        }
+      });
+      Ember.RSVP.all(promises).then(() => document.dispatchEvent(window.XContentReadyEvent));
+    }
+  }
 });
 
 // Set to false because it breaks polymorphic associations.
