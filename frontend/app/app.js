@@ -40,9 +40,9 @@ Ember.Route.reopen({
     Ember.RSVP.resolve();
   },
 
-  resetScroll: function() {
+  activate: function() {
     window.scrollTo(0, 0);
-  }.on('activate'),
+  },
 
   actions: {
     didTransition: function() {
