@@ -455,7 +455,8 @@
       padding-left: 0;
 
       img:not(.emoji),
-      video {
+      video,
+      iframe {
         display: block;
       }
     }
