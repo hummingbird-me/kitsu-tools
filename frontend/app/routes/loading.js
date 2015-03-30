@@ -2,11 +2,11 @@ import Ember from 'ember';
 /* global Pace */
 
 export default Ember.Route.extend({
-  startPace: function() {
+  activate: function() {
     Pace.restart();
-  }.on('activate'),
+  },
 
-  stopPace: function() {
+  deactivate: function() {
     Pace.stop();
-  }.on('deactivate')
+  }
 });
