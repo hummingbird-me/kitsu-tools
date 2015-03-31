@@ -1,8 +1,21 @@
 import Ember from 'ember';
 import config from './config/environment';
 
+var XContentReady = new CustomEvent('XContentReady');
+
 var Router = Ember.Router.extend({
-  location: config.locationType
+  location: config.locationType,
+
+  prerender: function() {
+    let promises = [];
+
+    this.get('router.currentHandlerInfos').forEach(function(handler) {
+      if (handler.handler.willComplete) {
+        promises.push(handler.handler.willComplete());
+      }
+    });
+    Ember.RSVP.all(promises).then(() => document.dispatchEvent(XContentReady));
+  }.on('didTransition')
 });
 
 Router.map(function() {
