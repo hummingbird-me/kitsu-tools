@@ -197,4 +197,7 @@ Hummingbird::Application.routes.draw do
   end
 
   mount API => '/'
+
+  # Ember Tests
+  mount EmberCLI::Engine => 'ember-tests' if Rails.env.development?
 end

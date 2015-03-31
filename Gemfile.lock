@@ -134,7 +134,7 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
-    ember-cli-rails (0.1.11)
+    ember-cli-rails (0.3.1)
       railties (>= 3.1, < 5)
       sprockets (>= 2.0)
     equalizer (0.0.9)
@@ -516,7 +516,7 @@ DEPENDENCIES
   devise-async
   dotenv-rails
   dropbox-api
-  ember-cli-rails (= 0.1.11)
+  ember-cli-rails (= 0.3.1)
   factory_girl_rails
   fast_blank
   fastclick-rails (~> 1.0)
