@@ -1,0 +1,34 @@
+.fauna-select {
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  display: none;
+  z-index: 2000;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.fauna-select-menu {
+  height: 100%;
+  width: 100%;
+  padding: 1em;
+}
+
+.fauna-select-item {
+  width: 320px;
+  height: 80px;
+  display: inline-block;
+  list-style-type: none;
+
+  .fauna-icon {
+    font-size: 2em;
+  }
+}
+
+html.scroll-lock {
+  overflow: hidden;
+}
