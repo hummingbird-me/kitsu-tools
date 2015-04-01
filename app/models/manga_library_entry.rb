@@ -46,30 +46,30 @@ class MangaLibraryEntry < ActiveRecord::Base
     self.private = false if self.private.nil?
   end
 
-  before_save do    
+  before_save do
     # Rereading logic
     if self.rereading && self.status_changed? && self.status == "Completed"
       self.rereading = false
       self.reread_count += 1
     end
-    
+
     # Set `last_read` field
     if self.chapters_read_changed? || self.volumes_read_changed? || self.status_changed?
       self.last_read = Time.now
     end
   end
-  
+
   after_save do
     # Update users `last_library_update` field
     self.user.update_column :last_library_update, Time.now
     # Queue a backup for the user
     DropboxBackupWorker.perform_debounced(self.user_id) if self.user.has_dropbox?
   end
-  
+
   private
 
   def rating_is_valid
-    if self.rating and (self.rating <= 0 or self.rating > 5 or (self.rating * 2) % 1 != 0)
+    if self.rating && (self.rating <= 0 || self.rating > 5)
       errors.add(:rating, "is not in the valid range")
     end
   end

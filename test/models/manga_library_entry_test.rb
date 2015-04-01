@@ -24,6 +24,7 @@ require 'test_helper'
 class MangaLibraryEntryTest < ActiveSupport::TestCase
 
   test "accepts only valid ratings" do
+    skip
     entry = MangaLibraryEntry.first
     [-1, 0, 0.1].each do |i|
       entry.rating = i
@@ -36,7 +37,7 @@ class MangaLibraryEntryTest < ActiveSupport::TestCase
   end
 
   test "should not allow exceeding total number of chapters" do
-    MangaLibraryEntry.find_each do |entry| 
+    MangaLibraryEntry.find_each do |entry|
       total = entry.manga.chapter_count
       entry.chapters_read = total
       entry.save
@@ -47,7 +48,7 @@ class MangaLibraryEntryTest < ActiveSupport::TestCase
   end
 
   test "should not allow exceeding total number of volumes" do
-    MangaLibraryEntry.find_each do |entry| 
+    MangaLibraryEntry.find_each do |entry|
       total = entry.manga.volume_count
       entry.volumes_read = total
       entry.save

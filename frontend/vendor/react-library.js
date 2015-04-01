@@ -19051,56 +19051,56 @@ module.exports = warning;
 
       if (this.props.dropdownOpen) {
         return (
-          React.DOM.div( {className:"library-dropdown"}, 
+          React.DOM.div( {className:"library-dropdown"},
             React.DOM.div( {className:"drop-arrow"} ),
              this.props.view.get('user.viewingSelf')
               ?
-                React.DOM.div( {className:"col-md-12"}, 
+                React.DOM.div( {className:"col-md-12"},
                   React.DOM.textarea( {className:"personal-notes", placeholder:"Personal notes about " + content.get('anime.displayTitle'), value:this.props.content.get('notes'), onChange:this.changeNotes} ),
                   React.DOM.button( {className:saveButtonClass, onClick:this.saveLibraryEntry}, "Save")
                 )
               : '',
-            
-            React.DOM.div( {className:"col-md-2 no-padding-right hidden-xs hidden-sm"}, 
+
+            React.DOM.div( {className:"col-md-2 no-padding-right hidden-xs hidden-sm"},
               React.DOM.img( {className:"drop-thumb", src:content.get('anime.posterImage')} )
             ),
-            React.DOM.div( {className:"col-md-6 col-sm-8 hidden-xs"}, 
+            React.DOM.div( {className:"col-md-6 col-sm-8 hidden-xs"},
               React.DOM.h4(null, React.DOM.a( {href:"/anime/" + content.get('anime.id'), onClick:this.goToAnime}, content.get('anime.displayTitle'))),
-              React.DOM.ul( {className:"genres"}, 
-                
+              React.DOM.ul( {className:"genres"},
+
                   content.get('anime.genres').map(function(genre) {
                     return (React.DOM.li( {key:genre}, genre));
                   })
-                
+
               ),
               React.DOM.p( {className:"drop-description"}, content.get('anime.synopsis'))
             ),
-            React.DOM.div( {className:"col-md-4 col-sm-4"}, 
-              React.DOM.div( {className:"drop-options"}, 
-                React.DOM.div( {className:this.props.view.get('user.viewingSelf') ? '' : 'hidden'}, 
-                  React.DOM.div( {className:"btn-group btn-block status-select"}, 
-                    React.DOM.button( {className:"btn btn-block dropdown-toggle", 'data-toggle':"dropdown"}, 
+            React.DOM.div( {className:"col-md-4 col-sm-4"},
+              React.DOM.div( {className:"drop-options"},
+                React.DOM.div( {className:this.props.view.get('user.viewingSelf') ? '' : 'hidden'},
+                  React.DOM.div( {className:"btn-group btn-block status-select"},
+                    React.DOM.button( {className:"btn btn-block dropdown-toggle", 'data-toggle':"dropdown"},
                       content.get('status'),
                       React.DOM.i( {className:"fa fa-caret-down"} )
                     ),
-                    React.DOM.ul( {className:"dropdown-menu"}, 
-                      
+                    React.DOM.ul( {className:"dropdown-menu"},
+
                         validStatuses.map(function(s) {
                           return (React.DOM.li( {key:s}, React.DOM.a( {onClick:this.changeStatus.bind(this, s)}, s)));
                         }.bind(this)),
-                      
+
                       React.DOM.li(null, React.DOM.a( {onClick:this.removeFromLibrary}, "Remove from Library"))
                     )
                   ),
                   React.DOM.hr(null ),
 
-                  React.DOM.div( {className:"text-center"}, 
-                    React.DOM.form(null, 
-                      React.DOM.label( {className:"radio-inline"}, 
+                  React.DOM.div( {className:"text-center"},
+                    React.DOM.form(null,
+                      React.DOM.label( {className:"radio-inline"},
                         React.DOM.input( {name:"private", type:"radio", value:"true", checked:this.props.content.get('private'), onChange:this.changePrivate.bind(this, true)} ),
                         "Private"
                       ),
-                      React.DOM.label( {className:"radio-inline"}, 
+                      React.DOM.label( {className:"radio-inline"},
                         React.DOM.input( {name:"private", type:"radio", value:"false", checked:!this.props.content.get('private'), onChange:this.changePrivate.bind(this, false)} ),
                         "Public"
                       )
@@ -19108,23 +19108,23 @@ module.exports = warning;
                   ),
                   React.DOM.hr(null ),
 
-                  React.DOM.div( {className:"text-center"}, 
-                    React.DOM.div( {className:"awesome-rating-widget"}, 
+                  React.DOM.div( {className:"text-center"},
+                    React.DOM.div( {className:"awesome-rating-widget"},
                       "RATING WIDGET HERE."
                     )
                   ),
                   React.DOM.hr(null )
                 ),
 
-                React.DOM.div( {className:"text-center"}, 
-                  React.DOM.label(null, 
+                React.DOM.div( {className:"text-center"},
+                  React.DOM.label(null,
                     React.DOM.input( {type:"checkbox", checked:this.props.content.get('rewatching'), onChange:this.toggleRewatching} ), " Rewatching"
                   ),
                   React.DOM.hr(null )
                 ),
 
-                React.DOM.div( {className:"text-center"}, 
-                  React.DOM.form( {className:"form-inline", onSubmit:this.saveLibraryEntry}, 
+                React.DOM.div( {className:"text-center"},
+                  React.DOM.form( {className:"form-inline", onSubmit:this.saveLibraryEntry},
                     "Rewatched",
                     React.DOM.input( {type:"number", className:"form-control", style: {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"},  value:this.props.content.get('rewatchCount'), onChange:this.changeRewatchCount, onBlur:this.saveLibraryEntry} ),
                     "times."
@@ -19234,11 +19234,17 @@ module.exports = warning;
       if (content.get('rating')) {
         if (this.props.view.get('user.ratingType') == "advanced") {
           rating = (
-            React.DOM.span(null, 
+            React.DOM.span(null,
               React.DOM.i( {className:"fa fa-star"} ),
               ' ',
               content.get('rating').toFixed(1)
             )
+          );
+        }
+        else if (this.props.view.get('user.ratingType') == "fauna") {
+          var faunaRating = getFaunaIcon(content.get('rating'));
+          rating = (
+            React.DOM.i( {className:"fauna-icon " + faunaRating} )
           );
         }
         else {
@@ -19254,42 +19260,42 @@ module.exports = warning;
       }
 
       return (
-        React.DOM.div( {className:"library-entry"}, 
-          React.DOM.div( {className:listGroupClass, onClick:this.toggleDropdown}, 
-            React.DOM.div( {className:"list-item-left"}, 
+        React.DOM.div( {className:"library-entry"},
+          React.DOM.div( {className:listGroupClass, onClick:this.toggleDropdown},
+            React.DOM.div( {className:"list-item-left"},
               content.get('anime.displayTitle'),
                content.get('anime.airingStatus') == "Finished Airing"
                 ? ''
                 : React.DOM.span( {className:"anime-label"}, React.DOM.span( {className:"label label-primary"}, content.get('anime.airingStatus'))),
-              
+
                content.get('private')
                 ? React.DOM.span( {className:"anime-label"}, React.DOM.i( {className:"fa fa-eye-slash"} ))
                 : '',
-              
+
                content.get('rewatching')
                 ? React.DOM.span( {className:"anime-label"}, React.DOM.i( {className:"fa fa-repeat"} ))
                 : '',
-              
+
                content.get('notes')
                 ? React.DOM.span( {className:"anime-label"}, React.DOM.i( {className:"fa fa-book"} ))
                 : ''
-              
+
             ),
-            React.DOM.div( {className:"list-item-right"}, 
-              React.DOM.div( {className:"list-item-progress"}, 
+            React.DOM.div( {className:"list-item-right"},
+              React.DOM.div( {className:"list-item-progress"},
                  this.props.view.get('user.viewingSelf')
                   ? React.DOM.i( {title:"Increment episode count", className:"episode-increment", onClick:this.incrementEpisodes} )
-                  : '', 
-                React.DOM.form( {style: {display: "inline"},  onSubmit:this.saveEpisodesWatched} , 
+                  : '',
+                React.DOM.form( {style: {display: "inline"},  onSubmit:this.saveEpisodesWatched} ,
                   React.DOM.input( {className:"input-progress", type:"text", pattern:"[0-9]*", value:content.get('episodesWatched'), onChange:this.changeProgress, onBlur:this.saveEpisodesWatched} )
                 ),
                 React.DOM.span( {className:"progress-sep"}, "/"),
                 React.DOM.span( {className:"list-item-total"}, content.get('anime.displayEpisodeCount'))
               ),
-              React.DOM.div( {className:ratingDivClass}, 
+              React.DOM.div( {className:ratingDivClass},
                 rating
               ),
-              React.DOM.div( {className:"list-item-type"}, 
+              React.DOM.div( {className:"list-item-type"},
                 content.get('anime.showType')
               )
             )
@@ -19304,22 +19310,22 @@ module.exports = warning;
   var LibrarySection = React.createClass({displayName: 'LibrarySection',
     render: function() {
       return (
-        React.DOM.div( {className:"list-group"}, 
-          React.DOM.div( {className:"panel-divider"}, 
+        React.DOM.div( {className:"list-group"},
+          React.DOM.div( {className:"panel-divider"},
             React.DOM.span(null, this.props.content.get('title')),
-            React.DOM.span( {className:"right-align"}, 
+            React.DOM.span( {className:"right-align"},
               this.props.content.get('content.length'),
               ' ',
               this.props.content.get('content.length') == 1 ? 'Title' : 'Titles'
             )
           ),
-          
+
             this.props.content.get('content').filter(function(entry) {
               return !entry.get('isDeleted');
             }).map(function(entry, i) {
               return (LibraryEntry( {key:entry.get('anime.id'), view:this.props.view, content:entry, index:i} ));
             }.bind(this))
-          
+
         )
       );
     }
@@ -19328,14 +19334,14 @@ module.exports = warning;
   this.LibrarySectionsReactComponent = React.createClass({displayName: 'LibrarySectionsReactComponent',
     render: function() {
       return (
-        React.DOM.div(null, 
-          
+        React.DOM.div(null,
+
             this.props.content.filter(function (section) {
               return section.get('visible');
             }).map(function (section) {
               return (LibrarySection( {key:section.get('title'), content:section, view:this.props.view} ));
             }.bind(this))
-          
+
         )
       );
     }
@@ -19500,64 +19506,64 @@ module.exports = warning;
 
       if (this.props.dropdownOpen) {
         return (
-          React.DOM.div( {className:"library-dropdown"}, 
+          React.DOM.div( {className:"library-dropdown"},
             React.DOM.div( {className:"drop-arrow"} ),
              this.props.view.get('user.viewingSelf')
               ?
-                React.DOM.div( {className:"col-md-12"}, 
+                React.DOM.div( {className:"col-md-12"},
                   React.DOM.textarea( {className:"personal-notes", placeholder:"Personal notes about " + content.get('manga.displayTitle'), value:this.props.content.get('notes'), onChange:this.changeMangaNotes} ),
                   React.DOM.button( {className:saveButtonClass, onClick:this.saveMangaLibraryEntry}, "Save")
                 )
               : '',
-            
-            React.DOM.div( {className:"col-md-2 no-padding-right hidden-xs hidden-sm"}, 
+
+            React.DOM.div( {className:"col-md-2 no-padding-right hidden-xs hidden-sm"},
               React.DOM.img( {className:"drop-thumb", src:content.get('manga.posterImage')} )
             ),
-            React.DOM.div( {className:"col-md-6 col-sm-8 hidden-xs"}, 
+            React.DOM.div( {className:"col-md-6 col-sm-8 hidden-xs"},
               React.DOM.h4(null, React.DOM.a( {href:"/manga/" + content.get('manga.id'), onClick:this.goToManga}, content.get('manga.displayTitle'))),
-              React.DOM.ul( {className:"genres"}, 
-                
+              React.DOM.ul( {className:"genres"},
+
                   content.get('manga.genres').map(function(genre) {
                     return (React.DOM.li( {key:genre}, genre));
                   })
-                
+
               ),
               React.DOM.p( {className:"drop-description"}, content.get('manga.synopsis'))
             ),
-            React.DOM.div( {className:"col-md-4 col-sm-4"}, 
-              React.DOM.div( {className:"drop-options"}, 
-                React.DOM.div( {className:this.props.view.get('user.viewingSelf') ? '' : 'hidden'}, 
-                  React.DOM.div( {className:"btn-group btn-block status-select"}, 
-                    React.DOM.button( {className:"btn btn-block dropdown-toggle", 'data-toggle':"dropdown"}, 
+            React.DOM.div( {className:"col-md-4 col-sm-4"},
+              React.DOM.div( {className:"drop-options"},
+                React.DOM.div( {className:this.props.view.get('user.viewingSelf') ? '' : 'hidden'},
+                  React.DOM.div( {className:"btn-group btn-block status-select"},
+                    React.DOM.button( {className:"btn btn-block dropdown-toggle", 'data-toggle':"dropdown"},
                       content.get('status'),
                       React.DOM.i( {className:"fa fa-caret-down"} )
                     ),
-                    React.DOM.ul( {className:"dropdown-menu"}, 
-                      
+                    React.DOM.ul( {className:"dropdown-menu"},
+
                         validStatuses.map(function(s) {
                           return (React.DOM.li( {key:s}, React.DOM.a( {onClick:this.changeMangaStatus.bind(this, s)}, s)));
                         }.bind(this)),
-                      
+
                       React.DOM.li(null, React.DOM.a( {onClick:this.removeFromMangaLibrary}, "Remove from Library"))
                     )
                   ),
                   React.DOM.hr(null ),
 
-                  React.DOM.div( {className:"text-center"}, 
-                    React.DOM.form( {className:"form-inline", onSubmit:this.saveMangaLibraryEntry}, 
+                  React.DOM.div( {className:"text-center"},
+                    React.DOM.form( {className:"form-inline", onSubmit:this.saveMangaLibraryEntry},
                       "Volumes Read:",
                       React.DOM.input( {type:"number", className:"form-control", style: {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"},  value:this.props.content.get('volumesRead'), onChange:this.changeVolumesRead, onBlur:this.saveMangaLibraryEntry} )
                     ),
                     React.DOM.hr(null )
                   ),
 
-                  React.DOM.div( {className:"text-center"}, 
-                    React.DOM.form(null, 
-                      React.DOM.label( {className:"radio-inline"}, 
+                  React.DOM.div( {className:"text-center"},
+                    React.DOM.form(null,
+                      React.DOM.label( {className:"radio-inline"},
                         React.DOM.input( {name:"private", type:"radio", value:"true", checked:this.props.content.get('private'), onChange:this.changeMangaPrivate.bind(this, true)} ),
                         "Private"
                       ),
-                      React.DOM.label( {className:"radio-inline"}, 
+                      React.DOM.label( {className:"radio-inline"},
                         React.DOM.input( {name:"private", type:"radio", value:"false", checked:!this.props.content.get('private'), onChange:this.changeMangaPrivate.bind(this, false)} ),
                         "Public"
                       )
@@ -19565,23 +19571,23 @@ module.exports = warning;
                   ),
                   React.DOM.hr(null ),
 
-                  React.DOM.div( {className:"text-center"}, 
-                    React.DOM.div( {className:"awesome-rating-widget"}, 
+                  React.DOM.div( {className:"text-center"},
+                    React.DOM.div( {className:"awesome-rating-widget"},
                       "RATING WIDGET HERE."
                     )
                   ),
                   React.DOM.hr(null )
                 ),
 
-                React.DOM.div( {className:"text-center"}, 
-                  React.DOM.label(null, 
+                React.DOM.div( {className:"text-center"},
+                  React.DOM.label(null,
                     React.DOM.input( {type:"checkbox", checked:this.props.content.get('rereading'), onChange:this.toggleRereading} ), " Rereading"
                   ),
                   React.DOM.hr(null )
                 ),
 
-                React.DOM.div( {className:"text-center"}, 
-                  React.DOM.form( {className:"form-inline", onSubmit:this.saveMangaLibraryEntry}, 
+                React.DOM.div( {className:"text-center"},
+                  React.DOM.form( {className:"form-inline", onSubmit:this.saveMangaLibraryEntry},
                     "Reread",
                     React.DOM.input( {type:"number", className:"form-control", style: {width: "40px", padding: "3px", margin:"0 4px", "text-align": "center"},  value:this.props.content.get('rereadCount'), onChange:this.changeRereadCount, onBlur:this.saveMangaLibraryEntry} ),
                     "times."
@@ -19675,11 +19681,17 @@ module.exports = warning;
       if (content.get('rating')) {
         if (this.props.view.get('user.ratingType') == "advanced") {
           rating = (
-            React.DOM.span(null, 
+            React.DOM.span(null,
               React.DOM.i( {className:"fa fa-star"} ),
               ' ',
               content.get('rating').toFixed(1)
             )
+          );
+        }
+        else if (this.props.view.get('user.ratingType') == "fauna") {
+          var faunaRating = getFaunaIcon(content.get('rating'));
+          rating = (
+            React.DOM.i( {className:"fauna-icon " + faunaRating} )
           );
         }
         else {
@@ -19695,38 +19707,38 @@ module.exports = warning;
       }
 
       return (
-        React.DOM.div( {className:"library-entry"}, 
-          React.DOM.div( {className:listGroupClass, onClick:this.toggleDropdown}, 
-            React.DOM.div( {className:"list-item-left"}, 
+        React.DOM.div( {className:"library-entry"},
+          React.DOM.div( {className:listGroupClass, onClick:this.toggleDropdown},
+            React.DOM.div( {className:"list-item-left"},
               content.get('manga.displayTitle'),
                content.get('private')
                 ? React.DOM.span( {className:"anime-label"}, React.DOM.i( {className:"fa fa-eye-slash"} ))
                 : '',
-              
+
                content.get('rereading')
                 ? React.DOM.span( {className:"anime-label"}, React.DOM.i( {className:"fa fa-repeat"} ))
                 : '',
-              
+
                content.get('notes')
                 ? React.DOM.span( {className:"anime-label"}, React.DOM.i( {className:"fa fa-book"} ))
                 : ''
-              
+
             ),
-            React.DOM.div( {className:"list-item-right"}, 
-              React.DOM.div( {className:"list-item-progress"}, 
+            React.DOM.div( {className:"list-item-right"},
+              React.DOM.div( {className:"list-item-progress"},
                  this.props.view.get('user.viewingSelf')
                   ? React.DOM.i( {title:"Increment chapter count", className:"episode-increment", onClick:this.incrementChapters} )
-                  : '', 
-                React.DOM.form( {style: {display: "inline"},  onSubmit:this.saveChaptersRead} , 
+                  : '',
+                React.DOM.form( {style: {display: "inline"},  onSubmit:this.saveChaptersRead} ,
                   React.DOM.input( {className:"input-progress", type:"text", pattern:"[0-9]*", value:content.get('chaptersRead'), onChange:this.changeProgress, onBlur:this.saveChaptersRead} )
                 ),
                 React.DOM.span( {className:"progress-sep"}, "/"),
                 React.DOM.span( {className:"list-item-total"}, content.get('manga.displayChapterCount'))
               ),
-              React.DOM.div( {className:ratingDivClass}, 
+              React.DOM.div( {className:ratingDivClass},
                 rating
               ),
-              React.DOM.div( {className:"list-item-type"}, 
+              React.DOM.div( {className:"list-item-type"},
                 content.get('manga.mangaType')
               )
             )
@@ -19741,20 +19753,20 @@ module.exports = warning;
   var MangaLibrarySection = React.createClass({displayName: 'MangaLibrarySection',
     render: function() {
       return (
-        React.DOM.div( {className:"list-group"}, 
-          React.DOM.div( {className:"panel-divider"}, 
+        React.DOM.div( {className:"list-group"},
+          React.DOM.div( {className:"panel-divider"},
             React.DOM.span(null, this.props.content.get('title')),
-            React.DOM.span( {className:"right-align"}, 
+            React.DOM.span( {className:"right-align"},
               this.props.content.get('content.length'),
               ' ',
               this.props.content.get('content.length') == 1 ? 'Title' : 'Titles'
             )
           ),
-          
+
             this.props.content.get('content').map(function(entry, i) {
               return (MangaLibraryEntry( {key:entry.get('manga.id'), view:this.props.view, content:entry, index:i} ));
             }.bind(this))
-          
+
         )
       );
     }
@@ -19763,18 +19775,16 @@ module.exports = warning;
   this.MangaLibrarySectionsReactComponent = React.createClass({displayName: 'MangaLibrarySectionsReactComponent',
     render: function() {
       return (
-        React.DOM.div(null, 
-          
+        React.DOM.div(null,
+
             this.props.content.filter(function (section) {
               return section.get('visible');
             }).map(function (section) {
               return (MangaLibrarySection( {key:section.get('title'), content:section, view:this.props.view} ));
             }.bind(this))
-          
+
         )
       );
     }
   });
 })();
-
-
