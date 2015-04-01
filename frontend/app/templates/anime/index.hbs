@@ -162,6 +162,8 @@
             {{#if libraryEntryExists}}
               <div class="personal-rating active">
                 {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=libraryEntry.rating}}
+                {{! todo: remove fauna }}
+                / 73
               </div>
             {{/if}}
           </div>
