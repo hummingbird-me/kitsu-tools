@@ -37,7 +37,7 @@ const FAUNA_PER = 5.0 / FAUNA_ICONS.length;
 
 var getFaunaIcon = function (rating) {
   var i = Math.floor(rating / FAUNA_PER);
-  return 'icon-' + FAUNA_ICONS[i];
+  return 'icon-' + FAUNA_ICONS[Math.min(i, FAUNA_ICONS.length-1)];
 };
 
 var nearestHalf = function(number) {
