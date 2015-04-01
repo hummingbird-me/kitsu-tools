@@ -1,5 +1,12 @@
 .user-actions .personal-rating {
-  top: 7px;
+  top: 1px;
+  font-size: 20px;
+  color: #939393;
+}
+.user-actions .awesome-rating-widget {
+  font-size: 18px;
+  position: relative;
+  top: 5px;
 }
 .fauna-select {
   position: fixed;
@@ -7,8 +14,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100%;
-  width: 100%;
   display: none;
   z-index: 2000;
   background-color: white;

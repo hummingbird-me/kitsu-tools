@@ -127,9 +127,9 @@ $.fn.AwesomeRating = function(options) {
         });
       } else if (!rating) { // OPTION
         var cont = $('<span></span>');
-        var interval = FAUNA_ICONS.length / 7;
+        var interval = FAUNA_ICONS.length / 4;
         for (var i = 0, l = FAUNA_ICONS.length; i < l; i += interval) {
-          cont.append('<i class="icon-' + FAUNA_ICONS[Math.floor(i)] + '"></i>&nbsp;');
+          cont.append('&nbsp;<i class="icon-' + FAUNA_ICONS[Math.floor(i)] + '"></i>');
         }
       } else { // UNEDITABLE
         var cont = $('<span><i class="' + getFaunaIcon(rating) + '"></i></span>');
