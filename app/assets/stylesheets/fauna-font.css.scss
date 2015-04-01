@@ -1,0 +1,268 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "fauna";
+  src:url("fauna.eot");
+  src:url("fauna.eot?#iefix") format("embedded-opentype"),
+    url("fauna.woff") format("woff"),
+    url("fauna.ttf") format("truetype"),
+    url("fauna.svg#fauna") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "fauna" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "fauna" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-panda:before {
+  content: "a";
+}
+.icon-koala:before {
+  content: "b";
+}
+.icon-ostrich:before {
+  content: "c";
+}
+.icon-sloth:before {
+  content: "d";
+}
+.icon-rhinoceros:before {
+  content: "e";
+}
+.icon-tapir:before {
+  content: "f";
+}
+.icon-red-panda:before {
+  content: "g";
+}
+.icon-opposom:before {
+  content: "h";
+}
+.icon-lynx:before {
+  content: "i";
+}
+.icon-elephant:before {
+  content: "j";
+}
+.icon-owl:before {
+  content: "k";
+}
+.icon-camel:before {
+  content: "l";
+}
+.icon-lion:before {
+  content: "n";
+}
+.icon-tiger:before {
+  content: "p";
+}
+.icon-cheetah:before {
+  content: "r";
+}
+.icon-hippo:before {
+  content: "s";
+}
+.icon-walrus:before {
+  content: "t";
+}
+.icon-sea-lion:before {
+  content: "u";
+}
+.icon-hyena:before {
+  content: "v";
+}
+.icon-lioness:before {
+  content: "w";
+}
+.icon-poodle:before {
+  content: "x";
+}
+.icon-husky:before {
+  content: "y";
+}
+.icon-afgan-hound:before {
+  content: "z";
+}
+.icon-chihuahua:before {
+  content: "A";
+}
+.icon-golden-retriever:before {
+  content: "B";
+}
+.icon-bulldog:before {
+  content: "C";
+}
+.icon-hamster:before {
+  content: "E";
+}
+.icon-maltese:before {
+  content: "F";
+}
+.icon-bull-terrier:before {
+  content: "G";
+}
+.icon-beagle:before {
+  content: "H";
+}
+.icon-pigeon:before {
+  content: "I";
+}
+.icon-chicken:before {
+  content: "J";
+}
+.icon-bald-eagle:before {
+  content: "K";
+}
+.icon-sparrow:before {
+  content: "L";
+}
+.icon-pig:before {
+  content: "M";
+}
+.icon-warthog:before {
+  content: "N";
+}
+.icon-mouse:before {
+  content: "O";
+}
+.icon-skunk:before {
+  content: "P";
+}
+.icon-wolf:before {
+  content: "Q";
+}
+.icon-raccoon:before {
+  content: "R";
+}
+.icon-fox:before {
+  content: "S";
+}
+.icon-gorilla:before {
+  content: "T";
+}
+.icon-monkey:before {
+  content: "U";
+}
+.icon-baboon:before {
+  content: "V";
+}
+.icon-tarsier:before {
+  content: "W";
+}
+.icon-orangutan:before {
+  content: "X";
+}
+.icon-proboscis-monkey:before {
+  content: "Y";
+}
+.icon-turtle:before {
+  content: "Z";
+}
+.icon-donkey:before {
+  content: "0";
+}
+.icon-zebra:before {
+  content: "1";
+}
+.icon-unicorn:before {
+  content: "2";
+}
+.icon-horse:before {
+  content: "3";
+}
+.icon-bull:before {
+  content: "4";
+}
+.icon-cow:before {
+  content: "5";
+}
+.icon-african-buffalo:before {
+  content: "6";
+}
+.icon-wildebeest:before {
+  content: "7";
+}
+.icon-duck:before {
+  content: "8";
+}
+.icon-swan:before {
+  content: "9";
+}
+.icon-giraffe:before {
+  content: "!";
+}
+.icon-antelope:before {
+  content: "\"";
+}
+.icon-goat:before {
+  content: "#";
+}
+.icon-ram:before {
+  content: "$";
+}
+.icon-sheep:before {
+  content: "%";
+}
+.icon-moose:before {
+  content: "&";
+}
+.icon-cat:before {
+  content: "'";
+}
+.icon-sphynx:before {
+  content: "(";
+}
+.icon-reindeer:before {
+  content: ")";
+}
+.icon-rabbit:before {
+  content: "+";
+}
+.icon-peacock:before {
+  content: ",";
+}
+.icon-flamingo:before {
+  content: "-";
+}
+.icon-bat:before {
+  content: ".";
+}
+.icon-cobra:before {
+  content: "/";
+}
+.icon-snake:before {
+  content: ":";
+}
+.icon-frog:before {
+  content: ";";
+}
+.icon-toad:before {
+  content: "<";
+}
+.icon-bear:before {
+  content: ">";
+}
