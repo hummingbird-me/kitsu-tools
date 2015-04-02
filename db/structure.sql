@@ -1010,7 +1010,9 @@ CREATE TABLE manga (
     cover_image_top_offset integer DEFAULT 0,
     volume_count integer,
     chapter_count integer,
-    manga_type character varying(255) DEFAULT 'Manga'::character varying
+    manga_type character varying(255) DEFAULT 'Manga'::character varying,
+    bayesian_average double precision,
+    rating_frequencies hstore DEFAULT ''::hstore NOT NULL
 );
 
 
@@ -3795,4 +3797,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150317215112');
 INSERT INTO schema_migrations (version) VALUES ('20150401033305');
 
 INSERT INTO schema_migrations (version) VALUES ('20150402020045');
+
+INSERT INTO schema_migrations (version) VALUES ('20150402040627');
 
