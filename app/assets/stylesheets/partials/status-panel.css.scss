@@ -454,7 +454,9 @@
       font-size: 14px;
       padding-left: 0;
 
-      img:not(.emoji) {
+      img:not(.emoji),
+      video,
+      iframe {
         display: block;
       }
     }
