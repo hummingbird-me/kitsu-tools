@@ -316,6 +316,13 @@ class Anime < ActiveRecord::Base
         Episode.create(anime_id: self.id, number: n)
       end
     end
+
+    # If started airing date changed, refresh cache of characters
+    if finished_airing_date_changed?
+      Character.find(castings.pluck(:character_id).uniq).each do |character|
+        character.update_attribute :primary_media, character.appearances.first
+      end
+    end
   end
 
   after_save do

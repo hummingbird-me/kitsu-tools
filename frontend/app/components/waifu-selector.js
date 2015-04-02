@@ -28,7 +28,8 @@ export default Ember.Component.extend({
         filter: function(characters) {
           return Ember.$.map(characters.search, function(character) {
             return {
-              value: character.title,
+              name: character.title,
+              title: character.get('primaryMedia.displayTitle'),
               char_id: character.link
             };
           });
@@ -37,8 +38,12 @@ export default Ember.Component.extend({
     });
     bloodhound.initialize();
     this.typeahead = this.$().typeahead(null, {
-      displayKey: 'value',
-      source: bloodhound.ttAdapter()
+      displayKey: 'name',
+      source: bloodhound.ttAdapter(),
+      templates: {
+        empty: '<div class="empty-message">Nobody found :(</div>',
+        suggestion: Ember.Handlebars.compile('<p><strong>{{name}}</strong> ({{title}})</p>')
+      }
     });
     this.typeahead.on("typeahead:selected", function(event, item) {
       return _this.sendAction('action', item);

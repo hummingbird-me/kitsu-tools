@@ -1,9 +1,10 @@
 class UserSerializer < ActiveModel::Serializer
   attributes :id, :cover_image_url, :avatar_template, :rating_type, :bio,
     :about, :is_followed, :title_language_preference, :location, :website,
-    :waifu, :waifu_or_husbando, :waifu_slug, :waifu_char_id, :last_sign_in_at,
-    :current_sign_in_at, :is_admin, :following_count, :follower_count, :is_pro,
-    :about_formatted
+    :waifu_or_husbando, :last_sign_in_at, :current_sign_in_at, :is_admin,
+    :following_count, :follower_count, :is_pro, :about_formatted
+
+  has_one :waifu, root: :characters
 
   def id
     object.name

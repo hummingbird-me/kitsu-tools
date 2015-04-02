@@ -4,8 +4,8 @@ class CharactersController < ApplicationController
     respond_to do |format|
       format.json { render json: character }
       format.html {
-        preload_to_ember! character
-        render_ember
+        # Until we have character pages
+        redirect_to character.primary_media
       }
     end
   end

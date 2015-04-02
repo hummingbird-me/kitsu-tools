@@ -40,6 +40,7 @@ class Character < ActiveRecord::Base
 
   validates :name, :presence => true
   has_many :castings, dependent: :destroy
+  belongs_to :primary_media, polymorphic: true
 
   has_attached_file :image,
     styles: {thumb_small: "60x60#"},
@@ -50,8 +51,11 @@ class Character < ActiveRecord::Base
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
 
-  def primary_media
-    self.castings.first.media
+  def appearances
+    # Kind of a shitty solution, but required to support both manga and anime
+    self.castings.preload(:castable).map(&:castable).uniq.sort { |a|
+      a.try(:started_airing_date) or a.try(:start_date) or Date.today
+    }
   end
 
   def self.create_or_update_from_hash(hash)
