@@ -79,19 +79,7 @@ Router.map(function() {
   this.route('branding');
   this.route('privacy');
   this.route('kotodama');
-  this.route('apps/mine');
   this.route('loading');
-  this.route('story/permalink');
-  this.route('anime/quotes');
-  this.route('user/reviews');
-  this.route('user/followers');
-  this.route('user/following');
-  this.route('onboarding/categories');
-  this.route('onboarding/library');
-  this.route('onboarding/finish');
-  this.route('reviews/show');
-  this.route('user/library');
-  this.route('user/manga-library');
   this.route('pro');
 });
 
