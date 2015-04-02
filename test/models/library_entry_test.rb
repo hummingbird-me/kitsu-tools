@@ -63,7 +63,6 @@ class LibraryEntryTest < ActiveSupport::TestCase
   end
 
   test "accepts only valid ratings" do
-    skip
     entry = LibraryEntry.first
     [-1, 0, 0.1].each do |i|
       entry.rating = i

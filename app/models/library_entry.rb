@@ -35,7 +35,7 @@ class LibraryEntry < ActiveRecord::Base
 
   validate :rating_is_valid
   def rating_is_valid
-    if self.rating && (self.rating <= 0 || self.rating > 5)
+    if self.rating && (self.rating <= 0 || self.rating > 5 || (self.rating * 2) % 1 != 0)
       errors.add(:rating, "is not in the valid range")
     end
   end

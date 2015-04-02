@@ -20,26 +20,6 @@ var simpleRatingIcons = {
 
 var advancedRatingIcons = ['fa fa-star-o', 'fa fa-star-half-o', 'fa fa-star'];
 
-const FAUNA_ICONS = [
-  'panda', 'koala', 'ostrich', 'sloth', 'rhinoceros', 'tapir', 'red-panda',
-  'opposom', 'lynx', 'elephant',	'owl', 'camel', 'lion', 'tiger', 'cheetah',
-  'hippo', 'walrus', 'sea-lion', 'hyena', 'poodle', 'husky', 'afgan-hound',
-  'chihuahua', 'golden-retriever', 'bulldog', 'hamster', 'maltese', 'warthog',
-  'bull-terrier', 'beagle', 'pigeon', 'chicken', 'bald-eagle', 'sparrow',
-  'pig', 'mouse', 'skunk', 'wolf', 'raccoon', 'fox', 'gorilla', 'monkey',
-  'baboon', 'tarsier', 'orangutan', 'proboscis-monkey', 'turtle', 'donkey',
-  'zebra', 'unicorn', 'horse', 'bull', 'cow', 'african-buffalo', 'wildebeest',
-  'duck', 'swan', 'giraffe', 'antelope', 'goat', 'ram', 'cat', 'sphynx',
-  'reindeer', 'rabbit', 'peacock', 'flamingo', 'bat', 'cobra', 'snake', 'frog',
-  'toad', 'bear'
-];
-const FAUNA_PER = 5.0 / FAUNA_ICONS.length;
-
-var getFaunaIcon = function (rating) {
-  var i = Math.floor(rating / FAUNA_PER);
-  return 'icon-' + FAUNA_ICONS[Math.min(i, FAUNA_ICONS.length-1)];
-};
-
 var nearestHalf = function(number) {
   if (Ember.isNone(number)) {
     return null;
@@ -95,46 +75,6 @@ $.fn.AwesomeRating = function(options) {
         _results.push($(this).append(icon));
       }
       return _results;
-    } else if (options["type"] === "fauna") {
-      // Fauna ratings.
-      if (options['editable']) { // EDITABLE
-        var cont = $('<div class="dropdown"></div>');
-        // The current icon
-        var icon = $('<a aria-haspopup="true" aria-expanded="false" style="cursor:pointer" href="javascript:;"><i class="' + getFaunaIcon(rating) + '"></i></a>').appendTo(cont);
-        // The options to display
-        var dropdownCont = $('<div class="fauna-select"></div>').appendTo(cont);
-        var dropdown = $('<ul class="fauna-select-menu" role="menu">').appendTo(dropdownCont);
-        FAUNA_ICONS.forEach(function (name, i) {
-          var humanName = name.split('-').map(function (w) {
-            return w.charAt(0).toUpperCase() + w.substr(1).toLowerCase();
-          }).join(' ');
-          dropdown.append('<li data-rating="' + i + '" class="fauna-select-item">' +
-                            '<i class="fauna-icon icon-' + name + '"></i>' +
-                            '<span class="fauna-name">' + humanName + '</span>' +
-                          '</li>');
-        });
-
-        // The event handling
-        icon.on('click', function() {
-          dropdownCont.toggle();
-          $('html').toggleClass('scroll-lock');
-        });
-        dropdown.on('click', function(e) {
-          $('html').removeClass('scroll-lock');
-          dropdownCont.hide();
-          var newRating = $(e.target).closest('li').attr('data-rating') * FAUNA_PER;
-          return options["update"](newRating);
-        });
-      } else if (!rating) { // OPTION
-        var cont = $('<span></span>');
-        var interval = FAUNA_ICONS.length / 4;
-        for (var i = 0, l = FAUNA_ICONS.length; i < l; i += interval) {
-          cont.append('&nbsp;<i class="icon-' + FAUNA_ICONS[Math.floor(i)] + '"></i>');
-        }
-      } else { // UNEDITABLE
-        var cont = $('<span><i class="' + getFaunaIcon(rating) + '"></i></span>');
-      }
-      cont.appendTo(widget);
     } else {
       // Advanced ratings.
       rating = nearestHalf(rating);

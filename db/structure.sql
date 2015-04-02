@@ -1048,7 +1048,7 @@ CREATE TABLE manga_library_entries (
     reread_count integer DEFAULT 0 NOT NULL,
     rereading boolean DEFAULT false NOT NULL,
     last_read timestamp without time zone,
-    rating numeric(4,3),
+    rating numeric(2,1),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     notes text,
@@ -1650,8 +1650,7 @@ CREATE TABLE users (
     stripe_token character varying(255),
     pro_membership_plan_id integer,
     stripe_customer_id character varying(255),
-    about_formatted text,
-    fauna_rating boolean DEFAULT true
+    about_formatted text
 );
 
 
@@ -1794,7 +1793,7 @@ CREATE TABLE watchlists (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     episodes_watched integer DEFAULT 0 NOT NULL,
-    rating numeric(4,3),
+    rating numeric(2,1),
     last_watched timestamp without time zone,
     imported boolean,
     private boolean DEFAULT false,
@@ -3794,4 +3793,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150305204429');
 INSERT INTO schema_migrations (version) VALUES ('20150317215112');
 
 INSERT INTO schema_migrations (version) VALUES ('20150401033305');
+
+INSERT INTO schema_migrations (version) VALUES ('20150402020045');
 

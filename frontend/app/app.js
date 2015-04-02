@@ -22,7 +22,6 @@ Ember.Route.reopen({
 
   activate: function() {
     window.scrollTo(0, 0);
-    Ember.$('html').removeClass('scroll-lock');
   }
 });
 
