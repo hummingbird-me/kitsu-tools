@@ -40,6 +40,7 @@
 
 class Anime < ActiveRecord::Base
   include Versionable
+  include BayesianAverageable
 
   include PgSearch
   pg_search_scope :instant_search,
