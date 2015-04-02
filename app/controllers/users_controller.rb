@@ -211,8 +211,6 @@ class UsersController < ApplicationController
         current_user.star_rating = false
       elsif params[:rating_system] == "advanced"
         current_user.star_rating = true
-      elsif params[:rating_system] == 'fauna'
-        current_user.fauna_rating = true
       end
     end
 
@@ -252,9 +250,7 @@ class UsersController < ApplicationController
         user.email = changes[:email]
         user.password = changes[:new_password] unless changes[:new_password].blank?
         user.name = changes[:new_username] unless changes[:new_username].blank?
-        # Don't change the star_rating setting if the user picks fauna
-        user.star_rating = (changes[:rating_type] == 'advanced') unless changes[:rating_type] == 'fauna'
-        user.fauna_rating = (changes[:rating_type] == 'fauna')
+        user.star_rating = (changes[:rating_type] == 'advanced')
         user.sfw_filter = changes[:sfw_filter]
         user.title_language_preference = changes[:title_language_preference]
       end

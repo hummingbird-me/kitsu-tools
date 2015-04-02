@@ -14,7 +14,6 @@ class UserSerializer < ActiveModel::Serializer
   end
 
   def rating_type
-    return 'fauna' if object.fauna_rating?
     object.star_rating? ? "advanced" : "simple"
   end
 

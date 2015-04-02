@@ -19241,12 +19241,6 @@ module.exports = warning;
             )
           );
         }
-        else if (this.props.view.get('user.ratingType') == "fauna") {
-          var faunaRating = getFaunaIcon(content.get('rating'));
-          rating = (
-            React.DOM.i( {className:"fauna-icon " + faunaRating} )
-          );
-        }
         else {
           var iconClass;
           if (content.get('positiveRating')) { iconClass = "fa fa-smile-o"; }
@@ -19686,12 +19680,6 @@ module.exports = warning;
               ' ',
               content.get('rating').toFixed(1)
             )
-          );
-        }
-        else if (this.props.view.get('user.ratingType') == "fauna") {
-          var faunaRating = getFaunaIcon(content.get('rating'));
-          rating = (
-            React.DOM.i( {className:"fauna-icon " + faunaRating} )
           );
         }
         else {
