@@ -91,6 +91,7 @@ class API_v1 < Grape::API
       if anime
         json = {
           id: anime.id,
+          mal_id: anime.mal_id,
           slug: anime.slug,
           status: anime.status,
           url: "https://hummingbird.me/anime/#{anime.slug}",
