@@ -1,6 +1,6 @@
 class BayesianUpdateWorker
   include Sidekiq::Worker
-  include Sidetiq::Scheduleable
+  include Sidetiq::Schedulable
 
   recurrence { daily }
 
