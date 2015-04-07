@@ -31,15 +31,15 @@
           {{#link-to 'story.permalink' this class="permalink"}}
             permalink
           {{/link-to}}
-          {{#if canDeleteStory}}
-            ·
-            <a class="remove-post" {{action "deleteStory"}}>remove</a>
-          {{/if}}
-          {{#if currentUser.isAdmin}}
+          {{#if canToggleNSFW}}
             ·
             <a class="remove-post" {{action "toggleNSFW"}}>
               {{#if adult}}remove{{else}}set{{/if}} nsfw
             </a>
+          {{/if}}
+          {{#if canDeleteStory}}
+            ·
+            <a class="remove-post" {{action "deleteStory"}}>remove</a>
           {{/if}}
         </p>
       </div>
