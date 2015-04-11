@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import Model from '../models/model';
 import ModelCurrentUser from '../mixins/model-current-user';
@@ -38,4 +39,6 @@ export default Model.extend(ModelCurrentUser, {
 
     return this.get('belongsToUser') || this.get('currentUser.isAdmin') || canDeleteViaGroupRank;
   }.property('isNew', 'belongsToUser', 'currentUser.isAdmin', 'group'),
+
+  canToggleNSFW: Ember.computed.alias('canDeleteStory')
 });

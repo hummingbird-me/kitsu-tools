@@ -84,8 +84,8 @@ class StoriesController < ApplicationController
 
     story = Story.find_by_id(params[:id])
 
-    # limit adult updates to admins
-    if current_user.admin?
+    # handle NSFW tagging
+    if story.can_toggle_nsfw?(current_user) && params[:story][:adult].present?
       story.update_attribute(:adult, params[:story][:adult])
     end
 

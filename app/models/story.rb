@@ -78,6 +78,7 @@ class Story < ActiveRecord::Base
     user.admin? || user.id == self.user_id || user.id == self.target_id ||
       (self.group.present? && self.group.is_staff?(user))
   end
+  alias_method :can_toggle_nsfw?, :can_be_deleted_by?
 
   def set_is_liked!(v)
     @is_liked = v
