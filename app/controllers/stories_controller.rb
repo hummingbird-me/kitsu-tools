@@ -85,7 +85,7 @@ class StoriesController < ApplicationController
     story = Story.find_by_id(params[:id])
 
     # handle NSFW tagging
-    if story.can_toggle_nsfw?(current_user) && params[:story][:adult].present?
+    if story.can_toggle_nsfw?(current_user) && params[:story].has_key?(:adult)
       story.update_attribute(:adult, params[:story][:adult])
     end
 
