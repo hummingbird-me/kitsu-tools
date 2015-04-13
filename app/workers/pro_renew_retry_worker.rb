@@ -18,7 +18,7 @@ class ProRenewRetryWorker
     tries.each.with_index do |users, index|
       users.all.each do |user|
         manager = ProMembershipManager.new(user)
-        manager.renew! attempt: index+1
+        manager.renew! attempt_number: index+1
       end
     end
   end
