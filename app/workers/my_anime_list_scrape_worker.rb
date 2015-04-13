@@ -3,6 +3,6 @@ class MyAnimeListScrapeWorker
 
   def perform(type, id)
     db = type.camelize.constantize
-    db.create_or_update_from_hash(MALImport.new(type, id).to_h)
+    db.create_or_update_from_hash(MALImport.new(type.to_sym, id).to_h)
   end
 end
