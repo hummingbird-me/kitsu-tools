@@ -23,7 +23,12 @@ class DropboxBackupWorker
 
     # Upload the backup
     client = Dropbox::API::Client.new(token: user.dropbox_token, secret: user.dropbox_secret)
-    client.upload('library-backup.json', backup.to_json)
+    begin
+      client.upload('library-backup.json', backup.to_json)
+    rescue Dropbox::API::Error::Unauthorized
+      user.update(dropbox_token: nil, dropbox_secret: nil)
+      return
+    end
 
     # Update the last_backup timestamp
     user.update(last_backup: DateTime.now)
