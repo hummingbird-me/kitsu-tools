@@ -30,7 +30,7 @@ module Auth
       current_user_provider = env[CURRENT_USER_PROVIDER_KEY]
 
       if user_signed_in?
-        sign_in(current_user) if current_user_provider.token.expires_in < 1.month
+        current_user_provider.log_on_user(current_user, cookies) if current_user_provider.token.expires_in < 1.month
         current_user.update_ip! request.remote_ip
       end
     end
