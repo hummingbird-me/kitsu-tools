@@ -1,11 +1,10 @@
 require_dependency 'user_query'
 
 class UsersController < ApplicationController
-  before_filter :hide_cover_image
+  before_action :canonicalize_url
 
   def index
-    if params[:followed_by] or params[:followers_of]
-
+    if params[:followed_by] || params[:followers_of]
       if params[:followed_by]
         users = User.find(params[:followed_by]).following
       elsif params[:followers_of]
@@ -15,109 +14,48 @@ class UsersController < ApplicationController
       UserQuery.load_is_followed(users, current_user)
 
       render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
-
     elsif params[:to_follow]
       render json: User.where(to_follow: true), each_serializer: UserSerializer
-
     else
       ### OLD CODE PATH BELOW. Used only by the recommendations page.
       authenticate_user!
 
-      @status = {
+      status = {
         recommendations_up_to_date: current_user.recommendations_up_to_date
       }
 
       respond_to do |format|
-        format.html {
-          flash.keep
-          redirect_to '/'
-        }
-        format.json {
-          render :json => @status
-        }
+        format.html { redirect_to '/' }
+        format.json { render json: status }
       end
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
 
-    # Redirect to canonical URL if this isn't it.
-    if request.path != user_path(@user)
-      return redirect_to user_path(@user), status: :moved_permanently
-    end
-
-    if user_signed_in? and current_user == @user
+    if user_signed_in? and current_user == user
       # Clear notifications if the current user is viewing his/her feed.
       # TODO This needs to be moved elsewhere.
-      Notification.where(user: @user, notification_type: "profile_comment", seen: false).update_all seen: true
+      Notification.where(user: user, notification_type: "profile_comment", seen: false).update_all seen: true
     end
 
-    respond_to do |format|
-      format.html do
-        preload_to_ember! @user
-        render_ember
-      end
-      format.json { render json: @user }
-    end
-
+    respond_with_ember user
   end
 
-  def followers
-    user = User.find(params[:user_id])
-    preload_to_ember! user
-    render_ember
-  end
-
-  def following
-    user = User.find(params[:user_id])
-    preload_to_ember! user
-    render_ember
-  end
-
-  def favorite_anime
-    @active_tab = :favorite_anime
-    @user = User.find(params[:user_id])
-    @favorite_anime = @user.favorites.where(item_type: "Anime").includes(:item).order('favorites.fav_rank, favorites.id').page(params[:page]).per(50)
-    render "favorite_anime", layout: "layouts/profile"
-  end
-
-  def library
-    @user = User.find(params[:user_id])
-
-    # Redirect to canonical URL if this isn't it.
-    if request.path != user_library_path(@user)
-      return redirect_to user_library_path(@user), status: :moved_permanently
-    end
-
-    preload_to_ember! @user
-    render_ember
-  end
-
-  def groups
-    user = User.find(params[:user_id])
-    preload_to_ember! user
-    render_ember
-  end
-
-  def manga_library
-    @user = User.find(params[:user_id])
-
-    preload_to_ember! @user
-    render_ember
-  end
+  ember_action(:ember) { User.find(params[:user_id]) }
 
   def follow
     authenticate_user!
-    @user = User.find(params[:user_id])
+    user = User.find(params[:user_id])
 
-    if @user != current_user
-      if @user.followers.include? current_user
-        @user.followers.destroy current_user
+    if user != current_user
+      if user.followers.include? current_user
+        user.followers.destroy current_user
         action_type = "unfollowed"
       else
         if current_user.following_count < 10000
-          @user.followers.push current_user
+          user.followers.push current_user
           action_type = "followed"
         else
           flash[:message] = "Wow! You're following 10,000 people?! You should unfollow a few people that no longer interest you before following any others."
@@ -129,7 +67,7 @@ class UsersController < ApplicationController
         Substory.from_action({
           user_id: current_user.id,
           action_type: action_type,
-          followed_id: @user.id
+          followed_id: user.id
         })
       end
     end
@@ -138,22 +76,6 @@ class UsersController < ApplicationController
       format.html { redirect_to :back }
       format.json { render json: true }
     end
-  end
-
-  def reviews
-    user = User.find(params[:user_id])
-    preload_to_ember! user
-    render_ember
-  end
-
-  def update_cover_image
-    @user = User.find(params[:user_id])
-    authorize! :update, @user
-    if params[:user][:cover_image]
-      @user.cover_image = params[:user][:cover_image]
-      flash[:success] = "Cover image updated successfully." if @user.save
-    end
-    redirect_to :back
   end
 
   def update_avatar

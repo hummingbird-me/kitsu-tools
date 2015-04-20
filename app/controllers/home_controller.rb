@@ -1,8 +1,6 @@
 require_dependency 'library_entry_query'
 
 class HomeController < ApplicationController
-  before_filter :hide_cover_image
-
   def index
     if user_signed_in?
       redirect_to "/dashboard"
@@ -32,10 +30,6 @@ class HomeController < ApplicationController
     generic_preload! "break_counter", break_counter
 
     render_ember
-  end
-
-  def feed
-    redirect_to "/api/v1/timeline?page=#{params[:page] || 1}"
   end
 
   def static
