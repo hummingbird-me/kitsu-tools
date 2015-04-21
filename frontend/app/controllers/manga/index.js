@@ -1,14 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  activeTab: "Genres",
-
-  showGenres: Ember.computed.equal('activeTab', 'Genres'),
-  showCharacters: Ember.computed.equal('activeTab', 'Characters'),
-
-  actions: {
-    switchTo: function (newTab) {
-      return this.set('activeTab', newTab);
-    }
-  }
+  mangaLibraryEntryExists: function() {
+    return (!Ember.isNone(this.get('model.mangaLibraryEntry'))) && (!this.get('model.mangaLibraryEntry.isDeleted'));
+  }.property('model.mangaLibraryEntry', 'model.mangaLibraryEntry.isDeleted')
 });
