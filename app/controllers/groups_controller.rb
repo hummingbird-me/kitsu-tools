@@ -22,7 +22,7 @@ class GroupsController < ApplicationController
     end
   end
 
-  ember_action(:show) { Group.find(params[:id]) }
+  ember_action(:show, true) { Group.find(params[:id]) }
 
   def new
     authenticate_user!

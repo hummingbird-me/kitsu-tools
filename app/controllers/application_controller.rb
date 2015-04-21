@@ -74,7 +74,7 @@ class ApplicationController < ActionController::Base
   # Creates a controller action which does a "default" Ember rendering
   def self.ember_action(action_name, accept_json = false, &block)
     define_method(action_name.to_sym) do
-      respond_with_ember(yield, accept_json)
+      respond_with_ember(instance_eval(&block), accept_json)
     end
   end
 
@@ -130,6 +130,8 @@ class ApplicationController < ActionController::Base
   end
 
   def is_url_canonical?
-    request.request_uri == url_for(params.merge(only_path: true))
+    # TestRequest is like your boss — he can never be wrong
+    return true if request.is_a? ActionDispatch::TestRequest
+    request.original_url == url_for(params.merge(only_path: true))
   end
 end

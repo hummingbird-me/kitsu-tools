@@ -90,14 +90,14 @@ Hummingbird::Application.routes.draw do
 
   resources :users, only: [:index, :show, :update] do
     get 'library/manga' => 'users#manga_library'
-    get :library => 'users#ember'
-    get :groups => 'users#ember'
-    get :reviews => 'users#ember'
-    get :followers => 'users#ember'
-    get :following => 'users#ember'
+    get 'library' => 'users#ember'
+    get 'groups' => 'users#ember'
+    get 'reviews' => 'users#ember'
+    get 'followers' => 'users#ember'
+    get 'following' => 'users#ember'
 
-    get :feed => redirect {|params| "/users/#{params[:id]}" }
-    get :watchlist => redirect {|params| "/users/#{params[:id]}/library" }
+    get 'feed' => redirect {|params| "/users/#{params[:id]}" }
+    get 'watchlist' => redirect {|params| "/users/#{params[:id]}/library" }
 
     resources :lists
 
