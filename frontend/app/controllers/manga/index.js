@@ -1,14 +1,8 @@
 import Ember from 'ember';
+import HasCurrentUser from '../../mixins/has-current-user';
 
-export default Ember.ObjectController.extend({
-  activeTab: "Genres",
-
-  showGenres: Ember.computed.equal('activeTab', 'Genres'),
-  showCharacters: Ember.computed.equal('activeTab', 'Characters'),
-
-  actions: {
-    switchTo: function (newTab) {
-      return this.set('activeTab', newTab);
-    }
-  }
+export default Ember.ObjectController.extend(HasCurrentUser, {
+  mangaLibraryEntryExists: function() {
+    return (!Ember.isNone(this.get('model.mangaLibraryEntry'))) && (!this.get('model.mangaLibraryEntry.isDeleted'));
+  }.property('model.mangaLibraryEntry', 'model.mangaLibraryEntry.isDeleted')
 });

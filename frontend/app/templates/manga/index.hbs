@@ -1,42 +1,110 @@
-<h2 class="series-title hidden-xs">
-  {{romajiTitle}}
-  {{#if englishTitle}}
-    <small>
-      {{#bootstrap-tooltip title=englishTitle placement="right"}}
-        <i class="fa fa-question-circle"></i>
-      {{/bootstrap-tooltip}}
-    </small>
-  {{/if}}
-</h2>
+<div class="container">
+  <!-- Left side start -->
+  <div class="series-column">
+    <div class="series-panel">
 
-<div class="hidden-xs">
-  {{partial "manga/infobar"}}
-</div>
-
-<div class="series-description hidden-xs">
-  <p>{{truncate-text text=synopsis length=500}}</p>
-</div>
-
-<div class="info-tabs">
-  <ul class="nav nav-tabs">
-    <li {{bind-attr class="showGenres:active"}}>
-      <a {{action "switchTo" "Genres"}}> Genres</a>
-    </li>
-    <li {{bind-attr class="showCharacters:active"}}>
-      <a {{action "switchTo" "Characters"}}> Characters</a>
-    </li>
-  </ul>
-
-  <div class="tab-content">
-    <div class="tab-pane active genre-tab">
-      <div {{bind-attr class=":slider showGenres::hidden"}}>
-        {{#each genre in genres}}
-          <span class="badge">{{genre}}</span>
-        {{/each}}
+      <div class="poster-container">
+        <div class="poster-actions">
+          <img class="series-poster" {{bind-attr src=posterImage}}>
+          {{#if libraryEntryExists}}
+            {{#if libraryEntry.isFavorite}}
+              <a data-tooltip="You favorited this!" {{bind-attr class=":favorite-link"}} {{action "toggleFavorite"}}>
+                <i {{bind-attr class=":fa :fa-heart"}}></i>
+              </a>
+            {{else}}
+              <a data-tooltip="Favorite this?"{{bind-attr class=":favorite-link"}} {{action "toggleFavorite"}}>
+                <i {{bind-attr class=":fa :fa-heart-o"}}></i>
+              </a>
+            {{/if}}
+          {{/if}}
+        </div>
       </div>
-      <div {{bind-attr class=":slider showCharacters::hidden"}}>
-        {{partial "manga/characters"}}
+
+      <div class="series-info">
+
+        <h3 class="series-title">
+          {{romajiTitle}}
+          {{#if englishTitle}}
+            <small class="alternate-title">
+              {{englishTitle}}
+            </small>
+          {{/if}}
+        </h3>
+
+        <div class="series-infobar">{{partial "manga/infobar"}}</div>
+
+        <div class="synopsis">
+          <p>{{{truncate-text text=synopsis length=200 breakLines=true}}}</p>
+        </div>
+
+        <div class="genres">
+          <h5 class="small-label">Genres:</h5>
+          <ul class="inline-list">
+            {{#each genre in genres}}
+              <li>{{genre}}</li>
+            {{/each}}
+          </ul>
+        </div>
+
+        {{#if currentUser.isSignedIn}}
+          <div {{bind-attr class=":user-actions libraryEntryExists::no-entry"}}>
+            <div class="btn-group">
+
+              <button {{bind-attr class=":library-button :library-entry :dropdown-toggle libraryStatus:active"}} type="button" data-toggle="dropdown">
+                {{#if mangalibraryEntryExists}}
+                  {{mangaLibraryEntry.status}}&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
+                {{else}}
+                  Add to Library&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
+                {{/if}}
+              </button>
+
+              <ul class="dropdown-menu">
+                <li><a {{action "setLibraryStatus" "Currently Reading"}}>Currently Reading</a></li>
+                <li><a {{action "setLibraryStatus" "Plan to Read"}}>Plan to Read</a></li>
+                <li><a {{action "setLibraryStatus" "Completed"}}>Completed</a></li>
+                <li><a {{action "setLibraryStatus" "On Hold"}}>On Hold</a></li>
+                <li><a {{action "setLibraryStatus" "Dropped"}}>Dropped</a></li>
+                <li><a {{action "removeFromLibrary"}}>Remove from Library</a></li>
+              </ul>
+            </div>
+            {{#if libraryEntryExists}}
+              <div class="personal-rating active">
+                {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=libraryEntry.rating}}
+              </div>
+            {{/if}}
+          </div>
+        {{/if}}
       </div>
     </div>
+    <!-- End series panel -->
+  </div>
+  <!-- Left side End -->
+
+  <!-- Right Side Start -->
+  <div class="community-column">
+    {{!--
+    {{#if roundedBayesianRating}}
+      <div class="hb-score">
+        <h3>Hummingbird Score: <span class="highlight">{{roundedBayesianRating}}</span></h3>
+      </div>
+    {{/if}}
+    <div class="histogram">
+      {{community-rating communityRatings}}
+      <div class="rating-legend">
+        <span class="lowest-rating">
+          <i class="fa fa-star-half-o"></i>
+          <i class="fa fa-long-arrow-right"></i>
+        </span>
+        <span class="highest-rating">
+          <i class="fa fa-long-arrow-left"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+        </span>
+      </div>
+    </div>
+    --}}
   </div>
 </div>
