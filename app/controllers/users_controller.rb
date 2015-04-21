@@ -125,63 +125,34 @@ class UsersController < ApplicationController
     end
   end
 
-  def update_setting
-    authenticate_user!
-
-    if params[:rating_system]
-      if params[:rating_system] == "simple"
-        current_user.star_rating = false
-      elsif params[:rating_system] == "advanced"
-        current_user.star_rating = true
-      end
-    end
-
-    if current_user.save
-      render :json => true
-    else
-      render :json => false
-    end
-  end
-
-  def cover_image
-    user = User.find_by_name(params[:user_id]) || not_found!
-    redirect_to user.cover_image.url(:thumb)
-  end
-
   def update
     authenticate_user!
 
     user = User.find(params[:id])
     changes = params[:current_user] || params[:user]
 
-    if current_user == user
-      user.about = changes[:about] || ""
-      user.location = changes[:location]
-      user.waifu = changes[:waifu]
-      user.website = changes[:website]
-      user.waifu_or_husbando = changes[:waifu_or_husbando]
-      user.bio = changes[:bio] || ""
-      user.waifu_char_id = changes[:waifu_char_id]
+    return error!(401, 'Wrong user') unless current_user == user
 
-      if changes[:cover_image_url] =~ /^data:image/
-        user.cover_image = changes[:cover_image_url]
-      end
-
-      # Settings page stuff
-      if params[:current_user]
-        user.email = changes[:email]
-        user.password = changes[:new_password] unless changes[:new_password].blank?
-        user.name = changes[:new_username] unless changes[:new_username].blank?
-        user.star_rating = (changes[:rating_type] == 'advanced')
-        user.sfw_filter = changes[:sfw_filter]
-        user.title_language_preference = changes[:title_language_preference]
-      end
+    # Finagling things into place
+    changes[:cover_image] = changes[:cover_image_url] if changes[:cover_image_url] =~ /^data:/
+    changes[:password] = changes[:new_password] if changes[:new_password].present?
+    changes[:name] = changes[:new_username] if changes[:new_username].present?
+    changes[:star_rating] = (changes[:rating_type] == 'advanced')
+    [:new_password, :new_username, :rating_type, :cover_image_url].each do |key|
+      changes.delete(key)
     end
+
+    changes.permit(:about, :location, :waifu, :website, :waifu_or_husbando,
+                   :bio, :waifu_char_id, :email, :cover_image, :sfw_filter,
+                   :title_language_preference, :password, :name, :star_rating)
+
+    # Convert to hash so that we ignore disallowed attributes
+    user.assign_attributes(changes.to_h)
 
     if user.save
       render json: user
     else
-      return error!(user.errors.full_messages * ', ', 500)
+      return error!(user.errors, 400)
     end
   end
 
