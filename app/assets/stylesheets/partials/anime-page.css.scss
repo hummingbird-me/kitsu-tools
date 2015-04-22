@@ -57,15 +57,19 @@
     bottom: 0;
     right: 15px;
     background: rgba(0,0,0,.5);
+
     @media (max-width: 820px) {
       display: none;
     }
     .quote-text {
       margin-bottom: 10px;
+      word-wrap: break-word;
+
     }
     .quote-author {
       margin-bottom: 5px;
       font-weight: bold;
+      word-wrap: break-word;
     }
   }
 }
@@ -305,11 +309,13 @@
   border: 1px solid #ddd;
   padding: 10px;
   margin-top: 10px;
+  word-wrap: break-word;
 }
 
 .quote-author {
-  float: left;
+  #float: left;
   font-weight: 400;
+  word-wrap: break-word;
 }
 
 .quote-like-box {
