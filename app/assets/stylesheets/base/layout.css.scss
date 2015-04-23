@@ -169,6 +169,13 @@ img, iframe {
     position: absolute !important;
     right: -50px;
 
+    .no-notifications{
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
     li {
       background: #fff;
       width: 100% !important;
