@@ -31,6 +31,13 @@ export default Ember.Route.extend({
   },
 
   actions: {
+    loadFullCharacters: function() {
+      var manga_id = this.currentModel.get('id');
+      this.store.find('casting', { manga_id }).then((castings) => {
+        this.controller.set('fullCharacters', castings);
+      });
+    },
+
     toggleFavorite: function() {
       if (!this.get('currentUser.isSignedIn')) {
         alert('Need to be signed in');

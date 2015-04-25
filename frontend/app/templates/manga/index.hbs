@@ -77,6 +77,30 @@
       </div>
     </div>
     <!-- End series panel -->
+
+    <div class="series-panel">
+      <div class="panel-title has-button">
+        <h4>Characters</h4>
+      </div>
+      <div class="series-cast">
+        <ul class="cast">
+          {{partial "manga/characters"}}
+        </ul>
+
+        <div class="view-more">
+          {{#if showFullCharacters}}
+            {{#if fullCharacters}}
+              <a {{action "showFewerCharacters"}}>View Fewer Characters</a>
+            {{else}}
+              <i class="fa fa-spinner fa-spin"></i> Loading...
+            {{/if}}
+          {{else}}
+            <a {{action "showMoreCharacters"}}>View More Characters</a>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+    <!-- End cast -->
   </div>
   <!-- Left side End -->
 
