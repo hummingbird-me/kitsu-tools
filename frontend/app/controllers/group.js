@@ -17,7 +17,7 @@ export default Ember.Controller.extend(HasCoverUpload, {
     joinGroup: function(group) {
       var member = this.store.createRecord('group-member', {
         groupId: group.get('id'),
-        user: this.get('currentUser.model.content'),
+        user: this.get('currentUser.content.content'),
         pending: true
       });
       Messenger().expectPromise(function() {
