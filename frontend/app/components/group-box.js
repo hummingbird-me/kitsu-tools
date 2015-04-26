@@ -13,7 +13,7 @@ export default Ember.Component.extend({
     joinGroup: function(){
       var member = this.get('targetObject.store').createRecord('group-member', {
         groupId: this.get('group.id'),
-        user: this.get('currentUser.model.content'),
+        user: this.get('currentUser.content.content'),
         pending: true
       });
       Messenger().expectPromise(function() {

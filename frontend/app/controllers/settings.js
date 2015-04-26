@@ -87,18 +87,18 @@ export default Ember.Controller.extend({
   actions: {
     save: function() {
       var self = this;
-      this.get('currentUser.model.content').save().then(function() {
+      this.get('currentUser.content.content').save().then(function() {
         if (self.get('currentUser.username') !== self.get('currentUser.newUsername')) {
           location.reload();
         } else {
           self.set('currentUser.newPassword', '');
           // Hack to make Ember understand that the model is clean now
-          self.get('currentUser.model.content').save();
+          self.get('currentUser.content.content').save();
         }
       });
     },
     clean: function() {
-      this.get('currentUser.model.content').rollback();
+      this.get('currentUser.content.content').rollback();
     },
     dropboxDisconnect: function() {
       var self = this;
