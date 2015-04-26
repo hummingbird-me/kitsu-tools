@@ -12,6 +12,14 @@ export default Ember.Controller.extend({
     }
   }.property('model.featuredCastings', 'fullCharacters', 'showFullCharacters'),
 
+  roundedBayesianRating: function() {
+    if (this.get('model.bayesianRating') && this.get('model.bayesianRating') > 0) {
+      return this.get('model.bayesianRating').toFixed(2);
+    } else {
+      return null;
+    }
+  }.property('model.bayesianRating'),
+
   mangaLibraryEntryExists: function() {
     return (!Ember.isNone(this.get('model.mangaLibraryEntry'))) && (!this.get('model.mangaLibraryEntry.isDeleted'));
   }.property('model.mangaLibraryEntry', 'model.mangaLibraryEntry.isDeleted'),
