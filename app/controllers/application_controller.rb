@@ -57,18 +57,49 @@ class ApplicationController < ActionController::Base
     generic_preload! "emoji", Twemoji::CODES
   end
 
-  def render_ember
+  # Render the Ember application, optionally preloading some data into ED
+  def render_ember(data = nil)
+    preload_to_ember! data if data
     render "layouts/redesign", layout: false
+  end
+
+  # Shortcut to respond with JSON or the Ember application w/ preloaded data
+  def respond_with_ember(data, accept_json = true)
+    respond_to do |format|
+      format.html { render_ember data }
+      format.json { render json: data } if accept_json
+    end
+  end
+
+  # Creates a controller action which does a "default" Ember rendering
+  def self.ember_action(action_name, accept_json = false, &block)
+    define_method(action_name.to_sym) do
+      respond_with_ember(instance_eval(&block), accept_json)
+    end
+  end
+
+  # Redirect to the canonical URL
+  def canonicalize_url
+    if request.get? && !is_url_canonical?
+      redirect_to(url_for(params), status: :moved_permanently)
+      return false
+    else
+      return true
+    end
   end
 
   # Render a JSON error with the given error message and status code.
   def error!(message, status)
-    render json: {error: message}, status: status
+    # If the message is a Hash of errors, we put it in standard ED form
+    if status.is_a?(Hash)
+      render json: {errors: message}, status: status
+    else
+      render json: {error: message}, status: status
+    end
   end
 
-  def hide_cover_image
-    @hide_cover_image = true
-  end
+  # DEPRECATED
+  def hide_cover_image;end
 
   def mixpanel
     if Rails.env.production?
@@ -96,5 +127,11 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
+  end
+
+  def is_url_canonical?
+    # TestRequest is like your boss — he can never be wrong
+    return true if request.is_a? ActionDispatch::TestRequest
+    request.original_url == url_for(params.merge(only_path: true))
   end
 end

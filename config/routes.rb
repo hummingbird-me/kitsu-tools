@@ -21,8 +21,6 @@ Hummingbird::Application.routes.draw do
     post :vote
   end
 
-  get '/radio' => 'home#static'
-
   get '/apps/mine' => 'apps#mine'
   resources :apps
 
@@ -79,7 +77,6 @@ Hummingbird::Application.routes.draw do
 
   # Dashboard
   get '/dashboard' => 'home#dashboard'
-  get '/feed' => 'home#feed'
 
   get '/onboarding(/:id)' => 'home#static'
 
@@ -88,28 +85,26 @@ Hummingbird::Application.routes.draw do
   resources :pro_memberships, only: [:create, :destroy]
   resources :partner_deals, only: [:index, :update]
 
-  get '/users/:id/watchlist' => redirect {|params, request| "/users/#{params[:id]}/library" }
-  get '/u/:id' => redirect {|params, request| "/users/#{params[:id]}" }
-  get '/users/:id/feed' => redirect {|params, request| "/users/#{params[:id]}" }
+  get '/u/:id' => redirect {|params| "/users/#{params[:id]}" }
   get '/users/to_follow' => 'users#to_follow' # public endpoint for users to follow
 
   resources :users, only: [:index, :show, :update] do
     get 'library/manga' => 'users#manga_library'
-    get :library
-    get :groups
-    get :reviews
-    get :followers
-    get :following
-    get :favorite_anime
+    get 'library' => 'users#ember'
+    get 'groups' => 'users#ember'
+    get 'reviews' => 'users#ember'
+    get 'followers' => 'users#ember'
+    get 'following' => 'users#ember'
+
+    get 'feed' => redirect {|params| "/users/#{params[:id]}" }
+    get 'watchlist' => redirect {|params| "/users/#{params[:id]}/library" }
 
     resources :lists
 
-    put "/cover_image"  => 'users#update_cover_image',  as: :cover_image
-    put "/avatar"       => 'users#update_avatar',       as: :avatar
+    put "/avatar" => 'users#update_avatar', as: :avatar
 
     post :follow
     post :comment
-    post :update_setting
 
     post "/disconnect/facebook" => 'users#disconnect_facebook',
       as: :disconnect_facebook

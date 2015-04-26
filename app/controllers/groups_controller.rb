@@ -17,23 +17,12 @@ class GroupsController < ApplicationController
         render json: groups, meta: {cursor: 1 + page}
       end
       format.html do
-        preload_to_ember! groups
-        render_ember
+        render_ember groups
       end
     end
   end
 
-  def show
-    group = Group.find(params[:id])
-
-    respond_to do |format|
-      format.json { render json: group }
-      format.html do
-        preload_to_ember! group
-        render_ember
-      end
-    end
-  end
+  ember_action(:show, true) { Group.find(params[:id]) }
 
   def new
     authenticate_user!
@@ -45,7 +34,6 @@ class GroupsController < ApplicationController
 
     group_hash = params.require(:group).permit(:name, :bio, :about).to_h
 
-    # Remove this once out of beta
     return error! "Group with that name already exists", 409 if Group.exists?(['lower(name) = ?', group_hash['name'].downcase])
     group = Group.new_with_admin(group_hash, current_user)
 
