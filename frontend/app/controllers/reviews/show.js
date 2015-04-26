@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import HasCurrentUser from '../../mixins/has-current-user';
 
-export default Ember.ObjectController.extend(HasCurrentUser, {
+export default Ember.ObjectController.extend({
   coverImageStyle: function () {
     return "background-image: url(" + this.get('user.coverImageUrl') + ")";
   }.property('user.coverUrl'),

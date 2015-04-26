@@ -1,13 +1,19 @@
-export function initialize(container) {
-  var user, store = container.lookup('store:main'),
-      controller = container.lookup('controller:current-user');
+import currentUserProxy from '../services/current-user.js';
+
+export function initialize(container, app) {
+  var user, store = container.lookup('store:main');
+
+  app.register('service:current-user', currentUserProxy);
+
   if (window.currentUserName) {
     user = store.find('current-user', window.currentUserName);
-    controller.set('model', user);
+    currentUserProxy.set('content', user);
   }
-  container.injection('route', 'currentUser', 'controller:current-user');
-  container.injection('view', 'currentUser', 'controller:current-user');
-  container.injection('component', 'currentUser', 'controller:current-user');
+
+  app.inject('route', 'currentUser', 'service:current-user');
+  app.inject('view', 'currentUser', 'service:current-user');
+  app.inject('component', 'currentUser', 'service:current-user');
+  app.inject('controller', 'currentUser', 'service:current-user');
 }
 
 export default {

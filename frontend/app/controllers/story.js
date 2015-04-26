@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import HasCurrentUser from '../mixins/has-current-user';
 import propertyEqual from '../utils/computed/property-equal';
 /* global Messenger */
 
-export default Ember.ObjectController.extend(HasCurrentUser, {
+export default Ember.ObjectController.extend({
   commentStory: Ember.computed.equal('model.type', 'comment'),
   mediaStory: Ember.computed.equal('model.type', 'media_story'),
   followedStory: Ember.computed.equal('model.type', 'followed'),

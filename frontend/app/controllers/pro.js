@@ -1,12 +1,11 @@
 import Ember from 'ember';
-import HasCurrentUser from '../mixins/has-current-user';
 import loadScript from '../utils/load-script';
 import ajax from 'ic-ajax';
 import PreloadStore from '../utils/preload-store';
 /* global StripeCheckout */
 /* global moment */
 
-export default Ember.ArrayController.extend(HasCurrentUser, {
+export default Ember.ArrayController.extend({
   showSubscriptions: true,
   showOneTime: Ember.computed.not('showSubscriptions'),
   selectedPlanId: "1",

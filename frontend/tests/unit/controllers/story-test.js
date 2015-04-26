@@ -10,11 +10,11 @@ var App;
 
 moduleFor('controller:story', 'StoryController', {
   // Specify the other units that are required for this test.
-  needs: ['controller:current-user'],
+  needs: [],
 
   setup: function() {
     App = startApp();
-    
+
     // actually change the URL so we can test functionality
     Router.reopen({
       location: 'auto'

@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import HasCurrentUser from '../mixins/has-current-user';
 import HasCoverUpload from '../mixins/has-cover-upload';
 import ajax from 'ic-ajax';
 
-export default Ember.ObjectController.extend(HasCurrentUser, HasCoverUpload, {
+export default Ember.ObjectController.extend(HasCoverUpload, {
   showEditMenu: false,
 
   viewingSelf: function () {

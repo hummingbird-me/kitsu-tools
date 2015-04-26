@@ -1,8 +1,7 @@
 import Ember from 'ember';
 import ajax from 'ic-ajax';
-import HasCurrentUser from '../mixins/has-current-user';
 
-export default Ember.Component.extend(HasCurrentUser, {
+export default Ember.Component.extend({
   tagName: 'span',
 
   isOwnButton: function(){

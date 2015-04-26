@@ -1,9 +1,8 @@
 import Ember from 'ember';
 import PreloadStore from '../utils/preload-store';
-import HasCurrentUser from '../mixins/has-current-user';
 import ajax from 'ic-ajax';
 
-export default Ember.Controller.extend(HasCurrentUser, {
+export default Ember.Controller.extend({
   needs: ['application', 'notifications'],
   notifications: Ember.computed.alias('controllers.notifications'),
 

@@ -1,8 +1,7 @@
 import Ember from 'ember';
-import HasCurrentUser from '../mixins/has-current-user';
 import ajax from 'ic-ajax';
 
-export default Ember.Controller.extend(HasCurrentUser, {
+export default Ember.Controller.extend({
   titleChoices: [
     {value: 'canonical', label: 'Canonical'},
     {value: 'romanized', label: 'Romanized'},

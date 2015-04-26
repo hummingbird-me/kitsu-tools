@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import HasCurrentUser from '../../mixins/has-current-user';
 
-export default Ember.ArrayController.extend(HasCurrentUser, {
+export default Ember.ArrayController.extend({
   needs: "user",
   user: Ember.computed.alias('controllers.user'),
   waifu_slug: Ember.computed.any('user.waifuSlug'),

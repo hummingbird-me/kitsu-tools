@@ -5,7 +5,7 @@ import {
 
 moduleFor('controller:anime/index', 'AnimeIndexController', {
   // Specify the other units that are required for this test.
-  needs: ['controller:current-user']
+  needs: []
 });
 
 // Replace this with your real tests.
