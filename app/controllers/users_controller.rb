@@ -142,7 +142,7 @@ class UsersController < ApplicationController
       changes.delete(key)
     end
 
-    changes.permit(:about, :location, :waifu, :website, :waifu_or_husbando,
+    changes = changes.permit(:about, :location, :waifu, :website, :waifu_or_husbando,
                    :bio, :waifu_char_id, :email, :cover_image, :sfw_filter,
                    :title_language_preference, :password, :name, :star_rating)
 
