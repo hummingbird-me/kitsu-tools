@@ -132,6 +132,6 @@ class ApplicationController < ActionController::Base
   def is_url_canonical?
     # TestRequest is like your boss — he can never be wrong
     return true if request.is_a? ActionDispatch::TestRequest
-    request.original_url == url_for(params.merge(only_path: true))
+    request.original_fullpath == url_for(params.merge(only_path: true))
   end
 end
