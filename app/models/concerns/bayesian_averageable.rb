@@ -2,26 +2,28 @@
 module BayesianAverageable
   extend ActiveSupport::Concern
 
-  module ClassMethods
-    def community_ratings
-      ratings = []
-      (0..5).each do |i|
-        previous_rating = (self.rating_frequencies["#{i}.0"]   || 0).to_i
-        next_rating     = (self.rating_frequencies["#{i+1}.0"] || 0).to_i
-        current_rating  = (self.rating_frequencies["#{i}.5"]   || 0).to_i
+  # We probably need to move this to the serializer layer at some point
+  # Or better yet, put it into JS
+  def community_ratings
+    ratings = []
+    (0..5).each do |i|
+      previous_rating = (self.rating_frequencies["#{i}.0"]   || 0).to_i
+      next_rating     = (self.rating_frequencies["#{i+1}.0"] || 0).to_i
+      current_rating  = (self.rating_frequencies["#{i}.5"]   || 0).to_i
 
-        ratings << previous_rating
-        if current_rating < previous_rating && current_rating < next_rating
-          current_rating = (next_rating + previous_rating) / 2
-        end
-        ratings << current_rating
+      ratings << previous_rating
+      if current_rating < previous_rating && current_rating < next_rating
+        current_rating = (next_rating + previous_rating) / 2
       end
-      ratings.pop
-      ratings.shift
-
-      ratings
+      ratings << current_rating
     end
+    ratings.pop
+    ratings.shift
 
+    ratings
+  end
+
+  module ClassMethods
     def recompute_bayesian_ratings!
       #
       # Bayesian rating:
