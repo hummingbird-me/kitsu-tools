@@ -26,6 +26,8 @@
 #  volume_count              :integer
 #  chapter_count             :integer
 #  manga_type                :string(255)      default("Manga")
+#  bayesian_rating           :float
+#  rating_frequencies        :hstore           default({}), not null
 #
 
 require 'test_helper'

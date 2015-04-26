@@ -18,7 +18,7 @@
 #  cover_image_content_type  :string(255)
 #  cover_image_file_size     :integer
 #  cover_image_updated_at    :datetime
-#  bayesian_average          :float            default(0.0), not null
+#  bayesian_rating           :float            default(0.0), not null
 #  user_count                :integer          default(0), not null
 #  thetvdb_series_id         :integer
 #  thetvdb_season_id         :integer

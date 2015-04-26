@@ -56,29 +56,6 @@ class FullAnimeSerializer < AnimeSerializer
     object.castings.where(featured: true).includes(:person, :character).sort_by {|x| x.order || 100 }
   end
 
-  def community_ratings
-    ratings = []
-    (0..5).each do |i|
-      previous_rating = (object.rating_frequencies["#{i}.0"]   || 0).to_i
-      next_rating     = (object.rating_frequencies["#{i+1}.0"] || 0).to_i
-      current_rating  = (object.rating_frequencies["#{i}.5"]   || 0).to_i
-
-      ratings << previous_rating
-      if current_rating < previous_rating && current_rating < next_rating
-        current_rating = (next_rating + previous_rating) / 2
-      end
-      ratings << current_rating
-    end
-    ratings.pop
-    ratings.shift
-
-    ratings
-  end
-
-  def bayesian_rating
-    object.bayesian_average
-  end
-
   def pending_edits
     scope && Version.pending.where(user: scope, item: object).count
   end

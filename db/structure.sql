@@ -78,7 +78,7 @@ CREATE TABLE anime (
     cover_image_content_type character varying(255),
     cover_image_file_size integer,
     cover_image_updated_at timestamp without time zone,
-    bayesian_average double precision DEFAULT 0 NOT NULL,
+    bayesian_rating double precision DEFAULT 0 NOT NULL,
     user_count integer DEFAULT 0 NOT NULL,
     thetvdb_series_id integer,
     thetvdb_season_id integer,
@@ -1011,7 +1011,7 @@ CREATE TABLE manga (
     volume_count integer,
     chapter_count integer,
     manga_type character varying(255) DEFAULT 'Manga'::character varying,
-    bayesian_average double precision,
+    bayesian_rating double precision,
     rating_frequencies hstore DEFAULT ''::hstore NOT NULL
 );
 
@@ -2579,7 +2579,7 @@ CREATE INDEX index_anime_on_user_count ON anime USING btree (user_count);
 -- Name: index_anime_on_wilson_ci; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_anime_on_wilson_ci ON anime USING btree (bayesian_average DESC);
+CREATE INDEX index_anime_on_wilson_ci ON anime USING btree (bayesian_rating DESC);
 
 
 --
@@ -3799,4 +3799,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150401033305');
 INSERT INTO schema_migrations (version) VALUES ('20150402020045');
 
 INSERT INTO schema_migrations (version) VALUES ('20150402040627');
+
+INSERT INTO schema_migrations (version) VALUES ('20150426012023');
 
