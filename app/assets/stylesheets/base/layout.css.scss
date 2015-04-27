@@ -31,6 +31,9 @@ img, iframe {
   max-width: 100%;
 }
 
+.fb_iframe_widget iframe {
+  max-width: none !important;
+}
 
 .navbar-brand {
   background-image: url("/assets/logo-sprite.png");

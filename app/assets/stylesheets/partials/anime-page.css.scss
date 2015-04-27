@@ -38,11 +38,7 @@
     }
   }
   .facebook-share, .twitter-share {
-    opacity: .8;
     margin-left: 10px;
-    &:hover {
-      opacity: 1;
-    }
   }
   .twitter-share {
     position: relative;
@@ -150,6 +146,7 @@
     right: 10px;
     border-radius: 3px;
     padding: 5px 10px;
+    z-index: 0;
     .fa-heart {
       color: #dc6767;
     }
