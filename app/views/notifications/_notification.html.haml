@@ -1,0 +1,12 @@
+%li.no-padding.cf
+  %a.single-notification.large-12.columns{href: main_app.notification_path(notification), class: ('new' unless notification.seen?)}
+    .large-1.columns.no-padding.avatar
+      = image_tag notification.image
+    - if notification.notification_type == "profile_comment"
+      .large-11.columns.status-info
+        %strong= notification.source.target.name
+        wrote a comment on your profile.
+        %p.time-ago
+          = distance_of_time_in_words_to_now notification.created_at
+          ago
+
