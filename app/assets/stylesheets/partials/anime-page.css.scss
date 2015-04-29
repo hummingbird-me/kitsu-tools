@@ -84,6 +84,10 @@
   @media (max-width: 860px) {
     width: 100%;
   }
+  
+  .trending-review-empty {
+    margin-top: 39px;
+  }
 }
 
 .series-panel {
@@ -516,7 +520,6 @@
 
     .trending-review-empty {
       text-align: center;
-      margin-top: 39px;
       margin-bottom: 35px;
       padding: 25px;
       padding-bottom: 0;
