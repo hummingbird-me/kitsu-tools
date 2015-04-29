@@ -157,7 +157,15 @@ CREATE TABLE apps (
     creator_id integer NOT NULL,
     key character varying(255) NOT NULL,
     secret character varying(255) NOT NULL,
-    name character varying(255) NOT NULL
+    name character varying(255) NOT NULL,
+    redirect_uri character varying(255),
+    homepage character varying(255),
+    description character varying(255),
+    privileged boolean DEFAULT false NOT NULL,
+    logo_file_name character varying(255),
+    logo_content_type character varying(255),
+    logo_file_size integer,
+    logo_updated_at timestamp without time zone
 );
 
 
@@ -3819,4 +3827,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150402040627');
 INSERT INTO schema_migrations (version) VALUES ('20150426012023');
 
 INSERT INTO schema_migrations (version) VALUES ('20150504184112');
+
+INSERT INTO schema_migrations (version) VALUES ('20150427224114');
 
