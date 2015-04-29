@@ -172,7 +172,6 @@
     padding: 0;
     margin-bottom: 0;
     overflow: hidden;
-    text-overflow: ellipsis;
     max-height: 500px;
 
     img {
@@ -180,8 +179,10 @@
     }
 
     a {
+      display: block;
       white-space: nowrap;
       overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .onebox a {
