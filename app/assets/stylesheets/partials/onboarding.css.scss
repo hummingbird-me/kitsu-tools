@@ -310,6 +310,10 @@
 
 .library-tabs {
   @extend .clearfix;
+  
+  li {
+    padding-right: 10px;
+  }
   .anime-tab, .manga-tab {
     display: inline-block;
     padding: 6px 18px;
