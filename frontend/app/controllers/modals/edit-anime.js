@@ -3,7 +3,7 @@ import ModalMixin from '../../mixins/modals/controller';
 import VersionableMixin from '../../mixins/modals/versionable';
 /* global moment */
 
-export default Ember.ObjectController.extend(ModalMixin, VersionableMixin, {
+export default Ember.Controller.extend(ModalMixin, VersionableMixin, {
   startingDate: Ember.computed('startedAiring', function(k, v) {
     if (v !== undefined) {
       var date = new Date(v);
@@ -11,7 +11,7 @@ export default Ember.ObjectController.extend(ModalMixin, VersionableMixin, {
         this.set('startedAiring', date);
       }
     }
-    return moment(this.get('startedAiring')).format('YYYY-MM-DD');
+    return moment(this.get('model.startedAiring')).format('YYYY-MM-DD');
   }),
 
   finishedDate: Ember.computed('finishedAiring', function(k, v) {
@@ -21,6 +21,6 @@ export default Ember.ObjectController.extend(ModalMixin, VersionableMixin, {
         this.set('finishedAiring', date);
       }
     }
-    return moment(this.get('finishedAiring')).format('YYYY-MM-DD');
+    return moment(this.get('model.finishedAiring')).format('YYYY-MM-DD');
   })
 });

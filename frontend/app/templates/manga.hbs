@@ -1,20 +1,20 @@
 <div class="manga-page">
   {{!-- Background Image --}}
-  {{#if coverImage}}
+  {{#if model.coverImage}}
     <div class="bg-image-wrapper series" {{bind-attr style=coverImageStyle}}></div>
   {{/if}}
   <div class="wrapper-fade"></div>
 
-  <div {{bind-attr class=":container coverImage:bg-image:no-bg-image"}}>
+  <div {{bind-attr class=":container model.coverImage:bg-image:no-bg-image"}}>
     {{!-- Library Table Row --}}
     <div class="row">
       <div class="top-buttons">
         <ul class="left-buttons">
           <li>
             <div class="btn-group">
-              <button {{bind-attr class=":btn :btn-default :dropdown-toggle :top-button libraryStatus:active"}} type="button" data-toggle="dropdown">
+              <button {{bind-attr class=":btn :btn-default :dropdown-toggle :top-button"}} type="button" data-toggle="dropdown">
                 {{#if mangaLibraryEntryExists}}
-                  {{mangaLibraryEntry.status}}
+                  {{model.mangaLibraryEntry.status}}
                 {{else}}
                   Add to Library
                 {{/if}}
@@ -31,8 +31,8 @@
           </li>
           {{#if mangaLibraryEntryExists}}
             <li>
-              <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart mangaLibraryEntry.isFavorite:active"}} {{action "toggleFavorite"}}>
-                <i {{bind-attr class=":fa mangaLibraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i>
+              <button type="button" {{bind-attr class=":btn :btn-default :top-button :heart model.mangaLibraryEntry.isFavorite:active"}} {{action "toggleFavorite"}}>
+                <i {{bind-attr class=":fa model.mangaLibraryEntry.isFavorite:fa-heart:fa-heart-o"}}></i>
               </button>
             </li>
           {{/if}}
@@ -40,14 +40,14 @@
         <ul class="right-buttons">
           <li>
             {{#if currentUser.isSignedIn}}
-              <button {{bind-attr class=":btn :btn-default :top-button isDirty:active"}} {{action "openModal" 'edit-manga' this}}><i class='fa fa-pencil'></i></button>
+              <button {{bind-attr class=":btn :btn-default :top-button model.isDirty:active"}} {{action "openModal" 'edit-manga' this}}><i class='fa fa-pencil'></i></button>
             {{/if}}
           </li>
         </ul>
       </div>
       <div class="gallery hidden-xs">
         <ul class="gallery-images">
-          {{#each screencaps as |imageURL|}}
+          {{#each model.screencaps as |imageURL|}}
             <li class="gallery-image"><img {{bind-attr src=imageURL}}></li>
           {{/each}}
         </ul>
@@ -58,16 +58,16 @@
             <!-- Mobile title -->
             <div class="series-title-wrapper visible-xs">
               <h4 class="series-title">
-                {{romajiTitle}}
-                {{#if englishTitle}}
-                  <small>({{englishTitle}})</small>
+                {{model.romajiTitle}}
+                {{#if model.englishTitle}}
+                  <small>({{model.englishTitle}})</small>
                 {{/if}}
               </h4>
             </div>
 
             <div class="poster-container">
               {{#link-to 'manga.index'}}
-                <img class="series-poster" {{bind-attr src=posterImage}}>
+                <img class="series-poster" {{bind-attr src=model.posterImage}}>
               {{/link-to}}
             </div>
 
@@ -76,14 +76,14 @@
             </div>
 
             <div class="series-description visible-xs">
-              <p>{{truncate-text text=synopsis length=300}}</p>
+              <p>{{truncate-text text=model.synopsis length=300}}</p>
             </div>
 
             {{#if currentUser.isSignedIn}}
               {{#if mangaLibraryEntryExists}}
                 <div class="personal-rating active">
                   <h5 class="sidebar-title text-center">Your Rating</h5>
-                  {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=mangaLibraryEntry.rating}}
+                  {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=model.mangaLibraryEntry.rating}}
                 </div>
               {{/if}}
             {{/if}}

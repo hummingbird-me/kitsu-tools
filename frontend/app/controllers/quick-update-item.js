@@ -1,26 +1,26 @@
 import Ember from 'ember';
 import propertyEqual from '../utils/computed/property-equal';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   loading: false,
 
-  isComplete: propertyEqual('episodesWatched', "anime.episodeCount"),
-  isPTW: Ember.computed.equal('status', "Plan to Watch"),
+  isComplete: propertyEqual('model.episodesWatched', "model.anime.episodeCount"),
+  isPTW: Ember.computed.equal('model.status', "Plan to Watch"),
 
   percentComplete: function() {
-    var episodesWatched = this.get('episodesWatched'),
-        episodeCount = this.get('anime.episodeCount');
+    var episodesWatched = this.get('model.episodesWatched'),
+        episodeCount = this.get('model.anime.episodeCount');
 
     if (episodeCount) {
       return Math.floor(100 * episodesWatched / episodeCount);
     } else {
       return "?";
     }
-  }.property('episodesWatched', 'anime.episodeCount'),
+  }.property('model.episodesWatched', 'model.anime.episodeCount'),
 
   nextEpisodeNumber: function() {
-    return this.get('episodesWatched') + 1;
-  }.property('episodesWatched'),
+    return this.get('model.episodesWatched') + 1;
+  }.property('model.episodesWatched'),
 
   actions: {
     markViewed: function() {

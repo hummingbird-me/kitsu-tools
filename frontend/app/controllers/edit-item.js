@@ -2,7 +2,7 @@ import Ember from 'ember';
 /* global Messenger */
 /* global htmldiff */
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   isDiffShown: false,
 
   ignoredProps: [

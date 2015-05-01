@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   noCoverImage: function() {
     return !this.get('model.coverImage');
   }.property('model.coverImage'),

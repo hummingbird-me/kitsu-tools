@@ -14,9 +14,9 @@
             <li {{bind-attr class=":watched-series entry.isPTW:plan-to-watch"}}>
               <div class="overlay-wrapper">
                 <div class="overlay-panel">
-                  {{#link-to 'anime' entry.anime.id class="quick-update-title-link" title=entry.anime.displayTitle}}
+                  {{#link-to 'anime' entry.model.anime.id class="quick-update-title-link" title=entry.model.anime.displayTitle}}
                     <h4 class="series-title">
-                      {{entry.anime.displayTitle}}
+                      {{entry.model.anime.displayTitle}}
                     </h4>
                   {{/link-to}}
                   <div class="actionable">
@@ -40,11 +40,11 @@
                         {{entry.percentComplete}}% Complete
                       {{/if}}
                     </h4>
-                    <p>Seen {{entry.episodesWatched}} of {{entr.anime.displayEpisodeCount}}</p>
+                    <p>Seen {{entry.model.episodesWatched}} of {{entry.model.anime.displayEpisodeCount}}</p>
                   </div>
                 </div>
 
-                <img class="responsive-image" {{bind-attr src="entry.anime.posterImage"}}>
+                <img class="responsive-image" {{bind-attr src="entry.model.anime.posterImage"}}>
               </div>
             </li>
           {{/each}}

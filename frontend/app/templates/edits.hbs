@@ -12,28 +12,28 @@
                 <div class="edit-entry">
                   <span class="edit-entry-left">
                     <span class="edit-type">
-                      {{edit.objectType}}
+                      {{edit.model.objectType}}
                     </span>
                     {{! link to content }}
-                    {{#if edit.anime}}
-                      {{#link-to 'anime' edit.item}}
-                        {{edit.item.displayTitle}}
+                    {{#if edit.model.anime}}
+                      {{#link-to 'anime' edit.model.item}}
+                        {{edit.model.item.displayTitle}}
                       {{/link-to}}
                     {{/if}}
-                    {{#if edit.manga}}
-                      {{#link-to 'manga' edit.item}}
-                        {{edit.item.displayTitle}}
+                    {{#if edit.model.manga}}
+                      {{#link-to 'manga' edit.model.item}}
+                        {{edit.model.item.displayTitle}}
                       {{/link-to}}
                     {{/if}}
                   </span>
                   <span class="edit-entry-right">
                     <span class="edit-entry-user">
-                      {{#link-to 'user' edit.user}}
-                        {{edit.user.username}}
+                      {{#link-to 'user' edit.model.user}}
+                        {{edit.model.user.username}}
                       {{/link-to}}
                     </span>
                     <span class="edit-entry-time">
-                      {{time-ago time=edit.createdAt}}
+                      {{time-ago time=edit.model.createdAt}}
                     </span>
                     <span class="edit-entry-actions">
                       <a href="#" {{action 'toggleDiff'}}>
@@ -47,13 +47,13 @@
                   <div class="edit-entry-diff">
                     {{#if edit.outdated}}
                       <div class="alert alert-danger">
-                        {{edit.item.displayTitle}} has been updated since this edit was created.
+                        {{edit.model.item.displayTitle}} has been updated since this edit was created.
                       </div>
                     {{/if}}
-                    {{#if edit.comment}}
+                    {{#if edit.model.comment}}
                       <div class="alert alert-info">
-                        <h4>{{edit.user.username}} left you a comment!</h4>
-                        {{edit.comment}}
+                        <h4>{{edit.model.user.username}} left you a comment!</h4>
+                        {{edit.model.comment}}
                       </div>
                     {{/if}}
                     <dl>

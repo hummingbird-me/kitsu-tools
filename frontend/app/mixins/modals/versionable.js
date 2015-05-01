@@ -3,7 +3,7 @@ import ajax from 'ic-ajax';
 /* global Messenger */
 
 export default Ember.Mixin.create({
-  canSave: Ember.computed.not('isDirty'),
+  canSave: Ember.computed.not('model.isDirty'),
   comment: null,
 
   // Ember controller is a singleton, and we don't have a route associated
@@ -15,8 +15,8 @@ export default Ember.Mixin.create({
   actions: {
     save: function() {
       // setup our params
-      var root = this.get('content.constructor.typeKey').pluralize().decamelize(),
-          data = this.get('content').serialize(),
+      var root = this.get('model.constructor.typeKey').pluralize().decamelize(),
+          data = this.get('model').serialize(),
           hash = {};
 
       // apply the model attributes
@@ -29,14 +29,14 @@ export default Ember.Mixin.create({
           type: 'PUT',
           // ex: /full_anime/steins-gate
           //     /full_manga/naruto
-          url: '/' + root + '/' + this.get('id'),
+          url: '/' + root + '/' + this.get('model.id'),
           data: hash
         });
       }.bind(this), {
         progressMessage: 'Contacting server...',
         successMessage: function() {
           // reset data back to its 'real' state rather than its dirty state.
-          this.get('content').rollback();
+          this.get('model').rollback();
           this.resetModal();
           return "Thanks! You'll be notified when your edit has been reviewed.";
         }.bind(this)

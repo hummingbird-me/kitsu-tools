@@ -5,13 +5,13 @@
         <i {{bind-attr class=":fa review.positive:fa-smile-o:fa-frown-o"}}></i>
       </div>
       <div class="media-body">
-        <p>"{{review.summary}}"</p>
+        <p>"{{review.model.summary}}"</p>
         <div class="review-details">
           <div class="review-likes">
-            {{review.positiveVotes}} out of {{review.totalVotes}} users found this review helpful.
+            {{review.model.positiveVotes}} out of {{review.model.totalVotes}} users found this review helpful.
           </div>
           <div class="full-review">
-            {{#link-to 'reviews.show' review.id}}Full Review…{{/link-to}}
+            {{#link-to 'reviews.show' review.model.id}}Full Review…{{/link-to}}
           </div>
         </div>
       </div>
@@ -19,13 +19,13 @@
   </div>
 
   <div class="review-source media">
-    {{#link-to 'user' review.user}}
+    {{#link-to 'user' review.model.user}}
       <div class="reviewer-avatar">
-        {{avatar review.user 'thumb'}}
+        {{avatar review.model.user 'thumb'}}
       </div>
       <div class="reviewer-name">
         <div>
-          {{review.user.username}}
+          {{review.model.user.username}}
         </div>
       </div>
     {{/link-to}}

@@ -1,8 +1,8 @@
 <h2 class="series-title hidden-xs">
-  {{romajiTitle}}
-  {{#if englishTitle}}
+  {{model.romajiTitle}}
+  {{#if model.englishTitle}}
     <small>
-      {{#bootstrap-tooltip title=englishTitle placement="right"}}
+      {{#bootstrap-tooltip title=model.englishTitle placement="right"}}
         <i class="fa fa-question-circle"></i>
       {{/bootstrap-tooltip}}
     </small>
@@ -14,7 +14,7 @@
 </div>
 
 <div class="series-description hidden-xs">
-  <p>{{truncate-text text=synopsis length=500}}</p>
+  <p>{{truncate-text text=model.synopsis length=500}}</p>
 </div>
 
 <div class="info-tabs">
@@ -30,7 +30,7 @@
   <div class="tab-content">
     <div class="tab-pane active genre-tab">
       <div {{bind-attr class=":slider showGenres::hidden"}}>
-        {{#each genres as |genre|}}
+        {{#each model.genres as |genre|}}
           <span class="badge">{{genre}}</span>
         {{/each}}
       </div>

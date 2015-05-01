@@ -2,7 +2,7 @@ import Ember from 'ember';
 import ModalMixin from '../../mixins/modals/controller';
 import ajax from 'ic-ajax';
 
-export default Ember.ObjectController.extend(ModalMixin, {
+export default Ember.Controller.extend(ModalMixin, {
   likers: [],
   page: 0,
   canLoadMore: true,
@@ -25,7 +25,7 @@ export default Ember.ObjectController.extend(ModalMixin, {
       this.incrementProperty('page');
 
       ajax({
-        url: "/stories/" + this.get('id') + "/likers?page=" + this.get('page')
+        url: "/stories/" + this.get('model.id') + "/likers?page=" + this.get('page')
       }).then(function(users) {
         if (users.length < 100) {
           self.set('canLoadMore', false);

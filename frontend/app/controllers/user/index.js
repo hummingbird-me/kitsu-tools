@@ -3,11 +3,11 @@ import Ember from 'ember';
 export default Ember.ArrayController.extend({
   needs: "user",
   user: Ember.computed.alias('controllers.user'),
-  waifu_slug: Ember.computed.any('user.waifuSlug'),
-  hasWaifu: Ember.computed.any('user.waifu'),
-  hasLocation: Ember.computed.any('user.location'),
-  hasWebsite: Ember.computed.any('user.website'),
-  hasAboutText: Ember.computed.any('user.about'),
+  waifu_slug: Ember.computed.any('user.model.waifuSlug'),
+  hasWaifu: Ember.computed.any('user.model.waifu'),
+  hasLocation: Ember.computed.any('user.model.location'),
+  hasWebsite: Ember.computed.any('user.model.website'),
+  hasAboutText: Ember.computed.any('user.model.about'),
   hasAboutSection: Ember.computed.or(
     'hasWaifu',
     'hasLocation',
@@ -18,8 +18,8 @@ export default Ember.ArrayController.extend({
   unselectingWaifu: false,
 
   aboutCharacterCount: function() {
-    return 500 - this.get('user.about').length;
-  }.property('user.about'),
+    return 500 - this.get('user.model.about').length;
+  }.property('user.model.about'),
 
   aboutCharactersLeft: Ember.computed.gt('aboutCharacterCount', 0),
 
@@ -35,7 +35,7 @@ export default Ember.ArrayController.extend({
       return;
     }
 
-    var dataList = this.get('user.website').split(' '),
+    var dataList = this.get('user.model.website').split(' '),
         siteList = [],
         actualLn = "";
 
@@ -45,22 +45,22 @@ export default Ember.ArrayController.extend({
     });
 
     return siteList;
-  }.property('user.website'),
+  }.property('user.model.website'),
 
   favoriteAnime: function() {
-    if(this.get('userInfo.favorites') === undefined) { return []; }
+    if (this.get('userInfo.favorites') === undefined) { return []; }
 
     this.set('favoriteAnimeLoading', false);
-    return this.get('userInfo.favorites').filter(function(fav){
+    return this.get('userInfo.favorites').filter(function(fav) {
       return ( fav.get('item').constructor.typeKey === 'anime');
     });
   }.property('userInfo.favorites.@each'),
 
   favoriteManga: function() {
-    if(this.get('userInfo.favorites') === undefined) { return []; }
+    if (this.get('userInfo.favorites') === undefined) { return []; }
 
     this.set('favoriteMangaLoading', false);
-    return this.get('userInfo.favorites').filter(function(fav){
+    return this.get('userInfo.favorites').filter(function(fav) {
       return ( fav.get('item').constructor.typeKey === 'manga');
     });
   }.property('userInfo.favorites.@each'),
@@ -69,7 +69,7 @@ export default Ember.ArrayController.extend({
   actions: {
     unselectWaifu: function () {
       this.set('unselectingWaifu', true);
-      return this.set('user.waifu', null);
+      return this.set('user.model.waifu', null);
     },
 
     editUserInfo: function () {
@@ -78,14 +78,14 @@ export default Ember.ArrayController.extend({
 
     saveUserInfo: function () {
       this.set('unselectingWaifu', false);
-      this.get('user.content').save();
+      this.get('user.model').save();
       return this.set('isEditing', false);
     },
 
     didSelectWaifu: function (character) {
       this.set('selectedWaifu', character);
-      this.get('user').set('waifu', character.value);
-      return this.get('user').set('waifuCharId', character.char_id);
+      this.get('user.model').set('waifu', character.value);
+      return this.get('user.model').set('waifuCharId', character.char_id);
     }
   },
 
@@ -160,6 +160,6 @@ export default Ember.ArrayController.extend({
   }.property('userInfo.lifeSpentOnAnime'),
 
   viewingSelf: function () {
-    return this.get('controllers.user.id') === this.get('currentUser.id');
-  }.property('model.id')
+    return this.get('controllers.user.model.id') === this.get('currentUser.id');
+  }.property('controllers.user.model.id')
 });

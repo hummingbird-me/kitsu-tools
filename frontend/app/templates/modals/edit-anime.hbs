@@ -3,17 +3,17 @@
     <div class="modal-header">
       <h4 class="modal-title">Edit Anime</h4>
       <button class="btn btn-primary" {{action "save"}} {{bind-attr disabled=canSave}}>
-        {{#if isSaving}}<i class="fa fa-spin fa-spinner"></i>{{/if}}
+        {{#if model.isSaving}}<i class="fa fa-spin fa-spinner"></i>{{/if}}
         Request Edits
       </button>
     </div>
     <div class="modal-body">
       <div class="row">
-        {{#if pendingEdits}}
+        {{#if model.pendingEdits}}
           <div class="col-sm-12">
             <div class="alert alert-info">
               You have
-              {{pluralize pendingEdits "pending edit" "pending edits"}}
+              {{pluralize model.pendingEdits "pending edit" "pending edits"}}
               for this anime.
             </div>
           </div>
@@ -22,7 +22,7 @@
         <div class="col-sm-12">
           <div class="form-group">
             <label>Synopsis</label>
-            {{textarea value=synopsis rows=3 class="form-control"}}
+            {{textarea value=model.synopsis rows=3 class="form-control"}}
           </div>
         </div>
         <div class="form-row">
@@ -31,32 +31,32 @@
               Poster Image URL
               <i class="fa fa-question-circle"></i>
             </label>
-            {{input value=posterImage class="form-control"}}
+            {{input value=model.posterImage class="form-control"}}
           </div>
           <div class="col-sm-6">
             <label data-tooltip="Direct link to your replacement image. Preferable images are desktop wallpapers at least 1500px wide.">Cover Image URL</label>
             <i class="fa fa-question-circle"></i>
-            {{input value=coverImage class="form-control"}}
+            {{input value=model.coverImage class="form-control"}}
           </div>
         </div>
         <div class="form-row">
           <div class="col-sm-3">
             <label>Episode Count</label>
-            {{input type="number" value=episodeCount class="form-control"}}
+            {{input type="number" value=model.episodeCount class="form-control"}}
           </div>
           <div class="col-sm-3">
             <label>Episode Length</label>
-            {{input type="number" value=episodeLength class="form-control"}}
+            {{input type="number" value=model.episodeLength class="form-control"}}
           </div>
           <div class="col-sm-3">
             <label data-tooltip="The video ID is the part between v= and & of the video's page URL.">YouTube Trailer Id</label>
             <i class="fa fa-question-circle"></i>
-            {{input value=youtubeVideoId class="form-control"}}
+            {{input value=model.youtubeVideoId class="form-control"}}
           </div>
           <div class="col-sm-3">
             <label data-tooltip="Distance in pixels that you want to move the visible part of the cover photo up.">Cover Image Top Offset</label>
             <i class="fa fa-question-circle"></i>
-            {{input type="number" value=coverImageTopOffset class="form-control"}}
+            {{input type="number" value=model.coverImageTopOffset class="form-control"}}
           </div>
         </div>
         <div class="form-row">

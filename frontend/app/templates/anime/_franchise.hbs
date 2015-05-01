@@ -1,5 +1,5 @@
-{{#if franchises.isFulfilled}}
-  {{#with franchises controller='franchises' as |franchise|}}
+{{#if model.franchises.isFulfilled}}
+  {{#with model.franchises controller='franchises' as |franchise|}}
     {{#each franchise.franchiseAnime as |anime|}}
       <div class="franchise-show">
         <div class="franchise-poster">

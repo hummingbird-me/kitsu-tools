@@ -1,4 +1,4 @@
-{{#each trendingReviews itemController="review" as |review|}}
+{{#each model.trendingReviews itemController="review" as |review|}}
   {{partial "media/review_summary"}}
 {{else}}
   <div class="trending-review-empty">

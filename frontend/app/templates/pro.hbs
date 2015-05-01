@@ -184,20 +184,20 @@
             {{#each partnerDeals itemController="partner-deal" as |deal|}}
               <li>
                 <div class="partner-logo">
-                  <img {{bind-attr src=deal.partnerLogo}}>
+                  <img {{bind-attr src=deal.model.partnerLogo}}>
                 </div>
                 <div class="partner-deal">
-                  <h4>{{deal.dealTitle}}</h4>
-                  <p>{{deal.dealDescription}}</p>
+                  <h4>{{deal.model.dealTitle}}</h4>
+                  <p>{{deal.model.dealDescription}}</p>
                   {{#if currentUser.isPro}}
                     {{#if deal.hasRedeemed}}
-                      <div class="offer-clipping">{{deal.code}}</div>
-                      <p class="redemption-instructions">{{deal.redemptionInfo}}</p>
-                      {{#if deal.recurring}}
+                      <div class="offer-clipping">{{deal.model.code}}</div>
+                      <p class="redemption-instructions">{{deal.model.redemptionInfo}}</p>
+                      {{#if deal.model.recurring}}
                         <p>You'll be able to redeem another code in {{pluralize deal.daysUntilRedeem "day" "days"}}.</p>
                       {{/if}}
                     {{else}}
-                      {{#if deal.hasCodes}}
+                      {{#if deal.model.hasCodes}}
                         <a class="redeem-button" {{action "redeemDeal"}}>
                           {{#if deal.isRedeeming}}
                             <i class="fa fa-spin fa-spinner"></i> Redeeming Offer

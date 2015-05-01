@@ -1,5 +1,5 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
-  positive: Ember.computed.gt('rating', 2.5)
+export default Ember.Controller.extend({
+  positive: Ember.computed.gt('model.rating', 2.5)
 });
