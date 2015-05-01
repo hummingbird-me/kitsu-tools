@@ -25,9 +25,7 @@ Ember.Route.reopen({
   }
 });
 
-// Set to false because it breaks polymorphic associations.
-// Fixed in this PR: https://github.com/emberjs/data/pull/2586
-Ember.MODEL_FACTORY_INJECTIONS = false;
+Ember.MODEL_FACTORY_INJECTIONS = true;
 
 // Plural of anime is anime.
 Ember.Inflector.inflector.rules.uncountable.anime = true;

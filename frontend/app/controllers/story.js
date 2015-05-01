@@ -31,7 +31,7 @@ export default Ember.ObjectController.extend({
   showExtraLikers: Ember.computed.gt('extraLikers', 0),
 
   mediaRoute: function() {
-    return this.get('model.media').constructor.typeKey;
+    return this.get('model.media.constructor.typeKey');
   }.property('model.media'),
 
   displaySubstories: function () {
