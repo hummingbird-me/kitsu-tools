@@ -76,8 +76,8 @@
                     {{#if hasWebsite}}
                       <div class="interest-icon"> <i class="fa fa-link"></i></div>
                       <div class="interest">
-                        {{#each linkedWebsites}}
-                          <a {{bind-attr href=link}}>{{name}}</a><br />
+                        {{#each linkedWebsites as |website|}}
+                          <a {{bind-attr href=website.link}}>{{website.name}}</a><br />
                         {{/each}}
                       </div>
                     {{/if}}
@@ -171,7 +171,7 @@
                 </div>
                 <div class="col-md-7">
                   <ul class="breakdown-genrelist">
-                    {{#each genre in userInfo.topGenres}}
+                    {{#each userInfo.topGenres as |genre|}}
                       <li>
                         <span class="breakdown-genre"> {{genre.genre.name}}</span>
                         <span class="breakdown-numbr"> {{genre.num}}</span>
@@ -210,7 +210,11 @@
     <div class="user-feed">
       {{post-comment action="postComment" currentUser=currentUser}}
 
-      {{each content itemController="story" itemViewClass="story"}}
+      {{#each model itemController="story" as |story|}}
+        {{#with story as |story|}}
+          {{view "story" content=story}}
+        {{/with}}
+      {{/each}}
 
       {{#if canLoadMore}}
         {{load-more classNames="light" action="loadNextPage"}}

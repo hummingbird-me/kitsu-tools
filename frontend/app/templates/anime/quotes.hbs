@@ -10,7 +10,7 @@
   <div class="row row-centered">
     <div class="col-xs-6 col-md-offset-3">
 
-      {{#each quote in content}}
+      {{#each model as |quote|}}
         <div class="rounded-block col-sm-12 clearfix quote-container">
           <p><strong>{{quote.characterName}}:</strong> {{quote.content}}</p>
           <span class="favorited-by">

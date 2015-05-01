@@ -4,7 +4,7 @@
 
 <div class="panel-body">
   <ul class="latest-post-list">
-    {{#each topic in topics}}
+    {{#each topics as |topic|}}
       <li class="latest-post">
         <div class="latest-post-title">
           <a {{bind-attr href="topic.url"}}>{{topic.title}}</a>
@@ -15,7 +15,7 @@
             · {{time-ago time=topic.lastPostTime}}
           </div>
           <div class="pull-right">
-            {{#each user in topic.users}}
+            {{#each topic.users as |user|}}
               <a {{bind-attr title="user.name" href="user.url"}}>
                 <img class="recent-post-avatar" {{bind-attr src="user.avatar"}}>
               </a>

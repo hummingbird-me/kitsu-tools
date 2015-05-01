@@ -47,7 +47,7 @@
       </div>
       <div class="gallery hidden-xs">
         <ul class="gallery-images">
-          {{#each imageURL in screencaps}}
+          {{#each screencaps as |imageURL|}}
             <li class="gallery-image"><img {{bind-attr src=imageURL}}></li>
           {{/each}}
         </ul>

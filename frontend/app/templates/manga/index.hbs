@@ -30,7 +30,7 @@
   <div class="tab-content">
     <div class="tab-pane active genre-tab">
       <div {{bind-attr class=":slider showGenres::hidden"}}>
-        {{#each genre in genres}}
+        {{#each genres as |genre|}}
           <span class="badge">{{genre}}</span>
         {{/each}}
       </div>

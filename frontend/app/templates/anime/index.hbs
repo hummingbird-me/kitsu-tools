@@ -1,76 +1,3 @@
-{{!-- {{#if showEpisodes}}
-<div class="episode-bar">
-  <div class="container">
-    <h2 class="grey-title">
-      {{#link-to 'episodes'}}
-        Episodes
-        <i class="fa fa-angle-right"></i>
-      {{/link-to}}
-    </h2>
-    <div class="language-dropdown dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-        Subbed
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Dubbed</a></li>
-      </ul>
-    </div>
-      <ul class="episode-thumbs block-grid-5">
-        {{#each episodesPreview}}
-          <li class="block-grid-item">
-            <div class="thumbnail">
-              {{#link-to 'episodes.show' this}}
-                <img {{bind-attr src=thumbnail}}>
-                <div class="description">
-                  <div class="title">Episode {{number}}</div>
-                </div>
-                <div class="play-icon">
-                  <i class="fa fa-play"></i>
-                </div>
-              {{/link-to}}
-            </div>
-          </li>
-        {{/each}}
-      </ul>
-  </div>
-</div>
-{{/if}}
-
-<div class="container">
-  <div class="series-reviews">
-    <h2 class="grey-title">
-      {{#link-to 'reviews.index'}}
-        {{#if recentlyStartedAiring}}
-          First Impressions
-        {{else}}
-          Reviews
-        {{/if}}
-        <i class="fa fa-angle-right"></i>
-      {{/link-to}}
-    </h1>
-    <div class="review-listing">
-      {{partial "anime/trending_reviews"}}
-    </div>
-  </div>
-
-  <div class="series-gallery">
-    <h2 class="grey-title">
-      Screencaps
-    </h1>
-    <div class="gallery">
-      <ul class="block-grid-2">
-        {{#each imageURL in screencaps}}
-          <li class="block-grid-item"><img {{bind-attr src=imageURL}}></li>
-        {{/each}}
-      </ul>
-    </div>
-  </div>
-</div>
-
- --}}
-
-
 <div class="container">
   {{#if showReviewNag}}
     <!-- Review Nag -->
@@ -123,7 +50,7 @@
         <div class="genres">
           <h5 class="small-label">Genres:</h5>
           <ul class="inline-list">
-            {{#each genre in genres}}
+            {{#each genres as |genre|}}
               <li>{{genre}}</li>
             {{/each}}
           </ul>
@@ -132,8 +59,8 @@
         <div class="studios">
           <h5 class="small-label">Studios:</h5>
           <ul class="inline-list">
-            {{#each producers}}
-              <li>{{name}}</li>
+            {{#each producers as |producer|}}
+              <li>{{producer.name}}</li>
             {{/each}}
           </ul>
         </div>
@@ -180,7 +107,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              {{#each language in languages}}
+              {{#each languages as |language|}}
                 <li role="presentation">
                   <a role="menuitem" {{action "setLanguage" language}}>
                     {{language}}

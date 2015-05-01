@@ -68,7 +68,7 @@
         <div class="panel-body no-padding no-vpadding">
           <table class="table table-striped">
             <tbody>
-              {{#each user in usersToFollow}}
+              {{#each usersToFollow as |user|}}
                 <tr><td>
                   {{#link-to 'user' user}}{{user.username}}{{/link-to}}
                 </td></tr>
@@ -139,8 +139,8 @@
           {{#if showNonMal}}
             <table class="table table-striped">
               <tbody>
-                {{#each nonMalAnime}}
-                  <tr><td>{{#link-to 'anime' slug}}{{title}}{{/link-to}}</td></tr>
+                {{#each nonMalAnime as |anime|}}
+                  <tr><td>{{#link-to 'anime' anime.slug}}{{anime.title}}{{/link-to}}</td></tr>
                 {{/each}}
               </tbody>
             </table>
@@ -158,7 +158,7 @@
               <th colspan="2">Codes Remaining</th>
             </thead>
             <tbody>
-              {{#each deal in partnerDeals itemController="kotodama.partner-deal"}}
+              {{#each partnerDeals itemController="kotodama.partner-deal" as |deal|}}
                 <tr>
                   <td>{{deal.partner_name}}</td>
                   <td>{{deal.deal_title}}</td>
@@ -183,28 +183,6 @@
           </table>
         </div>
       </div>
-
-      {{!--
-      <div class="panel panel-default">
-        <div class="panel-heading">Reported content</div>
-        <div class="panel-body no-padding no-vpadding">
-          <table class="table table-striped">
-            <tbody>
-              {{#each reportedContent}}
-                <tr>
-                  <td>{{this}}</td>
-                  <td>cybrox</td>
-                  <td>
-                    {{#link-to 'index'}}<i class="fa fa-eye"></i>{{/link-to}}
-                    {{#link-to 'index'}}<i class="fa fa-pencil"></i>{{/link-to}}
-                  </td>
-                </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      --}}
     </div>
   </div>
 </div>

@@ -1,21 +1,21 @@
-<li {{bind-attr class=":notification seen::new"}}>
-  <a {{bind-attr href=link}}>
+<li {{bind-attr class=":notification notification.seen::new"}}>
+  <a {{bind-attr href=notification.link}}>
     <div class="avatar">
-      {{avatar sourceUser 'thumb_small'}}
+      {{avatar notification.sourceUser 'thumb_small'}}
     </div>
     <div class="content">
       <span class="who">
-        {{sourceUser.username}}
+        {{notification.sourceUser.username}}
       </span>
 
-      {{#if isProfileComment}}
+      {{#if notification.isProfileComment}}
         wrote a comment on your profile.
       {{/if}}
-      {{#if isCommentReply}}
+      {{#if notification.isCommentReply}}
         wrote a reply to your comment.
       {{/if}}
 
-      <div class="time">{{time-ago time=createdAt}}</div>
+      <div class="time">{{time-ago time=notification.createdAt}}</div>
     </div>
   </a>
 </li>

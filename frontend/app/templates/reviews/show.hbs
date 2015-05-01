@@ -1,7 +1,7 @@
 <div class="container">
   <div class="back-to-anime">
     <span>
-      {{#link-to 'anime.index'}} 
+      {{#link-to 'anime.index'}}
       <i class="fa fa-caret-left"></i> Back to anime page
       {{/link-to}}
     </span>
@@ -41,16 +41,16 @@
           <div class="breakdown-block">
             <div class="breakdown-content">
               <ul>
-                {{#each breakdown}}
-                <li class="clearfix">
-                <div class="col-xs-9">
-                  <i {{bind-attr class=":fa positive:fa-plus-circle:fa-minus-circle"}}></i>
-                  &nbsp; {{title}}...
-                </div>
-                <div class="dec-score">
-                  <strong>{{rating}}</strong>
-                </div>
-                </li>
+                {{#each breakdown as |rating|}}
+                  <li class="clearfix">
+                  <div class="col-xs-9">
+                    <i {{bind-attr class=":fa rating.positive:fa-plus-circle:fa-minus-circle"}}></i>
+                    &nbsp; {{rating.title}}...
+                  </div>
+                  <div class="dec-score">
+                    <strong>{{rating.rating}}</strong>
+                  </div>
+                  </li>
                 {{/each}}
               </ul>
             </div>

@@ -75,10 +75,10 @@
     <div class="container">
       <h2> Recent Posts on Hummingbird</h2>
       <div class="recent-stories">
-        {{#each story in model itemController="story"}}
+        {{#each model itemController="story" as |story|}}
           <div class="recent-story">
-            {{#with story}}
-              {{view "story" content=this}}
+            {{#with story as |story|}}
+              {{view "story" content=story}}
             {{/with}}
           </div>
         {{/each}}

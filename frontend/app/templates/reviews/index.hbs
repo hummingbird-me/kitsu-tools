@@ -11,7 +11,7 @@
 <div class="series-reviews col-sm-12">
 
 <div class="review-listing">
-  {{#each itemController="review"}}
+  {{#each model itemController="review" as |review|}}
     {{partial "media/review_summary"}}
   {{else}}
     {{#unless canLoadMore}}

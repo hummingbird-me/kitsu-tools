@@ -13,8 +13,8 @@
         {{input type="text" class="form-control" value=username placeholder="Username"}}
         {{#unless usernameValid}}
           <div class="alert alert-danger">
-            {{#each usernameProblems}}
-              <p><i class="fa fa-warning"></i> {{this}}</p>
+            {{#each usernameProblems as |problem|}}
+              <p><i class="fa fa-warning"></i> {{problem}}</p>
             {{/each}}
           </div>
         {{/unless}}
@@ -22,8 +22,8 @@
         {{input type="password" class="form-control" value=password placeholder="Password"}}
         {{#unless passwordValid}}
           <div class="alert alert-danger">
-            {{#each passwordProblems}}
-              <p><i class="fa fa-warning"></i> {{this}}</p>
+            {{#each passwordProblems as |problem|}}
+              <p><i class="fa fa-warning"></i> {{problem}}</p>
             {{/each}}
           </div>
         {{/unless}}
@@ -35,7 +35,7 @@
         <button type="submit" {{bind-attr disabled=submitDisabled}}>Create</button>
 
         <p class="switch-form-link">
-          Already have an account? 
+          Already have an account?
           {{#link-to 'sign-in'}}Sign in.{{/link-to}}
         </p>
       </form>

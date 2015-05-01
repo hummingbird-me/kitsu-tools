@@ -1,28 +1,25 @@
 <h2>Mobile Apps</h2>
 <div class="block-grid-md-2 block-grid-sm-1">
-  {{#each mobileApps}}
+  {{#each mobileApps as |app|}}
     <div class="block-grid-item">
       <div class="app-card">
-        {{!--
-          <img class="app-image" {{bind-attr src=cover}} />
-        --}}
         <div class="app-inner">
-          <h3 class="app-title">{{name}} <span class="app-type">{{platform}}</span></h3>
-          {{#each author}}
-            <small class="app-author">by  <a {{bind-attr href=link}}>{{name}}</a></small>
+          <h3 class="app-title">{{app.name}} <span class="app-type">{{app.platform}}</span></h3>
+          {{#each app.author as |author|}}
+            <small class="app-author">by  <a {{bind-attr href=author.link}}>{{author.name}}</a></small>
           {{/each}}
           <hr>
-          <p class="app-desc">{{desc}}</p>
+          <p class="app-desc">{{app.desc}}</p>
 
           <div class="app-link">
-            {{#each links}}
-              <a {{bind-attr href=link}}>{{name}}</a>
+            {{#each app.links as |link|}}
+              <a {{bind-attr href=link.link}}>{{link.name}}</a>
             {{/each}}
           </div>
           <div class="app-screens block-grid-md-2 block-grid-sm-1">
-            {{#each screenshots}}
+            {{#each app.screenshots as |screenshot|}}
               <div class="block-grid-item">
-                <img src="{{unbound this}}">
+                <img src="{{unbound screenshot}}">
               </div>
             {{/each}}
           </div>
@@ -34,29 +31,26 @@
 <hr>
 <h2>Desktop Apps</h2>
 <div class="block-grid-md-2 block-grid-sm-1">
-  {{#each desktopApps}}
+  {{#each desktopApps as |app|}}
     <div class="block-grid-item">
       <div class="app-card">
-        {{!--
-          <img class="app-image" {{bind-attr src=cover}} />
-        --}}
         <div class="app-inner">
-          <h3 class="app-title">{{name}} <span class="app-type">{{platform}}</span></h3>
-          {{#each author}}
-            <small class="app-author">by  <a {{bind-attr href=link}}>{{name}}</a></small>
+          <h3 class="app-title">{{app.name}} <span class="app-type">{{app.platform}}</span></h3>
+          {{#each app.author as |author|}}
+            <small class="app-author">by  <a {{bind-attr href=author.link}}>{{author.name}}</a></small>
           {{/each}}
           <hr>
-          <p class="app-desc">{{desc}}</p>
+          <p class="app-desc">{{app.desc}}</p>
 
           <div class="app-link">
-            {{#each links}}
-              <a {{bind-attr href=link}}>{{name}}</a>
+            {{#each app.links as |link|}}
+              <a {{bind-attr href=link.link}}>{{link.name}}</a>
             {{/each}}
           </div>
           <div class="app-screens block-grid-sm-1">
-            {{#each screenshots}}
+            {{#each app.screenshots as |screenshot|}}
               <div class="block-grid-item">
-                <img src="{{unbound this}}">
+                <img src="{{unbound screenshot}}">
               </div>
             {{/each}}
           </div>

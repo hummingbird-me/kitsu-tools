@@ -77,10 +77,10 @@
     <i class="fa fa-heart-o"></i> {{totalVotes}}
   </a>
   <ul class="active-users">
-    {{#each recentLikers}}
-      <li {{bind-attr data-tooltip=username}}>
-        {{#link-to 'user' id}}
-          {{unbound avatar this "thumb_small"}}
+    {{#each recentLikers as |liker|}}
+      <li {{bind-attr data-tooltip=liker.username}}>
+        {{#link-to 'user' liker.id}}
+          {{unbound avatar liker "thumb_small"}}
         {{/link-to}}
       </li>
     {{/each}}
@@ -113,38 +113,36 @@
         {{/if}}
       </div>
     {{/if}}
-    {{#each reversedDisplaySubstories}}
-      <div {{bind-attr class=":reply isNew"}}>
+    {{#each reversedDisplaySubstories as |substory|}}
+      <div {{bind-attr class=":reply substory.isNew"}}>
         <div class="user-avatar">
-          {{#link-to 'user' user}}
-            {{unbound avatar user 'thumb_small'}}
+          {{#link-to 'user' substory.user}}
+            {{unbound avatar substory.user 'thumb_small'}}
           {{/link-to}}
         </div>
         <div class="content">
           <p>
             <span class="username">
-              {{#link-to 'user' user}}
-                {{unbound user.username}}
+              {{#link-to 'user' substory.user}}
+                {{unbound substory.user.username}}
               {{/link-to}}
             </span>
             <span class="comment">
-              {{#if isNew}}
-                {{unbound reply}}
+              {{#if substory.isNew}}
+                {{unbound substory.reply}}
               {{else}}
-                {{{unbound reply}}}
+                {{{unbound substory.reply}}}
               {{/if}}
             </span>
           </p>
           <div class="secondary">
-            {{time-ago time=createdAt}}
-            {{#if canDeleteSubstory}}
+            {{time-ago time=substory.createdAt}}
+            {{#if substory.canDeleteSubstory}}
               ·
-              <a class="remove-post" {{action "deleteSubstory" this}}>remove</a>
+              <a class="remove-post" {{action "deleteSubstory" substory}}>remove</a>
             {{/if}}
           </div>
         </div>
-
-
       </div>
     {{/each}}
     {{#if currentUser.isSignedIn}}

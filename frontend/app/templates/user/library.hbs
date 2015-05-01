@@ -21,7 +21,7 @@
               {{else}}
                 <div class="library-section-select hidden-sm hidden-xs">
                   <button {{action "showSection" "View All"}} {{bind-attr class=":btn :btn-default showAll:active"}}> All</button>
-                  {{#each section in sections}}
+                  {{#each sections as |section|}}
                     <button {{action "showSection" section}} {{bind-attr class=":btn :btn-default section.displayVisible:active"}}> {{section.title}}</button>
                   {{/each}}
                 </div>
@@ -31,7 +31,7 @@
                   </button>
                   <ul class="dropdown-menu">
                     <li><a {{action "showSection" "View All"}}> View All</a></li>
-                    {{#each section in sections}}
+                    {{#each sections as |section|}}
                       <li><a {{action "showSection" section}}> {{section.title}}</a></li>
                     {{/each}}
                   </ul>
@@ -71,7 +71,7 @@
         <div id="library-sections"></div>
       </div>
     </div>
-    
+
     <div class="hidden-xs hidden-sm col-md-2">
       {{ad-unit adId="1293411" adClass="257f81e798bd68dd81e60f42838f361f"}}
     </div>

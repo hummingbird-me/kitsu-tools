@@ -16,7 +16,7 @@
   </ul>
 </div>
 
-{{!-- 
+{{!--
   <div class="search-section col-sm-4">
     <div class="search-wrapper">
       <i class="fa fa-search"></i>
@@ -26,23 +26,22 @@
 --}}
 
 <div class="featured-user-wrapper">
-  {{#each userList}}
+  {{#each userList as |user|}}
     <div class="follow-panel-wrapper">
       <div class="follow-panel">
-        {{#link-to 'user' username}}
-          <div class="follow-cover" {{bind-attr style=coverImageStyle}}></div>
+        {{#link-to 'user' user.username}}
+          <div class="follow-cover" {{bind-attr style=user.coverImageStyle}}></div>
         {{/link-to}}
         <div class="user-avatar">
-          <a {{bind-attr href=userLink}}>
-            {{avatar this 'thumb'}}
+          <a {{bind-attr href=user.userLink}}>
+            {{avatar user 'thumb'}}
           </a>
-          {{follow-button user=this}}
+          {{follow-button user=user}}
         </div>
         <div class="user-info">
-          <h4>{{#link-to 'user' username}}{{username}}{{/link-to}}</h4>
+          <h4>{{#link-to 'user' user.username}}{{user.username}}{{/link-to}}</h4>
           <p class="mini-bio">
-            {{truncatedBio}}
-            {{controller.followerCoverUrl}}
+            {{user.truncatedBio}}
           </p>
         </div>
       </div>

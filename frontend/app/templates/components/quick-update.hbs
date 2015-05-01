@@ -10,41 +10,41 @@
             <li class="watched-series"><div class="update-loading"><i class="fa fa-spin fa-spinner"></i></div></li>
           {{/repeat}}
         {{else}}
-          {{#each libraryEntries itemController="quick-update-item"}}
-            <li {{bind-attr class=":watched-series isPTW:plan-to-watch"}}>
+          {{#each libraryEntries itemController="quick-update-item" as |entry|}}
+            <li {{bind-attr class=":watched-series entry.isPTW:plan-to-watch"}}>
               <div class="overlay-wrapper">
                 <div class="overlay-panel">
-                  {{#link-to 'anime' anime.id class="quick-update-title-link" title=anime.displayTitle}}
+                  {{#link-to 'anime' entry.anime.id class="quick-update-title-link" title=entry.anime.displayTitle}}
                     <h4 class="series-title">
-                      {{anime.displayTitle}}
+                      {{entry.anime.displayTitle}}
                     </h4>
                   {{/link-to}}
                   <div class="actionable">
-                    {{#if loading}}
+                    {{#if entry.loading}}
                       <a class="episode-button"><i class="fa fa-spin fa-spinner"></i></a>
                     {{else}}
-                      {{#if isComplete}}
+                      {{#if entry.isComplete}}
                         <a class="episode-button"><strong>Completed!</strong></a>
                       {{else}}
                         <a class="episode-button" {{action "markViewed"}}>
-                          Mark <strong>EP {{nextEpisodeNumber}}</strong>
+                          Mark <strong>EP {{entry.nextEpisodeNumber}}</strong>
                         </a>
                       {{/if}}
                     {{/if}}
                   </div>
                   <div class="stats">
                     <h4>
-                      {{#if isPTW}}
+                      {{#if entry.isPTW}}
                         Plan to Watch
                       {{else}}
-                        {{percentComplete}}% Complete
+                        {{entry.percentComplete}}% Complete
                       {{/if}}
                     </h4>
-                    <p>Seen {{episodesWatched}} of {{anime.displayEpisodeCount}}</p>
+                    <p>Seen {{entry.episodesWatched}} of {{entr.anime.displayEpisodeCount}}</p>
                   </div>
                 </div>
 
-                <img class="responsive-image" {{bind-attr src="anime.posterImage"}}>
+                <img class="responsive-image" {{bind-attr src="entry.anime.posterImage"}}>
               </div>
             </li>
           {{/each}}
@@ -56,4 +56,3 @@
     </div>
   </div>
 </div>
-

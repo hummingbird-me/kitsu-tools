@@ -17,7 +17,7 @@
     <div class="panel-body">
       <ul class="media-grid media-grid-dragsort">
         {{#if favoriteListCapped}}
-          {{#each favorite in favoriteListCapped}}
+          {{#each favoriteListCapped as |favorite|}}
             {{#if isEditing}}
               <li class="grid-list grid-draggable clearfix" {{bind-attr data-id=favorite.id}}>
                 {{!-- <span class="grid-position">{{favorite.favRank}}</span> --}}
