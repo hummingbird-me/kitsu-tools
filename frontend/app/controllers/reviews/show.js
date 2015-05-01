@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   coverImageStyle: function() {
-    return "background-image: url(" + this.get('model.user.coverImageUrl') + ")";
+    return (`background-image: url("${this.get('model.user.coverImageUrl')}")`).htmlSafe();
   }.property('model.user.coverUrl'),
 
   writtenBySelf: function() {

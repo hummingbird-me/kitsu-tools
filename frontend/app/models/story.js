@@ -19,7 +19,7 @@ export default Model.extend(ModelCurrentUser, {
   recentLikers: DS.hasMany('user'),
 
   coverImageStyle: function() {
-    return "background-image: url(" + this.get('coverImageUrl') + ")";
+    return (`background-image: url("${this.get('coverImageUrl')}")`).htmlSafe();
   }.property('coverImageUrl'),
 
   omittedSubstoryCount: function(){

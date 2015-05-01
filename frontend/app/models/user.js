@@ -30,7 +30,7 @@ export default DS.Model.extend(ModelTruncatedDetails, {
   }.property('avatarTemplate'),
 
   coverImageStyle: function() {
-    return "background-image: url(" + this.get('coverImageUrl') + ")";
+    return (`background-image: url("${this.get('coverImageUrl')}")`).htmlSafe();
   }.property('coverImageUrl'),
 
   userLink: function() {

@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   coverImageStyle: function() {
-    return "background-image: url('" + this.get('model.coverImage') + "'); background-position: 50% -" + this.get('model.coverImageTopOffset') + "px;";
+    return (`background-image: url('${this.get('model.coverImage')}'); background-position: 50% -${this.get('model.coverImageTopOffset')}px;`).htmlSafe();
   }.property('model.coverImage', 'model.coverImageTopOffset'),
 
   amazonLink: function() {

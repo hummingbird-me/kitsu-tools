@@ -4,7 +4,7 @@ export default Ember.Mixin.create({
   coverUpload: Ember.Object.create(),
   coverUrl: Ember.computed.any('coverUpload.croppedImage', 'model.coverImageUrl'),
   coverImageStyle: function() {
-    return "background-image: url(" + this.get('coverUrl') + ")";
+    return (`background-image: url("${this.get('coverUrl')}")`).htmlSafe();
   }.property('coverUrl'),
 
   actions: {
