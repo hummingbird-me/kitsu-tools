@@ -1,10 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  coverImageStyle: function() {
-    return (`background-image: url("${this.get('model.user.coverImageUrl')}")`).htmlSafe();
-  }.property('model.user.coverUrl'),
-
   writtenBySelf: function() {
     return this.get('currentUser.isSignedIn') && this.get('currentUser.id') === this.get('model.user.id');
   }.property('model.user.id'),

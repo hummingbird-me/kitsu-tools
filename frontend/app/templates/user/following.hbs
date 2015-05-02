@@ -1,20 +1,20 @@
 <div class="container">
-  {{#each model as |follower|}}
+  {{#each model as |user|}}
     <div class="follow-panel-wrapper">
       <div class="follow-panel">
-        {{#link-to 'user' follower.username}}
-          <div class="follow-cover" {{bind-attr style=follower.coverImageStyle}}></div>
+        {{#link-to 'user' user.username}}
+          <div class="follow-cover" {{bind-attr style=user.coverImageStyle}}></div>
         {{/link-to}}
         <div class="user-avatar">
-          <a {{bind-attr href=follower.userLink}}>
-            {{avatar follower 'thumb'}}
+          <a {{bind-attr href=user.userLink}}>
+            {{avatar user 'thumb'}}
           </a>
-          {{follow-button user=follower}}
+          {{follow-button user=user}}
         </div>
         <div class="user-info">
-          <h4>{{#link-to 'user' follower.username}}{{follower.username}}{{/link-to}}</h4>
+          <h4>{{#link-to 'user' user.username}}{{user.username}}{{/link-to}}</h4>
           <p class="mini-bio">
-            {{follower.truncatedBio}}
+            {{user.truncatedBio}}
           </p>
         </div>
       </div>

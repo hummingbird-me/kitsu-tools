@@ -9,7 +9,10 @@ export default Ember.Controller.extend({
     var coverImage = this.get('model.coverImage');
     if (!coverImage) { return false; }
     var coverImageTopOffset = this.get('model.coverImageTopOffset');
-    return (`background-image: url('${coverImage}'); background-position: 50% -${coverImageTopOffset}px;`).htmlSafe();
+    return (`
+      background-image: url('${coverImage}');
+      background-position: 50% -${coverImageTopOffset}px;
+    `).htmlSafe();
   }.property('model.coverImage', 'model.coverImageTopOffset'),
 
   randomQuote: function() {
