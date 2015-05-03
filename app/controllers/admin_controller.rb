@@ -28,11 +28,12 @@ class AdminController < ApplicationController
   def index
     @anime_without_mal_id = Anime.where(mal_id: nil).where(%{"anime"."id" NOT IN (SELECT "anime_genres"."anime_id" FROM "anime_genres" INNER JOIN "genres" ON "genres"."id" = "anime_genres"."genre_id" AND "genres"."name" = 'Anime Influenced')})
     # Sort by partner code count (ascending) where there's less than 20 left
-    @deals = PartnerDeal.joins('left join partner_codes on partner_codes.partner_deal_id = partner_deals.id').
-      select('partner_deals.*, count(partner_codes.id) as codes_remaining').
-      group('partner_deals.id').
-      having('count(partner_codes.id) < 20').
-      order('count(partner_codes.id) asc')
+    @deals = PartnerCode.preload(:partner_deal)
+                        .select(:partner_deal_id, 'count(partner_deal_id) as codes_remaining')
+                        .where(partner_deal_id: PartnerDeal.where(active: true).pluck(:id))
+                        .group(:partner_deal_id)
+                        .having('count(partner_deal_id) < 50')
+                        .order('count(partner_deal_id) asc')
     @blotter = Blotter.get
 
     if params[:old_kotodama].nil?
