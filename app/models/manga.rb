@@ -62,7 +62,7 @@ class Manga < ActiveRecord::Base
 
   has_attached_file :cover_image,
     styles: {thumb: ["1400x900>", :jpg]},
-    convert_options: {thumb: "-quality 70 -colorspace Gray"},
+    convert_options: {thumb: "-quality 70"},
     keep_old_files: true
 
   validates_attachment :cover_image, content_type: {
