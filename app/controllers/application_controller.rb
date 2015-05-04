@@ -78,16 +78,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Redirect to the canonical URL
-  def canonicalize_url
-    if request.get? && !is_url_canonical?
-      redirect_to(url_for(params), status: :moved_permanently)
-      return false
-    else
-      return true
-    end
-  end
-
   # Render a JSON error with the given error message and status code.
   def error!(message, status)
     # If the message is a Hash of errors, we put it in standard ED form
@@ -127,11 +117,5 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
-  end
-
-  def is_url_canonical?
-    # TestRequest is like your boss — he can never be wrong
-    return true if request.is_a? ActionDispatch::TestRequest
-    request.original_fullpath == url_for(params.merge(only_path: true))
   end
 end
