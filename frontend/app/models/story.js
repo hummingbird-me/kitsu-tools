@@ -18,10 +18,6 @@ export default Model.extend(ModelCurrentUser, {
   adult: DS.attr('boolean'),
   recentLikers: DS.hasMany('user'),
 
-  coverImageStyle: function() {
-    return "background-image: url(" + this.get('coverImageUrl') + ")";
-  }.property('coverImageUrl'),
-
   omittedSubstoryCount: function(){
     return this.get('substoryCount') - 2;
   }.property('substoryCount'),

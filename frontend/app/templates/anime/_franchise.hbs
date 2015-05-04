@@ -1,23 +1,23 @@
-{{#if franchises.isFulfilled}}
-  {{#with franchises controller='franchises'}}
-    {{#each franchiseAnime}}
+{{#if model.franchises.isFulfilled}}
+  {{#with model.franchises controller='franchises' as |franchise|}}
+    {{#each franchise.franchiseAnime as |anime|}}
       <div class="franchise-show">
         <div class="franchise-poster">
-          <img class="series-poster" {{bind-attr src=posterImage}} />
+          <img class="series-poster" {{bind-attr src=anime.posterImage}} />
         </div>
         <div class="franchise-info">
           <h4 class="series-title">
-            {{#link-to 'anime' id}}{{displayTitle}}{{/link-to}}
+            {{#link-to 'anime' anime.id}}{{anime.displayTitle}}{{/link-to}}
           </h4>
           {{partial "anime/infobar"}}
-          <div>{{truncate-text text=synopsis length=200}}</div>
+          <div>{{truncate-text text=anime.synopsis length=200}}</div>
         </div>
       </div>
     {{/each}}
 
-    {{#unless showAll}}
+    {{#unless franchise.showAll}}
       <div class="view-more">
-        <a {{action "toggleShowAll"}}>View More in Franchise</a>
+        <a {{action "toggleShowAll" target=franchise}}>View More in Franchise</a>
       </div>
     {{/unless}}
   {{/with}}

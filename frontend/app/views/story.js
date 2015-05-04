@@ -5,15 +5,15 @@ export default Ember.View.extend({
   classNames: ["story"],
 
   templateName: function() {
-    if (this.get('content.isDeleted')) {
+    if (this.get('content.model.isDeleted')) {
       return "story/deleted";
     }
-    return "story/" + this.get('content.type');
-  }.property('content.type', 'content.isDeleted'),
+    return "story/" + this.get('content.model.type');
+  }.property('content.model.type', 'content.model.isDeleted'),
 
   rerenderOnDeletion: function() {
     this.rerender();
-  }.observes('content.isDeleted'),
+  }.observes('content.model.isDeleted'),
 
   truncateLongComments: function() {
     var commentEl = this.$(".comment-text")[0];
@@ -23,7 +23,7 @@ export default Ember.View.extend({
   },
 
   hideSpoilers: function() {
-    if (this.get('content.type') === "comment") {
+    if (this.get('content.model.type') === "comment") {
       Ember.run.scheduleOnce('afterRender', this, function() {
         this.$(".spoiler").spoilerAlert();
       });
@@ -31,7 +31,7 @@ export default Ember.View.extend({
   }.on('didInsertElement').observes('content.showAll', 'content.loadingAll'),
 
   didInsertElement: function() {
-    var storyType = this.get('content.type');
+    var storyType = this.get('content.model.type');
     if (storyType === "comment") {
       this.truncateLongComments();
       this.$("img").load(() => {

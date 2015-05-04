@@ -14,7 +14,7 @@
             <li><a class="btn" href="/kibana">Kibana</a></li>
             <li>
               {{#link-to 'edits' class="btn"}}
-                {{pluralize pending_count "Pending Edit" "Pending Edits"}}
+                {{pluralize model.pending_count "Pending Edit" "Pending Edits"}}
               {{/link-to}}
             </li>
           </ul>
@@ -35,18 +35,18 @@
             <tbody>
               <tr><td>Registrations</td><td>{{accountsNew}}</td></tr>
               <tr><td>Confirmed Accounts</td><td>{{accountsCnf}}</td></tr>
-              <tr><td>Active Accounts</td><td>{{activeaccs}}</td></tr>
-              <tr><td>Feed posts</td><td>{{feedposts}}</td></tr>
-              <tr><td>Feed updates</td><td>{{feedcomments}}</td></tr>
-              <tr><td>Feed likes</td><td>{{feedlikes}}</td></tr>
-              <tr><td>Group joins</td><td>{{groupjoins}}</td></tr>
+              <tr><td>Active Accounts</td><td>{{model.activeaccs}}</td></tr>
+              <tr><td>Feed posts</td><td>{{model.feedposts}}</td></tr>
+              <tr><td>Feed updates</td><td>{{model.feedcomments}}</td></tr>
+              <tr><td>Feed likes</td><td>{{model.feedlikes}}</td></tr>
+              <tr><td>Group joins</td><td>{{model.groupjoins}}</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
       <div class="panel panel-default">
-        <div class="panel-heading">Deploy Hummingbird [Current: {{sha_hash}}]</div>
+        <div class="panel-heading">Deploy Hummingbird [Current: {{model.sha_hash}}]</div>
         <div class="panel-body">
           <button class="form-control btn status-button" {{action 'deploy'}}>Good Luck!</button>
           {{#if hasDeployed}}
@@ -68,7 +68,7 @@
         <div class="panel-body no-padding no-vpadding">
           <table class="table table-striped">
             <tbody>
-              {{#each user in usersToFollow}}
+              {{#each usersToFollow as |user|}}
                 <tr><td>
                   {{#link-to 'user' user}}{{user.username}}{{/link-to}}
                 </td></tr>
@@ -139,8 +139,8 @@
           {{#if showNonMal}}
             <table class="table table-striped">
               <tbody>
-                {{#each nonMalAnime}}
-                  <tr><td>{{#link-to 'anime' slug}}{{title}}{{/link-to}}</td></tr>
+                {{#each nonMalAnime as |anime|}}
+                  <tr><td>{{#link-to 'anime' anime.slug}}{{anime.title}}{{/link-to}}</td></tr>
                 {{/each}}
               </tbody>
             </table>
@@ -158,11 +158,11 @@
               <th colspan="2">Codes Remaining</th>
             </thead>
             <tbody>
-              {{#each deal in partnerDeals itemController="kotodama.partner-deal"}}
+              {{#each partnerDeals itemController="kotodama.partner-deal" as |deal|}}
                 <tr>
-                  <td>{{deal.partner_name}}</td>
-                  <td>{{deal.deal_title}}</td>
-                  <td>{{deal.codes_remaining}}</td>
+                  <td>{{deal.model.partner_name}}</td>
+                  <td>{{deal.model.deal_title}}</td>
+                  <td>{{deal.model.codes_remaining}}</td>
                   <td>
                     {{#if deal.isRefilling}}
                       Refilling...
@@ -183,28 +183,6 @@
           </table>
         </div>
       </div>
-
-      {{!--
-      <div class="panel panel-default">
-        <div class="panel-heading">Reported content</div>
-        <div class="panel-body no-padding no-vpadding">
-          <table class="table table-striped">
-            <tbody>
-              {{#each reportedContent}}
-                <tr>
-                  <td>{{this}}</td>
-                  <td>cybrox</td>
-                  <td>
-                    {{#link-to 'index'}}<i class="fa fa-eye"></i>{{/link-to}}
-                    {{#link-to 'index'}}<i class="fa fa-pencil"></i>{{/link-to}}
-                  </td>
-                </tr>
-              {{/each}}
-            </tbody>
-          </table>
-        </div>
-      </div>
-      --}}
     </div>
   </div>
 </div>

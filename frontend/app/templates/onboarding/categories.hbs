@@ -18,10 +18,10 @@
   {{#if loading}}
     {{loading-indicator}}
   {{else}}
-    {{#each genres}}
+    {{#each genres as |genre|}}
       <div class="genre-panel">
-        <div {{bind-attr class=":genre favorite:active"}} {{action "toggleFavorite" this}}>
-          <span>{{model.name}}</span>
+        <div {{bind-attr class=":genre genre.favorite:active"}} {{action "toggleFavorite" genre}}>
+          <span>{{genre.model.name}}</span>
         </div>
       </div>
     {{/each}}

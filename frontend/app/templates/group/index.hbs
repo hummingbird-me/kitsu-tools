@@ -46,7 +46,7 @@
         </div>
         <div class="panel-body">
           <ul>
-            {{#each member in recentMembers}}
+            {{#each recentMembers as |member|}}
               <li {{bind-attr data-tooltip=member.user.username}}>
                 {{#link-to 'user' member.user.username}}
                   {{avatar member.user 'thumb'}}
@@ -71,10 +71,10 @@
         </div>
         <div class="panel-body">
           <ul>
-            {{#each group in suggestedGroups}}
+            {{#each suggestedGroups as |group|}}
               <li>
                 {{group-box group=group}}
-              <li>
+              </li>
             {{/each}}
           </ul>
           <div class="more-wrapper">
@@ -98,7 +98,13 @@
             {{post-comment action="postComment"}}
         {{/unless}}
       {{/if}}
-      {{each content itemController="story" itemViewClass="story"}}
+
+      {{#each model itemController="story" as |story|}}
+        {{#with story as |story|}}
+          {{view "story" content=story}}
+        {{/with}}
+      {{/each}}
+
       {{#if canLoadMore}}
         {{load-more classNames="light" action="loadNextPage"}}
       {{/if}}

@@ -1,43 +1,43 @@
-<div {{bind-attr class=":update-panel isNew"}}>
+<div {{bind-attr class=":update-panel model.isNew"}}>
   <div class="row">
     <div class="user-info-bar">
       <div class="user-image">
-        {{#link-to 'user' poster}}
-          {{unbound avatar poster "thumb_small"}}
+        {{#link-to 'user' model.poster}}
+          {{unbound avatar model.poster "thumb_small"}}
         {{/link-to}}
       </div>
       <div class="comment-content">
         <h4 class="story-title">
-          {{#link-to 'user' poster}}{{unbound poster.username}}{{/link-to}}
+          {{#link-to 'user' model.poster}}{{unbound model.poster.username}}{{/link-to}}
           {{#unless selfPost}}
             <i class="fa fa-share reply-icon"></i>
-            {{#link-to 'user' user}}{{unbound user.username}}{{/link-to}}
+            {{#link-to 'user' model.user}}{{unbound model.user.username}}{{/link-to}}
           {{else}}
-            {{#if user.isPro}}
+            {{#if model.user.isPro}}
               {{#link-to 'pro'}}<span class="mini-badge">pro</span>{{/link-to}}
             {{/if}}
-            {{#if group}}
+            {{#if model.group}}
               {{! don't show this if we are actually on the group page }}
               {{#unless isOnGroupPage}}
                 posted to
-                {{#link-to 'group' group}}{{unbound group.name}}{{/link-to}}
+                {{#link-to 'group' model.group}}{{unbound model.group.name}}{{/link-to}}
               {{/unless}}
             {{/if}}
           {{/unless}}
         </h4>
         <p class="secondary">
-          {{time-ago time=createdAt}}
+          {{time-ago time=model.createdAt}}
           ·
-          {{#link-to 'story.permalink' this class="permalink"}}
+          {{#link-to 'story.permalink' model class="permalink"}}
             permalink
           {{/link-to}}
-          {{#if canToggleNSFW}}
+          {{#if model.canToggleNSFW}}
             ·
             <a class="remove-post" {{action "toggleNSFW"}}>
-              {{#if adult}}remove{{else}}set{{/if}} nsfw
+              {{#if model.adult}}remove{{else}}set{{/if}} nsfw
             </a>
           {{/if}}
-          {{#if canDeleteStory}}
+          {{#if model.canDeleteStory}}
             ·
             <a class="remove-post" {{action "deleteStory"}}>remove</a>
           {{/if}}
@@ -51,10 +51,10 @@
         <a {{action "showCollapsedPost"}}>Show NSFW Content</a>
       {{else}}
         <p {{bind-attr class=":comment-text isExpanded:full-post" }}>
-          {{#if isNew}}
-            {{unbound comment}}
+          {{#if model.isNew}}
+            {{unbound model.comment}}
           {{else}}
-            {{{unbound comment}}}
+            {{{unbound model.comment}}}
           {{/if}}
         </p>
       {{/if}}
@@ -68,19 +68,19 @@
 </div>
 
 <div class="story-actions">
-  {{#if adult}}
+  {{#if model.adult}}
     <span class="nsfw-indicator" data-tooltip="This post has been marked as nsfw!">
       <i class="fa fa-warning"></i>
     </span>
   {{/if}}
-  <a {{bind-attr class=":like isLiked:active"}} {{action "toggleLike"}}>
-    <i class="fa fa-heart-o"></i> {{totalVotes}}
+  <a {{bind-attr class=":like model.isLiked:active"}} {{action "toggleLike"}}>
+    <i class="fa fa-heart-o"></i> {{model.totalVotes}}
   </a>
   <ul class="active-users">
-    {{#each recentLikers}}
-      <li {{bind-attr data-tooltip=username}}>
-        {{#link-to 'user' id}}
-          {{unbound avatar this "thumb_small"}}
+    {{#each model.recentLikers as |liker|}}
+      <li {{bind-attr data-tooltip=liker.username}}>
+        {{#link-to 'user' liker.id}}
+          {{unbound avatar liker "thumb_small"}}
         {{/link-to}}
       </li>
     {{/each}}
@@ -107,50 +107,48 @@
             {{#if showAll}}
               Show Less
             {{else}}
-              Show {{pluralize omittedSubstoryCount "more reply" "more replies"}}
+              Show {{pluralize model.omittedSubstoryCount "more reply" "more replies"}}
             {{/if}}
           </a>
         {{/if}}
       </div>
     {{/if}}
-    {{#each reversedDisplaySubstories}}
-      <div {{bind-attr class=":reply isNew"}}>
+    {{#each reversedDisplaySubstories as |substory|}}
+      <div {{bind-attr class=":reply substory.isNew"}}>
         <div class="user-avatar">
-          {{#link-to 'user' user}}
-            {{unbound avatar user 'thumb_small'}}
+          {{#link-to 'user' substory.user}}
+            {{unbound avatar substory.user 'thumb_small'}}
           {{/link-to}}
         </div>
         <div class="content">
           <p>
             <span class="username">
-              {{#link-to 'user' user}}
-                {{unbound user.username}}
+              {{#link-to 'user' substory.user}}
+                {{unbound substory.user.username}}
               {{/link-to}}
             </span>
             <span class="comment">
-              {{#if isNew}}
-                {{unbound reply}}
+              {{#if substory.isNew}}
+                {{unbound substory.reply}}
               {{else}}
-                {{{unbound reply}}}
+                {{{unbound substory.reply}}}
               {{/if}}
             </span>
           </p>
           <div class="secondary">
-            {{time-ago time=createdAt}}
-            {{#if canDeleteSubstory}}
+            {{time-ago time=substory.createdAt}}
+            {{#if substory.canDeleteSubstory}}
               ·
-              <a class="remove-post" {{action "deleteSubstory" this}}>remove</a>
+              <a class="remove-post" {{action "deleteSubstory" substory}}>remove</a>
             {{/if}}
           </div>
         </div>
-
-
       </div>
     {{/each}}
     {{#if currentUser.isSignedIn}}
-      {{#if group}}
-        {{#if group.currentMember}}
-          {{#unless group.currentMember.pending}}
+      {{#if model.group}}
+        {{#if model.group.currentMember}}
+          {{#unless model.group.currentMember.pending}}
             <div class="reply-form">
               {{expanding-textarea value=reply rows="1" placeholder="Leave a comment..." enterAction="submitReply"}}
             </div>

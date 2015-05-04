@@ -1,4 +1,5 @@
-{{!-- {{#if showEpisodes}}
+{{!--
+{{#if showEpisodes}}
 <div class="episode-bar">
   <div class="container">
     <h2 class="grey-title">
@@ -36,7 +37,6 @@
   </div>
 </div>
 {{/if}}
-
 <div class="container">
   <div class="series-reviews">
     <h2 class="grey-title">
@@ -53,7 +53,6 @@
       {{partial "anime/trending_reviews"}}
     </div>
   </div>
-
   <div class="series-gallery">
     <h2 class="grey-title">
       Screencaps
@@ -67,9 +66,7 @@
     </div>
   </div>
 </div>
-
- --}}
-
+--}}
 
 <div class="container">
   {{#if showReviewNag}}
@@ -85,12 +82,12 @@
 
       <div class="poster-container">
         <div class="poster-actions">
-          <img class="series-poster" {{bind-attr src=posterImage}}>
-          <a data-tooltip="Watch Trailer"{{bind-attr class=":trailer-link hasTrailer::hide"}} {{action "openModal" "youtube" this}}>
+          <img class="series-poster" {{bind-attr src=model.posterImage}}>
+          <a data-tooltip="Watch Trailer"{{bind-attr class=":trailer-link model.hasTrailer::hide"}} {{action "openModal" "youtube" this}}>
             <i {{bind-attr class=":fa :fa-youtube-play"}}></i>
           </a>
           {{#if libraryEntryExists}}
-            {{#if libraryEntry.isFavorite}}
+            {{#if model.libraryEntry.isFavorite}}
               <a data-tooltip="You favorited this!" {{bind-attr class=":favorite-link"}} {{action "toggleFavorite"}}>
                 <i {{bind-attr class=":fa :fa-heart"}}></i>
               </a>
@@ -106,10 +103,10 @@
       <div class="series-info">
 
         <h3 class="series-title">
-          {{canonicalTitle}}
-          {{#if alternateTitle}}
+          {{model.canonicalTitle}}
+          {{#if model.alternateTitle}}
             <small class="alternate-title">
-              {{alternateTitle}}
+              {{model.alternateTitle}}
             </small>
           {{/if}}
         </h3>
@@ -117,13 +114,13 @@
         <div class="series-infobar">{{partial "anime/infobar"}}</div>
 
         <div class="synopsis">
-          <p>{{{truncate-text text=synopsis length=200 breakLines=true}}}</p>
+          <p>{{{truncate-text text=model.synopsis length=200 breakLines=true}}}</p>
         </div>
 
         <div class="genres">
           <h5 class="small-label">Genres:</h5>
           <ul class="inline-list">
-            {{#each genre in genres}}
+            {{#each model.genres as |genre|}}
               <li>{{genre}}</li>
             {{/each}}
           </ul>
@@ -132,8 +129,8 @@
         <div class="studios">
           <h5 class="small-label">Studios:</h5>
           <ul class="inline-list">
-            {{#each producers}}
-              <li>{{name}}</li>
+            {{#each model.producers as |producer|}}
+              <li>{{producer.name}}</li>
             {{/each}}
           </ul>
         </div>
@@ -142,9 +139,9 @@
           <div {{bind-attr class=":user-actions libraryEntryExists::no-entry"}}>
             <div class="btn-group">
 
-              <button {{bind-attr class=":library-button :library-entry :dropdown-toggle libraryStatus:active"}} type="button" data-toggle="dropdown">
+              <button {{bind-attr class=":library-button :library-entry :dropdown-toggle"}} type="button" data-toggle="dropdown">
                 {{#if libraryEntryExists}}
-                  {{libraryEntry.status}}&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
+                  {{model.libraryEntry.status}}&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
                 {{else}}
                   Add to Library&nbsp;&nbsp;<i {{bind-attr class=":fa :fa-caret-down"}}></i>
                 {{/if}}
@@ -161,7 +158,7 @@
             </div>
             {{#if libraryEntryExists}}
               <div class="personal-rating active">
-                {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=libraryEntry.rating}}
+                {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=model.libraryEntry.rating}}
               </div>
             {{/if}}
           </div>
@@ -180,7 +177,7 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              {{#each language in languages}}
+              {{#each model.languages as |language|}}
                 <li role="presentation">
                   <a role="menuitem" {{action "setLanguage" language}}>
                     {{language}}
@@ -241,7 +238,7 @@
         </div>
       {{/if}}
       <div class="histogram">
-        {{community-rating communityRatings}}
+        {{community-rating model.communityRatings}}
         <div class="rating-legend">
           <span class="lowest-rating">
             <i class="fa fa-star-half-o"></i>
@@ -259,7 +256,7 @@
       </div>
       <div class="reviews">
         <h4>Reviews:</h4>
-        {{#if trendingReviews}}
+        {{#if model.trendingReviews}}
           <div class="review-links">
             <a {{bind-attr href=fullReviewsURL}}>View All</a> · <a {{bind-attr href=newReviewURL}}>Write One</a>
           </div>

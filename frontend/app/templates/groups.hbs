@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       {{#if userGroups}}
-        {{#each group in userGroups}}
+        {{#each userGroups as |group|}}
           <div class="col-sm-4">
             {{group-box group=group}}
           </div>
@@ -23,7 +23,7 @@
     <h3>New Groups</h3>
   </div>
   <div class="row">
-    {{#each group in recentGroups}}
+    {{#each recentGroups as |group|}}
       <div class="col-sm-4">
         {{group-box group=group}}
       </div>
@@ -35,7 +35,7 @@
     <h3>Trending Groups</h3>
   </div>
   <div class="row">
-    {{#each group in model}}
+    {{#each model as |group|}}
       <div class="col-sm-4">
         {{group-box group=group}}
       </div>

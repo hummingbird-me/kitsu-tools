@@ -2,7 +2,7 @@ import Ember from 'ember';
 import propertyEqual from '../utils/computed/property-equal';
 /* global Messenger */
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   commentStory: Ember.computed.equal('model.type', 'comment'),
   mediaStory: Ember.computed.equal('model.type', 'media_story'),
   followedStory: Ember.computed.equal('model.type', 'followed'),
@@ -26,12 +26,12 @@ export default Ember.ObjectController.extend({
   }.property(),
 
   extraLikers: function() {
-    return this.get('totalVotes') - this.get('recentLikers.length');
-  }.property('totalVotes', 'recentLikers.length'),
+    return this.get('model.totalVotes') - this.get('model.recentLikers.length');
+  }.property('model.totalVotes', 'model.recentLikers.length'),
   showExtraLikers: Ember.computed.gt('extraLikers', 0),
 
   mediaRoute: function() {
-    return this.get('model.media').constructor.typeKey;
+    return this.get('model.media.constructor.typeKey');
   }.property('model.media'),
 
   displaySubstories: function () {
@@ -63,7 +63,7 @@ export default Ember.ObjectController.extend({
           createdAt: new Date()
         });
         reply.save();
-        self.incrementProperty('substoryCount');
+        self.incrementProperty('model.substoryCount');
         self.get('substories').addObject(reply);
         self.set('reply', '');
       });
@@ -91,7 +91,7 @@ export default Ember.ObjectController.extend({
     deleteSubstory: function(substory) {
       substory.destroyRecord().then(() => {
         this.get('substories').removeObject(substory);
-        this.decrementProperty('substoryCount');
+        this.decrementProperty('model.substoryCount');
       });
     },
 
@@ -110,17 +110,17 @@ export default Ember.ObjectController.extend({
         return this.transitionTo('sign-up');
       }
 
-      this.toggleProperty('isLiked');
-      Messenger().expectPromise(() => this.get('content').save(), {
+      this.toggleProperty('model.isLiked');
+      Messenger().expectPromise(() => this.get('model').save(), {
         progressMessage: () => {
-          if (this.get('isLiked')) {
+          if (this.get('model.isLiked')) {
             return "Liking post...";
           } else {
             return "Unliking post...";
           }
         },
         successMessage: () => {
-          if (this.get('isLiked')) {
+          if (this.get('model.isLiked')) {
             return "Liked!";
           } else {
             return "Unliked.";

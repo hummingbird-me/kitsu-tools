@@ -3,7 +3,7 @@
     <h4 class="modal-title"> Crop Cover Image</h4>
   </div>
   <div class="modal-body jcrop">
-    <img {{bind-attr src=originalImage}} id="preview" />
+    <img {{bind-attr src=model.originalImage}} id="preview" />
   </div>
   <div class="modal-footer">
     <button class="btn btn-primary" {{action "upload"}}> Upload</button>

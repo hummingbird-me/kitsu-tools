@@ -1,7 +1,7 @@
 <div class="reviews-index col-sm-6 col-sm-offset-3">
 
 <h1 class="series-title hidden-xs">
-  {{#link-to 'anime' anime.id}}{{anime.canonicalTitle}}{{/link-to}}
+  {{#link-to 'anime' anime.model.id}}{{anime.model.canonicalTitle}}{{/link-to}}
   <small><i class="fa fa-chevron-right"></i> Reviews</small>
 </h1>
 
@@ -11,7 +11,7 @@
 <div class="series-reviews col-sm-12">
 
 <div class="review-listing">
-  {{#each itemController="review"}}
+  {{#each model itemController="review" as |review|}}
     {{partial "media/review_summary"}}
   {{else}}
     {{#unless canLoadMore}}

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import PreloadStore from '../utils/preload-store';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   nonMalAnime: PreloadStore.get('nonmal_anime'),
   blotter: PreloadStore.get('blotter'),
   partnerDeals: PreloadStore.get('deals_to_refill'),
@@ -14,8 +14,6 @@ export default Ember.ObjectController.extend({
   showReports: false,
   showNonMal: false,
 
-  reportedContent: ["quote:39248348", "comment:3948348"],
-
   usersToFollow: function() {
     return this.store.find('user', {
       to_follow: true
@@ -23,14 +21,14 @@ export default Ember.ObjectController.extend({
   }.property('userToFollowSubmit'),
 
   accountsNew: function() {
-    var statsObject = this.get('content.registrations.total');
+    var statsObject = this.get('model.registrations.total');
     return statsObject[Object.keys(statsObject)[Object.keys(statsObject).length - 1]];
-  }.property('content.registrations'),
+  }.property('model.registrations'),
 
   accountsCnf: function() {
-    var statsObject = this.get('content.registrations.confirmed');
+    var statsObject = this.get('model.registrations.confirmed');
     return statsObject[Object.keys(statsObject)[Object.keys(statsObject).length - 1]];
-  }.property('content.registrations'),
+  }.property('model.registrations'),
 
   init: function() {
     var blotter = this.get('blotter');
@@ -47,7 +45,7 @@ export default Ember.ObjectController.extend({
 
   graphOptions: [],
   graphData: function() {
-    var data = this.get('content'),
+    var data = this.get('model'),
         labels = Object.keys(data["registrations"]["total"]),
         confirmed = [],
         total = [];
@@ -58,8 +56,8 @@ export default Ember.ObjectController.extend({
     });
 
     return {
-      labels: Object.keys(this.get('content')["registrations"]["total"]),
-      datasets: [   
+      labels: Object.keys(this.get('model')["registrations"]["total"]),
+      datasets: [
         {
           fillColor : "rgba(220,220,220,0.5)",
           strokeColor : "rgba(220,220,220,1)",
@@ -76,7 +74,7 @@ export default Ember.ObjectController.extend({
         }
       ]
     };
-  }.property('content'),
+  }.property('model'),
 
 
   actions: {

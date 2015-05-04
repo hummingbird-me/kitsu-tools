@@ -2,22 +2,23 @@ import Ember from 'ember';
 import HasCoverUpload from '../mixins/has-cover-upload';
 import ajax from 'ic-ajax';
 
-export default Ember.ObjectController.extend(HasCoverUpload, {
+export default Ember.Controller.extend(HasCoverUpload, {
   showEditMenu: false,
 
-  viewingSelf: function () {
+  viewingSelf: function() {
     return this.get('model.id') === this.get('currentUser.id');
   }.property('model.id'),
 
-  forumProfile: function () {
+  forumProfile: function() {
     return "https://forums.hummingbird.me/users/" + this.get('model.username');
   }.property('model.username'),
 
   // Legacy URLs
-  feedURL: function () {
+  feedURL: function() {
     return "/users/" + this.get('model.username') + "/feed";
   }.property('model.username'),
-  libraryURL: function () {
+
+  libraryURL: function() {
     return "/users/" + this.get('model.username') + "/watchlist";
   }.property('model.username'),
 
@@ -28,7 +29,7 @@ export default Ember.ObjectController.extend(HasCoverUpload, {
 
     saveEditMenu: function(){
       this.toggleProperty('showEditMenu');
-      this.get('content').save();
+      this.get('model').save();
     },
 
     avatarSelected: function (file) {

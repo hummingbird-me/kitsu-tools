@@ -35,7 +35,9 @@ export default Ember.ArrayController.extend({
   disablePurchase: true,
   loadStripe: function() {
     loadScript("https://checkout.stripe.com/v2/checkout.js").then(() => {
-      this.set('disablePurchase', false);
+      if (!this.get('isDestroyed')) {
+        this.set('disablePurchase', false);
+      }
     });
   }.on('init'),
 

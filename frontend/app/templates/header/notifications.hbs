@@ -7,7 +7,7 @@
     </i>
   </a>
   <ul class='dropdown-menu notification-dropdown right-nav-section'>
-    {{#each limitedNotifications}}
+    {{#each limitedNotifications as |notification|}}
       {{partial "notification"}}
     {{else}}
       <li class="no-notifications">

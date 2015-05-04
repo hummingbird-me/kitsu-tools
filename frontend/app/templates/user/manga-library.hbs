@@ -10,8 +10,8 @@
                   Manga Library <i class="fa fa-caret-down"></i>
                 </button>
                 <ul class="dropdown-menu">
-                  <li>{{#link-to 'user.library' user}} Anime Library{{/link-to}}</li>
-                  <li>{{#link-to 'user.manga_library' user}} Manga Library{{/link-to}}</li>
+                  <li>{{#link-to 'user.library' user.model}} Anime Library{{/link-to}}</li>
+                  <li>{{#link-to 'user.manga_library' user.model}} Manga Library{{/link-to}}</li>
                 </ul>
               </div>
             </div>
@@ -21,7 +21,7 @@
               {{else}}
                 <div class="library-section-select hidden-sm hidden-xs">
                   <button {{action "showSection" "View All"}} {{bind-attr class=":btn :btn-default showAll:active"}}> All</button>
-                  {{#each section in sections}}
+                  {{#each sections as |section|}}
                     <button {{action "showSection" section}} {{bind-attr class=":btn :btn-default section.displayVisible:active"}}> {{section.title}}</button>
                   {{/each}}
                 </div>
@@ -31,7 +31,7 @@
                   </button>
                   <ul class="dropdown-menu">
                     <li><a {{action "showSection" "View All"}}> View All</a></li>
-                    {{#each section in sections}}
+                    {{#each sections as |section|}}
                       <li><a {{action "showSection" section}}> {{section.title}}</a></li>
                     {{/each}}
                   </ul>

@@ -100,7 +100,7 @@
         </div>
         <div class="panel-body">
           <ul class="latest-post-list">
-            {{#each group in trendingGroups}}
+            {{#each trendingGroups as |group|}}
               <li class="clearfix">
                 {{group-box group=group}}
               </li>
@@ -167,7 +167,11 @@
         </span>
       </div>
 
-      {{each itemController="story" itemViewClass="story"}}
+      {{#each model itemController="story" as |story|}}
+        {{#with story as |story|}}
+          {{view "story" content=story}}
+        {{/with}}
+      {{/each}}
 
       {{#if canLoadMore}}
         {{load-more classNames="light" action="loadNextPage"}}

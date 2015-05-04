@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   type: "advanced",
   editable: false,
   rating: null,
+  media: null,
 
   applyAwesomeRating: function() {
     var self = this;
@@ -13,7 +14,7 @@ export default Ember.Component.extend({
       type: this.get('type'),
       editable: this.get('editable'),
       update: function(newRating) {
-        self.sendAction('action', newRating, self.get('origContext'));
+        self.sendAction('action', newRating, self.get('media'));
         self.set('rating', newRating);
       }
     });

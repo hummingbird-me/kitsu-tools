@@ -8,11 +8,8 @@ import Router from '../../../router';
 
 var App;
 
-moduleFor('controller:story', 'StoryController', {
-  // Specify the other units that are required for this test.
-  needs: [],
-
-  setup: function() {
+moduleFor('controller:story', {
+  beforeEach: function() {
     App = startApp();
 
     // actually change the URL so we can test functionality
@@ -21,8 +18,8 @@ moduleFor('controller:story', 'StoryController', {
     });
   },
 
-  teardown: function() {
-    App.reset();
+  afterEach: function() {
+    Ember.run(App, App.destroy);
   }
 });
 

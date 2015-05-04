@@ -69,7 +69,7 @@
           {{/if}}
 
           <ul>
-            {{#each plan in arrangedContent}}
+            {{#each arrangedContent as |plan|}}
               <li>
                 <label>
                   {{radio-button name="plan"
@@ -181,25 +181,25 @@
             <small>Want your company to be a PRO partner? <a href="https://hbrd.wufoo.com/forms/hummingbird-pro-partner-application/">Apply here.</a></small>
           </div>
           <ul class="pro-partners">
-            {{#each partnerDeals itemController="partner-deal"}}
+            {{#each partnerDeals itemController="partner-deal" as |deal|}}
               <li>
                 <div class="partner-logo">
-                  <img {{bind-attr src=partnerLogo}}>
+                  <img {{bind-attr src=deal.model.partnerLogo}}>
                 </div>
                 <div class="partner-deal">
-                  <h4>{{dealTitle}}</h4>
-                  <p>{{dealDescription}}</p>
+                  <h4>{{deal.model.dealTitle}}</h4>
+                  <p>{{deal.model.dealDescription}}</p>
                   {{#if currentUser.isPro}}
-                    {{#if hasRedeemed}}
-                      <div class="offer-clipping">{{code}}</div>
-                      <p class="redemption-instructions">{{redemptionInfo}}</p>
-                      {{#if recurring}}
-                        <p>You'll be able to redeem another code in {{pluralize daysUntilRedeem "day." "days."}}
+                    {{#if deal.hasRedeemed}}
+                      <div class="offer-clipping">{{deal.model.code}}</div>
+                      <p class="redemption-instructions">{{deal.model.redemptionInfo}}</p>
+                      {{#if deal.model.recurring}}
+                        <p>You'll be able to redeem another code in {{pluralize deal.daysUntilRedeem "day" "days"}}.</p>
                       {{/if}}
                     {{else}}
-                      {{#if hasCodes}}
+                      {{#if deal.model.hasCodes}}
                         <a class="redeem-button" {{action "redeemDeal"}}>
-                          {{#if isRedeeming}}
+                          {{#if deal.isRedeeming}}
                             <i class="fa fa-spin fa-spinner"></i> Redeeming Offer
                           {{else}}
                             Redeem Offer

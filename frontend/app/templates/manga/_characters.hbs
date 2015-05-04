@@ -1,9 +1,9 @@
 <ul class="cast">
-  {{#each featuredCastings}}
+  {{#each model.featuredCastings as |casting|}}
     <li class="casting">
       <a class="character">
-        <img {{bind-attr src=character.image}} width="30" height="47">
-        {{character.name}}
+        <img {{bind-attr src=casting.character.image}} width="30" height="47">
+        {{casting.character.name}}
       </a>
     </li>
   {{/each}}

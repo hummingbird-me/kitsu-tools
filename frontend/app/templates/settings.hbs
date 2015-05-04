@@ -21,8 +21,8 @@
             </div>
             {{#unless usernameValid}}
               <div class="alert alert-danger">
-                {{#each usernameProblems}}
-                  <p><i class="fa fa-warning"></i> {{this}}</p>
+                {{#each usernameProblems as |problem|}}
+                  <p><i class="fa fa-warning"></i> {{problem}}</p>
                 {{/each}}
               </div>
             {{/unless}}
@@ -47,8 +47,8 @@
             </div>
             {{#unless passwordValid}}
               <div class="alert alert-danger">
-                {{#each passwordProblems}}
-                  <p><i class="fa fa-warning"></i> {{this}}</p>
+                {{#each passwordProblems as |problem|}}
+                  <p><i class="fa fa-warning"></i> {{problem}}</p>
                 {{/each}}
               </div>
             {{/unless}}

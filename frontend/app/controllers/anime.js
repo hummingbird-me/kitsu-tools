@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   noCoverImage: function() {
     return !this.get('model.coverImage');
   }.property('model.coverImage'),
@@ -9,7 +9,10 @@ export default Ember.ObjectController.extend({
     var coverImage = this.get('model.coverImage');
     if (!coverImage) { return false; }
     var coverImageTopOffset = this.get('model.coverImageTopOffset');
-    return "background-image: url('" + coverImage + "'); background-position: 50% -" + coverImageTopOffset + "px;";
+    return (`
+      background-image: url('${coverImage}');
+      background-position: 50% -${coverImageTopOffset}px;
+    `).htmlSafe();
   }.property('model.coverImage', 'model.coverImageTopOffset'),
 
   randomQuote: function() {

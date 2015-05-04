@@ -1,16 +1,16 @@
 <div class="update-panel">
   <div class="user-image">
-    {{#link-to 'user' user}}{{avatar user "thumb_small"}}{{/link-to}}
+    {{#link-to 'user' model.user}}{{avatar model.user "thumb_small"}}{{/link-to}}
   </div>
   <div class="comment-content">
     <h4 class="story-title">
-      {{#link-to 'user' user}}{{user.username}}{{/link-to}}
+      {{#link-to 'user' model.user}}{{model.user.username}}{{/link-to}}
       followed
-      {{pluralize substoryCount "user" "users"}}
+      {{pluralize model.substoryCount "user" "users"}}
     </h4>
     <p class="secondary">
-      {{time-ago time=createdAt}}
-      {{#if canDeleteStory}}
+      {{time-ago time=model.createdAt}}
+      {{#if model.canDeleteStory}}
         ·
         <a class="remove-post" {{action "deleteStory"}}>remove</a>
       {{/if}}
@@ -20,14 +20,14 @@
     <div class="comment-text">
       <div class="clearfix"></div>
       <ul class="follow-bubbles">
-        {{#each displaySubstories}}
+        {{#each displaySubstories as |substory|}}
           <li>
-            {{#link-to 'user' user}}
+            {{#link-to 'user' substory.user}}
               <div class="user-bubble">
                 <div class="bubble-avatar">
-                  {{avatar user "thumb_small"}}
+                  {{avatar substory.user "thumb_small"}}
                 </div>
-                <h4 class="bubble-name">{{user.username}}</h4>
+                <h4 class="bubble-name">{{substory.user.username}}</h4>
               </div>
             {{/link-to}}
           </li>

@@ -1,5 +1,5 @@
 <div {{bind-attr class=":user-cover showEditMenu:edit-menu:no-edit"}}>
-  <div class="cover-photo" {{bind-attr style=coverImageStyle}}>
+  <div class="cover-photo" {{bind-attr style=model.coverImageStyle}}>
     {{#if viewingSelf}}
       <div class="edit-cover">
         <label for="cover-image">
@@ -38,16 +38,16 @@
           <div class="account-info">
             <div class="bio-wrapper">
               <h2 class="username">
-                {{username}}
-                {{#if isPro}}
+                {{model.username}}
+                {{#if model.isPro}}
                   {{#link-to 'pro'}}<span class="profile-badge">pro</span>{{/link-to}}
                 {{/if}}
               </h2>
               {{#if showEditMenu}}
-                {{{textarea class="edit-bio" rows="2" maxlength="140" placeholder="Briefly tell us about yourself..." value=truncatedBio}}}
+                {{{textarea class="edit-bio" rows="2" maxlength="140" placeholder="Briefly tell us about yourself..." value=model.truncatedBio}}}
               {{else}}
                 <p class="user-bio">
-                  {{truncatedBio}}
+                  {{model.truncatedBio}}
                 </p>
               {{/if}}
             </div>
@@ -64,7 +64,7 @@
                 </button>
               {{/if}}
             {{else}}
-              {{follow-button user=this classes="btn-default btn-lg"}}
+              {{follow-button user=model classes="btn-default btn-lg"}}
             {{/if}}
           </div>
         </div>
@@ -90,10 +90,10 @@
           {{#link-to 'user.reviews'}}Reviews{{/link-to}}
         </li>
         <li class="nav-link">
-          {{#link-to 'user.following'}}Following · {{followingCount}}{{/link-to}}
+          {{#link-to 'user.following'}}Following · {{model.followingCount}}{{/link-to}}
         </li>
         <li class="nav-link">
-          {{#link-to 'user.followers'}}Followers · {{followerCount}}{{/link-to}}
+          {{#link-to 'user.followers'}}Followers · {{model.followerCount}}{{/link-to}}
         </li>
         <li class="nav-link">
           <a {{bind-attr href=forumProfile}}>Forums</a>

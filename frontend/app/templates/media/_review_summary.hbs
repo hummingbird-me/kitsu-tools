@@ -1,37 +1,17 @@
-{{!-- {{#link-to 'reviews.show' id}}
-  <div class="review rounded-block">
-    <div class="reviewer-thumb-wrapper hidden-xs">
-      {{avatar user 'thumb'}}
-    </div>
-    <div class="reviewer-name-wrapper">
-      <h4 class="reviewer-name">
-        <span class="subtext"> review by</span>
-        {{user.username}}
-      </h4>
-      <span class="review-stars">
-        {{stars rating}}
-      </span>
-      <p class="review-summary">{{summary}}</p>
-      <p class="review-likes">
-      </p>
-    </div>
-  </div>
-{{/link-to}} --}}
-
 <div class="quote-bubble pull-left cl">
   <div class="review-quote">
     <div class="media">
       <div class="quick-rating">
-        <i {{bind-attr class=":fa positive:fa-smile-o:fa-frown-o"}}></i>
+        <i {{bind-attr class=":fa review.positive:fa-smile-o:fa-frown-o"}}></i>
       </div>
       <div class="media-body">
-        <p>"{{summary}}"</p>
+        <p>"{{review.model.summary}}"</p>
         <div class="review-details">
           <div class="review-likes">
-            {{positiveVotes}} out of {{totalVotes}} users found this review helpful.
+            {{review.model.positiveVotes}} out of {{review.model.totalVotes}} users found this review helpful.
           </div>
           <div class="full-review">
-            {{#link-to 'reviews.show' id}}Full Review…{{/link-to}}
+            {{#link-to 'reviews.show' review.model.id}}Full Review…{{/link-to}}
           </div>
         </div>
       </div>
@@ -39,13 +19,13 @@
   </div>
 
   <div class="review-source media">
-    {{#link-to 'user' user}}
+    {{#link-to 'user' review.model.user}}
       <div class="reviewer-avatar">
-        {{avatar user 'thumb'}}
+        {{avatar review.model.user 'thumb'}}
       </div>
       <div class="reviewer-name">
         <div>
-          {{user.username}}
+          {{review.model.user.username}}
         </div>
       </div>
     {{/link-to}}

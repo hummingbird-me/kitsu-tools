@@ -20,7 +20,7 @@
       {{#if performingSearch}}
         <li>{{loading-indicator}}</li>
       {{else}}
-        {{#each result in searchResults}}
+        {{#each searchResults as |result|}}
           <li class="search-result clearfix">
           {{!-- == TODO: For 2 col layout with library feature later ==
             <li class="search-result row">
@@ -29,7 +29,7 @@
               {{#link-to result.type result.link}}
                 <img {{bind-attr src="result.image"}} class="search-result-image" />
                 <div class="pull-right">
-                  {{#each badge in result.badges}}
+                  {{#each result.badges as |badge|}}
                     <span {{bind-attr class=":badge badge.class"}}>{{{badge.content}}}</span>
                   {{/each}}
                 </div>

@@ -1,16 +1,16 @@
 <ul class="series-metadata">
-  <li>{{showType}}</li>
-  <li {{bind-attr title=ageRatingGuide}}>{{ageRating}}</li>
+  <li>{{model.showType}}</li>
+  <li {{bind-attr title=ageRatingGuide}}>{{model.ageRating}}</li>
   <li>
-    {{displayEpisodeCount}} episodes
+    {{model.displayEpisodeCount}} episodes
   </li>
   <li>
-    {{#if episodeLength}}
-      {{episodeLength}}
+    {{#if model.episodeLength}}
+      {{model.episodeLength}}
     {{else}}
       ?
     {{/if}}
     min
   </li>
-  <li>{{formattedAirDates}}</li>
+  <li>{{model.formattedAirDates}}</li>
 </ul>

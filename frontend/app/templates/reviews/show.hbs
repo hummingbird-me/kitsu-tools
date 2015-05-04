@@ -1,8 +1,8 @@
 <div class="container">
   <div class="back-to-anime">
     <span>
-      {{#link-to 'anime.index'}} 
-      <i class="fa fa-caret-left"></i> Back to anime page
+      {{#link-to 'anime.index'}}
+        <i class="fa fa-caret-left"></i> Back to anime page
       {{/link-to}}
     </span>
     <span>
@@ -18,10 +18,10 @@
   <div class="review-wrapper">
     <div class="series-panel">
       <div class="review-content">
-        <h1 class="review-title"> {{anime.displayTitle}} Review</h1>
+        <h1 class="review-title"> {{model.anime.displayTitle}} Review</h1>
         <div class="spoiler-block" style="display:none"> Tread carefully! This review contains spoilers!!</div>
         <div class="progress-block" style="display:none"> This is a review up until episode 17!</div>
-        {{{formattedContent}}}
+        {{{model.formattedContent}}}
       </div>
 
       <div class="review-breakdown">
@@ -41,23 +41,23 @@
           <div class="breakdown-block">
             <div class="breakdown-content">
               <ul>
-                {{#each breakdown}}
-                <li class="clearfix">
-                <div class="col-xs-9">
-                  <i {{bind-attr class=":fa positive:fa-plus-circle:fa-minus-circle"}}></i>
-                  &nbsp; {{title}}...
-                </div>
-                <div class="dec-score">
-                  <strong>{{rating}}</strong>
-                </div>
-                </li>
+                {{#each breakdown as |rating|}}
+                  <li class="clearfix">
+                  <div class="col-xs-9">
+                    <i {{bind-attr class=":fa rating.positive:fa-plus-circle:fa-minus-circle"}}></i>
+                    &nbsp; {{rating.title}}...
+                  </div>
+                  <div class="dec-score">
+                    <strong>{{rating.rating}}</strong>
+                  </div>
+                  </li>
                 {{/each}}
               </ul>
             </div>
           </div>
         </div>
         <div class="summary-block">
-          <p>{{summary}}</p>
+          <p>{{model.summary}}</p>
         </div>
       </div>
     </div>
@@ -68,13 +68,13 @@
   <div class="review-sidebar">
     <div class="series-panel">
       <div class="review-avatar">
-        {{#link-to 'user' user}}
-          {{avatar user 'thumb'}}
+        {{#link-to 'user' model.user}}
+          {{avatar model.user 'thumb'}}
         {{/link-to}}
       </div>
       <div class="reviewer-information">
-        <h5>{{#link-to 'user' user}}{{user.username}}{{/link-to}}</h5>
-        {{follow-button user=user classes="btn-default btn-lg"}}
+        <h5>{{#link-to 'user' model.user}}{{model.user.username}}{{/link-to}}</h5>
+        {{follow-button user=model.user classes="btn-default btn-lg"}}
       </div>
     </div>
     <div class="series-panel">
@@ -82,9 +82,9 @@
       <div class="recommend">
         <a {{action "upvote"}} {{bind-attr class="upvoted:active"}}>
           {{#if upvoted}}
-          Liked!
+            Liked!
           {{else}}
-          Like this review
+            Like this review
           {{/if}}
         </a>
       </div>
@@ -94,7 +94,7 @@
         </a>
       </div>
       <div class="review-likes" style="margin-top: 10px">
-        {{positiveVotes}} out of {{totalVotes}} users found this review helpful.
+        {{model.positiveVotes}} out of {{model.totalVotes}} users found this review helpful.
       </div>
     </div>
   </div>

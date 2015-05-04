@@ -8,58 +8,58 @@
         <div class="panel-body">
           {{#if content}}
             <div class="edit-list">
-              {{#each content itemController="edit-item"}}
+              {{#each model itemController="edit-item" as |edit|}}
                 <div class="edit-entry">
                   <span class="edit-entry-left">
                     <span class="edit-type">
-                      {{objectType}}
+                      {{edit.model.objectType}}
                     </span>
                     {{! link to content }}
-                    {{#if anime}}
-                      {{#link-to 'anime' item}}
-                        {{item.displayTitle}}
+                    {{#if edit.model.anime}}
+                      {{#link-to 'anime' edit.model.item}}
+                        {{edit.model.item.displayTitle}}
                       {{/link-to}}
                     {{/if}}
-                    {{#if manga}}
-                      {{#link-to 'manga' item}}
-                        {{item.displayTitle}}
+                    {{#if edit.model.manga}}
+                      {{#link-to 'manga' edit.model.item}}
+                        {{edit.model.item.displayTitle}}
                       {{/link-to}}
                     {{/if}}
                   </span>
                   <span class="edit-entry-right">
                     <span class="edit-entry-user">
-                      {{#link-to 'user' user}}
-                        {{user.username}}
+                      {{#link-to 'user' edit.model.user}}
+                        {{edit.model.user.username}}
                       {{/link-to}}
                     </span>
                     <span class="edit-entry-time">
-                      {{time-ago time=createdAt}}
+                      {{time-ago time=edit.model.createdAt}}
                     </span>
                     <span class="edit-entry-actions">
                       <a href="#" {{action 'toggleDiff'}}>
-                        <i {{bind-attr class=":fa isDiffShown:fa-arrow-up:fa-arrow-down"}}></i> View
+                        <i {{bind-attr class=":fa edit.isDiffShown:fa-arrow-up:fa-arrow-down"}}></i> View
                       </a>
                     </span>
                   </span>
                 </div>
 
-                {{#if isDiffShown}}
+                {{#if edit.isDiffShown}}
                   <div class="edit-entry-diff">
-                    {{#if outdated}}
+                    {{#if edit.outdated}}
                       <div class="alert alert-danger">
-                        {{model.item.displayTitle}} has been updated since this edit was created.
+                        {{edit.model.item.displayTitle}} has been updated since this edit was created.
                       </div>
                     {{/if}}
-                    {{#if comment}}
+                    {{#if edit.model.comment}}
                       <div class="alert alert-info">
-                        <h4>{{user.username}} left you a comment!</h4>
-                        {{comment}}
+                        <h4>{{edit.model.user.username}} left you a comment!</h4>
+                        {{edit.model.comment}}
                       </div>
                     {{/if}}
                     <dl>
-                      {{#each changes}}
-                        <dt class="diff-type">{{this.[0]}}</dt>
-                        <dd class="diff-body">{{this.[1]}}</dd>
+                      {{#each edit.changes as |change|}}
+                        <dt class="diff-type">{{change.[0]}}</dt>
+                        <dd class="diff-body">{{change.[1]}}</dd>
                       {{/each}}
                     </dl>
                     <div class="diff-actions">

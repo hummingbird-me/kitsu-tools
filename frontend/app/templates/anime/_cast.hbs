@@ -1,13 +1,13 @@
 <ul class="cast">
-  {{#each filteredCast}}
+  {{#each filteredCast as |casting|}}
     <li class="character-wrapper">
       <div class="cast-image">
-        <img class="actor" {{bind-attr src=person.image}}>
-        <img class="character" {{bind-attr src=character.image}}>
+        <img class="actor" {{bind-attr src=casting.person.image}}>
+        <img class="character" {{bind-attr src=casting.character.image}}>
       </div>
       <div class="cast-name">
-        <h4>{{person.name}}</h4>
-        <small>as {{character.name}}</small>
+        <h4>{{casting.person.name}}</h4>
+        <small>as {{casting.character.name}}</small>
       </div>
     </li>
   {{/each}}

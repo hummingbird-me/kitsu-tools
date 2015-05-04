@@ -5,13 +5,13 @@
       <hr>
       <div class="all-likes">
         <div class="section-label">
-          <i class="fa fa-heart"></i> {{totalVotes}}
+          <i class="fa fa-heart"></i> {{model.totalVotes}}
         </div>
         <ul>
-          {{#each likers}}
-            <li {{bind-attr data-tooltip=username}}>
-              {{#link-to 'user' username}}
-                <img {{bind-attr src=avatar}}>
+          {{#each likers as |liker|}}
+            <li {{bind-attr data-tooltip=liker.username}}>
+              {{#link-to 'user' liker.username}}
+                <img {{bind-attr src=liker.avatar}}>
               {{/link-to}}
             </li>
           {{/each}}
@@ -23,5 +23,3 @@
     </div>
   {{/bootstrap-modal}}
 </div>
-
-

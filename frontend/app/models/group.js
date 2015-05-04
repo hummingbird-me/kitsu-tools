@@ -14,6 +14,7 @@ export default DS.Model.extend(ModelTruncatedDetails, {
 
   aboutDisplay: Ember.computed.any('aboutFormatted', 'about'),
   coverImageStyle: function() {
-    return "background: url(" + this.get('coverImageUrl') + ") center;";
+    let coverImage = this.get('coverImageUrl');
+    return (`background: url("${coverImage}") center;`).htmlSafe();
   }.property('coverImageUrl')
 });

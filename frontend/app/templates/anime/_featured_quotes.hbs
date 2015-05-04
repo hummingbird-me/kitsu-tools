@@ -1,11 +1,11 @@
-{{#each featuredQuotes}}
+{{#each model.featuredQuotes as |quote|}}
   <div class="quote">
-    <p>"{{content}}"</p>
-    <span class="quote-author">- {{characterName}}</span>
+    <p>"{{quote.content}}"</p>
+    <span class="quote-author">- {{quote.characterName}}</span>
     <div class="quote-like-box">
       <span class="like-button">
-        <a {{action "toggleQuoteFavorite" this}}>
-          {{#if isFavorite}}
+        <a {{action "toggleQuoteFavorite" quote}}>
+          {{#if quote.isFavorite}}
             <i class="fa fa-heart active"></i> Liked!
           {{else}}
             <i class="fa fa-heart"></i> Like?
@@ -14,7 +14,7 @@
       </span>
       <span class="quote-divider"></span>
       <span class="total-likes">
-        {{pluralize favoriteCount "Like" "Likes"}}
+        {{pluralize quote.favoriteCount "Like" "Likes"}}
       </span>
     </div>
   </div>
