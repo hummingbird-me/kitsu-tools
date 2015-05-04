@@ -1,11 +1,11 @@
 <ul class="cast">
-  {{#each displayCast as |character|}}
+  {{#each displayCast as |casting|}}
     <li class="character-wrapper">
       <div class="cast-image">
-        <img class="character" src="{{character.image}}">
+        <img class="character" src="{{casting.character.image}}">
       </div>
       <div class="cast-name">
-        <h4>{{character.name}}</h4>
+        <h4>{{casting.character.name}}</h4>
       </div>
     </li>
   {{/each}}
