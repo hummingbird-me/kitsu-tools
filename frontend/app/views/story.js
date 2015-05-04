@@ -18,7 +18,7 @@ export default Ember.View.extend({
   truncateLongComments: function() {
     var commentEl = this.$(".comment-text")[0];
     if (commentEl && commentEl.offsetHeight < commentEl.scrollHeight - 1) {
-      this.controller.set('overflowing', true);
+      this.get('controller').set('overflowing', true);
     }
   },
 
