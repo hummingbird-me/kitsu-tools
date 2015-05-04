@@ -1459,7 +1459,8 @@ CREATE TABLE stories (
     watchlist_id integer,
     adult boolean DEFAULT false,
     total_votes integer DEFAULT 0 NOT NULL,
-    group_id integer
+    group_id integer,
+    deleted_at timestamp without time zone
 );
 
 
@@ -1524,7 +1525,8 @@ CREATE TABLE substories (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     data hstore,
-    substory_type integer DEFAULT 0 NOT NULL
+    substory_type integer DEFAULT 0 NOT NULL,
+    deleted_at timestamp without time zone
 );
 
 
@@ -2898,6 +2900,13 @@ CREATE INDEX index_stories_on_created_at ON stories USING btree (created_at);
 
 
 --
+-- Name: index_stories_on_deleted_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_stories_on_deleted_at ON stories USING btree (deleted_at);
+
+
+--
 -- Name: index_stories_on_group_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2909,6 +2918,13 @@ CREATE INDEX index_stories_on_group_id ON stories USING btree (group_id);
 --
 
 CREATE INDEX index_stories_on_user_id ON stories USING btree (user_id);
+
+
+--
+-- Name: index_substories_on_deleted_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_substories_on_deleted_at ON substories USING btree (deleted_at);
 
 
 --
@@ -3801,4 +3817,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150402020045');
 INSERT INTO schema_migrations (version) VALUES ('20150402040627');
 
 INSERT INTO schema_migrations (version) VALUES ('20150426012023');
+
+INSERT INTO schema_migrations (version) VALUES ('20150504184112');
 

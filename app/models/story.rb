@@ -14,9 +14,12 @@
 #  adult        :boolean          default(FALSE)
 #  total_votes  :integer          default(0), not null
 #  group_id     :integer
+#  deleted_at   :datetime
 #
 
 class Story < ActiveRecord::Base
+  acts_as_paranoid
+
   attr_reader :is_liked
   attr_accessor :recent_likers
 

@@ -11,9 +11,12 @@
 #  updated_at    :datetime         not null
 #  data          :hstore
 #  substory_type :integer          default(0), not null
+#  deleted_at    :datetime
 #
 
 class Substory < ActiveRecord::Base
+  acts_as_paranoid
+
   belongs_to :user
   belongs_to :target, polymorphic: true
   belongs_to :story
