@@ -18,7 +18,7 @@
 #  cover_image_content_type  :string(255)
 #  cover_image_file_size     :integer
 #  cover_image_updated_at    :datetime
-#  bayesian_average          :float            default(0.0), not null
+#  bayesian_rating           :float            default(0.0), not null
 #  user_count                :integer          default(0), not null
 #  thetvdb_series_id         :integer
 #  thetvdb_season_id         :integer
@@ -54,7 +54,7 @@ sword_art_online:
   cover_image_content_type: image/jpeg
   cover_image_file_size: 100369
   cover_image_updated_at: 2013-07-31 02:37:51.625479000 Z
-  bayesian_average: 3.8929189897465
+  bayesian_rating: 3.8929189897465
   user_count: 10234
   thetvdb_series_id: ''
   thetvdb_season_id: ''
@@ -81,7 +81,7 @@ monster:
   cover_image_content_type: image/jpeg
   cover_image_file_size: 31950
   cover_image_updated_at: 2013-07-31 01:02:10.148175000 Z
-  bayesian_average: 4.42463877253956
+  bayesian_rating: 4.42463877253956
   user_count: 3853
   thetvdb_series_id: ''
   thetvdb_season_id: ''
@@ -114,7 +114,7 @@ steins_gate:
   cover_image_content_type: image/jpeg
   cover_image_file_size: 70466
   cover_image_updated_at: 2013-12-15 20:16:27.163377000 Z
-  bayesian_average: 4.64918008720729
+  bayesian_rating: 4.64918008720729
   user_count: 13408
   thetvdb_series_id: '244061'
   thetvdb_season_id: '453391'

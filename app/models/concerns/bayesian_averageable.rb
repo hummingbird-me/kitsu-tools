@@ -2,8 +2,29 @@
 module BayesianAverageable
   extend ActiveSupport::Concern
 
+  # We probably need to move this to the serializer layer at some point
+  # Or better yet, put it into JS
+  def community_ratings
+    ratings = []
+    (0..5).each do |i|
+      previous_rating = (self.rating_frequencies["#{i}.0"]   || 0).to_i
+      next_rating     = (self.rating_frequencies["#{i+1}.0"] || 0).to_i
+      current_rating  = (self.rating_frequencies["#{i}.5"]   || 0).to_i
+
+      ratings << previous_rating
+      if current_rating < previous_rating && current_rating < next_rating
+        current_rating = (next_rating + previous_rating) / 2
+      end
+      ratings << current_rating
+    end
+    ratings.pop
+    ratings.shift
+
+    ratings
+  end
+
   module ClassMethods
-    def recompute_bayesian_averages!
+    def recompute_bayesian_ratings!
       #
       # Bayesian rating:
       #
@@ -48,9 +69,9 @@ module BayesianAverageable
         v = media_total_votes[media.id]
         if v >= m
           r = media_total_ratings[media.id] * 1.0 / v
-          media.bayesian_average = (r * v + c * m) / (v + m)
+          media.bayesian_rating = (r * v + c * m) / (v + m)
         else
-          media.bayesian_average = 0
+          media.bayesian_rating = 0
         end
         media.save
         STDERR.puts "Pass 2: #{media.id}"

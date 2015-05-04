@@ -10,7 +10,9 @@ class MangaSerializer < ActiveModel::Serializer
              :volume_count,
              :genres,
              :manga_type,
-             :updated_at
+             :updated_at,
+             :cover_image,
+             :cover_image_top_offset
 
   def id
     object.slug

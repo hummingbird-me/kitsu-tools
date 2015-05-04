@@ -1,8 +1,10 @@
 class FullMangaSerializer < MangaSerializer
   embed :ids, include: true
 
-  attributes :cover_image,
+  attributes :bayesian_rating,
+             :cover_image,
              :cover_image_top_offset,
+             :community_ratings,
              :pending_edits
 
   has_one :manga_library_entry

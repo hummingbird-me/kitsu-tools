@@ -17,10 +17,10 @@ module Api::V2
 
     field(:poster_image) {|a| a.poster_image_thumb }
     field(:cover_image) {|a| a.cover_image.url(:thumb) }
-    field(:community_rating) {|a| a.bayesian_average }
+    field(:community_rating) {|a| a.bayesian_rating }
     field(:genres) {|a| a.genres.map {|x| x.name } }
     field(:producers) {|a| a.producers.map {|x| x.name } }
-    field(:bayesian_rating) {|a| a.bayesian_average }
+    field(:bayesian_rating) {|a| a.bayesian_rating }
 
     has_many :gallery_images, serializer: GalleryImageSerializer
     has_many :episodes, serializer: EpisodeSerializer

@@ -104,7 +104,7 @@ class API_v1 < Grape::API
           show_type: anime.show_type,
           started_airing: anime.started_airing_date,
           finished_airing: anime.finished_airing_date,
-          community_rating: anime.bayesian_average,
+          community_rating: anime.bayesian_rating,
           age_rating: anime.age_rating.blank? ? nil : anime.age_rating
         }
         if include_genres

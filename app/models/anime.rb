@@ -18,7 +18,7 @@
 #  cover_image_content_type  :string(255)
 #  cover_image_file_size     :integer
 #  cover_image_updated_at    :datetime
-#  bayesian_average          :float            default(0.0), not null
+#  bayesian_rating           :float            default(0.0), not null
 #  user_count                :integer          default(0), not null
 #  thetvdb_series_id         :integer
 #  thetvdb_season_id         :integer
@@ -132,7 +132,7 @@ class Anime < ActiveRecord::Base
   end
 
   def self.order_by_rating
-    order('bayesian_average DESC NULLS LAST, user_count DESC NULLS LAST')
+    order('bayesian_rating DESC NULLS LAST, user_count DESC NULLS LAST')
   end
 
   # Use this function to get the title instead of directly accessing the title.

@@ -42,9 +42,9 @@
               <h5 class="sidebar-title text-center">Community Rating</h5>
               <%= schema_tag(:meta, :bestRating,  5.0) %>
               <%= schema_tag(:meta, :worstRating, 0.5) %>
-              <div class="awesome-rating-widget" <%= schema_prop(:ratingValue, @anime.bayesian_average) if @anime.bayesian_average > 0 %>>
+              <div class="awesome-rating-widget" <%= schema_prop(:ratingValue, @anime.bayesian_rating) if @anime.bayesian_rating > 0 %>>
                 <%# TODO: actually make this not suck %>
-                <%- rating = @anime.bayesian_average.floor %>
+                <%- rating = @anime.bayesian_rating.floor %>
                 <%- open_star = content_tag(:span, content_tag(:i, "", class: "fa fa-star-o"), class: "icon-container") %>
                 <%- full_star = content_tag(:span, content_tag(:i, "", class: "fa fa-star"), class: "icon-container") %>
                 <%= (full_star * rating).html_safe %>
