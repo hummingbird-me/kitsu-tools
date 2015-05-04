@@ -53,9 +53,6 @@ a {
     display: inline-block;
     float: left;
     padding-right: 0;
-    &:last-child {
-       padding-right: 0;
-    }
   }
 }
 
