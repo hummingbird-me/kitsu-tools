@@ -14,6 +14,7 @@ export default Media.extend({
   chapterCount: DS.attr("number"),
   genres: DS.attr("array"),
   mangaLibraryEntry: DS.belongsTo("manga-library-entry"),
+  libraryEntry: Ember.computed.alias('mangaLibraryEntry'),
   displayTitle: Ember.computed.alias('romajiTitle'),
   lowercaseDisplayTitle: (function() {
     return this.get("displayTitle").toLowerCase();

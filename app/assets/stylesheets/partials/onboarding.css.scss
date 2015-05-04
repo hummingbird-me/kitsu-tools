@@ -125,7 +125,7 @@
 
 // Step 1 - Start
 .start-wrapper {
-  padding-left: 35px; 
+  padding-left: 35px;
   padding-right: 0;
   margin-top: 20px;
   @media (max-width: 800px) {
@@ -159,7 +159,7 @@
   }
 }
 
-// Step 2 - Rating 
+// Step 2 - Rating
 
 .rating-wrapper {
   @extend .clearfix;
@@ -300,6 +300,15 @@
   .awesome-rating-widget {
     font-size: 24px;
     color: #A3A4A9;
+    i.simple {
+      padding: 0 5px;
+      &.active {
+        color: $darkOrange;
+      }
+      &:hover {
+        color: black;
+      }
+    }
   }
 }
 
@@ -323,7 +332,7 @@
       color: #333;
       text-decoration: none;
     }
-    
+
   }
 }
 .search-wrapper {
