@@ -79,7 +79,7 @@ class SearchController < ApplicationController
 
   def full_search(scopes, query)
     query.gsub!(STOP_WORDS, '')
-    scopes.map { |k| k.full_search(query).limit(3) }.flatten
+    scopes.map { |k| k.full_search(query).limit(7) }.flatten
       .sort { |a, b| b.pg_search_rank <=> a.pg_search_rank }
   end
 
