@@ -19016,7 +19016,7 @@ module.exports = warning;
             var libraryEntry = this.props.content;
             $(this.getDOMNode()).find(".awesome-rating-widget").AwesomeRating({
               editable: true,
-              type: this.props.view.get('user.ratingType'),
+              type: this.props.view.get('user.model.ratingType'),
               rating: this.props.content.get('rating'),
               update: function (newRating) {
                 controller.send('setRating', libraryEntry, newRating);
@@ -19232,7 +19232,7 @@ module.exports = warning;
 
       var rating;
       if (content.get('rating')) {
-        if (this.props.view.get('user.ratingType') == "advanced") {
+        if (this.props.view.get('user.model.ratingType') == "advanced") {
           rating = (
             React.DOM.span(null,
               React.DOM.i( {className:"fa fa-star"} ),
@@ -19465,7 +19465,7 @@ module.exports = warning;
             var libraryEntry = this.props.content;
             $(this.getDOMNode()).find(".awesome-rating-widget").AwesomeRating({
               editable: true,
-              type: this.props.view.get('user.ratingType'),
+              type: this.props.view.get('user.model.ratingType'),
               rating: this.props.content.get('rating'),
               update: function (newRating) {
                 controller.send('setRating', libraryEntry, newRating);
@@ -19673,7 +19673,7 @@ module.exports = warning;
 
       var rating;
       if (content.get('rating')) {
-        if (this.props.view.get('user.ratingType') == "advanced") {
+        if (this.props.view.get('user.model.ratingType') == "advanced") {
           rating = (
             React.DOM.span(null,
               React.DOM.i( {className:"fa fa-star"} ),
