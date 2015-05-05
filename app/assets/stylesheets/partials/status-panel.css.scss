@@ -84,12 +84,9 @@
     
     font-size: 14px;
     
-    li {
-      padding-right: 0;
-      /* because metamorphs */
-      &:last-of-type:after {
-        content: "";
-      }
+    /* because metamorphs */
+    li:last-of-type:after {
+      content: "";
     }
   }
 
@@ -151,7 +148,6 @@
 
   .inline-list {
     li {
-      padding-right: 0;
       &:after {
         content: "\a0\00b7\a0";
         padding: 0 3px;

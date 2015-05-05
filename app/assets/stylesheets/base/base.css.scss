@@ -52,10 +52,7 @@ a {
   li {
     display: inline-block;
     float: left;
-    padding-right: 10px;
-    &:last-child {
-      padding-right: 0;
-    }
+    padding-right: 0;
   }
 }
 
