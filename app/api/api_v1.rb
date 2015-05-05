@@ -57,7 +57,7 @@ class API_v1 < Grape::API
       end
     end
 
-    def present_watchlist(w, rating_type, title_language_preference, include_genres=true)
+    def present_watchlist(w, rating_type, title_language_preference)
       {
         id: w.id,
         episodes_watched: w.episodes_watched,
@@ -69,7 +69,7 @@ class API_v1 < Grape::API
         status: w.status.downcase.gsub(' ', '-'),
         private: w.private,
         rewatching: w.rewatching,
-        anime: present_anime(w.anime, title_language_preference, include_genres),
+        anime: present_anime(w.anime, title_language_preference),
         rating: {
           type: rating_type,
           value: w.rating
@@ -87,9 +87,9 @@ class API_v1 < Grape::API
       }
     end
 
-    def present_anime(anime, title_language_preference, include_genres=true)
+    def present_anime(anime, title_language_preference)
       if anime
-        json = {
+        {
           id: anime.id,
           mal_id: anime.mal_id,
           slug: anime.slug,
@@ -105,20 +105,17 @@ class API_v1 < Grape::API
           started_airing: anime.started_airing_date,
           finished_airing: anime.finished_airing_date,
           community_rating: anime.bayesian_rating,
-          age_rating: anime.age_rating.blank? ? nil : anime.age_rating
+          age_rating: anime.age_rating.blank? ? nil : anime.age_rating,
+          genres: anime.genres.map {|x| {name: x.name} }
         }
-        if include_genres
-          json[:genres] = anime.genres.map {|x| {name: x.name} }
-        end
-        json
       else
         {}
       end
     end
 
-    def present_favorite_anime(favorite, title_language_preference, include_genres=true)
+    def present_favorite_anime(favorite, title_language_preference)
       if favorite
-        json = present_anime(favorite.item, title_language_preference, include_genres)
+        json = present_anime(favorite.item, title_language_preference)
         json[:fav_rank] = favorite.fav_rank
         json[:fav_id] = favorite.id
         json
@@ -544,6 +541,6 @@ class API_v1 < Grape::API
     end
     title_language_preference ||= "canonical"
 
-    results.map {|x| present_anime(x, title_language_preference, true) }
+    results.map {|x| present_anime(x, title_language_preference) }
   end
 end
