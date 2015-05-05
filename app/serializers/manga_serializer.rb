@@ -19,7 +19,7 @@ class MangaSerializer < ActiveModel::Serializer
   end
 
   def genres
-    object.genres.map {|x| x.name.parameterize }.sort
+    object.genres.map(&:name).sort
   end
 
   def poster_image
