@@ -69,7 +69,7 @@ class API_v1 < Grape::API
         status: w.status.downcase.gsub(' ', '-'),
         private: w.private,
         rewatching: w.rewatching,
-        anime: present_anime(w.anime, title_language_preference, false),
+        anime: present_anime(w.anime, title_language_preference),
         rating: {
           type: rating_type,
           value: w.rating
@@ -87,9 +87,9 @@ class API_v1 < Grape::API
       }
     end
 
-    def present_anime(anime, title_language_preference, include_genres=true)
+    def present_anime(anime, title_language_preference)
       if anime
-        json = {
+        {
           id: anime.id,
           mal_id: anime.mal_id,
           slug: anime.slug,
@@ -105,23 +105,19 @@ class API_v1 < Grape::API
           started_airing: anime.started_airing_date,
           finished_airing: anime.finished_airing_date,
           community_rating: anime.bayesian_rating,
-          age_rating: anime.age_rating.blank? ? nil : anime.age_rating
+          age_rating: anime.age_rating.blank? ? nil : anime.age_rating,
+          genres: anime.genres.map {|x| {name: x.name} }
         }
-        if include_genres
-          json[:genres] = anime.genres.map {|x| {name: x.name} }
-        end
-        json
       else
         {}
       end
     end
 
-    def present_favorite_anime(anime, title_language_preference, include_genres=true)
-      if anime
-        fav_anime = Anime.find(anime.item_id)
-        json = present_anime(fav_anime, title_language_preference, include_genres)
-        json[:fav_rank] = anime.fav_rank
-        json[:fav_id] = anime.id
+    def present_favorite_anime(favorite, title_language_preference)
+      if favorite
+        json = present_anime(favorite.item, title_language_preference)
+        json[:fav_rank] = favorite.fav_rank
+        json[:fav_id] = favorite.id
         json
       else
         {}
@@ -269,7 +265,7 @@ class API_v1 < Grape::API
       user = find_user(params[:user_id])
       status = Watchlist.status_parameter_to_status(params[:status])
 
-      watchlists = user.watchlists.includes(:anime)
+      watchlists = user.watchlists.includes(:anime, anime: :genres)
       watchlists = watchlists.where(status: status) if status
       watchlists = watchlists.where(private: false) if user != current_user
 
@@ -291,7 +287,7 @@ class API_v1 < Grape::API
     end
     get ":user_id/favorite_anime" do
       user = find_user(params[:user_id])
-      favorite_anime = user.favorites.where(item_type: "Anime").order('fav_rank')
+      favorite_anime = user.favorites.where(item_type: "Anime").includes(:item, item: :genres).order('fav_rank')
       favorite_anime.map {|a| present_favorite_anime(a, user.try(:title_language_preference) || "canonical")}
     end
 
@@ -314,8 +310,7 @@ class API_v1 < Grape::API
       user = find_user(params[:user_id])
 
       # Find stories to display.
-      stories = user.stories.for_user(current_user).order('updated_at DESC').includes(:substories, :user, :target).page(params[:page]).per(20)
-
+      stories = user.stories.for_user(current_user).order('updated_at DESC').includes(:substories, :user, :target, target: :genres).page(params[:page]).per(20)
       stories.map {|x| present_story(x, current_user, current_user.try(:title_language_preference) || "canonical") }
     end
 
@@ -370,8 +365,6 @@ class API_v1 < Grape::API
       {library_entries: entries.to_a}
     end
 
-
-
     desc "Update a specific anime's details in a user's library."
     params do
       requires :anime_slug, type: String
@@ -380,6 +373,7 @@ class API_v1 < Grape::API
       optional :include_mal_id, type: String
       optional :title_language_preference, type: String
     end
+
     post ':anime_slug' do
       authenticate_user!
 
@@ -547,6 +541,6 @@ class API_v1 < Grape::API
     end
     title_language_preference ||= "canonical"
 
-    results.map {|x| present_anime(x, title_language_preference, false) }
+    results.map {|x| present_anime(x, title_language_preference) }
   end
 end
