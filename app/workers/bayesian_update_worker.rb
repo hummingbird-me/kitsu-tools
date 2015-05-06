@@ -5,6 +5,6 @@ class BayesianUpdateWorker
   recurrence { daily }
 
   def perform
-    Anime.recompute_bayesian_averages!
+    Anime.recompute_bayesian_ratings!
   end
 end
