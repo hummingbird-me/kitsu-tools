@@ -89,7 +89,7 @@ Hummingbird::Application.routes.draw do
   get '/users/to_follow' => 'users#to_follow' # public endpoint for users to follow
 
   resources :users, only: [:index, :show, :update] do
-    get 'library/manga' => 'users#manga_library'
+    get 'library/manga' => 'users#ember'
     get 'library' => 'users#ember'
     get 'groups' => 'users#ember'
     get 'reviews' => 'users#ember'
