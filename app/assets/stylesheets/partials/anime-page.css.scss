@@ -181,7 +181,11 @@
       text-decoration: underline;
       font-size: 15px;
       position: relative;
+      padding-right: 10px;
       color: #838a91;
+-     &:last-child {
+-       padding-right: 0;
+-     }
     }
   }
 }
