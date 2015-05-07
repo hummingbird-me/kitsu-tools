@@ -1,7 +1,6 @@
 require_dependency 'user_query'
 
 class UsersController < ApplicationController
-  before_action :canonicalize_url
 
   def index
     if params[:followed_by] || params[:followers_of]
@@ -33,6 +32,11 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
+
+    # Redirect to canonical path
+    if request.path != user_path(user)
+      return redirect_to user_path(user), status: :moved_permanently
+    end
 
     if user_signed_in? and current_user == user
       # Clear notifications if the current user is viewing his/her feed.
