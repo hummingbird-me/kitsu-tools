@@ -16,7 +16,8 @@
     color: #ebab67;
   }
   &.condensed {
-    height: 200px;
+    min-height: 0;
+    height: 140px;
     padding-top: 20px;
   }
   .btn {
