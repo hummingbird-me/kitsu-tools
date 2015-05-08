@@ -1,9 +1,10 @@
 class AppsController < ApplicationController
-  def mine
-    apps = App.where(creator: current_user)
-    preload_to_ember! apps
-    render_ember
-  end
+  before_action :authenticate_user!, only: [:new, :create, :update, :mine]
+
+  ember_action(:mine) { App.where(creator: current_user) }
+  ember_action(:show, true) { App.find(params[:id]) }
+  ember_action(:new)
+  ember_action(:edit)
 
   def index
     if params[:creator]
@@ -12,12 +13,7 @@ class AppsController < ApplicationController
       apps = {}
     end
 
-    respond_to do |format|
-      format.json { render json: apps }
-      format.html do
-        render_ember
-      end
-    end
+    respond_with_ember apps
   end
 
   def show
@@ -25,8 +21,7 @@ class AppsController < ApplicationController
     app
   end
 
-  def new
-    render_ember
+    save_and_render app
   end
 
   def create
