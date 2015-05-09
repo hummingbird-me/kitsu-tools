@@ -1,15 +1,9 @@
 .apps-header {
   background: url(apps-bg.jpg);
-  height: 300px;
+  min-height: 300px;
   background-size: cover;
   color: #fff;
   padding-top: 50px;
-  .container {
-    @media (max-width: 624px) {
-    position: relative;
-    bottom: 55px;
-    }
-  }
   h1 {
     font-size: 50px;
     margin-bottom: 30px;
@@ -24,6 +18,9 @@
   &.condensed {
     height: 200px;
     padding-top: 20px;
+  }
+  .btn {
+    transform: translateY(50%);
   }
 }
 .apps-page {
@@ -50,7 +47,7 @@
     border-radius: 3px;
     border: 1px solid #ddd;
   }
-  
+
   .app-image {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
@@ -70,6 +67,7 @@
       font-weight: normal;
 
       .app-type {
+        display: inline-block;
         font-size: 0.5em;
         font-weight: normal;
         color: #818080;
@@ -88,22 +86,29 @@
       margin-bottom: 10px;
     }
 
-    .app-desc { 
-      font-size: 18px; 
+    .app-desc {
+      font-size: 18px;
     }
 
-    .app-link { 
+    .app-link {
       display: block;
       margin-top: 20px;
       a {
+        display: inline-block;
         background: #acacac;
         color: #fff;
+        margin-top: 5px;
+        margin-bottom: 5px;
         padding: 10px 30px;
         border-radius: 3px;
         &:hover {
           background: darken(#acacac,10);
         }
+        &:first-child {
+            margin-top: 0;
+        }
         &:last-child {
+          margin-bottom: 0;
           background: #e67e22;
           &:hover {
             background: darken(#e67e22,10);
@@ -120,7 +125,14 @@
     }
     .app-screens {
       margin-top: 30px;
+      div {
+        width: 100%;
+        @media (min-width: $screen-sm-min) {
+            width: 50%;
+        }
+      }
       img {
+        width: 100%;
         max-width: 100%;
         border-radius: 5px;
       }
