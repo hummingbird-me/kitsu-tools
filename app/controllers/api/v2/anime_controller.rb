@@ -4,7 +4,7 @@ module Api::V2
 
     def index
       if params.key? :filter
-        search = AnimeSearch.new params[:filter]
+        search = AnimeSearch.new(params[:filter])
         if search.valid?
           anime = Anime.includes(:genres)
           return render json: search.apply(anime)
