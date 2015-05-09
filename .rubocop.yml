@@ -1,0 +1,259 @@
+AllCops:
+  RunRailsCops: true
+  DisplayCopNames: false
+  DisplayStyleGuide: true
+  StyleGuideCopsOnly: false
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+Style/CollectionMethods:
+  PreferredMethods:
+    collect: map
+    collect!: map!
+    inject: reduce
+    detect: find
+    find_all: select
+Style/CommentAnnotation:
+  Enabled: true
+  Keywords:
+  - TODO
+  - FIXME
+  - OPTIMIZE
+  - HACK
+  - REVIEW
+  - DEPRECATED
+Style/DotPosition:
+  EnforcedStyle: leading
+Style/FileName:
+  Enabled: true
+Style/FormatString:
+  Enabled: true
+  EnforcedStyle: format
+Style/GlobalVars:
+  Enabled: true
+Style/GuardClause:
+  Enabled: true
+  MinBodyLength: 3
+Style/IfUnlessModifier:
+  Enabled: true
+  MaxLineLength: 80
+Style/LambdaCall:
+  Enabled: true
+Style/Next:
+  Enabled: true
+  MinBodyLength: 3
+Style/NumericLiterals:
+  Enabled: true
+  MinDigits: 5
+Style/PercentLiteralDelimiters:
+  Enabled: true
+  PreferredDelimiters:
+    "%": "()"
+    "%i": "()"
+    "%q": "()"
+    "%Q": "()"
+    "%r": "{}"
+    "%s": "()"
+    "%w": "()"
+    "%W": "()"
+    "%x": "()"
+Style/PredicateName:
+  Enabled: true
+  NamePrefix:
+  - is_
+  - has_
+  - have_
+  NamePrefixBlacklist:
+  - is_
+Style/RaiseArgs:
+  Enabled: true
+  EnforcedStyle: exploded
+Style/SingleLineMethods:
+  Enabled: true
+  AllowIfMethodIsEmpty: true
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+Style/SpaceAroundEqualsInParameterDefault:
+  Enabled: true
+  EnforcedStyle: space
+Style/SpaceBeforeBlockBraces:
+  Enabled: true
+  EnforcedStyle: space
+Style/SpaceInsideBlockBraces:
+  Enabled: true
+  EnforcedStyle: space
+  EnforcedStyleForEmptyBraces: no_space
+  SpaceBeforeBlockParameters: true
+Style/SpaceInsideHashLiteralBraces:
+  Enabled: true
+  EnforcedStyle: space
+  EnforcedStyleForEmptyBraces: no_space
+Style/SymbolProc:
+  Enabled: true
+Style/TrailingBlankLines:
+  Enabled: true
+  EnforcedStyle: final_newline
+Style/TrailingComma:
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+Style/TrivialAccessors:
+  Enabled: true
+  AllowDSLWriters: true
+Style/VariableName:
+  Enabled: true
+  EnforcedStyle: snake_case
+Style/WordArray:
+  Enabled: true
+  MinSize: 2
+Metrics/AbcSize:
+  Enabled: true
+  Max: 25
+Metrics/BlockNesting:
+  Enabled: true
+  Max: 5
+Metrics/ClassLength:
+  Enabled: true
+  CountComments: false
+  Max: 500
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Max: 10
+Metrics/LineLength:
+  Enabled: true
+  Max: 80
+  AllowURI: true
+Metrics/MethodLength:
+  Enabled: true
+  CountComments: false
+  Max: 20
+Metrics/ParameterLists:
+  Enabled: true
+  Max: 5
+  CountKeywordArgs: false
+Metrics/PerceivedComplexity:
+  Enabled: true
+  Max: 8
+Lint/AssignmentInCondition:
+  Enabled: true
+  AllowSafeAssignment: true
+Style/InlineComment:
+  Enabled: false
+Style/MethodCalledOnDoEndBlock:
+  Enabled: true
+Style/SymbolArray:
+  Enabled: true
+Style/AccessorMethodName:
+  Enabled: true
+Style/Alias:
+  Enabled: true
+Style/ArrayJoin:
+  Enabled: true
+Style/AsciiComments:
+  Enabled: true
+Style/AsciiIdentifiers:
+  Enabled: true
+Style/Attr:
+  Enabled: true
+Style/BlockComments:
+  Enabled: true
+Style/ColonMethodCall:
+  Enabled: true
+Style/DeprecatedHashMethods:
+  Enabled: true
+Style/Documentation:
+  Enabled: false
+Style/EmptyLiteral:
+  Enabled: true
+Style/EvenOdd:
+  Enabled: true
+Style/FlipFlop:
+  Enabled: true
+Style/IfWithSemicolon:
+  Enabled: true
+Style/Lambda:
+  Enabled: true
+Style/LeadingCommentSpace:
+  Enabled: true
+Style/MultilineBlockChain:
+  Enabled: true
+Style/MultilineTernaryOperator:
+  Enabled: true
+Style/NegatedIf:
+  Enabled: true
+Style/NestedTernaryOperator:
+  Enabled: true
+Style/NilComparison:
+  Enabled: true
+Style/Not:
+  Enabled: true
+Style/OneLineConditional:
+  Enabled: true
+Style/PerlBackrefs:
+  Enabled: true
+Style/RedundantBegin:
+  Enabled: true
+Style/RedundantSelf:
+  Enabled: true
+Style/RescueModifier:
+  Enabled: true
+Style/SelfAssignment:
+  Enabled: true
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: true
+Style/SpaceAfterColon:
+  Enabled: true
+Style/SpaceAfterComma:
+  Enabled: true
+Style/SpaceAfterControlKeyword:
+  Enabled: true
+Style/SpaceAfterMethodName:
+  Enabled: true
+Style/SpaceAfterNot:
+  Enabled: true
+Style/SpaceAfterSemicolon:
+  Enabled: true
+Style/SpaceBeforeComma:
+  Enabled: true
+Style/SpaceBeforeComment:
+  Enabled: true
+Style/SpaceBeforeSemicolon:
+  Enabled: true
+Style/SpaceAroundOperators:
+  Enabled: true
+Style/SpaceBeforeModifierKeyword:
+  Enabled: true
+Style/SpaceInsideBrackets:
+  Enabled: true
+Style/SpaceInsideParens:
+  Enabled: true
+Style/SpaceInsideRangeLiteral:
+  Enabled: true
+Style/SpecialGlobalVars:
+  Enabled: true
+Style/TrailingWhitespace:
+  Enabled: true
+Style/UnlessElse:
+  Enabled: true
+Style/VariableInterpolation:
+  Enabled: true
+Style/WhenThen:
+  Enabled: true
+Lint/Debugger:
+  Enabled: true
+Lint/DeprecatedClassMethods:
+  Enabled: true
+Lint/Eval:
+  Enabled: true
+Lint/HandleExceptions:
+  Enabled: true
+Lint/LiteralInInterpolation:
+  Enabled: true
+Lint/Loop:
+  Enabled: true
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: true
+Lint/RequireParentheses:
+  Enabled: false
+Lint/UnderscorePrefixedVariableName:
+  Enabled: true
+Lint/UselessSetterCall:
+  Enabled: true
