@@ -2,6 +2,21 @@ module Api::V2
   class AnimeController < ApiController
     caches_action :show, expires_in: 1.hour
 
+    def index
+      if params.key? :filter
+        search = AnimeSearch.new params[:filter]
+        if search.valid?
+          anime = Anime.includes(:genres)
+          return render json: search.apply(anime)
+        else
+          return render json: search.errors
+        end
+      end
+
+      # render json: Anime.first(20)
+
+    end
+
     def show
       if params[:id].include? ','
         anime = params[:id].split(',').map {|id| find_anime(id) rescue nil }.compact
