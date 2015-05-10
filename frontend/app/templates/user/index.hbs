@@ -30,12 +30,12 @@
               <ul>
                 <li>
                   <div class="interest-icon"> <i class="fa fa-heart"></i></div>
-                  <div class="interest">
+                  <div class="interest interest-waifu">
                     {{{view "select" content=selectChoices selection=user.model.waifuOrHusbando}}}
-                    {{#if user.model.waifu}}
-                      <a class="remove-waifu" {{action "unselectWaifu"}}> Remove</a>
-                    {{/if}}
                     {{{waifu-selector action="didSelectWaifu" value=user.model.waifu clearInput=unselectingWaifu}}}
+                    {{#if user.model.waifu}}
+                      <a class="remove-waifu btn" {{action "unselectWaifu"}}> Remove</a>
+                    {{/if}}
                   </div>
                 </li>
                 <li>
