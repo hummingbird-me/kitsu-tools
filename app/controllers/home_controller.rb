@@ -19,7 +19,7 @@ class HomeController < ApplicationController
       user_id: current_user.id,
       recent: true,
       include_private: true,
-      include_adult: !current_user.sfw_filter?,
+      include_adult: !current_user.sfw_filter?
     )
     generic_preload! 'recent_library_entries',
                      ed_serialize(recent_library_entries,
@@ -41,7 +41,7 @@ class HomeController < ApplicationController
   def unsubscribe
     code = params[:code]
     User.all.select { |x| x.encrypted_email == code }
-      .each do |x| x.update_attributes subscribed_to_newsletter: false end
+      .each { |x| x.update_attributes subscribed_to_newsletter: false }
     flash[:message] = 'You have been unsubscribed from the newsletter.'
     redirect_to '/anime'
   end
