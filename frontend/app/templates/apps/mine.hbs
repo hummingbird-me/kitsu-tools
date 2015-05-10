@@ -16,11 +16,13 @@
     </div>
   {{/each}}
   <div class="block-grid-item">
-    <div class="app-card">
+    <div class="app-card app-card-new">
       <div class="app-inner">
         <h3 class="app-title">New App</h3>
-        {{input type="text" class="form-control" name="name" value=newAppName placeholder="Application Name"}}
-        <button class="btn" {{action "createApp"}}>Create</button>
+        <div class="app-card-new-form-container">
+          {{input type="text" class="form-control" name="name" value=newAppName placeholder="Application Name"}}
+          <button class="btn" {{action "createApp"}}>Create</button>
+        </div>
       </div>
     </div>
   </div>
