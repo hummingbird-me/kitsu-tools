@@ -99,9 +99,42 @@
       }
     }
 
+    .interest-waifu {
+      position: relative;
+      .ember-select {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 5;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      input {
+        padding-left: 122px !important;
+      }
+      .tt-suggestion {
+        &:hover {
+          background-color: #e67e22;
+          color: #fff;
+          cursor: pointer;
+        }
+      }
+      .tt-cursor {
+        background-color: #e67e22;
+        color: #fff;
+      }
+    }
+
     .remove-waifu {
-      font-size: 85%;
+      margin-top: 3px;
       padding-left: 10px;
+      background: #acacac;
+      font-size: 85%;
+      color: #fff;
+      transition: .2s ease-in;
+      &:hover {
+        background: darken(#acacac,10);
+      }
     }
 
     .interest-icon {
@@ -112,6 +145,9 @@
       position: relative;
       top: -1px;
       color: #999999;
+      .fa {
+        vertical-align: sub;
+      }
     }
 
     .interest {
@@ -186,10 +222,10 @@
   &:hover {
     cursor: move !important;
   }
-  
+
   .grid-list-thumb {
     width: 50px;
-    margin-right: 15px; 
+    margin-right: 15px;
     display: inline-block;
   }
 
