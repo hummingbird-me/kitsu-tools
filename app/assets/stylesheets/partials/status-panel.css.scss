@@ -168,17 +168,17 @@
     padding: 0;
     margin-bottom: 0;
     overflow: hidden;
+    text-overflow: ellipsis;
     max-height: 500px;
+    max-width: 99.9%; // HACK; Prevent ellipsis overflow of words on Chrome where a sentence takes up the entire width
 
     img {
       max-width: 100%;
     }
 
     a {
-      display: block;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis;
     }
 
     .onebox a {
