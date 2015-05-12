@@ -19,6 +19,7 @@ $redis = ConnectionPool.new { MockRedis.new }
 
 class ActiveSupport::TestCase
   fixtures :all
+  include FactoryGirl::Syntax::Methods
 end
 
 require_dependency 'auth/current_user_provider'
