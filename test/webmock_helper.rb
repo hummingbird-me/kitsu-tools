@@ -1,4 +1,4 @@
-WebMock.disable_net_connect!(:allow => "codeclimate.com")
+WebMock.disable_net_connect!(allow: %w[codeclimate.com robohash.org])
 
 class ActiveSupport::TestCase
   def fake_requests(routes)
