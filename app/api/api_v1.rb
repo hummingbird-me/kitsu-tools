@@ -310,8 +310,11 @@ class API_v1 < Grape::API
       user = find_user(params[:user_id])
 
       # Find stories to display.
-      stories = user.stories.for_user(current_user).includes(:substories, :user, :target).order('updated_at DESC').page(params[:page]).per(20)
+      stories = user.stories.for_user(current_user)
+                    .includes(:substories, :user, :target)
+                    .order('updated_at DESC').page(params[:page]).per(20)
       # fetche anime stories and preload genres association
+      # WORKAROUND: See rails/rails#17479
       anime_stories = stories.group_by(&:target_type).fetch("Anime",[])
       ActiveRecord::Associations::Preloader.new.preload(anime_stories, target: [:genres])
 
