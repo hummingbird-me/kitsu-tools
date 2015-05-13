@@ -1,10 +1,20 @@
 module Api::V2
   class AnimeController < ApiController
     caches_action :show, expires_in: 1.hour
-    before_action :search, only: [:index], if: -> {params.key? :filter}
 
     def index
-      render json: Anime.first(20)
+      anime = Anime.preload(:genres)
+
+      if params.key? :filter
+        search = AnimeSearch.new(params[:filter])
+        if search.valid?
+          anime = search.apply_filters(anime)
+        else
+          return render json: search.errors.full_messages
+        end
+      end
+
+      render json: anime.page(params[:page])
     end
 
     def show
@@ -24,15 +34,6 @@ module Api::V2
           raise(ActiveRecord::RecordNotFound)
       else
         Anime.find(id)
-      end
-    end
-
-    def search
-      search = AnimeSearch.new(params[:filter])
-      if search.valid?
-        return render json: search.apply(Anime.preload(:genres))
-      else
-        return render json: search.errors
       end
     end
 
