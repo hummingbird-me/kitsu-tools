@@ -20,18 +20,21 @@ COPY Gemfile /opt/hummingbird/
 COPY Gemfile.lock /opt/hummingbird/
 
 RUN bash -c "source /usr/local/rvm/scripts/rvm && \ 
+    rvm ls && \
+    ruby --version && \
+    gem environment && \
+    gem install bundler && \
     bundle install"
 
 COPY . /opt/hummingbird
 
-RUN cd /opt/hummingbird/frontend && \
-    npm install && \
+WORKDIR /opt/hummingbird/frontend
+RUN npm install && \
     bower --allow-root install
-
-RUN npm install --save-dev ember-cli-rails-addon@0.0.11
 
 EXPOSE 3000
 
+WORKDIR /opt/hummingbird
 ENTRYPOINT ["/opt/hummingbird/script/entrypoint.sh"]
 CMD ["bundle", "exec", "foreman", "start"]
 
