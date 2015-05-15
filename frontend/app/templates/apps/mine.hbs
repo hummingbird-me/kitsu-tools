@@ -1,17 +1,11 @@
-<h2>My Apps</h2>
+<h2>
+  My Apps
+  {{#link-to 'apps.new' class='btn btn-default pull-right'}}
+    <i class="fa fa-plus"></i> New App
+  {{/link-to}}
+</h2>
 <div class="block-grid-md-2 blog-grid-sm-1">
   {{#each model as |app|}}
     {{app-card app=app}}
   {{/each}}
-  <div class="block-grid-item">
-    <div class="app-card app-card-new">
-      <div class="app-inner">
-        <h3 class="app-title">New App</h3>
-        <div class="app-card-new-form-container">
-          {{input type="text" class="form-control" name="name" value=newAppName placeholder="Application Name"}}
-          <button class="btn" {{action "createApp"}}>Create</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
