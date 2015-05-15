@@ -47,7 +47,9 @@ group :development do
   gem 'foreman'
   gem 'letter_opener'
   gem 'guard-livereload', require: false
+  gem 'guard-minitest', require: false
   gem 'rack-livereload'
+  gem 'rb-readline', require: false
   gem 'rb-fsevent', require: false
   gem 'qunit-rails'
   gem 'spring'
