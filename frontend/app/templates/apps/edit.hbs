@@ -13,6 +13,7 @@
       </div>
       <div class="panel-body">
         <form class="form-horizontal">
+          {{!-- TODO: add logo upload button and display logo
           <div class="form-group">
             <label for="app-logo" class="col-sm-4 control-label required-label">Logo</label>
             <div class="col-sm-8">
@@ -20,6 +21,7 @@
               {{view "file-upload" action="logoSelected" id="app-logo"}}
             </div>
           </div>
+          --}}
 
           <div class="form-group {{if errors.model.name 'has-error'}}">
             <label for="app-name" class="col-sm-4 control-label required-label">Name</label>
@@ -50,6 +52,7 @@
             </div>
           </div>
 
+          {{!-- TODO: add database stuff for this
           <div class="form-group">
             <label class="col-sm-4 control-label required-label">Access</label>
             <div class="col-sm-8">
@@ -68,7 +71,9 @@
               </span>
             </div>
           </div>
+          --}}
 
+          {{!-- NOTE: enable this when we add usage tracking + dynamic /apps
           <div class="form-group">
             <label class="col-sm-4 control-label required-label">Visibility</label>
             <div class="col-sm-8">
@@ -82,7 +87,9 @@
               </label>
             </div>
           </div>
+          --}}
 
+          {{!-- NOTE: enable this when OAuth2 happens
           {{#if model.writeAccess}}
           <div class="form-group {{if errors.model.redirectUri 'has-error'}}">
               <label for="redirect-uri" class="col-sm-4 control-label required-label">Redirect URI</label>
@@ -100,6 +107,7 @@
                           clientErrors=errors.model.redirectUri
                           serverErrors=model.errors.redirectUri}}
           {{/if}}
+          --}}
 
           <div class="form-group">
             <button class="col-sm-3 col-sm-offset-3 btn btn-primary"
