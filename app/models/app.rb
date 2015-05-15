@@ -15,6 +15,8 @@
 #  logo_content_type :string(255)
 #  logo_file_size    :integer
 #  logo_updated_at   :datetime
+#  write_access      :boolean          default(FALSE), not null
+#  public            :boolean          default(FALSE), not null
 #
 
 class App < ActiveRecord::Base
@@ -29,6 +31,7 @@ class App < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true, length: { maximum: 32 }
   validates :key, uniqueness: true
   validates :redirect_uri, format: { without: %r[\Ahttp://] }
+  validates :redirect_uri, presence: true, if: :write_access?
   validates :description, length: { maximum: 140 }
   validates_attachment :logo, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png"]

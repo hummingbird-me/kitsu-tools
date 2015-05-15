@@ -165,7 +165,9 @@ CREATE TABLE apps (
     logo_file_name character varying(255),
     logo_content_type character varying(255),
     logo_file_size integer,
-    logo_updated_at timestamp without time zone
+    logo_updated_at timestamp without time zone,
+    write_access boolean DEFAULT false NOT NULL,
+    public boolean DEFAULT false NOT NULL
 );
 
 
@@ -3851,4 +3853,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150204092920');
 INSERT INTO schema_migrations (version) VALUES ('20150712193314');
 
 INSERT INTO schema_migrations (version) VALUES ('20150717223653');
+
+INSERT INTO schema_migrations (version) VALUES ('20150515223855');
 

@@ -15,6 +15,8 @@
 #  logo_content_type :string(255)
 #  logo_file_size    :integer
 #  logo_updated_at   :datetime
+#  write_access      :boolean          default(FALSE), not null
+#  public            :boolean          default(FALSE), not null
 #
 
 FactoryGirl.define do
