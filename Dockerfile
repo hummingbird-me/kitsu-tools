@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM phusion/baseimage
 
 MAINTAINER Hummingbird Media, Inc.
 
