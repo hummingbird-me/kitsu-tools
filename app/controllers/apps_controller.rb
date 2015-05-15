@@ -16,20 +16,35 @@ class AppsController < ApplicationController
     respond_with_ember apps
   end
 
-  def show
+  def update
     app = App.find(params[:id])
-    app
-  end
+
+    return error! 'App not found', 404 unless app
+    return error! "That's not your app", 403 unless app.creator == current_user
+
+    app.assign_attributes(app_fields)
 
     save_and_render app
   end
 
   def create
-    authenticate_user!
+    return error! 'Name exists', 409 if App.exists?(name: params[:name])
 
-    return error! "Name exists", 400 if App.exists?(name: params[:name])
-    app = App.create(name: params[:name], creator: current_user)
-    app.save!
-    render json: app
+    app = App.create(app_fields)
+    app.creator = current_user
+
+    save_and_render app
+  end
+
+  private
+
+  def app_fields
+     permitted = [:name, :homepage, :description,
+                  :logo, :redirect_uri]
+
+    attrs = params.require(:app)
+    attrs.delete(:logo) unless attrs[:logo] && attrs[:logo].start_with?('data:')
+
+    attrs.permit(permitted).to_h.symbolize_keys
   end
 end
