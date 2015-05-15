@@ -1,19 +1,7 @@
 <h2>My Apps</h2>
 <div class="block-grid-md-2 blog-grid-sm-1">
   {{#each model as |app|}}
-    <div class="block-grid-item">
-      <div class="app-card">
-        <div class="app-inner">
-          <h3 class="app-title">{{app.name}}</h3>
-          <dl>
-            <dt>Key</dt>
-            <dd class="app-token">{{app.key}}</dd>
-            <dt>Secret</dt>
-            <dd class="app-token">{{app.secret}}</dd>
-          </dl>
-        </div>
-      </div>
-    </div>
+    {{app-card app=app}}
   {{/each}}
   <div class="block-grid-item">
     <div class="app-card app-card-new">
