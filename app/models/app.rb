@@ -26,10 +26,10 @@ class App < ActiveRecord::Base
     processors: [:thumbnail, :paperclip_optimizer]
 
   validates :creator, presence: true
-  validates :name, presence: true, uniqueness: true, length: { in: 5..32 }
+  validates :name, presence: true, uniqueness: true, length: { maximum: 32 }
   validates :key, uniqueness: true
   validates :redirect_uri, format: { without: %r[\Ahttp://] }
-  validates :description, length: { in: 0..140 }
+  validates :description, length: { maximum: 140 }
   validates_attachment :logo, content_type: {
     content_type: ["image/jpg", "image/jpeg", "image/png"]
   }
