@@ -1,9 +1,9 @@
 class AppSerializer < ActiveModel::Serializer
-  embed :ids
+  embed :ids, include: true
 
   attributes :id, :key, :secret, :name, :homepage, :description, :redirect_uri,
              :logo
-  has_one :creator, embed_key: :name
+  has_one :creator, embed_key: :name, root: :users
 
   # Only show secret+key if the scope is the creator
   def include_secret?
