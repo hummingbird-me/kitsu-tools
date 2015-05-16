@@ -8,6 +8,7 @@ export default Ember.Mixin.create({
 
       set(key, value) {
         this.set('bio', value.slice(0, 140));
+        return this.get('bio');
       }
     }),
 
@@ -18,6 +19,7 @@ export default Ember.Mixin.create({
 
       set(key, value) {
         this.set('about', value.slice(0, 500));
+        return this.get('about');
       }
     })
 });
