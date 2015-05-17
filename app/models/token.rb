@@ -53,7 +53,9 @@ class Token
   def self.revoke!(id, expiry)
     $redis.with do |conn|
       conn.set(PREFIX + id, Time.now)
-      conn.expireat(PREFIX + id, expiry.to_i)
+      # Expire 5 minutes after the token itself expires, just to make sure
+      # clock drift doesn't open an exploit
+      conn.expireat(PREFIX + id, expiry.to_i + 5.minutes)
     end
   end
 
