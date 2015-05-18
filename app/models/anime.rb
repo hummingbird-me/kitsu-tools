@@ -41,46 +41,138 @@
 class Anime < ActiveRecord::Base
   include Versionable
   include BayesianAverageable
-
   include PgSearch
-  pg_search_scope :instant_search,
-    against: [ :title, :alt_title ],
-    using: { tsearch: { normalization: 42, prefix: true, dictionary: 'english' } }
-  pg_search_scope :full_search,
-    against: [ :title, :alt_title ],
-    using: {
-      tsearch: { normalization: 42, dictionary: 'english' },
-      trigram: { threshold: 0.1 }
-    },
-    # Combine trigram and tsearch values
-    ranked_by: ':tsearch + :trigram'
-
   extend FriendlyId
-  friendly_id :canonical_title, :use => [:slugged, :history]
+
+  VALID_IMAGES = %w(image/jpg image/jpeg image/png image/gif)
+
+  AGE_RATINGS = %w{G PG13 PG R18+}
+
+  SHOW_TYPES = %w(OVA ONA Movie TV Special Music)
+
+  SEASONS = %w(summer fall winter spring)
+
+  SEASONS_MONTHS = {
+    winter: %w(12 1 2),
+    spring: %w(3 4 5),
+    summer: %w(6 7 8),
+    fall:   %w(9 10 11)
+  }
+
+  with_options(dependent: :destroy) do |a|
+    a.has_many :castings, as: :castable
+    a.has_many :favorites, as: :item
+    a.has_many :reviews
+    a.has_many :episodes
+    a.has_many :gallery_images
+    a.has_many :stories, as: :target
+    a.has_many :watchlists
+    a.has_many :quotes
+  end
+
+  # has_many :consumings, as: :item TODO: this will be used once we decide to unify library stuff
+  has_and_belongs_to_many :genres
+  has_and_belongs_to_many :producers
+  has_and_belongs_to_many :franchises
 
   has_attached_file :cover_image,
-    styles: {thumb: ["1400x900>", :jpg]},
-    convert_options: {thumb: "-quality 90"},
-    keep_old_files: true
-
-  validates_attachment :cover_image, content_type: {
-    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-  }
+                    styles: { thumb: ['1400x900>', :jpg] },
+                    convert_options: { thumb: '-quality 90' },
+                    keep_old_files: true
 
   has_attached_file :poster_image,
-    styles: {
-      large: {geometry: '490x710!', animated: false, format: :jpg},
-      medium: '100x150!'
-    },
-    convert_options: {
-      large: '-quality 0'
-    },
-    default_url: '/assets/missing-anime-cover.jpg',
-    keep_old_files: true
+                    styles: {
+                      large: {
+                        geometry: '490x710!',
+                        animated: false,
+                        format: :jpg
+                      },
+                      medium: '100x150!'
+                    },
+                    convert_options: {large: '-quality 0'},
+                    default_url: '/assets/missing-anime-cover.jpg',
+                    keep_old_files: true
 
-  validates_attachment :poster_image, content_type: {
-    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  validates_attachment_content_type :cover_image,
+                                    :poster_image,
+                                    content_type: self::VALID_IMAGES
+
+  validates :title, presence: true, uniqueness: true
+
+  friendly_id :canonical_title, use: [:slugged, :history]
+
+  default_scope{ preload(:genres).order('title') }
+
+  scope :exclude_genres, ->(genres){
+    where('NOT EXISTS (
+            SELECT 1
+            FROM anime_genres
+            WHERE anime_genres.anime_id = anime.id
+            AND anime_genres.genre_id IN (?)
+          )', genres.map(&:id))
   }
+
+  # Find anime containing the genres passed in.
+  # This complicated bit of SQL basically does relational division.
+  scope :include_genres, ->(genres){
+    where('NOT EXISTS (
+            SELECT * FROM genres AS g
+            WHERE g.id IN (?)
+            AND NOT EXISTS (
+              SELECT *
+              FROM anime_genres AS ag
+              WHERE ag.anime_id = anime.id
+              AND   ag.genre_id = g.id
+            )
+          )', genres.map(&:id))
+  }
+
+  scope :by_season, ->(season){
+    where('EXTRACT(MONTH FROM started_airing_date) in (?)',
+          self::SEASONS_MONTHS[season.to_sym])
+  }
+
+  scope :by_year, ->(year){
+    where('EXTRACT(YEAR FROM started_airing_date) = ?', year)
+  }
+
+  scope :by_started_date, ->(date){ where('started_airing_date > ?', date) }
+
+  scope :by_finished_date, ->(date){ where('finished_airing_date < ?', date) }
+
+  scope :order_by_rating, ->{
+    order('bayesian_rating DESC NULLS LAST, user_count DESC NULLS LAST')
+  }
+
+  scope :by_genres, ->(genres){
+    genres = genres.split(',') if genres.is_a?(String)
+    where(genres: { name: genres }).joins(:genres)
+  }
+
+  pg_search_scope :instant_search,
+    against: [:title, :alt_title],
+    using: {
+      tsearch: {
+        normalization: 42,
+        prefix: true,
+        dictionary: 'english'
+      }
+    }
+
+  pg_search_scope :full_search,
+    against: [:title, :alt_title],
+    using: {
+      tsearch: {
+        normalization: 42,
+        dictionary: 'english'
+      },
+      trigram: { threshold: 0.1 }
+    },
+    ranked_by: ':tsearch + :trigram' # Combine trigram and tsearch values
+
+
+
+
 
 
   def poster_image_thumb
@@ -96,22 +188,6 @@ class Anime < ActiveRecord::Base
       end
     end
   end
-
-  has_many :quotes, dependent: :destroy
-  # TODO: pick a name and stick to it
-  has_many :castings, dependent: :destroy, as: :castable
-  has_many :favorites, dependent: :destroy, as: :item
-  has_many :reviews, dependent: :destroy
-  has_many :episodes, dependent: :destroy
-  has_many :gallery_images, dependent: :destroy
-  has_many :stories, as: :target, dependent: :destroy
-  has_and_belongs_to_many :genres
-  has_and_belongs_to_many :producers
-  has_and_belongs_to_many :franchises
-
-  has_many :watchlists, dependent: :destroy
-  # has_many :consumings, as: :item TODO: this will be used once we decide to unify library stuff
-  validates :title, :presence => true, :uniqueness => true
 
   before_validation do
     self.cover_image_top_offset = 0 if self.cover_image_top_offset.nil?
@@ -129,10 +205,6 @@ class Anime < ActiveRecord::Base
   # Check whether the current anime is SFW.
   def sfw?
     age_rating != "R18+"
-  end
-
-  def self.order_by_rating
-    order('bayesian_rating DESC NULLS LAST, user_count DESC NULLS LAST')
   end
 
   # Use this function to get the title instead of directly accessing the title.
@@ -164,26 +236,6 @@ class Anime < ActiveRecord::Base
     else
       return english_canonical ? title : alt_title
     end
-  end
-
-  # Filter out all anime belonging to the genres passed in.
-  def self.exclude_genres(genres)
-    where('NOT EXISTS (SELECT 1 FROM anime_genres WHERE anime_genres.anime_id = anime.id AND anime_genres.genre_id IN (?))', genres.map(&:id))
-  end
-
-  # Find anime containing the genres passed in.
-  # This complicated bit of SQL basically does relational division.
-  def self.include_genres(genres)
-    where('NOT EXISTS (
-            SELECT * FROM genres AS g
-            WHERE g.id IN (?)
-            AND NOT EXISTS (
-              SELECT *
-              FROM anime_genres AS ag
-              WHERE ag.anime_id = anime.id
-              AND   ag.genre_id = g.id
-            )
-          )', genres.map(&:id))
   end
 
   def title_distance(title)
@@ -278,7 +330,7 @@ class Anime < ActiveRecord::Base
   end
 
   def show_type_enum
-    ["OVA", "ONA", "Movie", "TV", "Special", "Music"]
+    self::SHOW_TYPES
   end
 
   def status
