@@ -14,7 +14,7 @@ module Api::V2
         end
       end
 
-      render json: anime.page(params[:page])
+      render json: anime.page(params[:page]).per(20)
     end
 
     def show
