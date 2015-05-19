@@ -170,6 +170,14 @@ class Anime < ActiveRecord::Base
     },
     ranked_by: ':tsearch + :trigram' # Combine trigram and tsearch values
 
+  # Filter out hentai if `filterp` is true or nil.
+  def self.sfw_filter(current_user)
+    if current_user && !current_user.sfw_filter
+      self
+    else
+      where("age_rating <> 'R18+'")
+    end
+  end
 
 
 
@@ -193,14 +201,6 @@ class Anime < ActiveRecord::Base
     self.cover_image_top_offset = 0 if self.cover_image_top_offset.nil?
   end
 
-  # Filter out hentai if `filterp` is true or nil.
-  def self.sfw_filter(current_user)
-    if current_user && !current_user.sfw_filter
-      self
-    else
-      where("age_rating <> 'R18+'")
-    end
-  end
 
   # Check whether the current anime is SFW.
   def sfw?
@@ -208,33 +208,29 @@ class Anime < ActiveRecord::Base
   end
 
   # Use this function to get the title instead of directly accessing the title.
-  def canonical_title(title_language_preference=nil)
-    if title_language_preference and title_language_preference.class == User
-      title_language_preference = title_language_preference.title_language_preference
+  def canonical_title(preference = '')
+    if preference.class == User
+      preference = preference.title_language_preference
     end
 
-    if title_language_preference and title_language_preference == "romanized"
-      return title
-    elsif title_language_preference and title_language_preference == "english"
-      return (alt_title and alt_title.length > 0) ? alt_title : title
+    if (preference == 'english' || english_canonical) && !alt_title.nil?
+      alt_title
     else
-      return (alt_title and alt_title.length > 0 and english_canonical) ? alt_title : title
+      title
     end
   end
 
   # Use this function to get the alt title instead of directly accessing the
   # alt_title.
-  def alternate_title(title_language_preference=nil)
-    if title_language_preference and title_language_preference.class == User
-      title_language_preference = title_language_preference.title_language_preference
+  def alternate_title(preference = '')
+    if preference.class == User
+      preference = preference.title_language_preference
     end
 
-    if title_language_preference and title_language_preference == "romanized"
-      return alt_title
-    elsif title_language_preference and title_language_preference == "english"
-      return (alt_title and alt_title.length > 0) ? title : nil
+    if preference == 'english' || english_canonical
+      title
     else
-      return english_canonical ? title : alt_title
+      alt_title
     end
   end
 
@@ -357,7 +353,7 @@ class Anime < ActiveRecord::Base
       if finished_airing_date > Time.now.to_date
         return "Currently Airing"
       else
-        return "Finished Airing"
+        return "Finished Airing"  
       end
     end
   end
