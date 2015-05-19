@@ -46,7 +46,7 @@ class Anime < ActiveRecord::Base
 
   VALID_IMAGES = %w(image/jpg image/jpeg image/png image/gif)
 
-  AGE_RATINGS = %w{G PG13 PG R18+}
+  AGE_RATINGS = %w(G PG13 PG R18+)
 
   SHOW_TYPES = %w(OVA ONA Movie TV Special Music)
 
@@ -70,7 +70,8 @@ class Anime < ActiveRecord::Base
     a.has_many :quotes
   end
 
-  # has_many :consumings, as: :item TODO: this will be used once we decide to unify library stuff
+  # TODO: this will be used once we decide to unify library stuff
+  # has_many :consumings, as: :item
   has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
   has_and_belongs_to_many :franchises
@@ -89,7 +90,7 @@ class Anime < ActiveRecord::Base
                       },
                       medium: '100x150!'
                     },
-                    convert_options: {large: '-quality 0'},
+                    convert_options: { large: '-quality 0' },
                     default_url: '/assets/missing-anime-cover.jpg',
                     keep_old_files: true
 
@@ -99,11 +100,11 @@ class Anime < ActiveRecord::Base
 
   validates :title, presence: true, uniqueness: true
 
-  friendly_id :canonical_title, use: [:slugged, :history]
+  friendly_id :canonical_title, use: %i(slugged history)
 
-  default_scope{ preload(:genres).order('title') }
+  default_scope { preload(:genres).order('title') }
 
-  scope :exclude_genres, ->(genres){
+  scope :exclude_genres, ->(genres) {
     where('NOT EXISTS (
             SELECT 1
             FROM anime_genres
@@ -114,7 +115,7 @@ class Anime < ActiveRecord::Base
 
   # Find anime containing the genres passed in.
   # This complicated bit of SQL basically does relational division.
-  scope :include_genres, ->(genres){
+  scope :include_genres, ->(genres) {
     where('NOT EXISTS (
             SELECT * FROM genres AS g
             WHERE g.id IN (?)
@@ -127,48 +128,49 @@ class Anime < ActiveRecord::Base
           )', genres.map(&:id))
   }
 
-  scope :by_season, ->(season){
+  scope :by_season, ->(season) {
     where('EXTRACT(MONTH FROM started_airing_date) in (?)',
           self::SEASONS_MONTHS[season.to_sym])
   }
 
-  scope :by_year, ->(year){
+  scope :by_year, ->(year) {
     where('EXTRACT(YEAR FROM started_airing_date) = ?', year)
   }
 
-  scope :by_started_date, ->(date){ where('started_airing_date > ?', date) }
+  scope :by_started_date, ->(date) { where('started_airing_date > ?', date) }
 
-  scope :by_finished_date, ->(date){ where('finished_airing_date < ?', date) }
+  scope :by_finished_date, ->(date) { where('finished_airing_date < ?', date) }
 
-  scope :order_by_rating, ->{
+  scope :order_by_rating, lambda {
     order('bayesian_rating DESC NULLS LAST, user_count DESC NULLS LAST')
   }
 
-  scope :by_genres, ->(genres){
+  scope :by_genres, ->(genres) {
     genres = genres.split(',') if genres.is_a?(String)
     where(genres: { name: genres }).joins(:genres)
   }
 
   pg_search_scope :instant_search,
-    against: [:title, :alt_title],
-    using: {
-      tsearch: {
-        normalization: 42,
-        prefix: true,
-        dictionary: 'english'
-      }
-    }
+                  against: %i(title alt_title),
+                  using: {
+                    tsearch: {
+                      normalization: 42,
+                      prefix: true,
+                      dictionary: 'english'
+                    }
+                  }
 
   pg_search_scope :full_search,
-    against: [:title, :alt_title],
-    using: {
-      tsearch: {
-        normalization: 42,
-        dictionary: 'english'
-      },
-      trigram: { threshold: 0.1 }
-    },
-    ranked_by: ':tsearch + :trigram' # Combine trigram and tsearch values
+                  against: %i(title alt_title),
+                  using: {
+                    tsearch: {
+                      normalization: 42,
+                      dictionary: 'english'
+                    },
+                    trigram: { threshold: 0.1 }
+                  },
+                  # Combine trigram and tsearch values
+                  ranked_by: ':tsearch + :trigram'
 
   # Filter out hentai if `filterp` is true or nil.
   def self.sfw_filter(current_user)
@@ -179,32 +181,34 @@ class Anime < ActiveRecord::Base
     end
   end
 
-
-
-
-
   def poster_image_thumb
-    if self.poster_image_file_name.nil?
-      "https://hummingbird.me/assets/missing-anime-cover.jpg"
+    if poster_image_file_name.nil?
+      'https://hummingbird.me/assets/missing-anime-cover.jpg'
     else
       # This disgusting fastpath brought to you by the following issue:
       # https://github.com/thoughtbot/paperclip/issues/909
       if Rails.env.production?
-        "https://static.hummingbird.me/anime/poster_images/#{"%03d" % (self.id/1000000 % 1000)}/#{"%03d" % (self.id/1000 % 1000)}/#{"%03d" % (self.id % 1000)}/large/#{URI.escape(self.poster_image_file_name.rpartition('.')[0])}.jpg?#{self.poster_image_updated_at.to_i}"
+        url = 'https://static.hummingbird.me/anime/poster_images'
+        id_path = format('%03d/%03d/%03d',
+                         (id / 1_000_000 % 1_000),
+                         (id / 1_000 % 1_000),
+                         (id % 1_000))
+        file_name = URI.escape(poster_image_file_name.rpartition('.')[0])
+        updated = poster_image_updated_at.to_i
+        "#{url}/#{id_path}/large/#{file_name}.jpg?#{updated}"
       else
-        self.poster_image.url(:large)
+        poster_image.url(:large)
       end
     end
   end
 
   before_validation do
-    self.cover_image_top_offset = 0 if self.cover_image_top_offset.nil?
+    self.cover_image_top_offset = 0 if cover_image_top_offset.nil?
   end
-
 
   # Check whether the current anime is SFW.
   def sfw?
-    age_rating != "R18+"
+    age_rating != 'R18+'
   end
 
   # Use this function to get the title instead of directly accessing the title.
@@ -235,21 +239,31 @@ class Anime < ActiveRecord::Base
   end
 
   def title_distance(title)
-    titles = [self.title, self.alt_title].compact
+    titles = [self.title, alt_title].compact
     # Damerau-Levenshtein Distance
-    levenshtein = titles.map { |t| RubyFish::DamerauLevenshtein.distance(t, title) }.min
+    levenshtein = titles.map do |t|
+      RubyFish::DamerauLevenshtein.distance(t, title)
+    end
 
     # Longest Common Subsequence (Normalized
-    subsequence = titles.map { |t| [t, RubyFish::LongestSubsequence.distance(t, title)] }
-                        .map { |t| [t[0].length, title.length].max - t[1] }.min
+    subsequence = titles.map do |t|
+      [t, RubyFish::LongestSubsequence.distance(t, title)]
+    end
+    subsequence = subsequence.map do |t|
+      [t[0].length, title.length].max - t[1]
+    end
 
     # Average and square to determine cost
-    [levenshtein, subsequence].flatten.map { |x| x ** 2 }.instance_eval { sum.to_f / size }
+    [levenshtein.min, subsequence.min]
+      .flatten
+      .map { |x| x**2 }
+      .instance_eval { sum.to_f / size }
   end
 
   def self.fuzzy_find(title)
     # Exact
-    anime = Anime.where("lower(title) = :title OR lower(alt_title) = :title", title: title.downcase).first
+    anime = Anime.find_by('lower(title) = :title OR lower(alt_title) = :title',
+                          title: title.downcase)
     return anime unless anime.nil?
 
     # Trigram
@@ -259,8 +273,12 @@ class Anime < ActiveRecord::Base
 
     # Sort by distance, ascending
     anime = options.map do |a|
-      { anime: a, distance: a.title_distance(title) }
-    end.sort { |a, b| a[:distance] <=> b[:distance] }
+      {
+        anime: a,
+        distance: a.title_distance(title)
+      }
+    end
+    anime = anime.sort { |a, b| a[:distance] <=> b[:distance] }
 
     anime.first[:anime] if anime.first[:distance] < 80
   end
@@ -270,7 +288,8 @@ class Anime < ActiveRecord::Base
     # TODO: stop hard-coding the ID column
     anime = Anime.find_by(mal_id: hash[:external_id])
     if anime.nil? && Anime.where(title: hash[:title][:canonical]).count > 1
-      log "Could not find unique Anime by title=#{hash[:title][:canonical]}.  Ignoring."
+      log "Could not find unique Anime by
+           title=#{hash[:title][:canonical]}. Ignoring."
       return
     end
     anime ||= Anime.find_by(title: hash[:title][:canonical])
@@ -284,8 +303,18 @@ class Anime < ActiveRecord::Base
       synopsis: (hash[:synopsis] if anime.synopsis.blank?),
       poster_image: (hash[:poster_image] if anime.poster_image.blank?),
       show_type: (hash[:type] if anime.show_type.blank?),
-      genres: (begin hash[:genres].map { |g| Genre.find_by name: g }.compact rescue [] end if anime.genres.blank?),
-      producers: (begin hash[:producers].map { |p| Producer.find_by name: p }.compact rescue [] end if anime.producers.blank?),
+      genres: (begin
+                 hash[:genres].map { |g| Genre.find_by name: g }.compact
+               rescue
+                 return []
+               end if anime.genres.blank?),
+      producers: (begin
+                    hash[:producers]
+                    .map { |p| Producer.find_by name: p }
+                    .compact
+                  rescue
+                    return []
+                  end if anime.producers.blank?),
       # These fields are always more accurate elsewhere
       age_rating: hash[:age_rating],
       age_rating_guide: hash[:age_rating_guide],
@@ -298,9 +327,7 @@ class Anime < ActiveRecord::Base
     # Staff castings
     hash[:staff] ||= []
     hash[:staff].each do |staff|
-      Casting.create_or_update_from_hash staff.merge({
-        castable: anime
-      })
+      Casting.create_or_update_from_hash staff.merge(castable: anime)
     end
     # VA castings
     hash[:characters] ||= []
@@ -308,18 +335,18 @@ class Anime < ActiveRecord::Base
       character = Character.create_or_update_from_hash ch
       if ch[:voice_actors].length > 0
         ch[:voice_actors].each do |actor|
-          Casting.create_or_update_from_hash actor.merge({
+          Casting.create_or_update_from_hash actor.merge(
             featured: ch[:featured],
             character: character,
             castable: anime
-          })
+          )
         end
       else
-        Casting.create_or_update_from_hash({
+        Casting.create_or_update_from_hash(
           featured: ch[:featured],
           character: character,
           castable: anime
-        })
+        )
       end
     end
     anime
@@ -330,83 +357,81 @@ class Anime < ActiveRecord::Base
   end
 
   def status
-    # If the started_airing_date is in the future or not specified, the show hasn't
-    # aired yet.
-    if started_airing_date.nil? or started_airing_date > Time.now.to_date
-      return "Not Yet Aired"
+    # If the started_airing_date is in the future or not specified,
+    # the show hasn't aired yet.
+    if started_airing_date.nil? || started_airing_date > Time.zone.now.to_date
+      return 'Not Yet Aired'
     end
-
-    # Since the show's airing date is in the past, it has either "Finished Airing" or
-    # is "Currently Airing".
 
     # If the show has only one episode, then it has "Finished Airing".
-    if episode_count == 1
-      return "Finished Airing"
-    end
+    return 'Finished Airing' if episode_count == 1
 
-    # If the finished_airing_date is specified and in the future, the the show is
-    # "Currently Airing". If it is specified and in the past, then the show has
-    # "Finished Airing". If it is not specified, the show is "Currently Airing".
+    # If the finished_airing_date is specified and in the future,
+    # the the show is "Currently Airing".
+    # If it is specified and in the past, then the show has "Finished Airing".
+    # If it is not specified, the show is "Currently Airing".
     if finished_airing_date.nil?
-      return "Currently Airing"
+      return 'Currently Airing'
     else
-      if finished_airing_date > Time.now.to_date
-        return "Currently Airing"
+      if finished_airing_date > Time.zone.now.to_date
+        return 'Currently Airing'
       else
-        return "Finished Airing"  
+        return 'Finished Airing'
       end
     end
   end
 
   before_save do
     # If episode_count has increased, create new episodes.
-    if self.episode_count and self.episodes.length < self.episode_count and (self.episodes.length == 0 or self.thetvdb_series_id.nil?)
-      (self.episodes.length+1).upto(self.episode_count) do |n|
-        Episode.create(anime_id: self.id, number: n)
+    if episode_count &&
+       episodes.length < episode_count &&
+       (episodes.length == 0 || thetvdb_series_id.nil?)
+
+      (episodes.length + 1).upto(episode_count) do |n|
+        Episode.create(anime_id: id, number: n)
       end
     end
   end
 
   after_save do
-    Rails.cache.write("anime_poster_image_thumb:#{self.id}", self.poster_image.url(:large))
+    hash_name = "anime_poster_image_thumb:#{id}"
+    Rails.cache.write(hash_name, poster_image.url(:large))
   end
 
-  def similar(limit=20, options={})
+  def similar(limit = 20, options = {})
     # FIXME
     return [] if Rails.env.development?
 
     exclude = options[:exclude] ? options[:exclude] : []
     similar_anime = []
 
-    begin
-      similar_json = JSON.load(open("http://app.vikhyat.net/anime_graph/related/#{self.id}")).select {|x| x["sim"] > 0.5 }.sort_by {|x| -x["sim"] }
+    json = JSON.load(open("http://app.vikhyat.net/anime_graph/related/#{id}"))
+    similar_json = json.select { |x| x['sim'] > 0.5 }
+                   .sort_by { |x| -x['sim'] }
 
-      similar_json.each do |similar|
-        sim = Anime.find_by_id(similar["id"])
-        if sim and similar_anime.length < limit and (not self.sfw? or (self.sfw? and sim.sfw?))
-          similar_anime.push(sim) unless exclude.include? sim
-        end
-      end
-    rescue
+    similar_json.each do |similar|
+      sim = Anime.find_by_id(similar['id'])
+      similar_anime.push(sim) if sim &&
+                                 similar_anime.length < limit &&
+                                 (!self.sfw? || (self.sfw? && sim.sfw?)) &&
+                                 !exclude.include?(sim)
     end
 
     similar_anime
+  rescue
+    return []
   end
 
   # Versionable overrides
-  def create_pending(author, object = {})
+  def create_pending(author, obj = {})
     # check if URL is the same, otherwise paperclip will determine
     # that it is a new image based on `original` filesize compared to
     # the linked thumbnail filesize.
-    if object[:poster_image] == self.poster_image_thumb
-      object.delete(:poster_image)
-    end
-    if object[:cover_image] == self.cover_image.url(:thumb)
-      object.delete(:cover_image)
-    end
+    obj.delete(:poster_image) if obj[:poster_image] == poster_image_thumb
+    obj.delete(:cover_image) if obj[:cover_image] == cover_image.url(:thumb)
 
-    object[:started_airing_date] = object.delete(:started_airing)
-    object[:finished_airing_date] = object.delete(:finished_airing)
+    obj[:started_airing_date] = obj.delete(:started_airing)
+    obj[:finished_airing_date] = obj.delete(:finished_airing)
     super
   end
 end
