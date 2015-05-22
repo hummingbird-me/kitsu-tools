@@ -86,6 +86,9 @@ Hummingbird::Application.routes.draw do
   resources :partner_deals, only: [:index, :update]
 
   get '/u/:id' => redirect {|params| "/users/#{params[:id]}" }
+  get '/a/:id' => redirect {|params| "/anime/#{params[:id]}" }
+  get '/m/:id' => redirect {|params| "/manga/#{params[:id]}" }
+
   get '/users/to_follow' => 'users#to_follow' # public endpoint for users to follow
 
   resources :users, only: [:index, :show, :update] do
