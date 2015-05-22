@@ -14,7 +14,7 @@ function install {
 
 	#Setup Postres user
 	sudo sed -i 's/md5/trust/g' /etc/postgresql/9.4/main/pg_hba.conf
-	sudo sed -i 's/md5/peer/g' /etc/postgresql/9.4/main/pg_hba.conf
+	sudo sed -i 's/peer/trust/g' /etc/postgresql/9.4/main/pg_hba.conf
 	echo "CREATE USER $USER WITH SUPERUSER LOGIN" | sudo -u postgres psql postgres
 	echo "select pg_reload_conf();" | sudo -u postgres psql postgres
 
