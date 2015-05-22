@@ -1,3 +1,5 @@
+ #!/bin/bash -i
+
 function install {
 	#Postgres
 	curl -o- http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
@@ -11,10 +13,12 @@ function install {
 	gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 	curl -L https://get.rvm.io | bash -s stable --ruby=2.1.3
 	source /home/kieran/.rvm/scripts/rvm
+	source ~/.bashrc
+	rvm --default use 2.1.3
 
 	#Setup Postres user
 	sudo sed -i 's/md5/trust/g' /etc/postgresql/9.4/main/pg_hba.conf
-	sudo sed -i 's/peer/trust/g' /etc/postgresql/9.4/main/pg_hba.conf
+	sudo sed -i 's/md5/peer/g' /etc/postgresql/9.4/main/pg_hba.conf
 	echo "CREATE USER $USER WITH SUPERUSER LOGIN" | sudo -u postgres psql postgres
 	echo "select pg_reload_conf();" | sudo -u postgres psql postgres
 
@@ -22,8 +26,6 @@ function install {
 	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.25.2/install.sh | bash
 	source ~/.bashrc
 	nvm install 0.12.3
-	bash --login
-	rvm --default use 2.1.3
 	#Install ember and bower
 	npm install -g ember-cli bower
 	bundle install
