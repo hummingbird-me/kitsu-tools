@@ -4,7 +4,7 @@
   <% elsif ["OVA", "ONA", "TV"].include? @anime.show_type %>
     <meta property="og:type" content="video.tv_show">
   <% else %>
-    <meta property="og:type" content="video.tv_episode">
+    <meta property="og:type" content="video.other">
   <% end %>
 
   <meta property="og:url" content="<%= anime_url(@anime) %>">
