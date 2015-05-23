@@ -69,7 +69,7 @@ class StoryQuery
     users += substories.map(&:user)
     users += substories.select {|x| x.target_type == "User" }.map(&:target)
     users += recent_users.values
-    users = users.uniq
+    users = users.uniq.compact
     UserQuery.load_is_followed(users, current_user)
 
     # Return stories in the same order as the IDs.
