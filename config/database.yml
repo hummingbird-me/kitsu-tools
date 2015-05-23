@@ -19,4 +19,3 @@ production:
   host: <%= ENV['POSTGRES_HOST'] %>
   port: 5432
   pool: 50
-  database: postgres
