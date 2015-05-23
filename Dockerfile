@@ -36,5 +36,5 @@ EXPOSE 3000
 
 WORKDIR /opt/hummingbird
 ENTRYPOINT ["/opt/hummingbird/script/entrypoint.sh"]
-CMD ["bundle", "exec", "foreman", "start"]
+CMD ["bundle", "exec", "foreman", "start", "--env=.env,.dockerenv"]
 

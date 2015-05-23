@@ -1,5 +1,5 @@
 postgres:
-  image: postgres
+  image: postgres:9.3
   environment:
     POSTGRES_PASSWORD: mysecretpassword
     POSTGRES_USER: postgres

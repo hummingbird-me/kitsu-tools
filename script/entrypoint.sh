@@ -19,11 +19,17 @@ if [ ! -d /opt/hummingbird/frontend/bower_components ]; then
   popd
 fi
 
-sed -i 's/^REDIS_HOST=.*/REDIS_HOST=${REDIS_PORT_6379_TCP_ADDR}/' /opt/hummingbird/.env
-sed -i 's#^REDIS_URL=.*#REDIS_URL=redis://${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}/0#' /opt/hummingbird/.env
+export REDIS_HOST=${REDIS_PORT_6379_TCP_ADDR}
+export REDIS_URL=redis://${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}/0
 
-echo "Creating database..."
-bundle exec rake db:create
+export POSTGRES_HOST=${POSTGRES_PORT_5432_TCP_ADDR}
+export POSTGRES_PORT=${POSTGRES_PORT_5432_TCP_PORT}
+export POSTGRES_DATABASE=postgres
+export POSTGRES_USERNAME=${POSTGRES_ENV_POSTGRES_USER}
+export POSTGRES_PASSWORD=${POSTGRES_ENV_POSTGRES_PASSWORD}
+
+#echo "Creating database..."
+#bundle exec rake db:create
 echo "Initializing database..."
 bundle exec rake db:structure:load
 bundle exec rake db:seed
