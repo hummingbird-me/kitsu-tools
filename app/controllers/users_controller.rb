@@ -1,7 +1,6 @@
 require_dependency 'user_query'
 
 class UsersController < ApplicationController
-
   def index
     if params[:followed_by] || params[:followers_of]
       if params[:followed_by]
@@ -12,7 +11,7 @@ class UsersController < ApplicationController
       users = users.page(params[:page]).per(20)
       UserQuery.load_is_followed(users, current_user)
 
-      render json: users, meta: {cursor: 1 + (params[:page] || 1).to_i}
+      render json: users, meta: { cursor: 1 + (params[:page] || 1).to_i }
     elsif params[:to_follow]
       render json: User.where(to_follow: true), each_serializer: UserSerializer
     else
@@ -38,10 +37,11 @@ class UsersController < ApplicationController
       return redirect_to user_path(user), status: :moved_permanently
     end
 
-    if user_signed_in? and current_user == user
+    if user_signed_in? && current_user == user
       # Clear notifications if the current user is viewing his/her feed.
-      # TODO This needs to be moved elsewhere.
-      Notification.where(user: user, notification_type: "profile_comment", seen: false).update_all seen: true
+      # TODO: This needs to be moved elsewhere.
+      Notification.where(user: user, notification_type: 'profile_comment',
+                         seen: false).update_all seen: true
     end
 
     respond_with_ember user
@@ -56,23 +56,25 @@ class UsersController < ApplicationController
     if user != current_user
       if user.followers.include? current_user
         user.followers.destroy current_user
-        action_type = "unfollowed"
+        action_type = 'unfollowed'
       else
-        if current_user.following_count < 10000
+        if current_user.following_count < 10_000
           user.followers.push current_user
-          action_type = "followed"
+          action_type = 'followed'
         else
-          flash[:message] = "Wow! You're following 10,000 people?! You should unfollow a few people that no longer interest you before following any others."
+          flash[:message] = "Wow! You're following 10,000 people?! You should \
+                             unfollow a few people that no longer interest you \
+                             before following any others."
           action_type = nil
         end
       end
 
       if action_type
-        Substory.from_action({
+        Substory.from_action(
           user_id: current_user.id,
           action_type: action_type,
           followed_id: user.id
-        })
+        )
       end
     end
 
@@ -91,8 +93,7 @@ class UsersController < ApplicationController
       user.save!
       respond_to do |format|
         format.html { redirect_to :back }
-        format.json { render json: user,
-                             serializer: CurrentUserSerializer }
+        format.json { render json: user, serializer: CurrentUserSerializer }
       end
     else
       error! 403
@@ -107,7 +108,7 @@ class UsersController < ApplicationController
 
   def redirect_short_url
     @user = User.find_by_name params[:username]
-    raise ActionController::RoutingError.new('Not Found') if @user.nil?
+    fail ActionController::RoutingError, 'Not Found' if @user.nil?
     redirect_to @user
   end
 
@@ -116,8 +117,8 @@ class UsersController < ApplicationController
 
     # Create the story.
     @user = User.find(params[:user_id])
-    story = Action.broadcast(
-      action_type: "created_profile_comment",
+    Action.broadcast(
+      action_type: 'created_profile_comment',
       user: @user,
       poster: current_user,
       comment: params[:comment]
@@ -125,7 +126,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to :back }
-      format.json { render :json => true }
+      format.json { render json: true }
     end
   end
 
@@ -138,17 +139,20 @@ class UsersController < ApplicationController
     return error!(401, 'Wrong user') unless current_user == user
 
     # Finagling things into place
-    changes[:cover_image] = changes[:cover_image_url] if changes[:cover_image_url] =~ /^data:/
-    changes[:password] = changes[:new_password] if changes[:new_password].present?
+    changes[:cover_image] =
+      changes[:cover_image_url] if changes[:cover_image_url] =~ /^data:/
+    changes[:password] =
+      changes[:new_password] if changes[:new_password].present?
     changes[:name] = changes[:new_username] if changes[:new_username].present?
     changes[:star_rating] = (changes[:rating_type] == 'advanced')
-    [:new_password, :new_username, :rating_type, :cover_image_url].each do |key|
+    %i(new_password new_username rating_type cover_image_url).each do |key|
       changes.delete(key)
     end
 
-    changes = changes.permit(:about, :location, :waifu, :website, :waifu_or_husbando,
-                   :bio, :waifu_char_id, :email, :cover_image, :sfw_filter,
-                   :title_language_preference, :password, :name, :star_rating)
+    changes = changes.permit(:about, :location, :website, :name, :waifu_char_id,
+                             :sfw_filter, :waifu, :bio, :email, :cover_image,
+                             :waifu_or_husbando, :title_language_preference,
+                             :password, :star_rating)
 
     # Convert to hash so that we ignore disallowed attributes
     user.assign_attributes(changes.to_h)
@@ -161,12 +165,12 @@ class UsersController < ApplicationController
   end
 
   def to_follow
-    fixedUserList = [
-      'Gigguk', 'Holden', 'JeanP',
-      'Arkada', 'HappiLeeErin', 'DoctorDazza',
-      'Yokurama', 'dexbonus', 'DEMOLITION_D'
-    ]
-    @users = User.where(:name => fixedUserList)
+    fixed_user_list = %w(
+      Gigguk Holden JeanP
+      Arkada HappiLeeErin DoctorDazza
+      Yokurama dexbonus DEMOLITION_D
+    )
+    @users = User.where(name: fixed_user_list)
     render json: @users, each_serializer: UserSerializer
   end
 end
