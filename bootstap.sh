@@ -12,7 +12,7 @@ function install {
 	#Install ruby
 	gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 	curl -L https://get.rvm.io | bash -s stable --ruby=2.1.3
-	source /home/kieran/.rvm/scripts/rvm
+	source ~/.rvm/scripts/rvm
 	source ~/.bashrc
 	rvm --default use 2.1.3
 
