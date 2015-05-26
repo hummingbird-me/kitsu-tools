@@ -35,6 +35,6 @@ RUN npm install && \
 EXPOSE 3000
 
 WORKDIR /opt/hummingbird
-ENTRYPOINT ["/opt/hummingbird/script/entrypoint.sh"]
+ENTRYPOINT ["/opt/hummingbird/bin/entrypoint.sh"]
 CMD ["bundle", "exec", "foreman", "start", "--env=.env,.dockerenv"]
 

@@ -1,26 +1,26 @@
 #!/bin/bash
 
-source /usr/local/rvm/scripts/rvm
+root_path="$(cd "$(dirname "$(dirname "${BASH_SOURCE[0]}")")" && pwd)"
+
+[ -e /usr/local/rvm/scripts/rvm ] && \
+  source /usr/local/rvm/scripts/rvm
 
 ruby --version
 
-[ -e /opt/hummingbird/tmp/pids/unicorn.pid ] && \
-  rm /opt/hummingbird/tmp/pids/unicorn.pid
+[ -e ${root_path}/tmp/pids/unicorn.pid ] && \
+  rm ${root_path}/tmp/pids/unicorn.pid
 
-if [ ! -d /opt/hummingbird/frontend/node_modules ]; then
-  pushd /opt/hummingbird/frontend
+if [ ! -d ${root_path}/frontend/node_modules ]; then
+  pushd ${root_path}/frontend
   npm install
   popd
 fi
 
-if [ ! -d /opt/hummingbird/frontend/bower_components ]; then
-  pushd /opt/hummingbird/frontend
+if [ ! -d ${root_path}/frontend/bower_components ]; then
+  pushd ${root_path}/frontend
   bower --allow-root install
   popd
 fi
-
-export REDIS_HOST=${REDIS_PORT_6379_TCP_ADDR}
-export REDIS_URL=redis://${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}/0
 
 export POSTGRES_HOST=${POSTGRES_PORT_5432_TCP_ADDR}
 export POSTGRES_PORT=${POSTGRES_PORT_5432_TCP_PORT}
@@ -37,7 +37,7 @@ bundle exec rake db:seed
 echo "Migrating database..."
 bundle exec rake db:migrate
 
-pushd /opt/hummingbird/frontend
+pushd ${root_path}/frontend
 ./node_modules/ember-cli/bin/ember build
 popd
 
