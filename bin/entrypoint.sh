@@ -7,6 +7,11 @@ root_path="$(cd "$(dirname "$(dirname "${BASH_SOURCE[0]}")")" && pwd)"
 
 ruby --version
 
+[ -e ~/.nvm/nvm.sh ] && \
+  source ~/.nvm/nvm.sh
+
+node --version
+
 [ -e ${root_path}/tmp/pids/unicorn.pid ] && \
   rm ${root_path}/tmp/pids/unicorn.pid
 
