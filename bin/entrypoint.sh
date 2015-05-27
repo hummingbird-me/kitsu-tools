@@ -39,6 +39,13 @@ echo "Initializing database..."
 bundle exec rake db:structure:load
 bundle exec rake db:seed
 
+echo "Load DB dump"
+echo "${POSTGRES_HOST}:${POSTGRES_PORT}:${POSTGRES_DATABASE}:${POSTGRES_USERNAME}:${POSTGRES_PASSWORD}" > \
+  ~/.pgpass
+chmod 0600 ~/.pgpass
+curl -s https://slack-files.com/files-pub/T025CNWM0-F04TCL9QX-42e5a92d04/download/dump.sql | \
+  psql -d ${POSTGRES_DATABASE} -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USERNAME} -w
+
 echo "Migrating database..."
 bundle exec rake db:migrate
 
