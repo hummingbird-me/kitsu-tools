@@ -178,6 +178,11 @@
   .genres, .studios {
     @extend .clearfix;
     display: block;
+    @media (min-width: 961px) {
+      .inline-list {
+        padding-left: 54px;
+      }
+    }
     li {
       text-decoration: underline;
       font-size: 15px;
