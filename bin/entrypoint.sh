@@ -33,21 +33,30 @@ export POSTGRES_DATABASE=postgres
 export POSTGRES_USERNAME=${POSTGRES_ENV_POSTGRES_USER}
 export POSTGRES_PASSWORD=${POSTGRES_ENV_POSTGRES_PASSWORD}
 
-#echo "Creating database..."
-#bundle exec rake db:create
-echo "Initializing database..."
-bundle exec rake db:structure:load
-bundle exec rake db:seed
-
-echo "Load DB dump"
+echo "Saving database credentials..."
 echo "${POSTGRES_HOST}:${POSTGRES_PORT}:${POSTGRES_DATABASE}:${POSTGRES_USERNAME}:${POSTGRES_PASSWORD}" > \
   ~/.pgpass
 chmod 0600 ~/.pgpass
-curl -s https://slack-files.com/files-pub/T025CNWM0-F04TCL9QX-42e5a92d04/download/dump.sql | \
-  psql -d ${POSTGRES_DATABASE} -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USERNAME} -w
 
-echo "Migrating database..."
-bundle exec rake db:migrate
+count=$(echo "SELECT COUNT(version) FROM schema_migrations;" | \
+  psql -q -d ${POSTGRES_DATABASE} -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USERNAME} -w | \
+  tail -n 3 | head -n 1)
+status=${PIPESTATUS[0]}
+
+[ ${status} -ne 0 ] && exit ${status}
+
+if [ -z "${count}" ]; then
+  echo "Initializing database..."
+  bundle exec rake db:structure:load
+  bundle exec rake db:seed
+
+  echo "Load DB dump"
+  curl -s https://slack-files.com/files-pub/T025CNWM0-F04TCL9QX-42e5a92d04/download/dump.sql | \
+    psql -d ${POSTGRES_DATABASE} -h ${POSTGRES_HOST} -p ${POSTGRES_PORT} -U ${POSTGRES_USERNAME} -w
+else
+  echo "Migrating database..."
+  bundle exec rake db:migrate
+fi
 
 pushd ${root_path}/frontend
 ./node_modules/ember-cli/bin/ember build
