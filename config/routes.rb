@@ -88,6 +88,7 @@ Hummingbird::Application.routes.draw do
   get '/u/:id' => redirect {|params| "/users/#{params[:id]}" }
   get '/a/:id' => redirect {|params| "/anime/#{params[:id]}" }
   get '/m/:id' => redirect {|params| "/manga/#{params[:id]}" }
+  get '/g/:id' => redirect {|params| "/groups/#{params[:id]}" }
 
   get '/users/to_follow' => 'users#to_follow' # public endpoint for users to follow
 
