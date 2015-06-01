@@ -1,7 +1,10 @@
 development:
   adapter: postgresql
-  database: hummingbird_development
-  host: localhost
+  database: <%= ENV['POSTGRES_DATABASE'] ||= "hummingbird_development" %>
+  host: <%= ENV['POSTGRES_HOST'] ||= "localhost" %>
+  port: <%= ENV['POSTGRES_PORT'] ||= "5432" %>
+  username: <%= ENV['POSTGRES_USERNAME'] ||= "" %>
+  password: <%= ENV['POSTGRES_PASSWORD'] ||= "" %>
 
 test:
   adapter: postgresql

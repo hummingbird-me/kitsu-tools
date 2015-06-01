@@ -1,0 +1,19 @@
+postgres:
+  image: postgres:9.3
+  environment:
+    POSTGRES_PASSWORD: mysecretpassword
+    POSTGRES_USER: postgres
+redis:
+  image: redis
+web:
+  build: .
+  volumes:
+    - ./:/opt/hummingbird/
+  ports:
+    - 3000
+  links:
+    - postgres
+    - redis
+  environment:
+    RAILS_ENV: development
+
