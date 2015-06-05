@@ -194,6 +194,11 @@
     &.full-post {
       max-height: none;
     }
+      
+    .follow-bubbles {
+      max-height: 480px;
+      overflow: auto;
+    }
   }
 
   .event-info {
