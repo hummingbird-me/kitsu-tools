@@ -238,6 +238,7 @@ class User < ActiveRecord::Base
      "svengehring@cybrox.eu", # Cybrox
      "peter.lejeck@gmail.com", # Nuck
      "hello@vevix.net", # Vevix
+     "jimm4a1@hotmail.com", #Jim
      "jojovonjo@yahoo.com", #JoJo
      "synthtech@outlook.com" #Synthtech 
     ].include? email
