@@ -240,7 +240,9 @@ class User < ActiveRecord::Base
      "hello@vevix.net", # Vevix
      "jimm4a1@hotmail.com", #Jim
      "jojovonjo@yahoo.com", #JoJo
-     "synthtech@outlook.com" #Synthtech 
+     "synthtech@outlook.com", #Synthtech 
+     "kieran@coldron.com", #Epictek
+     "wopiancitizen123@gmail.com" #Wopian
     ].include? email
   end
 
