@@ -3,7 +3,7 @@ import setTitle from '../../utils/set-title';
 
 export default Ember.Route.extend({
   setupController: function(controller, model) {
-    this.controllerFor('apps.edit').setProperties({
+    controller.setProperties({
       model: model,
       creatingApp: false
     });

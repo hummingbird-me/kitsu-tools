@@ -111,7 +111,7 @@
 
           <div class="form-group">
             <button class="col-sm-3 col-sm-offset-3 btn btn-primary"
-                    {{action 'saveApp'}} disabled={{isInvalid}}>
+                    {{action 'saveApp'}} disabled={{isSaveDisabled}}>
               {{#if creatingApp}}
                 Create
               {{else}}

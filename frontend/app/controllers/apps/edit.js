@@ -8,8 +8,9 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
     'model.name': {
       length: {
         minimum: 5,
-        maximum: 32
-      }
+        maximum: 32,
+        if: 'model.name'
+      },
     },
     'model.description': {
       length: { minimum: 0, maximum: 140, if: 'model.description' }
@@ -28,6 +29,11 @@ export default Ember.Controller.extend(EmberValidations.Mixin, {
   forceValidate: function() {
     this.validate();
   }.observes('model.writeAccess'),
+
+  isSaveDisabled: function() {
+    return this.get('isInvalid') || !this.get('model.name') ||
+           !this.get('model.description');
+  }.property('isInvalid', 'model.name', 'model.description'),
 
   actions: {
     saveApp: function() {

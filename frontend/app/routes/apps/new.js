@@ -5,7 +5,7 @@ export default Ember.Route.extend({
   controllerName: 'apps.edit',
 
   setupController: function(controller, model) {
-    this.controllerFor('apps.edit').setProperties({
+    controller.setProperties({
       model: model,
       creatingApp: true
     });
@@ -18,6 +18,9 @@ export default Ember.Route.extend({
   model: function() {
     let currentUserUser = this.store.find('user', this.get('currentUser.id'));
     return this.store.createRecord('app', {
+      // HACK: fixes `undefined` being logged to console (bug in EV?)
+      name: '',
+      description: '',
       creator: currentUserUser,
       writeAccess: false,
       public: false
