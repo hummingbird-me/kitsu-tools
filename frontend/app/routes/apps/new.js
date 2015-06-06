@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import setTitle from '../../utils/set-title';
 
 export default Ember.Route.extend({
   controllerName: 'apps.edit',
@@ -25,5 +26,9 @@ export default Ember.Route.extend({
 
   willTransition: function() {
     this.controllerFor('apps.edit').get('model').deleteRecord();
+  },
+
+  afterModel: function() {
+    return setTitle('New App');
   }
 });
