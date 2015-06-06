@@ -28,18 +28,12 @@ namespace :hummingbird do
         puts "#{anime.title} - \033[31mNo image found, downloading…\033[0m"
 
         remote_url = open(
-          "https://hummingbird.me/full_anime/#{anime.slug}.json",
-          ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE
+          "https://hummingbird.me/full_anime/#{anime.slug}.json"
         ).read
         remote_anime = JSON.parse(remote_url)['full_anime']
 
-        anime.update_from_pending(
-          anime.create_pending(
-            User.first,
-            type => remote_anime[type.to_s],
-            edit_comment: 'Rake automatic image download'
-          )
-        )
+        anime.update_attributes(type => remote_anime[type.to_s])
+
       end
     end
   end
