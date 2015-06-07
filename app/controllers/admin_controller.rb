@@ -1,53 +1,54 @@
 require_dependency 'mal_import'
 
 class AdminController < ApplicationController
-  before_filter :allow_only_admins
+  before_action :allow_only_admins
 
   def allow_only_admins
     # This shouldn't be needed becuse we also check for admin-ness in the
     # routes. Still doing this just to be safe.
     authenticate_user!
-    if not current_user.admin?
-      raise ActionController::RoutingError.new('Not Found')
-    end
+
+    fail ActionController::RoutingError, 'Not Found' unless current_user.admin?
   end
 
   def find_or_create_by_mal
     media = params[:media].to_sym
     mal = MALImport.new(media, params[:mal_id].to_i, :shallow)
     @thing = case media
-    when :anime
-      Anime.create_or_update_from_hash mal.to_h
-    when :manga
-      Manga.create_or_update_from_hash mal.to_h
+             when :anime
+               Anime.create_or_update_from_hash mal.to_h
+             when :manga
+               Manga.create_or_update_from_hash mal.to_h
     end
     redirect_to @thing
     MyAnimeListScrapeWorker.perform_async(media, params[:mal_id].to_i)
   end
 
   def index
-    @anime_without_mal_id = Anime.where(mal_id: nil).where(%{"anime"."id" NOT IN (SELECT "anime_genres"."anime_id" FROM "anime_genres" INNER JOIN "genres" ON "genres"."id" = "anime_genres"."genre_id" AND "genres"."name" = 'Anime Influenced')})
+    @anime_without_mal_id = Anime.where(mal_id: nil).where.not(
+      id: Anime.select(:id)
+               .joins(:genres)
+               .where(genres: { name: 'Anime Influenced' })
+    )
     # Sort by partner code count (ascending) where there's less than 20 left
-    @deals = PartnerDeal.joins('left join partner_codes on partner_codes.partner_deal_id = partner_deals.id').
-      select('partner_deals.*, count(partner_codes.id) as codes_remaining').
-      group('partner_deals.id').
-      having('count(partner_codes.id) < 20').
-      order('count(partner_codes.id) asc')
+    @deals = PartnerDeal
+             .joins(
+               'LEFT JOIN partner_codes \
+                ON partner_codes.partner_deal_id = partner_deals.id'
+             )
+             .select(
+               'partner_deals.*, count(partner_codes.id) AS codes_remaining'
+             )
+             .group('partner_deals.id')
+             .having('count(partner_codes.id) < 20')
+             .order('count(partner_codes.id) asc')
     @blotter = Blotter.get
-
-    if params[:old_kotodama].nil?
-      generic_preload! 'nonmal_anime', @anime_without_mal_id
-      generic_preload! 'blotter', @blotter
-      generic_preload! 'deals_to_refill', @deals
-
-      render_ember
-    end
   end
 
   def login_as_user
     user = User.find(params[:user_id].strip.downcase)
     sign_in(:user, user)
-    redirect_to "/"
+    redirect_to '/'
   end
 
   def stats
@@ -56,14 +57,16 @@ class AdminController < ApplicationController
     stats[:activeaccs] = User.where('last_library_update >= ?', 1.day.ago).count
     stats[:feedposts] = Story.where('created_at >= ?', 1.day.ago).count
     stats[:feedcomments] = Substory.where('created_at >= ?', 1.day.ago).count
-    stats[:feedlikes] = Vote.where(target_type: 'Story').where('created_at >= ?', 1.day.ago).count
-    stats[:groupjoins] = GroupMember.accepted.where('created_at >= ?', 1.day.ago).count
+    stats[:feedlikes] = Vote.where(target_type: 'Story')
+                        .where('created_at >= ?', 1.day.ago).count
+    stats[:groupjoins] = GroupMember.accepted
+                         .where('created_at >= ?', 1.day.ago).count
     stats[:pending_count] = Version.pending.count
     stats[:sha_hash] = `git log --pretty=format:'%h' -n 1`
 
-    stats[:registrations] = {total: {}, confirmed: {}}
+    stats[:registrations] = { total: {}, confirmed: {} }
     User.where('created_at >= ?', 1.week.ago).find_each do |user|
-      daysago = user.created_at.strftime("%b %d")
+      daysago = user.created_at.strftime('%b %d')
       stats[:registrations][:total][daysago] ||= 0
       stats[:registrations][:confirmed][daysago] ||= 0
 
@@ -90,11 +93,11 @@ class AdminController < ApplicationController
   end
 
   def blotter_set
-    Blotter.set({
+    Blotter.set(
       icon: params[:icon],
       message: params[:message],
       link: params[:link]
-    })
+    )
     redirect_to '/kotodama'
   end
 
@@ -105,10 +108,14 @@ class AdminController < ApplicationController
 
   def deploy
     if Rails.env.production?
-      Thread.new { system "/var/hummingbird/deploy.sh", current_user.name, current_user.avatar.to_s(:small) }
-      render text: "Deployed maybe"
+      Thread.new do
+        system '/var/hummingbird/deploy.sh',
+               current_user.name,
+               current_user.avatar.to_s(:small)
+      end
+      render text: 'Deployed maybe'
     else
-      render text: "Can only deploy in production."
+      render text: 'Can only deploy in production.'
     end
   end
 
@@ -117,7 +124,7 @@ class AdminController < ApplicationController
   end
 
   def reset_break_counter
-    $redis.with {|conn| conn.set("break_counter", Time.now.to_i) }
+    $redis.with { |conn| conn.set('break_counter', Time.now.to_i) }
     render json: true
   end
 
