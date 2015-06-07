@@ -217,7 +217,7 @@ class Anime < ActiveRecord::Base
       preference = preference.title_language_preference
     end
 
-    if (preference == 'english' || english_canonical) && !alt_title.nil?
+    if (preference == 'english' || english_canonical) && alt_title.present?
       alt_title
     else
       title
@@ -231,7 +231,7 @@ class Anime < ActiveRecord::Base
       preference = preference.title_language_preference
     end
 
-    if preference == 'english' || english_canonical
+    if (preference == 'english' || english_canonical?) && alt_title.present?
       title
     else
       alt_title
