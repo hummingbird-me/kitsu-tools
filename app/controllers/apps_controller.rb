@@ -1,9 +1,10 @@
 class AppsController < ApplicationController
-  def mine
-    apps = App.where(creator: current_user)
-    preload_to_ember! apps
-    render_ember
-  end
+  before_action :authenticate_user!, only: [:new, :create, :update, :mine]
+
+  ember_action(:mine) { App.where(creator: current_user) }
+  ember_action(:show, true) { App.find(params[:id]) }
+  ember_action(:new)
+  ember_action(:edit)
 
   def index
     if params[:creator]
@@ -12,29 +13,38 @@ class AppsController < ApplicationController
       apps = {}
     end
 
-    respond_to do |format|
-      format.json { render json: apps }
-      format.html do
-        render_ember
-      end
-    end
+    respond_with_ember apps
   end
 
-  def show
+  def update
     app = App.find(params[:id])
-    app
-  end
 
-  def new
-    render_ember
+    return error! 'App not found', 404 unless app
+    return error! "That's not your app", 403 unless app.creator == current_user
+
+    app.assign_attributes(app_fields)
+
+    save_and_render app
   end
 
   def create
-    authenticate_user!
+    return error! 'Name exists', 409 if App.exists?(name: params[:name])
 
-    return error! "Name exists", 400 if App.exists?(name: params[:name])
-    app = App.create(name: params[:name], creator: current_user)
-    app.save!
-    render json: app
+    app = App.create(app_fields)
+    app.creator = current_user
+
+    save_and_render app
+  end
+
+  private
+
+  def app_fields
+     permitted = [:name, :homepage, :description,
+                  :logo, :redirect_uri]
+
+    attrs = params.require(:app)
+    attrs.delete(:logo) unless attrs[:logo] && attrs[:logo].start_with?('data:')
+
+    attrs.permit(permitted).to_h.symbolize_keys
   end
 end

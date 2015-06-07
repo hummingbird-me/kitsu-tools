@@ -1,0 +1,15 @@
+{{#if shouldDisplayErrors}}
+  <div class="alert alert-danger" role="alert">
+    {{#if hasMultipleErrors}}
+      <ul>
+        {{#each errors as |message|}}
+          <li>{{fieldName}} {{message}}</li>
+        {{/each}}
+      </ul>
+    {{else}}
+      {{#each errors as |message|}}
+        {{fieldName}} {{message}}
+      {{/each}}
+    {{/if}}
+  </div>
+{{/if}}

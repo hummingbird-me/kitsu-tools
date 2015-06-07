@@ -73,15 +73,30 @@ class ApplicationController < ActionController::Base
 
   # Creates a controller action which does a "default" Ember rendering
   def self.ember_action(action_name, accept_json = false, &block)
-    define_method(action_name.to_sym) do
-      respond_with_ember(instance_eval(&block), accept_json)
+    if block_given?
+      define_method(action_name.to_sym) do
+        respond_with_ember(instance_eval(&block), accept_json)
+      end
+    else
+      define_method(action_name.to_sym) do
+        render_ember
+      end
+    end
+  end
+
+  # Save and render
+  def save_and_render(model)
+    if model.save
+      render json: model
+    else
+      error! model.errors.to_h, 422
     end
   end
 
   # Render a JSON error with the given error message and status code.
   def error!(message, status)
     # If the message is a Hash of errors, we put it in standard ED form
-    if status.is_a?(Hash)
+    if message.is_a?(Hash)
       render json: {errors: message}, status: status
     else
       render json: {error: message}, status: status

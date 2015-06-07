@@ -70,6 +70,7 @@ Router.map(function() {
 
   this.resource('apps', function() {
     this.route('new');
+    this.route('edit', { path: ':app_id/edit' });
     this.route('mine');
   });
   this.route('search');

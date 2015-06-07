@@ -16,6 +16,14 @@ input:focus, textarea:focus {
   border: 1px solid $darkOrange;
 }
 
+/* Asterisks for required field labels */
+.required-label::after {
+  content: '*';
+  color: $darkOrange;
+  // Move one character to the right
+  margin-right: -1ch;
+}
+
 
 /* Simple padding container for forms */
 .form-block-item {

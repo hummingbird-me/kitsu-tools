@@ -1,0 +1,45 @@
+<div class="app-card">
+  <div class="app-inner">
+    <h3 class="app-title">
+      {{app.name}}
+      {{#link-to 'apps.edit' app class='btn btn-default app-type pull-right'}}
+        Edit
+      {{/link-to}}
+    </h3>
+    <small class="app-author">by
+      {{#link-to 'user' app.creator}}
+        {{app.creator.username}}
+      {{/link-to}}
+    </small>
+    <hr>
+    <p class="app-desc">
+      {{app.description}}
+    </p>
+    {{#if isOwner}}
+      <dl class="app-keys">
+        {{#if app.key}}
+          <dt class="col-sm-2">Key</dt>
+          <dd class="col-sm-10">
+            <span class="form-control-static app-token">{{app.key}}</span>
+          </dd>
+        {{/if}}
+        {{#if app.secret}}
+          <dt class="col-sm-2">Secret</dt>
+          <dd class="col-sm-10">
+            {{#if showSecret}}
+              <span class="form-control-static app-token">{{app.secret}}</span>
+            {{else}}
+              <button class="btn btn-default btn-xs"
+                      {{action 'toggleSecret' true}}>
+                Show
+              </button>
+            {{/if}}
+          </dd>
+        {{/if}}
+      </dl>
+    {{/if}}
+    <div class="app-link">
+      <a href="{{app.website}}">Website</a>
+    </div>
+  </div>
+</div>

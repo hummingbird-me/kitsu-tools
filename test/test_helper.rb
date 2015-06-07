@@ -15,6 +15,10 @@ require 'webmock_helper'
 
 require 'mocha/mini_test'
 
+require 'json_expressions/minitest'
+JsonExpressions::Matcher.assume_strict_arrays = false
+JsonExpressions::Matcher.assume_strict_hashes = false
+
 $redis = ConnectionPool.new { MockRedis.new }
 
 class ActiveSupport::TestCase
@@ -33,5 +37,9 @@ class ActionController::TestCase
 
   def assert_preloaded(key)
     assert JSON.parse(assigns["preload"].to_json).map {|x| x.keys }.flatten.include?(key), "#{key} should be preloaded"
+  end
+
+  def assert_json_body(matcher)
+    assert_json_match(matcher, @response.body)
   end
 end
