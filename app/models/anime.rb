@@ -353,7 +353,7 @@ class Anime < ActiveRecord::Base
   end
 
   def show_type_enum
-    self::SHOW_TYPES
+    SHOW_TYPES
   end
 
   def status
