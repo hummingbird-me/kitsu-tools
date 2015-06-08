@@ -39,12 +39,7 @@
 #
 
 class Anime < ActiveRecord::Base
-  include Versionable
-  include BayesianAverageable
-  include PgSearch
-  extend FriendlyId
-
-  VALID_IMAGES = %w(image/jpg image/jpeg image/png image/gif)
+  PG_TITLE_SCOPE = %i(title alt_title)
 
   AGE_RATINGS = %w(G PG13 PG R18+)
 
@@ -59,9 +54,11 @@ class Anime < ActiveRecord::Base
     fall:   %w(9 10 11)
   }
 
+  include Media
+
+  friendly_id :canonical_title, use: %i(slugged history)
+
   with_options(dependent: :destroy) do |a|
-    a.has_many :castings, as: :castable
-    a.has_many :favorites, as: :item
     a.has_many :reviews
     a.has_many :episodes
     a.has_many :gallery_images
@@ -72,31 +69,8 @@ class Anime < ActiveRecord::Base
 
   # TODO: this will be used once we decide to unify library stuff
   # has_many :consumings, as: :item
-  has_and_belongs_to_many :genres
   has_and_belongs_to_many :producers
   has_and_belongs_to_many :franchises
-
-  has_attached_file :cover_image,
-                    styles: { thumb: ['1400x900>', :jpg] },
-                    convert_options: { thumb: '-quality 90' },
-                    keep_old_files: true
-
-  has_attached_file :poster_image,
-                    styles: {
-                      large: {
-                        geometry: '490x710!',
-                        animated: false,
-                        format: :jpg
-                      },
-                      medium: '100x150!'
-                    },
-                    convert_options: { large: '-quality 0' },
-                    default_url: '/assets/missing-anime-cover.jpg',
-                    keep_old_files: true
-
-  validates_attachment_content_type :cover_image,
-                                    :poster_image,
-                                    content_type: self::VALID_IMAGES
 
   validates :title, presence: true, uniqueness: true
 
@@ -156,55 +130,12 @@ class Anime < ActiveRecord::Base
     where(genres: { name: genres }).joins(:genres)
   }
 
-  pg_search_scope :instant_search,
-                  against: %i(title alt_title),
-                  using: {
-                    tsearch: {
-                      normalization: 42,
-                      prefix: true,
-                      dictionary: 'english'
-                    }
-                  }
-
-  pg_search_scope :full_search,
-                  against: %i(title alt_title),
-                  using: {
-                    tsearch: {
-                      normalization: 42,
-                      dictionary: 'english'
-                    },
-                    trigram: { threshold: 0.1 }
-                  },
-                  # Combine trigram and tsearch values
-                  ranked_by: ':tsearch + :trigram'
-
   # Filter out hentai if `filterp` is true or nil.
   def self.sfw_filter(current_user)
     if current_user && !current_user.sfw_filter
       self
     else
       where("age_rating <> 'R18+'")
-    end
-  end
-
-  def poster_image_thumb
-    if poster_image_file_name.nil?
-      'https://hummingbird.me/assets/missing-anime-cover.jpg'
-    else
-      # This disgusting fastpath brought to you by the following issue:
-      # https://github.com/thoughtbot/paperclip/issues/909
-      if Rails.env.production?
-        url = 'https://static.hummingbird.me/anime/poster_images'
-        id_path = format('%03d/%03d/%03d',
-                         (id / 1_000_000 % 1_000),
-                         (id / 1_000 % 1_000),
-                         (id % 1_000))
-        file_name = URI.escape(poster_image_file_name.rpartition('.')[0])
-        updated = poster_image_updated_at.to_i
-        "#{url}/#{id_path}/large/#{file_name}.jpg?#{updated}"
-      else
-        poster_image.url(:large)
-      end
     end
   end
 
