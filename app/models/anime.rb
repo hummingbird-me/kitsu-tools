@@ -137,9 +137,15 @@ class Anime < ActiveRecord::Base
     where('EXTRACT(YEAR FROM started_airing_date) = ?', year)
   }
 
-  scope :by_started_date, ->(date) { where('started_airing_date > ?', date) }
+  scope :by_started_date, ->(date, direction = :after) { 
+    return where('started_airing_date > ?', date) if direction == :after
+    return where('started_airing_date < ?', date) if direction == :before
+  }
 
-  scope :by_finished_date, ->(date) { where('finished_airing_date < ?', date) }
+  scope :by_finished_date, ->(date, direction = :before) {
+    return where('finished_airing_date > ?', date) if direction == :after
+    return where('finished_airing_date < ?', date) if direction == :before
+  }
 
   scope :order_by_rating, lambda {
     order('bayesian_rating DESC NULLS LAST, user_count DESC NULLS LAST')
