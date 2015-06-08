@@ -257,3 +257,15 @@ Lint/UnderscorePrefixedVariableName:
   Enabled: true
 Lint/UselessSetterCall:
   Enabled: true
+Rails/HasAndBelongsToMany:
+  Enabled: false
+Rails/TimeZone:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
