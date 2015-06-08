@@ -61,10 +61,10 @@ class Api::V2::AnimeControllerTest < ActionController::TestCase
   end
 
   test "can search anime by finished airing" do
-    get :index, filter: { finished_airing: '2011-10-01' }
+    get :index, filter: { finished_airing: '2006-01-01' }
     anime = get_anime_from_body
-    assert_equal 3, anime.length
-    assert_equal '2011-09-01', anime.first['finished_airing']
+    assert_equal 1, anime.length
+    assert_equal '2005-09-28', anime.first['finished_airing']
   end
 
   # test "can search anime by genre" do
@@ -78,21 +78,21 @@ class Api::V2::AnimeControllerTest < ActionController::TestCase
     get :index, filter: { season: 'summer' }
     anime = get_anime_from_body
     assert_equal 2, anime.length
-    assert_equal '2011-06-01', anime.first['started_airing']
+    assert_equal '2012-07-08', anime.first['started_airing']
   end
 
   test "can search anime by year" do
     get :index, filter: { year: '2011' }
     anime = get_anime_from_body
     assert_equal 3, anime.length
-    assert_equal '2011-06-01', anime.first['started_airing']
+    assert_equal '2011-04-06', anime.first['started_airing']
   end
 
   test "can search anime by multiple filters" do
     get :index, filter: { year: '2011', season: 'spring' }
     anime = get_anime_from_body
     assert_equal 2, anime.length
-    assert_equal '2011-05-01', anime.first['started_airing']
+    assert_equal '2011-04-06', anime.first['started_airing']
   end
 
   test "can get anime" do
