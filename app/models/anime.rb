@@ -102,7 +102,7 @@ class Anime < ActiveRecord::Base
 
   friendly_id :canonical_title, use: %i(slugged history)
 
-  default_scope { preload(:genres).order('title') }
+  default_scope { preload(:genres) }
 
   scope :exclude_genres, ->(genres) {
     where('NOT EXISTS (
