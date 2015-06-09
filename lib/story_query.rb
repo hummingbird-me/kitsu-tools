@@ -11,12 +11,6 @@ class StoryQuery
     # Preload genres for anime stories.
     anime_stories = stories.select {|s| s.target_type == "Anime" }.map(&:target)
                    .index_by(&:id)
-    Anime.where(id: anime_stories.values.map(&:id)).includes(:genres).each do |a|
-      assoc = anime_stories[a.id].association(:genres)
-      assoc.loaded!
-      assoc.target.concat(a.genres)
-      a.genres.each {|genre| assoc.set_inverse_instance(genre) }
-    end
 
     comment_stories = stories.select {|x| x.story_type == "comment" }
     comment_index = comment_stories.index_by(&:id)
