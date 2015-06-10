@@ -12,7 +12,7 @@
   <meta property="og:image" content="<%= @anime.poster_image.url %>">
   <% if @anime.cover_image.file? %>
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="<%= @anime.cover_image.url %>">
+    <meta name="twitter:image" content="<%= @anime.cover_image.url(:thumb) %>">
   <% else %>
     <meta name="twitter:card" content="summary">
   <% end %>
