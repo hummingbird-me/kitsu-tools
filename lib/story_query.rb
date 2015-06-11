@@ -8,9 +8,6 @@ class StoryQuery
               .includes(:user, :substories, :target,
                         substories: %i(user target))
 
-    # Preload genres for anime stories.
-    stories.select { |s| s.target_type == 'Anime' }.map(&:target).index_by(&:id)
-
     comment_stories = stories.select { |x| x.story_type == 'comment' }
     comment_index = comment_stories.index_by(&:id)
 
