@@ -5,6 +5,40 @@ Hummingbird::Application.config.jwt_secret = 'TEST'
 class TokenTest < ActiveSupport::TestCase
   let(:josh) { users(:josh) }
 
+  test 'should parse a token with oauth2_code scope into OAuth2::Code' do
+    token_str = Token.new(josh, scope: ['oauth2_code']).encode
+    token = Token.parse(token_str)
+
+    assert_instance_of OAuth2::Code, token
+  end
+
+  test 'should parse a token with client_id into OAuth2::Token' do
+    token_str = Token.new(josh, client_id: 5).encode
+    token = Token.parse(token_str)
+
+    assert_instance_of OAuth2::Token, token
+  end
+
+  test 'should parse a nil token into an invalid Token instance' do
+    token = Token.parse(nil)
+
+    assert_instance_of Token, token
+    assert token.invalid?
+  end
+
+  test 'should parse a normal token into generic Token' do
+    token_str = Token.new(josh).encode
+    token = Token.parse(token_str)
+
+    assert_instance_of Token, token
+  end
+
+  test 'decode factory method should return instance with payload' do
+    token_str = Token.new(josh).encode
+    token = Token.decode(token_str)
+
+    refute_nil token.instance_variable_get(:@payload)
+    assert_instance_of Token, token
   end
 
   test "should notice and nil users and scopes when it's invalid" do

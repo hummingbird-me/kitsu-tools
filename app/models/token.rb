@@ -6,23 +6,48 @@ class Token
     Hummingbird::Application.config.jwt_secret
   end
 
-  def initialize(string_or_user, opts={})
-    if string_or_user.is_a? String
-      @payload = JWT.decode(string_or_user, Token.secret)[0]
+  def initialize(user, opts={})
+    user = user.id if user.is_a? User
+    @payload = {
+      'jti' => SecureRandom.uuid,
+      'scope' => [],
+      'sub' => user,
+      'iat' => Time.now.to_i,
+      'exp' => TTL.from_now.to_i
+    }.merge(opts.stringify_keys)
+  end
+
+  def self.parse(str)
+    # if it's nil, just send it to the Token.decode method
+    return Token.decode(str) if str.blank?
+    # parse without verifying just so we know which subclass to instantiate
+    payload = JWT.decode(str, Token.secret, false)[0]
+
+    if payload['scope'].include?('oauth2_code')
+      OAuth2::Code.decode(str)
+    elsif payload.has_key? 'client_id'
+      OAuth2::Token.decode(str)
     else
-      string_or_user = string_or_user.id if string_or_user.is_a? User
-      @payload = {
-        'jti' => SecureRandom.uuid,
-        'scope' => [],
-        'sub' => string_or_user,
-        'iss' => Time.now.to_i,
-        'exp' => TTL.from_now.to_i
-      }.merge(opts.stringify_keys)
+      Token.decode(str)
     end
-  rescue JWT::ExpiredSignature
-    @expired = true
   rescue JWT::DecodeError
-    @invalid = true
+    # the `false` error flag in JWT.decode doesn't prevent JWT::DecodeError
+    # from being raised.  Handle that here
+    return Token.decode(str)
+  end
+
+  def self.decode(str)
+    token = allocate
+    token.instance_eval do
+      begin
+        @payload = JWT.decode(str, Token.secret)[0]
+      rescue JWT::ExpiredSignature
+        @expired = true
+      rescue JWT::DecodeError
+        @invalid = true
+      end
+    end
+    token
   end
 
   def reissue
