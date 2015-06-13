@@ -31,80 +31,21 @@
 #
 
 class Manga < ActiveRecord::Base
-  include Versionable
-  include BayesianAverageable
+  PG_TITLE_SCOPE = %i(romaji_title english_title)
 
-  include PgSearch
-  pg_search_scope :instant_search,
-    against: [ :romaji_title, :english_title ],
-    using: { tsearch: { normalization: 42, dictionary: 'english' } },
-    ranked_by: ':tsearch'
-  pg_search_scope :full_search,
-    against: [ :romaji_title, :english_title ],
-    using: {
-      tsearch: { normalization: 42, dictionary: 'english' },
-      trigram: { threshold: 0.1 }
-    },
-    ranked_by: ':tsearch + :trigram'
+  VALID_TYPES =  ['Manga', 'Novel', 'One Shot', 'Doujin', 'Manhwa', 'Manhua', 'OEL']
 
-  extend FriendlyId
-  friendly_id :romaji_title, use: [:slugged, :history]
+  include Media
 
-  # Internal Constants
-  private
+  friendly_id :romaji_title, use: %i(slugged history)
 
-  VALID_TYPES =  ["Manga", "Novel", "One Shot", "Doujin", "Manhwa", "Manhua", "OEL"]
-
-  public
+  has_many :manga_library_entries, dependent: :destroy
 
   validates :romaji_title, presence: true
   validates :manga_type, inclusion: { in: VALID_TYPES }
 
-  has_attached_file :cover_image,
-    styles: {thumb: ["1400x900>", :jpg]},
-    convert_options: {thumb: "-quality 70"},
-    keep_old_files: true
-
-  validates_attachment :cover_image, content_type: {
-    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-  }
-
-  has_attached_file :poster_image,
-    styles: {
-      large: {geometry: '490x710!', animated: false, format: :jpg},
-      medium: '100x150!'
-    },
-    convert_options: {
-      large: '-quality 0'
-    },
-    default_url: '/assets/missing-anime-cover.jpg',
-    keep_old_files: true
-
-  validates_attachment :poster_image, content_type: {
-    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-  }
-
-  has_many :favorites, dependent: :destroy, as: :item
-  has_many :castings, dependent: :destroy, as: :castable
-  has_and_belongs_to_many :genres
-  has_many :manga_library_entries, dependent: :destroy
-
   def canonical_title
     romaji_title
-  end
-
-  def poster_image_thumb
-    if self.poster_image_file_name.nil?
-      "https://hummingbird.me/assets/missing-anime-cover.jpg"
-    else
-      # This disgusting fastpath brought to you by the following issue:
-      # https://github.com/thoughtbot/paperclip/issues/909
-      if Rails.env.production?
-        "https://static.hummingbird.me/manga/poster_images/#{"%03d" % (self.id/1000000 % 1000)}/#{"%03d" % (self.id/1000 % 1000)}/#{"%03d" % (self.id % 1000)}/large/#{self.poster_image_file_name}?#{self.poster_image_updated_at.to_i}"
-      else
-        self.poster_image.url(:large)
-      end
-    end
   end
 
   def self.create_or_update_from_hash hash
