@@ -18,5 +18,28 @@ export default Ember.Controller.extend({
 
   hideOnMobile: function() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-  }.property()
+  }.property(),
+
+  reportConversion: function(via) {
+    try {
+      if (window.analytics) {
+        window.analytics.track('Conversion', { via });
+      }
+    } catch (e) {
+      // prevent issues in case Segment fails
+      console.error('Analytics Error: ' + e.message);
+    }
+  },
+
+  actions: {
+    emailSignupClick: function() {
+      this.reportConversion('email');
+      this.transitionToRoute('sign-up');
+    },
+
+    facebookSignupClick: function() {
+      this.reportConversion('facebook');
+      window.location = '/users/auth/facebook';
+    }
+  }
 });
