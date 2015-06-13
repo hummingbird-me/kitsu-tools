@@ -33,7 +33,7 @@
 class Manga < ActiveRecord::Base
   PG_TITLE_SCOPE = %i(romaji_title english_title)
 
-  VALID_TYPES =  ["Manga", "Novel", "One Shot", "Doujin", "Manhwa", "Manhua", "OEL"]
+  VALID_TYPES =  ['Manga', 'Novel', 'One Shot', 'Doujin', 'Manhwa', 'Manhua', 'OEL']
 
   include Media
 
