@@ -33,6 +33,7 @@ class ProMembershipsControllerTest < ActionController::TestCase
       token = @stripe.generate_card_token
       post :create, {token: token, plan_id: 5}
 
+      @user.reload
       assert_response 200
       assert @user.pro?
     end
@@ -42,8 +43,10 @@ class ProMembershipsControllerTest < ActionController::TestCase
       token = @stripe.generate_card_token
       @user.pro_expires_at = Time.now + 5.days
       @user.pro_membership_plan_id = 1
+      @user.save!
       post :create, {token: token, plan_id: 2}
 
+      @user.reload
       assert_response 200
       assert_equal 2, @user.pro_membership_plan.id
     end
