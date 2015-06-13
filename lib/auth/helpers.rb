@@ -1,37 +1,33 @@
-require_dependency 'auth/current_user_provider'
+require_dependency 'auth/provider'
+require_dependency 'auth/unauthorized_exception'
 
 module Auth
   module Helpers
-    OLD_COOKIE = "auth_token".freeze
-    CURRENT_USER_PROVIDER_KEY = "_CURRENT_USER_PROVIDER".freeze
+    def auth_provider
+      @auth_provider ||= Auth::Provider.new(env, cookies)
+    end
 
     def current_user
-      env[CURRENT_USER_PROVIDER_KEY].current_user
+      auth_provider.current_user
     end
 
     def user_signed_in?
-      env[CURRENT_USER_PROVIDER_KEY].user_signed_in?
+      auth_provider.signed_in?
     end
 
-    def authenticate_user!
-      env[CURRENT_USER_PROVIDER_KEY].authenticate_user!
+    def authenticate_user!(scope = :site)
+      fail UnauthorizedException unless auth_provider.scope?(scope)
     end
 
-    # Upgrade auth token, set up CurrentUserProvider, refresh token if needed,
-    # log IP address.
-    def check_user_authentication
-      if cookies[OLD_COOKIE]
-        user = User.where(authentication_token: cookies[OLD_COOKIE]).first
-        cookies.delete("auth_token", domain: :all)
-        sign_in(user) if user
-      end
-
-      env[CURRENT_USER_PROVIDER_KEY] ||= Auth::CurrentUserProvider.new(env)
-      current_user_provider = env[CURRENT_USER_PROVIDER_KEY]
-
-      if user_signed_in?
-        current_user_provider.log_on_user(current_user, cookies) if current_user_provider.token.expires_in < 1.month
-        current_user.update_ip! request.remote_ip
+    # Refresh token if needed, log IP address.
+    def housekeep_tokens
+      if auth_provider.signed_in?
+        # If the token is valid and expiring soon, renew it
+        token = auth_provider.token
+        if token.valid? && token.expires_in < 1.month
+          auth_provider.reissue_cookie!
+        end
+        current_user.update_ip!(request.remote_ip)
       end
     end
   end

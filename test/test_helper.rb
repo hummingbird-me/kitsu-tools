@@ -8,8 +8,6 @@ require 'minitest/rails'
 require 'webmock_helper'
 require 'mocha/mini_test'
 
-require_dependency 'auth/current_user_provider'
-
 require 'sidekiq/testing'
 Sidekiq::Testing.inline!
 
@@ -29,12 +27,14 @@ module ActiveSupport
   end
 end
 
+require_dependency 'auth/provider'
+
 module ActionController
   class TestCase
     include Devise::TestHelpers
 
     def sign_in(user)
-      @controller.env['_CURRENT_USER'] = user
+      @controller.env[Auth::Provider::MASQUERADE] = user.id
     end
 
     def assert_preloaded(key)

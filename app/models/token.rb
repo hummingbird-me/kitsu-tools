@@ -25,24 +25,39 @@ class Token
     @invalid = true
   end
 
+  def reissue
+    fail 'Cannot reissue invalid token' if invalid?
+
+    payload = @payload.dup
+    %w[jti iat exp].each { |k| payload.delete(k) }
+
+    Token.new(user, payload)
+  end
+
+  def scopes
+    @payload['scope'] unless @payload.nil?
+  end
+
   def has_scope?(scope)
-    @payload['scope'].include?(scope) || @payload['scope'].include?("all") if valid?
+    scopes.include?(scope.to_s) || scopes.include?("all") if valid?
   end
 
   def expires_at
-    Time.at(@payload['exp'])
+    Time.at(@payload['exp']) unless @payload.nil?
   end
 
   def expires_in
-    expires_at - Time.now
+    expires_at - Time.now unless @payload.nil?
   end
 
   def expired?
+    return true if expires_at.nil?
     # Be extra careful about expiry, sometimes JWT shits itself
     @expired || expires_at < Time.now
   end
 
   def revoked?
+    return true if @invalid
     $redis.with { |conn| conn.exists(PREFIX + id) } unless id.nil?
   end
 
