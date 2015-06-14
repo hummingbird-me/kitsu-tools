@@ -20,7 +20,7 @@
 #
 
 class App < ActiveRecord::Base
-  VALID_SCOPES = %i[all public_profile]
+  VALID_SCOPES = %w[all public_profile]
 
   belongs_to :creator, class_name: 'User'
   has_attached_file :logo,
@@ -54,8 +54,9 @@ class App < ActiveRecord::Base
   end
 
   def scope_allowed?(scope)
-    return false unless VALID_SCOPES.include?(scope)
-    privileged? || scope.to_s != 'all'
+    return false unless VALID_SCOPES.include?(scope.to_s)
+    return true if privileged?
+    scope.to_s != 'all'
   end
 
   def scopes_allowed?(scopes)
