@@ -36,7 +36,9 @@
 
         <p class="switch-form-link">
           Already have an account?
-          {{#link-to 'sign-in'}}Sign in.{{/link-to}}
+          {{#link-to 'sign-in' (query-params redirectTo=redirectTo)}}
+            Sign in.
+          {{/link-to}}
         </p>
       </form>
 
