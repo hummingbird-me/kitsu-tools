@@ -12,6 +12,7 @@ class OAuth2::AuthorizationControllerTest < ActionController::TestCase
   end
 
   test 'Request page renders with proper parameters' do
+    sign_in users(:josh)
     get :ask, {
       client_id: app.key,
       redirect_uri: 'https://example.com/oauth/hummingbird',
@@ -23,6 +24,7 @@ class OAuth2::AuthorizationControllerTest < ActionController::TestCase
   end
 
   test 'Request page errors out when the client is nonexistent' do
+    sign_in users(:josh)
     get :ask, client_id: 523
     assert_response 400
     assert_template :error
@@ -30,6 +32,7 @@ class OAuth2::AuthorizationControllerTest < ActionController::TestCase
   end
 
   test 'Request page errors out when readonly client is presented' do
+    sign_in users(:josh)
     readonly_app = create(:app, creator: owner)
     get :ask, client_id: readonly_app.key
     assert_response 400
@@ -38,6 +41,7 @@ class OAuth2::AuthorizationControllerTest < ActionController::TestCase
   end
 
   test 'Request page errors out when an invalid redirect is requested' do
+    sign_in users(:josh)
     get :ask, {
       client_id: app.key,
       redirect_uri: 'https://every.villian.is.lemons/',
@@ -50,6 +54,7 @@ class OAuth2::AuthorizationControllerTest < ActionController::TestCase
   end
 
   test 'Request page errors out for an unsupported response type' do
+    sign_in users(:josh)
     get :ask, {
       client_id: app.key,
       redirect_uri: app.redirect_uri,
@@ -61,6 +66,7 @@ class OAuth2::AuthorizationControllerTest < ActionController::TestCase
   end
 
   test 'Request page errors out for an invalid scope' do
+    sign_in users(:josh)
     get :ask, {
       client_id: app.key,
       redirect_uri: app.redirect_uri,
@@ -72,6 +78,7 @@ class OAuth2::AuthorizationControllerTest < ActionController::TestCase
   end
 
   test 'Request page errors out for an unprivileged app using all scope' do
+    sign_in users(:josh)
     app.update_attributes(privileged: false)
     get :ask, {
       client_id: app.key,
@@ -81,5 +88,16 @@ class OAuth2::AuthorizationControllerTest < ActionController::TestCase
     }
     assert_response 302
     assert_redirected_to app.redirect_uri + '?error=invalid_scope'
+  end
+
+  test 'Request page redirects to login when not signed in' do
+    get :ask, {
+      client_id: app.key,
+      redirect_uri: app.redirect_uri,
+      scope: 'all',
+      response_type: 'code'
+    }
+    assert_response 302
+    assert_redirected_to '/sign-in?redirect_to=' + @request.original_fullpath
   end
 end

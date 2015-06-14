@@ -17,6 +17,7 @@ class OAuth2::AuthorizationController < ApplicationController
 
   # Request an authorization from the user to the client
   def ask
+    return redirect_to_login! unless user_signed_in?
     # Prevent clickjacking via headers.  The template also has a framebuster
     # which is blatantly ripped from OWASP wiki and prevents many common
     # framebuster workarounds.
@@ -118,5 +119,9 @@ class OAuth2::AuthorizationController < ApplicationController
           end
 
     redirect_to uri, status: 302
+  end
+
+  def redirect_to_login!
+    redirect_to "/sign-in?redirect_to=#{request.original_fullpath}"
   end
 end
