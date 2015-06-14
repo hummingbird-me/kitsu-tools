@@ -62,6 +62,12 @@ Hummingbird::Application.routes.draw do
     end
   end
 
+  namespace :oauth2 do
+    get '/authorize' => 'authorization#ask'
+    post '/authorize' => 'authorization#give'
+    post '/token' => 'token#token'
+  end
+
   get '/privacy' => 'home#static'
   get '/branding' => 'home#static'
 
