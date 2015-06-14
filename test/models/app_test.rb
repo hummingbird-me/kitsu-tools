@@ -1,3 +1,24 @@
+# == Schema Information
+#
+# Table name: apps
+#
+#  id                :integer          not null, primary key
+#  creator_id        :integer          not null
+#  key               :string(255)      not null
+#  secret            :string(255)      not null
+#  name              :string(255)      not null
+#  redirect_uri      :string(255)
+#  homepage          :string(255)
+#  description       :string(255)
+#  privileged        :boolean          default(FALSE), not null
+#  logo_file_name    :string(255)
+#  logo_content_type :string(255)
+#  logo_file_size    :integer
+#  logo_updated_at   :datetime
+#  write_access      :boolean          default(FALSE), not null
+#  public            :boolean          default(FALSE), not null
+#
+
 class AppTest < ActiveSupport::TestCase
   test '#redirect_allowed?' do
     app = build(:app, redirect_uri: 'https://example.com/oauth/hummingbird')

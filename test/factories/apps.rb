@@ -24,5 +24,9 @@ FactoryGirl.define do
     name { Faker::App.name }
     key { SecureRandom.hex(10) }
     secret { SecureRandom.base64(30) }
+
+    factory :app_with_creator do
+      creator factory: :user
+    end
   end
 end
