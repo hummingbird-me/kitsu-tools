@@ -99,7 +99,7 @@ class API_v1 < Grape::API
           alternate_title: anime.alternate_title(title_language_preference),
           episode_count: anime.episode_count,
           episode_length: anime.episode_length,
-          cover_image: anime.poster_image_thumb,
+          cover_image: anime.poster_image.url(:large),
           synopsis: anime.synopsis,
           show_type: anime.show_type,
           started_airing: anime.started_airing_date,

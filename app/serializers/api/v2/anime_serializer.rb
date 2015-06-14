@@ -15,7 +15,7 @@ module Api::V2
       :youtube_video_id, :age_rating, :episode_count, :episode_length,
       :show_type
 
-    field(:poster_image) {|a| a.poster_image_thumb }
+    field(:poster_image) {|a| a.poster_image.url(:large) }
     field(:cover_image) {|a| a.cover_image.url(:thumb) }
     field(:community_rating) {|a| a.bayesian_rating }
     field(:genres) {|a| a.genres.map {|x| x.name } }

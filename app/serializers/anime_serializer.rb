@@ -22,7 +22,7 @@ class AnimeSerializer < ActiveModel::Serializer
     if !object.sfw? && (scope.nil? || scope.try(:sfw_filter))
       "/assets/missing-anime-cover.jpg"
     else
-      object.poster_image_thumb
+      object.poster_image.url(:large)
     end
   end
 
