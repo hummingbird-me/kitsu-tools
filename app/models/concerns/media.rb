@@ -12,7 +12,7 @@ module Media
       a.has_many :favorites, as: :item
     end
 
-    VALID_IMAGES = %w(image/jpg image/jpeg image/png image/gif)
+    VALID_IMAGES ||= %w(image/jpg image/jpeg image/png image/gif)
 
     has_attached_file :cover_image,
                       styles: { thumb: ['1400x900>', :jpg] },
