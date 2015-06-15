@@ -28,7 +28,7 @@ class AppTest < ActiveSupport::TestCase
 
   test '#scope_allowed? in general case' do
     app = build(:app)
-    assert app.scope_allowed?(:public_profile)
+    assert app.scope_allowed?('user:email')
     refute app.scope_allowed?(:evil)
   end
 

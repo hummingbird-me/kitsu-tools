@@ -20,7 +20,8 @@
 #
 
 class App < ActiveRecord::Base
-  VALID_SCOPES = %w[all public_profile]
+  VALID_SCOPES = %w[all apiv1 user user:email user:public user:groups
+                    user:library user:admin group group:admin]
 
   belongs_to :creator, class_name: 'User'
   has_attached_file :logo,
