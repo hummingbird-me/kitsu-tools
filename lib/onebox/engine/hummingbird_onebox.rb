@@ -17,7 +17,7 @@ module Onebox
               </div>
             </div>
             <div class="onebox-body media-embed">
-              <img src="#{media.poster_image_thumb}" class="thumbnail">
+              <img src="#{media.poster_image.url(:large)}" class="thumbnail">
               <h3><a href="#{@url}" target="_blank">#{media.canonical_title}</a></h3>
               <h4>#{media.genres.map {|x| x.name }.sort * ", "}</h4>
               #{media.synopsis[0..199]}...

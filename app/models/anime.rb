@@ -364,7 +364,7 @@ class Anime < ActiveRecord::Base
     # check if URL is the same, otherwise paperclip will determine
     # that it is a new image based on `original` filesize compared to
     # the linked thumbnail filesize.
-    obj.delete(:poster_image) if obj[:poster_image] == poster_image_thumb
+    obj.delete(:poster_image) if obj[:poster_image] == poster_image.url(:large)
     obj.delete(:cover_image) if obj[:cover_image] == cover_image.url(:thumb)
 
     obj[:started_airing_date] = obj.delete(:started_airing)

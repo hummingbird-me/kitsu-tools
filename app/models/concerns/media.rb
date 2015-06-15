@@ -57,27 +57,5 @@ module Media
                     },
                     # Combine trigram and tsearch values
                     ranked_by: ':tsearch + :trigram'
-
-    def poster_image_thumb(size = :large)
-      if poster_image_file_name.nil?
-        return 'https://hummingbird.me/assets/missing-anime-cover.jpg'
-      end
-
-      # This disgusting fastpath brought to you by the following issue:
-      # https://github.com/thoughtbot/paperclip/issues/909
-      # When fixed, use poster_image.url(size)
-
-      host = '/uploads/'
-      host = 'https://static.hummingbird.me/' if Rails.env.production?
-      image = URI.escape(poster_image_file_name)
-      # Force .jpg extension on large files
-      image.gsub!(/.{3}$/, 'jpg') if size == :large
-      # generate 000/000/000 path pattern based on id
-      hash = id.to_s.rjust(9, '0').scan(/.{3}/).join('/')
-      media = self.class.to_s.downcase
-      updated = poster_image_updated_at.to_i
-
-      "#{host}#{media}/poster_images/#{hash}/#{size}/#{image}?#{updated}"
-    end
   end
 end
