@@ -136,4 +136,33 @@ class OAuth2::AuthorizationControllerTest < ActionController::TestCase
     assert_response 200
     assert_template :ask
   end
+
+  test 'Give page redirects to application if accepted' do
+    josh = users(:josh)
+    sign_in josh
+    post :give, {
+      accept: true,
+      scopes: %w[user:public],
+      client_id: app.key,
+      redirect_uri: app.redirect_uri,
+      response_code: 'code'
+    }
+    assert_response 302
+    assert_redirected_to %r{#{app.redirect_uri}\?code=.*}
+    refute_nil ClientAuthorization.where(user: josh, app: app).first
+  end
+
+  test 'Give page redirects with error if not accepted' do
+    josh = users(:josh)
+    sign_in josh
+    post :give, {
+      accept: false,
+      scopes: %w[user:public],
+      client_id: app.key,
+      redirect_uri: app.redirect_uri,
+      response_code: 'code'
+    }
+    assert_response 302
+    assert_redirected_to %r{#{app.redirect_uri}\?error=access_denied}
+  end
 end
