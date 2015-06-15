@@ -18,6 +18,11 @@ class OAuth2::AuthorizationController < ApplicationController
   # Request an authorization from the user to the client
   def ask
     return redirect_to_login! unless user_signed_in?
+    # Redirect straight to the client if they're already authorized and not
+    # asking for new scopes
+    if authorization && authorization.has_scopes?(scopes)
+      return redirect_back_with_token!
+    end
     # Prevent clickjacking via headers.  The template also has a framebuster
     # which is blatantly ripped from OWASP wiki and prevents many common
     # framebuster workarounds.
@@ -25,8 +30,10 @@ class OAuth2::AuthorizationController < ApplicationController
     response.headers['Content-Security-Policy'] = "frame-ancestors 'none'"
 
     @app = client
+    # If it's already authorized, just ask for the new scopes
+    @scopes = authorization ? scopes - authorization.scopes : scopes
+    @previous_scopes = authorization ? authorization.scopes : []
     @redirect_uri = params[:redirect_uri]
-    @scopes = params[:scopes]
 
     # REVIEW: should we also check these on the #authorize action?
     return fatal_error! :invalid_client unless client
@@ -49,13 +56,11 @@ class OAuth2::AuthorizationController < ApplicationController
   def give
     # If yes, issue OAuth2::Code and redirect to client
     if params[:accept]
-      if params[:response_type] == 'token'
-        token = OAuth2::Token.new(current_user, client, scopes)
-        redirect_back! token: token
-      else
-        code = OAuth2::Code.new(current_user, client, scopes)
-        redirect_back! code: code
-      end
+      auth = authorization || ClientAuthorization.new(user: current_user,
+                                                      app: client)
+      auth.scopes = scopes
+      auth.save!
+      redirect_back_with_token!
     else
       return error! :access_denied
     end
@@ -70,11 +75,19 @@ class OAuth2::AuthorizationController < ApplicationController
   private
 
   def scopes
-    params[:scope].split(' ')
+    params[:scope] ? params[:scope].split(' ') : []
   end
 
   def client
-    App.where(key: params[:client_id]).first
+    @app ||= App.where(key: params[:client_id]).first
+    @app
+  end
+
+  def authorization
+    @authorization ||= ClientAuthorization.where(user: current_user,
+                                                 app: client)
+                                          .first
+    @authorization
   end
 
   def valid_redirect?
@@ -119,6 +132,16 @@ class OAuth2::AuthorizationController < ApplicationController
           end
 
     redirect_to uri, status: 302
+  end
+
+  def redirect_back_with_token!
+    if params[:response_type] == 'token'
+      token = OAuth2::Token.new(current_user, client, scopes)
+      redirect_back! token: token
+    else
+      code = OAuth2::Code.new(current_user, client, scopes)
+      redirect_back! code: code
+    end
   end
 
   def redirect_to_login!

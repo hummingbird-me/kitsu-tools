@@ -100,4 +100,40 @@ class OAuth2::AuthorizationControllerTest < ActionController::TestCase
     assert_response 302
     assert_redirected_to '/sign-in?redirect_to=' + @request.original_fullpath
   end
+
+  test 'Request page redirects with token if already authorized' do
+    josh = users(:josh)
+    sign_in josh
+    create(:client_authorization, {
+      user: josh,
+      app: app,
+      scopes: %w[user:email user:public]
+    })
+    get :ask, {
+      client_id: app.key,
+      redirect_uri: app.redirect_uri,
+      scope: 'user:email user:public',
+      response_type: 'code'
+    }
+    assert_response 302
+    assert_redirected_to %r{#{app.redirect_uri}\?code=.*}
+  end
+
+  test 'Request page shows new scopes when partially authorized' do
+    josh = users(:josh)
+    sign_in josh
+    create(:client_authorization, {
+      user: josh,
+      app: app,
+      scopes: %w[user:public]
+    })
+    get :ask, {
+      client_id: app.key,
+      redirect_uri: app.redirect_uri,
+      scope: 'user:public user:email',
+      response_type: 'code'
+    }
+    assert_response 200
+    assert_template :ask
+  end
 end
