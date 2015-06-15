@@ -13,7 +13,7 @@ class Token
       'scope' => [],
       'sub' => user,
       'iat' => Time.now.to_i,
-      'exp' => TTL.from_now.to_i
+      'exp' => (Time.now + TTL.to_i).to_i
     }.merge(opts.stringify_keys)
   end
 

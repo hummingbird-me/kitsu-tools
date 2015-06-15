@@ -15,6 +15,14 @@ class OAuth2::Token < Token
     token
   end
 
+  def self.from_refresh_token(refresh)
+    refresh = OAuth2::RefreshToken.decode(refresh) if refresh.is_a? String
+    token = OAuth2::Token.new(refresh.user, refresh.client,
+                              refresh.token_scopes)
+    refresh.revoke!
+    token
+  end
+
   def client
     App.find(@payload['client_id'])
   end

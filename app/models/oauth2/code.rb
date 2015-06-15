@@ -6,7 +6,7 @@
 class OAuth2::Code < OAuth2::Token
   def initialize(user, client, scopes, opts={})
     opts = {
-      exp: 5.minutes.from_now.to_i,
+      exp: (Time.now + 5.minutes.to_i).to_i,
       token_scopes: scopes
     }.merge(opts)
     super(user, client, %i[oauth2_code], opts)
