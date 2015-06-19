@@ -85,6 +85,12 @@ class User < ActiveRecord::Base
     where('LOWER(name) = ?', username.to_s.downcase).first
   end
 
+  def self.find_by_login(name_or_email)
+    key = name_or_email.include?('@') ? :email : :name
+
+    User.where("lower(#{key}) = ?", name_or_email.downcase).first
+  end
+
   def self.match(query)
     where('LOWER(name) = ?', query.to_s.downcase)
   end

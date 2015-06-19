@@ -37,6 +37,7 @@ class OAuth2::TokenController < ApplicationController
 
       token = OAuth2::Token.from_code(code)
     when :refresh_token
+      # REVIEW: does this endpoint require scopes?
       refresh_token = OAuth2::RefreshToken.decode(params[:refresh_token])
 
       return error! :invalid_grant unless refresh_token.valid?
@@ -44,11 +45,18 @@ class OAuth2::TokenController < ApplicationController
 
       token = OAuth2::Token.from_refresh_token(refresh_token)
     when :password
-      _username = params[:username]
-      _password = params[:password]
-      return error! :unsupported_grant_type
+      return error! :unauthorized_client unless client.privileged?
+      return error! :invalid_scope unless client.scopes_allowed?(scopes)
+
+      user = User.find_by_login(params[:username])
+      pass = params[:password]
+
+      return error! :invalid_grant unless user && user.valid_password?(pass)
+
+      # TODO: check scopes
+      token = OAuth2::Token.new(user, client, scopes)
     when :client_credentials
-      # TODO: find a use for this
+      # TODO: find an actual use for this
       return error! :unsupported_grant_type
     end
 
@@ -73,6 +81,10 @@ class OAuth2::TokenController < ApplicationController
 
   def client
     App.where(key: client_credentials[0]).first
+  end
+
+  def scopes
+    params[:scopes].split(' ') if params.key? :scopes
   end
 
   def has_basic_credentials?

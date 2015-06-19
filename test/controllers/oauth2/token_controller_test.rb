@@ -14,8 +14,7 @@ class OAuth2::TokenControllerTest < ActionController::TestCase
     create(:app, {
       write_access: true,
       creator: owner,
-      redirect_uri: 'https://example.com/oauth/hummingbird',
-      privileged: true
+      redirect_uri: 'https://example.com/oauth/hummingbird'
     })
   end
 
@@ -103,15 +102,55 @@ class OAuth2::TokenControllerTest < ActionController::TestCase
   end
 
   test 'password grant with valid username and password' do
-    flunk
-  end
-
-  test 'password grant with valid username and invalid password' do
-    flunk
+    as_app(app)
+    pass = 'correct horse battery staple'
+    user = create(:user, password: pass)
+    post :token, {
+      grant_type: 'password',
+      username: user.name,
+      password: pass,
+      scopes: 'all'
+    }
+    assert_token_response
   end
 
   test 'password grant with valid email and password' do
-    flunk
+    as_app(app)
+    pass = 'correct horse battery staple'
+    user = create(:user, password: pass)
+    post :token, {
+      grant_type: 'password',
+      username: user.email,
+      password: pass,
+      scopes: 'all'
+    }
+    assert_token_response
+  end
+
+  test 'password grant with unprivileged client' do
+    as_app(other_app)
+    pass = 'correct horse battery staple'
+    user = create(:user, password: pass)
+    post :token, {
+      grant_type: 'password',
+      username: user.name,
+      password: pass,
+      scopes: 'all'
+    }
+    assert_error_response :unauthorized_client
+  end
+
+  test 'password grant with valid username and invalid password' do
+    as_app(app)
+    pass = 'correct horse battery staple'
+    user = create(:user, password: pass)
+    post :token, {
+      grant_type: 'password',
+      username: user.name,
+      password: "in#{pass}",
+      scopes: 'all'
+    }
+    assert_error_response :invalid_grant
   end
 
   test 'client credentials grant just errors out' do
@@ -140,13 +179,13 @@ class OAuth2::TokenControllerTest < ActionController::TestCase
   end
 
   def assert_token_response
-    assert_response 200
     assert_json_body({
       access_token: String,
       expires_in: Fixnum,
       scope: String,
       token_type: 'bearer'
     })
+    assert_response 200
   end
 
   def assert_error_response(err = String)
