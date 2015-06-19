@@ -26,45 +26,52 @@ class OAuth2::TokenController < ApplicationController
     return error! :invalid_client unless valid_client?
     return error! :unsupported_grant_type unless grant_type
 
-    case grant_type
-    when :authorization_code
-      code = OAuth2::Code.decode(params[:code])
-      # TODO: save redirect_uri in Code, check it here
-      _redirect_uri = params[:redirect_uri]
-
-      return error! :invalid_grant unless code.valid?
-      return error! :unauthorized_client unless code.client == client
-
-      token = OAuth2::Token.from_code(code)
-    when :refresh_token
-      # REVIEW: does this endpoint require scopes?
-      refresh_token = OAuth2::RefreshToken.decode(params[:refresh_token])
-
-      return error! :invalid_grant unless refresh_token.valid?
-      return error! :unauthorized_client unless refresh_token.client == client
-
-      token = OAuth2::Token.from_refresh_token(refresh_token)
-    when :password
-      return error! :unauthorized_client unless client.privileged?
-      return error! :invalid_scope unless client.scopes_allowed?(scopes)
-
-      user = User.find_by_login(params[:username])
-      pass = params[:password]
-
-      return error! :invalid_grant unless user && user.valid_password?(pass)
-
-      # TODO: check scopes
-      token = OAuth2::Token.new(user, client, scopes)
-    when :client_credentials
-      # TODO: find an actual use for this
-      return error! :unsupported_grant_type
-    end
+    token = send("#{grant_type}_grant")
+    return unless token.is_a? OAuth2::Token
 
     refresh = OAuth2::RefreshToken.new(token.user, token.client, token.scopes)
     give_token!(token, refresh)
   end
 
   private
+
+  def authorization_code_grant
+    code = OAuth2::Code.decode(params[:code])
+    # TODO: save redirect_uri in Code, check it here
+    _redirect_uri = params[:redirect_uri]
+
+    return error! :invalid_grant unless code.valid?
+    return error! :unauthorized_client unless code.client == client
+
+    OAuth2::Token.from_code(code)
+  end
+
+  def refresh_token_grant
+    # REVIEW: does this endpoint require scopes?
+    refresh_token = OAuth2::RefreshToken.decode(params[:refresh_token])
+
+    return error! :invalid_grant unless refresh_token.valid?
+    return error! :unauthorized_client unless refresh_token.client == client
+
+    OAuth2::Token.from_refresh_token(refresh_token)
+  end
+
+  def password_grant
+    return error! :unauthorized_client unless client.privileged?
+    return error! :invalid_scope unless client.scopes_allowed?(scopes)
+
+    user = User.find_by_login(params[:username])
+    pass = params[:password]
+
+    return error! :invalid_grant unless user && user.valid_password?(pass)
+
+    OAuth2::Token.new(user, client, scopes)
+  end
+
+  def client_credentials_grant
+    # TODO: find an actual use for this
+    return error! :unsupported_grant_type
+  end
 
   def grant_type
     params[:grant_type].to_sym if GRANT_TYPES.include?(params[:grant_type])
