@@ -34,8 +34,8 @@ class OAuth2::AuthorizationController < ApplicationController
     @scopes = authorization ? scopes - authorization.scopes : scopes
     @previous_scopes = authorization ? authorization.scopes : []
     @redirect_uri = params[:redirect_uri]
+    @state = params[:state] if params.key?(:state)
 
-    # REVIEW: should we also check these on the #authorize action?
     return fatal_error! :invalid_client unless client
     return fatal_error! :readonly_client unless client.write_access?
     return fatal_error! :invalid_redirect unless valid_redirect?
