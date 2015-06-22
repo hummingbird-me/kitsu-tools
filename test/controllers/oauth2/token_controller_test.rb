@@ -65,10 +65,6 @@ class OAuth2::TokenControllerTest < ActionController::TestCase
     assert_error_response :unauthorized_client
   end
 
-  test 'authorization_code grant with invalid redirect_uri' do
-    flunk
-  end
-
   test 'refresh_token grant with valid token' do
     as_app(app)
     token = OAuth2::RefreshToken.new(owner, app, %w[all])

@@ -37,8 +37,6 @@ class OAuth2::TokenController < ApplicationController
 
   def authorization_code_grant
     code = OAuth2::Code.decode(params[:code])
-    # TODO: save redirect_uri in Code, check it here
-    _redirect_uri = params[:redirect_uri]
 
     return error! :invalid_grant unless code.valid?
     return error! :unauthorized_client unless code.client == client
