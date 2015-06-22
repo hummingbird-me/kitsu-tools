@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :check_user_authentication, :preload_objects
+  before_filter :production_profiler
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   include Auth::Helpers
@@ -13,6 +14,12 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.json { render json: {error: "Not authenticated"}, status: 403 }
       format.html { redirect_to(new_user_session_path) }
+    end
+  end
+
+  def production_profiler
+    if user_signed_in? && current_user.admin?
+      Rack::MiniProfiler.authorize_request
     end
   end
 
