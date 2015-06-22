@@ -21,7 +21,7 @@
 
 FactoryGirl.define do
   factory :app do
-    name { Faker::App.name }
+    sequence(:name) { |n| "#{Faker::App.name} (#{n})" }
     key { SecureRandom.hex(10) }
     secret { SecureRandom.base64(30) }
 

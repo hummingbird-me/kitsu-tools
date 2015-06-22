@@ -41,7 +41,7 @@
 FactoryGirl.define do
 
   factory :anime do
-    title { Faker::Name.name }
+    sequence(:title) { |n| "#{Faker::Name.name} (#{n})" }
 
     #TODO: Fix fucking factory association
     # after(:create) do |a|
