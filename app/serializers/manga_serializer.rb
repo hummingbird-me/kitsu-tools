@@ -5,6 +5,7 @@ class MangaSerializer < ActiveModel::Serializer
              :romaji_title,
              :english_title,
              :poster_image,
+             :poster_image_thumb,
              :synopsis,
              :chapter_count,
              :volume_count,
@@ -23,6 +24,10 @@ class MangaSerializer < ActiveModel::Serializer
   end
 
   def poster_image
+    object.poster_image.url(:large)
+  end
+
+  def poster_image_thumb
     object.poster_image.url(:large)
   end
 

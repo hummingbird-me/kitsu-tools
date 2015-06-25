@@ -2,9 +2,9 @@ class AnimeSerializer < ActiveModel::Serializer
   embed :ids
 
   attributes :id, :canonical_title, :english_title, :romaji_title, :synopsis,
-    :poster_image, :show_type, :age_rating, :age_rating_guide, :episode_count,
-    :episode_length, :started_airing, :started_airing_date_known,
-    :finished_airing, :genres, :updated_at
+    :poster_image, :poster_image_thumb, :show_type, :age_rating,
+    :age_rating_guide, :episode_count, :episode_length, :started_airing,
+    :started_airing_date_known, :finished_airing, :genres, :updated_at
 
   def id
     object.slug
@@ -23,6 +23,14 @@ class AnimeSerializer < ActiveModel::Serializer
       "/assets/missing-anime-cover.jpg"
     else
       object.poster_image.url(:large)
+    end
+  end
+
+  def poster_image_thumb
+    if !object.sfw? && (scope.nil? || scope.try(:sfw_filter))
+      "/assets/missing-anime-cover.jpg"
+    else
+      object.poster_image.url(:medium)
     end
   end
 

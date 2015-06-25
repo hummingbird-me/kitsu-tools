@@ -8,6 +8,7 @@ export default Media.extend({
   romajiTitle: DS.attr("string"),
   englishTitle: DS.attr("string"),
   posterImage: DS.attr("string"),
+  posterImageThumb: DS.attr("string"),
   synopsis: DS.attr("string"),
   mangaType: DS.attr("string"),
   volumeCount: DS.attr("number"),
