@@ -33,7 +33,7 @@ class AdminController < ApplicationController
     # Sort by partner code count (ascending) where there's less than 20 left
     @deals = PartnerDeal
              .joins(
-               'LEFT JOIN partner_codes \
+               'LEFT JOIN partner_codes
                 ON partner_codes.partner_deal_id = partner_deals.id'
              )
              .select(
