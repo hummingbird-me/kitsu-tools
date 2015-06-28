@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import User from '../models/user';
+import ajax from 'ic-ajax';
 
 export default User.extend({
   newUsername: DS.attr('string'),
