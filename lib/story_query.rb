@@ -5,8 +5,10 @@ class StoryQuery
   def self.find_by_ids(story_ids, current_user)
     stories = Story.where(id: story_ids)
               .for_user(current_user)
-              .includes(:user, :substories, :target,
-                        substories: %i(user target))
+              .preload(:target, substories: %i(target))
+              .includes(:user, :substories,
+                        substories: %i(user))
+    stories = stories.unbanned unless current_user && current_user.ninja_banned?
 
     comment_stories = stories.select { |x| x.story_type == 'comment' }
     comment_index = comment_stories.index_by(&:id)

@@ -27,6 +27,8 @@ class Substory < ActiveRecord::Base
 
   has_many :notifications, as: :source, dependent: :destroy
 
+  scope :unbanned, ->{ eager_load(:user).where(users: { ninja_banned: false }) }
+
   def can_be_deleted_by?(user)
     return false if user.nil?
     self.user_id == user.id || self.story.can_be_deleted_by?(user)

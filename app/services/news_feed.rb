@@ -65,10 +65,12 @@ class NewsFeed
     group_set = active_joined_groups.to_a
 
     stories = Story.for_user(@user)
-                   .order('updated_at DESC')
+                   .order('stories.updated_at DESC')
                    .where('(stories.user_id IN (?) AND stories.group_id IS NULL) OR stories.group_id IN (?)', user_set, group_set)
-                   .includes(:user, :target, :substories)
+                   .includes(:user, :substories)
+                   .preload(:target)
                    .limit(FRESH_FETCH_SIZE)
+    stories = stories.unbanned unless @user.ninja_banned?
     stories.each {|story| add! story }
   end
 
