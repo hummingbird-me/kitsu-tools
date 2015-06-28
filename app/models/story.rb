@@ -37,7 +37,7 @@ class Story < ActiveRecord::Base
   validates :user, :story_type, presence: true
   validates :group, presence: true, if: Proc.new {|s| s.group_id.present? }
 
-  default_scope { eager_load(:user).where(users: { ninja_banned: false }) }
+  scope :unbanned, ->{ eager_load(:user).where(users: { ninja_banned: false }) }
 
   def self.for_user_and_anime(user, anime, story_type="media_story")
     story = user.stories.where(story_type: story_type, target_id: anime.id, target_type: "Anime")

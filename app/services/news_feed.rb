@@ -70,6 +70,7 @@ class NewsFeed
                    .includes(:user, :substories)
                    .preload(:target)
                    .limit(FRESH_FETCH_SIZE)
+    stories = stories.unbanned unless @user.ninja_banned?
     stories.each {|story| add! story }
   end
 
