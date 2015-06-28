@@ -84,34 +84,6 @@ export default Ember.Controller.extend({
            !this.get('usernameValid');
   }.property('currentUser.isDirty', 'passwordValid', 'usernameValid'),
 
-  importList: function(service, file) {
-    var data = new FormData();
-    data.append('list', file);
-    return ajax('/settings/import/' + service, {
-      data: data,
-      cache: false,
-      contentType: false,
-      processData: false,
-      type: 'POST'
-    }).then(() => {
-      this.store.update('currentUser', {
-        id: this.get('currentUser.id'),
-        importStatus: 'queued',
-        importingFrom: service
-      });
-    }, (err) => {
-      try {
-        this.store.update('currentUser', {
-          id: this.get('currentUser.id'),
-          importStatus: 'error',
-          importError: err.jqXHR.responseJSON.error
-        });
-      } catch (e) {
-        alert('An unknown error occurred while attempting to import your list');
-      }
-    });
-  },
-
   actions: {
     save: function() {
       var self = this;
@@ -154,10 +126,10 @@ export default Ember.Controller.extend({
       Ember.$('#hb-file').click();
     },
     importHummingbird: function(file) {
-      this.importList('hummingbird', file);
+      this.get('currentUser').importList('hummingbird', file);
     },
     importMal: function(file) {
-      this.importList('myanimelist', file);
+      this.get('currentUser').importList('myanimelist', file);
     }
   }
 });

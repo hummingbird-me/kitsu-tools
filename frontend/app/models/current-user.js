@@ -17,12 +17,44 @@ export default User.extend({
   proExpiresAt: DS.attr('date'),
   proMembershipPlan: DS.belongsTo('pro-membership-plan'),
 
+  isImportErrored: Ember.computed.equal('importStatus', 'error'),
   isImportOngoing: function() {
-    var status = this.get('importStatus');
+    let status = this.get('importStatus');
     return status === 'queued' || status === 'running';
   }.property('importStatus'),
-  isImportErrored: Ember.computed.equal('importStatus', 'error'),
 
   // Temporary solution for beta indicator
-  betaAccess: Ember.computed.or('isAdmin', 'isPro')
+  betaAccess: Ember.computed.or('isAdmin', 'isPro'),
+
+  // TODO: eventually change this to an importFile attribute which is RESTfully
+  // saved as a data:uri
+  importList: function(service, file) {
+    let data = new FormData();
+    data.append('list', file);
+    return ajax('/settings/import/' + service, {
+      data: data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'POST'
+    }).then(() => {
+      this.store.update('currentUser', {
+        id: this.get('id'),
+        importStatus: 'queued',
+        importingFrom: service
+      });
+    }, (err) => {
+      try {
+        this.store.update('currentUser', {
+          id: this.get('id'),
+          importStatus: 'error',
+          importError: err.jqXHR.responseJSON.error
+        });
+      } catch (e) {
+        alert(`An unknown error occurred while attempting to import your list.
+               Send an email to josh@hummingbird.me and we'll try to make it
+               right`);
+      }
+    });
+  }
 });
