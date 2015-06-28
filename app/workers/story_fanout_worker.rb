@@ -3,8 +3,10 @@ class StoryFanoutWorker
   sidekiq_options queue: :storyfanout
 
   def perform(user_id, story_id)
-    story = Story.find_by_id story_id
+    story = Story.find_by_id(story_id)
+    user = User.find(user_id)
     return if story.nil?
+    return if user.ninja_banned?
 
     if story.group_id
       followers = User.where(id: [user_id, story.user_id] + story.group.members.accepted.map(&:user_id))
