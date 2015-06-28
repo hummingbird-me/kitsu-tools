@@ -17,11 +17,11 @@ class Settings::ImportController < ApplicationController
     elsif file.content_type.include?('xml')
       xml = file.read
     else
-      return error!(400, "Unknown format")
+      return error!(400, 'Unknown format')
     end
     xml = XMLCleaner.clean(xml)
 
-    return error!(422, "Blank file") if xml.blank?
+    return error!(422, 'Blank file') if xml.blank?
 
     # Queue the import
     current_user.update_columns import_status: :queued,
@@ -30,10 +30,10 @@ class Settings::ImportController < ApplicationController
 
     render json: current_user
 
-    mixpanel.track "Imported from MyAnimeList", {email: current_user.email} if Rails.env.production?
+    mixpanel.track 'Imported from MyAnimeList', {email: current_user.email} if Rails.env.production?
   rescue Exception
-    error! 500, "There was a problem importing your anime list.  Please send an
+    error! 500, 'There was a problem importing your anime list.  Please send an
                  email to josh@hummingbird.me with the file you are trying
-                 to import."
+                 to import.'
   end
 end

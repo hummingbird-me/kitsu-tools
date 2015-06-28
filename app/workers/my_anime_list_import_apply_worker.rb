@@ -11,7 +11,9 @@ class MyAnimeListImportApplyWorker
     user.update_columns import_status: nil, import_from: nil, import_error: nil
   rescue Exception
     user.update_columns import_status: :error,
-      import_error: "There was a problem importing your anime list.  Please send an email to josh@hummingbird.me with the file you are trying to import."
+      import_error: 'There was a problem importing your anime list.  Please
+                     send an email to josh@hummingbird.me with the file you
+                     are trying to import.'
     raise
   end
 end
