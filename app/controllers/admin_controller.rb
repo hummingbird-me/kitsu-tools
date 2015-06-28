@@ -43,6 +43,12 @@ class AdminController < ApplicationController
              .having('count(partner_codes.id) < 20')
              .order('count(partner_codes.id) asc')
     @blotter = Blotter.get
+
+    generic_preload! 'nonmal_anime', @anime_without_mal_id		
+    generic_preload! 'blotter', @blotter		
+    generic_preload! 'deals_to_refill', @deals		
+
+    render_ember		
   end
 
   def login_as_user
