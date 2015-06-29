@@ -3,7 +3,8 @@ module Onebox
     class HummingbirdOnebox
       include Engine
 
-      matches_regexp /https?:\/\/(?:www\.)?hummingbird\.me\/(?<type>anime|manga)\/(?<slug>.+)/
+      # a|m are short links for anime|manga
+      matches_regexp /https?:\/\/(?:www\.)?hummingbird\.me\/(?<type>anime|manga|a|m)\/(?<slug>.+)/
 
       def to_html
         return "<a href=\"#{@url}\">#{@url}</a>" if media.nil?
