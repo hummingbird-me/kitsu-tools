@@ -31,6 +31,8 @@ module Onebox
       private
 
       def type
+        return 'anime' if @@matcher.match(@url)["type"] == 'a'
+        return 'manga' if @@matcher.match(@url)["type"] == 'm'
         @@matcher.match(@url)["type"]
       end
 
