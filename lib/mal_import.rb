@@ -102,7 +102,7 @@ class MALImport
         ja_jp: begin @sidebar.css('div:contains("Japanese:")')[0].text.gsub("Japanese: ", "") rescue nil end
       }.compact,
       synopsis: begin
-        synopsis = @main_noko.css('td td:contains("Synopsis")')[0].text.gsub("EditSynopsis", '').split("googletag.cmd.push")[0]
+        synopsis = @main_noko.css('td td:contains("Synopsis")')[0].text.gsub("EditSynopsis", '').split("EditBackground")[0].split("googletag.cmd.push")[0]
         if synopsis.include? "No synopsis has been added"
           nil
         else
