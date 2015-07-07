@@ -5,12 +5,13 @@ class Settings::ImportController < ApplicationController
   before_filter :authenticate_user!
 
   def myanimelist
-    params.require(:file)
+    file = params.require(:file)
 
     # Prepare the file
     # Check the magic number for gzip because some browsers are stupid
     # Many users are uploading zipped-up lists with a text/xml MIME
-    if file.readpartial(3) == 0x1F_8B_08
+    if file.content_type.include?('gzip') ||
+       file.tempfile.readpartial(3).unpack('H*').first == '1f8b08'
       gz = Zlib::GzipReader.new(file)
       xml = gz.read
       gz.close
@@ -24,16 +25,18 @@ class Settings::ImportController < ApplicationController
     return error!(422, 'Blank file') if xml.blank?
 
     # Queue the import
-    current_user.update_columns import_status: :queued,
+    status = User.import_statuses[:queued]
+    current_user.update_columns import_status: status,
                                 import_from: 'myanimelist'
     MyAnimeListImportApplyWorker.perform_async(current_user.id, xml)
 
-    render json: current_user
+    render json: current_user, serializer: CurrentUserSerializer
 
     mixpanel.track 'Imported from MyAnimeList', {email: current_user.email} if Rails.env.production?
   rescue Exception
     error! 500, 'There was a problem importing your anime list.  Please send an
                  email to josh@hummingbird.me with the file you are trying
                  to import.'
+     raise
   end
 end
