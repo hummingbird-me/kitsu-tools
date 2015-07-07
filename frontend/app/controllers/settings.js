@@ -126,10 +126,10 @@ export default Ember.Controller.extend({
       Ember.$('#hb-file').click();
     },
     importHummingbird: function(file) {
-      this.get('currentUser').importList('hummingbird', file);
+      this.get('currentUser.content.content').importList('hummingbird', file);
     },
     importMal: function(file) {
-      this.get('currentUser').importList('myanimelist', file);
+      this.get('currentUser.content.content').importList('myanimelist', file);
     }
   }
 });

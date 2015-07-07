@@ -92,9 +92,11 @@
             </div>
           </div>
           <div class="row">
-            {{#if user.isImportOngoing}}
-              <i class="fa fa-2x fa-spinner fa-spin"></i>
-              Importing...
+            {{#if currentUser.isImportOngoing}}
+              <label class="control-label col-sm-6">
+                <i class="fa fa-spinner fa-spin"></i>
+                Importing...
+              </label>
             {{else}}
               <label class="control-label col-sm-6">MAL Import</label>
               <div class="col-sm-6">

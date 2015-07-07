@@ -90,9 +90,9 @@ export default Ember.Controller.extend({
     },
 
     importMal: function(file) {
-      let user = this.get('currentUser');
-      user.importList('myanmelist', file).then(function() {
-        Ember.run.later(function(){
+      let user = this.get('currentUser.content.content');
+      user.importList('myanimelist', file).then(() => {
+        Ember.run.later(() => {
           this.transitionToRoute('onboarding.finish');
         }, 1000);
       });

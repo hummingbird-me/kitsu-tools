@@ -31,7 +31,7 @@ export default User.extend({
   // saved as a data:uri
   importList: function(service, file) {
     let data = new FormData();
-    data.append('list', file);
+    data.append('file', file);
     return ajax('/settings/import/' + service, {
       data: data,
       cache: false,
@@ -52,9 +52,7 @@ export default User.extend({
           importError: err.jqXHR.responseJSON.error
         });
       } catch (e) {
-        alert(`An unknown error occurred while attempting to import your list.
-               Send an email to josh@hummingbird.me and we'll try to make it
-               right`);
+        alert("An unknown error occurred while attempting to import your list. Send an email to josh@hummingbird.me and we'll try to make it right");
       }
     });
   }

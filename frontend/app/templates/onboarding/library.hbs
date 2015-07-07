@@ -14,15 +14,14 @@
     <div class="import-panel">
       {{#if currentUser.isImportErrored}}
         <i class="fa fa-warning"></i> {{currentUser.importError}}
+      {{/if}}
+      {{#if currentUser.isImportOngoing}}
+        <i class="fa fa-spinner"></i>
+        We're importing your data.  Keep going, we'll tell you when it's done.
       {{else}}
-        {{#if currentUser.isImportOngoing}}
-          <i class="fa fa-spinner"></i>
-          We're importing your data.  Keep going, we'll tell you when it's done.
-        {{else}}
-          {{view "file-upload" action="importMal" name="animelist" id="mal-file"}}
-          Have a MAL account? <a href="#" {{action "pickMalFile"}}>We can import your XML backup!</a>
-          <a href="http://myanimelist.net/panel.php?go=export" target="_blank" class="import-help"><i class="fa fa-question-circle"></i></a>
-        {{/if}}
+        {{view "file-upload" action="importMal" name="animelist" id="mal-file"}}
+        Have a MAL account? <a href="#" {{action "pickMalFile"}}>We can import your XML backup!</a>
+        <a href="http://myanimelist.net/panel.php?go=export" target="_blank" class="import-help"><i class="fa fa-question-circle"></i></a>
       {{/if}}
     </div>
   </div>
