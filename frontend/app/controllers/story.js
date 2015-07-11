@@ -85,14 +85,18 @@ export default Ember.Controller.extend({
     },
 
     deleteStory: function() {
-      this.get('model').destroyRecord();
+      if (confirm('Are you sure you want to delete this post?')) {
+        this.get('model').destroyRecord();
+      }
     },
 
     deleteSubstory: function(substory) {
-      substory.destroyRecord().then(() => {
-        this.get('substories').removeObject(substory);
-        this.decrementProperty('model.substoryCount');
-      });
+      if (confirm('Are you sure you want to delete this post?')) {
+        substory.destroyRecord().then(() => {
+          this.get('substories').removeObject(substory);
+          this.decrementProperty('model.substoryCount');
+        });
+      }
     },
 
     toggleFullPost: function() {
