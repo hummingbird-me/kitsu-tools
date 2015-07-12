@@ -34,9 +34,9 @@ class Settings::ImportController < ApplicationController
 
     mixpanel.track 'Imported from MyAnimeList', {email: current_user.email} if Rails.env.production?
   rescue Exception
-    error! 500, 'There was a problem importing your anime list.  Please send an
-                 email to josh@hummingbird.me with the file you are trying
-                 to import.'
+    error! 500, 'There was a problem importing your list.  Please send an email
+                 to josh@hummingbird.me with the file you are trying to import
+                 and we\'ll see what we can do.'
      raise
   end
 end

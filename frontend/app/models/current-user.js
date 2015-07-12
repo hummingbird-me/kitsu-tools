@@ -52,7 +52,7 @@ export default User.extend({
           importError: err.jqXHR.responseJSON.error
         });
       } catch (e) {
-        alert("An unknown error occurred while attempting to import your list. Send an email to josh@hummingbird.me and we'll try to make it right");
+        alert("There was a problem importing your list. Send an email to josh@hummingbird.me with the file you're trying to import and we'll see what we can do.");
       }
     });
   }
