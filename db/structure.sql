@@ -2903,6 +2903,27 @@ CREATE INDEX index_quotes_on_anime_id ON quotes USING btree (anime_id);
 
 
 --
+-- Name: index_recommendations_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_recommendations_on_user_id ON recommendations USING btree (user_id);
+
+
+--
+-- Name: index_reviews_on_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_reviews_on_anime_id ON reviews USING btree (anime_id);
+
+
+--
+-- Name: index_reviews_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_reviews_on_user_id ON reviews USING btree (user_id);
+
+
+--
 -- Name: index_stories_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2928,6 +2949,13 @@ CREATE INDEX index_stories_on_group_id ON stories USING btree (group_id);
 --
 
 CREATE INDEX index_stories_on_user_id ON stories USING btree (user_id);
+
+
+--
+-- Name: index_substories_on_created_at; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_substories_on_created_at ON substories USING btree (created_at);
 
 
 --
@@ -3012,20 +3040,6 @@ CREATE INDEX index_users_on_waifu ON users USING btree (waifu);
 --
 
 CREATE INDEX index_users_on_waifu_char_id ON users USING btree (waifu_char_id);
-
-
---
--- Name: index_users_on_waifu_or_husbando; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_users_on_waifu_or_husbando ON users USING btree (waifu_or_husbando);
-
-
---
--- Name: index_users_on_waifu_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_users_on_waifu_slug ON users USING btree (waifu_slug);
 
 
 --
@@ -3833,4 +3847,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150504184112');
 INSERT INTO schema_migrations (version) VALUES ('20150427224114');
 
 INSERT INTO schema_migrations (version) VALUES ('20150204092920');
+
+INSERT INTO schema_migrations (version) VALUES ('20150712193314');
 
