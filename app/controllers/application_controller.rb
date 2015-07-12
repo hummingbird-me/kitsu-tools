@@ -101,7 +101,11 @@ class ApplicationController < ActionController::Base
   end
 
   # Render a JSON error with the given error message and status code.
-  def error!(message, status)
+  # Accepts parameters in either order for legacy reasons.
+  # Advised parameter order is status, message
+  def error!(status, message)
+    # Flip the params if status isn't a number
+    status, message = message, status unless status.is_a?(Fixnum)
     # If the message is a Hash of errors, we put it in standard ED form
     if message.is_a?(Hash)
       render json: {errors: message}, status: status

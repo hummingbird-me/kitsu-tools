@@ -12,10 +12,15 @@
   {{/if}}
   <div class="col-sm-12">
     <div class="import-panel">
-      {{#if importFromMal}}
-        <i class="fa fa-spinner"></i> Hang tight, we're importing your data.
+      {{#if currentUser.isImportErrored}}
+        <i class="fa fa-warning"></i> {{currentUser.importError}}
+      {{/if}}
+      {{#if currentUser.isImportOngoing}}
+        <i class="fa fa-spinner"></i>
+        We're importing your data. Keep going, we'll tell you when it's done.
       {{else}}
-        Have a MAL account? <a href="#" {{action 'importLibrary'}}>We can import your XML back-up!</a>
+        {{view "file-upload" action="importMal" name="animelist" id="mal-file"}}
+        Have a MAL account? <a href="#" {{action "pickMalFile"}}>We can import your XML backup!</a>
         <a href="http://myanimelist.net/panel.php?go=export" target="_blank" class="import-help"><i class="fa fa-question-circle"></i></a>
       {{/if}}
     </div>

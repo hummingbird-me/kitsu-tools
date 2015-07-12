@@ -125,11 +125,11 @@ export default Ember.Controller.extend({
     pickHbFile: function() {
       Ember.$('#hb-file').click();
     },
-    restoreBackup: function() {
-      Ember.$('#backuprestore').submit();
+    importHummingbird: function(file) {
+      this.get('currentUser.content.content').importList('hummingbird', file);
     },
-    importMal: function() {
-      Ember.$('#malimport').submit();
+    importMal: function(file) {
+      this.get('currentUser.content.content').importList('myanimelist', file);
     }
   }
 });

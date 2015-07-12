@@ -1645,7 +1645,6 @@ CREATE TABLE users (
     authentication_token character varying(255),
     avatar_processing boolean,
     subscribed_to_newsletter boolean DEFAULT true,
-    mal_import_in_progress boolean,
     waifu character varying(255),
     location character varying(255),
     website character varying(255),
@@ -1662,7 +1661,10 @@ CREATE TABLE users (
     stripe_token character varying(255),
     pro_membership_plan_id integer,
     stripe_customer_id character varying(255),
-    about_formatted text
+    about_formatted text,
+    import_status integer,
+    import_from character varying(255),
+    import_error character varying(255)
 );
 
 
@@ -3829,4 +3831,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150426012023');
 INSERT INTO schema_migrations (version) VALUES ('20150504184112');
 
 INSERT INTO schema_migrations (version) VALUES ('20150427224114');
+
+INSERT INTO schema_migrations (version) VALUES ('20150204092920');
 

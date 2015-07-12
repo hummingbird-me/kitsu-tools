@@ -61,6 +61,11 @@
           <span class="last-backup">last backup: {{time-ago time=currentUser.lastBackup}}</span>
         </div>
         <div class="panel-body">
+          {{#if currentUser.isImportErrored}}
+            <div class="alert alert-danger">
+              <p><i class="fa fa-warning"></i> {{currentUser.importError}}</p>
+            </div>
+          {{/if}}
           <div class="row">
             <label class="control-label col-sm-6">Dropbox Backup</label>
             <div class="col-sm-6">
@@ -87,16 +92,20 @@
             </div>
           </div>
           <div class="row">
-            <label class="control-label col-sm-6">MAL Import</label>
-            <div class="col-sm-6">
-              <form action="/settings/import/myanimelist" method="post" id="malimport" enctype="multipart/form-data">
+            {{#if currentUser.isImportOngoing}}
+              <label class="control-label col-sm-6">
+                <i class="fa fa-spinner fa-spin"></i>
+                Importing...
+              </label>
+            {{else}}
+              <label class="control-label col-sm-6">MAL Import</label>
+              <div class="col-sm-6">
                 {{view "file-upload" action="importMal" name="animelist" id="mal-file"}}
-                <input type="hidden" name="authenticity_token" {{bind-attr value=csrfToken}}>
-              </form>
-              <button type="button" class="col-sm-6 col-sm-offset-6 btn btn-default" {{action "pickMalFile"}}>
-                Upload
-              </button>
-            </div>
+                <button class="col-sm-6 col-sm-offset-6 btn btn-default" {{action "pickMalFile"}}>
+                  Upload
+                </button>
+              </div>
+            {{/if}}
           </div>
         </div>
       </div>

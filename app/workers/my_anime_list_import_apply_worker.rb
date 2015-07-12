@@ -8,6 +8,13 @@ class MyAnimeListImportApplyWorker
     malimport = MyAnimeListImport.new(user, xml)
     malimport.apply!
     user.recompute_life_spent_on_anime!
-    user.update_column :mal_import_in_progress, false
+    user.update_columns import_status: nil, import_from: nil, import_error: nil
+  rescue Exception
+    status = User.import_statuses[:error]
+    user.update_columns import_status: status,
+      import_error: 'There was a problem importing your list.  Please send an
+                     email to josh@hummingbird.me with the file you are trying
+                     to import and we\'ll see what we can do.'
+    raise
   end
 end

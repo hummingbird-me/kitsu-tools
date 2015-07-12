@@ -8,7 +8,10 @@ class CurrentUserSerializer < UserSerializer
              :has_dropbox?,
              :has_facebook?,
              :confirmed?,
-             :pro_expires_at
+             :pro_expires_at,
+             :import_status,
+             :import_from,
+             :import_error
 
   has_one :pro_membership_plan
 

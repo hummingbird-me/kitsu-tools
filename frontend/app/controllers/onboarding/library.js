@@ -85,15 +85,15 @@ export default Ember.Controller.extend({
       });
     },
 
-    importLibrary: function(){
-      var self = this;
-      ajax({
-        url: '/settings/import/myanimelist',
-        type: 'POST'
-      }).then(function() {
-        self.set('importFromMal', true);
-        Ember.run.later(function(){
-          self.transitionToRoute('onboarding.finish');
+    pickMalFile: function() {
+      Ember.$('#mal-file').click();
+    },
+
+    importMal: function(file) {
+      let user = this.get('currentUser.content.content');
+      user.importList('myanimelist', file).then(() => {
+        Ember.run.later(() => {
+          this.transitionToRoute('onboarding.finish');
         }, 1000);
       });
     },
