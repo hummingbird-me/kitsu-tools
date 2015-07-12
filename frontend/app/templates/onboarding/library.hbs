@@ -17,7 +17,7 @@
       {{/if}}
       {{#if currentUser.isImportOngoing}}
         <i class="fa fa-spinner"></i>
-        We're importing your data.  Keep going, we'll tell you when it's done.
+        We're importing your data. Keep going, we'll tell you when it's done.
       {{else}}
         {{view "file-upload" action="importMal" name="animelist" id="mal-file"}}
         Have a MAL account? <a href="#" {{action "pickMalFile"}}>We can import your XML backup!</a>
