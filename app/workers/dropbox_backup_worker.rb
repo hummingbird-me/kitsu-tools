@@ -28,6 +28,9 @@ class DropboxBackupWorker
     rescue Dropbox::API::Error::Unauthorized
       user.update(dropbox_token: nil, dropbox_secret: nil)
       return
+    rescue Dropbox::API::Error::StorageQuota
+      # TODO: notify the user
+      return
     end
 
     # Update the last_backup timestamp
