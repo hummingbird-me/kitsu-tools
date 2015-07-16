@@ -1,23 +1,22 @@
 import Ember from 'ember';
 import { initialize } from 'frontend/initializers/message-bus';
 
-var container, application;
+var application, registry;
 
 module('MessageBusInitializer', {
   setup: function() {
     Ember.run(function() {
-      container = new Ember.Container();
       application = Ember.Application.create();
+      registry = application.registry;
       application.deferReadiness();
     });
   }
 });
 
 // Replace this with your real tests.
-test('it works', function() {
-  initialize(container, application);
+test('it works', function(assert) {
+  initialize(registry, application);
 
   // you would normally confirm the results of the initializer here
-  ok(true);
+  assert.ok(true);
 });
-
