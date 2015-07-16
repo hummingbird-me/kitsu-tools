@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from 'Auth::UnauthorizedException' do
     respond_to do |format|
-      format.json { render json: {error: "Not authenticated"}, status: 403 }
+      format.json { render json: { error: 'Not authenticated' }, status: 403 }
       format.html { redirect_to(new_user_session_path) }
     end
   end
@@ -25,13 +25,13 @@ class ApplicationController < ActionController::Base
 
   # Send an object along with the initial HTML response that will be loaded into
   # Ember Data's cache.
-  def preload_to_ember!(data, options={})
+  def preload_to_ember!(data, options = {})
     @preload ||= []
     data = ed_serialize(data, options)
     @preload << data unless data.nil?
   end
 
-  def ed_serialize(data, options={})
+  def ed_serialize(data, options = {})
     data = data.to_a if data.respond_to? :to_ary
     data = [data] unless data.is_a? Array
     return if data.empty?
@@ -55,19 +55,19 @@ class ApplicationController < ActionController::Base
     end
 
     # Preload blotter.
-    generic_preload! "blotter", Blotter.get
+    generic_preload! 'blotter', Blotter.get
 
     # Preload stripe publishable key.
-    generic_preload! "stripe_key", Rails.configuration.stripe[:publishable_key]
+    generic_preload! 'stripe_key', Rails.configuration.stripe[:publishable_key]
 
     # Preload supported emoji
-    generic_preload! "emoji", Twemoji::CODES
+    generic_preload! 'emoji', Twemoji::CODES
   end
 
   # Render the Ember application, optionally preloading some data into ED
   def render_ember(data = nil)
     preload_to_ember! data if data
-    render "layouts/redesign", layout: false
+    render 'layouts/redesign', layout: false
   end
 
   # Shortcut to respond with JSON or the Ember application w/ preloaded data
@@ -108,18 +108,19 @@ class ApplicationController < ActionController::Base
     status, message = message, status unless status.is_a?(Fixnum)
     # If the message is a Hash of errors, we put it in standard ED form
     if message.is_a?(Hash)
-      render json: {errors: message}, status: status
+      render json: { errors: message }, status: status
     else
-      render json: {error: message}, status: status
+      render json: { error: message }, status: status
     end
   end
 
   # DEPRECATED
-  def hide_cover_image;end
+  def hide_cover_image; end
 
   def mixpanel
     if Rails.env.production?
-      @mixpanel ||= Mixpanel::Tracker.new '92b66301c752642b40ca39e718517d94', { :async => true, :env => request.env }
+      @mixpanel ||= Mixpanel::Tracker.new '92b66301c752642b40ca39e718517d94',
+                                          async: true, env: request.env
     else
       require_dependency 'dummy_mixpanel'
       @mixpanel ||= DummyMixpanel.new
@@ -131,12 +132,8 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || user_path(resource)
   end
 
-  def after_sign_out_path_for(resource)
-    request.referrer
-  end
-
   def not_found!
-    raise ActionController::RoutingError.new('Not Found')
+    fail ActionController::RoutingError, 'Not Found'
   end
 
   protected
