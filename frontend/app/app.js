@@ -37,6 +37,7 @@ Ember.Inflector.inflector.rules.uncountable.full_manga = true;
 
 var App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
+  podModulePrefix: config.podModulePrefix,
   Resolver: Resolver
 });
 
