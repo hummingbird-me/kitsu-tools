@@ -111,7 +111,7 @@ class Anime < ActiveRecord::Base
     where('EXTRACT(YEAR FROM started_airing_date) = ?', year)
   }
 
-  scope :by_started_date, ->(date, direction = :after) { 
+  scope :by_started_date, ->(date, direction = :after) {
     return where('started_airing_date > ?', date) if direction == :after
     return where('started_airing_date < ?', date) if direction == :before
   }
@@ -149,13 +149,17 @@ class Anime < ActiveRecord::Base
   end
 
   # Use this function to get the title instead of directly accessing the title.
+  # preference = canonical | english | romanized
   def canonical_title(preference = '')
     if preference.class == User
       preference = preference.title_language_preference
     end
 
-    if (preference == 'english' || english_canonical) && alt_title.present?
-      alt_title
+    case preference
+    when 'canonical'
+      english_canonical? ? alt_title : title
+    when 'english'
+      alt_title || title
     else
       title
     end
@@ -168,8 +172,11 @@ class Anime < ActiveRecord::Base
       preference = preference.title_language_preference
     end
 
-    if (preference == 'english' || english_canonical?) && alt_title.present?
-      title
+    case preference
+    when 'canonical'
+      english_canonical? ? title : alt_title
+    when 'english'
+      title || alt_title
     else
       alt_title
     end
