@@ -1,5 +1,5 @@
 class AppsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :update, :mine]
+  before_action :authenticate_user!, only: %i(new create update mine)
 
   ember_action(:mine) { App.where(creator: current_user) }
   ember_action(:show, true) { App.find(params[:id]) }
@@ -39,8 +39,7 @@ class AppsController < ApplicationController
   private
 
   def app_fields
-     permitted = [:name, :homepage, :description,
-                  :logo, :redirect_uri]
+    permitted = %i(name homepage description logo redirect_uri)
 
     attrs = params.require(:app)
     attrs.delete(:logo) unless attrs[:logo] && attrs[:logo].start_with?('data:')
