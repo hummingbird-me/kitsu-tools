@@ -2,9 +2,9 @@ require_dependency 'auth/unauthorized_exception'
 
 module Auth
   class CurrentUserProvider
-    CURRENT_USER_KEY = "_CURRENT_USER".freeze
-    TOKEN_FIELD = "token".freeze
-    OLD_COOKIE = "auth_token".freeze
+    CURRENT_USER_KEY ||= "_CURRENT_USER".freeze
+    TOKEN_FIELD ||= "token".freeze
+    OLD_COOKIE ||= "auth_token".freeze
 
     def initialize(env)
       @env = env
