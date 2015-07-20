@@ -23,7 +23,7 @@ class Substory < ActiveRecord::Base
   validates :user, :substory_type, presence: true
 
   enum substory_type: [:followed, :watchlist_status_update, :comment,
-                            :watched_episode, :reply]
+                            :watched_episode, :reply, :manga_status_update]
 
   has_many :notifications, as: :source, dependent: :destroy
 
