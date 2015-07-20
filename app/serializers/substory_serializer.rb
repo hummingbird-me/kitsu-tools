@@ -13,8 +13,9 @@ class SubstorySerializer < ActiveModel::Serializer
   def new_status
     object.data["new_status"]
   end
+
   def include_new_status?
-    object.substory_type == "watchlist_status_update"
+    %w[watchlist_status_update manga_status_update].include? object.substory_type
   end
 
   def episode_number

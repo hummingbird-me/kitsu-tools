@@ -29,6 +29,14 @@ export default Model.extend(ModelCurrentUser, {
         "On Hold": " has placed on hold.",
         "Dropped": " has dropped."
       }[this.get('newStatus')];
+    } else if (this.get('type') === "manga_status_update") {
+      return {
+        "Plan to Read": " plans to read.",
+        "Currently Reading": " is currently reading.",
+        "Completed": " has completed.",
+        "On Hold": " has placed on hold.",
+        "Dropped": " has dropped."
+      }[this.get('newStatus')];
     } else if (this.get('type') === "watched_episode") {
       return " watched episode " + this.get('episodeNumber') + ".";
     } else {

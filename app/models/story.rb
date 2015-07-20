@@ -53,6 +53,16 @@ class Story < ActiveRecord::Base
     story
   end
 
+  def self.for_user_and_manga(user, manga_id)
+    user.stories.find_or_create_by(
+      story_type: "media_story",
+      target_id: manga_id,
+      target_type: "Manga",
+    ) do |story|
+      story.watchlist = MangaLibraryEntry.find_by(user_id: user.id, manga_id: manga_id)
+    end
+  end
+
   def quote
     return Quote.find data["quote_id"]
   end
