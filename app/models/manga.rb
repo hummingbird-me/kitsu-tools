@@ -44,6 +44,8 @@ class Manga < ActiveRecord::Base
   validates :romaji_title, presence: true
   validates :manga_type, inclusion: { in: VALID_TYPES }
 
+  scope :order_by_rating, ->{ order('bayesian_rating DESC NULLS LAST') }
+
   def canonical_title
     romaji_title
   end
