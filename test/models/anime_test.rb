@@ -45,7 +45,7 @@ class AnimeTest < ActiveSupport::TestCase
   should have_many(:castings).dependent(:destroy)
   should have_many(:reviews).dependent(:destroy)
   should have_many(:gallery_images).dependent(:destroy)
-  should have_many(:watchlists).dependent(:destroy)
+  should have_many(:library_entries).dependent(:destroy)
   should have_many(:stories).dependent(:destroy)
   should have_and_belong_to_many(:genres)
   should have_and_belong_to_many(:producers)

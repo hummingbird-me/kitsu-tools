@@ -57,22 +57,22 @@ class API_v1 < Grape::API
       end
     end
 
-    def present_watchlist(w, rating_type, title_language_preference)
+    def present_library_entry(e, rating_type, title_language_preference)
       {
-        id: w.id,
-        episodes_watched: w.episodes_watched,
-        last_watched: w.last_watched || w.updated_at,
-        updated_at: w.updated_at,
-        rewatched_times: w.rewatch_count,
-        notes: w.notes,
-        notes_present: (w.notes and w.notes.strip.length > 0),
-        status: w.status.downcase.gsub(' ', '-'),
-        private: w.private,
-        rewatching: w.rewatching,
-        anime: present_anime(w.anime, title_language_preference),
+        id: e.id,
+        episodes_watched: e.episodes_watched,
+        last_watched: e.last_watched || e.updated_at,
+        updated_at: e.updated_at,
+        rewatched_times: e.rewatch_count,
+        notes: e.notes,
+        notes_present: (e.notes and e.notes.strip.length > 0),
+        status: e.status.downcase.gsub(' ', '-'),
+        private: e.private,
+        rewatching: e.rewatching,
+        anime: present_anime(e.anime, title_language_preference),
         rating: {
           type: rating_type,
-          value: w.rating
+          value: e.rating
         }
       }
     end
@@ -263,11 +263,11 @@ class API_v1 < Grape::API
       end
 
       user = find_user(params[:user_id])
-      status = Watchlist.status_parameter_to_status(params[:status])
+      status = LibraryEntry.SNAKE_STATUSES[params[:status]]
 
-      watchlists = user.watchlists.includes(:anime, anime: :genres)
-      watchlists = watchlists.where(status: status) if status
-      watchlists = watchlists.where(private: false) if user != current_user
+      entries = user.library_entries
+      entries = entries.where(status: status) if status
+      entries = entries.where(private: false) if user != current_user
 
       title_language_preference = params[:title_language_preference]
       if title_language_preference.nil? and current_user
@@ -277,7 +277,7 @@ class API_v1 < Grape::API
 
       rating_type = user.star_rating? ? "advanced" : "simple"
 
-      watchlists.map {|w| present_watchlist(w, rating_type, title_language_preference) }
+      entries.map {|e| present_library_entry(e, rating_type, title_language_preference) }
     end
 
     desc "Returns the user's favorite Animes"
@@ -386,7 +386,7 @@ class API_v1 < Grape::API
 
       anime = Anime.find(params["anime_slug"])
 
-      library_entry = LibraryEntry.where(user_id: current_user.id, anime_id: anime.id).first || LibraryEntry.new({user_id: current_user.id, anime_id: anime.id})
+      library_entry = LibraryEntry.where(user_id: current_user.id, anime_id: anime.id).first_or_initialize
 
       if params[:status]
         t = {
@@ -475,7 +475,7 @@ class API_v1 < Grape::API
       Action.from_library_entry(library_entry)
 
       if library_entry.save
-        wl = present_watchlist(library_entry.reload, rating_type, title_language_preference)
+        wl = present_library_entry(library_entry.reload, rating_type, title_language_preference)
         wl = wl.merge(mal_id: anime.mal_id) if params[:include_mal_id] == "true"
         wl
       else

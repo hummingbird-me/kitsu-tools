@@ -2,19 +2,19 @@
 #
 # Table name: stories
 #
-#  id           :integer          not null, primary key
-#  user_id      :integer
-#  data         :hstore
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  story_type   :string(255)
-#  target_id    :integer
-#  target_type  :string(255)
-#  watchlist_id :integer
-#  adult        :boolean          default(FALSE)
-#  total_votes  :integer          default(0), not null
-#  group_id     :integer
-#  deleted_at   :datetime
+#  id               :integer          not null, primary key
+#  user_id          :integer
+#  data             :hstore
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  story_type       :string(255)
+#  target_id        :integer
+#  target_type      :string(255)
+#  library_entry_id :integer
+#  adult            :boolean          default(FALSE)
+#  total_votes      :integer          default(0), not null
+#  group_id         :integer
+#  deleted_at       :datetime
 #
 
 class Story < ActiveRecord::Base
@@ -23,7 +23,7 @@ class Story < ActiveRecord::Base
   attr_reader :is_liked
   attr_accessor :recent_likers
 
-  belongs_to :watchlist
+  belongs_to :library_entry
   belongs_to :user
   belongs_to :target, polymorphic: true
   belongs_to :group
@@ -41,14 +41,20 @@ class Story < ActiveRecord::Base
 
   def self.for_user_and_anime(user, anime, story_type="media_story")
     story = user.stories.where(story_type: story_type, target_id: anime.id, target_type: "Anime")
-    watchlist = Watchlist.find_by(user_id: user.id, anime_id: anime.id)
+    entry = LibraryEntry.find_by(user_id: user.id, anime_id: anime.id)
     if story.length > 0
       story = story[0]
-      story.watchlist = watchlist
-      story.adult = (not anime.sfw?)
+      story.library_entry = entry
+      story.adult = (!anime.sfw?)
       story.save!
     else
-      story = Story.create user: user, story_type: story_type, target: anime, watchlist: watchlist, adult: (not anime.sfw?)
+      story = Story.create(
+        user: user,
+        story_type: story_type,
+        target: anime,
+        library_entry: entry,
+        adult: (!anime.sfw?)
+      )
     end
     story
   end
@@ -70,11 +76,10 @@ class Story < ActiveRecord::Base
   end
 
   def self.for_user(user)
-    if user.nil? or user.sfw_filter
-      where("NOT adult").joins("LEFT OUTER JOIN watchlists ON watchlists.id = stories.watchlist_id").where("watchlists.id IS NULL OR watchlists.private = 'f'")
-    else
-      joins("LEFT OUTER JOIN watchlists ON watchlists.id = stories.watchlist_id").where("watchlists.id IS NULL OR watchlists.private = 'f'")
-    end
+    query = eager_load(:library_entry)
+            .where("library_entries.id IS NULL OR library_entries.private = 'f'")
+    query = query.where.not(adult: true) if user.nil? || user.sfw_filter
+    query
   end
 
   # Can this story be deleted by the specified user?

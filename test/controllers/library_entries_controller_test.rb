@@ -79,7 +79,7 @@ class LibraryEntriesControllerTest < ActionController::TestCase
   end
 
   test "need to be authenticated as correct user to update library entry" do
-    id = watchlists(:one).id
+    id = library_entries(:one).id
     put :update, id: id, library_entry: {status: 'On Hold', rating: 3.5}
     assert_equal "Plan to Watch", LibraryEntry.find(id).status
     sign_in users(:josh)
@@ -89,7 +89,7 @@ class LibraryEntriesControllerTest < ActionController::TestCase
 
   test "can update library entry when authenticated" do
     Substory.expects(:from_action)
-    id = watchlists(:one).id
+    id = library_entries(:one).id
     sign_in users(:vikhyat)
     put :update, id: id, library_entry: {status: 'On Hold', rating: 3.5, episodes_watched: 3}
     assert_equal "On Hold", LibraryEntry.find(id).status
@@ -98,7 +98,7 @@ class LibraryEntriesControllerTest < ActionController::TestCase
   end
 
   test "need to be authenticated as the correct user to destroy library entry" do
-    id = watchlists(:one).id
+    id = library_entries(:one).id
     delete :destroy, id: id
     assert_not_nil LibraryEntry.find_by_id(id)
     sign_in users(:josh)
@@ -107,7 +107,7 @@ class LibraryEntriesControllerTest < ActionController::TestCase
   end
 
   test "can destroy library entry when authenticated" do
-    id = watchlists(:one).id
+    id = library_entries(:one).id
     sign_in users(:vikhyat)
     delete :destroy, id: id
     assert_nil LibraryEntry.find_by_id(id)
@@ -115,13 +115,13 @@ class LibraryEntriesControllerTest < ActionController::TestCase
 
   test "updating rating doesn't create story" do
     Substory.expects(:from_action).never
-    id = watchlists(:one).id
+    id = library_entries(:one).id
     sign_in users(:vikhyat)
     put :update, id: id, library_entry: {rating: 2}
   end
 
   test "create story when episode count is incremented by one" do
-    id = watchlists(:one).id
+    id = library_entries(:one).id
     le = LibraryEntry.find(id)
     sign_in users(:vikhyat)
 

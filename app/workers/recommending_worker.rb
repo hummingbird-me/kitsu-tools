@@ -10,22 +10,22 @@ class RecommendingWorker
     user = User.find(user_id)
 
     # Get a user's list and favorite genres.
-    user_watchlists = user.watchlists
-    user_watchlists_anime_ids = (user_watchlists.map {|x| x.anime_id } + user.not_interested_anime.map {|x| x.id }).uniq
+    entries = user.library_entries
+    ignore_ids = (entries.map(&:anime_id) + user.not_interested_anime.map(&:id)).uniq
     favorite_genres = user.favorite_genres
 
     last_recommendations_update = Time.now
 
     similarities = {}
     anime = {}
-    user_watchlists.each do |watchlist|
-      similarities[watchlist.anime_id] ||= {}
-      get_similar(watchlist.anime).each do |similar|
+    entries.each do |entry|
+      similarities[entry.anime_id] ||= {}
+      get_similar(entry.anime).each do |similar|
         similar_anime = Anime.find_by_id(similar["id"])
-        if similar_anime and ["OVA", "ONA", "Movie", "TV"].include? similar_anime.show_type
+        if similar_anime && %w[OVA ONA Movie TV].include?(similar_anime.show_type)
           anime[similar_anime.id] = similar_anime
           similar_id = similar_anime.id
-          similarities[watchlist.anime_id][similar_id] = similar["sim"]
+          similarities[entry.anime_id][similar_id] = similar["sim"]
         end
       end
     end
@@ -33,7 +33,7 @@ class RecommendingWorker
     # We want to categorize recommendations as follows.
     #
     # * General: based off the entire library.
-    # * By status: based off of a particular watchlist section.
+    # * By status: based off of a particular library section.
     # * By service: can be viewed in a service.
     # * By genre: belongs to genre.
     #
@@ -55,17 +55,17 @@ class RecommendingWorker
       }
     }
 
-    user_watchlists.each do |watchlist|
-      similarities[watchlist.anime_id].each do |similar_id, similarity|
+    entries.each do |entry|
+      similarities[entry.anime_id].each do |similar_id, similarity|
         # TODO: factor should probably take recency into account.
-        factor = similarity * ((watchlist.rating || 3) - 2.7)
+        factor = similarity * ((entry.rating || 3) - 2.7)
 
         raw_recommendations[:general][similar_id] += factor
-        if watchlist.status == "Currently Watching"
+        if entry.status == "Currently Watching"
           raw_recommendations[:by_status][:currently_watching][similar_id] += factor
-        elsif watchlist.status == "Plan to Watch"
+        elsif entry.status == "Plan to Watch"
           raw_recommendations[:by_status][:plan_to_watch][similar_id] += factor
-        elsif watchlist.status == "Completed"
+        elsif entry.status == "Completed"
           raw_recommendations[:by_status][:completed][similar_id] += factor
         end
       end
@@ -91,7 +91,7 @@ class RecommendingWorker
     # First, fill out the by_status sections.
     [:currently_watching, :plan_to_watch, :completed].each do |status|
       recs = raw_recommendations[:by_status][status].keys
-      recs -= user_watchlists_anime_ids
+      recs -= ignore_ids
       recs.sort_by {|sid| -raw_recommendations[:by_status][status][sid] }
       # Exclude hentai.
       recs.select! {|sid| anime[sid].sfw? }
@@ -101,7 +101,7 @@ class RecommendingWorker
 
     # Generate full "general" recommendations array.
     general = raw_recommendations[:general].keys
-    general -= user_watchlists_anime_ids
+    general -= ignore_ids
     general.sort_by {|sid| -raw_recommendations[:general][sid] }
 
     # Top 10 general recommendations.

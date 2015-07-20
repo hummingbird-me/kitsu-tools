@@ -63,7 +63,7 @@ class Anime < ActiveRecord::Base
     a.has_many :episodes
     a.has_many :gallery_images
     a.has_many :stories, as: :target
-    a.has_many :watchlists
+    a.has_many :library_entries
     a.has_many :quotes
   end
 

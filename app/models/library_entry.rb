@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: watchlists
+# Table name: library_entries
 #
 #  id               :integer          not null, primary key
 #  user_id          :integer
@@ -19,12 +19,12 @@
 #
 
 class LibraryEntry < ActiveRecord::Base
-  self.table_name = "watchlists"
+  default_scope { includes(:anime, anime: :genres) }
 
   belongs_to :user
   belongs_to :anime
   has_many :genres, through: :anime
-  has_many :stories, dependent: :destroy, foreign_key: :watchlist_id
+  has_many :stories, dependent: :destroy
 
   validates :user, :anime, :status, :episodes_watched, :rewatch_count, 
     presence: true
@@ -32,6 +32,14 @@ class LibraryEntry < ActiveRecord::Base
 
   VALID_STATUSES = ["Currently Watching", "Plan to Watch", "Completed", "On Hold", "Dropped"]
   validates :status, inclusion: {in: VALID_STATUSES}
+
+  SNAKE_STATUSES = {
+    'currently-watching' => 'Currently Watching',
+    'plan-to-watch' => 'Plan to Watch',
+    'completed' => 'Completed',
+    'on-hold' => 'On Hold',
+    'dropped' => 'Dropped'
+  }
 
   validate :rating_is_valid
   def rating_is_valid

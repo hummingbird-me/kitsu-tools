@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: watchlists
+# Table name: library_entries
 #
 #  id               :integer          not null, primary key
 #  user_id          :integer
