@@ -52,7 +52,7 @@ export default Ember.ArrayController.extend({
 
     this.set('favoriteAnimeLoading', false);
     return this.get('userInfo.favorites').filter(function(fav) {
-      return ( fav.get('item').constructor.typeKey === 'anime');
+      return ( fav.get('item').constructor.modelName === 'anime');
     });
   }.property('userInfo.favorites.@each'),
 
@@ -61,7 +61,7 @@ export default Ember.ArrayController.extend({
 
     this.set('favoriteMangaLoading', false);
     return this.get('userInfo.favorites').filter(function(fav) {
-      return ( fav.get('item').constructor.typeKey === 'manga');
+      return ( fav.get('item').constructor.modelName === 'manga');
     });
   }.property('userInfo.favorites.@each'),
 

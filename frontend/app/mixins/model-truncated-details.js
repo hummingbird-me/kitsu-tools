@@ -1,23 +1,25 @@
 import Ember from 'ember';
 
 export default Ember.Mixin.create({
-    truncatedBio: function(key, value) {
-      // setter
-      if (arguments.length > 1) {
+    truncatedBio: Ember.computed('bio', {
+      get() {
+        return this.get('bio') || "";
+      },
+
+      set(key, value) {
         this.set('bio', value.slice(0, 140));
+        return this.get('bio');
       }
+    }),
 
-      // getter
-      return this.get('bio') || "";
-    }.property('bio'),
+    truncatedAbout: Ember.computed('about', {
+      get() {
+        return this.get('about') || "";
+      },
 
-    truncatedAbout: function(key, value) {
-      // setter
-      if (arguments.length > 1) {
+      set(key, value) {
         this.set('about', value.slice(0, 500));
+        return this.get('about');
       }
-
-      // getter
-      return this.get('about') || "";
-    }.property('about')
+    })
 });
