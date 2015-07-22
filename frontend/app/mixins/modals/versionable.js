@@ -15,7 +15,7 @@ export default Ember.Mixin.create({
   actions: {
     save: function() {
       // setup our params
-      var root = this.get('model.constructor.typeKey').pluralize().decamelize(),
+      var root = this.get('model.constructor.modelName').pluralize().underscore(),
           data = this.get('model').serialize(),
           hash = {};
 

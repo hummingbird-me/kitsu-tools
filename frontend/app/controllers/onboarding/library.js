@@ -109,7 +109,7 @@ export default Ember.Controller.extend({
 
       // Anime and Manga library entries are using
       // different models in ember data!
-      if(media.constructor.typeKey === 'anime') {
+      if(media.constructor.modelName === 'anime') {
         libraryEntry = this.store.createRecord('LibraryEntry', {
           anime: media,
           status: "Completed",
