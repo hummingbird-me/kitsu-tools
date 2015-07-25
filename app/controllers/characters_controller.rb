@@ -3,10 +3,10 @@ class CharactersController < ApplicationController
     character = Character.find params[:id]
     respond_to do |format|
       format.json { render json: character }
-      format.html {
+      format.html do
         preload_to_ember! character
         render_ember
-      }
+      end
     end
   end
 end
