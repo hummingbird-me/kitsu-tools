@@ -8,14 +8,15 @@ export default Ember.Component.extend({
   media: null,
 
   applyAwesomeRating: function() {
-    var self = this;
     this.$().AwesomeRating({
       rating: this.get('rating'),
       type: this.get('type'),
       editable: this.get('editable'),
-      update: function(newRating) {
-        self.sendAction('action', newRating, self.get('media'));
-        self.set('rating', newRating);
+      update: (newRating) => {
+        if (this.get('rating') === newRating) {
+          newRating = null;
+        }
+        this.sendAction('action', newRating, this.get('media'));
       }
     });
   }.on('didInsertElement').observes('rating')
