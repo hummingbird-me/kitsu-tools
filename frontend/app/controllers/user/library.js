@@ -161,9 +161,6 @@ export default Ember.ArrayController.extend({
     },
 
     setRating: function (libraryEntry, newRating) {
-      if (libraryEntry.get('rating') === newRating) {
-        newRating = null;
-      }
       libraryEntry.set('rating', newRating);
       return this.saveLibraryEntry(libraryEntry);
     },

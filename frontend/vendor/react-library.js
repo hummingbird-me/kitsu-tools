@@ -19019,8 +19019,11 @@ module.exports = warning;
               type: this.props.view.get('user.model.ratingType'),
               rating: this.props.content.get('rating'),
               update: function (newRating) {
+                if (this.props.content.get('rating') === newRating) {
+                  newRating = null;
+                }
                 controller.send('setRating', libraryEntry, newRating);
-              }
+              }.bind(this)
             });
           }
         }
@@ -19468,8 +19471,11 @@ module.exports = warning;
               type: this.props.view.get('user.model.ratingType'),
               rating: this.props.content.get('rating'),
               update: function (newRating) {
+                if (this.props.content.get('rating') === newRating) {
+                  newRating = null;
+                }
                 controller.send('setRating', libraryEntry, newRating);
-              }
+              }.bind(this)
             });
           }
         }
