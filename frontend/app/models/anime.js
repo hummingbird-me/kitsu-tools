@@ -10,6 +10,7 @@ export default Media.extend(ModelCurrentUser, {
   romajiTitle: DS.attr('string'),
   synopsis: DS.attr('string'),
   posterImage: DS.attr('string'),
+  posterImageThumb: DS.attr('string'),
   showType: DS.attr('string'),
   ageRating: DS.attr('string'),
   ageRatingGuide: DS.attr('string'),
@@ -24,10 +25,6 @@ export default Media.extend(ModelCurrentUser, {
   nsfw: function() {
     return this.get('ageRating') === "R18+" || this.get('ageRating') === "R17+";
   }.property('ageRating'),
-
-  posterImageThumb: function(){
-    return this.get('posterImage').replace("/large/", "/medium/");
-  }.property('posterImage'),
 
   displayTitle: function() {
     var currentUser, pref, title;
