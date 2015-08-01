@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'coffee_script'
 
 # require_dependency doesn't work here for some reason.
 require_relative '../lib/log_before_timeout.rb'
