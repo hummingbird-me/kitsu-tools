@@ -148,6 +148,10 @@ class Anime < ActiveRecord::Base
     age_rating != 'R18+'
   end
 
+  def nsfw?
+    !sfw?
+  end
+
   # Use this function to get the title instead of directly accessing the title.
   # preference = canonical | english | romanized
   def canonical_title(preference = '')

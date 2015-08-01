@@ -57,4 +57,14 @@ class AnimeTest < ActiveSupport::TestCase
     assert Anime.full_search("swodr atr onlien").include?(anime(:sword_art_online))
     assert Anime.instant_search("sword art").include?(anime(:sword_art_online))
   end
+
+  test '#sfw? should return true for non-lewd things' do
+    anime = build(:anime)
+    assert anime.sfw?
+  end
+
+  test '#nsfw? should return true for lewd things' do
+    anime = build(:lewd_anime)
+    assert anime.nsfw?
+  end
 end
