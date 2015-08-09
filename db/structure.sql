@@ -1502,14 +1502,14 @@ CREATE TABLE stories (
     data hstore,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    story_type character varying(255),
     target_id integer,
     target_type character varying(255),
     library_entry_id integer,
     adult boolean DEFAULT false,
     total_votes integer DEFAULT 0 NOT NULL,
     group_id integer,
-    deleted_at timestamp without time zone
+    deleted_at timestamp without time zone,
+    type integer NOT NULL
 );
 
 
@@ -1574,7 +1574,7 @@ CREATE TABLE substories (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     data hstore,
-    substory_type integer DEFAULT 0 NOT NULL,
+    type integer DEFAULT 0 NOT NULL,
     deleted_at timestamp without time zone
 );
 
@@ -3851,4 +3851,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150204092920');
 INSERT INTO schema_migrations (version) VALUES ('20150712193314');
 
 INSERT INTO schema_migrations (version) VALUES ('20150717223653');
+
+INSERT INTO schema_migrations (version) VALUES ('20150721045225');
 
