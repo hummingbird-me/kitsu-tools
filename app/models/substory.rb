@@ -2,29 +2,30 @@
 #
 # Table name: substories
 #
-#  id            :integer          not null, primary key
-#  user_id       :integer
-#  story_id      :integer
-#  target_id     :integer
-#  target_type   :string(255)
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
-#  data          :hstore
-#  substory_type :integer          default(0), not null
-#  deleted_at    :datetime
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  story_id    :integer
+#  target_id   :integer
+#  target_type :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  data        :hstore
+#  type        :integer          default(0), not null
+#  deleted_at  :datetime
 #
 
 class Substory < ActiveRecord::Base
+  include EnumeratedInheritance
   acts_as_paranoid
+  sti_enum 0 => 'Substory::FollowSubstory',  # followed
+           1 => 'Substory::LibrarySubstory',   # watchlist_status_update
+           2 => 'Substory::CommentSubstory',   # comment
+           3 => 'Substory::EpisodeSubstory',   # watched_episode
+           4 => 'Substory::ReplySubstory'      # reply
 
   belongs_to :user
   belongs_to :target, polymorphic: true
   belongs_to :story
-  validates :user, :substory_type, presence: true
-
-  enum substory_type: [:followed, :watchlist_status_update, :comment,
-                            :watched_episode, :reply]
-
   has_many :notifications, as: :source, dependent: :destroy
 
   scope :unbanned, ->{ eager_load(:user).where(users: { ninja_banned: false }) }

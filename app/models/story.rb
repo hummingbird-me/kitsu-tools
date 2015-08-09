@@ -18,7 +18,11 @@
 #
 
 class Story < ActiveRecord::Base
+  include EnumeratedInheritance
   acts_as_paranoid
+  sti_enum 0 => 'Story::LibraryStory',
+           1 => 'Story::CommentStory',
+           2 => 'Story::FollowStory'
 
   attr_reader :is_liked
   attr_accessor :recent_likers
