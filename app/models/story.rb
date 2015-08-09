@@ -7,7 +7,6 @@
 #  data             :hstore
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
-#  story_type       :string(255)
 #  target_id        :integer
 #  target_type      :string(255)
 #  library_entry_id :integer
@@ -15,6 +14,7 @@
 #  total_votes      :integer          default(0), not null
 #  group_id         :integer
 #  deleted_at       :datetime
+#  type             :integer          not null
 #
 
 class Story < ActiveRecord::Base
