@@ -928,6 +928,47 @@ ALTER SEQUENCE groups_id_seq OWNED BY groups.id;
 
 
 --
+-- Name: library_entries; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE library_entries (
+    id integer NOT NULL,
+    user_id integer,
+    anime_id integer,
+    status character varying(255),
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    episodes_watched integer DEFAULT 0 NOT NULL,
+    rating numeric(2,1),
+    last_watched timestamp without time zone,
+    imported boolean,
+    private boolean DEFAULT false,
+    notes text,
+    rewatch_count integer DEFAULT 0 NOT NULL,
+    rewatching boolean DEFAULT false NOT NULL
+);
+
+
+--
+-- Name: library_entries_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE library_entries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: library_entries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE library_entries_id_seq OWNED BY library_entries.id;
+
+
+--
 -- Name: list_items; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -1464,7 +1505,7 @@ CREATE TABLE stories (
     story_type character varying(255),
     target_id integer,
     target_type character varying(255),
-    watchlist_id integer,
+    library_entry_id integer,
     adult boolean DEFAULT false,
     total_votes integer DEFAULT 0 NOT NULL,
     group_id integer,
@@ -1796,47 +1837,6 @@ ALTER SEQUENCE votes_id_seq OWNED BY votes.id;
 
 
 --
--- Name: watchlists; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE watchlists (
-    id integer NOT NULL,
-    user_id integer,
-    anime_id integer,
-    status character varying(255),
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
-    episodes_watched integer DEFAULT 0 NOT NULL,
-    rating numeric(2,1),
-    last_watched timestamp without time zone,
-    imported boolean,
-    private boolean DEFAULT false,
-    notes text,
-    rewatch_count integer DEFAULT 0 NOT NULL,
-    rewatching boolean DEFAULT false NOT NULL
-);
-
-
---
--- Name: watchlists_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE watchlists_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: watchlists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE watchlists_id_seq OWNED BY watchlists.id;
-
-
---
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -1994,6 +1994,13 @@ ALTER TABLE ONLY groups ALTER COLUMN id SET DEFAULT nextval('groups_id_seq'::reg
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY library_entries ALTER COLUMN id SET DEFAULT nextval('library_entries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY list_items ALTER COLUMN id SET DEFAULT nextval('list_items_id_seq'::regclass);
 
 
@@ -2135,13 +2142,6 @@ ALTER TABLE ONLY videos ALTER COLUMN id SET DEFAULT nextval('videos_id_seq'::reg
 --
 
 ALTER TABLE ONLY votes ALTER COLUMN id SET DEFAULT nextval('votes_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY watchlists ALTER COLUMN id SET DEFAULT nextval('watchlists_id_seq'::regclass);
 
 
 --
@@ -2321,6 +2321,14 @@ ALTER TABLE ONLY groups
 
 
 --
+-- Name: library_entries_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY library_entries
+    ADD CONSTRAINT library_entries_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: list_items_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -2486,14 +2494,6 @@ ALTER TABLE ONLY videos
 
 ALTER TABLE ONLY votes
     ADD CONSTRAINT votes_pkey PRIMARY KEY (id);
-
-
---
--- Name: watchlists_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY watchlists
-    ADD CONSTRAINT watchlists_pkey PRIMARY KEY (id);
 
 
 --
@@ -2819,6 +2819,27 @@ CREATE UNIQUE INDEX index_group_members_on_user_id_and_group_id ON group_members
 
 
 --
+-- Name: index_library_entries_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_library_entries_on_user_id ON library_entries USING btree (user_id);
+
+
+--
+-- Name: index_library_entries_on_user_id_and_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_library_entries_on_user_id_and_anime_id ON library_entries USING btree (user_id, anime_id);
+
+
+--
+-- Name: index_library_entries_on_user_id_and_status; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_library_entries_on_user_id_and_status ON library_entries USING btree (user_id, status);
+
+
+--
 -- Name: index_list_items_on_list_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -3075,27 +3096,6 @@ CREATE UNIQUE INDEX index_votes_on_target_id_and_target_type_and_user_id ON vote
 --
 
 CREATE INDEX index_votes_on_user_id_and_target_type ON votes USING btree (user_id, target_type);
-
-
---
--- Name: index_watchlists_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_watchlists_on_user_id ON watchlists USING btree (user_id);
-
-
---
--- Name: index_watchlists_on_user_id_and_anime_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_watchlists_on_user_id_and_anime_id ON watchlists USING btree (user_id, anime_id);
-
-
---
--- Name: index_watchlists_on_user_id_and_status; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_watchlists_on_user_id_and_status ON watchlists USING btree (user_id, status);
 
 
 --
@@ -3849,4 +3849,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150427224114');
 INSERT INTO schema_migrations (version) VALUES ('20150204092920');
 
 INSERT INTO schema_migrations (version) VALUES ('20150712193314');
+
+INSERT INTO schema_migrations (version) VALUES ('20150717223653');
 

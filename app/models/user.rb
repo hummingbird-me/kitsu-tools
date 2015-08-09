@@ -177,7 +177,6 @@ class User < ActiveRecord::Base
     content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
   }
 
-  has_many :watchlists
   has_many :library_entries, dependent: :destroy
   has_many :manga_library_entries, dependent: :destroy
   has_many :reviews
@@ -367,7 +366,7 @@ class User < ActiveRecord::Base
 
   # How many minutes the user has spent watching anime.
   def recompute_life_spent_on_anime!
-    time_spent = self.library_entries.joins(:anime).select('
+    time_spent = self.library_entries.unscoped.joins(:anime).select('
       COALESCE(anime.episode_length, 0) * (
         COALESCE(episodes_watched, 0)
         + COALESCE(anime.episode_count, 0) * COALESCE(rewatch_count, 0)
@@ -386,11 +385,6 @@ class User < ActiveRecord::Base
 
   def followers_count
     followers_count_hack
-  end
-
-  def compute_watchlist_hash
-    watchlists = self.watchlists.order(:id).map {|x| [x.id, x.status, x.rating] }
-    Digest::MD5.hexdigest( watchlists.inspect )
   end
 
   before_save do

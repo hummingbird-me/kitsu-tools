@@ -87,4 +87,12 @@ class MessageFormatterTest < ActiveSupport::TestCase
     fake_request [:get, "http://i.imgur.com/CUjJQap.gif"] => "small_image"
     assert_equal 2, format("a\n\nhttp://i.imgur.com/CUjJQap.gif").scan("br").count
   end
+
+  test 'extract all @mentions from a post' do
+    mentions = MessageFormatter.extract_mentions('@vikhyat @josh')
+    assert_equal 2, mentions.count
+    mentions.each do |m|
+      assert_instance_of User, m
+    end
+  end
 end

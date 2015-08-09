@@ -2,6 +2,7 @@ require 'timeout'
 require 'onebox'
 
 class MessageFormatter
+  MENTION_REGEXP ||= /@[_A-Za-z0-9]+/
 
   def initialize(message)
     @message = message
@@ -24,6 +25,16 @@ class MessageFormatter
     MessageFormatter.new(message).format
   end
 
+  def self.extract_mentions(message)
+    MessageFormatter.new(message).mentions
+  end
+
+  def mentions
+    @message.scan(MENTION_REGEXP).map do |m|
+      User.find_by_username(m[1..-1])
+    end
+  end
+
   private
 
   def autolink
@@ -31,7 +42,7 @@ class MessageFormatter
   end
 
   def link_usernames
-    @processed.gsub!(/@[_A-Za-z0-9]+/) do |x|
+    @processed.gsub!(MENTION_REGEXP) do |x|
       if user = User.find_by_username(x[1..-1])
         "<a href='//hummingbird.me/users/#{user.name}' target='_blank' data-user-name='#{user.name}' class='name'>@#{user.name}</a>"
       else

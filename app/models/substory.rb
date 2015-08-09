@@ -57,7 +57,7 @@ class Substory < ActiveRecord::Base
   end
 
   before_save do
-    if data and body = data['comment'] || data[:comment]
+    if data && body = data['comment'] || data[:comment]
       h = data.dup
       h['formatted_comment'] = MessageFormatter.format_message body
       self.data = h
