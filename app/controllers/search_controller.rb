@@ -15,7 +15,7 @@ class SearchController < ApplicationController
         query = params.require(:query)
 
         # The cheap price of supporting Tenpenchii and Deadman
-        if params[:type] == 'full'
+        if params[:type] == 'full' || !params.key?(:scope)
           scope = 'all'
           depth = 'instant'
         else

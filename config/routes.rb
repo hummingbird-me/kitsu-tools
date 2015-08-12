@@ -169,7 +169,6 @@ Hummingbird::Application.routes.draw do
     post :remove_from_favorites
   end
 
-  resources :producers
   resources :characters, only: [:show]
 
   # Versions
