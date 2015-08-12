@@ -243,7 +243,7 @@ class User < ActiveRecord::Base
      "hello@vevix.net", # Vevix
      "jimm4a1@hotmail.com", #Jim
      "jojovonjo@yahoo.com", #JoJo
-     "synthtech@outlook.com" #Synthtech 
+     "synthtech@outlook.com" #Synthtech
     ].include? email
   end
 
@@ -369,12 +369,15 @@ class User < ActiveRecord::Base
 
   # How many minutes the user has spent watching anime.
   def recompute_life_spent_on_anime!
-    time_spent = self.library_entries.unscoped.joins(:anime).select('
-      COALESCE(anime.episode_length, 0) * (
-        COALESCE(episodes_watched, 0)
-        + COALESCE(anime.episode_count, 0) * COALESCE(rewatch_count, 0)
-      ) AS mins
-    ').map {|x| x.mins }.sum
+    time_spent = nil
+    LibraryEntry.unscoped do
+      time_spent = self.library_entries.joins(:anime).select('
+        COALESCE(anime.episode_length, 0) * (
+          COALESCE(episodes_watched, 0)
+          + COALESCE(anime.episode_count, 0) * COALESCE(rewatch_count, 0)
+        ) AS mins
+      ').map {|x| x.mins }.sum
+    end
     self.update_attributes life_spent_on_anime: time_spent
   end
 
