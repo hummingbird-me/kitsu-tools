@@ -263,7 +263,7 @@ class API_v1 < Grape::API
       end
 
       user = find_user(params[:user_id])
-      status = LibraryEntry.SNAKE_STATUSES[params[:status]]
+      status = LibraryEntry::SNAKE_STATUSES[params[:status]]
 
       entries = user.library_entries
       entries = entries.where(status: status) if status
