@@ -346,16 +346,17 @@ class User < ActiveRecord::Base
   # Return the top 5 genres the user has completed, along with
   # the number of anime watched that contain each of those genres.
   def top_genres
-    freqs = library_entries.unscoped
-                           .where(status: "Completed")
-                           .where(private: false)
-                           .joins(:genres)
-                           .group('genres.id')
-                           .select('COUNT(*) as count, genres.id as genre_id')
-                           .order('count DESC')
-                           .limit(5).each_with_object({}) do |x, obj|
-                             obj[x.genre_id] = x.count.to_f
-                           end
+    LibraryEntry.unscoped do
+      freqs = library_entries.where(status: "Completed")
+                             .where(private: false)
+                             .joins(:genres)
+                             .group('genres.id')
+                             .select('COUNT(*) as count, genres.id as genre_id')
+                             .order('count DESC')
+                             .limit(5).each_with_object({}) do |x, obj|
+                               obj[x.genre_id] = x.count.to_f
+                             end
+    end
 
     result = []
     Genre.where(id: freqs.keys).each do |genre|
