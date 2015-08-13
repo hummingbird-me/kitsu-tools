@@ -103,7 +103,7 @@ class MALImport
       }.compact,
       synopsis: begin
         synopsis = @main_noko.css('td td:contains("Synopsis")')[0].text.gsub("EditSynopsis", '').split("EditBackground")[0].split("googletag.cmd.push")[0]
-        if synopsis.include? "No synopsis has been added"
+        if synopsis.include? "No synopsis"
           nil
         else
           synopsis
