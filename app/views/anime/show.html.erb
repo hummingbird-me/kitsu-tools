@@ -115,7 +115,7 @@
             <h3>Studios</h3>
             <div class="genre-tab">
               <% @anime.producers.each do |producer| %>
-                <span class="badge"><a href="<%= url_for(producer) %>" <%= schema_prop(:productionCompany) %>><%= producer.name %></a></span> <% end %>
+                <span class="badge" <%= schema_prop(:productionCompany) %>><%= producer.name %></span> <% end %>
             </div>
             <h3>Quotes</h3>
             <%= link_to "View All", "#{url_for(@anime)}/quotes" %>
