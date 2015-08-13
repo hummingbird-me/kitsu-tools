@@ -20,7 +20,7 @@ class Settings::ImportController < ApplicationController
     else
       return error!(400, 'Unknown format')
     end
-    xml = XMLCleaner.clean(xml)
+    xml.scrub!
 
     return error!(422, 'Blank file') if xml.blank?
 
