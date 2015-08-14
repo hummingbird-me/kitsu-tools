@@ -24,6 +24,11 @@ class Story
 
     validates :group, presence: true, if: Proc.new {|s| s.group_id.present? }
 
+    def self.build(poster, opts = {})
+      new({
+        user: poster
+      }.merge(opts))
+    end
 
     def self.build_for_group(poster, group, opts = {})
       new({
