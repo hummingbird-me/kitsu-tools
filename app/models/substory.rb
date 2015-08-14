@@ -35,37 +35,30 @@ class Substory < ActiveRecord::Base
     user_id == user.id || story.can_edit?(user)
   end
 
-  def update_story_last_update_time!
-    substories = self.story.reload.substories
+  def bump_story!
+    substories = story.reload.substories
     if substories && substories.length > 0
-      self.story.set_last_update_time! substories.map {|x| x.created_at }.max
+      story.bump!(substories.map(&:created_at).max)
     end
   end
 
   after_create do
-    update_story_last_update_time!
-    StoryFanoutWorker.perform_async(self.user_id, self.story_id)
+    bump_story!
+    StoryFanoutWorker.perform_async(user_id, story_id)
   end
 
   after_destroy do
-    unless self.story.nil?
-      if self.story and self.story.reload.substories.length == 0
-        self.story.destroy!
+    unless story.nil?
+      # Delete the Story if there's no more Substories
+      if story && story.reload.substories.length == 0
+        story.destroy!
       else
-        update_story_last_update_time!
+        bump_story!
       end
     end
   end
 
-  before_save do
-    if data && body = data['comment'] || data[:comment]
-      h = data.dup
-      h['formatted_comment'] = MessageFormatter.format_message body
-      self.data = h
-    end
-  end
-
-  # TODO: Deprecate this in favour of the Action service.
+  # DEPRECATED: Use STI subclasses instead
   def self.from_action(data)
     user = User.find data[:user_id]
 
