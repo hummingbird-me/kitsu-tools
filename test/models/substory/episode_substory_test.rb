@@ -11,5 +11,6 @@ class Substory::EpisodeSubstoryTest < ActiveSupport::TestCase
     assert_instance_of Story::EpisodeSubstory, substory
     assert_equal story, substory.story
     assert_equal user, substory.user
+    assert_equal anime, substory.anime
   end
 end

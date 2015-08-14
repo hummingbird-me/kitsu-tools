@@ -1,28 +1,24 @@
 require 'test_helper'
 
 class Story::CommentStoryTest < ActiveSupport::TestCase
-  test '.build_for_group' do
+  test '.build_for_group creates new story with poster and group' do
     user = users(:josh)
     group = Group.new_with_admin({name: 'Sugar Water'}, user)
 
     story = Story::CommentStory.build_for_group(user, group)
     assert_instance_of Story::CommentStory, story
+    assert_equal user.id, story.user_id
+    assert_equal group.id, story.group_id
   end
 
-  test '.build_for_user' do
+  test ".build_for_user creates a post on another user's profile" do
     user = users(:josh)
     target = users(:vikhyat)
 
     story = Story::CommentStory.build_for_user(user, target)
     assert_instance_of Story::CommentStory, story
-  end
-
-  test '#build_comment and #create_comment' do
-    user = users(:josh)
-
-    story = Story::CommentStory.create(user: user)
-    substory = story.create_comment(user, 'First!')
-    assert_instance_of Substory::CommentSubstory, substory
+    assert_equal user.id, story.user_id
+    assert_equal target.id, story.target_id
   end
 
   test 'should notify users when we post on their profile' do
