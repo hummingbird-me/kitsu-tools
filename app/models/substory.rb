@@ -42,6 +42,11 @@ class Substory < ActiveRecord::Base
     end
   end
 
+  def build_for_story(story, obj={})
+    story = story.id if story.is_a? Story
+    new({story_id: story}.merge(obj))
+  end
+
   after_create do
     bump_story!
     StoryFanoutWorker.perform_async(user_id, story_id)
