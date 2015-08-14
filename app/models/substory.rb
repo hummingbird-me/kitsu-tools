@@ -30,9 +30,9 @@ class Substory < ActiveRecord::Base
 
   scope :unbanned, ->{ eager_load(:user).where(users: { ninja_banned: false }) }
 
-  def can_be_deleted_by?(user)
+  def can_edit?(user)
     return false if user.nil?
-    self.user_id == user.id || self.story.can_be_deleted_by?(user)
+    user_id == user.id || story.can_edit?(user)
   end
 
   def update_story_last_update_time!

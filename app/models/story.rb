@@ -86,13 +86,14 @@ class Story < ActiveRecord::Base
     query
   end
 
-  # Can this story be deleted by the specified user?
-  def can_be_deleted_by?(user)
+  # Can this story be edited by the specified user?
+  def can_edit?(user)
     return false if user.nil?
     user.admin? || user.id == self.user_id || user.id == self.target_id ||
       (self.group.present? && self.group.is_staff?(user))
   end
-  alias_method :can_toggle_nsfw?, :can_be_deleted_by?
+  alias_method :can_toggle_nsfw?, :can_edit?
+  alias_method :can_be_deleted_by?, :can_edit?
 
   def set_is_liked!(v)
     @is_liked = v
