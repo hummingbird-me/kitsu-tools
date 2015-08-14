@@ -63,7 +63,7 @@ class MALImport
         {
           external_id: external_id,
           name: nameflip(chara.css('td:nth-child(2) > a').text),
-          image: person_image(chara.css("img")[0]['src']),
+          image: character_image(chara.css("img")[0]['src']),
           role: chara.css('td:nth-child(2) small').text,
           description: clean_desc(character[:description]),
           featured: featured_chars.include?(external_id),
@@ -84,7 +84,7 @@ class MALImport
         {
           external_id: external_id,
           name: nameflip(chara.css('td:nth-child(2) > a').text),
-          image: person_image(chara.css("img")[0]['src']),
+          image: character_image(chara.css("img")[0]['src']),
           role: chara.css('td:nth-child(2) small').text,
           description: clean_desc(character[:description]),
           featured: featured_chars.include?(external_id)
@@ -110,7 +110,7 @@ class MALImport
         end
       rescue
       end,
-      poster_image: URI(@sidebar.css("img")[0]['src']),
+      poster_image: poster_image(@sidebar.css("img")[0]['src']),
       genres: begin (@sidebar.css('span:contains("Genres:") ~ a').map(&:text) rescue []).compact end,
       type: begin allowed_types.grep(@sidebar.css('div:contains("Type:")')[0].text.gsub("Type:", '').strip)[0] rescue nil end,
       status: begin @sidebar.css('div:contains("Status:")')[0].children[1].text.strip.gsub(/\w+/){ |w| w.capitalize } rescue nil end
@@ -154,13 +154,17 @@ class MALImport
   end
 
   private
+  def character_image(img)
+    img = img.gsub("t.jpg", ".jpg")
+    URI(img) unless img.include?("questionmark")
+  end
   def person_image(img)
     img = img.gsub("v.jpg", ".jpg")
-    if img.include?("questionmark")
-      nil
-    else
-      URI(img)
-    end
+    URI(img) unless img.include?("questionmark")
+  end
+  def poster_image(img)
+    img = img.gsub(".jpg", "l.jpg")
+    URI(img) unless img.include?("na_series")
   end
   def convert_age_rating(rating)
     {
