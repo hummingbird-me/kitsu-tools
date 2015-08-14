@@ -17,6 +17,10 @@ class Notification < ActiveRecord::Base
   belongs_to :user
   belongs_to :source, polymorphic: true
 
+  scope :feed_mention, ->{ where(notification_type: 'feed_mention') }
+  scope :profile_comment, ->{ where(notification_type: 'profile_comment') }
+  scope :comment_reply, ->{ where(notification_type: 'comment_reply') }
+
   def source_user
     if notification_type == "profile_comment"
       source.target
