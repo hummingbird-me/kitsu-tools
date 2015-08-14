@@ -16,7 +16,7 @@
 
 class Substory
   class StatusSubstory < Substory
-    def self.build(story, old, new, service)
+    def self.build(story, old, new, service=nil)
       new({
         user: story.user,
         story: story,

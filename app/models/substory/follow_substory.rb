@@ -22,5 +22,9 @@ class Substory
         target: following
       })
     end
+
+    def self.build_for_follow(story, follow)
+      build(story, follow.follower, follow.followed)
+    end
   end
 end
