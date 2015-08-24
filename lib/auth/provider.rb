@@ -47,7 +47,7 @@ module Auth
     end
 
     def sign_in(user)
-      issue_cookie(Token.new(user))
+      issue_cookie(Token.new(user, scope: %w[all]))
       @current_user = user
     end
 
