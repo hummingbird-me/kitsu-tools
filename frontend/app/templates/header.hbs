@@ -16,11 +16,10 @@
       {{#if currentUser.isSignedIn}}
         <li class='dropdown'>
           <a class='dropdown-toggle' data-toggle='dropdown'>
-            Dashboard <b class='caret'></b>
+            Library <b class='caret'></b>
           </a>
           <!-- <i class='dropdown-arrow dropdown-arrow-inverse'></i> -->
           <ul class='dropdown-menu left-nav-section'>
-            <li>{{#link-to 'user.index' currentUser.id}}Profile{{/link-to}}</li>
             <li>{{#link-to 'user.library' currentUser.id}}Anime Library{{/link-to}}</li>
             <li>{{#link-to 'user.manga_library' currentUser.id}}Manga Library{{/link-to}}</li>
             <li><a href='/recommendations'>Recommendations</a></li>

@@ -453,6 +453,8 @@
   padding-left: 15px;
   padding-right: 15px;
   margin-top: 15px;
+  max-height: 480px;
+  overflow: auto;
 
   li {
     @extend .col-sm-6;

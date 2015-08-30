@@ -86,7 +86,7 @@ class Story < ActiveRecord::Base
   end
 
   def self.for_user(user)
-    query = eager_load(:library_entry)
+    query = joins("LEFT OUTER JOIN library_entries ON library_entries.id = stories.library_entry_id")
             .where("library_entries.id IS NULL OR library_entries.private = 'f'")
     query = query.where.not(adult: true) if user.nil? || user.sfw_filter
     query
