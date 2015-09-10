@@ -71,7 +71,6 @@
           </div>
           <span class="library-title">{{anime.canonicalTitle}}</span>
           <div class="awesome-rating-widget">
-            <h5 class="sidebar-title text-center">Your Rating</h5>
             {{awesome-rating type=currentUser.ratingType editable="true" action="setLibraryRating" rating=anime.libraryEntry.rating media=anime}}
           </div>
         </li>
@@ -83,5 +82,5 @@
 </ul>
 
 <div class="pull-right">
-{{#link-to 'onboarding.library'}}Skip{{/link-to}}
+  {{#link-to 'onboarding.finish'}}Skip{{/link-to}}
 </div>
