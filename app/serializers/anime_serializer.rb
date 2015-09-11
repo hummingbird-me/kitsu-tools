@@ -10,6 +10,10 @@ class AnimeSerializer < ActiveModel::Serializer
     object.slug
   end
 
+  def canonical_title
+    object.canonical_title('canonical')
+  end
+
   def english_title
     object.alt_title
   end
