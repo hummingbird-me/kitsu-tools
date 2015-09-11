@@ -13,7 +13,7 @@ export default Ember.Component.extend({
       type: this.get('type'),
       editable: this.get('editable'),
       update: (newRating) => {
-        if (this.get('rating') === newRating) {
+        if (newRating === 0 || this.get('rating') === newRating) {
           newRating = null;
         }
         this.sendAction('action', newRating, this.get('media'));
