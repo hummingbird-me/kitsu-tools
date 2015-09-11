@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Fri, 11 Sep 2015 14:03:49 GMT
+Content-Type: application/json
+Transfer-Encoding: chunked
+Connection: keep-alive
+Keep-Alive: timeout=10
+Vary: Accept-Encoding
+Vary: Accept-Encoding
+P3P: CP="NOI OUR"
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000;
+
+{"provider_url":"https:\/\/www.spotify.com","version":"1.0","thumbnail_width":300,"height":380,"thumbnail_height":300,"title":"Hardwell, Mr. Probz - 51. Birds Fly - Commentary Bonus Version","width":300,"thumbnail_url":"https:\/\/d3rt1990lpmkn.cloudfront.net\/cover\/c00e30fa309e1aae5b2226fc4dd8daf0e3cfb8f6","provider_name":"Spotify","type":"rich","html":"<iframe src=\"https:\/\/embed.spotify.com\/?uri=spotify:user:hardwellofficial:playlist:5Vk6tmchGfGYIYp7ubXI6i\" width=\"300\" height=\"380\" frameborder=\"0\" allowtransparency=\"true\"><\/iframe>"}
