@@ -1,3 +1,5 @@
+# This adds a specific TwitchTV Onebox engine to disable autoplay
+# which TwitchTV enables by default
 Onebox::Engine::WhitelistedGenericOnebox.whitelist.delete('twitch.tv')
 module Onebox
   module Engine
