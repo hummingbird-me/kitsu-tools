@@ -133,8 +133,8 @@ class MALImport
         producers: begin (@sidebar.css('span:contains("Producers:") ~ a').map(&:text) rescue []).compact end,
         age_rating: age_rating[0],
         age_rating_guide: age_rating[1],
-        episode_count: begin @sidebar.css('div:contains("Episodes:")')[0].children[1].text.strip.to_i rescue nil end,
-        episode_length: parse_duration(begin @sidebar.css('div:contains("Duration:")')[0].children[1].text.strip rescue nil end),
+        episode_count: begin @sidebar.css('div:contains("Episodes:")')[0].text.gsub("Episodes:\n ", "").strip.to_i rescue nil end,
+        episode_length: parse_duration(begin @sidebar.css('div:contains("Duration:")')[0].text.gsub("Duration: ", "").strip rescue nil end),
         genres: begin (@sidebar.css('span:contains("Genres:") ~ span a').map(&:text) rescue []).compact end,
       })
     end
