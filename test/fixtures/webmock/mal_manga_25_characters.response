@@ -1,252 +1,243 @@
 HTTP/1.1 200 OK
-Date: Tue, 24 Jun 2014 00:05:24 GMT
-Server: Apache/2.2.15 (CentOS)
-Vary: Accept-Encoding
-X-Served-By: app6v-mal.ao.prd.lax
-Connection: close
-Transfer-Encoding: chunked
+Cache-Control: no-cache
 Content-Type: text/html; charset=utf-8
-Set-Cookie: incap_ses_84_81958=A5hQKS0icxG677DGvG4qAcTAqFMAAAAAdaRSV7BgopKE/8T7KnVtxg==; path=/; Domain=.myanimelist.net
-Set-Cookie: visid_incap_81958=6zTbseTLQPaBCyFUifhVgZ7AqFMAAAAAQUIPAAAAAAAQj/aV5e0ZSM3CTkljdINw; expires=Wed, 22 Jun 2016 10:00:32 GMT; path=/; Domain=.myanimelist.net
-X-Iinfo: 6-134011442-134011445 NNNN CT(20 -1 0) RT(1403568324211 5) q(0 0 0 0) r(1 1)
+Date: Thu, 17 Sep 2015 01:02:01 GMT
+Server: Apache
+Set-Cookie: MALHLOGSESSID=376f9f1196a3cc78d789d92e1679fa80; expires=Tue, 15-Sep-2020 01:02:01 GMT; Max-Age=157680000; path=/
+Set-Cookie: MALSESSIONID=lj65511q82n0nfed0bn5mibtl1; expires=Thu, 24-Sep-2015 01:02:01 GMT; Max-Age=604800; path=/; HttpOnly
+Vary: User-Agent,Accept-Encoding
+transfer-encoding: chunked
+Connection: keep-alive
+Set-Cookie: visid_incap_81958=pCHX6m74Qj2Dx1sQ+1EZ1AgR+lUAAAAAQUIPAAAAAABORG1QiCavymkZoVDLjH+G; expires=Fri, 15 Sep 2017 11:20:32 GMT; path=/; Domain=.myanimelist.net
+Set-Cookie: nlbi_81958=w/9ANP+CPzep+AQKUM6emAAAAAA5JFHorZYXKNjcDap4lxgB; path=/; Domain=.myanimelist.net
+Set-Cookie: incap_ses_84_81958=AfxRBRJ7h3tSWuv0xW0qAQgR+lUAAAAAyZ3x4UESdLo3h11pALMEYw==; path=/; Domain=.myanimelist.net
+X-Iinfo: 9-15065892-15065427 PNNN RT(1442451720293 5) q(0 0 0 -1) r(6 6) U1
 X-CDN: Incapsula
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html>
 <head>
-	<title>Fullmetal Alchemist - MyAnimeList.net</title>
-    <meta name="Description" content="Start cataloging anime you've watched or manga you've read. Browse through our extensive anime and manga database. Get anime or manga suggestions, recommendations and reviews. View top rated anime and manga. Create anime and manga favorites. Tons more too!" />
-    <meta name="Keywords" content="anime, animelist, myanimelist, anime list, log anime seen, catalog anime watched, anime reviews, top anime, anime characters, favorite anime, anime discussion, anime information, manga series, manga information, top manga, mangalist, manga list, manga, manga reviews, voice actors, seiyuu" />
-    <meta name="Author" content="Garrett Gyssler">
-	
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
-		<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.v5.js"></script>
-		<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.v1.js"></script>
-	
-		<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js"></script>
-		
-				<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js"></script>
-				<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.v2.js"></script>
-				<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.v12.js"></script>
-				<script type="text/javascript" src="http://cdn.myanimelist.net/js/mangainfo.v4.js"></script>
-				<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.v5.css" type="text/css" />
-				<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.v1.css" type="text/css" />
-				<link rel="stylesheet" href="http://cdn.myanimelist.net/css/myanimelist.v45.css" type="text/css" />
-			<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css" />
-	<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.v18.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.v3.css" />
-	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.v1.css" />
-	<link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
-	
-	<link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
 
-	<!-- BEGIN TRIGGER TAG INITIALIZATION -->
-	<script type="text/javascript" src="http://cdn.triggertag.gorillanation.com/js/triggertag.js"></script>
-	<script type="text/javascript">getTrigger('4834');</script>
-	<!-- END TRIGGER TAG INITIALIZATION -->
-	<!-- GAM HEADER SCRIPT -->
-		<script type="text/javascript" src="http://partner.googleadservices.com/gampad/google_service.js">
-		</script>
-		<script type="text/javascript">
-		GS_googleAddAdSenseService("ca-pub-1304704158939332");
-		GS_googleEnableAllServices();
-		</script>
-		<script type="text/javascript">
-		GA_googleUseIframeRendering();
-		</script>
-	<!-- END OF GAM HEADER SCRIPT -->
 
-	<script type="text/javascript">
+<title>
+Fullmetal Alchemist | Manga - Characters &amp; Staff - MyAnimeList.net
+</title>
+<meta name="description" content="Characters from Fullmetal Alchemist on MyAnimeList, the internet&#039;s largest manga database. The rules of alchemy state that to gain something, one must lose something of equal value. Alchemy is the process of taking apart and reconstructing an object into a different entity, with the rules of alchemy to govern this procedure. However, there exists an object that can bring any alchemist above these rules, the object known as the Philosopher&#039;s Stone. The young Edward Elric is a particularly talente..." />
 
+
+<meta name="keywords" content="anime, myanimelist, anime news, manga" />
+
+
+<meta name='csrf_token' content='ca8859724351fb31bb5b0d01601d4521a6b948e4'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-8dd56e91bb.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=34"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=34"></script>
+
+
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=34"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.js?v=34"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.js?v=34"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/mangainfo.js?v=34"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=34"></script>
+
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=34" id="myanimelistjs" data-myanimelistjs-params='{&quot;is_request_bot_filter_log&quot;:true,&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;}'></script>
+
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.css?v=24" type="text/css" />
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.css?v=24" type="text/css" />
+
+	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=24" />
+
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=24" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=24" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-9084f5fdb6.css" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
+
+<link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
+
+<!-- ### Load GPT Library ### -->
+<script type='text/javascript'>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+  (function() {
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') +
+               '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
+  })();
+</script>
+
+<!-- GA script -->
+<script type="text/javascript">
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-369102-1']);
   _gaq.push(['_trackPageview']);
-
   (function() {
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-
 </script>
-	<script type="text/javascript">
-   (function() {
-       function async_load(){
-           var protocol = ('https:' == document.location.protocol ? 'https://' : 'http://');
-           var s = document.createElement('script');
-           s.src = protocol + 'pagefair.com/static/adblock_detection/js/d.min.js';
-           var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-       }
-       bm_website_code = '3882DD60FDA947CD';
-       jQuery(document).ready(async_load);
-   })();
-</script></head>
 
-<body onload="">
+<script src="https://apis.google.com/js/platform.js" async defer>{lang: 'en-GB'}</script>
+<script src="https://www.google.com/recaptcha/api.js?hl=en"></script>
+
+
+</head>
+
+<body onload=" " class="page-common">
+
+
 <div id="myanimelist">
 
+    <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineOutOfPageSlot('/84947469/Skin_Others', 'div-gpt-ad-1062785570').addService(googletag.pubads());
+      googletag.pubads().collapseEmptyDivs();
+      googletag.enableServices();
+    });
+  </script>
+  <div style="display: none !important;">
+    <div id='div-gpt-ad-1062785570'>
+      <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1062785570'); });
+      </script>
+    </div>
+  </div>
 
-	<div id="headerSmall">
-		<a href="/">MyAnimeList.net</a>
-	</div>
-	
-<div id="menu">
-    
+    <script type='text/javascript'>
+    window.MAL.SkinAd.prepareForSkin('Skin_Others');
+  </script>
+
+    <div id="ad-skin-bg-left" class="ad-skin-side-outer ad-skin-side-bg bg-left">
+    <div id="ad-skin-left" class="ad-skin-side left" style="display: none;">
+      <div id="ad-skin-left-absolute-block">
+        <div id="ad-skin-left-fixed-block"></div>
+      </div>
+    </div>
+  </div>
+<div class="wrapper">
+
+<div id="headerSmall"><a href="/">MyAnimeList.net</a><a href="http://myanimelist.net/watch" class="banner-header-anime-straming">
+  <img src="http://cdn.myanimelist.net/images/stream_banner/banner_anime_streaming.png" srcset="http://cdn.myanimelist.net/images/stream_banner/banner_anime_streaming@2x.png 2x" alt="Anime Streaming Now Available on MAL!">
+</a>
+  <div id="header-menu">
+    <div class="header-menu-login">
+      <a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fmanga%2F25%2FFullmetal_Alchemist%2Fcharacters" id="malLogin">Login</a>
+      <a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fmanga%2F25%2FFullmetal_Alchemist%2Fcharacters">Sign Up</a>
+    </div>
+  </div>
+</div>  <div id="menu">
+
     <div id="menu_right">
-    	
-        <div id="searchBar">
 
-        <input type="text" class="inputtext" id="topSearchText" value="Search" onkeydown="return ts_checkEnter(event);" size="30" /> 
-        <select id="topSearchValue" class="inputtext" onchange="ts_selection();">
+      <form id="searchBar" method="get">
+
+        <input id="topSearchText" type="text" class="inputtext" value="Search" size="30" />
+        <select id="topSearchValue" class="inputtext">
         <option value="0">Anime</option>
         <option value="1">Manga</option>
         <option value="2">Characters</option>
         <option value="6">People</option>
-        <option value="3">Fansub Groups</option>
         <option value="4">Clubs</option>
         <option value="5">Users</option>
         </select>
-        
-        <input type="image" src="http://cdn.myanimelist.net/images/magnify.gif" value="Search" onclick="ts_subSearch(5);" />
-        
-        </div>
-        
-	</div>
-	
-	<div id="menu_left">
-		<ul id="nav">
-						<li class="small"><a href="/anime.php">Anime</a>
-				<ul class="wider">
-										<li><a href="/reviews.php?t=anime">Reviews</a></li>
-					<li><a href="/recommendations.php?s=recentrecs&t=anime">Recommendations</a></li>
-					<li><a href="/topanime.php">Top Anime</a></li>
-					<li><a href="/fansub-groups.php">Fansub Groups</a></li>
-				</ul>
-			</li>
-			<li class="small"><a href="/manga.php">Manga</a>
-				<ul class="wider">
-										<li><a href="/reviews.php?t=manga">Reviews</a></li>
-					<li><a href="/recommendations.php?s=recentrecs&t=manga">Recommendations</a></li>
-					<li><a href="/topmanga.php">Top Manga</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Community</a>
-				<ul>
-					<li><a href="/forum/">Forums</a></li>
-					<li><a href="/clubs.php">Clubs</a></li>
-					<li><a href="/blog.php">Blogs</a></li>
-					<li><a href="/users.php">Users</a></li>
-					<li><a href="/about.php?go=team">Staff</a></li>
-					<li><a href="/about.php?go=support">Help</a></li>
-				</ul>
-			</li>
-			<li class="medium"><a href="#">Industry</a>
-				<ul class="wide">
-					<li><a href="/people.php">People</a></li>
-					<li><a href="/character.php">Characters</a></li>
-					<li><a href="/news.php">News</a></li>
-					<li><a href="/favorites.php">Top Favorites</a></li>
-				</ul>
-			</li>
-			
-			<li class="tiny"><a href="/register.php">Join</a></li>
-			<li class="smaller"><a href="/ajaxtb.php?login" id="malLogin">Login</a></li>
-						</ul>
-	</div>
-</div>
 
-<div id="contentWrapper">
+        <input id="topSearchButon" type="image" src="http://cdn.myanimelist.net/images/magnify.gif" value="Search" />
 
-	<div id="roadblock">
-				<div class="ad230">
-						<script type="text/javascript">
-						if ((typeof(f325922)=='undefined' || f325922 > 0) ) {
-						if(typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000; if(typeof(gnm_tile) == 'undefined') gnm_tile=1;
-						document.write('<scr'+'ipt src="http://n4403ad.doubleclick.net/adj/gn.cr.myanimelist.net/ros;sect=ros;sz=230x90,963x90;tile='+(gnm_tile++)+';ord='+gnm_ord+'?" type="text/javascript"></scr'+'ipt>');
-						} else {
-							GA_googleFillSlotWithSize("ca-pub-1304704158939332", "myanimelist_ros_230x90", 230, 90);
-						}
-						</script>
-						</div>
-				<div class="ad728">
-						<!-- 728x90 -->
-						<script type="text/javascript">
-						  if (typeof(gnm_ord)=='undefined' || (typeof(ad963_enabled)!= 'undefined' && ad963_enabled == false)) gnm_ord=Math.random()*10000000000000000;
-						  if (typeof(gnm_tile) == 'undefined') gnm_tile=1;
-						  document.write('<scr'+'ipt src="http://n4403ad.doubleclick.net/adj/gn.cr.myanimelist.net/ros;sect=ros;sz=728x90,970x90;dcopt=ist;type=pop;type=int;type=boom;dga=;dgg=;tile='+(gnm_tile++)+';ord=' + gnm_ord + ';?" type="text/javascript"></scr' + 'ipt>');
-						</script>
-						</div>
-				</div>
-	<h1><div style="float: right; font-size: 13px;">Ranked #3</div>Fullmetal Alchemist <span style="font-weight: normal;"><small>(Manga)</small></span></h1>
-	<div id="content">
-	
+      </form>
+
+	</div>    <div id="menu_left">
+                        <ul id="nav">
+    <li class="small"><a href="#" class="non-link">Anime</a>
+    <ul class="wider">
+            <li><a href="/anime.php">Anime Search</a></li>
+      <li><a href="/reviews.php?t=anime">Reviews</a></li>
+      <li><a href="/recommendations.php?s=recentrecs&t=anime">Recommendations</a></li>
+      <li><a href="/topanime.php">Top Anime</a></li>
+      <li><a href="/anime/season">Seasonal Anime</a></li>
+    </ul>
+  </li>
+  <li class="small"><a href="#" class="non-link">Manga</a>
+    <ul class="wider">
+            <li><a href="/manga.php">Manga Search</a></li>
+      <li><a href="/reviews.php?t=manga">Reviews</a></li>
+      <li><a href="/recommendations.php?s=recentrecs&t=manga">Recommendations</a></li>
+      <li><a href="/topmanga.php">Top Manga</a></li>
+    </ul>
+  </li>
+  <li><a href="#" class="non-link">Community</a>
+    <ul>
+      <li><a href="/forum/">Forums</a></li>
+      <li><a href="/clubs.php">Clubs</a></li>
+      <li><a href="/blog.php">Blogs</a></li>
+      <li><a href="/users.php">Users</a></li>
+    </ul>
+  </li>
+  <li class="small2"><a href="#" class="non-link">Industry</a>
+    <ul class="wider">
+      <li><a href="/news">News</a></li>
+      <li><a href="http://myanimelist.net/featured">Featured Articles</a></li>
+      <li><a href="/people.php">People</a></li>
+      <li><a href="/character.php">Characters</a></li>
+      <li><a href="/favorites.php">Top Favorites</a></li>
+    </ul>
+  </li>
+  <li class="small"><a href="http://myanimelist.net/watch">Watch</a></li>
+  <li class="smaller"><a href="#" class="non-link">Help</a>
+    <ul class="wide">
+      <li><a href="/about.php">About</a></li>
+      <li><a href="/about.php?go=support">Support</a></li>
+      <li><a href="/about.php?go=advertising">Advertising</a></li>
+      <li><a href="/forum/?topicid=515949">FAQ</a></li>
+      <li><a href="/modules.php?go=report">Report</a></li>
+      <li><a href="/about.php?go=team">Staff</a></li>
+    </ul>
+  </li>
+  </ul>
+                  </div>  </div><div id="contentWrapper" itemscope itemtype="http://schema.org/BookSeries">
+<h1><div style="float: right; font-size: 13px;">Ranked #3</div><span itemprop="name">Fullmetal Alchemist</span> <span style="font-weight: normal;"><small>(Manga)</small></span></h1>
+    <div id="content">
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr>
-<td class="borderClass" width="225" style="border-width: 0 1px 0 0;" valign="top"><div style="text-align: center;"><a href="/manga/25/Fullmetal_Alchemist/pic&pid=27600"><img src="http://cdn.myanimelist.net/images/manga/1/27600.jpg" alt="Fullmetal Alchemist" align="center"></a></div><div id="profileRows"><a href="#addtolistanchor" onclick="myinfo_toggleAdd();">Add to My List</a><a href="javascript:void(0);" onclick="fav_clicker(1,2,25);" style="font-weight: normal;"><span id="favOutput">Add to Favorites</span></a><a href="javascript:doedit(25);">Edit Manga Information</a></div>
+<td class="borderClass" width="225" style="border-width: 0 1px 0 0;" valign="top"><div style="text-align: center;"><a href="/manga/25/Fullmetal_Alchemist/pics"><img src="http://cdn.myanimelist.net/images/manga/1/27600.jpg" alt="Fullmetal Alchemist" align="center" itemprop="image"></a></div><div class="profileRows pb0"><a href="/login.php?from=%2Fmanga%2F25%2FFullmetal_Alchemist%2Fcharacters&error=login_required">Add to My List</a></div><div id="profileRows" class="pt0"><a href="/login.php?from=%2Fmanga%2F25%2FFullmetal_Alchemist%2Fcharacters&error=login_required" style="font-weight: normal;"><span id="favOutput">Add to Favorites</span></a><a href="/login.php?from=%2Fmanga%2F25%2FFullmetal_Alchemist%2Fcharacters&error=login_required">Edit Manga Information</a></div>
 <div id="editdiv" style="display: none; margin-bottom: 16px;">
 <form method="GET" action="/dbchanges.php" style="display: inline;">
 <input type="hidden" name="mid" value="25">
 <div class="spaceit_pad">What would you like to edit?</div>
 <select name="t" class="inputtext">
-<option value="synopsis">Synopsis<option value="pic">Picture<option value="chapvol">Chapters/Volumes<option value="pubdates">Publishing Dates<option value="relations">Relations<option value="type">Type
-</select> &nbsp;<input type="submit" value="Go" class="inputButton">
+<option value="synopsis">Synopsis<option value="background">Background<option value="pic">Picture<option value="chapvol">Chapters/Volumes<option value="pubdates">Publishing Dates<option value="relations">Relations<option value="type">Type
+</select> &nbsp;<input type="submit" value="Edit" class="inputButton">
 </form>
 </div>
-<h2>Alternative Titles</h2><div class="spaceit_pad"><span class="dark_text">English:</span> Fullmetal Alchemist</div><div class="spaceit_pad"><span class="dark_text">Synonyms:</span> Full Metal Alchemist, Hagane no Renkinjutsushi, FMA, Fullmetal Alchemist Gaiden</div><div class="spaceit_pad"><span class="dark_text">Japanese:</span> 鋼の錬金術師</div><br />
-	<h2>Information</h2>
-	
-	<div><span class="dark_text">Type:</span> Manga</div>
-	<div class="spaceit"><span class="dark_text">Volumes:</span> 27
-	</div>
-	<div><span class="dark_text">Chapters:</span> 109
-	</div>
-	<div class="spaceit"><span class="dark_text">Status:</span> Finished</div>
-	<div><span class="dark_text">Published:</span> Jul  12, 2001 to Jun  11, 2010</div><div class="spaceit"><span class="dark_text">Genres:</span>
-	  <a href="/manga.php?genre[]=1">Action</a>, <a href="/manga.php?genre[]=2">Adventure</a>, <a href="/manga.php?genre[]=4">Comedy</a>, <a href="/manga.php?genre[]=8">Drama</a>, <a href="/manga.php?genre[]=27">Shounen</a>, <a href="/manga.php?genre[]=38">Military</a></div><div><span class="dark_text">Authors:</span>
-		<a href="/people/1874/Hiromu_Arakawa">Arakawa, Hiromu</a> (Story & Art)</div><div class="spaceit"><span class="dark_text">Serialization:</span>
-		<a href="/manga.php?mid=13">Shounen Gangan</a></div><br />
-		<h2>Statistics</h2><div><span class="dark_text">Score:</span> 9.09<sup><small>1</small></sup> <small>(scored by 45302 users)</small></div>
-		<div class="spaceit"><span class="dark_text">Ranked:</span> #3<sup><small>2</small></sup></div>
-		<div><span class="dark_text">Popularity:</span> #6</div>
-		
-		<div class="spaceit"><span class="dark_text">Members:</span> 70,585</div>
-		<div><span class="dark_text">Favorites:</span> 12,318</div><div style="margin-top: 2px;"><small><sup><small>1</small></sup>  indicates a weighted score</small></div>
-		<div><sup><small>2</small></sup><small> based on the <a href="/topmanga.php">top manga</a> page.</small></div>
-	<br />
-	<a name="addtolistanchor"></a>
-	<h2>My Info</h2><div><a href="javascript:void(0);" id="addclicker" onclick="myinfo_toggleAdd();">Add to My List</a></div>
-		<div id="addtolist" style="display: none;">
-		<input type="hidden" id="myinfo_manga_id" value="25">
-		<table border="0" cellpadding="0" cellspacing="0" width="100%">
-		
-		<tr>
-		<td class="spaceit">Status:</td>
-		<td class="spaceit"><select id="myinfo_status" name="myinfo_status" onchange="checkComp(this);" class="inputtext"><option value="1" >Reading</option><option value="2" >Completed</option><option value="3" >On-Hold</option><option value="4" >Dropped</option><option value="6" >Plan to Read</option></select></td>
-		</tr>
-		<tr>
-		<td class="spaceit">Chap. Read:</td>
-		<td class="spaceit"><input type="text" id="myinfo_chapters" size="3" maxlength="4" class="inputtext" value=""> / <span id="totalChaps">109</span></td>
-		</tr>
-		<tr>
-		<td class="spaceit">Vol. Read:</td>
-		<td class="spaceit"><input type="text" id="myinfo_volumes" size="3" maxlength="4" class="inputtext" value=""> / <span id="totalVols">27</span></td>
-		</tr>
-		<tr>
-		<td class="spaceit">Your Score:</td>
-		<td class="spaceit"><select id="myinfo_score" name="myinfo_score" class="inputtext"><option value="0">Select</option><option value="10" >(10) Masterpiece</option><option value="9" >(9) Great</option><option value="8" >(8) Very Good</option><option value="7" >(7) Good</option><option value="6" >(6) Fine</option><option value="5" >(5) Average</option><option value="4" >(4) Bad</option><option value="3" >(3) Very Bad</option><option value="2" >(2) Horrible</option><option value="1" >(1) Appalling</option></select></td>
-		</tr>
-		
-		<tr>
-		  <td>&nbsp;</td>
-		  <td><input type="button" name="myinfo_submit" value="Add" onclick="myinfo_addtolist(25);" class="inputButton"> <span id="addtolistresult"><a href="/panel.php?go=addmanga&selected_manga_id=25">Add Detailed Info</a></span></td>
-		</tr>
-		</table>
-		</div>
-		<div id="myinfoDisplay" style="padding-left: 82px; margin-top: 3px;"></div>
-		<br>
-	  <h2>Popular Tags</h2>
-	  <span style="font-size: 11px;"><a href="/manga.php?tag=action" style="font-size: 24px" title="333 people tagged with action">action</a> <a href="/manga.php?tag=adventure" style="font-size: 22px" title="298 people tagged with adventure">adventure</a> <a href="/manga.php?tag=drama" style="font-size: 11px" title="106 people tagged with drama">drama</a> <a href="/manga.php?tag=fantasy" style="font-size: 20px" title="265 people tagged with fantasy">fantasy</a> <a href="/manga.php?tag=shounen" style="font-size: 21px" title="287 people tagged with shounen">shounen</a> <a href="/manga.php?tag=undefined" style="font-size: 11px" title="88 people tagged with undefined">undefined</a> </span></td><td valign="top" style="padding: 0;">
+<div class="icon-block"><a class="sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist"></a>
+                  <a class="sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist"></a>
+                  <a class="sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;title=Fullmetal_Alchemist"></a>
+                  <a class="sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;text=Fullmetal_Alchemist&amp;related=MyAnimeList.net&amp;hashtags=Manga%2CMAL"></a>
+                  <a class="sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;name=Fullmetal_Alchemist"></a>
+               </div><br /><h2>Alternative Titles</h2><div class="spaceit_pad"><span class="dark_text">English:</span> Fullmetal Alchemist</div><div class="spaceit_pad"><span class="dark_text">Synonyms:</span> Full Metal Alchemist, Hagane no Renkinjutsushi, FMA, Fullmetal Alchemist Gaiden</div><div class="spaceit_pad"><span class="dark_text">Japanese:</span> 鋼の錬金術師</div><br />
+<h2>Information</h2>
+
+<div><span class="dark_text">Type:</span> Manga</div>
+<div class="spaceit"><span class="dark_text">Volumes:</span> 27
+</div>
+<div><span class="dark_text">Chapters:</span> 116
+</div>
+<div class="spaceit"><span class="dark_text">Status:</span> Finished</div>
+<div><span class="dark_text">Published:</span> Jul  12, 2001 to Jun  11, 2010</div><div class="spaceit"><span class="dark_text">Genres:</span>
+  <a href="/manga.php?genre[]=1"><span itemprop="genre">Action</span></a>, <a href="/manga.php?genre[]=2"><span itemprop="genre">Adventure</span></a>, <a href="/manga.php?genre[]=4"><span itemprop="genre">Comedy</span></a>, <a href="/manga.php?genre[]=8"><span itemprop="genre">Drama</span></a>, <a href="/manga.php?genre[]=27"><span itemprop="genre">Shounen</span></a>, <a href="/manga.php?genre[]=38"><span itemprop="genre">Military</span></a></div><div><span class="dark_text">Authors:</span>
+    <a href="/people/1874/Hiromu_Arakawa">Arakawa, Hiromu</a> (Story & Art)</div><div class="spaceit"><span class="dark_text">Serialization:</span>
+    <a href="/manga.php?mid=13">Shounen Gangan</a></div><br />
+<h2>Statistics</h2><span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><div><span class="dark_text">Score:</span> <span itemprop="ratingValue">9.12</span><sup><small>1</small></sup> <small>(scored by <span itemprop="ratingCount">56419</span> users)</small></div><meta itemprop="bestRating" content="10"><meta itemprop="worstRating" content="1"></span>
+<div class="spaceit"><span class="dark_text">Ranked:</span> #3<sup><small>2</small></sup></div>
+<div><span class="dark_text">Popularity:</span> #7</div>
+
+<div class="spaceit"><span class="dark_text">Members:</span> 89,835</div>
+<div><span class="dark_text">Favorites:</span> 15,184</div><div style="margin-top: 2px;"><small><sup><small>1</small></sup> indicates a weighted score</small></div><div><sup><small>2</small></sup><small> based on the <a href="/topmanga.php">top manga</a> page. Please note that 'R18+' titles are excluded.</small></div></td><td valign="top" style="padding-left: 5px;">
 	<a name="lower"></a>
 	<div id="horiznav_nav" style="margin: 5px 0 10px 0;">
 			<ul style="margin-right: 0; padding-right: 0;">
@@ -256,82 +247,187 @@ X-CDN: Incapsula
 			<li><a  href="/manga/25/Fullmetal_Alchemist/stats">Stats</a></li>
 			<li><a class="horiznav_active" href="/manga/25/Fullmetal_Alchemist/characters">Characters</a></li>
 			<li><a  href="/manga/25/Fullmetal_Alchemist/news">News</a></li>
-			<li><a  href="/manga/25/Fullmetal_Alchemist/forum">Forum</a></li>
+			<li><a  href="/manga/25/Fullmetal_Alchemist/forum">Forum</a></li> <li><a  href="/manga/25/Fullmetal_Alchemist/featured">Featured</a></li>
+			<li><a  href="/manga/25/Fullmetal_Alchemist/clubs">Clubs</a></li>
 			<li><a  href="/manga/25/Fullmetal_Alchemist/pics">Pictures</a></li>
 				<li><a  href="/manga/25/Fullmetal_Alchemist/moreinfo">More Info</a></li>
 			</ul>
 	</div>
-	<div style="padding: 0 7px;"><h2><div style="float: right; font-weight: normal;"><a href="/panel.php?go=characters&do=add">edit</a></div>Characters</h2><div style="margin-bottom: 13px;">To add to this character list, <a href="/panel.php?go=characters&do=add">click here</a>.</div><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
-			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+
+
+
+                        <div class="breadcrumb " itemscope itemtype="http://schema.org/BreadcrumbList"><div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/" itemprop="item"><span itemprop="name">
+              Top
+            </span></a><meta itemprop="position" content="1"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/topmanga.php" itemprop="item"><span itemprop="name">
+              Manga
+            </span></a><meta itemprop="position" content="2"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/manga/25/Fullmetal_Alchemist" itemprop="item"><span itemprop="name">
+              Fullmetal Alchemist
+            </span></a><meta itemprop="position" content="3"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/manga/25/Fullmetal_Alchemist/characters" itemprop="item"><span itemprop="name">
+              Characters & Staff
+            </span></a><meta itemprop="position" content="4"></div></div>
+
+
+
+
+<h2><div style="float: right; font-weight: normal;"><a href="/panel.php?go=characters&do=add">Add character</a></div>Characters</h2><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
 			<div class="picSurround"><a href="/character/11/Edward_Elric" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/9/72533t.jpg" alt=" Edward" vspace="4" hspace="8" border="0"></a></div>
 			</div>
 			</td>
-			<td valign="top" class="borderClass bgColor2">
+			<td valign="top" class="borderClass bgColor1">
 			<a href="/character/11/Edward_Elric">Elric, Edward</a>
 			<div class="spaceit_pad"><small>Main</small></div>
 			</div>
 			</td>
 			</tr>
-			</table>
-</div>
+      </table>
 </td>
 </tr>
 </table>
+<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true"></script></div><!-- end of contentHome -->
 
+
+                      <script type='text/javascript'>
+    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCManga_SAFE_MR_BTF_LHS', [300,250], 'div-gpt-ad-1972498601').addService(googletag.pubads());
+            var slot = googletag.defineSlot('/84947469/02PCManga_SAFE_MR_BTF_RHS', [300,250], 'div-gpt-ad-213576732').addService(googletag.pubads());
+            googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+</script>
+
+  <div class="mauto clearfix pt24" style="width:760px;">
+    <div class="fl-l">
+    <div id="div-gpt-ad-1972498601" style="width:300px; height:250px;">
+  <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1972498601"); });
+      </script>
+</div>
+  </div>
+      <div class="fl-r">
+    <div id="div-gpt-ad-213576732" style="width:300px; height:250px;">
+  <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-213576732"); });
+      </script>
+</div>
+  </div>
+  </div>
 </div>
 
-<div id="rightcontentunder">
 
-<a href="/about.php?go=support">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/modules.php?go=faq">FAQ</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/about.php">About</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/about.php?go=contact">Contact</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="http://www.craveonline.com/termsofuse.php?site=www.MyAnimeList.net" target="_blank">Terms</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="http://www.craveonline.com/privacy.php?site=www.MyAnimeList.net" target="_blank">Privacy</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a id="_bapw-link" href="#" target="_blank" style=""><img id="_bapw-icon" style="border:0 !important;display:inline !important;vertical-align:middle !important"/> <span style="vertical-align:middle !important">AdChoices</span></a><script>/*<![CDATA[*/(function(){var c=247,g=595,b=false,i=document,f=i.getElementById("_bapw-link"),a=(i.location.protocol=="https:"?"https":"http"),h=(a=="https"?"https://info.evidon.com/c/betrad/pub/":"http://cdn.betrad.com/pub/");function e(j){var d=new Image();d.src=a+"://l.betrad.com/pub/p.gif?pid="+c+"&ocid="+g+"&i"+j+"=1&r="+Math.random()}i.getElementById("_bapw-icon").src=h+"icon1.png";f.onmouseover=function(){if(/#$/.test(f.href)){f.href="http://info.evidon.com/pub_info/"+c+"?v=1"}};f.onclick=function(){var j=window._bap_p_overrides;function d(m,p){var n=i.getElementsByTagName("head")[0]||i.documentElement,l=b,k=i.createElement("script");function o(){k.onload=k.onreadystatechange=null;n.removeChild(k);p()}k.src=m;k.onreadystatechange=function(){if(!l&&(this.readyState=="loaded"||this.readyState=="complete")){l=true;o()}};k.onload=o;n.insertBefore(k,n.firstChild)}if(j&&j.hasOwnProperty(c)){if(j[c].new_window){e("c");return true}}this.onclick="return "+b;d(a+"://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js",function(){d(h+"pub2.js",function(){BAPW.i(f,{pid:c,ocid:g})})});return b};e("i")}());/*]]>*/</script>
-	
-<div id="copyright">
-MyAnimeList.net is a property of <a href="http://www.craveonline.com">CraveOnline</a>, LLC. an <a href="http://www.evolvemediallc.com">Evolve Media</a>, LLC company. &copy;2013 All Rights Reserved. <div style="position: absolute; left: -999em">monitoring_string = "1d62297d23059a80b6e7551767f2653f"</div>
-</div>
-
-</div>
-
-</div>
 
 <!--  control container height -->
 <div style="clear:both;"></div>
 
 <!-- end rightbody -->
+
+</div><!-- wrapper -->
+
+    <div id="ad-skin-bg-right" class="ad-skin-side-outer ad-skin-side-bg bg-right">
+    <div id="ad-skin-right" class="ad-skin-side right" style="display: none;">
+      <div id="ad-skin-right-absolute-block">
+        <div id="ad-skin-right-fixed-block"></div>
+      </div>
+    </div>
+  </div>
+</div><!-- #myanimelist -->
+
+
+
+<div class="footer-ranking">
+  <div class="ranking-container">
+          <div class="ranking-unit ranking-top_anime">
+        <h3 class="title"><a href="http://myanimelist.net/topanime.php" class="view_more fl-r">More</a>Top Anime</h3>
+        <ol>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist:_Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9253/Steins;Gate">Steins;Gate</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/9969/Gintama">Gintama&#039;</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/11061/Hunter_x_Hunter_(2011)">Hunter x Hunter (2011)</a></li>
+                  </ol>
+      </div>
+          <div class="ranking-unit ranking-top_airing">
+        <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=airing" class="view_more fl-r">More</a>Top Airing Anime</h3>
+        <ol>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28171/Shokugeki_no_Souma">Shokugeki no Souma</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/25649/Junjou_Romantica_3">Junjou Romantica 3</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/27831/Durarara!!x2_Ten">Durarara!!x2 Ten</a></li>
+                  </ol>
+      </div>
+          <div class="ranking-unit ranking-top_upcoming">
+        <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=upcoming" class="view_more fl-r">More</a>Top Upcoming Anime</h3>
+        <ol>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/25777/Shingeki_no_Kyojin_2nd_Season">Shingeki no Kyojin 2nd Season</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9260/Kizumonogatari">Kizumonogatari</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/3786/Evangelion:_3.0+1.0">Evangelion: 3.0+1.0</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30503/Noragami_Aragoto">Noragami Aragoto</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/28927/Owari_no_Seraph:_Nagoya_Kessen-hen">Owari no Seraph: Nagoya Kessen-hen</a></li>
+                  </ol>
+      </div>
+          <div class="ranking-unit ranking-top_page_views">
+        <h3 class="title">Top Page Views</h3>
+        <ol>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/29803/Overlord">Overlord</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28999/Charlotte">Charlotte</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30307/Monster_Musume_no_Iru_Nichijou">Monster Musume no Iru Nichijou</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/28497/Rokka_no_Yuusha">Rokka no Yuusha</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/27631/God_Eater">God Eater</a></li>
+                  </ol>
+      </div>
+          <div class="ranking-unit ranking-trending_words">
+        <h3 class="title">Trending Words</h3>
+        <ol>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/1735/Naruto:_Shippuuden">Naruto: Shippuuden</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/22319/Tokyo_Ghoul">Tokyo Ghoul</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/20/Naruto">Naruto</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/813/Dragon_Ball_Z">Dragon Ball Z</a></li>
+                  </ol>
+      </div>
+      </div>
 </div>
+<footer>
+  <div id="footer-block">
+    <div class="footer-link-block">
+      <p class="footer-link home di-ib">
+        <a href="http://myanimelist.net/">Home</a>
+      </p>
+      <p class="footer-link di-ib">
+        <a href="http://myanimelist.net/about.php">About</a>
+        <a href="http://myanimelist.net/about.php?go=contact">Support</a>
+        <a href="http://myanimelist.net/about.php?go=advertising">Advertising</a>
+        <a href="http://myanimelist.net/forum/?topicid=515949">FAQ</a>
+        <a href="http://myanimelist.net/about/terms_of_use">Terms</a>
+        <a href="http://myanimelist.net/about/privacy_policy">Privacy</a>
+        <a href="http://myanimelist.net/about/sitemap">Sitemap</a>
+    	</p>
+  		  		<p class="footer-link login di-ib">
+  			<a href="http://myanimelist.net/login.php?from=%2Fmanga%2F25%2FFullmetal_Alchemist%2Fcharacters" id="malLogin" rel="nofollow">Login</a>
+  			<a href="http://myanimelist.net/register.php?from=%2Fmanga%2F25%2FFullmetal_Alchemist%2Fcharacters">Sign Up</a>
+  		</p>
+  		    </div>
 
+    <div class="footer-link-icon-block">
+            <div class="footer-social-media ac">
+        <a target="_blank" class="icon-sns icon-fb di-ib" href="https://www.facebook.com/OfficialMyAnimeList"></a>
+        <a target="_blank" class="icon-sns icon-tw di-ib" title="Follow @myanimelist on Twitter" href="https://twitter.com/myanimelist"></a>
+        <a class="icon-sns icon-gp" href="https://plus.google.com/105884801583962160252?prsrc=3" rel="publisher" target="_blank" style="text-decoration:none;">
+          <img src="http://cdn.myanimelist.net/images/footer/icon-google_plus.png" alt="Google+" style="border:0;width:30px;height:30px;" />
+        </a>
+      </div>
+            <div class="footer-recommended ac">
+        <a target="_blank" class="icon-recommended icon-tokyo-otaku-mode" href="http://otakumode.com/fb/5aO">Tokyo Otaku Mode</a>
+      </div>
+    </div>
 
-</div>
-<!-- Begin comScore Tag -->
-<script>
-    document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
-</script>
+    <div id="copyright">
+      MyAnimeList.net is a property of MyAnimeList, LLC. &copy;2015 All Rights Reserved.
+    </div>
+  </div>
+</footer>
 
-<script>
-  COMSCORE.beacon({
-    c1:2,
-    c2:6036161,
-    c3:"",
-    c4:"",
-    c5:"",
-    c6:"",
-    c15:""
-  });
-</script>
-<noscript>
-  <img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&c3=&c4=&c5=&c6=&c15=&cj=1" />
-</noscript>
-<!-- End comScore Tag -->
+<div id="evolve_footer"></div>
 
-<!-- start Vibrant Media IntelliTXT script section -->
-<script type="text/javascript" src="http://myanimelist.us.intellitxt.com/intellitxt/front.asp?ipid=30532"></script>
-<!-- end Vibrant Media IntelliTXT script section -->
-	
-	<script type="text/javascript" src="http://cdn1.craveonline.com/libraries/pebblebed/js/cookie_notice.min.js"></script>
-	
 </body>
 </html>

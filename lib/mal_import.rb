@@ -9,7 +9,8 @@ class MALImport
     description = get("/character/#{id}").css('#content > table >tr > td:nth-child(2)').children.take_while { |x|
       !x.text.include? 'Voice Actor'
     }.reject { |x|
-      x['class'] == 'normal_header' || x['id'] == 'horiznav_nav'
+      x['class'] == 'normal_header' || x['id'] == 'horiznav_nav' ||
+        x['itemtype'] == 'http://schema.org/BreadcrumbList'
     }.map(&:to_html).join
 
     # TODO: move all the character data grabbing into here
@@ -98,8 +99,8 @@ class MALImport
       title: {
         canonical: @main_noko.css('h1').children[1].text.strip,
         unknown: begin @sidebar.css('div:contains("Synonyms:")')[0].text.gsub("Synonyms: ", "").split(",").map(&:strip) rescue nil end,
-        en_us: begin @sidebar.css('div:contains("English:")')[0].text.gsub("English: ", "") rescue nil end,
-        ja_jp: begin @sidebar.css('div:contains("Japanese:")')[0].text.gsub("Japanese: ", "") rescue nil end
+        en_us: begin @sidebar.css('div:contains("English:")')[0].text.gsub("English: ", "").strip rescue nil end,
+        ja_jp: begin @sidebar.css('div:contains("Japanese:")')[0].text.gsub("Japanese: ", "").strip rescue nil end
       }.compact,
       synopsis: begin
         synopsis = @main_noko.css('td td:contains("Synopsis")')[0].text.gsub("EditSynopsis", '').split("EditBackground")[0].split("googletag.cmd.push")[0]
@@ -112,7 +113,7 @@ class MALImport
       end,
       poster_image: poster_image(@sidebar.css("img")[0]['src']),
       type: begin allowed_types.grep(@sidebar.css('div:contains("Type:")')[0].text.gsub("Type:", '').strip)[0] rescue nil end,
-      status: begin @sidebar.css('div:contains("Status:")')[0].children[1].text.strip.gsub(/\w+/){ |w| w.capitalize } rescue nil end
+      status: begin @sidebar.css('div:contains("Status:")')[-1].text.gsub(/Status:(?:\\n)?\s/, "").strip.gsub(/\w+/){ |w| w.capitalize } rescue nil end
     }
 
     # Media-specific data
