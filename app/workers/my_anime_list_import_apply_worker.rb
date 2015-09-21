@@ -15,7 +15,7 @@ class MyAnimeListImportApplyWorker
   rescue Exception
     status = User.import_statuses[:error]
     user.update_columns import_status: status,
-      import_error: 'There was a problem importing your list.  Please send an
+      import_error: 'There was a problem importing your list. Please send an
                      email to josh@hummingbird.me with the file you are trying
                      to import and we\'ll see what we can do.'
     raise
