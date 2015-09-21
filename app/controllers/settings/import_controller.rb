@@ -16,7 +16,7 @@ class Settings::ImportController < ApplicationController
       xml = gz.read
       gz.close
     elsif file.content_type.include?('xml')
-      xml = file.read
+      xml = File.read(file.tempfile)
     else
       return error!(400, 'Unknown format')
     end
