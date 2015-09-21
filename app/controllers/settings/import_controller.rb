@@ -16,7 +16,7 @@ class Settings::ImportController < ApplicationController
       xml = gz.read
       gz.close
     elsif file.content_type.include?('xml')
-      xml = file.read
+      xml = File.read(file.tempfile)
     else
       return error!(400, 'Unknown format')
     end
@@ -34,9 +34,11 @@ class Settings::ImportController < ApplicationController
 
     mixpanel.track 'Imported from MyAnimeList', {email: current_user.email} if Rails.env.production?
   rescue Exception
-    error! 500, 'There was a problem importing your list.  Please send an email
-                 to josh@hummingbird.me with the file you are trying to import
-                 and we\'ll see what we can do.'
-     raise
+    status = User.import_statuses[:error]
+    current_user.update_columns import_status: status,
+      import_error: 'There was a problem importing your list. Please send an email
+                    to josh@hummingbird.me with the file you are trying to import
+                    and we\'ll see what we can do.'
+    raise
   end
 end

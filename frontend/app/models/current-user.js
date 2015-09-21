@@ -32,28 +32,16 @@ export default User.extend({
   importList: function(service, file) {
     let data = new FormData();
     data.append('file', file);
-    return ajax('/settings/import/' + service, {
+    return ajax(`/settings/import/${service}`, {
       data: data,
       cache: false,
       contentType: false,
       processData: false,
       type: 'POST'
-    }).then(() => {
-      this.store.push('currentUser', {
-        id: this.get('id'),
-        importStatus: 'queued',
-        importFrom: service
-      });
-    }, (err) => {
-      try {
-        this.store.push('currentUser', {
-          id: this.get('id'),
-          importStatus: 'error',
-          importError: err.jqXHR.responseJSON.error
-        });
-      } catch (e) {
-        alert("There was a problem importing your list. Send an email to josh@hummingbird.me with the file you're trying to import and we'll see what we can do.");
-      }
+    }).then((data) => {
+      this.store.pushPayload(data);
+    }, () => {
+      window.location.reload();
     });
   }
 });
