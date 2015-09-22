@@ -19,7 +19,8 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
-      'script-src': "'self' 'unsafe-inline' cdn.segment.com www.google-analytics.com"
+      'script-src': "'self' 'unsafe-inline' cdn.segment.com www.google-analytics.com",
+      'style-src': "'self' 'unsafe-inline'"
     }
   };
 
