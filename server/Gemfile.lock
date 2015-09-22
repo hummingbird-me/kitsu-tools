@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/vevix/twemoji.git
+  revision: 67f726daea339b6dbf8d9717244096ef46f0553a
+  specs:
+    twemoji (2.0.1)
+      nokogiri (~> 1.6.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -20,6 +27,10 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
+    active_model_serializers (0.10.0.rc3)
+      actionpack (>= 4.0)
+      activemodel (>= 4.0)
+      railties (>= 4.0)
     activejob (4.2.1)
       activesupport (= 4.2.1)
       globalid (>= 0.3.0)
@@ -116,6 +127,13 @@ GEM
       railties (~> 4.0)
     erubis (2.7.0)
     exifr (1.2.3.1)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
+    faker (1.5.0)
+      i18n (~> 0.5)
     fakeweb (1.3.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
@@ -152,6 +170,7 @@ GEM
     hiredis (0.6.0)
     hitimes (1.2.3)
     i18n (0.7.0)
+    ice_cube (0.11.1)
     image_optim (0.21.0)
       exifr (~> 1.2, >= 1.2.2)
       fspath (~> 2.1)
@@ -162,6 +181,7 @@ GEM
     in_threads (1.3.1)
     jmespath (1.1.3)
     json (1.8.3)
+    json_expressions (0.8.3)
     jwt (1.5.1)
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
@@ -179,9 +199,11 @@ GEM
     minitest (5.8.0)
     mocha (1.1.0)
       metaclass (~> 0.0.1)
+    moneta (0.8.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    mustache (1.0.2)
     nenv (0.2.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
@@ -194,6 +216,7 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+    oj (2.12.14)
     omniauth (1.2.2)
       hashie (>= 1.2, < 4)
       rack (~> 1.0)
@@ -202,6 +225,11 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    onebox (1.5.26)
+      moneta (~> 0.8)
+      multi_json (~> 1.11)
+      mustache
+      nokogiri (~> 1.6.6)
     orm_adapter (0.5.0)
     paperclip (4.3.1)
       activemodel (>= 3.2.0)
@@ -212,6 +240,8 @@ GEM
     paperclip-optimizer (2.0.0)
       image_optim (~> 0.19)
       paperclip (>= 3.4)
+    paranoia (2.1.3)
+      activerecord (~> 4.0)
     pg (0.18.3)
     progress (3.1.0)
     pry (0.10.1)
@@ -317,6 +347,10 @@ GEM
       json (~> 1.0)
       redis (~> 3.2, >= 3.2.1)
       redis-namespace (~> 1.5, >= 1.5.2)
+    sidetiq (0.6.3)
+      celluloid (>= 0.14.1)
+      ice_cube (= 0.11.1)
+      sidekiq (>= 3.0.0)
     simplecov (0.10.0)
       docile (~> 1.1.0)
       json (~> 1.8)
@@ -344,6 +378,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers (= 0.10.0.rc3)
   annotate
   aws-sdk
   codeclimate-test-reporter
@@ -352,6 +387,8 @@ DEPENDENCIES
   devise (~> 3.5)
   devise-async
   dotenv-rails
+  factory_girl_rails
+  faker
   fakeweb
   fast_blank
   flamegraph
@@ -361,12 +398,16 @@ DEPENDENCIES
   guard-rspec
   hiredis
   image_optim
+  json_expressions
   mocha
   nokogiri
+  oj
   omniauth
   omniauth-facebook
+  onebox
   paperclip (~> 4.1)
   paperclip-optimizer
+  paranoia (~> 2.0)
   pg
   pry-rails
   puma
@@ -379,8 +420,10 @@ DEPENDENCIES
   rspec-rails
   shoulda
   sidekiq (~> 3.1)
+  sidetiq
   spring
   timecop
+  twemoji!
 
 BUNDLED WITH
    1.10.6

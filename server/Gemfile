@@ -60,7 +60,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'factory-girl-rails'
   gem 'rspec-rails' # Specs > Tests
   gem 'shoulda' # it { should(:have_shoulda) }
   gem 'timecop' # stop [hammer-]time
