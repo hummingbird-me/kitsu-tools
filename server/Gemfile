@@ -28,7 +28,7 @@ gem 'image_optim', require: false
 gem 'aws-sdk'
 
 # Background tasks
-gem 'sidekiq', '~> 3.1'
+gem 'sidekiq', '~> 3.4.2'
 gem 'sidetiq'
 
 # Text pipeline
@@ -44,6 +44,7 @@ gem 'paranoia', '~> 2.0'
 # Optimizations and Profiling
 gem 'rack-mini-profiler'
 gem 'flamegraph'
+gem 'stackprof'
 gem 'fast_blank' # Faster String#blank?
 gem 'oj' # Blazing-fast JSON parsing
 

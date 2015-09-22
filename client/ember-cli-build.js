@@ -3,6 +3,7 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
+    storeConfigInMeta: false,
     'ember-cli-foundation-sass': {
       'Modernizr': true,
       'fastclick': true,
