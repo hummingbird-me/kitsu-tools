@@ -5,6 +5,15 @@ var Router = Ember.Router.extend({
   location: config.locationType
 });
 
+Router.reopen({
+  // https://segment.com/docs/libraries/analytics.js/#page
+  trackPageView: Ember.on('didTransition', function() {
+    if (config.environment === 'production') {
+      window.analytics.page();
+    }
+  })
+});
+
 Router.map(function() {
 });
 
