@@ -1,8 +1,0 @@
-{{#each model.trendingReviews itemController="review" as |review|}}
-  {{partial "media/review_summary"}}
-{{else}}
-  <div class="trending-review-empty">
-    <p>It seems nobody has written a review yet. The fame and fortune are yours for the taking.</p>
-    <a class="btn btn-default" {{bind-attr href=newReviewURL}}>Write the first review</a>
-  </div>
-{{/each}}

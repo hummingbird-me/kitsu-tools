@@ -1,7 +1,0 @@
-{{#unless isOwnButton}}
-  {{#if user.isFollowed}}
-    <a {{bind-attr class=":btn :follow-button :unfollow classes"}} {{action "toggleFollow" user}}> Unfollow</a>
-  {{else}}
-    <a {{bind-attr class=":btn :follow-button classes"}} {{action "toggleFollow" user}}> Follow</a>
-  {{/if}}
-{{/unless}}

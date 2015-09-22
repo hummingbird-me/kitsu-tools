@@ -1,7 +1,0 @@
-- if user_signed_in? and user != current_user
-  .large-12.columns
-    - if user.followers.include? current_user
-      .button.secondary= link_to "Unfollow", user_follow_path(user), class: "follow-button", method: :post
-    - else
-      .button= link_to "Follow", user_follow_path(user), class: "follow-button", method: :post
-

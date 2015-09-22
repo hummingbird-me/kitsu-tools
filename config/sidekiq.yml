@@ -1,9 +1,0 @@
----
-production:
-  :concurrency: 15
-  :pidfile: /var/hummingbird/tmp/pids/sidekiq.pid
-  :queues:
-    - [default, 1]
-    - [storyfanout, 1]
-    - [mailer, 1]
-    - [paperclip, 1]
