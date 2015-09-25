@@ -15,6 +15,7 @@ Router.reopen({
 });
 
 Router.map(function() {
+  this.route('landing', { path: '/' });
 });
 
 export default Router;
