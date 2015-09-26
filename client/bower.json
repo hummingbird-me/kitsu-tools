@@ -14,5 +14,9 @@
     "moment": ">= 2.8.0",
     "moment-timezone": ">= 0.1.0",
     "foundation": "~5.5.0"
+  },
+  "resolutions": {
+    "ember": "canary",
+    "jquery": "1.11.3"
   }
 }
