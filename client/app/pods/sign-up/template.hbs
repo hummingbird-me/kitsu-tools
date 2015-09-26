@@ -1,12 +1,12 @@
 <h1>Sign Up</h1>
 
-{{#if (not errorMessage)}}
-  <alert-box type="alert">
+{{#if errorMessage}}
+  <alert-box type="alert" closable=false>
     {{errorMessage}}
   </alert-box>
 {{/if}}
 
-<form {{action 'createAccount' on='submit' bubbles=false}}>
+<form {{action 'createAccount' on='submit'}}>
   {{! email input }}
   <label for="email">Email</label>
   {{input value=email placeholder="Email" type="email"}}
@@ -15,7 +15,7 @@
   <label for="username">Username</label>
   {{input value=username placeholder="Username"}}
   {{#if (and username errors.username)}}
-    <alert-box type="alert">
+    <alert-box type="alert" closable=false>
       Username {{errors.username.[0]}}
     </alert-box>
   {{/if}}
@@ -24,7 +24,7 @@
   <label for="password">Password</label>
   {{input value=password placeholder="Password" type="password"}}
   {{#if (and password errors.password)}}
-    <alert-box type="alert">
+    <alert-box type="alert" closable=false>
       Password {{errors.password.[0]}}
     </alert-box>
   {{/if}}
