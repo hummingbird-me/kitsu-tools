@@ -2,6 +2,8 @@ language: ruby
 rvm:
   - 2.2.3
 
+sudo: false
+
 addons:
   postgresql: 9.4
 
@@ -11,7 +13,7 @@ cache:
     - client/node_modules
 
 before_install:
-  - nvm use 0.12
+  - nvm install 0.12
   - npm config set spin false
 
 install:
