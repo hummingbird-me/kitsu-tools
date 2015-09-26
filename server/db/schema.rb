@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924063228) do
+ActiveRecord::Schema.define(version: 20150926085842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,25 +83,6 @@ ActiveRecord::Schema.define(version: 20150924063228) do
 
   add_index "anime_producers", ["anime_id"], name: "index_anime_producers_on_anime_id", using: :btree
   add_index "anime_producers", ["producer_id"], name: "index_anime_producers_on_producer_id", using: :btree
-
-  create_table "apps", force: :cascade do |t|
-    t.integer  "creator_id",                                    null: false
-    t.string   "key",               limit: 255,                 null: false
-    t.string   "secret",            limit: 255,                 null: false
-    t.string   "name",              limit: 255,                 null: false
-    t.string   "redirect_uri",      limit: 255
-    t.string   "homepage",          limit: 255
-    t.string   "description",       limit: 255
-    t.boolean  "privileged",                    default: false, null: false
-    t.string   "logo_file_name",    limit: 255
-    t.string   "logo_content_type", limit: 255
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
-  end
-
-  add_index "apps", ["creator_id"], name: "index_apps_on_creator_id", using: :btree
-  add_index "apps", ["key"], name: "index_apps_on_key", unique: true, using: :btree
-  add_index "apps", ["name"], name: "index_apps_on_name", unique: true, using: :btree
 
   create_table "castings", force: :cascade do |t|
     t.integer  "castable_id"
@@ -183,94 +164,6 @@ ActiveRecord::Schema.define(version: 20150924063228) do
 
   add_index "follows", ["followed_id", "follower_id"], name: "index_follows_on_followed_id_and_follower_id", unique: true, using: :btree
   add_index "follows", ["follower_id"], name: "index_follows_on_followed_id", using: :btree
-
-  create_table "forem_categories", force: :cascade do |t|
-    t.string   "name",       limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "slug",       limit: 255
-  end
-
-  add_index "forem_categories", ["slug"], name: "index_forem_categories_on_slug", unique: true, using: :btree
-
-  create_table "forem_forums", force: :cascade do |t|
-    t.string  "name",        limit: 255
-    t.text    "description"
-    t.integer "category_id"
-    t.integer "views_count",             default: 0
-    t.string  "slug",        limit: 255
-    t.integer "sort_order"
-  end
-
-  add_index "forem_forums", ["slug"], name: "index_forem_forums_on_slug", unique: true, using: :btree
-
-  create_table "forem_groups", force: :cascade do |t|
-    t.string "name", limit: 255
-  end
-
-  add_index "forem_groups", ["name"], name: "index_forem_groups_on_name", using: :btree
-
-  create_table "forem_memberships", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "member_id"
-  end
-
-  add_index "forem_memberships", ["group_id"], name: "index_forem_memberships_on_group_id", using: :btree
-
-  create_table "forem_moderator_groups", force: :cascade do |t|
-    t.integer "forum_id"
-    t.integer "group_id"
-  end
-
-  add_index "forem_moderator_groups", ["forum_id"], name: "index_forem_moderator_groups_on_forum_id", using: :btree
-
-  create_table "forem_posts", force: :cascade do |t|
-    t.integer  "topic_id"
-    t.text     "text"
-    t.integer  "user_id"
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.integer  "reply_to_id"
-    t.string   "state",          limit: 255, default: "approved"
-    t.boolean  "notified",                   default: false
-    t.text     "formatted_html"
-  end
-
-  add_index "forem_posts", ["topic_id"], name: "index_forem_posts_on_topic_id", using: :btree
-
-  create_table "forem_subscriptions", force: :cascade do |t|
-    t.integer "subscriber_id"
-    t.integer "topic_id"
-  end
-
-  create_table "forem_topics", force: :cascade do |t|
-    t.integer  "forum_id"
-    t.integer  "user_id"
-    t.string   "subject",      limit: 255
-    t.datetime "created_at",                                    null: false
-    t.datetime "updated_at",                                    null: false
-    t.boolean  "locked",                   default: false,      null: false
-    t.boolean  "pinned",                   default: false
-    t.boolean  "hidden",                   default: false
-    t.datetime "last_post_at"
-    t.string   "state",        limit: 255, default: "approved"
-    t.integer  "views_count",              default: 0
-    t.string   "slug",         limit: 255
-  end
-
-  add_index "forem_topics", ["forum_id"], name: "index_forem_topics_on_forum_id", using: :btree
-  add_index "forem_topics", ["slug"], name: "index_forem_topics_on_slug", unique: true, using: :btree
-
-  create_table "forem_views", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "viewable_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "count",                         default: 0
-    t.string   "viewable_type",     limit: 255
-    t.datetime "current_viewed_at"
-    t.datetime "past_viewed_at"
-  end
 
   create_table "franchises", force: :cascade do |t|
     t.datetime "created_at",                null: false
@@ -370,24 +263,6 @@ ActiveRecord::Schema.define(version: 20150924063228) do
   add_index "library_entries", ["user_id", "anime_id"], name: "index_library_entries_on_user_id_and_anime_id", unique: true, using: :btree
   add_index "library_entries", ["user_id", "status"], name: "index_library_entries_on_user_id_and_status", using: :btree
   add_index "library_entries", ["user_id"], name: "index_library_entries_on_user_id", using: :btree
-
-  create_table "list_items", force: :cascade do |t|
-    t.integer "list_id",                           null: false
-    t.integer "order",                             null: false
-    t.integer "media_id",                          null: false
-    t.string  "notes",    limit: 255, default: "", null: false
-  end
-
-  add_index "list_items", ["list_id", "media_id"], name: "index_list_items_on_list_id_and_media_id", unique: true, using: :btree
-  add_index "list_items", ["list_id"], name: "index_list_items_on_list_id", using: :btree
-
-  create_table "lists", force: :cascade do |t|
-    t.integer "user_id",                null: false
-    t.string  "list_name",  limit: 255, null: false
-    t.string  "media_type", limit: 255, null: false
-  end
-
-  add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
 
   create_table "manga", force: :cascade do |t|
     t.string   "romaji_title",              limit: 255
@@ -603,47 +478,9 @@ ActiveRecord::Schema.define(version: 20150924063228) do
   add_index "reviews", ["anime_id"], name: "index_reviews_on_anime_id", using: :btree
   add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
-  create_table "stories", force: :cascade do |t|
-    t.integer  "user_id"
-    t.hstore   "data"
-    t.datetime "created_at",                                   null: false
-    t.datetime "updated_at",                                   null: false
-    t.string   "story_type",       limit: 255
-    t.integer  "target_id"
-    t.string   "target_type",      limit: 255
-    t.integer  "library_entry_id"
-    t.boolean  "adult",                        default: false
-    t.integer  "total_votes",                  default: 0,     null: false
-    t.integer  "group_id"
-    t.datetime "deleted_at"
-  end
-
-  add_index "stories", ["created_at"], name: "index_stories_on_created_at", using: :btree
-  add_index "stories", ["deleted_at"], name: "index_stories_on_deleted_at", using: :btree
-  add_index "stories", ["group_id"], name: "index_stories_on_group_id", using: :btree
-  add_index "stories", ["user_id"], name: "index_stories_on_user_id", using: :btree
-
   create_table "streamers", force: :cascade do |t|
     t.string "site_name", limit: 255, null: false
   end
-
-  create_table "substories", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "story_id"
-    t.integer  "target_id"
-    t.string   "target_type",   limit: 255
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
-    t.hstore   "data"
-    t.integer  "substory_type",             default: 0, null: false
-    t.datetime "deleted_at"
-  end
-
-  add_index "substories", ["created_at"], name: "index_substories_on_created_at", using: :btree
-  add_index "substories", ["deleted_at"], name: "index_substories_on_deleted_at", using: :btree
-  add_index "substories", ["story_id"], name: "index_substories_on_story_id", using: :btree
-  add_index "substories", ["target_id"], name: "index_substories_on_target_id", using: :btree
-  add_index "substories", ["user_id"], name: "index_substories_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                       limit: 255, default: "",          null: false
