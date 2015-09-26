@@ -5,7 +5,7 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     storeConfigInMeta: false,
     'ember-cli-foundation-sass': {
-      'Modernizr': true,
+      'modernizr': false,
       'fastclick': true,
       'foundationJs': 'all'
     }
@@ -23,6 +23,7 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
+  app.import('bower_components/foundation/js/vendor/modernizr.js');
 
   return app.toTree();
 };

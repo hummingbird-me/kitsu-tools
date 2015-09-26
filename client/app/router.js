@@ -16,6 +16,7 @@ Router.reopen({
 
 Router.map(function() {
   this.route('landing', { path: '/' });
+  this.route('sign-up');
 });
 
 export default Router;

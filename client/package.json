@@ -44,6 +44,8 @@
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.3",
     "ember-moment": "4.0.0",
-    "ember-truth-helpers": "1.1.0"
+    "ember-resolver": "2.0.3",
+    "ember-truth-helpers": "1.1.0",
+    "ember-validations": "2.0.0-alpha.4"
   }
 }
