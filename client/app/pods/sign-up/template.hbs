@@ -9,23 +9,23 @@
 <form {{action 'createAccount' on='submit'}}>
   {{! email input }}
   <label for="email">Email</label>
-  {{input value=email placeholder="Email" type="email"}}
+  {{input value=model.email placeholder="Email" type="email"}}
 
   {{! username input}}
   <label for="username">Username</label>
-  {{input value=username placeholder="Username"}}
-  {{#if (and username errors.username)}}
+  {{input value=model.username placeholder="Username"}}
+  {{#if (and model.username errors.model.username)}}
     <alert-box type="alert" closable=false>
-      Username {{errors.username.[0]}}
+      Username {{errors.model.username.[0]}}
     </alert-box>
   {{/if}}
 
   {{! password input }}
   <label for="password">Password</label>
-  {{input value=password placeholder="Password" type="password"}}
-  {{#if (and password errors.password)}}
+  {{input value=model.password placeholder="Password" type="password"}}
+  {{#if (and model.password errors.model.password)}}
     <alert-box type="alert" closable=false>
-      Password {{errors.password.[0]}}
+      Password {{errors.model.password.[0]}}
     </alert-box>
   {{/if}}
 

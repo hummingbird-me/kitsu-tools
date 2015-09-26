@@ -16,6 +16,9 @@ Router.reopen({
 
 Router.map(function() {
   this.route('landing', { path: '/' });
+  this.route('dashboard');
+
+  // authentication
   this.route('sign-up');
 });
 

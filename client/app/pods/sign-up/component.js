@@ -5,31 +5,29 @@ import { RoutableComponentMixin } from 'client/mixins/routable-component';
 const { Component, isPresent, computed } = Ember;
 
 export default Component.extend(EmberValidations, RoutableComponentMixin, {
-  email: null,
-  username: null,
-  password: null,
   errorMessage: null,
   validations: {
-    'email': {
+    'model.email': {
       presence: true
     },
-    'username': {
+    'model.username': {
       presence: true,
       format: { with: /^[_a-zA-Z0-9]+$/, message: 'must be letters, numbers, and underscores only' },
       length: { minimum: 3, maximum: 20 },
       inline: validator(function() {
+        let username = this.model.get('model.username');
         // must not be all numbers
-        if (isPresent(this.get('username')) && /^[0-9]+$/.test(this.get('username'))) {
+        if (isPresent(username) && /^[0-9]+$/.test(username)) {
           return 'must not be entirely numbers';
         }
 
         // start with a letter, or number
-        if (isPresent(this.get('username')) && !/^[a-zA-Z0-9]$/.test(this.get('username').charAt(0))) {
+        if (isPresent(username) && !/^[a-zA-Z0-9]$/.test(username.charAt(0))) {
           return 'must start with a letter or number';
         }
       })
     },
-    'password': {
+    'model.password': {
       presence: true,
       length: { minimum: 8 }
     }
@@ -39,7 +37,14 @@ export default Component.extend(EmberValidations, RoutableComponentMixin, {
 
   actions: {
     createAccount() {
-      // TODO: send request upstream & figure out auth flow
+      this.get('model').save().then(() => {
+        // TODO: send off a token request, get rid of local password
+        // TODO: transition to onboarding
+        this.transitionToRoute('dashboard');
+      }).catch((error) => {
+        const reason = error.message ? error.message : 'An unknown error occurred';
+        this.set('errorMessage', reason);
+      });
     }
   }
 });
