@@ -9,7 +9,10 @@ Doorkeeper.configure do
   end
   # Authenticate in Resource Owner Password flow
   resource_owner_from_credentials do
-    User.authenticate!(params[:email] || params[:name], params[:password])
+    user = User.find_for_database_authentication(:email => params[:identification])
+    if user && user.valid_for_authentication? { user.valid_password?(params[:password]) }
+      user
+    end
   end
   # Restrict access to the web interface for adding oauth applications
   admin_authenticator do
