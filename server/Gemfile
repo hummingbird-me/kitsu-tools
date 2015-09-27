@@ -75,9 +75,10 @@ group :test do
   gem 'shoulda' # it { should(:have_shoulda) }
   gem 'timecop' # stop [hammer-]time
   gem 'mocha' # Mocks and stubs
-  gem 'fakeweb' # Web faking
   gem 'json_expressions' # Test outputted JSON
+  gem 'rspec-sidekiq' # Test Sidekiq jobs
   gem 'faker' # Fake data
+  gem 'fakeweb' # Web faking
   gem 'codeclimate-test-reporter', require: false
 
   # Libraries used to test our API itself

@@ -332,6 +332,9 @@ GEM
       redis (>= 2.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rspec-sidekiq (2.1.0)
+      rspec (~> 3.0, >= 3.0.0)
+      sidekiq (>= 2.4.0)
     shellany (0.0.1)
     shoulda (3.5.0)
       shoulda-context (~> 1.0, >= 1.0.1)
@@ -423,6 +426,7 @@ DEPENDENCIES
   rspec-expectations!
   rspec-mocks!
   rspec-rails!
+  rspec-sidekiq
   rspec-support!
   shoulda
   sidekiq (~> 3.4.2)
