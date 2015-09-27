@@ -28,3 +28,8 @@ You will need the following things properly installed on your computer.
 
 * `ember test`
 * `ember test --server`
+
+### Styleguide
+
+* [Ember](https://github.com/dockyard/styleguides/blob/master/ember.md)
+* [JavaScript](https://github.com/dockyard/styleguides/blob/master/javascript.md)
