@@ -19,16 +19,15 @@ test('it renders', function(assert) {
   assert.equal($button.text().trim(), '×');
 });
 
-
 test('block renders', function(assert) {
-    assert.expect(1);
-    this.render(hbs`
-      <alert-box type="success" closable=false>
-        Hello, World!
-      </alert-box>
-    `);
+  assert.expect(1);
+  this.render(hbs`
+    <alert-box type="success" closable=false>
+      Hello, World!
+    </alert-box>
+  `);
 
-    // text is displayed
-    let $alert = this.$('.alert-box.success');
-    assert.equal($alert.text().trim(), 'Hello, World!');
+  // text is displayed
+  let $alert = this.$('.alert-box.success');
+  assert.equal($alert.text().trim(), 'Hello, World!');
 });

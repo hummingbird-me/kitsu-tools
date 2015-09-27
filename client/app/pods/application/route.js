@@ -10,7 +10,7 @@ export default Route.extend({
     return hasTokens ? `${tokens.reverse().join(' | ')} | ${base}` : base;
   },
 
-  setupAnalytics: on('activate', function() {
+  _setupAnalytics: on('activate', function() {
     if (config.environment === 'production') {
       window.analytics.load(config.segmentToken);
     }

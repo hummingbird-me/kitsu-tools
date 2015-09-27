@@ -7,15 +7,13 @@ import Ember from 'ember';
 const { Mixin } = Ember;
 
 // isGlimmerComponent is a flag for routable components
-var RoutableComponentMixin = Mixin.create({
+export let RoutableComponentMixin = Mixin.create({
   isGlimmerComponent: true
 });
 
 // there is currently a bug with ember-cli that they are aware of, we are
 // forced to define a templateName that won't be found so it uses the component
 // template instead.
-var RoutableComponentRouteMixin = Mixin.create({
+export let RoutableComponentRouteMixin = Mixin.create({
   templateName: 'undefined'
 });
-
-export { RoutableComponentRouteMixin, RoutableComponentMixin };
