@@ -17,8 +17,6 @@ gem 'connection_pool'
 gem 'devise', '~> 3.5'
 gem 'devise-async'
 gem 'doorkeeper'
-gem 'omniauth'
-gem 'omniauth-facebook'
 gem 'pundit'
 
 # Attachments
