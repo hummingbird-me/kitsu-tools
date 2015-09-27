@@ -15,8 +15,8 @@ Router.reopen({
 });
 
 Router.map(function() {
-  this.route('landing', { path: '/' });
-  this.route('dashboard');
+  this.route('dashboard', { path: '/' });
+  this.route('dashboard/redirect', { path: '/dashboard' });
 
   // authentication
   this.route('sign-up');

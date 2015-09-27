@@ -13,12 +13,11 @@ module('Acceptance | routes', {
   }
 });
 
-test('visiting / should redirect if authenticated', function(assert) {
+test('visiting /dashboard should redirect', function(assert) {
   assert.expect(1);
-  authenticateSession(this.application);
-  visit('/');
+  visit('/dashboard');
 
-  andThen(() => assert.notEqual(currentURL(), '/'));
+  andThen(() => assert.notEqual(currentURL(), '/dashboard'));
 });
 
 test('visiting / should work if unauthenticated', function(assert) {
@@ -59,20 +58,4 @@ test('visiting /sign-up should work if unauthenticated', function(assert) {
   visit('/sign-up');
 
   andThen(() => assert.equal(currentURL(), '/sign-up'));
-});
-
-test('visiting /dashboard should work if authenticated', function(assert) {
-  assert.expect(1);
-  authenticateSession(this.application);
-  visit('/dashboard');
-
-  andThen(() => assert.equal(currentURL(), '/dashboard'));
-});
-
-test('visiting /dashboard should redirect if unauthenticated', function(assert) {
-  assert.expect(1);
-  invalidateSession(this.application);
-  visit('/dashboard');
-
-  andThen(() => assert.notEqual(currentURL(), '/dashboard'));
 });
