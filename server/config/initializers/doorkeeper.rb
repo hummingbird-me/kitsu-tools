@@ -9,7 +9,10 @@ Doorkeeper.configure do
   end
   # Authenticate in Resource Owner Password flow
   resource_owner_from_credentials do
-    user = User.find_for_database_authentication(:email => params[:identification])
+    # Some things send it as "username"
+    # Personally I prefer "identification" because it's email-or-username
+    identification = params[:identification] || params[:username]
+    user = User.find_for_auth(identification)
     if user && user.valid_for_authentication? { user.valid_password?(params[:password]) }
       user
     end
