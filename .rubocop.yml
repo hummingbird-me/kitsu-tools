@@ -1,4 +1,7 @@
 AllCops:
+  Exclude:
+    - server/db/**/*
+    - server/bin/**/*
   RunRailsCops: true
   DisplayCopNames: false
   DisplayStyleGuide: true
