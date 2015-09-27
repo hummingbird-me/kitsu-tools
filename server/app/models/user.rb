@@ -80,4 +80,10 @@ class User < ActiveRecord::Base
   validates_attachment :cover_image, content_type: {
     content_type: %w[image/jpg image/jpeg image/png image/gif]
   }
+
+  # TODO: I think Devise can handle this for us
+  def self.find_for_auth(identification)
+    identification = [identification.downcase]
+    User.where('lower(email)=? OR lower(name)=?', *(identification * 2)).first
+  end
 end
