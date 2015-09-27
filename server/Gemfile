@@ -57,8 +57,14 @@ group :development, :test do
   gem 'annotate', require: false # Schema annotations inside model-related files
 
   # Development+Testing
-  gem 'rspec-rails' # Specs > Tests
   gem 'factory_girl_rails' # Factories > Fixtures
+
+  # HERE THERE BE DRAGONS: Remove and uncomment line below when rspec-rails is
+  # released with a fix for rspec/rspec-rails#1430
+  %w[rspec rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+    gem lib, github: "rspec/#{lib}", branch: 'master'
+  end
+  # gem 'rspec-rails' # Specs > Tests
 
   # Guard notices filesystem changes and *does things*
   gem 'guard'
