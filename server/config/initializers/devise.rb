@@ -29,7 +29,4 @@ Devise.setup do |config|
   # Lifespan of Reset Token
   config.reset_password_within = 6.hours
   config.sign_in_after_reset_password = true
-
-  # ==> OmniAuth
-  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], scope: "email"
 end
