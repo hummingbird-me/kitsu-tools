@@ -1,0 +1,17 @@
+<h1>Sign In</h1>
+
+{{#if errorMessage}}
+  <alert-box type="alert" closable=false>
+    {{errorMessage}}
+  </alert-box>
+{{/if}}
+
+<form {{action 'authenticateWithOAuth2' on='submit'}}>
+  <label for="identification">Login</label>
+  {{input value=identification placeholder="Username or Email"}}
+
+  <label for="password">Password</label>
+  {{input value=password placeholder="Password" type="password"}}
+
+  <button type="submit" disabled={{isSubmitDisabled}}>Sign In</button>
+</form>

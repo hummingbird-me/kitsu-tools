@@ -20,6 +20,7 @@ Router.map(function() {
 
   // authentication
   this.route('sign-up');
+  this.route('sign-in');
 });
 
 export default Router;

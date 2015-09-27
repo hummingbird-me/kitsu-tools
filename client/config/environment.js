@@ -24,6 +24,18 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'script-src': "'self' 'unsafe-inline' cdn.segment.com www.google-analytics.com",
       'style-src': "'self' 'unsafe-inline'"
+    },
+
+    'ember-simple-auth': {
+      base: {
+        authenticationRoute: 'sign-in',
+        routeAfterAuthentication: 'dashboard',
+        routeIfAlreadyAuthenticated: 'dashboard',
+        store: 'session-store:local-storage'
+      },
+      localStorage: {
+        key: 'hummingbird:session'
+      }
     }
   };
 
@@ -45,6 +57,9 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    // use memory store
+    ENV['ember-simple-auth'].base.store = 'session-store:ephemeral';
   }
 
   if (environment === 'production') {

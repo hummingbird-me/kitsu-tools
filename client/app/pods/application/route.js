@@ -1,9 +1,10 @@
 import Ember from 'ember';
 import config from 'client/config/environment';
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 const { Route, on } = Ember;
 
-export default Route.extend({
+export default Route.extend(ApplicationRouteMixin, {
   title(tokens) {
     const base = 'Hummingbird';
     const hasTokens = tokens && tokens.length;
