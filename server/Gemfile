@@ -56,19 +56,24 @@ group :development, :test do
   gem 'spring' # Faster CLI
   gem 'annotate', require: false # Schema annotations inside model-related files
 
+  # Development+Testing
+  gem 'rspec-rails' # Specs > Tests
+  gem 'factory_girl_rails' # Factories > Fixtures
+
   # Guard notices filesystem changes and *does things*
   gem 'guard'
   gem 'guard-rspec', require: false # Running specs
 end
 
 group :test do
-  gem 'rspec-rails' # Specs > Tests
   gem 'shoulda' # it { should(:have_shoulda) }
   gem 'timecop' # stop [hammer-]time
   gem 'mocha' # Mocks and stubs
   gem 'fakeweb' # Web faking
   gem 'json_expressions' # Test outputted JSON
-  gem 'factory_girl_rails' # Factories > Fixtures
   gem 'faker' # Fake data
   gem 'codeclimate-test-reporter', require: false
+
+  # Libraries used to test our API itself
+  gem 'oauth2'
 end

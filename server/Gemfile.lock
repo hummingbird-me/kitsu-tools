@@ -365,6 +365,7 @@ DEPENDENCIES
   json_expressions
   mocha
   nokogiri
+  oauth2
   oj
   omniauth
   omniauth-facebook
