@@ -40,6 +40,9 @@ gem 'nokogiri' # Parse MAL XML shit
 gem 'active_model_serializers', '0.10.0.rc3' # JSON-API serialization
 gem 'paranoia', '~> 2.0'
 
+# Rack Middleware
+gem 'rack-cors'
+
 # Optimizations and Profiling
 gem 'rack-mini-profiler'
 gem 'flamegraph'
