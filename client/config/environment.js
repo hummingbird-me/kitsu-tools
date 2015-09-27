@@ -23,7 +23,8 @@ module.exports = function(environment) {
 
     contentSecurityPolicy: {
       'script-src': "'self' 'unsafe-inline' cdn.segment.com www.google-analytics.com",
-      'style-src': "'self' 'unsafe-inline'"
+      'style-src': "'self' 'unsafe-inline'",
+      'connect-src': "'self' http://localhost:3000"
     },
 
     'ember-simple-auth': {
@@ -45,6 +46,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_TRANSITIONS = true;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.host = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
@@ -64,6 +66,8 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.segmentToken = 'wsxq90kyox';
+    // TODO: Update with actual URL we use.
+    ENV.host = 'something-here';
   }
 
   return ENV;
