@@ -123,3 +123,37 @@ steins_gate:
   show_type: TV
   started_airing_date: 2011-04-06
   finished_airing_date: 2011-09-14
+
+attack-on-titan:
+  title: Shingeki no Kyojin
+  alt_title: Attack on Titan
+  slug: attack-on-titan
+  age_rating: R17+
+  episode_count: 25
+  episode_length: 24
+  synopsis: 'Several hundred years ago, humans were nearly exterminated by titans.
+    Titans are typically several stories tall, seem to have no intelligence, devour
+    human beings and, worst of all, seem to do it for the pleasure rather than as
+    a food source. A small percentage of humanity survived by enclosing themselves
+    in a city protected by extremely high walls, even taller than the biggest of titans.
+    Flash forward to the present and the city has not seen a titan in over 100 years.
+    Teenage boy Eren and his foster sister Mikasa witness something horrific as the
+    city walls are destroyed by a colossal titan that appears out of thin air. As
+    the smaller titans flood the city, the two kids watch in horror as their mother
+    is eaten alive. Eren vows that he will murder every single titan and take revenge
+    for all of mankind. (Source: ANN)'
+  youtube_video_id: n4Nj6Y_SNYI
+  mal_id: 16498
+  created_at: 2013-02-20 17:55:59.054737000 Z
+  updated_at: 2015-09-12 17:37:49.161670000 Z
+  cover_image_file_name: 418724.jpg
+  cover_image_content_type: image/jpeg
+  cover_image_file_size: 369442
+  cover_image_updated_at: 2014-11-18 07:01:24.472327000 Z
+  bayesian_rating: 4.32087543077983
+  user_count: 36593
+  thetvdb_series_id: 267440
+  thetvdb_season_id: 514060
+  english_canonical: true
+  age_rating_guide: Violence, Profanity
+  show_type: TV

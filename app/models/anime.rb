@@ -159,7 +159,7 @@ class Anime < ActiveRecord::Base
     when 'canonical'
       english_canonical? ? alt_title : title
     when 'english'
-      alt_title || title
+      alt_title.present? ? alt_title : title
     else
       title
     end
