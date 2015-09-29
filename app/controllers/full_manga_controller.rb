@@ -9,9 +9,7 @@ class FullMangaController < ApplicationController
     version = manga.create_pending(current_user, full_manga_params)
     # if this user is admin, apply the changes
     # without review, but still create a history version
-    if current_user.admin?
-      manga.update_from_pending(version)
-    end
+    manga.update_from_pending(version) if current_user.admin?
     render json: true
   end
 
