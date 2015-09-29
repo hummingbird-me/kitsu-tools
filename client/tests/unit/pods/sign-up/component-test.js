@@ -13,7 +13,7 @@ moduleForComponent('sign-up', 'Unit | Component | sign up', {
 testValidPropertyValues('model.email', ['a@b.com'], (subject) => {
   subject.set('model', { email: '' });
 });
-testInvalidPropertyValues('model.email', ['', null, undefined], (subject) => {
+testInvalidPropertyValues('model.email', ['abc', 'abc@a', 'abc@abc.', '', null, undefined], (subject) => {
   subject.set('model', { email: '' });
 });
 

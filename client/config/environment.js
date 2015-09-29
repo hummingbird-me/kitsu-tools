@@ -57,6 +57,8 @@ module.exports = function(environment) {
 
     // use memory store
     ENV['ember-simple-auth'].store = 'session-store:ephemeral';
+    // blank host for test running
+    ENV.host = '';
   }
 
   if (environment === 'production') {
