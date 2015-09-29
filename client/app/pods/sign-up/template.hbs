@@ -10,6 +10,11 @@
   {{! email input }}
   <label for="email">Email</label>
   {{input value=model.email placeholder="Email" type="email"}}
+  {{#if (and model.email errors.model.email)}}
+    <alert-box type="alert" closable=false>
+      Email {{errors.model.email.[0]}}
+    </alert-box>
+  {{/if}}
 
   {{! username input}}
   <label for="username">Username</label>

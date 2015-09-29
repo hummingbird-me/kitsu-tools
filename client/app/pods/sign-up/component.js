@@ -8,7 +8,8 @@ export default Component.extend(EmberValidations, RoutableComponentMixin, {
   errorMessage: null,
   validations: {
     'model.email': {
-      presence: true
+      presence: true,
+      format: { with: /^[^@]+@([^@\.]+\.)+[^@\.]+$/, message: 'must be a valid email address' }
     },
     'model.username': {
       presence: true,

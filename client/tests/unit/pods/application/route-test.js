@@ -1,12 +1,12 @@
 import { moduleFor, test } from 'ember-qunit';
-import Session from 'ember-simple-auth/session';
+import InternalSession from 'ember-simple-auth/internal-session';
 import EphemeralStore from 'ember-simple-auth/stores/ephemeral';
 
 moduleFor('route:application', 'Unit | Route | application', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
   beforeEach() {
-    this.session = Session.create({ store: EphemeralStore.create() });
+    this.session = InternalSession.create({ store: EphemeralStore.create() });
   }
 });
 

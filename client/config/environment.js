@@ -28,15 +28,10 @@ module.exports = function(environment) {
     },
 
     'ember-simple-auth': {
-      base: {
-        authenticationRoute: 'sign-in',
-        routeAfterAuthentication: 'dashboard',
-        routeIfAlreadyAuthenticated: 'dashboard',
-        store: 'session-store:local-storage'
-      },
-      localStorage: {
-        key: 'hummingbird:session'
-      }
+      authenticationRoute: 'sign-in',
+      routeAfterAuthentication: 'dashboard',
+      routeIfAlreadyAuthenticated: 'dashboard',
+      store: 'session-store:local-storage'
     }
   };
 
@@ -61,7 +56,7 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
 
     // use memory store
-    ENV['ember-simple-auth'].base.store = 'session-store:ephemeral';
+    ENV['ember-simple-auth'].store = 'session-store:ephemeral';
   }
 
   if (environment === 'production') {
