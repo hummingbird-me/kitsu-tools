@@ -12,6 +12,7 @@ class Settings::ImportController < ApplicationController
     # Many users are uploading zipped-up lists with a text/xml MIME
     if file.content_type.include?('gzip') ||
        file.tempfile.readpartial(3).unpack('H*').first == '1f8b08'
+      file.rewind
       gz = Zlib::GzipReader.new(file)
       xml = gz.read
       gz.close
