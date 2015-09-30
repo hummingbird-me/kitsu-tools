@@ -17,10 +17,10 @@ testInvalidPropertyValues('model.email', ['abc', 'abc@a', 'abc@abc.', '', null, 
   subject.set('model', { email: '' });
 });
 
-testValidPropertyValues('model.username', ['vevix', '12345abc'], (subject) => {
+testValidPropertyValues('model.name', ['vevix', '12345abc'], (subject) => {
   subject.set('model', { username: '' });
 });
-testInvalidPropertyValues('model.username',
+testInvalidPropertyValues('model.name',
   ['ab', '12345', '_vevix', 'abcdefghijklmnopqrstu', '', null, undefined],
   (subject) => {
     subject.set('model', { username: '' });

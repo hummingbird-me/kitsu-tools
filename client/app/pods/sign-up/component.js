@@ -12,12 +12,12 @@ export default Component.extend(EmberValidations, RoutableComponentMixin, {
       presence: true,
       format: { with: /^[^@]+@([^@\.]+\.)+[^@\.]+$/, message: 'must be a valid email address' }
     },
-    'model.username': {
+    'model.name': {
       presence: true,
       format: { with: /^[_a-zA-Z0-9]+$/, message: 'must be letters, numbers, and underscores only' },
       length: { minimum: 3, maximum: 20 },
       inline: validator(function() {
-        const username = this.model.get('model.username');
+        const username = this.model.get('model.name');
         // must not be all numbers
         if (isPresent(username) && /^[0-9]+$/.test(username)) {
           return 'must not be entirely numbers';

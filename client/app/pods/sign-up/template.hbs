@@ -19,9 +19,9 @@
   {{! username input}}
   <label for="username">Username</label>
   {{input value=model.username placeholder="Username"}}
-  {{#if (and model.username errors.model.username)}}
+  {{#if (and model.name errors.model.name)}}
     <alert-box type="alert" closable=false>
-      Username {{errors.model.username.[0]}}
+      Username {{errors.model.name.[0]}}
     </alert-box>
   {{/if}}
 
