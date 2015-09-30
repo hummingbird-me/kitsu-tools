@@ -24,6 +24,9 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
   app.import('bower_components/foundation/js/vendor/modernizr.js');
+  app.import('bower_components/PACE/pace.js');
+  app.import('bower_components/PACE/themes/orange/pace-theme-minimal.css');
+
   app.import('vendor/third-party-snippets.js');
 
   return app.toTree();
