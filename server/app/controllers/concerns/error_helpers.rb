@@ -11,7 +11,7 @@ module ErrorHelpers
   def error!(status, message = 'Something went wrong')
     if status.respond_to?(:errors) # error!(model)
       errors = status.errors.map do |field, issues|
-        issues.map do |issue|
+        [issues].flatten.map do |issue|
           issue = { title: issue }
           # TODO: switch to JSON Pointer instead of Query Parameter
           issue[:source] = { parameter: field } unless field == :base
