@@ -48,10 +48,11 @@ module ErrorHelpers
   # `check_id! user`
   # `check_id! comment, :comment_id`
   def validate_id(model, param = :id)
-    if model.id == params[param]
+    if model.id.to_i == params[param].to_i
       true
     else
       error! 400, 'ID mismatch'
+      false
     end
   end
 end
