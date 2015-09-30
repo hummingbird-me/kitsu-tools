@@ -1,4 +1,8 @@
+require 'deserializer/helper'
+
 class ApplicationController < ActionController::API
+  include Deserializer::Helper
+
   force_ssl if Rails.env.production?
 
   def error!(status, message = 'Something went wrong')
