@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import EmberValidations, { validator } from 'ember-validations';
 import { RoutableComponentMixin } from 'client/mixins/routable-component';
+import errorMessages from 'client/utils/error-messages';
 
 const { Component, isPresent, computed } = Ember;
 
@@ -42,9 +43,8 @@ export default Component.extend(EmberValidations, RoutableComponentMixin, {
         // TODO: send off a token request, get rid of local password
         // TODO: transition to onboarding
         this.transitionToRoute('dashboard');
-      }).catch((error) => {
-        const reason = error.message ? error.message : 'An unknown error occurred';
-        this.set('errorMessage', reason);
+      }).catch((reason) => {
+        this.set('errorMessage', errorMessages(reason));
       });
     }
   }
