@@ -14,6 +14,20 @@ RSpec.describe 'Deserializer' do
     ActionController::Parameters.new(h)
   end
 
+  it 'should convert kebab-case into snake_case' do
+    allow(deserializer).to receive(:fields) { %i[foo_bar_baz] }
+    p = params('foo-bar-baz' => 'bar')
+    f = deserializer.new(p).filter
+    expect(f).to eq(foo_bar_baz: 'bar')
+  end
+
+  it 'should convert camelCase into snake_case' do
+    allow(deserializer).to receive(:fields) { %i[foo_bar_baz] }
+    p = params('fooBarBaz' => 'bar')
+    f = deserializer.new(p).filter
+    expect(f).to eq(foo_bar_baz: 'bar')
+  end
+
   it 'should always remove fields which are not allowed' do
     p = params(foo: 'bar', boom: 'bah')
     f = deserializer.new(p).filter

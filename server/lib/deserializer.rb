@@ -14,7 +14,11 @@ class Deserializer
   ##
   # Filter attributes from the parameters and apply them to the attrs hash
   def filter
-    attrs = @hash.dup.permit(self.class.fields)
+    # Rename keys from kebab-case and camelCase to snake_case
+    attrs = @hash.deep_transform_keys { |k| k.to_s.underscore }
+    attrs = ActionController::Parameters.new(attrs)
+
+    attrs = attrs.permit(self.class.fields)
 
     # For fields with conditions on them, check that they pass
     self.class.conditions.each do |key, condition|
