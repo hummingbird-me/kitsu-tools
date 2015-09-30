@@ -1,6 +1,6 @@
-<div class="alert-box" tabindex="0" aria-live="assertive" role="alertdialog">
+<alert-box class="alert-box" tabindex="0" aria-live="assertive" role="alertdialog">
   {{yield}}
-  {{#if showClose}}
+  {{#if (eq attrs.closable 'true')}}
     <button type="button" tabindex="0" class="close" aria-label="Close Alert">&times;</button>
   {{/if}}
-</div>
+</alert-box>

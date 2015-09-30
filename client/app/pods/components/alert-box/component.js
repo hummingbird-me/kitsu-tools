@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const { GlimmerComponent, computed, on } = Ember;
+const { GlimmerComponent, on } = Ember;
 
 export default GlimmerComponent.extend({
   'data-alert': '',
@@ -8,11 +8,6 @@ export default GlimmerComponent.extend({
   closable: true,
   classNameBindings: ['attrs.type'],
   attributeBindings: ['data-alert'],
-
-  // `closable` is converted to a string
-  showClose: computed('attrs.closable', function() {
-    return this.get('attrs.closable').toString() === 'true';
-  }),
 
   _initializeFoundation: on('didInsertElement', function() {
     this.$().parent().foundation();
