@@ -79,4 +79,24 @@ class AnimeTest < ActiveSupport::TestCase
     assert_equal 'Sword Art Online', anime.canonical_title('english')
     assert_equal 'Sword Art Online', anime.canonical_title('romanized')
   end
+
+  test "#alternate_title should return the opposite of #canonical_title" do
+    anime = Anime.find('attack-on-titan')
+    assert_equal 'Shingeki no Kyojin', anime.alternate_title('canonical')
+    assert_equal 'Shingeki no Kyojin', anime.alternate_title('english')
+    assert_equal 'Attack on Titan', anime.alternate_title('romanized')
+
+    anime.update_attribute(:english_canonical, false)
+
+    assert_equal 'Attack on Titan', anime.alternate_title('canonical')
+    assert_equal 'Shingeki no Kyojin', anime.alternate_title('english')
+    assert_equal 'Attack on Titan', anime.alternate_title('romanized')
+  end
+
+  test "#alternate_title should return empty or nil values if alt_title doesn't exist" do
+    anime = Anime.find('sword-art-online')
+    assert_equal '', anime.alternate_title('canonical')
+    assert_equal '', anime.alternate_title('english')
+    assert_equal '', anime.alternate_title('romanized')
+  end
 end
