@@ -14,7 +14,8 @@
     "moment": ">= 2.8.0",
     "moment-timezone": ">= 0.1.0",
     "foundation": "~5.5.0",
-    "pretender": "^0.10.0"
+    "pretender": "^0.10.0",
+    "PACE": "pace#~1.0.2"
   },
   "resolutions": {
     "ember": "canary",
