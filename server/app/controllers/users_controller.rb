@@ -5,13 +5,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = deserialize(:user, create: true)
+    @user = deserialize(create: true)
     save_or_error! @user
   end
 
   def update
     # TODO: authenticate & authorize user
-    @user = deserialize(:user)
+    @user = deserialize()
     validate_id(@user) or return
     save_or_error! @user
   end

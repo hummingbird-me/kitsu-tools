@@ -16,11 +16,14 @@ RSpec.describe UsersController, type: :controller do
 
   describe 'create user' do
     def create_user
-      post :create, user: {
-        name: 'Senjougahara',
-        bio: 'hitagi crab',
-        email: 'senjougahara@hita.gi',
-        password: 'headtilt'
+      post :create, data: {
+        type: 'users',
+        attributes: {
+          name: 'Senjougahara',
+          bio: 'hitagi crab',
+          email: 'senjougahara@hita.gi',
+          password: 'headtilt'
+        }
       }
     end
 
@@ -42,9 +45,12 @@ RSpec.describe UsersController, type: :controller do
   describe 'update user' do
     let(:user) { create(:user) }
     def update_user
-      post :update, id: user.id, user: {
+      post :update, id: user.id, data: {
+        type: 'users',
         id: user.id,
-        name: 'crab'
+        attributes: {
+          name: 'crab'
+        }
       }
     end
 
@@ -54,7 +60,6 @@ RSpec.describe UsersController, type: :controller do
     end
     it 'has status ok' do
       update_user
-      p response.body
       expect(response).to have_http_status(:ok)
     end
     it 'should update the user' do

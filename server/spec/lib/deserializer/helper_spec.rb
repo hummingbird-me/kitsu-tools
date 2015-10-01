@@ -4,7 +4,7 @@ require 'deserializer/helper'
 RSpec.describe 'Deserializer::Helper' do
   let(:deserializer) do
     Class.new(Deserializer) do
-      def deserialize; @hash; end
+      def deserialize; params; end
     end
   end
   let(:controller) do
@@ -13,7 +13,11 @@ RSpec.describe 'Deserializer::Helper' do
 
       def params
         @params ||= ActionController::Parameters.new({
-          foo: { bar: 'baz' }
+          data: {
+            type: 'users',
+            id: '1',
+            attributes: { bar: 'baz' }
+          }
         })
       end
     end
@@ -21,7 +25,7 @@ RSpec.describe 'Deserializer::Helper' do
 
   it 'should deserialize from params' do
     instance = controller.new
-    foo = instance.deserialize(:foo, deserializer)
-    expect(foo).to eq(instance.params[:foo])
+    foo = instance.deserialize(deserializer)
+    expect(foo).to eq(instance.params)
   end
 end

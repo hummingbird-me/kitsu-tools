@@ -11,26 +11,27 @@ RSpec.describe 'Deserializer' do
   let(:model) { double('model') }
 
   def params(h = {})
+    h = { data: { attributes: h } }
     ActionController::Parameters.new(h)
   end
 
   it 'should convert kebab-case into snake_case' do
     allow(deserializer).to receive(:fields) { %i[foo_bar_baz] }
     p = params('foo-bar-baz' => 'bar')
-    f = deserializer.new(p).filter
+    f = deserializer.new(p).filtered_attributes
     expect(f).to eq(foo_bar_baz: 'bar')
   end
 
   it 'should convert camelCase into snake_case' do
     allow(deserializer).to receive(:fields) { %i[foo_bar_baz] }
     p = params('fooBarBaz' => 'bar')
-    f = deserializer.new(p).filter
+    f = deserializer.new(p).filtered_attributes
     expect(f).to eq(foo_bar_baz: 'bar')
   end
 
   it 'should always remove fields which are not allowed' do
     p = params(foo: 'bar', boom: 'bah')
-    f = deserializer.new(p).filter
+    f = deserializer.new(p).filtered_attributes
     expect(f).to eq(foo: 'bar')
   end
 
@@ -63,7 +64,7 @@ RSpec.describe 'Deserializer' do
 
     it 'should remove fields which do not pass' do
       p = params(foo: 'a', bar: 'b')
-      f = deserializer.new(p).filter
+      f = deserializer.new(p).filtered_attributes
       expect(f).to eq(bar: 'b')
     end
   end
@@ -78,7 +79,7 @@ RSpec.describe 'Deserializer' do
 
     it 'should remove fields which do not pass' do
       p = params(foo: 'a', bar: 'b')
-      f = deserializer.new(p).filter
+      f = deserializer.new(p).filtered_attributes
       expect(f).to eq(bar: 'b')
     end
   end
