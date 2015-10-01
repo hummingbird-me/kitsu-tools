@@ -4,7 +4,9 @@ require 'deserializer/helper'
 RSpec.describe 'Deserializer::Helper' do
   let(:deserializer) do
     Class.new(Deserializer) do
-      alias_method :deserialize, :params
+      def deserialize
+        params
+      end
     end
   end
   let(:controller) do
