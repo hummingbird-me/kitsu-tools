@@ -2,7 +2,7 @@
 
 # server
 
-server/public/uploads/*
+server/public/system/*
 server/.bundle
 server/db/*.sqlite3
 
