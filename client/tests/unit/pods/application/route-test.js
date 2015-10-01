@@ -4,7 +4,7 @@ import EphemeralStore from 'ember-simple-auth/stores/ephemeral';
 
 moduleFor('route:application', 'Unit | Route | application', {
   // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+  needs: ['service:metrics'],
   beforeEach() {
     this.session = InternalSession.create({ store: EphemeralStore.create() });
   }
