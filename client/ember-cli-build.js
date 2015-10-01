@@ -27,7 +27,5 @@ module.exports = function(defaults) {
   app.import('bower_components/PACE/pace.js');
   app.import('bower_components/PACE/themes/orange/pace-theme-minimal.css');
 
-  app.import('vendor/third-party-snippets.js');
-
   return app.toTree();
 };

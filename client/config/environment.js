@@ -22,9 +22,10 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
-      'script-src': "'self' cdn.segment.com www.google-analytics.com",
+      'script-src': "'self' www.google-analytics.com",
       'style-src': "'self' 'unsafe-inline'",
-      'connect-src': "'self' localhost:3000"
+      'connect-src': "'self' localhost:3000",
+      'img-src': "'self' www.google-analytics.com"
     },
 
     'ember-simple-auth': {
@@ -32,7 +33,11 @@ module.exports = function(environment) {
       routeAfterAuthentication: 'dashboard',
       routeIfAlreadyAuthenticated: 'dashboard',
       store: 'session-store:local-storage'
-    }
+    },
+
+    metricsAdapters: [
+      { name: 'GoogleAnalytics', config: { id: 'UA-37633900-1' } }
+    ]
   };
 
   if (environment === 'development') {
@@ -62,9 +67,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.segmentToken = 'wsxq90kyox';
-    // TODO: Update with actual URL we use.
-    ENV.host = 'something-here';
+    ENV.host = 'https://api.hummingbird.me';
   }
 
   return ENV;

@@ -1,15 +1,17 @@
 import Ember from 'ember';
 import config from './config/environment';
 
-const Router = Ember.Router.extend({
-  location: config.locationType
-});
+const { on, get, inject: { service } } = Ember;
 
-Router.reopen({
-  // https://segment.com/docs/libraries/analytics.js/#page
-  _trackPageView: Ember.on('didTransition', function() {
+const Router = Ember.Router.extend({
+  location: config.locationType,
+  metrics: service(),
+
+  _notifyGoogleAnalytics: on('didTransition', function() {
+    // @Temporary: Next version of `ember-metrics` will allow disabling it.
     if (config.environment === 'production') {
-      window.analytics.page();
+      const page = get(this, 'url');
+      get(this, 'metrics').trackPage({ page });
     }
   })
 });
