@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find(params[:id])
+    if params[:id] == 'me'
+      return error! 404, 'not found' unless signed_in?
+      @user = current_user
+    else
+      @user = User.find(params[:id])
+    end
     render json: @user
   end
 

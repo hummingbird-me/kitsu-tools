@@ -2,6 +2,17 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
   describe 'show user' do
+    describe 'with id=me' do
+      it 'shows when authenticated' do
+        allow(@controller).to receive(:current_user) { 'hello' }
+        get :show, id: 'me'
+        expect(assigns(:user)).to eq('hello')
+      end
+      it 'errors when unauthenticated' do
+        get :show, id: 'me'
+        expect(response).to have_http_status(:not_found)
+      end
+    end
     it 'assigns @user' do
       user = create(:user)
       get :show, id: user.id
