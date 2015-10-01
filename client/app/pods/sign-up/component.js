@@ -3,7 +3,13 @@ import EmberValidations, { validator } from 'ember-validations';
 import { RoutableComponentMixin } from 'client/mixins/routable-component';
 import errorMessages from 'client/utils/error-messages';
 
-const { Component, isPresent, computed } = Ember;
+const {
+  Component,
+  isPresent,
+  get,
+  set,
+  computed
+} = Ember;
 
 export default Component.extend(EmberValidations, RoutableComponentMixin, {
   errorMessage: null,
@@ -17,14 +23,14 @@ export default Component.extend(EmberValidations, RoutableComponentMixin, {
       format: { with: /^[_a-zA-Z0-9]+$/, message: 'must be letters, numbers, and underscores only' },
       length: { minimum: 3, maximum: 20 },
       inline: validator(function() {
-        const username = this.model.get('model.name');
+        const name = get(this.model, 'model.name');
         // must not be all numbers
-        if (isPresent(username) && /^[0-9]+$/.test(username)) {
+        if (isPresent(name) && /^[0-9]+$/.test(name)) {
           return 'must not be entirely numbers';
         }
 
         // start with a letter, or number
-        if (isPresent(username) && !/^[a-zA-Z0-9]$/.test(username.charAt(0))) {
+        if (isPresent(name) && !/^[a-zA-Z0-9]$/.test(name.charAt(0))) {
           return 'must start with a letter or number';
         }
       })
@@ -39,12 +45,12 @@ export default Component.extend(EmberValidations, RoutableComponentMixin, {
 
   actions: {
     createAccount() {
-      this.get('model').save().then(() => {
+      get(this, 'model').save().then(() => {
         // TODO: send off a token request, get rid of local password
         // TODO: transition to onboarding
         this.transitionToRoute('dashboard');
       }).catch((reason) => {
-        this.set('errorMessage', errorMessages(reason));
+        set(this, 'errorMessage', errorMessages(reason));
       });
     }
   }

@@ -11,13 +11,13 @@ moduleFor('route:application', 'Unit | Route | application', {
 });
 
 test('it exists', function(assert) {
-  let route = this.subject({ session: this.session });
+  const route = this.subject({ session: this.session });
   assert.ok(route);
 });
 
 test('title works', function(assert) {
   assert.expect(2);
-  let route = this.subject({ session: this.session });
+  const route = this.subject({ session: this.session });
   assert.equal(route.title(['One', 'Two']), 'Two | One | Hummingbird');
   assert.equal(route.title(), 'Hummingbird');
 });

@@ -1,6 +1,10 @@
 import Ember from 'ember';
 
-const { GlimmerComponent, on } = Ember;
+const {
+  GlimmerComponent,
+  on,
+  run
+} = Ember;
 
 export default GlimmerComponent.extend({
   'data-alert': '',
@@ -10,6 +14,8 @@ export default GlimmerComponent.extend({
   attributeBindings: ['data-alert'],
 
   _initializeFoundation: on('didInsertElement', function() {
-    this.$().parent().foundation();
+    run.scheduleOnce('afterRender', this, () => {
+      this.$().parent().foundation();
+    });
   })
 });

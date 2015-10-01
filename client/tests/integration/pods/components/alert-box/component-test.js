@@ -10,11 +10,11 @@ test('it renders', function(assert) {
   this.render(hbs`<alert-box type="success" closable=true />`);
 
   // type is set
-  let $alert = this.$('.alert-box.success');
+  const $alert = this.$('.alert-box.success');
   assert.equal($alert.length, 1);
 
   // button is created
-  let $button = this.$('.alert-box button');
+  const $button = this.$('.alert-box button');
   assert.equal($button.length, 1);
   assert.equal($button.text().trim(), '×');
 });
@@ -28,6 +28,6 @@ test('block renders', function(assert) {
   `);
 
   // text is displayed
-  let $alert = this.$('.alert-box.success');
+  const $alert = this.$('.alert-box.success');
   assert.equal($alert.text().trim(), 'Hello, World!');
 });

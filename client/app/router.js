@@ -1,18 +1,27 @@
 import Ember from 'ember';
 import config from './config/environment';
 
-const { on, get, inject: { service } } = Ember;
+const {
+  on,
+  get,
+  getWithDefault,
+  run,
+  inject: { service }
+} = Ember;
 
 const Router = Ember.Router.extend({
   location: config.locationType,
   metrics: service(),
 
   _notifyGoogleAnalytics: on('didTransition', function() {
-    // @Temporary: Next version of `ember-metrics` will allow disabling it.
-    if (config.environment === 'production') {
-      const page = get(this, 'url');
-      get(this, 'metrics').trackPage({ page });
-    }
+    run.scheduleOnce('afterRender', this, () => {
+      // @Temporary: Next version of `ember-metrics` will allow disabling it.
+      if (config.environment === 'production') {
+        const page = get(this, 'url');
+        const title = getWithDefault(this, 'currentRouteName', 'unknown');
+        get(this, 'metrics').trackPage({ page, title });
+      }
+    });
   })
 });
 
