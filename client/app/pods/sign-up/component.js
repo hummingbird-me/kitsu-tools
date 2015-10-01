@@ -8,10 +8,12 @@ const {
   isPresent,
   get,
   set,
-  computed
+  computed,
+  inject: { service }
 } = Ember;
 
 export default Component.extend(EmberValidations, RoutableComponentMixin, {
+  currentSession: service(),
   errorMessage: null,
   validations: {
     'model.email': {
@@ -46,9 +48,13 @@ export default Component.extend(EmberValidations, RoutableComponentMixin, {
   actions: {
     createAccount() {
       get(this, 'model').save().then(() => {
-        // TODO: send off a token request, get rid of local password
-        // TODO: transition to onboarding
-        this.transitionToRoute('dashboard');
+        const data = {
+          identification: get(this, 'model.name'),
+          password: get(this, 'model.password')
+        };
+        get(this, 'currentSession').authenticateWithOAuth2(data).catch((reason) => {
+          set(this, 'errorMessage', errorMessages(reason));
+        });
       }).catch((reason) => {
         set(this, 'errorMessage', errorMessages(reason));
       });

@@ -1,1 +1,8 @@
-<h1>Dashboard</h1>
+{{#if currentSession.isAuthenticated}}
+  <h1>Welcome, {{currentSession.account.name}}</h1>
+  <a href="#" {{action 'invalidateSession'}}>Sign Out</a>
+{{else}}
+  <h1>Dashboard</h1>
+  {{link-to 'Sign In' 'sign-in'}}
+  {{link-to 'Sign Up' 'sign-up'}}
+{{/if}}
