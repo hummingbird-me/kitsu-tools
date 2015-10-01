@@ -8,6 +8,6 @@ class UserDeserializer < Deserializer
              password: ->(p) { p.present? }
 
   def self.data_uri?(str)
-    str.starts_with?('data:')
+    str.starts_with?('data:') if str
   end
 end
