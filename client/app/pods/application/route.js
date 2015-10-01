@@ -46,6 +46,9 @@ export default Route.extend(ApplicationRouteMixin, {
       return get(this, 'store').findRecord('user', 'me').then((user) => {
         const userId = get(user, 'id');
         set(this, 'currentSession.userId', userId);
+      }).catch(() => {
+        // If we error (404/Something is broken), then invalidate the session
+        get(this, 'currentSession').invalidate();
       });
     }
   }
