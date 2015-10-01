@@ -23,3 +23,11 @@ test('works with AdapterError response', function(assert) {
   });
   assert.equal(result, 'abc\ndef');
 });
+
+test('works with Doorkeeper response', function(assert) {
+  assert.expect(1);
+  const result = errorMessages({
+    error: 'invalid_grant'
+  });
+  assert.equal(result, 'The provided credentials are not valid.');
+});
