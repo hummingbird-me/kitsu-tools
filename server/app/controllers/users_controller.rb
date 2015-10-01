@@ -11,8 +11,8 @@ class UsersController < ApplicationController
 
   def update
     # TODO: authenticate & authorize user
-    @user = deserialize()
-    validate_id(@user) or return
+    @user = deserialize
+    validate_id(@user) || return
     save_or_error! @user
   end
 

@@ -1,5 +1,6 @@
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+  # Settings specified here will take precedence over those in
+  # config/application.rb.
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -28,14 +29,14 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # Enable CORS in Development so Ember can access Rails on a different port
-  config.middleware.insert_before 0, 'Rack::Cors', debug: true,
+  config.middleware.insert_before 0, 'Rack::Cors',
+                                  debug: true,
                                   logger: -> { Rails.logger } do
     allow do
       origins '*'
-      resource '*',
-        headers: :any,
-        methods: %i[get post delete put options head],
-        max_age: 0
+      resource '*', headers: :any,
+                    methods: %i[get post delete put options head],
+                    max_age: 0
     end
   end
 end

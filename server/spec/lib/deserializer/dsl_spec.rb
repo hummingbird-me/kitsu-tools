@@ -21,12 +21,12 @@ RSpec.describe 'Deserializer::DSL' do
   it 'should stack up fields calls into one big thing and let us retrieve' do
     deserializer.fields :a, :b
     deserializer.fields :c, :d
-    expect(deserializer.fields).to eq([:a, :b, :c, :d])
+    expect(deserializer.fields).to eq(%i[a b c d])
   end
 
   it 'should stack up conditions into one big thing and let us retrieve' do
     deserializer.conditions a: :test?
     deserializer.conditions b: :test?
-    expect(deserializer.conditions.keys).to eq([:a, :b])
+    expect(deserializer.conditions.keys).to eq(%i[a b])
   end
 end

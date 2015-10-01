@@ -5,7 +5,8 @@ RSpec.describe ErrorHelpers do
     Class.new do
       include ErrorHelpers
 
-      def render(hash); end
+      def render(*); end
+
       def params; end
     end
   end
@@ -13,19 +14,19 @@ RSpec.describe ErrorHelpers do
 
   context 'error! method' do
     it 'should render a 400 with an errors key in json for a model' do
-      expect(instance).to receive(:render).with({
+      expect(instance).to receive(:render).with(
         json: { errors: [{ title: 'bar', source: { parameter: :foo } }] },
         status: 400
-      })
+      )
       fake_model = double('fake model')
       allow(fake_model).to receive(:errors) { { foo: ['bar'] } }
       instance.error! fake_model
     end
     it 'should render a simple error message' do
-      expect(instance).to receive(:render).with({
+      expect(instance).to receive(:render).with(
         json: { errors: [{ title: 'foo' }] },
         status: 403
-      })
+      )
       instance.error! 403, 'foo'
     end
   end

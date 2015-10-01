@@ -73,7 +73,7 @@ RSpec.describe 'Deserializer' do
   context 'with lambda conditions' do
     before do
       allow(deserializer).to receive(:conditions) do
-        { foo: ->{ false } }
+        { foo: -> { false } }
       end
     end
 

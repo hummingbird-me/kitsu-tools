@@ -24,7 +24,7 @@ module ErrorHelpers
       }, status: 400
     else # error!(status, message)
       render json: {
-        errors: [{ title: message }],
+        errors: [{ title: message }]
       }, status: status
     end
   end
