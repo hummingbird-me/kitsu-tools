@@ -21,6 +21,7 @@ module.exports = function(environment) {
       // when it is created
     },
 
+    contentSecurityPolicyHeader: 'Content-Security-Policy',
     contentSecurityPolicy: {
       'script-src': "'self' www.google-analytics.com",
       'style-src': "'self' 'unsafe-inline'",
