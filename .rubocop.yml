@@ -50,15 +50,15 @@ Style/NumericLiterals:
 Style/PercentLiteralDelimiters:
   Enabled: true
   PreferredDelimiters:
-    "%": "()"
-    "%i": "()"
-    "%q": "()"
-    "%Q": "()"
+    "%": "[]"
+    "%i": "[]"
+    "%q": "[]"
+    "%Q": "[]"
     "%r": "{}"
     "%s": "()"
-    "%w": "()"
-    "%W": "()"
-    "%x": "()"
+    "%w": "[]"
+    "%W": "[]"
+    "%x": "[]"
 Style/PredicateName:
   Enabled: true
   NamePrefix:
