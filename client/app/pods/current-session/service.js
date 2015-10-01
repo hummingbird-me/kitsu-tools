@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import DS from 'ember-data';
 
 const {
   Service,
@@ -8,7 +7,6 @@ const {
   computed,
   inject: { service }
 } = Ember;
-const { PromiseObject } = DS;
 
 export default Service.extend({
   session: service(),

@@ -7,8 +7,22 @@ import { currentSession } from 'client/tests/helpers/ember-simple-auth';
 module('Acceptance | authentication', {
   beforeEach() {
     this.application = startApp();
+    // @TODO: Move over to ember-mirage
     this.server = new Pretender(function() {
       this.post('/oauth/token', () => [200, {}, '{ "test_valid": true }']);
+      this.get('/users/me', () => {
+        return [
+          200,
+          {},
+          JSON.stringify({
+            data: {
+              type: 'users',
+              id: '1',
+              attributes: {}
+            }
+          })
+        ];
+      });
     });
   },
 

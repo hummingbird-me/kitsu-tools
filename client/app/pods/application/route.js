@@ -1,12 +1,10 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
-import config from 'client/config/environment';
 
 const {
   Route,
   get,
   set,
-  on,
   inject: { service }
 } = Ember;
 
@@ -17,6 +15,8 @@ export default Route.extend(ApplicationRouteMixin, {
   beforeModel() {
     const session = get(this, 'currentSession');
     if (get(session, 'isAuthenticated')) {
+      // we return the promise here, as it will pause the transition until
+      // we have received the data
       return this._getCurrentUser();
     }
   },
@@ -40,10 +40,13 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   _getCurrentUser() {
-    // @Cleanup: This stores an undefined record under users
-    return get(this, 'store').findRecord('user', 'me').then((user) => {
-      const userId = get(user, 'id');
-      set(this, 'currentSession.userId', userId);
-    });
+    // don't run in test environment
+    if (!Ember.testing) {
+      // @Cleanup: This stores an undefined record under users
+      return get(this, 'store').findRecord('user', 'me').then((user) => {
+        const userId = get(user, 'id');
+        set(this, 'currentSession.userId', userId);
+      });
+    }
   }
 });
