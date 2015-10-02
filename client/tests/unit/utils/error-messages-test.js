@@ -9,11 +9,11 @@ test('works with backend ajax response', function(assert) {
   const result = errorMessages({
     jqXHR: {
       responseJSON: {
-        errors: [{ title: 'abc' }, { title: 'def' }]
+        errors: [{ title: 'abc', source: { parameter: 'user' } }, { title: 'def' }]
       }
     }
   });
-  assert.equal(result, 'abc\ndef');
+  assert.equal(result, 'User abc\ndef');
 });
 
 test('works with AdapterError response', function(assert) {

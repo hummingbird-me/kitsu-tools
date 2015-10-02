@@ -9,8 +9,10 @@ const lookupTable = {
 function formatErrors(errors) {
   errors = errors.map((error) => {
     const param = get(error, 'source.parameter');
-    const message = param === undefined ? get(error, 'title') : `${param} ${get(error, 'title')}`;
-    return message;
+    if (param === undefined) {
+      return get(error, 'title');
+    }
+    return `${param.capitalize()} ${get(error, 'title')}`;
   });
   return errors.compact().join('\n');
 }
