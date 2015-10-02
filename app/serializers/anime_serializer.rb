@@ -11,7 +11,7 @@ class AnimeSerializer < ActiveModel::Serializer
   end
 
   def canonical_title
-    object.canonical_title('canonical')
+    object.canonical_title(scope.try(:title_language_preference) || 'canonical')
   end
 
   def english_title
