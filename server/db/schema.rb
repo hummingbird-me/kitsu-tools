@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927002118) do
+ActiveRecord::Schema.define(version: 20151002044617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,39 +19,39 @@ ActiveRecord::Schema.define(version: 20150927002118) do
   enable_extension "pg_trgm"
 
   create_table "anime", force: :cascade do |t|
-    t.string   "title",                     limit: 255
-    t.string   "alt_title",                 limit: 255
     t.string   "slug",                      limit: 255
-    t.string   "age_rating",                limit: 255
+    t.integer  "age_rating"
     t.integer  "episode_count"
     t.integer  "episode_length"
-    t.text     "synopsis",                              default: "",    null: false
+    t.text     "synopsis",                              default: "",      null: false
     t.string   "youtube_video_id",          limit: 255
     t.integer  "mal_id"
-    t.datetime "created_at",                                            null: false
-    t.datetime "updated_at",                                            null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
     t.string   "cover_image_file_name",     limit: 255
     t.string   "cover_image_content_type",  limit: 255
     t.integer  "cover_image_file_size"
     t.datetime "cover_image_updated_at"
-    t.float    "bayesian_rating",                       default: 0.0,   null: false
-    t.integer  "user_count",                            default: 0,     null: false
+    t.float    "bayesian_rating",                       default: 0.0,     null: false
+    t.integer  "user_count",                            default: 0,       null: false
     t.integer  "thetvdb_series_id"
     t.integer  "thetvdb_season_id"
-    t.boolean  "english_canonical",                     default: false
     t.string   "age_rating_guide",          limit: 255
     t.string   "show_type",                 limit: 255
     t.date     "started_airing_date"
     t.date     "finished_airing_date"
-    t.hstore   "rating_frequencies",                    default: {},    null: false
+    t.hstore   "rating_frequencies",                    default: {},      null: false
     t.string   "poster_image_file_name",    limit: 255
     t.string   "poster_image_content_type", limit: 255
     t.integer  "poster_image_file_size"
     t.datetime "poster_image_updated_at"
-    t.integer  "cover_image_top_offset",                default: 0,     null: false
+    t.integer  "cover_image_top_offset",                default: 0,       null: false
     t.integer  "ann_id"
-    t.boolean  "started_airing_date_known",             default: true,  null: false
+    t.boolean  "started_airing_date_known",             default: true,    null: false
     t.text     "jp_title"
+    t.hstore   "titles",                                default: {},      null: false
+    t.string   "canonical_title",                       default: "ja_en", null: false
+    t.string   "abbreviated_titles",                                                   array: true
   end
 
   add_index "anime", ["age_rating"], name: "index_anime_on_age_rating", using: :btree
