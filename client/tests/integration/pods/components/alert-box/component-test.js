@@ -7,7 +7,7 @@ moduleForComponent('alert-box', 'Integration | Component | alert box', {
 
 test('it renders', function(assert) {
   assert.expect(3);
-  this.render(hbs`<alert-box type="success" closable=true />`);
+  this.render(hbs`{{alert-box type="success" closable=true}}`);
 
   // type is set
   const $alert = this.$('.alert-box.success');
@@ -22,9 +22,9 @@ test('it renders', function(assert) {
 test('block renders', function(assert) {
   assert.expect(1);
   this.render(hbs`
-    <alert-box type="success" closable=false>
+    {{#alert-box type="success" closable=false}}
       Hello, World!
-    </alert-box>
+    {{/alert-box}}
   `);
 
   // text is displayed
