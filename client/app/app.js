@@ -17,7 +17,7 @@ const App = Ember.Application.extend({
     }),
 
     /*
-      app/models/<name>/models
+      app/models/<name>/model
       app/models/<name>/serializer
       app/models/<name>/adapter
     */
