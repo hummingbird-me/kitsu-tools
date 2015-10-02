@@ -8,10 +8,12 @@
 
 <form {{action 'authenticateWithOAuth2' on='submit'}}>
   <label for="identification">Login</label>
-  {{input value=identification placeholder="Username or Email"}}
+  {{one-way-input value=identification placeholder="Username or Email"
+    update=(action (mut identification))}}
 
   <label for="password">Password</label>
-  {{input value=password placeholder="Password" type="password"}}
+  {{one-way-input value=password placeholder="Password" type="password"
+    update=(action (mut password))}}
 
   <button type="submit" disabled={{isSubmitDisabled}}>Sign In</button>
 </form>
