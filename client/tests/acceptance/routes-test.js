@@ -59,3 +59,10 @@ test('visiting /sign-up should work if unauthenticated', function(assert) {
 
   andThen(() => assert.equal(currentURL(), '/sign-up'));
 });
+
+test('visiting an unknown route hits not-found', function(assert) {
+  assert.expect(1);
+  visit('/doesnt-exist');
+
+  andThen(() => assert.equal(currentRouteName(), 'not-found'));
+});

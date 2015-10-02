@@ -32,6 +32,9 @@ Router.map(function() {
   // authentication
   this.route('sign-up');
   this.route('sign-in');
+
+  // error pages
+  this.route('not-found', { path: '/*path' });
 });
 
 export default Router;
