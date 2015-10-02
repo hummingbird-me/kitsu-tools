@@ -20,6 +20,10 @@ class FullAnimeSerializer < AnimeSerializer
   has_many :episodes
   has_one :library_entry
 
+  def alternate_title
+    object.alternate_title(scope.try(:title_language_preference) || 'canonical')
+  end
+
   def has_reviewed
     scope && Review.exists?(user_id: scope.id, anime_id: object.id)
   end
