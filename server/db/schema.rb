@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003032710) do
+ActiveRecord::Schema.define(version: 20151003085835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -265,10 +265,8 @@ ActiveRecord::Schema.define(version: 20151003032710) do
   add_index "library_entries", ["user_id"], name: "index_library_entries_on_user_id", using: :btree
 
   create_table "manga", force: :cascade do |t|
-    t.string   "romaji_title",              limit: 255
     t.string   "slug",                      limit: 255
-    t.string   "english_title",             limit: 255
-    t.text     "synopsis",                              default: "",      null: false
+    t.text     "synopsis"
     t.string   "poster_image_file_name",    limit: 255
     t.string   "poster_image_content_type", limit: 255
     t.integer  "poster_image_file_size"
@@ -283,13 +281,16 @@ ActiveRecord::Schema.define(version: 20151003032710) do
     t.integer  "mal_id"
     t.datetime "created_at",                                              null: false
     t.datetime "updated_at",                                              null: false
-    t.string   "status",                    limit: 255
+    t.integer  "status"
     t.integer  "cover_image_top_offset",                default: 0
     t.integer  "volume_count"
     t.integer  "chapter_count"
-    t.string   "manga_type",                limit: 255, default: "Manga"
+    t.integer  "manga_type",                            default: 1,       null: false
     t.float    "bayesian_rating"
     t.hstore   "rating_frequencies",                    default: {},      null: false
+    t.hstore   "titles",                                default: {},      null: false
+    t.string   "canonical_title",                       default: "ja_en", null: false
+    t.string   "abbreviated_titles",                                                   array: true
   end
 
   create_table "manga_library_entries", force: :cascade do |t|
