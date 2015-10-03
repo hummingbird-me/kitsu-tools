@@ -74,9 +74,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'shoulda' # it { should(:have_shoulda) }
+  gem 'shoulda-matchers' # it { should(:have_shoulda) }
   gem 'timecop' # stop [hammer-]time
-  gem 'mocha' # Mocks and stubs
   gem 'json_expressions' # Test outputted JSON
   gem 'rspec-sidekiq' # Test Sidekiq jobs
   gem 'faker' # Fake data
