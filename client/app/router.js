@@ -36,6 +36,7 @@ Router.map(function() {
   this.route('media', { path: '/:mediaType/:mediaSlug' });
 
   // error pages
+  this.route('server-error', { path: '/500' });
   this.route('not-found', { path: '/*path' });
 });
 
