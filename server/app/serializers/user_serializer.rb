@@ -65,7 +65,7 @@
 #
 
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :avatar, :cover_image, :about
-             :bio, :about_formatted, :location, :website, :waifu_or_husbando
+  attributes :id, :name, :avatar, :cover_image, :about,
+             :bio, :about_formatted, :location, :website, :waifu_or_husbando,
              :rating_system, :to_follow, :followers_count, :following_count
 end
