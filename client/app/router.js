@@ -3,7 +3,6 @@ import config from './config/environment';
 
 const {
   on,
-  get,
   getWithDefault,
   run,
   inject: { service }
@@ -17,9 +16,9 @@ const Router = Ember.Router.extend({
     run.scheduleOnce('afterRender', this, () => {
       // @Temporary: Next version of `ember-metrics` will allow disabling it.
       if (config.environment === 'production') {
-        const page = get(this, 'url');
+        const page = Ember.get(this, 'url');
         const title = getWithDefault(this, 'currentRouteName', 'unknown');
-        get(this, 'metrics').trackPage({ page, title });
+        Ember.get(this, 'metrics').trackPage({ page, title });
       }
     });
   })
@@ -32,6 +31,9 @@ Router.map(function() {
   // authentication
   this.route('sign-up');
   this.route('sign-in');
+
+  // This should remain near the bottom of Router.
+  this.route('media', { path: '/:mediaType/:mediaSlug' });
 
   // error pages
   this.route('not-found', { path: '/*path' });

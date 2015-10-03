@@ -26,3 +26,5 @@ aws_env
 connect.lock
 sftp-config.json
 .ruby-version
+jsconfig.json
+.vscode/
