@@ -67,8 +67,13 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  subject { build(:user) }
   let(:persisted_user) { create(:user) }
 
+  it { should define_enum_for(:rating_system) }
+  it { should have_db_index(:facebook_id) }
+  it { should validate_uniqueness_of(:name) }
+  it { should validate_uniqueness_of(:email) }
   it 'should be able to query for authentication by username' do
     u = User.find_for_auth(persisted_user.name)
     expect(u).to eq(persisted_user)
