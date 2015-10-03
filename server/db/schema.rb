@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002044617) do
+ActiveRecord::Schema.define(version: 20151003032710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -507,7 +507,7 @@ ActiveRecord::Schema.define(version: 20151002044617) do
     t.string   "facebook_id",                 limit: 255
     t.string   "bio",                         limit: 140, default: "",          null: false
     t.boolean  "sfw_filter",                              default: true
-    t.boolean  "star_rating",                             default: false
+    t.integer  "rating_system",                           default: 1
     t.string   "mal_username",                limit: 255
     t.integer  "life_spent_on_anime",                     default: 0,           null: false
     t.string   "about",                       limit: 500, default: "",          null: false
@@ -520,20 +520,16 @@ ActiveRecord::Schema.define(version: 20151002044617) do
     t.integer  "cover_image_file_size"
     t.datetime "cover_image_updated_at"
     t.string   "title_language_preference",   limit: 255, default: "canonical"
-    t.integer  "followers_count_hack",                    default: 0
+    t.integer  "followers_count",                         default: 0
     t.integer  "following_count",                         default: 0
     t.boolean  "ninja_banned",                            default: false
-    t.datetime "last_library_update"
     t.datetime "last_recommendations_update"
-    t.string   "authentication_token",        limit: 255
     t.boolean  "avatar_processing"
     t.boolean  "subscribed_to_newsletter",                default: true
-    t.string   "waifu",                       limit: 255
     t.string   "location",                    limit: 255
     t.string   "website",                     limit: 255
     t.string   "waifu_or_husbando",           limit: 255
-    t.string   "waifu_slug",                  limit: 255, default: "#"
-    t.string   "waifu_char_id",               limit: 255, default: "0000"
+    t.integer  "waifu_id"
     t.boolean  "to_follow",                               default: false
     t.string   "dropbox_token",               limit: 255
     t.string   "dropbox_secret",              limit: 255
@@ -548,15 +544,14 @@ ActiveRecord::Schema.define(version: 20151002044617) do
     t.integer  "import_status"
     t.string   "import_from",                 limit: 255
     t.string   "import_error",                limit: 255
+    t.boolean  "onboarded",                               default: false,       null: false
   end
 
-  add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["facebook_id"], name: "index_users_on_facebook_id", unique: true, using: :btree
   add_index "users", ["to_follow"], name: "index_users_on_to_follow", using: :btree
-  add_index "users", ["waifu"], name: "index_users_on_waifu", using: :btree
-  add_index "users", ["waifu_char_id"], name: "index_users_on_waifu_char_id", using: :btree
+  add_index "users", ["waifu_id"], name: "index_users_on_waifu_id", using: :btree
 
   create_table "versions", force: :cascade do |t|
     t.integer  "item_id",                                null: false

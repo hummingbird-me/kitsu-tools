@@ -24,7 +24,7 @@
 #  facebook_id                 :string(255)
 #  bio                         :string(140)      default(""), not null
 #  sfw_filter                  :boolean          default(TRUE)
-#  star_rating                 :boolean          default(FALSE)
+#  rating_system               :integer          default(1)
 #  mal_username                :string(255)
 #  life_spent_on_anime         :integer          default(0), not null
 #  about                       :string(500)      default(""), not null
@@ -37,20 +37,16 @@
 #  cover_image_file_size       :integer
 #  cover_image_updated_at      :datetime
 #  title_language_preference   :string(255)      default("canonical")
-#  followers_count_hack        :integer          default(0)
+#  followers_count             :integer          default(0)
 #  following_count             :integer          default(0)
 #  ninja_banned                :boolean          default(FALSE)
-#  last_library_update         :datetime
 #  last_recommendations_update :datetime
-#  authentication_token        :string(255)
 #  avatar_processing           :boolean
 #  subscribed_to_newsletter    :boolean          default(TRUE)
-#  waifu                       :string(255)
 #  location                    :string(255)
 #  website                     :string(255)
 #  waifu_or_husbando           :string(255)
-#  waifu_slug                  :string(255)      default("#")
-#  waifu_char_id               :string(255)      default("0000")
+#  waifu_id                    :integer
 #  to_follow                   :boolean          default(FALSE)
 #  dropbox_token               :string(255)
 #  dropbox_secret              :string(255)
@@ -65,6 +61,7 @@
 #  import_status               :integer
 #  import_from                 :string(255)
 #  import_error                :string(255)
+#  onboarded                   :boolean          default(FALSE), not null
 #
 
 require 'rails_helper'
