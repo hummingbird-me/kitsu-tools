@@ -68,9 +68,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable,
          :validatable, :confirmable, :async
 
+  enum rating_system: %i[smilies stars]
   has_attached_file :avatar
   has_attached_file :cover_image
 
+  validates :email, presence: true,
+                    uniqueness: { case_sensitive: false }
+  validates :name, presence: true,
+                   uniqueness: { case_sensitive: false }
+  validates :encrypted_password, presence: true
+  validates :facebook_id, uniqueness: true, allow_nil: true
   validates_attachment :avatar, content_type: {
     content_type: %w[image/jpg image/jpeg image/png image/gif]
   }
