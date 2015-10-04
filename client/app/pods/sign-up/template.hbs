@@ -10,7 +10,7 @@
   {{! email input }}
   <label for="email">Email</label>
   {{one-way-input value=model.email placeholder="Email" type="email"
-    update=(action (mut model.email))}}
+    update=(action (mut model.email)) data-test-selector="email"}}
   {{#if (and model.email errors.model.email)}}
     {{#alert-box type="alert" closable=false}}
       Email {{errors.model.email.[0]}}
@@ -20,7 +20,7 @@
   {{! username input}}
   <label for="username">Username</label>
   {{one-way-input value=model.name placeholder="Username"
-    update=(action (mut model.name))}}
+    update=(action (mut model.name)) data-test-selector="username"}}
   {{#if (and model.name errors.model.name)}}
     {{#alert-box type="alert" closable=false}}
       Username {{errors.model.name.[0]}}
@@ -30,12 +30,14 @@
   {{! password input }}
   <label for="password">Password</label>
   {{one-way-input value=model.password placeholder="Password" type="password"
-    update=(action (mut model.password))}}
+    update=(action (mut model.password)) data-test-selector="password"}}
   {{#if (and model.password errors.model.password)}}
     {{#alert-box type="alert" closable=false}}
       Password {{errors.model.password.[0]}}
     {{/alert-box}}
   {{/if}}
 
-  <button type="submit" disabled={{isSubmitDisabled}}>Sign Up</button>
+  <button type="submit" disabled={{isSubmitDisabled}} data-test-selector="sign-up">
+    Sign Up
+  </button>
 </form>

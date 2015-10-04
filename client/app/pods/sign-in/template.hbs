@@ -9,11 +9,13 @@
 <form {{action 'authenticateWithOAuth2' on='submit'}}>
   <label for="identification">Login</label>
   {{one-way-input value=identification placeholder="Username or Email"
-    update=(action (mut identification))}}
+    update=(action (mut identification)) data-test-selector="identification"}}
 
   <label for="password">Password</label>
   {{one-way-input value=password placeholder="Password" type="password"
-    update=(action (mut password))}}
+    update=(action (mut password)) data-test-selector="password"}}
 
-  <button type="submit" disabled={{isSubmitDisabled}}>Sign In</button>
+  <button type="submit" disabled={{isSubmitDisabled}} data-test-selector="sign-in">
+    Sign In
+  </button>
 </form>

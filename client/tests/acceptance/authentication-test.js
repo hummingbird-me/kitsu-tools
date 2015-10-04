@@ -7,23 +7,7 @@ import { currentSession } from 'client/tests/helpers/ember-simple-auth';
 module('Acceptance | authentication', {
   beforeEach() {
     this.application = startApp();
-    // @TODO: Move over to ember-mirage
-    this.server = new Pretender(function() {
-      this.post('/oauth/token', () => [200, {}, '{ "test_valid": true }']);
-      this.get('/users/me', () => {
-        return [
-          200,
-          {},
-          JSON.stringify({
-            data: {
-              type: 'users',
-              id: '1',
-              attributes: {}
-            }
-          })
-        ];
-      });
-    });
+    this.server = new Pretender();
   },
 
   afterEach() {
@@ -33,21 +17,39 @@ module('Acceptance | authentication', {
 });
 
 test('/sign-up flow works', function(assert) {
-  assert.ok(true);
+  assert.expect(3);
+
+  this.server.post('/oauth/token', () => [200, {}, '{ "test_valid": true }']);
+  this.server.post('/users', () => [200, {} , '{ "data": { "type": "users", "id": "1" } }']);
+
+  visit('/sign-up');
+  fillIn('input[data-test-selector="email"]', 'a@b.com');
+  fillIn('input[data-test-selector="username"]', 'vevix');
+  fillIn('input[data-test-selector="password"]', 'password');
+  click('button[data-test-selector="sign-up"]');
+
+  andThen(() => {
+    const session = currentSession(this.application);
+    assert.equal(currentURL(), '/', 'user was redirected to the dashboard');
+    assert.ok(session.get('isAuthenticated'), 'session is authenticated');
+    assert.ok(session.get('data.authenticated.test_valid'), 'session received and stored data');
+  });
 });
 
 test('/sign-in flow works', function(assert) {
   assert.expect(3);
 
+  this.server.post('/oauth/token', () => [200, {}, '{ "test_valid": true }']);
+
   visit('/sign-in');
-  fillIn('input[type="text"]', 'username');
-  fillIn('input[type="password"]', 'password');
-  click('button[type="submit"]');
+  fillIn('input[data-test-selector="identification"]', 'username');
+  fillIn('input[data-test-selector="password"]', 'password');
+  click('button[data-test-selector="sign-in"]');
 
   andThen(() => {
     const session = currentSession(this.application);
-    assert.equal(currentURL(), '/');
-    assert.ok(session.get('isAuthenticated'));
-    assert.ok(session.get('data.authenticated.test_valid'));
+    assert.equal(currentURL(), '/', 'user was redirected to the dashboard');
+    assert.ok(session.get('isAuthenticated'), 'session is authenticated');
+    assert.ok(session.get('data.authenticated.test_valid'), 'session received and stored data');
   });
 });

@@ -14,7 +14,7 @@ const {
 
 export default Component.extend({
   tagName: 'input',
-  attributeBindings: ['type', 'value', 'placeholder', 'name'],
+  attributeBindings: ['type', 'value', 'placeholder', 'name', 'data-test-selector'],
   type: 'text',
 
   _onChange: on('input', 'change', function() {
