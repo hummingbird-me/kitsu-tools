@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003085835) do
+ActiveRecord::Schema.define(version: 20151003233701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,14 +32,14 @@ ActiveRecord::Schema.define(version: 20151003085835) do
     t.string   "cover_image_content_type",  limit: 255
     t.integer  "cover_image_file_size"
     t.datetime "cover_image_updated_at"
-    t.float    "bayesian_rating",                       default: 0.0,     null: false
+    t.float    "average_rating",                        default: 0.0,     null: false
     t.integer  "user_count",                            default: 0,       null: false
     t.integer  "thetvdb_series_id"
     t.integer  "thetvdb_season_id"
     t.string   "age_rating_guide",          limit: 255
-    t.string   "show_type",                 limit: 255
-    t.date     "started_airing_date"
-    t.date     "finished_airing_date"
+    t.integer  "show_type"
+    t.date     "start_date"
+    t.date     "end_date"
     t.hstore   "rating_frequencies",                    default: {},      null: false
     t.string   "poster_image_file_name",    limit: 255
     t.string   "poster_image_content_type", limit: 255
@@ -48,14 +48,13 @@ ActiveRecord::Schema.define(version: 20151003085835) do
     t.integer  "cover_image_top_offset",                default: 0,       null: false
     t.integer  "ann_id"
     t.boolean  "started_airing_date_known",             default: true,    null: false
-    t.text     "jp_title"
     t.hstore   "titles",                                default: {},      null: false
     t.string   "canonical_title",                       default: "ja_en", null: false
     t.string   "abbreviated_titles",                                                   array: true
   end
 
   add_index "anime", ["age_rating"], name: "index_anime_on_age_rating", using: :btree
-  add_index "anime", ["bayesian_rating"], name: "index_anime_on_wilson_ci", order: {"bayesian_rating"=>:desc}, using: :btree
+  add_index "anime", ["average_rating"], name: "index_anime_on_wilson_ci", order: {"average_rating"=>:desc}, using: :btree
   add_index "anime", ["mal_id"], name: "index_anime_on_mal_id", unique: true, using: :btree
   add_index "anime", ["slug"], name: "index_anime_on_slug", unique: true, using: :btree
   add_index "anime", ["user_count"], name: "index_anime_on_user_count", using: :btree
