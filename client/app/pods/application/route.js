@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+import config from 'client/config/environment';
 
 const {
   Route,
@@ -46,10 +47,18 @@ export default Route.extend(ApplicationRouteMixin, {
       return get(this, 'store').findRecord('user', 'me').then((user) => {
         const userId = get(user, 'id');
         set(this, 'currentSession.userId', userId);
+        this._identify(userId);
       }).catch(() => {
         // If we error (404/Something is broken), then invalidate the session
         get(this, 'currentSession').invalidate();
       });
+    }
+  },
+
+  _identify(distinctId) {
+    // @Temporary: Next version of `ember-metrics` will allow disabling it.
+    if (config.environment === 'production') {
+      get(this, 'metrics').identify({ distinctId });
     }
   }
 });

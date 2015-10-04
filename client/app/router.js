@@ -12,7 +12,7 @@ const Router = Ember.Router.extend({
   location: config.locationType,
   metrics: service(),
 
-  _notifyGoogleAnalytics: on('didTransition', function() {
+  _trackPage: on('didTransition', function() {
     run.scheduleOnce('afterRender', this, () => {
       // @Temporary: Next version of `ember-metrics` will allow disabling it.
       if (config.environment === 'production') {
