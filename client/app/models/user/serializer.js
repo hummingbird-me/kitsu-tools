@@ -3,20 +3,11 @@ import DS from 'ember-data';
 const { JSONAPISerializer } = DS;
 
 export default JSONAPISerializer.extend({
-  serializeAttribute(snapshot, json, key, attribute) {
-    // skip if this isn't a new record
-    if (snapshot.record.isNew === false) {
+  // Serializes all attributes if the record is persistant (from the server)
+  // or only serializes changed attributes when the record is new (local only)
+  serializeAttribute(snapshot, json, key) {
+    if (snapshot.record.isNew === false || key in snapshot.changedAttributes()) {
       return this._super(...arguments);
     }
-
-    // remove null based attributes
-    if (json.attributes !== undefined) {
-      for (const k in json.attributes) {
-        if (json.attributes[k] === null) {
-          delete json.attributes[k];
-        }
-      }
-    }
-    return this._super(snapshot, json, key, attribute);
   }
 });
