@@ -10,7 +10,6 @@ moduleForModel('user', 'Unit | Serializer | user', {
 
 test('it only serializes changed attributes', function(assert) {
   assert.expect(1);
-  
   const record = this.subject();
   run(() => {
     set(record, 'name', 'Holo');
