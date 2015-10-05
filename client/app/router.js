@@ -28,14 +28,15 @@ Router.map(function() {
   this.route('dashboard', { path: '/' });
   this.route('dashboard/redirect', { path: '/dashboard' });
 
+  this.route('anime', function() {
+    this.route('show', { path: '/:slug' });
+  });
+
   // authentication
   this.route('sign-up');
   this.route('sign-in');
 
-  // This should remain near the bottom of Router.
-  this.route('media', { path: '/:mediaType/:mediaSlug' });
-
-  // error pages
+  // @Note: These must remain at the bottom of the Router map
   this.route('server-error', { path: '/500' });
   this.route('not-found', { path: '/*path' });
 });
