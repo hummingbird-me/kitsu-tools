@@ -15,7 +15,8 @@
     "moment-timezone": ">= 0.1.0",
     "foundation": "~5.5.0",
     "pretender": "^0.10.0",
-    "PACE": "pace#~1.0.2"
+    "PACE": "pace#~1.0.2",
+    "sinonjs": "~1.17.1"
   },
   "resolutions": {
     "ember": "canary",

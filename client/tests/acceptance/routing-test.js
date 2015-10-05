@@ -3,7 +3,7 @@ import { module, test } from 'qunit';
 import startApp from 'client/tests/helpers/start-app';
 import { authenticateSession, invalidateSession } from 'client/tests/helpers/ember-simple-auth';
 
-module('Acceptance | routes', {
+module('Acceptance | routing', {
   beforeEach() {
     this.application = startApp();
   },
