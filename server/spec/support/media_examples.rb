@@ -13,7 +13,7 @@ RSpec.shared_examples 'media' do
   # Methods used for the magic
   it { should respond_to(:slug_candidates) }
   it { should respond_to(:canonical_title) }
-  it { should delegate(:year).to(:start_date) }
+  it { should delegate_method(:year).to(:start_date) }
   it {
     should validate_numericality_of(:average_rating)
       .is_less_than_or_equal_to(5)
