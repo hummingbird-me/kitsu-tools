@@ -13,7 +13,7 @@ const {
 // templates, or if they should not share any code at all.
 export default Route.extend(DataRouteErrorMixin, {
   model(params) {
-    return this.store.findRecord('user', params.mediaSlug);
+    return this.store.findRecord(params.mediaType, params.mediaSlug);
   },
 
   serialize(model) {
