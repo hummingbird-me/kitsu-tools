@@ -70,5 +70,9 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     avatar { Faker::Avatar.image }
+
+    factory :administrator do
+      after(:create) { |user| user.add_role(:admin) }
+    end
   end
 end
