@@ -321,6 +321,7 @@ GEM
       redis (>= 2.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rolify (4.1.1)
     rspec-sidekiq (2.1.0)
       rspec (~> 3.0, >= 3.0.0)
       sidekiq (>= 2.4.0)
@@ -404,6 +405,7 @@ DEPENDENCIES
   rails-api
   redis
   redis-rails
+  rolify
   rspec!
   rspec-core!
   rspec-expectations!

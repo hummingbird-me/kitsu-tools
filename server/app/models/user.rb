@@ -67,6 +67,7 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable,
          :validatable, :confirmable, :async
+  rolify
 
   enum rating_system: %i[smilies stars]
   has_attached_file :avatar

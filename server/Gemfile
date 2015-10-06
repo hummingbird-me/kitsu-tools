@@ -18,6 +18,7 @@ gem 'devise', '~> 3.5'
 gem 'devise-async'
 gem 'doorkeeper'
 gem 'pundit'
+gem 'rolify'
 
 # Attachments
 gem 'paperclip', '~> 4.1'

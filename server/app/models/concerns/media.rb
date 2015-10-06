@@ -5,6 +5,7 @@ module Media
     extend FriendlyId
     include Titleable
     friendly_id :slug_candidates, use: %i[slugged finders history]
+    resourcify
 
     has_attached_file :cover_image
     has_attached_file :poster_image
