@@ -36,7 +36,11 @@ module.exports = function(environment) {
     },
 
     metricsAdapters: [
-      { name: 'GoogleAnalytics', config: { id: 'UA-37633900-1' } }
+      {
+        name: 'GoogleAnalytics',
+        environments: ['production'],
+        config: { id: 'UA-37633900-1' }
+      }
     ]
   };
 

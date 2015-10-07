@@ -14,12 +14,9 @@ const Router = Ember.Router.extend({
 
   _trackPage: on('didTransition', function() {
     run.scheduleOnce('afterRender', this, () => {
-      // @Temporary: Next version of `ember-metrics` will allow disabling it.
-      if (config.environment === 'production') {
-        const page = Ember.get(this, 'url');
-        const title = getWithDefault(this, 'currentRouteName', 'unknown');
-        Ember.get(this, 'metrics').trackPage({ page, title });
-      }
+      const page = Ember.get(this, 'url');
+      const title = getWithDefault(this, 'currentRouteName', 'unknown');
+      Ember.get(this, 'metrics').trackPage({ page, title });
     });
   })
 });
