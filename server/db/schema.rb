@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151006060753) do
+ActiveRecord::Schema.define(version: 20151007055934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20151006060753) do
     t.string   "cover_image_content_type",  limit: 255
     t.integer  "cover_image_file_size"
     t.datetime "cover_image_updated_at"
-    t.float    "average_rating",                        default: 0.0,     null: false
+    t.float    "average_rating"
     t.integer  "user_count",                            default: 0,       null: false
     t.integer  "thetvdb_series_id"
     t.integer  "thetvdb_season_id"
@@ -285,7 +285,7 @@ ActiveRecord::Schema.define(version: 20151006060753) do
     t.integer  "volume_count"
     t.integer  "chapter_count"
     t.integer  "manga_type",                            default: 1,       null: false
-    t.float    "bayesian_rating"
+    t.float    "average_rating"
     t.hstore   "rating_frequencies",                    default: {},      null: false
     t.hstore   "titles",                                default: {},      null: false
     t.string   "canonical_title",                       default: "ja_en", null: false
