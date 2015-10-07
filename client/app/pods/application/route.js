@@ -10,6 +10,7 @@ const {
 
 export default Route.extend(ApplicationRouteMixin, {
   currentSession: service(),
+  metrics: service(),
 
   // If you are visiting the site while authenticated, lets grab your data
   beforeModel() {

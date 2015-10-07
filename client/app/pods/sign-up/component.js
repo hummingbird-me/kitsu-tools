@@ -8,7 +8,6 @@ const {
   isPresent,
   get,
   set,
-  getProperties,
   computed,
   inject: { service }
 } = Ember;
@@ -49,7 +48,8 @@ export default Component.extend(EmberValidations, RoutableComponentMixin, {
   actions: {
     createAccount() {
       get(this, 'model').save().then(() => {
-        const { identification, password } = getProperties(this, 'model.name', 'model.password');
+        const identification = get(this, 'model.name');
+        const password = get(this, 'model.password');
         get(this, 'currentSession').authenticateWithOAuth2(identification, password)
           .catch((reason) => {
             set(this, 'errorMessage', errorMessages(reason));
