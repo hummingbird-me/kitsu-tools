@@ -246,17 +246,15 @@ ActiveRecord::Schema.define(version: 20151007055934) do
   create_table "library_entries", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "anime_id"
-    t.string   "status",           limit: 255
-    t.datetime "created_at",                                                           null: false
-    t.datetime "updated_at",                                                           null: false
-    t.integer  "episodes_watched",                                     default: 0,     null: false
-    t.decimal  "rating",                       precision: 2, scale: 1
-    t.datetime "last_watched"
-    t.boolean  "imported"
-    t.boolean  "private",                                              default: false
+    t.integer  "status"
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.integer  "episodes_watched",                         default: 0,     null: false
+    t.decimal  "rating",           precision: 2, scale: 1
+    t.boolean  "private",                                  default: false
     t.text     "notes"
-    t.integer  "rewatch_count",                                        default: 0,     null: false
-    t.boolean  "rewatching",                                           default: false, null: false
+    t.integer  "rewatch_count",                            default: 0,     null: false
+    t.boolean  "rewatching",                               default: false, null: false
   end
 
   add_index "library_entries", ["user_id", "anime_id"], name: "index_library_entries_on_user_id_and_anime_id", unique: true, using: :btree
