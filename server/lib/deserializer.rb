@@ -39,9 +39,8 @@ class Deserializer
   def filtered_attributes
     # => Attributes
     # Rename keys from kebab-case and camelCase to snake_case
-    attrs = attributes.deep_transform_keys { |k| k.to_s.underscore }
-    attrs = ActionController::Parameters.new(attrs)
-    attrs = attrs.permit(self.class.fields)
+    attrs = attributes.deep_transform_keys { |k| k.to_s.underscore.to_sym }
+    attrs = attrs.slice(*self.class.fields)
 
     # For fields with conditions on them, check that they pass
     self.class.conditions.each do |key, condition|
