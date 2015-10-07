@@ -1,13 +1,13 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('alert-box', 'Integration | Component | alert box', {
+moduleForComponent('foundation-alert-box', 'Integration | Component | foundation alert box', {
   integration: true
 });
 
 test('it renders', function(assert) {
   assert.expect(3);
-  this.render(hbs`{{alert-box type="success" closable=true}}`);
+  this.render(hbs`{{foundation-alert-box type="success" closable=true}}`);
 
   // type is set
   const $alert = this.$('.alert-box.success');
@@ -22,9 +22,9 @@ test('it renders', function(assert) {
 test('block renders', function(assert) {
   assert.expect(1);
   this.render(hbs`
-    {{#alert-box type="success" closable=false}}
+    {{#foundation-alert-box type="success" closable=false}}
       Hello, World!
-    {{/alert-box}}
+    {{/foundation-alert-box}}
   `);
 
   // text is displayed

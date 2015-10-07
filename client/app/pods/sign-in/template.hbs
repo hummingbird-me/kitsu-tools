@@ -1,9 +1,9 @@
 <h1>Sign In</h1>
 
 {{#if errorMessage}}
-  {{#alert-box type="alert" closable=false}}
+  {{#foundation-alert-box type="alert" closable=false}}
     {{errorMessage}}
-  {{/alert-box}}
+  {{/foundation-alert-box}}
 {{/if}}
 
 <form {{action 'authenticateWithOAuth2' on='submit'}}>
