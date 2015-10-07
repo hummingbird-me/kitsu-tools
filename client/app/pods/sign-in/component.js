@@ -24,8 +24,8 @@ export default Component.extend(RoutableComponentMixin, {
 
   actions: {
     authenticateWithOAuth2() {
-      const data = getProperties(this, 'identification', 'password');
-      get(this, 'currentSession').authenticateWithOAuth2(data).catch((reason) => {
+      const { identification, password } = getProperties(this, 'identification', 'password');
+      get(this, 'currentSession').authenticateWithOAuth2(identification, password).catch((reason) => {
         set(this, 'errorMessage', errorMessages(reason));
       });
     }

@@ -22,8 +22,8 @@ export default Service.extend({
     }
   }),
 
-  authenticateWithOAuth2(data) {
-    return get(this, 'session').authenticate('authenticator:oauth2', data);
+  authenticateWithOAuth2(identification, password) {
+    return get(this, 'session').authenticate('authenticator:oauth2', identification, password);
   },
 
   invalidate() {
