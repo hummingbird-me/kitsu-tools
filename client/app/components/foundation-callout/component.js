@@ -7,7 +7,7 @@ const {
   get
 } = Ember;
 
-// Let Foundation handle closing the alert box due to additonal animations.
+// Let Foundation handle closing the callout due to additonal animations.
 // Cleanup the component after the fact.
 export default Component.extend({
   type: null,
@@ -16,15 +16,14 @@ export default Component.extend({
   _initializeFoundation: on('didInsertElement', function() {
     if (get(this, 'closable') === true) {
       run.scheduleOnce('afterRender', this, () => {
-        this.$().foundation('alert', 'reflow');
-        this.$().on('close.fndtn.alert', () => this.destroy());
+        this.$().on('closed.zf', () => this.destroy());
       });
     }
   }),
 
   _cleanupFoundation: on('willDestroyElement', function() {
     if (get(this, 'closable') === true) {
-      this.$().off('close.fndtn.alert');
+      this.$().off('closed.zf');
     }
   })
 });

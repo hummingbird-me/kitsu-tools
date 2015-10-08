@@ -1,9 +1,9 @@
 <h1>Sign Up</h1>
 
 {{#if errorMessage}}
-  {{#foundation-alert-box type="alert" closable=false}}
+  {{#foundation-callout type="alert" closable=false}}
     {{errorMessage}}
-  {{/foundation-alert-box}}
+  {{/foundation-callout}}
 {{/if}}
 
 <form {{action 'createAccount' on='submit'}}>
@@ -12,9 +12,10 @@
   {{one-way-input value=model.email placeholder="Email" type="email"
     update=(action (mut model.email)) data-test-selector="email"}}
   {{#if (and model.email errors.model.email)}}
-    {{#foundation-alert-box type="alert" closable=false}}
+    {{! TODO: Don't use callouts for this use the form-error stuff }}
+    {{#foundation-callout type="alert" closable=true}}
       Email {{errors.model.email.[0]}}
-    {{/foundation-alert-box}}
+    {{/foundation-callout}}
   {{/if}}
 
   {{! username input}}
@@ -22,9 +23,10 @@
   {{one-way-input value=model.name placeholder="Username"
     update=(action (mut model.name)) data-test-selector="username"}}
   {{#if (and model.name errors.model.name)}}
-    {{#foundation-alert-box type="alert" closable=false}}
+    {{! TODO: Don't use callouts for this use the form-error stuff }}
+    {{#foundation-callout type="alert" closable=false}}
       Username {{errors.model.name.[0]}}
-    {{/foundation-alert-box}}
+    {{/foundation-callout}}
   {{/if}}
 
   {{! password input }}
@@ -32,9 +34,10 @@
   {{one-way-input value=model.password placeholder="Password" type="password"
     update=(action (mut model.password)) data-test-selector="password"}}
   {{#if (and model.password errors.model.password)}}
-    {{#foundation-alert-box type="alert" closable=false}}
+    {{! TODO: Don't use callouts for this use the form-error stuff }}
+    {{#foundation-callout type="alert" closable=false}}
       Password {{errors.model.password.[0]}}
-    {{/foundation-alert-box}}
+    {{/foundation-callout}}
   {{/if}}
 
   <button type="submit" disabled={{isSubmitDisabled}} data-test-selector="sign-up">
