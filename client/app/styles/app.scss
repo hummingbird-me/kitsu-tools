@@ -1,3 +1,5 @@
-@import "settings";
+@import 'settings';
+@import 'foundation';
 
-@import "foundation";
+// This includes all foundation components.
+@include foundation-everything;

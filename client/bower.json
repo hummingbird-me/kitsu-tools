@@ -13,10 +13,10 @@
     "qunit": "~1.18.0",
     "moment": ">= 2.8.0",
     "moment-timezone": ">= 0.1.0",
-    "foundation": "~5.5.0",
     "pretender": "^0.10.0",
     "PACE": "pace#~1.0.2",
-    "sinonjs": "~1.17.1"
+    "sinonjs": "~1.17.1",
+    "foundation-sites": "git@github.com:hummingbird-me/foundation-sites-6.git#develop" 
   },
   "resolutions": {
     "ember": "canary",
