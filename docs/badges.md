@@ -1,8 +1,8 @@
 # Achievement Badges
 
-Hummingbird.me would like to be able to reward active users for using the site in a way that allows them to
+Hummingbird would like to be able to reward active users for using the site in a way that allows them to
 show off their reputation in the community as well as the variety of anime and dramas they have watched,
-manga they have read, etc.  Hummingbird.me's badges could be similar in style to 
+manga they have read, etc.  Hummingbird's badges could be similar in style to 
 [those of MALGraph](https://github.com/rr-/malgraph4/wiki/Achievements).
 
 In this document, we describe the categories of badges available, as well as the specific badges in each
