@@ -18,13 +18,11 @@ Title | Description | How to Unlock
 ------|-------------|--------------
 First Franchise | Completed an entire franchise | Watched every episode of anime in a franchise
 Anime Stalker | Start to expect anime shows | Plan to watch 5 shows and start watching them after they begin airing.
-
 New comer | Welcome to the anime world | Total time of watching anime accumulated to 3 days
 Engaged | Feel a sense of attachment | Total time of watching anime accumulated to 7 days
 Anime Pursuit | Anime goes beyond daily life | Total time of watching anime accumulated to 1 month
 Otaku Soul | Anime merged to your Otaku soul | Total time of watching anime accumulated to 3 month
 Challange Accepted | You shall never leave the world | Total time watching anime accumulated to 1 year
-
 Feel elated | Comedy is really your fav | Watched 50 titles of comedies
 Love life | Romantic anime are the besto | Watched 50 titles of romance
 Schooler | School life memory | Watched 50 titles of school
