@@ -8,7 +8,7 @@ manga they have read, etc.  Hummingbird's badges could be similar in style to
 In this document, we describe the categories of badges available, as well as the specific badges in each
 category, how they are unlocked, and what they represent.  This guide is meant to serve largely as a
 developer-first specification of how badges will be implemented, but in such a way that user documentation
-(in the form e.g. of a blog post) could be easily written.
+(in the form, for example, of a blog post) could be easily written.
 
 ## Categories
 
