@@ -10,7 +10,7 @@ web:
   volumes:
     - ./:/opt/hummingbird/
   ports:
-    - 3000
+    - 3000:3000
     - 4200
     - 49152:49152
   links:
