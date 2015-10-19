@@ -1,14 +1,15 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Transform.extend({
-  deserialize(serialized) {
-    return serialized;
+  deserialize(value) {
+    if (Ember.isArray(value)) {
+      return Ember.A(value);
+    }
+    return Ember.A();
   },
 
-  serialize(deserialized) {
-    if (deserialized instanceof Array) {
-      return deserialized;
-    }
-    return [];
+  serialize(value) {
+    return this.deserialize(value);
   }
 });

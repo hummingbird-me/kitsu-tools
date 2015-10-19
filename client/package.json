@@ -47,9 +47,9 @@
     "ember-moment": "4.0.0",
     "ember-pluralize": "0.2.0",
     "ember-resolver": "2.0.3",
-    "ember-simple-auth": "simplabs/ember-simple-auth#jj-abrams",
+    "ember-simple-auth": "1.0.0",
     "ember-sinon": "0.2.2",
-    "ember-suave": "1.1.0",
+    "ember-suave": "1.2.0",
     "ember-truth-helpers": "1.1.0",
     "ember-validations": "2.0.0-alpha.4"
   }

@@ -32,7 +32,7 @@ module.exports = function(environment) {
       authenticationRoute: 'sign-in',
       routeAfterAuthentication: 'dashboard',
       routeIfAlreadyAuthenticated: 'dashboard',
-      store: 'session-store:adapter'
+      store: 'session-store:adaptive'
     },
 
     metricsAdapters: [

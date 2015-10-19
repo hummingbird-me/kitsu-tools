@@ -1,14 +1,15 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 export default DS.Transform.extend({
-  deserialize(serialized) {
-    return serialized;
-  },
-
-  serialize(deserialized) {
-    if (deserialized instanceof Object) {
-      return deserialized;
+  deserialize(value) {
+    if (Ember.$.isPlainObject(value)) {
+      return value;
     }
     return {};
+  },
+
+  serialize(value) {
+    return this.deserialize(value);
   }
 });
