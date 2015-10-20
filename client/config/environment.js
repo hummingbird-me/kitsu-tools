@@ -20,12 +20,12 @@ module.exports = function(environment) {
       // when it is created
     },
 
-    contentSecurityPolicyHeader: 'Content-Security-Policy',
+    contentSecurityPolicyHeader: 'Content-Security-Policy-Report-Only',
     contentSecurityPolicy: {
       'script-src': "'self' www.google-analytics.com",
       'style-src': "'self' 'unsafe-inline'",
-      'connect-src': "'self' localhost:3000",
-      'img-src': "'self' www.google-analytics.com"
+      'connect-src': "'self' www.google-analytics.com localhost:3000",
+      'img-src': "*"
     },
 
     'ember-simple-auth': {
@@ -45,33 +45,29 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    ENV.APP.LOG_RESOLVER = true;
+    ENV.APP.LOG_RESOLVER = false;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
     ENV.APP.LOG_TRANSITIONS = true;
     ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.host = 'http://localhost:3000';
   }
 
   if (environment === 'test') {
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';
+    ENV.apiHost = '';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-
-    // use memory store
-    ENV['ember-simple-auth'].store = 'session-store:ephemeral';
-    // blank host for test running
-    ENV.host = '';
   }
 
   if (environment === 'production') {
-    ENV.host = 'https://api.hummingbird.me';
+    ENV.contentSecurityPolicyHeader = 'Content-Security-Policy';
+    ENV.apiHost = 'https://api.hummingbird.me';
   }
 
   return ENV;
