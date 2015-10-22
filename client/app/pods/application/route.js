@@ -37,25 +37,23 @@ export default Route.extend(ApplicationRouteMixin, {
   // By default, ESA reloads the browser to `baseURL`
   // we don't want that, so just redirect to dashboard
   sessionInvalidated() {
+    get(this, 'currentSession').clean();
     this.transitionTo('dashboard');
   },
 
   _getCurrentUser() {
-    // don't run in test environment
     if (!Ember.testing) {
-      // @Cleanup: This stores an undefined record under users
-      return get(this, 'store').findRecord('user', 'me').then((user) => {
-        const userId = get(user, 'id');
-        set(this, 'currentSession.userId', userId);
-        this._identify(userId);
-      }).catch(() => {
-        // If we error (404/Something is broken), then invalidate the session
-        get(this, 'currentSession').invalidate();
-      });
-    }
-  },
+      return get(this, 'currentSession').authorizeRequest('/users/me')
+        .then((response) => {
+          const data = get(this, 'store').normalize('user', response.data);
+          const user = get(this, 'store').push(data);
+          const userId = get(user, 'id');
+          set(this, 'currentSession.userId', userId);
 
-  _identify(distinctId) {
-    get(this, 'metrics').identify({ distinctId });
+          // identify with analytics
+          get(this, 'metrics').identify({ distinctId: userId });
+        })
+        .catch(() => get(this, 'currentSession').invalidate());
+    }
   }
 });
