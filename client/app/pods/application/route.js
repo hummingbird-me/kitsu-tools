@@ -11,6 +11,7 @@ const {
 export default Route.extend(ApplicationRouteMixin, {
   currentSession: service(),
   metrics: service(),
+  ajax: service(),
 
   // If you are visiting the site while authenticated, lets grab your data
   beforeModel() {
@@ -43,7 +44,7 @@ export default Route.extend(ApplicationRouteMixin, {
 
   _getCurrentUser() {
     if (!Ember.testing) {
-      return get(this, 'currentSession').authorizeRequest('/users/me')
+      return get(this, 'ajax').request('/users/me')
         .then((response) => {
           const data = get(this, 'store').normalize('user', response.data);
           const user = get(this, 'store').push(data);
