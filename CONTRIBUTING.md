@@ -6,7 +6,7 @@ Thank you for reading this! This document has some notes on contributing to the 
 Reporting bugs
 --------------
 
-You can submit bug reports either in the Github issue tracker or the [forum bugs category](http://forums.hummingbird.me/category/bugs).
+You can submit bug reports either in the Github issue tracker or the [forum bugs category](http://forums.hummingbird.me/c/feedback/bugs).
 
 Before submitting an issue please check if there is already an existing issue. If there is, please add any additional information give it a "+1" in the comments.
 
