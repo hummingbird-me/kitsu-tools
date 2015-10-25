@@ -60,6 +60,14 @@ test('visiting /sign-up should work if unauthenticated', function(assert) {
   andThen(() => assert.equal(currentURL(), '/sign-up'));
 });
 
+test('visiting /onboarding should redirect if unauthenticated', function(assert) {
+  assert.expect(1);
+  invalidateSession(this.application);
+  visit('/onboarding');
+
+  andThen(() => assert.equal(currentURL(), '/sign-in'));
+});
+
 test('visiting an unknown route hits not-found', function(assert) {
   assert.expect(1);
   visit('/doesnt-exist');

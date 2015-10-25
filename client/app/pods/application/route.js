@@ -54,7 +54,9 @@ export default Route.extend(ApplicationRouteMixin, {
           // identify with analytics
           get(this, 'metrics').identify({ distinctId: userId });
         })
-        .catch(() => get(this, 'currentSession').invalidate());
+        .catch(() => {
+          get(this, 'currentSession').invalidate();
+        });
     }
   },
 

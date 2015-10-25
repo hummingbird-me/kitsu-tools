@@ -26,9 +26,10 @@ export default Controller.extend({
   actions: {
     authenticateWithOAuth2() {
       const { identification, password } = getProperties(this, 'identification', 'password');
-      get(this, 'currentSession').authenticateWithOAuth2(identification, password).catch((reason) => {
-        set(this, 'errorMessage', errorMessages(reason));
-      });
+      get(this, 'currentSession').authenticateWithOAuth2(identification, password)
+        .catch((reason) => {
+          set(this, 'errorMessage', errorMessages(reason));
+        });
     }
   }
 });

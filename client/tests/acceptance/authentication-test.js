@@ -30,7 +30,7 @@ test('/sign-up flow works', function(assert) {
 
   andThen(() => {
     const session = currentSession(this.application);
-    assert.equal(currentURL(), '/', 'user was redirected to the dashboard');
+    assert.equal(currentURL(), '/onboarding/start', 'user was redirected to onboarding');
     assert.ok(session.get('isAuthenticated'), 'session is authenticated');
     assert.ok(session.get('data.authenticated.test_valid'), 'session received and stored data');
   });
