@@ -17,8 +17,10 @@ export default Controller.extend({
   password: null,
   errorMessage: null,
 
-  isSubmitDisabled: computed('identification', 'password', function() {
-    return isEmpty(get(this, 'identification')) || isEmpty(get(this, 'password'));
+  isSubmitDisabled: computed('identification', 'password', {
+    get() {
+      return isEmpty(get(this, 'identification')) || isEmpty(get(this, 'password'));
+    }
   }),
 
   actions: {

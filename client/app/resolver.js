@@ -4,12 +4,14 @@ import Resolver from 'ember-resolver';
 const { computed } = Ember;
 
 export default Resolver.extend({
-  moduleNameLookupPatterns: computed(function() {
-    const defaultLookup = this._super();
-    return [
-      this.modelResolver,
-      this.componentResolver
-    ].concat(defaultLookup);
+  moduleNameLookupPatterns: computed({
+    get() {
+      const defaultLookup = this._super();
+      return [
+        this.modelResolver,
+        this.componentResolver
+      ].concat(defaultLookup);
+    }
   }),
 
   /*

@@ -7,11 +7,17 @@ const { computed } = Ember;
 export default OAuth2PasswordGrant.extend({
   refreshAccessTokens: true,
 
-  serverTokenEndpoint: computed(function() {
-    return `${getApiHost()}/oauth/token`;
+  serverTokenEndpoint: computed({
+    get() {
+      const host = getApiHost();
+      return `${host}/oauth/token`;
+    }
   }),
 
-  serverTokenRevocationEndpoint: computed(function() {
-    return `${getApiHost()}/oauth/revoke`;
+  serverTokenRevocationEndpoint: computed({
+    get() {
+      const host = getApiHost();
+      return `${host}/oauth/revoke`;
+    }
   })
 });

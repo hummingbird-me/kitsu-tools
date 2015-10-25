@@ -19,10 +19,12 @@ export default Service.extend({
 
   isAuthenticated: computed.alias('session.isAuthenticated'),
 
-  account: computed('userId', function() {
-    const userId = get(this, 'userId');
-    if (isPresent(userId)) {
-      return get(this, 'store').peekRecord('user', userId);
+  account: computed('userId', {
+    get() {
+      const userId = get(this, 'userId');
+      if (isPresent(userId)) {
+        return get(this, 'store').peekRecord('user', userId);
+      }
     }
   }),
 

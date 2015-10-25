@@ -9,7 +9,9 @@ const { JSONAPIAdapter } = DS;
 export default JSONAPIAdapter.extend(DataAdapaterMixin, {
   authorizer: 'authorizer:application',
 
-  host: computed(function() {
-    return getApiHost();
+  host: computed({
+    get() {
+      return getApiHost();
+    }
   })
 });

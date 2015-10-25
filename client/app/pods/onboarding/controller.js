@@ -13,8 +13,10 @@ export default Controller.extend({
   currentPath: alias('application.currentPath'),
   steps: ['start', 'rating', 'categories', 'library', 'finish'],
 
-  currentStep: computed('currentPath', function() {
-    const currentPage = get(this, 'currentPath').replace('onboarding.', '');
-    return get(this, 'steps').indexOf(currentPage) + 1;
+  currentStep: computed('currentPath', {
+    get() {
+      const currentPage = get(this, 'currentPath').replace('onboarding.', '');
+      return get(this, 'steps').indexOf(currentPage) + 1;
+    }
   })
 });
