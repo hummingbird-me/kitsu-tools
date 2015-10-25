@@ -55,5 +55,11 @@ export default Route.extend(ApplicationRouteMixin, {
         })
         .catch(() => get(this, 'currentSession').invalidate());
     }
+  },
+
+  actions: {
+    invalidateSession() {
+      get(this, 'currentSession').invalidate();
+    }
   }
 });

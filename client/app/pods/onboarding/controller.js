@@ -1,15 +1,14 @@
 import Ember from 'ember';
-import { RoutableComponentMixin } from 'client/mixins/routable-component';
 
 const {
-  Component,
+  Controller,
   inject: { controller },
   get,
   computed,
   computed: { alias }
 } = Ember;
 
-export default Component.extend(RoutableComponentMixin, {
+export default Controller.extend({
   application: controller(),
   currentPath: alias('application.currentPath'),
   steps: ['start', 'rating', 'categories', 'library', 'finish'],

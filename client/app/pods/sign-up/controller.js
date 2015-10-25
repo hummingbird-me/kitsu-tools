@@ -1,10 +1,9 @@
 import Ember from 'ember';
 import EmberValidations, { validator } from 'ember-validations';
-import { RoutableComponentMixin } from 'client/mixins/routable-component';
 import errorMessages from 'client/utils/error-messages';
 
 const {
-  Component,
+  Controller,
   isPresent,
   get,
   set,
@@ -12,7 +11,7 @@ const {
   inject: { service }
 } = Ember;
 
-export default Component.extend(EmberValidations, RoutableComponentMixin, {
+export default Controller.extend(EmberValidations, {
   currentSession: service(),
   errorMessage: null,
   validations: {

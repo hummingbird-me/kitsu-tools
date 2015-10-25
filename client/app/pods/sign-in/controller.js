@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import { RoutableComponentMixin } from 'client/mixins/routable-component';
 import errorMessages from 'client/utils/error-messages';
 
 const {
-  Component,
+  Controller,
   isEmpty,
   computed,
   get,
@@ -12,7 +11,7 @@ const {
   inject: { service }
 } = Ember;
 
-export default Component.extend(RoutableComponentMixin, {
+export default Controller.extend({
   currentSession: service(),
   identification: null,
   password: null,

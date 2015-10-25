@@ -1,13 +1,12 @@
-import { moduleForComponent } from 'ember-qunit';
+import { moduleFor } from 'ember-qunit';
 import { testValidPropertyValues, testInvalidPropertyValues } from 'client/tests/helpers/validate-properties';
 
-moduleForComponent('sign-up', 'Unit | Component | sign up', {
+moduleFor('controller:sign-up', 'Unit | Controller | sign up', {
   // Specify the other units that are required for this test
-  needs: ['service:validations',
+  needs: ['service:metrics', 'service:validations',
     'ember-validations@validator:local/presence',
     'ember-validations@validator:local/length',
-    'ember-validations@validator:local/format'],
-  unit: true
+    'ember-validations@validator:local/format']
 });
 
 testValidPropertyValues('model.email', ['a@b.com'], (subject) => {

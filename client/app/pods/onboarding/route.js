@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import { RoutableComponentRouteMixin } from 'client/mixins/routable-component';
 import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
 const {
@@ -8,7 +7,7 @@ const {
   inject: { service }
 } = Ember;
 
-export default Route.extend(RoutableComponentRouteMixin, AuthenticatedRouteMixin, {
+export default Route.extend(AuthenticatedRouteMixin, {
   currentSession: service(),
 
   // Redirect the user to the dashboard if they have already been thru the
