@@ -8,8 +8,7 @@ import Ember from 'ember';
 
 const {
   Component,
-  get,
-  on
+  get
 } = Ember;
 
 export default Component.extend({
@@ -17,9 +16,13 @@ export default Component.extend({
   attributeBindings: ['type', 'value', 'placeholder', 'name', 'data-test-selector'],
   type: 'text',
 
-  _onChange: on('input', 'change', function() {
+  input() {
     this._handleChangeEvent();
-  }),
+  },
+
+  change() {
+    this._handleChangeEvent();
+  },
 
   didReceiveAttrs() {
     if (!get(this, 'attrs.update')) {

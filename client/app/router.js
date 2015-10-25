@@ -2,7 +2,6 @@ import Ember from 'ember';
 import config from './config/environment';
 
 const {
-  on,
   getWithDefault,
   run,
   inject: { service }
@@ -12,13 +11,14 @@ const Router = Ember.Router.extend({
   location: config.locationType,
   metrics: service(),
 
-  _trackPage: on('didTransition', function() {
+  didTransition() {
+    this._super(...arguments);
     run.scheduleOnce('afterRender', this, () => {
       const page = Ember.get(this, 'url');
       const title = getWithDefault(this, 'currentRouteName', 'unknown');
       Ember.get(this, 'metrics').trackPage({ page, title });
     });
-  })
+  }
 });
 
 Router.map(function() {
