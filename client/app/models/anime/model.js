@@ -1,9 +1,9 @@
 import DS from 'ember-data';
-import MediaModelMixin from 'client/mixins/media-model';
+import Media from 'client/models/media/model';
 
-const { Model, attr } = DS;
+const { attr } = DS;
 
-export default Model.extend(MediaModelMixin, {
+export default Media.extend({
   ageRating: attr('number'),
   ageRatingGuide: attr('string'),
   episodeCount: attr('number'),

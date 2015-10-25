@@ -1,10 +1,11 @@
-import Ember from 'ember';
 import DS from 'ember-data';
 
-const { Mixin } = Ember;
-const { attr } = DS;
+const {
+  Model,
+  attr
+} = DS;
 
-export default Mixin.create({
+export default Model.extend({
   abbreviatedTitles: attr('array'),
   averageRating: attr('number'),
   canonicalTitle: attr('string'),
