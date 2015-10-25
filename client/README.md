@@ -14,6 +14,13 @@ This README outlines the details of collaborating on this application.
 
 #### Amendments
 
+##### Do overwrite init
+
+ES6 spread operator allows for calling `return this._super(...arguments);`.
+This approach provides better performance as well.
+
+https://dockyard.com/blog/2015/10/19/2015-dont-dont-override-init
+
 ##### Pods
 
 We use a slightly different pod structure to what DockYard specify in their styleguide above.

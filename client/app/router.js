@@ -29,6 +29,8 @@ Router.map(function() {
     this.route('show', { path: '/:slug' });
   });
 
+  this.route('users', { path: '/users/:slug' });
+
   this.route('onboarding', function() {
     this.route('start');
     // TODO: Rest of onboarding flow

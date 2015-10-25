@@ -1,9 +1,16 @@
 import Ember from 'ember';
 
-const { Route } = Ember;
+const {
+  Route,
+  get
+} = Ember;
 
 export default Route.extend({
   model(params) {
-    return this.store.findRecord('anime', params.slug);
+    return get(this, 'store').findRecord('anime', params.slug);
+  },
+
+  titleToken(model) {
+    return get(model, 'canonicalTitle');
   }
 });
