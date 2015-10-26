@@ -13,7 +13,6 @@ const {
 
 export default Controller.extend(EmberValidations, {
   currentSession: service(),
-  errorMessage: null,
   validations: {
     'model.email': {
       presence: true,

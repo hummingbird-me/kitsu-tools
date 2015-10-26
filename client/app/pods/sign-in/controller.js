@@ -13,9 +13,6 @@ const {
 
 export default Controller.extend({
   currentSession: service(),
-  identification: null,
-  password: null,
-  errorMessage: null,
 
   isSubmitDisabled: computed('identification', 'password', {
     get() {
