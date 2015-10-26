@@ -16,30 +16,33 @@ module('Acceptance | authentication', {
   }
 });
 
-test('/sign-up flow works', function(assert) {
-  assert.expect(3);
-
-  this.server.post('/oauth/token', () => [200, {}, '{ "test_valid": true }']);
-  this.server.post('/users', () => [200, {} , '{ "data": { "type": "users", "id": "1" } }']);
+test('creating an account works', function(assert) {
+  assert.expect(2);
+  this.server.post('/users', () => {
+    const data = {
+      type: 'users',
+      id: 1
+    };
+    return [200, {}, JSON.stringify({ data })];
+  });
+  this.server.post('/oauth/token', () => [200, {}, '{}']);
 
   visit('/sign-up');
-  fillIn('input[data-test-selector="email"]', 'a@b.com');
-  fillIn('input[data-test-selector="username"]', 'vevix');
+  fillIn('input[data-test-selector="email"]', 'email@host.tld');
+  fillIn('input[data-test-selector="username"]', 'username');
   fillIn('input[data-test-selector="password"]', 'password');
   click('button[data-test-selector="sign-up"]');
 
   andThen(() => {
     const session = currentSession(this.application);
-    assert.equal(currentURL(), '/onboarding/start', 'user was redirected to onboarding');
     assert.ok(session.get('isAuthenticated'), 'session is authenticated');
-    assert.ok(session.get('data.authenticated.test_valid'), 'session received and stored data');
+    assert.equal(currentURL(), '/onboarding/start', 'user was redirected to onboarding');
   });
 });
 
-test('/sign-in flow works', function(assert) {
-  assert.expect(3);
-
-  this.server.post('/oauth/token', () => [200, {}, '{ "test_valid": true }']);
+test('signing in works', function(assert) {
+  assert.expect(2);
+  this.server.post('/oauth/token', () => [200, {}, '{}']);
 
   visit('/sign-in');
   fillIn('input[data-test-selector="identification"]', 'username');
@@ -48,8 +51,7 @@ test('/sign-in flow works', function(assert) {
 
   andThen(() => {
     const session = currentSession(this.application);
-    assert.equal(currentURL(), '/', 'user was redirected to the dashboard');
     assert.ok(session.get('isAuthenticated'), 'session is authenticated');
-    assert.ok(session.get('data.authenticated.test_valid'), 'session received and stored data');
+    assert.equal(currentURL(), '/', 'user was redirected to the dashboard');
   });
 });
