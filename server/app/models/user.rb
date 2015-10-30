@@ -94,6 +94,10 @@ class User < ActiveRecord::Base
 
   # Override find to allow lookup by name
   def self.find(name_or_id)
-    User.where('lower(name)=?', name_or_id).first || super
+    if name_or_id.is_a? String
+      User.where('lower(name)=?', name_or_id).first
+    else
+      super
+    end
   end
 end
