@@ -66,7 +66,7 @@
 
 FactoryGirl.define do
   factory :user do
-    name { Faker::Internet.user_name(nil, ['_']) }
+    name { Faker::Internet.user_name(nil, ['_']) + rand(1000).to_s }
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     avatar { Faker::Avatar.image }
