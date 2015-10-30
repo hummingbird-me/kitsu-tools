@@ -91,4 +91,9 @@ class User < ActiveRecord::Base
     identification = [identification.downcase]
     User.where('lower(email)=? OR lower(name)=?', *(identification * 2)).first
   end
+
+  # Override find to allow lookup by name
+  def self.find(name_or_id)
+    User.where('lower(name)=?', name_or_id).first || super
+  end
 end
