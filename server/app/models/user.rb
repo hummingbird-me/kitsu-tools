@@ -89,15 +89,17 @@ class User < ActiveRecord::Base
   # TODO: I think Devise can handle this for us
   def self.find_for_auth(identification)
     identification = [identification.downcase]
-    User.where('lower(email)=? OR lower(name)=?', *(identification * 2)).first
+    where('lower(email)=? OR lower(name)=?', *(identification * 2)).first
+  end
+
+  def self.find_by_username(name)
+    where('lower(name) = ?', name.to_s.downcase).first
   end
 
   # Override find to allow lookup by name
   def self.find(name_or_id)
-    if name_or_id.is_a? String
-      User.where('lower(name)=?', name_or_id).first
-    else
-      super
-    end
+    user = nil
+    user = find_by_username(name_or_id) if name_or_id.is_a? String
+    user || super
   end
 end
