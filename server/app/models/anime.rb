@@ -39,6 +39,7 @@
 
 class Anime < ActiveRecord::Base
   include Media
+  has_many :library_entries, dependent: :destroy
 
   enum age_rating: %i[G PG R R18]
 
