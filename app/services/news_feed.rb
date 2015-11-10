@@ -44,7 +44,7 @@ class NewsFeed
   # Fetch a page of stories from the user's timeline. Generate a timeline if
   # the user's timeline doesn't already exist in memory.
   def fetch(page=nil)
-    return Story.empty unless cached?
+    return Story.none unless cached?
 
     page ||= 1
     start_index = 30 * (page.to_i-1)
