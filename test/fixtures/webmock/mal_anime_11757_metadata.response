@@ -1,17 +1,17 @@
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Content-Type: text/html; charset=utf-8
-Date: Wed, 16 Sep 2015 21:21:37 GMT
+Date: Tue, 10 Nov 2015 19:27:11 GMT
 Server: Apache
-Set-Cookie: MALHLOGSESSID=bc5c314d0e38830767177d737948d761; expires=Mon, 14-Sep-2020 21:21:37 GMT; Max-Age=157680000; path=/
-Set-Cookie: MALSESSIONID=jlufdarhshdjruadso3lt7gcl1; expires=Wed, 23-Sep-2015 21:21:37 GMT; Max-Age=604800; path=/; HttpOnly
+Set-Cookie: MALHLOGSESSID=3e07485d72f16c518f4a2b548450746c; expires=Sun, 08-Nov-2020 19:27:11 GMT; Max-Age=157680000; path=/
+Set-Cookie: MALSESSIONID=uhls29o79m0s3qbhscpkh7pvv3; expires=Tue, 17-Nov-2015 19:27:11 GMT; Max-Age=604800; path=/; HttpOnly
 Vary: User-Agent,Accept-Encoding
 transfer-encoding: chunked
 Connection: keep-alive
-Set-Cookie: visid_incap_81958=CHtBBHnsQPang7ve7CJ2+2Hd+VUAAAAAQUIPAAAAAABul/B+a2zbrue/nSgAUG2y; expires=Fri, 15 Sep 2017 11:20:32 GMT; path=/; Domain=.myanimelist.net
-Set-Cookie: nlbi_81958=IUsHeqzZIFgot5kkUM6emAAAAACMNZ/ZjhI4A/7vh4byEhzA; path=/; Domain=.myanimelist.net
-Set-Cookie: incap_ses_84_81958=dvBsZysdKDGRoj30xW0qAWHd+VUAAAAASuUcZEy3IiQYk/B9KFeB2w==; path=/; Domain=.myanimelist.net
-X-Iinfo: 9-11436997-11410217 PNNN RT(1442438496589 0) q(0 0 0 -1) r(5 5) U1
+Set-Cookie: visid_incap_81958=gtONcJDMQVuyhP58CkWSVg9FQlYAAAAAQUIPAAAAAACaZ58lS9xPAWwBCvVgoz74; expires=Thu, 09 Nov 2017 14:41:56 GMT; path=/; Domain=.myanimelist.net
+Set-Cookie: nlbi_81958=QgWLZ9WWfjvpggVRUM6emAAAAABi2N/x9jD/XN4GtMS6g+c1; path=/; Domain=.myanimelist.net
+Set-Cookie: incap_ses_84_81958=FF1OAnzdTUoOmRhQ3W0qAQ9FQlYAAAAA8iPsp4flpBmEJYsomRobTw==; path=/; Domain=.myanimelist.net
+X-Iinfo: 8-92512007-92500231 PNNN RT(1447183630852 0) q(0 0 0 -1) r(6 6) U1
 X-CDN: Incapsula
 
 
@@ -29,33 +29,32 @@ Sword Art Online - MyAnimeList.net
 
 
 <meta name="keywords" content="anime, myanimelist, anime news, manga" />
+<link rel="canonical" href="http://myanimelist.net/anime/11757/Sword_Art_Online" />
+
+<meta property="og:locale" content="en_US"><meta property="fb:app_id" content="1563257177266407"><meta property="og:site_name" content="MyAnimeList.net"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@myanimelist"><meta property="og:title" content="Sword Art Online"><meta property="og:type" content="video.tv_show"><meta property="og:image" content="http://cdn.myanimelist.net/images/anime/11/39717.jpg"><meta property="og:url" content="http://myanimelist.net/anime/11757/Sword_Art_Online"><meta property="og:description" content="Looking for information on Sword Art Online? Find out more with MyAnimeList, the world&#039;s most active online anime and manga community and database. In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of &quot;NerveGear&quot; technology, players can control their avatars within the game using nothing but their own thoughts.    Kazuto Kirigaya, nicknamed &quot;Kirito,&quot; is among the lucky few enthusias...">
+<meta name='csrf_token' content='cf8771e462cfddcdf47bbac6404188b6f475faf7'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-136d11db23.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=38"></script>
 
 
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fansubbers.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/animeinfo.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=38"></script>
 
-<meta property="og:locale" content="en_US"><meta property="fb:app_id" content="1563257177266407"><meta property="og:site_name" content="MyAnimeList.net"><meta property="og:title" content="Sword Art Online"><meta property="og:type" content="video.tv_show"><meta property="og:image" content="http://cdn.myanimelist.net/images/anime/11/39717.jpg"><meta property="og:url" content="http://myanimelist.net/anime/11757/Sword_Art_Online"><meta property="og:description" content="Looking for information on Sword Art Online? Find out more with MyAnimeList, the world&#039;s most active online anime and manga community and database. In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of &quot;NerveGear&quot; technology, players can control their avatars within the game using nothing but their own thoughts.    Kazuto Kirigaya, nicknamed &quot;Kirito,&quot; is among the lucky few enthusias...">
-<meta name='csrf_token' content='c8eaf1d97ba98b24d639e1cea13811099a9f183d'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-8dd56e91bb.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=34"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=38" id="myanimelistjs" data-myanimelistjs-params='{&quot;is_request_bot_filter_log&quot;:true,&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;}'></script>
 
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.css?v=28" type="text/css" />
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.css?v=28" type="text/css" />
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/infopages.css?v=28" type="text/css" />
 
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/fansubbers.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/animeinfo.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=34"></script>
+	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=28" />
 
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=34" id="myanimelistjs" data-myanimelistjs-params='{&quot;is_request_bot_filter_log&quot;:true,&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;}'></script>
-
-<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.css?v=24" type="text/css" />
-<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.css?v=24" type="text/css" />
-<link rel="stylesheet" href="http://cdn.myanimelist.net/css/infopages.css?v=24" type="text/css" />
-
-	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=24" />
-
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=24" />
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=24" />
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-9084f5fdb6.css" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=28" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=28" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-344e264b84.css" />
 <link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
 
 <link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
@@ -76,16 +75,16 @@ Sword Art Online - MyAnimeList.net
   })();
 </script>
 
-<!-- GA script -->
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-369102-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-369102-1', 'auto');
+  ga('require', 'linkid'); // Enhanced Link Attribution
+  ga('send', 'pageview');
+
 </script>
 
 <script src="https://apis.google.com/js/platform.js" async defer>{lang: 'en-GB'}</script>
@@ -101,15 +100,15 @@ Sword Art Online - MyAnimeList.net
 
     <script type='text/javascript'>
     googletag.cmd.push(function() {
-      googletag.defineOutOfPageSlot('/84947469/Skin_Others', 'div-gpt-ad-2061030056').addService(googletag.pubads());
+      googletag.defineOutOfPageSlot('/84947469/Skin_Others', 'div-gpt-ad-984334712').addService(googletag.pubads());
       googletag.pubads().collapseEmptyDivs();
       googletag.enableServices();
     });
   </script>
   <div style="display: none !important;">
-    <div id='div-gpt-ad-2061030056'>
+    <div id='div-gpt-ad-984334712'>
       <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-2061030056'); });
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-984334712'); });
       </script>
     </div>
   </div>
@@ -132,8 +131,8 @@ Sword Art Online - MyAnimeList.net
 </a>
   <div id="header-menu">
     <div class="header-menu-login">
-      <a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online" id="malLogin">Login</a>
-      <a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fanime%2F11757%2FSword_Art_Online">Sign Up</a>
+      <a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fanime%2F11757" id="malLogin">Login</a>
+      <a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fanime%2F11757">Sign Up</a>
     </div>
   </div>
 </div>  <div id="menu">
@@ -164,7 +163,7 @@ Sword Art Online - MyAnimeList.net
       <li><a href="/reviews.php?t=anime">Reviews</a></li>
       <li><a href="/recommendations.php?s=recentrecs&t=anime">Recommendations</a></li>
       <li><a href="/topanime.php">Top Anime</a></li>
-      <li><a href="/anime/season">Seasonal Anime</a></li>
+      <li><a href="http://myanimelist.net/anime/season">Seasonal Anime</a></li>
     </ul>
   </li>
   <li class="small"><a href="#" class="non-link">Manga</a>
@@ -204,8 +203,7 @@ Sword Art Online - MyAnimeList.net
     </ul>
   </li>
   </ul>
-                  </div>  </div><div id="contentWrapper" itemscope itemtype="http://schema.org/TVSeries">
-<h1><div style="float: right; font-size: 13px;">Ranked #464</div><span itemprop="name">Sword Art Online</span></h1>
+                  </div>  </div><div id="contentWrapper" itemscope itemtype="http://schema.org/Product"><div class="fl-r fw-b fs16 pt4 pr8">Ranked #486</div><h1 class="h1"><span itemprop="name">Sword Art Online</span></h1>
     <div id="content">
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr>
@@ -219,7 +217,7 @@ Sword Art Online - MyAnimeList.net
 
 <!-- My List -->
 <div class="profileRows pb0">
-  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&amp;error=login_required">Add to My List</a>
+  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757&amp;error=login_required">Add to My List</a>
 </div>
 
 <div id="addtolist" class="addtolist-block" style="display: none;">
@@ -257,27 +255,19 @@ Sword Art Online - MyAnimeList.net
 <!-- end My List -->
 
 <div id="profileRows" class="pt0">
-  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&amp;error=login_required" style="font-weight:normal;">Add to Favorites</a>
-  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&amp;error=login_required">Edit Anime Information</a></div>
+  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757&amp;error=login_required" style="font-weight:normal;">Add to Favorites</a>
+  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757&amp;error=login_required">Edit Anime Information</a></div>
 
 <div id="editdiv" style="display: none; margin-bottom: 16px;">
   <form method="GET" action="http://myanimelist.net/dbchanges.php" style="display: inline;">
     <input type="hidden" name="aid" value="11757">
     <div class="spaceit_pad">What would you like to edit?</div>
-    <select name="t" id="t" class="inputtext"><option value="synopsis">Synopsis</option><option value="background">Background</option><option value="pic">Picture</option><option value="airingdates">Airing Dates</option><option value="producers">Producers</option><option value="relations">Relations</option><option value="rating">Rating</option><option value="duration">Duration</option></select>
+                      <select name="t" id="t" class="inputtext"><option value="synopsis">Synopsis</option><option value="background">Background</option><option value="pic">Picture</option><option value="airingdates">Airing Dates</option><option value="producers">Producers</option><option value="relations">Relations</option><option value="rating">Rating</option><option value="duration">Duration</option><option value="source">Source</option><option value="broadcast">Broadcast</option></select>
      &nbsp;<input type="submit" value="Go" class="inputButton">
   </form>
 </div>
 
-
-<div class="mt8 icon-block">
-    <a class="sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=%2Fanime%2F11757%2FSword_Art_Online"></a>
-    <a class="sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=%2Fanime%2F11757%2FSword_Art_Online"></a>
-    <a class="sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=%2Fanime%2F11757%2FSword_Art_Online&amp;title=Sword%20Art%20Online"></a>
-    <a class="sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?url=%2Fanime%2F11757%2FSword_Art_Online&amp;text=Sword%20Art%20Online&amp;related=MyAnimeList.net&amp;hashtags=Anime,MAL"></a>
-    <a class="sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=%2Fanime%2F11757%2FSword_Art_Online&amp;name=Sword%20Art%20Online"></a>
-</div>
-
+<div class="icon-block mt8"><a data-ga-network="facebook" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online"></a><a data-ga-network="google+" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online"></a><a data-ga-network="reddit" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;title=Sword%20Art%20Online"></a><a data-ga-network="twitter" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?related=MyAnimeList.net&amp;via=myanimelist&amp;url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;text=Sword%20Art%20Online&amp;hashtags=anime"></a><a data-ga-network="tumblr" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;name=Sword%20Art%20Online"></a></div>
   <h2>Alternative Titles</h2><div class="spaceit_pad">
     <span class="dark_text">English:</span> Sword Art Online
   </div><div class="spaceit_pad">
@@ -290,39 +280,55 @@ Sword Art Online - MyAnimeList.net
 
 <div>
   <span class="dark_text">Type:</span> TV
-</div>
+  </div>
 
 <div class="spaceit">
   <span class="dark_text">Episodes:</span>
   25
-</div>
+  </div>
 
 <div>
   <span class="dark_text">Status:</span>
   Finished Airing
-</div>
+  </div>
 
 <div class="spaceit">
   <span class="dark_text">Aired:</span>
   Jul 8, 2012 to Dec 23, 2012
-</div>
+  </div>
+
+  <div>
+    <span class="dark_text">Premiered:</span>
+          <a href="http://myanimelist.net/anime/season/2012/summer">Summer 2012</a>
+          </div>
+
+  <div class="spaceit">
+    <span class="dark_text">Broadcast:</span>
+    ?
+      </div>
 
 <div>
   <span class="dark_text">Producers:</span>
-      <a href="http://myanimelist.net/anime.php?p=17">Aniplex</a>,     <a href="http://myanimelist.net/anime.php?p=56">A-1 Pictures</a>,     <a href="http://myanimelist.net/anime.php?p=79">Genco</a>,     <a href="http://myanimelist.net/anime.php?p=315">DAX Production</a>,     <a href="http://myanimelist.net/anime.php?p=493">Aniplex of America</a><sup>L</sup>,     <a href="http://myanimelist.net/anime.php?p=681">ASCII Media Works</a></div>
+      <a href="http://myanimelist.net/anime/producer/17" title="Aniplex">Aniplex</a>,     <a href="http://myanimelist.net/anime/producer/56" title="A-1 Pictures">A-1 Pictures</a>,     <a href="http://myanimelist.net/anime/producer/79" title="Genco">Genco</a>,     <a href="http://myanimelist.net/anime/producer/315" title="DAX Production">DAX Production</a>,     <a href="http://myanimelist.net/anime/producer/493" title="Aniplex of America">Aniplex of America</a><sup>L</sup>,     <a href="http://myanimelist.net/anime/producer/681" title="ASCII Media Works">ASCII Media Works</a></div>
 
 <div class="spaceit">
-  <span class="dark_text">Genres:</span>
-      <span itemprop="genre"><a href="http://myanimelist.net/anime.php?genre%5B%5D=1">Action</a></span>,     <span itemprop="genre"><a href="http://myanimelist.net/anime.php?genre%5B%5D=2">Adventure</a></span>,     <span itemprop="genre"><a href="http://myanimelist.net/anime.php?genre%5B%5D=10">Fantasy</a></span>,     <span itemprop="genre"><a href="http://myanimelist.net/anime.php?genre%5B%5D=11">Game</a></span>,     <span itemprop="genre"><a href="http://myanimelist.net/anime.php?genre%5B%5D=22">Romance</a></span></div>
+  <span class="dark_text">Source:</span>
+  ?
+  </div>
 
 <div>
+  <span class="dark_text">Genres:</span>
+  <a href="http://myanimelist.net/anime/genre/1" title="Action">Action</a>, <a href="http://myanimelist.net/anime/genre/2" title="Adventure">Adventure</a>, <a href="http://myanimelist.net/anime/genre/10" title="Fantasy">Fantasy</a>, <a href="http://myanimelist.net/anime/genre/11" title="Game">Game</a>, <a href="http://myanimelist.net/anime/genre/22" title="Romance">Romance</a></div>
+
+<div class="spaceit">
   <span class="dark_text">Duration:</span>
   23 min. per ep.
-</div>
-<div class="spaceit">
+  </div>
+
+<div>
   <span class="dark_text">Rating:</span>
   PG-13 - Teens 13 or older
-</div>
+  </div>
 
 <sup><small>L</small></sup><small> represents licensing company</small></div>
 <br />
@@ -331,13 +337,13 @@ Sword Art Online - MyAnimeList.net
 <h2>Statistics</h2>
 <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
   <span class="dark_text">Score:</span>
-  <span itemprop="ratingValue">8.04</span><sup>1</sup> (scored by <span itemprop="ratingCount">421,291</span> users)
+  <span itemprop="ratingValue">8.03</span><sup>1</sup> (scored by <span itemprop="ratingCount">443,431</span> users)
       <meta itemprop="bestRating" content="10">
     <meta itemprop="worstRating" content="1">
   </div>
 <div class="spaceit">
   <span class="dark_text">Ranked:</span>
-  #464<sup>2</sup>
+  #486<sup>2</sup>
 </div>
 <div>
   <span class="dark_text">Popularity:</span>
@@ -345,11 +351,11 @@ Sword Art Online - MyAnimeList.net
 </div>
 <div class="spaceit">
   <span class="dark_text">Members:</span>
-  586,690
+    616,761
 </div>
 <div>
   <span class="dark_text">Favorites:</span>
-  31,864
+  33,126
 </div>
 <div style="margin-top: 2px;">
   <small>
@@ -399,9 +405,9 @@ Sword Art Online - MyAnimeList.net
 
 
 
-                  <div class="breadcrumb " itemscope itemtype="http://schema.org/BreadcrumbList"><div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/" itemprop="item"><span itemprop="name">
+              <div class="breadcrumb " itemscope itemtype="http://schema.org/BreadcrumbList"><div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/" itemprop="item"><span itemprop="name">
               Top
-            </span></a><meta itemprop="position" content="1"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/topanime.php" itemprop="item"><span itemprop="name">
+            </span></a><meta itemprop="position" content="1"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/anime.php" itemprop="item"><span itemprop="name">
               Anime
             </span></a><meta itemprop="position" content="2"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online" itemprop="item"><span itemprop="name">
               Sword Art Online
@@ -419,19 +425,19 @@ In order to escape Aincrad, Kirito will now have to interact and cooperate with 
 <br />
 [Written by MAL Rewrite]</span><h2 style="margin-top: 15px;"><div class="floatRightHeader"><a href="/dbchanges.php?aid=11757&t=background" style="font-weight: normal;">Edit</a></div>Background</h2>No background information has been added to this title. Help improve our database by adding background information <a href="/dbchanges.php?aid=11757&t=background">here</a>.<br><div class="border_top" style="padding:16px 0px 0px 0px;margin:14px 0px 0px 0px;"><div style="width:728px; height:120px; margin:0 auto"><script type="text/javascript">
 googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnime_detail_SAFE_LB120", [728,120], "div-gpt-ad-151672222").addService(googletag.pubads());
+  var slot = googletag.defineSlot("/84947469/02PCAnime_detail_SAFE_LB120", [728,120], "div-gpt-ad-784117073").addService(googletag.pubads());
       slot.setTargeting('title', 'Sword%20Art%20Online');
       slot.setTargeting('utm_campaign', 'ad_mal_anime_11757');
     slot.setCollapseEmptyDiv(true);
   googletag.enableServices();
 });
 </script>
-<div id="div-gpt-ad-151672222" style="width:728px; height:120px;">
+<div id="div-gpt-ad-784117073" style="width:728px; height:120px;">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-151672222"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-784117073"); });
       </script>
 </div>
-</div></div></td></tr><tr><td><br><h2><div class="floatRightHeader"><a href="/dbchanges.php?aid=11757&t=relations" style="font-weight: normal;">Edit</a></div>Related Anime</h2><table class="anime_detail_related_anime" style="border-spacing:0px;"><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Adaptation:</td><td width="100%" class="borderClass"><a href="/manga/21479/Sword_Art_Online">Sword Art Online</a>, <a href="/manga/43921/Sword_Art_Online:_Progressive">Sword Art Online: Progressive</a></td><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Other:</td><td width="100%" class="borderClass"><a href="/anime/16099/Sword_Art_Online:_Sword_Art_Offline">Sword Art Online: Sword Art Offline</a></td><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Sequel:</td><td width="100%" class="borderClass"><a href="/anime/20021/Sword_Art_Online:_Extra_Edition">Sword Art Online: Extra Edition</a></td></table><br /><h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/characters" style="font-weight: normal;">More characters</a></div>Characters & Voice Actors</h2><table border="0" cellpadding="0" cellspacing="0" width="100%">
+</div></div></td></tr><tr><td><br><h2><div class="floatRightHeader"><a href="/dbchanges.php?aid=11757&t=relations" style="font-weight: normal;">Edit</a></div>Related Anime</h2><table class="anime_detail_related_anime" style="border-spacing:0px;"><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Adaptation:</td><td width="100%" class="borderClass"><a href="/manga/21479/Sword_Art_Online">Sword Art Online</a>, <a href="/manga/43921/Sword_Art_Online:_Progressive">Sword Art Online: Progressive</a></td><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Other:</td><td width="100%" class="borderClass"><a href="/anime/16099/Sword_Art_Online:_Sword_Art_Offline">Sword Art Online: Sword Art Offline</a>, <a href="/anime/31765/Sword_Art_Online_Movie">Sword Art Online Movie</a></td><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Sequel:</td><td width="100%" class="borderClass"><a href="/anime/20021/Sword_Art_Online:_Extra_Edition">Sword Art Online: Extra Edition</a></td></table><br /><h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/characters" style="font-weight: normal;">More characters</a></div>Characters & Voice Actors</h2><table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
 			<div class="picSurround"><a href="/character/36765/Kazuto_Kirigaya" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/7/204821t.jpg" alt="Kirigaya, Kazuto" vspace="4" hspace="8" border="0"></a></div>
@@ -447,7 +453,7 @@ googletag.cmd.push(function() {
                       <a href="/people/11817/Yoshitsugu_Matsuoka">Matsuoka, Yoshitsugu</a><br />
                       <small>Japanese</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/11817/Yoshitsugu_Matsuoka"><img src="http://cdn.myanimelist.net/images/voiceactors/2/40132v.jpg" alt="Matsuoka, Yoshitsugu" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/11817/Yoshitsugu_Matsuoka"><img src="http://cdn.myanimelist.net/images/voiceactors/2/42176v.jpg" alt="Matsuoka, Yoshitsugu" border="0"></a></div>
                       </td>
                       </tr>
 				</table>
@@ -491,7 +497,7 @@ googletag.cmd.push(function() {
                       <a href="/people/6996/Ayana_Taketatsu">Taketatsu, Ayana</a><br />
                       <small>Japanese</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/6996/Ayana_Taketatsu"><img src="http://cdn.myanimelist.net/images/voiceactors/3/15393v.jpg" alt="Taketatsu, Ayana" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/6996/Ayana_Taketatsu"><img src="http://cdn.myanimelist.net/images/voiceactors/3/42080v.jpg" alt="Taketatsu, Ayana" border="0"></a></div>
                       </td>
                       </tr>
 				</table>
@@ -562,23 +568,23 @@ googletag.cmd.push(function() {
           <td class="episode-aired">Aired</td>
         </tr><tr class="episode-list-data">
         <td class="episode-number nowrap">1</td>
-        <td class="episode-title"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/1" class="fw-b">The World of Swords</a><br>Ken no Sekai&nbsp;(剣の世界)</td>
+        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/1" class="fw-b">The World of Swords</a><br>Ken no Sekai&nbsp;(剣の世界)</td>
         <td class="episode-aired" nowrap>Jul 8, 2012</td>
       </tr><tr class="episode-list-data">
         <td class="episode-number nowrap">2</td>
-        <td class="episode-title"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/2" class="fw-b">Beater</a><br>Beater&nbsp;(ビーター)</td>
+        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/2" class="fw-b">Beater</a><br>Beater&nbsp;(ビーター)</td>
         <td class="episode-aired" nowrap>Jul 15, 2012</td>
       </tr><tr class="episode-list-data">
         <td class="episode-number nowrap">3</td>
-        <td class="episode-title"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/3" class="fw-b">The Red-Nosed Reindeer</a><br>Akahana no Tonakai&nbsp;(赤鼻のトナカイ)</td>
+        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/3" class="fw-b">The Red-Nosed Reindeer</a><br>Akahana no Tonakai&nbsp;(赤鼻のトナカイ)</td>
         <td class="episode-aired" nowrap>Jul 22, 2012</td>
       </tr><tr class="episode-list-data">
         <td class="episode-number nowrap">4</td>
-        <td class="episode-title"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/4" class="fw-b">The Black Swordsman</a><br>Kuro no Kenshi&nbsp;(黒の剣士)</td>
+        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/4" class="fw-b">The Black Swordsman</a><br>Kuro no Kenshi&nbsp;(黒の剣士)</td>
         <td class="episode-aired" nowrap>Jul 29, 2012</td>
       </tr><tr class="episode-list-data">
         <td class="episode-number nowrap">5</td>
-        <td class="episode-title"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/5" class="fw-b">A Crime Within the Walls</a><br>Kennai Jiken&nbsp;(圏内事件)</td>
+        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/5" class="fw-b">A Crime Within the Walls</a><br>Kennai Jiken&nbsp;(圏内事件)</td>
         <td class="episode-aired" nowrap>Aug 5, 2012</td>
       </tr>        </tr>
       </table>
@@ -588,30 +594,30 @@ googletag.cmd.push(function() {
 	<br />
 	<h2><div class="floatRightHeader"><a href="/dbchanges.php?aid=11757&t=theme&themetype=2">Edit</a></div>Ending Theme</h2>#1: "crossing field" by LiSA (eps 1, 25)<br>#2: "Yume Sekai (ユメセカイ)" by Haruka Tomatsu (eps 2-14)<br>#3: "Overfly" by Luna Haruna (eps 15-24)<br><br /><br /><div style="padding: 20px 40px;display: inline-block;"><script type="text/javascript">
 googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEmiddleBR01", [[300,250],[336,280]], "div-gpt-ad-133477218").addService(googletag.pubads());
+  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEmiddleBR01", [[300,250],[336,280]], "div-gpt-ad-1655879456").addService(googletag.pubads());
       slot.setTargeting('title', 'Sword%20Art%20Online');
       slot.setTargeting('utm_campaign', 'ad_mal_anime_11757');
     slot.setCollapseEmptyDiv(true);
   googletag.enableServices();
 });
 </script>
-<div id="div-gpt-ad-133477218" style="width:336px; height:280px;">
+<div id="div-gpt-ad-1655879456" style="width:336px; height:280px;">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-133477218"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1655879456"); });
       </script>
 </div>
 </div><div style="padding: 20px 0px;display: inline-block;"><script type="text/javascript">
 googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEmiddleBR02", [[300,250],[336,280]], "div-gpt-ad-1786298357").addService(googletag.pubads());
+  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEmiddleBR02", [[300,250],[336,280]], "div-gpt-ad-842127545").addService(googletag.pubads());
       slot.setTargeting('title', 'Sword%20Art%20Online');
       slot.setTargeting('utm_campaign', 'ad_mal_anime_11757');
     slot.setCollapseEmptyDiv(true);
   googletag.enableServices();
 });
 </script>
-<div id="div-gpt-ad-1786298357" style="width:336px; height:280px;">
+<div id="div-gpt-ad-842127545" style="width:336px; height:280px;">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1786298357"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-842127545"); });
       </script>
 </div>
 </div><br /><h2><span class="floatRightHeader"><a href="/myreviews.php?seriesid=11757&go=write">Write a review</a> | <a href="/anime/11757/Sword_Art_Online/reviews">More reviews</a></span>Reviews</h2>
@@ -630,10 +636,10 @@ googletag.cmd.push(function() {
 	</div>
 
 							<a href="/profile/LLYNCES">LLYNCES</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp87997">2228</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp87997">2263</span></strong> people found this review helpful</div>
 							<div><a href="/profile/LLYNCES/reviews">Other reviews by this user</a></div>
 						</td>
-						<td style="text-align: right;" valign="top"><div style="text-align: right;">Feb 26, 2013 3:12 PM</div>
+						<td style="text-align: right;" valign="top"><div style="text-align: right;">Feb 26, 2013</div>
 							<div class="lightLink spaceit">25 of 25 episodes seen</div>
 							<div><a href="javascript:void(0);" onclick="$('#score87997').toggle()">Overall Rating</a>: 7</div>
 						</td>
@@ -689,7 +695,7 @@ At the end of the day I watch anime because I want something that will entertain
 </span> <a href="javascript:void(0);" id="reviewToggle87997" class="js-review-btn-readmore" onclick="reviewToggleText(87997)" data-id="87997">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=87997" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=87997" class="lightLink"><small>report</small></a></div><span id="revhelp_output_87997" class="js-review-btn-helpful js-review-helpful-87997">I found this review <a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=87997" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=87997" class="lightLink"><small>report</small></a></div><span id="revhelp_output_87997" class="js-review-btn-helpful js-review-helpful-87997">I found this review <a href="/login.php?from=%2Fanime%2F11757&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
@@ -707,10 +713,10 @@ At the end of the day I watch anime because I want something that will entertain
 	</div>
 
 							<a href="/profile/LordAura">LordAura</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp138911">1436</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp138911">1489</span></strong> people found this review helpful</div>
 							<div><a href="/profile/LordAura/reviews">Other reviews by this user</a></div>
 						</td>
-						<td style="text-align: right;" valign="top"><div style="text-align: right;">Apr 6, 2014 2:33 AM</div>
+						<td style="text-align: right;" valign="top"><div style="text-align: right;">Apr 6, 2014</div>
 							<div class="lightLink spaceit">25 of 25 episodes seen</div>
 							<div><a href="javascript:void(0);" onclick="$('#score138911').toggle()">Overall Rating</a>: 4</div>
 						</td>
@@ -778,7 +784,7 @@ So yeh, Gary Stu and Waifu - these characters are pathetic (1).<br />
 6) Overall - This show has so many fans, and I really don't know why. It's plot is rushed and terrible. It's characters so flat, it's almost funny...almost. It's romance is highly misogynistic and terribly developed. I felt insulted watching this, and don't understand how any could like this show. Even Gamers.</span> <a href="javascript:void(0);" id="reviewToggle138911" class="js-review-btn-readmore" onclick="reviewToggleText(138911)" data-id="138911">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=138911" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=138911" class="lightLink"><small>report</small></a></div><span id="revhelp_output_138911" class="js-review-btn-helpful js-review-helpful-138911">I found this review <a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=138911" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=138911" class="lightLink"><small>report</small></a></div><span id="revhelp_output_138911" class="js-review-btn-helpful js-review-helpful-138911">I found this review <a href="/login.php?from=%2Fanime%2F11757&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
@@ -796,10 +802,10 @@ So yeh, Gary Stu and Waifu - these characters are pathetic (1).<br />
 	</div>
 
 							<a href="/profile/TheDeedsOfMen">TheDeedsOfMen</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp164583">1076</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp164583">1095</span></strong> people found this review helpful</div>
 							<div><a href="/profile/TheDeedsOfMen/reviews">Other reviews by this user</a></div>
 						</td>
-						<td style="text-align: right;" valign="top"><div style="text-align: right;">Oct 12, 2014 2:43 PM</div>
+						<td style="text-align: right;" valign="top"><div style="text-align: right;">Oct 12, 2014</div>
 							<div class="lightLink spaceit">25 of 25 episodes seen</div>
 							<div><a href="javascript:void(0);" onclick="$('#score164583').toggle()">Overall Rating</a>: 3</div>
 						</td>
@@ -1002,7 +1008,7 @@ Overall: 3<br />
 Watch it to witness the writing yourself. But more importantly, by watching the show you can better understand the reviews or, better yet, write one yourself.</span> <a href="javascript:void(0);" id="reviewToggle164583" class="js-review-btn-readmore" onclick="reviewToggleText(164583)" data-id="164583">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=164583" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=164583" class="lightLink"><small>report</small></a></div><span id="revhelp_output_164583" class="js-review-btn-helpful js-review-helpful-164583">I found this review <a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=164583" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=164583" class="lightLink"><small>report</small></a></div><span id="revhelp_output_164583" class="js-review-btn-helpful js-review-helpful-164583">I found this review <a href="/login.php?from=%2Fanime%2F11757&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
@@ -1020,10 +1026,10 @@ Watch it to witness the writing yourself. But more importantly, by watching the 
 	</div>
 
 							<a href="/profile/_Rika">_Rika</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp82086">1045</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp82086">1073</span></strong> people found this review helpful</div>
 							<div><a href="/profile/_Rika/reviews">Other reviews by this user</a></div>
 						</td>
-						<td style="text-align: right;" valign="top"><div style="text-align: right;">Dec 31, 2012 1:56 AM</div>
+						<td style="text-align: right;" valign="top"><div style="text-align: right;">Dec 31, 2012</div>
 							<div class="lightLink spaceit">25 of 25 episodes seen</div>
 							<div><a href="javascript:void(0);" onclick="$('#score82086').toggle()">Overall Rating</a>: 3</div>
 						</td>
@@ -1117,20 +1123,20 @@ To wrap up the review, SAO had the potential to be something good but that poten
 Now all that’s left to do is to wait for a second season which is bound to release sooner or later and see how it goes. [And as expected, it’s releasing soon].</span> <a href="javascript:void(0);" id="reviewToggle82086" class="js-review-btn-readmore" onclick="reviewToggleText(82086)" data-id="82086">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=82086" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=82086" class="lightLink"><small>report</small></a></div><span id="revhelp_output_82086" class="js-review-btn-helpful js-review-helpful-82086">I found this review <a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=82086" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=82086" class="lightLink"><small>report</small></a></div><span id="revhelp_output_82086" class="js-review-btn-helpful js-review-helpful-82086">I found this review <a href="/login.php?from=%2Fanime%2F11757&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 				<div class="mt4"></div><div style="padding:16px 0px 0px 0px;"><div style="width:728px; height:90px; margin:0 auto"><script type="text/javascript">
 googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEbottomLB02", [728,90], "div-gpt-ad-779335044").addService(googletag.pubads());
+  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEbottomLB02", [728,90], "div-gpt-ad-822788895").addService(googletag.pubads());
       slot.setTargeting('title', 'Sword%20Art%20Online');
       slot.setTargeting('utm_campaign', 'ad_mal_anime_11757');
     slot.setCollapseEmptyDiv(true);
   googletag.enableServices();
 });
 </script>
-<div id="div-gpt-ad-779335044" style="width:728px; height:90px;">
+<div id="div-gpt-ad-822788895" style="width:728px; height:90px;">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-779335044"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-822788895"); });
       </script>
 </div>
 </div></div>
@@ -1152,14 +1158,14 @@ googletag.cmd.push(function() {
 	</div>
 	</div>
 
-				<div style="margin-bottom: 2px;"><a href="/anime/17265/Log_Horizon"><strong>Log Horizon</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757%2FSword_Art_Online" title="Quick add anime to my list" class="button_add ">add</a>
+				<div style="margin-bottom: 2px;"><a href="/anime/17265/Log_Horizon"><strong>Log Horizon</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757" title="Quick add anime to my list" class="button_add ">add</a>
 </div>
 
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Main similarity is that both anime features living within the game and in real life. There is the idea of being a member of a community and adventure and exploring the world that the protagonists live in. Both anime are special in their own way such as the contrasting protagonists. Both have good art quality as well and if you like action and fantasy anime, these two are definitely recommendable. &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=79629"><small>report</small></a></span>Recommended by <a href="/profile/cherichelly">cherichelly</a></div>
 					</div>
-						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(11757,0);">Read recommendations by <strong>109</strong> more users</a></div>
+						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(11757,0);">Read recommendations by <strong>112</strong> more users</a></div>
 						<div id="simaid0" style="display: none;">
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both involve players who log into a game, but cannot logout. They have the same situation where the players have to either form alliances or be lone wolves. The main character in one anime is more of a lone wolf, while the other anime features three main characters who form their own alliance.&nbsp;</div>
@@ -1205,7 +1211,7 @@ The show deals a lot with both fighting and strategy.&nbsp;</div>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are about a Fantasy Online Game and players are trapped in them.&nbsp;</div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=74811"><small>report</small></a></span>Recommended by <a href="/profile/rickylrico">rickylrico</a></div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=74811"><small>report</small></a></span>Recommended by <a href="/profile/DONTTOUCHMETHERE">DONTTOUCHMETHERE</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are set in a Video game world in which a large amount of people are trapped. Also both revolve around the main character trying to figure out what is going on in this world&nbsp;</div>
@@ -1299,18 +1305,22 @@ In fact, Sword Art Online has everything that Log Horizon doesn't have: Good mus
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=75509"><small>report</small></a></span>Recommended by <a href="/profile/Asfaria">Asfaria</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Both get stuck in a game and can't get out, both MMORPG, both have consequences of dying in the game. Both main characters have black hair...&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=113803"><small>report</small></a></span>Recommended by <a href="/profile/RochelleyBaby">RochelleyBaby</a></div>
+					</div>
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Well the plot are the same where the characters are stuck in a game/ apocalypse the only difference is the characters.. Overall both are good Anime..&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=80463"><small>report</small></a></span>Recommended by <a href="/profile/Genokiller06">Genokiller06</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both series include our main characters being trapped in the VRMMORPG (Virtual Reality Massively Multiplayer Online Role-Playing Game) game world, fighting for survival. Although Sword Art Online does include more romance, and by that quite distances the feeling when watching it from Log Horizon, they both still include game-like attacks and are both very suggested if you enjoy combat games in general.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=76539"><small>report</small></a></span>Recommended by <a href="/profile/Subpyro">Subpyro</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">If you like SAO, i would fully recommend Log Horizon. They both take place in the virtual world, but the story line is different. They may seem similar at first, but a lot of people would agree with me they like Log Horizon more. The main difference between the two that people would recognize is that the difference lies within the concept of the game. Instead of a fight for survival, it is a game that makes you have to complete the story. SAO has different players that work to help others, but Log Horizon has clans and su- classes that promotes the game. The <span style="display: none;" id="recommend77505">sub-classes help with choosing the people they want for their part/guild. As for me I would personally rank this above SAO because of numerous reasons.  </span>&nbsp<a href="javascript:void(0);" id="recommendToggle77505" onclick="recommendToggleText(77505)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=77505"><small>report</small></a></span>Recommended by <a href="/profile/Kito_Minami">Kito_Minami</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both animes is about being trapped in a VR enviorment(Virtual Reality), in my opinion I think this anime will be very much like SAO. It has the same style and I think that Log Horizon is a bit of a copy of SAO so I think that the both of them will be a lot like each other, some things will be different of course and one of those is that Log Horizon will have magic in it where as SAO didn't have.<br />
 <br />
 They look similar and I think that they will feel similar when watching it. If you liked SAO I think you'll <span style="display: none;" id="recommend73937">like this as well. And vice versa.<br />
@@ -1318,65 +1328,65 @@ They look similar and I think that they will feel similar when watching it. If y
 Though because this has not aired yet it is hard to write a recomendation. But I do think that you will enjoy both animes.</span>&nbsp<a href="javascript:void(0);" id="recommendToggle73937" onclick="recommendToggleText(73937)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=73937"><small>report</small></a></span>Recommended by <a href="/profile/YxtreaM">YxtreaM</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">The idea that gamers are trapped in a virtual world that is magical and sword based.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=72255"><small>report</small></a></span>Recommended by <a href="/profile/PreciousPeach">PreciousPeach</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">It has similar setting where players of a game are trapped within the game world. Log Horizon is more of politics though.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=80631"><small>report</small></a></span>Recommended by <a href="/profile/hambone">hambone</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">If you enjoyed Log Horizon, then look no further, you found another good series to pull your interest in. In this anime, you get another group of characters trapped in an MMORPG. No logging out until they figured out what to do. They fight monsters, get items, level up, different guilds too. Overall, this anime has some good dynamic characters that you will love to see grow.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=104899"><small>report</small></a></span>Recommended by <a href="/profile/dustinator1991">dustinator1991</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">In both animes the characters are stuck inside a virtual world.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=75723"><small>report</small></a></span>Recommended by <a href="/profile/OprahTheWhale">OprahTheWhale</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">In both animes the main character is trapped in a MMORPG game.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=81619"><small>report</small></a></span>Recommended by <a href="/profile/Laran01">Laran01</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Its the same trapped in a mmo overall story with a interesting plot that that makes you think.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=81677"><small>report</small></a></span>Recommended by <a href="/profile/Zontago">Zontago</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both animes are epic if you like the VR-like game. I recommend both to watch, I have rated both 10/10 already. I rewatched SAO 3 times already and read the Light Novels. <br />
 <br />
 Though both animes are similar in various things they also have things which aren't in common, Sword Art Online's main character is OP because of his previous experiences with VR-games and his beta-participation of SAO. While Log Horizon's main character is a normal gamer, not op.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=79691"><small>report</small></a></span>Recommended by <a href="/profile/Halucus">Halucus</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Main similarity of these two anime are that players are trapped in game in MMORPG.<br />
 In both anime protagonists tries to accept the virtual game and tries to live in it. Both are high quality action and fantasy anime with amazing art/animation.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109563"><small>report</small></a></span>Recommended by <a href="/profile/wasif_khan">wasif_khan</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">If you imagined it would feel like being trapped in a video game, this series enjoy. since ofresen the chance to experience that sensasion with its protagonists and its fantastic history and animation<br />
 <br />
 Si has imaginado como se sentiría quedar atrapado en un vídeo juego, estas series te gustara. ya que ofresen la oportunidad de experimentar esa sensasion con sus protagonistas y su fantastica historia y animacion &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=76443"><small>report</small></a></span>Recommended by <a href="/profile/Lagna">Lagna</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Log Horizon and SAO almost have the same story but log Horizon is more about the game and goes deeper whith the skills and stuff and SAO turns out to be a big drama &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=79133"><small>report</small></a></span>Recommended by <a href="/profile/SacredBlazer">SacredBlazer</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">It couldn't be anymore similar with the concept and setting yet...they are very different. Both series revolve around a large group of gamers who are trapped inside of an Online Game. The characters in SAO prioritize to find a means of escape and is more dramatic while leaning towards the romance side of things. LH are quick to adapt to the situation and learn to live in this new world and really goes in to more depth about the realm of an MMO. Dying in SAO means dying in reality, while you can respawn in LH but there is a specific twist to it, consequence <span style="display: none;" id="recommend92609">wise. If you are a fan of MMO's, both series will prove very entertaining.<br />
 </span>&nbsp<a href="javascript:void(0);" id="recommendToggle92609" onclick="recommendToggleText(92609)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=92609"><small>report</small></a></span>Recommended by <a href="/profile/papsoshea">papsoshea</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both of the animes takes place in a game and they're very similar in that way but still they're very different and it won't feel like you're watching the same anime all over again.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=76873"><small>report</small></a></span>Recommended by <a href="/profile/Tirrith">Tirrith</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are about large group of people getting trapped inside a game. Both MC are trying to change the world inside the game while one is trying to escape and the other one to rebuild the world.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=91427"><small>report</small></a></span>Recommended by <a href="/profile/abystoma2">abystoma2</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">1) characters are trapped inside a game and they cant get out<br />
 2) finding solutions on how to get out of the game<br />
 3) MC are badasses in their own way ( though I prefer Shiroe a lot more )<br />
@@ -1384,7 +1394,7 @@ Si has imaginado como se sentiría quedar atrapado en un vídeo juego, estas ser
  &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108191"><small>report</small></a></span>Recommended by <a href="/profile/DenzRui">DenzRui</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are set within a world were the gamers are trapped within the games world as well as both protraying there life and how they live it within the world. <br />
 <br />
 But the difference is that SAO focuses more on how the players are going to escape from the world as well as the romances formed and the impact of player deaths affacting there real bodies, which made me feel a sense of attachment towards cetain characters in which when they died made me cry and break down in tears quite a few times. (no spoliers intended, sorry this is my first try writing <span style="display: none;" id="recommend79887">one of these :(   ).<br />
@@ -1394,7 +1404,7 @@ Where as log horizon focuses more on the how there lifestyle is within the world
 :)</span>&nbsp<a href="javascript:void(0);" id="recommendToggle79887" onclick="recommendToggleText(79887)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=79887"><small>report</small></a></span>Recommended by <a href="/profile/vince1996">vince1996</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">both take place inside of an VROMMRPG both MC are famous, (Kirito is more OP), they both dislike joining guilds, while Log Horizon has little to no romance, it gives off a more serious tone. <br />
 Differences: - Log Horizon has a respawn area<br />
                      - The game concept is explained much more in Log Horizon<br />
@@ -1402,19 +1412,19 @@ Similarities:  -Great animation<br />
                     - both main characters are <span style="display: none;" id="recommend81899">likable, along with their group</span>&nbsp<a href="javascript:void(0);" id="recommendToggle81899" onclick="recommendToggleText(81899)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=81899"><small>report</small></a></span>Recommended by <a href="/profile/AccelOrder">AccelOrder</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">In SAO and LOG, main characters are stuck in a vrmmorpg and try to find their way out. I think LOG is better because they are more focused on game than SAO, SAO went for romance after 3 episodes. But both of this anime are good and similar, i love both of them.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=85287"><small>report</small></a></span>Recommended by <a href="/profile/Raito-senpai">Raito-senpai</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">people are trapped inside a video game and can't get out, they get used to life in the game as they stay in it for a longer period of time.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=83561"><small>report</small></a></span>Recommended by <a href="/profile/wen294">wen294</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are about people stuck in a video game and how the players adapt to it. Log Horizon is more about the politics than the action and romance in SAO. Otherwise the series are the same.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=79895"><small>report</small></a></span>Recommended by <a href="/profile/Anon1409">Anon1409</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">I'm sure this has been done lots of times, but yeah, both anime are about people getting trapped in a video game they were playing. Instead of talking about that, I'll try to highlight some of the key differences.<br />
 <br />
 In SAO, there is no doubt that the characters are indeed in a video game, there is a scientific explanation as to how they are trapped there, and there is a definite way to escape. In Log Horizon, on the other hand, it seems as if the characters were just magically transported into the game. No explanation, no way out, nothing.<br />
@@ -1426,7 +1436,7 @@ Log Horizon is probably a little more light-hearted than SAO, but that's not to 
 I highly recommend both as great anime for both gamers and anime fans alike.</span>&nbsp<a href="javascript:void(0);" id="recommendToggle109589" onclick="recommendToggleText(109589)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109589"><small>report</small></a></span>Recommended by <a href="/profile/drafo789">drafo789</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">- Both are trapped in a game, "Elder Tale" and "Sword Art Online"<br />
 - Shiroe is a bit like Kirito, although Kirito uses more of combat and Shiroe uses tactics.<br />
 - Quite entertaining <br />
@@ -1435,7 +1445,7 @@ I highly recommend both as great anime for both gamers and anime fans alike.</sp
 &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=103883"><small>report</small></a></span>Recommended by <a href="/profile/kurokenshi07">kurokenshi07</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Each anime focuses on the disturbing premise of being trapped in a video game. Thus begins the journey of the players to seek out ways to return back to the reality. (leaving/finishing the game so to speak) Both anime attempt to explore reality, questioning what is real? Should the values of what existed in reality hold any meaning in this virtual reality? Is it only a game? Does killing a player matter since it's only a game? Both build a society to impose judgement for such values. These societies can be in the form of guilds and explores the interactions between them. <br />
 <br />
 If <span style="display: none;" id="recommend100509">you like one, you may like the other, although there are a few differences to consider. Log Horizon centralizes around one guild that rises to power, it also builds upon the relationships of the guilds and gamers. Sword Art Online is centralized around predominately the male MC and his relationship with the female MC, thus the world building and themes are a little more restrictive on a grander scale. Another glaring difference is the pacing, Sword Art Online has many inconvenient time skips and Log Horizon can be very slow to move the plot and its story at a reasonable pace.<br />
@@ -1443,11 +1453,11 @@ If <span style="display: none;" id="recommend100509">you like one, you may like 
 Both exhibit overuse of "Kawaii" moments that may take away from the experience for the story-driven audience, something to be prepared for, as both can take themselves to seriously and yet too carefree in the next scene/episode.   </span>&nbsp<a href="javascript:void(0);" id="recommendToggle100509" onclick="recommendToggleText(100509)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=100509"><small>report</small></a></span>Recommended by <a href="/profile/Saulami_Jedi">Saulami_Jedi</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both series is about players being trapped in the game and started living on it.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=82103"><small>report</small></a></span>Recommended by <a href="/profile/jayjaybernil">jayjaybernil</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">- Game<br />
 - Fantasy<br />
 - Friendship<br />
@@ -1455,17 +1465,21 @@ Both exhibit overuse of "Kawaii" moments that may take away from the experience 
 + sweet characters &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=95167"><small>report</small></a></span>Recommended by <a href="/profile/CaptainTheK">CaptainTheK</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">There is a big chance that you are going to like Log Horizon if you like the video game concept of Sword Art Online. But if you think that the shows are very similar to each other, whatch the show and revalidate your opinion ;)&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=104885"><small>report</small></a></span>Recommended by <a href="/profile/BazookaOak">BazookaOak</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both animes talk about people who find themselves stuck in a video game and tells their daily in these games that are not their world.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=82903"><small>report</small></a></span>Recommended by <a href="/profile/Dragonbleu">Dragonbleu</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">They both have to do with characters that enter a video game world and can't log out. &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=82949"><small>report</small></a></span>Recommended by <a href="/profile/zumoku1137">zumoku1137</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Both take place in a virtual world. Believe it!&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=114719"><small>report</small></a></span>Recommended by <a href="/profile/STAMakarov">STAMakarov</a></div>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Very Similar to Log Horizon. Both are MMO games. I think SAO is much more balanced in terms of characters, action and romance. But Log Horizon is also a very good anime,  from the looks of things, it would get better and better as the series progresses. &nbsp;</div>
@@ -1550,34 +1564,27 @@ Bottom line if you like the concept behind SAO watch Log horizon it does everyth
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=99535"><small>report</small></a></span>Recommended by <a href="/profile/Shuujin3">Shuujin3</a></div>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">-The setting takes place in MMORPGs.<br />
--Log Horizon has a more fluent character development; it can be easy to miss for the character development in SAO.<br />
--Kirito and Shiroe are lone wolf characters at some point.<br />
--The action scenes are very well animated.&nbsp;</div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=96279"><small>report</small></a></span>Recommended by <a href="/profile/AzureNatlis99">AzureNatlis99</a></div>
-					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both anime have the same setting, a group of people trapped inside of a video game, however, Log Horizon doesn't really seem to have an end to the game portion like SAO does, and thus focuses more on the actual mechanics of the world and how the 'players' will function than just the romantic relationships between the characters.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=96989"><small>report</small></a></span>Recommended by <a href="/profile/Goton_no_Hebi">Goton_no_Hebi</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are about people getting tuck in games and strategic main male leads, that get surrounded by girls&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=97189"><small>report</small></a></span>Recommended by <a href="/profile/--Aurabreaker--">--Aurabreaker--</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Very similar in the fact that they are stuck in the game. Howeer Log Horizon lacks the romance of SAO, however makes up for it in comedy. &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=97875"><small>report</small></a></span>Recommended by <a href="/profile/Inanimated">Inanimated</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">It has the same idea of being trapped in a mmorpg but is way different in many ways and is totally worth checking out.<br />
 &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=98191"><small>report</small></a></span>Recommended by <a href="/profile/Dj_Kelled">Dj_Kelled</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Gaming becomes reality type of anime series and they try to escape the game with alot of action and planning.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=107417"><small>report</small></a></span>Recommended by <a href="/profile/Masterkendo18">Masterkendo18</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Log Horizon and Sword Art Online are both Anime about players being stuck inside of an MMO setting. However, SAO is more about the character's struggle with permanent death, Log Horizon's plot is more about the characters adapting to their new environment.<br />
 <br />
 Log Horizon clearly incorporates more aspects of the MMO game genre, as opposed to Sword Art Online.<br />
@@ -1585,11 +1592,11 @@ Log Horizon clearly incorporates more aspects of the MMO game genre, as opposed 
 Both anime are vastly different from each other, but have the same premise.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=105929"><small>report</small></a></span>Recommended by <a href="/profile/Jealot">Jealot</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Similar story line, playing a normal game then it sudden turns into real life. In both anime's they are trying to find a way to escape the game.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=102659"><small>report</small></a></span>Recommended by <a href="/profile/Aleitity">Aleitity</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">↓ENGLISH↓<br />
 If you watched Sword Art Online, you should watch Log Horizon. In the two stories, thousands of people was trapped in a game. In Sword Art Online (Aincrad) if you die you lose your live, but in Log Horizon you will lose other thing important too (I don't tell nothing of this because It's spoiler xd). The two main characters are very pros and fuckers, and have amazing abilities. Log horizon is centered more in strategy and battles than Sword Art Online, and the World of Log Horizon is the real world, not a game. The game is mixed with reality and appear new <span style="display: none;" id="recommend106956">abilities which only exist in reality.<br />
 <br />
@@ -1597,7 +1604,7 @@ If you watched Sword Art Online, you should watch Log Horizon. In the two storie
 Si tu has visto Sword Art Online, deberías mirar Log Horizon. En las dos historias, miles de personas quedan atrapadas en un juego. En Sword Art Online (Aincrad) si mueres perdías tu vida, pero en Log Horizon si mueres pierdes algo importante (No diré nada más porque será spoiler xd), pero no la vida. Los dos protagonistas son bastante chetos y fuckers y tienen habilidades extraordinarias. Log Horizon está más centrado en la estrategia y las batallas que Sword Art Online, y el mundo de Log Horizon es el mundo real, no un juego. El juego se mezcla con el mundo real y aparecen nuevas habilidades que nunca antes habían estado en el juego pero si en la realidad.</span>&nbsp<a href="javascript:void(0);" id="recommendToggle106956" onclick="recommendToggleText(106956)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=106956"><small>report</small></a></span>Recommended by <a href="/profile/Mayansito">Mayansito</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">In both series, players are trapped in a game world with no way to log out. They must team up with other players in order to win against both monsters... and other players. Along with no way to log out, there is another catch..... In the first part of SAO players who are killed in the game die in real life while in Log Horizon players who are killed in the game will lose part of their memory. Both of these offers a sense of fear that will drive the players to fight harder than never before. <br />
 <br />
 Both series show amazing teamwork and <span style="display: none;" id="recommend102285">cunning ways of defeating enemies in more way than just battle. These is always a good feel of victory whenever a strong monster or boss is defeated that brings joy to even the worst of situations. <br />
@@ -1607,7 +1614,7 @@ If you liked one you will definitely like the other both during and outside of b
 Game on. </span>&nbsp<a href="javascript:void(0);" id="recommendToggle102285" onclick="recommendToggleText(102285)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=102285"><small>report</small></a></span>Recommended by <a href="/profile/Sasukesnake07">Sasukesnake07</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">-In both anime they have the same general idea the characters are in a game, unable to log out of the virtual game they have to fight and survive in order to reach their freedom. <br />
 <br />
  -Both have quiet a bit of action going on depending on your opinion of what is a lot and minimal some sword and magic, they must fight other people stuck in the game but also creatures. <br />
@@ -1615,17 +1622,17 @@ Game on. </span>&nbsp<a href="javascript:void(0);" id="recommendToggle102285" on
 -The main character in sword art online he likes to be a solo player just like the three main characters in log horizon.   &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=102891"><small>report</small></a></span>Recommended by <a href="/profile/koukky">koukky</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Log Horizon is infamous for 'ripping off' from SAO's storyline, although they are very different in essence. Thus, the main similarity between both series, is that they share the idea that people are trapped in a video game. Although Sword Art Online focuses more on the act of playing in an MMORPG, Log Horizon focuses more on the politics in this games' world.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110217"><small>report</small></a></span>Recommended by <a href="/profile/Intelos">Intelos</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both shows start the same way, thousands of players are trapped in a game and unable to log off.<br />
 <br />
 Sword Art Online focusses on the action to complete the game to escape with some romance. Log Horizon focusses more on the story, the reason and how to escape are unknown, they must figure this out all while trying to make a suitable lifestyle in the game. Log Horizon is a shounen so it contains some humour and less action but it is very interesting to see the aspects of dealing with the gamelife and how to handle the NPC characters.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=101173"><small>report</small></a></span>Recommended by <a href="/profile/RoyalOss">RoyalOss</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">- Both have in game world setting<br />
 <br />
 - Opposite types of *action* one is a strategist one is a fighter<br />
@@ -1635,7 +1642,7 @@ Sword Art Online focusses on the action to complete the game to escape with some
 - One is a little more realistic on the *stuck in game part*&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=106851"><small>report</small></a></span>Recommended by <a href="/profile/Genesis_M">Genesis_M</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are about being stuck in a video game world.<br />
 <br />
 Sword Art Online explains more on how they got into the world and is focused on how to get out (at least for the first part).<br />
@@ -1645,15 +1652,15 @@ Log Horizon skims over how they got in and focuses more on making a permanent re
 I personally prefer Log Horizon to Sword Art Online but they both have their merits.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=104595"><small>report</small></a></span>Recommended by <a href="/profile/PublicSeaLion">PublicSeaLion</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Its the same concept of being trapped in a game but with two different outcomes. Log Horizon is based on politics / how to entertain oneself, sword art is survival. Log Horizon is slower because it has more thinking and detailed parts to it while sword art is very action based and fast paced. Both are quite enjoyable. Also I have been told that .hack is the precedent for series like these and Accel World is like if the main character in Sword art grew up and the future story. Oh look 3 recommendations in one.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=102341"><small>report</small></a></span>Recommended by <a href="/profile/animemusicFCB">animemusicFCB</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both Sword Art Online and Log Horizon are very similar. They both come from almost the exact same idea, the characters are stuck inside of a game. Only instead of actually being in a game, like they are in SAO, in Log Horizon they don't know whether or not it is the old game that they once knew and loved. Either way both of these are great show and have a second season that is currently airing, so there's now way that your going to get bored.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=102643"><small>report</small></a></span>Recommended by <a href="/profile/Hextonite">Hextonite</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">~ Both anime have their setting in a virtual world <br />
 <br />
 ~ Both worlds are MMOs<br />
@@ -1662,19 +1669,19 @@ I personally prefer Log Horizon to Sword Art Online but they both have their mer
    (there are details like spells/cooldowns etc.)&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=111494"><small>report</small></a></span>Recommended by <a href="/profile/Evans96">Evans96</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both anime are about a game in an online server. Though the storylines are totally different, a few aspects are quite similar, like: there is no way out. In sword art online there seems to be no logout button. In log horizon they don't even know how they got in their world, let alone mentioning how to get out of it. Through the episodes they get to know their world better, along with new potential ways out. Both main characters are solo-players at the beginning of the story, but eventually they learn that the only way to survive here is to join, or make a <span style="display: none;" id="recommend105483">guild. Kirito and Shiro are both powerful but mysterious players due to lots of experience before their situation broke loose. This gives them an advantage compared to other players, yet they also struggle with a lack of information or new additions.</span>&nbsp<a href="javascript:void(0);" id="recommendToggle105483" onclick="recommendToggleText(105483)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=105483"><small>report</small></a></span>Recommended by <a href="/profile/Misstery">Misstery</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are real life people stuck in a MMO RPG.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=103527"><small>report</small></a></span>Recommended by <a href="/profile/xDreaMzPT">xDreaMzPT</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Sword Art Online(SAO) and Log Horizon both take place in a game setting and that's pretty much where the similarities end. SAO focuses on the action side of MMORPG's while Log Horizon focuses on the economy and political aspects of being stuck in a virtual world. I prefer Log Horizon due to the way it approaches the situation. The characters try to adapt to the game and are not constantly thinking of ways to get out. So if you like SAO you are guaranteed to enjoy Log Horizon.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=103791"><small>report</small></a></span>Recommended by <a href="/profile/TomLedingham">TomLedingham</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">similarities:<br />
 -they both set place in MMORPG and are trapped inside and unable to log out<br />
 -they both try to find a way out and beat the system<br />
@@ -1682,60 +1689,70 @@ I personally prefer Log Horizon to Sword Art Online but they both have their mer
 &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=104949"><small>report</small></a></span>Recommended by <a href="/profile/katsuragi33">katsuragi33</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both anime emphasize on being trapped in the virtual world and how the characters adapt to their new lives. However their stories develop in different ways.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=105261"><small>report</small></a></span>Recommended by <a href="/profile/Shun_Kumou">Shun_Kumou</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">These shows share almost identical plots. They're both about a large group of MMO players getting trapped inside of the game. Both shows go into the various social structures built by an MMOs player base and they discuss the different play styles that individuals adapt. <br />
 SAO is a bit different because it takes place in the future and the game was already virtual reality when the players gets stuck whereas in Log Horizon the players were playing on their PCs before being transported to the game world. Other than that one difference the shows share a similar style of storytelling as the players try <span style="display: none;" id="recommend107391">to make sense of their situation all while fighting against the game world.</span>&nbsp<a href="javascript:void(0);" id="recommendToggle107391" onclick="recommendToggleText(107391)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=107391"><small>report</small></a></span>Recommended by <a href="/profile/Hholo">Hholo</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Log Horizon is similar to Sword Art Online because both take place in a virtual reality and gaming enviroment.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=107774"><small>report</small></a></span>Recommended by <a href="/profile/mranimem">mranimem</a></div>
+					</div>
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Both shows MCs trapped in virtual reality.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=115419"><small>report</small></a></span>Recommended by <a href="/profile/Lightinz">Lightinz</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both involve players who log into a game, but cannot logout<br />
 Both of them take place inside a video game.<br />
 main character are teams<br />
 they are copypesting animes&nbsp;</div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110025"><small>report</small></a></span>Recommended by <a href="/profile/GoFindaLife">GoFindaLife</a></div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110025"><small>report</small></a></span>Recommended by <a href="/profile/DeadlyTexhnolyze">DeadlyTexhnolyze</a></div>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are taken place in a video game environments. The extent of these environments are different. I would go further into detail about this, but I don't want to give away what makes this big difference. Overall, both have a great story line, cute characters, great action, &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109861"><small>report</small></a></span>Recommended by <a href="/profile/sukinato">sukinato</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Log horizon represents RPG games in general far better than Sword Art Online. My friend and i both agree that Akatsuki is superior and shiro is definitely better than Kirito.....by far. Akatsuki stays badass...Asuna loses it part way through, shame. <br />
+it's full of interesting characters and a slow but complex story.....<br />
+WATCH IT NOW! (yay Akatsuki!!)&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=113900"><small>report</small></a></span>Recommended by <a href="/profile/Animeheart101">Animeheart101</a></div>
+					</div>
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">-both really good<br />
 -both set in a game <br />
 -they both have great fight scenes and an interesting set of characters<br />
 -both are pretty knowledgeable on the game works and become OP&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109069"><small>report</small></a></span>Recommended by <a href="/profile/Future_Gadget_69">Future_Gadget_69</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">~Both involve getting trapped in a game :)<br />
 &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108772"><small>report</small></a></span>Recommended by <a href="/profile/toffeeblocks">toffeeblocks</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">They are both about virtual gaming worlds.<br />
 Main similarity is that both anime features living within the game and in real life. There is the idea of being a member of a community and adventure and exploring the world that the protagonists live in. Both anime are special in their own way such as the contrasting protagonists. Both have good art quality as well and if you like action and fantasy anime, these two are definitely recommendable.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109174"><small>report</small></a></span>Recommended by <a href="/profile/Cassiel_Horus">Cassiel_Horus</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both series take place in a MMORPG game,  they both get trapped in the video game world even though each by a different reason.  The main characters share similar traits one that they are outstanding players and they are trying to find a way out of the world.  Both being solo player, not wanting to join guilds for different reasons.  Both have their fair share of action though Log Horizon focuses more on the action than Sword Art Online which is a little more "Romantic, i guess?"&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110693"><small>report</small></a></span>Recommended by <a href="/profile/darkwolf09815">darkwolf09815</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both anime features living within the game and in real life. There is the idea of being a member of a community and adventure and exploring the world that the protagonists live in. Both anime are special in their own way such as the contrasting protagonists. I would highly recommend Sword art Online if you prefer a faster start in contradiction where log horizon has a slow start.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109666"><small>report</small></a></span>Recommended by <a href="/profile/NagisaKei">NagisaKei</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Very similar concept.  Players of a game are suddenly taken to the new world and now must find their way back.  The series stand as a nice contrast to each other.  SAO is more action-oriented while Log Horizon is more plot-oriented.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110451"><small>report</small></a></span>Recommended by <a href="/profile/Shadow159753">Shadow159753</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both shows take place when the main characters and their friends are forced to live inside a video game and adjust to lives within a new and unknown world. <br />
 While in Sword Art Online they leave the game quickly, Log Horizon goes into depth about struggling to survive and people's lives inside the game. <br />
 Log Horizon, much like Sword Art Online  is action-packed with lots of fights, but it goes into more depth about how it is like an mmorpg. <br />
@@ -1743,26 +1760,26 @@ Both anime have extremely entertaining characters and they both have interesting
 They are both enjoyable in their own ways <span style="display: none;" id="recommend111989">and they have their own differences for having such grand similarities. </span>&nbsp<a href="javascript:void(0);" id="recommendToggle111989" onclick="recommendToggleText(111989)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=111989"><small>report</small></a></span>Recommended by <a href="/profile/Malcon">Malcon</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both anime focus on a group of video gamers who get trapped in a virtual world and have to find a way to get back home. The main difference between them is that SAO is more action-oriented while Log Horizon focuses more on explaning it's world, the mechanics of the game they are trapped in and so on, but if you liked one make sure to check the other.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=112209"><small>report</small></a></span>Recommended by <a href="/profile/SaiD90">SaiD90</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both anime is about players who get trapped in a game.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=112639"><small>report</small></a></span>Recommended by <a href="/profile/animeloverandfan">animeloverandfan</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">The twos animes are based on persons trapped on a game .<br />
 On log horizon the MMORPG side is more developed .&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=112703"><small>report</small></a></span>Recommended by <a href="/profile/Cahrpediem">Cahrpediem</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">It is similar because in SAO the get raped in a vrmmorpg and log horizion the get trapped in a game the game is simular as well but with out the magic.&nbsp;</div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=113417"><small>report</small></a></span>Recommended by <a href="/profile/jabster01">jabster01</a></div>
-					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">It has a similar premise, a large amount of players are trapped within the world of an MMO. Log Horizon, however, spends more time on examining exactly what living inside an MMO would be like, as well as the politics between player guilds and the now-sentient NPCs.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=113078"><small>report</small></a></span>Recommended by <a href="/profile/LawfulNomad">LawfulNomad</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">In this anime is the same setting as Sword Art online, their all trapped inside a game. the characters are different but its the same idea as sword art online. if you liked sword art online or no game no life i'm sure you will love this anime&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=115301"><small>report</small></a></span>Recommended by <a href="/profile/levaticusantle">levaticusantle</a></div>
 					</div></div>
 				</td>
 			</tr>
@@ -1782,14 +1799,14 @@ On log horizon the MMORPG side is more developed .&nbsp;</div>
 	</div>
 	</div>
 
-				<div style="margin-bottom: 2px;"><a href="/anime/11759/Accel_World"><strong>Accel World</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757%2FSword_Art_Online" title="Quick add anime to my list" class="button_add ">add</a>
+				<div style="margin-bottom: 2px;"><a href="/anime/11759/Accel_World"><strong>Accel World</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757" title="Quick add anime to my list" class="button_add ">add</a>
 </div>
 
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">The story line involves the idea that you enter a world that is a virtual reality. They have similar art styles and the game play for the characters is different, but the real world repercussions are more drastic in one series then in the other, but they are still there.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=44641"><small>report</small></a></span>Recommended by <a href="/profile/Yemi_Hikari">Yemi_Hikari</a></div>
 					</div>
-						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(11757,1);">Read recommendations by <strong>85</strong> more users</a></div>
+						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(11757,1);">Read recommendations by <strong>88</strong> more users</a></div>
 						<div id="simaid1" style="display: none;">
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Accel world is probably the closest (maybe) anime to SAO, but probably not as great<br />
@@ -1926,7 +1943,7 @@ http://www.baka-tsuki.org/project/index.php?title=Sword_Art_Online:Versus</span>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">By the same author, similar conflicts between the two protagonists. And the same futuristic view taking place in two worlds: real life and virtual life. Also in both you'll have a incredible addiction to see the next episode.&nbsp;</div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=53340"><small>report</small></a></span>Recommended by <a href="/profile/Kiddo81">Kiddo81</a></div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=53340"><small>report</small></a></span>Recommended by <a href="/profile/Fukitsu">Fukitsu</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">So you have two people who find themselves utterly dedicated to video games that suddenly find the game is now their world. What's not to like? Oh, and did anyone mention that Accel World comes a few years after the events of Sword Art Online?&nbsp;</div>
@@ -2190,7 +2207,7 @@ They are both set in the same universe, although Accel World is set further into
 <br />
 Both series have a lot of action, and the game that the main character is in has high stakes as a result of in-game death/ losing all points (Real-life death in SAO, whereas loss of the program forever in Accel <span style="display: none;" id="recommend109818">World) This creates tension, keeping you hooked<br />
 </span>&nbsp<a href="javascript:void(0);" id="recommendToggle109818" onclick="recommendToggleText(109818)">read more</a>&nbsp;</div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109818"><small>report</small></a></span>Recommended by <a href="/profile/UniversalNovaX9">UniversalNovaX9</a></div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109818"><small>report</small></a></span>Recommended by <a href="/profile/VampiricWolf">VampiricWolf</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Accel World is similar to Sword Art Online because both take place in a virtual reality and gaming enviroment.&nbsp;</div>
@@ -2218,8 +2235,20 @@ Both series have a lot of action, and the game that the main character is in has
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108940"><small>report</small></a></span>Recommended by <a href="/profile/Deathscythe0125">Deathscythe0125</a></div>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Written by the same writer Kawahara Reki, this brings the world of VRMMORPG to you. A must watch series for anyone.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=114416"><small>report</small></a></span>Recommended by <a href="/profile/ryuuForte">ryuuForte</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both SAO and AW are set in the same world but in different time periods SAO starts in 2022, and AW in 2046, both have the same author- Reki Kawahara, and both focus and Vitual Reality, the differnce is that SAO tells the story of an OP player Kirito and the protagonist of AW is a begginer who gets drawn in to a mysterious game and tries to be a better player, oh and Brain Burst the game from AW isn't a "death game" and doesn't trap people like SAO.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=112785"><small>report</small></a></span>Recommended by <a href="/profile/SpaceTheGamer">SpaceTheGamer</a></div>
+					</div>
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Live in a game themed anime.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=114252"><small>report</small></a></span>Recommended by <a href="/profile/Luminie">Luminie</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">accel world is further into the future from sao and even mentions the nervegear in a later episode. they both use similar technology which transports human beings into a virtual world. both contain fighting scenes and fight for life. its a great watch for anyone who enjoyed sao&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=114972"><small>report</small></a></span>Recommended by <a href="/profile/kuro_hato9142">kuro_hato9142</a></div>
 					</div></div>
 				</td>
 			</tr>
@@ -2239,7 +2268,7 @@ Both series have a lot of action, and the game that the main character is in has
 	</div>
 	</div>
 
-				<div style="margin-bottom: 2px;"><a href="/anime/14345/Btooom!"><strong>Btooom!</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757%2FSword_Art_Online" title="Quick add anime to my list" class="button_add ">add</a>
+				<div style="margin-bottom: 2px;"><a href="/anime/14345/Btooom!"><strong>Btooom!</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757" title="Quick add anime to my list" class="button_add ">add</a>
 </div>
 
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
@@ -2284,7 +2313,7 @@ and they both strive to survive the game together<br />
 *in both stories the couple get married in the video game<br />
 *the main guy has an amazing skill set w.r.t. the game<br />
 &nbsp;</div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=78445"><small>report</small></a></span>Recommended by <a href="/profile/chris_jay">chris_jay</a></div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=78445"><small>report</small></a></span>Recommended by <a href="/profile/fullmetalpower">fullmetalpower</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">I like to refer Btooom! as "Bomb" Art Online sometimes.<br />
@@ -2469,7 +2498,7 @@ The difference is that Btooom is much more of an action show, real life combat, 
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both of these anime series' are survival orientated, with an implied love interest between two main characters.<br />
 &nbsp;</div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=87791"><small>report</small></a></span>Recommended by <a href="/profile/_firetruck">_firetruck</a></div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=87791"><small>report</small></a></span>Recommended by <a href="/profile/Aihuro">Aihuro</a></div>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">They're both about games and how they get stuck in an unknown world where they'll have to fight to survive. SAO and Btooom! are very similar in both their actions, fantasy and both have mature romance. SAO is a bit more easy going in romance though.&nbsp;</div>
@@ -2552,11 +2581,6 @@ Btooom is at the moment halfway the story and it will take a while before the se
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=101169"><small>report</small></a></span>Recommended by <a href="/profile/RoyalOss">RoyalOss</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">They are simmilar because the male hero are trapped in a death game......<br />
-&nbsp;</div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=111518"><small>report</small></a></span>Recommended by <a href="/profile/Death-Stroke">Death-Stroke</a></div>
-					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">These two series both focus on a forced-game-world setting, with the primary characters in each being pushed into scenarios where their survival and development are contingent on synchronising with the peculiar rule-sets of their new worlds.<br />
 <br />
 The protagonists in both cases begin the series as socially inept but highly proficient gamers, demonstrating emotional and mental developments as the series continues. <br />
@@ -2564,7 +2588,7 @@ The protagonists in both cases begin the series as socially inept but highly pro
 While Btooom! arguably explores more serious themes compared to the more accessible SAO, both are good entertainment in any regard.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=102269"><small>report</small></a></span>Recommended by <a href="/profile/XPepper">XPepper</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">-Both stories take place after a game becomes the main characters realities.<br />
 -both MC's struggle to adapt in the beginning but then settle down.<br />
 -Both stories should become actual games...<br />
@@ -2574,18 +2598,22 @@ While Btooom! arguably explores more serious themes compared to the more accessi
 Now the only unfortunate part is Btooom! really needs a season 2...&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108891"><small>report</small></a></span>Recommended by <a href="/profile/Murdersdeath">Murdersdeath</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Do you like video games in real life?<br />
 Watch this&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110445"><small>report</small></a></span>Recommended by <a href="/profile/Bipol4r">Bipol4r</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">These both are similar in a way where both main characters are stuck in a game where they have to fight for their lives. The main characters also care for the allies they make. They also don't take killing other people or players lightly and refrain from doing so unless they have to. If you love fight for survival-game type anime then watch these.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=112508"><small>report</small></a></span>Recommended by <a href="/profile/PineBladeX">PineBladeX</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are Amazing they are in common Action/Romance/Survival/Game...but still Btooom! is a little bit tougher more than SAO Why ??? Btooom's Virtual World is Terrifying (killing each other with Bombs/ fighting Each other to Death (like Hunger Games) using Bombs Only /its even hard to trust someone this anime is hilarious still i hate it cauz they left us with an open Ending (Looking for season 2 maybe in 2050):D on the other side SAO is a little bit different in rules i mean in SAO seeks for alliance so they could end up the game (Its Exciting) but Btooom is the Opos its The <span style="display: none;" id="recommend113308">Last One Standing is the Winner ??? . Rock N Roll (Dudera)</span>&nbsp<a href="javascript:void(0);" id="recommendToggle113308" onclick="recommendToggleText(113308)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=113308"><small>report</small></a></span>Recommended by <a href="/profile/Dudera">Dudera</a></div>
+					</div>
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Live in a game themed anime.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=114254"><small>report</small></a></span>Recommended by <a href="/profile/Luminie">Luminie</a></div>
 					</div></div>
 				</td>
 			</tr>
@@ -2605,7 +2633,7 @@ Watch this&nbsp;</div>
 	</div>
 	</div>
 
-				<div style="margin-bottom: 2px;"><a href="/anime/28121/Dungeon_ni_Deai_wo_Motomeru_no_wa_Machigatteiru_Darou_ka"><strong>Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757%2FSword_Art_Online" title="Quick add anime to my list" class="button_add ">add</a>
+				<div style="margin-bottom: 2px;"><a href="/anime/28121/Dungeon_ni_Deai_wo_Motomeru_no_wa_Machigatteiru_Darou_ka"><strong>Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757" title="Quick add anime to my list" class="button_add ">add</a>
 </div>
 
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
@@ -2614,7 +2642,7 @@ Watch this&nbsp;</div>
 'Sword Art Online' and 'Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka Similar' focus heavily on game systems, leveling and battle strategies. Through layers of boss flooring that increased in difficulty as you progress further which is accompanied by rewards, it is something that is welcomed by fans who has a certain connection with gaming. By all means, the comedy and romance are there to provide <span style="display: none;" id="recommend108286">joy in this beautiful world that did not dishearten. </span>&nbsp<a href="javascript:void(0);" id="recommendToggle108286" onclick="recommendToggleText(108286)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108286"><small>report</small></a></span>Recommended by <a href="/profile/ShanaFlame">ShanaFlame</a></div>
 					</div>
-						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(11757,3);">Read recommendations by <strong>33</strong> more users</a></div>
+						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(11757,3);">Read recommendations by <strong>36</strong> more users</a></div>
 						<div id="simaid3" style="display: none;">
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both shows are very similar in its settings, in which the story takes place in a RPG like world. Adventurers/players must clear NPC with their party in each floor in order to go up. The premise differ in that while SAO takes place in a virtual reality of gaming going wrong, Characters in Dunmachi lives in the fantasy world to begin with. &nbsp;</div>
@@ -2643,26 +2671,30 @@ Both have an ability to subconsciously attract a harem,&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=113313"><small>report</small></a></span>Recommended by <a href="/profile/Redzone200">Redzone200</a></div>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">The universes each anime is set in deal with RPG game elements, such as finding treasure, gaining new abilities, and fighting bosses. Both anime have a simple main characters who ends up being one of the most powerful characters towards the end. For both anime, the main characters also effortlessly build up their harem which is always fun to watch. &nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=114832"><small>report</small></a></span>Recommended by <a href="/profile/Protaku">Protaku</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Dungeon Ni Deai Wo Motomeru No Wa Machigatteiru Darou Ka? shares a lot of similar concepts to that of Sword Art Online, such as both of the following Anime have leveling, flooring and guild system which; consequently, makes a show better. Also, they both have main male protagonist voiced by the same person. Moreover, Bell shares a lot of same qualities to that of Kirito. Above all, they have similar aspects of MMORPGs.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108243"><small>report</small></a></span>Recommended by <a href="/profile/NoctisKnight">NoctisKnight</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Danmachi has a very similar vibe to Sword Art Online. Both are about characters in a video game like world. The main characters are also very much alike, even down to the voice actor. Both have great action scenes and great looking animation. It's a safe bet if you enjoy one you'll enjoy the other. &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109061"><small>report</small></a></span>Recommended by <a href="/profile/gokuzbu1">gokuzbu1</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both of these anime have the same protagonist voice actor, the main setting of both shows are set in an RPG and are very similar in style. While SAO has players trapped in an RPG, DanMachi has the RPG as the real world. They both have very good action scenes during boss fights. &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108707"><small>report</small></a></span>Recommended by <a href="/profile/youngdelta">youngdelta</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">If you like anime's with Adventures, and MMO. I'd say that these anime's is awesome, as it makes you follow and build up characters as they develop and get stronger, but with great funny and sweet moments!&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109855"><small>report</small></a></span>Recommended by <a href="/profile/Zarzarki">Zarzarki</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">One anime takes place in a Virtual world while the other one doesn't. Both have very similar elements as they are both very MMORPG:ish (leveling up, special weapons, dungeons which get harder depending on the floor, guilds, parties, etc.).&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109679"><small>report</small></a></span>Recommended by <a href="/profile/adamkex">adamkex</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">They both have the medieval action/adventure feel to them, both have great fight scenes, and both are centered around a dungeon.<br />
 <br />
 SAO has more romance and is more focused on getting out of the game.<br />
@@ -2670,7 +2702,7 @@ SAO has more romance and is more focused on getting out of the game.<br />
 Dungeon ni Deai has better comic scenes -- in my opinion -- and is more focused of being one of the best in the "game" -- not really a game.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110757"><small>report</small></a></span>Recommended by <a href="/profile/Bvern004">Bvern004</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Sao and Dungeon have the same author? I think so .. <br />
 <br />
 Both anime focus a gamestyle life. While in SAO they are trapped in the game, here on Dungeon they actually live in the game. <br />
@@ -2680,12 +2712,12 @@ Both anime have a special MC with a super power : Atracting all girls in a 100 K
 So far, it looks like that Dungeon will be the same thing as SAO : great plot but crappy story telling and plot development. &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108712"><small>report</small></a></span>Recommended by <a href="/profile/Visceras">Visceras</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">When I watched Danmachi all I got were Sword Art Online Vibes.<br />
 They are very similar, the dungeons and monsters are the same except SAO is in a game and Danmachi is not. Although it's not set in the game there are many aspects that make it feel like one such as stats and currency from slaying monsters. If you enjoyed one of these shows you'll enjoy the other&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108667"><small>report</small></a></span>Recommended by <a href="/profile/kyle8998">kyle8998</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">The two anime felt extremely similar. <br />
 - They both have aspects of MMORPGs (stats, swords, loots, etc)<br />
 - The setting is very similar (medieval times)<br />
@@ -2693,16 +2725,16 @@ They are very similar, the dungeons and monsters are the same except SAO is in a
 - Also the main character in both shows are voice by the same guy.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108239"><small>report</small></a></span>Recommended by <a href="/profile/wcfrobert">wcfrobert</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both anime have a similar art style, and the atmosphere feels very similar. Main difference is one is a game, and the other is real life. But the RPG elements still remain in the latter. &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109114"><small>report</small></a></span>Recommended by <a href="/profile/FoxhoundCloud">FoxhoundCloud</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">They are both about some kind of MMORPG, and leveling<br />
 Both main character struggles in the beggining but becomes rather interesting througout the story.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108352"><small>report</small></a></span>Recommended by <a href="/profile/goyohgo">goyohgo</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both animes have the general storyline in common: Characters living in a RPG-style world where you have to clear dungeons to achieve some kind of goal.<br />
 <br />
 But in fact, I find Danmachi much more interesting than Sao because, although the story is quite underdeveloped, the comedy is really good and you won't have to deal with full-romance-style arcs like I had to while watching Sao.<br />
@@ -2712,15 +2744,15 @@ Characters are much more mainstream, but at the same time they are much more ent
 So, if you liked the storyline of Sao, and at the same time you like harem/comedy animes, you will love <span style="display: none;" id="recommend110444">Danmachi.</span>&nbsp<a href="javascript:void(0);" id="recommendToggle110444" onclick="recommendToggleText(110444)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110444"><small>report</small></a></span>Recommended by <a href="/profile/totekingsg">totekingsg</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">The anime's are about living in a world which levels you up after killing beasts and training at dungeon's. Also they get better after every episode and get better gear which improves them.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=111488"><small>report</small></a></span>Recommended by <a href="/profile/Layme">Layme</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both MC are going for a bizzarre adventure, going up through levels, and grinding to become stronger. Girls in DanMachi are atteactd to MC like on SAO. Difference is SAO is digital while DanMachi is real life.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110002"><small>report</small></a></span>Recommended by <a href="/profile/Monstrum">Monstrum</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">I quickly fell in love with this anime. Very quickly.<br />
 <br />
 Its SAO only without the game part. Its their world, and they live in it. It has dungeons, monsters, leveling, equipment... standard MMO stuff. Though unlike SAO the MC is too dense for my liking. I feel like this will be a great anime nonetheless.<br />
@@ -2728,7 +2760,7 @@ Its SAO only without the game part. Its their world, and they live in it. It has
 I recommend starting to watch this immediately!&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108956"><small>report</small></a></span>Recommended by <a href="/profile/daimonfo">daimonfo</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">- Both MCs have the desire to get stronger<br />
 - Both MCs have a power that is unique to them<br />
 - Both involve completing dungeons to "level up"<br />
@@ -2737,17 +2769,17 @@ I recommend starting to watch this immediately!&nbsp;</div>
 - Both MC's are voiced by the same VA&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109198"><small>report</small></a></span>Recommended by <a href="/profile/wheniwasyoung">wheniwasyoung</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both anime have RPG elements (for exemple leveling system, items, abilities etc.) although Dungeon ni Daei isn't an RPG. Both anime are playing in a fantasy world. The main character is very  kind and gets very strong during the anime. Both anime contain a bit romance. &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109797"><small>report</small></a></span>Recommended by <a href="/profile/TheRealChains">TheRealChains</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">It comes as no surprise that the environment and concept of these two series are analogous to one and another. Having the same protagonist voice actor in these two series undoubtedly strengthens the momentum going forward.<br />
 <br />
 'Sword Art Online' and 'Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka Similar' focus heavily on game systems, leveling and battle strategies. Through layers of boss flooring that increased in difficulty as you progress further which is accompanied by rewards, it is something that is welcomed by fans who has a certain connection with gaming. By all means, the comedy and romance are there to provide <span style="display: none;" id="recommend108602">joy in this beautiful world that did not dishearten.</span>&nbsp<a href="javascript:void(0);" id="recommendToggle108602" onclick="recommendToggleText(108602)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108602"><small>report</small></a></span>Recommended by <a href="/profile/NekoPandaKitsune">NekoPandaKitsune</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">- Supposedly the [MC] in both [Bell & Kirito] have the same VA, I know that the same VA means nothing,but then we come to the point that they have the same kinda feel.<br />
 - A harem,pseudo-harem at the very least.<br />
 - Even with that harem,still has a main girl. [Aiza & Asuna]<br />
@@ -2755,11 +2787,11 @@ I recommend starting to watch this immediately!&nbsp;</div>
 - The shows have the characters to try and get through the floors.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=108262"><small>report</small></a></span>Recommended by <a href="/profile/Zerosublightning">Zerosublightning</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">Both 'SAO' and 'Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka' have that gaming vibe. Both anime share the same ideas of leveling up and becoming stronger. Bell and Kirito are both aiming to become stronger and more powerful to face challenges and hardships. Both main characters have a special something to them that set them different from the rest. If you are a fan of video games/adventures/action/battling, I recommend SAO.&nbsp;</div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=112593"><small>report</small></a></span>Recommended by <a href="/profile/Kat244">Kat244</a></div>
-					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Both 'SAO' and 'Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka' have that gaming vibe. Both anime share the same ideas of leveling up and becoming stronger. Bell and Kirito are both aiming to become stronger and more powerful to face challenges and hardships. Both main characters have a special something to them that set them different from the rest. If you are a fan of video games/adventures/action/battling, I recommend SAO.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=112593"><small>report</small></a></span>Recommended by <a href="/profile/cursedspirits">cursedspirits</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">The protagonist in SAO starts of as a character that is shown to be surprisingly powerful in the beginning of the show, while the main character in DanMachi starts off as a (sort of) inexperienced fighter who wants to get stronger. As time goes on, each character becomes more powerful and gain many allies and friends of all sorts! ^_^ <br />
 <br />
 I would definitely recommend DanMachi to ANYONE who enjoyed or is enjoying SAO at the moment. It has humor, romance, and a "clearing dungeon" sort of vibe! Magic is also involved!<br />
@@ -2767,11 +2799,11 @@ I would definitely recommend DanMachi to ANYONE who enjoyed or is enjoying SAO a
 Not a rip-off of SAO, but a unique plot and awesome <span style="display: none;" id="recommend109371">characters (it has gods, elves, and pretty girls XP)! Go check it out!</span>&nbsp<a href="javascript:void(0);" id="recommendToggle109371" onclick="recommendToggleText(109371)">read more</a>&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109371"><small>report</small></a></span>Recommended by <a href="/profile/TheAnimeFandom">TheAnimeFandom</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Similar fighting scenes, Leveling up and a stage based tower. One of those anime a where you just have to watch the next episode straight after &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=111211"><small>report</small></a></span>Recommended by <a href="/profile/KiritoRises">KiritoRises</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">-Protagonists have the same VA<br />
 -Interesting utilization of MMORPG concepts (SAO is one big MMORPG while Danmachi's everyday life integrates those concepts in everyday life naturally)<br />
 -Both are exciting adventure animes that contain confrontation with psychological traumas and smooth animated fight scenes<br />
@@ -2779,30 +2811,30 @@ Not a rip-off of SAO, but a unique plot and awesome <span style="display: none;"
 THey are both interesting animes that have similar themes and settings.  Danmachi has a lighter story than SAO, but has its fair share of thought provoking moments.  Overall if you like SAO, Danmachi will be an enjoyable anime for you.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110464"><small>report</small></a></span>Recommended by <a href="/profile/AznRoyal">AznRoyal</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">These anime are similar in some aspects. From having the same protagonist voice actor to having the same concept of leveling up and floors.They both focus on battle strategies. There is some romance and comedy here and there which makes them enjoyable to watch.<br />
 &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109708"><small>report</small></a></span>Recommended by <a href="/profile/Akanoshi_">Akanoshi_</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both are fantasies and have a RPG-like system and both have parties, leveling, dungeons, guilds, and etc. In DanMachi it's like they are living a game world while as SAO they are stuck in the game. They both are like a MMO!<br />
 <br />
 If you seen DanMachi its a must watch to see SAO!&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=109802"><small>report</small></a></span>Recommended by <a href="/profile/Mikuoze">Mikuoze</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both share the same setting where MC's have to battle each level of a gamelike survival situation, how ever SAO's plot was a bit more serious and intense where the setting is in a gaming , while Dan Machi was more about getting prestige where the MC has to do also titlewise, SAO really fits well in the anime itself than Dan Machi where the titile doesn't correspond to the anime itself in fact it even conflicts with the plot. &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110390"><small>report</small></a></span>Recommended by <a href="/profile/La_Matona301">La_Matona301</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">They are both based on RPG games and have a main character who gets all the girls but doesn't realize.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=110119"><small>report</small></a></span>Recommended by <a href="/profile/NNextremNN">NNextremNN</a></div>
 					</div>
-					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">I found these anime to be extremely similar in terms of settings. Both take place in worlds where monsters are fought and tavern-type buildings are normal (although there are some differences, the biggest being that SAO is set in a virtual world instead of a 'real' fantasyland). Both protagonists are constantly wanting to fight bigger enemies, and are voiced by the same actor. As someone who loved SAO (even with its faults) I would say to save it for the next time your bored or waiting for new episodes of other shows.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=112194"><small>report</small></a></span>Recommended by <a href="/profile/Anonmousely">Anonmousely</a></div>
 					</div>
-					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">just trust me, if you like sword art online you are defiantly gonna love this<br />
 great action scenes<br />
 same type of live or die feel<br />
@@ -2811,6 +2843,14 @@ main characters are dominators when they need to be<br />
 <br />
 no, foreal tho, you are going to love it ;D&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=112891"><small>report</small></a></span>Recommended by <a href="/profile/Mochavii">Mochavii</a></div>
+					</div>
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">As we all know sword art online is set inside SAO/The game. In this anime, it's almost as if the they setting of this anime is a game, even though it's actually real life. When I decided to give this anime ago, I began to feel like i've seen this somewhere before and I realised it exactly the same as SAO (although kirito is ridiculously OP) and they're both made by the same producers. However, this anime if ecchi just encase you were wondering.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=115266"><small>report</small></a></span>Recommended by <a href="/profile/AnimAniac451">AnimAniac451</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">The protagonists are both young males who have to fight monsters in order to complete objectives and advance to new levels. They have various comrades to aid them on their journey.  Both of these anime take place in worlds controlled by a god-like figure.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=114713"><small>report</small></a></span>Recommended by <a href="/profile/Yamakuma03">Yamakuma03</a></div>
 					</div></div>
 				</td>
 			</tr>
@@ -2830,7 +2870,7 @@ no, foreal tho, you are going to love it ;D&nbsp;</div>
 	</div>
 	</div>
 
-				<div style="margin-bottom: 2px;"><a href="/anime/19815/No_Game_No_Life"><strong>No Game No Life</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757%2FSword_Art_Online" title="Quick add anime to my list" class="button_add ">add</a>
+				<div style="margin-bottom: 2px;"><a href="/anime/19815/No_Game_No_Life"><strong>No Game No Life</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757" title="Quick add anime to my list" class="button_add ">add</a>
 </div>
 
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
@@ -2839,7 +2879,7 @@ no, foreal tho, you are going to love it ;D&nbsp;</div>
 Comparing the storylines, 'Sword Art Online' easily takes the cake but the crazy and fun games of 'No Game No Life' is something to smile about.  &nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=92239"><small>report</small></a></span>Recommended by <a href="/profile/ShanaFlame">ShanaFlame</a></div>
 					</div>
-						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(11757,4);">Read recommendations by <strong>29</strong> more users</a></div>
+						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(11757,4);">Read recommendations by <strong>30</strong> more users</a></div>
 						<div id="simaid4" style="display: none;">
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Nonsocial characters  in both animes. They play games in order to win. In both anime main characters' boredom lead them to other worlds. In Sword Art Online, the main character is trapped inside the game so he tries to survive by winning and clearing all the levels. Whereas in No Game No Life, the brother and sister are taken to another world by the god and they help the only remaining human city to survive.&nbsp;</div>
@@ -2991,6 +3031,10 @@ More tactical than Sword Art Online and a special relationship between the two m
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">People learn to adjust to a virtual reality.&nbsp;</div>
 					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=113010"><small>report</small></a></span>Recommended by <a href="/profile/RyanJohnson97">RyanJohnson97</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Live in a game themed anime.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportanimerecommendation&id=114256"><small>report</small></a></span>Recommended by <a href="/profile/Luminie">Luminie</a></div>
 					</div></div>
 				</td>
 			</tr>
@@ -3010,7 +3054,7 @@ More tactical than Sword Art Online and a special relationship between the two m
 	</div>
 	</div>
 
-				<div style="margin-bottom: 2px;"><a href="/anime/48/.hack__Sign"><strong>.hack//Sign</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757%2FSword_Art_Online" title="Quick add anime to my list" class="button_add ">add</a>
+				<div style="margin-bottom: 2px;"><a href="/anime/48/.hack__Sign"><strong>.hack//Sign</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fanime%2F11757" title="Quick add anime to my list" class="button_add ">add</a>
 </div>
 
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
@@ -3146,46 +3190,43 @@ Although SAO has better action, .hack//sign has much more in-depth and has a muc
 			</table>
 			</div>
 			<br />
-		<h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/news">More news</a></div>Recent News</h2>
-	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="forumTopics"><tr id="topicRow1">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow1"><a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;"> <a href="/forum/?topicid=1380502">North American Anime &amp; Manga Releases for May</a> <small></small><br>
-		         <span class="forum_postusername"><a href="/profile/Snow">Snow</a></span> - <span class="lightLink">May 5</span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">14 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/JustALEX">JustALEX</a> <a href="/forum/?topicid=1380502&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
-May 6, 1:59 AM</td>
-			</tr>
-			<tr id="topicRow2">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow2"><a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;"> <a href="/forum/?topicid=604893">Sword Art Online to Air on Toonami Starting in August</a> <small> ( <a href="/forum/?topicid=604893&show=0">1</a> <a href="/forum/?topicid=604893&show=50">2</a> <a href="/forum/?topicid=604893&show=100">3</a> <a href="/forum/?topicid=604893&show=150">4</a> <a href="/forum/?topicid=604893&show=200">5</a>  ) </small><br>
-		         <span class="forum_postusername"><a href="/profile/Redfoxoffire">Redfoxoffire</a></span> - <span class="lightLink">May 24, 2013</span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">212 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/gunslinger90">gunslinger90</a> <a href="/forum/?topicid=604893&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
-Nov 5, 2013 11:18 PM</td>
-			</tr>
-			</table><br />
+		<h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/news">More news</a></div>Recent News</h2><div class="clearfix"><p class="spaceit"><a href="/news/42481711" style=""><strong>Dengeki Announces New 'Tenkyou no Alderamin,' 'Accel World,' 'Sword Art Online' Anime</strong></a></p>
+		<div class="clearfix" style="overflow:hidden;"><p>Light novel publisher Dengeki Bunko announced at its Aki no Saiten 2015 event that three of its titles will receive new anime adaptations.
+
+Nejimaki Seirei Senki: ...<a href="/news/42481711">read more</a></p></div>
+		<p class="lightLink spaceit">Oct 4, 1:52 AM by <a href="/profile/arsonal">arsonal</a> | <a href="/forum/?topicid=1435107">Discuss (209 comments)</a></p></div>
+		<div class="borderClass"></div><div class="clearfix"><p class="spaceit"><a href="/news/39685623" style=""><strong>North American Anime &amp; Manga Releases for May</strong></a></p>
+		<div class="clearfix" style="overflow:hidden;"><p>Here are the North American Anime &amp; Manga releases for May 2015
+
+Week 1: May 5th - 11th
+
+Anime Releases
+Astro Boy (2003) Complete Series
+Denki-gai Collecto...<a href="/news/39685623">read more</a></p></div>
+		<p class="lightLink spaceit">May 5, 12:04 PM by <a href="/profile/Snow">Snow</a> | <a href="/forum/?topicid=1380502">Discuss (14 comments)</a></p></div>
+		<div class="borderClass"></div><br />
 		<h2><div class="floatRightHeader"><a href="/forum/?animeid=11757"><a href="/anime/11757/Sword_Art_Online/forum">More discussions</a></div>Recent Forum Discussion</h2>
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="forumTopics"><tr id="topicRow1">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow1"><a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;"> <a href="/forum/?topicid=1428510">Why are there so many mixed feelings about SAO?</a> <small></small><br>
-		         <span class="forum_postusername"><a href="/profile/tomoedachi">tomoedachi</a></span> - <span class="lightLink">Sep 15</span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">36 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/Jerkhov">Jerkhov</a> <a href="/forum/?topicid=1428510&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
-Yesterday, 6:11 PM</td>
+    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow1"><a href="/login.php?from=%2Fanime%2F11757&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
+                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=466501">Sword Art Online Episode 3 Discussion</a> <small> ( <a href="/forum/?topicid=466501&show=0">1</a> <a href="/forum/?topicid=466501&show=50">2</a> <a href="/forum/?topicid=466501&show=100">3</a> <a href="/forum/?topicid=466501&show=150">4</a> <a href="/forum/?topicid=466501&show=200">5</a>  ... <a href="/forum/?topicid=466501&show=650">Last Page</a> ) </small><br>
+		         <span class="forum_postusername"><a href="/profile/Stark700">Stark700</a></span> - <span class="lightLink">Jul 21, 2012</span></td>
+			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">691 replies</td>
+				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/froganimegirl93">froganimegirl93</a> <a href="/forum/?topicid=466501&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
+Yesterday, 6:27 PM</td>
 			</tr>
 			<tr id="topicRow2">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow2"><a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;"> <a href="/forum/?topicid=1178719">What did you like about Sword Art Online?</a> <small></small><br>
-		         <span class="forum_postusername"><a href="/profile/PinkUnic0rns3">PinkUnic0rns3</a></span> - <span class="lightLink">May 17, 2014</span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">46 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/TheBrainintheJar">TheBrainintheJar</a> <a href="/forum/?topicid=1178719&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
-Yesterday, 2:29 PM</td>
+    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow2"><a href="/login.php?from=%2Fanime%2F11757&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
+                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=463839">Sword Art Online Episode 2 Discussion</a> <small> ( <a href="/forum/?topicid=463839&show=0">1</a> <a href="/forum/?topicid=463839&show=50">2</a> <a href="/forum/?topicid=463839&show=100">3</a> <a href="/forum/?topicid=463839&show=150">4</a> <a href="/forum/?topicid=463839&show=200">5</a>  ... <a href="/forum/?topicid=463839&show=700">Last Page</a> ) </small><br>
+		         <span class="forum_postusername"><a href="/profile/Stark700">Stark700</a></span> - <span class="lightLink">Jul 14, 2012</span></td>
+			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">717 replies</td>
+				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/froganimegirl93">froganimegirl93</a> <a href="/forum/?topicid=463839&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
+Yesterday, 6:51 AM</td>
 			</tr>
 			</table><br><h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/featured">More featured articles</a></div>Recent Featured Articles</h2><div class="detail-page-featured-article pb16">
 <div class="news-list">
 
 
-<div class="news-unit clearfix" data-tag="cat3 cat4 cat4 cat4 cat4 cat4 cat1 ">
+<div class="news-unit clearfix" data-tag="cat3 cat1 cat1 cat1 ">
   <a href="http://myanimelist.net/featured/231" class="image-link"><img src="http://cdn.myanimelist.net/s/common/uploaded_files/1441823870-e50889372caf87a5a028dc73ed6b3e86.jpeg" alt="Sword Art Online II Characters" class="image"></a>
   <div class="news-unit-right">
     <p class="title">
@@ -3198,13 +3239,13 @@ Yesterday, 2:29 PM</td>
       <p class="info pr8">
         by <a href="http://myanimelist.net/profile/Maiku__San">Maiku__San</a>
       </p><div class="tags">
-        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/spoiler" class="tag tag-color-feature-spoiler" title="Spoiler">Spoiler</a><a href="http://myanimelist.net/featured/tag/action" class="tag tag-color-feature-action" title="Action">Action</a><a href="http://myanimelist.net/featured/tag/adventure" class="tag tag-color-feature-adventure" title="Adventure">Adventure</a><a href="http://myanimelist.net/featured/tag/fantasy" class="tag tag-color-feature-fantasy" title="Fantasy">Fantasy</a><a href="http://myanimelist.net/featured/tag/game" class="tag tag-color-feature-game" title="Game">Game</a><a href="http://myanimelist.net/featured/tag/romance" class="tag tag-color-feature-romance" title="Romance">Romance</a><a href="http://myanimelist.net/featured/tag/analysis" class="tag tag-color-feature-analysis" title="Analysis">Analysis</a></div>
+        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/spoiler" class="tag tag-color-feature-spoiler" title="Spoiler">Spoiler</a><a href="http://myanimelist.net/featured/tag/character_analysis" class="tag tag-color-feature-character_analysis" title="Character Analysis">Character Analysis</a><a href="http://myanimelist.net/featured/tag/games" class="tag tag-color-feature-games" title="Games">Games</a><a href="http://myanimelist.net/featured/tag/magical" class="tag tag-color-feature-magical" title="Magical">Magical</a></div>
       </div></div>
   </div>
 </div>
 
 
-<div class="news-unit clearfix" data-tag="cat3 cat4 cat4 cat4 cat4 cat4 cat1 ">
+<div class="news-unit clearfix" data-tag="cat3 cat1 cat1 cat1 cat1 cat1 ">
   <a href="http://myanimelist.net/featured/207" class="image-link"><img src="http://cdn.myanimelist.net/s/common/uploaded_files/1441353240-3ded46157aafa2c1200fe922e378bb44.jpeg" alt="The Myriad Worlds of Sword Art Online" class="image"></a>
   <div class="news-unit-right">
     <p class="title">
@@ -3217,7 +3258,7 @@ Yesterday, 2:29 PM</td>
       <p class="info pr8">
         by <a href="http://myanimelist.net/profile/ribosoMAL">ribosoMAL</a>
       </p><div class="tags">
-        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/spoiler" class="tag tag-color-feature-spoiler" title="Spoiler">Spoiler</a><a href="http://myanimelist.net/featured/tag/action" class="tag tag-color-feature-action" title="Action">Action</a><a href="http://myanimelist.net/featured/tag/adventure" class="tag tag-color-feature-adventure" title="Adventure">Adventure</a><a href="http://myanimelist.net/featured/tag/fantasy" class="tag tag-color-feature-fantasy" title="Fantasy">Fantasy</a><a href="http://myanimelist.net/featured/tag/game" class="tag tag-color-feature-game" title="Game">Game</a><a href="http://myanimelist.net/featured/tag/romance" class="tag tag-color-feature-romance" title="Romance">Romance</a><a href="http://myanimelist.net/featured/tag/analysis" class="tag tag-color-feature-analysis" title="Analysis">Analysis</a></div>
+        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/spoiler" class="tag tag-color-feature-spoiler" title="Spoiler">Spoiler</a><a href="http://myanimelist.net/featured/tag/action" class="tag tag-color-feature-action" title="Action">Action</a><a href="http://myanimelist.net/featured/tag/background_analysis" class="tag tag-color-feature-background_analysis" title="Background Analysis">Background Analysis</a><a href="http://myanimelist.net/featured/tag/games" class="tag tag-color-feature-games" title="Games">Games</a><a href="http://myanimelist.net/featured/tag/moe" class="tag tag-color-feature-moe" title="Moe">Moe</a><a href="http://myanimelist.net/featured/tag/monsters" class="tag tag-color-feature-monsters" title="Monsters">Monsters</a></div>
       </div></div>
   </div>
 </div>
@@ -3234,8 +3275,8 @@ Yesterday, 2:29 PM</td>
 
 
                       <script type='text/javascript'>
-    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_LHS', [300,250], 'div-gpt-ad-1136315450').addService(googletag.pubads());
-            var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_RHS', [300,250], 'div-gpt-ad-1336912938').addService(googletag.pubads());
+    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_LHS', [300,250], 'div-gpt-ad-1626404533').addService(googletag.pubads());
+            var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_RHS', [300,250], 'div-gpt-ad-725311901').addService(googletag.pubads());
             googletag.pubads().collapseEmptyDivs();
         googletag.enableServices();
     });
@@ -3243,16 +3284,16 @@ Yesterday, 2:29 PM</td>
 
   <div class="mauto clearfix pt24" style="width:760px;">
     <div class="fl-l">
-    <div id="div-gpt-ad-1136315450" style="width:300px; height:250px;">
+    <div id="div-gpt-ad-1626404533" style="width:300px; height:250px;">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1136315450"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1626404533"); });
       </script>
 </div>
   </div>
       <div class="fl-r">
-    <div id="div-gpt-ad-1336912938" style="width:300px; height:250px;">
+    <div id="div-gpt-ad-725311901" style="width:300px; height:250px;">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1336912938"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-725311901"); });
       </script>
 </div>
   </div>
@@ -3286,8 +3327,8 @@ Yesterday, 2:29 PM</td>
         <ol>
                       <li><span class="rank">1</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist:_Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
                       <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9253/Steins;Gate">Steins;Gate</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/9969/Gintama">Gintama&#039;</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/9969/Gintama">Gintama&#039;</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
                       <li><span class="rank">5</span><a href="http://myanimelist.net/anime/11061/Hunter_x_Hunter_(2011)">Hunter x Hunter (2011)</a></li>
                   </ol>
       </div>
@@ -3295,30 +3336,30 @@ Yesterday, 2:29 PM</td>
         <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=airing" class="view_more fl-r">More</a>Top Airing Anime</h3>
         <ol>
                       <li><span class="rank">1</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28171/Shokugeki_no_Souma">Shokugeki no Souma</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/25649/Junjou_Romantica_3">Junjou Romantica 3</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/27831/Durarara!!x2_Ten">Durarara!!x2 Ten</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28891/Haikyuu!!_Second_Season">Haikyuu!! Second Season</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30276/One_Punch_Man">One Punch Man</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/31181/Owarimonogatari">Owarimonogatari</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_upcoming">
         <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=upcoming" class="view_more fl-r">More</a>Top Upcoming Anime</h3>
         <ol>
                       <li><span class="rank">1</span><a href="http://myanimelist.net/anime/25777/Shingeki_no_Kyojin_2nd_Season">Shingeki no Kyojin 2nd Season</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9260/Kizumonogatari">Kizumonogatari</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9260/Kizumonogatari_Part_1:_Tekketsu-hen">Kizumonogatari Part 1: Tekketsu-hen</a></li>
                       <li><span class="rank">3</span><a href="http://myanimelist.net/anime/3786/Evangelion:_3.0+1.0">Evangelion: 3.0+1.0</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30503/Noragami_Aragoto">Noragami Aragoto</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/28927/Owari_no_Seraph:_Nagoya_Kessen-hen">Owari no Seraph: Nagoya Kessen-hen</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/27833/Durarara!!x2_Ketsu">Durarara!!x2 Ketsu</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/25537/Fate_stay_night:_Heavens_Feel">Fate/stay night: Heaven&#039;s Feel</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_page_views">
         <h3 class="title">Top Page Views</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/29803/Overlord">Overlord</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28999/Charlotte">Charlotte</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30307/Monster_Musume_no_Iru_Nichijou">Monster Musume no Iru Nichijou</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/28497/Rokka_no_Yuusha">Rokka no Yuusha</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/27631/God_Eater">God Eater</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/30276/One_Punch_Man">One Punch Man</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/23755/Nanatsu_no_Taizai">Nanatsu no Taizai</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30296/Rakudai_Kishi_no_Cavalry">Rakudai Kishi no Cavalry</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30544/Gakusen_Toshi_Asterisk">Gakusen Toshi Asterisk</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/30503/Noragami_Aragoto">Noragami Aragoto</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-trending_words">
@@ -3349,8 +3390,8 @@ Yesterday, 2:29 PM</td>
         <a href="http://myanimelist.net/about/sitemap">Sitemap</a>
     	</p>
   		  		<p class="footer-link login di-ib">
-  			<a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online" id="malLogin" rel="nofollow">Login</a>
-  			<a href="http://myanimelist.net/register.php?from=%2Fanime%2F11757%2FSword_Art_Online">Sign Up</a>
+  			<a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757" id="malLogin" rel="nofollow">Login</a>
+  			<a href="http://myanimelist.net/register.php?from=%2Fanime%2F11757">Sign Up</a>
   		</p>
   		    </div>
 

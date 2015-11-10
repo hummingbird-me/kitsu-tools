@@ -97,7 +97,7 @@ class MALImport
     meta = {
       external_id: @mal_id,
       title: {
-        canonical: @main_noko.css('h1').children[1].text.strip,
+        canonical: @main_noko.css('h1').children[0].text.strip,
         unknown: begin @sidebar.css('div:contains("Synonyms:")')[0].text.gsub("Synonyms: ", "").split(",").map(&:strip) rescue nil end,
         en_us: begin @sidebar.css('div:contains("English:")')[0].text.gsub("English: ", "").strip rescue nil end,
         ja_jp: begin @sidebar.css('div:contains("Japanese:")')[0].text.gsub("Japanese: ", "").strip rescue nil end
@@ -113,7 +113,8 @@ class MALImport
       end,
       poster_image: poster_image(@sidebar.css("img")[0]['src']),
       type: begin allowed_types.grep(@sidebar.css('div:contains("Type:")')[0].text.gsub("Type:", '').strip)[0] rescue nil end,
-      status: begin @sidebar.css('div:contains("Status:")')[-1].text.gsub(/Status:(?:\\n)?\s/, "").strip.gsub(/\w+/){ |w| w.capitalize } rescue nil end
+      status: begin @sidebar.css('div:contains("Status:")')[-1].text.gsub(/Status:(?:\\n)?\s/, "").strip.gsub(/\w+/){ |w| w.capitalize } rescue nil end,
+      genres: begin (@sidebar.css('span:contains("Genres:") ~ a').map(&:text) rescue []).compact end
     }
 
     # Media-specific data
@@ -123,8 +124,7 @@ class MALImport
         dates: begin @sidebar.css('div:contains("Published:")')[0].text.gsub("Published:", '').split("to").map { |s| parse_maldate(s) } rescue nil end,
         volume_count: begin @sidebar.css('div:contains("Volumes:")')[0].text.gsub("Volumes: ", "").strip.to_i rescue nil end,
         chapter_count: begin @sidebar.css('div:contains("Chapters:")')[0].text.gsub("Chapters: ", "").strip.to_i rescue nil end,
-        serialization: begin @sidebar.css('span:contains("Serialization:") ~ a').map(&:text)[0] rescue nil end,
-        genres: begin (@sidebar.css('span:contains("Genres:") ~ a').map(&:text) rescue []).compact end,
+        serialization: begin @sidebar.css('span:contains("Serialization:") ~ a').map(&:text)[0] rescue nil end
       })
     when :anime
       age_rating = begin @sidebar.css('div:contains("Rating:")')[0].text.gsub("Rating:\n ", "").strip rescue nil end
@@ -135,8 +135,7 @@ class MALImport
         age_rating: age_rating[0],
         age_rating_guide: age_rating[1],
         episode_count: begin @sidebar.css('div:contains("Episodes:")')[0].text.gsub("Episodes:\n ", "").strip.to_i rescue nil end,
-        episode_length: parse_duration(begin @sidebar.css('div:contains("Duration:")')[0].text.gsub("Duration: ", "").strip rescue nil end),
-        genres: begin (@sidebar.css('span:contains("Genres:") ~ span a').map(&:text) rescue []).compact end,
+        episode_length: parse_duration(begin @sidebar.css('div:contains("Duration:")')[0].text.gsub("Duration: ", "").strip rescue nil end)
       })
     end
 
