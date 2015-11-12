@@ -67,7 +67,6 @@ class NewsFeed
     stories = Story.for_user(@user)
                    .order('stories.updated_at DESC')
                    .where('(stories.user_id IN (?) AND stories.group_id IS NULL) OR stories.group_id IN (?)', user_set, group_set)
-                   .includes(:user, :substories)
                    .preload(:target)
                    .limit(FRESH_FETCH_SIZE)
     stories = stories.unbanned unless @user.ninja_banned?
@@ -78,7 +77,7 @@ class NewsFeed
   def add!(story)
     add_story = false
     if story.story_type == "comment"
-      if story.group.present? || @user == story.target || @user.following.include?(story.target)
+      if story.group_id || @user == story.target || @user.following.include?(story.target)
         add_story = true
       end
     elsif story.story_type != "followed"
@@ -88,11 +87,6 @@ class NewsFeed
       $redis.with do |conn|
         conn.zadd @feed_key, story.updated_at.to_i, story.id
         conn.zremrangebyrank(@feed_key, 0, -CACHE_SIZE) if rand < 0.2
-      end
-      # Dashboard live update
-      story = StoryQuery.find_by_id(story.id, @user) rescue nil
-      if story
-        #MessageBus.publish "/newsfeed", StorySerializer.new(story, scope: @user).as_json.to_json, user_ids: [@user.id]
       end
     end
   end
