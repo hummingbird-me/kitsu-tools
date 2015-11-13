@@ -35,7 +35,7 @@ class MALImportTest < ActiveSupport::TestCase
     assert_equal 25, malware[:external_id]
     assert_equal "Fullmetal Alchemist", malware[:title][:canonical]
     assert_equal "鋼の錬金術師", malware[:title][:ja_jp]
-    assert_equal 109, malware[:chapter_count]
+    assert_equal 116, malware[:chapter_count]
     assert_equal 27, malware[:volume_count]
     assert_equal "Manga", malware[:type]
     assert_equal "Finished", malware[:status]

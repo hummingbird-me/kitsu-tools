@@ -1,252 +1,239 @@
 HTTP/1.1 200 OK
-Date: Tue, 24 Jun 2014 00:04:47 GMT
-Server: Apache/2.2.15 (CentOS)
-Vary: Accept-Encoding
-X-Served-By: app7v-mal.ao.prd.lax
-Connection: close
-Transfer-Encoding: chunked
+Cache-Control: no-cache
 Content-Type: text/html; charset=utf-8
-Set-Cookie: incap_ses_84_81958=XvMsFRUY33S677DGvG4qAZ7AqFMAAAAA0Q2UDcBa8bU48aPU25oWvw==; path=/; Domain=.myanimelist.net
-Set-Cookie: visid_incap_81958=6zTbseTLQPaBCyFUifhVgZ7AqFMAAAAAQUIPAAAAAAAQj/aV5e0ZSM3CTkljdINw; expires=Wed, 22 Jun 2016 10:00:32 GMT; path=/; Domain=.myanimelist.net
-X-Iinfo: 6-134000070-134000074 NNNN CT(12 -1 0) RT(1403568286537 5) q(0 0 0 1) r(1 1)
+Date: Tue, 10 Nov 2015 19:25:58 GMT
+Server: Apache
+Set-Cookie: MALHLOGSESSID=fd0391d51d249a0ba5a1bfeab07dad28; expires=Sun, 08-Nov-2020 19:25:58 GMT; Max-Age=157680000; path=/
+Set-Cookie: MALSESSIONID=5thlvt03b74ta9njbrlqiem1e6; expires=Tue, 17-Nov-2015 19:25:58 GMT; Max-Age=604800; path=/; HttpOnly
+Vary: User-Agent,Accept-Encoding
+transfer-encoding: chunked
+Connection: keep-alive
+Set-Cookie: visid_incap_81958=EmjSkem/TlG6YlUOlnT/NcZEQlYAAAAAQUIPAAAAAADomCUHPEEnm78VtVR15Fm9; expires=Thu, 09 Nov 2017 14:41:56 GMT; path=/; Domain=.myanimelist.net
+Set-Cookie: nlbi_81958=3JPyJ5pEL0F53SXkUM6emAAAAADxWKMWaoNtrhcOWPyaNcQe; path=/; Domain=.myanimelist.net
+Set-Cookie: incap_ses_84_81958=1R8kIwoIZz3LyBdQ3W0qAcZEQlYAAAAA5vq3w1ceVYHl/gr2/Uu7GA==; path=/; Domain=.myanimelist.net
+X-Iinfo: 5-51485272-51465166 PNNN RT(1447183557933 0) q(0 0 0 -1) r(4 4)
 X-CDN: Incapsula
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
 <head>
-	<title>Fullmetal Alchemist - MyAnimeList.net</title>
-    <meta name="Description" content="Start cataloging anime you've watched or manga you've read. Browse through our extensive anime and manga database. Get anime or manga suggestions, recommendations and reviews. View top rated anime and manga. Create anime and manga favorites. Tons more too!" />
-    <meta name="Keywords" content="anime, animelist, myanimelist, anime list, log anime seen, catalog anime watched, anime reviews, top anime, anime characters, favorite anime, anime discussion, anime information, manga series, manga information, top manga, mangalist, manga list, manga, manga reviews, voice actors, seiyuu" />
-    <meta name="Author" content="Garrett Gyssler">
-	
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
-		<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.v5.js"></script>
-		<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.v1.js"></script>
-	
-		<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js"></script>
-		
-				<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js"></script>
-				<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.v2.js"></script>
-				<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.v12.js"></script>
-				<script type="text/javascript" src="http://cdn.myanimelist.net/js/mangainfo.v4.js"></script>
-				<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.v5.css" type="text/css" />
-				<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.v1.css" type="text/css" />
-				<link rel="stylesheet" href="http://cdn.myanimelist.net/css/myanimelist.v45.css" type="text/css" />
-			<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css" />
-	<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.v18.js"></script>
-	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.v3.css" />
-	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.v1.css" />
-	<link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
-	
-	<link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
 
-	<!-- BEGIN TRIGGER TAG INITIALIZATION -->
-	<script type="text/javascript" src="http://cdn.triggertag.gorillanation.com/js/triggertag.js"></script>
-	<script type="text/javascript">getTrigger('4834');</script>
-	<!-- END TRIGGER TAG INITIALIZATION -->
-	<!-- GAM HEADER SCRIPT -->
-		<script type="text/javascript" src="http://partner.googleadservices.com/gampad/google_service.js">
-		</script>
-		<script type="text/javascript">
-		GS_googleAddAdSenseService("ca-pub-1304704158939332");
-		GS_googleEnableAllServices();
-		</script>
-		<script type="text/javascript">
-		GA_googleUseIframeRendering();
-		</script>
-	<!-- END OF GAM HEADER SCRIPT -->
 
-	<script type="text/javascript">
+<title>
+Fullmetal Alchemist | Manga - MyAnimeList.net
+</title>
+<meta name="description" content="Looking for information on manga Fullmetal Alchemist on MyAnimeList, the internet&#039;s largest manga database. The rules of alchemy state that to gain something, one must lose something of equal value. Alchemy is the process of taking apart and reconstructing an object into a different entity, with the rules of alchemy to govern this procedure. However, there exists an object that can bring any alchemist above these rules, the object known as the Philosopher&#039;s Stone. The young Edward Elric is a par..." />
 
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-369102-1']);
-  _gaq.push(['_trackPageview']);
 
+<meta name="keywords" content="anime, myanimelist, anime news, manga" />
+<link rel="canonical" href="http://myanimelist.net/manga/25/Fullmetal_Alchemist" />
+
+<meta property="og:locale" content="en_US"><meta property="fb:app_id" content="1563257177266407"><meta property="og:site_name" content="MyAnimeList.net"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@myanimelist"><meta property="og:title" content="Fullmetal Alchemist"><meta property="og:type" content="books.book"><meta property="og:image" content="http://cdn.myanimelist.net/images/manga/1/27600.jpg"><meta property="og:url" content="http://myanimelist.net/manga/25/Fullmetal_Alchemist"><meta property="og:description" content="The rules of alchemy state that to gain something, one must lose something of equal value. Alchemy is the process of taking apart and reconstructing an object into a different entity, with the rules of alchemy to govern this procedure. However, there exists an object that can bring any alchemist above these rules, the object known as the Philosopher&#039;s Stone. The young Edward Elric is a particularly talented alchemist who through an accident years back lost his younger brother Alphonse and one of his legs. Sacrificing one of his arms as well, he used alchemy to bind his brother&#039;s soul to a suit of armor. This lead to the beginning of their journey to restore their bodies, in search for the legendary Philosopher&#039;s Stone.   Note: The chapter count includes 8 bonus chapters.">
+<meta name='csrf_token' content='cff76816d8a5f44a42bc746e7e0173eb7c56091f'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-136d11db23.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=38"></script>
+
+
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/mangainfo.js?v=38"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=38"></script>
+
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=38" id="myanimelistjs" data-myanimelistjs-params='{&quot;is_request_bot_filter_log&quot;:true,&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;}'></script>
+
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.css?v=28" type="text/css" />
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.css?v=28" type="text/css" />
+
+	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=28" />
+
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=28" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=28" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-344e264b84.css" />
+<link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
+
+<link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
+
+<!-- ### Load GPT Library ### -->
+<script type='text/javascript'>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
   (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    var gads = document.createElement('script');
+    gads.async = true;
+    gads.type = 'text/javascript';
+    var useSSL = 'https:' == document.location.protocol;
+    gads.src = (useSSL ? 'https:' : 'http:') +
+               '//www.googletagservices.com/tag/js/gpt.js';
+    var node = document.getElementsByTagName('script')[0];
+    node.parentNode.insertBefore(gads, node);
   })();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-369102-1', 'auto');
+  ga('require', 'linkid'); // Enhanced Link Attribution
+  ga('send', 'pageview');
 
 </script>
-	<script type="text/javascript">
-   (function() {
-       function async_load(){
-           var protocol = ('https:' == document.location.protocol ? 'https://' : 'http://');
-           var s = document.createElement('script');
-           s.src = protocol + 'pagefair.com/static/adblock_detection/js/d.min.js';
-           var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
-       }
-       bm_website_code = '3882DD60FDA947CD';
-       jQuery(document).ready(async_load);
-   })();
-</script></head>
 
-<body onload="">
+<script src="https://apis.google.com/js/platform.js" async defer>{lang: 'en-GB'}</script>
+<script src="https://www.google.com/recaptcha/api.js?hl=en"></script>
+
+
+</head>
+
+<body onload=" " class="page-common">
+
+
 <div id="myanimelist">
 
+    <script type='text/javascript'>
+    googletag.cmd.push(function() {
+      googletag.defineOutOfPageSlot('/84947469/Skin_Others', 'div-gpt-ad-675112533').addService(googletag.pubads());
+      googletag.pubads().collapseEmptyDivs();
+      googletag.enableServices();
+    });
+  </script>
+  <div style="display: none !important;">
+    <div id='div-gpt-ad-675112533'>
+      <script type='text/javascript'>
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-675112533'); });
+      </script>
+    </div>
+  </div>
 
-	<div id="headerSmall">
-		<a href="/">MyAnimeList.net</a>
-	</div>
-	
-<div id="menu">
-    
+    <script type='text/javascript'>
+    window.MAL.SkinAd.prepareForSkin('Skin_Others');
+  </script>
+
+    <div id="ad-skin-bg-left" class="ad-skin-side-outer ad-skin-side-bg bg-left">
+    <div id="ad-skin-left" class="ad-skin-side left" style="display: none;">
+      <div id="ad-skin-left-absolute-block">
+        <div id="ad-skin-left-fixed-block"></div>
+      </div>
+    </div>
+  </div>
+<div class="wrapper">
+
+<div id="headerSmall"><a href="/">MyAnimeList.net</a><a href="http://myanimelist.net/watch" class="banner-header-anime-straming">
+  <img src="http://cdn.myanimelist.net/images/stream_banner/banner_anime_streaming.png" srcset="http://cdn.myanimelist.net/images/stream_banner/banner_anime_streaming@2x.png 2x" alt="Anime Streaming Now Available on MAL!">
+</a>
+  <div id="header-menu">
+    <div class="header-menu-login">
+      <a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fmanga%2F25" id="malLogin">Login</a>
+      <a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fmanga%2F25">Sign Up</a>
+    </div>
+  </div>
+</div>  <div id="menu">
+
     <div id="menu_right">
-    	
-        <div id="searchBar">
 
-        <input type="text" class="inputtext" id="topSearchText" value="Search" onkeydown="return ts_checkEnter(event);" size="30" /> 
-        <select id="topSearchValue" class="inputtext" onchange="ts_selection();">
+      <form id="searchBar" method="get">
+
+        <input id="topSearchText" type="text" class="inputtext" value="Search" size="30" />
+        <select id="topSearchValue" class="inputtext">
         <option value="0">Anime</option>
         <option value="1">Manga</option>
         <option value="2">Characters</option>
         <option value="6">People</option>
-        <option value="3">Fansub Groups</option>
         <option value="4">Clubs</option>
         <option value="5">Users</option>
         </select>
-        
-        <input type="image" src="http://cdn.myanimelist.net/images/magnify.gif" value="Search" onclick="ts_subSearch(5);" />
-        
-        </div>
-        
-	</div>
-	
-	<div id="menu_left">
-		<ul id="nav">
-						<li class="small"><a href="/anime.php">Anime</a>
-				<ul class="wider">
-										<li><a href="/reviews.php?t=anime">Reviews</a></li>
-					<li><a href="/recommendations.php?s=recentrecs&t=anime">Recommendations</a></li>
-					<li><a href="/topanime.php">Top Anime</a></li>
-					<li><a href="/fansub-groups.php">Fansub Groups</a></li>
-				</ul>
-			</li>
-			<li class="small"><a href="/manga.php">Manga</a>
-				<ul class="wider">
-										<li><a href="/reviews.php?t=manga">Reviews</a></li>
-					<li><a href="/recommendations.php?s=recentrecs&t=manga">Recommendations</a></li>
-					<li><a href="/topmanga.php">Top Manga</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Community</a>
-				<ul>
-					<li><a href="/forum/">Forums</a></li>
-					<li><a href="/clubs.php">Clubs</a></li>
-					<li><a href="/blog.php">Blogs</a></li>
-					<li><a href="/users.php">Users</a></li>
-					<li><a href="/about.php?go=team">Staff</a></li>
-					<li><a href="/about.php?go=support">Help</a></li>
-				</ul>
-			</li>
-			<li class="medium"><a href="#">Industry</a>
-				<ul class="wide">
-					<li><a href="/people.php">People</a></li>
-					<li><a href="/character.php">Characters</a></li>
-					<li><a href="/news.php">News</a></li>
-					<li><a href="/favorites.php">Top Favorites</a></li>
-				</ul>
-			</li>
-			
-			<li class="tiny"><a href="/register.php">Join</a></li>
-			<li class="smaller"><a href="/ajaxtb.php?login" id="malLogin">Login</a></li>
-						</ul>
-	</div>
-</div>
 
-<div id="contentWrapper">
+        <input id="topSearchButon" type="image" src="http://cdn.myanimelist.net/images/magnify.gif" value="Search" />
 
-	<div id="roadblock">
-				<div class="ad230">
-						<script type="text/javascript">
-						if ((typeof(f325922)=='undefined' || f325922 > 0) ) {
-						if(typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000; if(typeof(gnm_tile) == 'undefined') gnm_tile=1;
-						document.write('<scr'+'ipt src="http://n4403ad.doubleclick.net/adj/gn.cr.myanimelist.net/ros;sect=ros;sz=230x90,963x90;tile='+(gnm_tile++)+';ord='+gnm_ord+'?" type="text/javascript"></scr'+'ipt>');
-						} else {
-							GA_googleFillSlotWithSize("ca-pub-1304704158939332", "myanimelist_ros_230x90", 230, 90);
-						}
-						</script>
-						</div>
-				<div class="ad728">
-						<!-- 728x90 -->
-						<script type="text/javascript">
-						  if (typeof(gnm_ord)=='undefined' || (typeof(ad963_enabled)!= 'undefined' && ad963_enabled == false)) gnm_ord=Math.random()*10000000000000000;
-						  if (typeof(gnm_tile) == 'undefined') gnm_tile=1;
-						  document.write('<scr'+'ipt src="http://n4403ad.doubleclick.net/adj/gn.cr.myanimelist.net/ros;sect=ros;sz=728x90,970x90;dcopt=ist;type=pop;type=int;type=boom;dga=;dgg=;tile='+(gnm_tile++)+';ord=' + gnm_ord + ';?" type="text/javascript"></scr' + 'ipt>');
-						</script>
-						</div>
-				</div>
-	<h1><div style="float: right; font-size: 13px;">Ranked #3</div>Fullmetal Alchemist <span style="font-weight: normal;"><small>(Manga)</small></span></h1>
-	<div id="content">
-	
+      </form>
+
+	</div>    <div id="menu_left">
+                        <ul id="nav">
+    <li class="small"><a href="#" class="non-link">Anime</a>
+    <ul class="wider">
+            <li><a href="/anime.php">Anime Search</a></li>
+      <li><a href="/reviews.php?t=anime">Reviews</a></li>
+      <li><a href="/recommendations.php?s=recentrecs&t=anime">Recommendations</a></li>
+      <li><a href="/topanime.php">Top Anime</a></li>
+      <li><a href="http://myanimelist.net/anime/season">Seasonal Anime</a></li>
+    </ul>
+  </li>
+  <li class="small"><a href="#" class="non-link">Manga</a>
+    <ul class="wider">
+            <li><a href="/manga.php">Manga Search</a></li>
+      <li><a href="/reviews.php?t=manga">Reviews</a></li>
+      <li><a href="/recommendations.php?s=recentrecs&t=manga">Recommendations</a></li>
+      <li><a href="/topmanga.php">Top Manga</a></li>
+    </ul>
+  </li>
+  <li><a href="#" class="non-link">Community</a>
+    <ul>
+      <li><a href="/forum/">Forums</a></li>
+      <li><a href="/clubs.php">Clubs</a></li>
+      <li><a href="/blog.php">Blogs</a></li>
+      <li><a href="/users.php">Users</a></li>
+    </ul>
+  </li>
+  <li class="small2"><a href="#" class="non-link">Industry</a>
+    <ul class="wider">
+      <li><a href="/news">News</a></li>
+      <li><a href="http://myanimelist.net/featured">Featured Articles</a></li>
+      <li><a href="/people.php">People</a></li>
+      <li><a href="/character.php">Characters</a></li>
+      <li><a href="/favorites.php">Top Favorites</a></li>
+    </ul>
+  </li>
+  <li class="small"><a href="http://myanimelist.net/watch">Watch</a></li>
+  <li class="smaller"><a href="#" class="non-link">Help</a>
+    <ul class="wide">
+      <li><a href="/about.php">About</a></li>
+      <li><a href="/about.php?go=support">Support</a></li>
+      <li><a href="/about.php?go=advertising">Advertising</a></li>
+      <li><a href="/forum/?topicid=515949">FAQ</a></li>
+      <li><a href="/modules.php?go=report">Report</a></li>
+      <li><a href="/about.php?go=team">Staff</a></li>
+    </ul>
+  </li>
+  </ul>
+                  </div>  </div><div id="contentWrapper" itemscope itemtype="http://schema.org/Product"><div class="fl-r fw-b fs16 pt4 pr8">Ranked #3</div><h1 class="h1"><span itemprop="name">Fullmetal Alchemist</span> <span class="fs14 fw-n">(Manga)</span></h1>
+    <div id="content">
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr>
-<td class="borderClass" width="225" style="border-width: 0 1px 0 0;" valign="top"><div style="text-align: center;"><a href="/manga/25/Fullmetal_Alchemist/pic&pid=27600"><img src="http://cdn.myanimelist.net/images/manga/1/27600.jpg" alt="Fullmetal Alchemist" align="center"></a></div><div id="profileRows"><a href="#addtolistanchor" onclick="myinfo_toggleAdd();">Add to My List</a><a href="javascript:void(0);" onclick="fav_clicker(1,2,25);" style="font-weight: normal;"><span id="favOutput">Add to Favorites</span></a><a href="javascript:doedit(25);">Edit Manga Information</a></div>
+<td class="borderClass" width="225" style="border-width: 0 1px 0 0;" valign="top"><div style="text-align: center;"><a href="/manga/25/Fullmetal_Alchemist/pics"><img src="http://cdn.myanimelist.net/images/manga/1/27600.jpg" alt="Fullmetal Alchemist" align="center" itemprop="image"></a></div><div class="profileRows pb0"><a href="/login.php?from=%2Fmanga%2F25&error=login_required">Add to My List</a></div><div id="profileRows" class="pt0"><a href="/login.php?from=%2Fmanga%2F25&error=login_required" style="font-weight: normal;"><span id="favOutput">Add to Favorites</span></a><a href="/login.php?from=%2Fmanga%2F25&error=login_required">Edit Manga Information</a></div>
 <div id="editdiv" style="display: none; margin-bottom: 16px;">
 <form method="GET" action="/dbchanges.php" style="display: inline;">
 <input type="hidden" name="mid" value="25">
 <div class="spaceit_pad">What would you like to edit?</div>
 <select name="t" class="inputtext">
-<option value="synopsis">Synopsis<option value="pic">Picture<option value="chapvol">Chapters/Volumes<option value="pubdates">Publishing Dates<option value="relations">Relations<option value="type">Type
-</select> &nbsp;<input type="submit" value="Go" class="inputButton">
+<option value="synopsis">Synopsis<option value="background">Background<option value="pic">Picture<option value="chapvol">Chapters/Volumes<option value="pubdates">Publishing Dates<option value="relations">Relations<option value="type">Type
+</select> &nbsp;<input type="submit" value="Edit" class="inputButton">
 </form>
 </div>
-<h2>Alternative Titles</h2><div class="spaceit_pad"><span class="dark_text">English:</span> Fullmetal Alchemist</div><div class="spaceit_pad"><span class="dark_text">Synonyms:</span> Full Metal Alchemist, Hagane no Renkinjutsushi, FMA, Fullmetal Alchemist Gaiden</div><div class="spaceit_pad"><span class="dark_text">Japanese:</span> 鋼の錬金術師</div><br />
-	<h2>Information</h2>
-	
-	<div><span class="dark_text">Type:</span> Manga</div>
-	<div class="spaceit"><span class="dark_text">Volumes:</span> 27
-	</div>
-	<div><span class="dark_text">Chapters:</span> 109
-	</div>
-	<div class="spaceit"><span class="dark_text">Status:</span> Finished</div>
-	<div><span class="dark_text">Published:</span> Jul  12, 2001 to Jun  11, 2010</div><div class="spaceit"><span class="dark_text">Genres:</span>
-	  <a href="/manga.php?genre[]=1">Action</a>, <a href="/manga.php?genre[]=2">Adventure</a>, <a href="/manga.php?genre[]=4">Comedy</a>, <a href="/manga.php?genre[]=8">Drama</a>, <a href="/manga.php?genre[]=27">Shounen</a>, <a href="/manga.php?genre[]=38">Military</a></div><div><span class="dark_text">Authors:</span>
-		<a href="/people/1874/Hiromu_Arakawa">Arakawa, Hiromu</a> (Story & Art)</div><div class="spaceit"><span class="dark_text">Serialization:</span>
-		<a href="/manga.php?mid=13">Shounen Gangan</a></div><br />
-		<h2>Statistics</h2><div><span class="dark_text">Score:</span> 9.09<sup><small>1</small></sup> <small>(scored by 45302 users)</small></div>
-		<div class="spaceit"><span class="dark_text">Ranked:</span> #3<sup><small>2</small></sup></div>
-		<div><span class="dark_text">Popularity:</span> #6</div>
-		
-		<div class="spaceit"><span class="dark_text">Members:</span> 70,585</div>
-		<div><span class="dark_text">Favorites:</span> 12,318</div><div style="margin-top: 2px;"><small><sup><small>1</small></sup>  indicates a weighted score</small></div>
-		<div><sup><small>2</small></sup><small> based on the <a href="/topmanga.php">top manga</a> page.</small></div>
-	<br />
-	<a name="addtolistanchor"></a>
-	<h2>My Info</h2><div><a href="javascript:void(0);" id="addclicker" onclick="myinfo_toggleAdd();">Add to My List</a></div>
-		<div id="addtolist" style="display: none;">
-		<input type="hidden" id="myinfo_manga_id" value="25">
-		<table border="0" cellpadding="0" cellspacing="0" width="100%">
-		
-		<tr>
-		<td class="spaceit">Status:</td>
-		<td class="spaceit"><select id="myinfo_status" name="myinfo_status" onchange="checkComp(this);" class="inputtext"><option value="1" >Reading</option><option value="2" >Completed</option><option value="3" >On-Hold</option><option value="4" >Dropped</option><option value="6" >Plan to Read</option></select></td>
-		</tr>
-		<tr>
-		<td class="spaceit">Chap. Read:</td>
-		<td class="spaceit"><input type="text" id="myinfo_chapters" size="3" maxlength="4" class="inputtext" value=""> / <span id="totalChaps">109</span></td>
-		</tr>
-		<tr>
-		<td class="spaceit">Vol. Read:</td>
-		<td class="spaceit"><input type="text" id="myinfo_volumes" size="3" maxlength="4" class="inputtext" value=""> / <span id="totalVols">27</span></td>
-		</tr>
-		<tr>
-		<td class="spaceit">Your Score:</td>
-		<td class="spaceit"><select id="myinfo_score" name="myinfo_score" class="inputtext"><option value="0">Select</option><option value="10" >(10) Masterpiece</option><option value="9" >(9) Great</option><option value="8" >(8) Very Good</option><option value="7" >(7) Good</option><option value="6" >(6) Fine</option><option value="5" >(5) Average</option><option value="4" >(4) Bad</option><option value="3" >(3) Very Bad</option><option value="2" >(2) Horrible</option><option value="1" >(1) Appalling</option></select></td>
-		</tr>
-		
-		<tr>
-		  <td>&nbsp;</td>
-		  <td><input type="button" name="myinfo_submit" value="Add" onclick="myinfo_addtolist(25);" class="inputButton"> <span id="addtolistresult"><a href="/panel.php?go=addmanga&selected_manga_id=25">Add Detailed Info</a></span></td>
-		</tr>
-		</table>
-		</div>
-		<div id="myinfoDisplay" style="padding-left: 82px; margin-top: 3px;"></div>
-		<br>
-	  <h2>Popular Tags</h2>
-	  <span style="font-size: 11px;"><a href="/manga.php?tag=action" style="font-size: 24px" title="333 people tagged with action">action</a> <a href="/manga.php?tag=adventure" style="font-size: 22px" title="298 people tagged with adventure">adventure</a> <a href="/manga.php?tag=drama" style="font-size: 11px" title="106 people tagged with drama">drama</a> <a href="/manga.php?tag=fantasy" style="font-size: 20px" title="265 people tagged with fantasy">fantasy</a> <a href="/manga.php?tag=shounen" style="font-size: 21px" title="287 people tagged with shounen">shounen</a> <a href="/manga.php?tag=undefined" style="font-size: 11px" title="88 people tagged with undefined">undefined</a> </span></td><td valign="top" style="padding: 0;">
+<div class="icon-block "><a data-ga-network="facebook" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist"></a><a data-ga-network="google+" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist"></a><a data-ga-network="reddit" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;title=Fullmetal%20Alchemist"></a><a data-ga-network="twitter" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?related=MyAnimeList.net&amp;via=myanimelist&amp;url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;text=Fullmetal%20Alchemist&amp;hashtags=manga"></a><a data-ga-network="tumblr" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;name=Fullmetal%20Alchemist"></a></div><br /><h2>Alternative Titles</h2><div class="spaceit_pad"><span class="dark_text">English:</span> Fullmetal Alchemist</div><div class="spaceit_pad"><span class="dark_text">Synonyms:</span> Full Metal Alchemist, Hagane no Renkinjutsushi, FMA, Fullmetal Alchemist Gaiden</div><div class="spaceit_pad"><span class="dark_text">Japanese:</span> 鋼の錬金術師</div><br />
+<h2>Information</h2>
+
+<div><span class="dark_text">Type:</span> Manga</div>
+<div class="spaceit"><span class="dark_text">Volumes:</span> 27
+</div>
+<div><span class="dark_text">Chapters:</span> 116
+</div>
+<div class="spaceit"><span class="dark_text">Status:</span> Finished</div>
+<div><span class="dark_text">Published:</span> Jul  12, 2001 to Jun  11, 2010</div><div class="spaceit"><span class="dark_text">Genres:</span>
+  <a href="/manga/genre/1" title="Action">Action</a>, <a href="/manga/genre/2" title="Adventure">Adventure</a>, <a href="/manga/genre/4" title="Comedy">Comedy</a>, <a href="/manga/genre/8" title="Drama">Drama</a>, <a href="/manga/genre/27" title="Shounen">Shounen</a>, <a href="/manga/genre/38" title="Military">Military</a></div><div><span class="dark_text">Authors:</span>
+    <a href="/people/1874/Hiromu_Arakawa">Arakawa, Hiromu</a> (Story & Art)</div><div class="spaceit"><span class="dark_text">Serialization:</span>
+    <a href="/manga/magazine/13" title="Shounen Gangan">Shounen Gangan</a></div><br />
+<h2>Statistics</h2><span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><div><span class="dark_text">Score:</span> <span itemprop="ratingValue">9.12</span><sup><small>1</small></sup> <small>(scored by <span itemprop="ratingCount">57698</span> users)</small></div><meta itemprop="bestRating" content="10"><meta itemprop="worstRating" content="1"></span>
+<div class="spaceit"><span class="dark_text">Ranked:</span> #3<sup><small>2</small></sup></div>
+<div><span class="dark_text">Popularity:</span> #7</div>
+
+<div class="spaceit"><span class="dark_text">Members:</span> 92,062</div>
+<div><span class="dark_text">Favorites:</span> 15,719</div><div style="margin-top: 2px;"><small><sup><small>1</small></sup> indicates a weighted score</small></div><div><sup><small>2</small></sup><small> based on the <a href="/topmanga.php">top manga</a> page. Please note that 'R18+' titles are excluded.</small></div></td><td valign="top" style="padding-left: 5px;">
 	<a name="lower"></a>
 	<div id="horiznav_nav" style="margin: 5px 0 10px 0;">
 			<ul style="margin-right: 0; padding-right: 0;">
@@ -256,21 +243,50 @@ X-CDN: Incapsula
 			<li><a  href="/manga/25/Fullmetal_Alchemist/stats">Stats</a></li>
 			<li><a  href="/manga/25/Fullmetal_Alchemist/characters">Characters</a></li>
 			<li><a  href="/manga/25/Fullmetal_Alchemist/news">News</a></li>
-			<li><a  href="/manga/25/Fullmetal_Alchemist/forum">Forum</a></li>
+			<li><a  href="/manga/25/Fullmetal_Alchemist/forum">Forum</a></li> <li><a  href="/manga/25/Fullmetal_Alchemist/featured">Featured</a></li>
+			<li><a  href="/manga/25/Fullmetal_Alchemist/clubs">Clubs</a></li>
 			<li><a  href="/manga/25/Fullmetal_Alchemist/pics">Pictures</a></li>
 				<li><a  href="/manga/25/Fullmetal_Alchemist/moreinfo">More Info</a></li>
 			</ul>
 	</div>
-	<div style="padding: 0 7px;"><table border="0" cellspacing="0" cellpadding="0" width="100%">
+
+
+
+              <div class="breadcrumb " itemscope itemtype="http://schema.org/BreadcrumbList"><div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/" itemprop="item"><span itemprop="name">
+              Top
+            </span></a><meta itemprop="position" content="1"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/manga.php" itemprop="item"><span itemprop="name">
+              Manga
+            </span></a><meta itemprop="position" content="2"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/manga/25/Fullmetal_Alchemist" itemprop="item"><span itemprop="name">
+              Fullmetal Alchemist
+            </span></a><meta itemprop="position" content="3"></div></div>
+
+
+
+<table border="0" cellspacing="0" cellpadding="0" width="100%">
 	<tr>
-	<td valign="top"><h2>Synopsis</h2>The rules of alchemy state that to gain something, one must lose something of equal value. Alchemy is the process of taking apart and reconstructing an object into a different entity, with the rules of alchemy to govern this procedure. However, there exists an object that can bring any alchemist above these rules, the object known as the Philosopher's Stone. The young Edward Elric is a particularly talented alchemist who through an accident years back lost his younger brother Alphonse and one of his legs. Sacrificing one of his arms as well, he used alchemy to bind his brother's soul to a suit of armor. This lead to the beginning of their journey to restore their bodies, in search for the legendary Philosopher's Stone.<br />
+	<td valign="top"><h2><div class="floatRightHeader"><a href="/dbchanges.php?mid=25&t=synopsis" style="font-weight: normal;">Edit</a></div>Synopsis</h2><span itemprop="description">The rules of alchemy state that to gain something, one must lose something of equal value. Alchemy is the process of taking apart and reconstructing an object into a different entity, with the rules of alchemy to govern this procedure. However, there exists an object that can bring any alchemist above these rules, the object known as the Philosopher's Stone. The young Edward Elric is a particularly talented alchemist who through an accident years back lost his younger brother Alphonse and one of his legs. Sacrificing one of his arms as well, he used alchemy to bind his brother's soul to a suit of armor. This lead to the beginning of their journey to restore their bodies, in search for the legendary Philosopher's Stone.<br />
 <br />
-Volume 27 includes the bonus chapter "Another Journey's End."</td>
+<br />
+<i><span style="font-size: 90%;">Note: The chapter count includes 8 bonus chapters.<!--size--></span></i></span><h2 style="margin-top: 15px;"><div class="floatRightHeader"><a href="/dbchanges.php?mid=25&t=background" style="font-weight: normal;">Edit</a></div>Background</h2><i>Fullmetal Alchemist</i> won the 49th Shogakukan Manga Award for the shounen demographic in 2004. <br />
+<br />
+<i>Fullmetal Alchemist</i> was published in English by VIZ Media from May 3, 2005 to December 20, 2011. A 3-in-1 omnibus edition was released from June 7, 2011 to November 11, 2014 as well as a complete box set in November 1, 2011 (which included the novel <i>Fullmetal Alchemist: The Ties That Bind</i>).<div class="border_top" style="padding:16px 0px 0px 0px;margin:14px 0px 0px 0px;"><div style="width:728px; height:120px; margin:0 auto"><script type="text/javascript">
+googletag.cmd.push(function() {
+  var slot = googletag.defineSlot("/84947469/02PCManga_detail_SAFE_LB120", [728,120], "div-gpt-ad-1488676789").addService(googletag.pubads());
+      slot.setTargeting('title', 'Fullmetal%20Alchemist');
+      slot.setTargeting('utm_campaign', 'ad_mal_manga_25');
+    slot.setCollapseEmptyDiv(true);
+  googletag.enableServices();
+});
+</script>
+<div id="div-gpt-ad-1488676789" style="width:728px; height:120px;">
+  <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1488676789"); });
+      </script>
+</div>
+</div></div></td>
 	</tr>
 	<tr>
-	  <td><br><h2>Related Manga</h2>Side story: <a href="/manga/4658/Fullmetal_Alchemist">Fullmetal Alchemist</a><br>Alternative version: <a href="/manga/32409/Full_Metal_Alchemist:_The_Prototype">Full Metal Alchemist: The Prototype</a><br>Adaptation: <a href="/anime/5114/Fullmetal_Alchemist:_Brotherhood">Fullmetal Alchemist: Brotherhood</a>, <a href="/anime/121/Fullmetal_Alchemist">Fullmetal Alchemist</a><br>
-		<br />
-		<h2><div style="float: right;"><a href="/manga/25/Fullmetal_Alchemist/characters" style="font-weight: normal;">More characters</a></div>Characters</h2><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+	  <td><br><h2><div class="floatRightHeader"><a href="/dbchanges.php?mid=25&t=relations" style="font-weight: normal;">Edit</a></div>Related Manga</h2><table class="anime_detail_related_anime" style="border-spacing:0px;"><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Side story:</td><td width="100%" class="borderClass"><a href="/manga/4658/Fullmetal_Alchemist">Fullmetal Alchemist</a></td><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Alternative version:</td><td width="100%" class="borderClass"><a href="/manga/32409/Full_Metal_Alchemist:_Prototype">Full Metal Alchemist: Prototype</a></td><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Adaptation:</td><td width="100%" class="borderClass"><a href="/anime/5114/Fullmetal_Alchemist:_Brotherhood">Fullmetal Alchemist: Brotherhood</a>, <a href="/anime/121/Fullmetal_Alchemist">Fullmetal Alchemist</a></td></table><br><h2><div class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/characters" style="font-weight: normal;">More characters</a></div>Characters</h2><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
 			<div class="picSurround"><a href="/character/11/Edward_Elric" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/9/72533t.jpg" alt=" Edward" vspace="4" hspace="8" border="0"></a></div>
 			</div>
@@ -281,7 +297,7 @@ Volume 27 includes the bonus chapter "Another Journey's End."</td>
 			</div>
 			</td>
 			</tr>
-			</table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+            </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor1" align="center">
 			<div class="picSurround"><a href="/character/12/Alphonse_Elric" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/5/54265t.jpg" alt=" Alphonse" vspace="4" hspace="8" border="0"></a></div>
 			</div>
@@ -292,162 +308,92 @@ Volume 27 includes the bonus chapter "Another Journey's End."</td>
 			</div>
 			</td>
 			</tr>
-			</table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+            </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
-			<div class="picSurround"><a href="/character/23461/Fu" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/4/70274t.jpg" alt=" Fu" vspace="4" hspace="8" border="0"></a></div>
+			<div class="picSurround"><a href="/character/68/Roy_Mustang" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/9/186277t.jpg" alt=" Roy" vspace="4" hspace="8" border="0"></a></div>
 			</div>
 			</td>
 			<td valign="top" class="borderClass bgColor2">
-			<a href="/character/23461/Fu">Fu</a>
+			<a href="/character/68/Roy_Mustang">Mustang, Roy</a>
 			<div class="spaceit_pad"><small>Supporting</small></div>
 			</div>
 			</td>
 			</tr>
-			</table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+            </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor1" align="center">
-			<div class="picSurround"><a href="/character/10948/Cray" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/2/62117t.jpg" alt=" Cray" vspace="4" hspace="8" border="0"></a></div>
+			<div class="picSurround"><a href="/character/69/Maes_Hughes" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/2/81114t.jpg" alt=" Maes" vspace="4" hspace="8" border="0"></a></div>
 			</div>
 			</td>
 			<td valign="top" class="borderClass bgColor1">
-			<a href="/character/10948/Cray">Cray</a>
+			<a href="/character/69/Maes_Hughes">Hughes, Maes</a>
 			<div class="spaceit_pad"><small>Supporting</small></div>
 			</div>
 			</td>
 			</tr>
-			</table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+            </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
-			<div class="picSurround"><a href="/character/8452/Sheska" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/9/54925t.jpg" alt=" Sheska" vspace="4" hspace="8" border="0"></a></div>
+			<div class="picSurround"><a href="/character/351/Greed" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/4/284117t.jpg" alt=" Greed" vspace="4" hspace="8" border="0"></a></div>
 			</div>
 			</td>
 			<td valign="top" class="borderClass bgColor2">
-			<a href="/character/8452/Sheska">Sheska</a>
-			<div class="spaceit_pad"><small>Supporting</small></div>
-			</div>
-			</td>
-			</tr>
-			</table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
-			<td valign="top" width="27" class="borderClass bgColor1" align="center">
-			<div class="picSurround"><a href="/character/351/Greed" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/9/79209t.jpg" alt=" Greed" vspace="4" hspace="8" border="0"></a></div>
-			</div>
-			</td>
-			<td valign="top" class="borderClass bgColor1">
 			<a href="/character/351/Greed">Greed</a>
 			<div class="spaceit_pad"><small>Supporting</small></div>
 			</div>
 			</td>
 			</tr>
-			</table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
-			<td valign="top" width="27" class="borderClass bgColor2" align="center">
-			<div class="picSurround"><a href="/character/35144/Garfiel" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/14/95776t.jpg" alt=" Garfiel" vspace="4" hspace="8" border="0"></a></div>
+            </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/70/Riza_Hawkeye" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/7/186275t.jpg" alt=" Riza" vspace="4" hspace="8" border="0"></a></div>
 			</div>
 			</td>
-			<td valign="top" class="borderClass bgColor2">
-			<a href="/character/35144/Garfiel">Garfiel</a>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/70/Riza_Hawkeye">Hawkeye, Riza</a>
 			<div class="spaceit_pad"><small>Supporting</small></div>
 			</div>
 			</td>
 			</tr>
-			</table>
-		<br />
-		<div style='float:left;'>
-				<div class="ad300">
-				<div class="ad_300">
-						<script type="text/javascript">
-						  if (typeof(gnm_ord)=='undefined') gnm_ord=Math.random()*10000000000000000;
-						  if (typeof(gnm_tile) == 'undefined') gnm_tile=1;
-						  document.write('<scr'+'ipt src="http://n4403ad.doubleclick.net/adj/gn.cr.myanimelist.net/ros;sect=ros;sz=300x250;dga=;dgg=;pos=btf;tile='+(gnm_tile++)+';ord=' + gnm_ord + ';?" type="text/javascript"></scr' + 'ipt>');
-						</script>
-						</div>
-				</div>
-				</div><div style='float:right;'><script type='text/javascript'>
-var _CI = _CI || {};
-(function() {
-var script = document.createElement('script');
-ref = document.getElementsByTagName('script')[0];
-_CI.counter = (_CI.counter) ? _CI.counter + 1 : 1;
-document.write('<div id="_CI_widget_');
-document.write(_CI.counter+'"></div>');
-script.type = 'text/javascript';
-script.src = 'http://widget.crowdignite.com/widgets/2054?_ci_wid=_CI_widget_'+_CI.counter;
-script.async = true;
-ref.parentNode.insertBefore(script, ref);
-})(); </script></div><br style='clear:both;'><br /><h2><span class="floatRightHeader"><a href="/myreviews.php?mid=25&go=write">Write a review</a> | <a href="/manga/25/Fullmetal_Alchemist/reviews">More reviews</a></span>Reviews</h2>
-				<div class="borderDark" style="padding: 14px 13px;">
-					<div class="spaceit"><div style="text-align: right;">Jun 10, 2010</div>
-					</div>
-					<div class="borderLight reviewDetails">
-					<table border="0" cellpadding="0" cellspacing="0" width="100%">
-					<tr>
-						<td valign="top" width="60">
-							<div class="picSurround"><a href="/profile/ImperialX"><div class="picSurround"><a href="/profile/ImperialX"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/70716_thumb.jpg" border="0"></a></div></a></div>
-						</td>
-						<td valign="top">
-	<div id="revArea25">
-	<div id="revInfo25" rel="m25" class="hoverinfo">
-	</div>
-	</div>
-	
-							<a href="/profile/ImperialX">ImperialX</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp26988">245</span></strong> of <strong><span id="rtotal26988">319</span></strong> people found this review helpful</div>
-							<div><a href="/profile/ImperialX/reviews">Other reviews by this user</a></div>
-						</td>
-						<td style="text-align: right;" valign="top">
-							<div><span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,70716,1); return false;">Add to favorites</a></span></div>
-							<div class="lightLink spaceit">108 of 109 chapters read</div>
-							<div><a href="javascript:void(0);" onclick="$('#score26988').toggle()">Overall Rating</a>: 10</div>
-						</td>
-					</tr>
-					</table>
-					</div>
-					<div class="spaceit textReadability">
-					
-					<div style="float: left; display: none; margin: 0 10px 10px 0" id="score26988">
-		<table border="0" width="105" cellpadding="0" cellspacing="0" class="borderClass" style="border-width: 1px;">
-		<tr>
-		  <td class="borderClass bgColor1"><strong>Overall</strong></td>
-		  <td class="borderClass bgColor1"><strong>10</strong></td>
-		</tr>
-		<tr>
-		  <td class="borderClass" align="left">Story</td>
-		  <td class="borderClass">10</td>
-		</tr>
-		
-		<tr>
-		  <td class="borderClass" align="left">Art</td>
-		  <td class="borderClass">8</td>
-		</tr>
-		<tr>
-		  <td class="borderClass" align="left">Character</td>
-		  <td class="borderClass">10</td>
-		</tr>
-		<tr>
-		  <td class="borderClass" style="border-width: 0;" align="left">Enjoyment</td>
-		  <td class="borderClass" style="border-width: 0;">10</td>
-		</tr>
-		</table>
-		</div>I shed a tear as I read the last chapter of this manga. A manga that I've been following since I was in Primary School has just concluded with the most epic and satisfying finale. I'm sad to see one of my favourite series of all time finish, yet I'm happy to see such a great ending. I really want to procrastinate more, but I should press onwards with the review and leave that for discussion in the forums.<br />
-<br />
-Fullmetal Alchemist is one of the most innovative manga I've ever had the pleasure of reading. The concept of Alchemy itself was a superb idea, and in <span style="display: none;" id="review26988">its nine-year run, there has never been a single wasted pages from Arakawa-sensei. The plot was developed with utmost detail into what is arguably one of the deepest and most engaging storylines to ever grace itself to us Manga fans. There is practically no fillers chapters at all, unlike most other shounen manga to reach this calibre of popularity. Also, the entire storyline has been perfectly planned out and stayed linear for the entire nine-year run, a staggering feat when you compare it to other Mangas in the same genre. If you read this manga from start to finish, you will be amazed at the coherency of the chapters and the inter-relations. You won't think that this was drawn over nine years, more like one long movie shown from start to finish. The ending is also incredibly rewarding for those who follow it up to the end. I won't leave any spoilers here, but know that you won't be disappointed, regardless of how high your expectation is.<br />
-<br />
-FMA, in its nine-year run, had plenty of time to develop a large family of colourful characters. Arakawa-sensei is downright masterful when it comes to her characters. From beginning to end, every character was tweaked to perfection and not a single person is wasted. Also, the reader will not have any trouble getting into their shows because they're all so believable and realistic. From Ed and Al's passionate desire to be reunited with their mother to Roy's tragic past in the Ishballian conflict, and how everything was simply a Chesspiece for the Father's master plan, everyone fits right into place. The plot itself is completely character-driven, and is dependent on all of the characters to make it flourish.<br />
-<br />
-The philosophical deepness of this manga is simply mindblowing for a Shounen manga. Behind each fight is a meaning waiting to be explored. Nothing in this manga happens for show. FMA explores the very purpose of existence, consistently refers to "the purpose of fighting" and goes deep into human emotions. From start to finish, as the character discover the answers to their questions, the reader will also be brought into their World and learn with them, just because that every character is so humane and understandable. The homunculi, named after the seven deadly sins, are also testament to the deepness on FMA. Despite their incredible powers and might over humans, all of them show true sadness that are completely delivered to the reader with Arakawa-sensei's masterful storytelling.<br />
-<br />
-As for the Artwork, it isn't anything mind-blowing, but it's clean and efficient. Arakawa-sensei doesn't waste any panels in her chapters and gets straight to-the-point. One page of FMA will easily deliver more content than 3 pages of Bleach, and since FMA is a plot-driven manga, there's no room for complaints here and doesn't do anything to diminish the enjoyment. It should be noted that, despite the simplistic artwork, Arakawa-sensei never failed to express human emotion with the utmost accuracy and precision. You can really feel the characters on the page.<br />
-<br />
-The enjoyment of this Manga is off the charts. Throughout its run, there are few manga that can come close to competing with FMA in terms of my expectation and urgency to read the next chapter. Arakawa-sensei is quite simply one of the best raconteuses in the industry. From the pace of the narration, the structure of the panels, and the distribution of roles amongst the characters - everything becomes relavent when you simply read the manga in front of your eyes and let the story flow into your brain. The process is so natural yet so intense. For a person who just picked it up, he/she will have trouble putting it down until the final chapter is read. It is simply a seamless, perfect experience that most other manga artists can only dream to draw.<br />
-<br />
-Despite the simple artwork, the engaging plot, deep characters and perfect enjoyment easily overshadows this to earn FMA a very solid 10/10. You've wasted enough time reading this review. If you haven't started reading FMA yet, you should start right away. Regardless of your gender and age, Fullmetal Alchemist is a manga that no one should leave this World without reading first.<br />
-<br />
-Taken from my Blog: http://imperialx.wordpress.com/2010/06/11/fullmetal-alchemist-review/</span> <a href="javascript:void(0);" id="reviewToggle26988" onclick="reviewToggleText(26988)">read more</a></div>
-					<div>
-		<div style="margin-top: 14px; padding: 3px 0;">
-			<div style="float: right;"><a href="/dbchanges.php?go=reportreview&id=26988" class="lightLink"><small>report</small></a></div><span id="revhelp_output_26988">I found this review <a href="javascript:void(0);" onclick="voteReview(26988,1)" class="button_form">Helpful</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="voteReview(26988,0)" class="button_form">Not Helpful</a></span></div></div>
-				</div>
-				
-				<div class="borderDark" style="padding: 14px 13px;">
-					<div class="spaceit"><div style="text-align: right;">Jun 13, 2010</div>
-					</div>
+            </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/2079/Alex_Louis_Armstrong" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/2/71066t.jpg" alt=" Alex Louis" vspace="4" hspace="8" border="0"></a></div>
+			</div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/2079/Alex_Louis_Armstrong">Armstrong, Alex Louis</a>
+			<div class="spaceit_pad"><small>Supporting</small></div>
+			</div>
+			</td>
+			</tr>
+            </table><div style="padding: 20px 40px;display: inline-block;"><script type="text/javascript">
+googletag.cmd.push(function() {
+  var slot = googletag.defineSlot("/84947469/02PCMangaSAFEmiddleBR01", [[300,250],[336,280]], "div-gpt-ad-1228169583").addService(googletag.pubads());
+      slot.setTargeting('title', 'Fullmetal%20Alchemist');
+      slot.setTargeting('utm_campaign', 'ad_mal_manga_25');
+    slot.setCollapseEmptyDiv(true);
+  googletag.enableServices();
+});
+</script>
+<div id="div-gpt-ad-1228169583" style="width:336px; height:280px;">
+  <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1228169583"); });
+      </script>
+</div>
+</div><div style="padding: 20px 0px;display: inline-block;"><script type="text/javascript">
+googletag.cmd.push(function() {
+  var slot = googletag.defineSlot("/84947469/02PCMangaSAFEmiddleBR02", [[300,250],[336,280]], "div-gpt-ad-218224326").addService(googletag.pubads());
+      slot.setTargeting('title', 'Fullmetal%20Alchemist');
+      slot.setTargeting('utm_campaign', 'ad_mal_manga_25');
+    slot.setCollapseEmptyDiv(true);
+  googletag.enableServices();
+});
+</script>
+<div id="div-gpt-ad-218224326" style="width:336px; height:280px;">
+  <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-218224326"); });
+      </script>
+</div>
+</div><br /><h2><span class="floatRightHeader"><a href="/myreviews.php?mid=25&go=write">Write a review</a> | <a href="/manga/25/Fullmetal_Alchemist/reviews">More reviews</a></span>Reviews</h2>
+				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
+
 					<div class="borderLight reviewDetails">
 					<table border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
@@ -459,21 +405,20 @@ Taken from my Blog: http://imperialx.wordpress.com/2010/06/11/fullmetal-alchemis
 	<div id="revInfo25" rel="m25" class="hoverinfo">
 	</div>
 	</div>
-	
+
 							<a href="/profile/Archaeon">Archaeon</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp27112">304</span></strong> of <strong><span id="rtotal27112">421</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp27112">346</span></strong> people found this review helpful</div>
 							<div><a href="/profile/Archaeon/reviews">Other reviews by this user</a></div>
 						</td>
-						<td style="text-align: right;" valign="top">
-							<div><span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,19870,1); return false;">Add to favorites</a></span></div>
-							<div class="lightLink spaceit">108 of 109 chapters read</div>
+						<td style="text-align: right;" valign="top"><div style="text-align: right;">Jun 13, 2010</div>
+							<div class="lightLink spaceit">108 of 116 chapters read</div>
 							<div><a href="javascript:void(0);" onclick="$('#score27112').toggle()">Overall Rating</a>: 9</div>
 						</td>
 					</tr>
 					</table>
 					</div>
 					<div class="spaceit textReadability">
-					
+
 					<div style="float: left; display: none; margin: 0 10px 10px 0" id="score27112">
 		<table border="0" width="105" cellpadding="0" cellspacing="0" class="borderClass" style="border-width: 1px;">
 		<tr>
@@ -484,7 +429,7 @@ Taken from my Blog: http://imperialx.wordpress.com/2010/06/11/fullmetal-alchemis
 		  <td class="borderClass" align="left">Story</td>
 		  <td class="borderClass">9</td>
 		</tr>
-		
+
 		<tr>
 		  <td class="borderClass" align="left">Art</td>
 		  <td class="borderClass">8</td>
@@ -526,248 +471,712 @@ It's pretty obvious that I enjoyed Full Metal Alchemist immensely, however my on
 <br />
 What Arakawa Hiromu has given us is a work that is truly good, despite some minor niggles here and there, and while there are some typically shounen aspects to the tale, Full Metal Alchemist, like Inuaysha, is a far cry from what one would consider a typical shounen manga.<br />
 <br />
-Isn't it ironic then, that the two of greatest shounen tales weren't written by men?</span> <a href="javascript:void(0);" id="reviewToggle27112" onclick="reviewToggleText(27112)">read more</a></div>
+Isn't it ironic then, that the two of greatest shounen tales weren't written by men?</span> <a href="javascript:void(0);" id="reviewToggle27112" class="js-review-btn-readmore" onclick="reviewToggleText(27112)" data-id="27112">read more</a></div>
 					<div>
-		<div style="margin-top: 14px; padding: 3px 0;">
-			<div style="float: right;"><a href="/dbchanges.php?go=reportreview&id=27112" class="lightLink"><small>report</small></a></div><span id="revhelp_output_27112">I found this review <a href="javascript:void(0);" onclick="voteReview(27112,1)" class="button_form">Helpful</a>&nbsp;&nbsp;<a href="javascript:void(0);" onclick="voteReview(27112,0)" class="button_form">Not Helpful</a></span></div></div>
+		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
+			<div style="float: right;"><a href="/reviews.php?id=27112" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=27112" class="lightLink"><small>report</small></a></div><span id="revhelp_output_27112" class="js-review-btn-helpful js-review-helpful-27112">I found this review <a href="/login.php?from=%2Fmanga%2F25&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
-				
+
+				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
+
+					<div class="borderLight reviewDetails">
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+						<td valign="top" width="60">
+							<div class="picSurround"><a href="/profile/ImperialX"><div class="picSurround"><a href="/profile/ImperialX"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/70716_thumb.jpg" border="0"></a></div></a></div>
+						</td>
+						<td valign="top">
+	<div id="revArea25">
+	<div id="revInfo25" rel="m25" class="hoverinfo">
+	</div>
+	</div>
+
+							<a href="/profile/ImperialX">ImperialX</a><br />
+							<div class="lightLink spaceit"><strong><span id="rhelp26988">296</span></strong> people found this review helpful</div>
+							<div><a href="/profile/ImperialX/reviews">Other reviews by this user</a></div>
+						</td>
+						<td style="text-align: right;" valign="top"><div style="text-align: right;">Jun 10, 2010</div>
+							<div class="lightLink spaceit">108 of 116 chapters read</div>
+							<div><a href="javascript:void(0);" onclick="$('#score26988').toggle()">Overall Rating</a>: 10</div>
+						</td>
+					</tr>
+					</table>
+					</div>
+					<div class="spaceit textReadability">
+
+					<div style="float: left; display: none; margin: 0 10px 10px 0" id="score26988">
+		<table border="0" width="105" cellpadding="0" cellspacing="0" class="borderClass" style="border-width: 1px;">
+		<tr>
+		  <td class="borderClass bgColor1"><strong>Overall</strong></td>
+		  <td class="borderClass bgColor1"><strong>10</strong></td>
+		</tr>
+		<tr>
+		  <td class="borderClass" align="left">Story</td>
+		  <td class="borderClass">10</td>
+		</tr>
+
+		<tr>
+		  <td class="borderClass" align="left">Art</td>
+		  <td class="borderClass">8</td>
+		</tr>
+		<tr>
+		  <td class="borderClass" align="left">Character</td>
+		  <td class="borderClass">10</td>
+		</tr>
+		<tr>
+		  <td class="borderClass" style="border-width: 0;" align="left">Enjoyment</td>
+		  <td class="borderClass" style="border-width: 0;">10</td>
+		</tr>
+		</table>
+		</div>I shed a tear as I read the last chapter of this manga. A manga that I've been following since I was in Primary School has just concluded with the most epic and satisfying finale. I'm sad to see one of my favourite series of all time finish, yet I'm happy to see such a great ending. I really want to procrastinate more, but I should press onwards with the review and leave that for discussion in the forums.<br />
+<br />
+Fullmetal Alchemist is one of the most innovative manga I've ever had the pleasure of reading. The concept of Alchemy itself was a superb idea, and in <span style="display: none;" id="review26988">its nine-year run, there has never been a single wasted pages from Arakawa-sensei. The plot was developed with utmost detail into what is arguably one of the deepest and most engaging storylines to ever grace itself to us Manga fans. There is practically no fillers chapters at all, unlike most other shounen manga to reach this calibre of popularity. Also, the entire storyline has been perfectly planned out and stayed linear for the entire nine-year run, a staggering feat when you compare it to other Mangas in the same genre. If you read this manga from start to finish, you will be amazed at the coherency of the chapters and the inter-relations. You won't think that this was drawn over nine years, more like one long movie shown from start to finish. The ending is also incredibly rewarding for those who follow it up to the end. I won't leave any spoilers here, but know that you won't be disappointed, regardless of how high your expectation is.<br />
+<br />
+FMA, in its nine-year run, had plenty of time to develop a large family of colourful characters. Arakawa-sensei is downright masterful when it comes to her characters. From beginning to end, every character was tweaked to perfection and not a single person is wasted. Also, the reader will not have any trouble getting into their shows because they're all so believable and realistic. From Ed and Al's passionate desire to be reunited with their mother to Roy's tragic past in the Ishballian conflict, and how everything was simply a Chesspiece for the Father's master plan, everyone fits right into place. The plot itself is completely character-driven, and is dependent on all of the characters to make it flourish.<br />
+<br />
+The philosophical deepness of this manga is simply mindblowing for a Shounen manga. Behind each fight is a meaning waiting to be explored. Nothing in this manga happens for show. FMA explores the very purpose of existence, consistently refers to "the purpose of fighting" and goes deep into human emotions. From start to finish, as the character discover the answers to their questions, the reader will also be brought into their World and learn with them, just because that every character is so humane and understandable. The homunculi, named after the seven deadly sins, are also testament to the deepness on FMA. Despite their incredible powers and might over humans, all of them show true sadness that are completely delivered to the reader with Arakawa-sensei's masterful storytelling.<br />
+<br />
+As for the Artwork, it isn't anything mind-blowing, but it's clean and efficient. Arakawa-sensei doesn't waste any panels in her chapters and gets straight to-the-point. One page of FMA will easily deliver more content than 3 pages of Bleach, and since FMA is a plot-driven manga, there's no room for complaints here and doesn't do anything to diminish the enjoyment. It should be noted that, despite the simplistic artwork, Arakawa-sensei never failed to express human emotion with the utmost accuracy and precision. You can really feel the characters on the page.<br />
+<br />
+The enjoyment of this Manga is off the charts. Throughout its run, there are few manga that can come close to competing with FMA in terms of my expectation and urgency to read the next chapter. Arakawa-sensei is quite simply one of the best raconteuses in the industry. From the pace of the narration, the structure of the panels, and the distribution of roles amongst the characters - everything becomes relavent when you simply read the manga in front of your eyes and let the story flow into your brain. The process is so natural yet so intense. For a person who just picked it up, he/she will have trouble putting it down until the final chapter is read. It is simply a seamless, perfect experience that most other manga artists can only dream to draw.<br />
+<br />
+Despite the simple artwork, the engaging plot, deep characters and perfect enjoyment easily overshadows this to earn FMA a very solid 10/10. You've wasted enough time reading this review. If you haven't started reading FMA yet, you should start right away. Regardless of your gender and age, Fullmetal Alchemist is a manga that no one should leave this World without reading first.<br />
+<br />
+Taken from my Blog: http://imperialx.wordpress.com/2010/06/11/fullmetal-alchemist-review/</span> <a href="javascript:void(0);" id="reviewToggle26988" class="js-review-btn-readmore" onclick="reviewToggleText(26988)" data-id="26988">read more</a></div>
+					<div>
+		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
+			<div style="float: right;"><a href="/reviews.php?id=26988" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=26988" class="lightLink"><small>report</small></a></div><span id="revhelp_output_26988" class="js-review-btn-helpful js-review-helpful-26988">I found this review <a href="/login.php?from=%2Fmanga%2F25&error=login_required" class="button_form">Helpful</a></span></div></div>
+				</div>
+
+				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
+
+					<div class="borderLight reviewDetails">
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+						<td valign="top" width="60">
+							<div class="picSurround"><a href="/profile/iAlkemy"><div class="picSurround"><a href="/profile/iAlkemy"><img src="http://cdn.myanimelist.net/images/questionmark_50.gif" border="0"></a></div></a></div>
+						</td>
+						<td valign="top">
+	<div id="revArea25">
+	<div id="revInfo25" rel="m25" class="hoverinfo">
+	</div>
+	</div>
+
+							<a href="/profile/iAlkemy">iAlkemy</a><br />
+							<div class="lightLink spaceit"><strong><span id="rhelp3656">101</span></strong> people found this review helpful</div>
+							<div><a href="/profile/iAlkemy/reviews">Other reviews by this user</a></div>
+						</td>
+						<td style="text-align: right;" valign="top"><div style="text-align: right;">Apr 5, 2008</div>
+							<div class="lightLink spaceit">81 of 116 chapters read</div>
+							<div><a href="javascript:void(0);" onclick="$('#score3656').toggle()">Overall Rating</a>: 10</div>
+						</td>
+					</tr>
+					</table>
+					</div>
+					<div class="spaceit textReadability">
+
+					<div style="float: left; display: none; margin: 0 10px 10px 0" id="score3656">
+		<table border="0" width="105" cellpadding="0" cellspacing="0" class="borderClass" style="border-width: 1px;">
+		<tr>
+		  <td class="borderClass bgColor1"><strong>Overall</strong></td>
+		  <td class="borderClass bgColor1"><strong>10</strong></td>
+		</tr>
+		<tr>
+		  <td class="borderClass" align="left">Story</td>
+		  <td class="borderClass">10</td>
+		</tr>
+
+		<tr>
+		  <td class="borderClass" align="left">Art</td>
+		  <td class="borderClass">8</td>
+		</tr>
+		<tr>
+		  <td class="borderClass" align="left">Character</td>
+		  <td class="borderClass">9</td>
+		</tr>
+		<tr>
+		  <td class="borderClass" style="border-width: 0;" align="left">Enjoyment</td>
+		  <td class="borderClass" style="border-width: 0;">10</td>
+		</tr>
+		</table>
+		</div>Fullmetal Alchemist is one of the most amazing, interesting, emotional series I've ever been fortunate to read. The powerful mix of brilliant characters, an outstanding plot,  interesting settings, and thoughtful concepts drew me in from the very beginning.<br />
+<br />
+Story: (10) I give this series 10 when it comes to story. Fullmetal's plot is one of the most well-developed and interesting plots I have ever encountered when dealing with manga. Every event has a reaction that ends up playing larger roles in the story than you would think. <br />
+<br />
+Art: (8) I give this series an 8 when it comes to art. Hiromu Arakawa has, without a <span style="display: none;" id="review3656">doubt, tremendous skill when it comes to expressing emotions and human anatomy. However, her work slips in some places, some more noticeable than others. The fact that she is working on at least two series at one time is obviously effecting her work, as the quality of the art does not have a steady line as more chapters are released. Regardless, Arakawa has definite skills, and makes up for her slips with dedication to the characters, plots, and settings.<br />
+<br />
+Character: (9) With every character that is introduced, Arakawa has never failed to surprise me. Fullmetal's characters are some of the most well-developed characters I have ever come across. Their personalities are unique and effective to other characters and the plot, and their pasts are explored with such detail and emotion that the characters alone could keep me dedicated to this series.<br />
+<br />
+Enjoyment: (10) I have followed this series since its August 2001 debut, and it has never lost my interest, or hit a dull note. The excitement, suspense, sadness, anger, and happiness I have felt alongside the characters amazes me.<br />
+<br />
+Overall: (10) Overall, I give this series a 10. This series is definitely worth my time and money, and I highly recommend it to everyone!</span> <a href="javascript:void(0);" id="reviewToggle3656" class="js-review-btn-readmore" onclick="reviewToggleText(3656)" data-id="3656">read more</a></div>
+					<div>
+		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
+			<div style="float: right;"><a href="/reviews.php?id=3656" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=3656" class="lightLink"><small>report</small></a></div><span id="revhelp_output_3656" class="js-review-btn-helpful js-review-helpful-3656">I found this review <a href="/login.php?from=%2Fmanga%2F25&error=login_required" class="button_form">Helpful</a></span></div></div>
+				</div>
+
+				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
+
+					<div class="borderLight reviewDetails">
+					<table border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tr>
+						<td valign="top" width="60">
+							<div class="picSurround"><a href="/profile/EmeraldWolfChild"><div class="picSurround"><a href="/profile/EmeraldWolfChild"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/11574_thumb.jpg" border="0"></a></div></a></div>
+						</td>
+						<td valign="top">
+	<div id="revArea25">
+	<div id="revInfo25" rel="m25" class="hoverinfo">
+	</div>
+	</div>
+
+							<a href="/profile/EmeraldWolfChild">EmeraldWolfChild</a><br />
+							<div class="lightLink spaceit"><strong><span id="rhelp2932">80</span></strong> people found this review helpful</div>
+							<div><a href="/profile/EmeraldWolfChild/reviews">Other reviews by this user</a></div>
+						</td>
+						<td style="text-align: right;" valign="top"><div style="text-align: right;">Mar 7, 2008</div>
+							<div class="lightLink spaceit">75 of 116 chapters read</div>
+							<div><a href="javascript:void(0);" onclick="$('#score2932').toggle()">Overall Rating</a>: 10</div>
+						</td>
+					</tr>
+					</table>
+					</div>
+					<div class="spaceit textReadability">
+
+					<div style="float: left; display: none; margin: 0 10px 10px 0" id="score2932">
+		<table border="0" width="105" cellpadding="0" cellspacing="0" class="borderClass" style="border-width: 1px;">
+		<tr>
+		  <td class="borderClass bgColor1"><strong>Overall</strong></td>
+		  <td class="borderClass bgColor1"><strong>10</strong></td>
+		</tr>
+		<tr>
+		  <td class="borderClass" align="left">Story</td>
+		  <td class="borderClass">10</td>
+		</tr>
+
+		<tr>
+		  <td class="borderClass" align="left">Art</td>
+		  <td class="borderClass">8</td>
+		</tr>
+		<tr>
+		  <td class="borderClass" align="left">Character</td>
+		  <td class="borderClass">10</td>
+		</tr>
+		<tr>
+		  <td class="borderClass" style="border-width: 0;" align="left">Enjoyment</td>
+		  <td class="borderClass" style="border-width: 0;">10</td>
+		</tr>
+		</table>
+		</div>First review for a manga series because I have to do this! I can't believe no one has yet written one!!<br />
+<br />
+Story: I am not going to go in the whole 'this happens and that happens' as you can read that in the summary up there *points* About the story itself, all I can say is that it has one of the best developed plots I have ever encountered. Everything comes closer and closer to the main goal and even when you think it has nothing to do with the story, you find out that it has a tremendous value to the whole tale. It definitely <span style="display: none;" id="review2932">deserves to be in the top spots for this. A 10.<br />
+<br />
+ Art: The art is a tad bit simplistic, but I guess this is what makes the pages nice and neat and pleasant to read, while also making the characters look absolutely endearing! It's not cluttered up like a lot of manga these days but it conveys the mood just as effectively. I really think that this deserves and 8.<br />
+<br />
+Character: One of the best characters out there, I personaly consider Ed, Al, Winry, Mustang, Riza....everyone! to be absolutely perfect. So far I have no problem understanding what each person went through; no confusing twists in characyer development that could bring the reader to drop it just because they would give up on following them. Each and every one of these characters will make a you cry for them why you see their hardships and laugh with them at cracked skulls (of wrenches XD) A 10 and no less.<br />
+<br />
+ Enjoyment: From all of the manga I've ever encountered, I think this one will stay pretty near the top for the next 5 years or so. If you want Action,Adventure,Sci-Fi, Alchemy and even Romance, then this is definitely something for you. You get a little thrill everytime you sit down to a new chapter. I hope it doesn't end too soon XD<br />
+<br />
+Overall: If you want a manga woth your time and money, FMA is for you. In all, nothing could be said bad about it. It's incredible!<br />
+<br />
+I hope this helps everyone! :] Please take a look at it if you get the chance!</span> <a href="javascript:void(0);" id="reviewToggle2932" class="js-review-btn-readmore" onclick="reviewToggleText(2932)" data-id="2932">read more</a></div>
+					<div>
+		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
+			<div style="float: right;"><a href="/reviews.php?id=2932" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=2932" class="lightLink"><small>report</small></a></div><span id="revhelp_output_2932" class="js-review-btn-helpful js-review-helpful-2932">I found this review <a href="/login.php?from=%2Fmanga%2F25&error=login_required" class="button_form">Helpful</a></span></div></div>
+				</div>
+				<div class="mt4"></div><div style="padding:16px 0px 0px 0px;"><div style="width:728px; height:90px; margin:0 auto"><script type="text/javascript">
+googletag.cmd.push(function() {
+  var slot = googletag.defineSlot("/84947469/02PCMangaSAFEbottomLB02", [728,90], "div-gpt-ad-571388676").addService(googletag.pubads());
+      slot.setTargeting('title', 'Fullmetal%20Alchemist');
+      slot.setTargeting('utm_campaign', 'ad_mal_manga_25');
+    slot.setCollapseEmptyDiv(true);
+  googletag.enableServices();
+});
+</script>
+<div id="div-gpt-ad-571388676" style="width:728px; height:90px;">
+  <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-571388676"); });
+      </script>
+</div>
+</div></div>
 		<br />
 		<h2>
-		<div style="float: right; font-weight: normal;"><a href="/manga/25/Fullmetal_Alchemist/userrecs">More recommendations</a></div>
-		User Recommendations</h2>
-		
+		<div class="floatRightHeader"><a href="/myrecommendations.php?go=make&mid=25">Make a recommendation</a> | <a href="/manga/25/Fullmetal_Alchemist/userrecs">More recommendations</a></div>
+		Recommendations</h2>
+
 			<div class="borderClass">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td width="60" valign="top">
-				<div class="picSurround"><a href="/manga/24/D.Gray-man" class="hoverinfo_trigger" id="#raArea124" rel="#raInfo124"><img src="http://cdn.myanimelist.net/images/manga/1/126137t.jpg" border="0"></a></div>
+				<div class="picSurround"><a href="/manga/24/D.Gray-man" class="hoverinfo_trigger" id="#raArea124" rel="#raInfo124"><img src="http://cdn.myanimelist.net/images/manga/3/28084t.jpg" border="0" alt="Manga: D.Gray-man"></a></div>
 				</td>
 				<td valign="top">
-				
+
 	<div id="raArea124">
 	<div id="raInfo124" rel="m24" class="hoverinfo">
 	</div>
 	</div>
-	
-				<div style="margin-bottom: 2px;"><a href="/manga/24/D.Gray-man"><strong>D.Gray-man</strong></a> <a href="/panel.php?go=addmanga&selected_manga_id=24&hideLayout" title="Quick add manga to my list" class="Lightbox_AddEdit button_add">add</a></div>
-				
+
+				<div style="margin-bottom: 2px;"><a href="/manga/24/D.Gray-man"><strong>D.Gray-man</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fmanga%2F25" title="Quick add manga to my list" class="button_add ">add</a>
+</div>
+
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">Despite having very different goals, both manga have some similarities.  Such as the physical similarities between Ed and Allen as well as the running theme of Good vs Evil.  However, D.Gray-man has a "religious" aspect in the manga, while FMA was based upon science and alchemy. </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=1087" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Akaike">Akaike</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,32105,2); return false;">Add to favorites</a></span></div>
+					<div class="spaceit_pad">Despite having very different goals, both manga have some similarities.  Such as the physical similarities between Ed and Allen as well as the running theme of Good vs Evil.  However, D.Gray-man has a "religious" aspect in the manga, while FMA was based upon science and alchemy.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=1087" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Akaike">Akaike</a></div>
 					</div>
-						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(25,0);">Read recommendations by <strong>5</strong> more users</a></div>
+						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(25,0);">Read recommendations by <strong>6</strong> more users</a></div>
 						<div id="simaid0" style="display: none;">
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">The Main Character (Allen/Ed) feel the same about their comrades, act similar and the Plot is almost the same - Searching for something very important.<br />
-Also, the humour is very similar for example when Kanda calls Allen a beansprout and the people in FMA call Ed Shortie and both react a bit... unfriendly ^-^ </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=3682" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Dreamcrystall">Dreamcrystall</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,39840,2); return false;">Add to favorites</a></span></div>
+Also, the humour is very similar for example when Kanda calls Allen a beansprout and the people in FMA call Ed Shortie and both react a bit... unfriendly ^-^&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=3682" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Dreamcrystall">Dreamcrystall</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both of these manga are have a lot of humor in them, but the central plot is more on the sad side. The main characters of both FMA and DGM have some kind of issue with one of their arms, and both series involve rather supernatural things. Each also has a plethora of characters, including "the annoying (but awesome) higher up" and "the 'evil' teacher."<br />
-Overall, both DGM and FMA are great series, and should definitely be on everyone's Must Read List. </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=4760" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Joue">Joue</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,48322,2); return false;">Add to favorites</a></span></div>
+Overall, both DGM and FMA are great series, and should definitely be on everyone's Must Read List.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=4760" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Joue">Joue</a></div>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">D.Gray-man has a very similar "feel" to Fullmetal Alchemist, especially as the series progresses. They're both really well done stories full of badass characters.  </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=2941" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/adamantine">adamantine</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,77526,2); return false;">Add to favorites</a></span></div>
+					<div class="spaceit_pad">D.Gray-man has a very similar "feel" to Fullmetal Alchemist, especially as the series progresses. They're both really well done stories full of badass characters. &nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=2941" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/adamantine">adamantine</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">In many ways Allen Walker, the main character of D.Gray-Man, and Edward Elric, one of the main characters of Fullmetal Alchemist are similar. To the way they try to protect everyone around them even when it means sacrificing themselves, having a weapon for a arm. Both series have similar enemies as well. The antagonist(s) of each series has a grudge against mankind and they believe its their duty to destroy it.  </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=4058" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Gesicht">Gesicht</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,184562,2); return false;">Add to favorites</a></span></div>
+					<div class="spaceit_pad">In many ways Allen Walker, the main character of D.Gray-Man, and Edward Elric, one of the main characters of Fullmetal Alchemist are similar. To the way they try to protect everyone around them even when it means sacrificing themselves, having a weapon for a arm. Both series have similar enemies as well. The antagonist(s) of each series has a grudge against mankind and they believe its their duty to destroy it. &nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=4058" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Gesicht">Gesicht</a></div>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">Atypical battle shounen, more found in the drama and the characters than in the fights. Both deals with religious and dark themes, mostly concerned about resurrection. The main character is similar in personality and a bit in looks, and both have a special arm that they use to fight. </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=27919" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/AlexiLaiho09">AlexiLaiho09</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,513456,2); return false;">Add to favorites</a></span></div>
+					<div class="spaceit_pad">Atypical battle shounen, more found in the drama and the characters than in the fights. Both deals with religious and dark themes, mostly concerned about resurrection. The main character is similar in personality and a bit in looks, and both have a special arm that they use to fight.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=27919" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/BlindNoldor">BlindNoldor</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">The main characters of both mangas  are very similar in physical appearance.Both have similar themes but D.Gray-man is more about religion and stuff and Fullmetal alchemist is more about alchemy and equivalent exchange.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=38291" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Alejandro13">Alejandro13</a></div>
 					</div></div>
 				</td>
 			</tr>
 			</table>
 			</div>
-			
+
 			<div class="borderClass">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td width="60" valign="top">
-				<div class="picSurround"><a href="/manga/14790/Magi:_The_Labyrinth_of_Magic" class="hoverinfo_trigger" id="#raArea114790" rel="#raInfo114790"><img src="http://cdn.myanimelist.net/images/manga/2/98589t.jpg" border="0"></a></div>
+				<div class="picSurround"><a href="/manga/14790/Magi:_The_Labyrinth_of_Magic" class="hoverinfo_trigger" id="#raArea114790" rel="#raInfo114790"><img src="http://cdn.myanimelist.net/images/manga/4/62609t.jpg" border="0" alt="Manga: Magi: The Labyrinth of Magic"></a></div>
 				</td>
 				<td valign="top">
-				
+
 	<div id="raArea114790">
 	<div id="raInfo114790" rel="m14790" class="hoverinfo">
 	</div>
 	</div>
-	
-				<div style="margin-bottom: 2px;"><a href="/manga/14790/Magi:_The_Labyrinth_of_Magic"><strong>Magi: The Labyrinth of Magic</strong></a> <a href="/panel.php?go=addmanga&selected_manga_id=14790&hideLayout" title="Quick add manga to my list" class="Lightbox_AddEdit button_add">add</a></div>
-				
+
+				<div style="margin-bottom: 2px;"><a href="/manga/14790/Magi:_The_Labyrinth_of_Magic"><strong>Magi: The Labyrinth of Magic</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fmanga%2F25" title="Quick add manga to my list" class="button_add ">add</a>
+</div>
+
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">I'm surprised no one's recommended Fullmetal Alchemist yet. Magi and FMA are similar in that they both started out quite light-hearted and may fool you into thinking they're all about action and adventure. However, they're actually much deeper than that. There is great focus on the politics, the different sides scheming against each other. Character development is also given much thought in both series, and despite the big casts, both series manage to make most of them likable. </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=23331" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Leatrix">Leatrix</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,331239,2); return false;">Add to favorites</a></span></div>
+					<div class="spaceit_pad">I'm surprised no one's recommended Fullmetal Alchemist yet. Magi and FMA are similar in that they both started out quite light-hearted and may fool you into thinking they're all about action and adventure. However, they're actually much deeper than that. There is great focus on the politics, the different sides scheming against each other. Character development is also given much thought in both series, and despite the big casts, both series manage to make most of them likable.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=23331" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Leatrix">Leatrix</a></div>
 					</div>
 						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(25,1);">Read recommendations by <strong>4</strong> more users</a></div>
 						<div id="simaid1" style="display: none;">
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">well... on plain sight magi is more like some " onepiece esque " mythical and adventurous shonen story but if you care to delve deeper into the story the problems and issues behind a crisis and political agenda , and outcome of decisions,slavery etc will surely remind you of fma which some times end up being a matter of moral perspectives ...you really cant define confidently the concept of good and evil at times in this manga and you tend to think whats the reason behind this particular action...however ,aside from shonen elements, from the  perspective of "food for thoughts" , both are great read . </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=25989" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/headless_nick">headless_nick</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,420295,2); return false;">Add to favorites</a></span></div>
+					<div class="spaceit_pad">well... on plain sight magi is more like some " onepiece esque " mythical and adventurous shonen story but if you care to delve deeper into the story the problems and issues behind a crisis and political agenda , and outcome of decisions,slavery etc will surely remind you of fma which some times end up being a matter of moral perspectives ...you really cant define confidently the concept of good and evil at times in this manga and you tend to think whats the reason behind this particular action...however ,aside from shonen elements, from the  perspective of "food for thoughts" , both are great <span style="display: none;" id="recommend25989">read .</span>&nbsp<a href="javascript:void(0);" id="recommendToggle25989" onclick="recommendToggleText(25989)">read more</a>&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=25989" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/headless_nick">headless_nick</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">They are more than the typical battle shounen. While containing light comedy the story is dramatic. The center is the world domination, but it focuses more into military and diplomacy than in standalone battles. They become very deep and there are a sense of vagueness of what is good and what is evil, but always with the objective of global happiness. </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=25917" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/AlexiLaiho09">AlexiLaiho09</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,513456,2); return false;">Add to favorites</a></span></div>
+					<div class="spaceit_pad">They are more than the typical battle shounen. While containing light comedy the story is dramatic. The center is the world domination, but it focuses more into military and diplomacy than in standalone battles. They become very deep and there are a sense of vagueness of what is good and what is evil, but always with the objective of global happiness.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=25917" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/BlindNoldor">BlindNoldor</a></div>
 					</div>
 					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
-					<div class="spaceit_pad">both manga express a very good plot, using the politics to develop the story, as great carismatic protagonists and very useful secondary characters, the two mangas have a very good world, that have so much culture and other great things. </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=25373" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/lucas1913">lucas1913</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,2352395,2); return false;">Add to favorites</a></span></div>
+					<div class="spaceit_pad">both manga express a very good plot, using the politics to develop the story, as great carismatic protagonists and very useful secondary characters, the two mangas have a very good world, that have so much culture and other great things.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=25373" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/lucas1913">lucas1913</a></div>
 					</div>
 					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
 					<div class="spaceit_pad">Both have serious moments, some gore, tragedic moments, sad moments, yet also comic relief that will make you crack up. Both have themes of evil and sin, humanity, brotherhood ( brotherly relationship ), friendship, greed. They both have dark/gorey aspects yet a cheerful warm side as well.
 
-They both contain special abilities/powers (alchemy and some swords/weapons in FMA, magic and swords/weapons in Magi). They both contain kickass awesome female characters that dont suck at all. They don't cry for help, they are far from being damsels in distress. They are definitely strong (physically and mentally) and likeable; they dont lose to the males at all. 
-Both male and females can fight, and kick ass.
+They both contain special abilities/powers (alchemy and some swords/weapons in FMA, magic and swords/weapons in Magi). They both contain kickass awesome female characters that dont suck at all. They don't cry for help, they are far from being damsels in distress. They are definitely strong (physically and mentally) and likeable; they dont lose to the males at all.
+Both <span style="display: none;" id="recommend27083">male and females can fight, and kick ass.
 
-The lead male characters have strong bonds and friendship/brotherly relationship in both manga. The females in Magi are kickass, especially the female lead imo. (you will LOVE her). The females in FMA are also kickass and you will LOVE 'em. The males in both series are also kickass; you will love em! Of course, the main characters get stronger, and they are not 'invincible' and do have their limitations in power. 
+The lead male characters have strong bonds and friendship/brotherly relationship in both manga. The females in Magi are kickass, especially the female lead imo. (you will LOVE her). The females in FMA are also kickass and you will LOVE 'em. The males in both series are also kickass; you will love em! Of course, the main characters get stronger, and they are not 'invincible' and do have their limitations in power.
 
-So i'm sure if you like one, you will like the other! (: 
-  </div>
-					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=27083" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/icecreamisgood">icecreamisgood</a> - <span><a href="javascript:void(0);" onclick="addRemoveFavorite(this,3059011,2); return false;">Add to favorites</a></span></div>
+So i'm sure if you like one, you will like the other! (:
+ </span>&nbsp<a href="javascript:void(0);" id="recommendToggle27083" onclick="recommendToggleText(27083)">read more</a>&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=27083" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/icecreamisgood">icecreamisgood</a></div>
 					</div></div>
 				</td>
 			</tr>
 			</table>
 			</div>
-			
-		<div class="spaceit"><a href="/myrecommendations.php?go=make&mid=25">Make a recommendation for Fullmetal Alchemist</a></div>
-		<br />
-		<h2><div style="float: right; font-weight: normal;"><a href="/manga/25/Fullmetal_Alchemist/news">See More</a></div>Recent News</h2>
+
+			<div class="borderClass">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td width="60" valign="top">
+				<div class="picSurround"><a href="/manga/39/Zombiepowder." class="hoverinfo_trigger" id="#raArea139" rel="#raInfo139"><img src="http://cdn.myanimelist.net/images/manga/2/111053t.jpg" border="0" alt="Manga: Zombiepowder."></a></div>
+				</td>
+				<td valign="top">
+
+	<div id="raArea139">
+	<div id="raInfo139" rel="m39" class="hoverinfo">
+	</div>
+	</div>
+
+				<div style="margin-bottom: 2px;"><a href="/manga/39/Zombiepowder."><strong>Zombiepowder.</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fmanga%2F25" title="Quick add manga to my list" class="button_add ">add</a>
+</div>
+
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Both deal with going on an epic quest to aquire an item that has the power to bring a loved one back from the dead or grant awesome powers to the living&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=2719" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/havaroth">havaroth</a></div>
+					</div>
+						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(25,2);">Read recommendations by <strong>2</strong> more users</a></div>
+						<div id="simaid2" style="display: none;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">they both deal with people looking for somthing to bring people back to life,and if you ask me thay are writen alike. &nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=3736" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Deanna_la_la">Deanna_la_la</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Bringing the dead back to life, at some point in our life we all wish we could do that. But it is no possible... Or is it? In both of these manga the main characters are on a quest to get a legendary item that should be able to bring the dead back to life. On this quest they have to fight a lot of enemies. The battles in both of these manga are so epic that you are no likely to forget them very soon.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=36113" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Darkbow">Darkbow</a></div>
+					</div></div>
+				</td>
+			</tr>
+			</table>
+			</div>
+
+			<div class="borderClass">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td width="60" valign="top">
+				<div class="picSurround"><a href="/manga/41/Busou_Renkin" class="hoverinfo_trigger" id="#raArea141" rel="#raInfo141"><img src="http://cdn.myanimelist.net/images/manga/2/149583t.jpg" border="0" alt="Manga: Busou Renkin"></a></div>
+				</td>
+				<td valign="top">
+
+	<div id="raArea141">
+	<div id="raInfo141" rel="m41" class="hoverinfo">
+	</div>
+	</div>
+
+				<div style="margin-bottom: 2px;"><a href="/manga/41/Busou_Renkin"><strong>Busou Renkin</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fmanga%2F25" title="Quick add manga to my list" class="button_add ">add</a>
+</div>
+
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Series that take alchemy as a basic plot element and then take off running in opposite directions. It's pretty cool to see how they use the same topic in completely different ways.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=8199" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/lithiumflower">lithiumflower</a></div>
+					</div>
+						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(25,3);">Read recommendations by <strong>2</strong> more users</a></div>
+						<div id="simaid3" style="display: none;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Similar villians in that they both want to be nearly immortal.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=4377" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Biocide">Biocide</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Both are about alchemy, and deal with themes like immortality and the resurrection of the dead. &nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=32235" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/BlindNoldor">BlindNoldor</a></div>
+					</div></div>
+				</td>
+			</tr>
+			</table>
+			</div>
+
+			<div class="borderClass">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td width="60" valign="top">
+				<div class="picSurround"><a href="/manga/3031/Pandora_Hearts" class="hoverinfo_trigger" id="#raArea13031" rel="#raInfo13031"><img src="http://cdn.myanimelist.net/images/manga/2/80893t.jpg" border="0" alt="Manga: Pandora Hearts"></a></div>
+				</td>
+				<td valign="top">
+
+	<div id="raArea13031">
+	<div id="raInfo13031" rel="m3031" class="hoverinfo">
+	</div>
+	</div>
+
+				<div style="margin-bottom: 2px;"><a href="/manga/3031/Pandora_Hearts"><strong>Pandora Hearts</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fmanga%2F25" title="Quick add manga to my list" class="button_add ">add</a>
+</div>
+
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Pandora is abit similar to FMA, Ed is a person who as a child had his father leave him , while in Pandora hearts, Oz's father abandons him and though they are entirely for different reasons, it still has the aspects of their father's being a mystery. Both FMA and Pandora hearts have deep plots such as Homunculus being mysterious group that have unknown intentions, while in Pandora hearts, the Baskervilles are a family whose leader is unknown and their intentions also unknown. They both contain fights which explore characters,different abilities as well as the theme of immature main characters who start growing out of <span style="display: none;" id="recommend4196">it.</span>&nbsp<a href="javascript:void(0);" id="recommendToggle4196" onclick="recommendToggleText(4196)">read more</a>&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=4196" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Arondight">Arondight</a></div>
+					</div>
+						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(25,4);">Read recommendations by <strong>2</strong> more users</a></div>
+						<div id="simaid4" style="display: none;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Both have pseudo-European settings with a bit of light "magic"; the main character (Ed, Oz) is forced into working for an organization after having a horrible experience.  They both have to prevent a repeat of the past which could destroy the world.
+
+Both series have large casts of interesting characters on both the good and bad side, as well as ones who you don't know which side they're on; the main bad guy stays in the shadows for a long time.  Have an alternate dimension (the gate, the abyss).  Have heavy mysteries, plot twists, and suspense.  Don't have a huge amount of <span style="display: none;" id="recommend8959">violence, and practically zero ecchi.  Some scary monsters, though.
+
+Ed and Oz have similar personalities; though Ed is more forceful, and Oz more happy-go-lucky.  Both have lost their mothers and were abandoned by their fathers.
+
+The art styles are different from each other, but each is very distinctive and memorable.  FA is definitely shounen; PH seems to lean a little more toward shoujo (it has lots of bishounens).  Both are rather long, and it takes a while to get to the core story, but if you're patient, you get there.</span>&nbsp<a href="javascript:void(0);" id="recommendToggle8959" onclick="recommendToggleText(8959)">read more</a>&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=8959" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/IceAndCream">IceAndCream</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Both series seem to be contained, shorter series, not long manga like Bleach or One Piece. Each involves a consispiracy with fantastical elements. The center of both is a boy, although Ed and Oz are supposedly a couple years apart. They both deal beautifully with the issues they raise, and both give us unbelievable twists. Most importantly, they are both fantastic manga, some of the best out there.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=12209" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/ToshiMonster">ToshiMonster</a></div>
+					</div></div>
+				</td>
+			</tr>
+			</table>
+			</div>
+
+			<div class="borderClass">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td width="60" valign="top">
+				<div class="picSurround"><a href="/manga/13492/Ao_no_Exorcist" class="hoverinfo_trigger" id="#raArea113492" rel="#raInfo113492"><img src="http://cdn.myanimelist.net/images/manga/2/120825t.jpg" border="0" alt="Manga: Ao no Exorcist"></a></div>
+				</td>
+				<td valign="top">
+
+	<div id="raArea113492">
+	<div id="raInfo113492" rel="m13492" class="hoverinfo">
+	</div>
+	</div>
+
+				<div style="margin-bottom: 2px;"><a href="/manga/13492/Ao_no_Exorcist"><strong>Ao no Exorcist</strong></a>       <a href="/login.php?error=login_required&amp;from=%2Fmanga%2F25" title="Quick add manga to my list" class="button_add ">add</a>
+</div>
+
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Although nearly everything about Ao no Futsumashi (a.k.a. Ao no Exorcist) and Fullmetal Alchemist is completely different, there is something about Ao no Futsumashi that makes it feel like the next Fullmetal Alchemist (in terms of greatness). Despite all their differences (concept, story, world mechanics, plot, etc...), there are some very notable parallels within the format of the two mangas.
+
+Both mangas have a smooth way of floating through it's more comical moments and underlying drama without seeming false. All characters, from both series, were drawn with great care and detail, thus making every character have it's own unique look. Each chapter has a <span style="display: none;" id="recommend9497">feel of completeness yet leaves the reader hungering for more. Fights are well executed and not overly prolonged. Both mangas start off with a clear goal thus preventing the reader from feeling lost do to a lack of purpose within the plot. Seamless transitions between chapters.</span>&nbsp<a href="javascript:void(0);" id="recommendToggle9497" onclick="recommendToggleText(9497)">read more</a>&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=9497" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/Pezz">Pezz</a></div>
+					</div>
+						<div class="spaceit"><a href="javascript:void(0);" onclick="getRecommendation(25,5);">Read recommendations by <strong>2</strong> more users</a></div>
+						<div id="simaid5" style="display: none;">
+					<div class="borderClass bgColor2" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">The protagonists in both are a pair of brothers with special abilities. Both are paired with a girl that helps them, with some small romantic scenes. The mother of the protagonists died when they were young, the father is a supernatural being (Satan in Ao no Exorcist, an Homunculus in Fullmetal) and both have a military/policiacal background. Both are shounen mangas by female mangakas.&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=18711" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/BlindNoldor">BlindNoldor</a></div>
+					</div>
+					<div class="borderClass bgColor1" style="padding: 3px; border-width: 1px 0 0 0; margin: 4px 0;">
+					<div class="spaceit_pad">Although nearly everything about Ao no Futsumashi (a.k.a. Ao no Exorcist) and Fullmetal Alchemist is completely different, there is something about Ao no Futsumashi that makes it feel like the next Fullmetal Alchemist (in terms of greatness). Despite all their differences (concept, story, world mechanics, plot, etc...), there are some very notable parallels within the format of the two mangas. Both mangas have a smooth way of floating through it's more comical moments and underlying drama without seeming false. All characters, from both series, were drawn with great care and detail, thus making every character have it's own unique look. Each chapter has a feel <span style="display: none;" id="recommend29273">of completeness yet leaves the reader hungering for more. Fights are well executed and not overly prolonged. Both mangas start off with a clear goal thus preventing the reader from feeling lost do to a lack of purpose within the plot. Seamless transitions between chapters. </span>&nbsp<a href="javascript:void(0);" id="recommendToggle29273" onclick="recommendToggleText(29273)">read more</a>&nbsp;</div>
+					<div class="spaceit_pad"><span style="float: right;"><a href="/dbchanges.php?go=reportmangarecommendation&id=29273" class="lightLink"><small>report</small></a></span>Recommended by <a href="/profile/saiuchiha012">saiuchiha012</a></div>
+					</div></div>
+				</td>
+			</tr>
+			</table>
+			</div>
+            <br />
+		<h2><div class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/news">More news</a></div>Recent News</h2><div class="clearfix"><p class="spaceit"><a href="/news/6012249" style=""><strong>Producer of Fullmetal Alchemist Lectures on How To Produce a Successful Anime</strong></a></p>
+		<div class="clearfix" style="overflow:hidden;"><p>Taguchi Koji, the Square Enix producer (Fullmetal Alchemist, Soul Eater, Saki, Kuroshitsuji), gave a lecture at Japan International Contents Festival held on October...<a href="/news/6012249">read more</a></p></div>
+		<p class="lightLink spaceit">Oct 9, 2009 3:37 AM by <a href="/profile/dtshyk">dtshyk</a> | <a href="/forum/?topicid=122172">Discuss (57 comments)</a></p></div>
+		<div class="borderClass"></div><div class="clearfix"><p class="spaceit"><a href="/news/10020535" style=""><strong>Japan's Weekly Manga Ranking for Nov 22 - 28</strong></a></p>
+		<div class="clearfix" style="overflow:hidden;"><p>Here is the weekly manga sales ranking for November 22nd - 28th.
+
+*1, 835,311 1,015,164 Fullmetal Alchemist vol.27
+*2, 290,603 *,290,603 REAL vol.10
+*3, 282,787 ...<a href="/news/10020535">read more</a></p></div>
+		<p class="lightLink spaceit">Dec 1, 2010 4:07 PM by <a href="/profile/dtshyk">dtshyk</a> | <a href="/forum/?topicid=274133">Discuss (18 comments)</a></p></div>
+		<div class="borderClass"></div><br><h2><div class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/forum">More discussions</a></div>Recent Forum Discussion</h2>
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="forumTopics"><tr id="topicRow1">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow1"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;"> <a href="/forum/?topicid=122172">Producer of Fullmetal Alchemist Lectures on How To Produce a Successful Anime</a> <small> ( <a href="/forum/?topicid=122172&show=0">1</a> <a href="/forum/?topicid=122172&show=20">2</a> <a href="/forum/?topicid=122172&show=40">3</a>  ) </small><br>
-		         <span class="forum_postusername"><a href="/profile/dtshyk">dtshyk</a></span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">57 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/asew143rqwrsf">asew143rqwrsf</a> <a href="/forum/?topicid=122172&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
-12-19-10, 7:29 AM</td>
+    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow1"><a href="/login.php?from=%2Fmanga%2F25&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
+                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=24760">Fullmetal Alchemist Chapter 83 Discussion</a> <small></small><br>
+		         <span class="forum_postusername"><a href="/profile/kurotsuki">kurotsuki</a></span> - <span class="lightLink">May 13, 2008</span></td>
+			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">16 replies</td>
+				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/GoldenDevilGamer">GoldenDevilGamer</a> <a href="/forum/?topicid=24760&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
+Yesterday, 6:34 PM</td>
 			</tr>
 			<tr id="topicRow2">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow2"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;"> <a href="/forum/?topicid=274133">Japan's Weekly Manga Ranking for Nov 22 - 28</a> <small></small><br>
-		         <span class="forum_postusername"><a href="/profile/dtshyk">dtshyk</a></span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">18 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/Mr_Gutts">Mr_Gutts</a> <a href="/forum/?topicid=274133&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
-12-04-10, 8:43 AM</td>
+    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow2"><a href="/login.php?from=%2Fmanga%2F25&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
+                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=20966">Fullmetal Alchemist Chapter 82 Discussion</a> <small></small><br>
+		         <span class="forum_postusername"><a href="/profile/kurotsuki">kurotsuki</a></span> - <span class="lightLink">Apr 14, 2008</span></td>
+			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">16 replies</td>
+				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/GoldenDevilGamer">GoldenDevilGamer</a> <a href="/forum/?topicid=20966&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
+Yesterday, 6:20 PM</td>
 			</tr>
-			</table><br><h2><div style="float: right; font-weight: normal;"><a href="/forum/?mangaid=25">See All</a> | <a href="/manga/25/Fullmetal_Alchemist/forum">See More</a></div>Recent Forum Discussion</h2>
-	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="forumTopics"><tr id="topicRow1">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow1"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=311983">Fullmetal Alchemist Chapter 28 Discussion</a> <small></small><br>
-		         <span class="forum_postusername"><a href="/profile/jeanfarias">jeanfarias</a></span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">3 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/goekchae">goekchae</a> <a href="/forum/?topicid=311983&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
-05-25-14, 2:02 AM</td>
-			</tr>
-			<tr id="topicRow2">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow2"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=427757">Fullmetal Alchemist Chapter 65 Discussion</a> <small></small><br>
-		         <span class="forum_postusername"><a href="/profile/jeanfarias">jeanfarias</a></span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">2 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/skreyola">skreyola</a> <a href="/forum/?topicid=427757&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
-04-25-14, 10:58 PM</td>
-			</tr>
-			</table><br><h2>Related Clubs</h2><a href="/clubs.php?cid=24933"> FMA FREAKS UNITE =)</a>, <a href="/clubs.php?cid=32171">&fnof;&upsilon;ℓℓмєт&alpha;ℓ &alpha;ℓcнм&iota;ѕт: вя&sigma;тнєян&sigma;&sigma;&part; я&sigma;ℓє&rho;ℓ&alpha;у {Open!}</a>, <a href="/clubs.php?cid=19492">&hearts; Coffee Lovers Unite! &hearts;</a>, <a href="/clubs.php?cid=5522">&quot;I want to touch you, brother&quot;</a>, <a href="/clubs.php?cid=23932">*~Anime/Manga Club for ALL~*</a>, <a href="/clubs.php?cid=1859">*~MomoHime125's House of Goodness~*</a>, <a href="/clubs.php?cid=16726">- Sad Moments &amp; Scenes - </a>, <a href="/clubs.php?cid=20999">-Orange &amp; Yellow haired-</a>, <a href="/clubs.php?cid=5327">-Risembool Rangers-</a>, <a href="/clubs.php?cid=13906">-The Order-</a>, <a href="/clubs.php?cid=25565">20+</a>, <a href="/clubs.php?cid=25355">a</a>, <a href="/clubs.php?cid=19652">A-FMA ~ FullMetal Alchemist</a>, <a href="/clubs.php?cid=3253">ACMusical FanClub</a>, <a href="/clubs.php?cid=11339">Adopt a FMA Kitty</a>, <a href="/clubs.php?cid=13530">against anime/manga editing/censoring</a>, <a href="/clubs.php?cid=25700">Agree that ZechsXNoin(from MSGW) &amp; RoyXRiza(from FMA) are similar??</a>, <a href="/clubs.php?cid=23944">alchemy club</a>, <a href="/clubs.php?cid=23536">Allen Walker and Edward Elric Fan Club</a>, <a href="/clubs.php?cid=23537">Allen Walker and Edward Elric Fan Club</a>, <a href="/clubs.php?cid=3578">Alphonse &quot;Al&quot; Elric Fanclub </a>, <a href="/clubs.php?cid=14207">Alphonse Elric Fanclub</a>, <a href="/clubs.php?cid=20105">Alphonse Elric!!!</a>, <a href="/clubs.php?cid=13025">Amputees</a>, <a href="/clubs.php?cid=1785">Anime art that r0cks!!</a>, <a href="/clubs.php?cid=1623">anime club</a>, <a href="/clubs.php?cid=12807">Anime Daisuki... Doushite!</a>, <a href="/clubs.php?cid=3093">Anime is Life and Love</a>, <a href="/clubs.php?cid=4594">ANIME PIMPS</a>, <a href="/clubs.php?cid=11654">Anime Scientists!</a>, <a href="/clubs.php?cid=5993">Anime T&uuml;rkiye</a>, <a href="/clubs.php?cid=6484">Anime therories club</a>, <a href="/clubs.php?cid=5866">Anime24 Forum users club :3</a>, <a href="/clubs.php?cid=669">AnimePT</a>, <a href="/clubs.php?cid=11139">Armstrong Love</a>, <a href="/clubs.php?cid=8779">autism club</a>, <a href="/clubs.php?cid=58427">Award Winning Mangas</a>, <a href="/clubs.php?cid=11770">A~World Game's Room</a>, <a href="/clubs.php?cid=55973">✧Royal♔Medley✧</a>, <a href="/clubs.php?cid=14519">☽○☾Book of Shadows☽○☾</a>, <a href="/clubs.php?cid=38719">►English Licensed Manga Club - PART 1◄</a>, <a href="/clubs.php?cid=57907">₪ Polish Licensed Manga Club ₪</a>, <a href="/clubs.php?cid=8011">Badass Chicks</a>, <a href="/clubs.php?cid=8330">Be Adopted By An Anime Character</a>, <a href="/clubs.php?cid=21394">Black Hayate</a>, <a href="/clubs.php?cid=12576">Blader's Lair</a>, <a href="/clubs.php?cid=14440">Blonde-haired Anime/manga characters</a>, <a href="/clubs.php?cid=24311">Braids and Curls club</a>, <a href="/clubs.php?cid=13957">Brasil Discuss&otilde;es</a>, <a href="/clubs.php?cid=19868">Brithers! Edward Elric and Alphnose Elric</a>, <a href="/clubs.php?cid=21640">Brotherhood: The Law of Equivalent Exchange</a>, <a href="/clubs.php?cid=40223">Cartola - Panela dos Retardados</a>, <a href="/clubs.php?cid=21165">Cha's Awsome Friends</a>, <a href="/clubs.php?cid=13364">Characters With Red Coats Are Awesome</a>, <a href="/clubs.php?cid=9298">Chicken Leg</a>, <a href="/clubs.php?cid=14560">Chinese Anime Characters!</a>, <a href="/clubs.php?cid=8281">Claim a Character's Ambition/Dream</a>, <a href="/clubs.php?cid=5872">Claim A Killer Club</a>, <a href="/clubs.php?cid=6236">Claim a Manga ~ MAL Manga Tournament</a>, <a href="/clubs.php?cid=6394">Claim a Smart Character Club</a>, <a href="/clubs.php?cid=5759">Closed Eyed Characters Fanclub </a>, <a href="/clubs.php?cid=1301">Club Dead</a>, <a href="/clubs.php?cid=13711">ClubBleach on MAL</a>, <a href="/clubs.php?cid=326">Comedy Explosion</a>, <a href="/clubs.php?cid=25158">Comet Club!</a>, <a href="/clubs.php?cid=28271">Cool Uniforms FC</a>, <a href="/clubs.php?cid=17594">Criminal Minds</a>, <a href="/clubs.php?cid=2913">Critics and Connoisseurs</a>, <a href="/clubs.php?cid=5097">Designers' Clan</a>, <a href="/clubs.php?cid=3737">Devil's Nest</a>, <a href="/clubs.php?cid=24547">discrimination haters </a>, <a href="/clubs.php?cid=11887">do you like envy from FMA ?</a>, <a href="/clubs.php?cid=16418">Dr.Knox Fanclub</a>, <a href="/clubs.php?cid=13785">Drama CD Club!</a>, <a href="/clubs.php?cid=34790">Dystopic Anime</a>, <a href="/clubs.php?cid=14265">E-Scythe Club</a>, <a href="/clubs.php?cid=14697">Edward Elric &amp; Roy Mustang FanClub</a>, <a href="/clubs.php?cid=12678">Edward Elric Fanclub</a>, <a href="/clubs.php?cid=23608">Edward Elric Fanclub</a>, <a href="/clubs.php?cid=14606">Edward Elric X Winry Rockbell</a>, <a href="/clubs.php?cid=20106">Edward Elric!!!</a>, <a href="/clubs.php?cid=13780">Edward X Winry FC</a>, <a href="/clubs.php?cid=20821">Eleventy Billionth Club</a>, <a href="/clubs.php?cid=57989">Elric Brothers </a>, <a href="/clubs.php?cid=20089">Envy awsomeness!!! cuz palm trees are sexier then migets!!!</a>, <a href="/clubs.php?cid=798">Envy fan club</a>, <a href="/clubs.php?cid=38023">Envy x Ed</a>, <a href="/clubs.php?cid=2205">Fan Fiction Guild</a>, <a href="/clubs.php?cid=8293">Fang-tan fun: The cree Fanclub~!</a>, <a href="/clubs.php?cid=1691">Fantasy Anime Club!</a>, <a href="/clubs.php?cid=17810">Female and Male FC</a>, <a href="/clubs.php?cid=4812">FIRE POWER</a>, <a href="/clubs.php?cid=2875">FMA fanclub</a>, <a href="/clubs.php?cid=5968">FMA Voice Actor's fanclub</a>, <a href="/clubs.php?cid=10120">Frank Archer</a>, <a href="/clubs.php?cid=5964">Full Metal Alchemist 2</a>, <a href="/clubs.php?cid=4607">Full Metal Alchemist fan club</a>, <a href="/clubs.php?cid=9965">Full Metal Alchemist RPG</a>, <a href="/clubs.php?cid=24139">Full Metal Alchemist: Rise of New Alchemy</a>, <a href="/clubs.php?cid=26606">full metal alchemist: the age of the dark alchemist</a>, <a href="/clubs.php?cid=20364">Full Metal Alchemists</a>, <a href="/clubs.php?cid=1020">Full Metal Kids Unite</a>, <a href="/clubs.php?cid=7023">Fullmetal Alchemist</a>, <a href="/clubs.php?cid=2447">Fullmetal Alchemist</a>, <a href="/clubs.php?cid=6366">Fullmetal Alchemist and Inuyasha RULES!</a>, <a href="/clubs.php?cid=11099">Fullmetal Alchemist Brotherhood</a>, <a href="/clubs.php?cid=13156">Fullmetal Alchemist Brotherhood &gt; Fullmetal Alchemist (2003-2004)</a>, <a href="/clubs.php?cid=11018">Fullmetal Alchemist Brotherhood FC</a>, <a href="/clubs.php?cid=10065">Fullmetal Alchemist Chibis~&hearts;</a>, <a href="/clubs.php?cid=14720">Fullmetal Alchemist Club!</a>, <a href="/clubs.php?cid=14297">Fullmetal Alchemist Doggie Fanclub</a>, <a href="/clubs.php?cid=1018">Fullmetal Alchemist Fanclub</a>, <a href="/clubs.php?cid=52">Fullmetal Alchemist Fanclub</a>, <a href="/clubs.php?cid=35357">Fullmetal Alchemist FC</a>, <a href="/clubs.php?cid=540">Fullmetal Alchemist Manga</a>, <a href="/clubs.php?cid=1909">Fullmetal Alchemist Manga Fan</a>, <a href="/clubs.php?cid=40527">Fullmetal Alchemist RP</a>, <a href="/clubs.php?cid=33569">fullmetal alchemist rp</a>, <a href="/clubs.php?cid=3016">Fullmetal Alchemist/Naruto/Blood+/Inuyasha/CowboyBebop/GhostinThe Shell/DeathNote/Bleach/Eureka7/Wolf'sRain</a>, <a href="/clubs.php?cid=12312">funny pics of full metal alchemist </a>, <a href="/clubs.php?cid=4902">Glompers Anonymous</a>, <a href="/clubs.php?cid=9882">GranDIOSas!</a>, <a href="/clubs.php?cid=7923">Greed</a>, <a href="/clubs.php?cid=14256">Green Haired Anime Characters</a>, <a href="/clubs.php?cid=29831">Guys With Long Hair/ Ponytails</a>, <a href="/clubs.php?cid=12581">guys with ponytails!</a>, <a href="/clubs.php?cid=10173">Hanyou-Chan Fanclub</a>, <a href="/clubs.php?cid=8745">HentajGejtan</a>, <a href="/clubs.php?cid=3582">Hinato and punk/goth rock</a>, <a href="/clubs.php?cid=22749">Homunculus FC</a>, <a href="/clubs.php?cid=23772">Honya Fancuru! &lt;3</a>, <a href="/clubs.php?cid=25705">HOT-BLOODED SHONEN CLUB!</a>, <a href="/clubs.php?cid=22573">Hottest anime characters!</a>, <a href="/clubs.php?cid=8788">How to Find Anime</a>, <a href="/clubs.php?cid=9261">How to Read Manga!</a>, <a href="/clubs.php?cid=8532">I Hate Anime / Manga Club!</a>, <a href="/clubs.php?cid=22446">I'm not short!</a>, <a href="/clubs.php?cid=20468">Izumi Curtis FC</a>, <a href="/clubs.php?cid=6440">Jean Havoc Club</a>, <a href="/clubs.php?cid=16082">Katsuri Fanclub</a>, <a href="/clubs.php?cid=24023">Kimblee Fan Club</a>, <a href="/clubs.php?cid=18894">King Bradley</a>, <a href="/clubs.php?cid=5550">Kionniko's Stuff</a>, <a href="/clubs.php?cid=13733">Ling Yao -  FC</a>, <a href="/clubs.php?cid=4178">long @ss shonen club</a>, <a href="/clubs.php?cid=4855">Long Black/Dark Haired Guys</a>, <a href="/clubs.php?cid=22435">Lust the Goddess</a>, <a href="/clubs.php?cid=6442">Maes Hughes Fanclub</a>, <a href="/clubs.php?cid=26295">Make Believe Shonen Ai / Yaoi Club! &lt;3</a>, <a href="/clubs.php?cid=19578">MAL anonymous</a>, <a href="/clubs.php?cid=11569">MAL Chat Room</a>, <a href="/clubs.php?cid=433">MAL Magic Society</a>, <a href="/clubs.php?cid=10138">MAL State Alchemists/Military </a>, <a href="/clubs.php?cid=1080">MAL Ultimate Victory!</a>, <a href="/clubs.php?cid=10608">MAL Welcoming Club</a>, <a href="/clubs.php?cid=5095">Manga And Light Novel Lovers</a>, <a href="/clubs.php?cid=18077">Manga Exchanger</a>, <a href="/clubs.php?cid=17095">Manga Experience</a>, <a href="/clubs.php?cid=29397">Manga Fans of the World</a>, <a href="/clubs.php?cid=13064">Manga Masterpieces Club</a>, <a href="/clubs.php?cid=54335">Mangas licenciados en Espa&ntilde;a</a>, <a href="/clubs.php?cid=41127">Mangas que &quot;deber&iacute;as&quot; leer antes de morir (Club en espa&ntilde;ol)</a>, <a href="/clubs.php?cid=37855">MANime and MANga club</a>, <a href="/clubs.php?cid=6321">Mari's Club XD</a>, <a href="/clubs.php?cid=30781">Marketplace Germany</a>, <a href="/clubs.php?cid=31407">Marry a Character (M.A.C.)</a>, <a href="/clubs.php?cid=21257">Miku-san's Corner</a>, <a href="/clubs.php?cid=32391">Miles FC</a>, <a href="/clubs.php?cid=21622">Murderous Anime FC</a>, <a href="/clubs.php?cid=12199">Mustang&hearts;Hawkeye Fanclub</a>, <a href="/clubs.php?cid=7319">Mustang's subordinates</a>, <a href="/clubs.php?cid=5269">NEO</a>, <a href="/clubs.php?cid=1964">Neo Elite</a>, <a href="/clubs.php?cid=14728">Non-human characters</a>, <a href="/clubs.php?cid=24867">Old Spice</a>, <a href="/clubs.php?cid=20881">Old Spice Air King Club</a>, <a href="/clubs.php?cid=17043">Olivier Mira Armstrong Fans</a>, <a href="/clubs.php?cid=18307">One-eyed characters</a>, <a href="/clubs.php?cid=26143">Opiate Anime (and Manga)</a>, <a href="/clubs.php?cid=29699">Otaku Fan Club</a>, <a href="/clubs.php?cid=34658">Overrated or Underrated Animes and Mangas</a>, <a href="/clubs.php?cid=2987">Parents in Anime and Manga</a>, <a href="/clubs.php?cid=15180">Polski FC Edward'a Elric'a</a>, <a href="/clubs.php?cid=19222">Polski FC Fullmetal Alchemist</a>, <a href="/clubs.php?cid=23902">Polski FC Fullmetal Alchemist: Brotherhood</a>, <a href="/clubs.php?cid=5965">Ponytail Characters Club</a>, <a href="/clubs.php?cid=14441">Ponytail/Pigtail Fan Club</a>, <a href="/clubs.php?cid=2200">Pride of the Anime Collectors</a>, <a href="/clubs.php?cid=14036">Pure Pocky</a>, <a href="/clubs.php?cid=16743">Random+Donkeys= RandomnessCLUB</a>, <a href="/clubs.php?cid=16172">Rawk Hawks</a>, <a href="/clubs.php?cid=20081">Recommendation Club</a>, <a href="/clubs.php?cid=17322">Resembool Village</a>, <a href="/clubs.php?cid=16132">Riza Hawkeye Fanclub</a>, <a href="/clubs.php?cid=10347">Ro-Otaku</a>, <a href="/clubs.php?cid=3080">Rocket Cats</a>, <a href="/clubs.php?cid=9747">Rose Thomas Fanclub</a>, <a href="/clubs.php?cid=362">Roy Mustang</a>, <a href="/clubs.php?cid=23561">Roy Mustang Fanclub</a>, <a href="/clubs.php?cid=7653">Roy Mustang lovers</a>, <a href="/clubs.php?cid=5486">Roy Mustang X Riza Hawkeye</a>, <a href="/clubs.php?cid=2729">Royai</a>, <a href="/clubs.php?cid=15590">russian shounenfags!</a>, <a href="/clubs.php?cid=20927">Sad/Tragic Anime &amp; VideoGames</a>, <a href="/clubs.php?cid=3658">Secret favorite club </a>, <a href="/clubs.php?cid=37031">Shounen anime/manga FC</a>, <a href="/clubs.php?cid=13738">Shounen Manga</a>, <a href="/clubs.php?cid=21357">SnG's official Fanclub~</a>, <a href="/clubs.php?cid=2237">Square Enix Fans</a>, <a href="/clubs.php?cid=9558">State Alchemist Club</a>, <a href="/clubs.php?cid=5453">State Alchemists</a>, <a href="/clubs.php?cid=8661">Supernatural Skill &amp; Special Weapon Club</a>, <a href="/clubs.php?cid=9066">Sympathy for Edward Elric Club</a>, <a href="/clubs.php?cid=5374">Tattoo Anime People</a>, <a href="/clubs.php?cid=19785">Teachings of alchemy</a>, <a href="/clubs.php?cid=25367">Team Edward Elric</a>, <a href="/clubs.php?cid=19253">Tengoku Club ~ Paradise of Characters</a>, <a href="/clubs.php?cid=6547">The Aniki-Onii-san Fanclub</a>, <a href="/clubs.php?cid=58985">The Anime Quote Club</a>, <a href="/clubs.php?cid=11773">The Awesome Club</a>, <a href="/clubs.php?cid=2540">The BADASSED Club</a>, <a href="/clubs.php?cid=22225">the best of anime </a>, <a href="/clubs.php?cid=41153">The Channel Of Gentlemen - Anime Edition</a>, <a href="/clubs.php?cid=29511">The Cool People Who Read Manga Club</a>, <a href="/clubs.php?cid=7091">The Crimson Alchemist</a>, <a href="/clubs.php?cid=1249">The funny fan club!</a>, <a href="/clubs.php?cid=8594">The Gate of Time</a>, <a href="/clubs.php?cid=41141">The Gentleman's club.</a>, <a href="/clubs.php?cid=37465">The Heros</a>, <a href="/clubs.php?cid=1525">The Homunculus' Club</a>, <a href="/clubs.php?cid=16476">The Lan Fan Fanclub &hearts;</a>, <a href="/clubs.php?cid=6996">The London Club</a>, <a href="/clubs.php?cid=40227">The Panda Club</a>, <a href="/clubs.php?cid=1570">The Pets of Anime/Manga Club</a>, <a href="/clubs.php?cid=9578">the power of greed</a>, <a href="/clubs.php?cid=18471">The Queens of Shounen</a>, <a href="/clubs.php?cid=7525">The Random Fandom</a>, <a href="/clubs.php?cid=31747">The Reading Club</a>, <a href="/clubs.php?cid=3546">The Rouge Alchemists Club</a>, <a href="/clubs.php?cid=20687">THE Shounen Manga Club~</a>, <a href="/clubs.php?cid=533">The Shrimp and The Mechanic</a>, <a href="/clubs.php?cid=12436">The Super Superior Secret Society of Secret Secrecy and Supreme Superbness in Superstellar Saturation</a>, <a href="/clubs.php?cid=19779">The True Heroines Club</a>, <a href="/clubs.php?cid=529">The ultimate Shrimp FC</a>, <a href="/clubs.php?cid=13189">Those Who Are Damned</a>, <a href="/clubs.php?cid=7282">Tina-chan Land!</a>, <a href="/clubs.php?cid=20942">Town Square Club [TSC]</a>, <a href="/clubs.php?cid=11257">Upcoming U.S. Releases</a>, <a href="/clubs.php?cid=21939">We are against RoyEd, Elricest (EdAl), Edvy (EnvyEd) and all other ridiculous FMA pairings</a>, <a href="/clubs.php?cid=13825">We hate Shou Tucker!</a>, <a href="/clubs.php?cid=11114">Winry Rockbell Love</a>, <a href="/clubs.php?cid=7797">World Combo</a>, <a href="/clubs.php?cid=5267">Xam'd: Lost Memories / Bonen no Xamdou Fanclub</a>, <a href="/clubs.php?cid=2193">Xing Fan club</a>, <a href="/clubs.php?cid=1516">XxRetribution2xX Fanclub</a>, <a href="/clubs.php?cid=10357">yellow eyes fanclub</a>, <a href="/clubs.php?cid=13223">[Anime Vibe] TEMPORARILY RE-OPEN</a>, <a href="/clubs.php?cid=25014">[Facial Hair]Sexy[/Facial Hair]</a>, <a href="/clubs.php?cid=15891">{*Yuruppy's SSS*}</a>, <a href="/clubs.php?cid=5881">~ C.and.Y Fan.Club ~</a>, <a href="/clubs.php?cid=31117">~ Childhood Friends Love Stories ~</a>, <a href="/clubs.php?cid=19609">~ WATER BOTTLE CLUB ~</a>, <a href="/clubs.php?cid=19209">~Seth-Z-101's Realm of Terror~</a><br><br><h2><span style="float: right; font-weight: normal;"><a href="/manga/25/Fullmetal_Alchemist/lastusers">More Users</a> | <a href="/manga/25/Fullmetal_Alchemist/stats&m=friends#members">My Friends</a></span>Recent Updates by Users</h2><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td width="20%" align="center" class="borderClass"><div style="margin-bottom: 3px;"><a href="/profile/chopslack">chopslack</a></div>
-			<div class="picSurround"><a href="/profile/chopslack"><img src="http://cdn.myanimelist.net/images/questionmark_50.gif" border="0"></a></div>
-			<div class="lightLink" style="margin-top: 3px;"><small>9 minutes ago</small></div></td><td width="20%" align="center" class="borderClass"><div style="margin-bottom: 3px;"><a href="/profile/Hermes19">Hermes19</a></div>
-			<div class="picSurround"><a href="/profile/Hermes19"><img src="http://cdn.myanimelist.net/images/questionmark_50.gif" border="0"></a></div>
-			<div class="lightLink" style="margin-top: 3px;"><small>20 minutes ago</small></div></td><td width="20%" align="center" class="borderClass"><div style="margin-bottom: 3px;"><a href="/profile/Lagui">Lagui</a></div>
-			<div class="picSurround"><a href="/profile/Lagui"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/3797157_thumb.jpg" border="0"></a></div>
-			<div class="lightLink" style="margin-top: 3px;"><small>47 minutes ago</small></div></td><td width="20%" align="center" class="borderClass"><div style="margin-bottom: 3px;"><a href="/profile/zeultrafangirl">zeultrafangirl</a></div>
-			<div class="picSurround"><a href="/profile/zeultrafangirl"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/3521517_thumb.jpg" border="0"></a></div>
-			<div class="lightLink" style="margin-top: 3px;"><small>2 hours ago</small></div></td><td width="20%" align="center" class="borderClass"><div style="margin-bottom: 3px;"><a href="/profile/Futuredin">Futuredin</a></div>
-			<div class="picSurround"><a href="/profile/Futuredin"><img src="http://cdn.myanimelist.net/images/questionmark_50.gif" border="0"></a></div>
-			<div class="lightLink" style="margin-top: 3px;"><small>2 hours ago</small></div></td></tr><tr><td width="20%" align="center" class="borderClass"><div style="margin-bottom: 3px;"><a href="/profile/VulgarRyohei">VulgarRyohei</a></div>
-			<div class="picSurround"><a href="/profile/VulgarRyohei"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/1472479_thumb.jpg" border="0"></a></div>
-			<div class="lightLink" style="margin-top: 3px;"><small>2 hours ago</small></div></td><td width="20%" align="center" class="borderClass"><div style="margin-bottom: 3px;"><a href="/profile/-Saki">-Saki</a></div>
-			<div class="picSurround"><a href="/profile/-Saki"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/3627681_thumb.jpg" border="0"></a></div>
-			<div class="lightLink" style="margin-top: 3px;"><small>2 hours ago</small></div></td><td width="20%" align="center" class="borderClass"><div style="margin-bottom: 3px;"><a href="/profile/Cyrud261">Cyrud261</a></div>
-			<div class="picSurround"><a href="/profile/Cyrud261"><img src="http://cdn.myanimelist.net/images/questionmark_50.gif" border="0"></a></div>
-			<div class="lightLink" style="margin-top: 3px;"><small>2 hours ago</small></div></td><td width="20%" align="center" class="borderClass"><div style="margin-bottom: 3px;"><a href="/profile/TheTsunami">TheTsunami</a></div>
-			<div class="picSurround"><a href="/profile/TheTsunami"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/5851_thumb.jpg" border="0"></a></div>
-			<div class="lightLink" style="margin-top: 3px;"><small>2 hours ago</small></div></td><td width="20%" align="center" class="borderClass"><div style="margin-bottom: 3px;"><a href="/profile/piknik12">piknik12</a></div>
-			<div class="picSurround"><a href="/profile/piknik12"><img src="http://cdn.myanimelist.net/images/questionmark_50.gif" border="0"></a></div>
-			<div class="lightLink" style="margin-top: 3px;"><small>3 hours ago</small></div></td></tr></table>
-		</td>
-		</tr>
-		<tr>
+			</table><br><h2><div class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/featured">More featured articles</a></div>Recent Featured Articles</h2><div class="detail-page-featured-article pb16">
+<div class="news-list">
+
+
+<div class="news-unit clearfix" data-tag="cat3 cat1 cat1 cat1 ">
+  <a href="http://myanimelist.net/featured/192" class="image-link"><img src="http://cdn.myanimelist.net/s/common/uploaded_files/1441282715-3457c8294c8f3d5ca1d84d40a4c9e175.jpeg" alt="People Inhabiting the World of Fullmetal Alchemist" class="image"></a>
+  <div class="news-unit-right">
+    <p class="title">
+      <a href="http://myanimelist.net/featured/192" title="People Inhabiting the World of Fullmetal Alchemist">People Inhabiting the World of Fullmetal Alchemist</a>
+    </p>
+    <div class="text">
+      Fullmetal Alchemist (Hagane no Renkinjutsushi) is a series full of lifelike characters that stick with you long after you have turned off your TV, making the series a truly multidimensional experience, which doesn&#039;t get boring or old over time, but keeps you coming for more.
+    </div>
+    <div class="information">
+      <p class="info pr8">
+        by <a href="http://myanimelist.net/profile/Shion2701">Shion2701</a>
+      </p><div class="tags">
+        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/spoiler" class="tag tag-color-feature-spoiler" title="Spoiler">Spoiler</a><a href="http://myanimelist.net/featured/tag/action" class="tag tag-color-feature-action" title="Action">Action</a><a href="http://myanimelist.net/featured/tag/character_analysis" class="tag tag-color-feature-character_analysis" title="Character Analysis">Character Analysis</a><a href="http://myanimelist.net/featured/tag/magical" class="tag tag-color-feature-magical" title="Magical">Magical</a></div>
+      </div></div>
+  </div>
+</div>
+
+
+<div class="news-unit clearfix" data-tag="cat3 cat1 cat1 cat1 ">
+  <a href="http://myanimelist.net/featured/484" class="image-link"><img src="http://cdn.myanimelist.net/s/common/uploaded_files/1444464704-70a6507de669e34dc7a0cd8bb5dc0293.jpeg" alt="Steampunk Cyborgs: Automail Users of Fullmetal Alchemist " class="image"></a>
+  <div class="news-unit-right">
+    <p class="title">
+      <a href="http://myanimelist.net/featured/484" title="Steampunk Cyborgs: Automail Users of Fullmetal Alchemist ">Steampunk Cyborgs: Automail Users of Fullmetal Alchemist </a>
+    </p>
+    <div class="text">
+      In the Fullmetal Alchemist world, there are special armored appendages known as automail. Let&#039;s take a look at what these automail are and the who the characters that have used them throughout the series are.
+    </div>
+    <div class="information">
+      <p class="info pr8">
+        by <a href="http://myanimelist.net/profile/Dumbooooooo820">Dumbooooooo820</a>
+      </p><div class="tags">
+        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/spoiler" class="tag tag-color-feature-spoiler" title="Spoiler">Spoiler</a><a href="http://myanimelist.net/featured/tag/analysis" class="tag tag-color-feature-analysis" title="Analysis">Analysis</a><a href="http://myanimelist.net/featured/tag/action" class="tag tag-color-feature-action" title="Action">Action</a><a href="http://myanimelist.net/featured/tag/weapons" class="tag tag-color-feature-weapons" title="Weapons">Weapons</a></div>
+      </div></div>
+  </div>
+</div>
+  </div>
+</div></td></tr><tr>
 			<td><br>
-			<h2>External Links</h2><a href="http://gangan.square-enix.co.jp/hagaren/" target="_blank">Official Site</a>, <a href="http://www.mangaupdates.com/series.html?id=412" target="_blank">MangaUpdates</a>, <a href="http://en.wikipedia.org/wiki/Full_Metal_Alchemist" target="_blank">Wikipedia</a>
+			<h2>External Links</h2><a href="http://gangan.square-enix.co.jp/hagaren/" target="_blank">Official Site</a>, <a href="http://www.mangaupdates.com/series.html?id=412" target="_blank">MangaUpdates</a>, <a href="http://ja.wikipedia.org/wiki/鋼の錬金術師" target="_blank">Wikipedia</a>
 			</td>
 			</tr>
 		</table>
-		
-</div>
+
 </td>
 </tr>
 </table>
+<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true"></script></div><!-- end of contentHome -->
 
+
+                      <script type='text/javascript'>
+    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCManga_SAFE_MR_BTF_LHS', [300,250], 'div-gpt-ad-850868111').addService(googletag.pubads());
+            var slot = googletag.defineSlot('/84947469/02PCManga_SAFE_MR_BTF_RHS', [300,250], 'div-gpt-ad-1603459247').addService(googletag.pubads());
+            googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+</script>
+
+  <div class="mauto clearfix pt24" style="width:760px;">
+    <div class="fl-l">
+    <div id="div-gpt-ad-850868111" style="width:300px; height:250px;">
+  <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-850868111"); });
+      </script>
+</div>
+  </div>
+      <div class="fl-r">
+    <div id="div-gpt-ad-1603459247" style="width:300px; height:250px;">
+  <script type='text/javascript'>
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1603459247"); });
+      </script>
+</div>
+  </div>
+  </div>
 </div>
 
-<div id="rightcontentunder">
 
-<a href="/about.php?go=support">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/modules.php?go=faq">FAQ</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/about.php">About</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="/about.php?go=contact">Contact</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="http://www.craveonline.com/termsofuse.php?site=www.MyAnimeList.net" target="_blank">Terms</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a href="http://www.craveonline.com/privacy.php?site=www.MyAnimeList.net" target="_blank">Privacy</a>&nbsp;&nbsp;&nbsp;&nbsp;
-<a id="_bapw-link" href="#" target="_blank" style=""><img id="_bapw-icon" style="border:0 !important;display:inline !important;vertical-align:middle !important"/> <span style="vertical-align:middle !important">AdChoices</span></a><script>/*<![CDATA[*/(function(){var c=247,g=595,b=false,i=document,f=i.getElementById("_bapw-link"),a=(i.location.protocol=="https:"?"https":"http"),h=(a=="https"?"https://info.evidon.com/c/betrad/pub/":"http://cdn.betrad.com/pub/");function e(j){var d=new Image();d.src=a+"://l.betrad.com/pub/p.gif?pid="+c+"&ocid="+g+"&i"+j+"=1&r="+Math.random()}i.getElementById("_bapw-icon").src=h+"icon1.png";f.onmouseover=function(){if(/#$/.test(f.href)){f.href="http://info.evidon.com/pub_info/"+c+"?v=1"}};f.onclick=function(){var j=window._bap_p_overrides;function d(m,p){var n=i.getElementsByTagName("head")[0]||i.documentElement,l=b,k=i.createElement("script");function o(){k.onload=k.onreadystatechange=null;n.removeChild(k);p()}k.src=m;k.onreadystatechange=function(){if(!l&&(this.readyState=="loaded"||this.readyState=="complete")){l=true;o()}};k.onload=o;n.insertBefore(k,n.firstChild)}if(j&&j.hasOwnProperty(c)){if(j[c].new_window){e("c");return true}}this.onclick="return "+b;d(a+"://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js",function(){d(h+"pub2.js",function(){BAPW.i(f,{pid:c,ocid:g})})});return b};e("i")}());/*]]>*/</script>
-	
-<div id="copyright">
-MyAnimeList.net is a property of <a href="http://www.craveonline.com">CraveOnline</a>, LLC. an <a href="http://www.evolvemediallc.com">Evolve Media</a>, LLC company. &copy;2013 All Rights Reserved. <div style="position: absolute; left: -999em">monitoring_string = "1d62297d23059a80b6e7551767f2653f"</div>
-</div>
-
-</div>
-
-</div>
 
 <!--  control container height -->
 <div style="clear:both;"></div>
 
 <!-- end rightbody -->
+
+</div><!-- wrapper -->
+
+    <div id="ad-skin-bg-right" class="ad-skin-side-outer ad-skin-side-bg bg-right">
+    <div id="ad-skin-right" class="ad-skin-side right" style="display: none;">
+      <div id="ad-skin-right-absolute-block">
+        <div id="ad-skin-right-fixed-block"></div>
+      </div>
+    </div>
+  </div>
+</div><!-- #myanimelist -->
+
+
+
+<div class="footer-ranking">
+  <div class="ranking-container">
+          <div class="ranking-unit ranking-top_anime">
+        <h3 class="title"><a href="http://myanimelist.net/topanime.php" class="view_more fl-r">More</a>Top Anime</h3>
+        <ol>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist:_Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9253/Steins;Gate">Steins;Gate</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/9969/Gintama">Gintama&#039;</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/11061/Hunter_x_Hunter_(2011)">Hunter x Hunter (2011)</a></li>
+                  </ol>
+      </div>
+          <div class="ranking-unit ranking-top_airing">
+        <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=airing" class="view_more fl-r">More</a>Top Airing Anime</h3>
+        <ol>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28891/Haikyuu!!_Second_Season">Haikyuu!! Second Season</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30276/One_Punch_Man">One Punch Man</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/31181/Owarimonogatari">Owarimonogatari</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
+                  </ol>
+      </div>
+          <div class="ranking-unit ranking-top_upcoming">
+        <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=upcoming" class="view_more fl-r">More</a>Top Upcoming Anime</h3>
+        <ol>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/25777/Shingeki_no_Kyojin_2nd_Season">Shingeki no Kyojin 2nd Season</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9260/Kizumonogatari_Part_1:_Tekketsu-hen">Kizumonogatari Part 1: Tekketsu-hen</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/3786/Evangelion:_3.0+1.0">Evangelion: 3.0+1.0</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/27833/Durarara!!x2_Ketsu">Durarara!!x2 Ketsu</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/25537/Fate_stay_night:_Heavens_Feel">Fate/stay night: Heaven&#039;s Feel</a></li>
+                  </ol>
+      </div>
+          <div class="ranking-unit ranking-top_page_views">
+        <h3 class="title">Top Page Views</h3>
+        <ol>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/30276/One_Punch_Man">One Punch Man</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/23755/Nanatsu_no_Taizai">Nanatsu no Taizai</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30296/Rakudai_Kishi_no_Cavalry">Rakudai Kishi no Cavalry</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30544/Gakusen_Toshi_Asterisk">Gakusen Toshi Asterisk</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/30503/Noragami_Aragoto">Noragami Aragoto</a></li>
+                  </ol>
+      </div>
+          <div class="ranking-unit ranking-trending_words">
+        <h3 class="title">Trending Words</h3>
+        <ol>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/1735/Naruto:_Shippuuden">Naruto: Shippuuden</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/22319/Tokyo_Ghoul">Tokyo Ghoul</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/20/Naruto">Naruto</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/813/Dragon_Ball_Z">Dragon Ball Z</a></li>
+                  </ol>
+      </div>
+      </div>
 </div>
+<footer>
+  <div id="footer-block">
+    <div class="footer-link-block">
+      <p class="footer-link home di-ib">
+        <a href="http://myanimelist.net/">Home</a>
+      </p>
+      <p class="footer-link di-ib">
+        <a href="http://myanimelist.net/about.php">About</a>
+        <a href="http://myanimelist.net/about.php?go=contact">Support</a>
+        <a href="http://myanimelist.net/about.php?go=advertising">Advertising</a>
+        <a href="http://myanimelist.net/forum/?topicid=515949">FAQ</a>
+        <a href="http://myanimelist.net/about/terms_of_use">Terms</a>
+        <a href="http://myanimelist.net/about/privacy_policy">Privacy</a>
+        <a href="http://myanimelist.net/about/sitemap">Sitemap</a>
+    	</p>
+  		  		<p class="footer-link login di-ib">
+  			<a href="http://myanimelist.net/login.php?from=%2Fmanga%2F25" id="malLogin" rel="nofollow">Login</a>
+  			<a href="http://myanimelist.net/register.php?from=%2Fmanga%2F25">Sign Up</a>
+  		</p>
+  		    </div>
 
+    <div class="footer-link-icon-block">
+            <div class="footer-social-media ac">
+        <a target="_blank" class="icon-sns icon-fb di-ib" href="https://www.facebook.com/OfficialMyAnimeList"></a>
+        <a target="_blank" class="icon-sns icon-tw di-ib" title="Follow @myanimelist on Twitter" href="https://twitter.com/myanimelist"></a>
+        <a class="icon-sns icon-gp" href="https://plus.google.com/105884801583962160252?prsrc=3" rel="publisher" target="_blank" style="text-decoration:none;">
+          <img src="http://cdn.myanimelist.net/images/footer/icon-google_plus.png" alt="Google+" style="border:0;width:30px;height:30px;" />
+        </a>
+      </div>
+            <div class="footer-recommended ac">
+        <a target="_blank" class="icon-recommended icon-tokyo-otaku-mode" href="http://otakumode.com/fb/5aO">Tokyo Otaku Mode</a>
+      </div>
+    </div>
 
-</div>
-<!-- Begin comScore Tag -->
-<script>
-    document.write(unescape("%3Cscript src='" + (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js' %3E%3C/script%3E"));
-</script>
+    <div id="copyright">
+      MyAnimeList.net is a property of MyAnimeList, LLC. &copy;2015 All Rights Reserved.
+    </div>
+  </div>
+</footer>
 
-<script>
-  COMSCORE.beacon({
-    c1:2,
-    c2:6036161,
-    c3:"",
-    c4:"",
-    c5:"",
-    c6:"",
-    c15:""
-  });
-</script>
-<noscript>
-  <img src="http://b.scorecardresearch.com/p?c1=2&c2=6036161&c3=&c4=&c5=&c6=&c15=&cj=1" />
-</noscript>
-<!-- End comScore Tag -->
+<div id="evolve_footer"></div>
 
-<!-- start Vibrant Media IntelliTXT script section -->
-<script type="text/javascript" src="http://myanimelist.us.intellitxt.com/intellitxt/front.asp?ipid=30532"></script>
-<!-- end Vibrant Media IntelliTXT script section -->
-	
-	<script type="text/javascript" src="http://cdn1.craveonline.com/libraries/pebblebed/js/cookie_notice.min.js"></script>
-	
-<script type="text/javascript">
-//<![CDATA[
-(function() {
-var _analytics_scr = document.createElement('script');
-_analytics_scr.type = 'text/javascript'; _analytics_scr.async = true; _analytics_scr.src = '/_Incapsula_Resource?SWJIYLWA=2977d8d74f63d7f8fedbea018b7a1d05&ns=1';
-var _analytics_elem = document.getElementsByTagName('script')[0]; _analytics_elem.parentNode.insertBefore(_analytics_scr, _analytics_elem);
-})();
-// ]]>
-</script></body>
+</body>
 </html>

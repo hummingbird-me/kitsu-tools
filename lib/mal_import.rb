@@ -9,7 +9,8 @@ class MALImport
     description = get("/character/#{id}").css('#content > table >tr > td:nth-child(2)').children.take_while { |x|
       !x.text.include? 'Voice Actor'
     }.reject { |x|
-      x['class'] == 'normal_header' || x['id'] == 'horiznav_nav'
+      x['class'] == 'normal_header' || x['id'] == 'horiznav_nav' ||
+        x['itemtype'] == 'http://schema.org/BreadcrumbList'
     }.map(&:to_html).join
 
     # TODO: move all the character data grabbing into here
@@ -96,10 +97,10 @@ class MALImport
     meta = {
       external_id: @mal_id,
       title: {
-        canonical: @main_noko.css('h1').children[1].text.strip,
+        canonical: @main_noko.css('h1').children[0].text.strip,
         unknown: begin @sidebar.css('div:contains("Synonyms:")')[0].text.gsub("Synonyms: ", "").split(",").map(&:strip) rescue nil end,
-        en_us: begin @sidebar.css('div:contains("English:")')[0].text.gsub("English: ", "") rescue nil end,
-        ja_jp: begin @sidebar.css('div:contains("Japanese:")')[0].text.gsub("Japanese: ", "") rescue nil end
+        en_us: begin @sidebar.css('div:contains("English:")')[0].text.gsub("English: ", "").strip rescue nil end,
+        ja_jp: begin @sidebar.css('div:contains("Japanese:")')[0].text.gsub("Japanese: ", "").strip rescue nil end
       }.compact,
       synopsis: begin
         synopsis = @main_noko.css('td td:contains("Synopsis")')[0].text.gsub("EditSynopsis", '').split("EditBackground")[0].split("googletag.cmd.push")[0]
@@ -111,9 +112,9 @@ class MALImport
       rescue
       end,
       poster_image: poster_image(@sidebar.css("img")[0]['src']),
-      genres: begin (@sidebar.css('span:contains("Genres:") ~ a').map(&:text) rescue []).compact end,
       type: begin allowed_types.grep(@sidebar.css('div:contains("Type:")')[0].text.gsub("Type:", '').strip)[0] rescue nil end,
-      status: begin @sidebar.css('div:contains("Status:")')[0].children[1].text.strip.gsub(/\w+/){ |w| w.capitalize } rescue nil end
+      status: begin @sidebar.css('div:contains("Status:")')[-1].text.gsub(/Status:(?:\\n)?\s/, "").strip.gsub(/\w+/){ |w| w.capitalize } rescue nil end,
+      genres: begin (@sidebar.css('span:contains("Genres:") ~ a').map(&:text) rescue []).compact end
     }
 
     # Media-specific data
@@ -123,18 +124,18 @@ class MALImport
         dates: begin @sidebar.css('div:contains("Published:")')[0].text.gsub("Published:", '').split("to").map { |s| parse_maldate(s) } rescue nil end,
         volume_count: begin @sidebar.css('div:contains("Volumes:")')[0].text.gsub("Volumes: ", "").strip.to_i rescue nil end,
         chapter_count: begin @sidebar.css('div:contains("Chapters:")')[0].text.gsub("Chapters: ", "").strip.to_i rescue nil end,
-        serialization: begin @sidebar.css('span:contains("Serialization:") ~ a').map(&:text)[0] rescue nil end,
+        serialization: begin @sidebar.css('span:contains("Serialization:") ~ a').map(&:text)[0] rescue nil end
       })
     when :anime
-      age_rating = begin @sidebar.css('div:contains("Rating:")')[0].children[1].text.strip rescue nil end
+      age_rating = begin @sidebar.css('div:contains("Rating:")')[0].text.gsub("Rating:\n ", "").strip rescue nil end
       age_rating = convert_age_rating(age_rating)
       meta.merge!({
         dates: begin @sidebar.css('div:contains("Aired:")')[0].text.gsub("Aired:", '').split("to").map { |s| parse_maldate(s) } rescue nil end,
         producers: begin (@sidebar.css('span:contains("Producers:") ~ a').map(&:text) rescue []).compact end,
         age_rating: age_rating[0],
         age_rating_guide: age_rating[1],
-        episode_count: begin @sidebar.css('div:contains("Episodes:")')[0].children[1].text.strip.to_i rescue nil end,
-        episode_length: parse_duration(begin @sidebar.css('div:contains("Duration:")')[0].children[1].text.strip rescue nil end),
+        episode_count: begin @sidebar.css('div:contains("Episodes:")')[0].text.gsub("Episodes:\n ", "").strip.to_i rescue nil end,
+        episode_length: parse_duration(begin @sidebar.css('div:contains("Duration:")')[0].text.gsub("Duration: ", "").strip rescue nil end)
       })
     end
 
