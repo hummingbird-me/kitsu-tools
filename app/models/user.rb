@@ -68,56 +68,13 @@
 #
 
 class User < ActiveRecord::Base
-  # Friendly ID.
-  def to_param
-    name
-  end
+  INVALID_USERNAMES = %w(
+    admin administrator connect dashboard developer developers edit favorites
+    feature featured features feed follow followers following hummingbird index
+    javascript json sysadmin sysadministrator system unfollow user users wiki you
+  )
 
-  def self.find(id)
-    user = nil
-    if id.is_a? String
-      user = User.find_by_username(id)
-    end
-    user || super
-  end
-
-  def self.find_by_username(username)
-    where('LOWER(name) = ?', username.to_s.downcase).first
-  end
-
-  def self.match(query)
-    where('LOWER(name) = ?', query.to_s.downcase)
-  end
-
-  def self.search(query)
-    # Gnarly hack to provide a search rank
-    # TODO: switch properly to pg_search (this is harder for User because of
-    # maintaining the email search, unless we remove that)
-    select(
-      sanitize_sql_array([
-        'users.*, GREATEST(
-          similarity(users.name, :query),
-          CASE WHEN users.email = :query THEN 1.0 ELSE 0.0 END
-        ) AS pg_search_rank',
-      query: query.downcase])
-    ).where('LOWER(name) LIKE :query OR LOWER(email) LIKE :query', query: "#{query.downcase}%")
-  end
-  class << self
-    alias_method :instant_search, :search
-    alias_method :full_search, :instant_search
-  end
-
-  has_many :favorites
-
-  def has_favorite?(item)
-    self.favorites.exists?(item_id: item, item_type: item.class.to_s)
-  end
-
-  def has_favorite2?(item)
-    @favorites ||= favorites.pluck(:item_id, :item_type)
-    !! @favorites.member?([item.id, item.class.to_s])
-  end
-
+  belongs_to :waifu_character, foreign_key: :waifu_char_id, class_name: 'Casting', primary_key: :character_id
   # Following stuff.
   has_many :follower_relations, dependent: :destroy, foreign_key: :followed_id, class_name: 'Follow'
   has_many :followers, -> { order('follows.created_at DESC') }, through: :follower_relations, source: :follower, class_name: 'User'
@@ -137,20 +94,31 @@ class User < ActiveRecord::Base
   has_many :votes
   has_one :recommendation
   has_many :not_interested
-  has_many :not_interested_anime, through: :not_interested, source: :media, source_type: "Anime"
+  has_many :not_interested_anime,
+    through: :not_interested,
+    source: :media,
+    source_type: "Anime"
+  has_many :favorites
 
+  has_many :library_entries, dependent: :destroy
+  has_many :manga_library_entries, dependent: :destroy
+  has_many :reviews
+  has_many :quotes
   has_and_belongs_to_many :favorite_genres, -> { uniq }, class_name: "Genre", join_table: "favorite_genres_users"
 
-  belongs_to :waifu_character, foreign_key: :waifu_char_id, class_name: 'Casting', primary_key: :character_id
+  validates :name,
+    :presence   => true,
+    :uniqueness => {:case_sensitive => false},
+    :length => {minimum: 3, maximum: 20},
+    :format => {:with => /\A[_A-Za-z0-9]+\z/,
+                :message => "can only contain letters, numbers, and underscores."}
 
-  # Include devise modules. Others available are:
-  # :lockable, :timeoutable, :trackable, :rememberable.
-  devise :database_authenticatable, :registerable, :recoverable,
-         :validatable, :omniauthable, :confirmable, :async,
-         allow_unconfirmed_access_for: nil
+    validates :facebook_id, allow_blank: true, uniqueness: true
+    validates :title_language_preference, inclusion: {in: %w[canonical english romanized]}
+    validate :valid_username
 
-  has_attached_file :avatar,
-    styles: {
+    has_attached_file :avatar,
+      styles: {
       thumb: '190x190#',
       thumb_small: {geometry: '100x100#', animated: false, format: :jpg},
       small: {geometry: '50x50#', animated: false, format: :jpg}
@@ -162,291 +130,320 @@ class User < ActiveRecord::Base
     default_url: "https://hummingbird.me/default_avatar.jpg",
     processors: [:thumbnail, :paperclip_optimizer]
 
-  validates_attachment :avatar, content_type: {
-    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-  }
+    validates_attachment :avatar, content_type: {
+      content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+    }
 
-  process_in_background :avatar, processing_image_url: '/assets/processing-avatar.jpg'
+    process_in_background :avatar, processing_image_url: '/assets/processing-avatar.jpg'
 
-  has_attached_file :cover_image,
-    styles: {thumb: {geometry: "2880x800#", animated: false, format: :jpg}},
-    convert_options: {thumb: '-interlace Plane -quality 0'},
-    default_url: "https://hummingbird.me/default_cover.png"
+    has_attached_file :cover_image,
+      styles: {thumb: {geometry: "2880x800#", animated: false, format: :jpg}},
+      convert_options: {thumb: '-interlace Plane -quality 0'},
+      default_url: "https://hummingbird.me/default_cover.png"
 
-  validates_attachment :cover_image, content_type: {
-    content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-  }
+    validates_attachment :cover_image, content_type: {
+      content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+    }
 
-  has_many :library_entries, dependent: :destroy
-  has_many :manga_library_entries, dependent: :destroy
-  has_many :reviews
-  has_many :quotes
+    before_save do
+      if self.facebook_id and self.facebook_id.strip == ""
+        self.facebook_id = nil
+      end
 
-  # Validations
-  validates :name,
-    :presence   => true,
-    :uniqueness => {:case_sensitive => false},
-    :length => {minimum: 3, maximum: 20},
-    :format => {:with => /\A[_A-Za-z0-9]+\z/,
-      :message => "can only contain letters, numbers, and underscores."}
+      # Make sure the user has an authentication token.
+      if self.authentication_token.blank?
+        token = nil
+        loop do
+          token = Devise.friendly_token
+          break unless User.where(authentication_token: token).first
+        end
+        self.authentication_token = token
+      end
 
-  INVALID_USERNAMES = %w(
-    admin administrator connect dashboard developer developers edit favorites
-    feature featured features feed follow followers following hummingbird index
-    javascript json sysadmin sysadministrator system unfollow user users wiki you
-  )
+      if about_changed?
+        self.about_formatted = MessageFormatter.format_message about
+      end
 
-  validate :valid_username
-  def valid_username
-    return unless name
-    if INVALID_USERNAMES.include? name.downcase
-      errors.add(:name, "is reserved")
-    end
-    if name[0,1] =~ /[^A-Za-z0-9]/
-      errors.add(:name, "must begin with a letter or number")
-    end
-    if name =~ /^[0-9]*$/
-      errors.add(:name, "cannot be entirely numbers")
-    end
-  end
-
-  validates :facebook_id, allow_blank: true, uniqueness: true
-
-  validates :title_language_preference, inclusion: {in: %w[canonical english romanized]}
-
-  enum import_status: {queued: 1, running: 2, complete: 3, error: 4}
-
-  def to_s
-    name
-  end
-
-  # Avatar
-  def avatar_url
-    # Gravatar
-    # gravatar_id = Digest::MD5.hexdigest(email.downcase)
-    # "http://gravatar.com/avatar/#{gravatar_id}.png?s=100"
-    avatar.url(:thumb)
-  end
-
-  # Public: Is this user an administrator?
-  #
-  # For now, this will just check email addresses. In production, this should
-  # check the user's ID as well.
-  def admin?
-    ["c@vikhyat.net", # Vik
-     "josh@hummingbird.me", # Josh
-     "hummingbird.ryn@gmail.com", # Ryatt
-     "dev.colinl@gmail.com", # Psy
-     "lazypanda39@gmail.com", # Cai
-     "svengehring@cybrox.eu", # Cybrox
-     "peter.lejeck@gmail.com", # Nuck
-     "hello@vevix.net", # Vevix
-     "jimm4a1@hotmail.com", #Jim
-     "jojovonjo@yahoo.com", #JoJo
-     "synthtech@outlook.com" #Synthtech
-    ].include? email
-  end
-
-  # Does the user have active PRO membership?
-  def pro?
-    pro_expires_at && pro_expires_at > Time.now
-  end
-
-  def pro_membership_plan
-    return nil if pro_membership_plan_id.nil?
-    ProMembershipPlan.find(pro_membership_plan_id)
-  end
-
-  def has_dropbox?
-    !!(dropbox_token && dropbox_secret)
-  end
-
-  def has_facebook?
-    !facebook_id.blank?
-  end
-
-  # Public: Find a user corresponding to a Facebook account.
-  #
-  # If there is an account associated with the Facebook ID, return it.
-  #
-  # If there is no such account but `signed_in_resource` is not nil (meaning that
-  # there is a user signed in), connect the user's account to this Facebook
-  # account.
-  #
-  # If there is no user logged in, check to see if there is a user with the same
-  # email address. If there is, connect that account to Facebook and return it.
-  #
-  # Otherwise, just create a new user and connect it to this Facebook account.
-  #
-  # Returns a user account corresponding to the given auth parameters.
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-    # Try to find a user already associated with the Facebook ID.
-    user = User.where(facebook_id: auth.uid).first
-    return user if user
-
-    # If the user is logged in, connect their account to Facebook.
-    if not signed_in_resource.nil?
-      signed_in_resource.connect_to_facebook(auth.uid)
-      return signed_in_resource
+      if waifu_char_id != '0000' and changed_attributes['waifu_char_id']
+        self.waifu_slug = waifu_character ? waifu_character.castable.slug : '#'
+      end
     end
 
-    # If there is a user with the same email, connect their account to this
-    # Facebook account.
-    user = User.find_by_email(auth.info.email)
-    if user
-      user.connect_to_facebook(auth.uid)
+    after_save do
+      name_changed = self.name_changed?
+      auth_token_changed = self.authentication_token_changed?
+      avatar_changed = (not self.avatar_processing) && (self.avatar_processing_changed? || self.avatar_updated_at_changed?)
+      if name_changed || avatar_changed || auth_token_changed
+        self.sync_to_forum!
+      end
+    end
+
+    # Include devise modules. Others available are:
+    # :lockable, :timeoutable, :trackable, :rememberable.
+    devise :database_authenticatable, :registerable, :recoverable,
+      :validatable, :omniauthable, :confirmable, :async,
+      allow_unconfirmed_access_for: nil
+
+    # Friendly ID.
+    def to_param
+      name
+    end
+
+    def self.find(id)
+      user = nil
+      if id.is_a? String
+        user = User.find_by_username(id)
+      end
+      user || super
+    end
+
+    def self.find_by_username(username)
+      where('LOWER(name) = ?', username.to_s.downcase).first
+    end
+
+    def self.match(query)
+      where('LOWER(name) = ?', query.to_s.downcase)
+    end
+
+    def self.search(query)
+      # Gnarly hack to provide a search rank
+      # TODO: switch properly to pg_search (this is harder for User because of
+      # maintaining the email search, unless we remove that)
+      select(
+        sanitize_sql_array([
+          'users.*, GREATEST(
+          similarity(users.name, :query),
+          CASE WHEN users.email = :query THEN 1.0 ELSE 0.0 END
+        ) AS pg_search_rank',
+        query: query.downcase])
+      ).where('LOWER(name) LIKE :query OR LOWER(email) LIKE :query', query: "#{query.downcase}%")
+    end
+    class << self
+      alias_method :instant_search, :search
+      alias_method :full_search, :instant_search
+    end
+    def has_favorite?(item)
+      self.favorites.exists?(item_id: item, item_type: item.class.to_s)
+    end
+
+    def has_favorite2?(item)
+      @favorites ||= favorites.pluck(:item_id, :item_type)
+      !! @favorites.member?([item.id, item.class.to_s])
+    end
+
+    def valid_username
+      return unless name
+      if INVALID_USERNAMES.include? name.downcase
+        errors.add(:name, "is reserved")
+      end
+      if name[0,1] =~ /[^A-Za-z0-9]/
+        errors.add(:name, "must begin with a letter or number")
+      end
+      if name =~ /^[0-9]*$/
+        errors.add(:name, "cannot be entirely numbers")
+      end
+    end
+
+    enum import_status: {queued: 1, running: 2, complete: 3, error: 4}
+
+    def to_s
+      name
+    end
+
+    # Avatar
+    def avatar_url
+      # Gravatar
+      # gravatar_id = Digest::MD5.hexdigest(email.downcase)
+      # "http://gravatar.com/avatar/#{gravatar_id}.png?s=100"
+      avatar.url(:thumb)
+    end
+
+    # Public: Is this user an administrator?
+    #
+    # For now, this will just check email addresses. In production, this should
+    # check the user's ID as well.
+    def admin?
+      ["c@vikhyat.net", # Vik
+       "josh@hummingbird.me", # Josh
+       "hummingbird.ryn@gmail.com", # Ryatt
+       "dev.colinl@gmail.com", # Psy
+       "lazypanda39@gmail.com", # Cai
+       "svengehring@cybrox.eu", # Cybrox
+       "peter.lejeck@gmail.com", # Nuck
+       "hello@vevix.net", # Vevix
+       "jimm4a1@hotmail.com", #Jim
+       "jojovonjo@yahoo.com", #JoJo
+       "synthtech@outlook.com" #Synthtech
+      ].include? email
+    end
+
+    # Does the user have active PRO membership?
+    def pro?
+      pro_expires_at && pro_expires_at > Time.now
+    end
+
+    def pro_membership_plan
+      return nil if pro_membership_plan_id.nil?
+      ProMembershipPlan.find(pro_membership_plan_id)
+    end
+
+    def has_dropbox?
+      !!(dropbox_token && dropbox_secret)
+    end
+
+    def has_facebook?
+      !facebook_id.blank?
+    end
+
+    # Public: Find a user corresponding to a Facebook account.
+    #
+    # If there is an account associated with the Facebook ID, return it.
+    #
+    # If there is no such account but `signed_in_resource` is not nil (meaning that
+    # there is a user signed in), connect the user's account to this Facebook
+    # account.
+    #
+    # If there is no user logged in, check to see if there is a user with the same
+    # email address. If there is, connect that account to Facebook and return it.
+    #
+    # Otherwise, just create a new user and connect it to this Facebook account.
+    #
+    # Returns a user account corresponding to the given auth parameters.
+    def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+      # Try to find a user already associated with the Facebook ID.
+      user = User.where(facebook_id: auth.uid).first
+      return user if user
+
+      # If the user is logged in, connect their account to Facebook.
+      if not signed_in_resource.nil?
+        signed_in_resource.connect_to_facebook(auth.uid)
+        return signed_in_resource
+      end
+
+      # If there is a user with the same email, connect their account to this
+      # Facebook account.
+      user = User.find_by_email(auth.info.email)
+      if user
+        user.connect_to_facebook(auth.uid)
+        return user
+      end
+
+      # Just create a new account. >_>
+      name = auth.extra.raw_info.name.parameterize.gsub('-', '_')
+      name = name.gsub(/[^_A-Za-z0-9]/, '')
+      if User.where("LOWER(name) = ?", name.downcase).count > 0
+        if name.length > 20
+          name = name[0...15]
+        end
+        name = name[0...10] + rand(9999).to_s
+      end
+      name = name[0...20] if name.length > 20
+      user = User.new(
+        name: name,
+        facebook_id: auth.uid,
+        email: auth.info.email,
+        avatar: open("https://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
+        password: Devise.friendly_token[0, 20]
+      )
+      user.save
+      user.confirm!
       return user
     end
 
-    # Just create a new account. >_>
-    name = auth.extra.raw_info.name.parameterize.gsub('-', '_')
-    name = name.gsub(/[^_A-Za-z0-9]/, '')
-    if User.where("LOWER(name) = ?", name.downcase).count > 0
-      if name.length > 20
-        name = name[0...15]
+    # Set this user's facebook_id to the passed in `uid`.
+    #
+    # Returns nothing.
+    def connect_to_facebook(uid)
+      if not self.avatar.exists?
+        self.avatar = open("http://graph.facebook.com/#{uid}/picture?width=200&height=200")
       end
-      name = name[0...10] + rand(9999).to_s
-    end
-    name = name[0...20] if name.length > 20
-    user = User.new(
-      name: name,
-      facebook_id: auth.uid,
-      email: auth.info.email,
-      avatar: open("https://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
-      password: Devise.friendly_token[0, 20]
-    )
-    user.save
-    user.confirm!
-    return user
-  end
-
-  # Set this user's facebook_id to the passed in `uid`.
-  #
-  # Returns nothing.
-  def connect_to_facebook(uid)
-    if not self.avatar.exists?
-      self.avatar = open("http://graph.facebook.com/#{uid}/picture?width=200&height=200")
-    end
-    self.facebook_id = uid
-    self.save
-  end
-
-  def update_ip!(new_ip)
-    if self.current_sign_in_ip != new_ip
-      self.attributes = {
-        current_sign_in_ip: new_ip,
-        last_sign_in_ip: self.current_sign_in_ip
-      }
-
-      # Avoid validating because some users apparently don't pass validation
-      self.save(validate: false)
-    end
-  end
-
-  # Return the top 5 genres the user has completed, along with
-  # the number of anime watched that contain each of those genres.
-  def top_genres
-    freqs = nil
-    LibraryEntry.unscoped do
-      freqs = library_entries.where(status: "Completed")
-                             .where(private: false)
-                             .joins(:genres)
-                             .group('genres.id')
-                             .select('COUNT(*) as count, genres.id as genre_id')
-                             .order('count DESC')
-                             .limit(5).each_with_object({}) do |x, obj|
-                               obj[x.genre_id] = x.count.to_f
-                             end
+      self.facebook_id = uid
+      self.save
     end
 
-    result = []
-    Genre.where(id: freqs.keys).each do |genre|
-      result.push({genre: genre, num: freqs[genre.id]})
+    def update_ip!(new_ip)
+      if self.current_sign_in_ip != new_ip
+        self.attributes = {
+          current_sign_in_ip: new_ip,
+          last_sign_in_ip: self.current_sign_in_ip
+        }
+
+        # Avoid validating because some users apparently don't pass validation
+        self.save(validate: false)
+      end
     end
 
-    result.sort_by {|x| -x[:num] }
-  end
+    # Return the top 5 genres the user has completed, along with
+    # the number of anime watched that contain each of those genres.
+    def top_genres
+      freqs = nil
+      LibraryEntry.unscoped do
+        freqs = library_entries.where(status: "Completed")
+          .where(private: false)
+          .joins(:genres)
+          .group('genres.id')
+          .select('COUNT(*) as count, genres.id as genre_id')
+          .order('count DESC')
+          .limit(5).each_with_object({}) do |x, obj|
+          obj[x.genre_id] = x.count.to_f
+        end
+      end
 
-  # How many minutes the user has spent watching anime.
-  def recompute_life_spent_on_anime!
-    time_spent = nil
-    LibraryEntry.unscoped do
-      time_spent = self.library_entries.joins(:anime).select('
+      result = []
+      Genre.where(id: freqs.keys).each do |genre|
+        result.push({genre: genre, num: freqs[genre.id]})
+      end
+
+      result.sort_by {|x| -x[:num] }
+    end
+
+    # How many minutes the user has spent watching anime.
+    def recompute_life_spent_on_anime!
+      time_spent = nil
+      LibraryEntry.unscoped do
+        time_spent = self.library_entries.joins(:anime).select('
         COALESCE(anime.episode_length, 0) * (
           COALESCE(episodes_watched, 0)
           + COALESCE(anime.episode_count, 0) * COALESCE(rewatch_count, 0)
         ) AS mins
-      ').map {|x| x.mins }.sum
-    end
-    self.update_attributes life_spent_on_anime: time_spent
-  end
-
-  def update_life_spent_on_anime(delta)
-    if life_spent_on_anime == 0
-      self.recompute_life_spent_on_anime!
-    else
-      self.update_column :life_spent_on_anime, self.life_spent_on_anime + delta
-    end
-  end
-
-  def followers_count
-    followers_count_hack
-  end
-
-  before_save do
-    if self.facebook_id and self.facebook_id.strip == ""
-      self.facebook_id = nil
-    end
-
-    # Make sure the user has an authentication token.
-    if self.authentication_token.blank?
-      token = nil
-      loop do
-        token = Devise.friendly_token
-        break unless User.where(authentication_token: token).first
+                                                               ').map {|x| x.mins }.sum
       end
-      self.authentication_token = token
+      self.update_attributes life_spent_on_anime: time_spent
     end
 
-    if about_changed?
-      self.about_formatted = MessageFormatter.format_message about
+    def update_life_spent_on_anime(delta)
+      if life_spent_on_anime == 0
+        self.recompute_life_spent_on_anime!
+      else
+        self.update_column :life_spent_on_anime, self.life_spent_on_anime + delta
+      end
     end
 
-    if waifu_char_id != '0000' and changed_attributes['waifu_char_id']
-      self.waifu_slug = waifu_character ? waifu_character.castable.slug : '#'
+    def followers_count
+      followers_count_hack
     end
-  end
 
-  def sync_to_forum!
-    UserSyncWorker.perform_async(self.id) if Rails.env.production?
-  end
-
-  after_save do
-    name_changed = self.name_changed?
-    auth_token_changed = self.authentication_token_changed?
-    avatar_changed = (not self.avatar_processing) && (self.avatar_processing_changed? || self.avatar_updated_at_changed?)
-    if name_changed || avatar_changed || auth_token_changed
-      self.sync_to_forum!
+    def sync_to_forum!
+      UserSyncWorker.perform_async(self.id) if Rails.env.production?
     end
-  end
 
-  def voted_for?(target)
-    @votes ||= {}
-    @votes[target.class.to_s] ||= votes.where(:target_type => target.class.to_s).pluck(:target_id)
-    @votes[target.class.to_s].member? target.id
-  end
+    def voted_for?(target)
+      @votes ||= {}
+      @votes[target.class.to_s] ||= votes.where(:target_type => target.class.to_s).pluck(:target_id)
+      @votes[target.class.to_s].member? target.id
+    end
 
-  # Return encrypted email.
-  def encrypted_email
-    Digest::MD5.hexdigest(ENV['FORUM_SYNC_SECRET'] + self.email)
-  end
+    # Return encrypted email.
+    def encrypted_email
+      Digest::MD5.hexdigest(ENV['FORUM_SYNC_SECRET'] + self.email)
+    end
 
-  def avatar_template
-    self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
-  end
+    def avatar_template
+      self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
+    end
 
-  attr_reader :is_followed
-  def set_is_followed!(v)
-    @is_followed = v
-  end
+    attr_reader :is_followed
+    def set_is_followed!(v)
+      @is_followed = v
+    end
 end
