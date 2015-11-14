@@ -16,6 +16,6 @@
     "pretender": "^0.10.0",
     "PACE": "pace#~1.0.2",
     "sinonjs": "~1.17.1",
-    "foundation-sites": "git@github.com:hummingbird-me/foundation-sites-6.git#develop"
+    "foundation-sites": "zurb/foundation-sites-6#master"
   }
 }

@@ -13,8 +13,6 @@ cache:
     - client/node_modules
 
 before_install:
-  - echo -e "$CI_DEPLOY_KEY" > ~/.ssh/id_rsa
-  - chmod 600 ~/.ssh/id_rsa
   - mkdir -p travis-phantomjs
   - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -O $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
   - tar -xvf $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -C $PWD/travis-phantomjs
