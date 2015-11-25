@@ -2,6 +2,10 @@
 
 [![Build Status](https://secure.travis-ci.org/hummingbird-me/hummingbird.png?branch=master)](http://travis-ci.org/hummingbird-me/hummingbird) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird.png)](https://codeclimate.com/github/hummingbird-me/hummingbird) [![Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird/coverage.png)](https://codeclimate.com/github/hummingbird-me/hummingbird)
 
+### Important Notice
+
+The `master` branch is now frozen and work is focussed on the [`the-future` branch](https://github.com/hummingbird-me/hummingbird/tree/the-future). Besides bugfixes, there won't be any critical changes in master anymore.
+
 [![Hummingbird is now Open Source](http://hummingbird-forum.s3.amazonaws.com/86407dbb64dbecfee0cbd74b759a4b33f70657b74c29.jpg)](http://forums.hummingbird.me/t/hummingbird-is-now-open-source/9870)
 
 ### What is Hummingbird?
