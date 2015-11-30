@@ -33,7 +33,8 @@
 
 FactoryGirl.define do
   factory :manga do
-    
+    titles { {ja_en: Faker::Name.name} }
+    canonical_title 'ja_en'
+    average_rating { rand(1.0..10.0) / 2 }
   end
-
 end
