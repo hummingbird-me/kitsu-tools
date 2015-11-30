@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130063746) do
+ActiveRecord::Schema.define(version: 20151130074941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,6 +112,8 @@ ActiveRecord::Schema.define(version: 20151130063746) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "slug",               limit: 255
+    t.integer  "primary_media_id"
+    t.string   "primary_media_type"
   end
 
   add_index "characters", ["mal_id"], name: "character_mal_id", unique: true, using: :btree
