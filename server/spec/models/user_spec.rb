@@ -72,15 +72,33 @@ RSpec.describe User, type: :model do
 
   it { should define_enum_for(:rating_system) }
   it { should have_db_index(:facebook_id) }
+  it { should belong_to(:pro_membership_plan) }
   it { should validate_uniqueness_of(:name) }
   it { should validate_uniqueness_of(:email) }
-  it 'should be able to query for authentication by username' do
-    u = User.find_for_auth(persisted_user.name)
-    expect(u).to eq(persisted_user)
+
+  describe 'find_for_auth' do
+    it 'should be able to query by username' do
+      u = User.find_for_auth(persisted_user.name)
+      expect(u).to eq(persisted_user)
+    end
+    it 'should be able to query by email' do
+      u = User.find_for_auth(persisted_user.email)
+      expect(u).to eq(persisted_user)
+    end
   end
 
-  it 'should be able to query for authentication by email' do
-    u = User.find_for_auth(persisted_user.email)
-    expect(u).to eq(persisted_user)
+  describe '#pro?' do
+    it 'should return false if the user has no pro expiry' do
+      user = build(:user, pro_expires_at: nil)
+      expect(user).not_to be_pro
+    end
+    it 'should return false if the user has already run out of pro' do
+      user = build(:user, pro_expires_at: 2.months.ago)
+      expect(user).not_to be_pro
+    end
+    it 'should return true if the user still has pro left' do
+      user = build(:user, pro_expires_at: 2.months.from_now)
+      expect(user).to be_pro
+    end
   end
 end

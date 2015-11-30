@@ -69,6 +69,8 @@ class User < ActiveRecord::Base
          :validatable, :confirmable, :async
   rolify
 
+  belongs_to :pro_membership_plan
+
   enum rating_system: %i[smilies stars]
   has_attached_file :avatar
   has_attached_file :cover_image
@@ -101,5 +103,10 @@ class User < ActiveRecord::Base
     user = nil
     user = find_by_username(name_or_id) if name_or_id.is_a? String
     user || super
+  end
+
+  def pro?
+    return false if pro_expires_at.nil?
+    pro_expires_at >= Time.now
   end
 end
