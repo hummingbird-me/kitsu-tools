@@ -1,0 +1,45 @@
+# Recurring
+monthly:
+  id: 1
+  name: "Monthly - $3.99"
+  amount: 399
+  duration: 1
+  recurring: true
+yearly:
+  id: 2
+  name: "Yearly - $29.99 ($2.50/month)"
+  amount: 2999
+  duration: 12
+  recurring: true
+
+# One-time
+one_month:
+  id: 3
+  name: "1 month: $3.99"
+  amount: 399
+  duration: 1
+  recurring: false
+three_months:
+  id: 4
+  name: "3 months: $11.97"
+  amount: 1197
+  duration: 3
+  recurring: true
+one_year:
+  id: 5
+  name: "12 months (special price!): $29.99"
+  amount: 2999
+  duration: 12
+  recurring: false
+two_years:
+  id: 6
+  name: "24 months (special price!): $59.98"
+  amount: 5998
+  duration: 24
+  recurring: false
+three_years:
+  id: 7
+  name: "32 months (special price!): $89.97"
+  amount: 8997
+  duration: 36
+  recurring: false
