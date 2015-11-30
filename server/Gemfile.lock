@@ -104,6 +104,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    after_commit_action (1.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
@@ -126,6 +129,10 @@ GEM
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     connection_pool (2.2.0)
+    counter_culture (0.1.34)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      after_commit_action (~> 1.0.0)
     delayed_paperclip (2.9.1)
       paperclip (>= 3.3)
     devise (3.5.2)
@@ -371,6 +378,7 @@ DEPENDENCIES
   aws-sdk
   codeclimate-test-reporter
   connection_pool
+  counter_culture
   delayed_paperclip
   devise (~> 3.5)
   devise-async

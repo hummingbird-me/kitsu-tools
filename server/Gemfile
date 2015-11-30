@@ -40,6 +40,7 @@ gem 'friendly_id' # slug-urls-are-cool
 gem 'nokogiri' # Parse MAL XML shit
 gem 'active_model_serializers', '0.10.0.rc3' # JSON-API serialization
 gem 'paranoia', '~> 2.0'
+gem 'counter_culture'
 
 # Rack Middleware
 gem 'rack-cors'
