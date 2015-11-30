@@ -62,6 +62,7 @@
 #  import_from                 :string(255)
 #  import_error                :string(255)
 #  onboarded                   :boolean          default(FALSE), not null
+#  past_names                  :string           default([]), not null, is an Array
 #
 
 FactoryGirl.define do

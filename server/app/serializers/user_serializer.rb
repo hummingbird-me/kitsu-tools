@@ -62,10 +62,11 @@
 #  import_from                 :string(255)
 #  import_error                :string(255)
 #  onboarded                   :boolean          default(FALSE), not null
+#  past_names                  :string           default([]), not null, is an Array
 #
 
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :avatar, :cover_image, :about,
+  attributes :id, :name, :past_names, :avatar, :cover_image, :about,
              :bio, :about_formatted, :location, :website, :waifu_or_husbando,
              :rating_system, :to_follow, :followers_count, :following_count,
              :onboarded

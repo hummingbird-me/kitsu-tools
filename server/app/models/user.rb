@@ -62,9 +62,12 @@
 #  import_from                 :string(255)
 #  import_error                :string(255)
 #  onboarded                   :boolean          default(FALSE), not null
+#  past_names                  :string           default([]), not null, is an Array
 #
 
 class User < ActiveRecord::Base
+  PAST_NAMES_LIMIT = 10
+
   devise :database_authenticatable, :registerable, :recoverable,
          :validatable, :confirmable, :async
   rolify
@@ -108,5 +111,16 @@ class User < ActiveRecord::Base
   def pro?
     return false if pro_expires_at.nil?
     pro_expires_at >= Time.now
+  end
+
+  def previous_name
+    past_names.first
+  end
+
+  before_update do
+    if name_changed?
+      # Push it onto the front and limit
+      self.past_names = [name_was, *past_names].first(PAST_NAMES_LIMIT)
+    end
   end
 end
