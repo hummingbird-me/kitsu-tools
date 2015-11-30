@@ -10,6 +10,7 @@ RSpec.shared_examples 'media' do
   it { should have_db_column(:rating_frequencies).of_type(:hstore) }
   it { should have_db_column(:start_date).of_type(:date) }
   it { should have_db_column(:end_date).of_type(:date) }
+  it { should have_and_belong_to_many(:genres) }
   # Methods used for the magic
   it { should respond_to(:slug_candidates) }
   it { should respond_to(:canonical_title) }

@@ -10,6 +10,8 @@ module Media
     has_attached_file :cover_image
     has_attached_file :poster_image
 
+    has_and_belongs_to_many :genres
+
     validates :average_rating, numericality: {
       less_than_or_equal_to: 5,
       greater_than: 0
