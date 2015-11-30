@@ -3,9 +3,9 @@ engines:
      enabled: true
    eslint:
      enabled: true
-   scsslint:
+   scss-lint:
      enabled: true
-   bundler_audit:
+   bundler-audit:
      enabled: true
    watson:
      enabled: true
