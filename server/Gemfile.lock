@@ -214,6 +214,8 @@ GEM
       rb-inotify (>= 0.9)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    loofah-activerecord (1.2.0)
+      loofah (>= 1.0.0)
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -396,6 +398,7 @@ DEPENDENCIES
   hiredis
   image_optim
   json_expressions
+  loofah-activerecord
   nokogiri
   oauth2
   oj
