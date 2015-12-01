@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130074941) do
+ActiveRecord::Schema.define(version: 20151130083322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,9 +122,8 @@ ActiveRecord::Schema.define(version: 20151130074941) do
   create_table "episodes", force: :cascade do |t|
     t.integer  "anime_id"
     t.integer  "number"
-    t.string   "title",                  limit: 255
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.integer  "season_number"
     t.text     "synopsis"
     t.string   "thumbnail_file_name",    limit: 255
@@ -132,6 +131,9 @@ ActiveRecord::Schema.define(version: 20151130074941) do
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
     t.date     "airdate"
+    t.integer  "length"
+    t.hstore   "titles",                             default: {},      null: false
+    t.string   "canonical_title",                    default: "ja_en", null: false
   end
 
   add_index "episodes", ["anime_id"], name: "index_episodes_on_anime_id", using: :btree
