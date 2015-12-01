@@ -427,6 +427,7 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq (~> 3.4.2)
   sidetiq
+  simplecov
   spring
   stackprof
   timecop

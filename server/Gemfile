@@ -83,7 +83,8 @@ group :test do
   gem 'rspec-sidekiq' # Test Sidekiq jobs
   gem 'faker' # Fake data
   gem 'fakeweb' # Web faking
-  gem 'codeclimate-test-reporter', require: false
+  gem 'codeclimate-test-reporter', require: false # CodeClimate coverage
+  gem 'simplecov' # Local coverage
 
   # Libraries used to test our API itself
   gem 'oauth2'
