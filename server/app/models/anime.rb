@@ -40,10 +40,16 @@
 class Anime < ActiveRecord::Base
   include Media
 
+  SAFE_AGE_RATINGS = %w[G PG R]
+
   has_many :library_entries, dependent: :destroy
   has_many :episodes, dependent: :destroy
 
   enum age_rating: %i[G PG R R18]
+
+  scope :sfw, -> {
+    where(age_rating: Anime.age_ratings.values_at(*SAFE_AGE_RATINGS))
+  }
 
   def slug_candidates
     # Prefer the canonical title or romaji title before anything else
@@ -71,5 +77,14 @@ class Anime < ActiveRecord::Base
     length = episodes.length_average if episode_count && num < (episode_count / 2)
 
     update(episode_length: length)
+  end
+
+  # SFW-ness is whitelist, not blacklist
+  def sfw?
+    age_rating.in? SAFE_AGE_RATINGS
+  end
+
+  def nsfw?
+    !sfw?
   end
 end

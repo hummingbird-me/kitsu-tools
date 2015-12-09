@@ -31,7 +31,7 @@ RSpec.describe AnimeController, type: :controller do
     end
 
     before do
-      self.current_user = create(:administrator)
+      self.current_user = create(:user, :admin)
     end
 
     it 'assigns a persisted @anime with the right attributes' do

@@ -72,8 +72,12 @@ FactoryGirl.define do
     password { Faker::Internet.password }
     avatar { Faker::Avatar.image }
 
-    factory :administrator do
+    trait :admin do
       after(:create) { |user| user.add_role(:admin) }
+    end
+
+    trait :anime_admin do
+      after(:create) { |user| user.add_role(:admin, Anime) }
     end
   end
 end

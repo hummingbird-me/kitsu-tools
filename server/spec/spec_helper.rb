@@ -22,7 +22,7 @@ RSpec.configure do |config|
   config.default_formatter = 'doc' if config.files_to_run.one?
 
   # Show the 10 slowest specs
-  config.profile_examples = 10
+  config.profile_examples = 2
 
   # Randomize - if there's an order where the tests break, a seed can be passed
   # in via --seed to reproduce
