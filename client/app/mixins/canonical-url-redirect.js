@@ -10,13 +10,12 @@ export default Mixin.create({
   // if they don't match then redirect to the correct URL
   redirect(model) {
     const routeName = get(this, 'routeName');
-    const routeKey = get(this, 'routeKey');
-
     const params = this.paramsFor(routeName);
-    const current = get(params, routeKey);
-    const correct = get(model, routeKey);
+    const [key] = Object.keys(params);
+    const current = get(params, key);
+    const correct = get(model, key);
     if (current !== correct) {
-      this.transitionTo(routeName, correct);
+      this.replaceWith(routeName, correct);
     }
   }
 });

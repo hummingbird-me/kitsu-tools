@@ -8,8 +8,6 @@ const {
 } = Ember;
 
 export default Route.extend(DataRouteErrorMixin, CanonicalUrlRedirect, {
-  routeKey: 'name',
-
   model(params) {
     return get(this, 'store').findRecord('user', params.name);
   }

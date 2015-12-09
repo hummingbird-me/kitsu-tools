@@ -13,64 +13,65 @@ module('Acceptance | routing', {
   }
 });
 
-test('visiting /dashboard should redirect', function(assert) {
+test('visiting `/dashboard` redirects to `/`', function(assert) {
   assert.expect(1);
+
   visit('/dashboard');
-
-  andThen(() => assert.notEqual(currentURL(), '/dashboard'));
-});
-
-test('visiting / should work if unauthenticated', function(assert) {
-  assert.expect(1);
-  invalidateSession(this.application);
-  visit('/');
-
   andThen(() => assert.equal(currentURL(), '/'));
 });
 
-test('visiting /sign-in should redirect if authenticated', function(assert) {
-  assert.expect(1);
-  authenticateSession(this.application);
-  visit('/sign-in');
-
-  andThen(() => assert.notEqual(currentURL(), '/sign-in'));
-});
-
-test('visiting /sign-in should work if unauthenticated', function(assert) {
+test('visiting `/` works when unauthenticated', function(assert) {
   assert.expect(1);
   invalidateSession(this.application);
-  visit('/sign-in');
 
+  visit('/');
+  andThen(() => assert.equal(currentURL(), '/'));
+});
+
+test('visiting `/sign-in` redirects to `/` when authenticated', function(assert) {
+  assert.expect(1);
+  authenticateSession(this.application);
+
+  visit('/sign-in');
+  andThen(() => assert.equal(currentURL(), '/'));
+});
+
+test('visiting `/sign-in` works when unauthenticated', function(assert) {
+  assert.expect(1);
+  invalidateSession(this.application);
+
+  visit('/sign-in');
   andThen(() => assert.equal(currentURL(), '/sign-in'));
 });
 
-test('visiting /sign-up should redirect if authenticated', function(assert) {
+test('visiting `/sign-up` redirects to `/` when authenticated', function(assert) {
   assert.expect(1);
   authenticateSession(this.application);
-  visit('/sign-up');
 
-  andThen(() => assert.notEqual(currentURL(), '/sign-up'));
+  visit('/sign-up');
+  andThen(() => assert.equal(currentURL(), '/'));
 });
 
-test('visiting /sign-up should work if unauthenticated', function(assert) {
+test('visiting `/sign-up` works when unauthenticated', function(assert) {
   assert.expect(1);
   invalidateSession(this.application);
-  visit('/sign-up');
 
+  visit('/sign-up');
   andThen(() => assert.equal(currentURL(), '/sign-up'));
 });
 
-test('visiting /onboarding should redirect if unauthenticated', function(assert) {
+test('visiting `/onboarding` redirects to `/sign-in` when unauthenticated', function(assert) {
   assert.expect(1);
   invalidateSession(this.application);
-  visit('/onboarding');
 
+  visit('/onboarding');
   andThen(() => assert.equal(currentURL(), '/sign-in'));
 });
 
-test('visiting an unknown route hits not-found', function(assert) {
-  assert.expect(1);
-  visit('/doesnt-exist');
+test('visiting an unknown route redirects to `/404`', function(assert) {
+  assert.expect(2);
 
+  visit('/doesnt-exist');
   andThen(() => assert.equal(currentRouteName(), 'not-found'));
+  andThen(() => assert.equal(currentURL(), '/404'));
 });

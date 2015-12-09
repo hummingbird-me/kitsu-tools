@@ -7,8 +7,6 @@ const {
 } = Ember;
 
 export default Route.extend(CanonicalUrlRedirect, {
-  routeKey: 'slug',
-
   model(params) {
     return get(this, 'store').findRecord('anime', params.slug);
   },
