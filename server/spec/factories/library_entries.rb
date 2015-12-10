@@ -21,5 +21,9 @@ FactoryGirl.define do
     anime
     user
     status 'planned'
+
+    trait :nsfw do
+      association :anime, :nsfw
+    end
   end
 end
