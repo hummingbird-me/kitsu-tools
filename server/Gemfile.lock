@@ -133,6 +133,7 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
       after_commit_action (~> 1.0.0)
+    database_cleaner (1.5.1)
     delayed_paperclip (2.9.1)
       paperclip (>= 3.3)
     devise (3.5.2)
@@ -381,6 +382,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   connection_pool
   counter_culture
+  database_cleaner
   delayed_paperclip
   devise (~> 3.5)
   devise-async

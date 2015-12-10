@@ -62,6 +62,7 @@ group :development, :test do
 
   # Development+Testing
   gem 'factory_girl_rails' # Factories > Fixtures
+  gem 'database_cleaner' # Clean the database fully before doing anything
 
   # HERE THERE BE DRAGONS: Remove and uncomment line below when rspec-rails is
   # released with a fix for rspec/rspec-rails#1430
