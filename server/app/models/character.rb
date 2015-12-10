@@ -26,7 +26,7 @@ class Character < ActiveRecord::Base
   def slug_candidates
     [
       -> { name },
-      -> { [primary_media.canonical_title, name] }
-    ]
+      (-> { [primary_media.canonical_title, name] } if primary_media)
+    ].compact
   end
 end

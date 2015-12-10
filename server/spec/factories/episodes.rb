@@ -21,6 +21,7 @@
 
 FactoryGirl.define do
   factory :episode do
+    anime
     titles { {ja_en: Faker::Name.name} }
     canonical_title 'ja_en'
     synopsis { Faker::Lorem.paragraph }

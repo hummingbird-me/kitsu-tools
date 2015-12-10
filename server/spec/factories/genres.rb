@@ -12,6 +12,7 @@
 
 FactoryGirl.define do
   factory :genre do
-    name { Faker::Book.genre }
+    # TODO: switch to Faker::Book.genre when they make a new release
+    name { Faker::Lorem.word }
   end
 end

@@ -34,14 +34,14 @@ class LibraryEntry < ActiveRecord::Base
   validates :rating, numericality: {
     greater_than: 0,
     less_than_or_equal_to: 5
-  }
+  }, allow_blank: true
   validates :rewatch_count, numericality: {
     less_than_or_equal_to: 50,
-    message: "just... go outside"
+    message: 'just... go outside'
   }
   validates :episodes_watched, numericality: {
     less_than_or_equal_to: 500,
-    message: "it seems improbable that the show would have that many episodes"
+    message: 'it seems improbable that the show would have that many episodes'
   }
   validate :episodes_watched_limit
   validate :rating_on_halves
@@ -53,7 +53,9 @@ class LibraryEntry < ActiveRecord::Base
     end
   end
   def rating_on_halves
-    unless rating && rating % 0.5 == 0.0
+    return unless rating
+
+    unless rating % 0.5 == 0.0
       errors.add(:rating, 'must be a multiple of 0.5')
     end
   end

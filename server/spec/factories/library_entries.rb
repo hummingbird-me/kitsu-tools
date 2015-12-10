@@ -18,5 +18,8 @@
 
 FactoryGirl.define do
   factory :library_entry do
+    anime
+    user
+    status 'planned'
   end
 end
