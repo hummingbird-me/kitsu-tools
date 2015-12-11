@@ -34,11 +34,6 @@ RSpec.describe AnimeController, type: :controller do
       self.current_user = create(:user, :admin)
     end
 
-    it 'assigns a persisted @anime with the right attributes' do
-      create_anime
-      expect(assigns(:anime)).to be_persisted
-      expect(assigns(:anime).canonical_title).to eq('Boku no Pico')
-    end
     it 'has status ok' do
       create_anime
       expect(response).to have_http_status(:ok)

@@ -4,19 +4,15 @@ RSpec.describe UsersController, type: :controller do
   describe 'show user' do
     describe 'with id=me' do
       it 'shows when authenticated' do
-        allow(@controller).to receive(:current_user) { 'hello' }
+        user = create(:user)
+        sign_in user
         get :show, id: 'me'
-        expect(assigns(:user)).to eq('hello')
+        expect(response).to redirect_to(user)
       end
       it 'errors when unauthenticated' do
         get :show, id: 'me'
         expect(response).to have_http_status(:not_found)
       end
-    end
-    it 'assigns @user' do
-      user = create(:user)
-      get :show, id: user.id
-      expect(assigns(:user)).to eq(user)
     end
     it 'has status ok' do
       user = create(:user)
@@ -38,13 +34,9 @@ RSpec.describe UsersController, type: :controller do
       }
     end
 
-    it 'assigns a persisted @user' do
+    it 'has status created' do
       create_user
-      expect(assigns(:user).persisted?).to be true
-    end
-    it 'has status ok' do
-      create_user
-      expect(response).to have_http_status(:ok)
+      expect(response).to have_http_status(:created)
     end
     it 'should have one more user than before' do
       expect {
@@ -56,6 +48,7 @@ RSpec.describe UsersController, type: :controller do
   describe 'update user' do
     let(:user) { create(:user) }
     def update_user
+      sign_in user
       post :update, id: user.id, data: {
         type: 'users',
         id: user.id,
@@ -65,10 +58,6 @@ RSpec.describe UsersController, type: :controller do
       }
     end
 
-    it 'assigns @user' do
-      update_user
-      expect(assigns(:user)).to be_a User
-    end
     it 'has status ok' do
       update_user
       expect(response).to have_http_status(:ok)

@@ -38,6 +38,10 @@ class ApplicationPolicy
     Pundit.policy_scope!(user, record.class)
   end
 
+  def is_admin?
+    user && user.has_role?(:admin)
+  end
+
   class Scope
     attr_reader :user, :scope
 

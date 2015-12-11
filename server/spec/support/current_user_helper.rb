@@ -1,6 +1,6 @@
 module CurrentUserHelper
-  def current_user=(user)
-    @controller.send(:define_singleton_method, :current_user) { user || super }
+  def sign_in(user)
+    @controller.send(:define_singleton_method, :current_user) { user }
   end
 end
 
