@@ -16,4 +16,19 @@ class LibraryEntryPolicy < ApplicationPolicy
   end
   alias_method :update?, :create?
   alias_method :destroy?, :create?
+
+  class Scope < Scope
+    def resolve
+      return scope.where(private: false) unless user
+      t = LibraryEntry.arel_table
+      private, user_id = t[:private], t[:user_id]
+      # RAILS-5: This can be replaced with a simple ActiveRecord.or
+      # (private == true && user == owner) || private == false
+      scope.where(
+        private.eq(false).or(
+          user_id.eq(user.id).and(private.eq(true))
+        )
+      )
+    end
+  end
 end

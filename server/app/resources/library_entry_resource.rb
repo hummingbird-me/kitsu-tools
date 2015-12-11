@@ -4,5 +4,6 @@ class LibraryEntryResource < BaseResource
 
   filters :user_id, :status
 
+  has_one :user
   has_one :anime
 end
