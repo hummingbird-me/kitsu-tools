@@ -15,10 +15,10 @@ cache:
 env:
   global:
     - USE_NODE=0.12
-    - USE_RUBY=2.2.3
   matrix:
     - TESTGROUP=client
-    - TESTGROUP=server
+    - TESTGROUP=server USE_RUBY=ruby-2.2.3
+    - TESTGROUP=server USE_RUBY=rbx-2.8
 
 before_install:
   - source bin/travis/before_install
