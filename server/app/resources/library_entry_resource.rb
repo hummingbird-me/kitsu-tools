@@ -9,5 +9,5 @@ class LibraryEntryResource < BaseResource
   has_one :user
   has_one :anime
 
-  paginator UnlimitedPaginator
+  paginator :unlimited
 end
