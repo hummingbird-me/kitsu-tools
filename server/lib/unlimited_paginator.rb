@@ -6,7 +6,7 @@
 # Yet, those hands will never hold anything
 # So as I pray, unlimited pagination works
 
-class UnlimitedPaginator < JSONAPI::OffsetPaginator
+class UnlimitedPaginator < OffsetPaginator
   private
   def verify_pagination_params
     if @limit < 1
