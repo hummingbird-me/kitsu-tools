@@ -8,7 +8,13 @@ const {
 
 export default Route.extend(CanonicalUrlRedirect, {
   model(params) {
-    return get(this, 'store').findRecord('anime', params.slug);
+    const { slug } = params;
+    if (slug.match(/\d+/)) {
+      return get(this, 'store').findRecord('anime', slug);
+    } else {
+      return get(this, 'store').query('anime', { filter: { slug } })
+        .then((records) => get(records, 'firstObject'));
+    }
   },
 
   titleToken(model) {

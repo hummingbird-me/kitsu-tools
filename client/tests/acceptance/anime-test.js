@@ -17,16 +17,16 @@ module('Acceptance | anime', {
 
 test('visiting `anime.show` works', function(assert) {
   assert.expect(2);
-  this.server.get('/anime/steins-gate', () => {
+  this.server.get('/anime', () => {
     const data = {
       type: 'anime',
-      id: 1,
+      id: '1',
       attributes: {
         slug: 'steins-gate',
         'canonical_title': 'Steins;Gate'
       }
     };
-    return [200, {}, JSON.stringify({ data })];
+    return [200, {}, JSON.stringify({ data: [data] })];
   });
 
   visit('/anime/steins-gate');
@@ -41,13 +41,13 @@ test('visiting `anime.show` with an id redirects to the slugged route', function
   assert.expect(1);
   const data = {
     type: 'anime',
-    id: 1,
+    id: '1',
     attributes: {
       slug: 'steins-gate'
     }
   };
   this.server.get('/anime/1', () => [200, {}, JSON.stringify({ data })]);
-  this.server.get('/anime/steins-gate', () => [200, {}, JSON.stringify({ data })]);
+  this.server.get('/anime', () => [200, {}, JSON.stringify({ data: [data] })]);
 
   visit('/anime/1');
   andThen(() => assert.equal(currentURL(), '/anime/steins-gate'));

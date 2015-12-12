@@ -44,10 +44,11 @@ export default Route.extend(ApplicationRouteMixin, {
 
   _getCurrentUser() {
     if (!Ember.testing) {
-      return get(this, 'ajax').request('/users/me')
+      return get(this, 'ajax').request('/users?filter[self]')
         .then((response) => {
-          const data = get(this, 'store').normalize('user', response.data);
-          const user = get(this, 'store').push(data);
+          const [data] = response.data;
+          const normalizedData = get(this, 'store').normalize('user', data);
+          const user = get(this, 'store').push(normalizedData);
           const userId = get(user, 'id');
           set(this, 'currentSession.userId', userId);
 

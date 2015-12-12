@@ -9,6 +9,12 @@ const {
 
 export default Route.extend(DataRouteErrorMixin, CanonicalUrlRedirect, {
   model(params) {
-    return get(this, 'store').findRecord('user', params.name);
+    const { name } = params;
+    if (name.match(/\d+/)) {
+      return get(this, 'store').findRecord('user', name);
+    } else {
+      return get(this, 'store').query('user', { filter: { name } })
+        .then((records) => get(records, 'firstObject'));
+    }
   }
 });
