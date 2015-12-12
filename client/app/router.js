@@ -29,7 +29,11 @@ Router.map(function() {
     this.route('show', { path: '/:slug' });
   });
 
-  this.route('users', { path: '/users/:name' }, function() {});
+  this.route('users', { path: '/users/:name' }, function() {
+    this.route('library');
+    this.route('reviews');
+    this.route('lists');
+  });
 
   this.route('onboarding', function() {
     this.route('start');

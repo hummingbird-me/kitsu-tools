@@ -8,6 +8,7 @@ const { JSONAPIAdapter } = DS;
 
 export default JSONAPIAdapter.extend(DataAdapaterMixin, {
   authorizer: 'authorizer:application',
+  coalesceFindRequests: true,
 
   host: computed({
     get() {
