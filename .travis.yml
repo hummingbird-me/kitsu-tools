@@ -1,6 +1,4 @@
 language: ruby
-rvm:
-  - 2.2.3
 
 sudo: false
 
@@ -11,27 +9,28 @@ cache:
   directories:
     - server/vendor/bundle
     - client/node_modules
+    - client/bower_components
+    - travis-phantomjs
+
+env:
+  global:
+    - USE_NODE=0.12
+    - USE_RUBY=2.2.3
+  matrix:
+    - TESTGROUP=client
+    - TESTGROUP=server
 
 before_install:
-  - mkdir -p travis-phantomjs
-  - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -O $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
-  - tar -xvf $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -C $PWD/travis-phantomjs
-  - export PATH=$PWD/travis-phantomjs:$PATH
-  - nvm install 0.12
-  - npm config set spin false
+  - source bin/travis/before_install
 
 install:
-  - (cd server; bundle install --deployment --jobs=3 --retry=3)
-  - (travis_retry npm install -g bower)
-  - (cd client; travis_retry npm install)
-  - (cd client; travis_retry bower install)
+  - source bin/travis/install
 
 before_script:
-  - (cd server; bundle exec rake db:create db:schema:load)
+  - source bin/travis/before_script
 
 script:
-  - (cd server; bundle exec rspec)
-  - (cd client; ember test)
+  - bin/test
 
 notifications:
   slack:

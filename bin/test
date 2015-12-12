@@ -1,0 +1,18 @@
+#!/bin/bash
+
+test_server() {
+  (cd server; bundle exec rspec)
+}
+
+test_client() {
+  (cd client; ember test)
+}
+
+if [ $TESTGROUP = 'client' ]; then
+  test_client
+elif [ $TESTGROUP = 'server' ]; then
+  test_server
+else
+  test_client
+  test_server
+fi
