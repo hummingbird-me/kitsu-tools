@@ -22,6 +22,7 @@ class Character < ActiveRecord::Base
   friendly_id :slug_candidates, use: %i[slugged finders history]
 
   belongs_to :primary_media, polymorphic: true
+  has_many :castings
 
   def slug_candidates
     [

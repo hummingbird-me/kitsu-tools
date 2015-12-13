@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213085908) do
+ActiveRecord::Schema.define(version: 20151213100401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,21 +84,21 @@ ActiveRecord::Schema.define(version: 20151213085908) do
   add_index "anime_producers", ["producer_id"], name: "index_anime_producers_on_producer_id", using: :btree
 
   create_table "castings", force: :cascade do |t|
-    t.integer  "castable_id"
+    t.integer  "media_id",                                 null: false
     t.integer  "person_id"
-    t.integer  "character_id"
-    t.string   "role",          limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.boolean  "voice_actor"
-    t.boolean  "featured"
+    t.integer  "character_id",                             null: false
+    t.string   "role",         limit: 255
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "voice_actor",              default: false, null: false
+    t.boolean  "featured",                 default: false, null: false
     t.integer  "order"
-    t.string   "language",      limit: 255
-    t.string   "castable_type", limit: 255
+    t.string   "language",     limit: 255
+    t.string   "media_type",   limit: 255,                 null: false
   end
 
-  add_index "castings", ["castable_id", "castable_type"], name: "index_castings_on_castable_id_and_castable_type", using: :btree
   add_index "castings", ["character_id"], name: "index_castings_on_character_id", using: :btree
+  add_index "castings", ["media_id", "media_type"], name: "index_castings_on_media_id_and_media_type", using: :btree
   add_index "castings", ["person_id"], name: "index_castings_on_person_id", using: :btree
 
   create_table "characters", force: :cascade do |t|

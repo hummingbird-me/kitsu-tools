@@ -11,6 +11,7 @@ module Media
     has_attached_file :poster_image
 
     has_and_belongs_to_many :genres
+    has_many :castings, as: 'media'
 
     validates :average_rating, numericality: {
       less_than_or_equal_to: 5,
