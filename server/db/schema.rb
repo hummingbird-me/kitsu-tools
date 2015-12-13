@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213075316) do
+ActiveRecord::Schema.define(version: 20151213085908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,7 +160,7 @@ ActiveRecord::Schema.define(version: 20151213075316) do
   end
 
   create_table "episodes", force: :cascade do |t|
-    t.integer  "anime_id"
+    t.integer  "media_id",                                             null: false
     t.integer  "number"
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
@@ -174,9 +174,10 @@ ActiveRecord::Schema.define(version: 20151213075316) do
     t.integer  "length"
     t.hstore   "titles",                             default: {},      null: false
     t.string   "canonical_title",                    default: "ja_en", null: false
+    t.string   "media_type",                                           null: false
   end
 
-  add_index "episodes", ["anime_id"], name: "index_episodes_on_anime_id", using: :btree
+  add_index "episodes", ["media_type", "media_id"], name: "index_episodes_on_media_type_and_media_id", using: :btree
 
   create_table "favorite_genres_users", id: false, force: :cascade do |t|
     t.integer "genre_id"

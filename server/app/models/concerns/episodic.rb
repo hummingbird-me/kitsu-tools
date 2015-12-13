@@ -11,6 +11,6 @@ module Episodic
   end
 
   included do
-    has_many :episodes, dependent: :destroy
+    has_many :episodes, as: 'media', dependent: :destroy
   end
 end

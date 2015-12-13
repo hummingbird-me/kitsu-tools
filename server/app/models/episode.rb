@@ -22,12 +22,12 @@
 class Episode < ActiveRecord::Base
   include Titleable
 
-  belongs_to :anime, touch: true
+  belongs_to :media, polymorphic: true, touch: true
 
   has_attached_file :thumbnail
   html_fragment :synopsis, scrub: :strip
 
-  validates :anime, presence: true
+  validates :media, presence: true
   validates :number, presence: true
   validates :season_number, presence: true
   validates :synopsis, length: { in: 50..600 }, allow_blank: true
@@ -45,8 +45,8 @@ class Episode < ActiveRecord::Base
   end
 
   before_validation do
-    self.length = anime.episode_length if length.nil?
+    self.length = media.episode_length if length.nil?
   end
-  after_save { anime.recalculate_episode_length! if length_changed? }
-  after_destroy { anime.recalculate_episode_length! }
+  after_save { media.recalculate_episode_length! if length_changed? }
+  after_destroy { media.recalculate_episode_length! }
 end
