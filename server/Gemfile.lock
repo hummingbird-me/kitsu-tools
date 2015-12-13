@@ -117,6 +117,9 @@ GEM
     builder (3.2.2)
     celluloid (0.16.0)
       timers (~> 4.0.0)
+    chewy (0.8.3)
+      activesupport (>= 3.2)
+      elasticsearch (>= 1.0.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.7)
@@ -149,6 +152,14 @@ GEM
     dotenv-rails (2.0.2)
       dotenv (= 2.0.2)
       railties (~> 4.0)
+    elasticsearch (1.0.15)
+      elasticsearch-api (= 1.0.15)
+      elasticsearch-transport (= 1.0.15)
+    elasticsearch-api (1.0.15)
+      multi_json
+    elasticsearch-transport (1.0.15)
+      faraday
+      multi_json
     erubis (2.7.0)
     exifr (1.2.3.1)
     factory_girl (4.5.0)
@@ -376,6 +387,7 @@ PLATFORMS
 DEPENDENCIES
   annotate
   aws-sdk
+  chewy
   codeclimate-test-reporter
   connection_pool
   counter_culture
