@@ -39,7 +39,6 @@ gem 'twemoji', github: 'vevix/twemoji'
 # Miscellaneous Utilities
 gem 'friendly_id' # slug-urls-are-cool
 gem 'nokogiri' # Parse MAL XML shit
-gem 'active_model_serializers', '0.10.0.rc3' # JSON-API serialization
 gem 'jsonapi-resources' # JSON-API resources
 gem 'paranoia', '~> 2.0'
 gem 'counter_culture'
