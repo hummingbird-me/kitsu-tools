@@ -3,7 +3,7 @@ module Titleable
 
   included do
     validates :canonical_title, presence: true
-    validate :has_romaji_title
+    validate :has_english_title
   end
 
   def canonical_title
@@ -12,11 +12,13 @@ module Titleable
 
   private
 
-  def has_romaji_title?
-    titles.key?('ja_en')
+  def has_english_title?
+    titles.keys.any? { |k| k.end_with?('_en') }
   end
 
-  def has_romaji_title
-    errors.add(:titles, 'must have ja_en title') unless has_romaji_title?
+  def has_english_title
+    unless has_english_title?
+      errors.add(:titles, 'must have at least one english title')
+    end
   end
 end
