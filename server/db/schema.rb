@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130083322) do
+ActiveRecord::Schema.define(version: 20151213075316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -118,6 +118,46 @@ ActiveRecord::Schema.define(version: 20151130083322) do
 
   add_index "characters", ["mal_id"], name: "character_mal_id", unique: true, using: :btree
   add_index "characters", ["mal_id"], name: "index_characters_on_mal_id", unique: true, using: :btree
+
+  create_table "dramas", force: :cascade do |t|
+    t.string   "slug",                                        null: false
+    t.hstore   "titles",                    default: {},      null: false
+    t.string   "canonical_title",           default: "ja_en", null: false
+    t.string   "abbreviated_titles",                                       array: true
+    t.integer  "age_rating"
+    t.string   "age_rating_guide"
+    t.integer  "episode_count"
+    t.integer  "episode_length"
+    t.integer  "show_type"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "started_airing_date_known", default: true,    null: false
+    t.text     "synopsis"
+    t.string   "youtube_video_id"
+    t.string   "country",                   default: "ja",    null: false
+    t.string   "cover_image_file_name"
+    t.string   "cover_image_content_type"
+    t.integer  "cover_image_file_size"
+    t.datetime "cover_image_updated_at"
+    t.string   "poster_image_file_name"
+    t.string   "poster_image_content_type"
+    t.integer  "poster_image_file_size"
+    t.datetime "poster_image_updated_at"
+    t.integer  "cover_image_top_offset",    default: 0,       null: false
+    t.integer  "mdl_id"
+    t.float    "average_rating"
+    t.hstore   "rating_frequencies",        default: {},      null: false
+    t.integer  "user_count",                default: 0,       null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "dramas", ["slug"], name: "index_dramas_on_slug", using: :btree
+
+  create_table "dramas_genres", id: false, force: :cascade do |t|
+    t.integer "drama_id", null: false
+    t.integer "genre_id", null: false
+  end
 
   create_table "episodes", force: :cascade do |t|
     t.integer  "anime_id"
