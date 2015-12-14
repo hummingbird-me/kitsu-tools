@@ -5,6 +5,8 @@ postgres:
     POSTGRES_USER: postgres
 redis:
   image: redis
+elasticsearch:
+  image: elasticsearch
 web:
   build: .
   volumes:
@@ -16,6 +18,7 @@ web:
   links:
     - postgres
     - redis
+    - elasticsearch
   environment:
     RAILS_ENV: development
 
