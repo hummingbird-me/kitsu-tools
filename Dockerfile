@@ -39,8 +39,6 @@ RUN bash -c "source /usr/local/rvm/scripts/rvm && \
     gem install foreman"
 
 COPY . /opt/hummingbird
-COPY github_key /root/.ssh/id_rsa
-RUN chmod 0600 /root/.ssh/id_rsa
 
 EXPOSE 3000
 ENTRYPOINT ["/opt/hummingbird/entrypoint.sh"]
