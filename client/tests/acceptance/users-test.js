@@ -15,7 +15,7 @@ module('Acceptance | users', {
   }
 });
 
-test('visiting `user.` with an id redirects to the named route', function(assert) {
+test('visiting `user` with an id redirects to the named route', function(assert) {
   assert.expect(1);
   const data = {
     type: 'users',

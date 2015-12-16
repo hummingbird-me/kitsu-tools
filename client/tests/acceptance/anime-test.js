@@ -15,28 +15,6 @@ module('Acceptance | anime', {
   }
 });
 
-test('visiting `anime.show` works', function(assert) {
-  assert.expect(2);
-  this.server.get('/anime', () => {
-    const data = {
-      type: 'anime',
-      id: '1',
-      attributes: {
-        slug: 'steins-gate',
-        'canonical_title': 'Steins;Gate'
-      }
-    };
-    return [200, {}, JSON.stringify({ data: [data] })];
-  });
-
-  visit('/anime/steins-gate');
-  andThen(() => {
-    const title = find('[data-test-selector="title"]').text();
-    assert.equal(title, 'Steins;Gate');
-    assert.equal(currentURL(), '/anime/steins-gate');
-  });
-});
-
 test('visiting `anime.show` with an id redirects to the slugged route', function(assert) {
   assert.expect(1);
   const data = {

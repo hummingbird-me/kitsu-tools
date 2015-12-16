@@ -16,6 +16,7 @@ export default Model.extend({
   location: attr('string'),
   onboarded: attr('boolean'),
   password: attr('string'), // @Note: Used for user creation
+  pastNames: attr('array'),
   name: attr('string'),
   ratingSystem: attr('number'), // @Note: 1 === smile, 2 === star
   toFollow: attr('boolean'),
