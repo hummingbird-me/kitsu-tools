@@ -16,7 +16,9 @@
     "pretender": "^0.10.0",
     "PACE": "pace#~1.0.2",
     "sinonjs": "~1.17.1",
-    "foundation-sites": "git@github.com:hummingbird-me/foundation-sites-6.git#develop" 
+    "foundation-sites": "git@github.com:zurb/foundation-sites.git",
+    "ionicons": "~2.0.1",
+    "font-awesome": "~4.4.0"
   },
   "resolutions": {
     "ember": "canary",
