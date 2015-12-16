@@ -29,6 +29,10 @@ Router.map(function() {
     this.route('show', { path: '/:slug' });
   });
 
+  this.route('library', function() {
+    this.route('show', { path: '/:slug' });
+  });
+
   // authentication
   this.route('sign-up');
   this.route('sign-in');
