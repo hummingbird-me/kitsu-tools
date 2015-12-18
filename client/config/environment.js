@@ -23,9 +23,9 @@ module.exports = function(environment) {
     contentSecurityPolicyHeader: 'Content-Security-Policy',
     contentSecurityPolicy: {
       'script-src': "'self' www.google-analytics.com",
-      'style-src': "'self' 'unsafe-inline'",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
       'connect-src': "'self' localhost:3000",
-      'img-src': "'self' www.google-analytics.com"
+      'img-src': "* data:"
     },
 
     'ember-simple-auth': {
