@@ -1,27 +1,21 @@
 {
   "name": "client",
   "dependencies": {
-    "ember": "canary",
-    "ember-cli-shims": "ember-cli/ember-cli-shims#0.0.3",
-    "ember-cli-test-loader": "ember-cli-test-loader#0.1.3",
-    "ember-data": "2.1.0",
-    "ember-load-initializers": "ember-cli/ember-load-initializers#0.1.5",
-    "ember-qunit": "0.4.9",
-    "ember-qunit-notifications": "0.0.7",
-    "jquery": "^1.11.3",
-    "loader.js": "ember-cli/loader.js#3.2.1",
-    "qunit": "~1.18.0",
+    "ember": "2.2.0",
+    "ember-cli-shims": "0.0.6",
+    "ember-cli-test-loader": "0.2.1",
+    "ember-data": "2.2.0",
+    "ember-load-initializers": "0.1.7",
+    "ember-qunit": "0.4.16",
+    "ember-qunit-notifications": "0.1.0",
+    "jquery": "^2.1.4",
+    "loader.js": "ember-cli/loader.js#3.4.0",
+    "qunit": "~1.20.0",
     "moment": ">= 2.8.0",
     "moment-timezone": ">= 0.1.0",
     "pretender": "^0.10.0",
     "PACE": "pace#~1.0.2",
     "sinonjs": "~1.17.1",
-    "foundation-sites": "git@github.com:zurb/foundation-sites.git",
-    "ionicons": "~2.0.1",
-    "font-awesome": "~4.4.0"
-  },
-  "resolutions": {
-    "ember": "canary",
-    "jquery": "1.11.3"
+    "foundation-sites": "~6.0"
   }
 }

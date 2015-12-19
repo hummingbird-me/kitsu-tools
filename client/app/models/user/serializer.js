@@ -1,8 +1,6 @@
-import DS from 'ember-data';
+import ApplicationSerializer from 'client/pods/application/serializer';
 
-const { JSONAPISerializer } = DS;
-
-export default JSONAPISerializer.extend({
+export default ApplicationSerializer.extend({
   // Serializes all attributes if the record is persistant (from the server)
   // or only serializes changed attributes when the record is new (local only)
   serializeAttribute(snapshot, json, key) {

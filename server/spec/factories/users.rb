@@ -62,17 +62,22 @@
 #  import_from                 :string(255)
 #  import_error                :string(255)
 #  onboarded                   :boolean          default(FALSE), not null
+#  past_names                  :string           default([]), not null, is an Array
 #
 
 FactoryGirl.define do
   factory :user do
-    name { Faker::Internet.user_name(nil, ['_']) }
+    name { Faker::Internet.user_name(nil, ['_']) + rand(1000).to_s }
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     avatar { Faker::Avatar.image }
 
-    factory :administrator do
+    trait :admin do
       after(:create) { |user| user.add_role(:admin) }
+    end
+
+    trait :anime_admin do
+      after(:create) { |user| user.add_role(:admin, Anime) }
     end
   end
 end

@@ -9,13 +9,21 @@ This README outlines the details of collaborating on this application.
 
 ### Styleguide
 
-* [JavaScript](https://github.com/dockyard/styleguides/blob/master/javascript.md)
-* [Ember](https://github.com/dockyard/styleguides/blob/master/ember.md)
+* [JavaScript](https://github.com/dockyard/styleguides/blob/master/engineering/javascript.md)
+* [Ember](https://github.com/dockyard/styleguides/blob/master/engineering/ember.md)
 
-We use a different pod structure than DockYard. The structure belows is based on
-the discussion here: https://github.com/ember-cli/ember-cli/issues/4044
+#### Amendments
 
-Basically, routes should be under `app/pods`, and anything that can be considered application-wide should be under `app/`.
+##### Do overwrite init
+
+ES6 spread operator allows for calling `return this._super(...arguments);`.
+This approach provides better performance as well.
+
+https://dockyard.com/blog/2015/10/19/2015-dont-dont-override-init
+
+##### Pods
+
+We use a slightly different pod structure to what DockYard specify in their styleguide above.
 
 ```
 app/

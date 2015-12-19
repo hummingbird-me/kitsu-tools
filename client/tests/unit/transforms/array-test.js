@@ -18,7 +18,7 @@ test('#deserialize', function(assert) {
   assert.expect(3);
   const transform = this.subject();
 
-  assert.deepEqual(transform.deserialize(null), null);
-  assert.deepEqual(transform.deserialize(undefined), undefined);
+  assert.deepEqual(transform.deserialize(null), []);
+  assert.deepEqual(transform.deserialize(undefined), []);
   assert.deepEqual(transform.deserialize([1, 2, 3]), [1, 2, 3]);
 });

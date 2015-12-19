@@ -84,10 +84,6 @@ GEM
       erubis (~> 2.7.0)
       rails-dom-testing (~> 1.0, >= 1.0.5)
       rails-html-sanitizer (~> 1.0, >= 1.0.1)
-    active_model_serializers (0.10.0.rc3)
-      actionpack (>= 4.0)
-      activemodel (>= 4.0)
-      railties (>= 4.0)
     activejob (4.2.1)
       activesupport (= 4.2.1)
       globalid (>= 0.3.0)
@@ -104,6 +100,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    after_commit_action (1.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
     annotate (2.6.10)
       activerecord (>= 3.2, <= 4.3)
       rake (~> 10.4)
@@ -126,6 +125,11 @@ GEM
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     connection_pool (2.2.0)
+    counter_culture (0.1.34)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      after_commit_action (~> 1.0.0)
+    database_cleaner (1.5.1)
     delayed_paperclip (2.9.1)
       paperclip (>= 3.3)
     devise (3.5.2)
@@ -201,12 +205,16 @@ GEM
     jmespath (1.1.3)
     json (1.8.3)
     json_expressions (0.8.3)
+    jsonapi-resources (0.7.0)
+      rails (>= 4.0)
     jwt (1.5.1)
     listen (3.0.3)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
+    loofah-activerecord (1.2.0)
+      loofah (>= 1.0.0)
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -366,11 +374,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers (= 0.10.0.rc3)
   annotate
   aws-sdk
   codeclimate-test-reporter
   connection_pool
+  counter_culture
+  database_cleaner
   delayed_paperclip
   devise (~> 3.5)
   devise-async
@@ -388,6 +397,8 @@ DEPENDENCIES
   hiredis
   image_optim
   json_expressions
+  jsonapi-resources
+  loofah-activerecord
   nokogiri
   oauth2
   oj
@@ -416,6 +427,7 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq (~> 3.4.2)
   sidetiq
+  simplecov
   spring
   stackprof
   timecop

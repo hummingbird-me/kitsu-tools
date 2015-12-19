@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007055934) do
+ActiveRecord::Schema.define(version: 20151213100401) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,21 +84,21 @@ ActiveRecord::Schema.define(version: 20151007055934) do
   add_index "anime_producers", ["producer_id"], name: "index_anime_producers_on_producer_id", using: :btree
 
   create_table "castings", force: :cascade do |t|
-    t.integer  "castable_id"
+    t.integer  "media_id",                                 null: false
     t.integer  "person_id"
-    t.integer  "character_id"
-    t.string   "role",          limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.boolean  "voice_actor"
-    t.boolean  "featured"
+    t.integer  "character_id",                             null: false
+    t.string   "role",         limit: 255
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.boolean  "voice_actor",              default: false, null: false
+    t.boolean  "featured",                 default: false, null: false
     t.integer  "order"
-    t.string   "language",      limit: 255
-    t.string   "castable_type", limit: 255
+    t.string   "language",     limit: 255
+    t.string   "media_type",   limit: 255,                 null: false
   end
 
-  add_index "castings", ["castable_id", "castable_type"], name: "index_castings_on_castable_id_and_castable_type", using: :btree
   add_index "castings", ["character_id"], name: "index_castings_on_character_id", using: :btree
+  add_index "castings", ["media_id", "media_type"], name: "index_castings_on_media_id_and_media_type", using: :btree
   add_index "castings", ["person_id"], name: "index_castings_on_person_id", using: :btree
 
   create_table "characters", force: :cascade do |t|
@@ -112,17 +112,58 @@ ActiveRecord::Schema.define(version: 20151007055934) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "slug",               limit: 255
+    t.integer  "primary_media_id"
+    t.string   "primary_media_type"
   end
 
   add_index "characters", ["mal_id"], name: "character_mal_id", unique: true, using: :btree
   add_index "characters", ["mal_id"], name: "index_characters_on_mal_id", unique: true, using: :btree
 
+  create_table "dramas", force: :cascade do |t|
+    t.string   "slug",                                        null: false
+    t.hstore   "titles",                    default: {},      null: false
+    t.string   "canonical_title",           default: "ja_en", null: false
+    t.string   "abbreviated_titles",                                       array: true
+    t.integer  "age_rating"
+    t.string   "age_rating_guide"
+    t.integer  "episode_count"
+    t.integer  "episode_length"
+    t.integer  "show_type"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "started_airing_date_known", default: true,    null: false
+    t.text     "synopsis"
+    t.string   "youtube_video_id"
+    t.string   "country",                   default: "ja",    null: false
+    t.string   "cover_image_file_name"
+    t.string   "cover_image_content_type"
+    t.integer  "cover_image_file_size"
+    t.datetime "cover_image_updated_at"
+    t.string   "poster_image_file_name"
+    t.string   "poster_image_content_type"
+    t.integer  "poster_image_file_size"
+    t.datetime "poster_image_updated_at"
+    t.integer  "cover_image_top_offset",    default: 0,       null: false
+    t.integer  "mdl_id"
+    t.float    "average_rating"
+    t.hstore   "rating_frequencies",        default: {},      null: false
+    t.integer  "user_count",                default: 0,       null: false
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "dramas", ["slug"], name: "index_dramas_on_slug", using: :btree
+
+  create_table "dramas_genres", id: false, force: :cascade do |t|
+    t.integer "drama_id", null: false
+    t.integer "genre_id", null: false
+  end
+
   create_table "episodes", force: :cascade do |t|
-    t.integer  "anime_id"
+    t.integer  "media_id",                                             null: false
     t.integer  "number"
-    t.string   "title",                  limit: 255
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
     t.integer  "season_number"
     t.text     "synopsis"
     t.string   "thumbnail_file_name",    limit: 255
@@ -130,9 +171,13 @@ ActiveRecord::Schema.define(version: 20151007055934) do
     t.integer  "thumbnail_file_size"
     t.datetime "thumbnail_updated_at"
     t.date     "airdate"
+    t.integer  "length"
+    t.hstore   "titles",                             default: {},      null: false
+    t.string   "canonical_title",                    default: "ja_en", null: false
+    t.string   "media_type",                                           null: false
   end
 
-  add_index "episodes", ["anime_id"], name: "index_episodes_on_anime_id", using: :btree
+  add_index "episodes", ["media_type", "media_id"], name: "index_episodes_on_media_type_and_media_id", using: :btree
 
   create_table "favorite_genres_users", id: false, force: :cascade do |t|
     t.integer "genre_id"
@@ -418,6 +463,15 @@ ActiveRecord::Schema.define(version: 20151007055934) do
   add_index "people", ["mal_id"], name: "index_people_on_mal_id", unique: true, using: :btree
   add_index "people", ["mal_id"], name: "person_mal_id", unique: true, using: :btree
 
+  create_table "pro_membership_plans", force: :cascade do |t|
+    t.string   "name",                       null: false
+    t.integer  "amount",                     null: false
+    t.integer  "duration",                   null: false
+    t.boolean  "recurring",  default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "producers", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "slug",       limit: 255
@@ -554,6 +608,7 @@ ActiveRecord::Schema.define(version: 20151007055934) do
     t.string   "import_from",                 limit: 255
     t.string   "import_error",                limit: 255
     t.boolean  "onboarded",                               default: false,       null: false
+    t.string   "past_names",                              default: [],          null: false, array: true
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

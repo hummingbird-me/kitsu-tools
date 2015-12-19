@@ -3,6 +3,7 @@ import Ember from 'ember';
 const {
   Service,
   get,
+  set,
   isPresent,
   computed,
   inject: { service }
@@ -15,10 +16,12 @@ export default Service.extend({
 
   isAuthenticated: computed.alias('session.isAuthenticated'),
 
-  account: computed('userId', function() {
-    const userId = get(this, 'userId');
-    if (isPresent(userId)) {
-      return get(this, 'store').peekRecord('user', userId);
+  account: computed('userId', {
+    get() {
+      const userId = get(this, 'userId');
+      if (isPresent(userId)) {
+        return get(this, 'store').peekRecord('user', userId);
+      }
     }
   }),
 
@@ -28,5 +31,9 @@ export default Service.extend({
 
   invalidate() {
     return get(this, 'session').invalidate();
+  },
+
+  clean() {
+    set(this, 'userId', null);
   }
 });

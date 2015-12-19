@@ -62,12 +62,17 @@
 #  import_from                 :string(255)
 #  import_error                :string(255)
 #  onboarded                   :boolean          default(FALSE), not null
+#  past_names                  :string           default([]), not null, is an Array
 #
 
 class User < ActiveRecord::Base
+  PAST_NAMES_LIMIT = 10
+
   devise :database_authenticatable, :registerable, :recoverable,
          :validatable, :confirmable, :async
   rolify
+
+  belongs_to :pro_membership_plan
 
   enum rating_system: %i[smilies stars]
   has_attached_file :avatar
@@ -89,6 +94,33 @@ class User < ActiveRecord::Base
   # TODO: I think Devise can handle this for us
   def self.find_for_auth(identification)
     identification = [identification.downcase]
-    User.where('lower(email)=? OR lower(name)=?', *(identification * 2)).first
+    where('lower(email)=? OR lower(name)=?', *(identification * 2)).first
+  end
+
+  def self.find_by_username(name)
+    where('lower(name) = ?', name.to_s.downcase).first
+  end
+
+  # Override find to allow lookup by name
+  def self.find(name_or_id)
+    user = nil
+    user = find_by_username(name_or_id) if name_or_id.is_a? String
+    user || super
+  end
+
+  def pro?
+    return false if pro_expires_at.nil?
+    pro_expires_at >= Time.now
+  end
+
+  def previous_name
+    past_names.first
+  end
+
+  before_update do
+    if name_changed?
+      # Push it onto the front and limit
+      self.past_names = [name_was, *past_names].first(PAST_NAMES_LIMIT)
+    end
   end
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :anime, except: %i[new edit]
-  resources :users, except: %i[new edit index]
+  jsonapi_resources :library_entries
+  jsonapi_resources :anime
+  jsonapi_resources :users
 
   use_doorkeeper
 

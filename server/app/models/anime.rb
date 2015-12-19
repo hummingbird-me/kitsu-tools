@@ -39,8 +39,10 @@
 
 class Anime < ActiveRecord::Base
   include Media
+  include AgeRatings
+  include Episodic
 
-  enum age_rating: %i[G PG R R18]
+  has_many :library_entries, dependent: :destroy
 
   def slug_candidates
     # Prefer the canonical title or romaji title before anything else

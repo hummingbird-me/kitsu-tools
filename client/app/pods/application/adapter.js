@@ -1,10 +1,18 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import DataAdapaterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
-import config from 'client/config/environment';
+import getApiHost from 'client/utils/get-api-host';
 
+const { computed } = Ember;
 const { JSONAPIAdapter } = DS;
 
 export default JSONAPIAdapter.extend(DataAdapaterMixin, {
-  host: config.host,
-  authorizer: 'authorizer:application'
+  authorizer: 'authorizer:application',
+  coalesceFindRequests: true,
+
+  host: computed({
+    get() {
+      return getApiHost();
+    }
+  })
 });

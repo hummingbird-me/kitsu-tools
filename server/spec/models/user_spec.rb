@@ -62,6 +62,7 @@
 #  import_from                 :string(255)
 #  import_error                :string(255)
 #  onboarded                   :boolean          default(FALSE), not null
+#  past_names                  :string           default([]), not null, is an Array
 #
 
 require 'rails_helper'
@@ -72,15 +73,67 @@ RSpec.describe User, type: :model do
 
   it { should define_enum_for(:rating_system) }
   it { should have_db_index(:facebook_id) }
+  it { should belong_to(:pro_membership_plan) }
   it { should validate_uniqueness_of(:name) }
   it { should validate_uniqueness_of(:email) }
-  it 'should be able to query for authentication by username' do
-    u = User.find_for_auth(persisted_user.name)
-    expect(u).to eq(persisted_user)
+
+  describe 'find_for_auth' do
+    it 'should be able to query by username' do
+      u = User.find_for_auth(persisted_user.name)
+      expect(u).to eq(persisted_user)
+    end
+    it 'should be able to query by email' do
+      u = User.find_for_auth(persisted_user.email)
+      expect(u).to eq(persisted_user)
+    end
   end
 
-  it 'should be able to query for authentication by email' do
-    u = User.find_for_auth(persisted_user.email)
-    expect(u).to eq(persisted_user)
+  describe '#pro?' do
+    it 'should return false if the user has no pro expiry' do
+      user = build(:user, pro_expires_at: nil)
+      expect(user).not_to be_pro
+    end
+    it 'should return false if the user has already run out of pro' do
+      user = build(:user, pro_expires_at: 2.months.ago)
+      expect(user).not_to be_pro
+    end
+    it 'should return true if the user still has pro left' do
+      user = build(:user, pro_expires_at: 2.months.from_now)
+      expect(user).to be_pro
+    end
+  end
+
+  describe 'past_names' do
+    subject { create(:user) }
+    it 'should include the old name when user changes name for the first time' do
+      old_name = subject.name
+      subject.name = 'MisakaMikoto'
+      subject.save!
+      expect(subject.past_names).to include(old_name)
+    end
+    it 'should push onto the front when user changes name multiple times' do
+      expect do
+        3.times do |i|
+          subject.name = "Misaka100#{i}"
+          subject.save!
+        end
+      end.to change { subject.past_names.length }.by(3)
+    end
+    it 'should limit to 10 in length' do
+      expect do
+        20.times do |i|
+          subject.name = "Misaka100#{i}"
+          subject.save!
+        end
+      end.to change { subject.past_names.length }.from(0).to(10)
+    end
+    it 'should remove duplicate names' do
+      expect do
+        10.times do
+          subject.name = 'MisakaMikoto'
+          subject.save!
+        end
+      end.to change { subject.past_names.length }.from(0).to(1)
+    end
   end
 end

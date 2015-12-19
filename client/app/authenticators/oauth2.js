@@ -1,8 +1,23 @@
+import Ember from 'ember';
 import OAuth2PasswordGrant from 'ember-simple-auth/authenticators/oauth2-password-grant';
-import config from 'client/config/environment';
+import getApiHost from 'client/utils/get-api-host';
+
+const { computed } = Ember;
 
 export default OAuth2PasswordGrant.extend({
   refreshAccessTokens: true,
-  serverTokenEndpoint: `${config.host}/oauth/token`,
-  serverTokenRevocationEndpoint: `${config.host}/oauth/revoke`
+
+  serverTokenEndpoint: computed({
+    get() {
+      const host = getApiHost();
+      return `${host}/oauth/token`;
+    }
+  }),
+
+  serverTokenRevocationEndpoint: computed({
+    get() {
+      const host = getApiHost();
+      return `${host}/oauth/revoke`;
+    }
+  })
 });

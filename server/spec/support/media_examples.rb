@@ -1,18 +1,18 @@
 require 'rails_helper'
 
 RSpec.shared_examples 'media' do
+  include_examples 'titleable'
+
   # Columns which are mandatory for all media
   it { should have_db_column(:slug).of_type(:string) }
-  it { should have_db_column(:titles).of_type(:hstore) }
-  it { should have_db_column(:canonical_title).of_type(:string) }
   it { should have_db_column(:abbreviated_titles).of_type(:string) }
   it { should have_db_column(:average_rating).of_type(:float) }
   it { should have_db_column(:rating_frequencies).of_type(:hstore) }
   it { should have_db_column(:start_date).of_type(:date) }
   it { should have_db_column(:end_date).of_type(:date) }
+  it { should have_and_belong_to_many(:genres) }
   # Methods used for the magic
   it { should respond_to(:slug_candidates) }
-  it { should respond_to(:canonical_title) }
   it { should delegate_method(:year).to(:start_date) }
   it {
     should validate_numericality_of(:average_rating)

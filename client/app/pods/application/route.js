@@ -11,6 +11,7 @@ const {
 export default Route.extend(ApplicationRouteMixin, {
   currentSession: service(),
   metrics: service(),
+  ajax: service(),
 
   // If you are visiting the site while authenticated, lets grab your data
   beforeModel() {
@@ -37,25 +38,32 @@ export default Route.extend(ApplicationRouteMixin, {
   // By default, ESA reloads the browser to `baseURL`
   // we don't want that, so just redirect to dashboard
   sessionInvalidated() {
+    get(this, 'currentSession').clean();
     this.transitionTo('dashboard');
   },
 
   _getCurrentUser() {
-    // don't run in test environment
     if (!Ember.testing) {
-      // @Cleanup: This stores an undefined record under users
-      return get(this, 'store').findRecord('user', 'me').then((user) => {
-        const userId = get(user, 'id');
-        set(this, 'currentSession.userId', userId);
-        this._identify(userId);
-      }).catch(() => {
-        // If we error (404/Something is broken), then invalidate the session
-        get(this, 'currentSession').invalidate();
-      });
+      return get(this, 'ajax').request('/users?filter[self]')
+        .then((response) => {
+          const [data] = response.data;
+          const normalizedData = get(this, 'store').normalize('user', data);
+          const user = get(this, 'store').push(normalizedData);
+          const userId = get(user, 'id');
+          set(this, 'currentSession.userId', userId);
+
+          // identify with analytics
+          get(this, 'metrics').identify({ distinctId: userId });
+        })
+        .catch(() => {
+          get(this, 'currentSession').invalidate();
+        });
     }
   },
 
-  _identify(distinctId) {
-    get(this, 'metrics').identify({ distinctId });
+  actions: {
+    invalidateSession() {
+      get(this, 'currentSession').invalidate();
+    }
   }
 });

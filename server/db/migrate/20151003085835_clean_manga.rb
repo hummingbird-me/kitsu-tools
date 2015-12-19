@@ -24,7 +24,7 @@ class CleanManga < ActiveRecord::Migration
       END
     )"
     change_column_default :manga, :manga_type, 1
-    change_column_null :manga, :manga_type, false
+    change_column_null :manga, :manga_type, false, 1
 
     # => Status
     change_column :manga, :status, "integer USING (
