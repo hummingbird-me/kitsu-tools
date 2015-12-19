@@ -29,6 +29,10 @@ Router.map(function() {
     this.route('show', { path: '/:slug' });
   });
 
+  this.route('library', function() {
+    this.route('show', { path: '/:slug' });
+  });
+  
   this.route('users', { path: '/users/:name' }, function() {
     this.route('library');
     this.route('reviews');

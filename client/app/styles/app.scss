@@ -1,5 +1,6 @@
 @import 'settings';
 @import 'colors';
+@import 'mixins';
 @import 'foundation';
 
 // This includes all foundation components.
@@ -435,5 +436,27 @@ a {
   }
   .rewatch {
     border-bottom: none;
+  }
+}
+
+.global-footer {
+  background: url("http://cl.ly/3N410J071806/hb-footer.jpg");
+  background-size: cover;
+  height: 250px;
+  margin-top: 50px;
+  .footer-wrapper {
+    margin-top: 70px;
+  }
+  .footer-header {
+    color: #fff;
+  }
+  .footer-search {
+    width: 100%;
+    margin-top: 10px;
+    line-height: 55px;
+    font-size: 18px;
+    border-radius: 3px;
+    border: none;
+    padding: 0 15px;
   }
 }
