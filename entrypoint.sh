@@ -7,6 +7,9 @@ source ${root_path}/server/.env
 export REDIS_HOST=${REDIS_PORT_6379_TCP_ADDR}
 export REDIS_URL=redis://${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}/0
 
+export ELASTICSEARCH_HOST=${ELASTICSEARCH_PORT_9200_TCP_ADDR}
+export ELASTICSEARCH_PORT=${ELASTICSEARCH_PORT_9200_TCP_PORT}
+
 [ -e /usr/local/rvm/scripts/rvm  ] && \
     source /usr/local/rvm/scripts/rvm
 
