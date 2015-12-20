@@ -414,6 +414,12 @@ a {
   }
 }
 
+.rating-options {
+  float: right;
+  font-size: 22px;
+  color: #9B9A9A;
+}
+
 .drop-options {
   background: #fff;
   border-radius: 3px;
@@ -436,12 +442,25 @@ a {
   }
   .rewatch {
     border-bottom: none;
+    label {
+      float: right;
+      font-size: 12px;
+      line-height: 36px;
+    }
+    input {
+      width: 20px;
+      text-align: center;
+      border: none;
+      font-weight: 600;
+      color: #16A085;
+    }
   }
 }
 
 .global-footer {
   background: url("http://cl.ly/3N410J071806/hb-footer.jpg");
   background-size: cover;
+  background-color: #413B57;
   height: 250px;
   margin-top: 50px;
   .footer-wrapper {
