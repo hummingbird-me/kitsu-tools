@@ -3,7 +3,7 @@
 # Table name: episodes
 #
 #  id                     :integer          not null, primary key
-#  anime_id               :integer
+#  media_id               :integer          not null
 #  number                 :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -17,6 +17,7 @@
 #  length                 :integer
 #  titles                 :hstore           default({}), not null
 #  canonical_title        :string           default("ja_en"), not null
+#  media_type             :string           not null
 #
 
 FactoryGirl.define do
