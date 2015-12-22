@@ -1,0 +1,7 @@
+.media-browse {
+  .filter-options {
+    @extend .medium-2;
+    @extend .columns;
+    background-color: $blue-grey;
+  }
+}

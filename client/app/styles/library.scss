@@ -129,11 +129,11 @@
 }
 
 .library-list {
+  @extend .no-padding;
   background: #fff;
   border: 1px solid $brown;
   border-radius: 3px;
   margin-top: 30px;
-  padding: 0;
   .nav-wrapper {
     padding: 15px;
   }
