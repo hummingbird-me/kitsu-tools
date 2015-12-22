@@ -1,7 +1,8 @@
 test:
-  host: 'localhost:9200'
   prefix: 'test'
 
 development:
-  host: 'localhost:9200'
   prefix: 'development'
+
+production:
+  prefix: 'production'
