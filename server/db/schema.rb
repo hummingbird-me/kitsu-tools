@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20151213100401) do
   create_table "castings", force: :cascade do |t|
     t.integer  "media_id",                                 null: false
     t.integer  "person_id"
-    t.integer  "character_id",                             null: false
+    t.integer  "character_id"
     t.string   "role",         limit: 255
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
