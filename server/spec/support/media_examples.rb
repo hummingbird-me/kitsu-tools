@@ -11,6 +11,7 @@ RSpec.shared_examples 'media' do
   it { should have_db_column(:start_date).of_type(:date) }
   it { should have_db_column(:end_date).of_type(:date) }
   it { should have_and_belong_to_many(:genres) }
+  it { should have_many(:castings) }
   # Methods used for the magic
   it { should respond_to(:slug_candidates) }
   it { should delegate_method(:year).to(:start_date) }
