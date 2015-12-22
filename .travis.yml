@@ -2,8 +2,11 @@ language: ruby
 
 sudo: false
 
+# Postgres v9.4 and ElasticSearch vWhoGivesAFuck
 addons:
   postgresql: 9.4
+services:
+  - elasticsearch
 
 cache:
   directories:
