@@ -108,20 +108,6 @@ export default Ember.Route.extend({
         ]
       },
       {
-        "name": "Deadman",
-        "author": [
-          { "name": "Jigglyslime", "link": "https://hummingbird.me/users/Jigglyslime" },
-        ],
-        "form": "Mobile",
-        "platform": "iOS",
-        "screenshots": [sb+"deadman/deadman-1.jpg", sb+"deadman/deadman-2.jpg"],
-        "desc": "It's like Hummingbird, but iOS.  And native.  Makes love to your face. Enjoy.",
-        "links": [
-          { "name": "Discuss", "link": "https://forums.hummingbird.me/t/ios-deadman/20315" },
-          { "name": "Download", "link": "https://itunes.apple.com/us/app/deadman-for-hummingbird/id943835088?ls=1&mt=8" },
-        ]
-      },
-      {
   	    "name": "Hachidori",
   	    "author": [
   	      { "name": "chikorita157", "link": "https://hummingbird.me/users/chikorita157" },
