@@ -21,5 +21,5 @@ class Person < ActiveRecord::Base
   validates_attachment :image, content_type: {
     content_type: %w[image/jpg image/jpeg image/png]
   }
-  validate :name, presence: true
+  validates :name, presence: true
 end
