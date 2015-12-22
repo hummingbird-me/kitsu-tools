@@ -22,9 +22,10 @@ module.exports = function(environment) {
     contentSecurityPolicyHeader: 'Content-Security-Policy-Report-Only',
     contentSecurityPolicy: {
       'script-src': "'self' www.google-analytics.com",
-      'style-src': "'self' 'unsafe-inline'",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
       'connect-src': "'self' www.google-analytics.com localhost:3000",
-      'img-src': "*"
+      'img-src': "* data:",
+      'font-src': "'self' fonts.gstatic.com"
     },
 
     'ember-simple-auth': {
