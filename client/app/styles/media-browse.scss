@@ -1,7 +1,113 @@
 .media-browse {
   .filter-options {
-    @extend .medium-2;
-    @extend .columns;
-    background-color: $blue-grey;
+    background-color: $blueGrey;
+    position: fixed;
+    top: 51px;
+    width: 240px;
+    padding: 10px;
+    bottom: 0;
+    border-left: 1px solid darken($blueGrey, 10);
+    &:before {
+      content: '';
+      background: $blueGrey;
+      position: fixed;
+      top: 51px;
+      bottom: 0;
+      left: 0;
+      width: 120px;
+      z-index: -1;
+    }
+  }
+  .filter-wrapper {
+    height: 100%;
+  }
+
+  .media-grid {
+    padding-left: 265px;
+  }
+  
+
+
+  // Filter widgets
+  .filter-widget {
+    border-bottom: 1px solid darken($blueGrey, 10);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+  }
+  .filter-header {
+    @extend .clearfix;
+    .filter-title {
+      float: left;
+      color: $lightGrey;
+      font-weight: 700;
+    }
+    .filter-values {
+      float: right;
+      color: #76818C;
+      background: #3C424D;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 2px 10px;
+      border-radius: 999em;
+      position: relative;
+      top: 3px;
+    }
+  }
+
+  .filter-legend {
+    @extend .clearfix;
+    text-align: center;
+    font-size: 12px;
+    color: #778393;
+    font-weight: 900;
+    .low-value {
+      float: left;
+    }
+    .high-value {
+      float: right;
+    }
+  }
+
+  .button {
+    margin-bottom: 0;
+    background: #3B414B;
+    border-radius: 5px;
+    margin-top: 20px;
+    color: $lightGrey;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .button.dropdown::after {
+    border-color: $lightGrey transparent transparent;
+  }
+
+  .slider {
+    background-color: #383D48;
+    height: 5px;
+    border-radius: 999em;
+    margin-bottom: 15px;
+  }
+  .slider-fill {
+    background-color: #2EA291;
+    height: 5px;
+  }
+  .slider-handle {
+    border-radius: 999em;
+    background-color: #1ABC9C;
+    height: 14px;
+    width: 14px;
+    &:after {
+      content: '';
+      background: #2C3946;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -3px;
+      margin-top: -3px;
+      width: 6px;
+      height: 6px;
+      border-radius: 999em;
+    }
   }
 }

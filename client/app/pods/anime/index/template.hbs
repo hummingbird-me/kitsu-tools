@@ -1,15 +1,97 @@
 <div class="media-browse">
   <div class="row align-stretch">
     <div class="filter-options">
-      <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
-        <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-        <span class="slider-fill" data-slider-fill></span>
-        <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-        <input type="hidden">
-        <input type="hidden">
+      <div class="filter-wrapper">
+
+
+        <!-- Date Range Filter -->
+        <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">Year</label>
+            <span class="filter-values">1914 - 2015</span>
+          </div>
+          <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <span class="slider-fill" data-slider-fill></span>
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <input type="hidden">
+            <input type="hidden">
+          </div>
+          <div class="filter-legend">
+            <div class="low-value">
+              1914
+            </div>
+            <div class="high-value">
+              2015
+            </div>
+          </div>
+          <button class="expanded dropdown button" data-toggle="timeframe-dropdown">Using slider</button>
+          <div class="dropdown-pane" id="timeframe-dropdown" data-dropdown data-auto-focus="true">
+            <ul>
+              <li><a href="#">Test</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Rating Filter -->
+         <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">Avg. Rating</label>
+            <span class="filter-values">.5 - 5</span>
+          </div>
+          <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <span class="slider-fill" data-slider-fill></span>
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <input type="hidden">
+            <input type="hidden">
+          </div>
+          <div class="filter-legend">
+            <div class="low-value">
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <div class="high-value">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Where to Watch Filter -->
+         <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">Streaming (U.S.)</label>
+            <span class="filter-values">3</span>
+          </div>
+          <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <span class="slider-fill" data-slider-fill></span>
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <input type="hidden">
+            <input type="hidden">
+          </div>
+          <div class="filter-legend">
+            <div class="low-value">
+              <i class="fa fa-star-half-o"></i>
+            </div>
+            <div class="high-value">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+          </div>
+        </div>
+
+
+
       </div>
     </div>
-    <div class="medium-10 columns">That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
+    <div class="media-grid columns">That's right, equal-height columns are possible with Flexbox too! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, tempora. Impedit eius officia possimus laudantium? Molestiae eaque, sapiente atque doloremque placeat! In sint, fugiat saepe sunt dolore tempore amet cupiditate.</div>
   </div>
 </div>
 
