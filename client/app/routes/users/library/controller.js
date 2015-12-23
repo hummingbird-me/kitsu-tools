@@ -14,6 +14,7 @@ export default Controller.extend({
   queryParams: ['media', 'status'],
   media: 'anime',
   status: 1,
+
   showAll: false,
 
   entries: alias('model'),
@@ -40,7 +41,7 @@ export default Controller.extend({
         return {
           status,
           entries,
-          visible: (status === currentStatusStr) || get(this, 'showAll'),
+          hasRecords: entries.length > 0,
           isActive: (status === currentStatusStr) && !get(this, 'showAll')
         };
       });
@@ -61,10 +62,9 @@ export default Controller.extend({
 
     changeSection(section) {
       const status = get(section, 'status');
-      const numStatus = get(this, 'statuses').indexOf(status) + 1;
       setProperties(this, {
         showAll: false,
-        status: numStatus
+        status: libraryStatus.humanToNumber(status)
       });
     }
   }

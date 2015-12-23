@@ -27,6 +27,12 @@ test('humanToEnum', function(assert) {
   assert.equal(result, 'planned');
 });
 
+test('humanToNumber', function(assert) {
+  assert.expect(1);
+  const result = libraryStatus.humanToNumber('Plan to Watch');
+  assert.equal(result, 2);
+});
+
 test('enumToHuman', function(assert) {
   assert.expect(1);
   const result = libraryStatus.enumToHuman('planned');

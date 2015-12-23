@@ -10,11 +10,9 @@
             </a>
           </li>
           {{#each sections as |section|}}
-            <li>
-              <a href="#" class="{{if section.isActive 'active'}}" {{action 'changeSection' section}}>
-                {{section.status}}
-              </a>
-            </li>
+            {{users/components/library-section-button
+                section=section isLoadingData=isLoadingData
+                onClick=(action 'changeSection')}}
           {{/each}}
         </ul>
       </div>

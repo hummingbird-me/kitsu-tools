@@ -25,7 +25,8 @@ module.exports = function(environment) {
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com",
       'connect-src': "'self' www.google-analytics.com localhost:3000",
       'img-src': "* data:",
-      'font-src': "'self' fonts.gstatic.com"
+      'font-src': "'self' fonts.gstatic.com",
+      'frame-src': "'self' www.youtube.com"
     },
 
     'ember-simple-auth': {

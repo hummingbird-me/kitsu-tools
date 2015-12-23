@@ -3,6 +3,7 @@ import Ember from 'ember';
 const {
   Route,
   get,
+  getProperties,
   set
 } = Ember;
 
@@ -14,16 +15,14 @@ export default Route.extend({
   },
 
   model(params) {
-    // TODO: If status is NaN (??) handle
-    return this._getLibraryData(params.media, params.status);
+    return this._getLibraryData(params.media, params.status || 1);
   },
 
   setupController(controller, model) {
     this._super(...arguments);
     set(controller, 'isLoadingData', true);
-    // TODO: Return the statuses that aren't the param
-    const params = this.paramsFor('users.Library');
-    this._getLibraryData(params.media, '2,3,4,5')
+    const { media, status } = getProperties(controller, 'media', 'status');
+    this._getLibraryData(media, this._getNextStatuses(status))
       .then((records) => {
         const content = model.toArray();
         content.addObjects(records);
@@ -54,5 +53,12 @@ export default Route.extend({
         limit: 20000 /* Maybe change to -1? */
       }
     });
+  },
+
+  _getNextStatuses(status) {
+    const statuses = [1, 2, 3, 4, 5];
+    const index = statuses.indexOf(status);
+    statuses.splice(index, 1);
+    return statuses.join(',');
   }
 });
