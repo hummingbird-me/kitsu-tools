@@ -36,8 +36,8 @@ class AnimeIndex < Chewy::Index
       field :genres, value: -> (a) { a.genres.map(&:name) }
       field :user_count, type: 'short'
       # Castings
-      field :people, value: -> (a, crutch) { crutch.people[a.id].uniq }
-      field :characters, value: -> (a, crutch) { crutch.characters[a.id].uniq }
+      field :people, value: -> (a, crutch) { crutch.people[a.id] }
+      field :characters, value: -> (a, crutch) { crutch.characters[a.id] }
     end
   end
 end
