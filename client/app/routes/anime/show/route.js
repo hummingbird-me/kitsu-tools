@@ -19,5 +19,9 @@ export default Route.extend(CanonicalUrlRedirect, {
 
   titleToken(model) {
     return get(model, 'canonicalTitle');
+  },
+
+  serialize(model) {
+    return { slug: get(model, 'slug') };
   }
 });

@@ -14,7 +14,7 @@ export default Model.extend({
   rating: attr('number'),
   rewatchCount: attr('number'),
   rewatching: attr('boolean'),
-  status: attr('number'),
+  status: attr('string'),
   updatedAt: attr('date'),
   user: belongsTo('user')
 });

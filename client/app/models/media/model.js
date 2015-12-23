@@ -12,6 +12,7 @@ export default Model.extend({
   coverImage: attr('string'),
   coverImageTopOffset: attr('number'),
   endDate: attr('date'),
+  genres: attr('array'),
   posterImage: attr('string'),
   ratingFrequencies: attr('object'),
   slug: attr('string'),
