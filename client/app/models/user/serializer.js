@@ -1,4 +1,4 @@
-import ApplicationSerializer from 'client/pods/application/serializer';
+import ApplicationSerializer from 'client/routes/application/serializer';
 
 export default ApplicationSerializer.extend({
   // Serializes all attributes if the record is persistant (from the server)
