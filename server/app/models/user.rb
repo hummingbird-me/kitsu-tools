@@ -91,21 +91,12 @@ class User < ActiveRecord::Base
     content_type: %w[image/jpg image/jpeg image/png image/gif]
   }
 
+  scope :by_name, -> (name) { where('lower(name) = ?', name.to_s.downcase) }
+
   # TODO: I think Devise can handle this for us
   def self.find_for_auth(identification)
     identification = [identification.downcase]
     where('lower(email)=? OR lower(name)=?', *(identification * 2)).first
-  end
-
-  def self.find_by_username(name)
-    where('lower(name) = ?', name.to_s.downcase).first
-  end
-
-  # Override find to allow lookup by name
-  def self.find(name_or_id)
-    user = nil
-    user = find_by_username(name_or_id) if name_or_id.is_a? String
-    user || super
   end
 
   def pro?
