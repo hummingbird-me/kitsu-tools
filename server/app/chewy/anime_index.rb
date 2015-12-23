@@ -6,14 +6,14 @@ class AnimeIndex < Chewy::Index
       data = Casting.joins(:person).where(media_id: ids, media_type: 'Anime')
         .uniq.pluck(:media_id, 'people.name')
       # Convert from [id, name] to id => [names]
-      data.each.with_object({}) do|(id, name), result| (result[id] ||= []).push(name) }
+      data.each.with_object({}) { |(id, name), result| (result[id] ||= []).push(name) }
     end
     crutch :characters do |collection|
       ids = collection.map(&:id)
       data = Casting.joins(:character).where(media_id: ids, media_type: 'Anime')
         .uniq.pluck(:media_id, 'character.name')
       # Convert from [id, name] to id => [names]
-      data.each.with_object({}) do|(id, name), result| (result[id] ||= []).push(name) }
+      data.each.with_object({}) { |(id, name), result| (result[id] ||= []).push(name) }
     end
 
     root date_detection: false do
