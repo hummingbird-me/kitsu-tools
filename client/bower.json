@@ -16,6 +16,7 @@
     "pretender": "^0.10.0",
     "PACE": "pace#~1.0.2",
     "sinonjs": "~1.17.1",
-    "foundation-sites": "~6.0"
+    "foundation-sites": "~6.0",
+    "font-awesome": "~4.4.0"
   }
 }

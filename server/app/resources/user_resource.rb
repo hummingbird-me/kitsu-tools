@@ -8,7 +8,7 @@ class UserResource < BaseResource
 
   attributes *PRIVATE_FIELDS
 
-  filter :name
+  filter :name, apply: -> (records, value, _o) { records.by_name(value.first) }
   filter :self, apply: -> (_r, _v, options) {
     current_user = options[:context][:current_user]
     records.where(id: current_user.try(:id)) || User.none

@@ -77,6 +77,13 @@ RSpec.describe User, type: :model do
   it { should validate_uniqueness_of(:name) }
   it { should validate_uniqueness_of(:email) }
 
+  describe 'by_name scope' do
+    it 'should match case-insensitively' do
+      u = User.by_name(persisted_user.name).first
+      expect(u).to eq(persisted_user)
+    end
+  end
+
   describe 'find_for_auth' do
     it 'should be able to query by username' do
       u = User.find_for_auth(persisted_user.name)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213100401) do
+ActiveRecord::Schema.define(version: 20151223065939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -545,8 +545,24 @@ ActiveRecord::Schema.define(version: 20151213100401) do
   add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
 
   create_table "streamers", force: :cascade do |t|
-    t.string "site_name", limit: 255, null: false
+    t.string   "site_name",         limit: 255, null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
+
+  create_table "streaming_links", force: :cascade do |t|
+    t.integer "media_id",                     null: false
+    t.string  "media_type",                   null: false
+    t.integer "streamer_id",                  null: false
+    t.string  "url",                          null: false
+    t.string  "subs",        default: ["en"], null: false, array: true
+    t.string  "dubs",        default: ["ja"], null: false, array: true
+  end
+
+  add_index "streaming_links", ["media_type", "media_id"], name: "index_streaming_links_on_media_type_and_media_id", using: :btree
+  add_index "streaming_links", ["streamer_id"], name: "index_streaming_links_on_streamer_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                       limit: 255, default: "",          null: false
@@ -665,4 +681,5 @@ ActiveRecord::Schema.define(version: 20151213100401) do
   add_index "votes", ["target_id", "target_type", "user_id"], name: "index_votes_on_target_id_and_target_type_and_user_id", unique: true, using: :btree
   add_index "votes", ["user_id", "target_type"], name: "index_votes_on_user_id_and_target_type", using: :btree
 
+  add_foreign_key "streaming_links", "streamers"
 end
