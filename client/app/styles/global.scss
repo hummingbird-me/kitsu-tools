@@ -1,6 +1,9 @@
 // Base
 * {
   font-family: 'Open Sans', sans-serif;
+  &:focus {
+    outline: 0;
+  }
 }
 
 body {
@@ -8,6 +11,11 @@ body {
 }
 a {
   color: #E74B3E;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .no-padding-left {
   padding-left: 0 !important;

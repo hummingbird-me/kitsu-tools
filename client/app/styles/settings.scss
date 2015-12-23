@@ -315,13 +315,13 @@
 // ------
 
 // $reveal-background: $white;
-// $reveal-width: 600px;
+$reveal-width: 900px;
 // $reveal-max-width: $global-width;
 // $reveal-offset: rem-calc(100);
-// $reveal-padding: $global-padding;
-// $reveal-border: 1px solid $medium-gray;
+$reveal-padding: $global-padding;
+$reveal-border: none;
 // $reveal-zindex: 1005;
-// $reveal-overlay-background: rgba($black, 0.45);
+$reveal-overlay-background: rgba(50, 58, 69, 0.95);
 
 // Switch
 // ------
