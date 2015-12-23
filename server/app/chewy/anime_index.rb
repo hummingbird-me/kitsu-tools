@@ -11,7 +11,7 @@ class AnimeIndex < Chewy::Index
     crutch :characters do |collection|
       ids = collection.map(&:id)
       data = Casting.joins(:character).where(media_id: ids, media_type: 'Anime')
-        .uniq.pluck(:media_id, 'character.name')
+        .uniq.pluck(:media_id, 'characters.name')
       # Convert from [id, name] to id => [names]
       data.each.with_object({}) { |(id, name), result| (result[id] ||= []).push(name) }
     end
