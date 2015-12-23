@@ -12,5 +12,6 @@ module Episodic
 
   included do
     has_many :episodes, as: 'media', dependent: :destroy
+    has_many :streaming_links, as: 'media', dependent: :destroy
   end
 end

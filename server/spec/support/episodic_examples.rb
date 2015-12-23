@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.shared_examples 'episodic' do
   it { should have_db_column(:episode_count) }
   it { should have_db_column(:episode_length) }
+  it { should have_many(:episodes) }
+  it { should have_many(:streaming_links) }
 
   describe '#recalculate_episode_length!' do
     it 'should set episode_length to the mode when it is more than 50%' do
