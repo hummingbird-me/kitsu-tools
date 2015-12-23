@@ -1,5 +1,21 @@
 class AnimeIndex < Chewy::Index
   define_type Anime.includes(:genres, castings: [:character, :person]) do
+    # Crutches are optimized queries for efficiently grabbing HABTM data
+    crutch :people do |collection|
+      ids = collection.map(&:id)
+      data = Casting.joins(:person).where(media_id: ids, media_type: 'Anime')
+        .uniq.pluck(:media_id, 'people.name')
+      # Convert from [id, name] to id => [names]
+      data.each.with_object({}) do|(id, name), result| (result[id] ||= []).push(name) }
+    end
+    crutch :characters do |collection|
+      ids = collection.map(&:id)
+      data = Casting.joins(:character).where(media_id: ids, media_type: 'Anime')
+        .uniq.pluck(:media_id, 'character.name')
+      # Convert from [id, name] to id => [names]
+      data.each.with_object({}) do|(id, name), result| (result[id] ||= []).push(name) }
+    end
+
     root date_detection: false do
       # Oops, we did ja_en this backwards
       # TODO: fix this
@@ -20,16 +36,8 @@ class AnimeIndex < Chewy::Index
       field :genres, value: -> (a) { a.genres.map(&:name) }
       field :user_count, type: 'short'
       # Castings
-      field :people, value: -> (a) {
-        a.castings.map { |c|
-          c.person.name unless c.person.nil?
-        }.compact.uniq
-      }
-      field :characters, value: -> (a) {
-        a.castings.map { |c|
-          c.character.name unless c.character.nil?
-        }.compact.uniq
-      }
+      field :people, value: -> (a, crutch) { crutch.people[a.id].uniq }
+      field :characters, value: -> (a, crutch) { crutch.characters[a.id].uniq }
     end
   end
 end
