@@ -22,22 +22,12 @@ class MediaSearch
           modifier: 'log1p'
         },
         query: {
-          bool: {
-            should: [
-              { term: { characters: terms } },
-              { term: { actors: terms } },
-              { term: { 'titles.*' => terms } },
-              {
-                multi_match: {
-                  fields: %w[titles.* abbreviated_titles synopsis actors characters],
-                  query: terms,
-                  fuzziness: 2,
-                  max_expansions: 10,
-                  prefix_length: 2
-                }
-              }
-            ],
-            minimum_should_match: 1
+          multi_match: {
+            fields: %w[titles.* abbreviated_titles synopsis actors characters],
+            query: terms,
+            fuzziness: 2,
+            max_expansions: 10,
+            prefix_length: 2
           }
         }
       }
