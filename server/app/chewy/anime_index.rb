@@ -34,7 +34,7 @@ class AnimeIndex < Chewy::Index
       field :average_rating, type: 'float'
       field :start_date, :end_date, :created_at, type: 'date'
       field :genres, value: -> (a) { a.genres.map(&:name) }
-      field :user_count, type: 'short'
+      field :user_count, type: 'integer'
       # Castings
       field :people, value: -> (a, crutch) { crutch.people[a.id] }
       field :characters, value: -> (a, crutch) { crutch.characters[a.id] }
