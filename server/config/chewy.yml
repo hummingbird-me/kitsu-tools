@@ -1,0 +1,8 @@
+test:
+  prefix: 'test'
+
+development:
+  prefix: 'development'
+
+production:
+  prefix: 'production'

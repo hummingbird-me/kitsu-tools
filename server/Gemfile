@@ -7,11 +7,12 @@ gem 'rails-api'
 gem 'puma'
 
 # Database Stuff
-gem 'pg'
-gem 'hiredis'
-gem 'redis', require: ['redis', 'redis/connection/hiredis']
-gem 'redis-rails'
-gem 'connection_pool'
+gem 'pg' # Postgres
+gem 'hiredis' # Faster redis
+gem 'redis', require: ['redis', 'redis/connection/hiredis'] # Redis
+gem 'redis-rails' # Redis on Rails
+gem 'connection_pool' # Pool our Redises
+gem 'chewy' # ElasticSearch
 
 # Auth{entication,orization}
 gem 'devise', '~> 3.5'

@@ -38,7 +38,7 @@ app/
       serializer.js
   services/
     current-session.js
-  pods/
+  routes/
     dashboard/
       components/
         dashboard-only-component
