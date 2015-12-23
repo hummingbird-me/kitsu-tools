@@ -13,5 +13,5 @@ class AnimeResource < BaseResource
              # Episodes
              :episode_count, :episode_length
 
-  filter :slug
+  filter :slug, apply: -> (records, value, _options) { records.by_slug(value) }
 end
