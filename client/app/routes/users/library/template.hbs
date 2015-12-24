@@ -5,27 +5,34 @@
         <button class="button" type="button" data-toggle="example-dropdown">Anime</button>
         <ul class="menu">
           <li>
-            <a href="#" class="{{if showAll 'active'}}" {{action 'showAllSections'}}>
+            <a href="#" class="{{if showAll 'active'}}" {{action 'showAll'}}>
               All
             </a>
           </li>
-          {{#each sections as |section|}}
+          {{#each statuses as |status|}}
             {{users/components/library-section-button
-                section=section isLoadingData=isLoadingData
-                onClick=(action 'changeSection')}}
+                status=status
+                current=activeStatus
+                isLoadingData=isLoadingData
+                onClick=(action 'changeStatus')}}
           {{/each}}
         </ul>
       </div>
       <div class="search-library">
-        <input class="search-input" placeholder="Search this library..." type="text">
+        {{one-way-input
+          update=(action 'filter')
+          placeholder="Search this library..."
+          class="search-input"}}
       </div>
 
       {{#if showAll}}
         {{#each sections as |section|}}
-          {{users/components/library-list-section section=section}}
+          {{users/components/library-list-section
+            section=section}}
         {{/each}}
       {{else}}
-        {{users/components/library-list-section section=currentSection}}
+        {{users/components/library-list-section
+          section=currentSection}}
       {{/if}}
     </div>
   </div>

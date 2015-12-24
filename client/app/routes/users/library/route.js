@@ -11,7 +11,8 @@ const {
 // TODO: Map text status to numeric status
 export default Route.extend({
   queryParams: {
-    media: { refreshModel: true }
+    media: { refreshModel: true },
+    status: { replace: true }
   },
 
   model(params) {

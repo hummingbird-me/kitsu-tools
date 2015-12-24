@@ -1,4 +1,10 @@
+import Ember from 'ember';
 import DS from 'ember-data';
+
+const {
+  computed,
+  get
+} = Ember;
 
 const {
   Model,
@@ -18,5 +24,16 @@ export default Model.extend({
   slug: attr('string'),
   startDate: attr('date'),
   synopsis: attr('string'),
-  titles: attr('object')
+  titles: attr('object'),
+
+  searchStr: computed('titles', {
+    get() {
+      const titles = get(this, 'titles');
+      let searchStr = '';
+      for (let key in titles) {
+        searchStr += titles[key];
+      }
+      return searchStr.toLowerCase();
+    }
+  })
 });

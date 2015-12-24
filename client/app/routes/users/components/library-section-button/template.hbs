@@ -1,9 +1,9 @@
-{{#if (and isLoadingData (not section.hasRecords))}}
+{{#if (and isLoadingData (not isActive))}}
   <a href="javascript:void(0);">
     {{fa-icon icon="spinner" spin=true}}
   </a>
 {{else}}
-  <a href="#" class="{{if section.isActive 'active'}}" {{action 'changeSection' section}}>
-    {{section.status}}
+  <a href="#" class="{{if isActive 'active'}}" {{action 'changeStatus' status}}>
+    {{status}}
   </a>
 {{/if}}

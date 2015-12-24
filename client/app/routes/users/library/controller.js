@@ -10,13 +10,12 @@ const {
   setProperties
 } = Ember;
 
+// TODO: Speed up rendering!!
 export default Controller.extend({
   queryParams: ['media', 'status'],
   media: 'anime',
   status: 1,
-
   showAll: false,
-
   entries: alias('model'),
 
   statuses: computed({
@@ -25,47 +24,57 @@ export default Controller.extend({
     }
   }),
 
-  currentStatusStr: computed('status', {
+  activeStatus: computed('showAll', 'status', {
     get() {
+      if (get(this, 'showAll')) {
+        return;
+      }
       const status = get(this, 'status');
       return libraryStatus.numberToHuman(status);
     }
   }),
 
-  sections: computed('currentStatusStr', 'entries.[]', 'showAll', {
+  sections: computed('statuses', 'entries.[]', {
     get() {
-      const currentStatusStr = get(this, 'currentStatusStr');
       return get(this, 'statuses').map((status) => {
         const entries = get(this, 'entries')
           .filterBy('status', libraryStatus.humanToEnum(status));
-        return {
-          status,
-          entries,
-          hasRecords: entries.length > 0,
-          isActive: (status === currentStatusStr) && !get(this, 'showAll')
-        };
+        return { status, entries };
       });
     }
   }),
 
-  currentSection: computed('currentStatusStr', 'sections', {
+  currentSection: computed('status', {
     get() {
-      const currentStatusStr = get(this, 'currentStatusStr');
-      return get(this, 'sections').findBy('status', currentStatusStr);
+      const status = get(this, 'status');
+      return get(this, 'sections')[status - 1];
     }
   }),
 
   actions: {
-    showAllSections() {
+    showAll() {
       set(this, 'showAll', true);
     },
 
-    changeSection(section) {
-      const status = get(section, 'status');
+    changeStatus(status) {
       setProperties(this, {
         showAll: false,
         status: libraryStatus.humanToNumber(status)
       });
+    },
+
+    filter(query) {
+      get(this, 'sections').forEach((section) => {
+        const entries = get(this, 'entries').filter((entry) => {
+          const status = libraryStatus.humanToEnum(get(section, 'status'));
+          if (get(entry, 'status') !== status) {
+            return false;
+          }
+          return get(entry, 'anime.searchStr').indexOf(query.toLowerCase()) !== -1;
+        });
+        set(section, 'entries', entries);
+      });
+      set(this, 'showAll', !!query.length);
     }
   }
 });
