@@ -21,6 +21,8 @@
     "Jcrop": "~0.9.12",
     "jquery-textcomplete": "vevix/jquery-textcomplete#master",
     "masonry": "~3.2.2",
-    "imagesloaded": "~3.1.8"
+    "imagesloaded": "~3.1.8",
+    "gsap": "~1.17.0",
+    "jquery.countdown": "2.0.4"
   }
 }

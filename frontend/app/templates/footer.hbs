@@ -1,3 +1,76 @@
+<div class="giftbox">
+  <div class="count-wrapper">
+    <p id="clock"></p>
+  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="xmas" x="0" y="0" viewBox="0 0 270.1 140.1" xml:space="preserve" enable-background="new 0 0 270.1 140.1">
+    <style>
+      .s0{
+      overflow:visible;
+      }
+      .s1{
+      clip-path:url(#SVGID_1_);
+      fill:#D73F22;
+      }
+      .s2{
+      clip-path:url(#SVGID_1_);
+      fill:#4C4C4E;
+      }
+      .s3{
+      fill:#FCB51D;
+      }
+      .s4{
+      fill:#B61F2B;
+      }
+
+    </style>  
+    <g id="Presents">
+      <g id="PresentB" class="box">
+        <ellipse id="ShadowPresent" class="PresentBoxShadow" cx="188.2" cy="117.3" rx="81.8" ry="22.8" fill="#000"/>
+        <g class="PresentBox">
+
+          <rect x="146.8" y="72" width="66.2" height="49.5" fill="#D53938"/>
+          <rect x="146.8" y="72.7" width="66.2" height="3.6" fill="#B6282E" class="boxTopShadow"/>
+          <rect x="138" y="57.9" width="83.9" height="15.1" fill="#E85E4D" class="boxTop"/>
+          <rect x="185" y="57.5" width="10.4" height="64" fill="#FCB51D" class="ribbonSide"/>
+
+          <g class="PresentBoxRibbon">
+            <polygon points="190.7 57.2 175.9 40.8 164.8 52.7 184.4 63.6 " fill="#FCB51D"/>
+            <polygon points="184.4 63.5 163.9 61.1 164.8 52.6 " fill="#B61F2B"/>
+            <polygon points="190.5 57.3 204.6 40.2 216.2 51.5 197.2 63.4 " fill="#FCB51D"/>
+            <polygon points="197.2 63.4 217.5 60 216.2 51.5 " fill="#B61F2B"/>
+          </g>
+
+        </g>
+      </g>
+
+    </g>
+  </svg>
+
+</div>
+
+<script>
+  $('#clock').countdown('2016/01/02', function(event) {
+    $(this).html(event.strftime('%D days %H hrs %M mins %S secs'));
+  });
+
+  /* Jump Presents */
+  tlJumpPresent = new TimelineMax({paused: true});
+
+  $box.mouseenter(function(){
+
+    $PresentBox = $(this).find('.PresentBox'),
+      $PresentBoxShadow = $(this).find('.PresentBoxShadow');
+
+    tlJumpPresent
+    .to($PresentBox, 0.5, {scaleX: 0.8, transformOrigin:"bottom center", y: -20, ease:Power4.easeInOut})
+    .to($PresentBox, 0.2, {scaleX: 1, transformOrigin:"bottom center", y: 0, ease:Bounce.easeOut})
+    .to($PresentBoxShadow, 0.5, {scaleX: 0.8, transformOrigin:"bottom center", ease:Power4.easeInOut}, "0")
+    .to($PresentBoxShadow, 0.2, {scaleX: 1, transformOrigin:"bottom center", ease:Bounce.easeOut}, "0.5");
+
+    tlJumpPresent.play();
+
+  });
+</script>
 <footer class="global-footer">
   <div class="footer-contents">
     <div class="container">
