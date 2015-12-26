@@ -50,7 +50,7 @@
 
 <script>
   var halfLifeThree = moment.tz("2016-01-02 00:00", "US/Eastern");
-  $('#clock').countdown(halfLifeThree, function(event) {
+  $('#clock').countdown(halfLifeThree.toDate(), function(event) {
     $(this).html(event.strftime('%D days %H hrs %M mins %S secs'));
   });
 
