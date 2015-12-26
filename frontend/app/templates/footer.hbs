@@ -49,14 +49,15 @@
 </div>
 
 <script>
-  $('#clock').countdown('2016/01/02', function(event) {
+  var halfLifeThree = moment.tz("2016-01-02 00:00", "US/Eastern");
+  $('#clock').countdown(halfLifeThree, function(event) {
     $(this).html(event.strftime('%D days %H hrs %M mins %S secs'));
   });
 
   /* Jump Presents */
   tlJumpPresent = new TimelineMax({paused: true});
 
-  $box.mouseenter(function(){
+  $('.box').mouseenter(function(){
 
     $PresentBox = $(this).find('.PresentBox'),
       $PresentBoxShadow = $(this).find('.PresentBoxShadow');

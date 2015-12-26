@@ -23,6 +23,7 @@
     "masonry": "~3.2.2",
     "imagesloaded": "~3.1.8",
     "gsap": "~1.17.0",
-    "jquery.countdown": "2.0.4"
+    "jquery.countdown": "2.0.4",
+    "moment-timezone": "~0.4.1"
   }
 }

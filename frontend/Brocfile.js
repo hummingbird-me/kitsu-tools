@@ -42,6 +42,7 @@ app.import('bower_components/imagesloaded/imagesloaded.pkgd.js');
 app.import('bower_components/jquery-textcomplete/dist/jquery.textcomplete.js')
 app.import('bower_components/gsap/src/minified/TweenMax.min.js')
 app.import('bower_components/jquery.countdown/dist/jquery.countdown.js')
+app.import('bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js');
 
 // bootstrap js
 app.import('bower_components/bootstrap/js/transition.js');
