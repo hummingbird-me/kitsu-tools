@@ -43,8 +43,10 @@ module AuthenticatedResource
     end
   end
 
-  # Hook in our authorization callbacks
-  before_create { not_authorized! :create? unless policy && policy.create? }
-  before_update { not_authorized! :update? unless policy && policy.update? }
-  before_remove { not_authorized! :destroy? unless policy && policy.destroy? }
+  included do
+    # Hook in our authorization callbacks
+    before_create { not_authorized! :create? unless policy && policy.create? }
+    before_update { not_authorized! :update? unless policy && policy.update? }
+    before_remove { not_authorized! :destroy? unless policy && policy.destroy? }
+  end
 end
