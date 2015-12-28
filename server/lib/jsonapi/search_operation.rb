@@ -18,6 +18,7 @@ class SearchOperation < JSONAPI::FindOperation
     if @resource_klass.should_query?(filters)
       resource_records = @resource_klass.search(filters, find_opts)
     else
+      find_opts[:sort_criteria].map! { |x| x[:field] = 'id' if x[:field] == '_score'; x }
       resource_records = @resource_klass.find(filters, find_opts)
     end
 
@@ -36,6 +37,8 @@ class SearchOperation < JSONAPI::FindOperation
   end
 
   def record_count
+    return super unless @resource_klass.should_query?(verified_filters)
+
     @resource_klass.search_count(verified_filters,
       context: @context,
       include_directives: @include_directives)
