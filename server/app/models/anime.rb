@@ -38,6 +38,8 @@
 #
 
 class Anime < ActiveRecord::Base
+  SEASONS = %w[winter spring summer fall]
+
   include Media
   include AgeRatings
   include Episodic
