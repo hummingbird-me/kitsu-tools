@@ -1,4 +1,4 @@
-require_dependency 'lib/jsonapi/search_operation'
+require_dependency 'jsonapi/search_operation'
 
 class SearchableRequest < JSONAPI::Request
   def add_find_operation

@@ -1,4 +1,4 @@
-require_dependency 'lib/jsonapi/searchable_request'
+require_dependency 'jsonapi/searchable_request'
 
 module SearchableController
   extend ActiveSupport::Concern
