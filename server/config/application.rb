@@ -26,5 +26,10 @@ module Hummingbird
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Include all concern directories in app/*/concerns
+    concern_dirs = Dir['app/*/concerns'].map { |d| File.expand_path(d) }
+    Rails.application.config.eager_load_paths += concern_dirs
+    Rails.application.config.eager_load_paths.uniq!
   end
 end
