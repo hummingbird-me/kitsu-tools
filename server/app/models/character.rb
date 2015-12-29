@@ -21,6 +21,14 @@ class Character < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: %i[slugged finders history]
 
+  has_attached_file :image
+
+  validates_attachment :image, content_type: {
+    content_type: %w[image/jpg image/jpeg image/png]
+  }
+  validates :slug, presence: true
+  validates :name, presence: true
+
   belongs_to :primary_media, polymorphic: true
   has_many :castings
 
