@@ -46,7 +46,7 @@ class Anime < ActiveRecord::Base
 
   has_many :library_entries, dependent: :destroy
 
-  update_index('anime') { self }
+  update_index('media#anime') { self }
 
   def slug_candidates
     # Prefer the canonical title or romaji title before anything else
