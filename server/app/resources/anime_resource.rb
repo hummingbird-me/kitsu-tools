@@ -33,6 +33,8 @@ class AnimeResource < BaseResource
              # Episodes
              :episode_count, :episode_length
 
+  has_many :castings
+
   def genres
     @model.genres.map(&:name).sort
   end
@@ -44,6 +46,7 @@ class AnimeResource < BaseResource
   query :season, valid: -> (value, _ctx) { Anime::SEASONS.include?(value) }
   query :year, NUMERIC_QUERY
   query :average_rating, NUMERIC_QUERY
+  query :user_count, NUMERIC_QUERY
   query :genres,
     apply: -> (values, _ctx) {
       {match: {genres: {query: value.join(' '), operator: 'and'}}}
