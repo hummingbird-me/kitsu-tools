@@ -29,8 +29,12 @@ module AuthenticatedResource
     klass = self.class._relationships[relation_name].class_name.constantize
     policy = Pundit::PolicyFinder.new(klass)
     scope = _model.public_send(relation_name)
-    scope = policy.scope.new(current_user, scope)
-    scope.resolve
+    # TODO: handle polymorphic scopes somehow
+    if policy.scope
+      scope = policy.scope.new(current_user, scope)
+      scope = scope.resolve
+    end
+    scope
   end
 
   # Limit scope of finders based on policy
