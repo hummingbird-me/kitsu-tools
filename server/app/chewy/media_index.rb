@@ -16,11 +16,18 @@ class MediaIndex < Chewy::Index
       groupify Casting.joins(:character).where(media_id: ids, media_type: type)
         .uniq.pluck(:media_id, 'characters.name')
     end
+
+    # Get Streamers for a series
+    def get_streamers(type, ids)
+      groupify StreamingLink.joins(:streamer).where(media_id: ids, media_type: type)
+        .uniq.pluck(:media_id, 'streamers.site_name')
+    end
   end
 
   define_type Anime.includes(:genres) do
     crutch(:people) { |coll| MediaIndex.get_people 'Anime', coll.map(&:id) }
     crutch(:characters) { |coll| MediaIndex.get_characters 'Anime', coll.map(&:id) }
+    crutch(:streamers) { |coll| MediaIndex.get_streamers 'Anime', coll.map(&:id) }
 
     root date_detection: false do
       include IndexTranslatable
@@ -42,6 +49,8 @@ class MediaIndex < Chewy::Index
       # Castings
       field :people, value: -> (a, crutch) { crutch.people[a.id] }
       field :characters, value: -> (a, crutch) { crutch.characters[a.id] }
+      # Where to watch
+      field :streamers, value: -> (a, crutch) { crutch.streamers[a.id] }
     end
   end
 
