@@ -26,7 +26,6 @@ class Character < ActiveRecord::Base
   validates_attachment :image, content_type: {
     content_type: %w[image/jpg image/jpeg image/png]
   }
-  validates :slug, presence: true
   validates :name, presence: true
 
   belongs_to :primary_media, polymorphic: true
