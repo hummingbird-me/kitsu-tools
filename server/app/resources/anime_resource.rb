@@ -47,14 +47,12 @@ class AnimeResource < BaseResource
   query :user_count, NUMERIC_QUERY
   query :genres,
     apply: -> (values, _ctx) {
-      {match: {genres: {query: value.join(' '), operator: 'and'}}}
+      {match: {genres: {query: values.join(' '), operator: 'and'}}}
     }
   query :streamers,
     valid: -> (value, _ctx) { Streamer.find_by_name(value) }
   query :age_rating,
-    valid: -> (values, _ctx) {
-    },
-    apply: -> (value, _ctx) { value.split(',').join(' ') }
+    valid: -> (value, _ctx) { Anime.age_ratings.keys.include?(value) }
   query :text, mode: :query,
     apply: -> (values, _ctx) {
       {
