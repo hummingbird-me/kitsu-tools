@@ -13,7 +13,7 @@
 class Streamer < ActiveRecord::Base
   has_attached_file :logo
 
-  validates :logo, :site_name, presence: true
+  validates :site_name, presence: true
   validates_attachment :logo, content_type: {
     content_type: %w[image/png]
   }
