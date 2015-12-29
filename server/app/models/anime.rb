@@ -75,4 +75,14 @@ class Anime < ActiveRecord::Base
     when 9, 10, 11; :fall
     end
   end
+
+  def self.fuzzy_find(title)
+    MediaIndex::Anime.query(multi_match: {
+      fields: %w[titles.* abbreviated_titles synopsis actors characters],
+      query: title,
+      fuzziness: 2,
+      max_expansions: 15,
+      prefix_length: 2
+    }).preload.first
+  end
 end
