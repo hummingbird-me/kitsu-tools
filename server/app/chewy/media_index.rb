@@ -18,7 +18,7 @@ class MediaIndex < Chewy::Index
     end
   end
 
-  define_type Anime.includes(:genres, castings: [:character, :person]) do
+  define_type Anime.includes(:genres) do
     crutch(:people) { |coll| MediaIndex.get_people 'Anime', coll.map(&:id) }
     crutch(:characters) { |coll| MediaIndex.get_characters 'Anime', coll.map(&:id) }
 
