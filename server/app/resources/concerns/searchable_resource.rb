@@ -13,7 +13,23 @@ module SearchableResource
     def query(field, opts = {})
       field = field.to_sym
 
-      filter field, verify: (opts[:verify] || -> (value, _c) { value })
+      # For some reason, #filter(verify:) is supposed to return the values to
+      # use.  I cannot honestly figure out why this is the case, so we provide
+      # #query(valid:) instead.  #query(valid:) lambdas receive a value+context
+      # and return a boolean.  If all values in a field are valid, the whole
+      # is assumed valid.
+      #
+      # If you must, you can still use #filter(verify:) to handle the entire
+      # array all at once, or to modify values.
+      filter field, verify: opts[:verify] || -> (values, context) {
+        if opts[:valid]
+          if values.all? { |v| opts[:valid].call(v, context) }
+            values
+          end
+        else
+          values
+        end
+      }
 
       @queryable_fields ||= {}
       @queryable_fields[field] = opts
@@ -46,6 +62,8 @@ module SearchableResource
 
     def apply_scopes(filters, opts = {})
       context = opts[:context]
+
+      # TODO: we ought to raise if there's failed (nil) filters
 
       # Generate query
       query = generate_query(filters)
@@ -84,7 +102,13 @@ module SearchableResource
       when Range
         {range: {field => {gte: value.min, lte: value.max}}}
       when Array
-        auto_query(field, value.join(' '))
+        # Array<String|Fixnum|Float> get shorthanded to a single match query
+        if value.all? { |v| v.is_a?(String) || v.is_a?(Fixnum) || v.is_a?(Float) }
+          auto_query(field, value.join(' '))
+        else
+          matchers = value.map { |v| auto_query(field, v) }
+          {bool: {should: matchers}}
+        end
       else
         value
       end

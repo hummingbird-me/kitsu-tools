@@ -1,8 +1,23 @@
 class AnimeResource < BaseResource
-  # This regex accepts a numerical range
+  # This regex accepts a numerical range or single number
   # $1 = start, $2 = dot representing closed/open, $3 = end
-  NUMBER_RANGE = /\A(\d+(?:\.\d*)?)(?:\.\.(\.)?)(\d+(?:\.\d*)?)\z/
-  NUMBER = /\A\d+(?:\.\d\*)?\z/
+  NUMBER = /(\d+(?:\.\d+)?)/
+  NUMERIC_RANGE = %r{\A#{NUMBER}(?:(?:\.\.(\.)?)#{NUMBER})?\z}
+  NUMERIC_QUERY = {
+    valid: -> (value, _ctx) { NUMERIC_RANGE.match(value) },
+    apply: -> (values, _ctx) {
+      # We only accept the first value
+      values.map do |value|
+        matches = NUMERIC_RANGE.match(value)
+
+        if matches[3] # Range
+          Range.new(matches[1].to_f, matches[3].to_f, matches[2] == '.')
+        else # Scalar
+          matches[1]
+        end
+      end
+    }
+  }
 
   attributes :slug,
              # Images
@@ -26,39 +41,35 @@ class AnimeResource < BaseResource
 
   # ElasticSearch hookup
   index AnimeIndex::Anime
-  query :season, verify: -> (value, _ctx) { value.in? Anime::SEASONS }
-  query :year, verify: -> (value, _ctx) { NUMBER.match(value) }
-  query :average_rating,
-    verify: -> (value, _ctx) { NUMBER_RANGE.match(value) || NUMBER.match(value) },
-    apply: -> (value, _ctx) {
-      if NUMBER_RANGE.match(value)
-        Range.new($1.to_f, $3.to_f, $2 == '.')
-      elsif NUMBER.match(value)
-        value.to_f
-      end
+  query :season, valid: -> (value, _ctx) { Anime::SEASONS.include?(value) }
+  query :year, NUMERIC_QUERY
+  query :average_rating, NUMERIC_QUERY
+  query :genres,
+    apply: -> (values, _ctx) {
+      {match: {genres: {query: value.join(' '), operator: 'and'}}}
     }
-  query :genres, apply: -> (value, _ctx) {
-    # Must match all genres
-    {match: {genres: {query: value.split(',').join(' '), operator: 'and'}}}
-  }
-  query :age_rating, apply: -> (value, _ctx) { value.split(',').join(' ') }
-  query :text, mode: :query, apply: -> (value, _ctx) {
-    {
-      function_score: {
-        field_value_factor: {
-          field: 'user_count',
-          modifier: 'log1p'
-        },
-        query: {
-          multi_match: {
-            fields: %w[titles.* abbreviated_titles synopsis actors characters],
-            query: value,
-            fuzziness: 2,
-            max_expansions: 15,
-            prefix_length: 2
+  query :age_rating,
+    valid: -> (values, _ctx) {
+    },
+    apply: -> (value, _ctx) { value.split(',').join(' ') }
+  query :text, mode: :query,
+    apply: -> (values, _ctx) {
+      {
+        function_score: {
+          field_value_factor: {
+            field: 'user_count',
+            modifier: 'log1p'
+          },
+          query: {
+            multi_match: {
+              fields: %w[titles.* abbreviated_titles synopsis actors characters],
+              query: values.join(','),
+              fuzziness: 2,
+              max_expansions: 15,
+              prefix_length: 2
+            }
           }
         }
       }
     }
-  }
 end
