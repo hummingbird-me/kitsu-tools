@@ -3,8 +3,6 @@
     <div class="media-grid columns">
       <div class="filter-options">
         <div class="filter-wrapper">
-
-
           <!-- Date Range Filter -->
           <div class="filter-widget">
             <div class="filter-header">
@@ -161,146 +159,34 @@
 
       <div class="search-media">
         <i class="fa fa-search"></i>
-        <input type="search" placeholder="Search by title, director, studio or voice actor">
+        {{one-way-input
+          type=search
+          value=text
+          update=(action 'filterText')
+          placeholder="Search by title, director, studio or voice actor"}}
       </div>
       <div class="media-posters">
         <div class="row">
-
-
-          <!-- Media item-->
-          <div class="poster-wrapper">
-            <div class="grid-poster">
-              <img src="https://static.hummingbird.me/anime/poster_images/000/003/936/large/gqt6iYB.jpg?1419000387">
-              <div class="poster-overlay">
-                <div class="shared-friends">
-                  <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
-                  <a href="#" class="friend-count">03</a>
-                </div>
-                <div class="trailer">
-                  <a data-open="media-trailer"><i class="fa fa-play"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="ellipsis">
-              <a href="#" class="media-title">Fullmetal Alchemist: Brotherhood</a>
-            </div>
-          </div>
-
-          <!-- Media item-->
-          <div class="poster-wrapper">
-            <div class="grid-poster">
-              <img src="https://static.hummingbird.me/anime/poster_images/000/003/936/large/gqt6iYB.jpg?1419000387">
-              <div class="poster-overlay">
-                <div class="shared-friends">
-                  <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
-                  <a href="#" class="friend-count">03</a>
-                </div>
-                <div class="trailer">
-                  <a data-open="media-trailer"><i class="fa fa-play"></i></a>
+          {{#each media as |anime|}}
+            {{! TODO: Componentize }}
+            <div class="poster-wrapper">
+              <div class="grid-poster">
+                <img src={{anime.posterImage}}>
+                <div class="poster-overlay">
+                  <div class="shared-friends">
+                    <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
+                    <a href="#" class="friend-count">03</a>
+                  </div>
+                  <div class="trailer">
+                    <a data-open="media-trailer"><i class="fa fa-play"></i></a>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="ellipsis">
-              <a href="#" class="media-title">Fullmetal Alchemist: Brotherhood</a>
-            </div>
-          </div>
-
-          <!-- Media item-->
-          <div class="poster-wrapper">
-            <div class="grid-poster">
-              <img src="https://static.hummingbird.me/anime/poster_images/000/003/936/large/gqt6iYB.jpg?1419000387">
-              <div class="poster-overlay">
-                <div class="shared-friends">
-                  <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
-                  <a href="#" class="friend-count">03</a>
-                </div>
-                <div class="trailer">
-                  <a data-open="media-trailer"><i class="fa fa-play"></i></a>
-                </div>
+              <div class="ellipsis">
+                <a href="#" class="media-title">{{anime.canonicalTitle}}</a>
               </div>
             </div>
-            <div class="ellipsis">
-              <a href="#" class="media-title">Fullmetal Alchemist: Brotherhood</a>
-            </div>
-          </div>
-
-          <!-- Media item-->
-          <div class="poster-wrapper">
-            <div class="grid-poster">
-              <img src="https://static.hummingbird.me/anime/poster_images/000/003/936/large/gqt6iYB.jpg?1419000387">
-              <div class="poster-overlay">
-                <div class="shared-friends">
-                  <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
-                  <a href="#" class="friend-count">03</a>
-                </div>
-                <div class="trailer">
-                  <a data-open="media-trailer"><i class="fa fa-play"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="ellipsis">
-              <a href="#" class="media-title">Fullmetal Alchemist: Brotherhood</a>
-            </div>
-          </div>
-
-          <!-- Media item-->
-          <div class="poster-wrapper">
-            <div class="grid-poster">
-              <img src="https://static.hummingbird.me/anime/poster_images/000/003/936/large/gqt6iYB.jpg?1419000387">
-              <div class="poster-overlay">
-                <div class="shared-friends">
-                  <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
-                  <a href="#" class="friend-count">03</a>
-                </div>
-                <div class="trailer">
-                  <a data-open="media-trailer"><i class="fa fa-play"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="ellipsis">
-              <a href="#" class="media-title">Fullmetal Alchemist: Brotherhood</a>
-            </div>
-          </div>
-
-          <!-- Media item-->
-          <div class="poster-wrapper">
-            <div class="grid-poster">
-              <img src="https://static.hummingbird.me/anime/poster_images/000/003/936/large/gqt6iYB.jpg?1419000387">
-              <div class="poster-overlay">
-                <div class="shared-friends">
-                  <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
-                  <a href="#" class="friend-count">03</a>
-                </div>
-                <div class="trailer">
-                  <a data-open="media-trailer"><i class="fa fa-play"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="ellipsis">
-              <a href="#" class="media-title">Fullmetal Alchemist: Brotherhood</a>
-            </div>
-          </div>
-
-          <!-- Media item-->
-          <div class="poster-wrapper">
-            <div class="grid-poster">
-              <img src="https://static.hummingbird.me/anime/poster_images/000/003/936/large/gqt6iYB.jpg?1419000387">
-              <div class="poster-overlay">
-                <div class="shared-friends">
-                  <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
-                  <a href="#" class="friend-count">03</a>
-                </div>
-                <div class="trailer">
-                  <a data-open="media-trailer"><i class="fa fa-play"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="ellipsis">
-              <a href="#" class="media-title">Fullmetal Alchemist: Brotherhood</a>
-            </div>
-          </div>
-
-
+          {{/each}}
         </div>
       </div>
     </div>

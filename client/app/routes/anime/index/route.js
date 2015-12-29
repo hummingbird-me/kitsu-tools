@@ -1,7 +1,37 @@
 import Ember from 'ember';
 
-const { Route } = Ember;
+const {
+  Route,
+  get
+} = Ember;
 
-// TODO: This will be the anime explore page. Need to figure out how the API
-// will handle this.
-export default Route.extend();
+export default Route.extend({
+  queryParams: {
+    text: { refreshModel: true }
+  },
+
+  model(params) {
+    const limits = {
+      page: {
+        offset: 0,
+        limit: 20
+      }
+    };
+    const filters = this._buildFilters(params);
+    // TODO: Includes
+    const options = Object.assign(filters, limits);
+    return get(this, 'store').query('anime', options);
+  },
+
+  _buildFilters(params) {
+    // TODO: Build filters out correctly.
+    const filters = { filter: {} };
+    for (const key in params) {
+      const val = params[key];
+      if (val !== null || val !== undefined) {
+        filters.filter[key] = val;
+      }
+    }
+    return filters;
+  }
+});

@@ -3,9 +3,13 @@
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
         {{! TODO: Should be a link to home }}
-        <li><div class="logo"></div></li>
+        <li>
+          {{#link-to 'dashboard'}}
+            <div class="logo"></div>
+          {{/link-to}}
+        </li>
         <li class="primary-nav has-submenu">
-          <a href="#">Shows</a>
+          <a>Shows</a>
           <ul class="submenu menu vertical" data-submenu>
             <li>
               {{link-to 'Anime' 'anime.index'}}
