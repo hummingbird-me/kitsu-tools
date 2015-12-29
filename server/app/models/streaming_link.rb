@@ -16,4 +16,7 @@ class StreamingLink < ActiveRecord::Base
   belongs_to :streamer
 
   validates :media, :streamer, :url, :subs, :dubs, presence: true
+
+  scope :dubbed, -> (langs) { where('dubs @> ARRAY[?]::varchar[]', langs) }
+  scope :subbed, -> (langs) { where('subs @> ARRAY[?]::varchar[]', langs) }
 end
