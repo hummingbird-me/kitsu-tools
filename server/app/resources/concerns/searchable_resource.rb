@@ -44,12 +44,15 @@ module SearchableResource
     def search(filters, opts = {})
       context = opts[:context]
 
+      return [] if filters.values.any? { |f| f.nil? }
+
       # Apply scopes, load, and wrap
       apply_scopes(filters, opts).load.map { |result| new(result, context) }
     end
 
     # Count all search results
     def search_count(filters, opts = {})
+      return 0 if filters.values.any? { |f| f.nil? }
       apply_scopes(filters, opts).total_count
     end
 
@@ -62,8 +65,6 @@ module SearchableResource
 
     def apply_scopes(filters, opts = {})
       context = opts[:context]
-
-      # TODO: we ought to raise if there's failed (nil) filters
 
       # Generate query
       query = generate_query(filters)
