@@ -24,8 +24,8 @@ class AnimeResource < BaseResource
              :poster_image, :cover_image, :cover_image_top_offset,
              # Titles
              :titles, :canonical_title, :abbreviated_titles,
-             # Type, Genres, Dates, Synopsis
-             :show_type, :genres, :start_date, :end_date, :synopsis,
+             # Type, Dates, Synopsis
+             :show_type, :start_date, :end_date, :synopsis,
              # Age Ratings
              :age_rating, :age_rating_guide,
              # Ratings
@@ -34,10 +34,7 @@ class AnimeResource < BaseResource
              :episode_count, :episode_length
 
   has_many :castings
-
-  def genres
-    @model.genres.map(&:name).sort
-  end
+  has_many :genres
 
   filter :slug, apply: -> (records, value, _options) { records.by_slug(value) }
 
