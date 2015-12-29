@@ -45,7 +45,7 @@ class Anime < ActiveRecord::Base
   include Episodic
 
   has_many :library_entries, dependent: :destroy
-  has_many :streaming_links, dependent: :destroy
+  has_many :streaming_links, as: 'media', dependent: :destroy
 
   update_index('media#anime') { self }
 
