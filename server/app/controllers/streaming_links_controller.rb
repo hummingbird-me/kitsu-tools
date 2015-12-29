@@ -1,0 +1,1 @@
+class StreamingLinksController < ApplicationController; end

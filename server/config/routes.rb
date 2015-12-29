@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   jsonapi_resources :characters
   jsonapi_resources :castings
   jsonapi_resources :genres
+  jsonapi_resources :streamers
+  jsonapi_resources :streaming_links
 
   use_doorkeeper
 

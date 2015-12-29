@@ -35,6 +35,7 @@ class AnimeResource < BaseResource
 
   has_many :castings
   has_many :genres
+  has_many :streaming_links
 
   filter :slug, apply: -> (records, value, _options) { records.by_slug(value) }
 
@@ -48,6 +49,8 @@ class AnimeResource < BaseResource
     apply: -> (values, _ctx) {
       {match: {genres: {query: value.join(' '), operator: 'and'}}}
     }
+  query :streamers,
+    valid: -> (value, _ctx) { Streamer.find_by_name(value) }
   query :age_rating,
     valid: -> (values, _ctx) {
     },

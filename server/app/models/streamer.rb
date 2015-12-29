@@ -17,4 +17,8 @@ class Streamer < ActiveRecord::Base
   validates_attachment :logo, content_type: {
     content_type: %w[image/png]
   }
+
+  def self.find_by_name(name)
+    Streamer.where('lower(site_name) = ?', name.downcase).first
+  end
 end
