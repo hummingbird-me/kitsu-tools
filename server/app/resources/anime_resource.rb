@@ -40,7 +40,7 @@ class AnimeResource < BaseResource
   filter :slug, apply: -> (records, value, _options) { records.by_slug(value) }
 
   # ElasticSearch hookup
-  index AnimeIndex::Anime
+  index MediaIndex::Anime
   query :season, valid: -> (value, _ctx) { Anime::SEASONS.include?(value) }
   query :year, NUMERIC_QUERY
   query :average_rating, NUMERIC_QUERY

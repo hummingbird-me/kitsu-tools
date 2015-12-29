@@ -66,4 +66,13 @@ class Anime < ActiveRecord::Base
     end
     candidates
   end
+
+  def season
+    case start_date.try(:month)
+    when 12, 1, 2; :winter
+    when 3, 4, 5; :spring
+    when 6, 7, 8; :summer
+    when 9, 10, 11; :fall
+    end
+  end
 end
