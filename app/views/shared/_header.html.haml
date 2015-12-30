@@ -74,8 +74,8 @@
     - if not user_signed_in?
       .guest-banner.hide-for-small
         .large-12.columns
-          = link_to "Hummingbird is the easiest way to track, share and discover new anime. Create an Account - Free.", "/sign-up"
-          %span.guest-button= link_to "Request Invite", main_app.new_user_registration_path
+          = link_to "Hummingbird is the easiest way to track, share and discover new anime. Join now, for free!", "/sign-up"
+          %span.guest-button= link_to "Get Started", main_app.new_user_registration_path
 
     - if user_signed_in? and not current_user.confirmed?
       .guest-banner.hide-for-small
