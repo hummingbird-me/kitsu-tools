@@ -12,10 +12,10 @@ export default Controller.extend({
   user: alias('model'),
   currentSession: service(),
 
-  isViewingSelf: computed('currentSession.account', {
+  isViewingSelf: computed('user', 'currentSession.account', {
     get() {
-      const currentUser = get(this, 'currentSession.account');
-      return currentUser && get(currentUser, 'id') === get(this, 'user.id');
+      const user = get(this, 'user');
+      return get(this, 'currentSession').isCurrentUser(user);
     }
   })
 });

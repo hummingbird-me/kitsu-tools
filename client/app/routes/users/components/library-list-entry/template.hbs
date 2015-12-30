@@ -9,8 +9,13 @@
     </div>
     <div class="entry-right medium-5 columns">
       <div class="entry-progress">
-        {{one-way-input value=entry.episodesWatched update=(action (mut entry.episodesWatched))
-          placeholder="0"}}
+        {{#if isViewingSelf}}
+          {{one-way-input value=entry.episodesWatched update=(action (mut entry.episodesWatched))
+            placeholder="0"}}
+        {{else}}
+          <span>{{entry.episodesWatched}}</span>
+        {{/if}}
+
         <span><span class="sep">/</span> {{episodeCount}}</span>
       </div>
       <div class="entry-rating">
@@ -25,11 +30,14 @@
   {{#if isOpened}}
     <div class="library-dropdown">
       <div class="drop-arrow"></div>
-      <div class="small-12 columns">
-        {{one-way-input value=entry.notes update=(action (mut entry.notes))
-          placeholder=personalNote
-          class="personal-notes"}}
-      </div>
+      {{#if isViewingSelf}}
+        <div class="small-12 columns">
+          {{one-way-input value=entry.notes update=(action (mut entry.notes))
+            placeholder=personalNote
+            class="personal-notes"}}
+        </div>
+      {{/if}}
+
       <div class="medium-2 columns">
         <img class="drop-thumb" src={{media.posterImage}}>
       </div>
@@ -48,41 +56,48 @@
       </div>
       <div class="medium-4 columns">
         <div class="drop-options">
-          <div class="status-select">
-            {{! TODO: Implement dropdown }}
-            <button class="button" data-toggle="status-dropdown">
-              <span>{{status}}</span>
-            </button>
-          </div>
-          <div class="dropdown-rating">
-            {{! TODO: Implement dropdown }}
-            <button class="button" type="button" data-toggle="privacy-dropdown">Private</button>
-            {{! TODO: Implement rating component }}
-            <div class="rating-options">
-              <span class="icon-container" data-rating="1">
-                <i class="fa fa-star-o"></i>
-              </span>
-              <span class="icon-container" data-rating="2">
-                <i class="fa fa-star-o"></i>
-              </span>
-              <span class="icon-container" data-rating="3">
-                <i class="fa fa-star-o"></i>
-              </span>
-              <span class="icon-container" data-rating="4">
-                <i class="fa fa-star-o"></i>
-              </span>
-              <span class="icon-container" data-rating="5">
-                <i class="fa fa-star-o"></i>
-              </span>
+          {{#if isViewingSelf}}
+            <div class="status-select">
+              {{library-status-button entry=entry}}
             </div>
-          </div>
+            <div class="dropdown-rating">
+              {{! TODO: Implement dropdown }}
+              <button class="button" type="button" data-toggle="privacy-dropdown">Private</button>
+              {{! TODO: Implement rating component }}
+              <div class="rating-options">
+                <span class="icon-container" data-rating="1">
+                  <i class="fa fa-star-o"></i>
+                </span>
+                <span class="icon-container" data-rating="2">
+                  <i class="fa fa-star-o"></i>
+                </span>
+                <span class="icon-container" data-rating="3">
+                  <i class="fa fa-star-o"></i>
+                </span>
+                <span class="icon-container" data-rating="4">
+                  <i class="fa fa-star-o"></i>
+                </span>
+                <span class="icon-container" data-rating="5">
+                  <i class="fa fa-star-o"></i>
+                </span>
+              </div>
+            </div>
+          {{/if}}
+
           <div class="rewatch">
-            {{! TODO: How is this handled? }}
-            <button class="button" type="button" data-toggle="privacy-dropdown">Rewatch</button>
+            {{#if isViewingSelf}}
+              {{! TODO: How is this handled? }}
+              <button class="button" type="button" data-toggle="privacy-dropdown">Rewatch</button>
+            {{/if}}
+
             <label>
               <span>Rewatched</span>
-              {{one-way-input value=entry.rewatchCount update=(action (mut entry.rewatchCount))
-                placeholder="0"}}
+              {{#if isViewingSelf}}
+                {{one-way-input value=entry.rewatchCount update=(action (mut entry.rewatchCount))
+                  placeholder="0"}}
+              {{else}}
+                <span>{{entry.rewatchCount}}</span>
+              {{/if}}
               <span>times</span>
             </label>
           </div>

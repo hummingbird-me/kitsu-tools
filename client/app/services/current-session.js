@@ -35,5 +35,11 @@ export default Service.extend({
 
   clean() {
     set(this, 'userId', null);
+  },
+
+  isCurrentUser(user) {
+    const isAuthenticated = get(this, 'isAuthenticated');
+    const userId = get(this, 'userId');
+    return isAuthenticated && userId === get(user, 'id');
   }
 });

@@ -1,0 +1,17 @@
+{{! TODO: Button state when no entry associated }}
+{{#if entry}}
+  <button class="button" data-toggle="status-dropdown" data-test-selector="library-status-button">
+    <span>{{status}}</span>
+  </button>
+  <div class="dropdown-pane" id="status-dropdown" data-dropdown data-auto-focus="true">
+    <ul>
+      {{#each statuses as |status|}}
+        <li>
+          <a {{action 'updateStatus' status}}>
+            {{status}}
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+{{/if}}

@@ -1,29 +1,30 @@
 import Ember from 'ember';
-import libraryStatus from 'client/utils/library-status';
 
 const {
   Component,
   computed,
   computed: { alias },
-  get
+  get,
+  inject: { service }
 } = Ember;
 
 // TODO: Update rating to support different rating systems
-// TODO: Map type to text
 export default Component.extend({
   isOpened: false,
   media: alias('entry.anime'),
+  currentSession: service(),
+
+  isViewingSelf: computed('entry.user', 'currentSession.account', {
+    get() {
+      const user = get(this, 'entry.user');
+      return get(this, 'currentSession').isCurrentUser(user);
+    }
+  }),
 
   personalNote: computed('media.canonicalTitle', {
     get() {
       const title = get(this, 'media.canonicalTitle');
       return `Personal notes about ${title}`;
-    }
-  }),
-
-  status: computed('entry.status', {
-    get() {
-      return libraryStatus.enumToHuman(get(this, 'entry.status'));
     }
   }),
 
@@ -35,13 +36,15 @@ export default Component.extend({
 
   rating: computed('entry.rating', {
     get() {
-      return get(this, 'entry.rating') || '--';
+      return get(this, 'entry.rating') || '—';
     }
   }),
 
   type: computed('media.showType', {
     get() {
-      return get(this, 'media.showType');
+      const showTypes = ['TV', 'Special', 'ONA', 'OVA', 'Movie', 'Music'];
+      const showType = get(this, 'media.showType');
+      return showTypes[showType - 1];
     }
   }),
 

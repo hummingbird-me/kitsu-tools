@@ -34,7 +34,7 @@ export default Controller.extend({
     }
   }),
 
-  sections: computed('statuses', 'entries.[]', {
+  sections: computed('statuses', 'entries.@each.status', {
     get() {
       return get(this, 'statuses').map((status) => {
         const entries = get(this, 'entries')
@@ -44,7 +44,7 @@ export default Controller.extend({
     }
   }),
 
-  currentSection: computed('status', {
+  currentSection: computed('status', 'sections', {
     get() {
       const status = get(this, 'status');
       return get(this, 'sections')[status - 1];
