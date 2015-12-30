@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('anime', 'Unit | Model | anime', {
   // Specify the other units that are required for this test.
-  // needs: []
+  needs: ['model:genre']
 });
 
 test('it works', function(assert) {

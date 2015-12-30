@@ -42,7 +42,7 @@ export default Route.extend({
     const user = this.modelFor('users');
     const userId = get(user, 'id');
     return get(this, 'store').query('library-entry', {
-      include: media,
+      include: `${media}.genres`,
       filter: {
         // jscs:disable
         user_id: userId,
