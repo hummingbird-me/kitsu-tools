@@ -1,4 +1,41 @@
 namespace :importers do
+  namespace :hummingbird do
+    desc 'Download only anime posters'
+    task :posters, [:quantity] => [:environment] do |_t, args|
+      args.with_defaults(quantity: 72)
+      puts "\n\033[32m=> Checking anime posters\033[0m\n"
+      get_anime_image(args.quantity, :poster_image)
+    end
+
+    desc 'Download only anime covers'
+    task :covers, [:quantity] => [:environment] do |_t, args|
+      args.with_defaults(quantity: 72)
+      puts "\n\033[32m=> Checking anime covers\033[0m\n"
+      get_anime_image(args.quantity, :cover_image)
+    end
+
+    def get_anime_image(quantity, type = :poster_image)
+      Chewy.strategy(:bypass) do
+        Anime.order(user_count: :desc).limit(quantity).each do |anime|
+          path = anime.send(type).path
+          if path && File.exist?(path)
+            puts "#{anime.canonical_title} - \033[32mImage already downloaded\033[0m"
+            next
+          end
+
+          puts "#{anime.canonical_title} - \033[31mNo image found, downloading…\033[0m"
+
+          remote_url = open(
+            "https://hummingbird.me/full_anime/#{anime.slug}.json"
+          ).read
+          remote_anime = JSON.parse(remote_url)['full_anime']
+
+          anime.update_attributes(type => remote_anime[type.to_s])
+        end
+      end
+    end
+  end
+
   desc 'Import the bcmoe.json file from disk or (by default) off because.moe'
   task :bcmoe, [:filename] => [:environment] do |t, args|
     # Load the JSON
