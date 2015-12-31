@@ -11,11 +11,13 @@ class LibraryEntryPolicy < ApplicationPolicy
   end
 
   def create?
-    return false unless user
-    record.user == user || user.has_role?(:admin)
+    !user.nil?
   end
-  alias_method :update?, :create?
-  alias_method :destroy?, :create?
+
+  def update?
+    record.user == user || is_admin?
+  end
+  alias_method :destroy?, :update?
 
   class Scope < Scope
     def resolve

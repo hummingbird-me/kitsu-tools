@@ -3,10 +3,14 @@ import CanonicalUrlRedirect from 'client/mixins/canonical-url-redirect';
 
 const {
   Route,
-  get
+  get,
+  set,
+  inject: { service }
 } = Ember;
 
 export default Route.extend(CanonicalUrlRedirect, {
+  currentSession: service(),
+
   model(params) {
     const { slug } = params;
     if (slug.match(/\D+/)) {
@@ -14,6 +18,30 @@ export default Route.extend(CanonicalUrlRedirect, {
         .then((records) => get(records, 'firstObject'));
     } else {
       return get(this, 'store').findRecord('anime', slug);
+    }
+  },
+
+  setupController(controller, model) {
+    this._super(...arguments);
+    // Grab the library entry for this user & anime
+    if (get(this, 'currentSession.isAuthenticated') === true) {
+      const userId = get(this, 'currentSession.account.id');
+      const animeId = get(model, 'id');
+      set(controller, 'isLoadingEntry', true);
+      get(this, 'store').query('library-entry', {
+        filter: {
+          // jscs:disable
+          user_id: userId,
+          anime_id: animeId
+          // jscs:enable
+        }
+      }).then((records) => {
+        const record = get(records, 'firstObject');
+        if (record !== undefined) {
+          set(controller, 'entry', record);
+        }
+        set(controller, 'isLoadingEntry', false);
+      });
     }
   },
 

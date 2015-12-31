@@ -1,2 +1,9 @@
 <h1>Anime Page</h1>
 <h2 data-test-selector="title">{{model.canonicalTitle}}</h2>
+
+{{#if currentSession.isAuthenticated}}
+  {{library-status-button
+    anime=anime
+    entry=entry
+    isLoading=isLoadingEntry}}
+{{/if}}

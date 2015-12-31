@@ -1,9 +1,19 @@
-{{! TODO: Button state when no entry associated }}
-{{#if entry}}
-  <button class="button" data-toggle="status-dropdown" data-test-selector="library-status-button">
-    <span>{{status}}</span>
-  </button>
-  <div class="dropdown-pane" id="status-dropdown" data-dropdown data-auto-focus="true">
+<button class="button" data-toggle="status-dropdown" data-test-selector="library-status-button-entry">
+  <span>
+    {{#if entry}}
+      {{status}}
+    {{else}}
+      {{#if isLoading}}
+        {{fa-icon icon="spinner" spin=true}}
+      {{else}}
+        Add to Library
+      {{/if}}
+    {{/if}}
+  </span>
+</button>
+
+{{#unless isLoading}}
+  <div class="dropdown-pane" id="status-dropdown" data-dropdown>
     <ul>
       {{#each statuses as |status|}}
         <li>
@@ -14,4 +24,4 @@
       {{/each}}
     </ul>
   </div>
-{{/if}}
+{{/unless}}

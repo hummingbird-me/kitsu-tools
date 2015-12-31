@@ -6,12 +6,8 @@ moduleForComponent('library-status-button', 'Integration | Component | library-s
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
+  assert.expect(1);
   this.render(hbs`{{library-status-button}}`);
-  let $el = this.$('[data-test-selector="library-status-button"]');
-  assert.equal($el.length, 0);
-
-  this.render(hbs`{{library-status-button entry=1}}`);
-  $el = this.$('[data-test-selector="library-status-button"]');
+  const $el = this.$('[data-test-selector="library-status-button-entry"]');
   assert.equal($el.length, 1);
 });

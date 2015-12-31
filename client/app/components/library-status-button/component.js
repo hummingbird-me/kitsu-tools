@@ -11,10 +11,15 @@ const {
   inject: { service }
 } = Ember;
 
+// TODO: Give feedback to the user (Toast?)
 export default Component.extend({
   entry: undefined,
+  anime: undefined,
+  isLoading: false,
 
   ajax: service(),
+  store: service(),
+  currentSession: service(),
 
   status: computed('entry.status', {
     get() {
@@ -22,31 +27,53 @@ export default Component.extend({
     }
   }),
 
-  statuses: computed('status', {
+  statuses: computed('entry', 'status', {
     get() {
       const statuses = [...libraryStatus.getHumanStatuses()];
-      const status = get(this, 'status');
-      statuses.splice(statuses.indexOf(status), 1);
-      return statuses.concat([REMOVE_KEY]);
+      if (get(this, 'entry') === undefined) {
+        return statuses;
+      } else {
+        const status = get(this, 'status');
+        statuses.splice(statuses.indexOf(status), 1);
+        return statuses.concat([REMOVE_KEY]);
+      }
     }
   }),
 
-  didInsertElement() {
+  didRender() {
     run.scheduleOnce('afterRender', this, () => {
-      this.$(document).foundation();
+      this.$().foundation();
+    });
+  },
+
+  _addToLibrary(status) {
+    const user = get(this, 'currentSession.account');
+    const anime = get(this, 'anime');
+    const entry = get(this, 'store').createRecord('library-entry', {
+      user,
+      anime,
+      status: libraryStatus.humanToEnum(status)
+    });
+    entry.save().then(() => {
+      set(this, 'entry', entry);
     });
   },
 
   actions: {
-    // TODO: Give feedback to the user (Toast?)
     updateStatus(status) {
       const entry = get(this, 'entry');
-      if (status === REMOVE_KEY) {
-        entry.destroyRecord();
+      if (entry === undefined && get(this, 'isLoading') === false) {
+        this._addToLibrary(status);
       } else {
-        status = libraryStatus.humanToEnum(status);
-        set(entry, 'status', status);
-        entry.save();
+        if (status === REMOVE_KEY) {
+          // TODO: Don't confirm yet, give user option to undo via toast/feedback
+          entry.destroyRecord().then(() => {
+            set(this, 'entry', undefined);
+          });
+        } else {
+          set(entry, 'status', libraryStatus.humanToEnum(status));
+          entry.save();
+        }
       }
     }
   }

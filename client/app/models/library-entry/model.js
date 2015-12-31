@@ -7,7 +7,6 @@ const {
 } = DS;
 
 export default Model.extend({
-  anime: belongsTo('anime'),
   episodesWatched: attr('number'),
   notes: attr('string'),
   private: attr('boolean'),
@@ -16,5 +15,7 @@ export default Model.extend({
   rewatching: attr('boolean'),
   status: attr('string'),
   updatedAt: attr('date'),
+
+  anime: belongsTo('anime'),
   user: belongsTo('user')
 });

@@ -1,14 +1,17 @@
 import { moduleFor, test } from 'ember-qunit';
 import Ember from 'ember';
-import User from 'client/models/user/model';
+import DS from 'ember-data';
 import setupStore from 'client/tests/helpers/setup-store';
 
 const { run } = Ember;
+const { Model, attr } = DS;
 
 moduleFor('service:current-session', 'Unit | Service | current session', {
   beforeEach() {
     this.store = setupStore({
-      user: User
+      user: Model.extend({
+        name: attr('string')
+      })
     });
   },
 
@@ -36,7 +39,7 @@ test('#account peeks userId and returns correct data', function(assert) {
   assert.equal(service.get('account.name'), 'Holo');
 });
 
-test('#account returs null if userId doesn\'t exist', function(assert) {
+test('#account returns null if userId doesn\'t exist', function(assert) {
   const service = this.subject();
   assert.equal(service.get('account'), null);
 });
