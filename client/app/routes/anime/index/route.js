@@ -7,7 +7,9 @@ const {
 
 export default Route.extend({
   queryParams: {
-    text: { refreshModel: true }
+    text: { refreshModel: true, replaceState: true },
+    year: { refreshModel: true, replaceState: true },
+    averageRating: { refreshModel: true, replaceState: true }
   },
 
   model(params) {

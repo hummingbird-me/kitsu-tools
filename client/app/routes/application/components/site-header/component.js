@@ -8,7 +8,7 @@ const {
 export default Component.extend({
   didInsertElement() {
     run.scheduleOnce('afterRender', this, () => {
-      this.$(document).foundation();
+      this.$().foundation();
     });
   }
 });

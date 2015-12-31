@@ -7,21 +7,18 @@
           <div class="filter-widget">
             <div class="filter-header">
               <label class="filter-title">Year</label>
-              <span class="filter-values">1914 - 2015</span>
+              <span class="filter-values">{{years.[0]}} - {{years.[1]}}</span>
             </div>
-            <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
-              <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-              <span class="slider-fill" data-slider-fill></span>
-              <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-              <input type="hidden">
-              <input type="hidden">
-            </div>
+            {{foundation-slider start=1914 end=2016
+                                initialStart=years.[0] initialEnd=years.[1]
+                                doubleSided=true decimal=0
+                                update=(action 'changeYear')}}
             <div class="filter-legend">
               <div class="low-value">
                 1914
               </div>
               <div class="high-value">
-                2015
+                2016
               </div>
             </div>
             <button class="expanded dropdown button" data-toggle="timeframe-dropdown">Using slider</button>
@@ -36,15 +33,12 @@
            <div class="filter-widget">
             <div class="filter-header">
               <label class="filter-title">Avg. Score</label>
-              <span class="filter-values">.5 - 5</span>
+              <span class="filter-values">{{ratings.[0]}} - {{ratings.[1]}}</span>
             </div>
-            <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
-              <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-              <span class="slider-fill" data-slider-fill></span>
-              <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-              <input type="hidden">
-              <input type="hidden">
-            </div>
+            {{foundation-slider start=0.5 end=5.0 step=0.5
+                                initialStart=ratings.[0] initialEnd=ratings.[1]
+                                doubleSided=true decimal=1
+                                update=(action 'changeRating')}}
             <div class="filter-legend">
               <div class="low-value">
                 <i class="fa fa-star-half-o"></i>
@@ -218,5 +212,3 @@
 
   </div>
 </div>
-
-<script>$(document).foundation()</script>
