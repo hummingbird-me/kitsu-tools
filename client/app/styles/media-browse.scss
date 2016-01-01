@@ -13,6 +13,9 @@
   -moz-box-orient: horizontal;
   -ms-box-orient: horizontal;
   box-orient: horizontal;
+  .row {
+    width: 100%;
+  }
   .filter-options {
     background-color: $blueGrey;
     position: absolute;
@@ -55,7 +58,8 @@
       padding-left: 6px;
       padding-right: 6px;
       margin-bottom: 15px;
-      width: 190px;
+      width: 20%;
+      min-width: 170px;
       position: relative;
       img {
         border-radius: 2px;

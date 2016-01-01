@@ -6,6 +6,7 @@
 @import 'global'; // General CSS styles
 @import 'library'; // User library page
 @import 'media-browse'; // Browse anime, manga, drama, etc
+@import 'noui';
 
 // This includes all foundation components.
 @include foundation-everything;
