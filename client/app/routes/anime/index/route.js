@@ -9,7 +9,9 @@ export default Route.extend({
   queryParams: {
     text: { refreshModel: true, replaceState: true },
     year: { refreshModel: true, replaceState: true },
-    averageRating: { refreshModel: true, replaceState: true }
+    averageRating: { refreshModel: true, replaceState: true },
+    streamers: { refreshModel: true, replaceState: true },
+    ageRating: { refreshModel: true, replaceState: true },
   },
 
   model(params) {
@@ -17,7 +19,8 @@ export default Route.extend({
       page: {
         offset: 0,
         limit: 20
-      }
+      },
+      sort: '-user_count'
     };
     const filters = this._buildFilters(params);
     // TODO: Includes

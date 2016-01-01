@@ -61,11 +61,12 @@
             </div>
             <div class="box-select">
               <ul>
-                <li class="active"><span class="netflix"></span></li>
-                <li class="active"><span class="hulu"></span></li>
-                <li class="active"><span class="crunchyroll"></span></li>
-                <li><span class="funimation"></span></li>
-                <li><span class="daisuki"></span></li>
+                {{#each-in streamersList as |streamer enabled|}}
+                  <li class="{{if enabled 'active'}}"
+                      {{action 'toggleStreamer' streamer}}>
+                    <span class="{{streamer}}"></span>
+                  </li>
+                {{/each-in}}
                 {{!-- <li><span class="animax"></span></li>
                 <li><span class="animelab"></span></li>
                 <li><span class="hanabee"></span></li>
@@ -112,11 +113,13 @@
             </div>
             <div class="rating-select">
               <ul>
-                <li class="active">All</li>
-                <li>G</li>
-                <li>PG</li>
-                <li>R</li>
-                <li>R18+</li>
+                {{#each-in ageRatingsList as |rating enabled|}}
+                  <li class="{{if enabled 'active'}}"
+                      {{action 'toggleAgeRating' rating}}>
+                    {{rating}}
+                  </li>
+                {{/each-in}}
+                {{!-- <li class="active">All</li> --}}
               </ul>
             </div>
           </div>
@@ -165,7 +168,7 @@
             {{! TODO: Componentize }}
             <div class="poster-wrapper">
               <div class="grid-poster">
-                <img src={{anime.posterImage}}>
+                <img src="http://localhost:3000{{anime.posterImage}}">
                 <div class="poster-overlay">
                   <div class="shared-friends">
                     <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
