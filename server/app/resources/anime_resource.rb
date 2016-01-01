@@ -45,6 +45,7 @@ class AnimeResource < BaseResource
   query :year, NUMERIC_QUERY
   query :average_rating, NUMERIC_QUERY
   query :user_count, NUMERIC_QUERY
+  query :episode_count, NUMERIC_QUERY
   query :genres,
     apply: -> (values, _ctx) {
       {match: {genres: {query: values.join(' '), operator: 'and'}}}
