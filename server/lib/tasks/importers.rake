@@ -3,35 +3,44 @@ namespace :importers do
     desc 'Download only anime posters'
     task :posters, [:quantity] => [:environment] do |_t, args|
       args.with_defaults(quantity: 72)
-      puts "\n\033[32m=> Checking anime posters\033[0m\n"
+      puts "\n\033[32m=> Grabbing anime posters\033[0m\n"
       get_anime_image(args.quantity, :poster_image)
     end
 
     desc 'Download only anime covers'
     task :covers, [:quantity] => [:environment] do |_t, args|
       args.with_defaults(quantity: 72)
-      puts "\n\033[32m=> Checking anime covers\033[0m\n"
+      puts "\n\033[32m=> Grabbing anime covers\033[0m\n"
       get_anime_image(args.quantity, :cover_image)
     end
 
     def get_anime_image(quantity, type = :poster_image)
+      require 'data_import/hummingbird'
+
       Chewy.strategy(:bypass) do
-        Anime.order(user_count: :desc).limit(quantity).each do |anime|
-          path = anime.send(type).path
-          if path && File.exist?(path)
-            puts "#{anime.canonical_title} - \033[32mImage already downloaded\033[0m"
-            next
+        puts 'Getting unimported list...'
+        ids = Anime.find_each.reject do |a|
+          path = a.send(type).path; path && File.exist?(path)
+        end.map(&:id)
+        puts "Found #{ids.count}! Prioritizing popular series and limiting..."
+        ids = Anime.where(id: ids).order(user_count: :desc).limit(quantity).pluck(:id)
+        puts "Importing #{ids.count}!"
+        GC.start
+
+        puts 'Downloading files...'
+        data = DataImport::Hummingbird.new(host: 'https://hummingbird.me')
+        i = 0
+        data.download_posters(ids) do |a, poster|
+          i += 1
+          anime = Anime.find(a['id'])
+          if anime.update_attributes(type => poster)
+            puts "\033[32m#{i}: #{anime.canonical_title}: Saved\033[0m"
+          else
+            puts "\033[31m#{i}: #{anime.canonical_title}: Failed to save\033[0m"
           end
-
-          puts "#{anime.canonical_title} - \033[31mNo image found, downloading…\033[0m"
-
-          remote_url = open(
-            "https://hummingbird.me/full_anime/#{anime.slug}.json"
-          ).read
-          remote_anime = JSON.parse(remote_url)['full_anime']
-
-          anime.update_attributes(type => remote_anime[type.to_s])
+          poster.close
         end
+        data.run
       end
     end
   end

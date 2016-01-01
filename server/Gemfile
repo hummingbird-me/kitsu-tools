@@ -40,6 +40,7 @@ gem 'twemoji', github: 'vevix/twemoji'
 # Miscellaneous Utilities
 gem 'friendly_id' # slug-urls-are-cool
 gem 'nokogiri' # Parse MAL XML shit
+gem 'typhoeus' # Parallelize scraping tasks
 gem 'jsonapi-resources' # JSON-API resources
 gem 'paranoia', '~> 2.0'
 gem 'counter_culture'
