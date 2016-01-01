@@ -1,191 +1,189 @@
 <style>.global-footer {display: none;}</style>
 <div class="media-browse">
-  <div class="row align-stretch">
-    <div class="media-grid columns">
-      <div class="filter-options">
-        <div class="filter-wrapper">
-          <!-- Date Range Filter -->
-          <div class="filter-widget">
-            <div class="filter-header">
-              <label class="filter-title">Year</label>
-              <span class="filter-values">{{years.[0]}} - {{years.[1]}}</span>
+  <div class="media-grid columns">
+    <div class="filter-options">
+      <div class="filter-wrapper">
+        <!-- Date Range Filter -->
+        <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">Year</label>
+            <span class="filter-values">{{years.[0]}} - {{years.[1]}}</span>
+          </div>
+          {{foundation-slider start=1914 end=2016
+                              initialStart=years.[0] initialEnd=years.[1]
+                              doubleSided=true decimal=0
+                              update=(action 'changeYear')}}
+          <div class="filter-legend">
+            <div class="low-value">
+              1914
             </div>
-            {{foundation-slider start=1914 end=2016
-                                initialStart=years.[0] initialEnd=years.[1]
-                                doubleSided=true decimal=0
-                                update=(action 'changeYear')}}
-            <div class="filter-legend">
-              <div class="low-value">
-                1914
-              </div>
-              <div class="high-value">
-                2016
-              </div>
-            </div>
-            <button class="expanded dropdown button" data-toggle="timeframe-dropdown">Using slider</button>
-            <div class="dropdown-pane" id="timeframe-dropdown" data-dropdown data-auto-focus="true">
-              <ul>
-                <li><a href="#">Test</a></li>
-              </ul>
+            <div class="high-value">
+              2016
             </div>
           </div>
-
-          <!-- Rating Filter -->
-           <div class="filter-widget">
-            <div class="filter-header">
-              <label class="filter-title">Avg. Score</label>
-              <span class="filter-values">{{ratings.[0]}} - {{ratings.[1]}}</span>
-            </div>
-            {{foundation-slider start=0.5 end=5.0 step=0.5
-                                initialStart=ratings.[0] initialEnd=ratings.[1]
-                                doubleSided=true decimal=1
-                                update=(action 'changeRating')}}
-            <div class="filter-legend">
-              <div class="low-value">
-                <i class="fa fa-star-half-o"></i>
-              </div>
-              <div class="high-value">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-              </div>
-            </div>
+          <button class="expanded dropdown button" data-toggle="timeframe-dropdown">Using slider</button>
+          <div class="dropdown-pane" id="timeframe-dropdown" data-dropdown data-auto-focus="true">
+            <ul>
+              <li><a href="#">Test</a></li>
+            </ul>
           </div>
+        </div>
 
-          <!-- Where to Watch Filter -->
-           <div class="filter-widget">
-            <div class="filter-header">
-              <label class="filter-title">Streaming (U.S.)</label>
-              <span class="filter-values">3</span>
-            </div>
-            <div class="box-select">
-              <ul>
-                {{#each-in streamersList as |streamer enabled|}}
-                  <li class="{{if enabled 'active'}}"
-                      {{action 'toggleStreamer' streamer}}>
-                    <span class="{{streamer}}"></span>
-                  </li>
-                {{/each-in}}
-                {{!-- <li><span class="animax"></span></li>
-                <li><span class="animelab"></span></li>
-                <li><span class="hanabee"></span></li>
-                <li><span class="animenetwork"></span></li>
-                <li><span class="viewster"></span></li> --}}
-              </ul>
-            </div>
-            <div class="language-select">
-              <input id="subbed" type="checkbox" checked="checked"><label for="subbed">Subbed</label>
-              <input id="dubbed" type="checkbox" checked="checked"><label for="dubbed">Dubbed</label>
-            </div>
+        <!-- Rating Filter -->
+         <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">Avg. Score</label>
+            <span class="filter-values">{{ratings.[0]}} - {{ratings.[1]}}</span>
           </div>
-
-
-          <!-- Episode Filter -->
-           <div class="filter-widget">
-            <div class="filter-header">
-              <label class="filter-title">Episodes</label>
-              <span class="filter-values">1 - ∞</span>
+          {{foundation-slider start=0.5 end=5.0 step=0.5
+                              initialStart=ratings.[0] initialEnd=ratings.[1]
+                              doubleSided=true decimal=1
+                              update=(action 'changeRating')}}
+          <div class="filter-legend">
+            <div class="low-value">
+              <i class="fa fa-star-half-o"></i>
             </div>
-            <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
-              <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-              <span class="slider-fill" data-slider-fill></span>
-              <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-              <input type="hidden">
-              <input type="hidden">
-            </div>
-            <div class="filter-legend">
-              <div class="low-value">
-                1
-              </div>
-              <div class="high-value">
-                ∞
-              </div>
-            </div>
-          </div>
-
-
-          <!-- Rating Filter -->
-           <div class="filter-widget">
-            <div class="filter-header">
-              <label class="filter-title">Rating</label>
-              <span class="filter-values">1 - ∞</span>
-            </div>
-            <div class="rating-select">
-              <ul>
-                {{#each-in ageRatingsList as |rating enabled|}}
-                  <li class="{{if enabled 'active'}}"
-                      {{action 'toggleAgeRating' rating}}>
-                    {{rating}}
-                  </li>
-                {{/each-in}}
-                {{!-- <li class="active">All</li> --}}
-              </ul>
-            </div>
-          </div>
-
-
-
-          <!-- Categories Filter -->
-           <div class="filter-widget">
-            <div class="filter-header">
-              <label class="filter-title">Categories</label>
-              <span class="filter-values">23</span>
-            </div>
-            <div class="category-select">
-              <ul>
-                <li class="active"><a href="#">All</a></li>
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Anime Influenced</a></li>
-                <li><a href="#">Comedy</a></li>
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Anime Influenced</a></li>
-                <li><a href="#">Comedy</a></li>
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Anime Influenced</a></li>
-                <li><a href="#">Comedy</a></li>
-              </ul>
+            <div class="high-value">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
             </div>
           </div>
         </div>
-      </div>
+
+        <!-- Where to Watch Filter -->
+         <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">Streaming (U.S.)</label>
+            <span class="filter-values">3</span>
+          </div>
+          <div class="box-select">
+            <ul>
+              {{#each-in streamersList as |streamer enabled|}}
+                <li class="{{if enabled 'active'}}"
+                    {{action 'toggleStreamer' streamer}}>
+                  <span class="{{streamer}}"></span>
+                </li>
+              {{/each-in}}
+              {{!-- <li><span class="animax"></span></li>
+              <li><span class="animelab"></span></li>
+              <li><span class="hanabee"></span></li>
+              <li><span class="animenetwork"></span></li>
+              <li><span class="viewster"></span></li> --}}
+            </ul>
+          </div>
+          <div class="language-select">
+            <input id="subbed" type="checkbox" checked="checked"><label for="subbed">Subbed</label>
+            <input id="dubbed" type="checkbox" checked="checked"><label for="dubbed">Dubbed</label>
+          </div>
+        </div>
 
 
-      <div class="search-media">
-        <i class="fa fa-search"></i>
-        {{one-way-input
-          type=search
-          value=text
-          update=(action 'filterText')
-          placeholder="Search by title, director, studio or voice actor"}}
+        <!-- Episode Filter -->
+         <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">Episodes</label>
+            <span class="filter-values">1 - ∞</span>
+          </div>
+          <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <span class="slider-fill" data-slider-fill></span>
+            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
+            <input type="hidden">
+            <input type="hidden">
+          </div>
+          <div class="filter-legend">
+            <div class="low-value">
+              1
+            </div>
+            <div class="high-value">
+              ∞
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Rating Filter -->
+         <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">Rating</label>
+            <span class="filter-values">1 - ∞</span>
+          </div>
+          <div class="rating-select">
+            <ul>
+              {{#each-in ageRatingsList as |rating enabled|}}
+                <li class="{{if enabled 'active'}}"
+                    {{action 'toggleAgeRating' rating}}>
+                  {{rating}}
+                </li>
+              {{/each-in}}
+              {{!-- <li class="active">All</li> --}}
+            </ul>
+          </div>
+        </div>
+
+
+
+        <!-- Categories Filter -->
+         <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">Categories</label>
+            <span class="filter-values">23</span>
+          </div>
+          <div class="category-select">
+            <ul>
+              <li class="active"><a href="#">All</a></li>
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Adventure</a></li>
+              <li><a href="#">Anime Influenced</a></li>
+              <li><a href="#">Comedy</a></li>
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Adventure</a></li>
+              <li><a href="#">Anime Influenced</a></li>
+              <li><a href="#">Comedy</a></li>
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Adventure</a></li>
+              <li><a href="#">Anime Influenced</a></li>
+              <li><a href="#">Comedy</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="media-posters">
-        <div class="row">
-          {{#each media as |anime|}}
-            {{! TODO: Componentize }}
-            <div class="poster-wrapper">
-              <div class="grid-poster">
-                <img src="http://localhost:3000{{anime.posterImage}}">
-                <div class="poster-overlay">
-                  <div class="shared-friends">
-                    <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
-                    <a href="#" class="friend-count">03</a>
-                  </div>
-                  <div class="trailer">
-                    <a data-open="media-trailer"><i class="fa fa-play"></i></a>
-                  </div>
+    </div>
+
+
+    <div class="search-media">
+      <i class="fa fa-search"></i>
+      {{one-way-input
+        type=search
+        value=text
+        update=(action 'filterText')
+        placeholder="Search by title, director, studio or voice actor"}}
+    </div>
+    <div class="media-posters">
+      <div class="row">
+        {{#each media as |anime|}}
+          {{! TODO: Componentize }}
+          <div class="poster-wrapper">
+            <div class="grid-poster">
+              <img src="http://localhost:3000{{anime.posterImage}}">
+              <div class="poster-overlay">
+                <div class="shared-friends">
+                  <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
+                  <a href="#" class="friend-count">03</a>
+                </div>
+                <div class="trailer">
+                  <a data-open="media-trailer"><i class="fa fa-play"></i></a>
                 </div>
               </div>
-              <div class="ellipsis">
-                <a href="#" class="media-title">{{anime.canonicalTitle}}</a>
-              </div>
             </div>
-          {{/each}}
-        </div>
+            <div class="ellipsis">
+              <a href="#" class="media-title">{{anime.canonicalTitle}}</a>
+            </div>
+          </div>
+        {{/each}}
       </div>
     </div>
   </div>
@@ -216,3 +214,16 @@
 
   </div>
 </div>
+
+<script>
+  $(document).scroll(function(){
+    if ($(document).scrollTop() >= 51) {
+      $('.filter-options').addClass('scrolled');
+      $('.search-media').addClass('scrolled');     
+    }
+    else { 
+      $('.filter-options').removeClass('scrolled');
+      $('.search-media').removeClass('scrolled'); 
+    }
+  });
+</script>
