@@ -59,21 +59,11 @@
             <label class="filter-title">Streaming (U.S.)</label>
             <span class="filter-values">3</span>
           </div>
-          <div class="box-select">
-            <ul>
-              {{#each-in streamersList as |streamer enabled|}}
-                <li class="{{if enabled 'active'}}"
-                    {{action 'toggleStreamer' streamer}}>
-                  <span class="{{streamer}}"></span>
-                </li>
-              {{/each-in}}
-              {{!-- <li><span class="animax"></span></li>
-              <li><span class="animelab"></span></li>
-              <li><span class="hanabee"></span></li>
-              <li><span class="animenetwork"></span></li>
-              <li><span class="viewster"></span></li> --}}
-            </ul>
-          </div>
+          {{box-select class="box-select"
+                       choices=availableStreamers
+                       test=streamers
+                       chosen=streamersArray
+                       onSet=(action 'setStreamers')}}
           <div class="language-select">
             <input id="subbed" type="checkbox" checked="checked"><label for="subbed">Subbed</label>
             <input id="dubbed" type="checkbox" checked="checked"><label for="dubbed">Dubbed</label>
@@ -87,13 +77,11 @@
             <label class="filter-title">Episodes</label>
             <span class="filter-values">1 - ∞</span>
           </div>
-          <div class="slider" data-slider data-initial-start="25" data-initial-end="75">
-            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-            <span class="slider-fill" data-slider-fill></span>
-            <span class="slider-handle" data-slider-handle role="slider" tabindex="1"></span>
-            <input type="hidden">
-            <input type="hidden">
-          </div>
+          {{foundation-slider start=1 end=5000 step=1
+                              initialStart=episodeCountArray.[0]
+                              initialEnd=episodeCountArray.[1]
+                              doubleSided=true decimal=0
+                              update=(action 'setRange' 'episodeCount')}}
           <div class="filter-legend">
             <div class="low-value">
               1
@@ -111,17 +99,10 @@
             <label class="filter-title">Rating</label>
             <span class="filter-values">1 - ∞</span>
           </div>
-          <div class="rating-select">
-            <ul>
-              {{#each-in ageRatingsList as |rating enabled|}}
-                <li class="{{if enabled 'active'}}"
-                    {{action 'toggleAgeRating' rating}}>
-                  {{rating}}
-                </li>
-              {{/each-in}}
-              {{!-- <li class="active">All</li> --}}
-            </ul>
-          </div>
+          {{box-select class="rating-select"
+                       choices=availableAgeRatings
+                       chosen=ageRatingsArray
+                       onSet=(action 'setAgeRatings')}}
         </div>
 
 

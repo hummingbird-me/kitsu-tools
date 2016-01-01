@@ -12,6 +12,7 @@ export default Route.extend({
     averageRating: { refreshModel: true, replaceState: true },
     streamers: { refreshModel: true, replaceState: true },
     ageRating: { refreshModel: true, replaceState: true },
+    episodeCount: { refreshModel: true, replaceState: true }
   },
 
   model(params) {
