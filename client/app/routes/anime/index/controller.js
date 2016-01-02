@@ -13,7 +13,8 @@ const DEBOUNCE = 200; // milliseconds
 
 export default Controller.extend({
   queryParams: [
-    'text', 'year', 'averageRating', 'streamers', 'ageRating', 'episodeCount'
+    'text', 'year', 'averageRating', 'streamers', 'ageRating', 'episodeCount',
+    'genres'
   ],
   text: undefined,
   year: '1914..2016',
@@ -21,6 +22,7 @@ export default Controller.extend({
   episodeCount: '1..500',
   streamers: 'netflix,hulu,crunchyroll',
   ageRating: 'G,PG',
+  genres: '',
 
   availableStreamers: [
     {key: 'netflix', icon: 'netflix'},
@@ -34,6 +36,48 @@ export default Controller.extend({
     {key: 'PG', label: 'PG'},
     {key: 'R', label: 'R'},
     {key: 'R18', label: 'R18'}
+  ],
+  availableGenres: [
+    {key: "Action", linkLabel: "Action"},
+    {key: "Adventure", linkLabel: "Adventure"},
+    {key: "Comedy", linkLabel: "Comedy"},
+    {key: "Drama", linkLabel: "Drama"},
+    {key: "Sci-Fi", linkLabel: "Sci-Fi"},
+    {key: "Space", linkLabel: "Space"},
+    {key: "Mystery", linkLabel: "Mystery"},
+    {key: "Magic", linkLabel: "Magic"},
+    {key: "Supernatural", linkLabel: "Supernatural"},
+    {key: "Police", linkLabel: "Police"},
+    {key: "Fantasy", linkLabel: "Fantasy"},
+    {key: "Sports", linkLabel: "Sports"},
+    {key: "Romance", linkLabel: "Romance"},
+    {key: "Slice of Life", linkLabel: "Slice of Life"},
+    {key: "Cars", linkLabel: "Cars"},
+    {key: "Horror", linkLabel: "Horror"},
+    {key: "Psychological", linkLabel: "Psychological"},
+    {key: "Thriller", linkLabel: "Thriller"},
+    {key: "Martial Arts", linkLabel: "Martial Arts"},
+    {key: "Super Power", linkLabel: "Super Power"},
+    {key: "School", linkLabel: "School"},
+    {key: "Ecchi", linkLabel: "Ecchi"},
+    {key: "Vampire", linkLabel: "Vampire"},
+    {key: "Historical", linkLabel: "Historical"},
+    {key: "Military", linkLabel: "Military"},
+    {key: "Dementia", linkLabel: "Dementia"},
+    {key: "Mecha", linkLabel: "Mecha"},
+    {key: "Demons", linkLabel: "Demons"},
+    {key: "Samurai", linkLabel: "Samurai"},
+    {key: "Harem", linkLabel: "Harem"},
+    {key: "Music", linkLabel: "Music"},
+    {key: "Parody", linkLabel: "Parody"},
+    {key: "Shoujo Ai", linkLabel: "Shoujo Ai"},
+    {key: "Game", linkLabel: "Game"},
+    {key: "Shounen Ai", linkLabel: "Shounen Ai"},
+    {key: "Kids", linkLabel: "Kids"},
+    {key: "Hentai", linkLabel: "Hentai"},
+    {key: "Yuri", linkLabel: "Yuri"},
+    {key: "Yaoi", linkLabel: "Yaoi"},
+    {key: "Anime Influenced", linkLabel: "Anime Influenced"}
   ],
 
   years: computed('year', function () {
@@ -50,6 +94,9 @@ export default Controller.extend({
   }),
   streamersArray: computed('streamers', function () {
     return get(this, 'streamers').split(',');
+  }),
+  genresArray: computed('genres', function () {
+    return get(this, 'genres').split(',');
   }),
 
   media: alias('model'),

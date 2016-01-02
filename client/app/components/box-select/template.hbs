@@ -2,6 +2,9 @@
   {{#each choiceList as |choice|}}
     <li class={{if choice.selected 'active'}} {{action 'toggle' choice}}>
       {{choice.label}}
+      {{#if choice.linkLabel}}
+        <a href="#">{{choice.linkLabel}}</a>
+      {{/if}}
       {{#if choice.icon}}
         <span class={{choice.icon}}></span>
       {{/if}}

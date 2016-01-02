@@ -116,23 +116,10 @@
             <label class="filter-title">Categories</label>
             <span class="filter-values">23</span>
           </div>
-          <div class="category-select">
-            <ul>
-              <li class="active"><a href="#">All</a></li>
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Adventure</a></li>
-              <li><a href="#">Anime Influenced</a></li>
-              <li><a href="#">Comedy</a></li>
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Adventure</a></li>
-              <li><a href="#">Anime Influenced</a></li>
-              <li><a href="#">Comedy</a></li>
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Adventure</a></li>
-              <li><a href="#">Anime Influenced</a></li>
-              <li><a href="#">Comedy</a></li>
-            </ul>
-          </div>
+          {{box-select class="category-select"
+                       choices=availableGenres
+                       chosen=genresArray
+                       onSet=(action 'setArray' 'genres')}}
         </div>
       </div>
     </div>
