@@ -59,23 +59,15 @@ export default Controller.extend({
       // TODO: Debounce?
       set(this, 'text', query);
     },
-    changeYear(values) {
-      set(this, 'year', values.join('..'));
-    },
-    changeRating(values) {
-      set(this, 'averageRating', values.join('..'));
-    },
-    setEpisodeCount(values) {
-      set(this, 'episodeCount', values.join('..'));
-    },
     setRange(prop, range) {
-      set(this, prop, values.join('..'));
+      set(this, prop, range.join('..'));
     },
-    setStreamers(streamers) {
-      set(this, 'streamers', streamers.join(','));
+    setRangeAndReload(prop, range) {
+      set(this, prop, range.join('..'));
+      this.send('refreshModel');
     },
-    setAgeRatings(ratings) {
-      set(this, 'ageRating', ratings.join(','));
+    setArray(prop, array) {
+      set(this, prop, array.join(','));
     }
   }
 });

@@ -8,11 +8,11 @@ const {
 export default Route.extend({
   queryParams: {
     text: { refreshModel: true, replaceState: true },
-    year: { refreshModel: true, replaceState: true },
-    averageRating: { refreshModel: true, replaceState: true },
+    year: { refreshModel: false, replaceState: true },
+    averageRating: { refreshModel: false, replaceState: true },
     streamers: { refreshModel: true, replaceState: true },
     ageRating: { refreshModel: true, replaceState: true },
-    episodeCount: { refreshModel: true, replaceState: true }
+    episodeCount: { refreshModel: false, replaceState: true }
   },
 
   model(params) {
@@ -39,5 +39,11 @@ export default Route.extend({
       }
     }
     return filters;
+  },
+
+  actions: {
+    refreshModel: function () {
+      this.refresh();
+    }
   }
 });

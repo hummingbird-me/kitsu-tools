@@ -12,7 +12,8 @@
           {{foundation-slider start=1914 end=2016
                               initialStart=years.[0] initialEnd=years.[1]
                               doubleSided=true decimal=0
-                              update=(action 'changeYear')}}
+                              onUpdate=(action 'setRange' 'year')
+                              onRelease=(action 'setRangeAndReload' 'year')}}
           <div class="filter-legend">
             <div class="low-value">
               1914
@@ -38,7 +39,8 @@
           {{foundation-slider start=0.5 end=5.0 step=0.5
                               initialStart=ratings.[0] initialEnd=ratings.[1]
                               doubleSided=true decimal=1
-                              update=(action 'changeRating')}}
+                              onUpdate=(action 'setRange' 'averageRating')
+                              onRelease=(action 'setRangeAndReload' 'averageRating')}}
           <div class="filter-legend">
             <div class="low-value">
               <i class="fa fa-star-half-o"></i>
@@ -63,7 +65,7 @@
                        choices=availableStreamers
                        test=streamers
                        chosen=streamersArray
-                       onSet=(action 'setStreamers')}}
+                       onSet=(action 'setArray' 'streamers')}}
           <div class="language-select">
             <input id="subbed" type="checkbox" checked="checked"><label for="subbed">Subbed</label>
             <input id="dubbed" type="checkbox" checked="checked"><label for="dubbed">Dubbed</label>
@@ -75,13 +77,14 @@
          <div class="filter-widget">
           <div class="filter-header">
             <label class="filter-title">Episodes</label>
-            <span class="filter-values">1 - ∞</span>
+            <span class="filter-values">{{episodeCountArray.[0]}} - {{episodeCountArray.[1]}}</span>
           </div>
-          {{foundation-slider start=1 end=5000 step=1
+          {{foundation-slider start=1 end=1000 step=1
                               initialStart=episodeCountArray.[0]
                               initialEnd=episodeCountArray.[1]
                               doubleSided=true decimal=0
-                              update=(action 'setRange' 'episodeCount')}}
+                              onUpdate=(action 'setRange' 'episodeCount')
+                              onRelease=(action 'setRangeAndReload' 'episodeCount')}}
           <div class="filter-legend">
             <div class="low-value">
               1
@@ -102,7 +105,7 @@
           {{box-select class="rating-select"
                        choices=availableAgeRatings
                        chosen=ageRatingsArray
-                       onSet=(action 'setAgeRatings')}}
+                       onSet=(action 'setArray' 'ageRating')}}
         </div>
 
 

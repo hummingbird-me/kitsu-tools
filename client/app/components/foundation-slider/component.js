@@ -107,6 +107,7 @@ export default Ember.Component.extend({
         'max': get(this, 'end')
       }
     });
-    el.noUiSlider.on('set', (values) => this.sendAction('update', values));
+    el.noUiSlider.on('slide', (values) => this.sendAction('onUpdate', values));
+    el.noUiSlider.on('set', (values) => this.sendAction('onRelease', values));
   }
 });
