@@ -153,6 +153,8 @@
             </div>
           </div>
         {{/each}}
+
+        {{scrolling-paginator model=media}}
       </div>
     </div>
   </div>
@@ -188,11 +190,11 @@
   $(document).scroll(function(){
     if ($(document).scrollTop() >= 51) {
       $('.filter-options').addClass('scrolled');
-      $('.search-media').addClass('scrolled');     
+      $('.search-media').addClass('scrolled');
     }
-    else { 
+    else {
       $('.filter-options').removeClass('scrolled');
-      $('.search-media').removeClass('scrolled'); 
+      $('.search-media').removeClass('scrolled');
     }
   });
 </script>

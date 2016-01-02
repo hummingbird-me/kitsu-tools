@@ -25,5 +25,11 @@ export default AjaxService.extend({
       });
       return headers;
     }
-  })
+  }),
+
+  options(url, options) {
+    const hash = this._super(...arguments);
+    hash.url = options.includesHost ? url : hash.url;
+    return hash;
+  }
 });

@@ -61,6 +61,7 @@ export default Component.extend({
 
   actions: {
     updateStatus(status) {
+      this.$('.dropdown-pane').foundation('close');
       const entry = get(this, 'entry');
       if (entry === undefined && get(this, 'isLoading') === false) {
         this._addToLibrary(status);
