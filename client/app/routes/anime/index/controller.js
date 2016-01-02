@@ -9,7 +9,7 @@ const {
   run
 } = Ember;
 
-const DEBOUNCE = 200; // milliseconds
+const DEBOUNCE = 400; // milliseconds
 
 export default Controller.extend({
   queryParams: [
@@ -111,10 +111,14 @@ export default Controller.extend({
 
   media: alias('model'),
 
+  setText: function(text) {
+    set(this, 'text', text);
+  },
+
   actions: {
     filterText(query) {
       // TODO: Debounce?
-      set(this, 'text', query);
+      run.debounce(this, 'setText', query, DEBOUNCE);
     },
     setRange(prop, range) {
       set(this, prop, range.join('..'));
