@@ -18,7 +18,7 @@ export default Component.extend({
     const permitted = chosen.filter((c) => choices[c]);
     return choices.map((choice) => {
       const out = Object.create(choice);
-      set(out, 'selected', chosen.indexOf(choice.key) != -1);
+      set(out, 'selected', chosen.indexOf(choice.key) !== -1);
       return out;
     });
   }),
@@ -28,8 +28,8 @@ export default Component.extend({
       let chosen = get(this, 'chosen');
       const choices = get(this, 'choices');
 
-      if (chosen.indexOf(choice.key) != -1) {
-        chosen = chosen.filter((k) => k != choice.key);
+      if (chosen.indexOf(choice.key) !== -1) {
+        chosen = chosen.filter((k) => k !== choice.key);
       } else {
         chosen.push(choice.key);
       }

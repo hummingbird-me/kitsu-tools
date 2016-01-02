@@ -93,7 +93,7 @@ export default Ember.Component.extend({
       this.sendAction('update', values.toArray());
     });
     */
-    let el = this.$()[0]
+    let el = this.$()[0];
     let selected = [get(this, 'initialStart')];
     if (get(this, 'doubleSided')) {
       selected.push(get(this, 'initialEnd'));

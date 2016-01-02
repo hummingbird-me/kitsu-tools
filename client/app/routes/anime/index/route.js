@@ -34,7 +34,7 @@ export default Route.extend({
     const filters = { filter: {} };
     for (const key in params) {
       let val = params[key];
-      if (val == null || val == undefined || val == '') continue;
+      if (val === null || val === undefined || val === '') continue;
 
       filters.filter[key] = val;
     }
