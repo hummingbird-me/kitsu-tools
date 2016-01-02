@@ -21,8 +21,7 @@ export default Route.extend({
       page: {
         offset: 0,
         limit: 20
-      },
-      sort: '-user_count'
+      }
     };
     const filters = this._buildFilters(params);
     // TODO: Includes
