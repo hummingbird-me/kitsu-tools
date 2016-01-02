@@ -99,6 +99,16 @@ export default Controller.extend({
     return get(this, 'genres').split(',');
   }),
 
+  ageRatingsCount: computed('ageRatingsArray', function () {
+    return get(this, 'ageRatingsArray').length;
+  }),
+  streamersCount: computed('streamersArray', function () {
+    return get(this, 'streamersArray').length;
+  }),
+  genresCount: computed('genresArray', function () {
+    return get(this, 'genresArray').length;
+  }),
+
   media: alias('model'),
 
   actions: {

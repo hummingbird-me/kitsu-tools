@@ -59,7 +59,7 @@
          <div class="filter-widget">
           <div class="filter-header">
             <label class="filter-title">Streaming (U.S.)</label>
-            <span class="filter-values">3</span>
+            <span class="filter-values">{{streamersCount}}</span>
           </div>
           {{box-select class="box-select"
                        choices=availableStreamers
@@ -100,7 +100,7 @@
          <div class="filter-widget">
           <div class="filter-header">
             <label class="filter-title">Rating</label>
-            <span class="filter-values">1 - ∞</span>
+            <span class="filter-values">{{ageRatingsCount}}</span>
           </div>
           {{box-select class="rating-select"
                        choices=availableAgeRatings
@@ -114,7 +114,7 @@
          <div class="filter-widget">
           <div class="filter-header">
             <label class="filter-title">Categories</label>
-            <span class="filter-values">23</span>
+            <span class="filter-values">{{genresCount}}</span>
           </div>
           {{box-select class="category-select"
                        choices=availableGenres
