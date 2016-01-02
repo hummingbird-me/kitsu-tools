@@ -90,13 +90,13 @@ export default Controller.extend({
     return get(this, 'averageRating').split('..').map((i) => parseFloat(i));
   }),
   ageRatingsArray: computed('ageRating', function () {
-    return get(this, 'ageRating').split(',');
+    return get(this, 'ageRating').split(',').filter((r) => r !== '');
   }),
   streamersArray: computed('streamers', function () {
-    return get(this, 'streamers').split(',');
+    return get(this, 'streamers').split(',').filter((s) => s !== '');
   }),
   genresArray: computed('genres', function () {
-    return get(this, 'genres').split(',');
+    return get(this, 'genres').split(',').filter((g) => g !== '');
   }),
 
   ageRatingsCount: computed('ageRatingsArray', function () {
