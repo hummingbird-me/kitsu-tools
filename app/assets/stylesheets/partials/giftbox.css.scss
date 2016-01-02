@@ -1,6 +1,6 @@
 .giftbox {
   position: fixed;
-  bottom: -45px;
+  bottom: 0;
   left: -30px;
   width: 150px;
   z-index: 9;
@@ -11,23 +11,6 @@
   }
   .PresentBoxShadow {
     opacity: .07;
-  }
-  .count-wrapper {
-    background: #16a085;
-    line-height: 50px;
-    position: fixed;
-    z-index: 100;
-    height: 50px;
-    bottom: -50px;
-    left: 0;
-    right: 0;
-    color: #fff;
-    text-align: center;
-    transition: .2s ease-in;
-  }
-  &:hover {
-    bottom: 45px;
-    .count-wrapper { bottom: 0;}
   }
   .visually-hidden { 
     position: absolute; 
