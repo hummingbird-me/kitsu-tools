@@ -509,7 +509,7 @@ a {
   background-size: cover; }
 
 #popular-mecha .slide-overlay {
-  background: url(../images/gargantia.jpg);
+  background: url("https://media.giphy.com/media/NveLvkFlU3o2s/giphy.gif");
   background-size: cover; }
 
 #popular-sports .slide-overlay {
