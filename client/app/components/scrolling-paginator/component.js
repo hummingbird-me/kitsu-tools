@@ -7,6 +7,7 @@ const {
   get,
   getWithDefault,
   set,
+  setProperties,
   run,
   computed,
   inject: { service }
@@ -41,7 +42,13 @@ export default Component.extend(InViewportMixin, {
 
   didInsertElement() {
     this._super(...arguments);
-    set(this, 'viewportSpy', true);
+    setProperties(this, {
+      viewportSpy: true,
+      viewportTolerance: {
+        top: 50,
+        bottom: 50
+      }
+    });
   },
 
   didEnterViewport() {

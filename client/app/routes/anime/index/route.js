@@ -20,7 +20,7 @@ export default Route.extend({
     const limits = {
       page: {
         offset: 0,
-        limit: 60
+        limit: 20
       }
     };
     const filters = this._buildFilters(params);
