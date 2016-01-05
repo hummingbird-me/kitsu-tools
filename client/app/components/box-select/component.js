@@ -5,35 +5,41 @@ const {
   get,
   set,
   getProperties,
-  computed
+  computed,
+  merge,
+  copy
 } = Ember;
 
-export default Component.extend({
-  choices: {},
-  chosen: [],
-  onSet: function () {},
+/*
+  {{box-select
+    selection=allStreamers
+    selected=streamers
+    onSelect=(action (mut streamers))
+  }}
+*/
 
-  choiceList: computed('choices', 'chosen', function () {
-    const {choices, chosen} = getProperties(this, ['choices', 'chosen']);
-    const permitted = chosen.filter((c) => choices[c]);
-    return choices.map((choice) => {
-      const out = Object.create(choice);
-      set(out, 'selected', chosen.indexOf(choice.key) !== -1);
-      return out;
-    });
+export default Component.extend({
+  options: computed({
+    get() {
+      const { selection, selected } = getProperties(this, 'selection', 'selected');
+      return selection.map((option) => {
+        const out = merge({}, option);
+        set(out, 'selected', selected.contains(option.key));
+        return out;
+      });
+    }
   }),
 
   actions: {
-    toggle: function (choice) {
-      let chosen = get(this, 'chosen');
-      const choices = get(this, 'choices');
-
-      if (chosen.indexOf(choice.key) !== -1) {
-        chosen = chosen.filter((k) => k !== choice.key);
+    toggle(option) {
+      // Copy so we aren't actually mutating the variable
+      let value = copy(get(this, 'selected'));
+      if (value.contains(option.key)) {
+        value.removeObject(option.key);
       } else {
-        chosen.push(choice.key);
+        value.addObject(option.key);
       }
-      get(this, 'onSet')(chosen);
+      get(this, 'onSelect')(value);
     }
   }
 });

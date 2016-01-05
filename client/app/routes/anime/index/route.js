@@ -2,48 +2,86 @@ import Ember from 'ember';
 
 const {
   Route,
-  get
+  get,
+  merge,
+  typeOf,
+  isEmpty
 } = Ember;
 
 export default Route.extend({
   queryParams: {
-    text: { refreshModel: true, replaceState: true },
-    year: { refreshModel: false, replaceState: true },
-    averageRating: { refreshModel: false, replaceState: true },
-    genres: { refreshModel: true, replaceState: true },
-    streamers: { refreshModel: true, replaceState: true },
-    ageRating: { refreshModel: true, replaceState: true },
-    episodeCount: { refreshModel: false, replaceState: true }
+    ageRating: { refreshModel: true, replace: true },
+    averageRating: { replace: true },
+    episodeCount: { replace: true },
+    genres: { refreshModel: true, replace: true },
+    streamers: { refreshModel: true, replace: true },
+    text: { refreshModel: true, replace: true },
+    year: { replace: true }
   },
 
   model(params) {
     const limits = {
-      page: {
-        offset: 0,
-        limit: 20
-      }
+      page: { offset: 0, limit: 20 }
     };
     const filters = this._buildFilters(params);
-    // TODO: Includes
-    const options = Object.assign(filters, limits);
+    const options = merge(filters, limits);
     return get(this, 'store').query('anime', options);
   },
 
+  serializeQueryParam(value, _, defaultValueType) {
+    if (defaultValueType === 'array') {
+      let _value = value;
+      const isRange = typeOf(_value[0]) !== 'string';
+      if (isRange === true && _value.length === 2) {
+        _value = _value.join('..');
+      } else if (isRange === false && _value.length > 1) {
+        _value = _value.reject((x) => isEmpty(x)).join(',');
+      } else {
+        _value = _value.join();
+      }
+      return _value;
+    }
+    return this._super(...arguments);
+  },
+
+  deserializeQueryParam(value, _, defaultValueType) {
+    if (defaultValueType === 'array') {
+      let _value = value;
+      const isRange = _value.includes('..');
+      if (isRange === true) {
+        _value = _value.split('..').map((x) => {
+          if (Number.isInteger(JSON.parse(x))) {
+            return parseInt(x, 10);
+          } else {
+            return parseFloat(x);
+          }
+        });
+      } else if (isRange === false) {
+        _value = _value.split(',');
+      }
+      return _value;
+    }
+    return this._super(...arguments);
+  },
+
   _buildFilters(params) {
-    // TODO: Build filters out correctly.
     const filters = { filter: {} };
     for (const key in params) {
-      let val = params[key];
-      if (val === null || val === undefined || val === '') continue;
-
-      filters.filter[key] = val;
+      const val = params[key];
+      if (isEmpty(val) === true) {
+        continue;
+      }
+      const type = typeOf(val);
+      filters.filter[key] = this.serializeQueryParam(val, key, type);
     }
-    if (!filters.filter.text) filters.sort = '-user_count';
+    if (filters.filter.text === undefined) {
+      filters.sort = '-user_count';
+    }
     return filters;
   },
 
   actions: {
-    refreshModel: function () {
+    refreshModel() {
       this.refresh();
     }
   }

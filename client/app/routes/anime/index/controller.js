@@ -1,28 +1,25 @@
 import Ember from 'ember';
 
+const DEBOUNCE = 400; // milliseconds
 const {
   Controller,
-  computed,
   computed: { alias },
   set,
-  get,
   run
 } = Ember;
 
-const DEBOUNCE = 400; // milliseconds
-
 export default Controller.extend({
   queryParams: [
-    'text', 'year', 'averageRating', 'streamers', 'ageRating', 'episodeCount',
-    'genres'
+    'ageRating', 'averageRating', 'episodeCount', 'genres',
+    'streamers', 'text', 'year'
   ],
+  ageRating: ['G', 'PG'],
+  averageRating: [0.5, 5.0],
+  episodeCount: [1, 500],
+  genres: [],
+  streamers: ['netflix', 'hulu', 'crunchyroll'],
   text: undefined,
-  year: '1914..2016',
-  averageRating: '0.5..5.0',
-  episodeCount: '1..500',
-  streamers: 'netflix,hulu,crunchyroll',
-  ageRating: 'G,PG',
-  genres: '',
+  year: [1914, 2016],
 
   availableStreamers: [
     {key: 'netflix', icon: 'netflix'},
@@ -80,55 +77,19 @@ export default Controller.extend({
     {key: "Anime Influenced", linkLabel: "Anime Influenced"}
   ],
 
-  years: computed('year', function () {
-    return get(this, 'year').split('..').map((i) => parseInt(i, 10));
-  }),
-  episodeCountArray: computed('episodeCount', function () {
-    return get(this, 'episodeCount').split('..').map((i) => parseInt(i, 10));
-  }),
-  ratings: computed('averageRating', function () {
-    return get(this, 'averageRating').split('..').map((i) => parseFloat(i));
-  }),
-  ageRatingsArray: computed('ageRating', function () {
-    return get(this, 'ageRating').split(',').filter((r) => r !== '');
-  }),
-  streamersArray: computed('streamers', function () {
-    return get(this, 'streamers').split(',').filter((s) => s !== '');
-  }),
-  genresArray: computed('genres', function () {
-    return get(this, 'genres').split(',').filter((g) => g !== '');
-  }),
-
-  ageRatingsCount: computed('ageRatingsArray', function () {
-    return get(this, 'ageRatingsArray').length;
-  }),
-  streamersCount: computed('streamersArray', function () {
-    return get(this, 'streamersArray').length;
-  }),
-  genresCount: computed('genresArray', function () {
-    return get(this, 'genresArray').length;
-  }),
-
   media: alias('model'),
 
-  setText: function(text) {
+  _setText: function(text) {
     set(this, 'text', text);
   },
 
   actions: {
     filterText(query) {
-      // TODO: Debounce?
-      run.debounce(this, 'setText', query, DEBOUNCE);
+      run.debounce(this, '_setText', query, DEBOUNCE);
     },
-    setRange(prop, range) {
-      set(this, prop, range.join('..'));
-    },
-    setRangeAndReload(prop, range) {
-      set(this, prop, range.join('..'));
+
+    reload() {
       this.send('refreshModel');
     },
-    setArray(prop, array) {
-      set(this, prop, array.join(','));
-    }
   }
 });

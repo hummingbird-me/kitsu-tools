@@ -1,13 +1,7 @@
 <ul>
-  {{#each choiceList as |choice|}}
-    <li class={{if choice.selected 'active'}} {{action 'toggle' choice}}>
-      {{choice.label}}
-      {{#if choice.linkLabel}}
-        <a href="#">{{choice.linkLabel}}</a>
-      {{/if}}
-      {{#if choice.icon}}
-        <span class={{choice.icon}}></span>
-      {{/if}}
-    </li>
+  {{#each options as |option|}}
+    {{box-select-option
+      option=option
+      onSelect=(action 'toggle')}}
   {{/each}}
 </ul>

@@ -1,4 +1,6 @@
+{{! TODO: Remove/Replace with CSS }}
 <style>.global-footer {display: none;}</style>
+
 <div class="media-browse">
   <div class="media-grid columns">
     <div class="filter-options">
@@ -7,13 +9,13 @@
         <div class="filter-widget">
           <div class="filter-header">
             <label class="filter-title">Year</label>
-            <span class="filter-values">{{years.[0]}} - {{years.[1]}}</span>
+            <span class="filter-values">{{year.[0]}} - {{year.[1]}}</span>
           </div>
           {{foundation-slider start=1914 end=2016
-                              initialStart=years.[0] initialEnd=years.[1]
+                              initialStart=year.[0] initialEnd=year.[1]
                               doubleSided=true decimal=0
-                              onUpdate=(action 'setRange' 'year')
-                              onRelease=(action 'setRangeAndReload' 'year')}}
+                              onUpdate=(action (mut year))
+                              onRelease=(action 'reload')}}
           <div class="filter-legend">
             <div class="low-value">
               1914
@@ -22,6 +24,7 @@
               2016
             </div>
           </div>
+          {{! TODO: }}
           <button class="expanded dropdown button" data-toggle="timeframe-dropdown">Using slider</button>
           <div class="dropdown-pane" id="timeframe-dropdown" data-dropdown data-auto-focus="true">
             <ul>
@@ -34,13 +37,13 @@
          <div class="filter-widget">
           <div class="filter-header">
             <label class="filter-title">Avg. Score</label>
-            <span class="filter-values">{{ratings.[0]}} - {{ratings.[1]}}</span>
+            <span class="filter-values">{{averageRating.[0]}} - {{averageRating.[1]}}</span>
           </div>
           {{foundation-slider start=0.5 end=5.0 step=0.5
-                              initialStart=ratings.[0] initialEnd=ratings.[1]
+                              initialStart=averageRating.[0] initialEnd=averageRating.[1]
                               doubleSided=true decimal=1
-                              onUpdate=(action 'setRange' 'averageRating')
-                              onRelease=(action 'setRangeAndReload' 'averageRating')}}
+                              onUpdate=(action (mut averageRating))
+                              onRelease=(action 'reload')}}
           <div class="filter-legend">
             <div class="low-value">
               <i class="fa fa-star-half-o"></i>
@@ -59,12 +62,13 @@
          <div class="filter-widget">
           <div class="filter-header">
             <label class="filter-title">Streaming (U.S.)</label>
-            <span class="filter-values">{{streamersCount}}</span>
+            <span class="filter-values">{{streamers.length}}</span>
           </div>
           {{box-select class="box-select"
-                       choices=availableStreamers
-                       chosen=streamersArray
-                       onSet=(action 'setArray' 'streamers')}}
+                       selection=availableStreamers
+                       selected=streamers
+                       onSelect=(action (mut streamers))}}
+          {{! TODO: Implement }}
           <div class="language-select">
             <input id="subbed" type="checkbox" checked="checked"><label for="subbed">Subbed</label>
             <input id="dubbed" type="checkbox" checked="checked"><label for="dubbed">Dubbed</label>
@@ -76,14 +80,15 @@
          <div class="filter-widget">
           <div class="filter-header">
             <label class="filter-title">Episodes</label>
-            <span class="filter-values">{{episodeCountArray.[0]}} - {{episodeCountArray.[1]}}</span>
+            <span class="filter-values">{{episodeCount.[0]}} - {{episodeCount.[1]}}</span>
           </div>
+          {{! TODO: 1000 is too high? }}
           {{foundation-slider start=1 end=1000 step=1
-                              initialStart=episodeCountArray.[0]
-                              initialEnd=episodeCountArray.[1]
+                              initialStart=episodeCount.[0]
+                              initialEnd=episodeCount.[1]
                               doubleSided=true decimal=0
-                              onUpdate=(action 'setRange' 'episodeCount')
-                              onRelease=(action 'setRangeAndReload' 'episodeCount')}}
+                              onUpdate=(action (mut episodeCount))
+                              onRelease=(action 'reload')}}
           <div class="filter-legend">
             <div class="low-value">
               1
@@ -99,12 +104,12 @@
          <div class="filter-widget">
           <div class="filter-header">
             <label class="filter-title">Rating</label>
-            <span class="filter-values">{{ageRatingsCount}}</span>
+            <span class="filter-values">{{ageRating.length}}</span>
           </div>
           {{box-select class="rating-select"
-                       choices=availableAgeRatings
-                       chosen=ageRatingsArray
-                       onSet=(action 'setArray' 'ageRating')}}
+                       selection=availableAgeRatings
+                       selected=ageRating
+                       onSelect=(action (mut ageRating))}}
         </div>
 
 
@@ -113,12 +118,12 @@
          <div class="filter-widget">
           <div class="filter-header">
             <label class="filter-title">Categories</label>
-            <span class="filter-values">{{genresCount}}</span>
+            <span class="filter-values">{{genres.length}}</span>
           </div>
           {{box-select class="category-select"
-                       choices=availableGenres
-                       chosen=genresArray
-                       onSet=(action 'setArray' 'genres')}}
+                       selection=availableGenres
+                       selected=genres
+                       onSelect=(action (mut genres))}}
         </div>
       </div>
     </div>
