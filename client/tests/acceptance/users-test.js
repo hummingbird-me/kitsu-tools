@@ -1,17 +1,15 @@
 import Ember from 'ember';
-import { module, test } from 'qunit';
-import startApp from 'client/tests/helpers/start-app';
+import { test } from 'qunit';
+import moduleForAcceptance from 'client/tests/helpers/module-for-acceptance';
 import Pretender from 'pretender';
 
-module('Acceptance | users', {
+moduleForAcceptance('Acceptance | users', {
   beforeEach() {
-    this.application = startApp();
     this.server = new Pretender();
   },
 
   afterEach() {
     Ember.tryInvoke(this.server, 'shutdown');
-    Ember.run(this.application, 'destroy');
   }
 });
 

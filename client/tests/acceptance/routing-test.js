@@ -1,17 +1,8 @@
-import Ember from 'ember';
-import { module, test } from 'qunit';
-import startApp from 'client/tests/helpers/start-app';
+import { test } from 'qunit';
+import moduleForAcceptance from 'client/tests/helpers/module-for-acceptance';
 import { authenticateSession, invalidateSession } from 'client/tests/helpers/ember-simple-auth';
 
-module('Acceptance | routing', {
-  beforeEach() {
-    this.application = startApp();
-  },
-
-  afterEach() {
-    Ember.run(this.application, 'destroy');
-  }
-});
+moduleForAcceptance('Acceptance | routing');
 
 test('visiting `/dashboard` redirects to `/`', function(assert) {
   assert.expect(1);
