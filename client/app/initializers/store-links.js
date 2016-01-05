@@ -22,7 +22,7 @@ export function initialize() {
       if (records.length > 0) {
         if (data.links !== undefined) {
           data.meta = data.meta || {};
-          data.meta['_links'] = data.links;
+          data.meta._links = data.links;
           const model = get(records, 'firstObject');
           // no records being pushed into store
           if (model === undefined) {
