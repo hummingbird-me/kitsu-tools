@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import IsViewingSelfMixin from 'client/mixins/is-viewing-self';
 
 const {
   Component,
@@ -9,17 +10,11 @@ const {
 } = Ember;
 
 // TODO: Update rating to support different rating systems
-export default Component.extend({
+export default Component.extend(IsViewingSelfMixin, {
   isOpened: false,
   media: alias('entry.anime'),
+  user: alias('entry.user'),
   currentSession: service(),
-
-  isViewingSelf: computed('entry.user', 'currentSession.account', {
-    get() {
-      const user = get(this, 'entry.user');
-      return get(this, 'currentSession').isCurrentUser(user);
-    }
-  }),
 
   personalNote: computed('media.canonicalTitle', {
     get() {

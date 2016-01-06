@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import IsViewingSelfMixin from 'client/mixins/is-viewing-self';
 
 const {
 Controller,
@@ -8,14 +9,14 @@ inject: { service },
 get
 } = Ember;
 
-export default Controller.extend({
+export default Controller.extend(IsViewingSelfMixin, {
   user: alias('model'),
   currentSession: service(),
 
-  isViewingSelf: computed('user', 'currentSession.account', {
+  coverImageStyle: computed('user.coverImage', {
     get() {
-      const user = get(this, 'user');
-      return get(this, 'currentSession').isCurrentUser(user);
+      const coverImage = get(this, 'user.coverImage');
+      return `background-image: url('${coverImage}')`.htmlSafe();
     }
   })
 });
