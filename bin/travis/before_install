@@ -16,7 +16,7 @@ use_node() {
   npm config set spin false
 }
 use_ruby() {
-  if [ $USE_RUBY = 'rbx-2.8' ]; then
+  if [[ $USE_RUBY == rbx-* ]]; then
     rvm autolibs disable
   fi
   rvm use $1 --binary --fuzzy --install

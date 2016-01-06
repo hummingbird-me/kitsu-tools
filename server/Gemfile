@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.2.3'
+case RUBY_ENGINE
+when 'ruby'; ruby '2.2.3'
+when 'rbx';  ruby '2.2.0', engine: 'rbx', engine_version: '3.2'
+end
 
 # Core Stuff
 gem 'rails', '4.2.1'
