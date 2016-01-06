@@ -20,6 +20,11 @@ env:
     - TESTGROUP=server USE_RUBY=ruby-2.2.3
     - TESTGROUP=server USE_RUBY=rbx-3.2
 
+matrix:
+  allow_failures:
+    - env: TESTGROUP=server USE_RUBY=rbx-3.2
+  fast_finish: true
+
 before_install:
   - source bin/travis/before_install
 
