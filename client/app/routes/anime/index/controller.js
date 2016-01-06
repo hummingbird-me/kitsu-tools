@@ -5,7 +5,8 @@ const {
   Controller,
   computed: { alias },
   set,
-  run
+  run,
+  $: jQuery
 } = Ember;
 
 export default Controller.extend({
@@ -78,6 +79,18 @@ export default Controller.extend({
   ],
 
   media: alias('model'),
+
+  _handleScroll() {
+    // TODO: This should be moved to a property and computed in the template
+    // when it is optimized (seems jaring ATM)
+    if (jQuery(document).scrollTop() >= 51) {
+      jQuery('.filter-options').addClass('scrolled');
+      jQuery('.search-media').addClass('scrolled');
+    } else {
+      jQuery('.filter-options').removeClass('scrolled');
+      jQuery('.search-media').removeClass('scrolled');
+    }
+  },
 
   _setText(text) {
     set(this, 'text', text);

@@ -5,7 +5,9 @@ const {
   get,
   merge,
   typeOf,
-  isEmpty
+  isEmpty,
+  run,
+  $: jQuery
 } = Ember;
 
 export default Route.extend({
@@ -26,6 +28,17 @@ export default Route.extend({
     const filters = this._buildFilters(params);
     const options = merge(filters, limits);
     return get(this, 'store').query('anime', options);
+  },
+
+  // TODO: This should be moved to the eventual routable component which
+  // won't be a singleton like the current controller (so it actually exits)
+  setupController(controller) {
+    this._super(...arguments);
+    jQuery(document).on('scroll', run.bind(controller, '_handleScroll'));
+  },
+
+  deactivate() {
+    jQuery(document).off('scroll');
   },
 
   serializeQueryParam(value, _, defaultValueType) {

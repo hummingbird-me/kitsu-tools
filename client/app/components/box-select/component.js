@@ -10,14 +10,6 @@ const {
   copy
 } = Ember;
 
-/*
-  {{box-select
-    selection=allStreamers
-    selected=streamers
-    onSelect=(action (mut streamers))
-  }}
-*/
-
 export default Component.extend({
   options: computed({
     get() {
@@ -33,7 +25,7 @@ export default Component.extend({
   actions: {
     toggle(option) {
       // Copy so we aren't actually mutating the variable
-      let value = copy(get(this, 'selected'));
+      const value = copy(get(this, 'selected'));
       if (value.contains(option.key)) {
         value.removeObject(option.key);
       } else {

@@ -29,7 +29,7 @@ export default AjaxService.extend({
 
   options(url, options) {
     const hash = this._super(...arguments);
-    hash.url = options.includesHost ? url : hash.url;
+    hash.url = options && options.includesHost ? url : hash.url;
     return hash;
   }
 });
