@@ -53,7 +53,7 @@ gem 'rack-cors'
 # Optimizations and Profiling
 gem 'rack-mini-profiler'
 gem 'flamegraph'
-gem 'stackprof'
+gem 'stackprof', platform: 'mri'
 gem 'fast_blank' # Faster String#blank?
 gem 'oj' # Blazing-fast JSON parsing
 
