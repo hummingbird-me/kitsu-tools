@@ -64,10 +64,14 @@
             <label class="filter-title">Streaming (U.S.)</label>
             <span class="filter-values">{{streamers.length}}</span>
           </div>
-          {{box-select class="box-select"
-                       selection=availableStreamers
-                       selected=streamers
-                       onSelect=(action (mut streamers))}}
+          {{#box-select
+            class="box-select"
+            selection=allStreamers
+            selected=streamers
+            onSelect=(action (mut streamers)) as |option|
+          }}
+            <span class={{option.name}}></span>
+          {{/box-select}}
           {{! TODO: Implement }}
           <div class="language-select">
             <input id="subbed" type="checkbox" checked="checked"><label for="subbed">Subbed</label>
@@ -106,10 +110,14 @@
             <label class="filter-title">Rating</label>
             <span class="filter-values">{{ageRating.length}}</span>
           </div>
-          {{box-select class="rating-select"
-                       selection=availableAgeRatings
-                       selected=ageRating
-                       onSelect=(action (mut ageRating))}}
+          {{#box-select
+            class="rating-select"
+            selection=allAgeRatings
+            selected=ageRating
+            onSelect=(action (mut ageRating)) as |option|
+          }}
+            {{option.name}}
+          {{/box-select}}
         </div>
 
 
@@ -120,10 +128,14 @@
             <label class="filter-title">Categories</label>
             <span class="filter-values">{{genres.length}}</span>
           </div>
-          {{box-select class="category-select"
-                       selection=availableGenres
-                       selected=genres
-                       onSelect=(action (mut genres))}}
+          {{#box-select
+            class="category-select"
+            selection=allGenres
+            selected=genres
+            onSelect=(action (mut genres)) as |option|
+          }}
+            <a href="#">{{option.name}}</a>
+          {{/box-select}}
         </div>
       </div>
     </div>

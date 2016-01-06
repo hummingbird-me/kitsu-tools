@@ -11,12 +11,15 @@ const {
 } = Ember;
 
 export default Component.extend({
+  selection: [],
+  selected: [],
+
   options: computed({
     get() {
       const { selection, selected } = getProperties(this, 'selection', 'selected');
       return selection.map((option) => {
-        const out = merge({}, option);
-        set(out, 'selected', selected.contains(option.key));
+        const out = merge({}, { name: option });
+        set(out, 'selected', selected.contains(option));
         return out;
       });
     }
@@ -26,10 +29,10 @@ export default Component.extend({
     toggle(option) {
       // Copy so we aren't actually mutating the variable
       const value = copy(get(this, 'selected'));
-      if (value.contains(option.key)) {
-        value.removeObject(option.key);
+      if (value.contains(option.name)) {
+        value.removeObject(option.name);
       } else {
-        value.addObject(option.key);
+        value.addObject(option.name);
       }
       get(this, 'onSelect')(value);
     }
