@@ -23,7 +23,6 @@ export default Controller.extend({
   text: undefined,
   year: [1914, 2016],
 
-
   media: alias('model.media'),
   allGenres: mapBy('model.genres', 'name'),
   allStreamers: map('model.streamers', function(streamer) {

@@ -6,20 +6,23 @@ moduleForComponent('box-select', 'Integration | Component | box select', {
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
+  assert.expect(3);
 
-  this.set('selection', [{ key: 'abc', label: 'def' }, { key: 'abc', label: 'def' }]);
+  this.set('selection', ['abc', 'def']);
   this.set('selected', []);
   this.set('testSelect', () => {
     assert.ok(true);
   });
 
-  this.render(hbs`{{box-select
+  this.render(hbs`{{#box-select
     selection=selection
     selected=selected
-    onSelect=(action testSelect)
-  }}`);
+    onSelect=(action testSelect) as |option|
+  }}
+    {{option.name}}
+  {{/box-select}}`);
 
   this.$('li').eq(0).click();
   assert.equal(this.$('li').length, 2);
+  assert.equal('abc', this.$('li').eq(0).text().trim());
 });
