@@ -28,6 +28,11 @@ a {
   padding-right: 0 !important;
 }
 
+// Ember Action
+[data-ember-action] {
+  cursor: pointer;
+}
+
 // Global Header
 .top-bar {
   background: $headerColor !important;
