@@ -86,17 +86,25 @@ export default Route.extend({
   },
 
   _loadGenreData() {
-    // TODO: Don't requery is we already have the data
-    return get(this, 'store').query('genre', {
-      page: { offset: 0, limit: 20000 }
-    });
+    const controller = this.controllerFor(get(this, 'routeName'));
+    const data = get(controller, 'model.genres');
+    if (isEmpty(data)) {
+      return get(this, 'store').query('genre', {
+        page: { offset: 0, limit: 20000 }
+      });
+    }
+    return data;
   },
 
   _loadStreamerData() {
-    // TODO: Don't requery is we already have the data
-    return get(this, 'store').query('streamer', {
-      page: { offset: 0, limit: 20000 }
-    });
+    const controller = this.controllerFor(get(this, 'routeName'));
+    const data = get(controller, 'model.streamers');
+    if (isEmpty(data)) {
+      return get(this, 'store').query('streamer', {
+        page: { offset: 0, limit: 20000 }
+      });
+    }
+    return data;
   },
 
   _buildFilters(params) {
