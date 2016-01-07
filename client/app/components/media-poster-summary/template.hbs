@@ -1,0 +1,50 @@
+{{! TODO: Generalize when we add drama }}
+<div class="grid-poster" data-test-selector="media-poster-summary">
+  {{! TODO: Don't prepend local host }}
+  <img src="http://localhost:3000{{media.posterImage}}">
+  <div class="poster-overlay">
+    <div class="shared-friends">
+      {{! TODO: Implement }}
+      <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
+      <a href="#" class="friend-count">03</a>
+    </div>
+    <div class="trailer">
+      <a data-open={{trailerId}} {{action 'showTrailer'}}>
+        {{fa-icon "play"}}
+      </a>
+    </div>
+  </div>
+</div>
+<div class="ellipsis">
+  {{#link-to 'anime.show' media class="media-title"}}
+    {{media.canonicalTitle}}
+  {{/link-to}}
+</div>
+
+<!-- Trailer modal -->
+{{#if trailerIsOpen}}
+  {{#ember-wormhole to="wormhole"}}
+    {{#foundation-reveal
+        modalId=trailerId
+        modalclass="media-trailer"}}
+      <iframe width="100%" height="520" src="https://www.youtube.com/embed/{{media.youtubeVideoId}}?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+      <div class="trailer-info">
+        <div class="info-header">
+          <h4>{{media.canonicalTitle}}</h4>
+          <ul class="type-tags">
+            <li>{{media.showTypeStr}}</li>
+            <li>{{media.ageRating}}</li>
+            {{! TODO: Implement }}
+            <li class="average-rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+              <i class="fa fa-star-o"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    {{/foundation-reveal}}
+  {{/ember-wormhole}}
+{{/if}}

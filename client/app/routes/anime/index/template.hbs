@@ -140,7 +140,6 @@
       </div>
     </div>
 
-
     <div class="search-media">
       <i class="fa fa-search"></i>
       {{one-way-input
@@ -151,54 +150,12 @@
     <div class="media-posters">
       <div class="row">
         {{#each media as |anime|}}
-          {{! TODO: Componentize }}
-          <div class="poster-wrapper">
-            <div class="grid-poster">
-              <img src="http://localhost:3000{{anime.posterImage}}">
-              <div class="poster-overlay">
-                <div class="shared-friends">
-                  <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
-                  <a href="#" class="friend-count">03</a>
-                </div>
-                <div class="trailer">
-                  <a data-open="media-trailer"><i class="fa fa-play"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="ellipsis">
-              <a href="#" class="media-title">{{anime.canonicalTitle}}</a>
-            </div>
-          </div>
+          {{media-poster-summary
+            media=anime}}
         {{/each}}
       </div>
 
       {{scrolling-paginator model=media}}
     </div>
-  </div>
-</div>
-
-
-<!-- Trailer modal -->
-<div class="reveal media-trailer" id="media-trailer" data-reveal>
-  <button class="close-button" data-close aria-label="Close reveal" type="button">
-    <span aria-hidden="true">&times;</span>
-  </button>
-  <iframe width="100%" height="520" src="https://www.youtube.com/embed/K2Qs-S2huTo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
-  <div class="trailer-info">
-    <div class="info-header">
-      <h4>Fullmetal Alchemist: Brotherhood</h4>
-      <ul class="type-tags">
-        <li>TV</li>
-        <li>PG-13</li>
-        <li class="average-rating">
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-half-o"></i>
-          <i class="fa fa-star-o"></i>
-        </li>
-      </ul>
-    </div>
-
   </div>
 </div>

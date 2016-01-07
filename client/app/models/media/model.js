@@ -25,6 +25,7 @@ export default Model.extend({
   startDate: attr('date'),
   synopsis: attr('string'),
   titles: attr('object'),
+  youtubeVideoId: attr('string'),
 
   genres: hasMany('genre'),
 

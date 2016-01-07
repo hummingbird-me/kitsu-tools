@@ -35,14 +35,6 @@ export default Component.extend(IsViewingSelfMixin, {
     }
   }),
 
-  type: computed('media.showType', {
-    get() {
-      const showTypes = ['TV', 'Special', 'ONA', 'OVA', 'Movie', 'Music'];
-      const showType = get(this, 'media.showType');
-      return showTypes[showType - 1];
-    }
-  }),
-
   actions: {
     toggleDisplay() {
       this.toggleProperty('isOpened');

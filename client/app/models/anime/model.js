@@ -1,13 +1,27 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import Media from 'client/models/media/model';
 
-const { attr } = DS;
+const {
+  get,
+  computed
+} = Ember;
+const {
+  attr
+} = DS;
 
 export default Media.extend({
-  ageRating: attr('number'),
+  ageRating: attr('string'),
   ageRatingGuide: attr('string'),
   episodeCount: attr('number'),
   episodeLength: attr('number'),
-  showType: attr('number')
-  // TODO: Computed properties for showType, ageRating, etc.
+  showType: attr('number'),
+
+  showTypeStr: computed('showType', {
+    get() {
+      const showTypes = ['TV', 'Special', 'ONA', 'OVA', 'Movie', 'Music'];
+      const showType = get(this, 'showType');
+      return showTypes[showType - 1];
+    }
+  })
 });

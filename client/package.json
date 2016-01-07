@@ -49,6 +49,7 @@
     "ember-simple-auth": "1.0.1",
     "ember-suave": "1.2.3",
     "ember-truth-helpers": "1.2.0",
-    "ember-validations": "2.0.0-alpha.4"
+    "ember-validations": "2.0.0-alpha.4",
+    "ember-wormhole": "0.3.4"
   }
 }

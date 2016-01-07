@@ -24,8 +24,8 @@ class AnimeResource < BaseResource
              :poster_image, :cover_image, :cover_image_top_offset,
              # Titles
              :titles, :canonical_title, :abbreviated_titles,
-             # Type, Dates, Synopsis
-             :show_type, :start_date, :end_date, :synopsis,
+             # Type, Dates, Synopsis, Trailer
+             :show_type, :start_date, :end_date, :synopsis, :youtube_video_id,
              # Age Ratings
              :age_rating, :age_rating_guide,
              # Ratings
