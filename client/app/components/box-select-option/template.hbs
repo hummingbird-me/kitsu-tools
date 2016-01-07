@@ -1,9 +1,3 @@
 <li class={{if isSelected 'active'}} {{action 'toggle'}}>
-  {{option.label}}
-  {{#if option.linkLabel}}
-    <a href="#">{{option.linkLabel}}</a>
-  {{/if}}
-  {{#if option.icon}}
-    <span class={{option.icon}}></span>
-  {{/if}}
+  {{yield}}
 </li>

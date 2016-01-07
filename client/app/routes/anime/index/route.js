@@ -7,7 +7,8 @@ const {
   typeOf,
   isEmpty,
   run,
-  $: jQuery
+  $: jQuery,
+  RSVP
 } = Ember;
 
 export default Route.extend({
@@ -22,12 +23,12 @@ export default Route.extend({
   },
 
   model(params) {
-    const limits = {
-      page: { offset: 0, limit: 20 }
-    };
-    const filters = this._buildFilters(params);
-    const options = merge(filters, limits);
-    return get(this, 'store').query('anime', options);
+    return RSVP.hash({
+      media: this._loadMediaData(params),
+      genres: this._loadGenreData(),
+      streamers: this._loadStreamerData(),
+      ageRatings: ['G', 'PG', 'R', 'R18']
+    });
   },
 
   // TODO: This should be moved to the eventual routable component which
@@ -75,6 +76,35 @@ export default Route.extend({
       return _value;
     }
     return this._super(...arguments);
+  },
+
+  _loadMediaData(params) {
+    const limit = { page: { offset: 0, limit: 20 } };
+    const filters = this._buildFilters(params);
+    const options = merge(filters, limit);
+    return get(this, 'store').query('anime', options);
+  },
+
+  _loadGenreData() {
+    const controller = this.controllerFor(get(this, 'routeName'));
+    const data = get(controller, 'model.genres');
+    if (isEmpty(data)) {
+      return get(this, 'store').query('genre', {
+        page: { offset: 0, limit: 20000 }
+      });
+    }
+    return data;
+  },
+
+  _loadStreamerData() {
+    const controller = this.controllerFor(get(this, 'routeName'));
+    const data = get(controller, 'model.streamers');
+    if (isEmpty(data)) {
+      return get(this, 'store').query('streamer', {
+        page: { offset: 0, limit: 20000 }
+      });
+    }
+    return data;
   },
 
   _buildFilters(params) {

@@ -1,7 +1,10 @@
 <ul>
   {{#each options as |option|}}
-    {{box-select-option
+    {{#box-select-option
       option=option
-      onSelect=(action 'toggle')}}
+      onSelect=(action 'toggle')
+    }}
+      {{yield option}}
+    {{/box-select-option}}
   {{/each}}
 </ul>

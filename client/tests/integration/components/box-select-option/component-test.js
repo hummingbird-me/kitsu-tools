@@ -6,18 +6,21 @@ moduleForComponent('box-select-option', 'Integration | Component | box select op
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
+  assert.expect(3);
 
-  this.set('option', { key: 'abc', label: 'def', selected: false });
+  this.set('option', { name: 'abc', selected: false });
   this.set('testSelect', () => {
     assert.ok(true);
   });
 
-  this.render(hbs`{{box-select-option
+  this.render(hbs`{{#box-select-option
     option=option
     onSelect=(action testSelect)
-  }}`);
+  }}
+    {{option.name}}
+  {{/box-select-option}}`);
 
   this.$('li').click();
   assert.ok(this.$('li').hasClass('active'));
+  assert.equal('abc', this.$('li').text().trim());
 });
