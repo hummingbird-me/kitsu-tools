@@ -39,6 +39,9 @@ export default Route.extend(CanonicalUrlRedirect, {
         const record = get(records, 'firstObject');
         if (record !== undefined) {
           set(controller, 'entry', record);
+        } else {
+          // TODO: Can be removed when we switch to routable components
+          set(controller, 'entry', undefined);
         }
         set(controller, 'isLoadingEntry', false);
       });
