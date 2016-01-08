@@ -10,13 +10,10 @@ class LibraryEntryPolicy < ApplicationPolicy
     true
   end
 
-  def create?
-    !user.nil?
-  end
-
   def update?
     record.user == user || is_admin?
   end
+  alias_method :create?, :update?
   alias_method :destroy?, :update?
 
   class Scope < Scope

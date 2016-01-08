@@ -49,8 +49,10 @@ module AuthenticatedResource
 
   included do
     # Hook in our authorization callbacks
-    before_create { not_authorized! :create? unless policy && policy.create? }
-    before_update { not_authorized! :update? unless policy && policy.update? }
+    after_replace_fields do
+      check = is_new? ? :create? : :update?
+      not_authorized!(check) unless policy && policy.public_send(check)
+    end
     before_remove { not_authorized! :destroy? unless policy && policy.destroy? }
   end
 end
