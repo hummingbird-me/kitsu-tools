@@ -35,6 +35,12 @@ export default Component.extend(IsViewingSelfMixin, {
     }
   }),
 
+  type: computed('media.showTypeStr', {
+    get() {
+      return get(this, 'media.showTypeStr');
+    }
+  }),
+
   actions: {
     toggleDisplay() {
       this.toggleProperty('isOpened');
