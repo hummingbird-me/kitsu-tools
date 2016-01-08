@@ -10,4 +10,14 @@ class LibraryEntryResource < BaseResource
   has_one :anime
 
   paginator :unlimited
+
+  after_replace_fields :correct_user?
+
+  private
+
+  def correct_user?
+    is_user_or_admin = @model.user == current_user ||
+                       current_user.has_role?(:admin, LibraryEntry)
+    not_authorized! :create? unless is_new? && is_user_or_admin
+  end
 end
