@@ -2,7 +2,6 @@
   <div class="top-bar-wrapper">
     <div class="top-bar-left">
       <ul class="dropdown menu" data-dropdown-menu>
-        {{! TODO: Should be a link to home }}
         <li>
           {{#link-to 'dashboard'}}
             <div class="logo"></div>
@@ -23,21 +22,39 @@
       </ul>
     </div>
     <div class="top-bar-right">
+      {{! TODO: Implement guest state }}
       <ul class="dropdown menu" data-dropdown-menu>
         <li>
-          <a href="#" class="circle-button"><i class="icon ion-ios-search"></i></a>
-        </li>
-        <li>
-          <a href="#" class="circle-button"><i class="icon ion-ios-bell-outline"></i></a>
-        </li>
-        <li class="has-submenu">
-          <a href="#" class="circle-button avatar">
-            <img src="http://cl.ly/2D2u0L2Y073c/demoavatar.png">
+          <a href="#" class="circle-button">
+            {{fa-icon "search"}}
           </a>
-          <ul class="submenu menu vertical" data-submenu>
-            <li><a href="#">logout</a></li>
-          </ul>
         </li>
+        {{#if currentSession.isAuthenticated}}
+          <li>
+            <a href="#" class="circle-button">
+              {{fa-icon "bell-o"}}
+            </a>
+          </li>
+          <li class="has-submenu">
+            <a href="#" class="circle-button avatar">
+              <img src={{currentSession.account.avatar}}>
+            </a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li>
+                {{#link-to 'users.index' currentSession.account}}
+                  View Profile
+                {{/link-to}}
+              </li>
+              <li>
+                <a href="#" {{action 'invalidateSession'}}>Logout</a>
+              </li>
+            </ul>
+          </li>
+        {{else}}
+          <li>
+            {{link-to 'Sign In' 'sign-in'}}
+          </li>
+        {{/if}}
       </ul>
     </div>
   </div>
