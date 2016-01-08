@@ -63,6 +63,11 @@ export default Component.extend(InViewportMixin, {
     set(this, 'isLoading', true);
     get(this, 'ajax').request(nextLink, { includesHost: true })
       .then((response) => {
+        // It's possible that the user navigated away during the ajax request
+        // which has destroyed the component
+        if (get(this, 'model') === undefined) {
+          return;
+        }
         // push the content into 'store' which will update the meta object for
         // this model, and give us the next 'nextLink'. Also add the current
         // content onto the controller.
