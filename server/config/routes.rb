@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   jsonapi_resources :genres
   jsonapi_resources :streamers
   jsonapi_resources :streaming_links
+  jsonapi_resources :franchises
+  jsonapi_resources :installments
 
   use_doorkeeper
 

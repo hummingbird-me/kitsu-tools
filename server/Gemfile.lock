@@ -100,6 +100,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_list (0.7.2)
+      activerecord (>= 3.0)
     after_commit_action (1.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -389,6 +391,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_list
   annotate
   aws-sdk
   chewy

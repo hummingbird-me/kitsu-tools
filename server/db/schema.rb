@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223065939) do
+ActiveRecord::Schema.define(version: 20160109045957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,14 +58,6 @@ ActiveRecord::Schema.define(version: 20151223065939) do
   add_index "anime", ["mal_id"], name: "index_anime_on_mal_id", unique: true, using: :btree
   add_index "anime", ["slug"], name: "index_anime_on_slug", unique: true, using: :btree
   add_index "anime", ["user_count"], name: "index_anime_on_user_count", using: :btree
-
-  create_table "anime_franchises", id: false, force: :cascade do |t|
-    t.integer "anime_id"
-    t.integer "franchise_id"
-  end
-
-  add_index "anime_franchises", ["anime_id"], name: "index_anime_franchises_on_anime_id", using: :btree
-  add_index "anime_franchises", ["franchise_id"], name: "index_anime_franchises_on_franchise_id", using: :btree
 
   create_table "anime_genres", id: false, force: :cascade do |t|
     t.integer "anime_id", null: false
@@ -210,10 +202,10 @@ ActiveRecord::Schema.define(version: 20151223065939) do
   add_index "follows", ["follower_id"], name: "index_follows_on_followed_id", using: :btree
 
   create_table "franchises", force: :cascade do |t|
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "english_title", limit: 255
-    t.string   "romaji_title",  limit: 255
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.hstore   "titles",          default: {},      null: false
+    t.string   "canonical_title", default: "en_jp", null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -287,6 +279,17 @@ ActiveRecord::Schema.define(version: 20151223065939) do
     t.boolean  "avatar_processing"
     t.text     "about_formatted"
   end
+
+  create_table "installments", id: false, force: :cascade do |t|
+    t.integer "media_id"
+    t.integer "franchise_id"
+    t.string  "media_type",   null: false
+    t.integer "position",     null: false
+    t.string  "tag"
+  end
+
+  add_index "installments", ["franchise_id"], name: "index_installments_on_franchise_id", using: :btree
+  add_index "installments", ["media_type", "media_id"], name: "index_installments_on_media_type_and_media_id", unique: true, using: :btree
 
   create_table "library_entries", force: :cascade do |t|
     t.integer  "user_id"

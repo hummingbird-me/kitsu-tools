@@ -42,8 +42,9 @@ gem 'friendly_id' # slug-urls-are-cool
 gem 'nokogiri' # Parse MAL XML shit
 gem 'typhoeus' # Parallelize scraping tasks
 gem 'jsonapi-resources' # JSON-API resources
-gem 'paranoia', '~> 2.0'
-gem 'counter_culture'
+gem 'acts_as_list' # Sortables!
+gem 'paranoia', '~> 2.0' # Faux deletion
+gem 'counter_culture' # Fancier counter caches
 
 # Rack Middleware
 gem 'rack-cors'

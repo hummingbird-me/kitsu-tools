@@ -21,6 +21,8 @@ module Media
 
     has_and_belongs_to_many :genres
     has_many :castings, as: 'media'
+    has_many :installments, as: 'media'
+    has_many :franchises, through: :installments
 
     validates_attachment :cover_image, content_type: {
       content_type: %w[image/jpg image/jpeg image/png]

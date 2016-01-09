@@ -1,0 +1,2 @@
+class FranchiseResource < ApplicationController
+end

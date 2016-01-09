@@ -36,6 +36,7 @@ class AnimeResource < BaseResource
   has_many :castings
   has_many :genres
   has_many :streaming_links
+  has_many :installments
 
   filter :slug, apply: -> (records, value, _options) { records.by_slug(value) }
 
