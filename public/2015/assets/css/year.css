@@ -311,25 +311,10 @@ a[data-title]:hover:after {
   bottom: 5px;
 }
 
-@media only screen and (max-width: 1150px) {
-  /*.runner:nth-of-type(9),
-  .runner:nth-of-type(10) {
-    display: none;
-  }*/
-  .bottom .runner,
-  .bottom img {
-    width: 4rem;
-  }
-  .bottom .runnerNumber {
-    bottom: 71px;
-    left: 6px;
-  }
-}
 @media only screen and (max-width: 1300px) and (min-width: 1151px) {
-  /*.runner:nth-of-type(9),
-  .runner:nth-of-type(10) {
-    display: none;
-  }*/
+  a[data-title]:hover:after {
+    bottom: 127px;
+  }
   .bottom .runner,
   .bottom img {
     width: 5rem;
@@ -337,6 +322,19 @@ a[data-title]:hover:after {
   .bottom .runnerNumber {
     bottom: 92px;
     left: 7px;
+  }
+}
+@media only screen and (max-width: 1150px) {
+  a[data-title]:hover:after {
+    bottom: 104px;
+  }
+  .bottom .runner,
+  .bottom img {
+    width: 4rem;
+  }
+  .bottom .runnerNumber {
+    bottom: 71px;
+    left: 6px;
   }
 }
 @media only screen and (min-width: 767px) and (max-width: 1486px) and (min-height: 738px) {
@@ -503,5 +501,116 @@ a[data-title]:hover:after {
   }
   .mobile {
     display: block;
+  }
+}
+/* iPhone 4 landscape fix */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px)
+and (orientation : landscape)
+and (device-aspect-ratio: 2/3) {
+  .anime,
+  .overlay {
+    height: 142vh;
+  }
+}
+/* iPhone 4 portrait fix */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px)
+and (orientation : portrait) {
+  .heading {
+    font-size: 2rem !important;
+    line-height: 2.5rem !important;
+  }
+  .anime,
+  .overlay {
+    height: 137vh;
+  }
+  .title {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+  .runner:nth-of-type(10) {
+    display: none;
+  }
+  .big {
+    font-size: 2rem !important;
+    line-height: 3rem !important;
+  }
+  .bottom {
+    justify-content: center;
+  }
+}
+/* iPhone 5 landscape fix */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : landscape) {
+  .anime,
+  .overlay {
+    height: 142vh;
+  }
+  .numbers {
+    height: 120vh;
+  }
+  .title {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+  }
+  .bottom {
+    justify-content: center;
+  }
+}
+/* iPhone 5 portrait fix */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
+and (orientation : portrait)
+and (device-aspect-ratio: 40/71) {
+  .heading {
+    font-size: 2rem !important;
+    line-height: 2.5rem !important;
+  }
+  .anime,
+  .overlay {
+    height: 116vh;
+  }
+  .runner:nth-of-type(10) {
+    display: none;
+  }
+  .big {
+    font-size: 2rem !important;
+    line-height: 3rem !important;
+  }
+  .bottom {
+    justify-content: center;
+  }
+}
+/* iPhone 6 fixes */
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 736px)
+and (orientation : landscape) {
+  .runner:nth-of-type(10) {
+    display: block;
+  }
+  .bottom {
+    justify-content: center;
+  }
+}
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 736px)
+and (orientation : portrait) {
+  .anime,
+  .overlay {
+    height: 100vh;
+  }
+  .runner:nth-of-type(10) {
+    display: block;
+  }
+  .bottom {
+    justify-content: center;
   }
 }
