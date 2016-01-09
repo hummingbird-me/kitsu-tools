@@ -1,0 +1,23 @@
+engines:
+   rubocop:
+     enabled: true
+   eslint:
+     enabled: true
+   scss-lint:
+     enabled: true
+   bundler-audit:
+     enabled: true
+   watson:
+     enabled: true
+
+ratings:
+    paths:
+    - "server/app/**/*"
+    - "server/lib/**/*"
+    - "server/**/*.rb"
+    - "client/**/*.js"
+    - "client/**/*.scss"
+
+exclude_paths:
+- "spec/**/*"
+- "vendor/**/*"
