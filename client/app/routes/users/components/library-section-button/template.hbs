@@ -1,6 +1,6 @@
 {{#if (and isLoadingData (not isActive))}}
-  <a href="javascript:void(0);">
-    {{fa-icon icon="spinner" spin=true}}
+  <a>
+    {{fa-icon "spinner" spin=true}}
   </a>
 {{else}}
   <a href="#" class="{{if isActive 'active'}}" {{action 'changeStatus' status}}>

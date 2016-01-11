@@ -1,4 +1,4 @@
-<button class="button" data-toggle="status-dropdown" data-test-selector="library-status-button-entry">
+{{#foundation-button data-toggle="status-dropdown" data-test-selector="library-status-button-entry"}}
   <span>
     {{#if entry}}
       {{status}}
@@ -12,10 +12,10 @@
       {{/if}}
     {{/if}}
   </span>
-</button>
+{{/foundation-button}}
 
 {{#unless isLoading}}
-  <div class="dropdown-pane" id="status-dropdown" data-dropdown>
+  {{#foundation-dropdown dropdownId="status-dropdown" closeOnClick=true}}
     <ul class="no-bullet">
       {{#each statuses as |status|}}
         <li>
@@ -25,5 +25,5 @@
         </li>
       {{/each}}
     </ul>
-  </div>
+  {{/foundation-dropdown}}
 {{/unless}}

@@ -7,7 +7,6 @@ const {
   get,
   set,
   computed,
-  run,
   inject: { service }
 } = Ember;
 
@@ -40,12 +39,6 @@ export default Component.extend({
     }
   }),
 
-  didRender() {
-    run.scheduleOnce('afterRender', this, () => {
-      this.$().foundation();
-    });
-  },
-
   _addToLibrary(status) {
     const user = get(this, 'currentSession.account');
     const anime = get(this, 'anime');
@@ -61,7 +54,6 @@ export default Component.extend({
 
   actions: {
     updateStatus(status) {
-      this.$('.dropdown-pane').foundation('close');
       const entry = get(this, 'entry');
       if (entry === undefined && get(this, 'isLoading') === false) {
         this._addToLibrary(status);

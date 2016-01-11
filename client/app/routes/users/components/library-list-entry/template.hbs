@@ -76,8 +76,20 @@
             </div>
             <div class="dropdown-rating">
               {{! TODO: Implement dropdown }}
-              <button class="button" type="button" data-toggle="privacy-dropdown">Private</button>
-              <div class="dropdown-pane"></div>
+              {{#foundation-button data-toggle="privacy-dropdown"}}
+                {{if entry.private 'Private' 'Public'}}
+                {{fa-icon "caret-down" fixedWidth=true}}
+              {{/foundation-button}}
+
+              {{#foundation-dropdown dropdownId="privacy-dropdown" closeOnClick=true}}
+                <ul class="no-bullet">
+                  <li>
+                    <a {{action 'updateState'}}>
+                      {{if entry.private 'Public' 'Private'}}
+                    </a>
+                  </li>
+                </ul>
+              {{/foundation-dropdown}}
 
               {{! TODO: Implement rating component }}
               <div class="rating-options">

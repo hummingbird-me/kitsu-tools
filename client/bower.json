@@ -16,6 +16,7 @@
     "PACE": "pace#~1.0.2",
     "foundation-sites": "~6.0",
     "font-awesome": "~4.4.0",
-    "nouislider": "~8.2.1"
+    "nouislider": "~8.2.1",
+    "humanize-duration": "~3.4.0"
   }
 }

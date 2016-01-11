@@ -87,6 +87,13 @@ export default Component.extend(IsViewingSelfMixin, EmberValidations, {
         status: 'current'
       });
       this._saveEntry();
+    },
+
+    updateState() {
+      const entry = get(this, 'entry');
+      const state = get(entry, 'private');
+      set(entry, 'private', !state);
+      this._saveEntry();
     }
   }
 });
