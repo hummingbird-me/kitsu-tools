@@ -12,7 +12,6 @@ export default Model.extend({
   private: attr('boolean'),
   rating: attr('number'),
   rewatchCount: attr('number'),
-  rewatching: attr('boolean'),
   status: attr('string'),
   updatedAt: attr('date'),
 

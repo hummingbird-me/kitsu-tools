@@ -10,19 +10,21 @@
     <div class="entry-right medium-5 columns">
       <div class="entry-progress">
         {{#if isViewingSelf}}
-          {{one-way-input value=entry.episodesWatched update=(action (mut entry.episodesWatched))
-            placeholder="0"}}
+          {{one-way-input
+            placeholder="0"
+            value=entry.episodesWatched
+            update=(action 'update' 'episodesWatched')}}
         {{else}}
           <span>{{entry.episodesWatched}}</span>
         {{/if}}
 
-        <span><span class="sep">/</span> {{episodeCount}}</span>
+        <span><span class="sep">/</span> {{episodeCountDisplay}}</span>
       </div>
       <div class="entry-rating">
-        <span>{{rating}}</span>
+        <span>{{ratingDisplay}}</span>
       </div>
       <div class="entry-type">
-        <span>{{type}}</span>
+        <span>{{typeDisplay}}</span>
       </div>
     </div>
   </div>
@@ -32,10 +34,22 @@
       <div class="drop-arrow"></div>
       {{#if isViewingSelf}}
         <div class="small-12 columns">
-          {{one-way-input value=entry.notes update=(action (mut entry.notes))
-            placeholder=personalNote
+          {{! TODO: Switch to textarea? If so, one-way it. }}
+          {{one-way-input
+            value=entry.notes
+            update=(action 'update' 'notes')
+            placeholder=(concat 'Personal notes about ' media.canonicalTitle)
             class="personal-notes"}}
         </div>
+      {{else}}
+        {{#if entry.notes}}
+          <div class="small-12 columns">
+            {{one-way-input
+              class="personal-notes"
+              value=entry.notes
+              readonly=true}}
+          </div>
+        {{/if}}
       {{/if}}
 
       <div class="medium-2 columns">
@@ -63,6 +77,8 @@
             <div class="dropdown-rating">
               {{! TODO: Implement dropdown }}
               <button class="button" type="button" data-toggle="privacy-dropdown">Private</button>
+              <div class="dropdown-pane"></div>
+
               {{! TODO: Implement rating component }}
               <div class="rating-options">
                 <span class="icon-container" data-rating="1">
@@ -86,15 +102,16 @@
 
           <div class="rewatch">
             {{#if isViewingSelf}}
-              {{! TODO: How is this handled? }}
-              <button class="button" type="button" data-toggle="privacy-dropdown">Rewatch</button>
+              <button class="button" type="button" {{action 'rewatch'}}>Rewatch</button>
             {{/if}}
 
             <label>
               <span>Rewatched</span>
               {{#if isViewingSelf}}
-                {{one-way-input value=entry.rewatchCount update=(action (mut entry.rewatchCount))
-                  placeholder="0"}}
+                {{one-way-input
+                  placeholder="0"
+                  value=entry.rewatchCount
+                  update=(action 'update' 'rewatchCount')}}
               {{else}}
                 <span>{{entry.rewatchCount}}</span>
               {{/if}}

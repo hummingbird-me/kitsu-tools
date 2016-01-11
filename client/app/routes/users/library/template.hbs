@@ -2,7 +2,18 @@
   <div class="columns">
     <div class="library-list columns">
       <div class="nav-wrapper">
-        <button class="button" type="button" data-toggle="example-dropdown">Anime</button>
+        {{! TODO: Either componentize or wait for routable component so we
+                  can initalize Foundation at render time. Whichever comes by
+                  the time we implement manga page.
+        }}
+        <button class="button" type="button" data-toggle="media-dropdown">
+          Anime Library {{fa-icon "caret-down" fixedWidth=true}}
+        </button>
+        <div class="dropdown-pane" id="media-dropdown" data-dropdown data-auto-focus="true">
+          <ul class="no-bullet">
+            <li><a>Manga Library</a></li>
+          </ul>
+        </div>
         <ul class="menu">
           <li>
             <a href="#" class="{{if showAll 'active'}}" {{action 'showAll'}}>

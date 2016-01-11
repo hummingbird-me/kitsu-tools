@@ -2,11 +2,13 @@
   <span>
     {{#if entry}}
       {{status}}
+      {{fa-icon "caret-down" fixedWidth=true}}
     {{else}}
       {{#if isLoading}}
         {{fa-icon icon="spinner" spin=true}}
       {{else}}
         Add to Library
+        {{fa-icon "caret-down" fixedWidth=true}}
       {{/if}}
     {{/if}}
   </span>
@@ -14,7 +16,7 @@
 
 {{#unless isLoading}}
   <div class="dropdown-pane" id="status-dropdown" data-dropdown>
-    <ul>
+    <ul class="no-bullet">
       {{#each statuses as |status|}}
         <li>
           <a {{action 'updateStatus' status}}>
