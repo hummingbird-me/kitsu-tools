@@ -17,6 +17,7 @@ const {
 export default Component.extend(InViewportMixin, {
   isLoading: false,
   model: undefined,
+
   store: service(),
   ajax: service(),
 
