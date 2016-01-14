@@ -70,7 +70,7 @@ export default Controller.extend({
           if (get(entry, 'status') !== status) {
             return false;
           }
-          return get(entry, 'anime.searchStr').indexOf(query.toLowerCase()) !== -1;
+          return get(entry, 'anime.searchStr').includes(query.toLowerCase());
         });
         set(section, 'entries', entries);
       });

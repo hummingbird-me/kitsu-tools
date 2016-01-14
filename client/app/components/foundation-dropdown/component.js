@@ -7,6 +7,8 @@ const {
 } = Ember;
 
 export default Component.extend({
+  attributeBindings: ['style'],
+  style: 'position: absolute;',
   dropdownId: undefined,
 
   didInsertElement() {

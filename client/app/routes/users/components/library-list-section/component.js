@@ -10,7 +10,7 @@ const {
 
 // TODO: Support showing time
 export default Component.extend({
-  stats: computed('section', {
+  stats: computed('section.entries', {
     get() {
       const entries = get(this, 'section.entries');
       const count = entries !== undefined ? entries.length : 0;
@@ -19,7 +19,7 @@ export default Component.extend({
     }
   }),
 
-  time: computed('section', {
+  time: computed('section.entries', {
     get() {
       const entries = get(this, 'section.entries') || [];
       const time = moment.duration();
