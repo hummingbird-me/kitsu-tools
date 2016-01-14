@@ -13,6 +13,7 @@ export default Component.extend({
     this._super(...arguments);
     run.scheduleOnce('afterRender', this, () => {
       this.$().foundation();
+
       if (get(this, 'closeOnClick') === true) {
         this.$('.dropdown-pane').on('click', () => {
           this.$('.dropdown-pane').foundation('close');

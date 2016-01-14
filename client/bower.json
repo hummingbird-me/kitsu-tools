@@ -13,7 +13,7 @@
     "moment-timezone": ">= 0.1.0",
     "pretender": "^0.10.0",
     "PACE": "pace#~1.0.2",
-    "foundation-sites": "~6.0",
+    "foundation-sites": "~6.1",
     "font-awesome": "~4.4.0",
     "nouislider": "~8.2.1",
     "humanize-duration": "~3.4.0"
