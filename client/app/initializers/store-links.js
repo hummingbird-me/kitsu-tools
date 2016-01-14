@@ -1,13 +1,9 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import Store from 'ember-data/store';
 
 const {
   get
 } = Ember;
-
-const {
-  Store
-} = DS;
 
 /**
 * Stores the JSON-API `links` top-level object into the model's metadata.

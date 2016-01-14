@@ -1,8 +1,9 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import JSONAPISerializer from 'ember-data/serializers/json-api';
 
-const { String: { camelize } } = Ember;
-const { JSONAPISerializer } = DS;
+const {
+  String: { camelize }
+} = Ember;
 
 export default JSONAPISerializer.extend({
   keyForAttribute(key) {

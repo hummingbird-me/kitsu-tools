@@ -1,10 +1,10 @@
 import { moduleFor, test } from 'ember-qunit';
 import Ember from 'ember';
-import DS from 'ember-data';
+import Model from 'ember-data/model';
+import attr from 'ember-data/attr';
 import setupStore from 'client/tests/helpers/setup-store';
 
 const { run } = Ember;
-const { Model, attr } = DS;
 
 moduleFor('serializer:application', 'Unit | Serializer | application', {
   // Specify the other units that are required for this test.

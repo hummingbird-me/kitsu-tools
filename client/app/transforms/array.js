@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import DS from 'ember-data';
+import Transform from 'ember-data/transform';
 
-export default DS.Transform.extend({
+export default Transform.extend({
   deserialize(value) {
     if (Ember.isArray(value)) {
       return Ember.A(value);
