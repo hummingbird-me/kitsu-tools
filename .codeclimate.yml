@@ -12,11 +12,11 @@ engines:
 
 ratings:
     paths:
-    - "server/app/**/*"
-    - "server/lib/**/*"
-    - "server/**/*.rb"
-    - "client/**/*.js"
-    - "client/**/*.scss"
+    - "app/**/*"
+    - "lib/**/*"
+    - "**/*.rb"
+    - "frontend/**/*.js"
+    - "app/assets/**/*.scss"
 
 exclude_paths:
 - "spec/**/*"
