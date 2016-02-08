@@ -7,9 +7,9 @@
 body {
   background: #272C32;
   font-family: "Open Sans";
-  height: 100vh;
-    overflow: hidden;
-    overflow-y: scroll;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 section {
@@ -189,7 +189,7 @@ section {
 }
 
 .overlay {
-  height: 100vh;
+  height: 100%;
   width: 100%;
   background: #272C32;
   opacity: .6;
