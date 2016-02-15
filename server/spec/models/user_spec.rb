@@ -142,5 +142,12 @@ RSpec.describe User, type: :model do
         end
       end.to change { subject.past_names.length }.from(0).to(1)
     end
+    it 'should return first in list when previous_name is called' do
+      3.times do |i|
+        subject.name="Misaka100#{i}"
+        subject.save
+      end
+      expect(subject.past_names[0]).to equal(subject.previous_name)
+    end
   end
 end
