@@ -99,6 +99,6 @@ class Story < ActiveRecord::Base
   end
   
   before_save do
-    false if user.ninja_banned? || target.ninja_banned?
+    false if user.try(:ninja_banned?) || target.try(:ninja_banned?)
   end
 end
