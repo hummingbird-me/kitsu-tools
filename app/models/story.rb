@@ -97,4 +97,8 @@ class Story < ActiveRecord::Base
   after_destroy do
     SubstoryReaperWorker.perform_async(self.id)
   end
+  
+  before_save do
+    false if user.ninja_banned? || target.ninja_banned?
+  end
 end
