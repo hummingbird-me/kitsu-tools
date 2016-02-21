@@ -99,6 +99,7 @@ class Story < ActiveRecord::Base
   end
   
   before_save do
-    false if user.try(:ninja_banned?) || target.try(:ninja_banned?)
+    subject = (target_type == 'User') ? target : user
+    false if story_type == 'comment' && subject.ninja_banned?
   end
 end

@@ -62,6 +62,7 @@ class Substory < ActiveRecord::Base
       h['formatted_comment'] = MessageFormatter.format_message body
       self.data = h
     end
+    false if %i[comment reply].include?(substory_type) && user.ninja_banned?
   end
 
   # TODO: Deprecate this in favour of the Action service.
