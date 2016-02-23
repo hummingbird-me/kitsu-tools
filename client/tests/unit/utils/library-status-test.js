@@ -9,18 +9,6 @@ test('getHumanStatuses', function(assert) {
   assert.deepEqual(result, ['Currently Watching', 'Plan to Watch', 'Completed', 'On Hold', 'Dropped']);
 });
 
-test('numberToHuman', function(assert) {
-  assert.expect(1);
-  const result = libraryStatus.numberToHuman(2);
-  assert.equal(result, 'Plan to Watch');
-});
-
-test('enumToNumber', function(assert) {
-  assert.expect(1);
-  const result = libraryStatus.enumToNumber('on_hold');
-  assert.equal(result, 4);
-});
-
 test('humanToEnum', function(assert) {
   assert.expect(1);
   const result = libraryStatus.humanToEnum('Plan to Watch');
@@ -33,8 +21,26 @@ test('humanToNumber', function(assert) {
   assert.equal(result, 2);
 });
 
+test('numberToEnum', function(assert) {
+  assert.expect(1);
+  const result = libraryStatus.numberToEnum(2);
+  assert.equal(result, 'planned');
+});
+
+test('numberToHuman', function(assert) {
+  assert.expect(1);
+  const result = libraryStatus.numberToHuman(2);
+  assert.equal(result, 'Plan to Watch');
+});
+
 test('enumToHuman', function(assert) {
   assert.expect(1);
   const result = libraryStatus.enumToHuman('planned');
   assert.equal(result, 'Plan to Watch');
+});
+
+test('enumToNumber', function(assert) {
+  assert.expect(1);
+  const result = libraryStatus.enumToNumber('on_hold');
+  assert.equal(result, 4);
 });

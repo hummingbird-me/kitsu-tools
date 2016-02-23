@@ -1,12 +1,13 @@
 import Ember from 'ember';
 import Transform from 'ember-data/transform';
 
+const {
+  isArray
+} = Ember;
+
 export default Transform.extend({
   deserialize(value) {
-    if (Ember.isArray(value)) {
-      return Ember.A(value);
-    }
-    return Ember.A();
+    return isArray(value) ? value : [];
   },
 
   serialize(value) {

@@ -29,7 +29,7 @@ export default Model.extend({
     get() {
       const titles = get(this, 'titles');
       let searchStr = '';
-      for (let key in titles) {
+      for (const key in titles) {
         searchStr += titles[key];
       }
       return searchStr.toLowerCase();

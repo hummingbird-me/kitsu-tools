@@ -3,7 +3,7 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 
 const {
-  computed
+  computed: { equal }
 } = Ember;
 
 export default Model.extend({
@@ -12,19 +12,19 @@ export default Model.extend({
   avatar: attr('string'),
   bio: attr('string'),
   coverImage: attr('string'),
-  email: attr('string'), // @Note: Used for user creation
+  email: attr('string'),
   followersCount: attr('number'),
   followingCount: attr('number'),
   location: attr('string'),
   onboarded: attr('boolean'),
-  password: attr('string'), // @Note: Used for user creation
+  password: attr('string'),
   pastNames: attr('array'),
   name: attr('string'),
-  ratingSystem: attr('number'), // @Note: 1 === smile, 2 === star
+  ratingSystem: attr('number'),
   toFollow: attr('boolean'),
   waifuOrHusbando: attr('string'),
   website: attr('string'),
 
-  isSmileRating: computed.equal('ratingSystem', 1),
-  isStarRating: computed.equal('ratingSystem', 2)
+  isSmileRating: equal('ratingSystem', 1),
+  isStarRating: equal('ratingSystem', 2)
 });

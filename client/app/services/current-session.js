@@ -6,22 +6,21 @@ const {
   set,
   isPresent,
   computed,
+  computed: { alias },
   inject: { service }
 } = Ember;
 
 export default Service.extend({
   session: service(),
   store: service(),
-  userId: null,
+  userId: undefined,
 
-  isAuthenticated: computed.alias('session.isAuthenticated'),
+  isAuthenticated: alias('session.isAuthenticated'),
 
   account: computed('userId', {
     get() {
       const userId = get(this, 'userId');
-      if (isPresent(userId)) {
-        return get(this, 'store').peekRecord('user', userId);
-      }
+      return isPresent(userId) ? get(this, 'store').peekRecord('user', userId) : undefined;
     }
   }),
 
@@ -34,7 +33,7 @@ export default Service.extend({
   },
 
   clean() {
-    set(this, 'userId', null);
+    set(this, 'userId', undefined);
   },
 
   isCurrentUser(user) {

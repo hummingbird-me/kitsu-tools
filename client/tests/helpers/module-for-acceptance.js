@@ -8,7 +8,9 @@ export default function(name, options = {}) {
       this.application = startApp();
 
       if (options.beforeEach) {
+        // jscs:disable
         options.beforeEach.apply(this, arguments);
+        // jscs:enable
       }
     },
 
@@ -16,7 +18,9 @@ export default function(name, options = {}) {
       destroyApp(this.application);
 
       if (options.afterEach) {
+        // jscs:disable
         options.afterEach.apply(this, arguments);
+        // jscs:enable
       }
     }
   });

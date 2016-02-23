@@ -1,12 +1,13 @@
 import Ember from 'ember';
 import Transform from 'ember-data/transform';
 
+const {
+  $: jQuery
+} = Ember;
+
 export default Transform.extend({
   deserialize(value) {
-    if (Ember.$.isPlainObject(value)) {
-      return value;
-    }
-    return {};
+    return jQuery.isPlainObject(value) ? value : {};
   },
 
   serialize(value) {
