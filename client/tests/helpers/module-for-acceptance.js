@@ -15,13 +15,12 @@ export default function(name, options = {}) {
     },
 
     afterEach() {
-      destroyApp(this.application);
-
       if (options.afterEach) {
         // jscs:disable
         options.afterEach.apply(this, arguments);
         // jscs:enable
       }
+      destroyApp(this.application);
     }
   });
 }

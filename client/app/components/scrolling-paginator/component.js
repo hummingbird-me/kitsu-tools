@@ -19,7 +19,6 @@ export default Component.extend(InViewportMixin, {
   model: undefined,
 
   store: service(),
-  ajax: service(),
 
   nextLink: computed('_links', {
     get() {
@@ -31,13 +30,8 @@ export default Component.extend(InViewportMixin, {
   _links: computed('model', {
     get() {
       let model = get(this, 'model');
-      model = getWithDefault(model, 'firstObject', model);
-      const modelName = get(model, 'constructor.modelName');
-      if (modelName === undefined) {
-        return undefined;
-      }
-      const metadata = get(this, 'store')._metadataFor(modelName);
-      return get(metadata, '_links');
+      const metadata = get(model, 'meta');
+      return getWithDefault(metadata, '_links', undefined);
     }
   }),
 
@@ -53,6 +47,7 @@ export default Component.extend(InViewportMixin, {
   },
 
   didEnterViewport() {
+    this._super();
     run.debounce(this, this._getNextData, DEBOUNCE, true);
   },
 
@@ -62,21 +57,41 @@ export default Component.extend(InViewportMixin, {
       return;
     }
     set(this, 'isLoading', true);
-    get(this, 'ajax').request(nextLink, { includesHost: true })
-      .then((response) => {
+    let model = get(this, 'model');
+    model = getWithDefault(model, 'firstObject', model);
+    const { modelName } = model.constructor;
+    const options = this._parseLink(nextLink);
+    get(this, 'store').query(modelName, options)
+      .then((records) => {
         // It's possible that the user navigated away during the ajax request
         // which has destroyed the component
         if (get(this, 'model') === undefined) {
           return;
         }
-        // push the content into 'store' which will update the meta object for
-        // this model, and give us the next 'nextLink'. Also add the current
-        // content onto the controller.
-        const records = get(this, 'store').push(response);
+        // Add the records to our data
         const content = get(this, 'model').toArray();
         content.addObjects(records);
         set(this, 'model', content);
+        // update meta record -_-'
+        set(get(this, 'model'), 'meta', get(records, 'meta'));
         set(this, 'isLoading', false);
       });
+  },
+
+  _parseLink(url) {
+    url = window.decodeURI(url);
+    url = url.split('?')[1].split('&');
+    const filter = {};
+    url.forEach((option) => {
+      option = option.split('=');
+      if (option[0].includes('[') === true) {
+        const match = option[0].match(/(.+)\[(.+)\]/);
+        filter[match[1]] = filter[match[1]] || {};
+        filter[match[1]][match[2]] = decodeURIComponent(option[1]);
+      } else {
+        filter[option[0]] = decodeURIComponent(option[1]);
+      }
+    });
+    return filter;
   }
 });
