@@ -1,58 +1,56 @@
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Content-Type: text/html; charset=utf-8
-Date: Thu, 17 Sep 2015 01:01:05 GMT
+Date: Wed, 23 Mar 2016 23:42:22 GMT
 Server: Apache
-Set-Cookie: MALHLOGSESSID=064de82cd3b3e3d38c1028b7a1116cf8; expires=Tue, 15-Sep-2020 01:01:05 GMT; Max-Age=157680000; path=/
-Set-Cookie: MALSESSIONID=1neoo75lr6gue57fvtuicofue0; expires=Thu, 24-Sep-2015 01:01:05 GMT; Max-Age=604800; path=/; HttpOnly
 Vary: User-Agent,Accept-Encoding
 transfer-encoding: chunked
 Connection: keep-alive
-Set-Cookie: visid_incap_81958=MkX0Z9+DTqK0/C/HAAEB29EQ+lUAAAAAQUIPAAAAAADUvSFpRxkpdOtvL22BHQlt; expires=Fri, 15 Sep 2017 11:20:32 GMT; path=/; Domain=.myanimelist.net
-Set-Cookie: nlbi_81958=OVsHG9EAm3T28mXJUM6emAAAAAAz8sko6Lm8290Krcn1pRv5; path=/; Domain=.myanimelist.net
-Set-Cookie: incap_ses_84_81958=dpOSUK2xOyGEpOr0xW0qAdEQ+lUAAAAAuc4CvQen3LntBSlbJhCx2g==; path=/; Domain=.myanimelist.net
-X-Iinfo: 7-11100154-11100155 NNNN CT(26 -1 0) RT(1442451664504 0) q(0 0 0 -1) r(7 7) U1
-X-CDN: Incapsula
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
 <head>
 
 
 <title>
 Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 </title>
-<meta name="description" content="Characters, voice actors, producers and directors from Sword Art Online on MyAnimeList, the internet&#039;s largest anime database. In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of &quot;NerveGear&quot; technology, players can control their avatars within the game using nothing but their own thoughts. Kazuto Kirigaya, nicknamed &quot;Kirito,&quot; is among the lucky few enthusiasts who get their hands ..." />
+<meta name="description" content="Characters, voice actors, producers and directors from Sword Art Online on MyAnimeList, the internet&#039;s largest anime database. In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of &quot;NerveGear&quot; technology, players can control their avatars within the game using nothing but their own thoughts. Kazuto Kirigaya, nicknamed &quot;Kirito,&quot; is among the lucky few enthusiasts who get their hands o..." />
 
 
 <meta name="keywords" content="anime, myanimelist, anime news, manga" />
 
 
-<meta name='csrf_token' content='8426d9c37e0757063906b4eb13032be0e700a6bb'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-8dd56e91bb.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=34"></script>
 
 
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/fansubbers.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/animeinfo.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=34"></script>
+    <meta property="og:locale" content="en_US"><meta property="fb:app_id" content="360769957454434"><meta property="og:site_name" content="MyAnimeList.net"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@myanimelist"><meta property="og:title" content="Sword Art Online"><meta property="og:type" content="video.tv_show"><meta property="og:image" content="http://cdn.myanimelist.net/images/anime/11/39717.jpg"><meta name="twitter:image:src" content="http://cdn.myanimelist.net/r/120x120/images/anime/11/39717.jpg?s=27ebe8061f61bc76c96a65221b2eb24f"><meta property="og:url" content="http://myanimelist.net/anime/11757/Sword_Art_Online/characters"><meta property="og:description" content="Characters, voice actors, producers and directors from Sword Art Online on MyAnimeList, the internet&#039;s largest anime database. In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of &quot;NerveGear&quot; technology, players can control their avatars within the game using nothing but their own thoughts. Kazuto Kirigaya, nicknamed &quot;Kirito,&quot; is among the lucky few enthusiasts who get their hands o...">
 
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=34" id="myanimelistjs" data-myanimelistjs-params='{&quot;is_request_bot_filter_log&quot;:true,&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;}'></script>
+<meta name='csrf_token' content='b5c20fff28a2493481806c78a4ef87c01e135b41'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-991f0f161c.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=57"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=57"></script>
 
-<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.css?v=24" type="text/css" />
-<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.css?v=24" type="text/css" />
-<link rel="stylesheet" href="http://cdn.myanimelist.net/css/infopages.css?v=24" type="text/css" />
 
-	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=24" />
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fansubbers.js?v=57"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=57"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.js?v=57"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.js?v=57"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/animeinfo.js?v=57"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=57"></script>
 
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=24" />
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=24" />
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-9084f5fdb6.css" />
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=57" id="myanimelistjs" data-myanimelistjs-params='{&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;,&quot;is_request_bot_filter_log&quot;:true}'></script>
+
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.css?v=32" type="text/css" />
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.css?v=32" type="text/css" />
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/infopages.css?v=32" type="text/css" />
+
+	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=32" />
+
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=32" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=32" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-dae0223b92.css" />
 <link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
 
 <link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
@@ -73,16 +71,16 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
   })();
 </script>
 
-<!-- GA script -->
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-369102-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-369102-1', 'auto');
+  ga('require', 'linkid'); // Enhanced Link Attribution
+  ga('send', 'pageview');
+
 </script>
 
 <script src="https://apis.google.com/js/platform.js" async defer>{lang: 'en-GB'}</script>
@@ -93,26 +91,26 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 
 <body onload=" " class="page-common">
 
-
 <div id="myanimelist">
+
 
     <script type='text/javascript'>
     googletag.cmd.push(function() {
-      googletag.defineOutOfPageSlot('/84947469/Skin_Others', 'div-gpt-ad-1143661983').addService(googletag.pubads());
+      googletag.defineOutOfPageSlot('/84947469/Skin_OtherPages_SAFE', 'div-gpt-ad-1410326056').addService(googletag.pubads());
       googletag.pubads().collapseEmptyDivs();
       googletag.enableServices();
     });
   </script>
   <div style="display: none !important;">
-    <div id='div-gpt-ad-1143661983'>
+    <div id='div-gpt-ad-1410326056' data-code="Skin_OtherPages_SAFE">
       <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1143661983'); });
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1410326056'); });
       </script>
     </div>
   </div>
 
     <script type='text/javascript'>
-    window.MAL.SkinAd.prepareForSkin('Skin_Others');
+    window.MAL.SkinAd.prepareForSkin('Skin_OtherPages_SAFE');
   </script>
 
     <div id="ad-skin-bg-left" class="ad-skin-side-outer ad-skin-side-bg bg-left">
@@ -124,52 +122,26 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
   </div>
 <div class="wrapper">
 
-<div id="headerSmall"><a href="/">MyAnimeList.net</a><a href="http://myanimelist.net/watch" class="banner-header-anime-straming">
-  <img src="http://cdn.myanimelist.net/images/stream_banner/banner_anime_streaming.png" srcset="http://cdn.myanimelist.net/images/stream_banner/banner_anime_streaming@2x.png 2x" alt="Anime Streaming Now Available on MAL!">
-</a>
-  <div id="header-menu">
-    <div class="header-menu-login">
-      <a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters" id="malLogin">Login</a>
-      <a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters">Sign Up</a>
-    </div>
-  </div>
-</div>  <div id="menu">
+<div id="headerSmall"><a href="/">MyAnimeList.net</a><div id="header-menu" ><div class="header-menu-login"><a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters" id="malLogin">Login</a><a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters">Sign Up</a></div></div></div>  <div id="menu">
 
-    <div id="menu_right">
-
-      <form id="searchBar" method="get">
-
-        <input id="topSearchText" type="text" class="inputtext" value="Search" size="30" />
-        <select id="topSearchValue" class="inputtext">
-        <option value="0">Anime</option>
-        <option value="1">Manga</option>
-        <option value="2">Characters</option>
-        <option value="6">People</option>
-        <option value="4">Clubs</option>
-        <option value="5">Users</option>
-        </select>
-
-        <input id="topSearchButon" type="image" src="http://cdn.myanimelist.net/images/magnify.gif" value="Search" />
-
-      </form>
-
-	</div>    <div id="menu_left">
+    <div id="menu_right"><form id="searchBar" method="get" class="searchBar"><div class="form-select-outer fl-l"><select name="type" id="topSearchValue" class="inputtext"><option value="anime">Anime</option><option value="manga">Manga</option><option value="character">Characters</option><option value="person">People</option><option value="club">Clubs</option><option value="user">Users</option></select></div><input id="topSearchText" type="text" name="keyword" class="inputtext js-topSearchText fl-l" placeholder="Search Anime, Manga, and more..." size="30" autocomplete="off" /><input id="topSearchButon" class="fl-l" type="submit" value="&#xf002"></form><div id="topSearchResultList" class="incrementalSearchResultList"></div></div>
+    <div id="menu_left">
                         <ul id="nav">
     <li class="small"><a href="#" class="non-link">Anime</a>
     <ul class="wider">
-            <li><a href="/anime.php">Anime Search</a></li>
+     <li><a href="/anime.php">Anime Search</a></li>
+      <li><a href="/topanime.php">Top Anime</a></li>
+      <li><a href="http://myanimelist.net/anime/season">Seasonal Anime</a></li>
       <li><a href="/reviews.php?t=anime">Reviews</a></li>
       <li><a href="/recommendations.php?s=recentrecs&t=anime">Recommendations</a></li>
-      <li><a href="/topanime.php">Top Anime</a></li>
-      <li><a href="/anime/season">Seasonal Anime</a></li>
     </ul>
   </li>
   <li class="small"><a href="#" class="non-link">Manga</a>
     <ul class="wider">
-            <li><a href="/manga.php">Manga Search</a></li>
+     <li><a href="/manga.php">Manga Search</a></li>
+      <li><a href="/topmanga.php">Top Manga</a></li>
       <li><a href="/reviews.php?t=manga">Reviews</a></li>
       <li><a href="/recommendations.php?s=recentrecs&t=manga">Recommendations</a></li>
-      <li><a href="/topmanga.php">Top Manga</a></li>
     </ul>
   </li>
   <li><a href="#" class="non-link">Community</a>
@@ -186,27 +158,30 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
       <li><a href="http://myanimelist.net/featured">Featured Articles</a></li>
       <li><a href="/people.php">People</a></li>
       <li><a href="/character.php">Characters</a></li>
-      <li><a href="/favorites.php">Top Favorites</a></li>
     </ul>
   </li>
-  <li class="small"><a href="http://myanimelist.net/watch">Watch</a></li>
+  <li class="small"><a href="#" class="non-link">Watch</a>
+    <ul class="wider">
+      <li><a href="/watch">Promotional Videos</a></li>
+      <li><a href="/watch/daisuki">DAISUKI</a></li>
+    </ul>
+  </li>
   <li class="smaller"><a href="#" class="non-link">Help</a>
     <ul class="wide">
       <li><a href="/about.php">About</a></li>
       <li><a href="/about.php?go=support">Support</a></li>
-      <li><a href="/about.php?go=advertising">Advertising</a></li>
+      <li><a href="http://myanimelist.net/advertising">Advertising</a></li>
       <li><a href="/forum/?topicid=515949">FAQ</a></li>
       <li><a href="/modules.php?go=report">Report</a></li>
       <li><a href="/about.php?go=team">Staff</a></li>
     </ul>
   </li>
   </ul>
-                  </div>  </div><div id="contentWrapper" itemscope itemtype="http://schema.org/TVSeries">
-<h1><div style="float: right; font-size: 13px;">Ranked #464</div><span itemprop="name">Sword Art Online</span></h1>
-    <div id="content">
+                  </div>
+  </div><div id="contentWrapper" itemscope itemtype="http://schema.org/Product"><div><span class="header-right">Ranked #564</span><h1 class="h1"><span itemprop="name">Sword Art Online</span></h1></div><div id="content">
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr>
-	 <td class="borderClass" width="225" style="border-width: 0 1px 0 0;" valign="top">
+	 <td class="borderClass" width="225" style="border-width: 0 1px 0 0;" valign="top"><div class="js-scrollfix-bottom" style="width: 225px">
 
 <div style="text-align: center;">
           <a href="http://myanimelist.net/anime/11757/Sword_Art_Online/pics">
@@ -254,27 +229,18 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 <!-- end My List -->
 
 <div id="profileRows" class="pt0">
-  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters&amp;error=login_required" style="font-weight:normal;">Add to Favorites</a>
-  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters&amp;error=login_required">Edit Anime Information</a></div>
+  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters&amp;error=login_required" style="font-weight:normal;">Add to Favorites</a><a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters&amp;error=login_required">Edit Anime Information</a></div>
 
 <div id="editdiv" style="display: none; margin-bottom: 16px;">
   <form method="GET" action="http://myanimelist.net/dbchanges.php" style="display: inline;">
     <input type="hidden" name="aid" value="11757">
     <div class="spaceit_pad">What would you like to edit?</div>
-    <select name="t" id="t" class="inputtext"><option value="synopsis">Synopsis</option><option value="background">Background</option><option value="pic">Picture</option><option value="airingdates">Airing Dates</option><option value="producers">Producers</option><option value="relations">Relations</option><option value="rating">Rating</option><option value="duration">Duration</option></select>
+                      <select name="t" id="t" class="inputtext"><option value="synopsis">Synopsis</option><option value="background">Background</option><option value="alternative_titles">Alternative Titles</option><option value="pic">Picture</option><option value="airingdates">Airing Dates</option><option value="producers">Producers</option><option value="relations">Relations</option><option value="rating">Rating</option><option value="duration">Duration</option><option value="source">Source</option><option value="broadcast">Broadcast</option></select>
      &nbsp;<input type="submit" value="Go" class="inputButton">
   </form>
 </div>
 
-
-<div class="mt8 icon-block">
-    <a class="sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters"></a>
-    <a class="sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters"></a>
-    <a class="sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters&amp;title=Sword%20Art%20Online"></a>
-    <a class="sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?url=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters&amp;text=Sword%20Art%20Online&amp;related=MyAnimeList.net&amp;hashtags=Anime,MAL"></a>
-    <a class="sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=%2Fanime%2F11757%2FSword_Art_Online%2Fcharacters&amp;name=Sword%20Art%20Online"></a>
-</div>
-
+<div class="js-sns-icon-container icon-block mt8"><a data-ga-network="facebook" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online"></a><a data-ga-network="twitter" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?related=MyAnimeList.net&amp;via=myanimelist&amp;url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;text=Sword%20Art%20Online&amp;hashtags=anime"></a><a data-ga-network="google+" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online"></a><a data-ga-network="reddit" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;title=Sword%20Art%20Online"></a><a data-ga-network="tumblr" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;name=Sword%20Art%20Online"></a></div>
   <h2>Alternative Titles</h2><div class="spaceit_pad">
     <span class="dark_text">English:</span> Sword Art Online
   </div><div class="spaceit_pad">
@@ -286,55 +252,75 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 <h2>Information</h2>
 
 <div>
-  <span class="dark_text">Type:</span> TV
-</div>
+  <span class="dark_text">Type:</span> <a href="http://myanimelist.net/topanime.php?type=tv">TV</a>
+  </div>
 
 <div class="spaceit">
   <span class="dark_text">Episodes:</span>
   25
-</div>
+  </div>
 
 <div>
   <span class="dark_text">Status:</span>
   Finished Airing
-</div>
+  </div>
 
 <div class="spaceit">
   <span class="dark_text">Aired:</span>
   Jul 8, 2012 to Dec 23, 2012
-</div>
+  </div>
 
-<div>
-  <span class="dark_text">Producers:</span>
-      <a href="http://myanimelist.net/anime.php?p=17">Aniplex</a>,     <a href="http://myanimelist.net/anime.php?p=56">A-1 Pictures</a>,     <a href="http://myanimelist.net/anime.php?p=79">Genco</a>,     <a href="http://myanimelist.net/anime.php?p=315">DAX Production</a>,     <a href="http://myanimelist.net/anime.php?p=493">Aniplex of America</a><sup>L</sup>,     <a href="http://myanimelist.net/anime.php?p=681">ASCII Media Works</a></div>
+  <div>
+    <span class="dark_text">Premiered:</span>
+          <a href="http://myanimelist.net/anime/season/2012/summer">Summer 2012</a>
+          </div>
+
+  <div class="spaceit">
+    <span class="dark_text">Broadcast:</span>
+    Unknown
+      </div>
+
+  <div>
+    <span class="dark_text">Producers:</span>
+          <a href="http://myanimelist.net/anime/producer/17" title="Aniplex">Aniplex</a>,       <a href="http://myanimelist.net/anime/producer/79" title="Genco">Genco</a>,       <a href="http://myanimelist.net/anime/producer/315" title="DAX Production">DAX Production</a>,       <a href="http://myanimelist.net/anime/producer/681" title="ASCII Media Works">ASCII Media Works</a>  </div>
+  <div class="spaceit">
+    <span class="dark_text">Licensors:</span>
+          <a href="http://myanimelist.net/anime/producer/493" title="Aniplex of America">Aniplex of America</a>  </div>
+  <div>
+    <span class="dark_text">Studios:</span>
+          <a href="http://myanimelist.net/anime/producer/56" title="A-1 Pictures">A-1 Pictures</a>  </div>
 
 <div class="spaceit">
-  <span class="dark_text">Genres:</span>
-      <span itemprop="genre"><a href="http://myanimelist.net/anime.php?genre%5B%5D=1">Action</a></span>,     <span itemprop="genre"><a href="http://myanimelist.net/anime.php?genre%5B%5D=2">Adventure</a></span>,     <span itemprop="genre"><a href="http://myanimelist.net/anime.php?genre%5B%5D=10">Fantasy</a></span>,     <span itemprop="genre"><a href="http://myanimelist.net/anime.php?genre%5B%5D=11">Game</a></span>,     <span itemprop="genre"><a href="http://myanimelist.net/anime.php?genre%5B%5D=22">Romance</a></span></div>
+  <span class="dark_text">Source:</span>
+  Light novel
+  </div>
 
 <div>
+  <span class="dark_text">Genres:</span>
+  <a href="http://myanimelist.net/anime/genre/1" title="Action">Action</a>, <a href="http://myanimelist.net/anime/genre/2" title="Adventure">Adventure</a>, <a href="http://myanimelist.net/anime/genre/10" title="Fantasy">Fantasy</a>, <a href="http://myanimelist.net/anime/genre/11" title="Game">Game</a>, <a href="http://myanimelist.net/anime/genre/22" title="Romance">Romance</a></div>
+
+<div class="spaceit">
   <span class="dark_text">Duration:</span>
   23 min. per ep.
-</div>
-<div class="spaceit">
+  </div>
+
+<div>
   <span class="dark_text">Rating:</span>
   PG-13 - Teens 13 or older
-</div>
+  </div>
 
-<sup><small>L</small></sup><small> represents licensing company</small></div>
-<br />
 <br />
 
 <h2>Statistics</h2>
 <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
   <span class="dark_text">Score:</span>
-  <span itemprop="ratingValue">8.04</span><sup>1</sup> (scored by <span itemprop="ratingCount">421,340</span> users)
+  <span itemprop="ratingValue">7.97</span><sup>1</sup> (scored by <span itemprop="ratingCount">510,359</span> users)
       <meta itemprop="bestRating" content="10">
     <meta itemprop="worstRating" content="1">
   </div>
 <div class="spaceit">
   <span class="dark_text">Ranked:</span>
-  #464<sup>2</sup>
+  #564<sup>2</sup>
 </div>
 <div>
   <span class="dark_text">Popularity:</span>
@@ -342,11 +328,11 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 </div>
 <div class="spaceit">
   <span class="dark_text">Members:</span>
-  586,752
+    707,662
 </div>
 <div>
   <span class="dark_text">Favorites:</span>
-  31,867
+  37,136
 </div>
 <div style="margin-top: 2px;">
   <small>
@@ -360,12 +346,14 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
     based on the <a href="/topanime.php">top anime</a> page. Please note that 'Not yet aired' and 'R18+' titles are excluded.
   </small>
 </div>
-<br />
 
-</td><td valign="top" style="padding-left: 5px;"><a name="lower"></a>
+
+</div></td><td valign="top" style="padding-left: 5px;"><div class="js-scrollfix-bottom-rel"><a name="lower"></a>
 <div id="horiznav_nav" style="margin: 5px 0 10px 0;">
   <ul style="margin-right: 0; padding-right: 0;">
         <li><a href="http://myanimelist.net/anime/11757/Sword_Art_Online">Details</a>
+    </li>
+        <li><a href="/anime/11757/Sword_Art_Online/video">Videos</a>
     </li>
         <li>      <a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode">Episodes</a>
     </li>
@@ -396,9 +384,9 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 
 
 
-                        <div class="breadcrumb " itemscope itemtype="http://schema.org/BreadcrumbList"><div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/" itemprop="item"><span itemprop="name">
+                    <div class="breadcrumb " itemscope itemtype="http://schema.org/BreadcrumbList"><div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/" itemprop="item"><span itemprop="name">
               Top
-            </span></a><meta itemprop="position" content="1"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/topanime.php" itemprop="item"><span itemprop="name">
+            </span></a><meta itemprop="position" content="1"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/anime.php" itemprop="item"><span itemprop="name">
               Anime
             </span></a><meta itemprop="position" content="2"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online" itemprop="item"><span itemprop="name">
               Sword Art Online
@@ -412,7 +400,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 <h2><div class="floatRightHeader"><a href="/panel.php?go=characters&do=add" style="font-weight: normal;">Add character</a></div>Characters & Voice Actors</h2><table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
-			<div class="picSurround"><a href="/character/36765/Kazuto_Kirigaya" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/7/204821t.jpg" alt="Kirigaya, Kazuto" vspace="4" hspace="8" border="0"></a></div>
+			<div class="picSurround"><a href="/character/36765/Kazuto_Kirigaya" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/r/21x32/images/characters/7/204821.jpg?s=8346cc221417f8f93f85904d31188ea9" alt="Kirigaya, Kazuto" vspace="4" hspace="8" border="0"></a></div>
 			</td>
 			<td valign="top" class="borderClass bgColor2">
 			<a href="/character/36765/Kazuto_Kirigaya">Kirigaya, Kazuto</a>
@@ -425,7 +413,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/732/Bryce_Papenbrook">Papenbrook, Bryce</a><br />
                       <small>English</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/732/Bryce_Papenbrook"><img src="http://cdn.myanimelist.net/images/voiceactors/3/29853v.jpg" alt="Papenbrook, Bryce" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/732/Bryce_Papenbrook"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/29853.jpg?s=db826bcb77e33677f2474f7a8f3455c9" alt="Papenbrook, Bryce" border="0"></a></div>
                       </td>
                       </tr>
                       <tr>
@@ -433,7 +421,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/1110/Alessio_De_Filippis">De Filippis, Alessio</a><br />
                       <small>Italian</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/1110/Alessio_De_Filippis"><img src="http://cdn.myanimelist.net/images/voiceactors/1/37187v.jpg" alt="De Filippis, Alessio" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/1110/Alessio_De_Filippis"><img src="http://cdn.myanimelist.net/r/22x32/images/voiceactors/1/37187.jpg?s=cf60686a6aca54169049963efbcbfc4f" alt="De Filippis, Alessio" border="0"></a></div>
                       </td>
                       </tr>
                       <tr>
@@ -441,7 +429,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/11817/Yoshitsugu_Matsuoka">Matsuoka, Yoshitsugu</a><br />
                       <small>Japanese</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/11817/Yoshitsugu_Matsuoka"><img src="http://cdn.myanimelist.net/images/voiceactors/2/40132v.jpg" alt="Matsuoka, Yoshitsugu" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/11817/Yoshitsugu_Matsuoka"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/2/42176.jpg?s=f82f32b5b4906aa942a761329c64e576" alt="Matsuoka, Yoshitsugu" border="0"></a></div>
                       </td>
                       </tr>
                       <tr>
@@ -449,7 +437,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/14753/Su_Jin_Kang">Kang, Su Jin</a><br />
                       <small>Korean</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/14753/Su_Jin_Kang"><img src="http://cdn.myanimelist.net/images/voiceactors/2/15289v.jpg" alt="Kang, Su Jin" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/14753/Su_Jin_Kang"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/2/15289.jpg?s=5ef8a1421179c1f4a2e7de46bc754147" alt="Kang, Su Jin" border="0"></a></div>
                       </td>
                       </tr>
                       <tr>
@@ -457,7 +445,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/21035/Patrick_Keller">Keller, Patrick</a><br />
                       <small>German</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/21035/Patrick_Keller"><img src="http://cdn.myanimelist.net/images/voiceactors/2/23959v.jpg" alt="Keller, Patrick" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/21035/Patrick_Keller"><img src="http://cdn.myanimelist.net/r/22x32/images/voiceactors/2/23959.jpg?s=024675ac01cc93e1699c5a29c3f6af8f" alt="Keller, Patrick" border="0"></a></div>
                       </td>
                       </tr>
                       <tr>
@@ -465,7 +453,15 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/25691/Damien_Laquet">Laquet, Damien</a><br />
                       <small>French</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/25691/Damien_Laquet"><img src="http://cdn.myanimelist.net/images/voiceactors/1/28001v.jpg" alt="Laquet, Damien" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/25691/Damien_Laquet"><img src="http://cdn.myanimelist.net/r/23x23/images/voiceactors/1/28001.jpg?s=9154da9bce6d4fa43b9fcf8d6dd7c381" alt="Laquet, Damien" border="0"></a></div>
+                      </td>
+                      </tr>
+                      <tr>
+                      <td valign="top" align="right" style="padding: 0 4px;" nowrap>
+                      <a href="/people/31535/Darío_Torrent">Torrent, Darío</a><br />
+                      <small>Spanish</small>
+                      </td>
+                      <td valign="top"><div class="picSurround"><a href="/people/31535/Darío_Torrent"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/31215.jpg?s=fa2aada1f34b6848e82c8e71de74fe6e" alt="Torrent, Darío" border="0"></a></div>
                       </td>
                       </tr>
 				</table>
@@ -474,7 +470,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
-			<div class="picSurround"><a href="/character/43892/Yui" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/images/characters/15/264165t.jpg" alt="Yui" vspace="4" hspace="8" border="0"></a></div>
+			<div class="picSurround"><a href="/character/43892/Yui" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/r/21x32/images/characters/15/264165.jpg?s=fc7a8e5befd1d284c92234fb33b38d81" alt="Yui" vspace="4" hspace="8" border="0"></a></div>
 			</td>
 			<td valign="top" class="borderClass bgColor2">
 			<a href="/character/43892/Yui">Yui</a>
@@ -487,7 +483,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/396/Stephanie_Sheh">Sheh, Stephanie</a><br />
                       <small>English</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/396/Stephanie_Sheh"><img src="http://cdn.myanimelist.net/images/voiceactors/1/38453v.jpg" alt="Sheh, Stephanie" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/396/Stephanie_Sheh"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/38453.jpg?s=549767ddea49e7531e02e974a8435f99" alt="Sheh, Stephanie" border="0"></a></div>
                       </td>
                       </tr>
                       <tr>
@@ -495,7 +491,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/762/Kanae_Itou">Itou, Kanae</a><br />
                       <small>Japanese</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/762/Kanae_Itou"><img src="http://cdn.myanimelist.net/images/voiceactors/2/34681v.jpg" alt="Itou, Kanae" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/762/Kanae_Itou"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/2/34681.jpg?s=070ca5d5e6ca0ce314fd71441a46f14b" alt="Itou, Kanae" border="0"></a></div>
                       </td>
                       </tr>
                       <tr>
@@ -503,7 +499,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/14769/Min_Jeong_Yeo">Yeo, Min Jeong</a><br />
                       <small>Korean</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/14769/Min_Jeong_Yeo"><img src="http://cdn.myanimelist.net/images/voiceactors/3/15317v.jpg" alt="Yeo, Min Jeong" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/14769/Min_Jeong_Yeo"><img src="http://cdn.myanimelist.net/r/23x31/images/voiceactors/3/15317.jpg?s=1edf216e8c449daf713360187c578ed9" alt="Yeo, Min Jeong" border="0"></a></div>
                       </td>
                       </tr>
                       <tr>
@@ -511,7 +507,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/31957/Christiane_Werk">Werk, Christiane</a><br />
                       <small>German</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/31957/Christiane_Werk"><img src="http://cdn.myanimelist.net/images/voiceactors/1/32995v.jpg" alt="Werk, Christiane" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/31957/Christiane_Werk"><img src="http://cdn.myanimelist.net/r/23x15/images/voiceactors/1/32995.jpg?s=5947c98911660a833ed999429524b744" alt="Werk, Christiane" border="0"></a></div>
                       </td>
                       </tr>
                       <tr>
@@ -519,7 +515,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
                       <a href="/people/35755/Annalisa_Usai">Usai, Annalisa</a><br />
                       <small>Italian</small>
                       </td>
-                      <td valign="top"><div class="picSurround"><a href="/people/35755/Annalisa_Usai"><img src="http://cdn.myanimelist.net/images/voiceactors/1/37597v.jpg" alt="Usai, Annalisa" border="0"></a></div>
+                      <td valign="top"><div class="picSurround"><a href="/people/35755/Annalisa_Usai"><img src="http://cdn.myanimelist.net/r/23x31/images/voiceactors/1/37597.jpg?s=d2b2ac0d2c9d2b24799369fbaf0183fb" alt="Usai, Annalisa" border="0"></a></div>
                       </td>
                       </tr>
 				</table>
@@ -527,7 +523,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 			</tr>
 			</table><br><a name="staff"></a><h2><div class="floatRightHeader"><a href="/dbchanges.php?aid=11757&t=staff">Add staff</a></div><div class="floatRightHeader"></div>Staff</h2><table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/14031/Iwakami_Atsuhiro"><img src="http://cdn.myanimelist.net/images/voiceactors/1/29425v.jpg" alt="Iwakami, Atsuhiro"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/14031/Iwakami_Atsuhiro"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/29425.jpg?s=f640cc43b0696c755c4dd2dec73676cd" alt="Iwakami, Atsuhiro"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/14031/Iwakami_Atsuhiro">Iwakami, Atsuhiro</a>
 				<br><small>Producer</small></td>
 			</tr>
@@ -539,87 +535,111 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/10801/Itou_Tomohiko"><img src="http://cdn.myanimelist.net/images/voiceactors/3/17855v.jpg" alt="Itou, Tomohiko"></a></div></td>
-				<td valign="top" class="borderClass bgColor2"><a href="/people/10801/Itou_Tomohiko">Itou, Tomohiko</a>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/5921/Asaka_Morio"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/9799.jpg?s=1ad4488abc5b760b23ecda8d554deca7" alt="Asaka, Morio"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/5921/Asaka_Morio">Asaka, Morio</a>
+				<br><small>Director, Storyboard</small></td>
+			</tr>
+
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/10801/Itou_Tomohiko"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/43184.jpg?s=c232bdb873c3e7f6c820ea15ddf61af1" alt="Itou, Tomohiko"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/10801/Itou_Tomohiko">Itou, Tomohiko</a>
 				<br><small>Director, Episode Director, Storyboard</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/6016/Iwanami_Yoshikazu"><img src="http://cdn.myanimelist.net/images/voiceactors/3/2623v.jpg" alt="Iwanami, Yoshikazu"></a></div></td>
-				<td valign="top" class="borderClass bgColor1"><a href="/people/6016/Iwanami_Yoshikazu">Iwanami, Yoshikazu</a>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/6016/Iwanami_Yoshikazu"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/42599.jpg?s=5ef3659404321a2a60c765d5509d8a89" alt="Iwanami, Yoshikazu"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/6016/Iwanami_Yoshikazu">Iwanami, Yoshikazu</a>
 				<br><small>Sound Director</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/19775/Fujiwara_Yoshiyuki"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Fujiwara, Yoshiyuki"></a></div></td>
-				<td valign="top" class="borderClass bgColor2"><a href="/people/19775/Fujiwara_Yoshiyuki">Fujiwara, Yoshiyuki</a>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/19775/Fujiwara_Yoshiyuki"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Fujiwara, Yoshiyuki"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/19775/Fujiwara_Yoshiyuki">Fujiwara, Yoshiyuki</a>
 				<br><small>Episode Director, Storyboard, Key Animation, 2nd Key Animation</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/35277/Hoshino_Makoto"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Hoshino, Makoto"></a></div></td>
-				<td valign="top" class="borderClass bgColor1"><a href="/people/35277/Hoshino_Makoto">Hoshino, Makoto</a>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/35277/Hoshino_Makoto"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Hoshino, Makoto"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/35277/Hoshino_Makoto">Hoshino, Makoto</a>
 				<br><small>Episode Director</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/21215/Shikama_Takahiro"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Shikama, Takahiro"></a></div></td>
-				<td valign="top" class="borderClass bgColor2"><a href="/people/21215/Shikama_Takahiro">Shikama, Takahiro</a>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/21215/Shikama_Takahiro"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Shikama, Takahiro"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/21215/Shikama_Takahiro">Shikama, Takahiro</a>
 				<br><small>Episode Director, Storyboard, Key Animation</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/22203/David_Alex_Von"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="David, Alex Von"></a></div></td>
-				<td valign="top" class="borderClass bgColor1"><a href="/people/22203/David_Alex_Von">David, Alex Von</a>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/22203/David_Alex_Von"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="David, Alex Von"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/22203/David_Alex_Von">David, Alex Von</a>
 				<br><small>Script, ADR Director</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/5088/Araki_Tetsurou"><img src="http://cdn.myanimelist.net/images/voiceactors/3/9797v.jpg" alt="Araki, Tetsurou"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/40112/Kizawa_Yukito"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Kizawa, Yukito"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/40112/Kizawa_Yukito">Kizawa, Yukito</a>
+				<br><small>Script</small></td>
+			</tr>
+
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/40113/Nakamoto_Munemasa"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Nakamoto, Munemasa"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/40113/Nakamoto_Munemasa">Nakamoto, Munemasa</a>
+				<br><small>Script</small></td>
+			</tr>
+
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/40544/Sugawara_Yukie"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Sugawara, Yukie"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/40544/Sugawara_Yukie">Sugawara, Yukie</a>
+				<br><small>Script</small></td>
+			</tr>
+
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/5088/Araki_Tetsurou"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/9797.jpg?s=3dda0e842206a121f48f3836da060e37" alt="Araki, Tetsurou"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/5088/Araki_Tetsurou">Araki, Tetsurou</a>
 				<br><small>Storyboard</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/25893/Tamura_Koutarou"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Tamura, Koutarou"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/25893/Tamura_Koutarou"><img src="http://cdn.myanimelist.net/r/23x15/images/voiceactors/3/43589.jpg?s=668a7b4c33c11f3144dc8aff4516b569" alt="Tamura, Koutarou"></a></div></td>
 				<td valign="top" class="borderClass bgColor1"><a href="/people/25893/Tamura_Koutarou">Tamura, Koutarou</a>
 				<br><small>Storyboard</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/13693/Aoi_Eir"><img src="http://cdn.myanimelist.net/images/voiceactors/1/22105v.jpg" alt="Aoi, Eir"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/13693/Aoi_Eir"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/22105.jpg?s=44720027638f12ec38161670e7e45cf4" alt="Aoi, Eir"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/13693/Aoi_Eir">Aoi, Eir</a>
 				<br><small>Theme Song Performance</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/15651/Haruna_Luna"><img src="http://cdn.myanimelist.net/images/voiceactors/3/39398v.jpg" alt="Haruna, Luna"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/15651/Haruna_Luna"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/39398.jpg?s=7491cdcddef04763a66c4ed8c5683b99" alt="Haruna, Luna"></a></div></td>
 				<td valign="top" class="borderClass bgColor1"><a href="/people/15651/Haruna_Luna">Haruna, Luna</a>
 				<br><small>Theme Song Performance</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/10561/LiSA"><img src="http://cdn.myanimelist.net/images/voiceactors/2/36293v.jpg" alt="LiSA"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/10561/LiSA"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/2/36293.jpg?s=1ab145f239db9cac058dd5dcd3ffbc17" alt="LiSA"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/10561/LiSA">LiSA</a>
 				<br><small>Theme Song Performance</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/29577/Shigenaga_Ryosuke"><img src="http://cdn.myanimelist.net/images/voiceactors/3/30889v.jpg" alt="Shigenaga, Ryosuke"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/29577/Shigenaga_Ryosuke"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/30889.jpg?s=e5b2780341ab46af93dccba8744fec1a" alt="Shigenaga, Ryosuke"></a></div></td>
 				<td valign="top" class="borderClass bgColor1"><a href="/people/29577/Shigenaga_Ryosuke">Shigenaga, Ryosuke</a>
 				<br><small>Theme Song Arrangement, Theme Song Lyrics, Theme Song Composition</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/890/Tomatsu_Haruka"><img src="http://cdn.myanimelist.net/images/voiceactors/1/19521v.jpg" alt="Tomatsu, Haruka"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/890/Tomatsu_Haruka"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/19521.jpg?s=93ae2c422dceb23808e965684d900cdd" alt="Tomatsu, Haruka"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/890/Tomatsu_Haruka">Tomatsu, Haruka</a>
 				<br><small>Theme Song Performance</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/14345/Watanabe_Sho"><img src="http://cdn.myanimelist.net/images/voiceactors/1/27923v.jpg" alt="Watanabe, Sho"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/14345/Watanabe_Sho"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/27923.jpg?s=ab2b98dd05dfcbce379012a2d888b427" alt="Watanabe, Sho"></a></div></td>
 				<td valign="top" class="borderClass bgColor1"><a href="/people/14345/Watanabe_Sho">Watanabe, Sho</a>
-				<br><small>Theme Song Composition, Theme Song Lyrics</small></td>
+				<br><small>Theme Song Lyrics, Theme Song Composition</small></td>
 			</tr>
 
 			<tr>
@@ -631,7 +651,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 			<tr>
 				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/15189/Adachi_Shingo"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Adachi, Shingo"></a></div></td>
 				<td valign="top" class="borderClass bgColor1"><a href="/people/15189/Adachi_Shingo">Adachi, Shingo</a>
-				<br><small>Chief Animation Director, Character Design</small></td>
+				<br><small>Character Design, Chief Animation Director</small></td>
 			</tr>
 
 			<tr>
@@ -647,7 +667,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/5956/Amemiya_Akira"><img src="http://cdn.myanimelist.net/images/voiceactors/2/12704v.jpg" alt="Amemiya, Akira"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/5956/Amemiya_Akira"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/43487.jpg?s=fbc07467e97c4afde13fb5c61ad865e6" alt="Amemiya, Akira"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/5956/Amemiya_Akira">Amemiya, Akira</a>
 				<br><small>Key Animation</small></td>
 			</tr>
@@ -659,7 +679,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/19916/Arai_Jun"><img src="http://cdn.myanimelist.net/images/voiceactors/3/23247v.jpg" alt="Arai, Jun"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/19916/Arai_Jun"><img src="http://cdn.myanimelist.net/r/20x32/images/voiceactors/3/23247.jpg?s=3d0bde1667ce970e32e59bd9e1f29bfa" alt="Arai, Jun"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/19916/Arai_Jun">Arai, Jun</a>
 				<br><small>Key Animation</small></td>
 			</tr>
@@ -677,7 +697,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/869/Hayami_Saori"><img src="http://cdn.myanimelist.net/images/voiceactors/2/36143v.jpg" alt="Hayami, Saori"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/869/Hayami_Saori"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/2/36143.jpg?s=d96814f1af98917a228ae257eb6a7f74" alt="Hayami, Saori"></a></div></td>
 				<td valign="top" class="borderClass bgColor1"><a href="/people/869/Hayami_Saori">Hayami, Saori</a>
 				<br><small>Inserted Song Performance</small></td>
 			</tr>
@@ -701,13 +721,13 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/5077/Kajiura_Yuki"><img src="http://cdn.myanimelist.net/images/voiceactors/3/35633v.jpg" alt="Kajiura, Yuki"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/5077/Kajiura_Yuki"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/35633.jpg?s=140a711e5bc866268840201efb0efdad" alt="Kajiura, Yuki"></a></div></td>
 				<td valign="top" class="borderClass bgColor1"><a href="/people/5077/Kajiura_Yuki">Kajiura, Yuki</a>
 				<br><small>Music</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/11466/Kawahara_Reki"><img src="http://cdn.myanimelist.net/images/voiceactors/3/24769v.jpg" alt="Kawahara, Reki"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/11466/Kawahara_Reki"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/24769.jpg?s=ca2c80d8811cf8082bd22b5071f1b79e" alt="Kawahara, Reki"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/11466/Kawahara_Reki">Kawahara, Reki</a>
 				<br><small>Original Creator</small></td>
 			</tr>
@@ -731,59 +751,95 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/30003/Miwa_Kazuhiro"><img src="http://cdn.myanimelist.net/images/voiceactors/3/35033v.jpg" alt="Miwa, Kazuhiro"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/39577/Konno_Yasuyuki"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Konno, Yasuyuki"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/39577/Konno_Yasuyuki">Konno, Yasuyuki</a>
+				<br><small>Sound Effects</small></td>
+			</tr>
+
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/40119/Kouno_Megumi"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Kouno, Megumi"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/40119/Kouno_Megumi">Kouno, Megumi</a>
+				<br><small>Key Animation</small></td>
+			</tr>
+
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/30003/Miwa_Kazuhiro"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/35033.jpg?s=f014a38e81b7381def2efd6c778fbb3f" alt="Miwa, Kazuhiro"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/30003/Miwa_Kazuhiro">Miwa, Kazuhiro</a>
 				<br><small>Key Animation</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/9353/Nakajima_Kazuko"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Nakajima, Kazuko"></a></div></td>
-				<td valign="top" class="borderClass bgColor1"><a href="/people/9353/Nakajima_Kazuko">Nakajima, Kazuko</a>
-				<br><small>Color Setting, Color Design</small></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/40541/Nagae_Akihiro"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Nagae, Akihiro"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/40541/Nagae_Akihiro">Nagae, Akihiro</a>
+				<br><small>In-Between Animation</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/34247/Nakano_Ryouichi"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Nakano, Ryouichi"></a></div></td>
-				<td valign="top" class="borderClass bgColor2"><a href="/people/34247/Nakano_Ryouichi">Nakano, Ryouichi</a>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/9353/Nakajima_Kazuko"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Nakajima, Kazuko"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/9353/Nakajima_Kazuko">Nakajima, Kazuko</a>
+				<br><small>Color Design, Color Setting</small></td>
+			</tr>
+
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/34247/Nakano_Ryouichi"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Nakano, Ryouichi"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/34247/Nakano_Ryouichi">Nakano, Ryouichi</a>
 				<br><small>Key Animation</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/29525/Nakayama_Ryuu"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Nakayama, Ryuu"></a></div></td>
-				<td valign="top" class="borderClass bgColor1"><a href="/people/29525/Nakayama_Ryuu">Nakayama, Ryuu</a>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/29525/Nakayama_Ryuu"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Nakayama, Ryuu"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/29525/Nakayama_Ryuu">Nakayama, Ryuu</a>
 				<br><small>Key Animation, 2nd Key Animation</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/9890/REMI"><img src="http://cdn.myanimelist.net/images/voiceactors/3/8273v.jpg" alt="REMI"></a></div></td>
-				<td valign="top" class="borderClass bgColor2"><a href="/people/9890/REMI">REMI</a>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/39024/Okuda_Yousuke"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Okuda, Yousuke"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/39024/Okuda_Yousuke">Okuda, Yousuke</a>
+				<br><small>Animation Director</small></td>
+			</tr>
+
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/39368/Oosawa_Mina"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Oosawa, Mina"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/39368/Oosawa_Mina">Oosawa, Mina</a>
+				<br><small>Key Animation</small></td>
+			</tr>
+
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/9890/REMI"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/8273.jpg?s=bfaafad47a115193407d70ed5ab59aca" alt="REMI"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/9890/REMI">REMI</a>
 				<br><small>Music</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/8102/Takeda_Yuusuke"><img src="http://cdn.myanimelist.net/images/voiceactors/2/35077v.jpg" alt="Takeda, Yuusuke"></a></div></td>
-				<td valign="top" class="borderClass bgColor1"><a href="/people/8102/Takeda_Yuusuke">Takeda, Yuusuke</a>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/8102/Takeda_Yuusuke"><img src="http://cdn.myanimelist.net/r/23x29/images/voiceactors/2/35077.jpg?s=c5960f7204ad68c4e35f928068e90708" alt="Takeda, Yuusuke"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/8102/Takeda_Yuusuke">Takeda, Yuusuke</a>
 				<br><small>Art Director</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/21017/Tomioka_Hiroshi"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Tomioka, Hiroshi"></a></div></td>
-				<td valign="top" class="borderClass bgColor2"><a href="/people/21017/Tomioka_Hiroshi">Tomioka, Hiroshi</a>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/21017/Tomioka_Hiroshi"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Tomioka, Hiroshi"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/21017/Tomioka_Hiroshi">Tomioka, Hiroshi</a>
 				<br><small>Key Animation</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/37226/Yamamoto_Masafumi"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Yamamoto, Masafumi"></a></div></td>
-				<td valign="top" class="borderClass bgColor1"><a href="/people/37226/Yamamoto_Masafumi">Yamamoto, Masafumi</a>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/37226/Yamamoto_Masafumi"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Yamamoto, Masafumi"></a></div></td>
+				<td valign="top" class="borderClass bgColor2"><a href="/people/37226/Yamamoto_Masafumi">Yamamoto, Masafumi</a>
 				<br><small>Key Animation</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/17785/abec"><img src="http://cdn.myanimelist.net/images/voiceactors/3/34095v.jpg" alt="abec"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/39271/Yoneyama_Mai"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Yoneyama, Mai"></a></div></td>
+				<td valign="top" class="borderClass bgColor1"><a href="/people/39271/Yoneyama_Mai">Yoneyama, Mai</a>
+				<br><small>Animation Director</small></td>
+			</tr>
+
+			<tr>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/17785/abec"><img src="http://cdn.myanimelist.net/r/23x18/images/voiceactors/3/34095.jpg?s=d4dd3c70e4c97aa1348466bba7d68360" alt="abec"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/17785/abec">abec</a>
 				<br><small>Original Character Design</small></td>
 			</tr>
-			</table>
+			</table></div>
 </td>
 </tr>
 </table>
@@ -791,25 +847,25 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 
 
                       <script type='text/javascript'>
-    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_LHS', [300,250], 'div-gpt-ad-632687356').addService(googletag.pubads());
-            var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_RHS', [300,250], 'div-gpt-ad-1504089940').addService(googletag.pubads());
-            googletag.pubads().collapseEmptyDivs();
+    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_LHS', [[300,250],[336,280]], 'div-gpt-ad-678175065').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_RHS', [[300,250],[336,280]], 'div-gpt-ad-865016110').addService(googletag.pubads());            googletag.pubads().collapseEmptyDivs();
         googletag.enableServices();
     });
 </script>
 
   <div class="mauto clearfix pt24" style="width:760px;">
     <div class="fl-l">
-    <div id="div-gpt-ad-632687356" style="width:300px; height:250px;">
+
+<div id="div-gpt-ad-678175065" style="width:336px; height:280px;" data-code="02PCAnime_SAFE_MR_BTF_LHS">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-632687356"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-678175065"); });
       </script>
 </div>
   </div>
       <div class="fl-r">
-    <div id="div-gpt-ad-1504089940" style="width:300px; height:250px;">
+
+<div id="div-gpt-ad-865016110" style="width:336px; height:280px;" data-code="02PCAnime_SAFE_MR_BTF_RHS">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1504089940"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-865016110"); });
       </script>
 </div>
   </div>
@@ -824,6 +880,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
 <!-- end rightbody -->
 
 </div><!-- wrapper -->
+
 
     <div id="ad-skin-bg-right" class="ad-skin-side-outer ad-skin-side-bg bg-right">
     <div id="ad-skin-right" class="ad-skin-side right" style="display: none;">
@@ -841,51 +898,51 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
           <div class="ranking-unit ranking-top_anime">
         <h3 class="title"><a href="http://myanimelist.net/topanime.php" class="view_more fl-r">More</a>Top Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist:_Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9253/Steins;Gate">Steins;Gate</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/9253/Steins_Gate">Steins;Gate</a></li>
                       <li><span class="rank">4</span><a href="http://myanimelist.net/anime/9969/Gintama">Gintama&#039;</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/11061/Hunter_x_Hunter_(2011)">Hunter x Hunter (2011)</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/11061/Hunter_x_Hunter_2011">Hunter x Hunter (2011)</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_airing">
         <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=airing" class="view_more fl-r">More</a>Top Airing Anime</h3>
         <ol>
                       <li><span class="rank">1</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28171/Shokugeki_no_Souma">Shokugeki no Souma</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/25649/Junjou_Romantica_3">Junjou Romantica 3</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/27831/Durarara!!x2_Ten">Durarara!!x2 Ten</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/31043/Boku_dake_ga_Inai_Machi">Boku dake ga Inai Machi</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28891/Haikyuu_Second_Season">Haikyuu!! Second Season</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/30709/Kamisama_Hajimemashita__Kako-hen">Kamisama Hajimemashita: Kako-hen</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_upcoming">
         <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=upcoming" class="view_more fl-r">More</a>Top Upcoming Anime</h3>
         <ol>
                       <li><span class="rank">1</span><a href="http://myanimelist.net/anime/25777/Shingeki_no_Kyojin_2nd_Season">Shingeki no Kyojin 2nd Season</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9260/Kizumonogatari">Kizumonogatari</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/3786/Evangelion:_3.0+1.0">Evangelion: 3.0+1.0</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30503/Noragami_Aragoto">Noragami Aragoto</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/28927/Owari_no_Seraph:_Nagoya_Kessen-hen">Owari no Seraph: Nagoya Kessen-hen</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/3786/Evangelion__30_10">Evangelion: 3.0+1.0</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/25537/Fate_stay_night_Movie__Heavens_Feel">Fate/stay night Movie: Heaven&#039;s Feel</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30484/Steins_Gate_0">Steins;Gate 0</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/28623/Koutetsujou_no_Kabaneri">Koutetsujou no Kabaneri</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_page_views">
         <h3 class="title">Top Page Views</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/29803/Overlord">Overlord</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28999/Charlotte">Charlotte</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30307/Monster_Musume_no_Iru_Nichijou">Monster Musume no Iru Nichijou</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/28497/Rokka_no_Yuusha">Rokka no Yuusha</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/27631/God_Eater">God Eater</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/31043/Boku_dake_ga_Inai_Machi">Boku dake ga Inai Machi</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28623/Koutetsujou_no_Kabaneri">Koutetsujou no Kabaneri</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30831/Kono_Subarashii_Sekai_ni_Shukufuku_wo">Kono Subarashii Sekai ni Shukufuku wo!</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/31559/Prince_of_Stride__Alternative">Prince of Stride: Alternative</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/31859/Hai_to_Gensou_no_Grimgar">Hai to Gensou no Grimgar</a></li>
                   </ol>
       </div>
-          <div class="ranking-unit ranking-trending_words">
-        <h3 class="title">Trending Words</h3>
+          <div class="ranking-unit ranking-popular_ranking">
+        <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=bypopularity" class="view_more fl-r">More</a>Most Popular Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/1735/Naruto:_Shippuuden">Naruto: Shippuuden</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/22319/Tokyo_Ghoul">Tokyo Ghoul</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/20/Naruto">Naruto</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/813/Dragon_Ball_Z">Dragon Ball Z</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/1535/Death_Note">Death Note</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/11757/Sword_Art_Online">Sword Art Online</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/16498/Shingeki_no_Kyojin">Shingeki no Kyojin</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/1575/Code_Geass__Hangyaku_no_Lelouch">Code Geass: Hangyaku no Lelouch</a></li>
                   </ol>
       </div>
       </div>
@@ -899,7 +956,7 @@ Sword Art Online - Characters &amp; Staff - MyAnimeList.net
       <p class="footer-link di-ib">
         <a href="http://myanimelist.net/about.php">About</a>
         <a href="http://myanimelist.net/about.php?go=contact">Support</a>
-        <a href="http://myanimelist.net/about.php?go=advertising">Advertising</a>
+        <a href="http://myanimelist.net/advertising">Advertising</a>
         <a href="http://myanimelist.net/forum/?topicid=515949">FAQ</a>
         <a href="http://myanimelist.net/about/terms_of_use">Terms</a>
         <a href="http://myanimelist.net/about/privacy_policy">Privacy</a>
