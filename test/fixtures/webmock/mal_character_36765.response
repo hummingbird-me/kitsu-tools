@@ -1,23 +1,17 @@
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Content-Type: text/html; charset=utf-8
-Date: Thu, 17 Sep 2015 01:03:34 GMT
+Date: Wed, 23 Mar 2016 23:44:58 GMT
 Server: Apache
-Set-Cookie: MALHLOGSESSID=ba1cdd80bd2321d831c9bab79aab1b12; expires=Tue, 15-Sep-2020 01:03:34 GMT; Max-Age=157680000; path=/
-Set-Cookie: MALSESSIONID=rtt22o0b7qd3r4gihp6vr65u15; expires=Thu, 24-Sep-2015 01:03:34 GMT; Max-Age=604800; path=/; HttpOnly
 Vary: User-Agent,Accept-Encoding
 transfer-encoding: chunked
 Connection: keep-alive
-Set-Cookie: visid_incap_81958=HBSTaxt4Q4Ws+V60c8tryGUR+lUAAAAAQUIPAAAAAABF9gxmyivxxKF0/izScHjs; expires=Fri, 15 Sep 2017 11:20:32 GMT; path=/; Domain=.myanimelist.net
-Set-Cookie: nlbi_81958=0LlvVpbG/j7cxHAVUM6emAAAAAC7h7oijcQNO5H0qNSRJ023; path=/; Domain=.myanimelist.net
-Set-Cookie: incap_ses_84_81958=5xNTX4wY6kucguz0xW0qAWUR+lUAAAAAXfeW/AUM04stXk0BBPlSiQ==; path=/; Domain=.myanimelist.net
-X-Iinfo: 8-13374672-13374506 PNNN RT(1442451813771 0) q(0 0 0 -1) r(2 2) U1
-X-CDN: Incapsula
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html>
+<html xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
+
 <head>
 
 
@@ -29,20 +23,24 @@ Kazuto Kirigaya - MyAnimeList.net
 
 <meta name="keywords" content="anime, myanimelist, anime news, manga" />
 <link rel="canonical" href="http://myanimelist.net/character/36765/Kazuto_Kirigaya" />
-<meta name='csrf_token' content='cee9a733f7732e3924c3f4cbf58f395e0f06780b'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-8dd56e91bb.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=34"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=34"></script>
+
+
+        <meta property="og:locale" content="en_US"><meta property="fb:app_id" content="360769957454434"><meta property="og:site_name" content="MyAnimeList.net"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@myanimelist"><meta property="og:title" content="Kazuto Kirigaya"><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/OfficialMyAnimeList"><meta property="og:image" content="http://cdn.myanimelist.net/images/characters/7/204821.jpg"><meta name="twitter:image:src" content="http://cdn.myanimelist.net/r/120x120/images/characters/7/204821.jpg?s=aa76630f21b0f7a0a8cedb2d0292912e"><meta property="og:url" content="http://myanimelist.net/character/36765/Kazuto_Kirigaya"><meta property="og:description" content="Looking for information on the anime or manga character Kazuto Kirigaya? On MyAnimeList you can Learn more about their role in the anime and manga industry.">
+
+<meta name='csrf_token' content='67514200b2c5b754eccb467909d61c923d38d480'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-991f0f161c.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=57"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=57"></script>
 
 
 
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=34" id="myanimelistjs" data-myanimelistjs-params='{&quot;is_request_bot_filter_log&quot;:true,&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;}'></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=57" id="myanimelistjs" data-myanimelistjs-params='{&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;,&quot;is_request_bot_filter_log&quot;:true}'></script>
 
 
-	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=24" />
+	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=32" />
 
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=24" />
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=24" />
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-9084f5fdb6.css" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=32" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=32" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-dae0223b92.css" />
 <link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
 
 <link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
@@ -63,16 +61,16 @@ Kazuto Kirigaya - MyAnimeList.net
   })();
 </script>
 
-<!-- GA script -->
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-369102-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-369102-1', 'auto');
+  ga('require', 'linkid'); // Enhanced Link Attribution
+  ga('send', 'pageview');
+
 </script>
 
 <script src="https://apis.google.com/js/platform.js" async defer>{lang: 'en-GB'}</script>
@@ -83,26 +81,26 @@ Kazuto Kirigaya - MyAnimeList.net
 
 <body onload=" " class="page-common">
 
-
 <div id="myanimelist">
+
 
     <script type='text/javascript'>
     googletag.cmd.push(function() {
-      googletag.defineOutOfPageSlot('/84947469/Skin_Others', 'div-gpt-ad-1103717854').addService(googletag.pubads());
+      googletag.defineOutOfPageSlot('/84947469/Skin_OtherPages_OTHERS', 'div-gpt-ad-487551930').addService(googletag.pubads());
       googletag.pubads().collapseEmptyDivs();
       googletag.enableServices();
     });
   </script>
   <div style="display: none !important;">
-    <div id='div-gpt-ad-1103717854'>
+    <div id='div-gpt-ad-487551930' data-code="Skin_OtherPages_OTHERS">
       <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1103717854'); });
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-487551930'); });
       </script>
     </div>
   </div>
 
     <script type='text/javascript'>
-    window.MAL.SkinAd.prepareForSkin('Skin_Others');
+    window.MAL.SkinAd.prepareForSkin('Skin_OtherPages_OTHERS');
   </script>
 
     <div id="ad-skin-bg-left" class="ad-skin-side-outer ad-skin-side-bg bg-left">
@@ -114,52 +112,26 @@ Kazuto Kirigaya - MyAnimeList.net
   </div>
 <div class="wrapper">
 
-<div id="headerSmall"><a href="/">MyAnimeList.net</a><a href="http://myanimelist.net/watch" class="banner-header-anime-straming">
-  <img src="http://cdn.myanimelist.net/images/stream_banner/banner_anime_streaming.png" srcset="http://cdn.myanimelist.net/images/stream_banner/banner_anime_streaming@2x.png 2x" alt="Anime Streaming Now Available on MAL!">
-</a>
-  <div id="header-menu">
-    <div class="header-menu-login">
-      <a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fcharacter%2F36765" id="malLogin">Login</a>
-      <a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fcharacter%2F36765">Sign Up</a>
-    </div>
-  </div>
-</div>  <div id="menu">
+<div id="headerSmall"><a href="/">MyAnimeList.net</a><div id="header-menu" ><div class="header-menu-login"><a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fcharacter%2F36765" id="malLogin">Login</a><a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fcharacter%2F36765">Sign Up</a></div></div></div>  <div id="menu">
 
-    <div id="menu_right">
-
-      <form id="searchBar" method="get">
-
-        <input id="topSearchText" type="text" class="inputtext" value="Search" size="30" />
-        <select id="topSearchValue" class="inputtext">
-        <option value="0">Anime</option>
-        <option value="1">Manga</option>
-        <option value="2">Characters</option>
-        <option value="6">People</option>
-        <option value="4">Clubs</option>
-        <option value="5">Users</option>
-        </select>
-
-        <input id="topSearchButon" type="image" src="http://cdn.myanimelist.net/images/magnify.gif" value="Search" />
-
-      </form>
-
-	</div>    <div id="menu_left">
+    <div id="menu_right"><form id="searchBar" method="get" class="searchBar"><div class="form-select-outer fl-l"><select name="type" id="topSearchValue" class="inputtext"><option value="anime">Anime</option><option value="manga">Manga</option><option value="character">Characters</option><option value="person">People</option><option value="club">Clubs</option><option value="user">Users</option></select></div><input id="topSearchText" type="text" name="keyword" class="inputtext js-topSearchText fl-l" placeholder="Search Anime, Manga, and more..." size="30" autocomplete="off" /><input id="topSearchButon" class="fl-l" type="submit" value="&#xf002"></form><div id="topSearchResultList" class="incrementalSearchResultList"></div></div>
+    <div id="menu_left">
                         <ul id="nav">
     <li class="small"><a href="#" class="non-link">Anime</a>
     <ul class="wider">
-            <li><a href="/anime.php">Anime Search</a></li>
+     <li><a href="/anime.php">Anime Search</a></li>
+      <li><a href="/topanime.php">Top Anime</a></li>
+      <li><a href="http://myanimelist.net/anime/season">Seasonal Anime</a></li>
       <li><a href="/reviews.php?t=anime">Reviews</a></li>
       <li><a href="/recommendations.php?s=recentrecs&t=anime">Recommendations</a></li>
-      <li><a href="/topanime.php">Top Anime</a></li>
-      <li><a href="/anime/season">Seasonal Anime</a></li>
     </ul>
   </li>
   <li class="small"><a href="#" class="non-link">Manga</a>
     <ul class="wider">
-            <li><a href="/manga.php">Manga Search</a></li>
+     <li><a href="/manga.php">Manga Search</a></li>
+      <li><a href="/topmanga.php">Top Manga</a></li>
       <li><a href="/reviews.php?t=manga">Reviews</a></li>
       <li><a href="/recommendations.php?s=recentrecs&t=manga">Recommendations</a></li>
-      <li><a href="/topmanga.php">Top Manga</a></li>
     </ul>
   </li>
   <li><a href="#" class="non-link">Community</a>
@@ -176,75 +148,77 @@ Kazuto Kirigaya - MyAnimeList.net
       <li><a href="http://myanimelist.net/featured">Featured Articles</a></li>
       <li><a href="/people.php">People</a></li>
       <li><a href="/character.php">Characters</a></li>
-      <li><a href="/favorites.php">Top Favorites</a></li>
     </ul>
   </li>
-  <li class="small"><a href="http://myanimelist.net/watch">Watch</a></li>
+  <li class="small"><a href="#" class="non-link">Watch</a>
+    <ul class="wider">
+      <li><a href="/watch">Promotional Videos</a></li>
+      <li><a href="/watch/daisuki">DAISUKI</a></li>
+    </ul>
+  </li>
   <li class="smaller"><a href="#" class="non-link">Help</a>
     <ul class="wide">
       <li><a href="/about.php">About</a></li>
       <li><a href="/about.php?go=support">Support</a></li>
-      <li><a href="/about.php?go=advertising">Advertising</a></li>
+      <li><a href="http://myanimelist.net/advertising">Advertising</a></li>
       <li><a href="/forum/?topicid=515949">FAQ</a></li>
       <li><a href="/modules.php?go=report">Report</a></li>
       <li><a href="/about.php?go=team">Staff</a></li>
     </ul>
   </li>
   </ul>
-                  </div>  </div><div id="contentWrapper">
-
-	<h1>Kazuto "Kirito, The Black Swordsman, Beater" Kirigaya</h1>
-	<div id="content">
-
+                  </div>
+  </div><div id="contentWrapper"><div><h1 class="h1">Kazuto "Kirito, The Black Swordsman, Beater, Kazu" Kirigaya</h1></div><div id="content">
 		<table border="0" cellpadding="0" cellspacing="0" width="100%">
 		<tr>
-		  <td width="225" class="borderClass" style="border-width: 0 1px 0 0;" valign="top"><div style="text-align: center;"><img src="http://cdn.myanimelist.net/images/characters/7/204821.jpg" alt="Kazuto Kirigaya"></div>
-		  <div id="profileRows"><a href="javascript:void(0);" onclick="fav_clicker(1,3,36765);" style="font-weight: normal;"><span id="favOutput">Add to Favorites</span></a><a href="/panel.php?go=characters&do=edit&character_id=36765">Edit Character</a></div><div class="icon-block"><a class="sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fmyanimelist.net%2Fcharacter%2F36765%2FKazuto_Kirigaya"></a>
-                  <a class="sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fcharacter%2F36765%2FKazuto_Kirigaya"></a>
-                  <a class="sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fmyanimelist.net%2Fcharacter%2F36765%2FKazuto_Kirigaya&amp;title=Kazuto_Kirigaya"></a>
-                  <a class="sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fcharacter%2F36765%2FKazuto_Kirigaya&amp;text=Kazuto_Kirigaya&amp;related=MyAnimeList.net&amp;hashtags=MAL"></a>
-                  <a class="sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fmyanimelist.net%2Fcharacter%2F36765%2FKazuto_Kirigaya&amp;name=Kazuto_Kirigaya"></a>
-               </div><div class="normal_header">Animeography</div>
+		  <td width="225" class="borderClass" style="border-width: 0 1px 0 0;" valign="top"><div style="text-align: center;"><a href="/character/36765/Kazuto_Kirigaya/pictures"><img src="http://cdn.myanimelist.net/images/characters/7/204821.jpg" alt="Kazuto Kirigaya"></a></div>
+		  <div id="profileRows"><a href="javascript:void(0);" onclick="fav_clicker(1,3,36765);" style="font-weight: normal;"><span id="favOutput">Add to Favorites</span></a><a href="/panel.php?go=characters&do=edit&character_id=36765">Edit Character</a></div><div class="js-sns-icon-container icon-block "><a data-ga-network="facebook" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fmyanimelist.net%2Fcharacter%2F36765%2FKazuto_Kirigaya"></a><a data-ga-network="twitter" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?related=MyAnimeList.net&amp;via=myanimelist&amp;url=http%3A%2F%2Fmyanimelist.net%2Fcharacter%2F36765%2FKazuto_Kirigaya&amp;text=Kazuto%20Kirigaya&amp;hashtags="></a><a data-ga-network="google+" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fcharacter%2F36765%2FKazuto_Kirigaya"></a><a data-ga-network="reddit" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fmyanimelist.net%2Fcharacter%2F36765%2FKazuto_Kirigaya&amp;title=Kazuto%20Kirigaya"></a><a data-ga-network="tumblr" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fmyanimelist.net%2Fcharacter%2F36765%2FKazuto_Kirigaya&amp;name=Kazuto%20Kirigaya"></a></div><div class="normal_header">Animeography</div>
 		<table border="0" cellpadding="0" cellspacing="0" width="100%">
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/11757/Sword_Art_Online"><img src="http://cdn.myanimelist.net/images/anime/11/39717v.jpg" border="0"></a></div></td>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/11757/Sword_Art_Online"><img src="http://cdn.myanimelist.net/r/23x32/images/anime/11/39717.jpg?s=d2cfbc51f9093abae8ee64203a223abf" border="0"></a></div></td>
 				<td valign="top" class="borderClass"><a href="/anime/11757/Sword_Art_Online">Sword Art Online</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add anime to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/16099/Sword_Art_Online:_Sword_Art_Offline"><img src="http://cdn.myanimelist.net/images/anime/8/43461v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/anime/16099/Sword_Art_Online:_Sword_Art_Offline">Sword Art Online: Sword Art Offline</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/16099/Sword_Art_Online__Sword_Art_Offline"><img src="http://cdn.myanimelist.net/r/21x32/images/anime/8/43461.jpg?s=21b18d95ae2f3600b3de6d6ea3219076" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/anime/16099/Sword_Art_Online__Sword_Art_Offline">Sword Art Online: Sword Art Offline</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add anime to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/20021/Sword_Art_Online:_Extra_Edition"><img src="http://cdn.myanimelist.net/images/anime/6/64747v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/anime/20021/Sword_Art_Online:_Extra_Edition">Sword Art Online: Extra Edition</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/20021/Sword_Art_Online__Extra_Edition"><img src="http://cdn.myanimelist.net/r/23x32/images/anime/6/64747.jpg?s=f45ef5d5a73c7cbb161570ac31be6ee7" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/anime/20021/Sword_Art_Online__Extra_Edition">Sword Art Online: Extra Edition</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add anime to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/21879/Sword_Art_Online:_Sword_Art_Offline_-_Extra_Edition"><img src="http://cdn.myanimelist.net/images/anime/13/57589v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/anime/21879/Sword_Art_Online:_Sword_Art_Offline_-_Extra_Edition">Sword Art Online: Sword Art Offline - Extra Edition</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/21879/Sword_Art_Online__Sword_Art_Offline_-_Extra_Edition"><img src="http://cdn.myanimelist.net/r/23x29/images/anime/13/57589.jpg?s=5391f572da497d4d3efc60ec45f9fc15" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/anime/21879/Sword_Art_Online__Sword_Art_Offline_-_Extra_Edition">Sword Art Online: Sword Art Offline - Extra Edition</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add anime to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/21881/Sword_Art_Online_II"><img src="http://cdn.myanimelist.net/images/anime/11/65185v.jpg" border="0"></a></div></td>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/21881/Sword_Art_Online_II"><img src="http://cdn.myanimelist.net/r/23x32/images/anime/11/65185.jpg?s=ccef40d2aec8b9d3a0f4b66bb6810661" border="0"></a></div></td>
 				<td valign="top" class="borderClass"><a href="/anime/21881/Sword_Art_Online_II">Sword Art Online II</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add anime to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/27891/Sword_Art_Online_II:_Debriefing"><img src="http://cdn.myanimelist.net/images/anime/10/67587v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/anime/27891/Sword_Art_Online_II:_Debriefing">Sword Art Online II: Debriefing</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/27891/Sword_Art_Online_II__Debriefing"><img src="http://cdn.myanimelist.net/r/21x32/images/anime/10/67587.jpg?s=6271c278115e2f8a19b5432a73f93865" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/anime/27891/Sword_Art_Online_II__Debriefing">Sword Art Online II: Debriefing</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add anime to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/28063/Sword_Art_Online_II:_Sword_Art_Offline_II"><img src="http://cdn.myanimelist.net/images/anime/3/68219v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/anime/28063/Sword_Art_Online_II:_Sword_Art_Offline_II">Sword Art Online II: Sword Art Offline II</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/28063/Sword_Art_Online_II__Sword_Art_Offline_II"><img src="http://cdn.myanimelist.net/r/23x29/images/anime/3/68219.jpg?s=fb00cb87d6e5de23925adc0a65808363" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/anime/28063/Sword_Art_Online_II__Sword_Art_Offline_II">Sword Art Online II: Sword Art Offline II</a>
+				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add anime to my list" class="button_add ">add</a>
+ <small>Main</small></div></td>
+				</tr>
+				<tr>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/anime/31765/Sword_Art_Online_Movie__Ordinal_Scale"><img src="http://cdn.myanimelist.net/r/22x32/images/anime/11/78990.jpg?s=209cf8034c064a4d6e7dbd38aca4e13e" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/anime/31765/Sword_Art_Online_Movie__Ordinal_Scale">Sword Art Online Movie: Ordinal Scale</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add anime to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
@@ -253,116 +227,115 @@ Kazuto Kirigaya - MyAnimeList.net
 		<div class="normal_header">Mangaography</div>
 		<table border="0" cellpadding="0" cellspacing="0" width="100%">
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/21479/Sword_Art_Online"><img src="http://cdn.myanimelist.net/images/manga/1/34697v.jpg" border="0"></a></div></td>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/21479/Sword_Art_Online"><img src="http://cdn.myanimelist.net/r/22x32/images/manga/1/34697.jpg?s=318ade61b89bed5b6aca193efebdbb8c" border="0"></a></div></td>
 				<td valign="top" class="borderClass"><a href="/manga/21479/Sword_Art_Online">Sword Art Online</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/23718/Sword_Art_Online:_Aincrad"><img src="http://cdn.myanimelist.net/images/manga/2/77727v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/23718/Sword_Art_Online:_Aincrad">Sword Art Online: Aincrad</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/23718/Sword_Art_Online__Aincrad"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/2/77727.jpg?s=b29714405c4ff6ce800f90e9fc42db41" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/23718/Sword_Art_Online__Aincrad">Sword Art Online: Aincrad</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/37405/Sword_Art_Online_dj_-_Material_Edition"><img src="http://cdn.myanimelist.net/images/manga/2/68041v.jpg" border="0"></a></div></td>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/37405/Sword_Art_Online_dj_-_Material_Edition"><img src="http://cdn.myanimelist.net/r/21x32/images/manga/2/68041.jpg?s=31a37cf5bc7ab3516326fa1a1490055d" border="0"></a></div></td>
 				<td valign="top" class="borderClass"><a href="/manga/37405/Sword_Art_Online_dj_-_Material_Edition">Sword Art Online dj - Material Edition</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/40053/Sword_Art☆Online."><img src="http://cdn.myanimelist.net/images/manga/5/77721v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/40053/Sword_Art☆Online.">Sword Art☆Online.</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/40053/Sword_Art☆Online"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/5/77721.jpg?s=b8ff740cdc9770e6c2b66f206487b586" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/40053/Sword_Art☆Online">Sword Art☆Online.</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/40281/Sword_Art_Online_dj_-_Lisbeth_Edition"><img src="http://cdn.myanimelist.net/images/manga/4/73281v.jpg" border="0"></a></div></td>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/40281/Sword_Art_Online_dj_-_Lisbeth_Edition"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/4/73281.jpg?s=fc4e535f2975dcadc5d6b0ed5e37af11" border="0"></a></div></td>
 				<td valign="top" class="borderClass"><a href="/manga/40281/Sword_Art_Online_dj_-_Lisbeth_Edition">Sword Art Online dj - Lisbeth Edition</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/41027/Sword_Art_Online_SS:_Calibur_SS-han"><img src="http://cdn.myanimelist.net/images/manga/2/159662v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/41027/Sword_Art_Online_SS:_Calibur_SS-han">Sword Art Online SS: Calibur SS-han</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/41027/Sword_Art_Online_SS__Calibur_SS-han"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/2/159662.jpg?s=5ad2062eade1aed61124073180ec1c61" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/41027/Sword_Art_Online_SS__Calibur_SS-han">Sword Art Online SS: Calibur SS-han</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/43921/Sword_Art_Online:_Progressive"><img src="http://cdn.myanimelist.net/images/manga/2/77447v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/43921/Sword_Art_Online:_Progressive">Sword Art Online: Progressive</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/43921/Sword_Art_Online__Progressive"><img src="http://cdn.myanimelist.net/r/22x32/images/manga/2/77447.jpg?s=c3cc54fd9df5247968a290ca1008d4a8" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/43921/Sword_Art_Online__Progressive">Sword Art Online: Progressive</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/44733/Sword_Art_Online:_Fairy_Dance"><img src="http://cdn.myanimelist.net/images/manga/1/137905v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/44733/Sword_Art_Online:_Fairy_Dance">Sword Art Online: Fairy Dance</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/44733/Sword_Art_Online__Fairy_Dance"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/1/137905.jpg?s=f7ebcc317d1a883812b3461ab58794e8" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/44733/Sword_Art_Online__Fairy_Dance">Sword Art Online: Fairy Dance</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/46222/Sword_Art_Online_dj_-_Silica_Edition"><img src="http://cdn.myanimelist.net/images/manga/3/81604v.jpg" border="0"></a></div></td>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/46222/Sword_Art_Online_dj_-_Silica_Edition"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/3/81604.jpg?s=aa3c8dcf6112d0ffa675831eac8869e0" border="0"></a></div></td>
 				<td valign="top" class="borderClass"><a href="/manga/46222/Sword_Art_Online_dj_-_Silica_Edition">Sword Art Online dj - Silica Edition</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/46582/Sword_Art_Online_Side_Stories"><img src="http://cdn.myanimelist.net/images/manga/3/82322v.jpg" border="0"></a></div></td>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/46582/Sword_Art_Online_Side_Stories"><img src="http://cdn.myanimelist.net/r/21x32/images/manga/3/82322.jpg?s=d735b0ac601360228ce1c93404f74bf5" border="0"></a></div></td>
 				<td valign="top" class="borderClass"><a href="/manga/46582/Sword_Art_Online_Side_Stories">Sword Art Online Side Stories</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/52277/Sword_Art_Online:_Progressive"><img src="http://cdn.myanimelist.net/images/manga/1/117379v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/52277/Sword_Art_Online:_Progressive">Sword Art Online: Progressive</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/52277/Sword_Art_Online__Progressive"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/2/164933.jpg?s=66796045d4ea859c05b990623837ec4a" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/52277/Sword_Art_Online__Progressive">Sword Art Online: Progressive</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/55875/Sword_Art_Online:_Girls_Ops"><img src="http://cdn.myanimelist.net/images/manga/3/156370v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/55875/Sword_Art_Online:_Girls_Ops">Sword Art Online: Girls Ops</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/55875/Sword_Art_Online__Girls_Ops"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/3/156370.jpg?s=53a12833f8ba3d0eaf764d3d8210cdf0" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/55875/Sword_Art_Online__Girls_Ops">Sword Art Online: Girls Ops</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Supporting</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/56169/Sword_Art_Online_dj_-_Pina_Edition"><img src="http://cdn.myanimelist.net/images/manga/3/97903v.jpg" border="0"></a></div></td>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/56169/Sword_Art_Online_dj_-_Pina_Edition"><img src="http://cdn.myanimelist.net/r/22x32/images/manga/3/97903.jpg?s=3cd5182910c75b458c05728fbed7b81b" border="0"></a></div></td>
 				<td valign="top" class="borderClass"><a href="/manga/56169/Sword_Art_Online_dj_-_Pina_Edition">Sword Art Online dj - Pina Edition</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/60593/Sword_Art_Online:_Celeste_no_Yousei"><img src="http://cdn.myanimelist.net/images/manga/4/148041v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/60593/Sword_Art_Online:_Celeste_no_Yousei">Sword Art Online: Celeste no Yousei</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/60593/Sword_Art_Online__Celeste_no_Yousei"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/4/148041.jpg?s=559c6dfbf51356d80a04a6e7d3a81964" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/60593/Sword_Art_Online__Celeste_no_Yousei">Sword Art Online: Celeste no Yousei</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/75099/Sword_Art_Online:_Phantom_Bullet"><img src="http://cdn.myanimelist.net/images/manga/1/137907v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/75099/Sword_Art_Online:_Phantom_Bullet">Sword Art Online: Phantom Bullet</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/75099/Sword_Art_Online__Phantom_Bullet"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/1/137907.jpg?s=cdec3bb40b7c651accd95ad9abd242c3" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/75099/Sword_Art_Online__Phantom_Bullet">Sword Art Online: Phantom Bullet</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/75101/Sword_Art_Online:_Mothers_Rosario"><img src="http://cdn.myanimelist.net/images/manga/1/145353v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/75101/Sword_Art_Online:_Mothers_Rosario">Sword Art Online: Mother's Rosario</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/75101/Sword_Art_Online__Mothers_Rosario"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/1/145353.jpg?s=58b347114eb893b1d3f6096a01270cc0" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/75101/Sword_Art_Online__Mothers_Rosario">Sword Art Online: Mother's Rosario</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Supporting</small></div></td>
 				</tr>
 				<tr>
-				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/75103/Sword_Art_Online:_Calibur"><img src="http://cdn.myanimelist.net/images/manga/2/162192v.jpg" border="0"></a></div></td>
-				<td valign="top" class="borderClass"><a href="/manga/75103/Sword_Art_Online:_Calibur">Sword Art Online: Calibur</a>
+				<td width="25" class="borderClass" valign="top"><div class="picSurround"><a href="/manga/75103/Sword_Art_Online__Calibur"><img src="http://cdn.myanimelist.net/r/23x32/images/manga/2/162192.jpg?s=0c9e38f8dc15488db843ab573f9c0b51" border="0"></a></div></td>
+				<td valign="top" class="borderClass"><a href="/manga/75103/Sword_Art_Online__Calibur">Sword Art Online: Calibur</a>
 				<div class="spaceit_pad">      <a href="/login.php?error=login_required&amp;from=%2Fcharacter%2F36765" title="Quick add manga to my list" class="button_add ">add</a>
  <small>Main</small></div></td>
 				</tr>
 		</table>
 		<br /><br>
-		Member Favorites: 16816
+		Member Favorites: 18668
 		</td>
 		<td valign="top" style="padding-left: 5px;">
 		<div id="horiznav_nav" style="margin: 5px 0 10px 0;">
 				<ul style="margin-right: 0; padding-right: 0;">
-				<li><a href="/character/36765/Kazuto_Kirigaya" class="horiznav_active">Details</a></li>
-				<li><a  href="/character/36765/Kazuto_Kirigaya/pictures">Pictures</a></li>
+				<li><a href="/character/36765/Kazuto_Kirigaya" class="horiznav_active">Details</a></li><li><a  href="/character/36765/Kazuto_Kirigaya/featured">Featured</a></li><li><a  href="/character/36765/Kazuto_Kirigaya/pictures">Pictures</a></li>
 				<li><a  href="/character/36765/Kazuto_Kirigaya/clubs">Clubs</a></li>
 				</ul>
 		</div>
@@ -380,24 +353,25 @@ Kazuto Kirigaya - MyAnimeList.net
 
 	  <div class="normal_header" style="height: 15px;">Kazuto Kirigaya <span style="font-weight: normal;"><small>(桐ヶ谷 和人)</small></span></div>Birthday: October 7, 2008<br />
 Age: 14 (Beginning of Aincrad arc), 16 (End of Aincrad arc, Fairy Dance arc), 17 (Phantom Bullet arc)<br />
-Height: 163 cm<br />
+Height: 172 cm<br />
 Weight: 59 kg<br />
-Weapon(s) of choice: Anneal Blade (1st Level), Queen's Knightblade (9th Level), Elucidator (50th level), Dark Repulser (forged by Lisbeth), and Holy Sword Excalibur (obtained from the &quot;Calibur Quest&quot;).<br />
+Weapon(s) of choice: Anneal Blade (1st Level), Queen&#039;s Knightblade (9th Level), Elucidator (50th level), Dark Repulser (forged by Lisbeth), and Holy Sword Excalibur (obtained from the &quot;Calibur Quest&quot;).<br />
 <br />
-Kirito is the protagonist of Sword Art Online. He is a &quot;solo&quot; player, a player who hasn't joined a guild and usually works alone. He is also one of the very few people to have had the privilege to play in the beta testing period of Sword Art Online. His game alias, Kirito, is created by taking the syllables of the first and last Kanji of his real last and first names respectively: (Kirigaya Kazuto). In the real world, he lives with his aunt and younger cousin in a family of 3.<br />
+Kirito is the protagonist of Sword Art Online. He is a &quot;solo&quot; player, a player who hasn&#039;t joined a guild and usually works alone. He is also one of the very few people to have had the privilege to play in the beta testing period of Sword Art Online. His game alias, Kirito, is created by taking the syllables of the first and last Kanji of his real last and first names respectively: (Kirigaya Kazuto). In the real world, he lives with his aunt and younger cousin in a family of 3.<br />
 <br />
-When Kayaba announced the start of the death game, he is surprised, but unlike everyone else he quickly gets over it and accepts it to an extent. He invited his friend Klein to go with him but Klein had to find his friends in the game. He was invited to join them but he declined as he couldn't take the pressure of protecting them even with his beta testing knowledge of the game.<br />
+When Kayaba announced the start of the death game, he is surprised, but unlike everyone else he quickly gets over it and accepts it to an extent. He invited his friend Klein to go with him but Klein had to find his friends in the game. He was invited to join them but he declined as he couldn&#039;t take the pressure of protecting them even with his beta testing knowledge of the game.<br />
 <br />
-<div class="spoiler"><input type="button" class="button" onClick="this.nextSibling.nextSibling.style.display='inline-block';this.style.display='none';" value="Show spoiler"> <span class="spoiler_content" style="display:none"><input type="button" class="button" onClick="this.parentNode.style.display='none';this.parentNode.parentNode.childNodes[0].style.display='inline-block';" value="Hide spoiler"><br>He was the first one to be called a Beater, a combination of beta testing and cheater, as he had great knowledge of the game through the beta test period and showing great skills in floor clearing but chose not to help other players.<br />
-<br />
-He had it imposed on himself so as to differentiate the beta testers who were just picked in the testing and the serious gamers who uses the knowledge efficiently like a cheat.<!--spoiler--></span></div><br />
 Kirito tends to use a single handed straight sword. The blade that he uses most often is the Elucidator. Later on he acquires a second blade called Dark Repulser that was made by his blacksmith friend, Lisbeth.<br />
 <br />
-<div class="spoiler"><input type="button" class="button" onClick="this.nextSibling.nextSibling.style.display='inline-block';this.style.display='none';" value="Show spoiler"> <span class="spoiler_content" style="display:none"><input type="button" class="button" onClick="this.parentNode.style.display='none';this.parentNode.parentNode.childNodes[0].style.display='inline-block';" value="Hide spoiler"><br>He has a unique skill called <strong>&lt;&lt;Dual Blades&gt;&gt;</strong> which allows him to dual wield two swords and use Swords Skills. It's the special skill designed for the Hero that defeats the Demon Lord at the last floor. He found it in his skills list after a year in the game. After nearly mastering it, he only uses it in emergencies to avoid attention for being one of the few people to have a unique skill.<!--spoiler--></span></div><br />
+<div class="spoiler"><input type="button" class="button show_button" onClick="this.nextSibling.style.display='inline-block';this.style.display='none';" data-showname="Show spoiler" data-hidename="Hide spoiler" value="Show spoiler"><span class="spoiler_content" style="display:none"><input type="button" class="button hide_button" onClick="this.parentNode.style.display='none';this.parentNode.parentNode.childNodes[0].style.display='inline-block';" value="Hide spoiler"><br>He was the first one to be called a Beater, a combination of beta testing and cheater, as he had great knowledge of the game through the beta test period and showing great skills in floor clearing but chose not to help other players.<br />
 <br />
-<div class="spoiler"><input type="button" class="button" onClick="this.nextSibling.nextSibling.style.display='inline-block';this.style.display='none';" value="Show spoiler"> <span class="spoiler_content" style="display:none"><input type="button" class="button" onClick="this.parentNode.style.display='none';this.parentNode.parentNode.childNodes[0].style.display='inline-block';" value="Hide spoiler"><br>He befriends a girl by the name of Yuuki Asuna who later becomes his lover.<!--spoiler--></span></div><br />
+He had it imposed on himself so as to differentiate the beta testers who were just picked in the testing and the serious gamers who uses the knowledge efficiently like a cheat.<br />
 <br />
-<div class="spoiler"><input type="button" class="button" onClick="this.nextSibling.nextSibling.style.display='inline-block';this.style.display='none';" value="Show spoiler"> <span class="spoiler_content" style="display:none"><input type="button" class="button" onClick="this.parentNode.style.display='none';this.parentNode.parentNode.childNodes[0].style.display='inline-block';" value="Hide spoiler"><br>In the 10th volume of the Accel World light novel and the 5th volume of the Accel World manga Kirito is featured in a special chapter, in which he fights Sliver Crow, the burst linker. In the chapter, Kirito is playing as his old SAO avatar, wielding the Elucidator and Dark Repulser.<!--spoiler--></span></div><br /><br /><div class="normal_header">Voice Actors</div>
+He has a unique skill called <b>&lt;&lt;Dual Blades&gt;&gt;</b> which allows him to dual wield two swords and use Swords Skills. It&#039;s the special skill designed for the Hero that defeats the Demon Lord at the last floor. He found it in his skills list after a year in the game. After nearly mastering it, he only uses it in emergencies to avoid attention for being one of the few people to have a unique skill.<br />
+<br />
+He befriends a girl by the name of Yuuki Asuna who later becomes his lover.<br />
+<br />
+In the 10th volume of the Accel World light novel and the 5th volume of the Accel World manga Kirito is featured in a special chapter, in which he fights Sliver Crow, the burst linker. In the chapter, Kirito is playing as his old SAO avatar, wielding the Elucidator and Dark Repulser.</span></div><br /><br /><div class="normal_header">Voice Actors</div>
 			<table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 				<td class="borderClass" valign="top" width="25"><div class="picSurround"><a href="/people/732/Bryce_Papenbrook"><img src="http://cdn.myanimelist.net/images/voiceactors/3/29853v.jpg" border="0"></a></div></td>
@@ -424,7 +398,7 @@ Kirito tends to use a single handed straight sword. The blade that he uses most 
 
 			<table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
-				<td class="borderClass" valign="top" width="25"><div class="picSurround"><a href="/people/11817/Yoshitsugu_Matsuoka"><img src="http://cdn.myanimelist.net/images/voiceactors/2/40132v.jpg" border="0"></a></div></td>
+				<td class="borderClass" valign="top" width="25"><div class="picSurround"><a href="/people/11817/Yoshitsugu_Matsuoka"><img src="http://cdn.myanimelist.net/images/voiceactors/2/42176v.jpg" border="0"></a></div></td>
 				<td class="borderClass" valign="top"><a href="/people/11817/Yoshitsugu_Matsuoka">Matsuoka, Yoshitsugu</a>
 				<div style="margin-top: 2px;"><small>Japanese</small></div></td>
 			</tr>
@@ -453,50 +427,109 @@ Kirito tends to use a single handed straight sword. The blade that he uses most 
 				<div style="margin-top: 2px;"><small>French</small></div></td>
 			</tr>
 			</table>
-			<br></td>
+
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+				<td class="borderClass" valign="top" width="25"><div class="picSurround"><a href="/people/31535/Darío_Torrent"><img src="http://cdn.myanimelist.net/images/voiceactors/1/31215v.jpg" border="0"></a></div></td>
+				<td class="borderClass" valign="top"><a href="/people/31535/Darío_Torrent">Torrent, Darío</a>
+				<div style="margin-top: 2px;"><small>Spanish</small></div></td>
+			</tr>
+			</table>
+			<br><br /><h2><div class="floatRightHeader"><a href="/character/36765/Kazuto_Kirigaya/featured">See More</a></div>Recent Featured Articles</h2><div class="detail-page-featured-article">
+<div class="news-list">
+
+
+<div class="news-unit clearfix" data-tag="cat1 cat1 cat1 cat1 cat1 cat1 cat1 ">
+  <a href="http://myanimelist.net/featured/378" class="image-link"><img src="http://cdn.myanimelist.net/s/common/uploaded_files/1443437299-48d2c4d8a8306c4d35e81f894888a89d.jpeg" alt="Top 20 Cute Couples in Anime" class="image"></a>
+  <div class="news-unit-right">
+    <p class="title">
+      <a href="http://myanimelist.net/featured/378" title="Top 20 Cute Couples in Anime">Top 20 Cute Couples in Anime</a>
+    </p>
+    <div class="text">
+      Imagine anime without any romance. Boring, right? The cute expressions boys get on their faces when alone with their loving girlfriends. The warm signs of affection girls show to their caring boyfriends. Love is in the air! Come fall in love with 20 of the most adorable couples in anime history.
+    </div>
+    <div class="information">
+      <p class="info pr8">
+        by <a href="http://myanimelist.net/profile/mightywarrior121">mightywarrior121</a>
+      </p>
+
+                    <p class="di-tc pv pr8">
+          <b>82,269</b> views
+        </p>
+      <div class="tags">
+        <div class="tags-inner"><div class="tags-inner-attributes"><span class="tag tag-color-feature-spoiler">Spoiler</span></div><a href="http://myanimelist.net/featured/tag/collection" class="tag tag-color-feature-collection" title="Collection">Collection</a><a href="http://myanimelist.net/featured/tag/cute_girls" class="tag tag-color-feature-cute_girls" title="Cute Girls">Cute Girls</a><a href="http://myanimelist.net/featured/tag/cute_guys" class="tag tag-color-feature-cute_guys" title="Cute Guys">Cute Guys</a><a href="http://myanimelist.net/featured/tag/friendship" class="tag tag-color-feature-friendship" title="Friendship">Friendship</a><a href="http://myanimelist.net/featured/tag/heart-warming" class="tag tag-color-feature-heart-warming" title="Heart-warming">Heart-warming</a><a href="http://myanimelist.net/featured/tag/kawaii" class="tag tag-color-feature-kawaii" title="Kawaii">Kawaii</a><a href="http://myanimelist.net/featured/tag/love" class="tag tag-color-feature-love" title="Love">Love</a></div>
+      </div></div>
+  </div>
+</div>
+
+
+<div class="news-unit clearfix" data-tag="cat1 cat1 cat1 cat1 cat1 ">
+  <a href="http://myanimelist.net/featured/1273" class="image-link"><img src="http://cdn.myanimelist.net/s/common/uploaded_files/1452233440-1c6a246bbbf17a135a13a3c1fe9bc499.jpeg" alt="30 Best Waifu and Husbando: Will You Marry Me? " class="image"></a>
+  <div class="news-unit-right">
+    <p class="title">
+      <a href="http://myanimelist.net/featured/1273" title="30 Best Waifu and Husbando: Will You Marry Me? ">30 Best Waifu and Husbando: Will You Marry Me? </a>
+    </p>
+    <div class="text">
+      The waifu and husbando phenomenon has exploded in the world of anime. Every fan has their absolute favorite characters, which they just can&#039;t seem to let go of when the series ends. These dream boys and girls have made their place into the hearts of fans worldwide. Let&#039;s meet a few of the best!
+    </div>
+    <div class="information">
+      <p class="info pr8">
+        by <a href="http://myanimelist.net/profile/madokamage">madokamage</a>
+      </p>
+
+                    <p class="di-tc pv pr8">
+          <b>20,938</b> views
+        </p>
+      <div class="tags">
+        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/collection" class="tag tag-color-feature-collection" title="Collection">Collection</a><a href="http://myanimelist.net/featured/tag/cute_girls" class="tag tag-color-feature-cute_girls" title="Cute Girls">Cute Girls</a><a href="http://myanimelist.net/featured/tag/cute_guys" class="tag tag-color-feature-cute_guys" title="Cute Guys">Cute Guys</a><a href="http://myanimelist.net/featured/tag/moe" class="tag tag-color-feature-moe" title="Moe">Moe</a><a href="http://myanimelist.net/featured/tag/hot" class="tag tag-color-feature-hot" title="Hot">Hot</a></div>
+      </div></div>
+  </div>
+</div>
+                </div>
+</div><br></td>
 		</tr>
 		</table><script type="text/javascript" src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true"></script></div><!-- end of contentHome -->
 
 
                                   <script type='text/javascript'>
-    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCChar_OTHER_MR_BTF_LHS', [300,250], 'div-gpt-ad-1857266721').addService(googletag.pubads());
-            var slot = googletag.defineSlot('/84947469/02PCChar_OTHER_MR_BTF_RHS', [300,250], 'div-gpt-ad-1076770668').addService(googletag.pubads());
-            var slot = googletag.defineSlot('/84947469/02PCChar_OTHERS_SK_LHS', [[120,600],[160,600]], 'div-gpt-ad-222990382').addService(googletag.pubads());
-            var slot = googletag.defineSlot('/84947469/02PCChar_OTHERS_SK_RHS', [[120,600],[160,600]], 'div-gpt-ad-888794519').addService(googletag.pubads());
-            googletag.pubads().collapseEmptyDivs();
+    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCChar_OTHER_MR_BTF_LHS', [[300,250],[336,280]], 'div-gpt-ad-1114446593').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCChar_OTHER_MR_BTF_RHS', [[300,250],[336,280]], 'div-gpt-ad-1002152489').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCChar_OTHERS_SK_LHS', [[120,600],[160,600]], 'div-gpt-ad-1091854707').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCChar_OTHERS_SK_RHS', [[120,600],[160,600]], 'div-gpt-ad-963370425').addService(googletag.pubads());            googletag.pubads().collapseEmptyDivs();
         googletag.enableServices();
     });
 </script>
 
   <div class="mauto clearfix pt24" style="width:760px;">
     <div class="fl-l">
-    <div id="div-gpt-ad-1857266721" style="width:300px; height:250px;">
+
+<div id="div-gpt-ad-1114446593" style="width:336px; height:280px;" data-code="02PCChar_OTHER_MR_BTF_LHS">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1857266721"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1114446593"); });
       </script>
 </div>
   </div>
       <div class="fl-r">
-    <div id="div-gpt-ad-1076770668" style="width:300px; height:250px;">
+
+<div id="div-gpt-ad-1002152489" style="width:336px; height:280px;" data-code="02PCChar_OTHER_MR_BTF_RHS">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1076770668"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1002152489"); });
       </script>
 </div>
   </div>
   </div>
 </div>
   <div class="side-ad side-ad--l">
-    <div id="div-gpt-ad-222990382" style="width:160px; height:600px;">
+
+<div id="div-gpt-ad-1091854707" style="width:160px; height:600px;" data-code="02PCChar_OTHERS_SK_LHS">
   <script type='text/javascript'>
-                window.MAL.SkinAd.pushSKTag("div-gpt-ad-222990382");
+                window.MAL.SkinAd.pushSKTag("div-gpt-ad-1091854707");
       </script>
 </div>
   </div>
 
   <div class="side-ad side-ad--r">
-    <div id="div-gpt-ad-888794519" style="width:160px; height:600px;">
+
+<div id="div-gpt-ad-963370425" style="width:160px; height:600px;" data-code="02PCChar_OTHERS_SK_RHS">
   <script type='text/javascript'>
-                window.MAL.SkinAd.pushSKTag("div-gpt-ad-888794519");
+                window.MAL.SkinAd.pushSKTag("div-gpt-ad-963370425");
       </script>
 </div>
   </div>
@@ -508,6 +541,7 @@ Kirito tends to use a single handed straight sword. The blade that he uses most 
 <!-- end rightbody -->
 
 </div><!-- wrapper -->
+
 
     <div id="ad-skin-bg-right" class="ad-skin-side-outer ad-skin-side-bg bg-right">
     <div id="ad-skin-right" class="ad-skin-side right" style="display: none;">
@@ -525,51 +559,51 @@ Kirito tends to use a single handed straight sword. The blade that he uses most 
           <div class="ranking-unit ranking-top_anime">
         <h3 class="title"><a href="http://myanimelist.net/topanime.php" class="view_more fl-r">More</a>Top Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist:_Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9253/Steins;Gate">Steins;Gate</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/9253/Steins_Gate">Steins;Gate</a></li>
                       <li><span class="rank">4</span><a href="http://myanimelist.net/anime/9969/Gintama">Gintama&#039;</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/11061/Hunter_x_Hunter_(2011)">Hunter x Hunter (2011)</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/11061/Hunter_x_Hunter_2011">Hunter x Hunter (2011)</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_airing">
         <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=airing" class="view_more fl-r">More</a>Top Airing Anime</h3>
         <ol>
                       <li><span class="rank">1</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28171/Shokugeki_no_Souma">Shokugeki no Souma</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/25649/Junjou_Romantica_3">Junjou Romantica 3</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/27831/Durarara!!x2_Ten">Durarara!!x2 Ten</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/31043/Boku_dake_ga_Inai_Machi">Boku dake ga Inai Machi</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28891/Haikyuu_Second_Season">Haikyuu!! Second Season</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/30709/Kamisama_Hajimemashita__Kako-hen">Kamisama Hajimemashita: Kako-hen</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_upcoming">
         <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=upcoming" class="view_more fl-r">More</a>Top Upcoming Anime</h3>
         <ol>
                       <li><span class="rank">1</span><a href="http://myanimelist.net/anime/25777/Shingeki_no_Kyojin_2nd_Season">Shingeki no Kyojin 2nd Season</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/9260/Kizumonogatari">Kizumonogatari</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/3786/Evangelion:_3.0+1.0">Evangelion: 3.0+1.0</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30503/Noragami_Aragoto">Noragami Aragoto</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/28927/Owari_no_Seraph:_Nagoya_Kessen-hen">Owari no Seraph: Nagoya Kessen-hen</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/3786/Evangelion__30_10">Evangelion: 3.0+1.0</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/25537/Fate_stay_night_Movie__Heavens_Feel">Fate/stay night Movie: Heaven&#039;s Feel</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30484/Steins_Gate_0">Steins;Gate 0</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/28623/Koutetsujou_no_Kabaneri">Koutetsujou no Kabaneri</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_page_views">
         <h3 class="title">Top Page Views</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/29803/Overlord">Overlord</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28999/Charlotte">Charlotte</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30307/Monster_Musume_no_Iru_Nichijou">Monster Musume no Iru Nichijou</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/28497/Rokka_no_Yuusha">Rokka no Yuusha</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/27631/God_Eater">God Eater</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/31043/Boku_dake_ga_Inai_Machi">Boku dake ga Inai Machi</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28623/Koutetsujou_no_Kabaneri">Koutetsujou no Kabaneri</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30831/Kono_Subarashii_Sekai_ni_Shukufuku_wo">Kono Subarashii Sekai ni Shukufuku wo!</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/31559/Prince_of_Stride__Alternative">Prince of Stride: Alternative</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/31859/Hai_to_Gensou_no_Grimgar">Hai to Gensou no Grimgar</a></li>
                   </ol>
       </div>
-          <div class="ranking-unit ranking-trending_words">
-        <h3 class="title">Trending Words</h3>
+          <div class="ranking-unit ranking-popular_ranking">
+        <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=bypopularity" class="view_more fl-r">More</a>Most Popular Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/1735/Naruto:_Shippuuden">Naruto: Shippuuden</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/22319/Tokyo_Ghoul">Tokyo Ghoul</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/20/Naruto">Naruto</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/813/Dragon_Ball_Z">Dragon Ball Z</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/1535/Death_Note">Death Note</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/11757/Sword_Art_Online">Sword Art Online</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/16498/Shingeki_no_Kyojin">Shingeki no Kyojin</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/1575/Code_Geass__Hangyaku_no_Lelouch">Code Geass: Hangyaku no Lelouch</a></li>
                   </ol>
       </div>
       </div>
@@ -583,7 +617,7 @@ Kirito tends to use a single handed straight sword. The blade that he uses most 
       <p class="footer-link di-ib">
         <a href="http://myanimelist.net/about.php">About</a>
         <a href="http://myanimelist.net/about.php?go=contact">Support</a>
-        <a href="http://myanimelist.net/about.php?go=advertising">Advertising</a>
+        <a href="http://myanimelist.net/advertising">Advertising</a>
         <a href="http://myanimelist.net/forum/?topicid=515949">FAQ</a>
         <a href="http://myanimelist.net/about/terms_of_use">Terms</a>
         <a href="http://myanimelist.net/about/privacy_policy">Privacy</a>
