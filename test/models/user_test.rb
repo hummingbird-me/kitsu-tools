@@ -101,4 +101,13 @@ class UserTest < ActiveSupport::TestCase
     assert_equal '::1', user.current_sign_in_ip
     assert_equal '127.0.0.1', user.last_sign_in_ip
   end
+
+  test 'to_discourse_sso should return a SingleSignOn object' do
+    user = users(:vikhyat)
+    sso = user.to_discourse_sso
+    assert_instance_of DiscourseApi::SingleSignOn, sso
+    assert_equal user.email, sso.email
+    assert_equal user.name, sso.username
+    assert_equal user.id, sso.external_id
+  end
 end

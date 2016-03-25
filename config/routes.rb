@@ -149,6 +149,10 @@ Hummingbird::Application.routes.draw do
   # Imports
   post '/mal_import', to: redirect('/settings/import/myanimelist')
 
+  # I'm just gonna awkwardly cram SSO in here because holy fuck our routes.rb is
+  # 200LOC, this is absurd.  I'm glad this is all disappearing in V3.
+  get '/discourse/sso' => 'users#discourse_sso'
+
   # Random anime
   get '/random/anime' => 'anime#random'
   get '/anime/upcoming(/:season)' => 'anime#upcoming', as: :anime_season

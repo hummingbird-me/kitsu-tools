@@ -418,16 +418,12 @@ class User < ActiveRecord::Base
   end
 
   def sync_to_forum!
-    UserSyncWorker.perform_async(self.id) if Rails.env.production?
+    UserSyncWorker.perform_async(id) if Rails.env.production?
   end
 
   after_save do
-    name_changed = self.name_changed?
-    auth_token_changed = self.authentication_token_changed?
-    avatar_changed = (not self.avatar_processing) && (self.avatar_processing_changed? || self.avatar_updated_at_changed?)
-    if name_changed || avatar_changed || auth_token_changed
-      self.sync_to_forum!
-    end
+    avatar_changed = !avatar_processing && avatar_processing_changed?
+    sync_to_forum! if name_changed? || avatar_changed || pro_expires_at_changed?
   end
 
   def voted_for?(target)
@@ -448,5 +444,16 @@ class User < ActiveRecord::Base
   attr_reader :is_followed
   def set_is_followed!(v)
     @is_followed = v
+  end
+
+  def to_discourse_sso
+    DiscourseApi::SingleSignOn.new.tap do |sso|
+      sso.email = email
+      sso.username = name
+      sso.external_id = id
+      sso.suppress_welcome_message = true
+      sso.avatar_url = avatar.url(:thumb)
+      sso.custom_fields[:pro_expires_at] = pro_expires_at
+    end
   end
 end

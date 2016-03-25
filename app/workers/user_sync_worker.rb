@@ -2,6 +2,10 @@ class UserSyncWorker
   include Sidekiq::Worker
 
   def perform(user_id)
-    open("http://forums.hummingbird.me/sync?secret=#{ENV['FORUM_SYNC_SECRET']}&user_id=#{user_id}").read
+    user = User.find(user_id)
+    client = DiscourseApi::Client.new(ENV['DISCOURSE_API_URL'])
+    sso = user.to_discourse_sso
+
+    client.post("/admin/users/sync_sso", sso.payload)
   end
 end

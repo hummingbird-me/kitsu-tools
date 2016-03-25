@@ -173,4 +173,16 @@ class UsersController < ApplicationController
     @users = User.where(name: fixed_user_list)
     render json: @users, each_serializer: UserSerializer
   end
+
+  def discourse_sso
+    authenticate_user!
+    payload = request.query_string
+    secret = ENV['DISCOURSE_SSO_SECRET']
+
+    sso_request = DiscourseApi::SingleSignOn.parse(payload, secret)
+    sso_response = current_user.to_discourse_sso
+    sso_response.sso_secret = secret
+
+    redirect_to sso_response.to_url(ENV['DISCOURSE_SSO_URL'])
+  end
 end
