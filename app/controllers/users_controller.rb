@@ -179,8 +179,10 @@ class UsersController < ApplicationController
     payload = request.query_string
     secret = ENV['DISCOURSE_SSO_SECRET']
 
+    # Raises an error if the signature fails verification
     sso_request = DiscourseApi::SingleSignOn.parse(payload, secret)
     sso_response = current_user.to_discourse_sso
+    sso_response.nonce = sso_request.nonce
     sso_response.sso_secret = secret
 
     redirect_to sso_response.to_url(ENV['DISCOURSE_SSO_URL'])
