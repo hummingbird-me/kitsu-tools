@@ -24,16 +24,16 @@ env:
     - TESTGROUP=server
 
 before_install:
-  - source bin/travis/before_install
+  - source scripts/travis/before_install
 
 install:
-  - source bin/travis/install
+  - source scripts/travis/install
 
 before_script:
-  - source bin/travis/before_script
+  - source scripts/travis/before_script
 
 script:
-  - bin/test
+  - scripts/test
 
 notifications:
   slack:
