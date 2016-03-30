@@ -17,8 +17,8 @@ cache:
 
 env:
   global:
-    - USE_NODE=0.12
-    - USE_RUBY=2.2.3
+    - USE_NODE=5.9
+    - USE_RUBY=2.3.0
   matrix:
     - TESTGROUP=client
     - TESTGROUP=server

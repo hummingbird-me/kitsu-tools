@@ -1,4 +1,4 @@
-FROM node:5.5
+FROM node:5.9
 MAINTAINER Hummingbird Media, Inc.
 
 RUN npm install -gq bower
