@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Build files
+docker-compose build
+# Install dependencies
+docker-compose run --entrypoint=bundle server install
+docker-compose run --entrypoint=npm client install
+docker-compose run --entrypoint=bower client install
+# Initialize database
+docker-compose run server rake db:setup

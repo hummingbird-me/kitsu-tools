@@ -14,6 +14,7 @@ services:
 
   # Web server, also acts as public entrypoint
   nginx:
+    image: nginx
     links: [client, server]
     ports: [80]
 
