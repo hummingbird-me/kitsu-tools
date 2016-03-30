@@ -12,9 +12,11 @@ services:
   elasticsearch:
     image: elasticsearch
 
-  # Web server, also acts as public entrypoint
+  # Web server, routing /api and / to server, client respectively
   nginx:
-    image: nginx
+    build:
+      context: ./scripts
+      dockerfile: Dockerfile.nginx
     links: [client, server]
     ports: [80]
 
