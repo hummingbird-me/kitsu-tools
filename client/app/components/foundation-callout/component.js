@@ -13,6 +13,7 @@ export default Component.extend({
   closable: false,
 
   didInsertElement() {
+    this._super(...arguments);
     if (get(this, 'closable') === true) {
       run.scheduleOnce('afterRender', this, () => {
         this.$().on('closed.zf', () => this.destroy());
@@ -21,6 +22,7 @@ export default Component.extend({
   },
 
   willDestroyElement() {
+    this._super(...arguments);
     if (get(this, 'closable') === true) {
       this.$().off('closed.zf');
     }

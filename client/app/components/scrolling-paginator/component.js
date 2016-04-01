@@ -47,7 +47,7 @@ export default Component.extend(InViewportMixin, {
   },
 
   didEnterViewport() {
-    this._super();
+    this._super(...arguments);
     run.debounce(this, this._getNextData, DEBOUNCE, true);
   },
 

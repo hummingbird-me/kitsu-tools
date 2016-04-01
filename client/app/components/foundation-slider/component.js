@@ -22,6 +22,7 @@ export default Ember.Component.extend({
   classNames: 'slider',
 
   didInsertElement() {
+    this._super(...arguments);
     /* TO BE ENABLED AFTER zurb/foundation-sites#7730 IS FIXED!
     new Foundation.Slider(this.$(), getProperties(this, [
       'start', 'end', 'initialStart', 'initialEnd', 'clickSelect', 'vertical',

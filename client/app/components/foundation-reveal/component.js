@@ -11,6 +11,7 @@ export default Component.extend({
   modalClass: undefined,
 
   didInsertElement() {
+    this._super(...arguments);
     run.scheduleOnce('afterRender', this, () => {
       const id = get(this, 'modalId');
       this.$(`#${id}`).foundation();

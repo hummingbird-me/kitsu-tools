@@ -25,6 +25,7 @@ export default Component.extend({
   },
 
   willDestroyElement() {
+    this._super(...arguments);
     if (get(this, 'closeOnClick') === true) {
       this.$('.dropdown-pane').off('click');
     }
