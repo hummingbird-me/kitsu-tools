@@ -1,17 +1,12 @@
-import Ember from 'ember';
+import Component from 'ember-component';
+import get from 'ember-metal/get';
+import set, { setProperties } from 'ember-metal/set';
+import { debounce } from 'ember-runloop';
+import computed from 'ember-computed';
+import service from 'ember-service/inject';
 import InViewportMixin from 'ember-in-viewport';
 
 const DEBOUNCE = 500;
-const {
-  Component,
-  get,
-  getWithDefault,
-  set,
-  setProperties,
-  run,
-  computed,
-  inject: { service }
-} = Ember;
 
 // TODO: See client/initializers/store-links.js comments
 export default Component.extend(InViewportMixin, {
@@ -23,7 +18,7 @@ export default Component.extend(InViewportMixin, {
   nextLink: computed('_links', {
     get() {
       const links = get(this, '_links') || {};
-      return getWithDefault(links, 'next', undefined);
+      return get(links, 'next');
     }
   }),
 
@@ -31,7 +26,7 @@ export default Component.extend(InViewportMixin, {
     get() {
       let model = get(this, 'model');
       const metadata = get(model, 'meta');
-      return getWithDefault(metadata, '_links', undefined);
+      return get(metadata, '_links');
     }
   }),
 
@@ -48,7 +43,7 @@ export default Component.extend(InViewportMixin, {
 
   didEnterViewport() {
     this._super(...arguments);
-    run.debounce(this, this._getNextData, DEBOUNCE, true);
+    debounce(this, this._getNextData, DEBOUNCE, true);
   },
 
   _getNextData() {
@@ -58,7 +53,7 @@ export default Component.extend(InViewportMixin, {
     }
     set(this, 'isLoading', true);
     let model = get(this, 'model');
-    model = getWithDefault(model, 'firstObject', model);
+    model = get(model, 'firstObject') || model;
     const { modelName } = model.constructor;
     const options = this._parseLink(nextLink);
     get(this, 'store').query(modelName, options)

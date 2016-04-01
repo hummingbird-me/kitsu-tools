@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import EmberObject from 'ember-object';
 import { moduleFor } from 'ember-qunit';
 import { testValidPropertyValues, testInvalidPropertyValues } from 'client/tests/helpers/validate-properties';
 
@@ -14,7 +14,7 @@ moduleFor('controller:sign-up', 'Unit | Controller | sign up', {
 
   beforeEach() {
     this.subject({
-      model: Ember.Object.create()
+      model: EmberObject.create()
     });
   }
 });

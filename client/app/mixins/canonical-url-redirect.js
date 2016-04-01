@@ -1,9 +1,5 @@
-import Ember from 'ember';
-
-const {
-  Mixin,
-  get
-} = Ember;
+import Mixin from 'ember-metal/mixin';
+import get from 'ember-metal/get';
 
 export default Mixin.create({
   redirect(model) {

@@ -1,11 +1,7 @@
-import Ember from 'ember';
+import Route from 'ember-route';
+import get from 'ember-metal/get';
 import DataRouteErrorMixin from 'client/mixins/data-route-error';
 import CanonicalUrlRedirect from 'client/mixins/canonical-url-redirect';
-
-const {
-  Route,
-  get
-} = Ember;
 
 export default Route.extend(DataRouteErrorMixin, CanonicalUrlRedirect, {
   model(params) {

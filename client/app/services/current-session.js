@@ -1,14 +1,9 @@
-import Ember from 'ember';
-
-const {
-  Service,
-  get,
-  set,
-  isPresent,
-  computed,
-  computed: { alias },
-  inject: { service }
-} = Ember;
+import Service from 'ember-service';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import { isPresent } from 'ember-utils';
+import computed, { alias } from 'ember-computed';
+import service from 'ember-service/inject';
 
 export default Service.extend({
   session: service(),

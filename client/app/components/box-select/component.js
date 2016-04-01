@@ -1,14 +1,9 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  get,
-  set,
-  getProperties,
-  computed,
-  merge,
-  copy
-} = Ember;
+import Component from 'ember-component';
+import get, { getProperties } from 'ember-metal/get';
+import set from 'ember-metal/set';
+import computed from 'ember-computed';
+import { assign } from 'ember-platform';
+import { copy } from 'ember-metal/utils';
 
 export default Component.extend({
   selection: [],
@@ -18,7 +13,7 @@ export default Component.extend({
     get() {
       const { selection, selected } = getProperties(this, 'selection', 'selected');
       return selection.map((option) => {
-        const out = merge({}, { name: option });
+        const out = assign({}, { name: option });
         set(out, 'selected', selected.contains(option));
         return out;
       });

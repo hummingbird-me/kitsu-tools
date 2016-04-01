@@ -1,15 +1,10 @@
-import Ember from 'ember';
+import Controller from 'ember-controller';
+import { isEmpty } from 'ember-utils';
+import computed from 'ember-computed';
+import get, { getProperties } from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
 import errorMessages from 'client/utils/error-messages';
-
-const {
-  Controller,
-  isEmpty,
-  computed,
-  get,
-  getProperties,
-  set,
-  inject: { service }
-} = Ember;
 
 export default Controller.extend({
   currentSession: service(),

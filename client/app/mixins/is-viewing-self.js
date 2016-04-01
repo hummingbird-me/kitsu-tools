@@ -1,10 +1,6 @@
-import Ember from 'ember';
-
-const {
-  Mixin,
-  computed,
-  get
-} = Ember;
+import Mixin from 'ember-metal/mixin';
+import computed from 'ember-computed';
+import get from 'ember-metal/get';
 
 export default Mixin.create({
   isViewingSelf: computed('user', 'currentSession.account', {

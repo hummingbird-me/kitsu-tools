@@ -1,11 +1,7 @@
-import Ember from 'ember';
+import get from 'ember-metal/get';
+import computed from 'ember-computed';
 import attr from 'ember-data/attr';
 import Media from 'client/models/media/model';
-
-const {
-  get,
-  computed
-} = Ember;
 
 export default Media.extend({
   ageRating: attr('string'),

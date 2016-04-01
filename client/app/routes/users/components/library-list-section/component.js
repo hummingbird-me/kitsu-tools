@@ -1,12 +1,8 @@
-import Ember from 'ember';
+import Component from 'ember-component';
+import computed from 'ember-computed';
+import get from 'ember-metal/get';
 import moment from 'moment';
 /* global humanizeDuration */
-
-const {
-  Component,
-  computed,
-  get
-} = Ember;
 
 // TODO: Support showing time
 export default Component.extend({

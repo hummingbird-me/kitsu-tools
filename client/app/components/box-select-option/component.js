@@ -1,10 +1,6 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  computed: { alias },
-  get
-} = Ember;
+import Component from 'ember-component';
+import { alias } from 'ember-computed';
+import get from 'ember-metal/get';
 
 export default Component.extend({
   option: undefined,

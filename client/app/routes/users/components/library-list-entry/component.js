@@ -1,19 +1,14 @@
-import Ember from 'ember';
+import Component from 'ember-component';
+import computed, { alias } from 'ember-computed';
+import get from 'ember-metal/get';
+import set, { setProperties } from 'ember-metal/set';
+import { debounce } from 'ember-runloop';
+import { isEmpty } from 'ember-utils';
+import service from 'ember-service/inject';
 import IsViewingSelfMixin from 'client/mixins/is-viewing-self';
 import EmberValidations from 'ember-validations';
 
 const DEBOUNCE = 1000;
-const {
-  Component,
-  computed,
-  computed: { alias },
-  get,
-  set,
-  setProperties,
-  run,
-  isEmpty,
-  inject: { service }
-} = Ember;
 
 // TODO: Update rating to support different rating systems
 export default Component.extend(IsViewingSelfMixin, EmberValidations, {
@@ -75,7 +70,7 @@ export default Component.extend(IsViewingSelfMixin, EmberValidations, {
         return;
       }
       set(entry, target, value);
-      run.debounce(this, '_saveEntry', DEBOUNCE);
+      debounce(this, '_saveEntry', DEBOUNCE);
     },
 
     rewatch() {

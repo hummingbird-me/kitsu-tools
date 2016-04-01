@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import { tryInvoke } from 'ember-utils';
 import { test } from 'qunit';
 import moduleForAcceptance from 'client/tests/helpers/module-for-acceptance';
 import Pretender from 'pretender';
@@ -10,7 +10,7 @@ moduleForAcceptance('Acceptance | authentication', {
   },
 
   afterEach() {
-    Ember.tryInvoke(this.server, 'shutdown');
+    tryInvoke(this.server, 'shutdown');
   }
 });
 

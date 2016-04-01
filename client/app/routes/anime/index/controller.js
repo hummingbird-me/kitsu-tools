@@ -1,14 +1,11 @@
-import Ember from 'ember';
+import Controller from 'ember-controller';
+import { alias, map, mapBy } from 'ember-computed';
+import set from 'ember-metal/set';
+import get from 'ember-metal/get';
+import { debounce } from 'ember-runloop';
+import jQuery from 'jquery';
 
 const DEBOUNCE = 400; // milliseconds
-const {
-  Controller,
-  computed: { alias, map, mapBy },
-  set,
-  get,
-  run,
-  $: jQuery
-} = Ember;
 
 export default Controller.extend({
   queryParams: [
@@ -48,7 +45,7 @@ export default Controller.extend({
 
   actions: {
     filterText(query) {
-      run.debounce(this, '_setText', query, DEBOUNCE);
+      debounce(this, '_setText', query, DEBOUNCE);
     },
 
     reload() {

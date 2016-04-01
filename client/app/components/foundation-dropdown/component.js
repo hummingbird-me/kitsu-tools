@@ -1,10 +1,6 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  run,
-  get
-} = Ember;
+import Component from 'ember-component';
+import { scheduleOnce } from 'ember-runloop';
+import get from 'ember-metal/get';
 
 export default Component.extend({
   attributeBindings: ['style'],
@@ -13,7 +9,7 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    run.scheduleOnce('afterRender', this, () => {
+    scheduleOnce('afterRender', this, () => {
       this.$().foundation();
 
       if (get(this, 'closeOnClick') === true) {

@@ -1,10 +1,6 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  run,
-  set
-} = Ember;
+import Component from 'ember-component';
+import { scheduleOnce } from 'ember-runloop';
+import set from 'ember-metal/set';
 
 export default Component.extend({
   classNames: ['poster-wrapper'],
@@ -14,7 +10,7 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    run.scheduleOnce('afterRender', this, () => {
+    scheduleOnce('afterRender', this, () => {
       this._updateTrailerId();
     });
   },

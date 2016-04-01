@@ -1,13 +1,8 @@
-import Ember from 'ember';
+import Controller from 'ember-controller';
+import computed, { alias } from 'ember-computed';
+import service from 'ember-service/inject';
+import get from 'ember-metal/get';
 import IsViewingSelfMixin from 'client/mixins/is-viewing-self';
-
-const {
-Controller,
-computed,
-computed: { alias },
-inject: { service },
-get
-} = Ember;
 
 export default Controller.extend(IsViewingSelfMixin, {
   user: alias('model'),

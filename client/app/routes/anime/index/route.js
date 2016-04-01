@@ -1,15 +1,10 @@
-import Ember from 'ember';
-
-const {
-  Route,
-  get,
-  merge,
-  typeOf,
-  isEmpty,
-  run,
-  $: jQuery,
-  RSVP
-} = Ember;
+import Route from 'ember-route';
+import get from 'ember-metal/get';
+import { assign } from 'ember-platform';
+import { typeOf, isEmpty } from 'ember-utils';
+import { bind } from 'ember-runloop';
+import jQuery from 'jquery';
+import RSVP from 'rsvp';
 
 export default Route.extend({
   queryParams: {
@@ -35,7 +30,7 @@ export default Route.extend({
   // won't be a singleton like the current controller (so it actually exits)
   setupController(controller) {
     this._super(...arguments);
-    jQuery(document).on('scroll', run.bind(controller, '_handleScroll'));
+    jQuery(document).on('scroll', bind(controller, '_handleScroll'));
   },
 
   deactivate() {
@@ -81,7 +76,7 @@ export default Route.extend({
   _loadMediaData(params) {
     const limit = { page: { offset: 0, limit: 20 } };
     const filters = this._buildFilters(params);
-    const options = merge(filters, limit);
+    const options = assign(filters, limit);
     return get(this, 'store').query('anime', options);
   },
 

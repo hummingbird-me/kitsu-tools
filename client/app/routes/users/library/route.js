@@ -1,11 +1,6 @@
-import Ember from 'ember';
-
-const {
-  Route,
-  get,
-  getProperties,
-  set
-} = Ember;
+import Route from 'ember-route';
+import get, { getProperties } from 'ember-metal/get';
+import set from 'ember-metal/set';
 
 // TODO: Handle other media types
 // TODO: Map text status to numeric status

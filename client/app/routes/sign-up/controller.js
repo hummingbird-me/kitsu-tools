@@ -1,15 +1,11 @@
-import Ember from 'ember';
+import Controller from 'ember-controller';
+import { isPresent } from 'ember-utils';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import computed from 'ember-computed';
+import service from 'ember-service/inject';
 import EmberValidations, { validator } from 'ember-validations';
 import errorMessages from 'client/utils/error-messages';
-
-const {
-  Controller,
-  isPresent,
-  get,
-  set,
-  computed,
-  inject: { service }
-} = Ember;
 
 export default Controller.extend(EmberValidations, {
   currentSession: service(),

@@ -1,10 +1,8 @@
 import { moduleFor, test } from 'ember-qunit';
-import Ember from 'ember';
+import run from 'ember-runloop';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import setupStore from 'client/tests/helpers/setup-store';
-
-const { run } = Ember;
 
 moduleFor('service:current-session', 'Unit | Service | current session', {
   beforeEach() {

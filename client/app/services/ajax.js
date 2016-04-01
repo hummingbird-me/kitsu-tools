@@ -1,12 +1,8 @@
-import Ember from 'ember';
+import computed from 'ember-computed';
+import get from 'ember-metal/get';
+import service from 'ember-service/inject';
 import AjaxService from 'ember-ajax/services/ajax';
 import getApiHost from 'client/utils/get-api-host';
-
-const {
-  computed,
-  get,
-  inject: { service }
-} = Ember;
 
 export default AjaxService.extend({
   session: service(),

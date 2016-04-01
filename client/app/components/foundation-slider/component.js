@@ -1,11 +1,8 @@
-import Ember from 'ember';
+import Component from 'ember-component';
+import get from 'ember-metal/get';
 /* global noUiSlider */
 
-const {
-  get
-} = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   start: 0,
   end: 100,
   step: 1,

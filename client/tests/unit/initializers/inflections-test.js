@@ -1,13 +1,17 @@
 import Ember from 'ember';
+import run from 'ember-runloop';
+import Application from 'ember-application';
 import { initialize } from '../../../initializers/inflections';
 import { module, test } from 'qunit';
 
-const { run, String: { pluralize } } = Ember;
+const {
+  String: { pluralize }
+} = Ember;
 
 module('Unit | Initializer | inflections', {
   beforeEach() {
     run(() => {
-      this.application = Ember.Application.create();
+      this.application = Application.create();
       this.registry = this.application.registry;
       this.application.deferReadiness();
     });

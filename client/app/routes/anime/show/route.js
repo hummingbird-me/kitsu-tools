@@ -1,12 +1,8 @@
-import Ember from 'ember';
+import Route from 'ember-route';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
 import CanonicalUrlRedirect from 'client/mixins/canonical-url-redirect';
-
-const {
-  Route,
-  get,
-  set,
-  inject: { service }
-} = Ember;
 
 export default Route.extend(CanonicalUrlRedirect, {
   currentSession: service(),

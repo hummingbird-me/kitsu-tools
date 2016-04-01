@@ -1,5 +1,5 @@
 import { moduleForComponent } from 'ember-qunit';
-import Ember from 'ember';
+import EmberObject from 'ember-object';
 import { testValidPropertyValues, testInvalidPropertyValues } from 'client/tests/helpers/validate-properties';
 
 moduleForComponent('users/components/library-list-entry', 'Unit | Component | library list entry', {
@@ -8,7 +8,7 @@ moduleForComponent('users/components/library-list-entry', 'Unit | Component | li
 
   beforeEach() {
     this.subject({
-      entry: Ember.Object.create()
+      entry: EmberObject.create()
     });
   }
 });

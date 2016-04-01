@@ -1,6 +1,8 @@
 import Ember from 'ember';
+import Mixin from 'ember-metal/mixin';
+import get from 'ember-metal/get';
 
-const { Mixin, Logger, get } = Ember;
+const { Logger } = Ember;
 
 export default Mixin.create({
   actions: {

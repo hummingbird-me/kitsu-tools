@@ -1,12 +1,9 @@
 import Ember from 'ember';
+import Route from 'ember-route';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import service from 'ember-service/inject';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
-
-const {
-  Route,
-  get,
-  set,
-  inject: { service }
-} = Ember;
 
 export default Route.extend(ApplicationRouteMixin, {
   currentSession: service(),

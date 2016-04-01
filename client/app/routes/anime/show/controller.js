@@ -1,10 +1,6 @@
-import Ember from 'ember';
-
-const {
-  Controller,
-  computed: { alias },
-  inject: { service }
-} = Ember;
+import Controller from 'ember-controller';
+import { alias } from 'ember-computed';
+import service from 'ember-service/inject';
 
 export default Controller.extend({
   anime: alias('model'),

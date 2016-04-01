@@ -1,6 +1,4 @@
-import Ember from 'ember';
+import Route from 'ember-route';
 import DataRouteErrorMixin from 'client/mixins/data-route-error';
-
-const { Route } = Ember;
 
 export default Route.extend(DataRouteErrorMixin);

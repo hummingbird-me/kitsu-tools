@@ -1,14 +1,11 @@
-import Ember from 'ember';
+import Component from 'ember-component';
+import get from 'ember-metal/get';
+import set from 'ember-metal/set';
+import computed from 'ember-computed';
+import service from 'ember-service/inject';
 import libraryStatus from 'client/utils/library-status';
 
 const REMOVE_KEY = 'Remove from Library';
-const {
-  Component,
-  get,
-  set,
-  computed,
-  inject: { service }
-} = Ember;
 
 // TODO: Give feedback to the user (Toast?)
 export default Component.extend({

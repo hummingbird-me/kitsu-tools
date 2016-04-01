@@ -1,12 +1,7 @@
-import Ember from 'ember';
-
-const {
-  Controller,
-  inject: { controller },
-  get,
-  computed,
-  computed: { alias }
-} = Ember;
+import Controller from 'ember-controller';
+import controller from 'ember-controller/inject';
+import get from 'ember-metal/get';
+import computed, { alias } from 'ember-computed';
 
 export default Controller.extend({
   application: controller(),

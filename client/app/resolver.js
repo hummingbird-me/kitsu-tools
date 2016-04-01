@@ -1,7 +1,5 @@
-import Ember from 'ember';
+import computed from 'ember-computed';
 import Resolver from 'ember-resolver';
-
-const { computed } = Ember;
 
 export default Resolver.extend({
   moduleNameLookupPatterns: computed({

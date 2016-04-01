@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import get from 'ember-metal/get';
+import { isPresent } from 'ember-utils';
+import { isEmberArray } from 'ember-array/utils';
 
-const { get, isPresent, isArray } = Ember;
 // http://tools.ietf.org/html/rfc6749#section-5.2
 const lookupTable = {
   'invalid_grant': 'The provided credentials are not valid.'
@@ -23,7 +24,7 @@ export default function errorMessages(obj) {
   let errors = get(obj, 'errors') || get(obj, 'error');
   errors = errors === undefined ? get(obj, 'jqXHR.responseJSON.errors') : errors;
   if (isPresent(errors)) {
-    reason = isArray(errors) ? formatErrors(errors) : get(lookupTable, errors);
+    reason = isEmberArray(errors) ? formatErrors(errors) : get(lookupTable, errors);
   }
   return reason;
 }

@@ -1,9 +1,5 @@
-import Ember from 'ember';
-
-const {
-  Route,
-  get
-} = Ember;
+import Route from 'ember-route';
+import get from 'ember-metal/get';
 
 export default Route.extend({
   titleToken() {

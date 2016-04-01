@@ -1,12 +1,8 @@
-import Ember from 'ember';
+import computed from 'ember-computed';
+import get from 'ember-metal/get';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
-
-const {
-  computed,
-  get
-} = Ember;
 
 export default Model.extend({
   abbreviatedTitles: attr('array'),

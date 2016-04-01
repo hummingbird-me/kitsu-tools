@@ -1,9 +1,5 @@
-import Ember from 'ember';
+import jQuery from 'jquery';
 import Transform from 'ember-data/transform';
-
-const {
-  $: jQuery
-} = Ember;
 
 export default Transform.extend({
   deserialize(value) {

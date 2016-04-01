@@ -1,14 +1,8 @@
-import Ember from 'ember';
+import Controller from 'ember-controller';
+import computed, { alias } from 'ember-computed';
+import get from 'ember-metal/get';
+import set, { setProperties } from 'ember-metal/set';
 import libraryStatus from 'client/utils/library-status';
-
-const {
-  Controller,
-  computed,
-  computed: { alias },
-  get,
-  set,
-  setProperties
-} = Ember;
 
 // TODO: Speed up rendering!!
 export default Controller.extend({

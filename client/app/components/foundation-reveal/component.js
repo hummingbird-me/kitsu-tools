@@ -1,10 +1,6 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  get,
-  run
-} = Ember;
+import Component from 'ember-component';
+import { scheduleOnce } from 'ember-runloop';
+import get from 'ember-metal/get';
 
 export default Component.extend({
   modalId: undefined,
@@ -12,7 +8,7 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    run.scheduleOnce('afterRender', this, () => {
+    scheduleOnce('afterRender', this, () => {
       const id = get(this, 'modalId');
       this.$(`#${id}`).foundation();
     });
