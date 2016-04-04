@@ -111,7 +111,7 @@ class MALImport
         end
       rescue
       end,
-      poster_image: poster_image(@sidebar.css("img")[0]['src']),
+      poster_image: begin poster_image(@sidebar.css("img")[0]['src']) rescue nil end,
       type: begin allowed_types.grep(@sidebar.css('div:contains("Type:")').last.text.gsub("Type:", '').strip)[0] rescue nil end,
       status: begin @sidebar.css('div:contains("Status:")')[-1].text.gsub(/Status:(?:\\n)?\s/, "").strip.gsub(/\w+/){ |w| w.capitalize } rescue nil end,
       genres: begin (@sidebar.css('span:contains("Genres:") ~ a').map(&:text) rescue []).compact end
@@ -131,7 +131,7 @@ class MALImport
       age_rating = convert_age_rating(age_rating)
       meta.merge!({
         dates: begin @sidebar.css('div:contains("Aired:")').last.text.gsub("Aired:", '').split("to").map { |s| parse_maldate(s) } rescue nil end,
-        producers: begin (@sidebar.css('span:contains("Producers:") ~ a, span:contains("Licensors") ~ a, span:contains("Studios:") ~ a').map(&:text) rescue []).compact end,
+        producers: begin (@sidebar.css('span:contains("Producers:") ~ a, span:contains("Licensors") ~ a, span:contains("Studios:") ~ a').map(&:text).delete_if { |s| s == "add some" } rescue []).compact end,
         age_rating: age_rating[0],
         age_rating_guide: age_rating[1],
         episode_count: begin @sidebar.css('div:contains("Episodes:")').last.text.gsub("Episodes:\n ", "").strip.to_i rescue nil end,
