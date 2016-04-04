@@ -1,7 +1,7 @@
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Content-Type: text/html; charset=utf-8
-Date: Wed, 23 Mar 2016 23:45:20 GMT
+Date: Mon, 04 Apr 2016 01:22:41 GMT
 Server: Apache
 Vary: User-Agent,Accept-Encoding
 transfer-encoding: chunked
@@ -27,20 +27,20 @@ Yui - MyAnimeList.net
 
         <meta property="og:locale" content="en_US"><meta property="fb:app_id" content="360769957454434"><meta property="og:site_name" content="MyAnimeList.net"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@myanimelist"><meta property="og:title" content="Yui"><meta property="og:type" content="article"><meta property="article:publisher" content="https://www.facebook.com/OfficialMyAnimeList"><meta property="og:image" content="http://cdn.myanimelist.net/images/characters/15/264165.jpg"><meta name="twitter:image:src" content="http://cdn.myanimelist.net/r/120x120/images/characters/15/264165.jpg?s=55c04dfe652e2e2292a90624e1399c0f"><meta property="og:url" content="http://myanimelist.net/character/43892/Yui"><meta property="og:description" content="Looking for information on the anime or manga character Yui? On MyAnimeList you can Learn more about their role in the anime and manga industry.">
 
-<meta name='csrf_token' content='d2019a3e384c84a63540c6f5fffea80da7d4c83e'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-991f0f161c.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=57"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=57"></script>
+<meta name='csrf_token' content='249b986ae9819bd5d94ac934676dcfbd6e9064d6'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-8e686be9be.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=59"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=59"></script>
 
 
 
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=57" id="myanimelistjs" data-myanimelistjs-params='{&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;,&quot;is_request_bot_filter_log&quot;:true}'></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=59" id="myanimelistjs" data-myanimelistjs-params='{&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;,&quot;is_request_bot_filter_log&quot;:true}'></script>
 
 
 	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=32" />
 
 <link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=32" />
 <link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=32" />
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-dae0223b92.css" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-179f2cefc6.css" />
 <link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
 
 <link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
@@ -86,15 +86,15 @@ Yui - MyAnimeList.net
 
     <script type='text/javascript'>
     googletag.cmd.push(function() {
-      googletag.defineOutOfPageSlot('/84947469/Skin_OtherPages_OTHERS', 'div-gpt-ad-403580077').addService(googletag.pubads());
+      googletag.defineOutOfPageSlot('/84947469/Skin_OtherPages_OTHERS', 'div-gpt-ad-1722424595').addService(googletag.pubads());
       googletag.pubads().collapseEmptyDivs();
       googletag.enableServices();
     });
   </script>
   <div style="display: none !important;">
-    <div id='div-gpt-ad-403580077' data-code="Skin_OtherPages_OTHERS">
+    <div id='div-gpt-ad-1722424595' data-code="Skin_OtherPages_OTHERS">
       <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-403580077'); });
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1722424595'); });
       </script>
     </div>
   </div>
@@ -114,7 +114,11 @@ Yui - MyAnimeList.net
 
 <div id="headerSmall"><a href="/">MyAnimeList.net</a><div id="header-menu" ><div class="header-menu-login"><a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fcharacter%2F43892" id="malLogin">Login</a><a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fcharacter%2F43892">Sign Up</a></div></div></div>  <div id="menu">
 
-    <div id="menu_right"><form id="searchBar" method="get" class="searchBar"><div class="form-select-outer fl-l"><select name="type" id="topSearchValue" class="inputtext"><option value="anime">Anime</option><option value="manga">Manga</option><option value="character">Characters</option><option value="person">People</option><option value="club">Clubs</option><option value="user">Users</option></select></div><input id="topSearchText" type="text" name="keyword" class="inputtext js-topSearchText fl-l" placeholder="Search Anime, Manga, and more..." size="30" autocomplete="off" /><input id="topSearchButon" class="fl-l" type="submit" value="&#xf002"></form><div id="topSearchResultList" class="incrementalSearchResultList"></div></div>
+    <div id="menu_right"><script type="text/x-template" id="incremental-result-item-anime"><div class="list anime" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info anime"><div class="name">${ item.name } <span class="media-type">(${ item.payload.media_type })</span></div><div class="extra-info">Aired: ${ item.payload.aired }<br>Score: ${ item.payload.score }<br>Status: ${ item.payload.status }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info anime"><div class="name">${ item.name }</div><div class="media-type">(${ mediaTypeWithStartYear })</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-manga"><div class="list manga" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info manga"><div class="name">${ item.name } <span class="media-type">(${ item.payload.media_type })</span></div><div class="extra-info">Published: ${ item.payload.published }<br>Score: ${ item.payload.score }<br>Status: ${ item.payload.status }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info manga"><div class="name">${ item.name }</div><div class="media-type">(${ mediaTypeWithStartYear })</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-character"><div class="list character" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info character"><div class="name">${ item.name }</div><div class="extra-info"><ul class="related-works"><li v-for="work in item.payload.related_works" class="fs-i">- ${ work }</li></ul>Favorites: ${ item.payload.favorites }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info character"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-person"><div class="list person" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info person"><div class="name">${ item.name }</div><div class="extra-info"><span v-if="item.payload.alternative_name">${ item.payload.alternative_name }<br></span>Birthday: ${ item.payload.birthday }<br>Favorites: ${ item.payload.favorites }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info person"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-club"><div class="list club" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info club"><div class="name">${ item.name }</div><div class="extra-info">Members: ${ item.payload.members }<br>Category: ${ item.payload.category }<br>Created by: ${ item.payload.created_by }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info club"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-user"><div class="list user" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info user"><div class="name">${ item.name }</div><div class="extra-info"><span v-if="item.payload.authority">${ item.payload.authority }<br></span>Joined: ${ item.payload.joined }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info user"><div class="name">${ item.name }</div></div></div></a></div></script><div id="top-search-bar"><form id="searchBar" method="get" class="searchBar"><div class="form-select-outer fl-l"><select name="type" id="topSearchValue" class="inputtext" v-model="type"><option value="anime">Anime</option><option value="manga">Manga</option><option value="character">Characters</option><option value="person">People</option><option value="club">Clubs</option><option value="user">Users</option></select></div><input v-model="keyword" id="topSearchText" type="text" name="keyword" class="inputtext fl-l" placeholder="Search Anime, Manga, and more..." size="30" autocomplete="off"
+                 @keydown.up.prevent="moveSelection(-1)" @keydown.down.prevent="moveSelection(1)" @keydown.enter.prevent="jump()"
+                 @focus="isFocused = true" @blur="isFocused = false"><input id="topSearchButon" class="fl-l" type="submit" value="&#xf002"></form><div id="topSearchResultList" class="incrementalSearchResultList" :style="{display: (showResult ? 'block' : 'none')}" @mousedown.prevent=""><component v-for="item in items" :is="resolveComponent(item)" :item="item" :focus="selection == $index" :url="generateItemPageUrl(item)" @mouseover="selection = $index"></component><div class="list list-bottom" :class="{'focus': selection == -1}" @mouseover="selection = -1"
+               :style="{display: (showViewAllLink ? 'block' : 'none')}"><a :href="resultPageUrl">
+              View all results for <span class="fw-b">${ keyword }</span><i v-show="currentAjaxRequest != null" class="fa fa-spinner fa-spin ml4"></i></a></div></div></div></div>
     <div id="menu_left">
                         <ul id="nav">
     <li class="small"><a href="#" class="non-link">Anime</a>
@@ -166,7 +170,7 @@ Yui - MyAnimeList.net
       <li><a href="/about.php?go=team">Staff</a></li>
     </ul>
   </li>
-  </ul>
+    </ul>
                   </div>
   </div><div id="contentWrapper"><div><h1 class="h1">Yui  </h1></div><div id="content">
 		<table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -246,7 +250,7 @@ Yui - MyAnimeList.net
 				</tr>
 		</table>
 		<br /><br>
-		Member Favorites: 993
+		Member Favorites: 1004
 		</td>
 		<td valign="top" style="padding-left: 5px;">
 		<div id="horiznav_nav" style="margin: 5px 0 10px 0;">
@@ -320,13 +324,9 @@ When the Cardinal system governing SAO decided to erase her, Kirito turned her i
 				<div style="margin-top: 2px;"><small>Italian</small></div></td>
 			</tr>
 			</table>
-			<br><br /><h2><div class="floatRightHeader"><a href="/character/43892/Yui/featured">See More</a></div>Recent Featured Articles</h2><div class="detail-page-featured-article">
-<div class="news-list">
+			<br><br /><h2><div class="floatRightHeader"><a href="/character/43892/Yui/featured">See More</a></div>Recent Featured Articles</h2><div class="detail-page-featured-article"><div class="news-list">
 
-
-<div class="news-unit clearfix" data-tag="cat1 cat1 cat1 cat1 cat1 ">
-  <a href="http://myanimelist.net/featured/1298" class="image-link"><img src="http://cdn.myanimelist.net/s/common/uploaded_files/1452797078-69b46d4e390efab6cd3fd3613e949e0e.jpeg" alt="6 Most Important Sword Art Online Skills" class="image"></a>
-  <div class="news-unit-right">
+<div class="news-unit clearfix" data-tag="cat1 cat1 cat1 cat1 cat1 "><a href="http://myanimelist.net/featured/1298" class="image-link"><img src="http://cdn.myanimelist.net/s/common/uploaded_files/1452797078-69b46d4e390efab6cd3fd3613e949e0e.jpeg" alt="6 Most Important Sword Art Online Skills" class="image"></a><div class="news-unit-right ">
     <p class="title">
       <a href="http://myanimelist.net/featured/1298" title="6 Most Important Sword Art Online Skills">6 Most Important Sword Art Online Skills</a>
     </p>
@@ -339,7 +339,7 @@ When the Cardinal system governing SAO decided to erase her, Kirito turned her i
       </p>
 
                     <p class="di-tc pv pr8">
-          <b>1,426</b> views
+          <b>1,502</b> views
         </p>
       <div class="tags">
         <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/collection" class="tag tag-color-feature-collection" title="Collection">Collection</a><a href="http://myanimelist.net/featured/tag/action" class="tag tag-color-feature-action" title="Action">Action</a><a href="http://myanimelist.net/featured/tag/background_analysis" class="tag tag-color-feature-background_analysis" title="Background Analysis">Background Analysis</a><a href="http://myanimelist.net/featured/tag/games" class="tag tag-color-feature-games" title="Games">Games</a><a href="http://myanimelist.net/featured/tag/sao" class="tag tag-color-feature-sao" title="SAO">SAO</a></div>
@@ -347,10 +347,7 @@ When the Cardinal system governing SAO decided to erase her, Kirito turned her i
   </div>
 </div>
 
-
-<div class="news-unit clearfix" data-tag="cat1 cat1 cat1 cat1 cat1 ">
-  <a href="http://myanimelist.net/featured/659" class="image-link"><img src="http://cdn.myanimelist.net/s/common/uploaded_files/1445766621-9724fed22903281289ff769fe14ef839.jpeg" alt="20 Hot Moments from Sword Art Online That Will Make You Swoon" class="image"></a>
-  <div class="news-unit-right">
+<div class="news-unit clearfix" data-tag="cat1 cat1 cat1 cat1 cat1 "><a href="http://myanimelist.net/featured/659" class="image-link"><img src="http://cdn.myanimelist.net/s/common/uploaded_files/1445766621-9724fed22903281289ff769fe14ef839.jpeg" alt="20 Hot Moments from Sword Art Online That Will Make You Swoon" class="image"></a><div class="news-unit-right ">
     <p class="title">
       <a href="http://myanimelist.net/featured/659" title="20 Hot Moments from Sword Art Online That Will Make You Swoon">20 Hot Moments from Sword Art Online That Will Make You Swoon</a>
     </p>
@@ -363,21 +360,21 @@ When the Cardinal system governing SAO decided to erase her, Kirito turned her i
       </p>
 
                     <p class="di-tc pv pr8">
-          <b>3,048</b> views
+          <b>3,583</b> views
         </p>
       <div class="tags">
         <div class="tags-inner"><div class="tags-inner-attributes"><span class="tag tag-color-feature-spoiler">Spoiler</span></div><a href="http://myanimelist.net/featured/tag/collection" class="tag tag-color-feature-collection" title="Collection">Collection</a><a href="http://myanimelist.net/featured/tag/brother_complex" class="tag tag-color-feature-brother_complex" title="Brother complex">Brother complex</a><a href="http://myanimelist.net/featured/tag/heart-warming" class="tag tag-color-feature-heart-warming" title="Heart-warming">Heart-warming</a><a href="http://myanimelist.net/featured/tag/love" class="tag tag-color-feature-love" title="Love">Love</a><a href="http://myanimelist.net/featured/tag/sao" class="tag tag-color-feature-sao" title="SAO">SAO</a></div>
       </div></div>
   </div>
 </div>
-                </div>
+  </div>
 </div><br></td>
 		</tr>
 		</table><script type="text/javascript" src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true"></script></div><!-- end of contentHome -->
 
 
                                   <script type='text/javascript'>
-    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCChar_OTHER_MR_BTF_LHS', [[300,250],[336,280]], 'div-gpt-ad-1574380343').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCChar_OTHER_MR_BTF_RHS', [[300,250],[336,280]], 'div-gpt-ad-2044953544').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCChar_OTHERS_SK_LHS', [[120,600],[160,600]], 'div-gpt-ad-224307563').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCChar_OTHERS_SK_RHS', [[120,600],[160,600]], 'div-gpt-ad-1164667960').addService(googletag.pubads());            googletag.pubads().collapseEmptyDivs();
+    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCChar_OTHER_MR_BTF_LHS', [[300,250],[336,280]], 'div-gpt-ad-1311994353').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCChar_OTHER_MR_BTF_RHS', [[300,250],[336,280]], 'div-gpt-ad-1003793365').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCChar_OTHERS_SK_LHS', [[120,600],[160,600]], 'div-gpt-ad-284170084').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCChar_OTHERS_SK_RHS', [[120,600],[160,600]], 'div-gpt-ad-1242144642').addService(googletag.pubads());            googletag.pubads().collapseEmptyDivs();
         googletag.enableServices();
     });
 </script>
@@ -385,17 +382,17 @@ When the Cardinal system governing SAO decided to erase her, Kirito turned her i
   <div class="mauto clearfix pt24" style="width:760px;">
     <div class="fl-l">
 
-<div id="div-gpt-ad-1574380343" style="width:336px; height:280px;" data-code="02PCChar_OTHER_MR_BTF_LHS">
+<div id="div-gpt-ad-1311994353" style="width:336px; height:280px;" data-code="02PCChar_OTHER_MR_BTF_LHS">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1574380343"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1311994353"); });
       </script>
 </div>
   </div>
       <div class="fl-r">
 
-<div id="div-gpt-ad-2044953544" style="width:336px; height:280px;" data-code="02PCChar_OTHER_MR_BTF_RHS">
+<div id="div-gpt-ad-1003793365" style="width:336px; height:280px;" data-code="02PCChar_OTHER_MR_BTF_RHS">
   <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-2044953544"); });
+          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1003793365"); });
       </script>
 </div>
   </div>
@@ -403,18 +400,18 @@ When the Cardinal system governing SAO decided to erase her, Kirito turned her i
 </div>
   <div class="side-ad side-ad--l">
 
-<div id="div-gpt-ad-224307563" style="width:160px; height:600px;" data-code="02PCChar_OTHERS_SK_LHS">
+<div id="div-gpt-ad-284170084" style="width:160px; height:600px;" data-code="02PCChar_OTHERS_SK_LHS">
   <script type='text/javascript'>
-                window.MAL.SkinAd.pushSKTag("div-gpt-ad-224307563");
+                window.MAL.SkinAd.pushSKTag("div-gpt-ad-284170084");
       </script>
 </div>
   </div>
 
   <div class="side-ad side-ad--r">
 
-<div id="div-gpt-ad-1164667960" style="width:160px; height:600px;" data-code="02PCChar_OTHERS_SK_RHS">
+<div id="div-gpt-ad-1242144642" style="width:160px; height:600px;" data-code="02PCChar_OTHERS_SK_RHS">
   <script type='text/javascript'>
-                window.MAL.SkinAd.pushSKTag("div-gpt-ad-1164667960");
+                window.MAL.SkinAd.pushSKTag("div-gpt-ad-1242144642");
       </script>
 </div>
   </div>
@@ -444,8 +441,8 @@ When the Cardinal system governing SAO decided to erase her, Kirito turned her i
           <div class="ranking-unit ranking-top_anime">
         <h3 class="title"><a href="http://myanimelist.net/topanime.php" class="view_more fl-r">More</a>Top Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
                       <li><span class="rank">3</span><a href="http://myanimelist.net/anime/9253/Steins_Gate">Steins;Gate</a></li>
                       <li><span class="rank">4</span><a href="http://myanimelist.net/anime/9969/Gintama">Gintama&#039;</a></li>
                       <li><span class="rank">5</span><a href="http://myanimelist.net/anime/11061/Hunter_x_Hunter_2011">Hunter x Hunter (2011)</a></li>
@@ -454,11 +451,11 @@ When the Cardinal system governing SAO decided to erase her, Kirito turned her i
           <div class="ranking-unit ranking-top_airing">
         <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=airing" class="view_more fl-r">More</a>Top Airing Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/31043/Boku_dake_ga_Inai_Machi">Boku dake ga Inai Machi</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28891/Haikyuu_Second_Season">Haikyuu!! Second Season</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/30709/Kamisama_Hajimemashita__Kako-hen">Kamisama Hajimemashita: Kako-hen</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/31933/JoJo_no_Kimyou_na_Bouken__Diamond_wa_Kudakenai">JoJo no Kimyou na Bouken: Diamond wa Kudakenai</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30709/Kamisama_Hajimemashita__Kako-hen">Kamisama Hajimemashita: Kako-hen</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/10937/Mobile_Suit_Gundam__The_Origin">Mobile Suit Gundam: The Origin</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/235/Detective_Conan">Detective Conan</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_upcoming">
@@ -466,19 +463,19 @@ When the Cardinal system governing SAO decided to erase her, Kirito turned her i
         <ol>
                       <li><span class="rank">1</span><a href="http://myanimelist.net/anime/25777/Shingeki_no_Kyojin_2nd_Season">Shingeki no Kyojin 2nd Season</a></li>
                       <li><span class="rank">2</span><a href="http://myanimelist.net/anime/3786/Evangelion__30_10">Evangelion: 3.0+1.0</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/25537/Fate_stay_night_Movie__Heavens_Feel">Fate/stay night Movie: Heaven&#039;s Feel</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30484/Steins_Gate_0">Steins;Gate 0</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/28623/Koutetsujou_no_Kabaneri">Koutetsujou no Kabaneri</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28623/Koutetsujou_no_Kabaneri">Koutetsujou no Kabaneri</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/31478/Bungou_Stray_Dogs">Bungou Stray Dogs</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/25537/Fate_stay_night_Movie__Heavens_Feel">Fate/stay night Movie: Heaven&#039;s Feel</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_page_views">
         <h3 class="title">Top Page Views</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/31043/Boku_dake_ga_Inai_Machi">Boku dake ga Inai Machi</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/28623/Koutetsujou_no_Kabaneri">Koutetsujou no Kabaneri</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30831/Kono_Subarashii_Sekai_ni_Shukufuku_wo">Kono Subarashii Sekai ni Shukufuku wo!</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/31559/Prince_of_Stride__Alternative">Prince of Stride: Alternative</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/31859/Hai_to_Gensou_no_Grimgar">Hai to Gensou no Grimgar</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/32438/Mayoiga">Mayoiga</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/31630/Gyakuten_Saiban__Sono_Shinjitsu_Igi_Ari">Gyakuten Saiban: Sono &quot;Shinjitsu&quot;, Igi Ari!</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/31798/Kiznaiver">Kiznaiver</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/32608/Endride">Endride</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/31043/Boku_dake_ga_Inai_Machi">Boku dake ga Inai Machi</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-popular_ranking">
