@@ -103,7 +103,7 @@ class MALImport
         ja_jp: begin @sidebar.css('div:contains("Japanese:")').last.text.gsub("Japanese: ", "").strip rescue nil end
       }.compact,
       synopsis: begin
-        synopsis = @main_noko.css('td td:contains("Synopsis")')[0].text.gsub("EditSynopsis", '').split("EditBackground")[0].split("googletag.cmd.push")[0]
+        synopsis = @main_noko.css('span[itemprop="description"]').text
         if synopsis.include? "No synopsis"
           nil
         else
@@ -131,7 +131,7 @@ class MALImport
       age_rating = convert_age_rating(age_rating)
       meta.merge!({
         dates: begin @sidebar.css('div:contains("Aired:")').last.text.gsub("Aired:", '').split("to").map { |s| parse_maldate(s) } rescue nil end,
-        producers: begin (@sidebar.css('span:contains("Producers:") ~ a').map(&:text) rescue []).compact end,
+        producers: begin (@sidebar.css('span:contains("Producers:") ~ a, span:contains("Licensors") ~ a, span:contains("Studios:") ~ a').map(&:text) rescue []).compact end,
         age_rating: age_rating[0],
         age_rating_guide: age_rating[1],
         episode_count: begin @sidebar.css('div:contains("Episodes:")').last.text.gsub("Episodes:\n ", "").strip.to_i rescue nil end,
