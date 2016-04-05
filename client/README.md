@@ -14,12 +14,9 @@ This README outlines the details of collaborating on this application.
 
 #### Amendments
 
-##### Do overwrite init
+##### Const
 
-ES6 spread operator allows for calling `return this._super(...arguments);`.
-This approach provides better performance as well.
-
-https://dockyard.com/blog/2015/10/19/2015-dont-dont-override-init
+Use `const` for variables over `var` & `let` that aren't mutated, `let` otherwise.
 
 ##### Pods
 
@@ -48,3 +45,7 @@ app/
       route.js
       template.hbs
 ```
+
+### Testing
+
+When writing Acceptance tests, use the `data-test-selector` property to determine if HTML elements exist within the page.
