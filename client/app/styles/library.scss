@@ -237,6 +237,7 @@
 .entry-wrapper {
   @extend .clearfix;
   padding: 10px 0;
+  cursor: pointer;
 }
 .library-dropdown {
   @extend .clearfix;

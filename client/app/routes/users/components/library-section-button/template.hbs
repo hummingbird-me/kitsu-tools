@@ -1,9 +1,0 @@
-{{#if (and isLoadingData (not isActive))}}
-  <a>
-    {{fa-icon "spinner" spin=true}}
-  </a>
-{{else}}
-  <a href="#" class="{{if isActive 'active'}}" {{action 'changeStatus' status}}>
-    {{status}}
-  </a>
-{{/if}}

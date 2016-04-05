@@ -4,7 +4,6 @@ import get from 'ember-metal/get';
 import moment from 'moment';
 /* global humanizeDuration */
 
-// TODO: Support showing time
 export default Component.extend({
   stats: computed('section.entries', {
     get() {

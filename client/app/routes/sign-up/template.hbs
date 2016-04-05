@@ -1,46 +1,84 @@
-<h1>Sign Up</h1>
+{{! TODO: Needs style love }}
 
-{{#if errorMessage}}
-  {{#foundation-callout type="alert" closable=false}}
-    {{errorMessage}}
-  {{/foundation-callout}}
-{{/if}}
+<div class="row">
+  <div class="medium-8 medium-offset-2 columns">
+    <div class="medium-6 columns">
+      <h5 class="text-center">Sign up for Hummingbird</h5>
 
-<form {{action 'createAccount' on='submit'}}>
-  {{! email input }}
-  <label for="email">Email</label>
-  {{one-way-input value=model.email placeholder="Email" type="email"
-    update=(action (mut model.email)) data-test-selector="email"}}
-  {{#if (and model.email errors.model.email)}}
-    {{! TODO: Don't use callouts for this use the form-error stuff }}
-    {{#foundation-callout type="alert" closable=true}}
-      Email {{errors.model.email.[0]}}
-    {{/foundation-callout}}
-  {{/if}}
+      {{#if errorMessage}}
+        <p class="text-center" style="color: red;">
+          {{errorMessage}}
+        </p>
+      {{/if}}
 
-  {{! username input}}
-  <label for="username">Username</label>
-  {{one-way-input value=model.name placeholder="Username"
-    update=(action (mut model.name)) data-test-selector="username"}}
-  {{#if (and model.name errors.model.name)}}
-    {{! TODO: Don't use callouts for this use the form-error stuff }}
-    {{#foundation-callout type="alert" closable=false}}
-      Username {{errors.model.name.[0]}}
-    {{/foundation-callout}}
-  {{/if}}
+      <form {{action "createAccount" on="submit"}}>
+        {{! username input }}
+        <label>
+          Username
+          {{one-way-input
+            value=user.name
+            update=(action (mut user.name))
+            placeholder="username"
+            data-test-selector="username"}}
+          {{! username errors }}
+          {{#if (and user.name errors.user.name)}}
+            <span class="form-error is-visible">
+              Username {{errors.user.name.[0]}}
+            </span>
+          {{/if}}
+        </label>
 
-  {{! password input }}
-  <label for="password">Password</label>
-  {{one-way-input value=model.password placeholder="Password" type="password"
-    update=(action (mut model.password)) data-test-selector="password"}}
-  {{#if (and model.password errors.model.password)}}
-    {{! TODO: Don't use callouts for this use the form-error stuff }}
-    {{#foundation-callout type="alert" closable=false}}
-      Password {{errors.model.password.[0]}}
-    {{/foundation-callout}}
-  {{/if}}
+        {{! email input }}
+        <label>
+          Email
+          {{one-way-input
+            value=user.email
+            update=(action (mut user.email))
+            type="email"
+            placeholder="email@example.com"
+            data-test-selector="email"}}
+          {{! email errors }}
+          {{#if (and user.email errors.user.email)}}
+            <span class="form-error is-visible">
+              Email {{errors.user.email.[0]}}
+            </span>
+          {{/if}}
+        </label>
 
-  <button type="submit" disabled={{isSubmitDisabled}} data-test-selector="sign-up">
-    Sign Up
-  </button>
-</form>
+        {{! password input }}
+        <label>
+          Password
+          {{one-way-input
+            value=user.password
+            update=(action (mut user.password))
+            type="password"
+            placeholder="password"
+            data-test-selector="password"}}
+          {{! password errors }}
+          {{#if (and user.password errors.user.password)}}
+            <span class="form-error is-visible">
+              Password {{errors.user.password.[0]}}
+            </span>
+          {{/if}}
+        </label>
+
+        <button
+          type="submit"
+          class="expanded button"
+          disabled={{if (not isValid) "disabled"}}
+          data-test-selector="sign-up">
+          Sign Up
+        </button>
+      </form>
+
+      <p class="text-center">
+        Already have an account?
+        {{link-to 'Sign In.' 'sign-in'}}
+      </p>
+    </div>
+
+    <div class="medium-6 columns">
+      {{social-connect}}
+    </div>
+  </div>
+</div>

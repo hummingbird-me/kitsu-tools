@@ -6,10 +6,9 @@ import computed, { alias } from 'ember-computed';
 import service from 'ember-service/inject';
 
 export default Service.extend({
+  userId: undefined,
   session: service(),
   store: service(),
-  userId: undefined,
-
   isAuthenticated: alias('session.isAuthenticated'),
 
   account: computed('userId', {
@@ -20,7 +19,8 @@ export default Service.extend({
   }),
 
   authenticateWithOAuth2(identification, password) {
-    return get(this, 'session').authenticate('authenticator:oauth2', identification, password);
+    return get(this, 'session')
+      .authenticate('authenticator:oauth2', identification, password);
   },
 
   invalidate() {

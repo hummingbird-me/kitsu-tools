@@ -19,10 +19,10 @@ test('it renders', function(assert) {
     selected=selected
     onSelect=(action testSelect) as |option|
   }}
-    {{option.name}}
+    {{option}}
   {{/box-select}}`);
 
   this.$('li').eq(0).click();
   assert.equal(this.$('li').length, 2);
-  assert.equal('abc', this.$('li').eq(0).text().trim());
+  assert.equal(this.$('li').eq(0).text().trim(), 'abc');
 });

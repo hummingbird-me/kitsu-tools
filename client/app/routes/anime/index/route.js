@@ -1,10 +1,13 @@
 import Route from 'ember-route';
 import get from 'ember-metal/get';
+import set from 'ember-metal/set';
 import { assign } from 'ember-platform';
 import { typeOf, isEmpty } from 'ember-utils';
-import { bind } from 'ember-runloop';
+import { bind, debounce } from 'ember-runloop';
 import jQuery from 'jquery';
 import RSVP from 'rsvp';
+
+const DEBOUNCE_MS = 1000;
 
 export default Route.extend({
   queryParams: {
@@ -26,49 +29,56 @@ export default Route.extend({
     });
   },
 
-  // TODO: This should be moved to the eventual routable component which
-  // won't be a singleton like the current controller (so it actually exits)
+  // TODO: Can be moved to Routable Component
   setupController(controller) {
     this._super(...arguments);
     jQuery(document).on('scroll', bind(controller, '_handleScroll'));
   },
 
-  deactivate() {
+  // TODO: Can be moved to Routable Component
+  resetController() {
+    this._super(...arguments);
     jQuery(document).off('scroll');
   },
 
+  /**
+   * Serializes range and array query params.
+   * This is private Ember API.
+   */
   serializeQueryParam(value, _, defaultValueType) {
     if (defaultValueType === 'array') {
-      let _value = value;
-      const isRange = typeOf(_value[0]) !== 'string';
-      if (isRange === true && _value.length === 2) {
-        _value = _value.join('..');
-      } else if (isRange === false && _value.length > 1) {
-        _value = _value.reject((x) => isEmpty(x)).join(',');
-      } else {
-        _value = _value.join();
+      // ?? TODO: There is a weird edgecase where `value` isn't deserialized
+      if (typeOf(value) !== 'array') {
+        value = this.deserializeQueryParam(...arguments);
       }
-      return _value;
+      const isRange = typeOf(value[0]) !== 'string';
+      if (isRange && value.length === 2) {
+        return value.join('..');
+      } else if (!isRange && value.length > 1) {
+        return value.reject((x) => isEmpty(x)).join();
+      }
+      return value.join();
     }
     return this._super(...arguments);
   },
 
+  /**
+   * Deserializes range and array query params.
+   * This is private Ember API.
+   */
   deserializeQueryParam(value, _, defaultValueType) {
     if (defaultValueType === 'array') {
-      let _value = value;
-      const isRange = _value.includes('..');
-      if (isRange === true) {
-        _value = _value.split('..').map((x) => {
+      const isRange = value.includes('..');
+      if (isRange) {
+        return value.split('..').map((x) => {
           if (Number.isInteger(JSON.parse(x))) {
             return parseInt(x, 10);
           } else {
             return parseFloat(x);
           }
         });
-      } else if (isRange === false) {
-        _value = _value.split(',');
       }
-      return _value;
+      return value.split(',');
     }
     return this._super(...arguments);
   },
@@ -102,11 +112,14 @@ export default Route.extend({
     return data;
   },
 
+  /**
+   * Build the filters object for the JSON-API, based on our query params.
+   */
   _buildFilters(params) {
     const filters = { filter: {} };
     for (const key in params) {
       const val = params[key];
-      if (isEmpty(val) === true) {
+      if (isEmpty(val)) {
         continue;
       }
       const type = typeOf(val);
@@ -118,8 +131,17 @@ export default Route.extend({
     return filters;
   },
 
+  _updateText(query) {
+    const controller = get(this, 'controller');
+    set(controller, 'text', query);
+  },
+
   actions: {
-    refreshModel() {
+    updateText(query) {
+      debounce(this, '_updateText', query, DEBOUNCE_MS);
+    },
+
+    refresh() {
       this.refresh();
     }
   }

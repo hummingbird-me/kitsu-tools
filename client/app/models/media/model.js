@@ -21,14 +21,14 @@ export default Model.extend({
 
   genres: hasMany('genre'),
 
-  searchStr: computed('titles', {
+  mergedTitles: computed('titles', {
     get() {
       const titles = get(this, 'titles');
-      let searchStr = '';
+      let str = '';
       for (const key in titles) {
-        searchStr += titles[key];
+        str += titles[key];
       }
-      return searchStr.toLowerCase();
+      return str.toLowerCase();
     }
   })
 });

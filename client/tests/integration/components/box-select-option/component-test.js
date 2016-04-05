@@ -8,19 +8,20 @@ moduleForComponent('box-select-option', 'Integration | Component | box select op
 test('it renders', function(assert) {
   assert.expect(3);
 
-  this.set('option', { name: 'abc', selected: false });
+  this.set('option', 'abc');
   this.set('testSelect', () => {
     assert.ok(true);
   });
 
   this.render(hbs`{{#box-select-option
     option=option
+    isActive=true
     onSelect=(action testSelect)
   }}
-    {{option.name}}
+    {{option}}
   {{/box-select-option}}`);
 
   this.$('li').click();
   assert.ok(this.$('li').hasClass('active'));
-  assert.equal('abc', this.$('li').text().trim());
+  assert.equal(this.$('li').text().trim(), 'abc');
 });

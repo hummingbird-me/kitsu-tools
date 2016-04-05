@@ -6,6 +6,9 @@ module.exports = function(defaults) {
     storeConfigInMeta: false,
     sassOptions: {
       includePaths: ['bower_components/foundation-sites/scss']
+    },
+    babel: {
+      includePolyfill: true
     }
   });
 

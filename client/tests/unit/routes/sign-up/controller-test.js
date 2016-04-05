@@ -14,16 +14,16 @@ moduleFor('controller:sign-up', 'Unit | Controller | sign up', {
 
   beforeEach() {
     this.subject({
-      model: EmberObject.create()
+      user: EmberObject.create()
     });
   }
 });
 
-testValidPropertyValues('model.email', ['a@b.com', 'email+ignore@host.tld']);
-testInvalidPropertyValues('model.email', ['abc', 'abc@a', 'abc@abc.', '', null, undefined]);
+testValidPropertyValues('user.email', ['a@b.com', 'email+ignore@host.tld']);
+testInvalidPropertyValues('user.email', ['abc', 'abc@a', 'abc@abc.', '', null, undefined]);
 
-testValidPropertyValues('model.name', ['vevix', '12345abc']);
-testInvalidPropertyValues('model.name', ['ab', '12345', '_vevix', 'abcdefghijklmnopqrstu', '', null, undefined]);
+testValidPropertyValues('user.name', ['vevix', '12345abc']);
+testInvalidPropertyValues('user.name', ['ab', '12345', '_vevix', 'abcdefghijklmnopqrstu', '', null, undefined]);
 
-testValidPropertyValues('model.password', ['password']);
-testInvalidPropertyValues('model.password', ['not8', '', null, undefined]);
+testValidPropertyValues('user.password', ['password']);
+testInvalidPropertyValues('user.password', ['not8', '', null, undefined]);

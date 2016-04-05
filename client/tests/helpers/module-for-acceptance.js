@@ -1,6 +1,9 @@
 import { module } from 'qunit';
 import startApp from 'client/tests/helpers/start-app';
 import destroyApp from 'client/tests/helpers/destroy-app';
+import RSVP from 'rsvp';
+
+const { Promise } = RSVP;
 
 export default function(name, options = {}) {
   module(name, {
@@ -9,18 +12,16 @@ export default function(name, options = {}) {
 
       if (options.beforeEach) {
         // jscs:disable
-        options.beforeEach.apply(this, arguments);
+        return options.beforeEach.apply(this, arguments);
         // jscs:enable
       }
     },
 
     afterEach() {
-      if (options.afterEach) {
-        // jscs:disable
-        options.afterEach.apply(this, arguments);
-        // jscs:enable
-      }
-      destroyApp(this.application);
+      // jscs:disable
+      const afterEach = options.afterEach && options.afterEach.apply(this, arguments);
+      // jscs:enable
+      return Promise.resolve(afterEach).then(() => destroyApp(this.application));
     }
   });
 }

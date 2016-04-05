@@ -1,0 +1,164 @@
+<div class="library-entry" data-test-selector="library-entry">
+  <div class="entry-wrapper">
+    {{! Entry Title }}
+    <div class="medium-7 columns entry-left">
+      <div class="entry-title">
+        <span>{{media.canonicalTitle}}</span>
+      </div>
+    </div>
+
+    <div class="medium-5 columns entry-right">
+      {{! Entry Progress }}
+      <div class="entry-progress">
+        {{! Editable for owner only }}
+        {{#if isViewingSelf}}
+          {{one-way-input
+              value=entry.episodesWatched
+              update=(action "updateDebounced" "episodesWatched")
+              placeholder="0"}}
+        {{else}}
+          <span>{{entry.episodesWatched}}</span>
+        {{/if}}
+
+        <span>
+          <span class="sep">/</span>
+          {{episodeCount}}
+        </span>
+      </div>
+
+      {{! Entry Rating }}
+      <div class="entry-rating">
+        <span>{{rating}}</span>
+      </div>
+
+      {{! Entry Type }}
+      <div class="entry-type">
+        <span>{{media.typeStr}}</span>
+      </div>
+    </div>
+  </div>
+
+  {{! Expanded Info }}
+  {{#if isExpanded}}
+    <div class="library-dropdown">
+      <div class="drop-arrow"></div>
+
+      {{! Notes }}
+      <div class="small-12 columns">
+        {{! Editable for owner only }}
+        {{#if isViewingSelf}}
+          {{one-way-input
+              value=entry.notes
+              update=(action "updateDebounced" "notes")
+              placeholder=(concat "Personal notes about " media.canonicalTitle)
+              class="personal-notes"}}
+        {{else}}
+          {{! Only show if the user has notes }}
+          {{#if entry.notes}}
+            {{one-way-input
+                value=entry.notes
+                class="personal-notes"
+                readonly=true}}
+          {{/if}}
+        {{/if}}
+      </div>
+
+      {{! Poster Image }}
+      <div class="medium-2 columns">
+        <img class="drop-thumb" src={{media.posterImage}}>
+      </div>
+
+      {{! Media Info }}
+      <div class="medium-6 columns">
+        <h4 class="drop-title">
+          {{link-to media.canonicalTitle 'anime.show' media}}
+        </h4>
+        <ul class="genres">
+          {{#each media.genres as |genre|}}
+            <li>{{genre.name}}</li>
+          {{/each}}
+        </ul>
+        <p class="drop-description">
+          {{media.synopsis}}
+        </p>
+      </div>
+
+      {{! Options }}
+      <div class="medium-4 columns">
+        <div class="drop-options">
+          {{! Only for owner }}
+          {{#if isViewingSelf}}
+            {{! Library Status }}
+            <div class="status-select">
+              {{library-status-button
+                entry=entry
+                update=(action "update" "status")
+                delete=(action "destroy")}}
+            </div>
+
+            <div class="dropdown-rating">
+              {{! Privacy }}
+              <button type="button" class="dropdown button" data-toggle="privacy-dropdown">
+                {{if entry.private "Private" "Public"}}
+              </button>
+
+              {{#foundation-dropdown
+                  dropdownId="privacy-dropdown"
+                  closeOnClick=true
+              }}
+                <ul class="no-bullet">
+                  <li>
+                    <a {{action "update" "private" (not entry.private)}}>
+                      {{if entry.private "Public" "Private"}}
+                    </a>
+                  </li>
+                </ul>
+              {{/foundation-dropdown}}
+
+              {{! Rating }}
+              <div class="rating-options">
+                <span class="icon-container" data-rating="1">
+                  {{fa-icon "star-o"}}
+                </span>
+                <span class="icon-container" data-rating="2">
+                  {{fa-icon "star-o"}}
+                </span>
+                <span class="icon-container" data-rating="3">
+                  {{fa-icon "star-o"}}
+                </span>
+                <span class="icon-container" data-rating="4">
+                  {{fa-icon "star-o"}}
+                </span>
+                <span class="icon-container" data-rating="5">
+                  {{fa-icon "star-o"}}
+                </span>
+              </div>
+            </div>
+          {{/if}}
+
+          {{! Rewatch }}
+          <div class="rewatch">
+            {{#if isViewingSelf}}
+              <button type="button" class="button" {{action "rewatch"}}>
+                Rewatch
+              </button>
+            {{/if}}
+
+            <label>
+              <span>Rewatched</span>
+              {{! Editable to owner }}
+              {{#if isViewingSelf}}
+                {{one-way-input
+                    value=entry.rewatchCount
+                    update=(action "updateDebounced" "rewatchCount")}}
+              {{else}}
+                <span>{{entry.rewatchCount}}</span>
+              {{/if}}
+              <span>times</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+</div>

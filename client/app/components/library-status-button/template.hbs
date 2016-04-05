@@ -1,29 +1,38 @@
-{{#foundation-button data-toggle="status-dropdown" data-test-selector="library-status-button-entry"}}
-  <span>
+<button
+  type="button"
+  class="dropdown button"
+  disabled={{if (or updateTask.isRunning (not entryIsLoaded)) "disabled"}}
+  data-toggle="status-dropdown"
+  data-test-selector="library-status-button"
+>
+  {{#if updateTask.isIdle}}
     {{#if entry}}
-      {{status}}
-      {{fa-icon "caret-down" fixedWidth=true}}
+      {{currentStatus}}
     {{else}}
-      {{#if isLoading}}
-        {{fa-icon icon="spinner" spin=true}}
-      {{else}}
+      {{#if entryIsLoaded}}
         Add to Library
-        {{fa-icon "caret-down" fixedWidth=true}}
+      {{else}}
+        Loading...
+        {{fa-icon "spinner" spin=true}}
       {{/if}}
     {{/if}}
-  </span>
-{{/foundation-button}}
+  {{else}}
+    Updating...
+    {{fa-icon "spinner" spin=true}}
+  {{/if}}
+</button>
 
-{{#unless isLoading}}
-  {{#foundation-dropdown dropdownId="status-dropdown" closeOnClick=true}}
-    <ul class="no-bullet">
-      {{#each statuses as |status|}}
-        <li>
-          <a {{action 'updateStatus' status}}>
-            {{status}}
-          </a>
-        </li>
-      {{/each}}
-    </ul>
-  {{/foundation-dropdown}}
-{{/unless}}
+{{#foundation-dropdown
+    dropdownId="status-dropdown"
+    closeOnClick=true
+}}
+  <ul class="no-bullet">
+    {{#each statuses as |status|}}
+      <li>
+        <a onclick={{perform updateTask status}}>
+          {{status}}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+{{/foundation-dropdown}}

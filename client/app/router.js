@@ -34,14 +34,13 @@ RouterInstance.map(function() {
 
   this.route('onboarding', function() {
     this.route('start');
-    // TODO: Rest of onboarding flow
   });
 
-  // authentication
+  // Authentication
   this.route('sign-up');
   this.route('sign-in');
 
-  // @Note: These must remain at the bottom of the Router map
+  // These must remain at the bottom of the RouterInstance map
   this.route('server-error', { path: '/500' });
   this.route('not-found', { path: '/*path' });
 });

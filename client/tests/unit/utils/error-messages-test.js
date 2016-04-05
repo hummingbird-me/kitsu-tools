@@ -3,25 +3,24 @@ import { module, test } from 'qunit';
 
 module('Unit | Utility | error messages');
 
-// Replace this with your real tests.
 test('works with backend ajax response', function(assert) {
   assert.expect(1);
   const result = errorMessages({
     jqXHR: {
       responseJSON: {
-        errors: [{ title: 'abc', source: { parameter: 'user' } }, { title: 'def' }]
+        errors: [{ detail: 'abc' }, { detail: 'def' }]
       }
     }
   });
-  assert.equal(result, 'User abc\ndef');
+  assert.equal(result, 'Abc');
 });
 
 test('works with AdapterError response', function(assert) {
   assert.expect(1);
   const result = errorMessages({
-    errors: [{ title: 'abc' }, { title: 'def' }]
+    errors: [{ detail: 'abc' }, { detail: 'def' }]
   });
-  assert.equal(result, 'abc\ndef');
+  assert.equal(result, 'Abc');
 });
 
 test('works with Doorkeeper response', function(assert) {
@@ -29,5 +28,5 @@ test('works with Doorkeeper response', function(assert) {
   const result = errorMessages({
     error: 'invalid_grant'
   });
-  assert.equal(result, 'The provided credentials are not valid.');
+  assert.equal(result, 'The provided credentials are invalid.');
 });

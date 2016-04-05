@@ -1,9 +1,9 @@
 <ul>
-  {{#each options as |option|}}
+  {{#each selection as |option|}}
     {{#box-select-option
-      option=option
-      onSelect=(action 'toggle')
-    }}
+        option=option
+        isActive=(contains selected option)
+        onSelect=(action "toggle")}}
       {{yield option}}
     {{/box-select-option}}
   {{/each}}

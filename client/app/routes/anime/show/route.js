@@ -19,28 +19,21 @@ export default Route.extend(CanonicalUrlRedirect, {
 
   setupController(controller, model) {
     this._super(...arguments);
-    // Grab the library entry for this user & anime
-    if (get(this, 'currentSession.isAuthenticated') === true) {
-      const userId = get(this, 'currentSession.account.id');
+
+    // Get the anime library entry for the current user
+    const session = get(controller, 'currentSession');
+    if (get(session, 'isAuthenticated')) {
+      const userId = get(session, 'account.id');
       const animeId = get(model, 'id');
-      set(controller, 'isLoadingEntry', true);
-      get(this, 'store').query('library-entry', {
+      const promise = get(this, 'store').query('library-entry', {
         filter: {
           // jscs:disable
           user_id: userId,
           anime_id: animeId
           // jscs:enable
         }
-      }).then((records) => {
-        const record = get(records, 'firstObject');
-        if (record !== undefined) {
-          set(controller, 'entry', record);
-        } else {
-          // TODO: Can be removed when we switch to routable components
-          set(controller, 'entry', undefined);
-        }
-        set(controller, 'isLoadingEntry', false);
-      });
+      }).then((data) => set(controller, 'entry', get(data, 'firstObject')));
+      set(controller, 'entryPromise', promise);
     }
   },
 
@@ -50,5 +43,32 @@ export default Route.extend(CanonicalUrlRedirect, {
 
   serialize(model) {
     return { slug: get(model, 'slug') };
+  },
+
+  actions: {
+    createEntry(status) {
+      const controller = get(this, 'controller');
+      const user = get(this, 'currentSession.account');
+      const anime = this.modelFor(get(this, 'routeName'));
+      const entry = get(this, 'store').createRecord('library-entry', {
+        status,
+        user,
+        anime
+      });
+      return entry.save().then(() => set(controller, 'entry', entry));
+    },
+
+    updateEntry(status) {
+      const controller = get(this, 'controller');
+      const entry = get(controller, 'entry');
+      set(entry, 'status', status);
+      return entry.save();
+    },
+
+    destroyEntry() {
+      const controller = get(this, 'controller');
+      const entry = get(controller, 'entry');
+      return entry.destroyEntry().then(() => set(controller, 'entry', undefined));
+    }
   }
 });

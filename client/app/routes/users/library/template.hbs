@@ -2,47 +2,48 @@
   <div class="columns">
     <div class="library-list columns">
       <div class="nav-wrapper">
-        {{#foundation-button data-toggle="media-dropdown"}}
-          Anime Library
-          {{fa-icon "caret-down" fixedWidth=true}}
-        {{/foundation-button}}
+        {{! TODO: Media type dropdown }}
+        <button
+          type="button"
+          class="dropdown button"
+          data-toggle="media-dropdown">
+          {{capitalize media}} Library
+        </button>
 
-        {{#foundation-dropdown dropdownId="media-dropdown" closeOnClick=true}}
-          <ul class="no-bullet">
-            <li><a>Manga Library</a></li>
-          </ul>
-        {{/foundation-dropdown}}
-
+        {{! Library status selection }}
         <ul class="menu">
           <li>
-            <a href="#" class="{{if showAll 'active'}}" {{action 'showAll'}}>
+            <a href="#" class={{if showAll "active"}} {{action "showAll"}}>
               All
             </a>
           </li>
-          {{#each statuses as |status|}}
-            {{users/components/library-section-button
-                status=status
-                current=activeStatus
-                isLoadingData=isLoadingData
-                onClick=(action 'changeStatus')}}
+          {{#each statuses as |_status|}}
+            {{users/components/library-button
+                status=_status
+                isActive=(and (eq _status currentStatus) (not showAll))
+                isLoading=(not dataLoaded)
+                onClick=(pipe-action (action (mut status)) (action "hideAll"))}}
           {{/each}}
         </ul>
       </div>
+
+      {{! Filter Search }}
       <div class="search-library">
         {{one-way-input
-          update=(action 'filter')
-          placeholder="Search this library..."
-          class="search-input"}}
+            update=(action 'filter')
+            class="search-input"
+            placeholder="Search this library..."}}
       </div>
 
+      {{! Library Entries }}
       {{#if showAll}}
         {{#each sections as |section|}}
-          {{users/components/library-list-section
-            section=section}}
+          {{users/components/library-section
+              section=section}}
         {{/each}}
       {{else}}
-        {{users/components/library-list-section
-          section=currentSection}}
+        {{users/components/library-section
+            section=currentSection}}
       {{/if}}
     </div>
   </div>

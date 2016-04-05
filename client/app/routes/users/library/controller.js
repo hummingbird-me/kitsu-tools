@@ -1,10 +1,9 @@
 import Controller from 'ember-controller';
 import computed, { alias } from 'ember-computed';
 import get from 'ember-metal/get';
-import set, { setProperties } from 'ember-metal/set';
+import set from 'ember-metal/set';
 import libraryStatus from 'client/utils/library-status';
 
-// TODO: Speed up rendering!!
 export default Controller.extend({
   queryParams: ['media', 'status'],
   media: 'anime',
@@ -12,32 +11,19 @@ export default Controller.extend({
   showAll: false,
   entries: alias('model'),
 
-  statuses: computed({
-    get() {
-      return libraryStatus.getHumanStatuses();
-    }
-  }),
-
-  activeStatus: computed('showAll', 'status', {
-    get() {
-      if (get(this, 'showAll')) {
-        return;
-      }
-      const status = get(this, 'status');
-      return libraryStatus.numberToHuman(status);
-    }
-  }),
-
-  sections: computed('statuses', 'entries.@each.status', {
+  // Sort the library entries into an array of { status, entries }
+  sections: computed('statuses', 'entries.@each.{status,isDeleted}', {
     get() {
       return get(this, 'statuses').map((status) => {
         const entries = get(this, 'entries')
-          .filterBy('status', libraryStatus.humanToEnum(status));
+          .filterBy('status', libraryStatus.humanToEnum(status))
+          .filterBy('isDeleted', false);
         return { status, entries };
       });
     }
   }),
 
+  // Returns the section that is currently active
   currentSection: computed('status', 'sections', {
     get() {
       const status = get(this, 'status');
@@ -45,16 +31,26 @@ export default Controller.extend({
     }
   }),
 
+  // Get the human-readable status from the query parameter
+  currentStatus: computed('status', {
+    get() {
+      const status = get(this, 'status');
+      return libraryStatus.numberToHuman(status);
+    }
+  }),
+
+  init() {
+    this._super(...arguments);
+    set(this, 'statuses', libraryStatus.getHumanStatuses());
+  },
+
   actions: {
     showAll() {
       set(this, 'showAll', true);
     },
 
-    changeStatus(status) {
-      setProperties(this, {
-        showAll: false,
-        status: libraryStatus.humanToNumber(status)
-      });
+    hideAll() {
+      set(this, 'showAll', false);
     },
 
     filter(query) {
@@ -64,7 +60,7 @@ export default Controller.extend({
           if (get(entry, 'status') !== status) {
             return false;
           }
-          return get(entry, 'anime.searchStr').includes(query.toLowerCase());
+          return get(entry, 'anime.mergedTitles').includes(query.toLowerCase());
         });
         set(section, 'entries', entries);
       });

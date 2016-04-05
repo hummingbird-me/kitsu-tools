@@ -1,4 +1,3 @@
-import { equal } from 'ember-computed';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 
@@ -19,8 +18,5 @@ export default Model.extend({
   ratingSystem: attr('number'),
   toFollow: attr('boolean'),
   waifuOrHusbando: attr('string'),
-  website: attr('string'),
-
-  isSmileRating: equal('ratingSystem', 1),
-  isStarRating: equal('ratingSystem', 2)
+  website: attr('string')
 });

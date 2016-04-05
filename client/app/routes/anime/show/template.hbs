@@ -1,9 +1,15 @@
 <h1>Anime Page</h1>
-<h2 data-test-selector="title">{{model.canonicalTitle}}</h2>
+
+<h2 data-test-selector="title">
+  {{anime.canonicalTitle}}
+</h2>
 
 {{#if currentSession.isAuthenticated}}
   {{library-status-button
-    anime=anime
-    entry=entry
-    isLoading=isLoadingEntry}}
+      entry=entry
+      promise=entryPromise
+      create=(route-action "createEntry")
+      update=(route-action "updateEntry")
+      delete=(route-action "destroyEntry")
+  }}
 {{/if}}

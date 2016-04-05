@@ -6,8 +6,9 @@ import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-rout
 export default Route.extend(AuthenticatedRouteMixin, {
   currentSession: service(),
 
-  // Redirect the user to the dashboard if they have already been thru the
-  // onboarding process.
+  /**
+   * Redirect to `dashboard` if the user has already been onboarded.
+   */
   redirect() {
     if (get(this, 'currentSession.account.onboarded')) {
       this.transitionTo('dashboard');

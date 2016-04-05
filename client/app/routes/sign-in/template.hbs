@@ -1,21 +1,55 @@
-<h1>Sign In</h1>
+{{! TODO: Needs style love }}
 
-{{#if errorMessage}}
-  {{#foundation-callout type="alert" closable=false}}
-    {{errorMessage}}
-  {{/foundation-callout}}
-{{/if}}
+<div class="row">
+  <div class="medium-8 medium-offset-2 columns">
+    <div class="medium-6 columns">
+      <h5 class="text-center">Sign in to Hummingbird</h5>
 
-<form {{action 'authenticateWithOAuth2' on='submit'}}>
-  <label for="identification">Login</label>
-  {{one-way-input value=identification placeholder="Username or Email"
-    update=(action (mut identification)) data-test-selector="identification"}}
+      {{#if errorMessage}}
+        <p class="text-center" style="color: red;">
+          {{errorMessage}}
+        </p>
+      {{/if}}
 
-  <label for="password">Password</label>
-  {{one-way-input value=password placeholder="Password" type="password"
-    update=(action (mut password)) data-test-selector="password"}}
+      <form {{action "auth" on="submit"}}>
+        {{! Username input }}
+        <label>
+          Email or username
+          {{one-way-input
+              value=identification
+              update=(action (mut identification))
+              placeholder="email@example.com"
+              data-test-selector="identification"}}
+        </label>
 
-  <button type="submit" disabled={{isSubmitDisabled}} data-test-selector="sign-in">
-    Sign In
-  </button>
-</form>
+        {{! Password input }}
+        <label>
+          Password
+          {{one-way-input
+              value=password
+              update=(action (mut password))
+              type="password"
+              placeholder="password"
+              data-test-selector="password"}}
+        </label>
+
+        <button
+          type="submit"
+          class="expanded button"
+          disabled={{if (or (is-empty identification) (is-empty password)) "disabled"}}
+          data-test-selector="sign-in">
+          Sign In
+        </button>
+      </form>
+
+      <p class="text-center">
+        Don't have an account yet?
+        {{link-to "Sign up." "sign-up"}}
+      </p>
+    </div>
+
+    <div class="medium-6 columns">
+      {{social-connect}}
+    </div>
+  </div>
+</div>

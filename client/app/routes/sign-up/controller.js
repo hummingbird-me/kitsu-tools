@@ -1,25 +1,29 @@
 import Controller from 'ember-controller';
-import { isPresent } from 'ember-utils';
 import get from 'ember-metal/get';
-import set from 'ember-metal/set';
-import computed from 'ember-computed';
-import service from 'ember-service/inject';
+import { alias } from 'ember-computed';
 import EmberValidations, { validator } from 'ember-validations';
-import errorMessages from 'client/utils/error-messages';
+import { isPresent } from 'ember-utils';
 
 export default Controller.extend(EmberValidations, {
-  currentSession: service(),
+  user: alias('model'),
+
   validations: {
-    'model.email': {
+    'user.email': {
       presence: true,
-      format: { with: /^[^@]+@([^@\.]+\.)+[^@\.]+$/, message: 'must be a valid email address' }
+      format: {
+        with: /^[^@]+@([^@\.]+\.)+[^@\.]+$/,
+        message: 'must be a valid email address'
+      }
     },
-    'model.name': {
+    'user.name': {
       presence: true,
-      format: { with: /^[_a-zA-Z0-9]+$/, message: 'must be letters, numbers, and underscores only' },
+      format: {
+        with: /^[_a-zA-Z0-9]+$/,
+        message: 'must use letters, numbers, and underscores only'
+      },
       length: { minimum: 3, maximum: 20 },
       inline: validator(function() {
-        const name = get(this.model, 'model.name');
+        const name = get(get(this, 'model'), 'user.name');
         // must not be all numbers
         if (isPresent(name) && /^[0-9]+$/.test(name)) {
           return 'must not be entirely numbers';
@@ -31,31 +35,9 @@ export default Controller.extend(EmberValidations, {
         }
       })
     },
-    'model.password': {
+    'user.password': {
       presence: true,
       length: { minimum: 8 }
-    }
-  },
-
-  isSubmitDisabled: computed.not('isValid'),
-
-  actions: {
-    createAccount() {
-      get(this, 'model').save()
-        .then(() => {
-          const identification = get(this, 'model.name');
-          const password = get(this, 'model.password');
-          get(this, 'currentSession').authenticateWithOAuth2(identification, password)
-            .then(() => {
-              this.transitionToRoute('onboarding.start');
-            })
-            .catch((reason) => {
-              set(this, 'errorMessage', errorMessages(reason));
-            });
-        })
-        .catch((reason) => {
-          set(this, 'errorMessage', errorMessages(reason));
-        });
     }
   }
 });

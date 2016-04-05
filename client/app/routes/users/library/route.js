@@ -1,9 +1,9 @@
 import Route from 'ember-route';
 import get, { getProperties } from 'ember-metal/get';
-import set from 'ember-metal/set';
+import set, { setProperties } from 'ember-metal/set';
+import jQuery from 'jquery';
 
-// TODO: Handle other media types
-// TODO: Map text status to numeric status
+// TODO: Performance (uhhh)! WTB Glimmer2, WTB <> Components, PLEASE
 export default Route.extend({
   queryParams: {
     media: { refreshModel: true },
@@ -16,14 +16,16 @@ export default Route.extend({
 
   setupController(controller, model) {
     this._super(...arguments);
-    set(controller, 'isLoadingData', true);
     const { media, status } = getProperties(controller, 'media', 'status');
-    this._getLibraryData(media, this._getNextStatuses(status))
+
+    // TODO: This needs to rerun when `media` is changed.
+    const statuses = this._getNextStatuses(status);
+    this._getLibraryData(media, statuses)
       .then((records) => {
         const content = model.toArray();
         content.addObjects(records);
         set(controller, 'model', content);
-        set(controller, 'isLoadingData', false);
+        set(controller, 'dataLoaded', true);
       });
   },
 
@@ -33,6 +35,9 @@ export default Route.extend({
     return `${name}'s Library`;
   },
 
+  /**
+   * Requests the library data for the user, media, and status.
+   */
   _getLibraryData(media, status) {
     const user = this.modelFor('users');
     const userId = get(user, 'id');
@@ -51,10 +56,37 @@ export default Route.extend({
     });
   },
 
+  /**
+   * Returns the statuses that we don't currently have as a joined string.
+   */
   _getNextStatuses(status) {
     const statuses = [1, 2, 3, 4, 5];
     const index = statuses.indexOf(status);
     statuses.splice(index, 1);
     return statuses.join(',');
+  },
+
+  actions: {
+    /**
+     * Updates properties on the `entry` object passed.
+     * Supports single property update, or multiple.
+     */
+    updateEntry(entry, key, value) {
+      if (jQuery.isPlainObject(key)) {
+        setProperties(entry, key);
+      } else {
+        set(entry, key, value);
+      }
+    },
+
+    saveEntry(entry) {
+      return entry.save()
+        .catch((err) => console.error(err));
+    },
+
+    destroyEntry(entry) {
+      return entry.destroyRecord()
+        .catch((err) => console.error(err));
+    }
   }
 });

@@ -40,27 +40,21 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   _getCurrentUser() {
-    if (!Ember.testing) {
-      return get(this, 'ajax').request('/users?filter[self]')
-        .then((response) => {
-          const [data] = response.data;
-          const normalizedData = get(this, 'store').normalize('user', data);
-          const user = get(this, 'store').push(normalizedData);
-          const userId = get(user, 'id');
-          set(this, 'currentSession.userId', userId);
-
-          // identify with analytics
-          get(this, 'metrics').identify({ distinctId: userId });
-        })
-        .catch(() => {
-          get(this, 'currentSession').invalidate();
-        });
+    if (Ember.testing) {
+      return;
     }
-  },
 
-  actions: {
-    invalidateSession() {
-      get(this, 'currentSession').invalidate();
-    }
+    return get(this, 'ajax').request('/users?filter[self]=true')
+      .then((response) => {
+        const [data] = response.data;
+        const normalizedData = get(this, 'store').normalize('user', data);
+        const user = get(this, 'store').push(normalizedData);
+        const userId = get(user, 'id');
+        set(this, 'currentSession.userId', userId);
+
+        // identify with analytics
+        get(this, 'metrics').identify({ distinctId: userId });
+      })
+      .catch(() => get(this, 'currentSession').invalidate());
   }
 });
