@@ -432,11 +432,6 @@ class User < ActiveRecord::Base
     @votes[target.class.to_s].member? target.id
   end
 
-  # Return encrypted email.
-  def encrypted_email
-    Digest::MD5.hexdigest(ENV['FORUM_SYNC_SECRET'] + self.email)
-  end
-
   def avatar_template
     self.avatar.url(:thumb).gsub(/users\/avatars\/(\d+\/\d+\/\d+)\/\w+/, "users/avatars/\\1/{size}")
   end
