@@ -1,6 +1,14 @@
 require_dependency 'library_entry_query'
 
 class LibraryEntriesController < ApplicationController
+  ALLOWED_ONEBOXERS = %w[
+    https://hibiki.plejeck.com
+    https://forums.hummingbird.me
+    https://forumstaging.hummingbird.me
+    http://localhost:3000
+  ]
+  skip_before_action :verify_authenticity_token,
+    if: -> { ALLOWED_ONEBOXERS.include?(request.headers['Origin']) && request.xhr? }
   def index
     unless params[:user_id]
       authenticate_user!
