@@ -81,7 +81,7 @@ module Hummingbird
     config.middleware.use Rack::Cors do
       allow do
         origins 'forums.hummingbird.me', 'forumstaging.hummingbird.me', 'localhost:3000', 'hibiki.plejeck.com'
-        resource '/library_entries/*', headers: :any, methods: :any
+        resource '/library_entries/*', headers: :any, methods: [:put, :get]
         resource '*', headers: :any, methods: [:get]
       end
     end

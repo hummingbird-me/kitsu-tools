@@ -9,6 +9,7 @@ class LibraryEntriesController < ApplicationController
   ]
   skip_before_action :verify_authenticity_token,
     if: -> { ALLOWED_ONEBOXERS.include?(request.headers['Origin']) && request.xhr? }
+
   def index
     unless params[:user_id]
       authenticate_user!
