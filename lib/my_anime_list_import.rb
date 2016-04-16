@@ -45,7 +45,8 @@ class MyAnimeListImport
     if @data.nil?
       @data = []
 
-      @data = hashdata[list].map do |indv|
+      # wrap+flatten+compact to ensure we get an array with no nils
+      @data = [hashdata[list]].flatten.compact.map do |indv|
         row = {
           rating: indv["my_score"].to_i,
           notes: indv["my_comments"].blank? ? indv["my_tags"] : indv["my_comments"]
