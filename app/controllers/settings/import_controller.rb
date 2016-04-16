@@ -21,9 +21,19 @@ class Settings::ImportController < ApplicationController
     else
       return error!(400, 'Unknown format')
     end
-    xml.scrub!
 
+    #### This is how we fix Xinil being a bad programmer
+    # Scrub invalid characters
+    xml.scrub!
+    # Properly escape ampersands
+    xml.gsub!(/&(?!(?:amp|lt|gt|quot|apos);)/, '&amp;')
+
+    #### These are all based on real user errors we've seen in logs
     return error!(422, 'Blank file') if xml.blank?
+    return error!(422, 'Invalid MAL export') unless xml.include?('<myanimelist>')
+    unless xml.include?(/<(?:anime|manga)>/)
+      return error!(422, 'No anime or manga entries found in your export')
+    end
 
     # Queue the import
     status = User.import_statuses[:queued]
