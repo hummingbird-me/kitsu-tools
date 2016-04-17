@@ -5,7 +5,7 @@ class LibraryEntryPolicy < ApplicationPolicy
     # No, if it's private
     return false if record.private?
     # No, if it's nsfw and you're not a perv
-    return false if user.sfw_filter? && record.anime.nsfw?
+    return false if user.sfw_filter? && record.media.nsfw?
     # Otherwise, yeah
     true
   end

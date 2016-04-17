@@ -38,13 +38,13 @@
 #
 
 class Anime < ActiveRecord::Base
+  DEFAULT_PROGRESS_LIMIT = 400
   SEASONS = %w[winter spring summer fall]
 
   include Media
   include AgeRatings
   include Episodic
 
-  has_many :library_entries, dependent: :destroy
   has_many :streaming_links, as: 'media', dependent: :destroy
 
   update_index('media#anime') { self }

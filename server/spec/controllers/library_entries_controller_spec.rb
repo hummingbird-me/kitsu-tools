@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe LibraryEntriesController, type: :controller do
-  LIBRARY_ENTRY ||= { status: String, episodesWatched: Fixnum }
+  LIBRARY_ENTRY ||= { status: String, progress: Fixnum }
   let(:user) { create(:user) }
   let(:anime) { create(:anime) }
 
@@ -14,19 +14,20 @@ RSpec.describe LibraryEntriesController, type: :controller do
       end
     end
 
-    describe 'with filter[anime_id]' do
+    describe 'with filter[media_type] + filter[media_id]' do
       it 'should respond with a list of library entries' do
-        5.times { create(:library_entry, anime: anime) }
-        get :index, filter: { anime_id: anime.id }
+        5.times { create(:library_entry, media: anime) }
+        get :index, filter: { media_id: anime.id, media_type: 'Anime' }
         expect(response.body).to have_resources(LIBRARY_ENTRY, 'libraryEntries')
       end
     end
 
-    describe 'with filter[user_id] and filter[anime_id]' do
+    describe 'with filter[user_id] + filter[media_type] + filter[media_id]' do
       it 'should respond with a single library entry as an array' do
-        create(:library_entry, user: user, anime: anime)
-        5.times { create(:library_entry, user: build(:user), anime: anime) }
-        get :index, filter: { anime_id: anime.id, user_id: user }
+        create(:library_entry, user: user, media: anime)
+        5.times { create(:library_entry, user: build(:user), media: anime) }
+        get :index, filter: { media_id: anime.id, media_type: 'Anime',
+                              user_id: user }
         expect(response.body).to have_resources(LIBRARY_ENTRY, 'libraryEntries')
         expect(JSON.parse(response.body)['data'].count).to equal(1)
       end
@@ -35,8 +36,9 @@ RSpec.describe LibraryEntriesController, type: :controller do
     describe 'with logged in user' do
       it "should respond with a single private library entry as an array" do
         sign_in(user)
-        create(:library_entry, user: user, anime: anime, private: true)
-        5.times { create(:library_entry, user: build(:user), anime: anime, private:true) }
+        create(:library_entry, user: user, media: anime, private: true)
+        5.times { create(:library_entry, user: build(:user), media: anime,
+                                         private: true) }
         get :index
         expect(response.body).to have_resources(LIBRARY_ENTRY, 'libraryEntries')
         expect(JSON.parse(response.body)['data'].count).to equal(1)
@@ -44,8 +46,8 @@ RSpec.describe LibraryEntriesController, type: :controller do
 
       it "should respond with a list of library entries" do
         sign_in(user)
-        create(:library_entry, user: user, anime: anime, private: true)
-        5.times { create(:library_entry, user: build(:user), anime: anime) }
+        create(:library_entry, user: user, media: anime, private: true)
+        5.times { create(:library_entry, user: build(:user), media: anime) }
         get :index
         expect(response.body).to have_resources(LIBRARY_ENTRY, 'libraryEntries')
         expect(JSON.parse(response.body)['data'].count).to equal(6)
