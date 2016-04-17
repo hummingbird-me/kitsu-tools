@@ -1,43 +1,39 @@
-version: '2'
+# Database servers
+postgres:
+  image: postgres:9.3
+  environment:
+    POSTGRES_PASSWORD: mysecretpassword
+    POSTGRES_USER: postgres
+redis:
+  image: redis
+elasticsearch:
+  image: elasticsearch
 
-services:
-  # Database servers
-  postgres:
-    image: postgres:9.3
-    environment:
-      POSTGRES_PASSWORD: mysecretpassword
-      POSTGRES_USER: postgres
-  redis:
-    image: redis
-  elasticsearch:
-    image: elasticsearch
+# Web server, routing /api and / to server, client respectively
+nginx:
+  build: ./scripts
+  dockerfile: Dockerfile.nginx
+  links: [client, server]
+  ports: [80]
 
-  # Web server, routing /api and / to server, client respectively
-  nginx:
-    build:
-      context: ./scripts
-      dockerfile: Dockerfile.nginx
-    links: [client, server]
-    ports: [80]
+# Rails server
+server: &rails
+  links: [postgres, redis, elasticsearch]
+  build: ./server
+  volumes:
+    - ./server:/opt/hummingbird/server
+  environment:
+    RAILS_ENV: development
 
-  # Rails server
-  server: &rails
-    links: [postgres, redis, elasticsearch]
-    build: ./server
-    volumes:
-      - ./server:/opt/hummingbird/server
-    environment:
-      RAILS_ENV: development
+# Sidekiq
+sidekiq:
+  <<: *rails
+  command: [sidekiq]
 
-  # Sidekiq
-  sidekiq:
-    <<: *rails
-    command: [sidekiq]
-
-  # Ember server
-  client:
-    build: ./client
-    volumes:
-      - ./client:/opt/hummingbird/client
-    environment:
-      EMBER_ENV: development
+# Ember server
+client:
+  build: ./client
+  volumes:
+    - ./client:/opt/hummingbird/client
+  environment:
+    EMBER_ENV: development
