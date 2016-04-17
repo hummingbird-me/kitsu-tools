@@ -35,5 +35,6 @@ client:
   build: ./client
   volumes:
     - ./client:/opt/hummingbird/client
+    - /opt/hummingbird/client/node_modules
   environment:
     EMBER_ENV: development
