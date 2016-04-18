@@ -31,7 +31,7 @@ class Settings::ImportController < ApplicationController
     #### These are all based on real user errors we've seen in logs
     return error!(422, 'Blank file') if xml.blank?
     return error!(422, 'Invalid MAL export') unless xml.include?('<myanimelist>')
-    unless xml.include?(/<(?:anime|manga)>/)
+    unless /<(?:anime|manga)>/.match(xml)
       return error!(422, 'No anime or manga entries found in your export')
     end
 
