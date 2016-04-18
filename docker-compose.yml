@@ -1,3 +1,4 @@
+# Database servers
 postgres:
   image: postgres:9.3
   environment:
@@ -7,18 +8,33 @@ redis:
   image: redis
 elasticsearch:
   image: elasticsearch
-web:
-  build: .
+
+# Web server, routing /api and / to server, client respectively
+nginx:
+  build: ./scripts
+  dockerfile: Dockerfile.nginx
+  links: [client, server]
+  ports: [80]
+
+# Rails server
+server: &rails
+  links: [postgres, redis, elasticsearch]
+  build: ./server
   volumes:
-    - ./:/opt/hummingbird/
-  ports:
-    - 3000:3000
-    - 4200
-    - 49152:49152
-  links:
-    - postgres
-    - redis
-    - elasticsearch
+    - ./server:/opt/hummingbird/server
   environment:
     RAILS_ENV: development
 
+# Sidekiq
+sidekiq:
+  <<: *rails
+  command: [sidekiq]
+
+# Ember server
+client:
+  build: ./client
+  volumes:
+    - ./client:/opt/hummingbird/client
+    - /opt/hummingbird/client/node_modules
+  environment:
+    EMBER_ENV: development

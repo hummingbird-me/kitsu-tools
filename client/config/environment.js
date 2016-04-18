@@ -57,7 +57,6 @@ module.exports = function(environment) {
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';
-    ENV.apiHost = '';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
@@ -68,7 +67,6 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.contentSecurityPolicyHeader = 'Content-Security-Policy';
-    ENV.apiHost = 'https://api.hummingbird.me';
   }
 
   return ENV;

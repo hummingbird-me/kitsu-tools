@@ -31,5 +31,8 @@ module Hummingbird
     concern_dirs = Dir['app/*/concerns'].map { |d| File.expand_path(d) }
     Rails.application.config.eager_load_paths += concern_dirs
     Rails.application.config.eager_load_paths.uniq!
+
+    # We run under /api
+    config.relative_url_root = '/api'
   end
 end

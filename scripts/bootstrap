@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Build files
+docker-compose build
+# Install dependencies
+docker-compose run --entrypoint=bundle server install
+docker-compose run --entrypoint=npm client install
+docker-compose run --entrypoint=bower client install --allow-root
+# Initialize database
+docker-compose run server rake db:setup
+# Boot app
+docker-compose start
+
+# Get docker-machine ip if there is one
+port="$(docker-compose port nginx 80 | cut -d: -f2)"
+[ -z "$DOCKER_MACHINE_NAME" ] && host='localhost' || host="$(docker-machine ip)"
+server="http://$host:$port"
+
+echo "Server listening on $server"
+
+if [[ $* == *-o* ]]; then
+  # We try a multitude of ways to open the browser.  Should usually succeed.
+  if [ -n $BROWSER ]; then
+    $BROWSER $server
+  elif which open > /dev/null; then
+    open $server
+  elif which xdg-open > /dev/null; then
+    xdg-open $server
+  elif which python > /dev/null; then
+    python -mwebbrowser $server
+  else
+    echo "Could not detect the web browser to use."
+  fi
+fi
