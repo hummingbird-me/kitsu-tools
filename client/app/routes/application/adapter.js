@@ -1,4 +1,3 @@
-import computed from 'ember-computed';
 import JSONAPIAdapter from 'ember-data/adapters/json-api';
 import DataAdapaterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
