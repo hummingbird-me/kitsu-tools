@@ -2,16 +2,9 @@ import computed from 'ember-computed';
 import get from 'ember-metal/get';
 import service from 'ember-service/inject';
 import AjaxService from 'ember-ajax/services/ajax';
-import getApiHost from 'client/utils/get-api-host';
 
 export default AjaxService.extend({
   session: service(),
-
-  host: computed({
-    get() {
-      return getApiHost();
-    }
-  }),
 
   headers: computed('session.isAuthenticated', {
     get() {
