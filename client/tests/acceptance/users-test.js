@@ -22,8 +22,8 @@ test('visiting `user.*` with an id redirects to the named route', function(asser
       name: 'holo'
     }
   };
-  this.server.get('/users/1', () => [200, {}, JSON.stringify({ data })]);
-  this.server.get('/users', () => [200, {}, JSON.stringify({ data: [data] })]);
+  this.server.get('/api/edge/users/1', () => [200, {}, JSON.stringify({ data })]);
+  this.server.get('/api/edge/users', () => [200, {}, JSON.stringify({ data: [data] })]);
 
   visit('/users/1');
   andThen(() => assert.equal(currentURL(), '/users/holo'));

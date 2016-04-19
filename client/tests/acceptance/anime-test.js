@@ -22,8 +22,8 @@ test('visiting `anime.show` with an id redirects to the slugged route', function
       slug: 'steins-gate'
     }
   };
-  this.server.get('/anime/1', () => [200, {}, JSON.stringify({ data })]);
-  this.server.get('/anime', () => [200, {}, JSON.stringify({ data: [data] })]);
+  this.server.get('/api/edge/anime/1', () => [200, {}, JSON.stringify({ data })]);
+  this.server.get('/api/edge/anime', () => [200, {}, JSON.stringify({ data: [data] })]);
 
   visit('/anime/1');
   andThen(() => assert.equal(currentURL(), '/anime/steins-gate'));
