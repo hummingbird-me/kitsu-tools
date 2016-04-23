@@ -16,5 +16,5 @@ RUN bower install --allow-root -q
 COPY . /opt/hummingbird/client
 
 ENTRYPOINT ["./node_modules/.bin/ember"]
-CMD ["server", "--port 80", "--environment development"]
+CMD ["serve", "--port=80", "--environment=development"]
 EXPOSE 80

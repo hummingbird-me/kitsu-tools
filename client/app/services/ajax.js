@@ -4,6 +4,7 @@ import service from 'ember-service/inject';
 import AjaxService from 'ember-ajax/services/ajax';
 
 export default AjaxService.extend({
+  namespace: '/api/edge',
   session: service(),
 
   headers: computed('session.isAuthenticated', {
