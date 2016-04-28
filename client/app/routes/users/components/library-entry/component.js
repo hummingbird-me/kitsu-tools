@@ -4,13 +4,13 @@ import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import service from 'ember-service/inject';
 import { debounce, cancel } from 'ember-runloop';
-import IsViewingSelfMixin from 'client/mixins/is-viewing-self';
+import IsOwnerMixin from 'client/mixins/is-owner';
 import EmberValidations from 'ember-validations';
 import jQuery from 'jquery';
 
 const DEBOUNCE_MS = 1000;
 
-export default Component.extend(IsViewingSelfMixin, EmberValidations, {
+export default Component.extend(IsOwnerMixin, EmberValidations, {
   isExpanded: false,
 
   currentSession: service(),

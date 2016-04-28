@@ -11,7 +11,7 @@
       {{! Entry Progress }}
       <div class="entry-progress">
         {{! Editable for owner only }}
-        {{#if isViewingSelf}}
+        {{#if isOwner}}
           {{one-way-input
               value=entry.episodesWatched
               update=(action "updateDebounced" "episodesWatched")
@@ -46,7 +46,7 @@
       {{! Notes }}
       <div class="small-12 columns">
         {{! Editable for owner only }}
-        {{#if isViewingSelf}}
+        {{#if isOwner}}
           {{one-way-input
               value=entry.notes
               update=(action "updateDebounced" "notes")
@@ -87,7 +87,7 @@
       <div class="medium-4 columns">
         <div class="drop-options">
           {{! Only for owner }}
-          {{#if isViewingSelf}}
+          {{#if isOwner}}
             {{! Library Status }}
             <div class="status-select">
               {{library-status-button
@@ -138,7 +138,7 @@
 
           {{! Rewatch }}
           <div class="rewatch">
-            {{#if isViewingSelf}}
+            {{#if isOwner}}
               <button type="button" class="button" {{action "rewatch"}}>
                 Rewatch
               </button>
@@ -147,7 +147,7 @@
             <label>
               <span>Rewatched</span>
               {{! Editable to owner }}
-              {{#if isViewingSelf}}
+              {{#if isOwner}}
                 {{one-way-input
                     value=entry.rewatchCount
                     update=(action "updateDebounced" "rewatchCount")}}
