@@ -292,20 +292,22 @@ ActiveRecord::Schema.define(version: 20160109045957) do
   add_index "installments", ["media_type", "media_id"], name: "index_installments_on_media_type_and_media_id", unique: true, using: :btree
 
   create_table "library_entries", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "anime_id"
-    t.integer  "status"
-    t.datetime "created_at",                                               null: false
-    t.datetime "updated_at",                                               null: false
-    t.integer  "episodes_watched",                         default: 0,     null: false
-    t.decimal  "rating",           precision: 2, scale: 1
-    t.boolean  "private",                                  default: false
+    t.integer  "user_id",                                                 null: false
+    t.integer  "media_id",                                                null: false
+    t.integer  "status",                                                  null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.integer  "progress",                                default: 0,     null: false
+    t.decimal  "rating",          precision: 2, scale: 1
+    t.boolean  "private",                                 default: false, null: false
     t.text     "notes"
-    t.integer  "rewatch_count",                            default: 0,     null: false
-    t.boolean  "rewatching",                               default: false, null: false
+    t.integer  "reconsume_count",                         default: 0,     null: false
+    t.boolean  "reconsuming",                             default: false, null: false
+    t.string   "media_type",                                              null: false
+    t.integer  "volumes_owned",                           default: 0,     null: false
   end
 
-  add_index "library_entries", ["user_id", "anime_id"], name: "index_library_entries_on_user_id_and_anime_id", unique: true, using: :btree
+  add_index "library_entries", ["user_id", "media_type", "media_id"], name: "index_library_entries_on_user_id_and_media_type_and_media_id", unique: true, using: :btree
   add_index "library_entries", ["user_id", "status"], name: "index_library_entries_on_user_id_and_status", using: :btree
   add_index "library_entries", ["user_id"], name: "index_library_entries_on_user_id", using: :btree
 
@@ -337,26 +339,6 @@ ActiveRecord::Schema.define(version: 20160109045957) do
     t.string   "canonical_title",                       default: "ja_en", null: false
     t.string   "abbreviated_titles",                                                   array: true
   end
-
-  create_table "manga_library_entries", force: :cascade do |t|
-    t.integer  "user_id",                                                           null: false
-    t.integer  "manga_id",                                                          null: false
-    t.string   "status",        limit: 255,                                         null: false
-    t.boolean  "private",                                           default: false, null: false
-    t.integer  "chapters_read",                                     default: 0,     null: false
-    t.integer  "volumes_read",                                      default: 0,     null: false
-    t.integer  "reread_count",                                      default: 0,     null: false
-    t.boolean  "rereading",                                         default: false, null: false
-    t.datetime "last_read"
-    t.decimal  "rating",                    precision: 2, scale: 1
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "notes"
-    t.boolean  "imported",                                          default: false, null: false
-  end
-
-  add_index "manga_library_entries", ["manga_id"], name: "index_manga_library_entries_on_manga_id", using: :btree
-  add_index "manga_library_entries", ["user_id"], name: "index_manga_library_entries_on_user_id", using: :btree
 
   create_table "not_interesteds", force: :cascade do |t|
     t.integer  "user_id"

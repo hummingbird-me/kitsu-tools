@@ -1,13 +1,13 @@
 require 'unlimited_paginator'
 
 class LibraryEntryResource < BaseResource
-  attributes :status, :episodes_watched, :rewatching, :rewatch_count,
-             :notes, :private, :rating, :updated_at
+  attributes :status, :progress, :reconsuming, :reconsume_count, :notes,
+             :private, :rating, :updated_at
 
-  filters :user_id, :anime_id, :status
+  filters :user_id, :media_id, :media_type, :status
 
   has_one :user
-  has_one :anime
+  has_one :media, polymorphic: true
 
   paginator :unlimited
 end

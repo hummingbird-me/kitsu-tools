@@ -2,18 +2,20 @@
 #
 # Table name: library_entries
 #
-#  id               :integer          not null, primary key
-#  user_id          :integer
-#  anime_id         :integer
-#  status           :integer
-#  created_at       :datetime         not null
-#  updated_at       :datetime         not null
-#  episodes_watched :integer          default(0), not null
-#  rating           :decimal(2, 1)
-#  private          :boolean          default(FALSE)
-#  notes            :text
-#  rewatch_count    :integer          default(0), not null
-#  rewatching       :boolean          default(FALSE), not null
+#  id              :integer          not null, primary key
+#  user_id         :integer          not null
+#  media_id        :integer          not null
+#  status          :integer          not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  progress        :integer          default(0), not null
+#  rating          :decimal(2, 1)
+#  private         :boolean          default(FALSE), not null
+#  notes           :text
+#  reconsume_count :integer          default(0), not null
+#  reconsuming     :boolean          default(FALSE), not null
+#  media_type      :string           not null
+#  volumes_owned   :integer          default(0), not null
 #
 
 class LibraryEntry < ActiveRecord::Base
@@ -23,7 +25,7 @@ class LibraryEntry < ActiveRecord::Base
   VALID_RATINGS = (0.5..5).step(0.5).to_a
 
   belongs_to :user, touch: true
-  belongs_to :anime
+  belongs_to :media, polymorphic: true
 
   enum status: {
     current: 1,
@@ -33,30 +35,32 @@ class LibraryEntry < ActiveRecord::Base
     dropped: 5
   }
 
-  validates :user, :anime, :status, :episodes_watched, :rewatch_count,
+  validates :user, :media, :status, :progress, :reconsume_count,
     presence: true
-  validates :user_id, uniqueness: { scope: :anime_id }
+  validates :user_id, uniqueness: { scope: [:media_type, :media_id] }
   validates :rating, numericality: {
     greater_than: 0,
     less_than_or_equal_to: 5
   }, allow_blank: true
-  validates :rewatch_count, numericality: {
+  validates :reconsume_count, numericality: {
     less_than_or_equal_to: 50,
     message: 'just... go outside'
   }
-  validates :episodes_watched, numericality: {
-    less_than_or_equal_to: 500,
-    message: 'it seems improbable that the show would have that many episodes'
-  }
-  validate :episodes_watched_limit
+  validate :progress_limit
   validate :rating_on_halves
 
-  def episodes_watched_limit
-    episode_count = anime.try(:episode_count)
-    if episode_count && episodes_watched > episode_count
-      errors.add(:episodes_watched, 'cannot exceed total number of episodes')
+  def progress_limit
+    return unless progress
+    progress_cap = media.try(:progress_limit)
+    default_cap = "#{media_type}::DEFAULT_PROGRESS_LIMIT".safe_constantize
+
+    if progress_cap && progress > progress_cap
+      errors.add(:progress, 'cannot exceed length of media')
+    elsif default_cap && progress > default_cap
+      errors.add(:progress, 'is rather unreasonably high')
     end
   end
+
   def rating_on_halves
     return unless rating
 

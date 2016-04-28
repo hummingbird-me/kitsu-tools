@@ -32,10 +32,13 @@
 #
 
 class Manga < ActiveRecord::Base
+  DEFAULT_PROGRESS_LIMIT = 1000
+
   include Media
 
   enum manga_type: %i[manga novel manhua oneshot doujin]
   enum status: %i[not_published publishing finished]
+  alias_attribute :progress_limit, :chapter_count
 
   def slug_candidates
     [
