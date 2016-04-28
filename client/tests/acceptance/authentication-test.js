@@ -23,7 +23,7 @@ test('creating an account works', function(assert) {
     };
     return [200, {}, JSON.stringify({ data })];
   });
-  this.server.post('/api/edge/oauth/token', () => [200, {}, '{}']);
+  this.server.post('/api/oauth/token', () => [200, {}, '{}']);
 
   visit('/sign-up');
   fillIn('input[data-test-selector="email"]', 'email@host.tld');
@@ -40,7 +40,7 @@ test('creating an account works', function(assert) {
 
 test('signing in works', function(assert) {
   assert.expect(2);
-  this.server.post('/api/edge/oauth/token', () => [200, {}, '{}']);
+  this.server.post('/api/oauth/token', () => [200, {}, '{}']);
 
   visit('/sign-in');
   fillIn('input[data-test-selector="identification"]', 'username');
