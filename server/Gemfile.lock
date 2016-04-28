@@ -367,7 +367,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    spring (1.4.0)
+    spring (1.7.1)
     sprockets (3.3.4)
       rack (~> 1.0)
     sprockets-rails (2.3.3)
@@ -454,4 +454,4 @@ DEPENDENCIES
   typhoeus
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

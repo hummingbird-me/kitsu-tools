@@ -15,6 +15,7 @@ COPY . /opt/hummingbird/server
 
 ENV DATABASE_URL=postgresql://postgres:mysecretpassword@postgres/
 ENV REDIS_URL=redis://redis/1
+ENV ELASTICSEARCH_HOST=elasticsearch
 
 ENTRYPOINT ["bundle", "exec"]
 CMD ["puma", "--port=80"]
