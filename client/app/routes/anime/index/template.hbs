@@ -129,7 +129,9 @@
         {{/each}}
       </div>
 
-      {{scrolling-paginator model=model.media}}
+      {{scrolling-paginator
+          model=model.media
+          update=(route-action "updateNextPage")}}
     </div>
   </div>
 </div>

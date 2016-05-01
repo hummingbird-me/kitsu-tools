@@ -1,28 +1,33 @@
 import Component from 'ember-component';
 import get from 'ember-metal/get';
-import set, { setProperties } from 'ember-metal/set';
-import { debounce } from 'ember-runloop';
+import { setProperties } from 'ember-metal/set';
 import computed from 'ember-computed';
 import service from 'ember-service/inject';
 import InViewportMixin from 'ember-in-viewport';
+import { task } from 'ember-concurrency';
 
-const DEBOUNCE = 500;
-
-// TODO: See client/initializers/store-links.js comments
+/**
+ * Scrolling pagination based on JSON-API's top level links object.
+ * Due to ember-data not having support for pagination yet, this requires a
+ * hackish fix implemented in `client/initializers/store-links.js`
+ */
 export default Component.extend(InViewportMixin, {
-  isLoading: false,
-  model: undefined,
-
   store: service(),
 
-  nextLink: computed('_links', {
+  /**
+   * Grabs the latest `next` URL from the `links` object
+   */
+  nextLink: computed('links', {
     get() {
-      const links = get(this, '_links') || {};
+      const links = get(this, 'links') || {};
       return get(links, 'next');
     }
   }),
 
-  _links: computed('model', {
+  /**
+   * Grabs the `links` object from the models metadata
+   */
+  links: computed('model', {
     get() {
       let model = get(this, 'model');
       const metadata = get(model, 'meta');
@@ -30,8 +35,26 @@ export default Component.extend(InViewportMixin, {
     }
   }),
 
-  didInsertElement() {
+  /**
+   * Droppable task that queries the next set of data and sends an action
+   * up to the owner.
+   */
+  getNextData: task(function *() {
+    const nextLink = get(this, 'nextLink');
+    if (nextLink === undefined) {
+      return;
+    }
+    let model = get(this, 'model');
+    model = get(model, 'firstObject') || model;
+    const { modelName } = model.constructor;
+    const options = this._parseLink(nextLink);
+    const records = yield get(this, 'store').query(modelName, options);
+    get(this, 'update')(records);
+  }).drop(),
+
+  init() {
     this._super(...arguments);
+    // Setup properties for `ember-in-viewport`
     setProperties(this, {
       viewportSpy: true,
       viewportTolerance: {
@@ -43,36 +66,12 @@ export default Component.extend(InViewportMixin, {
 
   didEnterViewport() {
     this._super(...arguments);
-    debounce(this, this._getNextData, DEBOUNCE, true);
+    get(this, 'getNextData').perform();
   },
 
-  _getNextData() {
-    const nextLink = get(this, 'nextLink');
-    if (nextLink === undefined || get(this, 'isLoading') === true) {
-      return;
-    }
-    set(this, 'isLoading', true);
-    let model = get(this, 'model');
-    model = get(model, 'firstObject') || model;
-    const { modelName } = model.constructor;
-    const options = this._parseLink(nextLink);
-    get(this, 'store').query(modelName, options)
-      .then((records) => {
-        // It's possible that the user navigated away during the ajax request
-        // which has destroyed the component
-        if (get(this, 'model') === undefined) {
-          return;
-        }
-        // Add the records to our data
-        const content = get(this, 'model').toArray();
-        content.addObjects(records);
-        set(this, 'model', content);
-        // update meta record -_-'
-        set(get(this, 'model'), 'meta', get(records, 'meta'));
-        set(this, 'isLoading', false);
-      });
-  },
-
+  /**
+   * Decodes and rebuilds the query params object from the URL passed.
+   */
   _parseLink(url) {
     url = window.decodeURI(url);
     url = url.split('?')[1].split('&');

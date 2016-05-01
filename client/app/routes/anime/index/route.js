@@ -141,6 +141,16 @@ export default Route.extend({
       debounce(this, '_updateText', query, DEBOUNCE_MS);
     },
 
+    updateNextPage(records) {
+      const model = this.modelFor(get(this, 'routeName'));
+      const content = get(model, 'media').toArray();
+      content.addObjects(records);
+      set(model, 'media', content);
+      // Update the meta record on the model so we have latest link data
+      const meta = get(records, 'meta');
+      set(model, 'media.meta', meta);
+    },
+
     refresh() {
       this.refresh();
     }
