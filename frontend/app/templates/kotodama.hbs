@@ -36,10 +36,15 @@
               <tr><td>Registrations</td><td>{{accountsNew}}</td></tr>
               <tr><td>Confirmed Accounts</td><td>{{accountsCnf}}</td></tr>
               <tr><td>Active Accounts</td><td>{{model.activeaccs}}</td></tr>
+              <tr><td>Pro Users</td><td>{{model.pro_users}}</td></tr>
               <tr><td>Feed posts</td><td>{{model.feedposts}}</td></tr>
               <tr><td>Feed updates</td><td>{{model.feedcomments}}</td></tr>
               <tr><td>Feed likes</td><td>{{model.feedlikes}}</td></tr>
               <tr><td>Group joins</td><td>{{model.groupjoins}}</td></tr>
+              <tr><th colspan="2">Money Shit</th></tr>
+              <tr><td>Gross Revenue</td><td>${{model.pro_gross_revenue}}</td></tr>
+              <tr><td>Stripe Fees</td><td>&minus; {{model.pro_stripe_fees}}</td></tr>
+              <tr><td>Net Revenue</td><td>= {{model.pro_net_revenue}}</td></tr>
             </tbody>
           </table>
         </div>

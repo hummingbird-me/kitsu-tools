@@ -118,6 +118,9 @@ class User < ActiveRecord::Base
     !! @favorites.member?([item.id, item.class.to_s])
   end
 
+  scope :pro_expires_this_month, -> (range) { where(pro_expires_at: Date.today.all_month) }
+  scope :recurring_pro, -> { where(pro_membership_plan_id: ProMembershipPlan.recurring_plans.map(&:id)) }
+
   # Following stuff.
   has_many :follower_relations, dependent: :destroy, foreign_key: :followed_id, class_name: 'Follow'
   has_many :followers, -> { order('follows.created_at DESC') }, through: :follower_relations, source: :follower, class_name: 'User'
