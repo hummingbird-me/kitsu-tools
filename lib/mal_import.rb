@@ -156,11 +156,11 @@ class MALImport
 
   private
   def character_image(img)
-    img = img.gsub("t.jpg", ".jpg")
+    img = img.gsub("r/21x32/", "").split("?s=")[0]
     URI(img) unless img.include?("questionmark")
   end
   def person_image(img)
-    img = img.gsub("v.jpg", ".jpg")
+    img = img.gsub("r/21x32/", "").split("?s=")[0]
     URI(img) unless img.include?("questionmark")
   end
   def poster_image(img)
