@@ -2,6 +2,12 @@
 
 [![Build Status](https://secure.travis-ci.org/hummingbird-me/hummingbird.png?branch=master)](http://travis-ci.org/hummingbird-me/hummingbird) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird.png)](https://codeclimate.com/github/hummingbird-me/hummingbird) [![Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird/coverage.png)](https://codeclimate.com/github/hummingbird-me/hummingbird)
 
+
+---
+**<p align="center">This branch is our under-development next-generation platform, not the one currently at hummingbird.me</p>**
+
+---
+
 [![Hummingbird is now Open Source](http://hummingbird-forum.s3.amazonaws.com/86407dbb64dbecfee0cbd74b759a4b33f70657b74c29.jpg)](http://forums.hummingbird.me/t/hummingbird-is-now-open-source/9870)
 
 ### What is Hummingbird?
@@ -10,23 +16,23 @@ Hummingbird is a modern anime discovery platform that helps you track the anime 
 
 ### Contributing
 
-The backend uses Rails, Postgres and Redis. The front-end is mostly a client-side application written using Ember, though there are still legacy pages rendered by Rails and some performance-sensitive code (the library) using React.
+The backend is a JSON API server built with Rails, Postgres, ElasticSearch, and Redis. The frontend is a client-side application written using Ember.
 
-To get started have a look at the [development environment setup instructions](https://github.com/hummingbird-me/hummingbird/wiki/Setting-up-a-development-environment) and this [topic with ideas for helping out with Hummingbird](http://forums.hummingbird.me/t/how-to-help-out-with-hummingbird/9390). Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/master/CONTRIBUTING.md).
+To get started, clone this repository, install Docker (via Docker for Mac/Windows or Docker-Machine if you're not on Linux) and run `scripts/bootstrap` to get a development version running. Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/master/CONTRIBUTING.md).
 
 If you have any questions don't hesitate to contact us! Feel free to create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev) or [email Josh](mailto:josh@hummingbird.me) to get access to our Slack.
 
-For ideas of things to do, see the [Pivotal board](https://www.pivotaltracker.com/n/projects/1242706) or surf through our GitHub issues — check out the issues tagged "easy" for a good starting place!
+For ideas of things to do, see our GitHub issues — check out the issues tagged "easy" for a good starting place!  We also use [ZenHub](https://www.zenhub.io/) to do more advanced progress tracking, so we recommend installing their browser addon.
 
 Please don't use Github issues for feature requests, instead create a topic in the [forum feedback category](http://forums.hummingbird.me/category/feedback).
 
 ### Screenshots
 
-[![](http://cl.ly/image/47431Z1t0v0c/profile-small.jpg)](http://hummingbird.me/users/Josh)
-[![](http://cl.ly/image/2o0X2s1H3w1a/dash-small.jpg)](http://cl.ly/image/1M1l081z0L1y/Screen%20Shot%202014-06-14%20at%2010.57.17%20PM%20copy.png)
-[![](http://cl.ly/image/0k1f3V351D2d/anime-small.jpg)](http://www.hummingbird.me/anime/attack-on-titan)
-[![](http://cl.ly/image/1G05003F420p/library-small.jpg)](http://hummingbird.me/users/Josh/library)
-
+[![Library Page](https://a.pomf.cat/wuigre.png)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/122667531)
+[![Profile Page](https://a.pomf.cat/ljwmcn.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/105637573)
+[![Browse Page](https://a.pomf.cat/jiliwf.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/104358379)
+[![Preview Modal](https://a.pomf.cat/ajlsud.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/104250303)
+[![Dashboard Page](https://a.pomf.cat/anxjco.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/103968010)
 
 ### License
 
@@ -43,4 +49,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
