@@ -188,7 +188,7 @@ class MALImport
     {
       "Doujinshi" => "Doujin",
       "One-shot"  => "One Shot"
-    }
+    }[type] || type
   end
   def nameflip(name)
     name.split(',').map(&:strip).reverse.join(' ')
