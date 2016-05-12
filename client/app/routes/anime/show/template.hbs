@@ -9,7 +9,7 @@
       entry=entry
       promise=entryPromise
       create=(route-action "createEntry")
-      update=(route-action "updateEntry")
-      delete=(route-action "destroyEntry")
+      update=(route-action "updateEntry" entry)
+      delete=(route-action "destroyEntry" entry)
   }}
 {{/if}}

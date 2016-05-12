@@ -10,8 +10,8 @@ export default Route.extend({
     status: { replace: true }
   },
 
-  model(params) {
-    return this._getLibraryData(params.media, params.status || 1);
+  model({ media, status }) {
+    return this._getLibraryData(media, status || 1);
   },
 
   setupController(controller, model) {

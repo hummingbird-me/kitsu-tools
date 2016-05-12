@@ -7,8 +7,7 @@ import CanonicalUrlRedirect from 'client/mixins/canonical-url-redirect';
 export default Route.extend(CanonicalUrlRedirect, {
   currentSession: service(),
 
-  model(params) {
-    const { slug } = params;
+  model({ slug }) {
     if (slug.match(/\D+/)) {
       return get(this, 'store').query('anime', { filter: { slug } })
         .then((records) => get(records, 'firstObject'));
@@ -58,16 +57,13 @@ export default Route.extend(CanonicalUrlRedirect, {
       return entry.save().then(() => set(controller, 'entry', entry));
     },
 
-    updateEntry(status) {
-      const controller = get(this, 'controller');
-      const entry = get(controller, 'entry');
+    updateEntry(entry, status) {
       set(entry, 'status', status);
       return entry.save();
     },
 
-    destroyEntry() {
+    destroyEntry(entry) {
       const controller = get(this, 'controller');
-      const entry = get(controller, 'entry');
       return entry.destroyEntry().then(() => set(controller, 'entry', undefined));
     }
   }
