@@ -41,3 +41,5 @@
       - /opt/hummingbird/client/node_modules
     environment:
       EMBER_ENV: development
+    ports:
+      - 57777
