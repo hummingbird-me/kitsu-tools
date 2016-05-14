@@ -121,6 +121,10 @@ GEM
       warden (~> 1.2.3)
     devise-async (0.9.0)
       devise (~> 3.2)
+    discourse_api (0.9.1)
+      faraday (~> 0.9.0)
+      faraday_middleware (~> 0.9)
+      rack (~> 1.5)
     docile (1.1.5)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
@@ -152,6 +156,8 @@ GEM
       i18n (~> 0.5)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.10.0)
+      faraday (>= 0.7.4, < 0.10)
     fast_blank (0.0.2)
     fast_stack (0.1.0)
       rake
@@ -525,6 +531,7 @@ DEPENDENCIES
   delayed_paperclip (~> 2.8)
   devise (~> 3.2)
   devise-async
+  discourse_api
   dotenv-rails
   dropbox-api
   ember-cli-rails (= 0.3.1)
