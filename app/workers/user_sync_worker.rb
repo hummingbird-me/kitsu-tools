@@ -5,6 +5,7 @@ class UserSyncWorker
     user = User.find(user_id)
     client = DiscourseApi::Client.new(ENV['DISCOURSE_API_URL'])
     sso = user.to_discourse_sso
+    sso.sso_secret = ENV['DISCOURSE_SSO_SECRET']
 
     client.post("/admin/users/sync_sso", sso.payload)
   end
