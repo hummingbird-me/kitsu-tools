@@ -3,40 +3,16 @@ import { module, test } from 'qunit';
 
 module('Unit | Utility | library status');
 
-test('getHumanStatuses', function(assert) {
+test('getEnumKeys', function(assert) {
   assert.expect(1);
-  const result = libraryStatus.getHumanStatuses();
-  assert.deepEqual(result, ['Currently Watching', 'Plan to Watch', 'Completed', 'On Hold', 'Dropped']);
-});
-
-test('humanToEnum', function(assert) {
-  assert.expect(1);
-  const result = libraryStatus.humanToEnum('Plan to Watch');
-  assert.equal(result, 'planned');
-});
-
-test('humanToNumber', function(assert) {
-  assert.expect(1);
-  const result = libraryStatus.humanToNumber('Plan to Watch');
-  assert.equal(result, 2);
+  const result = libraryStatus.getEnumKeys();
+  assert.deepEqual(result, ['current', 'planned', 'completed', 'on_hold', 'dropped']);
 });
 
 test('numberToEnum', function(assert) {
   assert.expect(1);
   const result = libraryStatus.numberToEnum(2);
   assert.equal(result, 'planned');
-});
-
-test('numberToHuman', function(assert) {
-  assert.expect(1);
-  const result = libraryStatus.numberToHuman(2);
-  assert.equal(result, 'Plan to Watch');
-});
-
-test('enumToHuman', function(assert) {
-  assert.expect(1);
-  const result = libraryStatus.enumToHuman('planned');
-  assert.equal(result, 'Plan to Watch');
 });
 
 test('enumToNumber', function(assert) {

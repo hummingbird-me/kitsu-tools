@@ -1,8 +1,26 @@
 import attr from 'ember-data/attr';
 import Model from 'ember-data/model';
 import { belongsTo } from 'ember-data/relationships';
+import { validator, buildValidations } from 'ember-cp-validations';
 
-export default Model.extend({
+const Validations = buildValidations({
+  episodesWatched: [
+    validator('presence', true),
+    validator('number', {
+      integer: true,
+      gte: 0
+    })
+  ],
+  rewatchCount: [
+    validator('presence', true),
+    validator('number', {
+      integer: true,
+      gte: 0
+    })
+  ]
+});
+
+export default Model.extend(Validations, {
   progress: attr('number'),
   notes: attr('string'),
   private: attr('boolean'),

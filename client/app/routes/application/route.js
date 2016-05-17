@@ -7,6 +7,7 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 
 export default Route.extend(ApplicationRouteMixin, {
   currentSession: service(),
+  i18n: service(),
   metrics: service(),
   ajax: service(),
 
@@ -22,8 +23,18 @@ export default Route.extend(ApplicationRouteMixin, {
 
   title(tokens) {
     const base = 'Hummingbird';
-    const hasTokens = tokens && tokens.length;
-    return hasTokens ? `${tokens.reverse().join(' | ')} | ${base}` : base;
+    // If the route hasn't defined a `titleToken` then try to grab the route
+    // name from the `titles` table in translations.
+    const hasTokens = tokens && tokens.length > 0;
+    if (hasTokens === false) {
+      let title = get(this, 'i18n')
+        .t(`titles.${get(this, 'router.currentRouteName')}`) || undefined;
+      if (title && title.toString().includes('Missing translation')) {
+        title = undefined;
+      }
+      tokens = title ? [title] : undefined;
+    }
+    return tokens ? `${tokens.reverse().join(' | ')} | ${base}` : base;
   },
 
   // This method is fired by ESA when authentication is successful

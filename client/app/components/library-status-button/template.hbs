@@ -30,7 +30,7 @@
     {{#each statuses as |status|}}
       <li>
         <a onclick={{perform updateTask status}}>
-          {{status}}
+          {{status.string}}
         </a>
       </li>
     {{/each}}

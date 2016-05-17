@@ -11,7 +11,7 @@ export default Component.extend({
         return;
       }
       const status = get(this, 'status');
-      get(this, 'onClick')(libraryStatus.humanToNumber(status));
+      get(this, 'onClick')(libraryStatus.enumToNumber(status.key));
     }
   }
 });

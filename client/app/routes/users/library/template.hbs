@@ -7,20 +7,20 @@
           type="button"
           class="dropdown button"
           data-toggle="media-dropdown">
-          {{capitalize media}} Library
+          {{t "users.library.library" type=(t (concat "media." media))}}
         </button>
 
         {{! Library status selection }}
         <ul class="menu">
           <li>
             <a href="#" class={{if showAll "active"}} {{action "showAll"}}>
-              All
+              {{t "users.library.section.all"}}
             </a>
           </li>
           {{#each statuses as |_status|}}
             {{users/components/library-button
                 status=_status
-                isActive=(and (eq _status currentStatus) (not showAll))
+                isActive=(and (eq _status.key currentStatus.key) (not showAll))
                 isLoading=(not dataLoaded)
                 onClick=(pipe-action (action (mut status)) (action "hideAll"))}}
           {{/each}}
@@ -32,7 +32,7 @@
         {{one-way-input
             update=(action 'filter')
             class="search-input"
-            placeholder="Search this library..."}}
+            placeholder=(t "users.library.search")}}
       </div>
 
       {{! Library Entries }}

@@ -5,34 +5,16 @@ import set from 'ember-metal/set';
 import service from 'ember-service/inject';
 import { debounce, cancel } from 'ember-runloop';
 import IsOwnerMixin from 'client/mixins/is-owner';
-import EmberValidations from 'ember-validations';
 import jQuery from 'jquery';
 
 const DEBOUNCE_MS = 1000;
 
-export default Component.extend(IsOwnerMixin, EmberValidations, {
+export default Component.extend(IsOwnerMixin, {
   isExpanded: false,
 
   currentSession: service(),
   media: alias('entry.media'),
   user: alias('entry.user'),
-
-  validations: {
-    'entry.progress': {
-      presence: true,
-      numericality: {
-        onlyInteger: true,
-        greaterThanOrEqualTo: 0
-      }
-    },
-    'entry.reconsumeCount': {
-      presence: true,
-      numericality: {
-        onlyInteger: true,
-        greaterThanOrEqualTo: 0
-      }
-    }
-  },
 
   episodeCount: computed('media.episodeCount', {
     get() {
@@ -70,7 +52,7 @@ export default Component.extend(IsOwnerMixin, EmberValidations, {
   actions: {
     updateDebounced(key, value) {
       get(this, 'update')(key, value);
-      return this.validate()
+      return get(this, 'entry').validate()
         .then(() => {
           const timer = debounce(this, '_save', DEBOUNCE_MS);
           set(this, 'debounceTimer', timer);
@@ -80,7 +62,7 @@ export default Component.extend(IsOwnerMixin, EmberValidations, {
 
     update(key, value) {
       get(this, 'update')(key, value);
-      if (get(this, 'isValid')) {
+      if (get(this, 'entry.validations.isValid')) {
         return get(this, 'save')();
       }
     },
@@ -98,7 +80,7 @@ export default Component.extend(IsOwnerMixin, EmberValidations, {
       };
 
       get(this, 'update')(updates);
-      return this.validate().then(() => get(this, 'save')());
+      return get(this, 'entry').validate().then(() => get(this, 'save')());
     }
   }
 });

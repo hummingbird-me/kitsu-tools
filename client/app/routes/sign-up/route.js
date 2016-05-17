@@ -6,7 +6,6 @@ import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-
 import errorMessage from 'client/utils/error-messages';
 
 export default Route.extend(UnauthenticatedRouteMixin, {
-  titleToken: 'Sign Up',
   currentSession: service(),
 
   model() {

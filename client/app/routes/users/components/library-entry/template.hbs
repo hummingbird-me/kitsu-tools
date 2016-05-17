@@ -50,7 +50,7 @@
           {{one-way-input
               value=entry.notes
               update=(action "updateDebounced" "notes")
-              placeholder=(concat "Personal notes about " media.canonicalTitle)
+              placeholder=(t "users.library.notes" title=media.canonicalTitle)
               class="personal-notes"}}
         {{else}}
           {{! Only show if the user has notes }}
@@ -92,6 +92,7 @@
             <div class="status-select">
               {{library-status-button
                 entry=entry
+                mediaType=entry.constructor.modelName
                 update=(action "update" "status")
                 delete=(action "destroy")}}
             </div>
@@ -99,7 +100,7 @@
             <div class="dropdown-rating">
               {{! Privacy }}
               <button type="button" class="dropdown button" data-toggle="privacy-dropdown">
-                {{if entry.private "Private" "Public"}}
+                {{if entry.private (t "users.library.private") (t "users.library.public")}}
               </button>
 
               {{#foundation-dropdown
@@ -109,7 +110,7 @@
                 <ul class="no-bullet">
                   <li>
                     <a {{action "update" "private" (not entry.private)}}>
-                      {{if entry.private "Public" "Private"}}
+                      {{if entry.private (t "users.library.public") (t "users.library.private")}}
                     </a>
                   </li>
                 </ul>
@@ -140,12 +141,12 @@
           <div class="rewatch">
             {{#if isOwner}}
               <button type="button" class="button" {{action "rewatch"}}>
-                Rewatch
+                {{t "users.library.rewatch"}}
               </button>
             {{/if}}
 
             <label>
-              <span>Rewatched</span>
+              <span>{{t "users.library.rewatched"}}</span>
               {{! Editable to owner }}
               {{#if isOwner}}
                 {{one-way-input
@@ -154,7 +155,7 @@
               {{else}}
                 <span>{{entry.reconsumeCount}}</span>
               {{/if}}
-              <span>times</span>
+              <span>{{t "users.library.times"}}</span>
             </label>
           </div>
         </div>
