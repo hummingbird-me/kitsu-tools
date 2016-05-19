@@ -42,4 +42,4 @@
     environment:
       EMBER_ENV: development
     ports:
-      - 57777
+      - "57777:57777"
