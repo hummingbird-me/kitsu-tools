@@ -1,4 +1,4 @@
-class AnimeResource < BaseResource
+class AnimeResource < MediaResource
   # This regex accepts a numerical range or single number
   # $1 = start, $2 = dot representing closed/open, $3 = end
   NUMBER = /(\d+(?:\.\d+)?)/
@@ -18,25 +18,14 @@ class AnimeResource < BaseResource
       end
     }
   }
-
-  attributes :slug,
-             # Images
-             :poster_image, :cover_image, :cover_image_top_offset,
-             # Titles
-             :titles, :canonical_title, :abbreviated_titles,
-             # Type, Dates, Synopsis, Trailer
-             :show_type, :start_date, :end_date, :synopsis, :youtube_video_id,
+             # Type, Synopsis, Trailer
+  attributes :show_type, :synopsis, :youtube_video_id,
              # Age Ratings
              :age_rating, :age_rating_guide,
-             # Ratings
-             :average_rating, :rating_frequencies,
              # Episodes
              :episode_count, :episode_length
 
-  has_many :castings
-  has_many :genres
   has_many :streaming_links
-  has_many :installments
 
   filter :slug, apply: -> (records, value, _options) { records.by_slug(value) }
 

@@ -13,11 +13,11 @@
         {{! Editable for owner only }}
         {{#if isOwner}}
           {{one-way-input
-              value=entry.episodesWatched
-              update=(action "updateDebounced" "episodesWatched")
+              value=entry.progress
+              update=(action "updateDebounced" "progress")
               placeholder="0"}}
         {{else}}
-          <span>{{entry.episodesWatched}}</span>
+          <span>{{entry.progress}}</span>
         {{/if}}
 
         <span>
@@ -149,10 +149,10 @@
               {{! Editable to owner }}
               {{#if isOwner}}
                 {{one-way-input
-                    value=entry.rewatchCount
-                    update=(action "updateDebounced" "rewatchCount")}}
+                    value=entry.reconsumeCount
+                    update=(action "updateDebounced" "reconsumeCount")}}
               {{else}}
-                <span>{{entry.rewatchCount}}</span>
+                <span>{{entry.reconsumeCount}}</span>
               {{/if}}
               <span>times</span>
             </label>

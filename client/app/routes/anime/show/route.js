@@ -28,7 +28,8 @@ export default Route.extend(CanonicalUrlRedirect, {
         filter: {
           // jscs:disable
           user_id: userId,
-          anime_id: animeId
+          media_type: 'Anime',
+          media_id: animeId
           // jscs:enable
         }
       }).then((data) => set(controller, 'entry', get(data, 'firstObject')));
@@ -48,11 +49,11 @@ export default Route.extend(CanonicalUrlRedirect, {
     createEntry(status) {
       const controller = get(this, 'controller');
       const user = get(this, 'currentSession.account');
-      const anime = this.modelFor(get(this, 'routeName'));
+      const media = this.modelFor(get(this, 'routeName'));
       const entry = get(this, 'store').createRecord('library-entry', {
         status,
         user,
-        anime
+        media
       });
       return entry.save().then(() => set(controller, 'entry', entry));
     },
@@ -64,7 +65,7 @@ export default Route.extend(CanonicalUrlRedirect, {
 
     destroyEntry(entry) {
       const controller = get(this, 'controller');
-      return entry.destroyEntry().then(() => set(controller, 'entry', undefined));
+      return entry.destroyRecord().then(() => set(controller, 'entry', undefined));
     }
   }
 });

@@ -14,18 +14,18 @@ export default Component.extend(IsOwnerMixin, EmberValidations, {
   isExpanded: false,
 
   currentSession: service(),
-  media: alias('entry.anime'),
+  media: alias('entry.media'),
   user: alias('entry.user'),
 
   validations: {
-    'entry.episodesWatched': {
+    'entry.progress': {
       presence: true,
       numericality: {
         onlyInteger: true,
         greaterThanOrEqualTo: 0
       }
     },
-    'entry.rewatchCount': {
+    'entry.reconsumeCount': {
       presence: true,
       numericality: {
         onlyInteger: true,
@@ -90,10 +90,10 @@ export default Component.extend(IsOwnerMixin, EmberValidations, {
     },
 
     rewatch() {
-      const rewatchCount = get(this, 'entry.rewatchCount') + 1;
+      const reconsumeCount = get(this, 'entry.reconsumeCount') + 1;
       const updates = {
-        rewatchCount,
-        episodesWatched: 0,
+        reconsumeCount,
+        progress: 0,
         status: 'current'
       };
 
