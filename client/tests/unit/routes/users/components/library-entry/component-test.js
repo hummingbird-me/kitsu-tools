@@ -17,8 +17,8 @@ moduleForComponent('users/components/library-entry', 'Unit | Component | library
   }
 });
 
-testValidPropertyValues('entry.episodesWatched', [0, 10, 50]);
-testInvalidPropertyValues('entry.episodesWatched', ['abc', 1.5, -1]);
+testValidPropertyValues('entry.progress', [0, 10, 50]);
+testInvalidPropertyValues('entry.progress', ['abc', 1.5, -1]);
 
-testValidPropertyValues('entry.rewatchCount', [0, 10]);
-testInvalidPropertyValues('entry.rewatchCount', ['abc', 1.5, -1]);
+testValidPropertyValues('entry.reconsumeCount', [0, 10]);
+testInvalidPropertyValues('entry.reconsumeCount', ['abc', 1.5, -1]);
