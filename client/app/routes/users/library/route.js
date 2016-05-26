@@ -2,6 +2,7 @@ import Route from 'ember-route';
 import get, { getProperties } from 'ember-metal/get';
 import set, { setProperties } from 'ember-metal/set';
 import jQuery from 'jquery';
+import service from 'ember-service/inject';
 
 // TODO: Performance (uhhh)! WTB Glimmer2, WTB <> Components, PLEASE
 export default Route.extend({
@@ -9,6 +10,7 @@ export default Route.extend({
     media: { refreshModel: true },
     status: { replace: true }
   },
+  i18n: service(),
 
   model({ media, status }) {
     return this._getLibraryData(media, status || 1);
@@ -32,7 +34,7 @@ export default Route.extend({
   titleToken() {
     const model = this.modelFor('users');
     const name = get(model, 'name');
-    return `${name}'s Library`;
+    return get(this, 'i18n').t('titles.users.library', { user: name });
   },
 
   /**

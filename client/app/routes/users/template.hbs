@@ -22,7 +22,7 @@
               <h3 class="count">
                 {{user.followingCount}}
               </h3>
-              <label>Following</label>
+              <label>{{t "users.following"}}</label>
             </div>
           </div>
           <div class="following">
@@ -30,7 +30,7 @@
               <h3 class="count">
                 {{user.followersCount}}
               </h3>
-              <label>Followers</label>
+              <label>{{t "users.followers"}}</label>
             </div>
           </div>
         </div>
@@ -45,16 +45,16 @@
   <div class="row align-justify">
     <ul class="menu columns">
       <li>
-        {{link-to 'Activity' 'users.index'}}
+        {{link-to (t 'users.nav.activity') 'users.index'}}
       </li>
       <li>
-        {{link-to 'Library' 'users.library'}}
+        {{link-to (t 'users.nav.library') 'users.library'}}
       </li>
       <li>
-        {{link-to 'Reviews' 'users.reviews'}}
+        {{link-to (t 'users.nav.reviews') 'users.reviews'}}
       </li>
       <li>
-        {{link-to 'Lists' 'users.lists'}}
+        {{link-to (t 'users.nav.lists') 'users.lists'}}
       </li>
     </ul>
     <div class="columns">

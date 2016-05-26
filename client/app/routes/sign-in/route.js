@@ -7,7 +7,6 @@ import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-
 
 // CLEANUP: Routable Components
 export default Route.extend(UnauthenticatedRouteMixin, {
-  titleToken: 'Sign In',
   currentSession: service(),
 
   resetController(controller) {

@@ -2,6 +2,6 @@
   <a>{{fa-icon "spinner" spin=true}}</a>
 {{else}}
   <a class={{if isActive "active"}} {{action "changeStatus"}}>
-    {{status}}
+    {{status.string}}
   </a>
 {{/if}}

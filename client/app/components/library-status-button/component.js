@@ -4,9 +4,10 @@ import set from 'ember-metal/set';
 import computed from 'ember-computed';
 import RSVP from 'rsvp';
 import { task } from 'ember-concurrency';
+import service from 'ember-service/inject';
 import libraryStatus from 'client/utils/library-status';
 
-const REMOVE_KEY = 'Remove from Library';
+const REMOVE_KEY = 'library.remove';
 
 /**
  * For the loading state of this Component to work, the actions passed must
@@ -14,29 +15,38 @@ const REMOVE_KEY = 'Remove from Library';
  */
 export default Component.extend({
   entryIsLoaded: false,
+  i18n: service(),
 
   /**
    * Current status of the library entry
    */
-  currentStatus: computed('entry.status', {
+  currentStatus: computed('entry.status', 'mediaType', {
     get() {
       const status = get(this, 'entry.status');
-      return libraryStatus.enumToHuman(status);
+      const media = get(this, 'mediaType');
+      return get(this, 'i18n').t(`library.statuses.${media}.${status}`).toString();
     }
   }),
 
   /**
    * List of all statuses available for choice to the user
    */
-  statuses: computed('entry', 'currentStatus', {
+  statuses: computed('entry', 'currentStatus', 'mediaType', {
     get() {
-      const statuses = [...libraryStatus.getHumanStatuses()];
+      const media = get(this, 'mediaType');
+      const statuses = libraryStatus.getEnumKeys().map((key) => {
+        return {
+          key,
+          string: get(this, 'i18n').t(`library.statuses.${media}.${key}`).toString()
+        };
+      });
       if (get(this, 'entry') === undefined) {
         return statuses;
       } else {
         const status = get(this, 'currentStatus');
-        statuses.splice(statuses.indexOf(status), 1);
-        return statuses.concat([REMOVE_KEY]);
+        statuses.splice(statuses.findIndex((el) => el.string === status), 1);
+        const removeKey = get(this, 'i18n').t(REMOVE_KEY).toString();
+        return statuses.concat([{ key: REMOVE_KEY, string: removeKey }]);
       }
     }
   }),
@@ -60,13 +70,13 @@ export default Component.extend({
     const entry = get(this, 'entry');
     // Entry has loaded but is still undefined (doesn't exist)
     if (entry === undefined && get(this, 'entryIsLoaded')) {
-      yield get(this, 'create')(libraryStatus.humanToEnum(status));
+      yield get(this, 'create')(status.key);
     } else if (entry !== undefined) {
       // User wants to delete the entry
-      if (status === REMOVE_KEY) {
+      if (status.key === REMOVE_KEY) {
         yield get(this, 'delete')();
       } else {
-        yield get(this, 'update')(libraryStatus.humanToEnum(status));
+        yield get(this, 'update')(status.key);
       }
     }
   }).drop()

@@ -3,7 +3,9 @@
 <div class="row">
   <div class="medium-8 medium-offset-2 columns">
     <div class="medium-6 columns">
-      <h5 class="text-center">Sign up for Hummingbird</h5>
+      <h5 class="text-center">
+        {{t "sign-up.header"}}
+      </h5>
 
       {{#if errorMessage}}
         <p class="text-center" style="color: red;">
@@ -14,23 +16,23 @@
       <form {{action "createAccount" on="submit"}}>
         {{! username input }}
         <label>
-          Username
+          {{t "sign-up.username"}}
           {{one-way-input
             value=user.name
             update=(action (mut user.name))
             placeholder="username"
             data-test-selector="username"}}
           {{! username errors }}
-          {{#if (and user.name errors.user.name)}}
+          {{#if (and user.name (v-get user "name" "isInvalid"))}}
             <span class="form-error is-visible">
-              Username {{errors.user.name.[0]}}
+              {{v-get user "name" "message"}}
             </span>
           {{/if}}
         </label>
 
         {{! email input }}
         <label>
-          Email
+          {{t "sign-up.email"}}
           {{one-way-input
             value=user.email
             update=(action (mut user.email))
@@ -38,16 +40,16 @@
             placeholder="email@example.com"
             data-test-selector="email"}}
           {{! email errors }}
-          {{#if (and user.email errors.user.email)}}
+          {{#if (and user.email (v-get user "email" "isInvalid"))}}
             <span class="form-error is-visible">
-              Email {{errors.user.email.[0]}}
+              {{v-get user "email" "message"}}
             </span>
           {{/if}}
         </label>
 
         {{! password input }}
         <label>
-          Password
+          {{t "sign-up.password"}}
           {{one-way-input
             value=user.password
             update=(action (mut user.password))
@@ -55,9 +57,9 @@
             placeholder="password"
             data-test-selector="password"}}
           {{! password errors }}
-          {{#if (and user.password errors.user.password)}}
+          {{#if (and user.password (v-get user "password" "isInvalid"))}}
             <span class="form-error is-visible">
-              Password {{errors.user.password.[0]}}
+              {{v-get user "password" "message"}}
             </span>
           {{/if}}
         </label>
@@ -65,15 +67,15 @@
         <button
           type="submit"
           class="expanded button"
-          disabled={{if (not isValid) "disabled"}}
+          disabled={{if user.validations.isInvalid "disabled"}}
           data-test-selector="sign-up">
-          Sign Up
+          {{t "auth.sign-up"}}
         </button>
       </form>
 
       <p class="text-center">
-        Already have an account?
-        {{link-to 'Sign In.' 'sign-in'}}
+        {{t "sign-up.has-account"}}
+        {{link-to (t "auth.sign-in") "sign-in"}}
       </p>
     </div>
 

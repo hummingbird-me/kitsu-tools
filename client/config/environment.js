@@ -42,7 +42,11 @@ module.exports = function(environment) {
         environments: ['production'],
         config: { id: 'UA-37633900-1' }
       }
-    ]
+    ],
+
+    i18n: {
+      defaultLocale: 'en'
+    }
   };
 
   if (environment === 'development') {
