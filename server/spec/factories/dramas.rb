@@ -5,7 +5,7 @@
 #  id                        :integer          not null, primary key
 #  slug                      :string           not null
 #  titles                    :hstore           default({}), not null
-#  canonical_title           :string           default("ja_en"), not null
+#  canonical_title           :string           default("en_jp"), not null
 #  abbreviated_titles        :string           is an Array
 #  age_rating                :integer
 #  age_rating_guide          :string
@@ -36,8 +36,8 @@
 
 FactoryGirl.define do
   factory :drama do
-    titles { {ja_en: Faker::Name.name} }
-    canonical_title 'ja_en'
+    titles { {en_jp: Faker::Name.name} }
+    canonical_title 'en_jp'
     average_rating { rand(1.0..10.0) / 2 }
     age_rating 'G'
 

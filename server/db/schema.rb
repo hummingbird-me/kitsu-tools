@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160417064936) do
+ActiveRecord::Schema.define(version: 20160527090120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20160417064936) do
     t.integer  "cover_image_top_offset",                default: 0,       null: false
     t.boolean  "started_airing_date_known",             default: true,    null: false
     t.hstore   "titles",                                default: {},      null: false
-    t.string   "canonical_title",                       default: "ja_en", null: false
+    t.string   "canonical_title",                       default: "en_jp", null: false
     t.string   "abbreviated_titles",                                                   array: true
   end
 
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20160417064936) do
   create_table "dramas", force: :cascade do |t|
     t.string   "slug",                                        null: false
     t.hstore   "titles",                    default: {},      null: false
-    t.string   "canonical_title",           default: "ja_en", null: false
+    t.string   "canonical_title",           default: "en_jp", null: false
     t.string   "abbreviated_titles",                                       array: true
     t.integer  "age_rating"
     t.string   "age_rating_guide"
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 20160417064936) do
     t.date     "airdate"
     t.integer  "length"
     t.hstore   "titles",                             default: {},      null: false
-    t.string   "canonical_title",                    default: "ja_en", null: false
+    t.string   "canonical_title",                    default: "en_jp", null: false
     t.string   "media_type",                                           null: false
   end
 
@@ -329,7 +329,7 @@ ActiveRecord::Schema.define(version: 20160417064936) do
     t.float    "average_rating"
     t.hstore   "rating_frequencies",                    default: {},      null: false
     t.hstore   "titles",                                default: {},      null: false
-    t.string   "canonical_title",                       default: "ja_en", null: false
+    t.string   "canonical_title",                       default: "en_jp", null: false
     t.string   "abbreviated_titles",                                                   array: true
   end
 

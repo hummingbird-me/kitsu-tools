@@ -16,15 +16,15 @@
 #  airdate                :date
 #  length                 :integer
 #  titles                 :hstore           default({}), not null
-#  canonical_title        :string           default("ja_en"), not null
+#  canonical_title        :string           default("en_jp"), not null
 #  media_type             :string           not null
 #
 
 FactoryGirl.define do
   factory :episode do
     association :media, factory: :anime
-    titles { {ja_en: Faker::Name.name} }
-    canonical_title 'ja_en'
+    titles { {en_jp: Faker::Name.name} }
+    canonical_title 'en_jp'
     synopsis { Faker::Lorem.paragraph }
     length { rand(20..60) }
     airdate { Faker::Date.between(20.years.ago, Date.today) }

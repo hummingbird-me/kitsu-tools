@@ -26,7 +26,7 @@
 #  average_rating            :float
 #  rating_frequencies        :hstore           default({}), not null
 #  titles                    :hstore           default({}), not null
-#  canonical_title           :string           default("ja_en"), not null
+#  canonical_title           :string           default("en_jp"), not null
 #  abbreviated_titles        :string           is an Array
 #
 
@@ -42,9 +42,9 @@ class Manga < ActiveRecord::Base
   def slug_candidates
     [
       -> { canonical_title }, # attack-on-titan
-      -> { titles[:ja_en] }, # shingeki-no-kyojin
-      -> { [titles[:ja_en], year] }, # shingeki-no-kyojin-2004
-      -> { [titles[:ja_en], year, manga_type] } # shingeki-no-kyojin-2004-doujin
+      -> { titles[:en_jp] }, # shingeki-no-kyojin
+      -> { [titles[:en_jp], year] }, # shingeki-no-kyojin-2004
+      -> { [titles[:en_jp], year, manga_type] } # shingeki-no-kyojin-2004-doujin
     ]
   end
 end

@@ -29,7 +29,7 @@
 #  cover_image_top_offset    :integer          default(0), not null
 #  started_airing_date_known :boolean          default(TRUE), not null
 #  titles                    :hstore           default({}), not null
-#  canonical_title           :string           default("ja_en"), not null
+#  canonical_title           :string           default("en_jp"), not null
 #  abbreviated_titles        :string           is an Array
 #
 
@@ -50,17 +50,17 @@ class Anime < ActiveRecord::Base
     # Prefer the canonical title or romaji title before anything else
     candidates = [
       -> { canonical_title }, # attack-on-titan
-      -> { titles[:ja_en] } # shingeki-no-kyojin
+      -> { titles[:en_jp] } # shingeki-no-kyojin
     ]
     if show_type == :TV
       # If it's a TV show with a name collision, common practice is to
       # specify the year (ex: kanon-2006)
-      candidates << -> { [titles[:ja_en], year] }
+      candidates << -> { [titles[:en_jp], year] }
     else
       # If it's not TV and it's having a name collision, it's probably the
       # movie or OVA for a series (ex: shingeki-no-kyojin-movie)
-      candidates << -> { [titles[:ja_en], show_type] }
-      candidates << -> { [titles[:ja_en], show_type, year] }
+      candidates << -> { [titles[:en_jp], show_type] }
+      candidates << -> { [titles[:en_jp], show_type, year] }
     end
     candidates
   end
