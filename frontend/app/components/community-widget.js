@@ -41,9 +41,11 @@ export default Ember.Component.extend({
         topic.users = [];
         for (var j=0; j<topicInfo.posters.length; j++) {
           var user = users[topicInfo.posters[j].user_id];
+          var avatar = user.avatar_template && user.avatar_template.replace(/\.[a-zA-Z]+\?/, '.jpg?').replace("{size}", "small");
+          avatar = avatar || 'https://hummingbird.me/default_avatar.jpg';
           topic.users.push({
             name: user.username,
-            avatar: user.avatar_template.replace(/\.[a-zA-Z]+\?/, '.jpg?').replace("{size}", "small"),
+            avatar: avatar,
             url: "https://forums.hummingbird.me/users/" + user.username + "/activity"
           });
         }
