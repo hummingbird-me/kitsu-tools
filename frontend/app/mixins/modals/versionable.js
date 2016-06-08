@@ -1,6 +1,5 @@
 import Ember from 'ember';
-import ajax from 'ic-ajax';
-/* global Messenger */
+/* global Messenger, $ */
 
 export default Ember.Mixin.create({
   canSave: Ember.computed.not('model.isDirty'),
@@ -24,22 +23,30 @@ export default Ember.Mixin.create({
       // apply the custom edit attributes
       hash[root]['edit_comment'] = this.get('comment');
 
-      Messenger().expectPromise(function() {
-        return ajax({
+      Messenger().expectPromise(() => {
+        return $.ajax({
           type: 'PUT',
           // ex: /full_anime/steins-gate
           //     /full_manga/naruto
           url: '/' + root + '/' + this.get('model.id'),
           data: hash
         });
-      }.bind(this), {
+      }, {
         progressMessage: 'Contacting server...',
-        successMessage: function() {
+        successMessage: () => {
           // reset data back to its 'real' state rather than its dirty state.
           this.get('model').rollback();
           this.resetModal();
-          return "Thanks! You'll be notified when your edit has been reviewed.";
-        }.bind(this)
+          return "Thanks! An admin will review your changes.";
+        },
+        errorMessage: (_, xhr) => {
+          this.get('model').rollback();
+          this.resetModal();
+          if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
+            return xhr.responseJSON.error + '.';
+          }
+          return 'An unknown error occurred';
+        }
       });
       this.send('closeModal');
     }
