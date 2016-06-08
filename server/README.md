@@ -1,18 +1,23 @@
-# Amendments to bbatsov
-We mostly follow the bbatsov style guides for [ruby][bbatsov-ruby] and
-[rails][bbatsov-rails].  However, we have some amendments of our own.
+# Hummingbird Server
+
+This README outlines the details of collaborating on this application.
+
+## Styleguide
+
+* [Ruby](https://github.com/bbatsov/ruby-style-guide)
+* [Rails](https://github.com/bbatsov/rails-style-guide) - - [Amendments](https://github.com/hummingbird-me/hummingbird/blob/the-future/server/README.md#rails)
+
+## Styleguide Amendments
 
 These amendments are listed below, though we may forget some. Rubocop will help
 you, and we have a `.rubocop.yml` which we develop with.
 
-[bbatsov-ruby]: https://github.com/bbatsov/ruby-style-guide
-[bbatsov-rails]: https://github.com/bbatsov/rails-style-guide
-## Rails
-### ActiveRecord Models
+### Rails
+#### ActiveRecord Models
  * Group macro-style methods at the beginning of the class definition, in the
    following order:
 
-   ```Ruby
+   ```ruby
    class User < ActiveRecord::Base
      # put the default scope at the top
      default_scope { includes(:favorites) }

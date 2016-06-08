@@ -18,7 +18,7 @@ Hummingbird is a modern anime discovery platform that helps you track the anime 
 
 The backend is a JSON API server built with Rails, Postgres, ElasticSearch, and Redis. The frontend is a client-side application written using Ember.
 
-To get started, clone this repository, install Docker (via Docker for Mac/Windows or Docker-Machine if you're not on Linux) and run `bin/setup && bin/start` to get a development version running. Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/master/CONTRIBUTING.md).
+To get started, clone this repository, install Docker (via Docker for Mac/Windows or Docker-Machine if you're not on Linux) and run `bin/setup && bin/start` to get a development version running. Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/the-future/.github/CONTRIBUTING.md).
 
 To get data into your development server:
 
@@ -36,7 +36,7 @@ To get data into your development server:
 
 If you have any questions don't hesitate to contact us! Feel free to create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev) or [email Josh](mailto:josh@hummingbird.me) to get access to our Slack.
 
-For ideas of things to do, see our GitHub issues — check out the issues tagged "easy" for a good starting place!  We also use [ZenHub](https://www.zenhub.io/) to do more advanced progress tracking, so we recommend installing their browser addon.
+For ideas of things to do, see our GitHub issues — check out the issues tagged "easy" for a good starting place!
 
 Please don't use Github issues for feature requests, instead create a topic in the [forum feedback category](http://forums.hummingbird.me/category/feedback).
 
