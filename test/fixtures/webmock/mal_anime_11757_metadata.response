@@ -1,14 +1,15 @@
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Content-Type: text/html; charset=utf-8
-Date: Mon, 04 Apr 2016 01:18:46 GMT
+Date: Wed, 08 Jun 2016 10:13:49 GMT
 Server: Apache
 Vary: User-Agent,Accept-Encoding
 transfer-encoding: chunked
 Connection: keep-alive
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns:og="http://ogp.me/ns#" xmlns:fb="http://www.facebook.com/2008/fbml">
 
@@ -22,34 +23,34 @@ Sword Art Online - MyAnimeList.net
 
 
 <meta name="keywords" content="anime, myanimelist, anime news, manga" />
-<link rel="canonical" href="http://myanimelist.net/anime/11757/Sword_Art_Online" />
+
 
 
     <meta property="og:locale" content="en_US"><meta property="fb:app_id" content="360769957454434"><meta property="og:site_name" content="MyAnimeList.net"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@myanimelist"><meta property="og:title" content="Sword Art Online"><meta property="og:type" content="video.tv_show"><meta property="og:image" content="http://cdn.myanimelist.net/images/anime/11/39717.jpg"><meta name="twitter:image:src" content="http://cdn.myanimelist.net/r/120x120/images/anime/11/39717.jpg?s=27ebe8061f61bc76c96a65221b2eb24f"><meta property="og:url" content="http://myanimelist.net/anime/11757/Sword_Art_Online"><meta property="og:description" content="In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of &quot;NerveGear&quot; technology, players can control their avatars within the game using nothing but their own thoughts. Kazuto Kirigaya, nicknamed &quot;Kirito,&quot; is among the lucky few enthusiasts who get their hands on the first shipment of the game. He logs in to find himself, with ten-thousand others, in the scenic and elaborate world of Aincrad, one full of fantastic medieval weapons and gruesome monsters. However, in a cruel turn of events, the players soon realize they cannot log out; the game&#039;s creator has trapped them in his new world until they complete all one hundred levels of the game. In order to escape Aincrad, Kirito will now have to interact and cooperate with his fellow players. Some are allies, while others are foes, like Asuna Yuuki, who commands the leading group attempting to escape from the ruthless game. To make matters worse, Sword Art Online is not all fun and games: if they die in Aincrad, they die in real life. Kirito must adapt to his new reality, fight for his survival, and hopefully break free from his virtual hell. [Written by MAL Rewrite]">
 
-<meta name='csrf_token' content='b4a230203c0bd30e4bba6c05bca1d076141c46b1'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-8e686be9be.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=59"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=59"></script>
+<meta name='csrf_token' content='7eb3a7ad30ad73e7bf63019544eb1fa22809cc23'><script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-77e1f92d7d.js"></script><script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/hover.js?v=63"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/jquery.fancybox.pack.js?v=63"></script>
 
 
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/fansubbers.js?v=59"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=59"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.js?v=59"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.js?v=59"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/animeinfo.js?v=59"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=59"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fansubbers.js?v=63"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=63"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/reviews.js?v=63"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/forum.js?v=63"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/animeinfo.js?v=63"></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/fav.js?v=63"></script>
 
-<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=59" id="myanimelistjs" data-myanimelistjs-params='{&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;,&quot;is_request_bot_filter_log&quot;:true}'></script>
+<script type="text/javascript" src="http://cdn.myanimelist.net/js/myanimelist.js?v=63" id="myanimelistjs" data-myanimelistjs-params='{&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;,&quot;is_request_bot_filter_log&quot;:true}'></script>
 
-<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.css?v=32" type="text/css" />
-<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.css?v=32" type="text/css" />
-<link rel="stylesheet" href="http://cdn.myanimelist.net/css/infopages.css?v=32" type="text/css" />
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/forums.css?v=33" type="text/css" />
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/reviews.css?v=33" type="text/css" />
+<link rel="stylesheet" href="http://cdn.myanimelist.net/css/infopages.css?v=33" type="text/css" />
 
-	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=32" />
+	<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/mal.ridlayout.css?v=33" />
 
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=32" />
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=32" />
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-179f2cefc6.css" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/jquery.fancybox.css?v=33" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/css/dialog.css?v=33" />
+<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-723601b2b2.css" />
 <link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
 
 <link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
@@ -89,21 +90,20 @@ Sword Art Online - MyAnimeList.net
 </head>
 
 <body onload=" " class="page-common">
-
 <div id="myanimelist">
 
 
     <script type='text/javascript'>
     googletag.cmd.push(function() {
-      googletag.defineOutOfPageSlot('/84947469/Skin_OtherPages_SAFE', 'div-gpt-ad-1309154106').addService(googletag.pubads());
+      googletag.defineOutOfPageSlot('/84947469/Skin_OtherPages_SAFE', 'div-gpt-ad-1366494235').addService(googletag.pubads());
       googletag.pubads().collapseEmptyDivs();
       googletag.enableServices();
     });
   </script>
   <div style="display: none !important;">
-    <div id='div-gpt-ad-1309154106' data-code="Skin_OtherPages_SAFE">
+    <div id='div-gpt-ad-1366494235' data-code="Skin_OtherPages_SAFE">
       <script type='text/javascript'>
-        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1309154106'); });
+        googletag.cmd.push(function() { googletag.display('div-gpt-ad-1366494235'); });
       </script>
     </div>
   </div>
@@ -119,82 +119,100 @@ Sword Art Online - MyAnimeList.net
       </div>
     </div>
   </div>
-<div class="wrapper">
+    <div class="wrapper">
 
-<div id="headerSmall"><a href="/">MyAnimeList.net</a><div id="header-menu" ><div class="header-menu-login"><a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fanime%2F11757" id="malLogin">Login</a><a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fanime%2F11757">Sign Up</a></div></div></div>  <div id="menu">
+        <div id="headerSmall"><a href="/" class="link-mal-logo">MyAnimeList.net</a>
+<a href="http://myanimelist.net/watch/episode?_location=mal_h_b" class="banner-header-anime-straming"><img src="http://cdn.myanimelist.net/images/stream_banner/banner-watch-offical-anime161511.png" srcset="http://cdn.myanimelist.net/images/stream_banner/banner-watch-offical-anime161511.png 1x, http://cdn.myanimelist.net/images/stream_banner/banner-watch-offical-anime161511@2x.png 2x" alt="Watch Legal Streaming Anime on MyAnimeList"></a>
 
-    <div id="menu_right"><script type="text/x-template" id="incremental-result-item-anime"><div class="list anime" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info anime"><div class="name">${ item.name } <span class="media-type">(${ item.payload.media_type })</span></div><div class="extra-info">Aired: ${ item.payload.aired }<br>Score: ${ item.payload.score }<br>Status: ${ item.payload.status }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info anime"><div class="name">${ item.name }</div><div class="media-type">(${ mediaTypeWithStartYear })</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-manga"><div class="list manga" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info manga"><div class="name">${ item.name } <span class="media-type">(${ item.payload.media_type })</span></div><div class="extra-info">Published: ${ item.payload.published }<br>Score: ${ item.payload.score }<br>Status: ${ item.payload.status }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info manga"><div class="name">${ item.name }</div><div class="media-type">(${ mediaTypeWithStartYear })</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-character"><div class="list character" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info character"><div class="name">${ item.name }</div><div class="extra-info"><ul class="related-works"><li v-for="work in item.payload.related_works" class="fs-i">- ${ work }</li></ul>Favorites: ${ item.payload.favorites }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info character"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-person"><div class="list person" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info person"><div class="name">${ item.name }</div><div class="extra-info"><span v-if="item.payload.alternative_name">${ item.payload.alternative_name }<br></span>Birthday: ${ item.payload.birthday }<br>Favorites: ${ item.payload.favorites }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info person"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-club"><div class="list club" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info club"><div class="name">${ item.name }</div><div class="extra-info">Members: ${ item.payload.members }<br>Category: ${ item.payload.category }<br>Created by: ${ item.payload.created_by }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info club"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-user"><div class="list user" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info user"><div class="name">${ item.name }</div><div class="extra-info"><span v-if="item.payload.authority">${ item.payload.authority }<br></span>Joined: ${ item.payload.joined }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info user"><div class="name">${ item.name }</div></div></div></a></div></script><div id="top-search-bar"><form id="searchBar" method="get" class="searchBar"><div class="form-select-outer fl-l"><select name="type" id="topSearchValue" class="inputtext" v-model="type"><option value="anime">Anime</option><option value="manga">Manga</option><option value="character">Characters</option><option value="person">People</option><option value="club">Clubs</option><option value="user">Users</option></select></div><input v-model="keyword" id="topSearchText" type="text" name="keyword" class="inputtext fl-l" placeholder="Search Anime, Manga, and more..." size="30" autocomplete="off"
-                 @keydown.up.prevent="moveSelection(-1)" @keydown.down.prevent="moveSelection(1)" @keydown.enter.prevent="jump()"
-                 @focus="isFocused = true" @blur="isFocused = false"><input id="topSearchButon" class="fl-l" type="submit" value="&#xf002"></form><div id="topSearchResultList" class="incrementalSearchResultList" :style="{display: (showResult ? 'block' : 'none')}" @mousedown.prevent=""><component v-for="item in items" :is="resolveComponent(item)" :item="item" :focus="selection == $index" :url="generateItemPageUrl(item)" @mouseover="selection = $index"></component><div class="list list-bottom" :class="{'focus': selection == -1}" @mouseover="selection = -1"
+<div id="header-menu" ><div class="header-menu-login"><a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online" id="malLogin">Login</a><a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fanime%2F11757%2FSword_Art_Online">Sign Up</a></div></div></div>  <div id="menu">
+
+    <div id="menu_right"><script type="text/x-template" id="incremental-result-item-anime"><div class="list anime" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info anime"><div class="name">${ item.name } <span class="media-type">(${ item.payload.media_type })</span></div><div class="extra-info">Aired: ${ item.payload.aired }<br>Score: ${ item.payload.score }<br>Status: ${ item.payload.status }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info anime"><div class="name">${ item.name }</div><div class="media-type">(${ mediaTypeWithStartYear })</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-manga"><div class="list manga" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info manga"><div class="name">${ item.name } <span class="media-type">(${ item.payload.media_type })</span></div><div class="extra-info">Published: ${ item.payload.published }<br>Score: ${ item.payload.score }<br>Status: ${ item.payload.status }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info manga"><div class="name">${ item.name }</div><div class="media-type">(${ mediaTypeWithStartYear })</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-character"><div class="list character" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info character"><div class="name">${ item.name }</div><div class="extra-info"><ul class="related-works"><li v-for="work in item.payload.related_works" class="fs-i">- ${ work }</li></ul>Favorites: ${ item.payload.favorites }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info character"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-person"><div class="list person" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info person"><div class="name">${ item.name }</div><div class="extra-info"><span v-if="item.payload.alternative_name">${ item.payload.alternative_name }<br></span>Birthday: ${ item.payload.birthday }<br>Favorites: ${ item.payload.favorites }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info person"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-club"><div class="list club" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info club"><div class="name">${ item.name }</div><div class="extra-info">Members: ${ item.payload.members }<br>Category: ${ item.payload.category }<br>Created by: ${ item.payload.created_by }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info club"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-user"><div class="list user" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info user"><div class="name">${ item.name }</div><div class="extra-info"><span v-if="item.payload.authority">${ item.payload.authority }<br></span>Joined: ${ item.payload.joined }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info user"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-news"><div class="list news" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info news"><div class="name">${ item.name }</div><div class="extra-info">${ item.payload.date }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info news"><div class="name">${ item.name }</div><div class="media-type">${ item.payload.date }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-featured"><div class="list featured" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info featured"><div class="name">${ item.name }</div><div class="extra-info">${ item.payload.date }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info featured"><div class="name">${ item.name }</div><div class="media-type">${ item.payload.date }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-forum"><div class="list forum" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info forum"><div class="name"><span v-show="item.payload.work_title">${ item.payload.work_title}
+                      <i class="fa fa-caret-right"></i></span> ${ item.name }</div><div class="extra-info">${ item.payload.date }<br><span>in ${ item.payload.category }</span></div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info forum"><div class="name"><span v-show="item.payload.work_title">${ item.payload.work_title}
+                      <i class="fa fa-caret-right"></i></span> ${ item.name }</div><div class="media-type">${ item.payload.date }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-separator"><div class="list separator"><div class="separator"><span v-show="item.name == 'anime'">Anime</span><span v-show="item.name == 'manga'">Manga</span><span v-show="item.name == 'character'">Characters</span><span v-show="item.name == 'person'">People</span></div></div></script><div id="top-search-bar"><form id="searchBar" method="get" class="searchBar" @submit.prevent="jump()"><div class="form-select-outer fl-l"><select name="type" id="topSearchValue" class="inputtext" v-model="type"><option value="all">All</option><option value="anime">Anime</option><option value="manga">Manga</option><option value="character">Characters</option><option value="person">People</option><option value="news">News</option><option value="featured">Featured Articles</option><option value="forum">Forum</option><option value="club">Clubs</option><option value="user">Users</option></select></div><input v-model="keyword" id="topSearchText" type="text" name="keyword" class="inputtext fl-l" placeholder="Search Anime, Manga, and more..." size="30" autocomplete="off"
+                 @keydown.up.prevent="moveSelection(-1)" @keydown.down.prevent="moveSelection(1)"
+                 @focus="isFocused = true" @blur="isFocused = false"><input id="topSearchButon" class="fl-l" :class="{'notActive': (keyword.length < 3)}" type="submit" value="&#xf002"></form><div id="topSearchResultList" class="incrementalSearchResultList" :style="{display: (showResult ? 'block' : 'none')}" @mousedown.prevent=""><component v-for="item in items" :is="resolveComponent(item)" :item="item" :focus="selection == $index" :url="generateItemPageUrl(item)" @mouseover="selection = $index"></component><div class="list list-bottom" :class="{'focus': selection == -1}" @mouseover="selection = -1"
                :style="{display: (showViewAllLink ? 'block' : 'none')}"><a :href="resultPageUrl">
               View all results for <span class="fw-b">${ keyword }</span><i v-show="currentAjaxRequest != null" class="fa fa-spinner fa-spin ml4"></i></a></div></div></div></div>
     <div id="menu_left">
                         <ul id="nav">
     <li class="small"><a href="#" class="non-link">Anime</a>
     <ul class="wider">
-     <li><a href="/anime.php">Anime Search</a></li>
-      <li><a href="/topanime.php">Top Anime</a></li>
-      <li><a href="http://myanimelist.net/anime/season">Seasonal Anime</a></li>
-      <li><a href="/reviews.php?t=anime">Reviews</a></li>
-      <li><a href="/recommendations.php?s=recentrecs&t=anime">Recommendations</a></li>
+     <li><a href="http://myanimelist.net/anime.php?_location=mal_h_m">Anime Search</a></li>
+      <li><a href="http://myanimelist.net/topanime.php?_location=mal_h_m">Top Anime</a></li>
+      <li><a href="http://myanimelist.net/anime/season?_location=mal_h_m">Seasonal Anime</a></li>
+            <li><a href="http://myanimelist.net/watch/episode?_location=mal_h_m_a">Videos</a></li>
+      <li><a href="http://myanimelist.net/reviews.php?t=anime&amp;_location=mal_h_m">Reviews</a></li>
+      <li><a href="http://myanimelist.net/recommendations.php?s=recentrecs&amp;t=anime&amp;_location=mal_h_m">Recommendations</a></li>
     </ul>
   </li>
   <li class="small"><a href="#" class="non-link">Manga</a>
     <ul class="wider">
-     <li><a href="/manga.php">Manga Search</a></li>
-      <li><a href="/topmanga.php">Top Manga</a></li>
-      <li><a href="/reviews.php?t=manga">Reviews</a></li>
-      <li><a href="/recommendations.php?s=recentrecs&t=manga">Recommendations</a></li>
+     <li><a href="http://myanimelist.net/manga.php?_location=mal_h_m">Manga Search</a></li>
+      <li><a href="http://myanimelist.net/topmanga.php?_location=mal_h_m">Top Manga</a></li>
+      <li><a href="http://myanimelist.net/reviews.php?t=manga&amp;_location=mal_h_m">Reviews</a></li>
+      <li><a href="http://myanimelist.net/recommendations.php?s=recentrecs&amp;t=manga&amp;_location=mal_h_m">Recommendations</a></li>
     </ul>
   </li>
   <li><a href="#" class="non-link">Community</a>
     <ul>
-      <li><a href="/forum/">Forums</a></li>
-      <li><a href="/clubs.php">Clubs</a></li>
-      <li><a href="/blog.php">Blogs</a></li>
-      <li><a href="/users.php">Users</a></li>
+      <li><a href="http://myanimelist.net/forum/?_location=mal_h_m">Forums</a></li>
+      <li><a href="http://myanimelist.net/clubs.php?_location=mal_h_m">Clubs</a></li>
+      <li><a href="http://myanimelist.net/blog.php?_location=mal_h_m">Blogs</a></li>
+      <li><a href="http://myanimelist.net/users.php?_location=mal_h_m">Users</a></li>
     </ul>
   </li>
   <li class="small2"><a href="#" class="non-link">Industry</a>
     <ul class="wider">
-      <li><a href="/news">News</a></li>
-      <li><a href="http://myanimelist.net/featured">Featured Articles</a></li>
-      <li><a href="/people.php">People</a></li>
-      <li><a href="/character.php">Characters</a></li>
+      <li><a href="http://myanimelist.net/news?_location=mal_h_m">News</a></li>
+      <li><a href="http://myanimelist.net/featured?_location=mal_h_m">Featured Articles</a></li>
+      <li><a href="http://myanimelist.net/people.php?_location=mal_h_m">People</a></li>
+      <li><a href="http://myanimelist.net/character.php?_location=mal_h_m">Characters</a></li>
     </ul>
   </li>
   <li class="small"><a href="#" class="non-link">Watch</a>
     <ul class="wider">
-      <li><a href="/watch">Promotional Videos</a></li>
-      <li><a href="/watch/daisuki">DAISUKI</a></li>
+      <li><a href="http://myanimelist.net/watch/episode?_location=mal_h_m">Episode Videos</a></li>
+      <li><a href="http://myanimelist.net/watch/promotion?_location=mal_h_m">Promotional Videos</a></li>
+      <li><a href="http://myanimelist.net/watch/special?_location=mal_h_m">Special Videos</a></li>
     </ul>
   </li>
   <li class="smaller"><a href="#" class="non-link">Help</a>
     <ul class="wide">
-      <li><a href="/about.php">About</a></li>
-      <li><a href="/about.php?go=support">Support</a></li>
-      <li><a href="http://myanimelist.net/advertising">Advertising</a></li>
-      <li><a href="/forum/?topicid=515949">FAQ</a></li>
-      <li><a href="/modules.php?go=report">Report</a></li>
-      <li><a href="/about.php?go=team">Staff</a></li>
+      <li><a href="http://myanimelist.net/about.php?_location=mal_h_m">About</a></li>
+      <li><a href="http://myanimelist.net/about.php?go=support&amp;_location=mal_h_m">Support</a></li>
+      <li><a href="http://myanimelist.net/advertising?_location=mal_h_m">Advertising</a></li>
+      <li><a href="http://myanimelist.net/forum/?topicid=515949&amp;_location=mal_h_m">FAQ</a></li>
+      <li><a href="http://myanimelist.net/modules.php?go=report&amp;_location=mal_h_m">Report</a></li>
+      <li><a href="http://myanimelist.net/about.php?go=team&amp;_location=mal_h_m">Staff</a></li>
     </ul>
   </li>
     </ul>
                   </div>
-  </div><div id="contentWrapper" itemscope itemtype="http://schema.org/Product"><div><h1 class="h1"><span itemprop="name">Sword Art Online</span></h1></div><div id="content">
+  </div><div id="contentWrapper" itemscope itemtype="http://schema.org/Product"><div><div class="header-right">
+    <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&amp;error=login_required">Edit Anime Information</a>
+<div id="editdiv" class="fw-n fs11">
+  <form method="GET" action="http://myanimelist.net/dbchanges.php" class="di-i">
+    <input type="hidden" name="aid" value="11757">
+    <div class="pb8">What would you like to edit?</div>
+                      <select name="t" id="t" class="inputtext"><option value="synopsis">Synopsis</option><option value="background">Background</option><option value="alternative_titles">Alternative Titles</option><option value="pic">Picture</option><option value="airingdates">Airing Dates</option><option value="producers">Producers</option><option value="relations">Relations</option><option value="rating">Rating</option><option value="duration">Duration</option><option value="source">Source</option><option value="broadcast">Broadcast</option></select>
+     &nbsp;<input type="submit" value="Go" class="inputButton flat btn-middle">
+  </form>
+</div>
+</div><h1 class="h1"><span itemprop="name">Sword Art Online</span></h1></div><div id="content" >
+
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr>
 	 <td class="borderClass" width="225" style="border-width: 0 1px 0 0;" valign="top"><div class="js-scrollfix-bottom" style="width: 225px">
 
 <div style="text-align: center;">
           <a href="http://myanimelist.net/anime/11757/Sword_Art_Online/pics">
-      <img src="http://cdn.myanimelist.net/images/anime/11/39717.jpg" alt="Sword Art Online" aligh="center" itemprop="image"></a>
+      <img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/images/anime/11/39717.jpg" alt="Sword Art Online" class="ac lazyload" itemprop="image"></a>
     </a>
   </div>
 
 <!-- My List -->
 <div class="profileRows pb0">
-  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757&amp;error=login_required">Add to My List</a>
+  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&amp;error=login_required">Add to My List</a>
 </div>
 
 <div id="addtolist" class="addtolist-block" style="display: none;">
@@ -210,8 +228,7 @@ Sword Art Online - MyAnimeList.net
     <tr>
       <td class="spaceit">Eps Seen:</td>
       <td class="spaceit">
-        <input type="text" id="myinfo_watchedeps" name="myinfo_watchedeps" size="3" class="inputtext" value="0"> / <span id="curEps">25</span>
-      </td>
+        <input type="text" id="myinfo_watchedeps" name="myinfo_watchedeps" size="3" class="inputtext" value="0"> / <span id="curEps">25</span></td>
     </tr>
     <tr>
       <td class="spaceit">Your Score:</td>
@@ -222,7 +239,7 @@ Sword Art Online - MyAnimeList.net
     <tr>
       <td>&nbsp;</td>
       <td>
-                <input type="button" name="myinfo_submit" value="Add" onclick="myinfo_addtolist(11757);" class="inputButton">
+                <input type="button" name="myinfo_submit" value="Add" onclick="myinfo_addtolist(11757);" class="inputButton btn-middle flat">
         <span id="addtolistresult"><a href="http://myanimelist.net/panel.php?go=add&amp;selected_series_id=11757">Add Detailed Info</a></span>
               </td>
     </tr>
@@ -232,18 +249,10 @@ Sword Art Online - MyAnimeList.net
 <!-- end My List -->
 
 <div id="profileRows" class="pt0">
-  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757&amp;error=login_required" style="font-weight:normal;">Add to Favorites</a><a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757&amp;error=login_required">Edit Anime Information</a></div>
+  <a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&amp;error=login_required" style="font-weight:normal;">Add to Favorites</a></div>
 
-<div id="editdiv" style="display: none; margin-bottom: 16px;">
-  <form method="GET" action="http://myanimelist.net/dbchanges.php" style="display: inline;">
-    <input type="hidden" name="aid" value="11757">
-    <div class="spaceit_pad">What would you like to edit?</div>
-                      <select name="t" id="t" class="inputtext"><option value="synopsis">Synopsis</option><option value="background">Background</option><option value="alternative_titles">Alternative Titles</option><option value="pic">Picture</option><option value="airingdates">Airing Dates</option><option value="producers">Producers</option><option value="relations">Relations</option><option value="rating">Rating</option><option value="duration">Duration</option><option value="source">Source</option><option value="broadcast">Broadcast</option></select>
-     &nbsp;<input type="submit" value="Go" class="inputButton">
-  </form>
-</div>
+<div class="js-sns-icon-container icon-block mt8"><a data-ga-network="facebook" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online"></a><a data-ga-network="twitter" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?related=MyAnimeList.net&amp;via=myanimelist&amp;url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;text=Sword%20Art%20Online&amp;hashtags=anime"></a><a data-ga-network="google+" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online"></a><a data-ga-network="reddit" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;title=Sword%20Art%20Online"></a><a data-ga-network="tumblr" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;name=Sword%20Art%20Online"></a></div>  <br />
 
-<div class="js-sns-icon-container icon-block mt8"><a data-ga-network="facebook" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online"></a><a data-ga-network="twitter" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?related=MyAnimeList.net&amp;via=myanimelist&amp;url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;text=Sword%20Art%20Online&amp;hashtags=anime"></a><a data-ga-network="google+" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online"></a><a data-ga-network="reddit" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;title=Sword%20Art%20Online"></a><a data-ga-network="tumblr" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fmyanimelist.net%2Fanime%2F11757%2FSword_Art_Online&amp;name=Sword%20Art%20Online"></a></div>
   <h2>Alternative Titles</h2><div class="spaceit_pad">
     <span class="dark_text">English:</span> Sword Art Online
   </div><div class="spaceit_pad">
@@ -285,13 +294,13 @@ Sword Art Online - MyAnimeList.net
 
   <div>
     <span class="dark_text">Producers:</span>
-          <a href="http://myanimelist.net/anime/producer/17" title="Aniplex">Aniplex</a>,       <a href="http://myanimelist.net/anime/producer/79" title="Genco">Genco</a>,       <a href="http://myanimelist.net/anime/producer/315" title="DAX Production">DAX Production</a>,       <a href="http://myanimelist.net/anime/producer/681" title="ASCII Media Works">ASCII Media Works</a>  </div>
+          <a href="/anime/producer/17/Aniplex" title="Aniplex">Aniplex</a>,       <a href="/anime/producer/79/Genco" title="Genco">Genco</a>,       <a href="/anime/producer/315/DAX_Production" title="DAX Production">DAX Production</a>,       <a href="/anime/producer/681/ASCII_Media_Works" title="ASCII Media Works">ASCII Media Works</a>  </div>
   <div class="spaceit">
     <span class="dark_text">Licensors:</span>
-          <a href="http://myanimelist.net/anime/producer/493" title="Aniplex of America">Aniplex of America</a>  </div>
+          <a href="/anime/producer/493/Aniplex_of_America" title="Aniplex of America">Aniplex of America</a>  </div>
   <div>
     <span class="dark_text">Studios:</span>
-          <a href="http://myanimelist.net/anime/producer/56" title="A-1 Pictures">A-1 Pictures</a>  </div>
+          <a href="/anime/producer/56/A-1_Pictures" title="A-1 Pictures">A-1 Pictures</a>  </div>
 
 <div class="spaceit">
   <span class="dark_text">Source:</span>
@@ -300,7 +309,7 @@ Sword Art Online - MyAnimeList.net
 
 <div>
   <span class="dark_text">Genres:</span>
-  <a href="http://myanimelist.net/anime/genre/1" title="Action">Action</a>, <a href="http://myanimelist.net/anime/genre/2" title="Adventure">Adventure</a>, <a href="http://myanimelist.net/anime/genre/10" title="Fantasy">Fantasy</a>, <a href="http://myanimelist.net/anime/genre/11" title="Game">Game</a>, <a href="http://myanimelist.net/anime/genre/22" title="Romance">Romance</a></div>
+  <a href="/anime/genre/1/Action" title="Action">Action</a>, <a href="/anime/genre/2/Adventure" title="Adventure">Adventure</a>, <a href="/anime/genre/10/Fantasy" title="Fantasy">Fantasy</a>, <a href="/anime/genre/11/Game" title="Game">Game</a>, <a href="/anime/genre/22/Romance" title="Romance">Romance</a></div>
 
 <div class="spaceit">
   <span class="dark_text">Duration:</span>
@@ -315,15 +324,25 @@ Sword Art Online - MyAnimeList.net
 <br />
 
 <h2>Statistics</h2>
-<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="po-r js-statistics-info di-ib" data-id="info1">
   <span class="dark_text">Score:</span>
-  <span itemprop="ratingValue">7.96</span><sup>1</sup> (scored by <span itemprop="ratingCount">517,474</span> users)
+  <span itemprop="ratingValue">7.92</span><sup>1</sup> (scored by <span itemprop="ratingCount">549,771</span> users)
       <meta itemprop="bestRating" content="10">
     <meta itemprop="worstRating" content="1">
+      <div class="statistics-info info1">
+    <small><sup>1</sup>
+        indicates a weighted score. Please note that 'Not yet aired' titles are excluded.
+    </small>
   </div>
-<div class="spaceit">
+</div>
+<div class="spaceit po-r js-statistics-info di-ib" data-id="info2">
   <span class="dark_text">Ranked:</span>
-  #581<sup>2</sup>
+  #645<sup>2</sup>
+    <div class="statistics-info info2">
+    <small><sup>2</sup>
+    based on the <a href="/topanime.php">top anime</a> page. Please note that 'Not yet aired' and 'R18+' titles are excluded.
+    </small>
+  </div>
 </div>
 <div>
   <span class="dark_text">Popularity:</span>
@@ -331,40 +350,29 @@ Sword Art Online - MyAnimeList.net
 </div>
 <div class="spaceit">
   <span class="dark_text">Members:</span>
-    717,310
+    764,102
 </div>
 <div>
   <span class="dark_text">Favorites:</span>
-  37,397
-</div>
-
-<div class="anime-detail-side left mt8">
-  <p>
-    <small><sup>1</sup>
-        indicates a weighted score. Please note that 'Not yet aired' titles are excluded.
-    </small>
-  </p>
-  <p class="mt4">
-    <small><sup>2</sup>
-    based on the <a href="/topanime.php">top anime</a> page. Please note that 'Not yet aired' and 'R18+' titles are excluded.
-    </small>
-  </p>
+  38,452
 </div>
 
 
   <div class="clearfix mauto mt16" style="width:160px;padding-right:10px">
         <script type="text/javascript">
 googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnime_SAFE_LCol_SK_BTF", [160,600], "div-gpt-ad-1807981271").addService(googletag.pubads());
+  var slot = googletag.defineSlot("/84947469/02PCAnime_SAFE_LCol_SK_BTF", [160,600], "div-gpt-ad-1114581187").addService(googletag.pubads());
     slot.setCollapseEmptyDiv(true);
   googletag.enableServices();
 });
 </script>
 
-<div id="div-gpt-ad-1807981271" style="width:160px; height:600px;" data-code="02PCAnime_SAFE_LCol_SK_BTF">
-  <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1807981271"); });
-      </script>
+<div class="_unit" style="width:160px; height:600px; display: block !important;">
+  <div id="div-gpt-ad-1114581187" style="width:160px; height:600px;" data-code="02PCAnime_SAFE_LCol_SK_BTF">
+    <script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display("div-gpt-ad-1114581187"); });
+          </script>
+  </div>
 </div>
   </div>
 
@@ -395,11 +403,7 @@ googletag.cmd.push(function() {
     </li>
         <li><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/pics">Pictures</a>
     </li>
-    <li>
-      <a href="http://myanimelist.net/anime/11757/Sword_Art_Online/moreinfo">
-        More Info
-      </a>
-    </li></ul>
+    </ul>
 </div>
 
 
@@ -416,19 +420,21 @@ googletag.cmd.push(function() {
 
 <table border="0" cellspacing="0" cellpadding="0" width="100%">
 	<tr>
-	<td valign="top"><div class="pb16"><div class="di-t w100 mt12"><div class="anime-detail-header-stats di-tc va-t"><div class="stats-block po-r clearfix"><div class="fl-l score" data-title="score" data-user="517,474 users" title="This score is not weighted. Please note that 'Not yet aired' titles are excluded.">
-        7.96
-      </div><div class="di-ib ml12 pl12 pt8"><span class="numbers ranked" title="based on the top anime page. Please note that 'Not yet aired' and 'R18+' titles are excluded.">Ranked <strong>#581</strong></span><span class="numbers popularity">Popularity <strong>#2</strong></span><span class="numbers members">Members <strong>717,310</strong></span></div><div class="information-block di-ib clearfix"><span class="information season"><a href="http://myanimelist.net/anime/season/2012/summer">Summer 2012</a></span><span class="information type"><a href="http://myanimelist.net/topanime.php?type=tv">TV</a></span><span class="information studio author"><a href="http://myanimelist.net/anime/producer/56" title="A-1 Pictures">A-1 Pictures</a></span></div></div><div class="user-status-block js-user-status-block fn-grey6 clearfix al mt8 pl20"><input type="hidden" id="myinfo_anime_id" value="11757"><input type="hidden" id="myinfo_curstatus" value=""><a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757&amp;error=login_required" class="btn-user-status-add-list">Add to List</a><select name="myinfo_score" id="myinfo_score" class="form-user-score js-form-user-score ml8" disabled="disabled"><option value="0">Select</option><option value="10">(10) Masterpiece</option><option value="9">(9) Great</option><option value="8">(8) Very Good</option><option selected="selected" value="7">(7) Good</option><option value="6">(6) Fine</option><option value="5">(5) Average</option><option value="4">(4) Bad</option><option value="3">(3) Very Bad</option><option value="2">(2) Horrible</option><option value="1">(1) Appalling</option></select><div class="di-ib form-user-episode ml8 disabled">
-        Episodes: <input type="text" id="myinfo_watchedeps" name="myinfo_watchedeps" size="3" class="inputtext js-user-episode-seen" value="0" disabled>/<span id="curEps">25</span><a href="javascript:void(0);" class="js-btn-count increase ml4"><i class="fa fa-plus-circle"></i></a></div></div></div><div class="anime-detail-header-video di-tc va-t pl16" style="width:200px;"><div class="video-promotion"><a class="iframe js-fancybox-video video-unit promotion" href="http://www.youtube.com/embed/6ohYYtxfDCg?enablejsapi=1&wmode=opaque&autoplay=1" style="background-image:url('https://i.ytimg.com/vi/6ohYYtxfDCg/mqdefault.jpg')"><div class="info-container"><span class="title pl4 pr4">PV English dub version</span></div><span class="btn-play" style="background-color: rgba(255, 255, 255, 0);">play</span></a></div><div class="mt4 ar"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/video">More videos</a></div></div></div><div class="js-myinfo-error badresult-text al pb4" style="display:none;"></div>
+	<td valign="top"><div class="pb16"><div class="di-t w100 mt12"><div class="anime-detail-header-stats di-tc va-t"><div class="stats-block po-r clearfix"><div class="fl-l score" data-title="score" data-user="549,771 users" title="This score is not weighted. Please note that 'Not yet aired' titles are excluded.">
+        7.92
+      </div><div class="di-ib ml12 pl12 pt8"><span class="numbers ranked" title="based on the top anime page. Please note that 'Not yet aired' and 'R18+' titles are excluded.">Ranked <strong>#645</strong></span><span class="numbers popularity">Popularity <strong>#2</strong></span><span class="numbers members">Members <strong>764,102</strong></span></div><div class="information-block di-ib clearfix"><span class="information season"><a href="http://myanimelist.net/anime/season/2012/summer">Summer 2012</a></span><span class="information type"><a href="http://myanimelist.net/topanime.php?type=tv">TV</a></span><span class="information studio author"><a href="/anime/producer/56/A-1_Pictures" title="A-1 Pictures">A-1 Pictures</a></span></div></div><div class="user-status-block js-user-status-block fn-grey6 clearfix al mt8 pl20"><input type="hidden" id="myinfo_anime_id" value="11757"><input type="hidden" id="myinfo_curstatus" value=""><a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&amp;error=login_required" class="btn-user-status-add-list">Add to List</a><select name="myinfo_score" id="myinfo_score" class="form-user-score js-form-user-score ml8" disabled="disabled"><option value="0">Select</option><option value="10">(10) Masterpiece</option><option value="9">(9) Great</option><option value="8">(8) Very Good</option><option selected="selected" value="7">(7) Good</option><option value="6">(6) Fine</option><option value="5">(5) Average</option><option value="4">(4) Bad</option><option value="3">(3) Very Bad</option><option value="2">(2) Horrible</option><option value="1">(1) Appalling</option></select><div class="di-ib form-user-episode ml8 disabled">
+        Episodes: <input type="text" id="myinfo_watchedeps" name="myinfo_watchedeps" size="3" class="inputtext js-user-episode-seen" value="0" disabled>/<span id="curEps" data-num="25">25</span><a href="javascript:void(0);" class="js-btn-count increase ml4"><i class="fa fa-plus-circle"></i></a></div></div></div><div class="anime-detail-header-video di-tc va-t pl16" style="width:200px;"><div class="video-promotion"><a class="iframe js-fancybox-video video-unit promotion" href="http://www.youtube.com/embed/6ohYYtxfDCg?enablejsapi=1&wmode=opaque&autoplay=1" style="background-image:url('https://i.ytimg.com/vi/6ohYYtxfDCg/mqdefault.jpg')"><div class="info-container"><span class="title pl4 pr4">PV English dub version</span></div><span class="btn-play" style="background-color: rgba(255, 255, 255, 0);">play</span></a></div><div class="mt4 ar"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/video">More videos</a></div></div></div><div class="js-myinfo-error badresult-text al pb4" style="display:none;"></div>
 </div><h2><div class="floatRightHeader"><a href="/dbchanges.php?aid=11757&t=synopsis" style="font-weight: normal;">Edit</a></div>Synopsis</h2><span itemprop="description">In the year 2022, virtual reality has progressed by leaps and bounds, and a massive online role-playing game called Sword Art Online (SAO) is launched. With the aid of &quot;NerveGear&quot; technology, players can control their avatars within the game using nothing but their own thoughts.<br />
 <br />
 Kazuto Kirigaya, nicknamed &quot;Kirito,&quot; is among the lucky few enthusiasts who get their hands on the first shipment of the game. He logs in to find himself, with ten-thousand others, in the scenic and elaborate world of Aincrad, one full of fantastic medieval weapons and gruesome monsters. However, in a cruel turn of events, the players soon realize they cannot log out; the game&#039;s creator has trapped them in his new world until they complete all one hundred levels of the game.<br />
 <br />
 In order to escape Aincrad, Kirito will now have to interact and cooperate with his fellow players. Some are allies, while others are foes, like Asuna Yuuki, who commands the leading group attempting to escape from the ruthless game. To make matters worse, Sword Art Online is not all fun and games: if they die in Aincrad, they die in real life. Kirito must adapt to his new reality, fight for his survival, and hopefully break free from his virtual hell.<br />
 <br />
-[Written by MAL Rewrite]</span><h2 style="margin-top: 15px;"><div class="floatRightHeader"><a href="/dbchanges.php?aid=11757&t=background" style="font-weight: normal;">Edit</a></div>Background</h2>No background information has been added to this title. Help improve our database by adding background information <a href="/dbchanges.php?aid=11757&t=background">here</a>.<br><div class="border_top" style="padding:16px 0px 0px 0px;margin:14px 0px 0px 0px;"><div style="width:728px; margin:0 auto"><script type="text/javascript">
+[Written by MAL Rewrite]</span><h2 style="margin-top: 15px;"><div class="floatRightHeader"><a href="/dbchanges.php?aid=11757&t=background" style="font-weight: normal;">Edit</a></div>Background</h2><i>Sword Art Online</i> adapts the first 4 novels of Reki Kawahara&#039;s light novel series of the same name.<br />
+<br />
+The first episode received an early screening at the Tokyo International Forum Hall C on June 24, 2012. The regular TV broadcast started July 8, 2012. <div class="border_top" style="padding:16px 0px 0px 0px;margin:14px 0px 0px 0px;"><div style="padding: 20px 0 20px 40px; float: left; position: relative; z-index: 1;"><script type="text/javascript">
 googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnime_detail_SAFE_LB120", [[728,120],[728,90]], "div-gpt-ad-1321616730").addService(googletag.pubads());
+  var slot = googletag.defineSlot("/84947469/02PCAnime_SAFE_MR_ATF_LHS", [[300,250],[336,280],[728,120],[728,90]], "div-gpt-ad-1356312585").addService(googletag.pubads());
       slot.setTargeting('title', 'Sword%20Art%20Online');
       slot.setTargeting('utm_campaign', 'ad_mal_anime_11757');
     slot.setCollapseEmptyDiv(true);
@@ -436,14 +442,16 @@ googletag.cmd.push(function() {
 });
 </script>
 
-<div id="div-gpt-ad-1321616730" style="width:728px; height:120px;" data-code="02PCAnime_detail_SAFE_LB120">
-  <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1321616730"); });
-      </script>
+<div class="_unit" style="width:336px; height:280px; display: block !important;">
+  <div id="div-gpt-ad-1356312585" style="width:336px; height:280px;" data-code="02PCAnime_SAFE_MR_ATF_LHS">
+    <script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display("div-gpt-ad-1356312585"); });
+          </script>
+  </div>
 </div>
-</div><div style="padding: 20px 40px;display: inline-block;"><script type="text/javascript">
+</div><div style="padding: 20px 40px 20px 0; float: right; position: relative;"><script type="text/javascript">
 googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnime_SAFE_MR_ATF_LHS", [[300,250],[336,280]], "div-gpt-ad-106520039").addService(googletag.pubads());
+  var slot = googletag.defineSlot("/84947469/02PCAnime_SAFE_MR_ATF_RHS", [[300,250],[336,280]], "div-gpt-ad-381377607").addService(googletag.pubads());
       slot.setTargeting('title', 'Sword%20Art%20Online');
       slot.setTargeting('utm_campaign', 'ad_mal_anime_11757');
     slot.setCollapseEmptyDiv(true);
@@ -451,30 +459,17 @@ googletag.cmd.push(function() {
 });
 </script>
 
-<div id="div-gpt-ad-106520039" style="width:336px; height:280px;" data-code="02PCAnime_SAFE_MR_ATF_LHS">
-  <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-106520039"); });
-      </script>
-</div>
-</div><div style="padding: 20px 0px;display: inline-block;"><script type="text/javascript">
-googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnime_SAFE_MR_ATF_RHS", [[300,250],[336,280]], "div-gpt-ad-987621839").addService(googletag.pubads());
-      slot.setTargeting('title', 'Sword%20Art%20Online');
-      slot.setTargeting('utm_campaign', 'ad_mal_anime_11757');
-    slot.setCollapseEmptyDiv(true);
-  googletag.enableServices();
-});
-</script>
-
-<div id="div-gpt-ad-987621839" style="width:336px; height:280px;" data-code="02PCAnime_SAFE_MR_ATF_RHS">
-  <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-987621839"); });
-      </script>
+<div class="_unit" style="width:336px; height:280px; display: block !important;">
+  <div id="div-gpt-ad-381377607" style="width:336px; height:280px;" data-code="02PCAnime_SAFE_MR_ATF_RHS">
+    <script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display("div-gpt-ad-381377607"); });
+          </script>
+  </div>
 </div>
 </div></div></td></tr><tr><td class="pb24"><br><h2><div class="floatRightHeader"><a href="/dbchanges.php?aid=11757&t=relations" style="font-weight: normal;">Edit</a></div>Related Anime</h2><table class="anime_detail_related_anime" style="border-spacing:0px;"><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Adaptation:</td><td width="100%" class="borderClass"><a href="/manga/21479/Sword_Art_Online">Sword Art Online</a>, <a href="/manga/43921/Sword_Art_Online__Progressive">Sword Art Online: Progressive</a></td><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Other:</td><td width="100%" class="borderClass"><a href="/anime/16099/Sword_Art_Online__Sword_Art_Offline">Sword Art Online: Sword Art Offline</a></td><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Sequel:</td><td width="100%" class="borderClass"><a href="/anime/20021/Sword_Art_Online__Extra_Edition">Sword Art Online: Extra Edition</a></td></table><br><h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/characters" style="font-weight: normal;">More characters</a></div>Characters & Voice Actors</h2><table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
-			<div class="picSurround"><a href="/character/36765/Kazuto_Kirigaya" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/r/21x32/images/characters/7/204821.jpg?s=8346cc221417f8f93f85904d31188ea9" alt="Kirigaya, Kazuto" vspace="4" hspace="8" border="0"></a></div>
+			<div class="picSurround"><a href="/character/36765/Kazuto_Kirigaya" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/21x32/images/characters/7/204821.jpg?s=8346cc221417f8f93f85904d31188ea9" alt="Kirigaya, Kazuto" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
 			</td>
 			<td valign="top" class="borderClass bgColor2">
 			<a href="/character/36765/Kazuto_Kirigaya">Kirigaya, Kazuto</a>
@@ -496,7 +491,51 @@ googletag.cmd.push(function() {
 			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
 			<td valign="top" width="27" class="borderClass bgColor1" align="center">
-			<div class="picSurround"><a href="/character/43892/Yui" style="font-weight: normal;"><img src="http://cdn.myanimelist.net/r/21x32/images/characters/15/264165.jpg?s=fc7a8e5befd1d284c92234fb33b38d81" alt="Yui" vspace="4" hspace="8" border="0"></a></div>
+			<div class="picSurround"><a href="/character/36828/Asuna_Yuuki" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/21x32/images/characters/15/262053.jpg?s=982e7dd47c26d3cbb28087163d6b08d5" alt="Yuuki, Asuna" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor1">
+			<a href="/character/36828/Asuna_Yuuki">Yuuki, Asuna</a>
+			<div class="spaceit_pad"><small>Main</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor1">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+                      <tr>
+                      <td valign="top" align="right" style="padding: 0 4px;" nowrap>
+                      <a href="/people/890/Haruka_Tomatsu">Tomatsu, Haruka</a><br>
+                      <small>Japanese</small>
+                      </td>
+                      <td valign="top"><div class="picSurround"><a href="/people/890/Haruka_Tomatsu"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/44285.jpg?s=4800da12ec3a317ca390de1972eae654" alt="Tomatsu, Haruka" border="0"></a></div>
+                      </td>
+                      </tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor2" align="center">
+			<div class="picSurround"><a href="/character/36831/Suguha_Kirigaya" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/21x32/images/characters/9/192515.jpg?s=63cd2a591eb8fa51c5ef0e049a1386f4" alt="Kirigaya, Suguha" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
+			</td>
+			<td valign="top" class="borderClass bgColor2">
+			<a href="/character/36831/Suguha_Kirigaya">Kirigaya, Suguha</a>
+			<div class="spaceit_pad"><small>Main</small></div>
+			</td>
+			<td align="right" valign="top" class="borderClass bgColor2">
+				<table border="0" cellpadding="0" cellspacing="0" class="space_table">
+                      <tr>
+                      <td valign="top" align="right" style="padding: 0 4px;" nowrap>
+                      <a href="/people/6996/Ayana_Taketatsu">Taketatsu, Ayana</a><br>
+                      <small>Japanese</small>
+                      </td>
+                      <td valign="top"><div class="picSurround"><a href="/people/6996/Ayana_Taketatsu"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/42080.jpg?s=1b5cc0eac35ac9c79b31c2daada232d1" alt="Taketatsu, Ayana" border="0"></a></div>
+                      </td>
+                      </tr>
+				</table>
+			</td>
+			</tr>
+			</table><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<tr>
+			<td valign="top" width="27" class="borderClass bgColor1" align="center">
+			<div class="picSurround"><a href="/character/43892/Yui" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/21x32/images/characters/15/264165.jpg?s=fc7a8e5befd1d284c92234fb33b38d81" alt="Yui" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
 			</td>
 			<td valign="top" class="borderClass bgColor1">
 			<a href="/character/43892/Yui">Yui</a>
@@ -515,122 +554,31 @@ googletag.cmd.push(function() {
 				</table>
 			</td>
 			</tr>
-			</table>><br><a name="staff"></a><h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/characters#staff">More staff</a></div>Staff</h2><table border="0" cellpadding="0" cellspacing="0" width="100%">
+			</table><br><a name="staff"></a><h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/characters#staff">More staff</a></div>Staff</h2><table border="0" cellpadding="0" cellspacing="0" width="100%">
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/14031/Iwakami_Atsuhiro"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/29425.jpg?s=f640cc43b0696c755c4dd2dec73676cd" alt="Iwakami, Atsuhiro"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/14031/Iwakami_Atsuhiro"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/29425.jpg?s=f640cc43b0696c755c4dd2dec73676cd" class="lazyload" alt="Iwakami, Atsuhiro"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/14031/Iwakami_Atsuhiro">Iwakami, Atsuhiro</a>
 				<br><small>Producer</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/9323/Mori_Yasunori"><img src="http://cdn.myanimelist.net/images/questionmark_23.gif" alt="Mori, Yasunori"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/9323/Mori_Yasunori"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/images/questionmark_23.gif" class="lazyload" alt="Mori, Yasunori"></a></div></td>
 				<td valign="top" class="borderClass bgColor1"><a href="/people/9323/Mori_Yasunori">Mori, Yasunori</a>
 				<br><small>Producer</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/10801/Itou_Tomohiko"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/43184.jpg?s=c232bdb873c3e7f6c820ea15ddf61af1" alt="Itou, Tomohiko"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor2"><div class="picSurround"><a href="/people/10801/Itou_Tomohiko"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/1/43184.jpg?s=c232bdb873c3e7f6c820ea15ddf61af1" class="lazyload" alt="Itou, Tomohiko"></a></div></td>
 				<td valign="top" class="borderClass bgColor2"><a href="/people/10801/Itou_Tomohiko">Itou, Tomohiko</a>
 				<br><small>Director, Episode Director, Storyboard</small></td>
 			</tr>
 
 			<tr>
-				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/5921/Asaka_Morio"><img src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/9799.jpg?s=1ad4488abc5b760b23ecda8d554deca7" alt="Asaka, Morio"></a></div></td>
+				<td width="25" valign="top" class="borderClass bgColor1"><div class="picSurround"><a href="/people/5921/Asaka_Morio"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/21x32/images/voiceactors/3/9799.jpg?s=1ad4488abc5b760b23ecda8d554deca7" class="lazyload" alt="Asaka, Morio"></a></div></td>
 				<td valign="top" class="borderClass bgColor1"><a href="/people/5921/Asaka_Morio">Asaka, Morio</a>
 				<br><small>Director, Storyboard</small></td>
 			</tr>
-			</table><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mt16 mb8"><tr>
-  <td valigh="top">
-
-
-
-
-
-    <h2>
-      <span class="floatRightHeader">        <a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode">More episodes</a></span>
-      Episodes<span class="di-ib pl4 fw-n fs10">(25/25)</span>
-    </h2>
-
-    <table border="0" cellspacing="0" cellpadding="0" width="100%" class="mt8 episode_list js-watch-episode-list ascend">
-        <tr class="episode-list-header">
-          <td class="episode-number">
-            <div class=" btn-sort-outer js-btn-sort" data-sort="ascend"></div>
-          </td>
-          <td class="episode-title">Episode Title</td>
-          <td class="episode-aired">Aired</td>
-        </tr><tr class="episode-list-data">
-        <td class="episode-number nowrap">1</td>
-        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/1" class="fw-b ">The World of Swords</a><br>
-          <span class="di-ib">Ken no Sekai&nbsp;(剣の世界)</span>
-        </td>
-        <td class="episode-aired" nowrap>Jul 8, 2012</td>
-      </tr><tr class="episode-list-data">
-        <td class="episode-number nowrap">2</td>
-        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/2" class="fw-b ">Beater</a><br>
-          <span class="di-ib">Beater&nbsp;(ビーター)</span>
-        </td>
-        <td class="episode-aired" nowrap>Jul 15, 2012</td>
-      </tr><tr class="episode-list-data">
-        <td class="episode-number nowrap">3</td>
-        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/3" class="fw-b ">The Red-Nosed Reindeer</a><br>
-          <span class="di-ib">Akahana no Tonakai&nbsp;(赤鼻のトナカイ)</span>
-        </td>
-        <td class="episode-aired" nowrap>Jul 22, 2012</td>
-      </tr><tr class="episode-list-data">
-        <td class="episode-number nowrap">4</td>
-        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/4" class="fw-b ">The Black Swordsman</a><br>
-          <span class="di-ib">Kuro no Kenshi&nbsp;(黒の剣士)</span>
-        </td>
-        <td class="episode-aired" nowrap>Jul 29, 2012</td>
-      </tr><tr class="episode-list-data">
-        <td class="episode-number nowrap">5</td>
-        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/5" class="fw-b ">A Crime Within the Walls</a><br>
-          <span class="di-ib">Kennai Jiken&nbsp;(圏内事件)</span>
-        </td>
-        <td class="episode-aired" nowrap>Aug 5, 2012</td>
-      </tr>        </tr>
-      </table>
-      <table border="0" cellspacing="0" cellpadding="0" width="100%" class="mt8 episode_list js-watch-episode-list descend" style="display:none;">
-        <tr class="episode-list-header">
-          <td class="episode-number">
-            <div class=" btn-sort-outer js-btn-sort" data-sort="descend"></div>
-          </td>
-          <td class="episode-title">Episode Title</td>
-          <td class="episode-aired">Aired</td>
-        </tr><tr class="episode-list-data">
-        <td class="episode-number nowrap">5</td>
-        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/5" class="fw-b ">A Crime Within the Walls</a><br>
-          <span class="di-ib">Kennai Jiken&nbsp;(圏内事件)</span>
-        </td>
-        <td class="episode-aired" nowrap>Aug 5, 2012</td>
-      </tr><tr class="episode-list-data">
-        <td class="episode-number nowrap">4</td>
-        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/4" class="fw-b ">The Black Swordsman</a><br>
-          <span class="di-ib">Kuro no Kenshi&nbsp;(黒の剣士)</span>
-        </td>
-        <td class="episode-aired" nowrap>Jul 29, 2012</td>
-      </tr><tr class="episode-list-data">
-        <td class="episode-number nowrap">3</td>
-        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/3" class="fw-b ">The Red-Nosed Reindeer</a><br>
-          <span class="di-ib">Akahana no Tonakai&nbsp;(赤鼻のトナカイ)</span>
-        </td>
-        <td class="episode-aired" nowrap>Jul 22, 2012</td>
-      </tr><tr class="episode-list-data">
-        <td class="episode-number nowrap">2</td>
-        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/2" class="fw-b ">Beater</a><br>
-          <span class="di-ib">Beater&nbsp;(ビーター)</span>
-        </td>
-        <td class="episode-aired" nowrap>Jul 15, 2012</td>
-      </tr><tr class="episode-list-data">
-        <td class="episode-number nowrap">1</td>
-        <td class="episode-title w-break"><a href="http://myanimelist.net/anime/11757/Sword_Art_Online/episode/1" class="fw-b ">The World of Swords</a><br>
-          <span class="di-ib">Ken no Sekai&nbsp;(剣の世界)</span>
-        </td>
-        <td class="episode-aired" nowrap>Jul 8, 2012</td>
-      </tr>        </tr>
-      </table>
-      </td>
-</tr></table><br><div class="di-t">
+			</table><br><br><div class="di-t">
   <div class="di-tc va-t " style="width:392px;">
     <h2>
       <a href="http://myanimelist.net/dbchanges.php?aid=11757&amp;t=theme" class="floatRightHeader">Edit</a>
@@ -650,7 +598,7 @@ googletag.cmd.push(function() {
 </div>
 <br><br><div style="padding: 20px 40px;display: inline-block;"><script type="text/javascript">
 googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEmiddleBR01", [[300,250],[336,280]], "div-gpt-ad-1753062509").addService(googletag.pubads());
+  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEmiddleBR01", [[300,250],[336,280]], "div-gpt-ad-121984402").addService(googletag.pubads());
       slot.setTargeting('title', 'Sword%20Art%20Online');
       slot.setTargeting('utm_campaign', 'ad_mal_anime_11757');
     slot.setCollapseEmptyDiv(true);
@@ -658,14 +606,16 @@ googletag.cmd.push(function() {
 });
 </script>
 
-<div id="div-gpt-ad-1753062509" style="width:336px; height:280px;" data-code="02PCAnimeSAFEmiddleBR01">
-  <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1753062509"); });
-      </script>
+<div class="_unit" style="width:336px; height:280px; display: block !important;">
+  <div id="div-gpt-ad-121984402" style="width:336px; height:280px;" data-code="02PCAnimeSAFEmiddleBR01">
+    <script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display("div-gpt-ad-121984402"); });
+          </script>
+  </div>
 </div>
 </div><div style="padding: 20px 0px;display: inline-block;"><script type="text/javascript">
 googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEmiddleBR02", [[300,250],[336,280]], "div-gpt-ad-394317681").addService(googletag.pubads());
+  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEmiddleBR02", [[300,250],[336,280]], "div-gpt-ad-1079085200").addService(googletag.pubads());
       slot.setTargeting('title', 'Sword%20Art%20Online');
       slot.setTargeting('utm_campaign', 'ad_mal_anime_11757');
     slot.setCollapseEmptyDiv(true);
@@ -673,10 +623,12 @@ googletag.cmd.push(function() {
 });
 </script>
 
-<div id="div-gpt-ad-394317681" style="width:336px; height:280px;" data-code="02PCAnimeSAFEmiddleBR02">
-  <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-394317681"); });
-      </script>
+<div class="_unit" style="width:336px; height:280px; display: block !important;">
+  <div id="div-gpt-ad-1079085200" style="width:336px; height:280px;" data-code="02PCAnimeSAFEmiddleBR02">
+    <script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display("div-gpt-ad-1079085200"); });
+          </script>
+  </div>
 </div>
 </div><br><h2><span class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/reviews">More reviews</a></span>Reviews</h2>
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
@@ -685,7 +637,7 @@ googletag.cmd.push(function() {
 					<table border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
 						<td valign="top" width="60">
-							<div class="picSurround"><a href="/profile/LordAura"><div class="picSurround"><a href="/profile/LordAura"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/3441293_thumb.jpg" border="0"></a></div></a></div>
+							<div class="picSurround"><a href="/profile/LordAura"><div class="picSurround"><a href="/profile/LordAura"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/images/userimages/thumbs/3441293_thumb.jpg" border="0" class="lazyload"></a></div></a></div>
 						</td>
 						<td valign="top">
 	<div id="revArea11757">
@@ -694,7 +646,7 @@ googletag.cmd.push(function() {
 	</div>
 
 							<a href="/profile/LordAura">LordAura</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp138911">1733</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp138911">1871</span></strong> people found this review helpful</div>
 							<div><a href="/profile/LordAura/reviews">Other reviews by this user</a></div>
 						</td>
 						<td style="text-align: right;" valign="top"><div style="text-align: right;">Apr 6, 2014</div>
@@ -765,7 +717,7 @@ So yeh, Gary Stu and Waifu - these characters are pathetic (1).<br />
 6) Overall - This show has so many fans, and I really don&#039;t know why. It&#039;s plot is rushed and terrible. It&#039;s characters so flat, it&#039;s almost funny...almost. It&#039;s romance is highly misogynistic and terribly developed. I felt insulted watching this, and don&#039;t understand how any could like this show. Even Gamers.</span> <a href="javascript:void(0);" id="reviewToggle138911" class="js-review-btn-readmore" onclick="reviewToggleText(138911)" data-id="138911">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=138911" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=138911" class="lightLink"><small>report</small></a></div><span id="revhelp_output_138911" class="js-review-btn-helpful js-review-helpful-138911">I found this review <a href="/login.php?from=%2Fanime%2F11757&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=138911" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=138911" class="lightLink"><small>report</small></a></div><span id="revhelp_output_138911" class="js-review-btn-helpful js-review-helpful-138911">I found this review <a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
@@ -774,7 +726,7 @@ So yeh, Gary Stu and Waifu - these characters are pathetic (1).<br />
 					<table border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
 						<td valign="top" width="60">
-							<div class="picSurround"><a href="/profile/TheDeedsOfMen"><div class="picSurround"><a href="/profile/TheDeedsOfMen"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/3807819_thumb.jpg" border="0"></a></div></a></div>
+							<div class="picSurround"><a href="/profile/TheDeedsOfMen"><div class="picSurround"><a href="/profile/TheDeedsOfMen"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/images/userimages/thumbs/3807819_thumb.jpg" border="0" class="lazyload"></a></div></a></div>
 						</td>
 						<td valign="top">
 	<div id="revArea11757">
@@ -783,7 +735,7 @@ So yeh, Gary Stu and Waifu - these characters are pathetic (1).<br />
 	</div>
 
 							<a href="/profile/TheDeedsOfMen">TheDeedsOfMen</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp164583">1207</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp164583">1260</span></strong> people found this review helpful</div>
 							<div><a href="/profile/TheDeedsOfMen/reviews">Other reviews by this user</a></div>
 						</td>
 						<td style="text-align: right;" valign="top"><div style="text-align: right;">Oct 12, 2014</div>
@@ -989,7 +941,7 @@ Overall: 3<br />
 Watch it to witness the writing yourself. But more importantly, by watching the show you can better understand the reviews or, better yet, write one yourself.</span> <a href="javascript:void(0);" id="reviewToggle164583" class="js-review-btn-readmore" onclick="reviewToggleText(164583)" data-id="164583">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=164583" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=164583" class="lightLink"><small>report</small></a></div><span id="revhelp_output_164583" class="js-review-btn-helpful js-review-helpful-164583">I found this review <a href="/login.php?from=%2Fanime%2F11757&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=164583" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=164583" class="lightLink"><small>report</small></a></div><span id="revhelp_output_164583" class="js-review-btn-helpful js-review-helpful-164583">I found this review <a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
@@ -998,7 +950,7 @@ Watch it to witness the writing yourself. But more importantly, by watching the 
 					<table border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
 						<td valign="top" width="60">
-							<div class="picSurround"><a href="/profile/LLYNCES"><div class="picSurround"><a href="/profile/LLYNCES"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/1593341_thumb.jpg" border="0"></a></div></a></div>
+							<div class="picSurround"><a href="/profile/LLYNCES"><div class="picSurround"><a href="/profile/LLYNCES"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/images/userimages/thumbs/1593341_thumb.jpg" border="0" class="lazyload"></a></div></a></div>
 						</td>
 						<td valign="top">
 	<div id="revArea11757">
@@ -1007,7 +959,7 @@ Watch it to witness the writing yourself. But more importantly, by watching the 
 	</div>
 
 							<a href="/profile/LLYNCES">LLYNCES</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp87997">2336</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp87997">2371</span></strong> people found this review helpful</div>
 							<div><a href="/profile/LLYNCES/reviews">Other reviews by this user</a></div>
 						</td>
 						<td style="text-align: right;" valign="top"><div style="text-align: right;">Feb 26, 2013</div>
@@ -1066,7 +1018,7 @@ At the end of the day I watch anime because I want something that will entertain
 </span> <a href="javascript:void(0);" id="reviewToggle87997" class="js-review-btn-readmore" onclick="reviewToggleText(87997)" data-id="87997">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=87997" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=87997" class="lightLink"><small>report</small></a></div><span id="revhelp_output_87997" class="js-review-btn-helpful js-review-helpful-87997">I found this review <a href="/login.php?from=%2Fanime%2F11757&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=87997" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=87997" class="lightLink"><small>report</small></a></div><span id="revhelp_output_87997" class="js-review-btn-helpful js-review-helpful-87997">I found this review <a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
@@ -1075,7 +1027,7 @@ At the end of the day I watch anime because I want something that will entertain
 					<table border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
 						<td valign="top" width="60">
-							<div class="picSurround"><a href="/profile/_Rika"><div class="picSurround"><a href="/profile/_Rika"><img src="http://cdn.myanimelist.net/images/userimages/thumbs/503355_thumb.jpg" border="0"></a></div></a></div>
+							<div class="picSurround"><a href="/profile/_Rika"><div class="picSurround"><a href="/profile/_Rika"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/images/userimages/thumbs/503355_thumb.jpg" border="0" class="lazyload"></a></div></a></div>
 						</td>
 						<td valign="top">
 	<div id="revArea11757">
@@ -1084,7 +1036,7 @@ At the end of the day I watch anime because I want something that will entertain
 	</div>
 
 							<a href="/profile/_Rika">_Rika</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp82086">1112</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp82086">1136</span></strong> people found this review helpful</div>
 							<div><a href="/profile/_Rika/reviews">Other reviews by this user</a></div>
 						</td>
 						<td style="text-align: right;" valign="top"><div style="text-align: right;">Dec 31, 2012</div>
@@ -1181,11 +1133,11 @@ To wrap up the review, SAO had the potential to be something good but that poten
 Now all that’s left to do is to wait for a second season which is bound to release sooner or later and see how it goes. [And as expected, it’s releasing soon].</span> <a href="javascript:void(0);" id="reviewToggle82086" class="js-review-btn-readmore" onclick="reviewToggleText(82086)" data-id="82086">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=82086" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=82086" class="lightLink"><small>report</small></a></div><span id="revhelp_output_82086" class="js-review-btn-helpful js-review-helpful-82086">I found this review <a href="/login.php?from=%2Fanime%2F11757&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=82086" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=82086" class="lightLink"><small>report</small></a></div><span id="revhelp_output_82086" class="js-review-btn-helpful js-review-helpful-82086">I found this review <a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 				<div class="mt4"></div><div style="padding:16px 0px 0px 0px;"><div style="width:728px; height:90px; margin:0 auto"><script type="text/javascript">
 googletag.cmd.push(function() {
-  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEbottomLB02", [728,90], "div-gpt-ad-1894971864").addService(googletag.pubads());
+  var slot = googletag.defineSlot("/84947469/02PCAnimeSAFEbottomLB02", [728,90], "div-gpt-ad-576343895").addService(googletag.pubads());
       slot.setTargeting('title', 'Sword%20Art%20Online');
       slot.setTargeting('utm_campaign', 'ad_mal_anime_11757');
     slot.setCollapseEmptyDiv(true);
@@ -1193,20 +1145,22 @@ googletag.cmd.push(function() {
 });
 </script>
 
-<div id="div-gpt-ad-1894971864" style="width:728px; height:90px;" data-code="02PCAnimeSAFEbottomLB02">
-  <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-1894971864"); });
-      </script>
+<div class="_unit" style="width:728px; height:90px; display: block !important;">
+  <div id="div-gpt-ad-576343895" style="width:728px; height:90px;" data-code="02PCAnimeSAFEbottomLB02">
+    <script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display("div-gpt-ad-576343895"); });
+          </script>
+  </div>
 </div>
 </div></div><br><h2>
 		<div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/userrecs">More recommendations</a></div>
 		Recommendations
-    </h2><div><div class="anime-slide-block" id="anime_recommendation" data-json='{"width":800,"btnWidth":40,"margin":8}'><div class="btn-anime-slide-side left"><span class="btn-inner"></span></div><div class="btn-anime-slide-side right"><span class="btn-inner"></span></div><div class="anime-slide-outer" style="height:140px;"><ul class="anime-slide js-anime-slide" data-slide="8"><li class="btn-anime" style="width:90px" title="Log Horizon"><a href="http://myanimelist.net/recommendations/anime/11757-17265" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/6/60613.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Log Horizon</span><span class="users">127 users</span></a></li><li class="btn-anime" style="width:90px" title="Accel World"><a href="http://myanimelist.net/recommendations/anime/11757-11759" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/8/38155.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Accel World</span><span class="users">96 users</span></a></li><li class="btn-anime" style="width:90px" title="Btooom!"><a href="http://myanimelist.net/recommendations/anime/11757-14345" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/4/40977.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Btooom!</span><span class="users">67 users</span></a></li><li class="btn-anime" style="width:90px" title="Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka"><a href="http://myanimelist.net/recommendations/anime/11757-28121" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/2/70187.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka</span><span class="users">47 users</span></a></li><li class="btn-anime" style="width:90px" title="No Game No Life"><a href="http://myanimelist.net/recommendations/anime/11757-19815" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/5/65187.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">No Game No Life</span><span class="users">37 users</span></a></li><li class="btn-anime" style="width:90px" title=".hack//Sign"><a href="http://myanimelist.net/recommendations/anime/48-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/8/15142.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">.hack//Sign</span><span class="users">25 users</span></a></li><li class="btn-anime" style="width:90px" title="Mirai Nikki (TV)"><a href="http://myanimelist.net/recommendations/anime/10620-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/13/33465.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Mirai Nikki (TV)</span><span class="users">14 users</span></a></li><li class="btn-anime" style="width:90px" title="Overlord"><a href="http://myanimelist.net/recommendations/anime/11757-29803" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/3/74462.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Overlord</span><span class="users">13 users</span></a></li><li class="btn-anime" style="width:90px" title="Mondaiji-tachi ga Isekai kara Kuru Sou Desu yo?"><a href="http://myanimelist.net/recommendations/anime/11757-15315" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/12/43369.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Mondaiji-tachi ga Isekai kara Kuru Sou Desu yo?</span><span class="users">9 users</span></a></li><li class="btn-anime" style="width:90px" title="Zero no Tsukaima"><a href="http://myanimelist.net/recommendations/anime/1195-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/8/20680.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Zero no Tsukaima</span><span class="users">9 users</span></a></li><li class="btn-anime" style="width:90px" title="Guilty Crown"><a href="http://myanimelist.net/recommendations/anime/10793-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/8/33713.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Guilty Crown</span><span class="users">9 users</span></a></li><li class="btn-anime" style="width:90px" title="Fate/Zero"><a href="http://myanimelist.net/recommendations/anime/10087-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/2/73249.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Fate/Zero</span><span class="users">8 users</span></a></li><li class="btn-anime" style="width:90px" title="Angel Beats!"><a href="http://myanimelist.net/recommendations/anime/6547-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/10/22061.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Angel Beats!</span><span class="users">8 users</span></a></li><li class="btn-anime" style="width:90px" title="C: The Money of Soul and Possibility Control"><a href="http://myanimelist.net/recommendations/anime/10163-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/5/50551.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">C: The Money of Soul and Possibility Control</span><span class="users">7 users</span></a></li><li class="btn-anime" style="width:90px" title=".hack//Roots"><a href="http://myanimelist.net/recommendations/anime/873-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/3/13050.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">.hack//Roots</span><span class="users">7 users</span></a></li><li class="btn-anime" style="width:90px" title="Hunter x Hunter: Greed Island"><a href="http://myanimelist.net/recommendations/anime/138-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/13/37203.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Hunter x Hunter: Greed Island</span><span class="users">7 users</span></a></li><li class="btn-anime" style="width:90px" title="Hai to Gensou no Grimgar"><a href="http://myanimelist.net/recommendations/anime/11757-31859" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/13/77976.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Hai to Gensou no Grimgar</span><span class="users">7 users</span></a></li><li class="btn-anime" style="width:90px" title="Shingeki no Kyojin"><a href="http://myanimelist.net/recommendations/anime/11757-16498" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/10/47347.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Shingeki no Kyojin</span><span class="users">6 users</span></a></li><li class="btn-anime" style="width:90px" title="Druaga no Tou: The Aegis of Uruk"><a href="http://myanimelist.net/recommendations/anime/3230-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/5/75646.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Druaga no Tou: The Aegis of Uruk</span><span class="users">5 users</span></a></li><li class="btn-anime" style="width:90px" title="Chrome Shelled Regios"><a href="http://myanimelist.net/recommendations/anime/4186-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/9/12238.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Chrome Shelled Regios</span><span class="users">4 users</span></a></li><li class="btn-anime" style="width:90px" title="Detective Conan Movie 06: The Phantom of Baker Street"><a href="http://myanimelist.net/recommendations/anime/1365-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/10/51209.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Detective Conan Movie 06: The Phantom of Baker Street</span><span class="users">4 users</span></a></li><li class="btn-anime" style="width:90px" title="Romeo x Juliet"><a href="http://myanimelist.net/recommendations/anime/1699-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/12/75159.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Romeo x Juliet</span><span class="users">3 users</span></a></li><li class="btn-anime" style="width:90px" title="Gantz"><a href="http://myanimelist.net/recommendations/anime/384-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/13/5998.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Gantz</span><span class="users">3 users</span></a></li><li class="btn-anime" style="width:90px" title="Akame ga Kill!"><a href="http://myanimelist.net/recommendations/anime/11757-22199" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/6/78438.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Akame ga Kill!</span><span class="users">3 users</span></a></li><li class="btn-anime" style="width:90px" title="Ao no Exorcist"><a href="http://myanimelist.net/recommendations/anime/9919-11757" class="link bg-center" style="background-image:url('http://cdn.myanimelist.net/images/anime/10/75195.jpg');width:90px;height:140px;"><span class="title fs10" style="width:80px">Ao no Exorcist</span><span class="users">3 users</span></a></li></ul></div></div><br><h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/news">More news</a></div>Recent News</h2><div class="clearfix"><div class="picSurround fl-l mr8 ml3 mt4"><a href="/news/42481711" class="image-link"><img src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1455196476-0452c5d509bda1dedbb0e256cc3d514a.png?s=65c0586c394902a1ab63df7ec2185ae8" alt="Dengeki Announces New 'Tenkyou no Alderamin,' 'Accel World,' 'Sword Art Online' Anime" width="50" height="78"></a></div><p class="spaceit"><a href="/news/42481711" style=""><strong>Dengeki Announces New 'Tenkyou no Alderamin,' 'Accel World,' 'Sword Art Online' Anime</strong></a></p>
+    </h2><div><div class="anime-slide-block" id="anime_recommendation" data-json='{"width":800,"btnWidth":40,"margin":8}'><div class="btn-anime-slide-side left"><span class="btn-inner"></span></div><div class="btn-anime-slide-side right"><span class="btn-inner"></span></div><div class="anime-slide-outer" style="height:140px;"><ul class="anime-slide js-anime-slide" data-slide="8"><li class="btn-anime" style="width:90px" title="Log Horizon"><a href="http://myanimelist.net/recommendations/anime/11757-17265" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Log Horizon</span><span class="users">130 users</span><img alt="Log Horizon" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/6/60613.jpg?s=d3c9c36584b451ce8a1ead3caaaeb304" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Accel World"><a href="http://myanimelist.net/recommendations/anime/11757-11759" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Accel World</span><span class="users">99 users</span><img alt="Accel World" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/8/38155.jpg?s=3dd0c1da4e013e72832364bc25b96679" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Btooom!"><a href="http://myanimelist.net/recommendations/anime/11757-14345" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Btooom!</span><span class="users">68 users</span><img alt="Btooom!" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/4/40977.jpg?s=2ca696dae8bc8d481a286497a0040ee5" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka"><a href="http://myanimelist.net/recommendations/anime/11757-28121" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka</span><span class="users">50 users</span><img alt="Dungeon ni Deai wo Motomeru no wa Machigatteiru Darou ka" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/2/70187.jpg?s=e8d28fca3a87b5f43eb513af260e624f" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="No Game No Life"><a href="http://myanimelist.net/recommendations/anime/11757-19815" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">No Game No Life</span><span class="users">39 users</span><img alt="No Game No Life" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/5/65187.jpg?s=71914954eb6e7ab3def58109124e9a0b" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title=".hack//Sign"><a href="http://myanimelist.net/recommendations/anime/48-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">.hack//Sign</span><span class="users">25 users</span><img alt=".hack//Sign" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/8/15142.jpg?s=499770c15be249c54ed16707be2c0b80" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Overlord"><a href="http://myanimelist.net/recommendations/anime/11757-29803" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Overlord</span><span class="users">14 users</span><img alt="Overlord" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/3/74462.jpg?s=e6dcd69eecdd7d437be569e8f454d6d7" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Mirai Nikki (TV)"><a href="http://myanimelist.net/recommendations/anime/10620-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Mirai Nikki (TV)</span><span class="users">13 users</span><img alt="Mirai Nikki (TV)" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/13/33465.jpg?s=3e33e9b1a37b8a08735105ab42104b9d" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Mondaiji-tachi ga Isekai kara Kuru Sou Desu yo?"><a href="http://myanimelist.net/recommendations/anime/11757-15315" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Mondaiji-tachi ga Isekai kara Kuru Sou Desu yo?</span><span class="users">9 users</span><img alt="Mondaiji-tachi ga Isekai kara Kuru Sou Desu yo?" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/12/43369.jpg?s=3cd1174501b3450e9b998f54220290ec" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Guilty Crown"><a href="http://myanimelist.net/recommendations/anime/10793-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Guilty Crown</span><span class="users">9 users</span><img alt="Guilty Crown" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/8/33713.jpg?s=5f2b5f372f8015df06dc9f7c09ed7bdb" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Zero no Tsukaima"><a href="http://myanimelist.net/recommendations/anime/1195-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Zero no Tsukaima</span><span class="users">9 users</span><img alt="Zero no Tsukaima" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/8/20680.jpg?s=b95904ca3bf0db94a6b958a53c1545ba" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Hai to Gensou no Grimgar"><a href="http://myanimelist.net/recommendations/anime/11757-31859" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Hai to Gensou no Grimgar</span><span class="users">8 users</span><img alt="Hai to Gensou no Grimgar" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/13/77976.jpg?s=baa1562fa654e85f4b381908ca411c99" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Angel Beats!"><a href="http://myanimelist.net/recommendations/anime/6547-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Angel Beats!</span><span class="users">8 users</span><img alt="Angel Beats!" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/10/22061.jpg?s=4b6eb5c29e818f7a7e97540dac34a40f" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="C: The Money of Soul and Possibility Control"><a href="http://myanimelist.net/recommendations/anime/10163-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">C: The Money of Soul and Possibility Control</span><span class="users">7 users</span><img alt="C: The Money of Soul and Possibility Control" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/5/50551.jpg?s=3114aed3e1e44f3a2cde569726960a44" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Shingeki no Kyojin"><a href="http://myanimelist.net/recommendations/anime/11757-16498" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Shingeki no Kyojin</span><span class="users">7 users</span><img alt="Shingeki no Kyojin" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/10/47347.jpg?s=6f15de5e242b40673393fce69500f1ea" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Hunter x Hunter: Greed Island"><a href="http://myanimelist.net/recommendations/anime/138-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Hunter x Hunter: Greed Island</span><span class="users">7 users</span><img alt="Hunter x Hunter: Greed Island" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/13/37203.jpg?s=4f32ecd9dc2772e302be491e438879c6" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Fate/Zero"><a href="http://myanimelist.net/recommendations/anime/10087-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Fate/Zero</span><span class="users">7 users</span><img alt="Fate/Zero" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/2/73249.jpg?s=5978387772f47a457efc50ae4160d233" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title=".hack//Roots"><a href="http://myanimelist.net/recommendations/anime/873-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">.hack//Roots</span><span class="users">7 users</span><img alt=".hack//Roots" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/3/13050.jpg?s=1e5770847664bd1fc5895a5a1d933790" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Gakusen Toshi Asterisk"><a href="http://myanimelist.net/recommendations/anime/11757-30544" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Gakusen Toshi Asterisk</span><span class="users">5 users</span><img alt="Gakusen Toshi Asterisk" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/5/76034.jpg?s=0e811081483ce3c2d3506c99e6ca644d" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Druaga no Tou: The Aegis of Uruk"><a href="http://myanimelist.net/recommendations/anime/3230-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Druaga no Tou: The Aegis of Uruk</span><span class="users">5 users</span><img alt="Druaga no Tou: The Aegis of Uruk" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/5/75646.jpg?s=ab5ed224eb305b82778ec2e54e3de23e" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Chrome Shelled Regios"><a href="http://myanimelist.net/recommendations/anime/4186-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Chrome Shelled Regios</span><span class="users">4 users</span><img alt="Chrome Shelled Regios" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/9/12238.jpg?s=758874fcbadd10a4684eca73ddc50f49" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Deadman Wonderland"><a href="http://myanimelist.net/recommendations/anime/6880-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Deadman Wonderland</span><span class="users">4 users</span><img alt="Deadman Wonderland" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/9/75299.jpg?s=7861561b922a6172b86f5554801f9f6e" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Rakudai Kishi no Cavalry"><a href="http://myanimelist.net/recommendations/anime/11757-30296" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Rakudai Kishi no Cavalry</span><span class="users">4 users</span><img alt="Rakudai Kishi no Cavalry" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/9/76493.jpg?s=0217d871f98cddb28902a8c9a65206e4" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Detective Conan Movie 06: The Phantom of Baker Street"><a href="http://myanimelist.net/recommendations/anime/1365-11757" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Detective Conan Movie 06: The Phantom of Baker Street</span><span class="users">4 users</span><img alt="Detective Conan Movie 06: The Phantom of Baker Street" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/10/51209.jpg?s=6f074a4881b1f6dfc9f0cabe6a800e75" class="image lazyload" width="90" height="140"></a></li><li class="btn-anime" style="width:90px" title="Magi: The Labyrinth of Magic"><a href="http://myanimelist.net/recommendations/anime/11757-14513" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10" style="width:80px">Magi: The Labyrinth of Magic</span><span class="users">3 users</span><img alt="Magi: The Labyrinth of Magic" border="0" src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/anime/11/42773.jpg?s=452d431bcd2a34de1d1b7ef433bb553c" class="image lazyload" width="90" height="140"></a></li></ul></div></div><br><h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/news">More news</a></div>Recent News</h2><div class="clearfix"><div class="picSurround fl-l mr8 ml3 mt4"><a href="/news/42481711" class="image-link"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1455196476-0452c5d509bda1dedbb0e256cc3d514a.png?s=65c0586c394902a1ab63df7ec2185ae8" alt="Dengeki Announces New 'Tenkyou no Alderamin,' 'Accel World,' 'Sword Art Online' Anime" width="50" height="78" class="lazyload"></a></div><p class="spaceit"><a href="/news/42481711" style=""><strong>Dengeki Announces New 'Tenkyou no Alderamin,' 'Accel World,' 'Sword Art Online' Anime</strong></a></p>
 		<div class="clearfix" style="overflow:hidden;"><p>Light novel publisher Dengeki Bunko announced at its Aki no Saiten 2015 event that three of its titles will receive new anime adaptations.
 
 Nejimaki Seirei Senki: ...<a href="/news/42481711">read more</a></p></div>
 		<p class="lightLink spaceit">Oct 4, 2015 1:52 AM by <a href="/profile/arsonal">arsonal</a> | <a href="/forum/?topicid=1435107">Discuss (216 comments)</a></p></div>
-		<div class="borderClass"></div><div class="clearfix"><div class="picSurround fl-l mr8 ml3 mt4"><a href="/news/39685623" class="image-link"><img src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1455240839-2f2470c0808691ecb16d099c8fc0c562.jpeg?s=cdc2db1047ea6063769b16270f2ab0b6" alt="North American Anime & Manga Releases for May" width="50" height="78"></a></div><p class="spaceit"><a href="/news/39685623" style=""><strong>North American Anime & Manga Releases for May</strong></a></p>
+		<div class="borderClass"></div><div class="clearfix"><div class="picSurround fl-l mr8 ml3 mt4"><a href="/news/39685623" class="image-link"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1455240839-2f2470c0808691ecb16d099c8fc0c562.jpeg?s=cdc2db1047ea6063769b16270f2ab0b6" alt="North American Anime & Manga Releases for May" width="50" height="78" class="lazyload"></a></div><p class="spaceit"><a href="/news/39685623" style=""><strong>North American Anime & Manga Releases for May</strong></a></p>
 		<div class="clearfix" style="overflow:hidden;"><p>Here are the North American Anime &amp; Manga releases for May 2015
 
 Week 1: May 5th - 11th
@@ -1217,63 +1171,61 @@ Denki-gai Collecto...<a href="/news/39685623">read more</a></p></div>
 		<p class="lightLink spaceit">May 5, 2015 12:04 PM by <a href="/profile/Snow">Snow</a> | <a href="/forum/?topicid=1380502">Discuss (14 comments)</a></p></div>
 		<div class="borderClass"></div><br><h2><div class="floatRightHeader"><a href="/forum/?animeid=11757"><a href="/anime/11757/Sword_Art_Online/forum">More discussions</a></div>Recent Forum Discussion</h2>
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="forumTopics"><tr id="topicRow1">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow1"><a href="/login.php?from=%2Fanime%2F11757&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;"> <a href="/forum/?topicid=1497640">Does Serial Experiments Lain inspires Sword Art Online?</a> <small></small><br><span class="forum_postusername"><a href="/profile/You">You</a></span> - <span class="lightLink">Apr 3</span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">20 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/shawnofthedeadz">shawnofthedeadz</a> <a href="/forum/?topicid=1497640&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
-9 hours ago</td>
+    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow1"><a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
+                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;"> <a href="/forum/?topicid=531928">Does anyone else not like Kirito?</a> <small> ( <a href="/forum/?topicid=531928&show=0">1</a> <a href="/forum/?topicid=531928&show=50">2</a>  ) </small><br><span class="forum_postusername"><a href="/profile/coolxal">coolxal</a></span> - <span class="lightLink">Dec 14, 2012</span></td>
+			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">70 replies</td>
+				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/AxBattler">AxBattler</a> <a href="/forum/?topicid=531928&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>Yesterday, 12:09 PM</td>
 			</tr>
 			<tr id="topicRow2">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow2"><a href="/login.php?from=%2Fanime%2F11757&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;"> <a href="/forum/?topicid=1497522">Why is this anime hated THAT much?</a> <small></small><br><span class="forum_postusername"><a href="/profile/fthousand">fthousand</a></span> - <span class="lightLink">Apr 2</span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">13 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/Dragon_Slayer_X">Dragon_Slayer_X</a> <a href="/forum/?topicid=1497522&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>
-Yesterday, 10:53 PM</td>
+    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow2"><a href="/login.php?from=%2Fanime%2F11757%2FSword_Art_Online&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
+                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=509859">Sword Art Online Episode 17 Discussion</a> <small> ( <a href="/forum/?topicid=509859&show=0">1</a> <a href="/forum/?topicid=509859&show=50">2</a> <a href="/forum/?topicid=509859&show=100">3</a> <a href="/forum/?topicid=509859&show=150">4</a> <a href="/forum/?topicid=509859&show=200">5</a>  ... <a href="/forum/?topicid=509859&show=550">Last Page</a> ) </small><br><span class="forum_postusername"><a href="/profile/Stark700">Stark700</a></span> - <span class="lightLink">Oct 27, 2012</span></td>
+			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">550 replies</td>
+				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/AxBattler">AxBattler</a> <a href="/forum/?topicid=509859&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>Yesterday, 11:40 AM</td>
 			</tr>
 			</table><br><h2><div class="floatRightHeader"><a href="/anime/11757/Sword_Art_Online/featured">More featured articles</a></div>Recent Featured Articles</h2><div class="detail-page-featured-article"><div class="news-list">
 
-<div class="news-unit clearfix" data-tag="cat1 cat1 cat1 cat1 "><div class="picSurround fl-l mr8 ml3">
-      <a href="http://myanimelist.net/featured/1541" class=""><img src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1459393720-ceec67c595981f539c75f723e1e5a54d.png?s=841753cb64deded14e1232a385811803" alt="15 RPG-Themed Anime That Prove The Genre is Real" class="image" width="50" height="78" srcset="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1459393720-ceec67c595981f539c75f723e1e5a54d.png?s=841753cb64deded14e1232a385811803 1x, http://cdn.myanimelist.net/r/100x156/s/common/uploaded_files/1459393720-ceec67c595981f539c75f723e1e5a54d.png?s=47f6640141c2ddfecd711c45ef46ac15 2x" /></a>
+<div class="news-unit clearfix" data-tag="cat1 "><div class="picSurround fl-l mr8 ml3">
+      <a href="http://myanimelist.net/featured/1733" class=""><img src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1465291860-a0620be65d29d17de996cf97ba387e86.png?s=6493ae3f155c0cffed4b021f4d9d9cf8" alt="Anime We Can&#039;t Wait to Watch in Virtual Reality" class="image" width="50" height="78" srcset="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1465291860-a0620be65d29d17de996cf97ba387e86.png?s=6493ae3f155c0cffed4b021f4d9d9cf8 1x, http://cdn.myanimelist.net/r/100x156/s/common/uploaded_files/1465291860-a0620be65d29d17de996cf97ba387e86.png?s=fa1519be6f5c562e0563c16f76bc077a 2x" /></a>
     </div><div class="news-unit-right rect">
     <p class="title">
-      <a href="http://myanimelist.net/featured/1541" title="15 RPG-Themed Anime That Prove The Genre is Real">15 RPG-Themed Anime That Prove The Genre is Real</a>
+      <a href="http://myanimelist.net/featured/1733" title="Anime We Can&#039;t Wait to Watch in Virtual Reality">Anime We Can&#039;t Wait to Watch in Virtual Reality</a>
     </p>
     <div class="text">
-      Whether they were pulled into an MMORPG that they were playing or simply found themselves stuck in it, there’s something weird happening to anime characters. One way or another, they just keep landing inside RPGs. Here are 15 RPG-themed anime that helped define this budding genre.
+      Virtual Reality is coming. We live in a world where you will soon be able to explore the setting of your favorite anime in full VR. Welcome to the future.
     </div>
     <div class="information">
       <p class="info pr8">
-        by <a href="http://myanimelist.net/profile/samcook">samcook</a>
+        by <a href="http://myanimelist.net/profile/Littoface">Littoface</a>
       </p>
 
                     <p class="di-tc pv pr8">
-          <b>3,640</b> views
+          <b>2,421</b> views
         </p>
       <div class="tags">
-        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/analysis" class="tag tag-color-feature-analysis" title="Analysis">Analysis</a><a href="http://myanimelist.net/featured/tag/background_analysis" class="tag tag-color-feature-background_analysis" title="Background Analysis">Background Analysis</a><a href="http://myanimelist.net/featured/tag/games" class="tag tag-color-feature-games" title="Games">Games</a><a href="http://myanimelist.net/featured/tag/game_adaptation" class="tag tag-color-feature-game_adaptation" title="Game Adaptation">Game Adaptation</a></div>
+        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/technology" class="tag tag-color-feature-technology" title="Technology">Technology</a></div>
       </div></div>
   </div>
 </div>
 
-<div class="news-unit clearfix" data-tag="cat1 cat1 "><div class="picSurround fl-l mr8 ml3">
-      <a href="http://myanimelist.net/featured/1539" class=""><img src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1459435468-d6882bf60350cb81608cc84a22523c3e.jpeg?s=3a217354aeb91c4b722acbb367cb0f5e" alt="A Look at MAL&#039;s Most/Least Dropped Anime Series" class="image" width="50" height="78" srcset="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1459435468-d6882bf60350cb81608cc84a22523c3e.jpeg?s=3a217354aeb91c4b722acbb367cb0f5e 1x, http://cdn.myanimelist.net/r/100x156/s/common/uploaded_files/1459435468-d6882bf60350cb81608cc84a22523c3e.jpeg?s=7b39826a450cacd67c0d14a132d82f5d 2x" /></a>
+<div class="news-unit clearfix" data-tag="cat1 cat1 cat1 "><div class="picSurround fl-l mr8 ml3">
+      <a href="http://myanimelist.net/featured/1709" class=""><img src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1464199202-9dc77e4947ea7a28f7200d4996e92a37.jpeg?s=adc4e7c7405ea99262e1c0be0355befa" alt="10 Anime Characters That Turn Into Weapons: Best Weapon is Yourself" class="image" width="50" height="78" srcset="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1464199202-9dc77e4947ea7a28f7200d4996e92a37.jpeg?s=adc4e7c7405ea99262e1c0be0355befa 1x, http://cdn.myanimelist.net/r/100x156/s/common/uploaded_files/1464199202-9dc77e4947ea7a28f7200d4996e92a37.jpeg?s=b9c737e2bd3cbbde72eb420d6c12ec0b 2x" /></a>
     </div><div class="news-unit-right rect">
     <p class="title">
-      <a href="http://myanimelist.net/featured/1539" title="A Look at MAL&#039;s Most/Least Dropped Anime Series">A Look at MAL&#039;s Most/Least Dropped Anime Series</a>
+      <a href="http://myanimelist.net/featured/1709" title="10 Anime Characters That Turn Into Weapons: Best Weapon is Yourself">10 Anime Characters That Turn Into Weapons: Best Weapon is Yourself</a>
     </p>
     <div class="text">
-      Most of us drop shows that we don&#039;t like or grow tired of, but have you ever wondered which shows have the highest number of droppers, and which ones have the highest drop rates? We pulled the data from MAL, so we can see which shows MAL users gave a chance and didn&#039;t like!
+      You could adventure for years, searching for the perfect weapon for you. Or you could just save some time and turn into the perfect weapon yourself, like these anime characters.
     </div>
     <div class="information">
       <p class="info pr8">
-        by <a href="http://myanimelist.net/profile/RilakkuLina">RilakkuLina</a>
+        by <a href="http://myanimelist.net/profile/Littoface">Littoface</a>
       </p>
 
                     <p class="di-tc pv pr8">
-          <b>57,585</b> views
+          <b>5,230</b> views
         </p>
       <div class="tags">
-        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/analysis" class="tag tag-color-feature-analysis" title="Analysis">Analysis</a><a href="http://myanimelist.net/featured/tag/trivia" class="tag tag-color-feature-trivia" title="Trivia">Trivia</a></div>
+        <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/collection" class="tag tag-color-feature-collection" title="Collection">Collection</a><a href="http://myanimelist.net/featured/tag/action" class="tag tag-color-feature-action" title="Action">Action</a><a href="http://myanimelist.net/featured/tag/weapons" class="tag tag-color-feature-weapons" title="Weapons">Weapons</a></div>
       </div></div>
   </div>
 </div>
@@ -1283,38 +1235,46 @@ Yesterday, 10:53 PM</td>
 		</tr>
 		</table>
 		</div>
-</td>
-</tr>
-</table>
-<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true"></script></div><!-- end of contentHome -->
-
-
                       <script type='text/javascript'>
-    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_LHS', [[300,250],[336,280]], 'div-gpt-ad-493098870').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_RHS', [[300,250],[336,280]], 'div-gpt-ad-612773542').addService(googletag.pubads());            googletag.pubads().collapseEmptyDivs();
+    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_LHS', [[300,250],[336,280]], 'div-gpt-ad-848282247').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_RHS', [[300,250],[336,280]], 'div-gpt-ad-359865883').addService(googletag.pubads());            googletag.pubads().collapseEmptyDivs();
         googletag.enableServices();
     });
 </script>
-
   <div class="mauto clearfix pt24" style="width:760px;">
     <div class="fl-l">
 
-<div id="div-gpt-ad-493098870" style="width:336px; height:280px;" data-code="02PCAnime_SAFE_MR_BTF_LHS">
-  <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-493098870"); });
-      </script>
+<div class="_unit" style="width:336px; height:280px; display: block !important;">
+  <div id="div-gpt-ad-848282247" style="width:336px; height:280px;" data-code="02PCAnime_SAFE_MR_BTF_LHS">
+    <script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display("div-gpt-ad-848282247"); });
+          </script>
+  </div>
 </div>
   </div>
       <div class="fl-r">
 
-<div id="div-gpt-ad-612773542" style="width:336px; height:280px;" data-code="02PCAnime_SAFE_MR_BTF_RHS">
-  <script type='text/javascript'>
-          googletag.cmd.push(function() { googletag.display("div-gpt-ad-612773542"); });
-      </script>
+<div class="_unit" style="width:336px; height:280px; display: block !important;">
+  <div id="div-gpt-ad-359865883" style="width:336px; height:280px;" data-code="02PCAnime_SAFE_MR_BTF_RHS">
+    <script type='text/javascript'>
+              googletag.cmd.push(function() { googletag.display("div-gpt-ad-359865883"); });
+          </script>
+  </div>
 </div>
   </div>
   </div>
-</div>
 
+</td>
+</tr>
+</table>
+<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js" data-pin-hover="true"></script></div><!-- end of contentHome -->
+</div><!-- end of contentWrapper -->
+
+
+                      <script type='text/javascript'>
+    googletag.cmd.push(function() {var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_LHS', [[300,250],[336,280]], 'div-gpt-ad-848282247').addService(googletag.pubads());            var slot = googletag.defineSlot('/84947469/02PCAnime_SAFE_MR_BTF_RHS', [[300,250],[336,280]], 'div-gpt-ad-359865883').addService(googletag.pubads());            googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+</script>
 
 
 <!--  control container height -->
@@ -1351,11 +1311,11 @@ Yesterday, 10:53 PM</td>
           <div class="ranking-unit ranking-top_airing">
         <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=airing" class="view_more fl-r">More</a>Top Airing Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/31933/JoJo_no_Kimyou_na_Bouken__Diamond_wa_Kudakenai">JoJo no Kimyou na Bouken: Diamond wa Kudakenai</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30709/Kamisama_Hajimemashita__Kako-hen">Kamisama Hajimemashita: Kako-hen</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/10937/Mobile_Suit_Gundam__The_Origin">Mobile Suit Gundam: The Origin</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/235/Detective_Conan">Detective Conan</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/31240/Re_Zero_kara_Hajimeru_Isekai_Seikatsu">Re:Zero kara Hajimeru Isekai Seikatsu</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/31933/JoJo_no_Kimyou_na_Bouken__Diamond_wa_Kudakenai">JoJo no Kimyou na Bouken: Diamond wa Kudakenai</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30709/Kamisama_Hajimemashita__Kako-hen">Kamisama Hajimemashita: Kako-hen</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/10937/Mobile_Suit_Gundam__The_Origin">Mobile Suit Gundam: The Origin</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_upcoming">
@@ -1363,19 +1323,19 @@ Yesterday, 10:53 PM</td>
         <ol>
                       <li><span class="rank">1</span><a href="http://myanimelist.net/anime/25777/Shingeki_no_Kyojin_2nd_Season">Shingeki no Kyojin 2nd Season</a></li>
                       <li><span class="rank">2</span><a href="http://myanimelist.net/anime/3786/Evangelion__30_10">Evangelion: 3.0+1.0</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28623/Koutetsujou_no_Kabaneri">Koutetsujou no Kabaneri</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/31478/Bungou_Stray_Dogs">Bungou Stray Dogs</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/25537/Fate_stay_night_Movie__Heavens_Feel">Fate/stay night Movie: Heaven&#039;s Feel</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/25537/Fate_stay_night_Movie__Heavens_Feel">Fate/stay night Movie: Heaven&#039;s Feel</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30484/Steins_Gate_0">Steins;Gate 0</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/32282/Shokugeki_no_Souma__Ni_no_Sara">Shokugeki no Souma: Ni no Sara</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_page_views">
         <h3 class="title">Top Page Views</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/32438/Mayoiga">Mayoiga</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/31630/Gyakuten_Saiban__Sono_Shinjitsu_Igi_Ari">Gyakuten Saiban: Sono &quot;Shinjitsu&quot;, Igi Ari!</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/31798/Kiznaiver">Kiznaiver</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/32608/Endride">Endride</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/31043/Boku_dake_ga_Inai_Machi">Boku dake ga Inai Machi</a></li>
+                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/31240/Re_Zero_kara_Hajimeru_Isekai_Seikatsu">Re:Zero kara Hajimeru Isekai Seikatsu</a></li>
+                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/31964/Boku_no_Hero_Academia">Boku no Hero Academia</a></li>
+                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/28623/Koutetsujou_no_Kabaneri">Koutetsujou no Kabaneri</a></li>
+                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/31798/Kiznaiver">Kiznaiver</a></li>
+                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/31338/Hundred">Hundred</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-popular_ranking">
@@ -1398,6 +1358,7 @@ Yesterday, 10:53 PM</td>
       </p>
       <p class="footer-link di-ib">
         <a href="http://myanimelist.net/about.php">About</a>
+        <a href="http://myanimelist.net/pressroom">Press Room</a>
         <a href="http://myanimelist.net/about.php?go=contact">Support</a>
         <a href="http://myanimelist.net/advertising">Advertising</a>
         <a href="http://myanimelist.net/forum/?topicid=515949">FAQ</a>
@@ -1406,8 +1367,8 @@ Yesterday, 10:53 PM</td>
         <a href="http://myanimelist.net/about/sitemap">Sitemap</a>
     	</p>
   		  		<p class="footer-link login di-ib">
-  			<a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757" id="malLogin" rel="nofollow">Login</a>
-  			<a href="http://myanimelist.net/register.php?from=%2Fanime%2F11757">Sign Up</a>
+  			<a href="http://myanimelist.net/login.php?from=%2Fanime%2F11757%2FSword_Art_Online" id="malLogin" rel="nofollow">Login</a>
+  			<a href="http://myanimelist.net/register.php?from=%2Fanime%2F11757%2FSword_Art_Online">Sign Up</a>
   		</p>
   		    </div>
 
@@ -1432,5 +1393,9 @@ Yesterday, 10:53 PM</td>
 
 <div id="evolve_footer"></div>
 
+<script type="text/javascript">
+    window.MAL.magia = "06410c4e6b2518e9add8f6df0ccb2da2876bb8c980aacb43a8dcaa8153c0f92c";
+  window.MAL.madoka = "hZrDKm9k6FVRnqd3i%=K";
+</script>
 </body>
 </html>
