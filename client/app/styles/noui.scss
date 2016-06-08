@@ -2,7 +2,6 @@
  * Browsers can paint handles in their own layer.
  */
 .noUi-base {
-  -webkit-transform: translate3d(0,0,0);
   transform: translate3d(0,0,0);
   background-color: #383D48;
   border-radius: 999em;
@@ -64,7 +63,6 @@
 .noUi-connect {
   background: #2EA291;
   box-shadow: none;
-  -webkit-transition: background 450ms;
   transition: background 450ms;
 }
 .noUi-origin {
