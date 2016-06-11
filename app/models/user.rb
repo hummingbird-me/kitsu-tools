@@ -315,7 +315,6 @@ class User < ActiveRecord::Base
       avatar: open("https://graph.facebook.com/#{auth.uid}/picture?width=200&height=200"),
       password: Devise.friendly_token[0, 20]
     )
-    user.save
     user.confirm!
     return user
   end
