@@ -7,6 +7,7 @@ module Versionable
     comment = object.delete(:edit_comment)
     # temp assign attributes
     self.assign_attributes(object)
+    # don't create the version if there was a validation error
     version = Version.new(
       item: self,
       user: author,
@@ -15,7 +16,7 @@ module Versionable
       comment: comment
     )
     version.state = :pending
-    version.save
+    version.save if self.errors.blank?
     version
   end
 

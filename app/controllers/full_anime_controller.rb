@@ -9,6 +9,7 @@ class FullAnimeController < ApplicationController
   def update
     anime = Anime.find(params[:id])
     version = anime.create_pending(current_user, full_anime_params)
+    return error!(version.item.errors.full_messages, 400) unless version.persisted?
     # if this user is admin, apply the changes
     # without review, but still create a history version
     anime.update_from_pending(version) if current_user.admin?

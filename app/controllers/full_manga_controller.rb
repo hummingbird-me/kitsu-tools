@@ -7,6 +7,7 @@ class FullMangaController < ApplicationController
   def update
     manga = Manga.find(params[:id])
     version = manga.create_pending(current_user, full_manga_params)
+    return error!(version.item.errors.full_messages, 400) unless version.persisted?
     # if this user is admin, apply the changes
     # without review, but still create a history version
     manga.update_from_pending(version) if current_user.admin?
