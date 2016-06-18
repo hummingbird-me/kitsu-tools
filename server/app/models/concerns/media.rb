@@ -7,6 +7,8 @@ module Media
     include Rateable
 
     has_many :library_entries, as: 'media', dependent: :destroy
+    has_many :mappings, as: 'media', dependent: :destroy
+
     friendly_id :slug_candidates, use: %i[slugged finders history]
     resourcify
 

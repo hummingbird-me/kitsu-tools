@@ -27,7 +27,6 @@
 #  poster_image_file_size    :integer
 #  poster_image_updated_at   :datetime
 #  cover_image_top_offset    :integer          default(0), not null
-#  mdl_id                    :integer
 #  average_rating            :float
 #  rating_frequencies        :hstore           default({}), not null
 #  user_count                :integer          default(0), not null

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160109045957) do
+ActiveRecord::Schema.define(version: 20160417064936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20160109045957) do
     t.integer  "episode_length"
     t.text     "synopsis",                              default: "",      null: false
     t.string   "youtube_video_id",          limit: 255
-    t.integer  "mal_id"
     t.datetime "created_at",                                              null: false
     t.datetime "updated_at",                                              null: false
     t.string   "cover_image_file_name",     limit: 255
@@ -34,8 +33,6 @@ ActiveRecord::Schema.define(version: 20160109045957) do
     t.datetime "cover_image_updated_at"
     t.float    "average_rating"
     t.integer  "user_count",                            default: 0,       null: false
-    t.integer  "thetvdb_series_id"
-    t.integer  "thetvdb_season_id"
     t.string   "age_rating_guide",          limit: 255
     t.integer  "show_type"
     t.date     "start_date"
@@ -46,7 +43,6 @@ ActiveRecord::Schema.define(version: 20160109045957) do
     t.integer  "poster_image_file_size"
     t.datetime "poster_image_updated_at"
     t.integer  "cover_image_top_offset",                default: 0,       null: false
-    t.integer  "ann_id"
     t.boolean  "started_airing_date_known",             default: true,    null: false
     t.hstore   "titles",                                default: {},      null: false
     t.string   "canonical_title",                       default: "ja_en", null: false
@@ -55,7 +51,6 @@ ActiveRecord::Schema.define(version: 20160109045957) do
 
   add_index "anime", ["age_rating"], name: "index_anime_on_age_rating", using: :btree
   add_index "anime", ["average_rating"], name: "index_anime_on_wilson_ci", order: {"average_rating"=>:desc}, using: :btree
-  add_index "anime", ["mal_id"], name: "index_anime_on_mal_id", unique: true, using: :btree
   add_index "anime", ["slug"], name: "index_anime_on_slug", unique: true, using: :btree
   add_index "anime", ["user_count"], name: "index_anime_on_user_count", using: :btree
 
@@ -136,7 +131,6 @@ ActiveRecord::Schema.define(version: 20160109045957) do
     t.integer  "poster_image_file_size"
     t.datetime "poster_image_updated_at"
     t.integer  "cover_image_top_offset",    default: 0,       null: false
-    t.integer  "mdl_id"
     t.float    "average_rating"
     t.hstore   "rating_frequencies",        default: {},      null: false
     t.integer  "user_count",                default: 0,       null: false
@@ -325,7 +319,6 @@ ActiveRecord::Schema.define(version: 20160109045957) do
     t.date     "start_date"
     t.date     "end_date"
     t.string   "serialization",             limit: 255
-    t.integer  "mal_id"
     t.datetime "created_at",                                              null: false
     t.datetime "updated_at",                                              null: false
     t.integer  "status"
@@ -339,6 +332,15 @@ ActiveRecord::Schema.define(version: 20160109045957) do
     t.string   "canonical_title",                       default: "ja_en", null: false
     t.string   "abbreviated_titles",                                                   array: true
   end
+
+  create_table "mappings", force: :cascade do |t|
+    t.string  "external_site", null: false
+    t.string  "external_id",   null: false
+    t.integer "media_id",      null: false
+    t.string  "media_type",    null: false
+  end
+
+  add_index "mappings", ["external_site", "external_id", "media_type", "media_id"], name: "index_mappings_on_external_and_media", unique: true, using: :btree
 
   create_table "not_interesteds", force: :cascade do |t|
     t.integer  "user_id"

@@ -16,7 +16,6 @@
 #  start_date                :date
 #  end_date                  :date
 #  serialization             :string(255)
-#  mal_id                    :integer
 #  created_at                :datetime         not null
 #  updated_at                :datetime         not null
 #  status                    :integer
