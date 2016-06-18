@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     jsonapi_resources :streaming_links
     jsonapi_resources :franchises
     jsonapi_resources :installments
+    jsonapi_resources :mappings
   end
 
   use_doorkeeper

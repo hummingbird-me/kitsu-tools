@@ -12,4 +12,5 @@ class MediaResource < BaseResource
   has_many :genres
   has_many :castings
   has_many :installments
+  has_many :mappings
 end
