@@ -29,8 +29,11 @@ module Hummingbird
 
     # Include all concern directories in app/*/concerns
     concern_dirs = Dir['app/*/concerns'].map { |d| File.expand_path(d) }
-    Rails.application.config.eager_load_paths += concern_dirs
-    Rails.application.config.eager_load_paths.uniq!
+    config.eager_load_paths += concern_dirs
+    # Include data_import and list_import
+    config.eager_load_paths += %w[lib/data_import]
+    # Rip out any non-uniqu entries
+    config.eager_load_paths.uniq!
 
     # We run under /api
     config.relative_url_root = '/api'
