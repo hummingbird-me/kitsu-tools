@@ -66,14 +66,7 @@ group :development, :test do
   # Development+Testing
   gem 'factory_girl_rails' # Factories > Fixtures
   gem 'database_cleaner' # Clean the database fully before doing anything
-
-  # HERE THERE BE DRAGONS: Remove and uncomment line below when rspec-rails is
-  # released with a fix for rspec/rspec-rails#1430
-  %w[rspec rspec-core rspec-expectations rspec-mocks rspec-rails
-     rspec-support].each do |lib|
-    gem lib, github: "rspec/#{lib}", branch: 'master'
-  end
-  # gem 'rspec-rails' # Specs > Tests
+  gem 'rspec-rails' # Specs > Tests
 
   # Guard notices filesystem changes and *does things*
   gem 'guard'

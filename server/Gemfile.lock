@@ -1,61 +1,4 @@
 GIT
-  remote: git://github.com/rspec/rspec-core.git
-  revision: 1f011150e965b12b3a6ea5123084bc20a9567984
-  branch: master
-  specs:
-    rspec-core (3.4.0.pre)
-      rspec-support (= 3.4.0.pre)
-
-GIT
-  remote: git://github.com/rspec/rspec-expectations.git
-  revision: 7f0d1f6a68fdfa6e8a06518a51e54833baafa2c0
-  branch: master
-  specs:
-    rspec-expectations (3.4.0.pre)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (= 3.4.0.pre)
-
-GIT
-  remote: git://github.com/rspec/rspec-mocks.git
-  revision: abb875d2cc10998d407b07c93d5686675d36b61c
-  branch: master
-  specs:
-    rspec-mocks (3.4.0.pre)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (= 3.4.0.pre)
-
-GIT
-  remote: git://github.com/rspec/rspec-rails.git
-  revision: c1de0e2ced37f1a005fd16948a770661d34264e6
-  branch: master
-  specs:
-    rspec-rails (3.4.0.pre)
-      actionpack (>= 3.0, < 4.3)
-      activesupport (>= 3.0, < 4.3)
-      railties (>= 3.0, < 4.3)
-      rspec-core (= 3.4.0.pre)
-      rspec-expectations (= 3.4.0.pre)
-      rspec-mocks (= 3.4.0.pre)
-      rspec-support (= 3.4.0.pre)
-
-GIT
-  remote: git://github.com/rspec/rspec-support.git
-  revision: 838e6aab14cd472e860b41503c670a6ef5cf9606
-  branch: master
-  specs:
-    rspec-support (3.4.0.pre)
-
-GIT
-  remote: git://github.com/rspec/rspec.git
-  revision: a064ad487c843770126b9d6dc1e28be689ef09a6
-  branch: master
-  specs:
-    rspec (3.4.0.pre)
-      rspec-core (= 3.4.0.pre)
-      rspec-expectations (= 3.4.0.pre)
-      rspec-mocks (= 3.4.0.pre)
-
-GIT
   remote: git://github.com/vevix/twemoji.git
   revision: 67f726daea339b6dbf8d9717244096ef46f0553a
   specs:
@@ -345,9 +288,30 @@ GEM
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rolify (4.1.1)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+    rspec-core (3.4.4)
+      rspec-support (~> 3.4.0)
+    rspec-expectations (3.4.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-mocks (3.4.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.4.0)
+    rspec-rails (3.4.2)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
+      rspec-support (~> 3.4.0)
     rspec-sidekiq (2.1.0)
       rspec (~> 3.0, >= 3.0.0)
       sidekiq (>= 2.4.0)
+    rspec-support (3.4.1)
     shellany (0.0.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
@@ -436,13 +400,8 @@ DEPENDENCIES
   redis
   redis-rails
   rolify
-  rspec!
-  rspec-core!
-  rspec-expectations!
-  rspec-mocks!
-  rspec-rails!
+  rspec-rails
   rspec-sidekiq
-  rspec-support!
   shoulda-matchers
   sidekiq (~> 3.4.2)
   sidetiq
@@ -454,4 +413,4 @@ DEPENDENCIES
   typhoeus
 
 BUNDLED WITH
-   1.11.2
+   1.12.5
