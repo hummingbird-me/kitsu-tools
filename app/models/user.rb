@@ -118,7 +118,7 @@ class User < ActiveRecord::Base
     !! @favorites.member?([item.id, item.class.to_s])
   end
 
-  scope :pro_expires_this_month, -> (range) { where(pro_expires_at: Date.today.all_month) }
+  scope :pro_expires_this_month, -> { where(pro_expires_at: Date.today.all_month) }
   scope :recurring_pro, -> { where(pro_membership_plan_id: ProMembershipPlan.recurring_plans.map(&:id)) }
 
   # Following stuff.
