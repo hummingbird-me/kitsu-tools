@@ -70,7 +70,7 @@ class AdminController < ApplicationController
     stats[:pending_count] = Version.pending.count
     stats[:sha_hash] = `git log --pretty=format:'%h' -n 1`
     stats[:pro_users] = User.where('pro_expires_at > ?', Date.today)
-    number_charges = User.pro_expires_this_month.recurring_pro
+    number_charges = User.pro_expires_this_month.recurring_pro.count
     stats[:pro_gross_revenue] = User.pro_expires_this_month.recurring_pro.map { |u| u.pro_membership_plan.amount }.reduce(&:+).to_f
     stats[:pro_stripe_fees] = (number_charges * 0.30) + (stats[:pro_gross_revenue] * 0.02_9) # 2.9% + 30¢ per charge
     stats[:pro_net_revenue] = stats[:pro_gross_revenue] - stats[:pro_stripe_fees]
