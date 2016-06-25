@@ -8,7 +8,7 @@ module DataImport
       delegate :queue, :run, to: :@hydra
     end
 
-    def initialize(opts = {})
+    def initialize
       @hydra = Typhoeus::Hydra.new(max_concurrency: 80) # hail hydra
       super
     end
@@ -18,9 +18,23 @@ module DataImport
       hydra.queued_requests
     end
 
-    def get(path, opts = {})
+    def parallel_get(urls, opts = {})
+      # This lovely thing handles an array of URLs by repeatly shoving onto an
+      # array and then when it has 'em all, it yields the results
+      if urls.respond_to?(:each)
+        results = []
+        return urls.each do |url|
+          get(url, opts) do |res|
+            results << res
+            yield *results if results.length == urls.length
+          end
+        end
+      end
+    end
+
+    def get(url, opts = {})
       opts = opts.merge(accept_encoding: :gzip)
-      req = Typhoeus::Request.new(build_url(path), opts)
+      req = Typhoeus::Request.new(url, opts)
       req.on_failure do |res|
         puts "Request failed (#{request_url(res)} => #{res.return_code.to_s})"
       end
@@ -29,18 +43,9 @@ module DataImport
           puts "Request failed (#{request_url(res)} => #{res.status_message})"
         end
       end
-      if block_given?
-        req.on_complete do |res|
-          yield res.body
-        end
-      end
+      req.on_complete { |res| yield res.body } if block_given?
       queue(req)
       req
-    end
-
-    def build_url(path)
-      return path if path.include?('://')
-      "#{@opts[:host]}#{path}"
     end
 
     def request_url(res)
