@@ -2,17 +2,6 @@ module DataImport
   module Media
     extend ActiveSupport::Concern
 
-    included do
-      # @attr_reader [ActiveSupport::HashWithIndifferentAccess] options
-      # (specific to implementation) such as API token or host.
-      attr_reader :opts
-    end
-
-    def initialize(opts = {})
-      @opts = opts.with_indifferent_access
-      super
-    end
-
     # Retrieve multiple media, by default just maps over get_media
     #
     # @param [Array<String>] list of external IDs to load

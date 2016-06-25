@@ -5,6 +5,15 @@ module DataImport
     include DataImport::Media
     include DataImport::HTTP
 
+    # @attr_reader [ActiveSupport::HashWithIndifferentAccess] options
+    # (specific to implementation) such as API token or host.
+    attr_reader :opts
+
+    def initialize(opts = {})
+      @opts = opts.with_indifferent_access
+      super
+    end
+
     def get_media(external_id)
       media = Mappings.lookup('mydramalist', external_id)
       parallel_get([
