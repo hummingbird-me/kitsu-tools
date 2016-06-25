@@ -79,7 +79,7 @@ group :test do
   gem 'json_expressions' # Test outputted JSON
   gem 'rspec-sidekiq' # Test Sidekiq jobs
   gem 'faker' # Fake data
-  gem 'fakeweb' # Web faking
+  gem 'webmock' # Web faking
   gem 'codeclimate-test-reporter', require: false # CodeClimate coverage
   gem 'simplecov' # Local coverage
 

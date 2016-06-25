@@ -45,6 +45,7 @@ GEM
       tzinfo (~> 1.1)
     acts_as_list (0.7.2)
       activerecord (>= 3.0)
+    addressable (2.4.0)
     after_commit_action (1.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -77,6 +78,8 @@ GEM
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
       after_commit_action (~> 1.0.0)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     database_cleaner (1.5.1)
     delayed_paperclip (2.9.1)
       paperclip (>= 3.3)
@@ -116,7 +119,6 @@ GEM
       railties (>= 3.0.0)
     faker (1.5.0)
       i18n (~> 0.5)
-    fakeweb (1.3.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     fast_blank (1.0.0)
@@ -148,6 +150,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    hashdiff (0.3.0)
     hiredis (0.6.0)
     hitimes (1.2.3)
     i18n (0.7.0)
@@ -312,6 +315,7 @@ GEM
       rspec (~> 3.0, >= 3.0.0)
       sidekiq (>= 2.4.0)
     rspec-support (3.4.1)
+    safe_yaml (1.0.4)
     shellany (0.0.1)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
@@ -350,6 +354,10 @@ GEM
       thread_safe (~> 0.1)
     warden (1.2.3)
       rack (>= 1.0)
+    webmock (2.1.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
 
 PLATFORMS
   ruby
@@ -370,7 +378,6 @@ DEPENDENCIES
   dotenv-rails
   factory_girl_rails
   faker
-  fakeweb
   fast_blank
   flamegraph
   foreman
@@ -411,6 +418,7 @@ DEPENDENCIES
   timecop
   twemoji!
   typhoeus
+  webmock
 
 BUNDLED WITH
    1.12.5
