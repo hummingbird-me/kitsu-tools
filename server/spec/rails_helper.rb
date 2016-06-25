@@ -1,4 +1,5 @@
 ENV['RAILS_ENV'] ||= 'test'
+require_relative './support/coverage' # Load coverage stuff early
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is in production mode!') if Rails.env.production?
@@ -20,4 +21,8 @@ RSpec.configure do |config|
 
   # Figure out :type attributes from directory names
   config.infer_spec_type_from_file_location!
+
+  # Load the entire application so we get zero-coverage files if we're running
+  # the entire suite
+  Rails.application.eager_load! unless config.files_to_run.one?
 end
