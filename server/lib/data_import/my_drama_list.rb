@@ -7,8 +7,13 @@ module DataImport
 
     def get_media(external_id)
       media = Mappings.lookup('mydramalist', external_id)
-      get(["/#{external_id}", "/#{external_id}/cast"]) do |main_page, cast_page|
-        details = Extractor::.new(main_page)
+      parallel_get([
+        "/#{external_id}",
+        "/#{external_id}/cast"
+      ]) do |main_page, cast_page|
+        details = Extractor::Details.new(main_page)
+        cast = Extractor::Cast.new(cast_page)
+        # TODO: build the object tree and yield it out
       end
     end
 
