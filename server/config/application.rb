@@ -30,10 +30,14 @@ module Hummingbird
     # Include all concern directories in app/*/concerns
     concern_dirs = Dir['app/*/concerns'].map { |d| File.expand_path(d) }
     config.eager_load_paths += concern_dirs
-    # Include data_import and list_import
-    config.eager_load_paths += %w[lib/data_import]
-    # Rip out any non-uniqu entries
+    # Eager-load data_import and list_import files
+    import_dirs = Dir['lib/{data,list}_import'].map { |d| File.expand_path(d) }
+    config.eager_load_paths += import_dirs
+    # Rip out any non-unique entries
     config.eager_load_paths.uniq!
+
+    # Allow autoloading any lib files
+    config.autoload_paths << "#{Rails.root}/lib"
 
     # We run under /api
     config.relative_url_root = '/api'
