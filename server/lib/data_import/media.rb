@@ -18,7 +18,7 @@ module DataImport
     # @param [Array<String>] list of external IDs to load
     # @return [Hash<String, Media>] a hash of external_id => media
     def get_multiple_media(external_ids)
-      external_ids.map { |id| [id, get_media(id)] }.to_h
+      external_ids.each { |id| get_media(id) { |media| yield id, media } }
     end
 
     # Retrieve media information by external ID
