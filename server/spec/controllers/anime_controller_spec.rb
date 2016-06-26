@@ -14,6 +14,15 @@ RSpec.describe AnimeController, type: :controller do
         expect(response.body).to have_resources(ANIME, 'anime')
       end
     end
+
+    describe 'with filter[text]' do
+      it 'should respond with an anime' do
+        anime.save!
+        MediaIndex::Anime.import!
+        get :index, filter: { text: anime.canonical_title }
+        expect(response.body).to have_resources(ANIME, 'anime')
+      end
+    end
   end
 
   describe '#show' do
