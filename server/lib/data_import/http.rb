@@ -36,23 +36,24 @@ module DataImport
       opts = opts.merge(accept_encoding: :gzip)
       req = Typhoeus::Request.new(url, opts)
       req.on_failure do |res|
-        puts "Request failed (#{request_url(res)} => #{res.return_code.to_s})"
+        message = res.return_code.to_s
+        $stderr.puts "Request failed (GET #{request_url(res)} => #{message})"
       end
       req.on_headers do |res|
         unless res.code == 200
-          puts "Request failed (#{request_url(res)} => #{res.status_message})"
+          message = res.status_message
+          $stderr.puts "Request failed (GET #{request_url(res)} => #{message})"
         end
       end
-      req.on_complete { |res| yield res.body } if block_given?
+      req.on_complete do |res|
+        yield res.body if res.code == 200
+      end if block_given?
       queue(req)
       req
     end
 
     def request_url(res)
-      req = res.is_a?(Typhoeus::Response) ? res.request : res
-      url = res.is_a?(Typhoeus::Response) ? res.effective_url : res.url
-      method = req.options[:method].to_s.upcase
-      "#{method} #{url}"
+      res.respond_to?(:effective_url) ? res.effective_url : res.url
     end
   end
 end
