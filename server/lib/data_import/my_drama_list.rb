@@ -11,18 +11,20 @@ module DataImport
 
     def initialize(opts = {})
       @opts = opts.with_indifferent_access
-      super
+      super()
     end
 
     def get_media(external_id)
-      media = Mappings.lookup('mydramalist', external_id)
+      media = Mapping.lookup('mydramalist', external_id) || Drama.new
       parallel_get([
         "/#{external_id}",
         "/#{external_id}/cast"
       ]) do |main_page, cast_page|
         details = Extractor::Details.new(main_page)
-        cast = Extractor::Cast.new(cast_page)
-        # TODO: build the object tree and yield it out
+        cast = Extractor::CastList.new(cast_page)
+
+        media.assign_attributes(details.to_h)
+        yield media
       end
     end
 
