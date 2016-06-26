@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe DataImport::HTTP, focus: true do
+RSpec.describe DataImport::HTTP do
   subject { Class.new { include DataImport::HTTP }.new }
 
   describe 'getting multiple urls in parallel' do
