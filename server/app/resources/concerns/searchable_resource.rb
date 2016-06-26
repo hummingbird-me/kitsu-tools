@@ -89,7 +89,7 @@ module SearchableResource
         next unless filters.key?(field) # Skip if we don't have a filter
 
         filter = filters[field]
-        filter = opts[:apply].call(filter, context) if opts[:apply]
+        filter = opts[:apply].call(filter, {}) if opts[:apply]
 
         {mode: opts[:mode] || :filter, query: auto_query(field, filter)}
       end
