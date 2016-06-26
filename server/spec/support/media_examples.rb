@@ -22,4 +22,25 @@ RSpec.shared_examples 'media' do
       .is_less_than_or_equal_to(5)
       .is_greater_than(0)
   }
+
+  describe '#calculate_rating_frequencies' do
+    context 'with no library entries' do
+      it 'should return a Hash of zeroes' do
+        subject.save!
+        freqs = subject.calculate_rating_frequencies
+        expect(freqs).to include(0.5)
+        expect(freqs).to include(2.5)
+        expect(freqs).to include(5.0)
+        expect(freqs.values).to all(eq(0))
+      end
+    end
+    context 'with a couple library entries' do
+      it 'should return the count of each rating in a Hash' do
+        subject.save!
+        3.times { create(:library_entry, media: subject, rating: 3.0) }
+        freqs = subject.calculate_rating_frequencies
+        expect(freqs[3.0]).to eq(3)
+      end
+    end
+  end
 end

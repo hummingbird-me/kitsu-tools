@@ -8,9 +8,14 @@ module Rateable
     }, allow_nil: true
   end
 
-  def recalculate_rating_frequencies!
-    frequencies = LibraryEntry.where(media: self).group(:rating).count.
-      transform_keys(&:to_f)
-    self.rating_frequencies = frequencies.slice(LibraryEntry::VALID_RATINGS)
+  def calculate_rating_frequencies
+    base = LibraryEntry::VALID_RATINGS.map { |r| [r, 0] }.to_h
+    freqs = LibraryEntry.where(media: self).group(:rating).count.
+      transform_keys(&:to_f).slice(*LibraryEntry::VALID_RATINGS)
+    base.merge(freqs)
+  end
+
+  def calculate_rating_frequencies!
+    self.update_attribute(:rating_frequencies, calculate_rating_frequencies)
   end
 end
