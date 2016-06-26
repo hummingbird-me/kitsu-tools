@@ -33,5 +33,6 @@
 require 'rails_helper'
 
 RSpec.describe Manga, type: :model do
+  subject { build(:manga) }
   include_examples 'media'
 end

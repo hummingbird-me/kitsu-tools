@@ -36,6 +36,8 @@
 require 'rails_helper'
 
 RSpec.describe Anime, type: :model do
+  subject { build(:anime) }
+
   include_examples 'media'
   include_examples 'episodic'
   include_examples 'age_ratings'
