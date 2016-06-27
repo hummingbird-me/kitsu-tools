@@ -68,4 +68,13 @@ class LibraryEntry < ActiveRecord::Base
       errors.add(:rating, 'must be a multiple of 0.5')
     end
   end
+
+  after_save do
+    if rating_changed?
+      media.transaction do
+        media.decrement_rating_frequency(rating_was)
+        media.increment_rating_frequency(rating)
+      end
+    end
+  end
 end

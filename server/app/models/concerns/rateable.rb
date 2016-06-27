@@ -18,4 +18,23 @@ module Rateable
   def calculate_rating_frequencies!
     self.update_attribute(:rating_frequencies, calculate_rating_frequencies)
   end
+
+  def update_rating_frequency(rating, diff)
+    return if rating.nil?
+    update_query = <<-EOF
+      rating_frequencies = rating_frequencies
+        || hstore('#{rating.to_s}',
+          ((rating_frequencies->'#{rating}')::integer + #{diff})::text)
+    EOF
+    self.class.where(id: self.id).update_all(update_query)
+    self.touch
+  end
+
+  def decrement_rating_frequency(rating)
+    update_rating_frequency(rating, -1)
+  end
+
+  def increment_rating_frequency(rating)
+    update_rating_frequency(rating, +1)
+  end
 end
