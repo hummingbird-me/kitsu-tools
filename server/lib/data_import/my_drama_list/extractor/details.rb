@@ -57,7 +57,7 @@ class DataImport::MyDramaList
 
       def episode_length
         str = details['Duration']
-        parts = str.match(/(?:(?<hr>\d+) hr.)? (?<min>\d+) min./)
+        parts = str.match(/(?:(?<hr>\d+) hr. )?(?<min>\d+) min./)
         (parts['hr'].to_i * 60) + parts['min'].to_i
       end
 

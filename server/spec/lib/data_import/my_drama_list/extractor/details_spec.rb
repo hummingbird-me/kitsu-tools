@@ -58,13 +58,25 @@ RSpec.describe DataImport::MyDramaList::Extractor::Details do
     end
   end
 
-  context '#episode_length' do
+  describe '#episode_length' do
     it 'should return the runtime of a single unit in minutes' do
       expect(subject.episode_length).to eq(114)
     end
+    context 'for a minutes-only length' do
+      subject do
+        described_class.new(<<-EOF.strip_heredoc)
+          <html><body><div class="show-details"><ul><li class="txt-block">
+            <h4 class="inline">Duration:</h4> 22 min.
+          </li></ul></div></body></html>
+        EOF
+      end
+      it 'should return the runtime in minutes' do
+        expect(subject.episode_length).to eq(22)
+      end
+    end
   end
 
-  context '#show_type' do
+  describe '#show_type' do
     it 'should return a Symbol' do
       expect(subject.show_type).to be_a(Symbol)
     end
