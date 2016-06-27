@@ -62,5 +62,13 @@ RSpec.shared_examples 'media' do
       subject.reload
       expect(subject.rating_frequencies['3.0']).to eq('6')
     end
+    context 'without a pre-existing value' do
+      it 'should assume zero' do
+        subject.save!
+        subject.increment_rating_frequency('3.0')
+        subject.reload
+        expect(subject.rating_frequencies['3.0']).to eq('1')
+      end
+    end
   end
 end

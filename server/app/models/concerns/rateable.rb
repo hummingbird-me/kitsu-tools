@@ -23,8 +23,9 @@ module Rateable
     return if rating.nil?
     update_query = <<-EOF
       rating_frequencies = rating_frequencies
-        || hstore('#{rating.to_s}',
-          ((rating_frequencies->'#{rating}')::integer + #{diff})::text)
+        || hstore('#{rating.to_s}', (
+          COALESCE(rating_frequencies->'#{rating}', '0')::integer + #{diff}
+        )::text)
     EOF
     self.class.where(id: self.id).update_all(update_query)
     self.touch
