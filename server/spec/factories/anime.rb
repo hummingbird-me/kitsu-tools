@@ -38,6 +38,7 @@ FactoryGirl.define do
     titles { {ja_en: Faker::Name.name} }
     canonical_title 'ja_en'
     average_rating { rand(1.0..10.0) / 2 }
+    show_type { Anime.show_types.keys.sample }
     age_rating 'G'
 
     trait :nsfw do

@@ -41,6 +41,7 @@ class Anime < ActiveRecord::Base
   include AgeRatings
   include Episodic
 
+  enum show_type: %i[TV special OVA ONA movie music]
   has_many :streaming_links, as: 'media', dependent: :destroy
 
   update_index('media#anime') { self }
@@ -51,7 +52,7 @@ class Anime < ActiveRecord::Base
       -> { canonical_title }, # attack-on-titan
       -> { titles[:ja_en] } # shingeki-no-kyojin
     ]
-    if show_type == 'TV'
+    if show_type == :TV
       # If it's a TV show with a name collision, common practice is to
       # specify the year (ex: kanon-2006)
       candidates << -> { [titles[:ja_en], year] }
