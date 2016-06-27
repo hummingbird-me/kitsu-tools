@@ -32,7 +32,7 @@ class DataImport::MyDramaList
 
       def titles
         main_title = dom.at_css('h1').content.
-                         gsub("(#{start_date.year})", '').strip
+                         gsub("(#{start_date.try(:year)})", '').strip
         titles = {}
         titles["en_#{country}"] = main_title
         titles["#{language}_#{country}"] = details['Native title']
