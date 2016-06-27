@@ -1,6 +1,12 @@
 module DataImport
   class MyDramaList
     MDL_HOST = 'http://mydramalist.com/'
+    GENRE_MAPPINGS = {
+      'Manga' => nil, # Manga-inspired, use Franchise instead
+      'Detective' => 'Investigation', # These genres are mostly the same
+      'Wuxia' => 'Martial Arts', # Wuxia is a specific subset
+      'Animals' => nil # wtf this is absurdly specific
+    }
 
     include DataImport::Media
     include DataImport::HTTP
@@ -24,6 +30,11 @@ module DataImport
         cast = Extractor::CastList.new(cast_page)
 
         media.assign_attributes(details.to_h)
+        media.genres = details.genres.map do |genre|
+          genre = GENRE_MAPPINGS[genre] if GENRE_MAPPINGS.include? genre
+          Genre.find_by(name: genre)
+        end.compact
+        p media.genres
         yield media
       end
     end

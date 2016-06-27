@@ -118,3 +118,60 @@ yaoi:
 anime_influenced:
   id: 40
   name: Anime Influenced
+youth:
+  id: 41
+  name: Youth
+business:
+  id: 42
+  name: Business
+crime:
+  id: 43
+  name: Crime
+zombies:
+  id: 42
+  name: Zombies
+documentary:
+  id: 45
+  name: Documentary
+family:
+  id: 46
+  name: Family
+food:
+  id: 47
+  name: Food
+friendship:
+  id: 48
+  name: Friendship
+investigation:
+  id: 49
+  name: Investigation
+law:
+  id: 50
+  name: Law
+life:
+  id: 51
+  name: Life
+mature:
+  id: 52
+  name: Mature
+medical:
+  id: 53
+  name: Medical
+political:
+  id: 54
+  name: Political
+sitcom:
+  id: 55
+  name: Sitcom
+suspense:
+  id: 56
+  name: Suspense
+tokusatsu:
+  id: 57
+  name: Tokusatsu
+tragedy:
+  id: 58
+  name: Tragedy
+war:
+  id: 59
+  name: War
