@@ -79,4 +79,33 @@ class MediaIndex < Chewy::Index
       field :characters, value: -> (a, crutch) { crutch.characters[a.id] }
     end
   end
+
+  define_type Drama.includes(:genres) do
+    crutch(:people) { |coll| MediaIndex.get_people 'Drama', coll.map(&:id) }
+    crutch(:characters) { |coll| MediaIndex.get_characters 'Drama', coll.map(&:id) }
+    crutch(:streamers) { |coll| MediaIndex.get_streamers 'Drama', coll.map(&:id) }
+
+    root date_detection: false do
+      include IndexTranslatable
+
+      # Titles and freeform text
+      translatable_field :titles
+      field :abbreviated_titles, type: 'string'
+      field :synopsis, type: 'string', analyzer: 'english'
+      # Enumerated values
+      field :age_rating, :show_type, type: 'string'
+      # Various Data
+      field :episode_count, type: 'short' # Max of 32k or so is reasonable
+      field :average_rating, type: 'float'
+      field :start_date, :end_date, :created_at, type: 'date'
+      field :year, type: 'short' # Update this before year 32,000
+      field :genres, value: -> (a) { a.genres.map(&:name) }
+      field :user_count, type: 'integer'
+      # Castings
+      field :people, value: -> (a, crutch) { crutch.people[a.id] }
+      field :characters, value: -> (a, crutch) { crutch.characters[a.id] }
+      # Where to watch
+      field :streamers, value: -> (a, crutch) { crutch.streamers[a.id] }
+    end
+  end
 end
