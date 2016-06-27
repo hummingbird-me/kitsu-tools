@@ -6,12 +6,24 @@ moduleForComponent('box-select', 'Integration | Component | box select', {
 });
 
 test('it renders', function(assert) {
-  assert.expect(3);
+  assert.expect(2);
+  this.set('selection', ['one', 'two', 'three']);
+  this.render(hbs`
+    {{#box-select selection=selection as |option|}}
+      {{option}}
+    {{/box-select}}
+  `);
 
-  this.set('selection', ['abc', 'def']);
-  this.set('selected', []);
-  this.set('testSelect', () => {
-    assert.ok(true);
+  assert.equal(this.$('li').length, 3);
+  assert.equal(this.$('li').eq(0).text().trim(), 'one');
+});
+
+test('element is selected upon action', function(assert) {
+  assert.expect(1);
+  this.set('selection', ['one', 'two', 'three']);
+  this.set('selected', ['two', 'three']);
+  this.set('testSelect', (value) => {
+    assert.deepEqual(value, ['two', 'three', 'one']);
   });
 
   this.render(hbs`{{#box-select
@@ -23,6 +35,23 @@ test('it renders', function(assert) {
   {{/box-select}}`);
 
   this.$('li').eq(0).click();
-  assert.equal(this.$('li').length, 2);
-  assert.equal(this.$('li').eq(0).text().trim(), 'abc');
+});
+
+test('element is deselected upon action', function(assert) {
+  assert.expect(1);
+  this.set('selection', ['one', 'two', 'three']);
+  this.set('selected', ['one', 'two', 'three']);
+  this.set('testSelect', (value) => {
+    assert.deepEqual(value, ['one', 'three']);
+  });
+
+  this.render(hbs`{{#box-select
+    selection=selection
+    selected=selected
+    onSelect=(action testSelect) as |option|
+  }}
+    {{option}}
+  {{/box-select}}`);
+
+  this.$('li').eq(1).click();
 });

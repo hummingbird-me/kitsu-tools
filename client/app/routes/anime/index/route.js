@@ -47,7 +47,6 @@ export default Route.extend({
    */
   serializeQueryParam(value, _, defaultValueType) {
     if (defaultValueType === 'array') {
-      // ?? TODO: There is a weird edgecase where `value` isn't deserialized
       if (typeOf(value) !== 'array') {
         value = this.deserializeQueryParam(...arguments);
       }

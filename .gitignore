@@ -13,6 +13,7 @@ client/fastboot-dist
 client/node_modules
 client/bower_components
 client/public/system/*
+client/.coverage
 
 # general
 

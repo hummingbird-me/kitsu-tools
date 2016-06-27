@@ -6,7 +6,6 @@ moduleForComponent('foundation-dropdown', 'Integration | Component | foundation 
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
   this.render(hbs`
     {{#foundation-dropdown dropdownId="test"}}
       Hello, World!

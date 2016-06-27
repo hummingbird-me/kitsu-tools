@@ -10,9 +10,12 @@ export default AjaxService.extend({
   headers: computed('session.isAuthenticated', {
     get() {
       const headers = {};
-      get(this, 'session').authorize('authorizer:application', (headerName, headerValue) => {
-        headers[headerName] = headerValue;
-      });
+      const isAuthenticated = get(this, 'session.isAuthenticated');
+      if (isAuthenticated) {
+        get(this, 'session').authorize('authorizer:application', (headerName, headerValue) => {
+          headers[headerName] = headerValue;
+        });
+      }
       return headers;
     }
   }),

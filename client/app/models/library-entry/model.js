@@ -4,14 +4,14 @@ import { belongsTo } from 'ember-data/relationships';
 import { validator, buildValidations } from 'ember-cp-validations';
 
 const Validations = buildValidations({
-  episodesWatched: [
+  progress: [
     validator('presence', true),
     validator('number', {
       integer: true,
       gte: 0
     })
   ],
-  rewatchCount: [
+  reconsumeCount: [
     validator('presence', true),
     validator('number', {
       integer: true,

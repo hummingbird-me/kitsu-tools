@@ -1,13 +1,17 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import $ from 'jquery';
+import jQuery from 'jquery';
 
 moduleForComponent('foundation-reveal', 'Integration | Component | foundation reveal', {
-  integration: true
+  integration: true,
+
+  afterEach() {
+    // reveal renders outside the outlet so clean it up
+    jQuery('[data-reveal]').remove();
+  }
 });
 
 test('it renders', function(assert) {
-  assert.expect(4);
   this.render(hbs`
     {{#foundation-reveal modalId="hello" modalClass="world"}}
       <span data-test-selector="span">Hello, World!</span>
@@ -15,14 +19,14 @@ test('it renders', function(assert) {
   `);
 
   // id/class set
-  assert.equal($('[data-reveal]').attr('id'), 'hello');
-  assert.ok($('[data-reveal]').hasClass('world'));
+  assert.equal(jQuery('[data-reveal]').attr('id'), 'hello');
+  assert.ok(jQuery('[data-reveal]').hasClass('world'));
 
   // block is rendered
-  const $text = $('[data-test-selector="span"]');
+  const $text = jQuery('[data-test-selector="span"]');
   assert.equal($text.text().trim(), 'Hello, World!');
 
   // button is created
-  const $button = $('button.close-button');
+  const $button = jQuery('button.close-button');
   assert.equal($button.text().trim(), '×');
 });

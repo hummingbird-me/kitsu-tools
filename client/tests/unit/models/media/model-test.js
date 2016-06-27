@@ -1,12 +1,21 @@
 import { moduleForModel, test } from 'ember-qunit';
+import run from 'ember-runloop';
+import set from 'ember-metal/set';
+import get from 'ember-metal/get';
 
 moduleForModel('media', 'Unit | Model | media', {
-  // Specify the other units that are required for this test.
   needs: ['model:genre']
 });
 
-test('it works', function(assert) {
-  // this.subject aliases the createRecord method on the model
+test('mergedTitles works', function(assert) {
   const media = this.subject();
-  assert.ok(media);
+  run(() => {
+    set(media, 'titles', {
+      one: 'Hello',
+      two: ', ',
+      three: 'World',
+      four: '!'
+    });
+  });
+  assert.equal(get(media, 'mergedTitles'), 'hello, world!');
 });

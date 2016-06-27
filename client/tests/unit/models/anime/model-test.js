@@ -1,12 +1,22 @@
 import { moduleForModel, test } from 'ember-qunit';
+import set from 'ember-metal/set';
+import get from 'ember-metal/get';
+import run from 'ember-runloop';
 
 moduleForModel('anime', 'Unit | Model | anime', {
-  // Specify the other units that are required for this test.
   needs: ['model:genre']
 });
 
-test('it works', function(assert) {
-  // this.subject aliases the createRecord method on the model
+test('typeStr', function(assert) {
+  assert.expect(6);
   const anime = this.subject();
-  assert.ok(anime);
+
+  // 1 - TV, 2 - Special, 3 - ONA, 4 - OVA, 5 - Movie, 6 - Music
+  const data = ['TV', 'Special', 'ONA', 'OVA', 'Movie', 'Music'];
+  run(() => {
+    for (let i = 0; i < data.length; ++i) {
+      set(anime, 'showType', i + 1);
+      assert.equal(get(anime, 'typeStr'), data[i]);
+    }
+  });
 });

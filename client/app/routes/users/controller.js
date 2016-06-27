@@ -11,7 +11,7 @@ export default Controller.extend(IsOwnerMixin, {
   coverImageStyle: computed('user.coverImage', {
     get() {
       const coverImage = get(this, 'user.coverImage');
-      return `background-image: url('${coverImage}')`.htmlSafe();
+      return `background-image: url("${coverImage}")`.htmlSafe();
     }
   })
 });

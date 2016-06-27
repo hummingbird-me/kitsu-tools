@@ -31,9 +31,7 @@ export default Component.extend({
       this.sendAction('update', values.toArray());
     });
     */
-    // jscs:disable
-    const $el = this.$()[0];
-    // jscs:enable
+    const [$el] = this.$();
     const selected = [get(this, 'initialStart')];
     if (get(this, 'doubleSided') === true) {
       selected.push(get(this, 'initialEnd'));
@@ -42,7 +40,7 @@ export default Component.extend({
     const decimal = get(this, 'decimal');
     noUiSlider.create($el, {
       start: selected,
-      connect: true,
+      connect: get(this, 'doubleSided'),
       step: get(this, 'step'),
       range: {
         'min': get(this, 'start'),

@@ -25,12 +25,12 @@ moduleForModel('library-entry', 'Unit | Model | library-entry', {
 test('model validations', function(assert) {
   const entry = this.subject();
   const valid = {
-    episodesWatched: [0, 10, 50],
-    rewatchCount: [0, 10]
+    progress: [0, 10, 50],
+    reconsumeCount: [0, 10]
   };
   const invalid = {
-    episodesWatched: ['abc', 1.5, -1],
-    rewatchCount: ['abc', 1.5, -1]
+    progress: ['abc', 1.5, -1],
+    reconsumeCount: ['abc', 1.5, -1]
   };
 
   testValidations(entry, valid, invalid, assert);

@@ -20,7 +20,7 @@ export default Component.extend(InViewportMixin, {
   nextLink: computed('links', {
     get() {
       const links = get(this, 'links') || {};
-      return get(links, 'next');
+      return get(links, 'next') || undefined;
     }
   }),
 
@@ -30,8 +30,8 @@ export default Component.extend(InViewportMixin, {
   links: computed('model', {
     get() {
       let model = get(this, 'model');
-      const metadata = get(model, 'meta');
-      return get(metadata, '_links');
+      const metadata = get(model, 'meta') || {};
+      return get(metadata, '_links') || undefined;
     }
   }),
 
@@ -74,7 +74,11 @@ export default Component.extend(InViewportMixin, {
    */
   _parseLink(url) {
     url = window.decodeURI(url);
-    url = url.split('?')[1].split('&');
+    url = url.split('?');
+    if (url.length !== 2) {
+      return {};
+    }
+    url = url[1].split('&');
     const filter = {};
     url.forEach((option) => {
       option = option.split('=');

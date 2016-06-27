@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import Route from 'ember-route';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
@@ -51,10 +50,6 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   _getCurrentUser() {
-    if (Ember.testing) {
-      return;
-    }
-
     return get(this, 'ajax').request('/users?filter[self]=true')
       .then((response) => {
         const [data] = response.data;

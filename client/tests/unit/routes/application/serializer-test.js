@@ -5,8 +5,6 @@ import attr from 'ember-data/attr';
 import setupStore from 'client/tests/helpers/setup-store';
 
 moduleFor('serializer:application', 'Unit | Serializer | application', {
-  // Specify the other units that are required for this test.
-  // needs: ['serializer:application'],
   beforeEach() {
     this.store = setupStore({
       user: Model.extend({
@@ -43,4 +41,18 @@ test('it only serializes changed attributes', function(assert) {
     }
   };
   assert.deepEqual(serializedRecord, data);
+});
+
+test('keyForAttribute returns the key as camelCase', function(assert) {
+  assert.expect(1);
+  const serializer = this.subject();
+  const result = serializer.keyForAttribute('snake_case');
+  assert.equal(result, 'snakeCase');
+});
+
+test('keyForRelationship returns the key as camelCase', function(assert) {
+  assert.expect(1);
+  const serializer = this.subject();
+  const result = serializer.keyForRelationship('snake_case');
+  assert.equal(result, 'snakeCase');
 });

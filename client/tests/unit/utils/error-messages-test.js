@@ -30,3 +30,9 @@ test('works with Doorkeeper response', function(assert) {
   });
   assert.equal(result, 'The provided credentials are invalid.');
 });
+
+test('returns default error message', function(assert) {
+  assert.expect(1);
+  const result = errorMessages({});
+  assert.equal(result, 'An unknown error occurred');
+});

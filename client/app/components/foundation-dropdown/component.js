@@ -3,8 +3,6 @@ import { scheduleOnce } from 'ember-runloop';
 import get from 'ember-metal/get';
 
 export default Component.extend({
-  attributeBindings: ['style'],
-  style: 'position: absolute;',
   dropdownId: undefined,
 
   didInsertElement() {

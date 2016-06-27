@@ -28,7 +28,7 @@
 }}
   <ul class="no-bullet">
     {{#each statuses as |status|}}
-      <li>
+      <li data-test-selector="library-list-button-status">
         <a onclick={{perform updateTask status}}>
           {{status.string}}
         </a>

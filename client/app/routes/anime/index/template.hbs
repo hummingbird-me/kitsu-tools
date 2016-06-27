@@ -66,7 +66,7 @@
               selection=(to-lower (map-by "siteName" model.streamers))
               selected=streamers
               onSelect=(action (mut streamers)) as |option|}}
-            <span class={{option}}></span>
+            <span class={{option}} data-test-selector="filter-streamer"></span>
           {{/box-select}}
         </div>
 
@@ -121,7 +121,7 @@
               selection=(map-by "name" model.genres)
               selected=genres
               onSelect=(action (mut genres)) as |option|}}
-            <a href="#">{{option}}</a>
+            <a href="#" data-test-selector="filter-genre">{{option}}</a>
           {{/box-select}}
         </div>
       </div>

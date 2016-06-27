@@ -1,6 +1,6 @@
 <div class="section-head" data-test-selector="library-section">
   <span class="section-title">{{section.status.string}}</span>
-  <span class="section-stats">{{stats}}</span>
+  <span class="section-stats" data-test-selector="library-section-stats">{{stats}}</span>
 </div>
 
 {{#each section.entries as |entry|}}

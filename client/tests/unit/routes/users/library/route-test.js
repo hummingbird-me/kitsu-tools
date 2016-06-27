@@ -5,7 +5,11 @@ moduleFor('route:users/library', 'Unit | Route | users/library', {
   needs: ['service:metrics']
 });
 
-test('it exists', function(assert) {
+test('_getNextStatuses', function(assert) {
+  assert.expect(2);
   const route = this.subject();
-  assert.ok(route);
+  let result = route._getNextStatuses(1);
+  assert.equal(result, '2,3,4,5');
+  result = route._getNextStatuses(3);
+  assert.equal(result, '1,2,4,5');
 });
