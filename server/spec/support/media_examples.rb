@@ -44,7 +44,7 @@ RSpec.shared_examples 'media' do
     end
   end
 
-  describe '#decrement_rating_frequency', focus: true do
+  describe '#decrement_rating_frequency' do
     it 'should decrement the rating frequency' do
       subject.rating_frequencies['3.0'] = 5
       subject.save!
@@ -54,7 +54,7 @@ RSpec.shared_examples 'media' do
     end
   end
 
-  describe '#increment_rating_frequency', focus: true do
+  describe '#increment_rating_frequency' do
     it 'should increment the rating frequency' do
       subject.rating_frequencies['3.0'] = 5
       subject.save!
