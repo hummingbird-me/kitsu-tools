@@ -9,6 +9,13 @@ module SearchableResource
       @chewy_index = index
     end
 
+    def inherited(subclass)
+      subclass.instance_variable_set(:@chewy_index, @chewy_index.deep_dup)
+      subclass.instance_variable_set(:@queryable_fields,
+                                     @queryable_fields.deep_dup)
+      super
+    end
+
     # Declare the fields to query, and how to query them
     def query(field, opts = {})
       field = field.to_sym
