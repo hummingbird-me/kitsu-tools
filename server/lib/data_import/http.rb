@@ -22,11 +22,11 @@ module DataImport
       # This lovely thing handles an array of URLs by repeatly shoving onto an
       # array and then when it has 'em all, it yields the results
       if urls.respond_to?(:each)
-        results = []
-        return urls.each do |url|
+        results = Array.new(urls.length)
+        return urls.each_with_index do |url, i|
           get(url, opts) do |res|
-            results << res
-            yield *results if results.length == urls.length
+            results[i] = res
+            yield *results if results.compact.length == urls.length
           end
         end
       end
