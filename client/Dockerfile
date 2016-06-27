@@ -16,8 +16,8 @@ RUN bower install --allow-root -q
 COPY . /opt/hummingbird/client
 
 ENTRYPOINT ["./node_modules/.bin/ember"]
-# Until Docker for Mac/Windows are common, we should use the polling watcher,
-# because inotify events aren't proxied from the host machine.
-CMD ["serve", "--port=80", "--environment=development", "--watcher=polling", "--live-reload-port=57777"]
+# If you are using Docker for Windows or Docker Toolbox, you may want to add the
+# following parameter: --watcher=polling
+CMD ["serve", "--port=80", "--environment=development", "--live-reload-port=57777"]
 EXPOSE 57777
 EXPOSE 80
