@@ -1,0 +1,1 @@
+class DramaController < ApplicationController; end
