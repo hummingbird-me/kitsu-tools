@@ -3,9 +3,13 @@ module DataImport
     MDL_HOST = 'http://mydramalist.com/'
     GENRE_MAPPINGS = {
       'Manga' => nil, # Manga-inspired, use Franchise instead
-      'Detective' => 'Investigation', # These genres are mostly the same
+      'Detective' => 'Police', # These genres are mostly the same
+      'Investigation' => 'Police', # We already have a Police genre
       'Wuxia' => 'Martial Arts', # Wuxia is a specific subset
-      'Animals' => nil # wtf this is absurdly specific
+      'Animals' => nil, # wtf this is absurdly specific
+      'Sitcom' => 'Comedy', # sitcom is too specific and not a "thing" in JP
+      'Suspense' => 'Thriller', # suspense is thrilling, right?
+      'War' => 'Military' # Same thing, different wording
     }
 
     include DataImport::Media

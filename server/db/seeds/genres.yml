@@ -128,7 +128,7 @@ crime:
   id: 43
   name: Crime
 zombies:
-  id: 42
+  id: 44
   name: Zombies
 documentary:
   id: 45
@@ -142,9 +142,9 @@ food:
 friendship:
   id: 48
   name: Friendship
-investigation:
+tragedy:
   id: 49
-  name: Investigation
+  name: Tragedy
 law:
   id: 50
   name: Law
@@ -160,18 +160,6 @@ medical:
 political:
   id: 54
   name: Political
-sitcom:
-  id: 55
-  name: Sitcom
-suspense:
-  id: 56
-  name: Suspense
 tokusatsu:
-  id: 57
+  id: 55
   name: Tokusatsu
-tragedy:
-  id: 58
-  name: Tragedy
-war:
-  id: 59
-  name: War
