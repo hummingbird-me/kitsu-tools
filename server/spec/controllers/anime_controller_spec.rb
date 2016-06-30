@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe AnimeController, type: :controller do
   ANIME ||= {
-    titles: { ja_en: String },
+    titles: { en_jp: String },
     canonicalTitle: String
   }
   let(:anime) { create(:anime) }
@@ -42,9 +42,9 @@ RSpec.describe AnimeController, type: :controller do
         type: 'anime',
         attributes: {
           titles: {
-            ja_en: 'Boku no Pico'
+            en_jp: 'Boku no Pico'
           },
-          canonicalTitle: 'ja_en',
+          canonicalTitle: 'en_jp',
           abbreviatedTitles: ['BnP'],
           startDate: '2006-09-07',
           endDate: '2006-09-07'

@@ -26,7 +26,7 @@
 #  average_rating            :float
 #  rating_frequencies        :hstore           default({}), not null
 #  titles                    :hstore           default({}), not null
-#  canonical_title           :string           default("ja_en"), not null
+#  canonical_title           :string           default("en_jp"), not null
 #  abbreviated_titles        :string           is an Array
 #
 

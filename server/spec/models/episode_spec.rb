@@ -16,7 +16,7 @@
 #  airdate                :date
 #  length                 :integer
 #  titles                 :hstore           default({}), not null
-#  canonical_title        :string           default("ja_en"), not null
+#  canonical_title        :string           default("en_jp"), not null
 #  media_type             :string           not null
 #
 

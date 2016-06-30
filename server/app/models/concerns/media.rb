@@ -38,7 +38,7 @@ module Media
   def slug_candidates
     [
       -> { canonical_title },
-      -> { titles[:ja_en] }
+      -> { titles[:en_jp] }
     ]
   end
 end

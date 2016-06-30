@@ -5,7 +5,7 @@
 #  id                        :integer          not null, primary key
 #  slug                      :string           not null
 #  titles                    :hstore           default({}), not null
-#  canonical_title           :string           default("ja_en"), not null
+#  canonical_title           :string           default("en_jp"), not null
 #  abbreviated_titles        :string           is an Array
 #  age_rating                :integer
 #  age_rating_guide          :string
