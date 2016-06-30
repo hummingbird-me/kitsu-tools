@@ -52,17 +52,6 @@ export default Component.extend({
   }),
 
   /**
-   * This component can be created while waiting on a response from the server.
-   * If the promise is passed, then resolve it and let the component know we
-   * have the data.
-   */
-  didInitAttrs() {
-    this._super(...arguments);
-    const promise = get(this, 'promise');
-    RSVP.resolve(promise).then(() => set(this, 'entryIsLoaded', true));
-  },
-
-  /**
    * We use this task to show the user a loading state while we wait for the
    * promises to resolve.
    */
@@ -79,5 +68,16 @@ export default Component.extend({
         yield get(this, 'update')(status.key);
       }
     }
-  }).drop()
+  }).drop(),
+
+  /**
+   * This component can be created while waiting on a response from the server.
+   * If the promise is passed, then resolve it and let the component know we
+   * have the data.
+   */
+  init() {
+    this._super(...arguments);
+    const promise = get(this, 'promise');
+    RSVP.resolve(promise).then(() => set(this, 'entryIsLoaded', true));
+  }
 });
