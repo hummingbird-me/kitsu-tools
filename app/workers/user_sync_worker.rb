@@ -3,8 +3,7 @@ class UserSyncWorker
 
   def perform(user_id)
     user = User.find(user_id)
-    client = DiscourseApi::Client.new(ENV['DISCOURSE_API_URL'])
-    client.api_key = ENV['DISCOURSE_API_KEY']
+    client = DiscourseApi::Client.new(ENV['DISCOURSE_API_URL'], ENV['DISCOURSE_API_KEY'], 'System')
     sso = user.to_discourse_sso
     sso.sso_secret = ENV['DISCOURSE_SSO_SECRET']
 
