@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160629073541) do
+ActiveRecord::Schema.define(version: 20160702083448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -349,6 +349,7 @@ ActiveRecord::Schema.define(version: 20160629073541) do
     t.hstore   "titles",                                default: {},      null: false
     t.string   "canonical_title",                       default: "en_jp", null: false
     t.string   "abbreviated_titles",                                                   array: true
+    t.integer  "user_count",                            default: 0,       null: false
   end
 
   create_table "mappings", force: :cascade do |t|
