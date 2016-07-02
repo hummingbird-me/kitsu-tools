@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527090120) do
+ActiveRecord::Schema.define(version: 20160629073541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -304,6 +304,24 @@ ActiveRecord::Schema.define(version: 20160527090120) do
   add_index "library_entries", ["user_id", "media_type", "media_id"], name: "index_library_entries_on_user_id_and_media_type_and_media_id", unique: true, using: :btree
   add_index "library_entries", ["user_id", "status"], name: "index_library_entries_on_user_id_and_status", using: :btree
   add_index "library_entries", ["user_id"], name: "index_library_entries_on_user_id", using: :btree
+
+  create_table "list_imports", force: :cascade do |t|
+    t.string   "type",                                null: false
+    t.integer  "user_id",                             null: false
+    t.integer  "strategy",                            null: false
+    t.string   "input_file_file_name"
+    t.string   "input_file_content_type"
+    t.integer  "input_file_file_size"
+    t.datetime "input_file_updated_at"
+    t.text     "input_text"
+    t.integer  "status",                  default: 0, null: false
+    t.integer  "progress"
+    t.integer  "total"
+    t.text     "error_message"
+    t.text     "error_trace"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
 
   create_table "manga", force: :cascade do |t|
     t.string   "slug",                      limit: 255
