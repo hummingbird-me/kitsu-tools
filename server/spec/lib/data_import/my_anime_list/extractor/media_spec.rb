@@ -7,7 +7,13 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
   subject { described_class.new(tv) }
 
   describe '#age_rating' do
+    it 'should be a symbol' do
+      expect(subject.age_rating).to be_a(Symbol)
+    end
 
+    it 'should return the rating' do
+      expect(subject.age_rating).to eq(:R)
+    end
   end
 
   describe '#episode_count' do
@@ -45,6 +51,12 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
     end
   end
 
+  describe '#poster_image' do
+    it 'should return an image link' do
+      expect(subject.poster_image).to eq("http://cdn.myanimelist.net/images/anime/4/19644.jpg")
+    end
+  end
+
   describe '#average_rating' do
     # members_score
     it 'should be a float' do
@@ -64,7 +76,7 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
   end
 
   describe '#age_rating_guide' do
-    # need to check format
+    # need to check if this is genres, or what it is.
   end
 
 
@@ -113,7 +125,6 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
         expect(subject.end_date).to be_nil
       end
     end
-
   end
 
   context '#genres' do
@@ -133,7 +144,7 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       expect(subject.titles[:ja_jp]).to eq('カウボーイビバップ')
     end
     it 'should prevent an error if English or Japanese title does not exist' do
-
+      # not sure how to implement this, was done using try(:first)
     end
   end
 

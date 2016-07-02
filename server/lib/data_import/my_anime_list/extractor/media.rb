@@ -1,3 +1,5 @@
+#  age_rating_guide          :string(255)
+
 class DataImport::MyAnimeList
   module Extractor
     class Media
@@ -7,34 +9,36 @@ class DataImport::MyAnimeList
         @data = JSON.parse(json)
       end
 
-      # classification
       def age_rating
+        rating = data['classification'].split(' - ')[0]
 
+        case rating
+        when 'G','TV-Y7' then :G
+        when 'PG', 'PG13' then :PG
+        when 'R' then :R
+        when 'R+', 'Rx' then :R18
+        end
       end
 
-      # episodes
       def episode_count
         data['episodes']
       end
 
-      # duration
       def episode_length
         data['duration']
       end
 
-      # synopsis
       def synopsis
         clean_desc(data['synopsis'])
       end
 
-      # preview
       def youtube_video_id
         data['preview']
       end
 
-      #skipping images for now, will go here
-      # and here
-
+      def poster_image
+        data['image_url']
+      end
 
       def average_rating
         data['members_score']
@@ -42,6 +46,10 @@ class DataImport::MyAnimeList
 
       def user_count
         data['members_count']
+      end
+
+      def age_rating_guide
+
       end
 
       def show_type
@@ -56,12 +64,6 @@ class DataImport::MyAnimeList
         data['end_date'].try(:to_date)
       end
 
-
-
-
-
-
-      # titles
       def titles
         titles = {
           en_jp: data['title'],
@@ -70,12 +72,11 @@ class DataImport::MyAnimeList
         }
       end
 
-      # really not sure what the fuck this is
+      # I dont think I need to actual do anything for this
       def canonical_title
 
       end
 
-      # abbreviated titles
       def abbreviated_titles
         data['other_titles']['synonyms']
       end
@@ -118,16 +119,6 @@ class DataImport::MyAnimeList
         end
         desc.inner_html
       end
-
-
-
-
-
-
-
-
-
-
 
     end
   end
