@@ -38,4 +38,9 @@ class Drama < ActiveRecord::Base
   include Media
   include AgeRatings
   include Episodic
+
+  has_attached_file :cover_image,
+    url: '/:class/:attachment:/:id/:style.:content_type_extension'
+  has_attached_file :poster_image,
+    url: '/:class/:attachment:/:id/:style.:content_type_extension'
 end
