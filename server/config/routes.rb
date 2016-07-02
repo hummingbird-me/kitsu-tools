@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   scope '/edge' do
     jsonapi_resources :library_entries
     jsonapi_resources :anime
+    jsonapi_resources :manga
     jsonapi_resources :drama
     jsonapi_resources :users
     jsonapi_resources :characters
