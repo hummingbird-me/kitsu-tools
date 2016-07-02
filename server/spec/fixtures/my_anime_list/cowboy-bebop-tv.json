@@ -11,7 +11,7 @@
     ],
     "japanese": [
       "\u30ab\u30a6\u30dc\u30fc\u30a4\u30d3\u30d0\u30c3\u30d7"
-    ],
+    ]
   },
   "rank": 21,
   "popularity_rank": 32,
@@ -29,7 +29,8 @@
   "external_links": [
 
   ],
-  "synopsis": "In fake data with some spoiler <div class='spoiler'><input type='button' class='button show_button' onclick='this.nextSibling.style.display='inline-block';this.style.display='none';' data-showname='Show spoiler' data-hidename='Hide spoiler' value='Show spoiler'><span class='spoiler_content' style='display:none'><input type='button' class='button hide_button' onclick='this.parentNode.style.display='none';this.parentNode.parentNode.childNodes[0].style.display='inline-block';' value='Hide spoiler'><br> I am a spoiler!</span></div> <br><br>\r\n[Written by MAL Rewrite]",  "background": "When <i>Cowboy Bebop<\/i> first aired in spring of 1998 on TV Tokyo, only 12 of the show's 26 episodes aired. Anime censorship had increased following the big controversies over <i>Evangelion<\/i>, and most of <i>Bebop<\/i> was pulled from the air due to violent content. Satelite channel WOWOW picked up the show in the fall of that year and aired the full series uncensored. It wasn't a ratings hit in Japan, but nevertheless was well-liked enough to win Best Male Character (for Spike Spiegel) and Best Voice Actor (for Megumi Hayashibara as Faye Valentine) at the 1999 and 2000 Anime Grand Prix. Its biggest influence has been in America, where it premiered on Adult Swim in 2001 with many reruns since. The show's heavy Western influence struck a chord with American viewers, where it became a \"gateway drug\" to anime aimed at adult audiences.",
+  "synopsis": "In fake data with some spoiler <div class='spoiler'><input type='button' class='button show_button' onclick='this.nextSibling.style.display='inline-block';this.style.display='none';' data-showname='Show spoiler' data-hidename='Hide spoiler' value='Show spoiler'><span class='spoiler_content' style='display:none'><input type='button' class='button hide_button' onclick='this.parentNode.style.display='none';this.parentNode.parentNode.childNodes[0].style.display='inline-block';' value='Hide spoiler'><br> I am a spoiler!</span></div> <br><br>\r\n[Written by MAL Rewrite]",
+  "background": "When <i>Cowboy Bebop<\/i> first aired in spring of 1998 on TV Tokyo, only 12 of the show's 26 episodes aired. Anime censorship had increased following the big controversies over <i>Evangelion<\/i>, and most of <i>Bebop<\/i> was pulled from the air due to violent content. Satelite channel WOWOW picked up the show in the fall of that year and aired the full series uncensored. It wasn't a ratings hit in Japan, but nevertheless was well-liked enough to win Best Male Character (for Spike Spiegel) and Best Voice Actor (for Megumi Hayashibara as Faye Valentine) at the 1999 and 2000 Anime Grand Prix. Its biggest influence has been in America, where it premiered on Adult Swim in 2001 with many reruns since. The show's heavy Western influence struck a chord with American viewers, where it became a \"gateway drug\" to anime aimed at adult audiences.",
   "producers": [
     "Bandai Visual"
   ],

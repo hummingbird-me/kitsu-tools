@@ -48,9 +48,9 @@ class DataImport::MyAnimeList
         data['members_count']
       end
 
-      def age_rating_guide
-
-      end
+      # def age_rating_guide
+      #
+      # end
 
       def show_type
         data['type'].downcase.to_sym
@@ -73,9 +73,9 @@ class DataImport::MyAnimeList
       end
 
       # I dont think I need to actual do anything for this
-      def canonical_title
-
-      end
+      # def canonical_title
+      #
+      # end
 
       def abbreviated_titles
         data['other_titles']['synonyms']
