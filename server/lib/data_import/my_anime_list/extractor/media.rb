@@ -38,14 +38,6 @@ class DataImport::MyAnimeList
         data['image_url']
       end
 
-      def average_rating
-        data['members_score']
-      end
-
-      def user_count
-        data['members_count']
-      end
-
       def age_rating_guide
         rating = data['classification'].split(' - ')[0]
 
@@ -90,17 +82,19 @@ class DataImport::MyAnimeList
       def abbreviated_titles
         data['other_titles']['synonyms']
       end
-      
 
       def to_h
         %i[age_rating episode_count episode_length synopsis youtube_video_id
-           poster_image average_rating user_count age_rating_guide show_type start_date end_date
+           poster_image age_rating_guide show_type start_date end_date
            titles abbreviated_titles
         ].map do |k|
           [k, send(k)]
         end.to_h
       end
 
+      def genres
+        data['genres']
+      end
 
       # synopsis: seriously don't touch this unless you are Nuck.
       def br_to_p(src)

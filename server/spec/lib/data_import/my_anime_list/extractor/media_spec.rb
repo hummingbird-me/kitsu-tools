@@ -88,24 +88,6 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
     end
   end
 
-  describe '#average_rating' do
-    # members_score
-    it 'should be a float' do
-      expect(subject.average_rating).to be_a(Float)
-    end
-
-    it 'should return the average' do
-      expect(subject.average_rating).to eq(8.83)
-    end
-  end
-
-  describe '#user_count' do
-    # members_count
-    it 'should return members count' do
-      expect(subject.user_count).to eq(431480)
-    end
-  end
-
   describe '#age_rating_guide' do
     it 'should extract the G rating description' do
       subject = described_class.new({classification: 'G - All Ages'}.to_json)
@@ -203,12 +185,6 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
     end
   end
 
-  context '#genres' do
-    it 'should return an array of genre strings' do
-      # expect(subject.genres).to eq(%w[Action Sci-Fi Tokusatsu])
-    end
-  end
-
   describe '#titles' do
     it 'should return the Romaji title of media' do
       expect(subject.titles[:en_jp]).to eq('Cowboy Bebop')
@@ -233,6 +209,16 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
     end
     it 'should return all synonyms titles' do
       expect(subject.abbreviated_titles).to eq(['COWBOY BEBOP'])
+    end
+  end
+
+  describe '#genres' do
+    it 'should return an array' do
+      expect(subject.genres).to be_an(Array)
+    end
+
+    it 'should return all genres' do
+      expect(subject.genres).to eq(["Action", "Adventure", "Comedy", "Drama", "Sci-Fi", "Space"])
     end
   end
 

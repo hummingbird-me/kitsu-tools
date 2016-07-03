@@ -19,6 +19,10 @@ module DataImport
         details = Extractor::Media.new(response)
 
         media.assign_attributes(details.to_h)
+        media.genres = details.genres.map do |genre|
+          Genre.find_by(name: genre)
+        end.compact
+
         yield media
       end
 
