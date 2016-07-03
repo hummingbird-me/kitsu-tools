@@ -1,11 +1,21 @@
- version: '2'
- services:
+version: '2'
+
+volumes:
+  postgres:
+    driver: local
+  node_modules:
+    driver: local
+
+services:
   # Database servers
   postgres:
     image: postgres:9.3
     environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_PASSWORD: mysecretpassword
       POSTGRES_USER: postgres
+    volumes:
+      - postgres:/var/lib/postgresql/data
   redis:
     image: redis
   elasticsearch:
@@ -26,6 +36,8 @@
     volumes:
       - ./server:/opt/hummingbird/server
     environment:
+      DATABASE_URL: 'postgresql://postgres:mysecretpassword@postgres/'
+      REDIS_URL: 'redis://redis/1'
       RAILS_ENV: development
 
   # Sidekiq
@@ -39,7 +51,9 @@
     volumes:
       - ./client:/opt/hummingbird/client
       - /opt/hummingbird/client/node_modules
+      - /opt/hummingbird/client/bower_components
+    tmpfs:
+      - /opt/coachnite/client/tmp
     environment:
       EMBER_ENV: development
-    ports:
-      - "57777:57777"
+    ports: ['57777:57777']
