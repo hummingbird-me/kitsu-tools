@@ -28,6 +28,7 @@
 #  titles                    :hstore           default({}), not null
 #  canonical_title           :string           default("en_jp"), not null
 #  abbreviated_titles        :string           is an Array
+#  user_count                :integer          default(0), not null
 #
 
 FactoryGirl.define do
