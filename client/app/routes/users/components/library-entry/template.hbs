@@ -33,7 +33,7 @@
 
       {{! Entry Type }}
       <div class="entry-type">
-        <span>{{media.typeStr}}</span>
+        <span>{{t (concat "media." mediaType ".show-type." media.showType)}}</span>
       </div>
     </div>
   </div>
@@ -92,7 +92,7 @@
             <div class="status-select">
               {{library-status-button
                 entry=entry
-                mediaType=entry.constructor.modelName
+                mediaType=mediaType
                 update=(action "update" "status")
                 delete=(action "destroy")}}
             </div>

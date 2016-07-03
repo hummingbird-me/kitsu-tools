@@ -14,6 +14,7 @@ export default Component.extend(IsOwnerMixin, {
 
   currentSession: service(),
   media: alias('entry.media'),
+  mediaType: alias('media.content.constructor.modelName'),
   user: alias('entry.user'),
 
   episodeCount: computed('media.episodeCount', {

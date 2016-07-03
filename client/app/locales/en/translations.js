@@ -32,9 +32,23 @@ export default {
   },
   // Shared media terms
   media: {
-    anime: 'Anime',
-    manga: 'Manga',
-    drama: 'Drama'
+    anime: {
+      name: 'Anime',
+      'show-type': {
+        TV: 'TV',
+        special: 'Special',
+        ONA: 'OVA',
+        OVA: 'ONA',
+        movie: 'Movie',
+        music: 'Music'
+      }
+    },
+    manga: {
+      name: 'Manga'
+    },
+    drama: {
+      name: 'Drama'
+    }
   },
   // Shared library terms
   library: {
