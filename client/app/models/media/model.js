@@ -17,17 +17,14 @@ export default Model.extend({
   startDate: attr('date'),
   synopsis: attr('string'),
   titles: attr('object'),
-  
+
   genres: hasMany('genre'),
 
   mergedTitles: computed('titles', {
     get() {
-      const titles = get(this, 'titles');
-      let str = '';
-      for (const key in titles) {
-        str += titles[key];
-      }
-      return str.toLowerCase();
+      let titles = get(this, 'titles');
+      titles = Object.values(titles);
+      return titles.map((x) => x.toLowerCase()).join('');
     }
-  })
+  }).readOnly()
 });

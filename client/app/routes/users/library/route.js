@@ -1,6 +1,7 @@
 import Route from 'ember-route';
 import get, { getProperties } from 'ember-metal/get';
 import set, { setProperties } from 'ember-metal/set';
+import { capitalize } from 'ember-string';
 import jQuery from 'jquery';
 import service from 'ember-service/inject';
 
@@ -48,7 +49,7 @@ export default Route.extend({
       filter: {
         // jscs:disable
         user_id: userId,
-        media_type: media.capitalize(),
+        media_type: capitalize(media),
         // jscs:enable
         status
       },

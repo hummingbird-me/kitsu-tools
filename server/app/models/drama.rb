@@ -45,6 +45,8 @@ class Drama < ActiveRecord::Base
   include AgeRatings
   include Episodic
 
+  enum show_type: %i[drama movie special]
+
   has_attached_file :cover_image,
     url: '/:class/:attachment:/:id/:style.:content_type_extension'
   has_attached_file :poster_image,

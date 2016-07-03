@@ -47,7 +47,12 @@ export default {
       name: 'Manga'
     },
     drama: {
-      name: 'Drama'
+      name: 'Drama',
+      'show-type': {
+        drama: 'Drama',
+        movie: 'Movie',
+        special: 'Drama Special'
+      }
     }
   },
   // Shared library terms
