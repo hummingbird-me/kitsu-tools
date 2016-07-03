@@ -3,5 +3,5 @@ class CastingResource < BaseResource
 
   has_one :media, polymorphic: true
   has_one :character
-# has_one :person
+  has_one :person
 end
