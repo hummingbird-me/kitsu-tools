@@ -9,6 +9,10 @@ RSpec.describe DataImport::MyAnimeList do
       to_return(body: fixture('my_anime_list/cowboy-bebop-tv.json'))
     stub_request(:get, "#{host}/anime/5").
       to_return(body: fixture('my_anime_list/cowboy-bebop-movie.json'))
+    stub_request(:get, "http://cdn.myanimelist.net/images/anime/4/19644.jpg").
+      to_return(body: fixture('image.jpg'), headers: {
+        'Content-Type': 'image/jpg'
+      })
   end
 
   describe '#get_media' do
@@ -20,7 +24,7 @@ RSpec.describe DataImport::MyAnimeList do
     end
     it 'should have assigned attributes onto the yielded object' do
       subject.get_media('/anime/1') do |media|
-        expect(media.canonical_title).to eq('not sure') # not sure..
+        expect(media.canonical_title).to eq('Cowboy Bebop')
       end
       subject.run
     end
@@ -31,7 +35,5 @@ RSpec.describe DataImport::MyAnimeList do
       subject.run
     end
   end
-
-
 
 end

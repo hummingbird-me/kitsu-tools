@@ -11,8 +11,39 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       expect(subject.age_rating).to be_a(Symbol)
     end
 
-    it 'should return the rating' do
+    it 'should extract the G rating' do
+      subject = described_class.new({classification: 'G - All Ages'}.to_json)
+      expect(subject.age_rating).to eq(:G)
+    end
+
+    it 'should convert TV-Y7 rating to G' do
+      subject = described_class.new({classification: 'TV-Y7 - All Ages'}.to_json)
+      expect(subject.age_rating).to eq(:G)
+    end
+
+    it 'should extract the PG rating' do
+      subject = described_class.new({classification: 'PG - Children'}.to_json)
+      expect(subject.age_rating).to eq(:PG)
+    end
+
+    it 'should convert the PG13 rating to PG' do
+      subject = described_class.new({classification: 'PG13 - Teens 13 or older'}.to_json)
+      expect(subject.age_rating).to eq(:PG)
+    end
+
+    # this exists in fixture
+    it 'should extract the R rating' do
       expect(subject.age_rating).to eq(:R)
+    end
+
+    it 'should convert the R+ rating to R' do
+      subject = described_class.new({classification: 'R+ - Mild Nudity'}.to_json)
+      expect(subject.age_rating).to eq(:R)
+    end
+
+    it 'should extract the R18 rating' do
+      subject = described_class.new({classification: 'Rx - Hentai'}.to_json)
+      expect(subject.age_rating).to eq(:R18)
     end
   end
 
@@ -47,13 +78,13 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
 
   describe '#youtube_video_id' do
     it 'should return a youtube link' do
-      expect(subject.youtube_video_id).to eq("http://www.youtube.com/embed/qig4KOK2R2g")
+      expect(subject.youtube_video_id).to eq('http://www.youtube.com/embed/qig4KOK2R2g')
     end
   end
 
   describe '#poster_image' do
     it 'should return an image link' do
-      expect(subject.poster_image).to eq("http://cdn.myanimelist.net/images/anime/4/19644.jpg")
+      expect(subject.poster_image).to eq('http://cdn.myanimelist.net/images/anime/4/19644.jpg')
     end
   end
 
@@ -76,30 +107,75 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
   end
 
   describe '#age_rating_guide' do
-    # need to check if this is genres, or what it is.
-  end
+    it 'should extract the G rating description' do
+      subject = described_class.new({classification: 'G - All Ages'}.to_json)
+      expect(subject.age_rating_guide).to eq('All Ages')
+    end
 
+    it 'should extract the PG rating description' do
+      subject = described_class.new({classification: 'PG - Children'}.to_json)
+      expect(subject.age_rating_guide).to eq('Children')
+    end
+
+    # check both cases
+    it 'should extract the PG13 rating description' do
+      subject = described_class.new({classification: 'PG13 - Teens 13 or older'}.to_json)
+      subject1 = described_class.new({classification: 'PG-13 - Teens 13 or older'}.to_json)
+
+      expect(subject.age_rating_guide).to eq('Teens 13 or older')
+      expect(subject1.age_rating_guide).to eq('Teens 13 or older')
+    end
+
+    # this exists in fixture
+    it 'should extract the R rating description' do
+      expect(subject.age_rating_guide).to eq('Violence, Profanity')
+    end
+
+    it 'should extract the R+ rating description' do
+      subject = described_class.new({classification: 'R+ - Mild Nudity'}.to_json)
+      expect(subject.age_rating_guide).to eq('Mild Nudity')
+    end
+
+    it 'should extract the Rx rating description' do
+      subject = described_class.new({classification: 'Rx - Hentai'}.to_json)
+      expect(subject.age_rating_guide).to eq('Hentai')
+    end
+  end
 
   describe '#show_type' do
     it 'should return a Symbol' do
       expect(subject.show_type).to be_a(Symbol)
     end
 
-    context 'for a tv show' do
-      it 'should return the type' do
-        expect(subject.show_type).to eq(:tv)
-      end
+    it 'should return tv show' do
+      expect(subject.show_type).to eq(:TV)
     end
 
-    context 'for a movie' do
-      subject { described_class.new(movie) }
+    it 'should return special' do
+      subject = described_class.new({type: 'Special'}.to_json)
+      expect(subject.show_type).to eq(:special)
+    end
 
-      it 'should return the type' do
-        expect(subject.show_type).to eq(:movie)
-      end
+    it 'should return OVA' do
+      subject = described_class.new({type: 'OVA'}.to_json)
+      expect(subject.show_type).to eq(:OVA)
+    end
+
+    it 'should return ONA' do
+      subject = described_class.new({type: 'ONA'}.to_json)
+      expect(subject.show_type).to eq(:ONA)
+    end
+
+    it 'should return movie' do
+      subject = described_class.new(movie)
+      expect(subject.show_type).to eq(:movie)
+    end
+
+    it 'should return music' do
+      subject = described_class.new({type: 'Music'}.to_json)
+      expect(subject.show_type).to eq(:music)
     end
   end
-
 
   describe '#start_date' do
     it 'should return a Date object' do
@@ -107,14 +183,14 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
     end
     it 'should return the date the first episode aired' do
       # this is a really stupid test imo.
-      expect(subject.start_date).to eq("1998-04-03".to_date)
+      expect(subject.start_date).to eq('1998-04-03'.to_date)
     end
   end
 
   describe '#end_date' do
     context 'for a tv series' do
       it 'should return the date the series ended' do
-        expect(subject.end_date).to eq("1999-04-24".to_date)
+        expect(subject.end_date).to eq('1999-04-24'.to_date)
       end
     end
 
@@ -148,20 +224,19 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
     end
   end
 
-  describe '#canonical_title' do
-    it 'should link to the primary english title of the media' do
-    end
-  end
-
   describe '#abbreviated_titles' do
     it 'should return an array' do
       expect(subject.abbreviated_titles).to be_an(Array)
     end
     it 'should return all synonyms titles' do
-      expect(subject.abbreviated_titles).to eq(["COWBOY BEBOP"])
+      expect(subject.abbreviated_titles).to eq(['COWBOY BEBOP'])
     end
   end
 
-
+  describe '#to_h' do
+    it 'should return a Hash' do
+      expect(subject.to_h).to be_a(Hash)
+    end
+  end
 
 end

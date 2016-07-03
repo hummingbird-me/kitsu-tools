@@ -1,5 +1,3 @@
-#  age_rating_guide          :string(255)
-
 class DataImport::MyAnimeList
   module Extractor
     class Media
@@ -15,8 +13,8 @@ class DataImport::MyAnimeList
         case rating
         when 'G','TV-Y7' then :G
         when 'PG', 'PG13' then :PG
-        when 'R' then :R
-        when 'R+', 'Rx' then :R18
+        when 'R', 'R+' then :R
+        when 'Rx' then :R18
         end
       end
 
@@ -48,12 +46,29 @@ class DataImport::MyAnimeList
         data['members_count']
       end
 
-      # def age_rating_guide
-      #
-      # end
+      def age_rating_guide
+        rating = data['classification'].split(' - ')[0]
+
+        case rating
+        when 'G' then 'All Ages'
+        when 'PG' then 'Children'
+        when 'PG13', 'PG-13' then 'Teens 13 or older'
+        when 'R' then 'Violence, Profanity'
+        when 'R+' then 'Mild Nudity'
+        when 'Rx' then 'Hentai'
+        end
+      end
 
       def show_type
-        data['type'].downcase.to_sym
+        # needs to match one of these, case statement [TV special OVA ONA movie music]
+        case data['type'].downcase
+        when 'tv' then :TV
+        when 'special' then :special
+        when 'ova' then :OVA
+        when 'ona' then :ONA
+        when 'movie' then :movie
+        when 'music' then :music
+        end
       end
 
       def start_date
@@ -72,13 +87,18 @@ class DataImport::MyAnimeList
         }
       end
 
-      # I dont think I need to actual do anything for this
-      # def canonical_title
-      #
-      # end
-
       def abbreviated_titles
         data['other_titles']['synonyms']
+      end
+      
+
+      def to_h
+        %i[age_rating episode_count episode_length synopsis youtube_video_id
+           poster_image average_rating user_count age_rating_guide show_type start_date end_date
+           titles abbreviated_titles
+        ].map do |k|
+          [k, send(k)]
+        end.to_h
       end
 
 

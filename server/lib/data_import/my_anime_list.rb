@@ -13,11 +13,12 @@ module DataImport
     end
 
     def get_media(external_id) # anime/1234 or manga/1234
-      media = Mapping.lookup('myanimelist', external_id) || Anime.new
+      media = Mapping.lookup('myanimelist/anime', external_id) || Anime.new # not sure if the lookup is correct
 
       get(external_id) do |response|
-        # details = Extractor::Details.new(response)
+        details = Extractor::Media.new(response)
 
+        media.assign_attributes(details.to_h)
         yield media
       end
 
