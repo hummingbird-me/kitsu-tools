@@ -220,7 +220,10 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       expect(subject.titles[:ja_jp]).to eq('カウボーイビバップ')
     end
     it 'should prevent an error if English or Japanese title does not exist' do
-      # not sure how to implement this, was done using try(:first)
+      subject = described_class.new({other_titles: {} }.to_json)
+
+      expect(subject.titles[:en_us]).to be_nil
+      expect(subject.titles[:ja_jp]).to be_nil
     end
   end
 
