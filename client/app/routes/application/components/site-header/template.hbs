@@ -47,14 +47,14 @@
               </li>
               <li>
                 <a href="#" {{action 'invalidateSession'}}>
-                  {{t 'auth.logout'}}
+                  {{t 'links.auth.logout'}}
                 </a>
               </li>
             </ul>
           </li>
         {{else}}
           <li>
-            {{link-to (t 'auth.sign-in') 'sign-in'}}
+            {{link-to (t 'links.auth.sign-in') 'sign-in'}}
           </li>
         {{/if}}
       </ul>

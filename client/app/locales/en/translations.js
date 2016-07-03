@@ -22,16 +22,21 @@ export default {
       reviews: '{{user}}\'s Reviews'
     }
   },
-  auth: {
-    'sign-up': 'Sign Up',
-    'sign-in': 'Sign In',
-    logout: 'Logout'
+  // Text for links
+  links: {
+    auth: {
+      'sign-up': 'Sign Up',
+      'sign-in': 'Sign In',
+      logout: 'Logout'
+    }
   },
+  // Shared media terms
   media: {
     anime: 'Anime',
     manga: 'Manga',
     drama: 'Drama'
   },
+  // Shared library terms
   library: {
     remove: 'Remove from Library',
     statuses: {
@@ -60,6 +65,7 @@ export default {
       // jscs:enable
     }
   },
+  // Global header
   header: {
     shows: 'Shows',
     forums: 'Forums',
@@ -68,10 +74,12 @@ export default {
       profile: 'View Profile'
     }
   },
+  // Global footer
   footer: {
     header: 'Find an anime, manga, or drama',
     'search-placeholder': 'Search by title...'
   },
+  // Anime route text
   anime: {
     index: {
       filter: {
@@ -85,12 +93,14 @@ export default {
       }
     }
   },
+  // Sign in route text
   'sign-in': {
     header: 'Sign in to Hummingbird',
     identification: 'Email or Username',
     password: 'Password',
     'no-account': 'Don\'t have an account yet?'
   },
+  // Sign up route text
   'sign-up': {
     header: 'Sign up for Hummingbird',
     username: 'Username',
@@ -98,6 +108,7 @@ export default {
     password: 'Password',
     'has-account': 'Already have an account?'
   },
+  // Users route text
   users: {
     following: 'Following',
     followers: 'Followers',

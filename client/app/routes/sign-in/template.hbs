@@ -40,13 +40,13 @@
           class="expanded button"
           disabled={{if (or (is-empty identification) (is-empty password)) "disabled"}}
           data-test-selector="sign-in">
-          {{t "auth.sign-in"}}
+          {{t "links.auth.sign-in"}}
         </button>
       </form>
 
       <p class="text-center">
         {{t "sign-in.no-account"}}
-        {{link-to (t "auth.sign-up") "sign-up"}}
+        {{link-to (t "links.auth.sign-up") "sign-up"}}
       </p>
     </div>
 
