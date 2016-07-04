@@ -26,6 +26,10 @@ RouterInstance.map(function() {
     this.route('show', { path: '/:slug' });
   });
 
+  this.route('drama', function() {
+    this.route('show', { path: '/:slug' });
+  });
+
   this.route('users', { path: '/users/:name' }, function() {
     this.route('library');
     this.route('reviews');
