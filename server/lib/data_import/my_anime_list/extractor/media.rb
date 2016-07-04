@@ -8,9 +8,10 @@ class DataImport::MyAnimeList
       end
 
       def age_rating
-        rating = data['classification'].split(' - ')[0]
+        return unless data['classification']
+        rating = data['classification'].split(' - ')
 
-        case rating
+        case rating[0]
         when 'G','TV-Y7' then :G
         when 'PG', 'PG13' then :PG
         when 'R', 'R+' then :R
@@ -31,7 +32,7 @@ class DataImport::MyAnimeList
       end
 
       def youtube_video_id
-        data['preview'].split('/').last
+        data['preview']&.split('/')&.last
       end
 
       def poster_image
@@ -39,6 +40,7 @@ class DataImport::MyAnimeList
       end
 
       def age_rating_guide
+        return unless data['classification']
         rating = data['classification'].split(' - ')
 
         return "Violence, Profanity" if rating[0] == 'R'
@@ -49,30 +51,39 @@ class DataImport::MyAnimeList
         when 'G' then 'All Ages'
         when 'PG' then 'Children'
         when 'PG13', 'PG-13' then 'Teens 13 or older'
-        when 'R' then 'Violence, Profanity'
+        # when 'R' then 'Violence, Profanity' # this will NEVER happen because of return
         when 'R+' then 'Mild Nudity'
         when 'Rx' then 'Hentai'
         end
       end
 
-      def show_type
-        # needs to match one of these, case statement [TV special OVA ONA movie music]
+      def subtype # will be renamed to this hopefully
+        # anime matches [TV special OVA ONA movie music]
+        # manga matches [manga novel manhua oneshot doujin]
+
         case data['type'].downcase
+        # anime
         when 'tv' then :TV
         when 'special' then :special
         when 'ova' then :OVA
         when 'ona' then :ONA
         when 'movie' then :movie
         when 'music' then :music
+        # manga
+        when 'manga' then :manga
+        when 'novel' then :novel
+        when 'manuha' then :manuha
+        when 'oneshot' then :oneshot
+        when 'doujin' then :doujin
         end
       end
 
       def start_date
-        data['start_date'].to_date
+        data['start_date']&.to_date
       end
 
       def end_date
-        data['end_date'].try(:to_date)
+        data['end_date']&.to_date
       end
 
       def titles
@@ -87,10 +98,22 @@ class DataImport::MyAnimeList
         data['other_titles']['synonyms']
       end
 
+      # Manga Specific
+
+      def chapters
+        data['chapters']
+      end
+
+      def volumes
+        data['volumes']
+      end
+
+      # removed subtype (show_type, manga_type issue)
+      # missing status on manga (anime does automagically)
       def to_h
         %i[age_rating episode_count episode_length synopsis youtube_video_id
-           poster_image age_rating_guide show_type start_date end_date
-           titles abbreviated_titles
+           poster_image age_rating_guide start_date end_date
+           titles abbreviated_titles chapters volumes
         ].map do |k|
           [k, send(k)]
         end.to_h
@@ -99,6 +122,8 @@ class DataImport::MyAnimeList
       def genres
         data['genres']
       end
+
+
 
       # synopsis: seriously don't touch this unless you are Nuck.
       def br_to_p(src)
