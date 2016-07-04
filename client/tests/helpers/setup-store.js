@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import Owner from 'client/tests/helpers/owner';
-import ApplicationSerializer from 'client/routes/application/serializer';
+import ApplicationSerializer from 'client/models/application/serializer';
 
 export default function(options) {
   const registry = new Ember.Registry();
