@@ -2,6 +2,7 @@
 
 # server
 
+server/public/dramas/*
 server/public/system/*
 server/.bundle
 server/db/*.sqlite3
