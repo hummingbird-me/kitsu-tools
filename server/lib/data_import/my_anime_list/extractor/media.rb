@@ -31,7 +31,7 @@ class DataImport::MyAnimeList
       end
 
       def youtube_video_id
-        data['preview']
+        data['preview'].split('/').last
       end
 
       def poster_image
@@ -39,9 +39,13 @@ class DataImport::MyAnimeList
       end
 
       def age_rating_guide
-        rating = data['classification'].split(' - ')[0]
+        rating = data['classification'].split(' - ')
 
-        case rating
+        return "Violence, Profanity" if rating[0] == 'R'
+        return rating[1] if rating[1].present?
+
+        # fallback
+        case rating[0]
         when 'G' then 'All Ages'
         when 'PG' then 'Children'
         when 'PG13', 'PG-13' then 'Teens 13 or older'

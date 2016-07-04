@@ -1,6 +1,6 @@
 module DataImport
   class MyAnimeList
-    MDL_HOST = "https://hbv3-mal-api.herokuapp.com/2.1" # 2.1 is the api version, MAYBE add graceful decay to check from v1 if it can't find?
+    ATARASHII_API_HOST = "https://hbv3-mal-api.herokuapp.com/2.1/"
 
     include DataImport::Media
     include DataImport::HTTP
@@ -13,7 +13,8 @@ module DataImport
     end
 
     def get_media(external_id) # anime/1234 or manga/1234
-      media = Mapping.lookup('myanimelist/anime', external_id) || Anime.new # not sure if the lookup is correct
+      type = external_id.split('/') # going to be used when adding manga
+      media = Mapping.lookup('myanimelist', external_id) || type.first.classify.constantize.new # should return Anime.new or Manga.new
 
       get(external_id) do |response|
         details = Extractor::Media.new(response)
@@ -36,7 +37,7 @@ module DataImport
 
     def build_url(path)
       return path if path.include?('://')
-      "#{MDL_HOST}#{path}"
+      "#{ATARASHII_API_HOST}#{path}"
     end
 
   end # end of class

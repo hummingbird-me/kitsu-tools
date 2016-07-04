@@ -77,8 +77,8 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
   end
 
   describe '#youtube_video_id' do
-    it 'should return a youtube link' do
-      expect(subject.youtube_video_id).to eq('http://www.youtube.com/embed/qig4KOK2R2g')
+    it 'should return the end of the youtube link' do
+      expect(subject.youtube_video_id).to eq('qig4KOK2R2g')
     end
   end
 
@@ -89,6 +89,12 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
   end
 
   describe '#age_rating_guide' do
+
+    it 'should do case statement if rating[1] does not exist' do
+      subject = described_class.new({classification: 'G'}.to_json)
+      expect(subject.age_rating_guide).to eq('All Ages')
+    end
+
     it 'should extract the G rating description' do
       subject = described_class.new({classification: 'G - All Ages'}.to_json)
       expect(subject.age_rating_guide).to eq('All Ages')
