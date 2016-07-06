@@ -35,7 +35,7 @@
 
 class Anime < ActiveRecord::Base
   DEFAULT_PROGRESS_LIMIT = 400
-  SEASONS = %w[winter spring summer fall]
+  SEASONS = %w[winter spring summer fall].freeze
 
   include Media
   include AgeRatings
@@ -67,10 +67,10 @@ class Anime < ActiveRecord::Base
 
   def season
     case start_date.try(:month)
-    when 12, 1, 2; :winter
-    when 3, 4, 5; :spring
-    when 6, 7, 8; :summer
-    when 9, 10, 11; :fall
+    when 12, 1, 2 then :winter
+    when 3, 4, 5 then :spring
+    when 6, 7, 8 then :summer
+    when 9, 10, 11 then :fall
     end
   end
 

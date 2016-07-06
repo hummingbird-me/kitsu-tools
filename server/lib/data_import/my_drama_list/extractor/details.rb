@@ -8,7 +8,7 @@ class DataImport::MyDramaList
         'Taiwan' => 'tw',
         'Hong Kong' => 'hk',
         'Thailand' => 'th'
-      }
+      }.freeze
       LANGUAGE_CODES = {
         'South Korea' => 'ko',
         'Japan' => 'ja',
@@ -16,12 +16,12 @@ class DataImport::MyDramaList
         'Taiwan' => 'zh',
         'Hong Kong' => 'zh',
         'Thailand' => 'th'
-      }
+      }.freeze
       SHOW_TYPES = {
         'Drama' => :drama,
         'Movie' => :movie,
         'Drama Special' => :special
-      }
+      }.freeze
 
       include Helpers
 

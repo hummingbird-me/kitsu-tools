@@ -6,7 +6,7 @@ module IndexTranslatable
     'zh_*' => 'cjk',
     'ko_*' => 'cjk',
     'en_*' => 'english'
-  }
+  }.freeze
 
   class_methods do
     def translatable_field(name)

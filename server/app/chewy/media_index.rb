@@ -2,7 +2,9 @@ class MediaIndex < Chewy::Index
   class << self
     # Convert from [[id, name], ...] to id => [names...]
     def groupify(plucks)
-      plucks.each.with_object({}) {|(id, name), out| (out[id] ||= []).push(name) }
+      plucks.each.with_object({}) do |(id, name), out|
+        (out[id] ||= []).push(name)
+      end
     end
 
     # Get character names for a series
@@ -13,21 +15,26 @@ class MediaIndex < Chewy::Index
 
     # Get person names for a series
     def get_people(type, ids)
-      groupify Casting.joins(:person).where(media_id: ids, media_type: type).uniq
-        .pluck(:media_id, 'people.name')
+      groupify Casting.joins(:person).where(media_id: ids, media_type: type)
+        .uniq.pluck(:media_id, 'people.name')
     end
 
     # Get Streamers for a series
     def get_streamers(type, ids)
-      groupify StreamingLink.joins(:streamer).where(media_id: ids, media_type: type)
-        .uniq.pluck(:media_id, 'streamers.site_name')
+      groupify StreamingLink.joins(:streamer)
+        .where(media_id: ids, media_type: type).uniq
+        .pluck(:media_id, 'streamers.site_name')
     end
   end
 
   define_type Anime.includes(:genres) do
     crutch(:people) { |coll| MediaIndex.get_people 'Anime', coll.map(&:id) }
-    crutch(:characters) { |coll| MediaIndex.get_characters 'Anime', coll.map(&:id) }
-    crutch(:streamers) { |coll| MediaIndex.get_streamers 'Anime', coll.map(&:id) }
+    crutch(:characters) do |coll|
+      MediaIndex.get_characters 'Anime', coll.map(&:id)
+    end
+    crutch(:streamers) do |coll|
+      MediaIndex.get_streamers 'Anime', coll.map(&:id)
+    end
 
     root date_detection: false do
       include IndexTranslatable
@@ -82,8 +89,12 @@ class MediaIndex < Chewy::Index
 
   define_type Drama.includes(:genres) do
     crutch(:people) { |coll| MediaIndex.get_people 'Drama', coll.map(&:id) }
-    crutch(:characters) { |coll| MediaIndex.get_characters 'Drama', coll.map(&:id) }
-    crutch(:streamers) { |coll| MediaIndex.get_streamers 'Drama', coll.map(&:id) }
+    crutch(:characters) do |coll|
+      MediaIndex.get_characters 'Drama', coll.map(&:id)
+    end
+    crutch(:streamers) do |coll|
+      MediaIndex.get_streamers 'Drama', coll.map(&:id)
+    end
 
     root date_detection: false do
       include IndexTranslatable

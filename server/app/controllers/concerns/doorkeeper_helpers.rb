@@ -8,7 +8,7 @@ module DoorkeeperHelpers
 
   # Return boolean representing whether there is a user signed in
   def signed_in?
-    !!current_user
+    current_user.present?
   end
 
   # Provide context of current user to JR

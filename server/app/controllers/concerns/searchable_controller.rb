@@ -4,21 +4,22 @@ module SearchableController
   extend ActiveSupport::Concern
 
   def process_request
-    @request = SearchableRequest.new(params, context: context,
+    @request = SearchableRequest.new(params,
+      context: context,
       key_formatter: key_formatter,
       server_error_callbacks: self.class.server_error_callbacks || [])
 
-    unless @request.errors.empty?
-      render_errors(@request.errors)
-    else
+    if @request.errors.empty?
       operation_results = create_operations_processor.process(@request)
       render_results(operation_results)
+    else
+      render_errors(@request.errors)
     end
 
   rescue => e
     handle_exceptions(e)
   ensure
-    if response.body.size > 0
+    unless response.body.empty?
       response.headers['Content-Type'] = JSONAPI::MEDIA_TYPE
     end
   end

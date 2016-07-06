@@ -23,7 +23,7 @@
 FactoryGirl.define do
   factory :episode do
     association :media, factory: :anime
-    titles { {en_jp: Faker::Name.name} }
+    titles { { en_jp: Faker::Name.name } }
     canonical_title 'en_jp'
     synopsis { Faker::Lorem.paragraph }
     length { rand(20..60) }

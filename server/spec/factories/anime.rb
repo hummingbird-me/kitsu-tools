@@ -35,7 +35,7 @@
 
 FactoryGirl.define do
   factory :anime do
-    titles { {en_jp: Faker::Name.name} }
+    titles { { en_jp: Faker::Name.name } }
     canonical_title 'en_jp'
     average_rating { rand(1.0..10.0) / 2 }
     show_type { Anime.show_types.keys.sample }
