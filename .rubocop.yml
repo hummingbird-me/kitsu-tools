@@ -2,7 +2,7 @@ AllCops:
   Exclude:
     - server/db/**/*
     - server/bin/**/*
-  RunRailsCops: true
+    - server/Guardfile
   DisplayCopNames: false
   DisplayStyleGuide: true
   StyleGuideCopsOnly: false
@@ -99,7 +99,10 @@ Style/SymbolProc:
 Style/TrailingBlankLines:
   Enabled: true
   EnforcedStyle: final_newline
-Style/TrailingComma:
+Style/TrailingCommaInArguments:
+  Enabled: true
+  EnforcedStyleForMultiline: no_comma
+Style/TrailingCommaInLiteral:
   Enabled: true
   EnforcedStyleForMultiline: no_comma
 Style/TrivialAccessors:
@@ -164,8 +167,6 @@ Style/BlockComments:
   Enabled: true
 Style/ColonMethodCall:
   Enabled: true
-Style/DeprecatedHashMethods:
-  Enabled: true
 Style/Documentation:
   Enabled: false
 Style/EmptyLiteral:
@@ -204,13 +205,13 @@ Style/RescueModifier:
   Enabled: true
 Style/SelfAssignment:
   Enabled: true
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: true
 Style/SpaceAfterColon:
   Enabled: true
 Style/SpaceAfterComma:
   Enabled: true
-Style/SpaceAfterControlKeyword:
+Style/SpaceAroundKeyword:
   Enabled: true
 Style/SpaceAfterMethodName:
   Enabled: true
@@ -226,7 +227,7 @@ Style/SpaceBeforeSemicolon:
   Enabled: true
 Style/SpaceAroundOperators:
   Enabled: true
-Style/SpaceBeforeModifierKeyword:
+Style/SpaceAroundKeyword:
   Enabled: true
 Style/SpaceInsideBrackets:
   Enabled: true
