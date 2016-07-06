@@ -7,29 +7,28 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
 
   subject { described_class.new(tv) }
   context 'Anime' do
-
     describe '#age_rating' do
       it 'should be a symbol' do
         expect(subject.age_rating).to be_a(Symbol)
       end
 
       it 'should extract the G rating' do
-        subject = described_class.new({classification: 'G - All Ages'}.to_json)
+        subject = described_class.new({ classification: 'G - All Ages' }.to_json)
         expect(subject.age_rating).to eq(:G)
       end
 
       it 'should convert TV-Y7 rating to G' do
-        subject = described_class.new({classification: 'TV-Y7 - All Ages'}.to_json)
+        subject = described_class.new({ classification: 'TV-Y7 - All Ages' }.to_json)
         expect(subject.age_rating).to eq(:G)
       end
 
       it 'should extract the PG rating' do
-        subject = described_class.new({classification: 'PG - Children'}.to_json)
+        subject = described_class.new({ classification: 'PG - Children' }.to_json)
         expect(subject.age_rating).to eq(:PG)
       end
 
       it 'should convert the PG13 rating to PG' do
-        subject = described_class.new({classification: 'PG13 - Teens 13 or older'}.to_json)
+        subject = described_class.new({ classification: 'PG13 - Teens 13 or older' }.to_json)
         expect(subject.age_rating).to eq(:PG)
       end
 
@@ -39,12 +38,12 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should convert the R+ rating to R' do
-        subject = described_class.new({classification: 'R+ - Mild Nudity'}.to_json)
+        subject = described_class.new({ classification: 'R+ - Mild Nudity' }.to_json)
         expect(subject.age_rating).to eq(:R)
       end
 
       it 'should extract the R18 rating' do
-        subject = described_class.new({classification: 'Rx - Hentai'}.to_json)
+        subject = described_class.new({ classification: 'Rx - Hentai' }.to_json)
         expect(subject.age_rating).to eq(:R18)
       end
     end
@@ -91,8 +90,6 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
     end
 
     describe '#age_rating_guide' do
-
-
       it 'should extract the G rating description' do
         subject = described_class.new({ classification: 'G - All Ages' }.to_json)
         expect(subject.age_rating_guide).to eq('All Ages')
@@ -322,7 +319,7 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       it 'should return the Japanese title of media' do
         expect(subject.titles[:ja_jp]).to eq('ベルセルク')
       end
-      it 'should prevent an error if English or Japanese title does not exist' do
+      it 'should return nil if English or Japanese title does not exist' do
         subject = described_class.new({ other_titles: {} }.to_json)
 
         expect(subject.titles[:en_us]).to be_nil
@@ -345,7 +342,10 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should return all genres' do
-        expect(subject.genres).to eq(["Action", "Adventure", "Demons", "Drama", "Fantasy", "Horror", "Supernatural", "Military", "Psychological", "Seinen"])
+        expect(subject.genres).to eq(%w[Action Adventure Demons
+                                        Drama Fantasy Horror
+                                        Supernatural Military
+                                        Psychological Seinen])
       end
     end
 
@@ -371,5 +371,4 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
     end
   end
-
 end
