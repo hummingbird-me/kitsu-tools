@@ -16,7 +16,7 @@ RSpec.describe DataImport::MyAnimeList do
 
     stub_request(:get, "#{host}manga/1")
       .to_return(body: fixture('my_anime_list/berserk-manga.json'))
-    stub_request(:get, "http://cdn.myanimelist.net/images/manga/1/157931.jpg")
+    stub_request(:get, 'http://cdn.myanimelist.net/images/manga/1/157931.jpg')
       .to_return(body: fixture('image.jpg'), headers: {
         'Content-Type': 'image/jpg'
       })
