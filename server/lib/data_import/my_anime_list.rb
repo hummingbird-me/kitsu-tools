@@ -13,7 +13,9 @@ module DataImport
     end
 
     def get_media(external_id) # anime/1234 or manga/1234
-      media = Mapping.lookup('myanimelist', external_id) || external_id.split('/').first.classify.constantize.new # should return Anime.new or Manga.new
+      media = Mapping.lookup('myanimelist', external_id)
+      klass = external_id.split('/').first.classify.constantize # should return Anime or Manga
+      media ||= klass.new # picks the class
 
       get(external_id) do |response|
         details = Extractor::Media.new(response)
