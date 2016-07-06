@@ -1,5 +1,5 @@
-class DataImport
-  module MyAnimeList
+module DataImport
+  class MyAnimeList
     module Extractor
       class Media
         attr_reader :data
