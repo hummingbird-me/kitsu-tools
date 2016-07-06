@@ -13,22 +13,30 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should extract the G rating' do
-        subject = described_class.new({ classification: 'G - All Ages' }.to_json)
+        subject = described_class.new({
+          classification: 'G - All Ages'
+        }.to_json)
         expect(subject.age_rating).to eq(:G)
       end
 
       it 'should convert TV-Y7 rating to G' do
-        subject = described_class.new({ classification: 'TV-Y7 - All Ages' }.to_json)
+        subject = described_class.new({
+          classification: 'TV-Y7 - All Ages'
+        }.to_json)
         expect(subject.age_rating).to eq(:G)
       end
 
       it 'should extract the PG rating' do
-        subject = described_class.new({ classification: 'PG - Children' }.to_json)
+        subject = described_class.new({
+          classification: 'PG - Children'
+        }.to_json)
         expect(subject.age_rating).to eq(:PG)
       end
 
       it 'should convert the PG13 rating to PG' do
-        subject = described_class.new({ classification: 'PG13 - Teens 13 or older' }.to_json)
+        subject = described_class.new({
+          classification: 'PG13 - Teens 13 or older'
+        }.to_json)
         expect(subject.age_rating).to eq(:PG)
       end
 
@@ -38,12 +46,16 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should convert the R+ rating to R' do
-        subject = described_class.new({ classification: 'R+ - Mild Nudity' }.to_json)
+        subject = described_class.new({
+          classification: 'R+ - Mild Nudity'
+        }.to_json)
         expect(subject.age_rating).to eq(:R)
       end
 
       it 'should extract the R18 rating' do
-        subject = described_class.new({ classification: 'Rx - Hentai' }.to_json)
+        subject = described_class.new({
+          classification: 'Rx - Hentai'
+        }.to_json)
         expect(subject.age_rating).to eq(:R18)
       end
     end
@@ -72,7 +84,10 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
 
     describe '#synopsis' do
       it 'should return the plaintext synopsis' do
-        expected_synopsis = "<p>In fake data with some spoiler </p><p><span class=\"spoiler\"><br> I am a spoiler!</span></p> <p>[Written by MAL Rewrite]</p>"
+        expected_synopsis = '<p>In fake data with some spoiler </p>
+                             <p><span class=\'spoiler\'><br> I am a
+                             spoiler!</span></p>
+                             <p>[Written by MAL Rewrite]</p>'
         expect(subject.synopsis).to eq(expected_synopsis)
       end
     end
@@ -91,19 +106,27 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
 
     describe '#age_rating_guide' do
       it 'should extract the G rating description' do
-        subject = described_class.new({ classification: 'G - All Ages' }.to_json)
+        subject = described_class.new({
+          classification: 'G - All Ages'
+        }.to_json)
         expect(subject.age_rating_guide).to eq('All Ages')
       end
 
       it 'should extract the PG rating description' do
-        subject = described_class.new({ classification: 'PG - Children' }.to_json)
+        subject = described_class.new({
+          classification: 'PG - Children'
+        }.to_json)
         expect(subject.age_rating_guide).to eq('Children')
       end
 
       # check both cases
       it 'should extract the PG13 & PG-13 rating description' do
-        subject = described_class.new({ classification: 'PG13 - Teens 13 or older' }.to_json)
-        subject1 = described_class.new({ classification: 'PG-13 - Teens 13 or older' }.to_json)
+        subject = described_class.new({
+          classification: 'PG13 - Teens 13 or older'
+        }.to_json)
+        subject1 = described_class.new({
+          classification: 'PG-13 - Teens 13 or older'
+        }.to_json)
 
         expect(subject.age_rating_guide).to eq('Teens 13 or older')
         expect(subject1.age_rating_guide).to eq('Teens 13 or older')
@@ -115,28 +138,40 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should extract the R+ rating description' do
-        subject = described_class.new({ classification: 'R+ - Mild Nudity' }.to_json)
+        subject = described_class.new({
+          classification: 'R+ - Mild Nudity'
+        }.to_json)
         expect(subject.age_rating_guide).to eq('Mild Nudity')
       end
 
       it 'should extract the Rx rating description' do
-        subject = described_class.new({ classification: 'Rx - Hentai' }.to_json)
+        subject = described_class.new({
+          classification: 'Rx - Hentai'
+        }.to_json)
         expect(subject.age_rating_guide).to eq('Hentai')
       end
 
       it 'case statement for G' do
-        subject = described_class.new({ classification: 'G' }.to_json)
+        subject = described_class.new({
+          classification: 'G'
+        }.to_json)
         expect(subject.age_rating_guide).to eq('All Ages')
       end
 
       it 'case statement for PG' do
-        subject = described_class.new({ classification: 'PG' }.to_json)
+        subject = described_class.new({
+          classification: 'PG'
+        }.to_json)
         expect(subject.age_rating_guide).to eq('Children')
       end
 
       it 'case statement for PG13 & PG-13' do
-        subject = described_class.new({ classification: 'PG13' }.to_json)
-        subject1 = described_class.new({ classification: 'PG-13' }.to_json)
+        subject = described_class.new({
+          classification: 'PG13'
+        }.to_json)
+        subject1 = described_class.new({
+          classification: 'PG-13'
+        }.to_json)
 
         expect(subject.age_rating_guide).to eq('Teens 13 or older')
         expect(subject1.age_rating_guide).to eq('Teens 13 or older')
@@ -148,12 +183,16 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       # end
 
       it 'case statement for R+' do
-        subject = described_class.new({ classification: 'R+' }.to_json)
+        subject = described_class.new({
+          classification: 'R+'
+        }.to_json)
         expect(subject.age_rating_guide).to eq('Mild Nudity')
       end
 
       it 'case statement for Rx' do
-        subject = described_class.new({ classification: 'Rx' }.to_json)
+        subject = described_class.new({
+          classification: 'Rx'
+        }.to_json)
         expect(subject.age_rating_guide).to eq('Hentai')
       end
     end
@@ -168,17 +207,23 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should return special' do
-        subject = described_class.new({ type: 'Special' }.to_json)
+        subject = described_class.new({
+          type: 'Special'
+        }.to_json)
         expect(subject.subtype).to eq(:special)
       end
 
       it 'should return OVA' do
-        subject = described_class.new({ type: 'OVA' }.to_json)
+        subject = described_class.new({
+          type: 'OVA'
+        }.to_json)
         expect(subject.subtype).to eq(:OVA)
       end
 
       it 'should return ONA' do
-        subject = described_class.new({ type: 'ONA' }.to_json)
+        subject = described_class.new({
+          type: 'ONA'
+        }.to_json)
         expect(subject.subtype).to eq(:ONA)
       end
 
@@ -188,7 +233,9 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should return music' do
-        subject = described_class.new({ type: 'Music' }.to_json)
+        subject = described_class.new({
+          type: 'Music'
+        }.to_json)
         expect(subject.subtype).to eq(:music)
       end
     end
@@ -252,7 +299,8 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should return all genres' do
-        expect(subject.genres).to eq(%w(Action Adventure Comedy Drama Sci-Fi Space))
+        expect(subject.genres).to eq(%w[Action Adventure Comedy
+                                        Drama Sci-Fi Space])
       end
     end
 
@@ -268,7 +316,25 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
 
     describe '#synopsis' do
       it 'should return the plaintext synopsis' do
-        expected_synopsis = "<p>Guts, a former mercenary now known as the \"Black Swordsman,\" is out for revenge. After a tumultuous childhood, he finally finds someone he respects and believes he can trust, only to have everything fall apart when this person takes away everything important to Guts for the purpose of fulfilling his own desires. Now marked for death, Guts becomes condemned to a fate in which he is relentlessly pursued by demonic beings.</p><p>Setting out on a dreadful quest riddled with misfortune, Guts, armed with a massive sword and monstrous strength, will let nothing stop him, not even death itself, until he is finally able to take the head of the one who stripped him—and his loved one—of their humanity.</p><p>[Written by MAL Rewrite]</p><p>Included one-shot:<br></p>"
+        expected_synopsis = '<p>Guts, a former mercenary now known
+                             as the \'Black Swordsman,\' is out for
+                             revenge. After a tumultuous childhood,
+                             he finally finds someone he respects
+                             and believes he can trust, only to have
+                             everything fall apart when this person
+                             takes away everything important to Guts
+                             for the purpose of fulfilling his own desires.
+                             Now marked for death, Guts becomes condemned
+                             to a fate in which he is relentlessly
+                             pursued by demonic beings.</p><p>Setting
+                             out on a dreadful quest riddled with
+                             misfortune, Guts, armed with a massive
+                             sword and monstrous strength, will let
+                             nothing stop him, not even death itself,
+                             until he is finally able to take the head
+                             of the one who stripped him—and his loved
+                             one—of their humanity.</p><p>[Written by
+                             MAL Rewrite]</p><p>Included one-shot:<br></p>'
         expect(subject.synopsis).to eq(expected_synopsis)
       end
     end
@@ -289,22 +355,30 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should return novel' do
-        subject = described_class.new({ type: 'Novel' }.to_json)
+        subject = described_class.new({
+          type: 'Novel'
+        }.to_json)
         expect(subject.subtype).to eq(:novel)
       end
 
       it 'should return manuha' do
-        subject = described_class.new({ type: 'Manuha' }.to_json)
+        subject = described_class.new({
+          type: 'Manuha'
+        }.to_json)
         expect(subject.subtype).to eq(:manuha)
       end
 
       it 'should return oneshot' do
-        subject = described_class.new({ type: 'oneshot' }.to_json)
+        subject = described_class.new({
+          type: 'oneshot'
+        }.to_json)
         expect(subject.subtype).to eq(:oneshot)
       end
 
       it 'should return doujin' do
-        subject = described_class.new({ type: 'Doujin' }.to_json)
+        subject = described_class.new({
+          type: 'Doujin'
+        }.to_json)
         expect(subject.subtype).to eq(:doujin)
       end
     end
@@ -342,16 +416,18 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should return all genres' do
-        expect(subject.genres).to eq(%w(Action Adventure Demons
+        expect(subject.genres).to eq(%w[Action Adventure Demons
                                         Drama Fantasy Horror
                                         Supernatural Military
-                                        Psychological Seinen))
+                                        Psychological Seinen])
       end
     end
 
     describe '#chapters' do
       it 'should return total chapters' do
-        subject = described_class.new({ chapters: 100 }.to_json)
+        subject = described_class.new({
+          chapters: 100
+        }.to_json)
         expect(subject.chapters).to eq(100)
       end
 
@@ -362,7 +438,9 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
 
     describe '#volumes' do
       it 'should return total volumes' do
-        subject = described_class.new({ volumes: 15 }.to_json)
+        subject = described_class.new({
+          volumes: 15
+        }.to_json)
         expect(subject.volumes).to eq(15)
       end
 

@@ -1,6 +1,6 @@
 module DataImport
   class MyAnimeList
-    ATARASHII_API_HOST = "https://hbv3-mal-api.herokuapp.com/2.1/"
+    ATARASHII_API_HOST = 'https://hbv3-mal-api.herokuapp.com/2.1/'.freeze
 
     include DataImport::Media
     include DataImport::HTTP
@@ -27,7 +27,6 @@ module DataImport
 
         yield media
       end
-
     end
 
     private
@@ -40,6 +39,5 @@ module DataImport
       return path if path.include?('://')
       "#{ATARASHII_API_HOST}#{path}"
     end
-
   end
 end
