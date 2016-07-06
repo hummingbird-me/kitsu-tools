@@ -19,11 +19,13 @@ namespace :importers do
 
       Chewy.strategy(:bypass) do
         puts 'Getting unimported list...'
-        ids = Anime.find_each.reject do |a|
-          path = a.send(type).path; path && File.exist?(path)
-        end.map(&:id)
+        ids = Anime.find_each.reject { |a|
+          path = a.send(type).path
+          File.exist?(path) if path
+        }.map(&:id)
         puts "Found #{ids.count}! Prioritizing popular series and limiting..."
-        ids = Anime.where(id: ids).order(user_count: :desc).limit(quantity).pluck(:id)
+        ids = Anime.where(id: ids).order(user_count: :desc).limit(quantity)
+                   .pluck(:id)
         puts "Importing #{ids.count}!"
         GC.start
 
@@ -46,7 +48,7 @@ namespace :importers do
   end
 
   desc 'Import the bcmoe.json file from disk or (by default) off because.moe'
-  task :bcmoe, [:filename] => [:environment] do |t, args|
+  task :bcmoe, [:filename] => [:environment] do |_t, args|
     # Load the JSON
     json_file = open(args[:filename] || 'http://because.moe/bcmoe.json').read
     bcmoe = JSON.parse(json_file).map(&:deep_symbolize_keys)
@@ -79,12 +81,12 @@ namespace :importers do
         subs = spanish ? %w[es] : %w[en]
 
         # Output confidence and title mapping
-        print (' ' * confidence) + ('*' * (5 - confidence)) + ' '
+        print((' ' * confidence) + ('*' * (5 - confidence)) + ' ')
         puts "#{show[:name]} => #{anime.canonical_title}"
 
         # Create StreamingLink for each site listed
         show[:sites].each do |site, url|
-          link = StreamingLink.where(
+          StreamingLink.where(
             streamer: sites[site],
             url: url,
             media: anime

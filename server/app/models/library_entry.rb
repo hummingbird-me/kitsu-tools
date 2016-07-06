@@ -22,7 +22,7 @@ class LibraryEntry < ActiveRecord::Base
   # TODO: apply this globally so that we can easily update it to add the
   # totally definitely happening 1000-point scale.  Or just because it's good
   # practice.
-  VALID_RATINGS = (0.5..5).step(0.5).to_a
+  VALID_RATINGS = (0.5..5).step(0.5).to_a.freeze
 
   belongs_to :user, touch: true
   belongs_to :media, polymorphic: true
@@ -37,7 +37,7 @@ class LibraryEntry < ActiveRecord::Base
 
   validates :user, :media, :status, :progress, :reconsume_count,
     presence: true
-  validates :user_id, uniqueness: { scope: [:media_type, :media_id] }
+  validates :user_id, uniqueness: { scope: %i[media_type media_id] }
   validates :rating, numericality: {
     greater_than: 0,
     less_than_or_equal_to: 5
@@ -64,9 +64,7 @@ class LibraryEntry < ActiveRecord::Base
   def rating_on_halves
     return unless rating
 
-    unless rating % 0.5 == 0.0
-      errors.add(:rating, 'must be a multiple of 0.5')
-    end
+    errors.add(:rating, 'must be a multiple of 0.5') unless rating % 0.5 == 0.0
   end
 
   after_save do

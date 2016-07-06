@@ -10,25 +10,26 @@ module Rateable
 
   def calculate_rating_frequencies
     base = LibraryEntry::VALID_RATINGS.map { |r| [r, 0] }.to_h
-    freqs = LibraryEntry.where(media: self).group(:rating).count.
-      transform_keys(&:to_f).slice(*LibraryEntry::VALID_RATINGS)
+    freqs = LibraryEntry.where(media: self).group(:rating).count
+                        .transform_keys(&:to_f)
+                        .slice(*LibraryEntry::VALID_RATINGS)
     base.merge(freqs)
   end
 
   def calculate_rating_frequencies!
-    self.update_attribute(:rating_frequencies, calculate_rating_frequencies)
+    update_attribute(:rating_frequencies, calculate_rating_frequencies)
   end
 
   def update_rating_frequency(rating, diff)
     return if rating.nil?
     update_query = <<-EOF
       rating_frequencies = rating_frequencies
-        || hstore('#{rating.to_s}', (
+        || hstore('#{rating}', (
           COALESCE(rating_frequencies->'#{rating}', '0')::integer + #{diff}
         )::text)
     EOF
-    self.class.where(id: self.id).update_all(update_query)
-    self.touch
+    self.class.where(id: id).update_all(update_query)
+    touch
   end
 
   def decrement_rating_frequency(rating)

@@ -5,7 +5,9 @@ module Episodic
     # Try for the statistical mode (most common value) of episode lengths
     length, num = episodes.length_mode.values_at(:mode, :count)
     # If it's less than half of episodes, use average instead
-    length = episodes.length_average if episode_count && num < (episode_count / 2)
+    if episode_count && num < (episode_count / 2)
+      length = episodes.length_average
+    end
 
     update(episode_length: length)
   end

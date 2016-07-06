@@ -12,7 +12,7 @@ module SearchableResource
     def inherited(subclass)
       subclass.instance_variable_set(:@chewy_index, @chewy_index.deep_dup)
       subclass.instance_variable_set(:@queryable_fields,
-                                     @queryable_fields.deep_dup)
+        @queryable_fields.deep_dup)
       super
     end
 
@@ -30,9 +30,7 @@ module SearchableResource
       # array all at once, or to modify values.
       filter field, verify: opts[:verify] || -> (values, context) {
         if opts[:valid]
-          if values.all? { |v| opts[:valid].call(v, context) }
-            values
-          end
+          values if values.all? { |v| opts[:valid].call(v, context) }
         else
           values
         end
@@ -51,7 +49,7 @@ module SearchableResource
     def search(filters, opts = {})
       context = opts[:context]
 
-      return [] if filters.values.any? { |f| f.nil? }
+      return [] if filters.values.any?(&:nil?)
 
       # Apply scopes, load, and wrap
       apply_scopes(filters, opts).load.map { |result| new(result, context) }
@@ -59,7 +57,7 @@ module SearchableResource
 
     # Count all search results
     def search_count(filters, opts = {})
-      return 0 if filters.values.any? { |f| f.nil? }
+      return 0 if filters.values.any?(&:nil?)
       apply_scopes(filters, opts).total_count
     end
 
@@ -71,12 +69,10 @@ module SearchableResource
     private
 
     def apply_scopes(filters, opts = {})
-      context = opts[:context]
-
       # Generate query
       query = generate_query(filters)
-      query = query.reduce(@chewy_index) do |scope, query|
-        scope.public_send(*query.values_at(:mode, :query))
+      query = query.reduce(@chewy_index) do |scope, subquery|
+        scope.public_send(*subquery.values_at(:mode, :query))
       end
       # Pagination
       query = opts[:paginator].apply(query, {}) if opts[:paginator]
@@ -98,7 +94,7 @@ module SearchableResource
         filter = filters[field]
         filter = opts[:apply].call(filter, {}) if opts[:apply]
 
-        {mode: opts[:mode] || :filter, query: auto_query(field, filter)}
+        { mode: opts[:mode] || :filter, query: auto_query(field, filter) }
       end
       queries.compact
     end
@@ -106,16 +102,16 @@ module SearchableResource
     def auto_query(field, value)
       case value
       when String, Fixnum, Float, Date
-        {match: {field => value}}
+        { match: { field => value } }
       when Range
-        {range: {field => {gte: value.min, lte: value.max}}}
+        { range: { field => { gte: value.min, lte: value.max } } }
       when Array
         # Array<String|Fixnum|Float> get shorthanded to a single match query
-        if value.all? { |v| v.is_a?(String) || v.is_a?(Fixnum) || v.is_a?(Float) }
+        if value.all? { |v| v.is_a?(String) || v.is_a?(Numeric) }
           auto_query(field, value.join(' '))
         else
           matchers = value.map { |v| auto_query(field, v) }
-          {bool: {should: matchers}}
+          { bool: { should: matchers } }
         end
       else
         value

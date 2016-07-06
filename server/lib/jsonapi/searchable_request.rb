@@ -3,7 +3,9 @@ require_dependency 'jsonapi/search_operation'
 class SearchableRequest < JSONAPI::Request
   def add_find_operation
     # Default sort is by {_score: :desc}
-    @sort_criteria = [{field: '_score', direction: :desc}] unless params[:sort]
+    unless params[:sort]
+      @sort_criteria = [{ field: '_score', direction: :desc }]
+    end
 
     @operations.push SearchOperation.new(
       @resource_klass,

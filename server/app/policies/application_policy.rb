@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
   alias_method :index?, :show?
 
-  def is_admin?
+  def is_admin? # rubocop:disable Style/PredicateName
     user && user.has_role?(:admin, model_class)
   end
   alias_method :create?, :is_admin?

@@ -34,17 +34,19 @@ RSpec.describe LibraryEntriesController, type: :controller do
     end
 
     describe 'with logged in user' do
-      it "should respond with a single private library entry as an array" do
+      it 'should respond with a single private library entry as an array' do
         sign_in(user)
         create(:library_entry, user: user, media: anime, private: true)
-        3.times { create(:library_entry, user: build(:user), media: anime,
-                                         private: true) }
+        3.times do
+          create(:library_entry, user: build(:user), media: anime,
+                                 private: true)
+        end
         get :index
         expect(response.body).to have_resources(LIBRARY_ENTRY, 'libraryEntries')
         expect(JSON.parse(response.body)['data'].count).to equal(1)
       end
 
-      it "should respond with a list of library entries" do
+      it 'should respond with a list of library entries' do
         sign_in(user)
         create(:library_entry, user: user, media: anime, private: true)
         3.times { create(:library_entry, user: build(:user), media: anime) }

@@ -29,15 +29,15 @@ RSpec.describe LibraryEntry, type: :model do
   it { should validate_presence_of(:status) }
   it { should validate_presence_of(:progress) }
   it { should validate_presence_of(:reconsume_count) }
-  it {
-    should validate_uniqueness_of(:user_id)
-      .scoped_to([:media_type, :media_id])
-  }
-  it {
-    should validate_numericality_of(:rating)
+  it do
+    expect(subject).to validate_uniqueness_of(:user_id)
+      .scoped_to(%i[media_type media_id])
+  end
+  it do
+    expect(subject).to validate_numericality_of(:rating)
       .is_less_than_or_equal_to(5)
       .is_greater_than(0)
-  }
+  end
 
   describe 'progress_limit validation' do
     it 'should fail when progress > progress_limit' do
@@ -90,7 +90,7 @@ RSpec.describe LibraryEntry, type: :model do
         library_entry.save!
         media.reload
         freqs = media.rating_frequencies.transform_values(&:to_i)
-        expect(freqs.values).to all(be_positive.or be_zero)
+        expect(freqs.values).to all(be_positive.or(be_zero))
       end
     end
   end

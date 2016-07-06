@@ -17,13 +17,15 @@ RSpec.describe Mapping, type: :model do
   it { should validate_presence_of(:media) }
   it { should validate_presence_of(:external_site) }
   it { should validate_presence_of(:external_id) }
-  it { should validate_uniqueness_of(:media_id)
-        .scoped_to([:media_type, :external_site]) }
+  it do
+    expect(subject).to validate_uniqueness_of(:media_id)
+      .scoped_to(%i[media_type external_site])
+  end
   describe '.lookup' do
     it 'should respond when it finds the correct media' do
       anime = create(:anime)
-      mapping = create(:mapping, media: anime, external_site: 'myanimelist',
-                                 external_id: '17')
+      create(:mapping, media: anime, external_site: 'myanimelist',
+                       external_id: '17')
       expect(Mapping.lookup('myanimelist', '17')).to eq(anime)
     end
     it 'should return nil when it cannot find a matching media' do

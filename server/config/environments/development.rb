@@ -30,8 +30,8 @@ Rails.application.configure do
 
   # Enable CORS in Development so Ember can access Rails on a different port
   config.middleware.insert_before 0, 'Rack::Cors',
-                                  debug: true,
-                                  logger: -> { Rails.logger } do
+    debug: true,
+    logger: -> { Rails.logger } do
     allow do
       origins '*'
       resource '*', headers: :any,

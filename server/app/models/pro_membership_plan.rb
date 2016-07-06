@@ -12,6 +12,6 @@
 #
 
 class ProMembershipPlan < ActiveRecord::Base
-  scope :recurring, ->{ where(recurring: true) }
-  scope :nonrecurring, ->{ where(recurring: false) }
+  scope :recurring, -> { where(recurring: true) }
+  scope :nonrecurring, -> { where(recurring: false) }
 end

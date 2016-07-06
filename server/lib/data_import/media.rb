@@ -14,8 +14,8 @@ module DataImport
     #
     # @param [String] external ID to load
     # @return [Media] a hash of standardized attributes
-    def get_media(external_id)
-      fail 'Override DataImport::Media#get_media with your own implementation'
+    def get_media(*)
+      raise 'Override DataImport::Media#get_media with your own implementation'
     end
   end
 end

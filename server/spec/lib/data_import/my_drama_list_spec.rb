@@ -4,14 +4,14 @@ RSpec.describe DataImport::MyDramaList do
   subject { described_class.new }
   before do
     host = described_class::MDL_HOST
-    stub_request(:get, "#{host}/123").
-      to_return(body: fixture('my_drama_list/karate-robo-zaborgar.html'))
-    stub_request(:get, "#{host}/123/cast").
-      to_return(body: fixture('my_drama_list/karate-robo-zaborgar-cast.html'))
-    stub_request(:get, "#{host}/123/episodes").
-      to_return(body: fixture('my_drama_list/signal-episodes.html'))
-    stub_request(:get, /i.mdldb.net/).
-      to_return(body: fixture('image.png'), headers: {
+    stub_request(:get, "#{host}/123")
+      .to_return(body: fixture('my_drama_list/karate-robo-zaborgar.html'))
+    stub_request(:get, "#{host}/123/cast")
+      .to_return(body: fixture('my_drama_list/karate-robo-zaborgar-cast.html'))
+    stub_request(:get, "#{host}/123/episodes")
+      .to_return(body: fixture('my_drama_list/signal-episodes.html'))
+    stub_request(:get, /i.mdldb.net/)
+      .to_return(body: fixture('image.png'), headers: {
         'Content-Type': 'image/png'
       })
   end

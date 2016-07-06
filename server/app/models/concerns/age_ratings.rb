@@ -1,8 +1,8 @@
 module AgeRatings
   extend ActiveSupport::Concern
 
-  AGE_RATINGS = %i[G PG R R18]
-  SAFE_AGE_RATINGS = %w[G PG R]
+  AGE_RATINGS = %i[G PG R R18].freeze
+  SAFE_AGE_RATINGS = %w[G PG R].freeze
 
   # SFW-ness is whitelist, not blacklist
   def sfw?

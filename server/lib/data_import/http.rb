@@ -14,6 +14,7 @@ module DataImport
     end
 
     private
+
     def queued
       hydra.queued_requests
     end
@@ -26,7 +27,7 @@ module DataImport
         return urls.each_with_index do |url, i|
           get(url, opts) do |res|
             results[i] = res
-            yield *results if results.compact.length == urls.length
+            yield(*results) if results.compact.length == urls.length
           end
         end
       end

@@ -69,7 +69,7 @@ class User < ActiveRecord::Base
   PAST_NAMES_LIMIT = 10
 
   devise :database_authenticatable, :registerable, :recoverable,
-         :validatable, :confirmable, :async
+    :validatable, :confirmable, :async
   rolify
 
   belongs_to :pro_membership_plan

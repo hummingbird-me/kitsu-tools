@@ -40,13 +40,13 @@ RSpec.describe DataImport::MyDramaList::Extractor::Details do
 
   describe '#episode_count' do
     context 'for a tv series' do
-      subject {
+      subject do
         described_class.new(<<-EOF.strip_heredoc)
           <html><body><div class="show-details"><ul>
             <li class="txt-block"><h4 class="inline">Episodes:</h4> 16</li>
           </ul></div></body></html>
         EOF
-      }
+      end
       it 'should return the number of episodes' do
         expect(subject.episode_count).to eq(16)
       end
@@ -87,7 +87,7 @@ RSpec.describe DataImport::MyDramaList::Extractor::Details do
 
   describe '#poster_image' do
     it 'should return the fullsize poster' do
-      expect(subject.poster_image).to include('158866959117997028_2835ca55_f.jpg')
+      expect(subject.poster_image).to include('_f.jpg')
     end
   end
 
@@ -101,13 +101,13 @@ RSpec.describe DataImport::MyDramaList::Extractor::Details do
       end
     end
     context 'for a drama series' do
-      subject {
+      subject do
         described_class.new(<<-EOF.strip_heredoc)
           <html><body><div class="show-details"><ul><li class="txt-block">
             <h4 class="inline">Aired:</h4> Jan 22, 2016 to Mar 12, 2016
           </li></ul></div></body></html>
         EOF
-      }
+      end
       it 'should return the date the first episode aired' do
         expect(subject.start_date).to eq(Date.new(2016, 1, 22))
       end
@@ -121,13 +121,13 @@ RSpec.describe DataImport::MyDramaList::Extractor::Details do
       end
     end
     context 'for a drama series' do
-      subject {
+      subject do
         described_class.new(<<-EOF.strip_heredoc)
           <html><body><div class="show-details"><ul><li class="txt-block">
             <h4 class="inline">Aired:</h4> Jan 22, 2016 to Mar 12, 2016
           </li></ul></div></body></html>
         EOF
-      }
+      end
       it 'should return the date the series ended' do
         expect(subject.end_date).to eq(Date.new(2016, 3, 12))
       end

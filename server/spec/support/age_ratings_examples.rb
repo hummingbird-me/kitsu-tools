@@ -26,5 +26,4 @@ RSpec.shared_examples 'age_ratings' do
       expect(Anime.sfw.count).to eq(5)
     end
   end
-
 end

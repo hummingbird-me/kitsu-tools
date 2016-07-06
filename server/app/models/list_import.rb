@@ -38,14 +38,14 @@ class ListImport < ActiveRecord::Base
 
     yield({ status: :running, total: count, current: 0 })
     LibraryEntry.transaction do
-      self.each.with_index do |media, data, index|
+      each.with_index do |media, data, index|
         entry = LibraryEntry.where(user: user, media: media).first_or_create
         merged_entry(entry, data, strategy).save!
         yield({ status: :running, total: count, current: index + 1 })
       end
     end
     yield({ status: :completed, total: count, current: count })
-  rescue Exception => e
+  rescue StandardError
     yield({ status: :error, total: count })
     raise
   end

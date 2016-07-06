@@ -8,13 +8,14 @@
 
 class UnlimitedPaginator < OffsetPaginator
   private
+
   def verify_pagination_params
     if @limit < 1
-      fail JSONAPI::Exceptions::InvalidPageValue.new(:limit, @limit)
+      raise JSONAPI::Exceptions::InvalidPageValue.new(:limit, @limit)
     end
 
     if @offset < 0
-      fail JSONAPI::Exceptions::InvalidPageValue.new(:offset, @offset)
+      raise JSONAPI::Exceptions::InvalidPageValue.new(:offset, @offset)
     end
   end
 end

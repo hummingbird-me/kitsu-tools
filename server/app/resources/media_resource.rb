@@ -2,7 +2,7 @@ class MediaResource < BaseResource
   # This regex accepts a numerical range or single number
   # $1 = start, $2 = dot representing closed/open, $3 = end
   NUMBER = /(\d+(?:\.\d+)?)/
-  NUMERIC_RANGE = %r{\A#{NUMBER}(?:(?:\.\.(\.)?)#{NUMBER})?\z}
+  NUMERIC_RANGE = /\A#{NUMBER}(?:(?:\.\.(\.)?)#{NUMBER})?\z/
   NUMERIC_QUERY = {
     valid: -> (value, _ctx) { NUMERIC_RANGE.match(value) },
     apply: -> (values, _ctx) {
@@ -17,17 +17,17 @@ class MediaResource < BaseResource
         end
       end
     }
-  }
+  }.freeze
 
   attributes :slug, :synopsis,
-             # Images
-             :poster_image, :cover_image, :cover_image_top_offset,
-             # Titles
-             :titles, :canonical_title, :abbreviated_titles,
-             # Ratings
-             :average_rating, :rating_frequencies,
-             # Dates
-             :start_date, :end_date
+    # Images
+    :poster_image, :cover_image, :cover_image_top_offset,
+    # Titles
+    :titles, :canonical_title, :abbreviated_titles,
+    # Ratings
+    :average_rating, :rating_frequencies,
+    # Dates
+    :start_date, :end_date
 
   has_many :genres
   has_many :castings
@@ -42,9 +42,10 @@ class MediaResource < BaseResource
   query :user_count, NUMERIC_QUERY
   query :genres,
     apply: -> (values, _ctx) {
-      {match: {genres: {query: values.join(' '), operator: 'and'}}}
+      { match: { genres: { query: values.join(' '), operator: 'and' } } }
     }
-  query :text, mode: :query,
+  query :text,
+    mode: :query,
     apply: -> (values, _ctx) {
       {
         function_score: {
@@ -54,7 +55,9 @@ class MediaResource < BaseResource
           },
           query: {
             multi_match: {
-              fields: %w[titles.* abbreviated_titles synopsis actors characters],
+              fields: %w[
+                titles.* abbreviated_titles synopsis actors characters
+              ],
               query: values.join(','),
               fuzziness: 2,
               max_expansions: 15,

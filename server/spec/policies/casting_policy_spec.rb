@@ -8,8 +8,8 @@ RSpec.describe CastingPolicy do
   subject { described_class }
 
   permissions :show? do
-    it ('should allow anons') { should permit(nil, casting) }
-    it ('should allow users') { should permit(user, casting) }
-    it ('should allow admins') { should permit(admin, casting) }
+    it('should allow anons') { should permit(nil, casting) }
+    it('should allow users') { should permit(user, casting) }
+    it('should allow admins') { should permit(admin, casting) }
   end
 end

@@ -6,7 +6,7 @@ RSpec.describe DataImport::MyDramaList::Extractor::EpisodeList do
 
   it 'should allow iteration over episodes' do
     expect(subject.count).to eq(16)
-    expect(subject).to include({
+    expect(subject).to include(
       image: 'http://i.mdldb.net/cache/mWb/w/z1dVbjn3_f80ad7_f.jpg',
       title: 'Signal Episode 1',
       air_date: 'Jan 22, 2016',
@@ -16,6 +16,6 @@ RSpec.describe DataImport::MyDramaList::Extractor::EpisodeList do
         girl from school. But soon, he finds out that the girl is missing and
         the suspect is a man! Years later, the case…
       EOF
-    })
+    )
   end
 end

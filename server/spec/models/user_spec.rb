@@ -112,39 +112,41 @@ RSpec.describe User, type: :model do
 
   describe 'past_names' do
     subject { create(:user) }
-    it 'should include the old name when user changes name for the first time' do
-      old_name = subject.name
-      subject.name = 'MisakaMikoto'
-      subject.save!
-      expect(subject.past_names).to include(old_name)
+    context 'when the user changes name for the first time' do
+      it 'should include the old name' do
+        old_name = subject.name
+        subject.name = 'MisakaMikoto'
+        subject.save!
+        expect(subject.past_names).to include(old_name)
+      end
     end
     it 'should push onto the front when user changes name multiple times' do
-      expect do
+      expect {
         3.times do |i|
           subject.name = "Misaka100#{i}"
           subject.save!
         end
-      end.to change { subject.past_names.length }.by(3)
+      }.to change { subject.past_names.length }.by(3)
     end
     it 'should limit to 10 in length' do
-      expect do
+      expect {
         20.times do |i|
           subject.name = "Misaka100#{i}"
           subject.save!
         end
-      end.to change { subject.past_names.length }.from(0).to(10)
+      }.to change { subject.past_names.length }.from(0).to(10)
     end
     it 'should remove duplicate names' do
-      expect do
+      expect {
         10.times do
           subject.name = 'MisakaMikoto'
           subject.save!
         end
-      end.to change { subject.past_names.length }.from(0).to(1)
+      }.to change { subject.past_names.length }.from(0).to(1)
     end
     it 'should return first in list when previous_name is called' do
       3.times do |i|
-        subject.name="Misaka100#{i}"
+        subject.name = "Misaka100#{i}"
         subject.save
       end
       expect(subject.past_names[0]).to equal(subject.previous_name)

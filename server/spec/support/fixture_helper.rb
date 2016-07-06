@@ -1,6 +1,6 @@
 class Fixture
   attr_accessor :name, :filename, :content
-  @@cache = Hash.new { |h,k| h[k] = {} }
+  @@cache = Hash.new { |h, k| h[k] = {} }
 
   def initialize(name, opts = {})
     @name = name

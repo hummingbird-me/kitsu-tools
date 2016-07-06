@@ -7,6 +7,8 @@ RSpec.describe LibraryEntryPolicy do
   let(:entry) { build(:library_entry, user: owner) }
   subject { described_class }
 
+  # (it's much cleaner on one line)
+  # rubocop:disable Metrics/LineLength
   permissions :show? do
     let(:pervert) { build(:user, sfw_filter: false) }
     let(:hentai_entry) { build(:library_entry, :nsfw, user: owner) }
@@ -37,6 +39,7 @@ RSpec.describe LibraryEntryPolicy do
       it('should allow private entries') { should permit(admin, private_entry) }
     end
   end
+  # rubocop:enable Metrics/LineLength
 
   permissions :create?, :update?, :destroy? do
     it('should allow owner') { should permit(owner, entry) }

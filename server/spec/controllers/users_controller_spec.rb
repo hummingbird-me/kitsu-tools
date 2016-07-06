@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  USER ||= { name: String, pastNames: Array }
-  CURRENT_USER ||= { email: String }.merge(USER)
+  USER ||= { name: String, pastNames: Array }.freeze
+  CURRENT_USER ||= { email: String }.merge(USER).freeze
   let(:user) { create(:user) }
 
   describe '#index' do
@@ -10,7 +10,7 @@ RSpec.describe UsersController, type: :controller do
       it 'should respond with a user when authenticated' do
         sign_in user
         get :index, filter: { self: 'yes' }
-        expect(response.body).to have_resources(CURRENT_USER, 'users')
+        expect(response.body).to have_resources(CURRENT_USER.dup, 'users')
         expect(response).to have_http_status(:ok)
       end
       it 'should respond with an empty list when unauthenticated' do
@@ -21,7 +21,8 @@ RSpec.describe UsersController, type: :controller do
     describe 'with filter[name]' do
       it 'should find by username' do
         get :index, filter: { name: user.name }
-        expect(response.body).to have_resources(USER.merge(name: user.name), 'users')
+        user_json = USER.merge(name: user.name)
+        expect(response.body).to have_resources(user_json, 'users')
       end
     end
   end
@@ -29,7 +30,7 @@ RSpec.describe UsersController, type: :controller do
   describe '#show' do
     it 'should respond with a user' do
       get :show, id: user.id
-      expect(response.body).to have_resource(USER, 'users')
+      expect(response.body).to have_resource(USER.dup, 'users')
     end
     it 'has status ok' do
       get :show, id: user.id
@@ -61,7 +62,7 @@ RSpec.describe UsersController, type: :controller do
     end
     it 'should respond with a user' do
       create_user
-      expect(response.body).to have_resource(USER, 'users', singular: true)
+      expect(response.body).to have_resource(USER.dup, 'users', singular: true)
     end
   end
 
@@ -89,7 +90,7 @@ RSpec.describe UsersController, type: :controller do
     end
     it 'should respond with a user' do
       update_user
-      expect(response.body).to have_resource(USER, 'users', singular: true)
+      expect(response.body).to have_resource(USER.dup, 'users', singular: true)
     end
   end
 end

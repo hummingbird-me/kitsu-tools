@@ -4,14 +4,14 @@ RSpec.describe AnimeController, type: :controller do
   ANIME ||= {
     titles: { en_jp: String },
     canonicalTitle: String
-  }
+  }.freeze
   let(:anime) { create(:anime) }
 
   describe '#index' do
     describe 'with filter[slug]' do
       it 'should respond with an anime' do
         get :index, filter: { slug: anime.slug }
-        expect(response.body).to have_resources(ANIME, 'anime')
+        expect(response.body).to have_resources(ANIME.dup, 'anime')
       end
     end
 
@@ -20,7 +20,7 @@ RSpec.describe AnimeController, type: :controller do
         anime.save!
         MediaIndex::Anime.import!
         get :index, filter: { text: anime.canonical_title }
-        expect(response.body).to have_resources(ANIME, 'anime')
+        expect(response.body).to have_resources(ANIME.dup, 'anime')
       end
     end
   end
@@ -28,7 +28,7 @@ RSpec.describe AnimeController, type: :controller do
   describe '#show' do
     it 'should respond with an anime' do
       get :show, id: anime.id
-      expect(response.body).to have_resource(ANIME, 'anime')
+      expect(response.body).to have_resource(ANIME.dup, 'anime')
     end
     it 'has status ok' do
       get :show, id: anime.id
@@ -69,7 +69,7 @@ RSpec.describe AnimeController, type: :controller do
     end
     it 'should respond with an anime' do
       create_anime
-      expect(response.body).to have_resource(ANIME, 'anime')
+      expect(response.body).to have_resource(ANIME.dup, 'anime')
     end
   end
 end

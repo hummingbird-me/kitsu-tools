@@ -1,6 +1,6 @@
 class SearchOperation < JSONAPI::FindOperation
   # Filters which we kick to ElasticSearch for processing
-  SEARCH_FILTERS = %w[text genres year season rating]
+  SEARCH_FILTERS = %w[text genres year season rating].freeze
 
   # Override JSONAPI::FindOperation's apply method to use ElasticSearch where
   # necessary
@@ -18,7 +18,10 @@ class SearchOperation < JSONAPI::FindOperation
     if @resource_klass.should_query?(filters)
       resource_records = @resource_klass.search(filters, find_opts)
     else
-      find_opts[:sort_criteria].map! { |x| x[:field] = 'id' if x[:field] == '_score'; x }
+      find_opts[:sort_criteria].map! do |x|
+        x[:field] = 'id' if x[:field] == '_score'
+        x
+      end
       resource_records = @resource_klass.find(filters, find_opts)
     end
 

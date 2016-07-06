@@ -13,7 +13,7 @@ RSpec.describe AttachmentFormatter do
       let(:attachment) do
         Paperclip::Attachment.new(:file, double, styles: {
           big: 'test',
-          small: 'test',
+          small: 'test'
         })
       end
       let(:formatted) { subject.format(attachment) }

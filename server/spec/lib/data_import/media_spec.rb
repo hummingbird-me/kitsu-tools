@@ -17,8 +17,8 @@ RSpec.describe DataImport::Media do
     it 'should call #get_media for each and yield what it yields' do
       allow(subject).to receive(:get_media).and_yield('ohayou')
       expect { |b|
-        subject.get_multiple_media(['1234', '5678'], &b)
-      }.to yield_successive_args(['1234', 'ohayou'], ['5678', 'ohayou'])
+        subject.get_multiple_media(%w[1234 5678], &b)
+      }.to yield_successive_args(%w[1234 ohayou], %w[5678 ohayou])
     end
   end
 end

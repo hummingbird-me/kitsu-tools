@@ -19,9 +19,9 @@ module AuthenticatedResource
 
   # Raise a Pundit::NotAuthorizedError for the given query
   def not_authorized!(query)
-    fail Pundit::NotAuthorizedError, query: query,
-                                     record: @model,
-                                     policy: pundit.policy
+    raise Pundit::NotAuthorizedError, query: query,
+                                      record: @model,
+                                      policy: pundit.policy
   end
 
   # Limit scope of relations based on policies
@@ -39,7 +39,7 @@ module AuthenticatedResource
 
   # Limit scope of finders based on policy
   class_methods do
-    def records(options = {context: {}})
+    def records(options = { context: {} })
       current_user = options[:context][:current_user]
       policy = Pundit::PolicyFinder.new(_model_class.all)
       scope = policy.scope.new(current_user, _model_class)
