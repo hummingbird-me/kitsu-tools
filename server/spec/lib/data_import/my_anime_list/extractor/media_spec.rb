@@ -229,7 +229,7 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       it 'should return the Japanese title of media' do
         expect(subject.titles[:ja_jp]).to eq('カウボーイビバップ')
       end
-      it 'should prevent an error if English or Japanese title does not exist' do
+      it 'should return nil if English or Japanese title does not exist' do
         subject = described_class.new({ other_titles: {} }.to_json)
 
         expect(subject.titles[:en_us]).to be_nil
@@ -252,7 +252,7 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should return all genres' do
-        expect(subject.genres).to eq(["Action", "Adventure", "Comedy", "Drama", "Sci-Fi", "Space"])
+        expect(subject.genres).to eq(%w(Action Adventure Comedy Drama Sci-Fi Space))
       end
     end
 
@@ -342,10 +342,10 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should return all genres' do
-        expect(subject.genres).to eq(%w[Action Adventure Demons
+        expect(subject.genres).to eq(%w(Action Adventure Demons
                                         Drama Fantasy Horror
                                         Supernatural Military
-                                        Psychological Seinen])
+                                        Psychological Seinen))
       end
     end
 
