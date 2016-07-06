@@ -5,19 +5,19 @@ RSpec.describe DataImport::MyAnimeList do
 
   before do
     host = described_class::ATARASHII_API_HOST
-    stub_request(:get, "#{host}anime/1").
-      to_return(body: fixture('my_anime_list/cowboy-bebop-tv.json'))
-    stub_request(:get, "#{host}anime/5").
-      to_return(body: fixture('my_anime_list/cowboy-bebop-movie.json'))
-    stub_request(:get, "http://cdn.myanimelist.net/images/anime/4/19644.jpg").
-      to_return(body: fixture('image.jpg'), headers: {
+    stub_request(:get, "#{host}anime/1")
+      .to_return(body: fixture('my_anime_list/cowboy-bebop-tv.json'))
+    stub_request(:get, "#{host}anime/5")
+      .to_return(body: fixture('my_anime_list/cowboy-bebop-movie.json'))
+    stub_request(:get, 'http://cdn.myanimelist.net/images/anime/4/19644.jpg')
+      .to_return(body: fixture('image.jpg'), headers: {
         'Content-Type': 'image/jpg'
       })
 
-    stub_request(:get, "#{host}manga/1").
-      to_return(body: fixture('my_anime_list/berserk-manga.json'))
-    stub_request(:get, "http://cdn.myanimelist.net/images/manga/1/157931.jpg").
-      to_return(body: fixture('image.jpg'), headers: {
+    stub_request(:get, "#{host}manga/1")
+      .to_return(body: fixture('my_anime_list/berserk-manga.json'))
+    stub_request(:get, "http://cdn.myanimelist.net/images/manga/1/157931.jpg")
+      .to_return(body: fixture('image.jpg'), headers: {
         'Content-Type': 'image/jpg'
       })
   end
@@ -66,6 +66,4 @@ RSpec.describe DataImport::MyAnimeList do
       end
     end
   end
-
-
 end

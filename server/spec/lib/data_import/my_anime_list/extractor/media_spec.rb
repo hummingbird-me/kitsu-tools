@@ -292,22 +292,22 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
       end
 
       it 'should return novel' do
-        subject = described_class.new({type: 'Novel'}.to_json)
+        subject = described_class.new({ type: 'Novel' }.to_json)
         expect(subject.subtype).to eq(:novel)
       end
 
       it 'should return manuha' do
-        subject = described_class.new({type: 'Manuha'}.to_json)
+        subject = described_class.new({ type: 'Manuha' }.to_json)
         expect(subject.subtype).to eq(:manuha)
       end
 
       it 'should return oneshot' do
-        subject = described_class.new({type: 'oneshot'}.to_json)
+        subject = described_class.new({ type: 'oneshot' }.to_json)
         expect(subject.subtype).to eq(:oneshot)
       end
 
       it 'should return doujin' do
-        subject = described_class.new({type: 'Doujin'}.to_json)
+        subject = described_class.new({ type: 'Doujin' }.to_json)
         expect(subject.subtype).to eq(:doujin)
       end
     end
@@ -323,7 +323,7 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
         expect(subject.titles[:ja_jp]).to eq('ベルセルク')
       end
       it 'should prevent an error if English or Japanese title does not exist' do
-        subject = described_class.new({other_titles: {} }.to_json)
+        subject = described_class.new({ other_titles: {} }.to_json)
 
         expect(subject.titles[:en_us]).to be_nil
         expect(subject.titles[:ja_jp]).to be_nil
@@ -351,7 +351,7 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
 
     describe '#chapters' do
       it 'should return total chapters' do
-        subject = described_class.new({chapters: 100 }.to_json)
+        subject = described_class.new({ chapters: 100 }.to_json)
         expect(subject.chapters).to eq(100)
       end
 
@@ -362,7 +362,7 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
 
     describe '#volumes' do
       it 'should return total volumes' do
-        subject = described_class.new({volumes: 15 }.to_json)
+        subject = described_class.new({ volumes: 15 }.to_json)
         expect(subject.volumes).to eq(15)
       end
 
