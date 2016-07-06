@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702083448) do
+ActiveRecord::Schema.define(version: 20160705041049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,21 @@ ActiveRecord::Schema.define(version: 20160702083448) do
   add_index "castings", ["character_id"], name: "index_castings_on_character_id", using: :btree
   add_index "castings", ["media_id", "media_type"], name: "index_castings_on_media_id_and_media_type", using: :btree
   add_index "castings", ["person_id"], name: "index_castings_on_person_id", using: :btree
+
+  create_table "chapters", force: :cascade do |t|
+    t.integer  "manga_id"
+    t.hstore   "titles",          default: {},      null: false
+    t.string   "canonical_title", default: "en_ja", null: false
+    t.integer  "number",                            null: false
+    t.integer  "volume"
+    t.integer  "length"
+    t.text     "synopsis"
+    t.date     "published"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "chapters", ["manga_id"], name: "index_chapters_on_manga_id", using: :btree
 
   create_table "characters", force: :cascade do |t|
     t.string   "name",               limit: 255
