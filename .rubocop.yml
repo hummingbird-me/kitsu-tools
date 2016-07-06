@@ -6,11 +6,10 @@ AllCops:
   DisplayCopNames: false
   DisplayStyleGuide: true
   StyleGuideCopsOnly: false
+Style/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
 Style/BlockDelimiters:
-  EnforcedStyle: line_count_based
-  # Exclude specs from the rule on block delimiters for expect {}
-  Exclude:
-    - server/spec/**/*
+  EnforcedStyle: braces_for_chaining
 Style/CollectionMethods:
   PreferredMethods:
     collect: map
@@ -42,6 +41,8 @@ Style/GuardClause:
 Style/IfUnlessModifier:
   Enabled: true
   MaxLineLength: 80
+Style/IndentHash:
+  EnforcedStyle: consistent
 Style/LambdaCall:
   Enabled: true
 Style/Next:
