@@ -14,16 +14,18 @@ module DataImport
 
     def get_media(external_id) # anime/1234 or manga/1234
       media = Mapping.lookup('myanimelist', external_id)
-      klass = external_id.split('/').first.classify.constantize # should return Anime or Manga
-      media ||= klass.new # picks the class
+      # should return Anime or Manga
+      klass = external_id.split('/').first.classify.constantize
+      # initialize the class
+      media ||= klass.new
 
       get(external_id) do |response|
         details = Extractor::Media.new(response)
 
         media.assign_attributes(details.to_h.compact)
-        media.genres = details.genres.map do |genre|
+        media.genres = details.genres.map { |genre|
           Genre.find_by(name: genre)
-        end.compact
+        }.compact
 
         yield media
       end

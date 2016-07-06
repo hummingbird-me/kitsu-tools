@@ -52,7 +52,8 @@ class DataImport
           when 'G' then 'All Ages'
           when 'PG' then 'Children'
           when 'PG13', 'PG-13' then 'Teens 13 or older'
-          # when 'R' then 'Violence, Profanity' # this will NEVER happen because of return
+          # when 'R' then 'Violence, Profanity'
+          # this will NEVER happen because of return
           when 'R+' then 'Mild Nudity'
           when 'Rx' then 'Hentai'
           end
