@@ -6,6 +6,7 @@ AllCops:
   DisplayCopNames: false
   DisplayStyleGuide: true
   StyleGuideCopsOnly: false
+  TargetRubyVersion: 2.3
 Style/AlignParameters:
   EnforcedStyle: with_fixed_indentation
 Style/BlockDelimiters:
@@ -30,9 +31,13 @@ Style/DotPosition:
   EnforcedStyle: leading
 Style/FileName:
   Enabled: true
+  Exclude: ['**/jsonapi-resources.rb']
 Style/FormatString:
   Enabled: true
   EnforcedStyle: format
+# TODO: enable this and transition to immutable strings
+Style/FrozenStringLiteralComment:
+  Enabled: false
 Style/GlobalVars:
   Enabled: false
 Style/GuardClause:
@@ -41,6 +46,8 @@ Style/GuardClause:
 Style/IfUnlessModifier:
   Enabled: true
   MaxLineLength: 80
+Style/IndentArray:
+  EnforcedStyle: consistent
 Style/IndentHash:
   EnforcedStyle: consistent
 Style/LambdaCall:
@@ -155,6 +162,7 @@ Style/AccessorMethodName:
   Enabled: true
 Style/Alias:
   Enabled: true
+  EnforcedStyle: prefer_alias_method
 Style/ArrayJoin:
   Enabled: true
 Style/AsciiComments:
@@ -178,6 +186,8 @@ Style/FlipFlop:
 Style/IfWithSemicolon:
   Enabled: true
 Style/Lambda:
+  EnforcedStyle: literal
+  # HACK: Until Rubocop is released with EnforcedStyle
   Enabled: true
 Style/LeadingCommentSpace:
   Enabled: true
