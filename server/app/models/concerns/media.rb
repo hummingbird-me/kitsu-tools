@@ -17,7 +17,7 @@ module Media
     resourcify
     has_attached_file :cover_image
     has_attached_file :poster_image
-    update_index("media##{name.tableize}") { self }
+    update_index("media##{name.underscore}") { self }
 
     has_and_belongs_to_many :genres
     has_many :castings, as: 'media'
