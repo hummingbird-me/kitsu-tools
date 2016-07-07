@@ -12,7 +12,11 @@ RSpec.configure do |config|
   end
 
   # Allow filtering by "focus" tag
-  config.filter_run :focus
+  if ENV['CI']
+    config.before(focus: true) { fail "Bailing due to focused tests!" }
+  else
+    config.filter_run :focus
+  end
   config.run_all_when_everything_filtered = true
 
   # Disable monkey-patched syntaxes
