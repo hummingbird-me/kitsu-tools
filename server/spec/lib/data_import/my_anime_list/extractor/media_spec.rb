@@ -174,11 +174,6 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
         expect(subject1.age_rating_guide).to eq('Teens 13 or older')
       end
 
-      # it 'case statement for R' do
-      #   subject = described_class.new({classification: 'R'}.to_json)
-      #   expect(subject.age_rating_guide).to eq('Violence, Profanity')
-      # end
-
       it 'case statement for R+' do
         subject = described_class.new({
           classification: 'R+'

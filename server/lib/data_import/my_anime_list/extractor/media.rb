@@ -62,21 +62,13 @@ module DataImport
         def subtype # will be renamed to this hopefully
           # anime matches [TV special OVA ONA movie music]
           # manga matches [manga novel manhua oneshot doujin]
+          type = data['type'].downcase
 
-          case data['type'].downcase
-          # anime
+          case type
           when 'tv' then :TV
-          when 'special' then :special
           when 'ova' then :OVA
           when 'ona' then :ONA
-          when 'movie' then :movie
-          when 'music' then :music
-          # manga
-          when 'manga' then :manga
-          when 'novel' then :novel
-          when 'manuha' then :manuha
-          when 'oneshot' then :oneshot
-          when 'doujin' then :doujin
+          else type.to_sym
           end
         end
 
@@ -110,8 +102,8 @@ module DataImport
           data['volumes']
         end
 
-        # removed subtype (show_type, manga_type issue)
-        # missing status on manga (anime does automagically)
+        # TODO: removed subtype (show_type, manga_type issue)
+        # TODO: missing status on manga (anime does automagically)
         def to_h
           %i[age_rating episode_count episode_length synopsis youtube_video_id
              poster_image age_rating_guide start_date end_date
