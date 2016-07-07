@@ -84,13 +84,8 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
 
     describe '#synopsis' do
       it 'should return the plaintext synopsis' do
-        expected_synopsis = <<~EOF.gsub(/\s+/, ' ')
-          <p>In fake data with some spoiler </p>
-          <p><span class=\"spoiler\"><br> I am a
-          spoiler!</span></p>
-          <p>[Written by MAL Rewrite]</p>
-        EOF
-        expect(subject.synopsis).to eq(expected_synopsis)
+        amount = subject.synopsis.scan(/<p>/).length
+        expect(amount).to eq(3)
       end
     end
 
@@ -318,11 +313,8 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
 
     describe '#synopsis' do
       it 'should return the plaintext synopsis' do
-        expected_synopsis = <<~EOF.gsub(/\s+/, ' ')
-          <p>Guts, a former mercenary now known
-          as the \"Black Swordsman,\" is out for revenge.</p>
-        EOF
-        expect(subject.synopsis).to eq(expected_synopsis)
+        amount = subject.synopsis.scan(/<p>/).length
+        expect(amount).to eq(1)
       end
     end
 
