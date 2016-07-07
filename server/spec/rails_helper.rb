@@ -4,6 +4,9 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort('The Rails environment is in production mode!') if Rails.env.production?
 
+Chewy.use_after_commit_callbacks = false
+Chewy.strategy(:urgent)
+
 require 'spec_helper'
 require 'rspec/rails'
 # Rails is now loaded
