@@ -1,9 +1,13 @@
 require 'simplecov'
 
-class SimpleCov::Formatter::MergedFormatter
-  def format(result)
-    SimpleCov::Formatter::HTMLFormatter.new.format(result)
-    CodeClimate::TestReporter::Formatter.new.format(result)
+module SimpleCov
+  module Formatter
+    class MergedFormatter
+      def format(result)
+        SimpleCov::Formatter::HTMLFormatter.new.format(result)
+        CodeClimate::TestReporter::Formatter.new.format(result)
+      end
+    end
   end
 end
 
