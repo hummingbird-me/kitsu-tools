@@ -11,6 +11,10 @@ class Fixture
     @opts[:erb] ? compiled : content
   end
 
+  def to_file
+    open(filename)
+  end
+
   private
 
   def compiled
