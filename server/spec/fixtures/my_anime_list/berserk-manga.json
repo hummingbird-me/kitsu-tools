@@ -1,0 +1,79 @@
+{
+  "id": 2,
+  "title": "Berserk",
+  "other_titles": {
+    "english": [
+      "Berserk"
+    ],
+    "synonyms": [
+      "Berserk: The Prototype"
+    ],
+    "japanese": [
+      "\u30d9\u30eb\u30bb\u30eb\u30af"
+    ]
+  },
+  "rank": 1,
+  "popularity_rank": 8,
+  "image_url": "http:\/\/cdn.myanimelist.net\/images\/manga\/1\/157931.jpg",
+  "type": "Manga",
+  "status": "publishing",
+  "members_score": 9.24,
+  "members_count": 104891,
+  "favorited_count": 24537,
+  "synopsis": "Guts, a former mercenary now known as the \"Black Swordsman,\" is out for revenge.",
+  "genres": [
+    "Action",
+    "Adventure",
+    "Demons",
+    "Drama",
+    "Fantasy",
+    "Horror",
+    "Supernatural",
+    "Military",
+    "Psychological",
+    "Seinen"
+  ],
+  "tags": [
+
+  ],
+  "anime_adaptations": [
+    {
+      "anime_id": 33,
+      "title": "Berserk",
+      "url": "http:\/\/myanimelist.net\/anime\/33\/Berserk"
+    },
+    {
+      "anime_id": 10218,
+      "title": "Berserk: Ougon Jidai-hen I - Haou no Tamago",
+      "url": "http:\/\/myanimelist.net\/anime\/10218\/Berserk__Ougon_Jidai-hen_I_-_Haou_no_Tamago"
+    },
+    {
+      "anime_id": 12113,
+      "title": "Berserk: Ougon Jidai-hen II - Doldrey Kouryaku",
+      "url": "http:\/\/myanimelist.net\/anime\/12113\/Berserk__Ougon_Jidai-hen_II_-_Doldrey_Kouryaku"
+    },
+    {
+      "anime_id": 12115,
+      "title": "Berserk: Ougon Jidai-hen III - Kourin",
+      "url": "http:\/\/myanimelist.net\/anime\/12115\/Berserk__Ougon_Jidai-hen_III_-_Kourin"
+    },
+    {
+      "anime_id": 32379,
+      "title": "Berserk (2016)",
+      "url": "http:\/\/myanimelist.net\/anime\/32379\/Berserk_2016"
+    }
+  ],
+  "related_manga": [
+    {
+      "manga_id": 92299,
+      "title": "Berserk: Shinen no Kami 2",
+      "url": "http:\/\/myanimelist.net\/manga\/92299\/Berserk__Shinen_no_Kami_2"
+    }
+  ],
+  "alternative_versions": [
+
+  ],
+  "personal_tags": [
+
+  ]
+}
