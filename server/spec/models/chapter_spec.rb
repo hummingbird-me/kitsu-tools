@@ -21,8 +21,6 @@ RSpec.describe Chapter, type: :model do
   # subject { create(:chapter) }
   #
   # let(:manga) { create(:manga) }
-
   it { should validate_presence_of(:manga) }
   it { should validate_presence_of(:number) }
-
 end

@@ -6,7 +6,7 @@ class CreateChapters < ActiveRecord::Migration
 
       ## Title Info
       t.hstore :titles, default: {}, null: false
-      t.string :canonical_title, default: 'en_ja', null: false
+      t.string :canonical_title, default: 'en_jp', null: false
 
       ## Metadata
       # Chapter Number
@@ -19,11 +19,7 @@ class CreateChapters < ActiveRecord::Migration
       t.text :synopsis
       # When it was published in magazine
       t.date :published
-
-
-
       t.timestamps null: false
     end
-
   end
 end

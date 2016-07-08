@@ -18,7 +18,7 @@
 FactoryGirl.define do
   factory :chapter do
     association :manga, factory: :manga
-    titles { {en_jp: Faker::Name.name} }
+    titles { { en_jp: Faker::Name.name } }
     canonical_title 'en_jp'
     sequence(:number)
     length { rand(20..60) }

@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20160705041049) do
   create_table "chapters", force: :cascade do |t|
     t.integer  "manga_id"
     t.hstore   "titles",          default: {},      null: false
-    t.string   "canonical_title", default: "en_ja", null: false
+    t.string   "canonical_title", default: "en_jp", null: false
     t.integer  "number",                            null: false
     t.integer  "volume"
     t.integer  "length"
