@@ -1,5 +1,0 @@
-{
-  "preset": "ember-suave",
-  "requireCommentsToIncludeAccess": null,
-  "disallowConstOutsideModuleScope": false
-}
