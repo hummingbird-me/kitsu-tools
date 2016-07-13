@@ -86,7 +86,7 @@ test('signing into an account with invalid data', function(assert) {
 });
 
 test('invalidates the session on 401 API response', function(assert) {
-  assert.expect(2);
+  assert.expect(1);
   // override the mirage handler here for specific response
   server.get('/users', () => new Response(401, {}, {}));
 
@@ -95,7 +95,6 @@ test('invalidates the session on 401 API response', function(assert) {
   visit(`/users/${user.name}`);
   andThen(() => {
     const session = currentSession(this.application);
-    assert.equal(currentURL(), '/');
     assert.notOk(session.get('isAuthenticated'));
   });
 });
