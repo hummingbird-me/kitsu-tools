@@ -3,15 +3,10 @@ import hbs from 'htmlbars-inline-precompile';
 import jQuery from 'jquery';
 
 moduleForComponent('media-poster-summary', 'Integration | Component | media-poster-summary', {
-  integration: true,
-
-  afterEach() {
-    // reveal renders outside the outlet so clean it up
-    jQuery('[data-reveal]').remove();
-  }
+  integration: true
 });
 
-test('it renders asdadsasd', function(assert) {
+test('it renders', function(assert) {
   this.render(hbs`{{media-poster-summary}}`);
   const $el = this.$('[data-test-selector="media-poster-summary"]');
   assert.equal($el.length, 1);

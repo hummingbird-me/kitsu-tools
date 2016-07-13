@@ -6,7 +6,7 @@
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "PACE": "pace#~1.0.2",
-    "foundation-sites": "~6.2",
+    "foundation-sites": "^6.2.1",
     "font-awesome": "~4.5.0",
     "nouislider": "~8.2.1",
     "humanize-duration": "~3.4.0",

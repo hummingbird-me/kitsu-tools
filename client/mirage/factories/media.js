@@ -4,7 +4,12 @@ export default Factory.extend({
   canonicalTitle(i) {
     return `Media: The Test #${i}`;
   },
+
   slug() {
     return faker.helpers.slugify(this.canonicalTitle);
+  },
+
+  posterImage() {
+    return faker.image.imageUrl();
   }
 });

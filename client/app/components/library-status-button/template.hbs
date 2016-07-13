@@ -22,10 +22,7 @@
   {{/if}}
 </button>
 
-{{#foundation-dropdown
-    dropdownId="status-dropdown"
-    closeOnClick=true
-}}
+{{#zf-dropdown id="status-dropdown"}}
   <ul class="no-bullet">
     {{#each statuses as |status|}}
       <li data-test-selector="library-list-button-status">
@@ -35,4 +32,4 @@
       </li>
     {{/each}}
   </ul>
-{{/foundation-dropdown}}
+{{/zf-dropdown}}

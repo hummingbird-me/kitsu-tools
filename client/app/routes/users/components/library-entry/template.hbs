@@ -103,10 +103,7 @@
                 {{if entry.private (t "users.library.private") (t "users.library.public")}}
               </button>
 
-              {{#foundation-dropdown
-                  dropdownId="privacy-dropdown"
-                  closeOnClick=true
-              }}
+              {{#zf-dropdown id="privacy-dropdown"}}
                 <ul class="no-bullet">
                   <li>
                     <a {{action "update" "private" (not entry.private)}}>
@@ -114,7 +111,7 @@
                     </a>
                   </li>
                 </ul>
-              {{/foundation-dropdown}}
+              {{/zf-dropdown}}
 
               {{! Rating }}
               <div class="rating-options">

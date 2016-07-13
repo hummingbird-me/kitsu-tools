@@ -1,5 +1,26 @@
+function mockRoutes(server) {
+  // Routes outside our namespace
+  server.post('/api/oauth/token', () => {});
+
+  // Routes after this point will be namespaced with the following
+  server.namespace = 'api/edge';
+
+  // Media routes
+  server.get('/anime');
+  server.get('/anime/:id');
+
+  server.get('/genres');
+  server.get('/streamers');
+
+  // User routes
+  server.post('/users');
+  server.get('/users');
+  server.get('/users/:id');
+}
+
 // Development
 export default function() {
+  // mockRoutes(this);
   this.passthrough();
 }
 
@@ -7,22 +28,5 @@ export default function() {
 export function testConfig() {
   // Coverage route
   this.passthrough('/write-coverage');
-
-  // Routes outside our namespace
-  this.post('/api/oauth/token', () => {});
-
-  // Routes after this point will be namespaced with the following
-  this.namespace = 'api/edge';
-
-  // Media routes
-  this.get('/anime');
-  this.get('/anime/:id');
-
-  this.get('/genres');
-  this.get('/streamers');
-
-  // User routes
-  this.post('/users');
-  this.get('/users');
-  this.get('/users/:id');
+  mockRoutes(this);
 }
