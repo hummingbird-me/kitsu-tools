@@ -25,6 +25,7 @@ gem 'rolify'
 gem 'paperclip', '~> 4.1'
 gem 'paperclip-optimizer'
 gem 'delayed_paperclip'
+gem 'image_optim_pack', require: false
 gem 'image_optim', require: false
 gem 'aws-sdk'
 
