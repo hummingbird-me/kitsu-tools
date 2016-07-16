@@ -74,8 +74,8 @@ RSpec.describe User, type: :model do
   it { should define_enum_for(:rating_system) }
   it { should have_db_index(:facebook_id) }
   it { should belong_to(:pro_membership_plan) }
-  it { should validate_uniqueness_of(:name) }
-  it { should validate_uniqueness_of(:email) }
+  it { should validate_uniqueness_of(:name).case_insensitive }
+  it { should validate_uniqueness_of(:email).case_insensitive }
 
   describe 'by_name scope' do
     it 'should match case-insensitively' do
