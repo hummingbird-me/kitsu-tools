@@ -1,15 +1,17 @@
+# rubocop:disable Metrics/LineLength
 # == Schema Information
 #
 # Table name: pro_membership_plans
 #
 #  id         :integer          not null, primary key
-#  name       :string           not null
 #  amount     :integer          not null
 #  duration   :integer          not null
+#  name       :string           not null
 #  recurring  :boolean          default(FALSE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# rubocop:enable Metrics/LineLength
 
 require 'rails_helper'
 

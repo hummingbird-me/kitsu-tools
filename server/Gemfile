@@ -63,7 +63,7 @@ group :development, :test do
   gem 'dotenv-rails' # Load default ENV
   gem 'pry-rails' # Better Console
   gem 'spring' # Faster CLI
-  gem 'annotate', require: false # Schema annotations inside model-related files
+  gem 'annotate' # Schema annotations inside model-related files
 
   # Development+Testing
   gem 'factory_girl_rails' # Factories > Fixtures

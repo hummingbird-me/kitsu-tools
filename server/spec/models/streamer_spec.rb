@@ -1,14 +1,16 @@
+# rubocop:disable Metrics/LineLength
 # == Schema Information
 #
 # Table name: streamers
 #
 #  id                :integer          not null, primary key
-#  site_name         :string(255)      not null
-#  logo_file_name    :string
 #  logo_content_type :string
+#  logo_file_name    :string
 #  logo_file_size    :integer
 #  logo_updated_at   :datetime
+#  site_name         :string(255)      not null
 #
+# rubocop:enable Metrics/LineLength
 
 require 'rails_helper'
 
