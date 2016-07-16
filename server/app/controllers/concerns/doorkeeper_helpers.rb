@@ -13,6 +13,6 @@ module DoorkeeperHelpers
 
   # Provide context of current user to JR
   def context
-    { current_user: current_user }
+    { user: current_user }
   end
 end
