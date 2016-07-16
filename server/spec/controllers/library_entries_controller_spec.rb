@@ -29,7 +29,7 @@ RSpec.describe LibraryEntriesController, type: :controller do
         get :index, filter: { media_id: anime.id, media_type: 'Anime',
                               user_id: user }
         expect(response.body).to have_resources(LIBRARY_ENTRY, 'libraryEntries')
-        expect(JSON.parse(response.body)['data'].count).to equal(1)
+        expect(JSON.parse(response.body)['data'].count).to eq(1)
       end
     end
 
@@ -43,7 +43,7 @@ RSpec.describe LibraryEntriesController, type: :controller do
         end
         get :index
         expect(response.body).to have_resources(LIBRARY_ENTRY, 'libraryEntries')
-        expect(JSON.parse(response.body)['data'].count).to equal(1)
+        expect(JSON.parse(response.body)['data'].count).to eq(1)
       end
 
       it 'should respond with a list of library entries' do
@@ -52,7 +52,7 @@ RSpec.describe LibraryEntriesController, type: :controller do
         3.times { create(:library_entry, user: build(:user), media: anime) }
         get :index
         expect(response.body).to have_resources(LIBRARY_ENTRY, 'libraryEntries')
-        expect(JSON.parse(response.body)['data'].count).to equal(4)
+        expect(JSON.parse(response.body)['data'].count).to eq(4)
       end
     end
   end
