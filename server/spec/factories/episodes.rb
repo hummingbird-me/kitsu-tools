@@ -25,7 +25,7 @@ FactoryGirl.define do
     association :media, factory: :anime
     titles { { en_jp: Faker::Name.name } }
     canonical_title 'en_jp'
-    synopsis { Faker::Lorem.paragraph }
+    synopsis { Faker::Lorem.paragraph(4) }
     length { rand(20..60) }
     airdate { Faker::Date.between(20.years.ago, Date.today) }
     season_number 1
