@@ -13,7 +13,6 @@ cache:
     - server/vendor/bundle
     - client/node_modules
     - client/bower_components
-    - travis-phantomjs
 
 env:
   global:

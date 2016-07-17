@@ -5,7 +5,7 @@ test_server() {
 }
 
 test_client() {
-  (cd client; ember test)
+  (cd client; npm test)
 }
 
 if [ $TESTGROUP = 'client' ]; then

@@ -11,6 +11,7 @@ install_client_deps() {
   (
     cd client
     travis_retry npm install -g bower
+    travis_retry npm install phantomjs-prebuilt
     travis_retry npm install
     travis_retry bower install
   )
