@@ -1,5 +1,6 @@
 class AnimeResource < MediaResource
   include EpisodicResource
+  include JSONAPI::Authorization::PunditScopedResource
 
   attributes :show_type, :youtube_video_id, :age_rating, :age_rating_guide
   has_many :streaming_links
