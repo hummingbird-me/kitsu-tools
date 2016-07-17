@@ -40,7 +40,7 @@ RSpec.describe Mapping, type: :model do
     end
   end
 
-  describe '.guess' do
+  describe '.guess', elasticsearch: true do
     it 'should respond when it finds the correct media' do
       anime = create(:anime)
       expect(Mapping.guess('Anime', title: anime.canonical_title)).to eq(anime)
