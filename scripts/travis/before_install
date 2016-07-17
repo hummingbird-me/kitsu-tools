@@ -1,15 +1,5 @@
 #!/bin/bash
 
-PHANTOM_URL=https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
-
-use_phantomjs() {
-  if [ ! -f 'travis-phantomjs/phantomjs' ]; then
-    mkdir -p travis-phantomjs
-    wget $PHANTOM_URL -O $PWD/travis-phantomjs/phantomjs.tar.bz2
-    tar -xvf $PWD/travis-phantomjs/phantomjs.tar.bz2 -C $PWD/travis-phantomjs
-    export PATH=$PWD/travis-phantomjs:$PATH
-  fi
-}
 use_node() {
   nvm install $1
   nvm use $1
@@ -20,12 +10,10 @@ use_ruby() {
 }
 
 if [ $TESTGROUP = 'client' ]; then
-  use_phantomjs
   use_node $USE_NODE
 elif [ $TESTGROUP = 'server' ]; then
   use_ruby $USE_RUBY
 else
-  use_phantomjs
   use_node $USE_NODE
   use_ruby $USE_RUBY
 fi

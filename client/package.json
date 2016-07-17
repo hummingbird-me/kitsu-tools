@@ -9,7 +9,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember serve",
-    "test": "ember test"
+    "test": "ember exam --split 3 --parallel --random"
   },
   "repository": "https://github.com/hummingbird-me/hummingbird",
   "engines": {
@@ -46,6 +46,7 @@
     "ember-concurrency": "^0.7.1",
     "ember-cp-validations": "2.9.2",
     "ember-data": "^2.6.0",
+    "ember-exam": "0.4.4",
     "ember-font-awesome": "2.1.1",
     "ember-i18n": "4.2.1",
     "ember-i18n-cp-validations": "2.5.0",
