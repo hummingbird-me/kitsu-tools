@@ -63,7 +63,15 @@ module SearchableResource
 
     # Allow sorting on anything queryable + _score
     def sortable_fields(context = nil)
-      super(context) + @queryable_fields.keys + ['_score']
+      if is_searchable?
+        super(context) + @queryable_fields.keys + ['_score']
+      else
+        super(context)
+      end
+    end
+
+    def is_searchable?
+      @queryable_fields.present?
     end
 
     private
