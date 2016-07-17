@@ -15,10 +15,9 @@ RSpec.describe AnimeController, type: :controller do
       end
     end
 
-    describe 'with filter[text]' do
+    describe 'with filter[text]', elasticsearch: true do
       it 'should respond with an anime' do
         anime.save!
-        MediaIndex::Anime.import!
         get :index, filter: { text: anime.canonical_title }
         expect(response.body).to have_resources(ANIME.dup, 'anime')
       end

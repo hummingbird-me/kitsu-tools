@@ -4,10 +4,8 @@ RSpec.configure do |config|
   config.before(:suite) do
     # Commit changes to the index immediately
     Chewy.strategy(:urgent)
-    # Reset all the indices before we start
-    Chewy::Index.descendants.each do |index|
-      puts "Resetting #{index.name}"
-      index.reset!
-    end
+  end
+  config.before(:example, elasticsearch: true) do
+    Chewy::Index.descendants.each(&:purge!)
   end
 end
