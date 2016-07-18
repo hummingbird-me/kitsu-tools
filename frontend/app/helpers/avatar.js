@@ -8,8 +8,13 @@ export function avatar(user, size) {
     if (avatarUrl.match(pattern) !== null) {
       avatarUrl = avatarUrl.replace(pattern, '.jpg?');
     } else {
+      // will be default avatar or no extension
       avatarUrl = avatarUrl.split('?');
-      avatarUrl = `${avatarUrl[0]}.jpg?${avatarUrl[1]}`;
+      if (avatarUrl.length === 2) {
+        avatarUrl = `${avatarUrl[0]}.jpg?${avatarUrl[1]}`;
+      } else {
+        avatarUrl = avatarUrl[0];
+      }
     }
   }
   return new Ember.Handlebars.SafeString('<img class="responsive-image" src="' + avatarUrl + '" alt="' + user.get("username") + '">');
