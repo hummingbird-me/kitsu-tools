@@ -40,6 +40,13 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Media do
         expect(subject.age_rating).to eq(:PG)
       end
 
+      it 'should convert the PG-13 rating to PG' do
+        subject = described_class.new({
+          classification: 'PG-13 - Teens 13 or older'
+        }.to_json)
+        expect(subject.age_rating).to eq(:PG)
+      end
+
       # this exists in fixture
       it 'should extract the R rating' do
         expect(subject.age_rating).to eq(:R)

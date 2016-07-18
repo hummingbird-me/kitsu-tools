@@ -14,7 +14,7 @@ module DataImport
 
           case rating[0]
           when 'G', 'TV-Y7' then :G
-          when 'PG', 'PG13' then :PG
+          when 'PG', 'PG13', 'PG-13' then :PG
           when 'R', 'R+' then :R
           when 'Rx' then :R18
           end
