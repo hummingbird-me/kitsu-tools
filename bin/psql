@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker-compose run --rm postgres sh -c "PGPASSWORD=\$POSTGRES_PASSWORD psql --username=\$POSTGRES_USER --host=postgres $@"
