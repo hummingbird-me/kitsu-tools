@@ -277,13 +277,13 @@ ActiveRecord::Schema.define(version: 20160702083448) do
   create_table "installments", id: false, force: :cascade do |t|
     t.integer "media_id"
     t.integer "franchise_id"
-    t.string  "media_type",   null: false
-    t.integer "position",     null: false
+    t.string  "media_type",               null: false
+    t.integer "position",     default: 0, null: false
     t.string  "tag"
   end
 
   add_index "installments", ["franchise_id"], name: "index_installments_on_franchise_id", using: :btree
-  add_index "installments", ["media_type", "media_id"], name: "index_installments_on_media_type_and_media_id", unique: true, using: :btree
+  add_index "installments", ["media_type", "media_id"], name: "index_installments_on_media_type_and_media_id", using: :btree
 
   create_table "library_entries", force: :cascade do |t|
     t.integer  "user_id",                                                 null: false

@@ -19,9 +19,9 @@ class CleanUpFranchises < ActiveRecord::Migration
     change_column_null :installments, :media_type, false
     rename_column :installments, :anime_id, :media_id
     remove_index :installments, :media_id
-    add_index :installments, [:media_type, :media_id], unique: true
+    add_index :installments, [:media_type, :media_id]
     # Add position and tag
-    add_column :installments, :position, :integer, null: false
+    add_column :installments, :position, :integer, null: false, default: 0
     add_column :installments, :tag, :string
   end
 end
