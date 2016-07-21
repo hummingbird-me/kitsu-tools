@@ -20,6 +20,8 @@ The backend is a JSON API server built with Rails, Postgres, ElasticSearch, and 
 
 To get started, clone this repository, install Docker (via Docker for Mac/Windows or Docker-Machine if you're not on Linux) and run `bin/setup && bin/start` to get a development version running. Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/master/CONTRIBUTING.md).
 
+To get data into your development server, download [our media database dump](https://www.dropbox.com/s/ui1xaialiq67bnu/anime.sql.gz?dl=0) and use `gzcat anime.sql.gz | bin/psql hummingbird_development`.
+
 If you have any questions don't hesitate to contact us! Feel free to create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev) or [email Josh](mailto:josh@hummingbird.me) to get access to our Slack.
 
 For ideas of things to do, see our GitHub issues — check out the issues tagged "easy" for a good starting place!  We also use [ZenHub](https://www.zenhub.io/) to do more advanced progress tracking, so we recommend installing their browser addon.
