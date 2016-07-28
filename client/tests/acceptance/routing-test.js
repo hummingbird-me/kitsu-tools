@@ -2,7 +2,7 @@ import { test } from 'qunit';
 import moduleForAcceptance from 'client/tests/helpers/module-for-acceptance';
 import { authenticateSession, invalidateSession } from 'client/tests/helpers/ember-simple-auth';
 
-moduleForAcceptance('Acceptance | routing');
+moduleForAcceptance('Acceptance | Routing');
 
 test('visiting `/dashboard` redirects to `/`', function(assert) {
   assert.expect(1);
