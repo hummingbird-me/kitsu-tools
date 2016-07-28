@@ -2,6 +2,13 @@
 
 This README outlines the details of collaborating on this application.
 
+## Running Tests
+
+* `npm test`
+
+Check out [ember-exam](https://github.com/trentmwillis/ember-exam) for testing
+options.
+
 ## Styleguide
 
 * [JavaScript](https://github.com/dockyard/styleguides/blob/master/engineering/javascript.md) - [Amendments](https://github.com/hummingbird-me/hummingbird/blob/the-future/client/README.md#javascript)
