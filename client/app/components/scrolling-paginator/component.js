@@ -8,8 +8,10 @@ import { task } from 'ember-concurrency';
 
 /**
  * Scrolling pagination based on JSON-API's top level links object.
- * Due to ember-data not having support for pagination yet, this requires a
- * hackish fix implemented in `client/initializers/store-links.js`
+ *
+ * When this component enters the viewport it requests the next set of data
+ * based on the `next` link within the `links` object. Those new records are
+ * then sent up to be handled.
  */
 export default Component.extend(InViewportMixin, {
   store: service(),
@@ -17,21 +19,11 @@ export default Component.extend(InViewportMixin, {
   /**
    * Grabs the latest `next` URL from the `links` object
    */
-  nextLink: computed('links', {
+  nextLink: computed('model', {
     get() {
-      const links = get(this, 'links') || {};
+      const model = get(this, 'model');
+      const links = get(model, 'links') || {};
       return get(links, 'next') || undefined;
-    }
-  }),
-
-  /**
-   * Grabs the `links` object from the models metadata
-   */
-  links: computed('model', {
-    get() {
-      let model = get(this, 'model');
-      const metadata = get(model, 'meta') || {};
-      return get(metadata, '_links') || undefined;
     }
   }),
 
@@ -49,7 +41,8 @@ export default Component.extend(InViewportMixin, {
     const { modelName } = model.constructor;
     const options = this._parseLink(nextLink);
     const records = yield get(this, 'store').query(modelName, options);
-    get(this, 'update')(records);
+    const links = get(records, 'links');
+    get(this, 'update')(records, links);
   }).drop(),
 
   init() {

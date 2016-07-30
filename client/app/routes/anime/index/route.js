@@ -4,6 +4,7 @@ import set from 'ember-metal/set';
 import { assign } from 'ember-platform';
 import { typeOf, isEmpty } from 'ember-utils';
 import { bind, debounce } from 'ember-runloop';
+import { isEmberArray } from 'ember-array/utils';
 import jQuery from 'jquery';
 import RSVP from 'rsvp';
 
@@ -116,10 +117,16 @@ export default Route.extend({
    */
   _buildFilters(params) {
     const filters = { filter: {} };
-    for (const key in params) {
+    for (let key in params) {
       const val = params[key];
-      if (isEmpty(val)) {
+      // don't include empty values
+      if (isEmpty(val) === true) {
         continue;
+      } else if (isEmberArray(val) === true) {
+        const filtered = val.reject((x) => isEmpty(x));
+        if (isEmpty(filtered) === true) {
+          continue;
+        }
       }
       const type = typeOf(val);
       filters.filter[key] = this.serializeQueryParam(val, key, type);
@@ -140,14 +147,12 @@ export default Route.extend({
       debounce(this, '_updateText', query, DEBOUNCE_MS);
     },
 
-    updateNextPage(records) {
+    updateNextPage(records, links) {
       const model = this.modelFor(get(this, 'routeName'));
       const content = get(model, 'media').toArray();
       content.addObjects(records);
       set(model, 'media', content);
-      // Update the meta record on the model so we have latest link data
-      const meta = get(records, 'meta');
-      set(model, 'media.meta', meta);
+      set(model, 'media.links', links);
     },
 
     refresh() {
