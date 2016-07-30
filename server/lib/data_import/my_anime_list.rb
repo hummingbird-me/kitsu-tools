@@ -1,6 +1,7 @@
 module DataImport
   class MyAnimeList
     ATARASHII_API_HOST = 'https://hbv3-mal-api.herokuapp.com/2.1/'.freeze
+    MY_ANIME_LIST_HOST = 'http://myanimelist.net/character/'.freeze
 
     include DataImport::Media
     include DataImport::HTTP
@@ -28,6 +29,14 @@ module DataImport
         }.compact
 
         yield media
+      end
+    end
+
+    def get_character(external_id)
+      media = Mapping.lookup('myanimelist', external_id) || Character.new
+
+      get(external_id) do |response|
+        character = Extractor::Character.new(response)
       end
     end
 
