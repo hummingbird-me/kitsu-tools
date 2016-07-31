@@ -27,7 +27,7 @@ module DataImport
           # use external id to find a href with "/character/#{external_id}/pictures"
           # get the child img src url
           {
-            image: dom.at_css("a[href='/character/#{external_id}/pictures']").child.values.last
+            image: dom.at_css("a[href='/character/#{external_id}/pictures']").child.first.last
           }
         end
       end
