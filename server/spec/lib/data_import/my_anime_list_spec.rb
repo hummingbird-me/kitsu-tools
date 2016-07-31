@@ -20,6 +20,15 @@ RSpec.describe DataImport::MyAnimeList do
       .to_return(body: fixture('image.jpg'), headers: {
         'Content-Type': 'image/jpg'
       })
+
+    host_mal = described_class::MY_ANIME_LIST_HOST
+    stub_request(:get, "#{host_mal}422/Guts")
+      .to_return(body: fixture('my_anime_list/guts-character.html'))
+    stub_request(:get, 'http://cdn.myanimelist.net/images/characters/13/284125.jpg')
+      .to_return(body: fixture('image.jpg'), headers: {
+        'Content-Type': 'image/jpg'
+      })
+
   end
   context 'Anime' do
     describe '#get_media' do
@@ -64,6 +73,12 @@ RSpec.describe DataImport::MyAnimeList do
         end
         subject.run
       end
+    end
+  end
+
+  context 'Character' do
+    describe '#get_character' do
+
     end
   end
 end

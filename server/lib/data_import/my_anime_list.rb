@@ -36,7 +36,7 @@ module DataImport
       media = Mapping.lookup('myanimelist', external_id) || Character.new
 
       get(external_id) do |response|
-        character = Extractor::Character.new(response)
+        character = Extractor::Character.new(response, external_id)
       end
     end
 
