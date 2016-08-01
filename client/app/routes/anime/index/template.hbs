@@ -13,7 +13,7 @@
             </label>
             <span class="filter-values">{{year.[0]}} - {{year.[1]}}</span>
           </div>
-          {{foundation-slider
+          {{ui-slider
               start=1914 end=2016 step=1
               initialStart=year.[0] initialEnd=year.[1]
               doubleSided=true
@@ -34,7 +34,7 @@
             </label>
             <span class="filter-values">{{averageRating.[0]}} - {{averageRating.[1]}}</span>
           </div>
-          {{foundation-slider
+          {{ui-slider
               start=0.5 end=5.0 step=0.5
               initialStart=averageRating.[0] initialEnd=averageRating.[1]
               doubleSided=true
@@ -78,7 +78,7 @@
             </label>
             <span class="filter-values">{{episodeCount.[0]}} - {{episodeCount.[1]}}</span>
           </div>
-          {{foundation-slider
+          {{ui-slider
               start=1 end=1000 step=1
               initialStart=episodeCount.[0] initialEnd=episodeCount.[1]
               doubleSided=true
