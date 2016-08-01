@@ -1,8 +1,8 @@
 import EObject from 'ember-object';
-import CanonicalUrlRedirectMixin from 'client/mixins/canonical-url-redirect';
+import CanonicalUrlRedirectMixin from 'client/mixins/routes/canonical-url-redirect';
 import { module, test } from 'qunit';
 
-module('Unit | Mixin | canonical url redirect');
+module('Unit | Mixin | Routes | canonical url redirect');
 
 test('It should replace the URL segment with the correct value', function(assert) {
   assert.expect(2);

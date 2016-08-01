@@ -1,8 +1,8 @@
 import attr from 'ember-data/attr';
 import Media from 'client/models/media/model';
-import EpisodicModel from 'client/mixins/episodic-model';
+import EpisodicMixin from 'client/mixins/models/episodic';
 
-export default Media.extend(EpisodicModel, {
+export default Media.extend(EpisodicMixin, {
   ageRating: attr('string'),
   ageRatingGuide: attr('string'),
   showType: attr('string'),
