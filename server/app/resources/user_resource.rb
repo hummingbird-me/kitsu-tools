@@ -8,6 +8,8 @@ class UserResource < BaseResource
 
   attributes(*PRIVATE_FIELDS)
 
+  has_many :lists
+
   filter :name, apply: -> (records, value, _o) { records.by_name(value.first) }
   filter :self, apply: -> (_r, _v, options) {
     current_user = options[:context][:user]
