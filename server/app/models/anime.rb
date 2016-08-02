@@ -51,7 +51,9 @@ class Anime < ActiveRecord::Base
   include Episodic
 
   enum show_type: %i[TV special OVA ONA movie music]
+
   has_many :streaming_links, as: 'media', dependent: :destroy
+  belongs_to :listable, polymorphic: true
 
   update_index('media#anime') { self }
 

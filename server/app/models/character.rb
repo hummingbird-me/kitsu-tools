@@ -35,6 +35,7 @@ class Character < ActiveRecord::Base
   }
   validates :name, presence: true
 
+  belongs_to :listable, polymorphic: true
   belongs_to :primary_media, polymorphic: true
   has_many :castings
 

@@ -24,6 +24,7 @@ class Person < ActiveRecord::Base
   has_attached_file :image
 
   has_many :castings, dependent: :destroy
+  belongs_to :listable, polymorphic: true
 
   validates_attachment :image, content_type: {
     content_type: %w[image/jpg image/jpeg image/png]

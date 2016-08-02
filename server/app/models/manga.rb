@@ -42,6 +42,8 @@ class Manga < ActiveRecord::Base
   enum status: %i[not_published publishing finished]
   alias_attribute :progress_limit, :chapter_count
 
+  belongs_to :listable, polymorphic: true
+
   def slug_candidates
     [
       -> { canonical_title }, # attack-on-titan
