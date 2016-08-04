@@ -41,5 +41,16 @@ module Hummingbird
 
     # We run under /api
     config.relative_url_root = '/api'
+
+    # Eable CORS
+    config.middleware.insert_before 0, 'Rack::Cors',
+      allow do
+        origins '*'
+        resource '*', headers: :any,
+                      methods: :any,
+                      credentials: false,
+                      max_age: 1.hour
+      end
+    end
   end
 end
