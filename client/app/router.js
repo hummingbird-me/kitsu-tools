@@ -6,6 +6,7 @@ import config from './config/environment';
 
 const RouterInstance = Router.extend({
   location: config.locationType,
+  rootURL: config.rootURL,
   metrics: service(),
 
   didTransition() {

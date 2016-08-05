@@ -11,16 +11,12 @@ export default function(name, options = {}) {
       this.application = startApp();
 
       if (options.beforeEach) {
-        // jscs:disable
         return options.beforeEach.apply(this, arguments);
-        // jscs:enable
       }
     },
 
     afterEach() {
-      // jscs:disable
       const afterEach = options.afterEach && options.afterEach.apply(this, arguments);
-      // jscs:enable
       return Promise.resolve(afterEach).then(() => destroyApp(this.application));
     }
   });
