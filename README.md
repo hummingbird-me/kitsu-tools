@@ -38,7 +38,7 @@ Please don't use Github issues for feature requests, instead create a topic in t
 
 ### License
 
-Copyright 2015 Hummingbird Media, Inc.
+Copyright 2016 Hummingbird Media, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
