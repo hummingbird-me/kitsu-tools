@@ -17,8 +17,7 @@
         {{! username input }}
         <label>
           {{t "sign-up.username"}}
-          {{one-way-input
-            value=user.name
+          {{one-way-text user.name
             update=(action (mut user.name))
             placeholder="username"
             data-test-selector="username"}}
@@ -33,10 +32,8 @@
         {{! email input }}
         <label>
           {{t "sign-up.email"}}
-          {{one-way-input
-            value=user.email
+          {{one-way-email user.email
             update=(action (mut user.email))
-            type="email"
             placeholder="email@example.com"
             data-test-selector="email"}}
           {{! email errors }}
@@ -50,10 +47,8 @@
         {{! password input }}
         <label>
           {{t "sign-up.password"}}
-          {{one-way-input
-            value=user.password
+          {{one-way-password user.password
             update=(action (mut user.password))
-            type="password"
             placeholder="password"
             data-test-selector="password"}}
           {{! password errors }}

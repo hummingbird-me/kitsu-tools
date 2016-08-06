@@ -129,8 +129,7 @@
 
     <div class="search-media">
       {{fa-icon "search"}}
-      {{one-way-input
-          type="search"
+      {{one-way-search searchQuery
           update=(route-action "updateText")
           placeholder=(t "anime.index.filter.search")}}
     </div>

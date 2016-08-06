@@ -10,6 +10,7 @@ export default Controller.extend({
   media: 'anime',
   status: 1,
   showAll: false,
+  filterQuery: undefined,
   entries: alias('model'),
   i18n: service(),
 
@@ -64,6 +65,7 @@ export default Controller.extend({
     },
 
     filter(query) {
+      set(this, 'filterQuery', query);
       get(this, 'sections').forEach((section) => {
         const entries = get(this, 'entries').filter((entry) => {
           const status = get(section, 'status').key;

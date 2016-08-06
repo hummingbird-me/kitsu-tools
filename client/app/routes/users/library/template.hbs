@@ -29,7 +29,7 @@
 
       {{! Filter Search }}
       <div class="search-library">
-        {{one-way-input
+        {{one-way-search filterQuery
             update=(action 'filter')
             class="search-input"
             placeholder=(t "users.library.search")}}

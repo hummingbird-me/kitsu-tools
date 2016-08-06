@@ -17,6 +17,7 @@ export default Controller.extend({
   streamers: ['netflix', 'hulu', 'crunchyroll'],
   text: undefined,
   year: [1914, 2016],
+  searchQuery: undefined,
 
   /**
    * Bound to document `scroll` event.

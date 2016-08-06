@@ -144,6 +144,8 @@ export default Route.extend({
 
   actions: {
     updateText(query) {
+      const controller = get(this, 'controller');
+      set(controller, 'searchQuery', query);
       debounce(this, '_updateText', query, DEBOUNCE_MS);
     },
 

@@ -12,8 +12,7 @@
       <div class="entry-progress">
         {{! Editable for owner only }}
         {{#if isOwner}}
-          {{one-way-input
-              value=entry.progress
+          {{one-way-number entry.progress
               update=(action "updateDebounced" "progress")
               placeholder="0"}}
         {{else}}
@@ -47,16 +46,14 @@
       <div class="small-12 columns">
         {{! Editable for owner only }}
         {{#if isOwner}}
-          {{one-way-input
-              value=entry.notes
+          {{one-way-text entry.notes
               update=(action "updateDebounced" "notes")
               placeholder=(t "users.library.notes" title=media.canonicalTitle)
               class="personal-notes"}}
         {{else}}
           {{! Only show if the user has notes }}
           {{#if entry.notes}}
-            {{one-way-input
-                value=entry.notes
+            {{one-way-text entry.notes
                 class="personal-notes"
                 readonly=true}}
           {{/if}}
@@ -146,8 +143,7 @@
               <span>{{t "users.library.rewatched"}}</span>
               {{! Editable to owner }}
               {{#if isOwner}}
-                {{one-way-input
-                    value=entry.reconsumeCount
+                {{one-way-number entry.reconsumeCount
                     update=(action "updateDebounced" "reconsumeCount")}}
               {{else}}
                 <span>{{entry.reconsumeCount}}</span>

@@ -17,8 +17,7 @@
         {{! Username input }}
         <label>
           {{t "sign-in.identification"}}
-          {{one-way-input
-              value=identification
+          {{one-way-text identification
               update=(action (mut identification))
               placeholder="email@example.com"
               data-test-selector="identification"}}
@@ -27,10 +26,8 @@
         {{! Password input }}
         <label>
           {{t "sign-in.password"}}
-          {{one-way-input
-              value=password
+          {{one-way-password password
               update=(action (mut password))
-              type="password"
               placeholder="password"
               data-test-selector="password"}}
         </label>
