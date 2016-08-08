@@ -111,7 +111,7 @@ class MALImport
         end
       rescue
       end,
-      poster_image: begin poster_image(@sidebar.css("img")[0]['data-src']) rescue nil end,
+      poster_image: begin poster_image(@sidebar.css("img")[0]['src']) rescue nil end,
       type: begin allowed_types.grep(convert_type(@sidebar.css('div:contains("Type:")').last.text.gsub("Type:", '').strip))[0] rescue nil end,
       status: begin @sidebar.css('div:contains("Status:")')[-1].text.gsub(/Status:(?:\\n)?\s/, "").strip.gsub(/\w+/){ |w| w.capitalize } rescue nil end,
       genres: begin (@sidebar.css('span:contains("Genres:") ~ a').map(&:text) rescue []).compact end
