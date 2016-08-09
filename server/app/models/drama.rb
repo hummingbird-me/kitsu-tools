@@ -51,4 +51,6 @@ class Drama < ActiveRecord::Base
     url: '/:class/:attachment/:id/:style.:content_type_extension'
   has_attached_file :poster_image,
     url: '/:class/:attachment/:id/:style.:content_type_extension'
+
+  belongs_to :listable, polymorphic: true
 end

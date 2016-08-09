@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160702083448) do
+ActiveRecord::Schema.define(version: 20160801003511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -322,6 +322,33 @@ ActiveRecord::Schema.define(version: 20160702083448) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
+
+  create_table "list_items", force: :cascade do |t|
+    t.integer  "list_id"
+    t.integer  "listable_id"
+    t.string   "listable_type"
+    t.text     "explanation"
+    t.integer  "order"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "list_items", ["list_id"], name: "index_list_items_on_list_id", using: :btree
+  add_index "list_items", ["listable_type", "listable_id"], name: "index_list_items_on_listable_type_and_listable_id", using: :btree
+  add_index "list_items", ["order"], name: "index_list_items_on_order", using: :btree
+
+  create_table "lists", force: :cascade do |t|
+    t.integer  "user_id",                    null: false
+    t.string   "title",                      null: false
+    t.text     "description"
+    t.integer  "visibility",     default: 0, null: false
+    t.integer  "type",           default: 0, null: false
+    t.integer  "items_quantity", default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "lists", ["user_id"], name: "index_lists_on_user_id", using: :btree
 
   create_table "manga", force: :cascade do |t|
     t.string   "slug",                      limit: 255

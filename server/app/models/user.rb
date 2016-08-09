@@ -88,6 +88,8 @@ class User < ActiveRecord::Base
   has_attached_file :avatar
   has_attached_file :cover_image
 
+  has_many :lists
+
   validates :email, presence: true,
                     uniqueness: { case_sensitive: false }
   validates :name, presence: true,

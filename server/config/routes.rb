@@ -214,6 +214,12 @@
 #                                        PATCH     /edge/mappings/:id(.:format)                                              mappings#update
 #                                        PUT       /edge/mappings/:id(.:format)                                              mappings#update
 #                                        DELETE    /edge/mappings/:id(.:format)                                              mappings#destroy
+#                                  lists GET       /edge/lists(.:format)                                                     lists#index
+#                                        POST      /edge/lists(.:format)                                                     lists#create
+#                                   list GET       /edge/lists/:id(.:format)                                                 lists#show
+#                                        PATCH     /edge/lists/:id(.:format)                                                 lists#update
+#                                        PUT       /edge/lists/:id(.:format)                                                 lists#update
+#                                        DELETE    /edge/lists/:id(.:format)                                                 lists#destroy
 #                                        GET       /oauth/authorize/:code(.:format)                                          doorkeeper/authorizations#show
 #                    oauth_authorization GET       /oauth/authorize(.:format)                                                doorkeeper/authorizations#new
 #                                        POST      /oauth/authorize(.:format)                                                doorkeeper/authorizations#create
@@ -250,6 +256,7 @@ Rails.application.routes.draw do
     jsonapi_resources :franchises
     jsonapi_resources :installments
     jsonapi_resources :mappings
+    jsonapi_resources :list
   end
 
   use_doorkeeper
