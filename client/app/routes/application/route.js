@@ -9,12 +9,10 @@ export default Route.extend(ApplicationRouteMixin, {
   metrics: service(),
   ajax: service(),
 
-  // If you are visiting the site while authenticated, lets grab your data
+  // If the user is authenticated on first load, grab the users data
   beforeModel() {
     const session = get(this, 'currentSession');
     if (get(session, 'isAuthenticated')) {
-      // we return the promise here, as it will pause the transition until
-      // we have received the data
       return this._getCurrentUser();
     }
   },

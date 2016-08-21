@@ -3,22 +3,26 @@
     <div class="top-bar-left">
       {{#zf-dropdown-menu}}
         <li>
-          {{#link-to 'dashboard'}}
+          {{#link-to "dashboard"}}
             <div class="logo"></div>
           {{/link-to}}
         </li>
         <li class="primary-nav has-submenu">
-          <a>{{t 'header.shows'}}</a>
+          <a>{{t "header.shows"}}</a>
           <ul class="submenu menu vertical" data-submenu>
             <li>
-              {{link-to (t 'media.anime.name') 'anime.index'}}
+              {{link-to (t "media.anime.name") "anime.index"}}
             </li>
-            <li><a href="#">{{t 'media.drama.name'}}</a></li>
+            <li>
+              {{link-to (t "media.drama.name") "drama.index"}}
+            </li>
           </ul>
         </li>
-        <li class="primary-nav"><a href="#">{{t 'media.manga.name'}}</a></li>
-        <li class="primary-nav"><a href="https://forums.hummingbird.me">{{t 'header.forums'}}</a></li>
-        <li class="primary-nav"><a href="#">{{t 'header.downloads'}}</a></li>
+        <li class="primary-nav">
+          {{link-to (t "media.manga.name") "manga.index"}}
+        </li>
+        <li class="primary-nav"><a href="https://forums.hummingbird.me">{{t "header.forums"}}</a></li>
+        <li class="primary-nav"><a href="#">{{t "header.downloads"}}</a></li>
       {{/zf-dropdown-menu}}
     </div>
 
@@ -42,13 +46,13 @@
             </a>
             <ul class="submenu menu vertical" data-submenu>
               <li>
-                {{#link-to 'users.index' currentSession.account}}
-                  {{t 'header.user.profile'}}
+                {{#link-to "users.index" currentSession.account}}
+                  {{t "header.user.profile"}}
                 {{/link-to}}
               </li>
               <li>
-                <a href="#" {{action 'invalidateSession'}}>
-                  {{t 'links.auth.logout'}}
+                <a href="#" {{action "invalidateSession"}}>
+                  {{t "links.auth.logout"}}
                 </a>
               </li>
             </ul>

@@ -1,0 +1,52 @@
+<div class="grid-poster" data-test-selector="media-poster">
+  {{! Media Poster }}
+  <img src={{media.posterImage}}>
+
+  <div class="poster-overlay">
+    {{! Friends }}
+    {{! TODO: Componentize }}
+    <div class="shared-friends">
+      <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
+      <a href="#" class="friend-count">03</a>
+    </div>
+
+    {{! Trailer (Anime/Drama) }}
+    {{! TODO: Componentize }}
+    {{#if (or isAnime isDrama)}}
+      <div class="trailer" data-test-selector="media-poster-trailer">
+        <a data-open={{trailerId}} {{action "openTrailer"}}>
+          {{fa-icon "play"}}
+        </a>
+        {{#if trailerOpen}}
+          {{#zf-reveal id=trailerId class="media-trailer" resetOnClose=true}}
+            <div class="flex-video widescreen">
+              <iframe width="100%" height="520" src="https://www.youtube.com/embed/{{media.youtubeVideoId}}?rel=0&controls=1&showinfo=1" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="trailer-info">
+              <div class="info-header">
+                <h4>{{media.canonicalTitle}}</h4>
+                <ul class="type-tags">
+                  <li>{{capitalize media.showType}}</li>
+                  <li>{{media.ageRating}}</li>
+                  <li class="average-rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-o"></i>
+                    <i class="fa fa-star-o"></i>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          {{/zf-reveal}}
+        {{/if}}
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+<div class="ellipsis">
+  {{#link-to mediaRoute media class="media-title"}}
+    {{media.canonicalTitle}}
+  {{/link-to}}
+</div>

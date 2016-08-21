@@ -16,6 +16,11 @@ client/bower_components
 client/public/system/*
 client/.coverage
 
+# docker
+
+docker-sync.yml
+docker-compose-dev.yml
+
 # general
 
 tmp/

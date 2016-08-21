@@ -1,8 +1,3 @@
-import Controller from 'ember-controller';
-import { alias } from 'ember-computed';
-import service from 'ember-service/inject';
+import MediaShowController from 'client/routes/media/show/controller';
 
-export default Controller.extend({
-  drama: alias('model'),
-  currentSession: service()
-});
+export default MediaShowController.extend();

@@ -2,7 +2,7 @@
  * Translation file for English.
  */
 export default {
-  // Page titles. Keys must match the route name
+  // Static page titles. Keys must match the route name
   titles: {
     anime: {
       index: 'Explore Anime'
@@ -30,7 +30,6 @@ export default {
       logout: 'Logout'
     }
   },
-  // Shared media terms
   media: {
     anime: {
       name: 'Anime',
@@ -53,13 +52,24 @@ export default {
         movie: 'Movie',
         special: 'Drama Special'
       }
+    },
+    routes: {
+      index: {
+        filter: {
+          year: 'Year',
+          score: 'Score',
+          streamers: 'Streamers (U.S.)',
+          episodes: 'Episodes',
+          rating: 'Rating',
+          genres: 'Categories',
+          search: 'Search by title, director, studio, or voice actor'
+        }
+      }
     }
   },
-  // Shared library terms
   library: {
     remove: 'Remove from Library',
     statuses: {
-      // jscs:disable
       anime: {
         current: 'Currently Watching',
         planned: 'Plan To Watch',
@@ -81,7 +91,6 @@ export default {
         on_hold: 'On Hold',
         dropped: 'Dropped'
       }
-      // jscs:enable
     }
   },
   // Global header
@@ -97,20 +106,6 @@ export default {
   footer: {
     header: 'Find an anime, manga, or drama',
     'search-placeholder': 'Search by title...'
-  },
-  // Anime route text
-  anime: {
-    index: {
-      filter: {
-        year: 'Year',
-        score: 'Avg. Score',
-        streamers: 'Streamers (U.S.)',
-        episodes: 'Episodes',
-        rating: 'Rating',
-        genres: 'Categories',
-        search: 'Search by title, director, studio, or voice actor'
-      }
-    }
   },
   // Sign in route text
   'sign-in': {

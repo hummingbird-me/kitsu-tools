@@ -23,12 +23,10 @@ RouterInstance.map(function() {
   this.route('dashboard', { path: '/' });
   this.route('dashboard/redirect', { path: '/dashboard' });
 
-  this.route('anime', function() {
-    this.route('show', { path: '/:slug' });
-  });
-
-  this.route('drama', function() {
-    this.route('show', { path: '/:slug' });
+  ['anime', 'drama', 'manga'].forEach((media) => {
+    this.route(media, function() {
+      this.route('show', { path: '/:slug' });
+    });
   });
 
   this.route('users', { path: '/users/:name' }, function() {

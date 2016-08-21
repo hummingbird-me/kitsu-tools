@@ -13,7 +13,7 @@ test('I should see a list of anime with filtering options', function(assert) {
   visit('/anime');
 
   andThen(() => {
-    const media = find(testSelector('selector', 'media-poster-summary'));
+    const media = find(testSelector('selector', 'media-poster'));
     const genres = find(testSelector('selector', 'filter-genre'));
     const streamers = find(testSelector('selector', 'filter-streamer'));
 

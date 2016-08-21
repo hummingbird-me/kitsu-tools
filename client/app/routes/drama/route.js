@@ -1,4 +1,3 @@
-import Route from 'ember-route';
-import DataRouteErrorMixin from 'client/mixins/routes/data-route-error';
+import MediaRoute from 'client/routes/media/route';
 
-export default Route.extend(DataRouteErrorMixin);
+export default MediaRoute.extend();

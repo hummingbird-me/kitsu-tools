@@ -1,0 +1,196 @@
+{{! TODO: Make the footer component toggleable }}
+<style>.global-footer { display: none }</style>
+
+<div class="media-browse">
+  <div class="media-grid columns">
+    {{! FILTER OPTIONS }}
+    <div class="filter-options">
+      <div class="filter-wrapper">
+        {{! YEAR }}
+        <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">
+              {{t "media.routes.index.filter.year"}}
+            </label>
+            <span class="filter-values">
+              {{year.[0]}} - {{year.[1]}}
+            </span>
+          </div>
+          {{media/components/ui-slider
+            options=(hash
+              start=1914 end=2016
+              initialStart=year.[0] initialEnd=year.[1]
+              doubleSided=true decimal=0 step=1
+            )
+            onUpdate=(action (mut year))
+            onRelease=(route-action "refresh")
+          }}
+          <div class="filter-legend">
+            <div class="low-value">1914</div>
+            <div class="high-value">2016</div>
+          </div>
+        </div>
+
+        {{! RATING }}
+        <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">
+              {{t "media.routes.index.filter.score"}}
+            </label>
+            <span class="filter-values">
+              {{averageRating.[0]}} - {{averageRating.[1]}}
+            </span>
+          </div>
+          {{media/components/ui-slider
+            options=(hash
+              start=0.5 end=5.0
+              initialStart=averageRating.[0] initialEnd=averageRating.[1]
+              doubleSided=true decimal=1 step=0.5
+            )
+            onUpdate=(action (mut averageRating))
+            onRelease=(route-action "refresh")
+          }}
+          <div class="filter-legend">
+            <div class="low-value">
+              {{fa-icon "star-half-o"}}
+            </div>
+            <div class="high-value">
+              {{#each (repeat 5) as |_|}}
+                {{fa-icon "star"}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+
+        {{! Anime/Drama }}
+        {{#if (or isAnime isDrama)}}
+          {{! STREAMERS }}
+          <div class="filter-widget">
+            <div class="filter-header">
+              <label class="filter-title">
+                {{t "media.routes.index.filter.streamers"}}
+              </label>
+              <span class="filter-values">
+                {{#if (eq streamers.length 0)}}
+                  {{availableStreamers.length}}
+                {{else}}
+                  {{streamers.length}}
+                {{/if}}
+              </span>
+            </div>
+            {{#media/components/box-select
+              class="box-select"
+              selection=(to-lower (map-by "siteName" availableStreamers))
+              selected=streamers
+              onSelect=(action (mut streamers)) as |option|
+            }}
+              <span class={{option}} data-test-selector="filter-streamer"></span>
+            {{/media/components/box-select}}
+          </div>
+
+          {{! EPISODES }}
+          <div class="filter-widget">
+            <div class="filter-header">
+              <label class="filter-title">
+                {{t "media.routes.index.filter.episodes"}}
+              </label>
+              <span class="filter-values">
+                {{episodeCount.[0]}} -
+                {{#if (eq episodeCount.[1] 1000)}}
+                  ∞
+                {{else}}
+                  {{episodeCount.[1]}}
+                {{/if}}
+              </span>
+            </div>
+            {{media/components/ui-slider
+              options=(hash
+                start=1 end=1000
+                initialStart=episodeCount.[0] initialEnd=episodeCount.[1]
+                doubleSided=true decimal=0 step=1
+              )
+              onUpdate=(action (mut episodeCount))
+              onRelease=(route-action "refresh")
+            }}
+            <div class="filter-legend">
+              <div class="low-value">1</div>
+              <div class="high-value">∞</div>
+            </div>
+          </div>
+
+          {{! AGE RATING }}
+          <div class="filter-widget">
+            <div class="filter-header">
+              <label class="filter-title">
+                {{t "media.routes.index.filter.rating"}}
+              </label>
+              <span class="filter-values">
+                {{#if (eq ageRating.length 0)}}
+                  {{availableAgeRatings.length}}
+                {{else}}
+                  {{ageRating.length}}
+                {{/if}}
+              </span>
+            </div>
+            {{#media/components/box-select
+              class="rating-select"
+              selection=availableAgeRatings
+              selected=ageRating
+              onSelect=(action (mut ageRating)) as |option|
+            }}
+              {{option}}
+            {{/media/components/box-select}}
+          </div>
+        {{/if}}
+
+        {{! GENRES }}
+        <div class="filter-widget">
+          <div class="filter-header">
+            <label class="filter-title">
+              {{t "media.routes.index.filter.genres"}}
+            </label>
+            <span class="filter-values">
+              {{#if (eq genres.length 0)}}
+                {{availableGenres.length}}
+              {{else}}
+                {{genres.length}}
+              {{/if}}
+            </span>
+          </div>
+          {{#media/components/box-select
+            class="category-select"
+            selection=(map-by "name" availableGenres)
+            selected=genres
+            onSelect=(action (mut genres)) as |option|
+          }}
+            <a href="#" data-test-selector="filter-genre">{{option}}</a>
+          {{/media/components/box-select}}
+        </div>
+      </div>
+    </div>
+
+    {{! SEARCH }}
+    <div class="search-media">
+      {{fa-icon "search"}}
+      {{one-way-search
+        update=(route-action "updateText")
+        value=searchQuery
+        placeholder=(t "media.routes.index.filter.search")
+      }}
+    </div>
+
+    {{! MEDIA }}
+    <div class="media-posters">
+      <div class="row">
+        {{#each model as |media|}}
+          {{media/components/media-poster media=media}}
+        {{/each}}
+      </div>
+
+      {{scrolling-paginator
+        model=model
+        update=(route-action "updateNextPage")
+      }}
+    </div>
+  </div>
+</div>
