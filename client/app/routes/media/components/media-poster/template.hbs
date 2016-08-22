@@ -4,15 +4,13 @@
 
   <div class="poster-overlay">
     {{! Friends }}
-    {{! TODO: Componentize }}
     <div class="shared-friends">
       <a href="#" class="friend-avatar"><img src="https://static.hummingbird.me/users/avatars/000/044/425/thumb_small/tumblr_mjf1jtHNm61s7110mo1_250.jpg?1440141803"></a>
       <a href="#" class="friend-count">03</a>
     </div>
 
-    {{! Trailer (Anime/Drama) }}
-    {{! TODO: Componentize }}
-    {{#if (or isAnime isDrama)}}
+    {{! Trailer }}
+    {{#if media.youtubeVideoId}}
       <div class="trailer" data-test-selector="media-poster-trailer">
         <a data-open={{trailerId}} {{action "openTrailer"}}>
           {{fa-icon "play"}}
@@ -20,7 +18,7 @@
         {{#if trailerOpen}}
           {{#zf-reveal id=trailerId class="media-trailer" resetOnClose=true}}
             <div class="flex-video widescreen">
-              <iframe width="100%" height="520" src="https://www.youtube.com/embed/{{media.youtubeVideoId}}?rel=0&controls=1&showinfo=1" frameborder="0" allowfullscreen></iframe>
+              <iframe width="100%" height="520" src="https://www.youtube.com/embed/{{media.youtubeVideoId}}?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
             </div>
             <div class="trailer-info">
               <div class="info-header">
@@ -37,7 +35,14 @@
                   </li>
                 </ul>
               </div>
+              {{#each media.genres as |genre|}}
+                <span class="label">{{genre.name}}</span>
+              {{/each}}
+              <p>{{media.synopsis}}</p>
             </div>
+            <button class="close-button" data-close aria-label="Close reveal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
           {{/zf-reveal}}
         {{/if}}
       </div>

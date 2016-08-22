@@ -47,9 +47,12 @@ export default Route.extend(QueryableMixin, {
   },
 
   model(params) {
-    const limit = { page: { offset: 0, limit: 20 } };
+    const hash = {
+      include: 'genres',
+      page: { offset: 0, limit: 20 }
+    };
     const filters = this._buildFilters(params);
-    const options = Object.assign(filters, limit);
+    const options = Object.assign(filters, hash);
     const mediaType = get(this, 'mediaType');
     return get(this, 'store').query(mediaType, options);
   },

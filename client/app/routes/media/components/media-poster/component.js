@@ -8,18 +8,6 @@ export default Component.extend({
   media: undefined,
   trailerOpen: false,
 
-  isAnime: getter(function() {
-    return get(this, 'media').constructor.modelName === 'anime';
-  }),
-
-  isDrama: getter(function() {
-    return get(this, 'media').constructor.modelName === 'drama';
-  }),
-
-  isManga: getter(function() {
-    return get(this, 'media').constructor.modelName === 'manga';
-  }),
-
   mediaRoute: getter(function() {
     return `${get(this, 'media').constructor.modelName}.show`;
   }),
