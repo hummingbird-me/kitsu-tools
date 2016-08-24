@@ -34,13 +34,20 @@
 # rubocop:enable Metrics/LineLength
 
 class Manga < ActiveRecord::Base
-  DEFAULT_PROGRESS_LIMIT = 1000
-
   include Media
 
   enum manga_type: %i[manga novel manhua oneshot doujin]
   enum status: %i[not_published publishing finished]
   alias_attribute :progress_limit, :chapter_count
+
+  def default_progress_limit
+    # Biweekly with a margin
+    if run_length
+      (run_length / 14) + 5
+    else
+      200
+    end
+  end
 
   def slug_candidates
     [

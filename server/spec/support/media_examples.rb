@@ -23,6 +23,30 @@ RSpec.shared_examples 'media' do
       .is_greater_than(0)
   end
 
+  describe '#run_length' do
+    context 'with a start date' do
+      it 'should return the period from start_date to end_date' do
+        subject.start_date = 6.months.ago.to_date
+        subject.end_date = 3.months.ago.to_date
+        expect(subject.run_length).to be_within(5).of(90) # 90 days = 3 months
+      end
+    end
+    context 'without a start date' do
+      it 'should return nil' do
+        subject.start_date = nil
+        subject.end_date = 3.months.ago.to_date
+        expect(subject.run_length).to be_nil
+      end
+    end
+    context 'without an end date' do
+      it 'should return the period from start_date to today' do
+        subject.start_date = 2.months.ago.to_date
+        subject.end_date = nil
+        expect(subject.run_length).to be_within(5).of(60) # 60 days = 2 months
+      end
+    end
+  end
+
   describe '#calculate_rating_frequencies' do
     context 'with no library entries' do
       it 'should return a Hash of zeroes' do

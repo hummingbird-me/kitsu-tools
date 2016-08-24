@@ -48,14 +48,33 @@ RSpec.describe LibraryEntry, type: :model do
   end
 
   describe 'progress_limit validation' do
-    it 'should fail when progress > progress_limit' do
-      library_entry = build(:library_entry, media: anime, progress: 6)
-      expect(library_entry).not_to be_valid
-      expect(library_entry.errors[:progress]).to be_present
+    context 'with known progress_limit' do
+      let(:anime) { create(:anime, episode_count: 5) }
+      it 'should fail when progress > progress_limit' do
+        library_entry = build(:library_entry, media: anime, progress: 6)
+        expect(library_entry).not_to be_valid
+        expect(library_entry.errors[:progress]).to be_present
+      end
+      it 'should pass when progress <= progress_limit' do
+        library_entry = build(:library_entry, media: anime, progress: 4)
+        library_entry.valid?
+        expect(library_entry.errors[:progress]).to be_blank
+      end
     end
-    it 'should pass when progress <= progress_limit' do
-      library_entry = build(:library_entry, media: anime, progress: 4)
-      expect(library_entry.errors[:progress]).to be_blank
+    context 'without known progress_limit' do
+      let(:anime) { create(:anime, episode_count: nil) }
+      it 'should fail when progress > default_progress_limit' do
+        library_entry = build(:library_entry, media: anime, progress: 6)
+        expect(anime).to receive(:default_progress_limit).and_return(5).once
+        expect(library_entry).not_to be_valid
+        expect(library_entry.errors[:progress]).to be_present
+      end
+      it 'should pass when progress <= default_progress_limit' do
+        library_entry = build(:library_entry, media: anime, progress: 4)
+        expect(anime).to receive(:default_progress_limit).and_return(5).once
+        library_entry.valid?
+        expect(library_entry.errors[:progress]).to be_blank
+      end
     end
   end
 

@@ -43,7 +43,6 @@
 # rubocop:enable Metrics/LineLength
 
 class Anime < ActiveRecord::Base
-  DEFAULT_PROGRESS_LIMIT = 400
   SEASONS = %w[winter spring summer fall].freeze
 
   include Media

@@ -41,4 +41,9 @@ module Media
       -> { titles[:en_jp] }
     ]
   end
+
+  # How long the series ran for, or nil if the start date is unknown
+  def run_length
+    (end_date || Date.today) - start_date if start_date
+  end
 end

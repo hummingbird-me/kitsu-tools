@@ -60,7 +60,7 @@ class LibraryEntry < ActiveRecord::Base
   def progress_limit
     return unless progress
     progress_cap = media.try(:progress_limit)
-    default_cap = "#{media_type}::DEFAULT_PROGRESS_LIMIT".safe_constantize
+    default_cap = media.try(:default_progress_limit)
 
     if progress_cap && progress > progress_cap
       errors.add(:progress, 'cannot exceed length of media')

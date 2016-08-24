@@ -12,6 +12,15 @@ module Episodic
     update(episode_length: length)
   end
 
+  def default_progress_limit
+    # Weekly with a margin
+    if run_length
+      (run_length.to_i / 7) + 5
+    else
+      100
+    end
+  end
+
   included do
     has_many :episodes, as: 'media', dependent: :destroy
     has_many :streaming_links, as: 'media', dependent: :destroy
