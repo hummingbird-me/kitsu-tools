@@ -2,9 +2,6 @@ import Mixin from 'ember-metal/mixin';
 import { typeOf, isEmpty } from 'ember-utils';
 
 export default Mixin.create({
-  /**
-   * Serializes range and array query params.
-   */
   serializeQueryParam(value, _, defaultValueType) {
     if (defaultValueType === 'array') {
       if (typeOf(value) !== 'array') {
@@ -21,9 +18,6 @@ export default Mixin.create({
     return this._super(...arguments);
   },
 
-  /**
-   * Deserializes range and array query params.
-   */
   deserializeQueryParam(value, _, defaultValueType) {
     if (defaultValueType === 'array') {
       const isRange = value.includes('..');

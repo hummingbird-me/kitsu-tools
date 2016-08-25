@@ -6,9 +6,10 @@ export default Mixin.create({
     error(reason) {
       const status = get(reason, 'errors.firstObject.status');
       if (status === '500') {
-        this.replaceWith('/500');
+        this.replaceWith('server-error');
       } else {
-        this.replaceWith('/404');
+        console.error(reason);
+        //this.replaceWith('/404');
       }
     }
   }

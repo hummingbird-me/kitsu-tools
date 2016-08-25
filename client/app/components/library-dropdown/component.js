@@ -2,42 +2,34 @@ import Component from 'ember-component';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
 import computed from 'ember-computed';
-import RSVP from 'rsvp';
 import { task } from 'ember-concurrency';
+import { assert } from 'ember-metal/utils';
 import service from 'ember-service/inject';
 import libraryStatus from 'client/utils/library-status';
+import RSVP from 'rsvp';
 
 const REMOVE_KEY = 'library.remove';
 
-/**
- * For the loading state of this Component to work, the actions passed must
- * return Promises.
- */
 export default Component.extend({
   entryIsLoaded: false,
   i18n: service(),
 
-  /**
-   * Current status of the library entry
-   */
-  currentStatus: computed('entry.status', 'mediaType', {
+  currentStatus: computed('entry.status', {
     get() {
-      const status = get(this, 'entry.status');
-      const media = get(this, 'mediaType');
-      return get(this, 'i18n').t(`library.statuses.${media}.${status}`).toString();
+      const entry = get(this, 'entry');
+      const status = get(entry, 'status');
+      const type = get(this, 'mediaType');
+      return get(this, 'i18n').t(`library.statuses.${type}.${status}`).toString();
     }
-  }),
+  }).readOnly(),
 
-  /**
-   * List of all statuses available for choice to the user
-   */
-  statuses: computed('entry', 'currentStatus', 'mediaType', {
+  statuses: computed('entry', 'currentStatus', {
     get() {
-      const media = get(this, 'mediaType');
+      const type = get(this, 'mediaType');
       const statuses = libraryStatus.getEnumKeys().map((key) => {
         return {
           key,
-          string: get(this, 'i18n').t(`library.statuses.${media}.${key}`).toString()
+          string: get(this, 'i18n').t(`library.statuses.${type}.${key}`).toString()
         };
       });
       if (get(this, 'entry') === undefined) {
@@ -49,19 +41,13 @@ export default Component.extend({
         return statuses.concat([{ key: REMOVE_KEY, string: removeKey }]);
       }
     }
-  }),
+  }).readOnly(),
 
-  /**
-   * We use this task to show the user a loading state while we wait for the
-   * promises to resolve.
-   */
   updateTask: task(function *(status) {
     const entry = get(this, 'entry');
-    // Entry has loaded but is still undefined (doesn't exist)
-    if (entry === undefined && get(this, 'entryIsLoaded')) {
+    if (entry === undefined && get(this, 'entryIsLoaded') === true) {
       yield get(this, 'create')(status.key);
     } else if (entry !== undefined) {
-      // User wants to delete the entry
       if (status.key === REMOVE_KEY) {
         yield get(this, 'delete')();
       } else {
@@ -70,13 +56,14 @@ export default Component.extend({
     }
   }).drop(),
 
-  /**
-   * This component can be created while waiting on a response from the server.
-   * If the promise is passed, then resolve it and let the component know we
-   * have the data.
-   */
   init() {
     this._super(...arguments);
+    assert('`{{library-dropdown}}` requires a `mediaType` param',
+      get(this, 'mediaType') !== undefined);
+    assert('`{{library-dropdown}}` requires a `promise` param when `entry` is undefined',
+      (get(this, 'promise') !== undefined && get(this, 'entry') === undefined) ||
+      (get(this, 'promise') === undefined && get(this, 'entry') !== undefined));
+
     const promise = get(this, 'promise');
     RSVP.resolve(promise).then(() => set(this, 'entryIsLoaded', true));
   }

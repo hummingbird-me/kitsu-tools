@@ -1,10 +1,6 @@
-<button
-  type="button"
-  class="dropdown button"
+<button type="button" class="dropdown button"
   disabled={{if (or updateTask.isRunning (not entryIsLoaded)) "disabled"}}
-  data-toggle="status-dropdown"
-  data-test-selector="library-status-button"
->
+  data-toggle="{{elementId}}-dropdown" data-test-selector="library-dropdown">
   {{#if updateTask.isIdle}}
     {{#if entry}}
       {{currentStatus}}
@@ -22,10 +18,10 @@
   {{/if}}
 </button>
 
-{{#zf-dropdown id="status-dropdown"}}
+{{#zf-dropdown id=(concat elementId "-dropdown")}}
   <ul class="no-bullet">
     {{#each statuses as |status|}}
-      <li data-test-selector="library-list-button-status">
+      <li data-test-selector="library-dropdown-list-item">
         <a onclick={{perform updateTask status}}>
           {{status.string}}
         </a>

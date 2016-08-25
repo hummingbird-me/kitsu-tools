@@ -1,35 +1,51 @@
 import Route from 'ember-route';
-import get, { getProperties } from 'ember-metal/get';
+import get from 'ember-metal/get';
 import set, { setProperties } from 'ember-metal/set';
 import { capitalize } from 'ember-string';
-import jQuery from 'jquery';
 import service from 'ember-service/inject';
+import { task } from 'ember-concurrency';
+import libraryStatus from 'client/utils/library-status';
+import PaginationMixin from 'client/mixins/routes/pagination';
+import LibraryEntryMixin from 'client/mixins/routes/library-entry';
+import jQuery from 'jquery';
 
-// TODO: Performance (uhhh)! WTB Glimmer2, WTB <> Components, PLEASE
-export default Route.extend({
+export default Route.extend(PaginationMixin, LibraryEntryMixin, {
   queryParams: {
     media: { refreshModel: true },
-    status: { replace: true }
+    status: { refreshModel: true }
   },
   i18n: service(),
 
+  /**
+   * Restartable task that queries the library entries for the current status,
+   * and media type.
+   */
+  modelTask: task(function *(media, status) {
+    const user = this.modelFor('users');
+    const userId = get(user, 'id');
+    const options = {};
+
+    if (status === 'all') {
+      status = '1,2,3,4,5';
+      Object.assign(options, { sort: 'status' });
+    } else {
+      status = libraryStatus.enumToNumber(status);
+    }
+
+    Object.assign(options, {
+      include: 'media.genres,user',
+      filter: {
+        user_id: userId,
+        media_type: capitalize(media),
+        status
+      },
+      page: { offset: 0, limit: 50 }
+    });
+    return yield get(this, 'store').query('library-entry', options);
+  }).restartable(),
+
   model({ media, status }) {
-    return this._getLibraryData(media, status || 1);
-  },
-
-  setupController(controller, model) {
-    this._super(...arguments);
-    const { media, status } = getProperties(controller, 'media', 'status');
-
-    // TODO: This needs to rerun when `media` is changed.
-    const statuses = this._getNextStatuses(status);
-    this._getLibraryData(media, statuses)
-      .then((records) => {
-        const content = model.toArray();
-        content.addObjects(records);
-        set(controller, 'model', content);
-        set(controller, 'dataLoaded', true);
-      });
+    return get(this, 'modelTask').perform(media, status);
   },
 
   titleToken() {
@@ -38,59 +54,40 @@ export default Route.extend({
     return get(this, 'i18n').t('titles.users.library', { user: name });
   },
 
-  /**
-   * Requests the library data for the user, media, and status.
-   */
-  _getLibraryData(media, status) {
-    const user = this.modelFor('users');
-    const userId = get(user, 'id');
-    return get(this, 'store').query('library-entry', {
-      include: `media.genres,user`,
-      filter: {
-        // jscs:disable
-        user_id: userId,
-        media_type: capitalize(media),
-        // jscs:enable
-        status
-      },
-      page: {
-        offset: 0,
-        limit: 20000 /* Maybe change to -1? */
-      }
-    });
-  },
-
-  /**
-   * Returns the statuses that we don't currently have as a joined string.
-   */
-  _getNextStatuses(status) {
-    const statuses = [1, 2, 3, 4, 5];
-    const index = statuses.indexOf(status);
-    statuses.splice(index, 1);
-    return statuses.join(',');
-  },
-
   actions: {
-    /**
-     * Updates properties on the `entry` object passed.
-     * Supports single property update, or multiple.
-     */
+    loading(transition) {
+      const controller = this.controllerFor(get(this, 'routeName'));
+      set(controller, 'isLoading', true);
+      transition.promise.finally(() => set(controller, 'isLoading', false));
+    },
+
+    updateMedia(media) {
+      const controller = this.controllerFor(get(this, 'routeName'));
+      set(controller, 'media', media);
+    },
+
     updateEntry(entry, key, value) {
       if (jQuery.isPlainObject(key)) {
         setProperties(entry, key);
       } else {
         set(entry, key, value);
       }
+
+      if (get(entry, 'validations.isValid') === true) {
+        return entry.save()
+          .then(() => {
+            // TODO: Feedback for user
+          })
+          .catch(() => entry.rollbackAttributes());
+      }
     },
 
-    saveEntry(entry) {
-      return entry.save()
-        .catch((err) => console.error(err));
-    },
-
-    destroyEntry(entry) {
+    deleteEntry(entry) {
       return entry.destroyRecord()
-        .catch((err) => console.error(err));
+        .then(() => {
+          // TODO: Feedback for user.
+        })
+        .catch(() => entry.rollbackAttributes());
     }
   }
 });

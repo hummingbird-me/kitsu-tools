@@ -1,14 +1,14 @@
 import Route from 'ember-route';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
-import service from 'ember-service/inject';
-import { capitalize } from 'ember-string';
 import { assert } from 'ember-metal/utils';
+import service from 'ember-service/inject';
+import LibraryEntryMixin from 'client/mixins/library-entry';
 
-export default Route.extend({
+export default Route.extend(LibraryEntryMixin, {
   mediaType: undefined,
-  currentSession: service(),
   templateName: 'media/show',
+  currentSession: service(),
 
   init() {
     this._super(...arguments);
@@ -28,20 +28,10 @@ export default Route.extend({
 
   setupController(controller, model) {
     this._super(...arguments);
-
-    // Get the library entry for the current user
-    const session = get(this, 'currentSession');
-    if (get(session, 'isAuthenticated')) {
-      const userId = get(session, 'account.id');
-      const mediaId = get(model, 'id');
-      const mediaType = get(this, 'mediaType');
-      const promise = get(this, 'store').query('library-entry', {
-        filter: {
-          user_id: userId,
-          media_type: capitalize(mediaType),
-          media_id: mediaId
-        }
-      }).then((data) => set(controller, 'entry', get(data, 'firstObject')));
+    if (get(this, 'currentSession.isAuthenticated') === true) {
+      const promise = this._getLibraryEntry(model).then((results) => {
+        set(controller, 'entry', get(results, 'firstObject'));
+      });
       set(controller, 'entryPromise', promise);
     }
   },
@@ -56,7 +46,7 @@ export default Route.extend({
 
   actions: {
     createEntry(status) {
-      const controller = get(this, 'controller');
+      const controller = this.controllerFor(get(this, 'routeName'));
       const user = get(this, 'currentSession.account');
       const media = this.modelFor(get(this, 'routeName'));
       const entry = get(this, 'store').createRecord('library-entry', {
@@ -64,17 +54,21 @@ export default Route.extend({
         user,
         media
       });
-      return entry.save().then(() => set(controller, 'entry', entry));
+      return entry.save().then(() => {
+        set(controller, 'entry', entry);
+      });
     },
 
     updateEntry(entry, status) {
       set(entry, 'status', status);
-      return entry.save();
+      return entry.save().catch(() => entry.rollbackAttributes());
     },
 
-    destroyEntry(entry) {
-      const controller = get(this, 'controller');
-      return entry.destroyRecord().then(() => set(controller, 'entry', undefined));
+    deleteEntry(entry) {
+      const controller = this.controllerFor(get(this, 'routeName'));
+      return entry.destroyRecord()
+        .then(() => set(controller, 'entry', undefined))
+        .catch(() => entry.rollbackAttributes());
     }
   }
 });

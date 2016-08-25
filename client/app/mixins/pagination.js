@@ -1,19 +1,17 @@
-import Component from 'ember-component';
+import Mixin from 'ember-metal/mixin';
 import get from 'ember-metal/get';
-import { setProperties } from 'ember-metal/set';
 import computed from 'ember-computed';
 import service from 'ember-service/inject';
-import InViewportMixin from 'ember-in-viewport';
 import { task } from 'ember-concurrency';
 
 /**
- * Scrolling pagination based on JSON-API's top level links object.
+ * Pagination based on JSON-API's top level links object.
  *
  * When this component enters the viewport it requests the next set of data
  * based on the `next` link within the `links` object. Those new records are
  * then sent up to be handled.
  */
-export default Component.extend(InViewportMixin, {
+export default Mixin.create({
   store: service(),
 
   /**
@@ -44,29 +42,6 @@ export default Component.extend(InViewportMixin, {
     const links = get(records, 'links');
     get(this, 'update')(records, links);
   }).drop(),
-
-  init() {
-    this._super(...arguments);
-    // Setup properties for `ember-in-viewport`
-    setProperties(this, {
-      viewportSpy: true,
-      viewportTolerance: {
-        top: 50,
-        bottom: 50
-      }
-    });
-  },
-
-  didEnterViewport() {
-    this._super(...arguments);
-    get(this, 'getNextData').perform().then(() => {
-      // reset the viewport state, this is done because there is a possibility
-      // that the component will still be within the viewport after the data
-      // is retrieved, in which case a request will not be executed until
-      // the component has left the viewport and re-entered.
-      this._triggerDidAccessViewport(false);
-    }).catch(() => {});
-  },
 
   /**
    * Decodes and rebuilds the query params object from the URL passed.

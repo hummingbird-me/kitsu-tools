@@ -174,7 +174,6 @@
       {{fa-icon "search"}}
       {{one-way-search
         update=(route-action "updateText")
-        value=searchQuery
         placeholder=(t "media.routes.index.filter.search")
       }}
     </div>
@@ -187,7 +186,7 @@
         {{/each}}
       </div>
 
-      {{scrolling-paginator
+      {{pagination-scrolling
         model=model
         update=(route-action "updateNextPage")
       }}

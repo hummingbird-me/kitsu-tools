@@ -6,7 +6,11 @@ moduleForComponent('library-entry', 'Integration | Component | library-entry', {
 });
 
 test('it renders', function(assert) {
-  assert.expect(1);
-  this.render(hbs`{{users/components/library-entry}}`);
+  assert.expect(2);
+  this.set('entry', {
+    media: { canonicalTitle: 'Spice and Wolf' }
+  });
+  this.render(hbs`{{users/components/library-entry entry=entry}}`);
   assert.ok(this.$('[data-test-selector="library-entry"]').length);
+  assert.equal(this.$('[data-test-selector="library-entry-title"]').text().trim(), 'Spice and Wolf');
 });

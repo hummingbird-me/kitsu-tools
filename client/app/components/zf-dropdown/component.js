@@ -1,5 +1,6 @@
 import Component from 'ember-cli-foundation-6-sass/components/zf-dropdown';
 import get from 'ember-metal/get';
+import jQuery from 'jquery';
 
 /**
  * Override the `zf-dropdown` component from `ember-cli-foundation-6-sass`
@@ -9,22 +10,22 @@ import get from 'ember-metal/get';
 export default Component.extend({
   closeOnClick: true,
 
-  /**
-   * Called by `ember-cli-foundation-6-sass` in an afterRender runloop
-   */
   handleInsert() {
-    this._super(...arguments);
-    if (get(this, 'closeOnClick') === true) {
-      this.$().on('click', () => {
-        get(this, 'zfUi').close();
-      });
-    }
-  },
-
-  willDestroyElement() {
-    this._super(...arguments);
-    if (get(this, 'closeOnClick') === true) {
-      this.$().off('click');
-    }
+    get(this, 'zfUi')._addBodyHandler = () => {
+      jQuery(document.body)
+        .off('click.zf.dropdown')
+        .on('click.zf.dropdown', (e) => {
+          // don't attempt to close if the component is destroyed
+          if (get(this, 'isDestroyed') === false) {
+            // don't close when clicking on the anchor element, it already
+            // is set to toggle on click.
+            if (get(this, 'zfUi').$anchor.is(e.target) === true) {
+              return;
+            }
+            get(this, 'zfUi').close();
+          }
+          jQuery(document.body).off('click.zf.dropdown');
+        });
+    };
   }
 });

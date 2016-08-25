@@ -1,33 +1,47 @@
 import Component from 'ember-component';
 import computed, { alias } from 'ember-computed';
 import get from 'ember-metal/get';
-import set from 'ember-metal/set';
 import service from 'ember-service/inject';
-import { debounce, cancel } from 'ember-runloop';
+import { task, timeout } from 'ember-concurrency';
 import IsOwnerMixin from 'client/mixins/is-owner';
 import jQuery from 'jquery';
-
-const DEBOUNCE_MS = 1000;
 
 export default Component.extend(IsOwnerMixin, {
   isExpanded: false,
 
   currentSession: service(),
+  i18n: service(),
   media: alias('entry.media'),
-  mediaType: alias('media.content.constructor.modelName'),
   user: alias('entry.user'),
 
-  episodeCount: computed('media.episodeCount', {
+  // TODO: Handle manga (no support yet?)
+  totalProgress: computed('media.episodeCount', {
     get() {
-      return get(this, 'media.episodeCount') || '--';
+      return get(this, 'media.episodeCount') || '-';
     }
-  }),
+  }).readOnly(),
 
   rating: computed('entry.rating', {
     get() {
-      return get(this, 'entry.rating') || '--';
+      return get(this, 'entry.rating') || '-';
     }
-  }),
+  }).readOnly(),
+
+  type: computed('media.{showType,mangaType}', {
+    get() {
+      const mediaType = get(this, 'mediaType');
+      const key = mediaType === 'manga' ? 'manga-type' : 'show-type';
+      const type = get(this, 'media.showType') || get(this, 'media.mangaType');
+      return get(this, 'i18n').t(`media.${mediaType}.${key}.${type}`);
+    }
+  }).readOnly(),
+
+  updateProperty: task(function *(key, value, shouldTimeout = true) {
+    if (shouldTimeout === true) {
+      yield timeout(1000);
+    }
+    yield get(this, 'update')(key, value);
+  }).restartable(),
 
   /**
    * Toggle the `isExpanded` property when the component is clicked.
@@ -43,33 +57,13 @@ export default Component.extend(IsOwnerMixin, {
     this.toggleProperty('isExpanded');
   },
 
-  /**
-   * Used for the `updateDebounced` action.
-   */
-  _save() {
-    get(this, 'save')();
-  },
-
   actions: {
-    updateDebounced(key, value) {
+    updateEntry(key, value) {
       get(this, 'update')(key, value);
-      return get(this, 'entry').validate()
-        .then(() => {
-          const timer = debounce(this, '_save', DEBOUNCE_MS);
-          set(this, 'debounceTimer', timer);
-        })
-        .catch(() => cancel(get(this, 'debounceTimer')));
     },
 
-    update(key, value) {
-      get(this, 'update')(key, value);
-      if (get(this, 'entry.validations.isValid')) {
-        return get(this, 'save')();
-      }
-    },
-
-    destroy() {
-      return get(this, 'delete')();
+    deleteEntry() {
+      get(this, 'delete')();
     },
 
     rewatch() {
@@ -79,9 +73,7 @@ export default Component.extend(IsOwnerMixin, {
         progress: 0,
         status: 'current'
       };
-
-      get(this, 'update')(updates);
-      return get(this, 'entry').validate().then(() => get(this, 'save')());
+      get(this, 'updateProperty').perform(updates);
     }
   }
 });

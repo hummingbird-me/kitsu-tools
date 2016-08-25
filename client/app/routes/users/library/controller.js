@@ -2,81 +2,56 @@ import Controller from 'ember-controller';
 import computed, { alias } from 'ember-computed';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
-import service from 'ember-service/inject';
 import libraryStatus from 'client/utils/library-status';
 
 export default Controller.extend({
   queryParams: ['media', 'status'],
   media: 'anime',
-  status: 1,
-  showAll: false,
-  filterQuery: undefined,
-  entries: alias('model'),
-  i18n: service(),
+  status: 'current',
 
-  // Returns the statuses in an array of { key, string }
-  statuses: computed('media', {
+  entries: alias('model'),
+
+  /**
+   * Returns an array of the other library page options
+   */
+  mediaList: computed('media', {
     get() {
+      const list = ['anime', 'drama', 'manga'];
       const media = get(this, 'media');
-      return libraryStatus.getEnumKeys().map((key) => {
-        return {
-          key,
-          string: get(this, 'i18n').t(`library.statuses.${media}.${key}`).toString()
-        };
-      });
+      list.splice(list.findIndex((m) => m === media), 1);
+      return list;
     }
   }).readOnly(),
 
-  // Sort the library entries into an array of { status, entries }
-  sections: computed('statuses', 'entries.@each.{status,isDeleted}', {
+  /**
+   * Filters the entries by their status and state into an object of
+   * `{ status: entries, ... }`
+   */
+  sections: computed('entries.@each.{status,isDeleted}', {
     get() {
-      return get(this, 'statuses').map((status) => {
+      const sections = {};
+      get(this, 'statuses').slice(1).forEach((status) => {
         const entries = get(this, 'entries')
-          .filterBy('status', status.key)
+          .filterBy('status', status)
           .filterBy('isDeleted', false);
-        return { status, entries };
+        sections[status] = entries;
       });
+      return sections;
     }
-  }),
+  }).readOnly(),
 
-  // Returns the section that is currently active
-  currentSection: computed('status', 'sections', {
+  /**
+   * Gets the filtered entries for the current status
+   */
+  filteredEntries: computed('status', 'sections', {
     get() {
       const status = get(this, 'status');
-      return get(this, 'sections')[status - 1];
+      return get(this, 'sections')[status];
     }
-  }),
+  }).readOnly(),
 
-  // Get the human-readable status from the query parameter
-  currentStatus: computed('status', 'statuses', {
-    get() {
-      const status = get(this, 'status');
-      return get(this, 'statuses')[status - 1];
-    }
-  }),
-
-  actions: {
-    showAll() {
-      set(this, 'showAll', true);
-    },
-
-    hideAll() {
-      set(this, 'showAll', false);
-    },
-
-    filter(query) {
-      set(this, 'filterQuery', query);
-      get(this, 'sections').forEach((section) => {
-        const entries = get(this, 'entries').filter((entry) => {
-          const status = get(section, 'status').key;
-          if (get(entry, 'status') !== status) {
-            return false;
-          }
-          return get(entry, 'anime.mergedTitles').includes(query.toLowerCase());
-        });
-        set(section, 'entries', entries);
-      });
-      set(this, 'showAll', !!query.length);
-    }
+  init() {
+    this._super(...arguments);
+    set(this, 'statuses', ['all', ...libraryStatus.getEnumKeys()]);
   }
 });

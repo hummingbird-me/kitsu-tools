@@ -1,1 +1,12 @@
 <h1 data-test-selector="title">{{media.canonicalTitle}}</h1>
+
+{{#if currentSession.isAuthenticated}}
+  {{library-dropdown
+    entry=entry
+    promise=entryPromise
+    mediaType=mediaType
+    create=(route-action "createEntry")
+    update=(route-action "updateEntry" entry)
+    delete=(route-action "deleteEntry" entry)
+  }}
+{{/if}}

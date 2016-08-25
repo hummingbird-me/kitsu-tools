@@ -2,49 +2,69 @@
   <div class="columns">
     <div class="library-list columns">
       <div class="nav-wrapper">
-        {{! TODO: Media type dropdown }}
-        <button
-          type="button"
-          class="dropdown button"
-          data-toggle="media-dropdown">
+        {{! Library type dropdown }}
+        <button type="button" class="dropdown button" data-toggle="media-dropdown">
           {{t "users.library.library" type=(t (concat "media." media ".name"))}}
         </button>
+        {{#zf-dropdown id="media-dropdown"}}
+          {{#each mediaList as |_media|}}
+            <li>
+              <a {{action (route-action "updateMedia" _media)}}>
+                {{t "users.library.library" type=(t (concat "media." _media ".name"))}}
+              </a>
+            </li>
+          {{/each}}
+        {{/zf-dropdown}}
 
         {{! Library status selection }}
         <ul class="menu">
-          <li>
-            <a href="#" class={{if showAll "active"}} {{action "showAll"}}>
-              {{t "users.library.section.all"}}
-            </a>
-          </li>
           {{#each statuses as |_status|}}
-            {{users/components/library-button
-                status=_status
-                isActive=(and (eq _status.key currentStatus.key) (not showAll))
-                isLoading=(not dataLoaded)
-                onClick=(pipe-action (action (mut status)) (action "hideAll"))}}
+            {{users/components/library-select
+              status=_status
+              mediaType=media
+              isActive=(eq _status status)
+              isLoading=isLoading
+              onClick=(action (mut status))
+            }}
           {{/each}}
         </ul>
       </div>
 
       {{! Filter Search }}
+      {{! @TODO: API is not yet searchable }}
       <div class="search-library">
-        {{one-way-search filterQuery
-            update=(action 'filter')
+        {{one-way-search
             class="search-input"
             placeholder=(t "users.library.search")}}
       </div>
 
       {{! Library Entries }}
-      {{#if showAll}}
-        {{#each sections as |section|}}
-          {{users/components/library-section
-              section=section}}
-        {{/each}}
-      {{else}}
-        {{users/components/library-section
-            section=currentSection}}
+      {{#if (eq status 'all')}} {{! all status is selected }}
+        {{#each-in sections as |status entries|}}
+          {{#if entries}}
+            {{users/components/library-entries
+              status=status
+              entries=entries
+              mediaType=media
+              isLoading=isLoading
+            }}
+          {{/if}}
+        {{/each-in}}
+      {{else}} {{! active tab entires }}
+        {{users/components/library-entries
+          status=status
+          entries=filteredEntries
+          mediaType=media
+          isLoading=isLoading
+        }}
       {{/if}}
+
+      {{! pagination }}
+      {{pagination-scrolling
+        model=entries
+        update=(route-action "updateNextPage")
+        tolerance=(hash top=0 left=0 bottom=100 right=0)
+      }}
     </div>
   </div>
 </div>

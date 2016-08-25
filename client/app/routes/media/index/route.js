@@ -8,22 +8,23 @@ import { isEmberArray } from 'ember-array/utils';
 import { task, timeout } from 'ember-concurrency';
 import jQuery from 'jquery';
 import QueryableMixin from 'client/mixins/routes/queryable';
+import PaginationMixin from 'client/mixins/routes/pagination';
 
-export default Route.extend(QueryableMixin, {
+export default Route.extend(QueryableMixin, PaginationMixin, {
   mediaType: undefined,
   mediaQueryParams: {
     averageRating: { replace: true },
     genres: { refreshModel: true, replace: true },
-    text: { refreshModel: true, replace: true },
+    text: { replace: true },
     year: { replace: true }
   },
   templateName: 'media/index',
 
   setQuery: task(function *(value) {
     const controller = this.controllerFor(get(this, 'routeName'));
-    set(controller, 'searchQuery', value);
-    yield timeout(1000);
     set(controller, 'text', value);
+    yield timeout(1000);
+    this.refresh();
   }).restartable(),
 
   init() {
@@ -60,9 +61,6 @@ export default Route.extend(QueryableMixin, {
   setupController(controller) {
     this._super(...arguments);
     jQuery(document).on('scroll', bind(controller, '_handleScroll'));
-
-    // apply text to searchQuery
-    set(controller, 'searchQuery', get(controller, 'text'));
   },
 
   resetController() {
@@ -92,16 +90,8 @@ export default Route.extend(QueryableMixin, {
   },
 
   actions: {
-    updateText(query) {
-      get(this, 'setQuery').perform(query);
-    },
-
-    updateNextPage(records, links) {
-      const controller = this.controllerFor(get(this, 'routeName'));
-      const content = get(controller, 'model').toArray();
-      content.addObjects(records);
-      set(controller, 'model', content);
-      set(controller, 'model.links', links);
+    updateText(value) {
+      get(this, 'setQuery').perform(value);
     },
 
     refresh() {

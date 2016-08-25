@@ -1,6 +1,6 @@
 import MediaShowRoute from 'client/routes/media/show/route';
-import CanonicalUrlRedirectMixin from 'client/mixins/routes/canonical-url-redirect';
+import CanonicalRedirectMixin from 'client/mixins/routes/canonical-redirect';
 
-export default MediaShowRoute.extend(CanonicalUrlRedirectMixin, {
+export default MediaShowRoute.extend(CanonicalRedirectMixin, {
   mediaType: 'manga'
 });

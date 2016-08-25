@@ -1,0 +1,21 @@
+<div class="section-head" data-test-selector="library-entries">
+  <span class="section-title">{{statusName}}</span>
+  <span class="section-stats" data-test-selector="library-entries-stats">{{stats}}</span>
+</div>
+
+{{#if isLoading}}
+  <p>Loading...</p>
+{{else}}
+  {{#if entries}}
+    {{#each entries as |entry|}}
+      {{users/components/library-entry
+        entry=entry
+        mediaType=mediaType
+        update=(route-action "updateEntry" entry)
+        delete=(route-action "deleteEntry" entry)
+      }}
+    {{/each}}
+  {{else}}
+    <p>No Entries!</p>
+  {{/if}}
+{{/if}}

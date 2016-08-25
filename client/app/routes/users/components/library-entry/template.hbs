@@ -2,7 +2,7 @@
   <div class="entry-wrapper">
     {{! Entry Title }}
     <div class="medium-7 columns entry-left">
-      <div class="entry-title">
+      <div class="entry-title" data-test-selector="library-entry-title">
         <span>{{media.canonicalTitle}}</span>
       </div>
     </div>
@@ -10,19 +10,20 @@
     <div class="medium-5 columns entry-right">
       {{! Entry Progress }}
       <div class="entry-progress">
-        {{! Editable for owner only }}
         {{#if isOwner}}
           {{one-way-number entry.progress
-              update=(action "updateDebounced" "progress")
-              placeholder="0"}}
+            update=(perform updateProperty "progress")
+            placeholder="0"
+          }}
+          <span>
+            <span class="sep">/</span>
+            {{totalProgress}}
+          </span>
         {{else}}
-          <span>{{entry.progress}}</span>
+          <span>
+            {{entry.progress}} / {{totalProgress}}
+          </span>
         {{/if}}
-
-        <span>
-          <span class="sep">/</span>
-          {{episodeCount}}
-        </span>
       </div>
 
       {{! Entry Rating }}
@@ -32,7 +33,7 @@
 
       {{! Entry Type }}
       <div class="entry-type">
-        <span>{{t (concat "media." mediaType ".show-type." media.showType)}}</span>
+        <span>{{type}}</span>
       </div>
     </div>
   </div>
@@ -44,14 +45,13 @@
 
       {{! Notes }}
       <div class="small-12 columns">
-        {{! Editable for owner only }}
         {{#if isOwner}}
           {{one-way-text entry.notes
-              update=(action "updateDebounced" "notes")
-              placeholder=(t "users.library.notes" title=media.canonicalTitle)
-              class="personal-notes"}}
-        {{else}}
-          {{! Only show if the user has notes }}
+            update=(perform updateProperty "notes")
+            placeholder=(t "users.library.notes" title=media.canonicalTitle)
+            class="personal-notes"
+          }}
+        {{else}} {{! Only show if the user has notes }}
           {{#if entry.notes}}
             {{one-way-text entry.notes
                 class="personal-notes"
@@ -68,7 +68,7 @@
       {{! Media Info }}
       <div class="medium-6 columns">
         <h4 class="drop-title">
-          {{link-to media.canonicalTitle 'anime.show' media}}
+          {{link-to media.canonicalTitle (concat mediaType ".show") media}}
         </h4>
         <ul class="genres">
           {{#each media.genres as |genre|}}
@@ -83,53 +83,45 @@
       {{! Options }}
       <div class="medium-4 columns">
         <div class="drop-options">
-          {{! Only for owner }}
           {{#if isOwner}}
             {{! Library Status }}
             <div class="status-select">
-              {{library-status-button
+              {{library-dropdown
                 entry=entry
                 mediaType=mediaType
-                update=(action "update" "status")
-                delete=(action "destroy")}}
+                update=(action "updateEntry" "status")
+                delete=(action "deleteEntry")
+              }}
             </div>
+          {{/if}}
 
-            <div class="dropdown-rating">
-              {{! Privacy }}
-              <button type="button" class="dropdown button" data-toggle="privacy-dropdown">
+          <div class="dropdown-rating">
+            {{! Privacy }}
+            {{#if isOwner}}
+              <button type="button" class="dropdown button" data-toggle="{{entry.id}}-privacy-dropdown">
                 {{if entry.private (t "users.library.private") (t "users.library.public")}}
               </button>
 
-              {{#zf-dropdown id="privacy-dropdown"}}
+              {{#zf-dropdown id=(concat entry.id "-privacy-dropdown")}}
                 <ul class="no-bullet">
                   <li>
-                    <a {{action "update" "private" (not entry.private)}}>
+                    <a {{action (perform updateProperty "private" (not entry.private) false)}}>
                       {{if entry.private (t "users.library.public") (t "users.library.private")}}
                     </a>
                   </li>
                 </ul>
               {{/zf-dropdown}}
+            {{/if}}
 
-              {{! Rating }}
-              <div class="rating-options">
+            {{! Rating }}
+            <div class="rating-options">
+              {{#each (repeat 5) as |_|}}
                 <span class="icon-container" data-rating="1">
                   {{fa-icon "star-o"}}
                 </span>
-                <span class="icon-container" data-rating="2">
-                  {{fa-icon "star-o"}}
-                </span>
-                <span class="icon-container" data-rating="3">
-                  {{fa-icon "star-o"}}
-                </span>
-                <span class="icon-container" data-rating="4">
-                  {{fa-icon "star-o"}}
-                </span>
-                <span class="icon-container" data-rating="5">
-                  {{fa-icon "star-o"}}
-                </span>
-              </div>
+              {{/each}}
             </div>
-          {{/if}}
+          </div>
 
           {{! Rewatch }}
           <div class="rewatch">
@@ -141,10 +133,9 @@
 
             <label>
               <span>{{t "users.library.rewatched"}}</span>
-              {{! Editable to owner }}
               {{#if isOwner}}
                 {{one-way-number entry.reconsumeCount
-                    update=(action "updateDebounced" "reconsumeCount")}}
+                    update=(perform updateProperty "reconsumeCount")}}
               {{else}}
                 <span>{{entry.reconsumeCount}}</span>
               {{/if}}

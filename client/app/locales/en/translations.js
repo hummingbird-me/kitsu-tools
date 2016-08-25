@@ -43,7 +43,14 @@ export default {
       }
     },
     manga: {
-      name: 'Manga'
+      name: 'Manga',
+      'manga-type': {
+        manga: 'Manga',
+        novel: 'Novel',
+        manhua: 'Manhua',
+        oneshot: 'One-shot',
+        doujin: 'Doujin'
+      }
     },
     drama: {
       name: 'Drama',
@@ -71,6 +78,7 @@ export default {
     remove: 'Remove from Library',
     statuses: {
       anime: {
+        all: 'All',
         current: 'Currently Watching',
         planned: 'Plan To Watch',
         completed: 'Completed',
@@ -78,6 +86,7 @@ export default {
         dropped: 'Dropped'
       },
       manga: {
+        all: 'All',
         current: 'Currently Reading',
         planned: 'Plan To Read',
         completed: 'Completed',
@@ -85,6 +94,7 @@ export default {
         dropped: 'Dropped'
       },
       drama: {
+        all: 'All',
         current: 'Currently Watching',
         planned: 'Plan To Watch',
         completed: 'Completed',
@@ -141,10 +151,7 @@ export default {
       private: 'Private',
       rewatch: 'Rewatch',
       rewatched: 'Rewatched',
-      times: 'times',
-      section: {
-        all: 'All'
-      }
+      times: 'times'
     }
   },
   errors: {

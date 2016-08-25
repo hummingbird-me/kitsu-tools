@@ -15,7 +15,6 @@ export default Controller.extend({
   genres: [],
   text: undefined,
   year: [1914, 2016],
-  searchQuery: undefined,
   availableGenres: [],
 
   isAnime: getter(function() {
