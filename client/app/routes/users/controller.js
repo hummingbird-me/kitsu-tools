@@ -6,7 +6,7 @@ import IsOwnerMixin from 'client/mixins/is-owner';
 
 export default Controller.extend(IsOwnerMixin, {
   user: alias('model'),
-  currentSession: service(),
+  session: service(),
 
   coverImageStyle: computed('user.coverImage', {
     get() {

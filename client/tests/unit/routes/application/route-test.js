@@ -1,7 +1,7 @@
 import { moduleFor, test } from 'ember-qunit';
 
 moduleFor('route:application', 'Unit | Route | application', {
-  needs: ['service:session', 'service:metrics']
+  needs: ['service:session', 'service:metrics', 'service:ajax']
 });
 
 test('title works', function(assert) {

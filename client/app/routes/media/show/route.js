@@ -8,7 +8,7 @@ import LibraryEntryMixin from 'client/mixins/library-entry';
 export default Route.extend(LibraryEntryMixin, {
   mediaType: undefined,
   templateName: 'media/show',
-  currentSession: service(),
+  session: service(),
 
   init() {
     this._super(...arguments);
@@ -28,7 +28,7 @@ export default Route.extend(LibraryEntryMixin, {
 
   setupController(controller, model) {
     this._super(...arguments);
-    if (get(this, 'currentSession.isAuthenticated') === true) {
+    if (get(this, 'session.isAuthenticated') === true) {
       const promise = this._getLibraryEntry(model).then((results) => {
         set(controller, 'entry', get(results, 'firstObject'));
       });
@@ -47,7 +47,7 @@ export default Route.extend(LibraryEntryMixin, {
   actions: {
     createEntry(status) {
       const controller = this.controllerFor(get(this, 'routeName'));
-      const user = get(this, 'currentSession.account');
+      const user = get(this, 'session.account');
       const media = this.modelFor(get(this, 'routeName'));
       const entry = get(this, 'store').createRecord('library-entry', {
         status,

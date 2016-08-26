@@ -28,7 +28,7 @@
 
     <div class="top-bar-right">
       {{! TODO: Implement guest state }}
-      {{#if currentSession.isAuthenticated}}
+      {{#if session.isAuthenticated}}
         {{#zf-dropdown-menu}}
           <li>
             <a href="#" class="circle-button">
@@ -42,11 +42,11 @@
           </li>
           <li class="has-submenu">
             <a href="#" class="circle-button avatar">
-              <img src={{currentSession.account.avatar}}>
+              <img src={{session.account.avatar}}>
             </a>
             <ul class="submenu menu vertical" data-submenu>
               <li>
-                {{#link-to "users.index" currentSession.account}}
+                {{#link-to "users.index" session.account}}
                   {{t "header.user.profile"}}
                 {{/link-to}}
               </li>

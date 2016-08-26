@@ -1,23 +1,15 @@
-import Service from 'ember-service';
+import Session from 'ember-simple-auth/services/session';
 import get from 'ember-metal/get';
 import set from 'ember-metal/set';
-import { alias } from 'ember-computed';
 import service from 'ember-service/inject';
 
-export default Service.extend({
+export default Session.extend({
   account: undefined,
   ajax: service(),
-  session: service(),
   store: service(),
-  isAuthenticated: alias('session.isAuthenticated'),
 
   authenticateWithOAuth2(identification, password) {
-    return get(this, 'session')
-      .authenticate('authenticator:oauth2', identification, password);
-  },
-
-  invalidate() {
-    return get(this, 'session').invalidate();
+    return this.authenticate('authenticator:oauth2', identification, password);
   },
 
   isCurrentUser(user) {

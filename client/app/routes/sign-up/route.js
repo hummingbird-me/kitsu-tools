@@ -6,7 +6,7 @@ import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-
 import errorMessage from 'client/utils/error-messages';
 
 export default Route.extend(UnauthenticatedRouteMixin, {
-  currentSession: service(),
+  session: service(),
 
   model() {
     return get(this, 'store').createRecord('user');
@@ -19,7 +19,7 @@ export default Route.extend(UnauthenticatedRouteMixin, {
       return model.save()
         .then(() => {
           const { name: identification, password } = getProperties(model, 'name', 'password');
-          get(this, 'currentSession')
+          get(this, 'session')
             .authenticateWithOAuth2(identification, password)
             .then(() => this.transitionTo('onboarding.start'))
             .catch((err) => set(controller, 'errorMessage', errorMessage(err)));

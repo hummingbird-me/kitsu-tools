@@ -5,9 +5,8 @@ import service from 'ember-service/inject';
 import errorMessage from 'client/utils/error-messages';
 import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-route-mixin';
 
-// CLEANUP: Routable Components
 export default Route.extend(UnauthenticatedRouteMixin, {
-  currentSession: service(),
+  session: service(),
 
   resetController(controller) {
     this._super(...arguments);
@@ -23,7 +22,7 @@ export default Route.extend(UnauthenticatedRouteMixin, {
       const controller = get(this, 'controller');
       const { identification, password } =
         getProperties(controller, 'identification', 'password');
-      get(this, 'currentSession')
+      get(this, 'session')
         .authenticateWithOAuth2(identification, password)
         .catch((err) => set(controller, 'errorMessage', errorMessage(err)));
     }

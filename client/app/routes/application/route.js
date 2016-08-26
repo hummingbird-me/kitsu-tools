@@ -4,14 +4,13 @@ import service from 'ember-service/inject';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 export default Route.extend(ApplicationRouteMixin, {
-  currentSession: service(),
   i18n: service(),
   metrics: service(),
-  ajax: service(),
+  session: service(),
 
   // If the user is authenticated on first load, grab the users data
   beforeModel() {
-    const session = get(this, 'currentSession');
+    const session = get(this, 'session');
     if (get(session, 'isAuthenticated')) {
       return this._getCurrentUser();
     }
@@ -40,11 +39,11 @@ export default Route.extend(ApplicationRouteMixin, {
   },
 
   _getCurrentUser() {
-    const isAuthenticated = get(this, 'currentSession.isAuthenticated');
+    const isAuthenticated = get(this, 'session.isAuthenticated');
     if (isAuthenticated === true) {
-      return get(this, 'currentSession').getCurrentUser()
+      return get(this, 'session').getCurrentUser()
         .then((user) => get(this, 'metrics').identify({ distinctId: get(user, 'id') }))
-        .catch(() => get(this, 'currentSession').invalidate());
+        .catch(() => get(this, 'session').invalidate());
     }
   }
 });

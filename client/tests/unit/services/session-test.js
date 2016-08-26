@@ -6,7 +6,7 @@ import attr from 'ember-data/attr';
 import RSVP from 'rsvp';
 import setupStore from 'client/tests/helpers/setup-store';
 
-moduleFor('service:current-session', 'Unit | Service | current session', {
+moduleFor('service:session', 'Unit | Service | session', {
   beforeEach() {
     this.store = setupStore({
       user: Model.extend({
@@ -20,21 +20,9 @@ moduleFor('service:current-session', 'Unit | Service | current session', {
   }
 });
 
-test('#invalidate calls #invalidate on the session', function(assert) {
-  assert.expect(1);
-  const service = this.subject({
-    session: {
-      invalidate() {
-        assert.ok(true);
-      }
-    }
-  });
-  service.invalidate();
-});
-
 test('#isCurrentUser tests if the passed user is the current user', function(assert) {
   const service = this.subject({
-    session: { isAuthenticated: true },
+    isAuthenticated: true,
     account: { id: 1 }
   });
   let result = service.isCurrentUser({ id: 1 });

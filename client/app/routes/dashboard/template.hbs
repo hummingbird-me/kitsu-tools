@@ -1,5 +1,5 @@
-{{#if currentSession.isAuthenticated}}
-  <h1>Welcome, {{currentSession.account.name}}</h1>
+{{#if session.isAuthenticated}}
+  <h1>Welcome, {{session.account.name}}</h1>
 {{else}}
   <h1>Dashboard</h1>
   {{link-to (t 'links.auth.sign-in') 'sign-in'}}

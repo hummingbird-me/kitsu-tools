@@ -9,7 +9,7 @@ import jQuery from 'jquery';
 export default Component.extend(IsOwnerMixin, {
   isExpanded: false,
 
-  currentSession: service(),
+  session: service(),
   i18n: service(),
   media: alias('entry.media'),
   user: alias('entry.user'),

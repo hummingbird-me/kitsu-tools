@@ -4,16 +4,17 @@ import service from 'ember-service/inject';
 import { capitalize } from 'ember-string';
 
 export default Mixin.create({
+  session: service(),
   store: service(),
 
   _getLibraryEntry(media) {
-    if (get(this, 'currentSession.isAuthenticated') === false) {
+    if (get(this, 'session.isAuthenticated') === false) {
       return;
     }
 
     return get(this, 'store').query('library-entry', {
       filter: {
-        user_id: get(this, 'currentSession.account.id'),
+        user_id: get(this, 'session.account.id'),
         media_type: capitalize(media.constructor.modelName),
         media_id: get(media, 'id')
       }

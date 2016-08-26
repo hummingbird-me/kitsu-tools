@@ -5,7 +5,7 @@ import getter from 'client/utils/getter';
 
 export default Controller.extend({
   media: alias('model'),
-  currentSession: service(),
+  session: service(),
   mediaType: getter(function() {
     return this.get('media').constructor.modelName;
   })
