@@ -12,11 +12,21 @@ module DataImport
         end
 
         def name
-          # dom.css('span[itemprop=name]').last.text.strip
-          external_id.split('/').last.gsub('_', ' ')
+          # line 475 in guts-character.html
+          options = ['Animeography', 'Mangaography', 'Voice Actors']
+          dom.css('.normal_header').map do |row|
+            next if  options.include?(row.content.strip)
+
+            english = row.children.first.content.strip
+            # japanese = row.children.at_css('small').content.strip
+
+            return english
+          end
         end
 
         def description
+          # lines 497 - 503 in guts-character.html
+
           # p dom.css('table tr td').children
           # grab all the normal headers
           # find the one that has text of #{name}
@@ -24,10 +34,9 @@ module DataImport
         end
 
         def image_url
-          # use external id to find a href with "/character/#{external_id}/pictures"
-          # get the child img src url
+          # line 321 in guts-character.html
           {
-            image: dom.at_css("a[href='/character/#{external_id}/pictures']").child.values.last
+            image: dom.at_css("a[href='/character/#{external_id}/#{name.tr(' ', '_')}/pictures'] img").attr('src')
           }
         end
       end
