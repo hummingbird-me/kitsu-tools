@@ -138,6 +138,8 @@ Metrics/LineLength:
   Enabled: true
   Max: 80
   AllowURI: true
+  Exclude:
+    - server/config/routes.rb
 Metrics/MethodLength:
   Enabled: true
   CountComments: false
@@ -270,6 +272,8 @@ Lint/Loop:
 Lint/ParenthesesAsGroupedExpression:
   Enabled: true
 Lint/RequireParentheses:
+  Enabled: false
+Lint/UnneededDisable:
   Enabled: false
 Lint/UnderscorePrefixedVariableName:
   Enabled: true
