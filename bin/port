@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker-compose port router 80 | cut -d: -f2

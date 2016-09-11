@@ -1,6 +1,8 @@
 #!/bin/bash
 
+cd "$(dirname "$0")/../"
+
 docker-compose up -d $@
-echo "Server is listening on $(docker-compose port nginx 80)"
-echo "If you use docker-machine (or Toolbox), you may need to use a specific IP"
-echo "Logs are available via \`docker-compose logs\`"
+
+echo "Listening at http://$(./bin/address):$(./bin/port)/"
+echo "Logs are available via \`bin/logs\`"

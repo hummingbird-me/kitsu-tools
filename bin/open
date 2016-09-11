@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/../"
+
+url="http://$(./bin/address):$(./bin/port)/"
+
+# Most common means of opening browsers on most systems.  We don't need 100%
+# success rate, just Good Enough™.
+if [[ -n $BROWSER ]]; then
+  $BROWSER $url
+elif which open > /dev/null; then
+  open $url
+elif which xdg-open > /dev/null; then
+  xdg-open $url
+elif which python > /dev/null; then
+  python -mwebbrowser $url
+else
+  echo "Could not detect your web browser."
+  echo "Just open $url manually."
+fi

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+containers="${@:-server client sidekiq}"
+
+docker-compose logs $containers

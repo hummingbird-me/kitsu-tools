@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [[ -n $DOCKER_MACHINE_NAME ]]; then
+  docker-machine ip $DOCKER_MACHINE_NAME
+else
+  echo 'localhost'
+fi
