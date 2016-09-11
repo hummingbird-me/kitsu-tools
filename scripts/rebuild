@@ -1,6 +1,0 @@
-containers="${1:-server client nginx}"
-
-docker-compose stop $containers
-docker-compose rm -f --all $containers
-docker-compose build $containers
-docker-compose up -d --no-deps $containers

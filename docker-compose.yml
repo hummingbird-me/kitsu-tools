@@ -22,10 +22,8 @@ services:
     image: elasticsearch
 
   # Web server, routing /api and / to server, client respectively
-  nginx:
-    build:
-      context: ./scripts
-      dockerfile: Dockerfile.nginx
+  router:
+    build: ./router
     links: [client, server]
     ports: [80]
 

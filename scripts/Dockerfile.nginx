@@ -1,5 +1,0 @@
-FROM nginx:1.9
-MAINTAINER Hummingbird Media, Inc.
-
-RUN rm /etc/nginx/conf.d/default.conf
-COPY ./configs/nginx.conf /etc/nginx/conf.d/hummingbird.conf
