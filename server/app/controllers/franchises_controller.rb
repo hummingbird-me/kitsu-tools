@@ -1,2 +1,1 @@
-class FranchisesController < ApplicationController
-end
+class FranchisesController < ApplicationController; end
