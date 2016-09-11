@@ -51,7 +51,7 @@ services:
       - /opt/hummingbird/client/node_modules
       - /opt/hummingbird/client/bower_components
     tmpfs:
-      - /opt/coachnite/client/tmp
+      - /opt/hummingbird/client/tmp
     environment:
       EMBER_ENV: development
     ports: ['57777:57777']
