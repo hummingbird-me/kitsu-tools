@@ -18,8 +18,6 @@
                   = link_to "Anime Library", user_signed_in? ? main_app.user_library_path(current_user) : "/sign-in"
                 %li
                   = link_to "Manga Library", user_signed_in? ? "/users/#{current_user.name}/library/manga" : "/sign-in"
-                %li
-                  = link_to "Recommendations", '/recommendations'
             %li.has-dropdown
               %a{:href => "/anime"} Explore
               %ul.dropdown.rounded-panel
