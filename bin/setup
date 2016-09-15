@@ -1,5 +1,146 @@
 #!/bin/bash
+#
+# Interactive setup script for new contributors
+#
+# This should only be run once. In case the project
+# needs to be rebuilt, use bin/rebuild instead.
 
+
+# Information we will eventually need
+GITHUB_USER=""
+GITREPO_SERVER=""
+GITREPO_CLIENT=""
+GITREPO_METHOD=""
+SETTING_AUTORUN=false
+
+
+# Most importantly, center and output our logo ascii art
+TERM_SIZE=`tput cols`
+LOGO_SIZE=25
+LOGO_OFFS=0
+LOGO_PADD=""
+
+if [[ "$TERM_SIZE" -gt "0" ]]; then
+  LOGO_OFFS=$[($TERM_SIZE - $LOGO_SIZE) / 2]
+  for i in `seq 1 $LOGO_OFFS`; do
+    LOGO_PADD="$LOGO_PADD "
+  done
+fi
+
+# [logo]
+
+
+# Output a totally not generic welcome message to the contributor
+echo "Great to have you on board!"
+echo "Let's just run through some basic stuff to set up your local dev environment!"
+echo -e "\n"
+
+
+# Check if the user has docker and docker-compose installed
+HAS_DOCKER_ITSELF=`which docker`
+HAS_DOCKER_COMPOSE=`which docker-compose`
+
+if [[ "$HAS_DOCKER_ITSELF" == "" || "$HAS_DOCKER_COMPOSE" == "" ]]; then
+  echo "You will need to have docker and docker-compose installed for running"
+  echo "- If you are on Mac, check out Docker for Mac at https://docs.docker.com/docker-for-mac/"
+  echo "- If you are on Windows, check out Docker for Windows at https://docs.docker.com/docker-for-windows/"
+  echo "- Alternatively, check out Docker Toolbox at https://www.docker.com/products/docker-toolbox"
+  echo "  or manually install the docker and docker-compose package from your respective package manager."
+  echo -e "\n"
+
+  echo "We found"
+  if [[ "$HAS_DOCKER_ITSELF" == "" ]]; then
+    echo "- No docker installation on your system"
+  else
+    echo "- A docker installation at $HAS_DOCKER_ITSELF"
+  fi
+  if [[ "$HAS_DOCKER_COMPOSE" == "" ]]; then
+    echo "- No docker-compose installation on your system"
+  else
+    echo "- A docker-compose installation at $HAS_DOCKER_COMPOSE"
+  fi
+
+  echo -e "\n"
+  echo "Please come back after installing the missing tools."
+
+  exit 0
+fi
+
+
+# Prompt the user for his GitHub username
+while [ "" == "$GITHUB_USER" ]; do
+  GITHUB_USER=`git config --get github.user`
+  if [ "$GITHUB_USER" != "" ]; then
+    INPUT_DEFAULT="[$GITHUB_USER]"
+  else
+    INPUT_DEFAULT=""
+  fi
+  read -p "What is your GitHub username $INPUT_DEFAULT? " GITHUB_USER
+
+  if [[ "$GITHUB_USER" == "" ]]; then
+    echo "Please provide your GitHub username in order for us to find your forks."
+  fi
+done
+
+
+# Prompt the user to select which server repo he wants to use
+while [ "" == "$GITREPO_SERVER" ]; do
+  INPUT_DEFAULT="[$GITHUB_USER/hummingbird-server]"
+  read -p "What's the name of your hummingbird-server repository fork $INPUT_DEFAULT? " GITREPO_SERVER
+
+  if [[ "$GITREPO_SERVER" == "" ]]; then
+    GITREPO_SERVER="$GITHUB_USER/hummingbird-server"
+  fi
+done
+
+
+# Prompt the user to select which client repo he wants to use
+while [ "" == "$GITREPO_CLIENT" ]; do
+  INPUT_DEFAULT="[$GITHUB_USER/hummingbird-client]"
+  read -p "What's the name of your hummingbird-client repository fork $INPUT_DEFAULT? " GITREPO_CLIENT
+
+  if [[ "$GITREPO_CLIENT" == "" ]]; then
+    GITREPO_CLIENT="$GITHUB_USER/hummingbird-client"
+  fi
+done
+
+
+# Prompt the user to select which way he want to clone the repositories
+while [ "" == "$GITREPO_METHOD" ]; do
+  INPUT_DEFAULT="[HTTPS/ssh]"
+  read -p "Which method do you want to use for cloning your repositories $INPUT_DEFAULT? " GITREPO_METHOD
+
+  if [[ "$GITREPO_METHOD" == "" ]]; then
+    GITREPO_METHOD="https"
+  fi
+done
+
+
+# Prompt the user to ask if he wants to start all containers after cloning
+INPUT_DEFAULT="[Y/n]"
+read -p "Do you want to start all containers after the initial setup $INPUT_DEFAULT? " 
+
+if [[ "$SETTING_AUTORUN" == *"y"* || "$SETTING_AUTORUN" == *"Y"* ]]; then
+  SETTING_AUTORUN=true
+else
+  SETTING_AUTORUN=false
+fi
+
+
+# Fetch contributors project repositories from GitHub
+if [[ "$GITREPO_METHOD" == "ssh" ]]; then
+  REPO_SERVER="git@github.com:$GITREPO_SERVER.git"
+  REPO_CLIENT="git@github.com:$GITREPO_CLIENT.git"
+else
+  REPO_SERVER="https://github.com/$GITREPO_SERVER.git"
+  REPO_CLIENT="https://github.com/$GITREPO_CLIENT.git"
+fi
+
+git clone "$REPO_SERVER" ./hummingbird-server
+git clone "$REPO_CLIENT" ./hummingbird-client
+
+
+# Spin up
 docker-compose build
 docker-compose run --rm server rake db:setup
 docker-compose run --rm server rake db:setup RAILS_ENV=test
