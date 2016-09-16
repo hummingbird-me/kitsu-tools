@@ -200,9 +200,7 @@ echo -e "\n"
 
 
 # If we got to this point, everything should be fine to be built
-docker-compose build
-docker-compose run --rm server rake db:setup
-docker-compose run --rm server rake db:setup RAILS_ENV=test
+bash ./bin/build
 
 
 # Automatically run bin/start if that option was accepted
