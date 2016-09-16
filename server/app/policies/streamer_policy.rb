@@ -1,2 +1,0 @@
-class StreamerPolicy < ApplicationPolicy
-end

@@ -1,1 +1,0 @@
-class MappingsController < ApplicationController; end
