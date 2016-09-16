@@ -211,6 +211,7 @@ if  [[ $SETTING_AUTORUN -eq 1 ]]; then
   # Prompt if the link should be opened
   INPUT_DEFAULT=" [Y/n]"
   echo -e "\nInstallation completed successfully."
+  echo "It may take a few seconds for everything to be up and running for the first time."
   read -p "Do you want to open the site in your browser now$INPUT_DEFAULT? " OPEN_CONFIRM
 
   if [[ "$OPEN_CONFIRM" == "" ]]; then
