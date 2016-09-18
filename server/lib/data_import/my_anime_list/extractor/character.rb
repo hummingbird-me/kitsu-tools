@@ -24,83 +24,68 @@ module DataImport
           end
         end
 
-        def image_url
+        def image
           # line 319 in guts-character.html
-          {
-            image: dom.at_css("a[href='/character/#{external_id}/#{name.tr(' ', '_')}/pictures'] img").attr('src')
-          }
+          # dom.at_css("a[href='/character/#{external_id}/#{name.tr(' ', '_')}/pictures'] img").attr('src')
+          dom.at_css('#content > table > tr > td:first-child div a img').attr('src')
         end
 
         def description
-          dom.css('#content > table >tr > td:nth-child(2)').children.take_while { |x|
-            !x.text.include? 'Voice Actor'
-          }.reject { |x|
-            x['class'] == 'normal_header' || x['id'] == 'horiznav_nav' ||
-            x['itemtype'] == 'http://schema.org/BreadcrumbList'
-          }.map { |x|
-            reg_check = /\A(.+(?=:)|.{0,30})\z/i
+            result = dom.css('#content > table >tr > td:nth-child(2)').children.take_while { |x|
+              !x.text.include? 'Voice Actor'
+            }.reject { |x|
+              x['class'] == 'normal_header' || x['id'] == 'horiznav_nav' ||
+              x['itemtype'] == 'http://schema.org/BreadcrumbList'
+            }.map(&:to_html).join
 
-            if x.attributes['class'].try(:value) == "spoiler"
-              if x.previous.previous.previous.present? && !(x.previous.previous.previous.content =~ reg_check)
-                p 'Deleting Spoiler'
-                ''
-              else
-                p 'Keeping Spoiler'
-                "<p class='spoiler'>#{x.content.strip}</p>"
+            clean_desc(result)
+        end
+
+        # synopsis: seriously don't touch this unless you are Nuck (and maybe Toy).
+        def br_to_p(src)
+          src = '<p>' + src.gsub(/<br>\s*<br>/, '</p><p>') + '</p>'
+          doc = Nokogiri::HTML.fragment src
+          doc.traverse do |x|
+            next x.remove if x.name == 'br' && x.previous.nil?
+            next x.remove if x.name == 'br' && x.next.nil?
+            next x.remove if x.name == 'br' && x.next.name == 'p' && x.previous.name == 'p'
+            next x.remove if x.name == 'p' && x.content.blank?
+          end
+          doc.inner_html.gsub(/[\r\n\t]/, '')
+        end
+
+        # synopsis: seriously don't touch this unless you are Nuck (and maybe Toy).
+        def clean_desc(desc)
+          desc = Nokogiri::HTML.fragment br_to_p(desc)
+          desc.css('.spoiler').each do |x|
+            x.name = 'span'
+            x.inner_html = x.css('.spoiler_content').inner_html
+            x.css('input').remove
+          end
+          desc.css('.spoiler').wrap('<p></p>')
+          desc.xpath('descendant::comment()').remove
+          desc.css('b').each { |b| b.replace(b.content) }
+          desc.traverse do |node|
+            next unless node.text?
+            t = node.content.split(/: ?/).map { |x| x.split(' ') }
+
+            if t.length >= 2
+              if t[0].length <= 3 && t[1].length <= 20
+                node.remove
               end
             else
-              x.content.strip.gsub(/(\n[ ]+)/,' ')
+              node.remove if /^\s+\*\s+.*/ =~ node.content
             end
-          }.map { |x|
-            reg_check = /\A(.+(?=:)|.{0,30})\z/i
-
-            if x.include?("<p class='spoiler'>")
-              x
-            elsif x.blank? || x.match(/\A(.+(?=:)|.{0,30})\z/i)
-              ''
-            else
-              "<p>#{x}</p>"
-            end
-          }.compact.reject(&:empty?)
+          end
+          br_to_p(desc.inner_html)
         end
-        #
-        # # synopsis: seriously don't touch this unless you are Nuck.
-        # def br_to_p(src)
-        #   src = '<p>' + src.gsub(/<br>\s*<br>/, '</p><p>') + '</p>'
-        #   doc = Nokogiri::HTML.fragment src
-        #   doc.traverse do |x|
-        #     next x.remove if x.name == 'br' && x.previous.nil?
-        #     next x.remove if x.name == 'br' && x.next.nil?
-        #     next x.remove if x.name == 'br' && x.next.name == 'p' && x.previous.name == 'p'
-        #     next x.remove if x.name == 'p' && x.content.blank?
-        #   end
-        #   doc.inner_html.gsub(/[\r\n\t]/, '')
-        # end
-        #
-        # # synopsis: seriously don't touch this unless you are Nuck.
-        # def clean_desc(desc)
-        #   desc = Nokogiri::HTML.fragment br_to_p(desc)
-        #   desc.css('.spoiler').each do |x|
-        #     x.name = 'span'
-        #     x.inner_html = x.css('.spoiler_content').inner_html
-        #     x.css('input').remove
-        #   end
-        #   desc.css('.spoiler').wrap('<p></p>')
-        #   desc.xpath('descendant::comment()').remove
-        #   desc.css('b').each { |b| b.replace(b.content) }
-        #   desc.traverse do |node|
-        #     next unless node.text?
-        #     t = node.content.split(/: ?/).map { |x| x.split(' ') }
-        #     if t.length >= 2
-        #       if t[0].length <= 3 && t[1].length <= 20
-        #         node.remove
-        #       end
-        #     else
-        #       node.remove if /^\s+\*\s+.*/ =~ node.content
-        #     end
-        #   end
-        #   desc.inner_html
-        # end
+
+        def to_h
+          %i[name image description]
+            .map { |k|
+              [k, send(k)]
+            }.to_h
+        end
       end
     end
   end

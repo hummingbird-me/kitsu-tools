@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe DataImport::MyAnimeList::Extractor::Character do
   let(:guts_character) { fixture('my_anime_list/characters/guts-character.html') }
-  let(:faye_valentine_character) { fixture('my_anime_list/characters/faye-valentine-character.html') }
-  let(:kyou_aguri_character) { fixture('my_anime_list/characters/kyou-aguri-character.html') }
-  let(:sachi_nanjou_character) { fixture('my_anime_list/characters/sachi-nanjou-character.html') }
-  let(:shichiroji_character) { fixture('my_anime_list/characters/shichiroji-character.html') }
+  let(:faye_character) { fixture('my_anime_list/characters/faye-character.html') }
+  let(:kyou_character) { fixture('my_anime_list/characters/kyou-character.html') }
+  let(:sachi_character) { fixture('my_anime_list/characters/sachi-character.html') }
+  let(:shichi_character) { fixture('my_anime_list/characters/shichi-character.html') }
   # don't need to pass in 422/Guts
   subject { described_class.new(guts_character, '422') }
 
@@ -22,40 +22,46 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Character do
 
   describe '#description' do
     it 'should get Guts charater description' do
-      amount = subject.description.join.scan(/<\/p>/).length
+      amount = subject.description.scan(%r{</p>}).length
 
-      expect(amount).to eq(2)
+      expect(amount).to eq(3)
     end
     it 'should get Faye Valentine charater description' do
-      subject = described_class.new(faye_valentine_character, '2')
-      amount = subject.description.join.scan(/<\/p>/).length
-
-      expect(amount).to eq(4)
+      subject = described_class.new(faye_character, '2')
+      amount = subject.description.scan(%r{</p>}).length
+      expect(amount).to eq(5)
     end
     it 'should get Kyou Aguri charater description' do
-      subject = described_class.new(kyou_aguri_character, '216')
-      amount = subject.description.join.scan(/<\/p>/).length
+      subject = described_class.new(kyou_character, '216')
+      amount = subject.description.scan(%r{</p>}).length
 
-      expect(amount).to eq(0)
+      expect(amount).to eq(1)
     end
     it 'should get Sachi Nanjou charater description' do
-      subject = described_class.new(sachi_nanjou_character, '58443')
-      amount = subject.description.join.scan(/<\/p>/).length
+      subject = described_class.new(sachi_character, '58443')
+      amount = subject.description.scan(%r{</p>}).length
 
       expect(amount).to eq(1)
     end
     it 'should get Shichiroji charater description' do
-      subject = described_class.new(shichiroji_character, '156')
-      amount = subject.description.join.scan(/<\/p>/).length
+      subject = described_class.new(shichi_character, '156')
+      amount = subject.description.scan(%r{</p>}).length
 
       expect(amount).to eq(4)
     end
   end
 
-  describe '#image_url' do
-    it 'should get character image' do
-      expect(subject.image_url).to eq(
-        image: 'http://cdn.myanimelist.net/images/characters/13/284125.jpg'
+  describe '#image' do
+    it 'should get guts character image' do
+      expect(subject.image).to eq(
+        'http://cdn.myanimelist.net/images/characters/13/284125.jpg'
+      )
+    end
+    it 'should get faye character image' do
+      subject = described_class.new(faye_character, '2')
+
+      expect(subject.image).to eq(
+        'https://myanimelist.cdn-dena.com/images/characters/13/30532.jpg'
       )
     end
   end
