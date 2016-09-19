@@ -26,22 +26,24 @@ module DataImport
 
         def image
           # line 319 in guts-character.html
-          # dom.at_css("a[href='/character/#{external_id}/#{name.tr(' ', '_')}/pictures'] img").attr('src')
-          dom.at_css('#content > table > tr > td:first-child div a img').attr('src')
+          dom.at_css('#content > table > tr > td:first-child div a img')
+             .attr('src')
         end
 
         def description
-            result = dom.css('#content > table >tr > td:nth-child(2)').children.take_while { |x|
-              !x.text.include? 'Voice Actor'
-            }.reject { |x|
-              x['class'] == 'normal_header' || x['id'] == 'horiznav_nav' ||
-              x['itemtype'] == 'http://schema.org/BreadcrumbList'
-            }.map(&:to_html).join
+          result = dom.css('#content > table >tr > td:nth-child(2)')
+                      .children.take_while { |x|
+            !x.text.include? 'Voice Actor'
+          }.reject { |x|
+            x['class'] == 'normal_header' || x['id'] == 'horiznav_nav' ||
+            x['itemtype'] == 'http://schema.org/BreadcrumbList'
+          }.map(&:to_html).join
 
-            clean_desc(result)
+          clean_desc(result)
         end
 
-        # synopsis: seriously don't touch this unless you are Nuck (and maybe Toy).
+        # synopsis: seriously don't touch this
+        # unless you are Nuck (and maybe Toy).
         def br_to_p(src)
           src = '<p>' + src.gsub(/<br>\s*<br>/, '</p><p>') + '</p>'
           doc = Nokogiri::HTML.fragment src
@@ -54,7 +56,8 @@ module DataImport
           doc.inner_html.gsub(/[\r\n\t]/, '')
         end
 
-        # synopsis: seriously don't touch this unless you are Nuck (and maybe Toy).
+        # synopsis: seriously don't touch this unless
+        # you are Nuck (and maybe Toy).
         def clean_desc(desc)
           desc = Nokogiri::HTML.fragment br_to_p(desc)
           desc.css('.spoiler').each do |x|

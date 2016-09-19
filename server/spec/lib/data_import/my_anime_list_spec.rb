@@ -34,8 +34,8 @@ RSpec.describe DataImport::MyAnimeList do
       .to_return(body: fixture('image.jpg'), headers: {
         'Content-Type': 'image/jpg'
       })
-
   end
+  
   context 'Anime' do
     describe '#get_media' do
       it 'should yield a Media object' do

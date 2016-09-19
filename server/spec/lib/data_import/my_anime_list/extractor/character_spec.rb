@@ -1,11 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe DataImport::MyAnimeList::Extractor::Character do
-  let(:guts_character) { fixture('my_anime_list/characters/guts-character.html') }
-  let(:faye_character) { fixture('my_anime_list/characters/faye-character.html') }
-  let(:kyou_character) { fixture('my_anime_list/characters/kyou-character.html') }
-  let(:sachi_character) { fixture('my_anime_list/characters/sachi-character.html') }
-  let(:shichi_character) { fixture('my_anime_list/characters/shichi-character.html') }
+  let(:guts_character) do
+    fixture('my_anime_list/characters/guts-character.html')
+  end
+  let(:faye_character) do
+    fixture('my_anime_list/characters/faye-character.html')
+  end
+  let(:kyou_character) do
+    fixture('my_anime_list/characters/kyou-character.html')
+  end
+  let(:sachi_character) do
+    fixture('my_anime_list/characters/sachi-character.html')
+  end
+  let(:shichi_character) do
+    fixture('my_anime_list/characters/shichi-character.html')
+  end
   # don't need to pass in 422/Guts
   subject { described_class.new(guts_character, '422') }
 
