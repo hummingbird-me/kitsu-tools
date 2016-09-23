@@ -7,9 +7,25 @@ module.exports = function(defaults) {
     babel: {
       includePolyfill: true
     },
-    'ember-cli-foundation-6-sass': {
-      // TODO: Only include what we need
-      'foundationJs': 'all'
+    sassOptions: {
+      includePaths: [
+        'bower_components/bootstrap/scss'
+      ]
+    },
+    postcssOptions: {
+      compile: { enabled: false },
+      filter: {
+        enabled: true,
+        plugins: [
+          { module: require('postcss-flexbugs-fixes') },
+          {
+            module: require('autoprefixer'),
+            options: {
+              browsers: ['last 2 versions']
+            }
+          }
+        ]
+      }
     }
   });
 
@@ -25,6 +41,8 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
+  app.import('bower_components/tether/dist/js/tether.min.js');
+  app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
   app.import('bower_components/nouislider/distribute/nouislider.js');
   app.import('bower_components/nouislider/distribute/nouislider.min.css');
   app.import('bower_components/PACE/pace.js');

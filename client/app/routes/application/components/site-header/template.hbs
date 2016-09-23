@@ -1,7 +1,7 @@
 <div class="site-header" class="top-bar" data-test-selector="site-header">
   <div class="top-bar-wrapper">
     <div class="top-bar-left">
-      {{#zf-dropdown-menu}}
+      <ul>
         <li>
           {{#link-to "dashboard"}}
             <div class="logo"></div>
@@ -23,13 +23,13 @@
         </li>
         <li class="primary-nav"><a href="https://forums.hummingbird.me">{{t "header.forums"}}</a></li>
         <li class="primary-nav"><a href="#">{{t "header.downloads"}}</a></li>
-      {{/zf-dropdown-menu}}
+      </ul>
     </div>
 
     <div class="top-bar-right">
       {{! TODO: Implement guest state }}
       {{#if session.isAuthenticated}}
-        {{#zf-dropdown-menu}}
+        <ul>
           <li>
             <a href="#" class="circle-button">
               {{fa-icon "search"}}
@@ -57,7 +57,7 @@
               </li>
             </ul>
           </li>
-        {{/zf-dropdown-menu}}
+        </ul>
       {{else}}
         <ul class="menu">
           <li>

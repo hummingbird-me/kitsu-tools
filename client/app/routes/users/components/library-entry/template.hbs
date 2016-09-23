@@ -102,6 +102,7 @@
                 {{if entry.private (t "users.library.private") (t "users.library.public")}}
               </button>
 
+              {{!-- TODO: Needs to be changed to Bootstrap
               {{#zf-dropdown id=(concat entry.id "-privacy-dropdown")}}
                 <ul class="no-bullet">
                   <li>
@@ -111,6 +112,7 @@
                   </li>
                 </ul>
               {{/zf-dropdown}}
+              --}}
             {{/if}}
 
             {{! Rating }}

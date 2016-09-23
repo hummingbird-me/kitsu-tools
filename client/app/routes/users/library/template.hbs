@@ -6,6 +6,7 @@
         <button type="button" class="dropdown button" data-toggle="media-dropdown">
           {{t "users.library.library" type=(t (concat "media." media ".name"))}}
         </button>
+        {{!-- TODO: Needs to be changed to Bootstrap
         {{#zf-dropdown id="media-dropdown"}}
           {{#each mediaList as |_media|}}
             <li>
@@ -15,6 +16,7 @@
             </li>
           {{/each}}
         {{/zf-dropdown}}
+        --}}
 
         {{! Library status selection }}
         <ul class="menu">
