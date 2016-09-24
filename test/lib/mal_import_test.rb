@@ -4,11 +4,11 @@ require 'mal_import'
 
 class MALImportTest < ActiveSupport::TestCase
   def mal
-    "http://myanimelist.net"
+    "https://myanimelist.net"
   end
 
   def fake_image_urls
-    fake_request [:get, %r|http://cdn.myanimelist.net/images/.*|] => "blank_png"
+    fake_request [:get, %r|https://myanimelist.cdn-dena.com/images/.*|] => "blank_png"
   end
 
   def fake_character_urls
@@ -40,7 +40,7 @@ class MALImportTest < ActiveSupport::TestCase
     assert_equal "Manga", malware[:type]
     assert_equal "Finished", malware[:status]
     assert_not_nil malware[:serialization]
-    assert_instance_of URI::HTTP, malware[:poster_image]
+    assert_instance_of URI::HTTPS, malware[:poster_image]
     malware[:dates].each { |date| assert_instance_of Date, date }
   end
 
@@ -102,7 +102,7 @@ class MALImportTest < ActiveSupport::TestCase
     assert_equal "TV", malware[:type]
     assert_equal "Finished Airing", malware[:status]
     assert_not malware[:producers].empty?
-    assert_instance_of URI::HTTP, malware[:poster_image]
+    assert_instance_of URI::HTTPS, malware[:poster_image]
     malware[:dates].each { |date| assert_instance_of Date, date }
   end
 

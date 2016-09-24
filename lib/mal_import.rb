@@ -2,7 +2,7 @@ require 'open-uri'
 
 class MALImport
   def get(path)
-    Nokogiri::HTML open("http://myanimelist.net#{path}", 'User-Agent' => 'iMAL-iOS').read
+    Nokogiri::HTML open("https://myanimelist.net#{path}", 'User-Agent' => 'iMAL-iOS').read
   end
 
   def get_character(id)

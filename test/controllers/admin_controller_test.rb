@@ -7,8 +7,8 @@ class AdminControllerTest < ActionController::TestCase
 
   test "can request a MAL scrape" do
     fake_request({
-      [:get, "http://myanimelist.net/anime/11757/"] => "mal_anime_11757_metadata",
-      [:get, %r|http://cdn.myanimelist.net/images/.*|] => "blank_png"
+      [:get, "https://myanimelist.net/anime/11757/"] => "mal_anime_11757_metadata",
+      [:get, %r|https://myanimelist.cdn-dena.com/images/.*|] => "blank_png"
     })
     Sidekiq::Testing.fake! do
       get :find_or_create_by_mal, mal_id: 11757, media: 'anime'

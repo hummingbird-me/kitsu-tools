@@ -1,7 +1,7 @@
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Content-Type: text/html; charset=utf-8
-Date: Mon, 08 Aug 2016 05:44:25 GMT
+Date: Sat, 24 Sep 2016 01:25:04 GMT
 Server: Apache
 Vary: User-Agent,Accept-Encoding
 transfer-encoding: chunked
@@ -22,22 +22,22 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
 
 
 <meta name="keywords" content="anime, myanimelist, anime news, manga" />
-<link rel="canonical" href="http://myanimelist.net/manga/25/Fullmetal_Alchemist" />
+<link rel="canonical" href="https://myanimelist.net/manga/25/Fullmetal_Alchemist" />
 
-    <meta property="og:locale" content="en_US"><meta property="fb:app_id" content="360769957454434"><meta property="og:site_name" content="MyAnimeList.net"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@myanimelist"><meta property="og:title" content="Fullmetal Alchemist"><meta property="og:type" content="books.book"><meta property="og:image" content="http://cdn.myanimelist.net/images/manga/1/27600.jpg"><meta name="twitter:image:src" content="http://cdn.myanimelist.net/r/120x120/images/manga/1/27600.jpg?s=453023bcda97af92e55c14bb622e6604"><meta property="og:url" content="http://myanimelist.net/manga/25/Fullmetal_Alchemist"><meta property="og:description" content="The rules of alchemy state that to gain something, one must lose something of equal value. Alchemy is the process of taking apart and reconstructing an object into a different entity, with the rules of alchemy to govern this procedure. However, there exists an object that can bring any alchemist above these rules, the object known as the Philosopher&#039;s Stone. The young Edward Elric is a particularly talented alchemist who through an accident years back lost his younger brother Alphonse and one of his legs. Sacrificing one of his arms as well, he used alchemy to bind his brother&#039;s soul to a suit of armor. This lead to the beginning of their journey to restore their bodies, in search for the legendary Philosopher&#039;s Stone.">
+    <meta property="og:locale" content="en_US"><meta property="fb:app_id" content="360769957454434"><meta property="og:site_name" content="MyAnimeList.net"><meta name="twitter:card" content="summary"><meta name="twitter:site" content="@myanimelist"><meta property="og:title" content="Fullmetal Alchemist"><meta property="og:type" content="books.book"><meta property="og:image" content="https://myanimelist.cdn-dena.com/images/manga/1/27600.jpg"><meta name="twitter:image:src" content="https://myanimelist.cdn-dena.com/r/360x360/images/manga/1/27600.jpg?s=95b485be6f737b4bccef3ec430765b73"><meta property="og:url" content="https://myanimelist.net/manga/25/Fullmetal_Alchemist"><meta property="og:description" content="The rules of alchemy state that to gain something, one must lose something of equal value. Alchemy is the process of taking apart and reconstructing an object into a different entity, with the rules of alchemy to govern this procedure. However, there exists an object that can bring any alchemist above these rules, the object known as the Philosopher&#039;s Stone. The young Edward Elric is a particularly talented alchemist who through an accident years back lost his younger brother Alphonse and one of his legs. Sacrificing one of his arms as well, he used alchemy to bind his brother&#039;s soul to a suit of armor. This lead to the beginning of their journey to restore their bodies, in search for the legendary Philosopher&#039;s Stone.">
 
-<meta name='csrf_token' content='3de00a3067eefd30c9510a68eb26f36d53495bdc'>
-<link rel="stylesheet" type="text/css" href="http://cdn.myanimelist.net/static/assets/css/pc/style-820f828282.css" />
+<meta name='csrf_token' content='210ac180c27520844b6e7105b7ffc8eceb23cb87'>
+<link rel="stylesheet" type="text/css" href="https://myanimelist.cdn-dena.com/static/assets/css/pc/style-9db6d6639c.css" />
 
-<script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/header-40b7781ed7.js"></script>
-<script type="text/javascript" src="http://cdn.myanimelist.net/static/assets/js/pc/all-49f169a5c6.js"
-        id="alljs" data-params='{&quot;origin_url&quot;:&quot;http:\/\/myanimelist.net&quot;,&quot;is_request_bot_filter_log&quot;:true}' defer></script>
+<script type="text/javascript" src="https://myanimelist.cdn-dena.com/static/assets/js/pc/header-bdf99b7b53.js"></script>
+<script type="text/javascript" src="https://myanimelist.cdn-dena.com/static/assets/js/pc/all-dd3de99c60.js"
+        id="alljs" data-params='{&quot;origin_url&quot;:&quot;https:\/\/myanimelist.net&quot;,&quot;is_request_bot_filter_log&quot;:true}' defer></script>
 
 
 
-<link rel="search" type="application/opensearchdescription+xml" href="http://cdn.myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
+<link rel="search" type="application/opensearchdescription+xml" href="https://myanimelist.net/plugins/myanimelist.xml" title="MyAnimeList" />
 
-<link rel="shortcut icon" href="http://cdn.myanimelist.net/images/faviconv5.ico" />
+<link rel="shortcut icon" href="https://myanimelist.cdn-dena.com/images/faviconv5.ico" />
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -49,7 +49,6 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
   ga('require', 'linkid'); // Enhanced Link Attribution
   ga('send', 'pageview');
 </script>
-
 <!-- ### Load GPT Library ### -->
 <script type='text/javascript'>
  var googletag = googletag || {};
@@ -64,8 +63,6 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
     var node = document.getElementsByTagName('script')[0];
     node.parentNode.insertBefore(gads, node);
   })();</script>
-
-
 <script src="https://apis.google.com/js/platform.js" async defer>{lang: 'en-GB'}</script>
 <script src="https://www.google.com/recaptcha/api.js?hl=en"></script>
 
@@ -74,7 +71,6 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
 
 <body onload=" " class="page-common">
 <div id="myanimelist">
-
 
 
 
@@ -90,7 +86,6 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
          });</script>
   </div>
 </div>
-
     <script type='text/javascript'>
     window.MAL.SkinAd.prepareForSkin('skin_detail');
   </script>
@@ -105,10 +100,11 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
     <div class="wrapper">
 
         <div id="headerSmall"><a href="/" class="link-mal-logo">MyAnimeList.net</a>
+<a href="https://myanimelist.net/manga_translation_battle_vol5?_location=mal_h_b" class="banner-header-anime-straming" target="_blank">
+  <img src="https://myanimelist.cdn-dena.com/images/mtb/banner-mtb_vol5.png?v=1" srcset="https://myanimelist.cdn-dena.com/images/mtb/banner-mtb_vol5.png?v=1 1x, https://myanimelist.cdn-dena.com/images/mtb/banner-mtb_vol5@2x.png?v=1 2x" alt="Manga Translation Battle vol.5" title="Manga Translation Battle vol.5">
+</a>
 
-<a href="http://myanimelist.net/watch/episode?_location=mal_h_b" class="banner-header-anime-straming"><img src="http://cdn.myanimelist.net/images/stream_banner/banner-watch-offical-anime161511.png" srcset="http://cdn.myanimelist.net/images/stream_banner/banner-watch-offical-anime161511.png 1x, http://cdn.myanimelist.net/images/stream_banner/banner-watch-offical-anime161511@2x.png 2x" alt="Watch Legal Streaming Anime on MyAnimeList"></a>
-
-<div id="header-menu" ><div class="header-menu-login"><a class="btn-login" href="http://myanimelist.net/login.php?from=%2Fmanga%2F25%2F" id="malLogin">Login</a><a class="btn-signup" href="http://myanimelist.net/register.php?from=%2Fmanga%2F25%2F">Sign Up</a></div></div></div>  <div id="menu">
+<div id="header-menu" ><div class="header-menu-login"><a class="btn-login" href="https://myanimelist.net/login.php?from=%2Fmanga%2F25" id="malLogin">Login</a><a class="btn-signup" href="https://myanimelist.net/register.php?from=%2Fmanga%2F25">Sign Up</a></div></div></div>  <div id="menu">
     <div id="menu_right"><script type="text/x-template" id="incremental-result-item-anime"><div class="list anime" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info anime"><div class="name">${ item.name } <span class="media-type">(${ item.payload.media_type })</span></div><div class="extra-info">Aired: ${ item.payload.aired }<br>Score: ${ item.payload.score }<br>Status: ${ item.payload.status }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info anime"><div class="name">${ item.name }</div><div class="media-type">(${ mediaTypeWithStartYear })</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-manga"><div class="list manga" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info manga"><div class="name">${ item.name } <span class="media-type">(${ item.payload.media_type })</span></div><div class="extra-info">Published: ${ item.payload.published }<br>Score: ${ item.payload.score }<br>Status: ${ item.payload.status }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info manga"><div class="name">${ item.name }</div><div class="media-type">(${ mediaTypeWithStartYear })</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-character"><div class="list character" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info character"><div class="name">${ item.name }</div><div class="extra-info"><ul class="related-works"><li v-for="work in item.payload.related_works" class="fs-i">- ${ work }</li></ul>Favorites: ${ item.payload.favorites }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info character"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-person"><div class="list person" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info person"><div class="name">${ item.name }</div><div class="extra-info"><span v-if="item.payload.alternative_name">${ item.payload.alternative_name }<br></span>Birthday: ${ item.payload.birthday }<br>Favorites: ${ item.payload.favorites }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info person"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-club"><div class="list club" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info club"><div class="name">${ item.name }</div><div class="extra-info">Members: ${ item.payload.members }<br>Category: ${ item.payload.category }<br>Created by: ${ item.payload.created_by }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info club"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-user"><div class="list user" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info user"><div class="name">${ item.name }</div><div class="extra-info"><span v-if="item.payload.authority">${ item.payload.authority }<br></span>Joined: ${ item.payload.joined }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info user"><div class="name">${ item.name }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-news"><div class="list news" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info news"><div class="name">${ item.name }</div><div class="extra-info">${ item.payload.date }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info news"><div class="name">${ item.name }</div><div class="media-type">${ item.payload.date }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-featured"><div class="list featured" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info featured"><div class="name">${ item.name }</div><div class="extra-info">${ item.payload.date }</div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info featured"><div class="name">${ item.name }</div><div class="media-type">${ item.payload.date }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-forum"><div class="list forum" :class="{'focus': focus}"><a :href="url" class="clearfix"><div class="on" v-if="focus"><span class="image" :style="{'background-image': 'url(' + item.image_url + ')'}"></span><div class="info forum"><div class="name"><span v-show="item.payload.work_title">${ item.payload.work_title}
                       <i class="fa fa-caret-right"></i></span> ${ item.name }</div><div class="extra-info">${ item.payload.date }<br><span>in ${ item.payload.category }</span></div></div></div><div class="off" v-else><span class="image" :style="{'background-image': 'url(' + item.thumbnail_url + ')'}"></span><div class="info forum"><div class="name"><span v-show="item.payload.work_title">${ item.payload.work_title}
                       <i class="fa fa-caret-right"></i></span> ${ item.name }</div><div class="media-type">${ item.payload.date }</div></div></div></a></div></script><script type="text/x-template" id="incremental-result-item-separator"><div class="list separator"><div class="separator"><span v-show="item.name == 'anime'">Anime</span><span v-show="item.name == 'manga'">Manga</span><span v-show="item.name == 'character'">Characters</span><span v-show="item.name == 'person'">People</span></div></div></script><div id="top-search-bar"><form id="searchBar" method="get" class="searchBar" @submit.prevent="jump()"><div class="form-select-outer fl-l"><select name="type" id="topSearchValue" class="inputtext" v-model="type"><option value="all">All</option><option value="anime">Anime</option><option value="manga">Manga</option><option value="character">Characters</option><option value="person">People</option><option value="news">News</option><option value="featured">Featured Articles</option><option value="forum">Forum</option><option value="club">Clubs</option><option value="user">Users</option></select></div><input v-model="keyword" id="topSearchText" type="text" name="keyword" class="inputtext fl-l" placeholder="Search Anime, Manga, and more..." size="30" autocomplete="off"
@@ -119,60 +115,59 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
       <ul id="nav">
         <li class="small"><a href="#" class="non-link">Anime</a>
           <ul class="wider">
-            <li><a href="http://myanimelist.net/anime.php?_location=mal_h_m">Anime Search</a></li>
-            <li><a href="http://myanimelist.net/topanime.php?_location=mal_h_m">Top Anime</a></li>
-            <li><a href="http://myanimelist.net/anime/season?_location=mal_h_m">Seasonal Anime</a></li>
-                        <li><a href="http://myanimelist.net/watch/episode?_location=mal_h_m_a">Videos</a></li>
-            <li><a href="http://myanimelist.net/reviews.php?t=anime&amp;_location=mal_h_m">Reviews</a></li>
-            <li><a href="http://myanimelist.net/recommendations.php?s=recentrecs&amp;t=anime&amp;_location=mal_h_m">Recommendations</a></li>
+            <li><a href="https://myanimelist.net/anime.php?_location=mal_h_m">Anime Search</a></li>
+            <li><a href="https://myanimelist.net/topanime.php?_location=mal_h_m">Top Anime</a></li>
+            <li><a href="https://myanimelist.net/anime/season?_location=mal_h_m">Seasonal Anime</a></li>
+                        <li><a href="https://myanimelist.net/watch/episode?_location=mal_h_m_a">Videos</a></li>
+            <li><a href="https://myanimelist.net/reviews.php?t=anime&amp;_location=mal_h_m">Reviews</a></li>
+            <li><a href="https://myanimelist.net/recommendations.php?s=recentrecs&amp;t=anime&amp;_location=mal_h_m">Recommendations</a></li>
           </ul>
         </li>
         <li class="small"><a href="#" class="non-link">Manga</a>
           <ul class="wider">
-            <li><a href="http://myanimelist.net/manga.php?_location=mal_h_m">Manga Search</a></li>
-            <li><a href="http://myanimelist.net/topmanga.php?_location=mal_h_m">Top Manga</a></li>
-            <li><a href="http://myanimelist.net/reviews.php?t=manga&amp;_location=mal_h_m">Reviews</a></li>
-            <li><a href="http://myanimelist.net/recommendations.php?s=recentrecs&amp;t=manga&amp;_location=mal_h_m">Recommendations</a></li>
+            <li><a href="https://myanimelist.net/manga.php?_location=mal_h_m">Manga Search</a></li>
+            <li><a href="https://myanimelist.net/topmanga.php?_location=mal_h_m">Top Manga</a></li>
+            <li><a href="https://myanimelist.net/reviews.php?t=manga&amp;_location=mal_h_m">Reviews</a></li>
+            <li><a href="https://myanimelist.net/recommendations.php?s=recentrecs&amp;t=manga&amp;_location=mal_h_m">Recommendations</a></li>
           </ul>
         </li>
         <li><a href="#" class="non-link">Community</a>
           <ul>
-            <li><a href="http://myanimelist.net/forum/?_location=mal_h_m">Forums</a></li>
-            <li><a href="http://myanimelist.net/clubs.php?_location=mal_h_m">Clubs</a></li>
-            <li><a href="http://myanimelist.net/blog.php?_location=mal_h_m">Blogs</a></li>
-            <li><a href="http://myanimelist.net/users.php?_location=mal_h_m">Users</a></li>
+            <li><a href="https://myanimelist.net/forum/?_location=mal_h_m">Forums</a></li>
+            <li><a href="https://myanimelist.net/clubs.php?_location=mal_h_m">Clubs</a></li>
+            <li><a href="https://myanimelist.net/blog.php?_location=mal_h_m">Blogs</a></li>
+            <li><a href="https://myanimelist.net/users.php?_location=mal_h_m">Users</a></li>
           </ul>
         </li>
         <li class="small2"><a href="#" class="non-link">Industry</a>
           <ul class="wider">
-            <li><a href="http://myanimelist.net/news?_location=mal_h_m">News</a></li>
-            <li><a href="http://myanimelist.net/featured?_location=mal_h_m">Featured Articles</a></li>
-            <li><a href="http://myanimelist.net/people.php?_location=mal_h_m">People</a></li>
-            <li><a href="http://myanimelist.net/character.php?_location=mal_h_m">Characters</a></li>
+            <li><a href="https://myanimelist.net/news?_location=mal_h_m">News</a></li>
+            <li><a href="https://myanimelist.net/featured?_location=mal_h_m">Featured Articles</a></li>
+            <li><a href="https://myanimelist.net/people.php?_location=mal_h_m">People</a></li>
+            <li><a href="https://myanimelist.net/character.php?_location=mal_h_m">Characters</a></li>
           </ul>
         </li>
         <li class="small"><a href="#" class="non-link">Watch</a>
           <ul class="wider">
-            <li><a href="http://myanimelist.net/watch/episode?_location=mal_h_m">Episode Videos</a></li>
-            <li><a href="http://myanimelist.net/watch/promotion?_location=mal_h_m">Promotional Videos</a></li>
-            <li><a href="http://myanimelist.net/watch/special?_location=mal_h_m">Special Videos</a></li>
-          </ul>
+            <li><a href="https://myanimelist.net/watch/episode?_location=mal_h_m">Episode Videos</a></li>
+            <li><a href="https://myanimelist.net/watch/promotion?_location=mal_h_m">Promotional Videos</a></li>
+                      </ul>
         </li>
         <li class="smaller"><a href="#" class="non-link">Help</a>
           <ul class="wide">
-            <li><a href="http://myanimelist.net/about.php?_location=mal_h_m">About</a></li>
-            <li><a href="http://myanimelist.net/about.php?go=support&amp;_location=mal_h_m">Support</a></li>
-            <li><a href="http://myanimelist.net/advertising?_location=mal_h_m">Advertising</a></li>
-            <li><a href="http://myanimelist.net/forum/?topicid=515949&amp;_location=mal_h_m">FAQ</a></li>
-            <li><a href="http://myanimelist.net/modules.php?go=report&amp;_location=mal_h_m">Report</a></li>
-            <li><a href="http://myanimelist.net/about.php?go=team&amp;_location=mal_h_m">Staff</a></li>
+            <li><a href="https://myanimelist.net/about.php?_location=mal_h_m">About</a></li>
+            <li><a href="https://myanimelist.net/about.php?go=support&amp;_location=mal_h_m">Support</a></li>
+            <li><a href="https://myanimelist.net/advertising?_location=mal_h_m">Advertising</a></li>
+            <li><a href="https://myanimelist.net/forum/?topicid=515949&amp;_location=mal_h_m">FAQ</a></li>
+            <li><a href="https://myanimelist.net/modules.php?go=report&amp;_location=mal_h_m">Report</a></li>
+            <li><a href="https://myanimelist.net/about.php?go=team&amp;_location=mal_h_m">Staff</a></li><li><a href="https://myanimelist.net/membership?_location=mal_h_m">MAL Supporter</a></li>
           </ul>
         </li>
               </ul>
     </div>  </div><div id="contentWrapper" itemscope itemtype="http://schema.org/Product"><div><div class="header-right">
-    <a href="http://myanimelist.net/login.php?from=%2Fmanga%2F25%2F&amp;error=login_required" class="js-manga-edit-info-button">Edit Manga Information</a>
+    <a href="https://myanimelist.net/login.php?from=%2Fmanga%2F25&amp;error=login_required" class="js-manga-edit-info-button">Edit Manga Information</a>
 <div id="editdiv" class="fw-n fs11">
-  <form method="GET" action="http://myanimelist.net/dbchanges.php" class="di-i">
+  <form method="GET" action="https://myanimelist.net/dbchanges.php" class="di-i">
     <input type="hidden" name="mid" value="25">
     <div class="pb8">What would you like to edit?</div>
         <select name="t" id="t" class="inputtext"><option value="synopsis">Synopsis</option><option value="background">Background</option><option value="alternative_titles">Alternative Titles</option><option value="pic">Picture</option><option value="chapvol">Chapters/Volumes</option><option value="pubdates">Publishing Dates</option><option value="relations">Relations</option><option value="type">Type</option></select>
@@ -183,7 +178,7 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 <tr>
-<td class="borderClass" width="225" style="border-width: 0 1px 0 0;" valign="top"><div class="js-scrollfix-bottom" style="width: 225px"><div style="text-align: center;"><a href="/manga/25/Fullmetal_Alchemist/pics"><img src="http://cdn.myanimelist.net/images/manga/1/27600.jpg" alt="Fullmetal Alchemist" itemprop="image" class="ac"></a></div><div class="profileRows pb0"><a href="/login.php?from=%2Fmanga%2F25%2F&error=login_required">Add to My List</a></div><div id="profileRows" class="pt0"><a href="/login.php?from=%2Fmanga%2F25%2F&error=login_required" style="font-weight: normal;"><span id="favOutput">Add to Favorites</span></a></div><div class="js-sns-icon-container icon-block "><a data-ga-network="facebook" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist"></a><a data-ga-network="twitter" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?related=MyAnimeList.net&amp;via=myanimelist&amp;url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;text=Fullmetal%20Alchemist&amp;hashtags=manga"></a><a data-ga-network="google+" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist"></a><a data-ga-network="reddit" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;title=Fullmetal%20Alchemist"></a><a data-ga-network="tumblr" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=http%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;name=Fullmetal%20Alchemist"></a></div><br><h2>Alternative Titles</h2><div class="spaceit_pad"><span class="dark_text">English:</span> Fullmetal Alchemist</div><div class="spaceit_pad"><span class="dark_text">Synonyms:</span> Full Metal Alchemist, Hagane no Renkinjutsushi, FMA, Fullmetal Alchemist Gaiden</div><div class="spaceit_pad"><span class="dark_text">Japanese:</span> 鋼の錬金術師</div><br><h2>Information</h2><div><span class="dark_text">Type:</span> <a href="/topmanga.php?type=manga">Manga</a></div>
+<td class="borderClass" width="225" style="border-width: 0 1px 0 0;" valign="top"><div class="js-scrollfix-bottom" style="width: 225px"><div style="text-align: center;"><a href="/manga/25/Fullmetal_Alchemist/pics"><img src="https://myanimelist.cdn-dena.com/images/manga/1/27600.jpg" alt="Fullmetal Alchemist" itemprop="image" class="ac"></a></div><div class="profileRows pb0"><a href="/login.php?from=%2Fmanga%2F25&error=login_required">Add to My List</a></div><div id="profileRows" class="pt0"><a href="/login.php?from=%2Fmanga%2F25&error=login_required" style="font-weight: normal;"><span id="favOutput">Add to Favorites</span></a></div><div class="js-sns-icon-container icon-block "><a data-ga-network="facebook" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-facebook" target="_blank" href="http://www.facebook.com/share.php?u=https%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist"></a><a data-ga-network="twitter" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-twitter" target="_blank" href="http://twitter.com/share?related=MyAnimeList.net&amp;via=myanimelist&amp;url=https%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;text=Fullmetal%20Alchemist&amp;hashtags=manga"></a><a data-ga-network="google+" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-google" target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist"></a><a data-ga-network="reddit" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-reddit" target="_blank" href="http://reddit.com/submit?url=https%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;title=Fullmetal%20Alchemist"></a><a data-ga-network="tumblr" data-ga-screen="Share Button Location: common" class="js-share-button-popup js-share-button-tracking sprite-icon-social icon-social icon-tumblr" target="_blank" href="http://www.tumblr.com/share/link?url=https%3A%2F%2Fmyanimelist.net%2Fmanga%2F25%2FFullmetal_Alchemist&amp;name=Fullmetal%20Alchemist"></a></div><br><h2>Alternative Titles</h2><div class="spaceit_pad"><span class="dark_text">English:</span> Fullmetal Alchemist</div><div class="spaceit_pad"><span class="dark_text">Synonyms:</span> Full Metal Alchemist, Hagane no Renkinjutsushi, FMA, Fullmetal Alchemist Gaiden</div><div class="spaceit_pad"><span class="dark_text">Japanese:</span> 鋼の錬金術師</div><br><h2>Information</h2><div><span class="dark_text">Type:</span> <a href="/topmanga.php?type=manga">Manga</a></div>
 <div class="spaceit"><span class="dark_text">Volumes:</span> 27
 </div>
 <div><span class="dark_text">Chapters:</span> 116
@@ -193,10 +188,9 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
   <a href="/manga/genre/1/Action" title="Action">Action</a>, <a href="/manga/genre/2/Adventure" title="Adventure">Adventure</a>, <a href="/manga/genre/4/Comedy" title="Comedy">Comedy</a>, <a href="/manga/genre/8/Drama" title="Drama">Drama</a>, <a href="/manga/genre/27/Shounen" title="Shounen">Shounen</a>, <a href="/manga/genre/38/Military" title="Military">Military</a></div><div><span class="dark_text">Authors:</span>
     <a href="/people/1874/Hiromu_Arakawa">Arakawa, Hiromu</a> (Story & Art)</div><div class="spaceit"><span class="dark_text">Serialization:</span>
     <a href="/manga/magazine/13/Shounen_Gangan" title="Shounen Gangan">Shounen Gangan</a></div><br>
-<h2>Statistics</h2><div class="po-r js-statistics-info di-ib" data-id="info1"><span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" ><span class="dark_text">Score:</span> <span itemprop="ratingValue">9.13</span><sup><small>1</small></sup> <small>(scored by <span itemprop="ratingCount">66357</span> users)</small><meta itemprop="bestRating" content="10"><meta itemprop="worstRating" content="1"></span><div class="statistics-info info1"><small><sup>1</sup> indicates a weighted score. Please note that 'Not yet published' titles are excluded.</small></div></div><div class="spaceit po-r js-statistics-info di-ib" data-id="info2">  <span class="dark_text">Ranked:</span> #3<sup><small>2</small></sup>  <div class="statistics-info info2"><small><sup>2</sup> based on the <a href="/topmanga.php">top manga</a> page. Please note that 'R18+' titles are excluded.</small></div></div><div><span class="dark_text">Popularity:</span> #9</div>
-<div class="spaceit"><span class="dark_text">Members:</span> 107,751</div>
-<div><span class="dark_text">Favorites:</span> 17,753</div><div class="clearfix mauto mt16" style="width:160px;padding-right10px;">
-
+<h2>Statistics</h2><div class="po-r js-statistics-info di-ib" data-id="info1"><span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" ><span class="dark_text">Score:</span> <span itemprop="ratingValue">9.13</span><sup><small>1</small></sup> <small>(scored by <span itemprop="ratingCount">67934</span> users)</small><meta itemprop="bestRating" content="10"><meta itemprop="worstRating" content="1"></span><div class="statistics-info info1"><small><sup>1</sup> indicates a weighted score. Please note that 'Not yet published' titles are excluded.</small></div></div><div class="spaceit po-r js-statistics-info di-ib" data-id="info2">  <span class="dark_text">Ranked:</span> #3<sup><small>2</small></sup>  <div class="statistics-info info2"><small><sup>2</sup> based on the <a href="/topmanga.php">top manga</a> page. Please note that 'R18+' titles are excluded.</small></div></div><div><span class="dark_text">Popularity:</span> #9</div>
+<div class="spaceit"><span class="dark_text">Members:</span> 110,654</div>
+<div><span class="dark_text">Favorites:</span> 18,088</div><div class="clearfix mauto mt16" style="width:160px;padding-right10px;">
 <div class="_unit " style="width:160px;display: block !important;" data-height="600">
   <div id="pc_manga_detail_side_sky" class="" style="width:160px;">
     <script type='text/javascript'>
@@ -210,8 +204,7 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
     window.MAL.SkinAd.pushSKTag("pc_manga_detail_side_sky");
          });</script>
   </div>
-</div>
-</div></div></td><td valign="top" style="padding-left: 5px;"><div class="js-scrollfix-bottom-rel">
+</div></div></div></td><td valign="top" style="padding-left: 5px;"><div class="js-scrollfix-bottom-rel">
 	<a name="lower"></a>
 	<div id="horiznav_nav" style="margin: 5px 0 10px 0;">
 			<ul style="margin-right: 0; padding-right: 0;">
@@ -230,22 +223,22 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
 
 
 
-              <div class="breadcrumb " itemscope itemtype="http://schema.org/BreadcrumbList"><div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/" itemprop="item"><span itemprop="name">
+              <div class="breadcrumb " itemscope itemtype="http://schema.org/BreadcrumbList"><div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="https://myanimelist.net/" itemprop="item"><span itemprop="name">
               Top
-            </span></a><meta itemprop="position" content="1"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/manga.php" itemprop="item"><span itemprop="name">
+                          </span></a><meta itemprop="position" content="1"></div>&nbsp; &gt; &nbsp;        <div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="https://myanimelist.net/manga.php" itemprop="item"><span itemprop="name">
               Manga
-            </span></a><meta itemprop="position" content="2"></div>&nbsp; &gt; &nbsp;<div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="http://myanimelist.net/manga/25/Fullmetal_Alchemist" itemprop="item"><span itemprop="name">
+                          </span></a><meta itemprop="position" content="2"></div>&nbsp; &gt; &nbsp;        <div class="di-ib" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="https://myanimelist.net/manga/25/Fullmetal_Alchemist" itemprop="item"><span itemprop="name">
               Fullmetal Alchemist
-            </span></a><meta itemprop="position" content="3"></div></div>
+                          </span></a><meta itemprop="position" content="3"></div></div>
 
 
 
 <table border="0" cellspacing="0" cellpadding="0" width="100%">
 	<tr>
-	<td valign="top"><div class="pb24"><div class="di-t w100 mt12"><div class="anime-detail-header-stats di-tc va-t"><div class="stats-block po-r clearfix"><div class="fl-l score" data-title="score" data-user="66,357 users" title="indicates a weighted score. Please note that 'Not yet published' titles are excluded.">
+	<td valign="top"><div class="pb24"><div class="di-t w100 mt12"><div class="anime-detail-header-stats di-tc va-t"><div class="stats-block po-r clearfix"><div class="fl-l score" data-title="score" data-user="67,934 users" title="indicates a weighted score. Please note that 'Not yet published' titles are excluded.">
         9.13
-      </div><div class="di-ib ml12 pl12 pt8"><span class="numbers ranked" title="based on the top anime page. Please note that 'Not yet aired' and 'R18+' titles are excluded.">Ranked <strong>#3</strong></span><span class="numbers popularity">Popularity <strong>#9</strong></span><span class="numbers members">Members <strong>107,751</strong></span></div><div class="information-block di-ib clearfix"><span class="information type"><a href="http://myanimelist.net/topmanga.php?type=manga">Manga</a></span><span class="information season"><a href="/manga/magazine/13/Shounen_Gangan" title="Shounen Gangan">Shounen Gangan</a></span><span class="information studio author"><a href="/people/1874/Hiromu_Arakawa">Arakawa, Hiromu</a> (Story & Art)
-        </span></div></div><div class="user-status-block js-user-status-block fn-grey6 clearfix al mt8 pl20" data-type="manga"><input type="hidden" id="myinfo_anime_id" value="25"><a href="http://myanimelist.net/login.php?from=%2Fmanga%2F25%2F&amp;error=login_required" class="btn-user-status-add-list">Add to List</a><select name="myinfo_score" id="myinfo_score" class="form-user-score js-form-user-score ml8" disabled="disabled"><option selected="selected" value="0">Select</option><option value="10">(10) Masterpiece</option><option value="9">(9) Great</option><option value="8">(8) Very Good</option><option value="7">(7) Good</option><option value="6">(6) Fine</option><option value="5">(5) Average</option><option value="4">(4) Bad</option><option value="3">(3) Very Bad</option><option value="2">(2) Horrible</option><option value="1">(1) Appalling</option></select><div class="di-ib form-user-episode ml8 disabled">
+      </div><div class="di-ib ml12 pl12 pt8"><span class="numbers ranked" title="based on the top anime page. Please note that 'Not yet aired' and 'R18+' titles are excluded.">Ranked <strong>#3</strong></span><span class="numbers popularity">Popularity <strong>#9</strong></span><span class="numbers members">Members <strong>110,654</strong></span></div><div class="information-block di-ib clearfix"><span class="information type"><a href="https://myanimelist.net/topmanga.php?type=manga">Manga</a></span><span class="information season"><a href="/manga/magazine/13/Shounen_Gangan" title="Shounen Gangan">Shounen Gangan</a></span><span class="information studio author"><a href="/people/1874/Hiromu_Arakawa">Arakawa, Hiromu</a> (Story & Art)
+        </span></div></div><div class="user-status-block js-user-status-block fn-grey6 clearfix al mt8 pl20" data-type="manga"><input type="hidden" id="myinfo_anime_id" value="25"><a href="https://myanimelist.net/login.php?from=%2Fmanga%2F25&amp;error=login_required" class="btn-user-status-add-list">Add to List</a><select name="myinfo_score" id="myinfo_score" class="form-user-score js-form-user-score ml8" disabled="disabled"><option selected="selected" value="0">Select</option><option value="10">(10) Masterpiece</option><option value="9">(9) Great</option><option value="8">(8) Very Good</option><option value="7">(7) Good</option><option value="6">(6) Fine</option><option value="5">(5) Average</option><option value="4">(4) Bad</option><option value="3">(3) Very Bad</option><option value="2">(2) Horrible</option><option value="1">(1) Appalling</option></select><div class="di-ib form-user-episode ml8 disabled">
         Volumes: <input type="text" id="myinfo_volumes" name="myinfo_volumes" size="3" class="inputtext js-user-episode-seen" value="0" disabled>/<span id="totalVols" data-num="27">27</span><a href="javascript:void(0);" class="js-btn-count increase volume ml4"><i class="fa fa-plus-circle"></i></a></div><div class="di-ib form-user-episode ml8 disabled">
         Chapters: <input type="text" id="myinfo_chapters" name="myinfo_chapters" size="3" class="inputtext js-user-episode-seen" value="0" disabled>/<span id="totalChaps" data-num="116">116</span><a href="javascript:void(0);" class="js-btn-count increase chapter ml4"><i class="fa fa-plus-circle"></i></a></div></div></div></div><div class="js-myinfo-error badresult-text al pb4" style="display:none;"></div>
 </div><h2><div class="floatRightHeader"><a href="/dbchanges.php?mid=25&t=synopsis" style="font-weight: normal;">Edit</a></div>Synopsis</h2><span itemprop="description">The rules of alchemy state that to gain something, one must lose something of equal value. Alchemy is the process of taking apart and reconstructing an object into a different entity, with the rules of alchemy to govern this procedure. However, there exists an object that can bring any alchemist above these rules, the object known as the Philosopher&#039;s Stone. The young Edward Elric is a particularly talented alchemist who through an accident years back lost his younger brother Alphonse and one of his legs. Sacrificing one of his arms as well, he used alchemy to bind his brother&#039;s soul to a suit of armor.<br />
@@ -253,7 +246,6 @@ Fullmetal Alchemist | Manga - MyAnimeList.net
 This lead to the beginning of their journey to restore their bodies, in search for the legendary Philosopher&#039;s Stone.</span><h2 style="margin-top: 15px;"><div class="floatRightHeader"><a href="/dbchanges.php?mid=25&t=background" style="font-weight: normal;">Edit</a></div>Background</h2><i>Hagane no Renkinjutsushi</i> won the 49th Shogakukan Manga Award for the shounen demographic in 2004. Hiromu Arakawa also won the 15th Tezuka Osamu Cultural Prize in the New Artist Prize category for the series in 2011. As of 2015, over 64 million copies of the series have been sold worldwide, making it one of Square Enix&#039;s most successful publications, according to Nielsen Bookscan. A live-action film is in development by Warner Bros. Japan and is scheduled for release in Winter 2017.<br />
 <br />
 The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media from May 3, 2005 to December 20, 2011, and in eBook format by Yen Press on April 15, 2014. A 3-in-1 omnibus edition was released by VIZ from June 7, 2011 to November 11, 2014 as well as a complete box set in November 1, 2011 (which included the novel <i>Fullmetal Alchemist: The Ties That Bind</i>). The manga was also published in Italian by Panini Comics under the Planet Manga imprint from July 13, 2006 to September 3, 2011 and in Brazilian Portuguese by Jbc from February 2007 to April 2011. <div class="border_top" style="padding:16px 0px 0px 0px;margin:14px 0px 0px 0px;"><div style="padding: 20px 0 20px 40px; float: left; position: relative; z-index: 1;">
-
 <div class="_unit " style="width:336px;display: block !important;" data-height="280">
   <div id="pc_manga_detail_middle_rec_l" class="" style="width:336px;">
     <script type='text/javascript'>
@@ -267,9 +259,7 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
   googletag.display("pc_manga_detail_middle_rec_l");
          });</script>
   </div>
-</div>
-</div><div style="padding: 20px 40px 20px 0; float: right; position: relative;">
-
+</div></div><div style="padding: 20px 40px 20px 0; float: right; position: relative;">
 <div class="_unit " style="width:336px;display: block !important;" data-height="280">
   <div id="pc_manga_detail_middle_rec_r" class="" style="width:336px;">
     <script type='text/javascript'>
@@ -283,13 +273,12 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
   googletag.display("pc_manga_detail_middle_rec_r");
          });</script>
   </div>
-</div>
-</div></div></td>
+</div></div></div></td>
 	</tr>
 	<tr>
 	  <td class="pb24"><br><h2><div class="floatRightHeader"><a href="/dbchanges.php?mid=25&t=relations" style="font-weight: normal;">Edit</a></div>Related Manga</h2><table class="anime_detail_related_anime" style="border-spacing:0px;"><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Side story:</td><td width="100%" class="borderClass"><a href="/manga/4658/Fullmetal_Alchemist">Fullmetal Alchemist</a></td><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Alternative version:</td><td width="100%" class="borderClass"><a href="/manga/32409/Full_Metal_Alchemist__Prototype">Full Metal Alchemist: Prototype</a></td><tr><td nowrap="" valign="top" class="ar fw-n borderClass">Adaptation:</td><td width="100%" class="borderClass"><a href="/anime/121/Fullmetal_Alchemist">Fullmetal Alchemist</a>, <a href="/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></td></table><br><h2><div class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/characters" style="font-weight: normal;">More characters</a></div>Characters</h2><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
-			<div class="picSurround"><a href="/character/11/Edward_Elric" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/46x64/images/characters/9/72533.jpg?s=bc900e23717c1b323293e1f9c025ea49" width="23" height="32" alt="Elric, Edward" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
+			<div class="picSurround"><a href="/character/11/Edward_Elric" style="font-weight: normal;"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/46x64/images/characters/9/72533.jpg?s=bc900e23717c1b323293e1f9c025ea49" width="23" height="32" alt="Elric, Edward" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
 			</div>
 			</td>
 			<td valign="top" class="borderClass bgColor2">
@@ -300,7 +289,7 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
 			</tr>
             </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor1" align="center">
-			<div class="picSurround"><a href="/character/12/Alphonse_Elric" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/46x64/images/characters/5/54265.jpg?s=86622fbd58c87f151cfe764995d2beca" width="23" height="32" alt="Elric, Alphonse" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
+			<div class="picSurround"><a href="/character/12/Alphonse_Elric" style="font-weight: normal;"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/46x64/images/characters/5/54265.jpg?s=86622fbd58c87f151cfe764995d2beca" width="23" height="32" alt="Elric, Alphonse" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
 			</div>
 			</td>
 			<td valign="top" class="borderClass bgColor1">
@@ -311,7 +300,7 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
 			</tr>
             </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
-			<div class="picSurround"><a href="/character/68/Roy_Mustang" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/46x64/images/characters/9/186277.jpg?s=27b5ce0ea70e4aa5dae8a714e3c20a82" width="23" height="32" alt="Mustang, Roy" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
+			<div class="picSurround"><a href="/character/68/Roy_Mustang" style="font-weight: normal;"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/46x64/images/characters/9/186277.jpg?s=27b5ce0ea70e4aa5dae8a714e3c20a82" width="23" height="32" alt="Mustang, Roy" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
 			</div>
 			</td>
 			<td valign="top" class="borderClass bgColor2">
@@ -322,7 +311,7 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
 			</tr>
             </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor1" align="center">
-			<div class="picSurround"><a href="/character/69/Maes_Hughes" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/46x64/images/characters/13/73469.jpg?s=8c72a8137f19cd0f7584fc777d6c924c" width="23" height="32" alt="Hughes, Maes" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
+			<div class="picSurround"><a href="/character/69/Maes_Hughes" style="font-weight: normal;"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/46x64/images/characters/13/73469.jpg?s=8c72a8137f19cd0f7584fc777d6c924c" width="23" height="32" alt="Hughes, Maes" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
 			</div>
 			</td>
 			<td valign="top" class="borderClass bgColor1">
@@ -333,7 +322,7 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
 			</tr>
             </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
-			<div class="picSurround"><a href="/character/351/Greed" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/46x64/images/characters/4/284117.jpg?s=dbfb451aaf6e9dd777088bb487a20c73" width="23" height="32" alt="Greed" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
+			<div class="picSurround"><a href="/character/351/Greed" style="font-weight: normal;"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/46x64/images/characters/4/284117.jpg?s=dbfb451aaf6e9dd777088bb487a20c73" width="23" height="32" alt="Greed" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
 			</div>
 			</td>
 			<td valign="top" class="borderClass bgColor2">
@@ -344,7 +333,7 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
 			</tr>
             </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor1" align="center">
-			<div class="picSurround"><a href="/character/70/Riza_Hawkeye" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/46x64/images/characters/7/186275.jpg?s=79b10de4c0ec2b54ff2bd1e4400384f7" width="23" height="32" alt="Hawkeye, Riza" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
+			<div class="picSurround"><a href="/character/70/Riza_Hawkeye" style="font-weight: normal;"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/46x64/images/characters/7/186275.jpg?s=79b10de4c0ec2b54ff2bd1e4400384f7" width="23" height="32" alt="Hawkeye, Riza" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
 			</div>
 			</td>
 			<td valign="top" class="borderClass bgColor1">
@@ -355,7 +344,7 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
 			</tr>
             </table><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 			<td valign="top" width="27" class="borderClass bgColor2" align="center">
-			<div class="picSurround"><a href="/character/2079/Alex_Louis_Armstrong" style="font-weight: normal;"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/46x64/images/characters/2/71066.jpg?s=0f57632ebfcaa613227a951a1f086e2f" width="23" height="32" alt="Armstrong, Alex Louis" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
+			<div class="picSurround"><a href="/character/2079/Alex_Louis_Armstrong" style="font-weight: normal;"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/46x64/images/characters/2/71066.jpg?s=0f57632ebfcaa613227a951a1f086e2f" width="23" height="32" alt="Armstrong, Alex Louis" vspace="4" hspace="8" border="0" class="lazyload"></a></div>
 			</div>
 			</td>
 			<td valign="top" class="borderClass bgColor2">
@@ -365,7 +354,6 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
 			</td>
 			</tr>
             </table><div style="padding: 20px 40px;display: inline-block;">
-
 <div class="_unit " style="width:336px;display: block !important;" data-height="280">
   <div id="pc_manga_detail_middle_2nd_rec_l" class="" style="width:336px;">
     <script type='text/javascript'>
@@ -376,12 +364,16 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
         .setTargeting("utm_campaign", "ad_mal_manga_25")
     .setCollapseEmptyDiv(true,true);googletag.enableServices();
 
-  googletag.display("pc_manga_detail_middle_2nd_rec_l");
+  googletag.display("pc_manga_detail_middle_2nd_rec_l");if (window.MAL && window.MAL.adRefresh) {
+      window.MAL.adRefresh.setupRefresh(slot);
+    } else {
+      document.addEventListener("DOMContentLoaded", function(event) {
+        window.MAL.adRefresh.setupRefresh(slot);
+      });
+    }
          });</script>
   </div>
-</div>
-</div><div style="padding: 20px 0px;display: inline-block;">
-
+</div></div><div style="padding: 20px 0px;display: inline-block;">
 <div class="_unit " style="width:336px;display: block !important;" data-height="280">
   <div id="pc_manga_detail_middle_2nd_rec_r" class="" style="width:336px;">
     <script type='text/javascript'>
@@ -392,18 +384,23 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
         .setTargeting("utm_campaign", "ad_mal_manga_25")
     .setCollapseEmptyDiv(true,true);googletag.enableServices();
 
-  googletag.display("pc_manga_detail_middle_2nd_rec_r");
+  googletag.display("pc_manga_detail_middle_2nd_rec_r");if (window.MAL && window.MAL.adRefresh) {
+      window.MAL.adRefresh.setupRefresh(slot);
+    } else {
+      document.addEventListener("DOMContentLoaded", function(event) {
+        window.MAL.adRefresh.setupRefresh(slot);
+      });
+    }
          });</script>
   </div>
-</div>
-</div><br><h2><span class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/reviews">More reviews</a></span>Reviews</h2>
+</div></div><br><h2><span class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/reviews">More reviews</a></span>Reviews</h2>
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
 
 					<div class="borderLight pb4">
 					<table border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
 						<td valign="top" width="60">
-							<div class="picSurround"><a href="/profile/Archaeon"><div class="picSurround"><a href="/profile/Archaeon"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/images/userimages/thumbs/19870_thumb.jpg" border="0" class="lazyload"></a></div></a></div>
+							<div class="picSurround"><a href="/profile/Archaeon"><div class="picSurround"><a href="/profile/Archaeon"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="/images/userimages/thumbs/19870_thumb.jpg" border="0" class="lazyload"></a></div></a></div>
 						</td>
 						<td valign="top">
 	<div id="revArea25">
@@ -412,7 +409,7 @@ The series was published in English as <i>Fullmetal Alchemist</i> by VIZ Media f
 	</div>
 
 							<a href="/profile/Archaeon">Archaeon</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp27112">371</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp27112">376</span></strong> people found this review helpful</div>
 							<div><a href="/profile/Archaeon/reviews">Other reviews by this user</a></div>
 						</td>
 						<td style="text-align: right;" valign="top"><div style="text-align: right;">Jun 13, 2010</div>
@@ -479,7 +476,7 @@ What Arakawa Hiromu has given us is a work that is truly good, despite some mino
 Isn&#039;t it ironic then, that the two of greatest shounen tales weren&#039;t written by men?</span> <a href="javascript:void(0);" id="reviewToggle27112" class="js-toggle-review-button" data-id="27112">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=27112" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=27112" class="lightLink"><small>report</small></a></div><span id="revhelp_output_27112" class="js-review-btn-helpful js-review-helpful-27112">I found this review <a href="/login.php?from=%2Fmanga%2F25%2F&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=27112" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=27112" class="lightLink"><small>report</small></a></div><span id="revhelp_output_27112" class="js-review-btn-helpful js-review-helpful-27112">I found this review <a href="/login.php?from=%2Fmanga%2F25&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
@@ -488,7 +485,7 @@ Isn&#039;t it ironic then, that the two of greatest shounen tales weren&#039;t w
 					<table border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
 						<td valign="top" width="60">
-							<div class="picSurround"><a href="/profile/ImperialX"><div class="picSurround"><a href="/profile/ImperialX"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/images/userimages/thumbs/70716_thumb.jpg" border="0" class="lazyload"></a></div></a></div>
+							<div class="picSurround"><a href="/profile/ImperialX"><div class="picSurround"><a href="/profile/ImperialX"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="/images/userimages/thumbs/70716_thumb.jpg" border="0" class="lazyload"></a></div></a></div>
 						</td>
 						<td valign="top">
 	<div id="revArea25">
@@ -550,7 +547,7 @@ Despite the simple artwork, the engaging plot, deep characters and perfect enjoy
 Taken from my Blog: http://imperialx.wordpress.com/2010/06/11/fullmetal-alchemist-review/</span> <a href="javascript:void(0);" id="reviewToggle26988" class="js-toggle-review-button" data-id="26988">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=26988" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=26988" class="lightLink"><small>report</small></a></div><span id="revhelp_output_26988" class="js-review-btn-helpful js-review-helpful-26988">I found this review <a href="/login.php?from=%2Fmanga%2F25%2F&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=26988" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=26988" class="lightLink"><small>report</small></a></div><span id="revhelp_output_26988" class="js-review-btn-helpful js-review-helpful-26988">I found this review <a href="/login.php?from=%2Fmanga%2F25&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
@@ -559,7 +556,7 @@ Taken from my Blog: http://imperialx.wordpress.com/2010/06/11/fullmetal-alchemis
 					<table border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
 						<td valign="top" width="60">
-							<div class="picSurround"><a href="/profile/Polyphemus"><div class="picSurround"><a href="/profile/Polyphemus"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/images/userimages/thumbs/1872716_thumb.jpg" border="0" class="lazyload"></a></div></a></div>
+							<div class="picSurround"><a href="/profile/Polyphemus"><div class="picSurround"><a href="/profile/Polyphemus"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="/images/userimages/thumbs/1872716_thumb.jpg" border="0" class="lazyload"></a></div></a></div>
 						</td>
 						<td valign="top">
 	<div id="revArea25">
@@ -568,7 +565,7 @@ Taken from my Blog: http://imperialx.wordpress.com/2010/06/11/fullmetal-alchemis
 	</div>
 
 							<a href="/profile/Polyphemus">Polyphemus</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp181903">83</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp181903">87</span></strong> people found this review helpful</div>
 							<div><a href="/profile/Polyphemus/reviews">Other reviews by this user</a></div>
 						</td>
 						<td style="text-align: right;" valign="top"><div style="text-align: right;">Mar 7, 2015</div>
@@ -622,7 +619,7 @@ The lack of originality or risk-taking factors against Fullmetal Alchemist, but 
 </span> <a href="javascript:void(0);" id="reviewToggle181903" class="js-toggle-review-button" data-id="181903">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=181903" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=181903" class="lightLink"><small>report</small></a></div><span id="revhelp_output_181903" class="js-review-btn-helpful js-review-helpful-181903">I found this review <a href="/login.php?from=%2Fmanga%2F25%2F&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=181903" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=181903" class="lightLink"><small>report</small></a></div><span id="revhelp_output_181903" class="js-review-btn-helpful js-review-helpful-181903">I found this review <a href="/login.php?from=%2Fmanga%2F25&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 
 				<div class="borderDark pt4 pb8 pl4 pr4 mb8">
@@ -631,7 +628,7 @@ The lack of originality or risk-taking factors against Fullmetal Alchemist, but 
 					<table border="0" cellpadding="0" cellspacing="0" width="100%">
 					<tr>
 						<td valign="top" width="60">
-							<div class="picSurround"><a href="/profile/iAlkemy"><div class="picSurround"><a href="/profile/iAlkemy"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/images/questionmark_50.gif" border="0" class="lazyload"></a></div></a></div>
+							<div class="picSurround"><a href="/profile/iAlkemy"><div class="picSurround"><a href="/profile/iAlkemy"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="/images/questionmark_50.gif" border="0" class="lazyload"></a></div></a></div>
 						</td>
 						<td valign="top">
 	<div id="revArea25">
@@ -640,7 +637,7 @@ The lack of originality or risk-taking factors against Fullmetal Alchemist, but 
 	</div>
 
 							<a href="/profile/iAlkemy">iAlkemy</a><br />
-							<div class="lightLink spaceit"><strong><span id="rhelp3656">107</span></strong> people found this review helpful</div>
+							<div class="lightLink spaceit"><strong><span id="rhelp3656">111</span></strong> people found this review helpful</div>
 							<div><a href="/profile/iAlkemy/reviews">Other reviews by this user</a></div>
 						</td>
 						<td style="text-align: right;" valign="top"><div style="text-align: right;">Apr 5, 2008</div>
@@ -689,10 +686,9 @@ Enjoyment: (10) I have followed this series since its August 2001 debut, and it 
 Overall: (10) Overall, I give this series a 10. This series is definitely worth my time and money, and I highly recommend it to everyone!</span> <a href="javascript:void(0);" id="reviewToggle3656" class="js-toggle-review-button" data-id="3656">read more</a></div>
 					<div>
 		<div class="mt12 pt4 pb4 pl0 pr0 clearfix">
-			<div style="float: right;"><a href="/reviews.php?id=3656" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=3656" class="lightLink"><small>report</small></a></div><span id="revhelp_output_3656" class="js-review-btn-helpful js-review-helpful-3656">I found this review <a href="/login.php?from=%2Fmanga%2F25%2F&error=login_required" class="button_form">Helpful</a></span></div></div>
+			<div style="float: right;"><a href="/reviews.php?id=3656" class="lightLink"><small>permalink</small></a> | <a href="/dbchanges.php?go=reportreview&id=3656" class="lightLink"><small>report</small></a></div><span id="revhelp_output_3656" class="js-review-btn-helpful js-review-helpful-3656">I found this review <a href="/login.php?from=%2Fmanga%2F25&error=login_required" class="button_form">Helpful</a></span></div></div>
 				</div>
 				<div class="mt4"></div><div style="padding:16px 0px 0px 0px;"><div style="width:728px; height:90px; margin:0 auto">
-
 <div class="_unit " style="width:728px;display: block !important;" data-height="120">
   <div id="pc_manga_detail_2nd_leaderboard" class="" style="width:728px;">
     <script type='text/javascript'>
@@ -703,18 +699,23 @@ Overall: (10) Overall, I give this series a 10. This series is definitely worth 
         .setTargeting("utm_campaign", "ad_mal_manga_25")
     .setCollapseEmptyDiv(true,true);googletag.enableServices();
 
-  googletag.display("pc_manga_detail_2nd_leaderboard");
+  googletag.display("pc_manga_detail_2nd_leaderboard");if (window.MAL && window.MAL.adRefresh) {
+      window.MAL.adRefresh.setupRefresh(slot);
+    } else {
+      document.addEventListener("DOMContentLoaded", function(event) {
+        window.MAL.adRefresh.setupRefresh(slot);
+      });
+    }
          });</script>
   </div>
-</div>
-</div></div><br>
+</div></div></div><br>
         <h2>
         <div class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/userrecs">More recommendations</a></div>
         Recommendations</h2>
-        <div class="" ><a href="http://myanimelist.net/manga/25/Fullmetal_Alchemist/userrecs" class="btn-detail-recommendations-view-all fl-r">
+        <div class="" ><a href="https://myanimelist.net/manga/25/Fullmetal_Alchemist/userrecs" class="btn-detail-recommendations-view-all fl-r">
       <span class="text">View All</span>
       <span class="icon-next"><i class="fa fa-chevron-right icon-chevron" aria-hidden="true"></i></span>
-    </a><div class="anime-slide-block" id="manga_recommendation" data-json='{"width":702,"btnWidth":40,"margin":8}'><div class="btn-anime-slide-side left"><span class="btn-inner"></span></div><div class="btn-anime-slide-side right"><span class="btn-inner"></span></div><div class="anime-slide-outer" style="height:140px;"><ul class="anime-slide js-anime-slide" data-slide="7"><li class="btn-anime" style="width:90px" title="D.Gray-man"><a href="http://myanimelist.net/recommendations/manga/24-25" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">D.Gray-man</span><span class="users">7 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/3/28084.jpg?s=fa97e7f8801f9cf853e8a027ed8af722" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/3/28084.jpg?s=fa97e7f8801f9cf853e8a027ed8af722 1x,http://cdn.myanimelist.net/r/180x280/images/manga/3/28084.jpg?s=56cffa3d0d3f3f20cdfb8002fc4881e8 2x" width="90" height="140" class="image lazyload" alt="D.Gray-man" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Magi"><a href="http://myanimelist.net/recommendations/manga/25-14790" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Magi</span><span class="users">6 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/4/62609.jpg?s=a6bc38d9e98b31bd651ae036c75cfa0d" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/4/62609.jpg?s=a6bc38d9e98b31bd651ae036c75cfa0d 1x,http://cdn.myanimelist.net/r/180x280/images/manga/4/62609.jpg?s=28f0aae24453570b6e55bbb002863b50 2x" width="90" height="140" class="image lazyload" alt="Magi" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Tsubasa: RESERVoir CHRoNiCLE"><a href="http://myanimelist.net/recommendations/manga/9-25" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Tsubasa: RESERVoir CHRoNiCLE</span><span class="users">3 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/27076.jpg?s=74ca3718385ae5c89490d36192eaa22f" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/27076.jpg?s=74ca3718385ae5c89490d36192eaa22f 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/27076.jpg?s=adb56b683ef2f529371f4ddc51970e19 2x" width="90" height="140" class="image lazyload" alt="Tsubasa: RESERVoir CHRoNiCLE" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Pandora Hearts"><a href="http://myanimelist.net/recommendations/manga/25-3031" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Pandora Hearts</span><span class="users">3 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/80893.jpg?s=dbaa0e32381ac0a0266d9f9eff69259d" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/80893.jpg?s=dbaa0e32381ac0a0266d9f9eff69259d 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/80893.jpg?s=0565a90e8b720ef3dbaeefed6b32c538 2x" width="90" height="140" class="image lazyload" alt="Pandora Hearts" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Shingeki no Kyojin"><a href="http://myanimelist.net/recommendations/manga/25-23390" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Shingeki no Kyojin</span><span class="users">2 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/37846.jpg?s=d3e73255a5f78629b51bc4316df0f563" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/37846.jpg?s=d3e73255a5f78629b51bc4316df0f563 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/37846.jpg?s=4db7a74752e7ee118a1480a26d6d1dc8 2x" width="90" height="140" class="image lazyload" alt="Shingeki no Kyojin" border="0" ></a></li><li class="btn-anime" style="width:90px" title="666 Satan"><a href="http://myanimelist.net/recommendations/manga/25-32" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">666 Satan</span><span class="users">2 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/3/511.jpg?s=20cf7a6e3638586981587eb9548c64ed" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/3/511.jpg?s=20cf7a6e3638586981587eb9548c64ed 1x,http://cdn.myanimelist.net/r/180x280/images/manga/3/511.jpg?s=c927520c0125cfe3a2272881230aaecd 2x" width="90" height="140" class="image lazyload" alt="666 Satan" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Embalming: The Another Tale of Frankenstein"><a href="http://myanimelist.net/recommendations/manga/25-3099" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Embalming: The Another Tale of Frankenstein</span><span class="users">2 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/3/89677.jpg?s=3716c5e0f4d70ed7d7e08b6aa4fcfd6d" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/3/89677.jpg?s=3716c5e0f4d70ed7d7e08b6aa4fcfd6d 1x,http://cdn.myanimelist.net/r/180x280/images/manga/3/89677.jpg?s=a058ca271b9e170bcf953dd85790cac7 2x" width="90" height="140" class="image lazyload" alt="Embalming: The Another Tale of Frankenstein" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Tripeace"><a href="http://myanimelist.net/recommendations/manga/25-20694" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Tripeace</span><span class="users">2 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/32965.jpg?s=93fe98cf6c4a24895a953c44647dd5fd" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/32965.jpg?s=93fe98cf6c4a24895a953c44647dd5fd 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/32965.jpg?s=784e273fdec3bf7ba2b06d246b1c4191 2x" width="90" height="140" class="image lazyload" alt="Tripeace" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Zombie Powder."><a href="http://myanimelist.net/recommendations/manga/25-39" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Zombie Powder.</span><span class="users">2 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/3/180035.jpg?s=490873ee95cbe8440ff248c28ed4d190" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/3/180035.jpg?s=490873ee95cbe8440ff248c28ed4d190 1x,http://cdn.myanimelist.net/r/180x280/images/manga/3/180035.jpg?s=ec388eef0c134ff883a9e039f890fb6f 2x" width="90" height="140" class="image lazyload" alt="Zombie Powder." border="0" ></a></li><li class="btn-anime" style="width:90px" title="Busou Renkin"><a href="http://myanimelist.net/recommendations/manga/25-41" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Busou Renkin</span><span class="users">2 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/149583.jpg?s=ff42ea48158395b83de53c15aa717c49" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/149583.jpg?s=ff42ea48158395b83de53c15aa717c49 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/149583.jpg?s=9cf0f10b6183dcb942c2aa4472b4b3aa 2x" width="90" height="140" class="image lazyload" alt="Busou Renkin" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Psyren"><a href="http://myanimelist.net/recommendations/manga/25-3438" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Psyren</span><span class="users">2 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/160868.jpg?s=cfe409b4b91d6bf84b16ced66cac4ef8" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/160868.jpg?s=cfe409b4b91d6bf84b16ced66cac4ef8 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/160868.jpg?s=3766ef45da5be8dd1b5c3b3397cf1eda 2x" width="90" height="140" class="image lazyload" alt="Psyren" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Hunter x Hunter"><a href="http://myanimelist.net/recommendations/manga/25-26" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Hunter x Hunter</span><span class="users">2 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/156520.jpg?s=e0a9fef135bfb7e6c92f28d0ec7ae44f" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/156520.jpg?s=e0a9fef135bfb7e6c92f28d0ec7ae44f 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/156520.jpg?s=6c7d4224cd641707012ef57d5caa293a 2x" width="90" height="140" class="image lazyload" alt="Hunter x Hunter" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Ao no Exorcist"><a href="http://myanimelist.net/recommendations/manga/25-13492" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Ao no Exorcist</span><span class="users">2 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/120825.jpg?s=bc2edec3973d8e317db5f05e5b52a71c" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/120825.jpg?s=bc2edec3973d8e317db5f05e5b52a71c 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/120825.jpg?s=8c0fefddb142c9666f0c9ed54d6ed68e 2x" width="90" height="140" class="image lazyload" alt="Ao no Exorcist" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Shanghai Youma Kikai"><a href="http://myanimelist.net/recommendations/manga/25-1652" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Shanghai Youma Kikai</span><span class="users">2 users</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/1/1727.jpg?s=be6cd699cf003fae58b19cb5d0150066" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/1/1727.jpg?s=be6cd699cf003fae58b19cb5d0150066 1x,http://cdn.myanimelist.net/r/180x280/images/manga/1/1727.jpg?s=f2eecd086ff2ef0af12caaf59b673e23 2x" width="90" height="140" class="image lazyload" alt="Shanghai Youma Kikai" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Naruto"><a href="http://myanimelist.net/recommendations/manga/11-25" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Naruto</span><span class="users">1 user</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/3/117681.jpg?s=18502fc430526a3992161e90e61b8995" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/3/117681.jpg?s=18502fc430526a3992161e90e61b8995 1x,http://cdn.myanimelist.net/r/180x280/images/manga/3/117681.jpg?s=83a6baef2bedad27639c8dfb939ea511 2x" width="90" height="140" class="image lazyload" alt="Naruto" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Juushin Enbu: Hero Tales"><a href="http://myanimelist.net/recommendations/manga/25-2033" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Juushin Enbu: Hero Tales</span><span class="users">1 user</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/1/21501.jpg?s=233c1691f22b630aad2bde37f075952e" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/1/21501.jpg?s=233c1691f22b630aad2bde37f075952e 1x,http://cdn.myanimelist.net/r/180x280/images/manga/1/21501.jpg?s=500c3829e92ecda12593d0d4e6da3470 2x" width="90" height="140" class="image lazyload" alt="Juushin Enbu: Hero Tales" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Priest"><a href="http://myanimelist.net/recommendations/manga/25-486" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Priest</span><span class="users">1 user</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/558.jpg?s=43c8350e688bf51f6d94381ee23a86b4" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/558.jpg?s=43c8350e688bf51f6d94381ee23a86b4 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/558.jpg?s=5cb11ea40b02dec9aa4f60e2d8b5bbb7 2x" width="90" height="140" class="image lazyload" alt="Priest" border="0" ></a></li><li class="btn-anime" style="width:90px" title="xxxHOLiC"><a href="http://myanimelist.net/recommendations/manga/10-25" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">xxxHOLiC</span><span class="users">1 user</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/3/1482.jpg?s=ee0f27f1c14004e01a0746c2207f9e4a" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/3/1482.jpg?s=ee0f27f1c14004e01a0746c2207f9e4a 1x,http://cdn.myanimelist.net/r/180x280/images/manga/3/1482.jpg?s=95c95d61fff6b7cde35df6dcdce6aea7 2x" width="90" height="140" class="image lazyload" alt="xxxHOLiC" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Kekkaishi"><a href="http://myanimelist.net/recommendations/manga/25-105" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Kekkaishi</span><span class="users">1 user</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/62941.jpg?s=4a7bfa0e2ec7bf9f49d989816b34f673" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/62941.jpg?s=4a7bfa0e2ec7bf9f49d989816b34f673 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/62941.jpg?s=e3e09fb17a6582e8ccfc7b0ebbde5f0d 2x" width="90" height="140" class="image lazyload" alt="Kekkaishi" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Hangyaku no Kage Tsukai"><a href="http://myanimelist.net/recommendations/manga/25-62677" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Hangyaku no Kage Tsukai</span><span class="users">1 user</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/107543.jpg?s=c9a7467519e638c0fb9e27a1bfd004f7" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/107543.jpg?s=c9a7467519e638c0fb9e27a1bfd004f7 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/107543.jpg?s=51ce7231aede48bae5d942f814908ba1 2x" width="90" height="140" class="image lazyload" alt="Hangyaku no Kage Tsukai" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Break Blade"><a href="http://myanimelist.net/recommendations/manga/25-4608" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Break Blade</span><span class="users">1 user</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/3/160213.jpg?s=509c9b687fddd6f298268ae0f2d327a1" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/3/160213.jpg?s=509c9b687fddd6f298268ae0f2d327a1 1x,http://cdn.myanimelist.net/r/180x280/images/manga/3/160213.jpg?s=17be7f558b5af5392e2a30fa66ffcbaa 2x" width="90" height="140" class="image lazyload" alt="Break Blade" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Fate/Zero"><a href="http://myanimelist.net/recommendations/manga/25-3649" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Fate/Zero</span><span class="users">1 user</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/1/134349.jpg?s=f17beb948bfce612e394d93c72753eae" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/1/134349.jpg?s=f17beb948bfce612e394d93c72753eae 1x,http://cdn.myanimelist.net/r/180x280/images/manga/1/134349.jpg?s=7eb02811e692e0e2e16d80dccc161504 2x" width="90" height="140" class="image lazyload" alt="Fate/Zero" border="0" ></a></li><li class="btn-anime" style="width:90px" title="07-Ghost"><a href="http://myanimelist.net/recommendations/manga/25-1349" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">07-Ghost</span><span class="users">1 user</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/21417.jpg?s=b70e283137f73031af965218fe9fa031" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/21417.jpg?s=b70e283137f73031af965218fe9fa031 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/21417.jpg?s=55cba2936e480e8cd39cc03bb2f76f8c 2x" width="90" height="140" class="image lazyload" alt="07-Ghost" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Kenja no Ishi"><a href="http://myanimelist.net/recommendations/manga/25-3073" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Kenja no Ishi</span><span class="users">1 user</span><img src="http://cdn.myanimelist.net/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/90x140/images/manga/2/3342.jpg?s=0bfcecd052453b39d9e0b8d7b8cfc48e" data-srcset="http://cdn.myanimelist.net/r/90x140/images/manga/2/3342.jpg?s=0bfcecd052453b39d9e0b8d7b8cfc48e 1x,http://cdn.myanimelist.net/r/180x280/images/manga/2/3342.jpg?s=50c71e1d445a5408edcdab98eaa9bbba 2x" width="90" height="140" class="image lazyload" alt="Kenja no Ishi" border="0" ></a></li></ul></div></div></div><br><h2><div class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/news">More news</a></div>Recent News</h2><div class="clearfix"><div class="picSurround fl-l mr8 ml3 mt4"><a href="/news/46159033" class="image-link"><img src="/images/spacer.gif" data-src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1464055458-c7c8f103f8478494ac7a45836e060904.jpeg?s=0e3d4e3e1b8b65abf01c20b2658747e5" data-srcset="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1464055458-c7c8f103f8478494ac7a45836e060904.jpeg?s=0e3d4e3e1b8b65abf01c20b2658747e5 1x,http://cdn.myanimelist.net/r/100x156/s/common/uploaded_files/1464055458-c7c8f103f8478494ac7a45836e060904.jpeg?s=49fe3865950bcc7a07f30f93aaf403bd 2x" alt="Warner Bros. Announces Live-Action 'Fullmetal Alchemist' Film" width="50" height="78" class="lazyload"></a></div><p class="spaceit"><a href="/news/46159033" style=""><strong>Warner Bros. Announces Live-Action 'Fullmetal Alchemist' Film</strong></a></p>
+    </a><div class="anime-slide-block" id="manga_recommendation" data-json='{"width":702,"btnWidth":40,"margin":8}'><div class="btn-anime-slide-side left"><span class="btn-inner"></span></div><div class="btn-anime-slide-side right"><span class="btn-inner"></span></div><div class="anime-slide-outer" style="height:140px;"><ul class="anime-slide js-anime-slide" data-slide="7"><li class="btn-anime" style="width:90px" title="Magi"><a href="https://myanimelist.net/recommendations/manga/25-14790" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Magi</span><span class="users">7 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/4/62609.jpg?s=a6bc38d9e98b31bd651ae036c75cfa0d" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/4/62609.jpg?s=a6bc38d9e98b31bd651ae036c75cfa0d 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/4/62609.jpg?s=28f0aae24453570b6e55bbb002863b50 2x" width="90" height="140" class="image lazyload" alt="Magi" border="0" ></a></li><li class="btn-anime" style="width:90px" title="D.Gray-man"><a href="https://myanimelist.net/recommendations/manga/24-25" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">D.Gray-man</span><span class="users">7 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/28084.jpg?s=fa97e7f8801f9cf853e8a027ed8af722" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/28084.jpg?s=fa97e7f8801f9cf853e8a027ed8af722 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/3/28084.jpg?s=56cffa3d0d3f3f20cdfb8002fc4881e8 2x" width="90" height="140" class="image lazyload" alt="D.Gray-man" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Pandora Hearts"><a href="https://myanimelist.net/recommendations/manga/25-3031" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Pandora Hearts</span><span class="users">3 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/80893.jpg?s=dbaa0e32381ac0a0266d9f9eff69259d" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/80893.jpg?s=dbaa0e32381ac0a0266d9f9eff69259d 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/80893.jpg?s=0565a90e8b720ef3dbaeefed6b32c538 2x" width="90" height="140" class="image lazyload" alt="Pandora Hearts" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Tsubasa: RESERVoir CHRoNiCLE"><a href="https://myanimelist.net/recommendations/manga/9-25" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Tsubasa: RESERVoir CHRoNiCLE</span><span class="users">3 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/27076.jpg?s=74ca3718385ae5c89490d36192eaa22f" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/27076.jpg?s=74ca3718385ae5c89490d36192eaa22f 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/27076.jpg?s=adb56b683ef2f529371f4ddc51970e19 2x" width="90" height="140" class="image lazyload" alt="Tsubasa: RESERVoir CHRoNiCLE" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Psyren"><a href="https://myanimelist.net/recommendations/manga/25-3438" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Psyren</span><span class="users">2 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/160868.jpg?s=cfe409b4b91d6bf84b16ced66cac4ef8" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/160868.jpg?s=cfe409b4b91d6bf84b16ced66cac4ef8 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/160868.jpg?s=3766ef45da5be8dd1b5c3b3397cf1eda 2x" width="90" height="140" class="image lazyload" alt="Psyren" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Hunter x Hunter"><a href="https://myanimelist.net/recommendations/manga/25-26" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Hunter x Hunter</span><span class="users">2 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/156520.jpg?s=e0a9fef135bfb7e6c92f28d0ec7ae44f" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/156520.jpg?s=e0a9fef135bfb7e6c92f28d0ec7ae44f 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/156520.jpg?s=6c7d4224cd641707012ef57d5caa293a 2x" width="90" height="140" class="image lazyload" alt="Hunter x Hunter" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Ao no Exorcist"><a href="https://myanimelist.net/recommendations/manga/25-13492" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Ao no Exorcist</span><span class="users">2 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/120825.jpg?s=bc2edec3973d8e317db5f05e5b52a71c" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/120825.jpg?s=bc2edec3973d8e317db5f05e5b52a71c 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/120825.jpg?s=8c0fefddb142c9666f0c9ed54d6ed68e 2x" width="90" height="140" class="image lazyload" alt="Ao no Exorcist" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Shanghai Youma Kikai"><a href="https://myanimelist.net/recommendations/manga/25-1652" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Shanghai Youma Kikai</span><span class="users">2 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/1/1727.jpg?s=be6cd699cf003fae58b19cb5d0150066" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/1/1727.jpg?s=be6cd699cf003fae58b19cb5d0150066 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/1/1727.jpg?s=f2eecd086ff2ef0af12caaf59b673e23 2x" width="90" height="140" class="image lazyload" alt="Shanghai Youma Kikai" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Shingeki no Kyojin"><a href="https://myanimelist.net/recommendations/manga/25-23390" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Shingeki no Kyojin</span><span class="users">2 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/37846.jpg?s=d3e73255a5f78629b51bc4316df0f563" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/37846.jpg?s=d3e73255a5f78629b51bc4316df0f563 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/37846.jpg?s=4db7a74752e7ee118a1480a26d6d1dc8 2x" width="90" height="140" class="image lazyload" alt="Shingeki no Kyojin" border="0" ></a></li><li class="btn-anime" style="width:90px" title="666 Satan"><a href="https://myanimelist.net/recommendations/manga/25-32" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">666 Satan</span><span class="users">2 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/511.jpg?s=20cf7a6e3638586981587eb9548c64ed" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/511.jpg?s=20cf7a6e3638586981587eb9548c64ed 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/3/511.jpg?s=c927520c0125cfe3a2272881230aaecd 2x" width="90" height="140" class="image lazyload" alt="666 Satan" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Embalming: The Another Tale of Frankenstein"><a href="https://myanimelist.net/recommendations/manga/25-3099" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Embalming: The Another Tale of Frankenstein</span><span class="users">2 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/89677.jpg?s=3716c5e0f4d70ed7d7e08b6aa4fcfd6d" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/89677.jpg?s=3716c5e0f4d70ed7d7e08b6aa4fcfd6d 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/3/89677.jpg?s=a058ca271b9e170bcf953dd85790cac7 2x" width="90" height="140" class="image lazyload" alt="Embalming: The Another Tale of Frankenstein" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Tripeace"><a href="https://myanimelist.net/recommendations/manga/25-20694" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Tripeace</span><span class="users">2 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/32965.jpg?s=93fe98cf6c4a24895a953c44647dd5fd" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/32965.jpg?s=93fe98cf6c4a24895a953c44647dd5fd 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/32965.jpg?s=784e273fdec3bf7ba2b06d246b1c4191 2x" width="90" height="140" class="image lazyload" alt="Tripeace" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Zombie Powder."><a href="https://myanimelist.net/recommendations/manga/25-39" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Zombie Powder.</span><span class="users">2 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/180035.jpg?s=490873ee95cbe8440ff248c28ed4d190" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/180035.jpg?s=490873ee95cbe8440ff248c28ed4d190 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/3/180035.jpg?s=ec388eef0c134ff883a9e039f890fb6f 2x" width="90" height="140" class="image lazyload" alt="Zombie Powder." border="0" ></a></li><li class="btn-anime" style="width:90px" title="Busou Renkin"><a href="https://myanimelist.net/recommendations/manga/25-41" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Busou Renkin</span><span class="users">2 users</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/149583.jpg?s=ff42ea48158395b83de53c15aa717c49" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/149583.jpg?s=ff42ea48158395b83de53c15aa717c49 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/149583.jpg?s=9cf0f10b6183dcb942c2aa4472b4b3aa 2x" width="90" height="140" class="image lazyload" alt="Busou Renkin" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Rurouni Kenshin: Meiji Kenkaku Romantan"><a href="https://myanimelist.net/recommendations/manga/22-25" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Rurouni Kenshin: Meiji Kenkaku Romantan</span><span class="users">1 user</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/127583.jpg?s=3ffa97f25c2507cd41f960a184425919" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/127583.jpg?s=3ffa97f25c2507cd41f960a184425919 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/127583.jpg?s=cf75b1c35c65fa4565adcafbdfcb195c 2x" width="90" height="140" class="image lazyload" alt="Rurouni Kenshin: Meiji Kenkaku Romantan" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Hellsing"><a href="https://myanimelist.net/recommendations/manga/25-267" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Hellsing</span><span class="users">1 user</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/149.jpg?s=fb62c7018879f784111af521775cced6" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/149.jpg?s=fb62c7018879f784111af521775cced6 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/149.jpg?s=2e5bb32e0a54dac397aa3359e77e33fe 2x" width="90" height="140" class="image lazyload" alt="Hellsing" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Shaman King"><a href="https://myanimelist.net/recommendations/manga/25-50" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Shaman King</span><span class="users">1 user</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/1/57607.jpg?s=fef8d3bdc2f73956d2ba0c4652b69c9a" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/1/57607.jpg?s=fef8d3bdc2f73956d2ba0c4652b69c9a 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/1/57607.jpg?s=3cb37fdec3113470e72febc13bd41bf2 2x" width="90" height="140" class="image lazyload" alt="Shaman King" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Raiden-18"><a href="https://myanimelist.net/recommendations/manga/25-3444" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Raiden-18</span><span class="users">1 user</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/3828.jpg?s=69add546a40e5a761b8f4d99202f1c3a" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/3828.jpg?s=69add546a40e5a761b8f4d99202f1c3a 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/3/3828.jpg?s=61639d53732fb3c69d0cf232e1de713f 2x" width="90" height="140" class="image lazyload" alt="Raiden-18" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Pumpkin Scissors"><a href="https://myanimelist.net/recommendations/manga/25-426" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Pumpkin Scissors</span><span class="users">1 user</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/55387.jpg?s=4ef184540b19e4981047e92e6aaa4e84" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/55387.jpg?s=4ef184540b19e4981047e92e6aaa4e84 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/3/55387.jpg?s=2cbd781d4444b25befa0eb55124719eb 2x" width="90" height="140" class="image lazyload" alt="Pumpkin Scissors" border="0" ></a></li><li class="btn-anime" style="width:90px" title="World Trigger"><a href="https://myanimelist.net/recommendations/manga/25-48151" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">World Trigger</span><span class="users">1 user</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/152987.jpg?s=ba06925aea85d94980e07e0d2d9a009f" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/152987.jpg?s=ba06925aea85d94980e07e0d2d9a009f 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/152987.jpg?s=45082dd5db2a364b7b8fef9771c129bf 2x" width="90" height="140" class="image lazyload" alt="World Trigger" border="0" ></a></li><li class="btn-anime" style="width:90px" title="ES: Eternal Sabbath"><a href="https://myanimelist.net/recommendations/manga/25-344" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">ES: Eternal Sabbath</span><span class="users">1 user</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/174740.jpg?s=e2005996b2f08bf5f59cc1fba98f3813" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/2/174740.jpg?s=e2005996b2f08bf5f59cc1fba98f3813 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/2/174740.jpg?s=40862df2f888e5b7d265c9d7c934fd52 2x" width="90" height="140" class="image lazyload" alt="ES: Eternal Sabbath" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Darren Shan"><a href="https://myanimelist.net/recommendations/manga/25-6140" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Darren Shan</span><span class="users">1 user</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/1/177657.jpg?s=3b785243aa07e188d8dbbc3be2f12c2a" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/1/177657.jpg?s=3b785243aa07e188d8dbbc3be2f12c2a 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/1/177657.jpg?s=3954c5211738985243e5616311a8518b 2x" width="90" height="140" class="image lazyload" alt="Darren Shan" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Soul Eater"><a href="https://myanimelist.net/recommendations/manga/25-908" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Soul Eater</span><span class="users">1 user</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/1/159808.jpg?s=3fcbc1a2fa5b896476359b4ea4d0f393" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/1/159808.jpg?s=3fcbc1a2fa5b896476359b4ea4d0f393 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/1/159808.jpg?s=b311286d68b63b1880f8473867da802b 2x" width="90" height="140" class="image lazyload" alt="Soul Eater" border="0" ></a></li><li class="btn-anime" style="width:90px" title="Dragon Ball"><a href="https://myanimelist.net/recommendations/manga/25-42" class="link bg-center" style="width:90px;height:140px;"><span class="title fs10">Dragon Ball</span><span class="users">1 user</span><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/54547.jpg?s=6e2b57e0ad1798196483a64ee9e3cdef" data-srcset="https://myanimelist.cdn-dena.com/r/90x140/images/manga/3/54547.jpg?s=6e2b57e0ad1798196483a64ee9e3cdef 1x,https://myanimelist.cdn-dena.com/r/180x280/images/manga/3/54547.jpg?s=c042eef682a065ccc0b3c9a47b29faaa 2x" width="90" height="140" class="image lazyload" alt="Dragon Ball" border="0" ></a></li></ul></div></div></div><br><h2><div class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/news">More news</a></div>Recent News</h2><div class="clearfix"><div class="picSurround fl-l mr8 ml3 mt4"><a href="/news/46159033" class="image-link"><img src="https://myanimelist.cdn-dena.com/images/spacer.gif" data-src="https://myanimelist.cdn-dena.com/r/50x78/s/common/uploaded_files/1464055458-c7c8f103f8478494ac7a45836e060904.jpeg?s=0e3d4e3e1b8b65abf01c20b2658747e5" data-srcset="https://myanimelist.cdn-dena.com/r/50x78/s/common/uploaded_files/1464055458-c7c8f103f8478494ac7a45836e060904.jpeg?s=0e3d4e3e1b8b65abf01c20b2658747e5 1x,https://myanimelist.cdn-dena.com/r/100x156/s/common/uploaded_files/1464055458-c7c8f103f8478494ac7a45836e060904.jpeg?s=49fe3865950bcc7a07f30f93aaf403bd 2x" alt="Warner Bros. Announces Live-Action 'Fullmetal Alchemist' Film" width="50" height="78" class="lazyload"></a></div><p class="spaceit"><a href="/news/46159033" style=""><strong>Warner Bros. Announces Live-Action 'Fullmetal Alchemist' Film</strong></a></p>
 		<div class="clearfix" style="overflow:hidden;"><p>Warner Bros. Japan announced on Tuesday that it will distribute a live-action film based on the Fullmetal Alchemist manga series by Hiromu Arakawa. The film is curre...<a href="/news/46159033">read more</a></p></div>
 		<p class="lightLink spaceit">May 23, 7:05 PM by <a href="/profile/arsonal">arsonal</a> | <a href="/forum/?topicid=1514277">Discuss (111 comments)</a></p></div>
 		<div class="borderClass"></div><div class="clearfix"><p class="spaceit"><a href="/news/10020535" style=""><strong>Japan's Weekly Manga Ranking for Nov 22 - 28</strong></a></p>
@@ -722,55 +723,55 @@ Overall: (10) Overall, I give this series a 10. This series is definitely worth 
 		<p class="lightLink spaceit">Dec 1, 2010 4:07 PM by <a href="/profile/dtshyk">dtshyk</a> | <a href="/forum/?topicid=274133">Discuss (18 comments)</a></p></div>
 		<div class="borderClass"></div><br><h2><div class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/forum">More discussions</a></div>Recent Forum Discussion</h2><div class="page-forum">
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" id="forumTopics"><tr id="topicRow1">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow1"><a href="/login.php?from=%2Fmanga%2F25%2F&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=613957">Fullmetal Alchemist Chapter 37 Discussion</a> <small></small><br><span class="forum_postusername"><a href="/profile/skreyola">skreyola</a></span> - <span class="lightLink">Jun 11, 2013</span></td>
-			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">4 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/pacuuuuu3">pacuuuuu3</a> <a href="/forum/?topicid=613957&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>Aug 3, 2:57 PM</td>
+    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow1"><a href="/login.php?from=%2Fmanga%2F25&error=login_required"><img src="https://myanimelist.cdn-dena.com/images/watch_n.gif" title="Topic is not being watched"></a></td>
+                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=451409">Fullmetal Alchemist Chapter 73 Discussion</a> <small></small><br><span class="forum_postusername"><a href="/profile/jeanfarias">jeanfarias</a></span> - <span class="lightLink">Jun 11, 2012</span></td>
+			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">3 replies</td>
+				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/Kuromi59">Kuromi59</a> <a href="/forum/?topicid=451409&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>Sep 3, 4:08 PM</td>
 			</tr>
 			<tr id="topicRow2">
-    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow2"><a href="/login.php?from=%2Fmanga%2F25%2F&error=login_required"><img src="http://cdn.myanimelist.net/images/watch_n.gif" title="Topic is not being watched"></a></td>
-                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=332273">Fullmetal Alchemist Chapter 36 Discussion</a> <small></small><br><span class="forum_postusername"><a href="/profile/jeanfarias">jeanfarias</a></span> - <span class="lightLink">Sep 27, 2011</span></td>
+    	         <td class="forum_boardrow2" style="border-width: 0px 1px 1px 1px;" width="25" align="center" id="topicrow2"><a href="/login.php?from=%2Fmanga%2F25&error=login_required"><img src="https://myanimelist.cdn-dena.com/images/watch_n.gif" title="Topic is not being watched"></a></td>
+                 <td class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;">Poll:  <a href="/forum/?topicid=204770">Fullmetal Alchemist Chapter 41 Discussion</a> <small></small><br><span class="forum_postusername"><a href="/profile/Angra-Mainyu">Angra-Mainyu</a></span> - <span class="lightLink">May 1, 2010</span></td>
 			  <td align="center" width="75" class="forum_boardrow2" style="border-width: 0px 1px 1px 0px;">4 replies</td>
-				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/pacuuuuu3">pacuuuuu3</a> <a href="/forum/?topicid=332273&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>Aug 2, 10:15 PM</td>
+				<td align="right" width="130" class="forum_boardrow1" style="border-width: 0px 1px 1px 0px;" nowrap>by <a href="/profile/pacuuuuu3">pacuuuuu3</a> <a href="/forum/?topicid=204770&goto=lastpost" title="Go to the Last Post">&raquo;&raquo;</a><br>Aug 24, 9:56 PM</td>
 			</tr>
 			</table></div><br><h2><div class="floatRightHeader"><a href="/manga/25/Fullmetal_Alchemist/featured">More featured articles</a></div>Recent Featured Articles</h2><div class="detail-page-featured-article"><div class="news-list">
 
-    <div class="news-unit clearfix" data-tag="cat1 cat1 cat1 "><div class="picSurround fl-l mr8 ml3">
-          <a href="http://myanimelist.net/featured/1491/Top_20_Cute_Anime_Dogs"><img src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1459154569-4403afe02cb540830edb1fd1a832c8e4.png?s=7c41b6aa0d4eaffc4aa4e3ba5cca58bd" alt="Top 20 Cute Anime Dogs" class="image lazyload" width="50" height="78" srcset="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1459154569-4403afe02cb540830edb1fd1a832c8e4.png?s=7c41b6aa0d4eaffc4aa4e3ba5cca58bd 1x, http://cdn.myanimelist.net/r/100x156/s/common/uploaded_files/1459154569-4403afe02cb540830edb1fd1a832c8e4.png?s=dfb07b83c839c0a67b3bb647f11a9270 2x" /></a>
+    <div class="news-unit clearfix" data-tag="cat1 "><div class="picSurround fl-l mr8 ml3">
+          <a href="https://myanimelist.net/featured/1906/Top_10_Kamidere_Characters_in_Anime__Whats_a_Kamidere"><img src="https://myanimelist.cdn-dena.com/r/50x78/s/common/uploaded_files/1473762094-05b72e21aa64da6a38472d9ecf076ab6.png?s=99ac922fd8dc42673e367d24519d7138" alt="Top 10 Kamidere Characters in Anime: What&#039;s a Kamidere?" class="image lazyload" width="50" height="78" srcset="https://myanimelist.cdn-dena.com/r/50x78/s/common/uploaded_files/1473762094-05b72e21aa64da6a38472d9ecf076ab6.png?s=99ac922fd8dc42673e367d24519d7138 1x, https://myanimelist.cdn-dena.com/r/100x156/s/common/uploaded_files/1473762094-05b72e21aa64da6a38472d9ecf076ab6.png?s=4e01dab65c916235d32147594e0918e9 2x" /></a>
         </div><div class="news-unit-right rect">
         <p class="title">
-          <a href="http://myanimelist.net/featured/1491/Top_20_Cute_Anime_Dogs" title="Top 20 Cute Anime Dogs">Top 20 Cute Anime Dogs</a>
+          <a href="https://myanimelist.net/featured/1906/Top_10_Kamidere_Characters_in_Anime__Whats_a_Kamidere" title="Top 10 Kamidere Characters in Anime: What&#039;s a Kamidere?">Top 10 Kamidere Characters in Anime: What&#039;s a Kamidere?</a>
+        </p>
+        <div class="text">
+          In life being confident is important. However, Kamidere take it to a completely different level. Here are 10 that set the standard for what it means to be Kamidere.
+        </div>
+        <div class="information">
+          <p class="info pr8">
+            by <a href="https://myanimelist.net/profile/AlanV">AlanV</a>
+          </p><p class="di-tc pv pr8">
+              <b>13,344</b> views
+            </p><div class="tags">
+              <div class="tags-inner"><a href="https://myanimelist.net/featured/tag/collection" class="tag tag-color-feature-collection" title="Collection">Collection</a></div>
+            </div></div>
+      </div>
+    </div>
+
+    <div class="news-unit clearfix" data-tag="cat1 cat1 cat1 "><div class="picSurround fl-l mr8 ml3">
+          <a href="https://myanimelist.net/featured/1491/Top_20_Cute_Anime_Dogs"><img src="https://myanimelist.cdn-dena.com/r/50x78/s/common/uploaded_files/1459154569-4403afe02cb540830edb1fd1a832c8e4.png?s=7c41b6aa0d4eaffc4aa4e3ba5cca58bd" alt="Top 20 Cute Anime Dogs" class="image lazyload" width="50" height="78" srcset="https://myanimelist.cdn-dena.com/r/50x78/s/common/uploaded_files/1459154569-4403afe02cb540830edb1fd1a832c8e4.png?s=7c41b6aa0d4eaffc4aa4e3ba5cca58bd 1x, https://myanimelist.cdn-dena.com/r/100x156/s/common/uploaded_files/1459154569-4403afe02cb540830edb1fd1a832c8e4.png?s=dfb07b83c839c0a67b3bb647f11a9270 2x" /></a>
+        </div><div class="news-unit-right rect">
+        <p class="title">
+          <a href="https://myanimelist.net/featured/1491/Top_20_Cute_Anime_Dogs" title="Top 20 Cute Anime Dogs">Top 20 Cute Anime Dogs</a>
         </p>
         <div class="text">
           An anime dog is a protagonist&#039;s best friend. Anime dogs play different kinds of roles in different anime series. Not only are they loyal to their masters, they also fetch the hearts of anime fans alike! Come find the pick of the litter in this collection of adorable anime pooches!
         </div>
         <div class="information">
           <p class="info pr8">
-            by <a href="http://myanimelist.net/profile/Ai_Sakura">Ai_Sakura</a>
+            by <a href="https://myanimelist.net/profile/Ai_Sakura">Ai_Sakura</a>
           </p><p class="di-tc pv pr8">
-              <b>14,801</b> views
+              <b>23,257</b> views
             </p><div class="tags">
-              <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/collection" class="tag tag-color-feature-collection" title="Collection">Collection</a><a href="http://myanimelist.net/featured/tag/animals" class="tag tag-color-feature-animals" title="Animals">Animals</a><a href="http://myanimelist.net/featured/tag/kawaii" class="tag tag-color-feature-kawaii" title="Kawaii">Kawaii</a></div>
-            </div></div>
-      </div>
-    </div>
-
-    <div class="news-unit clearfix" data-tag="cat1 cat1 cat1 cat1 "><div class="picSurround fl-l mr8 ml3">
-          <a href="http://myanimelist.net/featured/1282/Top_10_Best_Anime_Omake_-_What_are_Omake"><img src="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1456734394-8f7ca7970634b592ca57eb311b6ad481.png?s=19df23536587a3573fc40b303d7d965d" alt="Top 10 Best Anime Omake - What are Omake?" class="image lazyload" width="50" height="78" srcset="http://cdn.myanimelist.net/r/50x78/s/common/uploaded_files/1456734394-8f7ca7970634b592ca57eb311b6ad481.png?s=19df23536587a3573fc40b303d7d965d 1x, http://cdn.myanimelist.net/r/100x156/s/common/uploaded_files/1456734394-8f7ca7970634b592ca57eb311b6ad481.png?s=33ad871192711f4b648d1fbd424ac656 2x" /></a>
-        </div><div class="news-unit-right rect">
-        <p class="title">
-          <a href="http://myanimelist.net/featured/1282/Top_10_Best_Anime_Omake_-_What_are_Omake" title="Top 10 Best Anime Omake - What are Omake?">Top 10 Best Anime Omake - What are Omake?</a>
-        </p>
-        <div class="text">
-          Have you ever wondered what omake are or if they’re even worth watching? Are they just filler or are they something different entirely? Let’s learn the difference with this collection of 10 of the best omake in the worlds of anime and manga!
-        </div>
-        <div class="information">
-          <p class="info pr8">
-            by <a href="http://myanimelist.net/profile/TLBickler">TLBickler</a>
-          </p><p class="di-tc pv pr8">
-              <b>10,110</b> views
-            </p><div class="tags">
-              <div class="tags-inner"><a href="http://myanimelist.net/featured/tag/collection" class="tag tag-color-feature-collection" title="Collection">Collection</a><a href="http://myanimelist.net/featured/tag/anime_terms" class="tag tag-color-feature-anime_terms" title="Anime Terms">Anime Terms</a><a href="http://myanimelist.net/featured/tag/funny" class="tag tag-color-feature-funny" title="Funny">Funny</a><a href="http://myanimelist.net/featured/tag/video" class="tag tag-color-feature-video" title="Video">Video</a></div>
+              <div class="tags-inner"><a href="https://myanimelist.net/featured/tag/collection" class="tag tag-color-feature-collection" title="Collection">Collection</a><a href="https://myanimelist.net/featured/tag/animals" class="tag tag-color-feature-animals" title="Animals">Animals</a><a href="https://myanimelist.net/featured/tag/kawaii" class="tag tag-color-feature-kawaii" title="Kawaii">Kawaii</a></div>
             </div></div>
       </div>
     </div>
@@ -780,7 +781,6 @@ Overall: (10) Overall, I give this series a 10. This series is definitely worth 
 		</div>  <div class="mauto clearfix pt24" style="width:760px;">
     <div class="fl-l">
 
-
 <div class="_unit " style="width:336px;display: block !important;" data-height="280">
   <div id="pc_manga_detail_bottom_rec_l" class="" style="width:336px;">
     <script type='text/javascript'>
@@ -789,13 +789,17 @@ Overall: (10) Overall, I give this series a 10. This series is definitely worth 
     .setTargeting("adult", "white")
     .setCollapseEmptyDiv(true,true);googletag.enableServices();
 
-  googletag.display("pc_manga_detail_bottom_rec_l");
+  googletag.display("pc_manga_detail_bottom_rec_l");if (window.MAL && window.MAL.adRefresh) {
+      window.MAL.adRefresh.setupRefresh(slot);
+    } else {
+      document.addEventListener("DOMContentLoaded", function(event) {
+        window.MAL.adRefresh.setupRefresh(slot);
+      });
+    }
          });</script>
   </div>
-</div>
-  </div>
+</div>  </div>
       <div class="fl-r">
-
 
 <div class="_unit " style="width:336px;display: block !important;" data-height="280">
   <div id="pc_manga_detail_bottom_rec_r" class="" style="width:336px;">
@@ -805,11 +809,16 @@ Overall: (10) Overall, I give this series a 10. This series is definitely worth 
     .setTargeting("adult", "white")
     .setCollapseEmptyDiv(true,true);googletag.enableServices();
 
-  googletag.display("pc_manga_detail_bottom_rec_r");
+  googletag.display("pc_manga_detail_bottom_rec_r");if (window.MAL && window.MAL.adRefresh) {
+      window.MAL.adRefresh.setupRefresh(slot);
+    } else {
+      document.addEventListener("DOMContentLoaded", function(event) {
+        window.MAL.adRefresh.setupRefresh(slot);
+      });
+    }
          });</script>
   </div>
-</div>
-  </div>
+</div>  </div>
   </div>
 
 </td>
@@ -841,53 +850,53 @@ Overall: (10) Overall, I give this series a 10. This series is definitely worth 
 <div class="footer-ranking">
   <div class="ranking-container">
           <div class="ranking-unit ranking-top_anime">
-        <h3 class="title"><a href="http://myanimelist.net/topanime.php" class="view_more fl-r">More</a>Top Anime</h3>
+        <h3 class="title"><a href="https://myanimelist.net/topanime.php" class="view_more fl-r">More</a>Top Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/9253/Steins_Gate">Steins;Gate</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/9969/Gintama">Gintama&#039;</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/11061/Hunter_x_Hunter_2011">Hunter x Hunter (2011)</a></li>
+                      <li><span class="rank">1</span><a href="https://myanimelist.net/anime/32281/Kimi_no_Na_wa">Kimi no Na wa.</a></li>
+                      <li><span class="rank">2</span><a href="https://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
+                      <li><span class="rank">3</span><a href="https://myanimelist.net/anime/28977/Gintama°">Gintama°</a></li>
+                      <li><span class="rank">4</span><a href="https://myanimelist.net/anime/9253/Steins_Gate">Steins;Gate</a></li>
+                      <li><span class="rank">5</span><a href="https://myanimelist.net/anime/9969/Gintama">Gintama&#039;</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_airing">
-        <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=airing" class="view_more fl-r">More</a>Top Airing Anime</h3>
+        <h3 class="title"><a href="https://myanimelist.net/topanime.php?type=airing" class="view_more fl-r">More</a>Top Airing Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/31240/Re_Zero_kara_Hajimeru_Isekai_Seikatsu">Re:Zero kara Hajimeru Isekai Seikatsu</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/32366/Gintama°__Aizome_Kaori-hen">Gintama°: Aizome Kaori-hen</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/30709/Kamisama_Hajimemashita__Kako-hen">Kamisama Hajimemashita: Kako-hen</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/32282/Shokugeki_no_Souma__Ni_no_Sara">Shokugeki no Souma: Ni no Sara</a></li>
+                      <li><span class="rank">1</span><a href="https://myanimelist.net/anime/32366/Gintama°__Aizome_Kaori-hen">Gintama°: Aizome Kaori-hen</a></li>
+                      <li><span class="rank">2</span><a href="https://myanimelist.net/anime/21/One_Piece">One Piece</a></li>
+                      <li><span class="rank">3</span><a href="https://myanimelist.net/anime/31933/JoJo_no_Kimyou_na_Bouken__Diamond_wa_Kudakenai">JoJo no Kimyou na Bouken: Diamond wa Kudakenai</a></li>
+                      <li><span class="rank">4</span><a href="https://myanimelist.net/anime/10937/Mobile_Suit_Gundam__The_Origin">Mobile Suit Gundam: The Origin</a></li>
+                      <li><span class="rank">5</span><a href="https://myanimelist.net/anime/32182/Mob_Psycho_100">Mob Psycho 100</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_upcoming">
-        <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=upcoming" class="view_more fl-r">More</a>Top Upcoming Anime</h3>
+        <h3 class="title"><a href="https://myanimelist.net/topanime.php?type=upcoming" class="view_more fl-r">More</a>Top Upcoming Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/25777/Shingeki_no_Kyojin_Season_2">Shingeki no Kyojin Season 2</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/3786/Evangelion__30_10">Evangelion: 3.0+1.0</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/30484/Steins_Gate_0">Steins;Gate 0</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/31722/Nanatsu_no_Taizai__Seisen_no_Shirushi">Nanatsu no Taizai: Seisen no Shirushi</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/25537/Fate_stay_night_Movie__Heavens_Feel">Fate/stay night Movie: Heaven&#039;s Feel</a></li>
+                      <li><span class="rank">1</span><a href="https://myanimelist.net/anime/25777/Shingeki_no_Kyojin_Season_2">Shingeki no Kyojin Season 2</a></li>
+                      <li><span class="rank">2</span><a href="https://myanimelist.net/anime/3786/Evangelion__30_10">Evangelion: 3.0+1.0</a></li>
+                      <li><span class="rank">3</span><a href="https://myanimelist.net/anime/30484/Steins_Gate_0">Steins;Gate 0</a></li>
+                      <li><span class="rank">4</span><a href="https://myanimelist.net/anime/25537/Fate_stay_night_Movie__Heavens_Feel">Fate/stay night Movie: Heaven&#039;s Feel</a></li>
+                      <li><span class="rank">5</span><a href="https://myanimelist.net/anime/31765/Sword_Art_Online_Movie__Ordinal_Scale">Sword Art Online Movie: Ordinal Scale</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-top_page_views">
         <h3 class="title">Top Page Views</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/31240/Re_Zero_kara_Hajimeru_Isekai_Seikatsu">Re:Zero kara Hajimeru Isekai Seikatsu</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/32282/Shokugeki_no_Souma__Ni_no_Sara">Shokugeki no Souma: Ni no Sara</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/32998/91_Days">91 Days</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/31764/Nejimaki_Seirei_Senki__Tenkyou_no_Alderamin">Nejimaki Seirei Senki: Tenkyou no Alderamin</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/33091/Planetarian__Chiisana_Hoshi_no_Yume">Planetarian: Chiisana Hoshi no Yume</a></li>
+                      <li><span class="rank">1</span><a href="https://myanimelist.net/anime/31240/Re_Zero_kara_Hajimeru_Isekai_Seikatsu">Re:Zero kara Hajimeru Isekai Seikatsu</a></li>
+                      <li><span class="rank">2</span><a href="https://myanimelist.net/anime/32281/Kimi_no_Na_wa">Kimi no Na wa.</a></li>
+                      <li><span class="rank">3</span><a href="https://myanimelist.net/anime/28851/Koe_no_Katachi">Koe no Katachi</a></li>
+                      <li><span class="rank">4</span><a href="https://myanimelist.net/anime/34103/Danganronpa_3__The_End_of_Kibougamine_Gakuen_-_Kibou-hen">Danganronpa 3: The End of Kibougamine Gakuen - Kibou-hen</a></li>
+                      <li><span class="rank">5</span><a href="https://myanimelist.net/anime/33028/Danganronpa_3__The_End_of_Kibougamine_Gakuen_-_Zetsubou-hen">Danganronpa 3: The End of Kibougamine Gakuen - Zetsubou-hen</a></li>
                   </ol>
       </div>
           <div class="ranking-unit ranking-popular_ranking">
-        <h3 class="title"><a href="http://myanimelist.net/topanime.php?type=bypopularity" class="view_more fl-r">More</a>Most Popular Anime</h3>
+        <h3 class="title"><a href="https://myanimelist.net/topanime.php?type=bypopularity" class="view_more fl-r">More</a>Most Popular Anime</h3>
         <ol>
-                      <li><span class="rank">1</span><a href="http://myanimelist.net/anime/1535/Death_Note">Death Note</a></li>
-                      <li><span class="rank">2</span><a href="http://myanimelist.net/anime/11757/Sword_Art_Online">Sword Art Online</a></li>
-                      <li><span class="rank">3</span><a href="http://myanimelist.net/anime/16498/Shingeki_no_Kyojin">Shingeki no Kyojin</a></li>
-                      <li><span class="rank">4</span><a href="http://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
-                      <li><span class="rank">5</span><a href="http://myanimelist.net/anime/1575/Code_Geass__Hangyaku_no_Lelouch">Code Geass: Hangyaku no Lelouch</a></li>
+                      <li><span class="rank">1</span><a href="https://myanimelist.net/anime/1535/Death_Note">Death Note</a></li>
+                      <li><span class="rank">2</span><a href="https://myanimelist.net/anime/16498/Shingeki_no_Kyojin">Shingeki no Kyojin</a></li>
+                      <li><span class="rank">3</span><a href="https://myanimelist.net/anime/11757/Sword_Art_Online">Sword Art Online</a></li>
+                      <li><span class="rank">4</span><a href="https://myanimelist.net/anime/5114/Fullmetal_Alchemist__Brotherhood">Fullmetal Alchemist: Brotherhood</a></li>
+                      <li><span class="rank">5</span><a href="https://myanimelist.net/anime/1575/Code_Geass__Hangyaku_no_Lelouch">Code Geass: Hangyaku no Lelouch</a></li>
                   </ol>
       </div>
       </div>
@@ -896,21 +905,21 @@ Overall: (10) Overall, I give this series a 10. This series is definitely worth 
   <div id="footer-block">
     <div class="footer-link-block">
       <p class="footer-link home di-ib">
-        <a href="http://myanimelist.net/">Home</a>
+        <a href="https://myanimelist.net/">Home</a>
       </p>
       <p class="footer-link di-ib">
-        <a href="http://myanimelist.net/about.php">About</a>
-        <a href="http://myanimelist.net/pressroom">Press Room</a>
-        <a href="http://myanimelist.net/about.php?go=contact">Support</a>
-        <a href="http://myanimelist.net/advertising">Advertising</a>
-        <a href="http://myanimelist.net/forum/?topicid=515949">FAQ</a>
-        <a href="http://myanimelist.net/about/terms_of_use">Terms</a>
-        <a href="http://myanimelist.net/about/privacy_policy">Privacy</a>
-        <a href="http://myanimelist.net/about/sitemap">Sitemap</a>
+        <a href="https://myanimelist.net/about.php">About</a>
+        <a href="https://myanimelist.net/pressroom">Press Room</a>
+        <a href="https://myanimelist.net/about.php?go=contact">Support</a>
+        <a href="https://myanimelist.net/advertising">Advertising</a>
+        <a href="https://myanimelist.net/forum/?topicid=515949">FAQ</a>
+        <a href="https://myanimelist.net/about/terms_of_use">Terms</a>
+        <a href="https://myanimelist.net/about/privacy_policy">Privacy</a>
+        <a href="https://myanimelist.net/about/sitemap">Sitemap</a>
     	</p>
   		  		<p class="footer-link login di-ib">
-  			<a href="http://myanimelist.net/login.php?from=%2Fmanga%2F25%2F" id="malLogin" rel="nofollow">Login</a>
-  			<a href="http://myanimelist.net/register.php?from=%2Fmanga%2F25%2F">Sign Up</a>
+  			<a href="https://myanimelist.net/login.php?from=%2Fmanga%2F25" id="malLogin" rel="nofollow">Login</a>
+  			<a href="https://myanimelist.net/register.php?from=%2Fmanga%2F25">Sign Up</a>
   		</p>
   		    </div>
 
@@ -919,11 +928,14 @@ Overall: (10) Overall, I give this series a 10. This series is definitely worth 
         <a target="_blank" class="icon-sns icon-fb di-ib" href="https://www.facebook.com/OfficialMyAnimeList"></a>
         <a target="_blank" class="icon-sns icon-tw di-ib" title="Follow @myanimelist on Twitter" href="https://twitter.com/myanimelist"></a>
         <a class="icon-sns icon-gp" href="https://plus.google.com/105884801583962160252?prsrc=3" rel="publisher" target="_blank" style="text-decoration:none;">
-          <img src="http://cdn.myanimelist.net/images/footer/icon-google_plus.png" alt="Google+" style="border:0;width:30px;height:30px;" />
+          <img src="https://myanimelist.cdn-dena.com/images/footer/icon-google_plus.png" alt="Google+" style="border:0;width:30px;height:30px;" />
         </a>
       </div>
             <div class="footer-recommended ac">
         <a target="_blank" class="icon-recommended icon-tokyo-otaku-mode" href="http://otakumode.com/fb/5aO">Tokyo Otaku Mode</a>
+      </div>
+            <div class="footer-competition ac">
+        <a target="_blank" class="icon-competition icon-mtb-vol5" href="https://myanimelist.net/manga_translation_battle_vol5">Manga Translation Battle vol.5</a>
       </div>
     </div>
 
