@@ -4,24 +4,18 @@ module DataImport
       class Character
         include Enumerable
 
-        attr_reader :dom, :external_id
+        attr_reader :dom
 
-        def initialize(html, external_id)
+        def initialize(html)
           @dom = Nokogiri::HTML(html)
-          @external_id = external_id
         end
 
         def name
           # line 473 in guts-character.html
-          options = ['Animeography', 'Mangaography', 'Voice Actors']
-          dom.css('.normal_header').map do |row|
-            next if  options.include?(row.content.strip)
+          result = dom.css('#horiznav_nav ~ .normal_header').first.children
 
-            english = row.children.first.content.strip
-            # japanese = row.children.at_css('small').content.strip
-
-            return english
-          end
+          english = result.first.content.strip
+          # japanese = result.at_css('small').content.strip
         end
 
         def image
@@ -35,8 +29,9 @@ module DataImport
                       .children.take_while { |x|
             !x.text.include? 'Voice Actor'
           }.reject { |x|
-            x['class'] == 'normal_header' || x['id'] == 'horiznav_nav' ||
-            x['itemtype'] == 'http://schema.org/BreadcrumbList'
+            x['class'] == 'normal_header' ||
+              x['id'] == 'horiznav_nav' ||
+              x['itemtype'] == 'http://schema.org/BreadcrumbList'
           }.map(&:to_html).join
 
           clean_desc(result)
@@ -73,11 +68,9 @@ module DataImport
             t = node.content.split(/: ?/).map { |x| x.split(' ') }
 
             if t.length >= 2
-              if t[0].length <= 3 && t[1].length <= 20
-                node.remove
-              end
-            else
-              node.remove if /^\s+\*\s+.*/ =~ node.content
+              node.remove if t[0].length <= 3 && t[1].length <= 20
+            elsif /^\s+\*\s+.*/ =~ node.content
+              node.remove
             end
           end
           br_to_p(desc.inner_html)

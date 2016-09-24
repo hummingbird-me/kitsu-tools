@@ -1,23 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe DataImport::MyAnimeList::Extractor::Character do
-  let(:guts_character) do
-    fixture('my_anime_list/characters/guts-character.html')
-  end
-  let(:faye_character) do
-    fixture('my_anime_list/characters/faye-character.html')
-  end
-  let(:kyou_character) do
-    fixture('my_anime_list/characters/kyou-character.html')
-  end
-  let(:sachi_character) do
-    fixture('my_anime_list/characters/sachi-character.html')
-  end
-  let(:shichi_character) do
-    fixture('my_anime_list/characters/shichi-character.html')
-  end
+  let(:guts_character) { fixture('my_anime_list/characters/guts.html') }
+  let(:faye_character) { fixture('my_anime_list/characters/faye.html') }
+  let(:kyou_character) { fixture('my_anime_list/characters/kyou.html') }
+  let(:sachi_character) { fixture('my_anime_list/characters/sachi.html') }
+  let(:shichi_character) { fixture('my_anime_list/characters/shichi.html') }
   # don't need to pass in 422/Guts
-  subject { described_class.new(guts_character, '422') }
+  subject { described_class.new(guts_character) }
 
   describe '#name' do
     it 'should get english character name' do
@@ -37,24 +27,24 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Character do
       expect(amount).to eq(3)
     end
     it 'should get Faye Valentine charater description' do
-      subject = described_class.new(faye_character, '2')
+      subject = described_class.new(faye_character)
       amount = subject.description.scan(%r{</p>}).length
       expect(amount).to eq(5)
     end
     it 'should get Kyou Aguri charater description' do
-      subject = described_class.new(kyou_character, '216')
+      subject = described_class.new(kyou_character)
       amount = subject.description.scan(%r{</p>}).length
 
       expect(amount).to eq(1)
     end
     it 'should get Sachi Nanjou charater description' do
-      subject = described_class.new(sachi_character, '58443')
+      subject = described_class.new(sachi_character)
       amount = subject.description.scan(%r{</p>}).length
 
       expect(amount).to eq(1)
     end
     it 'should get Shichiroji charater description' do
-      subject = described_class.new(shichi_character, '156')
+      subject = described_class.new(shichi_character)
       amount = subject.description.scan(%r{</p>}).length
 
       expect(amount).to eq(4)
@@ -68,7 +58,7 @@ RSpec.describe DataImport::MyAnimeList::Extractor::Character do
       )
     end
     it 'should get faye character image' do
-      subject = described_class.new(faye_character, '2')
+      subject = described_class.new(faye_character)
 
       expect(subject.image).to eq(
         'https://myanimelist.cdn-dena.com/images/characters/13/30532.jpg'
