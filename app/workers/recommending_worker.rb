@@ -7,6 +7,7 @@ class RecommendingWorker
   ITEM_LIMIT = 10
 
   def perform(user_id)
+    return
     user = User.find(user_id)
 
     # Get a user's list and favorite genres.
