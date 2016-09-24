@@ -40,6 +40,8 @@ class Manga < ActiveRecord::Base
   enum status: %i[not_published publishing finished]
   alias_attribute :progress_limit, :chapter_count
 
+  has_many :chapters
+
   def default_progress_limit
     # Biweekly with a margin
     if run_length
