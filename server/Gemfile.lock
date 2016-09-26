@@ -167,10 +167,11 @@ GEM
     jmespath (1.3.0)
     json (1.8.3)
     json_expressions (0.8.3)
-    jsonapi-authorization (0.6.1)
-      jsonapi-resources (~> 0.7.0)
+    jsonapi-authorization (0.8.1)
+      jsonapi-resources (~> 0.8.0.beta1)
       pundit (~> 1.0)
-    jsonapi-resources (0.7.0)
+    jsonapi-resources (0.8.0)
+      concurrent-ruby
       rails (>= 4.0)
     jwt (1.5.4)
     listen (3.1.5)
@@ -398,8 +399,8 @@ DEPENDENCIES
   image_optim
   image_optim_pack
   json_expressions
-  jsonapi-authorization
-  jsonapi-resources (~> 0.7.0)
+  jsonapi-authorization (~> 0.8.0)
+  jsonapi-resources (~> 0.8.0)
   loofah-activerecord
   nokogiri
   oauth2
@@ -431,6 +432,9 @@ DEPENDENCIES
   twemoji!
   typhoeus
   webmock
+
+RUBY VERSION
+   ruby 2.3.1p112
 
 BUNDLED WITH
    1.12.5
