@@ -86,18 +86,18 @@ RSpec.describe DataImport::MyAnimeList do
     describe '#get_character' do
       it 'should yield a Character object' do
         expect { |b|
-          subject.get_character('character/422', &b)
+          subject.get_character('422', &b)
           subject.run
         }.to yield_with_args(Character)
       end
       it 'should have assigned attributes onto the yielded object' do
-        subject.get_character('character/422') do |media|
+        subject.get_character('422') do |media|
           expect(media.name).to eq('Guts')
         end
         subject.run
       end
       it 'should be valid' do
-        subject.get_character('character/422') do |media|
+        subject.get_character('422') do |media|
           expect(media).to be_valid
         end
         subject.run

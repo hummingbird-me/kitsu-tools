@@ -33,6 +33,7 @@ module DataImport
     end
 
     def get_character(external_id)
+      external_id = "character/#{external_id}"
       character = Mapping.lookup('myanimelist', external_id)
       character ||= Character.new
 
