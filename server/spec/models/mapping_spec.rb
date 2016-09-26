@@ -28,10 +28,6 @@ RSpec.describe Mapping, type: :model do
       .scoped_to(%i[media_type external_site])
   end
 
-  before do
-    Chewy.client.cluster.health wait_for_status: 'yellow', timeout: '10s'
-  end
-
   describe '.lookup' do
     it 'should respond when it finds the correct media' do
       anime = create(:anime)
