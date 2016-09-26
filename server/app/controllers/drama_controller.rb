@@ -1,3 +1,1 @@
-class DramaController < ApplicationController
-  include SearchableController
-end
+class DramaController < ApplicationController; end

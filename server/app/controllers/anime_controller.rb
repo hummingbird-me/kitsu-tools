@@ -1,3 +1,1 @@
-class AnimeController < ApplicationController
-  include SearchableController
-end
+class AnimeController < ApplicationController; end

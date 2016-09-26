@@ -1,3 +1,1 @@
-class MangaController < ApplicationController
-  include SearchableController
-end
+class MangaController < ApplicationController; end
