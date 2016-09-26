@@ -1,6 +1,7 @@
 module DataImport
   class MyAnimeList
     ATARASHII_API_HOST = 'https://hbv3-mal-api.herokuapp.com/2.1/'.freeze
+    MY_ANIME_LIST_HOST = 'https://myanimelist.net/'.freeze
 
     include DataImport::Media
     include DataImport::HTTP
@@ -19,7 +20,7 @@ module DataImport
       # initialize the class
       media ||= klass.new
 
-      get(external_id) do |response|
+      get(ATARASHII_API_HOST, external_id) do |response|
         details = Extractor::Media.new(response)
 
         media.assign_attributes(details.to_h.compact)
@@ -31,15 +32,28 @@ module DataImport
       end
     end
 
-    private
+    def get_character(external_id)
+      external_id = "character/#{external_id}"
+      character = Mapping.lookup('myanimelist', external_id)
+      character ||= Character.new
 
-    def get(url, opts = {})
-      super(build_url(url), opts)
+      get(MY_ANIME_LIST_HOST, external_id) do |response|
+        details = Extractor::Character.new(response)
+
+        character.assign_attributes(details.to_h.compact)
+
+        yield character
+      end
     end
 
-    def build_url(path)
-      return path if path.include?('://')
-      "#{ATARASHII_API_HOST}#{path}"
+    private
+
+    def get(host, url, opts = {})
+      super(build_url(host, url), opts)
+    end
+
+    def build_url(host, path)
+      "#{host}#{path}"
     end
   end
 end
