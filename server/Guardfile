@@ -1,3 +1,5 @@
+require 'active_support/inflector'
+
 guard :rspec, cmd: 'bin/rspec' do
   # spec/*_helper.rb -> all specs
   watch(%r{spec/.*_helper.rb})                        { 'spec' }
