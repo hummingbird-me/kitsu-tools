@@ -1,7 +1,6 @@
 # Hummingbird
 
-[![Build Status](https://secure.travis-ci.org/hummingbird-me/hummingbird.png?branch=master)](http://travis-ci.org/hummingbird-me/hummingbird) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird.png)](https://codeclimate.com/github/hummingbird-me/hummingbird) [![Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird/coverage.png)](https://codeclimate.com/github/hummingbird-me/hummingbird)
-
+Hummingbird is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
 
 ---
 **<p align="center">This branch is our under-development next-generation platform, not the one currently at hummingbird.me</p>**
@@ -10,15 +9,16 @@
 
 [![Hummingbird is now Open Source](http://hummingbird-forum.s3.amazonaws.com/86407dbb64dbecfee0cbd74b759a4b33f70657b74c29.jpg)](http://forums.hummingbird.me/t/hummingbird-is-now-open-source/9870)
 
-### What is Hummingbird?
 
-Hummingbird is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
+| [Server Repository](https://github.com/hummingbird-me/hummingbird-server) | [Client Repository](https://github.com/hummingbird-me/hummingbird-client) |
+|:-------------:|:-------------:|
+| [![Build Status](https://travis-ci.org/hummingbird-me/hummingbird-server.svg?branch=the-future)](https://travis-ci.org/hummingbird-me/hummingbird-server) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird-server/badges/gpa.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-server) [![Test Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird-server/badges/coverage.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-server/coverage)      | [![Build Status](https://travis-ci.org/hummingbird-me/hummingbird-client.svg?branch=the-future)](https://travis-ci.org/hummingbird-me/hummingbird-client) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird-client/badges/gpa.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-client) [![Test Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird-client/badges/coverage.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-client/coverage) |
 
-### Contributing
 
+## Contributing
 The backend is a JSON API server built with Rails, Postgres, ElasticSearch, and Redis. The frontend is a client-side application written using Ember.
 
-To get started, clone this repository, install Docker (via Docker for Mac/Windows or Docker-Machine if you're not on Linux) and run `bin/setup && bin/start` to get a development version running. Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/the-future/.github/CONTRIBUTING.md).
+To get started, clone this repository, install Docker (via Docker for Mac/Windows or Docker-Machine if you're not on Linux) and run `bin/setup` to get a development version running. The script will automatically clone the client and server repository and perform the whole setup for you. Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/the-future/.github/CONTRIBUTING.md).
 
 To get data into your development server:
 
@@ -40,16 +40,16 @@ For ideas of things to do, see our GitHub issues — check out the issues tagged
 
 Please don't use Github issues for feature requests, instead create a topic in the [forum feedback category](http://forums.hummingbird.me/category/feedback).
 
-### Screenshots
 
+## Screenshots
 [![Library Page](https://a.pomf.cat/wuigre.png)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/122667531)
 [![Profile Page](https://a.pomf.cat/ljwmcn.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/105637573)
 [![Browse Page](https://a.pomf.cat/jiliwf.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/104358379)
 [![Preview Modal](https://a.pomf.cat/ajlsud.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/104250303)
 [![Dashboard Page](https://a.pomf.cat/anxjco.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/103968010)
 
-### License
 
+## License
 Copyright 2015 Hummingbird Media, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");

@@ -1,5 +1,262 @@
 #!/bin/bash
+#
+# Interactive setup script for new contributors
+#
+# This should only be run once. In case the project
+# needs to be rebuilt, use bin/rebuild instead.
 
-docker-compose build
-docker-compose run --rm server rake db:setup
-docker-compose run --rm server rake db:setup RAILS_ENV=test
+
+# Information we will eventually need
+GITHUB_USER=""
+GITREPO_SERVER=""
+GITREPO_CLIENT=""
+GITREPO_METHOD=""
+SETTING_AUTORUN=false
+
+
+# Navigate to repository root so we clone stuff in the right place
+cd "$(dirname "$0")/../"
+
+
+# Most importantly, center and output our logo ascii art
+TERM_SIZE=`tput cols`
+LOGO_SIZE=25
+LOGO_OFFS=0
+LOGO_PADD=""
+
+if [[ "$TERM_SIZE" -gt "0" ]]; then
+  LOGO_OFFS=$[($TERM_SIZE - $LOGO_SIZE) / 2]
+  for i in `seq 1 $LOGO_OFFS`; do
+    LOGO_PADD="$LOGO_PADD "
+  done
+fi
+
+# [logo]
+
+
+# Output a totally not generic welcome message to the contributor
+echo "Great to have you on board!"
+echo "Let's just run through some basic stuff to set up your local dev environment!"
+echo -e "\n"
+
+
+# Check if the user has docker and docker-compose installed
+HAS_DOCKER_ITSELF=`which docker`
+HAS_DOCKER_COMPOSE=`which docker-compose`
+
+if [[ "$HAS_DOCKER_ITSELF" == "" || "$HAS_DOCKER_COMPOSE" == "" ]]; then
+  echo "You will need to have docker and docker-compose installed for running"
+  echo "- If you are on Mac, check out Docker for Mac at https://docs.docker.com/docker-for-mac/"
+  echo "- If you are on Windows, check out Docker for Windows at https://docs.docker.com/docker-for-windows/"
+  echo "- Alternatively, check out Docker Toolbox at https://www.docker.com/products/docker-toolbox"
+  echo "  or manually install the docker and docker-compose package from your respective package manager."
+  echo -e "\n"
+
+  echo "We found"
+  if [[ "$HAS_DOCKER_ITSELF" == "" ]]; then
+    echo "- No docker installation on your system"
+  else
+    echo "- A docker installation at $HAS_DOCKER_ITSELF"
+  fi
+  if [[ "$HAS_DOCKER_COMPOSE" == "" ]]; then
+    echo "- No docker-compose installation on your system"
+  else
+    echo "- A docker-compose installation at $HAS_DOCKER_COMPOSE"
+  fi
+
+  echo -e "\n"
+  echo "Please come back after installing the missing tools."
+
+  exit 0
+fi
+
+
+# Prompt the user for his GitHub username
+while [ "" == "$GITHUB_USER" ]; do
+  GITHUB_USER=`git config --get github.user`
+  if [ "$GITHUB_USER" != "" ]; then
+    INPUT_DEFAULT=" [$GITHUB_USER]"
+  else
+    INPUT_DEFAULT=""
+  fi
+  read -p "What is your GitHub username$INPUT_DEFAULT? " GITHUB_USER
+
+  if [[ "$GITHUB_USER" == "" ]]; then
+    echo "Please provide your GitHub username in order for us to find your forks."
+  fi
+done
+
+
+# Prompt the user to select which server repo he wants to use
+while [ "" == "$GITREPO_SERVER" ]; do
+  INPUT_DEFAULT=" [$GITHUB_USER/hummingbird-server]"
+  read -p "What's the name of your hummingbird-server repository fork$INPUT_DEFAULT? " GITREPO_SERVER
+
+  if [[ "$GITREPO_SERVER" == "" ]]; then
+    GITREPO_SERVER="$GITHUB_USER/hummingbird-server"
+  fi
+done
+
+
+# Prompt the user to select which client repo he wants to use
+while [ "" == "$GITREPO_CLIENT" ]; do
+  INPUT_DEFAULT=" [$GITHUB_USER/hummingbird-client]"
+  read -p "What's the name of your hummingbird-client repository fork$INPUT_DEFAULT? " GITREPO_CLIENT
+
+  if [[ "$GITREPO_CLIENT" == "" ]]; then
+    GITREPO_CLIENT="$GITHUB_USER/hummingbird-client"
+  fi
+done
+
+
+# Prompt the user to select which way he want to clone the repositories
+while [ "" == "$GITREPO_METHOD" ]; do
+  INPUT_DEFAULT=" [HTTPS/ssh]"
+  read -p "Which method do you want to use for cloning your repositories$INPUT_DEFAULT? " GITREPO_METHOD
+
+  if [[ "$GITREPO_METHOD" == "" ]]; then
+    GITREPO_METHOD="https"
+  fi
+done
+
+
+# Prompt the user to ask if he wants to start all containers after cloning
+INPUT_DEFAULT=" [Y/n]"
+read -p "Do you want to start all containers after the initial setup$INPUT_DEFAULT? " SETTING_AUTORUN
+
+if [[ "$SETTING_AUTORUN" == "" ]]; then
+  SETTING_AUTORUN="y";
+fi
+
+if [[ "$SETTING_AUTORUN" == *"y"* || "$SETTING_AUTORUN" == *"Y"* ]]; then
+  SETTING_AUTORUN=1
+else
+  SETTING_AUTORUN=0
+fi
+
+
+# Map the users input to a valid GitHub repository
+if [[ "$GITREPO_METHOD" == *"ssh"* || "$GITREPO_METHOD" == *"SSH"* ]]; then
+  REPO_SERVER="git@github.com:$GITREPO_SERVER.git"
+  REPO_CLIENT="git@github.com:$GITREPO_CLIENT.git"
+else
+  REPO_SERVER="https://github.com/$GITREPO_SERVER.git"
+  REPO_CLIENT="https://github.com/$GITREPO_CLIENT.git"
+fi
+
+
+# Check if all the user's input is correct
+if [[ $SETTING_AUTORUN -eq 0 ]]; then
+  DOES_AUTORUN=" NOT"
+else
+  DOES_AUTORUN=""
+fi
+
+echo -e "\n"
+echo "Thanks for providing all of your information."
+echo "We will use $GITREPO_METHOD to access GitHub in order to"
+echo "Clone hummingbird-server from $REPO_SERVER"
+echo "Clone hummingbird-client from $REPO_CLIENT"
+echo "And then$DOES_AUTORUN start everything automatically."
+echo -e "\n"
+
+INPUT_DEFAULT=" [Y/n]"
+read -p "Is that ok for you$INPUT_DEFAULT? " SETTING_CONFIRM
+echo -e "\n"
+
+if [[ "$SETTING_CONFIRM" == "" ]]; then
+  SETTING_CONFIRM="y";
+fi
+
+if [[ "$SETTING_CONFIRM" != *"y"* && "$SETTING_CONFIRM" != *"Y"* ]]; then
+  exit 0
+fi
+
+
+# Fetch contributors project repositories from GitHub
+HAD_OLD_DIRS=0
+
+echo -e "\nAttempting to clone $REPO_SERVER to ./server"
+if [[ -d ./server ]]; then
+  echo "Failed to clone server repository. You already have a ./server directory"
+  echo "If you want to re-run this setup, please delete the existing ./server directory"
+  HAD_OLD_DIRS=1
+else
+  git clone "$REPO_SERVER" ./server
+fi
+
+echo -e "\nAttempting to clone $REPO_CLIENT to ./client"
+if [[ -d ./client ]]; then
+  echo "Failed to clone client repository. You already have a ./client directory"
+  echo "If you want to re-run this setup, please delete the existing ./client directory"
+  HAD_OLD_DIRS=1
+else
+  git clone "$REPO_SERVER" ./client
+fi
+
+
+# Notify the user, if he had existing ./server or ./client
+if  [[ $HAD_OLD_DIRS -eq 1 ]]; then
+  INPUT_DEFAULT=" [Y/n]"
+  echo -e "\nOne or more repositories were not cloned, because their directory already existed."
+  echo "Please make sure that the ./client and ./server directory contain the right files."
+  echo "If you want to go through the setup a second time, just delete the directories first."
+  read -p "Do you want to continue anyways$INPUT_DEFAULT? " IGNORE_OLD_FILES
+  echo -e "\n"
+
+  if [[ "$IGNORE_OLD_FILES" == "" ]]; then
+    IGNORE_OLD_FILES="y";
+  fi
+
+  if [[ "$IGNORE_OLD_FILES" != *"y"* && "$IGNORE_OLD_FILES" != *"Y"* ]]; then
+    exit 0
+  fi
+fi
+
+
+# Attempting to run everything, check if sub-repos have been cloned
+if [[ ! -d ./server ]]; then
+  echo "Sorry, we cannot automatically start everything. ./server is missing!"
+  exit 1
+fi
+
+if [[ ! -d ./client ]]; then
+  echo "Sorry, we cannot automatically start everything. ./client is missing!"
+  exit 1
+fi
+
+
+# Make the user very happy
+echo -e "\n"
+echo "Awesome, everything is ready to be built!"
+echo -e "\n"
+
+
+# If we got to this point, everything should be fine to be built
+bash ./bin/build
+
+
+# Automatically run bin/start if that option was accepted
+if  [[ $SETTING_AUTORUN -eq 1 ]]; then
+  bash ./bin/start
+
+
+  # Prompt if the link should be opened
+  INPUT_DEFAULT=" [Y/n]"
+  echo -e "\nInstallation completed successfully."
+  echo "It may take a few seconds for everything to be up and running for the first time."
+  read -p "Do you want to open the site in your browser now$INPUT_DEFAULT? " OPEN_CONFIRM
+
+  if [[ "$OPEN_CONFIRM" == "" ]]; then
+    OPEN_CONFIRM="y";
+  fi
+
+  if [[ "$OPEN_CONFIRM" == *"y"* || "$OPEN_CONFIRM" == *"Y"* ]]; then
+    bash ./bin/open
+  else
+    echo -e "\nYou can open the site in your browser manually or run bin/open"
+  fi
+else
+  echo -e "\nInstallation complete. You may start everything by running bin/start"
+  echo "Afterwards, you can open the site in your browser by running bin/open"
+fi

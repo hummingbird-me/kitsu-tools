@@ -1,28 +1,16 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # server
-
-server/public/dramas/*
-server/public/system/*
-server/.bundle
-server/db/*.sqlite3
+server
 
 # client
-
-client/dist
-client/fastboot-dist
-client/node_modules
-client/bower_components
-client/public/system/*
-client/.coverage
+client
 
 # docker
-
 docker-sync.yml
 docker-compose-dev.yml
 
 # general
-
 tmp/
 *.log
 .DS_Store

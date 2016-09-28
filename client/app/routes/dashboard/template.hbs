@@ -1,7 +1,0 @@
-{{#if session.isAuthenticated}}
-  <h1>Welcome, {{session.account.name}}</h1>
-{{else}}
-  <h1>Dashboard</h1>
-  {{link-to (t 'links.auth.sign-in') 'sign-in'}}
-  {{link-to (t 'links.auth.sign-up') 'sign-up'}}
-{{/if}}

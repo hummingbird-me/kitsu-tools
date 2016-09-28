@@ -1,7 +1,0 @@
-<ul>
-  {{#each selection as |option|}}
-    <li class={{if (contains option selected) "active"}} {{action "toggle" option}}>
-      {{yield option}}
-    </li>
-  {{/each}}
-</ul>

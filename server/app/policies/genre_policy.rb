@@ -1,2 +1,0 @@
-class GenrePolicy < ApplicationPolicy
-end

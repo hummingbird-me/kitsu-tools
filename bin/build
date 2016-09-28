@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker-compose build
+docker-compose run --rm server rake db:setup
+docker-compose run --rm server rake db:setup RAILS_ENV=test
