@@ -191,7 +191,7 @@ if [[ -d ./client ]]; then
   echo "If you want to re-run this setup, please delete the existing ./client directory"
   HAD_OLD_DIRS=1
 else
-  git clone "$REPO_SERVER" ./client
+  git clone "$REPO_CLIENT" ./client
 fi
 
 
