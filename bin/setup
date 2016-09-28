@@ -174,21 +174,54 @@ fi
 
 
 # Fetch contributors project repositories from GitHub
+HAD_OLD_DIRS=0
+
 echo -e "\nAttempting to clone $REPO_SERVER to ./server"
-git clone "$REPO_SERVER" ./server
+if [[ -d ./server ]]; then
+  echo "Failed to clone server repository. You already have a ./server directory"
+  echo "If you want to re-run this setup, please delete the existing ./server directory"
+  HAD_OLD_DIRS=1
+else
+  git clone "$REPO_SERVER" ./server
+fi
 
 echo -e "\nAttempting to clone $REPO_CLIENT to ./client"
-git clone "$REPO_CLIENT" ./client
+if [[ -d ./client ]]; then
+  echo "Failed to clone client repository. You already have a ./client directory"
+  echo "If you want to re-run this setup, please delete the existing ./client directory"
+  HAD_OLD_DIRS=1
+else
+  git clone "$REPO_SERVER" ./client
+fi
+
+
+# Notify the user, if he had existing ./server or ./client
+if  [[ $HAD_OLD_DIRS -eq 1 ]]; then
+  INPUT_DEFAULT=" [Y/n]"
+  echo -e "\nOne or more repositories were not cloned, because their directory already existed."
+  echo "Please make sure that the ./client and ./server directory contain the right files."
+  echo "If you want to go through the setup a second time, just delete the directories first."
+  read -p "Do you want to continue anyways$INPUT_DEFAULT? " IGNORE_OLD_FILES
+  echo -e "\n"
+
+  if [[ "$IGNORE_OLD_FILES" == "" ]]; then
+    IGNORE_OLD_FILES="y";
+  fi
+
+  if [[ "$IGNORE_OLD_FILES" != *"y"* && "$IGNORE_OLD_FILES" != *"Y"* ]]; then
+    exit 0
+  fi
+fi
 
 
 # Attempting to run everything, check if sub-repos have been cloned
 if [[ ! -d ./server ]]; then
-  echo "Sorry, we cannot automatically start everything. /server is missing!"
+  echo "Sorry, we cannot automatically start everything. ./server is missing!"
   exit 1
 fi
 
 if [[ ! -d ./client ]]; then
-  echo "Sorry, we cannot automatically start everything. /client is missing!"
+  echo "Sorry, we cannot automatically start everything. ./client is missing!"
   exit 1
 fi
 
