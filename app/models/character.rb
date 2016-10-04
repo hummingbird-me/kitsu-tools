@@ -69,7 +69,11 @@ class Character < ActiveRecord::Base
       # Apparently we lack a corresponding field?
 #     role: hash[:role]
     })
-    character.image = hash[:image] if character.image.blank?
+    begin
+      character.image = hash[:image]
+    rescue
+      character.image = nil
+    end if character.image.blank?
     character.mal_id = hash[:external_id] if character.mal_id.blank?
     character.save!
     character
