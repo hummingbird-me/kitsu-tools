@@ -243,7 +243,9 @@ class Anime < ActiveRecord::Base
     anime.assign_attributes({
       mal_id: (hash[:external_id] if anime.mal_id.blank?),
       title: (hash[:title][:canonical] if anime.title.blank?),
-      alt_title: (hash[:title][:ja_en] if anime.alt_title.blank?),
+      # will be nil if en_us == canonical
+      alt_title: (hash[:title][:en_us] if anime.alt_title.blank?),
+      jp_title: (hash[:title][:ja_jp] if anime.jp_title.blank?),
       synopsis: (hash[:synopsis] if anime.synopsis.blank?),
       poster_image: (hash[:poster_image] if anime.poster_image.blank?),
       show_type: (hash[:type] if anime.show_type.blank?),
