@@ -10,17 +10,17 @@ export default Ember.Route.extend({
     // Since this list is mostly static, it will be hardcoded as a model.
     return [
       {
-        "name": "Tenpenchii",
+        "name": "Imprint",
         "author": [
           { "name": "Tempest", "link": "http://hummingbird.me/users/Tempest" },
         ],
         "form": "Mobile",
         "platform": "Android",
-        "screenshots": [sb+"tenpenchii/tenpenchii-1.jpg", sb+"tenpenchii/tenpenchii-2.jpg"],
-        "desc": "Tenpenchii is a Hummingbird client for Android devices with a modern user interface and amazing functionality.",
+        "screenshots": [sb+"imprint/imprint-1.jpg", sb+"imprint/imprint-2.jpg"],
+        "desc": "Imprint is a Hummingbird client for Android devices with a modern user interface and amazing functionality.",
         "links": [
-          { "name": "Discuss", "link": "https://forums.hummingbird.me/t/android-tenpenchii/582" },
-          { "name": "Download", "link": "https://play.google.com/store/apps/details?id=com.fractalemagic" },
+          { "name": "Discuss", "link": "https://forums.hummingbird.me/t/582" },
+          { "name": "Download", "link": "https://play.google.com/store/apps/details?id=com.fractalemagic&referrer=utm_source%3Dhummingbird" },
         ]
       },
       {
