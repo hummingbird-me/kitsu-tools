@@ -252,11 +252,11 @@ if  [[ $SETTING_AUTORUN -eq 1 ]]; then
   fi
 
   if [[ "$OPEN_CONFIRM" == *"y"* || "$OPEN_CONFIRM" == *"Y"* ]]; then
-    bash ./bin/open
+    bash ./bin/open-browser
   else
-    echo -e "\nYou can open the site in your browser manually or run bin/open"
+    echo -e "\nYou can open the site in your browser manually or run bin/open-browser"
   fi
 else
   echo -e "\nInstallation complete. You may start everything by running bin/start"
-  echo "Afterwards, you can open the site in your browser by running bin/open"
+  echo "Afterwards, you can open the site in your browser by running bin/open-browser"
 fi
