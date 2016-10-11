@@ -5,6 +5,8 @@ volumes:
     driver: local
   node_modules:
     driver: local
+  uploads:
+    driver: local
 
 services:
   # Database servers
@@ -25,6 +27,8 @@ services:
   router:
     build: ./router
     links: [client, server]
+    volumes:
+      - uploads:/srv/www/uploads/system
     ports: [80]
 
   # Rails server
@@ -33,6 +37,7 @@ services:
     build: ./server
     volumes:
       - ./server:/opt/hummingbird/server
+      - uploads:/opt/hummingbird/server/public/system
     environment:
       DATABASE_URL: 'postgresql://postgres:mysecretpassword@postgres/'
       REDIS_URL: 'redis://redis/1'
