@@ -79,7 +79,11 @@ while [ "" == "$GITHUB_USER" ]; do
   else
     INPUT_DEFAULT=""
   fi
-  read -p "What is your GitHub username$INPUT_DEFAULT? " GITHUB_USER
+  read -p "What is your GitHub username$INPUT_DEFAULT? " IN_GITHUB_USER
+
+  if [[ "$IN_GITHUB_USER" != "" ]]; then
+    GITHUB_USER="$IN_GITHUB_USER"
+  fi
 
   if [[ "$GITHUB_USER" == "" ]]; then
     echo "Please provide your GitHub username in order for us to find your forks."
