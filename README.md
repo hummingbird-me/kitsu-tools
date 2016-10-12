@@ -18,21 +18,16 @@ Hummingbird is a modern anime discovery platform that helps you track the anime 
 ## Contributing
 The backend is a JSON API server built with Rails, Postgres, ElasticSearch, and Redis. The frontend is a client-side application written using Ember.
 
-To get started, clone this repository, install Docker (via Docker for Mac/Windows or Docker-Machine if you're not on Linux) and run `bin/setup` to get a development version running. The script will automatically clone the client and server repository and perform the whole setup for you. Before you start working be sure to read the [contribution guide](https://github.com/hummingbird-me/hummingbird/blob/the-future/.github/CONTRIBUTING.md).
+You can set up your own local development environment in just a few steps.    
+If you prefer more detailed instructions for point **2** and **3**, head over to our [Setup instructions](https://github.com/hummingbird-me/hummingbird/wiki/Setting-up-a-development-environment#docker-recommended)
 
-To get data into your development server:
-
-1. Download [our media database dump](https://www.dropbox.com/s/ui1xaialiq67bnu/anime.sql.gz?dl=0)
-2. Import the dump to your database:
-   
-   ```
-   gzcat anime.sql.gz | bin/psql hummingbird_development
-   ```
-3. Set up Elasticsearch:
-
-   ```
-   bin/rake chewy:reset`
-   ```
+1. Read our short [Contributing Guide](https://github.com/hummingbird-me/hummingbird/blob/master/CONTRIBUTING.md)
+2. If you don't already have, install docker on your system
+ - For Mac, check out [Docker for Mac](https://docs.docker.com/docker-for-mac/)     
+ - For Windows, check out [Docker for Windows](https://docs.docker.com/docker-for-windows/)
+ - For Linux, manually install `docker` and `docker-compose` via your repository's package manager
+3. Run `bin/setup` and follow the instructions. (This will also validate your docker installation)
+4. Follow the quick [Filling the Database](https://github.com/hummingbird-me/hummingbird/wiki/Filling-the-Database#get-data-into-your-development-server) guide for getting some data to play with 
 
 If you have any questions don't hesitate to contact us! Feel free to create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev) or [email Josh](mailto:josh@hummingbird.me) to get access to our Slack.
 
