@@ -162,6 +162,7 @@ echo "We will use $GITREPO_METHOD to access GitHub in order to"
 echo "Clone hummingbird-server from $REPO_SERVER"
 echo "Clone hummingbird-client from $REPO_CLIENT"
 echo "And then$DOES_AUTORUN start everything automatically."
+echo "\033[0;31mPlease remember:\033[0m The setup could take a few minutes, when it seems to be stuck."
 echo -e "\n"
 
 INPUT_DEFAULT=" [Y/n]"
