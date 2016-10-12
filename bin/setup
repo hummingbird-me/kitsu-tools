@@ -13,6 +13,11 @@ GITREPO_CLIENT=""
 GITREPO_METHOD=""
 SETTING_AUTORUN=false
 
+# ANSI Colors for better formatting
+COLOR_RED='\033[0;31m'
+COLOR_GREEN='\033[0;32m'
+COLOR_NONE='\033[0m'
+
 
 # Navigate to repository root so we clone stuff in the right place
 cd "$(dirname "$0")/../"
@@ -54,14 +59,14 @@ if [[ "$HAS_DOCKER_ITSELF" == "" || "$HAS_DOCKER_COMPOSE" == "" ]]; then
 
   echo "We found"
   if [[ "$HAS_DOCKER_ITSELF" == "" ]]; then
-    echo "- No docker installation on your system"
+    echo -e "${COLOR_RED}- No docker installation${COLOR_NONE} on your system"
   else
-    echo "- A docker installation at $HAS_DOCKER_ITSELF"
+    echo -e "${COLOR_GREEN}- A docker installation${COLOR_NONE} at $HAS_DOCKER_ITSELF"
   fi
   if [[ "$HAS_DOCKER_COMPOSE" == "" ]]; then
-    echo "- No docker-compose installation on your system"
+    echo -e "${COLOR_RED}- No docker-compose installation${COLOR_NONE} on your system"
   else
-    echo "- A docker-compose installation at $HAS_DOCKER_COMPOSE"
+    echo -e "${COLOR_GREEN}- A docker-compose installation${COLOR_NONE} at $HAS_DOCKER_COMPOSE"
   fi
 
   echo -e "\n"
@@ -86,7 +91,7 @@ while [ "" == "$GITHUB_USER" ]; do
   fi
 
   if [[ "$GITHUB_USER" == "" ]]; then
-    echo "Please provide your GitHub username in order for us to find your forks."
+    echo -e "${COLOR_RED}Please provide your GitHub username in order for us to find your forks.${COLOR_NONE}"
   fi
 done
 
@@ -157,12 +162,13 @@ else
 fi
 
 echo -e "\n"
-echo "Thanks for providing all of your information."
-echo "We will use $GITREPO_METHOD to access GitHub in order to"
-echo "Clone hummingbird-server from $REPO_SERVER"
-echo "Clone hummingbird-client from $REPO_CLIENT"
-echo "And then$DOES_AUTORUN start everything automatically."
-echo "\033[0;31mPlease remember:\033[0m The setup could take a few minutes, when it seems to be stuck."
+echo -e "${COLOR_GREEN}Thanks for providing all of your information.${COLOR_NONE}"
+echo "- We will use $GITREPO_METHOD to access GitHub in order to"
+echo "- Clone hummingbird-server from $REPO_SERVER"
+echo "- Clone hummingbird-client from $REPO_CLIENT"
+echo "- And then$DOES_AUTORUN start everything automatically."
+echo -e "\n${COLOR_RED}Please remember:${COLOR_NONE} The setup could take a few minutes"
+echo "Just give it some time, even if it seems to be stuck for a minute."
 echo -e "\n"
 
 INPUT_DEFAULT=" [Y/n]"
@@ -183,8 +189,8 @@ HAD_OLD_DIRS=0
 
 echo -e "\nAttempting to clone $REPO_SERVER to ./server"
 if [[ -d ./server ]]; then
-  echo "Failed to clone server repository. You already have a ./server directory"
-  echo "If you want to re-run this setup, please delete the existing ./server directory"
+  echo -e "${COLOR_RED}Failed to clone server repository. You already have a ./server directory"
+  echo -e "If you want to re-run this setup, please delete the existing ./server directory${COLOR_NONE}"
   HAD_OLD_DIRS=1
 else
   git clone "$REPO_SERVER" ./server
@@ -192,8 +198,8 @@ fi
 
 echo -e "\nAttempting to clone $REPO_CLIENT to ./client"
 if [[ -d ./client ]]; then
-  echo "Failed to clone client repository. You already have a ./client directory"
-  echo "If you want to re-run this setup, please delete the existing ./client directory"
+  echo -e "${COLOR_RED}Failed to clone client repository. You already have a ./client directory"
+  echo -e "If you want to re-run this setup, please delete the existing ./client directory${COLOR_NONE}"
   HAD_OLD_DIRS=1
 else
   git clone "$REPO_CLIENT" ./client
@@ -203,7 +209,7 @@ fi
 # Notify the user, if he had existing ./server or ./client
 if  [[ $HAD_OLD_DIRS -eq 1 ]]; then
   INPUT_DEFAULT=" [Y/n]"
-  echo -e "\nOne or more repositories were not cloned, because their directory already existed."
+  echo -e "\n${COLOR_RED}One or more repositories were not cloned, because their directory already existed.${COLOR_NONE}"
   echo "Please make sure that the ./client and ./server directory contain the right files."
   echo "If you want to go through the setup a second time, just delete the directories first."
   read -p "Do you want to continue anyways$INPUT_DEFAULT? " IGNORE_OLD_FILES
@@ -221,19 +227,19 @@ fi
 
 # Attempting to run everything, check if sub-repos have been cloned
 if [[ ! -d ./server ]]; then
-  echo "Sorry, we cannot automatically start everything. ./server is missing!"
+  echo -e "${COLOR_RED}Sorry, we cannot automatically start everything. ./server is missing!${COLOR_NONE}"
   exit 1
 fi
 
 if [[ ! -d ./client ]]; then
-  echo "Sorry, we cannot automatically start everything. ./client is missing!"
+  echo -e "${COLOR_RED}Sorry, we cannot automatically start everything. ./client is missing!${COLOR_NONE}"
   exit 1
 fi
 
 
 # Make the user very happy
 echo -e "\n"
-echo "Awesome, everything is ready to be built!"
+echo -e "${COLOR_GREEN}Awesome, everything is ready to be built!${COLOR_NONE}"
 echo -e "\n"
 
 
@@ -248,7 +254,7 @@ if  [[ $SETTING_AUTORUN -eq 1 ]]; then
 
   # Prompt if the link should be opened
   INPUT_DEFAULT=" [Y/n]"
-  echo -e "\nInstallation completed successfully."
+  echo -e "\n${COLOR_GREEN}Installation completed successfully.${COLOR_NONE}"
   echo "It may take a few seconds for everything to be up and running for the first time."
   read -p "Do you want to open the site in your browser now$INPUT_DEFAULT? " OPEN_CONFIRM
 
@@ -262,6 +268,6 @@ if  [[ $SETTING_AUTORUN -eq 1 ]]; then
     echo -e "\nYou can open the site in your browser manually or run bin/open-browser"
   fi
 else
-  echo -e "\nInstallation complete. You may start everything by running bin/start"
+  echo -e "\n${COLOR_GREEN}Installation complete. You may start everything by running bin/start${COLOR_NONE}"
   echo "Afterwards, you can open the site in your browser by running bin/open-browser"
 fi
