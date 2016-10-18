@@ -1,0 +1,62 @@
+#!/bin/bash
+
+DB_TARGET_ID="hummingbird_development"
+DB_FILE_PATH="https://www.dropbox.com/s/ui1xaialiq67bnu/anime.sql.gz"
+DB_FILE_NAME="anime.sql.gz"
+DEFAULT_AMNT=200
+
+function display_usage {
+  echo "Usage: bin/seed [download/reset/import [db/posters/covers] (amount)/clean]"
+  echo "       bin/seed download"
+  echo "       bin/seed import covers 200"
+}
+
+if [[ "$1" == "clean" ]]; then
+  if [[ -e "./$DB_FILE_NAME" ]]; then
+    rm "./$DB_FILE_NAME"
+  fi
+
+elif [[ "$1" == "download" ]]; then
+  HAS_WGET=`which wget`
+  HAS_CURL=`which curl`
+  if [[ "$HAS_WGET" != "" ]]; then
+    wget -O "$DB_FILE_NAME" "$DB_FILE_PATH"
+    echo "Downloaded $DB_FILE_NAME to root."
+  elif [[ "$HAS_CURL" != "" ]]; then
+    curl -o "$DB_FILE_NAME" "$DB_FILE_PATH"
+    echo "Downloaded $DB_FILE_NAME to root."
+  else
+    echo "Neither wget nor curl are available on your system!"
+  fi
+
+elif [[ "$1" == "import" ]]; then
+  if [[ "$2" == "db" ]]; then
+    gzcat "$DB_FILE_NAME" | bin/psql "$DB_TARGET_ID"
+    echo "Imported $DB_FILE_NAME to $DB_TARGET_ID"
+
+  elif [[ "$2" == "posters" ]]; then
+    IMPORT_AMOUNT=$DEFAULT_AMNT
+    if [[ "$3" != "" ]]; then
+      IMPORT_AMOUNT=$3
+    fi
+    bin/rake "importers:hummingbird:posters[$IMPORT_AMOUNT]"
+    echo "Imported $IMPORT_AMOUNT posters."
+
+  elif [[ "$2" == "covers" ]]; then
+    IMPORT_AMOUNT=$DEFAULT_AMNT
+    if [[ "$3" != "" ]]; then
+      IMPORT_AMOUNT=$3
+    fi
+    bin/rake "importers:hummingbird:covers[$IMPORT_AMOUNT]"
+    echo "Imported $IMPORT_AMOUNT covers."
+  else
+    display_usage
+  fi
+
+elif [[ "$1" == "reset" ]]; then
+  bin/rake chewy:reset
+  echo "Resetted."
+
+else
+  display_usage
+fi
