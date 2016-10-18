@@ -134,6 +134,19 @@ export default Ember.Route.extend({
   	      { "name": "Discuss", "link": "https://forums.hummingbird.me/t/linux-trackma/19212" },
   	      { "name": "Download", "link": "https://z411.github.io/trackma/" },
   	    ]
+      },
+      {
+        "name": "That Li'l Hummingbird",
+        "author": [
+          { "name": "ThatLilChestnut", "link": "https://hummingbird.me/users/ThatLilChestnut" }
+        ],
+        "form": "Mobile",
+        "platform": "Android",
+        "screenshots": [sb+"that-lil-hummingbird/that-lil-hummingbird-1.png", sb+"that-lil-hummingbird/that-lil-hummingbird-2.png"],
+        "desc": "A free and open source Hummingbird client that emphasizes material design.",
+        "links": [
+          { "name": "Download", "link": "https://play.google.com/store/apps/details?id=com.charlesmadere.hummingbird" }
+        ]
       }
     ];
   },
