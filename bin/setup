@@ -11,7 +11,8 @@ GITHUB_USER=""
 GITREPO_SERVER=""
 GITREPO_CLIENT=""
 GITREPO_METHOD=""
-SETTING_AUTORUN=false
+SETTING_AUTORUN=0
+SETTING_SEEDNOW=0
 
 # ANSI Colors for better formatting
 COLOR_RED='\033[0;31m'
@@ -144,6 +145,24 @@ else
 fi
 
 
+# Prompt the user to ask if he wants to seed data after completion
+# This can be skipped when autorun=0, since we need running containers!
+if [[ $SETTING_AUTORUN -eq 1 ]]; then
+  INPUT_DEFAULT=" [Y/n]"
+  read -p "Do you want a database dump to be downloaded and imported$INPUT_DEFAULT? " SETTING_SEEDNOW
+
+  if [[ "$SETTING_SEEDNOW" == "" ]]; then
+    SETTING_SEEDNOW="y";
+  fi
+
+  if [[ "$SETTING_SEEDNOW" == *"y"* || "$SETTING_SEEDNOW" == *"Y"* ]]; then
+    SETTING_SEEDNOW=1
+  else
+    SETTING_SEEDNOW=0
+  fi
+fi
+
+
 # Map the users input to a valid GitHub repository
 if [[ "$GITREPO_METHOD" == *"ssh"* || "$GITREPO_METHOD" == *"SSH"* ]]; then
   REPO_SERVER="git@github.com:$GITREPO_SERVER.git"
@@ -156,9 +175,15 @@ fi
 
 # Check if all the user's input is correct
 if [[ $SETTING_AUTORUN -eq 0 ]]; then
-  DOES_AUTORUN=" NOT"
+  DOES_AUTORUN="${COLOR_RED} NOT${COLOR_NONE}"
 else
   DOES_AUTORUN=""
+fi
+
+if [[ $SETTING_SEEDNOW -eq 0 ]]; then
+  DOES_SEEDNOW="${COLOR_RED} NOT${COLOR_NONE}"
+else
+  DOES_SEEDNOW=""
 fi
 
 echo -e "\n"
@@ -166,8 +191,8 @@ echo -e "${COLOR_GREEN}Thanks for providing all of your information.${COLOR_NONE
 echo "- We will use $GITREPO_METHOD to access GitHub in order to"
 echo "- Clone hummingbird-server from $REPO_SERVER"
 echo "- Clone hummingbird-client from $REPO_CLIENT"
-echo "- And then$DOES_AUTORUN start everything automatically."
-echo -e "\n${COLOR_RED}Please remember:${COLOR_NONE} The setup could take a few minutes"
+echo -e "- And then$DOES_AUTORUN start everything automatically and$DOES_SEEDNOW seed the database."
+echo -e "\n${COLOR_GREEN}Please remember:${COLOR_NONE} The setup could take a few minutes"
 echo "Just give it some time, even if it seems to be stuck for a minute."
 echo -e "\n"
 
@@ -251,6 +276,17 @@ bash ./bin/build
 if  [[ $SETTING_AUTORUN -eq 1 ]]; then
   bash ./bin/start
 
+  # If the user wanted to seed, seed now
+  if [[ $SETTING_SEEDNOW -eq 1 ]]; then
+    echo "Now seeding the development database."
+    sleep 5 # User should know what's going on here!
+    bin/seed download
+    bin/seed import db
+    bin/seed reset
+    bin/seed import covers 50
+    bin/seed import posters 50
+    echo "Finished seeding the development database!"
+  fi
 
   # Prompt if the link should be opened
   INPUT_DEFAULT=" [Y/n]"
