@@ -3,7 +3,7 @@
 Hummingbird is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
 
 ---
-**<p align="center">This branch is our under-development next-generation platform, not the one currently at hummingbird.me</p>**
+**<p align="center">This branch is our under-development next-generation platform, not the one currently at hummingbird.me<br /><br />This is our meta repository. It contains all our tooling and binstubs.<br />For the actual source code, please check out the [server](https://github.com/hummingbird-me/hummingbird-server) and [client](https://github.com/hummingbird-me/hummingbird-client) repository.</p>**
 
 ---
 
