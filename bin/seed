@@ -94,7 +94,7 @@ elif [[ "$1" == "import" ]]; then
   do_import $2 $3
 elif [[ "$1" == "reindex" ]]; then
   do_reindex
-elif [[ "$1" == "help" ]]; then
+elif [[ "$1" == "help" ]]; then
   display_usage
 else
   do_download
