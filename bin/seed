@@ -5,6 +5,11 @@ DB_FILE_LINK="https://www.dropbox.com/s/ui1xaialiq67bnu/anime.sql.gz"
 DB_FILE_NAME="anime.sql.gz"
 DEFAULT_AMNT=200
 
+# ANSI Colors for better formatting
+COLOR_RED='\033[0;31m'
+COLOR_GREEN='\033[0;32m'
+COLOR_NONE='\033[0m'
+
 
 function display_usage {
   echo "Usage: bin/seed [download/reset/import [db/posters/covers] (amount)/clean]"
@@ -15,12 +20,13 @@ function display_usage {
 function do_clean {
   if [[ -e "./$DB_FILE_NAME" ]]; then
     rm "./$DB_FILE_NAME"
+    echo -e "${COLOR_GREEN}Removed database file${COLOR_NONE}"
   fi
 }
 
 function do_download {
   if [[ -e $DB_FILE_NAME ]]; then
-    echo "There alread is a $DB_FILE_NAME in this directory!"
+    echo -e "${COLOR_RED}There alread is a $DB_FILE_NAME in this directory!${COLOR_NONE}"
     echo "If you don't need it anymore, feel free to bin/seed clean"
     exit 0
   fi
@@ -29,12 +35,12 @@ function do_download {
   HAS_CURL=`which curl`
   if [[ "$HAS_WGET" != "" ]]; then
     wget -O "$DB_FILE_NAME" "$DB_FILE_LINK"
-    echo "Downloaded $DB_FILE_NAME to root."
+    echo -e "${COLOR_GREEN}Downloaded $DB_FILE_NAME to project root.${COLOR_NONE}"
   elif [[ "$HAS_CURL" != "" ]]; then
     curl -o "$DB_FILE_NAME" "$DB_FILE_LINK"
-    echo "Downloaded $DB_FILE_NAME to root."
+    echo -e "${COLOR_GREEN}Downloaded $DB_FILE_NAME to project root.${COLOR_NONE}"
   else
-    echo "Neither wget nor curl are available on your system!"
+    echo -e "${COLOR_RED}Neither wget nor curl are available on your system!${COLOR_NONE}"
     echo "You can download the latest db dump from $DB_FILE_LINK"
   fi
 }
@@ -53,7 +59,7 @@ function do_import {
 
 function do_import_db {
   gzcat "$DB_FILE_NAME" | bin/psql "$DB_TARGET_ID"
-  echo "Imported $DB_FILE_NAME to $DB_TARGET_ID"
+  echo -e "${COLOR_GREEN}Imported $DB_FILE_NAME to $DB_TARGET_ID${COLOR_NONE}"
 }
 
 function do_import_posters {
@@ -62,7 +68,7 @@ function do_import_posters {
     IMPORT_AMOUNT=$1
   fi
   bin/rake "importers:kitsu:posters[$IMPORT_AMOUNT]"
-  echo "Imported $IMPORT_AMOUNT posters."
+  echo -e "${COLOR_GREEN}Imported $IMPORT_AMOUNT posters.${COLOR_NONE}"
 }
 
 function do_import_covers {
@@ -71,11 +77,12 @@ function do_import_covers {
     IMPORT_AMOUNT=$1
   fi
   bin/rake "importers:kitsu:covers[$IMPORT_AMOUNT]"
-  echo "Imported $IMPORT_AMOUNT covers."
+  echo -e "${COLOR_GREEN}Imported $IMPORT_AMOUNT covers.${COLOR_NONE}"
 }
 
 function do_reindex {
   bin/rake chewy:reset
+  echo -e "${COLOR_GREEN}Reindexed database.${COLOR_NONE}"
 }
 
 
