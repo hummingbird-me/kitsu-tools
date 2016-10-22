@@ -36,8 +36,8 @@ services:
     links: [postgres, redis, elasticsearch]
     build: ./server
     volumes:
-      - ./server:/opt/hummingbird/server
-      - uploads:/opt/hummingbird/server/public/system
+      - ./server:/opt/kitsu/server
+      - uploads:/opt/kitsu/server/public/system
     environment:
       DATABASE_URL: 'postgresql://postgres:mysecretpassword@postgres/'
       REDIS_URL: 'redis://redis/1'
@@ -52,11 +52,11 @@ services:
   client:
     build: ./client
     volumes:
-      - ./client:/opt/hummingbird/client
-      - /opt/hummingbird/client/node_modules
-      - /opt/hummingbird/client/bower_components
+      - ./client:/opt/kitsu/client
+      - /opt/kitsu/client/node_modules
+      - /opt/kitsu/client/bower_components
     tmpfs:
-      - /opt/hummingbird/client/tmp
+      - /opt/kitsu/client/tmp
     environment:
       EMBER_ENV: development
     ports: ['57777:57777']

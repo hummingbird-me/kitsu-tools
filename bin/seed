@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DB_TARGET_ID="hummingbird_development"
+DB_TARGET_ID="kitsu_development"
 DB_FILE_LINK="https://www.dropbox.com/s/ui1xaialiq67bnu/anime.sql.gz"
 DB_FILE_NAME="anime.sql.gz"
 DEFAULT_AMNT=200
@@ -46,7 +46,7 @@ elif [[ "$1" == "import" ]]; then
     if [[ "$3" != "" ]]; then
       IMPORT_AMOUNT=$3
     fi
-    bin/rake "importers:hummingbird:posters[$IMPORT_AMOUNT]"
+    bin/rake "importers:kitsu:posters[$IMPORT_AMOUNT]"
     echo "Imported $IMPORT_AMOUNT posters."
 
   elif [[ "$2" == "covers" ]]; then
@@ -54,7 +54,7 @@ elif [[ "$1" == "import" ]]; then
     if [[ "$3" != "" ]]; then
       IMPORT_AMOUNT=$3
     fi
-    bin/rake "importers:hummingbird:covers[$IMPORT_AMOUNT]"
+    bin/rake "importers:kitsu:covers[$IMPORT_AMOUNT]"
     echo "Imported $IMPORT_AMOUNT covers."
   else
     display_usage
