@@ -37,7 +37,7 @@ function do_download {
     wget -O "$DB_FILE_NAME" "$DB_FILE_LINK"
     echo -e "${COLOR_GREEN}Downloaded $DB_FILE_NAME to project root.${COLOR_NONE}"
   elif [[ "$HAS_CURL" != "" ]]; then
-    curl -o "$DB_FILE_NAME" "$DB_FILE_LINK"
+    curl -L -o "$DB_FILE_NAME" "$DB_FILE_LINK"
     echo -e "${COLOR_GREEN}Downloaded $DB_FILE_NAME to project root.${COLOR_NONE}"
   else
     echo -e "${COLOR_RED}Neither wget nor curl are available on your system!${COLOR_NONE}"
