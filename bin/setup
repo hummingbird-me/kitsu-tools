@@ -281,12 +281,7 @@ if  [[ $SETTING_AUTORUN -eq 1 ]]; then
     echo -e "\n"
     echo -e "${COLOR_GREEN}Nice! We only need to seed the development database now!${COLOR_NONE}"
     echo -e "\n"
-    bin/seed download
-    bin/seed import db
-    bin/seed reset
-    bin/seed import covers 50
-    bin/seed import posters 50
-    bin/seed clean
+    bin/seed
     echo -e "\n${COLOR_GREEN}Finished seeding the development database!${COLOR_NONE}"
     echo "We only imported 50 covers and posters for you right now."
     echo "If you want to import more, simply bin/seed import [covers/posters] [amount]"

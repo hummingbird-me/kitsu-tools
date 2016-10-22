@@ -5,18 +5,20 @@ DB_FILE_LINK="https://www.dropbox.com/s/ui1xaialiq67bnu/anime.sql.gz"
 DB_FILE_NAME="anime.sql.gz"
 DEFAULT_AMNT=200
 
+
 function display_usage {
   echo "Usage: bin/seed [download/reset/import [db/posters/covers] (amount)/clean]"
   echo "       bin/seed download"
   echo "       bin/seed import covers 200"
 }
 
-if [[ "$1" == "clean" ]]; then
+function do_clean {
   if [[ -e "./$DB_FILE_NAME" ]]; then
     rm "./$DB_FILE_NAME"
   fi
+}
 
-elif [[ "$1" == "download" ]]; then
+function do_download {
   if [[ -e $DB_FILE_NAME ]]; then
     echo "There alread is a $DB_FILE_NAME in this directory!"
     echo "If you don't need it anymore, feel free to bin/seed clean"
@@ -35,35 +37,63 @@ elif [[ "$1" == "download" ]]; then
     echo "Neither wget nor curl are available on your system!"
     echo "You can download the latest db dump from $DB_FILE_LINK"
   fi
+}
 
-elif [[ "$1" == "import" ]]; then
-  if [[ "$2" == "db" ]]; then
-    gzcat "$DB_FILE_NAME" | bin/psql "$DB_TARGET_ID"
-    echo "Imported $DB_FILE_NAME to $DB_TARGET_ID"
-
-  elif [[ "$2" == "posters" ]]; then
-    IMPORT_AMOUNT=$DEFAULT_AMNT
-    if [[ "$3" != "" ]]; then
-      IMPORT_AMOUNT=$3
-    fi
-    bin/rake "importers:kitsu:posters[$IMPORT_AMOUNT]"
-    echo "Imported $IMPORT_AMOUNT posters."
-
-  elif [[ "$2" == "covers" ]]; then
-    IMPORT_AMOUNT=$DEFAULT_AMNT
-    if [[ "$3" != "" ]]; then
-      IMPORT_AMOUNT=$3
-    fi
-    bin/rake "importers:kitsu:covers[$IMPORT_AMOUNT]"
-    echo "Imported $IMPORT_AMOUNT covers."
+function do_import {
+  if [[ "$1" == "db" ]]; then
+    do_import_db
+  elif [[ "$1" == "posters" ]]; then
+    do_import_posters $2
+  elif [[ "$1" == "covers" ]]; then
+    do_import_covers $2
   else
     display_usage
   fi
+}
 
-elif [[ "$1" == "reset" ]]; then
+function do_import_db {
+  gzcat "$DB_FILE_NAME" | bin/psql "$DB_TARGET_ID"
+  echo "Imported $DB_FILE_NAME to $DB_TARGET_ID"
+}
+
+function do_import_posters {
+  IMPORT_AMOUNT=$DEFAULT_AMNT
+  if [[ "$1" != "" ]]; then
+    IMPORT_AMOUNT=$1
+  fi
+  bin/rake "importers:kitsu:posters[$IMPORT_AMOUNT]"
+  echo "Imported $IMPORT_AMOUNT posters."
+}
+
+function do_import_covers {
+  IMPORT_AMOUNT=$DEFAULT_AMNT
+  if [[ "$1" != "" ]]; then
+    IMPORT_AMOUNT=$1
+  fi
+  bin/rake "importers:kitsu:covers[$IMPORT_AMOUNT]"
+  echo "Imported $IMPORT_AMOUNT covers."
+}
+
+function do_reindex {
   bin/rake chewy:reset
-  echo "Resetted."
+}
 
-else
+
+if [[ "$1" == "clean" ]]; then
+  do_clean
+elif [[ "$1" == "download" ]]; then
+  do_download
+elif [[ "$1" == "import" ]]; then
+  do_import $2 $3
+elif [[ "$1" == "reindex" ]]; then
+  do_reindex
+elif [[ "$1" == "help" ]]; then
   display_usage
+else
+  do_download
+  do_import_db
+  do_reindex
+  do_import_covers
+  do_import_posters
+  do_clean
 fi
