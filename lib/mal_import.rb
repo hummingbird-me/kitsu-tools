@@ -71,7 +71,7 @@ class MALImport
           voice_actors: chara.css('td:nth-child(3) tr > td:nth-child(1)').map do |va|
             {
               external_id: va.css('a')[0]['href'].scan(/people\/(\d+)\//).flatten[0].to_i,
-              image: person_image(va.parent.css("img")[0]['src']),
+              image: person_image(va.parent.css("img")[0]['data-src']),
               name: nameflip(va.css('a').text),
               lang: va.css('small').text
             } if va.children.length > 0

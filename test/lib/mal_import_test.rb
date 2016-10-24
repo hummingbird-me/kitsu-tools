@@ -123,7 +123,7 @@ class MALImportTest < ActiveSupport::TestCase
     assert_not kirito[:description].empty?
     assert_equal "Kazuto Kirigaya", kirito[:name]
     assert_equal "Main", kirito[:role]
-    assert_instance_of URI::HTTP, kirito[:image]
+    assert_instance_of URI::HTTPS, kirito[:image]
     assert_equal 36765, kirito[:external_id]
   end
 
@@ -136,7 +136,7 @@ class MALImportTest < ActiveSupport::TestCase
     bryce = actors.select { |a| a[:name] == "Bryce Papenbrook" }[0]
     assert_equal "Bryce Papenbrook", bryce[:name]
     assert_equal "English", bryce[:lang]
-    assert_instance_of URI::HTTP, bryce[:image]
+    assert_instance_of URI::HTTPS, bryce[:image]
     assert_equal 732, bryce[:external_id]
   end
 
@@ -147,7 +147,7 @@ class MALImportTest < ActiveSupport::TestCase
     assert_not_nil yui
     assert_equal "Yui", yui[:name]
     assert_equal "Supporting", yui[:role]
-    assert_instance_of URI::HTTP, yui[:image]
+    assert_instance_of URI::HTTPS, yui[:image]
     assert_equal 43892, yui[:external_id]
   end
 
