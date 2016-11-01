@@ -21,7 +21,7 @@ services:
   redis:
     image: redis
   elasticsearch:
-    image: elasticsearch
+    image: elasticsearch:2
 
   # Web server, routing /api and / to server, client respectively
   router:
