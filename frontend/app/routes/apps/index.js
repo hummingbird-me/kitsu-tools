@@ -145,6 +145,7 @@ export default Ember.Route.extend({
         "screenshots": [sb+"that-lil-hummingbird/that-lil-hummingbird-1.png", sb+"that-lil-hummingbird/that-lil-hummingbird-2.png"],
         "desc": "A free and open source Hummingbird client that emphasizes material design.",
         "links": [
+          { "name": "Discuss", "link": "https://forums.hummingbird.me/t/android-that-lil-hummingbird/32917" },
           { "name": "Download", "link": "https://play.google.com/store/apps/details?id=com.charlesmadere.hummingbird" }
         ]
       }
