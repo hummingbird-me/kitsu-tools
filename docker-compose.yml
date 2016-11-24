@@ -23,6 +23,11 @@ services:
   elasticsearch:
     image: elasticsearch:2
 
+  # Mailcatcher
+  mailcatcher:
+    image: schickling/mailcatcher
+    ports: [1080]
+
   # Web server, routing /api and / to server, client respectively
   router:
     build: ./router
@@ -33,7 +38,7 @@ services:
 
   # Rails server
   server: &rails
-    links: [postgres, redis, elasticsearch]
+    links: [postgres, redis, elasticsearch, mailcatcher]
     build: ./server
     volumes:
       - ./server:/opt/kitsu/server
@@ -42,6 +47,8 @@ services:
       DATABASE_URL: 'postgresql://postgres:mysecretpassword@postgres/'
       REDIS_URL: 'redis://redis/1'
       RAILS_ENV: development
+      SMTP_ADDRESS: 'mailcatcher'
+      SMTP_PORT: '1025'
 
   # Sidekiq
   sidekiq:
