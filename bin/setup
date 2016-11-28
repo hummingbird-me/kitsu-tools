@@ -97,7 +97,7 @@ while [ "" == "$GITHUB_USER" ]; do
 done
 
 
-# Prompt the user to select which server repo he wants to use
+# Prompt the user to select which server repo he wants to use
 while [ "" == "$GITREPO_SERVER" ]; do
   INPUT_DEFAULT=" [$GITHUB_USER/hummingbird-server]"
   read -p "What's the name of your hummingbird-server repository fork$INPUT_DEFAULT? " GITREPO_SERVER
@@ -108,7 +108,7 @@ while [ "" == "$GITREPO_SERVER" ]; do
 done
 
 
-# Prompt the user to select which client repo he wants to use
+# Prompt the user to select which client repo he wants to use
 while [ "" == "$GITREPO_CLIENT" ]; do
   INPUT_DEFAULT=" [$GITHUB_USER/hummingbird-client]"
   read -p "What's the name of your hummingbird-client repository fork$INPUT_DEFAULT? " GITREPO_CLIENT
