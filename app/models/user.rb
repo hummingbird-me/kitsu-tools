@@ -435,7 +435,7 @@ class User < ActiveRecord::Base
       sync_to_staging!
     end
     if pro_expires_at_changed? && (pro_expires_at_was || 2.days.ago) < Time.now
-      UserMailer.pro_kitsu_message(self).deliver_now
+      UserMailer.pro_kitsu_message(self).deliver
     end
   end
 
