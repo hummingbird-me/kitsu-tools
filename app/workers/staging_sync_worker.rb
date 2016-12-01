@@ -15,5 +15,6 @@ class StagingSyncWorker
     conn = Faraday::Connection.new('https://staging.kitsu.io/api/user/_prodsync')
     conn.basic_auth('Production', ENV['DISCOURSE_SSO_SECRET'])
     conn.post(payload)
+    raise "Bad response: #{conn.body}" if conn.status != 200
   end
 end
