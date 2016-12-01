@@ -430,8 +430,8 @@ class User < ActiveRecord::Base
   after_save do
     avatar_changed = !avatar_processing && avatar_processing_changed?
     sync_to_forum! if name_changed? || avatar_changed || pro_expires_at_changed?
-    if name_changed? || encrypted_password_changed? || email_changed?
-      || pro_expires_at_changed?
+    if name_changed? || encrypted_password_changed? || email_changed? ||
+        pro_expires_at_changed?
       sync_to_staging!
     end
   end
