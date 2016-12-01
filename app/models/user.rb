@@ -434,6 +434,9 @@ class User < ActiveRecord::Base
         pro_expires_at_changed?
       sync_to_staging!
     end
+    if pro_expires_at_changed? && (pro_expires_at_was || 2.days.ago) < Time.now
+      UserMailer.pro_kitsu_message(user).deliver_now
+    end
   end
 
   def voted_for?(target)
