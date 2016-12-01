@@ -8,4 +8,8 @@ class UserMailer < ActionMailer::Base
       mail(to: @user.email, subject: @subject)
     end
   end
+
+  def pro_kitsu_message(user)
+    mail(to: user.email, subject: 'Kitsu is Ready for You!')
+  end
 end
