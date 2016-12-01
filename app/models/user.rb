@@ -423,9 +423,17 @@ class User < ActiveRecord::Base
     UserSyncWorker.perform_async(id) if Rails.env.production?
   end
 
+  def sync_to_staging!
+    StagingSyncWorker.perform_async(id) if Rails.env.production?
+  end
+
   after_save do
     avatar_changed = !avatar_processing && avatar_processing_changed?
     sync_to_forum! if name_changed? || avatar_changed || pro_expires_at_changed?
+    if name_changed? || encrypted_password_changed? || email_changed?
+      || pro_expires_at_changed?
+      sync_to_staging!
+    end
   end
 
   def voted_for?(target)
