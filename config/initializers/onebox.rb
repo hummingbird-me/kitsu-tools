@@ -5,3 +5,4 @@ Onebox::Engine::WhitelistedGenericOnebox.rewrites << "gfycat.com"
 require_dependency 'onebox/engine/hummingbird_onebox.rb'
 require_dependency 'onebox/engine/twitch_onebox.rb'
 require_dependency 'onebox/engine/strawpoll_onebox.rb'
+require_dependency 'onebox/engine/spotify_onebox.rb'

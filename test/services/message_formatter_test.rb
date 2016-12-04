@@ -19,43 +19,14 @@ class MessageFormatterTest < ActiveSupport::TestCase
     assert_match /a(<br\s?\/?>){2}b/, format("a\n\n\nb") # max two <br>s
   end
 
-  test "embeds small images" do
+  test "embeds images under 2mb" do
     fake_request [:get, "http://i.imgur.com/CUjJQap.gif"] => "small_image"
     assert_match /img/, format("http://i.imgur.com/CUjJQap.gif")
   end
 
-  test "does not embed large images" do
+  test "does not embed images over 2mb" do
     fake_request [:get, "https://i.minus.com/iE02xvicOlrbF.gif"] => "large_image"
     assert_no_match /img/, format("https://i.minus.com/iE02xvicOlrbF.gif")
-  end
-
-  test "embeds youtube videos" do
-    format = format("https://www.youtube.com/watch?v=v8YEw6JaM3c")
-
-    assert_match /iframe/, format
-    assert_match /youtube.com\/embed\/v8YEw6JaM3c/, format
-  end
-
-  test "embeds youtube videos with short link" do
-    format = format("http://youtu.be/v8YEw6JaM3c")
-
-    assert_match /iframe/, format
-    assert_match /youtube.com\/embed\/v8YEw6JaM3c/, format
-  end
-
-  test "embeds gfycat videos" do
-    fake_requests({
-      [:get, "http://gfycat.com/AlertSpicyBlueandgoldmackaw"] => "gfy_details",
-      [:get, "http://gfycat.com/cajax/oembed/AlertSpicyBlueandgoldmackaw"] => "gfy_oembed"
-    })
-    assert_match /iframe/, format("http://gfycat.com/AlertSpicyBlueandgoldmackaw")
-  end
-
-  test "does not embed youtube user pages" do
-    fake_request [:get, "https://www.youtube.com/user/numberphile"] => "youtube_user"
-    format = format("https://www.youtube.com/user/numberphile")
-
-    assert_no_match /iframe/, format
   end
 
   test "removes original embedded link URL" do
