@@ -245,19 +245,17 @@ end
 Devise::Controllers::SignInOut.class_eval do
   include Auth::Helpers
 
-  def signed_in?(scope)
-    user_signed_in?
+  def signed_in?(_scope)
+    auth_provider.signed_in?
   end
 
   def sign_in(resource_or_scope, *args)
-    check_user_authentication
     user = (resource_or_scope.is_a? Symbol) ? args.first : resource_or_scope
-    env["_CURRENT_USER_PROVIDER".freeze].log_on_user(user, cookies)
+    auth_provider.sign_in(user)
   end
 
-  def sign_out(resource_or_scope=nil)
-    check_user_authentication
-    env["_CURRENT_USER_PROVIDER".freeze].log_off_user(cookies)
+  def sign_out(_resource=nil)
+    auth_provider.sign_out
   end
 
 end

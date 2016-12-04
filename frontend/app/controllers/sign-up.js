@@ -2,10 +2,11 @@ import Ember from 'ember';
 import ajax from 'ic-ajax';
 
 export default Ember.Controller.extend({
+  queryParams: [{ redirectTo: 'redirect_to' }],
   password: '',
   username: '',
   email: '',
-
+  redirectTo: '',
   errorMessage: '',
 
   // TODO: move this somewhere more logical, like the model?
@@ -13,10 +14,12 @@ export default Ember.Controller.extend({
   usernameProblems: function () {
     var messages = [];
     var username = this.get('username');
-    var blacklist = [ 'admin', 'administrator', 'connect', 'dashboard', 'developer', 'developers',
-      'edit', 'favorites', 'feature', 'featured', 'features', 'feed', 'follow', 'followers',
-      'following', 'hummingbird', 'index', 'javascript', 'json', 'sysadmin', 'sysadministrator',
-      'system', 'unfollow', 'user', 'users', 'wiki', 'you' ];
+    var blacklist = [ 'admin', 'administrator', 'connect', 'dashboard',
+                      'developer', 'developers', 'edit', 'favorites', 'feature',
+                      'featured', 'features', 'feed', 'follow', 'followers',
+                      'following', 'hummingbird', 'index', 'javascript', 'json',
+                      'sysadmin', 'sysadministrator', 'system', 'unfollow',
+                      'user', 'users', 'wiki', 'you' ];
     var validators = [{
       test: function (u) { return /^[_a-zA-Z0-9]+$/.test(u); },
       message: 'Usernames must only contain letters, numbers, and underscores'
@@ -77,7 +80,6 @@ export default Ember.Controller.extend({
 
   actions: {
     signUp: function() {
-      var self = this;
       return ajax({
         url: '/sign-up',
         type: 'POST',
@@ -86,16 +88,20 @@ export default Ember.Controller.extend({
           username: this.get('username'),
           password: this.get('password')
         }
-      }).then(function() {
-        window.location = '/onboarding/start';
-      }, function(err) {
+      }).then(() => {
+        if (this.get('redirectTo')) {
+          window.location.href = this.get('redirectTo');
+        } else {
+          window.location = '/onboarding/start';
+        }
+      }, (err) => {
         try {
-          self.set('errorMessage', err.jqXHR.responseJSON.error);
+          this.set('errorMessage', err.jqXHR.responseJSON.error);
         } catch (e) {
-          self.set('errorMessage', 'An unknown error occurred');
+          this.set('errorMessage', 'An unknown error occurred');
         }
       });
     }
   }
-  
+
 });

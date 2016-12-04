@@ -24,8 +24,10 @@
         <button type="submit">Sign in</button>
 
         <p class="switch-form-link">
-          Don't have an account? 
-          {{#link-to 'sign-up'}}Create one.{{/link-to}}
+          Don't have an account?
+          {{#link-to 'sign-up' (query-params redirectTo=redirectTo)}}
+            Create one.
+          {{/link-to}}
         </p>
       </form>
 

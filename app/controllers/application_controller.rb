@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   force_ssl if Rails.env.production?
   protect_from_forgery
 
-  before_filter :check_user_authentication, :preload_objects
-  before_filter :production_profiler
+  before_filter :housekeep_tokens, :preload_objects, :production_profiler
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   include Auth::Helpers

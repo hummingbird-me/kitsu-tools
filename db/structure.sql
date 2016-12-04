@@ -165,7 +165,9 @@ CREATE TABLE apps (
     logo_file_name character varying(255),
     logo_content_type character varying(255),
     logo_file_size integer,
-    logo_updated_at timestamp without time zone
+    logo_updated_at timestamp without time zone,
+    write_access boolean DEFAULT false NOT NULL,
+    public boolean DEFAULT false NOT NULL
 );
 
 
@@ -263,6 +265,39 @@ CREATE SEQUENCE characters_id_seq
 --
 
 ALTER SEQUENCE characters_id_seq OWNED BY characters.id;
+
+
+--
+-- Name: client_authorizations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE client_authorizations (
+    id integer NOT NULL,
+    scopes character varying(255)[] DEFAULT '{}'::character varying[] NOT NULL,
+    app_id integer,
+    user_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: client_authorizations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE client_authorizations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: client_authorizations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE client_authorizations_id_seq OWNED BY client_authorizations.id;
 
 
 --
@@ -1868,6 +1903,13 @@ ALTER TABLE ONLY characters ALTER COLUMN id SET DEFAULT nextval('characters_id_s
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY client_authorizations ALTER COLUMN id SET DEFAULT nextval('client_authorizations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY episodes ALTER COLUMN id SET DEFAULT nextval('episodes_id_seq'::regclass);
 
 
@@ -2174,6 +2216,14 @@ ALTER TABLE ONLY castings
 
 ALTER TABLE ONLY characters
     ADD CONSTRAINT characters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: client_authorizations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY client_authorizations
+    ADD CONSTRAINT client_authorizations_pkey PRIMARY KEY (id);
 
 
 --
@@ -2655,6 +2705,20 @@ CREATE INDEX index_castings_on_person_id ON castings USING btree (person_id);
 --
 
 CREATE UNIQUE INDEX index_characters_on_mal_id ON characters USING btree (mal_id);
+
+
+--
+-- Name: index_client_authorizations_on_app_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_client_authorizations_on_app_id ON client_authorizations USING btree (app_id);
+
+
+--
+-- Name: index_client_authorizations_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_client_authorizations_on_user_id ON client_authorizations USING btree (user_id);
 
 
 --
@@ -3851,4 +3915,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150204092920');
 INSERT INTO schema_migrations (version) VALUES ('20150712193314');
 
 INSERT INTO schema_migrations (version) VALUES ('20150717223653');
+
+INSERT INTO schema_migrations (version) VALUES ('20150515223855');
+
+INSERT INTO schema_migrations (version) VALUES ('20150614210857');
 

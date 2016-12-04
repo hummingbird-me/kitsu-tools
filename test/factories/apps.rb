@@ -15,12 +15,18 @@
 #  logo_content_type :string(255)
 #  logo_file_size    :integer
 #  logo_updated_at   :datetime
+#  write_access      :boolean          default(FALSE), not null
+#  public            :boolean          default(FALSE), not null
 #
 
 FactoryGirl.define do
   factory :app do
-    name { Faker::App.name }
+    sequence(:name) { |n| "#{Faker::App.name} (#{n})" }
     key { SecureRandom.hex(10) }
     secret { SecureRandom.base64(30) }
+
+    factory :app_with_creator do
+      creator factory: :user
+    end
   end
 end
