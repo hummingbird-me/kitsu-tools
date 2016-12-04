@@ -425,18 +425,23 @@ class User < ActiveRecord::Base
 
   def sync_to_staging!
     StagingSyncWorker.perform_async(id) if Rails.env.production?
+    true
   end
+
+  def sync_to_staging?
+    name_changed? || encrypted_password_changed? || email_changed? ||
+      pro_expires_at_changed?
+  end
+
+  after_save :sync_to_staging!, if: :sync_to_staging?
 
   after_save do
     avatar_changed = !avatar_processing && avatar_processing_changed?
     sync_to_forum! if name_changed? || avatar_changed || pro_expires_at_changed?
-    if name_changed? || encrypted_password_changed? || email_changed? ||
-        pro_expires_at_changed?
-      sync_to_staging!
-    end
     if pro_expires_at_changed? && (pro_expires_at_was || 2.days.ago) < Time.now
       UserMailer.pro_kitsu_message(self).deliver
     end
+    true
   end
 
   def voted_for?(target)
