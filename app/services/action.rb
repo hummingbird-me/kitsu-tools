@@ -65,6 +65,20 @@ class Action
     end
   end
 
+  def self.manga_status(m)
+    return unless m.valid?
+
+    Substory.create({
+      user: m.user,
+      substory_type: Substory.substory_types[:manga_status_update],
+      story: Story.for_user_and_manga(m.user, m.manga.id),
+      data: {
+        old_status: m.status_was,
+        new_status: m.status,
+      }
+    }) if m.status_changed?
+  end
+
   def self.from_library_entry(l)
     return unless l.valid?
 

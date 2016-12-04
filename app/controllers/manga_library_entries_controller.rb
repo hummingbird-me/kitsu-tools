@@ -57,6 +57,8 @@ class MangaLibraryEntriesController < ApplicationController
       status: params[:manga_library_entry][:status]
     )
     update_manga_library_entry_using_params(manga_library_entry, params)
+    Action.manga_status(manga_library_entry)
+
     if manga_library_entry.save
       render json: manga_library_entry
     else
@@ -76,6 +78,8 @@ class MangaLibraryEntriesController < ApplicationController
     return error!("Unauthorized", 403) if manga_library_entry.nil?
 
     update_manga_library_entry_using_params(manga_library_entry, params)
+    Action.manga_status(manga_library_entry)
+
     if manga_library_entry.save
       render json: manga_library_entry, :root => "manga_library_entry"
     else
