@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   libraryEntries: [],
   canGoBack: Ember.computed.gt('page', 1),
   canGoForward: function() {
-    return !this.get('loading') && this.get('libraryEntries.length') === 6;
+    return !this.get('loading') && this.get('libraryEntries.length') === 6 && !this.fetchPage(this.get('page') + 1).get('libraryEntries.length') === 0;
   }.property('loading', 'libraryEntries.length'),
 
   fetchPage: function(page) {
