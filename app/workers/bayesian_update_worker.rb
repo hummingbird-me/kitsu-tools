@@ -6,5 +6,6 @@ class BayesianUpdateWorker
 
   def perform
     Anime.recompute_bayesian_ratings!
+    Manga.recompute_bayesian_ratings!
   end
 end
