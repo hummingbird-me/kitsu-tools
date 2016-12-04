@@ -18,6 +18,7 @@ SETTING_SEEDNOW=0
 COLOR_RED='\033[0;31m'
 COLOR_GREEN='\033[0;32m'
 COLOR_NONE='\033[0m'
+COLOR_ORANGE='\033[01;38;5;208m'
 
 
 # Navigate to repository root so we clone stuff in the right place
@@ -25,19 +26,26 @@ cd "$(dirname "$0")/../"
 
 
 # Most importantly, center and output our logo ascii art
-TERM_SIZE=`tput cols`
-LOGO_SIZE=25
-LOGO_OFFS=0
-LOGO_PADD=""
-
-if [[ "$TERM_SIZE" -gt "0" ]]; then
-  LOGO_OFFS=$[($TERM_SIZE - $LOGO_SIZE) / 2]
-  for i in `seq 1 $LOGO_OFFS`; do
-    LOGO_PADD="$LOGO_PADD "
-  done
-fi
-
-# [logo]
+echo -e "${COLOR_ORANGE}            88";
+echo -e "           88D8";
+echo -e "           8  D8";
+echo -e "          8888888";
+echo -e " O8NND88888888888   D88888888N";
+echo -e "  N88 88888888888 888888888888888";
+echo -e "     888888888888 88888888888888888";
+echo -e "        D88888888 888888888888888888";
+echo -e "       888    888 8888888888888888888";
+echo -e "     8888888888D8888888888D    N888888";
+echo -e "   888888D  8888888888     88888888888";
+echo -e " 8888N     N8888888     88888888888888";
+echo -e " 88       888888     8888888888888888";
+echo -e "         D8888     D8888888888888888";
+echo -e "        D888      O888888888888888";
+echo -e "        88       88 888888888888";
+echo -e "                 8    88888888";
+echo -e "                 8    N888N";
+echo -e "                 8N 88";
+echo -e "                  88\n${COLOR_NONE}";
 
 
 # Output a totally not generic welcome message to the contributor
