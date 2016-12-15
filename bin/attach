@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [[ $1 == "" ]]; then
+  echo "No container to attach to given. Exiting."
+  exit 0
+fi
+
+BINDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+IFS='/' read -ra ADDR <<< "$BINDIR"
+POS=$((${#ADDR[@]} - 2))
+DIR=${ADDR[$POS]}
+
+docker exec -it "${DIR}_$1_1" /bin/bash
