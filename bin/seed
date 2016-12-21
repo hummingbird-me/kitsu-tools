@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DB_TARGET_ID="kitsu_development"
-DB_FILE_LINK="https://www.dropbox.com/s/ui1xaialiq67bnu/anime.sql.gz"
+DB_FILE_LINK="https://www.dropbox.com/s/xgq6tuf4va2cd6v/kitsu-dump-2016-12-21.sql.gz"
 DB_FILE_NAME="anime.sql.gz"
 DEFAULT_AMNT=200
 
