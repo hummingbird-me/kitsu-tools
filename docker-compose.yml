@@ -60,6 +60,7 @@ services:
     build: ./client
     volumes:
       - ./client:/opt/kitsu/client
+      - /root/.cache/yarn
       - /opt/kitsu/client/node_modules
       - /opt/kitsu/client/bower_components
     tmpfs:
