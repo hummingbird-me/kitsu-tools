@@ -58,6 +58,9 @@ function do_import {
 }
 
 function do_import_db {
+  # Here we drop the schema manually instead db:drop because
+  # of other docker connections to the DB
+  echo "DROP SCHEMA public CASCADE;CREATE SCHEMA public;" | bin/psql "$DB_TARGET_ID"
   gzcat "$DB_FILE_NAME" | bin/psql "$DB_TARGET_ID"
   echo -e "${COLOR_GREEN}Imported $DB_FILE_NAME to $DB_TARGET_ID${COLOR_NONE}"
 }
