@@ -11,13 +11,14 @@ volumes:
 services:
   # Database servers
   postgres:
-    image: postgres:9.3
+    image: postgres:9.4
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_PASSWORD: mysecretpassword
       POSTGRES_USER: postgres
     volumes:
       - postgres:/var/lib/postgresql/data
+    ports: ['5432:5432']
   redis:
     image: redis
   elasticsearch:
