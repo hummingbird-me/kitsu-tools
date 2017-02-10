@@ -1,13 +1,13 @@
-# Hummingbird
+# Kitsu
 
-Hummingbird is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
-
----
-**<p align="center">This branch is our under-development next-generation platform, not the one currently at hummingbird.me<br /><br />This is our meta repository. It contains all our tooling and binstubs.<br />For the actual source code, please check out the [server](https://github.com/hummingbird-me/hummingbird-server) and [client](https://github.com/hummingbird-me/hummingbird-client) repository.</p>**
+Kitsu is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
 
 ---
+**<p align="center">This is our meta repository. It contains our development environment and tooling.<br />For the actual source code, please check out the [server](https://github.com/hummingbird-me/hummingbird-server) and [client](https://github.com/hummingbird-me/hummingbird-client) repository.</p>**
 
-[![Hummingbird is now Open Source](http://hummingbird-forum.s3.amazonaws.com/86407dbb64dbecfee0cbd74b759a4b33f70657b74c29.jpg)](http://forums.hummingbird.me/t/hummingbird-is-now-open-source/9870)
+---
+
+[![Kitsu is now Open Source](http://hummingbird-forum.s3.amazonaws.com/86407dbb64dbecfee0cbd74b759a4b33f70657b74c29.jpg)](http://forums.hummingbird.me/t/hummingbird-is-now-open-source/9870)
 
 
 | [Server Repository](https://github.com/hummingbird-me/hummingbird-server) | [Client Repository](https://github.com/hummingbird-me/hummingbird-client) |
@@ -45,7 +45,7 @@ Please don't use Github issues for feature requests, instead create a topic in t
 
 
 ## License
-Copyright 2015 Hummingbird Media, Inc.
+Copyright 2017 Kitsu, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
