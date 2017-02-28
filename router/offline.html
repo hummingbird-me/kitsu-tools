@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<style>
+		#gif-wrap {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			background-color: #332532;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: flex;
+			-webkit-box-align: center;
+					-ms-flex-align: center;
+							align-items: center;
+			-webkit-box-pack: center;
+					-ms-flex-pack: center;
+							justify-content: center;
+		}
+		#gif-wrap:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			background: #332532;
+			opacity: .95;
+		}
+		.content-wrap {
+			z-index: 1;
+			position: relative;
+			text-align: center;
+			color: #ECF0F1;
+		}
+		.kitsu-logo {
+			width: 100%;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		.kitsu-logo svg {
+			width: auto;
+			height: 90px;
+		}
+		.share-this {
+			margin: 25px auto 0 auto;
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			max-width: 500px;
+			padding: 10px;
+			border-radius: 3px;
+		}
+		.share-this span {
+			position: relative;
+			top: -2px;
+			margin-right: 10px;
+			color: #bfa5bd;
+		}
+		.twitter-share-button {
+			margin-bottom: -5px;
+		}
+		.greeting-text {
+			max-width: 600px;
+			margin: 0 auto 25px auto;
+		}
+		#text-adventure {
+			max-width: 500px;
+			margin: 0 auto;
+			border: 1px solid RGBA(36, 26, 36, 1);
+			padding: 20px;
+			background: RGBA(36, 26, 36, 0.5);
+		}
+		#output {
+			margin: 2em 1em;
+			text-align: left;
+			font-family: monospace;
+			font-size: 1.1em;
+			line-height: 1.5;
+			color: #fc9;
+		}
+		#output ul {
+			color: #f1c40f;
+		}
+		#output ul li {
+			margin: 1em;
+		}
+		#output ul a {
+			color: #76daff;
+			text-decoration: none;
+		}
+		#output ul a.win {
+			color: #2ecc71;
+		}
+		#output ul a.lose {
+			color: #e74c3c;
+		}
+		#output ul a:hover {
+			color: white;
+		}
+		#output .inv {
+			color: #ca9;
+			font-size: 0.8em;
+			padding-top: 2em;
+		}
+	</style>
+</head>
+<body>
+	<div id="gif-wrap">
+		<div class="content-wrap">
+			<div class="kitsu-logo">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800px" height="224px" viewBox="0 0 800 224" version="1.1">
+					<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+							<g id="Group">
+									<g id="Logotype">
+											<g id="Name" transform="translate(271.000000, 43.000000)" fill="#ECF0F1">
+													<path d="M514.6,0.8 C505.6,0.8 500.2,7.2 500.2,15.2 L500.2,98.2 C500.2,109.6 493.3,118.8 479.6,118.8 C466,118.8 459,109.6 459,98.2 L459,15.2 C459,7.3 453.6,0.8 444.6,0.8 C435.6,0.8 430.2,7.2 430.2,15.2 L430.2,98.3 L430.3,98.3 C431.3,124.1 448,144.6 479.6,144.6 C511.2,144.6 527.8,124.1 528.9,98.3 L529,98.3 L529,15.2 C529,7.3 523.6,0.8 514.6,0.8 Z" id="Shape"/>
+													<path d="M385.3,75.2 L385.3,75.2 C375.1,64.9 352,55 346,47.8 C342.3,43.7 341.8,37.4 345.1,32.7 C347.1,29.9 350.1,28.2 353.2,27.6 C358.8,26.6 364.5,27.4 369,29.2 C374.9,31.5 379.2,34.9 383.8,35.2 L383.8,35.2 C388,35.5 392.3,33.7 395,29.9 C398.4,25 397.8,18.4 393.9,14.2 C382.8,0.9 360,-0.4 348.8,1.4 C337.8,3.2 327.2,8.6 320.6,18 C309.7,33.5 311.8,54.3 324.1,67.7 C333.4,78.3 347.5,83.7 358.3,90.6 C360.6,92.1 363.5,94.2 365,95.8 C369.6,100.5 370.3,107.9 366.5,113.4 C364.5,116.2 361.7,118 358.7,118.8 C355.9,119.6 352.4,119.8 350.3,119.7 C341,119.5 331.2,113.1 328.4,111.9 C323.2,109.6 316.9,111.2 313.5,116.1 C310.6,120.2 310.7,125.3 313,129.4 C314.4,131.9 317,134.9 320.4,137.1 C337.2,148.3 356.9,146.4 368,143.5 C376.9,141.1 385.3,136.3 391,127.8 C402.5,111.2 399.8,88.7 385.3,75.2 Z" id="Shape"/>
+													<path d="M279.2,2.8 L204.7,2.8 C197.5,2.8 191.6,7 191.6,15.9 C191.6,24.8 197.5,29 204.7,29 L227.7,29 L227.7,130.2 C227.7,138.1 232.3,144.6 242.1,144.6 C251.8,144.6 256.5,138.2 256.5,130.2 L256.5,29 L279.2,29 C286.4,29 292.3,24.8 292.3,15.9 C292.3,7.1 286.5,2.8 279.2,2.8 Z" id="Shape"/>
+													<path d="M149.4,0.8 C140.4,0.8 135,7.2 135,15.2 L135,130.2 C135,138.1 139.6,144.6 149.4,144.6 C159.1,144.6 163.8,138.2 163.8,130.2 L163.8,15.2 C163.8,7.3 158.4,0.8 149.4,0.8 Z" id="Shape"/>
+													<path d="M99.5,123.6 L99.5,123.6 L68.1,63.4 C91.4,35.3 94.8,18.7 95.2,16.2 C95.3,15.5 95.4,14.7 95.4,13.9 C95.4,6.7 89.6,0.9 82.4,0.9 C77.4,0.9 73.1,3.8 70.5,7.8 C68,11.8 63.4,22.8 49.7,41.9 C41.4,53.4 32.3,62.8 29,66.1 L29,15.3 C29,7.4 23.6,0.9 14.6,0.9 C5.6,0.9 0.2,7.3 0.2,15.3 L0.2,130.3 C0.2,138.2 4.8,144.7 14.6,144.7 C24.3,144.7 29,138.3 29,130.3 L29,102.5 C32.1,99.5 39,92.9 46.7,84.9 L73.8,137 L73.8,137 L73.8,137 C77.5,144.1 85.7,146.3 93.2,143.6 C100.8,140.6 103.2,130.6 99.5,123.6 Z" id="Shape"/>
+											</g>
+											<g id="Symbol" fill="#F75239">
+													<path d="M152.7,48.5 C145.9,46 138.6,44.4 130.9,44.1 C118.2,43.5 106.1,46.3 95.5,51.7 C94.9,52 94.2,52.3 93.5,52.7 L93.5,54.8 L93.5,89.1 C93.5,89.6 93.5,91.5 93.2,93.1 C92.5,96.8 90.3,100.1 87.2,102.2 C84.6,104 81.6,104.8 78.4,104.7 C77.8,104.7 77.1,104.6 76.5,104.5 C74.9,104.2 73.2,103.6 72.7,103.4 C71.3,102.9 50.9,95 41.1,91.2 C39.9,90.7 38.9,90.3 38.1,90 C26.4,99.9 14.1,111.7 2.6,125.6 C2.5,125.7 2,126.3 1.9,126.4 C0.4,128.5 0.3,131.5 1.9,133.8 C3.1,135.5 5,136.5 6.9,136.6 C8.2,136.7 9.6,136.3 10.8,135.5 C10.9,135.4 11,135.3 11.2,135.2 L11.2,135.2 C23.4,126.4 36.8,119.3 51,113.6 C52,113.1 53.2,112.8 54.3,112.9 C55.9,113 57.4,113.6 58.6,114.8 C60.9,117.1 61,120.8 59.1,123.3 L59.1,123.3 C58.3,124.5 57.6,125.7 56.9,126.9 C49.3,139.3 43.2,152.8 38.6,166.9 C38.5,167.3 38.4,167.6 38.3,168 C38.3,168 38.3,168 38.3,168.1 C37.9,169.8 38.2,171.6 39.3,173.1 C40.5,174.8 42.4,175.8 44.4,175.9 C45.8,176 47.1,175.6 48.3,174.8 C48.8,174.4 49.3,174 49.7,173.5 L49.7,173.5 C49.8,173.3 50,173.1 50.1,172.9 L50.1,172.9 C55.1,165.8 60.6,159.1 66.5,152.9 C92.8,124.7 127.7,104.8 166.8,97 L166.8,97 C167.1,96.9 167.4,96.9 167.7,96.9 C169.9,97 171.6,98.9 171.5,101.1 C171.4,103 170.1,104.4 168.3,104.8 C132,112.5 66.6,155.6 89.5,218.2 C89.9,219.2 90.2,219.8 90.7,220.7 C91.9,222.4 93.8,223.4 95.7,223.5 C96.8,223.5 99.9,223.2 101.8,219.8 C105.5,212.8 112.5,205 132.7,196.6 C189,173.3 198.3,140 199.3,118.9 L199.3,117.7 C200.2,86.3 180.7,58.9 152.7,48.5 Z M96.2,213.5 C91,198 91.5,183 97.6,168.7 C109.3,187.6 129.7,189.2 129.7,189.2 C108.8,197.9 100.6,206.5 96.2,213.5 Z" id="Shape"/>
+													<path d="M1.1,50.6 C1.2,50.8 1.4,51 1.5,51.1 L1.5,51.1 C6.8,58.3 12.8,64.6 19.3,70.2 C19.4,70.3 19.5,70.3 19.5,70.4 C23.7,74 31.7,79.2 37.5,81.3 C37.5,81.3 73.6,95.2 75.5,96 C76.2,96.3 77.2,96.6 77.7,96.7 C79.3,97 81,96.7 82.5,95.7 C84,94.7 84.9,93.2 85.2,91.6 C85.3,91 85.4,90 85.4,89.3 L85.4,48.5 C85.5,42.3 83.5,32.9 81.7,27.7 C81.7,27.6 81.6,27.5 81.6,27.4 C78.8,19.3 75,11.4 70.2,3.9 L70.2,3.9 C70.1,3.7 70,3.5 69.9,3.3 L69.8,3.2 C67.8,0.4 63.8,-0.3 60.9,1.7 C60.4,2 60.1,2.4 59.7,2.8 L59.7,2.8 C59.4,3.2 59.2,3.5 58.9,3.9 C52.5,13.2 49.9,24.5 51.6,35.6 C48.3,37.3 44.8,39.6 44.4,39.9 L44.4,39.9 L44.4,39.9 C44,40.2 40.5,42.6 37.8,45.1 C28.1,39.6 16.5,37.9 5.6,40.5 C5.2,40.6 4.7,40.7 4.3,40.8 L4.3,40.8 C3.8,41 3.3,41.2 2.9,41.5 C5.10702591e-14,43.5 -0.8,47.4 1.1,50.4 L1.1,50.6 Z M64.6,10.5 C68,16.2 70.9,22.1 73.2,28.3 C68.6,29.1 64.1,30.3 59.7,31.9 C59.1,24.4 60.8,17 64.6,10.5 Z M31.5,51.3 C28.3,54.8 25.6,58.6 23.2,62.6 C18.3,58.3 13.8,53.4 9.7,48.2 C17.2,46.9 24.7,48 31.5,51.3 Z" id="Shape"/>
+											</g>
+									</g>
+							</g>
+					</g>
+			</svg>
+			</div>
+			<p class="greeting-text">Hey, glad you're here. Unfortunately, we had to go offline briefly for some scheduled maintenance. We should be back online in less than an hour!</p>
+
+			<div id="text-adventure">
+				<div id="output"></div>
+			</div>
+			<div class="share-this">
+				<span>Hey, uh... Wanna share this?</span>
+				<a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="@heykitsu is offline for scheduled maintenance, but still entertaining." data-show-count="false">Tweet</a>
+				<script async src="//platform.twitter.com/widgets.js"
+					charset="utf-8"></script>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function() {
+		// Initiate gifLoop for set interval
+		var refresh;
+		// Duration count in seconds
+		const duration = 500 * 10;
+		// Giphy API defaults
+		const giphy = {
+			baseURL: 'https://api.giphy.com/v1/gifs/',
+			key: 'dc6zaTOxFJmzC',
+			tag: 'anime',
+			type: 'random',
+			rating: 'pg-13'
+		};
+		// Target gif-wrap container
+		const $gif_wrap = $('#gif-wrap');
+		// Giphy API URL
+		let giphyURL = encodeURI(giphy.baseURL + giphy.type + '?api_key=' + giphy.key + '&tag=' + giphy.tag + '&rating=' + giphy.rating);
+
+		// Call Giphy API and render data
+		var newGif = () => $.getJSON(giphyURL, (json) => renderGif(json.data));
+
+		// Display Gif in gif wrap container
+		var renderGif = (_giphy) => {
+			var url = _giphy.image_original_url.replace('http:', 'https:');
+			// Set gif as bg image
+			$gif_wrap.css({
+				'background-image': 'url("' + url + '")'
+			});
+
+			// Start duration countdown
+			refreshRate();
+		};
+
+		// Call for new gif after duration
+		var refreshRate = () => {
+			// Reset set intervals
+			clearInterval(refresh);
+			refresh = setInterval(function() {
+				// Call Giphy API for new gif
+				newGif();
+			}, duration);
+		};
+
+		// Call Giphy API for new gif
+		newGif();
+
+	});
+
+	console.clear();
+
+	var ENTRIES = [{
+	        // Recreation room
+	        id: 'e_recroom',
+	        text: 'You are in a small-ish room set off from a larger atrium.  ' +
+	            'A square glass table sits in the centre, surrounded by ' +
+	            'worn-looking sofa seats.  A large TV is affixed to the wall, ' +
+	            'cables snaking out from behind it.',
+	        extra: [{
+	            requires: '!mask',
+	            text: 'Your gaze is drawn to a large ' +
+	                'japanese body pillow sitting in one of the chairs.'
+	        }],
+	        options: [{
+	            text: 'Examine the body pillow.',
+	            goto: 'e_plushie',
+	            requires: '!mask'
+	        }, {
+	            text: 'Move into the main atrium.',
+	            goto: 'e_hall'
+	        }],
+	        start: true
+	    }, {
+	        // Look at the plushie
+	        id: 'e_plushie',
+	        text: 'Upon closer inspection, the body pillow seems to be a character from the anime Sword Art Online - ' +
+	            'slightly beat-up and stained, but still soft.  However, its head is completely covered by a latex mask.',
+	            extra: [{text:'Strangely, the mask has been made in the likeness of your kitsu avatar.  The mask is tightly affixed ' +
+	            'and can not be pulled from the body pillow, despite your efforts.'}],
+	        options: [{
+	            text: 'Cut the mask off the body pillow.',
+	            requires: 'scissors',
+	            goto: 'e_got_mask'
+	        }, {
+	            text: 'Head into the main atrium.',
+	            goto: 'e_hall'
+	        }]
+	    }, {
+	        // Get the mask off the plushie
+	        id: 'e_got_mask',
+	        text: 'By making a cut in the back of the latex mask, you are able to remove it from the body pillow. ' +
+	            'The squashed facial features of Kirito stare back at you.  You don\'t feel like carrying him around, ' +
+	            'so you leave him back on her chair and head out into the atrium.',
+	        gives: 'mask',
+	        takes: 'scissors',
+	        next: 'e_hall'
+	    }, {
+	        // Main atrium
+	        id: 'e_hall',
+	        text: 'You stand in the main atrium of the studio. ' +
+	            'At the end of the room is a large, secure-looking double-door with curious red LEDs surrounding it',
+	            extra: [{text: 'There is a security camera pointing down from above the door.  A metal stairway leads up to ' +
+	            'a mezzanine.  There is a recreation room nearby.'}],
+	        options: [{
+	            text: 'Put the mask on and approach the main door.',
+	            requires: 'mask',
+	            goto: 'e_door_mask'
+	        }, {
+	            text: 'Approach the main door.',
+	            goto: 'e_door_nomask'
+	        }, {
+	            text: 'Investigate the upstairs area.',
+	            goto: 'e_upstairs'
+	        }, {
+	            text: 'Move into the rec area.',
+	            goto: 'e_recroom'
+	        }],
+	    }, {
+	        // Put on mask and use the main door
+	        id: 'e_door_mask',
+	        text: 'You pull the latex mask over your head.  It feels stuffy and tight, but after some adjustments ' +
+	            'you are able to see and breathe okay.  You feel strange, wearing your online face atop your actual face. You approach the security door as the camera pings into life, scanning your features.',
+	            extra: [{text:'You tense as seconds pass.  To your relief, you hear a bright ' +
+	            '*ding* sound as the red LEDs fade and the electronic lock deactivates.  You grab the door ' +
+	            'handle and push your way out of the studio into a car park.  The door slams and re-locks behind you.'}],
+	        next: 'e_outside'
+	    }, {
+	        // Killed by the laser door
+	        id: 'e_door_nomask',
+	        text: 'Nearing the door, you are startled by a loud beep from the security camera as it pivots towards you. ' +
+	            'For a moment it scans your face, before it an alarm begins sounding "YOUR FAVORITE ANIME IS SHIT - ALERT - YOUR FAVORITE ANIME IS SHIT" the ear-splitting siren quicklybrings you to your knees.',
+				extra: [{text:
+	            'You barely have a second to register the blinding light from the LEDs before an array of lasers blasts forth ' +
+	            'from the door frame, blowing you into a hundred smouldering chunks of varying sizes.'}],
+	        gameover: 'lose'
+	    }, {
+	        // Upstairs
+	        id: 'e_upstairs',
+	        text: 'The mezzanine area contains a row of desks with powered-down laptops, and ageing computer chairs ' +
+	            'carelessly lying around.',
+	        extra: [{
+	            text: 'You spot an anime mousepad on a nearby desk. It seems to be a girl, her buttocks rises up from the pad, forming a cushioned wrist rest.',
+	            requires: '!scissors'
+	        }],
+	        options: [{
+	            text: 'Check out the nearest desk.',
+	            requires: '!scissors',
+	            goto: 'e_get_scissors'
+	        }, {
+	            text: 'Head back downstairs.',
+	            goto: 'e_hall'
+	        }]
+	    }, {
+	        // Found the scissors
+	        id: 'e_get_scissors',
+	        text: 'Picking through the pens, pencils and paperclips in the desk tidy, you spot a small pair ' +
+	            'of safety scissors.  With nothing else but unusable computers around, you decide to head ' +
+	            'back downstairs.',
+	        gives: 'scissors',
+	        next: 'e_hall'
+	    }, {
+	        // Outside
+	        id: 'e_outside',
+	        text: 'The car park is rain-soaked and empty, save for a Minivan parked in front of ' +
+	            'the studio. The Minivan seems to have a vehicle wrap, decorating it with various Sailor Moon imagery. Across the car park is an office building, the door slightly ajar.',
+	        options: [
+	            {
+	                text: 'Check out that bitchin\' Minivan.',
+	                requires: '!keys',
+	                goto: 'e_bike'
+	            },
+	            {
+	                text: 'Drive away in the Minivan.',
+	                requires: 'keys',
+	                goto: 'e_complete'
+	            },
+	            {
+	                text: 'Enter the office building.',
+	                goto: 'e_office'
+	            }
+	        ]
+	    }, {
+	        // Bike
+	        id: 'e_bike',
+	        text: 'The Minivan is rusting and clearly old but in good condition - definitely roadworthy. The interior has a faint smell of circus peanuts. Unfortunately, the key is missing. ',
+	        next: 'e_outside'
+	    },{
+	      // Office
+	        id: 'e_office',
+	        text: 'You find yourself in a dimly-lit office where the tables and floor are strewn with empty Ramune bottles, ' +
+	                'glasses and other weeb detritus.  At the back of the room is a kitchen.  A rickety metal stairway ' +
+	                'leads up to the second floor.',
+	        extra: [
+	            {
+	                text: 'A large figure is slumped on a chair in the corner. They are wearing a shirt and tie, and have ' +
+	                        'an unnerving latex mask, similar to your own, on their head.  The mask depicts a bald brown man, mouth agape. ' +
+	                        'The figure appears to be asleep or unconscious.',
+	                requires: '!keys'
+	            }
+	        ],
+	        options: [
+	            {
+	                text: 'Sneak past the figure to the kitchen area.',
+	                requires: '!keys',
+	                goto: 'e_kitchen'
+	            },
+	            {
+	                text: 'Head up the metal stairway.',
+	                requires: '!keys',
+	                goto: 'e_josh_wake_stairs'
+	            },
+	            {
+	                text: 'Head up the metal stairway.',
+	                requires: 'keys',
+	                goto: 'e_office_upstairs'
+	            },
+	            {
+	                text: 'Leave the office.',
+	                goto: 'e_outside'
+	            }
+	        ]
+	    }, {
+	      // Office upstairs
+	        id: 'e_office_upstairs',
+	        text: 'You noisily creak your way up the metal staircase, but when you reach the top, you find yourself ' +
+	            'staring at an empty room.  This space must be unused.  Disappointed, you trudge back downstairs.',
+	        next: 'e_office'
+	    },{
+	        // Kitchen
+	        id: 'e_kitchen',
+	        text: 'The kitchen area is a disaster zone - glasses, bottles and rubbish everywhere. ' +
+	            'Amongst the carnage you see some old chinese takout, and a large, half-empty bottle of ' +
+	            'water.',
+	        options: [
+	            {
+	                text: 'Offer only the chinese takeout to the masked person.',
+	                goto: 'e_josh_chinese'
+	            },
+	            {
+	                text: 'Bring the masked person both food and water.',
+	                goto: 'e_josh_water'
+	            },
+	            {
+	                text: 'Leave the kitchen area.',
+	                goto: 'e_office'
+	            }
+	        ]
+	    }, {
+	      // Josh likes chinese
+	        id: 'e_josh_chinese',
+	        text: 'You carefully gather up the chinese takeout and return to the masked figure. Slowly, you reach out ' +
+	            'and touch him on the shoulder.  The masked person immediately sits bolt upright and glares at you.',
+	            extra: [{text:'Spotting the chinese, he swiftly grabs it out of your hands and, with a gleeful roar, barges past ' +
+	            'you and out the door, stuffing the chinese into the mouth of the mask as he goes. You listen as his ' +
+	            'maniacal screams fade off into the distance.  On his seat, you see a set of keys, a keychain attached with the words "Sailor Josh" written in large, bubbly letters.'}],
+	        gives: 'keys',
+	        next: 'e_office'
+	    }, {
+	        // Josh hates whiskey
+	        id: 'e_josh_water',
+	        text: 'You retrieve the water bottle from the rubble of the counter and the remaining takeout, and approach the masked person. ' +
+	            'No sooner have you gently tapped him on the shoulder does he sit bolt upright with a grunt. ' +
+	            'For a second he glowers at you, then his gaze turns to the water in your left hand and chinese in your right. "Options are the devil!" the masked man snarls. ' +
+	            'He rips the mask from his head and the face beneath causes your stomach to turn over on itself' ,
+	        next: 'e_josh_kill'
+	    },
+	    {
+	      // Josh wakes due to noisy stairs
+	        id: 'e_josh_wake_stairs',
+	        text: 'The dilapidated metal stairs make a loud creaking and cracking sound as you ' +
+	            'take your first step onto them.  The noise immediately stirs the masked figure, ' +
+								'who suddenly sits bolt upright "QUIET, JERK!" he screams, ripping the mask from his head and leaping unhumanely to your back.',
+	        next: 'e_josh_kill'
+	    }, {
+	        // Josh kills player
+	        id: 'e_josh_kill',
+	        text: 'With a bloodcurdling shriek, Josh lunges at ' +
+	            'you. Before you can react he smashes into you, knocking you senseless, and dives on your helpless ' +
+	            'body.  You wait for him to finish the job, but he only whispers and laughs "Soon... soon..."',
+	        gameover: 'lose'
+	    },
+	    {
+	        // Win
+	        id: 'e_complete',
+	        text: 'You have escaped... for now.',
+	        gameover: 'win'
+	    }
+	];
+
+	/**
+	 * Parser module for the data format.
+	 * Reads the data object format and creates an internal copy with required
+	 * transformations and parsing. Exposes methods to start/reset the game,
+	 * advance the game via choices/actions, and read the currently active entry.
+	 *
+	 * The module is just data-driven, and returns objects from its methods; it
+	 * does no handling of game display or user input directly.  It needs a frontend
+	 * written for it in order for a player to interact with it.
+	 **/
+	var CYOA = (function() {
+
+	    var ENTRY_DATA,
+	        currentEntryId, currentEntryData,
+	        inventory;
+
+	    function _init(entryData) {
+	        // clear state
+	        ENTRY_DATA = {};
+	        currentEntryId = null;
+	        currentEntryData = {};
+	        inventory = [];
+
+	        var startEntryId = null;
+
+	        // Parse entry data into internal object
+	        entryData.forEach(function(entry) {
+	            ENTRY_DATA[entry.id] = Object.create(entry);
+
+	            // Track the starting entry and warn of duplicates
+	            if (entry.start === true) {
+	                if (startEntryId !== null) {
+	                    console.error('More than one starting state defined:', startEntryId, entry.id);
+	                } else {
+	                    startEntryId = entry.id;
+	                }
+	            }
+
+	            // Process extra paragraphs if present
+	            if (entry.extra) {
+	                entry.extra.forEach(function(ext) {
+	                    // convert string options to single-item arrays for easier parsing
+	                    if (ext.requires && (typeof ext.requires === 'string')) {
+	                        ext.requires = [ext.requires];
+	                    }
+	                });
+	            }
+
+	            // 'Next' overrides all other options
+	            if (entry.next) {
+	                entry.options = [{
+	                    text: 'Continue...',
+	                    goto: entry.next
+	                }];
+	            }
+	            // Process and validate options
+	            if (entry.options) {
+	                entry.options.forEach(function(opt) {
+	                    // options must have a 'goto'
+	                    if (!opt.goto) console.error('Entry', entry.id, ' has option without a goto: ', opt.text);
+	                    // convert string options to single-item arrays for easier parsing
+	                    if (opt.requires && (typeof opt.requires === 'string')) {
+	                        opt.requires = [opt.requires];
+	                    }
+	                });
+	            }
+	        });
+
+	        // Set initial state from starting entry
+	        if (startEntryId === null) console.error('No start entry found');
+	        _setEntry(startEntryId);
+	    }
+
+	    // Inventory methods (accept string or array)
+
+	    function _addToInventory(items) {
+	        if (typeof items === 'string') items = [items];
+	        inventory = inventory.concat(items);
+	    }
+
+	    function _takeFromInventory(items) {
+	        if (typeof items === 'string') items = [items];
+	        var newInv = [];
+	        inventory.forEach(function(item) {
+	            if (items.indexOf(item) === -1) newInv.push(item);
+	        });
+	        inventory = newInv;
+	    }
+
+	    function _checkInventory(item) {
+	        return (inventory.indexOf(item) > -1);
+	    }
+
+	    // Utility method to check a 'requires'-format array against the current inventory
+	    function _hasRequirements(opt) {
+	        var isAvailable = true;
+	        if (opt.requires) {
+	            opt.requires.forEach(function(req) {
+	                if (req.charAt(0) === '!' && _checkInventory(req.substr(1))) isAvailable = false;
+	                if (req.charAt(0) !== '!' && !_checkInventory(req)) isAvailable = false;
+	            });
+	        }
+	        return isAvailable;
+	    }
+
+	    // Updates the current entry data to the given entry ID.
+	    // Composes the current entry data based on conditionals set in the entry data,
+	    // including required inventory to display options, etc.
+	    // Also makes changes to inventory and state based on the definition data.
+	    function _setEntry(id) {
+	        if (!id in ENTRY_DATA) console.error('Unable to change entry: invalid entry id', id);
+	        currentEntryId = id;
+
+	        var data = ENTRY_DATA[id];
+	        currentEntryData = {
+	            id: data.id,
+	            text: data.text,
+	            extra: []
+	        };
+
+	        // Add/remove inventory items in this entry
+	        if (data.gives) _addToInventory(data.gives);
+	        if (data.takes) _takeFromInventory(data.takes);
+
+	        // Update text with extras
+	        if (data.extra) {
+	            data.extra.forEach(function(ext) {
+	                if (_hasRequirements(ext)) currentEntryData.extra.push(ext.text);
+	            });
+	        }
+
+	        // State modifiers
+	        // TODO: make this more definitive and mutate options accordingly
+	        if (data.gameover) currentEntryData.gameover = data.gameover;
+
+	        // Define available options based on inventory requirements
+	        if (data.options) {
+	            currentEntryData.options = [];
+	            data.options.forEach(function(opt, idx) {
+	                if (_hasRequirements(opt)) {
+	                    currentEntryData.options.push({
+	                        text: opt.text,
+	                        goto: opt.goto
+	                    });
+	                }
+	            });
+	        }
+	        return currentEntryData;
+	    }
+
+	    function startGame(data) {
+	        _init(data);
+	    }
+
+	    function getCurrentEntry() {
+	        if (currentEntryData === {}) console.error('No current entry; has the game started?');
+	        return currentEntryData;
+	    }
+
+	    function getInventory() {
+	        return inventory;
+	    }
+
+	    // Changes the active entry according to the numeric ID of the option passed in,
+	    // if it is present in the current entry.
+	    function doOption(idx) {
+	        if (!currentEntryData.options) console.error('Can not complete option', idx);
+	        var opt = currentEntryData.options[idx];
+	        var newEntryId = opt.goto;
+	        if (!newEntryId in ENTRY_DATA) console.error('Cannot do option: invalid goto id', newEntryId);
+	        return _setEntry(newEntryId);
+	    }
+
+	    return {
+	        startGame: startGame,
+	        getCurrentEntry: getCurrentEntry,
+	        getInventory: getInventory,
+	        doOption: doOption
+	    };
+	})();
+
+	/**
+	 * Some simple jQuery DOM logic for demo purposes.
+	 * This could easily be expanded for better presentation,
+	 * per-location graphics, all kinds of stuff.
+	 **/
+	var Game = (function() {
+
+	    var DATA;
+
+	    // Container element to render into
+	    var $el = $('#output');
+
+	    // Text for game over scenarios
+	    var endMsgs = {
+	        win: 'Well played, you\'ve escaped Josh!',
+	        lose: 'You died. Ready to reincarnate?'
+	    };
+
+	    // Reads the current entry data and puts DOM nodes
+	    // in the container to display the text and options
+	    function render(isStart) {
+	        var d = CYOA.getCurrentEntry();
+
+	        // Clear the container and write the body text
+	        $el.html('');
+	        if (isStart) $el.append('<p class="title">*** Kitsu is offline, you must escape! ***</p>');
+	        $el.append('<p>' + d.text + '</p>');
+
+	        d.extra.forEach(function(ext) {
+	            $el.append('<p>' + ext + '</p>');
+	        });
+
+	        // Write out a list of option or restart links in a list
+	        // (click handlers bound in init() will handle these)
+	        var $opts = $('<ul/>');
+	        if (d.gameover) {
+	            var $action = $('<li><a class="opt gameover ' + d.gameover + '" href="#">' +
+	                endMsgs[d.gameover] + '</a></li>');
+	            $opts.append($action);
+	        }
+	        if (d.options) {
+	            d.options.forEach(function(opt, idx) {
+	                var $opt = $('<li><a class="opt action" href="#" data-opt="' + idx + '">' +
+	                    opt.text + '</a></li>');
+	                $opts.append($opt);
+	            });
+	        }
+	        $el.append($opts);
+
+	        // Show current inventory
+	        if (!d.gameover) {
+	            var inv = CYOA.getInventory();
+	            if (inv.length) {
+	                $el.append('<p class="inv">You are carrying: ' + inv.join(', ') + '</p>');
+	            }
+	        }
+	    }
+
+	    function init(entryData) {
+
+	        DATA = entryData;
+
+	        // Click handlers for option links.  Bound to the document
+	        // as we destroy and rebuild the links per-entry.
+	        $(document).on('click', '.action', function(e) {
+	            e.preventDefault();
+	            var opt = $(this).attr('data-opt');
+	            console.log('do option', opt);
+	            if (CYOA.doOption(opt)) render();
+	        });
+
+	        // As above but for win/lose links.  Restart the game when used
+	        $(document).on('click', '.gameover', function(e) {
+	            e.preventDefault();
+	            _start();
+	        });
+
+	        _start();
+	    }
+
+	    function _start() {
+	        // Init the game and render the first entry
+	        CYOA.startGame(DATA);
+	        render(true);
+	    }
+
+	    return {
+	        init: init
+	    }
+		})();
+
+		// Kick off
+		Game.init(ENTRIES);
+	</script>
+</body>
