@@ -5,6 +5,9 @@ DB_FILE_LINK="https://www.dropbox.com/s/xgq6tuf4va2cd6v/kitsu-dump-2016-12-21.sq
 DB_FILE_NAME="anime.sql.gz"
 DEFAULT_AMNT=200
 
+# Make sure seed is run from project root
+cd "$(dirname "$0")/../"
+
 # ANSI Colors for better formatting
 COLOR_RED='\033[0;31m'
 COLOR_GREEN='\033[0;32m'
