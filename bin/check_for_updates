@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Make sure we're run from project root
+cd "$(dirname "$0")/../"
+
+# ANSI Colors for better formatting
+COLOR_RED='\033[0;31m'
+COLOR_GREEN='\033[0;32m'
+COLOR_NONE='\033[0m'
+
+function check_for_update {
+  pushd $2 > /dev/null
+  git remote update
+  LOCAL=$(git rev-parse @)
+  REMOTE=$(git rev-parse "@{u}")
+  BASE=$(git merge-base @ "@{u}")
+
+  if [ $LOCAL = $REMOTE ]; then
+    echo -e "${COLOR_GREEN}$1: up-to-date${COLOR_NONE}"
+  elif [ $LOCAL = $BASE ]; then
+    echo -e "${COLOR_RED}$1: needs pull${COLOR_NONE}"
+  elif [ $REMOTE = $BASE ]; then
+    echo "$1: needs push"
+  else
+    echo -e "${COLOR_RED}$1: needs pull --rebase${COLOR_NONE}"
+  fi
+  popd > /dev/null
+}
+
+check_for_update "Tooling" .
+check_for_update "Client" client
+check_for_update "Server" server

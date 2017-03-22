@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cd "$(dirname "$0")/../"
+
+./bin/check_for_update
+
 docker-compose stop $@
 docker-compose rm -f --all $@
 docker-compose build $@
