@@ -1,13 +1,26 @@
 #!/bin/bash
 
+function output_status() {
+  while read line
+  do
+    if [[ $line == *"requires at least 1 argument"* ]]; then
+      echo -n "None found!"
+      break
+    else
+      echo -n "."
+    fi
+  done
+  echo
+}
+
 # Remove exited containers:
-echo "Removing exited containers:"
-docker rm -v $(docker ps -f status=dead -f status=exited -aq)
+echo -n "Removing exited containers: "
+docker rm -v $(docker ps -f status=dead -f status=exited -aq) 2>&1 | output_status
 
 # Remove unused images:
-echo -e "\nRemoving unused images:"
-docker rmi $(docker images --no-trunc -qf dangling=true)
+echo -n "Removing unused images: "
+docker rmi $(docker images --no-trunc -qf dangling=true) 2>&1 | output_status
 
 # Remove unused volumes:
-echo -e "\nRemoving unused volumes:"
-docker volume rm $(docker volume ls -qf dangling=true)
+echo -n "Removing unused volumes: "
+docker volume rm $(docker volume ls -qf dangling=true) 2>&1 | output_status
