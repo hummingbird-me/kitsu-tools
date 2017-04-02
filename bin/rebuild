@@ -2,9 +2,9 @@
 
 cd "$(dirname "$0")/../"
 
-./bin/check_for_update
+./bin/check_for_updates
 
 docker-compose stop $@
-docker-compose rm -f --all $@
+docker-compose rm -f $@
 docker-compose build $@
 docker-compose up -d $@
