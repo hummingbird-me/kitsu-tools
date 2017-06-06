@@ -29,4 +29,4 @@ If you want to help out with Hummingbird but are not sure what to work on check 
 Security
 --------
 
-Please do not publish security vulnerabilities before giving us a change to fix them. All security issues should be reported to [josh@hummingbird.me](mailto:josh@hummingbird.me) directly. If you are not sure whether or not something is a security issue it is better to err on the side of caution and contact us at [josh@hummingbird.me](mailto:josh@hummingbird.me) first.
+Please do not publish security vulnerabilities before giving us a chance to fix them. All security issues should be reported to [josh@hummingbird.me](mailto:josh@hummingbird.me) directly. If you are not sure whether or not something is a security issue it is better to err on the side of caution and contact us at [josh@hummingbird.me](mailto:josh@hummingbird.me) first.
