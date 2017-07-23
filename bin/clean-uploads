@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker-compose run --rm --entrypoint rm server -rf "/opt/kitsu/server/public/system/*"
