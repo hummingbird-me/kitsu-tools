@@ -1,12 +1,12 @@
 Contributing to Hummingbird
 ===========================
 
-Thank you for reading this! This document has some notes on contributing to the development of Hummingbird.
+Thank you for reading this! This document has some notes on contributing to the development of Kitsu.
 
 Reporting bugs
 --------------
 
-You can submit bug reports either in the Github issue tracker or the [forum bugs category](http://forums.hummingbird.me/c/feedback/bugs).
+You can submit bug reports either in the Github issue tracker or the [bug tracker](https://kitsu.io/feedback/bugs/).
 
 Before submitting an issue please check if there is already an existing issue. If there is, please add any additional information give it a "+1" in the comments.
 
@@ -29,4 +29,4 @@ If you want to help out with Hummingbird but are not sure what to work on check 
 Security
 --------
 
-Please do not publish security vulnerabilities before giving us a chance to fix them. All security issues should be reported to [josh@hummingbird.me](mailto:josh@hummingbird.me) directly. If you are not sure whether or not something is a security issue it is better to err on the side of caution and contact us at [josh@hummingbird.me](mailto:josh@hummingbird.me) first.
+Please do not publish security vulnerabilities before giving us a chance to fix them. All security issues should be reported to [josh@kitsu.io](mailto:josh@kitsu.io) directly. If you are not sure whether or not something is a security issue it is better to err on the side of caution and contact us at [josh@kitsu.io](mailto:josh@kitsu.io) first.
