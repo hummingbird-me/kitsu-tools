@@ -15,9 +15,8 @@ COLOR_NONE='\033[0m'
 
 
 function display_usage {
-  echo "Usage: bin/seed [download/reset/import [db/posters/covers] (amount)/clean]"
+  echo "Usage: bin/seed [download/reset/import/clean]"
   echo "       bin/seed download"
-  echo "       bin/seed import covers 200"
 }
 
 function do_clean {
@@ -49,42 +48,12 @@ function do_download {
 }
 
 function do_import {
-  if [[ "$1" == "db" ]]; then
-    do_import_db
-  elif [[ "$1" == "posters" ]]; then
-    do_import_posters $2
-  elif [[ "$1" == "covers" ]]; then
-    do_import_covers $2
-  else
-    display_usage
-  fi
-}
-
-function do_import_db {
   # Here we drop the schema manually instead db:drop because
   # of other docker connections to the DB
   echo "DROP SCHEMA public CASCADE;CREATE SCHEMA public;" | bin/psql "$DB_TARGET_ID"
   gzip -cd "$DB_FILE_NAME" | bin/psql "$DB_TARGET_ID"
   bin/rake db:migrate
   echo -e "${COLOR_GREEN}Imported $DB_FILE_NAME to $DB_TARGET_ID${COLOR_NONE}"
-}
-
-function do_import_posters {
-  IMPORT_AMOUNT=$DEFAULT_AMNT
-  if [[ "$1" != "" ]]; then
-    IMPORT_AMOUNT=$1
-  fi
-  bin/rake "importers:kitsu:posters[$IMPORT_AMOUNT]"
-  echo -e "${COLOR_GREEN}Imported $IMPORT_AMOUNT posters.${COLOR_NONE}"
-}
-
-function do_import_covers {
-  IMPORT_AMOUNT=$DEFAULT_AMNT
-  if [[ "$1" != "" ]]; then
-    IMPORT_AMOUNT=$1
-  fi
-  bin/rake "importers:kitsu:covers[$IMPORT_AMOUNT]"
-  echo -e "${COLOR_GREEN}Imported $IMPORT_AMOUNT covers.${COLOR_NONE}"
 }
 
 function do_reindex {
@@ -98,16 +67,14 @@ if [[ "$1" == "clean" ]]; then
 elif [[ "$1" == "download" ]]; then
   do_download
 elif [[ "$1" == "import" ]]; then
-  do_import $2 $3
+  do_import
 elif [[ "$1" == "reindex" ]]; then
   do_reindex
 elif [[ "$1" == "help" ]]; then
   display_usage
 else
   do_download
-  do_import_db
+  do_import
   do_reindex
-  do_import_covers
-  do_import_posters
   do_clean
 fi
