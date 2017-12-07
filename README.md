@@ -3,12 +3,13 @@
 Kitsu is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
 
 ---
-**<p align="center">This is our meta repository. It contains our development environment and tooling.<br />For the actual source code, please check out the [server](https://github.com/hummingbird-me/hummingbird-server) and [client](https://github.com/hummingbird-me/hummingbird-client) repository.</p>**
+**<p align="center">This is our meta repository. It contains our development environment and tooling.<br />Check out the [client], [server] and [api docs] repositories.</p>**
+
+[client]:https://github.com/hummingbird-me/hummingbird-client
+[server]:https://github.com/hummingbird-me/hummingbird-server
+[api docs]:https://github.com/hummingbird-me/hummingbird-client
 
 ---
-
-[![Kitsu is now Open Source](http://hummingbird-forum.s3.amazonaws.com/86407dbb64dbecfee0cbd74b759a4b33f70657b74c29.jpg)](http://forums.hummingbird.me/t/hummingbird-is-now-open-source/9870)
-
 
 | [Server Repository](https://github.com/hummingbird-me/hummingbird-server) | [Client Repository](https://github.com/hummingbird-me/hummingbird-client) |
 |:-------------:|:-------------:|
@@ -21,19 +22,19 @@ The backend is a JSON API server built with Rails, Postgres, ElasticSearch, and 
 You can set up your own local development environment in just a few steps.    
 If you prefer more detailed instructions for point **2** and **3**, head over to our [Setup instructions](https://github.com/hummingbird-me/hummingbird/wiki/Setting-up-a-development-environment#docker-recommended)
 
-1. Read our short [Contributing Guide](https://github.com/hummingbird-me/hummingbird/blob/master/CONTRIBUTING.md)
-2. If you don't already have, install docker on your system
- - For Mac, check out [Docker for Mac](https://docs.docker.com/docker-for-mac/)     
- - For Windows, check out [Docker for Windows](https://docs.docker.com/docker-for-windows/)
- - For Linux, manually install `docker` and `docker-compose` via your repository's package manager
+1. Read our short [Contributing Guide](https://github.com/hummingbird-me/hummingbird/blob/the-future/CONTRIBUTING.md)
+2. Install docker
+   - For Mac, check out [Docker for Mac](https://docs.docker.com/docker-for-mac/)     
+   - For Windows, check out [Docker for Windows](https://docs.docker.com/docker-for-windows/)
+   - For Linux, manually install `docker` and `docker-compose` via your repository's package manager
 3. Run `bin/setup` and follow the instructions. (This will also validate your docker installation)
 4. Follow the quick [Filling the Database](https://github.com/hummingbird-me/hummingbird/wiki/Filling-the-Database#get-data-into-your-development-server) guide for getting some data to play with 
 
-If you have any questions don't hesitate to contact us! Feel free to create a topic in the [forum dev category](http://forums.hummingbird.me/category/dev) or [email Josh](mailto:josh@hummingbird.me) to get access to our Slack.
+If you have any questions don't hesitate to contact us! Feel free to [email Josh](mailto:josh@kitsu.io) to get access to our Slack.
 
 For ideas of things to do, see our GitHub issues — check out the issues tagged "easy" for a good starting place!
 
-Please don't use Github issues for feature requests, instead create a topic in the [forum feedback category](http://forums.hummingbird.me/category/feedback).
+Please don't use Github issues for feature requests, instead create a [feature request](https://kitsu.io/feedback/feature-requests) on Kitsu.
 
 
 ## Screenshots
