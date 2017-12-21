@@ -1,0 +1,22 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/../"
+
+(
+  url="http://$(./bin/address):7357/"
+  while true; do
+    sleep 15
+    curl $url && {
+      open $url
+      exit
+    }
+  done
+) &
+
+function stop_listening {
+  kill -9 $!
+}
+
+trap stop_listening EXIT
+
+docker-compose run --rm --publish=7357:7357 client test --server
