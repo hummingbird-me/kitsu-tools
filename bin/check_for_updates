@@ -10,7 +10,7 @@ COLOR_NONE='\033[0m'
 
 function check_for_update {
   pushd $2 > /dev/null
-  git remote update
+  git remote update > /dev/null
   LOCAL=$(git rev-parse @)
   REMOTE=$(git rev-parse "@{u}")
   BASE=$(git merge-base @ "@{u}")
