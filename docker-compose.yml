@@ -44,6 +44,8 @@ services:
     volumes:
       - ./server:/opt/kitsu/server
       - uploads:/opt/kitsu/server/public/system
+      # Cache bundle
+      - /usr/local/bundle
     environment:
       DATABASE_URL: 'postgresql://postgres:mysecretpassword@postgres/'
       REDIS_URL: 'redis://redis/1'
