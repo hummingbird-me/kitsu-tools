@@ -3,21 +3,22 @@
 Kitsu is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
 
 ---
-**<p align="center">This is our meta repository. It contains our development environment and tooling.<br />Check out the [client], [server] and [api docs] repositories.</p>**
+**<p align="center">This is our meta repository. It contains our development environment and tooling.<br />Check out the [client], [server], [mobile app] and [api docs] repositories.</p>**
 
 [client]:https://github.com/hummingbird-me/hummingbird-client
 [server]:https://github.com/hummingbird-me/hummingbird-server
+[mobile app]:https://github.com/hummingbird-me/kitsu-mobile
 [api docs]:https://github.com/hummingbird-me/hummingbird-client
 
 ---
 
-| [Server Repository](https://github.com/hummingbird-me/hummingbird-server) | [Client Repository](https://github.com/hummingbird-me/hummingbird-client) |
-|:-------------:|:-------------:|
-| [![Build Status](https://travis-ci.org/hummingbird-me/hummingbird-server.svg?branch=the-future)](https://travis-ci.org/hummingbird-me/hummingbird-server) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird-server/badges/gpa.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-server) [![Test Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird-server/badges/coverage.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-server/coverage)      | [![Build Status](https://travis-ci.org/hummingbird-me/hummingbird-client.svg?branch=the-future)](https://travis-ci.org/hummingbird-me/hummingbird-client) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird-client/badges/gpa.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-client) [![Test Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird-client/badges/coverage.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-client/coverage) |
+| [Server Repository](https://github.com/hummingbird-me/hummingbird-server) | [Client Repository](https://github.com/hummingbird-me/hummingbird-client) | [Mobile App](https://github.com/hummingbird-me/kitsu-mobile) |
+|:-------------:|:-------------:|:-------------:|
+| [![Build Status](https://travis-ci.org/hummingbird-me/hummingbird-server.svg?branch=the-future)](https://travis-ci.org/hummingbird-me/hummingbird-server) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird-server/badges/gpa.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-server) [![Test Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird-server/badges/coverage.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-server/coverage)      | [![Build Status](https://travis-ci.org/hummingbird-me/hummingbird-client.svg?branch=the-future)](https://travis-ci.org/hummingbird-me/hummingbird-client) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird-client/badges/gpa.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-client) [![Test Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird-client/badges/coverage.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-client/coverage) | [![Build Status](https://travis-ci.org/hummingbird-me/kitsu-mobile.svg)](https://travis-ci.org/hummingbird-me/kitsu-mobile) |
 
 
 ## Contributing
-The backend is a JSON API server built with Rails, Postgres, ElasticSearch, and Redis. The frontend is a client-side application written using Ember.
+The backend is a JSON API server built with Rails, Postgres, ElasticSearch, and Redis. The frontend is a client-side application written using Ember.  The mobile app is a cross-platform native app using React Native.
 
 You can set up your own local development environment in just a few steps.    
 If you prefer more detailed instructions for point **2** and **3**, head over to our [Setup instructions](https://github.com/hummingbird-me/hummingbird/wiki/Setting-up-a-development-environment#docker-recommended)
