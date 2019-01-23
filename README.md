@@ -8,7 +8,7 @@ Kitsu is a modern anime discovery platform that helps you track the anime you're
 [client]:https://github.com/hummingbird-me/hummingbird-client
 [server]:https://github.com/hummingbird-me/hummingbird-server
 [mobile app]:https://github.com/hummingbird-me/kitsu-mobile
-[api docs]:https://github.com/hummingbird-me/hummingbird-client
+[api docs]:https://github.com/hummingbird-me/api-docs
 
 ---
 
