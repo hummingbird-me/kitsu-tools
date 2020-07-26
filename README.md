@@ -9,7 +9,7 @@ Kitsu is a modern content discovery platform that helps anime and manga fans tra
 
 | [Server][server] | [Web][web] | [Mobile App][mobile] | [API Docs][api docs]
 | :--------------: | :--------: | :------------------: | :------------------:
-| ![][server-test] ![][server-api] [![][server-codeclimate]][server-codeclimate-link] [![][server-crowdin]][server-crowdin-link] | [![][web-travis]][web-travis-link] [![][web-codeclimate]][web-codeclimate-link] [![][web-crowdin]][web-crowdin-link] | [![][mobile-travis]][mobile-travis-link] | ![][api-blueprint]
+| ![][server-test] ![][server-api] <br> [![][server-codeclimate]][server-codeclimate-link] [![][server-crowdin]][server-crowdin-link] | [![][web-travis]][web-travis-link] <br> [![][web-codeclimate]][web-codeclimate-link] [![][web-crowdin]][web-crowdin-link] | [![][mobile-travis]][mobile-travis-link] | ![][api-blueprint]
 
 [web]:https://github.com/hummingbird-me/hummingbird-client
 [server]:https://github.com/hummingbird-me/kitsu-server
