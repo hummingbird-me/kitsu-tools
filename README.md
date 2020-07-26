@@ -1,23 +1,42 @@
 # Kitsu
 
-Kitsu is a modern anime discovery platform that helps you track the anime you're watching, discover new anime and socialize with other fans.
+Kitsu is a modern content discovery platform that helps anime and manga fans track, share and discover more of what they love.
 
 ---
 **<p align="center">This is our meta repository. It contains our development environment and tooling.<br />Check out the [web], [mobile], [server] and [api docs] repositories.</p>**
+
+---
+
+| [Server][server] | [Web][web] | [Mobile App][mobile] | [API Docs][api docs]
+| :--------------: | :--------: | :------------------: | :------------------:
+| ![][server-test] ![][server-api] [![][server-codeclimate]][server-codeclimate-link] [![][server-crowdin]][server-crowdin-link] | [![][web-travis]][web-travis-link] [![][web-codeclimate]][web-codeclimate-link] [![][web-crowdin]][web-crowdin-link] | [![][mobile-travis]][mobile-travis-link] | ![][api-blueprint]
 
 [web]:https://github.com/hummingbird-me/hummingbird-client
 [server]:https://github.com/hummingbird-me/kitsu-server
 [mobile]:https://github.com/hummingbird-me/kitsu-mobile
 [api docs]:https://github.com/hummingbird-me/api-docs
 
----
+[server-test]:https://github.com/hummingbird-me/kitsu-server/workflows/Kitsu%20Test%20Suite/badge.svg
+[server-api]:https://github.com/hummingbird-me/kitsu-server/workflows/Kitsu%20API%20Deployment/badge.svg
+[server-codeclimate]:https://codeclimate.com/github/hummingbird-me/kitsu-server/badges/gpa.svg
+[server-codeclimate-link]:https://codeclimate.com/github/hummingbird-me/kitsu-server
+[server-crowdin]:https://badges.crowdin.net/kitsu-server/localized.svg
+[server-crowdin-link]:https://crowdin.com/project/kitsu-server
 
-| [Server Repository](https://github.com/hummingbird-me/hummingbird-server) | [Client Repository](https://github.com/hummingbird-me/hummingbird-client) | [Mobile App](https://github.com/hummingbird-me/kitsu-mobile) |
-|:-------------:|:-------------:|:-------------:|
-| [![Build Status](https://travis-ci.org/hummingbird-me/hummingbird-server.svg?branch=the-future)](https://travis-ci.org/hummingbird-me/hummingbird-server) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird-server/badges/gpa.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-server) [![Test Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird-server/badges/coverage.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-server/coverage)      | [![Build Status](https://travis-ci.org/hummingbird-me/hummingbird-client.svg?branch=the-future)](https://travis-ci.org/hummingbird-me/hummingbird-client) [![Code Climate](https://codeclimate.com/github/hummingbird-me/hummingbird-client/badges/gpa.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-client) [![Test Coverage](https://codeclimate.com/github/hummingbird-me/hummingbird-client/badges/coverage.svg)](https://codeclimate.com/github/hummingbird-me/hummingbird-client/coverage) | [![Build Status](https://travis-ci.org/hummingbird-me/kitsu-mobile.svg)](https://travis-ci.org/hummingbird-me/kitsu-mobile) |
+[web-travis]:https://travis-ci.org/hummingbird-me/hummingbird-client.svg?branch=the-future
+[web-travis-link]:https://travis-ci.org/hummingbird-me/hummingbird-client
+[web-codeclimate]:https://codeclimate.com/github/hummingbird-me/hummingbird-client/badges/gpa.svg
+[web-codeclimate-link]:https://codeclimate.com/github/hummingbird-me/hummingbird-client
+[web-crowdin]:https://badges.crowdin.net/kitsu-web/localized.svg
+[web-crowdin-link]:https://crowdin.com/project/kitsu-web
 
+[mobile-travis]:https://travis-ci.org/hummingbird-me/kitsu-mobile.svg?branch=develop
+[mobile-travis-link]:https://travis-ci.org/hummingbird-me/kitsu-mobile
+
+[api-blueprint]:https://flat.badgen.net/travis/hummingbird-me/api-docs/source?label=blueprint
 
 ## Contributing
+
 The backend is a JSON API server built with Rails, Postgres, ElasticSearch, and Redis. The frontend is a client-side application written using Ember.  The mobile app is a cross-platform native app using React Native.
 
 You can set up your own local development environment in just a few steps.    
@@ -37,14 +56,9 @@ For ideas of things to do, see our GitHub issues — check out the issues tagged
 
 Please don't use Github issues for feature requests, instead create a [feature request](https://kitsu.io/feedback/feature-requests) on Kitsu.
 
+## Contributors
 
-## Screenshots
-[![Library Page](https://a.pomf.cat/wuigre.png)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/122667531)
-[![Profile Page](https://a.pomf.cat/ljwmcn.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/105637573)
-[![Browse Page](https://a.pomf.cat/jiliwf.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/104358379)
-[![Preview Modal](https://a.pomf.cat/ajlsud.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/104250303)
-[![Dashboard Page](https://a.pomf.cat/anxjco.jpg)](https://projects.invisionapp.com/share/3S4CAESCZ#/screens/103968010)
-
+[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/0)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/0)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/1)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/1)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/2)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/2)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/3)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/3)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/4)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/4)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/5)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/5)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/6)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/6)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/7)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/7)
 
 ## License
 Copyright 2017 Kitsu, Inc.
