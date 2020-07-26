@@ -18,22 +18,22 @@ Kitsu is a modern content discovery platform that helps anime and manga fans tra
 
 [server-test]:https://github.com/hummingbird-me/kitsu-server/workflows/Kitsu%20Test%20Suite/badge.svg
 [server-api]:https://github.com/hummingbird-me/kitsu-server/workflows/Kitsu%20API%20Deployment/badge.svg
-[server-codeclimate]:https://codeclimate.com/github/hummingbird-me/kitsu-server/badges/gpa.svg
+[server-codeclimate]:https://badgen.net/codeclimate/maintainability/hummingbird-me/kitsu-server
 [server-codeclimate-link]:https://codeclimate.com/github/hummingbird-me/kitsu-server
 [server-crowdin]:https://badges.crowdin.net/kitsu-server/localized.svg
 [server-crowdin-link]:https://crowdin.com/project/kitsu-server
 
-[web-travis]:https://travis-ci.org/hummingbird-me/hummingbird-client.svg?branch=the-future
+[web-travis]:https://badgen.net/travis/hummingbird-me/hummingbird-client/the-future
 [web-travis-link]:https://travis-ci.org/hummingbird-me/hummingbird-client
-[web-codeclimate]:https://codeclimate.com/github/hummingbird-me/hummingbird-client/badges/gpa.svg
+[web-codeclimate]:https://badgen.net/codeclimate/maintainability/hummingbird-me/hummingbird-client
 [web-codeclimate-link]:https://codeclimate.com/github/hummingbird-me/hummingbird-client
 [web-crowdin]:https://badges.crowdin.net/kitsu-web/localized.svg
 [web-crowdin-link]:https://crowdin.com/project/kitsu-web
 
-[mobile-travis]:https://travis-ci.org/hummingbird-me/kitsu-mobile.svg?branch=develop
+[mobile-travis]:https://badgen.net/travis/hummingbird-me/kitsu-mobile/develop
 [mobile-travis-link]:https://travis-ci.org/hummingbird-me/kitsu-mobile
 
-[api-blueprint]:https://flat.badgen.net/travis/hummingbird-me/api-docs/source?label=blueprint
+[api-blueprint]:https://badgen.net/travis/hummingbird-me/api-docs/source?label=blueprint
 
 ## Contributing
 
