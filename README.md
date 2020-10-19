@@ -37,18 +37,15 @@ Kitsu is a modern content discovery platform that helps anime and manga fans tra
 
 ## Contributing
 
-The backend is a JSON API server built with Rails, Postgres, ElasticSearch, and Redis. The frontend is a client-side application written using Ember.  The mobile app is a cross-platform native app using React Native.
+The backend is an API server built with Rails, Postgres, and Redis. The frontend is a client-side application written using Ember.  The mobile app is a cross-platform native app using React Native.
 
 You can set up your own local development environment in just a few steps.    
 If you prefer more detailed instructions for point **2** and **3**, head over to our [Setup instructions](https://github.com/hummingbird-me/hummingbird/wiki/Setting-up-a-development-environment#docker-recommended)
 
 1. Read our short [Contributing Guide](https://github.com/hummingbird-me/hummingbird/blob/the-future/CONTRIBUTING.md)
-2. Install docker
-   - For Mac, check out [Docker for Mac](https://docs.docker.com/docker-for-mac/)     
-   - For Windows, check out [Docker for Windows](https://docs.docker.com/docker-for-windows/)
-   - For Linux, manually install `docker` and `docker-compose` via your repository's package manager
+2. [Install docker](https://docs.docker.com/get-docker/)
 3. Run `bin/setup` and follow the instructions. (This will also validate your docker installation)
-4. Follow the quick [Filling the Database](https://github.com/hummingbird-me/hummingbird/wiki/Filling-the-Database#get-data-into-your-development-server) guide for getting some data to play with 
+4. Follow the quick [Filling the Database](https://github.com/hummingbird-me/hummingbird/wiki/Filling-the-Database#get-data-into-your-development-server) guide for getting some data to play with
 
 If you have any questions don't hesitate to contact us! Feel free to [email Josh](mailto:josh@kitsu.io) to get access to our Slack.
 
@@ -61,7 +58,7 @@ Please don't use Github issues for feature requests, instead create a [feature r
 [![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/0)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/0)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/1)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/1)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/2)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/2)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/3)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/3)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/4)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/4)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/5)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/5)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/6)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/6)[![](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/images/7)](https://sourcerer.io/fame/wopian/hummingbird-me/kitsu-tools/links/7)
 
 ## License
-Copyright 2017 Kitsu, Inc.
+Copyright 2020 Kitsu, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
