@@ -46,10 +46,10 @@ echo -e "${SPACES}             ⠙⠋\n${COLOR_NONE}";
 
 
 # Output a totally not generic welcome message to the contributor
-echo "Great to have you on board!"
+echo "👋 $(tput bold)Great to have you on board!$(tput sgr0)"
 echo "Let's just run through some basic stuff to set up your local dev environment!"
-echo -e "\nThe automated setup assumes that you have already forked the hummingbird repos"
-echo "on your GitHub account or have access to the main repos themseves. If you have"
+echo -e "\nThis automated setup assumes that you have already forked the Kitsu repos"
+echo "onto your GitHub account or have access to the main repos themseves. If you have"
 echo "not done that yet, please make sure you have a fork ready before continuing."
 echo -e "\n"
 
@@ -59,11 +59,9 @@ HAS_DOCKER_ITSELF=`which docker`
 HAS_DOCKER_COMPOSE=`which docker-compose`
 
 if [[ "$HAS_DOCKER_ITSELF" == "" || "$HAS_DOCKER_COMPOSE" == "" ]]; then
-  echo "You will need to have docker and docker-compose installed for running"
-  echo "- If you are on Mac, check out Docker for Mac at https://docs.docker.com/docker-for-mac/"
-  echo "- If you are on Windows, check out Docker for Windows at https://docs.docker.com/docker-for-windows/"
-  echo "- Alternatively, check out Docker Toolbox at https://www.docker.com/products/docker-toolbox"
-  echo "  or manually install the docker and docker-compose package from your respective package manager."
+  echo "You will need to have docker and docker-compose installed. Go to"
+  echo "https://docs.docker.com/get-docker/ or manually install the docker"
+  echo "and docker-compose packages from your package manager."
   echo -e "\n"
 
   echo "We found"
@@ -107,22 +105,22 @@ done
 
 # Prompt the user to select which server repo he wants to use
 while [ "" == "$GITREPO_SERVER" ]; do
-  INPUT_DEFAULT=" [$GITHUB_USER/hummingbird-server]"
-  read -p "What's the path to your hummingbird-server repository fork$INPUT_DEFAULT? " GITREPO_SERVER
+  INPUT_DEFAULT=" [$GITHUB_USER/kitsu-server]"
+  read -p "What's the path to your kitsu-server repository fork$INPUT_DEFAULT? " GITREPO_SERVER
 
   if [[ "$GITREPO_SERVER" == "" ]]; then
-    GITREPO_SERVER="$GITHUB_USER/hummingbird-server"
+    GITREPO_SERVER="$GITHUB_USER/kitsu-server"
   fi
 done
 
 
 # Prompt the user to select which client repo he wants to use
 while [ "" == "$GITREPO_CLIENT" ]; do
-  INPUT_DEFAULT=" [$GITHUB_USER/hummingbird-client]"
-  read -p "What's the path to your hummingbird-client repository fork$INPUT_DEFAULT? " GITREPO_CLIENT
+  INPUT_DEFAULT=" [$GITHUB_USER/kitsu-web]"
+  read -p "What's the path to your kitsu-web repository fork$INPUT_DEFAULT? " GITREPO_CLIENT
 
   if [[ "$GITREPO_CLIENT" == "" ]]; then
-    GITREPO_CLIENT="$GITHUB_USER/hummingbird-client"
+    GITREPO_CLIENT="$GITHUB_USER/kitsu-web"
   fi
 done
 
@@ -197,8 +195,8 @@ fi
 echo -e "\n"
 echo -e "${COLOR_GREEN}Thanks for providing all of your information.${COLOR_NONE}"
 echo "- We will use $GITREPO_METHOD to access GitHub in order to"
-echo "- Clone hummingbird-server from $REPO_SERVER"
-echo "- Clone hummingbird-client from $REPO_CLIENT"
+echo "- Clone kitsu-server from $REPO_SERVER"
+echo "- Clone kitsu-web from $REPO_CLIENT"
 echo -e "- And then$DOES_AUTORUN start everything automatically and$DOES_SEEDNOW seed the database."
 echo -e "\n${COLOR_GREEN}Please remember:${COLOR_NONE} The setup could take a few minutes"
 echo "Just give it some time, even if it seems to be stuck for a minute."
