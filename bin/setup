@@ -26,26 +26,23 @@ cd "$(dirname "$0")/../"
 
 
 # Most importantly, center and output our logo ascii art
-echo -e "${COLOR_ORANGE}            88";
-echo -e "           88D8";
-echo -e "           8  D8";
-echo -e "          8888888";
-echo -e " O8NND88888888888   D88888888N";
-echo -e "  N88 88888888888 888888888888888";
-echo -e "     888888888888 88888888888888888";
-echo -e "        D88888888 888888888888888888";
-echo -e "       888    888 8888888888888888888";
-echo -e "     8888888888D8888888888D    N888888";
-echo -e "   888888D  8888888888     88888888888";
-echo -e " 8888N     N8888888     88888888888888";
-echo -e " 88       888888     8888888888888888";
-echo -e "         D8888     D8888888888888888";
-echo -e "        D888      O888888888888888";
-echo -e "        88       88 888888888888";
-echo -e "                 8    88888888";
-echo -e "                 8    N888N";
-echo -e "                 8N 88";
-echo -e "                  88\n${COLOR_NONE}";
+printf -v SPACES '%*s' 25
+echo -e "${SPACES}${COLOR_ORANGE}        ⢠⣶⣆                  "
+echo -e "${SPACES}        ⣿⠃⢻⣆                 "
+echo -e "${SPACES}       ⣀⣿⣶⣶⣿⡄                "
+echo -e "${SPACES} ⢿⣟⠛⠛⣷⣾⣿⣿⣿⣿⣿⡇⢀⣠⣤⣶⣶⣶⣶⣶⣤⣄⡀     "
+echo -e "${SPACES} ⠈⠻⣶⣾⣿⣿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄   "
+echo -e "${SPACES}    ⠙⠻⢿⣿⣿⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀ "
+echo -e "${SPACES}     ⣠⣤⣄⣉⠛⠻⠿⠇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢿⣿⣿⣧ "
+echo -e "${SPACES}   ⣠⣾⣿⣿⣿⣿⣿⣶⣶⣶⣿⣿⣿⣿⡿⠟⠛⠉⣁⣤⣤⣾⣿⣿⣿⡄"
+echo -e "${SPACES} ⣠⣾⣿⠿⠛⠉ ⢀⣿⣿⣿⣿⣿⠿⠋⠁⢀⣠⣶⣿⣿⣿⣿⣿⣿⣿⣿⠇"
+echo -e "${SPACES} ⠛⠋    ⢀⣾⣿⣿⡿⠋⠁ ⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿ "
+echo -e "${SPACES}      ⢀⣾⣿⡿⠋   ⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠁ "
+echo -e "${SPACES}      ⣼⣿⠋    ⣼⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁  "
+echo -e "${SPACES}      ⠈⠁    ⢰⡟ ⠙⠿⣿⣿⣿⣿⣿⠿⠋⠁    "
+echo -e "${SPACES}            ⢸⡇  ⣠⣴⠾⠛⠉        "
+echo -e "${SPACES}            ⠘⣷⣰⡟⠋            "
+echo -e "${SPACES}             ⠙⠋\n${COLOR_NONE}";
 
 
 # Output a totally not generic welcome message to the contributor
