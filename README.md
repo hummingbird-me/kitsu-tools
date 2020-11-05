@@ -47,7 +47,7 @@ If you prefer more detailed instructions for point **2** and **3**, head over to
 3. Run `bin/setup` and follow the instructions. (This will also validate your docker installation)
 4. Follow the quick [Filling the Database](https://github.com/hummingbird-me/hummingbird/wiki/Filling-the-Database#get-data-into-your-development-server) guide for getting some data to play with
 
-If you have any questions don't hesitate to contact us! Feel free to [email Josh](mailto:josh@kitsu.io) to get access to our Slack.
+If you have any questions don't hesitate to contact us [in our Discord](https://invite.gg/kitsu).
 
 For ideas of things to do, see our GitHub issues — check out the issues tagged "easy" for a good starting place!
 
