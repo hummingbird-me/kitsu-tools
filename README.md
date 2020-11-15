@@ -9,7 +9,7 @@ Kitsu is a modern content discovery platform that helps anime and manga fans tra
 
 | [Server][server] | [Web][web] | [Mobile App][mobile] | [API Docs][api docs]
 | :--------------: | :--------: | :------------------: | :------------------:
-| ![][server-test] ![][server-api] <br> [![][server-codeclimate]][server-codeclimate-link] [![][server-crowdin]][server-crowdin-link] | ![][web-test] ![][web-deploy] <br> [![][web-codeclimate]][web-codeclimate-link] [![][web-crowdin]][web-crowdin-link] | [![][mobile-travis]][mobile-travis-link] | ![][api-blueprint]
+| ![][server-test] ![][server-api] <br> [![][server-codeclimate]][server-codeclimate-link] [![][server-crowdin]][server-crowdin-link] | ![][web-test] ![][web-deploy] <br> [![][web-codeclimate]][web-codeclimate-link] [![][web-crowdin]][web-crowdin-link] | [![][mobile-travis]][mobile-travis-link] | [![][api-deploy]][api-deploy-link]
 
 [web]:https://github.com/hummingbird-me/kitsu-web
 [server]:https://github.com/hummingbird-me/kitsu-server
@@ -33,7 +33,8 @@ Kitsu is a modern content discovery platform that helps anime and manga fans tra
 [mobile-travis]:https://badgen.net/travis/hummingbird-me/kitsu-mobile/develop
 [mobile-travis-link]:https://travis-ci.org/hummingbird-me/kitsu-mobile
 
-[api-blueprint]:https://badgen.net/travis/hummingbird-me/api-docs/source?label=blueprint
+[api-deploy]:https://github.com/hummingbird-me/api-docs/workflows/GitHub%20Pages/badge.svg
+[api-deploy-link]:https://hummingbird-me.github.io/api-docs/
 
 ## Contributing
 
