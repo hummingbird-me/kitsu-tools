@@ -24,4 +24,4 @@ If you want to help out with Kitsu but are not sure what to work on check out th
 
 ## Security
 
-Please do not publish security vulnerabilities before giving us a chance to fix them. All security issues should be reported to [josh@kitsu.io](mailto:josh@kitsu.io) directly. If you are not sure whether or not something is a security issue it is better to err on the side of caution and contact us at [josh@kitsu.io](mailto:josh@kitsu.io) first.
+Please do not publish security vulnerabilities before giving us a chance to fix them. All security issues should be reported to [security@kitsu.io](mailto:security@kitsu.io) directly. If you are not sure whether or not something is a security issue it is better to err on the side of caution and contact us at [security@kitsu.io](mailto:security@kitsu.io) first.
