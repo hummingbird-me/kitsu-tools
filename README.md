@@ -33,7 +33,7 @@ Kitsu is a modern content discovery platform that helps anime and manga fans tra
 [mobile-travis]:https://badgen.net/travis/hummingbird-me/kitsu-mobile/develop
 [mobile-travis-link]:https://travis-ci.org/hummingbird-me/kitsu-mobile
 
-[api-deploy]:https://github.com/hummingbird-me/api-docs/workflows/GitHub%20Pages/badge.svg
+[api-deploy]:https://github.com/hummingbird-me/api-docs/workflows/API%20Docs%20Deployment/badge.svg
 [api-deploy-link]:https://hummingbird-me.github.io/api-docs/
 
 ## Contributing
