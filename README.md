@@ -9,9 +9,9 @@ Kitsu is a modern content discovery platform that helps anime and manga fans tra
 
 | [Server][server] | [Web][web] | [Mobile App][mobile] | [API Docs][api docs]
 | :--------------: | :--------: | :------------------: | :------------------:
-| ![][server-test] ![][server-api] <br> [![][server-codeclimate]][server-codeclimate-link] [![][server-crowdin]][server-crowdin-link] | [![][web-travis]][web-travis-link] <br> [![][web-codeclimate]][web-codeclimate-link] [![][web-crowdin]][web-crowdin-link] | [![][mobile-travis]][mobile-travis-link] | ![][api-blueprint]
+| ![][server-test] ![][server-api] <br> [![][server-codeclimate]][server-codeclimate-link] [![][server-crowdin]][server-crowdin-link] | ![][web-test] ![][web-deploy] <br> [![][web-codeclimate]][web-codeclimate-link] [![][web-crowdin]][web-crowdin-link] | [![][mobile-travis]][mobile-travis-link] | ![][api-blueprint]
 
-[web]:https://github.com/hummingbird-me/hummingbird-client
+[web]:https://github.com/hummingbird-me/kitsu-web
 [server]:https://github.com/hummingbird-me/kitsu-server
 [mobile]:https://github.com/hummingbird-me/kitsu-mobile
 [api docs]:https://github.com/hummingbird-me/api-docs
@@ -23,10 +23,10 @@ Kitsu is a modern content discovery platform that helps anime and manga fans tra
 [server-crowdin]:https://badges.crowdin.net/kitsu-server/localized.svg
 [server-crowdin-link]:https://crowdin.com/project/kitsu-server
 
-[web-travis]:https://badgen.net/travis/hummingbird-me/hummingbird-client/the-future
-[web-travis-link]:https://travis-ci.org/hummingbird-me/hummingbird-client
-[web-codeclimate]:https://badgen.net/codeclimate/maintainability/hummingbird-me/hummingbird-client
-[web-codeclimate-link]:https://codeclimate.com/github/hummingbird-me/hummingbird-client
+[web-test]:https://github.com/hummingbird-me/kitsu-web/workflows/Kitsu%20Test%20Suite/badge.svg
+[web-deploy]:https://github.com/hummingbird-me/kitsu-web/workflows/Kitsu%20Web%20Deployment/badge.svg
+[web-codeclimate]:https://badgen.net/codeclimate/maintainability/hummingbird-me/kitsu-web
+[web-codeclimate-link]:https://codeclimate.com/github/hummingbird-me/kitsu-web
 [web-crowdin]:https://badges.crowdin.net/kitsu-web/localized.svg
 [web-crowdin-link]:https://crowdin.com/project/kitsu-web
 
