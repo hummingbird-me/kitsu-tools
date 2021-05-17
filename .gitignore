@@ -2,15 +2,24 @@
 
 # server
 server
-
-# client
 client
+web
+mobile
+status-page
+brand
+clerk
+genkan
+ops
+strait
+web-ember
+wiki
 
 # docker
 docker-sync.yml
 docker-compose-dev.yml
 
 # general
+uploads/*
 tmp/
 *.log
 .DS_Store
