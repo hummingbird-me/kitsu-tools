@@ -19,4 +19,4 @@ function stop_listening {
 
 trap stop_listening EXIT
 
-docker-compose run --rm --publish=7357:7357 client test --server
+docker compose run --rm --publish=7357:7357 client test --server

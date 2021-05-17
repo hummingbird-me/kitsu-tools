@@ -1,5 +1,5 @@
 #!/bin/bash
 
-containers="${@:-server client sidekiq}"
+containers="${@:-api web worker}"
 
-docker-compose logs $containers
+docker compose logs $containers

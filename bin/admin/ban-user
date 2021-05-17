@@ -1,3 +1,0 @@
-#!/bin/bash
-
-heroku run -a kitsu-api-production bin/rails runner "(User.find_by(id: '$@') || User.by_slug('$@').first).add_role(:banned)"

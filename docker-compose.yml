@@ -1,4 +1,4 @@
-version: '2'
+version: "3.8"
 
 volumes:
   postgres:
@@ -9,65 +9,64 @@ volumes:
     driver: local
 
 services:
-  # Database servers
+  # Databases
   postgres:
-    image: postgres:9.4
+    image: postgres:11
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
-      POSTGRES_PASSWORD: mysecretpassword
-      POSTGRES_USER: postgres
+      POSTGRES_USER: kitsu_development
+      POSTGRES_HOST_AUTH_METHOD: trust
     volumes:
       - postgres:/var/lib/postgresql/data
-    ports: ['5432:5432']
+    ports: [5432]
   redis:
     image: redis
   elasticsearch:
     image: elasticsearch:2
 
-  # Mailcatcher
+  # Pretend cloud services
   mailcatcher:
     image: schickling/mailcatcher
-    ports: [1080]
+  minio:
+    image: minio/minio:latest
+    command: [server, "/data"]
+    volumes:
+      - ./uploads:/data
 
   # Web server, routing /api and / to server, client respectively
   router:
     build: ./router
-    links: [client, server]
+    depends_on: [web, api, minio, mailcatcher]
     volumes:
       - uploads:/srv/www/uploads/system
-    ports: [80]
+    ports: ["42069:80"]
 
-  # Rails server
-  server: &rails
-    links: [postgres, redis, elasticsearch, mailcatcher]
-    build: ./server
+  # Application
+  api: &rails
+    depends_on: [postgres, redis, elasticsearch, mailcatcher, minio]
+    build:
+      context: ./server
+      dockerfile: Dockerfile.local
     volumes:
       - ./server:/opt/kitsu/server
       - uploads:/opt/kitsu/server/public/system
       # Cache bundle
       - /usr/local/bundle
     environment:
-      DATABASE_URL: 'postgresql://postgres:mysecretpassword@postgres/'
-      REDIS_URL: 'redis://redis/1'
+      DATABASE_URL: "postgresql://kitsu_development@postgres/"
+      ELASTICSEARCH_URL: "elasticsearch:9200"
+      REDIS_URL: "redis://redis/1"
       RAILS_ENV: development
-      SMTP_ADDRESS: 'mailcatcher'
-      SMTP_PORT: '1025'
-
-  # Sidekiq
-  sidekiq:
+      SMTP_ADDRESS: "mailcatcher"
+      SMTP_PORT: "1025"
+  worker:
     <<: *rails
     command: [sidekiq]
-
-  # Ember server
-  client:
+  web:
     build: ./client
     volumes:
       - ./client:/opt/kitsu/client
-      - /root/.cache/yarn
-      - /opt/kitsu/client/node_modules
-      - /opt/kitsu/client/bower_components
     tmpfs:
       - /opt/kitsu/client/tmp
     environment:
       EMBER_ENV: development
-    ports: ['57777:57777']

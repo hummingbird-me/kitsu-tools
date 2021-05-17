@@ -1,7 +1,7 @@
 #!/bin/bash
 
-docker-compose build
+docker compose build
 # Only create the database on development.
-# Schema and seed are bone by bin/seed
-docker-compose run --rm server rake db:create
-docker-compose run --rm server rake db:setup RAILS_ENV=test
+# Schema and seed are done by bin/seed
+docker compose run --rm api rake db:create
+docker compose run --rm api rake db:setup RAILS_ENV=test
