@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")/../"
 
-docker compose up -d $@
+docker-compose up -d $@
 
 echo "Listening at http://localhost:$(./bin/port)/"
 echo "Logs are available via \`bin/logs\`"
