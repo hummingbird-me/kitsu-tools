@@ -59,6 +59,10 @@ services:
       RAILS_ENV: development
       SMTP_ADDRESS: "mailcatcher"
       SMTP_PORT: "1025"
+      AWS_ENDPOINT: "http://minio:9000/"
+      AWS_BUCKET: kitsu-ugc-dev
+      AWS_ACCESS_KEY_ID: minioadmin
+      AWS_SECRET_ACCESS_KEY: minioadmin
   worker:
     <<: *rails
     command: [sidekiq]
