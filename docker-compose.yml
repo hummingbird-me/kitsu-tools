@@ -46,7 +46,7 @@ services:
     depends_on: [postgres, redis, elasticsearch, mailcatcher, minio]
     build:
       context: ./server
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.local
     volumes:
       - ./server:/opt/kitsu/server
       - uploads:/opt/kitsu/server/public/system
