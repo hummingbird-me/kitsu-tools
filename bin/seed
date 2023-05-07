@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DB_TARGET_ID="kitsu_development"
-DB_FILE_LINK="https://s3.amazonaws.com/kitsu-dev-dumps/2018-11-04.sql.gz"
+DB_FILE_LINK="https://f002.backblazeb2.com/file/kitsu-dumps/latest.sql.gz"
 DB_FILE_NAME="anime.sql.gz"
 DEFAULT_AMNT=200
 
@@ -28,7 +28,7 @@ function do_clean {
 
 function do_download {
   if [[ -e $DB_FILE_NAME ]]; then
-    echo -e "${COLOR_RED}There alread is a $DB_FILE_NAME in this directory!${COLOR_NONE}"
+    echo -e "${COLOR_RED}There already is a $DB_FILE_NAME in this directory!${COLOR_NONE}"
     echo "If you don't need it anymore, feel free to bin/seed clean"
     exit 0
   fi
