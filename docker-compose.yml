@@ -7,6 +7,8 @@ volumes:
     driver: local
   uploads:
     driver: local
+  typesense:
+    driver: local
 
 services:
   # Databases
@@ -23,6 +25,13 @@ services:
     image: redis
   elasticsearch:
     image: elasticsearch:2
+  typesense:
+    image: typesense:0.25.0.rc54
+    environment:
+      TYPESENSE_DATA_DIR: /data
+      TYPESENSE_API_KEY: xyz
+    volumes:
+      - typesense:/data
 
   # Pretend cloud services
   mailcatcher:
@@ -43,7 +52,7 @@ services:
 
   # Application
   api: &rails
-    depends_on: [postgres, redis, elasticsearch, mailcatcher, minio]
+    depends_on: [postgres, redis, elasticsearch, typesense, mailcatcher, minio]
     build:
       context: ./server
       dockerfile: Dockerfile.local
@@ -63,6 +72,8 @@ services:
       AWS_BUCKET: kitsu-ugc-dev
       AWS_ACCESS_KEY_ID: minioadmin
       AWS_SECRET_ACCESS_KEY: minioadmin
+      TYPESENSUAL_API_KEY: xyz
+      TYPESENSUAL_NODES: http://typesense:8108/
   worker:
     <<: *rails
     command: [sidekiq]
