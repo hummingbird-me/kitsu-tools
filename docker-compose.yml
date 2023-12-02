@@ -24,6 +24,7 @@ services:
   redis:
     image: redis
   elasticsearch:
+    platform: linux/x86_64
     image: elasticsearch:2
   typesense:
     image: typesense:0.25.0.rc54
