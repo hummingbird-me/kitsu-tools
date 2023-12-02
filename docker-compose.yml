@@ -27,7 +27,7 @@ services:
     platform: linux/x86_64
     image: elasticsearch:2
   typesense:
-    image: typesense:0.25.0.rc54
+    image: typesense/typesense:0.25.1
     environment:
       TYPESENSE_DATA_DIR: /data
       TYPESENSE_API_KEY: xyz
