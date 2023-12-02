@@ -7,6 +7,8 @@ volumes:
     driver: local
   typesense:
     driver: local
+  caddy_data:
+    driver: local
 
 services:
   # Databases
@@ -49,10 +51,24 @@ services:
   # Web server, routing /api and / to server, client respectively
   router:
     build: ./router
-    depends_on: [web, api, minio, mailcatcher]
+    command: [caddy, run, --watch, --config, /etc/caddy/Caddyfile]
+    develop:
+      watch:
+        - action: sync
+          path: ./router/Caddyfile
+          target: /etc/caddy/Caddyfile
+    ports:
+      - target: 80
+        published: 7580
+        protocol: tcp
+      - target: 443
+        published: 7543
+        protocol: tcp
+      - target: 443
+        published: 7543
+        protocol: udp
     volumes:
-      - uploads:/srv/www/uploads/system
-    ports: ["42069:80"]
+      - caddy_data:/data
 
   # Application
   api: &rails

@@ -1,6 +1,5 @@
-FROM nginx:1.9
-MAINTAINER Kitsu, Inc.
+FROM caddy:latest
 
-RUN rm /etc/nginx/conf.d/default.conf
-COPY ./nginx.conf /etc/nginx/conf.d/kitsu.conf
-COPY ./*.include.conf /etc/nginx/
+COPY private.pem /etc/caddy/private.pem
+COPY public.pem /etc/caddy/public.pem
+COPY Caddyfile /etc/caddy/Caddyfile

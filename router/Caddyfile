@@ -1,0 +1,49 @@
+{
+	debug
+	local_certs
+	auto_https disable_redirects
+}
+
+(tls) {
+	tls internal {
+		on_demand
+	}
+}
+
+(log) {
+	log {
+		output stdout
+		format console
+	}
+}
+
+(api) {
+	handle /api/* {
+		request_body {
+			max_size 100MB
+		}
+		encode zstd gzip
+		reverse_proxy http://api
+	}
+}
+
+media.kitsu.dev {
+	import tls
+	reverse_proxy http://minio:9000
+}
+
+admin.media.kitsu.dev {
+	import tls
+	reverse_proxy http://minio:9001
+}
+
+mail.kitsu.dev {
+	import tls
+	reverse_proxy http://mailcatcher:1080
+}
+
+kitsu.dev, http://localhost {
+	import tls
+	import api
+	reverse_proxy http://client
+}

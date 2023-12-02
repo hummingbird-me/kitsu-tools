@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cd "$(dirname "$0")/../"
+
+./bin/check_for_updates
+
+docker compose cp router:/data/caddy/pki/authorities/local/root.crt ./router/root.crt
+
+case "$(uname -sr)" in
+   Darwin*)
+     echo 'Installing root certificate for macOS...'
+      sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ./router/root.crt
+     ;;
+
+   *)
+      echo 'Cannot automatically install root certificate for your OS. Please install it manually. The certificate is located at $(realpath ./router/root.crt)'
+     ;;
+esac
