@@ -1,5 +1,9 @@
 {
 	debug
+	log default {
+		output stdout
+		format console
+	}
 	local_certs
 	auto_https disable_redirects
 }
@@ -7,13 +11,6 @@
 (tls) {
 	tls internal {
 		on_demand
-	}
-}
-
-(log) {
-	log {
-		output stdout
-		format console
 	}
 }
 
