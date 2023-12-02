@@ -101,7 +101,7 @@ services:
     command: [sidekiq]
 
   web:
-    build: ./client
+    build: ./web
     tmpfs:
       - /opt/kitsu/client/node_modules/.vite/cache
     develop:
