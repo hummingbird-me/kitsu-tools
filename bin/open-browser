@@ -2,7 +2,7 @@
 
 cd "$(dirname "$0")/../"
 
-url="http://kitsu.localhost:$(./bin/port)/"
+url="http://kitsu.dev:$(./bin/port)/"
 
 # Most common means of opening browsers on most systems.  We don't need 100%
 # success rate, just Good Enough™.
