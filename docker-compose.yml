@@ -3,8 +3,6 @@ version: "3.8"
 volumes:
   postgres:
     driver: local
-  node_modules:
-    driver: local
   uploads:
     driver: local
   typesense:
@@ -80,14 +78,21 @@ services:
       AWS_SECRET_ACCESS_KEY: minioadmin
       TYPESENSUAL_API_KEY: xyz
       TYPESENSUAL_NODES: http://typesense:8108/
+
   worker:
     <<: *rails
     command: [sidekiq]
+
   web:
     build: ./client
-    volumes:
-      - ./client:/opt/kitsu/client
     tmpfs:
-      - /opt/kitsu/client/tmp
-    environment:
-      EMBER_ENV: development
+      - /opt/kitsu/client/node_modules/.vite/cache
+    develop:
+      watch:
+        - action: sync
+          path: ./web
+          target: /opt/kitsu/web
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package-lock.json
