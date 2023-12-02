@@ -41,7 +41,12 @@ services:
     image: minio/minio:latest
     command: [server, "/data"]
     volumes:
-      - ./uploads:/data
+      - uploads:/data
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+      - MINIO_DEFAULT_BUCKETS=kitsu-ugc-dev
+
 
   # Web server, routing /api and / to server, client respectively
   router:
