@@ -39,8 +39,13 @@ mail.kitsu.dev {
 	reverse_proxy http://mailcatcher:1080
 }
 
+storybook.kitsu.dev {
+	import tls
+	reverse_proxy http://web:6006
+}
+
 kitsu.dev, http://localhost {
 	import tls
 	import api
-	reverse_proxy http://client
+	reverse_proxy http://web:5173
 }
