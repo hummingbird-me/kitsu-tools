@@ -73,15 +73,22 @@ services:
 
   # Application
   api: &rails
-    depends_on: [postgres, redis, elasticsearch, typesense, mailcatcher, minio]
+    depends_on: [postgres, redis, elasticsearch, typesense]
     build:
       context: ./server
       dockerfile: Dockerfile.local
-    volumes:
-      - ./server:/opt/kitsu/server
-      - uploads:/opt/kitsu/server/public/system
-      # Cache bundle
-      - /usr/local/bundle
+    develop:
+      watch:
+        - action: sync
+          path: ./server
+          target: /opt/kitsu/server
+        - action: sync+restart
+          path: ./server/config
+          target: /opt/kitsu/server/config
+        - action: rebuild
+          path: ./server/Gemfile.lock
+        - action: rebuild
+          path: ./server/Dockerfile.local
     environment:
       DATABASE_URL: "postgresql://kitsu_development@postgres/"
       ELASTICSEARCH_URL: "elasticsearch:9200"
