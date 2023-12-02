@@ -120,3 +120,5 @@ services:
             - node_modules/
         - action: rebuild
           path: package-lock.json
+        - action: rebuild
+          path: Dockerfile
