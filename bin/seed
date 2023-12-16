@@ -47,11 +47,15 @@ function do_download {
   fi
 }
 
+function psql {
+  docker compose run -T --rm postgres sh -c "psql --username=kitsu_development --host=postgres $@"
+}
+
 function do_import {
   # Here we drop the schema manually instead db:drop because
   # of other docker connections to the DB
-  echo "DROP SCHEMA public CASCADE;CREATE SCHEMA public;" | bin/psql "$DB_TARGET_ID"
-  gzip -cd "$DB_FILE_NAME" | bin/psql "$DB_TARGET_ID"
+  echo "DROP SCHEMA public CASCADE;CREATE SCHEMA public;" | psql "$DB_TARGET_ID"
+  gzip -cd "$DB_FILE_NAME" | psql "$DB_TARGET_ID"
   bin/rake db:migrate
   echo -e "${COLOR_GREEN}Imported $DB_FILE_NAME to $DB_TARGET_ID${COLOR_NONE}"
 }
